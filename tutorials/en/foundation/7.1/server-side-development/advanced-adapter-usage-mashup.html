@@ -31,7 +31,7 @@ retrieved from the called procedure.<br /><br />
 The <code>invocationData</code> API format is:<br />
 <code>WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})</code>
 
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}</p>
 
@@ -41,7 +41,7 @@ WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions"
 <h3 id="executeAdapterRequest">Calling a Java adapter from a Java adapter</h3>
 When calling an adapter procedure from a Java adapter use the <code>executeAdapterRequest</code> API.
 This call returns an <code>HttpResponse</code> object.
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 HttpUriRequest req = new HttpGet(MyAdapterProcedureURL);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
 JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
@@ -50,7 +50,7 @@ JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
 
 <h3 id="createJavaScriptAdapterRequest">Calling a JavaScript adapter procedure from a Java adapter</h3>
 When calling a JavaScript adapter procedure from a Java adapter use both the <code>executeAdapterRequest</code> API and the <code>createJavascriptAdapterRequest</code> API that creates an HttpUriRequest to pass as a parameter to the <code>executeAdapterRequest</code> call.
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
 JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
@@ -111,7 +111,7 @@ The provided sample in this tutorial demonstrates the implementation of this sce
   <li>
 Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:<br /><br />
 (getCitiesListJS adapter) XML:
-{% highlight xml linenos %}
+{% highlight xml  %}
 <connectivity>
   <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
     <protocol>http</protocol>
@@ -123,7 +123,7 @@ Create a procedure / adapter call that create a request to Yahoo! Weather Servic
 {% endhighlight %}
 
 (getCitiesListJS adapter) JavaScript:
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function getYahooWeather(woeid) {
   var input = {
     method : 'get',
@@ -139,7 +139,7 @@ function getYahooWeather(woeid) {
 {% endhighlight %}
 
 (getCityWeatherJava adapter)
-{% highlight java linenos %}
+{% highlight java  %}
 @GET
 @Produces("application/json")
 public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
@@ -158,7 +158,7 @@ private String execute(HttpUriRequest req, HttpServletResponse resultResponse) t
   <li>
 Create an SQL query and fetch the cities records from the database:<br /><br />
 (getCitiesListJS adapter)
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");
 function getCitiesList() {
   return WL.Server.invokeSQLStatement({
@@ -169,7 +169,7 @@ function getCitiesList() {
 {% endhighlight %}<br />
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
-{% highlight java linenos %}
+{% highlight java  %}
 PreparedStatement getAllCities = getSQLConnection().prepareStatement("select city, identifier, summary from weather");
 ResultSet rs = getAllCities.executeQuery();
 {% endhighlight %}<br />
@@ -177,7 +177,7 @@ ResultSet rs = getAllCities.executeQuery();
   <li>
 Loop through the cities records and fetch the weather info for each city from Yahoo! Weather Service:<br /><br />
 (getCitiesListJS adapter)
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 for (var i = 0; i < cityList.resultSet.length; i++) {
   var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
   ...
@@ -193,7 +193,7 @@ function getCityWeather(woeid){
 {% endhighlight %}<br />
 
 (getCitiesListJava adapter)
-{% highlight java linenos %}
+{% highlight java  %}
 while (rs.next()) {
   getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
   HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
@@ -204,7 +204,7 @@ while (rs.next()) {
 {% endhighlight %}<br />
 
 (getCitiesListJavaToJs adapter)
-{% highlight java linenos %}
+{% highlight java  %}
 while (rs.next()) {
   HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather",
                         URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
@@ -218,7 +218,7 @@ while (rs.next()) {
 Iterating through the retrieved rss feed to fetch only the weather description, put this values in a resultSet / JSONArray object
 and return it to the application:<br /><br />
 (getCitiesListJS adapter)
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 ...
 if (yahooWeatherData.isSuccessful)
   cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;
@@ -227,7 +227,7 @@ return cityList;
 {% endhighlight %}<br />
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
-{% highlight java linenos %}
+{% highlight java  %}
 {
   ...
   JSONObject rss = (JSONObject) jsonWeather.get("rss");

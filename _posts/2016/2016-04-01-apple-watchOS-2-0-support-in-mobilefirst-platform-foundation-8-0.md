@@ -14,7 +14,7 @@ author:
 > To follow through this blog post, make sure to first [join the MobileFirst Platform Foundation 8.0 Beta Program]({{site.baseurl}}/beta/).
 
 ## Overview
-**Prerequisite:** Make sure to read the [Authentication Concepts]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/) tutorial first.
+**Prerequisite:** Make sure to read the [Authentication Concepts]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) tutorial first.
 
 MobileFirst Platform Foundation 8.0 beta's Native iOS SDK now contains support for Apple's  watchOS 2.0.  
 In addition to the iOS framework (`IBMMobileFirstPlatformFoundation`) there is now also a watchOS   `IBMMobileFirstPlatformFoundationWatchOS` framework which can be used in the WatchKit Extension target of an Xcode project.

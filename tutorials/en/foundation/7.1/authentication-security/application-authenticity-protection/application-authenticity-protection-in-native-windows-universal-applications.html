@@ -9,10 +9,10 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <p>Modify the application-descriptor.xml file on your application by adding a security test configured for application authentication.</p>
 <h3>Adding the security test</h3>
 <p>Add the <code>securityTest</code> attribute to the Windows / Windows Phone environment element. For example:</p>
-<p>{% highlight xml linenos %}<nativeWindows8App id="MyApplication" platformVersion="7.1.0.00.20150703-0630" version="1.0" securityTest="MyCustomAuthenticityTest">{% endhighlight %}</p>
+<p>{% highlight xml  %}<nativeWindows8App id="MyApplication" platformVersion="7.1.0.00.20150703-0630" version="1.0" securityTest="MyCustomAuthenticityTest">{% endhighlight %}</p>
 <h3>Adding the package family name</h3>
 <p>Add the <code>packageName</code> attribute to the Windows / Windows Phone environment element. For example:</p>
-<p>{% highlight xml linenos %}<packageName>b7a9dddd-bfa9-4954-8050-9407b9e957f5_2q4h08h62pzyj</packageName>{% endhighlight %}</p>
+<p>{% highlight xml  %}<packageName>b7a9dddd-bfa9-4954-8050-9407b9e957f5_2q4h08h62pzyj</packageName>{% endhighlight %}</p>
 <p>The package name can be extracted from Visual Studio. Open the Project in Visual Studio and search for <code>Package.appxmanifest</code> file. Navigate to the Packaging Tab and pick up the package name as shown below.</p>
 <ol><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/PackageNameWinUniv.png" /></ol>
 <p>&nbsp;</p>

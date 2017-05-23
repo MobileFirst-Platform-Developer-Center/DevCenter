@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="JavaScript client-side Push API" topic="html/refjavascript-mfp-push-hybrid/html/intro.html">
+<topic label="Overview" href="html/refjavascript-mfp-push-hybrid/html/intro.html"/>
+	<topic label="Classes">
+		<topic label="MFPPush" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html">
+<topic label="backgroundJobDone" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#backgroundJobDone"/>
+<topic label="getSubscriptions" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#getSubscriptions"/>
+<topic label="getTags" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#getTags"/>
+<topic label="initialize" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#initialize"/>
+<topic label="isPushSupported" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#isPushSupported"/>
+<topic label="registerDevice" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#registerDevice"/>
+<topic label="registerNotificationsCallback" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#registerNotificationsCallback"/>
+<topic label="subscribe" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#subscribe"/>
+<topic label="unregisterDevice" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#unregisterDevice"/>
+<topic label="unsubscribe" href="html/refjavascript-mfp-push-hybrid/html/MFPPush.html#unsubscribe"/>
+</topic>
+
+	</topic>	
+</toc>

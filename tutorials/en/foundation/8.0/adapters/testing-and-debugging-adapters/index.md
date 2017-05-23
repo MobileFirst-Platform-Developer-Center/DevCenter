@@ -4,23 +4,28 @@ title: Testing and Debugging Adapters
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
 
 You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
 
-This tutorial demonstrates how to test adapters by using the MobileFirst CLI and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
+This tutorial demonstrates how to test adapters by using the {{ site.data.keys.mf_cli }} and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
 
-#### Jump to:
+#### Jump to
+{: #jump-to }
 
 * [Testing Adapters](#testing-adapters)
  * [Using Postman](#using-postman)
  * [Using Swagger](#using-swagger)
 * [Debugging Adapters](#debugging-adapters)
- * [JavaScript adapters](#javascript-adapters)
- * [Java adapters](#java-adapters)
+ * [JavaScript adapters](#debugging-javascript-adapters)
+ * [Java adapters](#debugging-java-adapters)
 
 ## Testing Adapters
-MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
+{: #testing-adapters }
+
+Adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
 
 The structure of the URL used to access the adapter resource is:
 
@@ -28,12 +33,15 @@ The structure of the URL used to access the adapter resource is:
 * In Java adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
 
 ### Passing parameters
+{: #passing-parameters }
 
 * When using Java adapters, you can pass parameters in the URL, body, form, etc, depending on how you configured your adapter.
 * When using JavaScript adapters, you pass parameters as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
 ### Handling security
-The MobileFirst security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
+{: #handling-security }
+
+The {{ site.data.keys.product }} security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
 
 To disable security in Java adapters, attach the `OAuthSecurity` annotation to the method/class:
 
@@ -47,34 +55,36 @@ To disable security in JavaScript adapters, add the `secured` attribute to the p
 <procedure name="adapter-procedure-name" secured="false"/>
 ```
 
-Alternatively, the development version of the MobileFirst Server includes a test token endpoint to bypass the security challenges.
+Alternatively, the development version of the {{ site.data.keys.mf_server }} includes a test token endpoint to bypass the security challenges.
 
 ### Using Postman
+{: #using-postman }
 
 #### Test Token
+{: #test-token }
+
 To receive a Test Token, either click the "Run in Postman" button below to import a Collection to your Postman app that contains a ready request, or follow the next steps to create the request yourself.
 
 <a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
 
 {% comment %}
-1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
+1. In the {{ site.data.keys.mf_console }} → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes, set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
 {% endcomment %}
 
-1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+1.  Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
-* `grant_type` : `client_credentials`
-* `scope` : Use the scope protecting the resource.  
-If you don't use a scope to protect your resource, use an empty string.
+    - `grant_type` - Set the value to `client_credentials`.
+    - `scope` - Set the value to the protecting scope of your resource. If your resource is not assigned a protecting scope, omit this parameter to apply the default scope (`RegisteredClient`). For more information, see [Scopes](../../authentication-and-security/#scopes).
 
+    ![Image of Postman Body configuration](Body_configuration.png)
 
-  ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
-> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
+2.  Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
+    > For more information about confidential clients, see [Confidential Clients](../../authentication-and-security/confidential-clients).
 
-  ![Image of Postman Authorization configuration](Authorization_configuration.png)
+    ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
 
 The result is a JSON object with a temporary valid access token:
@@ -89,18 +99,21 @@ The result is a JSON object with a temporary valid access token:
 ```
 <br/><br/>
 #### Sending request
+{: #sending-request }
 
 Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
 
   ![Adapter request using Postman with the test token](Adapter-response.png)
 
 ### Using Swagger
+{: #using-swagger }
+
 The Swagger docs UI is a visual representation of an adapter's REST endpoints.  
 Using Swagger, a developer can test the adapter endpoints before they are consumed by a client application.
 
 To access Swagger:
 
-1. Open the MobileFirst Operations Console and select an adapter from the adapters list.
+1. Open the {{ site.data.keys.mf_console }} and select an adapter from the adapters list.
 2. Click on the **Resources** tab.
 3. Click on the **View swagger Docs** button.  
 4. Click on the **Show/Hide** button.
@@ -108,7 +121,10 @@ To access Swagger:
   ![Image of the Swagger UI](SwaggerUI.png)
 
 <img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
+
 #### Test Token
+{: #test-token }
+
 To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
 You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with a Confidential Client ID and Secret. For this, you will need to create a new confidential client with `*` as its **Allowed Scope**.
@@ -118,12 +134,14 @@ You will be asked to select which scopes you want to grant to the Swagger UI (fo
 <br/><br/>
 
 #### Sending Request
+{: #sending-request-swagger }
 
 Expand the endpoint's operation, enter the required parameters (if needed) and click on the **Try it out!** button.
 
   ![Adapter request using Swagger with the test token](SwaggerReq.png)
 
 #### Swagger Annotations
+{: #swagger-annotations }
 Available only in Java adapters.
 
 To generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
@@ -153,12 +171,15 @@ public Map<String, String> enterInfo(
 
 
 {% comment %}
-### Using MobileFirst CLI
+### Using {{ site.data.keys.mf_cli }}
+{: #using-mobilefirst-cli }
 
 In order to test the adapter functionality, use the `mfpdev adapter call` command to call Java or JavaScript adapters from the command line.
 You can choose to run the command interactively or directly. The following is an example of using the direct mode:
 
 #### Java adapters
+{: #java-adapters-adapters-cli }
+
 Open a **Command-line** window and run:
 
 ```bash
@@ -175,6 +196,8 @@ Hello World
 ```
 
 #### JavaScript adapters
+{: #javascript-adapters-cli }
+
 Open a **Command-line** window and run:
 
 ```bash
@@ -192,9 +215,11 @@ Hello World
 
 {% endcomment %}
 
-
 ## Debugging Adapters
+{: #debugging-adapters }
+
 ### JavaScript adapters
+{: #debugging-javascript-adapters }
 You can debug JavaScript code in JavaScrit adapters by using the `MFP.Logger` API.  
 Available logging levels, from least to most verbose, are: `MFP.Logger.error`, `MFP.Logger.warn`, `MFP.Logger.info` and `MFP.Logger.debug`.
 
@@ -202,6 +227,8 @@ The logs are then printed to the log file of the application server.
 Be sure to set the server verbosity level accordingly, otherwise you will not see the logging in the log file.
 
 ### Java adapters
+{: #debugging-java-adapters }
+
 Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
 
 1. **Maven integration** - Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse.  
@@ -220,7 +247,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
     - Click **Browse** and select the Maven project.
     - Click **Debug**.
 
-    ![Image showing how to set MobileFirst Server debug parameters](setting-debug-parameters.png)
+    ![Image showing how to set {{ site.data.keys.mf_server }} debug parameters](setting-debug-parameters.png)
 
 4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](#testing-adapters).
 

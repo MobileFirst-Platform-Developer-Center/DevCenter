@@ -33,7 +33,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 <h2 id="serverSidenotificationAPI">Notification API - Server-side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -48,7 +48,7 @@ WL.Server.createEventSource({
 <li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
 </ul>
 <p>An additional event source option:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
@@ -66,7 +66,7 @@ The following parameters are required:</p>
 <p><br clear="all" /></p>
 <h3>Sending a notification</h3>
 <p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
     if (userSubscription === null) {
@@ -86,11 +86,11 @@ function submitNotification(userId, notificationText) {
     };
 }{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function submitNotification(userId, notificationText) {
 {% endhighlight %}
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-<p>{% highlight js linenos %}{
+<p>{% highlight js  %}{
     userId: 'bjones',
     state: {
         customField: 3
@@ -99,14 +99,14 @@ function submitNotification(userId, notificationText) {
 };
 {% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js linenos %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
+{% highlight js  %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 if (userSubscription === null) {
     return { result: "No subscription found for user :: " + userId };
 }{% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 var badgeDigit = 1;
 var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
 {% endhighlight %}</p>
@@ -117,7 +117,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 </ul>
 <p>In case of Windows Phone 8 , there are 3 type of MPNS notifications - Raw, Toast and Tile. Raw notifications are visible when the application is in foreground. Toast and Tile notifications are for cases where the application is in background or not running. To see Tile notifications , pin the application to the start screen.</p>
 <p>The default notification JSON block returned by <code>WL.Server.createDefaultNotification</code> API method contains notification JSON for Raw and Tile. To send Toast notifications, add the JSON block for Toast notifications:</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 notification.MPNS.toast={};
 notification.MPNS.toast.text1 = "Toast title";
 notification.MPNS.toast.text2 = "Toast content";
@@ -126,7 +126,7 @@ notification.MPNS.toast.text2 = "Toast content";
 For more details refer to user documentation on WL.Server.createDefaultNotification API
 </p></blockquote>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js linenos %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
+<p>{% highlight js  %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -140,7 +140,7 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
 <li><code>WL.Client.Push.isSubscribed(alias)</code> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
 </ul>
 <p>When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 function pushNotificationReceived(props, payload) {
     alert("pushNotificationReceived invoked");
     alert("props :: " + JSON.stringify(props));

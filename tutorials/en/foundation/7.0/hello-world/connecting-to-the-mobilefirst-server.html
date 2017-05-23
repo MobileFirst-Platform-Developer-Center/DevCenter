@@ -15,7 +15,7 @@ weight: 6
 
 <h2>API Signatures</h2>
 <h3>JavaScript</h3>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 WL.Client.connect(
   {
     onSuccess: successCallback,
@@ -26,21 +26,21 @@ WL.Client.connect(
 
 
 <h3>Objective-C</h3>
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLClient sharedInstance] wlConnectWithDelegate:myConnectListener];
 {% endhighlight %}
 
 <p>Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>Swift</h3>
-{% highlight swift linenos %}
+{% highlight swift  %}
 WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)
 {% endhighlight %}
 
 <p>Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>Java</h3>
-{% highlight java linenos %}
+{% highlight java  %}
 WLClient.createInstance(this).connect(myConnectListener);
 {% endhighlight %}
 

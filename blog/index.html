@@ -1,47 +1,46 @@
 ---
 layout: default
 indexed: false
-title: MobileFirst Platform Blog
+title: MobileFirst Foundation Blog
 ---
-<div class="container blogIndex">
-    <h2 class="no-anchor">MobileFirst Foundation Blog</h2>
-    <div id="blogPosts" class="container">
-          <div class="twoColumns">
-            {% for post in paginator.posts %}
+<section class="container blogIndex" role="main">
+    <h2 class="no-anchor">{{ site.data.keys.product }} Blog</h2>
+    <blockquote>Contribute a blog post! see <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">our contribution guidelines</a>.</blockquote>
+    <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/Announcement/">product announcements</a>.</blockquote>
+    <section id="blogPostsList" class="container">
+        <div class="twoColumns">
+        {% for post in paginator.posts %}
             <div class="postItem inline">
-              <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
-              <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
-              <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</p>
+                <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
+                <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+                <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</p>
             </div>
-            {% endfor %}
-          </div>
-          <!-- Pagination links -->
-          <nav>
+        {% endfor %}
+        </div>
+        <!-- Pagination links -->
+        <nav>
             <ul class="pagination">
-              <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
-                <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous" >
-                  <span aria-hidden="true">Previous</span>
-                </a>
-              </li>
-              <li {% if paginator.next_page == null %}class="disabled"{% endif %}>
-                <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next">
-                  <span aria-hidden="true">Next</span>
-                </a>
-              </li>
+                <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
+                    <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
+                </li>
+                <li {% if paginator.next_page == null %}class="disabled"{% endif %}>
+                    <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
+                </li>
             </ul>
-          </nav>
-    </div>
+        </nav>
+    </section>
 
     <hr>
-    <h3 class="no-anchor">More blogs to follow</h3>
-    <ul class="moreBlogs">
-        <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b></li>
-        <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">IBM Mobile Development</a></b></li>
-        <li><b><a href="http://www.tricedesigns.com/tag/mobilefirst/" target="_blank">tricedesigns</a></b></li>
-        <li><b><a href="https://www.raymondcamden.com/tags/mobilefirst/" target="_blank">Raymond Camden’s blog</a></b></li>
-        <li><b><a href="http://ibmmobiletipsntricks.com/" target="_blank">IBM Mobile Tips 'n' Tricks</a></b></li>
-        <li><b><a href="https://www.ibm.com/developerworks/community/blogs/dhuyvett/?lang=en" target="_blank">David Dhuyvetter’s blog</a></b></li>
-        <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklight/?lang=en" target="_blank">IBM Worklight’s previous blog</a></b></li>
-        <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklightsmobileplayground/?lang=en" target="_blank">IBM Worklight Mobile Playground’s previous blog</a></b></li>
-    </ul>
-</div>
+    <section>
+        <h3 class="no-anchor">More blogs to follow</h3>
+        <ul class="moreBlogs">
+            <li><b><a href="http://ibmmobiletipsntricks.com/" target="_blank">IBM Mobile Tips 'n' Tricks</a></b></li>
+            <li><b><a href="http://www.tricedesigns.com/tag/mobilefirst/" target="_blank">tricedesigns</a></b></li>
+            <li><b><a href="https://www.raymondcamden.com/tags/mobilefirst/" target="_blank">Raymond Camden’s blog</a></b></li>
+            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b></li>
+            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">IBM Mobile Development</a></b></li>
+            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklight/?lang=en" target="_blank">IBM Worklight’s previous blog</a></b></li>
+            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklightsmobileplayground/?lang=en" target="_blank">IBM Worklight Mobile Playground’s previous blog</a></b></li>
+        </ul>
+    </section>
+</section>

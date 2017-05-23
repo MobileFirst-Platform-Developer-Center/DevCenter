@@ -1,16 +1,3 @@
-//colors
-$black:  black;
-$color_rhino_approx: #264a60;
-$white: white;
-$color_chambray_approx: #325c80;
-$color_nile_blue_approx: #1d3649;
-$color_woodsmoke_approx: #111111;
-$color_shark_approx: #242528;
-$color_mine_shaft_approx: #313236;
-$color_mountain_mist_approx: #999;
-$color_alto_approx: #dddddd;
-$color_quill_gray_approx: #d6d5d5;
-
 //fonts
 $font_0: Helvetica;
 $font_1: Arial;
@@ -24,182 +11,367 @@ $font_8: DejaVu Sans Mono;
 $font_9: Bitstream Vera Sans Mono;
 $font_10: Courier New;
 
+@font-face {
+   font-family: HelvNeuLightForIBM;
+   src: url(../fonts/Helvetica-Neue-for-IBM/HelvNeueLightforIBM.otf);
+}
+
+@font-face {
+   font-family: HelvNeuRomanForIBM;
+   src: url(../fonts/Helvetica-Neue-for-IBM/HelvNeueRomanforIBM.otf);
+}
+
 html {
 	height: 100%;
 }
+
 body {
 	height: 100%;
 	padding-top: 0;
-	font-family: $font_0, $font_1, $font_2;
+	font-family: Helvetica, Arial, sans-serif;
 	-webkit-print-color-adjust:exact;
 }
+
+.logo-icon {
+	background-image:url(../assets/foundation.svg);
+	background-size: 25px;
+	background-repeat: no-repeat;
+	background-position: 4px 7px;
+}
+
 #wrap {
 	min-height: 100%;
 	height: auto;
 	margin: 0 auto -60px;
-	padding: 0 0 50px;
+	padding: 0 0 39px;
 }
-hr {
-	border-top: 1px solid $black;
-	width: 100%;
-	left: auto;
-	margin: auto;
-}
+
 .well {
 	margin-top: 5px;
 }
-.custombtn.btn-default {
-	display: block;
-	width: 300px;
-	background-color: $color_rhino_approx;
-	color: $white;
-	text-align: center;
-	padding: 7px 0;
-	margin: 0 0 10px;
-	border: 1px solid $color_chambray_approx;
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 0;
-	text-decoration: none;
-	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	text-shadow: none;
-	font-size: 70%;
-	font-family: $font_0, $font_1, $font_3, $font_2;
-	font-weight: 300;
-	&:hover {
-		background-color: $color_nile_blue_approx;
-		color: $white;
-		text-decoration: none;
-		border: 1px solid $color_chambray_approx;
-	}
 
-	&.containers {
-		width: 400px;
-	}
-	&.stack {
-		background: none;
-		color: $color_chambray_approx;
-		margin-top: -10px;
-		&:hover {
-			background: $color_nile_blue_approx;
-			color: $white;
-		}
-	}
-}
 .logo {
 	padding-top: 13px;
 	padding-right: 5px;
+	padding-left: 16px;
 }
-.img-circle {
-	margin-left: 98px;
-	height: 64px;
-	width: 64px;
-}
-.mid-nav {
-	margin: 20px 0;
-	p {
-		text-align: center;
-		font-size: 100%;
-	}
-	h2 {
-		text-align: center;
-		font-size: 120%;
-	}
-}
+
 #blogPosts {
-	.twoColumns {
-		-webkit-columns: 2 200px;
-		-moz-columns: 2 200px;
-		//Instead of the line below you could use @include columns($width-and-count)
-		columns: 2 200px;
-	}
-	.blogPostsHeading {
-		margin-top: 20px;
-	}
-}
-.postDate {
-	font-size: 80%;
-	padding: 0;
-	margin: 0;
-	font-weight: bold;
-}
-.postTitle {
+	background-color: #5AAAFA;
+	font-family: HelvNeuLightForIBM;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
 	font-size: 120%;
-}
-footer {
-	background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
-	ul {
-		list-style-type: none;
-		margin: 21px 0 0 10px;
-		padding: 10px;
-		color: $color_mountain_mist_approx;
-		li {
-			display: inline;
-			margin: 0;
-			a {
-				color: $color_mountain_mist_approx;
-				padding: 0 10px;
-				&:hover {
-					color: $white;
-					text-decoration: none;
-				}
-				&:active {
-					color: $white;
-					text-decoration: none;
-				}
+
+	.latestPost {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+
+	.latestPostTitle {
+		font-size: 85%;
+		a {
+			color: white;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
 			}
-			&:first-child a {
-				padding-left: 0;
-				padding-right: 0;
+
+			&:visited {
+				text-decoration: underline;
+				color: white;
+			}
+		}
+	}
+
+	.more-posts {
+		font-size: 85%;
+		float: right;
+		margin-top: 3px;
+
+		a {
+			color: #0B2B40;
+
+			&:visited {
+				color: #0B2B40;
 			}
 		}
 	}
 }
-.footer-fix {
-	padding-right: 10px;
+#multilingualDC {
+	background-color: #05c1c1;
+	font-family: HelvNeuLightForIBM;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
+	font-size: 120%;
+
+	.latestText {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+  .h1 {
+		font-size: 180%;
+		font-family: HelvNeuLightForIBM;
+		color: #4A4A4A;
+		margin-bottom: 20px;
+	}
 }
-code:not([class*="language-"]) {
-	background-color: inherit;
-	color: $black;
-	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
-	padding: 0px;
-	background: #FDFAFB;
-    border: 1px solid #E0E0EA;
-	weight:400;
+#index_sections {
+	margin-top: 50px;
+	font-size: 112.5%;
+   font-family: HelvNeuRomanForIBM;
+
+	h1 {
+		font-size: 230%;
+		font-family: HelvNeuLightForIBM;
+		color: #4A4A4A;
+		margin-bottom: 20px;
+	}
+
+	hr {
+		border: 1px solid #DDD !important;
+		margin: 70px auto 70px auto;
+      width: 1046px;
+	}
+
+	#index_overview {
+		text-align: center;
+
+      .section_text {
+         margin-bottom: 30px;
+         font-size: 18px;
+      }
+
+      #index_overview_text {
+         //margin-bottom: 74.5px;
+      }
+		#index_overview_icons, #index_overview_text {
+			p {
+				margin-top: 0;
+				font-family: arial;
+			}
+
+			.index-item {
+				width: 20%;
+				padding: 20px;
+				font-weight: 300;
+
+				img {
+					height: 105px;
+				}
+			}
+		}
+
+      .feature-indicators {
+         margin-bottom: 15px;
+         margin-top: 15px;
+      }
+
+		a.read-more {
+			width: 300px;
+			background-color: #5AAAFA;
+			color: white;
+			text-align: center;
+			padding: 12px 30px 10px 30px;
+			border-radius: 0;
+			text-decoration: none;
+			text-shadow: none;
+			font-size: 14px;
+
+         &:hover {
+            background-color: #28536f;
+         }
+		}
+	}
+
+	#index_benefits {
+		text-align: left;
+		margin-bottom: 25px;
+
+		.foundation_diamond {
+			height: 296px;
+			margin-left: 203px;
+			margin-top: 79px;
+		}
+
+		.benefits {
+			padding-right: 80px;
+
+         p {
+            margin-bottom: 20px;
+         }
+		}
+
+		.benefits-small-screens {
+			text-align: center;
+		}
+	}
+
+	#index_getstarted {
+		text-align: center;
+		margin-bottom: 65px;
+
+		p {
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+
+		a img {
+			text-decoration: none;
+		}
+
+		.index_section_left {
+			text-align: center;
+			padding-bottom: 60px;
+			float: left;
+			border-right: 1px solid #DDD;
+			height: 300px;
+
+			img {
+				height: 80px;
+				padding: 0;
+			}
+		}
+
+		.index_section_right {
+			padding: 0;
+			text-align: center;
+			float: right;
+
+			img {
+				height: 100px;
+				padding: 5px 46px 20px 33px;
+			}
+		}
+
+		.number1,.number2 {
+			border-radius: 50%;
+		   border: 1px solid #649fe2;
+		   color: #649fe2;
+			font-size: 120%;
+    		font-weight: bold;
+			position: initial;
+		}
+
+      .number1 {
+         padding: 7px 10px 3px 10px;
+      }
+
+      .number2 {
+         padding: 7px 9px 3px 9px;
+      }
+
+		#index_getstarted_icons {
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+	}
+
+	#index_help {
+		text-align: center;
+		width: 50%;
+		height: 200px;
+		margin-bottom: 94px;
+
+		.help-icons {
+			margin-top: 50px;
+			img {
+				height: 82px;
+				margin-right: 45px;
+				margin-left: 45px;
+			}
+		}
+	}
+
+	#index_overview_icons, #index_help, #index_getstarted {
+		img {
+    		-webkit-transition: all 0.35s ease; /* Safari and Chrome */
+		   -moz-transition: all 0.35s ease; /* Firefox */
+		   -ms-transition: all 0.35 ease; /* IE 9 */
+		   -o-transition: all 0.35 ease; /* Opera */
+		   transition: all 0.35 ease;
+
+			&:hover {
+			   -webkit-transform:scale(1.1); /* Safari and Chrome */
+			   -moz-transform:scale(1.1); /* Firefox */
+			   -ms-transform:scale(1.1); /* IE 9 */
+			   -o-transform:scale(1.1); /* Opera */
+			   transform:scale(1.1);
+			}
+		}
+	}
 }
+
+footer {
+	background-color: #292a2d;
+	padding: 15px;
+	margin: 20px 0 0 0;
+	height: 122px;
+	color: #999;
+}
+footer a {
+	font-size: 110%;
+	color: #999;
+	&:hover {
+		color: white;
+	}
+}
+
+.footerItem {
+	float: left;
+	border-left: 2px solid white;
+	padding-left: 10px;
+}
+
+.footerHeading {
+	font-weight: bold;
+	font-size: 120%;
+	color: white;
+}
+
 blockquote {
 	background: #f9f9f9;
 	border-left: 10px solid #ccc;
-	padding: 0.5em 10px;
+	padding: 0.35em 10px;
 	font-size: 110%;
 	margin: 0 0 10px;
 }
+
 @media(max-width: 768px) {
 	footer ul {
 		padding: 0;
 	}
+	.logo-icon {
+		background-image:none;
+	}
+	.logo {
+		padding-left: 5px;
+	}
 }
+
 .downloadButtons {
 	margin-bottom: 53px;
 	.btn-group {
 		float:right;
 		&.open>.btn-default.dropdown-toggle {
-			color: $white;
-			background-color: $color_nile_blue_approx;
+			color: white;
+			background-color: #1d3649;
 		}
 	}
 	.download-button {
-		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 		border-radius: 5px;
-		font-family: $font_1;
-		color: $white;
+		font-family: Arial;
+		color: white;
 		font-size: 13px;
-		background-color: $color_rhino_approx;
+		background-color: #264a60;
 		padding: 5px 10px;
 		margin: 21px 0 5px 5px;
 		float: right;
-		border: 1px solid $color_chambray_approx;
-		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-		box-shadow: 0 2px $color_quill_gray_approx;
+		border: 1px solid #325c80;
+		box-shadow: 0 2px #d6d5d5;
 		text-decoration: none;
 
 		.glyphicon-download-alt:before {
@@ -207,64 +379,30 @@ blockquote {
 		}
 
 		&:hover {
-			color: $white;
-			background-color: $color_nile_blue_approx;
+			color: white;
+			background-color: #1d3649;
 			text-decoration: none;
 		}
 		&:active {
-			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 			box-shadow: none;
 			margin-top: 22px;
 		}
 	}
 }
-:focus, a:focus {
-	outline: none;
-}
-.btn {
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.active {
-		&:focus {
-			outline: none;
-		}
-		&.focus {
-			outline: none;
-		}
-	}
-	&.focus {
-		outline: none;
-	}
-}
+
 .btn-color {
 	color: white;
 }
 .container .btn {
-	background-color: $color_rhino_approx;
-	&:focus {
-		background-color: $color_rhino_approx;
-		color: white;
-	}
+	background-color: #264a60;
 	&:hover {
-		background-color: $color_nile_blue_approx;
+		background-color: #1d3649;
 		color: white;
 	}
 }
 
 h4.panel-title, .tutorial h4.panel-title  {
 	font-size: 13px;
-}
-.navbar-toggle {
-	margin-right: 24px;
 }
 
 .error-template {
@@ -307,9 +445,38 @@ h4.panel-title, .tutorial h4.panel-title  {
 	text-decoration: none;
 }
 
-hr {
-	border: 2px solid #DDD;
-	margin: 15px 0 5px 0;
+// Buttons
+.custombtn.btn-default {
+	display: block;
+	height: 45px;
+	width: 300px;
+	background-color: #41D6C3;
+	color: #4A4A4A;
+	text-align: center;
+	padding: 14px 0 11px 0;
+	margin: 0 0 10px 0;
+	border-radius: 0;
+	text-decoration: none;
+	text-shadow: none;
+	font-size: 14px;
+	font-family: arial;
+	font-weight: 500;
+
+	&:hover {
+		background-color: #82C9FB;
+	}
+
+	&.containers {
+		width: 400px;
+	}
+
+	&.stack {
+		background-color: white;
+		//margin-top: -10px;
+		&:hover {
+			background: #82C9FB;
+		}
+	}
 }
 
 // last mofidied date styling
@@ -317,4 +484,8 @@ hr {
 	font-size: 80%;
 	margin-top: 50px;
 	margin-bottom: 10px;
+}
+
+.timeago {
+	font-size: 10px;
 }

@@ -9,7 +9,7 @@ version:
 author:
   name: Nathan Hazout
 ---
-> **Note:** This article was written for MobileFirst Foundation 7.1. For a similar topic on 8.0 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/18/datapower-integration/)
+> **Note:** This article was written for MobileFirst Foundation 7.1. For a similar topic on 8.0 see [Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower]({{site.baseurl}}/blog/2016/06/17/datapower-integration/)
 
 ## Introduction
 You can use IBM® WebSphere® DataPower® in the DMZ of your enterprise to protect MobileFirst mobile application traffic.
@@ -53,9 +53,9 @@ The challenge handler to handle the DataPower login form is the same that would 
 
 To learn more about form-based challenge handlers:
 
-- [Hybrid](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/)
-- [Native iOS](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/)
-- [Native Android](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/form-based-authentication-native-android-applications/)
+- [Hybrid]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/)
+- [Native iOS]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/)
+- [Native Android]({{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-android-applications/)
 
 Below is an example for Hybrid applications.
 

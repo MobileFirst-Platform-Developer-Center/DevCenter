@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # only proceed script when started not by pull request (PR)
-if [ $TRAVIS_PULL_REQUEST == "true" ]; then
+if [ $TRAVIS_PULL_REQUEST != "false" ]; then
   echo "this is PR, exiting"
   exit 0
 fi
@@ -20,7 +20,10 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
 rm -f _site/*.log
-bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
+#bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css" --log-level :debug
+
+# Test also for external URLs
+#bundle exec htmlproofer ./_site --url-ignore '#'
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.generated-bluemix

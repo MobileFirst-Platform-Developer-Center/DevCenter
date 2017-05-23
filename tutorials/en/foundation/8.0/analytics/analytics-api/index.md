@@ -1,150 +1,180 @@
 ---
 layout: tutorial
-title: Using Analytics API in client applications
+title: Using Analytics API in Client Applications
 breadcrumb_title: Analytics API
-relevantTo: [ios,android,windows,javascript]
-weight: 3
+relevantTo: [ios,android,javascript]
+weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-MobileFirst Foundation's Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
+{: #overview }
 
-#### Jump to:
+{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to set up analytics support on the client application, and lists available APIs.
+
+#### Jump to
+{: #jump-to }
+
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
 * [Sending Analytics Data](#sending-analytics-data)
-* [Enabling/Disabling Client Events](#enabling-disabling-client-event-types)
+* [Enabling/Disabling Client Events](#enablingdisabling-client-event-types)
 * [Custom Events](#custom-events)
+* [Tracking Users](#tracking-users)
 
-## Configuring Analytics on the Client Side
-Before you can start collecting the predefined data that MobileFirst Operational Analytics provides, you must first import the corresponding libraries to initialize the analytics support.
+## Configuring analytics on the client side
+{: #configuring-analytics-on-the-client-side }
+
+Before you can start collecting the predefined data that {{ site.data.keys.mf_analytics }} provides, you must first import the corresponding libraries to initialize the analytics support.
 
 ### JavaScript (Cordova)
-* In Cordova applications, no setup is required and initialization is built-in.  
+{: #javascript-cordova }
+
+In Cordova applications, no setup is required and initialization is built-in.  
 
 ### JavaScript (Web)
-* In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web) tutorial.  
-Depending on how you've added the MobileFirst Web SDK, proceed in either of the following ways:
-	- Reference Analytics in the `HEAD` element:
+{: #javascript-web }
 
-	```html
-	<head>
-	    ...
-	    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics.js"></script>
-	    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/ibmmfpf.js"></script>
-	</head>
-	```
+In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the {{ site.data.keys.product_adj }} Web SDK. For more information, see [Adding the {{ site.data.keys.product_adj }} SDK to Web applications](../../application-development/sdk/web) tutorial.  
 
-	Or, if using RequireJS, write:
+Depending on how you've added the {{ site.data.keys.product_adj }} Web SDK, proceed in either of the following ways:
 
-	```javascript
-	require.config({
-		'paths': {
-			'ibmmfpfanalytics': 'node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics',
-			'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
-		}
-	});
 
-	require(['ibmmfpfanalytics','mfp'], function(wlanalytics, WL) {
-	    // application logic.
-	});
-	```
+Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
 
-	Note that you can select your own namespace instead of "wlanalytics".
+```html
+<head>
+    ...
+    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics.js"></script>
+    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/ibmmfpf.js"></script>
+</head>
+```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
+Or, if using RequireJS, write:
+
+```javascript
+require.config({
+	'paths': {
+		'ibmmfpfanalytics': 'node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics',
+		'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
+	}
+});
+
+require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
+    // application logic.
+});
+```
+
+Note that you can select your own namespace to replace "ibmmfpfanalytics".
+
+
+```javascript
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
+```
+
+ **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](../../api/) in the user documentation.
 
 ### iOS
-#### Import Analytics Library
+{: #ios }
+
+#### Import the WLAnalytics library
+{: #importing-the-wlanalytics-library }
+
+**Objective-C**
 
 ```objc
 import "WLAnalytics.h"
 ```
 
+**Swift**
+
+```Swift
+import IBMMobileFirstPlatformFoundation
+```
+
 #### Initialize Analytics
+{: #initialize-analytics }
+
+**Objective-C**  
 No setup required. Pre-initialized by default.
 
+**Swift**  
+Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
+
 ### Android
-#### Import AnalyticsLibrary
+{: #android }
+
+#### Import WLAnalytics
+{: #import-wlanalytics }
 
 ```java
 import com.worklight.common.WLAnalytics;
 ```
 
 #### Initialize Analytics
+{: #initialize-analytics }
+
 Inside the `onCreate` method of your main activity include:
 
 ```java
 WLAnalytics.init(this.getApplication());
 ```
 
-## Sending Analytics Data
-Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server after you use the `send` method of the Analytics API.
 
-### JavaScript (Cordova)
-In a Cordova application, use the following JavaScript API method:
+## Enabling/disabling client event types
+{: #enablingdisabling-client-event-types }
 
-```javascript
-WL.Analytics.send();
-```
+The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their {{ site.data.keys.mf_analytics_console }}.
 
-### JavaScript (Web)
-In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
+The {{ site.data.keys.mf_analytics }} API allows for the capturing of the following metrics.
 
-```javascript
-wlanalytics.send();
-```
+* **Lifecycle events**: app usage rates, usage duration, app crash rates
+* **Network usage**: breakdown of API call frequencies, network performance metrics
+* **Users**: users of the app that are identified by a supplied user ID
+* **Custom analytics**: custom key/value pairs that are defined by the app developer
 
-### iOS
-In an iOS application, use the following *Objective-C* API method:
+The initialization of the analytics API must be written in native code, even in Cordova apps.
 
-```objc
-[[WLAnalytics sharedInstance] send];
-```
+ * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
+ * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
 
-or for *Swift* use the API method:
+**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, see [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events).
 
-```swift
-WLAnalytics.sharedInstance().send();
-```
+### Client lifecycle events
+{: #client-lifecycle-events }
 
-#### Android
-In an Android application, use the following Java API method:
+After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the {{ site.data.keys.mf_analytics_console_short }}.
 
-```java
-WLAnalytics.send();
-```
-
-## Enabling/Disabling Client Event Types
-The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their Analytics Console.
-
-To build Cordova applications, the Analytics API does not have methods to enable or disable collection on `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events
-) and [Client Network Events](#client-lifecycle-events) on disabling events.
-
-### Client Lifecycle Events
-After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in MobileFirst Operational Analytics is recorded when the app is moved from the foreground to the background, which creates a session on the analytics console.
-
-As soon as the device is set up to record sessions and you send your data, you can see the analytics console populated with data, as shown below.
+As soon as the device is set up to record sessions and you send your data, you can see the {{ site.data.keys.mf_analytics_console_short }} populated with data, as shown below.
 
 ![sessions-chart](analytics-app-sessions.png)
 
-You can enable or disable the collecting of app sessions by using the following API:
+Enable or disable the collecting of app sessions using the {{ site.data.keys.mf_analytics_short }} API.
 
 #### JavaScript
+{: #javascript }
+
 **Web**  
-Web applications do not support client lifecycle events.
+To use client lifecycle events, initialize analytics:
+
+```javascript
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
+```
 
 **Cordova**  
+To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
 
 * For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes → AppDelegate.m** file
+	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the  **AppDelegate.m** (Objective-C) or **AppDelegate.swift** (Swift) file.
 	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 * For the Android platform:
-	* Open the  **[Cordova appilcation root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java**
+	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java** file.
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 #### Android
+{: #android }
+
 To enable client lifecycle event logging:
 
 ```java
@@ -158,6 +188,8 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
 #### iOS
+{: #ios }
+
 To enable client lifecycle event logging:
 
 **Objective-C:**
@@ -183,36 +215,46 @@ To disable client lifecycle event logging:
 **Swift:**
 
 ```swift
-WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
+WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 ```
 
 ### Client Network Activities
+{: #client-network-activities }
+
 Collection on adapters and the network occur in two different locations: on the client and on the server:
 
-* The client collects information such as roundtrip time and payload size when you start collecting on the `Network` device event.
+* The client collects information such as roundtrip time and payload size when you start collecting on the `NETWORK` device event.
 
 * The server collects back-end information such as server processing time, adapter usage, used procedures.
 
-Because the client and the server each collect their own information, charts do not display data until the client is configured to do so. To configure your client, you need to start collecting for the `NETWORK` device event.
+Because the client and the server each collect their own information, charts do not display data until the client is configured to do so. To configure your client, you need to start collecting for the `NETWORK` device event and send it to the server.
 
 #### JavaScript
+{: #javascript }
 
 **Web**  
-Web applications do not support client network events.
+To use client network events, initialize analytics:
+
+```javascript
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
+```
 
 **Cordova**  
+To enable the capture of the network events, it must be initialized in the native platform of the Cordova app.
 
 * For the iOS platform:
-	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file.
+	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the **AppDelegate.m** (Objective-C) or **AppDelegate.swift** file.
 	* Follow the iOS guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 * For the Android platform: navigate to the subactivity of the main activity to disable.
-	* Open the  **[Cordova appilcation root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
+	* Open the  **[Cordova application root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`
+	* Build the Cordova project by running the command: `cordova build`.
 
 #### iOS
+{: #ios }
+
 To enable client network-event logging:
 
 **Objective-C:**
@@ -223,7 +265,7 @@ To enable client network-event logging:
 
 **Swift:**
 
-```
+```swift
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
@@ -242,6 +284,8 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 #### Android
+{: #android }
+
 To enable client network-event logging:
 
 ```java
@@ -254,27 +298,31 @@ To disable client network-event logging:
 WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-## Custom Events
+## Custom events
+{: #custom-events }
+
 Use the following API methods to create custom events.
 
 #### JavaScript (Cordova)
+{: #javascript-cordova }
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
-WL.Analytics.send();
 ```
 
 #### JavaScript (Web)
-Depending on how you have referenced the Web SDK, you use either wlanalytics
+{: #javascript-web }
+
+For the web API, custom data is sent with the `addEvent` method.
+
 ```javascript
-
-
-.log({"key" : 'value'});
-WL.Analytics.send();
+ibmmfpfanalytics.addEvent({'Purchases':'radio'});
+ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
 ```
 
-
 #### Android
+{: #android }
+
 After setting the first two configurations, you can start to log data as in this example:
 
 ```java
@@ -287,10 +335,11 @@ try {
 }
 
 WLAnalytics.log("Message", json);
-WLAnalytics.send();
 ```
 
 #### iOS
+{: #ios }
+
 After importing WLAnalytics, you can now use the API to collect custom data, as follows:
 
 **Objective-C:**
@@ -309,5 +358,126 @@ NSDictionary *inventory = @{
 ```swift
 let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
+```
+
+## Tracking users
+{: #tracking-users }
+
+To track individual users, use the `setUserContext` method:
+
+#### Cordova
+{: #cordova }
+
+Not supported.
+
+#### Web applications
+{: #web-applications }
+
+```javascript
+ibmmfpfanalytics.setUserContext(user);
+```
+
+#### iOS
+{: #ios }
+
+**Objective-C**
+
+```objc
+[[WLAnalytics sharedInstance] setUserContext:@"John Doe"];
+```
+
+**Swift**
+
+```swift
+WLAnalytics.sharedInstance().setUserContext("John Doe")
+```
+
+#### Android
+{: #android }
+
+```java
+WLAnalytics.setUserContext("John Doe");
+```
+
+To un-track individual users, use the `unsetUserContext` method:
+
+#### Cordova
+{: #cordova }
+
+Not supported.
+
+#### Web applications
+{: #web-applications }
+
+There is no `unsetUserContext` in the {{ site.data.keys.product_adj }} Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
+
+#### iOS
+{: #ios }
+
+**Objective-C**
+
+```objc
+[[WLAnalytics sharedInstance] unsetUserContext];
+```
+
+**Swift**
+
+```swift
+WLAnalytics.sharedInstance().unsetUserContext
+```
+
+#### Android
+{: #android }
+
+```java
+WLAnalytics.unsetUserContext();
+```
+
+## Sending Analytics data
+{: #sending-analytics-data }
+
+Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the {{ site.data.keys.mf_analytics_server }} by using `send` method of the Analytics API.
+
+Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the {{ site.data.keys.mf_analytics_console }}.
+
+#### JavaScript (Cordova)
+{: #javascript-cordova }
+
+In a Cordova application, use the following JavaScript API method:
+
+```javascript
+WL.Analytics.send();
+```
+
+#### JavaScript (Web)
+{: #javascript-web }
+
+In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
+
+```javascript
+ibmmfpfanalytics.send();
+```
+
+#### iOS
+{: #ios }
+
+**Objective-C**
+
+```objc
+[[WLAnalytics sharedInstance] send];
+```
+
+**Swift**
+
+```swift
 WLAnalytics.sharedInstance().send();
+```
+
+#### Android
+{: #android }
+
+In an Android application, use the following Java API method:
+
+```java
+WLAnalytics.send();
 ```

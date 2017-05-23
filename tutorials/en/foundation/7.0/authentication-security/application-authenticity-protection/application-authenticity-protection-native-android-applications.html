@@ -11,7 +11,7 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <p>You modify the <code>application-descriptor.xml</code> file of your application by adding a security test and a public signing key.</p>
 <h3>Adding the security test</h3>
 <p>Add the <code>securityTest</code> attribute to the Android or iPhone/iPad environment element. For example:</p>
-<p>{% highlight xml linenos %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
 <p>&nbsp;</p>
 <h3>Adding the public signing key</h3>
 <ol>
@@ -37,7 +37,7 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <li>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <code>AndroidManifest.xml</code>.<br />
 If you decide to change the value, make sure that you change it in both locations.</p>
 <p>You can also edit the <code>application-descriptor.xml</code> file directly to add the package name:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <android version="1.0" securityTest="customTests">
     <worklightSettings include="false"/>
     <security>

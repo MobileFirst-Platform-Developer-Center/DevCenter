@@ -21,7 +21,7 @@ This ability can be disabled by unsubscribing the device from the reserved Push.
 
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is called. The logic to handle the notification should be defined here.
 
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
@@ -31,7 +31,7 @@ When a notification is received by a device, the <code>didReceiveRemoteNotificat
     <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
 </ul>
 
-{% highlight objc linenos %} 
+{% highlight objc  %} 
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
 {% endhighlight %} 
 <ul>

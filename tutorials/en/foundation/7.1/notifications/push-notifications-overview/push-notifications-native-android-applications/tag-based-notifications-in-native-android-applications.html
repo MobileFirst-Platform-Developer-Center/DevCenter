@@ -23,7 +23,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="NativeAndroidTagNotifications" platformVersion="7.1.0.00.20150312-0731" version="1.0">
 <pushSender key="API_KEY" senderId="PROJECT_NUMBER"/>
 ...
@@ -88,7 +88,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml linenos %}<application ... id="NativeAndroidTagNotifications" ...>{% endhighlight %}</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml  %}<application ... id="NativeAndroidTagNotifications" ...>{% endhighlight %}</li>
 </ul>
 </li>
 <li>If using the CLI:

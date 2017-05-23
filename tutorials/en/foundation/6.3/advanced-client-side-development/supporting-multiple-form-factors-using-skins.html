@@ -37,7 +37,7 @@ To create new code and styling, use different filenames than those in of the def
 It determines which skin to load.<br />
 The default <em>skinLoader.js</em> contains examples of code.</p>
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function getSkinName() {
 	var skinName = "default";
 	if (device.version == "2.2" || device.version == "2.1") {
@@ -51,7 +51,7 @@ function getSkinName() {
 <p>Skins are automatically registered in <em>application-descriptor.xml</em>.<br />
 Registration determines the ordering of hierarchy between the common folder, environment, and skin.<br />
 If you remove a skin from the project, <em>application-decsriptor.xml</em> must be manually modified.</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
     <android version="1.0">
         <skins>
             <skin name="default">

@@ -25,14 +25,14 @@ This is the MobileFirst Server default behavior.</p>
 </li>
 </ul>
 <p>For a procedure to be connected as "end user", you must declare it with a <code>connectAs="endUser"</code> attribute in the adapter XML file:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <procedure name="MyProcedure" connectAs="endUser"/>
 {% endhighlight %}</p>
 <blockquote><p>For more information about the <code>connectAs</code> attribute, read the blog post about <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/configuring_http_adapters_for_stateless_stateful_backend_connectivity_and_user_identity_propagation?lang=en" target="_blank">Configuring HTTP adapters for stateless/stateful back-end connectivity and user identity propagation</a>.</p></blockquote>
 <h2 id="NTLM-as-Server">Using NTLM authentication with <code>ServerIdentity</code></h2>
 <p>When you use a procedure to connect to a back-end server that uses NTLM protocol without specifying the <code>connectAs</code> attribute, use the <code>&lt;serveridentity&gt;</code> element of the adapter XML file as child element of the <code>&lt;authentication&gt;</code> element. Also add the <code>&lt;ntlm workstation&gt;</code> child element, so that MobileFirst Server knows which authentication method to use when connecting to the back end.</p>
 <p>Make sure to pass the server and user names to the back-end server in the following pattern: <em>`server-name/user-name`</em>.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <connectivity>
     <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
         <protocol>http</protocol>
@@ -59,14 +59,14 @@ This is the MobileFirst Server default behavior.</p>
 <h3>Configure MobileFirst Server authentication</h3>
 <ol>
 <li>Create a security test to protect the procedure:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <customSecurityTest name="NTLMSecurityTest">
     <test isInternalUserID="true" realm="NTLMAuthRealm"/>
 </customSecurityTest>
 {% endhighlight %}
   </li>
 <li>Use <code>BasicAuthenticator</code>, <code>AdapterBasedAuthenticator</code>, or any other authenticator that handles <code>userIdentity</code>, as the class for the realm used by the security test:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <realm name="NTLMAuthRealm" loginModule="AuthLoginModule">
     <className>com.worklight.integration.auth.AdapterAuthenticator</className>
     <parameter name="login-function" value="MyAdapter.onAuthRequired"/>
@@ -75,14 +75,14 @@ This is the MobileFirst Server default behavior.</p>
 {% endhighlight %}
   </li>
 <li>Add some login module to create and store user identities to be used by this realm:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <loginModule name="AuthLoginModule">
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 </loginModule>
 {% endhighlight %}
   </li>
 <li>Add the <code>&lt;authentication&gt;</code> element and its <code>&lt;ntlm workstation&gt;</code> child element to the adapter XML file, so that MobileFirst Server knows which authentication method to use when connecting to the back end:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <connectivity>
     <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
         <protocol>http</protocol>
@@ -99,7 +99,7 @@ This is the MobileFirst Server default behavior.</p>
 {% endhighlight %}
   </li>
 <li>Assign this security test to the procedure that is used to connect to the back end protected by NTLM protocol, and add <code>connectAs="endUser"</code> to the procedure declaration in the adapter XML file:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <procedure name="getNTLMData" securityTest="NTLMSecurityTest" connectAs="endUser"/>
 {% endhighlight %}
   </li>
@@ -107,7 +107,7 @@ This is the MobileFirst Server default behavior.</p>
 <p><br clear="all" /></p>
 <h3>Adapter JavaScript code</h3>
 <p>Create a <code>UserIdentity</code> that contains a user identifier and credentials properties. Format the <code>userId</code> as <code><em>servername/username</em></code>:<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function submitAuthentication(username, password){
   var userIdentity = {
     userId: "MyServerName\/"+ username,
@@ -119,7 +119,7 @@ function submitAuthentication(username, password){
 }
 {% endhighlight %}</p>
 <p>Create an http request to the NTLM protected back end:<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function getSecretData(){
   var input = {
     method : 'get',

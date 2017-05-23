@@ -1,0 +1,1244 @@
+---
+layout: tutorial
+title: MobileFirst Foundation 8.0 - Migrations-Cookbook
+breadcrumb_title: Migrations-Cookbook
+weight: 1
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<div id="overview">
+    <h2>Übersicht</h2>
+    <p>Dieses Cookbook soll Ihnen einen klaren und einfachen Überblick über die Schritte für die Umstellung von Anwendungen und Adaptern von IBM Worklight Foundation 6.2 oder IBM MobileFirst Platform Foundation 6.3 bis 7.1
+auf {{ site.data.keys.product_full }} 8.0 vermitteln. </p>
+
+    <p>Der Migrationsprozess führt Sie durch die Schritte für die Transformation von klassischen Hybridanwendungen in Cordova-Standardanwendungen
+und für die Aktualisierung des {{ site.data.keys.product_adj }}-SDK in nativen Anwendungen. Mobile Web-Apps werden ebenfalls besprochen. Adapter werden
+in Maven-Projekte umgewandelt. Zudem werden
+Implementierungskonzepte wie das {{ site.data.keys.product_adj }}-Sicherheitsframework, Push-Benachrichtigungen und die direkte Aktualisierung erklärt. </p>
+
+    <p>Zur Vereinfachung bestimmter Aspekte des Migrationsprozesses wird ein Unterstützungstool für die Migration bereitgestellt. <br/>
+Das Tool unterstützt Sie beim Identifizieren von Bereichen Ihrer Codebasis,
+die inpsiziert und geändert werden müssen. Dazu gehören APIs, die nicht mehr verwendet oder unterstützt werden oder die geändert wurden. </p>
+
+    <blockquote><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <b>Hinweis:</b> In diesem Cookbook wird nicht versucht,
+alle denkbaren Migrationsszenarien abzudecken. <a href="../" target="_blank">Beschäftigen Sie sich daher für tiefergehende Informationen mit
+der Benutzerdokumentation zur Migration</a>.</blockquote>
+
+    <h2>Hilfe anfrodern</h2>
+    <p>Das für die {{ site.data.keys.product }} zuständige Team steht Ihnen bei Fragen gerne zur Seite. <br/>
+    Für offizielle Unterstützung <a href="https://www-947.ibm.com/support/servicerequest/newServiceRequest.action">öffnen Sie bitte einen PMR</a>. Sie können
+auch unter
+<a href="https://stackoverflow.com/questions/tagged/ibm-mobilefirst" target="_blank">StackOverflow</a>
+und <a href="{{site.baseurl}}/blog/2015/08/19/come-chat-with-us/" target="_blank">in unserer Stack-Community</a> Fragen stellen. </p>
+
+    <h2>Schnelleinstieg</h2>
+    <p>Bevor Sie in die Migration Ihrer Anwendungen und Adapter einsteigen, sollten Sie
+die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/" target="_blank">Lernprogramme für den Schnelleinstieg</a> durchgehen, um sich
+mit {{ site.data.keys.product }} 8.0 vertraut zu machen, sofern dies noch nicht geschehen ist.</p>
+
+    <p>Weitere Informationen finden Sie in den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">Lernprogrammen</a>
+zur Registrierung von Anwendungen, zur Erstellung und Implementierung von Adaptern, zur
+Implementierung und Konfiguation von Sicherheit und Authentifizierung und zu vielen anderen Themen. </p>
+
+    <br/>
+    <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
+        <div class="row">
+            <div id="migrationPaths">
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
+                        <h3 class="setupAndTools no-anchor">Setup<br/>und Tools</h3>
+
+                        <ul class="topics">
+                            <li><a href="#env-setup">MobileFirst Server<br/>einrichten</a></li>
+                            <li><a href="#env-setup">Unterstützungstool für die<br/>Migration installieren</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
+                        <h3 class="migratingApplications no-anchor">Anwendungen<br/>migrieren</h3>
+
+                        <ul class="topics">
+                            <li><a href="#applications">Klassische<br/>Hybrid/MFPF-Cordova-Apps auf<br/> Standard-Cordova-Apps umstellen</a></li>
+                            <li><a href="#applications">Mobile-Web- und<br/>Desktop-Browser-Apps umstellen</a></li>
+                            <li><a href="#applications">SDKs in nativen Anwendungen<br/>aktualisieren</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
+                        <h3 class="migratingAdapters no-anchor">Adapter<br/>umstellen</h3>
+
+                        <ul class="topics">
+                            <li><a href="#migrating-adapters">Voraussetzungen für das<br/>Apache-Maven-Setup</a></li>
+                            <li><a href="#migrating-adapters">Neues Maven-Projekt<br/>erstellen</a></li>
+                            <li><a href="#migrating-adapters">Quellcode umstellen</a></li>
+                            <li><a href="#migrating-adapters">Builds und Tests</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
+                        <h3 class="devTopics no-anchor">Entwicklungs-<br/>themen</h3>
+
+                        <ul class="topics">
+                            <li><a href="#development-topics">Adapter</a></li>
+                            <li><a href="#development-topics">Sicherheitsframework</a></li>
+                            <li><a href="#development-topics">Push-Benachrichtigungen</a></li>
+                            <li><a href="#development-topics">Direkte Aktualisierung</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+
+<div id="migrationSteps">
+    <div class="gutter gutter-env-setup-color">
+        <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
+        <h2 id="env-setup">Setup und Tools</h2>
+        <p>Vor Beginn der Migration benötigen Sie eine aktive MobileFirst-Server-Instanz und das Unterstützungstool für die Migration. </p>
+
+        <h3>{{ site.data.keys.mf_server }}</h3>
+        <p>Sie können einen {{ site.data.keys.mf_server }} in <a href="https://bluemix.net">IBM Bluemix</a> einrichten.
+Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile-Foundation-Bluemix-Service</a>. Alternativ können Sie
+das <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> verwenden,
+jum einen lokal ausgeführten Server einzurichten. </p>
+
+        <h3>Unterstützungstool für die Migration</h3>
+        <p>Wenn {{ site.data.keys.mf_server }} betriebsbereit ist,
+installieren Sie zunächst das Unterstützungstool für die Migration, das Sie später nutzen werden. </p>
+
+        <ol>
+            <li><a href="https://nodejs.org/en/" target="_blank">Installieren Sie NodeJS</a> als vorausgesetzte Software für das Tool. </li>
+            <li>Klicken Sie in der {{ site.data.keys.mf_console }} unten in der Seitenleistennavigation auf den Download-Center-Link. Folgen Sie den Anweisungen für die Installation des
+Unterstützungstools für die Migration von NPM oder durch das Herunterladen einer ZIP-Datei. </li>
+        </ol>
+
+        <img alt="Download des Migrationstools über die {{ site.data.keys.mf_console }}" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/get-migration-tool.png"/>
+    </div>
+
+    <br id="applications"><br/>
+
+    <div class="gutter gutter-apps-color">
+        <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
+        <h2>Anwendungen umstellen</h2>
+        <p>Zu den Schritten für die Umstellung Ihrer klassischen Hybrid/MobileFist-Cordova- oder -Webanwendung bzw. Ihrer nativen Anwendung
+gehören die Bewertung von API-Änderungen
+mithilfe des Unterstützungstools für die Migration, das Einrichten der Projektstruktur, die Verwaltung
+der Anwendungsquelle, die Verwendung von Paketmanagern und die Handhabung von API-Änderungen. </p>
+
+        <h3>Klassische Hybridanwendungen</h3>
+        <p>Klassische Hybridanwendungen wurden in bisherigen Releases mit dem
+MobileFirst-Studio-Plug-in für Eclipse oder über die {{ site.data.keys.mf_cli }} erstellt, entwickelt, und verwaltet. Ab
+{{ site.data.keys.product }} 8.0 gibt es Unterstützung für Standard-Cordova-Anwendungen, die das bisherige Anwendungsmodell ablöst. </p>
+
+        <p>Für die Erstellung von Cordova-Anwendungen verwenden Sie Standard-Community-Tools wie die Cordova CLI. Das {{ site.data.keys.product_adj }}-Cordova-SDK wird über die Cordova CLI
+in Form von Cordova-Plug-ins hinzugefügt, die in <a href="https://npmjs.org" target="_blank">npm</a> verfügbar sind.</p>
+
+        <p>Der Wechsel zu Standard-Cordova-Anwendungen eröffnet Entwicklern die Möglichkeit, für die Anwendungsentwicklung bevorzugte Tools und eigene Ansätze anzuwenden. Wenn Sie ein Anwendungsentwickler sind, steht Ihnen jetzt das <a href="http://cordova.apache.org" target="_blank">direkte Cordova-Umfeld</a> zur Verfügung.</p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Tipp:</b> Sie können auch
+<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/" target="_blank">Eclipse für die Cordova-Anwendungsentwicklung einrichten</a>.</p>
+
+        <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Entwicklung von Cordova-Anwendungen</a>.</blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateHybrid" aria-expanded="false" aria-controls="collapseMigrateHybrid">Klassische Hybrid/MobileFirst-Cordova-Apps auf Standard-Cordova-Apps umstellen</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateHybrid" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-hybrid-apps">
+                    <div class="panel-body">
+                        <h4>Schritt 1</h4>
+                        <p>Öffnen Sie ein Befehlszeilenfenster und verwenden Sie das Unterstützungstool für die Migration wie nachfolgend beschrieben. </p>
+                        <ul>
+                            <li>Wenn Sie nur das klassische Hybridprojekt scannen und einen API-Bericht generieren möchten, verwenden Sie Folgendes:
+{% highlight bash %}mfpmigrate scan --in Pfad_zum_Quellenverzeichnis --out Pfad_zum_Zielverzeichnis{% endhighlight %}</li>
+                            <li>Wenn Sie das klassische Hybridprojekt scannen und ein vordefiniertes Cordova-Projekt erstellen möchten, verwenden Sie Folgendes: <br/>
+{% highlight bash %}mfpmigrate client --in Pfad_zum_Quellenverzeichnis --out Pfad_zum_Zielverzeichnis [--projectName Projektposition]{% endhighlight %}
+                            <b>Hinweis:</b> Diese Aktion kann abhängig von Ihrer Internetverbindung eine Weile dauern, da für den Prozess die MobileFirst-Cordova-SDK-Plug-ins heruntergeladen werden. </li>
+                            <li>Ersetzen Sie <b>Pfad_zum_Quellenverzeichnis</b> durch den Pfad zum Ordner <b>application</b> des Studio-Projekts, z. B. <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i>. </li>
+                            <li>Ersetzen Sie <b>Pfad_zum_Zielverzeichnis</b> durch den Pfad zu einem Ordner für die konvertierte Anwendung und den generierten API-Bericht. </li>
+			    <li>Ersetzen Sie <b>Projektposition</b> durch den Namen eines Verzeichnisses, in dem das Projekt unterhalb von <b>Pfad_zum_Zielverzeichnis</b> erstellt werden soll. Dieses Flag ist optional. </li>
+                        </ul>
+
+                        <img alt="Umstellung einer klassischen Hybrid-App auf eine Standard-Cordova-App" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/cordova-migration.png"/>
+
+                        <p>Nach erfolgreicher Ausführung des Unterstützungstools für die Migration können Sie Folgendes beobachten: </p>
+
+                        <ul>
+                            <li>Der Ordner <b>MigratedProject</b> enthält jetzt die neue Cordova-Anwendung mit den gleichen Metadaten wie Ihre klassische Hybrid-App
+(Anwendungs-ID und andere Einstellungen, die vom Setup der klassischen Hybrid-App abhängen). Zudem wurde das {{ site.data.keys.product_adj }}-Cordova-SDK installiert.
+Die erforderlichen Plattformen wurden auch hinzugefügt. </li>
+                            <li>Wenn der Befehl <b>client</b> verwendet wurde,
+wurde ein API-Bericht (<b>{app-name}-api-report.html</b>) generiert und in Ihrem Standardbrowser geöffnet. Der Bericht enthält potenziell Aktionen, die Sie ausführen müssen, um die Anwendungsimplementierung an eine Verwendung in {{ site.data.keys.product }} 8.0 anzupassen.</li>
+                        </ul>
+
+                        <img alt="API-Bericht" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-cordova.png"/>
+
+                        <h4>Schritt 2</h4>
+                        <p>Bevor Sie Aktionen aus dem generierten API-Bericht ableiten, müssen Sie den Anwendungsquellcode der klassischen Hybrid-App in die Cordova-App kopieren. </p>
+
+                        <b>Klassische Hybrid-App</b><br/>
+                        <p>Kopieren Sie den Inhalt des Ordners <b>common</b> und fügen Sie ihn in den Ordner <b>www</b> der Cordova-App ein. (Ersetzen Sie den Inhalt, wenn Sie gefragt werden.) </p>
+
+                        <b>Cordova-App von MFPF 7.1</b><br/>
+                        <p>Kopieren Sie den Ordner <b>www</b> und ersetzen Sie den vorhandenen Ordner <b>www</b> der Cordova-App. </p>
+
+                        <p><b>Hinweis:</b> Wenn es für Ihre klassische Hybrid-App eine umgebungsspezifische Implementierung gibt,
+können Sie diese mit <a href="http://cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform" target="_blank">Cordova Merges</a> kopieren.</p>
+
+                        <blockquote>Sie müssen nicht die Cordova-Anwendung verwenden, die das Unterstützungstool für die Migration für Sie erstellt. Über die Cordova CLI können Sie eine eigene neue Anwendung erstellen und das
+{{ site.data.keys.product_adj }}-Cordova-SDK hinzufügen. Außerdem können Sie weitere benötigte Cordova-Plug-ins anderer Anbieter hinzufügen. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Weitere Informationen enthalten die Cordova-Lernprogramme</a>.</blockquote>
+
+                        <br/>
+                        <h4>Schritt 3</h4>
+                        <p>Jetzt, da sich der Quellcode der Anwendung in der Cordova-App befindet, müssen Sie ein paar Codeblöcke hinzufügen oder bearbeiten. </p>
+
+                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="setupCordova">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">Für Anweisungen hier klicken</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                                <div class="panel-body">
+                                    <ol>
+                                        <li>Aktualisieren Sie die Datei <b>www/index.html</b>. <ul>
+                                                <li>Fügen Sie zur Kopfzeile Ihrer Datei index.html vor dem bereits vorhandenen CSS-Code
+den folgenden CSS-Code hinzu:
+
+{% highlight html %}
+<link rel="stylesheet" href="worklight/worklight.css">
+<link rel="stylesheet" href="css/main.css">
+{% endhighlight %}
+
+                                                    <b>Hinweis:</b> Die Datei <b>worklight.css</b> setzt das Attribut "body" auf "relative". Wenn sich dies auf den Stil Ihrer App auswirkt, deklarieren Sie einen anderen Wert für die Position in Ihrem eigenen CSS-Code.
+Beispiel:
+
+      {% highlight css %}
+body {
+  position: absolute;
+}
+{% endhighlight %}
+                                                    </li>
+                                                    <li>Fügen Sie nach den CSS-Definitionen einen Verweis auf die Cordova-JavaScript-Datei zur Kopfzeile
+der Datei hinzu.
+
+{% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
+                                                    </li>
+						    <li>Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist. <br />
+							<code>&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;</code>
+							<br />
+							Sie können Ihre eigene
+jQuery-Version herunterladen und wie in der folgenden Codezeile angegeben laden.
+<br />
+							<code>&lt;script src="lib/jquery.min.js"&gt;&lt;/script&gt;</code>
+							<br />
+Sie müssen die optionale
+jQuery-Ergänzung nicht in den Ordner lib verschieben.
+Sie können diese Ergänzung an eine beliebige Position verschieben, müssen jedoch in der Datei
+index.html einen ordnungsgemäßen Verweis angeben. </li>
+                                                </ul>
+                                            </li>
+
+                                            <li>Aktualisieren Sie die Datei <b>www/js/InitOptions.js</b> so, dass WL.Client.init automatisch aufgerufen wird.
+                                                <ul>
+                                                    <li>Entfernen Sie folgenden Code aus <b>InitOptions.js</b>.
+Die Funktion <code>WL.Client.init</code> wird über die globale Variable
+<code>wlInitOptions</code> automatisch aufgerufen.
+
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li><b>Optional:</b> Wenn Sie vor der Initialisierung des {{ site.data.keys.product_adj }}-Frameworks Logik ausführen müssen,
+aktualisieren Sie manuell die Datei <b>www/InitOptions.js</b> zum Aufrufen von <code>WL.Client.init</code>.
+                                                <ul>
+                                                    <li>Bearbeiten Sie die Datei <b>config.xml</b>. Setzen Sie das Attribut <code>enabled</code> des Elements
+<code>mfp:clientCustomInit</code> auf
+<b>true</b>.</li>
+
+                                                    <li>Wenn Sie die MobileFirst-Standardschablone für Hybridanwendungen
+verwenden, ersetzen Sie den folgenden Code:
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+
+        Verwenden Sie folgenden Ersatzcode:
+
+{% highlight javascript %}
+if (document.addEventListener) {
+  document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <h4>Schritt 4</h4>
+                        <p>Die Cordova-Anwendung ist fast vollständig umgestellt. Jetzt ist es an der Zeit, sich mit dem generierten API-Bericht zu beschäftigen. Öffnen Sie den API-Bericht in einem Browserfenster und sehen Sie sich die einzelnen Einträge an. Jeder Eintrag muss entweder anders implementiert oder vollständig ersetzt werden. Sie können das Unterstützungstool für die Migration erneut ausführen. Zeigen Sie dieses Mal auf die neue Cordova-Anwendung, um zu überprüfen, ob es APIs gibt, die noch nicht bearbeitet wurden. </p>
+
+                        <br/>
+                        <h4>Schritt 5</h4>
+                        <p>Zum Testen der Cordova-Anwendung können Sie eine Vorschau der Webressourcen der Anwendung anzeigen oder die Anwendung in einem Simulator/Emulator oder auf einem physischen Gerät ausführen. <br/>
+                            <b>Hinweis:</b> Wenn Ihr clientseitiger Code Logik für Sicherheit und Authentifizierung, Push-Benachrichtigungen, Adapter und ähnliche Fuktionen
+enthält, müssen Sie Ihren Code unter Umständen weiter anpassen, bevor Sie den Code testen können (siehe unten). Sie können aber überprüfen, ob die Schnittstelle Ihrer Anwendung noch intakt ist. </p>
+
+                        <p><b>Vorschau von Webressourcen:</b></p>
+                        <ul>
+                            <li>Navigieren Sie in einem Befehlszeilenfenster zum Stammverzeichnis der Anwendung. </li>
+                            <li>Führen Sie den Befehl <code>mfpdev app preview</code> aus. </li>
+                        </ul>
+
+                        <b>Hinweis:</b> Aufgrund eines Defects in {{ site.data.keys.product }} 8.0 kann für Anwendungen mit Sicherheitsaspekten keine Vorschau angezeigt werden. Als Ausweichlösung können Sie die Anwendung in einem Emulator oder auf einem physischen Gerät voranzeigen.
+
+                        <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#mobilefirst-apis" target="_blank">Vorschau der Webressourcen einer Anwendung</a>.</blockquote>
+
+                        <p><b>Tests in einem Emulator/Simulator oder auf einem physischen Gerät:</b><br/>
+                        <ul>
+                            <li>Navigieren Sie in einem Befehlszeilenfenster zum Stammverzeichnis der Anwendung. </li>
+                            <li>Wenn Sie nur die Benutzerschnittstelle testen, können Sie einfach einen Anwendungsbuild erstellen und die Anwendung ausführen (<code>cordova run durch-Plattformnamen_ersetzen</code>). </li>
+                            <li>Wenn Sie zusätzlich die Anwendungslogik mit Bezug zur {{ site.data.keys.product }} testen, müssen Sie vor einer Vorschau die Anwendung
+mit <code>mfpdev app register</code> registrieren. </li>
+                        </ul>
+                        </p>
+
+                        <h3>Nächste Schritte</h3>
+                        <ul>
+                            <li>Informationen zum weiteren Verlauf der Umstellung finden Sie in den <a href="#development-topics">Entwicklungsthemen</a>. </li>
+                            <li><a href="#migrating-adapters">Stellen Sie Ihre Adapter um</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Webanwendungen</h3>
+        <p>Mobile-Web- und Desktop-Browser-Anwendungen werden ganz ähnlich wie klassische Hybridanwendungen mit dem
+MobileFirst-Studio-Plug-in für Eclipse oder über die MobileFirst CLI verwaltet. In {{ site.data.keys.product }} 8.0 erfolgt die Entwicklung von Web-Apps auf traditionelle Weise
+mit dem {{ site.data.keys.product_adj }}-Web-SDK, das auch in <a href="https://npmjs.org" target="_blank">npm</a> verfügbar ist. </p>
+
+        <p><b>Hinweis:</b> In früheren Releases hat {{ site.data.keys.mf_server }} Services für die Webanwendung und eine öffentliche URI bereitgestellt. In {{ site.data.keys.product }} 8.0 wird die
+Anwendung nur in {{ site.data.keys.mf_server }} registriert, damit Sicherheitsfunktionen, Adapterfunktionen usw. für die Anwendung bereitgestellt werden können
+Die Bereitstellung von Services für die Webanwendung erfolgt mit Standardmethoden (z. B. mit Services von dedizierten Webservern). </p>
+
+        <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Entwicklung von Webanwendungen</a>. </blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-web-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Mobile-Web- bzw. Desktop-Browser-Anwendungen umstellen</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateWeb" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-web-apps">
+                    <div class="panel-body">
+                        <h4>Schritt 1</h4>
+                        <p>Verwenden Sie das Unterstützungstool für die Migration, um einen API-Bericht zu generieren. <br/>
+Öffnen Sie ein Befehlszeilenfenster und verwenden Sie das Unterstützungstool für die Migration wie nachfolgend beschrieben. <br/>
+                        Dies kann abhängig von Ihrer Internetverbindung eine Weile dauern. </p>
+
+{% highlight bash %}mfpmigrate scan --in Pfad_zum_Quellenverzeichnis --out Pfad_zum_Zielverzeichnis{% endhighlight %}
+
+                        <ul>
+                            <li>Ersetzen Sie <b>Pfad_zum_Quellenverzeichnis</b> durch den Pfad zum Ordner <b>common</b>
+des Studio-Projekts, z. B. <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i>. </li>
+                            <li>Ersetzen Sie <b>Pfad_zum_Zielverzeichnis</b> durch den Pfad zu dem Ordner,
+in dem der generierte API-Bericht gespeichert werden soll. </li>
+                        </ul>
+
+                        <p>Nach erfolgreicher Ausführung des Unterstützungstools für die Migration können Sie Folgendes beobachten: </p>
+
+                        <ul>
+                            <li>Ein API-Bericht (<b>{app-name}-api-report.html</b>) wird generiert. Der Bericht enthält potenziell Aktionen, die Sie ausführen müssen, um die Anwendungsimplementierung an eine Verwendung in {{ site.data.keys.product }} 8.0 anzupassen.</li>
+                        </ul>
+
+                        <br/>
+                        <h4>Schritt 2</h4>
+                        <p>Nach Beurteilung des API-Berichts ist es nun an der Zeit, die Anwendungsstruktur und die Anwendungsquelle umzustellen. </p>
+
+                        <ol>
+                            <li>Erstellen Sie einen neuen Ordner für den Quellcode und die Ressourcen Ihrer Anwendung. </li>
+                            <li>Kopieren Sie die Datei <b>index.html</b> sowie die Ordner <b>js</b>, <b>css</b> und <b>images</b>
+aus dem vorhandenen Projekt in den erstellten Ordner. </li>
+                            <li>Navigieren Sie in einem Befehlszeilenfenster zum Stammordner des migrierten projekts und fügen Sie
+das {{ site.data.keys.product_adj }}-Web-SDK mit <code>npm install ibm-mfp-web-sdk</code> hinzu. </li>
+                        </ol>
+
+                        <blockquote>Führen Sie vor Schritt 3 die Konfigurationsanweisungen für das SDK
+aus dem Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/" target="_blank">{{ site.data.keys.product }}-SDK zu
+Webanwendungen hinzufügen</a> aus. </blockquote>
+
+                        <br/>
+                        <h4>Schritt 3</h4>
+                        <p>Die Webanwendung ist fast vollständig umgestellt. Jetzt ist es an der Zeit, sich mit dem generierten API-Bericht zu beschäftigen. Öffnen Sie den API-Bericht in einem Browserfenster und sehen Sie sich die einzelnen Einträge an. Jeder Eintrag muss entweder anders implementiert oder vollständig ersetzt werden. </p>
+
+                        <br/>
+                        <h4>Schritt 4</h4>
+                        <p>Gehen Sie zum Testen der umgestellten Anwendung wie folgt vor: </p>
+                        <ol>
+                            <li>Vergewissern Sie sich, dass die Anwendung in {{ site.data.keys.mf_server }} registriert ist.</li>
+                            <li>Richten Sie zur Vermeidung von
+<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">Same-Origin-Fehlern</a> einen Reverse-Proxy ein. Für diesen Zweck können Sie Node.js verwenden. Ein Beispiel für eine Reverse-Proxy-Implementierung mit Node.js enthält das Lernprogramm
+<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">Webentwicklungsumgebung einrichten</a>. </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Native Anwendungen</h3>
+        <p>In bisherigen Versionen des Produkts war für native Anwendungen das MobileFirst-Studio-Plug-in für Eclipse oder die {{ site.data.keys.mf_cli }} erforderlich,
+um die plattformspezifischen Artefakte (Ordner "WorklightAPI", Konfigurationsdateien usw.) zu erstellen und anschließend die Artefakte in den jeweiligen IDEs
+in die nativen Projekte zu kopieren. </p>
+
+        <p>Ab {{ site.data.keys.product }} 8.0 werden von der Community bevorzugte Paketmanager unterstützt:
+<a href="https://cocoapods.org/" target="_blank">CocoaPods für iOS</a>, <a href="https://gradle.org/" target="_blank">Gradle für Android</a>
+und <a href="https://www.nuget.org/" target="_blank">NuGet für Windows</a>. Mit diesen für Entwickler verfügbaren Tools wird das Hinzufügen des nativen
+{{ site.data.keys.product_adj }}-SDK für die einzelnen Plattformen optimiert. </p>
+
+        <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">Entwicklung nativer Anwendungen</a>. </blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-native-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">SDKs in nativen Anwendungen aktualisieren</a></h4>
+                </div>
+
+                <div id="collapseMigrateNative" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-native-apps">
+                    <div class="panel-body">
+                        <h4>Schritt 1</h4>
+                        <p>Verwenden Sie das Unterstützungstool für die Migration, um einen API-Bericht zu generieren. </p>
+
+                        <blockquote><b>Hinweis:</b> Derzeit kann das Unterstützungstool für die Migration nur native, mit MobileFirst Platform Foundation 7.1 erstellte Anwendungen scannen.</blockquote>
+
+                        <p>Öffnen Sie ein Befehlszeilenfenster und verwenden Sie das Unterstützungstool für die Migration wie nachfolgend beschrieben: </p>
+{% highlight bash %}mfpmigrate scan --in Pfad_zum_Quellenverzeichnis --out Pfad_zum_Zielverzeichnis --type Plattform{% endhighlight %}
+
+                        <ul>
+                            <li>Ersetzen Sie <b>Pfad_zum_Quellenverzeichnis</b> durch den Pfad zum nativen Projekt, z. B.
+<i>../Desktop/FormBasedAuthObjCiOS-release71</i>.</li>
+                            <li>Ersetzen Sie <b>Pfad_zum_Zielverzeichnis</b> durch den Pfad zu einer Position, an der der Bericht generiert werden soll. </li>
+                            <li>Ersetzen Sie <b>Plattform</b> durch eine unterstützte Plattform: <code>ios</code>, <code>android</code> oder <code>windows</code>.</li>
+                        </ul>
+
+                        <img alt="API-Bericht für native Apps generieren" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/native-migration.png"/>
+
+                        <p>Nach erfolgreicher Ausführung des Unterstützungstools für die Migration können Sie Folgendes beobachten: </p>
+
+                        <ul>
+                            <li>Ein API-Bericht (<b>{app-name}-api-report.html</b>) wurde generiert und in Ihrem Standardbrowser geöffnet. Der Bericht enthält potenziell Aktionen, die Sie ausführen müssen, um die Anwendungsimplementierung an eine Verwendung in {{ site.data.keys.product }} 8.0 anzupassen.</li>
+                        </ul>
+
+                        <img alt="API-Bericht" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
+
+                        <h4>Schritt 2</h4>
+                        <p>Wenn Sie die Probleme im API-Bericht gelöst haben, können Sie das alte native SDK durch das neue native SDK ersetzen. </p>
+
+                        <b>iOS</b><br/>
+                        <b>Voraussetzung:</b> Vergewissern Sie sich, dass CocoaPods auf Ihrem Mac-Computer installiert ist.
+
+                        <ul>
+                            <li>Öffnen Sie ein Befehlszeilenfenster und navigieren Sie zum Stammverzeichnis des Xcode-Projekts. </li>
+                            <li>Führen Sie den Befehl <code>sudo gem install cocoapods</code> und dann <code>pod setup</code> aus. <b>Hinweis:</b> Dies Ausführung dieser Befehle kann einige Zeit dauern. </li>
+                        </ul>
+
+                        <br/>
+                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="removeiOSSDK">
+                                 <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseRemoveiOSSDK" aria-expanded="false" aria-controls="collapseRemoveiOSSDK">Altes SDK entfernen</a>
+                                 </h4>
+                              </div>
+
+                              <div id="collapseRemoveiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>Öffnen Sie Ihr Projekt in Xcode.</li>
+                                       <li>Löschen Sie den Ordner <b>WorklightAPI</b>. (Verschieben Sie es ihn den Papierkorb.) </li>
+                                       <li>Modifizieren Sie Ihren vorhandenen Code wie folgt: <br/>
+                                          Gehen Sie auf der Registerkarte <b>Build Settings</b> wie folgt vor:
+                                          <ul>
+                                             <li>Entfernen Sie <b>$(SRCROOT)/WorklightAPI/include</b> aus dem Headersuchpfad.</li>
+                                             <li>Entfernen Sie <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> aus dem
+Frameworksuchpfad. </li>
+                                             <li>Entfernen Sie alle Verweise auf die statische Bibliothek<code>libWorklightStaticLibProjectNative.a</code>.</li>
+                                          </ul>
+                                       </li>
+                                       <li>Entfernen Sie auf der Registerkarte <b>Build Phases</b> die beiden Links für die folgenden Frameworks und Bibliotheken. CocoaPods adressiert diese Links automatisch um.
+                                          <ul>
+                                             <li>libWorklightStaticLibProjectNative.a</li>
+                                             <li>SystemConfiguration.framework</li>
+                                             <li>MobileCoreServices.framework</li>
+                                             <li>CoreData.framework</li>
+                                             <li>CoreLocation.framework</li>
+                                             <li>Security.framework</li>
+                                             <li>sqlcipher.framework</li>
+                                             <li>libstdc++.6.dylib</li>
+                                             <li>libz.dylib</li>
+                                          </ul>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="addiOSSDK">
+                                 <h4 class="panel-title">
+                                     <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseAddiOSSDK" aria-expanded="false" aria-controls="collapseAddiOSSDK">Neues SDK hinzufügen</a>
+                                 </h4>
+                              </div>
+
+                              <div id="collapseAddiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>Stellen Sie sicher, dass Xcode geschlossen ist. </li>
+                                       <li>Öffnen Sie ein <b>Terminal</b> und navigieren Sie zum Stammordner des Xcode-Projekts.
+                                          <ul>
+                                              <li>Führen Sie den Befehl <code>pod init</code> aus, um eine Podfile zu erstellen. </li>
+                                              <li>Die Podfile wird im Stammordner des Xcode-Projekts erstellt. Suchen Sie die Podfile und öffnen Sie sie in einem Editor Ihrer Wahl. </li>
+                                              <li>Setzen Sie den vorhandenen Inhalt auf Kommentar oder entfernen Sie ihn. </li>
+                                              <li>Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen. Vergessen Sie nicht, den Wert für <b>target</b> zu aktualisieren:
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "durch_Namen_des_Ziels_im_Xcode-Projekt_ersetzen" do
+    pod 'IBMMobileFirstPlatformFoundation'
+end{% endhighlight %}
+
+                                                    Zusätzliche Pods:<br/>
+IBMMobileFirstPlatformFoundationPush<br/>
+IBMMobileFirstPlatformFoundationJSONStore<br/><br/>
+
+                                                    Sie können weitere Pods in der Datei angeben, falls Ihre App zusätzliche Funktionen verwenden muss. Wenn Ihre App beispielsweise OpenSSL verwendet,
+könnte die Podfile etwa wie folgt aussehen:
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "durch_Namen_des_Ziels_im_Xcode-Projekt_ersetzen" do
+    pod 'IBMMobileFirstPlatformFoundation'
+    pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
+end{% endhighlight %}
+                                              </li>
+                                              <li>Führen Sie den Befehl <code>pod install</code> aus. Dieser Befehl
+installiert das native {{ site.data.keys.product_adj }}-SDK, IBMMobileFirstPlatformFoundation.framework und andere Frameworks,
+die in der Podfile und in den Abhängigkeiten angegeben sind. Anschließend generiert er das Pods-Projekt und integriert das
+{{ site.data.keys.product_adj }}-SDK in das Clientprojekt. </li>
+                                          </ul>
+                                       </li>
+                                       <li>Öffnen Sie Ihre Datei <b>Projektname.xcworkspace</b> in
+Xcode. Geben Sie dazu in einer Befehlszeile <b>open Projektname.xcworkspace</b> ein. Die Datei befindet sich in demselben Verzeichnis wie die Datei
+Projektname.xcodeproj. Sie können auch im Finder doppelt auf die Datei klicken. </li>
+                                       <li>Ersetzen Sie alle vorhandenen MobileFirst-Importe in Headern durch
+nur einen Eintrag im folgenden neuen Umbrella-Header: <br/>
+
+                                            <b>Objective-C:</b><br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
+                                            <br/><br/>
+                                            <b>Swift:</b><br/>
+                                            <code>import IBMMobileFirstPlatformFoundation</code><br/>
+                                       </li>
+                                       <li>Fügen Sie auf der Registerkarte <b>Build Settings</b> unter <b>Other Linker Flags</b> am Anfang des Flags <b>-ObjC</b> <code>$(inherited)</code> hinzu. </li>
+                                       <li>Wenn Sie Push-Benachrichtigungen oder JSONStore verwenden, müssen Sie einen unabhängigen Import aufnehmen.
+<br/><br/>
+                                            <b>Push-Benachrichtigungen</b><br/>
+Objective-C:<br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h&gt;</code>
+                                            <br/><br/>
+Swift:
+<br/>
+                                            <code>import IBMMobileFirstPlatformFoundationPush</code>
+                                            <br/><br/>
+                                            <b>JSONStore</b><br/>
+Objective-C:<br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h&gt;</code>
+                                            <br/><br/>
+Swift:
+<br/>
+                                            <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <br/>
+
+                        <b>Android</b><br/>
+                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="removeAndroidSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseRemoveAndroidSDK" aria-expanded="false" aria-controls="collapseRemoveAndroidSDK">Altes SDK entfernen</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseRemoveAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeAndroidSDK">
+                                    <div class="panel-body">
+                                        Suchen Sie den Ordner "lib" Ihres Projekts und löschen Sie die folgenden Dateien:
+                                        <ul>
+                                            <li>worklight-android.jar</li>
+                                            <li>uicandroid.jar</li>
+                                            <li>bcprov.jar</li>
+                                            <li>android-async-http.jar</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="addAndroidSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseAddAndroidSDK" aria-expanded="false" aria-controls="collapseAddAndroidSDK">Neues SDK hinzufügen</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseAddAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addAndroidSDK">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>Navigieren Sie in Android Studio zu <b>Android → Gradle Scripts</b> und wählen Sie die Datei
+<b>build.gradle (Module: app)</b> aus. </li>
+                                            <li>Fügen Sie unter <code>apply plugin: 'com.android.application'</code> die folgenden Zeilen hinzu:
+
+{% highlight xml %}repositories{
+    jcenter()
+}{% endhighlight %}            </li>
+                                            <li>Fügen Sie innerhalb von <b>android</b> Folgendes hinzu:
+
+{% highlight xml %}packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}{% endhighlight %}            </li>
+                                            <li>Fügen Sie innerhalb von <b>dependencies</b> die folgenden Zeilen hinzu:
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundation',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                                            Sie können weitere Artefakte angeben, falls Ihre App die zusätzlichen Funktionen benötigt. Wenn Ihre App beispielsweise Push-Benachrichtigungen verwendet, fügen Sie Folgendes hinzu:
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationpush',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                                            Falls Sie beabsichtigen, JSONStore zu verwenden, fügen Sie Folgendes hinzu:
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationjsonstore',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}</li>
+
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <b>Windows</b><br/>
+                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="removeWindowsSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseRemoveWindowsSDK" aria-expanded="false" aria-controls="collapseRemoveWindowsSDK">Altes SDK entfernen</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseRemoveWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeWindowsSDK">
+                                    <div class="panel-body">
+                                        Entfernen Sie die folgenden Dateien aus dem Visual-Studio-Projekt:
+
+                                        <ul>
+                                            <li>wlclient.properties</li>
+                                            <li>Newtonsoft.Json</li>
+                                            <li>SharpCompress</li>
+                                            <li>worklight-windows8</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="addWindowsSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseAddWindowsSDK" aria-expanded="false" aria-controls="collapseAddWindowsSDK">Neues SDK hinzufügen</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseAddWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addWindowsSDK">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>Klicken Sie mit der rechten Maustaste auf die Projektmappe und wählen Sie <b>NuGet-Pakete verwalten</b> aus.</li>
+                                            <li>Suchen Sie mit der Suchfunktion nach "IBM MobileFirst Platform", wählen Sie
+<b>IBM.MobileFirstPlatform.8.0.0.0</b> aus und klicken Sie auf <b>Installieren</b>.</li>
+                                            <li>Fügen Sie zu Package.appxmanifest die Funktion <b>Internet (Client)</b> hinzu. </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <h4>Schritt 3</h4>
+                        <p>Die native Anwendung ist fast vollständig umgestellt. Jetzt ist es an der Zeit, sich um die Probleme aus dem generierten API-Bericht zu kümmern. Öffnen Sie den API-Bericht in einem Browser und überprüfen Sie ihn. Jeder Eintrag muss entweder anders implementiert oder vollständig ersetzt werden. </p>
+
+                        <ul>
+                            <li><a href="../migrating-client-applications/ios" target="_blank">iOS-Codeänderungen</a></li>
+                            <li><a href="../migrating-client-applications/android" target="_blank">Android-Codeänderungen</a></li>
+                            <li><a href="../migrating-client-applications/windows" target="_blank">Windows-Codeänderungen</a></li>
+                        </ul>
+
+                        <br/>
+                        <h4>Schritt 4</h4>
+                        <p>Führen Sie die Anwendung in der plattformspezifischen IDE aus, um sie zu testen. </p>
+
+                        <h3>Nächste Schritte</h3>
+                        <ul>
+                            <li>Informationen zum weiteren Verlauf der Umstellung finden Sie in den <a href="#development-topics">Entwicklungsthemen</a>. </li>
+                            <li><a href="#migrating-adapters">Stellen Sie Ihre Adapter um</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <blockquote>
+            <b>Weiterführende Informationen:</b>
+            <ul>
+                <li><a href="../migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before" target="_blank">Vergleich von Cordova-Apps, die mit Version 8.0 und mit älteren Versionen bis Version 7.1 entwickelt wurden</a></li>
+                <li><a href="../../product-overview/release-notes/deprecated-discontinued" target="_blank">In Version 8.0 weggefallene und nicht mehr enthaltene Features</a></li>
+                <li><a href="../migrating-client-applications/cordova/#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80" target="_blank">Vorhandene Hybrid-Apps oder plattformübergreifende Apps auf von {{ site.data.keys.product_adj }} Version 8.0 unterstützte Cordova-Apps umstellen</a></li>
+                <li><a href="../migrating-client-applications/cordova/#migrating-encryption-for-ios-cordova" target="_blank">Verschlüsselung für Cordova-iOS-Anwendungen umstellen</a></li>
+            </ul>
+        </blockquote>
+        <p>Ihre Anwendung ist jetzt mit der für MobileFirst Foundation 8.0 erforderlichen Struktur kompatibel. Jetzt können Sie nach den Adaptern schauen. </p>
+    </div>
+
+    <br id="migrating-adapters"/><br/>
+
+    <div class="gutter gutter-adapters-color">
+        <div class="number number-adapters hidden-sm hidden-xs hidden-md">3</div>
+        <h2>Adapter migrieren</h2>
+        <p>In bisherigen Releases wurden Adapter mit dem MobileFirst-Studio-Plug-in für Eclipse oder über die {{ site.data.keys.mf_cli }} erstellt und entwickelt. Ab {{ site.data.keys.product }} 8.0 werden Adapter als Apache-Maven-Standardprojekte betrachtet und mit
+von IBM bereitgestellten Archetypen für die Generierung von Java- und JavaScript-Adaptern erstellt. </p>
+
+        <p>Maven eröffnet serverseitigen Entwicklern eine einfache Standardmöglichkeit, erforderliche Abhängigkeiten zu verwalten und zu integrieren,
+und erlaubt den Entwicklern, ihre bevorzugten Tools für die Entwicklung zu nutzen. Maven-Projekte können mit Maven-Befehlen in einer Befehlszeile erstellt werden oder über die
+{{ site.data.keys.mf_cli }}, die Maven-Befehle im Hintergrund aufruft und vereinfachte Befehle bereitstellt. </p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Tipp:</b> Sie können auch
+Eclipse oder IntelliJ für die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Erstellung und Entwicklung von Adaptern
+in einer IDE</a> einrichten.</p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Wussten Sie schon</b>, dass es in
+{{ site.data.keys.product }} 8.0 einen DevOps-Betriebsmodus gibt?
+Wenn ein Adapter einmal in {{ site.data.keys.mf_server }} implementiert ist, können Sie bei Verwendung dieses Modus
+diverse Eigenschaften (z. B. einen Benutzernamen und ein Kennwort für eine Datenbankverbindung)
+live in der {{ site.data.keys.mf_console }} konfigurieren, ohne den Adapter erneut implementieren zu müssen. </p>
+
+        <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters" target="_blank">Entwicklung von Java- und JavaScript-Adaptern</a>.</blockquote>
+
+        <br/>
+        <p>Zu den Schritten für die Umstellung Ihrer Adapter auf Maven-Projekte gehören die Erstellung eines passenden neuen Maven-Projekts und das Kopieren des
+Projekts in den Quellcode des vorhandenen Adapters (mit einigen Modifikationen). Im Anschluss wird der Maven-Projektbuild erstellt, um Fehler zu finden. </p>
+
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="prereqs">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Voraussetzungen für die Einrichtung von Apache Maven</a>
+                    </h4>
+                </div>
+
+                <div id="collapsePrereqs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="prereqs">
+                    <div class="panel-body">
+                        <p>Maven-Adapter erfordern, dass auf der Entwicklerworkstation Apache Maven installiert ist. </p>
+                        <ol>
+                            <li>Installieren Sie Apache Maven.
+                                <ul>
+                                    <li><a href="https://maven.apache.org/download.cgi" target="_blank">Laden Sie die Apache-Maven-ZIP-Datei herunter</a>.</li>
+                                    <li>Fügen Sie eine Variable <code>MVN_PATH</code> hinzu, die auf den Maven-Ordner zeigt. </li>
+                                    <li><i>Mac und Linux:</i><br/>
+                                Bearbeiten Sie wie folgt Ihre Datei <b>~/.bash_profile</b>:
+
+{% highlight bash %}#### Apache-Maven-Beispielposition
+export MVN_PATH="/usr/local/bin"
+{% endhighlight %}
+                                                    </li>
+
+                                    <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follgen Sie dieser Anleitung</a>.</li>
+                                    <li>Überprüfen Sie die Installation, indem Sie <code>mvn -v</code> ausführen.</li>
+                                </ul>
+                            </li>
+
+                            <li>In diesem Cookbook wird die {{ site.data.keys.mf_cli }} verwendet, um Maven-Befehle für die Erstellung der Adapter aufzurufen.
+                                <ul>
+                                    <li><a href="https://nodejs.org/en/" target="_blank">Installieren Sie NodeJS</a> als vorausgesetztes Produkt für das Tool, sofern dies noch nicht geschehen ist. </li>
+                                    <li>Führen Sie in einem Befehlszeilenfenster den Befehl <code>npm install -g mfpdev-cli</code> aus. (Sie können das Produkt
+auch über das Download-Center in der {{ site.data.keys.mf_console }} herunterladen und installieren.)</li>
+                                    <li>Überprüfen Sie die Installation, indem Sie <code>mfpdev -v</code> ausführen.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="create-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Neues Maven-Projekt erstellen</a>
+                    </h4>
+                </div>
+
+                <div id="collapseCreateMavenProject" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <p>Erstellen Sie eine neue Adaptervorlage, die zu Ihrem Adaptertyp, Ihrem Adapternamen und Ihrem Paketnamen passt. <br/>
+                        Dadurch vereinfachen Sie die Migration, da die Adaptermetadaten ähnlich sind und so keine gesonderte Bearbeitung erfordern. </p>
+
+                        <ul>
+                            <li>Führen Sie in einem Befehlszeilenfenster den Befehl <code>mfpdev adapter create</code> aus. </li>
+                            <li>Wählen Sie den Adaptertyp (HTTP- bzw. SQL-JavaScript-Adapter oder Java-Adapter) aus. </li>
+                            <li>Geben Sie eine <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">GroupID</a> an.</li>
+                            <li>Wenn Sie einen Java-Adapter erstellen, müssen Sie
+den zuvor verwendeten
+<a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">Paketnamen</a> angeben (z. B. "com.sample").</li>
+                        </ul>
+
+                        <img alt="Adaptervorlage erstellen" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/creating-an-adapter.png"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-js-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJSAdapter" aria-expanded="false" aria-controls="collapseMigrateJSAdapter">JavaScript-Quellcode umstellen</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateJSAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <b>HTTP-JavaScript-Adapter</b><br/>
+
+                        <ol>
+                            <li>Navigieren Sie in Ihrem Dateisystem zum JavaScript-Adapterordner, z. B. zu <i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i>.</li>
+                            <li>Öffnen Sie ein anderes Fenster und navigieren Sie zu Ihrem neuen Maven-Projekt, z. B. zu <i>../Desktop/MigratedAdapter</i>,
+und zum Ordner <b>src/main/adapter-resources</b>. </li>
+                            <li>Kopieren Sie die vorhandenen Adapterdateien in diesen Ordner. </li>
+                            <li>Bearbeiten Sie die Datei <b>adapter.xml</b>. Ersetzen Sie den Inhalt der Datei durch den XML-Inhalt Ihres vorhandenen Adapters (in diesem
+Beispiel RSSReader.xml).</li>
+                            <li>Bearbeiten Sie die Datei <b>js/{adapter-name}-impl.js</b>. Ersetzen Sie den Inhalt der Datei durch den Inhalt Ihres vorhandenen Adapters
+(in diesem Beispiel RSSReader-impl.js).</li>
+                        </ol>
+
+                        <br/>
+                        <b>SQL-JavaScript-Adapter</b><br/>
+
+                        <ol>
+                            <li>Navigieren Sie in Ihrem Dateisystem zum JavaScript-Adapterordner, z. B. zu <i>../Desktop/JavaScriptAdapters/adapters/SQLAdapter</i>.</li>
+                            <li>Öffnen Sie ein anderes Fenster und navigieren Sie zu Ihrem neuen Maven-Projekt, z. B. zu <i>../Desktop/MigratedAdapter</i>,
+und zum Ordner <b>src/main/adapter-resources</b>. </li>
+                            <li>Bearbeiten Sie die Datei <b>adapter.xml</b>. Ersetzen Sie den Inhalt der Datei durch den XML-Inhalt Ihres vorhandenen Adapters (in diesem
+Beispiel SQLAdapter.xml).</li>
+                            <li>Bearbeiten Sie die Datei <b>js/{adapter-name}-impl.js</b>. Ersetzen Sie den Inhalt der Datei durch den Inhalt Ihres vorhandenen Adapters
+(in diesem Beispiel SQLAdapter-impl.js).</li>
+                        </ol>
+
+                        <br/>
+                        <p>Hier kommen Maven-Abhängigkeiten ins Spiel. Da Worklight/MobileFirst Studio nicht verwendet wird, wo sich der Datenbankconnector
+im Ordner <b>server/lib</b> befand, müssen Sie den Connector durch eine Maven-Abhängigkeit ersetzen. </p>
+
+                        <ol>
+                            <li>Gehen Sie zum neu erstellten Maven-Projekt zurück und öffnen Sie die Datei <b>pom.xml</b> auf der Ausgangsebene des Verzeichnisses. </li>
+                            <li>Fügen Sie eine Abhängigkeit für Ihren Datenbanktyp hinzu. Sie können auf der <a href="http://search.maven.org/" target="_blank">Maven-Central-Website</a> nach der entsprechenden Abhängigkeit suchen.</li>
+                            <li>Verwenden Sie in diesem Beispiel die MySQL-Datenbank. Fügen Sie im Abschnitt <b>dependencies</b> den folgenden Codeblock hinzu:
+
+{% highlight xml %}<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.6</version>
+</dependency>{% endhighlight %}
+                                                    </li>
+                        </ol>
+
+                        <p>Wenn es weitere Abhängigkeiten gibt, zeigen Sie in der Datei <b>pom.xml</b> auf diese Abhängigkeiten (d. h. auf eine lokale Datei oder auf eine ferne Abhängigkeit). </p>
+
+                        <blockquote><b>Informieren Sie sich über Maven-Abhängigkeiten:</b><br/>
+                            <ul>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to dependency mechanism</a> (maven.org)</li>
+                                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">Handhabung von Abhängigkeiten</a> (Lernprogramm)</li>
+                            </ul>
+                        </blockquote>
+                        <br/>
+                        <p>Die folgenden Diagramme stellen dar, welche Schritte bisher ausgeführt wurden: </p>
+                        <i>Alte Struktur eines JavaScript-Adapters</i>
+{% highlight xml %}MyProject
+├── adapters
+    │   ├── RSSAdapter
+│   │   ├── RSSAdapter-impl.js
+│   │   ├── RSSAdapter.xml
+│   │   └── filtered.xsl{% endhighlight %}
+
+        <i>Neue Struktur eines JavaScript-Adapters</i>
+{% highlight xml %}RSSAdapter
+├── pom.xml
+    ├── src
+    │   └── main
+    │       ├── adapter-resources
+    │       │   ├── adapter.xml
+│       │   └── js
+│       │        ├── RSSAdapter-impl.js
+│       │        └── filtered.xml{% endhighlight %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-java-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJavaAdapter" aria-expanded="false" aria-controls="collapseMigrateJavaAdapter">Java-Quellcode umstellen</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateJavaAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <ol>
+                            <li>Navigieren Sie in Ihrem Dateisystem zum Java-Adapterordner, z. B. zu <i>../Desktop/JavaAdapters/RSSAdapter</i>.</li>
+                            <li>Öffnen Sie ein separates Fenster und navigieren Sie zu Ihrem neuen Maven-Projekt, z. B. zu <i>../Desktop/MigratedAdapter</i>,
+und zum Ordner <b>src/main/adapter-resources</b>. </li>
+                            <li>Bearbeiten Sie die Datei <b>{adapter-name}.xml</b>. Ersetzen Sie den Inhalt der Datei durch den XML-Inhalt Ihres vorhandenen Adapters
+(in diesem Beispiel RSSAdapter.xml).</li>
+                            <li>Navigieren Sie (für dieses Beispiel) im neuen Adapter zu <b>src/main/java/com/sample/</b>. </li>
+                            <li>Ersetzen Sie die vorhandene Java-Datei durch die Java-Dateien Ihres vorhandenen Adapters. </li>
+                        </ol>
+
+                        <p>Wenn Sie im vorhandenen Adapter zusätzliche Bibliotheken verwenden, kommen jetzt Maven-Abhängigkeiten ins Spiel. Da Worklight/MobileFirst Studio nicht verwendet wird, wo sich die Bibliotheken
+im Ordner <b>server/lib</b> oder im Ordner <b>lib</b> des Java-Adapters befanden, müssen Sie die Bibliotheken durch Maven-Abhängigkeiten ersetzen. </p>
+
+                        <ol>
+                            <li>Gehen Sie zum neu erstellten Maven-Projekt zurück und öffnen Sie die Datei <b>pom.xml</b> auf der Ausgangsebene des Verzeichnisses. </li>
+                            <li>Fügen Sie eine Abhängigkeit für Ihren Datenbanktyp hinzu. Sie können auf der <a href="http://search.maven.org/" target="_blank">Maven-Central-Website</a> nach der entsprechenden Abhängigkeit suchen.</li>
+                            <li>In diesem Beispiel wird eine Cloudant-Abhängigkeit verwendet. Fügen Sie im Abschnitt <b>dependencies</b> den folgenden Codeblock hinzu:
+
+{% highlight xml %}<dependency>
+	<groupId>com.cloudant</groupId>
+	<artifactId>cloudant-client</artifactId>
+	<version>1.2.3</version>
+</dependency>{% endhighlight %}
+                                                    </li>
+                        </ol>
+                        <br/>
+                        <blockquote><b>Informieren Sie sich über Maven-Abhängigkeiten:</b>
+                            <ul>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to dependency mechanism</a> (maven.org)</li>
+                                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">Handhabung von Abhängigkeiten</a> (Lernprogramm)</li>
+                            </ul>
+                        </blockquote>
+                        <br/>
+                        <p>Die folgenden Diagramme stellen dar, welche Schritte bisher ausgeführt wurden: </p>
+                        <i>Alte Struktur eines Java-Adapters</i>
+
+{% highlight xml %}
+├── adapters
+    │   └── RSSAdapter
+    │       ├── RSSAdapter.xml
+    │       ├── lib
+    │       └── src
+    │           └── com
+    │               └── sample
+    │                   ├── RSSAdapterApplication.java
+    │                   └── RSSAdapterResource.java{% endhighlight %}
+
+        <i>Neue Struktur eines Java-Adapters</i>
+
+{% highlight xml %}
+├── pom.xml
+    ├── src
+    │   └── main
+    │       ├── adapter-resources
+    │       │   └── adapter.xml
+    │       └── java
+    │           └── com
+    │               └── sample
+    │                   ├── RSSAdapterApplication.java
+    │                   └── RSSAdapterResource.java
+   └{% endhighlight %}
+
+                        <br/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="build-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseBuildAdapter" aria-expanded="false" aria-controls="collapseBuildAdapter">Maven-Projekt erstellen und testen</a>
+                    </h4>
+                </div>
+
+                <div id="collapseBuildAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <h3>Migrierten Adapter erstellen</h3>
+                        <p>Navigieren Sie in einem Befehlszeilenfenster zum Ordner des Adapters und führen Sie den Befehl <code>mfpdev adapter build</code> aus. </p>
+
+                        <img alt="Adaptererstellung über die Befehlszeile - Fehler" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/compilation-errors.png"/>
+
+                        <p>Für die Korrektur solcher Fehler sollte das Maven-Projekt in eine IDE wie IntelliJ importiert werden, wo ein Projektbuild erstellt werden kann.
+                        Wenn Sie eine IDE zur Verfügung haben, ist es einfacher die Buildfehler durchzugehen und nacheinander zu korrigieren. <a href="{{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/">Informieren Sie sich über die Verwendung von IntelliJ und Adaptern</a>.</p>
+
+                        <img alt="Verwendung von IntelliJ" src="intellij.png"/>
+
+                        <h3>Erstellten Adapter testen</h3>
+                        <p>Zum Testen des migrierten Adapters können Sie die {{ site.data.keys.mf_cli }} verwenden, um Ihre Endpunkte aufzurufen. Sie können
+auch Swagger in der {{ site.data.keys.mf_console }} verwenden.</p>
+                        <blockquote>Weitere Informationen zum Testen von Adaptern enthält das Lernprogramm
+<a href="../../adapters/testing-and-debugging-adapters/">Adapter testen und debuggen</a>. </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <blockquote><b>Weiterführende Informationen:</b>
+            <ul>
+                <li><a href="../migrating-adapters" target="_blank">Vorhandene Adapter auf {{ site.data.keys.mf_server }} Version 8.0.0 umstellen</a></li>
+                <li><a href="../../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes" target="_blank">Änderungen der serverseitigen API
+in MobileFirst Foundation 8.0</a></li>
+            </ul>
+        </blockquote>
+        <p>Nachdem die Adapters in Format und Code auf ein Maven-Projekt umgestellt wurden, werden wir uns jetzt einige Entwicklungskonzepte ansehen. </p>
+    </div>
+
+    <br id="development-topics"/><br/>
+
+    <div class="gutter gutter-dev-topics-color">
+        <div class="number number-dev-topics hidden-sm hidden-xs hidden-md">4</div>
+        <h2>Entwicklungsthemen</h2>
+        <p>Nachdem Anwendungen und Adapter auf ihre neue Struktur in
+{{ site.data.keys.product }} 8.0 umgestellt wurden, werden nun einige Implementierungskonzepte diskutiert,
+die sich im neuesten Release geändert haben. </p>
+
+        <h3>Adapter</h3>
+        <h4>JavaScript-Adapter</h4>
+        <b>Globale Variablen und Sitzungen</b><br/>
+        <p>Vermeiden Sie die Verwendung globaler Variablen in JavaScript-Adaptern, um Daten in der Sitzung zu speichern, da es in dem Sinne keine Sitzung gibt. Diese Änderung
+im Verhalten <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">taucht zum ersten Mal
+in MobileFirst Platform Foundation 7.1</a> auf. Sie können allerdings globale Variablen verwenden, um Daten für eine einzelne Anforderung zu speichern. Denken Sie jedoch daran, dass diese Vorgehensweise nicht mehr empfohlen wird. </p>
+
+        <blockquote>Weitere Informationen zum Erstellen, Implementieren und Testen von Adaptern enthalten die <a href="../../adapters/" target="_blank">Adapter-Lernprogramme</a>.</blockquote>
+
+        <h3>Sicherheitsframework</h3>
+        <p>Das Sicherheitsframework von {{ site.data.keys.product }} 8.0 unterscheidet sich vom Sicherheitsframework früherer Releases. Aus diesem Grunde müssen Sie einen Teil der Back-End- und Clientlogik Ihrer Anwendung reimplementieren. </p>
+
+        <p>Sie sollten sich unbedingt die Zeit nehmen, sich mit dem neuen, ausschließlich auf dem OAuth-Modell basierenden Sicherheitsframework und seinem Autorisierungsablauf vertraut zu machen. Informieren Sie sich auch über die neuen Autorisierungsentitäten (z. B. Zugriffstoken,
+Sicherheitsüberprüfungen und Bereiche), die die
+bisher bekannten Entitäten wie Sicherheitstests, Realms und Anmeldemodule ersetzen. </p>
+
+        <blockquote>Informationen zur Migration der Sicherheit enthält das Lernprogramm zur <a href="../migrating-security/" target="_blank">Umstellung der Authentifizierung und Sicherheit</a>. Weitere Informationen
+zum Sicherheitsframework und zu Autorisierungskonzepten finden Sie in den
+Lernprogrammen zur <a href="../../authentication-and-security/" target="_blank">Authentifizierung und Sicherheit</a>. </blockquote>
+
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="security-framework">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#security-framework" href="#collapseSecurityFramework" aria-expanded="false" aria-controls="collapseSecurityFramework">Unterschiede beim Sicherheitsframework</a>
+                    </h4>
+                </div>
+
+                <div id="collapseSecurityFramework" class="panel-collapse collapse" role="tabpanel" aria-labelledby="security-framework">
+                    <div class="panel-body">
+                        <h3>Realm und Sicherheitsüberprüfung im Vergleich</h3>
+                        <p>Eine Sicherheitsüberprüfung in {{ site.data.keys.product }} 8.0 kann als eine Kombination von drei Konzepten aus früheren Releses betrachtet werden: <br/>
+                        Sicherheitsüberprüfung = Realm + Authentifikator + Anmeldemodul</p>
+
+                        <p>Die Implementierung der Sicherheitsüberprüfung ist die Implementierung sowohl des Anmeldemoduls als auch des Authentifikators. <br/>
+                        Die Definition einer Sicherheitsüberprüfung ist mit der Definition eines Realms vergleichbar. </p>
+
+                        <p>In der folgenden Tabelle sind die Unterschiede zwischen den Sicherheitsframeworks früherer Releases und dem Sicherheitsframework von {{ site.data.keys.product }} 8.0 angegeben.</p>
+                        <table class="table table-striped">
+                            <tr>
+                                <td></td>
+                                <td><b>Frühere Releases</b></td>
+                                <td><b>{{ site.data.keys.product }} 8.0</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>Definition</b></td>
+                                <td>In der Datei <b>authenticationConfig.xml</b> mit einem Namen, einem Anmeldemodul und einem Authentifikator definiert. Beispiel:
+
+    {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
+        <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    </realm>{% endhighlight %}
+                                                    </td>
+                                <td>In der betreffenden Datei <b>adapter.xml</b> wird eine Sicherheitsüberprüfung mit einem Namen und der implementierenden Klasse definiert:
+    {% highlight xml %}<securityCheckDefinition
+        name="securityCheckX"
+        class="com.sample.SecurityCheckW">
+    </securityCheckDefinition>{% endhighlight %}
+                                                    </td>
+                            </tr>
+                            <tr>
+                                <td><b>Eintritts-/Austrittsmethode</b></td>
+                                <td><i>Adapterbasierte Authentifizierung:</i> Es wird eine Anmelde-/Abmeldefunktion definiert, die vom Framework bei Autorisierungsanforderungen aufgerufen wird.
+    {% highlight xml %}<parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
+<parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
+
+                                <i>Angepasster Authentifikator + Anmeldenmodul:</i> Es gibt eine Methode <code>init()</code> für den Start und eine Methode <code>processRequest()</code> für die Autorisierung von Anforderungen.
+Der Authentifikator sendet die Berechtigungsnachweise des Anmeldemoduls an die Methode <code>login()/logout()</code>. </td>
+                                <td>Bei der Implementierung der Sicherheitsprüfungsschnittstelle muss der Benutzer auch die Methoden
+<code>authorize()</code> und <code>introspect()</code> implementieren, die das Framework bei Autorisierungsanforderungen aufruft. Die Sicherheitsüberprüfung kann die Authentifizierung sowie die An-/Abmeldung selbst handhaben.
+</td>
+                            </tr>
+                            <tr>
+                                <td><b>Verwendung</b></td>
+                                <td>Einbindung in einen <code>customSecurityTest</code>, der ein oder mehrere Realm(s) enthalten kann:
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}
+                                                    </td>
+                                <td>Einbindung in ein Element <b>Scope</b>, das null oder mehr Sicherheitsüberprüfungen enthalten kann</td>
+                            </tr>
+                        </table>
+
+                        <h3>Sicherheitstests und Bereiche im Vergleich</h3>
+                        <p>In {{ site.data.keys.product }} 8.0, wird ein Bereich (<b>Scope</b>) verwendet, um null oder mehr
+Sicherheitsüberprüfungen zu aggregieren, die dann für den Schutz lokaler und
+externer Ressourcen oder Apps verwendet werden können. Dies ist mit dem Konzept eines angepassten Sicherheitstests
+                        (<code>CustomSecurityTest</code>) in früheren Releases vergleichbar. </p>
+
+                        <table class="table table-striped">
+                            <tr>
+                                <td></td>
+                                <td><b>Frühere Releases</b></td>
+                                <td><b>{{ site.data.keys.product }} 8.0</b></td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Definition
+</b></td>
+                                <td>Definition in der Datei <b>authenticationConfig.xml</b> mit einem Namen, einem oder mehreren Sicherheitstests und mindestens einem Sicherheitstestsfür die Definition der Benutzer-ID (<code>UserID</code>).
+
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}
+                                                    </td>
+                                <td>Definition in der {{ site.data.keys.mf_console }} oder mit REST-APIs. Ein Bereich enthält null oder mehr Sicherheitsüberprüfungen.
+
+{% highlight json %}"scopeElementMapping": {
+    "ScopeElementA": "secCheck1 secCheck2"
+}, {% endhighlight %}</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Verwendung</b></td>
+                                <td>Ein Sicherheitstest (SecurityTest) kann zum Schutz einer Ressource (Java-Adapter), einer Prozedur (JavaScript-Adapter) oder einer Anwendung (Anwendungsdeskriptor) verwendet werden. <br/><br/>
+
+                                <b>Java-Adapter</b>:
+{% highlight java %}@OAuthSecurity(scope="AuthRealm"){% endhighlight %}
+
+                                <b>JavaScript-Adapter</b>:
+{% highlight javascript %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}
+
+                                <b>Hinweis</b>: Sie können eine Ressource nicht mit einem Realm schützen, der nicht zu einem Sicherheitstest gehört. </td>
+                                <td>Ein Bereich (<b>scope</b>) mit einem oder mehr Bereichselement(en) kann zum Schutz einer Ressource (Java-Adapter), einer Prozedur (JavaScript-Adapter) oder einer Anwendung (Anwendungsdeskriptor) verwendet werden. <br/><br/>
+
+                                <b>Java-Adapter</b>:
+{% highlight java %}@OAuthSecurity(scope="ScopeElementA ScopeElementB"){% endhighlight %}
+
+                                <b>JavaScript-Adapter</b>:
+{% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege"/>{% endhighlight %}
+
+                                <b>Hinweis</b>: Sie können eine Ressource/Anwendung mit einer Sicherheitsüberprüfung (securityCheck) schützen, die nicht zu einer Bereichselementzuordnung gehört. </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Benutzeridentität</b></td>
+                                <td>Bestimmte Realms eines Sicherheitstests definieren eine Geräte-ID und eine Benutzer-ID (DeviceID und UserID).
+
+{% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}
+                                                    </td>
+                                <td>Ein Bereich hat keine Kenntnis von den Sicherheitsüberprüfungen, die ihn ausmachen. </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>Implementierung</b></td>
+                                <td>Konfiguration in der Datei <b>authenticationConfig.xml</b>. Wenn Sie ändern wollen, welche Realms zu einem Sicherheitstest gehören, müssen Sie die WAR-Datei reimplementieren. </td>
+                                <td>Änderung ohne Unterbrechung von {{ site.data.keys.mf_server }} bei Verwendung der {{ site.data.keys.mf_console }}.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Benachrichtigungen</h3>
+        in {{ site.data.keys.product }} 8.0 gibt es einen neuen Push-Service, mit dem eine neue Art vorgestellt wird, Benachrichtigungen einzurichten, zu konfigurieren und zu senden. Parallel dazu wurde das Konzept der auf Ereignisquellen basierenden Push-Benachrichtigungen zurückgezogen. Detaillierte szenariobasierte Migrationspfade enthalten die folgenden Abschnitte der Benutzerdokumentation:
+
+        <ul>
+            <li><a href="../migrating-push-notifications" target="_blank">Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen</a></li>
+            <li><a href="../migrating-push-notifications/#migration-scenarios" target="_blank">Migrationsszenarien nach Plattform</a></li>
+        </ul>
+
+        <blockquote>Weitere Informatione nzum Einrichten der Benachrichtigungsunterstützung und zum Senden authentifizierter und tagbasierter Benachrichtigungen
+enthalten die
+<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">Lernprogramme zu Benachrichtigungen</a>.</blockquote>
+
+        <h3>Direkte Aktualisierung</h3>
+        <p>Die Schritte für die Bereitstellung von Updates mit dem Feature für direkte Aktualisierung haben sich geändert. Darüber hinaus gelten jetzt einige Einschränkungen. </p>
+
+        <ul>
+            <li>Sehen Sie sich den Abschnitt <a href="../migrating-client-applications/cordova/#migrating-direct-update" target="_blank">Direkte Aktualisierung umstellen</a> in der Benutzerdokumentation an. </li>
+        </ul>
+
+        <blockquote>Weitere Informationen zur Verwendung der direkten Aktualisierung enthält das
+Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/direct-update/" target="_blank">Direkte Aktualisierung in Cordova-Anwendungen</a>. </blockquote>
+
+        <h3>Weitere Informationen</h3>
+        <p>In {{ site.data.keys.product }} 8.0 sind mehrere andere Komponenten und Features weggefallen. Eine vollständige Liste enthält der Abschnitt <a href="../migrating-client-applications/cordova/#removed-components" target="_blank">Weggefallene Komponenten</a> in der Benutzerdokumentation. </p>
+    </div>
+    <div class="sizer">
+        <p>Als kleines Extra finden Sie im Anschluss ein Video, das die Migration einer mit MobileFirst Platform Foundation 6.3 erstellten Hybridanwendung
+un eines Adapters auf eine Cordova-Standardanwendung und ein Maven-Projekt demonstriert. </p>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/nLrtdOEkbEs"></iframe>
+        </div>
+    </div>
+</div>

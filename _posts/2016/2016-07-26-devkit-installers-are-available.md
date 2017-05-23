@@ -3,6 +3,7 @@ title: IBM MobileFirst Foundation v8.0 Developer Kit Installers available for do
 date: 2016-07-26
 tags:
 - MobileFirst_Foundation
+- Announcement
 version:
 - 8.0
 author:
@@ -31,4 +32,4 @@ We are pleased to announce that the MobileFirst Foundation v8.0 Developer Kit In
 
 ### Mobile Foundation Bluemix service
 Mobile Foundation is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on IBM Containers.
-[Follow these instructions]({{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation) to move to the cloud.
+[Follow these instructions]({{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation) to move to the cloud.

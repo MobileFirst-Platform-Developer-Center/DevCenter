@@ -2,14 +2,13 @@
 ---
 $navbar-default-link-color: white;
 @import 'bootstrap';
-@import 'blog';
-@import 'carousel';
-@import 'downloads';
-@import 'getintroduced';
-@import 'help';
-@import 'labs';
 @import 'main';
 @import 'navbar';
+@import 'carousel';
+@import 'blog';
+@import 'downloads';
+@import 'help';
+@import 'labs';
 @import 'tutorial';
 @import 'video-gallery';
 @import 'syntax';
@@ -18,3 +17,7 @@ $navbar-default-link-color: white;
 @import 'search';
 @import 'bootstrapmultiselect';
 @import 'cookbook';
+@import 'features';
+@import 'scrolltotop';
+@import 'slideout';
+@import 'jasny-bootstrap.min';

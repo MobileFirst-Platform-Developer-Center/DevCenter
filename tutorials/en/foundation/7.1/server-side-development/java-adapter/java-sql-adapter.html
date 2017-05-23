@@ -23,7 +23,7 @@ downloads:
 <p>The MobileFirst Server needs to be configured to connect to the MySQL server. Those configurations can be stored in the <code>server.xml</code> file.</p>
 <p>To connect to a database, Java code needs a JDBC driver. For MySQL, the latest driver can be found on the <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">Download Connector/J</a> MySQL page, at <code>http://dev.mysql.com/downloads/connector/j/</code>.</p>
 <p>This example uses the embedded application server of MobileFirst Studio.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <library id="MySQLLib">
   <fileset dir="${shared.resource.dir}" includes="mysql-*.jar" />
 </library>
@@ -43,7 +43,7 @@ downloads:
 </ul>
 <h2 id="UserAdapterApplication">UserAdapterApplication</h2>
 <p><code>UserAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by the adapter application.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @Override
 protected void init() throws Exception {
     UserAdapterResource.init();
@@ -51,7 +51,7 @@ protected void init() throws Exception {
 }
 {% endhighlight %}</p>
 <h2 id="UserAdapterResource">UserAdapterResource</h2>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @Path("/")
 public class UserAdapterResource {
 
@@ -60,7 +60,7 @@ public class UserAdapterResource {
 <p><code>UserAdapterResource</code> is where requests to the adapter are handled.</p>
 <p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
 <h3>Using DataSource</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 static DataSource ds = null;
 static Context ctx = null;
 public static void init() throws NamingException {
@@ -71,7 +71,7 @@ public static void init() throws NamingException {
 <p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which is called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
 <p>The previously defined <code>jndiName</code> parameter is used to find the database configuration.</p>
 <h3>Create User</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @POST
 public Response createUser(@FormParam("userId") String userId, @FormParam("firstName") String firstName, @FormParam("lastName") String lastName, @FormParam("password") String password) throws SQLException{
     Connection con = ds.getConnection();
@@ -104,7 +104,7 @@ public Response createUser(@FormParam("userId") String userId, @FormParam("first
 <p>If the insertion was successful, the <code>return Response.ok().build()</code> method is used to send a <code>200 OK</code> back to the client. If there was an error, a different <code>Response</code> object can be built with a specific HTTP status code. In this example, a <code>409 Conflict</code> error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.</p>
 <p><strong>Important:</strong> Make sure to close resources, such as prepared statements and connections.</p>
 <h3>Get User</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @GET
 @Produces("application/json")
 @Path("/{userId}")
@@ -138,7 +138,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 <p>Prepending the method with <code>@Produces("application/json")</code> makes sure that the <code>Content-Type</code> of the output is correct.</p>
 <h3>Get all users</h3>
 <p>This method is similar to <code>getUser</code>, except for the loop over the <code>ResultSet</code>.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @GET
 @Produces("application/json")
 public Response getAllUsers() throws SQLException{
@@ -160,7 +160,7 @@ public Response getAllUsers() throws SQLException{
 }
 {% endhighlight %}</p>
 <h3>Update user</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @PUT
 @Path("/{userId}")
 public Response updateUser(@PathParam("userId") String userId, @FormParam("firstName") String firstName, @FormParam("lastName") String lastName, @FormParam("password") String password) throws SQLException{
@@ -191,7 +191,7 @@ public Response updateUser(@PathParam("userId") String userId, @FormParam("first
 {% endhighlight %}</p>
 <p>When updating an existing resource, it is standard practice to use <code>@PUT</code> (for <code>HTTP PUT</code>) and to use the resource ID in the <code>@Path</code>.</p>
 <h3>Delete user</h3>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @DELETE
 @Path("/{userId}")
 public Response deleteUser(@PathParam("userId") String userId) throws SQLException{

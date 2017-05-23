@@ -1,17 +1,26 @@
 ---
 layout: tutorial
-title: Server-side Development
+title: サーバー・サイドの開発
 show_disqus: false
-use_dropdown: true
+use_dropdown: false
 print_pdf: false
+show_in_nav: false
+indexed: false
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br>
-Server-side development provides the tools and functionality required in order to connect an application to the MobileFirst Server or serve content to an application from  Enterprise back-end systems and cloud services. Authentication and security is tighly related to server-side development, and should be reviewed as well.
+サーバー・サイドの開発は、{{site.data.keys.mf_server }} へのアプリケーションに接続したり、エンタープライズ・バックエンド・システムおよびクラウド・サービスからアプリケーションにコンテンツを提供したりするために必要なツールと機能を提供します。認証とセキュリティーはサーバー・サイドの開発と密接に関連しており、同じように検討される必要があります。
 
-### Authentication and security
+<form role="searchbox"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+    <div class="input-group add-on">
+        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="検索対象..." name="q">
+    </div>
+</form>
 
-* [Authentication and security](../authentication-security)
+## 認証およびセキュリティー
+{: authentication-and-security }
+* [認証およびセキュリティー](../authentication-and-security/)
 
-### Server-side development
-
-* [Server-side development](../server-side-developmenet)
+## アダプターの開発
+{: #adapters-development }
+* [アダプターの開発](../adapters/)

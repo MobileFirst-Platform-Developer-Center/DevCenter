@@ -1,0 +1,155 @@
+
+.bluemix {
+    h2 {
+        font-weight: bold;
+    }
+    canvas {
+      display: block;
+      vertical-align: bottom;
+    }
+    a {
+      color: white;
+    }
+
+    .container {
+      font: normal normal 300 normal 14.4px / 14.4px HelveticaNeue-Light, HelvLightIBM, Arial, sans-serif;
+      z-index:100;
+      background:#2d3f49;
+      color:white;
+      padding:0;
+      height: 943px;
+    }
+
+    .img-circle {
+      border-radius: 0%;
+      width: 120px;
+      margin-left: 22px
+    }
+
+    .carousel {
+      height: 400px;
+    }
+
+    .carousel .carousel-indicators {
+      background-color: transparent;
+      margin: 0;
+    }
+
+    .carousel .carousel-inner .item {
+      background-color: transparent;
+    }
+
+    .carousel .carousel-inner .item img {
+      height:auto;
+      width: 300px;
+      margin-top: 74px;
+    }
+
+    .carousel .carousel-inner .item .screenshot {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        height: 193px;
+        width: 310px;
+        column-rule-color: rgb(255, 255, 255);
+        perspective-origin: 138.292px 75px;
+        transform-origin: 138.292px 75px;
+        border: 0px none rgb(255, 255, 255);
+        font: normal normal normal normal 16px / 16px "IBM Helvetica", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+        outline: rgb(255, 255, 255) none 0px;
+        margin-top: 15px;
+        margin-right: 20px;
+    }
+
+    .carousel .carousel-inner .item .screenshot:hover {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        height: 193px;
+        width: 310px;
+        column-rule-color: rgb(255, 255, 255);
+        perspective-origin: 138.292px 75px;
+        transform-origin: 138.292px 75px;
+        border: 0px none rgb(255, 255, 255);
+        font: normal normal normal normal 16px / 16px "IBM Helvetica", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+        outline: rgb(255, 255, 255) none 0px;
+        margin-top: 15px;
+        margin-right: 20px;
+        border:1px solid rgb(85, 150, 230);
+    }
+
+    .custom-mid-nav {
+      text-align: left !important;
+      line-height: 18px;
+    }
+
+    .buttons {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        height: 44px;
+        min-height: auto;
+        min-width: auto;
+        text-align: right;
+        width: 100%;
+        column-rule-color: rgb(255, 255, 255);
+        align-self: center;
+        perspective-origin: 301.672px 22px;
+        transform-origin: 301.672px 22px;
+        border: 0px none rgb(255, 255, 255);
+        flex: 1 0 auto;
+        font: normal normal 300 normal 16px / 16px HelveticaNeue-Light, HelvLightIBM, Arial, sans-serif;
+        margin: -10px 0px 0px;
+        outline: rgb(255, 255, 255) none 0px;
+    }
+
+    .usenow {
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        height: 44px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 116.141px;
+        column-rule-color: rgb(255, 255, 255);
+        perspective-origin: 58.0625px 22px;
+        transform-origin: 58.0625px 22px;
+        background: rgb(85, 150, 230) none repeat scroll 0% 0% / auto padding-box border-box;
+        border: 2px solid rgb(85, 150, 230);
+        font: normal normal 300 normal 16px / 16px HelvLightIBM, HelveticaNeue-Light, Arial, sans-serif;
+        outline: rgb(255, 255, 255) none 0px;
+        padding: 12px 2px;
+        transition: color 0.3s ease 0s;
+    }
+
+    .viewdocs {
+        box-sizing: border-box;
+        color: rgb(85, 150, 230);
+        display: inline-block;
+        height: 44px;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        width: 129.953px;
+        column-rule-color: rgb(85, 150, 230);
+        perspective-origin: 64.9688px 22px;
+        transform-origin: 64.9688px 22px;
+        border: 2px solid rgb(85, 150, 230);
+        font: normal normal 300 normal 16px / 16px HelvLightIBM, HelveticaNeue-Light, Arial, sans-serif;
+        margin: 0px 0px 0px 20px;
+        outline: rgb(85, 150, 230) none 0px;
+        padding: 12px 2px;
+        transition: color 0.3s ease 0s;
+    }
+
+    /* ---- particles.js container ---- */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 180px;
+      background-color: #20343e;
+      background-image: url("");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+      margin-top: -1px;
+    }
+}

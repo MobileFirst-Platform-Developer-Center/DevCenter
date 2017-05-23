@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>JSONStoreQueryPart Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		
+		
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="JSONStoreQueryPart Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">JSONStoreQueryPart Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">JSONStoreQueryPart.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Contains <a href="../Classes/JSONStore.html">JSONStore</a> query part operations.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_ids">&nbsp;&nbsp;_ids</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_lessThan">&nbsp;&nbsp;_lessThan</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_lessOrEqualThan">&nbsp;&nbsp;_lessOrEqualThan</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_greaterThan">&nbsp;&nbsp;_greaterThan</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_greaterOrEqualThan">&nbsp;&nbsp;_greaterOrEqualThan</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_like">&nbsp;&nbsp;_like</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_notLike">&nbsp;&nbsp;_notLike</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_rightLike">&nbsp;&nbsp;_rightLike</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_notRightLike">&nbsp;&nbsp;_notRightLike</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_leftLike">&nbsp;&nbsp;_leftLike</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_notLeftLike">&nbsp;&nbsp;_notLeftLike</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_equal">&nbsp;&nbsp;_equal</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_notEqual">&nbsp;&nbsp;_notEqual</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_inside">&nbsp;&nbsp;_inside</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_notInside">&nbsp;&nbsp;_notInside</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_between">&nbsp;&nbsp;_between</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_notBetween">&nbsp;&nbsp;_notBetween</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:lessThan:">&ndash;&nbsp;searchField:lessThan:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:lessOrEqualThan:">&ndash;&nbsp;searchField:lessOrEqualThan:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:greaterThan:">&ndash;&nbsp;searchField:greaterThan:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:greaterOrEqualThan:">&ndash;&nbsp;searchField:greaterOrEqualThan:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:like:">&ndash;&nbsp;searchField:like:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:notLike:">&ndash;&nbsp;searchField:notLike:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:leftLike:">&ndash;&nbsp;searchField:leftLike:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:notLeftLike:">&ndash;&nbsp;searchField:notLeftLike:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:rightLike:">&ndash;&nbsp;searchField:rightLike:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:notRightLike:">&ndash;&nbsp;searchField:notRightLike:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:equal:">&ndash;&nbsp;searchField:equal:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:notEqual:">&ndash;&nbsp;searchField:notEqual:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:insideValues:">&ndash;&nbsp;searchField:insideValues:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:notInsideValues:">&ndash;&nbsp;searchField:notInsideValues:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:between:and:">&ndash;&nbsp;searchField:between:and:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchField:notBetween:and:">&ndash;&nbsp;searchField:notBetween:and:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/_between" title="_between"></a>
+	<h3 class="subsubtitle method-title">_between</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with between criteria (e.g. [ [50,100] ]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_between</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_equal" title="_equal"></a>
+	<h3 class="subsubtitle method-title">_equal</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with equal to criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_equal</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_greaterOrEqualThan" title="_greaterOrEqualThan"></a>
+	<h3 class="subsubtitle method-title">_greaterOrEqualThan</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with greater than or equal to criteria (e.g. [{age: 20}]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_greaterOrEqualThan</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_greaterThan" title="_greaterThan"></a>
+	<h3 class="subsubtitle method-title">_greaterThan</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with greater than criteria (e.g. [{age: 20}]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_greaterThan</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_ids" title="_ids"></a>
+	<h3 class="subsubtitle method-title">_ids</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. Special case when looking for _id values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_ids</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_inside" title="_inside"></a>
+	<h3 class="subsubtitle method-title">_inside</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with in criteria (e.g. [ [@&ldquo;carlos&rdquo;, @&ldquo;dgonz&rdquo;, @&ldquo;mike&rdquo;] ]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_inside</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_leftLike" title="_leftLike"></a>
+	<h3 class="subsubtitle method-title">_leftLike</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with like criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]) that matches only left of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_leftLike</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_lessOrEqualThan" title="_lessOrEqualThan"></a>
+	<h3 class="subsubtitle method-title">_lessOrEqualThan</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with less than or equal to criteria (e.g. [{age: 20}]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_lessOrEqualThan</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_lessThan" title="_lessThan"></a>
+	<h3 class="subsubtitle method-title">_lessThan</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with less than criteria (e.g. [{age: 20}]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_lessThan</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_like" title="_like"></a>
+	<h3 class="subsubtitle method-title">_like</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with like criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]) that matches right and left of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_like</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_notBetween" title="_notBetween"></a>
+	<h3 class="subsubtitle method-title">_notBetween</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with not between criteria (e.g. [ [50,100] ]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_notBetween</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_notEqual" title="_notEqual"></a>
+	<h3 class="subsubtitle method-title">_notEqual</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with not equal to criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_notEqual</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_notInside" title="_notInside"></a>
+	<h3 class="subsubtitle method-title">_notInside</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with not in criteria (e.g. [ [@&ldquo;carlos&rdquo;, @&ldquo;dgonz&rdquo;, @&ldquo;mike&rdquo;] ]).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_notInside</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_notLeftLike" title="_notLeftLike"></a>
+	<h3 class="subsubtitle method-title">_notLeftLike</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with not like criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]) that matches only left of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_notLeftLike</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_notLike" title="_notLike"></a>
+	<h3 class="subsubtitle method-title">_notLike</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with not like criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]) that matches right and left of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_notLike</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_notRightLike" title="_notRightLike"></a>
+	<h3 class="subsubtitle method-title">_notRightLike</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with not like criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]) that matches only right of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_notRightLike</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/_rightLike" title="_rightLike"></a>
+	<h3 class="subsubtitle method-title">_rightLike</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. NSArray with like criteria (e.g. [{name: @&ldquo;carlos&rdquo;}]) that matches only right of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, retain) NSMutableArray *_rightLike</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:between:and:" title="searchField:between:and:"></a>
+	<h3 class="subsubtitle method-title">searchField:between:and:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a between criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> between:(NSNumber *)<em>number1</em> and:(NSNumber *)<em>number2</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number1</em></dt>
+			<dd><p>First number in the range</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number2</em></dt>
+			<dd><p>Last number in the range</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:equal:" title="searchField:equal:"></a>
+	<h3 class="subsubtitle method-title">searchField:equal:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add an equal to criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> equal:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:greaterOrEqualThan:" title="searchField:greaterOrEqualThan:"></a>
+	<h3 class="subsubtitle method-title">searchField:greaterOrEqualThan:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a greater than or equal to criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> greaterOrEqualThan:(NSNumber *)<em>number</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number</em></dt>
+			<dd><p>Number</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:greaterThan:" title="searchField:greaterThan:"></a>
+	<h3 class="subsubtitle method-title">searchField:greaterThan:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a greater than criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> greaterThan:(NSNumber *)<em>number</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number</em></dt>
+			<dd><p>Number</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:insideValues:" title="searchField:insideValues:"></a>
+	<h3 class="subsubtitle method-title">searchField:insideValues:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add an in criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> insideValues:(NSArray *)<em>values</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>values</em></dt>
+			<dd><p>Array of strings</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:leftLike:" title="searchField:leftLike:"></a>
+	<h3 class="subsubtitle method-title">searchField:leftLike:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a like criteria that matches only left of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> leftLike:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:lessOrEqualThan:" title="searchField:lessOrEqualThan:"></a>
+	<h3 class="subsubtitle method-title">searchField:lessOrEqualThan:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a less than or equal to criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> lessOrEqualThan:(NSNumber *)<em>number</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number</em></dt>
+			<dd><p>Number</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:lessThan:" title="searchField:lessThan:"></a>
+	<h3 class="subsubtitle method-title">searchField:lessThan:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a less than criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> lessThan:(NSNumber *)<em>number</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number</em></dt>
+			<dd><p>Number</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:like:" title="searchField:like:"></a>
+	<h3 class="subsubtitle method-title">searchField:like:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a like criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> like:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:notBetween:and:" title="searchField:notBetween:and:"></a>
+	<h3 class="subsubtitle method-title">searchField:notBetween:and:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a not between criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> notBetween:(NSNumber *)<em>number1</em> and:(NSNumber *)<em>number2</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number1</em></dt>
+			<dd><p>First number in the range</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number2</em></dt>
+			<dd><p>Last number in the range</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:notEqual:" title="searchField:notEqual:"></a>
+	<h3 class="subsubtitle method-title">searchField:notEqual:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a not equal to criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> notEqual:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:notInsideValues:" title="searchField:notInsideValues:"></a>
+	<h3 class="subsubtitle method-title">searchField:notInsideValues:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a not in criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> notInsideValues:(NSArray *)<em>values</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>values</em></dt>
+			<dd><p>Array of strings</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:notLeftLike:" title="searchField:notLeftLike:"></a>
+	<h3 class="subsubtitle method-title">searchField:notLeftLike:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a not like criteria that matches only left of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> notLeftLike:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:notLike:" title="searchField:notLike:"></a>
+	<h3 class="subsubtitle method-title">searchField:notLike:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a not like criteria.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> notLike:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:notRightLike:" title="searchField:notRightLike:"></a>
+	<h3 class="subsubtitle method-title">searchField:notRightLike:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a not like criteria that matches only right of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> notRightLike:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchField:rightLike:" title="searchField:rightLike:"></a>
+	<h3 class="subsubtitle method-title">searchField:rightLike:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add a like criteria that matches only right of the input.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)searchField:(NSString *)<em>searchField</em> rightLike:(NSString *)<em>string</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>Search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreQueryPart.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+                    <div class="footer-copyright">
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2016</span></p><br />
+                    </div>
+				</div>
+			</div>
+		</article>
+		
+	</body>
+</html>

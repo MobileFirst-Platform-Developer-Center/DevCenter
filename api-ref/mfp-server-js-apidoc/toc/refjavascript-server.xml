@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc label="JavaScript server-side API" topic="html/refjavascript-server/html/intro.html">
+<topic label="Overview" href="html/refjavascript-server/html/intro.html"/>
+	<topic label="Classes">
+		<topic label="MFP.Logger" href="html/refjavascript-server/html/MFP.Logger.html">
+<topic label="MFP.Logger.debug" href="html/refjavascript-server/html/MFP.Logger.html#MFP.Logger.debug"/>
+<topic label="MFP.Logger.error" href="html/refjavascript-server/html/MFP.Logger.html#MFP.Logger.error"/>
+<topic label="MFP.Logger.info" href="html/refjavascript-server/html/MFP.Logger.html#MFP.Logger.info"/>
+<topic label="MFP.Logger.warn" href="html/refjavascript-server/html/MFP.Logger.html#MFP.Logger.warn"/>
+</topic>
+<topic label="MFP.Server" href="html/refjavascript-server/html/MFP.Server.html">
+<topic label="MFP.Server.addResponseHeader" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.addResponseHeader"/>
+<topic label="MFP.Server.getAuthenticatedUser" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.getAuthenticatedUser"/>
+<topic label="MFP.Server.getClientRequest" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.getClientRequest"/>
+<topic label="MFP.Server.getPropertyValue" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.getPropertyValue"/>
+<topic label="MFP.Server.getTokenIntrospectionData" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.getTokenIntrospectionData"/>
+<topic label="MFP.Server.invokeHttp" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.invokeHttp"/>
+<topic label="MFP.Server.invokeProcedure" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.invokeProcedure"/>
+<topic label="MFP.Server.invokeSQLStatement" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.invokeSQLStatement"/>
+<topic label="MFP.Server.invokeSQLStoredProcedure" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.invokeSQLStoredProcedure"/>
+<topic label="MFP.Server.logActivity" href="html/refjavascript-server/html/MFP.Server.html#MFP.Server.logActivity"/>
+</topic>
+
+	</topic>	
+</toc>

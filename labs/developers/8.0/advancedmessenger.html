@@ -2,27 +2,91 @@
 layout: labs
 title: MobileFirst Foundation 8.0 Developer Labs
 tabs:
-  - name: Introduction
+  - name: Lab selection
     path: /labs/developers/8.0/intro/
-  - name: Setup
-    path: /labs/developers/8.0/setup/
+  - name: Advanced Car Service
+    path: /labs/developers/8.0/advancedcarservice
+  - name: Advanced Utility Service
+    path: /labs/developers/8.0/advancedutilityservice
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
+  - name: Advanced Wallet
+    path: /labs/developers/8.0/advancedwallet
 ---
 <div>
-<img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo.png">
+    <img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo.png">
+    <img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/screenstory.png">
 </div>
 
-<div class="sizer">
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iDe2EhiOn94"></iframe>
-    </div>
-</div>
+<h4 class="no-anchor">Pre-requisites:</h4>
+<p>Follow the Setup section to install an Ubuntu image, install the {{ site.data.keys.mf_dev_kit }}, archetypes and CLI and register at Bluemix.</p>
+<p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.62 - 2.66)</p>
 
-<h3>Part 1</h3>
+<h4 class="no-anchor">Setup</h4>
+<p>The recommended way to setup your workstation for these labs is to download the prepared VMware image that has all required software installed and ready to be used. However, if you want to do this on your own you will need to setup the dependencies listed below.</p>
+
+<ul>
+    <li>Google Chrome <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">CORS extension</a></li>
+    <li>Visual Studio Code</li>
+    <li>Oracle JDK 7</li>
+    <li>Android SDK</li>
+        <ul>
+            <li>Google Play Services</li>
+            <li>Android Support repository</li>
+            <li>Google Repository</li>
+            <li>API v23</li>
+            <li>Build tools v23</li>
+            <li>Intel x86 Atom_64 image v23</li>
+        </ul>
+    </li>
+    <li>curl</li>
+    <li>nodejs</li>
+    <li>npm</li>
+        <ul>
+            <li>bower</li>
+            <li>gulp</li>
+            <li>cordova</li>
+            <li>ionic@2.0.0-beta.32</li>
+            <li>cdvlive</li>
+            <li>maven</li>
+            <li>git</li>
+            <li>python</li>
+        </ul>
+    </li>
+</ul>
+
+<p>If you will be using ubuntu-based x64 distro, additional packages are required: lib32z1, lib32ncurses5, lib32bz2-1.0, and lib32stdc++6.<br/>
+Finally, do not forget to set JAVA_HOME, ANDROID_HOME, MAVEN_HOME and M2_HOME and add them to your PATH.</p>
+
+<p>Alternatively to watching labs on YouTube, you can download offline version <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a>. The videos are located inside the "labs_en" folder and have "webm" extension. VLC, same as most of media players and browser will be able to play them.</p>
+
+<h4 class="no-anchor">Download and setup the VM image</h4>
+<ul>
+    <li>Download the VMware image archive <a href="https://www.dropbox.com/s/ei1ncazl630w9ej/mfp-seminar-3.1.ova?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/u/s!ArRVJ_BgeJEFiynEo2iizNF_vVuQ" target="_blank">OneDrive</a> (7.7 GB)</li>
+    <li>Import the downloaded .ova file into the latest version of VMware Player / VMware Fusion / VMware Workstation</li>
+    <li>Set the VM settings to at least 2 CPU cores and 4GB of RAM; Enable VT-x/EPT support (may also be required to enable it in the computer BIOS as well)</li>
+    <li>Start the VM image</li>
+    <li>Use user "ibm" and password: “QQqq1234″ to log in. Same password is set for sudo</li>
+</ul>
+
+<h4 class="no-anchor">Download and install the {{ site.data.keys.mf_dev_kit }}</h4>
+<ul>
+  <li>Follow the {{ site.data.keys.mf_dev_kit }} <a href="{{site.baseurl}}/downloads">setup instructions and install devkit into /home/ibm/dev/server/ folder</a></li>
+  <li>Install the {{ site.data.keys.mf_cli }} by running from Terminal: <code>npm install -g mfpdev-cli</code></li>
+  <li>If you expect to not have an Internet connection available, install the adapter archetypes from the Download Center in the {{ site.data.keys.mf_console }}.</li>
+</ul>
+
+<h4 class="no-anchor">Register on Bluemix</h4>
+<ul>
+  <li>Navigate to <a href="https://console.ng.bluemix.net/registration/">registration page</a>, fill required info and register.</li>
+  <li>Check your mailbox and verify email</li>
+  <li>Make sure that you are able to login inside <a href="https://console.ng.bluemix.net/">Bluemix console</a></li>
+</ul>
+
+<h2>Part 1</h2>
 <h4 class="no-anchor">Lab highlights</h4>
 <ul>
-  <li>Moving existing app to MobileFirst Foundation 8</li>
+  <li>Moving existing app to {{ site.data.keys.product }} 8.0</li>
   <li>Uses Ionic v2 beta with Typescript</li>
   <li>Development using CLI and MS Visual Studio Code</li>
   <li>Using Java and Javascript adapters for backend calls</li>
@@ -35,26 +99,24 @@ tabs:
 
 <p>Time to complete: up to 4 hours</p>
 <br>
-<div>
-<img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/screenstory.png">
+
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EzFiZx_xt14"></iframe>
+    </div>
 </div>
 
-<br>
-<h4 class="no-anchor">Pre-requisites:</h4>
-<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> section to install an Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix.</p>
-<p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.62 - 2.66)</p>
-<br>
-
+<h2 class="no-anchor">Lab steps</h2>
 <div class="panel-group accordion" id="part-one" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding MobileFirst SDK and registering app on server</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding {{ site.data.keys.product_adj }} SDK and registering app on server</a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body no-anchor">
-                <b>Description:</b> Install MobileFirst client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
+                <b>Description:</b> Install {{ site.data.keys.product_adj }} client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
                 <br>
                 <b>Time to complete:</b> 30 minutes
                 <br>
@@ -464,5 +526,368 @@ load() {
         </div>
     </div>
 </div>
+<br>
+<h2>Part 2</h2>
+<h4 class="no-anchor">Lab highlights</h4>
+<ul>
+  <li>Authenticating external resources</li>
+  <li>Using Direct Update and Remote Disable</li>
+  <li>Mobile Operational Analytics</li>
+  <li>Security scan of application binary</li>
+  <li>Bug reporting and user sentiment analysis</li>
+  <li>Moving Node.js app to Bluemix using Cloud Foundry Node runtime</li>
+  <li>Creating {{ site.data.keys.product }} instance on Bluemix</li>
+  <li>Preparing mobile application for distribution</li>
+</ul>
 
-Stay tuned for part 2!
+<p>Time to complete: up to 4 hours</p>
+<br>
+
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-SDMowsLTkQ"></iframe>
+    </div>
+</div>
+
+<br>
+
+<h2 class="no-anchor">Lab steps</h2>
+<div class="panel-group accordion" id="part-two" role="tablist" aria-multiselectable="true">
+  <!--  2.70 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading1">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse1" aria-expanded="false" aria-controls="collapse1">Authenticating external resource using MobieFirst Foundation</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Add validator to Node.js Mock Server to check authentication token on {{ site.data.keys.product }} and prevent unauthenticated calls
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.70
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aFGJlf7Db_c"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Schedule provider</p>
+{% highlight javascript %}
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/map';
+
+@Injectable()
+export class ScheduleProvider {
+  data: any = null;
+  distance: any = null;
+
+  constructor(public http: Http) {}
+
+  load() {
+    console.log('---> called ScheduleProvider load');
+    if (this.data) {
+      // already loaded data
+      return Promise.resolve(this.data);
+    }
+
+    return new Promise(resolve => {
+          let dataRequest = new WLResourceRequest("http://192.168.42.169:4567/schedule", WLResourceRequest.GET);
+
+          dataRequest.send().then((response) => {
+            console.log('--> data loaded from adapter', response);
+
+            this.data = response.responseJSON.delivery;
+            resolve(this.data)
+          }, (failure) => {
+            console.log('--> failed to load data', failure);
+            resolve('error')
+          })
+        });
+  }
+
+  calc(destinations) {
+
+    console.log('---> called ScheduleProvider calc');
+    if (this.distance) {
+      // already loaded data
+      return Promise.resolve(this.distance);
+    }
+    return new Promise(resolve => {
+
+          let dataRequest = new WLResourceRequest("http://192.168.42.169:4567/distance", WLResourceRequest.GET);
+
+          let curtime = Date.now();
+          let origin = '50.019275,14.347424';
+          let googleParams = 'origins=' + origin + '&destinations=' + destinations + '&departure_time=' + curtime + '&traffic_model=best_guess';
+          console.debug('google params', googleParams);
+
+          dataRequest.setQueryParameter("origins", origin);
+          dataRequest.setQueryParameter("destinations", destinations);
+          dataRequest.setQueryParameter("departure_time", curtime);
+          dataRequest.setQueryParameter("traffic_model", "best_guess");
+
+          dataRequest.send().then((response) => {
+            console.log('--> data loaded from adapter', response);
+            this.distance = response.responseJSON;
+            console.debug('Schedule calc data', this.distance.rows[0].elements);
+            resolve(this.distance.rows[0].elements);
+          }, (failure) => {
+            console.log('--> failed to load data', failure);
+            resolve('error')
+          })
+        });
+  }
+}
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.70">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!--  2.71 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading2">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse2" aria-expanded="false" aria-controls="collapse2">Using Direct Update and Remote Disable features</a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create web resources package and test direct update capabilities. Remotely disable application and add notification
+                <br>
+                <b>Time to complete:</b> 15 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.71
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gVOet522SbE"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.71">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!--  2.72 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading3">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse3" aria-expanded="false" aria-controls="collapse3">Inspect Operational Analytics capabilities</a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Enable client-side log collection and add logging on failure during user authentication. Display errors via custom charts inside analytics console
+                <br>
+                <b>Time to complete:</b> 20 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.72
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/M5i12KZX7Q8"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Handle challenge</p>
+{% highlight javascript %}
+this.AuthHandler.handleChallenge = ((response) => {
+        console.log('--> inside handleChallenge');
+
+        if(response.errorMsg){
+          var msg = response.errorMsg + '<br>';
+          msg += 'Remaining attempts: ' + response.remainingAttempts;
+          WL.Logger.error("Auth error: " + response.errorMsg);
+          WL.Logger.send();
+        }
+
+        this.displayLogin(msg);
+    })
+{% endhighlight %}
+                <br>
+                <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.72">github repository branch</a>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!--  7.8 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading4">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse4" aria-expanded="false" aria-controls="collapse4">Security scan of application binary using Bluemix service</a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Upload application binary to Bluemix service for security scanning and analyze results
+                <br>
+                <b>Time to complete:</b> 5 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 7.8
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xOSBiswRzls"></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- 7.9 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading5">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Using MQA service report a bug and distribute application</a>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create Mobile Quality Assurance service instance on Bluemix and using {{ site.data.keys.mf_cli }} add MQA libraries for hybrid application instrument mobile application and report a first bug
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 7.9
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lxoqP5FbX_0"></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!--  7.10 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading6">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse6" aria-expanded="false" aria-controls="collapse6">Move local Node.js app to Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create a Cloud Foundry application runtime for Node.js. Prepare local Mock Server and then push it to Bluemix
+                <br>
+                <b>Time to complete:</b> 35 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 7.10
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JzPYTwgqUVM"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Package dependencies</p>
+{% highlight javascript %}
+"dependencies": {
+  "express": "4.13.x",
+  "cfenv": "1.0.x",
+  "passport-mfp-token-validation": "8.0.x",
+  "request": "2.74.x",
+  "path": "0.12.x",
+  "compression": "1.6.x",
+  "body-parser": "1.15.x",
+  "cors": "2.8.x"
+}
+{% endhighlight %}
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- 6.7 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading7">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse7" aria-expanded="false" aria-controls="collapse7">Create {{ site.data.keys.mf_server }} instance using Bluemix service</a>
+            </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Create server instance, add remote server definition, deploy required adapters and import application version from local server
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 6.7
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iFCDyGC88ME"></iframe>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- 9.5 -->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="heading8">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse8" aria-expanded="false" aria-controls="collapse8">Prepare mobile app for distribution</a>
+            </h4>
+        </div>
+        <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Switch Angular/Ionic to production mode, prepare icon and splash screen, create keystore, build binary for release and sign and then distribute using Mobile Quality Assurance service
+                <br>
+                <b>Time to complete:</b> 20 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 9.5
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iHkWAS7831w"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Terminal commands</p>
+{% highlight sh %}
+keytool -genkey -v -keystore identity.keystore -alias ibm -keyalg RSA -keysize 2048 -validity 10000
+
+ionic build android --release
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /home/ibm/dev/workspaces/am/advancedMessenger/identity.keystore /home/ibm/dev/workspaces/am/advancedMessenger/platforms/android/build/outputs/apk/android-release-unsigned.apk ibm
+
+/home/ibm/dev/sdk/build-tools/23.0.3/zipalign -v 4 /home/ibm/dev/workspaces/am/advancedMessenger/platforms/android/build/outputs/apk/android-release-unsigned.apk /home/ibm/dev/workspaces/am/advancedMessenger/platforms/android/build/outputs/apk/advancedMessenger_0.0.1.apk
+{% endhighlight %}
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
