@@ -39,4 +39,4 @@ At the heart of a PWA is the concept of a service worker. In this video, you'll 
   </div>
 </div>
 
-You can use this video as a starting point and build your web application to include more progressive web app features. 
+You can use this video as a starting point and build your web application to include more progressive web app features. [Download the complete source code of the project demonstrated here](https://ibm.box.com/v/PWAwithMFP).
