@@ -42,7 +42,7 @@ Any database can be chosen by the customer for enabling beacon data persistence.
 
 The following section explains how to create the Cloudant service in Bluemix, and the documents for beacons, triggers and associations.
 
- Log-in to [Bluemix](www.bluemix.net).
+ Log-in to [Bluemix](https://console.bluemix.net).
 
 #### Create Cloudant service on Bluemix
 
