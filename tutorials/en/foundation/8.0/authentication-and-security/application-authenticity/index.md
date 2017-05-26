@@ -107,7 +107,7 @@ To mitigate such potential issues, the **static** validation algorithm is availa
 To switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
 
 ```bash
-app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
 ```
 `TYPE` can either be `dynamic` or `static`.
 
