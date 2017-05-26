@@ -6,7 +6,7 @@ relevantTo: [xamarin]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral 
+## Visão Geral
 {: #overview }
 O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
@@ -58,37 +58,38 @@ andaime do aplicativo do qual você fará download na próxima etapa)
    /// <value>O cliente worklight.</value>
    public static IWorklightClient WorklightClient {get; set;}
    ```
-* Se você estiver desenvolvendo para iOS, cole o código a seguir dentro do método **FinishedLaunching** do arquivo **AppDelegate.cs**:
+* Se estiver desenvolvendo para iOS, cole o código a seguir no método **FinishedLaunching** do arquivo **AppDelegate.cs**:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
-* Se você estiver desenvolvendo para Android, inclua a linha de código a seguir dentro do método **OnCreate** do arquivo
-**MainActivity.cs**:
+  >Substitua `<ClassName>` pelo nome de sua classe.
+* Se estiver desenvolvendo para Android, inclua a linha de código a seguir no método **OnCreate** do arquivo **MainActivity.cs**:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Substitua `<ClassName>` pelo nome de sua classe.
 * Defina um método para obter o token de acesso e execute uma solicitação de recurso para o MFP Server, conforme abaixo.
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
 
             }
@@ -101,7 +102,7 @@ andaime do aplicativo do qual você fará download na próxima etapa)
            }
     }
    ```
-  
+
 * Chame o método **ObtainToken** dentro de um construtor de classe ou clicando em um botão.
 
 ### 4. Implemente um adaptador

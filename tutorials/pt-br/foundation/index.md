@@ -13,4 +13,3 @@ use_dropdown_home: foundation/8.0/all-tutorials
 Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the MobileFirst software Development Kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product_adj }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
 
 [{{ site.data.keys.product_full }} 8.0 documentation]({{site.baseurl}}/tutorials/pt-br/foundation/8.0/all-tutorials/).
-

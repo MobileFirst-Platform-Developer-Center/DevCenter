@@ -113,7 +113,7 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * 要**推送**配置文件
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -125,7 +125,7 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * 要**推送**配置文件
   ```bash
   mfpdev adapter push
@@ -229,6 +229,11 @@ public class JavaAdapterResource {
 
 > 您可以使用许多其他注释。请参阅此处的 **Annotation Types Summary**：
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
+
+>**要点：**如果在适配器实现中使用对 `javax.ws.rs.*` 或 `javax.servlet.*` 中的类的静态引用，那么应确保使用以下选项之一来配置 **RuntimeDelegate**：
+*	在 Liberty `jvm.options` 中设置 `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`，或者
+*	设置系统属性或 JVM 定制属性 `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`
+
 
 ## HTTP 会话
 

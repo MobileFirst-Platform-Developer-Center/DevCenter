@@ -31,6 +31,8 @@ verwendet.
 * [Client auf einem mobilen Android-Gerät installieren](#installing-the-client-on-an-android-mobile-device)
 * [Client auf einem mobilen iOS-Gerät installieren](#installing-the-client-on-an-ios-mobile-device)
 * [Client auf einem mobilen Gerät mit Windows Phone 8 Universal installieren](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [Windows-10-UWP-Client auf einem Windows-10-Gerät installieren](#installing-windows-10-uwp-client-on-windows-10-device)
+* [Windows-10-UWP-Anwendung installieren und Kommentare hinzufügen](#installing-a-windows-10-uwp-application-and-adding-review-comments)
 * [Anmeldeansicht](#the-login-view)
 * [Ansichten im Application-Center-Client](#views-in-the-application-center-client)
 * [Anwendung auf einem Android-Gerät installieren](#installing-an-application-on-an-android-device)
@@ -84,7 +86,7 @@ SSL-Zertifikate, die der Benutzer auf dem Gerät installiert hat. Wenn das selbs
     Bevor Sie den mobilen Client in der Liste der verfügbaren Anwendungen sehen können, muss der Application-Center-Administrator die mobile Clientanwendung installieren. Der Administrator lädt den mobilen Client in das Application Center hoch und setzt die Eigenschaft **Installer** auf **true** (siehe [Anwendungseigenschaften](../appcenter-console/#application-properties)).
 
     ![Liste der für die Installation verfügbaren mobilen Clientanwendungen](ac_instal_client_and1.jpg)
-    
+
 5. Wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen.Zu diesen Details gehören üblicherweise der Anwendungsname und die Nummer der Anwendungsversion.
 
     ![Anwendungsdetails](ac_app_details.jpg)
@@ -97,7 +99,7 @@ Möglicherweise erscheint eine Warnung zu potenziell gefährlichen Dateien. Gebe
 8. Wählen Sie das Application-Center-Clientinstallationsprogramm aus. Sie können die der Anwendung erteilten Zugriffsrechte sehen, wenn Sie die Anwendung zur Installation auswählen.
 
     ![Installation des mobilen Clients unter Android](ac_instal_client_and_rights.jpg)
-    
+
 9. Wählen Sie **Installieren** aus, um den mobilen Client zu installieren.
 10. Wenn die Anwendung installiert ist, wählen Sie **Öffnen** aus, um den mobilen Client zu öffnen, oder **Fertig**, um die Anwendung "Downloads" zu schließen.
 
@@ -122,8 +124,9 @@ installieren.
 Sie können den mobilen Client oder eine signierte Anwendung, die mit der Installationsmarkierung versehen ist,
 auf Ihrem mobilen iOS-Gerät installieren, indem Sie die Zugriffs-URL in Ihrem Browser eingeben, Ihre Berechtigungsnachweise eingeben und die erforderlichen Schritte ausführen.
 
-> **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den
-Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).Die JNDI-Eigenschaft **ibm.appcenter.ios.plist.onetimeurl** der
+> **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).
+
+Die JNDI-Eigenschaft **ibm.appcenter.ios.plist.onetimeurl** der
 IBM Application-Center-Services steuert, ob bei Installation des mobilen Clients auf einem mobilen iOS-Gerät Einmal-URLs verwendet werden. Setzen Sie diese Eigenschaft auf "false", um die maximale Sicherheit zu gewährleisten. Wenn Sie diese Eigenschaft auf "false" setzen, müssen Benutzer ihre Berechtigungsnachweise bei Installation des mobilen Clients mehrfach angeben,
 einmal bei Auswahl des Clients und einmal bei Installation des Clients.
 
@@ -176,16 +179,16 @@ signierte Zertifikate einer Zertifizierungsstelle in einer Application-Center-Te
 SSL-Zertifikate, die der Benutzer auf dem Gerät installiert hat. Wenn das selbst signierte Zertifikat einer Zertifizierungsstelle nicht auf dem Gerät installiert ist, hindert das Betriebssystem iOS Sie daran,
 in den folgenden Schritten den mobilen Client herunterzuladen.
 
-    
+
     Bevor Sie den mobilen Client in der Liste der verfügbaren Anwendungen sehen können, muss der Application-Center-Administrator die mobile Clientanwendung installieren. Der Administrator lädt den mobilen Client in das Application Center hoch und setzt die Eigenschaft **Installer** auf **true** (siehe [Anwendungseigenschaften](../appcenter-console/#application-properties)).
-    
+
 5. Tippen Sie auf das Register **Installationsprogramme** und wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen.
 6. Tippen Sie auf **Installieren**, um den mobilen Client herunterzuladen. 
 7. Geben Sie Ihre Berechtigungsnachweise ein, um die Downloader-Transaktion zu autorisieren.
 8. Tippen Sie zum Autorisieren des Downloads auf **Install**.
 
     ![App-Installation bestätigen](ac_instal_client_ios_conf.jpg)
-    
+
 9. Geben Sie Ihre Berechtigungsnachweise ein, um die Installation zu autorisieren.
 10. Schließen Sie den Browser. 
 
@@ -207,9 +210,7 @@ werden.
 Generell können iOS-Anwendungen nur auf dem Gerät installiert werden, wenn sie mit einem Bereitstellungsprofil signiert sind
 (siehe [Projekt importieren und erstellen (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone)).
 
-Wenn unter iOS ab Version 9 eine Unternehmensanwendung geöffnet wird, kann abhängig vom Bereitstellungsprofil die Nachricht
-"Untrusted Enterprise Developer" angezeigt werden, um anzugeben, dass das Bereitstellungsprofil auf diesem Gerät noch nicht anerkannt
-wird. Die Anwendung wird in dem Fall erst geöffnet, wenn dieses Bereitstellungsprofil anerkannt ist. Die Anerkennung ist pro Bereitstellungsprofil einmal erforderlich. 
+Wenn unter iOS ab Version 9 eine Unternehmensanwendung geöffnet wird, kann abhängig vom Bereitstellungsprofil die Nachricht Untrusted Enterprise Developer angezeigt werden, um anzugeben, dass das Bereitstellungsprofil auf diesem Gerät noch nicht anerkannt wird. Die Anwendung wird in dem Fall erst geöffnet, wenn dieses Bereitstellungsprofil anerkannt ist. Die Anerkennung ist pro Bereitstellungsprofil einmal erforderlich. 
 
 Gehen Sie für die Anerkennung eines Bereitstellungsprofils nach Installation der Anwendung wie folgt vor: 
 
@@ -225,9 +226,7 @@ Gehen Sie für die Anerkennung eines Bereitstellungsprofils nach Installation de
 **Unternehmens-Apps** sehen Sie das Bereitstellungsprofil für die App. 
 2. Tippen Sie auf das Profil und bestätigen Sie dessen Anerkennung. 
 
-Nach Bestätigung der Anerkennung
-wird für keine Anwendung, die dieses Bereitstellungsprofil verwendet, die Nachricht
-"Untrusted Enterprise Developer" angezeigt. Weitere Informatinen finden Sie auf der
+Nach Bestätigung der Anerkennung wird für keine Anwendung, die dieses Bereitstellungsprofil verwendet, die Nachricht Untrusted Enterprise Developer angezeigt. Weitere Informatinen finden Sie auf der
 Apple-Website unter [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
 
 ## Client auf einem mobilen Gerät mit Windows Phone 8 Universal installieren
@@ -260,17 +259,17 @@ Standardbrowser für mobile Geräte sind. Falls die Seite **installers.html** au
 
     ![Installation von Token und Anwendungen auf einem
 Windows-Phone-Gerät vorbereiten](ac_wp8_toolbar_inst_app.jpg)
-    
+
 4. Tippen Sie auf **Token** und wählen Sie in der Liste der verfügbaren Token ein Anwendungsregistrierungstoken
 aus, um die Tokendetails anzuzeigen.
 
     ![Token für Anwendungsregistrierung auf einem Windows-Phone-Gerät](ac_wp8_aet_details.jpg)
-    
+
 5. Tippen Sie auf **Hinzufügen**, um das Anwendungsregistrierungstoken herunterzuladen.
 6. Tippen Sie auf **Hinzufügen**, um das Unternehmenskonto hinzuzufügen.
 
     ![Unternehmenskonto auf einem Windows-8-Universal-Gerät hinzufügen](ac_wp8_add_co_account.jpg)
-    
+
     Windows Phone 8
 gibt keine Rückmeldung zum Hinzufügen des Unternehmenskontos.
 
@@ -280,12 +279,12 @@ gibt keine Rückmeldung zum Hinzufügen des Unternehmenskontos.
 
     ![Zum Download auf ein
 Windows-Phone-Gerät ausgewählte Anwendung](ac_wp8_app_details.jpg)
-    
+
 10. Tippen Sie auf **Installieren**, um die Anwendung zu installieren.
 
     ![Heruntergeladene Anwendung auf einem Windows-Phone-Gerät
 installieren](ac_wp8_app_install.jpg)
-    
+
     Windows 8 Universal
 gibt keine Rückmeldung zur Installation der Anwendung.
 
@@ -295,6 +294,54 @@ Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Min
 Fehlernachrichten.
 Nach Abschluss der Installation sollte die mobile Clientanwendung unter
 Windows Phone in Ihrer Anwendungsliste verfügbar sein.
+
+## Windows-10-UWP-Client auf einem Windows-10-Gerät installieren
+{: #installing-windows-10-uwp-client-on-windows-10-device }
+
+Sie können den mobilen Client oder eine signierte Anwendung, die mit der Installationsmarkierung versehen ist, unter Windows 10 installieren, indem Sie die Zugriffs-URL in Ihrem Browser eingeben, Ihre Berechtigungsnachweise eingeben und die erforderlichen Schritte ausführen. 
+
+1. Starten Sie den Browser auf Ihrem mobilen Gerät.
+
+2. Geben Sie die folgende Zugriffs-URL im Adresstextfeld ein: `http://Hostname:Portnummer/applicationcenter/installers.html?os=Windows`. Hier steht `Hostname` für die Adresse des Servers und `Portnummer` für die Nummer des Ports der Application-Center-Installation. Ihr Systemadministrator kann diese Informationen bereitstellen.
+
+    Es gibt auch eine alternative Application-Center-URL für die Installation des Clients auf einem mobilen Gerät: `http://Hostname:Portnumber/applicationcenter/inst.html?os=Windows`. Die Seite mit dieser URL funktioniert besser bei einigen älteren Web-Browsern und solchen Web-Browsern, die keine
+Standardbrowser für mobile Geräte sind. Falls die Seite *installers.html* auf Ihrem mobilen Gerät nicht funktioniert, können Sie
+*inst.html* verwenden. Diese Seite wird nur auf Englisch bereitgestellt. Sie ist nicht in andere Sprachen übersetzt.
+
+3.  Geben Sie Ihre Berechtigungsnachweise ein, um den Zugriff auf den Server zu autorisieren.
+
+    ![Eingabe der Berechtigungsnachweise für den Serverzugriff](ac_wp10_enter_credentials.png)
+
+4.  Wählen Sie in der Liste verfügbarer Anwendungen einen Eintrag aus, um die Anwendungsdetails anzuzeigen.
+
+    ![Auswahl einer Anwendung, um die Details anzuzeigen](ac_wp10_apps_list.png)
+
+5.  Tippen Sie auf **Installieren**, um den mobilen Client herunterzuladen und zu installieren. 
+
+    ![Auswahl von 'Installieren', um die Anwendung zu installieren](ac_wp10_app_install.png)
+
+
+> **Hinweis:** Zum Auflisten der Windows-10-UWP-Apps müssen Sie die Abfragezeichenfolge `os=Windows` übergeben. 
+
+## Windows-10-UWP-Anwendung installieren und Kommentare hinzufügen
+{:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
+
+1. Melden Sie sich beim Application Center an.
+
+    ![Anmeldung beim Application Center](ac_wp10_login.png)
+
+2. Wählen Sie im Katalog in der Liste der verfügbaren Anwendungen die zu installierende Anwendung aus. 
+
+    ![Auswahl einer Anwendung im Katalog](ac_wp10_catalog_applisting.png)
+
+3. Tippen Sie auf **Installieren**, um die Anwendung herunterzuladen und zu installieren. 
+
+    ![Auswahl von 'Installieren', um die Anwendung zu installieren](ac_wp10_app_details_installapp.png)
+
+4. Erstellen Sie eine Rezension zur Anwendung, indem Sie eine Bewertung abgeben und Kommentare hinzufügen. 
+
+    ![Hinzufügen von Kommentaren](ac_wp10_add_review.png)
+
 
 ## Anmeldeansicht
 {: #the-login-view }
@@ -510,14 +557,14 @@ Von der Ansicht
 zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen.
 
     ![Anwendungsinstallation auf Ihrem iOS-Gerät abbrechen](ac_app_inst_cancel_ios.jpg)
-    
+
     Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht. Wenn die Anwendung erfolgreich installiert wurde, wird sie als bevorzugte
 App markiert.
 
     Für die Installation einer Anwendung auf einem Gerät wird eine Bereitstellungsdatei benötigt. Wenn Sie versehentlich versuchen, eine für Ihr Gerät nicht gültige
 Anwendung zu installieren, erscheint unter iOS
 bis Version 6 (nicht weiter unterstützt) eine Fehlernachricht. 
-    
+
 Im Gegensatz zum
 Android-Client ändert sich die Beschriftung der Schaltfläche **Installieren** in der Ansicht
 **Details** nicht in
@@ -536,9 +583,7 @@ Wenn die Anwendung auf dem Gerät installiert ist, können Sie sie öffnen.
 Generell können iOS-Anwendungen nur auf dem Gerät installiert werden, wenn sie mit einem Bereitstellungsprofil signiert sind
 (siehe [Projekt importieren und erstellen (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone)).
 
-Wenn unter iOS ab Version 9 eine Unternehmensanwendung geöffnet wird, kann abhängig vom Bereitstellungsprofil die Nachricht
-Untrusted Enterprise Developer angezeigt werden, um anzugeben, dass das Bereitstellungsprofil auf diesem Gerät noch nicht anerkannt
-wird. Die Anwendung wird in dem Fall erst geöffnet, wenn dieses Bereitstellungsprofil anerkannt ist. Die Anerkennung ist pro Bereitstellungsprofil einmal erforderlich. 
+Wenn unter iOS ab Version 9 eine Unternehmensanwendung geöffnet wird, kann abhängig vom Bereitstellungsprofil die Nachricht Untrusted Enterprise Developer angezeigt werden, um anzugeben, dass das Bereitstellungsprofil auf diesem Gerät noch nicht anerkannt wird. Die Anwendung wird in dem Fall erst geöffnet, wenn dieses Bereitstellungsprofil anerkannt ist. Die Anerkennung ist pro Bereitstellungsprofil einmal erforderlich. 
 
 Gehen Sie für die Anerkennung eines Bereitstellungsprofils nach Installation der Anwendung wie folgt vor: 
 
@@ -554,9 +599,7 @@ Gehen Sie für die Anerkennung eines Bereitstellungsprofils nach Installation de
 **Unternehmens-Apps** sehen Sie das Bereitstellungsprofil für die App. 
 2. Tippen Sie auf das Profil und bestätigen Sie dessen Anerkennung. 
 
-Nach Bestätigung der Anerkennung
-wird für keine Anwendung, die dieses Bereitstellungsprofil verwendet, die Nachricht
-Untrusted Enterprise Developer angezeigt. Weitere Informatinen finden Sie auf der
+Nach Bestätigung der Anerkennung wird für keine Anwendung, die dieses Bereitstellungsprofil verwendet, die Nachricht Untrusted Enterprise Developer angezeigt. Weitere Informatinen finden Sie auf der
 Apple-Website unter [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
 
 ## Anwendung auf einem Windows-Phone-Gerät
@@ -582,7 +625,7 @@ zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen. Die Anw
 
     ![Installation einer Unternehmensanwendung auf einem
 Windows-Phone-Gerät bestätigen oder abbrechen](ac_confirm_instal_app_wp.jpg)
-    
+
 > **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum
 Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der
 Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. Folgende Fehlernachrichten können angezeigt werden:
@@ -626,7 +669,7 @@ der zu installierenden Anwendung digital signiert wurde. Das Betriebssystem Wind
 Fehler mit **HRESULT 0x81030110** zurück. Wenn Sie das
 PFX-Zertifikat erneuern, müssen Sie mit diesem neuen Zertifikat nochmals alle entwickelten Anwendungen
 in Ihrem Application-Center-Katalog digital signieren.
-> 
+>
 Wenn Sie Ihr digitales
 PFX-Signaturzertifikat erneuern, müssen Sie auch das Registrierungstoken erneuern und in der Application-Center-Konsole
 implementieren.
@@ -701,6 +744,7 @@ Windows-Store-Anwendungen an.
 3. Tippen Sie auf **Installieren**, um die Anwendung zu installieren.Wenn die Anwendung bereits installiert ist und andere Versionen verfügbar sind, können Sie ein Update auf eine aktuellere Version durchführen oder zu einer
 älteren Version zurückkehren.
 
+
 ## Anwendungen aus öffentlichen App Stores installieren
 {: #installing-applications-through-public-app-stores }
 Sie können den mobilen Client mit Anwendungen verlinken, die in unterstützten öffentlichen App Stores
@@ -723,10 +767,10 @@ Anwendungsdetails zu sehen.Anstelle von "Installieren" sehen Sie "Zum Store".
 
     **Android**
     ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Google Play zugreifen](ac_and_link_app.jpg)
-    
+
     **iOS**
     ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Apple iTunes zugreifen](ac_ios_link_app.jpg)
-    
+
 3. Installieren Sie die Anwendung mit dem üblichen Verfahren des öffentlichen App Store.
 
 ## Installierte Anwendung entfernen
@@ -762,7 +806,7 @@ einer bestimmten Anwendungsversion auf einem Windows-Phone-, Android- oder
 iOS-Telefon an. 
     * Tippen Sie auf **Version auswählen**, um zur Ansicht mit der Versionsliste zu navigieren.
     ![In der Liste der Versionen auf einem Windows-Phone-, Android- oder iOS-Telefon ausgewählte
-Version einer Anwendung](ac_version_select.jpg) 
+Version einer Anwendung](ac_version_select.jpg)
     * Tippen Sie auf die betreffende Anwendungsversion.Die Ansicht **Details** wird aktualisiert und zeigt die Details der ausgewählten Anwendungsversion an.
 3. Nur Windows:
 Zeigen Sie die Details einer bestimmten Version einer Windows-Store-Anwendung
@@ -835,7 +879,7 @@ dem Installationsablauf zu beginnen.
 3. Tippen Sie auf **Öffnen**, um die aktualisierte Anwendung zu starten.
 
     ![Aktualisierte Anwendung starten](ac_client_autoupgrade_start_app.jpg)
-    
+
 Sie müssen sich bei der aktualisierten Anwendungsversion anmelden, um sie ausführen zu können.
 
 ![Anmeldung bei der neuen Version der Clientanwendung](ac_client_autoupgrade_login_new_version.jpg)

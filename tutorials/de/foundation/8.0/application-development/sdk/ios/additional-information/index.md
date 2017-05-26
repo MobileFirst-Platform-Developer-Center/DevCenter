@@ -1,27 +1,37 @@
 ---
 layout: tutorial
-title: Additional Information
-breadcrumb_title: additional information
+title: Zusätzliche Informationen
+breadcrumb_title: Zusätzliche Informationen
 relevantTo: [ios]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Working with bitcode in iOS apps
+### Bitcode in iOS-Apps verwenden
 {: #working-with-bitcode-in-ios-apps }
-* The application-authenticity security check is not supported with bitcode.
-* watchOS applications require bitcode enabled.
+* Die Sicherheitsüberprüfung der Anwendungsauthentizität wird nicht
+mit Bitcode unterstützt. 
+* Für watchOS-Anwendungen muss Bitcode aktiviert sein. 
 
-To enable bitcode, in your Xcode project navigate to the **Build Settings** tab and set **Enable Bitcode** to **Yes**.
+Navigieren Sie zum Aktivieren von Bitcode in Ihrem Xcode-Projekt zur Registerkarte **Build Settings** und setzen Sie **Enable Bitcode** auf **Yes**.
 
-### Enforcing TLS-secure connections in iOS apps
+### TLS-gesicherte Verbindungen in iOS-Apps erzwingen
 {: #enforcing-tls-secure-connections-in-ios-apps }
-Starting from iOS 9, Transport Layer Security (TLS) protocol version 1.2 must be enforced in all apps. You can disable this protocol and bypass the iOS 9 requirement for development purposes.
+Ab iOS 9 muss in allen Apps TLS (Transport Layer Security) Version 1.2 umgesetzt werden. Für Entwicklungszwecke können Sie dieses
+Protokoll inaktivieren und diese Anforderung von iOS 9 umgehen. 
 
-Apple App Transport Security (ATS) is a new feature of iOS 9 that enforces best practices for connections between the app and the server. By default, this feature enforces some connection requirements that improve security. These include client-side HTTPS requests and server-side certificates and connection ciphers that conform to Transport Layer Security (TLS) version 1.2 using forward secrecy.
+Apple ATS (App Transport Security) ist ein neues Feature von iOS 9, das für Verbindungen zwischen der App und dem Server
+bewährte Verfahren umsetzt. Standardmäßig werden mit diesem Feature bestimmte Verbindungsvoraussetzungen
+zur Erhöhung der Sicherheit durchgesetzt. Dazu gehören clientseitige HTTPS-Anforderungen
+und serverseitige Zertifikate und Verbindungsschlüssel gemäß Transport Layer Security (TLS) Version 1.2 mit zukunftssicherer Geheimhaltung. 
 
-For **development purposes**, you can override the default behavior by specifying an exception in the info.plist file in your app, as described in App Transport Security Technote. However, in a **full production** environment, all iOS apps must enforce TLS-secure connections for them to work properly.
+Für **Entwicklungszwecke** können Sie das Standardverhalten außer Kraft setzen und in der Datei info.plist Ihrer App eine
+Ausnahme angeben (siehe "App Transport Security Technote"). In einer **reinen Produktionsumgebung** funktionieren jedoch sämtliche iOS-Apps nur,
+wenn sie TLS-gesicherte Verbindungen umsetzen. 
 
-To enable non-TLS connections, the following exception must appear in the **project-name-info.plist** file in the **project-name\Resources** folder:
+Wenn Nicht-TLS-Verbindungen
+ermöglicht werden sollen, muss in der Datei
+**Projektname-info.plist** im Ordner
+**Projektname\Resources** die folgende Ausnahme erscheinen: 
 
 ```xml
 <key>NSExceptionDomains</key>
@@ -40,10 +50,10 @@ To enable non-TLS connections, the following exception must appear in the **proj
     </dict>
 ```
 
-To prepare for production
+Vorbereitung für die Produktion: 
 
-1. Remove, or comment out the code that appears earlier in this page.  
-2. Set up the client to send HTTPS requests by using the following entry to the dictionary:  
+1. Entfernen Sie Teile des oben aufgeführten Codes oder setzen Sie Teile des Codes auf Kommentar.   
+2. Konfigurieren Sie den Client mit dem folgenden Verzeichniseintrag, sodass er HTTPS-Anforderungen sendet:   
 
    ```xml
    <key>protocol</key>
@@ -53,53 +63,83 @@ To prepare for production
    <string>10443</string>
    ```
    
-   The SSL port number is defined on the server in **server.xml** in the `httpEndpoint` definition.
+   Die SSL-Portnummer wird auf dem Server
+in der
+`httpEndpoint`-Definition der Datei **server.xml** festgelegt. 
     
-3. Configure a server that is enabled for the TLS 1.2 protocol. For more information, [see Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
-4. Make settings for ciphers and certificates, as they apply to your setup. For more information, see [App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Secure communications using Secure Sockets Layer (SSL) for WebSphere  Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en), and [Enabling SSL communication for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
+3. Konfigurieren Sie einen Server mit aktiviertem Protokoll TLS 1.2.
+Weitere Informationen finden Sie unter [How to configure {{ site.data.keys.mf_server }}  to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659). 
+4. Legen Sie Einstellungen für Verschlüsselungen und Zertifikate fest, soweit sie in Ihrem Setup anwendbar sind. Weitere Informationen
+finden Sie im [technischen Hinweis zu ATS (App Transport Security)](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/),
+unter [Secure communications using Secure Sockets
+Layer (SSL)](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en) und unter [Enabling SSL communication
+in Liberty](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0). 
 
-### Enabling OpenSSL for iOS
+### OpenSSL für iOS aktivieren
 {: #enabling-openssl-for-ios }
-The {{ site.data.keys.product_adj }} iOS SDK uses native iOS APIs for cryptography. You can configure {{ site.data.keys.product_full }} to use the OpenSSL cryptography library in iOS apps.
+Das {{ site.data.keys.product_adj }}-iOS-SDK verwendet
+für die Verschlüsselung native iOS-APIs. Sie können
+die {{ site.data.keys.product_full }} so konfigurieren, dass
+in iOS-Apps die OpenSSL-Verschlüsselungsbibliothek verwendet wird. 
 
-Encryption/decryption is provided with the following APIs: `WLSecurityUtils.encryptText()` and `WLSecurityUtils.decryptWithKey()`.
+Die Verschlüsselung/Entschlüsselung erfolgt mit den
+APIs
+`WLSecurityUtils.encryptText()` und
+`WLSecurityUtils.decryptWithKey()`. 
 
-#### Option 1: Native encryption and decryption
+#### Option 1: Native Verschlüsselung und Entschlüsselung
 {: #option-1-native-encryption-and-decryption }
-Native encryption and decryption is provided by default, without using OpenSSL. This is equivalent to explicitly setting the encryption or decryption behavior as follows:
+Für die native Ver- und Entschlüsselung wird standardmäßig kein OpenSSL verwendet. Die entspricht der folgenden expliziten Festlegung des
+Ver- und Entschlüsselungsverhaltens: 
 
 ```xml
 WLSecurityUtils enableOSNativeEncryption:YES
 ```
 
-#### Option 2: Enabling OpenSSL
+#### Option 2: OpenSSL aktivieren
 {: #option-2-enabling-openssl }
-OpenSSL is disable by default. To enable it, proceed as follows:
+OpenSSL
+ist standardmäßig inaktiviert. Gehen Sie für die Aktivierung wie folgt vor: 
 
-1. Install the OpenSSL frameworks:
-    * With CocoaPods: Install the `IBMMobileFirstPlatformFoundationOpenSSLUtils` pod with CocoaPods.
-    * Manually in Xcode: Link the `IBMMobileFirstPlatformFoundationOpenSSLUtils` and openssl frameworks manually in the Link Binary With Libraries section of the Build Phases tab.
-2. The following code enables the OpenSSL option for the encryption/decryption:
+1. Installieren Sie die OpenSSL-Frameworks:
+    * CocoaPods: Installieren Sie mit CocoaPods den Pod `IBMMobileFirstPlatformFoundationOpenSSLUtils`. 
+    * Xcode: Verbinden Sie die Frameworks `IBMMobileFirstPlatformFoundationOpenSSLUtils` und
+"openssl" manuell im Abschnitt "Link Binary With
+Libraries" der Registerkarte "Build Phases". 
+2. Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung
+aktiviert: 
 
    ```xml
    WLSecurityUtils enableOSNativeEncryption:NO
    ```
     
-   The code will now use the OpenSSL implementation if found and otherwise throw an error if the frameworks are not installed correctly.
+   Wenn der Code jetzt die
+OpenSSL-Implementierung findet, wird er sie verwenden. Sind die Frameworks nicht ordnungsgemäß installiert, gibt der Code einen Fehler aus. 
 
-With this setup, the encryption/decryption calls use OpenSSL as in previous versions of the product.
+Bei diesem Setup verwenden
+die Verschlüsselungs-/Entschlüsselungsaufrufe OpenSSL wie in
+früheren Vorgängerversionen des Produkts. 
 
-### Migration options
+### Migrationsoptionen
 {: #migration-options }
-If you have an {{ site.data.keys.product_adj }} project that was written in an earlier version, you might need to incorporate changes to continue using OpenSSL.
-    * If the application is not using encryption/decryption APIs and no encrypted data is cached on the device, no action is needed.
-    * If the application is using encryption/decryption APIs, you have the option of using these APIs with or without OpenSSL.
+Wenn Sie ein Projekt in einer früheren Version der {{ site.data.keys.product_adj }}
+geschrieben haben, müssen Sie möglicherweise einige Änderungen vornehmen, um OpenSSL weiter verwenden zu können. 
+    * Wenn die Anwendung keine Verschlüsselungs-/Entschlüsselungs-APIs verwendet, und keine verschlüsselten Daten auf dem Gerät zwischengespeichert werden, ist keine
+Aktion erforderlich. 
+    * Verwendet die Anwendung Verschlüsselungs-/Enschlüsselungs-APIs, können Sie diese APIs mit oder ohne OpenSSL nutzen. 
 
-#### Migrating to native encryption
+#### Umstellung auf native Verschlüsselung
 {: #migrating-to-native-encryption }
-1. Make sure the default native encryption/decryption option is chosen (see Option 1).
-2. Migrating cached data: If the previous installation of {{ site.data.keys.product_full }} saved encrypted data to the device using OpenSSL, OpenSSL frameworks must be installed as described in Option 2. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. If the OpenSSL framework is not installed an error is thrown. This way the data will be auto-migrated to native encryption allowing subsequent releases to work without the OpenSSL framework.
+1. Stellen Sie sicher, dass die Standardoption für native Verschlüsselung/Entschlüsselung ausgewählt ist (siehe Option 1). 
+2. Umstellung zwischengespeicherter Daten: Wenn in der bisherigen Installation der
+{{ site.data.keys.product_full }} verschlüsselte Daten mit OpenSSL
+auf dem Gerät gespeichert wurden, müssen die OpenSSL-Frameworks wie unter
+Option 2 beschrieben installiert werden. Wenn die Anwendung zum ersten Mal versucht, Daten zu entschlüsseln, wird sie wie gewohnt auf
+OpenSSL zurückgreifen, für die Verschlüsselung dann aber die native Verschlüsselung verwenden. Wenn das OpenSSL-Framework nicht installiert ist, wird ein Fehler
+ausgelöst. Auf diese Weise werden die Daten automatisch auf die native Verschlüsselung umgestellt. Außerdem ist es so möglich, dass spätere Releases ohne das OpenSSL-Framework
+funktionieren können. 
 
-#### Continuing with OpenSSL
+#### Weiterverwendung von OpenSSL
 {: #continuing-with-openssl }
-If OpenSSL is required use the setup described in Option 2.
+Wenn OpenSSL erforderlich ist, verwenden Sie das unter Option
+2 beschriebene Setup. 

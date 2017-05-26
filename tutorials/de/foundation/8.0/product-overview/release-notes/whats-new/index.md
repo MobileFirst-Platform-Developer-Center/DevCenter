@@ -396,7 +396,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                 </ul>
 
                 <p>Die in der {{ site.data.keys.mf_analytics_console }} angezeigten Inhalte hängen jetzt von der Sicherheitsrolle des angemeldeten Benutzers ab.<br/>
-                Weitere Informationen finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Rollenbasierte Zugriffsstuerung</a>.</p>
+                Weitere Informationen finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Rollenbasierte Zugriffssteuerung</a>.</p>
 
                 <p>{{ site.data.keys.mf_analytics_server }} verwendet Elasticsearch Version 1.7.5.</p>
 

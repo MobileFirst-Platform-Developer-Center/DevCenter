@@ -1,20 +1,31 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst SDK
+title: MobileFirst-SDK hinzufügen
 weight: 1
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Overview
+### Übersicht
 {: #overview }
-The {{ site.data.keys.product }} client SDKs provide a set of API methods that enable developers to implement various {{ site.data.keys.product_adj }} features, such as: authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and lots more.
+Die {{ site.data.keys.product }}-Client-SDKs stellen eine Reihe von API-Methoden bereit, mit denen Entwickler diverse {{ site.data.keys.product_adj }}-Features wie Authentifizierungs- und Sicherheitsmechanismen, Push- und SMS-Benachrichtigungen, Ressourcenanforderungen, Erfassung von Analysedaten und viele weitere implementieren können. 
 
-You can develop **mobile or Desktop web applications** by using your preferred development environment and tools, and add {{ site.data.keys.product_adj }} features and capabilities to your client application as well as support for analytics data gathering
+Sie können **mobile oder Desktop-Webanwendungen** in Ihrer bevorzugten Entwicklungsumgebung und mit Ihren bevorzugten Tools entwickeln und zu Ihrer Clientanwendung {{ site.data.keys.product_adj }}-Features und -Funktionen sowie Unterstützung für die Erfassung von Analysedaten hinzufügen. 
 
-To create **Cordova apps** that are enabled for {{ site.data.keys.product_adj }} features, you use your preferred development tools that support Cordova such as the Apache Cordova CLI or Ionic and others. You obtain some software, such as plug-ins, code to support various target platforms, command-line tools, or an IDE directly from the supplier of your development tools. Then, to use {{ site.data.keys.product_adj }} capabilities, such as back-end services of {{ site.data.keys.mf_server }}, you add Cordova plug-ins that support {{ site.data.keys.product_adj }} features to your app. These plug-ins are included in the {{ site.data.keys.mf_dev_kit_full }}. You can also download these plug-ins from npm.
+Wenn Sie **Cordova-Apps** erstellen, die in der Lage sind, {{ site.data.keys.product_adj }}-Features auszuführen, verwenden Sie Ihre bevorzugten Entwicklungstools mit Cordova-Unterstützung, z. B. die
+Apache-Cordova-CLI oder Ionic und andere. Softwarecode für die Untertsützung verschiedener Zielplattformen, Befehlszeilentools oder einer IDE können Sie in Form von Plug-ins direkt
+beim Anbieter Ihrer Entwicklungstools anfordern.
+Nutzen Sie dann die
+{{ site.data.keys.product_adj }}-Funktionalität,
+z. B. die Back-End-Services von
+{{ site.data.keys.mf_server }},
+um Cordova-Plug-ins mit Unterstützung
+für {{ site.data.keys.product_adj }}-Features zu Ihrer App hinzuzufügen. Diese Plug-ins sind Teil des
+{{ site.data.keys.mf_dev_kit_full }}.
+Sie können diese Plug-ins auch von npm herunterladen. 
 
-To develop **native iOS/Android/Windows applications**, you must add the {{ site.data.keys.product_adj }} framework files to your Xcode/Android Studio/Visual Studio project.
+Für die Entwicklung **nativer iOS/Android/Windows-Anwendungen** müssen Sie die
+{{ site.data.keys.product_adj }}-Frameworkdateien zu Ihrem Xcode- oder Android-Studio- oder Visual-Studio-Projekt hinzufügen. 
 
-Learn in the following tutorials how to integrate the SDK into your application.  
-To continue, select a tutorial:
+In den folgenden Lernprogrammen erfahren Sie, wie das SDK in Ihre Anwendung integriert wird.   
+Wählen Sie zum Fortfahren ein Lernprogramm aus: 
 

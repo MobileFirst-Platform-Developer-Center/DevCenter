@@ -5,7 +5,9 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-제거된 기능 및 API 요소가 {{ site.data.keys.product_full }} 환경에 영향을 미치는 방식을 주의해서 고려하십시오.#### 다음으로 이동
+제거된 기능 및 API 요소가 {{ site.data.keys.product_full }} 환경에 영향을 미치는 방식을 주의해서 고려하십시오.
+
+#### 다음으로 이동
 {: #jump-to }
 * [v8.0에 포함되지 않는 중단된 기능](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [서버 측 API 변경](#server-side-api-changes)
@@ -171,12 +173,11 @@ weight: 3
 </table>
 
 ## 서버 측 API 변경
-{: #server-side-api-changes}
-
+{: #server-side-api-changes }
 서버 측 {{ site.data.keys.product_adj }} 애플리케이션을 마이그레이션하려면 API 변경사항을 고려하십시오.  
-다음 테이블에는 v8.0에서 중단된 서버 측 API 요소, v8.0에서 더 이상 사용되지 않는 서버 측 API 요소 및 제안된 마이그레이션 경로가 나열됩니다. 애플리케이션의 서버 측 마이그레이션에 대한 자세한 정보는 다음을 참조하십시오.  
+다음 테이블에는 v8.0에서 중단된 서버 측 API 요소, v8.0에서 더 이상 사용되지 않는 서버 측 API 요소 및 제안된 마이그레이션 경로가 나열됩니다. 애플리케이션의 서버 측 마이그레이션에 대한 자세한 정보는 다음을 참조하십시오. 
 
-### v8.0에서 중단된 JavaScript API 요소
+### v8.0에서 중단된 JavaScript API 요소 
 {: #javascript-api-elements-discontinued-v-v-80 }
 #### 보안
 {: #security }
@@ -238,7 +239,7 @@ weight: 3
 | `INotification PushAPI.buildNotification();` | 이벤트 소스 기반 알림에서 태그 기반 알림으로 마이그레이션하려면 이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션을 참조하십시오. |
 | `UserSubscription PushAPI.getUserSubscription(String eventSource, String userId)` | 이벤트 소스 기반 알림에서 태그 기반 알림으로 마이그레이션하려면 이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션을 참조하십시오. |
 
-#### 어댑터
+#### 어댑터 
 {: #adapters-java }
 
 | API 요소                                | 대체 경로                               |
@@ -258,7 +259,7 @@ weight: 3
 
 ### JavaScript API
 {: #javascript-apis }
-사용자 인터페이스에 영향을 미치는 다음 JavaScript API는 v8.0에서 더 이상 지원되지 않습니다. 사용 가능한 써드파티 Cordova 플러그인으로 대체하거나 사용자 정의 Cordova 플러그인을 작성할 수 있습니다.
+사용자 인터페이스에 영향을 미치는 다음 JavaScript API는 v8.0에서 더 이상 지원되지 않습니다. 사용 가능한 써드파티 Cordova 플러그인으로 대체하거나 사용자 정의 Cordova 플러그인을 작성할 수 있습니다. 
 
 | API 요소           | 마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
@@ -374,7 +375,7 @@ weight: 3
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 대체가 없습니다. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 더 이상 사용되지 않는 Apache HTTP 클라이언트 종속성으로 인해 제거되었습니다. 요청 및 응답을 완전히 제어하려면 자체 요청을 작성하십시오.  |
 
-#### `com.worklight.androidgap.api` 패키지는 Cordova 앱에 대한 Android 플랫폼 기능을 제공합니다. {{ site.data.keys.product }}에서는 Cordova 통합을 수용하도록 여러 변경사항이 작성되었습니다.
+#### `com.worklight.androidgap.api` 패키지는 Cordova 앱에 대한 Android 플랫폼 기능을 제공합니다. {{ site.data.keys.product }}에서는 Cordova 통합을 수용하도록 여러 변경사항이 작성되었습니다. 
 {: #comworklightandroidgapapi }
 
 | API 요소           | 마이그레이션 경로                           |
@@ -385,7 +386,7 @@ weight: 3
 
 ### Objective-C API
 {: #objective-c-apis }
-#### 중단된 iOS Objective C API
+#### 중단된 iOS Objective C API 
 {: #discontinued-ios-objective-c-apis }
 
 | API 요소           | 마이그레이션 경로                           |

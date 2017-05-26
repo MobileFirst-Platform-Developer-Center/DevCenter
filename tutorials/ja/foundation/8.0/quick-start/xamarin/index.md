@@ -56,21 +56,23 @@ weight: 6
 * iOS 向けに開発している場合は、**AppDelegate.cs** ファイルの **FinishedLaunching** メソッド内に以下のコードを貼り付けます。
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
+  >`<ClassName>` をクラスの名前で置き換えます。
 * Android 向けに開発している場合は、**MainActivity.cs** ファイルの **OnCreate** メソッド内に以下のコード行を含めます。
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >`<ClassName>` をクラスの名前で置き換えます。
 * 下記に示すように、アクセス・トークンを取得するようにメソッドを定義し、MFP サーバーへのリソース要求を実行します。
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
        
@@ -94,7 +96,7 @@ weight: 6
            }
     }
    ```
-  
+
 * クラス・コンストラクター内またはボタンのクリックで **ObtainToken** メソッドを呼び出します。
 
 ### 4. アダプターのデプロイ

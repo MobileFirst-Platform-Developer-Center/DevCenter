@@ -274,3 +274,7 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 ### 未加工の IPv6 アドレスは Android アプリケーションでサポートされない
 {: #raw-ipv6-address-not-supported-in-android-applications }
 ネイティブ Android アプリケーションの **mfpclient.properties** の構成時に、{{ site.data.keys.mf_server }} が IPv6 アドレスのホスト上にある場合、IPv6 アドレスのマップされたホスト名を使用して **mfpclient.properties** 内の **wlServerHost** プロパティーを構成します。**wlServerHost** プロパティーを未加工の IPv6 アドレスを使用して構成すると、アプリケーションの {{ site.data.keys.mf_server }} への接続は失敗します。
+
+### Cordova アプリケーションのデフォルトの動作の変更は推奨されない
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+{{ site.data.keys.product_adj }}  Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。

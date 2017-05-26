@@ -79,7 +79,7 @@ ID は開発者によって割り当てられる固有の ID です。
 
 * `mfpdev app pull` コマンドを使用して既存の JSON 構成ファイルをサーバーから取得して、ファイルを更新し、変更された構成を `mfpdev app push` コマンドを使用してアップロードします。
 * **mfpadm** プログラムまたは Ant タスクを使用します。mfpadm の使用については、『[コマンド・ラインを通じた {{ site.data.keys.product_adj }} アプリケーションの管理](../administering-apps/using-cli)』および『[Ant を通じた {{ site.data.keys.product_adj }} アプリケーションの管理](../administering-apps/using-ant)』を参照してください。
-* {{ site.data.keys.product_adj }} 管理サービスの REST API を使用します。REST API については、[『{{ site.data.keys.mf_server }} 管理サービス用の REST API』](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi)を参照してください。
+* {{ site.data.keys.product_adj }} 管理サービスの REST API を使用します。REST API については、[『{{ site.data.keys.mf_server }} 管理サービス用の REST API』](../api/rest/administration-service/)を参照してください。
 
 また、これらの方式を使用して {{ site.data.keys.mf_server }} の構成を自動化することもできます。
 

@@ -31,10 +31,10 @@ weight: 12
 * 애플리케이션 디스크립터에서 애플리케이션 패밀리에 대해 동일한 값을 지정하십시오. 
 	* iOS 애플리케이션의 경우 이 요구사항은 액세스 그룹 인타이틀먼트 값과 동일한 의미입니다. 
 	* Android 애플리케이션의 경우 이 요구사항은 **AndroidManifest.xml** 파일의 **sharedUserId** 값과 동일한 의미입니다. 
-		
+
     > **참고:** Android의 경우 이름이 **x.y** 형식이어야 합니다. 
 
-* 애플리케이션은 동일한 서명 ID로 서명되어야 합니다. 이 요구사항은 동일한 조직의 애플리케이션만 이 기능을 사용할 수 있음을 의미합니다. 	
+* 애플리케이션은 동일한 서명 ID로 서명되어야 합니다. 이 요구사항은 동일한 조직의 애플리케이션만 이 기능을 사용할 수 있음을 의미합니다. 
     * iOS 애플리케이션의 경우 이 요구사항은 애플리케이션에 서명하는 데 동일한 애플리케이션 ID 접두부, 프로비저닝 프로파일 및 서명 ID가 사용됨을 의미합니다. 
 	* Android 애플리케이션의 경우 이 요구사항은 동일한 서명 인증서 및 키를 의미합니다. 
 
@@ -62,11 +62,11 @@ Xcode/Android Studio에서 애플리케이션을 열고 다음을 수행하십�
 4. 애플리케이션을 저장하고 서명하십시오. 이 그룹의 모든 애플리케이션이 동일한 iOS 인증서 및 프로비저닝 프로파일에 의해 서명되었는지 확인하십시오. 
 5. 동일한 애플리케이션 패밀리에 포함시킬 모든 애플리케이션에 대해 단계를 반복하십시오. 
 
-이제 고유 단순 데이터 공유 API를 사용하여 동일한 패밀리의 애플리케이션 그룹 간에 단순 문자열을 공유할 수 있습니다.  
+이제 고유 단순 데이터 공유 API를 사용하여 동일한 패밀리의 애플리케이션 그룹 간에 단순 문자열을 공유할 수 있습니다. 
 
 ### Android
 {: #android }
-1. 애플리케이션 패밀리 이름을 **AndroidManifest.xml** 파일의 Manifest 태그에 있는 **android:sharedUserId** 요소로 지정하여 단순 데이터 공유 옵션을 사용하도록 설정하십시오. 예:  
+1. 애플리케이션 패밀리 이름을 **AndroidManifest.xml** 파일의 Manifest 태그에 있는 **android:sharedUserId** 요소로 지정하여 단순 데이터 공유 옵션을 사용하도록 설정하십시오. 예: 
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -74,7 +74,7 @@ Xcode/Android Studio에서 애플리케이션을 열고 다음을 수행하십�
         android:versionName="1.0"
         android:sharedUserId="com.myGroup1">
    ```
-    
+
 2. 동일한 패밀리에 속한 애플리케이션이 동일한 서명 신임 정보로 서명되었는지 확인하십시오. 
 3. **sharedUserId**를 지정하지 않았거나 다른 **sharedUserId**를 사용한 이전 버전의 애플리케이션을 모두 설치 제거하십시오. 
 4. 디바이스에서 애플리케이션을 설치하십시오. 
@@ -96,7 +96,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> Cordova API에 대한 자세한 정보는 API 참조의 [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken), [setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken) 및 [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) 함수를 참조하십시오.
+> Cordova API에 대한 자세한 정보는 `WL.Client` API 참조의 [getSharedToken](../../api/client-side-api/javascript/client/), [setSharedToken](../../api/client-side-api/javascript/client/) 및 [clearSharedToken](../../api/client-side-api/javascript/client/) 함수를 참조하십시오.
 
 ### Objective-C
 {: #objective-c }
@@ -106,7 +106,7 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 [WLSimpleDataSharing clearSharedToken: myName];
 ```
 
-> Objective-C API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) 클래스를 참조하십시오.
+> Objective-C API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](../../api/client-side-api/objc/client/) 클래스를 참조하십시오.
 
 ### Java
 {: #java }
@@ -116,7 +116,7 @@ String token = WLSimpleSharedData.getSharedToken(myName);
 WLSimpleSharedData.clearSharedToken(myName);
 ```
 
-> Java API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html) 클래스를 참조하십시오.
+> Java API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](../../api/client-side-api/java/client/) 클래스를 참조하십시오.
 
 ## 제한사항 및 고려사항
 {: #limitations-and-considerations }

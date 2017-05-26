@@ -17,7 +17,7 @@ der Application-Center-Konsole in das Application Center hochladen. Sie können 
 Dies ist besonders nützlich, wenn Sie die Implementierung einer Anwendung im Application Center in einen Build-Prozess integrieren möchten.
 Das Tool ist in **Installationsverzeichnis/ApplicationCenter/tools/applicationcenterdeploytool.jar** enthalten.
 
-Das Tool kann für Anwendungsdateien mit der Erweiterung APK oder IPA verwendet werden. Es kann eigenständig oder als Ant-Task verwendet werden.
+Das Tool kann für Anwendungsdateien mit der Erweiterung APK oder IPA verwendet werden. Es kann eigenständig oder als Ant-Task verwendet werden. 
 
 Das Verzeichnis "tools" enthält alle Dateien, die zur Unterstützung der Toolverwendung erforderlich sind.
 
@@ -27,7 +27,7 @@ Das Verzeichnis "tools" enthält alle Dateien, die zur Unterstützung der Toolve
 * **acdeploytool.sh** und **acdeploytool.bat**:
 Beispiel-Scripts zum Aufrufen von Java mit **applicationcenterdeploytool.jar**
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Anwendung mit dem eigenständigen Tool hochladen](#using-the-stand-alone-tool-to-upload-an-application)
 * [Anwendung mit dem eigenständigen Tool löschen](#using-the-stand-alone-tool-to-delete-an-application)
@@ -97,7 +97,7 @@ Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
 Sie können Dateien oder das Anwendungspaket, das Betriebssystem und die Version angeben. Wenn Dateien angegeben werden,
 werden das Paket, das Betriebssystem und die Version anhand der Datei bestimmt. Dann wird die entsprechende Anwendung aus dem Application Center gelöscht. Wenn Anwendungen angegeben werden,
-müssen sie eines der folgenden Formate haben:
+müssen sie eines der folgenden Formate haben: 
 
 * `Paket@Betriebssystem@Version` zum Löschen genau dieser Version aus
 dem Application Center. Im Versionsabschnitt muss die
@@ -151,7 +151,7 @@ Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
 #### Beispiel
 {: #example-cache }
-In diesem Beispiel hat der Benutzer demo das Kennwort demopassword.
+In diesem Beispiel hat der Benutzer demo das Kennwort demopassword. 
 
 ```bash
 java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applicationcenter -u demo -p demopassword
@@ -159,7 +159,6 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 ### Ant-Task zum Hochladen oder Löschen einer Anwendung
 {: #ant-task-for-uploading-or-deleting-an-application}
-
 Sie können die Tools zum Hochladen und Löschen als Ant-Task verwenden und die Ant-Task in Ihrem eigenen
 Ant-Script ausführen.  
 Für die Ausführung dieser Tasks ist Apache Ant erforderlich. Die unterstützte
@@ -208,13 +207,13 @@ folgende Beispiel zeigt, wie Sie die Ant-Task in Ihrem eigenen Ant-Script verwen
   <property name="install.dir" value="../../" />
   <property name="workspace.root" value="../../" />
 
-<!-- Servereigenschaften -->
+<!-- Server Properties -->
   <property name="server.path" value="http://localhost:9080/" />
   <property name="context.path" value="applicationcenter" />
   <property name="upload.file" value="" />
   <property name="force" value="true" />
 
-  <!--  Authentifizierungseigenschaften -->
+  <!--  Authentication Properties -->
   <property name="login.user" value="appcenteradmin" />
   <property name="login.pass" value="admin" />
   <path id="classpath.run">
@@ -280,7 +279,7 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 
 Wenn Sie
 diese Parameter beim Aufrufen von Ant in der Befehlszeile angeben möchten,
-fügen Sie vor dem Eigenschaftsnamen -D hinzu. Beispiel:
+fügen Sie vor dem Eigenschaftsnamen -D hinzu. Beispiel: 
 
 ```xml
 -Dserver.path=http://localhost:8888/

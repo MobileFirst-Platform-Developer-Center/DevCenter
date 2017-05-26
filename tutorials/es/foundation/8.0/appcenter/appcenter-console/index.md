@@ -13,7 +13,7 @@ La consola de Application Center es una aplicación web para gestionar el reposi
 
 Utilice la consola de Application Center para:
 
-* Subir aplicaciones que se escriben para estos sistemas operativos: Android, iOS, Windows 8 (sólo paquetes de Windows Store), o Windows Phone 8.
+* Subir aplicaciones que se escriben para estos sistemas operativos: Android, iOS, Windows 8 (sólo paquetes de Windows Store), Windows Phone 8 o Windows 10 Universal. 
 * Gestionar varias versiones distintas de aplicaciones móviles.
 * Revisar los comentarios de los probadores de aplicaciones móviles.
 * Definir los usuarios que tienen derechos para listar e instalar una aplicación en los dispositivos móviles.
@@ -124,21 +124,27 @@ Para añadir una aplicación para hacerla disponible para su instalación en dis
 
    ### Android
    {: #android }
-La extensión del nombre del archivo de aplicación es .apk.
+   La extensión del nombre del archivo de aplicación es **.apk**.
 
    ### iOS
    {: #ios }
-La extensión del nombre del archivo de aplicación es .ipa para las aplicaciones iOS normales.
+   La extensión del nombre del archivo de aplicación es **.ipa** para las aplicaciones iOS normales. 
 
    ### Windows Phone 8
    {: #windows-phone-8 }
-La extensión del nombre del archivo de aplicación es .xap. La aplicación debe estar firmada con una cuenta de la empresa. La señal de inscripción de aplicación para esta cuenta de la empresa debe ponerse a disposición de dispositivos Windows Phone 8 antes de que la aplicación se pueda instalar en los dispositivos. Consulte [Señales de inscripción de aplicación en Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) para obtener más detalles.
+   La extensión del nombre del archivo de aplicación es **.xap**. La aplicación debe estar firmada con una cuenta de la empresa. La señal de inscripción de aplicación para esta cuenta de la empresa debe ponerse a disposición de dispositivos Windows Phone 8 antes de que la aplicación se pueda instalar en los dispositivos. Consulte [Señales de inscripción de aplicación en Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) para obtener más detalles.
 
    ### Windows 8
    {: #windows-8 }
-La aplicación se proporciona como un paquete de Windows Store; la extensión de archivo es .appx.
+     La aplicación se proporciona como un paquete de Windows Store; la extensión de archivo es **.appx**. 
 
    Los paquetes .appx de Windows Store pueden depender de uno o varios paquetes de aplicaciones de biblioteca de componentes de Windows, que también se conocen como paquetes de "infraestructura". Las aplicaciones híbridas de MobileFirst para Windows 8 dependen del paquete de infraestructura de Microsoft.WinJS. Al utilizar Microsoft Visual Studio para generar el paquete de aplicaciones, los paquetes de dependencias también se generarán y se empaquetarán como archivos .appx independientes. Para instalar satisfactoriamente tales aplicaciones utilizando el cliente móvil, debe subir el paquete .appx de la aplicación y cualquier otro paquete de dependencias en el servidor de Application Center. Al subir un paquete de dependencias, aparecerá como inactivo en la consola del Application Center. Se espera este comportamiento, por lo que el paquete de infraestructura no aparece como una aplicación instalable en el cliente. A continuación, cuando un usuario instala una aplicación, el cliente móvil comprueba si la dependencia ya está instalada en el dispositivo. Si el paquete de dependencias no está instalado, el cliente recupera automáticamente el paquete de dependencias desde el servidor de Application Center y lo instala en el dispositivo. Para obtener más información sobre las dependencias, consulte [Dependencias](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) en la documentación del desarrollador de Windows sobre los paquetes y el despliegue de aplicaciones.
+
+   ### Windows 10 universal
+   {: windows-10-universal}
+   La extensión del nombre del archivo de aplicación es **.appx**.
+   
+
 
 4. Pulse **Siguiente** para acceder a las propiedades para completar la definición de la aplicación.
 5. Rellene las propiedades para definir la aplicación. Consulte [Propiedades de aplicación](#application-properties) para obtener información sobre cómo rellenar valores de propiedad.
@@ -241,6 +247,15 @@ Para obtener más información sobre las siguientes propiedades, consulte la doc
 * **Etiqueta** es el título de la aplicación; el atributo del nombre de visualización de **Paquete** del archivo manifest de la aplicación.
 * **Proveedor** es el proveedor que ha creado la aplicación; el atributo **Aplicación de publicación** del archivo manifest de la aplicación.
 
+### Propiedades de las aplicaciones de Windows 10 Universal
+{: #properties-of-windows-10-universal-applications}
+
+* **Paquete** es el identificador de producto de la aplicación; el atributo del nombre de **Paquete** del archivo manifest de la aplicación.
+* **Versión interna** es la identificación de versión de la aplicación; el atributo **Versión** del archivo manifest de la aplicación.
+* **Versión comercial**, como **Versión interna**, es la versión de la aplicación.
+* **Etiqueta** es el título de la aplicación; el atributo del nombre de visualización de **Paquete** del archivo manifest de la aplicación.
+* **Proveedor** es el proveedor que ha creado la aplicación; el atributo **Aplicación de publicación** del archivo manifest de la aplicación.
+
 ### Propiedad común: Autor
 {: #common-property-author }
 El campo **Autor** es de sólo lectura. Muestra el atributo **username** del usuario que sube la aplicación.
@@ -284,6 +299,10 @@ Para editar las propiedades de una aplicación subida:
 
 ## Actualización de una aplicación móvil en {{ site.data.keys.mf_server }} y en el Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
+
+> Esto únicamente está soportado para Android, iOS y Windows Phone y actualmente no está soportado para Windows 10 Universal, Blackberry ni Windows 8 Universal.
+
+
 Puede actualizar de forma sencilla aplicaciones móviles desplegadas utilizando una combinación de {{ site.data.keys.mf_console }} y del Application Center.
 
 El cliente móvil del Application Center debe estar instalado en el dispositivo móvil. La aplicación HelloWorld debe estar instalada en el dispositivo móvil y debe estar conectada a {{ site.data.keys.mf_server }} cuando la aplicación está en ejecución.

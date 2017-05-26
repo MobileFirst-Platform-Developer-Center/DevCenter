@@ -161,7 +161,7 @@ weight: 1
 {: #completing-migration-of-a-mobilefirst-hybrid-app }
 使用迁移辅助工具后，必须手动修改代码的某些部分以完成迁移过程。
 
-* 必须已对现有混和应用程序运行 mfpmigrate 迁移辅助工具。有关更多信息，请参阅[使用迁移辅助工具启动 Cordova 应用程序迁移](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)。
+* 必须已对现有混合应用程序运行 mfpmigrate 迁移辅助工具。有关更多信息，请参阅[使用迁移辅助工具启动 Cordova 应用程序迁移](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)。
 * 您必须已安装 Cordova 命令行界面 (CLI)，并且安装对目标平台使用 Cordova CLI 所需的任何必备软件（如果需要安装任何其他 Cordova 插件）。（请参阅步骤 6）。有关更多信息，请参阅 Apache Cordova Web 站点上的[命令行界面](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)。
 * 如果需要下载 JQuery 的新版本（步骤 1c），或者如果需要安装任何其他 Cordova 插件（步骤 6），那么必须具有因特网访问权。
 * 如果需要安装其他 Cordova 插件（步骤 6），那么必须已安装 node.js V4.0.0 或更高版本。

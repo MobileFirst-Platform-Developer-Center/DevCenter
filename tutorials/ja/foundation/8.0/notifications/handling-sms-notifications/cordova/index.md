@@ -18,10 +18,10 @@ Cordova アプリケーションでの SMS 通知は、iOS および Android を
 
 * 必ず、以下のチュートリアルをお読みください。
   * [通知の概要](../../)
-  * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
-  * [iOS アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)
-* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
-* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+  * [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+  * [iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)
+* ローカルで稼働している {{ site.data.keys.mf_server }}、またはリモートで稼働している {{ site.data.keys.mf_server }}
+* 開発者ワークステーションに {{ site.data.keys.mf_cli }} がインストールされていること
 
 #### ジャンプ先:
 {: #jump-to }

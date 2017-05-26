@@ -7,11 +7,11 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요 
 {: #overview }
-IBM Containers for Bluemix에서는 컨테이너 CPU, 메모리, 네트워크에 대한 몇몇 기본 제공 로깅 기능과 모니터링 기능을 제공합니다. 선택적으로 {{site.data.keys.product_adj }} 컨테이너의 로그 레벨을 변경할 수 있습니다. 
+IBM Containers for Bluemix에서는 컨테이너 CPU, 메모리, 네트워크에 대한 몇몇 기본 제공 로깅 기능과 모니터링 기능을 제공합니다. 선택적으로 {{ site.data.keys.product_adj }} 컨테이너의 로그 레벨을 변경할 수 있습니다. 
 
-{{site.data.keys.mf_server }}와 {{site.data.keys.mf_analytics }} 컨테이너의 로그 파일을 작성하는 옵션은 기본적으로 사용으로 설정되어 있습니다(`*=info` 레벨 사용). 수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. Kibana 시각화 도구를 사용하여 Bluemix logmet 콘솔에서 컨테이너 로그와 서버 또는 런타임 로그를 모두 볼 수 있습니다. 개방형 소스 메트릭 대시보드이며 그래프 편집기인 Grafana를 사용하여 Bluemix logmet 콘솔에서 모니터링을 수행할 수 있습니다. 
+{{ site.data.keys.mf_server }}와 {{ site.data.keys.mf_analytics }} 컨테이너의 로그 파일을 작성하는 옵션은 기본적으로 사용으로 설정되어 있습니다(`*=info` 레벨 사용). 수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. Kibana 시각화 도구를 사용하여 Bluemix logmet 콘솔에서 컨테이너 로그와 서버 또는 런타임 로그를 모두 볼 수 있습니다. 개방형 소스 메트릭 대시보드이며 그래프 편집기인 Grafana를 사용하여 Bluemix logmet 콘솔에서 모니터링을 수행할 수 있습니다. 
 
-{{site.data.keys.product_adj }} 컨테이너가 SSH(Secure Shell) 키를 사용하여 작성되고 공용 IP 주소에 바인드된 경우 적절한 개인 키를 사용해 컨테이너 인스턴스의 로그를 안전하게 볼 수 있습니다. 
+{{ site.data.keys.product_adj }} 컨테이너가 SSH(Secure Shell) 키를 사용하여 작성되고 공용 IP 주소에 바인드된 경우 적절한 개인 키를 사용해 컨테이너 인스턴스의 로그를 안전하게 볼 수 있습니다. 
 
 ### 로깅 대체
 {: #logging-overrides }
@@ -25,7 +25,7 @@ V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver
 
 ## 컨테이너 로그 파일
 {: #container-log-files }
-각 컨테이너 인스턴스의 Liberty Profile 런타임 활동과 {{site.data.keys.mf_server }}에 대한 로그 파일이 생성되며 로그 파일은 다음 위치에 있습니다. 
+각 컨테이너 인스턴스의 Liberty Profile 런타임 활동과 {{ site.data.keys.mf_server }}에 대한 로그 파일이 생성되며 로그 파일은 다음 위치에 있습니다. 
 
 * /opt/ibm/wlp/usr/servers/mfp/logs/messages.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
@@ -37,7 +37,7 @@ V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver
 컨테이너가 더 이상 존재하지 않는 경우에도 로그 파일을 유지하려면 볼륨을 사용으로 설정하십시오. (기본적으로 볼륨은 사용되지 않습니다.) 볼륨을 사용으로 설정하면 logmet 인터페이스(예: https://logmet.ng.bluemix.net/kibana)를 사용해 Bluemix에서 로그를 볼 수도 있습니다. 
 
 **볼륨 사용**
-볼륨을 사용하면 컨테이너에서 로그 파일을 유지할 수 있습니다. {{site.data.keys.mf_server }} 로그와 {{site.data.keys.mf_analyics }} 컨테이너 로그의 볼륨은 기본적으로 사용으로 설정되어 있지 않습니다. 
+볼륨을 사용하면 컨테이너에서 로그 파일을 유지할 수 있습니다. {{ site.data.keys.mf_server }} 로그와 {{ site.data.keys.mf_analyics }} 컨테이너 로그의 볼륨은 기본적으로 사용으로 설정되어 있지 않습니다. 
 
 `ENABLE_VOLUME [-v | --volume]`을 `Y`로 설정하여 **start*.sh** 스크립트를 실행하는 동안 볼륨을 사용으로 설정할 수 있습니다. 스크립트를 대화식으로 실행하는 동안 **args/startserver.properties** 파일과 **args/startanalytics.properties** 파일에서 이와 같이 구성할 수도 있습니다. 
 
@@ -66,7 +66,7 @@ SSH가 이미지 사용자 정의의 일부로 사용되지 않는 경우 **star
 
 #### 명령행에서 컨테이너에 액세스
 {: #accessing-containers-from-the-command-line }
-명령행에서 실행 중인 {{site.data.keys.mf_server }} 컨테이너 인스턴스와 {{site.data.keys.mf_analytics }} 컨테이너 인스턴스에 액세스하여 로그와 추적을 얻을 수 있습니다. 
+명령행에서 실행 중인 {{ site.data.keys.mf_server }} 컨테이너 인스턴스와 {{ site.data.keys.mf_analytics }} 컨테이너 인스턴스에 액세스하여 로그와 추적을 얻을 수 있습니다. 
 
 1. 다음 명령을 실행하여 컨테이너 인스턴스에 대화식 터미널을 작성하십시오. `cf ic exec -it container_instance_id "bash"`.
 2. 로그 파일 또는 추적을 찾으려면 다음 예제 명령을 사용하십시오. 
@@ -85,7 +85,7 @@ SSH가 이미지 사용자 정의의 일부로 사용되지 않는 경우 **star
 
 #### SSH를 사용하여 컨테이너에 액세스
 {: #accessing-containers-using-ssh }
-SSH(Secure Shell)를 사용해 {{site.data.keys.mf_server }} 컨테이너와 {{site.data.keys.mf_analytics }} 컨테이너에 액세스하여 Syslog와 Liberty 로그를 가져올 수 있습니다. 
+SSH(Secure Shell)를 사용해 {{ site.data.keys.mf_server }} 컨테이너와 {{ site.data.keys.mf_analytics }} 컨테이너에 액세스하여 Syslog와 Liberty 로그를 가져올 수 있습니다. 
 
 컨테이너 그룹을 실행 중인 경우 공용 IP 주소를 각 인스턴스에 바인드하고 SSH를 사용하여 안전하게 로그를 볼 수 있습니다. SSH를 사용하려면 **startservergroup.sh** 스크립트를 실행하기 전에 SSH 공개 키를 **mfp-server\server\ssh** 폴더에 복사하십시오. 
 

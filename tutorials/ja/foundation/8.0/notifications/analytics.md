@@ -14,7 +14,7 @@ weight: 5
 <jndiEntryjndiName = "imfpush/mfp.push.services.ext.analytics" value = "com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin"/>
 ```
 
-{{site.data.keys.mf_analytics }} プラグインの構成と初期化のために、以下のプロパティーが必要です。ユーザー名とパスワードが、指定されたエンドポイントで分析サービスとの認証を行うために使用されます。
+{{ site.data.keys.mf_analytics }} プラグインの構成と初期化のために、以下のプロパティーが必要です。ユーザー名とパスワードが、指定されたエンドポイントで分析サービスとの認証を行うために使用されます。
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
@@ -46,5 +46,5 @@ Push is meant to send two types of analytics events to the Analytics service. Th
 
 Analytics コンソールでプッシュ通知レポートを表示する方法については、[プッシュ通知レポート](../../analytics/console/push-notifications/)を参照してください。
 
-> プッシュ・サービスに関するこれらの JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
-> **注:** {{site.data.keys.product_full }} インストーラーは、これらのプロパティーを作成し、デフォルトにセットアップします。
+> プッシュ・サービスに関するこれらの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
+> **注:** {{ site.data.keys.product_full }} インストーラーは、これらのプロパティーを作成し、デフォルトにセットアップします。

@@ -6,9 +6,9 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-缺省情况下，{{ site.data.keys.product_full }}    中已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数、可寻址设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }}   的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
+缺省情况下，{{ site.data.keys.product_full }} 中已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数、可寻址设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }} 的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
 
-此外，通过跟踪客户机设备的使用并确定设备是否处于活动状态，{{ site.data.keys.product_adj }}    管理员可以停用不再访问 {{ site.data.keys.mf_server }}    的设备。例如，如果某个员工离开公司，那么可能会出现此情况。
+此外，通过跟踪客户机设备的使用并确定设备是否处于活动状态，{{ site.data.keys.product_adj }} 管理员可以停用不再访问 {{ site.data.keys.mf_server }} 的设备。例如，如果某个员工离开公司，那么可能会出现此情况。
 
 #### 跳转至
 {: #jump-to }
@@ -20,27 +20,27 @@ weight: 6
 
 ## 设置应用程序许可证信息
 {: #setting-the-application-license-information }
-了解如何针对注册 {{ site.data.keys.mf_server }}    的应用程序设置应用程序许可证信息。
+了解如何针对注册 {{ site.data.keys.mf_server }} 的应用程序设置应用程序许可证信息。
 
-许可条款区分 {{ site.data.keys.product_full }}   、{{ site.data.keys.product_full }}    Consumer、{{ site.data.keys.product_full }}    Enterprise 和 IBM {{ site.data.keys.product_adj }}    Additional Brand Deployment。请在向服务器注册应用程序时设置应用程序的许可证信息，以便许可证跟踪报告能生成正确的许可证信息。如果为令牌许可配置了服务器，那么许可证信息将用于从许可证服务器检出正确的功能部件。
+许可条款区分 {{ site.data.keys.product_full }}、{{ site.data.keys.product_full }} Consumer、{{ site.data.keys.product_full }} Enterprise 和 IBM {{ site.data.keys.product_adj }} Additional Brand Deployment。请在向服务器注册应用程序时设置应用程序的许可证信息，以便许可证跟踪报告能生成正确的许可证信息。如果为令牌许可配置了服务器，那么许可证信息将用于从许可证服务器检出正确的功能部件。
 
 可设置应用程序类型和令牌许可证类型。应用程序类型的可能的值有：  
 
-* **B2C**：如果应用程序作为 {{ site.data.keys.product_full }}    Consumer 获得许可，请使用此应用程序类型。
-* **B2E**：如果应用程序作为 {{ site.data.keys.product_full }}    Enterprise 获得许可，请使用此应用程序类型。
+* **B2C**：如果应用程序作为 {{ site.data.keys.product_full }} Consumer 获得许可，请使用此应用程序类型。
+* **B2E**：如果应用程序作为 {{ site.data.keys.product_full }} Enterprise 获得许可，请使用此应用程序类型。
 * **UNDEFINED**：如果您无需跟踪“可寻址设备”度量的合规性，请使用此应用程序类型。
 
 令牌许可证类型的可能的值有：
 
 * **APPLICATION**：将 APPLICATION 用于大多数应用程序。这是缺省值。
-* **ADDITIONAL\_BRAND\_DEPLOYMENT**：如果应用程序作为 IBM {{ site.data.keys.product_adj }}    Additional Brand Deployment 获得许可，请使用此 ADDITIONAL\_BRAND\_DEPLOYMENT。
+* **ADDITIONAL\_BRAND\_DEPLOYMENT**：如果应用程序作为 IBM {{ site.data.keys.product_adj }} Additional Brand Deployment 获得许可，请使用此 ADDITIONAL\_BRAND\_DEPLOYMENT。
 * **NON_PRODUCTION**：在生产服务器上开发和测试应用程序时，请使用 NON\_PRODUCTION。未对令牌许可证类型为 NON_PRODUCTION 的应用程序检出令牌。
 
 > **要点：**将 NON_PRODUCTION 用于生产应用程序违反许可条款。
 
 **注：**如果为令牌许可配置了服务器，并且如果您计划使用“令牌许可证类型”ADDITIONAL\_BRAND\_DEPLOYMENT 或 NON_PRODUCTION 注册应用程序，请在注册第一个版本的应用程序前设置应用程序许可证信息。利用 mfpadm 程序，可以在注册任何版本前设置应用程序的许可证信息。设置许可证信息后，在注册第一个版本的应用程序时将检出正确数目的令牌。有关令牌验证的更多信息，请参阅“令牌许可证验证”。
 
-要使用 {{ site.data.keys.mf_console }}    设置许可证类型
+要使用 {{ site.data.keys.mf_console }} 设置许可证类型
 
 1. 选择应用程序
 2. 选择**设置**
@@ -59,11 +59,11 @@ rm password.txt
 
 ## 许可证跟踪报告
 {: #license-tracking-report }
-{{ site.data.keys.product }}   为“客户机设备”度量、“可寻址设备”度量和“应用程序”度量提供许可证跟踪报告。该报告还提供历史数据。
+{{ site.data.keys.product }} 为“客户机设备”度量、“可寻址设备”度量和“应用程序”度量提供许可证跟踪报告。该报告还提供历史数据。
 
 许可跟踪报告显示以下数据：
 
-* 在 {{ site.data.keys.mf_server }}   
+* 在 {{ site.data.keys.mf_server }}
 中部署的应用程序数。
 * 当前日历月中的可寻址设备数。
 * 客户机设备（活动设备和已退役的设备）数。
@@ -74,7 +74,7 @@ rm password.txt
 要访问许可证跟踪报告：
 
 1. 打开
-{{ site.data.keys.mf_console }}   。
+{{ site.data.keys.mf_console }}。
 2. 单击**您好，您的姓名**菜单。
 3. 选择**许可证**。
 
@@ -82,7 +82,7 @@ rm password.txt
 
 ## 令牌许可证验证
 {: #token-license-validation }
-如果要为令牌许可安装和配置 IBM {{ site.data.keys.mf_server }}   ，那么服务器会在各种场景中验证许可证。如果配置不正确，那么无法在应用程序注册或删除时验证
+如果要为令牌许可安装和配置 IBM {{ site.data.keys.mf_server }}，那么服务器会在各种场景中验证许可证。如果配置不正确，那么无法在应用程序注册或删除时验证
 许可证。
 
 ### 验证场景
@@ -133,7 +133,7 @@ rm password.txt
 * 未提供足够的令牌。
 * 许可证已到期。
 
-### {{ site.data.keys.product_full }}    所使用的 IBM Rational License Key Server 功能部件名称
+### {{ site.data.keys.product_full }} 所使用的 IBM Rational License Key Server 功能部件名称
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 根据应用程序的令牌许可证类型，将使用以下功能部件。
 
@@ -147,25 +147,25 @@ rm password.txt
 {: #integration-with-ibm-license-metric-tool }
 IBM License Metric Tool 允许您评估是否遵守 IBM 许可证。
 
-如果尚未安装支持 IBM Software License Metric Tag 或 SWID（软件标识）文件的 IBM License Metric Tool 版本，可以在 {{ site.data.keys.mf_console }}    中使用许可证跟踪报告来复审许可证使用情况。有关更多信息，请参阅[许可证跟踪报告](#license-tracking-report)。
+如果尚未安装支持 IBM Software License Metric Tag 或 SWID（软件标识）文件的 IBM License Metric Tool 版本，可以在 {{ site.data.keys.mf_console }} 中使用许可证跟踪报告来复审许可证使用情况。有关更多信息，请参阅[许可证跟踪报告](#license-tracking-report)。
 
 ### 关于使用 SWID 文件的基于 PVU 的许可
 {: #about-pvu-based-licensing-using-swid-files }
 如果您已购买 IBM MobileFirst Foundation Extension V8.0.0 产品，将根据处理器价值单元 (PVU) 度量进行许可。
 
-PVU 计算基于 IBM License Metric Tool 对 ISO/IEC 19970-2 和 SWID 文件的支持。在 IBM Installation Manager 安装 {{ site.data.keys.mf_server }}    或 {{ site.data.keys.mf_analytics_server }}   时，将 SWID 文件写入服务器。当 IBM License Metric Tool 根据当前目录发现产品的无效 SWID 文件时，将在“软件目录”窗口小部件上显示一个警告符号。有关 IBM License Metric Tool 如何使用 SWID 文件的更多信息，请参阅 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html)。
+PVU 计算基于 IBM License Metric Tool 对 ISO/IEC 19970-2 和 SWID 文件的支持。在 IBM Installation Manager 安装 {{ site.data.keys.mf_server }} 或 {{ site.data.keys.mf_analytics_server }} 时，将 SWID 文件写入服务器。当 IBM License Metric Tool 根据当前目录发现产品的无效 SWID 文件时，将在“软件目录”窗口小部件上显示一个警告符号。有关 IBM License Metric Tool 如何使用 SWID 文件的更多信息，请参阅 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html)。
 
 Application Center 安装数量不受基于 PVU 的许可限制。
 
 针对 Foundation Extension 的 PVU 许可证只可以与以下产品许可证一起购买：IBM WebSphere Application Server Network Deployment、IBM API Connect™ Professional 或 IBM API Connect Enterprise。IBM Installation Manager 将添加或更新 SWID 文件以供 License Metric Tool 使用。
 
-> 有关 {{ site.data.keys.product_full }}    Extension 的更多信息，请参阅 [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)。
+> 有关 {{ site.data.keys.product_full }} Extension 的更多信息，请参阅 [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)。
 
 > 有关 PVU 许可的更多信息，请参阅 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)。
 
 ### SLMT 标记
 {: #slmt-tags }
-IBM MobileFirst Foundation 将生成 IBM Software License Metric Tag (SLMT) 文件。支持 IBM Software License Metric Tag 的 IBM License Metric Tool 版本会生成许可证使用量报告。阅读此部分以解释这些 {{ site.data.keys.mf_server }}    报告，并配置 IBM Software License Metric Tag 文件的生成。
+IBM MobileFirst Foundation 将生成 IBM Software License Metric Tag (SLMT) 文件。支持 IBM Software License Metric Tag 的 IBM License Metric Tool 版本会生成许可证使用量报告。阅读此部分以解释这些 {{ site.data.keys.mf_server }} 报告，并配置 IBM Software License Metric Tag 文件的生成。
 
 正在运行的 MobileFirst 运行时环境的每个实例均生成 IBM Software License Metric Tag 文件。受监控的度量值是
 `CLIENT_DEVICE`、`ADDRESSABLE_DEVICE`

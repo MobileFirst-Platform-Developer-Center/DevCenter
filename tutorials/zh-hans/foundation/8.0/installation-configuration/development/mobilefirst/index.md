@@ -34,7 +34,7 @@ weight: 1
 
 > **注：**如果您需要在未连接因特网的计算机上设置开发环境，那么可脱机安装组件。请参阅[如何设置脱机 IBM MobileFirst 开发环境]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment)。
 
-### {{ site.data.keys.mf_dev_kit_short }}安装程序
+### {{ site.data.keys.mf_dev_kit_short }} 安装程序
 {: #developer-kit-installer }
 对于无法连接因特网的本地安装，安装程序也打包了适用于这类安装的组件。  
 可通过 {{ site.data.keys.mf_console }} 的“下载中心”来获取这些组件。

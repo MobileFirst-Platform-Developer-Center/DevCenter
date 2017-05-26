@@ -1,78 +1,92 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Xamarin Applications
+title: MobileFirst-Foundation-SDK zu Xamarin-Anwendungen hinzufügen
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Xamarin Component store](https://components.xamarin.com/) and which you can add to your Xamarin project.  
-The pods correspond to core functions and other functions:
+Das SDK der {{ site.data.keys.product }}
+besteht aus einer Reihe von Abhängigkeiten, die über den [Xamarin Component Store](https://components.xamarin.com/) verfügbar sind und zu einem Xamarin-Projekt hinzugefügt werden können.   
+Die Abhängigkeiten entsprechen Kernfunktionen und anderen Funktionen:  
 
-* **MobileFirst.Xamarin** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **MobileFirst.JSONStore** - Contains the JSONStore framework.  
-* **MobileFirst.Push** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
+* **MobileFirst.Xamarin** - Implementiert Client-Server-Konnektivität, handhabt Authentifizierungs- und Sicherheitsaspekte, Ressourcenanforderungen und weitere erforderliche Kernfunktionen
+* **MobileFirst.JSONStore** - Enthält das JSONStore-Framework  
+* **MobileFirst.Push** - Enthält das Framework für Push-Benachrichtigungen. Weitere Informationen enthalten die Lernprogramme zu [Benachrichtigungen](../../../notifications/).
 
-In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Xamarin Component Store to a new or existing Xamarin Android or iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+In diesem Lernprogramm erfahren Sie, wie das native {{ site.data.keys.product_adj }}-SDK mithilfe des Xamarin Component Store
+zu einer neuen oder vorhandenen Xamarin-Android- oder Xamarin-iOS-Anwendung hinzugfügt wird. Sie werden auch lernen,
+wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen.
 
-**Prerequisites:**
+**Voraussetzungen:**
 
-- Xamarin Studio installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
+- Xamarin Studio ist auf der Entwicklerworkstation installiert.   
+- Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
+- Sie haben die Lernprogramme
+[{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/)
+und [Xamarin-Entwicklungsumgebung einrichten](../../../installation-configuration/development/xamarin/) durchgearbeitet. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Natives {{ site.data.keys.product_adj }}-SDK hinzufügen](#adding-the-mobilefirst-native-sdk)
+- [Natives {{ site.data.keys.product_adj }}-SDK aktualisieren](#updating-the-mobilefirst-native-sdk)
+- [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK hinzufügen
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+Folgen Sie den nachstehenden Anweisungen, um das native {{ site.data.keys.product_adj }}-SDK
+zu einem neuen oder vorhandenen Xcode-Projekt hinzuzufügen und die Anwendung bei {{ site.data.keys.mf_server }} zu registrieren.
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+Vergewissern Sie sich als Erstes, dass der {{ site.data.keys.mf_server }} aktiv
+ist.   
+Wenn Sie einen lokal installierten Server verwenden,
+navigieren Sie in einem **Befehlszeilenfenster** zum Serverordner und führen Sie den Befehl
+`./run.sh` aus.
 
-### Creating an application
+### Anwendung erstellen
 {: #creating-an-application }
-Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existing one.
+Erstellen Sie in Xamarin Studio oder Visual Studio eine Xamarin-Lösung oder verwenden Sie eine bereits bestehende Lösung. 
 
-### Adding the SDK
+### SDK hinzufügen
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product_adj }} Native SDK is provided via Xamarin Components Store.
-2. Expand the Android or iOS project.
-3. In the Android or iOS project, right-click **Components**.
-4. Select **Get More Components**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
-5. Search for **IBM MobileFirst SDK**. Choose and do **Add to App**.
+1. Das native {{ site.data.keys.product_adj }}-SDK wird über den Xamarin Components Store bereitgestellt.
+2. Blenden Sie das Android- oder iOS-Projekt ein. 
+3. Klicken Sie im Android- oder iOS-Projekt mit der rechten Maustaste auf **Components**.
+4. Wählen Sie **Get More Components** aus. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
+5. Suchen Sie nach dem **IBM MobileFirst SDK** und wählen Sie es aus. Wählen Sie dann **Add to App** aus.
 ![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. Right-click **Packages** and select **Add packages** .Search for and add **Json.NET**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
-7. Right-click **References** and select **Edit References**. Go to **.Net Assembly** tab and click 'Browse'. From the project folder's root go to `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Select **Worklight.Core.dll**.
+6. Klicken Sie mit der rechten Maustaste auf **Packages** und wählen Sie
+**Add packages** aus. Suchen Sie nach **Json.NET** und fügen Sie es hinzu. Damit wird die Newtonsoft-Abhängigket von Nuget übertragen. Dieser Schritt muss für Android- und iOS-Projekte gesondert ausgeführt werden. 
+7. Klicken Sie mit der rechten Maustaste auf **References** und wählen Sie **Edit References** aus. Klicken Sie auf der Registerkarte **.Net Assembly** auf "Browse". Navigieren Sie vom Stammverzeichnis des Projekts aus zu `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Wählen Sie **Worklight.Core.dll** aus.
 
-### Registering the application
+### Anwendung registrieren
 {: #registering-the-application }
-1. Load the {{ site.data.keys.mf_console }}.
-2. Click the New button next to Applications to register a new application and follow the on-screen instructions.
-3. Android and iOS applications have to be registered separately. This ensures both the Android application and iOS application can connect successfully to the server. The registration details for Android and iOS applications can be found in the `AndroidManifest.xml` and `Info.plist` respectively.
-3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the mfpclient.plist and mfpclient.properties file. Follow the onscreen instructions to add the file to your project.
+1. Laden Sie die {{ site.data.keys.mf_console }}.
+2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen. 
+3. Android- und iOS-Anwendungen müssen gesondert registriert werden. Dadurch wird sichergestellt, dass sowohl eine Android- als auch eine iOS-Anwendung erfolgreich eine Verbindung zum Server herstellen kann. Die Registrierungsdetails für Android- und iOS-Anwendungen finden Sie jeweils in den Dateien `AndroidManifest.xml` und `Info.plist`. 
+3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister "Konfigurationsdateien" und kopieren Sie die Dateien mfpclient.plist und mfpclient.properties bzw. laden Sie diese Dateien herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen. 
 
-### Completing the setup process
+### Setup-Prozess abschließen
 {: #completing-the-setup-process }
 #### mfpclient.plist
 {: #complete-setup-mfpclientplist }
-1. Right-click the Xamarin iOS project and select **Add files..**. Browse and find the `mfpclient.plist` to the root of the project. Choose **Copy file to project** if prompted.
-2. Right-click the `mfpclient.plist` file and select **Build action**.Choose **Content**.
+1. Klicken Sie mit der rechten Maustaste auf das Xamarin-iOS-Projekt und wählen Sie **Add files..** aus.
+Navigieren Sie zum Stammverzeichnis des Projekts und suchen Sie die Datei `mfpclient.plist`. Wenn Sie dazu aufgefordert werden, wählen Sie **Copy file to project** aus. 
+2. Klicken Sie mit der rechten Maustaste auf die Datei `mfpclient.plist` und wählen Sie **Build action** aus.
+Wählen Sie **Content** aus.
 
 #### mfpclient.properties
 {: #mfpclientproperties }
-1. Right-click the *Assets* folder of Xamarin Android project and select **Add files..**. Browse and find the `mfpclient.properties` to the folder. Choose **Copy file to project** if prompted.
-2. Right-click the `mfpclient.properties` file and select **Build action**.Choose **Android asset**.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner *Assets* des Xamarin-Android-Projekts und wählen Sie **Add files..** aus.
+Navigieren Sie zur Datei `mfpclient.properties`. Wenn Sie dazu aufgefordert werden, wählen Sie **Copy file to project** aus. 
+2. Klicken Sie mit der rechten Maustaste auf die Datei `mfpclient.properties` und wählen Sie **Build action** aus.
+Wählen Sie **Android asset** aus.
 
-### Referencing the SDK
+### SDK referenzieren
 {: #referencing-the-sdk }
-Whenever you want to use the {{ site.data.keys.product_adj }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
+Wenn Sie das native {{ site.data.keys.product_adj }}-SDK verwenden möchten, müssen Sie das Framework der {{ site.data.keys.product }} importieren: 
 
 CommonProject:
 
@@ -92,29 +106,31 @@ Android:
 using Worklight.Xamarin.Android;
 ```
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Xamarin Components store.
+Wenn Sie das native {{ site.data.keys.product_adj }}-SDK auf den neuesten Releasestand bringen möchten, aktualisieren Sie die SDK-Version über den Xamarin Components Store.
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-This file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
+In dieser Datei sind die clientseitigen Eigenschaften für die Registrierung Ihrer
+iOS-App bei {{ site.data.keys.mf_server }}
+definiert.
 
-| Property            | Description                                                         | Example values |
+| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| host        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| port        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| protocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
+| host        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
+| port        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
+| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} Native SDK now integrated, you can now:
+Jetzt, da das native {{ site.data.keys.product_adj }}-SDK integriert ist, können Sie Folgendes tun: 
 
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../../adapters/) durch. 
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../../authentication-and-security/) durch. 
+- Gehen Sie die Lernprogramme zu [Benachrichtigungen](../../../notifications/) durch. 
+- Sehen Sie sich [alle Lernprogramme](../../../all-tutorials) an. 

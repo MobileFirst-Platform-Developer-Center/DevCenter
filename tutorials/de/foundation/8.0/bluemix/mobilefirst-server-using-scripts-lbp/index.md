@@ -164,7 +164,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
                         Sie können die Parameter auch in der Befehlszeile übergeben. 
 
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organisationsname --space Bluemix-Bereichsname
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 

@@ -115,7 +115,7 @@ Java 어댑터는 JAX-RS 2.0 스펙을 기반으로 합니다. 즉, Java 어댑�
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * 구성 파일을 **푸시**하려면 다음을 실행하십시오. 
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -127,7 +127,7 @@ Java 어댑터는 JAX-RS 2.0 스펙을 기반으로 합니다. 즉, Java 어댑�
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * 구성 파일을 **푸시**하려면 다음을 실행하십시오. 
   ```bash
   mfpdev adapter push
@@ -232,6 +232,12 @@ public class JavaAdapterResource {
 
 > 다른 많은 어노테이션을 사용할 수 있습니다. 여기에서 **어노테이션 유형 요약**을 참조하십시오. 
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
+
+>**중요:** 어댑터 구현 내에서 `javax.ws.rs.*` 또는 `javax.servlet.*`의 클래스에 대해 정적 참조를 사용하는 경우에는 아래 옵션 중 하나를 사용하여 **RuntimeDelegate**를 구성해야 합니다.
+*	Liberty `jvm.options`의 `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` 설정
+또는
+*	시스템 특성 또는 JVM 사용자 정의 특성 `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` 설정
+
 
 ## HTTP 세션
 

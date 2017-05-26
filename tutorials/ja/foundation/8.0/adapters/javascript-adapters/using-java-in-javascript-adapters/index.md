@@ -78,7 +78,7 @@ function subtractTwoIntegers(a,b){
 ### 使用例
 {: #sample-usage }
 
-* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* Maven、{{ site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
 * アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。
 
 テスト時には、アダプターは、例えば `[1,2]` のような、加算または減算する数値を持つ配列を予期しています。

@@ -8,11 +8,11 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.mf_console_full }} は、開発者と管理者のどちらにとっても、単純化されたワークフローでアプリケーションとアダプターの作成、モニター、保護、および管理を行える、Web ベースの UI です。
+{{ site.data.keys.mf_console_full }} は、開発者と管理者のどちらにとっても、単純化されたワークフローでアプリケーションとアダプターの作成、モニター、保護、および管理を行える、Web ベースの UI です。
 
 #### 開発者として
 {: #as-a-developer }
-* 任意の環境用のアプリケーションを開発し、{{site.data.keys.mf_server }} に登録する。
+* 任意の環境用のアプリケーションを開発し、{{ site.data.keys.mf_server }} に登録する。
 * デプロイ済みのすべてのアプリケーションとアダプターを一目で確認する。『ダッシュボード』を参照してください。
 * ダイレクト・アップデート、リモート無効化、アプリケーション認証性とユーザー認証のセキュリティー・パラメーターなど、登録済みアプリケーションを管理および構成する。
 * 証明書をデプロイし、通知タグを作成し、通知を送信することでプッシュ通知をセットアップする。
@@ -22,7 +22,7 @@ weight: 2
 #### IT 管理者として
 {: #as-an-it-administrator }
 * 各種サービスをモニターする。
-* {{site.data.keys.mf_server }} にアクセスするデバイスを検索し、そのアクセス権限を管理する。
+* {{ site.data.keys.mf_server }} にアクセスするデバイスを検索し、そのアクセス権限を管理する。
 * アダプター構成を動的に更新する。
 * ログ・プロファイルを使用してクライアント・ロガー構成を調整する。
 * 製品ライセンスがどのように使用されているのかを追跡する。
@@ -34,9 +34,9 @@ weight: 2
 
 ## コンソールへのアクセス
 {: #accessing-the-console }
-{{site.data.keys.mf_console }} には、以下の方法でアクセスできます。 
+{{ site.data.keys.mf_console }} には、以下の方法でアクセスできます。 
 
-### ローカル側にインストールされている {{site.data.keys.mf_server }} から
+### ローカル側にインストールされている {{ site.data.keys.mf_server }} から
 {: #from-a-locally-installed-mobilefirst-server }
 #### デスクトップ・ブラウザー
 {: #desktop-browser }
@@ -44,9 +44,9 @@ weight: 2
 
 #### コマンド・ライン
 {: #command-line }
-「**コマンド・ライン**」ウィンドウで ({{site.data.keys.mf_cli }} がインストールされている)、コマンド `mfpdev server console` を実行します。
+「**コマンド・ライン**」ウィンドウで ({{ site.data.keys.mf_cli }} がインストールされている)、コマンド `mfpdev server console` を実行します。
 
-### リモート側にインストールされている {{site.data.keys.mf_server }} から
+### リモート側にインストールされている {{ site.data.keys.mf_server }} から
 {: #from-a-remotely-installed-mobilefirst-server }
 #### デスクトップ・ブラウザー
 {: #desktop-browser-remote }
@@ -55,7 +55,7 @@ weight: 2
 
 #### コマンド・ライン
 {: #command-line-remote }
-「**コマンド・ライン**」ウィンドウで ({{site.data.keys.mf_cli }} がインストールされている)、以下の手順に従います。 
+「**コマンド・ライン**」ウィンドウで ({{ site.data.keys.mf_cli }} がインストールされている)、以下の手順に従います。 
 
 1. 以下の手順で、リモート・サーバー定義を追加します。
 
@@ -71,7 +71,7 @@ weight: 2
 
 2. コマンド `mfpdev server console MyRemoteServer` を実行します。
 
-> 各種 CLI コマンドについては、 [CLI を使用した {{site.data.keys.product_adj }} 成果物の管理](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルで学習してください。
+> 各種 CLI コマンドについては、 [CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルで学習してください。
 
 ## コンソールのナビゲート
 {: #navigating-the-console }
@@ -95,7 +95,7 @@ weight: 2
 
 ### エラー・ログ
 {: #error-log }
-エラー・ログには、現在のランタイム環境の {{site.data.keys.mf_console }} またはコマンド・ラインから開始された管理操作のうち、失敗した管理操作がリストされます。ログを使用して、サーバーの障害の影響を確認してください。
+エラー・ログには、現在のランタイム環境の {{ site.data.keys.mf_console }} またはコマンド・ラインから開始された管理操作のうち、失敗した管理操作がリストされます。ログを使用して、サーバーの障害の影響を確認してください。
 
 > 詳しくは、ユーザー文書で、ランタイム環境での操作のエラー・ログに関するトピックを参照してください。
 
@@ -103,7 +103,7 @@ weight: 2
 
 ### デバイス
 {: #devices }
-管理者は、{{site.data.keys.mf_server }} にアクセスするデバイスを検索すること、およびアクセス権を管理することができます。  
+管理者は、{{ site.data.keys.mf_server }} にアクセスするデバイスを検索すること、およびアクセス権を管理することができます。  
 デバイスは、ユーザー ID や分かりやすい名前を使用して検索できます。ユーザー ID は、ログインに使用した ID です。  
 分かりやすい名前は、デバイスをユーザー ID を共有する他のデバイスと区別するための、そのデバイスに関連した名前です。 
 
@@ -129,7 +129,7 @@ weight: 2
 {: #authentication-and-security }
 デフォルトのトークンの有効期限値などのアプリケーション・セキュリティー・パラメーターを構成し、スコープ・エレメントをセキュリティー検査にマップし、必須アプリケーション・スコープを定義し、セキュリティー検査のオプションを構成します。
 
-> {{site.data.keys.product_adj }} セキュリティー・フレームワークについて[説明します](../../../authentication-and-security/)。
+> {{ site.data.keys.product_adj }} セキュリティー・フレームワークについて[説明します](../../../authentication-and-security/)。
 
 ![アプリケーション・セキュリティー構成画面のイメージ](authentication-and-security.png)
 
@@ -173,7 +173,7 @@ weight: 2
 {: #license-tracking }
 上部の「設定」ボタンからアクセスできます。
 
-ライセンス条項は、{{site.data.keys.product }} のどのエディション (Enterprise または Consumer) を使用するかにより異なります。ライセンス追跡は、デフォルトでは有効になっており、アクティブ・クライアント・デバイス、インストールされているアプリケーションなど、ライセンス・ポリシーに関連するメトリックが追跡されます。この情報は、{{site.data.keys.product }} の現在の使用がライセンス資格レベル内に収まっているかどうかを判別するのに役立ち、ライセンス違反を防止できます。
+ライセンス条項は、{{ site.data.keys.product }} のどのエディション (Enterprise または Consumer) を使用するかにより異なります。ライセンス追跡は、デフォルトでは有効になっており、アクティブ・クライアント・デバイス、インストールされているアプリケーションなど、ライセンス・ポリシーに関連するメトリックが追跡されます。この情報は、{{ site.data.keys.product }} の現在の使用がライセンス資格レベル内に収まっているかどうかを判別するのに役立ち、ライセンス違反を防止できます。
 
 管理者は、クライアント・デバイスの使用を追跡し、デバイスがアクティブかどうか判別することで、サービスに今後アクセスしないデバイスを廃棄できます。例えば、従業員が退社した場合にこの状態が発生することがあります。
 
@@ -183,7 +183,7 @@ weight: 2
 
 ### ダウンロード
 {: #downloads }
-インターネット接続を使用できない場合、{{site.data.keys.mf_console }} のダウンロード・センターから、{{site.data.keys.product }} のさまざまな開発作成物のスナップショットをダウンロードできます。
+インターネット接続を使用できない場合、{{ site.data.keys.mf_console }} のダウンロード・センターから、{{ site.data.keys.product }} のさまざまな開発作成物のスナップショットをダウンロードできます。
 
 ![使用可能な作成物のイメージ](downloads.png)
 
