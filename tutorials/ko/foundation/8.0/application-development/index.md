@@ -71,7 +71,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 클라이언트 구성 특성에는 서버에 액세스하는 데 필요한 애플리케이션 ID 및 정보(예: {{ site.data.keys.mf_server }} 런타임 URL과 보안 키)가 포함됩니다.   
 앱의 서버 구성에는 앱 관리 상태, 직접 업데이트의 웹 자원, 구성된 보안 범위 및 로그 구성과 같은 정보가 포함됩니다. 
 
-> [{{ site.data.keys.product }} SDK 학습서 추가](sdk)에서 {{ site.data.keys.product_adj }} vlient SDK를 추가하는 방법에 대해 알아보십시오.
+> [{{ site.data.keys.product }} SDK 학습서 추가](sdk)에서 {{ site.data.keys.product_adj }} client SDK를 추가하는 방법에 대해 알아보십시오.
 
 애플리케이션을 빌드하기 전에 클라이언트 구성을 정의해야 합니다. 클라이언트-앱 구성 특성은 {{ site.data.keys.mf_server }} 런타임 시 이 앱에 대해 정의된 특성과 일치해야 합니다. 예를 들어 클라이언트 구성의 보안 키는 서버의 키와 일치해야 합니다. 웹 앱이 아닌 항목의 경우 {{ site.data.keys.mf_cli }}를 사용하여 클라이언트 구성을 변경할 수 있습니다. 
 
