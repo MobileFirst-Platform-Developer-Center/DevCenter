@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-L'application AppCenter Installer permet d'installer des applications sur des appareils mobiles. Vous pouvez générer cette application à l'aide des projets Cordova ou MobileFirst Studio fournis, ou utiliser directement une version préconfigurés du projet MobileFirst Studio pour Android, iOS ou Windows 8 Universal.
+L'application AppCenter Installer permet d'installer des applications sur des appareils mobiles. Vous pouvez générer cette application en utilisant les projets Cordova, Visual Studio, MobileFirst Studio fournis ou utilisez directement une version précompilée du projet MobileFirst Studio pour Android, iOS ou Windows 8 Universal.
 
 #### Accéder à
 {: #jump-to }
@@ -162,9 +162,29 @@ Pour générer le projet Windows 8 :
 
 Pour distribuer le client mobile à vos utilisateurs Application Center, vous pouvez ensuite générer un programme d'installation qui installera le fichier exécutable généré (.exe) et ses fichiers de bibliothèque de liens dynamiques (.dll) dépendants. Vous pouvez également fournir ces fichiers sans les inclure dans un programme d'installation.
 
+####  Client IBM AppCenter de Microsoft Windows 10 Universal (Natif)
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
+
+Le client IBM AppCenter de Window 10 Universal natif peut être utilisé pour installer des applications Windows 10 Universal sur des téléphones Windows 10. Utilisez **IBMApplicationCenterWindowsStore** pour installer des applications Windows 10 sur Windows Desktop.
+
+#### Microsoft Windows 10 Universal : création du projet
+{: #microsoft-windows-10-universal-building-the-project}
+
+Le projet Windows 10 Universal est fourni sous forme de projet Visual Studio situé dans **IBMAppCenterUWP\IBMAppCenterUWP.csproj**.             
+Avant de pouvoir distribuer le projet du client, vous devez le créer dans Microsoft Visual Studio 2015.
+>La création du projet est un prérequis avant de le distribuer à vos utilisateurs
+
+Pour créer le projet Windows 10 Universal :
+1.  Ouvrez le fichier du projet Visual Studio **IBMAppCenterUWP\IBMAppCenterUWP.csproj**, in Microsoft Visual Studio 2015.
++ Effectuez une génération complète de l'application.
++ Générez le fichier **.appx** comme suit :
+  * Cliquez avec le bouton droit de la souris sur le projet et sélectionnez **Store → ///Create App Packages**.
+
 ## Personnalisation de fonctionnalités (pour les spécialistes) : Android, iOS, Windows Phone)
 {: #customizing-features-for-experts-android-ios-windows-phone }
 Vous pouvez personnaliser les fonctionnalités en modifiant un fichier de propriétés central et en manipulant d'autres ressources.
+>Cette possibilité n'est prise en charge que sous Android, iOS, Windows 8 (modules Windows Store uniquement) ou Windows Phone 8.
+
 
 Pour personnaliser les fonctionnalités : plusieurs fonctionnalités sont contrôlées par un fichier de propriétés central appelé **config.json** dans le répertoire **IBMAppCenter/apps/AppCenter/common/js/appcenter/** ou **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter**. Si vous souhaitez modifier le comportement des applications par défaut, vous pouvez adapter ce fichier de propriétés avant de générer le projet.
 
@@ -194,12 +214,16 @@ Les autres ressources disponibles sont les icônes d'application, le nom de l'ap
 * **Android :** fichier nommé **icon.png** dans les répertoires **/res/drawabledensity** du projet Android Studio ; il existe un répertoire pour chaque densité.
 * **iOS :** fichiers nommés **iconsize.png** dans le répertoire **Resources** du projet Xcode.
 * **Windows Phone :** fichiers nommés **ApplicationIcon.png**, **IconicTileSmallIcon.png** et **IconicTileMediumIcon.png** dans le répertoire **native** du dossier d'environnement de MobileFirst Studio pour Windows Phone.
+* **Windows 10 Universal :** fichiers **Square\*Logo\*.png**, **StoreLogo.png** et **Wide\*Logo\*.png** in the **IBMAppCenterUWP/Assets** directory in Visual Studio.
+
 
 #### Nom de l'application
 {: #application-name }
 * **Android :** éditez la propriété **app_name** dans le fichier **res/values/strings.xml** du projet Android Studio.
 * **iOS :** éditez la clé **CFBundleDisplayName** dans le fichier **IBMAppCenterAppCenterIphone-Info.plist** du projet Xcode.
 * **Windows Phone :** éditez l'attribut **Title** de l'entrée App dans le fichier **Properties/WMAppManifest.xml** de Visual Studio.
+* **Windows 10 Universal :** modifiez l'attribut **Title** de l'entrée App dans le fichier **IBMAppCenterUWP/Package.appxmanifest** de Visual Studio.
+
 
 #### Images d'écran d'accueil
 {: #splash-screen-images }
@@ -207,6 +231,7 @@ Les autres ressources disponibles sont les icônes d'application, le nom de l'ap
 * **iOS :** fichiers nommés **Default-size.png** dans le répertoire **Resources** du projet Xcode.
 * Ecran d'accueil des projets basés sur Cordova/MobileFirst Studio pendant la connexion automatique : **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone :** éditez le fichier nommé **SplashScreenImage.png** dans le répertoire **native** du dossier d'environnement de MobileFirst Studio pour Windows Phone.
+* **Windows 10 Universal :** modifiez les fichiers **SplashScreen*.png** dans le répertoire **IBMAppCenterUWP/Assets** dans Visual Studio.
 
 #### Icônes (boutons, étoiles et objets similaires) de l'application
 {: #icons }
@@ -222,6 +247,6 @@ Déployez les différentes versions de l'application client dans Application Cen
 
 Le client mobile Windows 8 n'est pas destiné à être déployé dans Application Center pour une distribution ultérieure. Vous pouvez choisir de distribuer le client mobile Windows 8 en fournissant aux utilisateurs le fichier exécutable .exe du client et les fichiers .dll de la bibliothèque de liens dynamiques directement intégrés dans une archive ou en créant un programme d'installation exécutable pour le client mobile Windows 8.
 
-Les versions Android, iOS et Windows Phone du client mobile doivent être déployées dans Application Center. Pour ce faire, vous devez télécharger les fichiers du module d'application Android (.apk), les fichiers d'application iOS (.ipa) et les fichiers d'application Windows Phone (.xap), les fichiers d'archive de répertoire Web (.zip) dans Application Center.
+Les versions Android, iOS, Windows Phone et Windows 10 Universal (Phone) du client mobile doivent être déployées dans Application Center. A cet effet, vous devez transférer les fichiers de module d'application Android (.apk), les fichiers d'application iOS (.ipa), les fichiers d'application Windows Phone (.xap), les fichiers Windows 10 Universal (.appx) ou les fichiers archive de répertoire web (.zip) dans Application Center.
 
-Suivez les étapes décrites dans [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) pour ajouter l'application client mobile pour Android, iOS et Windows Phone. Veillez à sélectionner la propriété d'application Installer pour indiquer que l'application est un programme d'installation. La sélection de cette propriété permet aux utilisateurs d'appareils mobiles d'installer facilement l'application de client mobile. Pour installer le client mobile, reportez-vous à la tâche associée correspondant à la version de l'application de client mobile déterminée par le système d'exploitation.
+Suivez la procédure décrite dans [Ajout d'une application mobile](../appcenter-console/#adding-a-mobile-application) pour ajouter l'application de client mobile pour Android, iOS, Windows Phone et Windows 10 Universal. Veillez à sélectionner la propriété d'application Installer pour indiquer que l'application est un programme d'installation. La sélection de cette propriété permet aux utilisateurs d'appareils mobiles d'installer facilement l'application de client mobile. Pour installer le client mobile, reportez-vous à la tâche associée correspondant à la version de l'application de client mobile déterminée par le système d'exploitation.

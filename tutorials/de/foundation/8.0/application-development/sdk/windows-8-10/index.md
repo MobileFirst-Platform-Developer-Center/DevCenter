@@ -1,155 +1,172 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
+title: MobileFirst-Foundation-SDK zu universellen Windows-8.1- oder Windows-10-UWP-Anwendungen hinzufügen
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Nuget](https://www.nuget.org/), and which you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+Das SDK der {{ site.data.keys.product }}
+besteht aus einer Reihe von Abhängigkeiten, die über den [Nuget](https://www.nuget.org/) verfügbar sind und zu einem Visual-Studio-Projekt hinzugefügt werden können. Die Abhängigkeiten entsprechen Kernfunktionen und anderen Funktionen:  
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
+* **IBMMobileFirstPlatformFoundation** - Implementiert Client-Server-Konnektivität, handhabt Authentifizierungs- und Sicherheitsaspekte, Ressourcenanforderungen und weitere erforderliche Kernfunktionen
 
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Nuget to a new or existing Windows 8.1 Universal application or to a Windows 10 UWP (Universal Windows Platform) application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are added to the project.
+In diesem Lernprogramm erfahren Sie, wie das native {{ site.data.keys.product_adj }}-SDK mithilfe von Nuget
+zu einer neuen oder vorhandenen universellen Windows-8.1-Anwendung oder Windows-10-UWP-Anwendung (universelle Windows-Plattform) hinzugfügt wird. Sie werden auch lernen,
+wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen.
+Außerdem erfahren Sie, wie Sie Informationen zu den {{ site.data.keys.product_adj }}-Konfigurationsdateien, die zum Projekt hinzugefügt werden, finden können. 
 
-**Prerequisites:**
+**Voraussetzungen:**
 
-- Microsoft Visual Studio 2013 or 2015 and {{ site.data.keys.mf_cli }} installed on the developer workstation. Developing Windows 10 UWP solution requires at least Visual Studio 2015.
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../../installation-configuration/development/windows) tutorials.
+- Microsoft Visual Studio 2013 oder 2015 und die {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert. Für die Entwicklung einer Windows-10-UWP-Lösung ist Visual Studio 2015 oder eine aktuellere Version erforderlich.
+- Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
+- Sie haben die Lernprogramme
+[{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst)
+und [Windows-8-Universal- und Windows-10-UWP-Entwicklungsumgebung einrichten](../../../installation-configuration/development/windows) durchgearbeitet. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk) 
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Natives {{ site.data.keys.product_adj }}-SDK hinzufügen](#adding-the-mobilefirst-native-sdk)
+- [Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen](#manually-adding-the-mobilefirst-win-native-sdk) 
+- [Natives {{ site.data.keys.product_adj }}-SDK aktualisieren](#updating-the-mobilefirst-native-sdk)
+- [Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK](#generated-mobilefirst-native-sdk-artifacts)
+- [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK hinzufügen
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Visual Studio project, and to register the application to the {{ site.data.keys.mf_server }}.
+Folgen Sie den nachstehenden Anweisungen, um das native {{ site.data.keys.product_adj }}-SDK
+zu einem neuen oder vorhandenen Visual-Studio-Projekt hinzuzufügen und die Anwendung bei {{ site.data.keys.mf_server }} zu registrieren.
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} instance is running.  
-If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
+Vergewissern Sie sich als Erstes, dass die MobileFirst-Server-Instanz aktiv
+ist.   
+Wenn Sie einen lokal installierten Server verwenden,
+navigieren Sie in einem **Befehlszeilenfenster** zum Serverordner und führen Sie den Befehl
+`./run.cmd` aus.
 
-### Creating an application
+### Anwendung erstellen
 {: #creating-an-application }
-Create a Windows 8.1 Universal or Windows 10 UWP project by using Visual Studio 2013/2015 or use an existing project.  
+Erstellen Sie ein universelles Windows-8.1-Projekt oder ein Windows-10-UWP-Projekt. Verwenden Sie dazu Visual Studio 2013/2015. Sie können auch ein vorhandenes Projekt nutzen.   
 
-### Adding the SDK
+### SDK hinzufügen
 {: #adding-the-sdk }
-1. To import {{ site.data.keys.product_adj }} packages, use the NuGet package manager.
-NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users.
+1. Verwenden Sie für den Import von {{ site.data.keys.product_adj }}-Paketen den Paketmanager NuGet.
+NuGet ist der Paketmanager für die Microsoft-Entwicklungsplattform, einschließlich .NET. Mit den NuGet-Client-Tools können Sie Pakete erzeugen und verwenden. Die NuGet Gallery ist das zentrale
+Paketrepository, das alle Ersteller und Nutzer von Paketen verwenden. 
 
-2. Open the Windows 8.1 Universal or Windows 10 UWP project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
+2. Öffnen Sie das universelle Windows-8.1-Projekt oder Windows-10-UWP-Projekt in Visual Studio 2013/2015. Klicken Sie mit der rechten Maustaste auf die Projektmappe und wählen Sie **NuGet-Pakete verwalten** aus.
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}**.
+3. Suchen Sie mit der Suchfunktion nach "IBM MobileFirst Platform". Wählen Sie **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}** aus.
 
     ![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. Click **Install**. This action installs the {{ site.data.keys.product }} Native SDK and its dependencies. This step also generates an empty `mfpclient.resw` file in the `strings` folder of the Visual Studio project.
+4. Klicken Sie auf **Installieren**. Mit dieser Aktion werden das native SDK der {{ site.data.keys.product }} und die zugehörigen Abhängigkeiten installiert. Mit diesem Schritt wird außerdem eine leere Datei `mfpclient.resw` im Ordner `strings`
+des Visual-Studio-Projekts generiert. 
 
-5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
+5. Stellen Sie sicher, dass in `Package.appxmanifest` mindestens die folgenden Leistungsmerkmale aktiviert sind: 
 
     - Internet (Client)
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
 {: #manually-adding-the-mobilefirst-win-native-sdk }
 
-You can also manually add the {{ site.data.keys.product }} SDK:
+Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen:
 
 <div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Click for instructions</b></a>
-            </h4>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Für Anweisungen hier klicken</b></a>
+                                </h4>
         </div>
 
         <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
             <div class="panel-body">
-                <p>You can prepare your environment for developing MobileFirst applications by getting the framework and library files manually. The {{ site.data.keys.product }} SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is also available from NuGet.</p>
+                <p>Sie können Ihre Umgebung für die Entwicklung von MobileFirst-Anwendungen vorbereiten, indem Sie die Framework- und Bibliotheksdateien manuell abrufen. Das SDK der {{ site.data.keys.product }} für Windows 8 Universal und Windows 10 UWP (universelle Windows-Plattform) ist auch über NuGet verfügbar.</p>
 
                 <ol>
-                    <li>Get the {{ site.data.keys.product }} SDK from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.
-                    </li>
-                    <li>Extract the contents of the downloaded SDK obtained in step 1.</li>
-                    <li>Open the Windows Universal native project in Visual Studio. Perform the following steps.
+                    <li>Rufen Sie das SDK der {{ site.data.keys.product }} über das Download-Center der {{ site.data.keys.mf_console }} auf der Registerkarte <b>SDKs</b> ab.</li>
+                    <li>Extrahieren Sie den Inhalt des in Schritt 1 heruntergeladenen SDK.</li>
+                    <li>Öffnen Sie das native universelle Windows-Projekt in Visual Studio. Führen Sie folgende Schritte aus:
                         <ol>
-                            <li>Select <b>Tools → NuGet Package Manager → Package Manager Settings</b>.</li>
-                            <li>Select <b>Package Sources</b> option. Click <b>+</b> icon to add new package source.</li>
-                            <li>Provide a name for the package source (for example: <em>windows8nuget</em>)</li>
-                            <li>Navigate to the MobileFirst SDK folder that was downloaded and extracted. Click <b>OK</b>.</li>
-                            <li>Click <b>Update</b> and then click <b>OK</b>.</li>
-                            <li>Right-click the <b>Solution project-name</b> in <b>Solution explorer</b> tab, which is to the right corner of the screen.</li>
-                            <li>Select <b>Manage NuGet Packages for Solutions → Online → windows8nuget</b>.</li>
-                            <li>Click <b>Install</b> option. You get the option to <b>Select Projects</b>.</li>
-                            <li>Ensure that all the check boxes are checked. Click <b>OK</b>.</li>
+                            <li>Wählen Sie <b>Extras → NuGet-Paket-Manager → Paket-Manager-Einstellungen</b> aus.</li>
+                            <li>Wählen Sie die Option <b>Paketquellen</b> aus. Klicken Sie auf das Pluszeichen (<b>+</b>), um eine neue Paketquelle hinzuzufügen.</li>
+                            <li>Geben Sie einen Namen für die Paketquelle an (z. B. <em>windows8nuget</em>).</li>
+                            <li>Navigieren Sie zu dem Ordner, in den Sie das MobileFirst-SDK heruntergeladen und extrahiert haben. Klicken Sie auf <b>OK</b>.</li>
+                            <li>Klicken Sie auf <b>Aktualisieren</b> und dann auf <b>OK</b>.</li>
+                            <li>Klicken Sie oben rechts im <b>Projektmappen-Explorer</b> mit der rechten Maustaste auf den <b>Projektnamen</b>.</li>
+                            <li>Wählen Sie <b>NuGet-Pakete für Projektmappe verwalten → Online → windows8nuget</b>.</li>
+                            <li>Klicken Sie auf die Option <b>Installien</b>. Es erscheint die Option <b>Projekte auswählen</b>.</li>
+                            <li>Stellen Sie sicher, dass alle Kontrollkästchen ausgewählt sind. Klicken Sie auf <b>OK</b>.</li>
                         </ol>
 
                     </li>
                 </ol>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Registering the application
+### Anwendung registrieren
 {: #reigstering-the-application }
-1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
+1. Öffnen Sie eine **Befehlszeile** und navigieren Sie zum Stammverzeichnis des Visual-Studio-Projekts.   
 
-2. Run the command:
+2. Führen Sie den folgenden Befehl aus: 
 
    ```bash
    mfpdev app register
    ```
-    - If you use a remote server, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - Wenn ein ferner Server verwendet wird,
+fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then updates the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.
+Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung
+zu {{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren. Anschließend wird die Datei
+**mfpclient.resw** im Ordner **strings** des Visual-Studio-Projekts aktualisiert. Zu der Datei werden Metadaten hinzugefügt, die den
+{{ site.data.keys.mf_server }} angeben. 
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Sie können
+Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.resw** file. Follow the onscreen instructions to add the file to your project.
+> 1. Laden Sie die {{ site.data.keys.mf_console }}.  
+> 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.resw** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
+Wenn Sie das native {{ site.data.keys.product_adj }}-SDK auf den neuesten Releasestand bringen wollen,
+führen Sie in einem **Befehlszeilenfenster** im Stammverzeichnis des Visual-Studio-Projekts den folgenden Befehl aus: 
 
 ```bash
 Nuget update
 ```
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
 {: #mfpclientresw }
-Located in the `strings` folder of the project, this file contains server connectivity properties and is user-editable:
+Im Ordner `strings` des Projekts befindet sich diese Datei mit Serverkonnektivitätseigenschaften, die vom Benutzer bearbeitet werden können: 
 
-- `protocol` – The communication protocol to {{ site.data.keys.mf_server }}. Either `HTTP` or `HTTPS`.
-- `WlAppId` - The identifier of the application. This should be same as the application identifier in the server.
-- `host` – The host name of the {{ site.data.keys.mf_server }} instance.
-- `port` – The port of the {{ site.data.keys.mf_server }} instance.
-- `wlServerContext` – The context root path of the application on the {{ site.data.keys.mf_server }} instance.
-- `languagePreference` - Sets the default language for client sdk system messages.
+- `protocol` – Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}; `HTTP` oder `HTTPS`
+- `WlAppId` - Kennung der Anwendung, die mit der Anwendungs-ID im Server übereinstimmen muss 
+- `host` – Hostname der MobileFirst-Server-Instanz
+- `port` – Port der MobileFirst-Server-Instanz
+- `wlServerContext` – Kontextstammverzeichnis der Anwendung in der MobileFirst-Server-Instanz
+- `languagePreference` - Legt die Standardsprache für Client-SDK-Systemnachrichten fest
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-With the MobileFirst Native SDK now integrated, you can now:
+Jetzt, da das native {{ site.data.keys.product_adj }}-SDK integriert ist, können Sie Folgendes tun: 
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- Gehen Sie die Lernprogramme zu [SDKs der {{ site.data.keys.product }}](../) durch. 
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../../adapters/) durch. 
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../../authentication-and-security/) durch. 
+- Gehen Sie die Lernprogramme zu [Benachrichtigungen](../../../notifications/) durch. 
+- Sehen Sie sich [alle Lernprogramme](../../../all-tutorials) an. 

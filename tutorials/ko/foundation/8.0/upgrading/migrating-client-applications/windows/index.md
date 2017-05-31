@@ -63,7 +63,7 @@ MobileFirst V8.0은 Windows Universal 환경, 즉 Windows 10 Universal Windows P
 
 Visual Studio 프로젝트를 수동으로 V8.0으로 업그레이드할 수 있습니다. {{ site.data.keys.product_adj }} V8.0은 이전 버전에서 개발된 앱을 변경해야 하는 많은 Visual Studio SDK 변경사항을 소개합니다. 변경된 API에 대한 정보는 [Windows 코드 업데이트](#updating-the-windows-code)를 참조하십시오. 
 
-1. {{site.data.keys.product_adj }} SDK를 V8.0으로 업데이트하십시오. 
+1. {{ site.data.keys.product_adj }} SDK를 V8.0으로 업데이트하십시오. 
     * MobileFirst SDK 패키지를 수동으로 제거하십시오. 여기에는 다음 참조 외에도 **wlclient.properties** 파일이 포함됩니다. 
         * Newtonsoft.Json
         * SharpCompress
@@ -73,7 +73,7 @@ Visual Studio 프로젝트를 수동으로 V8.0으로 업그레이드할 수 있
         * Windows 데스크탑 또는 태블릿의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows → 확인**을 마우스 오른쪽 단추로 클릭하십시오. 
         * Windows Phone 8 Universal의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → 확인**을 마우스 오른쪽 단추로 클릭하십시오. 
         * Windows 10 Universal Windows Platform(UWP)의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows Universal → 확인**을 마우스 오른쪽 단추로 클릭하십시오. 
-    * NuGet을 통해 {{site.data.keys.product_adj }} V8.0.0 SDK 패키지를 추가하십시오. [NuGet을 사용하여 {{ site.data.keys.product_adj }} SDK 추가](../../../application-development/sdk/windows-8-10)를 참조하십시오. 
+    * NuGet을 통해 {{ site.data.keys.product_adj }} V8.0.0 SDK 패키지를 추가하십시오. [NuGet을 사용하여 {{ site.data.keys.product_adj }} SDK 추가](../../../application-development/sdk/windows-8-10)를 참조하십시오. 
 2. {{ site.data.keys.product_adj }} V8.0.0 API를 사용하도록 애플리케이션 코드 업데이트
     * 이전 릴리스의 경우 Windows API는 **IBM.Worklight.namespace**에 포함되어 있었습니다. 이러한 API는 이제 사용되지 않고 동등한 **WorklightNamespace** API로 대체되었습니다. 앱을 수정하여 **IBM.Worklight.namespace**에 대한 모든 참조를 **WorklightNamespace**의 동등한 해당 사항으로 대체해야 합니다. 
 

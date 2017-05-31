@@ -471,8 +471,8 @@ HTML-5-Elemente ersetzt werden können. Einige Methoden haben sich ebenfalls ge�
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Verwenden Sie Cordova-Plug-ins oder HTML-5-Elemente.  |
 | `WL.App.close()` | Handhaben Sie dieses Ereignis außerhalb von {{ site.data.keys.product_adj }}. |
-| `WL.App.copyToClipboard()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. |
-| `WL.App.openUrl(url, target, options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in InAppBrowser bereitgestellt. |
+| `WL.App.copyToClipboard()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.  |
+| `WL.App.openUrl(url, target, options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in InAppBrowser bereitgestellt. |
 | {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in backbutton bereitgestellt. |
 | `WL.App.getDeviceLanguage()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
 | `WL.App.getDeviceLocale()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/> Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |

@@ -21,7 +21,7 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
 ### adapter-resources 文件夹 
 {: #the-adapter-resources-folder }
  
-`adapter-resources` 文件夹包含 XML 配置文件。该配置文件描述连接选项并列示向应用程序或其他适配器公开的过程。
+**adapter-resources** 文件夹包含 XML 配置文件。该配置文件描述连接选项并列示向应用程序或其他适配器公开的过程。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,40 +46,42 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>单击获取 adapter.xml 属性和子元素</b></a>
+                <a name="click-for-adapter-xml-attributes-and-subelements" class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>单击获取 adapter.xml 属性和子元素</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>：<i>必填。</i> 适配器的名称。
+                    <li><code>name</code>：<i>必填。</i> 适配器的名称。
 该名称在 {{ site.data.keys.mf_server }} 内必须是唯一的。
 它可以包含字母数据字符和下划线，且必须以字母开头。在定义和部署适配器之后，您无法修改其名称。</li>
-					<li><b>displayName</b>：<i>可选。</i> 显示在 {{ site.data.keys.mf_console }} 中的适配器名称。如果未指定此元素，那么将使用 name 属性的值来替代。</li>
-					<li><b>description</b>：<i>可选。</i> 适配器的其他信息。显示在 {{ site.data.keys.mf_console }} 中。</li>
-					<li><b>connectivity</b>：<i>必填。</i> 定义适配器连接到后端应用程序时使用的机制。它包含 <code>connectionPolicy</code> 子元素。<ul>
-                            <li><b>connectionPolicy</b>：<i>必填。</i><code>connectionPolicy</code> 定义连接属性。此子元素的结构取决于后端应用程序的集成技术。有关 connectionPolicy 的更多信息，请参阅 <a href="js-http-adapter">HTTP 适配器 connectionPolicy 元素</a>和 <a href="js-sql-adapter">SQL 适配器 connectionPolicy 元素</a>。</li>
+					<li><b>&lt;displayName&gt;</b>：<i>可选。</i> 显示在 {{ site.data.keys.mf_console }} 中的适配器名称。如果未指定此元素，那么将使用 name 属性的值来替代。</li>
+					<li><b>&lt;description&gt;</b>：<i>可选。</i> 适配器的其他信息。显示在 {{ site.data.keys.mf_console }} 中。</li>
+					<li><b>&lt;connectivity&gt;</b>：<i>必填。</i> 定义适配器连接到后端应用程序时使用的机制。它包含 &lt;connectionPolicy&gt; 子元素。<ul>
+                            <li><b>&lt;connectionPolicy&gt;</b>：<i>必填。</i>定义连接属性。此子元素的结构取决于后端应用程序的集成技术。有关 &lt;connectionPolicy&gt; 的更多信息，请参阅 <a href="js-http-adapter">HTTP 适配器 &lt;connectionPolicy&gt; 元素</a>和 <a href="js-sql-adapter">SQL 适配器 &lt;connectionPolicy&gt; 元素</a>。</li>
                         </ul>
                     </li>
-                    <li><b>procedure</b>：<i>必填。</i>定义用于访问后端应用程序公开的服务的过程。
+                    <li><b>&lt;procedure&gt;</b>：<i>必填。</i>定义用于访问后端应用程序公开的服务的过程。
 <ul>
-                            <li><b>name</b>：<i>必填。</i> 过程的名称。该名称在适配器内必须是唯一的。它可以包含字母数据字符和下划线，且必须以字母开头。</li>
-                            <li><b>audit</b>：<i>可选。</i>用于定义过程调用是否会记录在审计日志中。以下值有效：<ul>
-                                    <li><b>true</b>：对过程的调用会记录在审计日志中。</li> 
-                                    <li><b>false</b>：缺省值。对过程的调用不会记录在审计日志中。</li>
+                            <li><code>name</code>：<i>必填。</i> 过程的名称。该名称在适配器内必须是唯一的。它可以包含字母数据字符和下划线，且必须以字母开头。</li>
+                            <li><code>audit</code>：<i>可选。</i>用于定义过程调用是否会记录在审计日志中。以下值有效：<ul>
+                                    <li><code>true</code>：对过程的调用会记录在审计日志中。</li> 
+                                    <li><code>false</code>：缺省值。对过程的调用不会记录在审计日志中。</li>
                                 </ul>
                             </li>
-                            <li><b>scope</b>：<i>可选。</i>用于保护适配器资源过程的安全作用域，由零个或更多个以空格分隔的作用域元素组成的字符串。作用域元素可以是映射到安全性检查的关键字，或者安全性检查的名称。scope 属性的缺省值为空字符串。当 <b>secured</b> 属性的值为 false 时，将忽略 scope 属性。有关 OAuth 资源保护的信息，请参阅<a href="../../authentication-and-security">授权概念</a>教程。</li>
-                            <li><b>secured</b>：<i>可选。</i>定义适配器资源过程是否受 {{ site.data.keys.product }} 安全框架的保护。以下值有效：<ul>
-                                    <li><b>true</b>：缺省值。过程受保护。对过程的调用需要有效的访问令牌。</li>
-                                    <li><b>false</b>。过程不受保护。对过程的调用不需要访问令牌。设置该值时将忽略 <b>scope</b> 属性。要了解禁用资源保护的含意，请参阅<a href="../../authentication-and-security">授权概念</a>教程中的<a href="../../authentication-and-security/#unprotected-resources">不受保护的资源</a>主题。</li>
+                            <li><code>scope</code>：<i>可选。</i>用于保护适配器资源过程的安全性作用域。作用域可以是由一个或多个以空格分隔的作用域元素组成的字符串，或者，如果要应用缺省作用域，那么为 null。作用域元素可以是映射到安全性检查的关键字，或者安全性检查的名称。缺省作用域为 <code>RegisteredClient</code>，这是保留的 {{ site.data.keys.product_adj }} 关键字。缺省保护要求使用访问令牌才能访问资源。<br/>
+								有关 {{ site.data.keys.product_adj }} OAuth 资源保护以及如何为 JavaScript 适配器资源配置资源保护的更多信息，请参阅<a href="../../authentication-and-security/#protecting-adapter-resources">保护适配器资源</a>。<br/>
+								当 <code>secured</code> 属性的值为 <code>false</code> 时，将忽略 <code>scope</code> 属性。</li>
+                            <li><code>secured</code>：<i>可选。</i>定义适配器过程是否受 {{ site.data.keys.product_adj }} 安全框架的保护。以下值有效：<ul>
+                                    <li><code>true</code>：缺省值。过程受保护。对过程的调用需要有效的访问令牌。</li>
+                                    <li><code>false</code>。过程不受保护。对过程的调用不需要访问令牌。请参阅<a href="../../authentication-and-security/#unprotected-resources">不受保护的资源</a>。设置该值时将忽略 <code>scope</code> 属性。</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>securityCheckDefinition</b>：<i>可选。</i>定义安全性检查对象。在<a href="../../authentication-and-security/creating-a-security-check">创建安全性检查</a>教程中了解有关安全性检查的更多信息。</li>
-        			<li><b>property</b>：<i>可选。</i> 声明用户定义的属性。在下面的定制属性主题中了解更多信息。</li>
+                    <li><b>&lt;securityCheckDefinition&gt;</b>：<i>可选。</i>定义安全性检查对象。在<a href="../../authentication-and-security/creating-a-security-check">创建安全性检查</a>教程中了解有关安全性检查的更多信息。</li>
+        			<li><code>property</code>：<i>可选。</i> 声明用户定义的属性。可在本教程的<a href="#custom-properties">定制属性</a>部分中了解更多信息。</li>
                 </ul>
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>结束部分</b></a>
@@ -93,14 +95,15 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
 
 **adapter.xml** 文件也可包含用户定义的定制属性。可在 **{{ site.data.keys.mf_console }} → [您的适配器] → 配置选项卡**中覆盖在适配器创建期间开发人员指定给这些属性的值，无需重新部署适配器。可使用 [getPropertyValue API](#getpropertyvalue) 读取用户定义的属性，然后在运行时进一步定制。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注：**配置属性元素必须始终位于 `procedure` 元素*下*。在上述示例中，定义了一个具有缺省值的 displayName 属性，以便稍后使用。
-`<property>` 元素采用以下属性：
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注：**配置属性元素必须始终位于 &lt;procedure&gt; 元素*下*。在上述示例中，我们定义了一个具有缺省值的 &lt;displayName&gt; 属性，供稍后使用。
 
-- **name**：属性的名称，如配置类中所定义。
-- **defaultValue**：覆盖配置类中定义的缺省值。
-- **displayName**：*可选*，要显示在控制台中的友好名称。
-- **description**：*可选*，要显示在控制台中的描述。
-- **type**：*可选*，确保该属性是一个特定类型，例如 `integer`、`string`、`boolean` 或有效值列表（例如 `type="['1','2','3']"`）。
+&lt;property&gt; 元素采用以下属性：
+
+- `name`：属性的名称，如配置类中所定义。
+- `defaultValue`：覆盖配置类中定义的缺省值。
+- `displayName`：*可选*，要显示在控制台中的友好名称。
+- `description`：*可选*，要显示在控制台中的描述。
+- `type`：*可选*，确保该属性是一个特定类型，例如 `integer`、`string`、`boolean` 或有效值列表（例如 `type="['1','2','3']"`）。
 
 ![控制台属性](console-properties.png)
 

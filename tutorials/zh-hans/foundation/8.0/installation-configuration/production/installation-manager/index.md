@@ -85,7 +85,8 @@ Application Center 是 {{ site.data.keys.product }} 的组件。利用 Applicati
 
         您还可能想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。确保输入修订包的存储库。如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf** 中找到存储库文件。
 
-        **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。修订包是累积安装程序，需要安装基本版本的存储库。    * 选择该文件，然后单击**确定**。
+        **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。修订包是累积安装程序，需要安装基本版本的存储库。
+    * 选择该文件，然后单击**确定**。
     * 单击**确定**以关闭**首选项**面板。
 3. 在您接受产品的许可条款之后，单击**下一步**。
 4. 选择软件包组以安装产品。
@@ -108,8 +109,8 @@ Application Center 是 {{ site.data.keys.product }} 的组件。利用 Applicati
 
     对于生产安装，请使用 Ant 任务来安装 Application Center。使用 Ant 任务进行安装使您能够将 {{ site.data.keys.mf_server }} 的更新与 Application Center 的更新区分开来。在此情况下，在“选择配置”面板中选择“否”选项，这样便不会安装 Application Center。
 
-    如果选择“是”，需要完成后续窗格以输入计划使用的数据库以及计划部署 Application Center 的应用程序服务器的详细信息。还需要有可用的数据库 JDBC 驱动程序。9. 单击**下一步**直到达到**谢谢您**面板。
-然后，继续进行安装。
+    如果选择“是”，需要完成后续窗格以输入计划使用的数据库以及计划部署 Application Center 的应用程序服务器的详细信息。还需要有可用的数据库 JDBC 驱动程序。
+    9. 单击**下一步**直到达到**谢谢您**面板。然后，继续进行安装。
 
 安装一个安装目录，其中包含用于安装 {{ site.data.keys.product_adj }} 组件的资源。
 
@@ -140,7 +141,6 @@ Application Center 是 {{ site.data.keys.product }} 的组件。利用 Applicati
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * 对于强制令牌许可的安装，请输入以下命令：
-
     
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
@@ -199,9 +199,9 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
 
     > **要点：**  
     > 
-    > *对于不在应用程序服务器上安装 Application Center 的安装，请使用名为 **install-no-appcenter.xml** 的文件。
+    > * 对于不在应用程序服务器上安装 Application Center 的安装，请使用名为 **install-no-appcenter.xml** 的文件。
     > * 对于要安装 Application Center 的安装，请根据应用程序服务器和数据库从下表中选取样本响应文件。
-   
+
    #### **Silent\_Install\_Sample_Files.zip** 文件中用于安装 Application Center 的样本安装响应文件
     
     <table>
@@ -314,7 +314,8 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
 有关此步骤的更多信息，请参阅[存储库](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)中的 IBM Installation Manager 文档。
 
     使用 `<profile>` 元素来调整每个键/值对的值。  
-    在 `<install>` 元素的 `<offering>` 元素中，设置版本属性，使其与要安装的发行版匹配；但是如果要在存储库中安装可用的最新版本，请除去版本属性。5. 输入以下命令：`<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
+    在 `<install>` 元素的 `<offering>` 元素中，设置版本属性，使其与要安装的发行版匹配；但是如果要在存储库中安装可用的最新版本，请除去版本属性。
+5. 输入以下命令：`<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     其中：
     * `<InstallationManagerPath>` 是 IBM Installation Manager 的安装目录。
@@ -548,8 +549,7 @@ ${user.appserver.was.profile} == Liberty</td>
     <tr>
       <td>user.database.mysql.port</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>一个端口，MySQL 数据库服务器在此端口侦听 JDBC 连接。
-通常为 3306。</td>
+      <td>一个端口，MySQL 数据库服务器在此端口侦听 JDBC 连接。通常为 3306。</td>
       <td>一个 1 到 65535 之间的数字。</td>
     </tr>
     <tr>
@@ -585,15 +585,13 @@ ${user.appserver.was.profile} == Liberty</td>
     <tr>
       <td>user.database.oracle.port</td>
       <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
-      <td>一个端口，Oracle 数据库服务器在此端口侦听 JDBC 连接。
-通常为 1521。</td>
+      <td>一个端口，Oracle 数据库服务器在此端口侦听 JDBC 连接。通常为 1521。</td>
       <td>一个 1 到 65535 之间的数字。</td>
     </tr>
     <tr>
       <td>user.database.oracle.driver</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>Oracle 瘦驱动程序 jar 文件的绝对文件名。
-（<b>ojdbc6.jar 或 ojdbc7.jar</b>）</td>
+      <td>Oracle 瘦驱动程序 jar 文件的绝对文件名。（<b>ojdbc6.jar 或 ojdbc7.jar</b>）</td>
       <td>一个绝对文件名。</td>
     </tr>
     <tr>
@@ -618,7 +616,8 @@ ${user.appserver.was.profile} == Liberty</td>
       <td>user.database.oracle.appcenter.dbname</td>
       <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
       <td>Application Center 的 Oracle 数据库的名称。</td>
-      <td>非空；一个有效的 Oracle 数据库名称。</td>
+      <td>非空；一个有效的 Oracle 数据库名称。
+</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>

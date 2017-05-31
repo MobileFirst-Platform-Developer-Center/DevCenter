@@ -29,7 +29,7 @@ weight: 1
 ### 1. 启动 {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
 确保您已[创建 Mobile Foundation 实例](../../bluemix/using-mobile-foundation)，或者  
-如果使用 [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)，请导航至服务器的文件夹并运行命令 `./run.sh`（在 Mac 和 Linux 中）或 `run.cmd`（在 Windows 中）。
+如果使用 [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)，请导航至服务器的文件夹并运行命令 `./run.sh`（在 Mac 和 Linux 中）或 `run.cmd`（在 Windows 中）。
 
 ### 2. 创建并注册应用程序
 {: #2-creating-and-registering-an-application }

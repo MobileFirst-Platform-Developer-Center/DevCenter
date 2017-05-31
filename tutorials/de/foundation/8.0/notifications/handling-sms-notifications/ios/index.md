@@ -54,7 +54,7 @@ MFPPush.sharedInstance().initialize()
 Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```swift
-MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void in
      if error == nil {
          // Erfolgreich registriert
      } else {
@@ -68,13 +68,11 @@ MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(respon
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
 
-let jsonOptions: [NSObject: AnyObject] = [
+let jsonOptions: [AnyHashable: Any] = [
     "phoneNumber": phoneNumber
 ]
 
-let isValid = NSJSONSerialization.isValidJSONObject(jsonOptions)
-
-if isValid {
+if JSONSerialization.isValidJSONObject(jsonOptions) {
     // JSON ist gültig und kann mit registerDevice-Anforderung gesendet werden
 }
 
@@ -89,9 +87,9 @@ Sie können die Registrierung des Geräts bei der Instanz des Push-Benachrichtig
 aufheben. 
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Aufhebung der Registrierung erfolgreich
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Aufhebung der Registrierung erfolgreich
     } else {
         // Aufhebung der Registrierung fehlgeschlagen
     }
@@ -104,7 +102,7 @@ Benachrichtigungen werden mit REST-APIs an die registrierten Geräte gesendet. A
 können gesendet werden (tagbasierte und Broadcastbenachrichtigungen sowie authentifizierte Benachrichtigungen). 
 
 Für das Senden einer Benachrichtigung wird eine POST-Anforderung an den REST-Endpunkt abgesetzt: `imfpush/v1/apps/<Anwendungs-ID>/messages`.  
-Beispiel-URL:  
+Beispiel-URL: 
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
@@ -122,6 +120,3 @@ Informationen zum Senden einer Benachrichtigung enthält das Lernprogramm [Benac
 ### Verwendung des Beispiels
 {: #sample-usage }
 Anweisungen finden Sie in der Datei README.md zum Beispiel. 
-
-
-

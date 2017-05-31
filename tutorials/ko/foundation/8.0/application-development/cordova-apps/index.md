@@ -46,7 +46,7 @@ Cordova 후크는 개발자에게 Cordova 명령을 사용자 정의하는 기�
 
 ### Cordova 플러그인
 {: #cordova-plug-ins }
-Cordova 플러그인을 사용하여 기본 UI 요소(대화 상자, tabBar, 스피너 등) 추가와 같은 향상된 기능과 맵핑 및 위치정보, 외부 컨텐츠 로드, 사용자 정의 키보드, 디바이스 통합(카메라, 렌즈, 센서 등)과 같은 추가 고급 기능을 제공할 수 있습니다. 
+Cordova 플러그인을 사용하여 기본 UI 요소(대화 상자, 탭 막대, 스피너 등) 추가와 같은 향상된 기능과 맵핑 및 위치정보, 외부 컨텐츠 로드, 사용자 정의 키보드, 디바이스 통합(카메라, 렌즈, 센서 등)과 같은 추가 고급 기능을 제공할 수 있습니다. 
 
 Cordova 플러그인은 [GitHub.com](https://github.com) 및 인기있는 Cordova 플러그인 웹 사이트(예: [Plugreg](http://plugreg.com/) 및 [NPM](http://npmjs.org))에서 확인할 수 있습니다. 
 
@@ -55,6 +55,10 @@ Cordova 플러그인은 [GitHub.com](https://github.com) 및 인기있는 Cordov
 - [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs)
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
+
+>**참고:** {{ site.data.keys.product_adj }} Cordova SDK가 프로젝트에 추가된 상태에서 Cordova 앱의 기본 작동을 수정하면(이전 단추 작동을 대체하는 등) 앱 제출 시 Google Play 스토어에서 앱이 거부될 수 있습니다.
+Google Play 스토어에 제출하면서 발생하는 다른 실패에 대해서는 Google 지원에 문의할 수 있습니다.
+
 
 ### 써드파티 프레임워크
 {: #3rd-party-frameworks }
@@ -92,10 +96,10 @@ Cordova 애플리케이션에 [{{ site.data.keys.product_adj }} Cordova SDK를 �
         <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
             <div class="panel-body">
                 <p>Android Studio에서 {{ site.data.keys.product_adj }}를 사용하여 Android용 Cordova 앱의 시작 프로세스를 검토할 수 있습니다. {{ site.data.keys.product_adj }} Cordova 플러그인 <b>cordova-plugin-mfp</b>는 고유 비동기 부트스트랩 시퀀스를 사용합니다. 이 부트스트랩 시퀀스는 Cordova 애플리케이션이 애플리케이션의 기본 HTML 파일을 로드하기 전에 완료되어야 합니다. </p>
-                
-                <p><b>cordova-plugin-mfp</b> 플러그인을 Cordova 애플리케이션에 추가하면 {{ site.data.keys.product_adj }} 초기화를 수행하기 위해 애플리케이션의 <b>AndroidManifest.xml</b> 파일 및 <code>MainActivity</code> 파일(<code>CordovaActivity</code>를 확장함) 고유 코드가 인스트루먼테이션됩니다. </p>
-        
-                <p>애플리케이션 고유 코드 인스트루먼테이션은 다음과 같이 구성됩니다. </p>
+
+                <p><b>cordova-plugin-mfp</b> 플러그인을 Cordova 애플리케이션에 추가하면 {{ site.data.keys.product_adj }} 초기화를 수행하기 위해 애플리케이션의 <b>AndroidManifest.xml</b> 파일 및 <code>MainActivity</code> 파일(<code>CordovaActivity</code>를 확장함) 네이티브 코드가 인스트루먼테이션됩니다. </p>
+
+                <p>애플리케이션 네이티브 코드 인스트루먼테이션은 다음과 같이 구성됩니다. </p>
                 <ul>
                     <li>{{ site.data.keys.product_adj }} 초기화를 수행하는 <code>com.worklight.androidgap.api.WL</code> API 호출을 추가합니다. </li>
                     <li><b>AndroidManifest.xml</b> 파일에서 다음 사항을 추가합니다.
@@ -105,16 +109,16 @@ Cordova 애플리케이션에 [{{ site.data.keys.product_adj }} Cordova SDK를 �
                         </ul>
                     </li>
                 </ul>
-                
+
                 <h3>WLInitWebFrameworkListener 구현 및 WL 오브젝트 작성</h3>
                 <p><b>MainActivity.java</b> 파일은 초기 <code>MainActivity</code> 클래스를 작성하여 <code>CordovaActivity</code> 클래스를 확장합니다. {{ site.data.keys.product_adj }} 프레임워크가 초기화되는 경우 <code>WLInitWebFrameworkListener</code>에서 알림을 수신합니다. </p>
-                
+
 {% highlight java %}
 public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
 {% endhighlight %}
 
                 <p><code>MFPApplication</code> 클래스는 <code>onCreate</code>에서 호출되어 앱 전체에서 사용되는 {{ site.data.keys.product_adj }} 클라이언트 인스턴스(<code>com.worklight.androidgap.api.WL</code>)를 작성합니다. <code>onCreate</code> 메소드는 <b>WebView 프레임워크</b>를 초기화합니다. </p>
-                
+
 {% highlight java %}
 @Overridepublic void onCreate(Bundle savedInstanceState){
 super.onCreate(savedInstanceState);
@@ -132,7 +136,7 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
                     <li>스플래시 화면이 있는 경우 해당 화면을 로드하는 <code>showSplashScreen</code> 메소드를 정의합니다. </li>
                     <li>분석을 사용하는 데 필요한 두 개의 리스너를 작성합니다. 필요하지 않은 경우 이러한 리스너를 제거할 수 있습니다. </li>
                 </ul>
-                
+
                 <h3>WebView 로드</h3>
                 <p><b>cordova-plugin-mfp</b> 플러그인은 <b>AndroidManifest.xml</b> 파일에 Crosswalks WebView를 초기화하는 데 필요한 활동을 추가합니다. </p>
 
@@ -141,9 +145,9 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
 {% endhighlight %}
 
                 <p>이 활동은 Crosswalk WebView의 비동기 초기화가 다음과 같이 수행되는지 확인하는 데 사용됩니다. </p>
-                
+
                 <p>{{ site.data.keys.product_adj }} 프레임워크가 초기화되고 WebView에 로드될 준비가 된 후 <code>WLInitWebFrameworkResult</code>가 성공하면 <code>onInitWebFrameworkComplete</code>가 URL에 연결됩니다. </p>
-                
+
 {% highlight java %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
 if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
@@ -155,13 +159,12 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
-            
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>닫기 섹션</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-flow">
             <h4 class="panel-title">
@@ -199,13 +202,13 @@ int main(int argc, char *argv[]) {
                 <p>초기화에 성공하면 <code>wlInitWebFrameworkDidCompleteWithResult</code>는 {{ site.data.keys.product_adj }} 프레임워크가 로드되었는지 확인하고 <code>wlInitDidCompleteSuccessfully</code>를 호출하며 데이터 수신에 필요한 리스너를 작성합니다. <code>wlInitDidCompleteSuccessfully</code>는 기본 <b>index.html</b> 페이지에 연결되는 <code>cordovaViewController</code>를 작성합니다. </p>
 
                 <p>iOS Cordova 앱이 오류 없이 Xcode에 빌드되면 고유 플랫폼과 WebView에 기능을 추가할 수 있습니다. </p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>닫기 섹션</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="windows-flow">
             <h4 class="panel-title">
@@ -217,8 +220,8 @@ int main(int argc, char *argv[]) {
             <div class="panel-body">
                 <p>{{ site.data.keys.product_adj }} Cordova 플러그인 <b>cordova-plugin-mfp</b>는 고유 비동기 부트스트랩 시퀀스를 사용합니다. 이 부트스트랩 시퀀스는 Cordova 애플리케이션이 애플리케이션의 기본 HTML 파일을 로드하기 전에 완료되어야 합니다. </p>
 
-                <p>Cordova 애플리케이션에 <b>cordova-plugin-mfp</b> 플러그인을 추가하면 애플리케이션의 <b>appxmanifest</b> 파일에 <b>index.html</b> 파일이 추가됩니다. 이렇게 하면 <code>CordovaActivity</code> 고유 코드를 확장하여 {{ site.data.keys.product_adj }} 초기화를 수행합니다. </p>
-            
+                <p>Cordova 애플리케이션에 <b>cordova-plugin-mfp</b> 플러그인을 추가하면 애플리케이션의 <b>appxmanifest</b> 파일에 <b>index.html</b> 파일이 추가됩니다. 이렇게 하면 <code>CordovaActivity</code> 네이티브 코드를 확장하여 {{ site.data.keys.product_adj }} 초기화를 수행합니다. </p>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>닫기 섹션</b></a>
             </div>
@@ -230,7 +233,7 @@ int main(int argc, char *argv[]) {
 {: #cordova-application-security }
 {{ site.data.keys.product_full }}은 Cordova 앱을 보호하는 데 도움이 되는 보안 기능을 제공합니다. 
 
-크로스 플랫폼 앱에 포함된 대부분의 컨텐츠는 기본 앱의 컨텐츠보다 쉽게 권한 없는 사용자에 의해 수정될 수 있습니다. 크로스 플랫폼 앱에 포함된 대부분의 공통 컨텐츠가 읽을 수 있는 형식으로 되어 있으므로 IBM MobileFirst Foundation에는 크로스 플랫폼 Cordova 앱에 보다 높은 수준의 보안을 제공할 수 있는 기능이 포함되어 있습니다.  
+크로스 플랫폼 앱에 포함된 대부분의 컨텐츠는 기본 앱의 컨텐츠보다 쉽게 권한 없는 사용자에 의해 수정될 수 있습니다. 크로스 플랫폼 앱에 포함된 대부분의 공통 컨텐츠가 읽을 수 있는 형식으로 되어 있으므로 IBM MobileFirst Foundation에는 크로스 플랫폼 Cordova 앱에 보다 높은 수준의 보안을 제공할 수 있는 기능이 포함되어 있습니다. 
 
 > [{{ site.data.keys.product_adj }} 보안 프레임워크](../../authentication-and-security)에 대해 자세히 알아보십시오. 
 
@@ -255,7 +258,7 @@ int main(int argc, char *argv[]) {
 
 ### Cordova 구성 파일(config.xml)
 {: #cordova-configuration-file-configxml }
-Cordova 구성 파일은 애플리케이션 메타 데이터를 포함하고 앱의 루트 디렉토리에 저장되는 필수 XML 파일입니다. 이 파일은 Cordova 애플리케이션 작성 시 자동으로 생성됩니다. mfpdev app config 명령으로 이 파일을 수정하여 사용자 정의 특성을 추가할 수 있습니다.  
+Cordova 구성 파일은 애플리케이션 메타 데이터를 포함하고 앱의 루트 디렉토리에 저장되는 필수 XML 파일입니다. 이 파일은 Cordova 애플리케이션 작성 시 자동으로 생성됩니다. mfpdev app config 명령으로 이 파일을 수정하여 사용자 정의 특성을 추가할 수 있습니다. 
 
 ### 기본 파일(index.html)
 {: #main-file-indexhtml}
@@ -317,10 +320,10 @@ Cordova 구성 파일은 애플리케이션 메타 데이터를 포함하고 앱
 iOS 시뮬레이터, Android 에뮬레이터, Windows 에뮬레이터 또는 물리적 디바이스에서 Cordova 애플리케이션의 웹 자원을 미리 볼 수 있습니다. {{ site.data.keys.product }}에서는 두 개의 추가 실시간 미리보기 옵션인 {{ site.data.keys.mf_mbs_full }} 및 Simple Browser 렌더링을 사용할 수 있습니다. 
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **보안 제한사항:** 웹 자원을 미리 볼 수는 있지만 시뮬레이터에서는 일부 {{ site.data.keys.product_adj }} JavaScript API가 지원되지 않습니다. 특히 OAuth 프로토콜은 제한적으로 지원됩니다. 그러나 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다. 이 경우
-> 
+>
 > * 서버 측에서 보안 검사가 실행되지 않으며 {{ site.data.keys.mf_mbs }}에서 실행되는 클라이언트에 보안 인증 확인이 전송되지 않습니다.
 > * 개발 환경에서 {{ site.data.keys.mf_server }}를 사용하지 않는 경우 허용되는 범위 목록에 어댑터의 범위가 포함되어 있는 기밀 클라이언트를 등록하십시오. {{ site.data.keys.mf_console }}에서 런타임/설정 메뉴를 사용하여 기밀 클라이언트를 정의할 수 있습니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오.
-> 
+>
 > **참고:** 개발 환경의 {{ site.data.keys.mf_server }}에는 허용 범위가 무제한("*")인 기밀 클라이언트 "테스트"가 포함되어 있습니다. 기본적으로 mfpdev app preview는 이 기밀 클라이언트를 사용합니다.
 
 #### Simple Browser
@@ -435,4 +438,4 @@ Cordova iOS 애플리케이션에서 사용되는 기본 UIWebView를 [Apple의 
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-[모든 학습서](../../all-tutorials/) 섹션의 [Cordova 애플리케이션에 MobileFirst SDK 추가](../../application-development/sdk/cordova)에서 시작하고 {{ site.data.keys.product_adj }}에서 제공하는 기능을 검토하십시오. 
+[Cordova 애플리케이션에 MobileFirst SDK 추가](../../application-development/sdk/cordova)에서 시작하고 [모든 학습서](../../all-tutorials/) 섹션의 {{ site.data.keys.product_adj }}에서 제공하는 기능을 검토하십시오. 

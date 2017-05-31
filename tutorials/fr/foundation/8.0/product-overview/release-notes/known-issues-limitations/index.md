@@ -276,7 +276,7 @@ Fragment de code existant :
 
 ```objc
 (void)wlInitDidCompleteSuccessfully
-{ 
+{
 UIViewController* rootViewController = self.window.rootViewController; 
 // Create a Cordova View Controller 
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ; 
@@ -305,3 +305,8 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 ### Adresse IPv6 brute non prise en charge dans les applications Android
 {: #raw-ipv6-address-not-supported-in-android-applications }
 Lors de la configuration de **mfpclient.properties** pour votre application Android native, si votre serveur {{ site.data.keys.mf_server }} figure sur un hôte ayant une adresse IPv6, utilisez un nom d'hôte mappé pour l'adresse IPV6 afin de configurer la propriété **wlServerHost** dans **mfpclient.properties**. La configuration de la propriété **wlServerHost** avec une adresse IPv6 brute entraîne l'échec de la tentative de connexion de l'application au serveur {{ site.data.keys.mf_server }}.
+
+### La modification du comportement par défaut d'une application Cordova n'est pas recommandée
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+La modification du comportement par défaut d'une application Cordova (par exemple le remplacement du comportement du bouton Retour) lorsque le SDK Cordova de {{ site.data.keys.product_adj }} est ajouté au projet peut entraîner le rejet de l'application par Google Play Store lors de sa soumission.
+Pour d'autres types d'incident lors de la soumission à Google Play Store, vous pouvez contacter le support Google.

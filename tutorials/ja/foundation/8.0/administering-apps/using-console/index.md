@@ -50,7 +50,7 @@ IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアク�
 
 ### デバイスの状況
 {: #device-status }
-{{ site.data.keys.mf_server }} は、サーバーにアクセスするすべてのデバイスの状況情報を保守します。使用できるステータス値は、 **アクティブ (Active)**、**紛失 (Lost)**、 **盗難 (Stolen)**、**期限切れ (Expired)**、および**使用不可 (Disabled)**です。 
+{{ site.data.keys.mf_server }} は、サーバーにアクセスするすべてのデバイスの状況情報を保守します。使用できるステータス値は、 **アクティブ (Active)**、**紛失 (Lost)**、 **盗難 (Stolen)**、**期限切れ (Expired)**、および**使用不可 (Disabled)**です。
 
 デフォルト・デバイスの状況は **アクティブ (Active)** で、このデバイスからのアクセスがブロックされないことを示します。このステータスを **紛失 (Lost)**、 **盗難 (Stolen)**、または **使用不可 (Disabled)** に変更して、デバイスからアプリケーション・リソースへのアクセスをブロックすることができます。ステータスはいつでも**アクティブ (Active)** に復元してアクセスを再度許可することができます。[{{ site.data.keys.mf_console }} でのデバイス・アクセスの管理](#managing-device-access-in-mobilefirst-operations-console)を参照してください。
 
@@ -58,7 +58,7 @@ IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアク�
 
 ### デバイスの表示名
 {: #device-display-name }
-{{ site.data.keys.mf_server }} は、{{ site.data.keys.product_adj }} クライアント SDK が割り当てる固有のデバイス ID でデバイスを識別します。デバイスの表示名を設定すると、デバイスをその表示名で検索することができます。アプリケーション開発者は `WLClient` クラスの `setDeviceDisplayName` メソッドを使用して、デバイスの表示名を設定します。 [{{ site.data.keys.product_adj }} クライアント・サイド API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html) の `WLClient` 文書を参照してください。(JavaScript クラスは `WL.Client` です。) Java アダプター開発者 (セキュリティー検査の開発者など) は、com.ibm.mfp.server.registration.external.model `MobileDeviceData` クラスの `setDeviceDisplayName` メソッドを使用してデバイス表示名を設定することもできます。 [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc) を参照してください。
+{{ site.data.keys.mf_server }} は、{{ site.data.keys.product_adj }} クライアント SDK が割り当てる固有のデバイス ID でデバイスを識別します。デバイスの表示名を設定すると、デバイスをその表示名で検索することができます。アプリケーション開発者は `WLClient` クラスの `setDeviceDisplayName` メソッドを使用して、デバイスの表示名を設定します。 [{{ site.data.keys.product_adj }} クライアント・サイド API](../../api/client-side-api/javascript/client/) の `WLClient` 文書を参照してください。(JavaScript クラスは `WL.Client` です。) Java アダプター開発者 (セキュリティー検査の開発者など) は、com.ibm.mfp.server.registration.external.model `MobileDeviceData` クラスの `setDeviceDisplayName` メソッドを使用してデバイス表示名を設定することもできます。 [MobileDeviceData](../../api/client-side-api/objc/client/) を参照してください。
 
 ### {{ site.data.keys.mf_console }} でのデバイス・アクセスの管理
 {: #managing-device-access-in-mobilefirst-operations-console }
@@ -132,7 +132,7 @@ IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアク�
 3. **「ロケールの更新 (Update Locales)」**を選択します。ディスプレイ・ダイアログ・ウィンドウの**「ファイルのアップロード (Upload File)」**セクションで、**「アップロード」**を選択し、ロケールを定義する CSV ファイルの場所を参照します。
 
    CSV ファイルの各行に、1 対のコンマ区切りの文字列が含まれています。最初の文字列は、ロケール・コード (フランス語 (フランス) の場合は fr-FR、英語の場合は en など) で、2 番目の文字列は対応する言語のメッセージ・テキストです。指定されたロケール・コードは、ISO 639-1、ISO 3166-2、および ISO 15924 など、モバイル・オペレーティング・システムがロケールの指定に使用する標準に準拠していなければなりません。
-    
+
    > **注:** CSV ファイルを作成するには、UTF-8 エンコードをサポートするエディター (Notepad など) を使用する必要があります。
 
    以下に、複数ロケールの同一メッセージを定義する CSV ファイルの例を示します。
@@ -189,7 +189,7 @@ IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアク�
 
 監査ログにアクセスするには、ヘッダー・バーのユーザー名をクリックして**「バージョン情報」**を選択し、**「追加サポート情報 (Additional support information)」**、**「監査ログのダウンロード」**とクリックします。
 
-| フィールド名 | 説明 | 
+| フィールド名 | 説明 |
 |------------|-------------|
 | Timestamp	 | レコードが作成された日時。 |
 | Type	     | 操作のタイプ。 可能な値については、以下の操作タイプのリストを参照してください。 |
@@ -231,5 +231,3 @@ IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアク�
 * deleteTag
 * add runtime
 * delete runtime
-
-

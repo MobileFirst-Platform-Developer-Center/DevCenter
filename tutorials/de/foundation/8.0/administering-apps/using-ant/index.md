@@ -126,7 +126,7 @@ verwendet:
 
 | Attribut      | Beschreibung | Erforderlich | Standardwert | 
 |----------------|-------------|----------|---------|
-| url	         | Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices  | Ja	 | |
+| url	         | Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices | Ja	 | |
 | secure	     | Angabe, ob Operationen mit Sicherheitsrisiko vermieden werden sollen | Nein | true |
 | user	         | Benutzername für den Zugriff auf die {{ site.data.keys.product_adj }}-Verwaltungsservices | Ja | |
 | password	     | Kennwort für den Benutzer | Kennwort oder Datei ist erforderlich. | |
@@ -891,8 +891,7 @@ Der Befehl `set-authenticity-data` innerhalb eines Elements `<app-version>` gibt
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| file | Name der Eingabedatei {::nomarkdown}<ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder
-.appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>{:/} |  Ja | Nicht verfügbar | 
+| file | Name der Eingabedatei <ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |  Ja | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -999,7 +998,7 @@ einbeziehen.
 #### Befehl `list-devices`
 {: #the-list-devices-command }
 Der Befehl `list-devices` gibt
-die Liste der Geräte zurück, die Kontakt mit den Apps einer Laufzeit hatten. Er wird mit folgenden Attributen verwendet: 
+die Liste der Geräte zurück, die Kontakt mit den Apps einer Laufzeit hatten. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1025,7 +1024,7 @@ auf dem REST-Service [Devices (GET)](http://www.ibm.com/support/knowledgecenter/
 #### Befehl `remove-device`
 {: #the-remove-device-command }
 Mit dem Befehl `remove-device` wird
-der Datensatz eines Gerätes gelöscht, das Kontakt zu den Apps einer Laufzeit hatte. Er wird mit folgenden Attributen verwendet: 
+der Datensatz eines Gerätes gelöscht, das Kontakt zu den Apps einer Laufzeit hatte. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1065,7 +1064,7 @@ Der Befehl
 #### Befehl `set-status`
 {: #the-set-status-command }
 Mit dem Befehl `set-status` wird
-der Status eines Geräts im Geltungsbereich einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet: 
+der Status eines Geräts im Geltungsbereich einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1093,7 +1092,7 @@ auf dem REST-Service [Device Status (PUT)](http://www.ibm.com/support/knowledgec
 <br/>
 #### Befehl `set-appstatus`
 {: #the-set-appstatus-command }
-Mit dem Befehl `set-appstatus` wird der Status eines Geräts hinsichtlich einer App in einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet: 
+Mit dem Befehl `set-appstatus` wird der Status eines Geräts hinsichtlich einer App in einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1127,7 +1126,7 @@ mit MobileFirst-Server-Webanwendungen untersuchen.
 Der Befehl `show-info` zeigt Basisinformationen
 zu den MobileFirst-Verwaltungsservices an, die ohne Zugriff auf eine Laufzeit oder Datenbank zurückgegeben werden können.
 Mit diesem Befehl
-können Sie testen, ob die MobileFirst-Verwaltungsservices überhaupt ausgeführt werden. Er wird mit folgenden Attributen verwendet: 
+können Sie testen, ob die MobileFirst-Verwaltungsservices überhaupt ausgeführt werden. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1200,7 +1199,7 @@ nicht möglich sind. Verwenden Sie in solchen Fällen den Befehl unlock, um die 
 #### Befehl `list-runtimes`
 {: #the-list-runtimes-command }
 Der Befehl `list-runtimes` gibt eine
-Liste der implementierten Laufzeiten zurück. Er wird mit folgenden Attributen verwendet: 
+Liste der implementierten Laufzeiten zurück. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1225,7 +1224,7 @@ auf dem REST-Service [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter
 #### Befehl `show-runtime`
 {: #the-show-runtime-command }
 Der Befehl `show-runtime`
-zeigt Informationen zu einer gegebenen implementierten Laufzeit an. Er wird mit folgenden Attributen verwendet: 
+zeigt Informationen zu einer gegebenen implementierten Laufzeit an. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
@@ -1268,7 +1267,7 @@ auf dem REST-Service [Runtime (DELETE)](http://www.ibm.com/support/knowledgecent
 #### Befehl `list-farm-members`
 {: #the-list-farm-members-command }
 Der Befehl `list-farm-members` gibt eine Liste der Farmmemberserver
-zurück, auf denen eine gegebene Laufzeit implementiert ist. Er wird mit folgenden Attributen verwendet: 
+zurück, auf denen eine gegebene Laufzeit implementiert ist. Er wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|

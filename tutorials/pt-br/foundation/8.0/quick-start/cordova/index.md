@@ -6,7 +6,7 @@ relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral 
+## Visão Geral
 {: #overview }
 O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 

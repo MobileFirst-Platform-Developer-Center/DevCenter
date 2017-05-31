@@ -11,7 +11,7 @@ weight: 1
 SSL はトランスポート・レベル・セキュリティーを表しており、それは基本認証とは独立しています。基本認証は、HTTP と HTTPS のいずれを使用しても実行できます。
 
 1. adapter.xml ファイルで、HTTP アダプターの URL プロトコルを <b>https</b> に設定します。
-2. SSL 証明書を {{site.data.keys.mf_server }} 鍵ストアに保管します。[{{site.data.keys.mf_server }} 鍵ストアの構成](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
+2. SSL 証明書を {{ site.data.keys.mf_server }} 鍵ストアに保管します。[{{ site.data.keys.mf_server }} 鍵ストアの構成](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
 
 ### 相互認証と SSL
 {:# ssl-with-mutual-authentication }

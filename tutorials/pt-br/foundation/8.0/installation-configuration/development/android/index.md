@@ -14,7 +14,7 @@ Esse tutorial explica as etapas que um desenvolvedor precisa seguir para poder d
 
 #### Nível de suporte
 {: #support-level }
-O {{ site.data.keys.product_adj }} SDK é compatível com o Android versão Ice Cream Sandwich (API nível 14) e mais recente.
+{{ site.data.keys.product_adj }} O SDK é compatível com o Android versão Ice Cream Sandwich (API nível 14) e mais recente.
 
 ### Android Studio
 Siga as etapas fornecidas no [website Android Developers](http://developer.android.com/develop/index.html) para fazer download e instalar o Android Studio.

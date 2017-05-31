@@ -105,7 +105,7 @@ WL.Client.init(wlInitOptions).then (
 - **mfpContextRoot：**{{ site.data.keys.mf_server }} 所使用的上下文根。
 - **applicationId：**应用程序包名称，在[注册应用程序](#registering-the-web-application)时定义。
 
-### 注册 Web 应用程序
+### 注册 Web 应用程序 
 {: #registering-the-web-application }
 您可以从 {{ site.data.keys.mf_console }} 或者从 {{ site.data.keys.mf_cli }} 注册应用程序。
 

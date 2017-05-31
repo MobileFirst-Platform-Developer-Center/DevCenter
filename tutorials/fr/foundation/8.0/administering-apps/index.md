@@ -28,7 +28,7 @@ spécifique à une application.
 {: #administration-roles }
 Les administrateurs ne peuvent pas tous effectuer toutes les opérations d'administration. {{ site.data.keys.mf_console }}
 ainsi que tous les outils d'administration possèdent quatre rôles différents pour l'administration des applications
-{{ site.data.keys.product_adj }}. Voici 
+{{ site.data.keys.product_adj }}. Voici
 
 les différents rôles d'administration {{ site.data.keys.product_adj }} définis :
 
@@ -55,7 +55,7 @@ Avec ce rôle, un utilisateur peut effectuer toutes les opérations d'administra
 d'administrer des applications {{ site.data.keys.product_adj }}. {{ site.data.keys.product }}
 met également à disposition d'autres outils permettant d'incorporer des opérations d'administration à votre processus de génération et de déploiement.
 
-Un ensemble de services REST est disponible pour l'exécution d'opérations d'administration. Pour obtenir la documentation de référence API de ces services, voir [API REST pour le service d'administration de {{ site.data.keys.mf_server }}](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
+Un ensemble de services REST est disponible pour l'exécution d'opérations d'administration. Pour obtenir la documentation de référence API de ces services, voir [API REST pour le service d'administration de {{ site.data.keys.mf_server }}](../api/rest/administration-service/).
 
 Avec cet ensemble de services REST, vous pouvez effectuer les mêmes opérations que dans {{ site.data.keys.mf_console }}. Vous pouvez gérer des applications, des adaptateurs et, par exemple, télécharger une nouvelle version d'une application ou désactiver une ancienne version.
 
@@ -66,4 +66,3 @@ d'identification d'administrateur pour pouvoir les utiliser.
 
 ### Sélectionnez un sujet :
 {: #select-a-topic }
-

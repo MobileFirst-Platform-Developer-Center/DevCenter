@@ -18,9 +18,7 @@ und `introspection`) bereitstellen.
 * **Konfiguration**: Die Sicherheitsüberprüfung muss ein Konfigurationsobjekt für Sicherheitsüberprüfungen erstellen, in dem die unterstützten Konfigurationseigenschaften für
 Sicherheitsüberprüfungen definiert sind und das bei Anpassungen der Basiskonfiguration Typen und Werte validiert. 
 
-Vollständige Informationen zur Schnittstelle für Sicherheitsüberprüfungen finden Sie in den
-[Referenzinformationen
-zur API SecurityCheck](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc).
+In den [API-Referenzinformationen zu `SecurityCheck`](../../../api/server-side-api/java/) können Sie sich umfassend über die Schnittstelle für Sicherheitsüberprüfungen informieren.
 
 ## Funktionen von Sicherheitsüberprüfungen
 {: #securityc-check-functions }
@@ -35,14 +33,12 @@ OAuth-Bereich zugreifen, ordnet das Framework die Bereichselemente Sicherheitsü
 die Methode
 `authorize` auf, um die Autorisierung für einen Bereich anzufordern, der die dieser Sicherheitsüberprüfung zugeordneten Bereichselemente
 enthält. Der Bereich wird mit dem Parameter **scope** der Methode angegeben.
- 
+
 
 Die Sicherheitsüberprüfung fügt ihre Antwort zum
-[`AuthorizationResponse`-Objekt](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc)
+[`AuthorizationResponse`-Objekt](../../../api/server-side-api/java/)
 hinzu, das
-mit dem Parameter "response" an die Sicherheitsüberprüfung übergeben wurde. Die Antwort enthält den Namen der Sicherheitsüberprüfung
-und den Antworttyp, der "success", "failure" oder "challenge" sein kann
-(siehe [`AuthorizationResponse.ResponseType`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
+mit dem Parameter "response" an die Sicherheitsüberprüfung übergeben wurde. Die Antwort enthält den Namen der Sicherheitsüberprüfung und den Antworttyp, der "success", "failure" oder "challenge" sein kann (siehe [`AuthorizationResponse.ResponseType`](../../../api/server-side-api/java/)).
 
 Wenn die Antwort ein
 Abfrageobjekt (challenge) enthält oder angepasste Erfolgs- bzw. Fehlerdaten (success, failure), übergibt das Framework die Daten in einem JSON-Objekt
@@ -62,7 +58,7 @@ abzurufen. Diese Methode wird für jede Sicherheitsüberprüfung aufgerufen, die
 Introspektionsdaten überprüft die Methode, ob der aktuelle Zustand der Sicherheitsüberprüfung noch die zuvor für diesen Bereich gewährte
 Autorisierung unterstützt. Wenn die Autorisierung noch gültig ist, fügt die Methode
 `introspect` ihre Antwort zum
-[IntrospectionResponse-Objekt](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc) hinzu,
+[IntrospectionResponse-Objekt](../../../api/server-side-api/java/) hinzu,
 das mit dem Parameter **response** an die Methode übergeben wurde. 
 
 Die Antwort enthält den Namen der Sicherheitsüberprüfung, den
@@ -76,7 +72,7 @@ beispeilsweise der Ablaufzeitpunkt für einen zuvor erfolgreichen Zustand erreic
 * Das Sicherheitsframework stellt die Verarbeitungsergebnisse der Sicherheitsüberprüfungen zusammen und übergibt relevante Daten an den Client. Die Frameworkverarbeitung
 hat keinerlei Kenntnis von den Zuständen der Sicherheitsüberprüfungen.
 * Aufrufe der Methode `authorize` oder `introspect` können zu einer Änderung des aktuellen Zustands der
-Sicherheitsüberprüfung führen, auch wenn der Ablaufzeitpunkt für den aktuellen Zustand noch nicht erreicht ist.  
+Sicherheitsüberprüfung führen, auch wenn der Ablaufzeitpunkt für den aktuellen Zustand noch nicht erreicht ist. 
 
 > Weitere Informationen zu den Methoden `authorize` und
 `introspect` enthält das Lernprogramm [ExternalizableSecurityCheck](../../externalizable-security-check).
@@ -116,7 +112,7 @@ kann ein Konfigurationsobjekt erstellen, das keine Eigenschaften zugänglich mac
 Die Methode `createConfiguration` muss jedoch ein gültiges Konfigurationsobjekt
 zurückgeben und kann nicht null zurückgeben. Vollständige Referenzinformationen zur Schnittstelle für
 Sicherheitsüberprüfungen finden Sie unter
-[`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc). 
+[`SecurityCheckConfiguration`](../../../api/server-side-api/java/).
 
 Das Sicherheitsframework ruft die Methode
 `createConfiguration` der Sicherheitsüberprüfung während der Implementierung auf, was bei jeder Konfigurationsänderung für einen
@@ -128,7 +124,7 @@ Die
 Sicherheitsprüfungskonfiguration muss die Methoden `getErrors`, `getSyswarnings` und
 `getInfo` implementieren. Die abstrakte Klasse für
 Sicherheitsprüfungskonfigurationen
-[`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc)
+[`SecurityCheckConfigurationBase`](../../../api/server-side-api/java/)
 definiert und implementiert außerdem die angepssten Methoden
 `getStringProperty`, `getIntProperty` und
 `addMessage`. Einzelheiten finden Sie in der Codebeschreibung zu dieser Klasse. 

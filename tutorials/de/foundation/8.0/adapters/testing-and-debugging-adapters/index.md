@@ -77,29 +77,26 @@ in Ihre Postman-App mit einer fertigen Anforderung importieren oder den nächste
 <a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="In Postman ausführen" style="margin: 0"></a>
 
 {% comment %}
-1. Erstellen Sie in der {{ site.data.keys.mf_console }} auf der Registerkarte
-**Einstellungen** → **Vertrauliche Clients** einen vertraulichen Client. Sie können auch den
-Standardclient verwenden. Setzen Sie
-**Zulässiger Bereich** für Testzwecke auf `**`.
+1. Erstellen Sie in der {{ site.data.keys.mf_console }} auf der Registerkarte **Einstellungen** → **Vertrauliche Clients** einen vertraulichen Client. Sie können auch den Standardclient verwenden.  
+Setzen Sie **Zulässiger Bereich** für Testzwecke auf `**`.
 
   ![Vertraulichen Client definieren](confidential_client.png)
 {% endcomment %}
 
-1. Setzen Sie mit Ihrem HTTP-Client (Postman) eine HTTP-`POST`-Anforderung an
+1.  Setzen Sie mit Ihrem HTTP-Client (Postman) eine HTTP-`POST`-Anforderung an
 `http://<IP-Adresse>:<PORT>/mfp/api/az/v1/token` ab. Verwenden Sie
 `Content-Type: application/x-www-form-urlencoded` und die folgenden Parameter:
 
-* `grant_type`: `client_credentials`
-* `scope`: Verwenden Sie den Bereich, der die Ressource schützt.
-Falls Sie Ihre Ressource nicht mit einem Bereich schützen, verwenden Sie eine leere Zeichenfolge. 
+    - Setzen Sie `grant_type` auf den Wert `client_credentials`.
+    - Setzen Sie `scope` auf den schützenden Bereich für Ihre Ressource. Wenn Ihrer Ressource kein schützender Bereich zugewiesen ist, lassen Sie diesen Parameter weg, damit der Standardbereich (`RegisteredClient`) verwendet wird. Weitere Informationen finden Sie unter [Bereiche](../../authentication-and-security/#scopes).
 
+    ![Hauptteilkonfiguration in Postman](Body_configuration.png)
 
-  ![Hauptteilkonfiguration in Postman](Body_configuration.png)
-2. Fügen Sie einen Autorisierungsheader (`authorization header`) hinzu. Verwenden Sie die Basisauthentifizierung
+2.  Fügen Sie einen Autorisierungsheader (`authorization header`) hinzu. Verwenden Sie die Basisauthentifizierung
 (`Basic authentication`) mit "test" als ID des vertraulichen Clients und "test" als geheimem Schlüssel. 
-> Weitere Informationen zum vertraulichen Client enthält das Lernprogramm [Vertraulicher Client](../../authentication-and-security/confidential-clients).
+    > Weitere Informationen zu vertraulichen Clients finden Sie unter [Vertrauliche Clients](../../authentication-and-security/confidential-clients).
 
-  ![Autorisierungskonfiguration in Postman](Authorization_configuration.png)
+    ![Autorisierungskonfiguration in Postman](Authorization_configuration.png)
 
 
 Das Ergebnis ist ein JSON-Objekt mit einem temporär gültigen Zugriffstoken: 
@@ -150,6 +147,7 @@ Sie werden aufgefordert, die Bereiche auszuwählen, für die Sie die Swagger-Ben
 > Weitere Informationen zum vertraulichen Client enthält das Lernprogramm [Vertraulicher Client](../../authentication-and-security/confidential-clients).
 
 <br/><br/>
+
 #### Anforderung senden
 {: #sending-request-swagger }
 
@@ -250,6 +248,7 @@ Sie müssen die Ausführlichkeit des Servers entsprechend festlegen, da Sie ande
 Vor dem Debuggen des Java-Codes eines Adapters muss Eclipse wie folgt konfiguriert werden: 
 
 1. **Maven-Integration**: Ab Eclipse Kepler (Version 4.3) ist Maven-Unterstützung in Eclipse integriert.
+  
 Falls Ihre Eclipse-Instanz keine Unterstützung für Maven bietet,
 folgen Sie den Anweisungen unter [M2Eclipse](http://www.eclipse.org/m2e/), um Maven-Unterstützung hinzuzufügen. 
 

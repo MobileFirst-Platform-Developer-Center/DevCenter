@@ -7,11 +7,11 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説 
 {: #overview }
-IBM Containers for Bluemix では、コンテナーの CPU、メモリー、およびネットワーキングに関連したロギングおよびモニター用の組み込み機能がいくつか提供されています。 オプションで、{{site.data.keys.product_adj }} コンテナーのログ・レベルを変更できます。
+IBM Containers for Bluemix では、コンテナーの CPU、メモリー、およびネットワーキングに関連したロギングおよびモニター用の組み込み機能がいくつか提供されています。 オプションで、{{ site.data.keys.product_adj }} コンテナーのログ・レベルを変更できます。
 
-{{site.data.keys.mf_server }} コンテナーおよび {{site.data.keys.mf_analytics }} コンテナーのログ・ファイルを作成するオプションは、(レベル `*=info` を使用して) デフォルトで有効になっています。ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。コンテナーのログとサーバーまたはランタイムのログはどちらも、Kibana 可視化ツールを使用して Bluemix logmet コンソールから表示できます。モニターは、オープン・ソースのメトリック・ダッシュボードおよびグラフ・エディターである Grafana を使用して、Bluemix logmet コンソールから実行できます。
+{{ site.data.keys.mf_server }} コンテナーおよび {{ site.data.keys.mf_analytics }} コンテナーのログ・ファイルを作成するオプションは、(レベル `*=info` を使用して) デフォルトで有効になっています。ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。コンテナーのログとサーバーまたはランタイムのログはどちらも、Kibana 可視化ツールを使用して Bluemix logmet コンソールから表示できます。モニターは、オープン・ソースのメトリック・ダッシュボードおよびグラフ・エディターである Grafana を使用して、Bluemix logmet コンソールから実行できます。
 
-{{site.data.keys.product_adj }} コンテナーがセキュア・シェル (SSH) 鍵を有効にして作成され、パブリック IP アドレスにバインドされている場合は、適切な秘密鍵を使用して、コンテナー・インスタンスのログを安全に表示できます。
+{{ site.data.keys.product_adj }} コンテナーがセキュア・シェル (SSH) 鍵を有効にして作成され、パブリック IP アドレスにバインドされている場合は、適切な秘密鍵を使用して、コンテナー・インスタンスのログを安全に表示できます。
 
 ### ロギングのオーバーライド
 {: #logging-overrides }
@@ -25,7 +25,7 @@ IBM Containers for Bluemix では、コンテナーの CPU、メモリー、お�
 
 ## コンテナー・ログ・ファイル
 {: #container-log-files }
-ログ・ファイルは、各コンテナー・インスタンスの {{site.data.keys.mf_server }} および Liberty Profile のランタイム・アクティビティーに関して生成され、以下の場所にあります。
+ログ・ファイルは、各コンテナー・インスタンスの {{ site.data.keys.mf_server }} および Liberty Profile のランタイム・アクティビティーに関して生成され、以下の場所にあります。
 
 * /opt/ibm/wlp/usr/servers/mfp/logs/messages.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
@@ -34,14 +34,12 @@ IBM Containers for Bluemix では、コンテナーの CPU、メモリー、お�
 
 ログ・ファイルへのアクセスに示された手順に従ってコンテナーにログインし、ログ・ファイルにアクセスすることができます。
 
-コンテナーが存在しなくなった後もログ・ファイルを永続させるには、ボリュームを有効にします。(デフォルトでは、ボリュームは有効になりません。)
-ボリュームを有効にすると、logmet インターフェース (https://logmet.ng.bluemix.net/kibana など) を使用して、Bluemix からログを表示することもできます。
+コンテナーが存在しなくなった後もログ・ファイルを永続させるには、ボリュームを有効にします。(デフォルトでは、ボリュームは有効になりません。) ボリュームを有効にすると、logmet インターフェース (https://logmet.ng.bluemix.net/kibana など) を使用して、Bluemix からログを表示することもできます。
 
 **ボリュームの有効化**
-ボリュームを使用すると、コンテナーはログ・ファイルを永続化できるようになります。{{site.data.keys.mf_server }} コンテナーおよび {{site.data.keys.mf_analyics }} コンテナーのログ用のボリュームは、デフォルトでは有効になりません。
+ボリュームを使用すると、コンテナーはログ・ファイルを永続化できるようになります。{{ site.data.keys.mf_server }} コンテナーおよび {{ site.data.keys.mf_analyics }} コンテナーのログ用のボリュームは、デフォルトでは有効になりません。
 
-**start*.sh** スクリプトの実行時に、
-`ENABLE_VOLUME [-v | --volume]` を `Y` に設定することにより、ボリュームを有効に設定できます。また、スクリプトの対話式実行の場合、これは **args/startserver.properties** ファイルおよび **args/startanalytics.properties** ファイルでも構成可能です。
+**start*.sh** スクリプトの実行時に、`ENABLE_VOLUME [-v | --volume]` を `Y` に設定することにより、ボリュームを有効に設定できます。また、スクリプトの対話式実行の場合、これは **args/startserver.properties** ファイルおよび **args/startanalytics.properties** ファイルでも構成可能です。
 
 永続化されたログ・ファイルは、コンテナーの **/var/log/rsyslog** フォルダーと **/opt/ibm/wlp/usr/servers/mfp/logs** フォルダーに保存されます。  
 コンテナーに対して SSH 要求を出すことによって、ログにアクセスできます。
@@ -68,7 +66,7 @@ SSH を有効にするには、**prepareserver.sh** スクリプトまたは **p
 
 #### コマンド・ラインからのコンテナーへのアクセス
 {: #accessing-containers-from-the-command-line }
-コマンド・ラインから、実行中の {{site.data.keys.mf_server }} および {{site.data.keys.mf_analytics }} のコンテナー・インスタンスにアクセスし、ログやトレースを取得できます。
+コマンド・ラインから、実行中の {{ site.data.keys.mf_server }} および {{ site.data.keys.mf_analytics }} のコンテナー・インスタンスにアクセスし、ログやトレースを取得できます。
 
 1. コマンド `cf ic exec -it container_instance_id "bash"` を実行して、コンテナー・インスタンス内に対話式ターミナルを作成します。
 2. ログ・ファイルまたはトレースを見つけるために、以下のコマンド例を使用します。
@@ -87,7 +85,7 @@ SSH を有効にするには、**prepareserver.sh** スクリプトまたは **p
 
 #### SSH を使用したコンテナーへのアクセス
 {: #accessing-containers-using-ssh }
-セキュア・シェル (SSH) を使用して {{site.data.keys.mf_server }} および {{site.data.keys.mf_analytics }} のコンテナーにアクセスすることにより、syslog および Liberty ログを取得できます。
+セキュア・シェル (SSH) を使用して {{ site.data.keys.mf_server }} および {{ site.data.keys.mf_analytics }} のコンテナーにアクセスすることにより、syslog および Liberty ログを取得できます。
 
 コンテナー・グループを実行している場合は、パブリック IP アドレスを各インスタンスにバインドし、SSH を使用してログを安全に表示できます。SSH を有効にするために、**startservergroup.sh** スクリプトを実行する前に、必ず SSH 公開鍵を **mfp-server\server\ssh** フォルダーにコピーしてください。
 

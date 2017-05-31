@@ -1,23 +1,30 @@
 ---
 layout: tutorial
-title: Additional Information
-breadcrumb_title: Additional info
+title: Zusätzliche Informationen
+breadcrumb_title: Zusätzliche Infos
 relevantTo: [android]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Registering Javadocs to an Android Studio Gradle project
+### Javadocs für ein Android-Studio-Gradle-Projekt registrieren
 {: #registering-javadocs-to-an-android-studio-gradle-project }
-The {{ site.data.keys.product_adj }} Android Javadocs are included in the *.aar files imported by Gradle. However you need to link them to their relevant library in Android Studio.
+Die {{ site.data.keys.product_adj }}-Android-Javadocs sind in den
+von Gradle importierten *.aar-Dateien enthalten. Sie müssen diese jedoch mit der zugehörigen Bibliothek in
+Android Studio verlinken. 
 
-1. In Android Studio make sure you are in the **Project** view.
-2. Find the library name under the **External Libraries** node (the Javadoc file appears below it).
-3. Right-click on the library name and select **Library Properties**.
-4. From the Library Properties dialog select the "+" button
-5. Navigate to the downloaded Javadoc JAR file (**ibmmobilefirstplatformfoundation-javadoc.jar**) under **..\app\build\intermediates\exploded-aar\ibmmobilefirstplatformfoundation\jars\assets** and select it.
-6. Click **OK**. The Javadocs will now be available within your project.
+1. Sie müssen die Ansicht **Project** von Android Studio öffnen.
+2. Suchen Sie unter dem Knoten **External
+Libraries** nach dem Bibliotheksnamen. (Darunter erscheint die Javadoc-Datei.)
+3. Klicken Sie mit der rechten Maustaste auf den Bibliotheksnamen und wählen Sie **Library Properties** aus.
+4. Wählen Sie im Dialog "Library Properties" die Schaltfläche mit dem
+Pluszeichen ("+") aus.
+5. Navigieren Sie zu der heruntergeladenen Javadoc-JAR-Datei
+(**ibmmobilefirstplatformfoundation-javadoc.jar**)
+unter **..\app\build\intermediates\exploded-aar\ibmmobilefirstplatformfoundation\jars\assets** und wählen Sie sie aus.
+6. Klicken Sie auf **OK**. Die Javadocs sind jetzt in Ihrem Projekt verfügbar.
 
-### Notes
+### Hinweise
 {: #notes }
 
-* The {{ site.data.keys.product_adj }} APIs cannot be activated from within an Android Service.
+* Die {{ site.data.keys.product_adj }}-APIs
+können nicht aus einem Android-Service heraus aktiviert werden.

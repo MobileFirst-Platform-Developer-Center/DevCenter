@@ -16,7 +16,7 @@ weight: 3
 * Xcode 7.1 以降
 * iOS 8 以降
 
-**前提条件:** iOS 開発環境をセットアップする際には、 [{{site.data.keys.product }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
+**前提条件:** iOS 開発環境をセットアップする際には、 [{{ site.data.keys.product }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
 
 ### 登録
 {: #registration }
@@ -50,5 +50,5 @@ Xcode では、アプリケーションをテストするための iOS シミュ
 
 ## 次のステップ
 {: #whats-next }
-{{site.data.keys.product_adj }} および iOS 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/ios/)のカテゴリーで {{site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{site.data.keys.product }} 開発の個々の側面について理解を深めてください。
+{{ site.data.keys.product_adj }} および iOS 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/ios/)のカテゴリーで {{ site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{ site.data.keys.product }} 開発の個々の側面について理解を深めてください。
 

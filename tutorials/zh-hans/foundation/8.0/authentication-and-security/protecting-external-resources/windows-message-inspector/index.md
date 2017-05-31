@@ -102,7 +102,7 @@ static void Main(string[] args) {
 > 有关 WCF REST 服务的更多信息，请参阅 [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
 
 ## 定义消息检验器
-{: #define-a-message-inspector }
+{: #define-a-message-inspector}
 在开始验证过程之前，必须创建并定义用于保护资源（服务端点）的**消息检验器**。
 消息检验器是一个扩展性对象，可在服务中用于在接收消息之后或者在发送消息之前检查和更改消息。服务消息检验器应实现 `IDispatchMessageInspector` 接口：
 
@@ -306,7 +306,7 @@ private string getIntrospectionToken()
   postParameters.Add("grant_type", "client_credentials");
   postParameters.Add("scope", "authorization.introspect");
 
-  try {
+  try { 
 HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
     Stream dataStream = resp.GetResponseStream();
     StreamReader reader = new StreamReader(dataStream);

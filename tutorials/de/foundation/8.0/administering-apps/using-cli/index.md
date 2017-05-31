@@ -88,7 +88,7 @@ Optionen verwendet:
 
 | Option	| Typ | Beschreibung | Erforderlich | Standardwert | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices  | Ja | | 
+| --url | 	 | URL | Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices | Ja | | 
 | --secure	 | Boolescher Wert | Angabe, ob Operationen mit Sicherheitsrisiko vermieden werden sollen | Nein | true | 
 | --user	 | Name | Benutzername für den Zugriff auf die MobileFirst-Verwaltungsservices | Ja |  | 	 
 | --passwordfile | Datei | Datei mit dem Kennwort für den Benutzer | Nein | 
@@ -1059,8 +1059,7 @@ Syntax: `app version [Laufzeitname] App-Name Umgebung Version get authenticity-d
 Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument | Beschreibung | Erforderlich | Standardwert |
-|--------|-------------|----------|---------|
-| > Zieldatei | Name der Ausgabedatei | Nein | Standardausgabe |  
+| > Zieldatei | Name der Ausgabedatei | Nein | Standardausgabe | 
 
 **Beispiel**
 
@@ -1084,8 +1083,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 | Argument | Beschreibung | 
 |----------|-------------|
 | Datei | Name der Eingabedatei
-<ul><li>Datei .authenticity_data</li><li>Gerätedatei (.ipa, .apk oder
-.appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>| 
+<ul><li>Datei .authenticity_data</li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>| 
 
 **Beispiele**
 

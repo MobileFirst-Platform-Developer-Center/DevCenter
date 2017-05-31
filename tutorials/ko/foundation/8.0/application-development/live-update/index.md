@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 활성 업데이트
-relevantTo: [ios,android]
+relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - 이름: Xcode 프로젝트 다운로드
@@ -16,7 +16,7 @@ downloads:
 {: #overview }
 사용자 세그먼트화는 각 그룹의 사용자 간 유사성이 반영된 여러 그룹으로 사용자를 나누는 관행입니다. 일반적인 예는 [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)으로, 이는 지리적 기준에 따라 사용자를 나눕니다. 사용자 세그먼트화의 목적은 각 세그먼트에서 사용자를 관련시킬 방법을 결정하여 값을 최대화하는 것입니다. 
 
-{{ site.data.keys.product }}의 활성 업데이트 기능을 사용하여 애플리케이션의 각 사용자 세그먼트에 대한 서로 다른 구성을 간단하게 정의하고 제공할 수 있습니다. 해당 {{ site.data.keys.mf_console }}에는 각 세그먼트에 대한 구성의 값 및 해당 구성의 구조를 정의하는 데 필요한 컴포넌트가 포함되어 있습니다. 구성을 이용하는 데 필요한 클라이언트 SDK(Android 및 iOS **고유** 애플리케이션에 사용 가능)도 제공됩니다. 
+{{ site.data.keys.product }}의 활성 업데이트 기능을 사용하여 애플리케이션의 각 사용자 세그먼트에 대한 서로 다른 구성을 간단하게 정의하고 제공할 수 있습니다. 해당 {{ site.data.keys.mf_console }}에는 각 세그먼트에 대한 구성의 값 및 해당 구성의 구조를 정의하는 데 필요한 컴포넌트가 포함되어 있습니다. 구성을 이용하는 데 필요한 클라이언트 SDK(Android 및 iOS **고유** 애플리케이션 및 Cordova 애플리케이션에 사용 가능)도 제공됩니다. 
 
 #### 공통 유스 케이스
 {: #common-use-cases }

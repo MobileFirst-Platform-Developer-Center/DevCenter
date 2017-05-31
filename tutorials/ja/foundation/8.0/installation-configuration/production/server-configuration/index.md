@@ -78,7 +78,7 @@ SSL プロトコルのうち Transport Layer Security v1.2 (TLS) V1.2 のみを�
 {: #websphere-application-server-full-profile }
 1. Java ランタイム環境 (JRE) が TLS V1.2 をサポートすることを確認します。 
 
-    IBM Java SDK に POODLE 脆弱性に対するパッチが適用済みであることを確認します。ご使用のバージョンの WebSphere Application Server 用のパッチを含んでいる最小の IBM Java SDK バージョンについては、[Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173) を参照してください。
+IBM Java SDK に POODLE 脆弱性に対するパッチが適用済みであることを確認します。ご使用のバージョンの WebSphere Application Server 用のパッチを含んでいる最小の IBM Java SDK バージョンについては、[Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173) を参照してください。
     > **注:** このセキュリティー情報にリストされているバージョンまたはそれ以降のバージョンを使用することができます。
 2. WebSphere Application Server 管理コンソールにログインし、**「セキュリティー」→「SSL 証明書および鍵管理」→「SSL 構成」**をクリックします。
 3. リストされる SSL 構成ごとに、構成を変更して TLS V1.2 を使用可能にします。
@@ -352,11 +352,11 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 
 | プロパティー                 | オプションまたは必須 | 説明 | 制限 |
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector  | オプション	           | Java Management Extensions (JMX) のコネクター・タイプ。<br/>指定可能な値は `SOAP` および `RMI` です。デフォルト値は SOAP です。 | WebSphere Application Server のみ。 |
+| mfp.admin.jmx.connector  | オプション	           | Java Management Extensions (JMX) のコネクター・タイプ。<br/>指定可能な値は、`SOAP` と `RMI` です。デフォルト値は SOAP です。 | WebSphere Application Server のみ。 |
 | mfp.admin.jmx.host       | オプション	           | JMX REST 接続のホスト名。 | Liberty プロファイルのみ。 |
 | mfp.admin.jmx.port	   | オプション	           | JMX REST 接続のポート。 | Liberty プロファイルのみ。 |
-| mfp.admin.jmx.user       | Liberty プロファイルおよび WebSphere Application Server ファームでは必須、その他の場合はオプション | JMX REST 接続のユーザー名。 | WebSphere Application Server Liberty プロファイル: JMX REST 接続のユーザー名。<br/><br/>WebSphere Application Server ファーム: SOAP 接続のユーザー名。<br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 管理アプリケーションにマップされた仮想ホストがデフォルト・ホストではない場合、WebSphere 管理者のユーザー名。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のユーザー名。 |
-| mfp.admin.jmx.pwd	| Liberty プロファイルおよび WebSphere Application Server ファームでは必須、その他の場合はオプション | JMX REST 接続のユーザー・パスワード。 | WebSphere Application Server Liberty プロファイル: JMX REST 接続のユーザー・パスワード。<br/><br/>WebSphere Application Server ファーム: SOAP 接続のユーザー・パスワード。<br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} サーバー管理アプリケーションにマップされた仮想ホストがデフォルト・ホストではない場合、WebSphere 管理者のユーザー・パスワード。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のパスワード。 |
+| mfp.admin.jmx.user       | Liberty プロファイルおよび WebSphere Application Server ファームでは必須、その他の場合はオプション | JMX REST 接続のユーザー名。 | WebSphere Application Server Liberty プロファイル: JMX REST 接続のユーザー名。<br/><br/>WebSphere Application Server ファーム: SOAP 接続のユーザー名。<br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 管理アプリケーションにマップされた仮想ホストがデフォルトのホストでなければ、WebSphere 管理者のユーザー名。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のユーザー名。 |
+| mfp.admin.jmx.pwd	| Liberty プロファイルおよび WebSphere Application Server ファームでは必須、その他の場合はオプション | JMX REST 接続のユーザー・パスワード。 | WebSphere Application Server Liberty プロファイル: JMX REST 接続のユーザー・パスワード。<br/><br/>WebSphere Application Server ファーム: SOAP 接続のユーザー・パスワード。<br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 管理アプリケーションにマップされた仮想ホストがデフォルトのホストでなければ、WebSphere 管理者のユーザー・パスワード。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のパスワード。 |
 | mfp.admin.rmi.registryPort | オプション | ファイアウォールを介した JMX 接続の RMI レジストリー・ポート。 | Tomcat のみ。 |
 | mfp.admin.rmi.serverPort | オプション | ファイアウォールを介した JMX 接続の RMI サーバー・ポート。 | Tomcat のみ。 |
 | mfp.admin.jmx.dmgr.host | 必須 | デプロイメント・マネージャーのホスト名。 | WebSphere Application Server Network Deployment のみ。 |
@@ -367,9 +367,9 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 
 | プロパティー                 | オプションまたは必須 | 説明  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.actions.prepareTimeout | オプション | デプロイメント・トランザクション中に管理サービスからランタイムにデータを転送する際のタイムアウト (ミリ秒)。この時間内にランタイムに到達できない場合、エラーが発生し、デプロイメント・トランザクションは終了します。<br/><br/>デフォルト値: 1800000 ms (30 分) |
-| mfp.admin.actions.commitRejectTimeout | オプション | ランタイムへの接続時に、デプロイメント・トランザクションをコミットまたはリジェクトする際のタイムアウト (ミリ秒)。この時間内にランタイムに到達できない場合、エラーが発生し、デプロイメント・トランザクションは終了します。<br/><br/>デフォルト値: 120000 ms (2 分) |
-| mfp.admin.lockTimeoutInMillis | オプション |トランザクション・ロックを取得する際のタイムアウト (ミリ秒)。デプロイメント・トランザクションは順番に実行されるため、ロックを使用します。したがって、トランザクションは、前のトランザクションが終了するまで待機する必要があります。このタイムアウトは、トランザクションの最大待機時間です。<br/><br/>デフォルト値: 1200000 ms (20 分) |
+| mfp.admin.actions.prepareTimeout | オプション | デプロイメント・トランザクション中に管理サービスからランタイムにデータを転送する際のタイムアウト (ミリ秒)。この時間内にランタイムに到達できない場合、エラーが発生し、デプロイメント・トランザクションは終了します。<br/><br/>デフォルト値: 1800000 ミリ秒 (30 分) |
+| mfp.admin.actions.commitRejectTimeout | オプション | ランタイムへの接続時に、デプロイメント・トランザクションをコミットまたはリジェクトする際のタイムアウト (ミリ秒)。この時間内にランタイムに到達できない場合、エラーが発生し、デプロイメント・トランザクションは終了します。<br/><br/>デフォルト値: 120000 ミリ秒 (2 分)  |
+| mfp.admin.lockTimeoutInMillis | オプション |トランザクション・ロックを取得する際のタイムアウト (ミリ秒)。デプロイメント・トランザクションは順番に実行されるため、ロックを使用します。したがって、トランザクションは、前のトランザクションが終了するまで待機する必要があります。このタイムアウトは、トランザクションの最大待機時間です。<br/><br/>デフォルト値: 1200000 ミリ秒 (20 分) |
 | mfp.admin.maxLockTimeInMillis | オプション | プロセスがトランザクション・ロックを取得できる最大時間です。デプロイメント・トランザクションは順番に実行されるため、ロックを使用します。ロックが取得されている間にアプリケーション・サーバーが失敗すると、次回のアプリケーション・サーバーの再始動時にロックが解除されないという状況が発生することがまれにあります。この場合、最大ロック時間が経過した後に自動的にロックが解除されるため、サーバーが永久にブロックされることはありません。通常のトランザクションより長い時間を設定します。<br/><br/>デフォルト値: 1800000 (30 分) |
 
 #### 管理サービスの JNDI プロパティー: ロギング
@@ -397,11 +397,11 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit | オプション。 | {{ site.data.keys.mf_console }} の監査フィーチャーを使用不可にするには、このプロパティーを false に設定します。 デフォルト値は true です。 |
 | mfp.admin.environmentid | オプション。 | MBean の登録のための環境 ID。この ID は、{{ site.data.keys.mf_server }} の異なるインスタンスが同じアプリケーション・サーバー上にインストールされている場合に使用します。この ID は、どの管理サービス、どのコンソール、およびどのランタイムが同じインストールに属しているかを判別します。管理サービスは、同じ環境 ID を持つランタイムのみを管理します。 |
-| mfp.admin.serverid | サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。 | サーバー・ファーム: サーバー ID。ファーム内のサーバーごとに異なる必要があります。<br/><br/> Liberty 集合: 値はコントローラーでなければなりません。 |
+| mfp.admin.serverid | サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。 | サーバー・ファーム: サーバー ID。ファーム内のサーバーごとに異なる必要があります。<br/><br/> Liberty 集合: 値は controller でなければなりません。 |
 | mfp.admin.hsts | オプション。 | RFC 6797 に従って HTTP Strict Transport Security を有効にする場合は、true に設定します。 |
 | mfp.topology.platform | オプション | サーバー・タイプ。有効な値は以下のとおりです。{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}この値を設定しないと、アプリケーションはサーバー・タイプを推測しようとします。 |
 | mfp.topology.clustermode | オプション | サーバー・タイプに加え、ここにサーバー・トポロジーを指定します。有効な値は以下のとおりです。{::nomarkdown}<ul><li>Standalone</li><li>クラスター</li><li>Farm</li></ul>{:/}デフォルト値は Standalone です。 |
-| mfp.admin.farm.heartbeat | オプション | このプロパティーにより、サーバー・ファーム・トポロジーで使用するハートビート・レートを分単位で設定することができます。デフォルト値は 2 分です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じハートビート・レートの値を使用しなければなりません。ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../appserver/#lifecycle-of-a-server-farm-node)を参照してください。 |
+| mfp.admin.farm.heartbeat | オプション | このプロパティーにより、サーバー・ファーム・トポロジーで使用するハートビート・レートを分単位で設定することができます。デフォルト値は 2 分です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じハートビート・レートを使用しなければなりません。ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../appserver/#lifecycle-of-a-server-farm-node)を参照してください。 |
 | mfp.admin.farm.missed.heartbeats.timeout | オプション | このプロパティーにより、あるファーム・メンバーで何個のハートビートが欠落すると、そのファーム・メンバーに障害が発生したかダウンしたと見なされるかを設定できます。デフォルト値は 2 です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じ欠落ハートビートの値を使用しなければなりません。ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../appserver/#lifecycle-of-a-server-farm-node)を参照してください。 |
 | mfp.admin.farm.reinitialize | オプション | ファーム・メンバーを再登録または再初期化するためのブール値 (true または false)。 |
 | mfp.swagger.ui.url | オプション | このプロパティーは、管理コンソールで表示される Swagger ユーザー・インターフェースの URL を定義します。 |
@@ -499,15 +499,16 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.admin.serverid | サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。<br/><br/>サーバー・ファーム: サーバー ID。ファーム内のサーバーごとに異なる必要があります。<br/><br/>Liberty 集合: メンバー ID。集合内のメンバーごとに ID が異なっている必要があります。値 controller は、集合コントローラー用に予約済みであるため使用できません。 |
 | mfp.topology.platform | オプション。サーバー・タイプ。有効な値は以下のとおりです。<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>この値を設定しないと、アプリケーションはサーバー・タイプを推測しようとします。 |
 | mfp.topology.clustermode | オプション。サーバー・タイプに加え、ここにサーバー・トポロジーを指定します。有効な値は以下のとおりです。<ul><li>Standalone<li>クラスター</li><li>Farm</li></ul>デフォルト値は Standalone です。 |
-| mfp.admin.jmx.replica | オプション。Liberty 集合の場合のみ。<br/><br/>このプロパティーは、このランタイムを管理する管理コンポーネントが別の Liberty コントローラー (レプリカ) にデプロイされたときにのみ設定します。<br/><br/>複数の異なるコントローラー・レプリカのエンドポイント・リスト (`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 構文を使用)。 |
+| mfp.admin.jmx.replica | オプション。Liberty 集合の場合のみ。<br/><br/>このランタイムを管理する管理コンポーネントが複数の異なる Liberty コントローラー (レプリカ) にデプロイされている場合のみ、このプロパティーを設定します。<br/><br/>複数の異なるコントローラー・レプリカのエンドポイント・リスト (`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 構文を使用)。 |
 | mfp.analytics.console.url | オプション。Analytics コンソールにリンクする URL。この URL は IBM {{ site.data.keys.mf_analytics }} によって公開されます。{{ site.data.keys.mf_console }} から Analytics コンソールにアクセスする場合は、このプロパティーを設定します。 例えば、`http://<hostname>:<port>/analytics/console` などです。 |
 | mfp.analytics.password | IBM {{ site.data.keys.mf_analytics }} のデータ入力ポイントが基本認証で保護されている場合に使用されるパスワード。 |
 | mfp.analytics.url | 着信分析データを受信する IBM {{ site.data.keys.mf_analytics }} によって公開される URL。例えば、`http://<hostname>:<port>/analytics-service/rest` などです。 |
 | mfp.analytics.username | IBM {{ site.data.keys.mf_analytics }} のデータ入力ポイントが基本認証で保護されている場合に使用されるユーザー名。|
 | mfp.device.decommissionProcessingInterval | 廃止タスクが実行される頻度 (秒単位) を定義します。デフォルト: 86400 (1 日)。 |
 | mfp.device.decommission.when | デバイス廃用タスクによってクライアント・デバイスが廃用にされるまでの非アクティブ猶予日数。 デフォルト: 90 日。 |
-| mfp.device.archiveDecommissioned.when | 廃止されたクライアント・デバイスがアーカイブされるまでの非アクティブ猶予日数。<br/><br/>このタスクは、廃止されたクライアント・デバイスをアーカイブ・ファイルに書き込みます。アーカイブされたクライアント・デバイスは、{{ site.data.keys.mf_server }} の **home\devices_archive** ディレクトリーにあるファイルに書き込まれます。このファイルの名前には、アーカイブ・ファイルが作成されたときのタイム・スタンプが含まれます。 デフォルト: 90 日。 |
-| mfp.licenseTracking.enabled | {{ site.data.keys.product }} でデバイス・トラッキングを有効または無効にするために使用する値。<br/><br/>パフォーマンス上の理由のため、{{ site.data.keys.product }} が Business to Consumer (B2C) アプリケーションのみを実行する場合は、デバイス・トラッキングを無効にすることができます。デバイス・トラッキングが無効になると、ライセンス・レポートも無効になり、ライセンス・メトリックが作成されません。<br/><br/>指定可能な値は true (デフォルト) および false です。 |
+| mfp.device.archiveDecommissioned.when | 廃止されたクライアント・デバイスがアーカイブされるまでの非アクティブ猶予日数。<br/><br/>このタスクは、廃止されたクライアント・デバイスをアーカイブ・ファイルに書き込みます。アーカイブされたクライアント・デバイスは、{{ site.data.keys.mf_server }} の **home\devices_archive** ディレクトリーにあるファイルに書き込まれます。このファイルの名前には、アーカイブ・ファイルが作成されたときのタイム・スタンプが含まれます。デフォルト: 90 日。 |
+| mfp.licenseTracking.enabled | {{ site.data.keys.product }} でデバイス・トラッキングを有効または無効にするために使用する値。<br/><br/>パフォーマンス上の理由のため、{{ site.data.keys.product }} が Business to Consumer (B2C) アプリケーションのみを実行する場合は、デバイス・トラッキングを無効にすることができます。デバイス・トラッキングが無効になると、ライセンス・レポートも
+無効になり、ライセンス・メトリックが作成されません。<br/><br/>指定可能な値は、true (デフォルト) および false です。 |
 | mfp.runtime.temp.folder | ランタイムの一時ファイル・フォルダーを定義します。設定されていない場合は、Web コンテナーのデフォルト一時フォルダー・ロケーションを使用します。 |
 | mfp.adapter.invocation.url | Java アダプター内から、または REST エンドポイントを使用して呼び出される JavaScript アダプター内からアダプター・プロシージャーを呼び出すために使用される URL。このプロパティーが設定されていない場合は、現在実行中の要求の URL が使用されます (これがデフォルト動作)。この値には、コンテキスト・ルートを含めた、フル URL が含まれている必要があります。 |
 | mfp.authorization.server | 許可サーバー・モード。以下のいずれかのモードです。{::nomarkdown}<ul><li>embedded: {{ site.data.keys.product_adj }} 許可サーバーを使用します。</li><li>external: 外部許可サーバーを使用します。</li></ul>{:/}. この値を設定する場合は、外部サーバーの **mfp.external.authorization.server.secret** プロパティーと **mfp.external.authorization.server.introspection.url** プロパティーも設定する必要があります。 |
@@ -881,7 +882,7 @@ WebSphere Application Server の場合、IBM Knowledge Center で説明されて
 {: #registering-and-deploying-from-the-mobilefirst-operations-console }
 {{ site.data.keys.mf_console }} でこれらのアクションを実行する際には、登録先またはデプロイ先のランタイムを選択することが必要になります。
 
-<img class="gifplayer" alt="{{ site.data.keys.mf_console }} の複数ランタイム" src="register-and-deploy-to-multiple-runtimes.png"/>
+<img class="gifplayer" alt="{{ site.data.keys.mf_console }} 内の複数のランタイム" src="register-and-deploy-to-multiple-runtimes.png"/>
 
 #### コマンド・ラインからの登録およびデプロイ
 {: #registering-and-deploying-from-the-command-line }

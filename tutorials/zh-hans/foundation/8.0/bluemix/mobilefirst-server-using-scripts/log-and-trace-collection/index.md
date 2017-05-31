@@ -7,12 +7,12 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述 
 {: #overview }
-IBM Containers for Bluemix 围绕着容器 CPU、内存和网络提供一些内置日志记录和监控功能。您可以选择更改 {{ site.data.keys.product_adj }}容器的日志级别。
+IBM Containers for Bluemix 围绕着容器 CPU、内存和网络提供一些内置日志记录和监控功能。您可以选择更改 {{ site.data.keys.product_adj }} 容器的日志级别。
 
 缺省情况下，已启用用于为 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 容器创建日志文件的选项（使用级别 `*=info`）。您可通过手动添加代码覆盖或使用给定的脚本文件插入代码，对日志级别进行更改。
 可通过 Kibana 可视化工具从 Bluemix logmet 控制台查看容器日志和服务器或运行时日志。可通过 Grafana（开放式源代码度量仪表板和图形编辑器）从 Bluemix logmet 控制台进行监控。
 
-在使用 Secure Shell (SSH) 密钥创建 {{ site.data.keys.product_adj }}容器并绑定到公共 IP 地址时，可使用适合的专用密钥以安全地查看容器实例的日志。
+在使用 Secure Shell (SSH) 密钥创建 {{ site.data.keys.product_adj }} 容器并绑定到公共 IP 地址时，可使用适合的专用密钥以安全地查看容器实例的日志。
 
 ### 日志记录覆盖
 {: #logging-overrides }

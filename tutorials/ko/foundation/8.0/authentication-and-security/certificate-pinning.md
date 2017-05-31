@@ -112,4 +112,4 @@ WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onF
 
 나중에 인증서가 고정되지 않은 서버로 보안된 요청이 작성되면 특정 요청(예: `obtainAccessToken` 또는 `WLResourceRequest`)의 `onFailure` 콜백이 호출됩니다. 
 
-> [API 참조](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)에서 인증서 고정 API에 대해 자세히 알아보십시오.
+> [API 참조](../../api/client-side-api/)에서 인증서 고정 API에 대해 자세히 알아보십시오.
