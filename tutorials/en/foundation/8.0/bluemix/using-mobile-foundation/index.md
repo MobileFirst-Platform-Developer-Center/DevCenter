@@ -33,7 +33,7 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
 * [Removing Analytics support](#removing-analytics-support)
-* [Switching from Analytics deployed with the IBM Containers to Analytics service](#switching-from-analytics-container-to-analytics-service)
+* [Switching from Analytics deployed with IBM Containers to Analytics service](#switching-from-analytics-container-to-analytics-service)
 * [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
@@ -142,7 +142,7 @@ You can remove the {{ site.data.keys.mf_analytics }} support for your {{ site.da
 
 Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.
 
-##  Switching from Analytics deployed with the IBM Containers to Analytics service
+##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics container and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_short }} service instance.
