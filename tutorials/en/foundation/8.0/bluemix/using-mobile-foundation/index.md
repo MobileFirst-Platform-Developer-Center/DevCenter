@@ -140,14 +140,14 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 
 You can remove the {{ site.data.keys.mf_analytics }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics }} service instance.
 
-Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
 
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
 
-User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics container and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_short }} service instance.
-
 >**Note**: Deleting {{ site.data.keys.mf_analytics_short }} will remove all available analytics data in the container. This data will not be available in the new {{ site.data.keys.mf_analytics_short }} instance.
+
+User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics container and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_short }} service instance.
 
 ## Applying {{ site.data.keys.mf_server }} fixes
 {: #applying-mobilefirst-server-fixes }
