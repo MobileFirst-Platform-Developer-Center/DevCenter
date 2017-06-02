@@ -301,7 +301,7 @@ As explained above, you can choose to run the scripts interactively or by using 
 
 **Note:** If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
 
->**Note:** You can download installers and DB tools from the on-premise application center installation folders (`installer` and `tools` folders).
+>**Note:** You can download installers and DB tools from the on-premise {{ site.data.keys.mf_app_center }} installation folders (`installer` and `tools` folders).
 
 ### {{ site.data.keys.mf_app_center }}
 {: #mobilefirst-appcenter }
