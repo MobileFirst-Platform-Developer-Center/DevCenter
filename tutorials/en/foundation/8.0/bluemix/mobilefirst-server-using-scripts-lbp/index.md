@@ -115,6 +115,8 @@ A good place to start is to run the scripts interactively once, which will also 
 
 If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
 
+>**Note:** You can download installers and DB tools from the on-premise application center installation folders (`installer` and `tools` folders).
+
 ### {{ site.data.keys.mf_app_center }}
 {: #mobilefirst-appcenter }
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
@@ -418,7 +420,9 @@ Before you apply an interim fix, back up your existing configuration files. The 
 1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
 2. Restore your backed-up configuration files into the  **/mfpf-server-libertyapp/usr** folders, overwriting the newly installed configuration files.
 
-You can now build and deploy the updatd server.
+You can now build and deploy the updated server.
+
+>**Note:** When applying {{ site.data.keys.mfp-appcenter }} fixes the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.
 
 ## Removing the database service configuration from Bluemix
 {: #removing-the-database-service-configuration-from-bluemix }

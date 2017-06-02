@@ -301,6 +301,8 @@ As explained above, you can choose to run the scripts interactively or by using 
 
 **Note:** If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
 
+>**Note:** You can download installers and DB tools from the on-premise application center installation folders (`installer` and `tools` folders).
+
 ### {{ site.data.keys.mf_app_center }}
 {: #mobilefirst-appcenter }
 If you intend to use {{ site.data.keys.mf_app_center }} start here.
@@ -1498,6 +1500,8 @@ Before you apply an interim fix, back up your existing configuration files. The 
 2. Restore your backed-up configuration files into the **/mfpf-analytics/usr** and **/mfpf-server/usr** folders, overwriting the newly installed configuration files.
 
 You can now build and deploy new production-level containers.
+
+>**Note:** When applying {{ site.data.keys.mfp-appcenter }} fixes the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.
 
 ## Removing a Container from Bluemix
 {: #removing-a-container-from-bluemix }
