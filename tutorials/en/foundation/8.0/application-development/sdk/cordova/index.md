@@ -87,7 +87,7 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
 
 #### New Application
 {: #new-application }
-1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
+1. Create a Cordova project: `cordova create projectName applicationId applicationName --template cordova-template-mfp`.  
    For example:
 
    ```bash
