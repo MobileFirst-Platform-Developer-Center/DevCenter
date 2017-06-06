@@ -115,10 +115,12 @@ A good place to start is to run the scripts interactively once, which will also 
 
 If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
 
->**Note:** You can download installers and DB tools from the on-premise {{ site.data.keys.mf_app_center }} installation folders (`installer` and `tools` folders).
 
 ### {{ site.data.keys.mf_app_center }}
 {: #mobilefirst-appcenter }
+
+>**Note:** You can download installers and DB tools from the on-premise {{ site.data.keys.mf_app_center }} installation folders (`installer` and `tools` folders).
+
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -422,7 +424,7 @@ Before you apply an interim fix, back up your existing configuration files. The 
 
 You can now build and deploy the updated server.
 
->**Note:** When applying {{ site.data.keys.mfp-appcenter }} fixes the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.
+>**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.
 
 ## Removing the database service configuration from Bluemix
 {: #removing-the-database-service-configuration-from-bluemix }
