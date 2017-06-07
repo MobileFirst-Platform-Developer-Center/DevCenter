@@ -10,7 +10,7 @@ generate_redirects: false
 print_pdf: false
 kramdown:
   input: GFM
-  hard_wrap: false  
+  hard_wrap: false
 gems:
   - jekyll-feed
   - jekyll-paginate
@@ -58,7 +58,87 @@ defaults:
       indexed: true
   -
     scope:
-      path: "tutorials"
+      path: "tutorials/en"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/es"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/fr"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/de"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/zh-hans"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ja"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ko"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/pt-br"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ru"
     values:
       layout: tutorial
       category: tutorial

@@ -1,0 +1,7 @@
+---
+applications:
+- name: mfpdevcenter
+  memory: 2048M
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  disk_quota: 2048M
+  cc.packages.max_package_size: 2048M

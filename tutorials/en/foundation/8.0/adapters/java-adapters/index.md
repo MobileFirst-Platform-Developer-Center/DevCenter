@@ -43,11 +43,11 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 	<description>JavaAdapter</description>
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
-	
+
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-	
+
 	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
@@ -111,7 +111,7 @@ Run the commands from the root folder of the adapter Maven project:
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * To **push** the configurations file
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -123,7 +123,7 @@ Run the commands from the root folder of the adapter Maven project:
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * To **push** the configurations file
   ```bash
   mfpdev adapter push
@@ -227,6 +227,12 @@ public class JavaAdapterResource {
 
 > You can use many other annotations. See **Annotation Types Summary** here:
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
+
+>**Important:** When you use static references to classes from `javax.ws.rs.*` or `javax.servlet.*`, within your adapter implementation, then you should ensure to configure the **RuntimeDelegate** using one of the options below:
+*	Set  `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in Liberty `jvm.options`
+OR
+*	Set the system property or JVM custom property `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`
+
 
 ## HTTP Session
 {: #http-session }
