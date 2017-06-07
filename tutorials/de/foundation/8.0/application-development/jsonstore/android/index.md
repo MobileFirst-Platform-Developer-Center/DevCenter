@@ -1,48 +1,54 @@
 ---
 layout: tutorial
-title: JSONStore in Android applications
+title: JSONStore in Android-Anwendungen
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: Download Android Studio project
+  - name: Android-Studio-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## Voraussetzungen
 {: #prerequisites }
 
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* Gehen Sie das übergeordnete Lernprogramm zu [JSONStore](../) durch.
+* Stellen Sie sicher, dass das native {{ site.data.keys.product_adj }}-SDK zum Android-Studio-Projekt hinzugefügt wurde. Folgen Sie dabei dem Lernprogramm [SDK der {{ site.data.keys.product }} zu Android-Anwendungen hinzufügen](../../../application-development/sdk/android/). 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [JSONStore hinzufügen](#adding-jsonstore)
+* [Grundlegende Verwendung](#basic-usage)
+* [Erweiterte Verwendung](#advanced-usage)
+* [Beispielanwendung](#sample-application)
 
-## Adding JSONStore
+## JSONStore hinzufügen
 {: #adding-jsonstore }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. Wählen Sie unter **Android → Gradle Scripts** die Datei
+**build.gradle (Module: app)** aus. 
 
-2. Add the following to the existing `dependencies` section:
+2. Fügen Sie zum vorhandenen Abschnitt `dependencies` die folgenden Zeilen hinzu: 
 
 ```
 compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
 ```
 
-## Basic Usage
+## Grundlegende Verwendung
 {: #basic-usage }
 ### Open
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+Öffnen Sie mit `openCollections` mindestens ene JSONStore-Sammlung. 
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+Sammlungen zu starten oder bereitzustellen bedeutet, dass der persistente Speicher für die Sammlung und für Dokumente erstellt wird, wenn er nicht vorhanden ist. Wenn der Speicher verschlüsselt ist und das richtige
+Kennwort übergeben wird, werden die erforderlichen Sicherheitsprozeduren ausgeführt, um die Daten zugänglich zu machen. 
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+Informationen zu optionalen Features, die Sie während der Initialisierung aktivieren können, finden Sie im zweiten Teil dieses Lernprogramms unter
+**Sicherheit**, **Unterstützung für mehrere Benutzer**
+und **{{ site.data.keys.product_adj }}-Adapter integrieren**.
+
+
 
 ```java
 Context context = getContext();
@@ -53,76 +59,77 @@ try {
   List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
   collections.add(people);
   WLJSONStore.getInstance(context).openCollections(collections);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
 ### Get
 {: #get }
-Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+Mit `getCollectionByName` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `openCollections` vor `getCollectionByName` aufrufen.
 
 ```java
 Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
+Die Variable `collection` kann jetzt verwendet werden, um Operationen für die Sammlung `people` auszuführen (z. B.
+`add`, `find` und `replace`).
 
 ### Add
 {: #add }
-Use `addData` to store data as documents inside a collection
+Verwenden Sie `addData`, um Daten als Dokumente innerhalb einer Sammlung zu speichern. 
 
 ```java
 Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
-  //Add options.
+  // Optionen hinzufügen
   JSONStoreAddOptions options = new JSONStoreAddOptions();
   options.setMarkDirty(true);
   JSONObject data = new JSONObject("{age: 23, name: 'yoel'}")
   collection.addData(data, options);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
 ### Find
 {: #find }
-Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
+Verwenden Sie `findDocuments`, um mit einer Abfrage ein Dokument in einer Sammlung zu finden. Verwenden Sie `findAllDocuments`, um alle Dokumente aus einer Sammlung abzurufen. Verwenden Sie `findDocumentById`, um mit der eindeutigen Dokument-ID nach einem Dokument zu suchen. 
 
 ```java
 Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
-  // fuzzy search LIKE
+  // Suche nach grober Übereinstimmung - LIKE
   queryPart.addLike("name", name);
   JSONStoreQueryParts query = new JSONStoreQueryParts();
   query.addQueryPart(queryPart);
   JSONStoreFindOptions options = new JSONStoreFindOptions();
-  // returns a maximum of 10 documents, default: returns every document
+  // Rückgabe von maximal 10 Dokumenten; Standard: Rückgabe aller Dokumente
   options.setLimit(10);
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   List<JSONObject> results = collection.findDocuments(query, options);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
 ### Replace
 {: #replace }
-Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+Verwenden Sie `replaceDocument`, um Dokumente in einer Sammlung zu modifizieren. Das Feld für die Ersetzung ist die eindeutige ID des Dokuments (`_id`). 
 
 ```java
 Context context = getContext();
@@ -130,22 +137,21 @@ try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   JSONStoreReplaceOptions options = new JSONStoreReplaceOptions();
-  // mark data as dirty
+  // Daten als vorläufig markieren
   options.setMarkDirty(true);
   JSONStore replacement = new JSONObject("{_id: 1, json: {age: 23, name: 'chevy'}}");
   collection.replaceDocument(replacement, options);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+In den vorliegenden Beispielen wird davon ausgegangen, dass das Dokument (`{_id: 1, json: {name: 'yoel', age: 23} }`) in der Sammlung enthalten ist. 
 
 ### Remove
 {: #remove }
-Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+Verwenden Sie `removeDocumentById`, um ein Dokument aus einer Sammlung zu löschen. Dokumente werden erst aus der Sammlung entfernt, wenn Sie `markDocumentClean` aufgerufen haben. Weitere Informationen finden Sie im Abschnitt **{{ site.data.keys.product_adj }}-Adapter integrieren** weiter unten in diesem Lernprogramm. 
 
 ```java
 Context context = getContext();
@@ -153,18 +159,18 @@ try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   JSONStoreRemoveOptions options = new JSONStoreRemoveOptions();
-  // Mark data as dirty
+  // Daten als vorläufig markieren
   options.setMarkDirty(true);
   collection.removeDocumentById(1, options);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-### Remove Collection
+### removeCollection
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+Verwenden Sie `removeCollection`, um alle Dokumente aus einer Sammlung zu löschen. Diese Operation ist mit dem Löschen einer Datenbanktabelle vergleichbar. 
 
 ```java
 Context context = getContext();
@@ -172,43 +178,49 @@ try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   collection.removeCollection();
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
 ### Destroy
 {: #destroy }
-Use `destroy` to remove the following data:
+Mit `destroy` können Sie die folgenden Daten entfernen: 
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* Alle Dokumente
+* Alle Sammlungen
+* Alle Stores (siehe **Unterstützung für mehrere Benutzer** weiter unten in diesem Lernprogramm)
+* Alle JSONStore-Metadaten und -Sicherheitsartefakte (siehe **Sicherheit** weiter unten in diesem Lernprogramm)
 
 ```java
 Context context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-## Advanced Usage
+## Erweiterte Verwendung
 {: #advanced-usage }
-### Security
+### Sicherheit
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+Sie können alle Sammlungen in einem Store schützen, indem Sie an die Funktion `openCollections` ein Objekt `JSONStoreInitOptions` mit einem Kennwort übergeben. Wenn kein Kennwort übergeben wird, wird keines
+der Dokumente in den Sammlungen des Store verschlüsselt. 
 
-Some security metadata is stored in the shared preferences (Android).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+Einige Sicherheitsmetadaten werden in den gemeinsamen Vorgaben (Android)
+gespeichert.  
+Der Store wird mit einem
+256-Bit-Schlüssel gemäß Advanced Encryption Standard (AES) verschlüsselt. Alle Schlüssel werden durch
+die Funktion
+PBKDF2 (Password-Based Key Derivation Function 2) verstärkt.
 
-Use `closeAll` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAll` as the corresponding logout function.
+Verwenden Sie `closeAll`, um den Zugriff auf alle Sammlungen bis zum erneuten Aufruf von `openCollections` zu sperren. Wenn Sie sich
+`openCollections` als eine Art Anmeldefunktion vorstellen, wäre `closeAll` die entsprechende Abmeldefunktion. 
 
-Use `changePassword` to change the password.
+Verwenden Sie `changePassword`, um das Kennwort zu ändern. 
 
 ```java
 Context context = getContext();
@@ -221,15 +233,16 @@ try {
   JSONStoreInitOptions options = new JSONStoreInitOptions();
   options.setPassword("123");
   WLJSONStore.getInstance(context).openCollections(collections, options);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-#### Multiple User Support
+#### Unterstützung für mehrere Benutzer
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+Sie können mehrere Stores erstellen, die verschiedene Sammlungen in nur einer
+{{ site.data.keys.product_adj }}-Anwendung enthalten. Die Funktion `openCollections` kann mit einem Optionsobjekt mit einem Benutzernamen verwendet werden. Wenn kein Benutzername angegeben wird, wird der Standardbenutzername **jsonstore** verwendet.
 
 ```java
 Context context = getContext();
@@ -242,20 +255,20 @@ try {
   JSONStoreInitOptions options = new JSONStoreInitOptions();
   options.setUsername("yoel");
   WLJSONStore.getInstance(context).openCollections(collections, options);
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-#### {{ site.data.keys.product_adj }} Adapter Integration
+#### {{ site.data.keys.product_adj }}-Adapter integrieren
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
+In diesem Abschnitt wird vorausgesetzt, dass Sie sich mit Adaptern auskennen. Die Adapterintegration ist optional. Sie ermöglicht das Senden von Daten einer Sammlung an einen Adapter und das Abrufen von Daten eines Adapters in eine Sammlung. Sie können diese Ziele mit Funktionen wie `WLResourceRequest` erreichen oder mit einer eigenen Instanz von `HttpClient`, falls Sie mehr Flexibilität benötigen. 
 
-#### Adapter Implementation
+#### Adapterimplementierung
 {: #adapter-implementation }
-Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+Erstellen Sie einen Adapter mit dem Namen **JSONStoreAdapter**. Definieren Sie für den Adapter die Prozeduren
+`addPerson`, `getPeople`, `pushPeople`, `removePerson` und `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -286,22 +299,22 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### Daten von einem {{ site.data.keys.product_adj }}-Adapter laden
 {: #load-data-from-mobilefirst-adapter }
-To load data from an adapter use `WLResourceRequest`.
+Verwenden Sie `WLResourceRequest`, um Daten von einem Adapter zu laden. 
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
   @Override
   public void onFailure(final WLFailResponse response) {
-    // handle failure
+    // Fehler behandeln
   }
   @Override
   public void onSuccess(WLResponse response) {
     try {
       JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
     } catch(Exception e) {
-      // error decoding JSON data
+      // Fehler bei der Entschlüsselung von JSON-Daten
     }
   }
 };
@@ -310,13 +323,14 @@ try {
   WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
   request.send(responseListener);
 } catch (URISyntaxException e) {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-#### Get Push Required (Dirty Documents)
+#### getPushRequired (vorläufige Dokumente)
 {: #get-push-required-dirty-documents }
-Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+Wenn Sie `findAllDirtyDocuments` aufrufen, wird ein Array mit vorläufigen Dokumenten (dirty documents)
+zurückgegeben. Diese Dokumente enthalten lokale Modifikationen, die es auf dem Back-End-System noch nicht gibt. 
 
 ```java
 Context  context = getContext();
@@ -324,27 +338,30 @@ try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   List<JSONObject> dirtyDocs = collection.findAllDirtyDocuments();
-  // handle success
+  // Erfolg behandeln
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehler behandeln
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
+Wenn Sie JSONStore daran hindern möchten, Dokumente als vorläufig zu markieren, übergeben Sie die Option `options.setMarkDirty(false)`
+an `add`, `replace` und `remove`. 
 
-#### Push changes
+#### Änderungen mit Push übertragen
 {: #push-changes }
-To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+Wenn Sie Änderungen mit Push an einen Adapter senden möchten, rufen Sie `findAllDirtyDocuments` auf, um eine Liste
+der Dokumente mit Modifikationen abzurufen. Verwnden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätung des erfolgreichen Sendens müssen Sie
+`markDocumentsClean` aufrufen.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
   @Override
   public void onFailure(final WLFailResponse response) {
-    // handle failure
+    // Fehler behandeln
   }
   @Override
   public void onSuccess(WLResponse response) {
-    // handle success
+    // Erfolg behandeln
   }
 };
 Context context = getContext();
@@ -360,21 +377,21 @@ try {
   WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/pushPeople"), WLResourceRequest.POST);
   request.send(payload, responseListener);
 } catch(JSONStoreException e) {
-  // handle failure
+  // Fehlschlag behandeln
 } catch (URISyntaxException e) {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-<img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
-## Sample application
+<img alt="Beispielanwendung" src="android-native-screen.jpg" style="float:right; width:240px;"/>
+## Beispielanwendung
 {: #sample-application }
-The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+Das Projekt JSONStoreAndroid enthält eine native Android-Anwendung, die die JSONStore-APIs verwendet.   
+Eingeschlossen ist ein JavaScript-Adapter-Maven-Projekt. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid), um das native Android-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80), um das Adapter-Maven-Projekt herunterzuladen.   
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

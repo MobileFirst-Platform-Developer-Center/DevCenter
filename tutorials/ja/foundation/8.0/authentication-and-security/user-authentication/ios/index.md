@@ -31,7 +31,7 @@ self.submitChallengeAnswer(credentials);
 
 チャレンジを何も受け取っていない場合でもユーザーのログインを可能にする必要がある場合があります。例えば、アプリケーションの最初の画面としてログイン画面を表示したり、ログアウト後やログイン失敗後にログイン画面を表示したりできます。このようなシナリオを**プリエンプティブ・ログイン**と呼びます。
 
-応答すべきチャレンジがない場合、`submitChallengeAnswer` API を呼び出すことはできません。そのようなシナリオ用に、{{site.data.keys.product }} SDK には `login` API が組み込まれています。
+応答すべきチャレンジがない場合、`submitChallengeAnswer` API を呼び出すことはできません。そのようなシナリオ用に、{{ site.data.keys.product }} SDK には `login` API が組み込まれています。
 
 ```swift
 WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
@@ -66,7 +66,7 @@ else{
 {: #obtaining-an-access-token }
 このセキュリティー検査は **RememberMe** 機能 (`rememberMe` ブール・キー) をサポートしているため、アプリケーションの開始時に、クライアントがログインしているかどうかをチェックすると役立ちます。
 
-{{site.data.keys.product }} SDK は、サーバーに有効なトークンを尋ねるための `obtainAccessTokenForScope` API を提供しています。
+{{ site.data.keys.product }} SDK は、サーバーに有効なトークンを尋ねるための `obtainAccessTokenForScope` API を提供しています。
 
 ```swift
 WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
@@ -115,7 +115,7 @@ override func handleSuccess(success: [NSObject : AnyObject]!) {
 
 ## ログアウト
 {: #logout }
-{{site.data.keys.product }} SDK は、特定のセキュリティー検査からログアウトするための `logout` API も提供しています。
+{{ site.data.keys.product }} SDK は、特定のセキュリティー検査からログアウトするための `logout` API も提供しています。
 
 ```swift
 WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in

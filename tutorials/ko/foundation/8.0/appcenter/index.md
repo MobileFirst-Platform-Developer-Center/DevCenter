@@ -37,15 +37,15 @@ Application Center를 사용하면 동일한 회사 또는 조직의 사용자�
 
 Application Center는 디바이스 자체에 설치되어 있는 모바일 애플리케이션을 대상으로 합니다. 이러한 애플리케이션은 원시 및 웹 컨텐츠를 혼합하는 하이브리드 애플리케이션 또는 디바이스 SDK를 사용하여 빌드되는 기본 애플리케이션입니다. Application Center는 모바일 웹 애플리케이션을 대상으로 하지 않습니다. 이러한 애플리케이션은 웹 사이트와 같은 URL을 통해 모바일 디바이스 웹 브라우저에 전달됩니다. 
 
-현재 버전에서 Application Center는 Google Android 플랫폼, Apple iOS 플랫폼, Windows Phone 8 플랫폼 및 Windows 8 플랫폼용으로 빌드된 애플리케이션을 지원합니다. 
+현재 버전에서 Application Center는 Google Android 플랫폼, Apple iOS 플랫폼, Windows Phone 8 플랫폼, Windows 8 플랫폼 및 Windows 10 플랫폼용으로 빌드된 애플리케이션을 지원합니다. 
 
-Windows Phone의 경우, 앱 패키지(.appx) 파일 형식(유니버셜 앱 형식)이 아닌 Windows Phone 애플리케이션 패키지(.xap) 파일 형식만 현재 지원됩니다. Windows 스토어(데스크탑 애플리케이션)의 경우, 앱 패키지(.appx) 파일 형식이 지원됩니다. 
+Windows Phone의 경우에는 현재 Windows Phone 애플리케이션 패키지(.xap) 파일 형식만 지원됩니다. Windows 10 UWP 앱 패키지(.appx) 파일 형식 또한 지원됩니다. Windows 스토어(데스크탑 애플리케이션)의 경우, 앱 패키지(.appx) 파일 형식이 지원됩니다. 
 
 Windows Phone 7과 Windows RT 및 BlackBerry OS는 현재 Application Center 버전에서는 지원하지 않습니다. 
 
-Application Center는 모바일 애플리케이션을 관리합니다. {{ site.data.keys.product }}의 최상부에 빌드된 애플리케이션을 포함하여 모든 종류의 Android, iOS, Windows Phone 8 또는 Windows 8 애플리케이션을 지원합니다. 
+Application Center는 모바일 애플리케이션을 관리하며, {{ site.data.keys.product }} 위에 빌드된 애플리케이션을 포함하여 모든 종류의 Android, iOS, Windows Phone, Windows 8 또는 Windows 10 애플리케이션을 지원합니다. 
 
-애플리케이션의 개발 프로세스 일부로 Application Center를 사용할 수 있습니다. Application Center의 일반 시나리오는 모바일 애플리케이션을 빌드하는 팀입니다. 개발 팀은 Android, iOS, Windows Phone 또는 Windows 8 애플리케이션의 새 버전을 작성합니다. 개발 팀은 이 새 버전을 확장 팀에서 검토하고 테스트하기를 원합니다. 개발자는 Application Center 콘솔로 이동하여 애플리케이션의 새 버전을 Application Center로 업로드합니다. 이 프로세스의 일부로 개발자는 애플리케이션 버전에 대한 설명을 입력할 수 있습니다. 예를 들어, 설명에는 개발 팀이 이전 버전에서 추가하거나 수정한 요소를 언급할 수 있습니다. 그리고 나면, 새 버전의 애플리케이션을 팀의 다른 구성원들이 사용할 수 있습니다. 
+애플리케이션의 개발 프로세스 일부로 Application Center를 사용할 수 있습니다. Application Center의 일반 시나리오는 모바일 애플리케이션을 빌드하는 팀입니다. 개발 팀은 Android, iOS, Windows Phone 8, Windows 8 또는 Windows 10 UWP 애플리케이션의 새 버전을 작성합니다. 개발 팀은 이 새 버전을 확장 팀에서 검토하고 테스트하기를 원합니다. 개발자는 Application Center 콘솔로 이동하여 애플리케이션의 새 버전을 Application Center로 업로드합니다. 이 프로세스의 일부로 개발자는 애플리케이션 버전에 대한 설명을 입력할 수 있습니다. 예를 들어, 설명에는 개발 팀이 이전 버전에서 추가하거나 수정한 요소를 언급할 수 있습니다. 그리고 나면, 새 버전의 애플리케이션을 팀의 다른 구성원들이 사용할 수 있습니다. 
 
 베타 테스터와 같은 다른 사용자의 경우 Application Center 설치 프로그램 애플리케이션, 모바일 클라이언트를 시작하여 사용 가능한 애플리케이션의 목록에서 모바일 애플리케이션의 이 새 버전을 찾고 테스터의 모바일 디바이스에 설치할 수 있습니다. 새 버전을 테스트한 후 베타 테스터는 애플리케이션의 등급을 지정하고 피드백을 제출할 수 있습니다. 피드백은 Application Center 콘솔의 개발자가 볼 수 있습니다. 
 
@@ -90,6 +90,14 @@ Windows 스토어를 사용하지 않고 디바이스에 appx 유형의 파일�
 Application Center는 모바일 클라이언트 배포를 위한 사전 정의된 방법을 제공하지 않습니다. 
 
 Application Center에서 애플리케이션은 하나의 버전 번호만 있습니다. 이 버전 번호는 최신 버전을 구별하는 데 사용됩니다. Windows 8 애플리케이션의 경우 버전 번호는 AppxManifest.xml 파일의 버전 필드에 있습니다. 이 버전 번호의 형식은 a.b.c.d여야 하며, 여기서 a, b, c, d는 음수가 아닌 정수입니다. 
+
+### Windows 10 UWP
+{:  #windows-10-uwp}
+
+Application Center는 UWP 앱 설치를 위한 Windows 10 UWP 클라이언트 프로젝트를 제공합니다. 이 프로젝트를 Visual Studio에서 열고 배포를 위한 바이너리(예: **.appx**)를 작성할 수 있습니다. Application Center는 모바일 클라이언트 배포를 위한 사전 정의된 방법을 제공하지 않습니다. 
+
+Application Center에서 애플리케이션은 하나의 버전 번호만 있습니다. 이 버전 번호는 최신 버전을 구별하는 데 사용됩니다. Windows 10 UWP 애플리케이션의 경우 버전 번호는 **Package.appxmanifest** 파일의 ***Version*** 필드에 있습니다. 이 버전 번호의 형식은 a.b.c.d여야 하며, 여기서 a, b, c, d는 음수가 아닌 정수입니다. 
+
 
 ## 일반 아키텍처
 {: #general-architecture }
@@ -158,7 +166,7 @@ WebSphere Application Server Liberty 프로파일에 Application Center를 설�
    ```bash
    server start worklightServer
    ```
-    
+
 2. 서버가 실행 중인 경우 브라우저에 `http://localhost:9080/appcenterconsole/`을 입력하여 Application Center 콘솔을 시작하십시오. 
 3. 로그인하십시오. 기본적으로, Apache Tomcat 또는 WebSphere Application Server Liberty 프로파일에서 Application Center 설치에 대해 두 개의 사용자가 정의됩니다. 
     * 비밀번호 **demo**를 사용하는 **demo**
@@ -174,15 +182,8 @@ Application Center 콘솔을 사용하려면, [Application Center 콘솔](appcen
 * iOS 운영 체제: [iOS 모바일 디바이스에 클라이언트 설치](mobile-client/#installing-an-application-on-an-ios-device)를 참조하십시오. 
 * Windows Phone 8: [Windows 8 Universal에 클라이언트 설치](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device)를 참조하십시오. 
 * Windows 8: Windows 8용 모바일 클라이언트는 나중에 배포하기 위해 Application Center에 배치되지 않습니다. [Microsoft Windows 8: 프로젝트 빌드](preparations/#microsoft-windows-8-building-the-project)를 참조하십시오. 
+* Windows 10 UWP: [Windows 10 디바이스에 Windows 10 UWP 클라이언트 설치](mobile-client/#installing-windows-10-uwp-client-on-windows-10-device)를 참조하십시오. 
 
 ## 다음 내용
 {: #whats-next }
 AppCenter 모바일 클라이언트를 사용하려면, 설치된 애플리케이션에 알림 전송, Appcenter 콘솔, 명령행 도구, 모바일 클라이언트에 대해 알아보기 및 로그 레벨 설정 주제에 설명된 프로시저를 따르십시오. 
-
-
-
-
-
-
-
-

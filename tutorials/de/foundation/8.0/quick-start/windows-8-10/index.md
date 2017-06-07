@@ -85,8 +85,7 @@ Sie zum Ordner des Servers und führen Sie den Befehl `./run.cmd` aus.
 
 ### 4. Adapter implementieren
 {: 4-deploy-an-adapter }
-Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie
-es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. 
+Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen.
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
 
@@ -113,24 +112,23 @@ es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter i
 
     Wenn Sie die {{ site.data.keys.mf_cli }} installiert haben, können Sie alternativ zum Projektstammverzeichnis navigieren und den Befehl `mfpdev app register` ausführen. Bei Verwendung eines fernen {{ site.data.keys.mf_server }} müssen Sie den [Befehl `mfpdev server add` ausführen](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance), um den Server hinzuzufügen, gefolgt beispielsweise von `mfpdev app register myBluemixServer`.
 
-2. Klicken Sie auf die Schaltfläche **App ausführen**. 
+2. Klicken Sie auf die Schaltfläche **App ausführen**.
 
 ### Ergebnisse
 {: #results }
 * Wenn Sie auf die Schaltfläche **Ping {{ site.data.keys.mf_server }}** klicken, wird **Connected to {{ site.data.keys.mf_server }}** angezeigt.
-* Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt. 
+* Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt.
 
-Die Antwort des Adapters wird in der Ausgabekonsole von Visual Studio ausgegeben. 
+Die Antwort des Adapters wird in der Ausgabekonsole von Visual Studio ausgegeben.
 
 ![Anwendung, die erfolgreich eine Ressource von {{ site.data.keys.mf_server }} aufgerufen hat](success_response.png)
 
 ## Nächste Schritte
 {: #next-steps }
-Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen
-mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind: 
+Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind:
 
-- Gehen Sie die Lernprogramme zur [Anwendungsentwicklung](../../application-development/) durch. 
-- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch. 
-- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch. 
-- Gehen Sie die Lernprogramme zu [Benachrichtigungen](../../notifications/) durch. 
-- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an. 
+- Gehen Sie die Lernprogramme zur [Anwendungsentwicklung](../../application-development/) durch.
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch.
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch.
+- Gehen Sie die Lernprogramme zu [Benachrichtigungen](../../notifications/) durch.
+- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an.

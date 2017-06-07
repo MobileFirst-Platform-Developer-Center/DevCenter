@@ -1,31 +1,58 @@
 ---
 layout: tutorial
-title: JSONStore Security Utilities
-breadcrumb_title: Security utilities
+title: JSONStore-Sicherheitsdienstprogramme
+breadcrumb_title: Sicherheitsdienstprogramme
 relevantTo: [ios,android,cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
-The {{ site.data.keys.product_full }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+## Übersicht
+Die clientseitige {{ site.data.keys.product_full }}-API stellt einige Sicherheitsdienstprogramme
+für den Schutz Ihrer Benutzerdaten bereit.
+Ein Feature wie JSONStore ist bestens geeignet, wenn Sie JSON-Objekte schützen möchten.
+Für das Speichern großer Binärobjekte (BLOBs) in einer JSONStore-Sammlung ist es jedoch nicht
+zu empfehlen.
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
+Speichern Sie Binärdaten stattdessen im Dateisystem und die Dateipfade und andere Metadaten in einer
+JSONStore-Sammlung. Wenn Sie beispielsweise Bilddateien schützen möchten, können Sie diese als Base64-Zeichenfolgen codieren, dann verschlüsseln und die Ausgabe
+auf die Festplatte schreiben. Ist es notwendig, die Daten zu entschlüsseln, können Sie die Metadaten in einer
+JSONStore-Sammlung finden, die verschlüsselten Daten von der Platte lesen und dann mit den gespeicherten Metadaten entschlüsseln. Zu diesen Metadaten können der Schlüssel, das Salt, der IV (Initialisierungsvektor),
+der Dateityp, der Pfad zur Datei und andere gehören.
 
-At a high level, the SecurityUtils API provides the following APIs:
+Als übergeordnete API stellt SecurityUtils die folgenden
+APIs bereit:
 
-* Key generation - Instead of passing a password directly to the encryption function, this key generation function uses Password Based Key Derivation Function v2 (PBKDF2) to generate a strong 256-bit key for the encryption API. It takes a parameter for the number of iterations. The higher the number, the more time it takes an attacker to brute force your key. Use a value of at least 10,000. The salt must be unique and it helps ensure that attackers have a harder time using existing hash information to attack your password. Use a length of 32 bytes.
-* Encryption - Input is encrypted by using the Advanced Encryption Standard (AES). The API takes a key that is generated with the key generation API. Internally, it generates a secure IV, which is used to add randomization to the first block cipher. Text is encrypted. If you want to encrypt an image or other binary format, turn your binary into base64 text by using these APIs. This encryption function returns an object with the following parts:
-    * ct (cipher text, which is also called the encrypted text)
+* Schlüsselgenerierung: Die Funktion für Schlüsselgenerierung übergibt ein Kennwort nicht direkt an die Verschlüsselungsfunktion, sondern
+generiert mit PBKDF2 (Password Based
+Key Derivation Function v2) einen 256-Bit-Schlüssel für die Verschlüsselungs-API. Die Funktion akzeptiert einen Parameter für die Anzahl der Iterationen.
+Je größer diese Anzahl ist, desto länger würde ein Angreifer benötigen, um Ihren Schlüssel zu knacken. Verwenden Sie mindestens einen Wert von 1.000. Das Salt
+muss eindeutig sein und macht es Angreifern schwer, Ihr Kennwort mit vorhandenen Hashinformationen zu entschlüsseln. Verwenden Sie eine Länge von 32 Bytes.
+* Verschlüsselung: Die Eingabe wird nach AES (Advanced Encryption
+Standard) verschlüsselt. Die API verwendet einen Schlüssel, der von der API für Schlüsselgenerierung generiert wurde. Intern generiert sie einen sicheren IV, der die Randomisierung der ersten
+Blockchiffre verstärkt. Text wird verschlüsselt.
+Wenn Sie ein Bild oder ein anderes Binärformat verschlüsseln möchten, wandeln Sie Ihre Binärdaten mit diesen APIs in
+Base64-Text um. Diese Verschlüsselungsfunktion gibt ein aus folgenden Teilen bestehendes Objekt zurück:
+    * ct (Chiffrentext oder auch verschlüsselter Text)
     * IV
-    * v (version, which allows the API to evolve while still being compatible with an earlier version)
-* Decryption - Takes the output from the encryption API as input, and decrypts the cipher or encrypted text into plain text.
-* Remote random string - Gets a random hex string by contacting a random generator on the {{ site.data.keys.mf_server }}. The default value is 20 bytes, but you can change the number up to 64 bytes.
-* Local random string - Gets a random hex string by generating one locally, unlike the remote random string API, which requires network access. The default value is 32 bytes and there is not a maximum value. The operation time is proportional to the number of bytes.
-* Encode base64 - Takes a string and applies base64 encoding. Incurring a base64 encoding by the nature of the algorithm means that the size of the data is increased by approximately 1.37 times the original size.
-* Decode base64 - Takes a base64 encoded string and applies base64 decoding.
+    * v (Version, um die Weiterentwicklung der API bei gleichzeitig weiter bestehender Kompatibilität mit einer früheren Version
+zu ermöglichen)
+* Entschlüsselung: Die Ausgabe der Verschlüsselungs-API wird als Eingabe verwendet. Die Chiffre oder der verschlüsselte Text wird als
+Klartext entschlüsselt.
+* Ferne willkürliche Zeichenfolge: Über den Kontakt zu einem Zufallsgenerator auf dem
+{{ site.data.keys.mf_server }} wird eine willkürliche hexadezimale Zeichenfolge abgerufen.
+Die Standardlänge liegt bei 20 Bytes. Sie können diesen Wert aber auf bis zu
+64 Bytes erhöhen.
+* Lokale willkürliche Zeichenfolge: Im Gegensatz zur API für die ferne Zeichenfolge, die Netzzugriff erfordert, wird hier lokal eine
+willkürliche
+hexadezimale Zeichenfolge generiert und abgerufen. Die Standardlänge liegt bei 32 Bytes. Es gibt keinen Maximalwert.
+Die Operationszeit steigt proportional mit der Bytezahl.
+* Base64-Codierung: Diese API wendet auf eine Zeichenfolge die Base64-Codierung an. Aufgrund des verwendeten Algorithmus bedeutet
+eine Base64-Codierung, dass sich die Größe der ursprünglichen Daten um etwa das 1,37-Fache erhöht.
+* Base64-Decodierung: Diese API wendet auf eine Base64-codierte Zeichenfolge die Base64-Decodierung an.
 
 ## Setup
-Ensure that you import the following files to use the JSONStore security utilities APIs.
+Sie müssen die folgenden Dateien importieren, um die APIs der JSONStore-Sicherheitsdienstprogramme
+verwenden zu können.
 
 ### iOS
 
@@ -40,73 +67,74 @@ import com.worklight.wlclient.api.SecurityUtils
 ```
 
 ### JavaScript
-No setup is required.
+Es ist kein Setup
+erforderlich.
 
-## Examples
+## Beispiele
 ### iOS
-#### Encryption and decryption
+#### Ver- und Entschlüsselung
 
 ```objc
-// User provided password, hardcoded only for simplicity.
+// Vom Benutzer angegebenes Kennwort; aus Gründen der Einfachheit im Klartext
 NSString* password = @"HelloPassword";
 
-// Random salt with recommended length.
+// Zufälliges Salt mit empfohlener Länge
 NSString* salt = [WLSecurityUtils generateRandomStringWithBytes:32];
 
-// Recomended number of iterations.
+// Empfohlene Anzahl Iterationen
 int iterations = 10000;
 
-// Populated with an error if one occurs.
+// Eintrag eines Fehlers, sofern einer auftritt
 NSError* error = nil;
 
-// Call that generates the key.
+// Aufruf, der den Schlüssel generiert
 NSString* key = [WLSecurityUtils generateKeyWithPassword:password
                                  andSalt:salt
                                  andIterations:iterations
                                  error:&error];
 
-// Text that is encrypted.
+// Text, der verschlüsselt wird
 NSString* originalString = @"My secret text";
 NSDictionary* dict = [WLSecurityUtils encryptText:originalString
                                       withKey:key
                                       error:&error];
 
-// Should return: 'My secret text'.
+// Zurückgegeben werden sollte: 'My secret text'.
 NSString* decryptedString = [WLSecurityUtils decryptWithKey:key
                                              andDictionary:dict
                                              error:&error];
 ```
 
-#### Encode and decode base64
+#### Base64-Codierung und -Decodierung
 
 ```objc
-// Input string.
+// Eingabezeichenfolge
 NSString* originalString = @"Hello world!";
 
-// Encode to base64.
+// In Base64 codieren
 NSData* originalStringData = [originalString dataUsingEncoding:NSUTF8StringEncoding];
 NSString* encodedString = [WLSecurityUtils base64StringFromData:originalStringData length:originalString.length];
 
-// Should return: 'Hello world!'.
+// Zurückgegeben werden sollte: 'Hello world!'.
 NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64DataFromString:encodedString] encoding:NSUTF8StringEncoding];
 ```
 
-#### Get remote random
+#### Ferne willkürliche Zeichenfolge abrufen
 
 ```objc
 [WLSecurityUtils getRandomStringFromServerWithBytes:32 
                  timeout:1000
                  completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 
-  // You might want to see the response and the connection error before moving forward.
+  // Bevor Sie fortfahren, möchten Sie vielleicht die Antwort und den Verbindungsfehler sehen.
 
-  // Get the secure random string.
+  // Sichere willkürliche Zeichenfolge abrufen
   NSString* secureRandom = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }];
 ```
 
 ### Android
-#### Encryption and decryption
+#### Ver- und Entschlüsselung
 
 ```java
 String password = "HelloPassword";
@@ -119,11 +147,11 @@ String originalText = "Hello World!";
 
 JSONObject encryptedObject = SecurityUtils.encrypt(key, originalText);
 
-// Deciphered text will be the same as the original text.
+// Der entschlüsselte Text stimmt mit dem ursprünglichen Text überein.
 String decipheredText = SecurityUtils.decrypt(key, encryptedObject);
 ```
 
-#### Encode and decode base64
+#### Base64-Codierung und -Decodierung
 
 ```java
 import android.util.Base64;
@@ -135,33 +163,33 @@ String encodedText = new String(base64Encoded, "UTF-8");
 
 byte[] base64Decoded = Base64.decode(text.getBytes("UTF-8"), Base64.DEFAULT);
 
-// Decoded text will be the same as the original text.
+// Der decodierte Text stimmt mit dem ursprünglichen Text überein.
 String decodedText = new String(base64Decoded, "UTF-8");
 ```
 
-#### Get remote random
+#### Ferne willkürliche Zeichenfolge abrufen
 
 ```java
-Context context; // This is the current Activity's context.
+Context context; // Dies ist der Kontext der aktuellen Aktivität.
 int byteLength = 32;
 
-// Listener calls the callback functions after it gets the response from the server.
+// Wenn der Listener die Antwort vom Server erhalten hat, ruft er die Callback-Funktionen auf.
 WLRequestListener listener = new WLRequestListener(){
   @Override
   public void onSuccess(WLResponse wlResponse) {
-    // Implement the success handler.
+    // Erfolgs-Handler implementieren
   }
 
   @Override
   public void onFailure(WLFailResponse wlFailResponse) {
-    // Implement the failure handler.
+    // Fehler-Handler implementieren
     }
 };
 
 SecurityUtils.getRandomStringFromServer(byteLength, context, listener);
 ```
 
-#### Get local random
+#### Lokale willkürliche Zeichenfolge abrufen
 
 ```java
 int byteLength = 32;
@@ -169,13 +197,13 @@ String randomString = SecurityUtils.getRandomString(byteLength);
 ```
 
 ### JavaScript
-#### Encryption and decryption
+#### Ver- und Entschlüsselung
 
 ```javascript
-// Keep the key in a variable so that it can be passed to the encrypt and decrypt API.
+// Belassen Sie den Schlüssel in einer Variablen, damit er an die Ver- und Entwchlüsselungs-API übergeben werden kann.
 var key;
 
-// Generate a key.
+// Schlüssel generieren
 WL.SecurityUtils.keygen({
   password: 'HelloPassword',
   salt: Math.random().toString(),
@@ -184,10 +212,10 @@ WL.SecurityUtils.keygen({
 
 .then(function (res) {
 
-  // Update the key variable.
+  // Schlüsselvariable aktualisieren
   key = res;
 
-  // Encrypt text.
+  // Text verschlüsseln
   return WL.SecurityUtils.encrypt({
     key: key,
     text: 'My secret text'
@@ -196,27 +224,27 @@ WL.SecurityUtils.keygen({
 
 .then(function (res) {
 
-  // Append the key to the result object from encrypt.
+  // Schlüssel zum Ergebnisobjekt der Verschlüsselung hinzufügen
   res.key = key;
 
-  // Decrypt.
+  // Entschlüsseln
   return WL.SecurityUtils.decrypt(res);
 })
 
 .then(function (res) {
 
-  // Remove the key from memory.
+  // Schlüssel aus dem Speicher entfernen
   key = null;
 
   //res => 'My secret text'
 })
 
 .fail(function (err) {
-  // Handle failure in any of the previously called APIs.
+  // Fehler in den zuvor aufgerufenen APIs behandeln
 });
 ```
 
-#### Encode and decode base64
+#### Base64-Codierung und -Decodierung
 
 ```javascript
 WL.SecurityUtils.base64Encode('Hello World!')
@@ -227,11 +255,11 @@ WL.SecurityUtils.base64Encode('Hello World!')
   //res => 'Hello World!'
 })
 .fail(function (err) {
-  // Handle failure.
+  // Fehlerbehandlung
 });
 ```
 
-#### Get remote random
+#### Ferne willkürliche Zeichenfolge abrufen
 
 ```javascript
 WL.SecurityUtils.remoteRandomString(32)
@@ -239,11 +267,11 @@ WL.SecurityUtils.remoteRandomString(32)
   // res => deba58e9601d24380dce7dda85534c43f0b52c342ceb860390e15a638baecc7b
 })
 .fail(function (err) {
-  // Handle failure.
+  // Fehlerbehandlung
 });
 ```
 
-#### Get local random
+#### Lokale willkürliche Zeichenfolge abrufen
 
 ```javascript
 WL.SecurityUtils.localRandomString(32)
@@ -251,6 +279,6 @@ WL.SecurityUtils.localRandomString(32)
   // res => 40617812588cf3ddc1d1ad0320a907a7b62ec0abee0cc8c0dc2de0e24392843c
 })
 .fail(function (err) {
-  // Handle failure.
+  // Fehlerbehandlung
 });
 ```

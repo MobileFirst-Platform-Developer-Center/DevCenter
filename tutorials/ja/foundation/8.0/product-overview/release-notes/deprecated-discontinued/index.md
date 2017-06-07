@@ -5,9 +5,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-削除された機能および API エレメントが、ご使用の {{site.data.keys.product_full }} 環境にどのように影響するかを慎重に検討してください。
-
-#### ジャンプ先
+削除された機能および API エレメントが、ご使用の {{ site.data.keys.product_full }} 環境にどのように影響するかを慎重に検討してください。#### ジャンプ先
 {: #jump-to }
 * [V8.0 で廃止された機能および V8.0 に含まれない機能](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [サーバー・サイド API の変更](#server-side-api-changes)
@@ -15,7 +13,7 @@ weight: 3
 
 ## V8.0 で廃止された機能および V8.0 に含まれない機能
 {: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
-{{site.data.keys.product }} v8.0 は、以前のバージョンと比較して徹底的に簡素化されています。その簡素化の結果、V7.1 で使用可能であった機能の一部が、V8.0 では廃止されました。ほとんどの場合、その機能を実装するための代替手段が提示されています。そのような機能については、「廃止されました」と記載しています。ほかに、V7.1 には存在し、V8.0 では存在しなくなったが、それは V8.0 で設計が新しくなったことが理由ではないという機能もあります。そのように除外された機能については、v8.0 で廃止された機能と区別するために「v8.0 にはありません」と記載しています。
+{{ site.data.keys.product }} v8.0 は、以前のバージョンと比較して徹底的に簡素化されています。その簡素化の結果、V7.1 で使用可能であった機能の一部が、V8.0 では廃止されました。ほとんどの場合、その機能を実装するための代替手段が提示されています。そのような機能については、「廃止されました」と記載しています。ほかに、V7.1 には存在し、V8.0 では存在しなくなったが、それは V8.0 で設計が新しくなったことが理由ではないという機能もあります。そのように除外された機能については、v8.0 で廃止された機能と区別するために「v8.0 にはありません」と記載しています。
 
 <table class="table table-striped">
     <tr>
@@ -23,12 +21,12 @@ weight: 3
         <td>状況および代替手段</td>
     </tr>
     <tr>
-        <td><p>{{site.data.keys.mf_studio }} に代わって、Eclipse 用の MobileFirst Studio プラグインが使用されます。</p></td>
-        <td><p>標準およびコミュニティー・ベースの Eclipse プラグインによって駆動される Eclipse 用の {{site.data.keys.mf_studio }} プラグインに置き換えられました。Apache Cordova CLI を使用するか、または Visual Studio Code、Eclipse、IntelliJ などの Cordova 対応 IDE を使用して、直接、ハイブリッド・アプリケーションを開発することができます。Eclipse を Cordova 対応 IDE として使用する方法について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Cordova プロジェクトを Eclipse で管理するための IBM {{site.data.keys.mf_studio }} プラグイン</a>を参照してください。</p>
+        <td><p>{{ site.data.keys.mf_studio }} に代わって、Eclipse 用の MobileFirst Studio プラグインが使用されます。</p></td>
+        <td><p>標準およびコミュニティー・ベースの Eclipse プラグインによって駆動される Eclipse 用の {{ site.data.keys.mf_studio }} プラグインに置き換えられました。Apache Cordova CLI を使用するか、または Visual Studio Code、Eclipse、IntelliJ などの Cordova 対応 IDE を使用して、直接、ハイブリッド・アプリケーションを開発することができます。Eclipse を Cordova 対応 IDE として使用する方法について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Cordova プロジェクトを Eclipse で管理するための IBM {{ site.data.keys.mf_studio }} プラグイン</a>を参照してください。</p>
 
         <p>アダプターの開発は、Apache Maven を使用するか、Eclipse および IntelliJ などの Maven 対応 IDE を使用して行うことができます。アダプターの開発について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">アダプターのカテゴリー (Adapters category)</a>を参照してください。Eclipse を Maven 対応 IDE として使用する方法について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Eclipse でのアダプターの開発</a>のチュートリアルを参照してください。</p>
 
-        <p>{{site.data.keys.mf_dev_kit_full }} をインストールして、{{site.data.keys.mf_server }} でアダプターおよびアプリケーションをテストします。NPM、Maven、Cocoapod、または NuGet などのインターネット・ベースのリポジトリーからダウンロードしたくない場合は、{{site.data.keys.product_adj }} 開発ツールおよび SDK にアクセスすることもできます。{{site.data.keys.mf_dev_kit }} について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{site.data.keys.mf_dev_kit }}</a>を参照してください。</p>
+        <p>{{ site.data.keys.mf_dev_kit_full }} をインストールして、{{ site.data.keys.mf_server }} でアダプターおよびアプリケーションをテストします。NPM、Maven、Cocoapod、または NuGet などのインターネット・ベースのリポジトリーからダウンロードしたくない場合は、{{ site.data.keys.product_adj }} 開発ツールおよび SDK にアクセスすることもできます。{{ site.data.keys.mf_dev_kit }} について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>を参照してください。</p>
         </td>
     </tr>
     <tr>
@@ -37,8 +35,8 @@ weight: 3
         </td>
     </tr>
     <tr>
-        <td><p>ハイブリッド・アプリケーションの場合、Sencha Touch を {{site.data.keys.product_adj }} プロジェクトにインポートすることはできなくなりました。</p></td>
-        <td><p>廃止されました。{{site.data.keys.product_adj }} ハイブリッド・アプリケーションは、直接、Apache Cordova を使用して開発され、{{site.data.keys.product_adj }} 機能は Cordova プラグインとして提供されます。Sencha Touch および Cordova を統合するには、Sencha Touch の資料を参照してください。</p>
+        <td><p>ハイブリッド・アプリケーションの場合、Sencha Touch を {{ site.data.keys.product_adj }} プロジェクトにインポートすることはできなくなりました。</p></td>
+        <td><p>廃止されました。{{ site.data.keys.product_adj }} ハイブリッド・アプリケーションは、直接、Apache Cordova を使用して開発され、{{ site.data.keys.product_adj }} 機能は Cordova プラグインとして提供されます。Sencha Touch および Cordova を統合するには、Sencha Touch の資料を参照してください。</p>
         </td>
     </tr>
     <tr>
@@ -51,7 +49,7 @@ weight: 3
         <td><p>v8.0 にはありません。</p></td>
     </tr>
     <tr>
-        <td><p>セッション依存関係構成を持つアダプター。V7.1.0 では、セッション非依存モード (デフォルト) またはセッション依存モードで作業するように {{site.data.keys.mf_server }} を構成することができました。v8.0 から、セッション依存モードはサポートされなくなりました。サーバーは、基本的に HTTP セッションから独立しており、関連する構成は必要ありません。</p></td>
+        <td><p>セッション依存関係構成を持つアダプター。V7.1.0 では、セッション非依存モード (デフォルト) またはセッション依存モードで作業するように {{ site.data.keys.mf_server }} を構成することができました。v8.0 から、セッション依存モードはサポートされなくなりました。サーバーは、基本的に HTTP セッションから独立しており、関連する構成は必要ありません。</p></td>
         <td><p>廃止されました。</p></td>
     </tr>
     <tr>
@@ -147,35 +145,34 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
         <td>v8.0 にはありません。</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.mf_server }} 用のデータベースとして使用される Cloudant は、V8.0 ではサポートされません。</td>
+        <td>{{ site.data.keys.mf_server }} 用のデータベースとして使用される Cloudant は、V8.0 ではサポートされません。</td>
         <td>v8.0 にはありません。</td>
     </tr>
     <tr>
-        <td>地理位置情報: 地理位置情報のサポートは、{{site.data.keys.product }} v8.0 では廃止されました。ビーコンおよびメディエーター用の REST API は廃止されました。クライアント・サイドおよびサーバー・サイドの API の WL.Geo および WL.Device は廃止されました。</td>
+        <td>地理位置情報: 地理位置情報のサポートは、{{ site.data.keys.product }} v8.0 では廃止されました。ビーコンおよびメディエーター用の REST API は廃止されました。クライアント・サイドおよびサーバー・サイドの API の WL.Geo および WL.Device は廃止されました。</td>
         <td>廃止されました。地理位置情報には、ネイティブ・デバイス API またはサード・パーティーの Cordova プラグインを使用してください。</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.product_adj }} データ・プロキシー機能は廃止されました。Cloudant の IMFData API と CloudantToolkit API も廃止されました。</td>
+        <td>{{ site.data.keys.product_adj }} データ・プロキシー機能は廃止されました。Cloudant の IMFData API と CloudantToolkit API も廃止されました。</td>
         <td>廃止されました。アプリケーション内の IMFData API と CloudantToolkit API を置き換える方法について詳しくは、『IMFData または Cloudant SDK を使用して Cloudant にモバイル・データを保管するアプリケーションのマイグレーション (Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK)』を参照してください。</td>
     </tr>
     <tr>
-        <td>IBM Tealeaf SDK は {{site.data.keys.product }} にバンドルされなくなりました。</td>
+        <td>IBM Tealeaf SDK は {{ site.data.keys.product }} にバンドルされなくなりました。</td>
         <td>廃止されました。IBM Tealeaf SDK を使用してください。詳しくは、IBM Tealeaf Customer Experience 資料の『<a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a>』および 『<a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a>』を参照してください。</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.mf_test_workbench_full }} は {{site.data.keys.product }} にバンドルされていません。</td>
+        <td>{{ site.data.keys.mf_test_workbench_full }} は {{ site.data.keys.product }} にバンドルされていません。</td>
         <td>廃止されました。</td>
     </tr>
     <tr>
-        <td>BlackBerry、Adobe AIR、Windows Silverlight は、{{site.data.keys.product }} v8.0 ではサポートされません。これらのプラットフォーム用の SDK は提供されていません。</td>
+        <td>BlackBerry、Adobe AIR、Windows Silverlight は、{{ site.data.keys.product }} v8.0 ではサポートされません。これらのプラットフォーム用の SDK は提供されていません。</td>
         <td>廃止されました。</td>
     </tr>
 </table>
 
 ## サーバー・サイド API の変更
-{: #server-side-api-changes}
-
-{{site.data.keys.product_adj }} アプリケーションのサーバー・サイドをマイグレーションするには、API の変更を考慮に入れてください。  
+{: #server-side-api-changes }
+{{ site.data.keys.product_adj }} アプリケーションのサーバー・サイドをマイグレーションするには、API の変更を考慮に入れてください。  
 以下の表は、v8.0 で使用が中止されたサーバー・サイド API エレメント、v8.0 で非推奨となったサーバー・サイド API エレメント、および推奨されるマイグレーション・パスをリストしたものです。アプリケーションのサーバー・サイドのマイグレーションについての詳細情報があります。
 
 ### v8.0 で使用が中止された JavaScript API エレメント
@@ -250,12 +247,12 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `com.worklight.adapters.rest.api` パッケージの `ConfigurationAPI` インターフェース | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `ConfigurationAPI` インターフェースを使用してください。 |
 | `com.worklight.core.auth` パッケージの `OAuthSecurity` アノテーション | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `OAuthSecurity` アノテーションを使用してください。 |
 | `com.worklight.wink.extensions` パッケージの `MFPJAXRSApplication` クラス | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `MFPJAXRSApplication` クラスを使用してください。 |
-| `com.worklight.adapters.rest.api` パッケージの `WLServerAPI` インターフェース | JAX-RS `Context` アノテーションを使用して、{{site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 |
-| `com.worklight.adapters.rest.api` パッケージの `WLServerAPIProvider` クラス | JAX-RS `Context` アノテーションを使用して、{{site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 |
+| `com.worklight.adapters.rest.api` パッケージの `WLServerAPI` インターフェース | JAX-RS `Context` アノテーションを使用して、{{ site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 |
+| `com.worklight.adapters.rest.api` パッケージの `WLServerAPIProvider` クラス | JAX-RS `Context` アノテーションを使用して、{{ site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 |
 
 ## クライアント・サイド API の変更
 {: #client-side-api-changes }
-以下に示す API の変更は、{{site.data.keys.product_adj }} クライアント・アプリケーションのマイグレーションに関連しています。  
+以下に示す API の変更は、{{ site.data.keys.product_adj }} クライアント・アプリケーションのマイグレーションに関連しています。  
 以下の表は、V8.0.0 で使用が中止されたクライアント・サイド API エレメント、V8.0.0 で非推奨となったクライアント・サイド API エレメント、および推奨されるマイグレーション・パスをリストしたものです。
 
 ### JavaScript API
@@ -265,14 +262,14 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
 | `WL.BusyIndicator`, `WL.OptionsMenu`, `WL.TabBar`, `WL.TabBarItem` | Cordova プラグインまたは HTML 5 エレメントを使用してください。 |
-| `WL.App.close` | {{site.data.keys.product_adj }} の外部でこのイベントを処理してください。 |
+| `WL.App.close` | {{ site.data.keys.product_adj }} の外部でこのイベントを処理してください。 |
 | `WL.App.copyToClipboard()` | この機能を提供する Cordova プラグインを使用してください。 |
 | `WL.App.openUrl(url, target, options)` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **InAppBrowser** プラグインがこの機能を提供しています。 |
 | `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **backbutton** プラグインがこの機能を提供しています。 |
 | `WL.App.getDeviceLanguage()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.App.getDeviceLocale()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.App.BackgroundHandler` | カスタム・ハンドラー関数を実行するには、標準 Cordova pause イベント・リスナーを使用してください。プライバシーを保護し、iOS システム、Android システム、およびユーザーがスナップショットまたは画面キャプチャーを取るのを防止する Cordova プラグインを使用します。詳しくは、**[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**の説明を参照してください。 |
-| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | これらの関数は、{{site.data.keys.product }} V8.0.0 でサポートされていない Adobe AIR プラットフォームをサポートするために提供されていました。 |
+| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | これらの関数は、{{ site.data.keys.product }} V8.0.0 でサポートされていない Adobe AIR プラットフォームをサポートするために提供されていました。 |
 | `WL.Toast.show(string)` | Toast 用 Cordova プラグインを使用してください。 |
 
 以下の一連の API は、v8.0 でサポートされなくなっています。
@@ -308,11 +305,11 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `WL.Client.isUserAuthenticated(realm)` | 代替はありません。 |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | 代替はありません。 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 代替はありません。 |
-| `WL.Client.createChallengeHandler(realmName)` | カスタム・ゲートウェイ・チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createGatewayChallengeHandler(gatewayName)` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 |
+| `WL.Client.createChallengeHandler(realmName)` | カスタム・ゲートウェイ・チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createGatewayChallengeHandler(gatewayName)` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 |
 | `WL.Client.createWLChallengeHandler(realmName)` | `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 |
 | `challengeHandler.isCustomResponse()`。ここで、challengeHandler は、`WL.Client.createChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `gatewayChallengeHandler.canHandleResponse()` を使用します。ここで、`gatewayChallengeHandler` は、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 |
 | `wlChallengeHandler.processSucccess()` ここで、`wlChallengeHandler` は `WL.Client.createWLChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `securityCheckChallengeHandler.handleSuccess()` を使用します。ここで、`securityCheckChallengeHandler` は、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。 |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。 |
 | `WL.Client.createProvisioningChallengeHandler()` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 |
 
 #### 非推奨になった JavaScript API
@@ -347,7 +344,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` | Android API を使用して、アプリケーション間でトークンを共有してください。 |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 代替はありません。 |
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | `BaseChallengeHandler.cancel()` を使用します。 |
-| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 |
 | `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
 | `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。 |
@@ -376,7 +373,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 代替はありません。MFP クライアントでは、サーキュラー・リダイレクトが許可されます。 |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 非推奨になった Apache HTTP クライアント依存関係のために削除されました。要求および応答を完全に制御できる独自の要求を作成してください。 |
 
-#### `com.worklight.androidgap.api` パッケージは、Cordova アプリケーションに Android プラットフォーム機能を提供します。{{site.data.keys.product }} では、Cordova 統合に対応するために多くの変更が行われました。
+#### `com.worklight.androidgap.api` パッケージは、Cordova アプリケーションに Android プラットフォーム機能を提供します。{{ site.data.keys.product }} では、Cordova 統合に対応するために多くの変更が行われました。
 {: #comworklightandroidgapapi }
 
 | API エレメント           | マイグレーション・パス                           |
@@ -387,7 +384,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 
 ### Objective-C API
 {: #objective-c-apis }
-#### 使用が中止された iOS Objective C API
+#### 使用が中止された iOS Objective C API 
 {: #discontinued-ios-objective-c-apis }
 
 | API エレメント           | マイグレーション・パス                           |
@@ -408,10 +405,10 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | OS API を使用して、アプリケーション間でトークンを共有してください。 |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | `BaseChallengeHandler.cancel()` を使用します。 |
 | `BaseProvisioningChallengeHandler` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 |
-| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 |
 | `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
 
 ### Windows C# API
 {: #windows-c-apis }
@@ -420,10 +417,10 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
-| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
 | `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler.Shouldcancel()` を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |
+| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler.Shouldcancel()` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |
 | `WLAuthorizationManager` | 代わりに、`WorklightClient.WorklightAuthorizationManager` を使用してください。 |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 |
 | `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | `SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |

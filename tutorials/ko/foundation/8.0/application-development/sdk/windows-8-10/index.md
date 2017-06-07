@@ -54,7 +54,7 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. **설치**를 클릭하십시오. 이 조치는 {{site.data.keys.product }} 고유 SDK 및 해당 종속 항목을 설치합니다. 또한 이 단계는 Visual Studio 프로젝트의 `strings` 폴더에 비어 있는 `mfpclient.resw` 파일을 생성합니다. 
+4. **설치**를 클릭하십시오. 이 조치는 {{ site.data.keys.product }} 고유 SDK 및 해당 종속 항목을 설치합니다. 또한 이 단계는 Visual Studio 프로젝트의 `strings` 폴더에 비어 있는 `mfpclient.resw` 파일을 생성합니다. 
 
 5. 최소한 다음 기능이 `Package.appxmanifest`에서 사용되는지 확인하십시오. 
 

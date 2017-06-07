@@ -50,7 +50,7 @@ IBM {{ site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 �
 
 ### 디바이스 상태
 {: #device-status }
-{{ site.data.keys.mf_server }}는 서버에 액세스하는 모든 디바이스의 상태 정보를 유지보수합니다. 상태 값은 **활성**, **손실**, **도난**, **만료**, **사용 안함** 중 하나입니다.  
+{{ site.data.keys.mf_server }}는 서버에 액세스하는 모든 디바이스의 상태 정보를 유지보수합니다. 상태 값은 **활성**, **손실**, **도난**, **만료**, **사용 안함** 중 하나입니다. 
 
 기본 디바이스 상태는 **활성**으로 이 디바이스의 액세스가 차단되지 않음을 표시합니다. 상태를 **손실**, **도난** 또는 **사용 안함**으로 변경하여 디바이스에서 애플리케이션 자원에 액세스하지 못하게 차단할 수 있습니다. 언제든지 **활성** 상태를 복원하여 다시 액세스할 수 있도록 허용할 수 있습니다. [{{ site.data.keys.mf_console }}에서 디바이스 액세스 관리](#managing-device-access-in-mobilefirst-operations-console)를 참조하십시오. 
 
@@ -58,7 +58,7 @@ IBM {{ site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 �
 
 ### 디바이스 표시 이름
 {: #device-display-name }
-{{ site.data.keys.mf_server }}는 {{ site.data.keys.product_adj }} 클라이언트 SDK에서 지정하는 고유 디바이스 ID로 디바이스를 식별합니다. 디바이스의 표시 이름을 설정하면 해당 표시 이름으로 디바이스를 검색할 수 있습니다. 애플리케이션 개발자는 `WLClient` 클래스의 `setDeviceDisplayName` 메소드를 사용하여 디바이스 표시 이름을 설정할 수 있습니다. [{{ site.data.keys.product_adj }} 클라이언트 측 API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html)의 `WLClient` 문서를 참조하십시오. (JavaScript 클래스는 `WL.Client`입니다.) Java 어댑터 개발자(보안 검사 개발자 포함)는 com.ibm.mfp.server.registration.external.model `MobileDeviceData` 클래스의 `setDeviceDisplayName` 메소드를 사용하여 디바이스 표시 이름을 설정할 수도 있습니다. [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc)를 참조하십시오. 
+{{ site.data.keys.mf_server }}는 {{ site.data.keys.product_adj }} 클라이언트 SDK에서 지정하는 고유 디바이스 ID로 디바이스를 식별합니다. 디바이스의 표시 이름을 설정하면 해당 표시 이름으로 디바이스를 검색할 수 있습니다. 애플리케이션 개발자는 `WLClient` 클래스의 `setDeviceDisplayName` 메소드를 사용하여 디바이스 표시 이름을 설정할 수 있습니다. [{{ site.data.keys.product_adj }} 클라이언트 측 API](../../api/client-side-api/javascript/client/)의 `WLClient` 문서를 참조하십시오. (JavaScript 클래스는 `WL.Client`입니다.) Java 어댑터 개발자(보안 검사 개발자 포함)는 com.ibm.mfp.server.registration.external.model `MobileDeviceData` 클래스의 `setDeviceDisplayName` 메소드를 사용하여 디바이스 표시 이름을 설정할 수도 있습니다. [MobileDeviceData](../../api/client-side-api/objc/client/)를 참조하십시오. 
 
 ### {{ site.data.keys.mf_console }}에서 디바이스 액세스 관리
 {: #managing-device-access-in-mobilefirst-operations-console }
@@ -130,7 +130,7 @@ IBM {{ site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 �
 3. **로케일 업데이트**를 선택하십시오. 표시된 대화 창의 **파일 업로드** 섹션에서 **업로드**를 선택한 후 로케일을 정의하는 CSV 파일 위치를 찾아보십시오. 
 
    CSV 파일의 각 행에는 쉼표로 구분된 문자열 쌍이 포함되어 있습니다. 첫 번째 문자열은 로케일 코드(예: 프랑스어(프랑스)의 경우 fr-FR, 영어의 경우 en)이고 두 번째 문자열은 해당 언어로 된 메시지 텍스트입니다. 지정된 로케일 코드는 모바일 운영 체제에서 로케일을 지정하는 데 사용하는 표준(예: ISO 639-1, ISO 3166-2, ISO 15924)을 준수해야 합니다. 
-    
+
    > **참고:** CSV 파일을 작성하려면 메모장과 같이 UTF-8 인코딩을 지원하는 편집기를 사용해야 합니다. 
 
    다음은 동일한 메시지를 다중 로케일로 정의하는 샘플 CSV 파일입니다. 
@@ -187,7 +187,7 @@ The application got blocked because its license expired but a license is availab
 
 감사 로그에 액세스하려면 헤더 표시줄에서 사용자 이름을 클릭하고 **정보**를 선택한 다음 **추가 지원 정보**를 클릭한 후 **감사 로그 다운로드**를 클릭하십시오. 
 
-| 필드 이름  | 설명        | 
+| 필드 이름  | 설명        |
 |------------|-------------|
 | Timestamp	 | 레코드가 작성된 날짜 및 시간입니다. |
 | Type	     | 조작의 유형입니다. 가능한 값은 아래의 조작 유형 목록을 참조하십시오. |
@@ -229,5 +229,3 @@ The application got blocked because its license expired but a license is availab
 * deleteTag
 * add runtime
 * delete runtime
-
-

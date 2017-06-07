@@ -132,7 +132,7 @@ public Response addEntry(User user){
 サンプルには 2 つのアダプター (JavaScript に 1 つと Java に 1 つ) が含まれています。  
 サンプルにはまた、Java アダプターと JavaScript アダプターの両方と連動する Cordova アプリケーションが含まれています。
 
-> **注:** サンプルでは、Cloudant Java Client v1.2.3 を既知の制限に従って使用しています。
+> **注:** サンプルでは、既知の制限により、Cloudant Java Client v1.2.3 を使用しています。
 
 ### 使用例
 {: #sample-usage }

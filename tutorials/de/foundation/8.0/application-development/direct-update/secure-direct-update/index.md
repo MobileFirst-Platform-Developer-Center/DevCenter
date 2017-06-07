@@ -1,22 +1,33 @@
 ---
 layout: tutorial
-title: Implementing Secure Direct Update
-breadcrumb_title: Secure Direct Update
+title: Sichere direkte Aktualisierung implementieren
+breadcrumb_title: Sichere direkte Aktualisierung
 relevantTo: [cordova]
 weight: 2
 ---
 
-## Overview
+## Übersicht
 {: #overview }
-For secure Direct Update to work, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.
+Wenn die sichere direkte Aktualisierung funktionieren soll, muss in
+{{ site.data.keys.mf_server }} eine benutzerdefinierte Keystore-Datei
+implementiert werden und in die implementierte Clientanwendung eine Kopie des zugehörigen öffentlichen Schlüssels aufgenommen werden. 
 
-This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in {{ site.data.keys.mf_server }}, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+Im vorliegenden Abschnitt ist beschrieben,
+wie ein öffentlicher Schlüssel an neue Clientanwendungen gebunden wird sowie an vorhandene Clientanwendungen, für die ein Upgrade durchgeführt wurde. Weitere Informationen zum Konfigurieren des
+Keystores in {{ site.data.keys.mf_server }} finden Sie
+unter [MobileFirst-Server-Keystore konfigurieren](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
-The server provides a built-in keystore that can be used for testing secure Direct Update for development phases.
+Der Server stellt einen integrierten Keystore bereit, der während der Entwicklungsphasen
+zum Testen der sicheren direkten Aktualisierung genutzt werden kann. 
 
-**Note:** After you bind the public key to the client application and rebuild it, you do not need to upload it again to the {{ site.data.keys.mf_server }}. However, if you previously published the application to the market, without the public key, you must republish it.
+**Hinweis:** Wenn Sie den öffentlichen Schlüssel an die Clientanwendung gebunden
+und einen neuen Anwendungsbuild erstellt haben, müssen Sie die Anwendung nicht erneut auf den
+{{ site.data.keys.mf_server }} hochladen.
+Falls Sie die Anwendung jedoch bereits ohne den öffentlichen Schlüssel auf dem Markt veröffentlicht haben, müssen Sie sie erneut veröffentlichen. 
 
-For development purposes, the following default, dummy public key is provided with {{ site.data.keys.mf_server }}:
+Für Entwicklungszwecke wird {{ site.data.keys.mf_server }} mit
+dem folgenden, öffentlichen Pseudoschlüssel
+bereitgestellt:
 
 ```xml
 -----BEGIN PUBLIC KEY-----
@@ -36,38 +47,49 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 -----END PUBLIC KEY-----
 ```
 
-> Important: Do not use the public key for production purposes.
+> Wichtiger Hinweis: Verwenden Sie den öffentlichen Schlüssel nicht für Produktionsziele. 
 
-## Generating and deploying the keystore
+## Keystore generieren und implementieren
 {: #generating-and-deploying-the-keystore }
-There are many tools available for generating certificates and extracting public keys from a keystore. The following example demonstrates the procedures with the JDK keytool utility and openSSL.
+Für das Generieren von Zertifikaten und das
+Extrahieren öffentlicher Schlüssel aus einem Keystore gibt es diverse Tools. Das folgende Beispiel veranschaulicht die Verwendung
+des JDK-Dienstprogramms keytool mit openSSL.
 
-1. Extract the public key from the keystore file that is deployed in the {{ site.data.keys.mf_server }}.  
-   Note: The public key must be Base64 encoded.
+1. Extrahieren Sie den öffentlichen Schlüssel aus der in
+{{ site.data.keys.mf_server }} implementierten Keystore-Datei.   
+Hinweis: Der öffentliche Schlüssel muss in Base64-Codierung vorliegen. 
     
-   For example, assume that the alias name is `mfp-server` and the keystore file is **keystore.jks**.  
-   To generate a certificate, issue the following command:
+   Angenommen, der Aliasname ist
+`mfp-server` und die Keystore-Datei
+ist **keystore.jks**.
+  
+Für das Generieren eines Zertifikats müssten Sie in dem Fall den folgenden Befehl absetzen: 
     
    ```bash
    keytool -export -alias mfp-server -file certfile.cert
    -keystore keystore.jks -storepass keypassword
    ```
     
-   A certificate file is generated.  
-   Issue the following command to extract the public key:
+   Eine Zertifikatdatei wird generiert.   
+Setzen Sie den folgenden Befehl ab, um den öffentlichen Schlüssel zu extrahieren: 
     
    ```bash
    openssl x509 -inform der -in certfile.cert -pubkey -noout
    ```
     
-   **Note:** Keytool alone cannot extract public keys in Base64 format.
+   Hinweis:** Nur mit keytool
+können öffentliche Schlüssel im Base64-Format nicht extrahiert werden. 
     
-2. Perform one of the following procedures:
-    * Copy the resulting text, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers into the mfpclient property file of the application, immediately after `wlSecureDirectUpdatePublicKey`.
-    * From the command prompt, issue the following command: `mfpdev app config direct_update_authenticity_public_key <public_key>`
+2. Führen Sie einen der folgenden Schritte aus: 
+    * Kopieren Sie den resultierenden Text ohne die Marker `BEGIN PUBLIC KEY` und `END PUBLIC
+KEY` unmittelbar im Anschluss an wlSecureDirectUpdatePublicKey in die Eigenschaftendatei mfpclient der Anwendung. 
+    * Setzen Sie an der Eingabeaufforderung den folgenden Befehl ab: `mfpdev app config direct_update_authenticity_public_key <öffentlicher_Schlüssel>`. 
     
-    For `<public_key>`, paste the text that results from Step 1, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers.
+    Fügen Sie
+für `<öffentlicher_Schlüssel>` den resultierenden Text aus Schritt 1 ohne die Marker
+`BEGIN
+PUBLIC KEY` und `END PUBLIC KEY` ein. 
 
-3. Run the cordova build command to save the public key in the application.
+3. Führen Sie den Befehl "cordova build" aus, um den öffentlichen Schlüssel in der Anwendung zu speichern. 
 
 

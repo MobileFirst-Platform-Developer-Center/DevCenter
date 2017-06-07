@@ -75,7 +75,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 
 ### Manually adding the {{ site.data.keys.product_adj }} Native SDK
-{: manually-adding-the-mobilefirst-native-sdk }
+{: #manually-adding-the-mobilefirst-native-sdk }
 You can also manually add the {{ site.data.keys.product }} SDK:
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -237,7 +237,7 @@ pod update
 SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
 
 ## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.

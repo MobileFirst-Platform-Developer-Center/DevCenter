@@ -10,27 +10,27 @@ weight: 6
 {: #overview }
 В этой демонстрации рассматриваются все этапы потока:
 
-1. Пример приложения, поставляемый вместе с SDK клиента Xamarin {{site.data.keys.product_adj }}, регистрируется с помощью {{site.data.keys.mf_console }}.
-2. В {{site.data.keys.mf_console }} развертывается новый или предоставленный адаптер.  
+1. Пример приложения, поставляемый вместе с SDK клиента Xamarin {{ site.data.keys.product_adj }}, регистрируется с помощью {{ site.data.keys.mf_console }}.
+2. В {{ site.data.keys.mf_console }} развертывается новый или предоставленный адаптер.  
 3. В логику приложения вносятся изменения для запроса ресурса.
 
 **Конечный результат**:
 
-* Проверка связи с {{site.data.keys.mf_server }}.
+* Проверка связи с {{ site.data.keys.mf_server }}.
 
 #### Предварительные требования:
 {: #prerequisites }
 * Xamarin Studio
-* *Необязательно*. Автономный экземпляр {{site.data.keys.mf_server }} ([загрузить]({{site.baseurl}}/downloads))
+* *Необязательно*. Автономный экземпляр {{ site.data.keys.mf_server }} ([загрузить]({{site.baseurl}}/downloads))
 
-### 1. Запуск {{site.data.keys.mf_server }}
+### 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
 Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation) либо  
-В случае применения [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
+В случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### 2. Создание приложения
 {: #2-creating-an-application }
-В браузере откройте {{site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. В локальном режиме введите следующий адрес: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Идентификационные данные пользователя: *admin/admin*.
+В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. В локальном режиме введите следующий адрес: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Идентификационные данные пользователя: *admin/admin*.
 
 1. Нажмите кнопку **Создать** рядом с разделом **Приложения**
     * Выберите платформу **Android**
@@ -56,33 +56,35 @@ weight: 6
 * В случае разработки для iOS вставьте следующий код в метод **FinishedLaunching** из файла **AppDelegate.cs**:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
+  >Вместо `<ClassName>` укажите имя класса.
 * В случае разработки для Android добавьте следующую строку в метод **OnCreate** из файла **MainActivity.cs**:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Вместо `<ClassName>` укажите имя класса.
 * Создайте метод для получения маркера доступа и запроса ресурса на сервере MFP.
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -94,18 +96,18 @@ weight: 6
            }
     }
    ```
-  
+
 * Вызовите метод **ObtainToken** из конструктора класса или при нажатии кнопки.
 
 ### 4. Развертывание адаптера
 {: #4-deploy-an-adapter }
-Загрузите [этот подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
+Загрузите [этот подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
 
 1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** "Hello World".
 
-   > Если Maven и {{site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
+   > Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
 
 2. В окне **Командная строка** перейдите в корневую папку проекта Maven адаптера и выполните следующую команду:
 
@@ -113,16 +115,16 @@ weight: 6
    mfpdev adapter build
    ```
 
-3. После завершения компоновки разверните адаптер с помощью {{site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
+3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
 
    <img class="gifplayer" alt="Развертывание адаптера" src="create-an-adapter.png"/>
 
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Тестирование приложения
 {: #5-testing-the-application }
-1. В Xamarin Studio выберите файл **mfpclient.plist** и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{site.data.keys.mf_server }}.
-    * Обычные значения в случае применения локального экземпляра {{site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
+1. В Xamarin Studio выберите файл **mfpclient.plist** и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
+    * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
 
 2. Нажмите кнопку **Воспроизвести**.
 
@@ -130,15 +132,15 @@ weight: 6
 ### Результаты
 {: #results }
 * При нажатии кнопки **Проверить связь с сервером MobileFirst** выдается сообщение **Установлено соединение с сервером MobileFirst**.
-* Если приложению удалось подключиться к {{site.data.keys.mf_server }}, ресурс запрашивается с помощью развернутого адаптера Java.
+* Если приложению удалось подключиться к {{ site.data.keys.mf_server }}, ресурс запрашивается с помощью развернутого адаптера Java.
 
 Ответ адаптера отображается в консоли Xamarin Studio.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{site.data.keys.mf_server }}](console-output.png)
+![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Дальнейшие действия
 {: #next-steps }
-Узнайте больше об использовании адаптеров в приложениях, интеграции дополнительных служб, таких как Push-уведомления, с помощью среды защиты {{site.data.keys.product_adj }} и других вопросах:
+Узнайте больше об использовании адаптеров в приложениях, интеграции дополнительных служб, таких как Push-уведомления, с помощью среды защиты {{ site.data.keys.product_adj }} и других вопросах:
 
 - Просмотреть учебники, посвященные [разработке адаптеров](../../adapters/)
 - Просмотреть учебники, посвященные [идентификации и защите](../../authentication-and-security/)

@@ -1,143 +1,181 @@
 ---
 layout: tutorial
-title: Using Direct Update in Cordova applications
-breadcrumb_title: Direct Update
+title: Direkte Aktualisierung in Cordova-Anwendungen
+breadcrumb_title: Direkte Aktualisierung
 relevantTo: [cordova]
 weight: 8
 downloads:
-  - name: Download Cordova project
+  - name: Cordova-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
+Mithilfe der direkten Aktualisierung können Cordova-Anwendungen drahtlos mit den neuesten Webressourcen aktualisiert werden, z. B. mit
+applikativer Logik (JavaScript), HTML, CSS oder Bildern, die geändert, korrigiert oder neu erstellt wurden. Organisationen können so sicherstellen, dass Endbenutzer stets die neuste Version der Anwendung nutzen. 
 
-In order to update an application, the updated web resources of the application need to be packaged and uploaded to the {{ site.data.keys.mf_server }} using the {{ site.data.keys.mf_cli }} or by deploying a generated archive file. Direct Update is then activated automatically  Once activated, it will be enforced on every request to a protected resource.
+Wenn eine Anwendung aktualisiert werden soll, müssen die aktualisierten Webressourcen der Anwendung gepackt über die
+{{ site.data.keys.mf_cli }} oder mittels einer generierten Archivdatei auf den {{ site.data.keys.mf_server }} hochgeladen werden. Die direkte Aktualisierung wird dann automatisch aktiviert.
+Nach der Aktivierung wird die direkte Aktualisierung bei jeder
+Anforderung einer geschützten Ressource durchgesetzt. 
 
-**Supported Cordova platforms**  
-Direct Update is supported in the Cordova iOS and Cordova Android platforms.
+**Unterstützende Cordova-Plattformen**  
+Die direkte Aktualisierung wird von den Plattformen Cordova iOS und Cordova Android unterstützt. 
 
-**Direct Update in development, testing, and production**  
-For development and testing purposes, developers typically use Direct Update by simply uploading an archive to the development server. While this process is easy to implement, it is not very secure. For this phase, an internal RSA key pair that is extracted from an embedded {{ site.data.keys.product_adj }} self-signed certificate is used.
+**Direkte Aktualisierung in Entwicklung, Tests und Produktion**  
+In der Entwicklungs- und Testphase werden Entwickler für eine direkte Aktualisierung normalerweise
+einfach ein Archiv auf den Entwicklungsserver hochladen.
+Diese Vorgehensweise ist einfach zu implementieren, aber auch nicht sehr sicher. In dieser Phase wird ein internes RSA-Schlüsselpaar
+verwendet, das aus einem eingebetteten selbst siginierten
+{{ site.data.keys.product_adj }}-Zertifikat
+extrahiert wird. 
 
-For the phases of live production or even pre-production testing, however, it is strongly recommended to implement secure Direct Update before you publish your application to the app store. Secure Direct Update requires an RSA key pair that is extracted from a real CA signed server certificate.
+In der Phase der Liveproduktion oder auch in der Testphase in Vorbereitung auf die Produktion wird dringend die Implementierung der sicheren direkten Aktualisierung
+empfohlen, bevor Ihre Anwendung im App Store veröffentlicht wird.
+Für die sichere direkte Aktualisierung ist ein RSA-Schlüsselpaar erforderlich, das aus einem echten, von einer Zertifizierungsstelle signierten Serverzertifikat
+extrahiert wird. 
 
-**Note:** Take care that you do not modify the keystore configuration after the application was published, updates that are downloaded can no longer be authenticated without reconfiguring the application with a new public key and republishing the application. Without performing these two steps, Direct Update fails on the client.
+**Hinweis:** Denken Sie daran, dass die Keystore-Konfiguration
+nach der Veröffentlichung der Anwendung nicht modifiziert werden darf. Heruntergeladene Aktualisierungen erst wieder authentifiziert, wenn
+die Anwendung mit einem neuen öffentlichen Schlüssel rekonfiguriert und erneut veröffentlicht wurde. Ohne diese beiden Schritte schlägt die direkte Aktualisierung auf dem Client
+fehl. 
 
-> Learn more in [Secure Direct Update](#secure-direct-update).
+> Weitere Informationen finden Sie unter [Sichere direkte Aktualisierung](#secure-direct-update).
 
-**Direct Update data transfer rates**  
-At optimal conditions, a single {{ site.data.keys.mf_server }} can push data to clients at the rate of 250 MB per second. If higher rates are required, consider a cluster or a CDN service.  
+**Datenübertragungsrate bei der direkten Aktualisierung**  
+Unter optimalen Bedingungen kann ein einzelner
+{{ site.data.keys.mf_server }} Daten per Push mit einer
+Geschwindigkeit von 250 MB pro Sekunde übertragen. Wenn eine höhere Geschwindigkeit erforderlich ist, ziehen Sie einen Cluster oder einen CDN-Service
+in Betracht.   
 
-> Learn more in [Serving Direct Update requests from a CDN](cdn-support)
+> Weitere Informationen finden Sie unter [Anforderungen nach direkter Aktualisierung mit einem CDN bedienen](cdn-support). 
 
-### Notes
+### Hinweise
 {: #notes }
 
-* Direct Update updates only the application's web resources. To update native resources a new application version must be submitted to the respective app store.
-* When you use the Direct Update feature and the [web resources checksum](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature) feature is enabled, a new checksum base is established with each Direct Update.
-* If the {{ site.data.keys.mf_server }} was upgraded by using a fix pack, it continues to serve direct updates properly. However, if a recently built Direct Update archive (.zip file) is uploaded, it can halt updates to older clients. The reason is that the archive contains the version of the cordova-plugin-mfp plug-in. Before it serves that archive to a mobile client, the server compares the client version with the plug-in version. If both versions are close enough (meaning that the three most significant digits are identical), Direct Update occurs normally. Otherwise, {{ site.data.keys.mf_server }} silently skips the update. One solution for the version mismatch is to download the cordova-plugin-mfp with the same version as the one in your original Cordova project and regenerate the Direct Update archive.
+* Bei der direkten Aktualisierung werden nur die Webressourcen der Anwendung aktualisiert. Wenn Sie native Ressourcen aktualisieren möchten, müssen Sie eine neue Anwendungsversion an den jeweiligen App Store übergeben. 
+* Wenn Sie das Feature für direkte Aktualisierungen verwenden und das [Kontrollsummenfeature für Webressourcen](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature) aktiviert ist, wird bei jeder direkten Aktualisierung eine neue Kontrollsummenbasis erstellt. 
+* Wenn für {{ site.data.keys.mf_server }} ein Upgrade mit einem Fixpack durchgeführt wurde,
+stellt der Server weiter ordnungsgemäß direkte Aktualisierungen bereit. Wenn jedoch ein kürzlich erstelltes Archiv (ZIP-Datei) für die direkte Aktualisierung hochgeladen wird, kann die direkte Aktualisierung für
+ältere Clients gestoppt werden, weil das Archiv die Version des Plug-ins
+cordova-plugin-mfp enthält.
+Der Server vergleicht die Clientversion mit der Plug-in-Version, bevor er das Archiv für einen mobilen Client bereitstellt. Stimmen beide Versionen größtenteils (d. h. bei den drei wichtigsten Ziffern) überein, findet eine normale direkte Aktualisierung statt. Andernfalls überspringt
+{{ site.data.keys.mf_server }}
+die Aktualisierung im Hintergrund. Eine Lösung bei abweichenden Versionen ist das Herunterladen des Plug-ins
+cordova-plugin-mfp in der Version, die für Ihr ursprüngiches Cordova-Projekt verwendet wurde, und das erneute Generieren des Archivs für die direkte
+Aktualisierung. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
 
-- [How Direct Update works](#how-direct-update-works)
-- [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
-- [User experience](#user-experience)
-- [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
-- [Delta and Full Direct Update](#delta-and-full-direct-update)
-- [Secure Direct Update](#secure-direct-update)
-- [Sample application](#sample-application)
+- [Funktionsweise der direkten Aktualisierung](#how-direct-update-works)
+- [Aktualisierte Webressourcen erstellen und implementieren](#creating-and-deploying-updated-web-resources)
+- [Attraktivität für den Benutzer](#user-experience)
+- [Schnittstelle für direkte Aktualisierung anpassen](#customizing-the-direct-update-ui)
+- [Vollständige direkte Aktualisierung und Delta-Aktualisierung](#delta-and-full-direct-update)
+- [Sichere direkte Aktualisierung](#secure-direct-update)
+- [Beispielanwendung](#sample-application)
 
-## How Direct Update works
+## Funktionsweise der direkten Aktualisierung
 {: #how-direct-update-works }
-The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the {{ site.data.keys.mf_server }}.
+Die Webressourcen der Anwendung werden anfänglich in das Anwendungspaket aufgenommen, damit die Offlineverfügbarkeit gewährleistet ist. Später überprüft die Anwendung bei jeder an {{ site.data.keys.mf_server }} gerichteten Anforderung, ob Aktualisierungen vorhanden sind.
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** after a Direct Update was performed, it is checked for again after 60 minutes.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Hinweis:** Nach einer direkten Aktualisierung findet die nächste Überprüfung nach 60 Minuten statt.
 
-After a Direct Update, the application no longer uses the pre-packaged web resources. Instead, it will use the downloaded web resources from the application's sandbox. If the application's cache on the device will be cleared, the original packaged web resources will be used again.
+Wenn eine direkte Aktualisierung durchgeführt wurde, verwendet die Anwendung nicht mehr die ursprünglich im Anwendungspaket enthaltenen Webressourcen. Sie verwendet stattdessen die aus der Anwendungs-Sandbox heruntergeladenen Webressourcen. Wenn der Anwendungscache auf dem Gerät gelöscht wird, werden wieder die Webressourcen aus dem ursprünglichen Paket verwendet. 
 
-![Diagram of how direct update works](internal_function.jpg)
+![Diagramm zur Funktionsweise der direkten Aktualisierung](internal_function.jpg)
 
-### Versioning
+### Versionssteuerung
 {: #versioning }
-A Direct Update applies only to a specific version. In other words, updates generated for an application versioned 2.0 cannot be applied to a different version of the same application.
+Die direkte Aktualisierung gilt nur für eine bestimmte Version. Das bedeutet, dass eine für Version 2.0 einer Anwendung generierte Aktualisierung nicht für eine andere Version dieser Anwendung ausgeführt werden kann. 
 
-## Creating and deploying updated web resources
+## Aktualisierte Webressourcen erstellen und implementieren
 {: #creating-and-deploying-updated-web-resources }
-Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the {{ site.data.keys.mf_server }}.
+Wenn Arbeiten an neuen Webressourcen ausgeführt werden, z. B. Fehlerkorrekturen oder geringfügige Änderungen,
+müssen die aktualisierten Webressourcen gepackt und auf den {{ site.data.keys.mf_server }} hochgeladen werden.
 
-1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: `mfpdev app webupdate`.
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts. 
+2. Führen Sie den Befehl `mfpdev app webupdate` aus. 
 
-The `mfpdev app webupdate` command packages the updated web resources to a .zip file and uploads it to the default {{ site.data.keys.mf_server }} running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.
+Mit dem Befehl `mfpdev app webupdate` werden die aktualisierten Webressourcen zu einer ZIP-Datei gepackt
+und auf den aktiven Standard-MobileFirst-Server auf der
+Entwicklerworkstation hochgeladen. Sie finden die gepackten Webressourcen im Ordner **[Stammorder_des_Cordova-Projekts]/mobilefirst/**. 
 
-Alternatives:
+Alternativen:
 
-* Build the .zip file and upload it to a different {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
+* Erstellen Sie die ZIP-Datei und laden Sie sie auf einen anderen {{ site.data.keys.mf_server }} hoch. Führen Sie dazu den Befehl
+`mfpdev app webupdate [Servername][runtime-name]` aus. Beispiel: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
+* Laden Sie die zuvor generierte ZIP-Datei hoch.
+Führen Sie dazu den folgenden Befehl aus: `mfpdev app webupdate [Servername][runtime-name] --file [Pfad_zu_gepackten_Webressourcen]`. Beispiel: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
   ```
 
-* Manually upload packaged web resources to the {{ site.data.keys.mf_server }}:
- 1. Build the .zip file without uploading it:
+* Laden Sie die gepackten Webressourcen manuell auf den {{ site.data.keys.mf_server }} hoch:
+ 1. Erstellen Sie die ZIP-Datei, ohne sie hochzuladen: 
 
     ```bash
     mfpdev app webupdate --build
     ```
- 2. Load the {{ site.data.keys.mf_console }} and click on the application entry.
- 3. Click on **Upload Web Resources File** to upload the packaged web resources.
+ 2. Laden Sie die {{ site.data.keys.mf_console }} und klicken Sie auf den Anwendungseintrag.
+ 3. Klicken Sie auf **Upload Web Resources File**, um die gepackten Webressourcen hochzuladen. 
 
-    ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+    ![Hochladen der ZIP-Datei für direkte Aktualisierung in der Konsole](upload-direct-update-package.png)
 
-> Run the command `mfpdev help app webupdate` to learn more.
+> Führen Sie den Befehl `mfpdev app webupdate` aus, um mehr zu erfahren. 
 
-## User Experience
+## Attraktivität für den Benutzer
 {: #user-experience }
-By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
+Nach dem Empfang einer direkten Aktualisierung wird standardmäßig ein Dialog angezeigt, in dem der Benutzer gefragt wird, ob die Aktualisierung gestartet werden soll. Nach der Bestätigung durch den Benutzer wird eine Fortschrittsleiste angezeigt und die Webressourcen werden heruntergeladen. Nach Abschluss der Aktualisierung wird die Anwendung automatisch neu geladen. 
 
-![Direct update example](direct-update-flow.png)
+![Beispiel für direkte Aktualisierung](direct-update-flow.png)
 
-## Customizing the Direct Update UI
+## Schnittstelle für direkte Aktualisierung anpassen
 {: #customizing-the-direct-update-ui }
-The default Direct Update UI that is presented to the end-user can be customized.  
-Add the following inside the `wlCommonInit()` function in **index.js**:
+Die dem Benutzer angezeigte Standardbenutzerschnittstelle für direkte Aktualisierung kann angepasst werden.   
+Fügen Sie in der Datei **index.js** innerhalb der Funktion `wlCommonInit()` Folgendes hinzu: 
 
 ```javascript
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
-    // Implement custom Direct Update logic
+    // Angepasste Logik für direkte Aktualisierung implementieren
 };
 ```
 
-- `directUpdateData` - A JSON object containing the `downloadSize` property that represents the file size (in bytes) of the update package to be downloaded from {{ site.data.keys.mf_server }}.
-- `directUpdateContext` - A JavaScript object exposing the `.start()` and `.stop()` functions, which start and stop the Direct Update flow.
+- `directUpdateData` - JSON-Objekt mit der Eigenschaft `downloadSize`, die die Dateigröße des von {{ site.data.keys.mf_server }} herunterzuladenden
+Aktualisierungspakets (in Bytes) angibt
+- `directUpdateContext` - JavaScript-Objekt, das jeweils eine Funktion `.start()` und `.stop()`
+zum Starten und Stoppen des Ablaufs der direkten Aktualisierung zugänglich macht
 
-If the web resources are newer on the {{ site.data.keys.mf_server }} than in the application, Direct Update challenge data is added to the server response. Whenever the {{ site.data.keys.product_adj }} client-side framework detects this direct update challenge, it invokes the `wl_directUpdateChallengeHandler.handleDirectUpdate` function.
+Wenn die Webressourcen auf dem {{ site.data.keys.mf_server }} neuer als die Webressourcen in der
+Anwendung sind, werden zur Serverantwort Abfragedaten für die direkte Aktualisierung hinzugefügt. Wenn das
+clientseitige {{ site.data.keys.product_adj }}-Framework die Abfrage zur direkten Aktualisierung erkennt, ruft es
+die Funktion `wl_directUpdateChallengeHandler.handleDirectUpdate` auf. 
 
-The function provides a default Direct Update design: a default message dialog that is displayed when a Direct Update is available and a default progress screen that is displayed when the direct update process is initiated. You can implement custom Direct Update user interface behavior or customize the Direct Update dialog box by overriding this function and implementing your own logic.
+Die Funktion stellt ein Standarddesign für die direkte Aktualisierung bereit. Wenn eine direkte Aktualisierung verfügbar ist,
+wird ein Dialog mit einer Standardnachricht angezeigt, und nach der Einleitung der direkten Aktualisierung erscheint
+eine Standardfortschrittsanzeige. Sie können diese Funktion überschreiben und Ihre eigene Logik implementieren, wenn Sie ein angepasstes Verhalten
+der Benutzerschnittstelle für direkte Aktualisierung erreichen oder das Dialogfenster für die direkte Aktualisierung anpassen möchten.
 
-<img alt="Image of custom Direct Update dialog" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
-In the example code below, a `handleDirectUpdate` function implements a custom message in the Direct Update dialog. Add this code into the **www/js/index.js** file of the Cordova project.  
-Additional examples for a customized Direct Update UI:
+<img alt="Angepasster Dialog für direkte Aktualisierung" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
+Im folgenden Beispielcode implementiert eine Funktion `handleDirectUpdate` eine angepasste Nachricht im Dialog für direkte Aktualisierung. Fügen Sie den folgenden Code zur Datei **www/js/index.js** des Cordova-Projekts hinzu.   
+Weitere Beispiele für eine angepasste Benutzerschnittstelle für direkte Aktualisierung: 
 
-- A dialog that is created by using a third-party JavaScript framework (such as Dojo or jQuery Mobile, Ionic, ...)
-- Fully native UI by executing a Cordova plug-in
-- An alternate HTML that is presented to the user with options
-- And so on...
+- Mit einem JavaScript-Framework eines anderen Anbieters (z. B. Dojo oder jQuery Mobile, Ionic usw.) erstellter Dialog
+- Vollständig native Benutzerschnittstelle durch Ausführung eines Cordova-Plug-ins
+- Alternative HTML, die dem Benutzer mit Optionen angezeigt wird
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
-    navigator.notification.confirm(  // Creates a dialog.
+    navigator.notification.confirm(  // Erstellt einen Dialog
         'Custom dialog body text',
-        // Handle dialog buttons.
+        // Dialogschaltflächen behandeln
           directUpdateContext.start();
         },
         'Custom dialog title text',
@@ -146,12 +184,17 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-You can start the Direct Update process by running the `directUpdateContext.start()` method whenever the user clicks the dialog button. The default progress screen, which resembles the one in previous versions of {{ site.data.keys.mf_server }} is shown.
+Sie können die direkte Aktualisierung starten, indem Sie immer, wenn der Benutzer im Dialog auf die Schaltfläche klickt,
+eine Methode `directUpdateContext.start()` ausführen. Die Fortschrittsanzeige erscheint. Sie ähnelt der in den
+Vorgängerversionen von
+{{ site.data.keys.mf_server }}. 
 
-This method supports the following types of invocation:
+Diese Methode unterstützt die folgenden Aufrufarten:
 
-* When no parameters are specified, the {{ site.data.keys.mf_server }} uses the default progress screen.
-* When a listener function such as `directUpdateContext.start(directUpdateCustomListener)` is supplied, the Direct Update process runs in the background while the process sends lifecycle events to the listener. The custom listener must implement the following methods:
+* Wenn keine Parameter angegeben sind,
+verwendet {{ site.data.keys.mf_server }} die Standardfortschrittsanzeige. 
+* Wenn eine Listenerfunktion wie `directUpdateContext.start(directUpdateCustomListener)` bereitgestellt wird, wird die direkte Aktualisierung im Hintergrund ausgeführt und sendet Lebenszyklusereignisse
+an den Listener. Der angepasste Listener muss die folgenden Methoden implementieren:
 
 ```javascript
 var  directUpdateCustomListener  = { 
@@ -161,46 +204,53 @@ var  directUpdateCustomListener  = {
 };
 ```
 
-The listener methods are started during the direct update process according to following rules:
-* `onStart` is called with the `totalSize` parameter that holds the size of the update file.
-* `onProgress` is called multiple times with status `DOWNLOAD_IN_PROGRESS`, `totalSize`, and `completedSize` (the volume that is downloaded so far).
-* `onProgress` is called with status `UNZIP_IN_PROGRESS`.
-* `onFinish` is called with one of the following final status codes:
+Die Listenermethoden werden während der direkten Aktualisierung gemäß den folgenden Regeln gestartet:  
+* Die Methode `onStart` wird mit dem Parameter `totalSize` aufgerufen, der die Größe der Aktualisierungsdatei
+angibt.
+* Die Methode `onProgress` wird mehrmals mit dem Status `DOWNLOAD_IN_PROGRESS` sowie mit
+`totalSize` und `completedSize` (dem bisher heruntergeladenen Volumen) aufgerufen.
+* Die Methode `onProgress` wird mit dem Status `UNZIP_IN_PROGRESS` aufgerufen.
+* Die Methode `onFinish` wird mit einem der abschließenden Statuscodes
+aufgerufen:      
 
-| Status code | Description |
+| Statuscode | Beschreibung |
 |-------------|-------------|
-| `SUCCESS` | Direct update finished with no errors. |
-| `CANCELED` | Direct update was canceled (for example, because the `stop()` method was called). |
-| `FAILURE_NETWORK_PROBLEM` | There was a problem with a network connection during the update. |
-| `FAILURE_DOWNLOADING` | The file was not downloaded completely. |
-| `FAILURE_NOT_ENOUGH_SPACE` | There is not enough space on the device to download and unpack the update file. |
-| `FAILURE_UNZIPPING` | There was a problem unpacking the update file. |
-| `FAILURE_ALREADY_IN_PROGRESS` | The start method was called while direct update was already running. |
-| `FAILURE_INTEGRITY` | Authenticity of update file cannot be verified. |
-| `FAILURE_UNKNOWN` | Unexpected internal error. |
+| `SUCCESS` | Die direkte Aktualisierung wurde fehlerfrei abgeschlossen. |
+| `CANCELED` | Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde). |
+| `FAILURE_NETWORK_PROBLEM` | Es gab während der Aktualisierung ein Problem mit einer Netzverbindung. |
+| `FAILURE_DOWNLOADING` | Die Datei wurde nicht vollständig heruntergeladen. |
+| `FAILURE_NOT_ENOUGH_SPACE` | Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken. |
+| `FAILURE_UNZIPPING` | Beim Entpacken der Aktualisierungsdatei ist ein Problem aufgetreten. |
+| `FAILURE_ALREADY_IN_PROGRESS` | Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief. |
+| `FAILURE_INTEGRITY` | Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden. |
+| `FAILURE_UNKNOWN` | Unerwarteter interner Fehler |
 
-If you implement a custom direct update listener, you must ensure that the app is reloaded when the direct update process is complete and the `onFinish()` method has been called. You must also call `wl_directUpdateChalengeHandler.submitFailure()` if the direct update process fails to complete successfully.
+Wenn Sie einen angepassten Listener für die direkte Aktualisierung implementieren, müssen Sie sicherstellen, dass
+nach Abschluss der direkten Aktualisierung
+`onFinish()` aufgerufen und die App neu geladen wird. Wenn die direkte Aktualisierung nicht erfolgreich abgeschlossen werden kann,
+müssen Sie
+außerdem `wl_directUpdateChalengeHandler.submitFailure()` aufrufen. 
 
-The following example shows an implementation of a custom direct update listener:
+Das folgende Beispiel zeigt eine Implementierung eines angepassten Listeners für die direkte Aktualisierung:
 
 ```javascript
 var directUpdateCustomListener = {
   onStart: function(totalSize){
-    //show custom progress dialog
+    // Angepassten Fortschrittsdialog anzeigen
   },
   onProgress: function(status,totalSize,completedSize){
-    //update custom progress dialog
+    // Angepassten Fortschrittsdialog aktualisieren
   },
   onFinish: function(status){
 
     if (status == 'SUCCESS'){
-      //show success message
+      // Erfolgsnachricht anzeigen
       WL.Client.reloadApp();
     }
     else {
-      //show custom error message
+      // Angepasste Fehlernachricht anzeigen
 
-      //submitFailure must be called is case of error
+      // Bei einem Fehler muss submitFailure aufgerufen werden.
       wl_directUpdateChallengeHandler.submitFailure();
     }
   }
@@ -217,18 +267,27 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-### Scenario: Running UI-less direct updates
-{: scenario-running-ui-less-direct-updates }
-{{ site.data.keys.product_full }} supports UI-less direct update when the application is in the foreground.
+### Szenario: Direkte Aktualisierung ohne Benutzerschnittstelle durchführen
+{: #scenario-running-ui-less-direct-updates }
+Die {{ site.data.keys.product_full }} unterstützt
+die direkte Aktualisierung ohne Benutzerschnittstelle, wenn die Anwendung im Vordergrund ausgeführt wird. 
 
-To run UI-less direct updates, implement `directUpdateCustomListener`. Provide empty function implementations to the `onStart` and `onProgress` methods. Empty implementations cause the direct update process to run in the background.
+Implementieren Sie
+`directUpdateCustomListener` für die direkte Aktualisierung ohne Benutzerschnittstelle.
+Stellen Sie für die Methoden `onStart` und `onProgress` leere Funktionsimplementierungen bereit.
+Leere Implementierungen bewirken, dass die direkte Aktualisierung im Hintergrund ausgeführt wird.
 
-To complete the direct update process, the application must be reloaded. The following options are available:
-* The `onFinish` method can be empty as well. In this case, direct update will apply after the application has restarted.
-* You can implement a custom dialog that informs or requires the user to restart the application. (See the following example.)
-* The `onFinish` method can enforce a reload of the application by calling `WL.Client.reloadApp()`.
+Die Anwendung muss neu geladen werden, um den
+Prozess der direkten Aktualisierung abzuschließen. Folgende Optionen sind verfügbar: 
+* Die Methode `onFinish` kann auch leer sein. In dem Fall erfolgt die direkte Aktualisierung nach einem Neustart
+der Anwendung. 
+* Sie können einen angepassten Dialog implementieren, in dem der Benutzer über den notwendigen Neustart der Anwendung informiert oder
+zum erneuten Starten der Anwendung aufgefordert wird (siehe folgendes Beispiel). 
+* Die Methode `onFinish` kann
+`WL.Client.reloadApp()` aufrufen, um einen Neustart der Anwendung durchzusetzen.
 
-Here is an example implementation of `directUpdateCustomListener`:
+Nachfolgend sehen Sie eine
+Beispielimplementierung von `directUpdateCustomListener`:
 
 ```javascript
 var directUpdateCustomListener = {
@@ -245,7 +304,10 @@ var directUpdateCustomListener = {
 };
 ```
 
-Implement the `wl_directUpdateChallengeHandler.handleDirectUpdate` function. Pass the `directUpdateCustomListener` implementation that you have created as a parameter to the function. Make sure `directUpdateContext.start(directUpdateCustomListener`) is called. Here is an example `wl_directUpdateChallengeHandler.handleDirectUpdate` implementation:
+Implementieren Sie die Funktion `wl_directUpdateChallengeHandler.handleDirectUpdate`.
+Übergeben Sie die erstellte Implementierung von `directUpdateCustomListener` als Parameter
+an die Funktion. Stellen Sie sicher, dass `directUpdateContext.start(directUpdateCustomListener)` aufgerufen wird. Nachfolgend sehen Sie eine
+Beispielimplementierung von `wl_directUpdateChallengeHandler.handleDirectUpdate`:
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
@@ -254,24 +316,29 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-**Note:** When the application is sent to the background, the direct-update process is suspended.
+**Hinweis:** Wenn sich die Anwendung im Hintergrund befindet, wird die direkte Aktualisierung ausgesetzt.
 
-### Scenario: Handling a direct update failure
+### Szenario: Fehler bei der direkten Aktualisierung behandeln
 {: #scenario-handling-a-direct-update-failure }
-This scenario shows how to handle a direct update failure that might be caused, for example, by loss of connectivity. In this scenario, the user is prevented from using the app even in offline mode. A dialog is displayed offering the user the option to try again.
+Dieses Szenario zeigt die Behandlung eines
+Fehlers bei der direkten Aktualisierung, der beispielsweise wegen verlorener Konnektivität auftreten könnte. Der Benutzer kann in diesem Szenario die
+App nicht verwenden, auch nicht im Offlinemodus. Ein Dialog wird angezeigt, in dem der Benutzer aufgefordert wird, den Vorgang erneut zu versuchen.
 
-Create a global variable to store the direct update context so that you can use it subsequently when the direct update process fails. For example:
+Erstellen Sie eine globale
+Variable, um den Kontext für die direkte Aktualisierung zu speichern. Sie können diese später verwenden, wenn die direkte Aktualisierung
+fehlschlägt. Beispiel: 
 
 ```javascript
 var savedDirectUpdateContext;
 ```
 
-Implement a direct update challenge handler. Save the direct update context here. For example:
+Implementieren Sie einen
+Abfrage-Handler für die direkte Aktualisierung. Speichern Sie dort den Kontext für die direkte Aktualisierung. Beispiel:
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
 
-  savedDirectUpdateContext = directUpdateContext; // save direct update context
+  savedDirectUpdateContext = directUpdateContext; // Kontext der direkten Aktualisierung speichern
 
   var downloadSizeInMB = (directUpdateData.downloadSize / 1048576).toFixed(1).replace(".", WL.App.getDecimalSeparator());
   var directUpdateMsg = WL.Utils.formatString(WL.ClientMessages.directUpdateNotificationMessage, downloadSizeInMB);
@@ -285,15 +352,18 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-Create a function that starts the direct update process by using the direct update context. For example:
+Erstellen Sie eine Funktion, die die direkte Aktualisierung über den Kontext für die direkte Aktualisierung startet. Beispiel: 
 
 ```javascript
 restartDirectUpdate = function () {
-  savedDirectUpdateContext.start(directUpdateCustomListener); // use saved direct update context to restart direct update
+  savedDirectUpdateContext.start(directUpdateCustomListener); // gespeicherten Kontext der direkten Aktualisierung für Neustart der direkten Aktualisierung verwenden
 };
 ```
 
-Implement `directUpdateCustomListener`. Add status checking in the `onFinish` method. If the status starts with "FAILURE", open a modal only dialog with the option "Try Again". For example:
+Implementieren Sie `directUpdateCustomListener`.
+Fügen Sie in der Methode `onFinish` eine Statusprüfung hinzu. Wenn der Status mit
+"FAILURE" beginnt, öffnen Sie einen rein modalen Dialog mit der Option
+"Try Again". Beispiel: 
 
 ```javascript
 var directUpdateCustomListener = {
@@ -309,41 +379,49 @@ var directUpdateCustomListener = {
     if (pos > -1) {
       WL.SimpleDialog.show('Update Failed', 'Press try again button', [ {
         text : "Try Again",
-        handler : restartDirectUpdate // restart direct update
+        handler : restartDirectUpdate // direkte Aktualisierung neu starten
       }]);
     }
   }
 };
 ```
 
-When the user clicks the **Try Again** button, the application restarts the direct update process.
+Wenn der Benutzer auf die Schaltfläche **Try Again** klickt, startet die Anwendung die direkte Aktualisierung neu.
 
-## Delta and Full Direct Update
+## Vollständige direkte Aktualisierung und Delta-Aktualisierung
 {: #delta-and-full-direct-update }
-Delta Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
+Bei einer direkten Delta-Aktualisierung lädt eine Anwendung nur die Dateien herunter, die seit der letzten
+Aktualisierung geändert wurden, und nicht die gesamten Webressourcen der Anwendung. Dadurch verkürzt sich die Downloadzeit. Zudem wird die Attraktivität für den Benutzer erhöht. 
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:**
+Eine **Delta-Aktualisierung** ist nur möglich, wenn der Versionsstand der Webressourcen der Clientanwendung
+um eine Version hinter dem Stand der zurzeit auf dem Server implementierten Anwendung zurückliegt. Liegt die Clientanwendung mehr als eine Version hinter der
+derzeit implementierten anwendung zurück (was geschieht, wenn die Anwendung
+auf dem Server seit der letzten Aktualisierung der Clientanwendung mindestens zweimal implementiert wurde),
+wird eine **vollständige Aktualisierung** empfangen. (In dem Fall werden alle Webressourcen heruntergeladen und aktualisiert.)
 
-## Secure Direct Update
-{: secure-direct-update }
-Disabled by default, Secure Direct Update prevents a 3rd-party attacker from altering the web resources that are transmitted from the {{ site.data.keys.mf_server }} (or from a Content Delivery Network (CDN)) to the client application.
+## Sichere direkte Aktualisierung
+{: #secure-direct-update }
+Die sichere direkte Aktualisierung ist standardmäßig inaktiviert. Sie verhindert,
+dass ein Angreifer von {{ site.data.keys.mf_server }} (oder von einem Content Delivery Network (CDN)) an die Clientanwendung übertragene Webressourcen ändert. 
 
-**To enable Direct Update authenticity:**  
-Using a preferred tool, extract the public key from the {{ site.data.keys.mf_server }} keystore and convert it to base64.  
-The produced value should then be used as instructed below:
+**Gehen Sie wie folgt vor, um die Authentizität der direkten Aktualisierung zu aktivieren:**  
+Verwenden Sie Ihr bevorzugtes Tool, um den öffentlichen Schlüssel aus dem MobileFirst-Server-Keystore
+zu extrahieren und in einen Base64-Schlüssel zu konvertieren.   
+Verwenden Sie den so erzeugten Wert dann wie folgt: 
 
-1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: `mfpdev app config` and select the "Direct Update Authenticity public key" option.
-3. Provide the public key and confirm.
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts. 
+2. Führen Sie den Befehl `mfpdev app config` aus und wählen Sie die Option "Direct Update Authenticity public key" aus. 
+3. Geben Sie den öffentlichen Schlüssel an und bestätigen Sie die Eingabe. 
 
-Any future Direct Update deliveries to client applications will be protected by Direct Update authenticity.
+Alle folgenden direkten Aktualisierungen für Clientanwendungen sind nun durch die Authentizität der direkten Aktualisierung geschützt. 
 
-> To configure the application server with the updated keystore file, see [Implementing secure Direct Update](secure-direct-update)
+> Wie Sie den Anwendungsserver mit der aktalisieren Keystore-Datei konfigurieren können, erfahren Sie unter [Sichere direkte Aktualisierung implementieren](secure-direct-update). 
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80), um das Cordova-Projekt herunterzuladen.   
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

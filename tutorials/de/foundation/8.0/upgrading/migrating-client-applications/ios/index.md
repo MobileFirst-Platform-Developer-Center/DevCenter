@@ -204,9 +204,7 @@ des Projekts befindet.
       pod 'IBMMobileFirstPlatformFoundation'
       ```
       
-    * Geben Sie weitere Pods aus der obigen Liste in der Datei an, wenn Ihre App die Funktionalität dieser Pods benötigt. Wenn Ihre App beispielsweise OpenSSL verwendet,
-könnte die **Podfile** etwa wie folgt aussehen:
-
+    * Geben Sie weitere Pods aus der obigen Liste in der Datei an, wenn Ihre App die Funktionalität dieser Pods benötigt. Wenn Ihre App beispielsweise OpenSSL verwendet, könnte die **Podfile** etwa wie folgt aussehen:
     
       ```xml
       use_frameworks!

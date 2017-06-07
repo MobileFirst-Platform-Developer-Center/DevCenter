@@ -141,15 +141,11 @@ Version 8.0.0 verwendet.
     
     * Alle Methoden, die asynchrone Operationen ausgeführt haben, verwendeten bisher ein Callback-Modell für Antwortlistener, das durch das Modell **await/async** ersetzt wurde.
 
-Jetzt können Sie mit dem Entwickeln Ihrer nativen
-Windows-Anwendung mit dem SDK der {{ site.data.keys.product_adj }}
-beginnen. Möglicherweise müssen Sie Ihren Code aktualisieren, sodass er die Änderungen der {{ site.data.keys.product_adj }}-API von
-Version 8.0.0 widerspiegelt. 
+Jetzt können Sie mit dem Entwickeln Ihrer nativen Windows-Anwendung mit dem SDK der {{ site.data.keys.product_adj }} beginnen. Möglicherweise müssen Sie Ihren Code aktualisieren, sodass er die Änderungen der {{ site.data.keys.product_adj }}-API von Version 8.0.0 widerspiegelt.
 
 #### Nächste Schritte
 {: #what-to-do-next }
-Ersetzen Sie die clientseitigen APIs, die
-weggefallen oder nicht in Version 8.0 enthalten sind. 
+Ersetzen Sie die clientseitigen APIs, die weggefallen oder nicht in Version 8.0 enthalten sind. 
 
 ## Windows-Code aktualisieren
 {: #updating-the-windows-code }

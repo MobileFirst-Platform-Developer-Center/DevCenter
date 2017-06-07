@@ -20,6 +20,8 @@ Votre administrateur système doit vous fournir un nom d'utilisateur et un mot d
 * [Installation du client sur un appareil mobile Android](#installing-the-client-on-an-android-mobile-device)
 * [Installation du client sur un appareil mobile iOS](#installing-the-client-on-an-ios-mobile-device)
 * [Installation du client sur un appareil mobile Windows Phone 8 Universal](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [Installation du client Windows 10 UWP sur un appareil Windows 10](#installing-windows-10-uwp-client-on-windows-10-device)
+* [Installation d'une application Windows 10 UWP et ajout de commentaires](#installing-a-windows-10-uwp-application-and-adding-review-comments)
 * [Vue de connexion](#the-login-view)
 * [Vues dans le client Application Center](#views-in-the-application-center-client)
 * [Installation d'une application sur un appareil Android](#installing-an-application-on-an-android-device)
@@ -58,7 +60,7 @@ Vous pouvez installer le client mobile ou toute application signée portant l'in
     Pour que vous puissiez voir le client mobile dans la liste des applications disponibles, l'administrateur Application Center doit installer l'application du client mobile. L'administrateur télécharge le client mobile dans Application Center et définit la propriété **Installer** sur **true**. Voir [Propriétés d'application](../appcenter-console/#application-properties).
 
     ![Liste des applications de client mobile à installer](ac_instal_client_and1.jpg)
-    
+
 5. Sélectionnez un élément dans la liste pour afficher les détails de l'application. Généralement, ces informations incluent le nom de l'application et son numéro de version.
 
     ![Détails de l'application](ac_app_details.jpg)
@@ -69,7 +71,7 @@ Vous pouvez installer le client mobile ou toute application signée portant l'in
 8. Sélectionnez le programme d'installation du client Application Center. Vous pouvez voir l'accès accordé à l'application lorsque vous choisissez de l'installer.
 
     ![Installation du client mobile dans Android](ac_instal_client_and_rights.jpg)
-    
+
 9. Sélectionnez **Install** pour installer le client mobile.
 10. Lorsque l'application est installée, sélectionnez **Open** pour ouvrir le client mobile ou **Done** pour fermer l'application Downloads.
 
@@ -122,16 +124,16 @@ L'installation du client mobile sur un appareil iOS est semblable à une install
 
     * Appuyez sur l'onglet SSL-Certificate et sélectionnez le certificat.
     * Appuyez sur Install. Vous n'effectuez cette action qu'une seule fois pour l'appareil. Vous pouvez vérifier si le certificat est installé en accédant à **Settings → General → Profiles on the device**. Cette vue affiche les certificats SSL que l'utilisateur a installés sur l'appareil. Si le certificat d'AC auto-signé n'est pas installé sur l'appareil, le système d'exploitation iOS vous empêche de télécharger le client mobile dans les étapes suivantes.
-    
+
     Pour que vous puissiez voir le client mobile dans la liste des applications disponibles, l'administrateur Application Center doit installer l'application du client mobile. L'administrateur télécharge le client mobile dans Application Center et définit la propriété Installer sur true. Voir [Propriétés d'application](../appcenter-console/#application-properties).
-    
+
 5. Appuyez sur l'onglet **Installers** et sélectionnez un élément dans la liste pour afficher les détails de l'application.
 6. Appuyez sur **Install** pour télécharger le client mobile.
 7. Saisissez vos données d'identification pour autoriser la transaction de téléchargement.
 8. Pour autoriser le téléchargement, appuyez sur **Install**.
 
     ![Confirmer l'application à installer](ac_instal_client_ios_conf.jpg)
-    
+
 9. Entrez vos données d'identification pour autoriser l'installation.
 10. Fermez le navigateur.
 
@@ -179,16 +181,16 @@ Avant d'installer des applications publiées par votre société, vous devez ajo
 3. Entrez vos données d'identification pour autoriser l'accès au serveur. Sur la partie inférieure de l'écran, une barre d'outils contient un onglet **Installers** et un onglet **Tokens**.
 
     ![Préparation à l'installation de jetons et d'applications sur un appareil Windows Phone](ac_wp8_toolbar_inst_app.jpg)
-    
+
 4. Appuyez sur **Tokens** et sélectionnez un jeton d'inscription d'application dans la liste des jetons disponibles pour afficher les détails du jeton.
 
     ![Détails de jeton d'inscription d'application sur un appareil Windows Phone](ac_wp8_aet_details.jpg)
-    
+
 5. Appuyez sur **Add** pour télécharger le jeton d'inscription de l'application.
 6. Appuyez sur **Add** pour ajouter le compte de la société.
 
     ![Ajout d'un compte de société dans un appareil Windows 8 Universal](ac_wp8_add_co_account.jpg)
-    
+
     Windows Phone 8 ne fournit aucun commentaire sur l'ajout du compte de société.
 
 7. Appuyez sur l'icône Retour pour revenir aux détails du jeton d'inscription d'application.
@@ -196,16 +198,62 @@ Avant d'installer des applications publiées par votre société, vous devez ajo
 9. Appuyez sur **Install** pour télécharger l'application sélectionnée.
 
     ![Application sélectionnée pour téléchargement sur un appareil Windows Phone](ac_wp8_app_details.jpg)
-    
+
 10. Appuyez sur **Install** pour installer l'application.
 
     ![Installation de l'application téléchargée sur un appareil Windows Phone](ac_wp8_app_install.jpg)
-    
+
     Windows 8 Universal ne fournit aucun commentaires en retour sur l'installation de l'application.
 
 > **Astuce :** lorsque vous installez une application de société sur un appareil, cet appareil doit se connecter au serveur Microsoft pour vérifier la signature de l'application. Parfois, le serveur Microsoft ne répond pas. Dans ce cas, vous pouvez recommencer l'installation quelques minutes plus tard. Reportez-vous à la section Installation d'une application sur un appareil Windows Phone pour connaître les messages d'erreur possibles.
 
 Lorsque l'installation est terminée, l'application de client mobile doit être disponible dans votre liste d'applications dans Windows Phone.
+
+## Installation du client Windows 10 UWP sur un appareil Windows 10
+{: #installing-windows-10-uwp-client-on-windows-10-device }
+
+Vous pouvez installer le client mobile ou une application signée avec l'indicateur du programme d'installation sous Windows 10 en entrant l'URL d'accès dans votre navigateur et vos données d'identification et en suivant la procédure requise.
+
+1. Démarrez le navigateur sur votre appareil mobile.
+
+2. Entrez l'URL d'accès ci-dessous dans la zone de texte de l'adresse : `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`. Où `hostname` est l'adresse du serveur et `portnumber` est le numéro du port où Application Center est installé. Votre administrateur système peut fournir ces informations.
+
+    Application Center fournit également une autre URL pour installer le client sur un appareil mobile : `http://hostname:portnumber/applicationcenter/inst.html?os=Windows`. La page de cette URL fonctionne mieux avec certains navigateurs Web mobiles plus anciens ou non standard. Si la page *installers.html* ne fonctionne pas sur votre appareil mobile, vous pouvez utiliser *inst.html*. Cette page est fournie en anglais seulement et n'est pas traduite.
+
+3.  Entrez vos données d'identification pour autoriser l'accès au serveur.
+
+    ![Entrez les données d'identification pour accéder au serveur](ac_wp10_enter_credentials.png)
+
+4.  Sélectionnez un élément dans la liste des applications disponibles pour afficher les détails d'une application.
+
+    ![Sélectionner une application pour afficher ses détails](ac_wp10_apps_list.png)
+
+5.  Appuyez sur **Install** pour télécharger et installer le client mobile.
+
+    ![Sélectionnez Install pour installer l'application](ac_wp10_app_install.png)
+
+
+> **Remarque :** Pour répertorier les applications Windows 10 UWP, vous devez transmettre la chaîne de requête `os=Windows`
+
+## Installation d'une application Windows 10 UWP et ajout de commentaires
+{:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
+
+1. Connectez-vous à Application Center.
+
+    ![Connectez-vous à Application Center](ac_wp10_login.png)
+
+2. Sélectionnez l'application à installer dans la liste des applications disponibles dans le catalogue.
+
+    ![Sélectionnez une application dans le catalogue](ac_wp10_catalog_applisting.png)
+
+3. Appuyez sur **Install** pour télécharger et installer l'application.
+
+    ![Sélectionnez Install pour installer l'application](ac_wp10_app_details_installapp.png)
+
+4. Donnez un avis sur l'application en indiquant une notre et en ajoutant des commentaires.
+
+    ![Ajoutez des commentaires](ac_wp10_add_review.png)
+
 
 ## Vue de connexion
 {: #the-login-view }
@@ -363,11 +411,11 @@ Dans la vue **Details**, vous pouvez installer une version d'application sur vot
 2. Appuyez sur **Install** pour confirmer le téléchargement et l'installation de la version de l'application ou sur **Cancel** pour annuler l'installation.
 
     ![Annulation de l'installation de l'application sur votre appareil iOS](ac_app_inst_cancel_ios.jpg)
-    
+
     Selon l'action effectuée, l'application est installée ou non. Lorsque l'application est installée, elle est également marquée comme application favorite.
 
     L'installation d'une application sur un appareil nécessite un profil de mise à disposition qui permet à l'application d'être installée sur l'appareil sélectionné. Si vous tentez accidentellement d'installer une application qui n'est pas valide pour votre appareil, IOS 6 (obsolète) ou une version antérieure émet un message d'erreur.
-    
+
 Contrairement au client Android, une fois l'installation terminée, le libellé du bouton **Install** de la vue **Details** ne devient pas **Uninstall**. iOS ne contient pas de bouton **Uninstall**. Il est seulement possible de désinstaller des applications via l'écran d'accueil.
 
 Certaines versions d'iOS 7 peuvent tenter d'installer l'application dans une boucle sans fin sans jamais réussir ni indiquer d'erreur. L'icône de l'application qui montre la progression de l'installation apparaît sur l'écran d'accueil, mais, en raison de la boucle sans fin, il est difficile de supprimer cette icône d'application pour arrêter la boucle sans fin. Une solution de contournement consiste à mettre l'appareil en mode Avion. Dans ce mode, la boucle sans fin est arrêtée et vous pouvez supprimer l'icône de l'application en suivant les étapes normales de suppression d'applications sur des appareils iOS.
@@ -406,7 +454,7 @@ La vue **Details** de l'application sélectionnée affiche des informations sur 
 2. Appuyez sur **Install** pour confirmer l'installation de l'application ou sur **Cancel** pour annuler l'installation. L'application est marquée comme une application favorite.
 
     ![Confirmation ou annulation de l'installation d'une application de société sur un appareil Windows Phone](ac_confirm_instal_app_wp.jpg)
-    
+
 > **Astuce :** lorsque vous installez une application de société sur un appareil, cet appareil doit se connecter au serveur Microsoft pour vérifier la signature de l'application. Parfois, le serveur Microsoft ne répond pas. Dans ce cas, vous pouvez recommencer l'installation quelques minutes plus tard.
 
 Les messages d'erreur possibles sont :
@@ -428,7 +476,7 @@ Les messages d'erreur possibles sont :
 Selon l'action effectuée, l'application est installée ou non.
 
 > **Astuce :** le processus d'installation ne fonctionne pas si le certificat PFX utilisé pour signer dans le code le fichier de module d'application (.xap) de l'application que vous souhaitez installer est périmé. Le système d'exploitation Windows Phone renvoie une erreur avec **HRESULT 0x81030110**. Lorsque vous renouvelez votre certificat PFX, vous devez à nouveau signer dans le code avec ce nouveau certificat toutes les applications déployées dans votre catalogue Application Center.
-> 
+>
 Lorsque vous renouvelez votre certificat PFX de signature dans le code, vous devez également renouveler le jeton d'inscription et le déployer sur la console Application Center. Les appareils doivent également être réinscrits dans le compte de la société avec ce nouveau jeton. Les utilisateurs d'appareils inscrits avec un jeton expiré ne peuvent pas installer d'applications.
 
 Dans Windows Phone 8.1, si le client Application Center n'est pas signé dans le code (par exemple, lorsque vous le déboguez dans Visual Studio), vous ne pouvez pas installer d'application en utilisant ce client non signé. Dans ce cas, le système d'exploitation Windows Phone renvoie une erreur avec **HRESULT 0x800703F0**. Avant d'installer des applications dans Windows Phone 8.1, vous devez signer dans le code le fichier de module d'application (.xap) du client.
@@ -469,6 +517,7 @@ Les étapes suivantes décrivent comment effectuer l'installation d'une applicat
 
 3. Pour installer l'application, appuyez sur **Install**. Si l'application est déjà installée et que d'autres versions sont disponibles, vous pouvez décider de mettre à jour vers une version ultérieure ou de revenir à une version précédente.
 
+
 ## Installation d'applications par le biais de magasins d'applications publics
 {: #installing-applications-through-public-app-stores }
 Vous pouvez vous connecter à partir du client mobile à des applications stockées dans des magasins d'applications publics pris en charge et installer ces applications sur votre appareil compatible en suivant la procédure normale du magasin d'applications public.
@@ -482,10 +531,10 @@ Les liens vers des applications Android stockées dans Google Play et vers des a
 
     **Android**
     ![Accès à une application dans Google Play depuis le client mobile sur l'appareil](ac_and_link_app.jpg)
-    
+
     **iOS**
     ![Accès à une application dans Apple iTunes depuis le client mobile sur l'appareil](ac_ios_link_app.jpg)
-    
+
 3. Suivez la procédure habituelle du magasin d'applications public pour installer l'application.
 
 ## Suppression d'une application installée
@@ -511,7 +560,7 @@ Vous pouvez afficher les détails de la version sélectionnée d'une application
     * Tablette : voir l'étape 4.
 2. **Windows Phone, Android, iOS uniquement** : affichez les détails d'une version d'application spécifique sur un téléphone Windows Phone, Android ou iOS.
     * Appuyez sur **Select a version** pour accéder à la vue de la liste des versions.
-    ![Version spécifique d'une application sélectionnée dans la liste des versions sur un téléphone Windows Phone, Android ou iOS](ac_version_select.jpg) 
+    ![Version spécifique d'une application sélectionnée dans la liste des versions sur un téléphone Windows Phone, Android ou iOS](ac_version_select.jpg)
     * Appuyez sur la version appropriée de l'application. La vue **Details** est mise à jour et affiche les détails de la version de l'application sélectionnée.
 3. Windows uniquement : affichez les détails d'une version d'application Windows Store spécifique sur un appareil Windows. Si plusieurs versions sont disponibles pour l'application Windows Store, vous pouvez sélectionner la version que vous souhaitez installer.
     * Appuyez sur la version appropriée de l'application. La vue **Details** est mise à jour et affiche les détails de la version de l'application sélectionnée.
@@ -558,7 +607,7 @@ Si vous souhaitez désactiver la mise à niveau automatique, vous devez définir
 3. Appuyez sur **Open** pour démarrer l'application mise à jour.
 
     ![Démarrage de l'application mise à jour](ac_client_autoupgrade_start_app.jpg)
-    
+
 Vous devez vous connecter à la version mise à jour de l'application pour l'exécuter.
 
 ![Connexion à la nouvelle version de l'application client](ac_client_autoupgrade_login_new_version.jpg)

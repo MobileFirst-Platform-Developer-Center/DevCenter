@@ -7,8 +7,7 @@ weight: 3
 <br/>
 Überprüfen Sie gründlich, wie sich Features und API-Elemente, die entfernt wurden,
 auf Ihre
-IBM MobileFirst-Platform-Foundation-Umgebung auswirken.
-#### Fahren Sie mit folgenden Abschnitten fort:
+{{ site.data.keys.product_full }}-Umgebung auswirken. #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [In Version 8.0 weggefallene und nicht mehr enthaltene Features](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [Änderungen an der serverseitigen API](#server-side-api-changes)
@@ -29,39 +28,43 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
         <td>Status und Ersetzungspfad</td>
     </tr>
     <tr>
-        <td><p>MobileFirst Studio wird durch das MobileFirst-Studio-Plug-in für Eclipse ersetzt. </p></td>
-        <td><p>Ersetzt durch das MobileFirst-Studio-Plug-in für Eclipse, das mit Eclipse-Standard- und -Community-Plug-ins abgestimmt ist. Sie können Hybridanwendungen direkt über die Apache-Cordova-CLI oder in einer Cordova-fähigen IDE wie Visual Studio Code, Eclipse, IntelliJ und anderen entwickeln. Weitere Informationen zur Verwendung von Eclipse als Cordova-fähige IDE finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">IBM MobileFirst-Studio-Plug-in für die Verwaltung von Cordova-Projekten in Eclipse</a>. </p>
+        <td><p>MobileFirst Studio wird durch das MobileFirst-Studio-Plug-in für Eclipse ersetzt.</p></td>
+        <td><p>Ersetzt durch das MobileFirst-Studio-Plug-in für Eclipse, das mit Eclipse-Standard- und -Community-Plug-ins abgestimmt ist. Sie können Hybridanwendungen direkt über die Apache-Cordova-CLI oder in einer Cordova-fähigen IDE wie Visual Studio Code, Eclipse, IntelliJ und anderen entwickeln. Weitere Informationen zur Verwendung von Eclipse als Cordova-fähige IDE finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">IBM MobileFirst-Studio-Plug-in für die Verwaltung von Cordova-Projekten in Eclipse</a>.</p>
 
-        <p>Adapter können Sie mit Apache Maven oder einer Maven-fähigen IDE wie Eclipse, IntelliJ und anderen entwickeln. Weitere Informationen zur Entwicklung von Adaptern finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">Adapter entwickeln</a>. Weitere Informationen zur Verwendung von Eclipse als Maven-fähige IDE enthält das Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Adapter in Eclipse entwickeln</a>. </p>
+        <p>Adapter können Sie mit Apache Maven oder einer Maven-fähigen IDE wie Eclipse, IntelliJ und anderen entwickeln. Weitere Informationen zur Entwicklung von Adaptern finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">Adapter entwickeln</a>. Weitere Informationen zur Verwendung von Eclipse als Maven-fähige IDE enthält das Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Adapter in Eclipse entwickeln</a>.</p>
 
-        <p>Installieren Sie das {{ site.data.keys.mf_dev_kit_full }}, um Adapter und Anwendungen mit {{ site.data.keys.mf_server }} zu testen. Sie können auch auf die {{ site.data.keys.product_adj }}-Entwicklungstools und -SDKs zugreifen, wenn Sie sie nicht aus Internet-Repositorys wie NPM, Maven, Cocoapod oder NuGet herunterladen möchten. Weitere Informationen zum {{ site.data.keys.mf_dev_kit }} finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>. </p></td>
+        <p>Installieren Sie das {{ site.data.keys.mf_dev_kit_full }}, um Adapter und Anwendungen mit {{ site.data.keys.mf_server }} zu testen. Sie können auch auf die {{ site.data.keys.product_adj }}-Entwicklungstools und -SDKs zugreifen, wenn Sie sie nicht aus Internet-Repositorys wie NPM, Maven, Cocoapod oder NuGet herunterladen möchten. Weitere Informationen zum {{ site.data.keys.mf_dev_kit }} finden Sie unter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>.</p>
+        </td>
     </tr>
     <tr>
-        <td><p>Oberflächen, Shells, die Seite mit den Einstellungen, die Verkleinerung auf Symbolgröße und JavaScript-UI-Elemente für Hybridanwendungen sind weggefallen. </p></td>
-        <td><p>Weggefallen. Hybridanwendungen werden direkt mit Apache Cordova entwickelt. Weitere Informationen zum Ersetzen von Oberflächen und Shells sowie zur Ersetzung der Seite mit den Einstellungen und zur Verkleinerung auf Symbolgröße finden Sie unter "Gelöschte Komponenten" und "In Version 8.0 und Version 7.1 entwickelte Cordova-Apps im Vergleich". </p></td>
+        <td><p>Oberflächen, Shells, die Seite mit den Einstellungen, die Verkleinerung auf Symbolgröße und JavaScript-UI-Elemente für Hybridanwendungen sind weggefallen.</p></td>
+        <td><p>Weggefallen. Hybridanwendungen werden direkt mit Apache Cordova entwickelt. Weitere Informationen zum Ersetzen von Oberflächen und Shells sowie zur Ersetzung der Seite mit den Einstellungen und zur Verkleinerung auf Symbolgröße finden Sie unter "Gelöschte Komponenten" und "In Version 8.0 und Version 7.1 entwickelte Cordova-Apps im Vergleich".</p>
+        </td>
     </tr>
     <tr>
-        <td><p>Sencha Touch kann für Hybridanwendungen nicht mehr in {{ site.data.keys.product_adj }}-Projekte importiert werden. </p></td>
-        <td><p>Weggefallen. {{ site.data.keys.product_adj }}-Hybridanwendungen werden direkt mit Apache Cordova entwickelt und die {{ site.data.keys.product_adj }}-Features werden als Cordova-Plug-ins bereitgestellt. Wie Sencha Touch und Cordova kombiniert verwendet werden können, erfahren Sie in der Sencha-Touch-Dokumentation. </p></td>
+        <td><p>Sencha Touch kann für Hybridanwendungen nicht mehr in {{ site.data.keys.product_adj }}-Projekte importiert werden.</p></td>
+        <td><p>Weggefallen. {{ site.data.keys.product_adj }}-Hybridanwendungen werden direkt mit Apache Cordova entwickelt und die {{ site.data.keys.product_adj }}-Features werden als Cordova-Plug-ins bereitgestellt. Wie Sencha Touch und Cordova kombiniert verwendet werden können, erfahren Sie in der Sencha-Touch-Dokumentation.</p>
+        </td>
     </tr>
     <tr>
-        <td><p>Der verschlüsselte Cache ist weggefallen. </p></td>
-        <td><p>Weggefallen. Verwenden Sie JSONStore, um verschlüsselte Daten lokal zu speichern. Weitere Informationen zu JSONStore enthält das Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore">JSONStore</a>.</p></td>
+        <td><p>Der verschlüsselte Cache ist weggefallen.</p></td>
+        <td><p>Weggefallen. Verwenden Sie JSONStore, um verschlüsselte Daten lokal zu speichern. Weitere Informationen zu JSONStore enthält das Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore">JSONStore</a>.</p>
+        </td>
     </tr>
     <tr>        
-        <td><p>Die Auslösung der direkten Aktualisierung bei Bedarf ist in Version 8.0 nicht möglich. Die Clientanwendung überprüft, ob eine direkte Aktualisierung verfügbar ist, wenn sie das OAuth-Token für eine Sitzung abruft. Sie können eine Clientanwendung in Version 8.0 nicht so programmieren, dass sie zu einem anderen Zeitpunkt überprüft, ob eine direkte Aktualisierung verfügbar ist. </p></td>
+        <td><p>Die Auslösung der direkten Aktualisierung bei Bedarf ist in Version 8.0 nicht möglich. Die Clientanwendung überprüft, ob eine direkte Aktualisierung verfügbar ist, wenn sie das OAuth-Token für eine Sitzung abruft. Sie können eine Clientanwendung in Version 8.0 nicht so programmieren, dass sie zu einem anderen Zeitpunkt überprüft, ob eine direkte Aktualisierung verfügbar ist.</p></td>
         <td><p>Nicht in Version 8.0 enthalten</p></td>
     </tr>
     <tr>
-        <td><p>Adapter mit konfigurierter Sitzungsabhängigkeit: In Version 7.1.0 konnten Sie {{ site.data.keys.mf_server }} für den sitzungsunabhängigen Modus (Standardeinstellung) oder den sitzungsabhängigen Modus konfigurieren. Ab Version 8.0 wird der sitzungsabhängige Modus nicht mehr unterstützt. Der Server ist grundsätzlich unabhängig von HTTP-Sitzungen. Eine spezielle Konfiguration dafür ist nicht erforderlich. </p></td>
-        <td><p>Weggefallen. </p></td>
+        <td><p>Adapter mit konfigurierter Sitzungsabhängigkeit: In Version 7.1.0 konnten Sie {{ site.data.keys.mf_server }} für den sitzungsunabhängigen Modus (Standardeinstellung) oder den sitzungsabhängigen Modus konfigurieren. Ab Version 8.0 wird der sitzungsabhängige Modus nicht mehr unterstützt. Der Server ist grundsätzlich unabhängig von HTTP-Sitzungen. Eine spezielle Konfiguration dafür ist nicht erforderlich.</p></td>
+        <td><p>Weggefallen.</p></td>
     </tr>
     <tr>
         <td><p>Der Attribut-Store in IBM WebSphere eXtreme Scale wird in Version 8.0 nicht unterstützt.</p></td>
         <td><p>Nicht in Version 8.0 enthalten</p></td>
     </tr>
     <tr>
-        <td><p>Die Serviceerkennung und Adaptergenerierung für IBM BPM-Prozessanwendungen (IBM Business Process Manager), Microsoft Azure Marketplace DataMarket, REST-konforme OData-APIs, REST-konforme Ressourcen, über SAP NetWeaver Gateway zugänglich gemachte Services und Web-Services ist in Version 8.0 nicht verfügbar. </p></td>
+        <td><p>Die Serviceerkennung und Adaptergenerierung für IBM BPM-Prozessanwendungen (IBM Business Process Manager), Microsoft Azure Marketplace DataMarket, REST-konforme OData-APIs, REST-konforme Ressourcen, über SAP NetWeaver Gateway zugänglich gemachte Services und Web-Services ist in Version 8.0 nicht verfügbar.</p></td>
         <td><p>Nicht in Version 8.0 enthalten</p></td>
     </tr>
     <tr>
@@ -86,59 +89,66 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
     </tr>
     <tr>
         <td>Push-Benachrichtigungsunterstüzung für USSD ist in Version 8.0 nicht verfügbar.</td>
-        <td>Weggefallen. </td>
+        <td>Weggefallen.</td>
     </tr>
     <tr>
         <td>Ereignisbasierte Push-Benachrichtigungen werden in Version 8.0 nicht unterstützt.</td>
         <td>Weggefallen. Verwenden Sie den Push-Benachrichtigungsservice. Weitere Informationen zur Umstellung auf den Push-Benachrichtigungsservice finden Sie unter "Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen".</td>
     </tr>
     <tr>
-      <td>Sicherheit: Das Anti-XSRF-Realm <code>wl_antiXSRFRealm</code> ist in Version 8.0 nicht erforderlich.</td>
-      <td>In Version 7.1.0 wurde der Authentifizierungskontext in der HTTP-Sitzung gespeichert und über ein vom Browser in standortübergreifenden Anforderungen gesendetes Sitzungscookie identifiziert. In dieser Version wird das Anti-XSRF-Realm verwendet, um die Cookieübertragung gegen XSRF-Attacken durch das Senden eines zusätzlichen Headers vom Client an den Server zu schützen.
-<br />
+      <td>
+        Sicherheit: Das Anti-XSRF-Realm <code>wl_antiXSRFRealm</code> ist in Version 8.0 nicht erforderlich.
+      </td>
+      <td>
+        In Version 7.1.0 wurde der Authentifizierungskontext in der HTTP-Sitzung gespeichert und über ein vom Browser in standortübergreifenden Anforderungen gesendetes Sitzungscookie identifiziert. In dieser Version wird das Anti-XSRF-Realm verwendet, um die Cookieübertragung gegen XSRF-Attacken durch das Senden eines zusätzlichen Headers vom Client an den Server zu schützen.
+        <br />
         Der Sicherheitskontext wird in Version 8.0.0 nicht mehr mit einer HTTP-Sitzung verknüpft und nicht über ein Sitzungscookie identifiziert.
         Die Autorisierung erfolgt stattdessen mithilfe eines OAuth-2.0-Zugriffstokens, das an den Authorization-Header übergeben wird.
-        Da der Authorization-Header in standortübergreifenden Anforderungen nicht vom Browser gesendet wird, muss er nicht vor XSRF-Attacken geschützt werden.</td>
+        Da der Authorization-Header in standortübergreifenden Anforderungen nicht vom Browser gesendet wird, muss er nicht vor XSRF-Attacken geschützt werden.
+      </td>
     </tr>
     <tr>
-        <td>Sicherheit - Authentifizierung mit Benutzerzertifikat: In Version 8.0 gibt es keine vordefinierte Sicherheitsüberprüfung zur Authentifizierung von Benutzern mit clientseitigen X.509-Zertifikaten. </td>
+        <td>Sicherheit - Authentifizierung mit Benutzerzertifikat: In Version 8.0 gibt es keine vordefinierte Sicherheitsüberprüfung zur Authentifizierung von Benutzern mit clientseitigen X.509-Zertifikaten.</td>
         <td>Nicht in Version 8.0 enthalten</td>
     </tr>
     <tr>
-        <td>Sicherheit - Integration von IBM Trusteer: In Version 8.0 gibt es keine vordefinierte Sicherheitsüberprüfung oder Abfrage, um die Risikofaktoren von IBM Trusteer zu testen. </td>
+        <td>Sicherheit - Integration von IBM Trusteer: In Version 8.0 gibt es keine vordefinierte Sicherheitsüberprüfung oder Abfrage, um die Risikofaktoren von IBM Trusteer zu testen.</td>
         <td>Nicht in Version 8.0 enthalten. Verwenden Sie das IBM Trusteer Mobile SDK.</td>
     </tr>
     <tr>
         <td>Sicherheit - Bereitstellung und automatische Bereitstellung für Geräte</td>
-        <td><p>Weggefallen. </p><p>Hinweis: Die Bereitstellung für Geräte erfolgt im Rahmen des normalen Autorisierungsablaufs. Während des Registrierungsprozesses, der Teil des Sicherheitsablaufs ist, werden automatisch Gerätedaten erfasst. Weitere Informationen zum Sicherheitsablauf finden Sie unter "End-to-End-Autorisierungsablauf".</p></td>
+        <td><p>Weggefallen.</p><p>Hinweis: Die Bereitstellung für Geräte erfolgt im Rahmen des normalen Autorisierungsablaufs. Während des Registrierungsprozesses, der Teil des Sicherheitsablaufs ist, werden automatisch Gerätedaten erfasst. Weitere Informationen zum Sicherheitsablauf finden Sie unter "End-to-End-Autorisierungsablauf".</p>
+        </td>
     </tr>
     <tr>
-        <td>Sicherheit - Konfigurationsdatei für die Verschleierung von Android-Code mit ProGuard: In Version 8.0 gibt es keine vordefinierte Konfigurationsdatei proguard-project.txt für die ProGuard-Verschleierung einer MobileFirst-Android-Anwendung. </td>
+        <td>Sicherheit - Konfigurationsdatei für die Verschleierung von Android-Code mit ProGuard: In Version 8.0 gibt es keine vordefinierte Konfigurationsdatei proguard-project.txt für die ProGuard-Verschleierung einer MobileFirst-Android-Anwendung.</td>
         <td>Nicht in Version 8.0 enthalten</td>
     </tr>
     <tr>
-        <td>Sicherheit: Die adapterbasierte Authentifizierung wurde ersetzt. Die Authentifizierung erfolgt mit dem OAuth-Protokoll und wird mit Sicherheitsüberprüfungen implementiert. </td>
-        <td>Durch eine auf Sicherheitsüberprüfungen basierende Implementierung ersetzt. </td>
+        <td>Sicherheit: Die adapterbasierte Authentifizierung wurde ersetzt. Die Authentifizierung erfolgt mit dem OAuth-Protokoll und wird mit Sicherheitsüberprüfungen implementiert.</td>
+        <td>Durch eine auf Sicherheitsüberprüfungen basierende Implementierung ersetzt.</td>
     </tr>
     <tr>
-        <td><p>Sicherheit - LDAP-Anmeldung: In Version 8.0 gibt es keine vordefinierte Sicherheitsüberprüfung für die Authentifizierung von Benutzern gegenüber einem LDAP-Server. </p>
-        <p>Verwenden Sie für WebSphere Application Server oder WebSphere Application Server Liberty stattdessen den Anwendungsserver oder ein Gateway, um für LTPA einen Identitätsprovider wie LDAP zuzuordnen, und generieren Sie für den Benutzer ein OAuth-Token mit einer LTPA-Sicherheitsüberprüfung. </p></td>
+        <td><p>Sicherheit - LDAP-Anmeldung: In Version 8.0 gibt es keine vordefinierte Sicherheitsüberprüfung für die Authentifizierung von Benutzern gegenüber einem LDAP-Server.</p>
+        <p>Verwenden Sie für WebSphere Application Server oder WebSphere Application Server Liberty stattdessen den Anwendungsserver oder ein Gateway, um für LTPA einen Identitätsprovider wie LDAP zuzuordnen, und generieren Sie für den Benutzer ein OAuth-Token mit einer LTPA-Sicherheitsüberprüfung.</p></td>
         <td>Nicht in Version 8.0 enthalten. Durch eine LTPA-Sicherheitsüberprüfung für WebSphere Application Server oder  WebSphere Application Server Liberty ersetzt.</td>
     </tr>
     <tr>
-        <td>Dieses Unterelement gibt die Authentifizierungskonfiguration des HTTP-Adapters an. Der vordefinierte HTTP-Adapter bietet keine Unterstützung das Herstellen einer Verbindung zu einem fernen Server als Benutzer. </td>
-        <td><p>Nicht in Version 8.0 enthalten</p><p>Bearbeiten Sie den Quellcode des HTTP-Adapters. Fügen Sie den Authentifizierungscode hinzu. Verwenden Sie <code>MFP.Server.invokeHttp</code>, um Identifizierungstoken zum Header der HTTP-Anforderung hinzuzufügen. </p></td>
+        <td>
+        Dieses Unterelement gibt die Authentifizierungskonfiguration des HTTP-Adapters an. Der vordefinierte HTTP-Adapter bietet keine Unterstützung das Herstellen einer Verbindung zu einem fernen Server als Benutzer.</td>
+        <td><p>Nicht in Version 8.0 enthalten</p><p>Bearbeiten Sie den Quellcode des HTTP-Adapters. Fügen Sie den Authentifizierungscode hinzu. Verwenden Sie <code>MFP.Server.invokeHttp</code>, um Identifizierungstoken zum Header der HTTP-Anforderung hinzuzufügen.</p></td>
     </tr>
     <tr>
-        <td>In Version 8.0 gibt es keine Sicherheitsanalyse und keine Überwachung der Ereignisse des MobileFirst-Sicherheitsframeworks in der MobileFirst Analytics Console. </td>
+        <td>
+        In Version 8.0 gibt es keine Sicherheitsanalyse und keine Überwachung der Ereignisse des MobileFirst-Sicherheitsframeworks in der MobileFirst Analytics Console.</td>
         <td>Nicht in Version 8.0 enthalten</td>
     </tr>
     <tr>
-        <td>Das auf Ereignisquellen basierende Modell für Push-Benachrichtigungen ist weggefallen und wird durch das Push-Servicemodell auf Tagbasis ersetzt. </td>
-        <td>Weggefallen und durch tagbasiertes Push-Servicemodell ersetzt. </td>
+        <td>Das auf Ereignisquellen basierende Modell für Push-Benachrichtigungen ist weggefallen und wird durch das Push-Servicemodell auf Tagbasis ersetzt.</td>
+        <td>Weggefallen und durch tagbasiertes Push-Servicemodell ersetzt.</td>
     </tr>
     <tr>
-        <td>In Version 8.0 gibt es keine USSD-Unterstützung (Unstructured Supplementary Service Data). </td>
+        <td>In Version 8.0 gibt es keine USSD-Unterstützung (Unstructured Supplementary Service Data).</td>
         <td>Nicht in Version 8.0 enthalten</td>
     </tr>
     <tr>
@@ -146,31 +156,30 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
         <td>Nicht in Version 8.0 enthalten</td>
     </tr>
     <tr>
-        <td>Geoortung: In Version 8.0 der {{ site.data.keys.product }} gibt es keine Geoortungsunterstützung. Die REST-API für Beacons und Mediatoren ist weggefallen. Die clientseitige API und die serverseitige API (WL.Geo und WL.Device) sind weggefallen. </td>
-        <td>Weggefallen. Verwenden Sie für die Geoortung die native Geräte-API oder Cordova-Plug-ins anderer Anbieter. </td>
+        <td>Geoortung: In Version 8.0 der {{ site.data.keys.product }} gibt es keine Geoortungsunterstützung. Die REST-API für Beacons und Mediatoren ist weggefallen. Die clientseitige API und die serverseitige API (WL.Geo und WL.Device) sind weggefallen.</td>
+        <td>Weggefallen. Verwenden Sie für die Geoortung die native Geräte-API oder Cordova-Plug-ins anderer Anbieter.</td>
     </tr>
     <tr>
-        <td>Der {{ site.data.keys.product_adj }} Data Proxy ist weggefallen. Die Cloudant-APIs IMFData und CloudantToolkit sind ebenfalls weggefallen. </td>
+        <td>Der {{ site.data.keys.product_adj }} Data Proxy ist weggefallen. Die Cloudant-APIs IMFData und CloudantToolkit sind ebenfalls weggefallen.</td>
         <td>Weggefallen. Weitere Informationen zur Ersetzung der APIs IMFData und CloudantToolkit in Ihren Apps finden Sie unter "Apps umstellen, die mobile Daten mit IMFData oder dem Cloudant-SDK in Cloudant speichern".</td>
     </tr>
     <tr>
-        <td>Das IBM Tealeaf SDK ist nicht mehr im Produktpaket der {{ site.data.keys.product }} enthalten. </td>
-        <td>Weggefallen. Verwenden Sie das IBM Tealeaf SDK. Weitere Informationen finden Sie in der Dokumentation zu IBM Teleaf Customer Experience unter <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> and <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a>. </td>
+        <td>Das IBM Tealeaf SDK ist nicht mehr im Produktpaket der {{ site.data.keys.product }} enthalten.</td>
+        <td>Weggefallen. Verwenden Sie das IBM Tealeaf SDK. Weitere Informationen finden Sie in der Dokumentation zu IBM Teleaf Customer Experience unter <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> and <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a>.</td>
     </tr>
     <tr>
-        <td>Die {{ site.data.keys.mf_test_workbench_full }} ist nicht im Produktpaket der {{ site.data.keys.product }} enthalten. </td>
+        <td>Die {{ site.data.keys.mf_test_workbench_full }} ist nicht im Produktpaket der {{ site.data.keys.product }} enthalten.</td>
         <td>Weggefallen</td>
     </tr>
     <tr>
-        <td>BlackBerry, AIR und Windows Silverlight werden von Version 8.0 nicht unterstützt. Für die genannten Plattformen wird kein SDK bereitgestellt. </td>
+        <td>BlackBerry, AIR und Windows Silverlight werden von Version 8.0 nicht unterstützt. Für die genannten Plattformen wird kein SDK bereitgestellt.</td>
         <td>Weggefallen</td>
     </tr>
 </table>
 
 ## Änderungen an der serverseitigen API
-{: #server-side-api-changes}
-Wenn Sie die Serverseite Ihrer {{ site.data.keys.product_adj }}-Anwendung umstellen,
-müssen Sie die Änderungen an den APIs beachten.   
+{: #server-side-api-changes }
+Wenn Sie die Serverseite Ihrer {{ site.data.keys.product_adj }}-Anwendung umstellen, müssen Sie die Änderungen an den APIs beachten.  
 In den folgenden Tabellen sind die in
 Version 8.0 weggefallenen und nicht weiter unterstützten
 serverseitigen API-Elemente
@@ -259,12 +268,12 @@ API-Änderungen relevant.
 In den folgenden Tabellen sind die in
 Version 8.0 weggefallenen und nicht weiter unterstützten
 clientseitigen API-Elemente
-mit Vorschlägen für den Migrationspfad aufgelistet.
+mit Vorschlägen für den Migrationspfad aufgelistet. 
 
 ### JavaScript-APIs
 {: #javascript-apis }
 Die folgenden JavaScript-APIs mit Einfluss auf die Benutzerschnittstelle werden in Version 8.0 nicht mehr unterstützt. Sie können durch verfügbare Cordova-Plug-ins anderer
-Anbieter ersetzt werden. Sie können aber auch angepasste Cordova-Plug-ins erstellen.
+Anbieter ersetzt werden. Sie können aber auch angepasste Cordova-Plug-ins erstellen. 
 
 | API-Element           | Migrationspfad                           |
 |-----------------------|------------------------------------------|
@@ -382,7 +391,7 @@ Die folgenden APIs werden in Version 8.0 nicht weiter unterstützt.
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | Kein Ersatz. Der MFP-Client lässt kreisförmige Umleitungen zu.  |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Wegen nicht weiter unterstützter Apache-HTTP-Clientabhängigkeiten entfernt. Erstellen Sie Ihre eigene Anforderung, um volle Kontrolle über Anforderung und Antwort zu haben.  |
 
-#### Das Paket `com.worklight.androidgap.api` stellt die Android-Plattformfunktionen für Cordova-Apps bereit. In {{ site.data.keys.product }} wurden einige Änderungen vorgenommen, um die Cordova-Integration zu ermöglichen.
+#### Das Paket `com.worklight.androidgap.api` stellt die Android-Plattformfunktionen für Cordova-Apps bereit. In {{ site.data.keys.product }} wurden einige Änderungen vorgenommen, um die Cordova-Integration zu ermöglichen. 
 {: #comworklightandroidgapapi }
 
 | API-Element           | Migrationspfad                           |

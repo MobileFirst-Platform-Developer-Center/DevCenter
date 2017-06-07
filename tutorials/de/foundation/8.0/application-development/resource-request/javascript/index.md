@@ -1,35 +1,37 @@
 ---
 layout: tutorial
-title: Resource request from JavaScript (Cordova, Web) applications
+title: Ressourcenanforderung von JavaScript-Anwendungen (Cordova, Web)
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
-  - name: Download Web project
+  - name: Webprojekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
-  - name: Download Cordova project
+  - name: Cordova-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Mit der {{ site.data.keys.product_adj }} erstellte Anwendungen können mit der REST-API `WLResourceRequest` auf Ressourcen zugreifen.   
+Die REST-API funktioniert mit allen Adaptern und externen Ressourcen. 
 
-**Prerequisites**:
+**Voraussetzungen:**
 
-- If you are implementing a Cordova application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova) to your Cordova application.
-- If you are implementing a Web application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/web) to your Web application.
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- Wenn Sie eine Cordova-Anwendung implementieren, müssen Sie das
+[SDK der {{ site.data.keys.product }} zu Ihrer Cordova-Anwendung hinzugefügt](../../../application-development/sdk/cordova) haben. 
+- Wenn Sie eine Webanwendung implementieren, müssen Sie das
+[SDK der {{ site.data.keys.product }} zu Ihrer Webanwendung hinzugefügt](../../../application-development/sdk/web) haben. 
+- Informieren Sie sich über das [Erstellen von Adaptern](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+Die Klasse `WLResourceRequest` handhabt an Adapter oder externe Ressourcen gerichtete Ressourcenanforderungen. 
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` and `WLResourceRequest.DELETE`.
+Erstellen Sie ein `WLResourceRequest`-Objekt und geben Sie den Pfad zu der Ressource und die HTTP-Methode an.   
+Verfügbare Methoden sind `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` und `WLResourceRequest.DELETE`.
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -38,17 +40,18 @@ var resourceRequest = new WLResourceRequest(
 );
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
+* Verwenden Sie für **JavaScript-Adapter** `/adapters/{AdapterName}/{procedureName}`. 
+* Verwenden Sie für **Java-Adapter** `/adapters/{AdapterName}/{path}`. Die Angabe für `path` hängt davon ab, wie Sie Ihre
+`@Path`-Annotationen im Java-Code definiert haben. Eingeschlossen sind auch alle verwendeten `@PathParam`-Annotationen. 
+* Wenn Sie auf Ressourcen außerhalb des Projekts zugreifen möchten, verwenden Sie die vollständige URL nach Maßgabe des externen Servers. 
+* **timeout**: Anforderungszeitlimit in Millisekunden (optional)
 
-## Sending the request
+## Anforderung senden
 {: #sending-the-request }
-Request the resource by using the `send()` method.  
-The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
+Fordern Sie die Ressource mit der Methode `send()` an.   
+Die Methode `send()` kann optional mit einem Parameter verwendet werden, um einen Hauptteil für die HTTP-Anforderung festzulegen. Dabei kann es sich um ein JSON-Objekt oder um eine einfache Zeichenfolge handeln. 
 
-Using JavaScript **promises**, you can define `onSuccess` and `onFailure` callback functions.
+Mit JavaScript-Zusicherungen (**Promises**) können Sie die Callback-Funktionen `onSuccess` und `onFailure` definieren. 
 
 ```js
 resourceRequest.send().then(
@@ -59,28 +62,28 @@ resourceRequest.send().then(
 
 ### setQueryParameter
 {: #setqueryparameter }
-By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
+Mit der Methode `setQueryParameter` können Sie Abfrageparameter (URL-Parameter) in die REST-Anforderung aufnehmen. 
 
 ```js
 resourceRequest.setQueryParameter("param1", "value1");
 resourceRequest.setQueryParameter("param2", "value2");
 ```
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters-setquery}
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
-> **Note:** The `params` value should be a *string representation* of an array.
+> **Hinweis:** Der Wert von `params` muss eine *Zeichenfolgedarstellung* eines Arrays sein. 
 
 ```js
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.GET`.
+Dieses Array sollte mit `WLResourceRequest.GET` verwendet werden.
 
 ### setHeader
 {: #setheader }
-By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
+Mit der Methode `setHeader` können Sie einen neuen HTTP-Header festlegen oder einen vorhandenen Header desselben Namens in der HTTP-Anforderung ersetzen. 
 
 ```js
 resourceRequest.setHeader("Header-Name","value");
@@ -88,32 +91,37 @@ resourceRequest.setHeader("Header-Name","value");
 
 ### sendFormParameters(json)
 {: #sendformparamtersjson }
-To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body:
+Wenn Sie URL-Formularparameter senden möchten, verwenden Sie stattdessen die Methode `sendFormParameters(json)`. Diese Methode konvertiert JSON in eine URL-codierte Zeichenfolge,
+legt `application/x-www-form-urlencoded` als Inhaltstyp (`content-type`) fest und definiert dies als HTTP-Hauptteil: 
 
 ```js
 var formParams = {"param1": "value1", "param2": "value2"};
 resourceRequest.sendFormParameters(formParams);
 ```
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters-sendform }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 ```js
 var formParams = {"params":"['value1', 'value2']"};
 ```
 
-This should be used with `WLResourceRequest.POST`.
+Dieses Array sollte mit `WLResourceRequest.POST` verwendet werden.
 
 
-> For more information about `WLResourceRequest`, see the API reference in the user documentation.
+> Weitere Hinweise zu `WLResourceRequest` finden Sie in der Benutzerdokumentation im Abschnitt mit den API-Referenzinformationen. 
 
-## The response
+## Antwort
 {: #the-response }
-Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The `response` object contains the response data and you can use its properties to retrieve the required information. Commonly used properties are `responseText`, `responseJSON` (JSON object, if the response is in JSON) and `status` (the HTTP status of the response).
+Die Callback-Funktionen `onSuccess` und `onFailure` empfangen ein Antwortobjekt (`response`). Dieses Objekt `response` enthält die Antwortdaten. Über die Eigenschaften dieses Objekts können Sie die erforderlichen Informationen abrufen. Gängige Eigenschaften sind
+`responseText`, `responseJSON` (JSON Object) (wenn die Antwort im JSON-Format vorliegt)
+und `status` (HTTP-Status der Antwort). 
 
-In case of request failure, the `response` object also cotains a `errorMsg` property.  
-Depending if using a Java or JavaScript adapter, the response may contain other properties such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
+Falls eine Anforderung fehlschlägt, enthält das Objekt `response` auch eine Eigenschaft `errorMsg`.   
+Die Antwort kann je nachdem, ob ein Java- oder JavaScript-Adapter verwendet wird, weitere Eigenschaften
+enthalten, z. B. `responseHeaders`, `responseTime`, `statusCode`, `statusReason`
+und `totalTime`.
 
 ```json
 {
@@ -137,10 +145,10 @@ Depending if using a Java or JavaScript adapter, the response may contain other 
 }
 ```
 
-### Handling the response
+### Antwort bearbeiten
 {: #handling-the-response }
-The response object is received by the `onSuccess` and `onFailure` callback functions.  
-For example:
+Das Antwortobjekt wird von den Callback-Funktionen `onSuccess` und `onFailure` empfangen.   
+Beispiel: 
 
 ```js
 onSuccess: function(response) {
@@ -152,20 +160,20 @@ onFailure: function(response) {
 }
 ```
 
-## For more information
+## Weitere Informationen
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html).
+> Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](../../../api/client-side-api/javascript/client/).
 
-<img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
-## Sample applications
+<img alt="Beispielanwendung" src="resource-request-success-cordova.png" style="float:right"/>
+## Beispielanwendungen
 {: #sample-applications }
-The **ResourceRequestWeb** and **ResourceRequestCordova** projects demonstrate a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+Die Projekte **ResourceRequestWeb** und **ResourceRequestCordova** demonstrieren eine Ressourcenanforderung, die mithilfe eines Java-Adapters abgesetzt wird.   
+Das Adapter-Maven-Projekt enthält den beim Aufrufen der Ressourcenanforderung verwendeten Java-Adapter. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) the Web project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80), um das Cordova-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80), um das Webprojekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80), um das Adapter-Maven-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

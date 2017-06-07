@@ -22,4 +22,4 @@ Xamarin Studio は、[Xamarin Studio のダウンロード](https://www.xamarin.
 
 ## 次のステップ
 {: #whats-next }
-{{site.data.keys.product_full }} および Xamarin 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/xamarin/)のカテゴリーで {{site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{site.data.keys.product }} 開発の個々の側面について理解を深めてください。
+{{ site.data.keys.product_full }} および Xamarin 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/xamarin/)のカテゴリーで {{ site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{ site.data.keys.product }} 開発の個々の側面について理解を深めてください。

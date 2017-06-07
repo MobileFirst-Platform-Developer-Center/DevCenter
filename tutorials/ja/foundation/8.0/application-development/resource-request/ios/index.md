@@ -240,7 +240,7 @@ request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void i
 
 ## 詳細情報
 {: #for-more-information }
-> WLResourceRequest について詳しくは、[API リファレンスを参照してください](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html)。
+> WLResourceRequest について詳しくは、[API リファレンスを参照してください](../../../api/client-side-api/objc/client/)。
 
 <img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## サンプル・アプリケーション

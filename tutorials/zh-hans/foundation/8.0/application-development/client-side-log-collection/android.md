@@ -28,6 +28,7 @@ Logger.setCapture(false);
 根据应用程序逻辑，将日志发送到 {{ site.data.keys.product_adj }}。也可启用自动日志发送以自动发送日志。如果在达到最大大小后才发送日志，那么将清除日志文件以容纳更新的日志。
 
 > **注：**收集日志数据时，采用以下模式。按时间间隔发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中近实时地查看日志数据。
+
 ```java
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {

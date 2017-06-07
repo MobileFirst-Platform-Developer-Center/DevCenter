@@ -138,7 +138,6 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 ### Tâche Ant pour le téléchargement ou la suppression d'une application
 {: #ant-task-for-uploading-or-deleting-an-application}
-
 Vous pouvez utiliser les outils de téléchargement et de suppression comme tâche Ant et utiliser la tâche Ant dans votre propre script Ant.  
 Apache Ant est nécessaire pour exécuter ces tâches. La version minimale prise en charge d'Apache Ant est répertoriée dans la [Configuration requise](../../product-overview/requirements).
 

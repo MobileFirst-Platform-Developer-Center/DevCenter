@@ -71,7 +71,8 @@ weight: 3
 
 * [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
-### 其他服务器中的 {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时
+### 其他服务器中的 {{ site.data.keys.mf_server }}
+管理服务到 {{ site.data.keys.product }} 运行时
 {: #mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers }
 如 [{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)中所述，管理服务与集群的所有运行时组件间需进行通信。运行管理操作时，可通知集群的所有运行时组件此修改情况。通过 JMX 进行通信。
 
@@ -95,12 +96,10 @@ weight: 3
 
 * **mfp.analytics.username** - 用于访问 {{ site.data.keys.mf_analytics }} 服务的用户名。分析服务受安全角色保护。
 * **mfp.analytics.password** - 用于访问分析服务的密码。
-* **mfp.analytics.console.url** - 传递到 {{ site.data.keys.mf_console }} 以显示指向 {{ site.data.keys.mf_analytics_console }} 的链接的 URL。
-示例：`http://<hostname>:<port>/analytics/console`
+* **mfp.analytics.console.url** - 传递到 {{ site.data.keys.mf_console }} 以显示指向 {{ site.data.keys.mf_analytics_console }} 的链接的 URL。示例：`http://<hostname>:<port>/analytics/console`
 
     用于定义此通信的推送服务的 JNDI 属性为：
-    * **mfp.push.analytics.endpoint** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从推送服务接收传入的分析数据。
-示例：`http://<hostname>:<port>/analytics-service/rest`
+    * **mfp.push.analytics.endpoint** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从推送服务接收传入的分析数据。示例：`http://<hostname>:<port>/analytics-service/rest`
 
     当安装 {{ site.data.keys.mf_analytics }} 作为集群时，可将数据发送至集群中的任何成员。    
 * **mfp.push.analytics.username** - 用于访问 {{ site.data.keys.mf_analytics }} 服务的用户名。分析服务受安全角色保护。
@@ -129,8 +128,7 @@ weight: 3
 为控制台应用程序指定该属性。
 ### {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 推送服务，再到授权服务器
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
-管理服务可与推送服务通信，以请求各种推送操作。
-将通过 OAuth 协议保护此通信的安全。需注册两项服务作为保密客户端。可在安装时执行初始注册。在此过程中，两项服务均需要联系授权服务器。此授权服务器可以是 {{ site.data.keys.product }} 运行时。
+管理服务可与推送服务通信，以请求各种推送操作。将通过 OAuth 协议保护此通信的安全。需注册两项服务作为保密客户端。可在安装时执行初始注册。在此过程中，两项服务均需要联系授权服务器。此授权服务器可以是 {{ site.data.keys.product }} 运行时。
 
 用于配置此通信的管理服务的 JNDI 属性为：
 
