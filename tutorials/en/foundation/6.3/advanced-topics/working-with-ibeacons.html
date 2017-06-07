@@ -26,7 +26,7 @@ downloads:
 Beacon objects also contains a field <code>customData</code> which is a JSON payload representing customer-specific data representing the beacon. For example, the store/location where the beacon is deployed.
 Beacons can be registered / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the IBM MobileFirst user documentation topics.</p>
 <p>Register the following beacons using the Beacons (PUT) REST API
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
     "major": 1,
@@ -35,7 +35,7 @@ Beacons can be registered / updated / deleted using REST APIs. For detailed info
         "branchName": "Indiranagar, Bangalore"
     }
 }{% endhighlight %}</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 {
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
     "major": 2,
@@ -95,7 +95,7 @@ Beacons can be registered / updated / deleted using REST APIs. For detailed info
 <p>
 Beacon triggers can be registered / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the IBM MobileFirst user documentation topics.</p>
 <p>Register the following beacon triggers using the Beacon Triggers (POST) REST API.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 {
     "triggerName": "entryIntoBranch",
      "triggerType": "Enter",
@@ -105,7 +105,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
      }
  }{% endhighlight %}</p>
 
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 {
     "triggerName": "dwellInsideBank",
      "triggerType": "DwellInside",
@@ -116,7 +116,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
      }
  }{% endhighlight %}</p>
 
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 {
     "triggerName": "exitFromBranch",
      "triggerType": "Exit",
@@ -128,7 +128,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <h2 id="associatingbeacons">Associating Beacons and Beacon Triggers</h2>
 <p>An association between a beacon and a beacon trigger is represented as <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform. The association can be created / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the user documentation topics</p>
 <p>Creating the association between beacons and triggers for an application can be achieved using the Associate beacons and triggers (PUT) REST API:
-{% highlight js linenos %}
+{% highlight js  %}
 {
     "beacons": [
         {
@@ -187,7 +187,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/iOS8LocationServices.png"/></p>
 <p>Copy the "iOSNativeiBeaconsLibrary" folder in the iOSNativeiBeacons project into your native iOS application. This contains the library that provides the simplified set of APIs for ranging/monitoring of iBeacons.</p>
 <p>Requesting permission to use location services and local/push notifications can be achieved by:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	...
@@ -197,7 +197,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <h2 id="simplifiedapis">Simplified APIs for ranging/monitoring of iBeacons</h2>
 <h3>Loading beacons and triggers from server</h3>
 <p>Loading beacons information, triggers and their associations from server and storing it in the application JSONStore can be achieved by:
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"iBeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {
 	if (success) {
 		[self showBeaconsAndTriggers];
@@ -208,17 +208,17 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <p><br clear="all" /></p>
 <h3>Triggering actions</h3>
 <p>Monitoring/ranging of iBeacons and firing of trigger actions can be achieved using:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 	[[WLBeaconsLocationManager sharedInstance] startMonitoring];{% endhighlight %}</p>
 <p>If the user wishes to opt out of iBeacon monitoring, it can achieved using:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 	[[WLBeaconsLocationManager sharedInstance] stopMonitoring];
 	// Optionally reset monioring/ranging state
 	[[WLBeaconsLocationManager sharedInstance] resetMonitoringRangingState]; {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Turn the device to an iBeacon</h3>
 <p>Turning the device into an an iBeacon can be achieved using:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 	NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";
 	int major = 1;
 	int minor = 4417;
@@ -228,7 +228,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <p>This is generally for testing /development purpose. The UUID string here should match the UUID of beacons registered on server.</p>
 <h3>Increasing application running time</h3>
 <p>Increasing the running time of the application when in background (as part of iBeacon monitoring) can be achieved using:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	...
 	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidFinishLaunchingWithOptions];
@@ -245,7 +245,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 This increases the running time of the application up to 3 minutes from the default 10 seconds.</p>
 <h3>Handling local notifications</h3>
 <p>Handling local notifications originating from the application can be achieved by:
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	...
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];

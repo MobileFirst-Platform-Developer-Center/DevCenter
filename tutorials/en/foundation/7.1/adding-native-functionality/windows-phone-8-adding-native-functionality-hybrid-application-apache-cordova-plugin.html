@@ -32,7 +32,7 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the Windows Phone 8 environment.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <feature name="sayHelloPlugin">
     <param name="wp-package" value="sayHelloPlugin" />
 </feature>
@@ -40,7 +40,7 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
@@ -53,7 +53,7 @@ function sayHello() {
 <code>sayHello</code> - Action name<br />
 <code>[name]</code> - Parameters array</p>
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
         "Response from plug-in", data,
@@ -76,7 +76,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 <li>Create a new C# class.</li>
 <li>Add the new class to your project namespace and add the required import statements.
 <p>
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,7 +95,7 @@ namespace Cordova.Extension.Commands {
 <p>Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> method.</p>
 <ol>
 <li>The JavaScript wrapper calls the <code>sayHello</code> method and passes a single parameter. It returns a string back to JavaScript.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
         public void sayHello(string options) {
             string optVal = null;
             try {
@@ -107,7 +107,7 @@ namespace Cordova.Extension.Commands {
 {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
             if (optVal == null) {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));
             }

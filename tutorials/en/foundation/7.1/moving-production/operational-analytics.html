@@ -26,7 +26,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <p>Starting with IBM MobileFirst Platform Foundation V7.0, MobileFirst Operational Analytics is delivered as an EAR file which contains two WAR files: <code>analytics.war</code> and <code>analytics-service.war</code>. You can deploy the EAR file to the following supported application servers:</p>
 <ul>
 <li>Liberty</li>
-<li>WebSphere® Application Server</li>
+<li>WebSphere  Application Server</li>
 <li>Tomcat</li>
 </ul>
 <p>In MobileFirst Studio, the two WAR files are installed and available by default in the embedded Liberty server.</p>
@@ -36,7 +36,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li style="float : left; width: 100%;">
 
 <div style="width: 100%;">You can set these two properties in the <code>server.xml</code> file:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <jndiEntry jndiName="AppName/wl.analytics.url" value="http://localhost:10080/analytics-service/data"/>
 <jndiEntry jndiName="AppName/wl.analytics.console.url" value="http://localhost:10080/analytics/console"/>
 {% endhighlight %}</p>
@@ -80,12 +80,12 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li>The following API call results in a <em>session hit</em> that is visualized on MobileFirst Operational Analytics:
     </li>
 <p>    
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // a 'session hit' will be recorded upon a successful connection
 WL.Client.connect();
 {% endhighlight %}</p>
 <li>The following API call results in an <em>adapter hit</em> and a <em>session hit</em> that are visualized on the MobileFirst Operational Analytics dashboard:</li>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // an 'adapter hit' and a 'session hit' will be recorded upon a successful adapter invocation
 WLResourceRequest.send();
 {% endhighlight %}</p>
@@ -107,7 +107,7 @@ WLResourceRequest.send();
 <h2 id="clientLogs">Capturing data - Client Logs</h2>
 <p>You can instrument a MobileFirst application with client logs to record client debugging information and events.</p>
 <p>You can use the following APIs to create client logs which are then forwarded to the MobileFirst Operational Analytics server, where they can be searched and downloaded.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 // Set the log level to trace so that all logs are captured
 WL.Logger.config({"level": "TRACE"});
 // Create a client side log that is persisted locally until it is sent to the server
@@ -121,7 +121,7 @@ WL.Logger.fatal("Create a client log at the FATAL level.");
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Create an analytics log message
 WL.Analytics.log("Analytics log message");
 // Create a custom activity>
@@ -131,20 +131,20 @@ WL.Analytics.log({_activity: "customActivity"}, "Analytics log message");
 {% endhighlight %}</p>
 <h2 id="sendingData">Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 // Logs sent upon successful connection
 WL.Client.connect();
 // Logs sent upon successful adapter invocation
 WLResourceRequest.send();
 {% endhighlight %}</p>
 <p>You can disable this automatic behavior by using the following call:</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Disable automatic sending of client and analytics logs
 WL.Logger.config({autoSendLogs: false});
 {% endhighlight %}</p>
 If you want to send this data more frequently, you can use the following API calls:</p>
 <p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Send client debug logs
 WL.Logger.send();
 // Send analytics logs
@@ -164,7 +164,7 @@ WL.Analytics.send();
 <h2 id="creatingCustomChart">Creating a custom chart</h2>
 <p>Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.</p>
 <p>The messages that are logged to the Operational Analytics server in this example are hard-coded buttons. Those messages look like this:</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 WL.Analytics.log({buttonPress: "buttonA"}, "press");
 WL.Analytics.log({buttonPress: "buttonB"}, "press");
 WL.Analytics.log({buttonPress: "buttonC"}, "press");

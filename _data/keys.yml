@@ -1,0 +1,206 @@
+# Development Center (DC) keywords
+# The keywords text should not be translated.
+
+# NOTE
+# - Use the keywords only in current-version documentation (see product_version).
+# - Do not use the keywords when the text should not change in the future. This mainly applies to release notes or migration and upgrade documentation.
+#   For example, write "In V8.0.0, xxx was replaced with yyy."; do not use $product_version in such cases.
+# - Escape backslashes ('\') in keyword definitions with a backslash ("\\").
+# - The internal "DITA" references are for similar keywords used in the V8.0.0 KC.
+
+####################
+## Usage ##
+#
+## Keyword definition syntax:   keyword: "text"
+#  For example, define a "product" keyword for the product name:
+#  product: "MobileFirst Platform Foundation"
+#
+## Keyword usage syntax:        {{ site.data.keys.keyword }}
+#  For example, using the "product" keyword,
+#       "This topic describes the {{ site.data.keys.product }} security framework."
+
+######################################################################
+## Product name ##
+# NOTE: The are some hardcoded product and component name instances in the documentation of the current version, which are quoted from file names and product-integrated (PI) strings (such as menu options, console strings, comments, and system messages).
+
+## Product name
+product:                        "MobileFirst Foundation"                                # [DITA: product_short: "IBM MobileFirst Foundation"]
+product_full:                   "IBM MobileFirst Foundation"                            # DITA: product_wl
+
+## Product adjective
+# "MobileFirst" cannot be used on its own, as a shorthand for the product name, but it can be used as an adjective in description of product elements, such as "{{ site.data.keys.product_adj }} security framework".
+product_adj:                    "MobileFirst"                           # DITA: prod_adj
+
+# Windows server-data directory
+prod_server_data_dir_name_win:  "IBM MobileFirst Platform Server Data"
+#prod_server_data_dir_win:       "My Documents\IBM MobileFirst Platform Server Data"
+prod_server_data_dir_win:       "My Documents\\IBM MobileFirst Platform Server Data"
+# Unix server-data directory
+prod_server_data_dir_name_unix: ".mobilefirst_platform_server"
+prod_server_data_dir_unix:      "${HOME}/.mobilefirst_platform_server"
+
+## MF on Bluemix service
+mf_bm_short:                    "Mobile Foundation"
+mf_bm:                          "Mobile Foundation on Bluemix"                          # [DITA: mfpf_bm_short: "Mobile Foundation for Bluemix"]
+mf_bm_full:                     "IBM Mobile Foundation on Bluemix"                      # [DITA: mfpf_bm_long: "IBM Mobile Foundation for Bluemix"]
+
+######################################################################
+## Current product version ##
+# NOTE:
+# - In most cases, you should not include the version number in the current-product documentation.
+# - When you want to refer to a specific version, not because it's the current version, use a hardcoded version number and not a keyword.
+#   For example, "Support for xxx was removed in MobileFirst Platform Foundation V8.0.0.".
+#   This is relevant mainly for release notes and to migration and upgrade documentation.
+
+# Version-number legend: V = Version ; R = Release ; M = Modification; I = iFix
+
+# V.R product version number
+product_V_R:                    "8.0"                                                   # DITA: Vartifacts
+product_V_R_stripped:           "80"
+# V.R.M product version number
+product_V_R_M:                  "8.0.0"
+product_V_R_M_stripped:         "800"
+# V.R.M.I product version number
+product_V_R_M_I:                "8.0.0.0"
+product_V_R_M_I_stripped:       "8000"
+
+## Product version
+product_version:                "V8.0"
+product_version_long:           "V8.0.0"                                                # DITA: Vprod
+product_version_full:           "V8.0.0,0"
+
+## Product artifacts with versions
+# Maven adapter version
+prod_maven_adapter_version:     "8.0.2016061011"
+
+# MF on Bluemix service containers package
+mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
+
+# MF system-pattern file
+mf_system_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
+
+#####################################################################
+## MF web-apps supported browser versions
+mf_web_browser_support_chrome_ver:  "43+"
+mf_web_browser_support_safari_ver:  "8+"
+mf_web_browser_support_ie_ver:      "10+"
+#mf_web_browser_support_ms_edge_ver ""
+  # [sharonl] [c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165.
+mf_web_browser_support_firefox_ver: "38+"
+mf_web_browser_support_android_ver: "Android 4.3+"
+
+#####################################################################
+## Product components ##
+# NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
+
+## MF Analytics
+mf_analytics_short:             "Analytics"                                             
+mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
+mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
+
+# MF Analytics Console
+mf_analytics_console_short:     "Analytics Console"
+mf_analytics_console:           "MobileFirst Analytics Console"                         # DITA: anl_cons_short
+mf_analytics_console_full:      "IBM MobileFirst Analytics Console"                     # DITA: anl_cons
+
+# MF Analytics Server
+mf_analytics_server:            "MobileFirst Analytics Server"                          # DITA: anl_server_short
+mf_analytics_server_full:       "IBM MobileFirst Analytics Server"                      # DITA: anl_server
+
+## MF Application Center
+mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short
+mf_app_center:                  "MobileFirst Application Center"
+mf_app_center_full:             "IBM MobileFirst Foundation Application Center"         # DITA: appcenter_long
+
+## MF CLI
+mf_cli:                         "MobileFirst CLI"                                       # DITA: cli_short
+mf_cli_full:                    "IBM MobileFirst Foundation Command Line Interface (CLI)" # DITA: cli
+
+## MF Data Proxy
+mf_data_proxy:                  "MobileFirst Data Proxy"                                # DITA: datastore
+mf_data_proxy_full:             "IBM MobileFirst Platform Data Proxy"
+
+## MF Developer Kit
+mf_dev_kit_short:               "Developer Kit"
+mf_dev_kit:                     "MobileFirst Developer Kit"
+mf_dev_kit_full:                "IBM MobileFirst Foundation Developer Kit"              # DITA: dev_kit
+
+## MF Mobile Browser Simulator (MBS)
+# If the terminology changes, note that the "MBS" abbreviation is used hardcoded in the documentation
+mf_mbs:                         "Mobile Browser Simulator"                              # DITA: mbs
+mf_mbs_full:                    "IBM MobileFirst Foundation Mobile Browser Simulator"
+
+## MF Operations Console
+mf_console_short:               "Operations Console"
+mf_console:                     "MobileFirst Operations Console"                        # DITA: wl_cons
+mf_console_full:                "IBM MobileFirst Operations Console"                    # DITA: console_long
+
+## MF Server
+mf_server:                      "MobileFirst Server"                                    # DITA: wl_server
+mf_server_full:                 "IBM MobileFirst Foundation Server"                     # DITA: server_long
+
+# MF Development Server
+mf_dev_server:                  "MobileFirst Development Server"                        # DITA: dev_server
+mf_dev_server_full:             "IBM MobileFirst Development Server"
+
+## MF Server Configuration Tool
+mf_server_cfg_tool_short:       "Server Configuration Tool"                             # DITA: server_config_tool
+mf_server_cfg_tool:             "MobileFirst Server Configuration Tool"
+mf_server_cfg_tool_full:        "IBM MobileFirst Server Configuration Tool"
+
+## MF Studio
+mf_studio:                      "MobileFirst Studio"                                    # DITA: wl_studio
+mf_studio_full:                 "IBM MobileFirst Foundation Studio"                     # DITA: studio_long
+
+## MF System Pattern
+mf_system_pattern_short:        "System Pattern"
+mf_system_pattern:              "MobileFirst System Pattern"                            # [DITA: sys_pattern_short: "MobileFirst Platform Pattern"]
+mf_system_pattern_long:         "MobileFirst Foundation System Pattern"
+mf_system_pattern_full:         "IBM MobileFirst Foundation System Pattern"             # [DITA: sys_pattern_long + cons_app_pattern_long:
+                                                                                        # "IBM MobileFirst Platform Foundation System Pattern"]
+
+# MF Test Workbench
+mf_test_workbench:              "MobileFirst Test Workbench"                            # DITA: test_workbench_short
+mf_test_workbench_full:         "IBM MobileFirst Platform Test Workbench"               # DITA: test_workbench_long
+
+#####################################################################
+## Earlier product versions terminology ##
+
+## Product name in earlier versions
+# V6.3--V8.0 before the Feb 2017 product rebranding ("IBM MobileFirst Platform Foundation")
+v63_to_80prerebrand_product:        "MobileFirst Platform Foundation"
+v63_to_80prerebrand_product_full:   "IBM MobileFirst Platform Foundation"
+# In V6.3 (Altair) the product and was renamed from "Worklight" to "MobileFirst Platform Foundation".
+# In Feb 2017, the product will be renamed again (applicable to the current V8.0 and future versions).
+
+# V6.2 product name ("IBM Worklight Foundation")
+v62_product:                    "Worklight Foundation"
+v62_product_full:               "IBM Worklight Foundation"                              # DITA: 62_prod_long
+
+# V6.1 and earlier product name ("IBM Worklight")
+pre62_product:                  "Worklight"
+pre62_product_full:             "IBM Worklight"                                         # DITA: pre62_product_wl
+
+#####################################################################
+## Other IBM products ##
+# It is not mandatory to use these keywords, but if you refer to the products directly take care to use the correct terminology and spelling.
+
+## IBM Rational License Key Server
+prod_rlks:                      "Rational License Key Server"                           # DITA: rkls_short ["rkls" - SIC]
+prod_rlks_full:                 "IBM Rational License Key Server"                       # DITA: rkls_long  ["rkls" - SIC]
+
+## IBM WebSphere Application Server (WAS)
+# The KC DITA WAS keywords section has this note: "No short names for the various flavors of the WAS appserver.".
+# It's not clear whether this was intended as a guideline or as a description of the current state.
+
+# WebSphere Application Server (WAS)
+prod_was:                       "WebSphere Application Server"                          # DITA: was
+prod_was_full:                  "IBM WebSphere Application Server"                      # "IBM $prod_was"
+
+# WebSphere Application Server Liberty [WAS Liberty profile]
+prod_was_liberty:               "WebSphere Application Server Liberty"                  # DITA: was_liberty
+prod_was_liberty_full:          "IBM WebSphere Application Server Liberty"
+
+# WebSphere Application Server Network Deployment [WAS ND profile]
+prod_was_nd:                    "WebSphere Application Server Network Deployment"       # DITA: was_nd
+prod_was_nd_full:               "IBM WebSphere Application Server Network Deployment"

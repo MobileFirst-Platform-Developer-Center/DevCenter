@@ -16,7 +16,7 @@ With this method, data can be sent from JavaScript to the opened native page, an
 <h2>Connecting to the plugin from the JavaScript code</h2>
 As a first step, <code>WL.NativePage.show()</code> needs to be implemented in order to open the native page:
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function openNativePage(){
     var params = {
         nameParam : $('#nameInput').val()
@@ -33,7 +33,7 @@ function openNativePage(){
 <br />
 To handle the callback function:
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function backFromNativePage(data){
 	alert("Received phone number is: " + data.phoneNumber);
 }{% endhighlight %}
@@ -94,7 +94,7 @@ void DoneButton_Click(object sender, RoutedEventArgs e) {
 
 <h3>JavaScript:</h3>
 
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

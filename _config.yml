@@ -5,11 +5,12 @@ source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
 paginate: 10
 paginate_path: "/blog/:num/"
-markdown: redcarpet
+markdown: kramdown
 generate_redirects: false
 print_pdf: false
-redcarpet:
-    extensions: ["with_toc_data", "tables"]
+kramdown:
+  input: GFM
+  hard_wrap: false
 gems:
   - jekyll-feed
   - jekyll-paginate
@@ -37,7 +38,7 @@ defaults:
     scope:
       path: "feed.xml"
     values:
-      indexed: false      
+      indexed: false
   -
     scope:
       path: "js"
@@ -57,7 +58,87 @@ defaults:
       indexed: true
   -
     scope:
-      path: "tutorials"
+      path: "tutorials/en"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/es"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/fr"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/de"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/zh-hans"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ja"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ko"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/pt-br"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ru"
     values:
       layout: tutorial
       category: tutorial

@@ -23,7 +23,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="NativeWin8TagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0"></p>
 <pushSender clientSecret="WNS_CLIENT_SECRET" packageSID="WNS_PACKAGE_SID"/>
 ...
@@ -89,7 +89,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
 <li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>:
-{% highlight xml linenos %}
+{% highlight xml  %}
 <application ... id="NativeWin8TagNotifications" ...>
 {% endhighlight %}</li>
 </ul>

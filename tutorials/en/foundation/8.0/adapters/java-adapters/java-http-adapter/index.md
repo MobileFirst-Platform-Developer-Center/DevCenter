@@ -7,13 +7,22 @@ downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
-
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
+{: #overview }
+
 Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
 
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
+>**Important:** When you use static references to classes from `javax.ws.rs.*` or `javax.servlet.*`, within your adapter implementation, then you should ensure to configure the **RuntimeDelegate** using one of the options below:
+*	Set  `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in Liberty `jvm.options`
+OR
+*	Set the system property or JVM custom property `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`
+
 ## Initializing the adapter
+{: #initializing-the-adapter }
+
 In the supplied sample adapter, the `JavaHTTPApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
 
 ```java
@@ -25,6 +34,8 @@ protected void init() throws Exception {
 ```
 
 ## Implementing the adapter Resource class
+{: #implementing-the-adapter-resource-class }
+
 The adapter Resource class is where requests to the server are handled.  
 In the supplied sample adapter, the class name is `JavaHTTPResource`.
 
@@ -38,6 +49,7 @@ public class JavaHTTPResource {
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### HTTP Client
+{: #http-client }
 
 ```java
 private static CloseableHttpClient client;
@@ -52,6 +64,7 @@ public static void init() {
 Because every request to your resource will create a new instance of `JavaHTTPResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `JavaHTTPApplication` as described above.
 
 ### Procedure resource
+{: #procedure-resource }
 
 ```java
 @GET
@@ -80,6 +93,7 @@ The sample adapter exposes just one resource URL which allows to retrieve the RS
 Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.
 
 ### execute()
+{: #execute }
 
 ```java
 public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
@@ -113,10 +127,14 @@ The output stream is then `flush`ed and `close`d.
 If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
 
 ## Sample adapter
+{: #sample-adapter }
+
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
 
 The Adapters Maven project includes the **JavaHTTP** adapter described above.
 
 ### Sample usage
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
+{: #sample-usage }
+
+* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

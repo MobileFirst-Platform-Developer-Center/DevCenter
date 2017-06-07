@@ -1,0 +1,235 @@
+---
+layout: tutorial
+title: Desenvolvendo para Windows 8.1 Universal e Windows 10 UWP
+show_disqus: false
+use_dropdown: false
+print_pdf: false
+show_in_nav: false
+indexed: false
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<br>
+Desenvolva seus aplicativos do Windows 8.1 Universal ou do Windows 10 UWP seguindo os tutoriais a seguir: configure seu ambiente de desenvolvimento, experimente o produto e agregue valor integrando-se às ofertas do {{ site.data.keys.product }} 8.0.<br/><br/>
+
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Campo de procura sequencial" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="Campo de procura" type="text" class="form-control" placeholder="Procurar por..." name="q">
+                </div>
+            </form>
+
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais "  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        Inicie aqui
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais "  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        Usar SDKs e APIs
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais "  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        Incluir segurança
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        Medir e encaixar
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tutorials-list">
+    <hr/>
+
+    <h2><a href="../installation-configuration">Instalação e configuração</a></h2>
+    Configure seu ambiente de desenvolvimento para trabalhar com o {{ site.data.keys.product_full }}.
+
+    <h2><a href="../product-overview/">Visão Geral do Produto</a></h2>
+    Conheça a oferta do {{ site.data.keys.product }}.
+
+    <ul>
+        <li><a href="../product-overview/capabilities">Principais Recursos</a></li>
+        <li><a href="../product-overview/components">Componentes do produto</a></li>
+        <li><a href="../product-overview/requirements">Requisitos do Sistema</a></li>
+        <li><a href="../product-overview/licensing">Licensiamento no {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matriz de recursos e plataformas</a></li>
+        <li><a href="../product-overview/accessibility">Recursos de acessibilidade para o {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Notas sobre a liberação</a></li>
+    </ul>
+
+    <ul>
+        <li><a href="../installation-configuration/development/mobilefirst/">Configurando o ambiente de desenvolvimento do {{ site.data.keys.product_adj }}</a></li>
+        <li><a href="../installation-configuration/development/windows/">Configurando os ambientes de desenvolvimento do Windows 8.1 Universal e do Windows 10 UWP</a></li>
+        <li><a href="../product-overview/components/console/">Usando o Operations Console do {{ site.data.keys.product }}</a></li>
+    </ul>
+
+    <hr id="start-here"/>
+    <h2><a href="../quick-start/">Iniciação rápida</a></h2>
+    Experimente o {{ site.data.keys.product }}.
+
+    <ul>
+        <li><a href="../quick-start/windows-8-10/">Iniciação rápida com o Windows 8.1 Universal e o Windows 10 UWP</a></li>
+    </ul>
+
+    <h2><a href="../application-development/sdk">Incluindo o SDK do {{ site.data.keys.product_adj }}</a></h2>
+    Inclua o SDK do {{ site.data.keys.product }} no seu aplicativo Native iOS, Android, Windows 8.1 Universal ou Windows 10 UWP.
+
+    <ul>
+        <li><a href="../application-development/sdk/windows-8-10/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos do Windows 8.1 Universal e do Windows 10 UWP</a></li>
+    </ul>
+
+    <hr id="get-sdk-and-apis"/>
+
+    <h2><a href="../application-development">Desenvolvendo aplicativos</a></h2>
+    Aprenda a usar as APIs do {{ site.data.keys.product_adj }}: WLResourceRequest, Developer CLI
+
+    <ul>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Usando o {{ site.data.keys.mf_cli }} para gerenciar artefatos do {{ site.data.keys.product_adj }}</a></li>
+        <li><a href="../application-development/resource-request/windows/">Solicitação de recurso a partir de aplicativos do Windows 8.1 Universal ou do Windows 10 UWP</a></li>
+    </ul>
+
+    <h2><a href="../adapters/">Desenvolvendo adaptadores</a></h2>
+    Desenvolva código do lado do servidor com sistemas de backend e serviços de nuvem corporativos.
+
+    <ul>
+        <li><a href="../adapters/">Visão geral de adaptadores</a></li>
+        <li><a href="../adapters/creating-adapters/">Criando adaptadores Java e JavaScript</a></li>
+        <li><a href="../adapters/javascript-adapters/">Adaptadores JavaScript</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">Adaptador HTTP JavaScript</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Usando SSL em adaptadores HTTP JavaScript</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">Adaptador SQL JavaScript</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Usando Java em adaptadores JavaScript</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Adaptadores Java</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Adaptador HTTP Java</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Adaptador SQL Java</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">Desenvolvendo adaptadores em IDEs</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">Testando e depurando adaptadores</a></li>
+        <li>Coleção de log do lado do servidor
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">Visão geral da coleção de logs do lado do servidor</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Coleção de logs em adaptadores Java</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Coleção de logs em adaptadores JavaScript</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">Uso e mashup de adaptador avançado</a></li>
+        <li><a href="../adapters/cloudant/">Integrando-se ao Cloudant usando um adaptador</a></li>
+    </ul>
+
+    <hr id="implement-authentication-and-security"/>
+
+    <h2><a href="../authentication-and-security">Autenticação e segurança</a></h2>
+    Inclua várias camadas de proteção em seus aplicativos.
+
+    <ul>
+        <li><a href="../authentication-and-security/">Conceitos de autorização</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">Criando uma verificação de segurança</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">O contrato de verificação de segurança</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementando a verificação de segurança</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Implementando o manipulador de desafios em aplicativos do Windows 8.1 Universal e do Windows 10 UWP</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">Implementando a verificação de segurança</a></li>
+                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Implementando o manipulador de desafios em aplicativos do Windows 8.1 Universal e do Windows 10 UWP</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/step-up/">Configurar a autenticação</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">Verificação de segurança do LTPA</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">Clientes confidenciais</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">Protegendo recursos externos</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Validação do token Java</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Validação do Node.js</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">Autenticidade do aplicativo</a></li>
+        <li><a href="../authentication-and-security/device-sso/">Configurando conexão única do dispositivo</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configurando o keystore do {{ site.data.keys.mf_server }}</a></li>
+    </ul>
+
+    <hr id="measure-and-engage"/>
+
+    <h2><a href="../notifications">Notificações</a></h2>
+    Envie notificações com o {{ site.data.keys.product_full }}.
+
+    <ul>
+        <li><a href="../notifications/">Visão geral de notificações</a></li>
+        <li><a href="../notifications/sending-notifications/">Enviando notificações</a></li>
+        <li><a href="../notifications/handling-push-notifications/windows/">>Manipulando notificações por push em aplicativos do Windows</a></li>
+        <li><a href="../notifications/analytics/">Configurando o suporte de análises para notificações push</a></li>
+        <li><a href="../notifications/rest-apis/">APIs de REST de serviço de push</a></li>
+    </ul>
+
+
+    <h2><a href="../bluemix">Base no Bluemix</a></h2>
+    Implemente o {{ site.data.keys.product }} na nuvem usando o Bluemix.
+
+    <ul>
+        <li><a href="../bluemix/">Introdução ao {{ site.data.keys.product_full }} no Bluemix</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Crie uma instância do {{ site.data.keys.mf_server }} usando o serviço do Mobile Foundation Bluemix</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configurando o {{ site.data.keys.mf_server }} no IBM Containers usando scripts no IBM Container Service</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Coleção de logs e de rastreio</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protegendo contêineres</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolução de problemas</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configurando o {{ site.data.keys.mf_server }} no Bluemix usando scripts no Liberty for Java</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protegendo contêineres</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolução de problemas</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../troubleshooting/">Resolução de problemas comuns</a></h2>
+    Perguntas e respostas mais frequentes.
+
+    <ul>
+        <li><a href="../troubleshooting/notifications">Notificações push</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+        <li><a href="../troubleshooting/analytics">Análises</a></li>
+    </ul>
+
+    <h2><a href="../../../../en/product-integration/8.0">Integração do produto</a></h2>
+    Integre aplicativos do {{ site.data.keys.product }} 8.0 a outros produtos IBM
+
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">Lista de integrações de produto disponíveis</a></li>
+    </ul>
+    <br/>
+</div>

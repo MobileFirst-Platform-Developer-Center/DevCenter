@@ -82,14 +82,14 @@ mfp deploy
         <ul>
             <li><b>AppDelegate.h</b>
                 Add the header:
-                {% highlight objc linenos %}#import "WLResourceRequest.h"{% endhighlight %}
+                {% highlight objc  %}#import "WLResourceRequest.h"{% endhighlight %}
             </li>
             <li style="margin-bottom:30px"><b>AppDelegate.m</b>
                 Add the header:
-                {% highlight objc linenos %}#import "WLResponse.h"{% endhighlight %}
+                {% highlight objc  %}#import "WLResponse.h"{% endhighlight %}
 
                 Add the following to <code>didFinishLaunchingWithOptions</code>:
-{% highlight objc linenos %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+{% highlight objc  %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
     [request setQueryParameterValue:@"['technology']" forName:@"params"];

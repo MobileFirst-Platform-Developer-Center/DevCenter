@@ -7,7 +7,7 @@ relevantTo: [hybrid]
 This tutorial is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
 <h3>The application-descriptor.xml file</h3>
 <p>Add the <code>securityTest</code> attribute to the relevant environment element. For example:</p>
-<p>{% highlight xml linenos %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
 <p>Next, you must make modifications that are specific to each environment.</p>
 <h3>iOS</h3>
 <p>To enable application authenticity protection check for the iPhone/iPad environment, specify the following identifiers in the <code>application-descriptor.xml</code> file.</p>
@@ -16,11 +16,11 @@ This tutorial is a continuation of the <a title="Application Authenticity Protec
 <li>Specify the <code>bundleId</code> value of the application exactly as it is defined in the <strong>Apple Developer portal</strong>.<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_appId.png"/>You can add the value either in the Application Description Design view:
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png"/></p>
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml linenos %} <iphone bundleId="com.worklight.MyBankApp" version="1.0"> {% endhighlight %} </p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" version="1.0"> {% endhighlight %} </p>
 </li>
 <li>Specify the <code>applicationId</code> value. The application identifier must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file. You can add the value either in the Application Description Design view:<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png"/>
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml linenos %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
+<p>{% highlight xml  %} <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0"> {% endhighlight %} </p>
 </li>
 <li>In Xcode, verify that the following value exists in the <strong>Other Linker Flags</strong> field: <code>-ObjC</code></li>
 </ol>
@@ -44,7 +44,7 @@ This tutorial is a continuation of the <a title="Application Authenticity Protec
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png"/></li>
 <li>Take the value of the application package name from the package attribute of the <em>manifest</em> node in the <code>AndroidManifest.xml</code> file.<br />
 If you decide to change the value, make sure that you change it in both locations. You can also directly edit the  <code>application-descriptor.xml</code> file and add a package name.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <android version="1.0">
     <worklightSettings include="false"/>
     <security>
@@ -68,7 +68,7 @@ If you decide to change the value, make sure that you change it in both location
 <p> You can find the <code>productId</code> value in the <code>native\PropertiesWMAppManifest.xml</code> file.<br />
  The <code>applicationId</code> value must match the value of the <code>wlAppId</code> property, which you can find in the <code>native\wlclient.properties</code> file.</p>
 <li>You can also supply these values in the Application Descriptor Source view. For example:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windowsPhone8 version="1.0">
     <uuid>b5542877-7afe-4edc-a817-5341b5027633</uuid>
     <security>

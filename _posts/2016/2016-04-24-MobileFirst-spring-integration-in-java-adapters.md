@@ -23,7 +23,7 @@ than just DI.
 
 
 ## What is dependency injection
-Dependency injection is a software design pattern in which an object always receives its dependencies from the outside (constructor/setters) instead of creating them using the new keywork or using some other way.
+Dependency injection is a software design pattern in which an object always receives its dependencies from the outside (constructor/setters) instead of creating them using the new keyword or using some other way.
 
 This way, it make sense to let classes to depend only on the interfaces of their dependencies so that the actual implementation of a dependency will be changeable without changing the code of the dependant class.
 
@@ -34,7 +34,7 @@ In this blog post I will explain how to integrate Spring into a MobileFirst Java
 ## Prerequisites
 Make sure [Maven is installed](http://maven.apache.org/).
 
-#### Install Spring framework integration for MobileFirst adapters in your local Maven reposiroty
+#### Install Spring framework integration for MobileFirst adapters in your local Maven repository
 We will use the open source extension module [Spring framework integration for MobileFirst adapters](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/mfp-adapters-spring-integration) to make it easier to integrate spring into the adapter.
 
 1. Clone the git repository: https://github.com/mfpdev/mfp-advanced-adapters-samples
@@ -55,7 +55,7 @@ Now the spring extension module is installed on your local Maven repository.
 
 ## Creating a Spring based Java adapter
 1. Start by creating a new MobileFirst Java adapter.  
-    Here I use Maven commands, however the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) can be used as well.
+    Here I use Maven commands, however the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) can be used as well.
 
     ```
     mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=adapter-maven-archetype-java  -DgroupId=com.sample -DartifactId=my-spring-xml-adapter -Dpackage=com.sample
@@ -88,7 +88,7 @@ Now the spring extension module is installed on your local Maven repository.
     <dependency>
       <groupId>com.github.mfpdev</groupId>
       <artifactId>mfp-adapters-spring-integration</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
     ```
 

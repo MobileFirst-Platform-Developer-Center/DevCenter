@@ -1,3 +1,4 @@
 baseurl: file:////home/travis/build/MFPSamples/DevCenter/_site
 print_pdf: true
+last_modified: true
 exclude: [vendor,build]
