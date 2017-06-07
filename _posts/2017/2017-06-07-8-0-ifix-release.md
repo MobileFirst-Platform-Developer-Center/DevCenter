@@ -24,6 +24,8 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **June 5th, 2
 
 **PI82126** ANDROID APPLICATION SOMETIME CRASHES WITH JAVA.IOEOFEXCEPTION
 
+**PI82537** SCRIPTS (BYOL) FOR DEPLOYING APPCENTER ON BLUEMIX (CONTAINERSAND LBP)
+
 ## How to upgrade
 **Server**  
 To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/), [Developer Kit for customers / iFix package for on-prem production environment](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
@@ -56,3 +58,5 @@ cordova-template-mfp 8.0.2017060206
 ##  Known Limitations
 
 The Android SDK bundled with the MobileFirst Foundation DevKit has a known issue with certificate pinning. The SDK downloaded the version from [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) does not have this issue. Download the latest version of the SDK from [Maven Central](https://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation).
+
+Deploying Appcenter on Bluemix (PI82537) has a known limitation, the Application Center server will connect to the Application Center database (DashDB) via non SSL. This will be fixed in the next iFix.
