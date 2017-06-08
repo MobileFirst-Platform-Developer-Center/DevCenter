@@ -15,6 +15,15 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **June 5th, 2
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
+Starting this version of the iFix, the Android SDK has been modified to use a newer version of **OKHttp (version 3.4.1)** instead of the old version that was previously bundled with the MobileFirst SDK for Android. This iFix also adds OKHttp as a dependency rather than being bundled with the SDK. This allows for freedom of choice of using the OKHttp library for developers and also prevents conflicts with multiple versions of OKHttp. In order to accommodate this change, existing Android projects must add the following dependencies to the build.gradle file of the app module
+
+```
+dependencies {
+	compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+}
+```
+
 ### APARs Fixed
 **PI81990** WHEN RUNNING MFP IN A RESTRICTED LAN NETWORK, THE CONSOLE APPLICATION DOES NOT LOAD IN THE BROWSER AND SHOW A BLANK PAGE.
 
