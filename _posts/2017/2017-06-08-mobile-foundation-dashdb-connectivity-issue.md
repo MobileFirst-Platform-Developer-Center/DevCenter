@@ -43,11 +43,8 @@ Look for the following symptoms:
 If you are using [Mobile Foundation service] (https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/), then follow these steps to update the service instance:  
 
 1. Navigate to the Bluemix console on your browser, and login to the Organization and Space where you have created the Mobile Foundation Service.
-
-2. Click the **Mobile Foundation service** from the **Services** section, as shown in the image:
-
-  ![bluemix-homepage]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationService.png)  
-
+2. Click the **Mobile Foundation service** from the **Services** section, as shown in the image:! 
+  [bluemix-homepage]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationService.png)  
 3. You should see an *Info Notification* indicating an update. Click on *Recreate* button to get the latest changes on your Mobile Foundation instance.  
   ![mobile-foundation-recreate]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationRecreate.png)  
 
@@ -58,11 +55,15 @@ If you have deployed Mobile Foundation on Bluemix using IBM-provided scripts tha
 
 >**Note:** Downloading the iFix requires entitlement.  
 
-** If you are on Mobile Foundation V8.0:**  
+**If you are on Mobile Foundation V8.0:**  
 The latest iFix available at the time of publishing this document is `8.0.0.0-MFPF-IF201706052216`  
 
-Follow the instructions available in this [document](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/#applying-mobilefirst-server-fixes) to apply Mobile Foundation server iFixes
+Follow the instructions available in this [document](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/#applying-mobilefirst-server-fixes) to apply Mobile Foundation server iFixes.
 
+** If you are on Mobile Foundation V7.1:**  
+The latest iFix available at the time of publishing this document is `7.1.0.0-MFPF-IF201706081107`  
+
+Follow the instructions available in this [document](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_7.1.0/com.ibm.worklight.deploy.doc/deploy/t_apply_interim_fix.html) to apply Mobile Foundation server iFixes.
 
 ## Cause
 
