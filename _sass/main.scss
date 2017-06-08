@@ -100,6 +100,36 @@ body {
 		}
 	}
 }
+#slackStrip {
+	background-color: #068D7C;
+	font-family: HelvNeuLightForIBM;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
+	font-size: 120%;
+
+	.latestPost {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+
+	.latestPostTitle {
+		font-size: 85%;
+		a {
+			color: white;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			&:visited {
+				text-decoration: underline;
+				color: white;
+			}
+		}
+	}
+}
 #multilingualDC {
 	background-color: #05c1c1;
 	font-family: HelvNeuLightForIBM;
