@@ -1,5 +1,5 @@
 ---
-title: 'Database Connectivity issues on IBM MobileFoundation because of a dashDB for Transactions security update'
+title: 'Database Connectivity issues on IBM MobileFoundation because of a security update to dashDB for Transactions service'
 date: 2017-06-08
 tags:
 - MobileFirst_Foundation
