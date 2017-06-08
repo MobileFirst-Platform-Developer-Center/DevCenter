@@ -40,7 +40,8 @@ The following topics are covered for extending beacon support in MFP 8.0
 
 Any database can be chosen by the customer for enabling beacon data persistence. This blog demonstrates IBM Cloudant NoSQL service on Bluemix as the beacon database. When the user opens the app, in the background it connects to MobileFirst server and makes the adapter calls to retrieve the beacon data and makes it available in the mobile device.
 
-The following section explains how to create the Cloudant service in Bluemix, and the documents for beacons, triggers and associations. The example demonstrates beacon placement inside branches of a bank.
+The following section explains how to create the Cloudant service in Bluemix, and the documents for beacons, triggers and associations. 
+The example demonstrates beacon placement inside branches of a bank.
 
  Log-in to [Bluemix](www.bluemix.net).
 
