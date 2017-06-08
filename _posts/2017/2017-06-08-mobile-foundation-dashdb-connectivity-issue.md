@@ -1,5 +1,5 @@
 ---
-title: 'Database Connectivity issues on IBM MobileFoundation because of a dashDB for Tansactions security update'
+title: 'Database Connectivity issues on IBM MobileFoundation because of a dashDB for Transactions security update'
 date: 2017-06-08
 tags:
 - MobileFirst_Foundation
@@ -47,14 +47,14 @@ If you are using ![Mobile Foundation service] (https://new-console.ng.bluemix.ne
 
 ### If you have created Mobile Foundation instance on Bluemix using IBM-provided scripts  
 
-If you have deployed Mobile Foundation on Bluemix using IBM-provided scripts that come with your on-prem License entitlement, you have to apply the latest Mobile Foundation iFix. You can download the latest  from  ![Fix Central](https://www-945.ibm.com/support/fixcentral)  
+If you have deployed Mobile Foundation on Bluemix using IBM-provided scripts that come with your on-Prem License entitlement, you have to apply the latest Mobile Foundation iFix. You can download the latest  from  ![Fix Central](https://www-945.ibm.com/support/fixcentral)  
 Note: Downloading the iFix requires entitlement.  
 
 ** If you are on Mobile Foundation V8.0:**  
 The latest iFix available at the time of publishing this document is `8.0.0.0-MFPF-IF201706052216`  
 
 Follow the instructions available in ![this document ](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/#applying-mobilefirst-server-fixes
-) to apply Mobile Foundation server ifixes
+) to apply Mobile Foundation server iFixes
 
 
 ## Cause:
