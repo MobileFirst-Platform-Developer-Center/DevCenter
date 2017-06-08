@@ -15,7 +15,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **June 8th, 2
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
-Both the known limitations mentioned in [iFix 8.0.0.0-MFPF-IF20170605-2216 Announcement blog](https://mobilefirstplatform.ibmcloud.com/blog/2017/06/07/8-0-ifix-release/) are fixed in this ifix release.
+Both the known limitations mentioned in [iFix 8.0.0.0-MFPF-IF20170605-2216 announcement blog](https://mobilefirstplatform.ibmcloud.com/blog/2017/06/07/8-0-ifix-release/) are fixed in this ifix release.
 
 ### APARs Fixed
 
