@@ -32,6 +32,8 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
+* [Removing Analytics support](#removing-analytics-support)
+* [Switching from Analytics deployed with IBM Containers to Analytics service](#switching-from-analytics-container-to-analytics-service)
 * [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
@@ -86,7 +88,6 @@ To set up the available plans, first follow these steps:
 
 ## Using the {{ site.data.keys.mf_bm_short }} service
 {: #using-the-mobile-foundation-service }
-> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
 
 With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
 
@@ -125,14 +126,28 @@ Through the **Settings** tab, you can further customize the server instance with
 
 ## Adding {{ site.data.keys.mf_analytics_short }} support
 {: #adding-analytics-support }
-You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
+You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics }} service instance.
 
-* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+<!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
+* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
 Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.  
 
 > Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
+
+##  Removing {{ site.data.keys.mf_analytics_short }} support
+{: #removing-analytics-support}
+
+You can remove the {{ site.data.keys.mf_analytics }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics }} service instance.
+
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+
+##  Switching from Analytics deployed with IBM Containers to Analytics service
+{: #switching-from-analytics-container-to-analytics-service}
+
+>**Note**: Deleting {{ site.data.keys.mf_analytics_short }} will remove all available analytics data in the container. This data will not be available in the new {{ site.data.keys.mf_analytics_short }} instance.
+
+User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics container and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_short }} service instance.
 
 ## Applying {{ site.data.keys.mf_server }} fixes
 {: #applying-mobilefirst-server-fixes }
@@ -163,7 +178,7 @@ The Developer plan does not offer a persistent database, which could cause at ti
 * Every time you make any of the following server-side actions:
     * Deploy an adapter or update any adapter configuration or property value
     * Perform any security configuration such scope-mapping and alike
-    
+
     Run the following from the command-line to download your configuration to a .zip file:
 
   ```bash

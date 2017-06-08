@@ -40,11 +40,26 @@ The following topics are covered for extending beacon support in MFP 8.0
 
 Any database can be chosen by the customer for enabling beacon data persistence. This blog demonstrates IBM Cloudant NoSQL service on Bluemix as the beacon database. When the user opens the app, in the background it connects to MobileFirst server and makes the adapter calls to retrieve the beacon data and makes it available in the mobile device.
 
-The following section explains how to create the Cloudant service in Bluemix, and the documents for beacons, triggers and associations.
+The following section explains how to create the Cloudant service in Bluemix, and the documents for beacons, triggers and associations. 
+The example demonstrates beacon placement inside branches of a bank.
 
  Log-in to [Bluemix](https://console.bluemix.net).
 
 #### Create Cloudant service on Bluemix
+
+Beacon definitions are stored in DB in the following format, of which *_id* field is auto populated by Cloudant service.
+
+```
+{
+"_id": "<Cloudant document id>",
+"uuid": "<your_beacon_uuid>",
+"major": <your_major_id>,
+"minor": <your_minor_id>,
+"customData": {
+  "name": "value"
+  }
+}
+```
 
 - Click on **Catalog**
 - Search for and select **Cloudant NoSQL DB**
@@ -57,7 +72,16 @@ The following section explains how to create the Cloudant service in Bluemix, an
 - Click on **Create Database**
 - Name it *beacons*
 - Click on **+** icon and select **New Doc**
-- Add the following data corresponding to beacon-1 after *_id*
+
+A sample new document looks as below which has an *_id* field.
+
+```
+{
+  "_id": "da8df0a4ffa062ce8749db5d883c7c7b"
+}
+```
+
+- Add following data corresponding to beacon-1 after *_id*
 
 ```
 , "uuid": "F75D6DF0-9B95-9EF1-A1BA-AE2765DE0987",
@@ -184,7 +208,7 @@ The following section explains how to create the Cloudant service in Bluemix, an
 - Login with username as admin and the password you have specified before
 - Note down the server URL (just the domain - example: mobilefoundation-4w-server.eu-gb.mybluemix.net)
 
-##### Install mfpdev cli
+#### Install mfpdev cli
 
 While the server is being started (normally it takes around 10mins to start the server), install mfpdev cli (command line for working with Mobile Foundation) on your local machine as follows:
 ```bash
