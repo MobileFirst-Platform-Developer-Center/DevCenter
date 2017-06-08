@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform Foundation iFix 7.1.0.0-MFPF-IF201706081107 released
-date: 2017-06-09
+date: 2017-06-10
 version:
 - 7.1
 tags:
@@ -10,7 +10,7 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix has been released for MobileFirst Platform Foundation 7.1, dated **May 5th, 2017**.  
+A new iFix has been released for MobileFirst Platform Foundation 7.1, dated **June 8th, 2017**.  
 [Download iFix](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central)
 
 ## Included changes in this iFix
