@@ -139,9 +139,7 @@ und das [Festlegen von Sicherheitsparametern](../../../authentication-and-securi
 
 #### Authentifizierung und Sicherheit
 {: #authentication-and-security }
-Sie können Parameter für die Anwendungssicherheit konfigurieren (z. B. die Standardverfallszeit für Token),
-Sicherheitsüberprüfungen Bereichselemente zuordnen, obligatorische Anwendungsbereiche definieren und Optionen für Sicherheitsüberprüfungen
-konfigurieren. 
+Sie können Parameter für die Anwendungssicherheit konfigurieren (z. B. die Standardverfallszeit für Token), Sicherheitsüberprüfungen Bereichselemente zuordnen, obligatorische Anwendungsbereiche definieren und Optionen für Sicherheitsüberprüfungen konfigurieren.
 
 > [Informieren Sie sich](../../../authentication-and-security/) über das {{ site.data.keys.product_adj }}-Sicherheitsframework. 
 

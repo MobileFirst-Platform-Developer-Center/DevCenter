@@ -1,28 +1,44 @@
 ---
 layout: tutorial
-title: Adding custom splash screens and icons to Cordova apps
-breadcrumb_title: Adding images and icons
+title: Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen
+breadcrumb_title: Bilder und Symbole hinzufügen
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-If you used the **cordova-plugin-mfp** plug-in, and you did not use the {{ site.data.keys.product_adj }} template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by {{ site.data.keys.product_full }} with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
+Wenn Sie das Plug-in **cordova-plugin-mfp** und nicht die
+{{ site.data.keys.product_adj }}-Schablone verwendet haben oder das Cordova-Plug-in
+**cordova-plugin-splashscreen** zu Ihrer App hinzufügen, können Sie die Bilder der
+{{ site.data.keys.product_full }} für Symbole und Begrüßungsanzeigen durch Ihre eigenen
+Bilder ersetzen. Wenn Sie die Schablone verwendet haben, können Sie die von der Cordova-App verwendeten und angezeigten Begrüßungsbilder
+ersetzen. 
 
-You must create a new folder to hold the splash images and icons, and modify the **config.xml** configuration file to point to them.
+Sie müssen einen neuen Ordner für die Begrüßungsbilder und Symbole erstellen und die Konfigurationsdatei
+**config.xml** so modifizieren, dass sie auf die Anzeigen und Symbole zeigt. 
 
-1. Create a folder inside the root directory of your Cordova project. The folder can be in any level of nested subfolder when the parent folder is under the Cordova project root.
-2. Place your source splash image and icon images in this folder.
-3. Update the **config.xml** configuration file to point to your custom files.
+1. Erstellen Sie einen Ordner im Stammverzeichnis Ihres Cordova-Projekts.Der Ordner kann sich auf einer Verschachtelungsebene eines Unterordners befinden, solange sich der übergeordnete Ordner im Cordova-Projektstammverzeichnis
+befindet. 
+2. Stellen Sie Ihre Quellenbegrüßungsbilder und -symbole in diesen Ordner. 
+3. Aktualisieren Sie die Konfigurationsdatei **config.xml** so, dass sie auf Ihre angepassten Dateien
+zeigt. 
 
 ### Android
 {: #android }
-If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the {{ site.data.keys.product_adj }} template.
+Wenn Sie eine Android-App haben, richten sich die Anforderungen für die Identifikation der Begrüßungsbilder danach, ob Sie die App
+mit der
+{{ site.data.keys.product_adj }}-Schablone oder ohne sie erstellt haben. 
 
-#### Splash screens
+#### Begrüßungsanzeigen
 {: #splash-screens }
-If you did *not* use the {{ site.data.keys.product_adj }} template when you created your app, the splash images that are displayed are those that are retrieved from the {{ site.data.keys.product_adj }} images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+Wenn Sie Ihre App *nicht* mit der {{ site.data.keys.product_adj }}-Schablone
+erstellt haben, werden die von der
+{{ site.data.keys.product_adj }}-Bildposition abgerufenen Begrüßungsbilder
+angezeigt. Die Zieldateipfade und -dateinamen müssen exakt aus dem Beispiel übernommen
+werden, wenn Sie die Schablone nicht verwenden. Ändern Sie die Quellenpfade und Dateinamen
+(`src`) in die Pfade der Dateien, die angezeigt werden sollen. Fügen Sie in der Datei **config.xml** zwischen den Tags
+`<platform name="android">` und `</platform>` Zeilen wie die im folgenden Beispiel hinzu:  
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +48,9 @@ If you did *not* use the {{ site.data.keys.product_adj }} template when you crea
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-If you used the {{ site.data.keys.product_adj }} template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
+Wenn Sie Ihre App mit der {{ site.data.keys.product_adj }}-Schablone erstellt haben, müssen Sie
+die von Cordova verwendeten Begrüßungsbilder aktualisieren. Ändern Sie die Quellenpfade und Dateinamen
+(src) in die Pfade der Dateien, die angezeigt werden sollen. Fügen Sie in der Datei config.xml zwischen den Tags <platform name="android"> und </platform> Zeilen wie die im folgenden Beispiel hinzu: 
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -45,9 +63,10 @@ If you used the {{ site.data.keys.product_adj }} template when you created your 
 <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
 ```
 
-#### Icons
+#### Symbole
 {: #icons }
-The file names of the icon files must be the same as the entries in the following example. The paths can be any path. The name of each image corresponds to its size.
+Die Namen der Symboldateien müssen die gleichen wie im folgenden Beispiel sein. Die Pfade können beliebige sein. Der Name der einzelnen Bilder richtet sich nach ihrer
+Größe. 
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -60,11 +79,13 @@ The file names of the icon files must be the same as the entries in the followin
 
 ### iOS
 {: #ios }
-If you have an iOS app, add lines similar to the following example between the `<platform name="ios">` and `</platform>` tags:
+Wenn Sie eine iOS-App haben, fügen Sie Zeilen ähnlich den folgenden zwischen den Tags
+`<platform name="ios">` und `</platform>` ein: 
     
-#### Splash screens
+#### Begrüßungsanzeigen
 {: #splash-screens-ios }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+Die Dateipfade und -namen der Begrüßungsanzeigen müssen die gleichen wie im folgenden Beispiel sein. Der Name der einzelnen Bilder richtet sich nach ihrer
+Größe. 
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -78,9 +99,10 @@ The paths and file names of the splash screen files must be the same as the name
 <splash height="1242" src="res/screen/ios/Default-736h-Landscape˜iphone.png" width="2208" />
 ```
 
-#### Icons
+#### Symbole
 {: #icons-ios}
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+Die Namen der Symboldateien müssen die gleichen wie im folgenden Beispiel sein. Die Pfade können beliebige sein. Der Name der einzelnen Bilder richtet sich nach ihrer
+Größe. 
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -104,11 +126,13 @@ The file names of the icon files must be the same as the names in the following 
 
 ### Windows
 {: #windows }
-If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
+Wenn Sie eine Windows-App haben, fügen Sie Zeilen ähnlich denen im folgenden Beispiel zwischen den Tags
+`<platform name="windows">` und `</platform>` ein: 
 
-#### Splash screens
+#### Begrüßungsanzeigen
 {: #splash-screens-windows }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+Die Dateipfade und -namen der Begrüßungsanzeigen müssen die gleichen wie im folgenden Beispiel sein. Der Name der einzelnen Bilder richtet sich nach ihrer
+Größe. 
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -117,9 +141,10 @@ The paths and file names of the splash screen files must be the same as the name
 <splash src="res/screen/windows/Wide310x150Logo.scale-240.png" width="744" height="360"/>
 ```
 
-#### Icons
+#### Symbole
 {: #icons-windows }
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+Die Namen der Symboldateien müssen die gleichen wie im folgenden Beispiel sein. Die Pfade können beliebige sein. Der Name der einzelnen Bilder richtet sich nach ihrer
+Größe. 
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

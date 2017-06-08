@@ -175,71 +175,71 @@ Ordnen Sie der Anwendung das Bereichselement **push.mobileclient** zu.
                             <td><b>Beschreibung</b></td>
                         </tr>
                         <tr>
-                            <td>apps.read	</td>
+                            <td>apps.read</td>
                             <td>Berechtigung, eine Anwendungsressource zu lesen</td>
                         </tr>
                         <tr>
-                            <td>apps.write	</td>
+                            <td>apps.write</td>
                             <td>Berechtigung, eine Anwendungsressource zu erstellen, zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
-                            <td>gcmConf.read	</td>
+                            <td>gcmConf.read</td>
                             <td>Berechtigung, die GCM-Konfigurationseinstellungen (API Key und Sender ID) zu lesen</td>
                         </tr>
                         <tr>
-                            <td>gcmConf.write	</td>
+                            <td>gcmConf.write</td>
                             <td>Berechtigung, die GCM-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
-                            <td>apnsConf.read	</td>
+                            <td>apnsConf.read</td>
                             <td>Berechtigung, APNS-Konfigurationseinstellungen zu lesen</td>
                         </tr>
                         <tr>
-                            <td>apnsConf.write	</td>
+                            <td>apnsConf.write</td>
                             <td>Berechtigung, APNS-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
-                            <td>devices.read	</td>
+                            <td>devices.read</td>
                             <td>Berechtigung, ein Gerät zu lesen</td>
                         </tr>
                         <tr>
-                            <td>devices.write	</td>
+                            <td>devices.write</td>
                             <td>Berechtigung, ein Gerät zu erstellen, zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
-                            <td>subscriptions.read	</td>
+                            <td>subscriptions.read</td>
                             <td>Berechtigung, Abonnements zu lesen</td>
                         </tr>
                         <tr>
-                            <td>subscriptions.write	</td>
+                            <td>subscriptions.write</td>
                             <td>Berechtigung, Abonnements zu erstellen, zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
-                            <td>messages.write	</td>
+                            <td>messages.write</td>
                             <td>Berechtigung, Push-Benachrichtigungen zu senden</td>
                         </tr>
                         <tr>
-                            <td>webhooks.read	</td>
+                            <td>webhooks.read</td>
                             <td>Berechtigung, Ereignisbenachrichtigungen zu lesen</td>
                         </tr>
                         <tr>
-                            <td>webhooks.write	</td>
+                            <td>webhooks.write</td>
                             <td>Berechtigung, Ereignisbenachrichtigungen zu senden</td>
                         </tr>
                         <tr>
-                            <td>smsConf.read	</td>
+                            <td>smsConf.read</td>
                             <td>Berechtigung, SMS-Konfigurationseinstellungen zu lesen</td>
                         </tr>
                         <tr>
-                            <td>smsConf.write	</td>
+                            <td>smsConf.write</td>
                             <td>Berechtigung, SMS-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
-                            <td>wnsConf.read	</td>
+                            <td>wnsConf.read</td>
                             <td>Berechtigung, WNS-Konfigurationseinstellungen zu lesen</td>
                         </tr>
                         <tr>
-                            <td>wnsConf.write	</td>
+                            <td>wnsConf.write</td>
                             <td>Berechtigung, WNS-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                     </table>

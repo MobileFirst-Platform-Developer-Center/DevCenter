@@ -68,8 +68,7 @@ weight: 3
                 <p>包含 {{ site.data.keys.product }} 运行时和 IBM Java JRE 8。</p>
 
                 <h4>mfpf-libs 文件夹</h4>
-                <p>包含 {{ site.data.keys.product_adj }} 产品组件库和 CLI。
-</p>
+                <p>包含 {{ site.data.keys.product_adj }} 产品组件库和 CLI。</p>
 
                 <h4>mfpf-server-libertyapp 文件夹</h4>
 
@@ -89,7 +88,8 @@ weight: 3
                             <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                         </ul>
                     </li>
-                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。<br/>
+                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。
+                    <br/>
                     </li>
 
                     <li><b>security</b> 文件夹：用于存储密钥存储库、信任库和 LTPA 密钥文件 (ltpa.keys)。</li>
@@ -97,7 +97,7 @@ weight: 3
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭此节</b></a>
-                                    </div>
+            </div>
         </div>
     </div>
 </div>

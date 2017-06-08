@@ -18,8 +18,7 @@ Algumas configurações são necessárias para o {{ site.data.keys.mf_analytics_
 
 ### Propriedades
 {: #properties }
-Para obter uma lista completa de propriedades de configuração e saber como defini-las em seu servidor de aplicativos, consulte
-[Propriedades de configuração](#configuration-properties).
+Para obter uma lista completa de propriedades de configuração e saber como defini-las em seu servidor de aplicativos, consulte [Propriedades de configuração](#configuration-properties).
 
 * A propriedade **discovery.zen.minimum\_master\_nodes** deve ser configurada como **ceil((número de nós principais elegíveis no cluster / 2) + 1)** para evitar a síndrome de split-brain.
     * Nós Elasticsearch em um cluster que são elegíveis principais devem estabelecer um quorum para decidir qual nó elegível principal é o principal.
@@ -33,8 +32,7 @@ Para obter uma lista completa de propriedades de configuração e saber como def
 
 ### Configurações de Recuperação de Cluster
 {: #cluster-recovery-settings }
-Após ter escalado para um cluster multinós, você pode achar que a reinicialização de um cluster integral ocasional é necessária. Quando a reinicialização de um cluster integral é necessária, você pode considerar configurações de recuperação. Se o cluster tiver 10 nós, e conforme o cluster for apresentado, um nó por vez, o nó principal assumirá que é necessário iniciar o balanceamento de dados imediatamente na chegada de
-cada nó no cluster. Se o principal tiver permissão para se comportar dessa maneira, um rebalanceamento desnecessário será requerido. Deve-se configurar as definições de cluster para aguardar um número mínimo de nós para associar ao cluster antes de o principal ter permissão para começar a instruir os nós para o rebalanceamento. Isso pode reduzir as reinicializações do cluster de horas para minutos.
+Após ter escalado para um cluster multinós, você pode achar que a reinicialização de um cluster integral ocasional é necessária. Quando a reinicialização de um cluster integral é necessária, você pode considerar configurações de recuperação. Se o cluster tiver 10 nós, e conforme o cluster for apresentado, um nó por vez, o nó principal assumirá que é necessário iniciar o balanceamento de dados imediatamente na chegada de cada nó no cluster. Se o principal tiver permissão para se comportar dessa maneira, um rebalanceamento desnecessário será requerido. Deve-se configurar as definições de cluster para aguardar um número mínimo de nós para associar ao cluster antes de o principal ter permissão para começar a instruir os nós para o rebalanceamento. Isso pode reduzir as reinicializações do cluster de horas para minutos.
 
 * A propriedade **gateway.recover\_after\_nodes** deve ser configurada de acordo com sua preferência para evitar que o Elasticsearch inicie um rebalanceamento até que o número especificado de nós no cluster esteja ativo e associado. Se seu cluster tiver 10 nós, um valor de 8 para a propriedade **gateway.recover\_after\_nodes** pode ser uma configuração razoável.
 * A propriedade **gateway.expected\_nodes** deve ser configurada como o número de nós que devem estar no cluster. Nesse exemplo, o valor para a propriedade **gateway.expected_nodes** é 10.
@@ -83,12 +81,11 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 | Propriedade                           | Descrição (Description)                                           | Valor Padrão |
 |------------------------------------|-------------------------------------------------------|---------------|
 | mfp.analytics.console.url          | Configure esta propriedade para a URL do {{ site.data.keys.mf_analytics_console }}. Por exemplo, http://hostname:port/analytics/console. Configurar essa propriedade ativa o ícone de análise de dados no {{ site.data.keys.mf_console }}. | Nenhuma |
-| mfp.analytics.logs.forward         | Se essa propriedade for configurada como verdadeira, os logs do servidor que estão registrados no {{ site.data.keys.mf_server }} serão
-capturados no {{ site.data.keys.mf_analytics }}. | true |
-| mfp.analytics.url                  |Requerido. A URL exposta pelo {{ site.data.keys.mf_analytics_server }} que recebe dados de análise de dados recebidos. Por exemplo, http://hostname:port/analytics-service/rest/v2. | None |
+| mfp.analytics.logs.forward         | Se essa propriedade for configurada como verdadeira, os logs do servidor que estão registrados no {{ site.data.keys.mf_server }} serão capturados no {{ site.data.keys.mf_analytics }}. | true |
+| mfp.analytics.url                  |Requerido. A URL exposta pelo {{ site.data.keys.mf_analytics_server }} que recebe dados de análise de dados recebidos. Por exemplo, http://hostname:port/analytics-service/rest/v2. | Nenhuma |
 | analyticsconsole/mfp.analytics.url |	Opcional. URI completa dos serviços REST do Analytics. Em um cenário com um firewall ou um proxy reverso seguro, essa URI deve ser a URI externa, não a URI interna dentro da LAN local. Esse valor pode conter * no lugar do protocolo URI, nome do host ou porta, para denotar a parte correspondente da URL recebida.	*://*:*/analytics-service, com o protocolo, nome do host e porta determinados dinamicamente |
-| mfp.analytics.username             | O nome do usuário que será usado se o ponto de entrada de dados for protegido com autenticação básica. | None |
-| mfp.analytics.password             | A senha que será usada se o ponto de entrada de dados for protegido com autenticação básica. | None |
+| mfp.analytics.username             | O nome do usuário que será usado se o ponto de entrada de dados for protegido com autenticação básica. | Nenhuma |
+| mfp.analytics.password             | A senha que será usada se o ponto de entrada de dados for protegido com autenticação básica. | Nenhuma |
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
@@ -96,33 +93,28 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 
 | Propriedade                           | Descrição (Description)                                           | Valor Padrão |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Define o tipo de nó Elasticsearch. Os valores válidos são master e data. Se essa propriedade não for configurada, o nó agirá como um nó principal elegível e um nó de dados. | 	None |
+| analytics/nodetype | Define o tipo de nó Elasticsearch. Os valores válidos são master e data. Se essa propriedade não for configurada, o nó agirá como um nó principal elegível e um nó de dados. | 	Nenhuma |
 | analytics/shards | O número de shards por índice. Esse valor pode ser configurado somente pelo primeiro nó que é iniciado no cluster e não pode ser mudado. | 1 |
 | analytics/replicas_per_shard | O número de réplicas para cada shard no cluster. Esse valor pode ser mudado dinamicamente em um cluster em execução. | 0 |
-| analytics/masternodes | Uma sequência delimitada por vírgulas que contém o nome do host e as portas dos nós principais elegíveis. | None |
+| analytics/masternodes | Uma sequência delimitada por vírgulas que contém o nome do host e as portas dos nós principais elegíveis. | Nenhuma |
 | analytics/clustername | Nome do cluster. Configure esse valor se você planeja ter vários clusters que operam no mesmo subconjunto e precisa identificá-los exclusivamente. | worklight |
 | analytics/nodename | Nome de um nó no cluster. | Uma sequência gerada aleatoriamente
 | analytics/datapath | O caminho no qual os dados de análise de dados são salvos no sistema de arquivos. | ./analyticsData |
-| analytics/settingspath | O caminho para um arquivo de configurações Elasticsearch. Para obter informações adicionais, consulte Elasticsearch. | None |
+| analytics/settingspath | O caminho para um arquivo de configurações Elasticsearch. Para obter informações adicionais, consulte Elasticsearch. | Nenhuma |
 | analytics/transportport | A porta que é usada para comunicação de nó para nó. | 9600 |
 | analytics/httpport | A porta que é usada para comunicação HTTP para Elasticsearch. | 9500 |
 | analytics/http.enabled | Ativa ou desativa a comunicação HTTP para Elasticsearch. | falso |
-| analytics/serviceProxyURL | O arquivo WAR de UI de análise o arquivo WAR de serviço de análise podem ser instalados em servidores de aplicativos separados. Se optar por fazer isso, você deve entender que o tempo de execução JavaScript no arquivo WAR da UI pode ser bloqueado por prevenção de cross-site scripting no navegador. Para
-efetuar bypass desse bloqueio, o arquivo WAR da UI inclui um código de proxy Java para que o tempo de execução JavaScript recupere respostas da API REST do servidor
-de
-origem. Mas o proxy está configurado para encaminhar solicitações de API REST para o arquivo WAR do serviço de análise de dados. Configure essa propriedade se você instalou seus arquivos WAR em servidores de aplicativos separados. | None |
+| analytics/serviceProxyURL | O arquivo WAR de UI de análise o arquivo WAR de serviço de análise podem ser instalados em servidores de aplicativos separados. Se optar por fazer isso, você deve entender que o tempo de execução JavaScript no arquivo WAR da UI pode ser bloqueado por prevenção de cross-site scripting no navegador. Para efetuar bypass desse bloqueio, o arquivo WAR da UI inclui um código de proxy Java para que o tempo de execução JavaScript recupere respostas da API REST do servidor de origem. Mas o proxy está configurado para encaminhar solicitações de API REST para o arquivo WAR do serviço de análise de dados. Configure essa propriedade se você instalou seus arquivos WAR em servidores de aplicativos separados. | Nenhuma |
 | analytics/bootstrap.mlockall | Essa propriedade evita que a memória Elasticsearch seja trocada no disco. | true |
 | analytics/multicast | Ativa ou desativa a descoberta de nó multicast. | falso |
 | analytics/warmupFrequencyInSeconds | A frequência na qual as consultas warmup são executadas. As consultas warmup são executadas no segundo plano para forçar resultados da consulta na memória, o que melhora o desempenho do console da web. Valores negativos desativam as consultas warmup. | 600 |
 | analytics/tenant | Nome do índice Elasticsearch principal.	worklight |
 
-Em todos os casos em que a chave não contém um ponto (como **httpport** mas não **http.enabled**), a configuração pode ser controlada por variáveis de ambiente do sistema, onde o nome da variável é prefixado com **ANALYTICS_**. Quando
-a propriedade JNDI e a variável de ambiente do sistema são configuradas, a variável de ambiente do sistema toma precedência. Por exemplo, se você tiver a propriedade JNDI **analytics/httpport** e a variável de ambiente do sistema **ANALTYICS_httpport** configuradas, o valor para **ANALYTICS_httpport** será usado.
+Em todos os casos em que a chave não contém um ponto (como **httpport** mas não **http.enabled**), a configuração pode ser controlada por variáveis de ambiente do sistema, onde o nome da variável é prefixado com **ANALYTICS_**. Quando a propriedade JNDI e a variável de ambiente do sistema são configuradas, a variável de ambiente do sistema toma precedência. Por exemplo, se você tiver a propriedade JNDI **analytics/httpport** e a variável de ambiente do sistema **ANALTYICS_httpport** configuradas, o valor para **ANALYTICS_httpport** será usado.
 
 #### Tempo de vida (TTL) do documento
 {: #document-time-to-live-ttl }
-O TTL é efetivamente como é possível estabelecer e manter uma política de retenção de dados. Suas decisões têm consequências dramáticas nas necessidades de recursos do sistema. Quanto
-maior for o tempo que você mantém os dados, maior será a quantidade de RAM, de disco e de ajuste de escala que provavelmente será necessária.
+O TTL é efetivamente como é possível estabelecer e manter uma política de retenção de dados. Suas decisões têm consequências dramáticas nas necessidades de recursos do sistema. Quanto maior for o tempo que você mantém os dados, maior será a quantidade de RAM, de disco e de ajuste de escala que provavelmente será necessária.
 
 Cada tipo de documento tem seu próprio TTL. A configuração do TTL de um documento ativa a exclusão automática do documento após ele ter sido armazenado pelo período de tempo especificado.
 
@@ -146,8 +138,7 @@ Esses valores podem ser configurados usando unidades de tempo básicas, conforme
 A tecnologia subjacente de armazenamento e armazenamento em cluster que atende o {{ site.data.keys.mf_analytics_console }} é Elasticsearch.  
 O Elasticsearch fornece muitas propriedades ajustáveis, a maioria para ajuste de desempenho. Muitas das propriedades JNDI são abstrações de propriedades que são fornecidas pelo Elasticsearch.
 
-Todas as propriedades fornecidas pelo Elasticsearch também podem ser configuradas usando propriedades JNDI com **analytics/** pré-anexado antes do nome da
-propriedade. Por exemplo, **threadpool.search.queue_size** é uma propriedade fornecida pelo Elasticsearch. Ela pode ser configurada com a seguinte propriedade JNDI.
+Todas as propriedades fornecidas pelo Elasticsearch também podem ser configuradas usando propriedades JNDI com **analytics/** pré-anexado antes do nome da propriedade. Por exemplo, **threadpool.search.queue_size** é uma propriedade fornecida pelo Elasticsearch. Ela pode ser configurada com a seguinte propriedade JNDI.
 
 ```xml
 <jndiEntry jndiName="analytics/threadpool.search.queue_size" value="100" />
@@ -209,7 +200,7 @@ Nas instruções de amostra a seguir, não configure o nó para ser um nó princ
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	O cluster que você pretende associar a esse nó. |
     | discovery.zen.ping.multicast.enabled | 	falso | 	true | 	Configure como false para evitar associação de cluster acidental. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	Lista de nós principais no cluster existente. Mude a porta padrão de 9600 se você especificou uma configuração de porta de transporte nos nós principais. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Nenhuma | 	Lista de nós principais no cluster existente. Mude a porta padrão de 9600 se você especificou uma configuração de porta de transporte nos nós principais. |
     | node.master | 	falso | 	true | 	Não permitir que esse nó seja um principal. |
     | node.data|	falso | 	true | 	Não permitir que esse nó armazene dados. |
     | http.enabled | 	true	 | true | 	Abrir porta HTTP 9200 não segura para a API REST Elasticsearch. |
@@ -239,7 +230,7 @@ Nas instruções de amostra a seguir, não configure o nó para ser um nó princ
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	O cluster que você pretende associar a esse nó. |
     | discovery.zen.ping.multicast.enabled | 	falso | 	true | 	Configure como false para evitar associação de cluster acidental. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	Lista de nós principais no cluster existente. Mude a porta padrão de 9600 se você especificou uma configuração de porta de transporte nos nós principais. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Nenhuma | 	Lista de nós principais no cluster existente. Mude a porta padrão de 9600 se você especificou uma configuração de porta de transporte nos nós principais. |
     | node.master | 	falso | 	true | 	Não permitir que esse nó seja um principal. |
     | node.data|	falso | 	true | 	Não permitir que esse nó armazene dados. |
     | http.enabled | 	true	 | true | 	Abrir porta HTTP 9200 não segura para a API REST Elasticsearch. |

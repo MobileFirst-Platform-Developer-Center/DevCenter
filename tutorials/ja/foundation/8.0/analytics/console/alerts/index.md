@@ -9,21 +9,16 @@ weight: 1
 ## 概説
 {: #overview }
 
-アラートにより、
-{{site.data.keys.mf_analytics_console_full }}
-を定期的にチェックせずに、モバイル・アプリケーションの正常性をモニターするための事前対応手段が提供されます。  
-特定の条件が満たされたときにアラートを起動するための反応しきい値を
-{{site.data.keys.mf_analytics_console }} で設定できます。
+アラートにより、{{ site.data.keys.mf_analytics_console_full }} を定期的にチェックせずに、モバイル・アプリケーションの正常性をモニターするための事前対応手段が提供されます。  
+特定の条件が満たされたときにアラートを起動するための反応しきい値を {{ site.data.keys.mf_analytics_console }} で設定できます。
 
+しきい値は、幅広いレベル (特定アプリケーション) または細かいレベル (特定アプリケーション・インスタンスまたはデバイス) で設定できます。アラート通知は、{{ site.data.keys.mf_analytics_console_short }} に表示するように構成でき、事前構成された REST エンドポイントまたはカスタム Web フックに送信することも可能です。
 
-しきい値は、幅広いレベル (特定アプリケーション) または細かいレベル (特定アプリケーション・インスタンスまたはデバイス) で設定できます。
-アラート通知は、{{site.data.keys.mf_analytics_console_short }} に表示するように構成でき、事前構成された REST エンドポイントまたはカスタム Web フックに送信することも可能です。
-
-アラートが起動されると、({{site.data.keys.mf_analytics_console_short }} のタイトル・バー内の) **「アラート」**アイコンにアラート数が赤で表示されます (<img  alt="アラート・アイコン" style="margin:0;display:inline" src="alertIcon.png"/>)。**「アラート」**アイコンをクリックすると、アラートが表示されます。
+アラートが起動されると、({{ site.data.keys.mf_analytics_console_short }} のタイトル・バー内の) **「アラート」**アイコンにアラート数が赤で表示されます (<img  alt="アラート・アイコン" style="margin:0;display:inline" src="alertIcon.png"/>)。**「アラート」**アイコンをクリックすると、アラートが表示されます。
 
 アラートを配布する代替方法があります。
 
-**前提条件:** {{site.data.keys.mf_analytics_server }}が始動されていて、クライアント・ログを受信する準備ができていることを確認します。
+**前提条件:** {{ site.data.keys.mf_analytics_server }}が始動されていて、クライアント・ログを受信する準備ができていることを確認します。
 
 ## アラートの管理
 {: #alert-management }
@@ -31,10 +26,9 @@ weight: 1
 ### アラートの作成
 {: #creating-an-alert }
 
-{{site.data.keys.mf_analytics_console }} で、次のようにします。
+{{ site.data.keys.mf_analytics_console }} で、次のようにします。
 
 1. **「ダッシュボード」→「アラートの管理」**タブを選択します。**「アラートの作成 (Create Alert)」** ボタンをクリックします。
-
 
    ![「アラートの管理」タブ](alert_management_tab.png)
 
@@ -44,9 +38,9 @@ weight: 1
 ### 「配布方式」タブ
 {: #distribution-method-tab }
 
-デフォルトでは、アラートは {{site.data.keys.mf_analytics_console_short }}に表示されます。
+デフォルトでは、アラートは {{ site.data.keys.mf_analytics_console_short }}に表示されます。
 
-**「Analytics コンソールおよびネットワーク・ポスト」**オプションを選択することによって、JSON ペイロードを含む POSTメッセージを、{{site.data.keys.mf_analytics_console_short }}とカスタマイズされた URL の両方に送信することもできます。
+**「Analytics コンソールおよびネットワーク・ポスト」**オプションを選択することによって、JSON ペイロードを含む POSTメッセージを、{{ site.data.keys.mf_analytics_console_short }}とカスタマイズされた URL の両方に送信することもできます。
 
 このオプションを選択すると、以下のフィールドが使用可能になります。
 
@@ -60,7 +54,6 @@ weight: 1
 {: #custom-web-hook }
 
 アラートのカスタム配布方式をセットアップすることができます。例えば、アラートしきい値が起動されたときに、ペイロードが送信される先の Web フックを定義します。
-
 
 ペイロードの例:
 
@@ -97,7 +90,7 @@ POST 要求には、以下の属性が含まれます。
 ## アラート詳細の表示
 {: #viewing-alert-details }
 
-アラート詳細は、{{site.data.keys.mf_analytics_console }}で**「ダッシュボード」→「アラート・ログ」**タブから表示できます。
+アラート詳細は、{{ site.data.keys.mf_analytics_console }}で**「ダッシュボード」→「アラート・ログ」**タブから表示できます。
 
 ![新規アラート・ログ](alert-log.png)
 

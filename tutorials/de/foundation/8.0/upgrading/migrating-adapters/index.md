@@ -40,7 +40,7 @@ solange sie nicht die folgenden Bedingungen erfüllen:
 ## Java-Adapter
 auf Maven-Projekte in {{ site.data.keys.mf_server }} Version 8.0 umstellen
 {: #migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80}
-1. Erstellen Sie ein Maven-Adapterprojekt mit dem Archetyp
+1. Erstellen Sie ein Adapter-Maven-Projekt mit dem Archetyp
 **adapter-maven-archetype-java**. Wenn Sie den Parameter
 **artifactId** setzen, verwenden Sie den Adapternamen. Für den Parameter **package** müssen Sie dasselbe Paket wie beim vorhandenen Java-Adapter verwenden. Weitere Informationen finden Sie unter
 [Java-Adapter erstellen](../../adapters/creating-adapters).
@@ -101,7 +101,7 @@ to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introd
 ## JavaScript-Adapter
 auf Maven-Projekte in {{ site.data.keys.mf_server }} Version 8.0 umstellen
 {: #migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80 }
-1. Erstellen Sie ein Maven-Adapterprojekt mit dem Archetyp
+1. Erstellen Sie ein Adapter-Maven-Projekt mit dem Archetyp
 **adapter-maven-archetype-http** oder **adapter-maven-archetype-sql**. Wenn Sie den Parameter
 **artifactId** setzen, verwenden Sie den Adapternamen. Weitere Informationen finden Sie unter
 [JavaScript-Adapter erstellen](../../adapters/creating-adapters).

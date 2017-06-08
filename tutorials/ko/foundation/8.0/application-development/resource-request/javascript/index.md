@@ -15,7 +15,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{site.data.keys.product_adj }} 애플리케이션은 `WLResourceRequest` REST API를 사용하여 자원에 액세스할 수 있습니다.   
+{{ site.data.keys.product_adj }} 애플리케이션은 `WLResourceRequest` REST API를 사용하여 자원에 액세스할 수 있습니다.   
 REST API는 모든 어댑터 및 외부 자원에서 작동합니다. 
 
 **전제조건**:
@@ -154,7 +154,7 @@ onFailure: function(response) {
 
 ## 자세한 정보
 {: #for-more-information }
-> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html).
+> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](../../../api/client-side-api/javascript/client/).
 
 <img alt="샘플 애플리케이션 이미지" src="resource-request-success-cordova.png" style="float:right"/>
 ## 샘플 애플리케이션

@@ -114,13 +114,13 @@ folgenden Befehl aus:
 <img src="web-success.png" alt="Beispielanwendung" style="float:right"/>
 ### 5. Awendung testen
 {: #testing-the-application }
-1. Navigieren Sie in einem **Befehlszeilenfenster** zum Ordner **[Projektstammverzeichnis] → node-server**. 
-2. Führen Sie den Befehl `npm start` aus, um die erforderliche Node.js-Konfiguration zu installieren und den Node.js-Server zu starten. 
+1. Navigieren Sie in einem **Befehlszeilenfenster** zum Ordner **[Projektstammverzeichnis] → node-server**.
+2. Führen Sie den Befehl `npm start` aus, um die erforderliche Node.js-Konfiguration zu installieren und den Node.js-Server zu starten.
 3. Öffnen Sie die Datei **[Projektstammverzeichnis] → node-server → server.js** und bearbeiten Sie die Variablen **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.
     * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
     * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für Bluemix) verwenden, lauten die Werte in der Regel **https**, **your-server-address** und **443**. 
 
-   Beispiel:   
+   Beispiel:  
     
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // Adresse von Mobile Foundation Server
@@ -133,33 +133,29 @@ folgenden Befehl aus:
 <br>
 #### Secure-Origins-Richtlinie
 {: #secure-origins-policy }
-Wenn Sie während der Entwicklung Chrome und sowohl HTTP als auch einen Host verwenden, der **nicht** "localhost" ist,
-erlaubt der Browser möglicherweise nicht das Laden einer Anwendung. Der Grund dafür ist die in diesem Browser implementierte und standardmäßig verwendete Secure-Origins-Richtlinie. 
+Wenn Sie während der Entwicklung Chrome und sowohl HTTP als auch einen Host verwenden, der **nicht** "localhost" ist, erlaubt der Browser möglicherweise nicht das Laden einer Anwendung. Der Grund dafür ist die in diesem Browser implementierte und standardmäßig verwendete Secure-Origins-Richtlinie.
 
-Sie können dies ändern, indem Sie den Chrome-Browser mit folgender Option starten: 
+Sie können dies ändern, indem Sie den Chrome-Browser mit folgender Option starten:
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Die Option funktioniert, wenn Sie "test-to-new-user-profile/myprofile" durch die Position eines Ordners ersetzen, der als neues Chrome-Benutzerprofil verwendet werden kann. 
+- Die Option funktioniert, wenn Sie "test-to-new-user-profile/myprofile" durch die Position eines Ordners ersetzen, der als neues Chrome-Benutzerprofil verwendet werden kann.
 
 <br clear="all"/>
 ### Ergebnisse
 {: #results }
-* Wenn Sie auf die Schaltfläche
-**Ping {{ site.data.keys.mf_server }}** klicken, wird
-**Connected to {{ site.data.keys.mf_server }}** angezeigt.
-* Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt. 
+* Wenn Sie auf die Schaltfläche **Ping {{ site.data.keys.mf_server }}** klicken, wird **Connected to {{ site.data.keys.mf_server }}** angezeigt.
+* Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt.
 
-Die Antwort des Adapters wird in Form eines Alerts angezeigt. 
+Die Antwort des Adapters wird in Form eines Alerts angezeigt.
 
 ## Nächste Schritte
 {: #next-steps }
-Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen
-mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind: 
+Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind:
 
-- Gehen Sie die Lernprogramme zur [Anwendungsentwicklung](../../application-development/) durch. 
-- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch. 
-- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch. 
-- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an. 
+- Gehen Sie die Lernprogramme zur [Anwendungsentwicklung](../../application-development/) durch.
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch.
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch.
+- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an.

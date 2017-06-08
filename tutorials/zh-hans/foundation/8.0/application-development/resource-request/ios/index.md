@@ -198,7 +198,7 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` 允许您在主体中设置任意字典。
 - `sendWithData` 允许您在主体中设置任意 `NSData`。
 
-###  completionHandler 和 delegate 回调队列
+### completionHandler 和 delegate 回调队列
 为了避免在接收响应时阻止 UI，可以指定专用回调队列，执行 API 的 `sendWithCompletionHandler` 和 `sendWithDelegate` 集的 completionHandler 块和 delegate。
 
 #### Objective-C
@@ -240,7 +240,7 @@ request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void i
 
 ## 获取更多信息
 {: #for-more-information }
-> 有关 WLResourceRequest 的更多信息，请[参阅 API 参考](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html)。
+> 有关 WLResourceRequest 的更多信息，请[参阅 API 参考](../../../api/client-side-api/objc/client/)。
 
 <img alt="样本应用程序的图像" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## 样本应用程序

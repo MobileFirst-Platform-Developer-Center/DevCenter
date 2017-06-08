@@ -109,7 +109,8 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 
 ### 安装 {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
-运行 Installation Manager 以在磁盘上安装 {{ site.data.keys.mf_server }} 的二进制文件，然后再创建数据库并将 {{ site.data.keys.mf_server }} 部署至 Liberty 概要文件。在使用 Installation Manager 安装 {{ site.data.keys.mf_server }} 期间，会建议您安装 {{ site.data.keys.mf_app_center }}。Application Center 是产品的另一个组件。在本教程中，不需要随着 {{ site.data.keys.mf_server }} 一起安装该组件。
+运行 Installation Manager 以在磁盘上安装 {{ site.data.keys.mf_server }} 的二进制文件，然后再创建数据库并将 {{ site.data.keys.mf_server }} 部署至 Liberty 概要文件。在使用 Installation Manager 安装 {{ site.data.keys.mf_server }} 期间，会建议您安装 {{ site.data.keys.mf_app_center }}。
+Application Center 是产品的另一个组件。在本教程中，不需要随着 {{ site.data.keys.mf_server }} 一起安装该组件。
 
 1. 启动 Installation Manager。
 2. 在 Installation Manager 中添加 {{ site.data.keys.mf_server }} 的存储库。
@@ -120,8 +121,8 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 
         您还可能想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。确保输入修订包的存储库。如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** 中找到存储库文件。
     
-        > **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。修订包是累积安装程序，需要安装基本版本的存储库。    
-	* 选择该文件，然后单击**确定**。
+        > **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。修订包是累积安装程序，需要安装基本版本的存储库。
+    * 选择该文件，然后单击**确定**。
     * 单击**确定**以关闭“首选项”面板。
 
 3. 在您接受产品的许可条款之后，单击**下一步**。
@@ -130,7 +131,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 6. 在**常规设置**面板的**激活令牌许可**部分中，针对 **Rational License Key Server** 选项选择**不激活令牌许可**。
 
     在本教程中，假定不需要令牌许可，并且不包含为令牌许可配置 {{ site.data.keys.mf_server }} 的步骤。但对于生产安装，您必须确定是否需要激活令牌许可。如果您的某个合同要通过 Rational License Key Server 使用令牌许可，请选择使用 Rational License Key Server 激活令牌许可选项。在激活令牌许可之后，必须执行额外的步骤来配置 {{ site.data.keys.mf_server }}。
-    7. 保持**常规设置**面板的“安装 **{{ site.data.keys.product }} for iOS**”部分中的缺省选项（否）不变。
+7. 保持**常规设置**面板的“安装 **{{ site.data.keys.product }} for iOS**”部分中的缺省选项（否）不变。
 8. 在**选择配置**面板中选择“否”选项，这样便不会安装 Application Center。对于生产安装，请使用 Ant 任务来安装 Application Center。使用 Ant 任务进行安装使您能够将 {{ site.data.keys.mf_server }} 的更新与 Application Center 的更新区分开来。
 9. 单击**下一步**直到达到**谢谢您**面板。
 然后，继续进行安装。
@@ -244,7 +245,7 @@ Server Configuration Tool 不会部署以下 {{ site.data.keys.product_adj }} �
 13. 选择**安装推送服务**选项。
 
     当安装推送服务时，需要从管理服务到推送服务以及从管理服务和推送服务到运行时组件的 HTTP 或 HTTPS 流。
-    14. 选择**自动计算推送和授权服务 URL** 选项。
+14. 选择**自动计算推送和授权服务 URL** 选项。
 
     选择此选项时，Server Configuration Tool 会将应用程序配置为连接到同一服务器上安装的应用程序。当您使用聚类时，输入用于从 HTTP 负载均衡器连接到服务的 URL。
 在 WebSphere Application Server Network Deployment 上进行安装时，需要手动输入 URL。
@@ -254,8 +255,7 @@ Server Configuration Tool 不会部署以下 {{ site.data.keys.product_adj }} �
 16. 单击**下一步**。
 17. 保持**分析设置**面板的缺省条目不变。
 
-    要启用与分析服务器的连接，首先需要安装 {{ site.data.keys.mf_analytics }}。
-但是，此安装不包含在本教程中。
+    要启用与分析服务器的连接，首先需要安装 {{ site.data.keys.mf_analytics }}。但是，此安装不包含在本教程中。
 18. 单击**部署**。
 
 您可以在**控制台窗口**中看到已完成操作的详细信息。  
@@ -302,19 +302,19 @@ QUIT
 2. 在 `httpEndPoint` 声明中添加 `host='*'`。
 
     此设置旨在允许从所有网络接口连接至服务器。在生产环境中，您可能希望限制 HTTP 端点的主机值。
-    3. 在服务器配置中添加 **tcpOptions** 元素 (**tcpOptions soReuseAddr="true"**) 以启用与无活动侦听器的端口的即时重新绑定，并改进服务器的吞吐量。
+3. 在服务器配置中添加 **tcpOptions** 元素 (**tcpOptions soReuseAddr="true"**) 以启用与无活动侦听器的端口的即时重新绑定，并改进服务器的吞吐量。
 4. 如果不存在标识为 **defaultKeyStore** 的密钥库，那么会创建此密钥库。
 
     此密钥库旨在启用 HTTPS 端口，更具体而言，旨在启用管理服务 (mfp-admin-service.war) 与运行时组件 (mfp-server.war) 之间的 JMX 通信。这两个应用程序通过 JMX 进行通信。对于 Liberty 概要文件，restConnector 用于单一服务器中这两个应用程序之间的通信，也用于 Liberty 场中服务器之间的通信。它需要使用 HTTPS。对于缺省情况下创建的密钥库，Liberty 概要文件会创建一个证书，其有效期为 365 天。此配置不适用于生产用途。对于生产环境，您需要重新考虑使用自己的证书。    
 
     为启用 JMX，在基本注册表中会创建一个具有管理员角色的用户（名为 MfpRESTUser）。其名称和密码作为 JNDI 属性（mfp.admin.jmx.user 和 mfp.admin.jmx.pwd）提供，供运行时组件和管理服务用于运行 JMX 查询。在全局 JMX 属性中，某些属性用于定义集群方式（独立服务器或在场中工作）。Server Configuration Tool 在 Liberty 服务器中将 mfp.topology.clustermode 属性设置为 Standalone。在本教程后半部分有关创建场的内容中，该属性修改为 Cluster。
-    5. 创建用户（对 Apache Tomcat 和 WebSphere Application Server 同样有效）
+5. 创建用户（对 Apache Tomcat 和 WebSphere Application Server 同样有效）
     * 可选用户：Server Configuration Tool 会创建一名测试用户 (admin/admin) 以便您在安装后使用此用户登录控制台。
     * 必需用户：Server Configuration Tool 还会创建一名用户（名为 configUser_mfpadmin，使用随机生成的密码）供管理服务用于联系本地实时更新服务。对于 Liberty 服务器，会创建 MfpRESTUser。如果您的应用程序服务器没有配置为使用基本注册表（例如，LDAP 注册表），那么 Server Configuration Tool 将无法请求现有用户的名称。在此情况下，您需要使用 Ant 任务。
 6. **webContainer** 元素已修改。
 
     `deferServletLoad` Web 容器定制属性设置为 false。启动服务器时，必须启动运行时组件和管理服务。这些组件由此可注册 JMX Bean，并启动同步过程，以允许运行时组件下载需要维护的所有应用程序和适配器。
-    7. 如果您使用的是 Liberty V8.5.5.5 或更早版本，缺省执行程序需要进行定制，以将 `coreThreads` 和 `maxThreads` 设置为较大的值。从 V8.5.5.6 开始，缺省执行程序由 Liberty 自动调整。
+7. 如果您使用的是 Liberty V8.5.5.5 或更早版本，缺省执行程序需要进行定制，以将 `coreThreads` 和 `maxThreads` 设置为较大的值。从 V8.5.5.6 开始，缺省执行程序由 Liberty 自动调整。
 
     此设置避免了破坏某些 Liberty 版本上的运行时组件和管理服务的启动顺序的超时问题。在服务器日志文件中，缺少此语句可能导致出现以下错误：
     
@@ -392,12 +392,13 @@ Liberty Profile jvm.options 文件已修改。定义了一个属性 (com.ibm.ws.
 
 1. 使用命令 **server start mfp1** 启动服务器。服务器的二进制文件位于 **liberty\_install\_dir/bin** 中。
 2. 使用 Web 浏览器测试 {{ site.data.keys.mf_console }}。转至 [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。缺省情况下，服务器在端口 9080 上运行。但是，您可以在元素 `<httpEndpoint>` 中按 **server.xml** 文件中的定义验证此端口。这样会显示一个登录屏幕。
+
 ![控制台的登录屏幕](mfpconsole_signin.jpg)
 
 3. 使用 **admin/admin** 登录。缺省情况下，该用户由 Server Configuration Tool 创建。
 
     > **注：**如果使用 HTTP 连接，将在网络中以明文发送登录标识和密码。要进行安全登录，请使用 HTTPS 来登录服务器。可以在 **server.xml** 文件的 `<httpEndpoint>` 元素的 httpsPort 属性中查看 Liberty 服务器的 HTTPS 端口。缺省情况下，该值为 9443。
-    4. 使用**欢迎管理员 → 注销**来从控制台注销。
+4. 使用**欢迎管理员 → 注销**来从控制台注销。
 5. 在 Web 浏览器中输入以下 URL：[https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)，并接受证书。缺省情况下，Liberty 服务器会生成对 Web 浏览器未知的缺省证书，您需要接受此证书。Mozilla Firefox 将此证书显示为安全性异常。
 6. 使用 **admin/admin** 再次登录。在 Web 浏览器与 {{ site.data.keys.mf_server }} 之间会对登录和密码加密。对于生产环境，可以关闭 HTTP 端口。
 
@@ -414,7 +415,9 @@ Liberty Profile jvm.options 文件已修改。定义了一个属性 (com.ibm.ws.
     * 转至 **liberty\_install\_dir/bin**，并输入 **server create mfp2**。
 2. 修改服务器 mfp2 的 HTTP 和 HTTPS 端口，以避免与服务器 mfp1 的端口出现冲突。
     * 转到第二台服务器的目录。目录为 **liberty\_install\_dir/usr/servers/mfp2** 或 **WLP\_USER\_DIR/servers/mfp2**（如果按照[安装 WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core) 的步骤 6 中所述修改目录）。
-    * 编辑 **server.xml** 文件。将
+    * 编辑 **server.xml** 文件。
+将
+
 
 
     ```xml
@@ -440,7 +443,8 @@ Liberty Profile jvm.options 文件已修改。定义了一个属性 (com.ibm.ws.
     > **注：**  
     > 
     > * 如果服务器 mfp1 有环境标识（在本教程中不建议使用），那么必须将同一环境标识用于服务器 mfp2。
-    > * 如果修改了某些应用程序的上下文根，那么将相同的上下文根用于服务器 mfp2。一个场的服务器必须是对称的。    > * 如果创建了缺省用户 (admin/admin)，请在服务器 mfp2 中创建相同的用户。
+    > * 如果修改了某些应用程序的上下文根，那么将相同的上下文根用于服务器 mfp2。一个场的服务器必须是对称的。
+    > * 如果创建了缺省用户 (admin/admin)，请在服务器 mfp2 中创建相同的用户。
 
     Ant 任务会检测数据库是否存在，并且不会创建表（请参阅以下日志摘要）。然后会将应用程序部署到服务器。
     
@@ -477,12 +481,12 @@ Liberty Profile jvm.options 文件已修改。定义了一个属性 (com.ibm.ws.
 
     JMX 与 Liberty 的通信是通过使用 HTTPS 协议的 Liberty REST 接口完成的。要启用此通信，场的每个服务器都必须能识别其他成员的 SSL 证书。您需要在服务器信任库中交换 HTTPS 证书。使用 **java/bin** 中的 IBM 实用程序（例如，属于 IBM JRE 分发版的 Keytool）来配置信任库。在 **server.xml** 文件中定义了密钥库和信任库的位置。缺省情况下，Liberty Profile 的密钥库位于 **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** 中。此缺省密钥库的密码（显示在 **server.xml** 文件中）为 **mobilefirst**。
     
-    > **提示：**您可以使用 Keytool 实用程序来更改此密码，但必须同时更改 server.xml 文件中的密码，以便此 Liberty 服务器可以读取此密钥库。在本教程中，使用缺省密码。    
+    > **提示：**您可以使用 Keytool 实用程序来更改此密码，但必须同时更改 server.xml 文件中的密码，以便此 Liberty 服务器可以读取此密钥库。在本教程中，使用缺省密码。
     * 在 **WLP\_USER\_DIR/servers/mfp1/resources/security** 中，输入 `keytool -list -keystore key.jks`。此命令会显示密钥库中的证书。只有一个名为 **default** 的证书。系统会在提示您输入密钥库的密码 (mobilefirst)，然后您才能看到密钥。对于使用 Keytool 实用程序的所有后续命令都是如此。
     * 使用以下命令导出服务器 mfp1 的缺省证书：`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`。
-    * 在 **WLP\_USER\_DIR/servers/mfp2/resources/security** 中，使用以下命令导出服务器 mfp2 的缺省证书：`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`。
-     * 在同一个目录中，使用以下命令导入服务器 mfp1 的证书：`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。服务器 mfp1 的证书会导入服务器 mfp2 的米密钥库，以使服务器 mfp2 能够信任到服务器 mfp1 的 HTTPS 连接。系统会要求您确认您信任此证书。
-     * 在 **WLP_USER_DIR/servers/mfp1/resources/security** 中，使用以下命令导入服务器 mfp2 的证书：`keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`。执行此步骤后，即可在两台服务器之间建立 HTTPS 连接。
+        * 在 **WLP\_USER\_DIR/servers/mfp2/resources/security** 中，使用以下命令导出服务器 mfp2 的缺省证书：`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`。
+    * 在同一个目录中，使用以下命令导入服务器 mfp1 的证书：`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。服务器 mfp1 的证书会导入服务器 mfp2 的米密钥库，以使服务器 mfp2 能够信任到服务器 mfp1 的 HTTPS 连接。系统会要求您确认您信任此证书。
+    * 在 **WLP_USER_DIR/servers/mfp1/resources/security** 中，使用以下命令导入服务器 mfp2 的证书：`keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`。执行此步骤后，即可在两台服务器之间建立 HTTPS 连接。
 
 ## 测试场，并在 {{ site.data.keys.mf_console }} 中查看更改
 {: #testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console }

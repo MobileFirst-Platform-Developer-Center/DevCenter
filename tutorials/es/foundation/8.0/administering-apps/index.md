@@ -24,7 +24,7 @@ Las operaciones principales que puede realizar con {{ site.data.keys.mf_console 
 {: #administration-roles }
 No todos los tipos de usuarios de administración pueden realizar las operaciones de administración.
 {{ site.data.keys.mf_console }} y todas las herramientas de administración tienen cuatro roles diferentes para definir la administración de las aplicaciones de {{ site.data.keys.product_adj }}.
-Las siguientes 
+Las siguientes
 
 Roles de administración de {{ site.data.keys.product_adj }} definidos:
 
@@ -52,7 +52,7 @@ En este rol, el usuario puede realizar todas las operaciones de administración 
 
 
 Está disponible un conjunto de servicios REST para realizar operaciones de administración.
-Para obtener la documentación de referencia de API de estos servicios, consulte [API REST para el servicio de administración de {{ site.data.keys.mf_server }}](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
+Para obtener la documentación de referencia de API de estos servicios, consulte [API REST REST API para el servicio de administración de {{site.data.keys.mf_server }}](../api/rest/administration-service/).
 
 Con este conjunto de servicios REST, puede realizar las mismas operaciones que hace en {{ site.data.keys.mf_console }}.
 Puede gestionar aplicaciones, adaptadores, y, por ejemplo, subir una nueva versión de una aplicación o inhabilitar una versión antigua.
@@ -67,4 +67,3 @@ De forma parecida la consola basada en la web, los servicios REST, las tareas AN
 ### Seleccione un tema:
 
 {: #select-a-topic }
-

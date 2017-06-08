@@ -154,7 +154,7 @@ onFailure: function(response) {
 
 ## 詳細情報
 {: #for-more-information }
-> WLResourceRequest について詳しくは、[API リファレンスを参照してください](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html)。
+> WLResourceRequest について詳しくは、[API リファレンスを参照してください](../../../api/client-side-api/javascript/client/)。
 
 <img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-cordova.png" style="float:right"/>
 ## サンプル・アプリケーション

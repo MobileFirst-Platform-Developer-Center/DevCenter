@@ -151,30 +151,20 @@ des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die 
 {% endhighlight %}</li>
                     <li><b>maxConcurrentConnectionsPerNode</b>: Dieses <i>optionale</i> Unterelement definiert die maximale Anzahl Verbindungen, die der
 {{ site.data.keys.mf_server }} gleichzeitig zum
-Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es
-kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt. <br/><br/>
-                    Standardmäßig sind
-50 gleichzeitige HTTP-Verbindungen möglich. Schätzen Sie ein, wie viele gleichzeitige Anforderungen an den Adapter erwartet werden. Ausgehend von dieser Zahl und von den
-maximal zulässigen Anforderungen seitens des Back-End-Service können Sie die Anzahl der gleichzeitigen HTTP-Verbindungen modifizieren. Außerdem können Sie den Back-End-Service so konfigurieren, dass die Anzahl der gleichzeitig eingehenden Anforderungen begrenzt ist.<br/><br/>
-                    Stellen Sie sich ein System mit zwei Knoten vor, für das eine Belastung von 100 parallelen Anforderungen erwartet wird. Der Back-End-Service
-kann aber nur maximal 80 gleichzeitige Anforderungen unterstützen. Für den Fall können Sie maxConcurrentConnectionsPerNode auf
+Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt.<br/><br/>
+                    Standardmäßig sind 50 gleichzeitige HTTP-Verbindungen möglich. Schätzen Sie ein, wie viele gleichzeitige Anforderungen an den Adapter erwartet werden. Ausgehend von dieser Zahl und von den maximal zulässigen Anforderungen seitens des Back-End-Service können Sie die Anzahl der gleichzeitigen HTTP-Verbindungen modifizieren. Außerdem können Sie den Back-End-Service so konfigurieren, dass die Anzahl der gleichzeitig eingehenden Anforderungen begrenzt ist.<br/><br/>
+                    Stellen Sie sich ein System mit zwei Knoten vor, für das eine Belastung von 100 parallelen Anforderungen erwartet wird. Der Back-End-Service kann aber nur maximal 80 gleichzeitige Anforderungen unterstützen. Für den Fall können Sie maxConcurrentConnectionsPerNode auf
 40 setzen.
 Durch diese Einstellung ist sichergestellt, dass nicht mehr als 80 gleichzeitige Anforderungen an den Back-End-Service
 gerichtet werden.<br/><br/>
-                    Wenn Sie
-den
-Wert erhöhen, benötigt die Back-End-Anwendung mehr Hauptspeicher. Setzen Sie diesen Wert nicht zu hoch, um Speicherprobleme zu vermeiden. Schätzen Sie vielmehr ein, wie viele Transaktionen durchschnittlich und bei einer Spitzenbelastung anfallen,
+                    Wenn Sie den Wert erhöhen, benötigt die Back-End-Anwendung mehr Hauptspeicher. Setzen Sie diesen Wert nicht zu hoch, um Speicherprobleme zu vermeiden. Schätzen Sie vielmehr ein, wie viele Transaktionen durchschnittlich und bei einer Spitzenbelastung anfallen,
 und werten Sie die durchschnittliche Dauer der Transaktionen aus. Berechnen Sie dann die Anzahl der erforderlichen
 gleichzeitig bestehenden Verbindungen wie in diesem Beispiel und addieren Sie eine Reserve
 von 5-10 % hinzu.
 Überwachen Sie dann Ihr Back-End und passen Sie diesen Wert ggf. an, um sicherzustellen, dass Ihre Back-End-Anwendung alle eingehenden Anforderungen
 verarbeiten kann.<br/><br/>
-                    Wenn Sie Adapter in einem Cluster implementieren, setzen Sie dieses Attribut auf den Quotienten aus
-der maximal erforderlichen Arbeitslast und der Anzahl der Clustermember.
-                    <br/><br/>
-                    Weitere Informationen zur Berechnung der Größe
-Ihrer Back-End-Anwendung finden Sie im Dokument
-<a href="{{site.baseurl}}/learn-more">Scalability and Hardware Sizing</a> und dem zugehörigen Arbeitsblatt "Hardware Calculator". </li>
+                    Wenn Sie Adapter in einem Cluster implementieren, setzen Sie dieses Attribut auf den Quotienten aus der maximal erforderlichen Arbeitslast und der Anzahl der Clustermember.<br/><br/>
+                    Weitere Informationen zur Berechnung der Größe Ihrer Back-End-Anwendung finden Sie im Dokument <a href="{{site.baseurl}}/learn-more">Scalability and Hardware Sizing</a> und dem zugehörigen Arbeitsblatt "Hardware Calculator".</li>
                     <li><b>connectionTimeoutInMilliseconds</b>: Dieses <i>optionale</i> Unterelement gibt das Zeitlimit bis zum Herstellen einer Verbindung zum Back-End in Millisekunden an.
                 Durch das Festlegen dieses Zeitlimits ist nicht sichergestellt, dass nicht eine bestimmte Zeit nach dem Aufrufen der HTTP-Anforderung eine Ausnahme wegen einer Zeitlimitüberschreitung auftritt. Wenn Sie in der Funktion <code>invokeHTTP()</code> einen anderen Wert für diesen Parameter übergeben, wird der hier definierte Wert überschrieben. </li>
                     <li><b>socketTimeoutInMilliseconds</b>: Dieses <i>optionale</i> Unterelement gibt, beginnend beim Verbindungspaket, das Zeitlimit zwischen zwei

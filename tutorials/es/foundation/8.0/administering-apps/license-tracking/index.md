@@ -6,11 +6,11 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-El seguimiento de licencia está habilitado de forma predeterminada en {{site.data.keys.product_full }}, que realiza un seguimiento de las métricas relevantes para la política de licencias como, por ejemplo, dispositivos de cliente activos, dispositivos dirigibles y aplicaciones instaladas.
-Esta información le ayudará a decidir si el uso actual de {{site.data.keys.product }} está dentro de los niveles de titularidad de licencia y podrá ayudarle a prevenir posibles violaciones de licencia.
+El seguimiento de licencia está habilitado de forma predeterminada en {{ site.data.keys.product_full }}, que realiza un seguimiento de las métricas relevantes para la política de licencias como, por ejemplo, dispositivos de cliente activos, dispositivos dirigibles y aplicaciones instaladas.
+Esta información le ayudará a decidir si el uso actual de {{ site.data.keys.product }} está dentro de los niveles de titularidad de licencia y podrá ayudarle a prevenir posibles violaciones de licencia.
 
 
-Además, realizando el seguimiento del uso de dispositivos de clientes y determinando si los dispositivos están activos, los administradores de {{site.data.keys.product_adj }} pueden desactivar los dispositivos que ya no acceden a la plataforma {{site.data.keys.mf_server }}.
+Además, realizando el seguimiento del uso de dispositivos de clientes y determinando si los dispositivos están activos, los administradores de {{ site.data.keys.product_adj }} pueden desactivar los dispositivos que ya no acceden a la plataforma {{ site.data.keys.mf_server }}.
 Esta situación puede darse si un empleado por ejemplo deja la empresa.
 
 
@@ -24,10 +24,10 @@ Esta situación puede darse si un empleado por ejemplo deja la empresa.
 
 ## Establecimiento de la información de licencia de la aplicación
 {: #setting-the-application-license-information }
-Aprenda a establecer la información de licencia de la aplicación para las aplicaciones que registra en {{site.data.keys.mf_server }}.
+Aprenda a establecer la información de licencia de la aplicación para las aplicaciones que registra en {{ site.data.keys.mf_server }}.
 
 
-Los términos de la licencia distinguen entre {{site.data.keys.product_full }}, {{site.data.keys.product_full }} Consumer (Consumidor), {{site.data.keys.product_full }} Enterprise (Empresa) e IBM {{site.data.keys.product_adj }} Additional Brand Deployment (Despliegue de marca adicional).
+Los términos de la licencia distinguen entre {{ site.data.keys.product_full }}, {{ site.data.keys.product_full }} Consumer (Consumidor), {{ site.data.keys.product_full }} Enterprise (Empresa) e IBM {{ site.data.keys.product_adj }} Additional Brand Deployment (Despliegue de marca adicional).
 Establezca la información de licencia de una aplicación cuando la registre en un servidor de forma que los informes de seguimiento de licencias generen la información de licencia correcta.
 Si su servidor está configurado para la gestión de licencias de señal, la información de la licencia se utilizar para extraer la característica correcta del servidor de licencias.
 
@@ -36,9 +36,9 @@ Se establece el Tipo de aplicación y el Tipo de licencia de señal.
 Los valores posibles para Tipo de aplicación son:
   
 
-* **B2C**: Utilice este tipo de aplicación si la aplicación tiene licencia como consumidor de {{site.data.keys.product_full }}.
+* **B2C**: Utilice este tipo de aplicación si la aplicación tiene licencia como consumidor de {{ site.data.keys.product_full }}.
 
-* **B2E**: Utilice este tipo de aplicación si la aplicación tiene licencia como empresa de {{site.data.keys.product_full }}.
+* **B2E**: Utilice este tipo de aplicación si la aplicación tiene licencia como empresa de {{ site.data.keys.product_full }}.
 
 * **UNDEFINED**: Utilice este tipo de aplicación si no necesita realizar un seguimiento del cumplimiento en relación a la métrica Dispositivos dirigibles.
 
@@ -48,7 +48,7 @@ Los valores posibles para el Tipo de licencia de señal son:
 
 * **APPLICATION**: Utilice APPLICATION para la mayoría de las aplicaciones.
 Éste es el valor predeterminado.
-* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Utilice ADDITIONAL\_BRAND\_DEPLOYMENT si su aplicación se licencia como IBM {{site.data.keys.product_adj }} Additional Brand Deployment.
+* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Utilice ADDITIONAL\_BRAND\_DEPLOYMENT si su aplicación se licencia como IBM {{ site.data.keys.product_adj }} Additional Brand Deployment.
 
 * **NON_PRODUCTION**: Utilice NON\_PRODUCTION mientras desarrolla o prueba la aplicación en el servidor de producción.
 Con las aplicaciones que tiene un tipo de licencia de señal NON_PRODUCTION no se extrae ninguna señal.
@@ -63,7 +63,7 @@ Una vez establecida al información de la licencia, se extraerá el número de s
 Para obtener más información sobre la validación de señales, consulte Validación de licencias de señal.
 
 
-Para establecer el tipo de licencia con {{site.data.keys.mf_console }}
+Para establecer el tipo de licencia con {{ site.data.keys.mf_console }}
 
 1. Seleccione su aplicación
 2. Seleccione **Valores**
@@ -82,12 +82,12 @@ rm password.txt
 
 ## Informe de seguimiento de licencias
 {: #license-tracking-report }
-{{site.data.keys.product }} proporciona un informe de seguimiento de licencias para la métrica Dispositivo de cliente, la métrica Dispositivo dirigible y la métrica Aplicación.
+{{ site.data.keys.product }} proporciona un informe de seguimiento de licencias para la métrica Dispositivo de cliente, la métrica Dispositivo dirigible y la métrica Aplicación.
 El informe también proporciona datos históricos.
 
 El informe de seguimiento de licencias muestra los datos siguientes:
 
-* Número de aplicaciones desplegadas en el servidor de {{site.data.keys.mf_server }}.
+* Número de aplicaciones desplegadas en el servidor de {{ site.data.keys.mf_server }}.
 * Número de dispositivos dirigibles del mes actual del calendario. 
 * Número de dispositivos de cliente, tanto activos como fuera de servicio.
 
@@ -100,7 +100,7 @@ Para este propósito, puede descargar un archivo CSV que incluye los informes de
 
 Para acceder al informe de Seguimiento de licencias, 
 
-1. Abra {{site.data.keys.mf_console }}. 
+1. Abra {{ site.data.keys.mf_console }}. 
 2. Pulse el menú **Hola, su_nombre**.
 
 3. Seleccione **Licencias**.
@@ -109,7 +109,7 @@ Para obtener un archivo CSV desde el informe de Seguimiento de licencias, pulse 
 
 ## Validación de licencias de señal
 {: #token-license-validation }
-Si instala y configura IBM {{site.data.keys.mf_server }} para la gestión de licencias de señal, el servidor valida las licencias en varios escenarios.
+Si instala y configura IBM {{ site.data.keys.mf_server }} para la gestión de licencias de señal, el servidor valida las licencias en varios escenarios.
 Si su configuración no es correcta, la licencia no se valida en la supresión o registro de aplicación.
 
 
@@ -153,9 +153,9 @@ Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones,
 Después de cierto tiempo, la licencia caduca y se debe extraer de nuevo.
 El servidor desactiva las aplicaciones si no hay disponbiles señales suficientes para todas las aplicaciones.
 
+
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones.
 Después de aumentar el número de señales disponibles, debe volver a activar las aplicaciones manualmente. Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
-
 #### Al concluir el servidor
 {: #at-server-shutdown }
 Durante la conclusión de un servidor se incorporan las licencias de todas las aplicaciones desplegadas.
@@ -176,7 +176,7 @@ Para obtener más información, consulte [Instalación y configuración para la 
 
 * La licencia ha caducado.
 
-### Nombre de característica de IBM Rational License Key Server utilizada por {{site.data.keys.product_full }}
+### Nombre de característica de IBM Rational License Key Server utilizada por {{ site.data.keys.product_full }}
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 Dependiendo del tipo de licencia de señal de una aplicación, se utilizan las siguientes características.
 
@@ -192,7 +192,7 @@ Dependiendo del tipo de licencia de señal de una aplicación, se utilizan las s
 IBM License Metric Tool permite evaluar el cumplimiento de su licencia de IBM.
 
 
-Si no ha instalado una versión de IBM License Metric Tool que dé soporte a archivos IBM Software License Metric Tag o SWID (identificación de software), puede revisar el uso de la licencia con los informes de Seguimiento de licencias en {{site.data.keys.mf_console }}.
+Si no ha instalado una versión de IBM License Metric Tool que dé soporte a archivos IBM Software License Metric Tag o SWID (identificación de software), puede revisar el uso de la licencia con los informes de Seguimiento de licencias en {{ site.data.keys.mf_console }}.
 Para obtener más información, consulte [Informe de seguimiento de licencias](#license-tracking-report).
 
 
@@ -202,7 +202,7 @@ Si ha comprado una oferta IBM MobileFirst Foundation Extension V8.0.0, se licenc
 
 
 El cálculo de PVU se basa en el soporte de IBM License Metric Tool para archivos SWID e ISO/IEC 19970-2.
-Los archivos SWID se graban en el servidor cuando IBM Installation Manager instala {{site.data.keys.mf_server }} o {{site.data.keys.mf_analytics_server }}.
+Los archivos SWID se graban en el servidor cuando IBM Installation Manager instala {{ site.data.keys.mf_server }} o {{ site.data.keys.mf_analytics_server }}.
 Cuando IBM License Metric Tool descubre un archivo SWID no válido para un producto de acuerdo al catálogo actual, se visualiza una señal de aviso en el widget de Catálogo de software.
 Para obtener más información sobre cómo funciona IBM License Metric Tool con archivos SWID, consulte [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
 
@@ -213,7 +213,7 @@ La licencia de PVU para Foundation Extension únicamente se puede comprar junto 
 IBM WebSphere Application Server Network Deployment, IBM API Connect Professional o IBM API Connect Enterprise.
 IBM Installation Manager añade o actualiza el archivo SWID que License Metric Tool utilizará.
 
-> Para obtener más información sobre {{site.data.keys.product_full }} Extension, consulte [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
+> Para obtener más información sobre {{ site.data.keys.product_full }} Extension, consulte [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
 > Para obtener más información sobre la gestión de licencias de PVU, consulte [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
 
@@ -221,7 +221,7 @@ IBM Installation Manager añade o actualiza el archivo SWID que License Metric T
 {: #slmt-tags }
 IBM MobileFirst Foundation genera archivos IBM Software License Metric Tag (SLMT).
 Las versiones de IBM License Metric Tool que dan soporte a IBM Software License Metric Tag pueden generar informes de consumo de licencia.
-Lea esta sección para interpretar estos informes para {{site.data.keys.mf_server }}, y para configurar la generación de archivos IBM Software License Metric Tag.
+Lea esta sección para interpretar estos informes para {{ site.data.keys.mf_server }}, y para configurar la generación de archivos IBM Software License Metric Tag.
 
 
 Cada instancia de un entorno de tiempo de ejecución de MobileFirst genera un archivo IBM Software License Metric Tag.

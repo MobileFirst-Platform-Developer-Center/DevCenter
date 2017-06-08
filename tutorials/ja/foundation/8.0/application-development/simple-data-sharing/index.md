@@ -31,10 +31,10 @@ weight: 12
 * アプリケーション記述子でアプリケーション・ファミリーに同じ値を指定する。
 	* iOS アプリケーションの場合、この要件は、アクセス・グループ資格値と同義です。
 	* Android アプリケーションの場合、この要件は、**AndroidManifest.xml** ファイル内の **sharedUserId** 値と同義です。
-		
+
     > **注:** Android の場合、名前は **x.y** 形式でなければなりません。
 
-* アプリケーションは、同じ署名 ID で署名されなければならない。この要件は、同じ組織のアプリケーションのみがこのフィーチャーを使用できるということを意味します。	
+* アプリケーションは、同じ署名 ID で署名されなければならない。この要件は、同じ組織のアプリケーションのみがこのフィーチャーを使用できるということを意味します。
     * iOS アプリケーションの場合、この要件は、同じアプリケーション ID 接頭部、同じプロビジョニング・プロファイル、および同じ署名 ID を使用してアプリケーションに署名する、ということを意味します。
 	* Android アプリケーションの場合、この要件は、同じ署名証明書と署名鍵が使用される、ということを意味します。
 
@@ -62,11 +62,11 @@ Xcode/Android Studio でアプリケーションを開き、以下のように�
 4. アプリケーションを保存して署名します。このグループ内のすべてのアプリケーションが同じ iOS 証明書およびプロビジョニング・プロファイルによって署名されるようにします。
 5. 同じアプリケーション・ファミリーの一部とするすべてのアプリケーションに対して、これらの手順を繰り返します。
 
-これで、ネイティブ単純データ共有 API を使用して、同じファミリーに属するアプリケーション・グループの間で単純なストリングを共有できるようになりました。 
+これで、ネイティブ単純データ共有 API を使用して、同じファミリーに属するアプリケーション・グループの間で単純なストリングを共有できるようになりました。
 
 ### Android
 {: #android }
-1. **AndroidManifest.xml** ファイルのマニフェスト・タグ内の **android:sharedUserId** エレメントとして、アプリケーション・ファミリー名を指定することによって、「単純データ共有」オプションを有効にします。例えば、次のとおりです。 
+1. **AndroidManifest.xml** ファイルのマニフェスト・タグ内の **android:sharedUserId** エレメントとして、アプリケーション・ファミリー名を指定することによって、「単純データ共有」オプションを有効にします。例えば、次のとおりです。
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -74,7 +74,7 @@ Xcode/Android Studio でアプリケーションを開き、以下のように�
         android:versionName="1.0"
         android:sharedUserId="com.myGroup1">
    ```
-    
+
 2. 同じファミリーに属しているアプリケーションが同じ署名資格情報により署名されていることを確認します。
 3. **sharedUserId** を指定していなかった、または異なる **sharedUserId** を使用していた、前のバージョンのアプリケーションをすべてアンインストールします。
 4. アプリケーションをデバイスにインストールします。
@@ -96,7 +96,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> Cordova API について詳しくは、API リファレンスで [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken)、[setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken)、および [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) の各関数を参照してください。
+> Cordova API について詳しくは、`WL.Client` API リファレンスで [getSharedToken](../../api/client-side-api/javascript/client/)、[setSharedToken](../../api/client-side-api/javascript/client/)、および [clearSharedToken](../../api/client-side-api/javascript/client/) の各関数を参照してください。
 
 ### Objective-C
 {: #objective-c }
@@ -106,7 +106,7 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 [WLSimpleDataSharing clearSharedToken: myName];
 ```
 
-> Objective-C API について詳しくは、API リファレンスで [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) クラスを参照してください。
+> Objective-C API について詳しくは、API リファレンスで [WLSimpleDataSharing](../../api/client-side-api/objc/client/) クラスを参照してください。
 
 ### Java
 {: #java }
@@ -116,7 +116,7 @@ String token = WLSimpleSharedData.getSharedToken(myName);
 WLSimpleSharedData.clearSharedToken(myName);
 ```
 
-> Java API については、API リファレンスでクラス [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html) を参照してください。
+> Java API については、API リファレンスでクラス [WLSimpleDataSharing](../../api/client-side-api/java/client/) を参照してください。
 
 ## 制限および考慮事項
 {: #limitations-and-considerations }

@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-AppCenter Installer アプリケーションは、モバイル・デバイスにアプリケーションをインストールするために使用されます。提供されている Cordova プロジェクトまたは MobileFirst Studio プロジェクトのいずれかを使用してこのアプリケーションを生成することも、Android、iOS、または Windows 8 Universal 用の MobileFirst Studio プロジェクトの事前ビルド・バージョンを直接使用することもできます。
+AppCenter Installer アプリケーションは、モバイル・デバイスにアプリケーションをインストールするために使用されます。提供されている Cordova プロジェクト、Visual Studio プロジェクト、MobileFirst Studio プロジェクトのいずれかを使用してこのアプリケーションを生成することも、Android、iOS、または Windows 8 Universal 用の MobileFirst Studio プロジェクトの事前ビルド・バージョンを直接使用することもできます。
 
 #### ジャンプ先
 {: #jump-to }
@@ -162,9 +162,29 @@ Windows 8 プロジェクトをビルドするには、次のようにします�
 
 Application Center のユーザーにモバイル・クライアントを配布するには、生成された実行可能 (.exe) ファイルおよび依存するダイナミック・リンク・ライブラリー (.dll) ファイルをインストールするインストーラーを後で生成できます。代わりに、これらのファイルをインストーラーに含めずに提供することもできます。
 
+####  Microsoft Windows 10 Universal (ネイティブ) IBM AppCenter クライアント
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
+
+ネイティブ Windows 10 Universal IBM AppCenter クライアントを使用して、Windows 10 Universal アプリケーションを Windows 10 Phone にインストールできます。Windows デスクトップに Windows 10 アプリケーションをインストールする場合は、**IBMApplicationCenterWindowsStore** を使用します。
+
+#### Microsoft Windows 10 Universal: プロジェクトのビルド
+{: #microsoft-windows-10-universal-building-the-project}
+
+Windows 10 Universal プロジェクトは、Visual Studio プロジェクトとして提供され、**IBMAppCenterUWP\IBMAppCenterUWP.csproj** にあります。             
+Microsoft Visual Studio 2015 でクライアント・プロジェクトをビルドしてから配布する必要があります。
+>プロジェクトのビルドは、ユーザーに配布する前の前提条件です。
+
+Windows 10 Universal プロジェクトをビルドするには、以下のステップを実行します。
+1.  Microsoft Visual Studio 2015 で **IBMAppCenterUWP\IBMAppCenterUWP.csproj** という名前の Visual Studio プロジェクト・ファイルを開きます。
++ アプリケーションのフルビルドを実行します。
++ 以下のステップを使用して、**.appx** ファイルを生成します。
+  * プロジェクトを右クリックし、**「ストア」 → 「アプリケーション・パッケージの作成 (Create App Packages)」**を選択します。
+
 ## フィーチャーのカスタマイズ (エキスパート向け): Android、iOS、Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
 セントラル・プロパティー・ファイルを編集し、その他のいくつかのリソースを操作することによって、フィーチャーをカスタマイズすることができます。
+>これは、Android、iOS、Windows 8 (Windows Store パッケージのみ)、または Windows Phone 8 でのみサポートされています。
+
 
 フィーチャーをカスタマイズするため: 一部のフィーチャーは、ディレクトリー **IBMAppCenter/apps/AppCenter/common/js/appcenter/** または **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 内の **config.json** というセントラル・プロパティー・ファイルによって制御されます。デフォルトのアプリケーション動作を変更したい場合は、プロジェクトをビルドする前に、このプロパティー・ファイルを改作することができます。
 
@@ -194,12 +214,16 @@ Application Center のユーザーにモバイル・クライアントを配布�
 * **Android:** Android Studio プロジェクトの **/res/drawabledensity** ディレクトリー内の **icon.png** という名前のファイル。density ごとに 1 つのディレクトリーが存在します。
 * **iOS:** Xcode プロジェクトの **Resources** ディレクトリー内の **iconsize.png** という名前のファイル。
 * **Windows Phone:** Windows Phone 用の MobileFirst Studio 環境フォルダーの **native** ディレクトリー内の **ApplicationIcon.png**、**IconicTileSmallIcon.png**、および **IconicTileMediumIcon.png** という名前のファイル。
+* **Windows 10 Universal:** Visual Studio の **IBMAppCenterUWP/Assets** ディレクトリー内の **Square\*Logo\*.png**、**StoreLogo.png**、および **Wide\*Logo\*.png** という名前のファイル。
+
 
 #### アプリケーション名
 {: #application-name }
 * **Android:** Android Studio プロジェクトの **res/values/strings.xml** ファイル内の **app_name** プロパティーを編集します。
 * **iOS:** Xcode プロジェクトの **IBMAppCenterAppCenterIphone-Info.plist** ファイル内の **CFBundleDisplayName** キーを編集します。
 * **Windows Phone:** Visual Studio の **Properties/WMAppManifest.xml** ファイル内の App エントリーの **Title** 属性を編集します。
+* **Windows 10 Universal:** Visual Studio の **IBMAppCenterUWP/Package.appxmanifest** ファイル内の App エントリーの **Title** 属性を編集します。
+
 
 #### スプラッシュ画面イメージ
 {: #splash-screen-images }
@@ -207,6 +231,7 @@ Application Center のユーザーにモバイル・クライアントを配布�
 * **iOS:** Xcode プロジェクトの **Resources** ディレクトリー内の **Default-size.png** という名前のファイル。
 * 自動ログイン時の Cordova/MobileFirst Studio ベースのプロジェクトのスプラッシュ画面: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Windows Phone 用の MobileFirst Studio 環境フォルダーの **native** ディレクトリー内の **SplashScreenImage.png** という名前のファイルを編集します。
+* **Windows 10 Universal:** Visual Studio の **IBMAppCenterUWP/Assets** ディレクトリー内の **SplashScreen*.png** という名前のファイルを編集します。
 
 #### アプリケーションのアイコン (ボタン、星印、および同様のオブジェクト)
 {: #icons }
@@ -222,6 +247,6 @@ Application Center のユーザーにモバイル・クライアントを配布�
 
 Windows 8 モバイル・クライアントは、後で配布するために Application Center にデプロイすることを意図していません。Windows 8 モバイル・クライアントは、クライアントの .exe 実行可能ファイルとダイナミック・リンク・ライブラリーの .dll ファイルをアーカイブに直接パッケージしてユーザーに提供する方法か、または Windows 8 モバイル・クライアント用の実行可能インストーラーを作成する方法で配布できます。
 
-Android、iOS、および Windows Phone のバージョンのモバイル・クライアントを Application Center にデプロイする必要があります。そうするには、Android アプリケーション・パッケージ (.apk) ファイル、iOS アプリケーション (.ipa) ファイル、および Windows Phone アプリケーション (.xap) ファイル、Web ディレクトリー・アーカイブ (.zip) ファイルを Application Center にアップロードする必要があります。
+Android、iOS、Windows Phone、および Windows 10 Universal (Phone) のバージョンのモバイル・クライアントを Application Center にデプロイする必要があります。そうするには、Android アプリケーション・パッケージ (.apk) ファイル、iOS アプリケーション (.ipa) ファイル、Windows Phone アプリケーション (.xap) ファイル、Windows 10 Universal (.appx) ファイル、または Web ディレクトリー・アーカイブ (.zip) ファイルを Application Center にアップロードする必要があります。
 
-[『モバイル・アプリケーションの追加』](../appcenter-console/#adding-a-mobile-application)で説明されているステップに従って、Android、iOS、および Windows Phone 用のモバイル・クライアント・アプリケーションを追加します。Installer アプリケーション・プロパティーを選択して、当該アプリケーションがインストーラーであることを指定します。このプロパティーを選択すると、モバイル・デバイス・ユーザーがモバイル・クライアント・アプリケーションのインストールを無線で簡単に行えるようになります。 モバイル・クライアントをインストールするには、オペレーティング・システムで決まるモバイル・クライアント・アプリケーションのバージョンに対応する関連タスクを参照してください。 
+[『モバイル・アプリケーションの追加』](../appcenter-console/#adding-a-mobile-application)で説明されているステップに従って、Android、iOS、Windows Phone、および Windows 10 Universal 用のモバイル・クライアント・アプリケーションを追加します。Installer アプリケーション・プロパティーを選択して、当該アプリケーションがインストーラーであることを指定します。このプロパティーを選択すると、モバイル・デバイス・ユーザーがモバイル・クライアント・アプリケーションのインストールを無線で簡単に行えるようになります。 モバイル・クライアントをインストールするには、オペレーティング・システムで決まるモバイル・クライアント・アプリケーションのバージョンに対応する関連タスクを参照してください。 

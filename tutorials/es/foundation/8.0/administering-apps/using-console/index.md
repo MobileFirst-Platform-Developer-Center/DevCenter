@@ -54,7 +54,7 @@ El bloqueo de acceso tiene las siguientes características:
 
 ### Estado de dispositivo
 {: #device-status }
-{{ site.data.keys.mf_server }} mantiene información de estado para cada dispositivo que accede al servidor. Los valores de estado posibles son **Activo**, **Perdido**, **Robado**, **Caducado** e **Inhabilitado**. 
+{{ site.data.keys.mf_server }} mantiene información de estado para cada dispositivo que accede al servidor. Los valores de estado posibles son **Activo**, **Perdido**, **Robado**, **Caducado** e **Inhabilitado**.
 
 El estado de dispositivo predeterminado es **Activo**, lo que indica que el acceso desde este dispositivo no está bloqueado.
 Puede cambiar el estado a **Perdido**, **Robado** o **Inhabilitado** para bloquear el acceso desde el dispositivo a los recursos de su aplicación.
@@ -70,13 +70,7 @@ Cuando un dispositivo con un estado **Caducado** se vuelve a conectar con el ser
 ### Nombre para mostrar de dispositivo
 {: #device-display-name }
 {{ site.data.keys.mf_server }} identifica a los dispositivos mediante un ID de dispositivo exclusivo, que el SDK de cliente {{ site.data.keys.product_adj }} asigna.
-El establecer un nombre para mostrar para un dispositivo permite buscar el dispositivo por dicho nombre para mostrar.
-Los desarrolladores de aplicaciones pueden utilizar el método `setDeviceDisplayName` de la clase `WLClient` para establecer el nombre de dispositivo para mostrar.
-Consulte la documentación de `WLClient` en la [API del lado de cliente de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html).
-(La clase JavaScript es `WL.Client`).
-Los desarrolladores de adaptadores de Java (incluidos los desarrolladores de comprobaciones de seguridad) también pueden establecer el nombre para mostrar del dispositivo utilizando el método `setDeviceDisplayName` de la clase `MobileDeviceData` de com.ibm.mfp.server.registration.external.model.
-Consulte [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
-
+El establecer un nombre para mostrar para un dispositivo permite buscar el dispositivo por dicho nombre para mostrar. Los desarrolladores de aplicaciones pueden utilizar el método `setDeviceDisplayName` de la clase `WLClient` para establecer el nombre de dispositivo para mostrar. Consulte la documentación de `WLClient` en la [API del lado del cliente de {{ site.data.keys.product_adj }}](../../api/client-side-api/javascript/client/). (La clase JavaScript es `WL.Client`). Los desarrolladores de adaptadores de Java (incluidos los desarrolladores de comprobaciones de seguridad) también pueden establecer el nombre para mostrar del dispositivo utilizando el método `setDeviceDisplayName` de la clase `MobileDeviceData` de com.ibm.mfp.server.registration.external.model. Consulte [MobileDeviceData](../../api/client-side-api/objc/client/). 
 
 ### Gestión de acceso de dispositivos en {{ site.data.keys.mf_console }}
 {: #managing-device-access-in-mobilefirst-operations-console }
@@ -196,7 +190,7 @@ En la sección **Subir archivo** de la ventana de diálogo visualizada, seleccio
    Cada línea en el archivo CSV contiene un pareja de series separadas por coma.
 La primera serie es el código del entorno local (como, por ejemplo, fr-FR para francés (Francia) o en para inglés), y la segunda serie es el texto del mensaje en correspondiente idioma.
 Los códigos de entorno local que se especifiquen deben cumplir los estándares que el sistema operativo utilice para especificar entornos locales como, por ejemplo, ISO 639-1, ISO 3166-2 e ISO 15924.
-    
+
    > **Nota:** Para crear un archivo CSV, debe utilizar un editor que de soporte a la codificación UTF-8 como, por ejemplo, Notepad.
 
 
@@ -273,7 +267,7 @@ El registro de auditoría se puede inhabilitar estableciendo la propiedad Java N
 
 Para acceder al registro de auditoría, pulse el nombre de usuario en la barra de la cabecera y seleccione **Acerca de **, pulse **Soporte adicional** y, a continuación, **Descargar registro de auditoría**.
 
-| Nombre de campo  | Descripción | 
+| Nombre de campo  | Descripción |
 |------------|-------------|
 | Timestamp	 | Fecha y hora en que se creó el registro. |
 | Type	     | Tipo de operación.  Consulte la lista de tipos de operación para conocer los posibles valores.  |
@@ -315,5 +309,3 @@ En la siguiente lista se muestran los posibles valores del tipo de operación.
 * deleteTag
 * add runtime
 * delete runtime
-
-

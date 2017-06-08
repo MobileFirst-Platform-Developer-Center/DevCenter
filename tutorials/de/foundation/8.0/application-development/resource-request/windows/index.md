@@ -1,93 +1,97 @@
 ---
 layout: tutorial
-title: Resource request from Windows applications
+title: Ressourcenanforderung von Windows-Anwendungen
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
-  - name: Download Native Windows 8 project
+  - name: Natives Windows-8-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
-  - name: Download Native Windows 10 project
+  - name: Natives Windows-10-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.mf_console }} applications can access resources using the `WorklightResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Mit der {{ site.data.keys.mf_console }} erstellte Anwendungen können mit der REST-API `WorklightResourceRequest` auf Ressourcen zugreifen.   
+Die REST-API funktioniert mit allen Adaptern und externen Ressourcen. 
 
-**Prerequisites**:
+**Voraussetzungen:**
 
-- Ensure you have added the {{ site.data.keys.product }} SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../application-development/sdk/windows-8-10).
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- Stellen Sie sicher, dass das SDK der {{ site.data.keys.product }} zu Ihrer nativen [universellen Windows-8.1- oder Windows-10-UWP-Anwendung](../../../application-development/sdk/windows-8-10) hinzugefügt wurde. 
+- Informieren Sie sich über das [Erstellen von Adaptern](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WorklightResourceRequest` class handles resource requests to adapters or external resources.
+Die Klasse `WorklightResourceRequest` handhabt an Adapter oder externe Ressourcen gerichtete Ressourcenanforderungen. 
 
-Create a `WorklightResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `GET`, `POST`, `PUT` and `DELETE`.
+Erstellen Sie ein `WorklightResourceRequest`-Objekt und geben Sie den Pfad zu der Ressource und die HTTP-Methode an.   
+Verfügbare Methoden sind `GET`, `POST`, `PUT` und `DELETE`.
 
 ```cs
 URI adapterPath = new URI("/adapters/JavaAdapter/users",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
-* **scope**: Optional, if you know which scope is protecting the resource - specifying this scope could make the request more efficient.
+* Verwenden Sie für **JavaScript-Adapter** `/adapters/{AdapterName}/{procedureName}`. 
+* Verwenden Sie für **Java-Adapter** `/adapters/{AdapterName}/{path}`. Die Angabe für `path` hängt davon ab, wie Sie Ihre
+`@Path`-Annotationen im Java-Code definiert haben. Eingeschlossen sind auch alle verwendeten `@PathParam`-Annotationen. 
+* Wenn Sie auf Ressourcen außerhalb des Projekts zugreifen möchten, verwenden Sie die vollständige URL nach Maßgabe des externen Servers. 
+* **timeout**: Anforderungszeitlimit in Millisekunden (optional)
+* **scope**: Optional, wenn Sie wissen, mit welchem Bereich die Ressource geschützt wird. Durch Angabe dieses Bereichs kann die Abfrage effizienter werden. 
 
-## Sending the request
+## Anforderung senden
 {: #sending-the-request }
-Request the resource by using the `.send()` method.
+Fordern Sie die Ressource mit der Methode `.send()` an. 
 
 ```cs
 WorklightResponse response = await request.send();
 ```
 
-Use the `WorklightResponse response` object to get the data that is retrieved from the adapter.
+Verwenden Sie das Objekt `WorklightResponse response`, um die vom Adapter abgerufenen Daten zu erhalten. 
 
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `ResponseText`, `ResponseJSON` (if the response is in JSON) , `Success` (if the invoke was successful or failure) and `HTTPStatus` (the HTTP status of the response).
+Das Objekt `response` enthält die Antwortdaten. Über die Methoden und Eigenschaften dieses Objekts können Sie die erforderlichen Informationen abrufen. Gängige Eigenschaften sind
+`ResponseText`, `ResponseJSON` (wenn die Antwort im JSON-Format vorliegt) , `Success`
+(zur Angabe, ob der Aufruf erfolgreich war oder fehlgeschlagen ist) und `HTTPStatus` (HTTP-Status der Antwort). 
 
-## Parameters
+## Parameter
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+Bevor Sie Ihre Anforderung senden, können Sie nach Bedarf Parameter hinzufügen. 
 
-### Path parameters
+### Pfadparameter
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WorklightResourceRequest` object:
+Pfadparameter (`/path/value1/value2`) werden - wie bereits erläutert - während der Erstellung des `WorklightResourceRequest`-Objekts festgelegt: 
 
 ```cs
 Uri adapterPath = new Uri("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.createInstance(adapterPath,"GET");
 ```
 
-### Query parameters
+### Abfrageparameter
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `SetQueryParameter` method for each parameter:
+Wenn Sie Abfrageparameter (`/path?param1=value1...`) senden möchten, verwenden Sie für die einzelnen Parameter die Methode `SetQueryParameter`: 
 
 ```cs
 request.SetQueryParameter("param1","value1");
 request.SetQueryParameter("param2","value2");
 ```
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters-query }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 ```cs
 request.SetQueryParameter("params","['value1', 'value2']");
 ```
 
-This should be used with `GET`.
+Dieses Array sollte mit `GET` verwendet werden.
 
-### Form parameters
+### Formularparameter
 {: #form-parameters }
-To send form parameters in the body, use `.Send(Dictionary<string, string> formParameters)` instead of `.Send()`:  
+Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie
+`.Send(Dictionary<string, string> formParameters)` anstelle von `.Send()`:  
 
 ```cs
 Dictionary<string,string> formParams = new Dictionary<string,string>();
@@ -95,49 +99,51 @@ formParams.Add("height", height.getText().toString());
 request.Send(formParams);
 ```   
 
-#### JavaScript adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+#### JavaScript-Adapter
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 ```cs
 formParams.Add("params","['value1', 'value2']");
 ```
 
-This should be used with `POST`.
+Dieses Array sollte mit `POST` verwendet werden.
 
-### Header parameters
+### Headerparameter
 {: #header-parameters }
-To send a parameter as an HTTP header use `.SetHeader()` API:
+Wenn Sie einen Parameter als HTTP-Header senden möchten, verwenden Sie die API `.SetHeader()`: 
 
 ```cs
 request.SetHeader(KeyValuePair<string,string> header);
 ```
 
-### Other custom body parameters
+### Weitere angepasste Hauptteilparameter
 {: #other-custom-body-parameters }
-- `.Send(requestBody)` allows you to set an arbitrary String in the body.
-- `.Send(JObject json)` allows you to set an arbitrary dictionary in the body.
-- `.Send(byte[] data)` allows you to set an arbitrary byte array in the body.
+- Mit `.Send(requestBody)` können Sie im Hauptteil eine beliebige Zeichenfolge festlegen. 
+- Mit `.Send(JObject json)` können Sie im Hauptteil ein beliebiges Verzeichnis festlegen. 
+- Mit `.Send(byte[] data)` können Sie im Hauptteil ein beliebiges Byte-Array festlegen. 
 
-## The response
+## Antwort
 {: #the-response }
-The `WorklightResponse` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `ResponseText` (String), `ResponseJSON` (JSONObject) (if the response is in JSON) and `success` (boolean) (success status of the response).
+Das `WorklightResponse`-Objekt enthält die Antwortdaten. Über die Methoden und Eigenschaften dieses Objekts können Sie die erforderlichen Informationen abrufen. Gängige Eigenschaften sind
+`ResponseText` (String), `ResponseJSON` (JSONObject) (wenn die Antwort im JSON-Format vorliegt)
+und `success` (Boolean) (für den Erfolgsstatus der Antwort). 
 
-In case of request failure, the response object also contains a `error` property.
+Falls eine Anforderung fehlschlägt, enthält das Antwortobjekt auch eine Eigenschaft `error`. 
 
-## For more information
+## Weitere Informationen
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf
+> Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).
 
-<img alt="Image of the sample application" src="resource-request-success-win8-10.png" style="float:right"/>
-## Sample application
+<img alt="Beispielanwendung" src="resource-request-success-win8-10.png" style="float:right"/>
+## Beispielanwendung
 {: #sample-application }
-The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+Die Projekte ResourceRequestWin8 und ResourceRequestWin10 enthalten jeweils eine native universelle Windows-8-Anwendung bzw. Windows-10-UWP-Anwendung, die mit einem Java-Adapter eine Ressourcenanforderung absetzt.   
+Das Adapter-Maven-Projekt enthält den beim Aufrufen der Ressourcenanforderung verwendeten Java-Adapter. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80) the Windows 8.1 Universal project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80) the Windows 10 UWP project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80), um das universelle Windows-8.1-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80), um das Windows-10-UWP-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80), um das Adapter-Maven-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

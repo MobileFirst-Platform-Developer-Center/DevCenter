@@ -7,7 +7,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-In einem HTTP-Adapter können Sie für die Verbindung zu Back-End-Services SSL mit einfacher und gegenseitiger Authentifizierung verwenden.   
+In einem HTTP-Adapter können Sie für die Verbindung zu Back-End-Services SSL mit einfacher und gegenseitiger Authentifizierung verwenden.  
 SSL steht für die Sicherheit auf Transportebene, die nicht von der Basisauthentifizierung abhängig ist. Die Basisauthentifizierung kann über HTTP oder HTTPS erfolgen.
 1. Setzen Sie das URL-Protokoll des HTTP-Adapters in der Datei adapter.xml auf <b>https</b>.
 2. Speichern Sie SSL-Zertifikate im Keystore von {{ site.data.keys.mf_server }} (siehe [Keystore von {{ site.data.keys.mf_server }} konfigurieren](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)). 

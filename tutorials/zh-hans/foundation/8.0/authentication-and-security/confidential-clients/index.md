@@ -26,7 +26,7 @@ weight: 10
   该标识仅包含 ASCII 字符。
 - **密钥**：用于授权从保密客户机进行访问的专用口令（可视为 API 密钥）。
   该密钥仅包含 ASCII 字符。
-- **允许的作用域**：自动向使用此标识与密钥组合的保密客户机授予此处定义的作用域。在[授权概念](../#scope)教程中了解有关**作用域**的更多信息。
+- **允许的作用域**：自动向使用此标识与密钥组合的保密客户机授予此处定义的作用域。有关作用域的更多信息，请参阅[作用域](../#scopes)。
     - 允许的作用域元素还可以包含特殊星号通配符 (`*`)，用于表示零个或多个字符的任意序列。例如，如果作用域元素为 `send*`，那么可授权保密客户机访问包含以“send”开头的任何作用域元素（如“sendMessage”）的作用域。星号通配符可置于作用域元素内的任何位置，也可以多次出现。 
     - 包含单个星号字符 (*) 的允许的作用域参数表示可向保密客户机授予针对任何作用域的令牌。
 
@@ -63,23 +63,22 @@ weight: 10
 {: #obtaining-an-access-token }
 可从 {{ site.data.keys.mf_server }} **令牌端点**获取令牌。  
 
-出于**测试目的**，可如下所述使用 Postman。  
+**出于测试目的**，可如下所述使用 Postman。  
 在实际情况下，使用您选择的技术在后端逻辑中实施 Postman。
 
-1. 针对以下项发出 **POST** 请求：**http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
+1.  针对以下项发出 **POST** 请求：**http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
     For example: `http://localhost:9080/mfp/api/az/v1/token`
     - 在开发环境中，{{ site.data.keys.mf_server }} 使用预先存在的 `mfp` 运行时。  
     - 在生产环境中，将运行时值替换为运行时名称。
 
-2. 使用 `application/x-www-form-urlencoded` 内容类型设置请求。  
-3. 设置以下两个格式参数：
-  - `grant_type`：`client_credentials`
-  - `scope`：使用保护资源的作用域。  
-  如果您未使用作用域保护资源，请使用空字符串。
+2.  使用 `application/x-www-form-urlencoded` 内容类型设置请求。  
+3.  设置以下两个格式参数：
+    - `grant_type` - 将值设置为 `client_credentials`。
+    - `scope` - 将值设置为资源的保护作用域。如果没有为资源分配保护作用域，请省略此参数以应用缺省作用域 (`RegisteredClient`)。有关更多信息，请参阅[作用域](../../authentication-and-security/#scopes)。
 
-    ![Postman 配置图像](confidential-client-steps-1-3.png)
+       ![Postman 配置图像](confidential-client-steps-1-3.png)
 
-4. 要认证请求，请使用[基本认证](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side)。使用保密客户机的**标识**和**密钥**。
+4.  要认证请求，请使用[基本认证](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side)。使用保密客户机的**标识**和**密钥**。
 
     ![Postman 配置图像](confidential-client-step-4.png)
 
@@ -116,7 +115,7 @@ weight: 10
 
 ### insufficient_scope
 {: #insufficient-scope }
-具有 HTTP 头 `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` 的 HTTP **403** 响应状态，意味着在原始请求中找到的令牌与**此资源所需的作用域**不匹配。此头还包含预期的作用域。
+具有 HTTP 头 `WWW-Authenticate : Bearer error="insufficient_scope", scope="RegisteredClient scopeA scopeB"` 的 HTTP **403** 响应状态，意味着初始请求中的令牌与此资源所需的作用域不匹配。此头还包含预期的作用域。
 
-在发出请求时，如果您不清楚资源需要哪个作用域，那么可使用 `insufficient_scope` 来确定答案。  
-例如，以空字符串 (`""`) 作为作用域值来请求令牌，并对资源发出请求。然后，可从 403 响应中提取所需作用域，并为此作用域请求新令牌。
+在发出请求时，如果不清楚资源需要哪个作用域，可使用 `insufficient_scope` 来确定所需作用域。例如，在不指定作用域的情况下请求令牌，并对资源发出请求。然后，可从 403 响应中提取所需作用域，并为此作用域请求新令牌。
+

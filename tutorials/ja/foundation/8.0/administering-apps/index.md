@@ -20,7 +20,7 @@ show_children: true
 
 ## 管理ロール
 {: #administration-roles }
-管理ユーザーの種類によっては、実行できない管理操作があります。{{ site.data.keys.mf_console }}、およびすべての管理ツールには、{{ site.data.keys.product_adj }} アプリケーションの管理用に定義された 4 つのロールがあります。以下の 
+管理ユーザーの種類によっては、実行できない管理操作があります。{{ site.data.keys.mf_console }}、およびすべての管理ツールには、{{ site.data.keys.product_adj }} アプリケーションの管理用に定義された 4 つのロールがあります。以下の
 
 {{ site.data.keys.product_adj }} 管理ロールが定義されています。
 
@@ -42,7 +42,7 @@ show_children: true
 {: #administration-tools }
 {{ site.data.keys.mf_console }} が、{{ site.data.keys.product_adj }} アプリケーションを管理する唯一の手段であるというわけではありません。{{ site.data.keys.product }} も、管理操作をビルド・プロセスやデプロイメント・プロセスに取り込むための他のツールを用意しています。
 
-管理操作を実行するために使用可能な REST サービスのセットがあります。これらのサービスの API 参照資料については、[{{ site.data.keys.mf_server }} 管理サービスの REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi) を参照してください。
+管理操作を実行するために使用可能な REST サービスのセットがあります。これらのサービスの API 参照資料については、[{{ site.data.keys.mf_server }} 管理サービスの REST API](../api/rest/administration-service/) を参照してください。
 
 この REST サービスのセットを使用すると、{{ site.data.keys.mf_console }} で実行できるものと同じ操作を実行できます。アプリケーションやアダプターを管理できるだけでなく、例えば、アプリケーションの新規バージョンをアップロードしたり、古いバージョンを使用不可にしたりすることができます。
 
@@ -52,4 +52,3 @@ Web ベースのコンソールと同様に、REST サービス、Ant タスク�
 
 ### トピックを選択してください。
 {: #select-a-topic }
-

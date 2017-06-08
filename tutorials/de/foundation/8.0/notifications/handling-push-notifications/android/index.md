@@ -72,10 +72,10 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 	* Fügen Sie am Anfang des Tags `manifest` die folgenden Berechtigungen hinzu: 
 
 	  ```xml
-	  <!-- Berechtigungen -->
+	  <!-- Permissions -->
       hj<uses-permission android:name="android.permission.WAKE_LOCK" />
 
-      <!-- GCM-Berechtigungen -->
+      <!-- GCM Permissions -->
       <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
       <permission
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"

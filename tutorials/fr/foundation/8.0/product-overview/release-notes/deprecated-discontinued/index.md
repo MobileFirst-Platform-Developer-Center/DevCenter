@@ -174,8 +174,7 @@ Proxy est abandonnée. Les API Cloudant IMFData et CloudantToolkit sont égaleme
 </table>
 
 ## Modifications des API côté serveur
-{: #server-side-api-changes}
-
+{: #server-side-api-changes }
 Pour faire migrer le côté serveur de votre application {{ site.data.keys.product_adj }}, tenez compte des modifications apportées aux API.  
 Les tableaux suivants montrent les éléments des API côté serveur abandonnés en version 8.0, les éléments obsolètes des mêmes API et les chemins de migration proposés. Pour plus d'informations sur la migration du côté serveur de votre application,
 

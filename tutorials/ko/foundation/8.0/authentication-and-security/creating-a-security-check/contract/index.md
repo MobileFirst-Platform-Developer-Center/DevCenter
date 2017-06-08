@@ -16,7 +16,7 @@ weight: 1
 * **상태 관리**: 보안 검사는 작성, 폐기, 현재 상태 관리를 포함하여 상태를 관리해야 합니다.
 * **구성**: 보안 검사는 지원되는 보안 검사 구성 특성을 정의하고 기본 구성의 사용자 정의 유형과 값을 유효성 검증하는 보안 검사 구성 오브젝트를 작성해야 합니다. 
 
-보안 검사 인터페이스의 전체 내용은 [API 참조에서 `SecurityCheck`를 참조하십시오.](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc)
+보안 검사 인터페이스의 전체 내용은 [API 참조에서 `SecurityCheck`를 참조하십시오.](../../../api/server-side-api/java/)
 
 ## 보안 검사 기능
 {: #securityc-check-functions }
@@ -27,9 +27,9 @@ weight: 1
 프레임워크는 `SecurityCheck.authorize` 메소드를 사용하여 클라이언트 요청에
 권한을 부여합니다. 클라이언트가 특정 OAuth 범위에 대한 액세스 권한을 요청할 때 프레임워크는 범위 요소를 보안 검사에 맵핑합니다. 범위에 속한 각 보안 검사에 대해 프레임워크에서
 `authorize` 메소드를 호출하여 이 보안 검사에 맵핑된 범위 요소를 포함하는
-범위에 대한 권한 부여를 요청합니다. 이 범위는 메소드의 **scope** 매개변수에서 제공됩니다.  
+범위에 대한 권한 부여를 요청합니다. 이 범위는 메소드의 **scope** 매개변수에서 제공됩니다. 
 
-보안 검사는 응답 매개변수 내에서 전달된 [`AuthorizationResponse` 오브젝트](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc)에 응답을 추가합니다. 응답은 보안 검사 이름 및 응답 유형(성공, 실패 또는 인증 확인)을 포함합니다([`AuthorizationResponse.ResponseType` 참조](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
+보안 검사는 응답 매개변수 내에서 전달된 [`AuthorizationResponse` 오브젝트](../../../api/server-side-api/java/)에 응답을 추가합니다. 응답은 보안 검사 이름 및 응답 유형(성공, 실패 또는 인증 확인)을 포함합니다([`AuthorizationResponse.ResponseType`](../../../api/server-side-api/java/) 참조). 
 
 응답에 인증 확인 오브젝트나 사용자 정의 성공 또는 실패 데이터가 있으면
 프레임워크에서 이 데이터를 JSON 오브젝트 내에 있는 클라이언트의
@@ -51,7 +51,7 @@ weight: 1
 자체 점검 데이터를 리턴하기 전에 이 메소드는 보안 검사의 현재 상태가
 이전에 이 범위에 부여된 권한을 여전히 지원하는지
 확인합니다.  권한이 여전히 유효하면, `introspect` 메소드는 **response**
-매개변수 내에 전달된 [IntrospectionResponse 오브젝트](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc)에 해당 응답을 추가합니다. 
+매개변수 내에 전달된 [IntrospectionResponse 오브젝트](../../../api/server-side-api/java/)에 해당 응답을 추가합니다. 
 
 응답에는 보안 검사의 이름, 권한 부여가 요청된
 범위(**scope** 매개변수에 설정됨), 부여된 권한의 만기 시간, 그리고 요청된
@@ -66,7 +66,7 @@ weight: 1
 전적으로 무시됩니다. 
 * `authorize` 또는 `introspect` 메소드를 호출하면
 현재 상태의 만기 시간이 경과하지 않았더라도 보안 검사의 현재 상태가
-변경될 수 있습니다. 
+변경될 수 있습니다.
 
 > [ExternalizableSecurityCheck](../../externalizable-security-check) 학습서에서 `authorize` 및 `introspect` 메소드에 대해 자세히 알아보십시오.
 ### 보안 검사 상태 관리
@@ -102,7 +102,7 @@ weight: 1
 인스턴스를 작성하는 `createConfiguration` 메소드를 구현하여
 지원되는 특성을 표시합니다. 이 인터페이스는 `SecurityCheck` 인터페이스를
 보완하는 동시에 보안 검사 계약의 일부가 됩니다. 보안 검사에서 아무 특성도 표시하지 않는 구성 오브젝트를 작성할 수 있지만,
-`createConfiguration` 메소드는 유효한 구성 오브젝트를 리턴해야 하고 null을 리턴할 수 없습니다. 보안 검사 구성 인터페이스의 전체 내용은 [`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc)을 참조하십시오.  
+`createConfiguration` 메소드는 유효한 구성 오브젝트를 리턴해야 하고 null을 리턴할 수 없습니다. 보안 검사 구성 인터페이스의 전체 내용은 [`SecurityCheckConfiguration`](../../../api/server-side-api/java/)을 참조하십시오. 
 
 어댑터 또는 애플리케이션 구성을 변경하는 경우,
 보안 프레임워크는 배치 동안 보안 검사의 `createConfiguration`
@@ -113,7 +113,7 @@ weight: 1
 검증하고, 유효성 검증 결과를 리턴하는 메소드를
 제공해야 합니다. 
 
-보안 검사 구성은 `getErrors`, `getWarnings`, 및 `getInfo` 메소드를 구현해야 합니다. 또한 abstract 보안 검사 구성 기본 클래스 [`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc)는 `getStringProperty`, `getIntProperty`, 및 `addMessage` 메소드를 정의하고 구현합니다. 자세한 정보는 이 클래스의 코드 문서를 참조하십시오. 
+보안 검사 구성은 `getErrors`, `getWarnings`, 및 `getInfo` 메소드를 구현해야 합니다. 또한 abstract 보안 검사 구성 기본 클래스 [`SecurityCheckConfigurationBase`](../../../api/server-side-api/java/)는 `getStringProperty`, `getIntProperty`, 및 `addMessage` 메소드를 정의하고 구현합니다. 자세한 정보는 이 클래스의 코드 문서를 참조하십시오. 
 
 **참고:** 보안 검사 정의 및 어댑터 또는 애플리케이션 사용자 정의에 있는 구성 특성의 이름 및 값은 구성 클래스에서 정의된 대로 지원 특성 및 허용 값과 일치해야 합니다. 
 

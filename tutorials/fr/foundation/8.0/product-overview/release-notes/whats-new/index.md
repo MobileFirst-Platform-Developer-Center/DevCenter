@@ -24,8 +24,8 @@ weight: 1
                 <h3>Nouveau processus de développement et de déploiement</h3>
                 <p>Vous ne créez plus de fichier WAR de projet à installer dans le serveur d'applications. A la place, le serveur {{ site.data.keys.mf_server }} est installé une fois, et vous téléchargez la configuration côté serveur de vos applications, de la sécurité des ressources ou du service push sur le serveur. Vous pouvez modifier la configuration de vos applications à l'aide de la console {{ site.data.keys.mf_console }}.</p>
 
-                <p>Les projets {{ site.data.keys.product_adj }} n'existent plus. A la place, vous développez votre application mobile à l'aide de l'environnement de développement de votre choix.<br/>
-                Vous pouvez modifier la configuration côté serveur de vos applications et adaptateurs sans arrêter le serveur {{ site.data.keys.mf_server }}.</p>
+                <p>Les projets {{ site.data.keys.product_adj }} n'existent plus. Vous développez désormais votre application mobile dans l'environnement de développement de votre choix.<br/>
+                Vous pouvez modifier la configuration côté serveur de vos applications et de vos adaptateurs sans arrêter {{ site.data.keys.mf_server }}.</p>
 
                 <ul>
                     <li>Pour plus d'informations sur le nouveau processus de développement, consultez <a href="../../../application-development/">Présentation et concepts de développement</a></li>
@@ -396,7 +396,7 @@ weight: 1
                 </ul>
 
                 <p>La console {{ site.data.keys.mf_analytics_console }} affiche désormais un contenu différent basé sur le rôle de sécurité de l'utilisateur connecté.<br/>
-                Pour plus d'informations, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Contrôle d'accès basé sur les rôles</a>.</p>
+                Pour plus d'informations, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Role-based access control</a>.</p>
 
                 <p>{{ site.data.keys.mf_analytics_server }} utilise Elasticsearch V1.7.5.</p>
 

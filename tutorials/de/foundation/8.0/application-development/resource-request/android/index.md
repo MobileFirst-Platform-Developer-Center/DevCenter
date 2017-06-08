@@ -1,47 +1,48 @@
 ---
 layout: tutorial
-title: Resource request from Android applications
+title: Ressourcenanforderung von Android-Anwendungen
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Download Android Studio project
+  - name: Android-Studio-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Mit der {{ site.data.keys.product_adj }} erstellte Anwendungen können mit der REST-API `WLResourceRequest` auf Ressourcen zugreifen.   
+Die REST-API funktioniert mit allen Adaptern und externen Ressourcen. 
 
-**Prerequisites**:
+**Voraussetzungen:**
 
-- Ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/android) to your Native Android project.
-- Learn how to [create adapters](../../../adapters/creating-adapters).
+- Stellen Sie sicher, dass Sie das [SDK der {{ site.data.keys.product }}](../../../application-development/sdk/android) zu Ihrem nativen Android-Projekt hinzugefügt haben. 
+- Informieren Sie sich über das [Erstellen von Adaptern](../../../adapters/creating-adapters).
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+Die Klasse `WLResourceRequest` handhabt an Adapter oder externe Ressourcen gerichtete Ressourcenanforderungen. 
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` and `WLResourceRequest.DELETE`.
+Erstellen Sie ein `WLResourceRequest`-Objekt und geben Sie den Pfad zu der Ressource und die HTTP-Methode an.   
+Verfügbare Methoden sind `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` und `WLResourceRequest.DELETE`.
 
 ```java
 URI adapterPath = URI.create("/adapters/JavaAdapter/users");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
-* **scope**: Optional, if you know which scope is protecting the resource - specifying this scope could make the request more efficient.
+* Verwenden Sie für **JavaScript-Adapter** `/adapters/{AdapterName}/{procedureName}`. 
+* Verwenden Sie für **Java-Adapter** `/adapters/{AdapterName}/{path}`. Die Angabe für `path` hängt davon ab, wie Sie Ihre
+`@Path`-Annotationen im Java-Code definiert haben. Eingeschlossen sind auch alle verwendeten `@PathParam`-Annotationen. 
+* Wenn Sie auf Ressourcen außerhalb des Projekts zugreifen möchten, verwenden Sie die vollständige URL nach Maßgabe des externen Servers. 
+* **timeout**: Anforderungszeitlimit in Millisekunden (optional)
+* **scope**: Optional, wenn Sie wissen, mit welchem Bereich die Ressource geschützt wird. Durch Angabe dieses Bereichs kann die Abfrage effizienter werden. 
 
-## Sending the request
+## Anforderung senden
 {: #sending-the-request }
-Request the resource by using the `.send()` method. Specify a WLResponseListener class instance:
+Fordern Sie die Ressource mit der Methode `.send()` an. Geben Sie eine WLResponseListener-Klasseninstanz an: 
 
 ```java
 request.send(new WLResponseListener(){
@@ -54,41 +55,42 @@ request.send(new WLResponseListener(){
 });
 ```
 
-## Parameters
+## Parameter
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+Bevor Sie Ihre Anforderung senden, können Sie nach Bedarf Parameter hinzufügen. 
 
-### Path parameters
+### Pfadparameter
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object:
+Pfadparameter (`/path/value1/value2`) werden - wie bereits erläutert - während der Erstellung des `WLResourceRequest`-Objekts festgelegt: 
 
 ```java
 URI adapterPath = new URI("/adapters/JavaAdapter/users/value1/value2");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 
-### Query parameters
+### Abfrageparameter
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
+Wenn Sie Abfrageparameter (`/path?param1=value1...`) senden möchten, verwenden Sie für die einzelnen Parameter die Methode `setQueryParameter`: 
 
 ```java
 request.setQueryParameter("param1","value1");
 request.setQueryParameter("param2","value2");
 ```
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 ```java
 request.setQueryParameter("params","['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.GET`.
+Dieses Array sollte mit `WLResourceRequest.GET` verwendet werden.
 
-### Form parameters
+### Formularparameter
 {: #form-parameters }
-To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
+Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie
+`.send(HashMap<String, String> formParameters, WLResponseListener)` anstelle von `.send(WLResponseListener)`:  
 
 ```java
 HashMap formParams = new HashMap();
@@ -96,48 +98,50 @@ formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
 
-#### JavaScript adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+#### JavaScript-Adapter
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 ```java
 formParams.put("params", "['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.POST`.
+Dieses Array sollte mit `WLResourceRequest.POST` verwendet werden.
 
-### Header parameters
+### Headerparameter
 {: #header-parameters }
-To send a parameter as an HTTP header use `.addHeader()` API:
+Wenn Sie einen Parameter als HTTP-Header senden möchten, verwenden Sie die API `.addHeader()`: 
 
 ```java
 request.addHeader("date", date.getText().toString());
 ```
 
-### Other custom body parameters
+### Weitere angepasste Hauptteilparameter
 {: #other-custom-body-parameters }
-- `.send(requestBody, WLResponseListener listener)` allows you to set an arbitrary String in the body.
-- `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
-- `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
+- Mit `.send(requestBody, WLResponseListener listener)` können Sie im Hauptteil eine beliebige Zeichenfolge festlegen. 
+- Mit `.send(JSONStore json, WLResponseListener listener)` können Sie im Hauptteil ein beliebiges Verzeichnis festlegen. 
+- Mit `.send(byte[] data, WLResponseListener listener)` können Sie im Hauptteil ein beliebiges Byte-Array festlegen. 
 
-## The response
+## Antwort
 {: #the-response }
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (JSON Object) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+Das Objekt `response` enthält die Antwortdaten. Über die Methoden und Eigenschaften dieses Objekts können Sie die erforderlichen Informationen abrufen. Gängige Eigenschaften sind
+`responseText` (String), `responseJSON` (JSON Object) (wenn die Antwort im JSON-Format vorliegt)
+und `status` (Int) (HTTP-Status der Antwort). 
 
-Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
+Verwenden Sie die Objekte `WLResponse response` und `WLFailResponse response`, um die vom Adapter abgerufenen Daten zu erhalten. 
 
-## For more information
+## Weitere Informationen
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLResourceRequest.html).
+> Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](../../../api/client-side-api/java/client/).
 
-<img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
-## Sample application
+<img alt="Beispielanwendung" src="resource-request-success-android.png" style="float:right"/>
+## Beispielanwendung
 {: #sample-application }
-The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+Das Projekt ResourceRequestAndroid enthält eine native Android-Anwendung, die mit einem Java-Adapter eine Ressourcenanforderung absetzt.   
+Das Adapter-Maven-Projekt enthält den beim Aufrufen der Ressourcenanforderung verwendeten Java-Adapter. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80), um das Android-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80), um das Adapter-Maven-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

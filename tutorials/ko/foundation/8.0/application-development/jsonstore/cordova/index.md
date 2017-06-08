@@ -287,7 +287,7 @@ function replacePerson(data) {
 }
 ```
 
-#### {{site.data.keys.product_adj }} 어댑터에 링크된 콜렉션 초기화
+#### {{ site.data.keys.product_adj }} 어댑터에 링크된 콜렉션 초기화
 {: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {

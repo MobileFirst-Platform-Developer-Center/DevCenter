@@ -24,7 +24,7 @@ show_children: true
 {: #administration-roles }
 并非每种类型的管理用户都可以执行每种管理操作。
 {{ site.data.keys.mf_console }} 和所有管理工具，针对 {{ site.data.keys.product_adj }} 应用程序的管理定义了四种不同的角色。
- 
+
 
 定义了以下 {{ site.data.keys.product_adj }} 管理角色：
 
@@ -50,7 +50,7 @@ show_children: true
 
 
 有一套 REST 服务可用于执行管理操作。
-有关这些服务的 API 参考文档，请参阅 [{{ site.data.keys.mf_server }}管理服务的 REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi)。
+要获取这些服务的 API 参考文档，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 REST API](../api/rest/administration-service/)。
 
 使用这套 REST 服务，可以执行与在 {{ site.data.keys.mf_console }} 中相同的操作。
 可以管理应用程序和适配器，以及上载应用程序的新版本或禁用旧版本，等等。
@@ -62,4 +62,3 @@ show_children: true
 
 ### 选择主题：
 {: #select-a-topic }
-

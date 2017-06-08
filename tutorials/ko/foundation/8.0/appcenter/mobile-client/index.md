@@ -20,6 +20,8 @@ Application Center 모바일 클라이언트는 Android, iOS, Windows Phone 또�
 * [Android 모바일 디바이스에 클라이언트 설치](#installing-the-client-on-an-android-mobile-device)
 * [iOS 모바일 디바이스에 클라이언트 설치](#installing-the-client-on-an-ios-mobile-device)
 * [Windows Phone 8 Universal 모바일 디바이스에 클라이언트 설치](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [Windows 10 디바이스에 Windows 10 UWP 클라이언트 설치](#installing-windows-10-uwp-client-on-windows-10-device)
+* [Windows 10 UWP 애플리케이션 설치 및 검토 주석 추가](#installing-a-windows-10-uwp-application-and-adding-review-comments)
 * [로그인 보기](#the-login-view)
 * [Application Center 클라이언트의 보기](#views-in-the-application-center-client)
 * [Android 디바이스에 애플리케이션 설치](#installing-an-application-on-an-android-device)
@@ -58,7 +60,7 @@ Application Center 모바일 클라이언트는 Android, iOS, Windows Phone 또�
     Application Center 관리자가 모바일 클라이언트 애플리케이션을 설치해야 사용 가능한 애플리케이션 목록에서 모바일 클라이언트를 확인할 수 있습니다. 관리자는 모바일 클라이언트를 Application Center에 업로드하고 **설치 프로그램** 특성을 **true**로 설정합니다. [애플리케이션 특성](../appcenter-console/#application-properties)을 참조하십시오. 
 
     ![설치할 수 있는 모바일 클라이언트 애플리케이션 목록](ac_instal_client_and1.jpg)
-    
+
 5. 애플리케이션 세부사항을 표시하려면 목록에서 항목을 선택하십시오. 일반적으로 이러한 세부사항에는 애플리케이션 이름과 해당 버전 번호가 포함됩니다. 
 
     ![애플리케이션 세부사항](ac_app_details.jpg)
@@ -69,7 +71,7 @@ Application Center 모바일 클라이언트는 Android, iOS, Windows Phone 또�
 8. Application Center 클라이언트 설치 프로그램을 선택하십시오. 애플리케이션을 설치하도록 선택하면 애플리케이션에 부여된 액세스 권한을 확인할 수 있습니다. 
 
     ![Android에 모바일 클라이언트 설치](ac_instal_client_and_rights.jpg)
-    
+
 9. 모바일 클라이언트를 설치하려면 **설치**를 선택하십시오. 
 10. 애플리케이션이 설치되어 있는 경우 **열기**를 선택하여 모바일 클라이언트를 열거나 **완료**를 선택하여 다운로드 애플리케이션을 닫으십시오. 
 
@@ -122,16 +124,16 @@ iOS 디바이스에 모바일 클라이언트 설치는 Android에 설치하는 
 
     * SSL 인증서 탭을 누르고 인증서를 선택하십시오. 
     * 설치를 누르십시오. 디바이스에 대해 한 번만 수행합니다. **설정 → 일반 → 디바이스의 프로파일**를 확인하여 인증서가 설치되어 있는지 확인할 수 있습니다. 이 보기는 사용자가 디바이스에 설치한 SSL 인증서를 표시합니다. 자체 서명된 CA 인증서가 디바이스에 설치되어 있지 않으면 iOS 운영 체제가 다음 단계에서 모바일 클라이언트를 다운로드하는 것을 방지합니다. 
-    
+
     Application Center 관리자가 모바일 클라이언트 애플리케이션을 설치해야 사용 가능한 애플리케이션 목록에서 모바일 클라이언트를 확인할 수 있습니다. 관리자가 모바일 클라이언트를 Application Center에 업로드하고 설치 프로그램 특성을 true로 설정합니다. [애플리케이션 특성](../appcenter-console/#application-properties)을 참조하십시오. 
-    
+
 5. **설치 프로그램** 탭을 누르고 목록에서 항목을 선택하여 애플리케이션 세부사항을 표시하십시오. 
 6. **설치**를 눌러 모바일 클라이언트를 다운로드하십시오. 
 7. 다운로더 트랜잭션에 권한을 부여하려면 신임 정보를 입력하십시오. 
 8. 다운로드를 승인하려면 **설치**를 누르십시오. 
 
     ![설치할 앱 확인](ac_instal_client_ios_conf.jpg)
-    
+
 9. 설치를 승인하려면 신임 정보를 입력하십시오. 
 10. 브라우저를 닫으십시오. 
 
@@ -179,16 +181,16 @@ iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 �
 3. 서버에 대한 액세스를 승인하려면 신임 정보를 입력하십시오. 화면의 하단에 있는 도구 모음에는 **설치 프로그램** 탭 및 **토큰** 탭이 있습니다. 
 
     ![Windows Phone 디바이스에서 토큰 및 애플리케이션 설치 준비](ac_wp8_toolbar_inst_app.jpg)
-    
+
 4. **토큰**을 누르고 사용 가능한 토큰 목록에서 애플리케이션 등록 토큰을 선택하여 토큰 세부사항을 표시하십시오. 
 
     ![Windows Phone 디바이스의 애플리케이션 등록 토큰 세부사항](ac_wp8_aet_details.jpg)
-    
+
 5. **추가**를 눌러 애플리케이션 등록 토큰을 다운로드하십시오. 
 6. **추가**를 눌러 회사 계정을 추가하십시오. 
 
     ![Windows 8 Universal 디바이스에 회사 계정 추가](ac_wp8_add_co_account.jpg)
-    
+
     Windows Phone 8은 회사 계정 추가에 대한 피드백을 제공하지 않습니다. 
 
 7. 이전 아이콘을 눌러 애플리케이션 등록 토큰의 세부사항으로 돌아가십시오. 
@@ -196,16 +198,62 @@ iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 �
 9. **설치**를 눌러 선택된 애플리케이션을 다운로드하십시오. 
 
     ![Windows Phone 디바이스에 다운로드하도록 선택된 애플리케이션](ac_wp8_app_details.jpg)
-    
+
 10. **설치**를 눌러 애플리케이션을 설치하십시오. 
 
     ![Windows Phone 디바이스에 다운로드한 애플리케이션 설치](ac_wp8_app_install.jpg)
-    
+
     Windows 8 Universal은 애플리케이션 설치에 대한 피드백을 제공하지 않습니다. 
 
 > **팁:** 회사 애플리케이션을 디바이스에 설치하는 경우 애플리케이션 서명을 확인하려면 디바이스를 Microsoft 서버에 연결해야 합니다. Microsoft 서버가 응답하지 않는 경우가 있습니다. 이 경우 몇 분 후에 설치를 다시 시도할 수 있습니다. 가능한 오류 메시지에 대해서는 Windows Phone 디바이스에 애플리케이션 설치를 참조하십시오.
 
 설치가 완료되면 모바일 클라이언트 애플리케이션이 Windows Phone의 애플리케이션 목록에서 사용 가능해야 합니다. 
+
+## Windows 10 디바이스에 Windows 10 UWP 클라이언트 설치
+{: #installing-windows-10-uwp-client-on-windows-10-device }
+
+브라우저에 액세스 URL을 입력하고, 신임 정보를 입력한 후 필수 단계를 완료하여 모바일 클라이언트, 또는 설치 프로그램 플래그로 표시되어 있는 서명된 애플리케이션을 설치할 수 있습니다. 
+
+1. 모바일 디바이스에서 브라우저를 시작하십시오. 
+
+2. 주소 텍스트 필드에 액세스 URL `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`를 입력하십시오. 여기서 `hostname`은 서버의 주소이고 `portnumber`는 Application Center가 설치된 포트의 번호입니다. 시스템 관리자가 이 정보를 제공할 수 있습니다. 
+
+    Application Center는 모바일 디바이스에 클라이언트 설치를 위한 대체 URL `http://hostname:portnumber/applicationcenter/inst.html` 또한 제공합니다. 이 URL의 페이지는 일부 이전 또는 비표준 모바일 웹 브라우저에서 더 잘 작동합니다. 모바일 디바이스에서 페이지 *installers.html*이 작동하지 않는 경우 *inst.html*을 사용할 수 있습니다. 이 페이지는 영어로만 제공되며 다른 언어로는 번역되지 않습니다. 
+
+3.  서버에 대한 액세스를 승인하려면 신임 정보를 입력하십시오. 
+
+    ![신임 정보를 입력하여 서버에 액세스](ac_wp10_enter_credentials.png)
+
+4.  사용 가능한 애플리케이션의 목록에서 항목을 선택하여 애플리케이션 세부사항을 표시하십시오. 
+
+    ![애플리케이션을 선택하여 해당 세부사항 보기](ac_wp10_apps_list.png)
+
+5.  **설치**를 눌러 모바일 클라이언트를 다운로드하고 설치하십시오. 
+
+    ![설치를 선택하여 애플리케이션 설치](ac_wp10_app_install.png)
+
+
+> **참고:** Windows 10 UWP 앱을 나열하려면 조회 문자열 `os=Windows`를 전달해야 합니다. 
+
+## Windows 10 UWP 애플리케이션 설치 및 검토 주석 추가
+{:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
+
+1. Application Center에 로그인하십시오. 
+
+    ![Application Center에 로그인](ac_wp10_login.png)
+
+2. 카탈로그에 있는 사용 가능한 애플리케이션의 목록에서 설치할 애플리케이션을 선택하십시오. 
+
+    ![카탈로그에서 애플리케이션 선택](ac_wp10_catalog_applisting.png)
+
+3. **설치**를 눌러 애플리케이션을 다운로드하고 설치하십시오. 
+
+    ![설치를 선택하여 애플리케이션 설치](ac_wp10_app_details_installapp.png)
+
+4. 등급을 제공하고 검토 주석을 추가하여 애플리케이션을 검토하십시오. 
+
+    ![검토 주석 추가](ac_wp10_add_review.png)
+
 
 ## 로그인 보기 
 {: #the-login-view }
@@ -362,11 +410,11 @@ Windows 8 클라이언트에서 애플리케이션 버전에 대한 다음 세�
 2. 애플리케이션 버전의 다운로드 및 설치를 확인하려면 **설치**를 누르고 설치를 취소하려면 **취소**를 누르십시오. 
 
     ![iOS 디바이스에서 애플리케이션 설치 취소](ac_app_inst_cancel_ios.jpg)
-    
+
     수행되는 조치에 따라 애플리케이션이 설치되거나 설치되지 않습니다. 애플리케이션이 정상적으로 설치되는 경우 즐겨찾기 애플리케이션으로도 표시됩니다. 
 
     디바이스에 애플리케이션을 설치하려면 선택된 디바이스에 애플리케이션을 설치할 수 있도록 지원하는 프로비저닝 프로파일이 필요합니다. 실수로 사용자의 디바이스에 유효하지 않은 애플리케이션을 설치하려고 시도하는 경우 iOS 6(더 이상 사용되지 않음) 이하는 오류 메시지가 발생합니다. 
-    
+
 Android 클라이언트와 달리 설치를 완료하고 나면 **세부사항** 보기의 **설치** 단추가 단추 레이블을 **설치 제거**로 변경하지 않습니다. iOS에서는 **설치 제거** 단추를 사용할 수 없습니다. 홈 화면을 통해 애플리케이션을 설치 제거만 할 수 있습니다.
 
 일부 iOS 7 버전은 완료되거나 오류 표시 없이 무한 루프로 애플리케이션 설치를 시도할 수 있습니다. 설치의 진행상태를 표시하는 애플리케이션 아이콘이 홈 화면에 표시되지만, 무한 루프로 인해서 무한 루프를 중지하기 위해 이 애플리케이션 아이콘을 삭제하기 어렵습니다. 임시 해결책은 디바이스를 통신제한 모드로 변경하는 것입니다. 이 모드에서 무한 루프가 중지되고, iOS 디바이스에서 앱을 삭제하기 위한 일반적인 단계를 수행하여 애플리케이션 아이콘을 삭제할 수 있습니다.
@@ -406,7 +454,7 @@ iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 �
 2. 애플리케이션의 설치를 확인하려면 **설치**를 누르고 설치를 취소하려면 **취소**를 누르십시오. 애플리케이션이 즐겨찾기 애플리케이션으로 표시됩니다.
 
     ![Windows Phone 디바이스에서 회사 애플리케이션의 설치 확인 또는 취소](ac_confirm_instal_app_wp.jpg)
-    
+
 > **팁:** 회사 애플리케이션을 디바이스에 설치하는 경우 애플리케이션 서명을 확인하려면 디바이스를 Microsoft 서버에 연결해야 합니다. Microsoft 서버가 응답하지 않는 경우가 있습니다. 이 경우 몇 분 후에 설치를 다시 시도할 수 있습니다.
 
 가능한 오류 메시지는 다음과 같습니다. 
@@ -428,7 +476,7 @@ iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 �
 수행하는 조치에 따라 애플리케이션이 설치되거나 설치되지 않습니다. 
 
 > **팁:** 설치하려는 애플리케이션의 애플리케이션 패키지(.xap) 파일을 코드 서명하는 데 사용된 PFX 인증서가 만료된 경우 설치 프로세스가 작동하지 않습니다. Windows Phone 운영 체제에서 **HRESULT 0x81030110** 오류를 리턴합니다. PFX 인증서를 갱신하는 경우 이 새 인증서를 사용하여 Application Center 카탈로그에 있는 배치된 모든 애플리케이션을 다시 코드 서명해야 합니다.
-> 
+>
 PFX 코드 서명 인증서를 갱신하는 경우 등록 토큰도 갱신해야 하며 이를 Application Center 콘솔에 배치해야 합니다. 디바이스는 이 새 토큰으로 회사 계정에도 다시 등록해야 합니다. 만료된 토큰으로 등록한 디바이스의 사용자는 모든 애플리케이션을 설치할 수 없습니다. 
 
 Windows Phone 8.1에서 Application Center 클라이언트가 코드 서명되지 않은 경우(예를 들어, Visual Studio에서 디버그하는 경우) 이 서명되지 않은 클라이언트를 사용하여 애플리케이션을 설치할 수 없습니다. 이 경우, Windows Phone 운영 체제는 **HRESULT 0x800703F0**와 함께 오류를 리턴합니다. Windows Phone 8.1에 애플리케이션을 설치하기 전에 클라이언트의 애플리케이션 패키지(.xap) 파일을 코드 서명해야 합니다. 
@@ -470,6 +518,7 @@ Windows 스토어 애플리케이션을 개발하는 경우 Microsoft Visual Stu
 
 3. 애플리케이션을 설치하려면 **설치**를 누르십시오. 애플리케이션이 이미 설치되어 있고 다른 버전을 사용할 수 있는 경우 최신 버전으로 업데이트하거나 이전 버전으로 되돌리도록 선택할 수 있습니다. 
 
+
 ## 공용 앱 스토어를 통한 애플리케이션 설치
 {: #installing-applications-through-public-app-stores }
 모바일 클라이언트에서 지원되는 공용 앱 스토어에 저장되는 애플리케이션에 링크하고, 공용 앱 스토어의 일반 프로시저에 따라 이러한 애플리케이션을 호환 가능한 디바이스에 설치할 수 있습니다. 
@@ -483,10 +532,10 @@ Google Play에 저장된 Android 애플리케이션 및 Apple iTunes에 저장�
 
     **Android**
     ![디바이스의 모바일 클라이언트에서 Google play의 애플리케이션에 액세스](ac_and_link_app.jpg)
-    
+
     **iOS**
     ![디바이스의 모바일 클라이언트에서 Apple iTunes의 애플리케이션에 액세스](ac_ios_link_app.jpg)
-    
+
 3. 애플리케이션을 설치하기 위해 공용 앱 스토어의 일반 프로시저를 수행하십시오. 
 
 ## 설치된 애플리케이션 제거
@@ -512,7 +561,7 @@ Android 또는 iOS phone 또는 태블릿, Windows Phone 디바이스 또는 Win
     * 태블릿은 4단계를 참조하십시오. 
 2. **Windows Phone, Android, iOS에만 해당**: Windows Phone, Android 또는 iOS 전화기에서 특정 애플리케이션 버전의 세부사항을 표시하십시오. 
     * **버전 선택**을 눌러 버전 목록 보기로 이동하십시오.
-   ![Windows Phone, Android 또는 iOS 전화기의 버전 목록에서 선택한 특정 버전의 애플리케이션](ac_version_select.jpg) 
+   ![Windows Phone, Android 또는 iOS 전화기의 버전 목록에서 선택한 특정 버전의 애플리케이션](ac_version_select.jpg)
     * 적절한 애플리케이션 버전을 누르십시오. **세부사항** 보기가 업데이트되고 선택된 애플리케이션 버전에 대한 세부사항을 표시합니다. 
 3. Windows만 해당: Windows 디바이스에서 특정 Windows 스토어 애플리케이션 버전의 세부사항을 표시하십시오. Windows 스토어 애플리케이션에 대해 둘 이상의 버전이 사용 가능한 경우 설치하려는 버전을 선택할 수 있습니다. 
     * 적절한 애플리케이션 버전을 누르십시오. **세부사항** 보기가 업데이트되고 선택된 애플리케이션 버전에 대한 세부사항을 표시합니다. 
@@ -559,7 +608,7 @@ Application Center 클라이언트 애플리케이션의 자동 업그레이드�
 3. **열기**를 눌러 업데이트된 애플리케이션을 시작하십시오. 
 
     ![업데이트된 애플리케이션 시작](ac_client_autoupgrade_start_app.jpg)
-    
+
 업데이트된 버전의 애플리케이션을 실행하려면 이 버전의 애플리케이션에 로그인해야 합니다. 
 
 ![새 버전의 클라이언트 애플리케이션에 로그인](ac_client_autoupgrade_login_new_version.jpg)

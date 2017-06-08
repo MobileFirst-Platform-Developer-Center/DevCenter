@@ -6,8 +6,9 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Funktionen zur behindertengerechten Bedienung unterstützen Benutzer mit eingeschränkter Bewegungsfähigkeit oder einer Sehbehinderung
-bei der erfolgreichen Nutzung von IT-Inhalten. ### Funktionen zur behindertengerechten Bedienung
+Funktionen zur behindertengerechten Bedienung unterstützen Benutzer mit eingeschränkter Bewegungsfähigkeit oder einer Sehbehinderung bei der erfolgreichen Nutzung von IT-Inhalten.
+
+### Funktionen zur behindertengerechten Bedienung
 {: #accessibility-features }
 Die {{ site.data.keys.product_full }}
 stellt die folgenden Funktionen zur behindertengerechten Bedienung bereit: 

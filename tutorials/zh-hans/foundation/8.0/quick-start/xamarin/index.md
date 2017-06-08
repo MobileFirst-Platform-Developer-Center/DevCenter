@@ -26,7 +26,7 @@ weight: 6
 ### 1. 启动 {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
 确保您已[创建 Mobile Foundation 实例](../../bluemix/using-mobile-foundation)，或者  
-如果使用 [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)，请导航至服务器的文件夹并运行命令 `./run.sh`（在 Mac 和 Linux 中）或 `run.cmd`（在 Windows 中）。
+如果使用 [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)，请导航至服务器的文件夹并运行命令 `./run.sh`（在 Mac 和 Linux 中）或 `run.cmd`（在 Windows 中）。
 
 ### 2. 创建应用程序
 {: #2-creating-an-application }
@@ -56,18 +56,20 @@ weight: 6
 * 如果您正在 iOS 环境下进行开发，请将以下代码粘贴到 **AppDelegate.cs** 文件的 **FinishedLaunching** 方法中：
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
+  >将 `<ClassName>` 替换为您的类名。
 * 如果您正在 Android 环境下进行开发，请在 **MainActivity.cs** 文件的 **OnCreate** 方法中包含以下代码行：
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >将 `<ClassName>` 替换为您的类名。
 * 定义一个方法来获取访问标记并向 MFP Server 发出资源请求，如下所示。
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
        
@@ -94,7 +96,7 @@ weight: 6
            }
     }
    ```
-  
+
 * 在类构造函数中或通过按钮单击来调用 **ObtainToken** 方法。
 
 ### 4. 部署适配器
@@ -105,7 +107,7 @@ weight: 6
 
 1. 选择**操作 → 下载样本**选项。下载“Hello World”**Java** 适配器样本。
 
-   > 如果未安装 Maven 和 {{ site.data.keys.mf_cli }} ，请遵循屏幕上的**设置开发环境**指示信息。
+   > 如果未安装 Maven 和 {{ site.data.keys.mf_cli }}，请遵循屏幕上的**设置开发环境**指示信息。
 2. 从**命令行**窗口中，导航至适配器的 Maven 项目根文件夹并运行以下命令：
 
    ```bash

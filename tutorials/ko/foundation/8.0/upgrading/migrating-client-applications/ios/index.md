@@ -65,7 +65,7 @@ Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마�
 
 * Xcode 7.0(iOS 9) 이상에서 작업 중이어야 합니다. 
 * IBM MobileFirst Platform Foundation 6.2.0 이상으로 작성된 기존의 고유 iOS 프로젝트가 있어야 합니다. 
-* V8.0.0 {{site.data.keys.product_adj }} iOS SDK 파일의 사본에 대한 액세스 권한이 있어야 합니다. 
+* V8.0.0 {{ site.data.keys.product_adj }} iOS SDK 파일의 사본에 대한 액세스 권한이 있어야 합니다. 
 
 1. **빌드 단계** 섹션의 **라이브러리가 포함된 2진 링크** 탭에서 정적 라이브러리 **libWorklightStaticLibProjectNative.a**에 대한 모든 참조를 삭제하십시오. 
 2. **WorklightAPI** 폴더에서 Headers 폴더를 삭제하십시오. 
@@ -94,7 +94,7 @@ Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마�
       import IBMMobileFirstPlatformFoundation
       ```
         
-애플리케이션은 이제 {{site.data.keys.product }}, V8.0 iOS SDK에 대해 작동하도록 업그레이드됩니다. 
+애플리케이션은 이제 {{ site.data.keys.product }}, V8.0 iOS SDK에 대해 작동하도록 업그레이드됩니다. 
 
 #### 다음에 수행할 작업
 {: #what-to-do-next }
@@ -232,7 +232,7 @@ SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택�
 10. Xcode 7부터는 TLS가 적용됩니다. iOS 앱에서 TLS 보안 연결 적용을 참조하십시오.   
 
 <br/>
-애플리케이션은 이제 {{site.data.keys.product }}, V8.0 iOS SDK에 대해 작동하도록 업그레이드됩니다.
+애플리케이션은 이제 {{ site.data.keys.product }}, V8.0 iOS SDK에 대해 작동하도록 업그레이드됩니다.
 
 #### 다음에 수행할 작업
 {: #what-to-do-next }

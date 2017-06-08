@@ -4,7 +4,7 @@ title: Requisitos do sistema
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 Os requisitos do sistema para o {{ site.data.keys.product_full }} incluem sistemas operacionais, SDKs e outros softwares.
 

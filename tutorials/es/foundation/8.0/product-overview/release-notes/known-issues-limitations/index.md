@@ -112,10 +112,8 @@ La herramienta de configuración del servidor presenta las siguientes restriccio
 * El nombre descriptivo de una configuración de servidor sólo puede contener caracteres que estén en el conjunto de caracteres del sistema.
 En Windows, es el juego de caracteres ANSI.
 
-* Las contraseñas que contienen comillas simples o comillas dobles es posible que no funcionen correctamente.
-
-* La consola de la Herramienta de configuración del servidor tiene la misma limitación de globalización que la consola de Windows para mostrar series que están fuera de la página de códigos predeterminada.
-
+* Las contraseñas que contienen comillas simples o comillas dobles es posible que no funcionen correctamente. 
+* La consola de la Herramienta de configuración del servidor tiene la misma limitación de globalización que la consola de Windows para mostrar series que están fuera de la página de códigos predeterminada. 
 
 Es posible que también experimente restricciones o anomalías en varios aspectos de la globalización a causa de las limitaciones de otros productos, tales como navegadores, sistemas de gestión de bases de datos o en kits de desarrollo de software en uso.
 Por ejemplo: 
@@ -177,10 +175,7 @@ En tal caso, la aplicación debe crearse con Android SDK 11 o posterior.
 ### Application Center precisa MobileFirst Studio V7.1 para importar y compilar el cliente móvil de Application Center
 {: #application-center-requires-mobilefirst-studio-v71-for-importing-and-building-the-application-center-mobile-client }
 Para compilar el cliente móvil Application Center, necesita MobileFirst Studio V7.1.
-Descargue MobileFirst Studio desde la página de [Descargas]({{site.baseurl}}/downloads).
-Pulse el separador **Releases anteriores de MobileFirst Platform Foundation** para el enlace de descarga.
-Para obtener las instrucciones de instalación, consulte [Instalación de MobileFirst Studio en IBM  Knowledge Center para la versión 7.1](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html).
-Para obtener más información sobre cómo compilar el cliente móvil de Application Center, consulte [Preparaciones para utilizar el cliente móvil](../../../appcenter/preparations).
+Descargue MobileFirst Studio desde la página de [Descargas]({{site.baseurl}}/downloads). Pulse el separador **Releases anteriores de MobileFirst Platform Foundation** para el enlace de descarga. Para obtener las instrucciones de instalación, consulte [Instalación de MobileFirst Studio en IBM  Knowledge Center para la versión 7.1](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html). Para obtener más información sobre cómo compilar el cliente móvil de Application Center, consulte [Preparaciones para utilizar el cliente móvil](../../../appcenter/preparations).
 
 ### Application Center y Microsoft Windows Phone 8.1
 {: #application-center-and-microsoft-windows-phone-81 }
@@ -278,7 +273,7 @@ Para resolver esta limitación, debe forzar la finalización de la sesión de us
 * En WebSphere Application Server, agregue la propiedad personalizada de gestión de sesiones InvalidateOnUnauthorizedSessionRequestException con el valor true para corregir el problema. 
 
 **Nota:** En determinadas versiones de WebSphere Application Server o WebSphere Application Server Liberty, la excepción estará registrada pero la sesión está invalidada correctamente.
-Para obtener más información, [consulte el APAR PM85141](http://www.ibm.com/support/docview.wss?uid=swg1PM85141).
+Para obtener más información, [consulte el APAR PM85141](http://www.ibm.com/support/docview.wss?uid=swg1PM85141). 
 
 ### Microsoft Windows Phone 8
 {: #microsoft-windows-phone-8 }
@@ -408,3 +403,8 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 Durante la configuración de **mfpclient.properties** para su aplicación Android nativa, si su instancia de {{ site.data.keys.mf_server }} se encuentra en host con una dirección IPV6, utilice un nombre de host correlacionado para la dirección IPV6 para configurar la propiedad **wlServerHost** en **mfpclient.properties**.
 La configuración de la propiedad **wlServerHost** con una dirección raw IPv6 hace que falle el intento de la aplicación de conectarse a {{ site.data.keys.mf_server }}.
 
+
+### No se recomienda modificar el comportamiento predeterminado de una aplicación Cordova
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+La modificación del comportamiento predeterminado de una aplicación Cordova (por ejemplo, cambiando el comportamiento del botón atrás) cuando se ha añadido {{ site.data.keys.product_adj }} Cordova SDK al proyecto, puede dar lugar a que Google Play Store la rechace cuando la envíe.
+Para cualquier otra anomalía al enviar la aplicación a Google Play Store, puede ponerse en contacto con el soporte de Google. 

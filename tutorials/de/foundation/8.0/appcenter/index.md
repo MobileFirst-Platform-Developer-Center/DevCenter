@@ -52,24 +52,24 @@ die mit dem SDK des Geräts erstellt wurden, oder Hybridanwendungen mit nativen 
 stellt keine mobilen Webanwendungen bereit. Solche Anwendungen werden wie eine Website über eine URL an den Web-Browser des mobilen Geräts gesendet.
 
 In der aktuellen Version unterstützt das Application Center
-Anwendungen, die für die Google-Android-Plattform, die Apple-iOS-Plattform, die Windows-Phone-8-Plattform und die
-Windows-8-Plattform
+Anwendungen, die für die Google-Android-Plattform, die Apple-iOS-Plattform, die Windows-Phone-8-Plattform, die
+Windows-8-Plattform und die Windows-10-Plattform
 erstellt wurden. 
 
 Für Windows Phone wird zurzeit nur das Format von Windows-Phone-Anwendungspaketdateien
-(.xap) unterstützt. Das App-Paketdateiformat bzw. universelle App-Format (.appx) wird nicht unterstützt. Für den Windows Store (Desktop-Anwendungen)
+(.xap) unterstützt. Außerdem wird das Dateiformat für Windows-10-UWP-App-Pakete (.appx) unterstützt. Für den Windows Store (Desktop-Anwendungen)
 wird das App-Paketdateiformat (.appx) unterstützt. 
 
 Windows Phone 7, Windows RT und BlackBerry OS werden von der aktuellen
 Version des Application Center nicht unterstützt.
 
 Das Application Center verwaltet mobile Anwendungen. Es unterstützt alle Arten
-von Android-, iOS-, Windows-Phone-8- oder Windows-8-Anwendungen, einschließlich Anwendungen, die
+von Android-, iOS-, Windows-Phone-8-, Windows-8- oder Windows-10-Anwendungen, einschließlich Anwendungen, die
 mit der {{ site.data.keys.product }} erstellt wurden.
 
 Sie können das Application Center im Rahmen des Entwicklungsprozesses für eine Anwendung nutzen. In einem typischen Szenario für die Verwendung des
 Application Center erstellt ein Team eine mobile Anwendung (d. h. eine neue Version einer
-Android-, iOS-, Windows-Phone- oder Windows-8-Anwendung). Das Entwicklerteam möchte, dass diese neue Version vom erweiterten Team überprüft und getestet wird. Ein
+Android-, iOS-, Windows-Phone-, Windows-8- oder Windows-10-UWP-Anwendung). Das Entwicklerteam möchte, dass diese neue Version vom erweiterten Team überprüft und getestet wird. Ein
 Entwickler lädt über die Application-Center-Konsole die neue Version der Anwendung in das Application Center hoch. Dabei kann der
 Entwickler eine Beschreibung der Anwendungsversion eingeben. In der Beschreibung könnten beispielsweise Elemente erwähnt werden,
 die das Entwicklerteam hinzugefügt hat, oder Elemente aus der Vorgängerversion, die korrigiert wurden. Die neue Version der Anwendung ist
@@ -181,6 +181,19 @@ die Versionsnummer im Feld
 Diese Versionsnummer muss das Format a.b.c.d haben. Hier stehen
 a, b, c und d für nicht negative ganze Zahlen. 
 
+### Windows 10 UWP
+{:  #windows-10-uwp}
+
+Das Application Center stellt das Windows-10-UWP-Clientprojekt für die Installation der UWP-App bereit. Sie können das Projekt in Visual Studio öffnen und eine Binärdatei (z. B. **.appx**) zur Verteilung erstellen. Das Application
+Center gibt keinen Weg für die Verteilung des mobilen Clients vor.
+
+Im
+Application Center haben
+Anwendungen nur eine Versionsnummer zur Unterscheidung der Aktualität von Versionen. Bei Windows-10-UWP-Anwendungen befindet sich die Versionsnummer
+im Feld ***Version*** der Datei **Package.appxmanifest**. Diese Versionsnummer muss das Format a.b.c.d haben. Hier stehen
+a, b, c und d für nicht negative ganze Zahlen. 
+
+
 ## Allgemeine Architektur
 {: #general-architecture }
 Das Application Center setzt sich aus folgenden Hauptelementen zusammen:
@@ -282,7 +295,7 @@ LDAP-Authentifizierung verwenden, den Artikel [Benutzer mit LDAP verwalten](../i
    ```bash
    server start worklightServer
    ```
-    
+
 2. Wenn der Server aktiv ist, starten Sie die Application-Center-Konsole, indem Sie in Ihrem Browser folgende Adresse eingeben: `http://localhost:9080/appcenterconsole/`.
 3. Melden Sie sich an. Für die Installation des
 Application Center
@@ -303,17 +316,11 @@ Informationen zur Installation und Ausführung des mobilen Clients unter den ver
 [Client unter Windows 8 Universal installieren](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
 * Windows 8: Der mobile Client für
 Windows 8 wird nicht im Application Center implementiert und nicht über das Application Center verteilt (siehe [Microsoft Windows 8: Projektbuild erstellen](preparations/#microsoft-windows-8-building-the-project)). 
+* Windows 10 UWP: Lesen Sie den Abschnitt [Windows-10-UWP-Client
+auf einem Windows-10-Gerät installieren](mobile-client/#installing-windows-10-uwp-client-on-windows-10-device).
 
 ## Weitere Schritte
 {: #whats-next }
 Informieren Sie sich anhand der folgenden Abschnitte über die Verwendung des mobilen Application-Center-Clients.
 Erfahren Sie, wie die Application-Center-Konsole,
 das Befehlszeilentool und der mobile Client verwendet werden und wie Protokollstufen festgelegt werden. 
-
-
-
-
-
-
-
-

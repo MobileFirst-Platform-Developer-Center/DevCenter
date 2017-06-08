@@ -9,7 +9,7 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Le développement côté serveur fournit les outils et les fonctionnalités nécessaires pour connecter une application à {{site.data.keys.mf_server }} ou fournir du contenu à une application depuis des systèmes de back end d'entreprise et des services cloud. L'authentification et la sécurité sont étroitement liées au développement côté serveur, et doivent aussi être examinées.
+Le développement côté serveur fournit les outils et les fonctionnalités nécessaires pour connecter une application à {{ site.data.keys.mf_server }} ou fournir du contenu à une application depuis des systèmes de back end d'entreprise et des services cloud. L'authentification et la sécurité sont étroitement liées au développement côté serveur, et doivent aussi être examinées.
 
 <form role="searchbox"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
