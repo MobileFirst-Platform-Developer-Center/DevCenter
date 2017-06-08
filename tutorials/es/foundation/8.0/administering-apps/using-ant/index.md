@@ -643,8 +643,7 @@ Este mandato se basa en el servicio REST [Application (GET)](http://www.ibm.com/
 <br/>
 #### Mandato `set-license-config`
 {: #the-set-license-config-command }
-El mandato `set-license-config` especifica la configuración de licencia de señal de una aplicación.
-Tiene los siguientes atributos.
+El mandato `set-license-config` especifica la configuración de licencia de señal de una aplicación. Tiene los siguientes atributos.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -704,7 +703,7 @@ El mandato `app-version` da soporte a los siguientes elementos:
 <br/>
 #### Mandato `get-descriptor`
 {: #the-get-descriptor-command }
-El mandato `get-descriptor`, dentro de un elemento `<app-version>`, devuelve el descriptor de aplicación de una versión de una aplicación. Tiene los siguientes atributos.
+El mandato `get-descriptor`, dentro de un elemento `<app-version>`, devuelve el descriptor de aplicación de la versión de una aplicación. Tiene los siguientes atributos.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -786,7 +785,7 @@ El mandato `set-authenticity-data`, dentro de un elemento `<app-version>`, espec
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
-| file | Nombre del archivo de entrada:{::nomarkdown}<ul><li>Un archivo de datos de autenticidad,</li><li>Un archivo de dispositivo (archivo .ipa, .apk o .appx), a partir del que se extraen los datos de autenticidad.</li></ul>{:/} |  Sí | No disponible | 
+| file | Nombre del archivo de entrada:<ul><li>Un archivo de datos de autenticidad,</li><li>Un archivo de dispositivo (archivo .ipa, .apk o .appx), a partir del que se extraen los datos de autenticidad.</li></ul> |  Sí | No disponible | 
 
 **Ejemplos**  
 
@@ -855,7 +854,7 @@ Este mandato se basa en el servicio REST [Application Configuration (GET)](http:
 <br/>
 #### Mandato `set-user-config`
 {: #the-set-user-config-command-2 }
-El mandato `set-user-config`, dentro de un elemento `<app-version>`, especifica la configuración de usuario de una versión de una aplicación. Tiene los siguientes atributos para establecer toda la configuración.
+El mandato `set-user-config`, dentro de un elemento `<app-version>`, especifica la configuración de usuario para una versión de una aplicación. Tiene los siguientes atributos para configurar toda la configuración.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|

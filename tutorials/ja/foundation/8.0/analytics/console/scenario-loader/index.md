@@ -13,9 +13,9 @@ weight: 4
 >
 > * 一部のグラフには、データは取り込まれません。
 
-シナリオ・ローダーは、{{site.data.keys.mf_analytics_console_full }}のさまざまなグラフおよびレポートにダミー・データを取り込みます。そのデータは、Elasticsearch データ・ストアに保管されており、既存のテスト・データまたは実働データから安全に分離されています。
+シナリオ・ローダーは、{{ site.data.keys.mf_analytics_console_full }}のさまざまなグラフおよびレポートにダミー・データを取り込みます。そのデータは、Elasticsearch データ・ストアに保管されており、既存のテスト・データまたは実働データから安全に分離されています。
 
-ロードされるデータは、実際には合成されたものであり、データ・ストアに直接注入されます。クライアントやサーバーによって作成された実際の分析データの結果ではありません。このデータの目的は、UI に表示されるさまざまなレポートおよびグラフの性質をユーザーによく見てもらうことです。したがって、データをテストの目的で使用**しない**でください。
+ロードされるデータは、人工的な性質のものであり、データ・ストアに直接注入されます。クライアントやサーバーによって作成された実際の分析データの結果ではありません。このデータの目的は、UI に表示されるさまざまなレポートおよびグラフの性質を理解しやすくすることにあります。したがって、データをテストの目的で使用**しない**でください。
 
 #### ジャンプ先
 {: #jump-to }
@@ -30,7 +30,7 @@ weight: 4
 ## 始める前に
 {: #before-you-start }
 
-シナリオ・ローダーは、{{site.data.keys.mf_analytics_console }}と一緒にパッケージされています。シナリオ・ローダーに接続する前に、{{site.data.keys.mf_analytics_console_short }}が実行されており、アクセス可能であることを確認してください。
+シナリオ・ローダーは、{{ site.data.keys.mf_analytics_console }}と一緒にパッケージされています。シナリオ・ローダーに接続する前に、{{ site.data.keys.mf_analytics_console_short }}が実行されており、アクセス可能であることを確認してください。
 
 ## シナリオ・ローダーへの接続
 {: #connecting-to-the-scenario-loader }
@@ -41,11 +41,13 @@ weight: 4
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 
-3. 「シナリオ・ローダー (Scenario Loader)」ページが、{{site.data.keys.mf_analytics_console_short }}のナビゲーション・バーと一緒に表示されます。シナリオ・ローダーはナビゲーション・バーからはアクセス不能なままです。
+3. 「シナリオ・ローダー (Scenario Loader)」ページが、{{ site.data.keys.mf_analytics_console_short }}のナビゲーション・バーと一緒に表示されます。シナリオ・ローダーはナビゲーション・バーからはアクセス不能なままです。
 
 ## データ・ロードの構成
+{: #configuring-the-data-loading}
 
-1. **「テスト構成 (Testing Configuration)」**セクションには、生成されたデータの性質 (**「基本」**タブ) およびボリューム (**「キャパシティー・プランニング」**タブ) を制御するためのさまざまな設定が用意されています。十分なデータをロードするために、少なくとも 30 日間の**「履歴日数 (Days of history)」**を設定するようにしてください。
+1. **「テスト構成 (Testing Configuration)」**セクションには、生成されたデータの性質 (**「基本」**タブ) およびボリューム (**「キャパシティー・プランニング」**タブ) を制御するためのさまざまな設定が用意されています。
+    十分なデータをロードするために、少なくとも 30 日間の**「履歴日数 (Days of history)」**を設定するようにしてください。
 
     これらの設定に関する情報はすべて、**「テスト構成 (Testing Configuration)」**セクションにあります。
 
@@ -65,7 +67,7 @@ weight: 4
 
 データがロードされると、Analytics コンソールで使用できる多くの (しかし、すべてではない) グラフおよび表にデータが取り込まれます。
 
-{{site.data.keys.mf_analytics_console_short }}のナビゲーション・バーから、さまざまなページおよびタブを確認してデータが取り込まれたグラフおよび表を閲覧します。
+{{ site.data.keys.mf_analytics_console_short }}のナビゲーション・バーから、さまざまなページおよびタブを確認してデータが取り込まれたグラフおよび表を表示します。
 
 ## デバッグ・モードの無効化
 {: #disabling-the-debug-mode }
@@ -75,4 +77,4 @@ weight: 4
 1. **「テスト構成 (Testing Configuration)」**セクションで**「今すぐ削除 (Delete Now)」**ボタンをクリックして、データを削除します。
 2. **「設定」**→**「詳細設定」**セクションで、必ず **「デフォルト・テナント」**の値を `worklight` に設定します。
 3. true に設定された変数については、false に設定します (JVM 引数 `-DwlDevEnv=false`、または環境変数 `ANALYTICS_DEBUG=false`)。
-4. {{site.data.keys.mf_analytics_server }}を再始動します。
+4. {{ site.data.keys.mf_analytics_server }}を再始動します。

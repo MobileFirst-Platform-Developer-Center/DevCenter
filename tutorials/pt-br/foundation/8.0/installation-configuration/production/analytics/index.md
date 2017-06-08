@@ -7,7 +7,7 @@ weight: 7
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
 {: #overview }
-O {{ site.data.keys.mf_analytics_server }} é entregue como dois arquivos WAR separados. Por conveniência na implementação no WebSphere Application Server ou no WebSphere Application Server Liberty, o {{ site.data.keys.mf_analytics_server }} também é entregue como um arquivo EAR que contém os dois arquivos WAR. 
+O {{ site.data.keys.mf_analytics_server }} é entregue como dois arquivos WAR separados. Por conveniência na implementação no WebSphere Application Server ou no WebSphere Application Server Liberty, o {{ site.data.keys.mf_analytics_server }} também é entregue como um arquivo EAR que contém os dois arquivos WAR.
 
 > **Nota:** Não instale mais de uma instância do {{ site.data.keys.mf_analytics_server }} em uma única máquina host. Para obter informações adicionais sobre como gerenciar seu cluster, consulte a documentação do Elasticsearch.
 

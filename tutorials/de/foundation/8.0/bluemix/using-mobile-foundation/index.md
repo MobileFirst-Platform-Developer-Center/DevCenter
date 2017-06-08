@@ -47,7 +47,7 @@ Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne ein
 3. Geben Sie einen angepassten Namen für die Serviceinstanz ein oder übernehmen Sie den vorgegebenen Standardnamen (*optional*). 
 4. Wählen Sie den gewünschten Preistarif aus und klicken Sie auf **Erstellen**.
 
-    <img class="gifplayer" alt="Instanz des {{ site.data.keys.mf_bm_short }} Service erstellen" src="service-creation.png"/>
+    <img class="gifplayer" alt="Mobile-Foundation-Serviceinstanz erstellen" src="service-creation.png"/>
 
 ### Plan *Developer* einrichten
 {: #setting-up-the-developer-plan }
@@ -154,7 +154,7 @@ Wenn Sie die Tracefunktion aktivieren, werden in der Datei **trace.log** Nachric
 
 Die Datei **trace.log** ist jetzt an der oben angegebenen Position verfügbar. 
 
-<img class="gifplayer" alt="Serverprotokolle für den {{ site.data.keys.mf_bm_short }} Service" src="server-logs.png"/>
+<img class="gifplayer" alt="Serverprotokolle für den Mobile-Foundation-Service" src="server-logs.png"/>
 
 ## Fehlerbehebung
 {: #troubleshooting }

@@ -94,6 +94,8 @@ weight: 4
 
 
 ### 启用/禁用分析支持
+{: #enabledisable-analytics-support}
+
 缺省情况下，启用由分析服务器收集数据以进行分析的功能。您可以将其禁用，譬如为节省处理时间。
 
 1. 在导航侧边栏中，单击**运行时设置**。为避免无意中更改，将以只读方式显示运行时属性。
@@ -119,8 +121,6 @@ weight: 4
 | 业务       | analytics_business       | 除“管理”和“基础结构”页面外的全部。 | 全部。     |
 
 > 有关设置角色的信息，请参阅[为 {{ site.data.keys.mf_server }} 管理配置用户认证](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)。
-
-
 ## 相关博客帖子
 * [有关检测定制分析的更多信息]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [有关检测 Webhook 的更多信息]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

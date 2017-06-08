@@ -22,6 +22,8 @@ weight: 12
 * [将修订包应用到 {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
 
 ## 为何要迁移至 IBM MobileFirst Foundation 8.0
+{: #why-migrate-to-ibm-mobilefirst-foundation-80}
+
 ### 减少构建应用程序所需的工作、技能和时间
 * 利用标准软件包管理器（npm、CocoaPods、Gradle、NuGet）和 Maven for Java Adapter 构建自动化功能，更快速、更方便、更智慧地构建应用程序
 * 新增了更简单、更易于插入的模块化 MobileFirst SDK
@@ -38,7 +40,7 @@ weight: 12
 * Bluemix Public 上 MobileFirst Foundation 开发、测试和完全可扩展生产环境实现单击式配置
 * 与 IBM DevOps Services 和 Urban Code 集成，构建部署管道
 
-### 多渠道 API 创建和管理 
+### 多渠道 API 创建和管理
 * 利用特定于移动的安全扩展（例如，Step Up、Multifactor），加强 API Connect 多渠道安全性，提供最大程度的保护措施，然后使用 IBM DataPower 在 DMZ 中实施安全性
 * 在 Foundation V8 中创建并定义与 API Connect 兼容的 Swagger REST API，然后在 API Connect 中管理这些 API，保护它们的安全
 
@@ -73,6 +75,7 @@ MobileFirst 项目不再存在。相反，您使用所选的开发环境来开�
 * 有关迁移 Cordova 或混合应用程序的更多信息，请参阅[迁移现有 Cordova 和混合应用程序](migrating-client-applications/cordova)。
 
 > **注：**迁移推送通知支持需要更改客户端和服务器端，稍后会在“迁移推送通知支持”中对此进行描述。
+
 ## 迁移本机应用程序
 {: #migrating-a-native-application }
 要迁移本机应用程序，需要遵循以下步骤：
@@ -104,7 +107,8 @@ MobileFirst 项目不再存在。相反，您使用所选的开发环境来开�
 {: #migrating-push-notifications-support }
 不再支持基于事件源的模型。改为使用基于标记的通知。要了解有关迁移客户机应用程序和服务器端组件的推送通知的更多信息，请参阅从基于事件源的通知[迁移推送通知](migrating-push-notifications)和[迁移方案](migrating-push-notifications/#migration-scenarios)。
 
-从 V8.0 开始，在服务器端配置推送服务。推送证书存储在服务器上。您可以从 {{ site.data.keys.mf_console }} 进行设置，或通过使用命令行工具或推送服务 REST API 自动上载证书。您也可以从 {{ site.data.keys.mf_console }} 发送推送通知。
+从 V8.0 开始，在服务器端配置推送服务。推送证书存储在服务器上。您可以从 {{ site.data.keys.mf_console }} 进行设置，或通过使用命令行工具或推送服务 REST API 自动上载证书。您也可以从
+{{ site.data.keys.mf_console }} 发送推送通知。
 
 推送服务受 OAuth 安全模型的保护。必须将使用推送服务 REST API 的服务器端组件配置为 {{ site.data.keys.mf_server }} 的机密客户机。
 

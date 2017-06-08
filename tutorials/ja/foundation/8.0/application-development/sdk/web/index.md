@@ -147,7 +147,7 @@ SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/
 > 詳しくは、[Web 開発環境のセットアップ](../../../installation-configuration/development/web)・チュートリアルを参照してください。
 
 ## セキュア・オリジン・ポリシー
-{: secure-origins-policy }
+{: #secure-origins-policy }
 開発中に Chrome を使用すると、`localhost` では**ない**ホストと HTTP の両方を使用するアプリケーションのロードを、この ブラウザーが許可しない場合があります。原因は、このブラウザーに実装され、デフォルトで使用される、セキュア・オリジン・ポリシーです。
 
 これに対処するため、次のフラグを付けて Chrome ブラウザーを開始することができます。

@@ -106,7 +106,7 @@ static void Main(string[] args) {
 unter [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).
 
 ## Message Inspector definieren
-{: #define-a-message-inspector }
+{: #define-a-message-inspector}
 Bevor wir uns mit dem Validierungsprozess beschäftigen, müssen wir einen
 **Message Inspector** für den Schutz der Ressource (des Serviceendpunkts) erstellen und definieren.
 Ein Message Inspector ist ein erweiterbares Objekt, das im Service
@@ -187,6 +187,8 @@ Anschließend fügen wir diese Erweiterung (behaviorExtension) zum Element webBe
 ```
 
 ## Message Inspector implementieren
+{: #message-inspector-implementation}
+
 Zunächst werden wir einige Konstanten als Klasseneinträge in unserem Message Inspector
 definieren: die MobileFirst-Server-URL,
 die Berechtigungsnachweise unseres vertraulichen Clients
@@ -308,6 +310,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## Zugriffstoken vom {{ site.data.keys.product_adj }}-Autorisierungsserver anfordern
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 Zum Authentifizieren des Clienttokens sollten wir mit einer Anforderung an den **Tokenendpunkt**
 **ein Zugriffstoken als Message Inspector anfordern**.
 Später werden wir dieses empfangene Token verwenden, um das Clienttoken zur Introspektion zu übergeben. 

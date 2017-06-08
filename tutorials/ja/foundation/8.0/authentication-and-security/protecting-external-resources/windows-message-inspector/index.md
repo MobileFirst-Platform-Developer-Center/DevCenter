@@ -102,7 +102,7 @@ static void Main(string[] args) {
 > WCF REST サービスについて詳しくは、[方法 : 基本的な WCF Web HTTP サービスを作成する](https://msdn.microsoft.com/ja-jp/library/bb412178(v=vs.100).aspx を参照してください。
 
 ## メッセージ・インスペクターの定義
-{: #define-a-message-inspector }
+{: #define-a-message-inspector}
 検証プロセスの詳細に進む前に、リソース (サービス・エンドポイント) を保護するために使用する**メッセージ・インスペクター**を作成し、定義する必要があります。
 メッセージ・インスペクターは、メッセージの受信後または送信前にメッセージを検査および変更するために、サービス内で使用できる拡張性オブジェクトです。サービス・メッセージ・インスペクターは、`IDispatchMessageInspector` インターフェースを実装する必要があります。
 
@@ -173,6 +173,8 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 ```
 
 ## メッセージ・インスペクターの実装
+{: #message-inspector-implementation}
+
 まず、メッセージ・インスペクター内にクラス・メンバーとしていくつかの定数を定義します。それらは、{{ site.data.keys.mf_server }} URL、機密クライアントの資格情報、およびサービスを保護するために使用する `scope` です。また、{{ site.data.keys.product_adj }} 許可サーバーから受け取ったトークンを保持するための静的変数を定義することもできます。そうすることで、すべてのユーザーがそれを使用できます。
 
 ```csharp
@@ -282,6 +284,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## {{ site.data.keys.product_adj }} 許可サーバーからのアクセス・トークンの取得
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 クライアント・トークンを認証するためには、**トークン・エンドポイント**への要求を発行することで、**メッセージ・インスペクターとしてアクセス・トークンを取得**する必要があります。
 後で、この受け取ったトークンを使用して、クライアント・トークンをイントロスペクションのために渡します。
 

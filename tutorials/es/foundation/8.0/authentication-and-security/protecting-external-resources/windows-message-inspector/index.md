@@ -173,6 +173,8 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 ```
 
 ## Message Inspector Implementation
+{: #message-inspector-implementation}
+
 First let's define some constants as class members in our message inspector: {{ site.data.keys.mf_server }} URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from {{ site.data.keys.product_adj }} Authorization server, so it will be available to all users:
 
 ```csharp
@@ -282,6 +284,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
 Later we will use this received token to pass the client token for introspection.
 

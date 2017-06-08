@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Das Application-Center-Installationsprogramm wird verwendet, um Apps auf mobilen Geräten zu installieren. Sie können diese Anwendung mithilfe der bereitgestellten Cordova- oder MobileFirst-Studio-Projekte generieren. Sie können aber auch direkt eine vorab erstellte Version
+Das Application-Center-Installationsprogramm wird verwendet, um Apps auf mobilen Geräten zu installieren. Sie können diese Anwendung mithilfe der bereitgestellten Cordova-, Visual-Studio- oder MobileFirst-Studio-Projekte generieren. Sie können aber auch direkt eine vorab erstellte Version
 des MobileFirst-Studio-Projekts für Android, iOS oder Windows 8 Universal verwenden. 
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
@@ -227,9 +227,31 @@ ein Installationsprogramm generieren, das die generierte ausführbare Datei
 (.exe) und die zugehörigen abhängigen DLL-Dateien (Dynamic Link Libraries)
 installiert. Alternativ können Sie diese Dateien bereitstellen, ohne sie in ein Installationsprogramm aufzunehmen.
 
+####  Nativer IBM Application-Center-Client für Microsoft Windows 10 Universal
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
+
+Der native IBM Application Center Client für Windows 10 Universal kann für die Installation universeller Windows-10-Apps auf Windows-10-Telefonen verwendet werden. Nutzen Sie **IBMApplicationCenterWindowsStore** für die Installation von
+Windows-10-Apps auf dem Windows-Desktop.
+
+#### Projektbuild für Microsoft Windows 10 Universal erstellen
+{: #microsoft-windows-10-universal-building-the-project}
+
+Das universelle Windows-10-Projekt wird als Visual-Studio-Projekt in **IBMAppCenterUWP\IBMAppCenterUWP.csproj** bereitgestellt.             
+Sie müssen den Projektbuild für das Clientprojekt in Microsoft Visual Studio
+2015 erstellen, um das Projekt verteilen zu können. 
+>Die Erstellung des Projekts ist eine Vorbedingung für die Verteilung des Projekts an Benutzer.
+
+Gehen Sie wie folgt vor, um den Projektbuild für Windows 10 Universal zu erstellen:
+1.  Öffnen Sie die Visual-Studio-Projektdatei **IBMAppCenterUWP\IBMAppCenterUWP.csproj** in Microsoft Visual Studio 2015.
++ Erstellen Sie einen vollständigen Anwendungsbuild.
++ Führen Sie den folgenden Schritt aus, um die Datei **.appx** zu generieren: 
+  * Klicken Sie mit der rechten Maustaste auf das Projekt und wählen Sie **Store → App-Pakete erstellen** aus.
+
 ## Funktionen anpassen (für Fachleute): Android, iOS, Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
 Sie können Funktionen anpassen, indem Sie eine zentrale Eigenschaftendatei bearbeiten und einige andere Ressourcen modifizieren.
+>Dies wird nur unter Android, iOS, Windows 8 (nur Windows-Store-Pakete) oder Windows Phone 8 unterstützt.
+
 
 Anpassung von Features. Diverse Features werden von einer zentralen Eigenschaftendatei mit dem Namen
 **config.json** im Verzeichnis
@@ -275,6 +297,8 @@ Es gibt für jeden Schwärzungsgrad ein Verzeichnis.
 * **iOS:** Dateien mit dem Namen **iconsize.png** im Verzeichnis **Resources** des Xcode-Projekts
 * **Windows Phone:** Dateien mit dem Namen **ApplicationIcon.png**, **IconicTileSmallIcon.png** und
 **IconicTileMediumIcon.png** im Verzeichnis **native** des MobileFirst-Studio-Umgebugnsordners für Windows Phone
+* **Windows 10 Universal:** Dateien mit dem Namen **Square\*Logo\*.png**, **StoreLogo.png** und **Wide\*Logo\*.png** im Verzeichnis **IBMAppCenterUWP/Assets** in Visual Studio
+
 
 #### Anwendungsname
 {: #application-name }
@@ -284,6 +308,8 @@ Es gibt für jeden Schwärzungsgrad ein Verzeichnis.
 **IBMAppCenterAppCenterIphone-Info.plist** des Xcode-Projekts. 
 * **Windows Phone:** Bearbeiten Sie das Attribut **Title** des Eintrags "App" in
 der Visual-Studio-Datei **Properties/WMAppManifest.xml**. 
+* **Windows 10 Universal:** Bearbeiten Sie das Attribut **Title** des Eintrags "App" in der Visual-Studio-Datei **IBMAppCenterUWP/Package.appxmanifest** file.
+
 
 #### Bilder der Begrüßungsanzeige
 {: #splash-screen-images }
@@ -293,6 +319,8 @@ in den Verzeichnissen **res/drawable/Schwärzung** des Android-Studio-Projekts. 
 * Begrüßungsanzeige von Cordova- bzw. MobileFirst-Studio-basierten Projekten während der automatischen Anmeldung: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Bearbeiten Sie die Datei **SplashScreenImage.png**
 im Verzeichnis **native** des MobileFirst-Studio-Umgebungsordners für Windows Phone.
+* **Windows 10 Universal:** Bearbeiten Sie die Dateien mit dem Namen **SplashScreen*.png**
+im Verzeichnis **IBMAppCenterUWP/Assets** in Visual Studio.
 
 #### Symbole der Anwendung (Schaltflächen, Sterne und ähnliche Objekte)
 {: #icons }
@@ -314,14 +342,14 @@ und den .dll-Dateien
 (Dynamic Link Library) bereitstellen oder indem Sie ein ausführbares Installationsprogramm für den mobilen
 Windows-8-Client erstellen. 
 
-Die Android-, iOS- und Windows-Phone-Version des
+Die Android-, iOS-, Windows-Phone- und Windows-10-Universal-Version (Phone) des
 mobilen Clients muss im Application Center
 implementiert werden. Dazu müssen Sie die Dateien
-des Android-Anwendungspakets (.apk), die iOS-Anwendungsdateien (.ipa) und
-die Windows-Phone-Anwendungsdateien (.xap) in das
+des Android-Anwendungspakets (.apk), die iOS-Anwendungsdateien (.ipa),
+die Windows-Phone-Anwendungsdateien (.xap) und die universellen Windows-10-Dateien (.appx) in das
 Application Center hochladen. 
 
-Führen Sie die im Artikel [Mobile Anwendung hinzufügen](../appcenter-console/#adding-a-mobile-application) beschriebenen Schritte aus, um die mobile Clientanwendung für Android, iOS und Windows Phone hinzuzufügen.
+Führen Sie die im Artikel [Mobile Anwendung hinzufügen](../appcenter-console/#adding-a-mobile-application) beschriebenen Schritte aus, um die mobile Clientanwendung für Android, iOS, Windows Phone und Windows 10 hinzuzufügen.
 Sie müssen die Anwendungseigenschaft "Installer" auswählen, um anzugeben, dass die Anwendung
 ein Installationsprogramm ist. Bei Auswahl dieser Eigenschaft
 können Benutzer mobiler Geräte die mobile Anwendung ohne großen Aufwand über eine Funkverbindung installieren. Lesen Sie zum Installieren des mobilen Clients die

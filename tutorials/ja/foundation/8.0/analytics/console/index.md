@@ -8,16 +8,16 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 
 ## 概説
-クライアントが {{site.data.keys.mf_analytics_server }}と連携する方法を構成し、Operations Console および Analytics コンソールを使用してさまざまなレポートを構成して表示します。
+クライアントが {{ site.data.keys.mf_analytics_server }}と連携する方法を構成し、Operations Console および Analytics コンソールを使用してさまざまなレポートを構成して表示します。
 
-## {{site.data.keys.mf_analytics_console_full }}
-{{site.data.keys.mf_analytics_console }}で、Analytics レポートを表示および構成します。アラートを管理し、クライアント・ログを表示します。
+## {{ site.data.keys.mf_analytics_console_full }}
+{{ site.data.keys.mf_analytics_console }}で、Analytics レポートを表示および構成します。アラートを管理し、クライアント・ログを表示します。
 
-{{site.data.keys.mf_console }} から {{site.data.keys.mf_analytics_console_short }}を開くには、右上のナビゲーション・バーで**「Analytics コンソール」**リンクをクリックします。
+{{ site.data.keys.mf_console }} から {{ site.data.keys.mf_analytics_console_short }}を開くには、右上のナビゲーション・バーで**「Analytics コンソール」**リンクをクリックします。
 
 ![「Analytics コンソール」ボタン](analytics-console-button.png)
 
-{{site.data.keys.mf_analytics_console_short }}にナビゲートすると、デフォルトの**「ダッシュボード」**パネルが表示されます。クライアント・アプリケーションが既にログおよび分析データをサーバーに送信している場合は、関連レポートにデータが取り込まれます。**「アプリケーション」**および**「インフラストラクチャー」**はナビゲーション・バーから選択できます。
+{{ site.data.keys.mf_analytics_console_short }}にナビゲートすると、デフォルトの**「ダッシュボード」**パネルが表示されます。クライアント・アプリケーションが既にログおよび分析データをサーバーに送信している場合は、関連レポートにデータが取り込まれます。**「アプリケーション」**および**「インフラストラクチャー」**はナビゲーション・バーから選択できます。
 
 ![Analytics コンソール](analytics-console.png)
 
@@ -39,11 +39,7 @@ weight: 4
 **「アプリケーション」→「使用状況とデバイス」**タブから「アプリケーション・セッション」グラフと「アプリケーションの使用」グラフを表示すると、ユーザーによってどのアプリケーションが最も使用されているかが分かります。
 
 ### 組み込み分析
-{{site.data.keys.product_adj }} クライアント
-SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
-アプリケーションで {{site.data.keys.mf_server }}
-に行う要求について分析データが自動的に収集されます。
-**「ダッシュボード」→「概要」**で、収集されて {{site.data.keys.mf_analytics_server }} にレポートされる基本のデバイス・メタデータを表示します。
+{{ site.data.keys.product_adj }} クライアント SDK を {{ site.data.keys.mf_server }} と一緒に使用すると、アプリケーションで {{ site.data.keys.mf_server }} に行う要求について分析データが自動的に収集されます。**「ダッシュボード」→「概要」**で、収集されて {{ site.data.keys.mf_analytics_server }} にレポートされる基本のデバイス・メタデータを表示します。
 
 ### カスタム分析
 アプリケーションにカスタム・データを送信させて、カスタム・データのカスタム・グラフを作成することができます。
@@ -51,24 +47,22 @@ SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
 > [『Analytics API』](../analytics-api/)チュートリアルでカスタム分析の送信方法を参照してください。
 
 ### カスタム・グラフ
-カスタム・グラフを使用すると、分析データ・ストア内の収集した分析データを、{{site.data.keys.mf_analytics_console_short }}でデフォルトでは使用できないグラフで視覚化できます (**「ダッシュボード」→「カスタム・グラフ」**)。この視覚化フィーチャーは、ビジネスに不可欠なデータを分析するためのパワフルな手段です。
+カスタム・グラフを使用すると、分析データ・ストア内の収集した分析データを、{{ site.data.keys.mf_analytics_console_short }}でデフォルトでは使用できないグラフで視覚化できます (**「ダッシュボード」→「カスタム・グラフ」**)。この視覚化フィーチャーは、ビジネスに不可欠なデータを分析するためのパワフルな手段です。
 
 > [『カスタム・グラフの作成』](custom-charts/)チュートリアルでカスタム・グラフの作成方法を参照してください。
 
 ### アラートの管理
-アラートにより、
-{{site.data.keys.mf_analytics_console }}
-を定期的にチェックせずに、モバイル・アプリケーションの正常性をモニターするための事前対応手段が提供されます。
+アラートにより、{{ site.data.keys.mf_analytics_console }} を定期的にチェックせずに、モバイル・アプリケーションの正常性をモニターするための事前対応手段が提供されます。
 
 **「ダッシュボード」→「アラートの管理」**タブで、しきい値を構成できます。この値を超えると、アラートが起動されて管理者に通知されます。起動されたアラートをコンソール上で視覚化することも、カスタム Web フックを使用してそれらを処理することもできます。カスタム Web フックを使用すると、アラートが起動されたときに誰がどのように通知を受けるかを制御できます。
 
 > [『アラートの管理』](alerts/)チュートリアルでアラートの管理方法を参照してください。
 
 ### アプリケーション異常終了のモニター
-アプリケーション異常終了は、{{site.data.keys.mf_analytics_console_short }}上 (**「アプリケーション」→「異常終了」**) で視覚化されます。したがって、コンソールで、素早く異常終了を確認し、状況に応じて措置を取ることができます。異常終了ログは、デフォルトではデバイス上に収集され、*再度アプリケーションが実行されると*、サーバーに送信されます。異常終了ログは、Analytics サーバーに送信されると、自動的に異常終了グラフにデータが取り込まれます。
+アプリケーション異常終了は、{{ site.data.keys.mf_analytics_console_short }}上 (**「アプリケーション」→「異常終了」**) で視覚化されます。したがって、コンソールで、素早く異常終了を確認し、状況に応じて措置を取ることができます。異常終了ログは、デフォルトではデバイス上に収集され、*再度アプリケーションが実行されると*、サーバーに送信されます。異常終了ログが Analytics サーバーに送信されると、そのデータが自動的に異常終了グラフに取り込まれます。
 
 ### サーバー・データおよびネットワーク・データのモニター
-{{site.data.keys.mf_analytics_console_short }} は、ネットワーク・データが Analytics サーバーに送信されるときにデータをモニターします。コンソールを使用して、この情報をさまざまな方法で照会できます (**「インフラストラクチャー」→「サーバーおよびネットワーク」**)。
+{{ site.data.keys.mf_analytics_console_short }} は、ネットワーク・データが Analytics サーバーに送信されるときにデータをモニターします。コンソールを使用して、この情報をさまざまな方法で照会できます (**「インフラストラクチャー」→「サーバーおよびネットワーク」**)。
 
 
 ### クライアント・ログの収集、検索、およびレポート作成
@@ -76,13 +70,13 @@ SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
 
 ロギング情報をレポートに含めるには、以下のようにします。
 
-1. {{site.data.keys.mf_analytics_console_short }}で、**「ダッシュボード」→「カスタム・グラフ」**タブを選択します。
+1. {{ site.data.keys.mf_analytics_console_short }}で、**「ダッシュボード」→「カスタム・グラフ」**タブを選択します。
 
 2. **「イベント・タイプ」**プルダウン・メニューから**「クライアント・ログ」**を選択します。
 
 **カスタム・グラフ**について詳しくは、[『カスタム・グラフの作成』](custom-charts/)を参照してください。
 
-ロギング・データはフィルタリングできます。ログ・フィルターを構成して Analytics サーバーに保存できます。すると、クライアント・アプリケーションがそれを取得できるようになります。
+ロギング・データはフィルタリングできます。ログ・フィルターを構成して Analytics サーバーに保存できます。そうすると、クライアント・アプリケーションがそれを取得できるようになります。
 
 ログ・フィルターの構成については、[『クライアント・ログの検索』](log-filters/)チュートリアルを参照してください。
 
@@ -90,22 +84,22 @@ SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
 
 
 
-## {{site.data.keys.mf_console_full }}
-{{site.data.keys.mf_console }}で、Analytics サーバーを構成し管理します。
+## {{ site.data.keys.mf_console_full }}
+{{ site.data.keys.mf_console }}で、Analytics サーバーを構成し管理します。
 
-{{site.data.keys.mf_analytics_console_short }}を使用している場合は、上部ナビゲーション・バーで**「オペレーション・コンソール」**ボタンをクリックして {{site.data.keys.mf_console }} にアクセスします。
+{{ site.data.keys.mf_analytics_console_short }}を使用している場合は、上部ナビゲーション・バーで**「オペレーション・コンソール」**ボタンをクリックして {{ site.data.keys.mf_console }} にアクセスします。
 
 ### 追加のロガー・パッケージからの分析データの収集
 デフォルトでは、パッケージ `com.worklight` からのロギングのみが Analytics に送信されます。追加パッケージからロギングを追加するには、[『Analytics サーバーへのログの転送』](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server)を参照してください。
 
 
 ### Analytics サポートの有効化/無効化
+{: #enabledisable-analytics-support}
+
 デフォルトでは、Analytics サーバーによる分析用のデータの収集が有効になっています。これは、処理時間の節約などのために無効にすることができます。
 
-
 1. ナビゲーション・サイドバーで**「ランタイム設定」**をクリックします。意図しない変更を防ぐために、ランタイム・プロパティーは読み取り専用モードで表示されます。
-2. 設定を編集可能にするには、**「編集」**ボタンをクリックします。*管理者* および*デプロイヤー* 以外のロールでログインすると、ランタイム・プロパティーの変更が許可されないため、
-**「編集」**ボタンは表示されません。
+2. 設定を編集可能にするには、**「編集」**ボタンをクリックします。*管理者* および*デプロイヤー* 以外のロールでログインすると、ランタイム・プロパティーの変更が許可されないため、**「編集」**ボタンは表示されません。
 3. **「データ収集の有効化」**のドロップダウン・メニューから**「いいえ (false)」**を選択してデータ収集を無効にします。
 4. **「保存 (Save)」**をクリックします。
 5. **「読み取り専用」**ボタンをクリックして、プロパティーを再度ロックします。
@@ -115,9 +109,8 @@ SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
 
 
 ### ロール・ベースのアクセス制御
-{{site.data.keys.mf_analytics_console_short }}
-のコンテンツは、事前定義のセキュリティー・ロールによって制限されます。  
-{{site.data.keys.mf_analytics_console_short }} は、ログイン・ユーザーのセキュリティー・ロールに基づいて異なるコンテンツを表示します。以下の表では、 {{site.data.keys.mf_analytics_console_short }}でのセキュリティー・ロールおよびアクセス権限について示します。
+{{ site.data.keys.mf_analytics_console_short }} のコンテンツは、事前定義のセキュリティー・ロールによって制限されます。  
+{{ site.data.keys.mf_analytics_console_short }} は、ログイン・ユーザーのセキュリティー・ロールに基づいて異なるコンテンツを表示します。以下の表では、 {{ site.data.keys.mf_analytics_console_short }}でのセキュリティー・ロールおよびアクセス権限について示します。
 
 | ロール           | ロール名                | 表示アクセス権限                                                     | 編集アクセス権限  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
@@ -127,7 +120,7 @@ SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
 | サポート        | analytics_support        | 「管理」ページ以外のすべて		             | すべて     |
 | ビジネス       | analytics_business       | 「管理」ページおよび「インフラストラクチャー」ページ以外のすべて | すべて     |
 
-> ロールのセットアップについては、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
+> ロールのセットアップについては、[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
 
 ## 関連のブログの投稿

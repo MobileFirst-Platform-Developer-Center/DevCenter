@@ -25,6 +25,8 @@ zu planen.
 * [Fixpack auf {{ site.data.keys.mf_server }} anwenden](#applying-a-fix-pack-to-mobilefirst-server)
 
 ## Warum auf IBM MobileFirst Foundation 8.0 umstellen?
+{: #why-migrate-to-ibm-mobilefirst-foundation-80}
+
 ### Nötige Anstrengungen und Kenntnisse sowie erforderliche Zeit für die Erstellung von Anwendungen verringern
 * Schnelleres, einfacheres und intelligenteres Erstellen von Apps mit Standardpaketmanagern (npm, CocoaPods, Gradle, NuGet) und Maven für die automatisierte Erstellung von Java-Adaptern
 * Einfachere und modulare Integration von MobileFirst-SDKs
@@ -41,7 +43,7 @@ zu planen.
 * Bereitstellung von MobileFirst-Foundation-Entwicklungsumgebungen und -Testumgebungen sowie von voll skalierbaren MobileFirst-Foundation-Produktionsumgebungen in Bluemix Public per Mausklick
 * Integration von IBM DevOps Services und UrbanCode für die Erstellung Ihrer Implementierungspipelines
 
-### Mehrkanal-API-Erstellung und -Management 
+### Mehrkanal-API-Erstellung und -Management
 * Intensivierung der API-Connect-Mehrkanalsicherheit mit speziellen Sicherheitserweiterungen für mobile Geräte (Intensivierung, Multifaktor) für maximalen Schutz und anschließende Durchsetzung in der Datenverwaltungszone mit IBM DataPower
 * Erstellung und Definition von mit API Connect kompatiblen Swagger-REST-APIs in MobileFirst Foundation Version 8 und anschließende Verwaltung und Sicherung dieser APIs in API Connect
 

@@ -102,7 +102,7 @@ static void Main(string[] args) {
 > 有关 WCF REST 服务的更多信息，请参阅 [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
 
 ## 定义消息检验器
-{: #define-a-message-inspector }
+{: #define-a-message-inspector}
 在开始验证过程之前，必须创建并定义用于保护资源（服务端点）的**消息检验器**。
 消息检验器是一个扩展性对象，可在服务中用于在接收消息之后或者在发送消息之前检查和更改消息。服务消息检验器应实现 `IDispatchMessageInspector` 接口：
 
@@ -173,6 +173,8 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 ```
 
 ## 消息检验器实施
+{: #message-inspector-implementation}
+
 首先，在消息检验器中，将一些常量定义为类成员：{{ site.data.keys.mf_server }} URL、保密客户机凭证以及将用于保护服务的 `scope`。我们还可以定义静态变量以保留从 {{ site.data.keys.product_adj }} 授权服务器收到的令牌，因此它将可用于所有用户：
 
 ```csharp
@@ -282,6 +284,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## 从 {{ site.data.keys.product_adj }} 授权服务器获取访问令牌
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 为认证客户机令牌，我们应通过针对**令牌端点**发出请求来**获取访问令牌作为消息检验器**。
 稍后，我们将使用此收到的令牌来传递客户机令牌以进行自省。
 

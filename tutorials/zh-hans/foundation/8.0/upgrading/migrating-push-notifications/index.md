@@ -837,7 +837,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
     * {{ site.data.keys.mf_console }}。
@@ -1089,7 +1089,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
     * {{ site.data.keys.mf_console }}。

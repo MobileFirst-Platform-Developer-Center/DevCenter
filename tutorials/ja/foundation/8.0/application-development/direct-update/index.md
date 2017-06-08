@@ -75,13 +75,13 @@ downloads:
 
 代替方法:
 
-* .zip ファイルを作成し、コマンド `mfpdev app webupdate [server-name][runtime-name]` を使用して別の {{ site.data.keys.mf_server }} にアップロードします。例えば、次のとおりです。 
+* .zip ファイルを作成し、コマンド `mfpdev app webupdate [server-name][runtime-name]` を使用して別の {{ site.data.keys.mf_server }} にアップロードします。例えば、次のとおりです。
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* コマンド `mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]` を使用して、以前に生成した .zip ファイルをアップロードします。 例えば、次のとおりです。 
+* コマンド `mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]` を使用して、以前に生成した .zip ファイルをアップロードします。 例えば、次のとおりです。
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -218,7 +218,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 ### シナリオ: UI なしのダイレクト・アップデートの実行
-{: scenario-running-ui-less-direct-updates }
+{: #scenario-running-ui-less-direct-updates }
 {{ site.data.keys.product_full }} は、アプリケーションがフォアグラウンドにあるとき、UI なしのダイレクト・アップデートをサポートします。
 
 UI なしのダイレクト・アップデートを実行するには、`directUpdateCustomListener` を実装します。空の関数実装を `onStart` および `onProgress` メソッドに提供します。空の実装のためにダイレクト・アップデート・プロセスはバックグラウンドで実行されます。
@@ -325,7 +325,7 @@ var  directUpdateCustomListener  = {
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** **差分更新**が可能なのは、クライアント・アプリケーションの Web リソースが、サーバーに現在デプロイされているアプリケーションの 1 つ前のバージョンである場合に限られます。現在デプロイされているアプリケーションより複数バージョン前のクライアント・アプリケーション (クライアント・アプリケーションが更新された後、最低 2 回はアプリケーションがサーバーにデプロイされていることを意味します) は、**フル・アップデート**を受け取ります (Web リソース全体がダウンロードされ、更新されることを意味します)。
 
 ## セキュアなダイレクト・アップデート
-{: secure-direct-update }
+{: #secure-direct-update }
 セキュアなダイレクト・アップデートは、デフォルトでは無効になっていますが、{{ site.data.keys.mf_server }}から (またはコンテンツ配信ネットワーク (CDN) から) クライアント・アプリケーションに送信される Web リソースが第三者のアタッカーによって変更されるのを防止します。
 
 **ダイレクト・アップデートの認証性を有効にするには、以下のようにします。**  

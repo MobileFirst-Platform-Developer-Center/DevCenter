@@ -53,7 +53,7 @@ Bluelist 어댑터 샘플의 두 가지 기본 기능은 다음과 같습니다.
 
 샘플은 보안 서버에서 관리 액세스가 필요한 API 요청을 수행하는 방법을 설명합니다. 관리자 신임 정보를 모바일 디바이스에 배치할 수도 있지만 모바일 디바이스로부터의 액세스를 제한하는 것이 더 좋습니다. 
 
-Bluelist 샘플은 {{ site.data.keys.product_adj }} 보안을 Cloudant 보안과 통합합니다. 어댑터 샘플은 {{site.data.keys.product_adj }} ID를 Cloudant ID에 맵핑합니다. 모바일 디바이스는 비관리 API 요청을 수행하기 위해 Cloudant 세션 쿠키를 수신합니다. 샘플은 Couch 보안 모델을 사용합니다. 
+Bluelist 샘플은 {{ site.data.keys.product_adj }} 보안을 Cloudant 보안과 통합합니다. 어댑터 샘플은 {{ site.data.keys.product_adj }} ID를 Cloudant ID에 맵핑합니다. 모바일 디바이스는 비관리 API 요청을 수행하기 위해 Cloudant 세션 쿠키를 수신합니다. 샘플은 Couch 보안 모델을 사용합니다. 
 
 ### 등록 REST 엔드포인트
 {: #enroll-rest-endpoint }

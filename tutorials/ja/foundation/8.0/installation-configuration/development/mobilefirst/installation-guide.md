@@ -7,11 +7,11 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product }} を使用した開発のためにワークステーションをセットアップするには、以下のインストール・ガイドに従ってください。
+{{ site.data.keys.product }} を使用した開発のためにワークステーションをセットアップするには、以下のインストール・ガイドに従ってください。
 
 ## DevKit インストーラー
 {: #devkit-installer }
-[{{site.data.keys.mf_dev_kit }} インストーラー]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst)は、すぐに使用できる {{site.data.keys.mf_server }}、データベース、およびランタイムを開発者マシンにインストールします。  
+[{{ site.data.keys.mf_dev_kit }} インストーラー]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst)は、すぐに使用できる {{ site.data.keys.mf_server }}、データベース、およびランタイムを開発者マシンにインストールします。  
 
 **前提条件:**  
 このインストーラーでは、Java がインストールされていることが必要です。
@@ -50,21 +50,21 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 * サーバーを始動するには、以下のようにします。`./run.cmd -bg`
 * サーバーを停止するには、以下のようにします。`./stop.cmd`
 
-### {{site.data.keys.mf_console }} へのアクセス
+### {{ site.data.keys.mf_console }} へのアクセス
 {: #accessing-the-mobilefirst-operations-console }
-[{{site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) には、以下の方法でアクセスできます。
+[{{ site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) には、以下の方法でアクセスできます。
 
 * コマンド・ラインから、以下を実行します。`mfpdev server console`
 * ブラウザーから、以下にアクセスします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)
 
 ![コンソール]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
 
-## {{site.data.keys.mf_cli }}
+## {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-[{{site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) は、{{site.data.keys.mf_server }} でのアプリケーションの登録、{{site.data.keys.mf_server }} に対するアプリケーションのプル/プッシュ、Java アダプターおよび JavaScript アダプターの作成、複数のローカル・サーバーおよびリモート・サーバーの管理、ダイレクト・アップデートを使用したライブ・アプリケーションの更新などを可能にするコマンド・ライン・インターフェースです。
+[{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) は、{{ site.data.keys.mf_server }} でのアプリケーションの登録、{{ site.data.keys.mf_server }} に対するアプリケーションのプル/プッシュ、Java アダプターおよび JavaScript アダプターの作成、複数のローカル・サーバーおよびリモート・サーバーの管理、ダイレクト・アップデートを使用したライブ・アプリケーションの更新などを可能にするコマンド・ライン・インターフェースです。
 
 **前提条件:**  
-1. NodeJS は、{{site.data.keys.mf_cli }} をインストールするための要件です。  
+1. NodeJS は、{{ site.data.keys.mf_cli }} をインストールするための要件です。  
  [NodeJS v4.4.3 LTS](https://nodejs.org/en/) をダウンロードしてインストールします。
 
  インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`node -v`
@@ -105,6 +105,6 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 
 ### 使用法
 {: #usage }
-Apache Maven がインストールされたら、Maven コマンド・ライン・コマンド経由で、または {{site.data.keys.mf_cli }} を使用して、アダプターを作成できます。  
+Apache Maven がインストールされたら、Maven コマンド・ライン・コマンド経由で、または {{ site.data.keys.mf_cli }} を使用して、アダプターを作成できます。  
 詳しくは、[アダプターのチュートリアル]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)を参照してください。
 

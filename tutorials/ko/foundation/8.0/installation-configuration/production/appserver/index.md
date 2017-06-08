@@ -340,7 +340,7 @@ Server Configuration Tool을 실행하기 전에 다음과 같은 요구사항�
                                                 <ul>
                                                     <li>사용자를 라이브 업데이트 서비스의 보안 역할 <b>configadmin</b>에 맵핑</li>
                                                     <li>관리 서비스의 JNDI 특성(<b>mfp.config.service.user</b> 및 <b>mfp.config.service.password</b>)에서 이 사용자의 로그인 ID 및 비밀번호 추가</li>
-                                                    <li>한 명 이상의 사용자를 관리 서비스의 보안 역할 및 {{ site.data.keys.mf_console }}에 맵핑. <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 관리를 위한 사용자 인증 구성</a>을 참조하십시오. </li>
+                                                    <li>한 명 이상의 사용자를 관리 서비스 및 {{ site.data.keys.mf_console }}의 보안 역할에 맵핑하십시오. <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 관리를 위한 사용자 인증 구성</a>을 참조하십시오. </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -502,7 +502,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
         ...
    ```
     
-또한 샘플 Ant 파일에 의해 작성되는 사용자는 관리 서비스 및 콘솔에 맵핑됩니다. 이 설정을 통해 설치 후 이 사용자를 사용하여 {{ site.data.keys.mf_server }}에 로그온할 수 있습니다. 이 동작을 변경하려면 샘플 Ant 파일에서 `<user>` 요소를 제거하십시오. 또는 `<user>` 요소에서 **password** 속성을 제거할 수 있으며 사용자는 애플리케이션 서버의 로컬 레지스트리에서 작성되지 않습니다. 
+또한 샘플 Ant 파일에 의해 작성되는 사용자는 관리 서비스 및 콘솔의 보안 역할에 맵핑됩니다. 이 설정을 통해 설치 후 이 사용자를 사용하여 {{ site.data.keys.mf_server }}에 로그온할 수 있습니다. 이 동작을 변경하려면 샘플 Ant 파일에서 `<user>` 요소를 제거하십시오. 또는 `<user>` 요소에서 **password** 속성을 제거할 수 있으며 사용자는 애플리케이션 서버의 로컬 레지스트리에서 작성되지 않습니다. 
 
 #### Liberty Java EE 레벨 지정
 {: #specify-liberty-java-ee-level }
@@ -2141,7 +2141,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                     <li>Keytool에 대한 자세한 정보는 IBM SDK, Java Technology Edition의 <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a>을 참조하십시오. </li>
                                     <li>iKeyman에 대한 자세한 정보는 IBM SDK, Java Technology Edition의 <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>을 참조하십시오. </li>
                                 </ul>
-                                키 저장소 및 신뢰 저장소의 위치는 <b>server.xml</b> 파일에서 정의됩니다. <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 구성 속성</a>에서 <b>keyStoreRef</b> 및 <b>trustStoreRef</b> 속성을 참조하십시오. 기본적으로 Liberty 프로파일의 키 저장소는 <b>${server.config.dir}/resources/security/key.jks</b>에 있습니다. 신뢰 저장소 참조가 누락되었거나 <b>server.xml</b> 파일에 정의되어 있지 않은 경우, <b>keyStoreRef</b>에 의해 지정된 키 저장소가 사용됩니다. 서버는 기본 키 저장소를 사용하며 파일은 서버가 처음으로 실행될 때 작성됩니다. 이 경우에는 유효 기간이 365일인 기본 인증서가 작성됩니다. 프로덕션의 경우에는 사용자의 자체 인증서(필요한 경우 중간 인증서 포함)를 사용하거나 생성된 인증서의 만기 날짜를 변경해 볼 수 있습니다.
+                                키 저장소 및 신뢰 저장소의 위치는 <b>server.xml</b> 파일에서 정의됩니다. <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 구성 속성</a>에서 <b>keyStoreRef</b> 및 <b>trustStoreRef</b> 속성을 참조하십시오. 기본적으로 Liberty 프로파일의 키 저장소는 <b>${server.config.dir}/resources/security/key.jks</b>에 있습니다. 신뢰 저장소 참조가 누락되었거나 <b>server.xml</b> 파일에 정의되지 않은 경우 <b>keyStoreRef</b>에 의해 지정된 키 저장소가 사용됩니다. 서버는 기본 키 저장소를 사용하며 파일은 서버가 처음으로 실행될 때 작성됩니다. 이 경우에는 유효 기간이 365일인 기본 인증서가 작성됩니다. 프로덕션의 경우에는 사용자의 자체 인증서(필요한 경우 중간 인증서 포함)를 사용하거나 생성된 인증서의 만기 날짜를 변경해 볼 수 있습니다.
                                 
                                 <blockquote>참고: 신뢰 저장소의 위치를 확인하려는 경우에는 다음 선언을 server.xml 파일에 추가하여 확인할 수 있습니다.
 {% highlight xml %}

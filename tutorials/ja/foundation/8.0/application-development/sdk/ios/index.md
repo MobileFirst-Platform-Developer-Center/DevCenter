@@ -75,7 +75,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。`[ProjectName].xcodeproj` ファイルは使用**しないでください**。CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
 
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
-{: manually-adding-the-mobilefirst-native-sdk }
+{: #manually-adding-the-mobilefirst-native-sdk }
 次のように、{{ site.data.keys.product }} SDK を手動で追加することもできます。
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -105,7 +105,6 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
-                                    <li>Localizations.bundle</li>
                                 </ul>
                                 このステップを実行すると、これらのフレームワークが<b>「リンクされたフレームワークおよびライブラリー (Linked Frameworks and Libraries)」</b>に自動的に追加されます。
                             </li>
@@ -114,6 +113,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
+                                    <li>Localizations.bundle</li>
                                 </ul>
                             </li>
                             <blockquote><b>注:</b> これらのステップでは、関連する {{ site.data.keys.product }} フレームワークをプロジェクトにコピーし、「ビルド・フェーズ (Build Phases)」タブの「バイナリーをライブラリーとリンク (Link Binary with Libraries)」リスト内でこれらのファイルをリンクします。これらのファイルを元のロケーションにリンクする (前の説明のように「必要な場合は項目をコピー (Copy items if needed)」オプションを選択しない) には、以下に説明されているように「フレームワーク検索パス (Framework Search Paths)」を設定する必要があります。</blockquote>
@@ -191,7 +191,7 @@ import IBMMobileFirstPlatformFoundation
 > Xcode 7 以降、[アプリケーション・トランスポート・セキュリティー (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) がデフォルトで有効になっています。開発中にアプリケーションを実行する場合、ATS ([詳しく読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)) を無効にすることができます。
 >   1. Xcode で、右クリックにより**「[プロジェクト]/info.plist ファイル」→「指定して開く」→「ソース・コード」**を選択します。
 >   2. 以下を貼り付けます。
-> 
+>
 ```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
@@ -237,7 +237,7 @@ pod update
 SDK のリリースは、SDK の [CocoaPods リポジトリー](https://cocoapods.org/?q=ibm%20mobilefirst)で調べることができます。
 
 ## 生成される{{ site.data.keys.product_adj }} ネイティブ SDK 成果物
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 プロジェクトのルートに配置されているこのファイルは、{{ site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。

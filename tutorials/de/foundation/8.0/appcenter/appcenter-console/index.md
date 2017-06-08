@@ -15,7 +15,7 @@ ist die zentrale Stelle, an der Sie die mobilen Anwendungen speichern, die auf m
 Verwenden Sie die Application-Center-Konsole für Folgendes:
 
 * Hochladen von Anwendungen, die für die Betriebssysteme Android,
-iOS, Windows 8 (nur Windows-Store-Pakete) oder Windows Phone 8 geschrieben wurden
+iOS, Windows 8 (nur Windows-Store-Pakete), Windows Phone 8 oder Windows 10 Universal geschrieben wurden
 * Verwalten mehrerer verschiedener Versionen mobiler Anwendungen
 * Prüfen von Rückmeldungen von Testern mobiler Anwendungen
 * Definieren der Benutzer, die die Berechtigung haben, eine Anwendung auf den mobilen Geräten aufzulisten und zu installieren
@@ -152,15 +152,15 @@ werden soll:
 
    ### Android
    {: #android }
-   Die Anwendungsdateierweiterung ist .apk.
+   Die Anwendungsdateierweiterung ist **.apk**.
 
    ### iOS
    {: #ios }
-Die Anwendungsdateierweiterung ist .ipa für normale iOS-Anwendungen.
+   Die Anwendungsdateierweiterung ist **.ipa** für normale iOS-Anwendungen. 
 
    ### Windows Phone 8
    {: #windows-phone-8 }
-Die Anwendungsdateierweiterung ist .xap. Die Anwendung muss mit einem Unternehmenskonto
+   Die Anwendungsdateierweiterung ist **.xap**. Die Anwendung muss mit einem Unternehmenskonto
 signiert werden. Das Anwendungsregistrierungstoken für dieses Unternehmenskonto muss für
 Geräte mit Windows Phone 8 verfügbar sein, bevor die Anwendung auf den Geräten installiert wird. Einzelheiten finden Sie unter
 [Token für Anwendungsregistrierung in
@@ -168,7 +168,7 @@ Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal).
 
    ### Windows 8
    {: #windows-8 }
-Die Anwendung wird mit der Erweiterung .appx als Windows-Store-Paket bereitgestellt. 
+   Die Anwendung wird mit der Erweiterung **.appx** als Windows-Store-Paket bereitgestellt.
 
    Windows-Store-Pakete (.appx) können von
 Windows-Komponenten oder Bibliotheks-App-Paketen (die auch als
@@ -186,6 +186,12 @@ nicht installiert ist, ruft der Client dieses Paket automatisch vom Application-
 zu Abhängigkeiten finden Sie in der
 Windows-Entwicklerdokumentation zu Paketen und zur Anwendungsimplementierung im Abschnitt
 [Abhängigkeiten](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies). 
+
+   ### Windows 10 Universal
+   {: windows-10-universal}
+   Die Anwendungsdateierweiterung ist **.appx**.
+   
+
 
 4. Klicken Sie auf **Weiter**, um auf die Eigenschaften zuzugreifen und die Anwendungsdefinition zu vervollständigen.
 5. Legen Sie die Eigenschaften für die Anwendungsdefinition fest. Im Artikel
@@ -332,6 +338,19 @@ der Anwendungsmanifestdatei festgelegt wird.
 * **Vendor** gibt den Anbieter/Hersteller der Anwendung an, der vom Attribut **Publisher**
 der Anwendungsmanifestdatei festgelegt wird. 
 
+### Eigenschaften von universellen Windows-10-Anwendungen
+{: #properties-of-windows-10-universal-applications}
+
+* **Package** gibt die Produkt-ID der Anwendung an, die vom Namensattribut **Package** in der Manifestdatei der
+Anwendung festgelegt wird. 
+* **Internal Version** gibt die Versions-ID der Anwendung an, die vom Attribut **Version**
+der Anwendungsmanifestdatei festgelegt wird. 
+* **Commercial Version** gibt wie **Internal
+Version** die Version der Anwendung an.
+* **Label** gibt den Titel der Anwendung an, der vom Anzeigenamensattribut **Package**
+der Anwendungsmanifestdatei festgelegt wird. 
+* **Vendor** gibt den Anbieter/Hersteller der Anwendung an, der vom Attribut **Publisher** der Anwendungsmanifestdatei festgelegt wird.
+
 ### Allgemeine Eigenschaft 'Author'
 {: #common-property-author }
 Das Feld **Author** ist schreibgeschützt. Es zeigt
@@ -387,9 +406,12 @@ und zu den verfügbaren Anwendungen zurückzukehren, oder auf **Apply**, um die 
 
 ![Editierbare Anwendungseigenschaften](ac_edit_app_props.jpg)
 
-## Upgrade für eine mobile Anwendung
-in {{ site.data.keys.mf_server }} und im Application Center
+## Upgrade für eine mobile Anwendung in {{ site.data.keys.mf_server }} und im Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
+
+> Diese Funktion wird nur für Android, iOS und Windows Phone unterstützt und derzeit nicht für Windows 10 Universal, Blackberry oder Windows 8 Universal unterstützt.
+
+
 Für implementierte mobile Anwendungen können Sie ohne großen Aufwand ein Upgrade durchführen, indem Sie
 die {{ site.data.keys.mf_console }} mit dem
 Application Center kombinieren.

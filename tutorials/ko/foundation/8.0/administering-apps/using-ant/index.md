@@ -742,7 +742,7 @@ app 명령 그룹은 다음 요소를 지원합니다.
 <br/>
 #### `set-web-resources` 명령
 {: #the-set-web-resources-command }
-`<app-version>` 요소 내부의 `set-web-resources` 명령은 앱 버전의 웹 자원을 지정합니다. 이 명령에는 다음과 같은 속성이 있습니다. 
+`<app-version>` 요소 내부의 `set-web-resources` 명령은 앱 버전에 대한 웹 자원을 지정합니다. 이 명령에는 다음과 같은 속성이 있습니다. 
 
 | 속성      | 설명 |	필수 여부 | 기본값 |
 |----------------|-------------|-------------|---------|
@@ -781,11 +781,11 @@ app 명령 그룹은 다음 요소를 지원합니다.
 <br/>
 #### `set-authenticity-data` 명령
 {: #the-set-authenticity-data-command }
-`<app-version>` 요소 내부의 `set-authenticity-data` 명령은 앱 버전의 인증 데이터를 지정합니다. 이 명령에는 다음과 같은 속성이 있습니다. 
+`<app-version>` 요소 내부의 `set-authenticity-data` 명령은 앱 버전에 대한 인증 데이터를 지정합니다. 이 명령에는 다음과 같은 속성이 있습니다. 
 
 | 속성      | 설명 |	필수 여부 | 기본값 |
 |----------------|-------------|-------------|---------|
-| file | 입력 파일의 이름입니다. {::nomarkdown}<ul><li>authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx 파일)이며 여기에서 인증 데이터를 추출합니다. </li></ul>{:/} |  예 | 사용할 수 없음 | 
+| file | 입력 파일의 이름입니다. <ul><li>authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx 파일)이며 여기에서 인증 데이터를 추출합니다. </li></ul> |  예 | 사용할 수 없음 | 
 
 **예제**  
 
@@ -854,7 +854,7 @@ app 명령 그룹은 다음 요소를 지원합니다.
 <br/>
 #### `set-user-config` 명령
 {: #the-set-user-config-command-2 }
-`<app-version>` 요소 내부의 `set-user-config` 명령은 앱 버전의 사용자 구성을 지정합니다. 이 명령에는 전체 구성 설정에 필요한 다음과 같은 속성이 있습니다. 
+`<app-version>` 요소 내부의 `set-user-config` 명령은 앱 버전에 대한 사용자 구성을 지정합니다. 이 명령에는 전체 구성 설정에 필요한 다음과 같은 속성이 있습니다. 
 
 | 속성      | 설명 |	필수 여부 | 기본값 |
 |----------------|-------------|-------------|---------|

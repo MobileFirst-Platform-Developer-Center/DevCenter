@@ -37,28 +37,28 @@ Utilisez l'outil autonome en suivant ces étapes.
 
 1. Ajoutez **applicationcenterdeploytool.jar** et **json4j.jar** à la variable d'environnement classpath java.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
-  
+
    ```bash
    java com.ibm.appcenter.Upload [options] [files]
    ```
-    
+
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
-| Option | Contenu indiqué par | Description | 
+| Option | Contenu indiqué par | Description |
 |--------|----------------------|-------------|
-| -s | serverpath | Chemin d'accès au serveur Application Center. | 
-| -c | context | Contexte de l'application Web Application Center. | 
-| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center. | 
-| -p | password | Mot de passe de l'utilisateur. | 
-| -d | description | Description de l'application à télécharger. | 
-| -l | label | Etiquette de réserve. Normalement, l'étiquette est extraite du descripteur d'application stocké dans le fichier à télécharger. Si le descripteur d'application ne contient pas d'étiquette, l'étiquette de réserve est utilisée. | 
-| -isActive | true ou false | L'application est stockée dans Application Center en tant qu'application active ou inactive. | 
-| -isInstaller | true ou false | L'application est stockée dans Application Center avec l'indicateur "installer" correctement défini. | 
-| -isReadyForProduction | true ou false | L'application est stockée dans Application Center avec l'indicateur "ready-for-production" correctement défini. | 
-| -isRecommended | true ou false | L'application est stockée dans Application Center avec l'indicateur "recommended" correctement défini. | 
-| -e	  |  | Affiche la trace de la pile d'exception complète en cas d'échec. | 
-| -f	  |  | Force le téléchargement des applications, même si elles existent déjà. | 
-| -y	  |  | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. |  L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires. | 
+| -s | serverpath | Chemin d'accès au serveur Application Center. |
+| -c | context | Contexte de l'application Web Application Center. |
+| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center. |
+| -p | password | Mot de passe de l'utilisateur. |
+| -d | description | Description de l'application à télécharger. |
+| -l | label | Etiquette de réserve. Normalement, l'étiquette est extraite du descripteur d'application stocké dans le fichier à télécharger. Si le descripteur d'application ne contient pas d'étiquette, l'étiquette de réserve est utilisée. |
+| -isActive | true ou false | L'application est stockée dans Application Center en tant qu'application active ou inactive. |
+| -isInstaller | true ou false | L'application est stockée dans Application Center avec l'indicateur "installer" correctement défini. |
+| -isReadyForProduction | true ou false | L'application est stockée dans Application Center avec l'indicateur "ready-for-production" correctement défini. |
+| -isRecommended | true ou false | L'application est stockée dans Application Center avec l'indicateur "recommended" correctement défini. |
+| -e	  |  | Affiche la trace de la pile d'exception complète en cas d'échec. |
+| -f	  |  | Force le téléchargement des applications, même si elles existent déjà. |
+| -y	  |  | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. |  L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires. |
 
 Le paramètre files peut spécifier des fichiers de type fichiers de modules d'application Android (.apk) ou fichiers d'application iOS (.ipa).  
 Dans cet exemple, le mot de passe de la démonstration de l'utilisateur est demopassword. Utilisez cette ligne de commande.
@@ -78,16 +78,16 @@ Utilisez l'outil autonome en suivant ces étapes.
    ```bash
    java com.ibm.appcenter.Upload -delete [options] [files or applications]
    ```
-    
+
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
-| Option | Contenu indiqué par	| Description | 
+| Option | Contenu indiqué par	| Description |
 |--------|----------------------|-------------|
-| -s |serverpath | Chemin d'accès au serveur Application Center. | 
-| -c | context | Contexte de l'application Web Application Center. | 
-| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center. | 
-| -p | password | Mot de passe de l'utilisateur. | 
-| -y | | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires. | 
+| -s |serverpath | Chemin d'accès au serveur Application Center. |
+| -c | context | Contexte de l'application Web Application Center. |
+| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center. |
+| -p | password | Mot de passe de l'utilisateur. |
+| -y | | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires. |
 
 Vous pouvez spécifier des fichiers ou le module d'application, le système d'exploitation et la version. Si des fichiers sont spécifiés, le module, le système d'exploitation et la version sont déterminés à partir du fichier et l'application correspondante est supprimée d'Application Center. Si des applications sont spécifiées, elles doivent être à l'un des formats suivants :
 
@@ -117,16 +117,16 @@ Utilisez l'outil autonome en suivant ces étapes.
    ```bash
    java com.ibm.appcenter.Upload -clearLdapCache [options]
    ```
-   
+
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
-| Option | Contenu indiqué par | Description | 
+| Option | Contenu indiqué par | Description |
 |--------|----------------------|-------------|
-| -s | serverpath | Chemin d'accès au serveur Application Center.| 
-| -c | context | Contexte de l'application Web Application Center.| 
-| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center.| 
-| -p | password | Mot de passe de l'utilisateur.| 
-| -y | | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires.| 
+| -s | serverpath | Chemin d'accès au serveur Application Center.|
+| -c | context | Contexte de l'application Web Application Center.|
+| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center.|
+| -p | password | Mot de passe de l'utilisateur.|
+| -y | | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires.|
 
 #### Exemple
 {: #example-cache }
@@ -137,7 +137,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 ```
 
 ### Tâche Ant pour le téléchargement ou la suppression d'une application
-{: ant-task-for-uploading-or-deleting-an-application }
+{: #ant-task-for-uploading-or-deleting-an-application}
 Vous pouvez utiliser les outils de téléchargement et de suppression comme tâche Ant et utiliser la tâche Ant dans votre propre script Ant.  
 Apache Ant est nécessaire pour exécuter ces tâches. La version minimale prise en charge d'Apache Ant est répertoriée dans la [Configuration requise](../../product-overview/requirements).
 
@@ -150,18 +150,18 @@ Ces scripts sont prêts à être exécutés, ce qui signifie qu'ils ne nécessit
 
 Lorsque vous utilisez l'outil de téléchargement comme tâche Ant, la valeur classname de la tâche Ant de téléchargement est **com.ibm.appcenter.ant.UploadApps**. La valeur classname de la tâche Ant de suppression est **com.ibm.appcenter.ant.DeleteApps**.
 
-| Paramètres de la tâche Ant | Description | 
+| Paramètres de la tâche Ant | Description |
 |------------------------|-------------|
-| serverPath | Pour se connecter à Application Center. La valeur par défaut est http://localhost:9080. | 
-| context | Contexte d'Application Center. La valeur par défaut est /applicationcenter. | 
-| loginUser | Nom d'utilisateur doté des droits appropriés pour télécharger une application. | 
-| loginPass | Mot de passe de l'utilisateur doté des droits pour télécharger une application. | 
+| serverPath | Pour se connecter à Application Center. La valeur par défaut est http://localhost:9080. |
+| context | Contexte d'Application Center. La valeur par défaut est /applicationcenter. |
+| loginUser | Nom d'utilisateur doté des droits appropriés pour télécharger une application. |
+| loginPass | Mot de passe de l'utilisateur doté des droits pour télécharger une application. |
 | forceOverwrite | Si ce paramètre est défini sur true, la tâche Ant tente d'écraser les applications dans Application Center lorsqu'elle télécharge une application déjà présente. Ce paramètre est disponible uniquement dans la tâche Ant de téléchargement.
-| file | Le fichier .apk ou .ipa doit être téléchargé dans Application Center ou doit être supprimé d'Application Center. Ce paramètre ne possède pas de valeur par défaut. | 
-| fileset | Pour télécharger ou supprimer plusieurs fichiers. | 
-| application | Nom du module de l'application ; ce paramètre est disponible uniquement dans la tâche Ant de suppression. | 
-| os | Système d'exploitation de l'application. (Par exemple, Android ou iOS.) Ce paramètre est disponible uniquement dans la tâche Ant de suppression. | 
-| version | Version interne de l'application ; ce paramètre est disponible uniquement dans la tâche Ant de suppression. N'utilisez pas la version commerciale ici, car cette version ne convient pas pour identifier la version exactement. | 
+| file | Le fichier .apk ou .ipa doit être téléchargé dans Application Center ou doit être supprimé d'Application Center. Ce paramètre ne possède pas de valeur par défaut. |
+| fileset | Pour télécharger ou supprimer plusieurs fichiers. |
+| application | Nom du module de l'application ; ce paramètre est disponible uniquement dans la tâche Ant de suppression. |
+| os | Système d'exploitation de l'application. (Par exemple, Android ou iOS.) Ce paramètre est disponible uniquement dans la tâche Ant de suppression. |
+| version | Version interne de l'application ; ce paramètre est disponible uniquement dans la tâche Ant de suppression. N'utilisez pas la version commerciale ici, car cette version ne convient pas pour identifier la version exactement. |
 
 #### Exemple
 {: #example-ant }
@@ -177,7 +177,7 @@ L'exemple suivant montre comment utiliser la tâche Ant dans votre propre script
 
 <!-- Server Properties -->
   <property name="server.path" value="http://localhost:9080/" />
-  <property name="context.path" value="applicationcenter" /> 
+  <property name="context.path" value="applicationcenter" />
   <property name="upload.file" value="" />
   <property name="force" value="true" />
 
@@ -191,7 +191,7 @@ L'exemple suivant montre comment utiliser la tâche Ant dans votre propre script
     </fileset>
   </path>
   <target name="upload.init">
-    <taskdef name="uploadapps" classname="com.ibm.appcenter.ant.UploadApps"> 
+    <taskdef name="uploadapps" classname="com.ibm.appcenter.ant.UploadApps">
       <classpath refid="classpath.run" />
     </taskdef>
   </target>
@@ -231,16 +231,16 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 
 #### Propriétés de l'exemple de script Ant
 {: #properties-of-the-sample-ant-script }
-| Propriété | Commentaire | 
+| Propriété | Commentaire |
 |----------|---------|
-| install.dir | Par défaut, ../../ | 
-| server.path | La valeur par défaut est http://localhost:9080. | 
-| context.path | La valeur par défaut est applicationcenter. | 
-| upload.file | Cette propriété n'a pas de valeur par défaut. Elle doit inclure le chemin d'accès au fichier. | 
-| workspace.root | Par défaut, ../../ | 
-| login.user | La valeur par défaut est appcenteradmin. | 
-| login.pass | La valeur par défaut est admin. | 
-| force	La valeur par défaut est true. | 
+| install.dir | Par défaut, ../../ |
+| server.path | La valeur par défaut est http://localhost:9080. |
+| context.path | La valeur par défaut est applicationcenter. |
+| upload.file | Cette propriété n'a pas de valeur par défaut. Elle doit inclure le chemin d'accès au fichier. |
+| workspace.root | Par défaut, ../../ |
+| login.user | La valeur par défaut est appcenteradmin. |
+| login.pass | La valeur par défaut est admin. |
+| force	La valeur par défaut est true. |
 
 Pour spécifier ces paramètres en ligne de commande lorsque vous appelez Ant, ajoutez -D avant le nom de la propriété. Par exemple :
 

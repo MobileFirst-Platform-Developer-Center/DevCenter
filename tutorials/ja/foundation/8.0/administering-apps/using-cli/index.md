@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-**mfpadm** プログラムを通じて {{site.data.keys.product_adj }} アプリケーションを管理することができます。
+**mfpadm** プログラムを通じて {{ site.data.keys.product_adj }} アプリケーションを管理することができます。
 
 #### ジャンプ先
 {: #jump-to }
@@ -17,12 +17,12 @@ weight: 4
 
 ## 他の機能との比較
 {: #comparison-with-other-facilities }
-{{site.data.keys.product_full }} の管理操作は、以下の方法で実行できます。
+{{ site.data.keys.product_full }} の管理操作は、以下の方法で実行できます。
 
-* {{site.data.keys.mf_console }}。対話式です。
+* {{ site.data.keys.mf_console }}。対話式です。
 * mfpadm Ant タスク。
 * **mfpadm** プログラム。
-* {{site.data.keys.product_adj }} 管理 REST サービス。
+* {{ site.data.keys.product_adj }} 管理 REST サービス。
 
 **mfpadm** Ant タスク、mfpadm プログラム、および REST サービスは、次のようなユース・ケースの自動化または無人実行に便利です。
 
@@ -34,7 +34,7 @@ weight: 4
 
 ## 前提条件
 {: #prerequisites }
-**mfpadm** ツールは、{{site.data.keys.mf_server }} インストーラーを使用してインストールされます。このページの残りの部分では、**product\_install\_dir** は {{site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
+**mfpadm** ツールは、{{ site.data.keys.mf_server }} インストーラーを使用してインストールされます。このページの残りの部分では、**product\_install\_dir** は {{ site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
 
 **mfpadm** コマンドは、スクリプトのセットとして **product\_install\_dir/shortcuts/** ディレクトリーにあります。
 
@@ -44,7 +44,7 @@ weight: 4
 これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。環境変数 **JAVA_HOME** が設定された場合、スクリプトはこれを受け入れます。  
 **mfpadm** プログラムを使用するには、PATH 環境変数に **product\_install\_dir/shortcuts/** ディレクトリーを組み込むか、各呼び出しでプログラムの絶対ファイル名を参照します。
 
-{{site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
+{{ site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
 
 #### ジャンプ先
 {: #jump-to-1 }
@@ -59,7 +59,7 @@ weight: 4
 
 ### **mfpadm** プログラムの呼び出し
 {: #calling-the-mfpadm-program }
-**mfpadm** プログラムを使用して、{{site.data.keys.product_adj }} アプリケーションを管理することができます。
+**mfpadm** プログラムを使用して、{{ site.data.keys.product_adj }} アプリケーションを管理することができます。
 
 #### 構文
 {: #syntax }
@@ -73,9 +73,9 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | オプション	| タイプ | 説明 | 必要 | デフォルト | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | 管理サービスの {{site.data.keys.product_adj }} Web アプリケーションのベース URL | はい | | 
+| --url | 	 | URL | 管理サービスの {{ site.data.keys.product_adj }} Web アプリケーションのベース URL | はい | | 
 | --secure	 | ブール値 | セキュリティー・リスクをともなう操作を回避するかどうか | いいえ | true | 
-| --user	 | 名前 | {{site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい |  | 	 
+| --user	 | 名前 | {{ site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい |  | 	 
 | --passwordfile | ファイル | ユーザーのパスワードを含むファイル | いいえ | 
 | --timeout	     | 数値  | REST サービス・アクセス全体のタイムアウト (秒単位) | いいえ | 	 
 | --connect-timeout | 数値 | ネットワーク接続確立のタイムアウト (秒単位) | いいえ |
@@ -222,7 +222,7 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 構成ファイルはテキスト・ファイルであり、現行のロケールのエンコード・フォーマットで、Java **.properties** 構文で記述されます。デフォルトの構成ファイルは以下のとおりです。
 
 * UNIX: **${HOME}/.mfpadm.config**
-* Windows: **{{site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **注:** `--configfile` オプションを指定しない場合、デフォルトの構成ファイルは対話モードおよび config コマンドでのみ使用されます。他のコマンドを非対話式で使用するとき、構成ファイルを使いたい場合は、その構成ファイルを明示的に指定する必要があります。
 
@@ -255,7 +255,7 @@ mfpadm プログラムより生成される通常の出力は、現行のロケ�
 
 ### 一般構成用のコマンド
 {: #commands-for-general-configuration }
-**mfpadm** プログラムを呼び出すときに、IBM {{site.data.keys.mf_server }} またはランタイムのグローバル構成にアクセスするさまざまなコマンドを含めることができます。
+**mfpadm** プログラムを呼び出すときに、IBM {{ site.data.keys.mf_server }} またはランタイムのグローバル構成にアクセスするさまざまなコマンドを含めることができます。
 
 #### `show global-config` コマンド
 {: #the-show-global-config-command }
@@ -277,7 +277,7 @@ show global-config
 
 このコマンドは、[グローバル構成 (GET) (Global Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show user-config` コマンド
 {: #the-show-user-config-command }
 `show user-config` コマンドは、ランタイムのユーザー構成を表示します。
@@ -304,7 +304,7 @@ show user-config mfp
 
 このコマンドは、[ランタイム構成 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set user-config` コマンド
 {: #the-set-user-config-command }
 `set user-config` コマンドは、ランタイムのユーザー構成か、またはこの構成のうちの単一プロパティーを指定します。
@@ -340,7 +340,7 @@ set user-config mfp timeout = 240
 
 このコマンドは、[ランタイム構成 (PUT) (Runtime configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show confidential-clients` コマンド
 {: #the-show-confidential-clients-command }
 `show confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を表示します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
@@ -367,7 +367,7 @@ show confidential-clients --xml mfp
 
 このコマンドは、[機密クライアント (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set confidential-clients` コマンド
 {: #the-set-confidential-clients-command }
 `set confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
@@ -389,7 +389,7 @@ set confidential-clients mfp clients.xml
 
 このコマンドは、[機密クライアント (PUT) (Confidential Clients (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set confidential-clients-rule` コマンド
 {: #the-set-confidential-clients-rule-command }
 `set confidential-clients-rule` コマンドは、ランタイムにアクセスできる機密クライアントの構成におけるルールを指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
@@ -444,7 +444,7 @@ list adapters mfp
 
 このコマンドは、[Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `deploy adapter` コマンド
 {: #the-deploy-adapter-command }
 `deploy adapter` コマンドは、アダプターをランタイムにデプロイします。
@@ -466,7 +466,7 @@ deploy adapter mfp MyAdapter.adapter
 
 このコマンドは、[Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show adapter` コマンド
 {: #the-show-adapter-command }
 `show adapter` コマンドは、アダプターに関する詳細を表示します。
@@ -494,7 +494,7 @@ show adapter mfp MyAdapter
 
 このコマンドは、[Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete adapter` コマンド
 {: #the-delete-adapter-command }
 `delete adapter` コマンドは、アダプターをランタイムから削除 (アンデプロイ) します。
@@ -516,7 +516,7 @@ delete adapter mfp MyAdapter
 
 このコマンドは、[Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `adapter` コマンド接頭部
 {: #the-adapter-command-prefix }
 `adapter` コマンド接頭部では、動詞の前に以下の引数を取ります。
@@ -526,7 +526,7 @@ delete adapter mfp MyAdapter
 | runtime-name | ランタイムの名前。 | 
 | adapter-name | アダプターの名前。 | 
 
-<br /> 
+<br/>
 #### `adapter get binary` コマンド
 {: #the-adapter-get-binary-command }
 `adapter get binary` コマンドは、バイナリー・アダプター・ファイルを返します。
@@ -547,7 +547,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 このコマンドは、[ ランタイム・リソースのエクスポート (GET) (Export runtime resources (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `adapter show user-config` コマンド
 {: #the-adapter-show-user-config-command }
 `adapter show user-config` コマンドは、アダプターのユーザー構成を表示します。
@@ -568,7 +568,7 @@ adapter mfp MyAdapter show user-config
 
 このコマンドは、[ アダプター構成 (GET) (Adapter Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `adapter set user-config` コマンド
 {: #the-adapter-set-user-config-command }
 `adapter set user-config` コマンドは、アダプターのユーザー構成か、またはこの構成のうちの単一プロパティーを指定します。
@@ -1127,7 +1127,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 #### `show info` コマンド
 {: #the-show-info-command }
-`show info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。このコマンドは、{{site.data.keys.product_adj }} 管理サービスが実行されているかどうかをテストするために使用できます。
+`show info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{ site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。このコマンドは、{{ site.data.keys.product_adj }} 管理サービスが実行されているかどうかをテストするために使用できます。
 
 構文: `show info`
 
@@ -1145,10 +1145,10 @@ show info
 
 #### `show versions` コマンド
 {: #the-show-versions-command }
-`show versions` コマンドは、各種コンポーネントの {{site.data.keys.product_adj }} バージョンを表示します。
+`show versions` コマンドは、各種コンポーネントの {{ site.data.keys.product_adj }} バージョンを表示します。
 
-* **mfpadmVersion**: **which mfp-ant-deployer.jar** が取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
-* **productVersion**: **mfp-admin-service.war** が取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
+* **mfpadmVersion**: **which mfp-ant-deployer.jar** が取得される {{ site.data.keys.mf_server }} の正確なバージョン番号。
+* **productVersion**: **mfp-admin-service.war** が取得される {{ site.data.keys.mf_server }} の正確なバージョン番号。
 * **mfpAdminVersion**: **mfp-admin-service.war** のみの正確なビルド・バージョン番号。
 
 構文: `show versions`
@@ -1167,7 +1167,7 @@ show versions
 
 #### `show diagnostics` コマンド
 {: #the-show-diagnostics-command }
-`show diagnostics` コマンドは、データベースや補助サービスの可用性など、{{site.data.keys.product_adj }} 管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。
+`show diagnostics` コマンドは、データベースや補助サービスの可用性など、{{ site.data.keys.product_adj }} 管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。
 
 構文: `show diagnostics`
 

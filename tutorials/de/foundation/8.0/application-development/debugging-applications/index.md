@@ -1,130 +1,139 @@
 ---
 layout: tutorial
-title: Debugging JavaScript (Cordova, Web) Applications
-breadcrumb_title: Debugging applications        
+title: Debug für JavaScript-Anwendungen (Cordova, Web)
+breadcrumb_title: Debug für Anwendungen        
 relevantTo: [javascript]
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
+Beim Debugging geht es darum, die Ursache von Fehler im applikativen Code und auf der Benutzerschnittstelle der Anwendung zu finden. 
 
-* JavaScript (Cordova, Web) applications consist of web-based resources such as HTML, JavaScript &amp; CSS. Cordova application may also contain optional native code (written in Java, Objective-C, Swift, C#, ...).
-* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android, or Microsoft Visual Studio.
+* JavaScript-Anwendungen (Cordova, Web) bestehen aus webbasierten Ressourcen wie HTML, JavaScript und CSS. Eine Cordova-Anwendung kann außerdem nativen (in Java, Objective-C, Swift, C# usw. geschriebenen) Code enthalten. 
+* Zum Debuggen von nativem Code können Sie Standardttols des Plattform-SDK verwenden, z. B. Xcode, Android Studio oder Microsoft Visual Studio.
 
-This tutorial explores various approaches to debugging a JavaScript-based application, whether running locally via an Emulator, Simulator, physica device or in a web browser.
+In diesem Lernprogramm werden verschiedene Debugstrategien für eine JavaScript-Anwendung untersucht
+(lokale Ausführung in einem Emulator oder Simulator, auf
+dem physischen Gerät oder in einem Web-Browser). 
 
-> Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
+> Weitere Informationen zum Cordova-Debugging und zu Cordova-Tests finden Sie auf der
+Cordova-Website unter [Debugging Cordova Apps](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Debugging with the {{ site.data.keys.mf_mbs }}](#debugging-with-the-mobile-browser-simulator)
-* [Debugging with Ripple](#debugging-with-ripple)
-* [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
-* [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
-* [Debugging with {{ site.data.keys.product_adj }} Logger](#debugging-with-mobilefirst-logger)
-* [Debugging with WireShark](#debugging-with-wireshark)
+* [Debug mit dem {{ site.data.keys.mf_mbs }}](#debugging-with-the-mobile-browser-simulator)
+* [Debug mit Ripple](#debugging-with-ripple)
+* [Debug mit dem iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
+* [Debug mit dem Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
+* [Debug mit dem {{ site.data.keys.product_adj }}-Logger](#debugging-with-mobilefirst-logger)
+* [Debug mit WireShark](#debugging-with-wireshark)
 
-## Debugging with the {{ site.data.keys.mf_mbs }}
+## Debug mit dem {{ site.data.keys.mf_mbs }}
 {: #debugging-with-the-mobile-browser-simulator }
-You can use the {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) to preview and debug {{ site.data.keys.product_adj }} applications.  
-To use the MBS, open a **Command-line** window and run the command:
+Sie können den {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) zum Voranzeigen und Debuggen von
+{{ site.data.keys.product_adj }}-Anwendungen nutzen.   
+Öffnen Sie dazu ein **Befehlszeilenfenster** und fühgen Sie folgenden Befehl aus: 
 
 ```bash
 mfpdev app preview
 ```
 
-If your application consists of more than one platform - specify the platform to preview:
+Wenn es in Ihrer Anwendung mehr als eine Plattform gibt, geben Sie die Plattform für die Vorschau an: 
 
 ```bash
-mfpdev app preview -p <platform>
+mfpdev app preview -p <Plattform>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Es gibt mehrere bekannte Einschränkungen für die Vorschaufunktion. Möglicherweise verhält sich Ihre Anwendung während der Vorschau nicht wie erwartet. Es könnte beispielsweise sein, dass die Anwendung mit einem vertraulichen Client Sicherheitseinrichtungen umgeht, sodass Abfrage-Handler nicht ausgelöst werden.
 
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
 
 ![MBS](mbs.png)
 
-### Simple Preview
+### Einfache Vorschau
 {: #simple-preview }
 
 ![MBS](simple.png)
 
-> Learn more about the {{ site.data.keys.mf_cli }} in the [Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Weitere Informationen zur {{ site.data.keys.mf_cli }} enthält das Lernprogram
+[{{ site.data.keys.product_adj }}-Artefakte über die {{ site.data.keys.mf_cli }} verwalten](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
-## Debugging with Ripple
+## Debug mit Ripple
 {: #debugging-with-ripple }
-Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
-It lets you run a Cordova application in your browser and fake various Cordova features. For example, it can fake the camera API by letting you select a picture locally from your computer.  
+Apache Ripple™ ist eine webbasierter Simulator für mobile Umgebungen zum Debuggen mobiler Webanwendungen.   
+Ripple ermöglicht die Ausführung einer Cordova-Anwendung in Ihrem Browser und die Simulation diverser Cordova-Features. Sie können beispielsweise die Kamera-API simulieren. Dafür wählen Sie ein lokales Bild von Ihrem Computer aus.   
 
-### Installing Ripple
+### Ripple installieren
 {: #installing-ripple }
 
-1. Download and install the latest version of [Node.js](https://nodejs.org/en/).
-You can verify Node.js installation by typing `npm -v` in terminal.
-2. Open terminal and type:
+1. Laden Sie die neueste Version von [Node.js](https://nodejs.org/en/) herunter und installieren Sie sie.
+Sie können die Installation von Node.js durch Eingabe von `npm -v` im Terminal überprüfen. 
+2. Öffnen Sie das Terminal und geben Sie Folgendes ein: 
 
    ```bash
    npm install -g ripple-emulator
    ```
 
-### Running application using Ripple
+### Anwendung mit Ripple ausführen
 {: #running-application-using-ripple }
-After Ripple is installed open terminal from your Cordova project location and type:
+Öffnen Sie nach der Ripple-Installation an der Position Ihres Cordova-Projekts ein Terminal und geben Sie Folgendes ein: 
 
 ```bash
 ripple emulate
 ```
 
-![Ripple emulator](Ripple2.png)
+![Ripple-Emulator](Ripple2.png)
 
-> More information about Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/) or [npm ripple-emulator page](https://www.npmjs.com/package/ripple-emulator).
+> Weitere Informationen zu Apache Ripple™ finden Sie auf der [Apache-Ripple-Seite](http://ripple.incubator.apache.org/)
+oder auf der Seite [npm ripple-emulator](https://www.npmjs.com/package/ripple-emulator).
 
-## Debugging with iOS Remote Web Inspector
+## Debug mit dem iOS Remote Web Inspector
 {: #debugging-with-ios-remote-web-inspector }
-Starting iOS 6, Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or iOS Simulator) has the **Private Browsing** option turned off.  
+Mit iOS 6 hat Apple einen fernen [Web Inspector](https://developer.apple.com/safari/tools/) zum Debuggen von Webanwendungen
+auf iOS-Geräten eingeführt. Stellen Sie vor dem Dubug sicher, dass auf dem Gerät (oder im iOS-Simulator) der private Browsermodus inaktiviert ist.   
 
-1. To enable Web Inspector on the device, Tap **Settings > Safari > Advanced > Web Inspector**.
-2. To start debugging, connect the iOS device to a Mac, or start the simulator.
-3. In Safari, go to **Preferences > Advanced**, and select the **Show Develop menu in menu bar** checkbox.
-4. In Safari, select **Develop > [your device ID] > [your application HTML file]**.
+1. Tippen Sie zum Aktivieren des Web Inspector auf dem Gerät auf **Einstellungen > Safari > Erweitert > Web Inspector**.
+2. Verbinden Sie das iOS-Gerät mit einem Mac oder starten Sie den Simulator, um mit dem Debug zu beginnen. 
+3. Navigieren Sie in Safari zu **Einstellungen > Erweitert** und wählen Sie das Kontrollkästchen **Menü 'Entwickler' in der Menüleiste anzeigen** aus. 
+4. Wählen Sie in Safari **Entwickeln > [Ihre Geräte-ID] > [Ihre_HTML-Anwendungsdatei]** aus.
 
-![Safari Debugging](safari-debugging.png)
+![Debug in Safari](safari-debugging.png)
 
-## Debugging with Chrome Remote Web Inspector
+## Debug mit dem Chrome Remote Web Inspector
 {: #debugging-with-chrome-remote-web-inspector }
-Using Google Chrome it is possible to remotely inspect web applications on Android devices or the Android Emulator.  
-This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion = 19` or above is required. In the `project.properties` file, `target = 19` or above is required.
+In Google Chrome können Sie Webanwendungen auf Android-Geräten oder im Android Emulator über Fernzugriff untersuchen.   
+Dafür benötigen Sie Android ab Version 4.4 und Chrome ab Version 32. Zusätzlich ist in der Datei `AndroidManifest.xml` die Einstellung
+`targetSdkVersion = 19` oder eine höhere Einstellung erforderlich. In der Datei `project.properties` ist zudem die Einstellung
+`target = 19` oder eine höhere Einstellung erforderlich. 
 
-1. Start the application in the Android Emulator or a connected device.
-2. In Chrome, enter the following URL in the address bar: `chrome://inspect`.
-3. Press **Inspect** for the relevant application.
+1. Starten Sie die Anwendung im Android Emulator oder auf einem verbundenen Gerät. 
+2. Geben Sie in der Adressleiste von Chrome die folgende URL ein: `chrome://inspect`.
+3. Wählen Sie **Inspect** für die betreffende Anwendung aus. 
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-### Debugging with {{ site.data.keys.product_adj }} Logger
+### Debug mit dem {{ site.data.keys.product_adj }}-Logger
 {: #debugging-with-mobilefirst-logger }
-{{ site.data.keys.product }} provides a `WL.Logger` object that can be used to print log messages.  
-`WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
+Die {{ site.data.keys.product }} stellt ein `WL.Logger`-Objekt bereit, mit dem Protokollnachrichten ausgegeben werden können.   
+In `WL.Logger` gibt es mehrere Protokollierungsstufen: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
 
-> For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.
+> Weitere Informationen enthält die Beschreibung zu `WL.Logger` in der Benutzerdokumentation im Abschnitt mit den API-Referenzinformationen. 
 
-**Inspecting the log:**
+**Untersuchung des Protokolls:**
 
-* **Developer console** when previewing a platform using a Simulator or Emulator.
-* **LogCat** when it is running on Android device
-* **XCode Console** when it is running on an iOS device
-* **Visual Studio Output** when it is running on a Windows devices.
+* In der **Entwicklerkonsole**, wenn eine Plattform mit einem Simulator oder Emulator vorangezeigt wird
+* In **LogCat**, sofern auf dem Android-Gerät ausgeführt
+* In der **Xcode-Konsole**, sofern auf dem iOS-Gerät ausgeführt
+* In der **Visual-Studio-Ausgabe**, sofern auf dem Windows-Gerät ausgeführt
 
-### Debugging with WireShark
+### Debug mit Wireshark
 {: #debugging-with-wireshark }
-**Wireshark is a network protocol analyzer** that can be used to see what happens in the network.  
-You can use filters to follow only what is required.  
+**Wireshark ist ein Analyseprogramm für Netzprotokolle**, mit dem Vorgänge im Netz ermittelt werden können.   
+Mit Filtern können Sie die Ermittlung auf die für Sie erforderlichen Vorgänge beschränken.   
 
-> For more information, see the [WireShark](http://www.wireshark.org) website.
+> Weitere Informationen finden Sie auf der Website zu [WireShark](http://www.wireshark.org). 
 
 ![Wireshark](wireshark.png)

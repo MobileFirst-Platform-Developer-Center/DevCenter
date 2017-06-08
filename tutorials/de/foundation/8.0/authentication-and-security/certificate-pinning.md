@@ -126,4 +126,4 @@ wird der `onFailure`-Callback der jeweiligen Anforderung
 aufgerufen. 
 
 > Weitere Informationen zur Certificate-Pinning-API-Methode
-finden Sie in den [Referenzinformationen zur API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html).
+finden Sie in den [Referenzinformationen zur API](../../api/client-side-api/).

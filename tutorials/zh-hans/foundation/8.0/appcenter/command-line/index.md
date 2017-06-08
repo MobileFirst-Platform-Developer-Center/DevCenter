@@ -39,30 +39,30 @@ Center。
 
 1. 将 **applicationcenterdeploytool.jar** 和 **json4j.jar** 添加到 java classpath 环境变量。
 2. 从命令行调用上载工具：
-  
+
    ```bash
    java com.ibm.appcenter.Upload [options] [files]
    ```
-    
+
 您可以在命令行中传递任何可用选项。
 
-| 选项 | 指示的内容 | 描述 | 
+| 选项 | 指示的内容 | 描述 |
 |--------|----------------------|-------------|
-| -s | serverpath | Application Center 服务器的路径。 | 
-| -c | context | Application Center Web 应用程序的上下文。 | 
-| -u | user | 用于访问 Application Center 的用户凭证。 | 
-| -p | password | 用户的密码。 | 
-| -d | description | 要上载的应用程序的描述。 | 
+| -s | serverpath | Application Center 服务器的路径。 |
+| -c | context | Application Center Web 应用程序的上下文。 |
+| -u | user | 用于访问 Application Center 的用户凭证。 |
+| -p | password | 用户的密码。 |
+| -d | description | 要上载的应用程序的描述。 |
 | -l | label | 回退标签。通常，此标签取自要上载的文件中存储的应用程序描述符。
-如果应用程序描述符不包含标签，那么会使用回退标签。 | 
-| -isActive | true 或 false | 该应用程序在 Application Center 中存储为活动或不活动的应用程序。 | 
-| -isInstaller | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“安装程序”标志。 | 
-| -isReadyForProduction | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“准备生产”标志。 | 
-| -isRecommended | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“推荐”标志。 | 
-| -e	  |  | 在失败时显示完整的异常堆栈跟踪。 | 
-| -f	  |  | 强制上载应用程序，即使这些应用程序已存在。 | 
+如果应用程序描述符不包含标签，那么会使用回退标签。 |
+| -isActive | true 或 false | 该应用程序在 Application Center 中存储为活动或不活动的应用程序。 |
+| -isInstaller | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“安装程序”标志。 |
+| -isReadyForProduction | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“准备生产”标志。 |
+| -isRecommended | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“推荐”标志。 |
+| -e	  |  | 在失败时显示完整的异常堆栈跟踪。 |
+| -f	  |  | 强制上载应用程序，即使这些应用程序已存在。 |
 | -y	  |  | 禁用 SSL 安全检查，这将允许在受保护的主机上发布，而无需验证 SSL 证书。
- |  此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。 | 
+ |  此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。 |
 
 files 参数可以指定 Android 应用程序包 (.apk) 文件或 iOS 应用程序 (.ipa) 文件类型的文件。  
 在此示例中，用户 demo 的密码为 demopassword。使用以下命令行。
@@ -82,17 +82,17 @@ java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u d
    ```bash
    java com.ibm.appcenter.Upload -delete [options] [files or applications]
    ```
-    
+
 您可以在命令行中传递任何可用选项。
 
-| 选项 | 指示的内容	| 描述 | 
+| 选项 | 指示的内容	| 描述 |
 |--------|----------------------|-------------|
-| -s |serverpath | Application Center 服务器的路径。 | 
-| -c | context | Application Center Web 应用程序的上下文。 | 
-| -u | user | 用于访问 Application Center 的用户凭证。 | 
-| -p | password | 用户的密码。 | 
+| -s |serverpath | Application Center 服务器的路径。 |
+| -c | context | Application Center Web 应用程序的上下文。 |
+| -u | user | 用于访问 Application Center 的用户凭证。 |
+| -p | password | 用户的密码。 |
 | -y | | 禁用 SSL 安全检查，这将允许在受保护的主机上发布，而无需验证 SSL 证书。
-此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。 | 
+此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。 |
 
 您可以指定文件或应用程序包、操作系统和版本。如果指定了文件，将从文件确定包、操作系统和版本，并从 Application Center 删除对应的应用程序。如果指定了应用程序，那么这些应用程序必须具有以下某种格式：
 
@@ -124,17 +124,17 @@ Center 可见。Application Center 将维护 LDAP 数据的缓存，仅在缓存
    ```bash
    java com.ibm.appcenter.Upload -clearLdapCache [options]
    ```
-   
+
 您可以在命令行中传递任何可用选项。
 
-| 选项 | 指示的内容 | 描述 | 
+| 选项 | 指示的内容 | 描述 |
 |--------|----------------------|-------------|
-| -s | serverpath | Application Center 服务器的路径。| 
-| -c | context | Application Center Web 应用程序的上下文。| 
-| -u | user | 用于访问 Application Center 的用户凭证。| 
-| -p | password | 用户的密码。| 
+| -s | serverpath | Application Center 服务器的路径。|
+| -c | context | Application Center Web 应用程序的上下文。|
+| -u | user | 用于访问 Application Center 的用户凭证。|
+| -p | password | 用户的密码。|
 | -y | | 禁用 SSL 安全检查，这将允许在受保护的主机上发布，而无需验证 SSL 证书。
-此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。| 
+此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。|
 
 #### 示例
 {: #example-cache }
@@ -145,11 +145,11 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 ```
 
 ### 用于上载或删除应用程序的 Ant 任务
-{: ant-task-for-uploading-or-deleting-an-application }
+{: #ant-task-for-uploading-or-deleting-an-application}
 您可以使用上载和删除工具作为 Ant 任务，并在您自己的 Ant 脚本中使用此 Ant 任务。  
 运行这些任务需要 Apache Ant。[系统需求](../../product-overview/requirements)中列出了 Apache Ant 的最低受支持版本。
 
-为方便起见，{{ site.data.keys.mf_server }}    中包含了 Apache Ant 1.8.4。
+为方便起见，{{ site.data.keys.mf_server }} 中包含了 Apache Ant 1.8.4。
 在 product_install_dir/shortcuts/ 目录中，提供了以下脚本：
 
 * ant（针对 UNIX / Linux）
@@ -159,18 +159,18 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 使用上载工具作为 Ant 任务时，“上载”Ant 任务的 classname 值为 **com.ibm.appcenter.ant.UploadApps**。“删除”Ant 任务的 classname 值为 **com.ibm.appcenter.ant.DeleteApps**。
 
-| Ant 任务的参数 | 描述 | 
+| Ant 任务的参数 | 描述 |
 |------------------------|-------------|
-| serverPath | 用于连接到 Application Center。缺省值为 http://localhost:9080。 | 
-| context | Application Center 的上下文。缺省值为 /applicationcenter。 | 
-| loginUser | 有权上载应用程序的用户名。 | 
-| loginPass | 有权上载应用程序的用户的密码。 | 
-| forceOverwrite | 如果此参数设置为 true，那么 Ant 任务在上载已存在的应用程序时，会尝试覆盖 Application Center 中的应用程序。该参数仅在“上载”Ant 任务中可用。| file | 要上载到 Application Center 或者要从 Application Center 中删除的 .apk 或 .ipa 文件。该参数没有缺省值。 | 
-| fileset | 用于上载或删除多个文件。 | 
-| application | 应用程序的包名；该参数仅在“删除”Ant 任务中可用。 | 
-| os | 应用程序的操作系统。（例如，Android 或 iOS。）该参数仅在“删除”Ant 任务中可用。 | 
+| serverPath | 用于连接到 Application Center。缺省值为 http://localhost:9080。 |
+| context | Application Center 的上下文。缺省值为 /applicationcenter。 |
+| loginUser | 有权上载应用程序的用户名。 |
+| loginPass | 有权上载应用程序的用户的密码。 |
+| forceOverwrite | 如果此参数设置为 true，那么 Ant 任务在上载已存在的应用程序时，会尝试覆盖 Application Center 中的应用程序。该参数仅在“上载”Ant 任务中可用。| file | 要上载到 Application Center 或者要从 Application Center 中删除的 .apk 或 .ipa 文件。该参数没有缺省值。 |
+| fileset | 用于上载或删除多个文件。 |
+| application | 应用程序的包名；该参数仅在“删除”Ant 任务中可用。 |
+| os | 应用程序的操作系统。（例如，Android 或 iOS。）该参数仅在“删除”Ant 任务中可用。 |
 | version | 应用程序的内部版本；该参数仅在“删除”Ant 任务中可用。
-请勿在此处使用商业版本，因为商业版本不适合准确识别版本。 | 
+请勿在此处使用商业版本，因为商业版本不适合准确识别版本。 |
 
 #### 示例
 {: #example-ant }
@@ -240,16 +240,16 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 
 #### 样本 Ant 脚本的属性
 {: #properties-of-the-sample-ant-script }
-| 属性 | 注释 | 
+| 属性 | 注释 |
 |----------|---------|
-| install.dir | 缺省值为 ../../ | 
-| server.path | 缺省值为 http://localhost:9080。 | 
-| context.path | 缺省值为 applicationcenter。 | 
-| upload.file | 该属性没有缺省值。它必须包含准确的文件路径。 | 
-| workspace.root | 缺省值为 ../../ | 
-| login.user | 缺省值为 appcenteradmin。 | 
-| login.pass | 缺省值为 admin。 | 
-| force	缺省值为 true。 | 
+| install.dir | 缺省值为 ../../ |
+| server.path | 缺省值为 http://localhost:9080。 |
+| context.path | 缺省值为 applicationcenter。 |
+| upload.file | 该属性没有缺省值。它必须包含准确的文件路径。 |
+| workspace.root | 缺省值为 ../../ |
+| login.user | 缺省值为 appcenteradmin。 |
+| login.pass | 缺省值为 admin。 |
+| force	缺省值为 true。 |
 
 要在调用 Ant 时通过命令行指定这些参数，请在属性名称前添加 -D。例如：
 

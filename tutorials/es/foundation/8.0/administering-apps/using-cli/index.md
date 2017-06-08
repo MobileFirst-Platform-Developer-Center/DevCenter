@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Puede administrar aplicaciones {{site.data.keys.product_adj }} a través del programa **mfpadm**.
+Puede administrar aplicaciones {{ site.data.keys.product_adj }} a través del programa **mfpadm**.
 
 
 #### Ir a 
@@ -18,15 +18,15 @@ Puede administrar aplicaciones {{site.data.keys.product_adj }} a través del pro
 
 ## Comparación con otros recursos
 {: #comparison-with-other-facilities }
-Puede ejecutar operaciones de administración con {{site.data.keys.product_full }} de las siguientes maneras:
+Puede ejecutar operaciones de administración con {{ site.data.keys.product_full }} de las siguientes maneras:
 
 
-* {{site.data.keys.mf_console }}, que es interactivo.
+* {{ site.data.keys.mf_console }}, que es interactivo.
 
 * Tareas Ant de mfpadm.
 
 * El programa **mfpadm**. 
-* Los servicios REST de administración de {{site.data.keys.product_adj }}.
+* Los servicios REST de administración de {{ site.data.keys.product_adj }}.
 
 
 Las tareas Ant de **mfpadm**, el programa mfpadm y los servicios REST son útiles para realizar operaciones de ejecución automatizada o sin supervisión como, como en los siguientes casos:
@@ -44,8 +44,8 @@ Además, es más adecuado para una utilización interactiva.
 
 ## Requisitos previos
 {: #prerequisites }
-La herramienta **mfpadm** se instala con el instalador de {{site.data.keys.mf_server }}.
-En el resto de esta página **dir\_instalacion\_producto** indica el directorio de instalación del instalador de {{site.data.keys.mf_server }}.
+La herramienta **mfpadm** se instala con el instalador de {{ site.data.keys.mf_server }}.
+En el resto de esta página **dir\_instalacion\_producto** indica el directorio de instalación del instalador de {{ site.data.keys.mf_server }}.
 
 
 El mandato **mfpadm** se proporciona en el directorio **dir\_instalacion\_producto/shortcuts/** como un conjunto de scripts:
@@ -60,7 +60,7 @@ Si se ha establecido la variable de entorno **JAVA_HOME**, el script la acepta.
 Para utilizar el programa **mfpadm**, añada el directorio **dir\_instalacion\_producto/shortcuts/** a su variable de entorno PATH, o haga referencia al nombre absoluto del archivo en cada llamada.
 
 
-Para obtener más información sobre cómo ejecutar el instalador de {{site.data.keys.mf_server }}, consulte [Ejecución de IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+Para obtener más información sobre cómo ejecutar el instalador de {{ site.data.keys.mf_server }}, consulte [Ejecución de IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Ir a 
 {: #jump-to-1 }
@@ -75,7 +75,7 @@ Para obtener más información sobre cómo ejecutar el instalador de {{site.data
 
 ### Llamada al programa **mfpadm**
 {: #calling-the-mfpadm-program }
-Utilice el programa **mfpadm** para administrar aplicaciones de {{site.data.keys.product_adj }}.
+Utilice el programa **mfpadm** para administrar aplicaciones de {{ site.data.keys.product_adj }}.
 
 
 #### Sintaxis:
@@ -92,9 +92,9 @@ El programa **mfpadm** tiene las siguientes opciones:
 
 | Opción	| Tipo | Descripción | Obligatorio | Predeterminado | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | URL base de la aplicación web de {{site.data.keys.product_adj }} para los servicios de administración | Sí | | 
+| --url | 	 | URL | URL base de la aplicación web de {{ site.data.keys.product_adj }} para los servicios de administración | Sí | | 
 | --secure	 | Booleano | Evitar operaciones con riesgos de seguridad | No | verdadero | 
-| --user	 | nombre | Nombre de usuario para acceder a los servicios de administración de {{site.data.keys.product_adj }} | Sí |  | 	 
+| --user	 | nombre | Nombre de usuario para acceder a los servicios de administración de {{ site.data.keys.product_adj }} | Sí |  | 	 
 | --passwordfile | archivo | Archivo con la contraseña del usuario | No | 
 | --timeout	     | Número   | Tiempo de espera para todo el acceso al servicio REST, en segundos | No | 	 
 | --connect-timeout | Número  | Tiempo de espera para establecer una conexión de red, en segundos | No |
@@ -247,7 +247,7 @@ Utilice este mandato para listar los valores almacenados en el archivo de config
 El archivo de configuración es un archivo de texto, en la codificación del entorno local actual, en la sintaxis **.properties** de Java. Estos son los archivos de configuración predeterminados:
 
 * UNIX: **${HOME}/.mfpadm.config**
-* Windows: **{{site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **Nota:** Cuando no se especifica una opción `--configfile`, el archivo de configuración predeterminado únicamente se utiliza en la modalidad interactiva y en mandatos config. Para utilización no interactiva de otros mandatos, debe designar de forma explícita el archivo de configuración si desea utilizar uno. 
 
@@ -289,7 +289,7 @@ Muchos otros sistemas operativos tienen un entorno local `en_US.UTF-8`.
 
 ### Mandatos para la configuración general
 {: #commands-for-general-configuration }
-Cuando llama al programa **mfpadm**, puede incluir varios mandatos para acceder a la configuración global de IBM {{site.data.keys.mf_server }} o de un tiempo de ejecución.
+Cuando llama al programa **mfpadm**, puede incluir varios mandatos para acceder a la configuración global de IBM {{ site.data.keys.mf_server }} o de un tiempo de ejecución.
 
 
 #### Mandato `show global-config`
@@ -1213,7 +1213,7 @@ Cuando se invoca al programa **mfpadm**, se pueden incluir varios mandatos para 
 
 #### Mandato `show info`
 {: #the-show-info-command }
-El mandato `show info` muestra información básica sobre los servicios de administración de {{site.data.keys.product_adj }} que se pueden devolver sin acceder a un tiempo de ejecución ni a una base de datos. Utilice esta mandato para verificar si los servicios de administración de {{site.data.keys.product_adj }} están en ejecución. 
+El mandato `show info` muestra información básica sobre los servicios de administración de {{ site.data.keys.product_adj }} que se pueden devolver sin acceder a un tiempo de ejecución ni a una base de datos. Utilice esta mandato para verificar si los servicios de administración de {{ site.data.keys.product_adj }} están en ejecución. 
 
 Sintaxis: `show info`
 
@@ -1231,12 +1231,12 @@ show info
 
 #### Mandato `show versions`
 {: #the-show-versions-command }
-El mandato `show versions` visualiza versiones de {{site.data.keys.product_adj }} de varios componentes:
+El mandato `show versions` visualiza versiones de {{ site.data.keys.product_adj }} de varios componentes:
 
 
-* **mfpadmVersion**: Número de versión de {{site.data.keys.mf_server }} exacta de la que se toma **mfp-ant-deployer.jar**.
+* **mfpadmVersion**: Número de versión de {{ site.data.keys.mf_server }} exacta de la que se toma **mfp-ant-deployer.jar**.
 
-* **productVersion**: Número de versión de {{site.data.keys.mf_server }} exacta de la que se toma **mfp-admin-service.war**.
+* **productVersion**: Número de versión de {{ site.data.keys.mf_server }} exacta de la que se toma **mfp-admin-service.war**.
 
 * **mfpAdminVersion**: Número de versión de construcción exacto de sólo **mfp-admin-service.war**.
 
@@ -1257,7 +1257,7 @@ show versions
 
 #### Mandato `show diagnostics`
 {: #the-show-diagnostics-command }
-El mandato `show diagnostics` muestra el estado de varios componentes que son necesarios para el correcto funcionamiento del servicio de administración de {{site.data.keys.product_adj }} como, por ejemplo, la disponibilidad de la base de datos y de los servicios auxiliares.
+El mandato `show diagnostics` muestra el estado de varios componentes que son necesarios para el correcto funcionamiento del servicio de administración de {{ site.data.keys.product_adj }} como, por ejemplo, la disponibilidad de la base de datos y de los servicios auxiliares.
 
 
 Sintaxis: `show diagnostics`

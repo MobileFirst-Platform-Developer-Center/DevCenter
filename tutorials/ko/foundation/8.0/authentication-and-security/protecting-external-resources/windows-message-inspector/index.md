@@ -102,7 +102,7 @@ static void Main(string[] args) {
 > WCF REST 서비스에 대한 자세한 정보는 [기본 WCF 웹 HTTP 서비스 작성](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100)을 참조하십시오.
 
 ## 메시지 검사기 정의
-{: #define-a-message-inspector }
+{: #define-a-message-inspector}
 유효성 검증 프로세스를 시작하기 전에 자원(서비스 엔드포인트)을 보호하기 위해 사용할 **메시지 검사기**를 작성하고 정의해야 합니다.
 메시지 검사기는 메시지가 전송되기 전 또는 수신된 후 메시지를 검사하고 변경하기 위해 서비스에서 사용될 수 있는 확장성 오브젝트입니다. 서비스 메시지 검사기는 `IDispatchMessageInspector` 인터페이스를 구현해야 합니다. 
 
@@ -172,6 +172,8 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 ```
 
 ## 메시지 검사기 구현
+{: #message-inspector-implementation}
+
 먼저 메시지 검사기에 클래스 멤버로 일부 상수를 정의합니다. 즉, {{ site.data.keys.mf_server }} URL, 기밀 클라이언트 신임 정보 및 `scope`를 정의하며 이는 서비스를 보호하기 위해 사용됩니다. 또한 {{ site.data.keys.product_adj }} 권한 서버에서 수신한 토큰을 유지하기 위해 정적 변수를 정의하여 모든 사용자가 이용할 수 있게 할 수 있습니다.
 
 ```csharp
@@ -281,6 +283,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## {{ site.data.keys.product_adj }} 권한 부여 서버에서 액세스 토큰 얻기
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 클라이언트 토큰을 인증하기 위해서는 **토큰 엔드포인트**에 대한 요청을 작성하여 **메시지 검사기로서 액세스 토큰을 획득**해야 합니다.
 나중에 수신된 이 토큰을 사용하여 자체 점검을 위해 클라이언트 토큰을 전달합니다. 
 

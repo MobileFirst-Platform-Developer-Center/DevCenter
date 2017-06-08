@@ -8,11 +8,11 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-{{ site.data.keys.mf_console_full }}    是基于 Web 的 UI，支持为开发人员和管理员简化创建、监控、保护和管理应用程序与适配器的工作流程。
+{{ site.data.keys.mf_console_full }} 是基于 Web 的 UI，支持为开发人员和管理员简化创建、监控、保护和管理应用程序与适配器的工作流程。
 
 #### 作为开发人员
 {: #as-a-developer }
-* 开发用于任何环境的应用程序，并且将其注册到 {{ site.data.keys.mf_server }}   。
+* 开发用于任何环境的应用程序，并且将其注册到 {{ site.data.keys.mf_server }}。
 * 查看所有已部署的应用程序和适配器概览。查看仪表板。
 * 管理和配置已注册的应用程序，包括直接更新、远程禁用和用于应用程序真实性与用户认证的安全性参数。
 * 通过部署证书、创建通知标记和发送通知来设置推送通知。
@@ -22,7 +22,7 @@ weight: 2
 #### 作为 IT 管理员
 {: #as-an-it-administrator }
 * 监控各种服务。
-* 搜索访问 {{ site.data.keys.mf_server }}    的设备，并管理其访问权。
+* 搜索访问 {{ site.data.keys.mf_server }} 的设备，并管理其访问权。
 * 动态更新适配器配置。
 * 通过日志概要文件来调整客户机记录器配置。
 * 跟踪产品许可证的使用方式。
@@ -34,9 +34,9 @@ weight: 2
 
 ## 访问控制台
 {: #accessing-the-console }
-可以如下方式访问 {{ site.data.keys.mf_console }}   ：
+可以如下方式访问 {{ site.data.keys.mf_console }}：
 
-### 从本地安装的 {{ site.data.keys.mf_server }}   
+### 从本地安装的 {{ site.data.keys.mf_server }}
 {: #from-a-locally-installed-mobilefirst-server }
 #### 桌面浏览器
 {: #desktop-browser }
@@ -44,9 +44,9 @@ weight: 2
 
 #### 命令行
 {: #command-line }
-从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}    运行命令：`mfpdev server console`。
+从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }} 运行命令：`mfpdev server console`。
 
-### 从远程安装的 {{ site.data.keys.mf_server }}   
+### 从远程安装的 {{ site.data.keys.mf_server }}
 {: #from-a-remotely-installed-mobilefirst-server }
 #### 桌面浏览器
 {: #desktop-browser-remote }
@@ -55,7 +55,7 @@ weight: 2
 
 #### 命令行
 {: #command-line-remote }
-从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}   ， 
+从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}， 
 
 1. 添加远程服务器定义：
 
@@ -71,7 +71,7 @@ weight: 2
 
 2. 运行命令：`mfpdev server console MyRemoteServer`。
 
-> 通过[使用 CLI 来管理 {{ site.data.keys.product_adj }}    工件](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)教程来了解有关各种 CLI 命令的更多信息。
+> 通过[使用 CLI 来管理 {{ site.data.keys.product_adj }} 工件](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)教程来了解有关各种 CLI 命令的更多信息。
 ## 浏览控制台
 {: #navigating-the-console }
 ### 仪表板
@@ -94,7 +94,7 @@ weight: 2
 
 ### 错误日志
 {: #error-log }
-“错误日志”可显示当前运行时环境中从 {{ site.data.keys.mf_console }}    或从命令行启动的失败管理操作列表。使用此日志可查看失败对服务器产生的影响。
+“错误日志”可显示当前运行时环境中从 {{ site.data.keys.mf_console }} 或从命令行启动的失败管理操作列表。使用此日志可查看失败对服务器产生的影响。
 
 > 有关更多信息，请参阅用户文档中有关针对运行时环境的操作的错误日志的主题。
 
@@ -102,7 +102,7 @@ weight: 2
 
 ### 设备
 {: #devices }
-管理员可以搜索访问 {{ site.data.keys.mf_server }}    的设备，并管理访问权。  
+管理员可以搜索访问 {{ site.data.keys.mf_server }} 的设备，并管理访问权。  
 可使用用户标识或使用友好名称来搜索设备。用户标识是用于登录的标识。  
 友好名称是与设备关联的名称，用于将此设备与共享用户标识的其他设备加以区分。 
 
@@ -126,9 +126,9 @@ weight: 2
 
 #### 认证和安全性
 {: #authentication-and-security }
-配置应用程序安全性参数（例如，缺省令牌到期日期值、将作用域元素映射到安全性检查、定义强制性应用程序作用域和配置安全性检查选项）。
+配置应用程序安全性参数（例如，缺省令牌到期日期值），将作用域元素映射到安全性检查，定义强制性应用程序作用域，并且配置安全性检查选项。
 
-> [了解](../../../authentication-and-security/)有关 {{ site.data.keys.product_adj }}    安全性框架的更多信息。
+> [了解](../../../authentication-and-security/)有关 {{ site.data.keys.product_adj }} 安全性框架的更多信息。
 
 ![应用程序安全配置屏幕图像](authentication-and-security.png)
 
@@ -172,7 +172,7 @@ weight: 2
 {: #license-tracking }
 可从顶部“设置”按钮访问。
 
-许可条款因使用的 {{ site.data.keys.product }}    版本（Enterprise 或 Consumer）而异。缺省情况下，已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }}    的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
+许可条款因使用的 {{ site.data.keys.product }} 版本（Enterprise 或 Consumer）而异。缺省情况下，已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }} 的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
 
 通过跟踪客户机设备的使用并确定设备是否处于活动状态，管理员可以停用不应再访问服务的设备。例如，如果某个员工已离开公司，那么可能会出现此情况。
 
@@ -182,7 +182,7 @@ weight: 2
 
 ### 下载
 {: #downloads }
-对于因特网连接不可用的情况，可以从 {{ site.data.keys.mf_console }}    中的下载中心下载 {{ site.data.keys.product }}    的各种开发工件快照。
+对于因特网连接不可用的情况，可以从 {{ site.data.keys.mf_console }} 中的下载中心下载 {{ site.data.keys.product }} 的各种开发工件快照。
 
 ![可用工件图像](downloads.png)
 

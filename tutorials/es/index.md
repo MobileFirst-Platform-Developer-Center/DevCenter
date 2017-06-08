@@ -13,10 +13,8 @@ print_pdf: false
 <br>
 The Tutorials section is a collection of self-paced tutorials and sample applications that will help you start developing, testing, securing, and deploying mobile applications with the {{ site.data.key.parent_product_full }} suite of products.
 
-If you are not yet familiar with {{ site.data.keys.parent_product_full }}, visit the [Get Introduced](../../get-introduced/) page.
-
-### [Foundation]({{site.baseurl}}/tutorials/en/foundation/)
-* [{{ site.data.keys.product_full }} 8.0]({{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/)
+### [Foundation]({{site.baseurl}}/tutorials/es/foundation/)
+* [{{ site.data.keys.product_full }} 8.0]({{site.baseurl}}/tutorials/es/foundation/8.0/all-tutorials/)
 * [MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials/)
 * [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/all-tutorials/)
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials/)

@@ -78,7 +78,7 @@ noch immer über ein gültiges (nicht abgelaufenes) Zugriffstoken verfügt.
 {{ site.data.keys.mf_server }} verwaltet Statusinformationen zu jedem Gerät,
 das auf den Server zugreift. Gültige Statuswerte sind
 **Aktiv**, **Verloren**, **Gestolen**, **Abgelaufen** und
-**Inaktiviert**.  
+**Inaktiviert**. 
 
 Der Standardgerätestatus is t
 **Aktiv**. Er gibt an, dass der Zugriff von diesem Gerät nicht blockiert ist. Sie können den Status
@@ -101,12 +101,11 @@ der Gerätestatus wieder auf **Aktiv** gesetzt, um den Gerät den Zugriff auf de
 {{ site.data.keys.mf_server }} identifiziert Geräte über eine eindeutige,
 vom {{ site.data.keys.product_adj }}-Client-SDK zugewiesene Geräte-ID. Wenn Sie einen Anzeigenamen für ein Gerät festlegen, kann über diesen Namen nach dem Gerät
 gesucht werden. Anwendungsentwickler können die Methode `setDeviceDisplayName` der Klasse
-`WLClient` verwenden, um den Anzeigenamen eines Geräts festzulegen. Lesen Sie hierzu die Beschreibung zu `WLClient`
-unter [Clientseitige
-{{ site.data.keys.product_adj }}-API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (Die JavaScript-Klasse ist WL.Client.) Entwickler von Java-Adaptern (und Sicherheitsüberprüfungen) können den
+`WLClient` nutzen, um den Anzeigenamen des Geräts festzulegen. Lesen Sie hierzu die Beschreibung zu `WLClient` unter
+[Clientseitige {{ site.data.keys.product_adj }}-API](../../api/client-side-api/javascript/client/). (Die JavaScript-Klasse ist `WL.Client`.) Entwickler von Java-Adaptern (und Sicherheitsüberprüfungen) können den
 Anzeigenamen von Geräten mit der Methode `setDeviceDisplayName` der `MobileDeviceData`-Klasse
 com.ibm.mfp.server.registration.external.model festlegen (siehe
-[MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc)).
+[MobileDeviceData](../../api/client-side-api/objc/client/)).
 
 ### Gerätezugriff in der
 {{ site.data.keys.mf_console }} verwalten
@@ -238,7 +237,7 @@ die Ländereinstellungen definiert sind.
    Jede Zeile der CSV-Datei enthält zwei Zeichenfolgen, die durch ein Komma getrennt sind. Die erste Zeichenfolge ist der
 Code für die Ländereinstellung, z. B. fr-FR für Französisch (Frankreich) oder
 en für Englisch, und die zweite Zeichenfolge ist der Nachrichtentext in der entsprechenden Sprache. Die angegebenen Codes für die Ländereinstellung müssen den Standards entsprechen, die das Betriebssystem für mobile Geräte für die Angabe länderspezifischer Einstellungen anwendet, z. B. ISO 639-1, ISO 3166-2 und ISO 15924.
-    
+
    > **Hinweis:** Zum Erstellen der CSV-Datei müssen Sie einen Editor verwenden, der die UTF-8-Codierung unterstützt, z. B. den Windows-Editor.
 
    In der nachfolgenden CSV-Datei ist eine Nachricht für mehrere
@@ -327,7 +326,7 @@ und wählen Sie **Produktinfo** aus. Klicken Sie auf **Zusätzliche Supportinfor
 **Prüfprotokoll herunterladen**.
 
 
-| Feldname | Beschreibung | 
+| Feldname | Beschreibung |
 |------------|-------------|
 | Timestamp	 | Datum und Zeit der Erstellung des Eintrags |
 | Type	     | Typ der Operation (siehe folgende Liste der Operationstypen für gültige Werte) |
@@ -370,5 +369,3 @@ den Operationstyp (im Feld Type).
 * deleteTag
 * add runtime
 * delete runtime
-
-

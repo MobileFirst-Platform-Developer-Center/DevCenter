@@ -12,7 +12,7 @@ relevantTo: [ios,android,windows,javascript]
 ## ロギング例
 {: #logging-example }
 
-以下のメッセージは、アプリケーション・サーバーの `trace.log` ファイルに出力されます。サーバー管理者が {{site.data.keys.mf_server }} から {{site.data.keys.mf_analytics_server }} にログを転送している場合は、`logger` メッセージは {{site.data.keys.mf_analytics_console }} の**「インフラストラクチャー」→「サーバー・ログの検索」**ビューにも表示されます。
+以下のメッセージは、アプリケーション・サーバーの `trace.log` ファイルに出力されます。サーバー管理者が {{ site.data.keys.mf_server }} から {{ site.data.keys.mf_analytics_server }} にログを転送している場合は、`logger` メッセージは {{ site.data.keys.mf_analytics_console }} の**「インフラストラクチャー」→「サーバー・ログの検索」**ビューにも表示されます。
 
 ```javascript
 MFP.Logger.debug("This is a debug message from a JavaScript adapter");
@@ -23,7 +23,7 @@ MFP.Logger.debug("This is a debug message from a JavaScript adapter");
 ## ログ・ファイルへのアクセス
 {: #accessing-the-log-files }
 
-* {{site.data.keys.mf_server }} のオンプレミス・インストールでは、このファイルは基礎となるアプリケーション・サーバーに応じて使用可能です。 
+* {{ site.data.keys.mf_server }} のオンプレミス・インストールでは、このファイルは基礎となるアプリケーション・サーバーに応じて使用可能です。 
     * [IBM WebSphere Application Server のフル・プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
     * [IBM WebSphere Application Server の Liberty プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
@@ -36,9 +36,9 @@ MFP.Logger.debug("This is a debug message from a JavaScript adapter");
 
 ログを Analytics コンソールに転送することもできます。
 
-1. {{site.data.keys.mf_console }} のサイドバー・ナビゲーションから、**「設定」**オプションを選択します。
+1. {{ site.data.keys.mf_console }} のサイドバー・ナビゲーションから、**「設定」**オプションを選択します。
 2. **「ランタイム・プロパティー」**タブの**「編集」**ボタンをクリックします。
-3. **「Analytics」 → 「追加パッケージ」**セクションで、**MFP.Logger** を指定して、JavaScript アダプターのログを {{site.data.keys.mf_server }} に転送します。
+3. **「Analytics」 → 「追加パッケージ」**セクションで、**MFP.Logger** を指定して、JavaScript アダプターのログを {{ site.data.keys.mf_server }} に転送します。
 
 ![コンソールからのログ・フィルタリング](javascript-filter.png)
 

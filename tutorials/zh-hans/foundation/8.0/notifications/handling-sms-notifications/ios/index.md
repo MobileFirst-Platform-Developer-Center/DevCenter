@@ -52,7 +52,7 @@ MFPPush.sharedInstance().initialize()
 向推送通知服务注册设备。
 
 ```swift
-MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void in
      if error == nil {
          // Successfully registered
      } else {
@@ -66,13 +66,11 @@ MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(respon
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
 
-let jsonOptions: [NSObject: AnyObject] = [
+let jsonOptions: [AnyHashable: Any] = [
     "phoneNumber": phoneNumber
 ]
 
-let isValid = NSJSONSerialization.isValidJSONObject(jsonOptions)
-
-if isValid {
+if JSONSerialization.isValidJSONObject(jsonOptions) {
     // JSON is valid and can be sent with registerDevice request
 }
 
@@ -84,9 +82,9 @@ if isValid {
 从推送通知服务实例注销设备。
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Unregistered successfully
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Unregistered successfully
     } else {
         // Failed to unregister
     }
@@ -98,7 +96,7 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 可使用 REST API 将通知发送到已注册的设备。可以发送所有形式的通知：标记通知、广播通知和已认证的通知
 
 要发送通知，可使用 POST 向 REST 端点发出请求：`imfpush/v1/apps/<application-identifier>/messages`。  
-示例 URL： 
+示例 URL：
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
@@ -115,6 +113,3 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ### 用法样例
 {: #sample-usage }
 请查看样本的 README.md 文件以获取指示信息。
-
-
-

@@ -51,6 +51,7 @@ Beispiel:
 {{ site.data.keys.mf_analytics_console_short }} werden angezeigt. Der Scenario Loader ist weiterhin nicht über die Navigationsleiste zugänglich. 
 
 ## Laden der Daten konfigurieren
+{: #configuring-the-data-loading}
 
 1. Im Abschnitt **Testing Configuration** gibt es mehrere Einstellungen,
 mit denen die Art der generierten Daten (Register **Basic**) und die Menge der generierten Daten (Register **Capacity Planning**)

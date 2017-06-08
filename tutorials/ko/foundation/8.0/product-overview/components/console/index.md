@@ -8,11 +8,11 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{site.data.keys.mf_console_full }}는 개발자와 관리자가 모두 애플리케이션 및 어댑터를 작성, 모니터, 보안 및 관리하기 위해 간소화된 작업을 가능하게 하는 웹 기반 UI입니다.
+{{ site.data.keys.mf_console_full }}는 개발자와 관리자가 모두 애플리케이션 및 어댑터를 작성, 모니터, 보안 및 관리하기 위해 간소화된 작업을 가능하게 하는 웹 기반 UI입니다.
 
 #### 개발자의 경우
 {: #as-a-developer }
-* 환경에 맞는 애플리케이션을 개발하여 {{site.data.keys.mf_server }}에 등록합니다. 
+* 환경에 맞는 애플리케이션을 개발하여 {{ site.data.keys.mf_server }}에 등록합니다. 
 * 배치된 애플리케이션과 어댑터를 한 눈에 확인합니다. 대시보드를 참조하십시오.
 * 직접 업데이트, 원격 디스에이블먼트, 애플리케이션 인증 및 사용자 인증을 위한 보안 매개변수를 포함하여 등록된 애플리케이션을 관리하고 구성합니다. 
 * 인증을 배치하고, 알림 태그를 작성하고, 알림을 전송하여 푸시 알림을 설정합니다.
@@ -22,7 +22,7 @@ weight: 2
 #### IT 관리자의 경우
 {: #as-an-it-administrator }
 * 다양한 서비스를 모니터링합니다.
-* {{site.data.keys.mf_server }}에 액세스하고 해당 액세스 권한을 관리하는 디바이스를 검색합니다. 
+* {{ site.data.keys.mf_server }}에 액세스하고 해당 액세스 권한을 관리하는 디바이스를 검색합니다. 
 * 어댑터 구성을 동적으로 업데이트합니다. 
 * 로그 프로파일을 통해 클라이언트 로거 구성을 조정합니다.
 * 제품 라이센스의 사용을 추적합니다.
@@ -36,7 +36,7 @@ weight: 2
 {: #accessing-the-console }
 다음 방법으로 {{site.data.keys.mf_console }}에 액세스할 수 있습니다.
 
-### 로컬로 설치된 {{site.data.keys.mf_server }}에서
+### 로컬로 설치된 {{ site.data.keys.mf_server }}에서
 {: #from-a-locally-installed-mobilefirst-server }
 #### 데스크탑 브라우저
 {: #desktop-browser }
@@ -44,9 +44,9 @@ weight: 2
 
 #### 명령행
 {: #command-line }
-**명령행** 창에서 설치된 {{site.data.keys.mf_cli }}를 사용하여 `mfpdev server console` 명령을 실행하십시오.
+**명령행** 창에서 설치된 {{ site.data.keys.mf_cli }}를 사용하여 `mfpdev server console` 명령을 실행하십시오.
 
-### 원격으로 설치된 {{site.data.keys.mf_server }}에서
+### 원격으로 설치된 {{ site.data.keys.mf_server }}에서
 {: #from-a-remotely-installed-mobilefirst-server }
 #### 데스크탑 브라우저
 {: #desktop-browser-remote }
@@ -55,7 +55,7 @@ weight: 2
 
 #### 명령행
 {: #command-line-remote }
-**명령행** 창에서 설치된 {{site.data.keys.mf_cli }}를 사용하여 다음을 수행하십시오.  
+**명령행** 창에서 설치된 {{ site.data.keys.mf_cli }}를 사용하여 다음을 수행하십시오.  
 
 1. 원격 서버 정의를 추가하십시오.
 
@@ -71,7 +71,7 @@ weight: 2
 
 2. `mfpdev server console MyRemoteServer` 명령을 실행하십시오.
 
-> [CLI를 사용하여 {{site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서의 다양한 CLI 명령에 대해 자세히 알아보십시오.
+> [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서의 다양한 CLI 명령에 대해 자세히 알아보십시오.
 
 ## 콘솔 탐색
 {: #navigating-the-console }
@@ -103,7 +103,7 @@ weight: 2
 
 ### 디바이스
 {: #devices }
-관리자는 {{site.data.keys.mf_server }}에 액세스하고 액세스 권한을 관리하는 디바이스를 검색할 수 있습니다.   
+관리자는 {{ site.data.keys.mf_server }}에 액세스하고 액세스 권한을 관리하는 디바이스를 검색할 수 있습니다.   
 디바이스는 익숙한 이름을 사용하거나 사용자 ID를 사용하여 검색할 수 있습니다. 사용자 ID는 로그인에 사용된 ID입니다.   
 익숙한 이름은 사용자 ID를 공유하는 기타 디바이스에서 이를 구분하기 위해 디바이스와 연관된 이름입니다. 
 
@@ -129,7 +129,7 @@ weight: 2
 {: #authentication-and-security }
 기본 토큰 만기 값 같은 애플리케이션 보안 매개변수를 구성하고 범위 요소를 보안 검사에 맵핑하고 필수 애플리케이션 범위를 정의하고 보안 검사 옵션을 구성하십시오. 
 
-> {{site.data.keys.product_adj }} 보안 프레임워크에 대해 [자세히 알아보십시오](../../../authentication-and-security/).
+> {{ site.data.keys.product_adj }} 보안 프레임워크에 대해 [자세히 알아보십시오](../../../authentication-and-security/).
 
 ![애플리케이션 보안 구성 화면의 이미지](authentication-and-security.png)
 
@@ -173,7 +173,7 @@ weight: 2
 {: #license-tracking }
 맨 위 설정 단추에서 액세스 가능합니다. 
 
-라이센스 조항은 사용되는 {{site.data.keys.product }}의 에디션(Enterprise 또는 Consumer)에 따라 달라집니다. 라이센스 추적은 기본적으로 사용으로 설정되어 있으며 활성 클라이언트 디바이스 및 설치된 애플리케이션 같은 라이센싱 정책과 관련된 메트릭을 추적합니다. 이 정보는 {{site.data.keys.product }}의 현재 사용이 라이센스 부여 레벨 내에 있고 잠재적 라이센스 위반을 방지할 수 있는지 판별하는 데 도움이 됩니다. 
+라이센스 조항은 사용되는 {{ site.data.keys.product }}의 에디션(Enterprise 또는 Consumer)에 따라 달라집니다. 라이센스 추적은 기본적으로 사용으로 설정되어 있으며 활성 클라이언트 디바이스 및 설치된 애플리케이션 같은 라이센싱 정책과 관련된 메트릭을 추적합니다. 이 정보는 {{ site.data.keys.product }}의 현재 사용이 라이센스 부여 레벨 내에 있고 잠재적 라이센스 위반을 방지할 수 있는지 판별하는 데 도움이 됩니다. 
 
 클라이언트 디바이스의 사용을 추적하고 디바이스가 활성인지 여부를 판별함으로써 관리자는 서비스에 더 이상 액세스하면 안 되는 디바이스를 해제할 수 있습니다. 이러한 상황은 직원이 퇴사하는 경우에 발생할 수 있습니다. 예를 들어 다음과 같습니다.
 
@@ -183,7 +183,7 @@ weight: 2
 
 ### 다운로드 
 {: #downloads }
-인터넷 연결성이 사용 가능하지 않은 상황에서는 {{site.data.keys.mf_console }}의 다운로드 센터에서 {{site.data.keys.product }}의 다양한 개발 아티팩트의 스냅샷을 다운로드할 수 있습니다.
+인터넷 연결성이 사용 가능하지 않은 상황에서는 {{ site.data.keys.mf_console }}의 다운로드 센터에서 {{ site.data.keys.product }}의 다양한 개발 아티팩트의 스냅샷을 다운로드할 수 있습니다.
 
 ![사용 가능한 아티팩트의 이미지](downloads.png)
 

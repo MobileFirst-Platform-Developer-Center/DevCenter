@@ -1511,7 +1511,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 ## 마이그레이션 도구
 {: #migration-tool }
-마이그레이션 도구는 MobileFirst Platform Foundation 7.1 푸시 데이터(디바이스, 사용자 등록, 신임 정보 및 태그)를 {{site.data.keys.product }} 8.0으로 마이그레이션하는 데 도움이 됩니다.   
+마이그레이션 도구는 MobileFirst Platform Foundation 7.1 푸시 데이터(디바이스, 사용자 등록, 신임 정보 및 태그)를 {{ site.data.keys.product }} 8.0으로 마이그레이션하는 데 도움이 됩니다.   
 마이그레이션 도구를 사용하면 다음 기능을 간단하게 처리할 수 있습니다. 
 
 1. MobileFirst Platform Foundation 7.1 데이터베이스에서 각 애플리케이션의 디바이스, 신임 정보, 태그 및 사용자 등록을 읽습니다. 
@@ -1528,7 +1528,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 4. {{ site.data.keys.mf_server }} 8.0에서 애플리케이션의 최신 버전을 등록하십시오. 
 	* 애플리케이션의 표시 이름은 MobileFirst Platform Foundation 7.1에서 각 애플리케이션과 일치해야 합니다. 
 	* PacakgeName/BundleID를 기억하고 애플리케이션에 동일한 값을 제공하십시오. 
-	* 애플리케이션이 {{site.data.keys.mf_server }} 8.0에 등록되지 않은 경우 마이그레이션이 실패합니다. 
+	* 애플리케이션이 {{ site.data.keys.mf_server }} 8.0에 등록되지 않은 경우 마이그레이션이 실패합니다. 
 5. 애플리케이션의 각 환경에 범위 요소 맵핑을 제공하십시오. [범위 맵핑에 대해 자세히 학습](../../notifications/sending-notifications/#scope-mapping)하십시오. 
 
 #### 프로시저

@@ -73,8 +73,8 @@ pod 与核心函数和其他函数对应：
     **注：**这些命令可能需要几分钟完成。
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点**：从此时开始，使用 `[ProjectName].xcworkspace` 文件在 Xcode 中打开项目。请**勿**使用 `[ProjectName].xcodeproj` 文件。基于 CocoaPods 的项目将作为包含应用程序（可执行程序）和库（CocoaPods 管理器提取的所有项目依赖关系）的工作空间进行管理。
-    ### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
-{: manually-adding-the-mobilefirst-native-sdk }
+### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
+{: #manually-adding-the-mobilefirst-native-sdk }
 您还可以手动添加 {{ site.data.keys.product }} SDK：
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -102,7 +102,6 @@ pod 与核心函数和其他函数对应：
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
-                                    <li>Localizations.bundle</li>
                                 </ul>
                                 执行此步骤会自动将这些框架添加到<b>已链接的框架和库</b>。
                             </li>
@@ -111,6 +110,7 @@ pod 与核心函数和其他函数对应：
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
+                                    <li>Localizations.bundle</li>
                                 </ul>
                             </li>
                             <blockquote><b>注：</b>这些步骤会将相关的 {{ site.data.keys.product }} 框架复制到项目，并将“链接二进制文件”中的这些框架与“构建阶段”选项卡中的库列表链接。如果将文件链接到其原始位置（没有按照先前描述选择“根据需要复制项目”选项），那么需要按照下面所述设置“框架搜索路径”。</blockquote>
@@ -186,7 +186,7 @@ import IBMMobileFirstPlatformFoundation
 > 从 Xcode 7 开始，缺省情况下会启用[应用程序传输安全性 (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)。要在开发期间运行应用程序，可以禁用 ATS（[阅读更多](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)）。
 >   1. 在 Xcode 中，右键单击 **[project]/info.plist 文件 → 打开方式 → 源代码**
 >   2. 粘贴以下内容：
-> 
+>
 ```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
@@ -230,7 +230,7 @@ pod update
 可以在 SDK 的 [CocoaPods 存储库](https://cocoapods.org/?q=ibm%20mobilefirst)中找到 SDK 发行版。
 
 ## 已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 此文件位于项目的根目录中，定义用于在 {{ site.data.keys.mf_server }} 上注册 iOS 应用程序的客户机端属性。
