@@ -6,4 +6,3 @@ exclude:
   - Gemfile.lock
   - README.md
   - pdf
-  - tutorials/ja
