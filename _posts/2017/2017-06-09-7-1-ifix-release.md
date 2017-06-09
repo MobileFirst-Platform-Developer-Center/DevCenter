@@ -16,4 +16,4 @@ A new iFix has been released for MobileFirst Platform Foundation 7.1, dated **Ju
 ## Included changes in this iFix
 *For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.*
 
-**PI82771** UPDATE DASHDB DB2 DRIVER FOR MOBILE FOUNDATION ON CONTAINERS
+**PI82771** UPDATE DASHDB DB2 DRIVER FOR MOBILE FOUNDATION ON CONTAINERS.
