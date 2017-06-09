@@ -13,11 +13,11 @@ author:
 ## Overview:
 
 **IBM MobileFirst Foundation**  requires **dashDB for Transactions** service as the database.  
-The **dashDB for Transactions** service is rolling out a security update, which can cause connectivity issues on IBM Mobile Foundation. 
+The **dashDB for Transactions** service is rolling out a security update, which can cause connectivity issues on IBM Mobile Foundation.
 
 ## Symptoms:
 
-If your **Mobile Foundation**, on Bluemix, setup has been working all along, and if you all of a sudden start seeing the errors as described below, then the possible reason could be that the **dashDB for Transactions** service has been updated with the security update. 
+If your **Mobile Foundation**, on Bluemix, setup has been working all along, and if you all of a sudden start seeing the errors as described below, then the possible reason could be that the **dashDB for Transactions** service has been updated with the security update.
 
 Look for the following symptoms:   
 
@@ -43,8 +43,8 @@ Look for the following symptoms:
 If you are using [Mobile Foundation service] (https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/), then follow these steps to update the service instance:  
 
 1. Navigate to the Bluemix console on your browser, and login to the Organization and Space where you have created the Mobile Foundation Service.
-2. Click the **Mobile Foundation service** from the **Services** section, as shown in the image:! 
-  [bluemix-homepage]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationService.png)  
+2. Click the **Mobile Foundation service** from the **Services** section, as shown in the image:      
+  ![bluemix-homepage]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationService.png)  
 3. You should see an *Info Notification* indicating an update. Click on *Recreate* button to get the latest changes on your Mobile Foundation instance.  
   ![mobile-foundation-recreate]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationRecreate.png)  
 
@@ -67,7 +67,7 @@ Follow the instructions available in this [document](https://www.ibm.com/support
 
 ## Cause
 
-There has been a recent security update in the IBM dashDB for Transactions Bluemix service. 
+There has been a recent security update in the IBM dashDB for Transactions Bluemix service.
 Details of the dashDB update is [available here](http://www-01.ibm.com/support/docview.wss?uid=swg22001150)  
 Existing applications which connect to dashDB may get `ssh handshake` errors because of the update.
 The latest Mobile Foundation service update as well as the latest iFix on Mobile Foundation modify the driver used to the latest driver to fix the issue.
