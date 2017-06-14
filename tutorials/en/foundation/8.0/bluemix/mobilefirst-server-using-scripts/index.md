@@ -1507,10 +1507,13 @@ Before you apply an interim fix, back up your existing configuration files. The 
 2. Restore your backed-up configuration files into the **package_root/mfpf-analytics/usr**, **package_root/mfpf-server/usr** and **package_root/mfp-appcenter/usr** folders, overwriting the newly installed configuration files.
 3. Edit **package_root/mfpf-server/usr/env/jvm.options** file in your editor and remove the following line, if it exists:
 ```
--javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”  .
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
 ```
+  You can now build and deploy the updated server.
 
-You can now build and deploy the updated server.
+  a. Run the ```prepareserver.sh``` script to rebuild the server image and push it to the IBM Containers service.
+
+  b. Run the ```startserver.sh``` script to run the server image as a standalone container or ```startservergroup.sh``` to run the server image as a container group.
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
