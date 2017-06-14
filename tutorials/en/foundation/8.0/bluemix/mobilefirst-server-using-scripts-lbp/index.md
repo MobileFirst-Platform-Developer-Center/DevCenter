@@ -431,13 +431,13 @@ following folders:
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
 ```
-You can now build and deploy the updated server. Re-run the following scripts with the same set of arguments.
+    You can now build and deploy the updated server. Re-run the following scripts with the same set of arguments.
 
-  a. ```./prepareserver.sh``` to upload the updated artifacts to Bluemix.
+    a. ```./prepareserver.sh``` to upload the updated artifacts to Bluemix.
 
-  b. ```./startserver.sh``` to start the updated server
+    b. ```./startserver.sh``` to start the updated server
 
-A copy of the the arguments that you used in your previous deployment would have been saved in `recorded-args/` directory. You can use these properties for your deployment.
+    A copy of the the arguments that you used in your previous deployment would have been saved in `recorded-args/` directory. You can use these properties for your deployment.
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
