@@ -70,7 +70,7 @@ require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
- **重要**:  Cordova と Web SDK 間には JavaScript API においていくつかの相違点があります。ユーザー資料の[『API リファレンス』トピック](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html)を参照してください。
+ **重要**:  Cordova と Web SDK 間には JavaScript API においていくつかの相違点があります。ユーザー資料の[『API リファレンス』トピック](../../api/)を参照してください。
 
 ### iOS
 {: #ios }

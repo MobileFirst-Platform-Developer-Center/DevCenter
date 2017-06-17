@@ -8,12 +8,12 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-{{site.data.keys.mf_console_full }} es una interfaz de usuario web que simplifica los flujos de trabajo tanto a los desarrolladores como a los administradores para crear, supervisar, proteger y administrar adaptadores y aplicaciones.
+{{ site.data.keys.mf_console_full }} es una interfaz de usuario web que simplifica los flujos de trabajo tanto a los desarrolladores como a los administradores para crear, supervisar, proteger y administrar adaptadores y aplicaciones.
 
 
 #### Como desarrollador permite
 {: #as-a-developer }
-* Desarrollar aplicaciones para cualquier entorno y registrarlos para {{site.data.keys.mf_server }}.
+* Desarrollar aplicaciones para cualquier entorno y registrarlos para {{ site.data.keys.mf_server }}.
 * Ver de forma global todos los adaptadores y las aplicaciones desplegadas.
 Consulte el Panel de control.
 
@@ -30,7 +30,7 @@ Consulte el Panel de control.
 {: #as-an-it-administrator }
 * Supervisar distintos servicios.
 
-* Buscar dispositivos que accedan a {{site.data.keys.mf_server }} y gestionar sus derechos de acceso.
+* Buscar dispositivos que accedan a {{ site.data.keys.mf_server }} y gestionar sus derechos de acceso.
 
 * Actualizar configuraciones de adaptador de forma dinámica.
 
@@ -46,10 +46,10 @@ Consulte el Panel de control.
 
 ## Acceso a la consola
 {: #accessing-the-console }
-Se puede acceder a {{site.data.keys.mf_console }} de diversas maneras:
+Se puede acceder a {{ site.data.keys.mf_console }} de diversas maneras:
 
 
-### Desde {{site.data.keys.mf_server }} instalado de forma local
+### Desde {{ site.data.keys.mf_server }} instalado de forma local
 {: #from-a-locally-installed-mobilefirst-server }
 #### Navegador de escritorio
 {: #desktop-browser }
@@ -58,9 +58,9 @@ El nombre de usuario y la contraseña son *admin/admin*.
 
 #### Línea de mandatos
 {: #command-line }
-Desde la ventana de **línea de mandatos**, con {{site.data.keys.mf_cli }} instalado, ejecute el mandato: `mfpdev server console`.
+Desde la ventana de **línea de mandatos**, con {{ site.data.keys.mf_cli }} instalado, ejecute el mandato: `mfpdev server console`.
 
-### Desde un {{site.data.keys.mf_server }} instalado de forma remota 
+### Desde un {{ site.data.keys.mf_server }} instalado de forma remota 
 {: #from-a-remotely-installed-mobilefirst-server }
 #### Navegador de escritorio
 {: #desktop-browser-remote }
@@ -69,7 +69,7 @@ El servidor host puede ser un servidor del propio cliente, o el servicio IBM Blu
 
 #### Línea de mandatos
 {: #command-line-remote }
-Desde la ventana de **línea de mandatos**, con {{site.data.keys.mf_cli }} instalado,
+Desde la ventana de **línea de mandatos**, con {{ site.data.keys.mf_cli }} instalado,
  
 
 1. Añada una definición de servidor remoto:
@@ -78,8 +78,7 @@ Desde la ventana de **línea de mandatos**, con {{site.data.keys.mf_cli }} insta
     Ejecute el mandato: `mfpdev server add` y siga las instrucciones de la pantalla.
 
 
-    *Modalidad directa
-*  
+    *Modalidad directa *  
     Ejecute el mandato con la siguiente estructura: `mfpdev server add [nombre-servidor] --URL [URL-servidor-remoto] --login [nombre-usuario-admin] --password [contraseña-admin] --contextroot [nombre-servicio-admin]`.
 Por ejemplo: 
 
@@ -89,7 +88,7 @@ Por ejemplo:
 
 2. Ejecute el mandato: `mfpdev server console MyRemoteServer`.
 
-> Obtenga más información sobre los mandatos de la interfaz de línea de mandatos en la guía de aprendizaje [Utilización de la interfaz de línea de mandatos para gestionar artefactos de {{site.data.keys.product_adj }}](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+> Obtenga más información sobre los mandatos de la interfaz de línea de mandatos en la guía de aprendizaje [Utilización de la interfaz de línea de mandatos para gestionar artefactos de {{ site.data.keys.product_adj }}](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 ## Navegación en la consola
 {: #navigating-the-console }
 ### Panel de control
@@ -115,7 +114,7 @@ Edite las propiedades de tiempo de ejecución, las variables de la seguridad glo
 
 ### Registro de errores
 {: #error-log }
-El registro de errores muestra una lista de las operaciones de gestión con errores que se iniciaron desde {{site.data.keys.mf_console }} o desde la línea de mandatos, en el entorno de tiempo de ejecución actual.
+El registro de errores muestra una lista de las operaciones de gestión con errores que se iniciaron desde {{ site.data.keys.mf_console }} o desde la línea de mandatos, en el entorno de tiempo de ejecución actual.
 Utilice el archivo de registro para ver el efecto de la anomalía en los servidores.
 
 
@@ -125,7 +124,7 @@ Utilice el archivo de registro para ver el efecto de la anomalía en los servido
 
 ### Dispositivos
 {: #devices }
-Los administradores pueden buscar dispositivos que acceden a {{site.data.keys.mf_server }} y gestionar derechos de acceso.
+Los administradores pueden buscar dispositivos que acceden a {{ site.data.keys.mf_server }} y gestionar derechos de acceso.
   
 Se pueden buscar dispositivos utilizando el ID de usuario o un nombre descriptivo.
 El ID de usuario es el identificador que se utilizó al iniciar una sesión.
@@ -156,7 +155,7 @@ Gestione y configure las aplicaciones registradas utilizando [Direct Update](../
 Configure los parámetros de seguridad de las aplicaciones como, por ejemplo, el valor de la caducidad de las señales, correlacione elementos de ámbito con comprobaciones de seguridad, defina ámbitos de aplicación obligatorios y configure opciones de comprobación de seguridad.
 
 
-> [Obtenga más información](../../../authentication-and-security/) sobre la infraestructura de seguridad de {{site.data.keys.product_adj }}.
+> [Obtenga más información](../../../authentication-and-security/) sobre la infraestructura de seguridad de {{ site.data.keys.product_adj }}.
 
 
 ![Imagen de la pantalla de configuración de seguridad de aplicación](authentication-and-security.png)
@@ -208,9 +207,9 @@ Cuando un administrador crea un perfil de configuración, la configuración del 
 Esta funcionalidad es accesible desde los botones de configuración de la parte superior.
 
 
-Los términos de la licencia varían en función de la edición (Enterprise o Consumer) de {{site.data.keys.product }} que se utilice.
+Los términos de la licencia varían en función de la edición (Enterprise o Consumer) de {{ site.data.keys.product }} que se utilice.
 De forma predeterminada, el seguimiento de licencia está habilitado y se siguen las métricas pertinentes para la política de licencias como, por ejemplo, para dispositivos de cliente activos y aplicaciones instaladas.
-Esta información ayuda a determinar si el uso actual de {{site.data.keys.product }} está dentro de los niveles autorizados de la licencia y puede evitar posibles incumplimientos de la licencia.
+Esta información ayuda a determinar si el uso actual de {{ site.data.keys.product }} está dentro de los niveles autorizados de la licencia y puede evitar posibles incumplimientos de la licencia.
 
 
 Mediante el seguimiento de los dispositivos de cliente y la determinación de si estos están activos, los administradores pueden decomisionar dispositivos a los que el servicio no debería estar accediendo.
@@ -223,7 +222,7 @@ Esta situación puede darse, por ejemplo, si un empleado ha dejado la empresa.
 
 ### Descargas  
 {: #downloads }
-Para situaciones donde la conectividad de Internet no está disponible, puede descargar una instantánea de distintos artefactos de desarrollo de {{site.data.keys.product }} desde el centro de descargas en {{site.data.keys.mf_console }}.
+Para situaciones donde la conectividad de Internet no está disponible, puede descargar una instantánea de distintos artefactos de desarrollo de {{ site.data.keys.product }} desde el centro de descargas en {{ site.data.keys.mf_console }}.
 
 ![Imagen de los artefactos disponibles](downloads.png)
 

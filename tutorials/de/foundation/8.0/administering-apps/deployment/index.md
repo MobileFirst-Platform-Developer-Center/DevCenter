@@ -37,26 +37,18 @@ verwendet.
 enthalten sind. 
         
     Weitere Informationen finden Sie unter
-[SSL in HTTP-Adaptern verwenden](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). Weitere Informationen zur Verwendung selbst signierter
-Zertifikate
-finden Sie unter
-[SSL zwischen MobileFirst-Adaptern und Back-End-Servern mit selbst signierten Zertifikaten konfigurieren](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
+[SSL in HTTP-Adaptern verwenden](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). Weitere Informationen zur Verwendung selbst signierter Zertifikate finden Sie unter [SSL zwischen MobileFirst-Adaptern und Back-End-Servern mit selbst signierten Zertifikaten konfigurieren](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
-    > **Hinweis:** Wenn der Anwendungsserver WebSphere Application Server Liberty ist, müssen sich die Zertifikate auch im
-Liberty-Truststore befinden.
+    > **Hinweis:** Wenn der Anwendungsserver WebSphere Application Server Liberty ist, müssen sich die Zertifikate auch im Liberty-Truststore befinden.
 3. Überprüfen Sie die serverseitige Konfiguration des Adapters. 
 4. Verwenden Sie die Befehle `mfpadm deploy adapter` und `mfpadm adapter set
 user-config`, um den Adapter und seine Konfiguration hochzuladen. 
 
     Weitere Informationen zu **mfpadm** für Adapter finden Sie unter [Befehle für Adapter](../using-cli/#commands-for-adapters).
         
-## SSL zwischen
-Adaptern und
-Back-End-Servern mit selbst signierten Zertifikaten konfigurieren
+## SSL zwischen Adaptern und Back-End-Servern mit selbst signierten Zertifikaten konfigurieren
 {: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
-Sie können SSL zwischen Adaptern und Back-End-Servern konfigurieren, indem Sie
-das selbst signierte SSL-Zertifikat des Servers in den {{ site.data.keys.product_adj }}-Keystore importieren.
-
+Sie können SSL zwischen Adaptern und Back-End-Servern konfigurieren, indem Sie das selbst signierte SSL-Zertifikat des Servers in den {{ site.data.keys.product_adj }}-Keystore importieren.
 
 1. Exportieren Sie das öffentliche Zertifikat des Servers aus dem Back-End-Server-Keystore.
 
@@ -128,8 +120,8 @@ Für Apache Tomcat müssen Sie beispielsweise die Datei
         <protocol>https</protocol>
         <domain>mydomain.com</domain>
         <port>443</port>
-        <!-- Mit den folgenden Eigenschaften wählt der Key Manager des Adapters ein bestimmtes Zertifikat aus dem Keystore aus.
-        <sslCertificateAlias></sslCertificateAlias>
+        <!-- The following properties are used by adapter's key manager for choosing a specific certificate from the key store
+        <sslCertificateAlias></sslCertificateAlias> 
         <sslCertificatePassword></sslCertificatePassword>
         -->		
       </connectionPolicy>
@@ -151,13 +143,13 @@ MobileFirst-Server-Keystore:
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
    ```
         
-5. Prüfen Sie, ob das Zertifikat ordnungsgemäß in den Keystore importiert wurde: 
+6. Prüfen Sie, ob das Zertifikat ordnungsgemäß in den Keystore importiert wurde: 
 
    ```bash
    keytool -list -keystore mfp.keystore
    ```
         
-6. Implementieren Sie das neue Zertifikat im {{ site.data.keys.mf_server }}-Keystore. 
+7. Implementieren Sie das neue Zertifikat im {{ site.data.keys.mf_server }}-Keystore. 
 
 ## Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen
 {: #building-an-application-for-a-test-or-production-environment }
@@ -227,7 +219,7 @@ Wenn Sie eine Anwendung bei einem Produktionsserver registrieren, laden Sie den 
 
    > **Hinweis:** Unter Umständen können Sie die Push-Benachrichtigungen für Ihre App mit Produktionszertifikaten erst testen, wenn Ihre App im Store veröffentlicht ist.
 
-5. Überprüfen Sie die folgenden Punkte, bevor Sie die Anwendung im Store veröffentlichen:
+6. Überprüfen Sie die folgenden Punkte, bevor Sie die Anwendung im Store veröffentlichen:
     * Testen Sie die von Ihnen geplanten Verwaltungsfeatures für mobile Anwendungen, z. B. die Inaktivierung von Anwendungen über Fernzugriff oder die Anzeige einer Administratornachricht. Weitere Informationen finden Sie unter [Mobile Anwendungen verwalten](../using-console/#mobile-application-management).
     * Definieren Sie im Falle eines Updates eine passende Strategie. Weitere Informationen finden Sie unter [{{ site.data.keys.product_adj }}-Apps in der Produktion aktualisieren](#updating-mobilefirst-apps-in-production).
 
@@ -295,7 +287,8 @@ Als Administrator können Sie eine Anwendungskonfiguration mit dem Verwaltungsse
 
 #### Vorbereitungen
 {: #before-you-begin-1 }
-Erstellen Sie den Build der Client-App für Ihren Zielserver. Weitere Informationen finden Sie unter [Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
+Erstellen Sie den Build der Client-App für Ihren Zielserver. Weitere Informationen finden Sie unter
+[Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
 
 Laden Sie den Anwendungsdeskriptor von dem Server, auf dem die Anwendung konfiguriert ist, herunter und implementieren Sie ihn auf dem neuen Server. Den Anwendungsdeskriptor können Sie in der {{ site.data.keys.mf_console }} anzeigen.
 
@@ -364,8 +357,7 @@ Laden Sie den Anwendungsdeskriptor von dem Server, auf dem die Anwendung konfigu
 {: #transferring-server-side-artifacts-by-using-the-rest-api }
 Mit dem MobileFirst-Server-Verwaltungsservice können Sie unabhängig von Ihrer Rolle
 Anwendungen, Adapter und Ressourcen zur Sicherung oder Wiederverwendung exportieren. Als Administrator oder Deployer können Sie außerdem ein Exportarchiv auf einem anderen
-Server implementieren. Ein Zugriff auf den Anwendungscode
-ist nicht erforderlich. Es muss aber einen Build der Client-App für den Zielserver geben. 
+Server implementieren. Ein Zugriff auf den Anwendungscode ist nicht erforderlich. Es muss aber einen Build der Client-App für den Zielserver geben.
 
 #### Vorbereitungen
 {: #before-you-begin-2 }
@@ -375,12 +367,9 @@ Erstellen Sie den Build der Client-App für Ihren Zielserver. Weitere Informatio
 Die Export-API ruft die ausgewählten Artefakte für eine Laufzeit als
 .zip-Archiv ab. Nutzen Sie die Implementierungs-API, wenn Sie archivierte Inhalte wiederverwenden möchten. 
 
-> **Wichtiger Hinweis:** Überdenken Sie Ihren Anwendungsfall gründlich.
-  
+> **Wichtiger Hinweis:** Überdenken Sie Ihren Anwendungsfall gründlich.  
 >  
-> * Die Exportdatei enthält die Anwendungsauthentizitätsdaten. Diese Daten sind spezifisch für den Build einer mobilen App. Die mobile App enthält die URL und den Laufzeitnamen
-des Servers. Wenn Sie also einen anderen Server oder eine andere Laufzeit verwenden möchten, müssen Sie einen neuen App-Build erstellen. Eine Übertragung der exportierten App-Dateien ist nicht ausreichend.
-
+> * Die Exportdatei enthält die Anwendungsauthentizitätsdaten. Diese Daten sind spezifisch für den Build einer mobilen App. Die mobile App enthält die URL und den Laufzeitnamen des Servers. Wenn Sie also einen anderen Server oder eine andere Laufzeit verwenden möchten, müssen Sie einen neuen App-Build erstellen. Eine Übertragung der exportierten App-Dateien ist nicht ausreichend.
 > * Bestimmte Artefakte können je nach Server verschieden sein. In einer Entwicklungsumgebung werden beispielsweise andere Push-Berechtigungsnachweise als in einer Produktionsumgebung verwendet.
 > * Die Anwendungslaufzeitkonfiguration (mit dem Aktivierungs-/Inaktivierungszustand und den Protokollprofilen) kann nicht in allen Fällen übertragen werden.
 > * Die Übertragung von Webressourcen ist in einigen Fällen nicht sinnvoll, z. B. wenn Sie einen neuen App-Build erstellen, weil Sie einen neuen Server verwenden möchten.
@@ -451,7 +440,8 @@ Wenn Sie ein Upgrade für eine App durchführen, können Sie eine neue App-Versi
 Der am häufigsten gewählte Upgradepfad bei Einführung neuer Features oder Modifikation des nativen Codes ist, eine neue Version der App herauszugeben. Ziehen Sie die folgenden Schritte in Betracht:
 
 1. Erhöhen Sie die App-Versionsnummer.
-2. Erstellen und testen Sie Ihre Anwendung. Weitere Informationen finden Sie unter [Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
+2. Erstellen und testen Sie Ihre Anwendung. Weitere Informationen finden Sie unter
+[Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
 3. Registrieren Sie die App bei {{ site.data.keys.mf_server }} und konfigurieren Sie sie.
 4. Übergeben Sie die neuen .apk-, .ipa-, .appx- oder .xap-Dateien an die jeweiligen App Stores.
 5. Warten Sie, bis die Apps geprüft und freigegeben wurden und verfügbar sind.
@@ -464,7 +454,8 @@ Dieser Upgradepfad wird verwendet, wenn Sie Benutzer veranlassen möchten, das U
 
 1. Senden Sie ggf. Benachrichtigungen an Benutzer der alten Version, um anzukündigen, dass in wenigen Tagen eine obligatorische Aktualisierung anstehen wird (siehe [Administratornachricht anzeigen](../using-console/#displaying-an-administrator-message) und [Administratornachrichten in mehreren Sprachen definieren](../using-console/#defining-administrator-messages-in-multiple-languages)).
 2. Erhöhen Sie die App-Versionsnummer.
-3. Erstellen und testen Sie Ihre Anwendung. Weitere Informationen finden Sie unter [Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
+3. Erstellen und testen Sie Ihre Anwendung. Weitere Informationen finden Sie unter
+[Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
 4. Registrieren Sie die App bei {{ site.data.keys.mf_server }} und konfigurieren Sie sie.
 5. Übergeben Sie die neuen .apk-, .ipa-, .appx- oder .xap-Dateien an die jeweiligen App Stores.
 6. Warten Sie, bis die Apps geprüft und freigegeben wurden und verfügbar sind.

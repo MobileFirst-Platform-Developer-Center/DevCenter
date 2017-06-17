@@ -90,4 +90,4 @@ WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onF
 
 之后，如果对未锁定其证书的服务器发出安全请求，那么将调用特定请求（例如，`obtainAccessToken` 或 `WLResourceRequest`）的 `onFailure` 回调。
 
-> 在 [API 参考](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)中了解有关证书锁定 API 方法的更多信息
+> 在 [API 参考](../../api/client-side-api/)中了解有关证书锁定 API 方法的更多信息

@@ -76,7 +76,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
  **Wichtiger Hinweis**: Die JavaScript-APIs von Cordova und Web-SDKs unterscheiden sich. Lesen Sie hierzu den Abschnitt
-[API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in
+[API Reference](../../api/) in
 der Benutzerdokumentation. 
 
 ### iOS

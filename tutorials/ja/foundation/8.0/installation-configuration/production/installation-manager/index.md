@@ -109,7 +109,7 @@ Installation Manager のモードについて詳しくは、IBM Installation Man
 
     実動インストールの場合は、Ant タスクを使用して Application Center をインストールしてください。Ant タスクを使用したインストールでは、{{ site.data.keys.mf_server }} に対する更新を Application Center に対する更新から分離することができます。この場合、「構成の選択」パネルで「いいえ」オプションを選択して、Application Center がインストールされないようにします。
 
-「はい」を選択した場合は、次のペインを検討して、使用する予定のデータベース、および Application Center をデプロイする予定のアプリケーション・サーバーに関する詳細を入力する必要があります。また、ご使用のデータベースの JDBC ドライバーも使用できるようにしておく必要があります。
+    「はい」を選択した場合は、次のペインを検討して、使用する予定のデータベース、および Application Center をデプロイする予定のアプリケーション・サーバーに関する詳細を入力する必要があります。また、ご使用のデータベースの JDBC ドライバーも使用できるようにしておく必要があります。
 9. **「ありがとうございました (Thank You)」**パネルが表示されるまで、**「次へ (Next)」**をクリックします。 その後、インストールを続行します。
 
 {{ site.data.keys.product_adj }} コンポーネントをインストールするためのリソースを含むインストール・ディレクトリーがインストールされます。
@@ -391,7 +391,8 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>アプリケーションをインストールするサーバー・セットのタイプ。<br/><br/><code>server</code> はスタンドアロン・サーバーを意味します。<br/><br/><code>nd-cell</code> は WebSphere Application Server Network Deployment セルを意味します。<code>nd-cluster</code> は WebSphere Application Server Network Deployment クラスターを意味します。<br/><br/><code>nd-node</code> は、WebSphere Application Server Network Deployment ノード (クラスターを除く) を意味します。<br/><br/><code>nd-server</code> は、管理対象 WebSphere Application Server Network Deployment サーバーを意味します。</td>
+        <td>アプリケーションをインストールする先のサーバー・セットの
+タイプ。<br/><br/><code>server</code> は、スタンドアロン・サーバーを意味します。<br/><br/><code>nd-cell</code> は、WebSphere Application Server Network Deployment セルを意味します。<code>nd-cluster</code> は、WebSphere Application Server Network Deployment クラスターを意味します。<br/><br/><code>nd-node</code> は、WebSphere Application Server Network Deployment ノード (クラスターを除外) を意味します。<br/><br/><code>nd-server</code> は、管理対象 WebSphere Application Server Network Deployment サーバーを意味します。</td>
         <td><code>server</code>、<code>nd-cell</code>、<code>nd-cluster</code>、<code>nd-node</code>、<code>nd-server</code></td>
     </tr>
     <tr>

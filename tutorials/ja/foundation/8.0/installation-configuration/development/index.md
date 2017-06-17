@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} を使用してクライアントおよびサーバーのコード開発を始める前に、まず、開発環境をセットアップする必要があります。これには、必要な各種ソフトウェアおよびツールのインストールが含まれます。以下に、ニーズに応じて開発者のワークステーションにインストールする必要があるソフトウェアをリストします。
+{{ site.data.keys.product_full }} を使用してクライアントおよびサーバーのコード開発を始める前に、まず、開発環境をセットアップする必要があります。これには、必要な各種ソフトウェアおよびツールのインストールが含まれます。以下に、ニーズに応じて開発者のワークステーションにインストールする必要があるソフトウェアをリストします。
 
 また、[ワークステーション・インストール・ガイド](mobilefirst/installation-guide/)にもステップバイステップの詳細な手順が示されています。
 
@@ -21,7 +21,7 @@ weight: 1
 
 ### サーバー
 {: #server }
-{{site.data.keys.mf_server }} は、[Mobile Foundation Bluemix サービス](../../bluemix/using-mobile-foundation)経由で、または {{site.data.keys.mf_dev_kit_full }} を使用してローカルで (ローカルの開発目的用) 使用することができます。{{site.data.keys.mf_server }} を実行するには、Java 7 または 8 が必要です。
+{{ site.data.keys.mf_server }} は、[Mobile Foundation Bluemix サービス](../../bluemix/using-mobile-foundation)経由で、または {{ site.data.keys.mf_dev_kit_full }} を使用してローカルで (ローカルの開発目的用) 使用することができます。{{ site.data.keys.mf_server }} を実行するには、Java 7 または 8 が必要です。
 
 Mobile Foundation Bluemix サービスを使用する予定の場合は、Bluemix.net のアカウントが必要です。
 
@@ -29,8 +29,8 @@ Mobile Foundation Bluemix サービスを使用する予定の場合は、Bluemi
 {: #application-development }
 最低限、以下のソフトウェアが必要です。
 
-* NodeJS ({{site.data.keys.mf_cli }} の要件)
-* {{site.data.keys.mf_cli }}
+* NodeJS ({{ site.data.keys.mf_cli }} の要件)
+* {{ site.data.keys.mf_cli }}
 * Cordova CLI
 * IDE:
     - Xcode
@@ -42,8 +42,8 @@ Mobile Foundation Bluemix サービスを使用する予定の場合は、Bluemi
 {: #adapter-development }
 最低限、以下のソフトウェアが必要です。
 
-* NodeJS ({{site.data.keys.mf_cli }} の要件)
-* *オプションの* {{site.data.keys.mf_cli }}
+* NodeJS ({{ site.data.keys.mf_cli }} の要件)
+* *オプションの* {{ site.data.keys.mf_cli }}
 * Maven (Java が必要)
 * IDE:
     - IntelliJ / Eclipse / その他の IDE

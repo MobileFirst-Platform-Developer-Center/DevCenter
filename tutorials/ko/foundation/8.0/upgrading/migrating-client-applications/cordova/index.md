@@ -278,7 +278,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
    ```
 
-   > **참고:** **mfpmigrate** 마이그레이션 지원 도구가 {{site.data.keys.product_adj }} 기능을 위한 Cordova 플러그인을 추가했으므로 이를 추가할 필요가 없습니다. 이러한 플러그인에 대한 자세한 정보는 [{{ site.data.keys.product_adj }}용 Cordova 플러그인](../../../application-development/sdk/cordova)을 참조하십시오.
+   > **참고:** **mfpmigrate** 마이그레이션 지원 도구가 {{ site.data.keys.product_adj }} 기능을 위한 Cordova 플러그인을 추가했으므로 이를 추가할 필요가 없습니다. 이러한 플러그인에 대한 자세한 정보는 [{{ site.data.keys.product_adj }}용 Cordova 플러그인](../../../application-development/sdk/cordova)을 참조하십시오.
 
 2. 선택사항: 원래 애플리케이션이 FIPS 기능을 사용하는 경우, JQuery 이벤트 리스너를 WL/FIPS/READY 이벤트를 청취하는 JavaScript 이벤트 리스너로 변경하십시오. FIPS에 대한 자세한 정보는 [FIPS 140-2 지원](../../../administering-apps/federal/#fips-140-2-support)을 참조하십시오. 
 3. 선택사항: 원래 애플리케이션이 마이그레이션 지원 도구로 대체되지 않거나 제공되지 않는 써드파티 Cordova 플러그인을 사용하는 경우, **cordova plugin add** 명령을 사용하여 해당 플러그인을 Cordova 앱에 수동으로 추가하십시오. 도구에 의해 대체되는 플러그인에 대한 정보는 [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)을 참조하십시오. 
@@ -315,7 +315,7 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 * 필수 웹 자원 요소를 이전 버전의 코드로 대체
 * SDK 변경사항을 충족하도록 JavaScript 코드에 필수 변경사항 작성
 
-많은 {{site.data.keys.product_adj }} API 요소가 v8.0에서 제거되었습니다. 제거된 요소는 JavaScript의 자동 정정을 지원하는 IDE에서 존재하지 않는 항목으로 명확하게 표시됩니다. 
+많은 {{ site.data.keys.product_adj }} API 요소가 v8.0에서 제거되었습니다. 제거된 요소는 JavaScript의 자동 정정을 지원하는 IDE에서 존재하지 않는 항목으로 명확하게 표시됩니다. 
 
 다음 표는 제거해야 하는 API 요소와 해당 기능을 대체할 방법에 대한 제한을 나열합니다. 제거된 요소 중 많은 항목이 Cordova 플러그인 또는 HTML 5 요소로 대체할 수 있는 UI 요소입니다. 일부 메소드가 변경되었습니다. 
 

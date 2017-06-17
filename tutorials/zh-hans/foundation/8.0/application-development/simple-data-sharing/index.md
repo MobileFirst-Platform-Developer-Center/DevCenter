@@ -31,10 +31,10 @@ weight: 12
 * 为应用程序描述符中的应用程序系列指定相同的值。
 	* 对于 iOS 应用程序，此需求与访问组权利值同义。
 	* 对于 Android 应用程序，此需求与 **AndroidManifest.xml** 文件中的 **sharedUserId** 值同义。
-		
+
     > **注：**对于 Android，名称必须采用 **x.y** 格式。
 
-* 应用程序必须由相同的签署身份进行签署。此需求意味着只有来自相同组织的应用程序才能使用此功能。	
+* 应用程序必须由相同的签署身份进行签署。此需求意味着只有来自相同组织的应用程序才能使用此功能。
     * 对于 iOS 应用程序，此要求意味着使用相同应用程序标识前缀、供应概要文件和签署身份对应用程序进行签名。
 	* 对于 Android 应用程序，此要求意味着相同签署证书和密钥。
 
@@ -63,11 +63,11 @@ weight: 12
 4. 保存并签署应用程序。确保该组中的所有应用程序均由相同的 iOS 整数和供应概要文件签名。
 5. 针对要加入相同应用程序系列的所有应用程序重复以上步骤。
 
-现在，您可以使用本机“简单数据共享”API 在相同系列中的应用程序组之间共享简单字符串。 
+现在，您可以使用本机“简单数据共享”API 在相同系列中的应用程序组之间共享简单字符串。
 
 ### Android
 {: #android }
-1. 通过在 **AndroidManifest.xml** 文件的清单标记中指定应用程序系列名称作为 **android:sharedUserId** 元素来启用“简单数据共享”选项。例如： 
+1. 通过在 **AndroidManifest.xml** 文件的清单标记中指定应用程序系列名称作为 **android:sharedUserId** 元素来启用“简单数据共享”选项。例如：
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -75,7 +75,7 @@ weight: 12
         android:versionName="1.0"
         android:sharedUserId="com.myGroup1">
    ```
-    
+
 2. 确保使用相同的签名凭证对属于相同系列的应用程序进行签名。
 3. 卸载未指定 **sharedUserId** 或使用不同的 **sharedUserId** 的任何较早版本的应用程序。
 4. 在设备上安装该应用程序。
@@ -97,7 +97,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> 有关 Cordova API 的更多信息，请参阅 API 参考中的 [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken)、[setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken)和 [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken)函数。
+> 有关 Cordova API 的更多信息，请参阅 `WL.Client` API 参考中的 [getSharedToken](../../api/client-side-api/javascript/client/)、[setSharedToken](../../api/client-side-api/javascript/client/) 和 [clearSharedToken](../../api/client-side-api/javascript/client/) 函数。
 ### Objective-C
 {: #objective-c }
 ```objc
@@ -106,7 +106,7 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 [WLSimpleDataSharing clearSharedToken: myName];
 ```
 
-> 有关 Objective-C API 的更多信息，请参阅 API 参考中的 [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) 类。
+> 有关 Objective-C API 的更多信息，请参阅 API 参考中的 [WLSimpleDataSharing](../../api/client-side-api/objc/client/) 类。
 
 ### Java
 {: #java }
@@ -116,7 +116,7 @@ String token = WLSimpleSharedData.getSharedToken(myName);
 WLSimpleSharedData.clearSharedToken(myName);
 ```
 
-> 有关 Java API 的更多信息，请参阅 API 参考中的 [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html)类。
+> 有关 Java API 的更多信息，请参阅 API 参考中的 [WLSimpleDataSharing](../../api/client-side-api/java/client/)类。
 
 ## 限制和注意事项
 {: #limitations-and-considerations }

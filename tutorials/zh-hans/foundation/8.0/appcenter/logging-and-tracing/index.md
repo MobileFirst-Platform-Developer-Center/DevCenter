@@ -10,7 +10,7 @@ weight: 6
 {: #overview }
 可以为特定应用程序服务器设置日志记录和跟踪参数，使用 JNDI 属性来控制所有受支持应用程序服务器上的输出。
 
-您可以按照专门针对特定应用程序服务器的方式，为 Application Center 的跟踪操作设置日志记录级别和输出文件。此外，{{ site.data.keys.product_full }}    还提供 Java™ 命名和目录接口 (JNDI) 属性来控制跟踪输出的格式和重定向，并打印生成的 SQL 语句。
+您可以按照专门针对特定应用程序服务器的方式，为 Application Center 的跟踪操作设置日志记录级别和输出文件。此外，{{ site.data.keys.product_full }} 还提供 Java™ 命名和目录接口 (JNDI) 属性来控制跟踪输出的格式和重定向，并打印生成的 SQL 语句。
 
 #### 跳至：
 {: #jump-to }
@@ -23,12 +23,12 @@ weight: 6
 {: #logging-in-websphere }
 您可以为应用程序服务器上的跟踪操作设置日志记录级别和输出文件。
 
-当您尝试诊断 Application Center（或 {{ site.data.keys.product }}    的其他组件）中的问题时，能够查看日志消息非常重要。要打印日志文件中可阅读的日志消息，必须指定适用的设置作为 Java™ 虚拟机 (JVM) 属性。
+当您尝试诊断 Application Center（或 {{ site.data.keys.product }} 的其他组件）中的问题时，能够查看日志消息非常重要。要打印日志文件中可阅读的日志消息，必须指定适用的设置作为 Java™ 虚拟机 (JVM) 属性。
 
 1. 打开 WebSphere Application Server 管理控制台
 2. 选择**故障诊断 → 日志和跟踪**。
 3. 在“**日志记录和跟踪**”中，选择相应的应用程序服务器，然后选择**更改日志详细信息级别**。
-4. 选择包及其相应的详细信息级别。本示例为 {{ site.data.keys.product }}   （包括 Application Center）启用级别为 **FINEST**（相当于 **ALL**）的日志记录。
+4. 选择包及其相应的详细信息级别。本示例为 {{ site.data.keys.product }}（包括 Application Center）启用级别为 **FINEST**（相当于 **ALL**）的日志记录。
 
 ```xml
 com.ibm.puremeap.*=all
@@ -39,7 +39,7 @@ com.worklight.*=all
 其中：
 
 * **com.ibm.puremeap.*** 适用于 Application Center。
-* **com.ibm.worklight.*** 和 **com.worklight.*** 适用于其他 {{ site.data.keys.product_adj }}    组件。
+* **com.ibm.worklight.*** 和 **com.worklight.*** 适用于其他 {{ site.data.keys.product_adj }} 组件。
 
 跟踪发送至名为 **trace.log** 的文件，而不是发送至 **SystemOut.log** 或 **SystemErr.log** 文件。
 
@@ -49,7 +49,7 @@ com.worklight.*=all
 
 当您尝试诊断 Application Center 中的问题时，能够查看日志消息非常重要。要打印日志文件中可阅读的日志消息，必须指定适用的设置。
 
-要为 {{ site.data.keys.product }}   （包括 Application Center）启用级别为 FINEST（相当于 ALL）的日志记录，请在 server.xml 文件中添加一行。例如：
+要为 {{ site.data.keys.product }}（包括 Application Center）启用级别为 FINEST（相当于 ALL）的日志记录，请在 server.xml 文件中添加一行。例如：
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
@@ -67,7 +67,7 @@ com.worklight.*=all
 
 当您尝试诊断 Application Center 中的问题时，能够查看日志消息非常重要。要打印日志文件中可阅读的日志消息，必须指定适用的设置。
 
-要为 {{ site.data.keys.product }}   （包括 Application Center）启用级别为 **FINEST**（相当于 **ALL**）的日志记录，请编辑 **conf/logging.properties** 文件。例如，添加类似于以下行的行：
+要为 {{ site.data.keys.product }}（包括 Application Center）启用级别为 **FINEST**（相当于 **ALL**）的日志记录，请编辑 **conf/logging.properties** 文件。例如，添加类似于以下行的行：
 
 ```xml
 com.ibm.puremeap.level = ALL

@@ -429,9 +429,7 @@ Ant ファイルは、製品インストールの一部である Ant ディス�
 * **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml install** - このコマンドは、Ant ファイルのプロパティーに入力されたパラメーターを使用して、DB2 をデータ・ソースとして、{{ site.data.keys.mf_server }} を WebSphere Application Server Network Deployment クラスター上にインストールします。
 
 <br/>
-インストール後、フィックスパックを適用する際に再使用できるように、Ant ファイルのコピーを作成します。
-
-### Ant ファイルを使用したフィックスパックの適用
+インストール後、フィックスパックを適用する際に再使用できるように、Ant ファイルのコピーを作成します。### Ant ファイルを使用したフィックスパックの適用
 {: #applying-a-fix-pack-by-using-the-ant-files }
 
 #### サンプル Ant ファイルを使用した更新
@@ -834,7 +832,6 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
                 <p><b>mobilefirst/mfp.authorization.server</b> プロパティーを定義する必要があります。例えば、次のとおりです。</p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
@@ -880,7 +877,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% highlight xml %}
 <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
-                
+                                
                 以下のプロパティーを定義する必要があります。
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
@@ -1099,7 +1096,7 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-live-update-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-collective">
             <div class="panel-body">
                 <p>ライブ更新サービスは、Liberty 集合コントローラーにデプロイするための WAR アプリケーションとしてパッケージされています。Liberty 集合コントローラーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>
+<br/><br/>
                 続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty 集合への手動インストール</a>を検討してください。
                 <br/><br/>
                 ライブ更新サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> にあります。ライブ更新サービスのコンテキスト・ルートは <b>/the-adminContextRootconfig</b> のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが <b>/mfpadmin</b> の場合、ライブ更新サービスのコンテキスト・ルートは <b>/mfpadminconfig</b> でなければなりません。</p>
@@ -1133,9 +1130,8 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
             <div class="panel-body">
                 <p>コンソールは、Liberty 集合コントローラーにデプロイするための WAR アプリケーションとしてパッケージされています。Liberty 集合コントローラーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty への手動インストール</a>を検討してください。
-                <br/><br/>
-                コンソール WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpconsole</b> です。</p>
+<br/><br/>続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty への手動インストール</a>を検討してください。<br/><br/>
+コンソール WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpconsole</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーを定義するとき、コンソールのコンテキスト・ルートを接頭部として JNDI 名に追加する必要があります。以下の例は、コンテキスト・ルートとして <b>/mfpconsole</b> を使用してコンソールがインストールされている場合に <b>mfp.admin.endpoint</b> を宣言するケースを示しています。</p>
@@ -1144,8 +1140,8 @@ WebSphere Application Server Network Deployment にインストールするに�
 <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
 {% endhighlight %}
 
-                <p>mfp.admin.endpoint プロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。
-                <br/>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
+                <p>mfp.admin.endpoint プロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。<br/>
+                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
                 
                 <h3>セキュリティー・ロール</h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで以下のロールを宣言します。</p>
@@ -1169,10 +1165,9 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-runtime-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-collective">
             <div class="panel-body">
                 <p>ランタイムは、Liberty 集合クラスター・メンバーにデプロイするための WAR アプリケーションとしてパッケージされています。各 Liberty 集合クラスター・メンバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty 集合への手動インストール</a>を検討してください。
-                <br/><br/>
-                ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
+<br/><br/>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty 集合への手動インストール</a>を検討してください。<br/><br/>
+ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーを定義するとき、ランタイムのコンテキスト・ルートを接頭部として JNDI 名に追加する必要があります。以下の例は、コンテキスト・ルートとして <b>/mobilefirst</b> を使用してランタイムがインストールされている場合に <b>mfp.analytics.url</b> を宣言するケースを示しています。</p>
@@ -1180,8 +1175,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
-                <p><b>mobilefirst/mfp.authorization.server</b> プロパティーを定義する必要があります。例えば、次のとおりです。 </p>
+                <p><b>mobilefirst/mfp.authorization.server</b> プロパティーを定義する必要があります。例えば、次のとおりです。</p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
@@ -1218,11 +1212,12 @@ WebSphere Application Server Network Deployment にインストールするに�
             <div class="panel-body">
                 <p>プッシュ・サービスは、Liberty 集合クラスター・メンバーまたは Liberty サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。プッシュ・サービスを Liberty サーバーにインストールする場合、<a href="#configuration-details">{{ site.data.keys.mf_server }} プッシュ・サービスの構成の詳細</a>の下の <a href="#manual-installation-on-websphere-application-server-liberty">WebSphere Application Server Liberty への手動インストール</a>を参照してください。
                 <br/><br/>
-                {{ site.data.keys.mf_server }} プッシュ・サービスが Liberty 集合にインストールされる場合、ランタイムと同じクラスターにインストールするか、または別のクラスターにインストールできます。
+                {{ site.data.keys.mf_server }} プッシュ・サービスが Liberty 集合にインストールされる場合、ランタイムと同じクラスターにインストールすることも、別のクラスターにインストールすることもできます。
                 <br/><br/>
-                各 Liberty 集合クラスター・メンバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty 集合への手動インストール</a>を検討してください。    
+各 Liberty 集合クラスター・メンバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty 集合への手動インストール</a>を検討してください。    
                 <br/><br/>
-                プッシュ・サービスの WAR ファイルは <b>mfp_install_dir/PushService/mfp-push-service.war</b> にあります。コンテキスト・ルートは <b>/imfpush</b> と定義する必要があります。さもないと、コンテキスト・ルートは SDK にハードコーディングされているため、クライアント・デバイスはプッシュ・サービスに接続できません。</p>
+プッシュ・サービスの WAR ファイルは <b>mfp_install_dir/PushService/mfp-push-service.war</b> にあります。コンテキスト・ルートは <b>/imfpush</b> と定義する必要があります。さもないと、コンテキスト・ルートは SDK にハードコーディングされているため、クライアント・デバイスはプッシュ・サービスに接続できません。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーを定義するとき、プッシュ・サービスのコンテキスト・ルートを接頭部として JNDI 名に追加する必要があります。以下の例は、コンテキスト・ルートとして <b>/imfpush</b> を使用してプッシュ・サービスがインストールされている場合に <b>mfp.push.analytics.user</b> を宣言するケースを示しています。</p>
@@ -1230,7 +1225,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% highlight xml %}
 <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
-                
+                                
                 以下のプロパティーを定義する必要があります。
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
@@ -1240,7 +1235,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.push.db.type</b> - リレーショナル・データベースの場合、この値は DB でなければなりません。</li>
                 </ul>
                 
-                {{ site.data.keys.mf_analytics }}  が構成されている場合は、以下の JNDI プロパティーを定義します。
+                {{ site.data.keys.mf_analytics }} が構成されている場合は、以下の JNDI プロパティーを定義します。
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
@@ -1307,9 +1302,8 @@ WebSphere Application Server Network Deployment にインストールするに�
             <div class="panel-body">
                 <p>管理サービスは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。アプリケーション・サーバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
                 <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。
-                <br/><br/>
-                管理サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpadmin</b> です。</p>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。<br/><br/>
+管理サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpadmin</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーは、アプリケーション・コンテキストの <code>Environment</code> エレメント内に定義されます。例えば、次のとおりです。</p>
@@ -1345,7 +1339,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
 {% endhighlight %}
-                
+                                
                 <h3>セキュリティー・ロール</h3>
                 <p>管理サービス・アプリケーションで使用可能なセキュリティー・ロールは以下のとおりです。</p>
                 <ul>
@@ -1367,18 +1361,17 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-live-update-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-tomcat">
             <div class="panel-body">
                 <p>ライブ更新サービスは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。<b>server.xml </b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。
-                <br/><br/>
-                ライブ更新サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> にあります。ライブ更新サービスのコンテキスト・ルートは <b>/the-adminContextRoot/config</b> のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが <b>/mfpadmin</b> の場合、ライブ更新サービスのコンテキスト・ルートは <b>/mfpadminconfig</b> でなければなりません。</p>
+<br/><br/>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。<br/><br/>
+ライブ更新サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> にあります。ライブ更新サービスのコンテキスト・ルートは <b>/the-adminContextRoot/config</b> のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが <b>/mfpadmin</b> の場合、ライブ更新サービスのコンテキスト・ルートは <b>/mfpadminconfig</b> でなければなりません。</p>
                 
                 <h3>データ・ソース</h3>
                 <p>ライブ更新サービスのデータ・ソースの JNDI 名は <code>jdbc/ConfigDS</code> と定義する必要があります。それを <code>Context</code> エレメントでリソースとして宣言します。</p>
 
                 <h3>セキュリティー・ロール</h3>
                 <p>ライブ更新サービス・アプリケーションで使用可能なセキュリティー・ロールは <b>configadmin</b> です。
-                <br/><br/>
-                少なくとも 1 人のユーザーがこのロールにマップされている必要があります。ユーザーとパスワードは、管理サービスの以下の JNDI プロパティーに指定する必要があります。</p>
+<br/><br/>
+少なくとも 1 人のユーザーがこのロールにマップされている必要があります。ユーザーとパスワードは、管理サービスの以下の JNDI プロパティーに指定する必要があります。</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -1397,9 +1390,8 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-console-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-tomcat">
             <div class="panel-body">
                 <p>このコンソールは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。アプリケーション・サーバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。
-                <br/><br/>
-                コンソール WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpconsole</b> です。</p>
+                <br/><br/>続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。<br/><br/>
+コンソール WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpconsole</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p><b>mfp.admin.endpoint</b> プロパティーを定義する必要があります。このプロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。
@@ -1427,10 +1419,9 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
                 <p>このランタイムは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。<b>server.xml </b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。
-                <br/><br/>
-                ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
+<br/><br/>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。<br/><br/>
+ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p><b>mfp.authorization.server</b> プロパティーを定義する必要があります。例えば、次のとおりです。</p>
@@ -1471,7 +1462,7 @@ WebSphere Application Server Network Deployment にインストールするに�
             <div class="panel-body">
                 <p>プッシュ・サービスは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。このアプリケーションに固有の構成をいくつか実行する必要があります。続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-apache-tomcat">Apache Tomcat への手動インストール</a>を検討してください。    
                 <br/><br/>
-                プッシュ・サービスの WAR ファイルは <b>mfp_install_dir/PushService/mfp-push-service.war</b> にあります。コンテキスト・ルートは <b>/imfpush</b> と定義する必要があります。さもないと、コンテキスト・ルートは SDK にハードコーディングされているため、クライアント・デバイスはプッシュ・サービスに接続できません。</p>
+プッシュ・サービスの WAR ファイルは <b>mfp_install_dir/PushService/mfp-push-service.war</b> にあります。コンテキスト・ルートは <b>/imfpush</b> と定義する必要があります。さもないと、コンテキスト・ルートは SDK にハードコーディングされているため、クライアント・デバイスはプッシュ・サービスに接続できません。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>以下のプロパティーを定義する必要があります。</p>
@@ -1579,9 +1570,8 @@ WebSphere Application Server Network Deployment にインストールするに�
             <div class="panel-body">
                 <p>管理サービスは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。アプリケーション・サーバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
                 <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。
-                <br/><br/>
-                管理サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpadmin</b> です。</p>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。<br/><br/>
+管理サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpadmin</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーは、WebSphere Application Server 管理コンソールを使用して設定できます。<b>「アプリケーション」→「アプリケーション・タイプ」→「WebSphere エンタープライズ・アプリケーション」→「application_name」→「Web モジュールの環境項目」</b>を選択し、項目を設定します。</p>
@@ -1647,18 +1637,17 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
                 <p>ライブ更新サービスは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。<b>server.xml </b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。
-                <br/><br/>
-                ライブ更新サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> にあります。ライブ更新サービスのコンテキスト・ルートは <b>/the-adminContextRoot/config</b> のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが <b>/mfpadmin</b> の場合、ライブ更新サービスのコンテキスト・ルートは <b>/mfpadminconfig</b> でなければなりません。</p>
+<br/><br/>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。<br/><br/>
+ライブ更新サービスの WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> にあります。ライブ更新サービスのコンテキスト・ルートは <b>/the-adminContextRoot/config</b> のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが <b>/mfpadmin</b> の場合、ライブ更新サービスのコンテキスト・ルートは <b>/mfpadminconfig</b> でなければなりません。</p>
                 
                 <h3>データ・ソース</h3>
                 <p>ライブ更新サービスのデータ・ソースを作成し、それを <b>jdbc/ConfigDS</b> にマップします。</p>
 
                 <h3>セキュリティー・ロール</h3>
                 <p>このアプリケーションに対して <b>configadmin</b> ロールが定義されています。
-                <br/><br/>
-                少なくとも 1 人のユーザーがこのロールにマップされている必要があります。ユーザーとパスワードは、管理サービスの以下の JNDI プロパティーに指定する必要があります。</p>
+<br/><br/>
+少なくとも 1 人のユーザーがこのロールにマップされている必要があります。ユーザーとパスワードは、管理サービスの以下の JNDI プロパティーに指定する必要があります。</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -1677,14 +1666,13 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-console-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-nd">
             <div class="panel-body">
                 <p>このコンソールは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。アプリケーション・サーバーの <b>server.xml</b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。
-                <br/><br/>
-                コンソール WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpconsole</b> です。</p>
+                <br/><br/>続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。<br/><br/>
+コンソール WAR ファイルは <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、通常は <b>/mfpconsole</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーは、WebSphere Application Server 管理コンソールを使用して設定できます。<b>「アプリケーション」→「アプリケーション・タイプ」→「WebSphere エンタープライズ・アプリケーション」→「application_name」→「Web モジュールの環境項目」</b>を選択し、項目を設定します。
-                <br/><br/>
-                <b>mfp.admin.endpoint</b> プロパティーを定義する必要があります。このプロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。
+<br/><br/>
+<b>mfp.admin.endpoint</b> プロパティーを定義する必要があります。このプロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。
                 <br/><br/>
                 JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
                 
@@ -1710,16 +1698,15 @@ WebSphere Application Server Network Deployment にインストールするに�
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
                 <p>このランタイムは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。<b>server.xml </b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
-                <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。
-                <br/><br/>
-                ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
+<br/><br/>
+続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。<br/><br/>
+ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーは、WebSphere Application Server 管理コンソールを使用して設定できます。<b>「アプリケーション」→「アプリケーション・タイプ」→「WebSphere エンタープライズ・アプリケーション」→「application_name」→「Web モジュールの環境項目」</b>を選択し、項目を設定します。</p>
                 
-                <p><b>mfp.authorization.server</b> プロパティーに embedded の値を定義する必要があります。<br/>
-                また、以下の JNDI プロパティーを定義して、管理サービスとの JMX 通信を使用可能にする必要があります。</p>
+                <p><b>mfp.authorization.server</b> プロパティーに値 embedded を定義する必要があります。<br/>
+また、以下の JNDI プロパティーを定義して、管理サービスとの JMX 通信を使用可能にする必要があります。</p>
                 
                 <b>WebSphere Application Server Network Deployment の場合</b>
                 <ul>
@@ -1766,7 +1753,7 @@ WebSphere Application Server Network Deployment にインストールするに�
             <div class="panel-body">
                 <p>プッシュ・サービスは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。このアプリケーションに固有の構成をいくつか実行する必要があります。続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。    
                 <br/><br/>
-                プッシュ・サービスの WAR ファイルは <b>mfp_install_dir/PushService/mfp-push-service.war</b> にあります。コンテキスト・ルートは <b>/imfpush</b> と定義する必要があります。さもないと、コンテキスト・ルートは SDK にハードコーディングされているため、クライアント・デバイスはプッシュ・サービスに接続できません。</p>
+プッシュ・サービスの WAR ファイルは <b>mfp_install_dir/PushService/mfp-push-service.war</b> にあります。コンテキスト・ルートは <b>/imfpush</b> と定義する必要があります。さもないと、コンテキスト・ルートは SDK にハードコーディングされているため、クライアント・デバイスはプッシュ・サービスに接続できません。</p>
                 
                 <h3>必須の JNDI プロパティー</h3>
                 <p>JNDI プロパティーは、WebSphere Application Server 管理コンソールを使用して設定できます。<b>「アプリケーション」→「アプリケーション・タイプ」→「WebSphere エンタープライズ・アプリケーション」→「application_name」→「Web モジュールの環境項目」</b>を選択し、項目を設定します。</p>
@@ -1935,13 +1922,10 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                 
                                 <blockquote><b>重要:</b> {{ site.data.keys.product }} では、同種のサーバー・ファームのみがサポートされます。同じタイプのアプリケーション・サーバーを接続する場合、サーバー・ファームは同種です。異なるタイプのアプリケーション・サーバーを関連付けようとすると、予測不能の動作が実行時に起こる可能性があります。例えば、Apache Tomcat サーバーと WebSphere Application Server フル・プロファイル・サーバーを混在させたファームは、無効な構成になります。</blockquote>
                             </li>
-                            <li>ファーム内で必要になるメンバーの数と同じ数のスタンドアロン・サーバーをセットアップします。
-                            <br/><br/>
-                            これらのスタンドアロン・サーバーは、それぞれが同じデータベースと通信する必要があります。これらのサーバーによって使用されるすべてのポートが、同じホスト上で構成されている他のサーバーによっても使用されることのないように注意してください。この制約は、HTTP、HTTPS、REST、SOAP、および RMI の各プロトコルによって使用されるポートに適用されます。
-                            <br/><br/>
-                            これらのサーバーは、それぞれに {{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および 1 つ以上の {{ site.data.keys.product_adj }} ランタイムがデプロイされている必要があります。
-                            <br/><br/>
-                            サーバーのセットアップについて詳しくは、<a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および {{ site.data.keys.product_adj }} ランタイムでの制約</a>を参照してください。</li>
+                            <li>ファーム内で必要になるメンバーの数と同じ数のスタンドアロン・サーバーをセットアップします。<br/><br/>
+これらのスタンドアロン・サーバーは、それぞれが同じデータベースと通信する必要があります。これらのサーバーによって使用されるすべてのポートが、同じホスト上で構成されている他のサーバーによっても使用されることのないように注意してください。この制約は、HTTP、HTTPS、REST、SOAP、および RMI の各プロトコルによって使用されるポートに適用されます。<br/><br/>
+これらのサーバーは、それぞれに {{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および 1 つ以上の {{ site.data.keys.product_adj }}ランタイムがデプロイされている必要があります。<br/><br/>
+サーバーのセットアップについて詳しくは、<a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および {{ site.data.keys.product_adj }} ランタイムでの制約</a>を参照してください。</li>
                             <li>すべてのサーバー間でそれぞれのトラストストア内の署名者証明書を交換します。
                             <br/><br/>
                             WebSphere Application Server フル・プロファイルまたは Liberty を使用するファームの場合、セキュリティーが有効にされる必要があるため、このステップは必須です。さらに、Liberty ファームの場合、シングル・サインオンが可能となるように、同じ LTPA 構成が各サーバー上で複製される必要があります。この構成を行うには、<a href="#configuring-a-server-farm-manually">手動でのサーバー・ファームの構成</a>のステップ 6 で説明されているガイドラインに従ってください。
@@ -1961,16 +1945,14 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             </li>
                             <li>Ant ファイルを編集して、データベースに必要なプロパティーをすべて入力します。
                             <br/><br/>
-                            {{ site.data.keys.mf_server }} コンポーネントによって使用されるデータベースの構成を有効にするため、以下のプロパティーの値を設定します。
-                                <ul>
+{{ site.data.keys.mf_server }} コンポーネントによって使用されるデータベースの構成を有効にするため、以下のプロパティーの値を設定します。<ul>
                                     <li><b>mfp.process.admin</b> を <b>true</b> に設定します。これは、管理サービスおよびライブ更新サービス用にデータベースを構成するためです。</li>
                                     <li><b>mfp.process.runtime</b> を <b>true</b> に設定します。これは、ランタイム用にデータベースを構成するためです。</li>
                                 </ul>
                             </li>
                             <li><b>mfp_install_dir/MobileFirstServer/configuration-samples</b> ディレクトリーから以下のコマンドを実行します。<b>create-database-ant-file.xml</b> は選択した実際の Ant ファイル名に置き換えてください。<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> および <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>
                             <br/><br/>
-                            {{ site.data.keys.mf_server }} データベースはファーム内のアプリケーション・サーバー間で共有されるため、これら 2 つのコマンドは、ファーム内のサーバーの数にかかわらず、1 回のみ実行すればすみます。
-                            </li>
+{{ site.data.keys.mf_server }} データベースはファーム内のアプリケーション・サーバー間で共有されるため、これら 2 つのコマンドは、ファーム内のサーバーの数にかかわらず、1 回のみ実行すればすみます。</li>
                             <li>オプションで、別のランタイムを実行したい場合は、別のデータベースを別のデータベース名またはスキーマで構成する必要があります。これを行うには、Ant ファイルを編集してプロパティーを変更し、ファーム内のサーバーの数にかかわらず、以下のコマンドを 1 回だけ実行します。<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code></li>
                         </ul>
                     </li>
@@ -1983,8 +1965,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             <b>注:</b> これらのファイルは構成が終わっても保持しておいてください。これらのファイルは、既にデプロイ済みの {{ site.data.keys.mf_server }} コンポーネントをアップグレードする場合や、ファームの各メンバーからアンインストールする場合に再使用できます。</li>
                             <li>Ant ファイルの各コピーを編集して、ステップ 2 で使用したのと同じデータベースのプロパティーを入力し、アプリケーション・サーバーについての他の必要なプロパティーも入力します。
                             <br/><br/>
-                            サーバーをサーバー・ファーム・メンバーとして構成するため、以下のプロパティーの値を設定します。
-                                <ul>
+サーバーをサーバー・ファーム・メンバーとして構成するため、以下のプロパティーの値を設定します。<ul>
                                     <li><b>mfp.farm.configure</b> を true に設定します。</li>
                                     <li><b>mfp.farm.server.id</b>: このファーム・メンバーに対して定義する ID。 ファーム内の各サーバーがそれぞれ固有の ID を持っていることを確認してください。ファーム内の 2 つのサーバーの ID が同じであると、ファームは予測不能な動作をする可能性があります。</li>
                                     <li><b>mfp.config.service.user</b>: ライブ更新サービスにアクセスするために使用されるユーザー名。ユーザー名はファームのすべてのメンバーで同じでなければなりません。</li>
@@ -2006,7 +1987,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             </li>
                             <li>各サーバーに対して以下のコマンドを実行します。<b>configure-appserver-database-ant-file.xml</b> は選択した実際の Ant ファイル名に置き換えてください。<code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> および <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>
                             <br/><br/>
-                            これらのコマンドは、Ant タスク <b>installmobilefirstadmin</b> および <b>installmobilefirstruntime</b> を実行します。これらのタスクについて詳しくは、<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク</a>および <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク</a>を参照してください。
+これらのコマンドは、Ant タスク <b>installmobilefirstadmin</b> および <b>installmobilefirstruntime</b> を実行します。これらのタスクについて詳しくは、<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク</a>および <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク</a>を参照してください。
                             </li>
                             <li>オプションで、別のランタイムをインストールしたい場合は、以下のステップを実行します。
                                 <ul>
@@ -2097,19 +2078,16 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             </li>
                             <li><b>Apache Tomcat</b>
                                 <br/>
-                                管理サービスのコンテキストおよびすべてのランタイムのコンテキストで以下の JNDI プロパティーを設定するために、<b>conf/server.xml</b> ファイルを変更します。
-{% highlight xml %}
+管理サービスのコンテキストおよびすべてのランタイムのコンテキストで以下の JNDI プロパティーを設定するために、<b>conf/server.xml</b> ファイルを変更します。{% highlight xml %}
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                <b>mfp.admin.serverid</b> プロパティーには、このファーム・メンバー用に定義した ID を設定します。この ID は、すべてのファーム・メンバーにわたって固有である必要があります。
-                                <br/>
-                                <code>-Djava.rmi.server.hostname</code> JVM 引数は、リモート・メンバーがこのサーバーにアクセスするために使用する IP またはホスト名に必ず設定しなければなりません。したがたって、<b>localhost</b> には設定しないでください。さらに、<code>-Dcom.sun.management.jmxremote.port</code> JVM 引数の設定に使用されるポートが、JMX RMI 接続を有効にするために既に使用中のポートではないことを確認する必要があります。両方の引数が <b>CATALINA_OPTS</b> 環境変数で設定されます。
+                                <b>mfp.admin.serverid</b> プロパティーには、このファーム・メンバー用に定義した ID を設定します。この ID は、すべてのファーム・メンバーにわたって固有である必要があります。<br/>
+<code>-Djava.rmi.server.hostname</code> JVM 引数は、リモート・メンバーがこのサーバーにアクセスするために使用する IP またはホスト名に必ず設定しなければなりません。したがたって、<b>localhost</b> には設定しないでください。さらに、<code>-Dcom.sun.management.jmxremote.port</code> JVM 引数の設定に使用されるポートが、JMX RMI 接続を有効にするために既に使用中のポートではないことを確認する必要があります。両方の引数が <b>CATALINA_OPTS</b> 環境変数で設定されます。
                             </li>
                             <li><b>WebSphere Application Server フル・プロファイル</b>
                                 <br/>
-                                管理サービスおよびサーバー上でデプロイされたすべてのランタイム・アプリケーションで、以下の JNDI プロパティーを宣言する必要があります。
-                                <ul>
+管理サービスおよびサーバー上でデプロイされたすべてのランタイム・アプリケーションで、以下の JNDI プロパティーを宣言する必要があります。<ul>
                                     <li><b>mfp.topology.clustermode</b></li>
                                     <li><b>mfp.admin.serverid</b></li>
                                 </ul>
@@ -2143,7 +2121,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                     <li>Keytool について詳しくは、IBM SDK, Java Technology Edition の <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> を参照してください。</li>
                                     <li>iKeyman について詳しくは、IBM SDK, Java Technology Edition の <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a> を参照してください。</li>
                                 </ul>
-鍵ストアおよびトラストストアのロケーションは、<b>server.xml</b> ファイルに定義されています。<a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 構成属性</a>内の <b>keyStoreRef</b> 属性と <b>trustStoreRef</b> 属性を参照してください。デフォルトで、Liberty プロファイルの鍵ストアは <b>${server.config.dir}/resources/security/key.jks</b> にあります。トラストストア参照がないか、<b>server.xml</b> ファイルに定義されていない場合は、<b>keyStoreRef</b> によって指定された鍵ストアが使用されます。サーバーはデフォルトの鍵ストアを使用し、ファイルはサーバーを初めて実行した時に作成されます。その場合、365 日間の有効期間でデフォルト証明書が作成されます。実動では、独自の証明書 (必要な場合、中間証明書を含む) を使用したり、生成された証明書の有効期限を変更したりすることも検討できます。
+鍵ストアおよびトラストストアのロケーションは、<b>server.xml</b> ファイルに定義されています。<a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 構成属性</a>内の <b>keyStoreRef</b> 属性と <b>trustStoreRef</b> 属性を参照してください。デフォルトで、Liberty プロファイルの鍵ストアは <b>${server.config.dir}/resources/security/key.jks</b> にあります。トラストストア参照が <b>server.xml</b> ファイルにないか定義されていない場合は、<b>keyStoreRef</b> によって指定された鍵ストアが使用されます。サーバーはデフォルトの鍵ストアを使用し、ファイルはサーバーを初めて実行した時に作成されます。その場合、365 日間の有効期間でデフォルト証明書が作成されます。実動では、独自の証明書 (必要な場合、中間証明書を含む) を使用したり、生成された証明書の有効期限を変更したりすることも検討できます。
                                 
                                 <blockquote>注: トラストストアのロケーションを確認したい場合は、次の宣言を server.xml ファイルに追加することにより確認できます。
 {% highlight xml %}

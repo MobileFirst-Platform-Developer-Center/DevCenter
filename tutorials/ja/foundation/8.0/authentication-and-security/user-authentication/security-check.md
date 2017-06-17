@@ -40,7 +40,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
     }
 
     @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         return false;
     }
 
@@ -75,10 +75,10 @@ protected Map<String, Object> createChallenge() {
 @Override
 protected boolean validateCredentials(Map<String, Object> credentials) {
     if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-        String username = credentials.get("username").toString();
-        String password = credentials.get("password").toString();
-        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-            return true;
+            String username = credentials.get("username").toString();
+            String password = credentials.get("password").toString();
+            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+                return true;
         }
         else {
             errorMsg = "Wrong Credentials";

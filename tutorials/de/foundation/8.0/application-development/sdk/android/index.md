@@ -1,52 +1,64 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Android Applications
+title: MobileFirst-Foundation-SDK zu Android-Anwendungen hinzufügen
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The {{ site.data.keys.product_full }} SDK consists of a collection of dependencies that are available through [Maven Central](http://search.maven.org/), and which you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
+Das SDK der {{ site.data.keys.product_full }}
+besteht aus einer Reihe von Abhängigkeiten, die über [Maven Central](http://search.maven.org/) verfügbar sind und zu einem Android-Studio-Projekt hinzugefügt werden können. Die Abhängigkeiten entsprechen Kernfunktionen und anderen Funktionen:  
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../jsonstore/android/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../../notifications/).
+* **IBMMobileFirstPlatformFoundation** - Implementiert Client-Server-Konnektivität, handhabt Authentifizierungs- und Sicherheitsaspekte, Ressourcenanforderungen und weitere erforderliche Kernfunktionen
+* **IBMMobileFirstPlatformFoundationJSONStore** - Enthält das JSONStore-Framework. Weitere Informationen enthält das Lernprogramm [JSONStore für Andoid](../../jsonstore/android/).
+* **IBMMobileFirstPlatformFoundationPush** - Enthält das Framework für Push-Benachrichtigungen. Weitere Informationen enthalten die Lernprogramme zu [Benachrichtigungen](../../../notifications/).
 
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Gradle to a new or existing Android application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are added to the project.
+In diesem Lernprogramm erfahren Sie, wie das native {{ site.data.keys.product_adj }}-SDK mithilfe von Gradle
+zu einer neuen oder vorhandenen Android-Anwendung hinzugfügt wird. Sie werden auch lernen,
+wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen.
+Außerdem erfahren Sie, wie Sie Informationen zu den {{ site.data.keys.product_adj }}-Konfigurationsdateien, die zum Projekt hinzugefügt werden, finden können. 
 
-**Prerequisites:**
+**Voraussetzungen:**
 
-- Android Studio and {{ site.data.keys.mf_cli }} installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Android development environment](../../../installation-configuration/development/android) tutorials.
+- Android Studio und die {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert.   
+- Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
+- Sie haben die Lernprogramme [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst)
+und [Android-Entwicklungsumgebung einrichten](../../../installation-configuration/development/android) durchgearbeitet. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Support for Javadoc and Android Service](#support-for-javadoc-and-android-service)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Natives {{ site.data.keys.product_adj }}-SDK hinzufügen](#adding-the-mobilefirst-native-sdk)
+- [Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen](#manually-adding-the-mobilefirst-native-sdk)
+- [Natives {{ site.data.keys.product_adj }}-SDK aktualisieren](#updating-the-mobilefirst-native-sdk)
+- [Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK](#generated-mobilefirst-native-sdk-artifacts)
+- [Unterstützung für Javadoc und den Android-Service](#support-for-javadoc-and-android-service)
+- [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK hinzufügen
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Android Studio project, and to register the application to the {{ site.data.keys.mf_server }} instance.
+Folgen Sie den nachstehenden Anweisungen, um das native {{ site.data.keys.product_adj }}-SDK
+zu einem neuen oder vorhandenen Android-Studio-Projekt hinzuzufügen und die Anwendung bei der MobileFirst-Server-Instanz zu registrieren.
 
-Before you start, make sure that {{ site.data.keys.mf_server }} is running.  
-If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command `./run.sh` on a Mac or Linux OS, or `run.cmd` on Windows.
+Vergewissern Sie sich als Erstes, dass {{ site.data.keys.mf_server }} aktiv
+ist.   
+Wenn Sie einen lokal installierten Server verwenden,
+navigieren Sie in einem **Befehlszeilenfenster** zum Serverordner und führen Sie den Befehl
+`./run.sh` für ein Mac- oder Linux-Betriebssystem bzw. `run.cmd` für Windows aus. 
 
-### Creating an Android application
+### Android-Anwendung erstellen
 {: #creating-an-android-application }
-Create an Android Studio project or use an existing one.  
+Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Projekt.   
 
-### Adding the SDK
+### SDK hinzufügen
 {: #adding-the-sdk }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. Wählen Sie unter **Android → Gradle Scripts** die Datei
+**build.gradle (Module: app)** aus. 
 
-2. Add the following lines after `apply plugin: 'com.android.application'`:
+2. Fügen Sie unter `apply plugin: 'com.android.application'` die folgenden Zeilen hinzu:
+
+
 
    ```xml
    repositories{
@@ -54,7 +66,7 @@ Create an Android Studio project or use an existing one.
    }
    ```
 
-3. Add the following line inside the `android` section:
+3. Fügen Sie im Abschnitt `android` die folgende Zeile hinzu: 
 
    ```xml
    packagingOptions {
@@ -64,7 +76,7 @@ Create an Android Studio project or use an existing one.
    }
    ```
 
-4. Add the following lines inside the `dependencies` section:
+4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu: 
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -74,51 +86,51 @@ Create an Android Studio project or use an existing one.
    transitive: true
    ```
 
-   Or on a single line:
+   Oder in einer einzelnen Zeile: 
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
-5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:
+5. Öffnen Sie unter **Android → app → manifests** die Datei `AndroidManifest.xml`. Fügen Sie Folgendes über dem Element **application** hinzu: 
 
    ```xml
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
    
-6. Add the {{ site.data.keys.product_adj }} UI activity next to the existing **activity** element:
+6. Fügen Sie die {{ site.data.keys.product_adj }}-Benutzerschnittstellenaktivität neben dem vorhandenen Element **activity** hinzu: 
 
    ```xml
    <activity android:name="com.worklight.wlclient.ui.UIActivity" />
    ```
 
-> If a Gradle Sync request appears, accept it.
+> Wenn eine Gradle-Synchronisationsaufforderung angezeigt wird, stimmen Sie zu. 
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
 {: #manually-adding-the-mobilefirst-native-sdk }
-You can also manually add the {{ site.data.keys.product_adj }} SDK:
+Sie können das SDK der {{ site.data.keys.product_adj }} auch manuell hinzufügen: 
   
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Click for instructions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Für Anweisungen hier klicken</b></a>
             </h4>
         </div>
 
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
-                <p>To manually add the {{ site.data.keys.product_adj }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab. After completing the above steps, follow the below as well.</p>
+                <p>Wenn Sie das {{ site.data.keys.product_adj }}-SDK manuell hinzufügen möchten, müssen Sie zunächst über das Download-Center der {{ site.data.keys.mf_console }} die SDK-ZIP-Datei auf der Registerkarte <b>SDKs</b> herunterladen. Wenn Sie die obigen Schritte ausgeführt haben, gehen Sie wie nachfolgend beschrieben vor. </p>
             
                 <ul>
-                    <li>Extract the downloaded .zip file and place the relevant aar files to the <b>app\libs</b> folder.</li>
-                    <li>Add the following to the <b>dependencies</b> closure:
+                    <li>Entpacken Sie die heruntergeladene ZIP-Datei und stellen Sie die relevanten aar-Dateien in den Ordner <b>app\libs</b>.</li>
+                    <li>Fügen Sie am Ende von <b>dependencies</b> Folgendes hinzu:
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
 {% endhighlight %}
                     </li>
-                    <li>Add the following to the <b>repositories</b> closure:
+                    <li>Fügen Sie am Ende von <b>repositories</b> Folgendes hinzu:
 {% highlight xml %}
 repositories {
     flatDir {
@@ -130,7 +142,7 @@ repositories {
                 </ul> 
             
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>
@@ -138,66 +150,76 @@ repositories {
 
 
 
-### Registering the application
+### Anwendung registrieren
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Android-Studio-Projekts.   
 
-2. Run the command:
+2. Führen Sie den folgenden Befehl aus: 
 
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - Wenn ein ferner Server verwendet wird,
+fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and to add to it the metadata that identifies the {{ site.data.keys.mf_server }}.
+Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung zu
+{{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren.
+Anschließend wird die Datei **mfpclient.properties** im Ordner **[Projektstammverzeichnis]/app/src/main/assets/**
+des Android-Studio-Projekts generiert. Zu der Datei werden Metadaten hinzugefügt, die den
+{{ site.data.keys.mf_server }} angeben.
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Sie können
+Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
+> 1. Laden Sie die {{ site.data.keys.mf_console }}.  
+> 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.properties** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
 
-### Creating a WLClient instance
+### WLClient-Instanz erstellen
 {: #creating-a-wlclient-instance }
-Before using any {{ site.data.keys.product_adj }} APIs, create a `WLClient` instance:
+Erstellen Sie eine `WLClient`-Instanz, bevor Sie {{ site.data.keys.product_adj }}-APIs verwenden. 
 
 ```java
 WLClient.createInstance(this);
 ```
 
-**Note:** Creating a `WLClient` instance should happen only once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
+**Hinweis:** Eine `WLClient`-Instanz
+sollte im gesamten Anwendungslebenszyklus nur einmal erstellt werden. Es wird empfohlen, dafür die Android-Application-Klasse zu verwenden. 
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
-See step 4 above.
+Wenn Sie das native {{ site.data.keys.product_adj }}-SDK auf den neuesten Releasestand
+bringen möchten, suchen Sie die neueste Releaseversion und aktualisdieren Sie die Eigenschaft `version` in der Datei **build.gradle** entsprechend.   
+(Vergleichen Sie dazu oben Schritt 4.) 
 
-SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#).
+SDK-Releases sind im [JCenter-Repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#) für das jeweilige SDK enthalten.
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.properties
 {: #mfpclient.properties }
-Located in the **./app/src/main/assets/** folder of the Android Studio project, this file defines the client-side properties used for registering your Android app on the {{ site.data.keys.mf_server }}.
+Diese Datei befindet sich im Ordner **./app/src/main/assets/** des Android-Studio-Projekts. Sie
+enthält die clientseitigen Eigenschaften für die Registrierung Ihrer
+Android-App bei {{ site.data.keys.mf_server }}. 
 
-| Property            | Description                                                         | Example values |
+| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| wlServerProtocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
+| wlServerHost        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
+| wlServerPort        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
+| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
 
-## Support for Javadoc and Android Service
+## Unterstützung für Javadoc und den Android-Service
 {: #support-for-javadoc-and-android-service }
-For information about support for Javadoc and Android Service see the [Additional Information](additional-information) page.
+Informationen zur Unterstützung für Javadoc und den Android-Service finden Sie auf der Seite [Zusätzliche Informationen](additional-information). 
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} Native SDK now integrated, you can now:
+Jetzt, da das native {{ site.data.keys.product_adj }}-SDK integriert ist, können Sie Folgendes tun: 
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- Gehen Sie die Lernprogramme zu [SDKs der {{ site.data.keys.product }}](../) durch. 
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../../adapters/) durch. 
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../../authentication-and-security/) durch. 
+- Gehen Sie die Lernprogramme zu [Benachrichtigungen](../../../notifications/) durch. 
+- Sehen Sie sich [alle Lernprogramme](../../../all-tutorials) an. 

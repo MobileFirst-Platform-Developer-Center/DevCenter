@@ -97,7 +97,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>セクションを閉じる</b></a>
-                                </div>
+            </div>
         </div>
     </div>
 </div>

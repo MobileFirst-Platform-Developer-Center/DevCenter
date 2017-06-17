@@ -13,12 +13,12 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
+{{ site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
 REST API は、すべてのアダプターおよび外部リソースで機能します。
 
 **前提条件**:
 
-- 必ずご使用のネイティブ Android プロジェクトに [{{site.data.keys.product }} SDK を追加](../../../application-development/sdk/android)しておいてください。
+- 必ずご使用のネイティブ Android プロジェクトに [{{ site.data.keys.product }} SDK を追加](../../../application-development/sdk/android)しておいてください。
 - [アダプターの作成](../../../adapters/creating-adapters)方法を参照してください。
 
 ## WLResourceRequest
@@ -127,7 +127,7 @@ request.addHeader("date", date.getText().toString());
 
 ## 詳細情報
 {: #for-more-information }
-> WLResourceRequest について詳しくは、[API リファレンスを参照してください](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLResourceRequest.html)。
+> WLResourceRequest について詳しくは、[API リファレンスを参照してください](../../../api/client-side-api/java/client/)。
 
 <img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-android.png" style="float:right"/>
 ## サンプル・アプリケーション

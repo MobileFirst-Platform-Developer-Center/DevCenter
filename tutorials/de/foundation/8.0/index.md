@@ -10,12 +10,12 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Die {{site.data.keys.product_full }} vereinfacht die Erstellung, Verwaltung und Aktualisierung Ihrer mobilen Anwendung radikal mit einer Reihe vorintegrierter, umfassender Services für mobile Anwendungen.
+Die {{ site.data.keys.product_full }} vereinfacht die Erstellung, Verwaltung und Aktualisierung Ihrer mobilen Anwendung radikal mit einer Reihe vorintegrierter, umfassender Services für mobile Anwendungen.
 
 Entwickler können Ihre Anwendung mit dem Front-End-Framework und den Tools Ihrer Wahl erstellen und mit dem
-Software Development Kit (SDK) der {{site.data.keys.product }}, das für ein breites Spektrum unterstützter mobiler Plattformen verfügbar ist,
+Software Development Kit (SDK) der {{ site.data.keys.product }}, das für ein breites Spektrum unterstützter mobiler Plattformen verfügbar ist,
 ohne großen Aufwand Funktionen für Push, Authentifizierung und Offlinesynchronisation
-sowie Geschäftslogik zu ihren Apps hinzufügen. Mit der {{site.data.keys.product }} können Sie Ihre Anwendung vom Client zum Server kontrollieren und so
+sowie Geschäftslogik zu ihren Apps hinzufügen. Mit der {{ site.data.keys.product }} können Sie Ihre Anwendung vom Client zum Server kontrollieren und so
 am Interaktionspunkt Geschäftsdaten erfassen. MobileFirst-Foundation-Apps ermöglichen zudem die Implementierung eines optimierten Prozesses für inkrementelle App-Aktualisierungen.
 Sie können Ihre Apps in flexiblen Hybrid-Cloud-Mustern ausführen. 
 

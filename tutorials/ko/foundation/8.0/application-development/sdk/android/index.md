@@ -18,7 +18,7 @@ weight: 3
 
 **전제조건:**
 
-- 개발자 워크스테이션에 Android Studio 및 {{site.data.keys.mf_cli }}가 설치되어 있습니다.   
+- 개발자 워크스테이션에 Android Studio 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다.   
 - {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다. 
 - [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [Android 개발 환경 설정](../../../installation-configuration/development/android) 학습서를 읽으십시오. 
 
@@ -35,7 +35,7 @@ weight: 3
 {: #adding-the-mobilefirst-native-sdk }
 아래 지시사항에 따라 신규 또는 기존 Android Studio 프로젝트에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하고 {{ site.data.keys.mf_server }} 인스턴스에 애플리케이션을 등록하십시오. 
 
-시작하기 전에 {{site.data.keys.mf_server }}가 실행 중인지 확인하십시오.   
+시작하기 전에 {{ site.data.keys.mf_server }}가 실행 중인지 확인하십시오.   
 로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.sh`(Mac 또는 Linux OS에서)나 `run.cmd`(Windows에서) 명령을 실행하십시오. 
 
 ### Android 애플리케이션 작성

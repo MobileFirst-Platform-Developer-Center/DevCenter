@@ -63,12 +63,12 @@ body {
 	width: 100%;
 	padding: 10px 0 10px 0;
 	font-size: 120%;
-	
+
 	.latestPost {
 		margin-right: 5px;
 		font-weight: bold;
 	}
-	
+
 	.latestPostTitle {
 		font-size: 85%;
 		a {
@@ -78,22 +78,22 @@ body {
 			&:hover {
 				text-decoration: none;
 			}
-			
+
 			&:visited {
 				text-decoration: underline;
 				color: white;
 			}
 		}
 	}
-	
+
 	.more-posts {
 		font-size: 85%;
 		float: right;
 		margin-top: 3px;
-		
-		a {	
+
+		a {
 			color: #0B2B40;
-			
+
 			&:visited {
 				color: #0B2B40;
 			}
@@ -101,57 +101,137 @@ body {
 	}
 }
 
+#flashBlogPosts {
+	background-color: #EE7A55;
+	font-family: HelvNeuLightForIBM;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
+	font-size: 120%;
+
+	.flashPost {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+
+	.flashPostTitle {
+		font-size: 85%;
+		a {
+			color: white;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			&:visited {
+				text-decoration: underline;
+				color: white;
+			}
+		}
+	}
+}
+
+#slackStrip {
+	background-color: #068D7C;
+	font-family: HelvNeuLightForIBM;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
+	font-size: 120%;
+
+	.latestPost {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+
+	.latestPostTitle {
+		font-size: 85%;
+		a {
+			color: white;
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			&:visited {
+				text-decoration: underline;
+				color: white;
+			}
+		}
+	}
+}
+#multilingualDC {
+	background-color: #05c1c1;
+	font-family: HelvNeuLightForIBM;
+	color: white;
+	width: 100%;
+	padding: 10px 0 10px 0;
+	font-size: 120%;
+
+	.latestText {
+		margin-right: 5px;
+		font-weight: bold;
+	}
+  .h1 {
+		font-size: 180%;
+		font-family: HelvNeuLightForIBM;
+		color: #4A4A4A;
+		margin-bottom: 20px;
+	}
+}
 #index_sections {
 	margin-top: 50px;
 	font-size: 112.5%;
    font-family: HelvNeuRomanForIBM;
-	
+
 	h1 {
 		font-size: 230%;
 		font-family: HelvNeuLightForIBM;
 		color: #4A4A4A;
 		margin-bottom: 20px;
-	} 
-	
+	}
+
 	hr {
 		border: 1px solid #DDD !important;
 		margin: 70px auto 70px auto;
       width: 1046px;
 	}
-	
+
 	#index_overview {
 		text-align: center;
-      
+
       .section_text {
          margin-bottom: 30px;
          font-size: 18px;
       }
-      
-      #index_overview_text {	
+
+      #index_overview_text {
          //margin-bottom: 74.5px;
       }
-		#index_overview_icons, #index_overview_text {	
+		#index_overview_icons, #index_overview_text {
 			p {
 				margin-top: 0;
 				font-family: arial;
 			}
-			
+
 			.index-item {
 				width: 20%;
 				padding: 20px;
 				font-weight: 300;
-								
+
 				img {
 					height: 105px;
 				}
 			}
 		}
-      
+
       .feature-indicators {
          margin-bottom: 15px;
          margin-top: 15px;
       }
-		
+
 		a.read-more {
 			width: 300px;
 			background-color: #5AAAFA;
@@ -162,7 +242,7 @@ body {
 			text-decoration: none;
 			text-shadow: none;
 			font-size: 14px;
-         
+
          &:hover {
             background-color: #28536f;
          }
@@ -172,63 +252,63 @@ body {
 	#index_benefits {
 		text-align: left;
 		margin-bottom: 25px;
-		
+
 		.foundation_diamond {
 			height: 296px;
 			margin-left: 203px;
 			margin-top: 79px;
 		}
-		
+
 		.benefits {
 			padding-right: 80px;
-         
+
          p {
             margin-bottom: 20px;
          }
 		}
-		
+
 		.benefits-small-screens {
 			text-align: center;
 		}
 	}
-	
+
 	#index_getstarted {
 		text-align: center;
 		margin-bottom: 65px;
-		
+
 		p {
 			margin-top: 10px;
 			margin-bottom: 20px;
 		}
-		
+
 		a img {
 			text-decoration: none;
 		}
-		
+
 		.index_section_left {
 			text-align: center;
 			padding-bottom: 60px;
 			float: left;
 			border-right: 1px solid #DDD;
 			height: 300px;
-			
+
 			img {
 				height: 80px;
-				padding: 0;	
+				padding: 0;
 			}
 		}
-		
+
 		.index_section_right {
 			padding: 0;
 			text-align: center;
 			float: right;
-			
+
 			img {
 				height: 100px;
-				padding: 5px 46px 20px 33px;	
+				padding: 5px 46px 20px 33px;
 			}
 		}
-		
+
 		.number1,.number2 {
 			border-radius: 50%;
 		   border: 1px solid #649fe2;
@@ -237,27 +317,27 @@ body {
     		font-weight: bold;
 			position: initial;
 		}
-      
+
       .number1 {
          padding: 7px 10px 3px 10px;
       }
-      
+
       .number2 {
          padding: 7px 9px 3px 9px;
       }
-		
+
 		#index_getstarted_icons {
 			margin-left: 100px;
 			margin-right: 100px;
 		}
 	}
-	
+
 	#index_help {
 		text-align: center;
 		width: 50%;
 		height: 200px;
 		margin-bottom: 94px;
-		
+
 		.help-icons {
 			margin-top: 50px;
 			img {
@@ -267,7 +347,7 @@ body {
 			}
 		}
 	}
-	
+
 	#index_overview_icons, #index_help, #index_getstarted {
 		img {
     		-webkit-transition: all 0.35s ease; /* Safari and Chrome */
@@ -275,7 +355,7 @@ body {
 		   -ms-transition: all 0.35 ease; /* IE 9 */
 		   -o-transition: all 0.35 ease; /* Opera */
 		   transition: all 0.35 ease;
-			
+
 			&:hover {
 			   -webkit-transform:scale(1.1); /* Safari and Chrome */
 			   -moz-transform:scale(1.1); /* Firefox */
@@ -443,7 +523,7 @@ h4.panel-title, .tutorial h4.panel-title  {
 	font-size: 14px;
 	font-family: arial;
 	font-weight: 500;
-	
+
 	&:hover {
 		background-color: #82C9FB;
 	}
@@ -451,7 +531,7 @@ h4.panel-title, .tutorial h4.panel-title  {
 	&.containers {
 		width: 400px;
 	}
-	
+
 	&.stack {
 		background-color: white;
 		//margin-top: -10px;

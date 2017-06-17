@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-Appcenter Installer 应用程序用于在移动设备上安装应用程序。您可以使用提供的 Cordova 或 MobileFirst Studio 项目生成此应用程序，或者直接使用针对 Android、iOS 或 Windows 8 Universal 的预先构建的 MobileFirst Studio 项目版本。
+Appcenter Installer 应用程序用于在移动设备上安装应用程序。您可以使用提供的 Cordova、Visual Studio、MobileFirst Studio 项目生成此应用程序，或者直接使用面向 Android、iOS 或 Windows 8 Universal 的预先构建的 MobileFirst Studio 项目版本。
 
 #### 跳至：
 {: #jump-to }
@@ -162,9 +162,28 @@ Windows 8 Universal 项目在 **IBMApplicationCenterWindowsStore\AppCenterClient
 
 要将移动式客户机分发给 Application Center 用户，您可以稍后生成一个安装程序，该安装程序将安装所生成的可执行 (.exe) 文件及其从属的动态链接库 (.dll) 文件。或者，可以提供这些文件，而不将它们包含在安装程序中。
 
+####  Microsoft Windows 10 Universal（本机）IBM AppCenter 客户机
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
+
+本机 Window 10 Universal IBM AppCenter 客户机可用于在 Windows 10 手机上安装 Windows 10 Universal 应用程序。请使用 **IBMApplicationCenterWindowsStore** 在 Windows 桌面上安装 Windows 10 应用程序。
+
+#### Microsoft Windows 10 Universal：构建项目
+{: #microsoft-windows-10-universal-building-the-project}
+
+Windows 10 Universal 项目在 **IBMAppCenterUWP\IBMAppCenterUWP.csproj** 中作为 Visual Studio 项目提供。             
+您必须先在 Microsoft Visual Studio 2015 中构建客户机项目，然后才能进行分发。
+>必须先构建项目，才能将其分发给用户
+要构建 Windows 10 Universal 项目，请执行以下步骤：
+1.  在 Microsoft Visual Studio 2015 中打开名为 **IBMAppCenterUWP\IBMAppCenterUWP.csproj** 的 Visual Studio 项目文件。
++ 对应用程序执行完全构建。
++ 使用以下步骤生成 **.appx** 文件：
+  * 右键单击项目并选择**商店 → 创建应用程序包**。
+
 ## 定制功能（针对专家）：Android、iOS 和 Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
 您可以通过编辑集中属性文件并处理其他某些资源来定制功能。
+>仅在 Android、iOS、Windows 8（仅限 Windows Store 软件包）或 Windows Phone 8 中受支持。
+
 
 要定制功能：**IBMAppCenter/apps/AppCenter/common/js/appcenter/** 或 **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 目录中称为 **config.json** 的中央属性文件控制了多项功能。
 如果您要更改缺省应用程序行为，可以在构建项目之前调整该属性文件。
@@ -195,12 +214,16 @@ Windows 8 Universal 项目在 **IBMApplicationCenterWindowsStore\AppCenterClient
 * **Android：**Android Studio 项目的 **/res/drawabledensity** 目录中名为 **icon.png** 的文件；针对每种密度都存在一个目录。
 * **iOS：**Xcode 项目的 **Resources** 目录中名为 **iconsize.png** 的文件。
 * **Windows Phone：**针对 Windows Phone 的 MobileFirst Studio 环境文件夹内的 **native** 目录中名为 **ApplicationIcon.png**、**IconicTileSmallIcon.png** 和 **IconicTileMediumIcon.png** 的文件。
+* **Windows 10 Universal：**Visual Studio 内 **IBMAppCenterUWP/Assets** 目录中名为 **Square\*Logo\*.png**、**StoreLogo.png** 和 **Wide\*Logo\*.png** 的文件。
+
 
 #### 应用程序名称
 {: #application-name }
 * **Android：**编辑 Android Studio 项目的 **res/values/strings.xml** 文件中的 **app_name** 属性。
 * **iOS：**编辑 Xcode 项目的 **IBMAppCenterAppCenterIphone-Info.plist** 文件中的 **CFBundleDisplayName** 键。
 * **Windows Phone：**编辑 Visual Studio 的 **Properties/WMAppManifest.xml** 文件中 App 条目的 **Title** 属性。
+* **Windows 10 Universal：**编辑 Visual Studio 的 **IBMAppCenterUWP/Package.appxmanifest** 文件中 App 条目的 **Title** 属性。
+
 
 #### 启动屏幕图像
 {: #splash-screen-images }
@@ -208,6 +231,7 @@ Windows 8 Universal 项目在 **IBMApplicationCenterWindowsStore\AppCenterClient
 * **iOS：**Xcode 项目的 **Resources** 目录中名为 **Default-size.png** 的文件。
 * 自动登录期间基于 Cordova/MobileFirst Studio 的项目的启动屏幕：**js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone：**编辑针对 Windows Phone 的 MobileFirst Studio 环境文件夹内的 **native** 目录中名为 **SplashScreenImage.png** 的文件。
+* **Windows 10 Universal：**编辑 Visual Studio 内 **IBMAppCenterUWP/Assets** 目录中名为 **SplashScreen*.png** 的文件。
 
 #### 应用程序图标（按钮、星型和类似的对象）
 {: #icons }
@@ -223,7 +247,6 @@ Windows 8 Universal 项目在 **IBMApplicationCenterWindowsStore\AppCenterClient
 
 Windows 8 移动式客户机不能部署到 Application Center 中以供稍后分发。您可以选择通过以下方式分发 Windows 8 移动式客户机：通过向用户提供直接打包归档的客户机 .exe 可执行文件和动态链接库 .dll 文件，或通过为 Windows 8 移动式客户机创建可执行安装程序。
 
-必须将移动式客户机的 Android、iOS 和 Windows Phone 版本部署到 Application Center 中。
-为此，必须将 Android 应用程序包 (.apk) 文件、iOS 应用程序 (.ipa) 文件、Windows Phone 应用程序 (.xap) 文件和 Web 目录归档 (.zip) 文件上载到 Application Center。
+必须将移动式客户机的 Android、iOS、Windows Phone 和 Windows 10 Universal (Phone) 版本部署到 Application Center 中。为此，必须将 Android 应用程序包 (.apk) 文件、iOS 应用程序 (.ipa) 文件、Windows Phone 应用程序 (.xap) 文件、Windows 10 Universal (.appx) 文件或 Web 目录归档 (.zip) 文件上载到 Application Center。
 
-按照[添加移动应用程序](../appcenter-console/#adding-a-mobile-application)中描述的步骤，为 Android、iOS 和 Windows Phone 添加移动式客户机应用程序。请确保选中 Installer 应用程序属性以指示该应用程序是一个安装程序。选择该属性使移动设备用户可以轻松通过无线方式安装移动式客户机应用程序。要安装移动式客户机，请参阅与操作系统确定的移动式客户机应用程序版本对应的相关任务。
+按照[添加移动应用程序](../appcenter-console/#adding-a-mobile-application)中描述的步骤，为 Android、iOS、Windows Phone 和 Windows 10 Universal 添加移动式客户机应用程序。请确保选中 Installer 应用程序属性以指示该应用程序是一个安装程序。选择该属性使移动设备用户可以轻松通过无线方式安装移动式客户机应用程序。要安装移动式客户机，请参阅与操作系统确定的移动式客户机应用程序版本对应的相关任务。

@@ -74,18 +74,17 @@ JavaScript アダプターでセキュリティーを使用不可にするには
   ![機密クライアントの設定のイメージ](confidential_client.png)
 {% endcomment %}
 
-1. `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを指定した、`http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を作成するには、HTTP クライアント (Postman) を使用します。
+1.  `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを指定した、`http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を作成するには、HTTP クライアント (Postman) を使用します。
 
-* `grant_type` : `client_credentials`
-* `scope` : リソースを保護するスコープを使用してください。  
-リソースを保護するためにスコープを使用しない場合は、空ストリングを使用してください。
+    - `grant_type` - 値を `client_credentials` に設定します。
+    - `scope` - 値をリソースの保護スコープに設定します。リソースに保護スコープが割り当てられていない場合は、このパラメーターを省略して、デフォルトのスコープ (`RegisteredClient`) を適用します。詳しくは、[スコープ](../../authentication-and-security/#scopes)を参照してください。
 
+    ![Postman の本文構成のイメージ](Body_configuration.png)
 
-  ![Postman の本文構成のイメージ](Body_configuration.png)
-2. `Basic authentication` を使用し、機密クライアント ID (「test」) と秘密鍵 (「test」) を指定して、`authorization header` を追加します。
-> 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
+2.  `Basic authentication` を使用し、機密クライアント ID (「test」) と秘密鍵 (「test」) を指定して、`authorization header` を追加します。
+    > 機密クライアントについて詳しくは、[機密クライアント](../../authentication-and-security/confidential-clients)を参照してください。
 
-  ![Postman の許可構成のイメージ](Authorization_configuration.png)
+    ![Postman の許可構成のイメージ](Authorization_configuration.png)
 
 
 結果は、一時的に有効なアクセス・トークンを持つ JSON オブジェクトになります。

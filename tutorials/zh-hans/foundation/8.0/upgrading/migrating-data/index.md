@@ -22,9 +22,7 @@ weight: 5
 
 * 必须以符合 FIPS 140-2 的方式将数据存储在移动设备上时，
 * 当需要在设备和企业之间同步数据时，
-
 * 在开发混合应用程序时，
-
 
 有关 JSONStore 的更多信息，请参阅 [JSONStore](../../application-development/jsonstore)。
 
@@ -60,6 +58,7 @@ Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全
 ### 注册 REST 端点
 {: #enroll-rest-endpoint }
 下图说明由 Bluelist 适配器样本 **/enroll** 端点执行的集成。
+
 ![样本集成图](SecurityIntegration.jpg)
 
 1. 移动设备从 {{ site.data.keys.mf_server }} 获取 {{ site.data.keys.product_adj }} OAuth 令牌。
@@ -77,8 +76,7 @@ Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全
 
 ### 会话 cookie REST 端点
 {: #sessioncookie-rest-endpoint }
-如果会话 cookie 已到期，那
-么移动设备可以与 **/sessioncookie** 端点交换 Cloudant 会话 cookie 的有效 {{ site.data.keys.product_adj }} OAuth 令牌。
+如果会话 cookie 已到期，那么移动设备可以与 **/sessioncookie** 端点交换 Cloudant 会话 cookie 的有效 {{ site.data.keys.product_adj }} OAuth 令牌。
 
 ## 创建数据库
 {: #creating-databases }
@@ -305,8 +303,9 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
         
 3. 初始化本地存储器来通过密钥提供者进行加密。
 
-   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库已加密后，即无法更改密码。必须删除数据库才能更改密码。  
-    ##### BEFORE（使用 IMFData/CloudantToolkit）：
+   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库已加密后，即无法更改密码。必须删除数据库才能更改密码。
+
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：
    {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
@@ -454,8 +453,9 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
     * 将 **sqlcipher.jar** 添加为文件依赖关系。从 Android Studio 中的应用程序文件夹菜单的**打开模块设置**下，选择**依赖关系**选项卡。
 3. 初始化本地存储器来通过密钥提供者进行加密。
     
-   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库加密后，即无法更改密码。必须删除数据库才能更改密码。  
-    ##### BEFORE（使用 IMFData/CloudantToolkit）：
+   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库加密后，即无法更改密码。必须删除数据库才能更改密码。
+
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：
    {: #before-with-imfdata-cloudanttoolkit }
    ```java
    // Get reference to DataManager
@@ -977,7 +977,6 @@ DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 {: #deleting-data }
 要删除对象，请将要删除的对象传递到存储器。
 
-
 ##### BEFORE
 {: #before }
 **Objective-C**
@@ -1089,7 +1088,6 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 ## 创建索引
 {: #creating-indexes }
 要执行查询，必须创建索引。
-        
 
 * iOS：有关更多详细信息，请参阅 [CDTDatastore 查询文档](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)。要了解针对远程存储器的查询操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
 * Android：有关更多详细信息，请参阅 [Cloudant Sync 查询文档](https://github.com/cloudant/sync-android/blob/master/doc/query.md)。要了解针对远程存储器的 CRUD 操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
@@ -1122,6 +1120,7 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    ```swift
    // A store that has been previously created.
    let store:CDTStore = existingStore
+
 // The data type to use for the Automobile class
    let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
 
@@ -1171,6 +1170,7 @@ List<IndexField> indexFields = new ArrayList<IndexField>();
    ```objc
    // A store that has been previously created.
    CDTDatastore *datastore = existingDatastore;
+   
 NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"] withName:@"automobileindex"];
    if(!indexName){
         // Handle error
@@ -1182,6 +1182,7 @@ NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"]
    ```swift
    // A store that has been previously created.
    let datastore:CDTDatastore = existingDatastore
+   
 // Create the index
    let indexName:String? = datastore.ensureIndexed(["@datatype","year","make"], withName: "automobileindex")
    if(indexName == nil){
@@ -1351,6 +1352,7 @@ let store:CDTStore = existingStore
 
 let queryPredicate:NSPredicate = NSPredicate(format:"(year = 2006)")
 let query:CDTCloudantQuery = CDTCloudantQuery(dataType: "Automobile", withPredicate: queryPredicate)
+
 store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSError!) -> Void in
     if nil != error {
         // Handle error
@@ -1807,6 +1809,7 @@ URI uri = existingURI;
 // Create a replicator that replicates changes from the local
 // database to the remote datastore.
 final Replicator replicator = ReplicatorBuilder.push().from(datastore).to(uri).build();
+
 // Register event listener
 replicator.getEventBus().register(new Object() {
 

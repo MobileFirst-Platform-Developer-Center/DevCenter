@@ -26,7 +26,7 @@ Java 라이브러리는 JAR 파일(**com.ibm.mfp.oauth.tai-8.0.0.jar**)로서 �
 
 ## 서버 설정
 {: #server-setup }
-1. **{{site.data.keys.mf_console }} → 다운로드 센터 → 도구** 탭에서 Security Tools.zip을 다운로드하십시오. zip 안에는 `mfp-oauth-tai.zip` 아카이브가 있습니다. 이 zip을 압축 해제하십시오. 
+1. **{{ site.data.keys.mf_console }} → 다운로드 센터 → 도구** 탭에서 Security Tools.zip을 다운로드하십시오. zip 안에는 `mfp-oauth-tai.zip` 아카이브가 있습니다. 이 zip을 압축 해제하십시오. 
 2. `com.ibm.mfp.oauth.tai.jar` 파일을 **usr/extension/lib** 안의 WebSphere Application Server 인스턴스에 추가하십시오. 
 3. `OAuthTai.mf` 파일을 **usr/extension/lib/features** 안의 WebSphere Application Server 인스턴스에 추가하십시오. 
 

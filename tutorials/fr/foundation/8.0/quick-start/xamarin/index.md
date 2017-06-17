@@ -56,33 +56,35 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 * Si vous effectuez le développement pour une utilisation sous iOS, collez le code suivant dans la méthode **FinishedLaunching** du fichier **AppDelegate.cs** :
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
+  >Remplacez `<ClassName>` par le nom de votre classe.
 * Si vous effectuez le développement pour une utilisation sous Android, incluez la ligne de code suivante dans la méthode **OnCreate** du fichier **MainActivity.cs** :
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Remplacez `<ClassName>` par le nom de votre classe.
 * Définissez une méthode afin d'obtenir le jeton d'accès et d'effectuer une demande de ressource auprès du serveur MFP, de la manière suivante.
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -94,7 +96,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
            }
     }
    ```
-  
+
 * Appelez la méthode **ObtainToken** dans un constructeur de classe ou en cliquant sur un bouton.
 
 ### 4. Déploiement d'un adaptateur
@@ -106,6 +108,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
    > Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
+
 2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
    ```bash
@@ -139,6 +142,6 @@ La réponse de l'adaptateur s'affiche alors dans la console Xamarin Studio Conso
 {: #next-steps }
 Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{ site.data.keys.product_adj }} :
 
-- Consultez les tutoriels [Adapters development](../../adapters/) 
+- Consultez les tutoriels [Adapters development](../../adapters/)
 - Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
 - Consultez [tous les tutoriels](../../all-tutorials)

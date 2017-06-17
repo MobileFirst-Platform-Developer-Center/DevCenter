@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Desenvolvimento do lado do servidor
+title: Server-side do lado do servidor
 show_disqus: false
 use_dropdown: false
 print_pdf: false

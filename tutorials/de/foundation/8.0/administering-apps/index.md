@@ -52,7 +52,7 @@ Möglichkeiten, MobileFirst-Anwendungen zu verwalten. Die {{ site.data.keys.prod
 auch Tools für die Aufnahme von Verwaltungsoperationen in Ihren Build- und Implementierungsprozess bereit.
 
 Zusätzlich stehen REST-Services für die Ausführung von Verwaltungsoperationen zur Verfügung.
-Die Referenzdokumentation zur API dieser Services finden Sie in [REST-API für den MobileFirst-Server-Verwaltungsservice](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi). 
+Die Referenzdokumentation zur API dieser Services finden Sie in [REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/administration-service/). 
 
 Mit diesen REST-Services können Sie dieselben Operationen wie in der
 {{ site.data.keys.mf_console }} ausführen.
@@ -70,4 +70,3 @@ Ihrer Administratorberechtigungsnachweise.
 
 ### Wählen Sie ein Thema aus: 
 {: #select-a-topic }
-

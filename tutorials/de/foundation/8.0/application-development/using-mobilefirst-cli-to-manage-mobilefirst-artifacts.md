@@ -1,75 +1,85 @@
 ---
 layout: tutorial
-title: Using MobileFirst CLI to Manage MobileFirst Artifacts
-breadcrumb_title: Using the MobileFirst CLI
+title: MobileFirst-Artefakte über die MobileFirst CLI verwalten
+breadcrumb_title: MobileFirst CLI verwenden
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
-Using the CLI you can manage Cordova-based applications that uses the {{ site.data.keys.product_adj }} Cordova plug-in, and Native applications that uses the {{ site.data.keys.product_adj }} Native SDK.
+{{ site.data.keys.product_full }} stellt eine Befehlszeilenschnittstelle (CLI) für den Entwickler bereit (Befehl **mfpdev**) bereit,
+über die Client- und Serverartefakte ohne großen Aufwand verwaltet werden können.   
+Mit der CLI können Sie Cordova-basierte Anwendungen verwalten,
+die das {{ site.data.keys.product_adj }}-Cordova-Plug-in verwenden, sowie native Anwendungen,
+die das native {{ site.data.keys.product_adj }}-SDK verwenden.
 
-You can also create, register, and manage adapters to either local or remote {{ site.data.keys.mf_server }} instances, and administer projects from the command line or via REST services, or from the {{ site.data.keys.mf_console }}.
+Zudem können Sie Adapter in lokalen oder fernen MobileFirst-Server-Instanzen erstellen, registrieren und verwalten und
+Projekte über die Befehlszeile, über REST-Services oder über die
+{{ site.data.keys.mf_console }} verwalten. 
 
-The **mfpdev** commands have two modes: interactive mode and direct mode. In interactive mode, you enter the command without options, and you are prompted for responses. In direct mode, you enter the full command, including options, and prompts are not provided. When applicable, the prompts are context-sensitive to the target platform of the app, as determined by the directory from which you run the command. Use the up and down arrow keys on your keyboard to move through the selections, and press the Enter key when the selection you want is highlighted and preceded by a ">" character.
+Die **mfpdev**-Befehle können im interaktiven Modus oder im Direktmodus ausgeführt werden. Im interaktiven Modus geben Sie den Befehl ohne Optionen ein und werden dann aufgefordert, Antworten einzugeben. Im Direktmodus geben Sie den vollständigen Befehl mit Optionen ein. Es gibt keine Eingabeaufforderung. Die Eingabeaufforderungen sind, soweit anwendbar, vom Kontext der Zielplattform für die App abhängig, der an dem Verzeichnis erkennbar ist, in dem Sie den Befehl ausführen. Über die Taste mit dem Aufwärts- oder dem Abwärtspfeil
+auf Ihrer Tastatur können Sie durch die Auswahloptionen navigieren. Wenn die gewünschte Auswahl hervorgehoben und mit vorangestelltem Zeichen
+">" angezeigt wird, drücken Sie die Eingabetaste. 
 
-In this tutorial you will learn how to install the `mfpdev` Command Line Interface (CLI) and how to use it to manage {{ site.data.keys.mf_server }} instances, applications and adapters.
+In diesem Lernprogramm erfahren Sie, wie die Befehlszeilenschnittstelle (`mfpdev`) installiert
+und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adaptern verwendet wird. 
 
-> For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the {{ site.data.keys.product }} SDK](../../application-development/sdk/) category.
+> Weitere Informationen zur SDK-Integration in Cordova-Anwendungen und nativen Anwendungen enthalten die Lernprogramme
+der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](../../application-development/sdk/).
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Prerequisites](#prerequisites)
-* [Installing the {{ site.data.keys.mf_cli }}](#installing-the-mobilefirst-cli)
-* [List of CLI commands](#list-of-cli-commands)
-* [Interactive and Direct modes](#interactive-and-direct-modes)
-* [Managing {{ site.data.keys.mf_server }} instances](#managing-mobilefirst-server-instances)
-* [Managing Applications](#managing-applications)
-* [Managing and Testing Adapters](#managing-and-testing-adapters)
-* [Helpful commands](#helpful-commands)
-* [Update and Uninstall the Command Line Interface](#update-and-uninstall-the-command-line-interface)
+* [Voraussetzungen](#prerequisites)
+* [{{ site.data.keys.mf_cli }} installieren](#installing-the-mobilefirst-cli)
+* [Liste der CLI-Befehle](#list-of-cli-commands)
+* [Interaktiver Modus und Direktmodus](#interactive-and-direct-modes)
+* [MobileFirst-Server-Instanzen verwalten](#managing-mobilefirst-server-instances)
+* [Anwendungen verwalten](#managing-applications)
+* [Adapter verwalten und testen](#managing-and-testing-adapters)
+* [Hilfreiche Befehle](#helpful-commands)
+* [Befehlszeilenschnittstelle aktualisieren und deinstallieren](#update-and-uninstall-the-command-line-interface)
 
-## Prerequisites
+## Voraussetzungen
 {: #prerequisites }
-The {{ site.data.keys.mf_cli }} is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
+Die {{ site.data.keys.mf_cli }} ist als NPM-Paket in der [NPM-Registry](https://www.npmjs.com/) verfügbar.  
 
-Ensure **node.js** is installed in the development environment in order to install NPM packages.  
-Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
+Stellen Sie sicher, dass in der Entwicklungsumgebung **Node.js** für die Instalation von NPM-Paketen installiert ist.   
+Folgen Sie für die Installation von Node.js den Anweisungen auf [nodejs.org](https://nodejs.org). 
 
-To confirm that node.js is properly installed, run the command `node -v`.
+Führen Sie den Befehl `node -v` aus, um sich zu vergewissern, dass Node.js ordnungsgemäß installiert wurde.
 
 ```bash
 node -v
 v4.2.3
 ```
 
-> **Note:** Minimum supported node.js version is 4.2.3
+> **Hinweis:** Die unterstützte Mindestversion von Node.js ist Version 4.2.3. 
 
-## Installing the {{ site.data.keys.mf_cli }}
+## {{ site.data.keys.mf_cli }} installieren
 {: #installing-the-mobilefirst-cli }
-To install the Command Line Interface run the command:
+Führen Sie für die Installation der Befehlszeilenschnittstelle den folgenden Befehl aus: 
 
 ```bash
 npm install -g mfpdev-cli
 ```
 
-If the CLI .zip file was downloaded from the Download Center of the {{ site.data.keys.mf_console }}, use the command:
+Wenn Sie die CLI-ZIP-Datei über das Download-Center der {{ site.data.keys.mf_console }} heruntergeladen haben, verwenden Sie den folgenden Befehl: 
 
 ```bash
-npm install -g <path-to-mfpdev-cli.tgz>
+npm install -g <Pfad_zu_mfpdev-cli.tgz>
 ```
 
-- To install the CLI without optional dependencies add the `--no-optional` flag:  `npm install -g --no-optional path-to-mfpdev-cli.tgz`
+- Sie können die CLI ohne die optionalen Abhängigkeiten installieren. Fügen Sie in dem Fall das Attribut
+`--no-optional` hinzu (`npm install -g --no-optional Pfad_zu_mfpdev-cli.tgz`). 
 
-To confirm the installation, run the command `mfpdev` without any arguments and it will print the help text:
+Führen Sie zur Überprüfung der Installation den Befehl `mfpdev` ohne Argumente aus. Der Befehl gibt den folgenden Hilfetext aus: 
 
 ```shell
 NAME
      IBM MobileFirst Foundation Command Line Interface (CLI).
 
 SYNOPSIS
-     mfpdev <command> [options]
+     mfpdev <command> [Optionen]
 
 DESCRIPTION
      The IBM MobileFirst Foundation Command Line Interface (CLI) is a command-line
@@ -86,46 +96,46 @@ DESCRIPTION
     ...
 ```
 
-## List of CLI commands
+## Liste der CLI-Befehle
 {: #list-of-cli-commands }
 
-| Command prefix                                                | Command action                               | Description                                                             |
+| Befehlspräfix                                                | Befehlsaktion                               | Beschreibung                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
-| `mfpdev app`	                                                | register                                     | Registers your app with a {{ site.data.keys.mf_server }}.                           |
-|                                                               | config                                       | Enables you to specify the back-end server and runtime to use for your app. In addition, for Cordova apps, enables you to configure several additional aspects such as the default language for system messages and whether to do a checksum security check. Other configuration parameters are included for Cordova apps.                                                                                                                                                |
-|                                                               | pull                                         | Retrieves an existing app configuration from the server.                |
-|                                                               | push                                         | Sends an app's configuration to the server.                             |
-|                                                               | preview                                      | Enables you to preview your Cordova app without requiring an actual device of the target platform type. You can view the preview in either the {{ site.data.keys.mf_mbs }} or your web browser.                                                                               |
-|                                                               | webupdate                                    | Packages the application resources contained in the www directory into a .zip file that can be used for the direct update process.                                                                                                                                     |
-| mfpdev server	                                                | info                                         | Displays information about the {{ site.data.keys.mf_server }}.                      |
-|                                                               | add                                          | Adds a new server definition to your environment                        |
-|                                                               | edit                                         | Enables you to edit a server definition.                                |
-|                                                               | remove                                       | Removes a server definition from your environment.                      |
-|                                                               | console                                      | Opens the {{ site.data.keys.mf_console }}.                               |
-|                                                               | clean                                        | Unregisters apps and removes adapters from the {{ site.data.keys.mf_server }}.      |
-| mfpdev adapter                                                | create                                       | Creates an adapter.                                                     |
-|                                                               | build                                        | Builds an adapter.                                                      |
-|                                                               | build all                                    | Finds and builds all of the adapters in the current directory and its subdirectories. |
-|                                                               | deploy                                       | Deploys an adapter to the {{ site.data.keys.mf_server }}.                           |
-|                                                               | deploy all                                   | Finds all of the adapters in the current directory and its subdirectories, and deploys them to the {{ site.data.keys.mf_server }}. |
-|                                                               | call                                         | Calls an adapter's procedure on the {{ site.data.keys.mf_server }}.                 |
-|                                                               | pull                                         | Retrieves an existing adapter configuration from the server.                |
-|                                                               | push                                         | Sends an adapter's configuration to the server.                             |
-| mfpdev                                                        | config                                       | Sets your configuration preferences for preview browser type, preview timeout value, and server timeout value for the mfpdev command-line interface.                                                                                                                   |
-|                                                               | info                                         | Displays information about your environment, including operating system, memory consumption, node version, and command-line interface version. If the current directory is a Cordova application, information provided by the Cordova cordova info command is also displayed. |
-|                                                               | -v                                           | Displays the version number of the {{ site.data.keys.mf_cli }} currently in use. |
-|                                                               | -d, --debug                                  | Debug mode: Produces debug output.                                      |
-|                                                               | -dd, --ddebug                                | Verbose debug mode: Produces verbose debug output.                      |
-|                                                               | -no-color                                    | Suppresses use of color in command output.                              |
-| mfpdev help                                                   | name of command                              | Displays help for {{ site.data.keys.mf_cli }} (mfpdev) commands. With a arguments, displays more specific help text for each command type or command. i.e "mfpdev help server add" |
+| `mfpdev app`	                                                | register                                     | Registriert eine App bei {{ site.data.keys.mf_server }}                           |
+|                                                               | config                                       | Ermöglicht Ihnen, den Back-End-Server und die Laufzeit für Ihre App anzugeben. Für Cordova-Apps können Sie außerdem diverse zusätzliche Aspekte konfigurieren, z. B. die Standardsprache für Systemnachrichten oder die Überprüfung der Kontrollsumme. Für Cordova-Apps gibt es weitere Konfigurationsparameter.                                                                                                                                                |
+|                                                               | pull                                         | Ruft eine vorhandene App-Konfiguration vom Server ab                |
+|                                                               | push                                         | Sendet die Konfiguration einer App an den Server                              |
+|                                                               | preview                                      | Ermöglicht eine Voranzeige Ihrer Cordova-App ohne ein tatsächliches Gerät für den Zielplattformtyp. Sie können die Voranzeige im {{ site.data.keys.mf_mbs }} oder in Ihrem Web-Browser sehen.                                                                               |
+|                                                               | webupdate                                    | Packt die Anwendungsressourcen aus dem Verzeichnis www in einer ZIP-Datei zusammen, die für die direkte Aktualisierung verwendet werden kann                                                                                                                                     |
+| mfpdev server	                                                | info                                         | Zeigt Informationen zu {{ site.data.keys.mf_server }} an                      |
+|                                                               | add                                          | Fügt eine neue Serverdefinition zu Ihrer Umgebung hinzu                        |
+|                                                               | edit                                         | Ermöglicht die Bearbeitung einer Serverdefinition                                |
+|                                                               | remove                                       | Entfernt eine Serverdefinition aus Ihrer Umgebung                      |
+|                                                               | console                                      | Öffnet die {{ site.data.keys.mf_console }}                               |
+|                                                               | clean                                        | Hebt die Registrierung von Apps bei {{ site.data.keys.mf_server }} auf und entfernt Adapter aus dem Server      |
+| mfpdev adapter                                                | create                                       | Erstellt einen Adapter                                                     |
+|                                                               | build                                        | Erstellt einen Adapterbuild                                                       |
+|                                                               | build all                                    | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und erstellt einen Build für diese Adapter |
+|                                                               | deploy                                       | Implementiert einen Adapter in {{ site.data.keys.mf_server }}                           |
+|                                                               | deploy all                                   | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und implementiert sie in {{ site.data.keys.mf_server }} |
+|                                                               | call                                         | Ruft eine Adapterprozedur in {{ site.data.keys.mf_server }} auf                 |
+|                                                               | pull                                         | Ruft eine vorhandene Adapterkonfiguration vom Server ab                |
+|                                                               | push                                         | Sendet die Konfiguration eines Adapters an den Server                              |
+| mfpdev                                                        | config                                       | Legt Ihre Konfigurationsvorgaben für die Voranzeige fest (Browsertyp, Zeitlimit und Serverzeitlimit für die mfpdev-Befehlszeilenschnittstelle)                                                                                                                   |
+|                                                               | info                                         | Zeigt Informationen zu Ihrer Umgebung an, z. B. das Betriebssystem, die Speicherbelegung, die Knotenversion und die Version der Befehlszeilenschnittstelle. Wenn das aktuelle Verzeichnis eine Cordova-Anwendung ist, werden zusätzlich Informationen vom Cordova-Befehl cordova info angezeigt. |
+|                                                               | -v                                           | Zeigt die Nummer der derzeit verwendeten Version der {{ site.data.keys.mf_cli }} an |
+|                                                               | -d, --debug                                  | Debugmodus: Erzeugt Degubausgaben                                       |
+|                                                               | -dd, --ddebug                                | Ausführlicher Debugmodus: Erzeugt ausführliche Debugausgaben                       |
+|                                                               | -no-color                                    | Unterdrückt die Verwendung von Farben für die Befehlsausgabe                              |
+| mfpdev help                                                   | Befehlsname                              | Zeigt Hilfe für MobileFirst-CLI-Befehle (mfpdev-Befehle) an. Durch Angabe von Argumenten können konkrete Hilfetexte für einzelne Befehlstypen oder für einen Befehl angezeigt werden ("mfpdev help server add"). |
 
-## Interactive and Direct modes
+## Interaktiver Modus und Direktmodus
 {: #interactive-and-direct-modes }
-All commands can be executed in **interactive** or **direct mode**. In the interactive mode, the parameters required for the command will be prompted and some default values will be used. In direct mode, the parameters must be provided with the command being executed.
+Alle Befehle können im **interaktiven Modus** oder im **Direktmodus** ausgeführt werden. Im interaktiven Modus werden Sie zur Eingabe der erforderlichen Parameter aufgefordert und es werden einige Standardwerte verwendet. Im Direktmodus müssen die Parameter zusammen mit dem auszuführenden Befehl angegeben werden. 
 
-Example:
+Beispiel:
 
-`mfpdev server add` in interactive mode:
+`mfpdev server add` im interaktiven Modus: 
 
 ```bash
 ? Enter the name of the new server definition: mydevserver
@@ -139,39 +149,41 @@ Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
 Server profile 'mydevserver' added successfully.
 ```
-The same command in direct mode would be
+Im Direktmodus würde dieser Befehl wie folgt aussehen:
 
 ```bash
 mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault
 ```
 
-To find what is the right syntax for a command in direct mode use `mfpdev help <command>`.
+Die korrekte Syntax für einen Befehl im Direktmodus können Sie mit dem Befehl `mfpdev help <Befehl>` ermitteln.
 
 
-## Managing {{ site.data.keys.mf_server }} instances
+## MobileFirst-Server-Instanzen verwalten
 {: #managing-mobilefirst-server-instances }
-You can use `mfpdev server <option>` command to manage the instances of {{ site.data.keys.mf_server }} that are in use. There must be always at least one server instance listed as the default instance.   The default server is always used if another one was not specified.
+Mit dem Befehl `mfpdev server <option>` können Sie die verwendeten Instanzen von
+{{ site.data.keys.mf_server }} verwalten. Mindestens eine Serverinstanz muss als Standardinstanz aufgelistet sein. Der Standardserver wird immer verwendet, wenn kein anderer Server angegeben ist. 
 
-### List server instances
+### Serverinstanzen auflisten
 {: #list-server-instances }
-To list all the {{ site.data.keys.mf_server }} instances available to be used, run the command:
+Führen Sie den folgenden Befehl aus, um die zur Verfügung stehenden MobileFirst-Server-Instanzen aufzulisten: 
 
 ```bash
 mfpdev server info
 ```
 
-By default, a local server profile is created automatically and used as the current default by the CLI.
+Standardmäßig wird automatisch ein lokales Serverprofil erstellt und von der CLI als Standard verwendet. 
 
-### Add a new server instance
+### Neue Serverinstanz hinzufügen
 {: #add-a-new-server-instance }
-If you are using another local or remote {{ site.data.keys.mf_server }} instance you can add it to the list of instances available to be used with the command:
+Wenn Sie eine weitere lokale oder ferne MobileFirst-Server-Instanz verwenden,
+können Sie sie zur Liste der verfügbaren Instanzen hinzufügen. Verwenden Sie dazu den folgenden Befehl: 
 
 ```bash
 mfpdev server add
 ```
 
-Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.  
-For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation Bluemix service you would do the following:
+Folgen Sie den Eingabeaufforderungen, um den Servernamen, die Server-URL und die Berechtigungsnachweise (Benutzer und Kennwort) anzugeben.   
+Wenn Sie beispielsweise einen {{ site.data.keys.mf_server }} hinzufügen möchten, der in einem Mobile-Foundation-Bluemix-Service ausgeführt wird, verwenden Sie den folgenden Befehl: 
 
 ```bash
 $ mfpdev server add
@@ -188,373 +200,391 @@ The following runtimes are currently installed on this server: mfp
 Server profile 'MyBluemixServer' added successfully. 
 ```
 
-- Replace the "fully qualified URL of this server" with your own.
+- Ersetzen Sie die vollständig qualifizierte URL des Servers ("fully qualified URL of this server") durch Ihre eigene. 
 
-### Edit server instances
+### Serverinstanzen bearbeiten
 {: #edit-server-instances }
-If you want to edit the details of a registered server instance, run the following command and follow the interactive prompt to select the server to be edited and provide the information to be updated.
+Wenn Sie die Details einer registrierten Serverinstanz bearbeiten möchten, führen Sie den folgenden Befehl aus. Folgen Sie den interaktiven Eingabeaufforderungen
+und wählen Sie den zu bearbeitenden Server aus. Geben Sie dann die zu aktualisierenden Informationen an. 
 
 ```bash
 mfpdev server edit
 ```
 
-To set a server as the default one, use:
+Verwenden Sie folgenden Befehl, um einen Server als Standardserver festzulegen: 
 
 ```bash
-mfpdev server edit <server_name> --setdefault
+mfpdev server edit <Servername> --setdefault
 ```
 
-### Remove server instances
+### Serverinstanzen entfernen
 {: #remove-server-instances }
-To remove a server instance from the list of registered servers, run the command:
+Wenn Sie eine Serverinstanz aus der Liste registrierter Server entfernen möchten, führen Sie den folgenden Befehl aus: 
 
 ```bash
 mfpdev server remove
 ```
 
-And select the server from the interactive list
+Wählen Sie den Server in der interaktiven Liste aus. 
 
-### Open {{ site.data.keys.mf_console }}
+### {{ site.data.keys.mf_console }} öffnen
 {: #open-mobilefirst-operations-console }
-To open the console of the default server registered run the command:
+Wenn Sie die Konsole des registrierten Standardservers öffnen möchten, führen Sie den folgenden Befehl aus: 
 
 ```bash
 mfpdev server console
 ```
 
-To open the console of another server, inform the server name as a parameter of the command:
+Wenn Sie die Konsole eines anderen Servers öffnen möchten, geben Sie den Servernamen als Befehlsparameter an: 
 
 ```bash
-mfpdev server console <server_name>
+mfpdev server console <Servername>
 ```
 
-### Remove apps and adapters from a server
+### Apps und Adapter von einem Server entfernen
 {: #remove-apps-and-adapters-from-a-server }
-To remove all apps and adapters registered in a server run the command:
+Wenn Sie alle bei einem Server registrierten Apps und Adapter entfernen möchten, führen Sie den folgenden Befehl aus: 
 
 ```bash
 mfpdev server clean
 ```
 
-And select the server to clean form the interactive prompt.  
-This will put the server instance in a clean state without any app or adapter deployed.
+Wählen Sie an der interaktiven Eingabeaufforderung den zu bereinigenden Server aus.   
+Die Serverinstanz wird in einen bereinigten Zustand (d. h. einen Server ohne implementierte Apps oder Adapter) versetzt. 
 
-## Managing applications
+## Anwendungen verwalten
 {: #managing-applications }
-The command `mfpdev app <option>` can be used to manage applications created with the {{ site.data.keys.product }} SDK.
+Mit dem Befehl `mfpdev app` können Anwendungen, die mit dem MobileFirst-Platform-SDK erstellt wurden, verwaltet werden. 
 
-### Register an application in a server instance
+### Anwendung in einer Serverinstanz registrieren
 {: #register-an-application-in-a-server-instance }
-An  application must be registered in a {{ site.data.keys.mf_server }} when it is ready to be executed.  
-To register an app, run the following command from the root folder of the app project:
+Eine Anwendung muss bei einem {{ site.data.keys.mf_server }} registriert sein, um ausgeführt werden zu können.   
+Führen Sie im Stammordner eines App-Projekts den folgenden Befehl aus, um die App zu registrieren: 
 
 ```bash
 mfpdev app register
 ```
 
-This command can be executed from the root of a Cordova, Android, iOS or Windows application.  
-It will use the default server and runtime to run the following tasks:
+Dieser Befehl kann im Standardverzeichnis einer Cordova-, Android-, iOS- oder Windows-Anwendung ausgeführt werden.   
+Er verwendet für die folgenden Schritte den Standardserver und die Standardlaufzeit: 
 
-* Register an application with a server.
-* Generate a default client properties file for the application.
-* Put the server information into the client properties file.
+* Registrierung einer Anwendung bei einem Server
+* Generierung einer Standarddatei mit Clienteigenschaften für die Anwendung
+* Aufnahme der Serverinformationen in die Clienteigenschaftendatei
 
-For a Cordova application, this command will update the config.xml file.  
-For an iOS application, this command will update the mfpclient.plist file.  
-For an Android or Windows application, this command will update the mfpclient.properties file.
+Bei einer Cordova-Anwendung aktualisiert dieser Befehl die Datei config.xml.   
+Bei einer iOS-Anwendung aktualisiert dieser Befehl die Datei mfpclient.plist.   
+Bei einer Android- oder Windows-Anwendung aktualisiert dieser Befehl die Datei mfpclient.properties. 
 
-To register an app to a server and runtime that is not the default one, use the syntax:
+Verwenden Sie die folgende Syntax, wenn Sie eine App bei einem anderen als dem Standardserver und einer vom Standard abweichenden Laufzeit registrieren möchten: 
 
 ```
-mfpdev app register <server> <runtime>
+mfpdev app register <Server> <Laufzeit>
 ```
 
-For Cordova Windows platform, the `-w <platform>` argument must be added to the command.  The `<platform>` argument is a comma separated list of the windows platforms to be registered. Valid values are `windows`,`windows8` and `windowsphone8`.
+Für Windows-Plattformen muss der Befehl mit dem Argument `-w <Plattform>` angegeben werden. Hier steht
+`<Plattform>` für eine Liste der zu registrierenden Windows-Plattformen. Die einzelnen Plattformen sind jeweils durch ein Komma getrennt. Gültige
+Werte sind `windows`,`windows8` und `windowsphone8`.
 
 ```
 mfpdev app register -w windows8
 ```
 
-### Configure an application
+### Anwendung konfigurieren
 {: #configure-an-application }
-When an application is registered, server related attributes are added to its configuration file.  
-To change the values of these attributes, run the following command:
+Wenn eine Anwendung registriert wird, werden serverbezogene Attribute zur Konfigurationsdatei der Anwendung hinzugefügt.   
+Sie können die Werte dieser Attribute mit folgendem Befehl ändern: 
 
 ```bash
 mfpdev app config
 ```
 
-This command will interactively present a list of attributes that can be changed, and prompt for the new value of the attribute.  
-The attributes available will vary for each platform (iOS, Android, Windows).
+Dieser Befehl zeigt eine interaktive Liste mit Attributen an, die geändert werden können, und fordert Sie zur Eingabe neuer Werte für die Attribute auf.   
+Welche Attribute angezeigt werden, hängt von der jeweiligen Plattform ab (iOS, Android, Windows).
 
-Available configurations are:
+Verfügbare Konfigurationen: 
 
-* The server address and runtime the application will be registered to
+* Angabe von Serveradresse und Laufzeit für die zu registrierende Anwendung
 
-    > **Example use case:** in order to register an application to a {{ site.data.keys.mf_server }} with a certain address, but also have the application connect to a different server address, for example a DataPower appliance: 
+    > **Beispielanwendungsfall:**
+Sie möchten eine Anwendung bei einem {{ site.data.keys.mf_server }} mit einer bestimmten Adresse registrieren. Die Anwendung soll aber auch in der Lage sein,
+eine Verbindung zu einer anderen Serveradresse herzustellen, z. B. zu einem
+DataPower-Gerät.
     >
-    > 1. Run `mfpdev app register` to register the application in the expected {{ site.data.keys.mf_server }} address.
-    > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance. You can also run the command in **direct mode**: `mfpdev app config server http(s)://server-ip-or-host:port`.
+    > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren. 
+    > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server**
+an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
 
-* Setting a public key for the Direct Update authenticity feature 
-* Setting application default language (default is English (en))
-* Whether or not to enable the web resources checksum test
-* What file extensions to ignore during the web resources checksum test
+* Festlegung des öffentlichen Schlüssels für die direkte Aktualisierung 
+* Festlegung der Standardpsrache für die Anwendung. (Die Standardsprache ist Englisch (en).)
+* Festlegung, ob der Kontrollsummentest für Webressourcen aktiviert werden soll 
+* Angabe der Dateierweiterungen, die beim Kontrollsummentest für Webressource ignoriert werden sollen
 
 <div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="app-config-options">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Additional information about web resources checksum settings</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Weitere Informationen zu den Einstellungen für die Kontrollsumme von Webressourcen</b></a>
             </h4>
         </div>
 
         <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
             <div class="panel-body">
-                <p>For the web resources checksum settings, each possible target platform (Android, iOS, Windows 8, Windows Phone 8, and Windows 10 UWP) has a platform-specific key for use in <b>mfpdev</b> direct mode. These keys begin with a string that represents the platform name. For example, <code>windows10_security_test_web_resources_checksum</code> is a true or false setting that specifies whether to enable the web resources checksum test for Windows10 UWP.</p>
+                <p>Bei den Einstellungen für die Kontrollsumme von Webressourcen gibt es bei Verwendung von <b>mfpdev</b> im Direktmodus für jede mögliche Zielplattform (Android, iOS, Windows 8, Windows Phone 8 und Windows 10 UWP) einen plattformspezifischen Schlüssel. Dieser Schlüssel beginnt mit einer Zeichenfolge, die den Plattformnamen repräsentiert. Die Einstellung <code>windows10_security_test_web_resources_checksum</code>, die auf "true" oder "false" gesetzt sein kann, gibt beispielsweise an, ob der Kontrollsummentest der Webressourcen für Windows10 UWP aktiviert werden soll.</p>
                 
                 <table class="table table-striped">
                     <tr>
-                        <td><b>Setting</b></td>
-                        <td><b>Description</b></td>
+                        <td><b>Einstellung</b></td>
+                        <td><b>Beschreibung</b></td>
                     </tr>
                     <tr>
                         <td><code>direct_update_authenticity_public_key</code></td>
-                        <td>Specifies the public key for direct update authentication. The key must be in Base64 format.</td>
+                        <td>Gibt den öffentlichen Schlüssel für die Authentifizierung der direkten Aktualisierung an. Der Schlüssel muss im Base64-Format vorliegen.</td>
                     </tr>
                     <tr>
                         <td><code>ios_security_test_web_resources_checksum</code></td>
-                        <td>If set to <code>true</code>, enables the test for web resources checksum for iOS Cordova apps. The default is <code>false</code>.</td>
+                        <td>Wenn diese Einstellung auf <code>true</code> gesetzt ist, wird der Test der Webressourcenkontrollsumme für iOS-Cordova-Apps aktiviert. Die Standardeinstellung ist <code>false</code>.</td>
                     </tr>
                     <tr>
                         <td><code>android_security_test_web_resources_checksum</code></td>
-                        <td>If set to <code>true</code>, enables the test for web resources checksum for Android Cordova apps. The default is <code>false</code>.</td>
+                        <td>Wenn diese Einstellung auf <code>true</code> gesetzt ist, wird der Test der Webressourcenkontrollsumme für Android-Cordova-Apps aktiviert. Die Standardeinstellung ist <code>false</code>.</td>
                     </tr>
                     <tr>
                         <td><code>windows10_security_test_web_resources_checksum</code></td>
-                        <td>If set to <code>true</code>, enables the test for web resources checksum for Windows 10 UWP Cordova apps. The default is <code>false</code>.</td>
+                        <td>Wenn diese Einstellung auf <code>true</code> gesetzt ist, wird der Test der Webressourcenkontrollsumme für Windows-10-UWP-Cordova-Apps aktiviert. Die Standardeinstellung ist <code>false</code>.</td>
                     </tr>
                     <tr>
                         <td><code>windows8_security_test_web_resources_checksum</code></td>
-                        <td>If set to <code>true</code>, enables the test for web resources checksum for Windows 8.1 Cordova apps. The default is <code>false</code>.</td>
+                        <td>Wenn diese Einstellung auf <code>true</code> gesetzt ist, wird der Test der Webressourcenkontrollsumme für Windows-8.1-Cordova-Apps aktiviert. Die Standardeinstellung ist <code>false</code>.</td>
                     </tr>
                     <tr>
                         <td><code>windowsphone8_security_test_web_resources_checksum</code></td>
-                        <td>If set to <code>true</code>, enables the test for web resources checksum for Windows Phone 8.1 Cordova apps. The default is <code>false</code>.</td>
+                        <td>Wenn diese Einstellung auf <code>true</code> gesetzt ist, wird der Test der Webressourcenkontrollsumme für Windows-Phone-8.1-Cordova-Apps aktiviert. Die Standardeinstellung ist <code>false</code>.</td>
                     </tr>
                     <tr>
                         <td><code>ios_security_ignore_file_extensions</code></td>
-                        <td>Specifies what file extensions to ignore during web resources checksum testing for iOS Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                        <td>Gibt an, welche Dateierweiterungen beim Testen der Kontrollsumme von Webressourcen für iOS-Cordova-Apps ignoriert werden sollen. Geben Sie mehrere Erweiterungen jeweils durch ein Komma getrennt an. Beispiel: jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>android_security_ignore_file_extensions</code></td>
-                        <td>Specifies what file extensions to ignore during web resources checksum testing for Android Cordova apps. Separate multiple extensions with commas. For example:jpg, gif,pdf</td>
+                        <td>Gibt an, welche Dateierweiterungen beim Testen der Kontrollsumme von Webressourcen für Android-Cordova-Apps ignoriert werden sollen. Geben Sie mehrere Erweiterungen jeweils durch ein Komma getrennt an. Beispiel: jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>windows10_security_ignore_file_extensions</code></td>
-                        <td>Specifies what file extensions to ignore during web resources checksum testing for Windows 10 UWP Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                        <td>Gibt an, welche Dateierweiterungen beim Testen der Kontrollsumme von Webressourcen für Windows-10-UWP-Cordova-Apps ignoriert werden sollen. Geben Sie mehrere Erweiterungen jeweils durch ein Komma getrennt an. Beispiel: jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>windows8_security_ignore_file_extensions</code></td>
-                        <td>Specifies what file extensions to ignore during web resources checksum testing for Windows 8.1 Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                        <td>Gibt an, welche Dateierweiterungen beim Testen der Kontrollsumme von Webressourcen für Windows-8.1-Cordova-Apps ignoriert werden sollen. Geben Sie mehrere Erweiterungen jeweils durch ein Komma getrennt an. Beispiel: jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>windowsphone8_security_ignore_file_extensions</code></td>
-                        <td>Specifies what file extensions to ignore during web resources checksum testing for Windows Phone 8.1 Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
+                        <td>Gibt an, welche Dateierweiterungen beim Testen der Kontrollsumme von Webressourcen für Windows-8.1-Cordova-Apps ignoriert werden sollen. Geben Sie mehrere Erweiterungen jeweils durch ein Komma getrennt an. Beispiel: jpg,gif,pdf</td>
                     </tr>
                 </table>
  
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>
 </div>
 
 
-### Preview a Cordova application
+### Cordova-Anwendjung voranzeigen
 {: #preview-a-cordova-application }
-A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
+Die Webressourcen einer Cordova-Anwendung können in einem Browser vorangezeigt werden. Das Voranzeigen einer Anwendung beschleunigt die Entwicklung, da keine Emulatoren und Simulatoren der nativen Plattform verwendet wreden müssen. 
 
-Before running the preview command, you must prepare the project by adding the `wlInitOptions` variable. Complete the following steps:
+Vor Ausführung des Befehls "preview" müssen Sie das Projekt vorbereiten. Fügen Sie dazu die Variable `wlInitOptions` hinzu. Führen Sie die folgenden Schritte aus:
 
-1. Add the *wlInitOptions* variable to your main JavaScript file, which is **index.js** in a standard Cordova app.
+1. Fügen Sie die Variable *wlInitOptions* zur Haupt-JavaScript-Datei hinzu. Bei einer Standard-Cordova-App ist das die Datei **index.js**. 
 
    ```javascript
    var wlInitOptions = {
-      mfpContextRoot:'/mfp', // "mfp" is the default context root of {{ site.data.keys.mf_server }}
-      applicationId:'com.sample.app' // Replace with your own value.
+      mfpContextRoot:'/mfp', // "mfp" ist das Standardkontextstammverzeichnis von {{ site.data.keys.mf_server }}
+      applicationId:'com.sample.app' // Durch eigenen Wert ersetzen
    };
    ```
 
-2. Register the app again by using the following command:
+2. Registrieren Sie die App mit folgendem Befehl erneut: 
 
    ```bash
    mfpdev app register
    ```
 
- 3. Run the following command:
+ 3. Führen Sie den folgenden Befehl aus: 
  
     ```bash
     cordova prepare
     ```
 
- 4. Preview the Cordova application by running the following command from the Cordova application root folder:
+ 4. Zeigen Sie eine Vorschau der Cordova-Anwendung an. Führen Sie dazu im Stammordner der Cordova-Anwendung den folgenden Befehl aus: 
 
     ```bash
     mfpdev app preview
     ```
 
-You will be prompted to select which platform to preview and which type of preview to use.
-There are two options of preview: MBS and Browser.
+Sie werden aufgefordert, die Plattform für die Vorschau und die Art der Vorschau auszuwählen.
+Zur Auswahl stehen die beiden Optionen MBS und Browser.
 
-* MBS - {{ site.data.keys.mf_mbs }}. This method simulates a mobile device in a browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more. Note: You cannot use the cordova-browser with the MBS option.
-* Browser - Simple Browser Rendering. This method presents the www resources of the Cordova application as a usual browser web page.
+* MBS - {{ site.data.keys.mf_mbs }}. Bei Auswahl dieser Option wird ein mobiles Gerät in einem Browser simuliert. Gleichzeitig wird eine rudimentäre Cordova-API-Simulation für Karmera, Dateiupload, Geoortung und anderes bereitgestellt. Hinweis: Den Cordova-Browser können Sie nicht mit der Option MBS verwenden. 
+* Browser - Einfache Darstellung in einem Browser. Bei Auswahl dieser Option werden die Webressourcen der Cordova-Anwendung als normale Browser-Webseite dargestellt. 
 
-> For more details about the preview options see the [Cordova development tutorial](../cordova-apps).
+> Weitere Einzelheiten zu den Vorschauoptionen enthält das Lernprogramm zur [Cordova-Entwicklung](../cordova-apps).
 
-### Update web resources for Direct Update
+### Direkte Aktualisierung von Webressourcen
 {: #update-web-resources-for-direct-update }
-The web resources of a cordova app, like .html, .css and .js files inside **www** folder can be updated without the need to reinstall the app at the mobile device. This is possible with the Direct Update feature provided by {{ site.data.keys.product }}.
+Die Webressourcen einer Cordova-App wie HTML-, CSS- und JS-Dateien im Ordner **www** können mithilfe des MobileFirst-Foundation-Features
+für direkte Aktualisierung aktualisiert werden,
+ohne dass die App neu auf dem mobilen Gerät installiert werden muss. 
 
-> For more details about how Direct Update works see the tutorial [Using Direct Update in Cordova applications](../direct-update).
+> Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen](../direct-update).
 
-When you want to send a new set of web resources to be updated in a cordova application, run the command
+Wenn Sie neue Webressourcen für die Aktualisierung einer Cordova-Anwendung senden möchten, führen Sie folgenden Befehl aus: 
 
 ```bash
 mfpdev app webupdate
 ```
 
-This command will package the updated web resources to a .zip file and upload it to the default {{ site.data.keys.mf_server }} registered. The packaged web resources can be found at the **[cordova-project-root-folder]/mobilefirst/** folder.
+Dieser Befehl packt die aktualisierten Webressourcen zu einer ZIP-Datei und lädt diese Datei auf den registrierten Standard-MobileFirst-Server hoch. Sie finden die gepackten Webressourcen im Ordner **[Stammorder_des_Cordova-Projekts]/mobilefirst/**. 
 
-To upload the web resources to different server instance, inform the server name and runtime as part of the command
+Wenn Sie die Webressourcen an eine andere Serverinstanz senden möchten, geben Sie mit dem Befehl den Servernamen und die Laufzeit an: 
 
 ```bash
-mfpdev app webupdate <server_name> <runtime>
+mfpdev app webupdate <Servername> <Laufzeit>
 ```
 
-You can use the --build parameter to generate the .zip file with the packaged web resources without uploading it to a server.
+Mit dem Parameter --build können Sie die ZIP-Datei mit den gepackten Webressourcen generieren, ohne die Datei auf einen Server hochzuladen: 
 
 ```bash
 mfpdev app webupdate --build
 ```
 
-To upload a package that was previously built, use the --file parameter
+Wenn Sie ein erstelltes Paket hochladen möchten, verwenden Sie den Parameter --file: 
 
 ```bash
 mfpdev app webupdate --file mobilefirst/com.ibm.test-android-1.0.0.zip
 ```
 
-There is also the option to encrypt the content of package using the --encrypt parameter
+Sie können den Inhalt des Pakets auch verschlüsseln. Verwenden Sie dazu den Parameter --encrypt:
 
 ```bash
 mfpdev app webupdate --encrypt
 ```
 
-### Pull and Push the {{ site.data.keys.product_adj }} Application configuration
+### {{ site.data.keys.product_adj }}-Anwendungskonfiguration mit Pull und Push übertragen
 {: #pull-and-push-the-mobilefirst-application-configuration }
-After a {{ site.data.keys.product_adj }} Application is registered in a {{ site.data.keys.mf_server }}, it is possible to change some of the application configurations using the {{ site.data.keys.mf_server }} Console and them pull those configurations from the server to the application with the following command:
+Wenn eine {{ site.data.keys.product_adj }}-Anwendung bei einem
+{{ site.data.keys.mf_server }} registriert ist, kann ein Teil der Anwendungskonfiguration
+in der MobileFirst-Server-Konsole geändert werden. Die so geänderte Konfiguration kann dann mittels Pull vom Server
+zur Anendung übertragen werden. Verwenden Sie dazu den folgenden Befehl: 
 
 ```bash
 mfpdev app pull
 ```
 
-It is also possible to change the application configurations locally and push the changes to the {{ site.data.keys.mf_server }} with the command:
+Es ist auch möglich, die Anwendungskonfiguration lokal zu ändern, und die Änderungen per Push mit folgendem Befehl zum
+{{ site.data.keys.mf_server }} zu übertragen: 
 
 ```bash
 mfpdev app push
 ```
 
-**Example:** scope mapping to security checks can be performed in the {{ site.data.keys.mf_console }}, and then be pulled from  the server using the abve command. The downloaded .zip file is stored in the project's **[root directory]/mobilefirst** folder, and can be later used with the `mfpdev app push` to upload it to a different {{ site.data.keys.mf_server }}, allowing for fast configuration and setup by re-using the predefined configuration.
+**Beispiel:** In der {{ site.data.keys.mf_console }} können Sie Bereiche Sicherheitsüberprüfungen zuordnen
+und diese Änderung dann mihilfe einer Pull-Operation zum Server übertragen. Verwenden Sie dazu den obigen Befehl. Die heruntergeladene ZIP-Datei wird im Projektordner
+**[Stammverzeichnis]/mobilefirst** gespeichert und kann später mit dem Befehl
+`mfpdev app push` auf einen anderen {{ site.data.keys.mf_server }} hochgeladen werden.
+Diese Wiederverwendung bereits erstellter Konfigurationen ermöglicht eine rasche Konfiguration und Einrichtung. 
 
-## Managing and Testing Adapters
+## Adapter verwalten und testen
 {: #managing-and-testing-adapters }
-It is possible to manage adapters with the command `mfpdev adapter <option>`.
+Adapter können mit dem Befehl `mfpdev adapter` verwaltet werden.
 
-> To learn more about adapters see the tutorials at the [Adapters](../../adapters/) category.
+> Weitere Informationen zu Adaptern enthalten die Lernpgoramme der Kategorie [Adapter](../../adapters/). 
 
 
-### Create an Adapter
+### Adapter erstellen
 {: #create-an-adapter }
-To create a new Adapter, use the command
+Verwenden Sie den folgenden Befehl, um einen neuen Adapter zu erstellen: 
 
 ```bash
 mfpdev adapter create
 ```
 
-And follow the prompt to inform the name, type and group id of the adapter
+Folgen Sie den Eingabeaufforderungen uind geben Sie den Namen, den Typ und die Gruppen-ID des Adapters an. 
 
-### Build an Adapter
+### Adapterbuild erstellen
 {: #build-an-adpater }
-To build an adapter, run the following command from the adapter's root folder:
+Führen Sie im Stammordner des Adapters den folgenden Befehl aus, um einen Adapterbuild zu erstellen: 
 
 ```bash
 mfpdev adapter build
 ```
 
-This will generate a .adapter file at the **<AdapterName>/target** folder.
+Mit diesem Befehl wird im Ordner **<Adaptername>/target** eine Datei .adapter erstellt. 
 
-### Deploy an Adapter
+### Adapter implementieren
 {: #deploy-an-adapter}
-The following command will deploy the adapter to the default server:
+Mit dem folgenden Befehl wird der Adapter im Standardserver implementiert: 
 
 ```bash
 mfpdev adapter deploy
 ```
 
-To deploy to a different server, use:
+Verwenden Sie für die Implementierung auf einem anderen Server den folgenden Befehl: 
 
 ```bash
-mfpdev adapter deploy <server_name>
+mfpdev adapter deploy <Servername>
 ```
 
-### Call an Adapter from the command line
+### Adapter in der Befehlszeile aufrufen
 {: #call-an-adapter-from-the-command-line }
-After an adapter is deployed it is possible to call the adapter from the command line to test it's behavior with the command:
+Ein implementierter Adapter kann in der Befehlszeile aufgerufen werden, um sein Verhalten zu testen. Verwenden Sie dazu den folgenden Befehl: 
 
 ```bash
 mfpdev adapter call
 ```
 
-You will be prompted to inform the adapter, procedure and parameters to use. The output of the command will be the response of the adapter procedure.
+Sie werden aufgefordert, den Adapter, die Prozedur und die zu verwendenden Parameter anzugeben. Die Befehlsausgabe ist die Antwort der Adapterprozedur. 
 
-> Learn more in the [Testing and debugging adapters](../../adapters/testing-and-debugging-adapters/) tutorial.
+> Weitere Informationen enthält das Lernprogramm
+[Adapter testen und debuggen](../../adapters/testing-and-debugging-adapters/). 
 
-## Helpful commands
+## Hilfreiche Befehle
 {: #helpful-commands }
-To set preferences of the mfpdev CLI, such as default browser and default preview mode, use the command:
+Verwenden Sie den folgenden Befehl, um für die CLI (mfpdev) Vorgaben wie den Standardbrowser und den Standardvorschaumodus festzulegen: 
 
 ```bash
 mfpdev config
 ```
 
-To see the help content describing all mfpdev commands, use:
+Wenn Sie die Hilfetexte für alle mfpdev-Befehle sehen möchten, verwenden Sie den folgenden Befehl: 
 
 ```bash
 mfpdev help
 ```
 
-The following command will generate a list with information about your environment:
+Mit dem folgenden Befehl wird eine Liste mit Informationen zu Ihrer Umgebung generiert: 
 
 ```bash
 mfpdev info
 ```
 
-To print the version of the mfpdev CLI, use:
+Mit folgendem Befehl können Sie die Version der CLI (mfpdev) ausgeben: 
 
 ```bash
 mfpdev -v
 ```
 
-## Update and Uninstall the Command Line Interface
+## Befehlszeilenschnittstelle aktualisieren und deinstallieren
 {: #update-and-uninstall-the-command-line-interface }
-To update the command line interface run the command:
+Führen Sie den folgenden Befehl aus, um die Befehlszeilenschnittstelle zu aktualisieren: 
 
 ```bash
 npm update -g mfpdev-cli
 ```
 
-To uninstall the command line interface run the command:
+Führen Sie den folgenden Befehl aus, um die Befehlszeilenschnittstelle zu deinstallieren: 
 
 ```bash
 npm uninstall -g mfpdev-cli

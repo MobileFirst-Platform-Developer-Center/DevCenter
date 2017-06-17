@@ -9,11 +9,11 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Die serverseitige Entwicklung stellt die Tools und Funktionen bereit, die erforderlich sind, damit eine Anwendung eine Verbindung zu {{site.data.keys.mf_server }} herstellen kann oder damit Unternehmens-Back-End-Systeme und Cloud-Services Inhalte für eine Anwendung bereitstellen können. Authentifizierung und Sicherheit haben einen engen Bezug zur serverseitigen Entwicklung. Lesen Sie daher auch die entsprechenden Abschnitte.
+Die serverseitige Entwicklung stellt die Tools und Funktionen bereit, die erforderlich sind, damit eine Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen kann oder damit Unternehmens-Back-End-Systeme und Cloud-Services Inhalte für eine Anwendung bereitstellen können. Authentifizierung und Sicherheit haben einen engen Bezug zur serverseitigen Entwicklung. Lesen Sie daher auch die entsprechenden Abschnitte.
 
 <form role="searchbox"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
-        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Suchen nach..." name="q">
+        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Suchen..." name="q">
     </div>
 </form>
 

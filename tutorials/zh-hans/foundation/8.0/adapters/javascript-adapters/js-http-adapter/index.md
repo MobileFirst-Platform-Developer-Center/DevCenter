@@ -78,7 +78,7 @@ weight: 1
                             <li>NETSCAPE</li>
                             <li>IGNORE_COOKIES</li>
                         </ul>
-有关这些值的更多信息，请参阅 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 组件</a>页面。</li>
+                        有关这些值的更多信息，请参阅 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 组件</a>页面。</li>
                     <li><b>maxRedirects</b>：<i>可选。</i>HTTP 可以跟随的最大重定向数。当后端应用程序由于某些错误（如认证失败）而发送循环重定向时，此属性非常有用。如果此属性设置为 0，那么适配器根本不尝试跟随重定向，并会向用户返回 HTTP 302 响应。缺省值为 10。
 </li>
                     <li><b>protocol</b>：<i>可选。</i>要使用的 URL 协议。下列值有效：<b>http</b>（缺省值）和 <b>https</b>。</li>

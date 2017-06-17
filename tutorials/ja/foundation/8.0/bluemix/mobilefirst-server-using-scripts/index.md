@@ -260,7 +260,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>セクションを閉じる</b></a>
-                                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -272,7 +272,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 1. IBM Bluemix 環境にログインします。  
 
     次のコマンドを実行します。`cf login`  
-プロンプトが出されたら、次の情報を入力します。
+    プロンプトが出されたら、次の情報を入力します。
       * Bluemix API エンドポイント
       * E メール
       * パスワード
@@ -670,7 +670,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-<b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
+                <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
@@ -739,7 +739,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                    </h4>
+                                </h4>
                             </div>
 
                             <div id="collapse-script-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-initenv">
@@ -860,7 +860,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                    </h4>
+                                </h4>
                             </div>
 
                             <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserver">
@@ -899,7 +899,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                    </h4>
+                                </h4>
                             </div>
                             <div id="collapse-script-startserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startserver">
                             <div class="panel-body">
@@ -969,7 +969,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 
                                 <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>セクションを閉じる</b></a>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 <li><b>startservergroup.sh - IBM コンテナー・グループでのイメージの実行</b><br />
@@ -1065,7 +1065,7 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 
                                         <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>セクションを閉じる</b></a>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

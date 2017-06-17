@@ -9,14 +9,14 @@ weight: 5
 ## 概説
 {: #overview }
 
-{{site.data.keys.mf_analytics }} サポートがプッシュ通知用にセットアップされると ([『Analytics サポートのセットアップ』](../../../notifications/analytics/)を参照)、プッシュの使用状況についてレポートを作成できます。
+{{ site.data.keys.mf_analytics }} サポートがプッシュ通知用にセットアップされると ([『Analytics サポートのセットアップ』](../../../notifications/analytics/)を参照)、プッシュの使用状況についてレポートを作成できます。
 
 ## プッシュ・レポート
 {: #push-reports }
 
-プッシュ通知レポートは、{{site.data.keys.mf_analytics_short }} サポートの構成後に使用できるようになります。プッシュ・イベントは {{site.data.keys.mf_analytics_short }} サービスに送信されます。
+プッシュ通知レポートは、{{ site.data.keys.mf_analytics_short }} サポートの構成後に使用できるようになります。プッシュ・イベントは {{ site.data.keys.mf_analytics_short }} サービスに送信されます。
 
-1. {{site.data.keys.mf_analytics_console }}で、ナビゲーション・バーから**「インフラストラクチャー」**セクションを選択します。
+1. {{ site.data.keys.mf_analytics_console }}で、ナビゲーション・バーから**「インフラストラクチャー」**セクションを選択します。
 2. **「プッシュ通知」**タブを選択します。
 
 以下の 2 つのレポート・タイプが表示されます。

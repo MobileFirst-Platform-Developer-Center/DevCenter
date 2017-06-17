@@ -1,50 +1,56 @@
 ---
 layout: tutorial
-title: Client-side Log Collection
-breadcrumb_title: Client-side log collection
+title: Clientseitige Protokollerfassung
+breadcrumb_title: Clientseitige Protokollerfassung
 relevantTo: [ios,android,javascript]
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging.
-{{ site.data.keys.product_full }} provides a set of logging API methods for this purpose.
+Für die Protokollierung wird der Quellcode so instrumentiert, dass mithilfe von API-Aufrufen Nachrichten aufgezeichnet werden, die Diagnose und Debug erleichtern. Die {{ site.data.keys.product_full }} stellt zu diesem Zweck eine Reihe von API-Methoden für die Protokollierung bereit. 
 
-The {{ site.data.keys.product_adj }} `Logger` API is similar to commonly-used logger APIs, such as `console.log` (JavaScript), `java.util.logging` (Java) and `NSLog` (Objective-C), and provides the additional capability of persistently capturing logged data for sending to the {{ site.data.keys.mf_server }} to be used for analytics gathering and developer inspection. Use the `Logger` APIs to report log data at appropriate levels, so that developers who inspect logs can triage and fix problems without having to reproduce problems in their labs.
+Die {{ site.data.keys.product_adj }}-`Logger`-API ist mit allgemein verwendeten Logger-APIs wie `console.log` (JavaScript), `java.util.logging` (Java) und `NSLog` (Objective-C) vergleichbar und
+hat zusätzlich die Fähigkeit, protokollierte Daten persistent zu erfassen, damit sie an {{ site.data.keys.mf_server }}
+gesendet werden können, wo sie für Analysen zusammengestellt und von Entwicklern untersucht werden können. Verwenden Sie die
+`Logger`-APIs, um Daten der jeweils angemessenen Protokollebenen zu dokumentieren, sodass Entwickler, die die Protokolle prüfen, Probleme sichten und korrigieren können, ohne in ihrem Labor Probleme reproduzieren zu müssen.
 
-#### Availability
+#### Verfügbarkeit
 {: #availability }
-The {{ site.data.keys.product_adj }}-provided `Logger` API methods can be used with iOS, Android, Web, and Cordova applications.
+Die von {{ site.data.keys.product_adj }} bereitgestellten `Logger`-API-Methoden können mit iOS-, Android-, Web- und Cordova-Anwendungen genutzt werden. 
 
-## Logging levels
+## Protokollierungsstufen
 {: #logging-levels }
-Logging libraries typically have verbosity controls that are frequently called **levels**.  
-The logging levels from the most verbose to the least are as follows:
+Die Protokollierungsbibliotheken stellen in der Regel Steuerelemente für die Ausführlichkeit bereit, die häufig auch als **Stufen** bezeichnet werden.   
+Es gibt die folgenden Protokollierungsstufen (von der größten bis zur geringsten Ausführlichkeit): 
 
-* TRACE - used for method entry and exit points
-* DEBUG - used for method result output
-* LOG - used for class instantiation
-* INFO - used for reporting initialization
-* WARN - used to log deprecated usage warnings
-* ERROR - used for unexpected exceptions
-* FATAL - used for unrecoverable crashes or hangs
+* TRACE - für Ein- und Austrittspunkte von Methoden
+* DEBUG - für die Ergebnisausgabe von Methoden
+* LOG - für die Klasseninstanziierung
+* INFO - für die Initialisierung der Berichterstellung
+* WARN - für die Protokollierung von Warnungen zur Verwendung veralteter Elemente
+* ERROR - für unerwartete Ausnahmen
+* FATAL - für nicht behebbare Abstürze oder Blockierungen
 
-> **Note:** Using FATAL will result in collecting an app crash. To avoid skewing your app crash data we recommend not using this keyword.
+> **Hinweis:** Bei Verwendung von FATAL wird ein App-Absturz erfasst. Es wird empfohlen, diees Schlüsselwort nicht zu verwenden, um eine Verzerrung der App-Absturzdaten zu vermeiden.
 
-The client SDKs are configured at the FATAL verbosity by default, which means little or no raw debug logs are output or captured. You can adjust the verbosity programmatically, or adjust it, by setting a configuration profile on the {{ site.data.keys.mf_analytics_console }}, which must be retrieved explicitly by your app.
+Die Client-SDKs sind standardmäßig mit der Ausführlichkeitsebene FATAL konfiguriert. Es werden also kaum oder gar
+keine unformatierten Debugprotokolle ausgegeben oder erfasst. Sie können die Ausführlichkeit programmgestützt angepasst werden oder durch das Festlegen eines Konfiguationsprofils in der
+{{ site.data.keys.mf_analytics_console }}, das von Ihrer App explizit abgerufen werden muss. 
 
-### Logging from client applications:
+### Protokollierung von Clientanwendungen
 {: #logging-from-client-applications }
-* [Logging in JavaScript (Cordova, Web) applications](javascript/)
-* [Logging in iOS applications](ios/)
-* [Logging in Android applications](android/)
+* [Protokollierung in JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen)](javascript/)
+* [Protokollierung in iOS-Anwendungen](ios/)
+* [Protokollierung in Android-Anwendungen](android/)
 
-### Adjusting log verbosity
+### Ausführlichkeit der Protokolle anpassen
 {: #adjusting-log-verbosity }
-Once logging level is set, either by setting the client or retrieving the server profile, the client filters the logging messages it sends. If a message below the threshold is explicitly sent, the client ignores it.
+Wenn die Protokollierungsstufe über die Konfiguration des Clients oder durch das Abrufen des Serverprofils
+definiert ist, filtert der Client die von ihm gesendeten Protokollierungsnachrichten. Wenn eine Nachricht unterhalb des Schwellenwertes explizit gesendet wird, ignoriert der Cient diese Nachricht. 
 
-For example, to set the verbosity level to DEBUG:
+Gehen Sie beispielsweise wie folgt vor, um die Ausführlichkeit
+auf DEBUG zu setzen:
 
 #### iOS
 {: #ios}
@@ -74,16 +80,18 @@ WL.Logger.config({ level: 'DEBUG' });
 
 #### JavaScript (Web)
 {: #javascript-web }
-For the web SDK the default trace level cannot be changed from the client.
+Bei Verwendung des Web-SDK kann die Standardstufe
+"trace" nicht vom Client geändert werden. 
 
-## Crash capture
+## Absturzerfassung
 {: #crash-capture }
-The {{ site.data.keys.product_adj }} client SDK, on Android and iOS applications, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view. In Cordova applications, captures JavaScript global errors and if possible a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.
+Das {{ site.data.keys.product_adj }}-Client-SDK erfasst für Android- und iOS-Anwendungen bei einem Absturz einen Stack-Trace und protokolliert den Absturz auf der Ebene FATAL. Diese Art von Absturz ist ein echter Absturz, bei dem die Benutzerschnittstelle nicht mehr für den Benutzer angezeigt wird. Für Cordova-Anwendungen werden globale JavaScript-Fehler und nach Möglichkeit ein JavaScript-Aufruf-Stack erfasst und auf der Ebene FATAL protokolliert. Diese Art von Absturz ist kein Absturzereignis. Diese Art von Absturz kann sich negativ auf die Benutzererfahrung in der Laufzeit auswirken, was aber nicht zwingend der Fall sein muss. 
 
-Crashes, uncaught exceptions, and global errors are caught and logged automatically once the app is running again.
+Abstürze, nicht abgefangene Ausnahmen und globale Fehler werden automatisch abgefangen und protokolliert, sobald die App wieder aktiv ist. 
 
-## Viewing the logs
+## Protokolle anzeigen
 {: #viewing-the-logs }
-After the logs are collected and sent to the server, view them in the {{ site.data.keys.mf_analytics_console }}. Choose the **Apps** panel from the navigation bar and click the **Client Log Search** tab.
+Die erfassten und an den Server gesendeten Protokolle können Sie in der {{ site.data.keys.mf_analytics_console }} anzeigen. Wählen Sie in der Navigationsleiste
+die Anzeige **Apps** aus und klicken Sie auf das Register **Clientprotokollsuche**. 
 
-![Search and view logs](consoleViewClientLogs.png)
+![Protokolle suchen und anzeigen](consoleViewClientLogs.png)

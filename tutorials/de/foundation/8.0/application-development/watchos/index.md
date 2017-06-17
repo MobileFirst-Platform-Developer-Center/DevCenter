@@ -1,93 +1,132 @@
 ---
 layout: tutorial
-title: Developing for Apple watchOS
+title: Entwicklung für Apple watchOS
 breadcrumb_title: watchOS 2, watchOS 3
 relevantTo: [ios]
 weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-In this example, you will learn how  to set up the development environment for watchOS 2 and later using {{ site.data.keys.product_adj }} framework. The example is created and described using watchOS 2. It also works fine on watchOS 3.
+In diesem Beispiel lernen Sie, wie die Entwicklungsumgebung für watchOS 2 eingerichtet und das {{ site.data.keys.product_adj }}-Framework verwendet wird. Das erstellte und verwendete Beispiel gilt für watchOS 2. Es funktioniert aber auch unter watchOS 3.
 
 ## Setup
 {: #setup }
-To set up the development environment for watchOS , create the Xcode project, add the watchOS framework, and set up the necessary targets.
+Erstellen Sie das Xcode-Projekt, fügen Sie das
+watchOS-Framework hinzu und konfigurieren Sie die erforderlichen Ziele, um Ihre Entwicklungsumgebung für watchOS einzurichten. 
 
-1. Create a watchOS 2 app in Xcode.
-    * Choose the **File → New → Project** option; the **Choose a template for your new project** dialog appears.
-    * Choose the **watchOS2/Application ** option, click **Next**.
-    * Name the project and click **Next**.
-    * From the navigation dialog, choose the project folder.
+1. Erstellen Sie in Xcode eine watchOS-2-App. 
+    * Wählen Sie die Option **File → New → Project** aus. Daraufhin wird der Dialog **Choose a template for your new project** angezeigt. 
+    * Wählen Sie die Option **watchOS2/Application ** aus und klicken Sie auf **Next**.
+    * Benennen Sie das Projekt und klicken Sie auf **Next**.
+    * Wählen Sie vom Navigationsdialog den Projektordner aus.
 
-    The project navigation tree now contains a main app folder and a **[project name] WatchKit Extension** folder and target.
+    Die Projektnavigationsstruktur enthält jetzt einen Haupt-App-Ordner, einen Ordner
+**[Projektname] WatchKit Extension** und ein Ziel.
 
-    ![WatchOS project in Xcode](WatchOSProject.jpg)
 
-2. Add the {{ site.data.keys.product_adj }} watchOS framework.
-    * To install the necessary frameworks with CocoaPods, see [Adding the {{ site.data.keys.product_adj }} Native SDK](../../application-development/sdk/ios/#adding-support-for-apple-watchos) tutorial.
-    * To install the necessary frameworks manually:
-        * Obtain the watchOS framework from the Download Center of the {{ site.data.keys.mf_console }}.
-        * Select the **[project name] WatchKit Extension** folder in the left navigation pane.
-        * From the **File** menu, choose **Add Files**.
-        * Click the **Options** button and select the following:
-            * **Copy items if needed** and **Create groups** options.
-            * **[project name] WatchKit Extension** in the **Add to targets** section.
-        * Click **Add**.
+    ![watchOS-Projekt in Xcode](WatchOSProject.jpg)
 
-        Now when you select the **[project name] WatchKit Extension** in the **Targets** section:
-            * The framework path appears in the **Framework Search Paths** setting in the **Search Paths** section of the **Build Settings** tab.
-            * The **Link Binary With Libraries** section of the **Build Phases** tab lists the **IBMMobileFirstPlatformFoundationWatchOS.framework** file:
-            ![watchOS linked frameworks](watchOSlinkedframeworks.jpg)
+2. Fügen Sie das {{ site.data.keys.product_adj }}-watchOS-Framework
+hinzu. 
+    * Informationen zur Installation der erforderlichen Frameworks mit CocoaPods enthält das Lernprogramm [Natives {{ site.data.keys.product_adj }}-SDK hinzufügen](../../application-development/sdk/ios/#adding-support-for-apple-watchos). 
+    * Gehen Sie wie folgt vor, um die erforderlichen Frameworks manuell zu installieren: 
+        * Fordern Sie im Download-Center in der {{ site.data.keys.mf_console }} das watchOS-Framework an. 
+        * Wählen Sie links im Navigationsbereich den Ordner **[Projektname] WatchKit Extension** aus. 
+        * Wählen Sie im Menü **Datei** den Eintrag **Dateien
+hinzufügen** aus.
+        * Klicken Sie auf die Schaltfläche **Optionen** und wählen Sie Folgendes aus: 
+            * Optionen **Copy items if needed** und **Create
+groups**
+            * **[Projektname] WatchKit Extension** im Abschnitt **Add to targets**
+        * Klicken Sie auf **Hinzufügen**.
 
-        > **Note:** WatchOS 2 requires bitcode. From Xcode 7 the **Build Options** is set to **Enable Bitcode Yes** (**Build Settings** tab, **Build Options** section).
+        Wenn Sie jetzt im Abschnitt **Targets** den Ordner **[Projektname] WatchKit Extension** auswählen, sehen Sie Folgendes: 
+            * Der Frameworkpfad erscheint in der Einstellung **Framework Search
+Paths** im Abschnitt **Search Paths** der Registerkarte
+**Build Settings**. 
+            * Im Abschnitt **Link Binary With Libraries** der Registerkarte
+**Build Phases** wird die Datei **IBMMobileFirstPlatformFoundationWatchOS.framework** aufgelistet.
+            ![Frameworks in Verbindung mit watchOS](watchOSlinkedframeworks.jpg)
 
-3. Register both the main app and the WatchKit extension on the server. Run `mfpdev app register` for each Bundle ID (or register from the {{ site.data.keys.mf_console }}):
-    * com.worklight.[project_name]
-    * com.worklight.[project_name].watchkitextension
+        > **Hinweis:** WatchOS 2 erfordert Bitcode. Ab Xcode 7 sind die **Build
+Options** auf **Enable Bitcode Yes** gesetzt (Abschnitt **Build
+Options** der Registerkarte **Build Settings**).
 
-4. In Xcode, from the File->Add File menu, navigate to the mfpclient.plist file created by mfpdev and add it to the project.
-    * Select the file to display the **Target Membership** box. Select the **WatchOSDemoApp WatchKit Extension** target in addition to the **WatchOSDemoApp**.
+3. Registrieren Sie sowohl die Haupt-App als auch die WatchKit-Erweiterung beim Server. Führen Sie für jede Bundle-ID `mfpdev app register` aus (oder führen Sie die Registrierung in der
+{{ site.data.keys.mf_console }} aus):
+    * com.worklight.[Projektname]
+    * com.worklight.[Projektname].watchkitextension
 
-The Xcode project now contains a main app and a watchOS 2 app, each can be developed independently. For Swift, the entry point for the watchOS 2 app is the **InterfaceController.swift** file in the **[project name] watchKit Extension** folder. For Objective-C the entry point is the **ViewController.m** file.
+4. Navigieren Sie in Xcode im Menü "File -> Add
+File" zur Datei mfpclient.plist, die mit
+mfpdev erstellt wurde, und fügen Sie sie zum Projekt hinzu. 
+    * Wählen Sie im Feld **Target Membership** die anzuzeigende Datei aus. Wählen Sie zusätzlich zu **WatchOSDemoApp** das Ziel
+**WatchOSDemoApp
+WatchKit Extension** aus. 
 
-## Setting up {{ site.data.keys.product_adj }} security for the iPhone app and the watchOS app
+Das Xcode-Projekt enthält jetzt eine Haupt-App und eine watchOS-2-App, die unabhängig voneinander entwickelt werden können. Der Swift-Eintrittspunkt für die
+watchOS-2-App ist die Datei **InterfaceController.swift** im Ordner **[Projektname] watchKit Extension**". Der Objective-C-Eintrittspunkt ist die Datei **ViewController.m**. 
+
+## {{ site.data.keys.product_adj }}-Sicherheit für eine iPhone-App und eine watchOS-App einrichten
 {: #setting-up-mobilefirst-security-for-the-iphone-app-and-the-watchos-app }
-The Apple Watch and iPhone devices differs physically. Therefore the security checks for each must be appropriate for the available input devices. For example, the Apple Watch is limited to a number pad and does not allow the usual username/password security check. Therefore access to protected resources on the server could be enabled using a pin code. Because of these and similar differences, it is necessary to apply different security checks for each target.
+Die Apple Watch unterscheidet sich physisch vom iPhone. Die Sicherheitsüberprüfungen müssen daher zum jweiligen Eingabegerät
+passen. Die Apple
+Watch hag beispielsweise nur einen Ziffernblick, sodass die übliche Sicherheitsüberprüfung mit Benutzernamen/Kennwort nicht möglich ist. Der Zugriff auf geschützte Ressourcen auf dem Server könnte dafür über
+einen PIN-Code aktiviert werden. Aufgrund dieser und vergleichbarer Unterschiede ist es notwendig, für jedes Ziel andere Sicherheitsüberprüfungen
+einzurichten. 
 
-Below is one example of creating an app with both an iPhone and an Apple Watch target. This architecture allows each to have its own security check. The differing security checks are just examples of how you can design features for each target. Additional security checks might be available.
+Es folgt ein Beispiel für die Erstellung einer App, einmal mit einem
+iPhone und einmal mit einer Apple Watch als Ziel. Die Architektur ermöglicht für jedes dieser Ziele eine eigene Sicherheitsüberprüfung. Die unterschiedlichen
+Sicherheitsüberprüfungen sind nur Beispiele dafür, wie Features für diese Ziele gestaltet werden können.
+Es kann weitere Sicherheitsüberprüfungen geben. 
 
-1. Determine the scope and security checks defined by the protected resource.
-2. In the {{ site.data.keys.mf_console }}:
-    * Ensure that both apps are registered on the server:
-        * com.worklight.[project_name]
-        * com.worklight.[project_name].watchkitextension
-    * Map the scopeName to the defined security checks:
-        * For com.worklight.[project_name] map it to the username/password check.
-        * For com.worklight.[project_name].watchkitapp.watchkitextension map it to the pin code security check.
+1. Bestimmen Sie den Bereich und die Sicherheitsüberprüfungen, die für die geschützte Ressource gelten.
+2. Gehen Sie in der {{ site.data.keys.mf_console }} wie folgt vor:
+    * Stellen Sie sicher, dass beide Apps beim Server registriert sind: 
+        * com.worklight.[Projektname]
+        * com.worklight.[Projektname].watchkitextension
+    * Ordnen Sie scopeName wie folgt den definierten Sicherheitsüberprüfungen zu: 
+        * Für com.worklight.[Projektname] muss scopeName der Überprüfung mit
+Benutzernamen/Kennwort zugeordnet werden. 
+        * Für com.worklight.[Projektname].watchkitapp.watchkitextension muss scopeName der Sicherheitsüberprüfung mit
+PIN-Code zugeordnet werden. 
 
-## WatchOS Limitation
+## Einschränkung für watchOS
 {: #watchos-limitation }
-The optional frameworks that add features to the {{ site.data.keys.product_adj }} app are not provided for watchOS development. Some other features are limited by constraints imposed by the watchOS or Apple Watch device.
+Die optionalen Frameworks, die Features
+zu den {{ site.data.keys.product_adj }}-Apps hinzufügen, werden nicht für die
+watchOS-Entwicklung bereitgestellt. Darüber hinaus gibt es Features, für die es Einschränkungen seitens
+der Uhr mit watchOS oder der Apple Watch gibt. 
 
-| Feature | Limitation |
+| Feature | Einschränkung |
 |---------|------------|
-| openSSL | Not supported |
-| JSONStore| Not supported |
-| Notifications | Not supported |
-| Message alerts displayed by the {{ site.data.keys.product_adj }} code | Not supported |
-| Application authenticity validation | Not compatible with bitcode, and therefore not supported |
-| Remote disable/notify	| Requires customization (see below) |
-| Usernames/password security check | use the CredentialsValidation security check |
+| openSSL | Nicht unterstützt |
+| JSONStore| Nicht unterstützt |
+| Benachrichtigungen | Nicht unterstützt |
+| Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts | Nicht unterstützt |
+| Validierung der Anwendungsauthentizität | Nicht mit Bitcode kompatibel und daher nicht unterstützt |
+| Inaktivierung/Benachrichtigung über Fernzugriff	| Erfordert Anpassungen (siehe unten) |
+| Sicherheitsüberprüfung mit Benutzernamen/Kennwort | Sicherheitsüberprüfung CredentialsValidation verwenden |
 
-### Remote Disable/Notify
+### Inaktivierung/Benachrichtigung über Fernzugriff
 {: #remote-disablenotify }
-With the {{ site.data.keys.mf_console }}, you can configure the {{ site.data.keys.mf_server }} to disable access (and return a message) to client applications based on the version they are running (see [Remotely disabling application access to protected resources](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources). Two options provide default UI alerts:
+In der
+{{ site.data.keys.mf_console }} können Sie
+{{ site.data.keys.mf_server }} so konfigurieren, dass
+der Zugriff auf Clientanwendungen je nach ausgeführter Version inaktiviert (und eine Nachricht zurückgegeben) wird
+(siehe [Anwendungszugriff
+auf geschützte Ressourcen über Fernzugriff inaktivieren](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources)). Zwei Optionen stellen Standard-UI-Alerts bereit: 
 
-* when the app is active but a messages is sent: **Active and Notifying**
-* when the app is outdated and access is denied: **Access Denied**
+* Wenn die App aktiv ist und Nachrichten gesendet werden: **Aktiv und Benachrichtigung**
+* Wenn die App veraltet ist und der Zugriff verweigert wird: **Zugriff verweigert**
 
-For watchOS:
+watchOS:
 
-* To see messages where the app is set to **Active and Notifying,** a custom remote disable challenge handler must be implemented and registered. The custom challenge handler must be initialized with the security check `wl_remoteDisableRealm`.
-* In the case where the access is disabled (**Access Denied**) the client app receives an error message in the failure callback or request delegate handler. The developer can decide how to handle the error, either notifying the user through the UI or writing to the log. In addition the above method of creating a custom challenge handler can be used.
+* Wenn die App auf **Aktiv und Benachrichtigung** gesetzt ist und Sie Nachrichten anzeigen möchten, muss ein Abfrage-Handler für die Inaktivierung über Fernzugriff implementiert und registriert werden. Der angepasste Abfrage-Handler muss mit der Sicherheitsüberprüfung
+`wl_remoteDisableRealm` initialisiert werden.
+
+* Wenn der Zugriff inaktiviert ist (**Zugriff verweigert**), empfängt die Client-App im Fehler-Callback oder im Handler des Anforderungsdelegaten eine
+Fehlernachricht. Der Entwickler kann entscheiden, wie der Fehler behandelt werden soll.
+Der Benutzer kann über die UI benachrichtigt werden oder der Fehler kann ins Protokoll geschrieben werden. Darüber hinaus kann ein angepasster Abfrage-Handler erstellt und
+verwendet werden. 
