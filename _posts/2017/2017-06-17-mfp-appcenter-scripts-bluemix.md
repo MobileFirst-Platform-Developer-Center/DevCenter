@@ -4,6 +4,9 @@ date: 2017-06-17
 tags:
 - MobileFirst_Foundation
 - Application Center
+- Bluemix
+- IBM_Containers
+- Docker
 - Announcement
 version: 8.0
 author:
