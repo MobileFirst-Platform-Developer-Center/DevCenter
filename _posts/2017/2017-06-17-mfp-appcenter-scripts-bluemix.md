@@ -21,6 +21,7 @@ Starting from MobileFirst Foundation [iFix8.0.0.0-MFPF-IF20170608-0406](https://
 1. Setup your host computer with the required tools ([Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases)).
 2. Setup your [Bluemix](https://console.bluemix.net) account.
 3. Build the MobileFirst Application Center and push it to Bluemix as a Cloud Foundry application.
+
 Finally, you will upload the apps to the Application Center and can install the same from devices.
 
 
@@ -30,6 +31,7 @@ Finally, you will upload the apps to the Application Center and can install the 
 1. Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in).
 2. Setup your Bluemix account.
 3. Build a MobileFirst Application Server image and push it to the Bluemix repository.
+
 Finally, you will run the image on IBM Containers as a single Container or a Container group, and upload the apps to the Application Center.
 
 **For more details on installation procedure refer the links below**
