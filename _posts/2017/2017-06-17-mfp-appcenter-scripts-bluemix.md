@@ -1,5 +1,5 @@
 ---
-title: Scripts for deploying IBM Mobile First Platform Application Center on Bluemix is released.
+title: Scripts for deploying IBM Mobile First Platform Application Center on Bluemix is released
 date: 2017-06-17
 tags:
 - MobileFirst_Foundation
