@@ -565,7 +565,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>Optional: [-m|--memory] SERVER_MEM </td>
-                                                <td>Expose Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
                                             </tr>
                                             <tr>
                                                 <td>Optional: [-se|--ssh] SSH_ENABLE </td>
