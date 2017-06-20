@@ -1511,9 +1511,9 @@ Before you apply an interim fix, back up your existing configuration files. The 
 ```
     You can now build and deploy the updated server.
 
-    a. Run the ```prepareserver.sh``` script to rebuild the server image and push it to the IBM Containers service.
+    a. Run the `prepareserver.sh` script to rebuild the server image and push it to the IBM Containers service.
 
-    b. Run the ```startserver.sh``` script to run the server image as a standalone container or ```startservergroup.sh``` to run the server image as a container group.
+    b. Run the `startserver.sh` script to run the server image as a standalone container or `startservergroup.sh` to run the server image as a container group.
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
