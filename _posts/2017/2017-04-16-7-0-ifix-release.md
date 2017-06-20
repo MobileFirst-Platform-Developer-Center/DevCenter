@@ -7,6 +7,7 @@ tags:
 - MobileFirst_Foundation
 - Announcement
 - iFix_7.0
+- iFix
 author:
   name: Sreelatha Sankaranarayanan
 ---
