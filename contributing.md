@@ -4,7 +4,7 @@ We've open sourced our tutorials and samples so that if you will find an error i
 
 * For sample applications, please use the [specific sample's repository](https://github.com/MobileFirst-Platform-Developer-Center) for opening issues and pull requests.  
 * For product documentation, please use this very repository. The source files for product documentation or tutorials is in markdown.
-* If you have a question about a sample or about the product, start a new question on [StackOverflow](https://stackoverflow.com/questions/ask) with the **ibm-mobilefirst** tag or join our [Slack community](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/).
+* If you have a question about a sample or about the product, start a new question on [StackOverflow](https://stackoverflow.com/questions/ask) with the **ibm-mobilefirst** tag or join our [Slack community](https://mobilefirstplatform.ibmcloud.com/blog/2017/05/26/come-chat-with-us/).
 
 #### Pull requests  
 Make small pull requests. The smaller a change is, the easier it is to confirm and accept it. When submitting a pull reuqest, be descriptive - what did you change, and why did you make the change.
