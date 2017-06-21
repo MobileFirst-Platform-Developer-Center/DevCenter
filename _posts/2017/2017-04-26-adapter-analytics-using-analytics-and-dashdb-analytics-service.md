@@ -79,7 +79,7 @@ private void callAdapter(){
 - R-script below can be used to plot number of adapter requests. Change the dashDB schema name with yours.
 
 ```
-########### R script for displaying MFP number of adapter calls made ###############
+########### R script for displaying MFP number of adapter calls made. ###############
 
 library(ibmdbR)
 
