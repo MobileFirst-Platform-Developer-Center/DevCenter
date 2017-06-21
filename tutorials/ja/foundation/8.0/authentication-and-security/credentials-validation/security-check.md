@@ -34,7 +34,7 @@ downloads:
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 
     @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         return false;
     }
 
@@ -96,7 +96,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### 構成クラス
 {: #configuration-class }
-adapter.xml ファイルと {{site.data.keys.mf_console }} を使用して、有効な PIN コードを構成することもできます。
+adapter.xml ファイルと {{ site.data.keys.mf_console }} を使用して、有効な PIN コードを構成することもできます。
 
 `CredentialsValidationSecurityCheckConfig` を継承する新規 Java クラスを作成します。デフォルト構成を継承するために、親のセキュリティー検査クラスに一致するクラスを継承する必要があります。
 

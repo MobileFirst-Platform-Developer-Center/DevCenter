@@ -1,32 +1,33 @@
 ---
 layout: tutorial
-title: Resource request from iOS applications
+title: Ressourcenanforderung von iOS-Anwendungen
 breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
-  - name: Download Xcode project
+  - name: Xcode-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Mit der {{ site.data.keys.product_adj }} erstellte Anwendungen können mit der REST-API `WLResourceRequest` auf Ressourcen zugreifen.   
+Die REST-API funktioniert mit allen Adaptern und externen Ressourcen. 
 
-**Prerequisites**:
+**Voraussetzungen:**
 
-- Ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/ios) to your Native iOS project.
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- Stellen Sie sicher, dass das [SDK der {{ site.data.keys.product }}](../../../application-development/sdk/ios) zu Ihrem nativen
+iOS-Projekt hinzugefügt wurde. 
+- Informieren Sie sich über das [Erstellen von Adaptern](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+Die Klasse `WLResourceRequest` handhabt an Adapter oder externe Ressourcen gerichtete Ressourcenanforderungen. 
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
+Erstellen Sie ein `WLResourceRequest`-Objekt und geben Sie den Pfad zu der Ressource und die HTTP-Methode an.   
+Verfügbare Methoden sind `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` und `WLHttpMethodDelete`.
 
 Objective-C
 
@@ -42,15 +43,16 @@ let request = WLResourceRequest(
 )
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
+* Verwenden Sie für **JavaScript-Adapter** `/adapters/{AdapterName}/{procedureName}`. 
+* Verwenden Sie für **Java-Adapter** `/adapters/{AdapterName}/{path}`. Die Angabe für `path` hängt davon ab, wie Sie Ihre
+`@Path`-Annotationen im Java-Code definiert haben. Eingeschlossen sind auch alle verwendeten `@PathParam`-Annotationen. 
+* Wenn Sie auf Ressourcen außerhalb des Projekts zugreifen möchten, verwenden Sie die vollständige URL nach Maßgabe des externen Servers. 
+* **timeout**: Anforderungszeitlimit in Millisekunden (optional)
 
-## Sending the request
+## Anforderung senden
 {: #sending-the-request }
-Request the resource by using the `sendWithCompletionHandler` method.  
-Supply a completion handler to handle the retrieved data:
+Fordern Sie die Ressource mit der Methode `sendWithCompletionHandler` an.   
+Geben Sie einen Completion-Handler für die abgerufenen Daten an: 
 
 Objective-C
 
@@ -76,19 +78,19 @@ request.sendWithCompletionHandler { (response, error) -> Void in
 }
 ```
 
-Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
+Alternativ können Sie `sendWithDelegate` verwenden und einen mit den Protokollen `NSURLConnectionDataDelegate` und `NSURLConnectionDelegate` konformen Delegaten angeben. So können Sie die Antwort differenzierter bearbeiten, wie es beispielsweise bei binären Antworten der Fall ist.    
 
-## Parameters
+## Parameter
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+Bevor Sie Ihre Anforderung senden, können Sie nach Bedarf Parameter hinzufügen. 
 
-### Path parameters
+### Pfadparameter
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object.
+Pfadparameter (`/path/value1/value2`) werden - wie bereits erläutert - während der Erstellung des `WLResourceRequest`-Objekts festgelegt. 
 
-### Query parameters
+### Abfrageparameter
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
+Wenn Sie Abfrageparameter (`/path?param1=value1...`) senden möchten, verwenden Sie für die einzelnen Parameter die Methode `setQueryParameter`: 
 
 Objective-C
 
@@ -103,9 +105,9 @@ request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 ```
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters-query }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 Objective-C
 
@@ -119,19 +121,19 @@ Swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
 
-This should be used with `WLHttpMethodGet`.
+Dieses Array sollte mit `WLHttpMethodGet` verwendet werden.
 
-### Form parameters
+### Formularparameter
 {: #form-parameters }
-To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
+Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie `sendWithFormParameters` anstelle von `sendWithCompletionHandler`:
 
 Objective-C
 
 ```objc
-//@FormParam("height")
+// @FormParam("height")
 NSDictionary *formParams = @{@"height":@"175"};
 
-//Sending the request with Form parameters
+// Anforderung mit Formularparametern senden
 [request sendWithFormParameters:formParams completionHandler:^(WLResponse *response, NSError *error) {
     if (error == nil){
         NSLog(@"%@", response.responseText);
@@ -143,10 +145,10 @@ NSDictionary *formParams = @{@"height":@"175"};
 Swift
 
 ```swift
-//@FormParam("height")
+// @FormParam("height")
 let formParams = ["height":"175"]
 
-//Sending the request with Form parameters
+// Anforderung mit Formularparametern senden
 request.sendWithFormParameters(formParams) { (response, error) -> Void in
     if(error == nil){
         NSLog(response.responseText)
@@ -157,9 +159,9 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 }
 ```
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters-form }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 Objective-C
 
@@ -172,42 +174,43 @@ Swift
 let formParams = ["params":"['value1', 'value2']"]
 ```
 
-This should be used with `WLHttpMethodPost`.
+Dieses Array sollte mit `WLHttpMethodPost` verwendet werden.
 
-### Header parameters
+### Headerparameter
 {: #header-parameters }
-To send a parameter as an HTTP header use the `setHeaderValue` API:
+Wenn Sie einen Parameter als HTTP-Header senden möchten, verwenden Sie die API `setHeaderValue`: 
 
 Objective-C
 
 ```objc
-//@HeaderParam("Date")
+// @HeaderParam("Date")
 [request setHeaderValue:@"2015-06-06" forName:@"birthdate"];
 ```
 Swift
 
 ```swift
-//@HeaderParam("Date")
+// @HeaderParam("Date")
 request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
-### Other custom body parameters
+### Weitere angepasste Hauptteilparameter
 {: #other-custom-body-parameters }
 
-- `sendWithBody` allows you to set an arbitrary String in the body.
-- `sendWithJSON` allows you to set an arbitrary dictionary in the body.
-- `sendWithData` allows you to set an arbitrary `NSData` in the body.
+- Mit `sendWithBody` können Sie im Hauptteil eine beliebige Zeichenfolge festlegen. 
+- Mit `sendWithJSON` können Sie im Hauptteil ein beliebiges Verzeichnis festlegen. 
+- Mit `sendWithData` können Sie im Hauptteil beliebige `NSData` festlegen. 
 
-### Callback queue for completionHandler and delegate
-In order to avoid blocking the UI while receiving responses, a private callback queue can be specified to execute completionHandler block or delegate for `sendWithCompletionHandler` and `sendWithDelegate` set of APIs.
+### Callback-Warteschlange für Completion-Handler und Delegaten
+Wenn Sie verhindern möchten, dass die Benutzerschnittstelle während des Empfangs von Antworten blockiert wird,
+können Sie eine private Callback-Warteschlange für den Completion-Handler-Block der `sendWithCompletionHandler`- und `sendWithDelegate`-APIs angeben. 
 
 #### Objective-C
 
 ```objc
-//creating callback queue
+// Callback-Warteschlange erstellen
 dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL);
 
-//Sending the request with callback queue
+// Anforderung mit Callback-Warteschlange senden
 [request sendWithCompletionHandler:completionQueue completionHandler:^(WLResponse *response, NSError *error) {
     if (error == nil){
         NSLog(@"%@", response.responseText);
@@ -219,48 +222,50 @@ dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callba
 #### Swift
 
 ```swift
-//creating callback queue
+// Callback-Warteschlange erstellen
 var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
 
-//Sending the request with callback queue
+// Anforderung mit Callback-Warteschlange senden
 request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
   if (error == nil){
       NSLog(@"%@", response.responseText);
   } else {
       NSLog(@"%@", error.description);
-  }
+    }
 }
 ```
 
-## The response
+## Antwort
 {: #the response }
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+Das Objekt `response` enthält die Antwortdaten. Über die Methoden und Eigenschaften dieses Objekts können Sie die erforderlichen Informationen abrufen. Gängige Eigenschaften sind
+`responseText` (String), `responseJSON` (JSON Object) (wenn die Antwort im JSON-Format vorliegt)
+und `status` (Int) (HTTP-Status der Antwort). 
 
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+Verwenden Sie die Objekte `response` und `error`, um die vom Adapter abgerufenen Daten zu erhalten. 
 
-## For more information
+## Weitere Informationen
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html).
+> Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](../../../api/client-side-api/objc/client/).
 
-<img alt="Image of the sample application" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
-## Sample application
+<img alt="Beispielanwendung" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
+## Beispielanwendung
 {: #sample-application }
-The ResourceRequestSwift project contains an iOS application, implemented in Swift, that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+Das Projekt ResourceRequestSwift enthält eine in Swift implementierte iOS-Anwendung, die mit einem Java-Adapter eine Ressourcenanforderung absetzt.   
+Das Adapter-Maven-Projekt enthält den beim Aufrufen der Ressourcenanforderung verwendeten Java-Adapter. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80), um das iOS-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80), um das Adapter-Maven-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 
 
-#### Note about iOS 9:
+#### Hinweis zu iOS 9:
 {: #note-about-ios-9 }
 
-> Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
+> Xcode 7 aktiviert standardmäßig [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14). Für das Lernprogramm müssen Sie ATS inaktivieren. ([Lesen Sie hier mehr](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).)
+>   1. Klicken Sie in Xcode mit der rechten Maustaste auf **[Projekt]/info.plist → Open As → Source Code**. 
+>   2. Fügen Sie Folgendes ein: 
 >
 ```xml
 >      <key>NSAppTransportSecurity</key>

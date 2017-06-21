@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Logging in Android Applications
-breadcrumb_title: Logging in Android
+title: Protokollierung in Android-Anwendungen
+breadcrumb_title: Protokollierung in Android
 relevantTo: [android]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-This tutorial provides the required code snippets in order to add logging capabilities in Android applications.
+Dieses Lernprogramm enthält die Code-Snippets, die erforderlich sind, um Protokollierungsfähigkeiten zu Android-Anwendungen hinzuzufügen. 
 
-**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
+**Voraussetzung:** Sie müssen die [Übersicht über die clientseitige Protokollerfassung](../) gelesen haben.
 
-## Enabling log capture
+## Protokollerfassung aktivieren
 {: #enabling-log-capture }
-By default, log capture is enabled. Log capture saves logs to the client and can be enabled or disabled programmatically. Logs are sent to the server with an explicit send call, or with auto log
+Die Protokollerfassung ist standardmäßig
+aktiviert. Sie speichert Protokolle im Client und kann programmgesteuert aktiviert oder inaktiviert werden. Protokolle werden mit einem expliziten Sendeaufruf oder automatisch an den Server gesendet. 
 
-> **Note:** Enabling log capture at verbose levels can impact the consumption of the device CPU, file system space, and the size of the payload when the client sends logs over the network.
-
-To disable log capturing:
+> **Hinweis:** Die Aktivierung der Protokollerfassung auf einer Ebene mit großer Ausführlichkeit kann sich
+auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. Inaktivieren Sie die Protokollerfassung wie folgt: 
 
 ```java
 Logger.setCapture(false);
 ```
 
-## Sending captured logs
+## Erfasste Protokolle senden
 {: #sending-captured-logs }
-Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+Sie können Protokolle gemäß Ihrer Anwendungslogik an {{ site.data.keys.product_adj }} senden. Sie können auch das automatische Senden von Protokollen aktivieren. Wenn Protokolle nicht vor dem Erreichen ihrer maximalen Größe gesendet werden, wird die Protokolldatei zugunsten aktuellerer Protokolle bereinigt. 
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data on an interval ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
+> **Hinweis:** Übernehmen Sie das folgende Muster für die Erfassung von Protokolldaten. Durch das Senden von Daten in einem Intervall stellen Sie sicher, dass Sie Ihre Protokolldaten in der {{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.
 
 ```java
 Timer timer = new Timer();
@@ -41,45 +41,49 @@ timer.schedule(new TimerTask() {
 }, 0, 60000);
 ```
 
-To ensure that all captured logs are sent, consider one of the following strategies:
+Mit folgenden Strategien können Sie sicherstellen, dass alle erfassten Protokolle gesendet werden: 
 
-* Call the `send` method at a time interval.
-* Call the `send` method from within the app lifecycle event callbacks.
-* Increase the max file size of the persistent log buffer (in bytes):
+* Rufen Sie die Methode `send` in einem bestimmten Zeitintervall auf. 
+* Rufen Sie die Methode `send` innerhalb von Callbacks zu Lebenszyklusereignissen auf. 
+* Erhöhen Sie den Wert für die maximale Größe des persistenten Protokollpuffers (in Bytes).
 
 ```java
 Logger.setMaxFileSize(150000);
 ```
 
-## Auto log sending
+## Protokolle automatisch senden
 {: auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client.
+Das automatische Senden von Protokollen ist standardmäßig inaktiviert. Immer, wenn eine Ressourcenanforderung erfolgreich an den Server gesendet wird, werden auch die erfassten Protokolle gesendet, wobei zwischen den Sendevorgängen ein zeitlicher Abstand von mindestens 60 Sekunden liegen muss. Das automatische Senden von Protokollen kann vom Client aktiviert oder inaktiviert werden. 
 
-To enable:
+Aktivierung: 
 
 ```java
 Logger.setAutoSendLogs(true);
 ```
 
-To disable:
+Inaktivierung: 
 
 ```java
 Logger.setAutoSendLogs(false);
 ```
 
-## Fine-tuning with the Logger API
+## Optimierung mit der Logger-API
 {: #fine-tuning-with-the-logger-api }
-The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+Das {{ site.data.keys.product_adj }}-Client-SDK
+nutzt intern die Logger-API. Vom SDK erstellte Protokolleinträge werden standardmäßig erfasst. Zur Optimierung der Protokollerfassung können Sie
+Logger-Instanzen mit Paketnamen verwenden. Mit serverseitigen Filtern können Sie außerdem die Protokollierungsstufe
+steuern.
 
-As an example to capture logs only where the level is ERROR for the `myApp` package name, follow these steps.
 
-1. Use a `logger` instance with the `myApp` package name.
+Wenn Sie beispielsweise für das Paket `myApp` nur Protokolle der Stufe ERROR erfassen möchten, gehen Sie wie folgt vor: 
+
+1. Verwenden Sie eine `Logger`-Instanz mit dem Paketnamen `myApp`. 
 
    ```java
    Logger logger = Logger.getInstance("MyApp");
    ```
 
-2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
+2. **Bei Bedarf** können Sie einen Filter angeben, um die Protokollerfassung und -ausgabe programmgesteuert auf die angegebene Stufe und das angegebene Paket zu beschränken. 
 
    ```java
    HashMap<String, LEVEL> filters = new HashMap<>();
@@ -87,23 +91,29 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
    Logger.setFilters(filters);
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **Optional:** Steuern Sie die Filter über Fernzugriff. Rufen Sie dazu ein Serverkonfigurationsprofil ab. 
 
-## Fetching server configuration profiles
+## Serverkonfigurationsprofile abrufen
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages.
+Die Protokollierungsstufen können vom Client festgelegt werden
+oder über das Abrufen von Konfigurationsdateien vom Server. In der
+{{ site.data.keys.mf_analytics_console }} kann eine Protokollierungsstufe global
+(für alle Logger-Instanzen) oder für bestimmte Pakete festgelegt werden. 
 
-> For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/).
+> Informationen zum KOnfigurieren der Filter in der {{ site.data.keys.mf_analytics_console }} finden Sie unter [Protokollfilter konfigurieren](../../../analytics/console/log-filters/).
 
-For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+Damit der Client die auf dem Server festgelegten
+prioritären Konfigurationswerte abruft, muss die Methode
+`updateConfigFromServer`
+von einem Abschnitt des Codes aufgerufen werden, der regulär ausgeführt wird, z. B. von den App-Lebenszyklus-Callbacks. 
 
 ```java
 Logger.updateConfigFromServer();
 ```
 
-## Logging example
+## Protokollierungsbeispiel
 {: #logging-example }
-Outputs to a browser JavaScript console, LogCat, or Xcode console.
+Die Ausgabe erfolgt in einem Browser in einer JavaScript-Konsole, in LogCat oder in der Xcode-Konsole. 
 
 ```java
 import com.worklight.common.Logger;

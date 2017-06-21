@@ -113,7 +113,8 @@ weight: 2
 * 与 MobileFirst 6.2 或更高版本集成的应用程序。
 
 SDK 包含必需和可选 SDK。
-每个必需或可选 SDK 具有其自己的 pod。必需的 IBMMobileFirstPlatformFoundation pod 是系统的核心。它实施客户机/服务器连接，处理安全、分析和应用程序管理。
+每个必需或可选 SDK 具有其自己的 pod。  
+必需的 IBMMobileFirstPlatformFoundation pod 是系统的核心。它实施客户机/服务器连接，处理安全、分析和应用程序管理。
 
 以下可选 pod 提供其他功能。
 
@@ -154,6 +155,7 @@ SDK 包含必需和可选 SDK。
       ```
       
     * 在文件中指定以上列表中的附加 pod（如果应用程序需要使用这些 pod 提供的其他功能）。例如，如果应用程序使用 OpenSSL，那么 **Podfile** 可能如下所示：
+
     
       ```xml
       use_frameworks!
@@ -169,6 +171,7 @@ SDK 包含必需和可选 SDK。
       ```
         
       或者，要获取次要版本号的最新补丁，语法如下：
+
     
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '~>8.0.0'
@@ -194,6 +197,7 @@ SDK 包含必需和可选 SDK。
    ```
     
    如果使用的是推送或 JSONStore，那么需要包含独立导入。
+
 
    #### 推送
    {: #push }
@@ -267,7 +271,7 @@ SDK 包含必需和可选 SDK。
 | {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | 使用 OS API 在应用程序之间共享令牌。 | 
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | 使用 [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc)。 | 
 | `BaseProvisioningChallengeHandler` | 无替换。设备供应现在由安全框架自动处理。 | 
-| `ChallengeHandler` | 对于定制网关验证问题，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。| 
+| `ChallengeHandler` | 对于定制网关验证问题，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。 | 
 | `WLChallengeHandler` | 使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。 | 
 | `ChallengeHandler.isCustomResponse()` | 使用 [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)。 | 
 | `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。 | 

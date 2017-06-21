@@ -21,7 +21,7 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
 ### adapter-resources 폴더 
 {: #the-adapter-resources-folder }
  
-`adapter-resources` 폴더는 XML 구성 파일을 포함합니다. 이 구성 파일은 연결 옵션을 설명하고, 애플리케이션 또는 기타 어댑터에 제공되는 프로시저를 나열합니다. 
+**adapter-resources** 폴더는 XML 구성 파일을 포함합니다. 이 구성 파일은 연결 옵션을 설명하고, 애플리케이션 또는 기타 어댑터에 제공되는 프로시저를 나열합니다. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,54 +46,53 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a></h4>
+                <a name="click-for-adapter-xml-attributes-and-subelements" class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a></h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>필수.</i> 어댑터 이름입니다.
+                    <li><code>name</code>: <i>필수.</i> 어댑터 이름입니다.
 이 이름은
 {{ site.data.keys.mf_server }}
 내에서 고유해야 합니다. 이름은 영숫자 문자 및 밑줄을 포함할 수 있으며 문자로 시작해야 합니다. 어댑터를 정의하고 배치한 후에는 이름을 수정할 수 없습니다. </li>
-					<li><b>displayName</b>: <i>선택사항.</i> {{ site.data.keys.mf_console }}에
+					<li><b>&lt;displayName&gt;</b>: <i>선택사항.</i> {{ site.data.keys.mf_console }}에
 표시되는 어댑터의 이름입니다. 이 요소가 지정되지 않으면 이름 속성 값이 대신 사용됩니다. </li>
-					<li><b>description</b>: <i>선택사항.</i> 어댑터에 대한 추가 정보입니다.
+					<li><b>&lt;description&gt;</b>: <i>선택사항.</i> 어댑터에 대한 추가 정보입니다.
 {{ site.data.keys.mf_console }}에 표시됩니다. </li>
-					<li><b>connectivity</b>: <i>필수.</i> 어댑터가 백엔드 애플리케이션에 연결하는 메커니즘을 정의합니다. 여기에는 <code>connectionPolicy</code> 하위 요소가 포함됩니다.
+					<li><b>&lt;connectivity&gt;</b>: <i>필수.</i> 어댑터가 백엔드 애플리케이션에 연결하는 메커니즘을 정의합니다. 여기에는 &lt;connectionPolicy&gt; 하위 요소가 포함됩니다.
 <ul>
-                            <li><b>connectionPolicy</b>: <i>필수</i>. <code>connectionPolicy</code>는 연결 특성을 정의합니다. 이 하위 요소의 구조는
-백엔드 애플리케이션의 통합 기술에 따라 다릅니다. connectionPolicy에 대한 자세한 정보는 <a href="js-http-adapter">HTTP 어댑터 connectionPolicy
-요소</a> 및 <a href="js-sql-adapter">SQL 어댑터 connectionPolicy 요소</a>를 참조하십시오. </li>
+                            <li><b>&lt;connectionPolicy&gt;</b>: <i>필수</i>. 연결 특성을 정의합니다. 이 하위 요소의 구조는
+백엔드 애플리케이션의 통합 기술에 따라 다릅니다. &lt;connectionPolicy&gt;에 대한 자세한 정보는 <a href="js-http-adapter">HTTP 어댑터 &lt;connectionPolicy&gt; 요소</a> 및 <a href="js-sql-adapter">SQL 어댑터 &lt;connectionPolicy&gt; 요소</a>를 참조하십시오. </li>
                         </ul>
                     </li>
-                    <li><b>procedure</b>: <i>필수.</i> 백엔드 애플리케이션에 의해 노출되는
+                    <li><b>&lt;procedure&gt;</b>: <i>필수.</i> 백엔드 애플리케이션에 의해 노출되는
 서비스에 액세스하기 위한 프로세스를 정의합니다. <ul>
-                            <li><b>name</b>: <i>필수.</i> 프로시저 이름입니다. 이 이름은
+                            <li><code>name</code>: <i>필수.</i> 프로시저 이름입니다. 이 이름은
 어댑터 내에서 고유해야 합니다. 이름은 영숫자 문자 및 밑줄을 포함할 수 있으며 문자로 시작해야 합니다. </li>
-                            <li><b>audit</b>: <i>선택사항.</i> 프로시저에 대한 호출이 감사 로그에
+                            <li><code>audit</code>: <i>선택사항.</i> 프로시저에 대한 호출이 감사 로그에
 로그되는지 여부를 정의합니다. 유효값은 다음과 같습니다.<ul>
-                                    <li><b>true</b>: 프로시저에 대한 호출이 감사 로그에 기록됩니다.
+                                    <li><code>true</code>: 프로시저에 대한 호출이 감사 로그에 기록됩니다.
 </li> 
-                                    <li><b>false</b>: 기본값입니다. 프로시저에 대한 호출이 감사 로그에 로그되지 않습니다.
+                                    <li><code>false</code>: 기본값입니다. 프로시저에 대한 호출이 감사 로그에 로그되지 않습니다.
 </li>
                                 </ul>
                             </li>
-                            <li><b>scope</b>: <i>선택사항.</i> 어댑터 자원 프로시저를 보호하는 보안 범위로, 공백으로 구분된 0개 이상의
-범위 요소 문자열입니다. 범위 요소는 보안 검사 또는 보안 검사의 이름에 맵핑되는
-키워드일 수 있습니다. scope 속성의 기본값은
-빈 문자열입니다. <b>secured</b> 속성의 값이 false이면 scope 속성이 무시됩니다. OAuth 자원 보호에 대한 정보는 <a href="../../authentication-and-security">권한 부여 개념</a> 학습서를 참조하십시오. </li>
-                            <li><b>secured</b>: <i>선택사항.</i> 어댑터 자원 프로시저가 {{ site.data.keys.product }} 보안 프레임워크에 의해 보호되는지 여부를 정의합니다. 유효값은 다음과 같습니다.<ul>
-                                    <li><b>true</b>: 기본값입니다. 프로시저가 보호됩니다. 프로시저를 호출하려면
+                            <li><code>scope</code>: <i>선택사항.</i> 어댑터 자원 프로시저를 보호하는 보안 범위입니다. 이 범위는 간격으로 구분된 하나 이상의 범위 요소 문자열일 수 있으며, 기본 범위를 적용하는 경우에는 null일 수 있습니다. 범위 요소는 보안 검사 또는 보안 검사의 이름에 맵핑되는
+키워드일 수 있습니다. 기본 범위는 <code>RegisteredClient</code>이며, 이는 예약된 {{ site.data.keys.product_adj }} 키워드입니다. 기본 범위는 자원에 액세스하는 데 액세스 토큰을 요구합니다. <br/>
+								{{ site.data.keys.product_adj }} OAuth 자원 보호, 그리고 JavaScript 어댑터 자원에 대해 자원 보호를 구성하는 방법에 대한 자세한 정보는 <a href="../../authentication-and-security/#protecting-adapter-resources">어댑터 자원 보호</a>를 참조하십시오. <br/>
+								<code>secured</code> 속성의 값이 <code>false</code>이면 <code>scope</code> 속성이 무시됩니다. </li>
+                            <li><code>secured</code>: <i>선택사항.</i> 어댑터 프로시저가 {{ site.data.keys.product_adj }} 보안 프레임워크에 의해 보호되는지 정의합니다. 유효값은 다음과 같습니다.<ul>
+                                    <li><code>true</code>: 기본값입니다. 프로시저가 보호됩니다. 프로시저를 호출하려면
 유효한 액세스 토큰이 필요합니다.</li>
-                                    <li><b>false</b>. 프로시저가 보호되지 않습니다. 프로시저를 호출하는 데
-액세스 토큰이 필요하지 않습니다. 이 값을 설정하면 <b>scope</b> 속성이 무시됩니다. 자원 보호를 사용하지 않는 경우의 내재된 의미를 이해하려면 <a href="../../authentication-and-security">권한 부여 개념</a> 학습서에서 <a href="../../authentication-and-security/#unprotected-resources">보호되지 않은 자원</a> 주제를 참조하십시오. </li>
+                                    <li><code>false</code>. 프로시저가 보호되지 않습니다. 프로시저를 호출하는 데
+액세스 토큰이 필요하지 않습니다. <a href="../../authentication-and-security/#unprotected-resources">보호되지 않은 자원</a>을 참조하십시오. 이 값을 설정하면 <code>scope</code> 속성이 무시됩니다. </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>securityCheckDefinition</b>: <i>선택사항.</i> 보안 검사 오브젝트를 정의합니다. <a href="../../authentication-and-security/creating-a-security-check">보안 검사 작성</a> 학습서에서 보안 검사에 대해 자세히 알아보십시오. </li>
-        			<li><b>property</b>: <i>선택사항.</i> 사용자 정의 특성을 선언합니다. 아래 사용자 정의 특성 주제에서 자세히 알아보십시오. </li>
+                    <li><b>&lt;securityCheckDefinition&gt;</b>: <i>선택사항.</i> 보안 검사 오브젝트를 정의합니다. <a href="../../authentication-and-security/creating-a-security-check">보안 검사 작성</a> 학습서에서 보안 검사에 대해 자세히 알아보십시오. </li>
+        			<li><code>property</code>: <i>선택사항.</i> 사용자 정의 특성을 선언합니다. 이 학습서의 <a href="#custom-properties">사용자 정의 특성</a> 섹션에서 자세히 알아보십시오. </li>
                 </ul>
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>섹션 닫기</b></a>
@@ -107,13 +106,15 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
 
 **adapter.xml** 파일은 또한 사용자 정의 사용자 정의 특성을 포함할 수 있습니다. 어댑터 작성 동안 개발자가 지정하는 값은 어댑터를 재배치하지 않고 **{{ site.data.keys.mf_console }} → [사용자의 어댑터] → 구성 탭**에서 대체될 수 있습니다. 사용자 정의 특성은 [getPropertyValue API](#getpropertyvalue)를 사용하여 읽은 후 런타임 시 추가로 사용자 정의될 수 있습니다.
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **참고:** 구성 특성 요소는 항상 `procedure` 요소 *아래*에 위치해야 합니다. 위의 예에서 기본값으로 displayName 특성을 정의하였고 나중에 이를 사용할 수 있습니다. `<property>` 요소는 다음 속성을 사용합니다. 
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **참고:** 구성 특성 요소는 항상 &lt;procedure&gt; 요소 *아래*에 위치해야 합니다. 위의 예에서는 나중에 사용할 수 있도록 &lt;displayName&gt; 특성을 기본값으로 정의하였습니다.
 
-- **name**: 구성 클래스에 정의된 특성의 이름입니다. 
-- **defaultValue**: 구성 클래스에 정의된 기본값을 대체합니다. 
-- **displayName**: *선택사항*, 콘솔에 표시될 친근한 이름.
-- **description**: *선택사항*, 콘솔에 표시될 설명.
-- **type**: *선택사항*, `integer`, `string`, `boolean` 또는 유효값의 목록과 같이 특정 유형의 특성을 확인합니다(예: `type="['1','2','3']"`).
+&lt;property&gt; 요소는 다음 속성을 사용합니다. 
+
+- `name`: 구성 클래스에 정의된 특성의 이름입니다. 
+- `defaultValue`: 구성 클래스에 정의된 기본값을 대체합니다. 
+- `displayName`: *선택사항*, 콘솔에 표시될 친근한 이름.
+- `description`: *선택사항*, 콘솔에 표시될 설명.
+- `type`: *선택사항*, `integer`, `string`, `boolean` 또는 유효값의 목록과 같이 특정 유형의 특성을 확인합니다(예: `type="['1','2','3']"`).
 
 ![콘솔 특성](console-properties.png)
 

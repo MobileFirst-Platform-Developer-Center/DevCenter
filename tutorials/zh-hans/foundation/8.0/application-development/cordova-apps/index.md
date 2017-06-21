@@ -44,7 +44,7 @@ Merges 文件夹能够容纳特定于平台的 Web 资源（HTML、CSS 和 JavaS
 
 ### Cordova 插件
 {: #cordova-plug-ins }
-使用 Cordova 插件可提供增强功能，例如，添加本机 UI 元素（对话框、选项卡、旋转器和点赞）以及更高级的功能，例如，地图绘制和地理定位、装入外部内容、定制键盘和设备集成（照相机、联系人和传感器等）。
+Cordova 插件可提供增强功能，例如，添加本机 UI 元素（对话框、选项卡栏、spinner 下拉列表和点赞）以及更高级的功能（例如，地图和地理定位、加载外部内容、定制键盘，以及摄像头、联系人和传感器之类的设备集成）。
 
 您可以在 [GitHub.com](https://github.com) 上以及流行的 Cordova 插件 Web 站点（例如，[Plugreg](http://plugreg.com/) 和 [NPM](http://npmjs.org)）上查找 Cordova 插件。
 
@@ -53,6 +53,10 @@ Merges 文件夹能够容纳特定于平台的 Web 资源（HTML、CSS 和 JavaS
 - [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs)
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
+
+>**注：**在将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目时修改 Cordova 应用程序的缺省行为（如覆盖后退按钮行为）可能会导致提交时应用程序被 Google Play Store 拒绝。
+如果在提交到 Google Play Store 时遇到其他失败情况，可以联系 Google 支持人员。
+
 
 ### 第三方框架
 {: #3rd-party-frameworks }
@@ -90,9 +94,9 @@ Merges 文件夹能够容纳特定于平台的 Web 资源（HTML、CSS 和 JavaS
         <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
             <div class="panel-body">
                 <p>在 Android Studio 中，可使用 {{ site.data.keys.product_adj }} 复审 Android Cordova 应用程序的启动过程。{{ site.data.keys.product_adj }} Cordova 插件 <b>cordova-plugin-mfp</b> 使用本机异步引导程序序列。必须先完成引导程序序列，然后 Cordova 应用程序才能装入应用程序的主 HTML 文件。</p>
-                
+
                 <p>向 Cordova 应用程序添加 <b>cordova-plugin-mfp</b> 插件时，会检测应用程序的 <b>AndroidManifest.xml</b> 文件和 <code>MainActivity</code> 文件（继承 <code>CordovaActivity</code>）本机代码，以便执行 {{ site.data.keys.product_adj }} 初始化过程。</p>
-        
+
                 <p>应用程序本机代码检测包括：</p>
                 <ul>
                     <li>添加 <code>com.worklight.androidgap.api.WL</code> API 调用以执行 {{ site.data.keys.product_adj }} 初始化。</li>
@@ -102,16 +106,16 @@ Merges 文件夹能够容纳特定于平台的 Web 资源（HTML、CSS 和 JavaS
                         </ul>
                     </li>
                 </ul>
-                
+
                 <h3>实施 WLInitWebFrameworkListener 和创建 WL 对象</h3>
                 <p><b>MainActivity.java</b> 文件创建扩展 <code>CordovaActivity</code> 类的初始 <code>MainActivity</code> 类。在初始化 {{ site.data.keys.product_adj }} 框架时，<code>WLInitWebFrameworkListener</code> 接收通知。</p>
-                
+
 {% highlight java %}
 public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
 {% endhighlight %}
 
                 <p><code>MFPApplication</code> 类是从 <code>onCreate</code> 中调用的，并创建用于整个应用程序的 {{ site.data.keys.product_adj }} 客户机实例 (<code>com.worklight.androidgap.api.WL</code>)。<code>onCreate</code> 方法初始化 <b>WebView 框架</b>。</p>
-                
+
 {% highlight java %}
 @Overridepublic void onCreate(Bundle savedInstanceState){
 super.onCreate(savedInstanceState);
@@ -129,7 +133,7 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
                     <li>定义 <code>showSplashScreen</code> 方法以装入启动屏幕（如果存在）。</li>
                     <li>创建两个侦听器以启用分析。如果不需要，那么可除去这些侦听器。</li>
                 </ul>
-                
+
                 <h3>装入 WebView</h3>
                 <p><b>cordova-plugin-mfp</b> 插件向 <b>AndroidManifest.xml</b> 文件添加初始化 Crosswalks WebView 所需的活动：</p>
 
@@ -138,9 +142,9 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
 {% endhighlight %}
 
                 <p>此活动用于确保 Crosswalk WebView 的异步初始化如下所示：</p>
-                
+
                 <p>在初始化 {{ site.data.keys.product_adj }} 框架并准备好在 WebView 中装入后，如果 <code>WLInitWebFrameworkResult</code> 成功，那么 <code>onInitWebFrameworkComplete</code> 连接到 URL。</p>
-                
+
 {% highlight java %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
 if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
@@ -152,13 +156,12 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
-            
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>结束部分</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-flow">
             <h4 class="panel-title">
@@ -196,13 +199,13 @@ int main(int argc, char *argv[]) {
                 <p>在初始化成功后，<code>wlInitWebFrameworkDidCompleteWithResult</code> 检查已装入 {{ site.data.keys.product_adj }} 框架，调用 <code>wlInitDidCompleteSuccessfully</code> 并创建侦听器以接收数据。<code>wlInitDidCompleteSuccessfully</code> 创建连接到缺省 <b>index.html</b> 页面的 <code>cordovaViewController</code>。</p>
 
                 <p>如果 Xcode 中构建 iOS Cordova 应用程序而未出错，那么可继续向本机平台和 WebView 添加功能。</p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>结束部分</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="windows-flow">
             <h4 class="panel-title">
@@ -215,7 +218,7 @@ int main(int argc, char *argv[]) {
                 <p>{{ site.data.keys.product_adj }} Cordova 插件 <b>cordova-plugin-mfp</b> 使用本机异步引导程序序列。必须先完成引导程序序列，然后 Cordova 应用程序才能装入应用程序的主 HTML 文件。</p>
 
                 <p>向 Cordova 应用程序添加 <b>cordova-plugin-mfp</b> 插件会将 <b>index.html</b> 文件添加到应用程序的 <b>appxmanifest</b> 文件。这将扩展 <code>CordovaActivity</code> 本机代码以执行 {{ site.data.keys.product_adj }} 初始化。</p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>结束部分</b></a>
             </div>
@@ -227,7 +230,7 @@ int main(int argc, char *argv[]) {
 {: #cordova-application-security }
 {{ site.data.keys.product_full }} 提供可帮助保护 Cordova 应用程序的安全功能。
 
-与本机应用程序相比，未经授权的人员可更轻松地修改跨平台应用程序中的大量内容。因为跨平台应用程序中的大量共用内容采用可读取格式，因此 IBM MobileFirst Foundation 提供了可针对跨平台 Cordova 应用程序带来更高级别安全性的功能。 
+与本机应用程序相比，未经授权的人员可更轻松地修改跨平台应用程序中的大量内容。因为跨平台应用程序中的大量共用内容采用可读取格式，因此 IBM MobileFirst Foundation 提供了可针对跨平台 Cordova 应用程序带来更高级别安全性的功能。
 
 > 了解有关 [{{ site.data.keys.product_adj }} 安全框架](../../authentication-and-security)的更多信息
 
@@ -252,7 +255,7 @@ Cordova 应用程序需要特定资源。在大多数情况下，在使用首选
 
 ### Cordova 配置文件 (config.xml)
 {: #cordova-configuration-file-configxml }
-Cordova 配置文件是包含应用程序元数据的必需的 XML 文件，其存储在应用程序的根目录中。在创建 Cordova 应用程序时自动生成此文件。您可以使用 mfpdev app config 命令进行修改以添加定制属性。 
+Cordova 配置文件是包含应用程序元数据的必需的 XML 文件，其存储在应用程序的根目录中。在创建 Cordova 应用程序时自动生成此文件。您可以使用 mfpdev app config 命令进行修改以添加定制属性。
 
 ### 主文件 (index.html)
 {: #main-file-indexhtml}
@@ -312,10 +315,10 @@ Cordova 配置文件是包含应用程序元数据的必需的 XML 文件，其�
 可在 iOS 模拟器、Android 仿真器、Windows 仿真器或物理设备中预览 Cordova 应用程序的 Web 资源。在 {{ site.data.keys.product }} 中，提供两个额外的实时预览选项：{{ site.data.keys.mf_mbs_full }} 和简单浏览器呈现。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **安全限制：**您可以预览 Web 资源，但是模拟器并非支持所有 {{ site.data.keys.product_adj }} JavaScript API。特别是，不完全支持 OAuth 协议。但是，可以使用 `WLResourceRequest` 测试适配器调用。在这种情况下，
-> 
+>
 > * 安全性检查不在服务器端运行，也不会将安全验证问题发送到在 {{ site.data.keys.mf_mbs }} 中运行的客户机。
 > * 如果不在开发环境中使用 {{ site.data.keys.mf_server }}，请注册在允许的作用域列表中包含适配器作用域的保密客户机。您可以通过 {{ site.data.keys.mf_console }} 使用“运行时/设置”菜单来定义保密客户机。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
-> 
+>
 > **注：**开发环境中的 {{ site.data.keys.mf_server }} 包含一个保密客户机“test”，其中具有无限制的允许范围（“*”）。缺省情况下，mfpdev 应用程序预览使用此保密客户机。
 #### 简单浏览器
 {: #simple-browser }

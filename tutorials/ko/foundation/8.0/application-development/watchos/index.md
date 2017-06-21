@@ -24,7 +24,7 @@ watchOS의 개발 환경을 설정하려면 Xcode 프로젝트 작성, watchOS �
 
     ![Xcode의 WatchOS 프로젝트](WatchOSProject.jpg)
 
-2. {{site.data.keys.product_adj }} watchOS 프레임워크를 추가하십시오. 
+2. {{ site.data.keys.product_adj }} watchOS 프레임워크를 추가하십시오. 
     * CocoaPods로 필수 프레임워크를 설치하려면 [{{ site.data.keys.product_adj }} 고유 SDK 추가](../../application-development/sdk/ios/#adding-support-for-apple-watchos) 학습서를 참조하십시오. 
     * 필수 프레임워크를 수동으로 설치하려면 다음을 수행하십시오. 
         * {{ site.data.keys.mf_console }}의 다운로드 센터에서 watchOS 프레임워크를 가져오십시오. 

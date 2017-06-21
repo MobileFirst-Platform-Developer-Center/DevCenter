@@ -1,63 +1,73 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to iOS Applications
+title: MobileFirst-Foundation-SDK zu iOS-Anwendungen hinzufügen
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
-The pods correspond to core functions and other functions:
+Das MobileFirst-Foundation-SDK
+besteht aus einer Reihe von Abhängigkeiten, die über [CocoaPods](http://guides.cocoapods.org) verfügbar sind und zu einem Xcode-Projekt hinzugefügt werden können.   
+Die Pods entsprechen Kernfunktionen und anderen Funktionen:  
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../jsonstore/ios/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
-* **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
+* **IBMMobileFirstPlatformFoundation** - Implementiert Client-Server-Konnektivität, handhabt Authentifizierungs- und Sicherheitsaspekte, Ressourcenanforderungen und weitere erforderliche Kernfunktionen
+* **IBMMobileFirstPlatformFoundationJSONStore** - Enthält das JSONStore-Framework. Weitere Informationen enthält das Lernprogramm [JSONStore für iOS](../../jsonstore/ios/).
+* **IBMMobileFirstPlatformFoundationPush** - Enthält das Framework für Push-Benachrichtigungen. Weitere Informationen enthalten die Lernprogramme zu [Benachrichtigungen](../../../notifications/).
+* **IBMMobileFirstPlatformFoundationWatchOS** - Enthält Unterstützung für Apple WatchOS
 
-In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+In diesem Lernprogramm erfahren Sie, wie das native MobileFirst-SDK mithilfe von CocoaPods
+zu einer neuen oder vorhandenen iOS-Anwendung hinzugfügt wird. Sie werden auch lernen,
+wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen.
 
-**Prerequisites:**
+**Voraussetzungen:**
 
-- Xcode and MobileFirst CLI installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
+- Xcode und die MobileFirst CLI sind auf der Entwicklerworkstation installiert.   
+- Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
+- Sie haben die Lernprogramme [MobileFirst-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst)
+und [iOS-Entwicklungsumgebung einrichten](../../../installation-configuration/development/ios) durchgearbeitet. 
 
-> **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
+> **Hinweis:** Das **Keychain Sharing** ist obligatorisch, wenn Sie Xcode 8 verwenden und iOS-Apps in einem Simulator ausführen.
 
-#### Jump to:
+
+
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
-- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Bitcode and TLS 1.2](#bitcode-and-tls-12)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Natives MobileFirst-SDK hinzufügen](#adding-the-mobilefirst-native-sdk)
+- [Natives MobileFirst-SDK manuell hinzufügen](#manually-adding-the-mobilefirst-native-sdk)
+- [Unterstützung für Apple watchOS hinzufügen](#adding-support-for-apple-watchos)
+- [Natives MobileFirst-SDK aktualisieren](#updating-the-mobilefirst-native-sdk)
+- [Generierte Artefakte des nativen MobileFirst-SDK](#generated-mobilefirst-native-sdk-artifacts)
+- [Bitcode und TLS 1.2](#bitcode-and-tls-12)
+- [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK hinzufügen
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+Folgen Sie den nachstehenden Anweisungen, um das native {{ site.data.keys.product }}-SDK
+zu einem neuen oder vorhandenen Xcode-Projekt hinzuzufügen und die Anwendung bei {{ site.data.keys.mf_server }} zu registrieren.
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+Vergewissern Sie sich als Erstes, dass der {{ site.data.keys.mf_server }} aktiv
+ist.   
+Wenn Sie einen lokal installierten Server verwenden,
+navigieren Sie in einem **Befehlszeilenfenster** zum Serverordner und führen Sie den Befehl
+`./run.sh` aus.
 
-### Creating an application
+### Anwendung erstellen
 {: #creating-an-application }
-Create an Xcode project or use an existing one (Swift or Objective-C).  
+Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swift oder Objective-C).  
 
-### Adding the SDK
+### SDK hinzufügen
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product }} Native SDK is provided via CocoaPods.
-    - If [CocoaPods](http://guides.cocoapods.org) is already installed in your development environment, skip to step 2.
-    - If CocoaPods is not installed, install it as follows:  
-        - Open a **Command-line** window and navigate to the root of the Xcode project.
-        - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands might take several minutes to complete.
-2. Run the command: `pod init`. This creates a `Podfile`.
-3. Using your favorite code editor, open the `Podfile`.
-    - Comment out or delete the contents of the file.
-    - Add the following lines and save the changes:
+1. Das native SDK der {{ site.data.keys.product }} wird über CocoaPods bereitgestellt.
+    - Wenn [CocoaPods](http://guides.cocoapods.org) bereits in Ihrer Entwicklungsumgebung installiert ist, fahren Sie mit Schritt 2 fort. 
+    - Wenn CocoaPods nicht installiert ist, gehen Sie wie folgt vor:   
+        - Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Xcode-Projekts. 
+        - Führen Sie den Befehl `sudo gem install cocoapods` und dann `pod setup` aus. **Hinweis:** Dies Ausführung dieser Befehle kann einige Zeit dauern. 
+2. Führen Sie den Befehl `pod init` aus. Damit wird eine `Podfile` erstellt.
+3. Öffnen Sie die `Podfile` in Ihrem bevorzugten Codeeditor.
+    - Löschen Sie den Dateiinhalt oder setzen Sie ihn auf Kommentar. 
+    - Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen: 
 
       ```xml
       use_frameworks!
@@ -67,111 +77,119 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
           pod 'IBMMobileFirstPlatformFoundation'
       end
       ```
-      - Replace **Xcode-project-target** with the name of your Xcode project's target.
+      - Ersetzen Sie **Xcode-project-target** durch den Namen Ihres Xcode-Projektziels. 
 
-4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the {{ site.data.keys.product }} Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
-    **Note:** The commands might take several minutes to complete.
+4. Führen Sie im Befehlszeilenfenster den Befehl `pod install` und dann den Befehl `pod update` aus. Mit diesen Befehlen werden die Dateien des nativen SDK der {{ site.data.keys.product }} und die Datei **mfpclient.plist** hinzugefügt. Außerdem wird ein Pod-Projekt erstellt.  
+    **Hinweis:** Die Ausführung der Befehle kann einige Zeit dauern. 
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis**:
+Ab jetzt können Sie die Datei `[Projektname].xcworkspace` verwenden, um das Projekt in Xcode zu öffnen. Verwenden Sie **nicht**
+die Datei `[Projektname].xcodeproj`. Ein CocoaPods-basiertes Projekt wird als ein Arbeitsbereich verwaltet, der die (ausführbare Datei der) Anwendung und die Bibliothek
+enthält. (Alle Projektabhängigkeiten werden vom CocoaPods-Manager mit Pull übertragen.)
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
-{: manually-adding-the-mobilefirst-native-sdk }
-You can also manually add the {{ site.data.keys.product }} SDK:
+### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
+{: #manually-adding-the-mobilefirst-native-sdk }
+Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen: 
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Click for instructions</b></a>
-            </h4>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Für Anweisungen hier klicken</b></a>
+                                </h4>
         </div>
 
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                <p>To manually add the {{ site.data.keys.product }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.</p>
+                <p>Wenn Sie das SDK der {{ site.data.keys.product }} manuell hinzufügen möchten, müssen Sie zunächst über das Download-Center der {{ site.data.keys.mf_console }} die SDK-ZIP-Datei auf der Registerkarte <b>SDKs</b> herunterladen.</p>
 
                 <ul>
-                    <li>In your Xcode project, add the {{ site.data.keys.product }} framework files to your project.
-                        <ul>
-                            <li>Select the project root icon in the project explorer.</li>
-                            <li>Select <b>File → Add Files</b> and navigate to the folder that contains the framework files previously downloaded.</li>
-                            <li>Click the <b>Options</b> button.</li>
-                            <li>Select <b>Copy items if needed</b> and <b>Create groups for any added folders</b>.<br/>
-                            <b>Note:</b> If you do not select the <b>Copy items if needed</b> option, the framework files are not copied but are linked from their original location.</li>
-                            <li>Select the main project (first option) and select the app target.</li>
-                            <li>In the <b>General</b> tab, remove any frameworks that would get added automatically to <b>Linked Frameworks and Libraries</b>.</li>
-                            <li>Required: In <b>Embedded Binaries</b>, add the following frameworks:
+                    <li>Fügen Sie die {{ site.data.keys.product }}-Dateien zu Ihrem Xcode-Projekt hinzu.<ul>
+                            <li>Wählen Sie im Projektexplorer das Symbol für das Projektstammverzeichnis aus.</li>
+                            <li>Wählen Sie <b>File → Add Files</b> aus und navigieren Sie zu dem Ordner mit den zuvor heruntergeladenen Frameworkdateien.</li>
+                            <li>Klicken Sie auf die Schaltfläche <b>Options</b>.</li>
+                            <li>Wählen Sie <b>Copy items if needed</b> und <b>Create groups for any added folders</b> aus.<br/>
+                            <b>Hinweis:</b> Wenn Sie die Option <b>Copy items if needed</b> nicht auswählen, werden die Frameworkdateien nicht kopiert, aber an ihrer Ursprungsposition verlinkt.</li>
+                            <li>Wählen Sie das Hauptprojekt aus (erste Option) und das App-Ziel.</li>
+                            <li>Entfernen Sie auf der Registerkarte <b>General</b> alle Frameworks, die automatisch zum Abschnitt <b>Linked Frameworks and Libraries</b> hinzugefügt werden würden.</li>
+                            <li>Erforderlich: Fügen Sie unter <b>Embedded Binaries</b> die folgenden Frameworks hinzu:
                                 <ul>
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
-                                    <li>Localizations.bundle</li>
                                 </ul>
-                                Performing this step will automatically add these frameworks to <b>Linked Frameworks and Libraries</b>.
+                                Bei Ausführung dieses Schrittes werden diese Frameworks automatisch zum Abschnitt <b>Linked Frameworks and Libraries</b> hinzugefügt.
                             </li>
-                            <li>In <b>Linked Frameworks and Libraries</b>, add the following frameworks:
+                            <li>Fügen Sie unter <b>Linked Frameworks and Libraries</b> die folgenden Frameworks hinzu:
                                 <ul>
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
+                                    <li>Localizations.bundle</li>
                                 </ul>
                             </li>
-                            <blockquote><b>Note:</b> These steps copy the relevant {{ site.data.keys.product }} frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
+                            <blockquote><b>Hinweis:</b> Mit diesen Schritten werden die relevanten MobileFirst-Platform-Foundation-Frameworks zu Ihrem Projekt hinzugefügt und in der Liste Link Binary with Libraries auf der Registerkarte Build Phases verlinkt. Wenn Sie die Dateien mit ihrer Ursprungsposition verlinken (ohne wie oben beschrieben die Option Copy items if needed auszuwählen), müssen Sie die Suchpfade für Frameworks (Framework Search Paths) wie unten angegeben definieren.</blockquote>
                         </ul>
                     </li>
-                    <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
-                    <li><i>Optional:</i> If you did not copy the framework files into your project as described previously , perform the following steps by using the <b>Copy items if needed</b> option, in the <b>Build Phases</b> tab.
+                    <li>Die in Schirtt 1 hinzugefügten Frameworks würden automatisch zum Abschnitt <b>Link Binary with Libraries</b> der Registerkarte <b>Build Phases</b> hinzugefügt werden.</li>
+                    <li><i>Optional:</i> Wenn Sie die Frameworkdateien nicht wie oben beschrieben in Ihr Projekt kopiert haben, verwenden Sie die Option <b>Copy items if needed</b> auf der Registerkarte <b>Build Phases</b> und führen Sie die folgenden Schritte aus.
                         <ul>
-                            <li>Open the <b>Build Settings</b> page.</li>
-                            <li>Find the <b>Search Paths</b> section.</li>
-                            <li>Add the path of the folder that contains the frameworks to the <b>Framework Search Paths</b> folder.</li>
+                            <li>Öffnen Sie die Seite <b>Build Settings</b>. </li>
+                            <li>Suchen Sie den Abschnitt <b>Search Paths</b>. </li>
+                            <li>Fügen Sie zum Ordner <b>Framework Search Paths</b> den Pfad zu dem Ordner mit den Frameworks hinzu. </li>
                         </ul>
                     </li>
-                    <li>In the <b>Deployment</b> section of the <b>Build Settings</b> tab, select a value for the <b>iOS Deployment Target</b> field that is greater than or equal to 8.0.</li>
-                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="additional-information/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
+                    <li>Wählen Sie im Abschnitt <b>Deployment</b> der Registerkarte <b>Build Settings</b> für das Feld <b>iOS Deployment Target</b> einen Wert größer-gleich 8.0 aus.</li>
+                    <li><i>Optional:</i> Ab Xcode 7 ist Bitcode als Standard festgelegt. Informationen zu Einschränkungen und Voraussetzungen finden Sie unter <a href="additional-information/#working-with-bitcode-in-ios-apps">Arbeiten mit Bitcode in iOS-Apps</a>. Sie können Bitcode wie folgt inaktivieren:
                         <ul>
-                            <li>Open the <b>Build Options</b> section.</li>
-                            <li>Set <b>Enable Bitcode</b> to <b>No</b>.</li>
+                            <li>Öffnen Sie den Abschnitt <b>Build Options</b>.</li>
+                            <li>Setzen Sie <b>Enable Bitcode</b> auf <b>No</b>.</li>
                         </ul>
                     </li>
-                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
+                    <li>Ab Xcode 7 muss TLS umgesetzt werden (siehe <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">TLS-gesicherte Verbindungen in iOS-Apps erzwingen</a>).</li>
                 </ul>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Registering the application
+### Anwendung registrieren
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Xcode project.  
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Xcode-Projekts.   
 
-2. Run the command:
+2. Führen Sie den folgenden Befehl aus: 
 
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - Wenn ein ferner Server verwendet wird,
+fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
 
-    You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
+    Sie werden aufgefordert, die Bundle-ID anzugeben. **Wichtiger Hinweis**: Bei der Bundle-ID muss die **Groß-/Kleinschreibung beachtet** werden.  
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.  
+Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung zu
+{{ site.data.keys.mf_server }} her, um die Anwendung zu generieren.
+Anschließend wird die Datei **mfpclient.plist** im Stammverzeichnis des Xcode-Projekts generiert,
+zu der Metadaten, die den {{ site.data.keys.mf_server }} angeben, hinzugefügt werden.  
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Sie können
+Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
+> 1. Laden Sie die {{ site.data.keys.mf_console }}.
+> 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.plist** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
 
-### Completing the setup process
+### Setup-Prozess abschließen
 {: #completing-the-setup-process }
-In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
+Klicken Sie in Xcode mit der rechten Maustaste auf den Projekteintrag und wählen Sie **Add Files To [Projektname]** aus.
+Wählen Sie dann die Datei **mfpclient.plist** im Stammverzeichnis des Xcode-Projekts aus. 
 
-### Referencing the SDK
+### SDK referenzieren
 {: #referencing-the-sdk }
-Whenever you want to use the {{ site.data.keys.product }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
+Wenn Sie das native {{ site.data.keys.product }}-SDK verwenden möchten, müssen Sie das Framework der {{ site.data.keys.product }} importieren: 
 
 Objective-C:
 
@@ -186,12 +204,12 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 <br>
-#### Note about iOS 9 and above:
+#### Hinweis zu iOS ab Version 9:
 {: #note-about-ios-9-and-above }
-> Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
-> 
+> Ab Xcode 7 ist [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) standardmäßig aktiviert. Sie können ATS während der Entwicklung für die Ausführung von Apps inaktivieren. ([Lesen Sie hier mehr](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).)
+>   1. Klicken Sie in Xcode mit der rechten Maustaste auf **[Projekt]/info.plist → Open As → Source Code**.
+>   2. Fügen Sie Folgendes ein:
+>
 ```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
@@ -200,66 +218,69 @@ import IBMMobileFirstPlatformFoundation
 >      </dict>
 ```
 
-## Adding Support for Apple watchOS
+## Unterstützung für Apple watchOS hinzufügen
 {: #adding-support-for-apple-watchos}
-If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
+Wenn Sie für Apple watchOS ab Version 2 entwickeln, muss die Podfile Abschnitte entsprechend der Haupt-App und der watchOS-Erweiterung enthalten. Es folgt ein Beispiel für
 watchOS 2:
 
 ```xml
-# Replace with the name of your watchOS application
+# Durch den Namen Ihrer watchOS-Anwendung ersetzen
 xcodeproj 'MyWatchApp'
 
 use_frameworks!
 
-#use the name of the iOS target
+# Namen des iOS-Ziels verwenden
 target :MyWatchApp do
     platform :ios, 9.0
     pod 'IBMMobileFirstPlatformFoundation'
     end
 
-#use the name of the watch extension target
+# Namen des watch-Erweiterungsziels verwenden
 target :MyWatchApp WatchKit Extension do
     platform :watchos, 2.0
     pod 'IBMMobileFirstPlatformFoundation'
 end
 ```
 
-Verify that the Xcode project is closed and run the `pod install` command.
+Vergewissern Sie sich, dass das Xcode-Projekt geschlossen ist, und führen Sie den Befehl `pod install` aus. 
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product }} Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
+Wenn Sie das native SDK der {{ site.data.keys.product }} auf den neuesten Releasestand bringen wollen,
+führen Sie in einem **Befehlszeilenfenster** im Stammverzeichnis des Xcode-Projekts den folgenden Befehl aus: 
 
 ```bash
 pod update
 ```
 
-SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
+SDK-Releases sind im [CocoaPods-Repository](https://cocoapods.org/?q=ibm%20mobilefirst) für das jeweilige SDK enthalten.
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
-{: generated-mobilefirst-native-sdk-artifacts }
+## Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
+In dieser Datei, die sich im Stammverzeichnis des Projekts befindet, sind die clientseitigen Eigenschaften für die Registrierung Ihrer
+iOS-App bei {{ site.data.keys.mf_server }}
+definiert.
 
-| Property            | Description                                                         | Example values |
+| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| host        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| port        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| protocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
+| host        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
+| port        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
+| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
 
-## Bitcode and TLS 1.2
+## Bitcode und TLS 1.2
 {: #bitcode-and-tls-12 }
-For information about support for Bitcode and TLS 1.2 see the [Additional Information](additional-information) page.
+Informationen zur Unterstützung für Bitcode und TLS 1.2 finden Sie auf der Seite [Zusätzliche Informationen](additional-information). 
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product }} Native SDK now integrated, you can now:
+Jetzt, da das native {{ site.data.keys.product }}-SDK integriert ist, können Sie Folgendes tun: 
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- Gehen Sie die Lernprogramme zu [SDKs der {{ site.data.keys.product }}](../) durch. 
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../../adapters/) durch. 
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../../authentication-and-security/) durch. 
+- Gehen Sie die Lernprogramme zu [Benachrichtigungen](../../../notifications/) durch. 
+- Sehen Sie sich [alle Lernprogramme](../../../all-tutorials) an. 

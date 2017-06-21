@@ -98,9 +98,11 @@ weight: 6
 {: #connecting-mobilefirst-server-installed-on-apache-tomcat-to-the-rational-license-key-server }
 在将 {{ site.data.keys.mf_server }} 连接到 Rational License Key Server 之前，必须先在 Apache Tomcat 应用程序服务器上安装 Rational Common Licensing 本机库和 Java 库。
 
-* 必须已安装并配置 Rational License Key Server 8.1.4.8 或更高版本。网络必须允许与 {{ site.data.keys.mf_server }} 进行通信，方法是打开双向通信端口（**lmrgd** 和 **ibmratl**）。有关更多信息，请参阅 [Rational License Key Server 门户网站](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295)和[如何穿过防火墙向客户端机器提供许可证密钥](http://www.ibm.com/support/docview.wss?uid=swg21257370)。
+* 必须已安装并配置 Rational License Key Server 8.1.4.8 或更高版本。网络必须允许与 {{ site.data.keys.mf_server }} 进行通信，方法是打开双向通信端口（**lmrgd** 和 **ibmratl**）。
+有关更多信息，请参阅 [Rational License Key Server 门户网站](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295)和[如何穿过防火墙向客户端机器提供许可证密钥](http://www.ibm.com/support/docview.wss?uid=swg21257370)。
 * 确保生成 {{ site.data.keys.product }} 的许可证密钥。有关使用 IBM Rational License Key Center 生成和管理许可证密钥的更多信息，请参阅 [IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) 以及[通过 IBM Rational License Key Center 获取许可证密钥](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html)。
-* 必须按照[令牌许可的安装概述](#installation-overview-for-token-licensing)中所述，在 ApacheTomcat 上使用“通过 Rational License Key Server 激活令牌许可”选项来安装和配置 {{ site.data.keys.mf_server }}。
+* 必须按照[令牌许可的安装概述](#installation-overview-for-token-licensing)中所述，在 Apache
+Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选项来安装和配置 {{ site.data.keys.mf_server }}。
 
 ### 安装 Rational Common Licensing 库
 {: #installing-rational-common-licensing-libraries }
@@ -110,7 +112,7 @@ weight: 6
     > **注：****${CATALINA_HOME}** 是 Apache Tomcat 的安装目录。
 3. 将 **rcl_ibmratl.jar** 文件复制到 **${CATALINA_HOME}/lib** 中。**rcl_ibmratl.jar** 文件是 Rational Common Licensing Java 库，位于 **product\_install\_dir/MobileFirstServer/tokenLibs** 目录中。该库使用步骤 2 中复制的本机库，并且只能供 Apache Tomcat 装入一次。必须将该文件放在 **${CATALINA_HOME}/lib** 目录中或 Apache Tomcat 公共类装入器路径中的任何目录中。
     > **要点：**Apache Tomcat 的 Java 虚拟机 (JVM) 需要具有已复制的本机库和 Java 库的读和执行权限。在您的操作系统中，至少应用程序服务器进程还必须具有这两个已复制文件的读和执行权限。
-4. 通过应用程序服务器的 JVM 来配置对 Rational Common Licensing 库的访问权。对于任何操作系统，通过添加以下行来配置 **${CATALINA_HOME}/bin/setenv.bat** 文件（或 UNIX 上的 **setenv.sh** 文件）：
+    4. 通过应用程序服务器的 JVM 来配置对 Rational Common Licensing 库的访问权。对于任何操作系统，通过添加以下行来配置 **${CATALINA_HOME}/bin/setenv.bat** 文件（或 UNIX 上的 **setenv.sh** 文件）：
 
    **Windows：**  
     

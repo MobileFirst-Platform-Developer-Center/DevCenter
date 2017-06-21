@@ -3,14 +3,14 @@ description: "Develop, test, manage, and secure your native and hybrid apps"
 url: https://mobilefirstplatform.ibmcloud.com
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
-paginate: 10
+paginate: 20
 paginate_path: "/blog/:num/"
 markdown: kramdown
 generate_redirects: false
 print_pdf: false
 kramdown:
   input: GFM
-  hard_wrap: false  
+  hard_wrap: false
 gems:
   - jekyll-feed
   - jekyll-paginate

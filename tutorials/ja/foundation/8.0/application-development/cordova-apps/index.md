@@ -56,6 +56,10 @@ Cordova プラグインは、[GitHub.com](https://github.com) 上、およびよ
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
+>**注:** {{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。
+Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。
+
+
 ### サード・パーティー製フレームワーク
 {: #3rd-party-frameworks }
 Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)、[AngularJS](https://angularjs.org/)、[jQuery Mobile](http://jquerymobile.com/)、[Backbone](http://backbonejs.org/) などのフレームワークを使用してさらに拡張できます。
@@ -92,9 +96,9 @@ Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)�
         <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
             <div class="panel-body">
                 <p>Android Studio で、{{ site.data.keys.product_adj }} を使用する Android 用 Cordova アプリケーションの開始プロセスを検討できます。{{ site.data.keys.product_adj }} Cordova プラグイン <b>cordova-plugin-mfp</b> には、ネイティブの非同期ブートストラップ・シーケンスがあります。ブートストラップ・シーケンスは、Cordova アプリケーションがアプリケーションのメイン html ファイルをロードする前に完了する必要があります。</p>
-                
+
                 <p><b>cordova-plugin-mfp</b> プラグインを Cordova アプリケーションに追加すると、アプリケーションの <b>AndroidManifest.xml</b> ファイルが装備されます。また、({{ site.data.keys.product_adj }} の初期化を実行するように <code>CordovaActivity</code> ネイティブ・コードを拡張する) <code>MainActivity</code> ファイルも装備されます。</p>
-        
+
                 <p>アプリケーションのネイティブ・コードのインスツルメンテーションは以下で構成されます。</p>
                 <ul>
                     <li>{{ site.data.keys.product_adj }} の初期化を実行するための <code>com.worklight.androidgap.api.WL</code> API 呼び出しを追加します。</li>
@@ -105,16 +109,16 @@ Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)�
                         </ul>
                     </li>
                 </ul>
-                
+
                 <h3>WLInitWebFrameworkListener の実装と WL オブジェクトの作成</h3>
                 <p><b>MainActivity.java</b> ファイルは、<code>CordovaActivity</code> クラスを拡張する初期の <code>MainActivity</code> クラスを作成します。<code>WLInitWebFrameworkListener</code> は、{{ site.data.keys.product_adj }} フレームワークが初期化される際に、通知を受信します。</p>
-                
+
 {% highlight java %}
 public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
 {% endhighlight %}
 
                 <p><code>MFPApplication</code> クラスは <code>onCreate</code> 内から呼び出され、アプリケーションを通して使用される {{ site.data.keys.product_adj }} クライアント・インスタンス (<code>com.worklight.androidgap.api.WL</code>) を作成します。<code>onCreate</code> メソッドは <b>WebView フレームワーク</b>を初期化します。</p>
-                
+
 {% highlight java %}
 @Overridepublic void onCreate(Bundle savedInstanceState){
 super.onCreate(savedInstanceState);
@@ -132,7 +136,7 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
                     <li>スプラッシュ画面が存在する場合にロードするための <code>showSplashScreen</code> メソッドを定義します。</li>
                     <li>分析を使用可能にする 2 つのリスナーを作成します。これらのリスナーは、不要な場合に削除することができます。</li>
                 </ul>
-                
+
                 <h3>WebView のロード</h3>
                 <p><b>cordova-plugin-mfp</b> プラグインは、Crosswalks WebView を初期化するために必要な以下のアクティビティーを <b>AndroidManifest.xml</b> ファイルに追加します。</p>
 
@@ -141,9 +145,9 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
 {% endhighlight %}
 
                 <p>このアクティビティーを使用して、以下のように Crosswalk WebView が非同期に初期化されるようにします。</p>
-                
+
                 <p>{{ site.data.keys.product_adj }} フレームワークが初期化されて WebView へのロード準備ができた後、<code>WLInitWebFrameworkResult</code> が成功すると、<code>onInitWebFrameworkComplete</code> は URL に接続します。</p>
-                
+
 {% highlight java %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
 if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
@@ -155,13 +159,12 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
-            
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-flow">
             <h4 class="panel-title">
@@ -199,13 +202,13 @@ int main(int argc, char *argv[]) {
                 <p>初期化が成功すると、<code>wlInitWebFrameworkDidCompleteWithResult</code> は、{{ site.data.keys.product_adj }} フレームワークがロードされ、<code>wlInitDidCompleteSuccessfully</code> を呼び出し、データを受信するためのリスナーを作成したかどうかを確認します。<code>wlInitDidCompleteSuccessfully</code> は、デフォルトの <b>index.html</b> ページに接続する <code>cordovaViewController</code> を作成します。</p>
 
                 <p>iOS Cordova アプリケーションが Xcode でエラーなしでビルドされると、フィーチャーをネイティブ・プラットフォームと WebView に追加できるようになります。</p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="windows-flow">
             <h4 class="panel-title">
@@ -218,7 +221,7 @@ int main(int argc, char *argv[]) {
                 <p>{{ site.data.keys.product_adj }} Cordova プラグイン <b>cordova-plugin-mfp</b> には、ネイティブの非同期ブートストラップ・シーケンスがあります。ブートストラップ・シーケンスは、Cordova アプリケーションがアプリケーションのメイン HTML ファイルをロードする前に完了する必要があります。</p>
 
                 <p>Cordova アプリケーションに <b>cordova-plugin-mfp</b> プラグインを追加すると、アプリケーションの  <b>appxmanifest</b> ファイルに  <b>index.html</b> ファイルが追加されます。これにより、{{ site.data.keys.product_adj }} の初期化を実行するように <code>CordovaActivity</code> ネイティブ・コードが拡張されます。</p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>セクションを閉じる</b></a>
             </div>
@@ -230,7 +233,7 @@ int main(int argc, char *argv[]) {
 {: #cordova-application-security }
 {{ site.data.keys.product_full }} は、Cordova アプリケーションを保護する際に役立つセキュリティー・フィーチャーを提供します。
 
-クロスプラットフォーム・アプリケーションのコンテンツの多くは、ネイティブ・アプリケーションよりもさらに容易に無許可な個人によって変更される可能性があります。クロスプラットフォーム・アプリケーションの一般的なコンテンツの多くは読み取り可能なフォーマットであるため、IBM MobileFirst Foundation では、ご使用のクロスプラットフォーム Cordova アプリケーションに高水準のセキュリティーを提供できるフィーチャーを用意しています。 
+クロスプラットフォーム・アプリケーションのコンテンツの多くは、ネイティブ・アプリケーションよりもさらに容易に無許可な個人によって変更される可能性があります。クロスプラットフォーム・アプリケーションの一般的なコンテンツの多くは読み取り可能なフォーマットであるため、IBM MobileFirst Foundation では、ご使用のクロスプラットフォーム Cordova アプリケーションに高水準のセキュリティーを提供できるフィーチャーを用意しています。
 
 > 詳しくは、[{{ site.data.keys.product_adj }} セキュリティー・フレームワーク](../../authentication-and-security)に関する説明を参照してください。
 
@@ -255,7 +258,7 @@ Cordova アプリケーションの一部として、特定のリソースが必
 
 ### Cordova 構成ファイル (config.xml)
 {: #cordova-configuration-file-configxml }
-Cordova 構成ファイルは、アプリケーション・メタデータを含む必須の XML ファイルであり、アプリケーションのルート・ディレクトリーに保管されます。このファイルは Cordova アプリケーションを作成すると自動的に生成されます。mfpdev app config コマンドを使用して、このファイルを変更してカスタム・プロパティーを追加できます。 
+Cordova 構成ファイルは、アプリケーション・メタデータを含む必須の XML ファイルであり、アプリケーションのルート・ディレクトリーに保管されます。このファイルは Cordova アプリケーションを作成すると自動的に生成されます。mfpdev app config コマンドを使用して、このファイルを変更してカスタム・プロパティーを追加できます。
 
 ### メインファイル (index.html)
 {: #main-file-indexhtml}
@@ -317,10 +320,10 @@ JavaScript ファイル index.js がテンプレートによって提供され�
 Cordova アプリケーションの Web リソースは、iOS シミュレーター、Android エミュレーター、Windows エミュレーター、または物理デバイスのいずれかでプレビューできます。{{ site.data.keys.product }} では、{{ site.data.keys.mf_mbs_full }} と Simple Browser レンダリングの 2 つの追加のライブ・プレビュー・オプションを使用できます。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **セキュリティー制限:** Web リソースはプレビュー可能ですが、そのシミュレーターですべての {{ site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。このケースでは、次のようになります。
-> 
+>
 > * セキュリティー検査はサーバー・サイドでは実行されず、セキュリティー・チャレンジは {{ site.data.keys.mf_mbs }} 内で実行されているクライアントに送信されません。
 > * 開発環境で {{ site.data.keys.mf_server }} を使用しない場合、許可スコープのリスト中にアダプターのスコープが含まれている機密クライアントを登録してください。機密クライアントは {{ site.data.keys.mf_console }} で「ランタイム/設定」メニューを使用して定義できます。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
-> 
+>
 > **注:** 開発環境での {{ site.data.keys.mf_server }} には、無制限の許可スコープ (「*」) を持つ機密クライアント「test」が含まれています。デフォルトで、mfpdev app preview はこの機密クライアントを使用します。
 
 #### Simple Browser

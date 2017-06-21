@@ -155,9 +155,9 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 
 ```javascript
 var  directUpdateCustomListener  = {
-    onStart : function ( totalSize ){ },
-    onProgress : function ( status , totalSize , completedSize ){ },
-    onFinish : function ( status ){ }
+    onStart : function ( totalSize ){ }, 
+    onProgress : function ( status , totalSize , completedSize ){ }, 
+    onFinish : function ( status ){ } 
 };
 ```
 
@@ -184,7 +184,7 @@ var  directUpdateCustomListener  = {
 次の例は、カスタム・ダイレクト・アップデート・リスナーの実装を示しています。
 
 ```javascript
-var  directUpdateCustomListener  = {
+var  directUpdateCustomListener  = { 
     onStart: function(totalSize){
     //show custom progress dialog
   },
@@ -218,20 +218,20 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 ### シナリオ: UI なしのダイレクト・アップデートの実行
-{: scenario-running-ui-less-direct-updates }
+{: #scenario-running-ui-less-direct-updates }
 {{ site.data.keys.product_full }} は、アプリケーションがフォアグラウンドにあるとき、UI なしのダイレクト・アップデートをサポートします。
 
 UI なしのダイレクト・アップデートを実行するには、`directUpdateCustomListener` を実装します。空の関数実装を `onStart` および `onProgress` メソッドに提供します。空の実装のためにダイレクト・アップデート・プロセスはバックグラウンドで実行されます。
 
 ダイレクト・アップデート・プロセスを完了するためには、アプリケーションを再ロードする必要があります。使用可能なオプションは次のとおりです。
 * `onFinish` メソッドも空にすることができます。この場合は、アプリケーションの再始動後にダイレクト・アップデートが適用されます。
-* アプリケーションの再始動をユーザーに通知したり要求したりするカスタム・ダイアログを実装することができます。(以下の例を参照してください。)
+* アプリケーションの再始動をユーザーに通知したり要求したりするカスタム・ダイアログを実装することができます。(以下の例を参照してください。) 
 * `onFinish` メソッドは、`WL.Client.reloadApp()` を呼び出すことによってアプリケーションの再ロードを強制することができます。
 
 `directUpdateCustomListener` の実装例を次に示します。
 
 ```javascript
-var  directUpdateCustomListener  = {
+var  directUpdateCustomListener  = { 
     onStart: function(totalSize){
   },
   onProgress: function(status,totalSize,completeSize){
@@ -296,7 +296,7 @@ restartDirectUpdate = function () {
 `directUpdateCustomListener` を実装します。`onFinish` メソッドに状況検査を追加します。状況が「FAILURE」で始まる場合は、「Try Again」オプションを持つモーダル専用ダイアログを開きます。例えば、次のとおりです。
 
 ```javascript
-var  directUpdateCustomListener  = {
+var  directUpdateCustomListener  = { 
     onStart: function(totalSize){
     alert('onStart: totalSize = ' + totalSize + 'Byte');
   },
@@ -325,7 +325,7 @@ var  directUpdateCustomListener  = {
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** **差分更新**が可能なのは、クライアント・アプリケーションの Web リソースが、サーバーに現在デプロイされているアプリケーションの 1 つ前のバージョンである場合に限られます。現在デプロイされているアプリケーションより複数バージョン前のクライアント・アプリケーション (クライアント・アプリケーションが更新された後、最低 2 回はアプリケーションがサーバーにデプロイされていることを意味します) は、**フル・アップデート**を受け取ります (Web リソース全体がダウンロードされ、更新されることを意味します)。
 
 ## セキュアなダイレクト・アップデート
-{: #secure-direct-update}
+{: #secure-direct-update }
 セキュアなダイレクト・アップデートは、デフォルトでは無効になっていますが、{{ site.data.keys.mf_server }}から (またはコンテンツ配信ネットワーク (CDN) から) クライアント・アプリケーションに送信される Web リソースが第三者のアタッカーによって変更されるのを防止します。
 
 **ダイレクト・アップデートの認証性を有効にするには、以下のようにします。**  

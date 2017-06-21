@@ -122,6 +122,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
    > Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
+
 2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
    ```bash
@@ -159,7 +160,7 @@ La réponse s'affiche ensuite dans la vue LogCat d'Android Studio.
 Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{ site.data.keys.product_adj }} :
 
 - Consultez les tutoriels [Developing Applications](../../application-development/)
-- Consultez les tutoriels [Adapters development](../../adapters/) 
+- Consultez les tutoriels [Adapters development](../../adapters/)
 - Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
 - Consultez les tutoriels [Notifications](../../notifications/)
 - Consultez [tous les tutoriels](../../all-tutorials)

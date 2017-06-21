@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ### Android Studio Gradle プロジェクトへの Javadocs の登録
 {: #registering-javadocs-to-an-android-studio-gradle-project }
-{{site.data.keys.product_adj }} Android Javadocs は、Gradle によってインポートされた *.aar ファイルに含まれています。ただし、Android Studio で関連するライブラリーにリンクする必要があります。
+{{ site.data.keys.product_adj }} Android Javadocs は、Gradle によってインポートされた *.aar ファイルに含まれています。ただし、Android Studio で関連するライブラリーにリンクする必要があります。
 
 1. Android Studio で、**「Project」**ビューで作業していることを確認します。
 2. **「External Libraries」**ノードの下にあるライブラリー名を見つけます (Javadoc ファイルはその下にあります)。
@@ -20,4 +20,4 @@ weight: 1
 ### 注
 {: #notes }
 
-* Android Service 内から {{site.data.keys.product_adj }} API をアクティブ化することはできません。
+* Android Service 内から {{ site.data.keys.product_adj }} API をアクティブ化することはできません。

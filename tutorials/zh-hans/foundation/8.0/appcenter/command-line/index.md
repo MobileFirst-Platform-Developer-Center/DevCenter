@@ -149,7 +149,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 您可以使用上载和删除工具作为 Ant 任务，并在您自己的 Ant 脚本中使用此 Ant 任务。  
 运行这些任务需要 Apache Ant。[系统需求](../../product-overview/requirements)中列出了 Apache Ant 的最低受支持版本。
 
-为方便起见，{{ site.data.keys.mf_server }}    中包含了 Apache Ant 1.8.4。
+为方便起见，{{ site.data.keys.mf_server }} 中包含了 Apache Ant 1.8.4。
 在 product_install_dir/shortcuts/ 目录中，提供了以下脚本：
 
 * ant（针对 UNIX / Linux）

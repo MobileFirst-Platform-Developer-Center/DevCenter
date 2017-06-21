@@ -15,12 +15,12 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.mf_console }} アプリケーションは `WorklightResourceRequest` REST API を使用してリソースにアクセスできます。  
+{{ site.data.keys.mf_console }} アプリケーションは `WorklightResourceRequest` REST API を使用してリソースにアクセスできます。  
 REST API は、すべてのアダプターおよび外部リソースで機能します。
 
 **前提条件**:
 
-- 必ずご使用のネイティブ [Windows 8.1 Universal または Windows 10 UWP](../../../application-development/sdk/windows-8-10) に {{site.data.keys.product }} SDK を追加しておいてください。
+- 必ずご使用のネイティブ [Windows 8.1 Universal または Windows 10 UWP](../../../application-development/sdk/windows-8-10) に {{ site.data.keys.product }} SDK を追加しておいてください。
 - [アダプターの作成](../../../adapters/creating-adapters/)方法を参照してください。
 
 ## WLResourceRequest

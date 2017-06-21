@@ -288,3 +288,8 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 ### 在 Android 应用程序中不支持原始 IPv6 地址
 {: #raw-ipv6-address-not-supported-in-android-applications }
 在为本机 Android 应用程序配置 **mfpclient.properties** 期间，如果 {{ site.data.keys.mf_server }} 位于具有 IPv6 地址的主机上，那么请使用此 IPV6 地址的映射的主机名在 **mfpclient.properties** 中配置 **wlServerHost** 属性。使用原始 IPv6 地址配置 **wlServerHost** 属性将导致应用程序连接到 {{ site.data.keys.mf_server }} 的尝试失败。
+
+### 不建议修改 Cordova 应用程序的缺省行为
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+如果在将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目时修改 Cordova 应用程序的缺省行为（如覆盖后退按钮行为），可能会导致提交时应用程序被 Google Play Store 拒绝。
+如果在提交到 Google Play Store 时遇到其他失败情况，可以联系 Google 支持人员。

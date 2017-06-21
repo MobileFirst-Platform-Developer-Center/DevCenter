@@ -10,7 +10,7 @@ weight: 6
 {: #overview }
 特定のアプリケーション・サーバーについてロギングとトレース用のパラメーターを設定できるだけでなく、JNDI プロパティーを使用して、サポートされているすべてアプリケーション・サーバーで出力を制御することができます。
 
-アプリケーション・サーバーごとに特定の方法で、Application Center のトレース・オペレーションにロギング・レベルと出力ファイルを設定できます。また、{{site.data.keys.product_full }} には、トレース出力のフォーマットやリダイレクトを制御したり、生成される SQL ステートメントを出力したりするための Java™ Naming and Directory Interface (JNDI) プロパティーが用意されています。
+アプリケーション・サーバーごとに特定の方法で、Application Center のトレース・オペレーションにロギング・レベルと出力ファイルを設定できます。また、{{ site.data.keys.product_full }} には、トレース出力のフォーマットやリダイレクトを制御したり、生成される SQL ステートメントを出力したりするための Java™ Naming and Directory Interface (JNDI) プロパティーが用意されています。
 
 #### ジャンプ先
 {: #jump-to }
@@ -23,12 +23,12 @@ weight: 6
 {: #logging-in-websphere }
 アプリケーション・サーバーでのトレース・オペレーションに、ロギング・レベルと出力ファイルを設定することができます。
 
-Application Center (または、{{site.data.keys.product }} の他のコンポーネント) で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を Java™ 仮想マシン (JVM) のプロパティーとして指定する必要があります。
+Application Center (または、{{ site.data.keys.product }} の他のコンポーネント) で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を Java™ 仮想マシン (JVM) のプロパティーとして指定する必要があります。
 
 1. WebSphere Application Server 管理コンソールを開きます。
 2. **「トラブルシューティング (Troubleshooting)」→「ログおよびトレース (Logs and Trace)」**を選択します。
 3. **「ロギングおよびトレース (Logging and tracing)」で**、適切なアプリケーション・サーバーを選択し、**「ログ詳細レベルの変更 (Change log detail levels)」**を選択します。
-4. パッケージと、それに対応する詳細レベルを選択します。この例は、Application Center を含む {{site.data.keys.product }} に対し、**FINEST** レベル (**ALL** と同等) のロギングを有効にします。
+4. パッケージと、それに対応する詳細レベルを選択します。この例は、Application Center を含む {{ site.data.keys.product }} に対し、**FINEST** レベル (**ALL** と同等) のロギングを有効にします。
 
 ```xml
 com.ibm.puremeap.*=all
@@ -39,7 +39,7 @@ com.worklight.*=all
 各部の意味は次のとおりです。
 
 * **com.ibm.puremeap.*** は Application Center 用です。
-* **com.ibm.worklight.*** および **com.worklight.*** は、他の {{site.data.keys.product_adj }} コンポーネント用です。
+* **com.ibm.worklight.*** および **com.worklight.*** は、他の {{ site.data.keys.product_adj }} コンポーネント用です。
 
 トレースは **trace.log** というファイルに送信されます。**SystemOut.log** や **SystemErr.log** には送信されません。
 
@@ -49,8 +49,7 @@ Liberty アプリケーション・サーバー上の Application Center のト�
 
 Application Center で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を指定する必要があります。
 
-Application Center を含む {{site.data.keys.product }} に対し FINEST レベル (ALL と同等) のロギングを有効にするには、server.xml に 1 つの行を追加します。例えば、次のとおりです。
-
+Application Center を含む {{ site.data.keys.product }} に対し FINEST レベル (ALL と同等) のロギングを有効にするには、server.xml に 1 つの行を追加します。例えば、次のとおりです。
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
@@ -68,7 +67,7 @@ Apache Tomcat アプリケーション・サーバーで実行されるトレー
 
 Application Center で問題の診断を試みるときは、ログ・メッセージを参照できることが重要です。読み取り可能なログ・メッセージをログ・ファイルに出力するには、適切な設定を指定する必要があります。
 
-Application Center を含む {{site.data.keys.product }} に対し ** FINEST** レベル (**ALL** と同等) のロギングを有効にするには、**conf/logging.properties** ファイルを編集します。例えば、以下のような行を追加します。
+Application Center を含む {{ site.data.keys.product }} に対し ** FINEST** レベル (**ALL** と同等) のロギングを有効にするには、**conf/logging.properties** ファイルを編集します。例えば、以下のような行を追加します。
 
 ```xml
 com.ibm.puremeap.level = ALL

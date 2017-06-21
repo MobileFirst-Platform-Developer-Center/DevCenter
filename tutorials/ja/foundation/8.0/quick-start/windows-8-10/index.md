@@ -10,29 +10,29 @@ weight: 4
 {: #overview }
 このデモンストレーションの目的は、エンドツーエンドのフローを体験することです。
 
-1. {{site.data.keys.product_adj }} クライアント SDK と事前にバンドルされているサンプル・アプリケーションは登録済みで、{{site.data.keys.mf_console }} からダウンロードされています。
-2. 新規または提供済みのアダプターは {{site.data.keys.mf_console }} にデプロイされています。  
+1. {{ site.data.keys.product_adj }} クライアント SDK と事前にバンドルされているサンプル・アプリケーションは登録済みで、{{ site.data.keys.mf_console }} からダウンロードされています。
+2. 新規または提供済みのアダプターは {{ site.data.keys.mf_console }} にデプロイされています。  
 3. アプリケーション・ロジックは、リソース要求を行うために変更されています。
 
 **終了結果**:
 
-* {{site.data.keys.mf_server }} を正常に ping している。
+* {{ site.data.keys.mf_server }} を正常に ping している。
 * アダプターを使用してデータを正常に取得している。
 
 #### 前提条件:
 {: #prerequisites }
 * 構成済み Visual Studio 2013/5
-* *オプション*。{{site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
-* *オプション*。スタンドアロン {{site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。{{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
-### 1. {{site.data.keys.mf_server }} の開始
+### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
 [Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
-[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、コマンド `./run.cmd` を実行します。
+[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、コマンド `./run.cmd` を実行します。
 
 ### 2. アプリケーションの作成
 {: #2-creating-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
 
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * **Windows** プラットフォームを選択します。
@@ -83,7 +83,7 @@ weight: 4
 
 ### 4. アダプターのデプロイ
 {: 4-deploy-an-adapter }
-[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
+[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{ site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
 
@@ -104,26 +104,26 @@ weight: 4
 <img src="windowsQuickStart.png" alt="サンプル・アプリケーション" style="float:right"/>
 ### 5. アプリケーションのテスト
 {: 5-testing-the-application }
-1. Visual Studio で、**mfpclient.resw** ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{site.data.keys.mf_server }} の正しい値で編集します。
-    * ローカル {{site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+1. Visual Studio で、**mfpclient.resw** ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
+    * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
+    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
 
-    あるいは、{{site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
+    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{ site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
 
 2. **「アプリケーションの実行 (Run App)」**ボタンを押します。
 
 ### 結果
 {: #results }
-* **「{{site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
-* アプリケーションが {{site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
+* **「{{ site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{ site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
+* アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
 その場合、アダプター応答が Visual Studio の出力コンソールに出力されます。
 
-![{{site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
+![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
 
 ## 次の手順
 {: #next-steps }
-アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
+アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{ site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
 
 - [アプリケーションの開発](../../application-development/)チュートリアルを検討する
 - [アダプターの開発](../../adapters/)チュートリアルを検討する
