@@ -3,7 +3,7 @@ description: "Develop, test, manage, and secure your native and hybrid apps"
 url: https://mobilefirstplatform.ibmcloud.com
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
-paginate: 10
+paginate: 20
 paginate_path: "/blog/:num/"
 markdown: kramdown
 generate_redirects: false
@@ -58,87 +58,7 @@ defaults:
       indexed: true
   -
     scope:
-      path: "tutorials/en"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/es"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/fr"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/de"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/zh-hans"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/ja"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/ko"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/pt-br"
-    values:
-      layout: tutorial
-      category: tutorial
-      show_breadcrumb: true
-      show_disqus: true
-      show_in_nav: true
-      print_pdf: true
-  -
-    scope:
-      path: "tutorials/ru"
+      path: "tutorials"
     values:
       layout: tutorial
       category: tutorial
