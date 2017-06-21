@@ -79,7 +79,7 @@ private void callAdapter(){
 - R-script below can be used to plot number of adapter requests. Change the dashDB schema name with yours.
 
 ```
-########### R script for displaying MFP number adapter calls made ###############
+########### R script for displaying MFP number of adapter calls made. ###############
 
 library(ibmdbR)
 
@@ -91,9 +91,9 @@ df <- as.data.frame(ida.data.frame('DASH6690.NETWORKTRANSACTION')[,c("ADAPTERNAM
 nrow(df)
 ncol(df)
 dfrm <-table(df[,c(1)])
-jpeg(type='cairo',"edulevel.jpg",width=600,height=400)
+jpeg(type='cairo',"edulevel.jpg",width=700,height=500)
 sink('/dev/null')
-barplot(dfrm, main="Histogram of adapter requests”, legend = rownames(dfrm), beside=TRUE,col=rainbow(7))
+barplot(dfrm, main="Bar chart of adapter requests",legend = rownames(dfrm), beside=TRUE,col=rainbow(7))
 dev.off()
 sink()
 
