@@ -85,7 +85,8 @@ weight: 1
 
 ## 使用 {{ site.data.keys.mf_bm_short }} 服务
 {: #using-the-mobile-foundation-service }
-> **注：**目前只能在**达拉斯**和**英国**地区获取分析服务。{{ site.data.keys.mf_server }} 运行后，会显示以下仪表板：
+
+{{ site.data.keys.mf_server }} 运行后，会显示以下仪表板：
 
 ![{{ site.data.keys.mf_bm_short }} 设置图示](service-dashboard.png)
 
@@ -122,10 +123,10 @@ weight: 1
 
 ## 添加 {{ site.data.keys.mf_analytics_short }} 支持
 {: #adding-analytics-support }
-您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。此操作会为 IBM Container 提供 {{ site.data.keys.mf_analytics_server }} 的实例。
+您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。此操作会为 IBM Container 提供 {{ site.data.keys.mf_analytics }} 的实例。
 
 * 使用 **Developer** 计划时，此操作还会自动将 {{ site.data.keys.mf_analytics_short }} 服务实例与 {{ site.data.keys.mf_server }} 实例挂钩。  
-* 使用 **Developer Pro**、**Professional Per Capacity** 或 **Proffessional1 Application** 计划时，此操作将需要您额外输入以完成选择：可用节点数量、可用内存和存储容量。
+* 使用 **Developer Pro**、**Professional Per Capacity** 或 **Proffessional1 Application** 计划时，此操作将需要您额外输入以完成选择：可用节点数量、可用内存和存储容量。 
 
 操作完成后，请在浏览器中重新装入 {{ site.data.keys.mf_console }} 页面以访问 {{ site.data.keys.mf_analytics_console_short }}。  
 
@@ -160,7 +161,7 @@ Developer 计划不提供持续性数据库，这有时可能会导致数据丢�
 * 每次执行以下任意服务器端操作时：
     * 部署适配器或者更新任何适配器配置或属性值
     * 执行任何安全配置，如作用域映射等
-    
+
     请从命令行运行以下命令以将配置下载至 .zip 文件：
 
   ```bash
