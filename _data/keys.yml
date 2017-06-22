@@ -94,9 +94,13 @@ mf_web_browser_support_android_ver: "Android 4.3+"
 # NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
 
 ## MF Analytics
-mf_analytics_short:             "Analytics"                                             
+mf_analytics_short:             "Analytics"
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
+
+## MF Analytics service
+mf_analytics_service:            "Mobile Analytics"
+mf_analytics_service_console:            "Mobile Analytics Console" 
 
 # MF Analytics Console
 mf_analytics_console_short:     "Analytics Console"
