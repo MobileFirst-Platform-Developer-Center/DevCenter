@@ -564,7 +564,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-m|--memory] SERVER_MEM </td>
-                                                <td>コンテナーに対してメモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-se|--ssh] SSH_ENABLE </td>

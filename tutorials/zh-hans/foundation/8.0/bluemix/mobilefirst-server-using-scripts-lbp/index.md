@@ -89,7 +89,7 @@ weight: 3
                         </ul>
                     </li>
                     <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。
-                    <br/>
+		    <br/>
                     </li>
 
                     <li><b>security</b> 文件夹：用于存储密钥存储库、信任库和 LTPA 密钥文件 (ltpa.keys)。</li>
@@ -97,15 +97,16 @@ weight: 3
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭此节</b></a>
-            </div>
+                                    </div>
         </div>
     </div>
 </div>
 
 
-## 设置 {{ site.data.keys.mf_server }}
+## 设置 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_app_center }}
 {: #setting-up-the-mobilefirst-server }
-您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
+您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：
+最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
 
 > **注：**不记录密码，您将需要在自变量文件中手动添加密码。
 
@@ -113,6 +114,145 @@ weight: 3
 * 以交互方式 - 运行脚本，不使用任何自变量。
 
 如果选择以交互方式运行脚本，可以跳过配置，但是强烈建议至少查看并了解一下您将需要提供的自变量。
+
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+
+>**注：**可以从本地{{ site.data.keys.mf_app_center }} 安装文件夹（`installer` 和 `tools` 文件夹）下载安装程序和 DB 工具。
+
+<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-foundation-1">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-1" aria-expanded="false" aria-controls="collapse-step-appcenter-1">使用配置文件</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者之后可在 <b>recorded-args</b> 文件夹中以交互方式运行脚本。文件如下：<br/>
+
+              <h4>initenv.properties</h4>
+              此文件包含用于运行环境初始化的属性。
+              <h4>prepareappcenterdbs.properties</h4>
+              {{ site.data.keys.mf_app_center }} 需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库实例</a>（标记为 OLTP 或 Transactional 的所有套餐）。<br/>
+              <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
+              在设置 dashDB 实例后，请提供所需自变量。
+
+              <h4>prepareappcenter.properties</h4>
+              此文件用于 prepareappcenter.sh 脚本。这可为 {{ site.data.keys.mf_app_center_short }} 文件布局做好准备，并将其推送至 Bluemix 作为 Cloud Foundry 应用程序。
+              <h4>startappcenter.properties</h4>
+              此文件用于配置服务器的运行时属性并启动服务器。强烈建议您使用至少1024 MB (<b>SERVER_MEM=1024</b>) 和 3 个节点用于实现高可用性 (<b>INSTANCES=3</b>)
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-appcenter-2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-2" aria-expanded="false" aria-controls="collapse-step-appcenter-2">运行脚本</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+              <p>以下指示信息演示了如何使用配置文件来运行脚本。如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
+              <ol>
+                  <li><b>initenv.sh - 登录 Bluemix </b><br />
+                      运行 <b>initenv.sh</b> 脚本以登录 Bluemix。针对 dashDB 服务绑定的组织和空间运行以下脚本：
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        您还可以在命令行上传递参数
+
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+
+                        要了解受支持的所有参数及其文档，请运行帮助选项
+
+{% highlight bash %}
+./initenv.sh --help
+{% endhighlight %}
+                  </li>
+                  <li><b>prepareappcenterdbs.sh - 准备 {{ site.data.keys.mf_app_center }} 数据库</b><br />
+                  <b>prepareappcenterdbs.sh</b> 脚本用于通过 dashDB 数据库服务或可访问的 DB2 数据库服务器配置 {{ site.data.keys.mf_app_center }}。在本地安装 DB2 服务器的数据中心内运行 Bluemix 时，DB2 选项非常实用。如果使用 dashDB 服务，在步骤 1 中登录的组织和空间内应提供 dashDB 服务的服务实例。请运行：
+ {% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        您还可以在命令行上传递参数
+
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
+{% endhighlight %}
+
+                        要了解受支持的所有参数及其文档，请运行帮助选项
+
+{% highlight bash %}
+./prepareappcenterdbs.sh --help
+{% endhighlight %}
+
+                  </li>
+                  <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
+                      仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+</li>
+                  <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }}</b><br />
+运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
+
+
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        您还可以在命令行上传递参数
+
+{% highlight bash %}
+prepareappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        要了解受支持的所有参数及其文档，请运行帮助选项
+
+{% highlight bash %}
+./prepareappcenter.sh --help
+{% endhighlight %}                  
+
+                  </li>
+                  <li><b>startappcenter.sh - 启动 {{ site.data.keys.mf_app_center }}</b><br />
+                  <b>startappcenter.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_app_center }}。请运行：<p/>
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        您还可以在命令行上传递参数
+
+{% highlight bash %}
+./startappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        要了解受支持的所有参数及其文档，请运行帮助选项
+
+{% highlight bash %}
+./startappcenter.sh --help
+{% endhighlight %}   
+
+                  </li>
+              </ol>
+            </div>
+        </div>
+    </div>
+</div>
+装入以下 URL 以启动 {{ site.data.keys.mf_app_center }} 控制台：`http://APP_HOST.mybluemix.net/appcenterconsole`（可能需要一些时间才能完成）。   
+
+通过使用 IBM Bluemixmay 上运行的 {{ site.data.keys.mf_app_center }}，现在您可以将移动应用程序上载到 Application Center。
+
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
@@ -199,8 +339,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
 </li>
                   <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }}</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code>
-<br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
 
 
 {% highlight bash %}
@@ -276,13 +415,31 @@ prepareserver.sh --name APP_NAME
 
 ## 应用 {{ site.data.keys.mf_server }} 修订
 {: #applying-mobilefirst-server-fixes }
+
 Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。  
-应用临时修订之前，请备份现有的配置文件。配置文件位于 **package_root/mfpf-server-libertyapp/usr** 文件夹中。
+应用临时修订之前，请备份现有的配置文件。配置文件位于以下文件夹中：
+
+* {{ site.data.keys.mf_analytics }}：**package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} Liberty Cloud Foundry Application：**package_root/mfpf-server-libertyapp/usr**
+* {{ site.data.keys.mf_app_center_short }}：**package_root/mfp-appcenter-libertyapp/usr**
+
+### 应用 iFix 的步骤：
 
 1. 下载临时修订归档并将内容解压缩到现有安装文件夹，覆盖现有文件。
-2. 将备份配置文件复原至 **/mfpf-server-libertyapp/usr** 文件夹，覆盖新安装的配置文件。
+2. 将备份配置文件复原到 **package_root/mfpf-analytics/usr**、**package_root/mfpf-server-libertyapp/usr** 和 **package_root/mfp-appcenter-libertyapp/usr** 文件夹，覆盖新安装的配置文件。
+3. 在编辑器中编辑 **package_root/mfpf-server/usr/env/jvm.options** 文件并除去以下行（如果存在）：
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
+```
+    现在，您可以构建并部署更新后的服务器。
+使用相同的自变量集重新运行以下脚本。
+    a. `./prepareserver.sh`，将更新的工件上载到 Bluemix。
 
-现在，您可以构建并部署更新后的服务器。
+    b. `./startserver.sh`，启动更新后的服务器
+
+    先前部署中使用的自变量副本已保存在 `recorded-args/` 目录中。您可以将这些属性用于部署。
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## 从 Bluemix 中除去数据库服务配置
 {: #removing-the-database-service-configuration-from-bluemix }
@@ -294,3 +451,5 @@ Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Cent
 2. 启动 dashDB 控制台以使用选中的 dashDB 服务实例的模式和数据库对象。
 3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
 4. 在仔细检查每个模式名称以及其下的对象后，删除模式。这将从 Bluemix 中除去数据库配置。
+
+同样，如果在配置 {{ site.data.keys.mf_app_center }} 时运行 **prepareappcenterdbs.sh**，请遵循上述步骤以除去 Bluemix 中的数据库服务配置。
