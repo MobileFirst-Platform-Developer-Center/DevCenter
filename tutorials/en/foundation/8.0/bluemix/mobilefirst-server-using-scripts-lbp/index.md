@@ -433,9 +433,9 @@ following folders:
 ```
     You can now build and deploy the updated server. Re-run the following scripts with the same set of arguments.
 
-    a. ```./prepareserver.sh``` to upload the updated artifacts to Bluemix.
+    a. `./prepareserver.sh` to upload the updated artifacts to Bluemix.
 
-    b. ```./startserver.sh``` to start the updated server
+    b. `./startserver.sh` to start the updated server
 
     A copy of the the arguments that you used in your previous deployment would have been saved in `recorded-args/` directory. You can use these properties for your deployment.
 
