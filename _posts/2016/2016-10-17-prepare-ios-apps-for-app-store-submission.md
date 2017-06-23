@@ -9,7 +9,7 @@ version:
 author:
   name: Vittal R Pai
 ---
->**Update :** The steps provided below are applicable only if your Xcode version is 8.2.1 or below. Starting Xcode version 8.3, `i386` and `x86_64` architecture slices of dynamic frameworks are automatically removed by Xcode during IPA generation.
+>**Update :** The steps provided below are applicable only if your Xcode version is 8.2.1 / cocoapod version 1.1.0 or below and the MobileFirst iOS SDK is manually added to your project. If the MobileFirst iOS SDK is added to your project using cocoapods with cocoapod version 1.2.1 or later, the `i386` and `x86_64` architecture slices of dynamic frameworks are automatically removed during IPA generation.
 
 Starting IBM MobileFirst Foundation 8.0, the iOS Client SDK for Cordova and Native applications was modified to be a dynamic framework. When an archive/IPA files are generated using Test Flight or iTunes Connect for store submission/validation, this might cause a runtime crash/fail with following error:
 
