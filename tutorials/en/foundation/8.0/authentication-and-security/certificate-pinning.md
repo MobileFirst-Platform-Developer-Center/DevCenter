@@ -18,7 +18,7 @@ Protocols that rely on certificate chain verification, such as SSL/TLS, are vuln
 Certificate pinning is the process of associating a host with its expected public key. Because you own both the server-side code and the client-side code, you can configure your client code to accept only a specific certificate for your domain name, instead of any certificate that corresponds to a trusted CA root certificate recognized by the operating system or browser.
 A copy of the certificate is placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
 
-You can also pin multiple certificates with your client application. A copy of the all the certificates should be placed in your client application. During the SSL handshake (first request to the server), the IBM MobileFirst Platform Foundation for client SDK verifies that the public key of the server certificate matches to the public key of one of the certificate that is stored in the app.
+You can also pin multiple certificates with your client application. A copy of the all the certificates should be placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} for client SDK verifies that the public key of the server certificate matches to the public key of one of the certificate that is stored in the app.
 
 #### Important
 {: #important }
@@ -42,7 +42,7 @@ The certificate must be placed in both the {{ site.data.keys.mf_server }} and in
 
 ## Certificate pinning API
 {: #certificate-pinning-api }
-Certificate pinning consists of the following overloaded API method, where one has a parameter certificateFilename, where certificateFilename is the name of the certificate file,and the second one has a parameter certificateFilenames, where certificateFilenames is an array of name of the certificate files.
+Certificate pinning consists of the following overloaded API method, where one method has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file, and the second method has a parameter `certificateFilenames`, where `certificateFilenames` is an array of names of the certificate files.
 
 ### Android
 {: #android }
