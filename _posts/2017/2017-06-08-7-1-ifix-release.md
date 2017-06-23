@@ -1,6 +1,6 @@
 ---
-title: MobileFirst Platform Foundation iFix 7.1.0.0-MFPF-IF201703150904 released
-date: 2017-03-16
+title: MobileFirst Platform Foundation iFix 7.1.0.0-MFPF-IF201705290717 released
+date: 2017-06-08
 version:
 - 7.1
 tags:
@@ -11,10 +11,12 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix has been released for MobileFirst Platform Foundation 7.1, dated **March 15th, 2017**.  
+A new iFix has been released for MobileFirst Platform Foundation 7.1, dated **May 29th, 2017**.  
 [Download iFix](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central)
 
 ## Included changes in this iFix
 *For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.*
 
-**PI76464** HYBRID APP FAILS TO START DUE TO EXISTENCE OF BOM CHARACTERS.
+**PI81737** MEMORY LEAK MIGHT BE SEEN IF SESSION DEPENDENT COMPONENTS OR ENVIRONMENTS ARE IN USE.
+
+**PI81652** THE "MFP.ADAPTER.INVOCATION.URL" JNDI PROPERTY IS MISSING IN THE MOBILEFIRST RUNTIME.

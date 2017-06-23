@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
 
-In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
+In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceRequest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
 
 You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
 
