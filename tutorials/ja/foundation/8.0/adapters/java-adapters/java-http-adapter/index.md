@@ -15,6 +15,11 @@ Java アダプターでは、バックエンド・システムへの接続を自
 
 **前提条件:** 最初に必ず、[Java アダプター](../)チュートリアルをお読みください。
 
+>**重要:** アダプター実装内で `javax.ws.rs.*` または `javax.servlet.*` からクラスへの静的参照を使用する場合、以下のいずれかのオプションを使用して必ず **RuntimeDelegate** を構成する必要があります。
+*	Liberty `jvm.options` で `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
+または
+*	システム・プロパティーまたは JVM カスタム・プロパティー `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
+
 ## アダプターの初期化
 {: #initializing-the-adapter }
 
@@ -76,7 +81,7 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 }
 ```
 
-このサンプル・アダプターは、バックエンド・サービスから RSS フィードを取得できるリソース URL を 1 つだけ公開します。
+このサンプル・アダプターは、バックエンド・サービスからの RSS フィードの取得を可能にするリソース URL を 1 つだけ公開します。
 
 * `@GET` は、このプロシージャーが `HTTP GET` 要求のみに応答することを示します。
 * `@Produces("application/json")` は、送り返す応答のコンテンツ・タイプを指定します。クライアント・サイドで処理しやすいように、応答を `JSON` オブジェクトとして送信することにします。
@@ -131,5 +136,5 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
 ### 使用例
 {: #sample-usage }
 
-* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* Maven、{{ site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
 * アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。

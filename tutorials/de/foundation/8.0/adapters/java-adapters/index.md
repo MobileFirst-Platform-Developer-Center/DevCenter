@@ -123,7 +123,7 @@ Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus.
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * Konfigurationsdatei mit **push** übertragen
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -135,7 +135,7 @@ Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus.
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * Konfigurationsdatei mit **push** übertragen
   ```bash
   mfpdev adapter push
@@ -254,6 +254,12 @@ eine Annotation für HTTP-Anforderungen wie `@GET`, `@PUT`, `@POST`, `@DELETE` o
 
 > Sie können viele weitere Annoationen verwenden, die in der folgenden **Zusammenfassung der Annotationstypen** angegeben sind: 
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
+
+>**Wichtiger Hinweis:** Wenn Sie in Ihrer Adapterimplementierung statische Referenzen auf Klassen von `javax.ws.rs.*` oder `javax.servlet.*` verwenden, müssen Sie **RuntimeDelegate** mit einer der folgenden Optionen konfigurieren:
+*	Legen Sie `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in `jvm.options` in Liberty fest.
+ODER
+*	Legen Sie Sie die Systemeigenschaft oder angepasste JVM-Eigenschaft `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
+
 
 ## HTTP-Sitzung
 {: #http-session }

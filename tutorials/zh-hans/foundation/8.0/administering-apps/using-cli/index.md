@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-可以通过 **mfpadm** 程序来管理 {{ site.data.keys.product_adj }}    应用程序。
+可以通过 **mfpadm** 程序来管理 {{ site.data.keys.product_adj }} 应用程序。
 
 #### 跳转至
 {: #jump-to }
@@ -17,12 +17,12 @@ weight: 4
 
 ## 与其他设备比较
 {: #comparison-with-other-facilities }
-可以通过以下方式对 {{ site.data.keys.product_full }}    运行管理操作：
+可以通过以下方式对 {{ site.data.keys.product_full }} 运行管理操作：
 
-* {{ site.data.keys.mf_console }}   ，属于交互式。
+* {{ site.data.keys.mf_console }}，属于交互式。
 * mfpadm Ant 任务。
 * **mfpadm** 程序。
-* {{ site.data.keys.product_adj }}    管理 REST 服务。
+* {{ site.data.keys.product_adj }} 管理 REST 服务。
 
 **mfpadm** Ant 任务、mfpadm 程序和 REST 服务对于操作的自动执行或无人照管执行很有用，如以下用例：
 
@@ -34,7 +34,7 @@ weight: 4
 
 ## 先决条件
 {: #prerequisites }
-**mfpadm** 工具可通过 {{ site.data.keys.mf_server }}    安装程序进行安装。在本页的其余部分中，**product\_install\_dir** 表示 {{ site.data.keys.mf_server }}    安装程序的安装目录。
+**mfpadm** 工具可通过 {{ site.data.keys.mf_server }} 安装程序进行安装。在本页的其余部分中，**product\_install\_dir** 表示 {{ site.data.keys.mf_server }} 安装程序的安装目录。
 
 在 **product\_install\_dir/shortcuts/** 目录中以一组脚本的形式提供 **mfpadm** 命令：
 
@@ -44,7 +44,7 @@ weight: 4
 这些脚本能够运行，这意味着不需要特定的环境变量。如果设置了环境变量 **JAVA_HOME**，那么脚本将接受该环境变量。  
 要使用 **mfpadm** 程序，请将 **product\_install\_dir/shortcuts/** 目录放入 PATH 环境变量中，或在每次调用中引用其绝对文件名。
 
-有关运行 {{ site.data.keys.mf_server }}    安装程序的更多信息，请参阅[运行 IBM Installation Manager](../../installation-configuration/production/installation-manager/)。
+有关运行 {{ site.data.keys.mf_server }} 安装程序的更多信息，请参阅[运行 IBM Installation Manager](../../installation-configuration/production/installation-manager/)。
 
 #### 跳转至
 {: #jump-to-1 }
@@ -59,7 +59,7 @@ weight: 4
 
 ### 调用 **mfpadm** 程序
 {: #calling-the-mfpadm-program }
-可以使用 **mfpadm** 程序来管理 {{ site.data.keys.product_adj }}    应用程序。
+可以使用 **mfpadm** 程序来管理 {{ site.data.keys.product_adj }} 应用程序。
 
 #### 语法
 {: #syntax }
@@ -74,9 +74,9 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | 选项	| 类型 | 描述 | 必需 | 缺省值 | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Administration Services 的 {{ site.data.keys.product_adj }}    web 应用程序的基本 URL | 是 | | 
+| --url | 	 | URL | Administration Services 的 {{ site.data.keys.product_adj }} web 应用程序的基本 URL | 是 | | 
 | --secure	 | 布尔值 | 是否避免存在安全风险的操作 | 否 | true | 
-| --user	 | 名称 | 用于访问 {{ site.data.keys.product_adj }}    Administration Services 的用户名 | 是 |  | 	 
+| --user	 | 名称 | 用于访问 {{ site.data.keys.product_adj }} Administration Services 的用户名 | 是 |  | 	 
 | --passwordfile | 文件 | 包含用户密码的文件 | 否 | 
 | --timeout	     | 数字  | 整个 REST 服务访问超时，以秒为单位 | 否 | 	 
 | --connect-timeout | 数字 | 建立网络连接超时，以秒为单位 | 否 |
@@ -226,7 +226,7 @@ mfpadm 调用包含一个命令。支持以下命令。
 配置文件是文本文件，采用当前语言环境编码和 Java **.properties** 语法。以下是缺省配置文件：
 
 * UNIX：**${HOME}/.mfpadm.config**
-* Windows：**{{ site.data.keys.prod_server_data_dir_win }}  \mfpadm.config**
+* Windows：**{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **注：**如果未指定 `--configfile` 选项，那么缺省配置文件只用于交互方式和 config 命令。对于其他命令的非交互方式使用，必须显式指定要使用的配置文件。
 
@@ -259,7 +259,7 @@ mfpadm 程序生成的正常输出采用当前语言环境的编码格式进行�
 
 ### 常规配置命令
 {: #commands-for-general-configuration }
-在调用 **mfpadm** 程序时，可以包含各种用于访问 IBM {{ site.data.keys.mf_server }}    或运行时全局配置的命令。
+在调用 **mfpadm** 程序时，可以包含各种用于访问 IBM {{ site.data.keys.mf_server }} 或运行时全局配置的命令。
 
 #### `show global-config` 命令
 {: #the-show-global-config-command }
@@ -282,7 +282,7 @@ show global-config
 
 此命令基于[全局配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST 服务。
 
-<br /> 
+<br/>
 #### `show user-config` 命令
 {: #the-show-user-config-command }
 `show
@@ -311,7 +311,7 @@ show user-config mfp
 
 此命令基于[运行时配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST 服务。
 
-<br /> 
+<br/>
 #### `set user-config` 命令
 {: #the-set-user-config-command }
 `set
@@ -349,7 +349,7 @@ set user-config mfp timeout = 240
 
 此命令基于[运行时配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST 服务。
 
-<br /> 
+<br/>
 #### `show confidential-clients` 命令
 {: #the-show-confidential-clients-command }
 `show confidential-clients` 命令显示可以访问运行时的保密客户机的配置。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
@@ -377,7 +377,7 @@ show confidential-clients --xml mfp
 
 此命令基于[保密客户机 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST 服务。
 
-<br /> 
+<br/>
 #### `set confidential-clients` 命令
 {: #the-set-confidential-clients-command }
 `set confidential-clients` 命令指定可以访问运行时的保密客户机的配置。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
@@ -399,7 +399,7 @@ set confidential-clients mfp clients.xml
 
 此命令基于[保密客户机 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 服务。
 
-<br /> 
+<br/>
 #### `set confidential-clients-rule` 命令
 {: #the-set-confidential-clients-rule-command }
 `set confidential-clients-rule` 命令指定可以访问运行时的保密客户机的配置中的规则。有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
@@ -456,7 +456,7 @@ list adapters mfp
 
 此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST 服务。
 
-<br /> 
+<br/>
 #### `deploy adapter` 命令
 {: #the-deploy-adapter-command }
 `deploy adapter` 命令在运行时中部署适配器。
@@ -480,7 +480,7 @@ deploy adapter mfp MyAdapter.adapter
 此命令基于[适配器 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST 服务。
 
 
-<br /> 
+<br/>
 #### `show adapter` 命令
 {: #the-show-adapter-command }
 `show adapter` 命令显示有关适配器的详细信息。
@@ -509,7 +509,7 @@ show adapter mfp MyAdapter
 此命令基于[适配器 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 服务。
 
 
-<br /> 
+<br/>
 #### `delete adapter` 命令
 {: #the-delete-adapter-command }
 `delete adapter` 命令从运行时中除去（取消部署）适配器。
@@ -533,7 +533,7 @@ delete adapter mfp MyAdapter
 此命令基于[适配器 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST 服务。
 
 
-<br /> 
+<br/>
 #### `adapter` 命令前缀
 {: #the-adapter-command-prefix }
 `adapter` 命令前缀在动词前采用以下参数。
@@ -543,7 +543,7 @@ delete adapter mfp MyAdapter
 | runtime-name | 运行时的名称。 | 
 | adapter-name | 适配器的名称。 | 
 
-<br /> 
+<br/>
 #### `adapter get binary` 命令
 {: #the-adapter-get-binary-command }
 `adapter get binary` 命令返回二进制适配器文件。
@@ -565,7 +565,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 此命令基于[
 导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
 
-<br /> 
+<br/>
 #### `adapter show user-config` 命令
 {: #the-adapter-show-user-config-command }
 `adapter show user-config` 命令可显示适配器的用户配置。
@@ -586,7 +586,7 @@ adapter mfp MyAdapter show user-config
 
 此命令基于[适配器配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST 服务。
 
-<br /> 
+<br/>
 #### `adapter set user-config` 命令
 {: #the-adapter-set-user-config-command }
 `adapter set user-config` 命令可指定适配器的用户配置或此配置中的单个属性。
@@ -1183,8 +1183,8 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 #### `show info` 命令
 {: #the-show-info-command }
-`show info` 命令显示有关 {{ site.data.keys.product_adj }}    Administration Services 的基本信息，无需访问任何运行时或数据库即可返回这些信息。
-此命令可用于测试 {{ site.data.keys.product_adj }}    Administration Services 究竟是否在运行。
+`show info` 命令显示有关 {{ site.data.keys.product_adj }} Administration Services 的基本信息，无需访问任何运行时或数据库即可返回这些信息。
+此命令可用于测试 {{ site.data.keys.product_adj }} Administration Services 究竟是否在运行。
 
 语法：`show info`
 
@@ -1202,10 +1202,10 @@ show info
 
 #### `show versions` 命令
 {: #the-show-versions-command }
-`show versions` 命令显示各种组件的 {{ site.data.keys.product_adj }}    版本：
+`show versions` 命令显示各种组件的 {{ site.data.keys.product_adj }} 版本：
 
-* **mfpadmVersion**：从中获取 **which mfp-ant-deployer.jar** 的精确 {{ site.data.keys.mf_server }}    版本号。
-* **productVersion**：从中可以获取 **mfp-admin-service.war** 的 {{ site.data.keys.mf_server }}    精确版本号。
+* **mfpadmVersion**：从中获取 **which mfp-ant-deployer.jar** 的精确 {{ site.data.keys.mf_server }} 版本号。
+* **productVersion**：从中可以获取 **mfp-admin-service.war** 的 {{ site.data.keys.mf_server }} 精确版本号。
 * **mfpAdminVersion**：**mfp-admin-service.war** 的精确构建版本号。
 
 语法：`show versions`
@@ -1225,7 +1225,7 @@ show versions
 #### `show diagnostics` 命令
 {: #the-show-diagnostics-command }
 `show
-diagnostics` 命令可显示 {{ site.data.keys.product_adj }}   
+diagnostics` 命令可显示 {{ site.data.keys.product_adj }}
 管理服务正常运行所需的各种组件的状态，例如数据库和辅助服务的可用性。
 
 语法：`show diagnostics`

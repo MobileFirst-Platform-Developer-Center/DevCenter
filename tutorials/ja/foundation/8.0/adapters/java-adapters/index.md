@@ -111,7 +111,7 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * 構成ファイルを**プッシュする**場合
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -123,7 +123,7 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * 構成ファイルを**プッシュする**場合
   ```bash
   mfpdev adapter push
@@ -227,6 +227,12 @@ public class JavaAdapterResource {
 
 > その他のさまざまなアノテーションを使用できます。以下で、**『Annotation Types Summary』** を参照してください。
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
+
+>**重要:** アダプター実装内で `javax.ws.rs.*` または `javax.servlet.*` からクラスへの静的参照を使用する場合、以下のいずれかのオプションを使用して必ず **RuntimeDelegate** を構成する必要があります。
+*	Liberty `jvm.options` で `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
+または
+*	システム・プロパティーまたは JVM カスタム・プロパティー `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
+
 
 ## HTTP セッション
 {: #http-session }

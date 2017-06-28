@@ -18,11 +18,11 @@ iOS 用にサポートされている 3 つのタイプの通知は、`DEFAULT`�
 
 `MIXED` タイプの通知の場合、デバイスにメッセージが表示され、一方、バックグラウンドではアプリケーションが起動してサイレント通知を処理します。`MIXED` タイプの通知のコールバック・メソッドは、2 回呼び出されます。サイレント通知がデバイスに到達したときと、通知をタップしてアプリケーションが開かれたときです。
 
-要件に応じて、**{{site.data.keys.mf_console }} →「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」→「iOS カスタム設定」**で、適切なタイプを選択します。 
+要件に応じて、**{{ site.data.keys.mf_console }} →「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」→「iOS カスタム設定」**で、適切なタイプを選択します。 
 
 > **注:** 通知がサイレントの場合、**アラート**、**サウンド**、および**バッジ**のプロパティーは無視されます。
 
-![{{site.data.keys.mf_console }} での iOS サイレント通知の通知タイプの設定](notification-type-for-silent-notifications.png)
+![{{ site.data.keys.mf_console }} での iOS サイレント通知の通知タイプの設定](notification-type-for-silent-notifications.png)
 
 ## Cordova アプリケーションでのサイレント・プッシュ通知の処理
 {: #handling-silent-push-notifications-in-cordova-applications }

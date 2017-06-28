@@ -21,7 +21,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 ### adapter-resources フォルダー 
 {: #the-adapter-resources-folder }
  
-`adapter-resources` フォルダーには、XML 構成ファイルが含まれています。この構成ファイルでは、接続オプションが記述され、アプリケーションまたは他のアダプターに公開されるプロシージャーがリストされています。
+**adapter-resources** フォルダーには、XML 構成ファイルが含まれています。この構成ファイルでは、接続オプションが記述され、アプリケーションまたは他のアダプターに公開されるプロシージャーがリストされています。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,41 +46,43 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>ここをクリックして adapter.xml 属性とサブエレメントを表示</b></a>
+                <a name="click-for-adapter-xml-attributes-and-subelements" class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>ここをクリックして adapter.xml 属性とサブエレメントを表示</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>必須。</i> アダプターの名前。この名前は {{ site.data.keys.mf_server }} 内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 アダプターを定義してデプロイした後に、その名前を変更することはできません。</li>
-					<li><b>displayName</b>: <i>オプション。</i> {{ site.data.keys.mf_console }} に表示されるアダプターの名前。このエレメントが指定されない場合は、代わりに name 属性の値が使用されます。</li>
-					<li><b>description</b>: <i>オプション。</i> アダプターに関する追加情報。{{ site.data.keys.mf_console }} に表示されます。</li>
-					<li><b>connectivity</b>: <i>必須。</i> アダプターがバックエンド・アプリケーションに接続するときのメカニズムを定義します。これには、<code>connectionPolicy</code> サブエレメントが含まれています。
+                    <li><code>name</code>: <i>必須。</i> アダプターの名前。この名前は {{ site.data.keys.mf_server }} 内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 アダプターを定義してデプロイした後に、その名前を変更することはできません。</li>
+					<li><b>&lt;displayName&gt;</b>: <i>オプション。</i> {{ site.data.keys.mf_console }} に表示されるアダプターの名前。このエレメントが指定されない場合は、代わりに name 属性の値が使用されます。</li>
+					<li><b>&lt;description&gt;</b>: <i>オプション。</i> アダプターに関する追加情報。{{ site.data.keys.mf_console }} に表示されます。</li>
+					<li><b>&lt;connectivity&gt;</b>: <i>必須。</i> アダプターがバックエンド・アプリケーションに接続するときのメカニズムを定義します。これには、&lt;connectionPolicy&gt; サブエレメントが含まれています。
                         <ul>
-                            <li><b>connectionPolicy</b>: <i>必須</i>。<code>connectionPolicy</code> は、接続プロパティーを定義します。このサブエレメントの構造は、バックエンド・アプリケーションの統合テクノロジーによって異なります。connectionPolicy について詳しくは、<a href="js-http-adapter">HTTP アダプターの connectionPolicy エレメント</a>および<a href="js-sql-adapter">SQL アダプターの connectionPolicy エレメント</a>を参照してください。</li>
+                            <li><b>&lt;connectionPolicy&gt;</b>: <i>必須</i>。接続プロパティーを定義します。このサブエレメントの構造は、バックエンド・アプリケーションの統合テクノロジーによって異なります。&lt;connectionPolicy&gt; について詳しくは、<a href="js-http-adapter">HTTP アダプターの &lt;connectionPolicy&gt; エレメント</a>および <a href="js-sql-adapter">SQL アダプターの &lt;connectionPolicy&gt; エレメント</a>を参照してください。</li>
                         </ul>
                     </li>
-                    <li><b>procedure</b>: <i>必須。</i> バックエンド・アプリケーションによって公開されるサービスにアクセスするためのプロセスを定義します。
+                    <li><b>&lt;procedure&gt;</b>: <i>必須。</i> バックエンド・アプリケーションによって公開されるサービスにアクセスするためのプロセスを定義します。
                         <ul>
-                            <li><b>name</b>: <i>必須。</i> プロシージャーの名前。この名前はアダプター内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 </li>
-                            <li><b>audit</b>: <i>オプション。</i> プロシージャーへの呼び出しを監査ログに記録するかどうかを定義します。 以下の値が有効です。
+                            <li><code>name</code>: <i>必須。</i> プロシージャーの名前。この名前はアダプター内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 </li>
+                            <li><code>audit</code>: <i>オプション。</i> プロシージャーへの呼び出しを監査ログに記録するかどうかを定義します。 以下の値が有効です。
                                 <ul>
-                                    <li><b>true</b>: プロシージャーへの呼び出しが監査ログに記録されます。 </li> 
-                                    <li><b>false</b>: デフォルト。プロシージャーへの呼び出しは監査ログに記録されません。</li>
+                                    <li><code>true</code>: プロシージャーへの呼び出しが監査ログに記録されます。 </li> 
+                                    <li><code>false</code>: デフォルト。プロシージャーへの呼び出しは監査ログに記録されません。</li>
                                 </ul>
                             </li>
-                            <li><b>scope</b>: <i>オプション。</i> アダプター・リソース・プロシージャーを保護するセキュリティー・スコープを、スペースで区切ったゼロ個以上のスコープ・エレメントからなるストリングで指定します。スコープ・エレメントは、セキュリティー検査にマップされたキーワード、または、セキュリティー検査の名前です。scope 属性のデフォルト値は空ストリングです。<b>secured</b> 属性の値が false の場合、 scope 属性は無視されます。OAuth リソース保護については、<a href="../../authentication-and-security">許可の概念</a>チュートリアルを参照してください。</li>
-                            <li><b>secured</b>: <i>オプション。</i> アダプター・リソース・プロシージャーが {{ site.data.keys.product }} セキュリティー・フレームワークによって保護されるかどうかを定義します。以下の値が有効です。
+                            <li><code>scope</code>: <i>オプション。</i> アダプター・リソース・プロシージャーを保護するセキュリティー・スコープ。スコープは、スペースで区切った 1 つ以上のスコープ・エレメントからなるストリングにすることも、ヌルにしてデフォルトのスコープを適用することもできます。スコープ・エレメントは、セキュリティー検査にマップされたキーワード、または、セキュリティー検査の名前です。デフォルトのスコープは <code>RegisteredClient</code> で、これは予約済みの {{ site.data.keys.product_adj }} キーワードです。デフォルトの保護では、リソースにアクセスするためにアクセス・トークンが必要です。<br/>
+								{{ site.data.keys.product_adj }} OAuth リソース保護と、JavaScript アダプター・リソースのリソース保護を構成する方法について詳しくは、<a href="../../authentication-and-security/#protecting-adapter-resources">アダプター・リソースの保護</a>を参照してください。<br/>
+								<code>secured</code> 属性の値が <code>false</code> の場合、<code>scope</code> 属性は無視されます。</li>
+                            <li><code>secured</code>: <i>オプション。</i> アダプター・プロシージャーが {{ site.data.keys.product_adj }} セキュリティー・フレームワークによって保護されるかどうかを定義します。以下の値が有効です。
                                 <ul>
-                                    <li><b>true</b>: デフォルト。プロシージャーは保護されます。プロシージャーの呼び出しには、有効なアクセス・トークンが必要です。</li>
-                                    <li><b>false</b>: プロシージャーは保護されません。プロシージャーの呼び出しにアクセス・トークンは不要です。この値が設定されている場合、<b>scope</b> 属性は無視されます。リソース保護を無効化した場合の影響について理解するには、<a href="../../authentication-and-security">許可の概念</a>チュートリアルの<a href="../../authentication-and-security/#unprotected-resources">無保護のリソース</a>トピックを参照してください。</li>
+                                    <li><code>true</code>: デフォルト。プロシージャーは保護されます。プロシージャーの呼び出しには、有効なアクセス・トークンが必要です。</li>
+                                    <li><code>false</code>: プロシージャーは保護されません。プロシージャーの呼び出しにアクセス・トークンは不要です。<a href="../../authentication-and-security/#unprotected-resources"> 保護されていないリソース (Unprotected resources)</a> を参照してください。この値が設定されている場合、<code>scope</code> 属性は無視されます。</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>securityCheckDefinition</b>: <i>オプション。</i> セキュリティー検査オブジェクトを定義します。<a href="../../authentication-and-security/creating-a-security-check">セキュリティー検査の作成</a>チュートリアルで、セキュリティー検査についての詳細を参照してください。</li>
-        			<li><b>property</b>: <i>オプション。</i> ユーザー定義プロパティーを宣言します。以下の『カスタム・プロパティー』トピックで詳細を参照してください。</li>
+                    <li><b>&lt;securityCheckDefinition&gt;</b>: <i>オプション。</i> セキュリティー検査オブジェクトを定義します。<a href="../../authentication-and-security/creating-a-security-check">セキュリティー検査の作成</a>チュートリアルで、セキュリティー検査についての詳細を参照してください。</li>
+        			<li><code>property</code>: <i>オプション。</i> ユーザー定義プロパティーを宣言します。このチュートリアルの<a href="#custom-properties">『カスタム・プロパティー』</a>セクションで詳細を参照してください。</li>
                 </ul>
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>セクションを閉じる</b></a>
@@ -94,15 +96,15 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 
 **adapter.xml** ファイルには、ユーザー定義のカスタム・プロパティーを含めることもできます。開発者がアダプターの作成中にそれらのプロパティーに割り当てた値は、アダプターを再デプロイせずに、**{{ site.data.keys.mf_console }} → 「[ご使用のアダプター]」→「構成」タブ**でオーバーライドすることができます。ユーザー定義プロパティーは、[getPropertyValue API](#getpropertyvalue) を使用して読み取り、実行時にさらにカスタマイズできます。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず `procedure` エレメントの*下に* 配置する必要があります。上の例では、デフォルト値を使用して displayName プロパティーを定義し、このプロパティーを後で使用できるようにしてあります。
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず &lt;procedure&gt; エレメントの*下に* 配置する必要があります。上の例では、デフォルト値を使用して &lt;displayName&gt; プロパティーを定義し、このプロパティーを後で使用できるようにしてあります。
 
-`<property>` エレメントには以下の属性があります。
+&lt;property&gt; エレメントには以下の属性があります。
 
-- **name**: 構成クラスで定義されている、プロパティーの名前。 
-- **defaultValue**: 構成クラスで定義されたデフォルト値をオーバーライドします。
-- **displayName**: *オプション*。コンソールに表示される分かりやすい名前。
-- **description**: *オプション*。コンソールに表示される説明。
-- **type**: *オプション*。プロパティーが確実に、特定タイプ (`integer`、`string`、`boolean` など) または有効な値のリスト (例えば `type="['1','2','3']"`) になるようにします。
+- `name`: 構成クラスで定義されている、プロパティーの名前。 
+- `defaultValue`: 構成クラスで定義されたデフォルト値をオーバーライドします。
+- `displayName`: *オプション*。コンソールに表示される分かりやすい名前。
+- `description`: *オプション*。コンソールに表示される説明。
+- `type`: *オプション*。プロパティーが確実に、特定タイプ (`integer`、`string`、`boolean` など) または有効な値のリスト (例えば `type="['1','2','3']"`) になるようにします。
 
 ![コンソール・プロパティー](console-properties.png)
 

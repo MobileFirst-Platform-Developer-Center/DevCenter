@@ -50,7 +50,7 @@ Le blocage des accès possède les caractéristiques suivantes :
 
 ### Statut de l'appareil
 {: #device-status }
-{{ site.data.keys.mf_server }} gère les informations de statut pour chaque appareil qui accède au serveur. Les valeurs de statut possibles sont **Actif**, **Perdu**, **Volé**, **Arrivé à expiration** et **Désactivé**. 
+{{ site.data.keys.mf_server }} gère les informations de statut pour chaque appareil qui accède au serveur. Les valeurs de statut possibles sont **Actif**, **Perdu**, **Volé**, **Arrivé à expiration** et **Désactivé**.
 
 Le statut d'appareil par défaut est **Actif**, indiquant que l'accès à partir de cet appareil n'est pas bloqué. Vous pouvez remplacer le statut par **Perdu**, **Volé** ou **Désactivé** pour bloquer l'accès à vos ressources d'application à partir de l'appareil. Vous pouvez toujours restaurer le statut **Actif** pour autoriser de nouveau l'accès. Voir [Gestion des accès des appareils dans la console {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
 
@@ -58,7 +58,7 @@ Le statut **Arrivé à expiration** est un statut spécial défini par le serveu
 
 ### Nom d'affichage d'appareil
 {: #device-display-name }
-{{ site.data.keys.mf_server }} identifie les appareils au moyen d'un ID d'appareil unique, affecté par le kit de développement de logiciels du client {{ site.data.keys.product_adj }}. Définir un nom d'affichage pour un appareil vous permet de rechercher ce dernier à partir de son nom d'affichage. Les développeurs d'applications peuvent utiliser la méthode `setDeviceDisplayName` de la classe `WLClient` pour définir le nom d'affichage d'appareil. Voir la documentation `WLClient` dans [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (La classe JavaScript est `WL.Client`.) Les développeurs d'adaptateurs Java (y compris les développeurs de contrôle de sécurité) peuvent également définir le nom d'affichage d'appareil en utilisant la méthode `setDeviceDisplayName` de la classe com.ibm.mfp.server.registration.external.model `MobileDeviceData`. Voir [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
+{{ site.data.keys.mf_server }} identifie les appareils au moyen d'un ID d'appareil unique, affecté par le kit de développement de logiciels du client {{ site.data.keys.product_adj }}. Définir un nom d'affichage pour un appareil vous permet de rechercher ce dernier à partir de son nom d'affichage. Les développeurs d'applications peuvent utiliser la méthode `setDeviceDisplayName` de la classe `WLClient` pour définir le nom d'affichage d'appareil. Voir la documentation `WLClient` dans [{{ site.data.keys.product_adj }} client-side API](../../api/client-side-api/javascript/client/). (La classe JavaScript est `WL.Client`.) Les développeurs d'adaptateurs Java (y compris les développeurs de contrôle de sécurité) peuvent également définir le nom d'affichage d'appareil en utilisant la méthode `setDeviceDisplayName` de la classe com.ibm.mfp.server.registration.external.model `MobileDeviceData`. Voir [MobileDeviceData](../../api/client-side-api/objc/client/).
 
 ### Gestion des accès des appareils dans la console {{ site.data.keys.mf_console }}
 {: #managing-device-access-in-mobilefirst-operations-console }
@@ -132,7 +132,7 @@ Suivez la procédure décrite pour configurer plusieurs langues dans lesquelles 
 3. Sélectionnez **Mettre à jour les environnements locaux**. Dans la section **Télécharger le fichier** de la fenêtre de dialogue affichée, sélectionnez **Télécharger** et accédez à l'emplacement d'un fichier CSV qui définit les environnements locaux.
 
    Chaque ligne du fichier CSV contient une paire de chaînes séparées par des virgules. La première chaîne est le code d'environnement local (par exemple, fr-FR pour Français (France) ou en pour Anglais), et la seconde chaîne est le texte de message dans la langue correspondante. Les codes d'environnement local spécifiés doivent être conformes aux normes utilisées par le système d'exploitation mobile pour indiquer les environnements locaux, par exemple, ISO 639-1, ISO 3166-2 et ISO 15924.
-    
+
    > **Remarque :** Pour créer le fichier CSV, vous devez utiliser un éditeur prenant en charge le codage UTF-8, tel que Notepad.
 
    Voici un exemple de fichier CSV qui définit le même message pour plusieurs environnements locaux :
@@ -146,7 +146,7 @@ Suivez la procédure décrite pour configurer plusieurs langues dans lesquelles 
    ```
 
 4. Un tableau répertoriant les codes d'environnement local et les messages de votre fichier CSV est visible dans la section **Vérification des messages de notification
-**. Vérifiez les messages, puis sélectionnez **OK**. 
+**. Vérifiez les messages, puis sélectionnez **OK**.
 Vous pouvez sélectionner l'option Editer à tout moment afin de remplacer le fichier CSV d'environnements locaux. Vous pouvez également utiliser cette option pour envoyer par téléchargement un fichier CSV vide et retirer tous les environnements locaux.
 5. Sélectionnez **Sauvegarder** pour appliquer vos modifications.
 
@@ -190,7 +190,7 @@ Dans la console {{ site.data.keys.mf_console }}, vous pouvez faire référence �
 
 Pour accéder au journal d'audit, cliquez sur le nom d'utilisateur dans la barre d'en-tête et sélectionnez **A propos**, cliquez sur **Informations de support supplémentaires**, puis sur **Télécharger le journal d'audit**.
 
-| Nom de zone | Description | 
+| Nom de zone | Description |
 |------------|-------------|
 | Timestamp	 | Date et heure auxquelles l'enregistrement a été créé. |
 | Type	     | Type d'opération. Pour connaître les valeurs possibles, voir la liste des types d'opération. |
@@ -232,5 +232,3 @@ La liste suivante répertorie les valeurs de type d'opération possibles :
 * deleteTag
 * add runtime
 * delete runtime
-
-

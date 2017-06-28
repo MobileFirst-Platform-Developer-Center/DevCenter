@@ -47,4 +47,4 @@ weight: 14
 
 正常に構成されると、状況が「ユーザー定義」に変わります。それ以外の場合、エラーが表示され、状況は「デフォルト」のままになります。
 
-SSL クライアント ID 別名 (使用された場合) とそのパスワードは、関連アダプター・ディスクリプター・ファイルで、`<connectionPolicy>` エレメントの `<sslCertificateAlias>` サブエレメントおよび `<sslCertificatePassword>` サブエレメントで構成されます。[HTTP アダプター connectionPolicy エレメント](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)を参照してください。
+SSL クライアント ID 別名 (使用された場合) とそのパスワードは、関連アダプター記述子ファイルで、`<connectionPolicy>` エレメントの `<sslCertificateAlias>` サブエレメントおよび `<sslCertificatePassword>` サブエレメントで構成されます。[HTTP アダプター connectionPolicy エレメント](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)を参照してください。

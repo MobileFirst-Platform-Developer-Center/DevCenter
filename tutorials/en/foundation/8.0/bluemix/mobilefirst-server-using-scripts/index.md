@@ -292,7 +292,7 @@ Run: `cf ic login`.
 
 > To learn more about IC commands, use the `ic help` command.
 
-## Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers
+## Setting Up the {{ site.data.keys.product_adj }}, Analytics Servers and {{ site.data.keys.mf_app_center_short }} on IBM Containers
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
 As explained above, you can choose to run the scripts interactively or by using the configuration files:
 
@@ -300,6 +300,410 @@ As explained above, you can choose to run the scripts interactively or by using 
 * Interactively - run the scripts without any arguments.
 
 **Note:** If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
+
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+If you intend to use {{ site.data.keys.mf_app_center }} start here.
+
+>**Note:** You can download installers and DB tools from the on-premise {{ site.data.keys.mf_app_center }} installation folders (`installer` and `tools` folders).
+
+<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step1">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1appcenter" aria-expanded="false" aria-controls="collapseStep1appcenter">Using the configuration files</a>
+            </h4>
+        </div>
+
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
+              <h4>initenv.properties</h4>
+              <ul>
+                  <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
+                  <li><b>BLUEMIX_PASSWORD - </b>Your Bluemix password.</li>
+                  <li><b>BLUEMIX_ORG - </b>Your Bluemix organization name.</li>
+                  <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
+              </ul>
+              <h4>prepareappcenterdbs.properties</h4>
+              The {{ site.data.keys.mf_app_center }} requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional database instance</a> (Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400).
+              <blockquote><p><b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.</p></blockquote>
+
+              After you have set up your dashDB instance, provide the following required arguments:
+              <ul>
+                  <li><b>APPCENTER_DB_SRV_NAME - </b>Your dashDB service instance name, for storing application center data</li>
+                  <li><b>APPCENTER_SCHEMA_NAME - </b>Your database schema name, used to store application center data.</li>
+                  <blockquote><b>Note:</b> If your dashDB service instance is being shared by multiple users, ensure you provide unique schema names.</blockquote>
+
+              </ul>
+              <h4>prepareappcenter.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
+              </ul>
+              <h4>startappcenter.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b>Same as in <em>prepareappcenter.sh</em>.</li>
+                  <li><b>SERVER_CONTAINER_NAME - </b>A name for your Bluemix container.</li>
+                  <li><b>SERVER_IP - </b>An IP address that the Bluemix container should be bound to.</li>
+                  <blockquote>To assign an IP address, run: <code>cf ic ip request</code>.
+                  IP addresses can be reused in multiple containers in a given Bluemix space.
+                  If you have already assigned an IP, you can run: <code>cf ic ip list</code>.</blockquote>
+              </ul>
+              <h4>startappcentergroup.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b>Same as in <em>prepareappcenter.sh</em>.</li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>A name for your Bluemix container group.</li>
+                  <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Your host name.</li>
+                  <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Your domain name. The default is: <code>mybluemix.net</code>.</li>
+              </ul>    
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="appcenterstep2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep2appcenter" aria-expanded="false" aria-controls="collapseStep2appcenter">Running the scripts</a>
+            </h4>
+        </div>
+
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+                <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+                <ol>
+                    <li><b>initenv.sh – Logging in to Bluemix </b><br />
+                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.product }} on the IBM Containers:
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-initenv">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-initenv">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-u|--user] BLUEMIX_USER</td>
+                                                <td>Bluemix user ID or email address</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
+                                                <td>Bluemix password</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-o|--org] BLUEMIX_ORG	</td>
+                                                <td>Bluemix organization name</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
+                                                <td>Bluemix space name</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-a|--api] BLUEMIX_API_URL	</td>
+                                                <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
+                                            </tr>
+                                        </table>
+
+                                        <p>For example:</p>
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>Close section</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><b>prepareappcenterdbs.sh - Prepare the {{ site.data.keys.mf_app_center }} database</b><br/>
+                    The <b>prepareappcenterdbs.sh</b> script is used to configure your {{ site.data.keys.mf_app_center }} with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1.
+                    Run the following:
+
+{% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
+                                    <h4 class="panel-title">
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-prepareappcenterdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenterdbs">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                              <td><b>Command-line argument</b></td>
+                                              <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                              <td>[-db | --acdb ] APPCENTER_DB_SRV_NAME	</td>
+                                              <td>Bluemix dashDB service (with Bluemix service plan of Enterprise Transactional).</td>
+                                            </tr>    
+                                            <tr>
+                                              <td>Optional: [-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
+                                              <td>Database schema name for Application Center service. Defaults to <i>APPCNTR</i>.</td>
+                                            </tr>    
+                                        </table>
+
+                                        <p>For example:</p>
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb AppCenterDashDBService
+{% endhighlight %}
+
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>Close section</b></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                    </li>
+                    <li><b>initenv.sh (Optional) – Logging in to Bluemix</b><br />
+                    This step is required only if you need to create your containers in an Organization and Space different from where the dashDB service instance is available. If yes, then update the <b>initenv.properties</b> with the new Organization and Space where the containers have to be created (and started), rerun the <b>initenv.sh</b> script:</li>
+
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+
+                    <li><b>prepareappcenter.sh - Prepare a {{ site.data.keys.mf_app_center }} image</b><br />
+                    Run the <b>prepareappcenter.sh</b> script in order to build a {{ site.data.keys.mf_app_center }} image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code>
+                    The list contains the image name, date of creation, and ID.
+
+                        Run:
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-prepareappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenter">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
+                                                <td>Name to be used for the customized MobileFirst Application Center image. Format: <em>registryUrl/namespace/imagename</em></td>
+                                            </tr>
+                                        </table>
+
+                                        <p>For example:</p>
+{% highlight bash %}
+prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>Close section</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                    <li><b>startappcenter.sh - Running the image in an IBM Container</b><br/>
+                    The <b>startappcenter.sh</b> script in used in order to run the {{ site.data.keys.mf_app_center }} image in an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property.
+
+                        Run:
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-startappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcenter">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>Name of the {{ site.data.keys.mf_app_center }} image.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-i|--ip] SERVER_IP	</td>
+                                                <td>IP address that the {{ site.data.keys.mf_app_center }} container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-si|--services] SERVICE_INSTANCES	</td>
+                                                <td>Comma-separated Bluemix service instances that you want to bind to the container.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-h|--http] EXPOSE_HTTP </td>
+                                                <td>Expose HTTP Port. Accepted values are Y (default) or N.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-s|--https] EXPOSE_HTTPS </td>
+                                                <td>Expose HTTPS Port. Accepted values are Y (default) or N.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-m|--memory] SERVER_MEM </td>
+                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-se|--ssh] SSH_ENABLE </td>
+                                                <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-sk|--sshkey] SSH_KEY </td>
+                                                <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-ml|--maxlog] MAX_LOG_FILES </td>
+                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional:  [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <p>For example:</p>
+{% highlight bash %}
+startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_address
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>Close section</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                    <li><b>startappcentergroup.sh - Running the image on an IBM Container group</b><br/>
+                    The <b>startappcentergroup.sh</b> script is used to run the {{ site.data.keys.mf_app_center }} image on an IBM Container group. It also binds your image to the host name that you configured in the <b>SERVER_CONTAINER_GROUP_HOST</b> property.
+
+                        Run:
+{% highlight bash %}
+./startappcentergroup.sh args/startappcentergroup.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-startappcentergroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcentergroup">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>The name of the {{ site.data.keys.mf_app_center }} container image in the Bluemix registry.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
+                                                <td>The name of the {{ site.data.keys.mf_app_center }} container group.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
+                                                <td>The host name of the route.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
+                                                <td>The domain name of the route.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-gm|--min] SERVERS_CONTAINER_GROUP_MIN </td>
+                                                <td>The minimum number of container instances. The default value is 1.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-gx|--max] SERVER_CONTAINER_GROUP_MAX </td>
+                                                <td>The maximum number of container instances. The default value is 2.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED </td>
+                                                <td>The desired number of container instances. The default value is 1.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-a|--auto] ENABLE_AUTORECOVERY </td>
+                                                <td>Enable the automatic recovery option for the container instances. Accepted values are Y or N (default).</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-si|--services] SERVICES </td>
+                                                <td>Comma-separated Bluemix service instance names that you want to bind to the container.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>The trace specification to be applied. Default </code>*=info</code>.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-ml|--maxlog] MAX_LOG_FILESC </td>
+                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-m|--memory] SERVER_MEM </td>
+                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <p>For example:</p>
+{% highlight bash %}
+startappcentergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>Close section</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 ### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
@@ -1087,15 +1491,31 @@ With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start yo
 {: #port-number-limitation }
 There is currently an IBM Containers limitation with the port numbers that are available for public domain. Therefore, the default port numbers given for the {{ site.data.keys.mf_analytics }} container and the {{ site.data.keys.mf_server }} container (9080 for HTTP and 9443 for HTTPS) cannot be altered. Containers in a container group must use HTTP port 9080. Container groups do not support the use of multiple port numbers or HTTPS requests.
 
+
 ## Applying {{ site.data.keys.mf_server }} Fixes
 {: #applying-mobilefirst-server-fixes }
+
 Interim fixes for the {{ site.data.keys.mf_server }} on IBM Containers can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
-Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the **package_root/mfpf-analytics/usr** and **package_root/mfpf-server/usr** folders.
+Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the the following folders:
+* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} Liberty Cloud Foundry Application: **package_root/mfpf-server/usr**
+* {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter/usr**
+
+### Steps to apply the iFix:
 
 1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
-2. Restore your backed-up configuration files into the **/mfpf-analytics/usr** and **/mfpf-server/usr** folders, overwriting the newly installed configuration files.
+2. Restore your backed-up configuration files into the **package_root/mfpf-analytics/usr**, **package_root/mfpf-server/usr** and **package_root/mfp-appcenter/usr** folders, overwriting the newly installed configuration files.
+3. Edit **package_root/mfpf-server/usr/env/jvm.options** file in your editor and remove the following line, if it exists:
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
+```
+    You can now build and deploy the updated server.
 
-You can now build and deploy new production-level containers.
+    a. Run the `prepareserver.sh` script to rebuild the server image and push it to the IBM Containers service.
+
+    b. Run the `startserver.sh` script to run the server image as a standalone container or `startservergroup.sh` to run the server image as a container group.
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Removing a Container from Bluemix
 {: #removing-a-container-from-bluemix }
@@ -1121,3 +1541,5 @@ To remove the database service configuration from Bluemix, perform the following
 2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
 3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
 4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.
+
+Similarly, if you ran the **prepareappcenterdbs.sh** while configuring {{ site.data.keys.mf_app_center }} then follow the steps above to remove the database service configuration in Bluemix.

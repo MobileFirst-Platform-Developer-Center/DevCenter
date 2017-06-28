@@ -77,17 +77,17 @@ JavaScript 어댑터에서 보안을 사용 안함으로 설정하려면 `secure
   ![기밀 클라이언트 설정 이미지](confidential_client.png)
 {% endcomment %}
 
-1. HTTP 클라이언트(Postman)를 사용하여, `Content-Type: application/x-www-form-urlencoded`를 지정하고 다음 매개변수와 함께 `http://<IP>:<PORT>/mfp/api/az/v1/token`에 대해 HTTP `POST` 요청을 작성하십시오. 
+1.  HTTP 클라이언트(Postman)를 사용하여, `Content-Type: application/x-www-form-urlencoded`를 지정하고 다음 매개변수와 함께 `http://<IP>:<PORT>/mfp/api/az/v1/token`에 대해 HTTP `POST` 요청을 작성하십시오. 
 
-* `grant_type` : `client_credentials`
-* `scope` : 자원을 보호하는 범위를 사용합니다.
-  
-자원을 보호할 범위를 사용하지 않는 경우 빈 문자열을 사용하십시오. 
+    - `grant_type` - 값을 `client_credentials`로 설정하십시오. 
+    - `scope` - 값을 자원의 보호 범위로 설정하십시오. 자원에 보호 범위가 지정되지 않은 경우에는 이 매개변수를 생략하여 기본 범위(`RegisteredClient`)를 적용하십시오. 자세한 정보는 [범위](../../authentication-and-security/#scopes)를 참조하십시오. 
 
+    ![Postman 본문 구성 이미지](Body_configuration.png)
 
-  ![Postman 본문 구성 이미지](Body_configuration.png)
-2. 기밀 클라이언트 ID("테스트") 및 시크릿("테스트")과 함께 `Basic authentication`을 사용하여 `authorization header`를 추가하십시오. 
-> [기밀 클라이언트](../../authentication-and-security/confidential-clients) 학습서에서 기밀 클라이언트에 대해 자세히 알아보십시오.   ![Postman 권한 부여 구성 이미지](Authorization_configuration.png)
+2.  기밀 클라이언트 ID("테스트") 및 시크릿("테스트")과 함께 `Basic authentication`을 사용하여 `authorization header`를 추가하십시오. 
+    > 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오.
+
+    ![Postman 권한 부여 구성 이미지](Authorization_configuration.png)
 
 
 결과는 임시 유효 액세스 토큰이 있는 JSON 오브젝트입니다.

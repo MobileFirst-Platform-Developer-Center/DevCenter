@@ -10,8 +10,8 @@ weight: 10
 {: #overview }
 디버깅은 애플리케이션 코드 및 애플리케이션 사용자 인터페이스에서 결함의 원인을 찾는 것으로 구성된 프로세스입니다. 
 
-* JavaScript(Cordova, 웹) 애플리케이션은 HTML, JavaScript 및 CSS와 같은 웹 기반 자원으로 구성되어 있습니다. 또한 Cordova 애플리케이션에는 Java, Objective-C, Swift, C# 등으로 작성된 선택적 고유 코드도 포함될 수 있습니다. 
-* 플랫폼 SDK에서 제공하는 표준 도구(예: XCode, Android 또는 Microsoft Visual Studio)를 사용하여 고유 코드를 디버깅할 수 있습니다. 
+* JavaScript(Cordova, 웹) 애플리케이션은 HTML, JavaScript 및 CSS와 같은 웹 기반 자원으로 구성되어 있습니다. 또한 Cordova 애플리케이션에는 Java, Objective-C, Swift, C# 등으로 작성된 선택적 네이티브 코드도 포함될 수 있습니다. 
+* 플랫폼 SDK에서 제공하는 표준 도구(예: XCode, Android 또는 Microsoft Visual Studio)를 사용하여 네이티브 코드를 디버깅할 수 있습니다. 
 
 이 학습서에서는 에뮬레이터, 시뮬레이터, 물리적 디바이스를 통해 로컬로 실행되는지, 또는 웹 브라우저에서 실행되는지 여부에 관계 없이 JavaScript 기반 애플리케이션을 디버깅하는 여러 가지 접근 방식을 탐색합니다. 
 

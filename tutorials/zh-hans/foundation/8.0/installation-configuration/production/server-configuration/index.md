@@ -75,9 +75,9 @@ weight: 5
 {: #websphere-application-server-full-profile }
 1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。
 
-    确保针对 POODLE 漏洞对 IBM Java SDK 打好补丁。您可以在 [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173) 中找到包含 WebSphere Application Server 版本补丁的最低的 IBM Java SDK 版本。   
-     > **注：**您可以使用安全公告中所列的版本或更高版本。
-    2. 登录到 WebSphere Application Server 管理控制台，然后单击**安全性 → SSL 证书和密钥管理 → SSL 配置**。
+    确保针对 POODLE 漏洞对 IBM Java SDK 打好补丁。您可以在 [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173) 中找到包含 WebSphere Application Server 版本补丁的最低的 IBM Java SDK 版本。
+        > **注：**您可以使用安全公告中所列的版本或更高版本。
+2. 登录到 WebSphere Application Server 管理控制台，然后单击**安全性 → SSL 证书和密钥管理 → SSL 配置**。
 3. 针对所列的每个 SSL 配置，修改该配置以启用 TLS V1.2。
     * 选择 SSL 配置，然后在**其他属性**下单击**保护质量 (QoP) **设置。
     * 从**协议**列表中，选择 **SSL_TLSv2**。
@@ -769,7 +769,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 超时值主要取决于并行打开的连接数，但是也与池中的最小和最大连接数有关。因此，必须调整不同的 **connectionManager** 属性以确定最适合的值。有关 **connectionManager** 元素的更多信息，请参阅 [Liberty：**server.xml** 文件中的配置元素](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html)。
 
 > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
-### 通过 {{ site.data.keys.mf_console }} 创建或删除应用程序后的旧数据
+### 通过 {{ site.data.keys.mf_console }} 创建或删除应用程序后的旧数据 
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么通过 {{ site.data.keys.mf_console }} 对服务的一些调用将返回 404 错误。
 

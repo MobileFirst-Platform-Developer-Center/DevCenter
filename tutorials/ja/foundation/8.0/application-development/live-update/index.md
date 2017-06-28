@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: ライブ・アップデート
-relevantTo: [ios,android]
+relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - name: Xcode プロジェクトのダウンロード
@@ -16,7 +16,7 @@ downloads:
 {: #overview }
 ユーザー・セグメンテーションとは、各グループのユーザー間の類似性が反映されるようにユーザーをグループに分ける行為です。一般的な例として、[地理的セグメンテーション](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)、つまり、地理学に基づいたユーザーの分割などがあります。ユーザーのセグメント化の目標は、値を最大化するように、各セグメント内でユーザーをどのように関係付けるかを決定することです。
 
-{{ site.data.keys.product }} 内のライブ・アップデート機能を使用すると、シンプルな方法でアプリケーションのユーザーのセグメントごとに異なる構成を定義し、提供できます。{{ site.data.keys.mf_console }} には、セグメントごとの構成の値だけでなく、構成の構造も定義するためのコンポーネントが含まれています。また、構成をコンシュームするためのクライアント SDK も提供されます (Android および iOS の**ネイティブ**・アプリケーションで使用できます)。
+{{ site.data.keys.product }} 内のライブ・アップデート機能を使用すると、シンプルな方法でアプリケーションのユーザーのセグメントごとに異なる構成を定義し、提供できます。{{ site.data.keys.mf_console }} には、セグメントごとの構成の値だけでなく、構成の構造も定義するためのコンポーネントが含まれています。また、構成をコンシュームするためのクライアント SDK も提供されます (Android および iOS の**ネイティブ**・アプリケーション、および Cordova アプリケーションで使用できます)。
 
 #### 一般的なユースケース
 {: #common-use-cases }

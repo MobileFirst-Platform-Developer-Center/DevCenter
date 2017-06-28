@@ -1,39 +1,39 @@
 ---
 layout: tutorial
-title: JSONStore in iOS applications
+title: JSONStore in iOS-Anwendungen
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
-  - name: Download Xcode project
+  - name: Xcode-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## Voraussetzungen
 {: #prerequisites }
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Xcode project. Follow the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios/) tutorial.
+* Gehen Sie das übergeordnete Lernprogramm zu [JSONStore](../) durch.
+* Stellen Sie sicher, dass das native {{ site.data.keys.product_adj }}-SDK zum Xcode-Projekt hinzugefügt wurde. Folgen Sie dabei dem Lernprogramm [SDK der {{ site.data.keys.product }} zu iOS-Anwendungen hinzufügen](../../../application-development/sdk/ios/). 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [JSONStore hinzufügen](#adding-jsonstore)
+* [Grundlegende Verwendung](#basic-usage)
+* [Erweiterte Verwendung](#advanced-usage)
+* [Beispielanwendung](#sample-application)
 
-## Adding JSONStore
+## JSONStore hinzufügen
 {: #adding-jsonstore }
-1. Add the following to the existing `podfile`, located at the root of the Xcode project:
+1. Fügen Sie zu der vorhandenen `Podfile` im Stammverzeichnis des Xcode-Projekts Folgendes hinzu:
 
    ```xml
    pod 'IBMMobileFirstPlatformFoundationJSONStore'
    ```
 
-2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install` - note that this action may take a while.
+2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Xcode-Projekts und führen Sie den Befehl `pod install` aus. Diese Aktion kann eine Weile dauern. 
 
-Whenever you want to use JSONStore, make sure that you import the JSONStore header:  
+Wenn Sie JSONStore verwenden möchten, müssen Sie den JSONStore-Header importieren:  
 Objective-C:
 
 ```objc
@@ -46,16 +46,21 @@ Swift:
 import IBMMobileFirstPlatformFoundationJSONStore    
 ```
 
-## Basic Usage
+## Grundlegende Verwendung
 {: #basic-usage }
 ### Open
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+Öffnen Sie mit `openCollections` mindestens ene JSONStore-Sammlung. 
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.  
-If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+Sammlungen zu starten oder bereitzustellen bedeutet, dass der persistente Speicher für die Sammlung und für Dokumente erstellt wird, wenn er nicht vorhanden ist.   
+Wenn der Speicher verschlüsselt ist und das richtige
+Kennwort übergeben wird, werden die erforderlichen Sicherheitsprozeduren ausgeführt, um die Daten zugänglich zu machen. 
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+Informationen zu optionalen Features, die Sie während der Initialisierung aktivieren können, finden Sie im zweiten Teil dieses Lernprogramms unter
+**Sicherheit**, **Unterstützung für mehrere Benutzer**
+und **{{ site.data.keys.product_adj }}-Adapter integrieren**.
+
+
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -66,24 +71,25 @@ collection.setSearchField("age", withType: JSONStore_Integer)
 do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
 ### Get
 {: #get }
-Use `getCollectionWithName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionWithName`.
+Mit `getCollectionWithName` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `openCollections` vor `getCollectionWithName` aufrufen.
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
+Die Variable `collection` kann jetzt verwendet werden, um Operationen für die Sammlung `people` auszuführen (z. B.
+`add`, `find` und `replace`).
 
 ### Add
 {: #add }
-Use `addData` to store data as documents inside a collection.
+Verwenden Sie `addData`, um Daten als Dokumente innerhalb einer Sammlung zu speichern. 
 
 ```swift
 let collectionName:String = "people"
@@ -94,20 +100,20 @@ let data = ["name" : "yoel", "age" : 23]
 do  {
   try collection.addData([data], andMarkDirty: true, withOptions: nil)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
 ### Find
 {: #find }
-Use `findWithQueryParts` to locate a document inside a collection by using a query. Use `findAllWithOptions` to retrieve all the documents inside a collection. Use `findWithIds` to search by the document unique identifier.
+Verwenden Sie `findWithQueryParts`, um mit einer Abfrage ein Dokument in einer Sammlung zu finden. Verwenden Sie `findAllWithOptions`, um alle Dokumente aus einer Sammlung abzurufen. Verwenden Sie `findWithIds`, um mit der eindeutigen Dokument-ID nach einem Dokument zu suchen. 
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
 let options:JSONStoreQueryOptions = JSONStoreQueryOptions()
-// returns a maximum of 10 documents, default: returns every document
+// Rückgabe von maximal 10 Dokumenten. Standardeinstellung: Rückgabe aller Dokumente
 options.limit = 10
 
 let query:JSONStoreQueryPart = JSONStoreQueryPart()
@@ -116,13 +122,14 @@ query.searchField("name", like: "yoel")
 do  {
   let results:NSArray = try collection.findWithQueryParts([query], andOptions: options)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-### Replace
+### Ersetzen Sie die folgenden Zeilen:
+
 {: #replace }
-Use `replaceDocuments` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+Verwenden Sie `replaceDocuments`, um Dokumente in einer Sammlung zu modifizieren. Das Feld für die Ersetzung ist die eindeutige ID des Dokuments (`_id`). 
 
 ```swift
 let collectionName:String = "people"
@@ -139,16 +146,15 @@ replacement["json"] = document
 do {
   try collection.replaceDocuments([replacement], andMarkDirty: true)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+In den vorliegenden Beispielen wird davon ausgegangen, dass das Dokument (`{_id: 1, json: {name: 'yoel', age: 23} }`) in der Sammlung enthalten ist. 
 
 ### Remove
 {: #remove }
-Use `removeWithIds` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+Verwenden Sie `removeWithIds`, um ein Dokument aus einer Sammlung zu löschen. Dokumente werden erst aus der Sammlung entfernt, wenn Sie `markDocumentClean` aufgerufen haben. Weitere Informationen finden Sie im Abschnitt **{{ site.data.keys.product_adj }}-Adapter integrieren** weiter unten in diesem Lernprogramm. 
 
 ```swift
 let collectionName:String = "people"
@@ -157,13 +163,13 @@ let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWit
 do {
   try collection.removeWithIds([1], andMarkDirty: true)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-### Remove Collection
+### removeCollection
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+Verwenden Sie `removeCollection`, um alle Dokumente aus einer Sammlung zu löschen. Diese Operation ist mit dem Löschen einer Datenbanktabelle vergleichbar. 
 
 ```swift
 let collectionName:String = "people"
@@ -172,39 +178,45 @@ let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWit
 do {
   try collection.removeCollection()
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
 ### Destroy
 {: #destroy }
-Use `destroyData` to remove the following data:
+Mit `destroyData` können Sie die folgenden Daten entfernen: 
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* Alle Dokumente
+* Alle Sammlungen
+* Alle Stores (siehe **Unterstützung für mehrere Benutzer** weiter unten in diesem Lernprogramm)
+* Alle JSONStore-Metadaten und -Sicherheitsartefakte (siehe **Sicherheit** weiter unten in diesem Lernprogramm)
 
 ```swift
 do {
   try JSONStore.sharedInstance().destroyData()
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-## Advanced Usage
+## Erweiterte Verwendung
 {: #advanced-usage }
-### Security
+### Sicherheit
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreOpenOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+Sie können alle Sammlungen in einem Store schützen, indem Sie an die Funktion `openCollections` ein Objekt `JSONStoreOpenOptions` mit einem Kennwort übergeben. Wenn kein Kennwort übergeben wird, wird keines
+der Dokumente in den Sammlungen des Store verschlüsselt. 
 
-Some security metadata is stored in the keychain (iOS).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+Einige Sicherheitsmetadaten werden in der *Keychain* (iOS)
+gespeichert.  
+Der Store wird mit einem
+256-Bit-Schlüssel gemäß Advanced Encryption Standard (AES) verschlüsselt. Alle Schlüssel werden durch
+die Funktion
+PBKDF2 (Password-Based Key Derivation Function 2) verstärkt.
 
-Use `closeAllCollections` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAllCollections` as the corresponding logout function.
+Verwenden Sie `closeAllCollections`, um den Zugriff auf alle Sammlungen bis zum erneuten Aufruf von `openCollections` zu sperren. Wenn Sie sich
+`openCollections` als eine Art Anmeldefunktion vorstellen, wäre `closeAllCollections` die entsprechende Abmeldefunktion. 
 
-Use `changeCurrentPassword` to change the password.
+Verwenden Sie `changeCurrentPassword`, um das Kennwort zu ändern. 
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -217,13 +229,14 @@ options.password = "123"
 do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: options)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-### Multiple User Support
+### Unterstützung für mehrere Benutzer
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is "jsonstore".
+Sie können mehrere Stores erstellen, die verschiedene Sammlungen in nur einer
+{{ site.data.keys.product_adj }}-Anwendung enthalten. Die Funktion `openCollections` kann mit einem Optionsobjekt mit einem Benutzernamen verwendet werden. Wenn kein Benutzername angegeben wird, wird der Standardbenutzername **jsonstore** verwendet.
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -236,19 +249,20 @@ options.username = "yoel"
 do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: options)
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-### {{ site.data.keys.product_adj }} Adapter Integration
+### {{ site.data.keys.product_adj }}-Adapter integrieren
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
+In diesem Abschnitt wird vorausgesetzt, dass Sie sich mit Adaptern auskennen. Die Adapterintegration ist optional. Sie ermöglicht das Senden von Daten einer Sammlung an einen Adapter und das Abrufen von Daten eines Adapters in eine Sammlung. 
 
-You can achieve these goals by using functions such as `WLResourceRequest`.
+Sie können diese Ziele mit Funktionen wie `WLResourceRequest` erreichen. 
 
-#### Adapter Implementation
+#### Adapterimplementierung
 {: #adapter-implementation }
-Create an adapter and name it "**People**". Define it's procedures `addPerson`,  `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+Erstellen Sie einen Adapter mit dem Namen **People**.Definieren Sie für den Adapter die Prozeduren
+`addPerson`, `getPeople`, `pushPeople`, `removePerson` und `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -279,24 +293,24 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### Daten von einem {{ site.data.keys.product_adj }}-Adapter laden
 {: #load-data-from-mobilefirst-adapter }
-To load data from a MobileFirst Adapter use `WLResourceRequest`.
+Verwenden Sie `WLResourceRequest`, um Daten von einem MobileFirst-Adapter zu laden. 
 
 ```swift
-// Start - LoadFromAdapter
+// LoadFromAdapter - Beginn
 class LoadFromAdapter: NSObject, WLDelegate {
   func onSuccess(response: WLResponse!) {
     let responsePayload:NSDictionary = response.getResponseJson()
     let people:NSArray = responsePayload.objectForKey("peopleList") as! NSArray
-    // handle success
+    // Erfolg behandeln
   }
 
   func onFailure(response: WLFailResponse!) {
-    // handle failure
+    // Fehler behandeln
   }
 }
-// End - LoadFromAdapter
+// LoadFromAdapter - Ende
 
 let pull = WLResourceRequest(URL: NSURL(string: "/adapters/People/getPeople"), method: "GET")
 
@@ -304,9 +318,10 @@ let loadDelegate:LoadFromAdapter = LoadFromAdapter()
 pull.sendWithDelegate(loadDelegate)
 ```
 
-#### Get Push Required (Dirty Documents)
+#### getPushRequired (vorläufige Dokumente)
 {: #get-push-required-dirty-documents }
-Calling `allDirty` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+Wenn Sie `allDirty` aufrufen, wird ein Array mit vorläufigen Dokumenten (dirty documents)
+zurückgegeben. Diese Dokumente enthalten lokale Modifikationen, die es auf dem Back-End-System noch nicht gibt. 
 
 ```swift
 let collectionName:String = "people"
@@ -315,28 +330,31 @@ let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWit
 do {
   let dirtyDocs:NSArray = try collection.allDirty()
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `andMarkDirty:false` to `add`, `replace`, and `remove`.
+Wenn Sie JSONStore daran hindern möchten, Dokumente als vorläufig zu markieren, übergeben Sie die Option `andMarkDirty:false`
+an `add`, `replace` und `remove`. 
 
-#### Push changes
+#### Änderungen mit Push übertragen
 {: #push-changes }
-To push changes to an adapter, call the `allDirty` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+Wenn Sie Änderungen mit Push an einen Adapter senden möchten, rufen Sie `allDirty` auf, um eine Liste
+der Dokumente mit Modifikationen abzurufen. Verwnden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätung des erfolgreichen Sendens müssen Sie
+`markDocumentsClean` aufrufen.
 
 ```swift
-// Start - PushToAdapter
+// PushToAdapter - Beginn
 class PushToAdapter: NSObject, WLDelegate {
   func onSuccess(response: WLResponse!) {
-    // handle success
+    // Erfolg behandeln
   }
 
   func onFailure(response: WLFailResponse!) {
-    // handle failure
+    // Fehler behandeln
   }
 }
-// End - PushToAdapter
+// PushToAdapter - Ende
 
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
@@ -351,19 +369,19 @@ do {
   push.sendWithData(pushData, delegate: pushDelegate)
 
 } catch let error as NSError {
-  // handle error
+  // Fehler behandeln
 }
 ```
 
-<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
-## Sample application
+<img alt="Beispielanwendung" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
+## Beispielanwendung
 {: #sample-application }
-The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
-Also available is a JavaScript adapter Maven project.
+Das JSONStoreSwift-Projekt enthält eine native iOS-Swift-Anwendung, die die JSONStore-APIs verwendet.   
+Darüber hinaus ist ein JavaScript-Adapter-Maven-Projekt verfügbar. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) the Native iOS project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80), um das native iOS-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80), um das Adapter-Maven-Projekt herunterzuladen.   
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

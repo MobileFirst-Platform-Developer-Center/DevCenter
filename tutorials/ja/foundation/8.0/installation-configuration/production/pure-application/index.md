@@ -530,7 +530,6 @@ Rational License Key Server のインストールおよび構成について詳�
         示されたフィールドに以下の情報を指定します。
         
         > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
-
         **WebSphere 管理ユーザー名**  
         WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
 
@@ -1542,8 +1541,8 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント | 
 |------|------------|
-| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere  Application Server Liberty プロファイル・サーバーのインストール。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration Web アプリケーション。{{ site.data.keys.mf_console }} など。<br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**MFP Server Application**<br/>デプロイメントに追加される {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Server Adapter**<br/>デプロイメントに追加されるアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>MobileFirst 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| MobileFirst Platform Server | **Liberty profile server **<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール済み環境。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }} を含む、{{ site.data.keys.mf_server }} 管理 Web アプリケーション。<br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルート構成。<br/><br/>**MFP Server Application**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Server Adapter**<br/>. デプロイメントに追加するアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**MFP Administration DB**<br/>MobileFirst 管理データベース・スキーマのインストール済み環境。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
 
 ### {{ site.data.keys.product }} (Liberty server farm) テンプレート
 {: #mobilefirst-foundation-liberty-server-farm-template }
@@ -1555,9 +1554,9 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント | 
 |------|------------|
-| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server のインストール。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
-| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration Web アプリケーション。{{ site.data.keys.mf_console }} など。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**MFP Server Application**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Server Adapter**<br/>デプロイメントに追加するアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。<br/><br/>**Base Scaling Policy**<br/>VM スケーリング・ポリシー: VM の数。 | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server のインストール済み環境。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
+| MobileFirst Platform Server | **Liberty profile server **<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール済み環境。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }} を含む、{{ site.data.keys.mf_server }} 管理 Web アプリケーション。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルート構成。<br/><br/>**MFP Server Application**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Server Adapter**<br/>デプロイメントに追加するアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。<br/><br/>**Base Scaling Policy**<br/>VM スケーリング・ポリシー: VM の数。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール済み環境。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
 
 ### {{ site.data.keys.product }} (WAS single node) テンプレート
 {: #mobilefirst-foundation-was-single-node-template }
@@ -1569,8 +1568,8 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント | 
 |------|------------|
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール。<br/><br/>制約事項:<br/>以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration Web アプリケーション。{{ site.data.keys.mf_console }} など。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>デプロイメントに追加される {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>デプロイメントに追加される {{ site.data.keys.product_adj }} アダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール済み環境。<br/><br/>制約事項:<br/>以下のコンポーネント属性の値を変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }} を含む、{{ site.data.keys.mf_server }} 管理 Web アプリケーション。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルート構成。<br/><br/>**{{ site.data.keys.product_adj }} アプリケーション**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**{{ site.data.keys.product_adj }} アダプター**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール済み環境。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
 
 ### {{ site.data.keys.product }} (WAS server farm) テンプレート
 {: #mobilefirst-foundation-was-server-farm-template }
@@ -1582,9 +1581,9 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント | 
 |------|------------|
-| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server のインストール。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration Web アプリケーション。{{ site.data.keys.mf_console }} など。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>デプロイメントに追加される {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**{{ site.data.keys.product_adj }} Adapter**デプロイメントに追加されるアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。<br/><br/>**Base Scaling Policy**<br/>VM スケーリング・ポリシー: VM の数。 | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server のインストール済み環境。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール済み環境。<br/><br/>制約事項: 以下のコンポーネント属性の値を変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }} を含む、{{ site.data.keys.mf_server }} 管理 Web アプリケーション。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルート構成。<br/><br/>**{{ site.data.keys.product_adj }} アプリケーション**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**{{ site.data.keys.product_adj }} Adapter**デプロイメントに追加するアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。<br/><br/>**Base Scaling Policy**<br/>VM スケーリング・ポリシー: VM の数。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール済み環境。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
 
 ### {{ site.data.keys.product }} (WAS ND) テンプレート
 {: #mobilefirst-foundation-was-nd-template }
@@ -1596,10 +1595,10 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント | 
 |------|------------|
-| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server のインストール。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
-| DmgrNode | **Deployment manager**<br/>WebSphere Application Server デプロイメント・マネージャーのインストール。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration Web アプリケーション。{{ site.data.keys.mf_console }} など。<br/><br/>**MFP Runtime**<br/>ランタイム WAR ファイル。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**MFP Application**<br/>デプロイメントに追加される {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Adapter**<br/>デプロイメントに追加されるアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
-| CustomNode | **Custom nodes**<br/>WebSphere Application Server Network Deployment サーバーのクラスター内のセルおよびノードの詳細。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Open Firewall Ports for WAS**<br/>データベース・サーバーおよび LDAP サーバーへの接続を使用可能にするために開かれている必要があるポート。<br/><br/>**Base scaling policy**<br/>選択されたトポロジーに必要な仮想マシン・インスタンスの数。 | 
+| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server のインストール済み環境。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
+| DmgrNode | **Deployment Manager**<br/>WebSphere Application Server Deployment Manager のインストール済み環境。<br/><br/>制約事項: 以下のコンポーネント属性の値を変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }} を含む、{{ site.data.keys.mf_server }} 管理 Web アプリケーション。<br/><br/>**MFP Runtime**<br/>ランタイム WAR ファイル。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルート構成。<br/><br/>**MFP Application**<br/>デプロイメントに追加する {{ site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Adapter**<br/>デプロイメントに追加するアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 管理データベース・スキーマのインストール済み環境。<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} ランタイム・データベース・スキーマのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
+| CustomNode | **Custom nodes**<br/>WebSphere Application Server Network Deployment サーバーのクラスター内のセルおよびノードの詳細。<br/><br/>制約事項: 以下のコンポーネント属性の値を変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Open Firewall Ports for WAS**<br/>データベース・サーバーおよび LDAP サーバーへの接続を使用可能にするために開かれている必要があるポート。<br/><br/>**Base scaling policy**<br/>選択したトポロジーに必要な仮想マシン・インスタンスの数。 | 
 
 ### {{ site.data.keys.mf_app_center }} (Liberty single node) テンプレート
 {: #mobilefirst-application-center-liberty-single-node-template }
@@ -1611,8 +1610,8 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント |
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
-| MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Application Center**<br/>このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{ site.data.keys.mf_app_center }} サーバーをセットアップします。 | 
+| MFP AppCenter DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
+| MFP AppCenter Server | **Liberty profile server **<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール済み環境。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Application Center**<br/>このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{ site.data.keys.mf_app_center }} サーバーをセットアップします。 | 
 
 ### {{ site.data.keys.mf_app_center }} (WAS single node) テンプレート
 {: #mobilefirst-application-center-was-single-node-template }
@@ -1624,8 +1623,8 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | ノード | コンポーネント | 
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
-| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP WAS SDK Level**<br/>このスクリプトの目的は、必要な SDK レベルを WAS プロファイルのデフォルト SDK として設定することです。<br/><br/>**MFP Server Prerequisite**<br/>{{ site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Application Center**<br/>このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{ site.data.keys.mf_app_center }} サーバーをセットアップします。 | 
+| MFP AppCenter DB | **Database Server**<br/>DB2 データベース・サーバーのインストール済み環境。<br/><br/>**Default add disk**<br/>ディスク・サイズ構成。 | 
+| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール済み環境。<br/><br/>制約事項: 以下のコンポーネント属性の値を変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP WAS SDK Level**<br/>このスクリプトの目的は、必要な SDK レベルを WAS プロファイルのデフォルト SDK として設定することです。<br/><br/>**MFP Server Prerequisite**<br/>SSL および Ant を含む、{{ site.data.keys.mf_server }} のインストール済み環境の前提条件。<br/><br/>**MFP Server Application Center**<br/>このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{ site.data.keys.mf_app_center }} サーバーをセットアップします。 | 
 
 
 ## {{ site.data.keys.mf_server }} のスクリプト・パッケージ
@@ -1665,13 +1664,13 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 | パラメーター | 説明 | 
 |-----------|-------------|
 | WAS_ROOT  | 必須。{::nomarkdown}<ul><li>Analytics が WebSphere Application Server Liberty プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server Liberty プロファイルのインストール・ディレクトリーを指定します。</li><li>Analytics が WebSphere Application Server フル・プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server フル・プロファイルのインストール・ディレクトリーを指定します。</li></ul>{:/} | 
-| HEAP\_MIN\_SIZE | WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。この値は、WebSphere Application Server フル・プロファイルの最小ヒープ・サイズを大きくすることができるようにするために設定します。{{ site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。HEAP_MAX_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
-| HEAP\_MAX\_SIZE	| WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。この値は、WebSphere Application Server フル・プロファイルの最大ヒープ・サイズを大きくすることができるようにするために設定します。{{ site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。HEAP_MIN_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
-| WAS\_admin\_user | WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー。WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
-| WAS\_admin\_password | WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー・パスワード。WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
+| HEAP\_MIN\_SIZE | WebSphere Application Server フル・プロファイルのみ。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。この値は、WebSphere Application Server フル・プロファイルの最小ヒープ・サイズを大きくすることができるようにするために設定します。{{ site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。HEAP_MAX_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
+| HEAP\_MAX\_SIZE	| WebSphere Application Server フル・プロファイルのみ。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。この値は、WebSphere Application Server フル・プロファイルの最大ヒープ・サイズを大きくすることができるようにするために設定します。{{ site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。HEAP_MIN_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
+| WAS\_admin\_user | WebSphere Application Server フル・プロファイルのみ。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー。WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
+| WAS\_admin\_password | WebSphere Application Server フル・プロファイルのみ。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー・パスワード。WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
 | admin_user | 必須。{::nomarkdown}<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{ site.data.keys.mf_analytics_console }}保護のためのデフォルト管理ユーザーを作成します。</li><li>LDAP リポジトリーが使用可能になっている場合は、{{ site.data.keys.mf_analytics }} 管理特権を持つユーザー名を指定します。この値は、LDAP リポジトリーに格納されます。</li></ul> |
 | admin_password | 必須。<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{ site.data.keys.mf_analytics_console }}保護に使用されるデフォルト管理ユーザーのパスワードを指定します。</li><li>LDAP リポジトリーが使用可能になっている場合は、管理ユーザーのパスワードを指定します。この値は、LDAP リポジトリーに格納されます。</li></ul>{:/} | 
-| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>None<br/>LDAP  接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。 <br/><br/>デフォルト値: None。 | 
+| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>なし<br/>LDAP 接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>    LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>    LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。<br/><br/>    デフォルト値: None。 | 
 | LDAP_IP | (LDAP パラメーター) LDAP サーバーの IP アドレス。 | 
 | LDAP\_SSL\_PORT | (LDAP パラメーター) セキュア接続のための LDAP ポート。 | 
 | LDAP_PORT | (LDAP パラメーター) 非セキュア接続のための LDAP ポート。 | 
@@ -1683,10 +1682,10 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 | GROUP_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでグループを検索する LDAP グループ・フィルター。 | 
 | LDAP\_REPOSITORY\_NAME | (LDAP パラメーター) LDAP サーバー名。 | 
 | CERT\_FILE\_PATH | (LDAP パラメーター) アップロードした LDAP サーバー証明のターゲット・パス。REQUIRE_SSL が true に設定されている場合は、必須です。 | 
-| mfpadmin | (LDAP パラメーター) {{ site.data.keys.mf_server }} の管理者役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
-| mfpdeployer | (LDAP パラメーター) {{ site.data.keys.mf_server }} のデプロイヤー役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
-| mfpmonitor | (LDAP パラメーター) {{ site.data.keys.mf_server }} のモニター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
-| mfpoperator | (LDAP パラメーター) {{ site.data.keys.mf_server }} のオペレーター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpadmin | (LDAP パラメーター) {{ site.data.keys.mf_server }} の管理者役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
+| mfpdeployer | (LDAP パラメーター) {{ site.data.keys.mf_server }} のデプロイヤー役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
+| mfpmonitor | (LDAP パラメーター) {{ site.data.keys.mf_server }} のモニター役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
+| mfpoperator | (LDAP パラメーター) {{ site.data.keys.mf_server }} のオペレーター役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
@@ -1696,7 +1695,7 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 |-----------|-------------|
 | WAS_ROOT | 必須。MobileFirst Platform Server ノードの WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルのインストール・ディレクトリー、または DmgrNode ノードの Deployment Manager のインストール・ディレクトリー。パターン・テンプレートで、これは、Liberty profile server、Standalone server、または Deployment Manager の `install_directory` 出力属性にマップされます。 | 
 | profile_name | オプション。WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。<br/><br/>パターン・テンプレートで、これは、Deployment Manager の出力属性 **dmgr\_profile\_name** または Standalone server の出力属性 sa_profile_name にマップされます。 | 
-| runtime\_contextRoot\_list | 必須。一致するコンテキスト・ルートを持つ要求を IHS がルーティングできるようにするランタイム・コンテキスト・ルート・リスト。セミコロン (;) を使用して、ランタイム・コンテキスト・ルートを区切ります。例えば、HelloMobileFirst;HelloWorld などです。<br/><br/>重要: これは、MFP Server ランタイム・デプロイメントに指定されたコンテキスト・ルートに一致している必要があります。そうでない場合、IHS は、ランタイム・コンテキスト・ルートを含む要求を正しくルーティングできません。 | 
+| runtime\_contextRoot\_list | 必須。一致するコンテキスト・ルートを持つ要求を IHS がルーティングできるようにするランタイム・コンテキスト・ルート・リスト。セミコロン (;) を使用して、ランタイム・コンテキスト・ルートを区切ります。例えば、HelloMobileFirst;HelloWorld のようにします。<br/><br/>重要: これは、MFP Server Runtime Deployment に指定されたコンテキスト・ルートに一致している必要があります。そうでない場合、IHS は、ランタイム・コンテキスト・ルートを含む要求を正しくルーティングできません。 | 
 | http_port | 必須。IHS Server ノードのファイアウォール・ポートを開いて、IHS Server から {{ site.data.keys.mf_server }} への HTTP トランスポートを可能にします。 9080 にする必要があります。 | 
 | https_port | 必須。IHS Server ノードのファイアウォール・ポートを開いて、IHS Server から {{ site.data.keys.mf_server }} への HTTPS トランスポートを可能にします。 9443 にする必要があります。 | 
 | server_hostname | 必須。IBM HTTP Server のホスト名。これは、パターン・テンプレートで IBM HTTP Server の host 出力属性にマップされます。 | 
@@ -1769,10 +1768,10 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 | GROUP_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでグループを検索する LDAP グループ・フィルター。 | 
 | LDAP\_REPOSITORY\_NAME | (LDAP パラメーター) LDAP サーバー名。 | 
 | CERT\_FILE\_PATH | (LDAP パラメーター) アップロードした LDAP サーバー証明のターゲット・パス。REQUIRE_SSL が true に設定されている場合は、必須です。 | 
-| mfpadmin | {{ site.data.keys.mf_server }} の管理者役割。以下のいずれかの値になります。<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
-| mfpdeployer | (LDAP パラメーター) {{ site.data.keys.mf_server }} のデプロイヤー役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
-| mfpmonitor | (LDAP パラメーター) {{ site.data.keys.mf_server }} のモニター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
-| mfpoperator | (LDAP パラメーター) {{ site.data.keys.mf_server }} のオペレーター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpadmin | {{ site.data.keys.mf_server }} の管理者役割。以下のいずれかの値になります。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
+| mfpdeployer | (LDAP パラメーター) {{ site.data.keys.mf_server }} のデプロイヤー役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
+| mfpmonitor | (LDAP パラメーター) {{ site.data.keys.mf_server }} のモニター役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
+| mfpoperator | (LDAP パラメーター) {{ site.data.keys.mf_server }} のオペレーター役割。<br/><br/>なし<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>    デフォルト値: None。 | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
@@ -1803,10 +1802,10 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 | db_port | 管理データベースがインストールされている DB サーバーのポート番号。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの instancePort 出力属性にマップされます。|
 | admin_user | {{ site.data.keys.mf_server }} 管理特権を持つユーザー名。<br/><br/>これは、パターン・テンプレートで、MFP Server Administration スクリプト・パッケージ内の同じ名前のパラメーターにパターン・レベル・パラメーターとして関連付けられます。これにより、それらは確実に同じ値に設定されるようになります。 | 
 | admin_password | 管理ユーザー・パスワード。<br/><br/>これは、パターン・テンプレートで、MFP Server Administration スクリプト・パッケージ内の同じ名前のパラメーターにパターン・レベル・パラメーターとして関連付けられます。これにより、それらは確実に同じ値に設定されるようになります。 | 
-| WAS\_admin\_user | WebSphere Application Server の場合は必須。WebSphere Application Server Liberty の場合はオプション。{{ site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで Standalone server の was_admin 出力属性にマップされます。<br/><br/>{{ site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment manager の was_admin 出力属性にマップされます。 | 
+| WAS\_admin\_user | WebSphere Application Server の場合は必須。WebSphere Application Server Liberty の場合はオプション。{{ site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was_admin 出力属性にマップされます。<br/><br/>{{ site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment Manager の was_admin 出力属性にマップされます。 | 
 | WAS\_admin\_password | WebSphere Application Server の場合は必須。WebSphere Application Server Liberty の場合はオプション。{{ site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was\_admin\_password 出力属性にマップされます。 |
 | server_hostname | {{ site.data.keys.mf_server }} のホスト名。 Liberty profile server または Standalone Server の host 出力属性にマップされます。 |
-| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>None<br/>LDAP  接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。 <br/><br/>デフォルト値: None。 | 
+| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>なし<br/>LDAP 接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>    LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>    LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。<br/><br/>    デフォルト値: None。 | 
 | LDAP_IP | (LDAP パラメーター) LDAP サーバーの IP アドレス。 | 
 | LDAP\_SSL\_PORT | (LDAP パラメーター) セキュア接続のための LDAP ポート。 | 
 | LDAP_PORT | (LDAP パラメーター) 非セキュア接続のための LDAP ポート。 | 

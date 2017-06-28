@@ -15,8 +15,7 @@ nachschauen zu müssen.
 Sie können in der {{ site.data.keys.mf_analytics_console }} reaktive Schwellenwerte festlegen, um
 Alerts auszulösen, wenn bestimmte Kriterien erfüllt sind. 
 
-Sie können weniger differenzierte Schwellenwerte (für eine bestimmte App) oder stärker differenzierte Schwellenwerte (für eine bestimmte App-Instanz oder ein bestimmtes Gerät) festlegen. Sie können definieren, dass in der
-{{ site.data.keys.mf_analytics_console_short }} Alertbenachrichtigungen angezeigt werden, die auch an einen vorkonfigurierten REST-Endpunkt oder einen kundenspezifischen Webhook gesendet werden können. 
+Sie können weniger differenzierte Schwellenwerte (für eine bestimmte App) oder stärker differenzierte Schwellenwerte (für eine bestimmte App-Instanz oder ein bestimmtes Gerät) festlegen. Sie können definieren, dass in der {{ site.data.keys.mf_analytics_console_short }} Alertbenachrichtigungen angezeigt werden, die auch an einen vorkonfigurierten REST-Endpunkt oder einen kundenspezifischen Web-Hook gesendet werden können.
 
 Wenn Alerts ausgelöst werden, zeigt das Symbol **Alert** (in der Titelleiste
 der {{ site.data.keys.mf_analytics_console_short }}) die Anleranzahl in rot an
@@ -60,11 +59,10 @@ Bei Auswahl dieser Option sind die folgenden Felder verfügbar:
 
 <img class="gifplayer"  alt="Alert erstellen" src="creating-an-alert.png"/>
 
-## Kundenspezifischer Webhook
+## Kundenspezifischer Web-Hook
 {: #custom-web-hook }
 
-Sie können eine angepasste Verteilungsmethode für einen Alert einrichten. Defiieren Sie beispielsweise einen kundenspezifischen Webhook, an den beim Auslösen eines Alertschwellenwerts
-Nutzdaten gesendet werden. 
+Sie können eine angepasste Verteilungsmethode für einen Alert einrichten. Defiieren Sie beispielsweise einen kundenspezifischen Web-Hook, an den beim Auslösen eines Alertschwellenwerts Nutzdaten gesendet werden.
 
 Beispielnutzdaten: 
 

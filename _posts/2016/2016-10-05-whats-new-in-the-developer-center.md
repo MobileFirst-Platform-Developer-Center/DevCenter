@@ -7,7 +7,7 @@ tags:
 - MobileFirst_Foundation
 - Announcement
 author:
-  name: Idan Adar 
+  name: Idan Adar
 ---
 Hi all!  
 We'd like to let you all know of recent changes we've made to the Developer Center.
@@ -26,7 +26,7 @@ See our [contribution guidelines](https://github.com/MobileFirst-Platform-Develo
 
 ## Discussion
 Remember our Slack community? The place to chat and discuss various topics related to MobileFirst Foundation.  
-[Join today](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/)!
+[Join today](https://mobilefirstplatform.ibmcloud.com/blog/2017/05/26/come-chat-with-us/)!
 
 ## More changes
 Additionaly, we've recently added the following:

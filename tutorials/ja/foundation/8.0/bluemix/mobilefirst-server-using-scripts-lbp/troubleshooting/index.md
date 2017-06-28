@@ -5,7 +5,7 @@ relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Liberty for Java ランタイム上の {{site.data.keys.product_full }} に関する問題の解決	
+### Liberty for Java ランタイム上の {{ site.data.keys.product_full }} に関する問題の解決	
 {: resolving-problems-with-ibm-mobilefirst-foundation-on-liberty-for-java-runtime }
 Liberty for Java ランタイム上の IBM MobileFirst Foundation で作業中に検出された問題を解決できない場合、IBM サポートに連絡する前に、必ず以下の主要な情報を収集してください。
 

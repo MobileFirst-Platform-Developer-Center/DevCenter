@@ -1,0 +1,104 @@
+worker_processes 1;
+daemon off;
+
+error_log <%= ENV["APP_ROOT"] %>/nginx/logs/error.log;
+events { worker_connections 1024; }
+
+http {
+  log_format cloudfoundry '$http_x_forwarded_for - $http_referer - [$time_local] "$request" $status $body_bytes_sent';
+  access_log <%= ENV["APP_ROOT"] %>/nginx/logs/access.log cloudfoundry;
+  default_type application/octet-stream;
+  include mime.types;
+  sendfile on;
+
+  gzip on;
+  gzip_disable "msie6";
+  gzip_comp_level 6;
+  gzip_min_length 1100;
+  gzip_buffers 16 8k;
+  gzip_proxied any;
+  gzip_types text/plain text/css text/js text/xml text/javascript application/javascript application/x-javascript application/json application/xml application/xml+rss application/xhtml+xml application/rss+xml;
+
+  tcp_nopush on;
+  keepalive_timeout 30;
+  port_in_redirect off; # Ensure that redirects don't include the internal container PORT - <%= ENV["PORT"] %>
+  server_tokens off;
+
+  server {
+    listen <%= ENV["PORT"] %>;
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+    server_name localhost;
+
+    # Site redirects
+    rewrite ^/blogs/$ /blog/ permanent;
+    rewrite ^/2014/(.*)$ /blog/2014/$1 permanent;
+    rewrite ^/2015/(.*)$ /blog/2015/$1 permanent;
+    rewrite ^/2016/(.*)$ /blog/2016/$1 permanent;
+    rewrite ^/install/(.*)$ /downloads/$1 permanent;
+    rewrite ^/videos/(.*)$ /video-gallery/ permanent;
+    rewrite ^/documentation/getting-started/$ /tutorials/en/ permanent;
+
+    # 6.3 redirects
+    rewrite ^/getting-started-6-3/(.*)$ /tutorials/en/foundation/6.3/ permanent;
+    rewrite ^/documentation/getting-started-6-3/(.*)$ /tutorials/en/foundation/6.3/$1 permanent;
+    rewrite ^/documentation/getting-started-all-tutorials-6-3/$ /tutorials/en/foundation/6.3/all-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-hybrid-development-6-3/$ /tutorials/en/foundation/6.3/hybrid-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-ios-development-6-3/$ /tutorials/en/foundation/6.3/ios-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-android-development-6-3/$ /tutorials/en/foundation/6.3/android-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-wp8-development-6-3/$ /tutorials/en/foundation/6.3/windows-phone-8-tutorials/ permanent;
+    rewrite ^/documentation/server-side-development-6-3/$ /tutorials/en/foundation/6.3/server-side-tutorials/ permanent;
+    rewrite ^/documentation/integration-6-3/(.*)$ /tutorials/en/product-integration/6.3/$1 permanent;
+
+    # 7.0 redirects
+    rewrite ^/getting-started-7-0/(.*)$ /tutorials/en/foundation/7.0/ permanent;
+    rewrite ^/documentation/getting-started-all-tutorials-(7-0)/$ /tutorials/en/foundation/7.0/all-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-hybrid-development-7-0/$ /tutorials/en/foundation/7.0/hybrid-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-ios-development-7-0/$ /tutorials/en/foundation/7.0/ios-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-android-development-7-0/$ /tutorials/en/foundation/7.0/android-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-windows-8-development-7-0/$ /tutorials/en/foundation/7.0/windows-8-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-native-wp8-development-7-0/$ /tutorials/en/foundation/7.0/windows-phone-8-tutorials/ permanent;
+    rewrite ^/documentation/server-side-development-7-0/$ /tutorials/en/foundation/7.0/server-side-tutorials/ permanent;
+    rewrite ^/documentation/integration-7-0/(.*)$ /tutorials/en/product-integration/7.0/$1 permanent;
+
+    # 7.1 redirects
+    rewrite ^/getting-started-7-1/(.*)$ /tutorials/en/foundation/7.1/ permanent;
+    rewrite ^/documentation/getting-started-all-tutorials-(7-1)/$ /tutorials/en/foundation/7.1/all-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/hybrid-development/(.*)$ /tutorials/en/foundation/7.1/hybrid-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/native/ios/(.*)$ /tutorials/en/foundation/7.1/ios-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/native/windows8/(.*)$ /tutorials/en/foundation/7.1/windows-8-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/native/windowsphone8/(.*)$ /tutorials/en/foundation/7.1/windows-phone-8-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/native/android/(.*)$ /tutorials/en/foundation/7.1/android-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/native/windowsphone8/(.*)$ /tutorials/en/foundation/7.1/windows-phone-8-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/native/windows8/(.*)$ /tutorials/en/foundation/7.1/windows-8-tutorials/ permanent;
+    rewrite ^/documentation/getting-started-7-1/foundation/server-side-development-category/(.*)$ /tutorials/en/foundation/7.1/server-side-tutorials/$1 permanent;
+    rewrite ^/documentation/integration-7-1/(.*)$ /tutorials/en/product-integration/7.1/$1 permanent;
+
+    # feed redirects
+    rewrite ^/tag/MobileFirst_Platform/feed/?$ /blog/rss/MobileFirst_Platform.xml permanent;
+    rewrite ^/tag/MobileFirst_Playground/feed/?$ /blog/rss/MobileFirst_Playground.xml permanent;
+    rewrite ^/feed/?$ /blog/rss/all.xml permanent;
+
+    location / {
+      root <%= ENV["APP_ROOT"] %>/public;
+      index index.html index.htm Default.htm;
+      <% if File.exists?(File.join(ENV["APP_ROOT"], "nginx/conf/.enable_directory_index")) %>
+      autoindex on;
+      <% end %>
+      <% if File.exists?(auth_file = File.join(ENV["APP_ROOT"], "nginx/conf/.htpasswd")) %>
+      auth_basic "Restricted";                                #For Basic Auth
+      auth_basic_user_file <%= auth_file %>;  #For Basic Auth
+      <% end %>
+      if ($http_x_forwarded_proto = http) {
+        return 301 https://$host$request_uri;
+      }
+
+      location ~* .(jpg|jpeg|png|gif|ico|css|js|woff|svg)$ {
+        expires 1w;
+      }
+
+      error_page 404 /404/index.html;
+    }
+
+  }
+}

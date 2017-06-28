@@ -52,13 +52,13 @@ MFPPush.sharedInstance().initialize()
 デバイスをプッシュ通知サービスに登録します。
 
 ```swift
-MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void in
      if error == nil {
          // Successfully registered
-     } else {
-         // Registration failed with error
-     }
- })
+    } else {
+        // Registration failed with error
+    }
+})
 ```
 
 * **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `jsonOptions` です。例えば、次のとおりです。
@@ -66,13 +66,11 @@ MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(respon
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
 
-let jsonOptions: [NSObject: AnyObject] = [
+let jsonOptions: [AnyHashable: Any] = [
     "phoneNumber": phoneNumber
 ]
 
-let isValid = NSJSONSerialization.isValidJSONObject(jsonOptions)
-
-if isValid {
+if JSONSerialization.isValidJSONObject(jsonOptions) {
     // JSON is valid and can be sent with registerDevice request
 }
 
@@ -85,9 +83,9 @@ if isValid {
 プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Unregistered successfully
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Unregistered successfully
     } else {
         // Failed to unregister
     }
@@ -99,7 +97,7 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 登録済みデバイスに通知を送信するときは REST API が使用されます。すべての形式の通知 (タグ通知、ブロードキャスト通知、および認証済み通知) を送信できます。
 
 通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
-URL の例を以下に示します。 
+URL の例を以下に示します。
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
@@ -117,6 +115,3 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ### サンプルの使用法
 {: #sample-usage }
 サンプルの README.md ファイルの指示に従ってください。
-
-
-

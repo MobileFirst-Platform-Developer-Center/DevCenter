@@ -18,7 +18,7 @@ weight: 7
 [暫定修正の新機能を確認してください](interim-fixes)。
 
 ### 非推奨となった機能および API エレメント
-{ #deprecated-features-and-api-elements }
+{: #deprecated-features-and-api-elements }
 {{ site.data.keys.product }} の新規リリースでは、過去のリリースの機能および API エレメントに置き換わる機能または API エレメントを導入しています。置き換えられた機能および API エレメントは非推奨となりました。今後のリリースで削除される可能性があります。  
 [非推奨となった機能および API エレメントを確認してください](deprecated-discontinued)。
 

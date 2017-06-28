@@ -274,3 +274,8 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 ### Android 애플리케이션에서 지원되지 않는 원시 IPv6 주소
 {: #raw-ipv6-address-not-supported-in-android-applications }
 고유 Android 애플리케이션에 대한 **mfpclient.properties**의 구성 동안 {{ site.data.keys.mf_server }}가 IPv6 주소를 가진 호스트에 있는 경우, IPV6 주소에 대한 맵핑된 호스트 이름을 사용하여 **mfpclient.properties**의 **wlServerHost** 특성을 구성하십시오. 원시 IPv6 주소를 가진 **wlServerHost** 특성은 {{ site.data.keys.mf_server }}에 연결하기 위한 애플리케이션의 시도에 실패합니다.
+
+### Cordova 앱의 기본 동작 수정은 권장되지 않음
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+{{ site.data.keys.product_adj }} Cordova SDK가 프로젝트에 추가되면 Cordova 앱의 기본 동작을 수정(예: 뒤로 버튼 동작 무시)하여 Google Play 스토어에서 제출 시 앱을 거부 할 수 있습니다.
+Google Play 스토어에 제출된 다른 오류는 Google 지원팀에 문의할 수 있습니다. 

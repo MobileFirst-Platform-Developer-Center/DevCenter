@@ -13,7 +13,7 @@ Application Center 콘솔은 Application Center의 저장소를 관리하기 위
 
 Application Center 콘솔을 사용하여 다음을 수행할 수 있습니다. 
 
-* Android, iOS, Windows 8(Windows 스토어 패키지 전용) 또는 Windows Phone 8 운영 체제용으로 작성된 애플리케이션을 업로드합니다. 
+* Android, iOS, Windows 8(Windows 스토어 패키지 한정), Windows Phone 8 또는 Windows 10 운영 체제용으로 작성된 애플리케이션을 업로드합니다. 
 * 모바일 애플리케이션의 여러 버전을 관리합니다. 
 * 모바일 애플리케이션의 테스터에 대한 피드백을 검토합니다. 
 * 모바일 디바이스에서 애플리케이션을 나열하고 설치할 권한이 있는 사용자를 정의합니다. 
@@ -34,7 +34,7 @@ Application Center 콘솔을 사용하여 다음을 수행할 수 있습니다.
 * [공용 앱 스토어로부터 애플리케이션 추가](#adding-an-application-from-a-public-app-store)
 * [애플리케이션 특성](#application-properties)
 * [애플리케이션 특성 편집](#editing-application-properties)
-* [{{site.data.keys.mf_server }} 및 Application Center의 모바일 애플리케이션 업그레이드](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [{{ site.data.keys.mf_server }} 및 Application Center의 모바일 애플리케이션 업그레이드](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
 * [애플리케이션 파일 다운로드](#downloading-an-application-file)
 
 Application Center 콘솔에서 사용자가 전송한 모바일 애플리케이션 버전에 대한 검토를 확인할 수 있습니다. 
@@ -99,7 +99,7 @@ Application Center를 통해 새 애플리케이션 및 버전을 추가하고 �
 
 ### WebSphere Application Server Liberty 프로파일 또는 Apache Tomcat에 설치되어 있는 Application Center
 {: #application-center-installed-on-websphere-application-server-liberty-profile-or-on-apache-tomcat }
-IBM Installation Manager 패키지를 사용하여 {{site.data.keys.product_full }}을 설치하는 동안 이러한 애플리케이션 서버에서 Application Center의 설치에는 시작하는 데 사용할 수 있는 두 개의 다른 사용자가 정의되어 있습니다. 
+IBM Installation Manager 패키지를 사용하여 {{ site.data.keys.product_full }}을 설치하는 동안 이러한 애플리케이션 서버에서 Application Center의 설치에는 시작하는 데 사용할 수 있는 두 개의 다른 사용자가 정의되어 있습니다. 
 
 * 로그인 ID **demo**와 비밀번호 **demo**를 사용하는 사용자 
 * 로그인 ID **appcenteradmin**와 비밀번호 **admin**을 사용하는 사용자
@@ -124,21 +124,27 @@ Application Center 콘솔을 사용하여 서버의 저장소에 애플리케이
 
    ### Android
    {: #android }
-애플리케이션 파일 이름 확장자는 .apk입니다. 
+   애플리케이션 파일 이름 확장자는 **.apk**입니다. 
 
    ### iOS
    {: #ios }
-일반 iOS 애플리케이션에 대한 애플리케이션 파일 이름 확장자는 .ipa입니다. 
+   일반 iOS 애플리케이션의 애플리케이션 파일 이름 확장자는 **.ipa**입니다. 
 
    ### Windows Phone 8
    {: #windows-phone-8 }
-애플리케이션 파일 이름 확장자는 .xap입니다. 애플리케이션은 회사 계정을 사용하여 서명해야 합니다. 이 회사 계정에 대한 애플리케이션 등록 토큰을 Windows Phone 8 디바이스에서 사용할 수 있어야 애플리케이션을 디바이스에 설치할 수 있습니다. 자세한 내용은 [Windows 8 Universal의 애플리케이션 등록 토큰](#application-enrollment-tokens-in-windows-8-universal)을 참조하십시오. 
+   애플리케이션 파일 이름 확장자는 **.xap**입니다. 애플리케이션은 회사 계정을 사용하여 서명해야 합니다. 이 회사 계정에 대한 애플리케이션 등록 토큰을 Windows Phone 8 디바이스에서 사용할 수 있어야 애플리케이션을 디바이스에 설치할 수 있습니다. 자세한 내용은 [Windows 8 Universal의 애플리케이션 등록 토큰](#application-enrollment-tokens-in-windows-8-universal)을 참조하십시오. 
 
    ### Windows 8
    {: #windows-8 }
-애플리케이션은 Windows 스토어 패키지로 제공됩니다. 파일 확장자는 .appx입니다. 
+   애플리케이션은 Windows 스토어 패키지로 제공되며, 파일 확장자는 **.appx**입니다. 
 
    Windows 스토어 .appx 패키지는 "프레임워크" 패키지로도 알려진 하나 이상의 Windows 컴포넌트 라이브러리 앱 패키지에 따라 달리질 수 있습니다. Windows 8용 MobileFirst 하이브리드 애플리케이션은 Microsoft.WinJS 프레임워크 패키지에 따라 다릅니다. 애플리케이션 패키지를 생성하는 데 Microsoft Visual Studio를 사용하는 경우 종속성 패키지도 생성되며 별도의 .appx 파일로 패키지됩니다. 모바일 클라이언트를 사용하여 이러한 애플리케이션을 설치하려면, 애플리케이션 .appx 패키지 및 다른 종속성 패키지를 Application Center 서버에 업로드해야 합니다. 종속성 패키지를 업로드하는 경우 Application Center 콘솔에서 비활성으로 표시됩니다. 프레임워크 패키지가 클라이언트에서 설치 가능한 애플리케이션으로 표시되지 않으므로 이는 예상된 동작입니다. 나중에 사용자가 애플리케이션을 설치하는 경우 모바일 클라이언트는 종속성이 디바이스에 이미 설치되어 있는지 확인합니다. 종속성 패키지가 설치되어 있지 않은 경우, 클라이언트는 자동으로 Application Center 서버에서 종속성 패키지를 검색하며 이를 디바이스에 설치합니다. 종속성에 대한 자세한 정보는 애플리케이션의 패키지 및 배치에 대한 Windows 개발자 문서에 있는 [종속성](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies)을 참조하십시오. 
+
+   ### Windows 10 Universal
+   {: windows-10-universal}
+   애플리케이션 파일 이름 확장자는 **.appx**입니다. 
+   
+
 
 4. 애플리케이션의 정의를 완료하기 위해 특성에 액세스하려면 **다음**을 클릭하십시오. 
 5. 특성을 완료하여 애플리케이션을 정의하십시오. 특성 값을 완료하는 방법에 대한 정보는 [애플리케이션 특성](#application-properties)을 참조하십시오. 
@@ -241,6 +247,15 @@ Apple iTunes 스토어 주소는 [https://linkmaker.itunes.apple.com/](https://l
 * **레이블**은 애플리케이션의 제목이며 애플리케이션의 Manifest 파일에 있는 **패키지** 표시 이름 속성입니다. 
 * **벤더**는 애플리케이션을 작성한 벤더이며 애플리케이션의 Manifest 파일에 있는 **Publisher** 속성입니다. 
 
+### Windows 10 Universal 애플리케이션의 특성
+{: #properties-of-windows-10-universal-applications}
+
+* **패키지**는 애플리케이션의 제품 ID이며 애플리케이션의 Manifest 파일에 있는 **패키지** 이름입니다. 
+* **내부 버전**은 애플리케이션의 버전 ID이며 애플리케이션의 Manifest 파일에 있는 **Version** 속성입니다. 
+* **상업용 버전**은 **내부 버전**과 같이 애플리케이션의 버전입니다. 
+* **레이블**은 애플리케이션의 제목이며 애플리케이션의 Manifest 파일에 있는 **패키지** 표시 이름 속성입니다. 
+* **벤더**는 애플리케이션을 작성한 벤더이며 애플리케이션의 Manifest 파일에 있는 **Publisher** 속성입니다. 
+
 ### 공통 특성: 작성자
 {: #common-property-author }
 **작성자** 필드는 읽기 전용입니다. 이 필드는 애플리케이션을 업로드하는 사용자의 **username** 속성을 표시합니다.
@@ -282,13 +297,17 @@ Apple iTunes 스토어 주소는 [https://linkmaker.itunes.apple.com/](https://l
 
 ![편집을 위한 애플리케이션 특성](ac_edit_app_props.jpg)
 
-## {{site.data.keys.mf_server }} 및 Application Center에서 모바일 애플리케이션 업그레이드
+## {{ site.data.keys.mf_server }} 및 Application Center에서 모바일 애플리케이션 업그레이드
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
-{{site.data.keys.mf_console }} 및 Application Center의 조합을 사용하여 배치된 모바일 애플리케이션을 쉽게 업그레이드할 수 있습니다. 
 
-Application Center의 모바일 클라이언트는 모바일 디바이스에 설치되어야 합니다. HelloWorld 애플리케이션을 모바일 디바이스에 설치해야 하며 애플리케이션이 실행 중인 경우 {{site.data.keys.mf_server }}에 연결해야 합니다. 
+> 이는 Android, iOS 및 Windows Phone에만 지원되며 Windows 10 Universal, Blackberry 또는 Windows 8 Universal에는 현재 지원되지 않습니다.
 
-이 프로시저를 사용하여 {{site.data.keys.mf_server }} 및 Application Center에 배치된 Android, iOS 및 Windows Phone을 업데이트할 수 있습니다. 이 태스크에서 애플리케이션 HelloWorld 버전 1.0은 이미 {{site.data.keys.mf_server }} 및 Application Center에 배치되어 있습니다. 
+
+{{ site.data.keys.mf_console }} 및 Application Center의 조합을 사용하여 배치된 모바일 애플리케이션을 쉽게 업그레이드할 수 있습니다. 
+
+Application Center의 모바일 클라이언트는 모바일 디바이스에 설치되어야 합니다. HelloWorld 애플리케이션을 모바일 디바이스에 설치해야 하며 애플리케이션이 실행 중인 경우 {{ site.data.keys.mf_server }}에 연결해야 합니다. 
+
+이 프로시저를 사용하여 {{ site.data.keys.mf_server }} 및 Application Center에 배치된 Android, iOS 및 Windows Phone을 업데이트할 수 있습니다. 이 태스크에서 애플리케이션 HelloWorld 버전 1.0은 이미 {{ site.data.keys.mf_server }} 및 Application Center에 배치되어 있습니다. 
 
 HelloWorld 버전 2.0이 릴리스되었으며 버전 1.0 사용자를 최신 버전으로 업그레이드하려고 합니다. 새 애플리케이션 버전을 배치하려면 다음을 수행하십시오. 
 
@@ -297,11 +316,11 @@ HelloWorld 버전 2.0이 릴리스되었으며 버전 1.0 사용자를 최신 �
 
     ![애플리케이션 세부사항에서 외부 URL 복사](ac_copy_ext_url.jpg)
 
-3. 외부 URL을 클립보드에 복사하는 경우 {{site.data.keys.mf_console }}을 여십시오. 
+3. 외부 URL을 클립보드에 복사하는 경우 {{ site.data.keys.mf_console }}을 여십시오. 
 4. HelloWorld 버전 1.0의 액세스 규칙을 "액세스 사용 안함"으로 변경하십시오. 
 5. 외부 URL을 URL 필드에 붙여넣으십시오. 
 
-    클라이언트 실행: 모바일 디바이스가 HelloWorld 버전 1.0을 실행하기 위해 {{site.data.keys.mf_server }}에 연결하는 경우 디바이스 사용자에게 애플리케이션의 버전을 업그레이드하도록 요청합니다. 
+    클라이언트 실행: 모바일 디바이스가 HelloWorld 버전 1.0을 실행하기 위해 {{ site.data.keys.mf_server }}에 연결하는 경우 디바이스 사용자에게 애플리케이션의 버전을 업그레이드하도록 요청합니다. 
 
     ![원격으로 애플리케이션의 이전 버전을 사용 안함으로 설정](ac_remote_disable_app_cli.jpg)
 
