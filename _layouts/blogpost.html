@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+<head>
+  <link href="{{site.url}}{{site.baseurl}}{{page.url}}" rel="canonical"/>
+</head>
 <article class="container-fluid blogpost" role="main">
     <div class="row">
         <div class="hidden-xs col-sm-2">
@@ -13,7 +16,7 @@ layout: default
                     {% for author in page.additional_authors %}
                         <span><a href="{{site.baseurl}}/search/?author={{ author | replace: ' ', '%20' }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
                     {% endfor %}
-                    
+
                     <small>{{ page.date | date: '%B %d, %Y' }}</small>
                     <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
@@ -41,9 +44,9 @@ layout: default
                     <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on Google+"><img alt="share on google+"  src="{{site.baseurl}}/assets/blog/share-buttons/google+.png"></a></li>
                     <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | replace: ' ', '%20' }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
                     <li><a href="mailto:replace@me.com?subject=&body=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Email"><img alt="share via email" src="{{site.baseurl}}/assets/blog/share-buttons/email.png"></a></li>
-                </ul>    
+                </ul>
             </div>
-            
+
             {% include disqus.html %}
         </div>
         <div class="hidden-xs col-sm-2">
