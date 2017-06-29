@@ -54,7 +54,7 @@ _**8.0.0.0-MFPF-DevKit-Linux-IF201706240159.bin**_
 _**8.0.0.0-MFPF-DevKit-MacOSX-IF201706240159.zip**_
 
 _**8.0.0.0-MFPF-DevKit-Windows-IF201706240159.exe**_
-<hr/>
+
 #### Cordova plugins
 
 _**cordova-plugin-mfp               8.0.2017060910**_
@@ -72,13 +72,13 @@ _**cordova-plugin-mfp               8.0.2017060910**_
 *ibm-mfp-web-sdk                    8.0.2017021409*
 
 *passport-mfp-token-validation      8.0.2017010917*
-<hr/>
+
 #### Tools
 
 *mfpdev-cli                         8.0.2017012016*
 
 _**mfpmigrate-cli                   8.0.2017061505**_
-<hr/>
+
 #### iOS SDK
 
 _**IBMMobileFirstPlatformFoundation                    8.0.2017053010**_
@@ -89,7 +89,7 @@ _**IBMMobileFirstPlatformFoundationPush                8.0.2017061612**_
 
 _**IBMMobileFirstPlatformFoundationJSONStore           8.0.2017053010**_
 
-<hr/>
+
 #### Andriod SDK
 
 _**ibmmobilefirstplatformfoundation              8.0.2017061318**_
@@ -111,13 +111,13 @@ _**ibmmobilefirstplatformfoundation              8.0.2017061318**_
 *mfp-security-checks-base          8.0.2017020112*
 
 *mfp-java-token-validator          8.0.2017020112*
-<hr/>
+
 #### Windows SDK
 
 *IBMMobileFirstPlatform Foundation 8.0.2017012419*
 
 *IBM MobileFirstPlatform Push SDK  8.0.2017012419*
-<hr/>
+
 #### Xamarian SDK
 
 *IBMMobileFirstPlatform SDK 8.0.2017051208*
