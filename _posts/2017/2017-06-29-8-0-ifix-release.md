@@ -17,10 +17,10 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **June 24th, 
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
 ### Support for Cordova v7
-Starting from iFix **8.0.0.0-MFPF-IF20170608-0406**, Cordova v7 is supported. For details, refer to [Adding the MobileFirst Foundation SDK to Cordova Applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/).
+Starting from iFix **8.0.0.0-MFPF-IF20170608-0406**, Cordova v7 is supported. For details on supported versions of individual platforms, refer to [Adding the MobileFirst Foundation SDK to Cordova Applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/).
 
 ### Multiple certificate pinning support
-Starting with this iFix (**8.0.0.0-MFPF-IF20170624-0159**), Mobile Foundation supports pinning of multiple certificates. Prior to this iFix, Mobile Foundation supported pinning of a single certificate. Mobile Foundation has introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates to the client application. Read more on **Multiple certificate pinning support** from [What's new](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/), under the section *What's new in MobileFirst APIs* .
+Starting with this iFix (**8.0.0.0-MFPF-IF20170624-0159**), Mobile Foundation supports pinning of multiple certificates. Prior to this iFix, Mobile Foundation supported pinning of a single certificate. Mobile Foundation has introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates to the client application. This is supported only for native android and iOS apps. Read more on **Multiple certificate pinning support** from [What's new](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/), under the section *What's new in MobileFirst APIs* .
 
 ### APARs Fixed
 
@@ -54,7 +54,7 @@ _**8.0.0.0-MFPF-DevKit-Linux-IF201706240159.bin**_
 _**8.0.0.0-MFPF-DevKit-MacOSX-IF201706240159.zip**_
 
 _**8.0.0.0-MFPF-DevKit-Windows-IF201706240159.exe**_
-<hr/>
+
 #### Cordova plugins
 
 _**cordova-plugin-mfp               8.0.2017060910**_
@@ -72,13 +72,13 @@ _**cordova-plugin-mfp               8.0.2017060910**_
 *ibm-mfp-web-sdk                    8.0.2017021409*
 
 *passport-mfp-token-validation      8.0.2017010917*
-<hr/>
+
 #### Tools
 
 *mfpdev-cli                         8.0.2017012016*
 
 _**mfpmigrate-cli                   8.0.2017061505**_
-<hr/>
+
 #### iOS SDK
 
 _**IBMMobileFirstPlatformFoundation                    8.0.2017053010**_
@@ -89,8 +89,8 @@ _**IBMMobileFirstPlatformFoundationPush                8.0.2017061612**_
 
 _**IBMMobileFirstPlatformFoundationJSONStore           8.0.2017053010**_
 
-<hr/>
-#### Andriod SDK
+
+#### Android SDK
 
 _**ibmmobilefirstplatformfoundation              8.0.2017061318**_
 
@@ -111,13 +111,13 @@ _**ibmmobilefirstplatformfoundation              8.0.2017061318**_
 *mfp-security-checks-base          8.0.2017020112*
 
 *mfp-java-token-validator          8.0.2017020112*
-<hr/>
+
 #### Windows SDK
 
 *IBMMobileFirstPlatform Foundation 8.0.2017012419*
 
 *IBM MobileFirstPlatform Push SDK  8.0.2017012419*
-<hr/>
+
 #### Xamarian SDK
 
 *IBMMobileFirstPlatform SDK 8.0.2017051208*
