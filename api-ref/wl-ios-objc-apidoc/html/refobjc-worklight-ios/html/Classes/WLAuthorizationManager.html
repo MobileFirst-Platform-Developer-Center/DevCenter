@@ -5,12 +5,139 @@
 		<title>WLAuthorizationManager Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesPrint.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
 		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
-		
-		
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Objective-C client-side API for iOS apps </a></h1>
+				<a id="developerHome" href="../index.html">IBM</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">WLAuthorizationManager Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/authorizationServerURL">&nbsp;&nbsp;&nbsp;&nbsp;authorizationServerURL</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sharedInstance">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstance</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/clearAccessToken:">&nbsp;&nbsp;&nbsp;&nbsp;- clearAccessToken:</option>
+	
+	<option value="//api/name/isAuthorizationRequiredForResponse:">&nbsp;&nbsp;&nbsp;&nbsp;- isAuthorizationRequiredForResponse:</option>
+	
+	<option value="//api/name/isAuthorizationRequiredForResponseWithStatus:headers:">&nbsp;&nbsp;&nbsp;&nbsp;- isAuthorizationRequiredForResponseWithStatus:headers:</option>
+	
+	<option value="//api/name/isGatewayResponse:">&nbsp;&nbsp;&nbsp;&nbsp;- isGatewayResponse:</option>
+	
+	<option value="//api/name/login:withCredentials:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- login:withCredentials:withCompletionHandler:</option>
+	
+	<option value="//api/name/logout:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- logout:withCompletionHandler:</option>
+	
+	<option value="//api/name/obtainAccessTokenForScope:withCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- obtainAccessTokenForScope:withCompletionHandler:</option>
+	
+	<option value="//api/name/resourceScopeFromResponse:">&nbsp;&nbsp;&nbsp;&nbsp;- resourceScopeFromResponse:</option>
+	
+	<option value="//api/name/resourceScopeFromResponseHeaders:">&nbsp;&nbsp;&nbsp;&nbsp;- resourceScopeFromResponseHeaders:</option>
+	
+	<option value="//api/name/setAuthorizationServerURL:">&nbsp;&nbsp;&nbsp;&nbsp;- setAuthorizationServerURL:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/authorizationServerURL">authorizationServerURL</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstance">sharedInstance</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearAccessToken:">clearAccessToken:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthorizationRequiredForResponse:">isAuthorizationRequiredForResponse:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isAuthorizationRequiredForResponseWithStatus:headers:">isAuthorizationRequiredForResponseWithStatus:headers:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isGatewayResponse:">isGatewayResponse:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/login:withCredentials:withCompletionHandler:">login:withCredentials:withCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logout:withCompletionHandler:">logout:withCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/obtainAccessTokenForScope:withCompletionHandler:">obtainAccessTokenForScope:withCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resourceScopeFromResponse:">resourceScopeFromResponse:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resourceScopeFromResponseHeaders:">resourceScopeFromResponseHeaders:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAuthorizationServerURL:">setAuthorizationServerURL:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
 				<a title="WLAuthorizationManager Class Reference" name="top"></a>
@@ -767,11 +894,101 @@ If this field is not set, the default MFP Authorization server URL is used</p>
 				<div id="footer">
 					<hr />
                     <div class="footer-copyright">
-                        <p><span class="copyright">&copy; Copyright IBM Corp. 2016</span></p><br />
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2017</span></p><br />
                     </div>
 				</div>
 			</div>
 		</article>
-		
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
 	</body>
 </html>
