@@ -7,8 +7,9 @@ tags:
 - MobileFirst_Foundation
 - Announcement
 - iFix_6.3
+- iFix
 author:
-  name: Idan Adar 
+  name: Idan Adar
 ---
 A new iFix has been released for MobileFirst Platform Foundation 6.3, , dated **February 6ht, 2017**.  
 [Download iFix](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=6.3.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central)
@@ -24,4 +25,3 @@ PI65003 XAMARIN SDK METHOD INVOKEPROCEDURE(INVOACATIONDATA, TIMEOUT) ALWAYS RETU
 PI64093 APPS ON ANDROID VERSIONS 4.4.2 AND EARLIER CANNOT CONNECT TO SERVER USING HTTPS IF ONLY TLS 1.2 IS ENABLED  
 PI63338 ABILITY TO DISPLAY MULTIPLE LINE PUSH NOTIFICATION FOR NATIVE ANDROID APPLICATIONS  
 PI62939 "SERVER IS UNREACHABLE..." ERROR DISPLAYED WHEN UNINSTALLING AN APP USING THE APP CENTER MOBILE CLIENT ON A WINDOWS DEVICE  
-
