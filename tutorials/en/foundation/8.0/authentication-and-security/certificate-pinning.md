@@ -56,10 +56,11 @@ WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 Multiple certificates:
 
 Syntax:
-pinTrustedCertificatePublicKeyFromFile(String certificateFilename);
+pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
 Example:
 ```java
-WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer","myCertificate1.cer");
+String[] certificates={"myCertificate.cer","myCertificate1.cer"};
+WLClient.getInstance().pinTrustedCertificatePublicKey(certificates);
 ```
 The certificate pinning method will raise an exception in two cases:
 * The file does not exist
