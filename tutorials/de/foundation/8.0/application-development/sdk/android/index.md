@@ -98,7 +98,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. Fügen Sie die {{ site.data.keys.product_adj }}-Benutzerschnittstellenaktivität neben dem vorhandenen Element **activity** hinzu: 
 
    ```xml
@@ -110,7 +110,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 ### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
 {: #manually-adding-the-mobilefirst-native-sdk }
 Sie können das SDK der {{ site.data.keys.product_adj }} auch manuell hinzufügen: 
-  
+
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
@@ -122,12 +122,14 @@ Sie können das SDK der {{ site.data.keys.product_adj }} auch manuell hinzufüge
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>Wenn Sie das {{ site.data.keys.product_adj }}-SDK manuell hinzufügen möchten, müssen Sie zunächst über das Download-Center der {{ site.data.keys.mf_console }} die SDK-ZIP-Datei auf der Registerkarte <b>SDKs</b> herunterladen. Wenn Sie die obigen Schritte ausgeführt haben, gehen Sie wie nachfolgend beschrieben vor. </p>
-            
+
                 <ul>
                     <li>Entpacken Sie die heruntergeladene ZIP-Datei und stellen Sie die relevanten aar-Dateien in den Ordner <b>app\libs</b>.</li>
                     <li>Fügen Sie am Ende von <b>dependencies</b> Folgendes hinzu:
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>Fügen Sie am Ende von <b>repositories</b> Folgendes hinzu:
@@ -139,8 +141,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Abschnitt schließen</b></a>
             </div>

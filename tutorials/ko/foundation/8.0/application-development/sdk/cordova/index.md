@@ -24,8 +24,8 @@ weight: 1
 MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음과 같습니다. 
 
 * cordova-ios: **>= 4.1.1 및 < 5.0**
-* cordova-android: **>= 5.1.1 및 < 6.0**
-* cordova-windows: **>= 4.3.2 및 < 5.0**
+* cordova-android: **>= 6.1.2 및 < 7.0**
+* cordova-windows: **>= 4.3.2 및 < 6.0**
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -87,8 +87,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
 #### 새 애플리케이션
 {: #new-application }
-1. 다음과 같이 Cordova 프로젝트를 작성하십시오. `cordova create projectName applicationId --template cordova-template-mfp`
-     
+1. 다음과 같이 Cordova 프로젝트를 작성하십시오. `cordova create projectName applicationId applicationName --template cordova-template-mfp`  
 예: 
 
    ```bash
