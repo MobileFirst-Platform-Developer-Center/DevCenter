@@ -288,9 +288,9 @@ mit einem Ersatzbild
 Das Begrüßungsbild wird angezeigt, wenn die Anwendung
 initialisiert wird. Wenn Sie die MobileFirst-Standardschablone verwenden, werden Begrüßungsbilder bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert:
 
-* iOS: <Ihr_Projektname>/res/screen/ios/
-* Android: <Ihr_Projektname>/res/screen/android/
-* Windows: <Ihr_Projektname>/res/screen/windows/
+* iOS: `<Ihr_Projektname>/res/screen/ios/`
+* Android: `<Ihr_Projektname>/res/screen/android/`
+* Windows: `<Ihr_Projektname>/res/screen/windows/`
 
 Es stehen verschiedene Standardbegrüßungsbilder zur Verfügung, die für unterschiedliche Anzeigen und für
 verschiedene Versionen der Betriebssysteme

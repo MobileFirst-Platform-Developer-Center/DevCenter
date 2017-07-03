@@ -32,6 +32,7 @@ Lorsque vous essayez de diagnostiquer des problèmes dans Application Center (ou
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -39,7 +40,7 @@ com.worklight.*=all
 Où :
 
 * **com.ibm.puremeap.*** est pour Application Center.
-* **com.ibm.worklight.*** et **com.worklight.*** sont pour les autres composants {{ site.data.keys.product_adj }}.
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** et **com.worklight.*** sont pour les autres composants {{ site.data.keys.product_adj }}.
 
 Les traces sont envoyées vers un fichier appelé **trace.log**, et non vers **SystemOut.log** ou **SystemErr.log**.
 
@@ -52,7 +53,7 @@ Lorsque vous tentez de diagnostiquer des problèmes dans Application Center, il 
 Pour activer la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau FINEST (équivalent à ALL), ajoutez une ligne au fichier server.xml. Par exemple :
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 Dans cet exemple, les entrées d'un module et son niveau de journalisation sont séparées par le signe deux-points (:).
@@ -71,6 +72,7 @@ Pour activer la journalisation de {{ site.data.keys.product }}, y compris Applic
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
