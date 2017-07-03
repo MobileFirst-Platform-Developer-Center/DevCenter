@@ -134,6 +134,9 @@ weight: 1
 
                 <h3>Updated REST API for the runtime</h3>
                 <p>The REST API for the {{ site.data.keys.product_adj }} runtime now provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more. Most of the REST API endpoints are protected by OAuth. On a development server, you can view the Swagger doc for the runtime API at:  <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Multiple certificate pinning support</h3>
+                <p>Starting with iFix 8.0.0.0-IF201706240159, {{ site.data.keys.mf_bm_short }} supports pinning of multiple certificates. This allows users to have secure access to multiple hosts. Prior to this iFix, {{ site.data.keys.mf_bm_short }} supported pinning of a single certificate. {{ site.data.keys.mf_bm_short }} has introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates (purchased from a certificate authority) to the client application. A copy of all the certificates should be placed in your client application. During the SSL handshake, the {{ site.data.keys.product_full }} client SDK verifies that the public key of the server certificate matches the public key from one of the certificates that are stored in the app.</p>
             </div>
         </div>
     </div>
