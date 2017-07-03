@@ -19,7 +19,7 @@ throws following error: <BR><BR>
 ```ibm.mobile.analytics.server.node.elasticsearch.IndexManager E MSAN219E: Setting for TTL: MfpAppLogs has been set to an invalid TTL string. 
                                                                            org.elasticsearch.ElasticsearchParseException: Failed to parse [90.0] ```
 
-**Versions Affected:** MobileFirst Analytics Server 7.1
+**Version Affected:** IBM MobileFirst Analytics Server 7.1
 
 ## Reason :
 As per the details provided in [Liberty documentation](https://www.ibm.com/support/knowledgecenter/en/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dep_jndi.html), jndiEntry for string literals suppose to be enclosed with single quotes. Without a single quote value passed as numeral followed by 'd' (eg: 90d) is assumed as double-precision floating point (i.e 90.0) by the Liberty Server.
@@ -27,7 +27,7 @@ As per the details provided in [Liberty documentation](https://www.ibm.com/suppo
 ## Solution :
 - jndiEntry for TTL values are suppose to be String literals.
 - As per [Liberty documentation](https://www.ibm.com/support/knowledgecenter/en/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dep_jndi.html) TTL value should be passed with in single quotes. 
-- For example, setting TTL for MfpAppLogs in MobileFirst Analytics Server, it should look as follows:
+- For example, setting TTL for MfpAppLogs in MobileFirst Analytics Server, it should look as follows(note the extra single quotes):
 
 >```<jndiEntry jndiName="analytics/TTL_MfpAppLogs" value='"90d"' />```
 
