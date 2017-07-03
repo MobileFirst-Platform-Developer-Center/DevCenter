@@ -51,7 +51,7 @@ Aktivierung der Anwendungsauthentizität in Ihrer Anwendung:
 2. Wählen Sie Ihre Anwendung in der Navigationsseitenleiste aus und klicken Sie auf den Menüeintrag **Authentizität**. 
 3. Klicken Sie im Feld **Status** auf die Schaltfläche **An/Aus**. 
 
-![Anwendungsauthentizität aktivieren](enable_application_authenticity.png)
+![Anwendungsauthentizität aktivieren(enable_application_authenticity.png)
 
 ### Anwendungsauthentizität inaktivieren
 {: #disabling-application-authenticity }
@@ -85,7 +85,7 @@ auf **Neu**.
 
 3. Legen Sie eine neue Zeit in Sekunden fest. 
 
-![Eigenschaft expirationSec in der Konsole konfigurieren](configuring_expirationSec.png)
+![Eigenschaft expirationSec in der Konsole konfigurieren(configuring_expirationSec.png)
 
 ## Build Time Secret (BTS)
 {: #bts }
@@ -128,7 +128,7 @@ Um solchen potenziellen Problemen vorzubeugen, ist der **statische** Validierung
 Verwenden Sie [**mfpadm** in der CLI](../../administering-apps/using-cli/), um den Validierungstyp zu wechseln:
 
 ```bash
-app version [LAUFZEITNAME] APP-NAME UMGEBUNG VERSION set authenticity-validation TYP
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [LAUFZEIT] [APP-NAME] [UMGEBUNG] [VERSION] set authenticity-validation TYP
 ```
 `TYP` kann den Wert `dynamic` oder `static` haben.
 
