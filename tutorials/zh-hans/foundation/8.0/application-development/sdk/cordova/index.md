@@ -24,8 +24,8 @@ weight: 1
 MobileFirst 插件支持的 Cordova 平台版本包括：
 
 * cordova-ios：**>= 4.1.1 以及 < 5.0**
-* cordova-android：**>= 5.1.1 以及 < 6.0**
-* cordova-windows：**>= 4.3.2 以及 < 5.0**
+* cordova-android：**>= 6.1.2 以及 < 7.0**
+* cordova-windows：**>= 4.3.2 以及 < 6.0**
 
 #### 跳转至：
 {: #jump-to }
@@ -87,7 +87,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 #### 新建应用程序
 {: #new-application }
-1. 创建 Cordova 项目：`cordova create projectName applicationId --template cordova-template-mfp`。  
+1. 创建 Cordova 项目：`cordova create projectName applicationId applicationName --template cordova-template-mfp`。  
    例如：
 
    ```bash
@@ -99,6 +99,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
      - --template 将使用特定于 {{ site.data.keys.product_adj }} 的新增项来修改应用程序。
 
     > 模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
+
 2. 将目录更改为 Cordova 项目的根目录：`cd hello`
 
 3. 使用 Cordova CLI 命令将一个或多个受支持的平台添加到 Cordova 项目：`cordova platform add ios|android|windows`。例如：
@@ -108,6 +109,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
    ```
 
    > **注：**由于已使用 {{ site.data.keys.product_adj }} 模板配置应用程序，因此将自动添加 {{ site.data.keys.product_adj }} 核心 Cordova 插件，因为已在步骤 3 中添加平台。
+
 4. 通过运行 `cordova prepare` 命令来准备应用程序资源：
 
    ```bash
@@ -264,7 +266,8 @@ Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储�
                     </tr>
                     <tr>
                         <td><b>mfp:windows8</b></td>
-                        <td>此元素包含针对 Windows 8.1 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。<ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td>此元素包含针对 Windows 8.1 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。
+			<ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>

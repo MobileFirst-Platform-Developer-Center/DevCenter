@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 在使用 {{ site.data.keys.product_full }} 工具集开发应用程序时，必须开发或配置各种组件和元素。了解开发应用程序时所涉及的组件和元素可帮助顺利进行开发。
 
-除了熟悉这些概念，您还需要了解 {{ site.data.keys.product_adj }} 针对 Native、Cordova 和 Web 应用程序提供的 API，例如，JSONStore 和 WLResourceReuest，以及了解如何调试应用程序、使用直接更新来刷新 Web 资源、实时更新以细分用户群以及如何使用 {{ site.data.keys.mf_cli }} 来处理应用程序、适配器和其他工件。
+除了熟悉这些概念，您还需要了解 {{ site.data.keys.product_adj }} 针对 Native、Cordova 和 Web 应用程序提供的 API（例如，JSONStore 和 WLResourceRequest），并了解如何调试应用程序、使用直接更新来刷新 Web 资源、使用实时更新来细分用户群以及如何使用 {{ site.data.keys.mf_cli }} 来处理应用程序、适配器和其他工件。
 
 您可以从侧边栏浏览至相关主题，或者继续阅读以了解有关各个 {{ site.data.keys.product_adj }} 组件的更多信息。
 
@@ -31,6 +31,7 @@ weight: 5
 * 目标部署平台
 
 > **注：**版本号不适用于 Web 应用程序。您无法拥有相同 Web 应用程序的多个版本。
+
 这些标识用于客户机端和服务器端，以确保正确部署应用程序并且仅使用分配给它们的资源。{{ site.data.keys.product }} 的不同部件以不同方式使用这些标识的各种组合。
 
 应用程序标识取决于目标部署平台：
@@ -60,6 +61,7 @@ weight: 5
 * 使用 Cordova 跨平台开发技术开发的 iOS 应用程序
 
 > **注：**使用 Xcode 8 的情况下，在 iOS 模拟器中运行 iOS 应用程序时**密钥链共享**功能是必需的。您需要手动启用此功能，然后才能构建 Xcode 项目。
+
 ### 应用程序配置
 {: #application-configuration }
 正如所述，在客户机端和服务器端配置应用程序。  
@@ -70,6 +72,7 @@ weight: 5
 应用程序的服务器配置包括诸如应用程序管理状态、直接更新的 Web 资源、配置的安全范围和日志配置等信息。
 
 > 在[添加 {{ site.data.keys.product }} SDK 教程](sdk)中了解如何添加 {{ site.data.keys.product_adj }} 客户机 SDK。
+
 在构建应用程序之前，必须定义客户机配置。客户机应用程序配置属性必须匹配在 {{ site.data.keys.mf_server }} 运行时中针对此应用程序定义的属性。例如，客户机配置中的安全密钥必须匹配服务器上的密钥。对于非 Web 应用程序，您可以使用 {{ site.data.keys.mf_cli }} 更改客户机配置。
 
 应用程序的服务器配置绑定到应用程序标识、版本号和目标平台组合。您必须将应用程序注册到 {{ site.data.keys.mf_server }} 运行时，然后才能添加应用程序的服务器端配置。配置应用程序的服务器端通常是通过 {{ site.data.keys.mf_console }} 完成的。您还可以通过以下方法配置应用程序的服务器端：
@@ -81,6 +84,7 @@ weight: 5
 您还可以使用这些方法来自动配置 {{ site.data.keys.mf_server }}。
 
 > **请记住：**您可以修改服务器配置，甚至是在 {{ site.data.keys.mf_server }} 正在运行和接收来自应用程序的流量时。您无需停止服务器以更改应用程序的服务器配置。
+
 在生产服务器上，应用程序版本通常对应于发布到应用商店的应用程序的版本。某些服务器配置元素（例如，应用程序真实性配置）对于发布到商店的应用程序是唯一的。
 
 ## {{ site.data.keys.mf_server }}
@@ -99,6 +103,7 @@ weight: 5
 您需要在从开发和测试一直到生产部署和维护的整个应用程序生命周期中使用 {{ site.data.keys.mf_server }}。  
 
 > 提供预先配置的服务器以供在开发应用程序时使用。有关要在开发应用程序时使用的 {{ site.data.keys.mf_server }} 的信息，请参阅[设置 {{ site.data.keys.product_adj }} 开发环境](../installation-configuration/development)。
+
 {{ site.data.keys.mf_server }} 由以下组件组成。所有这些组件也包含在 {{ site.data.keys.mf_server }} 中。在简单情况下，它们全都在相同的应用程序服务器上运行，但是在生产或测试环境中，组件可能在不同的应用程序服务器上运行。有关这些 {{ site.data.keys.mf_server }} 组件的可能拓扑的信息，请参阅[拓扑和网络流](../installation-configuration/production/topologies)。
 
 ### {{ site.data.keys.product_adj }} 和 {{ site.data.keys.mf_server }} 管理服务
@@ -141,6 +146,7 @@ weight: 5
 #### 本地
 {: #on-premises }
 > 有关针对本地环境安装和配置 {{ site.data.keys.mf_server }} 的信息，请参阅[安装 IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver)。
+
 #### 在云上
 {: #on-the-cloud }
 * [在 IBM Bluemix 上使用 {{ site.data.keys.mf_server }}](../bluemix)。

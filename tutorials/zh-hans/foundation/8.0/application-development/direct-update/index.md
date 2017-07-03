@@ -55,9 +55,10 @@ downloads:
 应用程序 Web 资源最初与应用程序打包在一起，确保第一个脱机可用性。之后，应用程序检查 {{ site.data.keys.mf_server }} 的每个请求上的更新。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **注：**在执行直接更新后，将在 60 分钟后再次进行检查。
+
 在直接更新后，应用程序不再使用预先打包的 Web 资源。而是使用从应用程序沙箱下载的 Web 资源。如果将清除设备上的应用程序高速缓存，那么将再次使用原始打包的 Web 资源。
 
-![直接更新的运作方式图](internal_function.jpg)
+![直接更新的运作方式图(internal_function.jpg)
 
 ### 版本控制
 {: #versioning }
@@ -95,7 +96,7 @@ downloads:
  2. 装入 {{ site.data.keys.mf_console }}，然后单击应用程序条目。
  3. 单击**上载 Web 资源文件**以上载打包的 Web 资源。
 
-    ![从控制台上载直接更新 .zip 文件](upload-direct-update-package.png)
+    ![从控制台上载直接更新 .zip 文件(upload-direct-update-package.png)
 
 > 运行命令 `mfpdev help app webupdate` 以了解更多信息。
 
@@ -103,7 +104,7 @@ downloads:
 {: #user-experience }
 缺省情况下，在收到直接更新后，将显示一个对话框并询问用户是否开始更新过程。在用户核准后，将显示一个进度条对话框，并下载 Web 资源。在更新完成后将自动重新装入应用程序。
 
-![直接更新示例](direct-update-flow.png)
+![直接更新示例(direct-update-flow.png)
 
 ## 定制直接更新 UI
 {: #customizing-the-direct-update-ui }
@@ -220,9 +221,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 {: #scenario-running-ui-less-direct-updates }
 {{ site.data.keys.product_full }} 支持在前台运行应用程序时进行无 UI 的直接更新。
 
-要运行无 UI 的直接更新，请实施 `directUpdateCustomListener`。
-向 `onStart` 和 `onProgress` 方法提供空的函数实现。
-空的实现会导致在后台运行直接更新进程。
+要运行无 UI 的直接更新，请实施 `directUpdateCustomListener`。向 `onStart` 和 `onProgress` 方法提供空的函数实现。空的实现会导致在后台运行直接更新进程。
 
 要完成直接更新进程，必须重新装入该应用程序。提供了以下选项：
 * `onFinish` 方法也可以为空。在此情况下，重新启动应用程序后将应用直接更新。
@@ -246,8 +245,7 @@ var directUpdateCustomListener = {
 };
 ```
 
-实现 `wl_directUpdateChallengeHandler.handleDirectUpdate` 函数。
-将您已创建的 `directUpdateCustomListener` 实现作为参数传递至该函数。确保已调用 `directUpdateContext.start(directUpdateCustomListener`)。以下是 `wl_directUpdateChallengeHandler.handleDirectUpdate` 实现示例：
+实现 `wl_directUpdateChallengeHandler.handleDirectUpdate` 函数。将您已创建的 `directUpdateCustomListener` 实现作为参数传递至该函数。确保已调用 `directUpdateContext.start(directUpdateCustomListener`)。以下是 `wl_directUpdateChallengeHandler.handleDirectUpdate` 实现示例：
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
@@ -295,8 +293,7 @@ restartDirectUpdate = function () {
 };
 ```
 
-实现 `directUpdateCustomListener`。
-在 `onFinish` 方法中添加状态检查。如果状态以“FAILURE”开头，请使用选项“重试”打开仅模态对话框。例如：
+实现 `directUpdateCustomListener`。在 `onFinish` 方法中添加状态检查。如果状态以“FAILURE”开头，请使用选项“重试”打开仅模态对话框。例如：
 
 ```javascript
 var directUpdateCustomListener = {
@@ -326,6 +323,7 @@ var directUpdateCustomListener = {
 增量直接更新支持应用程序仅下载自上次更新以来更改的文件，而不是应用程序的整个 Web 资源。这可减少下载时间、节约带宽并提高整体用户体验。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要信息：**仅在客户机应用程序的 Web 资源是当前在服务器上部署的应用程序之后的一个版本时，**增量更新**才可用。在当前已部署的应用程序之后有多个版本（意味着自更新客户机应用程序以后至少将应用程序部署到服务器两次）的客户机应用程序接收**完全更新**（意外着将下载和更新整个 Web 资源）。
+
 ## 安全直接更新
 {: #secure-direct-update }
 缺省情况下禁用安全直接更新，此类直接更新将阻止第三方攻击者更改从 {{ site.data.keys.mf_server }}（或来自内容交付网络 (CDN))）传输到客户机应用程序的 Web 资源。
