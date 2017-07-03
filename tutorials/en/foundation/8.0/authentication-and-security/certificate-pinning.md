@@ -16,8 +16,9 @@ Protocols that rely on certificate chain verification, such as SSL/TLS, are vuln
 ## Certificate pinning process
 {: #certificate-pinning-process }
 Certificate pinning is the process of associating a host with its expected public key. Because you own both the server-side code and the client-side code, you can configure your client code to accept only a specific certificate for your domain name, instead of any certificate that corresponds to a trusted CA root certificate recognized by the operating system or browser.
+A copy of the certificate is placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
 
-A copy of the certificate is placed in the application and is used during the SSL handshake (the first request to the server). The {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
+You can also pin multiple certificates with your client application. A copy of the all the certificates should be placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} for client SDK verifies that the public key of the server certificate matches to the public key of one of the certificate that is stored in the app.
 
 #### Important
 {: #important }
@@ -41,32 +42,73 @@ The certificate must be placed in both the {{ site.data.keys.mf_server }} and in
 
 ## Certificate pinning API
 {: #certificate-pinning-api }
-Certificate pinning consists of a single API method, that has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file.
+Certificate pinning consists of the following overloaded API method, where one method has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file, and the second method has a parameter `certificateFilenames`, where `certificateFilenames` is an array of names of the certificate files.
 
 ### Android
 {: #android }
+Single certificate:
+Syntax:
+pinTrustedCertificatePublicKeyFromFile(String certificateFilename);
+Example:
 ```java
 WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
+Multiple certificates:
 
-The certificate pinning method will throw an exception in two cases:
-
+Syntax:
+pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
+Example:
+```java
+String[] certificates={"myCertificate.cer","myCertificate1.cer"};
+WLClient.getInstance().pinTrustedCertificatePublicKey(certificates);
+```
+The certificate pinning method will raise an exception in two cases:
 * The file does not exist
 * The file is in the wrong format
 
+
 ### iOS
 {: #ios }
-**In Objective-C:**
+Single certificate Pinning syntax:
+pinTrustedCertificatePublicKeyFromFile:(NSString*) certificateFilename;
 
+The certificate pinning method will raise an exception in two cases:
+* The file does not exist
+* The file is in the wrong format
+
+Multiple certificate pinning syntax:
+pinTrustedCertificatePublicKeyFromFiles:(NSArray*) certificateFilenames;
+
+The certificate pinning method will raise an exception in two cases:
+* None of the certificate file exist
+* None of the certificate file in correct format
+
+**In Objective-C:**
+Example:
+Single certificate:
 ```objc
 [[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
 
 ```
+Multiple certificate:
+Example:
+```objc
+NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“Cert3",nil];
+[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFiles:arrayOfCerts];
+```
 
 **In Swift:**
 
+Single certfiicate:
+Example:
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+```
+Multiple certificate:
+Example:
+```swift
+let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
+WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
 ```
 
 The certificate pinning method will raise an exception in two cases:
