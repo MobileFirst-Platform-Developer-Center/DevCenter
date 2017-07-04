@@ -3,7 +3,7 @@ layout: tutorial
 title: API Connect
 downloads:
   - name: Download MobileFirst APIC OAuthProvider
-    url: https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml
+    url: https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml
   - name: Download Sample Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
 weight: 1
@@ -17,7 +17,7 @@ To learn more about IBM API Connect, visit the [IBM API Connect Developer Center
 
 1. Protect API Connect endpoints with the {{ site.data.keys.mf_server }} as the authorization server.  
 2. Proxy {{ site.data.keys.product_adj }} client non-resource requests and responses through DataPower to the {{ site.data.keys.mf_server }} that is located behind the DMZ.  
- 
+
 ![{{ site.data.keys.product_adj }} OAuth Provider](mfpsecurityhld_diagram.png)
 
 Currently the security integration of {{ site.data.keys.product_adj }} and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
@@ -55,17 +55,17 @@ Go to {{ site.data.keys.mf_console }}:
     * **ID**: `apic`
     * **Secret**: YOUR-CLIENT-SECRET
     * **Allowed Scope**: `authorization.introspect`
-	
+
 <img class="gifplayer" alt="Creating a Confidential Client for APIC" src="create-a-confidential-client.png"/>
 
 ### Add the API Connect TLS Profile for the MobileFirst HTTPS endpoint
-This step is optional and necessary only if you want to send requests to the MobileFirst HTTPS endpoint from API Connect. 
-In order to create an API Connect TLS Profile, you should have your {{ site.data.keys.mf_server }} certificate (and its password). 
+This step is optional and necessary only if you want to send requests to the MobileFirst HTTPS endpoint from API Connect.
+In order to create an API Connect TLS Profile, you should have your {{ site.data.keys.mf_server }} certificate (and its password).
 
 > See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html) for information on adding TLS profiles to API Connect in the API Manager.
 
 ### Import the MobileFirst OAuthProvider template
-From the API Designer, create an OAuthProvider REST API by importing the [Swagger template YAML file](https://hub.jazz.net/git/imflocalsdk/console-tools-and-sdks/contents/master/mobilefirst-ouath-provider_1.0.0.yaml)   (`mobilefirst-ouath-provider_1.0.0.yaml`). 
+From the API Designer, create an OAuthProvider REST API by importing the [Swagger template YAML file](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml)   (`mobilefirst-ouath-provider_1.0.0.yaml`).
 
 > For more information, see
 [Adding a REST API by using an OpenAPI (Swagger 2.0) file](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/create_api_swagger.html).
@@ -131,7 +131,7 @@ From the API Connect Designer **APIs** tab:
 8. In the properties sheet pane, populate the **URL** field with the back-end resource URL to be protected with {{ site.data.keys.product_adj }}. The other values are optional. For this tutorial use `https://apim-services.mybluemix.net/banka/v1/branches`.
     ![Invoke Configuration](invoke_policy_api.png)
 
-9. Click the **Save** button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> to save the API definition. 
+9. Click the **Save** button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> to save the API definition.
 
 ### Protect the API using the {{ site.data.keys.product_adj }} OAuth Security Definition  
 Protect the API by defining a **Security Definition**.
@@ -152,7 +152,7 @@ Protect the API by defining a **Security Definition**.
 5. In the **Security** section, uncheck **Use API security definitions** and check the newly created **{{ site.data.keys.product_adj }} OAuth Security Definition** from the list.
 
     ![Choose the OAuth Definition](path-secuirty.png)
-    
+
 6. Click the **Save** button <img alt="save button" style="margin:0;display:inline" src="saveButton.png"/> .
 
 ### Add the APIs to product and publish it
@@ -194,8 +194,8 @@ After setting up the **PinCodeAndroid** sample and completing the setup describe
 
 However, when working with APIC Connect, the client application requests are proxied by the API Connect endpoints which is exposed by the {{ site.data.keys.product_adj }} OAuthProvider.
 
-In order to enable the proxy, the following changes are required in the `wclient.properties` file: 
-  
+In order to enable the proxy, the following changes are required in the `wclient.properties` file:
+
 * **wlServerProtocol:** Change to `https`.    
 * **wlServerHost:** Change to DataPower Gateway hostname (or IP) as it appears in the base URL.  
 * **wlServerPort:** Change to 443.  
@@ -256,21 +256,21 @@ In order to avoid the SSL exception, you can do one the following:
         * **DATAPOWER\_GW\_HOSTNAME.p12** – Password-protected pkcs12 file for importing it to API Connect TLS Profile.
         * **DATAPOWER\_GW\_HOSTNAME\_public.pem** – Public certificate to install into the device as a trusted CA.
     * Create TLS Profile for it in CMC (Use the password you set on `P12PWD`). See [TLS profiles](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/task_apionprem_ssl.html)
-    * Bind the TLS Profile you created with the gateway service. See [Binding a TLS profile to an existing gateway service](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/bind_ssl_existing_gateway.html) 
+    * Bind the TLS Profile you created with the gateway service. See [Binding a TLS profile to an existing gateway service](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/bind_ssl_existing_gateway.html)
     * Install the certifcae you created **DATAPOWER\_GW\_HOSTNAME\_public.pem** on the device. See [Installing the root CA on Android](http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_installing_root_CA_android.html) or [Installing the root CA on iOS](http://www.ibm.com/support/knowledgecenter/en/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_installing_root_CA_iOS.html) for more details.
 
 2. **Adding API Connect default certificate to TrustStore in the client application code (for development)**:
-    * Fetch the default API Connect certificate using OpenSSL: 
+    * Fetch the default API Connect certificate using OpenSSL:
 
         `openssl s_client -connect {DATAPOWER_GW_HOSTNAME}:443 | openssl x509 > apic-certificate.crt`
     * Add relevant code to your client application to trust API Connect certficate and its hostname. You can follow [Security with HTTPS and SSL](https://developer.android.com/training/articles/security-ssl.html) for more details in Android.
 
 > See [Configuring SSL by using untrusted certificates](http://www.ibm.com/support/knowledgecenter/SSHSCD_7.1.0/com.ibm.worklight.installconfig.doc/admin/c_ssl_config.html) for more details on how to add untrusted certificate to your client application.  
-   
+
 ## Support for multiple {{ site.data.keys.product_adj }} OAuthProviders
 To add additional OAuthProviders, alter the Swagger template each time before re-importing:
 
-1. **x-ibm-name:** Change "mobilefirst-ouath-provider" to another unique name (using only lowercase). 
+1. **x-ibm-name:** Change "mobilefirst-ouath-provider" to another unique name (using only lowercase).
 2. **basePath:** Change "/mfpProvider" to another unique path.  
 3. **title:** Change "MobileFirstOAuthProvider" to a unique title.
 4. **description:** Change "MobileFirst OAuthProvider Template" to a unique description.  
