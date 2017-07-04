@@ -5,19 +5,19 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview 
+## Overview
 {: #overview }
 IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
 
-The option to create log files for the {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
+The option to create log files for the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} and {{ site.data.keys.mf_app_center }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
 
 When your {{ site.data.keys.product_adj }} container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
 
 ### Logging overrides
 {: #logging-overrides }
-You can change the log levels by either adding a code override manually or by injecting code using a given script file. Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package\_root/mfpf-[analytics|server]/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
+You can change the log levels by either adding a code override manually or by injecting code using a given script file. Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package\_root/mfpf-[analytics|server]/usr/config** folder and to **package_root/mfp-appcenter/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
 
-Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start\*.sh script files provided in the V8.0.0 package (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**). The following optional command-line arguments are applicable:
+Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start\*.sh script files provided in the V8.0.0 package (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**, **startappcenter.sh**, **startappcentergroup.sh**). The following optional command-line arguments are applicable:
 
 * `[-tr|--trace]` trace_specification
 * `[-ml|--maxlog]` maximum\_number\_of\_log\_files
@@ -31,6 +31,13 @@ Log files are generated for {{ site.data.keys.mf_server }} and Liberty Profile r
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/trace.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/ffdc/*
+
+Log files are generated for {{ site.data.keys.mf_app_center }} Server and Liberty Profile runtime activities for each container instance and can be found in the following locations:
+
+* /opt/ibm/wlp/usr/servers/appcenter/logs/messages.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/console.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/trace.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/ffdc/*
 
 You can log in to the container by following the steps in Accessing log files and access the log files.
 
@@ -56,7 +63,7 @@ IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running
 
 ### Enabling SSH
 {: #enabling-ssh}
-To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** folder before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
+To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** and **package_root/mfp-appcenter/usr/sshfolder** folders before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
 
 If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH\_ENABLE and SSH\_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
 
@@ -72,7 +79,7 @@ You can access running {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_a
 2. To locate the log files or traces, use the following command example:
 
    ```bash
-   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp 
+   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
    container_instance@root# vi messages.log
    ```
 
@@ -97,7 +104,7 @@ container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
-Download the log archive to your local workstation. Example: 
+Download the log archive to your local workstation. Example:
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

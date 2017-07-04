@@ -439,7 +439,7 @@ following folders:
 
     A copy of the the arguments that you used in your previous deployment would have been saved in `recorded-args/` directory. You can use these properties for your deployment.
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Removing the database service configuration from Bluemix
 {: #removing-the-database-service-configuration-from-bluemix }
