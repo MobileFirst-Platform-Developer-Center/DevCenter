@@ -21,6 +21,8 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **June 30th, 
 
 **PI83723** SECURITY CHECK FAILS WHEN OPENING APPLICATION AFTER APP VERSION UPGRADE WITH REMOTE DISABLED IN USE
 
+**PI81671** INCONSISTENT RESPONSE RECEIVED WHEN GETTING DEVICE ID
+
 ## How to upgrade
 **Server**  
 To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/), [Developer Kit for customers / iFix package for on-prem production environment](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
