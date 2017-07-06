@@ -751,7 +751,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-live-update-service" aria-expanded="true" aria-controls="collapse-liberty-admin-service"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-live-update-service" aria-expanded="true" aria-controls="collapse-live-update-service"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
             </h4>
         </div>
 
