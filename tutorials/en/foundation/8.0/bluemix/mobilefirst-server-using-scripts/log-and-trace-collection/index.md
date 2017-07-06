@@ -63,7 +63,7 @@ IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running
 
 ### Enabling SSH
 {: #enabling-ssh}
-To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** and **package_root/mfp-appcenter/usr/sshfolder** folders before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
+To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** folder before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
 
 If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH\_ENABLE and SSH\_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
 

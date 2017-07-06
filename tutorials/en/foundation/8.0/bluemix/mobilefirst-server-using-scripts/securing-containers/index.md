@@ -22,7 +22,7 @@ ATS configuration does not impact applications connecting from other, non-iOS, m
 
 1. Copy the **ssl_cert.p12** file to the **mfpf-server/usr/security/** folder or **mfp-appcenter/user/security/** for application center
 
-2. Modify the **mfpf-server/usr/config/keystore.xml** file similar to the following example configuration:
+2. Modify the **mfpf-server/usr/config/keystore.xml** and **appcenter/usr/config/keystore.xml** (for appcenter) or file similar to the following example configuration:
 
    ```bash
    <server>
@@ -46,7 +46,7 @@ The following specific ciphers require Java Cryptography Extension (JCE) policy 
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384
 
-If you use these ciphers and use an IBM Java SDK, [you can download](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk) the policy files. There are two files: **US_export_policy.jar** and **local_policy.jar**. Add both the files to the **mfpf-server/usr/security** folder and then add the following JVM option to the **mfpf-server/usr/env/jvm.options** file: `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
+If you use these ciphers and use an IBM Java SDK, [you can download](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk) the policy files. There are two files: **US_export_policy.jar** and **local_policy.jar**. Add both the files to the **mfpf-server/usr/security** folder and **mfp-appcenter/usr/security** (for appcenter), then add the following JVM option to the **mfpf-server/usr/env/jvm.options** file: `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
 
 For development-stage purposes only, you can disable ATS by adding following property to the info.plist file:
 
