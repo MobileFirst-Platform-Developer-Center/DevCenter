@@ -253,7 +253,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>New {{ site.data.keys.product }} capabilities are introduced to help you deploy and manage your apps. You can now update your apps and adapters without restarting {{ site.data.keys.mf_server }}.</p>
 
