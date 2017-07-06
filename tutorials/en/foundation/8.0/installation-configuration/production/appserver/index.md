@@ -39,7 +39,7 @@ Ensure that you fulfill the following criteria:
 * Apache Tomcat must be run with JRE 7.0 or later.
 * The JMX configuration must be enabled to allow the communication between the administration service and the runtime component. The communication uses RMI as described in **Configuring JMX connection for Apache Tomcat** below.
 
-<div class="panel-group accordion" id="tomcat-prereq" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="tomcat-prereq" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="jmx-connection">
             <h4 class="panel-title">
@@ -139,7 +139,7 @@ The process that runs Liberty server is not stopped when the user, who started t
 * {{ site.data.keys.mf_server }} V8.0.0 cannot be deployed in a Liberty server that contains the deployed {{ site.data.keys.mf_server }} components from the previous versions.
 * For an installation in a Liberty collective environment, the Liberty collective controller and the Liberty collective cluster members must be configured as documented in [Configuring a Liberty collective](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/tagt_wlp_configure_collective.html?view=kc).
 
-<div class="panel-group accordion" id="websphere-prereq" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="websphere-prereq" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="websphere-jmx-connection">
             <h4 class="panel-title">
@@ -175,7 +175,7 @@ Ensure that you fulfill the following criteria:
 * The administrative security must be turned on. {{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, and the {{ site.data.keys.mf_server }} configuration service are protected by security roles. For more information, see [Enabling security](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
 * The JMX configuration must be enabled to allow the communication between the administration service and the runtime component. The communication uses SOAP. For WebSphere Application Server Network Deployment, RMI can be used. For more information, see **Configuring JMX connection for WebSphere Application Server and WebSphere Application Server Network Deployment** below.
 
-<div class="panel-group accordion" id="websphere-nd-prereq" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="websphere-nd-prereq" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="websphere-nd-jmx-connection">
             <h4 class="panel-title">
@@ -271,7 +271,7 @@ Before you run the Server Configuration Tool, make sure that the following requi
 * The application server is configured. See [Application server prerequisites](#application-server-prerequisites).
 * The user that runs the tool has the specific file system privileges. See [File system prerequisites](#file-system-prerequisites).
 
-<div class="panel-group accordion" id="running-the-configuration-tool" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="running-the-configuration-tool" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="configuration-tool">
             <h4 class="panel-title">
@@ -694,7 +694,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 
 #### Configuration details
 {: #configuration-details-liberty }
-<div class="panel-group accordion" id="manual-installation-liberty" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="manual-installation-liberty" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service">
             <h4 class="panel-title">
@@ -1031,7 +1031,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
   ```
 #### Configuration details
 {: #configuration-details-collective }
-<div class="panel-group accordion" id="manual-installation-liberty-collective" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="manual-installation-liberty-collective" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-collective">
             <h4 class="panel-title">
@@ -1295,7 +1295,7 @@ Optionally, you might want to activate the memory realm if the users are defined
 ```
 #### Configuration details
 {: #configuration-details-tomcat }
-<div class="panel-group accordion" id="manual-installation-apache-tomcat" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="manual-installation-apache-tomcat" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-tomcat">
             <h4 class="panel-title">
@@ -1567,7 +1567,7 @@ To set the class loader delegation to parent last after an application is instal
 
 #### Configuration details
 {: #configuration-details-nd }
-<div class="panel-group accordion" id="manual-installation-nd" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="manual-installation-nd" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-nd">
             <h4 class="panel-title">
@@ -1857,7 +1857,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
 * Deploy the {{ site.data.keys.mf_server }} components to each server
 * Modify its configuration to make it a member of a server farm
 
-<div class="panel-group accordion" id="installing-mobilefirst-server-ct" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="installing-mobilefirst-server-ct" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="server-farm-ct">
             <h4 class="panel-title">
@@ -1910,7 +1910,7 @@ Use Ant tasks to configure each server in the farm according to the requirements
 
 When you plan a server farm with Ant tasks, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run Ant tasks to configure the database instance that is shared by the {{ site.data.keys.mf_server }} components. Finally, run Ant tasks to deploy the {{ site.data.keys.mf_server }} components to each server and modify its configuration to make it a member of a server farm.
 
-<div class="panel-group accordion" id="installing-mobilefirst-server-ant" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="installing-mobilefirst-server-ant" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="server-farm-ant">
             <h4 class="panel-title">
@@ -2031,7 +2031,7 @@ You must configure each server in the farm according to the requirements of the 
 
 When you plan a server farm, first create stand-alone servers that communicate with the same database instance. Then, modify the configuration of these servers to make them members of a server farm.
 
-<div class="panel-group accordion" id="configuring-manually" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="configuring-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="manual">
             <h4 class="panel-title">
