@@ -11,7 +11,7 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix has been released for MobileFirst Foundation 8.0, dated **June 5th, 2017**.
+A new iFix has been released for MobileFirst Foundation 8.0, dated **July 5th, 2017**.
 
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
