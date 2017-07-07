@@ -99,7 +99,7 @@ Create an Android Studio project or use an existing one.
 {: #manually-adding-the-mobilefirst-native-sdk }
 You can also manually add the {{ site.data.keys.product_adj }} SDK:
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
