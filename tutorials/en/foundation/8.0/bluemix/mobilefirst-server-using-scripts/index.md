@@ -1515,7 +1515,7 @@ Before you apply an interim fix, back up your existing configuration files. The 
 
     b. Run the `startserver.sh` script to run the server image as a standalone container or `startservergroup.sh` to run the server image as a container group.
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Removing a Container from Bluemix
 {: #removing-a-container-from-bluemix }
