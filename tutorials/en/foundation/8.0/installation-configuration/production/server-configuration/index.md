@@ -121,7 +121,7 @@ You must map the roles to the corresponding sets of users. The **mfpmonitor** ro
 | Configure runtime settings.| Yes           | Yes         | No          | No         |
 
 #### Application management
-{: #mobilefirst-server-management }
+{: #application-management }
 
 |                                     | Administrator | Deployer    | Operator    | Monitor    |
 |-------------------------------------|---------------|-------------|-------------|------------|
@@ -563,7 +563,7 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 
 {% comment %}
 <!-- START NON-TRANSLATABLE -->
-The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
+The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |

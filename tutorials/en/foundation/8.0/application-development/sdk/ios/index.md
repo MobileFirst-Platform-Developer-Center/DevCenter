@@ -78,7 +78,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 {: #manually-adding-the-mobilefirst-native-sdk }
 You can also manually add the {{ site.data.keys.product }} SDK:
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">

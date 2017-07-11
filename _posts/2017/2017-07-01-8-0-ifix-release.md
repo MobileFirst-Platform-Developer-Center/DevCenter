@@ -1,6 +1,6 @@
 ---
-title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170624-0159 released
-date: 2017-06-29
+title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170630-1328 released
+date: 2017-07-01
 version:
 - 8.0
 tags:
@@ -11,31 +11,17 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix has been released for MobileFirst Foundation 8.0, dated **June 24th, 2017**.
+A new iFix has been released for MobileFirst Foundation 8.0, dated **June 30th, 2017**.
 
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
-### Support for Cordova v7
-Starting from iFix **8.0.0.0-MFPF-IF20170608-0406**, Cordova v7 is supported. For details on supported versions of individual platforms, refer to [Adding the MobileFirst Foundation SDK to Cordova Applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/).
-
-### Multiple certificate pinning support
-Starting with this iFix (**8.0.0.0-MFPF-IF20170624-0159**), Mobile Foundation supports pinning of multiple certificates. Prior to this iFix, Mobile Foundation supported pinning of a single certificate. Mobile Foundation has introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates to the client application. This is supported only for native android and iOS apps. Read more on **Multiple certificate pinning support** from [What's new](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/), under the section *What's new in MobileFirst APIs* .
 
 ### APARs Fixed
 
-**PI82841** DEPLOYMENT OF MOBILEFIRST PUREAPPLICATION PATTERN MAY FAIL
+**PI83723** SECURITY CHECK FAILS WHEN OPENING APPLICATION AFTER APP VERSION UPGRADE WITH REMOTE DISABLED IN USE
 
-**PI78623** SPECIFIED TIMEOUT VALUE IN WLRESOURCEREQUEST API CALLS IGNORED IN NATIVE IOS AND ANDROID SDKS
-
-**PI82800** CLASSNOTFOUNDEXCEPTION ON PASSWORDUTIL WHEN STARTINGMOBILEFIRST SERVER ON TOMCAT
-
-**PI79018** STRENGTHEN MF OAUTH TOKEN EXCHANGE PROCESS to avoid risk oftampering with the URI
-
-**PI80785** USING WL.ANALYTICS.SEND() OR WL.LOGGER.SEND() MIGHT RESULT IN  JAVA.IO.IOEXCEPTIONP
-
-**PI75631** ERROR IN MFPMIGRATE UTILITY WHEN MULTIPLE ENVIRONMENTS HAVE  DIFFERENT VERSIONS.
-
+**PI81671** INCONSISTENT RESPONSE RECEIVED WHEN GETTING DEVICE ID
 
 ## How to upgrade
 **Server**  
@@ -49,15 +35,15 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
 *The artifacts updated in the iFix are emphasized.*
 #### MobileFirst DevKit
 
-_**8.0.0.0-MFPF-DevKit-Linux-IF201706240159.bin**_
+_**8.0.0.0-MFPF-DevKit-Linux-IF201706301328.bin**_
 
-_**8.0.0.0-MFPF-DevKit-MacOSX-IF201706240159.zip**_
+_**8.0.0.0-MFPF-DevKit-MacOSX-IF201706301328.zip**_
 
-_**8.0.0.0-MFPF-DevKit-Windows-IF201706240159.exe**_
+_**8.0.0.0-MFPF-DevKit-Windows-IF201706301328.exe**_
 
 #### Cordova plugins
 
-_**cordova-plugin-mfp               8.0.2017060910**_
+*cordova-plugin-mfp                 8.0.2017060910*
 
 *cordova-plugin-mfp-encrypt-utils   8.0.2017021815*
 
@@ -77,22 +63,22 @@ _**cordova-plugin-mfp               8.0.2017060910**_
 
 *mfpdev-cli                         8.0.2017012016*
 
-_**mfpmigrate-cli                   8.0.2017061505**_
+*mfpmigrate-cli                     8.0.2017061505*
 
 #### iOS SDK
 
-_**IBMMobileFirstPlatformFoundation                    8.0.2017053010**_
+*IBMMobileFirstPlatformFoundation                    8.0.2017053010*
 
-_**IBMMobileFirstPlatformFoundationOpenSSLUtils        8.0.2017053010**_
+*IBMMobileFirstPlatformFoundationOpenSSLUtils        8.0.2017053010*
 
-_**IBMMobileFirstPlatformFoundationPush                8.0.2017061612**_
+*BMMobileFirstPlatformFoundationPush                 8.0.2017061612*
 
-_**IBMMobileFirstPlatformFoundationJSONStore           8.0.2017053010**_
+*IBMMobileFirstPlatformFoundationJSONStore           8.0.2017053010*
 
 
 #### Android SDK
 
-_**ibmmobilefirstplatformfoundation              8.0.2017061318**_
+*ibmmobilefirstplatformfoundation                8.0.2017061318*
 
 *ibmmobilefirstplatformfoundationpush            8.0.2017011813*
 

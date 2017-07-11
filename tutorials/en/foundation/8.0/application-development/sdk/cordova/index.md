@@ -203,7 +203,7 @@ After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, 
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">
