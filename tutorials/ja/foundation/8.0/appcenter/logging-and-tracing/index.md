@@ -32,6 +32,7 @@ Application Center (または、{{ site.data.keys.product }} の他のコンポ�
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -39,7 +40,7 @@ com.worklight.*=all
 各部の意味は次のとおりです。
 
 * **com.ibm.puremeap.*** は Application Center 用です。
-* **com.ibm.worklight.*** および **com.worklight.*** は、他の {{ site.data.keys.product_adj }} コンポーネント用です。
+* **com.ibm.mfp.**\*、**com.ibm.worklight.*** および **com.worklight.*** は、他の {{ site.data.keys.product_adj }} コンポーネント用です。
 
 トレースは **trace.log** というファイルに送信されます。**SystemOut.log** や **SystemErr.log** には送信されません。
 
@@ -52,7 +53,7 @@ Application Center で問題の診断を試みるときは、ログ・メッセ�
 Application Center を含む {{ site.data.keys.product }} に対し FINEST レベル (ALL と同等) のロギングを有効にするには、server.xml に 1 つの行を追加します。例えば、次のとおりです。
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 この例では、パッケージの複数の項目とそのロギング・レベルは、それぞれをコロン (:) で区切ります。
@@ -71,6 +72,7 @@ Application Center を含む {{ site.data.keys.product }} に対し ** FINEST** 
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```

@@ -103,7 +103,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 </div>
 
 
-## {{ site.data.keys.mf_server }} のセットアップ
+## {{ site.data.keys.mf_server }} および {{ site.data.keys.mf_app_center }} のセットアップ
 {: #setting-up-the-mobilefirst-server }
 スクリプトは、対話式に実行することも、構成ファイルを使用して実行することもできます。
 推奨されるのは、開始時に一度スクリプトを対話式に実行することです。これによって引数も記録されます (**recorded-args**)。その後、args ファイルを使用して非対話式でスクリプトを実行できます。
@@ -114,6 +114,144 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 * 対話式の場合: 引数を付けずにスクリプトを実行します。
 
 スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、少なくとも、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
+
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+
+>**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
+
+<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-foundation-1">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-1" aria-expanded="false" aria-controls="collapse-step-appcenter-1">構成ファイルの使用</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。空のテンプレート・ファイルや引数の説明は、<b>args</b> フォルダーにあります。また、対話式のスクリプト実行の後は <b>recorded-args</b> フォルダーにあります。以下のファイルがあります。<br/>
+
+              <h4>initenv.properties</h4>
+              このファイルには、環境の初期化を実行するときに使用するプロパティーが含まれています。
+              <h4>prepareappcenterdbs.properties</h4>
+              {{ site.data.keys.mf_app_center }} には、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional データベース・インスタンス</a> (OLTP または Transactional のマークが付いた任意のプラン) が必要です。<br/>
+              <b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは、「従量制課金」のマークが付いたプランに対しては即時に行われます。<i>Enterprise for Transactions High Availability 2.8.500 (従量課金)</i> のような、適したプランを選択するようにしてください。<br/><br/>
+              dashDB インスタンスのセットアップが完了したら、必要な引数を入力します。
+
+              <h4>prepareappcenter.properties</h4>
+              このファイルは prepareappcenter.sh スクリプトに使用されます。このファイルは {{ site.data.keys.mf_app_center_short }} ファイル・レイアウトを準備し、これを Bluemix に Cloud Foundry アプリケーションとしてプッシュします。
+              <h4>startappcenter.properties</h4>
+              このファイルは、サーバーのランタイム属性を構成し、これを開始します。最小でも 1024 MB (<b>SERVER_MEM=1024</b>) と 3 つのノードを使用して高可用性を確保 (<b>INSTANCES=3</b>) することを強く推奨します。
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-appcenter-2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-2" aria-expanded="false" aria-controls="collapse-step-appcenter-2">スクリプトの実行</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+              <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
+              <ol>
+                  <li><b>initenv.sh – Bluemix へのログイン</b><br />
+                      <b>initenv.sh</b> スクリプトを実行して Bluemix にログインします。dashDB サービスがバインドされている組織およびスペースに対して、次のコマンドを実行します。
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        コマンド・ラインでパラメーターを渡すこともできます。
+
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
+
+{% highlight bash %}
+./initenv.sh --help
+{% endhighlight %}
+                  </li>
+                  <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} データベースの準備</b><br />
+                  <b>prepareappcenterdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスまたはアクセス可能な DB2 データベース・サーバーが含まれた {{ site.data.keys.mf_app_center }} を構成します。DB2 オプションは、DB2 サーバーがインストールされているデータ・センターと同じデータ・センターで Bluemix をローカルに実行する場合に、特に有用です。dashDB サービスを使用する場合、手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能である必要があります。次のコマンドを実行します。
+{% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        コマンド・ラインでパラメーターを渡すこともできます。
+
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
+{% endhighlight %}
+
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
+
+{% highlight bash %}
+./prepareappcenterdbs.sh --help
+{% endhighlight %}
+
+                  </li>
+                  <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
+                      このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにサーバーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+                  </li>
+                  <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }}</b> の準備<br />
+                    {{ site.data.keys.mf_app_center }} をビルドし、これを Bluemix に Cloud Foundry アプリケーションとしてプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。ログインした組織およびスペース内にあるすべての Cloud Foundry アプリケーションとその URL を表示するには、<code>cf apps</code> を実行します。<br/>
+
+
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        コマンド・ラインでパラメーターを渡すこともできます。
+
+{% highlight bash %}
+prepareappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
+
+{% highlight bash %}
+./prepareappcenter.sh --help
+{% endhighlight %}                  
+
+                  </li>
+                  <li><b>startappcenter.sh - {{ site.data.keys.mf_app_center }}</b> の始動<br />
+                  <b>startappcenter.sh</b> スクリプトを使用して、Liberty for Java Cloud Foundry アプリケーション上で {{ site.data.keys.mf_app_center }} を始動します。次のコマンドを実行します。<p/>
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        コマンド・ラインでパラメーターを渡すこともできます。
+
+{% highlight bash %}
+./startappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
+
+{% highlight bash %}
+./startappcenter.sh --help
+{% endhighlight %}   
+
+                  </li>
+              </ol>
+            </div>
+        </div>
+    </div>
+</div>
+次の URL をロードして、{{ site.data.keys.mf_app_center }} コンソールを起動します。`http://APP_HOST.mybluemix.net/appcenterconsole` (しばらく時間がかかる場合があります)。   
+
+これで、IBM Bluemix で実行中の {{ site.data.keys.mf_app_center }} を使用して、モバイル・アプリケーションを Application Center にアップロードできます。
+
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
@@ -277,14 +415,29 @@ prepareserver.sh --name APP_NAME
 
 ## {{ site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
+
 Bluemix 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
-暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは、
-**package_root/mfpf-server-libertyapp/usr** フォルダー内にあります。
+暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは次のフォルダー内にあります。
+* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} Liberty Cloud Foundry アプリケーション: **package_root/mfpf-server-libertyapp/usr**
+* {{ site.data.keys.mf_app_center_short }}:  **package_root/mfp-appcenter-libertyapp/usr**
+
+### iFix を適用するためのステップ:
 
 1. 暫定修正アーカイブをダウンロードし、その内容を既存のインストール・フォルダーに解凍して、既存のファイルを上書きします。
-2. バックアップした構成ファイルを **/mfpf-server-libertyapp/usr** フォルダーにリストアし、新規にインストールされた構成ファイルを上書きします。
+2. バックアップした構成ファイルを **package_root/mfpf-analytics/usr**、**package_root/mfpf-server-libertyapp/usr**、および **package_root/mfp-appcenter-libertyapp/usr** の各フォルダーにリストアし、新規にインストールされた構成ファイルを上書きします。
+3. エディターで **package_root/mfpf-server/usr/env/jvm.options** ファイルを編集して、次の行が存在する場合は削除します。
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
+```
+    これで、更新したサーバーをビルドおよびデプロイできるようになりました。同じ引数のセットを指定して、次のスクリプトを再実行します。
+    a. `./prepareserver.sh`: 更新した成果物を Bluemix にアップロードします。
 
-これで、更新したサーバーをビルドおよびデプロイできるようになりました。
+    b. `./startserver.sh`: 更新したサーバーを始動します。
+
+    前のデプロイメントで使用した引数のコピーは `recorded-args/` ディレクトリーに保存されています。これらのプロパティーをデプロイメントに使用できます。
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-bluemix }
@@ -296,3 +449,5 @@ Bluemix からデータベース・サービス構成を削除するには、Blu
 2. 選択した dashDB サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、dashDB コンソールを「起動」します。
 3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
 4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。Bluemix からデータベース構成が削除されます。
+
+同様に、{{ site.data.keys.mf_app_center }} の構成中に **prepareappcenterdbs.sh** を実行した場合、上のステップに従って、Bluemix でデータベース・サービス構成を削除します。

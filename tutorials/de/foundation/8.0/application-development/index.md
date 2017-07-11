@@ -11,10 +11,7 @@ Wenn Sie Ihre App mit den Tools der {{ site.data.keys.product_full }}
 entwickeln, müssen Sie diverse Komponenten und Elemente entwickeln oder konfigurieren. Wenn Sie über diese Komponenten und Elemente
 informiert sind, geht die Entwicklung Ihrer App reibungslos und schneller voran. 
 
-Sie werden sich aber nicht nur mit diesen Konzepten vertraut machen, sondern erhalten auch Informationen zu den
-{{ site.data.keys.product_adj }}-APIs für native, Cordova- und Webanwendungen wie JSONStore und WLResourceRequest.
-Zudem werden Sie das Debuggen von Anwendungen, die Verwendung der direkten Aktualisierung für Webressourcen, die Liveaktualisierung zum Erstellen von Benutzersegmenten
-und die Bearbeitung von Apps, Adaptern und anderen Artefakten über die {{ site.data.keys.mf_cli }} erlernen.
+Sie werden sich aber nicht nur mit diesen Konzepten vertraut machen, sondern erhalten auch Informationen zu den {{ site.data.keys.product_adj }}-APIs für native, Cordova- und Webanwendungen wie JSONStore und WLResourceRequest. Zudem werden Sie das Debuggen von Anwendungen, die Verwendung der direkten Aktualisierung für Webressourcen, die Liveaktualisierung zum Erstellen von Benutzersegmenten und die Bearbeitung von Apps, Adaptern und anderen Artefakten über die {{ site.data.keys.mf_cli }} erlernen.
 
 Navigieren Sie in der Seitenleiste zum betreffenden Abschnitt oder
 lesen Sie hier weiter,
@@ -40,8 +37,7 @@ anhand folgender Elemente identifiziert:
 * Versionsnummer
 * Zielimplementierungsplattform
 
-> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für
-Webanwendungen nicht zutreffend. Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
+> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für Webanwendungen nicht zutreffend. Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
 implementiert werden und nur die ihnen zugewiesenen Ressourcen nutzen. Unterschiedliche Komponenten der
 {{ site.data.keys.product }} verwenden verschiedene Kombinationen dieser
 Kennungen auf unterschiedliche Art. 
@@ -95,7 +91,7 @@ erforderlich sind.
 Die Serverkonfiguration für die App umfasst Informationen wie den App-Managementstatus, Webressourcen für
 die direkte Aktualisierung, konfigurierte Sicherheitsbereiche und die Protokollkonfiguration. 
 
-> In den Lernprogrammen zum [Hinzufügen der SDKs der {{ site.data.keys.product }}](sdk) erfahren Sie, wie das {{ site.data.keys.product_adj }}-Client-SDK hinzugefügt wird.
+> In den Lernprogrammen zum [Hinzufügen der SDKs der {{ site.data.keys.product }}](sdk) erfahren Sie, wie die {{ site.data.keys.product_adj }}-Client-SDKs hinzugefügt werden.
 
 Die Clientkonfiguration muss definiert werden, bevor Sie
 den Anwendungsbuild erstellen. Die Konfigurationseigenschaften in der Client-App müssen zu den Eigenschaften passen, die in
