@@ -86,7 +86,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. 기존 **활동** 요소 옆에 {{ site.data.keys.product_adj }} UI 활동을 추가하십시오. 
 
    ```xml
@@ -98,7 +98,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
 ### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
 {: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product_adj }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
-  
+
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
@@ -110,12 +110,14 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>{{ site.data.keys.product_adj }} SDK를 수동으로 추가하려면 먼저 <b>{{ site.data.keys.mf_console }} → 다운로드 센터 → SDK</b> 탭에서 SDK .zip 파일을 다운로드하십시오. 위 단계를 완료한 후에 아래 단계도 수행하십시오. </p>
-            
+
                 <ul>
                     <li>다운로드된 .zip 파일을 추출하고 관련 aar 파일을 <b>app\libs</b> 폴더에 저장하십시오. </li>
                     <li>다음을 <b>종속 항목</b> 클로저에 추가하십시오.
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>다음을 <b>저장소</b> 클로저에 추가하십시오.
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>닫기 섹션</b></a>
             </div>

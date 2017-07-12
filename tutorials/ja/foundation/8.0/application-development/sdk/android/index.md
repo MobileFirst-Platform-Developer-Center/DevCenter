@@ -86,7 +86,7 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. 既存の **activity** エレメントの後に、次の {{ site.data.keys.product_adj }} UI アクティビティーを追加します。
 
    ```xml
@@ -98,7 +98,7 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: #manually-adding-the-mobilefirst-native-sdk }
 次のように、{{ site.data.keys.product_adj }} SDK を手動で追加することもできます。
-  
+
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
@@ -110,12 +110,14 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>{{ site.data.keys.product_adj }} SDK を手動で追加するには、まず最初に<b>「{{ site.data.keys.mf_console }}」→「ダウンロード・センター」→「SDK」</b>タブで SDK の .zip ファイルをダウンロードします。上記の手順を完了した後、以下の手順にも従います。</p>
-            
+
                 <ul>
                     <li>ダウンロードした .zip ファイルを解凍し、関連する aar ファイルを <b>app\libs</b> フォルダーに入れます。</li>
                     <li>次の行を <b>dependencies</b> クロージャーに追加します。
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>次の行を <b>repositories</b> クロージャーに追加します。
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>セクションを閉じる</b></a>
             </div>

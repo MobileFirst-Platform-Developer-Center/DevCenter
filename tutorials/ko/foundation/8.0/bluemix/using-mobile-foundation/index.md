@@ -86,7 +86,8 @@ weight: 1
 
 ## {{ site.data.keys.mf_bm_short }} 서비스 사용
 {: #using-the-mobile-foundation-service }
-> **참고:** 현재 **달라스**와 **영국** 지역에서만 분석 서비스를 사용할 수 있습니다. {{ site.data.keys.mf_server }}가 이제 실행 중이므로 다음 대시보드가 표시됩니다. 
+
+{{ site.data.keys.mf_server }}가 이제 실행 중이므로 다음 대시보드가 표시됩니다. 
 
 ![{{ site.data.keys.mf_bm_short }} 설정 이미지](service-dashboard.png)
 
@@ -123,10 +124,10 @@ weight: 1
 
 ## {{ site.data.keys.mf_analytics_short }} 지원 추가
 {: #adding-analytics-support }
-서비스의 대시보드 페이지에서 **Analytics 추가**를 클릭하여 {{ site.data.keys.mf_analytics }} 지원을 {{ site.data.keys.mf_bm_short }} 서비스 인스턴스에 추가할 수 있습니다. 이 조치는 IBM Container에 {{ site.data.keys.mf_analytics_server }}의 인스턴스를 프로비저닝합니다. 
+서비스의 대시보드 페이지에서 **Analytics 추가**를 클릭하여 {{ site.data.keys.mf_analytics }} 지원을 {{ site.data.keys.mf_bm_short }} 서비스 인스턴스에 추가할 수 있습니다. 이 조치는 IBM Container에 {{ site.data.keys.mf_analytics }}의 인스턴스를 프로비저닝합니다. 
 
 * **Developer** 플랜을 사용하는 경우 이 조치는 {{ site.data.keys.mf_analytics_short }} 서비스 인스턴스를 {{ site.data.keys.mf_server }} 인스턴스에 자동으로 후크하기도 합니다.   
-* **Developer Pro**, **Professional(용량별)** 또는 **Proffessional(단일 애플리케이션)** 플랜을 사용하는 경우 이 조치를 수행하려면 사용 가능한 노드의 크기, 사용 가능한 메모리, 스토리지 볼륨을 선택하여 추가로 입력해야 합니다. 
+* **Developer Pro**, **Professional(용량별)** 또는 **Proffessional(단일 애플리케이션)** 플랜을 사용하는 경우 이 조치를 수행하려면 사용 가능한 노드의 크기, 사용 가능한 메모리, 스토리지 볼륨을 선택하여 추가로 입력해야 합니다.  
 
 조작이 완료되면 브라우저에서 {{ site.data.keys.mf_console }} 페이지를 다시 로드하여 {{ site.data.keys.mf_analytics_console_short }}에 액세스하십시오.   
 
@@ -161,7 +162,7 @@ Developer 플랜에서는 지속적 데이터베이스를 제공하지 않으므
 * 다음과 같은 서버 측 조치를 수행하는 경우:
     * 어댑터 배치 또는 어댑터 구성이나 특성 값 업데이트
     * 범위 맵핑과 같은 보안 구성 수행
-    
+
     명령행에서 다음을 실행하여 구성을 .zip 파일에 다운로드하십시오. 
 
   ```bash

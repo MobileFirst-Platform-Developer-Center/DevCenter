@@ -45,6 +45,7 @@ und das Application Center mit der Stufe **FINEST** (die funktional der Stufe **
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -52,7 +53,7 @@ com.worklight.*=all
 Für diese Angabe gilt Folgendes: 
 
 * **com.ibm.puremeap.*** bezieht sich auf das Application Center.
-* **com.ibm.worklight.*** und **com.worklight.*** beziehen sich auf andere {{ site.data.keys.product_adj }}-Komponenten.
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** und **com.worklight.*** beziehen sich auf andere {{ site.data.keys.product_adj }}-Komponenten.
 
 Die Traces werden an eine Datei mit dem Namen **trace.log** und nicht an
 **SystemOut.log** oder **SystemErr.log** gesendet.
@@ -70,7 +71,7 @@ server.xml eine Zeile hinzu, um die Protokollierung für die {{ site.data.keys.p
 und das Application Center mit der Stufe FINEST (die funktional der Stufe ALL entspricht) zu aktivieren. Beispiel: 
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 In diesem Beispiel sind
@@ -97,6 +98,7 @@ Bearbeiten Sie die Datei
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
