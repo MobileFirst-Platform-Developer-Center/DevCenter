@@ -85,7 +85,7 @@ After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../applicatio
 
 ## {{ site.data.keys.product_adj }} SDK Startup Flow
 {: #mobilefirst-sdk-startup-flow }
-<div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="startup-flows" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">
             <h4 class="panel-title">
