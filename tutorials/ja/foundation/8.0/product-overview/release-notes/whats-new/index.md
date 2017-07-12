@@ -77,7 +77,7 @@ weight: 1
         <div id="collapse-mobilefirst-apis" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-apis">
             <div class="panel-body">
                 <p>新機能により、モバイル・アプリケーションの開発に使用できる API が改善および拡張されています。{{ site.data.keys.product }} の新機能、改善された機能、または変更された機能を利用するには、最新の API を使用してください。</p>
-                
+
                 <h3>JavaScript サーバー・サイド API の更新</h3>
                 <p>バックエンド呼び出し関数は、サポートされるアダプター・タイプのみでサポートされます。現在は、HTTP アダプターおよび SQL アダプターのみがサポートされているため、バックエンド呼び出し関数 <code>WL.Server.invokeHttp</code> および <code>WL.Server.invokeSQL</code> もサポートされています。</p>
 
@@ -86,10 +86,10 @@ weight: 1
 
                 <h4>セキュリティー用の新規 Java サーバー・サイド API</h4>
                 <p>新しいセキュリティー API パッケージ <code>com.ibm.mfp.server.security.external</code> と、それに格納されているパッケージには、セキュリティー検査およびセキュリティー検査コンテキストを使用するアダプターを開発するために必要なインターフェースが含まれています。</p>
-                
+
                 <h4>クライアント登録データ用の新規 Java サーバー・サイド API</h4>
                 <p>新しいクライアント登録データ API パッケージ <code>com.ibm.mfp.server.registration.external</code> と、それに格納されているパッケージには、永続的な {{ site.data.keys.product_adj }} クライアント登録データへのアクセスを提供するインターフェースが含まれています。</p>
-                
+
                 <h4>Application getJaxRsApplication()</h4>
                 <p>この新しい API を使用して、アダプターの JAX-RS アプリケーションを返すことができます。</p>
 
@@ -104,7 +104,7 @@ weight: 1
 
                 <h4>WLServerAPIProvider</h4>
                 <p>V7.0.0 および V7.1.0 では、Java API は WLServerAPIProvider インターフェースを通じてアクセス可能でした。例: <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> および <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code></p>
-                
+
                 <p>これらの静的インターフェースはまだサポートされ、この製品の以前のバージョンで開発されたアダプターをコンパイルおよびデプロイできるようになっています。プッシュ通知も以前のセキュリティー API も使用しない古いアダプターは、新しいバージョンでも引き続き機能します。プッシュ通知または以前のセキュリティー API を使用するアダプターは機能しません。</p>
 
                 <h3>Web アプリケーション用の JavaScript クライアント・サイド API</h3>
@@ -118,14 +118,14 @@ weight: 1
                 <h3>Android 向けの新規 Java クライアント・サイド API</h3>
                 <h4>public void getDeviceDisplayName(final DeviceDisplayNameListener listener);</h4>
                 <p>この新しいメソッドを使用して、{{ site.data.keys.mf_server }} 登録データからデバイスの表示名を取得できます。</p>
-                
+
                 <h4>public void setDeviceDisplayName(String deviceDisplayName,final WLRequestListener listener);</h4>
                 <p>この新しいメソッドを使用して、{{ site.data.keys.mf_server }} 登録データ内でデバイスの表示名を設定できます。</p>
 
                 <h3>iOS 向けの新規 Objective-C クライアント・サイド API</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
                 <p>この新しいメソッドを使用して、{{ site.data.keys.mf_server }} 登録データからデバイスの表示名を取得できます。</p>
-                
+
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>この新しいメソッドを使用して、{{ site.data.keys.mf_server }} 登録データ内でデバイスの表示名を設定できます。</p>
 
@@ -137,7 +137,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-security">
             <h4 class="panel-title">
@@ -151,9 +151,9 @@ weight: 1
 
                 <h3>セキュリティー・フレームワークの見直し</h3>
                 <p>{{ site.data.keys.product_adj }} セキュリティー・フレームワークは、セキュリティー開発と管理タスクを改善および簡素化するために、再設計されて再実装されました。フレームワークは基本的に OAuth モデルをベースとするようになり、実装はセッションに依存しません。『{{ site.data.keys.product_adj }} セキュリティー・フレームワークの概要』を参照してください。</p>
-                
+
                 <p>サーバー・サイドでは、フレームワークの複数のビルディング・ブロックが、セキュリティー検査 (アダプターで実装されている) に置き換えられ、新しい API を使用して容易に開発できるようになっています。実装のサンプルと、定義済みのセキュリティー検査が用意されています。『セキュリティー検査』を参照してください。アダプターを再デプロイしたりフローを中断したりしなくても、アダプター記述子内でセキュリティー検査を構成でき、ランタイム・アダプターまたはアプリケーション構成を変更してセキュリティー検査をカスタマイズすることができます。構成は、再設計された {{ site.data.keys.mf_console }} セキュリティー・インターフェースから実行できます。構成ファイルを手動で編集したり、{{ site.data.keys.mf_cli }} または mfpadm ツールを使用することもできます。</p>
-                
+
                 <h3>アプリケーション認証性セキュリティー検査</h3>
                 <p>{{ site.data.keys.product_adj }} のアプリケーション認証性の検証は、事前定義されたセキュリティー検査として実装されるようになりました。これが、以前の「拡張アプリケーション認証性チェック」に代わって使用されます。{{ site.data.keys.mf_console }} または mfpadm のいずれかを使用して、アプリケーション認証性の検証を動的に使用可能または使用不可にしたり構成したりすることができます。スタンドアロンの {{ site.data.keys.product_adj }} アプリケーション認証性 Java ツール (mfp-app-authenticity-tool.jar) が、アプリケーション認証性ファイルを生成するために提供されています。</p>
 
@@ -165,7 +165,7 @@ weight: 1
 
                 <h3>クロスプラットフォーム・アプリケーション (Cordova アプリケーション)、新規および変更されたセキュリティー機能</h3>
                 <p>Cordova アプリケーションの保護に役立つ追加的なセキュリティー機能が使用可能です。これらの機能には、以下のものが含まれます。</p>
-                
+
                 <ul>
                     <li>Web リソース暗号化: 誰かがパッケージを変更することのないように、この機能を使用して、Cordova パッケージ内の Web リソースを暗号化します。</li>
                     <li>Web リソースのチェックサム: この機能を使用して、アプリケーションの Web リソースの現在の統計と、それが最初に開いたときに設定されたベースライン統計を比較する、チェックサム・テストを実行します。このチェックは、アプリケーションがインストールされて開かれた後に、誰かがアプリケーションを変更しないようにするために役立ちます。</li>
@@ -173,7 +173,7 @@ weight: 1
                     <li>連邦情報処理標準 (FIPS) 140-2 のサポート: この機能を使用して、転送されるデータが確実に FIPS 140-2 暗号化標準に準拠するようにします。</li>
                     <li>OpenSSL: iOS プラットフォーム用の Cordova アプリケーションで OpenSSL データ暗号化および暗号化解除を使用するには、cordova-plugin-mfp-encrypt-utils Cordova プラグインを使用します。</li>
                 </ul>
-                
+
                 <h3>デバイスのシングル・サインオン</h3>
                 <p>新しい事前定義の <code>enableSSO</code> セキュリティー検査アプリケーション記述子構成プロパティーによってデバイス・シングル・サインオン (SSO) がサポートされるようになりました。</p>
 
@@ -184,10 +184,10 @@ weight: 1
                     <li>クライアント・アプリケーションが、保護されていないリソースにアクセスした場合、{{ site.data.keys.mf_server }} に使用可能な更新があっても、アプリケーションは更新を受け取りません。</li>
                     <li>アクティブ化された後は、保護リソースが要求されるたびに、ダイレクト・アップデートが適用されます。</li>
                 </ul>
-                
+
                 <h3>外部リソースの保護</h3>
                 <p>外部サーバーでリソースを保護するためにサポートされている方法および提供されている成果物が変更されました。</p>
-                
+
                 <ul>
                     <li>{{ site.data.keys.product_adj }} セキュリティー・フレームワークを使用して任意の外部 Java サーバー上のリソースを保護するために、構成可能な新しい {{ site.data.keys.product_adj }} Java トークン・バリデーター・アクセス・トークン検証モジュールが提供されています。このモジュールは、Java ライブラリー (mfp-java-token-validator-8.0.0.jar) として提供され、カスタム Java 検証モジュールを作成する際に、廃止された {{ site.data.keys.mf_server }} トークン検証エンドポイントの代わりに使用されます。</li>
                     <li>外部 WebSphere Application Server または WebSphere Application Server Liberty サーバー上の Java リソースを保護するための {{ site.data.keys.product_adj }} OAuth トラスト・アソシエーション・インターセプター (TAI) フィルターが、Java ライブラリー (com.ibm.imf.oauth.common_8.0.0.jar) として提供されるようになりました。このライブラリーでは、新しい Java トークン・バリデーター検証モジュールと、提供されている変更された TAI の構成を使用します。</li>
@@ -195,7 +195,7 @@ weight: 1
                     <li>外部 Node.js サーバーで Java リソースを保護するための passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js フレームワークは、新しいセキュリティー・フレームワークをサポートするように変更されました。</li>
                     <li>許可サーバーの新しいイントロスペクション・エンドポイントを使用する任意のタイプのリソース・サーバーに対して、独自のカスタム・フィルターおよび検証モジュールを作成することもできます。</li>
                 </ul>
-                
+
                 <h3>許可サーバーとしての WebSphere DataPower との統合</h3>
                 <p>デフォルトの {{ site.data.keys.mf_server }} 許可サーバーの代わりに、WebSphere DataPower を OAuth 許可サーバーとして選択できるようになりました。{{ site.data.keys.product_adj }} セキュリティー・フレームワークと統合するように DataPower を構成することができます。</p>
 
@@ -204,7 +204,7 @@ weight: 1
 
                 <h3>{{ site.data.keys.mf_console }} を使用したモバイル・アプリケーションの管理</h3>
                 <p>{{ site.data.keys.mf_console }} からのモバイル・アプリケーション、ユーザー、およびデバイスの追跡と管理のサポートに対して、変更が加えられました。デバイスまたはアプリケーションへのアクセスのブロックは、保護リソースにアクセスしようとした場合のみ適用されます。</p>
-                
+
                 <h3>{{ site.data.keys.mf_server }} 鍵ストア</h3>
                 <p>単一の {{ site.data.keys.mf_server }} 鍵ストアは、OAuth トークンおよびダイレクト・アップデート・パッケージへの署名と、相互 HTTPS (SSL) 認証に使用されます。{{ site.data.keys.mf_console }} または mfpadm のいずれかを使用して、この鍵ストアを動的に構成することができます。</p>
 
@@ -213,7 +213,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="os-support">
             <h4 class="panel-title">
@@ -242,7 +242,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="deploy-manage-apps">
             <h4 class="panel-title">
@@ -256,18 +256,18 @@ weight: 1
 
                 <h3>DevOps サポートの改善</h3>
                 <p>{{ site.data.keys.mf_server }} は、DevOps 環境のサポートを向上させるため、大幅に再設計されました。{{ site.data.keys.mf_server }} が、アプリケーション・サーバー環境に 1 度インストールされると、ユーザーがアプリケーションをアップロードするとき、または {{ site.data.keys.mf_server }} 構成を変更するときに、アプリケーション・サーバー構成への変更は必要ありません。</p>
-                
+
                 <p>アプリケーションまたはアプリケーションが依存するアダプターを更新したときに、{{ site.data.keys.mf_server }} を再始動する必要はありません。サーバーがまだトラフィックを処理している間に、構成操作を実行したり、新規バージョンのアダプターのアップロードまたは新規アプリケーションの登録を実行したりすることができます。</p>
 
                 <p>構成変更および開発操作は、セキュリティー・ロールによって保護されます。</p>
 
                 <p>さまざまな方法で開発成果物をサーバーにアップロードすることができ、操作の柔軟性が高まっています。</p>
-                
+
                 <ul>
                     <li>{{ site.data.keys.mf_console }} の機能拡張: 特に、これを使用してアプリケーションまたは新バージョンのアプリケーションを登録することで、アプリケーション・セキュリティー・パラメーターの管理、証明書のデプロイ、プッシュ通知タグの作成、およびプッシュ通知の送信を実行できます。コンソールには、コンテキスト・ヘルプ・ガイドも含まれるようになりました。</li>
                     <li>コマンド・ライン・ツール</li>
                 </ul>
-                
+
                 <p>サーバーにアップロードする開発成果物には、アダプター、アダプターの構成、アプリケーションのセキュリティー構成、プッシュ通知証明書、およびログ・フィルターが含まれます。</p>
 
                 <h3>IBM Bluemix で作成されたアプリケーションの {{ site.data.keys.product }} での実行</h3>
@@ -283,19 +283,19 @@ weight: 1
                     <li>アプリケーション記述子 JSON ファイルをデプロイすることによって、アプリケーションを {{ site.data.keys.mf_server }} に登録します。</li>
                     <li>ダイレクト・アップデートを使用して Cordova アプリケーションを更新するには、修正された Web リソースのアーカイブ (.zip ファイル) をサーバーにアップロードします。アーカイブ・ファイルには、旧バージョンの {{ site.data.keys.product }} では使用可能であった Web プレビュー・ファイルもスキンも含まれなくなりました。それらは廃止されました。アーカイブには、クライアントに送信された Web リソースと、ダイレクト・アップデートの検証用のチェックサムのみが含まれます。</li>
                 </ul>
-                
+
                 <p>エンド・ユーザーのデバイスにインストールされているクライアント Cordova アプリケーションのダイレクト・アップデートを有効にするには、変更された Web リソースをアーカイブ (.zip ファイル) としてサーバーにデプロイすることが必要になりました。セキュアなダイレクト・アップデートを有効にするには、ユーザー定義の鍵ストア・ファイルを {{ site.data.keys.mf_server }} にデプロイする必要があり、一致する公開鍵のコピーを、デプロイされたクライアント・アプリケーションに組み込む必要があります。</p>
 
                 <h3>アダプター</h3>
                 <h4>アダプターは Apache Maven プロジェクトです。</h4>
                 <p>アダプターは Maven プロジェクトとして扱われるようになりました。標準のコマンド・ライン Maven コマンドを使用して、または Maven をサポートする任意の IDE (Eclipse や IntelliJ など) を使用して、アダプターを作成、ビルド、およびデプロイすることができます。</p>
-    
+
                 <h4>DevOps 環境でのアダプターの構成およびデプロイメント</h4>
                 <ul>
                     <li>{{ site.data.keys.mf_server }} 管理者は、{{ site.data.keys.mf_console }} を使用してデプロイ済みのアダプターの動作を変更できるようになりました。再構成の後、変更は即時にサーバーに反映されます。アダプターを再デプロイしたり、サーバーを再始動したりする必要はありません。</li>
                     <li>アダプターを「ホット・デプロイ」できるようになりました。すなわち、{{ site.data.keys.mf_server }} がまだトラフィックを処理していても、アダプターを、実行時にデプロイ、アンデプロイ、および再デプロイできます。</li>
                 </ul>
-                
+
                 <h4>アダプター記述子ファイルの変更</h4>
                 <p><b>adapter.xml</b> 記述子ファイルは、若干変更されました。アダプターのアダプター記述子ファイルの構造について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">アダプターのチュートリアル (Adapters tutorials)</a>を参照してください。</p>
 
@@ -304,10 +304,10 @@ weight: 1
 
                 <h4>JavaScript アダプターのサポート</h4>
                 <p>JavaScript アダプターは、HTTP 接続タイプおよび SQL 接続タイプのみでサポートされます。</p>
-                
+
                 <h4>JAX-RS 2.0 のサポート</h4>
                 <p>JAX-RS 2.0 では、新しいサーバー・サイド機能を導入しています。サーバー・サイド非同期 HTTP、フィルター、およびインターセプターです。アダプターで、それらの新機能を利用できるようになりました。</p>
-                
+
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
                 <p>V8.0.0 用にリリースされた {{ site.data.keys.product }} on IBM Containers は、<a href="http://www-01.ibm.com/software/passportadvantage/">IBM パスポート・アドバンテージのサイト</a>で入手可能です。このバージョンの {{ site.data.keys.product }} on IBM Containers は、実稼働環境で使用でき、IBM Bluemix 上のエンタープライズ dashDB™ トランザクション・データベースをサポートします。</p>
 
@@ -320,7 +320,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-server">
             <h4 class="panel-title">
@@ -335,7 +335,7 @@ weight: 1
                 <p>新しい {{ site.data.keys.mf_server }} の設計では、2 つの新規コンポーネントを導入しています。{{ site.data.keys.mf_server }} ライブ・アップデート・サービスおよび {{ site.data.keys.mf_server }} 成果物です。</p>
 
                 <p>{{ site.data.keys.mf_server }} ライブ・アップデート・サービスは、アプリケーションのインクリメンタル更新にかかる時間とコストを削減できるように設計されています。アプリケーションとアダプターのサーバー・サイド構成データを管理および保管します。アプリケーションを再ビルドまたは再デプロイしながら、以下のようにアプリケーションのさまざまな部分を変更または更新することができます。</p>
-                
+
                 <ul>
                     <li>定義したユーザー・セグメントに基づいてアプリケーションの動作を動的に変更または更新する。</li>
                     <li>サーバー・サイドのビジネス・ロジックを動的に変更または更新する。</li>
@@ -353,9 +353,9 @@ weight: 1
                     <li>サーバー・ファームのインストール</li>
                     <li>{{ site.data.keys.mf_server }} のインストールについてのチュートリアル</li>
                 </ul>
-                    
+
                 <p>{{ site.data.keys.mf_server }} では、Liberty 集合もサポートします。サーバー・トポロジーおよび各種インストール方式について詳しくは、以下のトピックを参照してください。</p>
-                
+
                 <ul>
                     <li>Liberty 集合トポロジー</li>
                     <li>サーバー構成ツールの実行</li>
@@ -365,7 +365,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-analytics">
             <h4 class="panel-title">
@@ -406,7 +406,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-push">
             <h4 class="panel-title">
@@ -427,7 +427,7 @@ weight: 1
                     <li>モバイル・クライアント・アプリケーション</li>
                     <li>バックエンド・サーバー・アプリケーション</li>
                 </ul>
-                
+
                 <h3>プッシュ通知サービスのセキュリティー</h3>
                 <p>{{ site.data.keys.product }} 許可サーバーでは、OAuth プロトコルを適用して、プッシュ通知サービスを保護します。</p>
 
@@ -449,7 +449,7 @@ weight: 1
                     <li>Push Message (POST) REST API を使用する。すべての形式 (タグ、ブロードキャスト、および認証済み) の通知を送信できます。</li>
                     <li>{{ site.data.keys.mf_server }} 管理サービス用の REST API を使用する。すべての形式 (タグ、ブロードキャスト、および認証済み) の通知を送信できます。</li>
                 </ul>
-                
+
                 <h3>SMS 通知の送信</h3>
                 <p>ユーザー・デバイスにショート・メッセージ・サービス (SMS) 通知を送信するようにプッシュ・サービスを構成することができます。</p>
 
@@ -458,6 +458,19 @@ weight: 1
 
                 <h3>プッシュ・サービス・モデルが Windows Universal Platform アプリケーションでサポートされる</h3>
                 <p>プッシュ・サービス・モデルを使用してプッシュ通知を送信するように、ネイティブ Windows Universal Platform (UWP) アプリケーションをマイグレーションすることができるようになりました。</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-appcenter">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-appcenter" aria-expanded="true" aria-controls="collapse-mobilefirst-appcenter"> {{ site.data.keys.mf_app_center }} の新機能</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_app_center }} は現在 BYOL スクリプトを介して Bluemix (コンテナーをベースに) でサポートされています。</p>
             </div>
         </div>
     </div>

@@ -86,7 +86,7 @@ weight: 3
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. 将 {{ site.data.keys.product_adj }} UI 活动添加到现有 **activity** 元素旁：
 
    ```xml
@@ -98,7 +98,7 @@ weight: 3
 ### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: #manually-adding-the-mobilefirst-native-sdk }
 您还可以手动添加 {{ site.data.keys.product_adj }} SDK：
-  
+
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
@@ -110,12 +110,14 @@ weight: 3
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>要手动添加 {{ site.data.keys.product_adj }} SDK，请先通过 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡下载 SDK .zip 文件。在完成上面的步骤之后，也遵循下面的信息。</p>
-            
+
                 <ul>
                     <li>解压缩下载的 .zip 文件并将相关的 aar 文件放置到 <b>app\libs</b> 文件夹中。</li>
                     <li>将以下内容添加到 <b>dependencies</b> 结尾：
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>将以下内容添加到 <b>repositories</b> 结尾：
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>结束部分</b></a>
             </div>
@@ -182,12 +184,9 @@ WLClient.createInstance(this);
 
 | 属性            | 描述                                                         | 示例值 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | 与
-{{ site.data.keys.mf_server }}
-的通信协议。             | http 或 https  |
+| wlServerProtocol    | 与 {{ site.data.keys.mf_server }} 的通信协议。             | http 或 https  |
 | wlServerHost        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。
-                                 | 9080           |
+| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。                    | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }} 上的应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 

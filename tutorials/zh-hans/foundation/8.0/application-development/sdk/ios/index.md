@@ -73,6 +73,7 @@ pod 与核心函数和其他函数对应：
     **注：**这些命令可能需要几分钟完成。
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点**：从此时开始，使用 `[ProjectName].xcworkspace` 文件在 Xcode 中打开项目。请**勿**使用 `[ProjectName].xcodeproj` 文件。基于 CocoaPods 的项目将作为包含应用程序（可执行程序）和库（CocoaPods 管理器提取的所有项目依赖关系）的工作空间进行管理。
+    
 ### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: #manually-adding-the-mobilefirst-native-sdk }
 您还可以手动添加 {{ site.data.keys.product }} SDK：
@@ -90,7 +91,8 @@ pod 与核心函数和其他函数对应：
                 <p>要手动添加 {{ site.data.keys.product }} SDK，请先通过 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡下载 SDK .zip 文件。</p>
 
                 <ul>
-                    <li>在您的 Xcode 项目中，将 {{ site.data.keys.product }} 框架文件添加到您的项目。<ul>
+                    <li>在您的 Xcode 项目中，将 {{ site.data.keys.product }} 框架文件添加到您的项目。
+		    <ul>
                             <li>在 Project Explorer 中选择项目根图标。</li>
                             <li>选择<b>文件 → 添加文件</b>，然后浏览至包含先前已下载框架文件的文件夹。</li>
                             <li>单击<b>选项</b>按钮。</li>
@@ -98,7 +100,8 @@ pod 与核心函数和其他函数对应：
                             <b>注：</b>如果未选择<b>根据需要复制项目</b>选项，那么将不会复制框架文件，但会从其原始位置链接框架文件。</li>
                             <li>选择主要项目（第一个选项）并选择应用程序目标。</li>
                             <li>在<b>常规</b>选项卡中，移除自动添加到<b>已链接的框架和库</b>的任何框架。</li>
-                            <li>必需：在<b>嵌入式二进制文件</b>中，添加以下框架：<ul>
+                            <li>必需：在<b>嵌入式二进制文件</b>中，添加以下框架：
+			    <ul>
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
@@ -117,14 +120,16 @@ pod 与核心函数和其他函数对应：
                         </ul>
                     </li>
                     <li>在步骤 1 中添加的框架将自动添加到<b>构建阶段</b>选项卡中的<b>将二进制文件与库进行链接</b>部分。</li>
-                    <li><i>可选：</i>如果您没有按照先前所述将框架文件复制到项目中，请在<b>构建阶段</b>选项卡中使用<b>根据需要复制项目</b>选项执行以下步骤。<ul>
+                    <li><i>可选：</i>如果您没有按照先前所述将框架文件复制到项目中，请在<b>构建阶段</b>选项卡中使用<b>根据需要复制项目</b>选项执行以下步骤。
+		    <ul>
                             <li>打开<b>构建设置</b>页面。</li>
                             <li>查找<b>搜索路径</b>部分。</li>
                             <li>将包含框架的文件夹的路径添加到<b>框架搜索路径</b>文件夹。</li>
                         </ul>
                     </li>
                     <li>在<b>构建设置</b>选项卡的<b>部署</b>部分中，为 <b>iOS 部署目标</b>字段选择一个大于或等于 8.0 的值。</li>
-                    <li><i>可选：</i>从 Xcode 7 开始，将位码设置为缺省项。有关限制和需求，请参阅<a href="additional-information/#working-with-bitcode-in-ios-apps">在 iOS 应用程序中使用位码</a>。要禁用位码：<ul>
+                    <li><i>可选：</i>从 Xcode 7 开始，将位码设置为缺省项。有关限制和需求，请参阅<a href="additional-information/#working-with-bitcode-in-ios-apps">在 iOS 应用程序中使用位码</a>。要禁用位码：
+		    <ul>
                             <li>打开<b>构建选项</b>部分。</li>
                             <li>将<b>启用位码</b>设置为<b>否</b>。</li>
                         </ul>
@@ -197,13 +202,15 @@ import IBMMobileFirstPlatformFoundation
 
 ## 添加对 Apple watchOS 的支持
 {: #adding-support-for-apple-watchos}
-如果是为 Apple watchOS 2 和更高版本进行开发，那么 Podfile 必须包含与主要应用程序和 watchOS 扩展对应的部分。请参阅下面针对 watchOS 2 的示例：
+如果是为 Apple watchOS 2 和更高版本进行开发，那么 Podfile 必须包含与主要应用程序
+和 watchOS 扩展对应的部分。请参阅下面针对 watchOS 2 的示例：
 
 ```xml
 # Replace with the name of your watchOS application
 xcodeproj 'MyWatchApp'
 
 use_frameworks!
+
 #use the name of the iOS target
 target :MyWatchApp do
     platform :ios, 9.0
@@ -237,12 +244,9 @@ pod update
 
 | 属性            | 描述                                                         | 示例值 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | 与
-{{ site.data.keys.mf_server }}
-的通信协议。             | http 或 https  |
+| protocol    | 与 {{ site.data.keys.mf_server }} 的通信协议。             | http 或 https  |
 | host        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
-| port        | {{ site.data.keys.mf_server }} 的端口。
-                                 | 9080           |
+| port        | {{ site.data.keys.mf_server }} 的端口。 | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }} 上的应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 

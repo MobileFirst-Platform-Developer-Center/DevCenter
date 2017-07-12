@@ -102,7 +102,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
 </div>
 
 
-## {{ site.data.keys.mf_server }} einrichten
+## {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_app_center }} einrichten
 {: #setting-up-the-mobilefirst-server }
 Sie können die Scripts interaktiv ausführen oder die Konfigurationsdateien verwenden.
 Ein guter Ausgangspunkt ist die einmalige interaktive Ausführung der Scripts, wobei auch die Argumente erfasst werden (**recorded-args**). Später können Sie die Dateien mit den Argumenten verwenden, um die Scripts in einem nicht interkativen Modus auszuführen. 
@@ -113,6 +113,144 @@ Ein guter Ausgangspunkt ist die einmalige interaktive Ausführung der Scripts, w
 * Interaktiv: Führen Sie die Scripts ohne Argumente aus. 
 
 Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich wenigstens mit den Argumenten, die angegeben werden müssen, zu beschäftigen. 
+
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+
+>**Hinweis:** Sie können Installationsprogramme und Datenbanktools aus den lokalen Installationsordnern des {{ site.data.keys.mf_app_center }} (`installer` und `tools`) herunterladen.
+
+<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-foundation-1">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-1" aria-expanded="false" aria-controls="collapse-step-appcenter-1">Konfigurationsdateien verwenden</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+            Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Die leeren Schablonendateien und eine Erläuterung der Argumente finden Sie im Ordner <b>args</b> oder nach einer interaktiven Ausführung der Scripts im Ordner <b>recorded-args</b>. Es handelt sich um folgende Dateien:<br/>
+
+              <h4>initenv.properties</h4>
+              Diese Datei enhält Eigenschaften zum Ausführen der Umgebungsinitialisierung.
+              <h4>prepareappcenterdbs.properties</h4>
+              Das {{ site.data.keys.mf_app_center }} erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB-Enterprise-Transactional-Datenbankinstanz</a> (einen mit "OLTP" oder "Transactional" bezeichneten Plan).<br/>
+              <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt sofort, wenn die Pläne mit "pay as you go" gekennzeichnet sind. Vergewissern Sie sich, dass Sie einen passenden Plan ausgewählt haben, z. B. <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i>. <br/><br/>
+              Wenn Sie Ihre dashDB-Instanz eingerichtet haben, geben Sie die erforderlichen Argumente an. 
+
+              <h4>prepareappcenter.properties</h4>
+              Diese Datei wird für das Script prepareappcenter.sh verwendet. Sie erstellt das Application-Center-Dateilayout und überträgt es per Push-Operation als Cloud-Foundry-App in Bluemix.
+              <h4>startappcenter.properties</h4>
+              Diese Datei konfiguriert die Laufzeitattribute des Servers und startet den Server. Es wird dringend empfohlen, für die hohe Verfügbarkeit mindestens 1024 MB (<b>SERVER_MEM=1024</b>) und 3 Knoten (<b>INSTANCES=3</b>) zu verwenden. 
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-appcenter-2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-2" aria-expanded="false" aria-controls="collapse-step-appcenter-2">Scripts ausführen</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+            <div class="panel-body">
+              <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
+              <ol>
+                  <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
+                      Führen Sie das Script <b>initenv.sh</b> für die Anmeldung bei Bluemix aus. Führen Sie das Script für die Organisation und den Bereich aus, an die Ihr dashDB-Service gebunden ist:
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
+
+{% highlight bash %}
+initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organisationsname --space Bluemix-Bereichsname
+{% endhighlight %}
+
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+
+{% highlight bash %}
+./initenv.sh --help
+{% endhighlight %}
+                  </li>
+                  <li><b>prepareappcenterdbs.sh - Erstellung der MobileFirst-Application-Center-Datenbank</b><br />
+                  Das Script <b>prepareappcenterdbs.sh</b> wird verwendet, um Ihr {{ site.data.keys.mf_app_center }} mit dem dashDB-Datenbankservice oder einem zugänglichen DB2-Datenbankserver zu konfigurieren. Die DB2-Option kommt insbesondere infrage, wenn Sie Bluemix lokal in dem Rechenzentrum ausführen, in dem der DB2-Server installiert ist. Wenn Sie den dashDB-Service verwenden, muss die Instanz des dashDB-Service in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus:
+{% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
+{% endhighlight %}
+
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+
+{% highlight bash %}
+./prepareappcenterdbs.sh --help
+{% endhighlight %}
+
+                  </li>
+                  <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+                  </li>
+                  <li><b>prepareappcenter.sh - Erstellung des {{ site.data.keys.mf_app_center }}</b><br />
+                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich der Anmeldung zu sehen.<br/>
+
+
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+
+{% highlight bash %}
+prepareappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+
+{% highlight bash %}
+./prepareappcenter.sh --help
+{% endhighlight %}                  
+
+                  </li>
+                  <li><b>startappcenter.sh - Starten des {{ site.data.keys.mf_app_center }}</b><br />
+                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: <p/>
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+
+{% highlight bash %}
+./startappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+
+{% highlight bash %}
+./startappcenter.sh --help
+{% endhighlight %}   
+
+                  </li>
+              </ol>
+            </div>
+        </div>
+    </div>
+</div>
+Starten Sie die MobileFirst-Application-Center-Konsole über die URL `http://APP_HOST.mybluemix.net/appcenterconsole`. (Der Start kann eine Weile dauern.)    
+
+Mit dem in IBM Bluemix ausgeführten {{ site.data.keys.mf_app_center }} können Sie nun Ihre mobilen Apps in das Application Center hochladen. 
+
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
@@ -161,7 +299,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organisationsname --space Bluemix-Bereichsname
@@ -280,16 +418,31 @@ herstellen können soll, bearbeiten Sie die Datei **mfpfproperties.xml** im Ordn
 
 ## Fixes für {{ site.data.keys.mf_server }} anwenden
 {: #applying-mobilefirst-server-fixes }
+
 Vorläufige Fixes für {{ site.data.keys.mf_server }} in Bluemix können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.  
-Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den Ordnern unter
-**package_root/mfpf-server-libertyapp/usr**. 
+Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den
+folgenden Ordnern: 
+* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} (Liberty-Cloud-Foundry-Anwendung): **package_root/mfpf-server-libertyapp/usr**
+* {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter-libertyapp/usr**
 
-1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in
-Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben. 
-2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner unter **/mfpf-server-libertyapp/usr**. Dabei werden
-die neu installierten Konfigurationsdateien überschrieben. 
+### Anwendung des iFix:
 
-Jetzt können Sie den aktualisierten Server erstellen und implementieren. 
+1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben.
+2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **package_root/mfpf-analytics/usr**, **package_root/mfpf-server-libertyapp/usr** und **package_root/mfp-appcenter-libertyapp/usr**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
+3. Bearbeiten Sie die Datei **package_root/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie: 
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
+```
+    Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren. Führen Sie die folgenden Scripts erneut mit den gleichen Parametern aus.
+
+    a. `./prepareserver.sh` zum Hochladen der aktualisierten Artefakte in Bluemix 
+
+    b. `./startserver.sh` zum Starten des aktualisierten Servers
+
+    Eine Kopie der für die vorherige Implementierung verwendeten Argumente wurde im Verzeichnis `recorded-args/` gespeichert. Sie können diese Eigenschaften für Ihre Implementierung verwenden. 
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Datenbankservicekonfiguration aus Bluemix entfernen
 {: #removing-the-database-service-configuration-from-bluemix }
@@ -302,3 +455,5 @@ Sie können die Datenbankservicekonfiguration im Bluemix-Dashboard wie folgt ent
 2. Starten Sie die dashDB-Konsole, um mit den Schemata und Datenbankobjekten der ausgewählten dashDB-Serviceinstanz arbeiten zu können. 
 3. Wählen Sie Schemata für die Konfiguration von IBM {{ site.data.keys.mf_server }} aus. Die Schemanamen sind die, die Sie bei Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
 4. Untersuchen Sie die Schemanamen und die zugehörigen Objekte gründlich, bevor Sie die einzelnen Schemata löschen. Die Datenbankkonfigurationen wurden aus Bluemix entfernt.
+
+Wenn Sie während des Konfigurierens des {{ site.data.keys.mf_app_center }} das Script **prepareappcenterdbs.sh** ausführen, folgen Sie den oben beschriebenen Schritten, um die Datenbankservicekonfiguration aus Bluemix zu entfernen. 
