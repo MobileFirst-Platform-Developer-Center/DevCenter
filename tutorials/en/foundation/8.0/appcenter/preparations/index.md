@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-The Appcenter Installer application is used to install apps on mobile devices. You can generate this application by using either the provided Cordova or MobileFirst Studio projects, or use a pre-built version of the MobileFirst Studio project for Android, iOS, or Windows 8 Universal, directly.
+The Appcenter Installer application is used to install apps on mobile devices. You can generate this application by using either the provided Cordova, Visual Studio, MobileFirst Studio projects, or use a pre-built version of the MobileFirst Studio project for Android, iOS, or Windows 8 Universal, directly.
 
 #### Jump to
 {: #jump-to }
@@ -142,11 +142,11 @@ If you want to enable push notifications for application updates, you must first
 {: #windows-phone-8 }
 MobileFirst Studio generates a native Windows Phone 8 project in **IBMAppCenter/apps/AppCenter/windowsphone8/native**. The **AppCenter.csproj** file is in the windowsphone8/native folder. This file is the Visual Studio project that you must compile by using Visual Studio and the Windows Phone 8.0 SDK.
 
-The application is built with the Windows Phone 8.0 SDK so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
+The application is built with the [Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471) so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
 
-The installation of Visual Studio 2013 enables you to select the installation of the Windows Phone 8.0 SDK in addition to the 8.1 SDK. The Windows Phone 8.0 SDK is also available from [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk).
+The installation of Visual Studio 2013 enables you to select the installation of the Windows Phone 8.0 SDK in addition to the 8.1 SDK. The Windows Phone 8.0 SDK is also available from [Windows Phone SDK Archives](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive).
 
-See [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
+See [Windows Phone Dev Center](https://developer.microsoft.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
 
 #### Microsoft Windows 8: Building the project
 {: #microsoft-windows-8-building-the-project }
@@ -162,9 +162,29 @@ To build the Windows 8 project:
 
 To distribute the mobile client to your Application Center users, you can later generate an installer that will install the generated executable (.exe) file and its dependent Dynamic-Link Library (.dll) files. Alternatively, you can provide these files without including them in an installer.
 
+####  Microsoft Windows 10 Universal (Native) IBM AppCenter client
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
+
+The native Window 10 Universal IBM AppCenter client can be used to install Windows 10 Universal apps on Windows 10 phones. Use the **IBMApplicationCenterWindowsStore** for installing Windows 10 apps on Windows Desktop.
+
+#### Microsoft Windows 10 Universal: Building the project
+{: #microsoft-windows-10-universal-building-the-project}
+
+The Windows 10 Universal project is provided as a Visual Studio project located at **IBMAppCenterUWP\IBMAppCenterUWP.csproj**.             
+You must build the client project in Microsoft Visual Studio 2015 before you can distribute it.
+>Building the project is a prerequisite before you distribute it to your users
+
+To build the Windows 10 Universal project follow these steps:
+1.  Open the Visual Studio project file called **IBMAppCenterUWP\IBMAppCenterUWP.csproj**, in Microsoft Visual Studio 2015.
++ Perform a full build of the application.
++ Generate the **.appx** file using the following step:
+  * Right click on the project and select **Store → Create App Packages**.
+
 ## Customizing features (for experts): Android, iOS, Windows Phone)
 {: #customizing-features-for-experts-android-ios-windows-phone }
 You can customize features by editing a central property file and manipulating some other resources.
+>This is only supported in Android, iOS, Windows 8 (Windows Store packages only), or Windows Phone 8.
+
 
 To customize features: several features are controlled by a central property file called **config.json** in the directory **IBMAppCenter/apps/AppCenter/common/js/appcenter/** or **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter**. If you want to change the default application behavior, you can adapt this property file before you build the project.
 
@@ -179,8 +199,8 @@ This file contains the properties shown in the following table.
 | allowDowngrade | This property indicates whether installation of older versions is authorized or not; an older version can be installed only if the operating system and version permit downgrade. |
 | showPreviousVersions | This property indicates whether the device user can show the details of all the versions of applications or only details of the latest version. |
 | showInternalVersion | This property indicates whether the internal version is shown or not. If the value is false, the internal version is shown only if no commercial version is set. |
-| listItemRenderer | This property can have one of these values:<ul><li>full, the default value; the application lists show application name, rating, and latest version.</li><li>simple: the application lists show the application name only.</li></ul> |
-| listAverageRating | This property can have one of these values:<ul><li>latestVersion: the application lists show the average rating of the latest version of the application.</li><li>allVersions: the application lists show the average rating of all versions of the application.</li></ul> |
+| listItemRenderer | This property can have one of these values: <br/>- **full**: the default value; the application lists show application name, rating, and latest version.<br/>- **simple**: the application lists show the application name only. |
+| listAverageRating | This property can have one of these values: <br/>-  **latestVersion**: the application lists show the average rating of the latest version of the application.<br/>-  **allVersions**: the application lists show the average rating of all versions of the application. |
 | requestTimeout | This property indicates the timeout in milliseconds for requests to the Application Center server. |
 | gcmProjectId | The Google API project ID (project name = com.ibm.appcenter), which is required for Android push notifications; for example, 123456789012. |
 | allowAppLinkReview | This property indicates whether local reviews of applications from external application stores can be registered and browsed in the Application Center. These local reviews are not visible in the external application store. These reviews are stored in the Application Center server. |
@@ -194,12 +214,16 @@ Other resources that are available are application icons, application name, spla
 * **Android:** The file named **icon.png** in the Android Studio project's **/res/drawabledensity** directories; one directory exists for each density.
 * **iOS:** Files named **iconsize.png** in the Xcode project's **Resources** directory.
 * **Windows Phone:** Files named **ApplicationIcon.png**, **IconicTileSmallIcon.png**, and **IconicTileMediumIcon.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
+* **Windows 10 Universal:** Files named **Square\*Logo\*.png**, **StoreLogo.png**, and **Wide\*Logo\*.png** in the **IBMAppCenterUWP/Assets** directory in Visual Studio.
+
 
 #### Application name
 {: #application-name }
 * **Android:** Edit the **app_name** property in the Android Studio project's **res/values/strings.xml** file.
 * **iOS:** Edit the **CFBundleDisplayName** key in the Xcode project's **IBMAppCenterAppCenterIphone-Info.plist** file.
 * **Windows Phone:** Edit the **Title** attribute of the App entry in the Visual Studio's **Properties/WMAppManifest.xml** file.
+* **Windows 10 Universal:** Edit the **Title** attribute of the App entry in the Visual Studio’s **IBMAppCenterUWP/Package.appxmanifest** file.
+
 
 #### Splash screen images
 {: #splash-screen-images }
@@ -207,6 +231,7 @@ Other resources that are available are application icons, application name, spla
 * **iOS:** Files named **Default-size.png** in the Xcode project's **Resources** directory.
 * Cordova/MobileFirst Studio based projects' splash screen during auto login: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Edit the file named **SplashScreenImage.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
+* **Windows 10 Universal:** Edit the files named **SplashScreen*.png** in the **IBMAppCenterUWP/Assets** directory in Visual Studio.
 
 #### Icons (buttons, stars, and similar objects) of the application
 {: #icons }
@@ -222,6 +247,6 @@ Deploy the different versions of the client application to Application Center.
 
 The Windows 8 mobile client is not intended to be deployed in Application Center for later distribution. You can choose to distribute the Windows 8 mobile client either by providing users with the client .exe executable file and dynamic link library .dll files directly packaged in an archive, or by creating an executable installer for the Windows 8 mobile client.
 
-The Android, iOS, and Windows Phone versions of the mobile client must be deployed to the Application Center. To do so, you must upload the Android application package (.apk) files, iOS application (.ipa) files, and Windows Phone application (.xap) files, Web directory archive (.zip) files to the Application Center.
+The Android, iOS, Windows Phone, and Windows 10 Universal (Phone) versions of the mobile client must be deployed to the Application Center. To do so, you must upload the Android application package (.apk) files, iOS application (.ipa) files, Windows Phone application (.xap) files, Windows 10 universal (.appx) files, or Web directory archive (.zip) files to the Application Center.
 
-Follow the steps described in [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) to add the mobile client application for Android, iOS, and Windows Phone. Make sure that you select the Installer application property to indicate that the application is an installer. Selecting this property enables mobile device users to install the mobile client application easily over the air. To install the mobile client, see the related task that corresponds to the version of the mobile client app determined by the operating system.
+Follow the steps described in [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) to add the mobile client application for Android, iOS, Windows Phone, and Windows 10 Universal. Make sure that you select the Installer application property to indicate that the application is an installer. Selecting this property enables mobile device users to install the mobile client application easily over the air. To install the mobile client, see the related task that corresponds to the version of the mobile client app determined by the operating system.

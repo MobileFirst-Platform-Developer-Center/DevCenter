@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Live Update
-relevantTo: [ios,android]
+relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - name: Download Xcode project
@@ -16,7 +16,7 @@ downloads:
 {: #overview }
 User segmentation is the practice of dividing users into groups that reflect similarity among users in each group. A common example is [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), that is, dividing users on a geographical basis. The goal of segmenting users is to decide how to relate to them in each segment in order to maximize value.
 
-The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
+The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** and for Cordova applications) for consuming the configuration.
 
 #### Common Use Cases
 {: #common-use-cases }

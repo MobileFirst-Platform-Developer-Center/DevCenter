@@ -88,7 +88,7 @@ title: Support for MobileFirst Foundation
                     </ul>
                     <br/>
                     <p><b>Note: </b>The <code>-dd</code> flag is preferred, if it is available for the version being used.</p>
-                    
+
                     <table class="table table-striped">
                         <tr>
                             <td>Version</td>
@@ -197,14 +197,14 @@ title: Support for MobileFirst Foundation
                             </div>
                             <div id="accordion2-collapseSection1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section1">
                                 <div class="panel-body">
-                                    <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info :com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
+                                    <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info:com.ibm.mfp.*=all:com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
                                 <blockquote><b>Note:</b> For Worklight 6.1 and earlier just use <code>*=info:com.worklight.*=all</code></blockquote>
                                 <p>For instructions on enabling and collecting trace for WebSphere Application Server Liberty profile, see the <a href="http://www.ibm.com/support/docview.wss?uid=swg21596714">Setting up trace and getting a full dump in the WebSphere Application Server V8.5 Liberty profile</a> topic.</p>
                                 <ul>
                                     <li>For <b>Application Center</b> add the following to the trace: <code>com.ibm.puremeap.*=all</code></li>
                                     <li>For <b>Analytics</b> add the following to the trace: <code>com.ibm.mobile.analytics.*=all</code></li>
                                     <li>For problems with <b>push notifications for Worklight 6.2 to MobileFirst Platform Foundation 7.1</b>, add the following to the trace: <code>com.ibm.pushworks.server.*=all</code></li>
-                                    <li>For problems with <b>{{ site.data.keys.product }} 8.0</b>, add the following to the trace: <code>com.ibm.mfp.push.server.=all</code>.</li>
+                                    <li>For problems with <b>push notifications for {{ site.data.keys.product }} 8.0</b>, add the following to the trace: <code>com.ibm.mfp.push.server.*=all</code>.</li>
                                     <li>If the <b>WebSphere Application Server Liberty profile was installed by the Worklight 5.x</b> installer:
                                         <ul>
                                             <li>For Unix-based or Linux operating systems:
@@ -245,13 +245,14 @@ title: Support for MobileFirst Foundation
                         </div>
                         <div id="accordion2-collapseSection2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="section2">
                             <div class="panel-body">
-                                <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info:com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
+                                <p>If the performance impact to your environment is not too severe, you can collect the trace for <code>*=info:com.ibm.mfp.*=all:com.worklight.*=all:com.ibm.worklight.*=all</code> while recreating the problem.</p>
                             <blockquote><b>Note:</b> For Worklight 6.1 and earlier just use <code>*=info:com.worklight.*=all</code></blockquote>
                             <p>For instructions on enabling and collecting trace for WebSphere Application Server, see the <a href="http://www.ibm.com/support/docview.wss?uid=swg21254706">Setting up a trace</a> topic.</p>
                             <ul>
                                 <li>For Application Center add the following to the trace: <code>com.ibm.puremeap.*=all</code></li>
                                 <li>For Analytics add the following to the trace: <code>com.ibm.mobile.analytics.*=all</code></li>
-                                <li>For problems with push notifications for Worklight 6.2 and later, add the following to the trace: <code>com.ibm.pushworks.server.*=all</code></li>
+                                <li>For problems with <b>push notifications for Worklight 6.2 to MobileFirst Platform Foundation 7.1</b>, add the following to the trace: <code>com.ibm.pushworks.server.*=all</code></li>
+                                <li>For problems with <b>push notifications for {{ site.data.keys.product }} 8.0</b>, add the following to the trace: <code>com.ibm.mfp.push.server.*=all</code>.</li>
                                 <li>Collect the files and directories in the <b>install_dir/profiles/server_profile/logs</b> directory. If you are running in a server farm environment, collect the logs directory for each server.</li>
                                 <li>Collect the files and directories in the <b>install_dir/profiles/server_profile/config</b> directory.</li>
                             </ul>
