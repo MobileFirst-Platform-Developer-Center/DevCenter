@@ -98,7 +98,7 @@ The granted access token remains valid until its expiration time elapses. The ac
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Access-token response structure</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Access-token response structure</b></a>
             </h4>
         </div>
 
