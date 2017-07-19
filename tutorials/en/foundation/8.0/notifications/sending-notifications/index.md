@@ -139,7 +139,7 @@ Map the **push.mobileclient** scope element to the application.
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
