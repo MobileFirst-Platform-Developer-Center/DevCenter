@@ -55,8 +55,8 @@ To setup FCM:
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
 
 * Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
-* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
-* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
+* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230.
+* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169.
 * Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to android.googleapis.com on port 443.
 
 <img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
@@ -131,7 +131,7 @@ Map the **push.mobileclient** scope element to the application.
 1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
@@ -233,7 +233,7 @@ Map the **push.mobileclient** scope element to the security check used for the a
 2. Select a security check. Then, click **Add**.
 
     <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
-    
+
 ## Defining Tags
 {: #defining-tags }
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags**, click **New**.  
@@ -256,7 +256,7 @@ Notifications can be sent to a single Device ID, a single or several User IDs, o
 
 #### Tag notifications
 {: #tag-notifications }
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
 
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
@@ -275,7 +275,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Sen
 When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
 To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+Example URL:
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
@@ -285,7 +285,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 #### Notification payload
 {: #notification-payload }
-The request can contain the following payload properties: 
+The request can contain the following payload properties:
 
 Payload Properties| Definition
 --- | ---
@@ -352,12 +352,12 @@ For testing purposes, Postman is used as described below:
 
 1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
     Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
-    
+
     <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
 
 2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
-    
-    
+
+
 3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
     - If using a remote {{ site.data.keys.product_adj }}, replace the `hostname` and `port` values with your own.
     - Update the application identifier value with your own.
@@ -365,7 +365,7 @@ For testing purposes, Postman is used as described below:
 4. Set a Header:
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - Replace the value after "Bearer" with the value of your access token from step (1) above.
-    
+
     ![authorization header](postman_authorization_header.png)
 
 5. Set a Body:
@@ -379,9 +379,9 @@ For testing purposes, Postman is used as described below:
         }
    }
    ```
-    
+
    ![authorization header](postman_json.png)
-    
+
 After clicking on the **Send** button, the device should have now received a notification:
 
 ![Image of the sample application](notifications-app.png)
