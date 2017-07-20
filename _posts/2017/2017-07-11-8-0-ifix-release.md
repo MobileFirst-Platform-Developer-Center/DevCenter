@@ -17,10 +17,10 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **July 10th, 
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
 ### Adapters for building a cognitive app
-With this iFix, Mobile Foundation has introduced pre-built adapters for Watson Cognitive Services such as _**Watson Conversation**_, _**Discovery**_, and  _**Natural Language Understanding**_. These adapters are available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
+With this iFix, Mobile Foundation has introduced pre-built adapters for Watson Cognitive Services such as [_**WatsonConversation**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/WatsonConversation.adapter), [_**WatsonDiscovery**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/WatsonDiscovery.adapter), and  [_**WatsonNLU (Natural Language Understanding)**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/WatsonNLU.adapter). These adapters are available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
 
 ### OpenWhisk adapter for building a serverless app
-With this iFix, Mobile Foundation has introduced a pre-built adapter for the [OpenWhisk Platform](https://console.bluemix.net/openwhisk/). The adapter is available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
+With this iFix, Mobile Foundation has introduced a pre-built adapter called [_**OpenWhisk adapter**_]("https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/OpenWhisk.adapter) for the [OpenWhisk Platform](https://console.bluemix.net/openwhisk/). The adapter is available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
 
 ### APARs Fixed
 
