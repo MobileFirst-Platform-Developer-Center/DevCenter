@@ -89,7 +89,7 @@ The archive file contains the files for building an image (**dependencies** and 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
             </h4>
         </div>
 
@@ -316,7 +316,7 @@ If you intend to use {{ site.data.keys.mf_app_center }} start here.
             </h4>
         </div>
 
-        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
               <h4>initenv.properties</h4>
@@ -368,7 +368,7 @@ If you intend to use {{ site.data.keys.mf_app_center }} start here.
             </h4>
         </div>
 
-        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
                 <ol>
@@ -717,7 +717,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
             <b>Note:</b> We only include the required arguments. To learn about the additional arguments, see the documentation inside the properties files.
@@ -759,7 +759,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
                 <ol>
@@ -1072,7 +1072,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
 
@@ -1127,7 +1127,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
 
