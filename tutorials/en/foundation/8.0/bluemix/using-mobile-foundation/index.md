@@ -53,8 +53,8 @@ To set up the available plans, first follow these steps:
 ### Setting up the *developer* plan
 {: #setting-up-the-developer-plan }
 
-Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }} instance.
-  * You can instantly access and work with the {{ site.data.keys.mf_server }} instance.
+Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }}.
+  * You can instantly access and work with the {{ site.data.keys.mf_server }}.
   * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the Bluemix console.
 
   ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
