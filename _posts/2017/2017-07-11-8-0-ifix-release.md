@@ -20,7 +20,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **July 10th, 
 With this iFix, Mobile Foundation has introduced pre-built adapters for Watson Cognitive Services such as [_**WatsonConversation**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/WatsonConversation.adapter), [_**WatsonDiscovery**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/WatsonDiscovery.adapter), and  [_**WatsonNLU (Natural Language Understanding)**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/WatsonNLU.adapter). These adapters are available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
 
 ### OpenWhisk adapter for building a serverless app
-With this iFix, Mobile Foundation has introduced a pre-built adapter called [_**OpenWhisk adapter**_]("https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/OpenWhisk.adapter) for the [OpenWhisk Platform](https://console.bluemix.net/openwhisk/). The adapter is available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
+With this iFix, Mobile Foundation has introduced a pre-built adapter called [_**OpenWhisk adapter**_](https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/OpenWhisk.adapter) for the [OpenWhisk Platform](https://console.bluemix.net/openwhisk/). The adapter is available to be downloaded and deployed from the **Download Center** in the Mobile Foundation Console.
 
 ### APARs Fixed
 
