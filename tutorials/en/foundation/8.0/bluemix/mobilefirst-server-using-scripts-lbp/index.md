@@ -255,15 +255,15 @@ With {{ site.data.keys.mf_app_center }} running on IBM Bluemix, you can now uplo
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2-mf" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step-foundation-1">
+        <div class="panel-heading" role="tab" id="step-foundation-1-mf">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-1-mf" aria-expanded="false" aria-controls="collapse-step-foundation-1-mf">Using the configuration files</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. You can find the empty template files and the explanation of the arguments in the <b>args</b> folder, or after running the scripts interactively in the <b>recorded-args</b> folder. Following are the files:<br/>
 
@@ -286,7 +286,7 @@ With {{ site.data.keys.mf_app_center }} running on IBM Bluemix, you can now uplo
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
             </h4>
         </div>
 
