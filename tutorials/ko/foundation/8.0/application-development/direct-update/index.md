@@ -60,7 +60,7 @@ download:
 
 직접 업데이트를 수행한 후에는 애플리케이션에서 미리 패키지된 웹 자원을 더 이상 사용하지 않습니다. 대신 애플리케이션의 샌드박스에서 다운로드된 웹 자원을 사용합니다. 디바이스에서 애플리케이션의 캐시가 지워지면 원래 패키지된 자원이 다시 사용됩니다. 
 
-![직접 업데이트 작업 방식의 다이어그램](internal_function.jpg)
+![직접 업데이트 작업 방식의 다이어그램(internal_function.jpg)
 
 ### 버전화
 {: #versioning }
@@ -98,7 +98,7 @@ download:
  2. {{ site.data.keys.mf_console }}을 로드하고 애플리케이션 항목을 클릭하십시오. 
  3. **웹 자원 파일 업로드**를 클릭하고 패키지된 웹 자원을 업로드하십시오. 
 
-    ![콘솔에서 직접 업데이트 .zip 파일 업로드](upload-direct-update-package.png)
+    ![콘솔에서 직접 업데이트 .zip 파일 업로드(upload-direct-update-package.png)
 
 > 자세히 알아보려면 `mfpdev help app webupdate` 명령을 실행하십시오. 
 
@@ -106,7 +106,7 @@ download:
 {: #user-experience }
 기본적으로 직접 업데이트를 수신한 후에 대화 상자가 표시되고 사용자에게 업데이트 프로세스를 시작할지 여부를 묻습니다. 사용자가 승인하면 진행 표시줄 대화 상자가 표시되고 웹 자원이 다운로드됩니다. 애플리케이션은 업데이트가 완료된 후에 자동으로 다시 로드됩니다. 
 
-![직접 업데이트 예제](direct-update-flow.png)
+![직접 업데이트 예제(direct-update-flow.png)
 
 ## 직접 업데이트 UI 사용자 정의
 {: #customizing-the-direct-update-ui }
@@ -127,7 +127,7 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 이 함수는 기본 직접 업데이트 디자인(직접 업데이트를 사용할 수 있는 경우 표시되는 기본 메시지 대화 상자 및 직접 업데이트 프로세스가 시작되면 표시되는 기본 진행상태 화면)을 제공합니다. 사용자 정의 직접 업데이트 사용자 인터페이스 동작을 구현하거나 이 함수를 대체하고 고유 로직을 구현하여 직접 업데이트 대화 상자를 사용자 정의할 수 있습니다. 
 
 <img alt="사용자 정의 직접 업데이트 대화 상자의 이미지" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
-아래 예제 코드에서 `handleDirectUpdate` 함수는 직접 업데이트 대화 상자에서 사용자 정의 메시지를 구현합니다. Cordova 프로젝트의 **www/js/index.js** 파일에 이 코드를 추가하십시오.   
+아래 예제 코드에서 `handleDirectUpdate` 함수는 직접 업데이트 대화 상자에서 사용자 정의 메시지를 구현합니다. Cordova 프로젝트의 **www/js/index.js** 파일에 이 코드 추가  
 사용자 정의 직접 업데이트 UI의 추가 예제:
 
 - 써드파티 JavaScript 프레임워크(예: Dojo 또는 jQuery Mobile, Ionic 등)를 사용하여 작성되는 대화 상자

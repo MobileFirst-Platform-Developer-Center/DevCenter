@@ -45,7 +45,7 @@ weight: 9
 2. 从导航侧边栏中选择应用程序，然后单击**真实性**菜单项。
 3. 切换**状态**框中的**开启/关闭**按钮。
 
-![启用应用程序真实性](enable_application_authenticity.png)
+![启用应用程序真实性(enable_application_authenticity.png)
 
 ### 禁用应用程序真实性
 {: #disabling-application-authenticity }
@@ -71,7 +71,7 @@ weight: 9
 
 3. 设置新值（秒）。
 
-![在控制台中配置 expirationSec 属性](configuring_expirationSec.png)
+![在控制台中配置 expirationSec 属性(configuring_expirationSec.png)
 
 ## 构建时密钥 (BTS)
 {: #bts }
@@ -107,7 +107,7 @@ weight: 9
 要在验证类型之间切换，请使用 [**mfpadm** CLI](../../administering-apps/using-cli/) 运行以下命令：
 
 ```bash
-app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
 ```
 `TYPE` 可以是 `dynamic` 或 `static`。
 

@@ -5,12 +5,204 @@
 		<title>OCLogger Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesPrint.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
 		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
-		
-		
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Objective-C client-side API for iOS apps </a></h1>
+				<a id="developerHome" href="../index.html">IBM</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">OCLogger Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/getCapture">&nbsp;&nbsp;&nbsp;&nbsp;+ getCapture</option>
+	
+	<option value="//api/name/getFilters">&nbsp;&nbsp;&nbsp;&nbsp;+ getFilters</option>
+	
+	<option value="//api/name/getInstanceWithPackage:">&nbsp;&nbsp;&nbsp;&nbsp;+ getInstanceWithPackage:</option>
+	
+	<option value="//api/name/getLevel">&nbsp;&nbsp;&nbsp;&nbsp;+ getLevel</option>
+	
+	<option value="//api/name/getMaxFileSize">&nbsp;&nbsp;&nbsp;&nbsp;+ getMaxFileSize</option>
+	
+	<option value="//api/name/isUnCaughtExceptionDetected">&nbsp;&nbsp;&nbsp;&nbsp;+ isUnCaughtExceptionDetected</option>
+	
+	<option value="//api/name/send">&nbsp;&nbsp;&nbsp;&nbsp;+ send</option>
+	
+	<option value="//api/name/sendIfUnCaughtExceptionDetected">&nbsp;&nbsp;&nbsp;&nbsp;+ sendIfUnCaughtExceptionDetected</option>
+	
+	<option value="//api/name/sendWithDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;+ sendWithDelegate:</option>
+	
+	<option value="//api/name/setAutoSendLogs:">&nbsp;&nbsp;&nbsp;&nbsp;+ setAutoSendLogs:</option>
+	
+	<option value="//api/name/setCapture:">&nbsp;&nbsp;&nbsp;&nbsp;+ setCapture:</option>
+	
+	<option value="//api/name/setFilters:">&nbsp;&nbsp;&nbsp;&nbsp;+ setFilters:</option>
+	
+	<option value="//api/name/setLevel:">&nbsp;&nbsp;&nbsp;&nbsp;+ setLevel:</option>
+	
+	<option value="//api/name/setMaxFileSize:">&nbsp;&nbsp;&nbsp;&nbsp;+ setMaxFileSize:</option>
+	
+	<option value="//api/name/updateConfigFromServer">&nbsp;&nbsp;&nbsp;&nbsp;+ updateConfigFromServer</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/debug:">&nbsp;&nbsp;&nbsp;&nbsp;- debug:</option>
+	
+	<option value="//api/name/error:">&nbsp;&nbsp;&nbsp;&nbsp;- error:</option>
+	
+	<option value="//api/name/fatal:">&nbsp;&nbsp;&nbsp;&nbsp;- fatal:</option>
+	
+	<option value="//api/name/info:">&nbsp;&nbsp;&nbsp;&nbsp;- info:</option>
+	
+	<option value="//api/name/log:">&nbsp;&nbsp;&nbsp;&nbsp;- log:</option>
+	
+	<option value="//api/name/logWithLevel:message:args:userInfo:">&nbsp;&nbsp;&nbsp;&nbsp;- logWithLevel:message:args:userInfo:</option>
+	
+	<option value="//api/name/metadata:debug:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:debug:</option>
+	
+	<option value="//api/name/metadata:error:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:error:</option>
+	
+	<option value="//api/name/metadata:fatal:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:fatal:</option>
+	
+	<option value="//api/name/metadata:info:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:info:</option>
+	
+	<option value="//api/name/metadata:log:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:log:</option>
+	
+	<option value="//api/name/metadata:trace:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:trace:</option>
+	
+	<option value="//api/name/metadata:warn:">&nbsp;&nbsp;&nbsp;&nbsp;- metadata:warn:</option>
+	
+	<option value="//api/name/trace:">&nbsp;&nbsp;&nbsp;&nbsp;- trace:</option>
+	
+	<option value="//api/name/warn:">&nbsp;&nbsp;&nbsp;&nbsp;- warn:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getCapture">getCapture</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getFilters">getFilters</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getInstanceWithPackage:">getInstanceWithPackage:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getLevel">getLevel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getMaxFileSize">getMaxFileSize</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isUnCaughtExceptionDetected">isUnCaughtExceptionDetected</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/send">send</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendIfUnCaughtExceptionDetected">sendIfUnCaughtExceptionDetected</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendWithDelegate:">sendWithDelegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAutoSendLogs:">setAutoSendLogs:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCapture:">setCapture:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFilters:">setFilters:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setLevel:">setLevel:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setMaxFileSize:">setMaxFileSize:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateConfigFromServer">updateConfigFromServer</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debug:">debug:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error:">error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/fatal:">fatal:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/info:">info:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/log:">log:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logWithLevel:message:args:userInfo:">logWithLevel:message:args:userInfo:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:debug:">metadata:debug:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:error:">metadata:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:fatal:">metadata:fatal:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:info:">metadata:info:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:log:">metadata:log:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:trace:">metadata:trace:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/metadata:warn:">metadata:warn:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/trace:">trace:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/warn:">warn:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
 				<a title="OCLogger Class Reference" name="top"></a>
@@ -1809,11 +2001,101 @@ This method also attaches a dictionary of user information to the log message th
 				<div id="footer">
 					<hr />
                     <div class="footer-copyright">
-                        <p><span class="copyright">&copy; Copyright IBM Corp. 2016</span></p><br />
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2017</span></p><br />
                     </div>
 				</div>
 			</div>
 		</article>
-		
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
 	</body>
 </html>

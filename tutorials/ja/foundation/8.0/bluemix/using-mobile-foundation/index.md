@@ -86,7 +86,6 @@ weight: 1
 
 ## {{ site.data.keys.mf_bm_short }} サービスの使用
 {: #using-the-mobile-foundation-service }
-> **注:** 分析サービスは、現時点では **Dallas** リージョンおよび **UK** リージョンのみで使用できます。
 
 今、{{ site.data.keys.mf_server }} は実行中です。次のようなダッシュボードが示されます。
 
@@ -125,10 +124,10 @@ weight: 1
 
 ## {{ site.data.keys.mf_analytics_short }} サポートの追加
 {: #adding-analytics-support }
-サービスの「ダッシュボード」ページから**「Analytics の追加」**をクリックすることで、{{ site.data.keys.mf_analytics }} サポートを {{ site.data.keys.mf_bm_short }} サービス・インスタンスに追加できます。このアクションにより、{{ site.data.keys.mf_analytics_server }} のインスタンスが含まれた IBM Containers がプロビジョンされます。
+サービスの「ダッシュボード」ページから**「Analytics の追加」**をクリックすることで、{{ site.data.keys.mf_analytics }} サポートを {{ site.data.keys.mf_bm_short }} サービス・インスタンスに追加できます。このアクションにより、{{ site.data.keys.mf_analytics }} のインスタンスが含まれた IBM Containers がプロビジョンされます。
 
 * **開発者**プランを使用している場合は、このアクションにより {{ site.data.keys.mf_analytics_short }} サービス・インスタンスも自動的に {{ site.data.keys.mf_server }} インスタンスにフックされます。  
-* **開発者商用**、**容量ごとの商用**、**1 つの商用アプリケーション**のいずれかのプランを使用している場合は、このアクションにより、使用可能ノードの総量、使用可能メモリー、およびストレージ・ボリュームを選択するための追加入力が必要になります。
+* **開発者商用**、**容量ごとの商用**、**1 つの商用アプリケーション**のいずれかのプランを使用している場合は、このアクションにより、使用可能ノードの総量、使用可能メモリー、およびストレージ・ボリュームを選択するための追加入力が必要になります。 
 
 操作が完了したら、ブラウザー上で {{ site.data.keys.mf_console }} ページを再ロードして {{ site.data.keys.mf_analytics_console_short }} にアクセスします。  
 
@@ -163,7 +162,7 @@ weight: 1
 * 次のようなサーバー・サイド・アクションを行うたび:
     * アダプターのデプロイや、アダプターの何らかの構成またはプロパティー値の更新
     * スコープ・マッピングのような、何らかのセキュリティー構成の実行
-    
+
     コマンド・ラインから次のコマンドを実行して、構成を .zip ファイルとしてダウンロードします。
 
   ```bash

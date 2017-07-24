@@ -28,8 +28,8 @@ Folgende Plug-ins sind verfügbar:
 Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterstützt: 
 
 * cordova-ios: **>= 4.1.1 und < 5.0**
-* cordova-android: **>= 5.1.1 und < 6.0**
-* cordova-windows: **>= 4.3.2 und < 5.0**
+* cordova-android: **>= 6.1.2 und < 7.0**
+* cordova-windows: **>= 4.3.2 und < 6.0**
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -107,7 +107,7 @@ die für die {{ site.data.keys.product_adj }}-Anwendungsentwicklung konzipiert i
 
 #### Neue Anwendung
 {: #new-application }
-1. Erstellen Sie mit folgendem Befehl ein Cordova-Projekt: `cordova create projectName applicationId --template cordova-template-mfp`.
+1. Erstellen Sie mit folgendem Befehl ein Cordova-Projekt: `cordova create projectName applicationId applicationName --template cordova-template-mfp`.
      
 Beispiel: 
 
