@@ -65,11 +65,11 @@ weight: 3
 <li>Copy the <code>worklight-android.jar</code>, <code>uicandroid.jar</code>, <code>bcprov.jar</code>, and <code>android-async-http.jar</code> files from the generated NativeAPI folder to the new native Android application, in the <code>/libs</code> directory.</li>
 <li>Copy the <code>wlclient.properties</code> file from the MobileFirst native API folder to the new native Android application, in the <code>/assets</code> directory.</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:
-<p>{% highlight xml linenos %} <uses-permission android:name="android.permission.INTERNET"/><br />
+<p>{% highlight xml  %} <uses-permission android:name="android.permission.INTERNET"/><br />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> {% endhighlight %} </p>
 </li>
 <li>Add the MobileFirst UI activity:
-<p>{% highlight xml linenos %} <activity android:name="com.worklight.wlclient.ui.UIActivity" /> {% endhighlight %} </p>
+<p>{% highlight xml  %} <activity android:name="com.worklight.wlclient.ui.UIActivity" /> {% endhighlight %} </p>
 </li>
 </ol>
 <blockquote><p>For more information, see the topic about developing native applications for Android, in the user documentation.</p></blockquote>

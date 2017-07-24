@@ -29,7 +29,7 @@ The steps involved are as follows:
 * Install [git](http://git-scm.com/downloads) to configure, change, sync and test locally
 
 ## The MobileFirst Platform Foundation Server Container
-This section discusses the steps involved in organizing, building, deploying and managing a MobileFirst Platform Foundation Server container. 
+This section discusses the steps involved in organizing, building, deploying and managing a MobileFirst Platform Foundation Server container.
 
 **Note:** The MobileFirst Platform Foundation Server Container uses a Cloudant database. Hence, a [Cloudant](https://cloudant.com/) account is required. Alternatively, you could also use the [Cloudant service on Bluemix](https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant)
 
@@ -67,7 +67,7 @@ The GIT_URL will be of the form: https://hub.jazz.net/git//mfpf-server. The git 
 
     - mfpf-server
 
-* Optionally, you can remove the following from the local repository. 
+* Optionally, you can remove the following from the local repository.
 
     - mfpf-libs\apache-ant-1.9.4
     - mfpf-libs\db2jcc4.jar
@@ -97,7 +97,7 @@ Create a file named *wladmin.xml* with the following content (Fill the values wi
 ```
 
 **Configuring the MobileFirst Runtime Databases**  
-For each of the runtimes (WARs) added, create an XML file with the name, {runtime name}.xml with the following content (Fill the values with valid Cloudant database details) in the **usr/config** directory of your local repository. 
+For each of the runtimes (WARs) added, create an XML file with the name, {runtime name}.xml with the following content (Fill the values with valid Cloudant database details) in the **usr/config** directory of your local repository.
 
 **Note:** Update the *{runtime name}** in the xml content with the name of the project.
 
@@ -130,8 +130,8 @@ Refer [here](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.
 ### Creating a deployment pipeline
 The pipeline automates the continuous deployment of MobileFirst Platform Foundation Server container. Follow the steps below to create the deployment pipeline.
 
-* Go to [IBM Bluemix DevOps Services](https://hub.jazz.net/)
-* Click **MY PROJECTS** and click on the project that you created above: **mfpf-server**
+* Go to [IBM Bluemix DevOps Services](https://git.ng.bluemix.net)
+* Under **Your Projects** click the project that you created above: **mfpf-server**
 * Click **BUILD &amp; DEPLOY**
 * Create a Build Stage
 
@@ -142,7 +142,7 @@ The pipeline automates the continuous deployment of MobileFirst Platform Foundat
 * Click on **JOBS**
 * Click on **ADD JOB** and choose *Build* as the job type
 * Set the following values to the respective fields:
- 
+
 * Builder Type – IBM Container Service
 * Provide the Target, Organization and Space of your Bluemix account to which the container has to be deployed
 * Provide the name of the image
@@ -156,7 +156,7 @@ The pipeline automates the continuous deployment of MobileFirst Platform Foundat
 * Click on **JOBS**
 * Click on **ADD JOB** and choose *Deploy* as the job type
 * Set the following values to the respective fields:
- 
+
 * Deployer Type – IBM Containers on Bluemix
 * Provide the Target, Organization and Space of your Bluemix account to which the container has to be deployed
 * Choose the deployment strategy (‘red_black’ if you want to re-route the IP address or route to the new container on successful deployment. ‘clean’ if you want to remove the older container before deploying the new container)
@@ -174,7 +174,7 @@ The pipeline automates the continuous deployment of MobileFirst Platform Foundat
 * Click on **SAVE**
 
 ### Deployment
-Once the pipeline is created as above, the deployment is automatic when ever a change is pushed to the remote project from the local repository (or) the Build stage can be run manually by clicking on the Run button on the Build stage. 
+Once the pipeline is created as above, the deployment is automatic when ever a change is pushed to the remote project from the local repository (or) the Build stage can be run manually by clicking on the Run button on the Build stage.
 
 ## The MobileFirst Platform Foundation Analytics Container
 The instructions to build and run analytics container are same as discussed above for the Server container above. Note that adding the WARs / database configurations are not needed for analytics container. Additionally, choose the right values in all the steps. For example, name for the analytics project (For example, mfpf-analytics) etc.  

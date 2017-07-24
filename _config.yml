@@ -1,15 +1,16 @@
-name: "IBM MobileFirst Foundation Developer Center"
-description: "Develop, test, manage, and secure your native and hybrid apps"
+name: "IBM Mobile Foundation Developer Center"
+description: "Develop, test, manage, and secure your native and hybrid apps. Use the labs, blog posts, tutorials and videos to learn about Mobile Foundation on Bluemix or on-premise. Download product components and samples related to Mobile Foundation."
 url: https://mobilefirstplatform.ibmcloud.com
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
-paginate: 10
+paginate: 20
 paginate_path: "/blog/:num/"
-markdown: redcarpet
+markdown: kramdown
 generate_redirects: false
 print_pdf: false
-redcarpet:
-    extensions: ["with_toc_data", "tables"]
+kramdown:
+  input: GFM
+  hard_wrap: false
 gems:
   - jekyll-feed
   - jekyll-paginate
@@ -37,7 +38,7 @@ defaults:
     scope:
       path: "feed.xml"
     values:
-      indexed: false      
+      indexed: false
   -
     scope:
       path: "js"

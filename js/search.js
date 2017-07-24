@@ -1,3 +1,6 @@
+'use strict';
+
+var _this = this;
 
 // ELASTICSEARCH
 var MFPSEARCH = {
@@ -17,9 +20,11 @@ var MFPSEARCH = {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     },
     executeSearch: function() {
+        $("#searchResults").empty();
         $("#searchResults").addClass("loader");
         this.body.from = this.from;
-        var _this = this;
+
+        _this = this;
         this.client.search({
             "body": this.body
         }).then(function(body) {
@@ -113,6 +118,18 @@ var MFPSEARCH = {
                 }
             });
         }
+        var selectedLanguage = $('#language option:selected');
+        if (selectedLanguage.length > 0) {
+            var languagesArray = [];
+            $.each(selectedLanguage, function(index, result) {
+                languagesArray.push(result.value);
+            });
+            mustArray.push({
+                "terms": {
+                    "language": languagesArray
+                }
+            });
+        }
         var selectedPlatforms = $('#platforms option:selected');
         if (selectedPlatforms.length > 0) {
             var platformsArray = [];
@@ -178,7 +195,7 @@ var MFPSEARCH = {
             this.updateFilters();
         }
 
-        _this = this;
+        var _this = this;
         $('#searchNextBtn a').bind('click', function() {
             _this.nextPage();
         });
@@ -199,6 +216,12 @@ $(function() {
     });
     $('#platforms').multiselect({
         nonSelectedText: "Platforms",
+        onChange: function(option, checked, select) {
+            MFPSEARCH.updateFilters();
+        }
+    });
+    $('#language').multiselect({
+        nonSelectedText: "Language",
         onChange: function(option, checked, select) {
             MFPSEARCH.updateFilters();
         }

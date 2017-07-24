@@ -52,7 +52,7 @@ downloads:
 <p>The <strong>Token Endpoint</strong> is a REST API exposed under the path <code>/oauth/token</code>.</p>
 <p><strong>MobileFirst Server</strong> uses the authentication infrastructure to issue an access token for the requested scope (MobileFirst security test).</p>
 <h3>Overview of token format</h3>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 {
     version: "1.0 (of token)",
     scope: "<the security test that the token authenticated>",
@@ -107,7 +107,7 @@ downloads:
 <li>
     <strong>After all relevant realms are authenticated, MobileFirst Server returns an access token to the client.</strong></p>
 <p>      The <strong>MobileFirst Server</strong> returns a JSON object with the following format:</p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 {
     scope: "<actual scope *>",
     token_type: "Bearer",
@@ -132,7 +132,7 @@ downloads:
 <p>The default lifetime for each token is 60 seconds. You can override this timeout by adding the AccessTokenExpirationSec attribute to the security test.</p>
 <p>For example, if you want to configure a security test, called SampleSecurityTest, with a lifetime of 15 seconds, edit the <code>authenticationConfig.xml</code> as follows</p>
 <p><strong>From the source view:</strong></p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <securityTests>
   <customSecurityTest name="SampleSecurityTest" AccessTokenExpirationSec="15">
     <test realm="SampleRealm" isInternalUserID="true"/>
@@ -172,7 +172,7 @@ downloads:
 <li><strong>CertificatePath</strong> = <code>certificateLib/WorklightServerCertificate.cert</code> "The path to the certificate of MobileFirst Server, relative to the WEB-INF folder."</li>
 </ul>
 <p>In addition to the previous parameters, write the following code for the web.xml file of your external server:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
     <web-app ...>
       ...
       <filter>
@@ -196,7 +196,7 @@ downloads:
 {% endhighlight %}</p>
 <p>After successful validation, the filter updates the <code>ClientContext</code> object that the service can use to access user, application, or device identities that are contained in the access token.</p>
 <p>Example of <code>ClientContext</code> usage:</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
   ClientContext context = ClientContext.getInstance();
   String appId = context.getApplication();
   String userId = context.getUser();
@@ -227,7 +227,7 @@ downloads:
 <p>In JavaScript, this method is called <strong>getLastAccessToken</strong>.</p>
 <p>The <code>WL.Client</code> instance returns the last access token for a certain scope as a string. Alternatively, if no scope is specified, the last obtained token is returned. This capability is useful when an application is using one scope <strong>only</strong>.</p>
 <p>Add a header named "Authorization" and for the header content, add "Bearer", followed by the token. For example, when issuing an Ajax request, you can write the following code:</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
   var token = WL.Client.getLastAccessToken();
   $.ajax({
       type: "GET",
@@ -244,7 +244,7 @@ downloads:
 <p>If the error is not related to access token issues, the method returns <code>null</code>.</p>
 <h3>Use of the client-side API: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function callProtectedRestAPI(retries) {
     // You must be able to call this method
     // recursively, because in some cases it is

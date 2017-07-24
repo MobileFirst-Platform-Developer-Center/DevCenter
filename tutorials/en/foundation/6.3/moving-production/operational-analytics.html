@@ -9,7 +9,7 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 <p>In IBM MobileFirst Platform Foundation V6.3, MobileFirst Operational Analytics is delivered as a WAR file that can be deployed to the following supported application servers:</p>
 <ul>
 <li>Liberty</li>
-<li>WebSphere® Application Server</li>
+<li>WebSphere  Application Server</li>
 <li>Tomcat</li>
 </ul>
 <p>In MobileFirst Studio, the WAR file is installed and available by default in the embedded Liberty server.</p>
@@ -47,11 +47,11 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 <ul>
 <li>The following API call results in a session hit that is visualized on the MobileFirst Operational Analytics:
     </li>
-   {% highlight javascript linenos %}
+   {% highlight javascript  %}
 	// a 'session hit' will be recorded upon a successful connection
 	WL.Client.connect();{% endhighlight %}
 <li>The following API call results in an adapter hit that is visualized on the MobileFirst Operational Analytics:</li>
-   {% highlight javascript linenos %}
+   {% highlight javascript  %}
 // an 'adapter hit' will be recorded upon a successful adapter invocation
 	WL.Client.invokeProcedure({...});
     {% endhighlight %}
@@ -66,7 +66,7 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 <h2 id="clientLogs">Capturing data - Client Logs</h2>
 <p>A MobileFirst application can be instrumented with client logs to record client debugging information and events.</p>
 <p>The following APIs are available to create client logs that are then forwarded to the MobileFirst Operational Analytics where they can be searched and downloaded.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 // Set the log level to trace so all logs are captured
 WL.Logger.config({"level": "TRACE"});
 // Create a client side log that is persisted locally until sent to the server
@@ -80,7 +80,7 @@ WL.Logger.fatal("Create a client log at the FATAL level.");
 
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Create an analytics log message
 WL.Analytics.log("Analytics log message");
 // Create a custom activity
@@ -89,19 +89,19 @@ WL.Analytics.log({_activity: "customActivity"});
 
 <h2>Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Logs sent upon successful connection
 WL.Client.connect();
 // Logs sent upon successful adapter invocation
 WL.Client.invokeProcedure({...});
 {% endhighlight %}</p>
 This automatic behavior can be disabled by using the following call:</p>
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Disable automatic sending of client and analytics logs
 WL.Logger.config({autoSendLogs: false});
 {% endhighlight %}
 If you want to send this data more frequently, you can use the following API calls:
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 // Send client debug logs
 WL.Logger.send();
 // Send analytics logs

@@ -36,7 +36,7 @@ Use it to work with your Objective C code.</p>
 <p>Open the generated iOS project in Xcode.<br />
 Add an Objective C <strong>MyCustomAlert</strong> class in the <strong>Classes</strong> folder.<br />
 Add a method signature to <strong>MyCustomAlert.h</strong>, and method implementation to <strong>MyCustomAlert.m</strong> files:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 #import "MyCustomAlert.h"
 <p>@implementation MyCustomAlert
 +(void)showUIAlert:(NSString *)text{
@@ -51,7 +51,7 @@ Add a method signature to <strong>MyCustomAlert.h</strong>, and method implement
 @end
 {% endhighlight %}
 <p>Import <strong>MyCustomAlert.h</strong> and call this method from the <strong>viewDidLoad</strong> method of the application <strong>ViewController</strong>:
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (void)viewDidLoaad
 {
   [super viewDidLoad];

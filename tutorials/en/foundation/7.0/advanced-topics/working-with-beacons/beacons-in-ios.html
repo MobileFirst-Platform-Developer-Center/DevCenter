@@ -24,7 +24,7 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 </li>
 <li>Copy the <code>iOSNativeiBeaconsLibrary</code> folder of the iOSNativeiBeacons project into your native iOS application. That folder contains the library that provides the simplified set of APIs for ranging/monitoring iBeacons.
 <p>To request permission to use location services and local/push notifications, write the following code:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	...
@@ -35,7 +35,7 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 <h2 id="simplifiedapis">Simplified APIs for ranging/monitoring iBeacons</h2>
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"BeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {
 	if (success) {
 		[self showBeaconsAndTriggers];
@@ -47,11 +47,11 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 <p><br clear="all" /></p>
 <h3>Triggering actions</h3>
 <p>To set the monitoring/ranging of iBeacons and to fire trigger actions, write the following code:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [[WLBeaconsLocationManager sharedInstance] startMonitoring];
 {% endhighlight %}
 <p>To let the user opt out of iBeacon monitoring, write the following code:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [[WLBeaconsLocationManager sharedInstance] stopMonitoring];
 // Optionally reset monioring/ranging state<br />
 [[WLBeaconsLocationManager sharedInstance] resetMonitoringRangingState];
@@ -59,7 +59,7 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 <p><br clear="all" /></p>
 <h3>Turning the device into an iBeacon</h3>
 <p>To turn a device into an iBeacon, write the following code:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";
 int major = 1;
 int minor = 4417;
@@ -70,7 +70,7 @@ int minor = 4417;
 <p>Generally, use this feature for testing and development purposes. The UUID string must match the UUID of the beacons that are registered on server.</p>
 <h3>Increasing the application running time</h3>
 <p>To increase the running time of the application when it runs in background (as part of iBeacon monitoring), write the following code:</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (void)applicationDidEnterBackground:(UIApplication *)application {
 	...
 	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidEnterBackground];
@@ -83,7 +83,7 @@ int minor = 4417;
 This code increases the running time of the application up to 3 minutes from the default 10 seconds.</p>
 <h3>Handling local notifications</h3>
 <p>To handle local notifications that originate from the application, write the following code:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	...
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];

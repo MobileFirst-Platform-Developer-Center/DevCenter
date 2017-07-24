@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>WLClient Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Objective-C client-side API for iOS apps </a></h1>
+				<a id="developerHome" href="../index.html">IBM</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">WLClient Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/defaultRequestTimeoutInterval">&nbsp;&nbsp;&nbsp;&nbsp;defaultRequestTimeoutInterval</option>
+	
+	<option value="//api/name/isInitialized">&nbsp;&nbsp;&nbsp;&nbsp;isInitialized</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sharedInstance">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstance</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/HTTPCookieStorage">&nbsp;&nbsp;&nbsp;&nbsp;- HTTPCookieStorage</option>
+	
+	<option value="//api/name/addGlobalHeader:headerValue:">&nbsp;&nbsp;&nbsp;&nbsp;- addGlobalHeader:headerValue:</option>
+	
+	<option value="//api/name/getChallengeHandlerBySecurityCheck:">&nbsp;&nbsp;&nbsp;&nbsp;- getChallengeHandlerBySecurityCheck:</option>
+	
+	<option value="//api/name/getDeviceDisplayNameWithCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- getDeviceDisplayNameWithCompletionHandler:</option>
+	
+	<option value="//api/name/getGlobalHeaders">&nbsp;&nbsp;&nbsp;&nbsp;- getGlobalHeaders</option>
+	
+	<option value="//api/name/invokeProcedure:withDelegate:options:">&nbsp;&nbsp;&nbsp;&nbsp;- invokeProcedure:withDelegate:options:</option>
+	
+	<option value="//api/name/pinTrustedCertificatePublicKeyFromFile:">&nbsp;&nbsp;&nbsp;&nbsp;- pinTrustedCertificatePublicKeyFromFile:</option>
+	
+	<option value="//api/name/pinTrustedCertificatePublicKeyFromFiles:">&nbsp;&nbsp;&nbsp;&nbsp;- pinTrustedCertificatePublicKeyFromFiles:</option>
+	
+	<option value="//api/name/registerChallengeHandler:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- registerChallengeHandler:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/removeGlobalHeader:">&nbsp;&nbsp;&nbsp;&nbsp;- removeGlobalHeader:</option>
+	
+	<option value="//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- sendUrlRequest:delegate:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/serverUrl">&nbsp;&nbsp;&nbsp;&nbsp;- serverUrl</option>
+	
+	<option value="//api/name/setDeviceDisplayName:WithCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- setDeviceDisplayName:WithCompletionHandler:</option>
+	
+	<option value="//api/name/setHeartBeatInterval:">&nbsp;&nbsp;&nbsp;&nbsp;- setHeartBeatInterval:</option>
+	
+	<option value="//api/name/setServerUrl:">&nbsp;&nbsp;&nbsp;&nbsp;- setServerUrl:</option>
+	
+	<option value="//api/name/wlConnectWithDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;- wlConnectWithDelegate:</option>
+	
+	<option value="//api/name/wlConnectWithDelegate:options:">&nbsp;&nbsp;&nbsp;&nbsp;- wlConnectWithDelegate:options:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultRequestTimeoutInterval">defaultRequestTimeoutInterval</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isInitialized">isInitialized</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstance">sharedInstance</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/HTTPCookieStorage">HTTPCookieStorage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGlobalHeader:headerValue:">addGlobalHeader:headerValue:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getChallengeHandlerBySecurityCheck:">getChallengeHandlerBySecurityCheck:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDeviceDisplayNameWithCompletionHandler:">getDeviceDisplayNameWithCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getGlobalHeaders">getGlobalHeaders</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invokeProcedure:withDelegate:options:">invokeProcedure:withDelegate:options:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pinTrustedCertificatePublicKeyFromFile:">pinTrustedCertificatePublicKeyFromFile:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pinTrustedCertificatePublicKeyFromFiles:">pinTrustedCertificatePublicKeyFromFiles:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerChallengeHandler:NS_SWIFT_NAME:">registerChallengeHandler:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeGlobalHeader:">removeGlobalHeader:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:">sendUrlRequest:delegate:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:">sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/serverUrl">serverUrl</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDeviceDisplayName:WithCompletionHandler:">setDeviceDisplayName:WithCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setHeartBeatInterval:">setHeartBeatInterval:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setServerUrl:">setServerUrl:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wlConnectWithDelegate:">wlConnectWithDelegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wlConnectWithDelegate:options:">wlConnectWithDelegate:options:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="WLClient Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">WLClient Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">WLClient.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>This singleton class exposes methods that you use to communicate with the IBM MobileFirst Platform Server.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isInitialized">&nbsp;&nbsp;isInitialized</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/HTTPCookieStorage">&ndash;&nbsp;HTTPCookieStorage</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/wlConnectWithDelegate:">&ndash;&nbsp;wlConnectWithDelegate:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/wlConnectWithDelegate:options:">&ndash;&nbsp;wlConnectWithDelegate:options:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:">&ndash;&nbsp;sendUrlRequest:delegate:NS_SWIFT_NAME:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:">&ndash;&nbsp;sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/invokeProcedure:withDelegate:options:">&ndash;&nbsp;invokeProcedure:withDelegate:options:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/registerChallengeHandler:NS_SWIFT_NAME:">&ndash;&nbsp;registerChallengeHandler:NS_SWIFT_NAME:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addGlobalHeader:headerValue:">&ndash;&nbsp;addGlobalHeader:headerValue:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeGlobalHeader:">&ndash;&nbsp;removeGlobalHeader:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getGlobalHeaders">&ndash;&nbsp;getGlobalHeaders</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getChallengeHandlerBySecurityCheck:">&ndash;&nbsp;getChallengeHandlerBySecurityCheck:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setHeartBeatInterval:">&ndash;&nbsp;setHeartBeatInterval:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setServerUrl:">&ndash;&nbsp;setServerUrl:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/serverUrl">&ndash;&nbsp;serverUrl</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pinTrustedCertificatePublicKeyFromFile:">&ndash;&nbsp;pinTrustedCertificatePublicKeyFromFile:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pinTrustedCertificatePublicKeyFromFiles:">&ndash;&nbsp;pinTrustedCertificatePublicKeyFromFiles:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setDeviceDisplayName:WithCompletionHandler:">&ndash;&nbsp;setDeviceDisplayName:WithCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getDeviceDisplayNameWithCompletionHandler:">&ndash;&nbsp;getDeviceDisplayNameWithCompletionHandler:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/defaultRequestTimeoutInterval">&nbsp;&nbsp;defaultRequestTimeoutInterval</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/defaultRequestTimeoutInterval" title="defaultRequestTimeoutInterval"></a>
+	<h3 class="subsubtitle method-title">defaultRequestTimeoutInterval</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Specifies default request time out.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readwrite) NSTimeInterval defaultRequestTimeoutInterval</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isInitialized" title="isInitialized"></a>
+	<h3 class="subsubtitle method-title">isInitialized</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets an authentication handler that WLClient can use for authentication-related tasks.
+This method must be called for WLClient to be able to access protected resources in the IBM MobileFirst Platform server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL isInitialized</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/sharedInstance" title="sharedInstance"></a>
+	<h3 class="subsubtitle method-title">sharedInstance</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method returns the shared instance of <code>WLClient</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (WLClient *)sharedInstance</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>WLClient</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/HTTPCookieStorage" title="HTTPCookieStorage"></a>
+	<h3 class="subsubtitle method-title">HTTPCookieStorage</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieves the shared cookie storage that is used by the framework when communicating with the server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSHTTPCookieStorage *)HTTPCookieStorage</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The cookie storage object</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addGlobalHeader:headerValue:" title="addGlobalHeader:headerValue:"></a>
+	<h3 class="subsubtitle method-title">addGlobalHeader:headerValue:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>You use this method to add a global header, which is sent on each request.
+Each WlRequest instance will use this header as an HTTP header.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addGlobalHeader:(NSString *)<em>headerName</em> headerValue:(NSString *)<em>value</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>headerName</em></dt>
+			<dd><p>The header name/key.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>The header value.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getChallengeHandlerBySecurityCheck:" title="getChallengeHandlerBySecurityCheck:"></a>
+	<h3 class="subsubtitle method-title">getChallengeHandlerBySecurityCheck:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get challenge handler by realm key</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BaseChallengeHandler *)getChallengeHandlerBySecurityCheck:(NSString *)<em>securityCheck</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getDeviceDisplayNameWithCompletionHandler:" title="getDeviceDisplayNameWithCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">getDeviceDisplayNameWithCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets the display name of the device. The display name is retrieved from the MobileFirst Server registration data.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getDeviceDisplayNameWithCompletionHandler:(void ( ^ ) ( NSString *deviceDisplayName , NSError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>A completion-handler callback function. In the case of a successful completion, the display name
+of the device is returned in the completion handler&rsquo;s <code>deviceDisplayName</code> parameter.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getGlobalHeaders" title="getGlobalHeaders"></a>
+	<h3 class="subsubtitle method-title">getGlobalHeaders</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get a global header.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)getGlobalHeaders</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/invokeProcedure:withDelegate:options:" title="invokeProcedure:withDelegate:options:"></a>
+	<h3 class="subsubtitle method-title">invokeProcedure:withDelegate:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is similar to invokeProcedure:invocationData:withDelegate, with an additional options parameter to provide more data for this procedure call.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)invokeProcedure:(WLProcedureInvocationData *)<em>invocationData</em> withDelegate:(id&lt;WLDelegate&gt;)<em>delegate</em> options:(NSDictionary *)<em>options</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>invocationData</em></dt>
+			<dd><p>The invocation data for the procedure call.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>The delegate object that is used for the onSuccess and onFailure callback methods.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>A map with the following keys and values:</p>
+
+<ul>
+<li>timeout – NSNumber:
+The time, in milliseconds, for this invokeProcedure to wait before the request fails with WLErrorCodeRequestTimeout. The default timeout is 10 seconds. To disable the timeout, set this parameter to 0.</li>
+<li>invocationContext:
+An object that is returned with <a href="../Classes/WLResponse.html">WLResponse</a> to the delegate methods. You can use this object to distinguish different invokeProcedure calls.</li>
+</ul>
+</dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pinTrustedCertificatePublicKeyFromFile:" title="pinTrustedCertificatePublicKeyFromFile:"></a>
+	<h3 class="subsubtitle method-title">pinTrustedCertificatePublicKeyFromFile:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Pins the host X509 certificate public key to the client application. Secured calls to the pinned remote host will be checked for a public key match. Secured calls to other hosts containing other certificates will be rejected. Some mobile operating systems might cache the certificate validation check results. Your app must call the certificate pinning method before making a secured request. Calling this method a second time overrides any previous pinning operation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)pinTrustedCertificatePublicKeyFromFile:(NSString *)<em>certificateFilename</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>certificateFilename</em></dt>
+			<dd><p>the name of the certificate file</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pinTrustedCertificatePublicKeyFromFiles:" title="pinTrustedCertificatePublicKeyFromFiles:"></a>
+	<h3 class="subsubtitle method-title">pinTrustedCertificatePublicKeyFromFiles:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Pins a list of host X509 certificates with public key to the client application. Secured calls to the all pinned remote host will be checked for a public key match. Secured calls to other hosts containing other certificates not pinned with app will be rejected. Some mobile operating systems might cache the certificate validation check results. Your app must call the certificate pinning method before making a secured request. Calling this method a second time overrides any previous pinning operation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)pinTrustedCertificatePublicKeyFromFiles:(NSArray *)<em>certificateFilenames</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>certificateFilenames</em></dt>
+			<dd><p>the list conatining names of the certificate files</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/registerChallengeHandler:NS_SWIFT_NAME:" title="registerChallengeHandler:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">registerChallengeHandler:NS_SWIFT_NAME:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>You can use this method to register a challenge handler, which is a class that inherits either from <a href="../Classes/GatewayChallengeHandler.html">GatewayChallengeHandler</a> or <a href="../Classes/SecurityCheckChallengeHandler.html">SecurityCheckChallengeHandler</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)registerChallengeHandler:(BaseChallengeHandler *)<em>challengeHandler</em> NS_SWIFT_NAME</code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>challengeHandler</em></dt>
+			<dd><p>The challenge handler to register.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeGlobalHeader:" title="removeGlobalHeader:"></a>
+	<h3 class="subsubtitle method-title">removeGlobalHeader:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>You use this method to remove a global header, which is no longer sent with each request.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)removeGlobalHeader:(NSString *)<em>headerName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>headerName</em></dt>
+			<dd><p>The header name to be removed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:" title="sendUrlRequest:delegate:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">sendUrlRequest:delegate:NS_SWIFT_NAME:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method uses <code>NSURLConnection</code> to execute the provided <code>NSURLRequest</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)sendUrlRequest:(NSURLRequest *)<em>request</em> delegate:(id)<em>delegate</em> NS_SWIFT_NAME</code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>request</em></dt>
+			<dd><p><code>NSURLRequest</code> object</p>
+
+<p>@param delegate
+An object that conforms to the <code>NSURLSessionDataDelegate</code> or <code>NSURLSessionTaskDelegate</code> protocol.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:" title="sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method uses <code>NSURLConnection</code> to execute the provided <code>NSURLRequest</code>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)sendUrlRequest:(NSURLRequest *)<em>request</em> delegate:(id)<em>delegate</em> responseQueue:(dispatch_queue_t)<em>responseQueue</em> NS_SWIFT_NAME</code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>request</em></dt>
+			<dd><p><code>NSURLRequest</code> object</p>
+
+<p>@param delegate
+An object that conforms to the <code>NSURLSessionDataDelegate</code> or <code>NSURLSessionTaskDelegate</code> protocol.
+@param responseQueue
+An callback queue of type dispatch_queue_t</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/serverUrl" title="serverUrl"></a>
+	<h3 class="subsubtitle method-title">serverUrl</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the current IBM MobileFirst Platform server URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSURL *)serverUrl</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>IBM MobileFirst Platform server URL</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setDeviceDisplayName:WithCompletionHandler:" title="setDeviceDisplayName:WithCompletionHandler:"></a>
+	<h3 class="subsubtitle method-title">setDeviceDisplayName:WithCompletionHandler:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the display name of the device. The display name is stored in the MobileFirst Server registration data.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setDeviceDisplayName:(NSString *)<em>deviceDisplayName</em> WithCompletionHandler:(void ( ^ ) ( NSError *error ))<em>completionHandler</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>deviceDisplayName</em></dt>
+			<dd><p>The device display name to set.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>completionHandler</em></dt>
+			<dd><p>A completion-handler callback function.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setHeartBeatInterval:" title="setHeartBeatInterval:"></a>
+	<h3 class="subsubtitle method-title">setHeartBeatInterval:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method sets the interval, in seconds, at which the client (device) sends a heartbeat signal to the server.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setHeartBeatInterval:(NSInteger)<em>val</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>val</em></dt>
+			<dd><p>The interval, in seconds, at which the heartbeat signal is sent to the server.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You use the heartbeat signal to prevent a session with the server from timing out because of inactivity. Typically, the heartbeat interval has a value that is less than the server session timeout.The server session timeout is defined in the worklight.properties file. By default, the value of the heartbeat interval is set to 420 seconds (7 minutes).
+To disable the heartbeat signal, set a value that is less than, or equal to zero.</p><div class="note"><p><strong>Note:</strong> The client sends a heartbeat signal to the server only when the application is in the foreground. When the application is sent to the background, the client stops sending heartbeat signals. The client resumes sending heartbeat signals when the application is brought to the foreground again.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setServerUrl:" title="setServerUrl:"></a>
+	<h3 class="subsubtitle method-title">setServerUrl:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the IBM MobileFirst Platform server URL to the specified URL.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setServerUrl:(NSURL *)<em>url</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>The URL of the new server, including protocol, IP, port, and context.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Changes the IBM MobileFirst Platform server URL to the new URL and cleans the HTTP client context.
+After calling this method, the application is not logged in to any server.</p>
+
+<p>Notes:</p>
+
+<ul>
+<li>The responsibility for checking the validity of the URL is on the developer.</li>
+<li>For hybrid applications: This call does not clean the HTTP client context saved in JavaScript.
+For hybrid applications, it is recommended to set the server URL by using the following JavaScript function: <code>WL.App.setServerUrl</code>.</li>
+</ul>
+
+
+<p>Example:</p>
+
+<pre><code>    [[WLClient sharedInstance] setServerUrl:[NSURL URLWithString:@"http://9.148.23.88:10080/context"]];
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/wlConnectWithDelegate:" title="wlConnectWithDelegate:"></a>
+	<h3 class="subsubtitle method-title">wlConnectWithDelegate:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method uses the connection properties and the application ID from the worklight.plist file to initialize communication with the IBM MobileFirst Platform Server.
+The server checks the validity of the application version.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)wlConnectWithDelegate:(id&lt;WLDelegate&gt;)<em>delegate</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>A class that conforms to the <a href="../Protocols/WLDelegate.html">WLDelegate</a> protocol.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If the server returns a successful response, the <code>onSuccess</code> method is called. If an error occurs, the <code>onFailure</code> method is called.</p><div class="note"><p><strong>Note:</strong> This method must be called before any other WLClient method that calls the server, such as <code>logActivity</code> and <code>invokeProcedure.</code></p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/wlConnectWithDelegate:options:" title="wlConnectWithDelegate:options:"></a>
+	<h3 class="subsubtitle method-title">wlConnectWithDelegate:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method uses the connection properties and the application ID from the worklight.plist file to initialize communication with the IBM MobileFirst Platform Server.
+The server checks the validity of the application version.
+This method accepts a &ldquo;timeout&rdquo; key in its options parameter -  (NSNumber) Number of milliseconds to wait for the server response before the request times out.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)wlConnectWithDelegate:(id&lt;WLDelegate&gt;)<em>delegate</em> options:(NSDictionary *)<em>options</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>A class that conforms to the <a href="../Protocols/WLDelegate.html">WLDelegate</a> protocol.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Optional, can be nil. Used to set the timeout while connecting to the server and/or to set the application userId which is used by Push service. In this dictionary the user puts key &ldquo;timeout&rdquo; (milliseconds) to set the timeout or the key &ldquo;appUserId&rdquo; (NSString) to set the application UserId.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If the server returns a successful response, the <code>onSuccess</code> method is called. If an error occurs, the <code>onFailure</code> method is called.</p><div class="note"><p><strong>Note:</strong> This method must be called before any other WLClient method that calls the server, such as <code>logActivity</code> and <code>invokeProcedure.</code></p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+                    <div class="footer-copyright">
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2017</span></p><br />
+                    </div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

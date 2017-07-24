@@ -22,7 +22,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
 ...
 ...
@@ -55,7 +55,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <li><code>didReceiveRemoteNotification</code><br />
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is   called. The logic to handle the notification should be defined here.</p>
 <p>
-{% highlight objc linenos %}
+{% highlight objc  %}
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
@@ -66,7 +66,7 @@ When a notification is received by a device, the <code>didReceiveRemoteNotificat
 </li>
 <li><code>setOnReadyToSubscribeListener</code><br />
 This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.<br />
-{% highlight objc linenos %}[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];{% endhighlight %}</li>
+{% highlight objc  %}[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];{% endhighlight %}</li>
 </ul>
 <h4>Server-side API</h4>
 <p><code>WL.Server.sendMessage(applicationId,notificationOptions)</code><br />
@@ -92,7 +92,7 @@ This method registers a listener to be used for push notifications. This listene
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml linenos %}<application ... id="NativeiOSTagNotifications" ...>{% endhighlight %}</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml  %}<application ... id="NativeiOSTagNotifications" ...>{% endhighlight %}</li>
 </ul>
 </li>
 <li>If using the CLI:

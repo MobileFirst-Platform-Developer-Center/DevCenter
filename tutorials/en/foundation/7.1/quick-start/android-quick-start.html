@@ -54,14 +54,14 @@ mfp push
 <ul>
 <li>In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.</li>
 <li>After <code>apply plugin: 'com.android.application'</code>, add the following line:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 repositories {
     jcenter()
 }
 {% endhighlight %}
     </li>
 <li>Inside <code>android</code>, add the following lines:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 packagingOptions {
     pickFirst 'META-INF/ASL2.0'
     pickFirst 'META-INF/LICENSE'
@@ -69,7 +69,7 @@ packagingOptions {
 }
 {% endhighlight %}</li>
 <li>Inside <code>dependencies</code>, add the following lines:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundation',
     version: '7.1.0.0',
@@ -77,17 +77,17 @@ compile group: 'com.ibm.mobile.foundation',
     transitive: true
 {% endhighlight %}</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.GET_TASKS" />
 {% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <activity android:name="com.worklight.wlclient.ui.UIActivity" />
 {% endhighlight %}</li>
 <li>In Terminal, navigate to the root of the Android Studio project and add the required configuration files by running this command:<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 mfp push
 {% endhighlight %}
 </li>
@@ -97,19 +97,19 @@ mfp push
 <li>
 <h4>Main <code>Activity</code> class</h4>
 <p>                Make sure that your MainActivity class extends the <code>Activity</code> class:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public class MainActivity extends Activity {
 ...
 {% endhighlight %}<br />
                 Add the following <code>import</code> statements:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 import com.worklight.wlclient.api.*;
 import android.util.Log;
 import java.net.URI;
 import java.net.URISyntaxException;
 {% endhighlight %}</p>
 <p>                Add the following lines to the <code>onCreate</code> method:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 final WLClient client = WLClient.createInstance(this);
@@ -135,12 +135,12 @@ client.connect(new WLResponseListener() {
 <h4><code>MyInvokeListener</code> class</h4>
 <p>                Add a new <code>MyInvokeListener</code> class.<br />
                 Add the following <code>import</code> statements:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 import com.worklight.wlclient.api.*;
 import android.util.Log;
 {% endhighlight %}</p>
 <p>                Paste the following lines:<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public class MyInvokeListener implements WLResponseListener {
     @Override
     public void onSuccess(WLResponse wlResponse) {

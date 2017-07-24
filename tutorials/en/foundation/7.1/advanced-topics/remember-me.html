@@ -56,7 +56,7 @@ You might need to adapt it to your specific needs.</p>
 <h3 id="login">Login Module</h3>
 <p>The <code>login module</code> is usually responsible for checking the user credentials and creating the <code>user identity</code>. However, in this example you need only the <code>login module</code> to create the <code>user identity</code>, while the rest of the logic happens in the <code>authenticator</code>. The standard <code>NonValidatingLoginModule</code> is good enough to achieve this.</p>
 <p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <loginModules><br />
 	<!-- Use expirationInSeconds to set the session timeout when NOT using rememberMe  -->
 	<loginModule name="CustomLoginModule" expirationInSeconds="30">
@@ -69,7 +69,7 @@ In version 7.1 and later, the session-independent mode decouples the link betwee
 <p>The <code>expirationInSeconds</code> parameter is a built-in setting to determine how long the user session is valid. In this example, the value of this parameter is the default expiration when the user does <strong>not</strong> select <strong>Remember Me</strong>. To make testing easier, the expiration value is set to 30 seconds here, but in a real application you would probably want to use a longer expiration time, such as one hour...</p>
 <h3 id="realm">Realm</h3>
 <p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <realms>
 	<realm name="CustomRealm" loginModule="CustomLoginModule">
 		<className>com.sample.CustomAuthenticator</className>
@@ -83,7 +83,7 @@ A custom parameter called <code>rememberMeExpirationInDays</code> defines how lo
 <h3>Security test</h3>
 <p>Because this example uses a Java adapter, you do not really need to define a security test (Java adapters use scopes instead of tests), but just in case it is necessary to protect other resources, create a simple security test.</p>
 <p>
-{% highlight xml linenos %}
+{% highlight xml  %}
 <securityTests>
 	<customSecurityTest name="CustomAuthSecurityTest">
 		<test realm="wl_antiXSRFRealm" />
@@ -95,7 +95,7 @@ A custom parameter called <code>rememberMeExpirationInDays</code> defines how lo
 <p>The security test uses some standard realms, and uses the <code>CustomRealm</code> as a user realm.</p>
 <h2 id="adapter">Adapter code</h2>
 <p>Create a simple Java adapter with a single <code>hello</code> method. Protect it with the realm that you created in the <a href="#realm">Realm</a> section.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 @GET
 @Path("/hello")
 @Produces("application/xml")
@@ -127,7 +127,7 @@ cloudant.password=myAPIPassword
 {% endhighlight %}</p>
 <h2 id="RememberedClient">RememberedClient.java</h2>
 <p>Cloudant uses JSON notation to store documents. To make it easier in Java, create a simple <code><a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object" target="_blank">POJO</a></code> to represent a "remembered client id".</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 public class RememberedClient {
 	private String username, _id, _rev;
 	private Date expiration;
@@ -135,7 +135,7 @@ public class RememberedClient {
 }
 {% endhighlight %}<br />
 For convenience, this class also includes a getter/setter pair to map <code>ClientID</code> to the <code>_id</code> property.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public String getClientID() {
 	return get_id();
 }
@@ -145,13 +145,13 @@ public void setClientID(String clientID) {
 {% endhighlight %}</p>
 <h2 id="CustomAuthenticator">CustomAuthenticator.java</h2>
 <p>The authenticator extends <code>WorklightProtocolAuthenticator</code> to inherit the simplifications provided by the <em>Worklight protocol</em>.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 public class CustomAuthenticator extends WorklightProtocolAuthenticator {
 }
 {% endhighlight %}</p>
 <h3>init</h3>
 <p>This example uses the <code>init</code> method to load the configurations from the <code>authenticatorConfig.xml</code> and from the <code>worklight.properties</code> files. The CloudantClient and database are initialized here, too.</p>
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @Override
 public void init(Map<String, String> options) throws MissingConfigurationOptionException {
 	logger.info("CustomAuthenticator :: Initializing. options :: " + options.toString());
@@ -177,7 +177,7 @@ public void init(Map<String, String> options) throws MissingConfigurationOptionE
 <p>See the sample code for implementation details.</p>
 <h3>generateChallenge</h3>
 <p>The <code>generateChallenge</code> method is a helper method to create a JSON challenge that the client can interpret in its challenge handler.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 private AuthenticationResult generateChallenge(String errorMessage){
 	logger.info("CustomAuthenticator :: generateChallenge");
 	AuthenticationResult authenticationResult = AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
@@ -194,7 +194,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 </ul>
 <ul>
 <li>If the request finds the client, it sends a <code>SUCCESS</code> result to the framework.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 public AuthenticationResult processRequest(HttpServletRequest request,
 		HttpServletResponse response, boolean isAccessToProtectedResource)
@@ -217,7 +217,7 @@ public AuthenticationResult processRequest(HttpServletRequest request,
 {% endhighlight %}
 </li>
 <li>If the client was not found and the current request does not already contain a challenge response, the request generates a challenge and sends it.
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 JSONObject challengeResponse = (JSONObject) getChallengeResponse(request);
 if (null == challengeResponse){
 	return generateChallenge("Please enter username and password");
@@ -225,7 +225,7 @@ if (null == challengeResponse){
 {% endhighlight %}
 </li>
 <li>If the current request already contains the response from the challenge, it verifies the credentials (in this example, no real verification happens). It then saves the client in the database and returns <code>SUCCESS</code>.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 username = (String) challengeResponse.get("username");
 password = (String) challengeResponse.get("password");
 rememberMe = (Boolean) challengeResponse.get("rememberMe");
@@ -247,7 +247,7 @@ if (null == username || null == password || username.length() == 0 || password.l
 </ul>
 <h3>getAuthenticationData</h3>
 <p>The <code>getAuthenticationData</code> method is called by the framework to provide login credentials to the <code>login module</code>. In this example, the <code>login module</code> is non-validating, therefore the password can be ignored. The <code>login module</code> is used only to create a <code>user identity</code> in the framework.<br />
-{% highlight java linenos %}
+{% highlight java  %}
 @Override
 public Map<String, Object> getAuthenticationData() {
     logger.info("CustomAuthenticator :: getAuthenticationData");
@@ -260,7 +260,7 @@ public Map<String, Object> getAuthenticationData() {
 {% endhighlight %}</p>
 <h2 id="challengeHandler">Challenge handler</h2>
 <p>Because the <code>authenticator</code> uses the <em>Worklight protocol</em>, use the <code>createWLChallengeHandler</code> method to create the challenge handler.<br />
-{% highlight javascript linenos %}
+{% highlight javascript  %}
 var challengeHandler = WL.Client.createWLChallengeHandler("CustomRealm");
 {% endhighlight %}<br />
 The challenge handler hides and shows the login parts of the application when required. It uses the <code>submitChallengeAnswer</code> method to send the credentials and the <strong>Remember Me</strong> checkbox. See the sample code for implementation details.</p>
@@ -270,7 +270,7 @@ The challenge handler hides and shows the login parts of the application when re
 <p>To work around this issue, clear the <code>clientId</code> from the remote storage before logging out.</p>
 <ol>
 <li>In your Java adapter, add a method that uses the static <code>forgetClient</code> method that you created in <a href="#cloudantHelper">Cloudant helper methods</a>.
-<p>{% highlight java linenos %}
+<p>{% highlight java  %}
 @POST
 @Path("/forgetMe")
 @OAuthSecurity(scope="CustomRealm")
@@ -281,7 +281,7 @@ public Response forgetMe(){
 {% endhighlight %}
 </li>
 <li>From the client code, make sure that you call this method before using the standard logout feature.
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function logout(){
     busyIndicator.show();
     var resourceRequest = new WLResourceRequest("/adapters/Content/forgetMe", WLResourceRequest.POST, 30000);

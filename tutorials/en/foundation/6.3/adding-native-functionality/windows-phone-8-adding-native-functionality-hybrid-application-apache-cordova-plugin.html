@@ -41,14 +41,14 @@ The below code blocks are based on the sample application, provided at the botto
 The plug-in needs to be declared in the project, so that Cordova can detect it.
 To declare the plug-in, add a reference to the config.xml file, located in the native folder of the Windows Phone 8 environment.
 
-{% highlight xml linenos %}<feature name=“sayHelloPlugin">
+{% highlight xml  %}<feature name=“sayHelloPlugin">
 	<param name="wp-package" value=“sayHelloPlugin" />
 </feature>{% endhighlight %}
 
 <h2>Implementing cordova.exec() in JavaScript</h2>
 
 From the JavaScript code of the application, use <code>cordova.exec()</code> to call the Cordova plug-in:
-{% highlight js linenos %}function sayHello() {
+{% highlight js  %}function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
 }{% endhighlight %}
@@ -61,7 +61,7 @@ From the JavaScript code of the application, use <code>cordova.exec()</code> to 
 <code>[name]</code> - Parameters array
 
 The plug-in calls the <code>success</code> and <code>failure</code> callbacks.
-{% highlight js linenos %}
+{% highlight js  %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
         "Response from plug-in", data,
@@ -87,7 +87,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
     <li>Create a new C# class</li>
     <li>Add the new class to your project namespace and add the required import statements.</li>
 
-    {% highlight csharp linenos %}using System;
+    {% highlight csharp  %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -109,7 +109,7 @@ Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> me
 
 <ul>
     <li>The JavaScript wrapper calls the sayHello method and passes a single parameter. It returns a string back to JavaScript.
-    {% highlight csharp linenos %}public void sayHello(string options)
+    {% highlight csharp  %}public void sayHello(string options)
         {
             string optVal = null;
             try {
@@ -121,7 +121,7 @@ Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> me
 
 <br clear="all"/>
     <li>The DispatchCommandResult method returns the result to JavaScript, whether success or failure.
-{% highlight csharp linenos %}if (optVal == null)
+{% highlight csharp  %}if (optVal == null)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));
             }

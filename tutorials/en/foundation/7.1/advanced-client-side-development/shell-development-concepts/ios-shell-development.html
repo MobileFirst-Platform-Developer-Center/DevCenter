@@ -45,7 +45,7 @@ Use it to work with your Objective-C code.</p>
 <li>Open the generated iOS project in Xcode.</li>
 <li>Add an Objective-C<code> MyCustomAlert</code> class in the <code>Classes</code> folder.</li>
 <li>Add a method signature to the <code>MyCustomAlert.h</code> file and a method implementation to the <code>MyCustomAlert.m</code> file:
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 #import "MyCustomAlert.h"
 
 @implementation MyCustomAlert
@@ -62,7 +62,7 @@ Use it to work with your Objective-C code.</p>
 {% endhighlight %}
 </li>
 <li>Import <code>MyCustomAlert.h</code> and call this method from the <code>viewDidLoad</code> method of the application <code>ViewController</code> instance:
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 - (void)viewDidLoaad {
   [super viewDidLoad];
   [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];

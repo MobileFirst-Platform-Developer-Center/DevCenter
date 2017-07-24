@@ -32,14 +32,14 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the iOS environment.</p>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <feature name="sayHelloPlugin">
   <param name="ios-package" value="sayHelloPlugin" />
 </feature>
 {% endhighlight %}</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
@@ -51,7 +51,7 @@ function sayHello() {
 <code>sayHello</code> - Action name<br />
 <code>[name]</code> - Parameters array</p>
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
-{% highlight js linenos %}
+{% highlight js  %}
 function sayHelloSuccess(data) {
     WL.SimpleDialog.show(
         "Response from plug-in", data,
@@ -74,7 +74,7 @@ function sayHelloFailure(data){
 <li>Add a new Cocoa Touch Class file, make sure that it is a subclass of <code>UIViewController</code>, and save it in the <code>Classes</code> folder of the Xcode project.</li>
 <li>Import the <code>Cordova/CDV.h</code> header file and inherit the <code>CDVPlugin</code> class.</li>
 <li>Declare the <code>SayHelloPlugin</code> signature.
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 
@@ -86,24 +86,24 @@ function sayHelloFailure(data){
 <h3>Step 2</h3>
 <ol>
 <li>Implement the method. The <code>command</code> argument contains references to the parameters that are sent from JavaScript and callbacks:<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 #import "SayHelloPlugin.h"
 @implementation SayHelloPlugin
 - (void)sayHello:(CDVInvokedUrlCommand*)command {
 {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>Write this statement to retrieve the parameters that are sent from JavaScript.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
     NSString *responseString = [NSString stringWithFormat:@"Hello %@", [command.arguments objectAtIndex:0]];
 {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>The <code>pluginResult</code> object is created with data retrieved from JavaScript. The <code>CDVCommandStatus</code> parameter defines whether the plug-in call was successful or not.<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
 {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>Use the <code>sendPluginResult</code> method to return a response back to JavaScript (invoke callback).<br />
-{% highlight objc linenos %}
+{% highlight objc  %}
 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
 }

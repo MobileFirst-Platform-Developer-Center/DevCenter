@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>JSONStoreCollection Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Objective-C client-side API for iOS apps </a></h1>
+				<a id="developerHome" href="../index.html">IBM</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">JSONStoreCollection Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/_dropFirst">&nbsp;&nbsp;&nbsp;&nbsp;_dropFirst</option>
+	
+	<option value="//api/name/additionalSearchFields">&nbsp;&nbsp;&nbsp;&nbsp;additionalSearchFields</option>
+	
+	<option value="//api/name/collectionName">&nbsp;&nbsp;&nbsp;&nbsp;collectionName</option>
+	
+	<option value="//api/name/reopened">&nbsp;&nbsp;&nbsp;&nbsp;reopened</option>
+	
+	<option value="//api/name/searchFields">&nbsp;&nbsp;&nbsp;&nbsp;searchFields</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addData:andMarkDirty:withOptions:error:">&nbsp;&nbsp;&nbsp;&nbsp;- addData:andMarkDirty:withOptions:error:</option>
+	
+	<option value="//api/name/allDirtyAndReturnError:">&nbsp;&nbsp;&nbsp;&nbsp;- allDirtyAndReturnError:</option>
+	
+	<option value="//api/name/changeData:withReplaceCriteria:addNew:markDirty:error:">&nbsp;&nbsp;&nbsp;&nbsp;- changeData:withReplaceCriteria:addNew:markDirty:error:</option>
+	
+	<option value="//api/name/clearCollectionWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- clearCollectionWithError:</option>
+	
+	<option value="//api/name/countAllDirtyDocumentsWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- countAllDirtyDocumentsWithError:</option>
+	
+	<option value="//api/name/countAllDocumentsAndReturnError:">&nbsp;&nbsp;&nbsp;&nbsp;- countAllDocumentsAndReturnError:</option>
+	
+	<option value="//api/name/countWithQueryParts:error:">&nbsp;&nbsp;&nbsp;&nbsp;- countWithQueryParts:error:</option>
+	
+	<option value="//api/name/findAllWithOptions:error:">&nbsp;&nbsp;&nbsp;&nbsp;- findAllWithOptions:error:</option>
+	
+	<option value="//api/name/findWithIds:andOptions:error:">&nbsp;&nbsp;&nbsp;&nbsp;- findWithIds:andOptions:error:</option>
+	
+	<option value="//api/name/findWithQueryParts:andOptions:error:">&nbsp;&nbsp;&nbsp;&nbsp;- findWithQueryParts:andOptions:error:</option>
+	
+	<option value="//api/name/initWithName:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:</option>
+	
+	<option value="//api/name/isDirtyWithDocumentId:error:">&nbsp;&nbsp;&nbsp;&nbsp;- isDirtyWithDocumentId:error:</option>
+	
+	<option value="//api/name/markDocumentsClean:error:">&nbsp;&nbsp;&nbsp;&nbsp;- markDocumentsClean:error:</option>
+	
+	<option value="//api/name/removeCollectionWithError:">&nbsp;&nbsp;&nbsp;&nbsp;- removeCollectionWithError:</option>
+	
+	<option value="//api/name/removeWithIds:andMarkDirty:error:">&nbsp;&nbsp;&nbsp;&nbsp;- removeWithIds:andMarkDirty:error:</option>
+	
+	<option value="//api/name/replaceDocuments:andMarkDirty:error:">&nbsp;&nbsp;&nbsp;&nbsp;- replaceDocuments:andMarkDirty:error:</option>
+	
+	<option value="//api/name/setAdditionalSearchField:withType:">&nbsp;&nbsp;&nbsp;&nbsp;- setAdditionalSearchField:withType:</option>
+	
+	<option value="//api/name/setSearchField:withType:">&nbsp;&nbsp;&nbsp;&nbsp;- setSearchField:withType:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/_dropFirst">_dropFirst</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/additionalSearchFields">additionalSearchFields</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/collectionName">collectionName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reopened">reopened</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/searchFields">searchFields</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addData:andMarkDirty:withOptions:error:">addData:andMarkDirty:withOptions:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allDirtyAndReturnError:">allDirtyAndReturnError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/changeData:withReplaceCriteria:addNew:markDirty:error:">changeData:withReplaceCriteria:addNew:markDirty:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearCollectionWithError:">clearCollectionWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countAllDirtyDocumentsWithError:">countAllDirtyDocumentsWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countAllDocumentsAndReturnError:">countAllDocumentsAndReturnError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countWithQueryParts:error:">countWithQueryParts:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findAllWithOptions:error:">findAllWithOptions:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findWithIds:andOptions:error:">findWithIds:andOptions:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/findWithQueryParts:andOptions:error:">findWithQueryParts:andOptions:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:">initWithName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isDirtyWithDocumentId:error:">isDirtyWithDocumentId:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/markDocumentsClean:error:">markDocumentsClean:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeCollectionWithError:">removeCollectionWithError:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeWithIds:andMarkDirty:error:">removeWithIds:andMarkDirty:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/replaceDocuments:andMarkDirty:error:">replaceDocuments:andMarkDirty:error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setAdditionalSearchField:withType:">setAdditionalSearchField:withType:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setSearchField:withType:">setSearchField:withType:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="JSONStoreCollection Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">JSONStoreCollection Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">JSONStoreCollection.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Contains <a href="../Classes/JSONStore.html">JSONStore</a> methods that operate on a single collection.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/collectionName">&nbsp;&nbsp;collectionName</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/searchFields">&nbsp;&nbsp;searchFields</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/additionalSearchFields">&nbsp;&nbsp;additionalSearchFields</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reopened">&nbsp;&nbsp;reopened</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/_dropFirst">&nbsp;&nbsp;_dropFirst</a></code>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithName:">&ndash;&nbsp;initWithName:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setSearchField:withType:">&ndash;&nbsp;setSearchField:withType:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setAdditionalSearchField:withType:">&ndash;&nbsp;setAdditionalSearchField:withType:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeCollectionWithError:">&ndash;&nbsp;removeCollectionWithError:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearCollectionWithError:">&ndash;&nbsp;clearCollectionWithError:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addData:andMarkDirty:withOptions:error:">&ndash;&nbsp;addData:andMarkDirty:withOptions:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/replaceDocuments:andMarkDirty:error:">&ndash;&nbsp;replaceDocuments:andMarkDirty:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findWithQueryParts:andOptions:error:">&ndash;&nbsp;findWithQueryParts:andOptions:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findAllWithOptions:error:">&ndash;&nbsp;findAllWithOptions:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/findWithIds:andOptions:error:">&ndash;&nbsp;findWithIds:andOptions:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countAllDocumentsAndReturnError:">&ndash;&nbsp;countAllDocumentsAndReturnError:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countWithQueryParts:error:">&ndash;&nbsp;countWithQueryParts:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countAllDirtyDocumentsWithError:">&ndash;&nbsp;countAllDirtyDocumentsWithError:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/markDocumentsClean:error:">&ndash;&nbsp;markDocumentsClean:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allDirtyAndReturnError:">&ndash;&nbsp;allDirtyAndReturnError:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isDirtyWithDocumentId:error:">&ndash;&nbsp;isDirtyWithDocumentId:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/changeData:withReplaceCriteria:addNew:markDirty:error:">&ndash;&nbsp;changeData:withReplaceCriteria:addNew:markDirty:error:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeWithIds:andMarkDirty:error:">&ndash;&nbsp;removeWithIds:andMarkDirty:error:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/_dropFirst" title="_dropFirst"></a>
+	<h3 class="subsubtitle method-title">_dropFirst</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Private. Remove the collection (drop table [collection]) before initializing.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL _dropFirst</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0
+@private</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/additionalSearchFields" title="additionalSearchFields"></a>
+	<h3 class="subsubtitle method-title">additionalSearchFields</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Additional Search fields that are tied to the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *additionalSearchFields</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/collectionName" title="collectionName"></a>
+	<h3 class="subsubtitle method-title">collectionName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Name of the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSString *collectionName</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reopened" title="reopened"></a>
+	<h3 class="subsubtitle method-title">reopened</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Boolean that shows if the collection was reopened (true) or newly created (false).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, getter=wasReopened) BOOL reopened</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/searchFields" title="searchFields"></a>
+	<h3 class="subsubtitle method-title">searchFields</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Search fields that are tied to a collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSMutableDictionary *searchFields</code></div>
+
+    
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addData:andMarkDirty:withOptions:error:" title="addData:andMarkDirty:withOptions:error:"></a>
+	<h3 class="subsubtitle method-title">addData:andMarkDirty:withOptions:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Stores data as documents in the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)addData:(NSArray *)<em>data</em> andMarkDirty:(BOOL)<em>markDirty</em> withOptions:(JSONStoreAddOptions *)<em>options</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>NSArray of JSON data represented as NSDictionaries</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>markDirty</em></dt>
+			<dd><p>Determines if the documents that are added should be marked dirty (true) or not (false)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Options for handling things like additional search fields</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number data added, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allDirtyAndReturnError:" title="allDirtyAndReturnError:"></a>
+	<h3 class="subsubtitle method-title">allDirtyAndReturnError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get all documents that are marked dirty in the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)allDirtyAndReturnError:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>NSArray of all dirty documents in the collection, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/changeData:withReplaceCriteria:addNew:markDirty:error:" title="changeData:withReplaceCriteria:addNew:markDirty:error:"></a>
+	<h3 class="subsubtitle method-title">changeData:withReplaceCriteria:addNew:markDirty:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Uses a replacement criteria to locate documents for a targeted replacement, if no existing document is found it checks the addNew flag to determine if a new document should be added.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)changeData:(NSArray *)<em>data</em> withReplaceCriteria:(NSArray *)<em>replaceCriteriaSearchFields</em> addNew:(BOOL)<em>addNew</em> markDirty:(BOOL)<em>markDirty</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>NSArray of JSON objects as NSDictionary</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>addNew</em></dt>
+			<dd><p>Determines if new JSON objects are added to the store if they are not already inside (true) or not (false)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>markDirty</em></dt>
+			<dd><p>Determines if the operation marks changes as dirty (true) or not (false)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number of documents changed, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/clearCollectionWithError:" title="clearCollectionWithError:"></a>
+	<h3 class="subsubtitle method-title">clearCollectionWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Permanently deletes all the documents stored in a collection while preserving the accessor for the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)clearCollectionWithError:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Boolean that indicates the operation failed (false) or succeeded (true)</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countAllDirtyDocumentsWithError:" title="countAllDirtyDocumentsWithError:"></a>
+	<h3 class="subsubtitle method-title">countAllDirtyDocumentsWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the total number of dirty documents in the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)countAllDirtyDocumentsWithError:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number of documents that are dirty in the collection, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countAllDocumentsAndReturnError:" title="countAllDocumentsAndReturnError:"></a>
+	<h3 class="subsubtitle method-title">countAllDocumentsAndReturnError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the total number of documents that exist in the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)countAllDocumentsAndReturnError:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number of documents in the collection, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countWithQueryParts:error:" title="countWithQueryParts:error:"></a>
+	<h3 class="subsubtitle method-title">countWithQueryParts:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns the total number of documents that match the query parts.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)countWithQueryParts:(NSArray *)<em>queryParts</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queryParts</em></dt>
+			<dd><p>Array of <a href="../Classes/JSONStoreQueryPart.html">JSONStoreQueryPart</a> objects</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number of documents that matched the query parts, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findAllWithOptions:error:" title="findAllWithOptions:error:"></a>
+	<h3 class="subsubtitle method-title">findAllWithOptions:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all documents in the collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)findAllWithOptions:(JSONStoreQueryOptions *)<em>options</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Options such as filter, sort, limit, and offset</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All documents in the collection, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findWithIds:andOptions:error:" title="findWithIds:andOptions:error:"></a>
+	<h3 class="subsubtitle method-title">findWithIds:andOptions:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns all documents that match the _id values passed.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)findWithIds:(NSArray *)<em>ids</em> andOptions:(JSONStoreQueryOptions *)<em>options</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ids</em></dt>
+			<dd><p>array of _id field values that is represented as an integers</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Options such as filter, sort, limit, and offset</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Documents found with matching _id fields, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/findWithQueryParts:andOptions:error:" title="findWithQueryParts:andOptions:error:"></a>
+	<h3 class="subsubtitle method-title">findWithQueryParts:andOptions:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Locates documents inside a collection by using one or more query parts.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)findWithQueryParts:(NSArray *)<em>queryParts</em> andOptions:(JSONStoreQueryOptions *)<em>options</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queryParts</em></dt>
+			<dd><p>Array of <a href="../Classes/JSONStoreQueryPart.html">JSONStoreQueryPart</a> objects</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Options such as filter, sort, limit, and offset</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>All documents in the collection that matched the query parts, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithName:" title="initWithName:"></a>
+	<h3 class="subsubtitle method-title">initWithName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new JSONStoreCollection instance for the collection with the given name.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (JSONStoreCollection *)initWithName:(NSString *)<em>collectionName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>collectionName</em></dt>
+			<dd><p>the name of the collection</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>new instance</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/isDirtyWithDocumentId:error:" title="isDirtyWithDocumentId:error:"></a>
+	<h3 class="subsubtitle method-title">isDirtyWithDocumentId:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns whether the document represented by the given _id value is dirty or not.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)isDirtyWithDocumentId:(int)<em>_id</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>_id</em></dt>
+			<dd><p>The _id field value of the document</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>True if the document is dirty, false otherwise</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/markDocumentsClean:error:" title="markDocumentsClean:error:"></a>
+	<h3 class="subsubtitle method-title">markDocumentsClean:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Takes input from <a href="#//api/name/allDirtyAndReturnError:">allDirtyAndReturnError:</a> (which returns documents with an _operation key value pair) and marks documents as clean.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)markDocumentsClean:(NSArray *)<em>documents</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>documents</em></dt>
+			<dd><p>NSArray of documents that are represented as NSDictionaries</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number of documents marked clean, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeCollectionWithError:" title="removeCollectionWithError:"></a>
+	<h3 class="subsubtitle method-title">removeCollectionWithError:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Permanently deletes all the documents stored in a collection and removes the accessor for that collection.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)removeCollectionWithError:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Boolean that indicates the operation failed (false) or succeeded (true)</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeWithIds:andMarkDirty:error:" title="removeWithIds:andMarkDirty:error:"></a>
+	<h3 class="subsubtitle method-title">removeWithIds:andMarkDirty:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Removes documents from the collection by using one or more _id values. Removed documents are not returned by the different find operations and they do not affect count operations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)removeWithIds:(NSArray *)<em>ids</em> andMarkDirty:(BOOL)<em>markDirty</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>ids</em></dt>
+			<dd><p>NSArray of _id values represented as integers</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>markDirty</em></dt>
+			<dd><p>Determines if the documents that are removed are marked as dirty (true) or not (false)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number documents removed, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0
+@private</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/replaceDocuments:andMarkDirty:error:" title="replaceDocuments:andMarkDirty:error:"></a>
+	<h3 class="subsubtitle method-title">replaceDocuments:andMarkDirty:error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is used to modify documents inside a collection by replacing existing documents with given documents. The field that is used to perform the replacement is the document&rsquo;s unique identifier (_id).</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (NSNumber *)replaceDocuments:(NSArray *)<em>documents</em> andMarkDirty:(BOOL)<em>markDirty</em> error:(NSError **)<em>error</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>documents</em></dt>
+			<dd><p>Array of documents represented as NSDictionaries with the following key value pairs: _id (integer) and json (NSDictionary).</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>markDirty</em></dt>
+			<dd><p>Determines if the documents that are replaced should be marked dirty (true) or not (false)</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>error</em></dt>
+			<dd><p>Error</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number documents replaced, nil if there is a failure</p>
+	</div>
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setAdditionalSearchField:withType:" title="setAdditionalSearchField:withType:"></a>
+	<h3 class="subsubtitle method-title">setAdditionalSearchField:withType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the given additional search field for the collection. Must be called before opening the collection. Cannot be changed after the collection is opened.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setAdditionalSearchField:(NSString *)<em>additionalSearchField</em> withType:(JSONStoreSearchFieldType)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>additionalSearchField</em></dt>
+			<dd><p>the name of the additional search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the additional search field</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setSearchField:withType:" title="setSearchField:withType:"></a>
+	<h3 class="subsubtitle method-title">setSearchField:withType:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the given search field for the collection. Must be called before opening the collection. Cannot be changed after the collection is opened.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setSearchField:(NSString *)<em>searchField</em> withType:(JSONStoreSearchFieldType)<em>type</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>searchField</em></dt>
+			<dd><p>the name of the search field</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>type</em></dt>
+			<dd><p>the type of the search field</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection availability">
+		<h4 class="method-subtitle parameter-title">Availability</h4>
+		<p>IBM Worklight V6.2.0</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">JSONStoreCollection.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+                    <div class="footer-copyright">
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2017</span></p><br />
+                    </div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

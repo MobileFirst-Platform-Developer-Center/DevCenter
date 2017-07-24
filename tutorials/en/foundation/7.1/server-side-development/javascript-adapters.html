@@ -34,7 +34,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 You can apply more filtering to retrieved data by using simple XSLT code.</p>
 <p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
 <h2 id="xmlStructure">XML structure of JavaScript adapters</h2>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <wl:adapter name="HelloWorld">
   <displayName />
   <description />
@@ -61,14 +61,14 @@ You can apply more filtering to retrieved data by using simple XSLT code.</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <procedure name="procedure1"></procedure>
 <procedure name="procedure2"></procedure>
 {% endhighlight %}</p>
 <h2 id="procedureStructure">Structure of a JavaScript adapter procedure</h2>
 <p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 function procedure1(param) {
   return WL.Server.invokeSQLStatement({
     preparedStatement: procedure1Statement,

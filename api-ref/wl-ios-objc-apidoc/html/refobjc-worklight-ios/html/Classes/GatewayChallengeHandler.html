@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>GatewayChallengeHandler Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Objective-C client-side API for iOS apps </a></h1>
+				<a id="developerHome" href="../index.html">IBM</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">GatewayChallengeHandler Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/canHandleResponse:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- canHandleResponse:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/handleChallenge:">&nbsp;&nbsp;&nbsp;&nbsp;- handleChallenge:</option>
+	
+	<option value="//api/name/initWithGatewayName:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithGatewayName:</option>
+	
+	<option value="//api/name/onFailure:">&nbsp;&nbsp;&nbsp;&nbsp;- onFailure:</option>
+	
+	<option value="//api/name/onSuccess:">&nbsp;&nbsp;&nbsp;&nbsp;- onSuccess:</option>
+	
+	<option value="//api/name/submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:">&nbsp;&nbsp;&nbsp;&nbsp;- submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:</option>
+	
+	<option value="//api/name/submitSuccess:">&nbsp;&nbsp;&nbsp;&nbsp;- submitSuccess:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/canHandleResponse:NS_SWIFT_NAME:">canHandleResponse:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/handleChallenge:">handleChallenge:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithGatewayName:">initWithGatewayName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onFailure:">onFailure:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/onSuccess:">onSuccess:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:">submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/submitSuccess:">submitSuccess:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="GatewayChallengeHandler Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">GatewayChallengeHandler Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/BaseChallengeHandler.html">BaseChallengeHandler</a> : NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/WLDelegate.html">WLDelegate</a></td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">GatewayChallengeHandler.h</td>
+</tr>
+						</tbody></table></div>
+					
+                    
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>You use this base class to create custom challenge handlers when using gateways. You must extend this class to implement your own challenge handler logic. You use this class to create custom user authentication with external gateways.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithGatewayName:">&ndash;&nbsp;initWithGatewayName:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/handleChallenge:">&ndash;&nbsp;handleChallenge:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/submitSuccess:">&ndash;&nbsp;submitSuccess:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/canHandleResponse:NS_SWIFT_NAME:">&ndash;&nbsp;canHandleResponse:NS_SWIFT_NAME:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:">&ndash;&nbsp;submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onSuccess:">&ndash;&nbsp;onSuccess:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/onFailure:">&ndash;&nbsp;onFailure:</a></code>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/canHandleResponse:NS_SWIFT_NAME:" title="canHandleResponse:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">canHandleResponse:NS_SWIFT_NAME:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method must be overridden by extending the GatewayChallengeHandler class. In most cases, you call this method to test whether there is a custom challenge to be handled in the response.
+If this method returns YES, IBM MobileFirst Platform calls the handleChallenge method.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (BOOL)canHandleResponse:(WLResponse *)<em>response</em> NS_SWIFT_NAME</code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The <a href="../Classes/WLResponse.html">WLResponse</a> to be tested.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/handleChallenge:" title="handleChallenge:"></a>
+	<h3 class="subsubtitle method-title">handleChallenge:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>IBM MobileFirst Platform must call this method whenever isCustomResponse returns a YES value. You must implement this method. This method must handle the challenge, for example to show the login screen.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)handleChallenge:(WLResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The <a href="../Classes/WLResponse.html">WLResponse</a> to be handled.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithGatewayName:" title="initWithGatewayName:"></a>
+	<h3 class="subsubtitle method-title">initWithGatewayName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize a challenge handler for the specific gateway.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithGatewayName:(NSString *)<em>gatewayName</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>gatewayName</em></dt>
+			<dd><p>an arbitrary name for the challenge handler.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/onFailure:" title="onFailure:"></a>
+	<h3 class="subsubtitle method-title">onFailure:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is the failure delegate for submitLoginForm</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onFailure:(WLFailResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The received fail response.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method is called when a response does not have a 200 HTTP status code. This method does not indicate whether the challenge was successful or not. In some cases onFailure is an indication of a normal challenge handling sequence.</p>
+
+<p>An example of when the onFailure method is called is when a 401 Unauthorized response is received.</p>
+
+<p>A successful handshake can entail several 401 response iterations and therefore several onFailure calls. This behavior is all part of the normal handshake between two parties that are trying to establish identity. IBM MobileFirst Platform handles the handshakes for core challenges iteratively until all of the credentials are established and the necessary challenges are processed.</p>
+
+<p>This is a good place to check whether the response is a custom response and handle it accordingly. If the response is not a custom response, you can call submitSuccess to indicate that all is good from your challenge handler&rsquo;s perspective, and that IBM MobileFirst Platform can handle the response instead.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/onSuccess:" title="onSuccess:"></a>
+	<h3 class="subsubtitle method-title">onSuccess:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method is the success delegate for submitLoginForm</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)onSuccess:(WLResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The received response.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method is called when a successful HTTP response is received (200 OK). This method does not indicate whether the challenge was successful or not. A 200 HTTP response can flow back indicating problems with authentication on the server or requesting additional information.</p>
+
+<p>Some examples of a 200 HTTP response are as follows:</p>
+
+<ul>
+<li>First init request returns a normal 200 HTTP response that requests a pkms login form
+Authentication failed on the server.</li>
+<li>A 200 HTTP response, indicating that the account is locked on the server due to too many failed login attempts.</li>
+</ul>
+
+
+<p>This is a good place to check whether the response is a custom response and handle it accordingly. If the response is not a custom response, you can call submitSuccess to indicate that all is good from your challenge handler&rsquo;s perspective, and that IBM MobileFirst Platform can handle the response instead.</p><div class="note"><p><strong>Note:</strong> IBM MobileFirst Platform does not attempt to determine what the 200 response means.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:" title="submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:"></a>
+	<h3 class="subsubtitle method-title">submitLoginForm:requestParameters:requestHeaders:requestTimeoutInMilliSeconds:requestMethod:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>You use this method to send collected credentials to a specific URL. You can also specify request parameters, headers, and timeout.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)submitLoginForm:(NSString *)<em>requestUrl</em> requestParameters:(NSDictionary *)<em>parameters</em> requestHeaders:(NSDictionary *)<em>headers</em> requestTimeoutInMilliSeconds:(int)<em>timeout</em> requestMethod:(NSString *)<em>method</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>requestUrl</em></dt>
+			<dd><p>Absolute URL if the user sends an absolute url that starts with http:// or https:// Otherwise, URL relative to the IBM MobileFirst Platform Server</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>parameters</em></dt>
+			<dd><p>The request parameters</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>headers</em></dt>
+			<dd><p>The request headers</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>timeout</em></dt>
+			<dd><p>o supply custom timeout, use a number over 0. If the number is under 0, IBM MobileFirst Platform uses the default timeout, which is 10,000 milliseconds.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>method</em></dt>
+			<dd><p>The HTTP method that you must use. Acceptable values are GET, POST.The default value is POST.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The success/failure delegate for this method is the instance itself, which is why you must override the onSuccess / onFailure methods.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/submitSuccess:" title="submitSuccess:"></a>
+	<h3 class="subsubtitle method-title">submitSuccess:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>You must call this method when the challenge is answered successfully, for example after the user successfully submits the login form. Then, this method sends the original request.
+Calling this method informs IBM MobileFirst Platform that the challenge was successfully handled. This method can also be used to inform IBM MobileFirst Platform that the response that was received is not a custom response that your challenge handler can handle. In this case, control is returned to IBM MobileFirst Platform, to handle the response.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)submitSuccess:(WLResponse *)<em>response</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>response</em></dt>
+			<dd><p>The received <a href="../Classes/WLResponse.html">WLResponse</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">GatewayChallengeHandler.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+                    
+                    
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+                    <div class="footer-copyright">
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2017</span></p><br />
+                    </div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

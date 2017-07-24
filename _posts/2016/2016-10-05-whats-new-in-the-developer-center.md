@@ -3,12 +3,11 @@ title: Full Product Documentation for MobileFirst Foundation 8.0 now in the Deve
 date: 2016-10-05
 version:
 - 8.0
-pinned: true
 tags:
 - MobileFirst_Foundation
 - Announcement
 author:
-  name: Idan Adar 
+  name: Idan Adar
 ---
 Hi all!  
 We'd like to let you all know of recent changes we've made to the Developer Center.
@@ -27,13 +26,13 @@ See our [contribution guidelines](https://github.com/MobileFirst-Platform-Develo
 
 ## Discussion
 Remember our Slack community? The place to chat and discuss various topics related to MobileFirst Foundation.  
-[Join today](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/)!
+[Join today](https://mobilefirstplatform.ibmcloud.com/blog/2017/05/26/come-chat-with-us/)!
 
 ## More changes
 Additionaly, we've recently added the following:
 
 * The Live Update feature now sports [an SDK for Cordova applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/live-update/) as well.
 * [Integration with IBM API Connect]({{site.baseurl}}/tutorials/en/product-integration/8.0/api-connect/) is now documented.
-* Google recently rebranded GCM push notifications as FCM as part of the Firebase acquisition. Some FCM setup instructions were changed as well [and so did our documentation]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#google-cloud-messaging-firebase-cloud-messaging).
+* Google recently rebranded GCM push notifications as FCM as part of the Firebase acquisition. Some FCM setup instructions were changed as well [and so did our documentation]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#google-cloud-messaging--firebase-cloud-messaging).
 * Our repertoire of advanced samples has grown so we [now have a dedicated page]({{site.baseurl}}/tutorials/en/foundation/8.0/advanced-samples/) listing them.
 * An Announcements section was added in the front page, so you could see just the recent announcements made instead of searching through all blog posts.

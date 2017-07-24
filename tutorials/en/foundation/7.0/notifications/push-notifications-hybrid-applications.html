@@ -48,12 +48,19 @@ Notifications can take several forms:</p>
 <h3>Android</h3>
 <p>To send push notifications to Android devices, use the Google Cloud Messaging (GCM) service.<br />
 To register to the GCM service, you need a valid Gmail account.</p>
-<p>For more information about how to get a GCM Project Number and API key (which you use later in the MobileFirst project), see <a href="https://console.developers.google.com">Google Developer Console</a>.</p>
-<p><strong>Notes:</strong></p>
-<ul>
-<li>When you create an API key, make sure that the type is <strong>server key</strong>.</li>
-<li>Android OS 2.3.5 devices must be synchronized with a Gmail account.</li>
-<li>Android OS 4.x devices do not impose Gmail account synchronization.</li>
+
+<blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
+
+<ol>
+   <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+   <li>Create a new project and provide a project name.</li>
+   <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+   <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+</ol>
+
 </ul>
 <h3>iOS</h3>
 <p>To send push notifications to iOS devices, use the Apple Push Notifications Service (APNS).<br />
@@ -103,7 +110,7 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <ol>
 <li>Replace <strong>GCM_Key</strong> with the <strong>API Key</strong> value.</li>
 <li>Replace <strong>senderId</strong> with the <strong>Project Number</strong> value.<br />
-{% highlight xml linenos %}
+{% highlight xml  %}
 <android securityTest="PushApplication-strong-mobile-securityTest" version="1.0">
 <pushSender key="GCM_key" senderId="GCM_ID"/>
 {% endhighlight %} </li>
@@ -126,7 +133,7 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 </ol>
 </li>
 <li>Add a reference to the google-play-services version in the <code><em>your-app</em>\android\native\AndroidManifest.xml</code> file, as the first child of the <code><application></code> element:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
@@ -138,18 +145,18 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Replace <strong>certificate password</strong> with your actual certificate password.</li>
 <li>Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of your application. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
 </ol>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <iphone bundleId="com.PushNotifications" version="1.0">
     <pushSender password=""/>
 {% endhighlight %} </p>
 <h3>Windows Phone 8</h3>
 <h4>Non-authenticated push</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windowsPhone8 version="1.0">
     <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid>
     <pushSender/> {% endhighlight %} </p>
 <h4>Authenticated push</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windowsPhone8 version="1.0">
     <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid>
     <pushSender>
@@ -166,7 +173,7 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Enter the package security identifier in <code>packageSID</code>.</li>
 <li>Enter the secret key in <code>clientSecret</code>.</li>
 </ol>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <windows8 version="1.0">
    	<pushSender clientSecret="..." packageSID="..." appIdentityName="..." appIdentityPublisher="..."/>
 {% endhighlight %} </p>

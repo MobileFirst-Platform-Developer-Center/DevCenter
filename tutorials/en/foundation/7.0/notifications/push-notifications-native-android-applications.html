@@ -45,9 +45,22 @@ To create and configure an Android native project, first follow these tutorials:
 <li>Your project number is the <code>senderId</code>.</li>
 <li>Your Android key is the GCM <code>key</code>. You can generate it in <strong>API &amp; Auth > Credentials</strong>.</li>
 </ul>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <pushSender key="GCM-KEY" senderId="GCM-ID"/>
 {% endhighlight %} 
+        
+<blockquote><b>Note:</b> Google <a href="https://firebase.google.com/support/faq/#gcm-fcm">recently announced</a> a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.</blockquote>
+
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
+
+<ol>
+   <li>Visit the <a href="https://console.firebase.google.com/?pli=1">Firebase Console</a>.</li>
+   <li>Create a new project and provide a project name.</li>
+   <li>Click on the Settings "cog wheel" icon and select <b>Project settings</b>.</li>
+   <li>Click the <b>Cloud Messaging</b> tab to generate a <b>Server API Key</b> and a <b>Sender ID</b> and click <b>Save</b>.</li>
+</ol>
+
         </li>
 </ul>
 </li>
@@ -80,7 +93,7 @@ google-play-services_lib project @ <code><em>android_sdk_location</em>\extras\g
 </ol>
 </li>
 <li>Add a reference to the google-play-services version in <code>your-app\android\native\AndroidManifest.xml</code> as the first child of the <code>application</code> element:
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
@@ -90,7 +103,7 @@ google-play-services_lib project @ <code><em>android_sdk_location</em>\extras\g
 <li>
 <h3>Modify the native Android project.</h3>
 <h4>Verify that the following permissions exist in the <code>AndroidManifest.xml</code> file of your Android project.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.GET_TASKS"/>
@@ -103,7 +116,7 @@ google-play-services_lib project @ <code><em>android_sdk_location</em>\extras\g
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 {% endhighlight %} </p>
 <h4>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <activity
     android:name="com.worklight.androidnativepush.AndroidNativePush"
     android:label="@string/app_name"
@@ -111,14 +124,14 @@ google-play-services_lib project @ <code><em>android_sdk_location</em>\extras\g
     android:launchMode="singleTask">
 {% endhighlight %} </p>
 <h4>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <intent-filter>
     <action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" />
     <category android:name="android.intent.category.DEFAULT" />
 </intent-filter>
 {% endhighlight %} </p>
 <h4>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</h4>
-<p>{% highlight xml linenos %}
+<p>{% highlight xml  %}
 <service android:name="com.worklight.wlclient.push.GCMIntentService" />
 <receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
     <intent-filter>

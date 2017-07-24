@@ -1,41 +1,46 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation Bluemix service
+title: Using the Mobile Foundation on Bluemix service
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on Bluemix by using the **Mobile Foundation** service.  
-Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+{: #overview }
+This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
+{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
 
-The Mobile Foundation service offers the following plan options:
+The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
-1. **Developer**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile applications for development and testing. In this plan the {{ site.data.keys.mf_analytics_service }} service is added by default.
 
     > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
 
-2. **Developer Pro**: This plan provisions a Mobile Foundation server as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational  Analytics server, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a MobileFirst Operational  Analytics server, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
-4. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
 > [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
 
 #### Jump to:
-
-* [Setting up the Mobile Foundation service](#setting-up-the-mobile-foundation-service)
-* [Using the Mobile Foundation service](#using-the-mobile-foundation-service)
+{: #jump-to}
+* [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
+* [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
-* [Applying MobileFirst Server fixes](#applying-mobilefirst-server-fixes)
+* [Removing Analytics support](#removing-analytics-support)
+* [Switching from Analytics deployed with IBM Containers to Analytics service](#switching-from-analytics-container-to-analytics-service)
+* [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
 * [Further reading](#further-reading)
 
-## Setting up the Mobile Foundation service
+## Setting up the {{ site.data.keys.mf_bm_short }} service
+{: #setting-up-the-mobile-foundation-service }
 To set up the available plans, first follow these steps:
 
 1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
@@ -43,49 +48,57 @@ To set up the available plans, first follow these steps:
 3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
 4. Select the desired pricing plan, then click **Create**.
 
-    <img class="gifplayer" alt="Creating a Mobile Foundation service instance" src="service-creation.png"/>
+    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
 
 ### Setting up the *developer* plan
+{: #setting-up-the-developer-plan }
 
-1. Start the MobileFirst Server.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }}.
+  * You can instantly access and work with the {{ site.data.keys.mf_server }}.
+  * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the Bluemix console.
 
-    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
-
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
-
-    ![Image of Mobile Foundation setup](overview-page.png)
+  ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
+{: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
+1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
 
-1. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set up your dashDB OLTP *Transactional plan* instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select your credentials in the plan entry page:
+    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
 
-    ![Image of Mobile Foundation setup](create-dashdb-instance.png)
+    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
 
-2. Start the MobileFirst Server.
+    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+
+    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
+
+    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
+
+2. Start the {{ site.data.keys.mf_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step a Cloud Foundry app is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
 
 3. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
 
-    ![Image of Mobile Foundation setup](overview-page.png)
+    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
 
-## Using the Mobile Foundation service
-With the MobileFirst Server now running, you are presented with the following Dashboard:
+## Using the {{ site.data.keys.mf_bm_short }} service
+{: #using-the-mobile-foundation-service }
 
-![Image of Mobile Foundation setup](service-dashboard.png)
+With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
 
-Click on **Add Analytics** to add MobileFirst Foundation Operational Analytics support to your server instance.
+![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
+
+Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
 Learn more in the [Adding Analytics support](#adding-analytics-support) section.
 
-Click on **Launch Console** to open the MobileFirst Operations Console. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon. 
+Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
 
-![Image of Mobile Foundation setup](dashboard.png)
+![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
 
 ### Server configuration
+{: #server-configuration }
 The basic server instance consists of:
 
 * A single node (server size: "small")
@@ -93,75 +106,94 @@ The basic server instance consists of:
 * 2GB storage capacity
 
 ### Advanced server configuration
-Through the **Settings** tab, you can further customize the server instance with:
+{: #advanced-server-configuration }
+Through the **Settings** tab, you can further customize the server instance with
 
 * Varying node, memory, and storage combinations
-* MobileFirst Operations Console admin password
+* {{ site.data.keys.mf_console }} admin password
 * LTPA keys
 * JNDI configuration
 * User registry
 * TrustStore
-* Operational Analytics configuration
+* {{ site.data.keys.mf_analytics_service }} configuration
 * DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
 * VPN
 
-![Image of Mobile Foundation setup](advanced-server-configuration.png)
+![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
 
-## Adding Analytics support
-You can add MobileFirst Foundation Operational Analytics support to your Mobile Foundation service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of MobileFirst Foundation Operational Analytics server.
+## Adding {{ site.data.keys.mf_analytics_service }} support
+{: #adding-analytics-support }
+You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
-* When using the **Developer** plan this action will also automatically hook the Analytics service instance to your MobileFirst Server instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+>When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
 
-Once the operation finishes, reload the MobileFirst Operations Console page in your browser to access the Analytics console.  
+<!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
+* When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
-> Learn more about analytics in the [MobileFirst Operational Analytics category](../../analytics).
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
 
-## Applying MobileFirst Server fixes
-Updates to the Mobile Foundation Bluemix services are applied automatically without a need for human interverntion, other than agreeing to perform the update. When an update is availabe, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+> Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
+
+##  Removing {{ site.data.keys.mf_analytics_service }} support
+{: #removing-analytics-support}
+
+You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
+
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+
+##  Switching from Analytics deployed with IBM Containers to Analytics service
+{: #switching-from-analytics-container-to-analytics-service}
+
+>**Note**: Deleting {{ site.data.keys.mf_analytics_service }} will remove all available analytics data. This data will not be available in the new {{ site.data.keys.mf_analytics_service }} instance.
+
+User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
+
+## Applying {{ site.data.keys.mf_server }} fixes
+{: #applying-mobilefirst-server-fixes }
+Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
-To access server logs, open the sidebar navigation and click on **Cloud Foundary Applications**. Select your service and click on **Runtime tab → Files**.
+{: #accessing-server-logs }
+To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
 
-* You can find the **messages.log** file in the **logs** folder.
-* You can find the **trace.log** file in the **apps/wlp/usr/servers/mfp/logs** folder.
+You can find the **messages.log** and **trace.log** files in the **logs** folder.
 
 #### Tracing
-
-> **Note:** currently tracing is not available due to a defect. Please use `MFP.Logger.info` instead of `MFP.Logger.debug` at this time and view the logs in the **messages.log** file.
-
+{: #tracing }
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
-1. In **Runtime tab → Memory and Instances**, select your service instance.
+1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
 2. Click the **Trace** action option.
 3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
 
 The **trace.log** file is now available in the above specified location.
 
-<img class="gifplayer" alt="Server logs for the Mobile Foundation service" src="server-logs.png"/>
+<img class="gifplayer" alt="Server logs for the {{ site.data.keys.mf_bm_short }} service" src="server-logs.png"/>
 
 ## Troubleshooting
+{: #troubleshooting }
 The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
 
 * Every time you make any of the following server-side actions:
     * Deploy an adapter or update any adapter configuration or property value
     * Perform any security configuration such scope-mapping and alike
-    
+
     Run the following from the command-line to download your configuration to a .zip file:
 
-    ```bash
-    $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
-    ```
+  ```bash
+  $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
+  ```
 
 * In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
 
-    ```bash
-    $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
-    ```
+  ```bash
+  $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
+  ```
 
 ## Further reading
-Now that the MobileFirst Server instance is up and running:
+{: #further-reading }
+Now that the {{ site.data.keys.mf_server }} instance is up and running,
 
-* Familiarize with the [MobileFirst Operations Console](../../product-overview/components/console).
+* Familiarize yourself with the [{{ site.data.keys.mf_console }}](../../product-overview/components/console).
 * Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
 * Read through all [available tutorials](../../all-tutorials/).

@@ -63,14 +63,14 @@ The MobileFirst native API folder serves two purposes:</p>
 <h2 id="initialize">Initializing WLClient</h2>
 <ol>
 <li>Create an instance of <code>WLClient</code>.
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 private WLClient client;</p>
 <p>public MainMidlet() {<br />
    client = WLClient.createInstance(this);<br />
  {% endhighlight %} </p>
 </li>
 <li>To establish the connection to a MobileFirst Server instance, use the <code>connect</code> method and specify a <code>MyConnectListener</code> class instance as the parameter.
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 public void commandAction(Command command, Item item) {<br />
     StringItem itemName = (StringItem)item;<br />
     if(itemName.getText().equals("1.Connect")) {<br />
@@ -83,16 +83,16 @@ public void commandAction(Command command, Item item) {<br />
 <p>The <code>WLClient</code> instance first connects to MobileFirst Server, according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it calls one of the methods of the <code>MyConnectListener</code> class.<br />
 The <code>MyConnectListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>{% highlight java linenos %} public class MyConnectListener implements WLResponseListener  { {% endhighlight %} </p>
+<p>{% highlight java  %} public class MyConnectListener implements WLResponseListener  { {% endhighlight %} </p>
 <p>The <code>WLResponseListener</code> interface specifies the following methods:</p>
-<p>{% highlight java linenos %} public void onSuccess (WLResponse response) { } {% endhighlight %} </p>
-<p>{% highlight java linenos %} public void onFailure (WLFailResponse response) { }  {% endhighlight %} </p>
+<p>{% highlight java  %} public void onSuccess (WLResponse response) { } {% endhighlight %} </p>
+<p>{% highlight java  %} public void onFailure (WLFailResponse response) { }  {% endhighlight %} </p>
 <p>Use these methods to process connection success or connection failure.</p>
 <h2 id="invoke">Invoking a MobileFirst procedure</h2>
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures:</p>
 <ol>
 <li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 else if(itemName.getText().equals("2.Invoke Procedure")) {<br />
      updateTextView("\nInvoking procedure...");<br />
      String adapterName = "RSSReader";<br />
@@ -102,21 +102,21 @@ else if(itemName.getText().equals("2.Invoke Procedure")) {<br />
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures.
 </li>
 <li>Add the required parameters as an object array and set the request options.
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 Object[] parameters = new Object[] {};<br />
 invocationData.setParameters(parameters);</p>
 <p>WLRequestOptions options = new WLRequestOptions();<br />
  {% endhighlight %} </p>
 </li>
 <li>Specify a <code>MyInvokeListener</code> class instance as a parameter.
-<p>{% highlight java linenos %} client.invokeProcedure(invocationData, new MyInvokeListener(), options); {% endhighlight %} </p>
+<p>{% highlight java  %} client.invokeProcedure(invocationData, new MyInvokeListener(), options); {% endhighlight %} </p>
 <p>After the procedure call completes, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 The <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.<br />
 The <code>WLClient</code> calls its <code>onSuccess</code> or <code>onFailure</code> methods.</p>
 <p>If the procedure call is successful, the <code>onSuccess</code> method of the <code>MyInvokeListener</code> instance is called.
 </li>
 <li>Use it to get the data that is retrieved from the adapter.
-<p>{% highlight java linenos %} <br />
+<p>{% highlight java  %} <br />
 import com.worklight.wlclient.api.WLFailResponse;<br />
 import com.worklight.wlclient.api.WLResponse;<br />
 import com.worklight.wlclient.api.WLResponseListener;</p>

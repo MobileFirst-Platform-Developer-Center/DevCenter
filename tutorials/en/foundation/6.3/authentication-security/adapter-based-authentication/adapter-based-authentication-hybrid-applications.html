@@ -18,7 +18,7 @@ This is a continuation of the <a title="Adapter-based authentication" href="../"
 <p>When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <div id="AppDiv">
       <input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" />
       <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SingleStepAuthRealm', {onSuccess:WL.Client.reloadApp})" />
@@ -28,7 +28,7 @@ When authentication is complete, it does the opposite.</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
 The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
 <h3>AuthDiv</h3>
-<p>{% highlight html linenos %}/>
+<p>{% highlight html  %}/>
 <div id="AuthDiv" style="display:none">
     <p id="AuthInfo"></p>
         <input type="text" placeholder="Enter username" id="AuthUsername"/>
@@ -43,12 +43,12 @@ The <code>AuthDiv</code> element is styled as <code>display:none</code> because 
 <h3>Challenge Handler</h3>
 <p>Use the <code>WL.Client.createChallengeHandler</code> method to create a challenge handler object.<br />
 Supply a realm name as a parameter.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 var singleStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler("SingleStepAuthRealm");
 {% endhighlight %}</p>
 <p>The <code>isCustomResponse</code> function of the challenge handler is called each time a response is received from the server. That function is used to detect whether the response contains data that is related to this challenge handler.<br />
 The function returns <code>true</code> or <code>false</code>.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 singleStepAuthRealmChallengeHandler.isCustomResponse = function(response) {
     if (!response || !response.responseJSON	|| response.responseText === null) {
         return false;
@@ -61,7 +61,7 @@ singleStepAuthRealmChallengeHandler.isCustomResponse = function(response) {
 };
 {% endhighlight %}</p>
 <p>If the <code>isCustomResponse</code> function returns <code>true</code>, the framework calls the <code>handleChallenge</code> function. This function is used to perform required actions, such as hide the application screen or show the login screen.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 singleStepAuthRealmChallengeHandler.handleChallenge = function(response){
     var authRequired = response.responseJSON.authRequired;</p>
     if (authRequired == true){
@@ -88,7 +88,7 @@ If <code>authRequired</code> is <code>false</code>, it shows <code>AppDiv</code>
 </ul>
 <p><strong>* Note: You must attach each of these functions to its object. For example: <code>myChallengeHandler.submitSuccess()</code> </strong></p>
 <p>Clicking the submit button triggers the function that collects the user name and the password from the HTML input fields and submits them to the adapter. Note the use of the <code>submitAdapterAuthentication</code> method.</p>
-<p>{% highlight javascript linenos %}
+<p>{% highlight javascript  %}
 $("#AuthSubmitButton").bind('click', function () {
     var username = $("#AuthUsername").val();
     var password = $("#AuthPassword").val();

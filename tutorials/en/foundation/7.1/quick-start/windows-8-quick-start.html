@@ -62,7 +62,7 @@ mfp push
 <h3>Implement the MobileFirst adapter invocation.</h3>
 <ul>
 <li>The following code invokes an adapter:<br />
-{% highlight csharp linenos %}
+{% highlight csharp  %}
 WLResourceRequest request = new WLResourceRequest("/adapters/MyAdapter/getStories", "GET");
 request.setQueryParameter("params","technology");
 MyInvokeListener listener = new MyInvokeListener();

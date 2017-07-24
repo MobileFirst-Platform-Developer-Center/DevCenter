@@ -36,8 +36,11 @@
             "name": "Windows 8 and 10",
             "path": "/foundation/8.0/windows-8-10-tutorials"
         }, {
-            "name": "Web apps",
+            "name": "Web",
             "path": "/foundation/8.0/web-tutorials"
+        }, {
+            "name": "Xamarin",
+            "path": "/foundation/8.0/xamarin-tutorials"
         }]
     }, {
         "name": "Admins",
@@ -110,7 +113,7 @@
     "path": "/downloads",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
 },{
-    "name": "Try Bluemix services",
-    "path": "/bluemix-services",
-    "extraClasses": "hidden-lg hidden-xs hidden-sm hidden-md"
+    "name": "Webinars",
+    "path": "/webinars",
+    "extraClasses": "hidden-xs hidden-sm hidden-md"
 }]

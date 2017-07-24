@@ -18,7 +18,7 @@ In your storyboard, add a <em>ViewController</em> containing a login form.<br />
 <h3>Challenge Handler</h3>
 <p>Create a <em>MyChallengeHandler</em> class as a subclass of <em>ChallengeHandler</em>.<br />
 We will implement some of the <em>ChallengeHandler</em> methods to respond to the challenge.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @interface MyChallengeHandler : ChallengeHandler
 @property ViewController* vc;
 //A convenient way of updating the View
@@ -26,11 +26,11 @@ We will implement some of the <em>ChallengeHandler</em> methods to respond to th
 @end
 {% endhighlight %}</p>
 <p>Before calling your protected adapter, make sure to register your challenge handler using <em>WLClient</em>'s <em>registerChallengeHandler</em> method.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 [[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];
 {% endhighlight %}</p>
 <p>The <em>isCustomResponse</em> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <em>true</em> or <em>false</em>.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @implementation MyChallengeHandler
 //...
 -(BOOL) isCustomResponse:(WLResponse *)response {
@@ -46,7 +46,7 @@ return ([authRequired compare:@"required"] == NSOrderedSame);
 @end
 {% endhighlight %}</p>
 <p>If <em>isCustomResponse</em> returns <em>true</em>, the framework calls the <em>handleChallenge</em> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @implementation MyChallengeHandler
 //...
 -(void) handleChallenge:(WLResponse *)response {
@@ -59,7 +59,7 @@ return ([authRequired compare:@"required"] == NSOrderedSame);
 {% endhighlight %}</p>
 <p><em>onSuccess</em> and <em>onFailure</em> get triggers when the authentication ends.<br />
 You need to call <em>submitSuccess</em> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @implementation MyChallengeHandler
 //...
 -(void) onSuccess:(WLResponse *)response {
@@ -73,7 +73,7 @@ You need to call <em>submitSuccess</em> to inform the framework that the authent
 }
 {% endhighlight %}</p>
 <p>In your <em>LoginViewController</em>, when the user clicks to submit his credentials, you need to call <em>submitLoginForm</em> to send the credentials to the MobileFirst Server.</p>
-<p>{% highlight objc linenos %}
+<p>{% highlight objc  %}
 @implementation LoginViewController
 //***
 - (IBAction)login:(id)sender {

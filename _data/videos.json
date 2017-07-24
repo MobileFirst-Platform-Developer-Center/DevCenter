@@ -1,57 +1,87 @@
 [{
+"caption": "Bluemix Mobile Foundation - IBM MobileFirst Foundation v8 Overview Introduction Part 1",
+"url": "//www.youtube.com/watch?v=w_yUXMS7A_M",
+"thumbnail": "//i3.ytimg.com/vi/w_yUXMS7A_M/maxresdefault.jpg",
+"tags": ["Development", "Bluemix", "Mobile Foundation"],
+"version": ["8.0"]
+},{
+"caption": "Bluemix Mobile Foundation - IBM MobileFirst Foundation v8 Overview Introduction Part 2",
+"url": "//www.youtube.com/watch?v=ZHwi0IBWvls",
+"thumbnail": "//i3.ytimg.com/vi/ZHwi0IBWvls/maxresdefault.jpg",
+"tags": ["Development", "Bluemix", "Mobile Foundation"],
+"version": ["8.0"]
+},{
+"caption": "Creating custom chart on IBM Bluemix Mobile Foundation Analytics Console",
+"url": "//www.youtube.com/watch?v=LW4uoUjLV4w&list=PL_WA4QhE4LNY1xbMqBl3lPLvAEyyI0vtI",
+"thumbnail": "//i3.ytimg.com/vi/LW4uoUjLV4w/maxresdefault.jpg",
+"tags": ["Development", "Bluemix", "Mobile Foundation", "Mobile Analytics"],
+"version": ["8.0"]
+},{
+"caption": "IBM MobileFirst Foundation 8.0 Overview Demo - Community Health App",
+"url": "//www.youtube.com/watch?v=L2_AnyGFnfw",
+"thumbnail": "//img.youtube.com/vi/L2_AnyGFnfw/hqdefault.jpg",
+"tags": ["Development"],
+"version": ["8.0"]
+},{
+"caption": "Mobile App Personalization with IBM MobileFirst Foundation 8.0",
+"url": "//www.youtube.com/watch?v=zko9L9hCGZU",
+"thumbnail": "//img.youtube.com/vi/zko9L9hCGZU/hqdefault.jpg",
+"tags": ["Development", "Live Update"],
+"version": ["8.0"]
+},{
 "caption": "Troubleshoot your app without Republishing with IBM MobileFirst Foundation",
 "url": "//www.youtube.com/watch?v=6s8CJIGfpJw",
 "thumbnail": "//img.youtube.com/vi/6s8CJIGfpJw/hqdefault.jpg",
 "tags": ["Development", "Deployment","Troubleshooting"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Adjusting app security on the fly with IBM MobileFirst Foundation",
 "url": "//www.youtube.com/watch?v=9XnVNPBu0C8",
 "thumbnail": "//img.youtube.com/vi/9XnVNPBu0C8/hqdefault.jpg",
 "tags": ["Development", "Authentication"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Enhancing mobile user engagement with Cognitive & IBM MobileFirst Platform",
 "url": "//www.youtube.com/watch?v=7kKy8ZSgnhw",
 "thumbnail": "//img.youtube.com/vi/7kKy8ZSgnhw/hqdefault.jpg",
 "tags": ["Development"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Gradual & Differential Rollout of new app features with IBM MobileFirst Foundation",
 "url": "//www.youtube.com/watch?v=YMUYeEbGGvk",
 "thumbnail": "//img.youtube.com/vi/YMUYeEbGGvk/hqdefault.jpg",
 "tags": ["Development","Live Update"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Gradually Rollout New Features with IBM MobileFirst Foundation",
 "url": "//www.youtube.com/watch?v=8CSD92vS0oM",
 "thumbnail": "//img.youtube.com/vi/8CSD92vS0oM/hqdefault.jpg",
 "tags": ["Development","Live Update"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Integrating your Xamarin apps with Mobile Foundation service on Bluemix",
 "url": "//www.youtube.com/watch?v=kw9k2d59FYQ",
 "thumbnail": "//img.youtube.com/vi/kw9k2d59FYQ/hqdefault.jpg",
 "tags": ["Development","Xamarin"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Live Update Showcase",
 "url": "//www.youtube.com/watch?v=P31W1sClqK0",
 "thumbnail": "//img.youtube.com/vi/P31W1sClqK0/hqdefault.jpg",
 "tags": ["Development","Live Update"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Hello Live Update demo",
 "url": "//www.youtube.com/watch?v=qw5Ue0kPCLE",
 "thumbnail": "//img.youtube.com/vi/qw5Ue0kPCLE/hqdefault.jpg",
 "tags": ["Development","Live Update"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
 "caption": "Setting-up Eclipse for Cordova developing in MobileFirst Foundation 8.0",
 "url": "//www.youtube.com/watch?v=yRe2AprnUeg",
 "thumbnail": "//img.youtube.com/vi/yRe2AprnUeg/hqdefault.jpg",
 "tags": ["Integration", "CLI", "Development","THyM", "Eclipse"],
-"version": ["8.0"] 
+"version": ["8.0"]
 },{
     "caption": "Getting Started with Ionic and MobileFirst Platform Foundation 8.0",
     "url": "//www.youtube.com/watch?v=DlxZYxXszIw",
@@ -77,7 +107,7 @@
     "thumbnail": "//img.youtube.com/vi/emDdHC0VlRY/hqdefault.jpg",
     "tags": ["DataPower", "Integration", "Security"],
     "version": ["7.1"]
-    
+
 }, {
     "caption": "MobileFirst Services Starter with a StrongLoop based mobile backend",
     "url": "//www.youtube.com/watch?v=wGdVL2Yyf-I",

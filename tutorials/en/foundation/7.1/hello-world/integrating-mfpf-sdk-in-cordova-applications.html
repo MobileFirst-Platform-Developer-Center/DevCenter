@@ -127,7 +127,7 @@ Please press enter to continue...
 <h2 id="mobileFirstPlatformInitializationFlow">MobileFirst Platform initialization flow</h2>
 <p>The initialization flow is similar to the flow of a MobileFirst Hybrid app. During initialization, the MobileFirst Cordova Plugin runs <code>WL.Client.init(wlInitOptions)</code>. After initialization completes, the function <code>wlCommonInit()</code> is called.</p>
 <p>The <code>wlInitOptions</code> object and the <code>wlCommonInit</code> function are available inside the <code>index.js</code> file, which is part of the <em>cordova-hello-world-mfp</em> template. You can use the standard Cordova <code>deviceready</code> event to handle Cordova initialization, but the function <code>wlCommonInit</code> is the recommended way to identify that MobileFirst features are ready to be used.</p>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 var Messages = {
     // Add here your messages for the default language.
     // Generate a similar file with a language suffix containing the translated messages.
@@ -364,7 +364,7 @@ Optionally, you can run the interactive command <code>mfp cordova plugin add</co
 <h4>Edit the index.html file</h4>
 </li>
 <p>Edit the <code><em>your-app-name</em>/www/index.html</code> file to add the three buttons: <strong>VIBRATE</strong>, <strong>CAMERA</strong>, and <strong>RSS FEED</strong>, a list to present the results from RSS FEED, and an image to present the result from the camera plug-in:</p>
-<p>{% highlight html linenos %}
+<p>{% highlight html  %}
 <body>
     <div id="menu" >
         <img alt="missing_alt" id="image" />
@@ -381,7 +381,7 @@ Optionally, you can run the interactive command <code>mfp cordova plugin add</co
 <li>
 <h4>Edit the index.css file</h4>
 <p>Edit the file <code><em>your-app-name</em>/www/css/index.css</code> to update the visual of the app.</p>
-<p>{% highlight css linenos %}
+<p>{% highlight css  %}
 body {
   position: absolute;
   height: 100%;
@@ -489,7 +489,7 @@ li {
 <li>For the <strong>CAMERA</strong> button, use the function <code>navigator.camera.getPicture(onSuccess,onFailure,options)</code> to open the camera.</li>
 <li>For the <strong>RSS FEED</strong> button, use the <code>WLResourceRequest</code> API method to call the adapter procedure <code>getStories</code>, as described in the <a href="../../server-side-development/invoking-adapter-procedures-hybrid-client-applications/" target="_blank">Invoking adapter procedures from hybrid client applications</a> tutorial.</li>
 </ul>
-<p>{% highlight js linenos %}
+<p>{% highlight js  %}
 var Messages = {
     // Add here your messages for the default language.
     // Generate a similar file with a language suffix containing the translated messages.

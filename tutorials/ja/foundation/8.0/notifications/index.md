@@ -1,10 +1,86 @@
 ---
 layout: tutorial
-title: Notifications
+title: 通知
 show_children: true
-show_disqus: false
-print_pdf: false
+relevantTo: [ios,android,windows,cordova]
+weight: 8
 ---
-## Overview
-In this category you learn how to implement push notification in Cordova and native applications.  
-To continue, select a tutorial:
+<!-- NLS_CHARSET=UTF-8 -->
+## 概説
+{: #overview }
+通知は、サーバーから「プッシュ」されるメッセージを受信する、モバイル・デバイスの機能です。  
+通知は、アプリケーションがフォアグラウンドまたはバックグラウンドで現在実行中であるかどうかにかかわらず受信されます。  
+
+{{ site.data.keys.product_full }} は、プッシュ通知または SMS 通知を iOS、Android、Windows 8.1 Universal、Windows 10 UWP、および Cordova (iOS、Android) アプリケーションに送信するための API メソッドの統合セットを提供します。通知は、{{ site.data.keys.mf_server }} からベンダー (Apple、Google、Microsoft、SMS Gateways) インフラストラクチャーに送信され、そこから関連デバイスへと送信されます。統一通知メカニズムにより、ユーザーおよびデバイスとの通信プロセス全体が、開発者から完全に透過的になります。
+
+#### デバイス・サポート
+{: #device-support }
+{{ site.data.keys.product }} では、プッシュ通知と SMS 通知が以下のプラットフォームに対してサポートされます。
+
+* iOS 8.x 以降
+* Android 4.x 以降
+* Windows 8.1、Windows 10
+
+#### ジャンプ先:
+{: #jump-to }
+* [プッシュ通知](#push-notifications)
+* [SMS 通知](#sms-notifications)
+* [プロキシー設定](#proxy-settings)
+* [次に使用するチュートリアル](#tutorials-to-follow-next)
+
+## プッシュ通知
+{: #push-notifications }
+通知には複数の形式を使用できます。
+
+* **アラート (iOS、Android、Windows)** - ポップアップ・テキスト・メッセージ
+* **サウンド (iOS、Android、Windows)** - 通知を受け取ったときに再生されるサウンド・ファイル
+* **バッジ (iOS)、タイル (Windows)** - ショート・テキストまたはイメージを使用可能なグラフィカル表現
+* **バナー (iOS)、トースト (Windows)** - デバイス・ディスプレイの上部にある、消えるポップアップ・テキスト・メッセージ
+* **対話式 (iOS 8 以降)** - 受け取った通知のバナー内のアクション・ボタン
+* **サイレント (iOS 8 以降)** - ユーザーの邪魔にならない通知送信
+
+### プッシュ通知のタイプ 
+{: #push-notification-types }
+#### タグ通知
+{: #tag-notifications }
+タグ通知は、特定のタグにサブスクライブしているすべてのデバイスを宛先とした通知メッセージです。  
+
+タグ・ベース通知は、サブジェクト・エリアまたはトピックに基づいて通知を区分けすることを可能にします。通知の受信者は、関心のあるサブジェクトまたはトピックに関するものである場合のみ通知を受け取ることを選択できます。したがって、タグ・ベース通知は受信者を区分けする手段を提供します。この機能により、タグを定義し、タグ別にメッセージを送受信できます。メッセージは、タグにサブスクライブされたデバイスのみを宛先とします。
+
+#### ブロードキャスト通知
+{: #broadcast-notifications }
+ブロードキャスト通知は、サブスクライブしているすべてのデバイスをターゲットとするタグ・プッシュ通知の一形式であり、予約済みの `Push.all` タグ (あらゆるデバイス用に自動作成される) へのサブスクリプションによって、プッシュ対応のすべての {{ site.data.keys.product_adj }} アプリケーションに対してデフォルトで使用可能になります。ブロードキャスト通知を使用不可にするには、予約済みの `Push.all` タグからアンサブスクライブします。
+
+#### ユニキャスト通知
+{:# unicast-notifications }
+ユニキャスト通知 (ユーザー認証済み通知) は、OAuth によって保護されます。これらは特定のデバイスまたはユーザー ID をターゲットとする通知メッセージです。ユーザー・サブスクリプション内のユーザー ID は、基礎となるセキュリティー・コンテキストに由来するものです。
+
+#### 対話式通知
+{: #interactive-notifications }
+対話式通知を使用すると、ユーザーは、通知が到着したときに、アプリケーションを開かなくてもアクションを実行できます。対話式通知を受信すると、デバイスは通知メッセージとともにアクション・ボタンを表示します。現在、対話式通知は、iOS バージョン 8 以降のデバイスでサポートされています。バージョン 8 より前の iOS デバイスに対話式通知が送信された場合、通知アクションは表示されません。
+
+> [対話式通知](handling-push-notifications/interactive)を処理する方法に関する説明。
+
+#### サイレント通知
+{: #silent-notifications }
+サイレント通知は、アラートを表示しない、あるいはユーザーを妨げない通知です。サイレント通知が到着すると、アプリケーションをフォアグラウンドに移行せずに、アプリケーションの処理コードがバックグラウンドで実行されます。現在、サイレント通知は、バージョン 7 以降の iOS デバイスでサポートされています。バージョン 7 より低いバージョンの iOS デバイスにサイレント通知が送信された場合、アプリケーションがバックグラウンドで実行されていると、通知は無視されます。アプリケーションがフォアグラウンドで実行されていると、通知のコールバック・メソッドが呼び出されます。
+
+> [サイレント通知](handling-push-notifications/silent)を処理する方法に関する説明。
+
+**注:** ユニキャスト通知では、ペイロードにタグがいっさい含まれません。POST メッセージ API のターゲット・ブロックで複数の deviceID または userID をそれぞれ指定することによって、通知メッセージのターゲットを複数のデバイスまたはユーザーにすることができます。
+
+## SMS 通知
+{: #sms-notifications }
+SMS 通知の受信を開始するには、アプリケーションがまず SMS 通知サブスクリプションに登録する必要があります。SMS 通知にサブスクライブするために、ユーザーは携帯電話番号を提供し、通知サブスクリプションを承認します。ユーザー承認を受け取ると、サブスクリプション要求が {{ site.data.keys.mf_server }} に送信されます。通知は、{{ site.data.keys.mf_console }} から取得されるときに処理され、事前構成された SMS ゲートウェイを通じて送信されます。
+
+ゲートウェイを構成するには、[通知の送信](sending-notifications)チュートリアルを参照してください。
+
+## プロキシー設定
+{: #proxy-settings }
+プロキシー設定を使用して、通知が APNS および GCM に送信される際に経由するオプションのプロキシーを設定します。プロキシーの設定には、**push.apns.proxy.*** および **push.gcm.proxy.*** の構成プロパティーを使用できます。詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
+
+> **注:** WNS には、プロキシー・サポートはありません。
+
+## 次に使用するチュートリアル
+{: #tutorials-to-follow-next }
+プッシュ通知の送信および受信を可能にするためには、サーバー・サイドとクライアント・サイドで必要な以下のセットアップを最初から最後まで行ってください。
