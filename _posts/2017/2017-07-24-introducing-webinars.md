@@ -6,7 +6,7 @@ tags:
 - Announcement
 - Webinars
 - Bluemix
-- IBM Cloud
+- IBM_Cloud
 author:
   name: S.A. Norton Stanley
 ---
