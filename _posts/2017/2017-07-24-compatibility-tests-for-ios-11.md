@@ -13,7 +13,7 @@ author:
 ---
 Apple announced iOS 11 during their annual WWDC2017 conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 11 [in this news bulletin](https://developer.apple.com/ios/).
 
-![iOS11](ios11beta_1.PNG)
+![iOS11]({{site.baseurl}}/assets/blog/2017-07-24-compatibility-tests-for-ios-11/ios11_beta.png)
 
 We encourage you to start testing your application(s) with iOS 11.
 
@@ -34,7 +34,7 @@ Existing application(s) that were created using MobileFirst Platform v7.1 or lat
 You can opt to build application(s) with Xcode 8 (older Xcode) and republish to the App Store. These application(s) will work on iOS 11.
 
 #### Updating existing application or submitting new application on the App Store (built using Xcode 9)
-Review the following sections to learn what actions you need to take so that your app can support iOS 11. These needs to be considered only if you are building the application(s) using new [Xcode 9 build](https://developer.apple.com/download).
+Review the following section to learn what actions you need to take so that your app can support iOS 11. These needs to be considered only if you are building the application(s) using new [Xcode 9 build](https://developer.apple.com/download).
 
 * [Xcode 9 build] can build targets written in only Swift 4 or Swift 3. It also does not provide tool to convert to Swift 3. iOS applications written in Swift version below than 3 need to be migrated to Swift 3 or Swift 4. This can be easily done using the migration guide [provided by Apple](https://swift.org/migration-guide).
 
@@ -53,6 +53,9 @@ Highlighted features that were tested are:
 * Push notifications
 
 All the above features were validated to work on iOS 11 beta 3.  
+
+#### Known Limitation
+Existing JSONStrore app does not work as expected when device is upgraded from iOS 10 to iOS 11. We will continue to investigate the issue.
 
 <br>
 Please continue to watch out this space for any new updates related to iOS 11 Support.
