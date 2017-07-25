@@ -186,7 +186,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
 {% endhighlight %}
 
-                <p>Once the initialization succeeds the <code>wlInitWebFrameworkDidCompleteWithResult</code> checks that the {{ site.data.keys.product_adj }} framework has been loaded, invokes <code>wlInitDidCompleteSuccessfully</code> and creates listeners for receiving data. <code>wlInitDidCompleteSuccessfully</code> creates a <code>cordovaViewController</code> that connects to the default <b>index.html</b> page.</p>
+                <p>Once the initialization succeeds the <code>wlInitWebFrameworkDidCompleteWithResult</code> checks that the {{ site.data.keys.product_adj }} framework has been loaded and creates a <code>MainViewController</code> that connects to the default <b>index.html</b> page.</p>
 
                 <p>Once the iOS Cordova app is built in Xcode without errors, you can proceed to add features to the native platform and WebView.</p>
 
