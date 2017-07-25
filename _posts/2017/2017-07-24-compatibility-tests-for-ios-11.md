@@ -7,9 +7,10 @@ tags:
 version:
 - 8.0
 - 7.1
-
 author:
-  name: Shubha S., Sandhya Suman
+  name: Shubha S.
+addtional author:
+- Sandhya Suman
 ---
 Apple announced iOS 11 during their annual WWDC2017 conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 11 [in this news bulletin](https://developer.apple.com/ios/).
 
