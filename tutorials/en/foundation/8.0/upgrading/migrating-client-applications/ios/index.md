@@ -234,8 +234,8 @@ The following optional pods provide additional features.
 <br/>
 Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
 
-#### What to do next
-{: #what-to-do-next }
+#### What next
+{: #what-next }
 Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Migrating encryption in iOS
