@@ -177,22 +177,8 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
             <div class="panel-body">
                 <p>The {{ site.data.keys.product_adj }} framework is initialized in the iOS platform to display a WebView in the Cordova app with {{ site.data.keys.product_adj }}.</p>
 
-                <b>main.m</b>
-                <p>In the <code>main.m</code> file the {{ site.data.keys.product_adj }} plug-in replaces the default main application <code>AppDelegate</code> with <code>MFPAppDelegate</code>.</p>
-
-{% highlight objc %}
-#import <UIKit/UIKit.h>
-int main(int argc, char *argv[]) {
- @autoreleasepool
-    {    
-        int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
-        return retVal;
-    }
-}
-{% endhighlight %}
-
-                <b>MFPAppDelegate.m</b>
-                <p>The <code>MFPAppDelegate.m</code> file is found in the plugins folder. This replaces the default Cordova <code>AppDelegate.m</code> file and initializes the {{ site.data.keys.product_adj }} framework before the view controller loads the WebView.</p>
+                <b>AppDelegate.m</b>
+                <p>The <code>AppDelegate.m</code> file is found in the Classes folder. This initializes the {{ site.data.keys.product_adj }} framework before the view controller loads the WebView.</p>
 
                 <p>The <code>didFinishLaunchingWithOptions</code> method initializes the framework:</p>
 
