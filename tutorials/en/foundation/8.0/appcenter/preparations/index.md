@@ -122,16 +122,16 @@ You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }}
 
 Build the **IBMAppCenter** project. The MobileFirst project contains a single application named **AppCenter**. Right-click the application and select **Run as → Build All Environments**.
 
-#### Android
-{: #android }
+#### Importing and building the project in Android
+{: #importing-building-projects-android }
 MobileFirst Studio generates a native Android project in **IBMAppCenter/apps/AppCenter/android/native**. A native Android development tools (ADT) project is in the android/native folder. You can compile and sign this project by using the ADT tools. This project requires Android SDK level 16 to be installed, so that the resulting APK is compatible with all Android versions 2.3 and later. If you choose a higher level of the Android SDK when you build the project, the resulting APK will not be compatible with Android version 2.3.
 
 See the [Android site for developers](https://developer.android.com/index.html) for more specific Android information that affects the mobile client application.
 
 If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
 
-#### iOS
-{: #ios }
+#### Importing and building the project in iOS
+{: #importing-building-projects-ios }
 MobileFirst Studio generates a native iOS project in **IBMAppCenter/apps/AppCenter/iphone/native**. The **IBMAppCenterAppCenterIphone.xcodeproj** file is in the iphone/native folder. This file is the Xcode project that you must compile and sign by using Xcode.
 
 See [The Apple developer site](https://developer.apple.com/) to learn more about how to sign the iOS mobile client application. To sign an iOS application, you must change the Bundle Identifier of the application to a bundle identifier that can be used with the provisioning profile that you use. The value is defined in the Xcode project settings as **com.your\_internet\_domain\_name.appcenter**, where **your\_internet\_domain\_name** is the name of your internet domain.
