@@ -38,7 +38,7 @@ Log in to IBM Bluemix and create a Mobile Foundation service.
 - Go to Mobile Analytics console and follow the second step in Export/Db2 Warehouse. Paste the Db2 Warehouse credentials and click on Submit.
 - On submission, the view displays the export enabled page which details the DB schema and tables that would be created in Db2 Warehouse.
 
-  ![Db2 Warehouse Export schema]({{site.baseurl}}/assets/blog/2017-04-26-custom-charts-using-analytics-and-dashdb-analytics-service/dashdb-export.png)
+  ![Db2 Warehouse Export schema]({{site.baseurl}}/assets/blog/2017-04-26-custom-charts-using-analytics-and-dashdb-analytics-service/db2-warehouse-export-schema.png)
 - Add some custom events in a mobile app using the Mobile Foundation SDK. A sample code snippet for the same from android is given below.
 
   ```
