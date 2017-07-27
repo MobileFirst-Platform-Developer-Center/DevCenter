@@ -13,7 +13,7 @@ author:
 
 # Overview
 
-IBM Mobile Foundation Service can be configured to connect to IBM® Mobile Analytics for Bluemix® service to pump the analytics events and logs. Currently the Mobile Analytics service doesn’t support out-of-the-box Mobile Foundation Service specific features like custom charts and adapter analytics.  However, there is an approach where you can exploit the Db2 Warehouse export’ option of the Mobile Analytics service and achieve the building and viewing of Custom charts or analytics for Mobile Foundation Adapters.
+IBM Mobile Foundation Service can be configured to connect to IBM® Mobile Analytics for Bluemix® service to pump the analytics events and logs. Currently the Mobile Analytics service doesn’t support out-of-the-box Mobile Foundation Service specific features like custom charts and adapter analytics.  However, there is an approach where you can exploit the ’Db2 Warehouse export’ option of the Mobile Analytics service and achieve the building and viewing of Custom charts or analytics for Mobile Foundation Adapters.
 
 This blog details this approach of building adapter analytics using Mobile Analytics service and Mobile Foundation leveraging the Db2 Warehouse on Cloud service capabilities for charting. You can use the Mobile Foundation server installed on your on-premises environment or quickly configure a Foundation server on Bluemix using the IBM Mobile Foundation service. We will use the Mobile Foundation service on Bluemix in this blog.
 
@@ -33,7 +33,7 @@ Log in to IBM Bluemix and create a Mobile Foundation service.
   ![Db2 Warehouse Export page]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/db2-warehouse-export-page.png)
 - Go to Service Credentials tab and click on **New credential**. Click on Add to create a new credential for Db2 Warehouse.
 - Under Actions, click on View credentials and copy the credential details to clipboard (use the copy to clipboard button on the right.)
-- Go to Mobile Analytics console and follow the second step in Export/Db2 Warehouse. Paste the Db2 Warehouse credentials and click on Submit.
+- Go back to Mobile Analytics console, select Db2 Warehouse under Export and go to the second step in "Set Up Export" page.  Here paste the Db2 Warehouse credentials that you had copied earlier into the clipboard and click on Submit.
 - On submission, the view displays the export enabled page which details the DB schema and tables that would be created in Db2 Warehouse.
 
   ![Db2 Warehouse Export schema]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/db2-warehouse-export-schema.png)
@@ -66,7 +66,7 @@ Log in to IBM Bluemix and create a Mobile Foundation service.
     }
     ```
 - Register the app to connect to the Mobile foundation service and trigger the custom events from mobile application. Check the analytics screens in the Mobile Analytics console. See the custom data sent under Troubleshooting > App Log Search.
-- Now from Bluemix Dashboard, select the Db2 Warehouse on Cloud service which will open its service console.  On the console, click on Open. This opens the Db2 Warehouse with the DB schema that has been created for Mobile Analytics. Click on Tables on the left-hand side. The DB schema name can be found from the Db2 Warehouse credentials which is used for Mobile Analytics. Here all tables should get listed as shown below.
+- Now from Bluemix Dashboard, select the Db2 Warehouse on Cloud service which will open its service console.  On the console, click on Open. This opens the Db2 Warehouse with the DB schema that has been created for Mobile Analytics.
 - Click on Explore on the top of the page. The DB schema name can be found from the Db2 Warehouse credentials which is used for Mobile Analytics. Click on the DB schema name. Here all tables should get listed as shown below. Click on a table to see the table description.
 
   ![Db2 Warehouse Tables]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/db2-warehouse-tables.png)
@@ -76,6 +76,8 @@ Log in to IBM Bluemix and create a Mobile Foundation service.
   ![Db2 Warehouse Table Contents]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/db2-warehouse-table-content.png)
 
 ## Creating and running R script to plot adapter analytics charts in Db2 Warehouse on Cloud
+
+Now that we have successfully exported the analytics data to DB2 Warehouse we shall now chart them.
 
 - Choose NETWORKTRANSACTION table and click on Browse Data tab to see that all the adapter calls sent from Mobile Analytics is available here in columns like ADAPTERNAME, PROCEDURENAME etc.
 - Db2 Warehouse on cloud comes with R studio where the R scripts can be run to create charts.

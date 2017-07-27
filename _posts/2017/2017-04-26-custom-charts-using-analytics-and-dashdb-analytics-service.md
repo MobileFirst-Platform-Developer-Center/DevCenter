@@ -35,7 +35,7 @@ Log in to IBM Bluemix and create a Mobile Foundation service.
 
 - Go to Service Credentials tab and click on **New credential**. Click on Add to create a new credential for Db2 Warehouse.
 - Under Actions, click on View credentials and copy the credential details to clipboard (use the copy to clipboard button on the right.)
-- Go to Mobile Analytics console and follow the second step in Export/Db2 Warehouse. Paste the Db2 Warehouse credentials and click on Submit.
+- Go back to Mobile Analytics console, select Db2 Warehouse under Export and go to the second step in "Set Up Export" page.  Here paste the Db2 Warehouse credentials that you had copied earlier into the clipboard and click on Submit.
 - On submission, the view displays the export enabled page which details the DB schema and tables that would be created in Db2 Warehouse.
 
   ![Db2 Warehouse Export schema]({{site.baseurl}}/assets/blog/2017-04-26-custom-charts-using-analytics-and-dashdb-analytics-service/db2-warehouse-export-schema.png)
