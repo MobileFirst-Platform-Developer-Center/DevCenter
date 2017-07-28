@@ -57,10 +57,26 @@ indexed: false
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
    </ul>
 
    <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
-      <div class="item active">
+     <div class="item active">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 carousel-caption" role="tab">
+                  <h1 class="no-anchor">Migrate to Mobile Foundation v8</h1>
+                  <p class="caption-text">Use our detailed documentation and migration cookbooks to plan your migration to {{ site.data.keys.product_full }} v8.</p>
+                  <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/" role="button">Plan your migration</a></p>
+               </div>
+
+               <div class="hidden-xs col-md-5 carousel-caption">
+                  <img src="{{site.baseurl}}/assets/carousel/banner1.png" alt="migrating to v8" />
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="item">
          <div class="container">
             <div class="row">
                <div class="col-md-7 carousel-caption" role="tab">
@@ -108,6 +124,8 @@ indexed: false
               </div>
          </div>
       </div>
+
+
    </div>
 
    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
