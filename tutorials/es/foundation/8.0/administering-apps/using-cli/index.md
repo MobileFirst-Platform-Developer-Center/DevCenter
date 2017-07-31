@@ -10,6 +10,31 @@ weight: 4
 Puede administrar aplicaciones {{ site.data.keys.product_adj }} a través del programa **mfpadm**.
 
 
+>Las versiones del {{ site.data.keys.product_full }} SDK posteriores a la versión **8.0.0.0-MFPF-IF201701250919** tienen un soporte de autenticidad de aplicación actualizado, con mandatos `mfpadm` para conmutar entre una validación `dinámica` y otra `estática` (también es posible restablecerla).
+>
+Vaya hasta el directorio de instalación de {{ site.data.keys.product_full }} `/MobilefirstPlatformServer/shortcuts` y ejecute los mandatos `mfpadm`. 
+>
+1.Para conmutar entre tipos de validación: 
+```bash
+	mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
+```  
+El valor para *TYPE* puede ser `static` o `dynamic`
+>
+Ejemplo para android: Aquí se establecerá TYPE en la validación `dynamic`.
+```bash
+  mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp test android 1.0 set authenticity-validation dynamic
+```
+>
+2.Para restablecer los datos utilizando el siguiente mandato que borra la huella de la aplicación. 
+```bash
+  mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
+```
+Ejemplo:
+>
+```bash
+  mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp sample.com.pincodeandroid android 1.0 reset authenticity
+```
+
 #### Ir a 
 {: #jump-to }
 
@@ -90,17 +115,17 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] algún mandato
 El programa **mfpadm** tiene las siguientes opciones:
 
 
-| Opción	| Tipo | Descripción | Obligatorio | Predeterminado | 
+| Opción	| Tipo | Descripción | Obligatorio | Predeterminado |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | URL base de la aplicación web de {{ site.data.keys.product_adj }} para los servicios de administración | Sí | | 
-| --secure	 | Booleano | Evitar operaciones con riesgos de seguridad | No | verdadero | 
+| --url | 	 | URL | URL base de la aplicación web de {{ site.data.keys.product_adj }} para los servicios de administración | Sí | |
+| --secure	 | Booleano | Evitar operaciones con riesgos de seguridad | No | verdadero |
 | --user	 | nombre | Nombre de usuario para acceder a los servicios de administración de {{ site.data.keys.product_adj }} | Sí |  | 	 
-| --passwordfile | archivo | Archivo con la contraseña del usuario | No | 
+| --passwordfile | archivo | Archivo con la contraseña del usuario | No |
 | --timeout	     | Número   | Tiempo de espera para todo el acceso al servicio REST, en segundos | No | 	 
 | --connect-timeout | Número  | Tiempo de espera para establecer una conexión de red, en segundos | No |
-| --socket-timeout  | Número  | Tiempo de espera para detectar la pérdida de una conexión de red, en segundos | No | 
+| --socket-timeout  | Número  | Tiempo de espera para detectar la pérdida de una conexión de red, en segundos | No |
 | --connection-request-timeout | Tiempo de espera para obtener una entrada de una agrupación de solicitudes de conexión, en segundos | No |
-| --lock-timeout | Número  | Tiempo de espera para adquirir un bloqueo, en segundos | No | 2 | 
+| --lock-timeout | Número  | Tiempo de espera para adquirir un bloqueo, en segundos | No | 2 |
 | --verbose	     | Salida detallada | No	| |  
 
 **url**  
@@ -130,44 +155,44 @@ Por esta razón, no pase la contraseña a un proceso a través de un argumento d
 
 Las llamadas a mfpadm contienen un mandato. Se da soporte a los siguientes mandatos. 
 
-| Mandato                           | Descripción | 
+| Mandato                           | Descripción |
 |-----------------------------------|-------------|
-| show info	| Muestra información de configuración y de usuario. | 
-| show global-config | Muestra información de configuración global. | 
-| show diagnostics | Muestra información de diagnósticos. | 
-| show versions	| Muestra información de versión.  | 
-| unlock | Libera el bloqueo de propósito general.  | 
-| list runtimes [--in-database] | Lista los tiempos de ejecución. | 
-| show runtime [runtime-name] | Muestra información sobre un tiempo de ejecución. | 
-| delete runtime [runtime-name] condition | Suprime un tiempo de ejecución. | 
-| show user-config [runtime-name] | Muestra la configuración de usuario de un tiempo de ejecución. | 
-| set user-config [runtime-name] file | Especifica la configuración de usuario de un tiempo de ejecución.  | 
-| set user-config [runtime-name] property = value | Especifica una configuración de usuario de un tiempo de ejecución.  | 
-| show confidential-clients [runtime-name] | Muestra la configuración de los clientes confidencial de un entorno de ejecución. | 
-| set confidential-clients [runtime-name] file | Especifica la configuración de los clientes confidencial de un entorno de ejecución. | 
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Especifica una regla para la configuración de los clientes confidenciales de un entorno de ejecución. | 
-| list adapters [runtime-name] | Lista los adaptadores. | 
-| deploy adapter [runtime-name] property = value | Despliega un adaptador. | 
-| show adapter [runtime-name] adapter-name | Muestra información sobre un adaptador.| 
-| delete adapter [runtime-name] adapter-name | Suprime un adaptador.| 
-| adapter [runtime-name] adapter-name get binary [> tofile]	| Obtiene los datos binarios de un adaptador.| 
-| list apps [runtime-name] | Lista las aplicaciones. | 
-| deploy app [runtime-name] file | Despliega una aplicación. | 
-| show app [runtime-name] app-name | Muestra información sobre una aplicación. | 
-| delete app [runtime-name] app-name | Suprime una aplicación.  | 
+| show info	| Muestra información de configuración y de usuario. |
+| show global-config | Muestra información de configuración global. |
+| show diagnostics | Muestra información de diagnósticos. |
+| show versions	| Muestra información de versión.  |
+| unlock | Libera el bloqueo de propósito general.  |
+| list runtimes [--in-database] | Lista los tiempos de ejecución. |
+| show runtime [runtime-name] | Muestra información sobre un tiempo de ejecución. |
+| delete runtime [runtime-name] condition | Suprime un tiempo de ejecución. |
+| show user-config [runtime-name] | Muestra la configuración de usuario de un tiempo de ejecución. |
+| set user-config [runtime-name] file | Especifica la configuración de usuario de un tiempo de ejecución.  |
+| set user-config [runtime-name] property = value | Especifica una configuración de usuario de un tiempo de ejecución.  |
+| show confidential-clients [runtime-name] | Muestra la configuración de los clientes confidencial de un entorno de ejecución. |
+| set confidential-clients [runtime-name] file | Especifica la configuración de los clientes confidencial de un entorno de ejecución. |
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Especifica una regla para la configuración de los clientes confidenciales de un entorno de ejecución. |
+| list adapters [runtime-name] | Lista los adaptadores. |
+| deploy adapter [runtime-name] property = value | Despliega un adaptador. |
+| show adapter [runtime-name] adapter-name | Muestra información sobre un adaptador.|
+| delete adapter [runtime-name] adapter-name | Suprime un adaptador.|
+| adapter [runtime-name] adapter-name get binary [> tofile]	| Obtiene los datos binarios de un adaptador.|
+| list apps [runtime-name] | Lista las aplicaciones. |
+| deploy app [runtime-name] file | Despliega una aplicación. |
+| show app [runtime-name] app-name | Muestra información sobre una aplicación. |
+| delete app [runtime-name] app-name | Suprime una aplicación.  |
 | show app version [runtime-name] app-name environment version | Muestra información sobre una versión de una aplicación.  |
 | delete app version [runtime-name] app-name environment version | Suprime una versión de una aplicación. |
 | app [runtime-name] app-name show license-config | Muestra la configuración de licencia de señal de una aplicación.  |
 | app [runtime-name] app-name set license-config app-type license-type | Muestra la configuración de licencia de señal de una aplicación.  |
-| app [runtime-name] app-name delete license-config | Elimina la configuración de licencia de señal de una aplicación.  | 
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Obtiene el descriptor de una versión de aplicación.  | 
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | Obtiene los recursos web de una aplicación. | 
-| app version [runtime-name] app-name environment version set web-resources file | Especifica los recursos web de una versión de aplicación.  | 
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Obtiene los datos de autenticidad de una versión de aplicación.  | 
-| app version [runtime-name] app-name environment version set authenticity-data [file] | Especifica los datos de autenticidad de una versión de aplicación.  | 
-| app version [runtime-name] app-name environment version delete authenticity-data | Suprime los datos de autenticidad de una versión de aplicación.  | 
-| app version [runtime-name] app-name environment version show user-config | Muestra la configuración de usuario de una versión de aplicación.  | 
-| app version [runtime-name] app-name environment version set user-config file | Especifica la configuración de usuario de una versión de aplicación.  | 
+| app [runtime-name] app-name delete license-config | Elimina la configuración de licencia de señal de una aplicación.  |
+| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Obtiene el descriptor de una versión de aplicación.  |
+| app version [runtime-name] app-name environment version get web-resources [> tofile] | Obtiene los recursos web de una aplicación. |
+| app version [runtime-name] app-name environment version set web-resources file | Especifica los recursos web de una versión de aplicación.  |
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Obtiene los datos de autenticidad de una versión de aplicación.  |
+| app version [runtime-name] app-name environment version set authenticity-data [file] | Especifica los datos de autenticidad de una versión de aplicación.  |
+| app version [runtime-name] app-name environment version delete authenticity-data | Suprime los datos de autenticidad de una versión de aplicación.  |
+| app version [runtime-name] app-name environment version show user-config | Muestra la configuración de usuario de una versión de aplicación.  |
+| app version [runtime-name] app-name environment version set user-config file | Especifica la configuración de usuario de una versión de aplicación.  |
 | app version [runtime-name] app-name environment version set user-config property = value | Especifica una configuración de usuario de una versión de aplicación.  |
 | list devices [runtime-name][--query query] | Lista los dispositivos.  |
 | remove device [runtime-name] id | Elimina un dispositivo.  |
@@ -230,17 +255,17 @@ También puede almacenar las opciones en un archivo de configuración en lugar d
 Utilice estos mandatos para almacenar estos valores en el archivo de configuración.
 
 | Mandato | Comentario |
-|---------|---------| 
-| mfpadm [--configfile=file] config url URL | | 
-| mfpadm [--configfile=file] config secure boolean | | 
-| mfpadm [--configfile=file] config user name | | 
-| mfpadm [--configfile=file] config password | Prompts for the password. | 
-| mfpadm [--configfile=file] config timeout seconds | | 
-| mfpadm [--configfile=file] config connect-timeout seconds | | 
-| mfpadm [--configfile=file] config socket-timeout seconds | | 
-| mfpadm [--configfile=file] config connection-request-timeout seconds | | 
-| mfpadm [--configfile=file] config lock-timeout seconds | | 
-| mfpadm [--configfile=file] config runtime runtime-name | | 
+|---------|---------|
+| mfpadm [--configfile=file] config url URL | |
+| mfpadm [--configfile=file] config secure boolean | |
+| mfpadm [--configfile=file] config user name | |
+| mfpadm [--configfile=file] config password | Prompts for the password. |
+| mfpadm [--configfile=file] config timeout seconds | |
+| mfpadm [--configfile=file] config connect-timeout seconds | |
+| mfpadm [--configfile=file] config socket-timeout seconds | |
+| mfpadm [--configfile=file] config connection-request-timeout seconds | |
+| mfpadm [--configfile=file] config lock-timeout seconds | |
+| mfpadm [--configfile=file] config runtime runtime-name | |
 
 Utilice este mandato para listar los valores almacenados en el archivo de configuración: `mfpadm [--configfile=file] config`
 
@@ -257,10 +282,10 @@ El archivo de configuración es un archivo de texto, en la codificación del ent
 {: #generic-options }
 También hay las opciones genéricas usuales: 
 
-| Opción	| Descripción | 
+| Opción	| Descripción |
 |-----------|-------------|
-| --help	| Muestra ayuda sobre la utilización | 
-| --version	| Muestra la versión | 
+| --help	| Muestra ayuda sobre la utilización |
+| --version	| Muestra la versión |
 
 #### Formato XML
 {: #xml-format }
@@ -303,7 +328,7 @@ Acepta las siguientes opciones:
 
 | Argumento | Descripción |
 |----------|-------------|
-| --xml    | Produce salida XML en lugar de una salida tabular. | 
+| --xml    | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**  
 
@@ -329,9 +354,9 @@ Acepta los siguientes argumentos:
 
 El mandato `show user-config` utiliza las siguientes opciones después del verbo. 
 
-| Argumento | Descripción | Obligatorio | Predeterminado | 
+| Argumento | Descripción | Obligatorio | Predeterminado |
 |----------|-------------|----------|---------|
-| --xml | Genera salida en formato XML en lugar de formato JSON.  | No | Salida estándar | 
+| --xml | Genera salida en formato XML en lugar de formato JSON.  | No | Salida estándar |
 
 **Ejemplo**  
 
@@ -351,20 +376,20 @@ La sintaxis para toda la configuración: `set user-config [runtime-name] file`
 
 Acepta los siguientes argumentos: 
 
-| Atributo | Descripción | 
+| Atributo | Descripción |
 |-----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| file | Nombre del archivo XML o JSON que contiene la nueva configuración.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| file | Nombre del archivo XML o JSON que contiene la nueva configuración.  |
 
 Sintaxis para una propiedad individual: `set user-config [runtime-name] property = value`
 
 El mandato `set user-config` acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
+| runtime-name | Nombre de tiempo de ejecución. |
 | property | Nombre de la propiedad JSON. Para una propiedad anidada, utilice la sintaxis prop1.prop2.....propN. Para un elemento de matriz JSON, utilice el índice en lugar de un nombre de propiedad.  |
-| value | Valor de la propiedad.  | 
+| value | Valor de la propiedad.  |
 
 **Ejemplos**  
 
@@ -420,10 +445,10 @@ Sintaxis: `set confidential-clients [runtime-name] file`
 
 Acepta los siguientes argumentos: 
 
-| Atributo | Descripción | 
+| Atributo | Descripción |
 |-----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| file | Nombre del archivo XML o JSON que contiene la nueva configuración.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| file | Nombre del archivo XML o JSON que contiene la nueva configuración.  |
 
 **Ejemplo**
 
@@ -447,11 +472,11 @@ Acepta los siguientes argumentos:
 
 | Atributo	| Descripción |
 |-----------|-------------|
-| runtime | Nombre de tiempo de ejecución. | 
-| id | El identificador de la regla. | 
-| displayName | El nombre de visualización de la regla.  | 
-| secret | Secreto de la regla.  | 
-| allowedScope | Ámbito de la regla. Lista de señales separadas por espacios. Utilice comillas dobles para pasar una lista de dos o más señales.  | 
+| runtime | Nombre de tiempo de ejecución. |
+| id | El identificador de la regla. |
+| displayName | El nombre de visualización de la regla.  |
+| secret | Secreto de la regla.  |
+| allowedScope | Ámbito de la regla. Lista de señales separadas por espacios. Utilice comillas dobles para pasar una lista de dos o más señales.  |
 
 **Ejemplo**
 
@@ -475,15 +500,15 @@ Sintaxis: `list adapters [runtime-name]`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
 | runtime-name | Nombre de tiempo de ejecución. |
 
 El mandato `list adapters` acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**  
 
@@ -503,7 +528,7 @@ Sintaxis: `deploy adapter [runtime-name] file`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
 | runtime-name | Nombre de tiempo de ejecución. |
 | file | Archivo de adaptador binario (.adapter) |
@@ -527,7 +552,7 @@ Sintaxis: `show adapter [runtime-name] adapter-name`
 
 Acepta los siguientes argumentos. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
 | runtime-name | Nombre de tiempo de ejecución. |
 | adapter-name | Nombre de un adaptador |
@@ -559,8 +584,8 @@ Acepta los siguientes argumentos:
 
 | Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| adapter-name | Nombre de un adaptador. | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| adapter-name | Nombre de un adaptador. |
 
 **Ejemplo**
 
@@ -576,10 +601,10 @@ Este mandato se basa en el servicio REST [Adapter (DELETE)](http://www.ibm.com/s
 {: #the-adapter-command-prefix }
 El prefijo de mandato `adapter` utiliza los siguientes argumentos antes del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| adapter-name | Nombre de un adaptador. | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| adapter-name | Nombre de un adaptador. |
 
 <br/>
 #### Mandato `adapter get binary`
@@ -590,7 +615,7 @@ Sintaxis: `adapter [runtime-name] adapter-name get binary [> tofile]`
 
 Acepta las siguientes opciones después del verbo. 
 
-| Opción | Descripción | Obligatorio | Predeterminado | 
+| Opción | Descripción | Obligatorio | Predeterminado |
 |--------|-------------|----------|---------|
 | > tofile | Nombre del archivo de salida. | No | Salida estándar |
 
@@ -614,7 +639,7 @@ Acepta las siguientes opciones después del verbo.
 
 | Opción | Descripción |
 |--------|-------------|
-| --xml | Genera salida en formato XML en lugar de formato JSON.  | 
+| --xml | Genera salida en formato XML en lugar de formato JSON.  |
 
 **Ejemplo**
 
@@ -634,7 +659,7 @@ Sintaxis para toda la configuración: `adapter [runtime-name] adapter-name set u
 
 Acepta los siguientes argumentos después del verbo. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
 | file | Nombre del archivo XML o JSON que contiene la nueva configuración.  |
 
@@ -644,8 +669,8 @@ Acepta los siguientes argumentos después del verbo.
 
 | Opción | Descripción |
 |--------|-------------|
-| property | Nombre de la propiedad JSON. Para una propiedad anidada, utilice la sintaxis prop1.prop2.....propN. Para un elemento de matriz JSON, utilice el índice en lugar de un nombre de propiedad.  | 
-| value | Valor de la propiedad.  | 
+| property | Nombre de la propiedad JSON. Para una propiedad anidada, utilice la sintaxis prop1.prop2.....propN. Para un elemento de matriz JSON, utilice el índice en lugar de un nombre de propiedad.  |
+| value | Valor de la propiedad.  |
 
 **Ejemplos**
 
@@ -673,7 +698,7 @@ Sintaxis: `list apps [runtime-name]`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
 | runtime-name | Nombre de tiempo de ejecución. |
 
@@ -700,7 +725,7 @@ Sintaxis: `deploy app [runtime-name] file`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
 | runtime-name | Nombre de tiempo de ejecución. |
 | file | Descriptor de la aplicación, un archivo JSON.  |
@@ -722,10 +747,10 @@ Sintaxis: `show app [runtime-name] app-name`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| app-name | Nombre de una aplicación.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| app-name | Nombre de una aplicación.  |
 
 El mandato `show app` acepta las siguientes opciones después del objeto. 
 
@@ -749,10 +774,10 @@ Sintaxis: `delete app [runtime-name] app-name`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| app-name | Nombre de una aplicación  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| app-name | Nombre de una aplicación  |
 
 **Ejemplo**
 
@@ -772,18 +797,18 @@ Sintaxis: `show app version [runtime-name] app-name environment version`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| app-name | Nombre de una aplicación.  | 
-| environment | Plataforma móvil.  | 
-| version | Versión de la aplicación.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| app-name | Nombre de una aplicación.  |
+| environment | Plataforma móvil.  |
+| version | Versión de la aplicación.  |
 
 El mandato `show app version` acepta las siguientes opciones después del objeto. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 | ---------|-------------|
-| -- xml | Produce salida XML en lugar de una salida tabular. | 
+| -- xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**
 
@@ -803,12 +828,12 @@ Sintaxis: `delete app version [runtime-name] app-name environment version`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| app-name | Nombre de una aplicación.  | 
-| environment | Plataforma móvil.  | 
-| version | Versión de la aplicación.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| app-name | Nombre de una aplicación.  |
+| environment | Plataforma móvil.  |
+| version | Versión de la aplicación.  |
 
 **Ejemplo**
 
@@ -823,10 +848,10 @@ Este mandato se basa en el servicio REST [Application Version (DELETE)](http://w
 {: #the-app-command-prefix }
 El prefijo de mandato `app` utiliza los siguientes argumentos antes del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| app-name | Nombre de una aplicación.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| app-name | Nombre de una aplicación.  |
 
 #### Mandato `app show license-config` 
 {: #the-app-show-license-config-command }
@@ -837,9 +862,9 @@ Sintaxis: `app [runtime-name] app-name show license-config`
 
 Acepta las siguientes opciones después del objeto: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**
 
@@ -858,10 +883,10 @@ Sintaxis: `app [runtime-name] app-name set license-config app-type license-type`
 
 Acepta los siguientes argumentos después del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| appType | Tipo de aplicación: B2C o B2E. | 
-| licenseType | Tipo de aplicación: APPLICATION o ADDITIONAL_BRAND_DEPLOYMENT o NON_PRODUCTION. | 
+| appType | Tipo de aplicación: B2C o B2E. |
+| licenseType | Tipo de aplicación: APPLICATION o ADDITIONAL_BRAND_DEPLOYMENT o NON_PRODUCTION. |
 
 **Ejemplo**
 
@@ -892,12 +917,12 @@ Este mandato se basa en el servicio REST [License configuration (DELETE)](http:/
 {: #the-app-version-command-prefix }
 El prefijo de mandato `app version` utiliza los siguientes argumentos antes del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| app-name | Nombre de una aplicación.  | 
-| environment | Plataforma móvil | 
-| version | Versión de la aplicación  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| app-name | Nombre de una aplicación.  |
+| environment | Plataforma móvil |
+| version | Versión de la aplicación  |
 
 #### Mandato `app version get descriptor`
 {: #the-app-version-get-descriptor-command }
@@ -908,9 +933,9 @@ Sintaxis: `app version [runtime-name] app-name environment version get descripto
 
 Acepta los siguientes argumentos después del verbo. 
 
-| Argumento | Descripción | Obligatorio | Predeterminado | 
+| Argumento | Descripción | Obligatorio | Predeterminado |
 |----------|-------------|----------|---------|
-| > tofile | Nombre del archivo de salida. | No | Salida estándar | 
+| > tofile | Nombre del archivo de salida. | No | Salida estándar |
 
 **Ejemplo**
 
@@ -929,9 +954,9 @@ Sintaxis: `app version [runtime-name] app-name environment version get web-resou
 
 Acepta los siguientes argumentos después del verbo. 
 
-| Argumento | Descripción | Obligatorio | Predeterminado | 
+| Argumento | Descripción | Obligatorio | Predeterminado |
 |----------|-------------|----------|---------|
-| > tofile | Nombre del archivo de salida. | No | Salida estándar | 
+| > tofile | Nombre del archivo de salida. | No | Salida estándar |
 
 **Ejemplo**
 
@@ -951,7 +976,7 @@ Sintaxis: `app version [runtime-name] app-name environment version set web-resou
 Acepta los siguientes argumentos después del verbo. 
 
 | Argumento | Descripción |
-| file | Nombre del archivo de entrada (debe ser un archivo .zip). | 
+| file | Nombre del archivo de entrada (debe ser un archivo .zip). |
 
 **Ejemplo**
 
@@ -971,7 +996,7 @@ Sintaxis: `app version [runtime-name] app-name environment version get authentic
 Acepta los siguientes argumentos después del verbo. 
 
 | Argumento | Descripción | Obligatorio | Predeterminado |
-| > tofile | Nombre del archivo de salida. | No | Salida estándar | 
+| > tofile | Nombre del archivo de salida. | No | Salida estándar |
 
 **Ejemplo**
 
@@ -990,10 +1015,10 @@ Sintaxis: `app version [runtime-name] app-name environment version set authentic
 
 Acepta los siguientes argumentos después del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
 | file | Nombre del archivo de entrada:
-<ul><li>Un archivo .authenticity_data,</li><li>O un archivo de dispositivo (.ipa, .apk o .appx), a partir del que se extraen los datos de autenticidad. </li></ul>| 
+<ul><li>Un archivo .authenticity_data,</li><li>O un archivo de dispositivo (.ipa, .apk o .appx), a partir del que se extraen los datos de autenticidad. </li></ul>|
 
 **Ejemplos**
 
@@ -1035,9 +1060,9 @@ Sintaxis: `app version [runtime-name] app-name environment version show user-con
 
 Acepta las siguientes opciones después del verbo. 
 
-| Argumento | Descripción | Obligatorio | Predeterminado | 
+| Argumento | Descripción | Obligatorio | Predeterminado |
 |----------|-------------|----------|---------|
-| [--xml] | Genera salida en formato XML en lugar de formato JSON.  | No | Salida estándar | 
+| [--xml] | Genera salida en formato XML en lugar de formato JSON.  | No | Salida estándar |
 
 **Ejemplo**
 
@@ -1056,18 +1081,18 @@ Sintaxis para toda la configuración: `app version [runtime-name] app-name envir
 
 Acepta los siguientes argumentos después del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| file | Nombre del archivo XML o JSON que contiene la nueva configuración.  | 
+| file | Nombre del archivo XML o JSON que contiene la nueva configuración.  |
 
 Sintaxis para una propiedad individual: `app version [runtime-name] app-name environment version set user-config property = value`
 
 El mandato `app version set user-config` utiliza los siguientes argumentos después del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| property | Nombre de la propiedad JSON. Para una propiedad anidada, utilice la sintaxis prop1.prop2.....propN. Para un elemento de matriz JSON, utilice el índice en lugar de un nombre de propiedad.  | 
-| value | Valor de la propiedad.  | 
+| property | Nombre de la propiedad JSON. Para una propiedad anidada, utilice la sintaxis prop1.prop2.....propN. Para un elemento de matriz JSON, utilice el índice en lugar de un nombre de propiedad.  |
+| value | Valor de la propiedad.  |
 
 **Ejemplos**
 
@@ -1095,16 +1120,16 @@ Sintaxis: `list devices [runtime-name][--query query]`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| query | Nombre descriptivo o identificador de usuario, para buscar. Este parámetro especifica una serie que buscar. Se devuelven todos los dispositivos que tienen un nombre descriptivo o identificador de usuario que contenga esta serie (con coincidencia insensible a las mayúsculas y minúsculas).  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| query | Nombre descriptivo o identificador de usuario, para buscar. Este parámetro especifica una serie que buscar. Se devuelven todos los dispositivos que tienen un nombre descriptivo o identificador de usuario que contenga esta serie (con coincidencia insensible a las mayúsculas y minúsculas).  |
 
 El mandato `list devices` acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplos**
 
@@ -1127,10 +1152,10 @@ Sintaxis: `remove device [runtime-name] id`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| id | Identificador de dispositivo exclusivo. | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| id | Identificador de dispositivo exclusivo. |
 
 **Ejemplo**
 
@@ -1145,10 +1170,10 @@ Este mandato se basa en el servicio REST [Device (DELETE)](http://www.ibm.com/su
 {: #the-device-command-prefix }
 El prefijo de mandato `device` utiliza los siguientes argumentos antes del verbo. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| id | Identificador de dispositivo exclusivo. | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| id | Identificador de dispositivo exclusivo. |
 
 #### Mandato `device set status`
 {: #the-device-set-status-command }
@@ -1158,9 +1183,9 @@ Sintaxis: `device [runtime-name] id set status new-status`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| new-status | Nuevo estado.  | 
+| new-status | Nuevo estado.  |
 
 El estado puede tener uno de los siguientes valores: 
 
@@ -1187,10 +1212,10 @@ Sintaxis: `device [runtime-name] id set appstatus app-name new-status`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| app-name | Nombre de una aplicación.  | 
-| new-status | Nuevo estado.  | 
+| app-name | Nombre de una aplicación.  |
+| new-status | Nuevo estado.  |
 
 El estado puede tener uno de los siguientes valores: 
 
@@ -1219,7 +1244,7 @@ Sintaxis: `show info`
 
 Acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
 | --xml | Produce salida XML en lugar de una salida tabular. |
 
@@ -1245,9 +1270,9 @@ Sintaxis: `show versions`
 
 Acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**
 
@@ -1264,9 +1289,9 @@ Sintaxis: `show diagnostics`
 
 Acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**
 
@@ -1293,10 +1318,10 @@ Sintaxis: `list runtimes [--in-database]`
 
 Acepta las siguientes opciones: 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --in-database	| Indica si buscar en la base de datos en lugar de hacerlo a través de MBeans | 
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --in-database	| Indica si buscar en la base de datos en lugar de hacerlo a través de MBeans |
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplos**
 
@@ -1319,15 +1344,15 @@ Sintaxis: `show runtime [runtime-name]`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
+| runtime-name | Nombre de tiempo de ejecución. |
 
 El mandato `show runtime` acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 Este mandato se basa en el servicio REST [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-).
 
@@ -1346,9 +1371,9 @@ Sintaxis: `delete runtime [runtime-name] condition`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
+| runtime-name | Nombre de tiempo de ejecución. |
 | condition | Condición cuando lo suprime: empty o always. **Atención:** La opción always es peligrosa.  |
 
 **Ejemplo**
@@ -1368,15 +1393,15 @@ Sintaxis: `list farm-members [runtime-name]`
 
 Acepta los siguientes argumentos: 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
+| runtime-name | Nombre de tiempo de ejecución. |
 
 El mandato `list farm-members` acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --xml | Produce salida XML en lugar de una salida tabular. | 
+| --xml | Produce salida XML en lugar de una salida tabular. |
 
 **Ejemplo**
 
@@ -1395,16 +1420,16 @@ Sintaxis: `remove farm-member [runtime-name] server-id`
 
 Acepta los siguientes argumentos. 
 
-| Argumento | Descripción | 
+| Argumento | Descripción |
 |----------|-------------|
-| runtime-name | Nombre de tiempo de ejecución. | 
-| server-id | Identificador del servidor.  | 
+| runtime-name | Nombre de tiempo de ejecución. |
+| server-id | Identificador del servidor.  |
 
 El mandato `remove farm-member` acepta las siguientes opciones después del objeto. 
 
-| Opción | Descripción | 
+| Opción | Descripción |
 |--------|-------------|
-| --force | Forzar la eliminación de un miembro de granja, incluso cuando no está disponible o está desconectado.  | 
+| --force | Forzar la eliminación de un miembro de granja, incluso cuando no está disponible o está desconectado.  |
 
 **Ejemplo**
 

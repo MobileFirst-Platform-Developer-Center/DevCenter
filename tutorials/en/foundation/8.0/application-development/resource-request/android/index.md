@@ -96,7 +96,8 @@ formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
 
-#### JavaScript adapters
+#### Parameters - JavaScript adapters
+{: #parameters-javascript-adapters}
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
 ```java

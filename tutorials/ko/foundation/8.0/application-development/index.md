@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 {{ site.data.keys.product_full }} 도구 세트를 사용하여 앱을 개발하는 경우 여러 컴포넌트 및 요소를 개발하거나 구성해야 합니다. 앱 개발 시 관련되는 컴포넌트와 구성에 대해 학습하여 개발을 원활하게 진행할 수 있습니다. 
 
-이러한 개념을 익히는 것 외에도 고유, Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceReuest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 활성 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다. 
+이러한 개념을 익히는 것 외에도 고유 Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceRequest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 활성 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다. 
 
 사이드바 탐색에서 관련 주제로 이동하거나 계속 읽고 여러 {{ site.data.keys.product_adj }} 컴포넌트에 대해 자세히 알아보십시오. 
 
@@ -71,7 +71,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 클라이언트 구성 특성에는 서버에 액세스하는 데 필요한 애플리케이션 ID 및 정보(예: {{ site.data.keys.mf_server }} 런타임 URL과 보안 키)가 포함됩니다.   
 앱의 서버 구성에는 앱 관리 상태, 직접 업데이트의 웹 자원, 구성된 보안 범위 및 로그 구성과 같은 정보가 포함됩니다. 
 
-> [{{ site.data.keys.product }} SDK 학습서 추가](sdk)에서 {{ site.data.keys.product_adj }} client SDK를 추가하는 방법에 대해 알아보십시오.
+> [{{ site.data.keys.product }} SDK 학습서 추가](sdk)에서 {{ site.data.keys.product_adj }} 클라이언트 SDK를 추가하는 방법에 대해 알아보십시오.
 
 애플리케이션을 빌드하기 전에 클라이언트 구성을 정의해야 합니다. 클라이언트-앱 구성 특성은 {{ site.data.keys.mf_server }} 런타임 시 이 앱에 대해 정의된 특성과 일치해야 합니다. 예를 들어 클라이언트 구성의 보안 키는 서버의 키와 일치해야 합니다. 웹 앱이 아닌 항목의 경우 {{ site.data.keys.mf_cli }}를 사용하여 클라이언트 구성을 변경할 수 있습니다. 
 
@@ -79,7 +79,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 * `mfpdev app pull` 명령을 사용하여 서버에서 기존 JSON 구성 파일을 가져오고 파일을 업데이트한 후 `mfpdev app push` 명령을 사용하여 변경된 구성을 업로드하십시오. 
 * **mfpadm** 프로그램 또는 Ant 태스크를 사용하십시오. mfpadm 사용에 대한 정보는 [명령행을 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-cli) 및 [Ant를 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-ant)를 참조하십시오. 
-* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/administration-service/)를 참조하십시오. 
+* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 REST API](../api/rest/administration-service/)를 참조하십시오. 
 
 이러한 메소드를 사용하여 {{ site.data.keys.mf_server }}의 구성을 자동화할 수도 있습니다. 
 

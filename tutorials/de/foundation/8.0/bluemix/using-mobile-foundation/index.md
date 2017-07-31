@@ -18,7 +18,7 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 
     > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenban an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
-2. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Bei Bedarf können Sie den in IBM Containern implementierten {{ site.data.keys.mf_analytics_server }} hinzufügen. Die Containergebühren werden separat in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
+2. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Bei Bedarf können Sie den in IBM Containern implementierten {{ site.data.keys.mf_analytics_server }} hinzufügen. Die Containergebühren werden separat in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 
 3. **Professional Per Capacity:** Dieser Plan ermöglicht Benutzern, in der Produktion beliebig viele mobile Anwendungen zu erstellen, zu testen und auszuführen. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Der Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Bei Bedarf können Sie den in IBM Containern implementierten {{ site.data.keys.mf_analytics_server }} hinzufügen. Die Containergebühren werden separat in Rechnung gestellt. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 
@@ -59,7 +59,7 @@ Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne ein
 
 2. Wenn die Instanz bereit ist, können Sie den [Service verwenden](#using-the-mobile-foundation-service).
 
-    ![Mobile-Foundation-Setup](overview-page.png)
+    ![Mobile-Foundation-Setup(overview-page.png)
 
 ### Pläne *Developer Pro*, *Professional Per Capacity* und *Professional 1 Application* einrichten
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
@@ -69,11 +69,11 @@ Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne ein
 
     Wenn Sie bereits eine dashDB-Serviceinstanz haben (DashDB Enterprise Transactional 2.8.500 oder Enterprise Transactional 12.128.1400), wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an. 
 
-    ![Mobile-Foundation-Setup](create-dashdb-instance-existing.png)
+    ![Mobile-Foundation-Setup(create-dashdb-instance-existing.png)
 
     1.b. Falls Sie noch keine dashDB-Serviceinstanz haben, wählen Sie die Option **Neuen Service erstellen** aus und folgen Sie den Anweisungen, die auf dem Bildschirm angezeigt werden. 
 
-    ![Mobile-Foundation-Setup](create-dashdb-instance-new.png)
+    ![Mobile-Foundation-Setup(create-dashdb-instance-new.png)
 
 2. Starten Sie {{ site.data.keys.mf_server }}.
     - Sie können die Basisversion der Serverkonfiguration verwenden und auf **Basisserver starten** klicken oder 
@@ -83,20 +83,21 @@ Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne ein
 
 3. Wenn die Instanz bereit ist, können Sie den [Service verwenden](#using-the-mobile-foundation-service).
 
-    ![Mobile-Foundation-Setup](overview-page.png)
+    ![Mobile-Foundation-Setup(overview-page.png)
 
 ## {{ site.data.keys.mf_bm_short }} Service verwenden
 {: #using-the-mobile-foundation-service }
-> **Hinweis:** Der Analytics Service ist derzeit nur in den Regionen **Dallas** und **Großbritannien** verfügbar. Sobald {{ site.data.keys.mf_server }} aktiv ist, wird das folgende Dashboard angezeigt: 
 
-![Mobile-Foundation-Setup](service-dashboard.png)
+Sobald {{ site.data.keys.mf_server }} aktiv ist, wird das folgende Dashboard angezeigt: 
+
+![Mobile-Foundation-Setup(service-dashboard.png)
 
 Klicken Sie auf **Analytics hinzufügen**, um Unterstützung für {{ site.data.keys.mf_analytics }} zu Ihrer Serverinstanz hinzuzufügen.
 Weitere Informationen finden Sie im Abschnitt [Analytics-Unterstützung hinzufügen](#adding-analytics-support). 
 
 Klicken Sie auf **Konsole starten**, um die {{ site.data.keys.mf_console }} zu öffnen. Der Standardbenutzername ist "admin". Das Kennwort können Sie sichtbar machen, indem Sie auf das Augensymbol klicken. 
 
-![Mobile-Foundation-Setup](dashboard.png)
+![Mobile-Foundation-Setup(dashboard.png)
 
 ### Serverkonfiguration
 {: #server-configuration }
@@ -120,15 +121,15 @@ Auf der Registerkarte **Einstellungen** können Sie die Serverinstanz mit Folgen
 * Datenbankauswahl "DashDB Enterprise Transactional 2.8.500" oder "Enterprise Transactional 12.128.1400" (aus dem Plan *Professional 1 Application*)
 * VPN
 
-![Mobile-Foundation-Setup](advanced-server-configuration.png)
+![Mobile-Foundation-Setup(advanced-server-configuration.png)
 
 ## {{ site.data.keys.mf_analytics_short }}-Unterstützung hinzufügen
 {: #adding-analytics-support }
-Sie können Unterstützung für {{ site.data.keys.mf_analytics }} zu Ihrer Mobile-Foundation-Service-Instanz hinzufügen. Klicken Sie dazu auf der Dashboardseite des Service auf **Analytics hinzufügen**. Mit dieser Aktion wird ein IBM Container mit einer Instanz von {{ site.data.keys.mf_analytics_server }} bereitgestellt.
+Sie können Unterstützung für {{ site.data.keys.mf_analytics }} zu Ihrer Mobile-Foundation-Service-Instanz hinzufügen. Klicken Sie dazu auf der Dashboardseite des Service auf **Analytics hinzufügen**. Mit dieser Aktion wird ein IBM Container mit einer Instanz von {{ site.data.keys.mf_analytics }} bereitgestellt.
 
 * Wenn Sie den Plan **Developer** nutzen, wird mit dieser Aktion außerdem automatisch
 die {{ site.data.keys.mf_analytics_short }}-Service-Instanz an Ihre MobileFirst-Server-Instanz gebunden.   
-* Wenn Sie den Plan **Developer Pro**, **Professional Per Capacity** oder **Proffessional 1 Application** nutzen, werden Sie im Rahmen dieser Aktion aufgefordert, weitere Optionen zu wählen (Anzahl der verfügbaren Knoten, verfügbarer Hauptspeicher und Speicherkapazität). 
+* Wenn Sie den Plan **Developer Pro**, **Professional Per Capacity** oder **Proffessional 1 Application** nutzen, werden Sie im Rahmen dieser Aktion aufgefordert, weitere Optionen zu wählen (Anzahl der verfügbaren Knoten, verfügbarer Hauptspeicher und Speicherkapazität).  
 
 Wenn die Operation abgeschlossen ist, müssen Sie in Ihrem Browser die Seite der {{ site.data.keys.mf_console }} neu laden, um auf die {{ site.data.keys.mf_analytics_console_short }} zugreifen zu können.   
 
@@ -163,7 +164,7 @@ Der Plan "Developer" stellt keine persistente Datenbank bereit, sodass potenziel
 * Immer, wenn Sie eine der folgenden serverseitigen Aktionen ausführen: 
     * einen Adapter implementieren oder eine Adapterkonfiguration bzw. einen Eigenschaftswert aktualisieren
     * im Rahmen einer Sicherheitskonfiguration eine Bereichszuordnung oder ähnliches erstellen 
-    
+
     Führen Sie in der Befehlszeile folgenden Befehl aus, um Ihre Konfiguration in eine ZIP-Datei herunterzuladen: 
 
   ```bash

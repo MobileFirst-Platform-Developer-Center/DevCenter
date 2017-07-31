@@ -61,7 +61,7 @@ weight: 4
 <h3 id="tai">MobileFirst OAuth Trust Association Interceptor</h3>
 <p>It is also mandatory to install the MobileFirst OAuth Trust Association Interceptor (TAI) to run the MobileFirst Data Proxy. Confirm that the TAI has been installed during the installation of the MobileFirst Data Proxy. If you have not done so, you can install it manually by following the <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.installconfig.doc/install_config/t_install_datastore_man_was_TAI.html">Installing the MobileFirst OAuth Trust Association Interceptor</a> topic in the user documentation.</p>
 <h2 id="mfpServer">Setting up MobileFirst Server</h2>
-<p>The <a href="https://hub.jazz.net/git/mobilecloud/mfp-bluelist-on-premises">bluelist on premises project</a> contains a MobileFirst Platform sample. The sample includes a MobileFirst project with Native API applications for both iOS and Android (iOSBlueList and AndroidBluelist). It also includes the adapter used for authentication (CloudantAuthenticationAdapter). Deploy these artifacts to your MobileFirst Server instance.</p>
+<p>The <!--<a href="https://hub.jazz.net/git/mobilecloud/mfp-bluelist-on-premises"></a>--> bluelist on premises project contains a MobileFirst Platform sample. The sample includes a MobileFirst project with Native API applications for both iOS and Android (iOSBlueList and AndroidBluelist). It also includes the adapter used for authentication (CloudantAuthenticationAdapter). Deploy these artifacts to your MobileFirst Server instance.</p>
 <p>You must set up authentication to the Cloudant Data Layer Local Edition by configuring access through the MobileFirst Data Proxy. For this purpose, it is required to integrate the OAuth capabilities that are provided by MobileFirst Platform.</p>
 <p>In the sample, the <code>CloudantAuthenticationAdapter</code> adapter has been created and configured to handle this authentication. The <code>authenticationConfig.xml</code> file has also been modified to create a corresponding realm and login module as described in <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html#oauth">configuring OAuth security</a>, in the user documentation.</p>
 <h2 id="cloudant">MobileFirst Platform Cloudant Data Layer Local</h2>
@@ -70,8 +70,8 @@ weight: 4
  <a href="http://www.ibm.com/support/docview.wss?uid=swg24039278">Download the IBM MobileFirst Platform Foundation V7.0 products</a></p>
 <h2 id="sample">Obtaining the sample</h2>
 <p>The sample that goes with the corresponding iOS and Android tutorials is hosted on the following jazzhub repository:</p>
-<p><a href="https://hub.jazz.net/git/mobilecloud/mfp-bluelist-on-premises">mfp-bluelist-on-premises</a></p>
+<p><!-- <a href="https://hub.jazz.net/git/mobilecloud/mfp-bluelist-on-premises"></a>-->mfp-bluelist-on-premises</p>
 <p>You can clone the samples from IBM DevOps Services by running the following command in a directory of your choice:</p>
-<p>{% highlight bash %} $ git clone https://hub.jazz.net/git/mobilecloud/mfp-bluelist-on-premises  {% endhighlight %} </p>
+<p>{% highlight bash %} $ git clone <path to mfp-bluelist-on-premises repo>  {% endhighlight %} </p>
 <p>If you do not have <code>git</code> installed, follow the instructions on the <a href="http://git-scm.com/downloads">git website</a>.</p>
 <h2 id="clientSideApi"  class="hidden-print">iOS and Android client-side API tutorials</h2>

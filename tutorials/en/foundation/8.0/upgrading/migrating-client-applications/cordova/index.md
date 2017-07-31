@@ -48,7 +48,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 | Simple data sharing | No | Yes | Yes |
 | Single sign-on | Yes<br/><br/>Note: Device single sign-on (SSO) is now supported by way of the new predefined enableSSO security-check application-descriptor configuration property | Yes | Yes |
 | {{ site.data.keys.product_adj }} application skins | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design. | Yes |
-| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. | 
+| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. |
 | Push Notifications | Yes. Use the cordova-plugin-mfp-push plug-in.<br/><br/>Restriction: You can map predefined {{ site.data.keys.product_adj }} security checks only to the push.mobileclient scope. Custom security checks are not supported because JavaScript challenge handlers are not called. | Yes<br/><br/>Note: For Android, you must add the cordova-plugin-mfp-push plug in. You don't need this plug in for iOS because the push client-side support for iOS is included in the core mfp plugin. | Yes |
 | Cordova plug-ins management | Yes | Yes | No |
 | MESSAGES (i18n) | Yes | Yes | Yes |
@@ -63,8 +63,8 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
 You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst Platform Foundation version 6.2 or later to Cordova apps that are supported by {{ site.data.keys.product }} v8.0.
 
-#### Jump to
-{: #jump-to }
+#### Jump to section
+{: #jump-to-section }
 * [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
 * [Completing migration of a {{ site.data.keys.product_adj }} hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
 * [Completing migration of a {{ site.data.keys.product_adj }} Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
@@ -89,7 +89,7 @@ Cross-platform apps that were created with earlier versions of IBM MobileFirst P
 The migration assistance tool does not modify or move any developer code or comments of your app. You must continue the migration process with either [Completing migration of a MobileFirst hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app) or [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app) after you run this tool.
 
 <!--1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
+    * Download the .tgz file from the [Git repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli).
     * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
     * Download the tool by using the instructions that are provided. -->
 1. Install the migration assistance tool.
