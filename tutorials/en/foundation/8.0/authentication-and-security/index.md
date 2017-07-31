@@ -52,7 +52,7 @@ The {{ site.data.keys.product_adj }} access token contains the following informa
 
 The granted access token remains valid until its expiration time elapses. The access token's expiration time is set to the shortest expiration time from among the expiration times of all the security checks in the scope. But if the period until the shortest expiration time is longer than the application's maximum token-expiration period, the token's expiration time is set to the current time plus the maximum expiration period. The default maximum token-expiration period (validity duration) is 3,600 seconds (1 hour), but it can be configured by setting the value of the `maxTokenExpiration` property. See Configuring the maximum access-token expiration period.
 
-<div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="configuration-explanation" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
@@ -86,7 +86,7 @@ The granted access token remains valid until its expiration time elapses. The ac
                     </ol>
                 </li>
             </ul>
-                
+
             <br/>
             <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Close section</b></a>
             </div>
@@ -94,11 +94,11 @@ The granted access token remains valid until its expiration time elapses. The ac
     </div>
 </div>
 
-<div class="panel-group accordion" id="response-access-token" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="response-access-token" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Access-token response structure</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Access-token response structure</b></a>
             </h4>
         </div>
 
@@ -429,4 +429,3 @@ After obtaining an access token, the client attaches the obtained token to subse
 {: #tutorials-to-follow-next }
 
 Continue reading about authentication in {{ site.data.keys.product_adj }} Foundation by following the tutorials from the sidebar navigation.
-

@@ -23,7 +23,7 @@ var MFPSEARCH = {
         $("#searchResults").empty();
         $("#searchResults").addClass("loader");
         this.body.from = this.from;
-        
+
         _this = this;
         this.client.search({
             "body": this.body
@@ -118,6 +118,18 @@ var MFPSEARCH = {
                 }
             });
         }
+        var selectedLanguage = $('#language option:selected');
+        if (selectedLanguage.length > 0) {
+            var languagesArray = [];
+            $.each(selectedLanguage, function(index, result) {
+                languagesArray.push(result.value);
+            });
+            mustArray.push({
+                "terms": {
+                    "language": languagesArray
+                }
+            });
+        }
         var selectedPlatforms = $('#platforms option:selected');
         if (selectedPlatforms.length > 0) {
             var platformsArray = [];
@@ -204,6 +216,12 @@ $(function() {
     });
     $('#platforms').multiselect({
         nonSelectedText: "Platforms",
+        onChange: function(option, checked, select) {
+            MFPSEARCH.updateFilters();
+        }
+    });
+    $('#language').multiselect({
+        nonSelectedText: "Language",
         onChange: function(option, checked, select) {
             MFPSEARCH.updateFilters();
         }

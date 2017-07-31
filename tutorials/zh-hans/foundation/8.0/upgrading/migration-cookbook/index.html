@@ -1,0 +1,1104 @@
+---
+layout: tutorial
+title: MobileFirst Foundation 8.0 迁移手册
+breadcrumb_title: 迁移手册
+weight: 1
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<div id="overview">
+    <h2>概述</h2>
+    <p>此手册旨在提供一个简明视图，用于显示将应用程序和适配器从 IBM Worklight Foundation 6.2 或 IBM MobileFirst Platform Foundation 6.3 - 7.1 迁移到 {{ site.data.keys.product_full }} 8.0 的步骤。</p>
+
+    <p>迁移过程可指导您完成将经典混合应用程序转变为标准 Cordova 应用程序的步骤以及在本机应用程序中更新 {{ site.data.keys.product_adj }} SDK 的步骤。同时还会处理移动 Web 应用程序。适配器已迁移到 Maven 项目中，并且进一步阐明了实施概念，如 {{ site.data.keys.product_adj }} 安全框架、推送通知和直接更新。</p>
+
+    <p>为简化迁移过程的某些方面，提供了迁移辅助工具。<br/>
+    该工具可帮助您识别代码库中需要检查和更改的方面，如不推荐使用、不再支持或修改的 API。</p>
+
+    <blockquote><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <b>注：</b>此手册并未涵盖所有可能的迁移方案，如果要全面了解，建议您<a href="../" target="_blank">访问迁移用户文档主题</a>。</blockquote>
+
+    <h2>获取帮助</h2>
+    <p>{{ site.data.keys.product }} 团队很高兴帮助您解答任何疑问。<br/>
+    要获取官方支持，请<a href="https://www-947.ibm.com/support/servicerequest/newServiceRequest.action">提交 PMR</a>。也可以在 <a href="https://stackoverflow.com/questions/tagged/ibm-mobilefirst" target="_blank">StackOverflow</a> 和<a href="{{site.baseurl}}/blog/2017/05/26/come-chat-with-us/" target="_blank">我们的 Slack 社区中</a>提问。</p>
+
+    <h2>快速入门</h2>
+    <p>在开始迁移应用程序和适配器之前，如果您尚未迁移，建议您先阅读<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/" target="_blank">快速入门教程</a>来熟悉并体验 {{ site.data.keys.product }} 8.0。</p>
+
+    <p><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">这些教程中提供了</a>有关各主题（如注册应用程序、构建和部署适配器、实施和配置安全性和认证等）的更多信息。</p>
+
+    <br/>
+    <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
+        <div class="row">
+            <div id="migrationPaths">
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
+                        <h3 class="setupAndTools no-anchor">设置<br/>和工具</h3>
+
+                        <ul class="topics">
+                            <li><a href="#env-setup">设置 MobileFirst<br/> Server</a></li>
+                            <li><a href="#env-setup">安装迁移<br/>辅助工具</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
+                        <h3 class="migratingApplications no-anchor">迁移<br/>应用程序</h3>
+
+                        <ul class="topics">
+                            <li><a href="#applications">将经典<br/>混合/MFPF Cordova 应用程序<br/>迁移到标准 Cordova 应用程序</a></li>
+                            <li><a href="#applications">迁移移动 Web/<br/>桌面浏览器应用程序</a></li>
+                            <li><a href="#applications">更新本机<br/>应用程序中的 SDK</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
+                        <h3 class="migratingAdapters no-anchor">迁移<br/>适配器</h3>
+
+                        <ul class="topics">
+                            <li><a href="#migrating-adapters">设置 Apache Maven<br/> 的先决条件</a></li>
+                            <li><a href="#migrating-adapters">创建新的 Maven<br/> 项目</a></li>
+                            <li><a href="#migrating-adapters">迁移源代码</a></li>
+                            <li><a href="#migrating-adapters">构建和测试</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
+                        <h3 class="devTopics no-anchor">开发<br/>主题</h3>
+
+                        <ul class="topics">
+                            <li><a href="#development-topics">适配器</a></li>
+                            <li><a href="#development-topics">安全框架</a></li>
+                            <li><a href="#development-topics">推送通知</a></li>
+                            <li><a href="#development-topics">直接更新</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+
+<div id="migrationSteps">
+    <div class="gutter gutter-env-setup-color">
+        <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
+        <h2 id="env-setup">设置和工具</h2>
+        <p>在开始迁移之前，您需要一个正在运行的 {{ site.data.keys.mf_server }} 实例和迁移辅助工具。</p>
+
+        <h3>{{ site.data.keys.mf_server }}</h3>
+        <p>您可以使用 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation Bluemix 服务</a>在 <a href="https://bluemix.net">IBM Bluemix</a> 上设置 {{ site.data.keys.mf_server }}。或者，您可以使用 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> 来设置在本地运行的服务器。</p>
+
+        <h3>迁移辅助工具</h3>
+        <p>在 {{ site.data.keys.mf_server }} 启动并运行之后，由于您将在稍后使用迁移辅助工具，请先安装此工具。</p>
+
+        <ol>
+            <li><a href="https://nodejs.org/en/" target="_blank">安装 NodeJS</a>，因为它是运行该工具的先决条件。</li>
+            <li>从 {{ site.data.keys.mf_console }} 中，单击侧边栏导航底部的“下载中心”链接。请按照指示信息从 NPM 或通过下载 .zip 文件来安装迁移辅助工具。</li>
+        </ol>
+
+        <img alt="从 {{ site.data.keys.mf_console }} 下载迁移工具" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/get-migration-tool.png"/>
+    </div>
+
+    <br id="applications"><br/>
+
+    <div class="gutter gutter-apps-color">
+        <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
+        <h2>迁移应用程序</h2>
+        <p>用于迁移经典混合/MobileFirst Cordova、Web 和本机应用程序的步骤包括：通过运行迁移辅助工具来评估 API 更改、设置项目结构、管理应用程序源、使用软件包管理器和处理 API 更改。</p>
+
+        <h3>经典混合应用程序</h3>
+        <p>在过去的发行版中，使用针对 Eclipse 或 {{ site.data.keys.mf_cli }} 的 MobileFirst Studio 插件来创建、开发、构建和管理经典混合应用程序。从 {{ site.data.keys.product }} 8.0 开始，引入了对标准 Cordova 应用程序的支持，并替换了先前的应用程序模型。</p>
+
+        <p>使用标准社区工具（如 Cordova CLI）来创建 Cordova 应用程序。通过 Cordova CLI，将 {{ site.data.keys.product_adj }} Cordova SDK 作为一组 Cordova 插件（可从 <a href="https://npmjs.org" target="_blank">npm</a> 获取）添加到 Mixture 中。</p>
+
+        <p>通过迁移到标准 Cordova 应用程序，开发人员就能够使用自己喜爱的工具并采用自己的方法来开发应用程序。作为开发人员，现在授权您使用 <a href="http://cordova.apache.org" target="_blank">Cordova 生态系统</a>。</p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>提示：</b>您也可以<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/" target="_blank">设置 Eclipse 以开发 Cordova 应用程序</a>。</p>
+
+        <blockquote>了解有关 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova 应用程序开发</a>的更多信息。</blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateHybrid" aria-expanded="false" aria-controls="collapseMigrateHybrid">将经典混合/MobileFirst Cordova 应用程序迁移到标准 Cordova 应用程序</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateHybrid" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-hybrid-apps">
+                    <div class="panel-body">
+                        <h4>步骤 1</h4>
+                        <p>打开命令行窗口，并按以下方式使用迁移辅助工具。</p>
+                        <ul>
+                            <li>要仅扫描经典混合项目并生成 API 报告，请使用：{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}</li>
+                            <li>要扫描经典混合项目并创建预定义的 Cordova 项目，请使用：<br/>
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory [--projectName location_of_project]{% endhighlight %}
+                            <b>注：</b>此操作可能需要一段时间才能完成，这取决于您的因特网连接，因为该过程包括下载 MobileFirst Cordova SDK 插件。</li>
+                            <li>将 <b>source_directory</b> 替换为位于 Studio 项目的应用程序文件夹中的 <b>application</b> 文件夹的路径，例如：<i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
+                            <li>将 <b>destination_directory</b> 替换为用于存储已转换应用程序和已生成 API 报告的文件夹的路径。</li>
+			    <li>将 <b>location_of_project</b> 替换为 <b>destination_directory</b> 内用于创建项目的位置的目录名称。该标志为可选。</li>
+                        </ul>
+
+                        <img alt="将经典混合应用程序迁移到标准 Cordova 应用程序" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/cordova-migration.png"/>
+
+                        <p>在迁移辅助工具成功运行之后，您可以观察到以下效果：</p>
+
+                        <ul>
+                            <li><b>MigratedProject</b> 文件夹现在包含具有与经典混合应用程序相同的元数据的新 Cordova 应用程序（应用程序标识和其他设置，具体取决于经典混合应用程序的设置）、已安装 {{ site.data.keys.product_adj }} Cordova SDK 并且已添加所需平台。</li>
+                            <li>如果使用了 <b>client</b> 命令，那么已生成 API 报告 <b>{app-name}-api-report.html</b> 并且已在缺省浏览器中打开此报告。其中包含因调整应用程序实施以用于 {{ site.data.keys.product }} 8.0 而需要执行的可能操作。</li>
+                        </ul>
+
+                        <img alt="API 报告" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-cordova.png"/>
+
+                        <h4>步骤 2</h4>
+                        <p>在对生成的 API 报告执行操作之前，您必须将应用程序源代码从经典混合应用程序复制到 Cordova 应用程序。</p>
+
+                        <b>经典混合应用程序</b><br/>
+                        <p>复制 <b>common</b> 文件夹的内容并将其粘贴到 Cordova 应用程序的 <b>www</b> 文件夹（在提示时替换）。</p>
+
+                        <b>MFPF 7.1 Cordova 应用程序</b><br/>
+                        <p>复制 <b>www</b> 文件夹并替换 Cordova 应用程序现有的 <b>www</b> 文件夹。</p>
+
+                        <p><b>注：</b>如果在经典混合应用程序中具有特定于环境的实施，那么可以<a href="http://cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform" target="_blank">使用 Cordova Merges</a> 进行复制。</p>
+
+                        <blockquote>您无需使用由迁移辅助工具为您创建的 Cordova 应用程序。通过 Cordova CLI，您可以自行创建新的 Cordova 应用程序，并添加 {{ site.data.keys.product_adj }} Cordova SDK 以及可能需要的任何第三方 Cordova 插件。<a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">请参考 Cordova 教程以了解更多信息</a>。</blockquote>
+
+                        <br/>
+                        <h4>步骤 3 </h4>
+                        <p>由于应用程序的源代码现在位于 Cordova 应用程序中，因此您现在必须添加或编辑几个代码块。</p>
+
+                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="setupCordova">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">单击以获取指示信息</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                                <div class="panel-body">
+                                    <ol>
+                                        <li>更新 <b>www/index.html</b> 文件。<ul>
+                                                <li>将以下 CSS 代码添加到 index.html 文件头中已有的 CSS 代码之前。
+
+{% highlight html %}
+<link rel="stylesheet" href="worklight/worklight.css">
+<link rel="stylesheet" href="css/main.css">
+{% endhighlight %}
+
+                                                    <b>注：</b><b>worklight.css</b> 文件将 body 属性设置为 relative。如果这影响应用程序的样式，请在您自己的 CSS 代码中为 position 声明其他值。例如：
+{% highlight css %}
+body {
+  position: absolute;
+}
+{% endhighlight %}
+                                                    </li>
+                                                    <li>将对 Cordova JavaScript 文件的引用添加到文件头中的 CSS 定义之后。
+
+{% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
+                                                    </li>
+						    <li>移除以下代码行（如果存在）。<br />
+							<code>&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;</code>
+							<br />
+							您可以下载自己的 JQuery 版本，并按以下代码行中所示将其装入。<br />
+							<code>&lt;script src="lib/jquery.min.js"&gt;&lt;/script&gt;</code>
+							<br />
+                                                        不必将可选的 jQuery 新增项移至 lib 文件夹中。可以将此新增项移至所需的任何位置，但必须在 index.html 文件中正确引用此项。
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li>将 <b>www/js/InitOptions.js</b> 文件更新为自动调用 WL.Client.init。
+                                                <ul>
+                                                    <li>从 <b>InitOptions.js</b> 中移除以下代码。函数 <code>WL.Client.init</code> 使用全局变量 <code>wlInitOptions</code> 自动进行调用。{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li><b>可选：</b>如果需要在初始化 {{ site.data.keys.product_adj }} 框架之前运行逻辑，请更新 <b>www/InitOptions.js</b> 文件以手动调用 <code>WL.Client.init</code>。
+                                                <ul>
+                                                    <li>编辑 <b>config.xml</b> 文件并将 <code>mfp:clientCustomInit</code> 元素的 <code>enabled</code> 属性设置为 <b>true</b>。</li>
+
+                                                    <li>如果使用的是 MobileFirst 混合缺省模板，请替换以下代码：
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+
+        with the following code:
+
+{% highlight javascript %}
+if (document.addEventListener) {
+  document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <h4>步骤 4</h4>
+                        <p>Cordova 应用程序几乎已完全迁移。现在可以开始处理生成的 API 报告。在浏览器窗口中打开 API 报告并查看所显示的项。对于报告中的每个项，您需要以不同的方式实现或完全替换。您可以重新运行迁移辅助工具，这次指向新的 Cordova 应用程序，以再次检查是否有未处理的 API。</p>
+
+                        <br/>
+                        <h4>步骤 5</h4>
+                        <p>要测试 Cordova 应用程序，您可以仅预览在模拟器/仿真器中或在物理设备中运行的 Web 资源。<br/>
+                            <b>注：</b>如果客户端代码包含与安全性和认证、推送通知、适配器和类似功能相关的逻辑，那么可能需要继续调整代码，然后才能对其进行测试（见下文）。但是，您可以查看应用程序界面以确保它仍然完整。</p>
+
+                        <p><b>预览 Web 资源：</b></p>
+                        <ul>
+                            <li>从命令行窗口中，浏览至应用程序根文件夹。</li>
+                            <li>运行以下命令：<code>mfpdev app preview</code></li>
+                        </ul>
+
+                        <b>注：</b>由于 {{ site.data.keys.product }} 8.0 中的缺陷，预览涉及安全方面的应用程序失败。作为变通方法，请在仿真器或物理设备中预览应用程序。
+
+                        <blockquote>了解有关<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#mobilefirst-apis" target="_blank">预览应用程序的 Web 资源</a>的更多信息。</blockquote>
+
+                        <p><b>在仿真器/模拟器或物理设备中测试：</b><br/>
+                        <ul>
+                            <li>从命令行窗口中，浏览至应用程序根文件夹。</li>
+                            <li>如果只想测试 UI，那么只需构建和运行应用程序：<code>cordova run replace-with-platform-name</code></li>
+                            <li>如果还要测试与 {{ site.data.keys.product }} 相关的应用程序逻辑，那么在预览之前，请确保先使用 <code>mfpdev app register</code> 注册应用程序。</li>
+                        </ul>
+                        </p>
+
+                        <h3>后续步骤</h3>
+                        <ul>
+                            <li>查看<a href="#development-topics">开发主题</a>以继续迁移。</li>
+                            <li><a href="#migrating-adapters">迁移适配器</a>。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Web 应用程序</h3>
+        <p>与经典混合应用程序非常相似，针对移动 Web 和桌面浏览器的 Web 应用程序也可以通过针对 Eclipse 或 MobileFirst CLI 的 MobileFirst Studio 插件来管理。在 {{ site.data.keys.product }} 8.0 中，也使用 <a href="https://npmjs.org" target="_blank">npm</a> 中可用的 {{ site.data.keys.product_adj }} Web SDK 以传统方式来开发 Web 应用程序。</p>
+
+        <p><b>注：</b>在先前的发行版中，{{ site.data.keys.mf_server }} 提供 Web 应用程序并提供面向公众的 URL。在 {{ site.data.keys.product }} 8.0 中，仅在 {{ site.data.keys.mf_server }} 中注册应用程序，以便为其提供安全功能、适配器功能等，并通过标准方法提供 Web 应用程序，例如，通过专用 Web 服务器提供 Web 应用程序。</p>
+
+        <blockquote>了解有关 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web 应用程序开发</a>的更多信息。</blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-web-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">迁移移动 Web/桌面浏览器应用程序</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateWeb" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-web-apps">
+                    <div class="panel-body">
+                        <h4>步骤 1</h4>
+                        <p>使用迁移辅助工具来生成 API 报告。<br/>
+                        打开命令行窗口，并按以下方式使用迁移辅助工具。<br/>
+                        这可能需要一段时间才能完成，具体取决于您的因特网连接...</p>
+
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}
+
+                        <ul>
+                            <li>将 <b>source_directory</b> 替换为位于 Studio 项目的应用程序文件夹中的 <b>common</b> 文件夹的路径，例如：<i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
+                            <li>将 <b>destination_directory</b> 替换为用于保存生成的 API 报告的文件夹的路径。</li>
+                        </ul>
+
+                        <p>在迁移辅助工具成功运行之后，您可以观察到以下效果：</p>
+
+                        <ul>
+                            <li>已生成 API 报告 <b>{app-name}-api-report.html</b>。其中包含因调整应用程序实施以用于 {{ site.data.keys.product }} 8.0 而需要执行的可能操作。</li>
+                        </ul>
+
+                        <br/>
+                        <h4>步骤 2</h4>
+                        <p>评估 API 报告后，现在可以开始迁移应用程序的结构和源。</p>
+
+                        <ol>
+                            <li>创建将包含应用程序源和资源的新文件夹。</li>
+                            <li>将 <b>index.html</b> 文件以及 <b>js</b>、<b>css</b> 和 <b>images</b> 文件夹从现有项目复制到创建的文件夹中。</li>
+                            <li>从命令行窗口中，浏览至已迁移项目的根文件夹并添加 {{ site.data.keys.product_adj }} Web SDK：<code>npm install ibm-mfp-web-sdk</code></li>
+                        </ol>
+
+                        <blockquote>在继续步骤 3 之前，请按照<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/" target="_blank">将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序</a>教程中的指示信息来配置 SDK。</blockquote>
+
+                        <br/>
+                        <h4>步骤 3 </h4>
+                        <p>Web 应用程序几乎已完全迁移。现在可以开始处理生成的 API 报告。在浏览器窗口中打开 API 报告并查看所显示的项。对于报告中的每个项，您需要以不同的方式实现或完全替换。</p>
+
+                        <br/>
+                        <h4>步骤 4</h4>
+                        <p>要测试已迁移的应用程序：</p>
+                        <ol>
+                            <li>确保已在 {{ site.data.keys.mf_server }} 中注册该应用程序。</li>
+                            <li>为避免遇到<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">同源错误</a>，请设置逆向代理。为此，您可以使用 Node.js。要获取使用 Node.js 的逆向代理实现的示例，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">设置 Web 开发环境</a>教程。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>本机应用程序</h3>
+        <p>在产品的先前版本中，本机应用程序需要使用针对 Eclipse 或 {{ site.data.keys.mf_cli }} 的 MobileFirst Studio 插件先创建特定于平台的工件（WorklightAPI 文件夹、配置文件等），然后将这些工件手动复制粘贴到各 IDE 内的本机项目中。</p>
+
+        <p>从 {{ site.data.keys.product }} 8.0 开始，现在引入了对社区首选软件包管理器的支持：<a href="https://cocoapods.org/" target="_blank">CocoaPods for iOS</a>、<a href="https://gradle.org/" target="_blank">Gradle for Android</a> 和 <a href="https://www.nuget.org/" target="_blank">NuGet for Windows</a>。利用开发人员可用的这些工具，现在简化了在每个平台上添加 {{ site.data.keys.product_adj }} 本机 SDK 的过程。</p>
+
+        <blockquote>了解有关<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">本机应用程序开发</a>的更多信息。</blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-native-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">更新本机应用程序中的 SDK</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateNative" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-native-apps">
+                    <div class="panel-body">
+                        <h4>步骤 1</h4>
+                        <p>使用迁移辅助工具来生成 API 报告。</p>
+
+                        <blockquote><b>注：</b>目前，迁移辅助工具可以仅扫描基于 MobileFirst Platform Foundation 7.1 的本机应用程序。</blockquote>
+
+                        <p>打开命令行窗口，并按以下方式使用迁移辅助工具：</p>
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory --type platform{% endhighlight %}
+
+                        <ul>
+                            <li>将 <b>source_directory</b> 替换为本机项目的路径，例如：<i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
+                            <li>将 <b>destination_directory</b> 替换为报告生成位置的路径。</li>
+                            <li>将 <b>platform</b> 替换为受支持的平台：<code>ios</code>、<code>android</code> 或 <code>windows</code>。</li>
+                        </ul>
+
+                        <img alt="为本机应用程序生成 API 报告" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/native-migration.png"/>
+
+                        <p>在迁移辅助工具成功运行之后，您可以观察到以下效果：</p>
+
+                        <ul>
+                            <li>已生成 API 报告 <b>{app-name}-api-report.html</b> 并且已在缺省浏览器中打开此报告。其中包含因调整应用程序实施以用于 {{ site.data.keys.product }} 8.0 而需要执行的可能操作。</li>
+                        </ul>
+
+                        <img alt="API 报告" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
+
+                        <h4>步骤 2</h4>
+                        <p>在解决 API 报告中的问题之后，您可以将旧的本机 SDK 替换为新的本机 SDK。</p>
+
+                        <b>iOS</b><br/>
+                        <b>先决条件：</b>确保已在 Mac 计算机上安装 CocoaPods：<ul>
+                            <li>打开命令行窗口，并浏览至 Xcode 项目的根目录。</li>
+                            <li>运行 <code>sudo gem install cocoapods</code> 命令，然后运行 <code>pod setup</code>。<b>注：</b>完成这些命令可能需要几分钟时间。</li>
+                        </ul>
+
+                        <br/>
+                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="removeiOSSDK">
+                                 <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseRemoveiOSSDK" aria-expanded="false" aria-controls="collapseRemoveiOSSDK">移除旧 SDK</a>
+                                 </h4>
+                              </div>
+
+                              <div id="collapseRemoveiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>在 Xcode 中打开您的项目。</li>
+                                       <li>从 Xcode 项目中删除 <b>WorklightAPI</b> 文件夹（将其移至废纸篓）。</li>
+                                       <li>以下列方式修改现有代码：<br/>
+                                          在<b>构建设置</b>选项卡中，
+                                          <ul>
+                                             <li>将 <b>$(SRCROOT)/WorklightAPI/include</b> 从头文件搜索路径中除去。</li>
+                                             <li>将 <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> 从框架搜索路径中除去。</li>
+                                             <li>除去所有对静态库 <code>libWorklightStaticLibProjectNative.a</code> 的引用。</li>
+                                          </ul>
+                                       </li>
+                                       <li>在<b>构建阶段</b>选项卡中，移除指向以下框架和库的链接。CocoaPods 将自动重新添加这些链接。<ul>
+                                             <li>libWorklightStaticLibProjectNative.a</li>
+                                             <li>SystemConfiguration.framework</li>
+                                             <li>MobileCoreServices.framework</li>
+                                             <li>CoreData.framework</li>
+                                             <li>CoreLocation.framework</li>
+                                             <li>Security.framework</li>
+                                             <li>sqlcipher.framework</li>
+                                             <li>libstdc++.6.dylib</li>
+                                             <li>libz.dylib</li>
+                                          </ul>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="addiOSSDK">
+                                 <h4 class="panel-title">
+                                     <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseAddiOSSDK" aria-expanded="false" aria-controls="collapseAddiOSSDK">添加新 SDK</a>
+                                 </h4>
+                              </div>
+
+                              <div id="collapseAddiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>确保 Xcode 已关闭。</li>
+                                       <li>打开<b>终端</b>并浏览至 Xcode 项目的根目录。
+                                          <ul>
+                                              <li>运行 <code>pod init</code> 命令以创建 Podfile 文件。</li>
+                                              <li>在 Xcode 项目的根目录中创建 Podfile 文件。找到该文件，并在您选择的编辑器中打开该文件。</li>
+                                              <li>注释掉或除去现有内容。</li>
+                                              <li>添加以下行并保存更改。请记住更新 <b>target</b> 值：{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "replace-with-the-name-of-the-target-in-xcode-project" do
+    pod 'IBMMobileFirstPlatformFoundation'
+end{% endhighlight %}
+
+                                                    其他 pod：<br/>
+                                                    IBMMobileFirstPlatformFoundationPush<br/>
+                                                    IBMMobileFirstPlatformFoundationJSONStore<br/><br/>
+
+                                                    如果您的应用程序需要使用额外功能，那么可以进一步在文件中指定其他 pod。例如，如果应用程序使用 OpenSSL，那么 Podfile 可能如下所示：
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "replace-with-the-name-of-the-target-in-xcode-project" do
+    pod 'IBMMobileFirstPlatformFoundation'
+    pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
+end{% endhighlight %}
+                                              </li>
+                                              <li>运行 <code> pod install</code> 命令。该命令将安装 {{ site.data.keys.product_adj }} 本机 SDK、IBMMobileFirstPlatformFoundation.framework 以及 Podfile 中指定的任何其他框架及其依赖关系。然后，该命令将生成 pods 项目，并将客户机项目与 {{ site.data.keys.product_adj }} SDK 集成。</li>
+                                          </ul>
+                                       </li>
+                                       <li>通过在命令行中输入 <b>open ProjectName.xcworkspace</b>，在 Xcode 中打开 <b>ProjectName.xcworkspace</b> 文件。该文件与 ProjectName.xcodeproj 文件位于同一目录中。您可以从 Finder 中双击该文件。</li>
+                                       <li>使用以下新保护伞头文件（单一条目）替换头文件的所有现有 MobileFirst 导入：<br/>
+
+                                            <b>Objective C：</b><br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
+                                            <br/><br/>
+                                            <b>Swift：</b><br/>
+                                            <code>import IBMMobileFirstPlatformFoundation</code><br/>
+                                       </li>
+                                       <li>在<b>构建设置</b>选项卡中的<b>其他链接程序标记</b>下，在 <b>-ObjC</b> 标记的开头添加 <code>$(inherited)</code>。</li>
+                                       <li>如果使用的是推送通知或 JSONStore，那么需要包含独立导入。
+                                            <br/><br/>
+                                            <b>推送通知</b><br/>
+                                            对于 Objective C：<br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h&gt;</code>
+                                            <br/><br/>
+                                            对于 Swift：<br/>
+                                            <code>import IBMMobileFirstPlatformFoundationPush</code>
+                                            <br/><br/>
+                                            <b>JSONStore</b><br/>
+                                            对于 Objective C：<br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h&gt;</code>
+                                            <br/><br/>
+                                            对于 Swift：<br/>
+                                            <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <br/>
+
+                        <b>Android</b><br/>
+                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="removeAndroidSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseRemoveAndroidSDK" aria-expanded="false" aria-controls="collapseRemoveAndroidSDK">移除旧 SDK</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseRemoveAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeAndroidSDK">
+                                    <div class="panel-body">
+                                        查找您项目的 lib 文件夹并删除以下文件：
+                                        <ul>
+                                            <li>worklight-android.jar</li>
+                                            <li>uicandroid.jar</li>
+                                            <li>bcprov.jar</li>
+                                            <li>android-async-http.jar</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="addAndroidSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseAddAndroidSDK" aria-expanded="false" aria-controls="collapseAddAndroidSDK">添加新 SDK</a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapseAddAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addAndroidSDK">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>在 Android Studio 中，浏览至 <b>Android → Gradle 脚本</b>并选择 <b>build.gradle（模块：应用程序）</b>文件。</li>
+                                            <li>在 <code>apply plugin: 'com.android.application'</code> 下方添加以下行：
+
+{% highlight xml %}repositories{
+    jcenter()
+}{% endhighlight %}            </li>
+                                            <li>在 <b>android</b> 内添加以下行：
+
+{% highlight xml %}packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}{% endhighlight %}            </li>
+                                            <li>在 <b>dependencies</b> 内添加以下行：
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundation',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                                            如果您的应用程序需要使用额外功能，那么可以指定更多工件。例如，如果您的应用程序使用推送通知，请添加：
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationpush',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                                            或者，如果您打算使用 JSONStore：
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationjsonstore',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}</li>
+
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <b>Windows</b><br/>
+                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="removeWindowsSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseRemoveWindowsSDK" aria-expanded="false" aria-controls="collapseRemoveWindowsSDK">移除旧 SDK</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseRemoveWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeWindowsSDK">
+                                    <div class="panel-body">
+                                        从 Visual Studio 项目中移除以下文件：
+
+                                        <ul>
+                                            <li>wlclient.properties</li>
+                                            <li>Newtonsoft.Json</li>
+                                            <li>SharpCompress</li>
+                                            <li>worklight-windows8</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="addWindowsSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseAddWindowsSDK" aria-expanded="false" aria-controls="collapseAddWindowsSDK">添加新 SDK</a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapseAddWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addWindowsSDK">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>右键单击项目解决方案并选择<b>管理 Nuget 软件包</b>。</li>
+                                            <li>在搜索选项中，搜索“IBM MobileFirst Platform”，选择 <b>IBM.MobileFirstPlatform.8.0.0.0</b>，然后单击<b>安装</b>。</li>
+                                            <li>在 Package.appxmanifest 中，添加<b>因特网（客户机）</b>功能。</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <h4>步骤 3 </h4>
+                        <p>本机应用程序几乎已完全迁移。现在可以开始处理 API 报告中生成的问题。在浏览器中打开并查看 API 报告。对于报告中的每个项，您需要以不同的方式实现或完全替换。</p>
+
+                        <ul>
+                            <li><a href="../migrating-client-applications/ios" target="_blank">iOS 代码更改</a></li>
+                            <li><a href="../migrating-client-applications/android" target="_blank">Android 代码更改</a></li>
+                            <li><a href="../migrating-client-applications/windows" target="_blank">Windows 代码更改</a></li>
+                        </ul>
+
+                        <br/>
+                        <h4>步骤 4</h4>
+                        <p>要测试应用程序，请在特定平台 IDE 中运行该应用程序。</p>
+
+                        <h3>后续步骤</h3>
+                        <ul>
+                            <li>查看<a href="#development-topics">开发主题</a>以继续迁移。</li>
+                            <li><a href="#migrating-adapters">迁移适配器</a>。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <blockquote>
+            <b>补充阅读材料：</b>
+            <ul>
+                <li><a href="../migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before" target="_blank">使用 V8.0 开发的 Cordova 应用程序与使用 V7.1 及更低版本开发的 Cordova 应用程序的比较</a></li>
+                <li><a href="../../product-overview/release-notes/deprecated-discontinued" target="_blank">8.0 中停用的功能和 8.0 中不包含的功能</a></li>
+                <li><a href="../migrating-client-applications/cordova/#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80" target="_blank">将现有混合应用程序或跨平台应用程序迁移到 {{ site.data.keys.product_adj }} V8.0 支持的 Cordova 应用程序</a></li>
+                <li><a href="../migrating-client-applications/cordova/#migrating-encryption-for-ios-cordova" target="_blank">为 Cordova iOS 应用程序迁移加密</a></li>
+            </ul>
+        </blockquote>
+        <p>您的应用程序现在符合 MobileFoundation 8.0 所需的结构。您现在可以开始查看适配器。</p>
+    </div>
+
+    <br id="migrating-adapters"/><br/>
+
+    <div class="gutter gutter-adapters-color">
+        <div class="number number-adapters hidden-sm hidden-xs hidden-md">3</div>
+        <h2>迁移适配器</h2>
+        <p>在过去的发行版中，使用针对 Eclipse 或 {{ site.data.keys.mf_cli }} 的 MobileFirst Studio 插件来创建、开发和构建适配器。从 {{ site.data.keys.product }} 8.0 开始，适配器现在可视为是使用 IBM 提供的 archetype（用于生成 Java 和 JavaScript 适配器）创建的标准 Apache Maven 项目。</p>
+
+        <p>使用 Maven 为服务器端开发人员提供一种简单的标准方法来管理和集成所需的依赖关系，并可以让开发人员在开发期间自由使用其喜爱的工具。可以从命令行使用 Maven 命令创建 Maven 项目，或者使用可在幕后调用 Maven 命令并提供简化命令的 {{ site.data.keys.mf_cli }} 来创建 Maven 项目。</p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>提示：</b>您也可以设置 Eclipse 或 IntelliJ <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">在 IDE 环境中创建和开发适配器</a>。</p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>您是否知道？</b> {{ site.data.keys.product }} 8.0 引入了 DevOps 样式的运行方式，将适配器部署到 {{ site.data.keys.mf_server }} 之后，您可以通过 {{ site.data.keys.mf_console }} 动态配置各种属性（例如，用于数据库连接的用户名和密码值），而无需重新部署适配器。</p>
+
+        <blockquote>了解有关<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters" target="_blank">开发 Java 和 JavaScript 适配器</a>的更多信息。</blockquote>
+
+        <br/>
+        <p>用于将适配器迁移到 Maven 项目的步骤包括：创建匹配的新 Maven 项目，然后将其复制到现有适配器的源代码（通过一些修改）。随后构建 Maven 项目以查找任何错误。</p>
+
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="prereqs">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">设置 Apache Maven 的先决条件</a>
+                    </h4>
+                </div>
+
+                <div id="collapsePrereqs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="prereqs">
+                    <div class="panel-body">
+                        <p>Maven 适配器需要在开发人员工作站上安装 Apache Maven。</p>
+                        <ol>
+                            <li>安装 Apache Maven。
+                                <ul>
+                                    <li><a href="https://maven.apache.org/download.cgi" target="_blank">下载 Apache Maven .zip</a>。</li>
+                                    <li>添加指向 Maven 文件夹的 <code>MVN_PATH</code> 变量。</li>
+                                    <li><i>Mac 和 Linux：</i><br/>
+                                编辑您的 <b>~/.bash_profile</b>：
+
+{% highlight bash %}#### Apache Maven example location
+export MVN_PATH="/usr/local/bin"
+{% endhighlight %}</li>
+
+                                    <li><i>Windows：</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">遵循此指南</a>。</li>
+                                    <li>通过执行 <code>mvn -v</code> 来验证安装。</li>
+                                </ul>
+                            </li>
+
+                            <li>该手册使用 {{ site.data.keys.mf_cli }} 来调用 Maven 命令以创建和构建适配器。<ul>
+                                    <li>如果尚未<a href="https://nodejs.org/en/" target="_blank">安装 NodeJS</a>，请进行安装，因为它是运行该工具的先决条件。</li>
+                                    <li>从命令行窗口中，运行以下命令：<code>npm install -g mfpdev-cli</code>（或者在 {{ site.data.keys.mf_console }} 上从“下载中心”中进行下载和安装）。</li>
+                                    <li>通过执行 <code>mfpdev -v</code> 来验证安装。</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="create-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">创建新的 Maven 项目</a>
+                    </h4>
+                </div>
+
+                <div id="collapseCreateMavenProject" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <p>创建与您自己的适配器类型和适配器名称以及软件包名称匹配的新适配器模板。<br/>
+                        这将简化迁移，因为适配器的元数据是类似的，因此不需要进行额外编辑。</p>
+
+                        <ul>
+                            <li>从命令行窗口中，运行以下命令：<code>mfpdev adapter create</code></li>
+                            <li>选择适配器类型：HTTP 或 SQL JavaScript 适配器或 Java 适配器。</li>
+                            <li>提供 <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">GroupID</a>。</li>
+                            <li>如果您创建 Java 适配器，请确保指定先前使用的相同<a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">软件包名称</a>（例如，“com.sample”）。</li>
+                        </ul>
+
+                        <img alt="创建适配器模板" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/creating-an-adapter.png"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-js-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJSAdapter" aria-expanded="false" aria-controls="collapseMigrateJSAdapter">迁移 JavaScript 源代码</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateJSAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <b>HTTP JavaScript 适配器</b><br/>
+
+                        <ol>
+                            <li>在文件系统中浏览至 JavaScript 适配器文件夹，例如：<i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i>。</li>
+                            <li>打开另一个窗口并浏览至新 Maven 项目（例如：<i>../Desktop/MigratedAdapter</i>）和 <b>src/main/adapter-resources</b> 文件夹。</li>
+                            <li>将现有适配器文件复制并粘贴到此文件夹。</li>
+                            <li>编辑 <b>adapter.xml</b>：将其内容替换为现有适配器的 XML 内容（在此示例中为 RSSReader.xml）。</li>
+                            <li>编辑 <b>js/{adapter-name}-impl.js</b>：将其内容替换为现有适配器的内容（在此示例中为 RSSReader-impl.js）。</li>
+                        </ol>
+
+                        <br/>
+                        <b>SQL JavaScript 适配器</b><br/>
+
+                        <ol>
+                            <li>在文件系统中浏览至 JavaScript 适配器文件夹，例如：<i>../Desktop/JavaScriptAdapters/adapters/SQLAdapter</i>。</li>
+                            <li>打开另一个窗口并浏览至新 Maven 项目（例如：<i>../Desktop/MigratedAdapter</i>）和 <b>src/main/adapter-resources</b> 文件夹。</li>
+                            <li>编辑 <b>adapter.xml</b>：将其内容替换为现有适配器的 XML 内容（在此示例中为 SQLAdapter.xml）。</li>
+                            <li>编辑 <b>js/{adapter-name}-impl.js</b>：将其内容替换为现有适配器的内容（在此示例中为 SQLAdapter-impl.js）。</li>
+                        </ol>
+
+                        <br/>
+                        <p>这是 Maven 依赖关系生效的位置。由于未使用 Worklight/MobileFirst Studio（数据库连接器先前放置在 <b>server/lib</b> 文件夹中），所以将其替换为 Maven 依赖关系。</p>
+
+                        <ol>
+                            <li>返回到新创建的 Maven 项目，然后打开位于该目录的根目录下的 <b>pom.xml</b> 文件。</li>
+                            <li>为您的数据库类型添加依赖关系。您可以<a href="http://search.maven.org/" target="_blank">在 Maven Central Web 站点中</a>搜索要使用的相应依赖关系。</li>
+                            <li>在此示例中，使用 MySQL 数据库。在 <b>dependencies</b> 部分中添加以下代码块：
+
+{% highlight xml %}<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.6</version>
+</dependency>{% endhighlight %}</li>
+                        </ol>
+
+                        <p>如果您具有其他依赖关系，<b>pom.xml</b> 文件将是指向本地文件或远程依赖关系的位置。</p>
+
+                        <blockquote><b>了解有关 Maven 依赖关系的更多信息：</b><br/>
+                            <ul>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">依赖关系机制简介 (Maven.org)</a></li>
+                                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">处理依赖关系（教程）</a></li>
+                            </ul>
+                        </blockquote>
+                        <br/>
+                        <p>下面这些“图”以不同角度呈现了到目前为止所完成的工作：</p>
+                        <i>JavaScript 适配器的旧结构</i>
+{% highlight xml %}MyProject
+├── adapters
+│   ├── RSSAdapter
+│   │   ├── RSSAdapter-impl.js
+│   │   ├── RSSAdapter.xml
+│   │   └── filtered.xsl{% endhighlight %}
+
+        <i>JavaScript 适配器的新结构</i>
+{% highlight xml %}RSSAdapter
+├── pom.xml
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   ├── adapter.xml
+│       │   └── js
+│       │        ├── RSSAdapter-impl.js
+│       │        └── filtered.xml{% endhighlight %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-java-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJavaAdapter" aria-expanded="false" aria-controls="collapseMigrateJavaAdapter">迁移 Java 源代码</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateJavaAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <ol>
+                            <li>在文件系统中浏览至 Java 适配器文件夹，例如：<i>../Desktop/JavaAdapters/RSSAdapter</i>。</li>
+                            <li>打开另一个窗口并浏览至新 Maven 项目（例如：<i>../Desktop/MigratedAdapter</i>）和 <b>src/main/adapter-resources</b> 文件夹。</li>
+                            <li>编辑 <b>{adapter-name}.xml</b>：将其内容替换为现有适配器的 XML 内容（在此示例中为 RSSAdapter.xml）。</li>
+                            <li>在新适配器中，浏览至 <b>src/main/java/com/sample/</b>（在此示例中）。</li>
+                            <li>将现有的 .java 文件替换为现有适配器的 .java 文件。</li>
+                        </ol>
+
+                        <p>如果使用的是现有适配器中的任何其他库，Maven 依赖关系现在开始生效。由于未使用 Worklight/MobileFirst Studio（库先前放置在 <b>server/lib</b> 或 Java 适配器的 <b>lib</b> 文件夹中），所以将其替换为 Maven 依赖关系。</p>
+
+                        <ol>
+                            <li>返回到新创建的 Maven 项目，然后打开位于该目录的根目录下的 <b>pom.xml</b> 文件。</li>
+                            <li>为您的数据库类型添加依赖关系。您可以<a href="http://search.maven.org/" target="_blank">在 Maven Central Web 站点中</a>搜索要使用的相应依赖关系。</li>
+                            <li>此示例使用 Cloudant 依赖关系。在 <b>dependencies</b> 部分中添加以下代码块：
+
+{% highlight xml %}<dependency>
+	<groupId>com.cloudant</groupId>
+	<artifactId>cloudant-client</artifactId>
+	<version>1.2.3</version>
+</dependency>{% endhighlight %}</li>
+                        </ol>
+                        <br/>
+                        <blockquote><b>了解有关 Maven 依赖关系的更多信息：</b>
+                            <ul>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">依赖关系机制简介 (Maven.org)</a></li>
+                                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">处理依赖关系（教程）</a></li>
+                            </ul>
+                        </blockquote>
+                        <br/>
+                        <p>下面这些“图”以不同角度呈现了到目前为止所完成的工作：</p>
+                        <i>Java 适配器的旧结构</i>
+
+{% highlight xml %}
+├── adapters
+│   └── RSSAdapter
+│       ├── RSSAdapter.xml
+│       ├── lib
+│       └── src
+│           └── com
+│               └── sample
+│                   ├── RSSAdapterApplication.java
+│                   └── RSSAdapterResource.java{% endhighlight %}
+
+        <i>Java 适配器的新结构</i>
+
+{% highlight xml %}
+├── pom.xml
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   └── adapter.xml
+│       └── java
+│           └── com
+│               └── sample
+│                   ├── RSSAdapterApplication.java
+│                   └── RSSAdapterResource.java
+└{% endhighlight %}
+
+                        <br/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="build-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseBuildAdapter" aria-expanded="false" aria-controls="collapseBuildAdapter">构建和测试 Maven 项目</a>
+                    </h4>
+                </div>
+
+                <div id="collapseBuildAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <h3>构建已迁移的适配器</h3>
+                        <p>从命令行窗口中，浏览至适配器的文件夹并运行以下命令：<code>mfpdev adapter build</code></p>
+
+                        <img alt="在命令行中构建适配器 - 故障" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/compilation-errors.png"/>
+
+                        <p>要解决此类错误，建议将 Maven 项目导入到 IDE（如 IntelliJ），并在那里构建项目。通过由您控制的 IDE，您可以更轻松地遍历构建错误并逐个解决错误。<a href="{{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/">了解有关使用 IntelliJ 和适配器的更多信息</a>。</p>
+
+                        <img alt="使用 IntelliJ" src="intellij.png"/>
+
+                        <h3>测试已构建的适配器</h3>
+                        <p>要测试已迁移的适配器，您可以使用 {{ site.data.keys.mf_cli }} 调用自己的端点，或者从 {{ site.data.keys.mf_console }} 中使用 Swagger。</p>
+                        <blockquote>在<a href="../../adapters/testing-and-debugging-adapters/">测试和调试适配器</a>教程中了解有关测试适配器的更多信息。</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <blockquote><b>补充阅读材料：</b>
+            <ul>
+                <li><a href="../migrating-adapters" target="_blank">迁移现有适配器以在 {{ site.data.keys.mf_server }} V8.0.0 下工作</a></li>
+                <li><a href="../../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes" target="_blank">Mobile Foundation 8.0 中的服务器端 API 更改</a></li>
+            </ul>
+        </blockquote>
+        <p>将适配器迁移到与 Maven 项目兼容的表单和代码之后，可以开始了解一些开发概念...</p>
+    </div>
+
+    <br id="development-topics"/><br/>
+
+    <div class="gutter gutter-dev-topics-color">
+        <div class="number number-dev-topics hidden-sm hidden-xs hidden-md">4</div>
+        <h2>开发主题</h2>
+        <p>现在已将应用程序和适配器迁移到 {{ site.data.keys.product }} 8.0 内的新结构中；下面讨论了最新发行版中已更改的一些实施概念。</p>
+
+        <h3>适配器</h3>
+        <h4>JavaScript 适配器</h4>
+        <b>全局变量和会话</b><br/>
+        <p>避免在 JavaScript 适配器中使用全局变量来保存有关会话的数据 - 因为没有“会话”。此行为更改<a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">最先出现在 MobileFirst Platform Foundation 7.1 中</a>。但是，您可以使用全局变量来保存要在单个请求期间使用的数据。但是，请记住不再建议这样做。</p>
+
+        <blockquote><a href="../../adapters/" target="_blank">在适配器教程中</a>了解有关创建、构建、部署和测试适配器的更多信息。</blockquote>
+
+        <h3>安全框架</h3>
+        <p>{{ site.data.keys.product }} 8.0 中的安全框架不同于先前发行版中的安全框架。因此，您必须重新实施一些应用程序后端和客户机逻辑。</p>
+
+        <p>强烈建议您用一些时间来熟悉现在完全基于 OAuth 模型的新安全框架及其授权流程。另外，请了解新的授权实体（如访问令牌、安全性检查和作用域），这些实体将替换先前的已知实体（如安全性测试、域和登录模块）。</p>
+
+        <blockquote>在<a href="../migrating-security/" target="_blank">迁移认证和安全性</a>教程中了解如何迁移安全性。要了解有关安全框架和授权概念的更多信息，请参阅<a href="../../authentication-and-security/" target="_blank">认证和安全性教程</a>。</blockquote>
+
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="security-framework">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#security-framework" href="#collapseSecurityFramework" aria-expanded="false" aria-controls="collapseSecurityFramework">安全框架差异</a>
+                    </h4>
+                </div>
+
+                <div id="collapseSecurityFramework" class="panel-collapse collapse" role="tabpanel" aria-labelledby="security-framework">
+                    <div class="panel-body">
+                        <h3>域与安全性检查</h3>
+                        <p>在 {{ site.data.keys.product }} 8.0 中，安全性检查可视为是先前发行版中的三个概念的组合：<br/>
+                        安全性检查 = 域 + 认证器 + 登录模块</p>
+
+                        <p>实施安全性检查，即是实施登录模块和认证器。<br/>
+                        安全性检查的定义类似于域的定义。</p>
+
+                        <p>下表描述了先前发行版的安全框架与 {{ site.data.keys.product }} 8.0 的安全框架之间的差异。</p>
+                        <table class="table table-striped">
+                            <tr>
+                                <td></td>
+                                <td><b>先前发行版</b></td>
+                                <td><b>{{ site.data.keys.product }} 8.0</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>定义</b></td>
+                                <td>已在 <b>authenticationConfig.xml</b> 中使用名称、登录模块和认证器进行定义，例如：
+    {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
+        <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    </realm>{% endhighlight %}  </td>
+                                <td>在相关的 <b>adapter.xml</b> 文件中使用名称和实现类来定义安全性检查：
+    {% highlight xml %}<securityCheckDefinition
+        name="securityCheckX"
+        class="com.sample.SecurityCheckW">
+    </securityCheckDefinition>{% endhighlight %}</td>
+                            </tr>
+                            <tr>
+                                <td><b>进入/退出方法</b></td>
+                                <td><i>基于适配器的认证：</i>将定义登录/注销函数（在发出授权请求时框架将调用此函数）。
+    {% highlight xml %}<parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
+<parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
+
+                                <i>定制认证器 + 登录模块：</i><code>init()</code> 方法用于启动，<code>processRequest()</code> 用于授权请求。
+认证器会将登录模块凭证发送到 <code>login()/logout()</code> 方法。</td>
+                                <td>在实现安全性检查接口时，用户还必须实现 <code>authorize()</code> 和 <code>introspect()</code> 方法（在授权请求期间框架将调用这两个方法）。安全性检查将自行处理认证和登录/注销。</td>
+                            </tr>
+                            <tr>
+                                <td><b>用法</b></td>
+                                <td>封装在 <code>customSecurityTest</code> 中，可以包含一个或多个域：
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}</td>
+                                <td>封装在<b>作用域</b>元素中，可以包含 0 个或更多个安全性检查</td>
+                            </tr>
+                        </table>
+
+                        <h3>安全性测试与作用域</h3>
+                        <p>在 {{ site.data.keys.product }} 8.0 中，<b>作用域</b>用于聚集 0 个或更多个安全性检查，然后可用于保护局部和外部资源或应用程序。这类似于先前发行版中的 <code>CustomSecurityTest</code> 概念。</p>
+
+                        <table class="table table-striped">
+                            <tr>
+                                <td></td>
+                                <td><b>先前发行版</b></td>
+                                <td><b>{{ site.data.keys.product }} 8.0</b></td>
+                            </tr>
+
+                            <tr>
+                                <td><b>定义</b></td>
+                                <td>已在 <b>authenticationConfig.xml</b> 文件中使用名称和 1 个或多个安全性测试（其中至少一个专用于定义 <code>UserID</code>）进行定义。
+
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}</td>
+                                <td>已在 {{ site.data.keys.mf_console }} 中定义，或者已通过 REST API 定义，作用域包含 0 个或更多个安全性检查。
+
+{% highlight json %}"scopeElementMapping": {
+    "ScopeElementA": "secCheck1 secCheck2"
+}, {% endhighlight %}</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>用法</b></td>
+                                <td>安全性测试可用于保护资源（Java 适配器）、过程（JavaScript 适配器）或应用程序（应用程序描述符）。<br/><br/>
+
+                                <b>Java 适配器</b>：
+{% highlight java %}@OAuthSecurity(scope="AuthRealm"){% endhighlight %}
+
+                                <b>JavaScript 适配器</b>：
+{% highlight javascript %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}
+
+                                <b>注</b>：不能使用不属于安全性测试的域来保护资源。</td>
+                                <td><b>作用域</b>（1 个或多个作用域元素）可用于保护资源（Java 适配器）、过程（JavaScript 适配器）或应用程序（应用程序描述符）。<br/><br/>
+
+                                <b>Java 适配器</b>：
+{% highlight java %}@OAuthSecurity(scope="ScopeElementA ScopeElementB"){% endhighlight %}
+
+                                <b>JavaScript 适配器</b>：
+{% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege"/>{% endhighlight %}
+
+                                <b>注</b>：可以使用不属于作用域元素映射的 securityCheck 来保护资源/应用程序</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>用户身份</b></td>
+                                <td>安全性测试中的某些域将定义 DeviceID 和 UserID。{% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}</td>
+                                <td>作用域并不知道构成它的安全性检查。</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>部署</b></td>
+                                <td>已在 <b>authenticationConfig.xml</b> 文件中配置。要更改哪些域构成安全性测试，您必须重新部署 .war 文件。</td>
+                                <td>已在不中断 {{ site.data.keys.mf_server }} 的情况下使用 {{ site.data.keys.mf_console }} 进行更改。</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>通知</h3>
+        在 {{ site.data.keys.product }} 8.0 中，引入了新的推送服务以及关于设置、配置和发送通知的新体验。此外，已撤回了事件源推送通知概念。在这些用户文档主题中查找基于方案的详细迁移路径：
+
+        <ul>
+            <li><a href="../migrating-push-notifications" target="_blank">从基于事件源的通知迁移到推送通知</a></li>
+            <li><a href="../migrating-push-notifications/#migration-scenarios" target="_blank">按平台划分的迁移方案</a></li>
+        </ul>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">在通知教程中</a>了解有关设置通知支持以及发送已认证通知和基于标记的通知的更多信息。</blockquote>
+
+        <h3>直接更新</h3>
+        <p>使用“直接更新”功能交付更新的步骤已发生了变化，并且施加了一些限制。</p>
+
+        <ul>
+            <li>查看<a href="../migrating-client-applications/cordova/#migrating-direct-update" target="_blank">迁移直接更新</a>用户文档主题。</li>
+        </ul>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/direct-update/" target="_blank">在Cordova 应用程序中使用“直接更新”</a>教程中了解有关如何使用“直接更新”的更多信息。</blockquote>
+
+        <h3>其他</h3>
+        <p>在 {{ site.data.keys.product }} 8.0 中，已移除多个其他组件和功能。要获取完整列表，请查看<a href="../migrating-client-applications/cordova/#removed-components" target="_blank">已移除的组件</a>用户文档主题。</p>
+    </div>
+    <div class="sizer">
+        <p>最后，下面提供了一个视频，展示如何将 MobileFirst Platform Foundation 6.3 混合应用程序和适配器迁移到标准 Cordova 应用程序和 Maven 项目。</p>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/nLrtdOEkbEs"></iframe>
+        </div>
+    </div>
+</div>

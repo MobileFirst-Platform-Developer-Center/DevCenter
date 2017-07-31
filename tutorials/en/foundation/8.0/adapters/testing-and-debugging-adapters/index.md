@@ -122,8 +122,8 @@ To access Swagger:
 
 <img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### Test Token
-{: #test-token }
+#### Adding a test token
+{: #adding-a-test-token }
 
 To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 

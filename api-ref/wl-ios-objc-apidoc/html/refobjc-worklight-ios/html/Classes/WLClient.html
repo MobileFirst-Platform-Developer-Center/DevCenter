@@ -5,12 +5,175 @@
 		<title>WLClient Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
-		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesPrint.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
 		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
-		
-		
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Objective-C client-side API for iOS apps </a></h1>
+				<a id="developerHome" href="../index.html">IBM</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">WLClient Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/defaultRequestTimeoutInterval">&nbsp;&nbsp;&nbsp;&nbsp;defaultRequestTimeoutInterval</option>
+	
+	<option value="//api/name/isInitialized">&nbsp;&nbsp;&nbsp;&nbsp;isInitialized</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/sharedInstance">&nbsp;&nbsp;&nbsp;&nbsp;+ sharedInstance</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/HTTPCookieStorage">&nbsp;&nbsp;&nbsp;&nbsp;- HTTPCookieStorage</option>
+	
+	<option value="//api/name/addGlobalHeader:headerValue:">&nbsp;&nbsp;&nbsp;&nbsp;- addGlobalHeader:headerValue:</option>
+	
+	<option value="//api/name/getChallengeHandlerBySecurityCheck:">&nbsp;&nbsp;&nbsp;&nbsp;- getChallengeHandlerBySecurityCheck:</option>
+	
+	<option value="//api/name/getDeviceDisplayNameWithCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- getDeviceDisplayNameWithCompletionHandler:</option>
+	
+	<option value="//api/name/getGlobalHeaders">&nbsp;&nbsp;&nbsp;&nbsp;- getGlobalHeaders</option>
+	
+	<option value="//api/name/invokeProcedure:withDelegate:options:">&nbsp;&nbsp;&nbsp;&nbsp;- invokeProcedure:withDelegate:options:</option>
+	
+	<option value="//api/name/pinTrustedCertificatePublicKeyFromFile:">&nbsp;&nbsp;&nbsp;&nbsp;- pinTrustedCertificatePublicKeyFromFile:</option>
+	
+	<option value="//api/name/pinTrustedCertificatePublicKeyFromFiles:">&nbsp;&nbsp;&nbsp;&nbsp;- pinTrustedCertificatePublicKeyFromFiles:</option>
+	
+	<option value="//api/name/registerChallengeHandler:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- registerChallengeHandler:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/removeGlobalHeader:">&nbsp;&nbsp;&nbsp;&nbsp;- removeGlobalHeader:</option>
+	
+	<option value="//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- sendUrlRequest:delegate:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:">&nbsp;&nbsp;&nbsp;&nbsp;- sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</option>
+	
+	<option value="//api/name/serverUrl">&nbsp;&nbsp;&nbsp;&nbsp;- serverUrl</option>
+	
+	<option value="//api/name/setDeviceDisplayName:WithCompletionHandler:">&nbsp;&nbsp;&nbsp;&nbsp;- setDeviceDisplayName:WithCompletionHandler:</option>
+	
+	<option value="//api/name/setHeartBeatInterval:">&nbsp;&nbsp;&nbsp;&nbsp;- setHeartBeatInterval:</option>
+	
+	<option value="//api/name/setServerUrl:">&nbsp;&nbsp;&nbsp;&nbsp;- setServerUrl:</option>
+	
+	<option value="//api/name/wlConnectWithDelegate:">&nbsp;&nbsp;&nbsp;&nbsp;- wlConnectWithDelegate:</option>
+	
+	<option value="//api/name/wlConnectWithDelegate:options:">&nbsp;&nbsp;&nbsp;&nbsp;- wlConnectWithDelegate:options:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/defaultRequestTimeoutInterval">defaultRequestTimeoutInterval</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isInitialized">isInitialized</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sharedInstance">sharedInstance</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/HTTPCookieStorage">HTTPCookieStorage</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addGlobalHeader:headerValue:">addGlobalHeader:headerValue:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getChallengeHandlerBySecurityCheck:">getChallengeHandlerBySecurityCheck:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getDeviceDisplayNameWithCompletionHandler:">getDeviceDisplayNameWithCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getGlobalHeaders">getGlobalHeaders</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/invokeProcedure:withDelegate:options:">invokeProcedure:withDelegate:options:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pinTrustedCertificatePublicKeyFromFile:">pinTrustedCertificatePublicKeyFromFile:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pinTrustedCertificatePublicKeyFromFiles:">pinTrustedCertificatePublicKeyFromFiles:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/registerChallengeHandler:NS_SWIFT_NAME:">registerChallengeHandler:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeGlobalHeader:">removeGlobalHeader:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:">sendUrlRequest:delegate:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:">sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/serverUrl">serverUrl</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setDeviceDisplayName:WithCompletionHandler:">setDeviceDisplayName:WithCompletionHandler:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setHeartBeatInterval:">setHeartBeatInterval:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setServerUrl:">setServerUrl:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wlConnectWithDelegate:">wlConnectWithDelegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/wlConnectWithDelegate:options:">wlConnectWithDelegate:options:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
 				<a title="WLClient Class Reference" name="top"></a>
@@ -91,13 +254,13 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sendUrlRequest:delegate:">&ndash;&nbsp;sendUrlRequest:delegate:</a></code>
+		<code><a href="#//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:">&ndash;&nbsp;sendUrlRequest:delegate:NS_SWIFT_NAME:</a></code>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sendUrlRequest:delegate:responseQueue:">&ndash;&nbsp;sendUrlRequest:delegate:responseQueue:</a></code>
+		<code><a href="#//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:">&ndash;&nbsp;sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</a></code>
 	</span>
 	
 	
@@ -109,7 +272,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/registerChallengeHandler:">&ndash;&nbsp;registerChallengeHandler:</a></code>
+		<code><a href="#//api/name/registerChallengeHandler:NS_SWIFT_NAME:">&ndash;&nbsp;registerChallengeHandler:NS_SWIFT_NAME:</a></code>
 	</span>
 	
 	
@@ -158,6 +321,12 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pinTrustedCertificatePublicKeyFromFile:">&ndash;&nbsp;pinTrustedCertificatePublicKeyFromFile:</a></code>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pinTrustedCertificatePublicKeyFromFiles:">&ndash;&nbsp;pinTrustedCertificatePublicKeyFromFiles:</a></code>
 	</span>
 	
 	
@@ -645,8 +814,54 @@ An object that is returned with <a href="../Classes/WLResponse.html">WLResponse<
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/registerChallengeHandler:" title="registerChallengeHandler:"></a>
-	<h3 class="subsubtitle method-title">registerChallengeHandler:</h3>
+	<a name="//api/name/pinTrustedCertificatePublicKeyFromFiles:" title="pinTrustedCertificatePublicKeyFromFiles:"></a>
+	<h3 class="subsubtitle method-title">pinTrustedCertificatePublicKeyFromFiles:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Pins a list of host X509 certificates with public key to the client application. Secured calls to the all pinned remote host will be checked for a public key match. Secured calls to other hosts containing other certificates not pinned with app will be rejected. Some mobile operating systems might cache the certificate validation check results. Your app must call the certificate pinning method before making a secured request. Calling this method a second time overrides any previous pinning operation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)pinTrustedCertificatePublicKeyFromFiles:(NSArray *)<em>certificateFilenames</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>certificateFilenames</em></dt>
+			<dd><p>the list conatining names of the certificate files</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">WLClient.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/registerChallengeHandler:NS_SWIFT_NAME:" title="registerChallengeHandler:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">registerChallengeHandler:NS_SWIFT_NAME:</h3>
 	
 	
 	
@@ -656,7 +871,7 @@ An object that is returned with <a href="../Classes/WLResponse.html">WLResponse<
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)registerChallengeHandler:(BaseChallengeHandler *)<em>challengeHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)registerChallengeHandler:(BaseChallengeHandler *)<em>challengeHandler</em> NS_SWIFT_NAME</code></div>
 
     
 	
@@ -737,8 +952,8 @@ An object that is returned with <a href="../Classes/WLResponse.html">WLResponse<
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sendUrlRequest:delegate:" title="sendUrlRequest:delegate:"></a>
-	<h3 class="subsubtitle method-title">sendUrlRequest:delegate:</h3>
+	<a name="//api/name/sendUrlRequest:delegate:NS_SWIFT_NAME:" title="sendUrlRequest:delegate:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">sendUrlRequest:delegate:NS_SWIFT_NAME:</h3>
 	
 	
 	
@@ -748,7 +963,7 @@ An object that is returned with <a href="../Classes/WLResponse.html">WLResponse<
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)sendUrlRequest:(NSURLRequest *)<em>request</em> delegate:(id)<em>delegate</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)sendUrlRequest:(NSURLRequest *)<em>request</em> delegate:(id)<em>delegate</em> NS_SWIFT_NAME</code></div>
 
     
 	
@@ -786,8 +1001,8 @@ An object that conforms to the <code>NSURLSessionDataDelegate</code> or <code>NS
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sendUrlRequest:delegate:responseQueue:" title="sendUrlRequest:delegate:responseQueue:"></a>
-	<h3 class="subsubtitle method-title">sendUrlRequest:delegate:responseQueue:</h3>
+	<a name="//api/name/sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:" title="sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:"></a>
+	<h3 class="subsubtitle method-title">sendUrlRequest:delegate:responseQueue:NS_SWIFT_NAME:</h3>
 	
 	
 	
@@ -797,7 +1012,7 @@ An object that conforms to the <code>NSURLSessionDataDelegate</code> or <code>NS
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)sendUrlRequest:(NSURLRequest *)<em>request</em> delegate:(id)<em>delegate</em> responseQueue:(dispatch_queue_t)<em>responseQueue</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)sendUrlRequest:(NSURLRequest *)<em>request</em> delegate:(id)<em>delegate</em> responseQueue:(dispatch_queue_t)<em>responseQueue</em> NS_SWIFT_NAME</code></div>
 
     
 	
@@ -811,7 +1026,7 @@ An object that conforms to the <code>NSURLSessionDataDelegate</code> or <code>NS
 <p>@param delegate
 An object that conforms to the <code>NSURLSessionDataDelegate</code> or <code>NSURLSessionTaskDelegate</code> protocol.
 @param responseQueue
-An user defined private queue of type dispatch_queue_t</p></dd>
+An callback queue of type dispatch_queue_t</p></dd>
 		</dl>
 		
 	</div>
@@ -1171,11 +1386,101 @@ This method accepts a &ldquo;timeout&rdquo; key in its options parameter -  (NSN
 				<div id="footer">
 					<hr />
                     <div class="footer-copyright">
-                        <p><span class="copyright">&copy; Copyright IBM Corp. 2016</span></p><br />
+                        <p><span class="copyright">&copy; Copyright IBM Corp. 2017</span></p><br />
                     </div>
 				</div>
 			</div>
 		</article>
-		
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
 	</body>
 </html>

@@ -5,6 +5,9 @@ custom_js:
 - lib/magnific/jquery.magnific-popup.min.js
 - js/video-gallery.js
 ---
+<head>
+  <link href="{{site.url}}{{site.baseurl}}{{page.url}}" rel="canonical"/>
+</head>
 <script id="videoTemplate" type="text/x-jsrender">
 {% raw %}
 <li class="col-md-3 col-sm-4 col-xs-6">
@@ -25,7 +28,11 @@ custom_js:
 <section class="container video-gallery" role="main">
 
     <h2 class="no-anchor">Video Gallery<small> Click on a tag for filtered content</small></h2>
-    <blockquote>Find more {{ site.data.keys.product_full }} videos in <a href="https://www.youtube.com/channel/UC1-C71Aj4aKznci2Qusu97Q">our YouTube channel</a>.</blockquote>
+    <br/>
+    <blockquote>Find more {{ site.data.keys.product_full }} and {{ site.data.keys.mf_bm }} videos in our <b>YouTube</b> channels: <br/><br/><img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/> <a href="https://www.youtube.com/channel/UC1-C71Aj4aKznci2Qusu97Q"> <em>IBM MobileFirst Foundation</em></a><br/><br/><img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/> <a href="https://www.youtube.com/channel/UCh_xLgh2_kENFxAeN8hhkHw"> <em>Bluemix Mobile Foundation</em></a></blockquote>
+    <br/>
+    <hr/>
+    <br/>
     <div id="videoTags"></div>
     <ul id="videosList" class="gallery row">
 
