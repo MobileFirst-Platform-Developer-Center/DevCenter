@@ -64,9 +64,9 @@ All the above features were validated to work on iOS 11 beta 3.
 #### Known Issues
 * JSONStrore feature to "add data to collection" does not work as expected when device is upgraded from iOS 10 to iOS 11.
 * Access disable option does not navigate to the newly upgraded url on MobileFirst_Foundation 7.1
-We will continue to investigate these issue.
+These issues are under investigation.
 
-We have also planned iOS11 compatibility tests for following
+iOS11 compatibility tests are planned for following:
 * Live Update SDK
 * Application Center
 * Mobile Foundation WatchOS framework with WatchOS4
