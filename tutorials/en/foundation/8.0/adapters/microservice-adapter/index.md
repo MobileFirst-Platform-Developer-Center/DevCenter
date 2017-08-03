@@ -1,11 +1,12 @@
 ---
 layout: tutorial
-title: Adapter auto-generation
-breadcrumb_title: Adapter auto-generation
-relevantTo: [ios,android,cordova]
-weight: 12
 ---
-<!-- NLS_CHARSET=UTF-8 -->
+<!-- NLS_CHARSET=UTF-8
+# title: Adapter auto-generation
+# breadcrumb_title: Adapter auto-generation
+# relevantTo: [ios,android,cordova]
+# weight: 12
+-->
 ## Overview
 {: #overview }
 
