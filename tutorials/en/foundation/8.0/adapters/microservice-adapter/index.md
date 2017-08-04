@@ -1,12 +1,8 @@
 ---
-layout: tutorial
+layout: redirect
+new_url: /tutorials/en/foundation/8.0/all-tutorials.html
 ---
-<!-- NLS_CHARSET=UTF-8
-# title: Adapter auto-generation
-# breadcrumb_title: Adapter auto-generation
-# relevantTo: [ios,android,cordova]
-# weight: 12
--->
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
 
