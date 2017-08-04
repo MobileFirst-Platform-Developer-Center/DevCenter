@@ -1,6 +1,6 @@
 ---
 layout: redirect
-new_url: /tutorials/en/foundation/8.0/all-tutorials.html
+new_url: tutorials/en/foundation/8.0/all-tutorials/
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
