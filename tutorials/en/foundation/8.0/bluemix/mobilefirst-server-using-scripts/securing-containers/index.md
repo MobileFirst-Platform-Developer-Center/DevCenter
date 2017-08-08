@@ -87,9 +87,11 @@ To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf
 You can secure access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} by enabling HTTP over SSL (HTTPS) on the {{ site.data.keys.mf_server }}.  
 To enable HTTPS on the {{ site.data.keys.mf_server }}, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
 
+<!-- Duplicate section
 ### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
 If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Bluemix containers.
+-->
 
 #### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
