@@ -15,7 +15,7 @@ author:
 Starting from MobileFirst Foundation [iFix8.0.0.0-MFPF-IF20170608-0406](https://mobilefirstplatform.ibmcloud.com/blog/2017/06/08/8-0-ifix-release/) the scripts for deploying IBM MobileFirst Platform Application Center for IBM Containers and Liberty for Java runtime on Bluemix is supported.
 
 
-**For Application Center on “IBM Containers” following are the high level steps**
+**For Application Center on “Liberty for java Runtime” following are the high level steps**
 
 
 1. Setup your host computer with the required tools ([Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases)).
@@ -25,7 +25,7 @@ Starting from MobileFirst Foundation [iFix8.0.0.0-MFPF-IF20170608-0406](https://
 Finally, you will upload the apps to the Application Center and can install the same from devices.
 
 
-**For Application Center on “Liberty for java Runtime” following are the high level steps**
+**For Application Center on “IBM Containers” following are the high level steps**
 
 
 1. Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in).

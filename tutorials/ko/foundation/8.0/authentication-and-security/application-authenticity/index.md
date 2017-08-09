@@ -45,7 +45,7 @@ weight: 9
 2. 탐색 사이드바에서 애플리케이션을 선택하고 **인증** 메뉴 항목을 클릭하십시오.
 3. **상태** 상자의 **설정/해제** 단추를 토글하십시오. 
 
-![애플리케이션 인증 사용](enable_application_authenticity.png)
+![애플리케이션 인증 사용(enable_application_authenticity.png)
 
 ### 애플리케이션 인증 사용 안함
 {: #disabling-application-authenticity }
@@ -71,7 +71,7 @@ weight: 9
 
 3. 새 값을 초 단위로 설정하십시오. 
 
-![콘솔에서 expirationSec 특성 구성](configuring_expirationSec.png)
+![콘솔에서 expirationSec 특성 구성(configuring_expirationSec.png)
 
 ## BTS(Build Time Secret)
 {: #bts }
@@ -107,7 +107,7 @@ Xcode에서 BTS 도구를 사용하려면 다음 작업을 수행하십시오.
 유효성 검증 유형을 전환하려면 [**mfpadm** CLI](../../administering-apps/using-cli/)를 사용하여 다음 명령을 실행하십시오. 
 
 ```bash
-app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
 ```
 `TYPE`은 `dynamic` 또는 `static`이 될 수 있습니다.
 

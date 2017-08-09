@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 brings significant changes that modernize your {{ site.data.keys.product_adj }} application development, deployment, and management experience.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ weight: 1
 
                 <h3>Updated REST API for the runtime</h3>
                 <p>The REST API for the {{ site.data.keys.product_adj }} runtime now provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more. Most of the REST API endpoints are protected by OAuth. On a development server, you can view the Swagger doc for the runtime API at:  <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Multiple certificate pinning support</h3>
+                <p>Starting with iFix 8.0.0.0-IF201706240159, {{ site.data.keys.mf_bm_short }} supports pinning of multiple certificates. This allows users to have secure access to multiple hosts. Prior to this iFix, {{ site.data.keys.mf_bm_short }} supported pinning of a single certificate. {{ site.data.keys.mf_bm_short }} has introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates (purchased from a certificate authority) to the client application. A copy of all the certificates should be placed in your client application. During the SSL handshake, the {{ site.data.keys.product_full }} client SDK verifies that the public key of the server certificate matches the public key from one of the certificates that are stored in the app.</p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>New {{ site.data.keys.product }} capabilities are introduced to help you deploy and manage your apps. You can now update your apps and adapters without restarting {{ site.data.keys.mf_server }}.</p>
 

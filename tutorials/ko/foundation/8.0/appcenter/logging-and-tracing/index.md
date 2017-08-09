@@ -32,6 +32,7 @@ Application Center(또는 {{ site.data.keys.product }}의 다른 컴포넌트)�
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -39,7 +40,7 @@ com.worklight.*=all
 여기서: 
 
 * **com.ibm.puremeap.***는 Application Center용입니다.
-* **com.ibm.worklight.*** 및 **com.worklight.***는 다른 {{ site.data.keys.product_adj }} 컴포넌트에 대한 것입니다. 
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** 및 **com.worklight.***는 다른 {{ site.data.keys.product_adj }} 컴포넌트에 대한 것입니다. 
 
 추적은 **SystemOut.log** 또는 **SystemErr.log**가 아닌 **trace.log**라는 파일로 전송됩니다. 
 
@@ -52,7 +53,7 @@ Application Center에서 문제점을 진단하려고 시도하는 경우 로그
 Application Center를 포함하여 {{ site.data.keys.product }}에 대한 로깅을 FINEST(ALL과 동등한) 레벨로 사용하도록 설정하려면, server.xml 파일에 행을 추가하십시오. 예: 
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 이 예에서, 패키지의 여러 항목 및 해당하는 로깅 레벨은 콜론(:)으로 구분됩니다. 
@@ -71,6 +72,7 @@ Application Center를 포함하여 {{ site.data.keys.product }}에 대한 로깅
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```

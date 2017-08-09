@@ -45,7 +45,7 @@ SDK 包含以下文件：
 
 此命令将创建以下目录结构：
 
-![SDK 文件夹内容](sdk-folder.png)
+![SDK 文件夹内容(sdk-folder.png)
 
 ### 添加 SDK
 {: #adding-the-sdk }
@@ -86,6 +86,7 @@ require(['mfp'], function(WL) {
 ```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**如果要添加分析支持，请将 **ibmmfpfanalytics.js** 文件引用放置在 **ibmmfpf.js** 文件引用**之前**。
+
 ## 初始化 {{ site.data.keys.product_adj }} Web SDK
 {: #initializing-the-mobilefirst-web-sdk }
 通过在您的 Web 应用程序的主要 JavaScript 文件中指定**上下文根**和**应用程序标识**值来初始化 {{ site.data.keys.product }} Web SDK：
@@ -116,7 +117,7 @@ WL.Client.init(wlInitOptions).then (
 3. 选择 **Web** 作为平台，并提供名称和标识。
 4. 单击**注册应用程序**。
 
-![添加 Web 平台](add-web-platform.png)
+![添加 Web 平台(add-web-platform.png)
 
 #### 从 {{ site.data.keys.mf_cli }}
 {: #from-mobilefirst-cli }
