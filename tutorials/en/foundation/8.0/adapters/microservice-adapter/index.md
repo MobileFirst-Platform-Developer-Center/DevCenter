@@ -40,3 +40,5 @@ Clicking the **Microservice Adapter Generator** will launch the page, where the 
 After the adapter is generated it will be automatically downloaded to the browser. The user is then required to deploy the generated adapter, for use in their apps.
 
 The adapter generator depends on the accuracy of the OpenAPI specification JSON. If the specification is incomplete or incorrect, the generation may fail or may result in the generation of adapter APIs that do not match the APIs of the back-end microservices.
+
+>To learn more, read the blog post [Auto Generate Adapters for Microservices and backend systems from its OpenAPI Specification](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/10/autogenerate-adapter-from-openapi-specification/).
