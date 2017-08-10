@@ -4,17 +4,17 @@ date: 2017-08-09
 tags:
 - MobileFirst_Foundation
 - Watson
-- Watson Content Hub
-- App Store
-- Application Center
+- Watson_Content_Hub
+- App_Store
+- Application_Center
 author:
   name: Vinod Appajanna
 additional_authors:
-  - Matthias Falkenberg
+ - Matthias Falkenberg
 
 ---
 ## Overview
-IBM Watson Content Hub comes with a rich set of powerful public APIs for both authoring and delivering assets and content. Here I am showcasing how one can use the Content Hub for distributing the apps (like an App Center or App Store). The demo application combines several of Content Hub APIs to allow users to upload and share mobile apps (.apk/.ipa) for installation on devices. The following overview explains you how the Sample leverages Watson Content Hub APIs and where you can find the corresponding API documentation.
+IBM Watson Content Hub offers a rich set of powerful public APIs for the authoring and delivering of assets and content. In this post, we shall showcase how you can use the Content Hub for distributing the apps (like an App Center or App Store). The demo application combines several of the Content Hub APIs to allow users to upload and share mobile apps (.apk/.ipa) for installation on devices. The following sections explain how the sample leverages Watson Content Hub APIs and also gives information on where you can find the corresponding API documentation.
 
 
 ## Login service
@@ -28,7 +28,7 @@ To upload a mobile apps, we use the Watson Content Hub authoring APIs that requi
 ## Authoring resources data service
 **Purpose:**
 
-When uploading a mobile app, the user selects an image and the application archive file. The authoring resources data service makes sure those files are safely stored in our Watson Content Hub tenant. The integrated MD5 checksum support helps the sample to detect and react to any data transfer troubles.
+When uploading a mobile app, the user selects an image and the application archive file. The authoring resources data service makes sure those files are safely stored in our Watson Content Hub tenant. The integrated MD5 checksum support helps the sample to detect and react to any data transfer issues.
 
 [API documentation:](https://developer.ibm.com/api/view/id-618) > Documentation > Authoring resources
 
@@ -44,7 +44,7 @@ In Watson Content Hub, resources are binary data. Assets on the other hand descr
 ## Authoring content data service
 **Purpose:**
 
-The sample stores mobile apps as content in Watson Content Hub. The content authoring data service is involved whenever a user uploads a mobile app. After creating the resources and the corresponding assets, the sample also creates a new content. It brings the mobile app title, package name, version, image, and application archive file together in one managed entity. Using the content authoring data service again, the content is published.
+The sample stores mobile apps as content in Watson Content Hub. The content authoring data service is involved whenever a user uploads a mobile app. After creating the resources and the corresponding assets, the sample also creates new content. It brings the mobile app title, package name, version, image, and application archive file together in one managed entity. Using the content authoring data service again, the content is published.
 
 [API documentation:](https://developer.ibm.com/api/view/id-618) > Documentation > Authoring content
 
@@ -67,7 +67,7 @@ Once published, users can download mobile apps from an Application Catalog that 
 [API documentation](https://developer.ibm.com/api/view/id-618) > Documentation > Delivery search
 
 
-If you have questions about Watson Content Hub APIs, do not hesitate to check with the [community](https://developer.ibm.com/answers/topics/watsoncontenthub/) in the Watson Content Hub forum at.
+If you have questions about Watson Content Hub APIs, please check with the [community](https://developer.ibm.com/answers/topics/watsoncontenthub/) in the Watson Content Hub forum.
 
 
 
