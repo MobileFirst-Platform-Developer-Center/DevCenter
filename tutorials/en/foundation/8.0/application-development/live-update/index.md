@@ -89,8 +89,8 @@ You can also map the scope element to a security check in case you're using one 
 {: #schema-and-segments }
 Two tabs are available in the Live Update Settings screen:
 
-#### Schema
-{: #schema }
+#### What is Schema
+{: #what-is-schema }
 A schema is where features and properties are defined.  
 
 * Using "features" you can define configurable application features and set their default value.  
@@ -325,7 +325,7 @@ The Segment Resolver adapter defines a REST interface. The request to this adapt
 
 To obtain the configuration by parameters, use the Live Update API to send the request:
 
-#### Cordova
+#### Cordova Resolver
 {: cordova-resolver }
 ```javascript
 var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    

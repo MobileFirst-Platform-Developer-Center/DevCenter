@@ -18,9 +18,9 @@ JavaScript adapters provide templates for connection to HTTP and SQL back-ends. 
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### The adapter-resources folder 
+### The adapter-resources folder
 {: #the-adapter-resources-folder }
- 
+
 The **adapter-resources** folder contains an XML configuration file. This configuration file describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
 
 ```xml
@@ -28,7 +28,7 @@ The **adapter-resources** folder contains an XML configuration file. This config
 <mfp:adapter name="JavaScriptAdapter">
     <displayName>JavaScriptAdapter</displayName>
     <description>JavaScriptAdapter</description>
-    
+
     <connectivity>
         <connectionPolicy>
         ...
@@ -42,7 +42,7 @@ The **adapter-resources** folder contains an XML configuration file. This config
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -64,9 +64,9 @@ The **adapter-resources** folder contains an XML configuration file. This config
                     <li><b>&lt;procedure&gt;</b>: <i>Mandatory.</i> Defines a process for accessing a service that is exposed by a back-end application.
                         <ul>
                             <li><code>name</code>: <i>Mandatory.</i> The name of the procedure. This name must be unique within the adapter. It can contain alphanumeric characters and underscores, and must start with a letter.</li>
-                            <li><code>audit</code>: <i>Optional.</i> Defines whether calls to the procedure are logged in the audit log. The following values are valid: 
+                            <li><code>audit</code>: <i>Optional.</i> Defines whether calls to the procedure are logged in the audit log. The following values are valid:
                                 <ul>
-                                    <li><code>true</code>: Calls to the procedure are logged in the audit log.</li> 
+                                    <li><code>true</code>: Calls to the procedure are logged in the audit log.</li>
                                     <li><code>false</code>: Default. Calls to the procedure are not logged in the audit log.</li>
                                 </ul>
                             </li>
@@ -122,7 +122,7 @@ Run the commands from the root folder of the adapter Maven project:
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * To **push** the configurations file
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -134,7 +134,7 @@ Run the commands from the root folder of the adapter Maven project:
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * To **push** the configurations file
   ```bash
   mfpdev adapter push
@@ -159,7 +159,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 ### The js folder
 {: #the-js-folder }
- 
+
 This folder contains all the JavaScript implementation file of the procedures that are declared in the **adapter.xml** file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
 
 ## JavaScript adapter procedures
@@ -222,7 +222,7 @@ To get the current User ID use:
 function getAuthUserId(){
    var securityContext = MFP.Server.getTokenIntrospectionData();
    var user = securityContext.getAuthenticatedUser();
- 
+
    return "User ID: " + user.getId;
 }
 ```

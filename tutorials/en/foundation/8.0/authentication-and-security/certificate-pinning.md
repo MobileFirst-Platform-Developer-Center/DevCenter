@@ -18,7 +18,7 @@ Protocols that rely on certificate chain verification, such as SSL/TLS, are vuln
 Certificate pinning is the process of associating a host with its expected public key. Because you own both the server-side code and the client-side code, you can configure your client code to accept only a specific certificate for your domain name, instead of any certificate that corresponds to a trusted CA root certificate recognized by the operating system or browser.
 A copy of the certificate is placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
 
-You can also pin multiple certificates with your client application. A copy of the all the certificates should be placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} for client SDK verifies that the public key of the server certificate matches to the public key of one of the certificate that is stored in the app.
+You can also pin multiple certificates with your client application. A copy of all the certificates should be placed in your client application. During the SSL handshake (first request to the server), the {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches to the public key of one of the certificate that is stored in the app.
 
 #### Important
 {: #important }
@@ -118,9 +118,17 @@ The certificate pinning method will raise an exception in two cases:
 
 ### Cordova
 {: #cordova }
-```javascript
-WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure);
 
+Single certificate pinning:
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess, onFailure);
+```
+
+Multiple certificate pinning:
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey(['Cert1.cer','Cert2.cer','Cert3.cer']).then(onSuccess, onFailure);
 ```
 
 The certificate pinning method returns a promise:

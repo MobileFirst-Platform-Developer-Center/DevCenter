@@ -46,10 +46,12 @@ $color_celeste_approx: #ccc;
             color: $white;
             &:hover {
               background-color: $mine_shaft;
+              border: 1px solid #00BFFF;
               color: $white;
             }
             &:focus {
               background-color: $mine_shaft;
+              border: 1px solid #00BFFF;
               color: $white;
             }
           }
@@ -65,19 +67,23 @@ $color_celeste_approx: #ccc;
         }
         &.active > a {
           background-color: $mine_shaft;
+          border: 1px solid #00BFFF;
           color: $white;
           &:hover {
             background-color: $mine_shaft;
+            border: 1px solid #00BFFF;
             color: $white;
           }
           &:focus {
             background-color: $mine_shaft;
+            border: 1px solid #00BFFF;
             color: $white;
           }
         }
       }
       > .active > a:focus {
         background-color: $mine_shaft;
+        border: 1px solid #00BFFF;
         color: $white;
       }
     }
@@ -132,6 +138,7 @@ $color_celeste_approx: #ccc;
     }
     &:hover:not(.divider) {
       background-color: $color_wild_sand_approx;
+      border: 1px solid #00BFFF;
     }
   }
   .divider {

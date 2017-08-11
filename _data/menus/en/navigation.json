@@ -112,4 +112,8 @@
     "name": "Downloads",
     "path": "/downloads",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
+},{
+    "name": "Webinars",
+    "path": "/webinars",
+    "extraClasses": "hidden-xs hidden-sm hidden-md"
 }]

@@ -121,7 +121,7 @@ You must map the roles to the corresponding sets of users. The **mfpmonitor** ro
 | Configure runtime settings.| Yes           | Yes         | No          | No         |
 
 #### Application management
-{: #mobilefirst-server-management }
+{: #application-management }
 
 |                                     | Administrator | Deployer    | Operator    | Monitor    |
 |-------------------------------------|---------------|-------------|-------------|------------|
@@ -404,7 +404,7 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.farm.heartbeat | Optional | This property enables you to set in minutes the heartbeat rate that is used in server farm topologies. The default value is 2 minutes.<br/><br/>In a server farm, all members must use the same heartbeat rate. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.missed.heartbeats.timeout | Optional | This property enables you to set the number of missed heartbeats of a farm member before the status of the farm member is considered to be failed or down. The default value is 2.<br/><br/>In a server farm all members must use the same missed heartbeat value. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.reinitialize | Optional | A Boolean value (true or false) for re-registering or re-initializing the farm member. |
-| mfp.swagger.ui.url | Optional | This property defines the URL of the Swagger user interface to be displayed in the administration console. |
+| mfp.server.swagger.ui.url | Optional | This property defines the URL of the Swagger user interface to be displayed in the administration console. |
 
 #### JNDI properties for administration service: relational database
 {: #jndi-properties-for-administration-service-relational-database }
@@ -563,7 +563,7 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 
 {% comment %}
 <!-- START NON-TRANSLATABLE -->
-The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
+The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |
