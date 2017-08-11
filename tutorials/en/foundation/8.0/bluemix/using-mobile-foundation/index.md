@@ -52,15 +52,12 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *developer* plan
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }}.
+  * You can instantly access and work with the {{ site.data.keys.mf_server }}.
+  * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the Bluemix console.
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
-
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+  ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
