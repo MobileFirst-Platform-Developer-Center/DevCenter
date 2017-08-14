@@ -72,7 +72,7 @@ For **BASIC** authentication, security definition specification needs to be adde
 
 ```
 
-For **API Key**authentication, security definition specification needs to be added to the specification file. Here is a json sample :
+For **API Key** authentication, security definition specification needs to be added to the specification file. Here is a json sample :
 
 ```javascript
     "securityDefinitions": {
