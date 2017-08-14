@@ -29,7 +29,7 @@ An adapter can be created using either Maven commands or by using the MobileFirs
 The OpenAPI Specification, originally known as the Swagger Specification, is a specification for machine-readable interface files for describing, producing, consuming, and visualizing RESTful Web services. OpenAPI specification is adopted by many companies as the industry standard for defining REST APIs. OpenAPI specifications are the key to supporting a great toolchain for developers and is used for documenting the REST APIs. One of the greatest benefits of using OpenAPI Specification is that it can be used to generate the client libraries in a variety of programming languages, these client APIs can be used easily to transfer and retrieve information from the backend systems and services.
 
 ## Auto-generation of Adapter from OpenAPI Specification
-IBM MobileFirst Foundation Platform provides an extension Adapter that can be used to auto-generate adapters from OpenAPI specification. The extension adapter takes an OpenAPI specification json and generates the adapter from the Open API specification, using the client libraries generated from the OpenAPI specification, it then downloads the generated adapters. The adapter that is generated and downloaded can then be deployed to Mobile Foundation Server and can directly be used by the client applications. This takes the pain out from developers who would otherwise need to spend substantial time on developing the adapters instead of focusing on building the client applications.
+IBM MobileFirst Foundation Platform provides an extension Adapter that can be used to auto-generate adapters from OpenAPI specification. The extension adapter takes an OpenAPI specification, either json or yaml file, and generates the adapter from the Open API specification, using the client libraries generated from the OpenAPI specification, it then downloads the generated adapters. The adapter that is generated and downloaded can then be deployed to Mobile Foundation Server and can directly be used by the client applications. You can optionally download the adapter source code as zip file. The adapter source file can be modified and the adapter can be re-built. This takes the pain out from developers who would otherwise need to spend substantial time on developing the adapters instead of focusing on building the client applications.
 
 ***Note:**  Adapter Generation Feature is available on Mobile Foundation Devkits only. To use the adapter generation feature, JDK must be installed on the machine where Mobile Foundation is installed and the **JAVA_HOME** environment variable should  be set to the installed JDK path.*
 
@@ -44,7 +44,7 @@ IBM MobileFirst Foundation Platform ships an Extension Adapter, called Microserv
 
 ![Download Microservice Connector]({{site.baseurl}}/assets/blog/2017-08-10-autogenerate-adapter-from-openapi-specification/microservice-connector-in-downloadcenter-tools.png)
 
-Once deployed the Adapter will appear under the **Extensions** category in the left navigation pane of the MobileFirst Operations Console. Clicking the **Microservice Adapter Generator** will open the page where one can select the OpenAPI specification json of the microservice/backend system, to generate the adapter. Once the adapter is generated, the generated adapter will be automatically downloaded. Note that the first request to generate the adapter can take a while as Mobile Foundation needs to download a lot of maven dependencies that are requried for the adapter generation. The subsequent generation will be faster as maven dependencies are already stored in Maven local repository.
+Once deployed the Adapter will appear under the **Extensions** category in the left navigation pane of the MobileFirst Operations Console. Clicking the **Microservice Adapter Generator** will open the page where one can select the OpenAPI specification (.json or .yaml file) of the microservice/backend system, to generate the adapter. Once the adapter is generated, the generated adapter will be automatically downloaded. Optionally you can also download the adapter source code as zip and modify the adapter and can be re-built. Note that the first request to generate the adapter can take a while as Mobile Foundation needs to download a lot of maven dependencies that are requried for the adapter generation. The subsequent generation will be faster as maven dependencies are already stored in Maven local repository.
 
 ![Microservice Connector]({{site.baseurl}}/assets/blog/2017-08-10-autogenerate-adapter-from-openapi-specification/microservice-adapter-generator-ui.png)
 
@@ -53,7 +53,9 @@ The correctness of the adapter generated depends on the OpenAPI specification. T
 
 #### Add Security in OpenAPI specification
 
-For the adapter to connect to backend systems, security definitions should be added to the OpenAPI specification. Adapter generator supports **BASIC** authentication only. Authentication types such as **API Key** and **OAUTH2** is not supported currently, for connecting to backend systems. For **BASIC** authentication, security definition specification needs to be added to the specification json
+For the adapter to connect to backend systems, security definitions should be added to the OpenAPI specification. Adapter generator supports **BASIC** and **API Key** authentication only. 
+
+For **BASIC** authentication, security definition specification needs to be added to the specification file. Here is a json sample :
 
 ```javascript
     "securityDefinitions": {
@@ -65,6 +67,24 @@ For the adapter to connect to backend systems, security definitions should be ad
     "security": [
     {
         "basicAuth": []
+    }
+    ]
+
+```
+
+For **API Key**authentication, security definition specification needs to be added to the specification file. Here is a json sample :
+
+```javascript
+    "securityDefinitions": {
+        "clientIdHeader": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-IBM-Client-Id"
+        }
+    },
+    "security": [
+    {
+        "clientIdHeader": []
     }
     ]
 
