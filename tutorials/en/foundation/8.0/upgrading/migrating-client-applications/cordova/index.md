@@ -103,7 +103,7 @@ The migration assistance tool does not modify or move any developer code or comm
 2. Scan and copy the IBM MobileFirst Platform Foundation app by entering the following command:
 
    ```bash
-   mfpmigrate client --in source_directory --out destination_directory --projectName new-project-directory
+   mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
    ```
 
    * **source_directory**  

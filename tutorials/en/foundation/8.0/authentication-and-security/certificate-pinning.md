@@ -118,17 +118,9 @@ The certificate pinning method will raise an exception in two cases:
 
 ### Cordova
 {: #cordova }
-
-Single certificate pinning:
-
 ```javascript
-WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess, onFailure);
-```
+WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure);
 
-Multiple certificate pinning:
-
-```javascript
-WL.Client.pinTrustedCertificatePublicKey(['Cert1.cer','Cert2.cer','Cert3.cer']).then(onSuccess, onFailure);
 ```
 
 The certificate pinning method returns a promise:

@@ -127,28 +127,3 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
     </ul>
   </div>
 </div>
-
-<div class="panel panel-default">
-  <div class="panel-heading"><h4>Analytics console becomes non-responsive when multiple users are accessing the console.</h4></div>
-  <div class="panel-body">
-  <br>
-    <p>If {{ site.data.keys.product }} Analytics is deployed on WebSphere Liberty versions <b>prior to 8.5.5.6</b> and if multiple users are accessing the console, the console freezes or stops responding to any further user requests.
-</p>
-
-    <ul>
-        <li>This situation occurs because WebSphere Liberty runs out of <code>Executor</code> threads to service the requests. This leads to a dead lock situation.</li>
-
-        <li>The default number of <a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">Liberty core threads</a> is the number of hardware threads.
-</li>
-        <li>To resolve this issue, configure the number of threads in the Liberty executor threads parameter to a value greater than the default.
-<br/>
-Add the following configuration to Liberty's <code>server.xml</code>:
-<br/>
-
-{% highlight xml %}
-<executor name="LargeThreadPool" id="default" coreThreads="80" maxThreads="80" keepAlive="60s" stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS" />
-{% endhighlight %}</li>
-<li>These <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_tun.html" target="_blank">tuning settings</a> are generally not required in case of Websphere Liberty 8.5.5.6.</li>
-    </ul>
-  </div>
-</div>
