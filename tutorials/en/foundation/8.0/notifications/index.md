@@ -53,7 +53,7 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 
 #### Unicast notifications
 {:# unicast-notifications }
-Unicast notifications, or User Authenticated Notifications that are secured with OAuth. These are notification messages target a particular device or a userID(s). The userID in the user subscription can come from the underlying security context.
+Unicast notifications, or User Authenticated Notifications are secured with OAuth. These are notification messages targeted to a particular device or a userID(s). The userID in the user subscription can come from the underlying security context.
 
 #### Interactive notifications
 {: #interactive-notifications }
