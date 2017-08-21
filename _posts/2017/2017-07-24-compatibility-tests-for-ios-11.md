@@ -57,7 +57,8 @@ Highlighted features that were tested are:
 * Application Management
 * Application Authenticity
 * Analytics
-* Push notifications
+* Push Notifications
+* Remote Disable
 
 All the above features were validated to work on iOS 11 beta 3.  
 
@@ -72,3 +73,7 @@ iOS11 compatibility tests are planned for following:
 * Mobile Foundation WatchOS framework with WatchOS4
 
 Please continue to watch out this space for any new updates related to iOS 11 Support.
+
+>**Latest Update:**
+>
+>We tested for the _**JSONStore**_ and _**Access disable**_ issues with the latest [iOS 11 beta 5](https://developer.apple.com/download), the _**JSONStore**_ and _**Access disable**_ issues are not seen with this build.
