@@ -154,9 +154,29 @@ Updates to the {{ site.data.keys.mf_bm }} services are applied automatically wit
 
 ## Accessing server logs
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+To access server logs, follow the steps described below.
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+**Scenario 1:**
+
+1. Set up your host machine.<br/>
+   To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.<br/>
+   Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases).
+2. Open the terminal and log in to your *Organization* and *Space* using `cf login`.
+3. Execute the following command in the CLI:
+```bash
+  cf ssh <mfp_Appname> -c "/bin/cat logs/messages.log" > messages.log
+```
+4. Only if trace is enabled, execute the following command:
+```bash
+cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
+ ```
+
+**Scenario 2:**      
+
+* To access server logs, open the sidebar navigation and click on **Apps → Dashboard → Cloud Foundry Apps**.
+* Select your App and click on **Logs → View in Kibana**.
+* Select and copy the logs messages.
+
 
 #### Tracing
 {: #tracing }
@@ -164,7 +184,7 @@ To enable tracing, in order to view DEBUG-level messages in the **trace.log** fi
 
 1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
 2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+3. Input the following trace statement: `com.ibm.mfp.*=all` and click **Submit trace**.
 
 The **trace.log** file is now available in the above specified location.
 
