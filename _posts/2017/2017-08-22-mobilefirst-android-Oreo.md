@@ -14,7 +14,7 @@ additional_authors:
 - Srihari Kulkarni
 ---
 
-On the day of the first total solar eclipse to sweep across the US in 99 years, Google made the next version of their Android operating system 'Android Oreo'. Over the air (OTA) updates of Android O are now available for download on select Pixel and Nexus devices. [Head here](https://developer.android.com/about/versions/o/download.html) to see if your device is listed. 
+On the day of the first total solar eclipse to sweep across the US in 99 years, Google released the next version of their Android operating system 'Android Oreo'. Over the air (OTA) updates of Android Oreo are now available for download on select Pixel and Nexus devices. [Head here](https://developer.android.com/about/versions/o/download.html) to see if your device is listed. 
 
 Android Oreo has introduced a variety of new [features and capabilities](http://www.androidauthority.com/android-8-0-review-758783/) like notification channels and notification dots for managing push notifications, Picture-in-Picture mode, autofill framework for managing user input. Behind the scenes, Android Oreo also introduces changes to limits on backgound operations and background location tracking. 
 
