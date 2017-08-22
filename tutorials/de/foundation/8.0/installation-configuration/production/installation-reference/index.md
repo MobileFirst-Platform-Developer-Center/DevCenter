@@ -11,7 +11,7 @@ Hier finden Sie Referenzinformationen zu Ant-Tasks und Beispielkonfigurationsdat
 {{ site.data.keys.mf_app_center_full }}
 und {{ site.data.keys.mf_analytics_full }}.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [Referenzinformationen zur Ant-Task configuredatabase](#ant-configuredatabase-task-reference)
 * [Ant-Tasks für die Installation der {{ site.data.keys.mf_console }}, der MobileFirst-Server-Artefakte, des MobileFirst-Server-Verwaltungsservice und des Liveaktualisierungsservice](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
@@ -27,26 +27,26 @@ und {{ site.data.keys.mf_analytics_full }}.
 {: #ant-configuredatabase-task-reference }
 Nachfolgend finden Sie Referenzinformationen für die Ant-Task configuredatabase.
 Diese Referenzinformationen beziehen sich nur auf relationale Datenbanken. Sie gelten nicht für
-Cloudant. 
+Cloudant.
 
 Die Ant-Task **configuredatabase** erstellt die relationalen Datenbanken, die vom
 MobileFirst-Server-Verwaltungsservice, -Liveaktualisierungsservice und -Push-Service, sowwie von der
 {{ site.data.keys.product_adj }}-Laufzeit und von den Application-Center-Services verwendet werden.
-Diese Ant-Task konfiguriert mit folgenden Aktionen eine relationale Datenbank: 
+Diese Ant-Task konfiguriert mit folgenden Aktionen eine relationale Datenbank:
 
-* Sie prüft, ob die {{ site.data.keys.product_adj }}-Tabellen vorhanden sind, und erstellt sie ggf. 
+* Sie prüft, ob die {{ site.data.keys.product_adj }}-Tabellen vorhanden sind, und erstellt sie ggf.
 * Wenn es Tabellen für eine ältere Version der {{ site.data.keys.product }} gibt, migriert sie die Tabellen
-auf die aktuelle Version. 
+auf die aktuelle Version.
 * Wenn es Tabellen für die aktuelle Version der {{ site.data.keys.product }} gibt,
-unternimmt die Task nichts. 
+unternimmt die Task nichts.
 
-Wenn eine der folgenden Bedingungen erfüllt ist, kann die Task außerdem folgende Effekte haben: 
+Wenn eine der folgenden Bedingungen erfüllt ist, kann die Task außerdem folgende Effekte haben:
 
-* Der DBMS-Typ ist Derby. 
-* Es gibt ein inneres Element `<dba>`. 
-* Der DBMS-Typ ist DB2 und der angegebene Benutzer ist berechtigt, Datenbanken zu erstellen. 
+* Der DBMS-Typ ist Derby.
+* Es gibt ein inneres Element `<dba>`.
+* Der DBMS-Typ ist DB2 und der angegebene Benutzer ist berechtigt, Datenbanken zu erstellen.
 
-Hier folgen die Effekte, wenn eine der Bedingungen erfüllt ist: 
+Hier folgen die Effekte, wenn eine der Bedingungen erfüllt ist:
 
 * Sie erstellt, sofern erforderlich, die Datenbank (außer Oracle 12c und
 Cloudant).
@@ -77,7 +77,7 @@ des Typs
 **MobileFirstRuntime**. Der MobileFirst-Server-Verwaltungsservice verwendet
 eine Datenbank vom Typ **MobileFirstAdmin**. Der MobileFirst-Server-Liveaktualisierungsservice verwendet eine Datenbank vom Typ **MobileFirstConfig**.  Standardmäßig wird eine Datenbank vom Typ
 **MobileFirstAdmin** erstellt. Der MobileFirst-Server-Push-Service verwendet eine Datenbank vom Typ **push**. Das Application Center verwendet
-eine Datenbank vom Typ **ApplicationCenter**. 
+eine Datenbank vom Typ **ApplicationCenter**.
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
@@ -86,7 +86,7 @@ true und false. Wenn dieses Attribut
 auf true gesetzt ist, führt die Task configuredatabase** in einem Durchgang Datenbankoperationen für die
 Datenbank des Verwaltungsservice und die des Liveaktualisierungsservice aus. Wenn dieses Attribut
 auf false gesetzt ist, führt die Task **configuredatabase** nur Datenbankoperationen für die
-Datenbank des Verwaltungsservice aus. 
+Datenbank des Verwaltungsservice aus.
 
 #### execute
 {: #execute }
@@ -94,7 +94,7 @@ Das Attribut **execute** aktiviert oder inaktiviert die Ausführung der Ant-Task
 **configuredatabase**.
 Gültige Werte sind
 true und false. Wenn dieses Attribut
-auf false gesetzt ist, führt die Task **configuredatabase** keine Konfigurations- oder Datenbankoperationen aus. 
+auf false gesetzt ist, führt die Task **configuredatabase** keine Konfigurations- oder Datenbankoperationen aus.
 
 Die Task **configuredatabase** unterstützt die folgenden Elemente:
 
@@ -171,7 +171,7 @@ Welche Eigenschaften verfügbar sind,
 erfahren Sie unter [Properties for
 the IBM Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
 Das innere Element `<dba>` gibt die Berechtigungsnachweise für Datenbankadministratoren an.
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                            | Erforderlich | Standardwert |
 |-----------|----------------------------------------|----------|---------|
@@ -187,9 +187,9 @@ Das Element
 Sie können diese Dateien auf eine der folgenden Arten abrufen:
 
 
-* Sie können die DB2-JDBC-Treiber von der Webseite [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) herunterladen. 
+* Sie können die DB2-JDBC-Treiber von der Webseite [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) herunterladen.
 * Alternativ können Sie die Datei **db2jcc4.jar** und die zugehörigen Dateien **db2jcc_license_*.jar**
-aus dem Verzeichnis **DB2-INSTALLATIONSVERZEICHNIS/java** auf dem DB2-Server abrufen. 
+aus dem Verzeichnis **DB2-INSTALLATIONSVERZEICHNIS/java** auf dem DB2-Server abrufen.
 
 Mit der Ant-Task können
 Sie keine Tabellenzuordnungsdetails, z. B. den Tabellenbereich, angeben. Führen Sie für die Steuerung des Tabellenbereichs
@@ -198,7 +198,7 @@ manuell die Anweisungen im Abschnitt [Datenbank- und Benutzeranforderungen für 
 #### MySQL
 {: #mysql }
 Das Element
-`<mysql>` wird mit folgenden Attributen verwendet: 
+`<mysql>` wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                            | Erforderlich | Standardwert |
 |-----------|----------------------------------------|----------|---------|
@@ -224,9 +224,9 @@ Das Element
 Informationen zu den verfügbaren Eigenschaften finden Sie unter
 [Driver/Datasource Class Names, URL
 Syntax and Configuration
-Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html). 
+Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
 Das innere Element `<dba>` gibt die Berechtigungsnachweise des Datenbankadministrators an.
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                            | Erforderlich | Standardwert |
 |-----------|----------------------------------------|----------|---------|
@@ -240,7 +240,7 @@ Der in einem Element `<dba>` angegebene Benutzer muss
 Jedes innere Element
 `<client>` gibt einen Client-Computer oder einen Platzhalter für Client-Computer an.
 Diese Computer dürfen
-eine Verbindung zur Datenbank herstellen. Dieses Element wird mit folgenden Attributen verwendet: 
+eine Verbindung zur Datenbank herstellen. Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                                                              | Erforderlich | Standardwert |
 |-----------|--------------------------------------------------------------------------|----------|---------|
@@ -251,10 +251,10 @@ Weitere Informationen zur Syntax von hostname finden Sie im Artikel [Specifying 
 Das Element `<driverclasspath>`
 muss eine "MySQL-Connector/J"-JAR-Datei enthalten. Sie können diese Datei von der Webseite
 [Download
-Connector/J](http://www.mysql.com/downloads/connector/j/) herunterladen. 
+Connector/J](http://www.mysql.com/downloads/connector/j/) herunterladen.
 
 Alternativ können Sie das
-Element `<mysql>` mit folgenden Attributen verwenden: 
+Element `<mysql>` mit folgenden Attributen verwenden:
 
 | Attribut | Beschreibung                            | Erforderlich | Standardwert               |
 |-----------|----------------------------------------|----------|-----------------------|
@@ -267,10 +267,12 @@ bereits geben und der Benutzer muss Zugriff auf die Datenbank haben. In diesem F
 weder, die Datenbank oder den Benutzer zu erstellen, noch versucht sie, dem Benutzer Zugriff zu erteilen.
 Die Task **configuredatabase** stellt nur sicher, dass die Datenbank die erforderlichen Tabellen für die aktuelle Version von
 {{ site.data.keys.mf_server }} enthält.
-Sie müssen keine inneren Elemente `<dba>` oder `<client>` angeben. #### Oracle
+Sie müssen keine inneren Elemente `<dba>` oder `<client>` angeben.
+
+#### Oracle
 {: #oracle }
 Das Element
-`<oracle>` hat die folgenden Attribute: 
+`<oracle>` hat die folgenden Attribute:
 
 | Attribut      | Beschreibung                                                              | Erforderlich | Standardwert |
 |----------------|--------------------------------------------------------------------------|----------|---------|
@@ -300,7 +302,7 @@ Das Element
 Informationen zu den verfügbaren Verbindungseigenschaften finden Sie unter
 [Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html).  
 Das innere Element `<dba>` gibt die Berechtigungsnachweise des Datenbankadministrators an.
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut      | Beschreibung                                                              | Erforderlich | Standardwert |
 |----------------|--------------------------------------------------------------------------|----------|---------|
@@ -338,7 +340,7 @@ Für die Installation der
 {{ site.data.keys.mf_console }}, der Artefaktkomponente,
 des Verwaltungsservice und des Liveaktualisierungsservice
 stehen die Ant-Tasks **installmobilefirstadmin**,
-**updatemobilefirstadmin** und **uninstallmobilefirstadmin** zur Verfügung. 
+**updatemobilefirstadmin** und **uninstallmobilefirstadmin** zur Verfügung.
 
 ### Auswirkungen der Tasks
 {: #task-effects }
@@ -347,21 +349,21 @@ stehen die Ant-Tasks **installmobilefirstadmin**,
 {: #installmobilefirstadmin }
 Die Ant-Task **installmobilefirstadmin** konfiguriert einen Anwendungsserver für die Ausführung der WAR-Dateien
 für den Verwaltungs- und den Liveaktualisierungsservice als Webanwendung und optional für die Installation der
-{{ site.data.keys.mf_console }}. Diese Task hat die folgenden Auswirkungen: 
+{{ site.data.keys.mf_console }}. Diese Task hat die folgenden Auswirkungen:
 
 * Sie deklariert die Webanwendung für den Verwaltungsservice im angegebenen Kontextstammverzeichnis (standardmäßig in /mfpadmin).
 * Sie deklariert die Webanwendung für den Liveaktualisierungsservice in einem Kontextstammverzeichnis, das aus dem angegebenen Kontextstammverzeichnis für den
 Verwaltungsservice abgeleitet wird und standardmäßig /mfpadminconfig lautet.
 * Sie deklariert für die relationalen Datenbanken Datenquellen und
 in WebSphere Application Server Full Profile
-JDBC-Provider für den Verwaltungsservice. 
-* Sie implementiert den Verwaltungs- und den Liveaktualisierungsservice im Anwendungsserver. 
+JDBC-Provider für den Verwaltungsservice.
+* Sie implementiert den Verwaltungs- und den Liveaktualisierungsservice im Anwendungsserver.
 * Sie deklariert optional die {{ site.data.keys.mf_console }} als Webanwendung
 im angegebenen Kontextstammverzeichnis (standardmäßig in /mfpconsole). Wenn die Instanz der
 {{ site.data.keys.mf_console }}
 angegeben wird, deklariert die Ant-Task den entsprechenden JNDI-Umgebungseintrag für die Kommunikation mit dem entsprechenden
 Management-Service.
-Beispiel: 
+Beispiel:
 
 ```xml
 <target name="adminstall">
@@ -372,32 +374,32 @@ Beispiel:
 * Sie deklariert optional die Webanwendung
 für die MobileFirst-Server-Artefakte im angegebenen Kontextstammverzeichnis
 /mfp-dev-artifacts, wenn die {{ site.data.keys.mf_console }} installiert
-ist. 
+ist.
 * Sie konfiguriert die Konfigurationseigenschaften für den Verwaltungsservice mithilfe von JNDI-Umgebungseinträgen. Diese
 JNDI-Umgebungseinträge enthalten außerdem einige zusätzliche Informationen zur Anwendungsservertopologie,
 z. B., ob die Topologie eine eigenständige Konfiguration, ein Cluster oder eine Server-Farm ist.
 
 * Sie konfiguriert optional Benutzer, die sie Rollen zuordnet, die von den Webanwendungen für die
 {{ site.data.keys.mf_console }} sowie für den
-Verwaltungsservice und den Liveaktualisierungsservice verwendet werden. 
-* Sie konfiguriert den Anwendungsserver für die Verwendung von JMX. 
+Verwaltungsservice und den Liveaktualisierungsservice verwendet werden.
+* Sie konfiguriert den Anwendungsserver für die Verwendung von JMX.
 * Sie konfiguriert optional die Kommunikation
-mit dem MobileFirst-Server-Push-Service. 
+mit dem MobileFirst-Server-Push-Service.
 * Sie legt optional die
 MobileFirst-JNDI-Umgebungseinträge
 fest, mit denen der Anwendungsserver als Server-Farmmember
-für die MobileFirst-Server-Verwaltungskomponente konfiguriert wird. 
+für die MobileFirst-Server-Verwaltungskomponente konfiguriert wird.
 
 #### updatemobilefirstadmin
 {: #updatemobilefirstadmin }
 Die Ant-Task **updatemobilefirstadmin** aktualisiert eine
 bereits konfigurierte Webanwendung für {{ site.data.keys.mf_server }}
-in einem Anwendungsserver. Diese Task hat die folgenden Auswirkungen: 
+in einem Anwendungsserver. Diese Task hat die folgenden Auswirkungen:
 
 * Sie aktualisiert die WAR-Datei für den Verwaltungsservice. Diese Datei muss denselben Basisnamen wie die entsprechende
-WAR-Datei haben, die zuvor implementiert wurde. 
+WAR-Datei haben, die zuvor implementiert wurde.
 * Sie aktualisiert die WAR-Datei für den Liveaktualisierungsservice. Diese Datei muss denselben Basisnamen wie die entsprechende
-WAR-Datei haben, die zuvor implementiert wurde. 
+WAR-Datei haben, die zuvor implementiert wurde.
 * Sie aktualisiert die WAR-Datei für die
 {{ site.data.keys.mf_console }}.
 Diese Datei muss denselben Basisnamen wie die entsprechende
@@ -409,26 +411,26 @@ die Konfiguration der Webanwendungen, die Datenquellen, die JNDI-Umgebungseintr�
 {: #uninstallmobilefirstadmin }
 Die Ant-Task **uninstallmobilefirstadmin** macht die Auswirkungen
 einer vorherigen Ausführung der Task
-installmobilefirstadmin rückgängig. Diese Task hat die folgenden Auswirkungen: 
+installmobilefirstadmin rückgängig. Diese Task hat die folgenden Auswirkungen:
 
 * Sie entfernt die Konfiguration der Webanwendung für den Verwaltungsservice
 mit dem angegebenen Kontextstammverzeichnis. Infolgedessen entfernt die Task auch
-die Einstellungen, die dieser Anwendung manuell hinzugefügt wurden. 
+die Einstellungen, die dieser Anwendung manuell hinzugefügt wurden.
 * Sie entfernt optional die WAR-Dateien des Verwaltungs- und Liveaktualisierungsservice
-sow der {{ site.data.keys.mf_console }} aus dem Anwendungsserver. 
+sow der {{ site.data.keys.mf_console }} aus dem Anwendungsserver.
 * Sie entfernt für das relationale DBMS die Datenquellen und in WebSphere Application Server Full Profile
-die JDBC-Provider für den Verwaltungs- und Liveaktualisierungsservice. 
-* Sie entfernt für das relationale DBMS die Datenbanktreiber, die vom Verwaltungs- und Liveaktualisierungsservice verwendet wurden, aus dem Anwendungsserver. 
+die JDBC-Provider für den Verwaltungs- und Liveaktualisierungsservice.
+* Sie entfernt für das relationale DBMS die Datenbanktreiber, die vom Verwaltungs- und Liveaktualisierungsservice verwendet wurden, aus dem Anwendungsserver.
 * Sie entfernt die zugehörigen JNDI-Umgebungseinträge.
 * In WebSphere Application Server Liberty und
-Apache Tomcat entfernt sie die vom installmobilefirstadmin-Aufruf konfigurierten Benutzer. 
-* Sie entfernt die JMX-Konfiguration. 
+Apache Tomcat entfernt sie die vom installmobilefirstadmin-Aufruf konfigurierten Benutzer.
+* Sie entfernt die JMX-Konfiguration.
 
 ### Attribute und Elemente
 {: #attributes-and-elements }
 Die
 Ant-Tasks **installmobilefirstadmin**,
-**updatemobilefirstadmin** und **uninstallmobilefirstadmin** werden mit folgenden Attributen verwendet: 
+**updatemobilefirstadmin** und **uninstallmobilefirstadmin** werden mit folgenden Attributen verwendet:
 
 | Attribut         | Beschreibung                                                              | Erforderlich | Standardwert |
 |-------------------|--------------------------------------------------------------------------|----------|---------|
@@ -444,13 +446,13 @@ Ant-Tasks **installmobilefirstadmin**,
 Anhand der Attribute **contextroot** und
 **id** können die verschiedenen Implementierungen der
 {{ site.data.keys.mf_console }}
-und des Verwaltungsservice unterschieden werden. 
+und des Verwaltungsservice unterschieden werden.
 
 In
 WebSphere-Application-Server-Liberty-Profile-
 und Tomcat-Umgebungen ist für diesen Zweck der Parameter contextroot ausreichend. In WebSphere-Application-Server-Full-Profile-Umgebungen
 wird stattdessen das Attribut id verwendet. Ohne dieses Attribut id
-können zwei WAR-Dateien mit denselben Kontextstammverzeichnissen miteinander in Konflikt geraten, was dazu führt, dass diese Dateien nicht implementiert werden. 
+können zwei WAR-Dateien mit denselben Kontextstammverzeichnissen miteinander in Konflikt geraten, was dazu führt, dass diese Dateien nicht implementiert werden.
 
 #### environmentId
 {: #environmentid }
@@ -476,11 +478,11 @@ einem relativen Pfad angeben.
 Das Attribut
 **shortcutsDir** gibt an, wo Direktaufrufe für die
 {{ site.data.keys.mf_console }} gespeichert werden sollen.
-Wenn Sie dieses Attribut definieren, können Sie diesem Verzeichnis die folgenden Dateien hinzufügen: 
+Wenn Sie dieses Attribut definieren, können Sie diesem Verzeichnis die folgenden Dateien hinzufügen:
 
 * **mobilefirst-console.url**: Diese Datei ist eine Windows-Verknüpfung. Sie öffnet die
 {{ site.data.keys.mf_console }}
-in einem Browser. 
+in einem Browser.
 * **mobilefirst-console.sh**: Diese Datei ist ein
 UNIX-Shell-Script und öffnet die
 {{ site.data.keys.mf_console }} in einem Browser.
@@ -488,10 +490,10 @@ UNIX-Shell-Script und öffnet die
 der {{ site.data.keys.product_adj }}-Projekte zurückgibt, die im JSON-Format verwaltet
 werden können. Für jedes aufgelistete {{ site.data.keys.product_adj }}-Projekt sind auch Details zu den zugehörigen Artefakten
 verfügbar, z. B. die Anzahl der Anwendungen, der Adapter, der aktiven Geräte und der stillgelegten Geräte. In der Liste ist außerdem angegeben, ob eine
-{{ site.data.keys.product_adj }}-Projektlaufzeit aktiv oder inaktiv ist. 
+{{ site.data.keys.product_adj }}-Projektlaufzeit aktiv oder inaktiv ist.
 * **mobilefirst-admin-service.sh**:  Diese Datei ist ein
 UNIX-Shell-Script, das dieselbe Ausgabe wie
-die Datei **mobilefirst-admin-service.url** bereitstellt. 
+die Datei **mobilefirst-admin-service.url** bereitstellt.
 
 #### wasStartingWeight
 {: #wasstartingweight }
@@ -501,11 +503,11 @@ Die Webanwendung für den
 Verwaltungsservice wird infolge des Wertes für die Startreihenfolge vor allen anderen
 {{ site.data.keys.product_adj }}-Laufzeitprojekten implementiert und gestartet. Sollten
 {{ site.data.keys.product_adj }}-Projekte vor der Webanwendung implementiert oder gestartet werden, wird
-keine JMX-Kommunikation ermöglicht, sodass die Laufzeit nicht mit der Datenbank für den Verwaltungsservice synchronisiert werden und keine Serveranforderungen handhaben kann. 
+keine JMX-Kommunikation ermöglicht, sodass die Laufzeit nicht mit der Datenbank für den Verwaltungsservice synchronisiert werden und keine Serveranforderungen handhaben kann.
 
 Die
 Ant-Tasks **installmobilefirstadmin**,
-**updatemobilefirstadmin** und **uninstallmobilefirstadmin** unterstützen die folgenden Elemente: 
+**updatemobilefirstadmin** und **uninstallmobilefirstadmin** unterstützen die folgenden Elemente:
 
 | Element               | Beschreibung                                      | Anzahl |
 |-----------------------|--------------------------------------------------|-------|
@@ -549,10 +551,10 @@ Das Element
 Mit diesem Element können Sie Ihre
 eigenen JNDI-Eigenschaften definieren oder den Standardwert der JNDI-Eigenschaften überschreiben, die
 von den WAR-Dateien für den Verwaltungsservice und die
-{{ site.data.keys.mf_console }} bereitgestellt werden. 
+{{ site.data.keys.mf_console }} bereitgestellt werden.
 
 Das Element `<property>` gibt
-eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet: 
+eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet:
 
 | Attribut  | Beschreibung                | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
@@ -562,7 +564,7 @@ eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden mu
 Mit diesem Element können Sie Ihre
 eigenen JNDI-Eigenschaften definieren oder den Standardwert der JNDI-Eigenschaften überschreiben, die
 von den WAR-Dateien für den Verwaltungsservice und die
-{{ site.data.keys.mf_console }} bereitgestellt werden. 
+{{ site.data.keys.mf_console }} bereitgestellt werden.
 
 Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der
 [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
@@ -572,7 +574,7 @@ Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der
 Mit dem Element
 `<applicationserver>` können Sie die Parameter definieren, die vom zugrunde liegenden
 Anwendungsserver abhängig sind. Das Element `<applicationserver>`
-unterstützt die folgenden Elemente. 
+unterstützt die folgenden Elemente.
 
 | Element                                   | Beschreibung                                      | Anzahl |
 |-------------------------------------------|--------------------------------------------------|-------|
@@ -583,7 +585,7 @@ Die Attribute und inneren Elemente für diese Elemente
 sind in den Tabellen im Abschnitt [Ant-Tasks für die
 Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) beschrieben.
 Das innere Element des Elements `<was>` für einen Liberty-Verbund ist in der folgenden
-Tabelle angegeben. 
+Tabelle angegeben.
 
 | Element                  | Beschreibung                      | Anzahl |
 |--------------------------|----------------------------------|-------|
@@ -603,7 +605,7 @@ Das Element `<collectiveController>` wird mit folgenden Attributen verwendet:
 {: #to-specify-the-live-update-service-configuration }
 Mit dem Element
 `<configuration>` können Sie die Parameter definieren, die vom Liveaktualisierungsservice
-abhängig sind. Das Element `<configuration>` wird mit folgenden Attributen verwendet. 
+abhängig sind. Das Element `<configuration>` wird mit folgenden Attributen verwendet.
 
 | Attribut                | Beschreibung                                                    | Erforderlich | Standardwert |
 |--------------------------|----------------------------------------------------------------|----------|---------|
@@ -614,7 +616,7 @@ abhängig sind. Das Element `<configuration>` wird mit folgenden Attributen verw
 | warFile                  | WAR-Datei für den Liveaktualisierungsservice	                            | Nein         | Die Datei mfp-live-update.war befindet sich in demselben Verzeichnis wie die Datei mfp-ant-deployer.jar. |
 
 Das Element `<configuration>` unterstützt
-die folgenden Elemente: 
+die folgenden Elemente:
 
 | Element      | Beschreibung                           | Anzahl |
 |--------------|---------------------------------------|-------|
@@ -622,7 +624,7 @@ die folgenden Elemente:
 | `<property>` | Eigenschaften	                   | 0..   |
 
 Das Element `<user>` erfasst die Parameter über einen Benutzer,
-die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind. 
+die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind.
 
 | Attribut   | Beschreibung                                                             | Erforderlich | Standardwert |
 |-------------|-------------------------------------------------------------------------|----------|---------|
@@ -635,11 +637,11 @@ mit dem Element `<user>` definiert haben, können Sie sie jeder der folgenden Ro
 der {{ site.data.keys.mf_console }} zuordnen: `configadmin`.
 
 Weitere Informationen zur erforderlichen Autorisierung für die einzelnen Rollen finden Sie unter
-[Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration). 
+[Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 > **Tipp:** Wenn die Benutzer in einem externen LDAP-Verzeichnis vorhanden sind, definieren Sie nur die Attribute
 **role** und **name**, aber keine Kennwörter. Das Element `<property>` gibt
-eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet: 
+eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet:
 
 | Attribut  | Beschreibung                | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
@@ -655,7 +657,7 @@ von den WAR-Dateien für den Verwaltungsservice und die
 ### Vorgehensweise bei der Angabe eines Anwendungsservers
 {: #to-specify-an-application-server-1 }
 Mit dem Element `<applicationserver>` können Sie die Parameter definieren, die vom zugrunde liegenden Anwendungsserver abhängig sind. Das Element `<applicationserver>` unterstützt
-die folgenden Elemente: 
+die folgenden Elemente:
 
 | Element      | Beschreibung                                              | Anzahl |
 |--------------|--------------------------------------------------------- |-------|
@@ -666,7 +668,7 @@ Die Attribute und inneren Elemente für diese Elemente
 sind in den Tabellen im Abschnitt [Ant-Tasks für die
 Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) beschrieben.
 Das innere Element des Elements <was> für einen Liberty-Verbund ist in der folgenden
-Tabelle angegeben. 
+Tabelle angegeben.
 
 | Element               | Beschreibung                  | Anzahl |
 |-----------------------|----------------------------- |-------|
@@ -688,7 +690,7 @@ haben. Sind diese Komponenten auf verschiedenen Membern desselben Verbundes inst
 Das Element `<analytics>` gibt an, dass vom
 {{ site.data.keys.product_adj }}-Push-Service eine Verbindung zum bereits
 installierten {{ site.data.keys.mf_analytics }} Service hergestellt werden soll.
-Es wird mit folgenden Attributen verwendet: 
+Es wird mit folgenden Attributen verwendet:
 
 | Attribut     | Beschreibung                                                               | Erforderlich | Standardwert |
 |---------------|---------------------------------------------------------------------------|----------|---------|
@@ -707,7 +709,7 @@ true und false.
 **analyticsURL**  
 Mit dem Attribut analyticsURL können Sie die URL angeben,
 die von der Komponente {{ site.data.keys.mf_analytics }}, die eingehende Analysedaten empfängt,
-zugänglich gemacht wird. 
+zugänglich gemacht wird.
 
 Beispiel:
 `http://<Hostname>:<Port>/analytics-service/rest`
@@ -739,10 +741,10 @@ Sie müssen eine einzelne Datenbank deklarieren:
 `<database kind="Push">`. Abgesehen davon, dass
 das Element `<database>` die Elemente `<dba>` und `<client>` nicht
 hat, geben Sie das Element `<database>` ähnlich wie die Ant-Task configuredatabase an.
-Das Element <database> kann jedoch `<property>`-Elemente haben.
+Das Element <database> kann jedoch `<property>` Elemente haben.
 
 
-Das Element `<database>` wird mit folgenden Attributen verwendet: 
+Das Element `<database>` wird mit folgenden Attributen verwendet:
 
 | Attribut     | Beschreibung                                     | Erforderlich | Standardwert |
 |---------------|-------------------------------------------------|----------|---------|
@@ -776,7 +778,7 @@ unterscheiden sich geringfügig von der Laufzeit. Weitere Informationen finden S
 ## Ant-Tasks für die Installation des MobileFirst-Server-Push-Service
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
 Für die Installation des Push-Service stehen die Ant-Tasks **installmobilefirstpush**, **updatemobilefirstpush**
-und **uninstallmobilefirstpush** zur Verfügung. 
+und **uninstallmobilefirstpush** zur Verfügung.
 
 ### Auswirkungen der Tasks
 {: #task-effects-1 }
@@ -791,14 +793,14 @@ JDBC-Provider für den Push-Service. Sie konfiguriert die Konfigurationseigensch
 OAuth-Kommunikation mit dem
 {{ site.data.keys.product_adj }}-Autorisierungsserver, mit
 {{ site.data.keys.mf_analytics }} und mit
-Cloudant, sonfern Cloudant verwendet wird. 
+Cloudant, sonfern Cloudant verwendet wird.
 
 #### updatemobilefirstpush
 {: #updatemobilefirstpush }
 Die Ant-Task **updatemobilefirstpush** aktualisiert eine
 bereits konfigurierte Webanwendung für {{ site.data.keys.mf_server }}
 in einem Anwendungsserver. Sie aktualisiert die WAR-Datei für den Push-Service. Diese Datei muss denselben Basisnamen wie die entsprechende
-WAR-Datei haben, die zuvor implementiert wurde. 
+WAR-Datei haben, die zuvor implementiert wurde.
 
 #### uninstallmobilefirstpush
 {: #uninstallmobilefirstpush }
@@ -816,7 +818,7 @@ die JDBC-Provider für den Push-Service. Sie entfernt die zugehörigen JNDI-Umge
 {: #attributes-and-elements-1 }
 Die
 Ant-Tasks **installmobilefirstpush**,
-**updatemobilefirstpush** und **uninstallmobilefirstpush** werden mit folgenden Attributen verwendet: 
+**updatemobilefirstpush** und **uninstallmobilefirstpush** werden mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                           | Erforderlich | Standardwert     |
 |-----------|---------------------------------------|----------|-------------|
@@ -827,7 +829,7 @@ Ant-Tasks **installmobilefirstpush**,
 {: #id }
 Mit dem Attribut **id** können verschiedene Push-Serviceimplementierungen in einer WebSphere-Application-Server-Zelle unterschieden werden.
 Ohne dieses Attribut id
-können zwei WAR-Dateien mit denselben Kontextstammverzeichnissen miteinander in Konflikt geraten, was dazu führt, dass diese Dateien nicht implementiert werden. 
+können zwei WAR-Dateien mit denselben Kontextstammverzeichnissen miteinander in Konflikt geraten, was dazu führt, dass diese Dateien nicht implementiert werden.
 
 ### warFile
 {: #warfile }
@@ -837,7 +839,7 @@ einem relativen Pfad angeben.
 
 Die
 Ant-Tasks **installmobilefirstpush**,
-**updatemobilefirstpush** und **uninstallmobilefirstpush** unterstützen folgende Elemente: 
+**updatemobilefirstpush** und **uninstallmobilefirstpush** unterstützen folgende Elemente:
 
 | Element               | Beschreibung             | Anzahl |
 |-----------------------|-------------------------|-------|
@@ -852,7 +854,7 @@ Ant-Tasks **installmobilefirstpush**,
 Das Element `<authorization>` erfasst Informationen, um den
 Autorisierungsserver für den Austausch von Authentifizierungsdaten mit anderen
 MobileFirst-Server-Komponenten zu konfigurieren.
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut          | Beschreibung                           | Erforderlich | Standardwert     |
 |--------------------|---------------------------------------|----------|-------------|
@@ -866,7 +868,7 @@ Dieses Element wird mit folgenden Attributen verwendet:
 {: #auto }
 Wenn dieses Attribut auf "true" gesetzt ist, wird die für den Autorisierungsserver automatisch anhand
 des Kontextstammverzeichnisses der Laufzeit im lokalen Anwendungsserver berechnet. Der automatische Modus wird nicht bei einer Implementierung in einem
-WebSphere-Application-Server-Network-Deployment-Cluster unterstützt. 
+WebSphere-Application-Server-Network-Deployment-Cluster unterstützt.
 
 #### authorizationURL
 {: #authorizationurl }
@@ -889,7 +891,7 @@ beim Autorisierungsserver registriert sein. Für die Registrierung können Sie d
 {{ site.data.keys.mf_console }} verwenden.
 
 Das Element `<property>` gibt
-eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet: 
+eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet:
 
 | Attribut  | Beschreibung                | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
@@ -899,7 +901,7 @@ eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden mu
 Mit diesem Element können Sie Ihre
 eigenen JNDI-Eigenschaften definieren oder den Standardwert der JNDI-Eigenschaften überschreiben, die
 von der WAR-Datei für den Push-Service
-bereitgestellt werden. 
+bereitgestellt werden.
 
 Weitere Informationen zu den Produktinfoen finden Sie in der
 [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
@@ -907,7 +909,7 @@ Weitere Informationen zu den Produktinfoen finden Sie in der
 ### Vorgehensweise bei der Angabe eines Anwendungsservers
 {: #to-specify-an-application-server-2 }
 Mit dem Element `<applicationserver>` können Sie die Parameter definieren, die vom zugrundeliegenden Anwendungsserver abhängig sind. Das Element `<applicationserver>` unterstützt
-die folgenden Elemente: 
+die folgenden Elemente:
 
 | Element                               | Beschreibung                                      | Anzahl |
 |---------------------------------------|--------------------------------------------------|-------|
@@ -919,7 +921,7 @@ sind in den Tabellen im Abschnitt [Ant-Tasks für die
 Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) beschrieben.
 
 Das innere Element des Elements `<was>` für einen Liberty-Verbund ist in der folgenden
-Tabelle angegeben. 
+Tabelle angegeben.
 
 | Element              | Beschreibung                  | Anzahl |
 |----------------------|------------------------------|-------|
@@ -941,7 +943,7 @@ haben. Sind diese Komponenten auf verschiedenen Membern desselben Verbundes inst
 Das Element `<analytics>` gibt an, dass vom
 {{ site.data.keys.product_adj }}-Push-Service eine Verbindung zum bereits
 installierten {{ site.data.keys.mf_analytics }} Service hergestellt werden soll.
-Es wird mit folgenden Attributen verwendet: 
+Es wird mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                        | Erforderlich | Standardwert |
 |--------------|------------------------------------|----------|---------|
@@ -999,7 +1001,7 @@ hat, geben Sie das Element `<database>` ähnlich wie die Ant-Task configuredatab
 Das Element <database> kann jedoch `<property>`-Elemente haben.
 
 
-Das Element `<database>` wird mit folgenden Attributen verwendet: 
+Das Element `<database>` wird mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                  | Erforderlich | Standardwert |
 |--------------|------------------------------|----------|---------|
@@ -1033,8 +1035,9 @@ sich geringfügig von der Laufzeit. Weitere Informationen finden Sie in der folg
 
 ## Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
+
 Hier finden Sie Referenzinformationen zu den Ant-Tasks **installmobilefirstruntime**,
-**updatemobilefirstruntime** und **uninstallmobilefirstruntime**. 
+**updatemobilefirstruntime** und **uninstallmobilefirstruntime**.
 
 ### Auswirkungen der Tasks
 {: #task-effects-2 }
@@ -1043,20 +1046,20 @@ Hier finden Sie Referenzinformationen zu den Ant-Tasks **installmobilefirstrunti
 {: #installmobilefirstruntime }
 Die Ant-Task **installmobilefirstruntime** konfiguriert einen Anwendungsserver so, dass er
 eine {{ site.data.keys.product_adj }}-Laufzeit-WAR-Datei als Webanwendung
-ausführt. Diese Task hat die folgenden Auswirkungen: 
+ausführt. Diese Task hat die folgenden Auswirkungen:
 
 * Sie deklariert die {{ site.data.keys.product_adj }}-Webanwendung
 im angegebenen Kontextstammverzeichnis, das standardmäßig /mfp lautet.
-* Sie implementiert die Laufzeit-WAR-Datei im Anwendungsserver. 
+* Sie implementiert die Laufzeit-WAR-Datei im Anwendungsserver.
 * Sie deklariert Datenquellen und in WebSphere Application Server Full Profile
-JDBC-Provider für die Laufzeit. 
-* Sie implementiert die Datenbanktreiber im Anwendungsserver. 
+JDBC-Provider für die Laufzeit.
+* Sie implementiert die Datenbanktreiber im Anwendungsserver.
 * Sie legt die Konfigurationseigenschaften des {{ site.data.keys.product_adj }} über
-JNDI-Umgebungseinträge fest. 
+JNDI-Umgebungseinträge fest.
 * Sie legt optional die
 {{ site.data.keys.product_adj }}-JNDI-Umgebungseinträge
 fest, mit denen der Anwendungsserver als Server-Farmmember
-für die Laufzeit konfiguriert wird. 
+für die Laufzeit konfiguriert wird.
 
 #### updatemobilefirstruntime
 {: #updatemobilefirstruntime }
@@ -1064,27 +1067,27 @@ Die Ant-Task **updatemobilefirstruntime** aktualisiert eine
 bereits in einem Anwendungsserver konfigurierte {{ site.data.keys.product_adj }}-Laufzeit. Sie aktualisiert die Laufzeit-WAR-Datei. Die Datei muss denselben Basisnamen wie die zuvor implementierte Laufzeit-WAR-Datei haben.
 Davon abgesehen wird die Konfiguration des
 Anwendungsservers, d. h. Webanwendungskonfiguration, Datenquellen, JNDI-Umgebungseinträge,
-nicht von der Task geändert. 
+nicht von der Task geändert.
 
 #### uninstallmobilefirstruntime
 {: #uninstallmobilefirstruntime }
 Mit der Ant-Task **uninstallmobilefirstruntime** werden die Auswirkungen einer vorherigen Ausführung
 von **installmobilefirstruntime** rückgängig gemacht.
-Diese Task hat die folgenden Auswirkungen: 
+Diese Task hat die folgenden Auswirkungen:
 
 * Sie entfernt die Konfiguration der {{ site.data.keys.product_adj }}-Webanwendung
 mit dem angegebenen Kontextstammverzeichnis. Dabei werden auch
-die manuell zu der Anwendung hinzugefügten Einstellungen entfernt. 
-* Sie entfernt die Laufzeit-WAR-Datei aus dem Anwendungsserver. 
+die manuell zu der Anwendung hinzugefügten Einstellungen entfernt.
+* Sie entfernt die Laufzeit-WAR-Datei aus dem Anwendungsserver.
 * Sie entfernt die Datenquellen und in WebSphere Application Server Full Profile
-die JDBC-Provider für die Laufzeit. 
+die JDBC-Provider für die Laufzeit.
 * Sie entfernt die zugehörigen JNDI-Umgebungseinträge.
 
 ### Attribute und Elemente
 {: #attributes-and-elements-2 }
 Die
 Ant-Tasks **installmobilefirstruntime**,
-**updatemobilefirstruntime** und **uninstallmobilefirstruntime** werden mit folgenden Attributen verwendet: 
+**updatemobilefirstruntime** und **uninstallmobilefirstruntime** werden mit folgenden Attributen verwendet:
 
 | Attribut         | Beschreibung                                                                 | Erforderlich   | Standardwert                   |
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
@@ -1103,15 +1106,14 @@ verschiedene {{ site.data.keys.product_adj }}-Projekte unterschieden.
 In
 WebSphere-Application-Server-Liberty-Profile-
 und Tomcat-Umgebungen ist für diesen Zweck der Parameter contextroot ausreichend. In WebSphere-Application-Server-Full-Profile-Umgebungen
-wird stattdessen das Attribut id verwendet. 
+wird stattdessen das Attribut id verwendet.
 
 #### environmentId
 {: #environmentid-1 }
 Mithilfe des Attributs **environmentId** werden mehrere Umgebungen unterschieden, die jeweils aus
 dem MobileFirst-Server-Verwaltungsservoce
 und {{ site.data.keys.product_adj }}-Laufzeitwebanwendungen bestehen, die
-unabhängig funktionieren müssen. Sie müssen dieses Attribut für die Laufzeitanwendung auf denselben Wert wie den setzen, der im
-<installmobilefirstadmin>-Aufruf für den Verwaltungsservice angegeben wurde.
+unabhängig funktionieren müssen. Sie müssen dieses Attribut für die Laufzeitanwendung auf denselben Wert wie den setzen, der im <installmobilefirstadmin>-Aufruf für den Verwaltungsservice angegeben wurde.
 
 
 #### warFile
@@ -1129,11 +1131,11 @@ MobileFirst-Server-Verwaltungsservice wird infolge des Wertes für die Startreih
 {{ site.data.keys.product_adj }}-Laufzeitprojekten implementiert und gestartet. Sollten
 {{ site.data.keys.product_adj }}-Projekte vor der Webanwendung implementiert oder gestartet werden, wird
 keine JMX-Kommunikation ermöglicht, sodass Sie Ihre
-{{ site.data.keys.product_adj }}-Projekte nicht verwalten können. 
+{{ site.data.keys.product_adj }}-Projekte nicht verwalten können.
 
 Die
 Tasks **installmobilefirstruntime**,
-**updatemobilefirstruntime** und **uninstallmobilefirstruntime** unterstützen folgende Elemente: 
+**updatemobilefirstruntime** und **uninstallmobilefirstruntime** unterstützen folgende Elemente:
 
 | Element               | Beschreibung                                      | Anzahl |
 |-----------------------|--------------------------------------------------|-------|
@@ -1143,7 +1145,7 @@ Tasks **installmobilefirstruntime**,
 | `<analytics>`         | Analytics                                   | 0..1  |
 
 Das Element `<property>` gibt
-eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet: 
+eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden muss. Es wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                | Erforderlich | Standardwert |
 |-----------|----------------------------|----------|---------|
@@ -1152,7 +1154,7 @@ eine Implementierungseigenschaft an, die im Anwendungsserver definiert werden mu
 
 Das Element `<applicationserver>` beschreibt den Anwendungsserver, in dem die
 {{ site.data.keys.product_adj }}-Anwendung implementiert wird. Dieses Element ist ein Container
-für eines der folgenden Elemente: 
+für eines der folgenden Elemente:
 
 | Element                                    | Beschreibung                                      | Anzahl |
 |--------------------------------------------|--------------------------------------------------|-------|
@@ -1178,14 +1180,13 @@ Deployment unterstützt. Das Element `<websphereapplicationserver>` wird mit fol
 | farmServerId    |	Zeichenfolge, über die ein Server in einer Server-Farm eindeutig identifiziert werden kann. Die MobileFirst-Server-Verwaltungsservices und alle {{ site.data.keys.product_adj }}-Laufzeiten, die mit dem Server kommunizieren, müssen den gleichen Wert verwenden.                                                                | Ja                      |	Ohne    |
 
 Für Einzelserverimplementierungen wird folgendes Element
-unterstützt: 
+unterstützt:
 
 | Element     | Beschreibung      | Anzahl |
 |-------------|------------------|-------|
 | `<server>`  | Einzelserver | 0..1  |
 
-Das Element
-<server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
+Das Element <server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
 
 
 | Attribut | Beschreibung      | Erforderlich | Standardwert |
@@ -1193,7 +1194,7 @@ Das Element
 | name	    | Servername | Ja      | Ohne    |
 
 Für einen Liberty-Verbund wird folgendes Element
-unterstützt: 
+unterstützt:
 
 | Element               | Beschreibung                  | Anzahl |
 |-----------------------|------------------------------|-------|
@@ -1214,7 +1215,7 @@ Das Element `<collectiveMember>` wird mit folgenden Attributen verwendet:
 | createControllerAdmin   |	Angabe, ob der Benutzer mit Verwaltungsaufgaben in der Basisregistry des Verbundmembers erstellt werden muss. Die gültigen Werte sind true und false. | Nein | true |
 
 Für Network Deployment wird folgendes Element
-unterstützt: 
+unterstützt:
 
 | Element     | Beschreibung                                   | Anzahl |
 |-------------|-----------------------------------------------|-------|
@@ -1224,7 +1225,7 @@ unterstützt:
 | `<server>`  |	Einzelserver	                          | 0..1  |
 
 Das Element
-`<cell>` hat keine Attribute. 
+`<cell>` hat keine Attribute.
 
 Das Element
 `<cluster>` wird mit folgendem Attribut verwendet:
@@ -1251,7 +1252,7 @@ Das Element
 | serverName | Servername | Ja      | Ohne    |
 
 Das Element `<tomcat>`
-gibt einen Apache-Tomcat-Server an. Es wird mit folgendem Attribut verwendet: 
+gibt einen Apache-Tomcat-Server an. Es wird mit folgendem Attribut verwendet:
 
 | Attribut     | Beschreibung      | Erforderlich | Standardwert |
 |---------------|------------------|----------|---------|
@@ -1264,15 +1265,14 @@ die erforderlichen Informationen für den Zugriff auf eine bestimmte Datenbank a
 das Element `<database>` die Elemente `<dba>` und `<client>` nicht
 hat, geben Sie das Element `<database>` ähnlich wie die Ant-Task configuredatabase an.
 Das Element `<database>` kann aber `<property>`-Elemente enthalten.
-Das Element `<database>` wird mit folgenden Attributen verwendet: 
+Das Element `<database>` wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung                                | Erforderlich | Standardwert |
 |-----------|--------------------------------------------|----------|---------|
 | kind      | Die Art der Datenbank ({{ site.data.keys.product_adj }}-Laufzeit) | Ja | Ohne |
 | validate  | Prüft, ob die Datenbank zugänglich ist. Gültige Werte sind true und false. | Nein | true |
 
-Das Element
-`<database>` unterstützt die folgenden Elemente:
+Das Element `<database>` unterstützt die folgenden Elemente:
 
 
 | Element             | Beschreibung	                | Anzahl |
@@ -1287,7 +1287,7 @@ Das Element `<analytics>` gibt an, dass von der
 {{ site.data.keys.product_adj }}-Laufzeit aus eine Verbindung zu einer
 bereits installierten
 {{ site.data.keys.mf_analytics_console }} und zu den zugehörigen Services
-hergestellt werden soll. Es wird mit folgenden Attributen verwendet: 
+hergestellt werden soll. Es wird mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                                                                      | Erforderlich | Standardwert |
 |--------------|----------------------------------------------------------------------------------|----------|---------|
@@ -1360,8 +1360,7 @@ Das Element `<derby>` wird mit folgenden Attributen verwendet:
 | datadir	 | Verzeichnis mit den Datenbanken |	Ja	     | Ohne    |
 | schema     |	Schemaname                          |	Nein	     | Je nach Art des Schemas MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH oder APPCENTER |
 
-Das Element
-`<derby>` unterstützt das folgende Element:
+Das Element `<derby>` unterstützt das folgende Element:
 
 
 | Element       | Beschreibung	                | Anzahl |
@@ -1379,12 +1378,11 @@ file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/
 
 Wenn die Datei **mfp-ant-deployer.jar** im Installationsverzeichnis
 der {{ site.data.keys.product }} verwendet wird,
-ist kein Element `<driverclasspath>` notwendig. 
+ist kein Element `<driverclasspath>` notwendig.
 
 ### Vorgehensweise für die Angabe einer DB2-Datenbank
 {: #to-specify-a-db2-database }
-Das Element
-`<db2>` wird mit folgenden Attributen verwendet:
+Das Element `<db2>` wird mit folgenden Attributen verwendet:
 
 
 | Attribut  | Beschreibung                                | Erforderlich | Standardwert |
@@ -1399,8 +1397,7 @@ Das Element
 Weitere Informationen
 zu DB2-Benutzeraccounts finden Sie im Artikel
 [DB2-Sicherheitsmodell - Übersicht](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).   
-Das Element
-`<db2>` unterstützt das folgende Element:
+Das Element `<db2>` unterstützt das folgende Element:
 
 
 | Element       | Beschreibung	                | Anzahl |
@@ -1416,11 +1413,10 @@ Weitere Informationen zu den verfügbaren Eigenschaften für einen Liberty-Serve
 file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
 
-Das Element
-`<driverclasspath>` muss JAR-Dateien für den DB2-JDBC-Treiber und für die zugehörige Lizenz enthalten.
+Das Element `<driverclasspath>` muss JAR-Dateien für den DB2-JDBC-Treiber und für die zugehörige Lizenz enthalten.
 Sie können
 die DB2-JDBC-Treiber
-von der Webseite [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) herunterladen. 
+von der Webseite [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) herunterladen.
 
 ### Vorgehensweise für die Angabe einer MySQL-Datenbank
 {: #to-specify-a-mysql-database }
@@ -1450,8 +1446,7 @@ Weitere Informationen zu MySQL-Benutzerkonten
 finden Sie im Artikel
 [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
 
-Das Element
-`<mysql>` unterstützt das folgende Element:
+Das Element `<mysql>` unterstützt das folgende Element:
 
 
 | Element       | Beschreibung	                | Anzahl |
@@ -1461,7 +1456,7 @@ Das Element
 Die verfügbaren Eigenschaften sind in der Dokumentation
 unter [Driver/Datasource Class Names, URL
 Syntax and Configuration
-Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) angegeben. 
+Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) angegeben.
 
 Weitere Informationen zu den verfügbaren Eigenschaften für einen
 Liberty-Server finden Sie im Abschnitt
@@ -1514,7 +1509,7 @@ URLs and Database Specifiers** unter
 [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
 
 Folgendes Element wird
-unterstützt: 
+unterstützt:
 
 | Element       | Beschreibung	                | Anzahl |
 |---------------|-------------------------------|-------|
@@ -1528,7 +1523,7 @@ verfügbaren Eigenschaften finden Sie im Abschnitt
 Weitere
 Informationen zu den verfügbaren Eigenschaften für einen Liberty-Server finden Sie im Artikel
 **properties.oracle** unter [Liberty profile: Configuration elements in the server.xml
-file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html). 
+file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
 Das Element `<driverclasspath>`
 muss eine Oracle-JDBC-Treiber-JAR-Datei enthalten. Sie können Oracle-JDBC-Treiber von
@@ -1538,7 +1533,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 Das Element `<property>`, das in
 `<derby>`-, `<db2>`-, ` <mysql>`-
-und `<oracle>`-Elementen verwendet werden kann, hat die folgenden Attribute: 
+und `<oracle>`-Elementen verwendet werden kann, hat die folgenden Attribute:
 
 | Attribut  | Beschreibung                                | Erforderlich | Standardwert |
 |------------|--------------------------------------------|----------|---------|
@@ -1549,83 +1544,81 @@ und `<oracle>`-Elementen verwendet werden kann, hat die folgenden Attribute:
 ## Ant-Tasks für die Installation des Application Center
 {: #ant-tasks-for-installation-of-application-center }
 Für die Installation der Application-Center-Konsole und -Services stehen die Ant-Tasks
-`<installApplicationCenter>`, `<updateApplicationCenter>` und
-`<uninstallApplicationCenter>` zur Verfügung. 
+`<installApplicationCenter>`, `<updateApplicationCenter>` und `<uninstallApplicationCenter>` zur Verfügung.
 
 ### Auswirkungen der Tasks
 {: #task-effects-3 }
-### <installApplicationCenter>
+### installApplicationCenter
 {: #installapplicationcenter }
 Die Task `<installApplicationCenter>` konfiguriert einen Anwendungsserver für die Ausführung der WAR-Datei
 der Application-Center-Services als Webanwendung und für die Installation der
-Application-Center-Konsole. Diese Task hat die folgenden Auswirkungen: 
+Application-Center-Konsole. Diese Task hat die folgenden Auswirkungen:
 
 * Sie deklariert die Webanwendung für die Application-Center-Services im Kontextstammverzeichnis
-/applicationcenter. 
+/applicationcenter.
 * Sie deklariert Datenquellen und in
 WebSphere Application Server Full Profile
-auch JDBC-Provider für Application-Center-Services. 
+auch JDBC-Provider für Application-Center-Services.
 * Sie implementiert die Webanwendung für die
-Application-Center-Services im Anwendungsserver. 
+Application-Center-Services im Anwendungsserver.
 * Sie deklariert die Application-Center-Konsole als Webanwendung im Kontextstammverzeichnis
-/appcenterconsole. 
+/appcenterconsole.
 * Sie implementiert die WAR-Datei der Application-Center-Konsole
-im Anwendungsserver. 
+im Anwendungsserver.
 * Sie konfiguriert Konfigurationseigenschaften für die Application-Center-Services mithilfe von JNDI-Umgebungseinträgen. Die JNDI-Umgebungseinträge für den Endpunkt und
-die Proxys sind auf Kommentar gesetzt. In einigen Fällen müssen Sie die Kommentarzeichen entfernen. 
+die Proxys sind auf Kommentar gesetzt. In einigen Fällen müssen Sie die Kommentarzeichen entfernen.
 * Sie konfiguriert Benutzer, die sie Rollen zuordnet, die von den Webanwendungen für die
 Application-Center-Konsole und die
-Application-Center-Services verwendet werden. 
+Application-Center-Services verwendet werden.
 * Sie konfiguriert in
 WebSphere Application Server
-die erforderliche angepasste Eigenschaft für den Web-Container. 
+die erforderliche angepasste Eigenschaft für den Web-Container.
 
-#### <updateApplicationCenter>
+#### updateApplicationCenter
 {: #updateApplicationCenter }
 Die Task `<updateApplicationCenter>` aktualisiert eine
 bereits konfigurierte Application-Center-Anwendung
-in einem Anwendungsserver. Diese Task hat die folgenden Auswirkungen: 
+in einem Anwendungsserver. Diese Task hat die folgenden Auswirkungen:
 
 * Sie aktualisiert die WAR-Datei für die
 Application-Center-Services.
 Diese Datei muss denselben Basisnamen wie die entsprechende
-WAR-Datei haben, die zuvor implementiert wurde. 
+WAR-Datei haben, die zuvor implementiert wurde.
 * Sie aktualisiert die WAR-Datei für die
 Application-Center-Konsole.
 Diese Datei muss denselben Basisnamen wie die entsprechende
-WAR-Datei haben, die zuvor implementiert wurde. 
+WAR-Datei haben, die zuvor implementiert wurde.
 
 Die Task ändert nicht die Konfiguration des Anwendungsservers, d. h.
 die Konfiguration der Webanwendungen, die Datenquellen, die JNDI-Umgebungseinträge und die Benutzer-Rollen-Zuordnungen.
-Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task
-<installApplicationCenter> ausgeführt wird. 
+Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task <installApplicationCenter> ausgeführt wird.
 
-> **Hinweis:** In
-WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
-#### <uninstallApplicationCenter>
+> **Hinweis:** In WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
+
+#### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
 Die Ant-Task `<uninstallApplicationCenter>` macht die Auswirkungen
 einer vorherigen Ausführung der Task
-`<installApplicationCenter>` rückgängig. Diese Task hat die folgenden Auswirkungen: 
+`<installApplicationCenter>` rückgängig. Diese Task hat die folgenden Auswirkungen:
 
 * Sie entfernt die Konfiguration der Webanwendung für die Application-Center-Services
 mit dem Kontextstammverzeichnis **/applicationcenter**. Infolgedessen entfernt die Task auch
-die Einstellungen, die dieser Anwendung manuell hinzugefügt wurden. 
+die Einstellungen, die dieser Anwendung manuell hinzugefügt wurden.
 * Sie entfernt die WAR-Dateien für die Application-Center-Services und die Application-Center-Konsole vom
-Anwendungsserver. 
+Anwendungsserver.
 * Sie entfernt die Datenquellen und in
 WebSphere Application Server Full Profile
 auch die JDBC-Provider für die
-Application-Center-Services. 
-* Sie entfernt die Datenbanktreiber, die von den Application-Center-Services verwendet wurden, aus dem Anwendungsserver. 
+Application-Center-Services.
+* Sie entfernt die Datenbanktreiber, die von den Application-Center-Services verwendet wurden, aus dem Anwendungsserver.
 * Sie entfernt die zugehörigen JNDI-Umgebungseinträge.
 * Sie entfernt die Benutzer, die durch den Aufruf von `<installApplicationCenter>`
-konfiguriert werden. 
+konfiguriert werden.
 
 ### Attribute und Elemente
 {: #attributes-and-elements-3 }
 Die Tasks `<installApplicationCenter>`, `<updateApplicationCenter>`
-und `<uninstallApplicationCenter>` werden mit folgenden Attributen verwendet: 
+und `<uninstallApplicationCenter>` werden mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                                | Erforderlich | Standardwert |
 |--------------|--------------------------------------------|----------|---------|
@@ -1640,7 +1633,7 @@ In
 Umgebungen mit WebSphere Application Server Full Profile
 wird das Attribut **id** verwendet, um verschiedene Implementierungen der Application-Center-Konsole und der Application-Center-Services zu
 unterscheiden. Ohne dieses Attribut **id**
-können zwei WAR-Dateien mit denselben Kontextstammverzeichnissen miteinander in Konflikt geraten, was dazu führt, dass diese Dateien nicht implementiert werden. 
+können zwei WAR-Dateien mit denselben Kontextstammverzeichnissen miteinander in Konflikt geraten, was dazu führt, dass diese Dateien nicht implementiert werden.
 
 #### servicewar
 {: #servicewar-1 }
@@ -1654,15 +1647,15 @@ einem relativen Pfad angeben.
 Das Attribut
 **shortcutsDir** gibt an, wo Direktaufrufe für die
 Application-Center-Konsole gespeichert werden sollen.
-Wenn Sie dieses Attribut definieren, werden die folgenden Dateien zu diesem Verzeichnis hinzugefügt: 
+Wenn Sie dieses Attribut definieren, werden die folgenden Dateien zu diesem Verzeichnis hinzugefügt:
 
 * **appcenter-console.url**: Diese Datei ist eine Windows-Verknüpfung. Sie öffnet die
 Application-Center-Konsole
-in einem Browser. 
+in einem Browser.
 * **appcenter-console.sh**: Diese Datei ist ein
 UNIX-Shell-Script. Sie öffnet die
 Application-Center-Konsole
-in einem Browser. 
+in einem Browser.
 
 #### aaptDir
 {: #aaptdir }
@@ -1672,10 +1665,10 @@ und befindet sich unter
 **Produktinstallationsverzeichnis/ApplicationCenter/tools/android-sdk**.   
 Wenn dieses Attribut nicht gesetzt ist, wird eine apk-Anwendung beim Hochladen vom
 Application Center unter Verwendung seines eigenen
-Codes analysiert, der Beschränkungen unterliegen könnte. 
+Codes analysiert, der Beschränkungen unterliegen könnte.
 
 Die Tasks `<installApplicationCenter>`, `<updateApplicationCenter>`
-und `<uninstallApplicationCenter>` unterstützen die folgenden Elemente: 
+und `<uninstallApplicationCenter>` unterstützen die folgenden Elemente:
 
 | Element           | Beschreibung	                            | Anzahl |
 |-------------------|-------------------------------------------|-------|
@@ -1689,7 +1682,7 @@ und `<uninstallApplicationCenter>` unterstützen die folgenden Elemente:
 Das Element
 `<console>` erfasst Informationen zur Anpassung der Installation der
 Application-Center-Konsole.
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                                      | Erforderlich | Standardwert |
 |--------------|--------------------------------------------------|----------|---------|
@@ -1698,7 +1691,7 @@ Dieses Element wird mit folgenden Attributen verwendet:
 ### Vorgehensweise bei der Angabe eines Anwendungsservers
 {: #to-specify-an-application-server-3 }
 Mit dem Element `<applicationserver>` können Sie die Parameter definieren, die vom zugrunde liegenden Anwendungsserver abhängig sind. Das Element `<applicationserver>`
-unterstützt die folgenden Elemente. 
+unterstützt die folgenden Elemente.
 
 | Element           | Beschreibung	                            | Anzahl |
 |-------------------|-------------------------------------------|-------|
@@ -1720,7 +1713,7 @@ hat, geben Sie das Element `<database>` ähnlich wie die Ant-Task `<configuredat
 Das Element <database> kann jedoch `<property>`-Elemente haben.
 
 
-Das Element `<database>` wird mit folgenden Attributen verwendet: 
+Das Element `<database>` wird mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                                            | Erforderlich | Standardwert |
 |--------------|--------------------------------------------------------|----------|---------|
@@ -1743,7 +1736,7 @@ von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks-for-installa
 ### Benutzer und Sicherheitsrolle angeben
 {: #to-specify-a-user-and-a-security-role }
 Das Element `<user>` erfasst die Parameter über einen Benutzer,
-die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind. 
+die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind.
 
 | Attribut    | Beschreibung                                            | Erforderlich | Standardwert |
 |--------------|--------------------------------------------------------|----------|---------|
@@ -1772,22 +1765,22 @@ finden Sie unter
 {: #installanalytics }
 Die Ant-Task **installanalytics** konfiguriert einen Anwendungsserver so, dass er
 IBM {{ site.data.keys.mf_analytics }}
-ausführt. Diese Task hat die folgenden Auswirkungen: 
+ausführt. Diese Task hat die folgenden Auswirkungen:
 
 * Sie implementiert die WAR-Dateien für den {{ site.data.keys.mf_analytics }} Service
 und die {{ site.data.keys.mf_analytics_console }}
-im Anwendungsserver. 
+im Anwendungsserver.
 * Sie deklariert die Webanwendung für den {{ site.data.keys.mf_analytics }} Service
-im angegebenen Kontextstammverzeichnis (/analytics-service). 
+im angegebenen Kontextstammverzeichnis (/analytics-service).
 * Sie deklariert die Webanwendung für die {{ site.data.keys.mf_analytics_console }}
-im angegebenen Kontextstammverzeichnis (/analytics). 
+im angegebenen Kontextstammverzeichnis (/analytics).
 * Sie legt die Konfigurationseigenschaften für den {{ site.data.keys.mf_analytics_console }} Service
 und die {{ site.data.keys.mf_analytics }} über
-JNDI-Umgebungseinträge fest. 
+JNDI-Umgebungseinträge fest.
 * In
-WebSphere Application Server Liberty Profile konfiguriert sie den Web-Container. 
+WebSphere Application Server Liberty Profile konfiguriert sie den Web-Container.
 * Bei Bedarf erstellt sie Benutzer für die
-{{ site.data.keys.mf_analytics_console }}. 
+{{ site.data.keys.mf_analytics_console }}.
 
 #### updateanalytics
 {: #updateanalytics }
@@ -1798,26 +1791,26 @@ in einem Anwendungsserver. Die Dateien müssen denselben Basisnamen wie die zuvo
 
 
 Die Konfiguration des Anwendungsservers, d. h. Webanwendungskonfiguration und JNDI-Umgebungseinträge,
-wird von der Task nicht geändert. 
+wird von der Task nicht geändert.
 
 #### uninstallanalytics
 {: #uninstallanalytics }
 Mit der Ant-Task **uninstallanalytics** werden die Auswirkungen einer vorherigen Ausführung
 von **installanalytics** rückgängig gemacht.
-Diese Task hat die folgenden Auswirkungen: 
+Diese Task hat die folgenden Auswirkungen:
 
 * Sie entfernt die Konfiguration der Webanwendungen für den {{ site.data.keys.mf_analytics }} Service
 und die {{ site.data.keys.mf_analytics_console }}
-sowie die zugehörigen Kontextstammverzeichnisse. 
+sowie die zugehörigen Kontextstammverzeichnisse.
 * Sie entfernt die WAR-Dateien für den {{ site.data.keys.mf_analytics }} Service
 und die {{ site.data.keys.mf_analytics_console }}
-aus dem Anwendungsserver. 
+aus dem Anwendungsserver.
 * Sie entfernt die zugehörigen JNDI-Umgebungseinträge.
 
 ### Attribute und Elemente
 {: #attributes-and-elements-4 }
 Die Tasks **installanalytics**, **updateanalytics**
-und **uninstallanalytics** werden mit folgenden Attributen verwendet: 
+und **uninstallanalytics** werden mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                                            | Erforderlich | Standardwert |
 |--------------|--------------------------------------------------------|----------|---------|
@@ -1831,7 +1824,7 @@ angeben. Sie können den Namen dieser WAR-Datei mit einem absoluten Pfad oder
 einem relativen Pfad angeben.
 
 Die Tasks `<installanalytics>`, `<updateanalytics>`
-und `<uninstallanalytics>` unterstützen die folgenden Elemente: 
+und `<uninstallanalytics>` unterstützen die folgenden Elemente:
 
 | Attribut         | Beschreibung                               | Erforderlich | Standardwert |
 |-------------------|-------------------------------------------|----------|---------|
@@ -1847,7 +1840,7 @@ und `<uninstallanalytics>` unterstützen die folgenden Elemente:
 Das Element
 `<console>` erfasst Informationen zur Anpassung der Installation der
 {{ site.data.keys.mf_analytics_console }}.
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut    | Beschreibung                                  | Erforderlich | Standardwert |
 |--------------|----------------------------------------------|----------|---------|
@@ -1865,17 +1858,17 @@ einem relativen Pfad angeben.
 Das Attribut
 **shortcutsDir** gibt an, wo Direktaufrufe für die
 {{ site.data.keys.mf_analytics_console }} gespeichert werden sollen.
-Wenn Sie dieses Attribut definieren, können Sie diesem Verzeichnis die folgenden Dateien hinzufügen: 
+Wenn Sie dieses Attribut definieren, können Sie diesem Verzeichnis die folgenden Dateien hinzufügen:
 
 * **analytics-console.url**: Diese Datei ist eine Windows-Verknüpfung. Sie öffnet die
 {{ site.data.keys.mf_analytics_console }}
-in einem Browser. 
+in einem Browser.
 * **analytics-console.sh**: Diese Datei ist ein
 UNIX-Shell-Script. Sie öffnet die
 {{ site.data.keys.mf_analytics_console }}
-in einem Browser. 
+in einem Browser.
 
-> Hinweis: Diese Direktaufrufe enthalten nicht den Elasticsearch-Parameter "tenant". 
+> Hinweis: Diese Direktaufrufe enthalten nicht den Elasticsearch-Parameter "tenant".
 
 Das Element
 `<console>` unterstützt das folgende verschachtelte Element:
@@ -1885,7 +1878,7 @@ Das Element
 |----------|----------------|-------|
 | property | Eigenschaften	    | 0..   |
 
-Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren. 
+Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren.
 
 Das Element `<property>` wird mit folgenden Attributen verwendet:
 
@@ -1898,7 +1891,7 @@ Das Element `<property>` wird mit folgenden Attributen verwendet:
 ### Benutzer und Sicherheitsrolle angeben
 {: #to-specify-a-user-and-a-security-role-1 }
 Das Element `<user>` erfasst die Parameter über einen Benutzer,
-die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind. 
+die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind.
 
 | Attribut   | Beschreibung                                   | Erforderlich | Standardwert |
 |-------------|-----------------------------------------------|----------|---------|
@@ -1908,7 +1901,7 @@ die in eine bestimmte Sicherheitsrolle für eine Anwendung aufzunehmen sind.
 
 Nachdem Sie die Benutzer
 mit dem Element ` <user>` definiert haben, können Sie sie jeder der folgenden Rollen für die Authentifizierung in
-der {{ site.data.keys.mf_console }} zuordnen: 
+der {{ site.data.keys.mf_console }} zuordnen:
 
 * **mfpmonitor**
 * **mfpoperator**
@@ -1919,10 +1912,10 @@ der {{ site.data.keys.mf_console }} zuordnen:
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
 Das Element `<storage>` gibt an, welchen zugrunde liegenden
 Speichertyp {{ site.data.keys.mf_analytics }}
-verwendet, um die erfassten Informationen und Daten zu speichern. 
+verwendet, um die erfassten Informationen und Daten zu speichern.
 
 Folgendes Element wird
-unterstützt: 
+unterstützt:
 
 | Element       | Beschreibung	| Anzahl   |
 |---------------|---------------|---------|
@@ -1943,23 +1936,23 @@ Das Element `<elasticsearch>` erfasst die Parameter eines Elasticsearch-Clusters
 #### clusterName
 {: #clustername }
 Mit dem Attribut **clusterName** können Sie einen Namen Ihrer Wahl für den
-Elasticsearch-Cluster angeben. 
+Elasticsearch-Cluster angeben.
 
 Ein Elasticsearch-Cluster besteht aus Knoten, die einen gemeinsamen Clusternamen verwenden. Wenn Sie mehrere Knoten konfigurieren, können Sie also
-für das Attribut **clusterName** denselben Wert angeben. 
+für das Attribut **clusterName** denselben Wert angeben.
 
 #### nodeName
 {: #nodename }
 Mit dem Attribut **nodeName** können Sie einen Namen Ihrer Wahl für den
 im Elasticsearch-Cluster zu konfigurierenden Knoten angeben. Jeder Knotenname muss im Elasticsearch-Cluster
-eindeutig sein, auch wenn sich der Cluster über mehrere Maschinen erstreckt. 
+eindeutig sein, auch wenn sich der Cluster über mehrere Maschinen erstreckt.
 
 #### mastersList
 {: #masterslist }
 Mit dem Attribut **mastersList** können Sie eine Liste der Masterknoten in Ihrem
 Elasticsearch-Cluster, jeweils getrennt durch ein Komma, angeben. Jeder Masterknoten muss in der Liste mit seinem Hostnamen und
 dem Port für die Elasticsearch-Knoten-zu-Knoten-Kommunikation angegeben sein. Dieser Port ist standardmäßig 9600 oder die Portnummer, die Sie beim Konfigurieren des Masterknotens mit dem
-Attribut **transportPort** angegeben haben. 
+Attribut **transportPort** angegeben haben.
 
 Beispiel: `Hostname1:Transportport1, Hostname2:Transportport2`
 
@@ -1972,17 +1965,17 @@ Elasticsearch-Transportport in allen unterstützten Anwendungsservern zu finden.
 * Wenn der Zielanwendungsserver ein Cluster mit
 WebSphere Application Server Network Deployment ist und Sie
 später einen Server zu diesem Cluster hinzufügen oder aus diesem Cluster entfernen, müssen Sie diese Liste manuell
-bearbeiten, damit sie mit dem Elasticsearch-Cluster synchron ist. 
+bearbeiten, damit sie mit dem Elasticsearch-Cluster synchron ist.
 
 #### dataPath
 {: #datapath }
 Mit dem Attribut **dataPath** können Sie ein anderes Verzeichnis für
 das Speichern von Elasticsearch-Daten angeben. Sie können einen absoluten oder relativen Pfad
-angeben. 
+angeben.
 
 Wenn das Attribut **dataPath** nicht angegeben ist, werden
 Elasticsearch-Clusterdaten in einem Standardverzeichnis
-**analyticsData** gespeichert, dessen Position vom Anwendungsserver abhängt: 
+**analyticsData** gespeichert, dessen Position vom Anwendungsserver abhängt:
 
 * WebSphere Application Server Liberty Profile: `${wlp.user.dir}/servers/Servername/analyticsData`
 * Apache Tomcat: `${CATALINA_HOME}/bin/analyticsData`
@@ -1992,7 +1985,7 @@ Das Verzeichnis
 **analyticsData** und die Hierarchie der enthaltenen Unterverzeichnisse und Dateien werden
 zur Laufzeit automatisch erstellt, sofern sie noch nicht vorhanden sind, wenn der
 {{ site.data.keys.mf_analytics }}
-Service Ereignisse empfängt. 
+Service Ereignisse empfängt.
 
 #### shards
 {: #shards }
@@ -2007,18 +2000,18 @@ Elasticsearch-Cluster erstellt werden sollen.
 Für jedes Shard kann es null oder mehr Replikate geben. Standardmäßig hat jedes Shard ein Replikat.
 Die Anzahl der Replikate kann für einen vorhandenen Index in
 {{ site.data.keys.mf_analytics }} dynamisch geändert werden.
-Ein Replikatshard darf nicht auf demselben Knoten wie das Originalshard ausgeführt werden. 
+Ein Replikatshard darf nicht auf demselben Knoten wie das Originalshard ausgeführt werden.
 
 #### transportPort
 {: #transportport }
 Mit dem Attribut **transportPort** können Sie einen Port angeben, den andere Knoten im
 Elasticsearch-Cluster für die Kommunikation mit diesem Knoten verwenden müssen. Wenn sich dieser Port hinter einem Proxy oder einer Firewall befindet,
-stellen Sie sicher, dass er verfügbar und zugänglich ist. 
+stellen Sie sicher, dass er verfügbar und zugänglich ist.
 
 ### Vorgehensweise bei der Angabe eines Anwendungsservers
 {: #to-specify-an-application-server-4 }
 Mit dem Element `<applicationserver>` können Sie die Parameter definieren, die vom zugrunde liegenden
-Anwendungsserver abhängig sind. Das Element `<applicationserver>` unterstützt die folgenden Elemente. 
+Anwendungsserver abhängig sind. Das Element `<applicationserver>` unterstützt die folgenden Elemente.
 
 **Hinweis:** Die Attribute und inneren Elemente für dieses Element
 sind in den Tabellen im Abschnitt [Ant-Tasks für die
@@ -2032,15 +2025,15 @@ Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks
 ### Vorgehensweise für die Angabe angepasster JNDI-Eigenschaften
 {: #to-specify-custom-jndi-properties }
 Die Elemente `<installanalytics>`, `<updateanalytics>`
-und `<uninstallanalytics>` unterstützen das folgende Element: 
+und `<uninstallanalytics>` unterstützen das folgende Element:
 
 | Element  | Beschreibung | Anzahl |
 |----------|-------------|-------|
 | property | Eigenschaften	 | 0..   |
 
-Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren. 
+Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren.
 
-Dieses Element wird mit folgenden Attributen verwendet: 
+Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut  | Beschreibung                | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
@@ -2051,14 +2044,14 @@ Dieses Element wird mit folgenden Attributen verwendet:
 {: #internal-runtime-databases }
 Hier können Sie sich über die Laufzeitdatenbanktabellen, ihren Zweck und über die Größenordnung der in den einzelnen Tabellen gespeicherten Daten
 informieren. In relationalen
-Datenbanken sind die Entitäten in Datenbanktabellen organisiert. 
+Datenbanken sind die Entitäten in Datenbanktabellen organisiert.
 
 ### Von der MobileFirst-Server-Laufzeit verwendete Datenbank
 {: #database-used-by-mobilefirst-server-runtime }
 In der folgenden Tabelle finden Sie eine Auflistung der
 Laufzeitdatenbanktabellen,
 eine Beschreibung sowie
-eine Angabe ihrer Verwendung in relationalen Datenbanken. 
+eine Angabe ihrer Verwendung in relationalen Datenbanken.
 
 | Name der relationalen Datenbanktabelle | Beschreibung | Größenordnung |
 |--------------------------------|-------------|--------------------|
@@ -2074,7 +2067,7 @@ eine Angabe ihrer Verwendung in relationalen Datenbanken.
 In der folgenden Tabelle finden Sie eine Auflistung der
 Verwaltungsdatenbanktabellen,
 eine Beschreibung sowie
-eine Angabe ihrer Verwendung in relationalen Datenbanken. 
+eine Angabe ihrer Verwendung in relationalen Datenbanken.
 
 | Name der relationalen Datenbanktabelle | Beschreibung | Größenordnung |
 |--------------------------------|-------------|--------------------|
@@ -2093,7 +2086,7 @@ eine Angabe ihrer Verwendung in relationalen Datenbanken.
 In der folgenden Tabelle finden Sie eine Auflistung der
 Datenbanktabellen für den Liveaktualisierungsservice,
 eine Beschreibung sowie
-eine Angabe ihrer Verwendung in relationalen Datenbanken. 
+eine Angabe ihrer Verwendung in relationalen Datenbanken.
 
 | Name der relationalen Datenbanktabelle | Beschreibung | Größenordnung |
 |--------------------------------|-------------|--------------------|
@@ -2108,7 +2101,7 @@ eine Angabe ihrer Verwendung in relationalen Datenbanken.
 In der folgenden Tabelle finden Sie eine Auflistung der
 Datenbanktabellen für den Push-Service,
 eine Beschreibung sowie
-eine Angabe ihrer Verwendung in relationalen Datenbanken. 
+eine Angabe ihrer Verwendung in relationalen Datenbanken.
 
 | Name der relationalen Datenbanktabelle | Beschreibung | Größenordnung |
 |--------------------------------|-------------|--------------------|
@@ -2122,12 +2115,12 @@ eine Angabe ihrer Verwendung in relationalen Datenbanken.
 | PUSH_VERSION	                 | Produktversion	                                         | Eine Zeile |
 
 Weitere Informationen zum Einrichten der Datenbanken finden Sie unter
-[Datenbanken einrichten](../databases). 
+[Datenbanken einrichten](../databases).
 
 ## Beispielkonfigurationsdateien
 In
 der {{ site.data.keys.product }}
-gibt es einige Beispielkonfigurationsdateien, um Ihnen die ersten Schritte mit den Ant-Tasks für die Installation von {{ site.data.keys.mf_server }} zu erleichtern. 
+gibt es einige Beispielkonfigurationsdateien, um Ihnen die ersten Schritte mit den Ant-Tasks für die Installation von {{ site.data.keys.mf_server }} zu erleichtern.
 
 Die einfachste Art, die Arbeit mit diesen Ant-Tasks
 zu beginnen, ist die Verwendung der Beispielkonfigurationsdateien
@@ -2135,11 +2128,12 @@ im Verzeichnis
 **MobileFirstServer/configuration-samples/** des ausgelieferten
 {{ site.data.keys.mf_server }}. Weitere Informationen zur Installation von
 {{ site.data.keys.mf_server }} mit Ant-Tasks finden Sie unter
-[Installation mit Ant-Tasks](../appserver/#installing-with-ant-tasks). 
+[Installation mit Ant-Tasks](../appserver/#installing-with-ant-tasks).
 
 ### Liste der Beispielkonfigurationsdateien
 {: #list-of-sample-configuration-files }
-Wählen Sie die passende Beispielkonfigurationsdatei aus. Die folgenden Dateien werden bereitgestellt. 
+
+Wählen Sie die passende Beispielkonfigurationsdatei aus. Die folgenden Dateien werden bereitgestellt.
 
 | Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      |
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
@@ -2158,7 +2152,7 @@ eine andere von WebSphere Application Server unterstützte Datenbank verwenden, 
 **Hinweis zu den Konfigurationsdateien für WebSphere Application Server Network Deployment:** In den Konfigurationsdateien für **wasnd** kann der Geltungsbereich (scope)
 auf **cluster**, **node**, **server** oder
 **cell** gesetzt werden. In **configure-wasnd-cluster-derby.xml** ist der Geltungsbereich
-beispielsweise **cluster**. Diese Geltungsbereiche definieren das Implementierungsziel wie folgt: 
+beispielsweise **cluster**. Diese Geltungsbereiche definieren das Implementierungsziel wie folgt:
 
 * **cluster**: Implementierung in einem Cluster
 * **server**: Implementierung auf einem Einzelserver, der von einem Deployment Manager verwaltet
@@ -2168,6 +2162,7 @@ wird
 
 ## Beispielkonfigurationsdateien für {{ site.data.keys.mf_analytics }}
 {: #sample-configuration-files-for-mobilefirst-analytics }
+
 In der {{ site.data.keys.product }}
 gibt es Beispielkonfigurationsdateien, die Ihnen den Einstieg in die Verwendung der Ant-Tasks zum Installieren
 der {{ site.data.keys.mf_analytics }} Services und der
@@ -2181,7 +2176,7 @@ Die einfachste Art, die Arbeit mit den Ant-Tasks `<installanalytics>`, `<updatea
 ### Schritt 1
 {: #step-1 }
 Wählen Sie die passende Beispielkonfigurationsdatei aus. Die folgenden XML-Dateien werden bereitgestellt. In den nächsten Schritten sind sie
-mit dem Namen **configure-file.xml** angegeben. 
+mit dem Namen **configure-file.xml** angegeben.
 
 | Task | Anwendungsserver |
 |------|--------------------|
@@ -2195,7 +2190,7 @@ mit dem Namen **configure-file.xml** angegeben.
 
 **Hinweis zu den Konfigurationsdateien für WebSphere Application Server Network Deployment:**  
 In den Konfigurationsdateien für wasnd kann der Geltungsbereich (scope) auf **cluster**, **node**, **server** oder **cell** gesetzt werden. In **configure-wasnd-cluster-analytics.xml** ist der Geltungsbereich
-beispielsweise **cluster**. Diese Geltungsbereiche definieren das Implementierungsziel wie folgt: 
+beispielsweise **cluster**. Diese Geltungsbereiche definieren das Implementierungsziel wie folgt:
 
 * **cluster**: Implementierung in einem Cluster
 * **server**: Implementierung auf einem Einzelserver, der von einem Deployment Manager verwaltet
@@ -2244,7 +2239,7 @@ werden in einer Zeichenfolge verwendet, die in Hochkommata gesetzt ist.
 
 ### Schritt 5
 {: #step-5 }
-Führen Sie den Befehl `ant -f configure-file.xml install` aus. 
+Führen Sie den Befehl `ant -f configure-file.xml install` aus.
 
 Dieser Befehl installiert die
 {{ site.data.keys.mf_analytics }} Services und die
@@ -2259,4 +2254,4 @@ Befehl aus, um den Installationsschritt rückgängig zu machen: `ant -f configur
 
 Dieser Befehl deinstalliert
 die {{ site.data.keys.mf_analytics }} und die
-{{ site.data.keys.mf_analytics_console }}. 
+{{ site.data.keys.mf_analytics_console }}.
