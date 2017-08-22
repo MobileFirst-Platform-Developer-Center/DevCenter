@@ -15,7 +15,7 @@ additional_authors:
 - Srihari Kulkarni
 ---
 
->**Update:** [Announcing support for Android Oreo for IBM MobileFirst v7.1 and v8.0](https://mobilefirstplatform.ibmcloud.com//blog/2017/08/22/mobilefirst-android-Oreo/). 
+>**Update:** [Announcing support for Android Oreo for IBM MobileFirst v7.1 and v8.0](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/). 
 
 Google announced the next version of Android which is [Android O](https://developer.android.com/preview/index.html) in March 2017. The developer preview of Android O has been available for a while now for testing, development, and feedback. Android O introduces a variety of new [features and capabilities](http://www.androidauthority.com/android-8-0-review-758783/) like Notification channels, Autofill Framework, Picture-in-Picture mode etc. for end users.
 
