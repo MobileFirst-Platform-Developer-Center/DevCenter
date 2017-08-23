@@ -105,24 +105,21 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 3. 次の Cordova CLI コマンドを使用して、サポートされているプラットフォームを 1 つ以上 Cordova プロジェクトに追加します。`cordova platform add ios|android|windows` 例えば、次のとおりです。
 
    ```bash
-   cordova platform add ios
-   ```
+cordova platform add ios```
 
    > **注:** このアプリケーションは {{ site.data.keys.product_adj }} テンプレートを使用して構成されたため、ステップ 3 でプラットフォームが追加されたときに {{ site.data.keys.product_adj }} のコア Cordova プラグインが自動的に追加されます。
 
 4. 次のように `cordova prepare コマンド`を実行することで、アプリケーション・リソースを準備します。
 
    ```bash
-   cordova prepare
-   ```
+cordova prepare```
 
 #### アプリケーションの終了
 {: #existing-application }
 1. 既存の Cordova プロジェクトのルートに移動し、次のように {{ site.data.keys.product_adj }} コア Cordova プラグインを追加します。
 
    ```bash
-   cordova plugin add cordova-plugin-mfp
-   ```
+cordova plugin add cordova-plugin-mfp```
 
 2. **www\js** フォルダーに移動し、**index.js** ファイルを選択します。
 
@@ -144,8 +141,8 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 2. 次のコマンドで、{{ site.data.keys.mf_server }} にアプリケーションを登録します。
 
    ```bash
-    mfpdev app register
-    ```
+   mfpdev app register
+   ```
     - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
 `mfpdev app register` CLI コマンドは、まず最初に {{ site.data.keys.mf_server }} に接続してアプリケーションを登録した後、{{ site.data.keys.mf_server }} を識別するメタデータを使用して、Cordova プロジェクトのルートにある **config.xml** ファイルを更新します。
@@ -190,7 +187,7 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
     <mfp:windows>
         <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
        <mfp:windows10>
-          <mfp:sdkChecksum>...</mfp:sdkChecksum>          
+          <mfp:sdkChecksum>...</mfp:sdkChecksum>
           <mfp:security>
              <mfp:testWebResourcesChecksum/>
           </mfp:security>
@@ -203,7 +200,7 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">
@@ -316,8 +313,7 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
 {{ site.data.keys.mf_cli }} を使用して次のコマンドを実行することで、上記の設定を編集できます。
 
 ```bash
-mfpdev app config
-```
+mfpdev app config```
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }

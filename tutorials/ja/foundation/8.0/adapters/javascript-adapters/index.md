@@ -18,9 +18,9 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### adapter-resources フォルダー 
+### adapter-resources フォルダー
 {: #the-adapter-resources-folder }
- 
+
 **adapter-resources** フォルダーには、XML 構成ファイルが含まれています。この構成ファイルでは、接続オプションが記述され、アプリケーションまたは他のアダプターに公開されるプロシージャーがリストされています。
 
 ```xml
@@ -42,7 +42,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -66,7 +66,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
                             <li><code>name</code>: <i>必須。</i> プロシージャーの名前。この名前はアダプター内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 </li>
                             <li><code>audit</code>: <i>オプション。</i> プロシージャーへの呼び出しを監査ログに記録するかどうかを定義します。 以下の値が有効です。
                                 <ul>
-                                    <li><code>true</code>: プロシージャーへの呼び出しが監査ログに記録されます。 </li> 
+                                    <li><code>true</code>: プロシージャーへの呼び出しが監査ログに記録されます。 </li>
                                     <li><code>false</code>: デフォルト。プロシージャーへの呼び出しは監査ログに記録されません。</li>
                                 </ul>
                             </li>
@@ -122,7 +122,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * 構成ファイルを**プッシュする**場合
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -134,7 +134,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * 構成ファイルを**プッシュする**場合
   ```bash
   mfpdev adapter push
@@ -159,7 +159,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 ### js フォルダー
 {: #the-js-folder }
- 
+
 このフォルダーには、**adapter.xml** ファイルで宣言されているプロシージャーのすべての JavaScript 実装ファイルが含まれています。また、取得した生の XML データの変換スキームを含む、ゼロまたは 1 つ以上の XSL ファイルも含まれています。アダプターによって取得したデータは、生データとして返すことも、アダプター自体で前処理することもできます。いずれの場合も、**JSON オブジェクト**としてアプリケーションに提示されます。
 
 ## JavaScript アダプター・プロシージャー
@@ -208,8 +208,7 @@ JavaScript アダプターは、サーバー・サイド API を使用して、{
 `MFP.Server.getPropertyValue(propertyName)` API を使用して、**adapter.xml** または {{ site.data.keys.mf_console }} で定義されているプロパティーを取得します。
 
 ```js
-MFP.Server.getPropertyValue("name");
-```
+MFP.Server.getPropertyValue("name");```
 
 ### getTokenIntrospectionData
 {: #gettokenintrospectiondata }
@@ -222,7 +221,7 @@ MFP.Server.getPropertyValue("name");
 function getAuthUserId(){
    var securityContext = MFP.Server.getTokenIntrospectionData();
    var user = securityContext.getAuthenticatedUser();
- 
+
    return "User ID: " + user.getId;
 }
 ```
