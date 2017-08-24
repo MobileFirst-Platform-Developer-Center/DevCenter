@@ -85,11 +85,11 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{ site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{ site.data.keys.mf_server }} コンテナーを構成するためのファイル (**mfpf-server**) が含まれています。
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
             </h4>
         </div>
 
@@ -124,7 +124,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-server-env" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -287,7 +287,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
      * 4 文字から 30 文字までの長さにすることができます。コマンド・ラインからコンテナーを管理する予定の場合は、素早く入力できる短い名前空間を使用することをお勧めします。
      * Bluemix レジストリー内で固有でなければなりません。
 
-    名前空間を設定するには、次のコマンドを実行します。`cf ic namespace set <new_name>`  
+    名前空間を設定するには、次のコマンドを実行します。`cf ic namespace set <new_name>`。  
     設定した名前空間を取得するには、次のコマンドを実行します。`cf ic namespace get`。
 
 > IC コマンドについて詳しく知るには、`ic help` コマンドを使用します。
@@ -308,7 +308,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 >**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
             <h4 class="panel-title">
@@ -316,7 +316,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
             </h4>
         </div>
 
-        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
               <h4>initenv.properties</h4>
@@ -367,7 +367,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
             </h4>
         </div>
 
-        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
@@ -377,7 +377,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-initenv">
                                     <h4 class="panel-title">
@@ -433,7 +433,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenterdbs" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
                                     <h4 class="panel-title">
@@ -487,7 +487,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
                                     <h4 class="panel-title">
@@ -527,7 +527,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
                                     <h4 class="panel-title">
@@ -612,7 +612,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcentergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
                                     <h4 class="panel-title">
@@ -708,15 +708,15 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_server }} で分析を使用する場合は、ここから開始します。
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts-analytics" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step1">
+        <div class="panel-heading" role="tab" id="step1-analytics">
             <h4 class="panel-title">
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">構成ファイルの使用</a>
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
             <b>注:</b> ここには、必要な引数値のみを含めています。その他の引数については、プロパティー・ファイル内の資料を参照してください。
@@ -758,7 +758,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
@@ -768,7 +768,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
@@ -826,7 +826,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         Bluemix リポジトリー内にあるすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                         リストには、イメージ名、作成日、および ID が表示されます。
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
@@ -867,7 +867,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
@@ -966,7 +966,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
@@ -1063,7 +1063,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -1071,7 +1071,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
 
@@ -1126,7 +1126,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
 
@@ -1137,7 +1137,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-initenv" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
@@ -1191,7 +1191,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserverdbs" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
@@ -1258,7 +1258,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
@@ -1297,7 +1297,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-startserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
@@ -1382,7 +1382,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-startservergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
@@ -1514,7 +1514,7 @@ IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM 
 
     b. `startserver.sh` スクリプトを実行してサーバー・イメージをスタンドアロン・コンテナーとして実行するか、`startservergroup.sh` を実行してサーバー・イメージをコンテナー・グループとして実行します。
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix からのコンテナーの削除
 {: #removing-a-container-from-bluemix }

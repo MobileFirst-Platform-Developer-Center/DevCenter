@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: MobilFirst サーバーの保護
+title: MobileFirst サーバーの保護
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -19,7 +19,7 @@ weight: 2
 ATS の構成は、iOS 以外の他のモバイル・オペレーティング・システムから接続するアプリケーションには影響を与えません。他のモバイル・オペレーティング・システムでは、サーバーが ATS レベルのセキュリティーに基づいて通信することを義務付けていませんが、ATS が構成されたサーバーとの通信も可能です。サーバーを構成する前に、生成された証明書を準備してください。以下の手順では、鍵ストア・ファイル **ssl_cert.p12** に個人証明書があり、**ca.crt** は署名証明書であるものと想定しています。
 
 1. **ssl_cert.p12** ファイルを **mfpf-server-libertyapp/usr/security/** フォルダーにコピーします。
-2. **mfpf-server-libertyapp/usr/config/keystore.xml** ファイルを、以下の構成例に似たものに変更します。
+2. **mfpf-server-libertyapp/usr/config/keystore.xml** ファイルと **appcenter/usr/config/keystore.xml** (AppCenter 用) ファイルを、以下の構成例に似たものに変更します。
 
    ```xml
    <server>
@@ -82,13 +82,13 @@ IBM MobileFirst Foundation インスタンスのセキュリティー構成に�
 3. AES 暗号化を使用しており、デフォルトの鍵の代わりに独自の暗号鍵を使用した場合、その暗号鍵を含む構成ファイルを作成して、**usr/config** ディレクトリーに追加する必要があります。Liberty サーバーは、実行時にこのファイルにアクセスして、パスワードを暗号化解除します。構成ファイルは、.xml ファイル拡張子を持ち、以下のフォーマットに似たものでなければなりません。
 
 ```bash
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <server>
     <variable name="wlp.password.encryption.key" value="yourKey" />
 </server>
 ```
 
-#### コンテナーで実行中のコンソールへのアクセスの制限	
+#### コンテナーで実行中のコンソールへのアクセスの制限
 {: #restricting-access-to-the-consoles-running-on-containers }
 トラスト・アソシエーション・インターセプター (TAI) を作成してデプロイすることで、コンソールへの要求をインターセプトすることにより、実稼働環境内の MobileFirst Operations Console および MobileFirst Analytics コンソールへのアクセスを制限できます。
 
@@ -111,8 +111,7 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-    	
-       String allowedIP =null;
+String allowedIP =null;
 
        public MFPConsoleTAI() {
           super();
@@ -125,52 +124,53 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
     public boolean isTargetInterceptor(HttpServletRequest req)
                   throws WebTrustAssociationException {
       //Add logic to determine whether to intercept this request
-	
-	   boolean interceptMFPConsoleRequest = false;
+
+    	   boolean interceptMFPConsoleRequest = false;
 	   String requestURI = req.getRequestURI();
-	
+
 	   if(requestURI.contains("mfpconsole")) {
 		   interceptMFPConsoleRequest = true;
-	   }
-		
-	   return interceptMFPConsoleRequest;
-    }
+    	   }
+
+    	   return interceptMFPConsoleRequest;
+       }
 
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#negotiateValidateandEstablishTrust
      * (javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
      */
-       
+
     public TAIResult negotiateValidateandEstablishTrust(HttpServletRequest request,
                     HttpServletResponse resp) throws WebTrustAssociationFailedException {
         // Add logic to authenticate a request and return a TAI result.
         String tai_user = "MFPConsoleCheck";
 
-        if(allowedIP != null) {
-        	
+            if(allowedIP != null) {
+
         	String ipAddress = request.getHeader("X-FORWARDED-FOR");
-        	if (ipAddress == null) {
-        	  ipAddress = request.getRemoteAddr();
-        	}
-        	
-        	if(checkIPMatch(ipAddress, allowedIP)) {
-        		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
+            	if (ipAddress == null) {
+            	  ipAddress = request.getRemoteAddr();  
+            	}
+
+            	if(checkIPMatch(ipAddress, allowedIP)) {
+            		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         	}
         	else {
         		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
-        	}
-        		
-        }
-        return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
-    }
+            	}
 
-    private static boolean checkIPMatch(String ipAddress, String pattern) {
-	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
+            }
+            return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
+        }
+
+       private static boolean checkIPMatch(String ipAddress, String pattern) {
+
+    	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 		      return true;
 
 	   String[] mask = pattern.split("\\.");
 	   String[] ip_address = ipAddress.split("\\.");
-	   
+
 	   for (int i = 0; i < mask.length; i++)
 	   {
 		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -184,10 +184,10 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#initialize(java.util.Properties)
      */
-        
+
     public int initialize(Properties properties)
                     throws WebTrustAssociationFailedException {
-    	
+
     	if(properties != null) {
     		if(properties.containsKey("allowedIPs")) {
     			allowedIP = properties.getProperty("allowedIPs");
@@ -199,7 +199,7 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#getVersion()
      */
-    
+
     public String getVersion() {
         return "1.0";
     }
@@ -214,25 +214,24 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#cleanup()
      */
-    
+
     public void cleanup()
         {}
    }
    ```
-    
+
 2. カスタム TAI 実装を .jar ファイルにエクスポートして、該当する **env** フォルダー (**mfpf-server-libertyapp/usr/env**) に入れます。
 3. TAI インターセプターの詳細を含む XML 構成ファイルを作成し (ステップ 1 で提供された TAI 構成のコード例を参照)、.xml ファイルを該当するフォルダー (**mfpf-server-libertyapp/usr/config**) に追加します。.xml ファイルは次の例に似たものになります。**ヒント:** 実際の実装を反映するようにクラス名とプロパティーを更新してください。
-
-   ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
-        <server description="new server">
+```xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <server description="new server">
         <featureManager>
             <feature>appSecurity-2.0</feature>
         </featureManager>
 
         <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
-            <interceptors id="MFPConsoleTAI" enabled="true"
+            <interceptors id="MFPConsoleTAI" enabled="true"  
                           className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
                           invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
                 <properties allowedIPs="9.182.149.*"/>
@@ -243,8 +242,7 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
             <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
         </library>
    </server>
-   ```
-
+```
 4. サーバーを再デプロイします。これで、構成された TAI セキュリティー・メカニズムを満たしている場合にのみ、MobileFirst Operations Console にアクセス可能になりました。
 
 ## コンテナーの LDAP 構成
@@ -274,7 +272,7 @@ LDAP リポジトリーにユーザーとグループを作成します。グル
 1. **registry.xml** を開き、`basicRegistry` エレメントを見つけます。`basicRegistry` エレメントを、以下のスニペットに似たコードに置き換えます。
 
    ```xml
-   <ldapRegistry 
+   <ldapRegistry
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -289,15 +287,17 @@ LDAP リポジトリーにユーザーとグループを作成します。グル
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
-    項目 | 説明
+
+        項目| 説明
     --- | ---
     `host` および `port` | ローカル LDAP サーバーのホスト名 (IP アドレス) およびポート番号。
     `baseDN` | 特定の組織に関するすべての詳細をキャプチャーする、LDAP 内のドメイン・ネーム (DN)。
-    `bindDN="uid=admin,ou=system"` | LDAP サーバーのバインディング詳細。例えば、Apache Directory Service の場合のデフォルト値は `uid=admin,ou=system` です。
-    `bindPassword="secret"	` | LDAP サーバーのバインディング・パスワード。例えば、Apache Directory Service の場合のデフォルト値は `secret` です。
+    `bindDN="uid=admin,ou=system"	` | LDAP サーバーのバインディング詳細。例えば、Apache Directory Service の場合のデフォルト値は `uid=admin,ou=system` です。
+
+    `bindPassword="secret"	`| LDAP サーバーのバインディング・パスワード。例えば、Apache Directory Service の場合のデフォルト値は `secret` です。
+
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 認証および許可でディレクトリー・サービス (Apache など) に照会する際に使用するカスタム・フィルター。
-        
+
 2. `appSecurity-2.0` および `ldapRegistry-3.0` で以下のフィーチャーが有効になっていることを確認します。
 
    ```xml
@@ -306,9 +306,9 @@ LDAP リポジトリーにユーザーとグループを作成します。グル
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
    各種 LDAP サーバー・リポジトリーの構成について詳しくは、[WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html) を参照してください。
-    
+
 #### セキュア・ゲートウェイ
 {: #secure-gateway }
 LDAP サーバーへのセキュア・ゲートウェイ接続を構成するには、Bluemix 上に Secure Gateway サービスのインスタンスを作成し、LDAP レジストリーの IP 情報を取得する必要があります。このタスクには、ローカル LDAP ホスト名とポート番号が必要です。
@@ -322,7 +322,7 @@ LDAP サーバーへのセキュア・ゲートウェイ接続を構成するに
 7. **「宛先 ID (Destination ID)」**と**「クラウド・ホスト : ポート (Cloud Host : Port)」**の値を取り込みます。registry.xml ファイルに移動し、既存の値を置き換えてこれらの値を追加します。以下に示す、registry.xml ファイル内の更新されたコード・スニペットの例を参照してください。
 
 ```xml
-<ldapRegistry 
+<ldapRegistry
     id="ldap"
     host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
     baseDN="dc=worklight,dc=com"
