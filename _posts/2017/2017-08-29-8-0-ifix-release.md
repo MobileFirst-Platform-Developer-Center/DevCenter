@@ -17,7 +17,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **August 23rd
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
 ### Support for cordova browser platform
-Starting with this iFix, {{ site.data.keys.product }} supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/23/cordova-browser-compatibility-with-MFP/).
+Starting with this iFix, {{ site.data.keys.product }} supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
 
 ### APARs Fixed
 
@@ -79,7 +79,7 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="tools">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-tools" aria-expanded="true" aria-controls="collapse-tools">Tools/a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-tools" aria-expanded="true" aria-controls="collapse-tools">Tools</a>
             </h4>
         </div>
         <div id="collapse-tools" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools">

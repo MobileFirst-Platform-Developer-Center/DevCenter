@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform on cordova browser platform
-date: 2017-08-23
+date: 2017-08-29
 version:
 - 8.0
 tags:
@@ -9,8 +9,6 @@ tags:
 author:
   name: Srutha K Kotta
 ---
-
-## MobileFirst Platform on cordova browser platform
 
 The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
 
@@ -116,7 +114,7 @@ var app = {
           titleText.innerHTML = "Bummer...";
           statusText.innerHTML = "Failed to connect to MobileFirst Server";
         }
-        );  
+        );
     },
  }
 
@@ -181,7 +179,7 @@ cordova platform add browser
 Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application.
 
 > To manually register your application:
-> 
+>
 * Login to your MFP server's console.
 * Click the **New** button next to the _*Applications*_ option.
 * Provide a name to your application, select **Web** as the platform and provide your application's id (which was defined in the **wlInitOptions** function of your `index.js`).
@@ -335,6 +333,3 @@ Execute `cf login`, enter your _*username*_ and _*password*_. Execute a `cf push
 Follow the instruction to use WebSphere Liberty in <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/">this</a> tutorial and make the below changes.
 
 Add the entire contents of your browser project's `www` folder to `[MyWebApp] → src → Main → webapp ` as mentioned in Step 1 of "Building the Maven webapp with the web application’s resources" section of the above tutorial. Finally register your app on your Liberty server and test it by running it in the browser with the path `localhost:9080/MyWebApp`. Also add the `sjcl` and `jssha` folders to their parent folder and change their reference in the `ibmmfpf.js` file (this step can be found in more detail in the **Adding the proxy MFP server to a Bluemix nodejs runtime** section).
-
-
-
