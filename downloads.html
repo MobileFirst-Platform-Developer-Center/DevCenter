@@ -1,13 +1,13 @@
 ---
-layout: default 
-title: Downloads 
+layout: default
+title: Downloads
 ---
 <section class="container downloads" role="main">
    <h2 class="no-anchor">Downloads</h2>
    <p>Looking to get started? <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">use the Mobile Foundation Bluemix service</a> to bring up a {{ site.data.keys.mf_server }} instance in minutes, or start locally by downloading the Developer Kit.</p>
-   
+
    <blockquote>To learn more about the {{ site.data.keys.product }} components and the Developer Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the {{ site.data.keys.product_adj }} development environment</a> tutorial.</blockquote>
-   
+
    <h3>Product components</h3>
    <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
@@ -20,10 +20,10 @@ title: Downloads
          <div id="collapseDevKit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="devkit">
             <div class="panel-body">
                <p>The Developer Kit bundles together the various components of {{ site.data.keys.product }} 8.0.</p>
-              
+
                <p><strong>Prerequisite:</strong><br/>
                To use the {{ site.data.keys.mf_server }} in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
-              
+
                <ul>
                   <li>Download and install Java 7 or 8 JDK</li>
                   <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
@@ -34,15 +34,15 @@ title: Downloads
                      </ul>
                   </li>
                </ul>
-              
+
                <blockquote><b>Customers: login to <a href="https://www.ibm.com/support/fixcentral/">IBM Fix Central</a> to download your copy<br/>Evaluators: Download your copy below</b></blockquote>
-              
+
                <p>
-                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-mac-8.0.0.0.zip">Download the {{ site.data.keys.mf_dev_kit }} Installer for macOS</a> (IF20170125-0919)<br/>
-                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-linux-8.0.0.0.bin">Download the {{ site.data.keys.mf_dev_kit }} Installer for Linux</a> (IF20170125-0919)<br/>
-                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-windows-8.0.0.0.exe">Download the {{ site.data.keys.mf_dev_kit }} Installer for Windows</a> (IF20170125-0919)
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-mac-8.0.0.0.zip">Download the {{ site.data.keys.mf_dev_kit }} Installer for macOS</a> (IF20170823-1236)<br/>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-linux-8.0.0.0.bin">Download the {{ site.data.keys.mf_dev_kit }} Installer for Linux</a> (IF20170823-1236)<br/>
+                  <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst-deved-devkit-windows-8.0.0.0.exe">Download the {{ site.data.keys.mf_dev_kit }} Installer for Windows</a> (IF20170823-1236)
                </p>
-              
+
                <p>
                   Once installation completes,
                   <ol>
@@ -50,11 +50,11 @@ title: Downloads
                      <li>Load the {{ site.data.keys.mf_console }} (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
                      <li><i>Optional</i>. Click on <strong>Get Starter Code → Tools tab</strong> to download development tools or follow through <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">the tutorials</a>.</li>
                   </ol>
-               </p>   
+               </p>
             </div>
          </div>
       </div>
-      
+
       <div class="panel panel-default">
          <div class="panel-heading" role="tab" id="cli8">
             <h4 class="panel-title">
@@ -66,20 +66,20 @@ title: Downloads
             <div class="panel-body">
                <p>To use the {{ site.data.keys.mf_cli }} the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
                You can verify the installation by running <code>mfpdev -v</code>.</p>
-             
+
                <p><strong>Prerequisite:</strong></p>
                <ul>
                   <li>NPM is bundled as part of Node.js. Install <a href="https://nodejs.org/en/">Node.js</a>.</li>
                   <li>You may encounter a permission error during the installation of the CLI; see "<a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">Fixing npm permissions</a>"</li>
                </ul>
-             
+
                <p>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
                If the CLI was downloaded from the {{ site.data.keys.mf_console }}, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
                </p>
             </div>
          </div>
       </div>
-      
+
       <div class="panel panel-default">
          <div class="panel-heading" role="tab" id="sdks">
             <h4 class="panel-title">
@@ -91,11 +91,11 @@ title: Downloads
             <div class="panel-body">
                <p>The {{ site.data.keys.mf_cli }}ent SDKs are available in the following online repositories.<br/>
                You can install them using their respective package managers.</p>
-              
+
                <p>For installation instructions, review the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk">Adding the {{ site.data.keys.product }} SDK</a> tutorials.</p>
-              
+
                <p>The SDKs are also available from <strong>{{ site.data.keys.mf_console }} → Download Center → Tools tab</strong> for offline installation.</p>
-              
+
                <ul>
                   <li><a href="https://www.npmjs.com/package/cordova-plugin-mfp" target="_blank">Cordova</a> (npm)</li>
                   <li><a href="https://cocoapods.org/pods/IBMMobileFirstPlatformFoundation" target="_blank">iOS</a> (CocoaPods)</li>
@@ -106,7 +106,7 @@ title: Downloads
             </div>
          </div>
       </div>
-      
+
       <div class="panel panel-default">
          <div class="panel-heading" role="tab" id="artifacts">
             <h4 class="panel-title">
@@ -118,12 +118,12 @@ title: Downloads
             <div class="panel-body">
                <p>The {{ site.data.keys.mf_server }}-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>.<br/>
                For installation instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the Adapters tutorials</a>.</p>
-              
+
                <p>The artifacts are also available from <strong>{{ site.data.keys.mf_console }} → Download Center → Tools tab</strong> for offline installation.</p>
-              
+
                <p><strong>Prerequisite:</strong><br/>
                To fetch artifacts from Maven Central, <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> must first be installed.</p>
-              
+
                <p>Available artifacts:</p>
                <ul>
                   <li><a href="http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp">Adapter archetypes</a></li>
@@ -137,7 +137,7 @@ title: Downloads
          </div>
       </div>
    </div>
-   
+
    <h3>Offline documentation</h3>
    <p>Below are links to download a PDF version of the MobileFirst Platform Foundation docs for offline reading:</p>
 
@@ -147,32 +147,32 @@ title: Downloads
       <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release70.zip">MobileFirst Platform Foundation 7.0</a></li>
       <li><a href="https://github.com/MobileFirst-Platform-Developer-Center/TutorialsForOfflineReading/archive/release63.zip">MobileFirst Platform Foundation 6.3</a></li>
    </ul>
-  
+
    <h3>Samples</h3>
    <p>Looking for sample applications?</p>
    <ul>
       <li>Go through this repository of <a href="../tutorials/en/foundation/8.0/advanced-samples">advanced use case samples</a>.</li>
       <li>Find your <a href="../tutorials/en/foundation/8.0/all-tutorials">topic of interest</a> and review its associated samples.</li>
-   </ul>  
-       
-   <h3>Past releases</h3>   
+   </ul>
+
+   <h3>Past releases</h3>
    <b>Studio releases:</b>
    <ul>
-      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.1.0.zip">IBM MobileFirst Platform Foundation 7.1.0.0</a> (IF20170120-0103)</li>
-      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.0.0.zip">IBM MobileFirst Platform Foundation 7.0.0.0</a> (IF20170125-1125)</li>
-      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_6.3.0.0.zip">IBM MobileFirst Platform Foundation 6.3.0.0</a> (IF20161123-1057)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.1.0.zip">IBM MobileFirst Platform Foundation 7.1.0.0</a> (IF20170821-1241)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.0.0.zip">IBM MobileFirst Platform Foundation 7.0.0.0</a> (IF20170816-0745)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_6.3.0.0.zip">IBM MobileFirst Platform Foundation 6.3.0.0</a> (IF20170703-0743)</li>
       <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_eclipse_6.2.0.1.zip">IBM Worklight Foundation 6.2.0.1</a> (IF201611022-041)</li>
       <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_update_site_wde.6.1.0.2.zip">IBM Worklight 6.1.0.2</a> (IF201611022-042)</li>
       <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/iws_update_site_wde.6.0.0.2.zip">IBM Worklight 6.0.0.2</a></li>
    </ul>
-   
+
    <b>CLI releases:</b>
-   <ul>    
-      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.1.0.zip">MobileFirst Platform Foundation CLI v7.1</a> (IF20170120-0103)</li>
-      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.0.0.zip">MobileFirst Platform Foundation CLI v7.0</a> (IF20170125-1125)</li>
-      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_6.3.0.zip">MobileFirst Platform Foundation CLI v6.3</a> (IF20161123-1057)</li>
+   <ul>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.1.0.zip">MobileFirst Platform Foundation CLI v7.1</a> (IF20170821-1241)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_7.0.0.zip">MobileFirst Platform Foundation CLI v7.0</a> (IF20170816-0745)</li>
+      <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_cli_installer_6.3.0.zip">MobileFirst Platform Foundation CLI v6.3</a> (IF20170703-0743)</li>
    </ul>
-   
+
    <b>Installation instructions:</b>
 
    <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
@@ -236,7 +236,7 @@ title: Downloads
                <ul>
                   <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
                   <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
-                  <li> Linux: /usr/lib/jvm/java-1.7.0_60/</li>  
+                  <li> Linux: /usr/lib/jvm/java-1.7.0_60/</li>
                </ul>
 
                <ol>
@@ -283,5 +283,5 @@ title: Downloads
             </div>
          </div>
       </div>
-   </div>          
+   </div>
 </section>

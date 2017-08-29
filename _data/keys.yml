@@ -24,8 +24,10 @@
 # NOTE: The are some hardcoded product and component name instances in the documentation of the current version, which are quoted from file names and product-integrated (PI) strings (such as menu options, console strings, comments, and system messages).
 
 ## Product name
-product:                        "MobileFirst Foundation"                                # [DITA: product_short: "IBM MobileFirst Foundation"]
-product_full:                   "IBM MobileFirst Foundation"                            # DITA: product_wl
+#product:                        "MobileFirst Foundation"                                # [DITA: product_short: "IBM MobileFirst Foundation"]
+#product_full:                   "IBM MobileFirst Foundation"                            # DITA: product_wl
+product:                        "Mobile Foundation"                                # [DITA: product_short: "IBM MobileFirst Foundation"]
+product_full:                   "IBM Mobile Foundation"   
 
 ## Product adjective
 # "MobileFirst" cannot be used on its own, as a shorthand for the product name, but it can be used as an adjective in description of product elements, such as "{{ site.data.keys.product_adj }} security framework".
@@ -94,9 +96,13 @@ mf_web_browser_support_android_ver: "Android 4.3+"
 # NOTE: The component keywords are defined in alphabetical order (not including the product-name prefix).
 
 ## MF Analytics
-mf_analytics_short:             "Analytics"                                             
+mf_analytics_short:             "Analytics"
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
+
+## MF Analytics service
+mf_analytics_service:            "Mobile Analytics"
+mf_analytics_service_console:            "Mobile Analytics Console"
 
 # MF Analytics Console
 mf_analytics_console_short:     "Analytics Console"

@@ -9,6 +9,31 @@ weight: 4
 {: #overview }
 You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** program.
 
+>{{ site.data.keys.product_full }} SDK versions later than **8.0.0.0-MFPF-IF201701250919** has an updated App authenticity support, which is `mfpadm` commands to switch between `dynamic` or `static` validation and also to reset it.
+>
+Navigate to the {{ site.data.keys.product_full }} installation directory  `/MobilefirstPlatformServer/shortcuts` and run the `mfpadm` commands.
+>
+1.To switch between validation types:
+```bash
+	mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
+```  
+Value for *TYPE* can be `static` or `dynamic`
+>
+Example for android: Here we are setting the validation TYPE to `dynamic`.
+```bash
+  mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp test android 1.0 set authenticity-validation dynamic
+```
+>
+2.To reset the data using the below command which clears the fingerprint of the app.
+```bash
+  mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
+```
+Example :
+>
+```bash
+  mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp sample.com.pincodeandroid android 1.0 reset authenticity
+```
+
 #### Jump to
 {: #jump-to }
 
@@ -71,17 +96,17 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 The **mfpadm** program has the following options:
 
-| Option	| Type | Description | Required | Default | 
+| Option	| Type | Description | Required | Default |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | | 
-| --secure	 | Boolean | Whether to avoid operations with security risks | No | true | 
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | |
+| --secure	 | Boolean | Whether to avoid operations with security risks | No | true |
 | --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
-| --passwordfile | file | File containing the password for the user | No | 
+| --passwordfile | file | File containing the password for the user | No |
 | --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
 | --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
-| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No | 
+| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No |
 | --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
-| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 | 
+| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 |
 | --verbose	     | Detailed output | No	| |  
 
 **url**  
@@ -106,44 +131,44 @@ For this reason, do not pass the password to a process through a command-line ar
 
 The mfpadm calls contains a command. The following commands are supported.
 
-| Command                           | Description | 
+| Command                           | Description |
 |-----------------------------------|-------------|
-| show info	| Shows user and configuration information. | 
-| show global-config | Shows global configuration information. | 
-| show diagnostics | Shows diagnostics information. | 
-| show versions	| Shows version information. | 
-| unlock | Releases the general-purpose lock. | 
-| list runtimes [--in-database] | Lists the runtimes. | 
-| show runtime [runtime-name] | Shows information about a runtime. | 
-| delete runtime [runtime-name] condition | Deletes a runtime. | 
-| show user-config [runtime-name] | Shows the user configuration of a runtime. | 
-| set user-config [runtime-name] file | Specifies the user configuration of a runtime. | 
-| set user-config [runtime-name] property = value | Specifies a property in the user configuration of a runtime. | 
-| show confidential-clients [runtime-name] | Shows the configuration of the confidential clients of a runtime. | 
-| set confidential-clients [runtime-name] file | Specifies the configuration of the confidential clients of a runtime. | 
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Specifies a rule for the configuration of the confidential clients of a runtime. | 
-| list adapters [runtime-name] | Lists the adapters. | 
-| deploy adapter [runtime-name] property = value | Deploys an adapter.| 
-| show adapter [runtime-name] adapter-name | Shows information about an adapter.| 
-| delete adapter [runtime-name] adapter-name | Deletes an adapter.| 
-| adapter [runtime-name] adapter-name get binary [> tofile]	| Get the binary data of an adapter.| 
-| list apps [runtime-name] | Lists the apps.| 
-| deploy app [runtime-name] file | Deploys an app.| 
-| show app [runtime-name] app-name | Shows information about an app.| 
-| delete app [runtime-name] app-name | Deletes an app. | 
+| show info	| Shows user and configuration information. |
+| show global-config | Shows global configuration information. |
+| show diagnostics | Shows diagnostics information. |
+| show versions	| Shows version information. |
+| unlock | Releases the general-purpose lock. |
+| list runtimes [--in-database] | Lists the runtimes. |
+| show runtime [runtime-name] | Shows information about a runtime. |
+| delete runtime [runtime-name] condition | Deletes a runtime. |
+| show user-config [runtime-name] | Shows the user configuration of a runtime. |
+| set user-config [runtime-name] file | Specifies the user configuration of a runtime. |
+| set user-config [runtime-name] property = value | Specifies a property in the user configuration of a runtime. |
+| show confidential-clients [runtime-name] | Shows the configuration of the confidential clients of a runtime. |
+| set confidential-clients [runtime-name] file | Specifies the configuration of the confidential clients of a runtime. |
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Specifies a rule for the configuration of the confidential clients of a runtime. |
+| list adapters [runtime-name] | Lists the adapters. |
+| deploy adapter [runtime-name] property = value | Deploys an adapter.|
+| show adapter [runtime-name] adapter-name | Shows information about an adapter.|
+| delete adapter [runtime-name] adapter-name | Deletes an adapter.|
+| adapter [runtime-name] adapter-name get binary [> tofile]	| Get the binary data of an adapter.|
+| list apps [runtime-name] | Lists the apps.|
+| deploy app [runtime-name] file | Deploys an app.|
+| show app [runtime-name] app-name | Shows information about an app.|
+| delete app [runtime-name] app-name | Deletes an app. |
 | show app version [runtime-name] app-name environment version | Shows information about an app version. |
 | delete app version [runtime-name] app-name environment version | Deletes a version of an app. |
 | app [runtime-name] app-name show license-config | Shows the token license configuration of an app. |
 | app [runtime-name] app-name set license-config app-type license-type | Specifies the token license configuration for an app. |
-| app [runtime-name] app-name delete license-config | Removes the token license configuration for an app. | 
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Gets the descriptor of an app version. | 
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | Gets the web resources of an app version. | 
-| app version [runtime-name] app-name environment version set web-resources file | Specifies the web resources of an app version. | 
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Gets the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version set authenticity-data [file] | Specifies the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version delete authenticity-data | Deletes the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version show user-config | Shows the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config file | Specifies the user configuration of an app version. | 
+| app [runtime-name] app-name delete license-config | Removes the token license configuration for an app. |
+| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Gets the descriptor of an app version. |
+| app version [runtime-name] app-name environment version get web-resources [> tofile] | Gets the web resources of an app version. |
+| app version [runtime-name] app-name environment version set web-resources file | Specifies the web resources of an app version. |
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Gets the authenticity data of an app version. |
+| app version [runtime-name] app-name environment version set authenticity-data [file] | Specifies the authenticity data of an app version. |
+| app version [runtime-name] app-name environment version delete authenticity-data | Deletes the authenticity data of an app version. |
+| app version [runtime-name] app-name environment version show user-config | Shows the user configuration of an app version. |
+| app version [runtime-name] app-name environment version set user-config file | Specifies the user configuration of an app version. |
 | app version [runtime-name] app-name environment version set user-config property = value | Specifies a property in the user configuration of an app version. |
 | list devices [runtime-name] [--query query] | Lists the devices. |
 | remove device [runtime-name] id | Removes a device. |
@@ -205,17 +230,17 @@ You can also store the options in a configuration file, instead of passing them 
 Use these commands to store these values in the configuration file.
 
 | Command | Comment |
-|---------|---------| 
-| mfpadm [--configfile=file] config url URL | | 
-| mfpadm [--configfile=file] config secure boolean | | 
-| mfpadm [--configfile=file] config user name | | 
-| mfpadm [--configfile=file] config password | Prompts for the password. | 
-| mfpadm [--configfile=file] config timeout seconds | | 
-| mfpadm [--configfile=file] config connect-timeout seconds | | 
-| mfpadm [--configfile=file] config socket-timeout seconds | | 
-| mfpadm [--configfile=file] config connection-request-timeout seconds | | 
-| mfpadm [--configfile=file] config lock-timeout seconds | | 
-| mfpadm [--configfile=file] config runtime runtime-name | | 
+|---------|---------|
+| mfpadm [--configfile=file] config url URL | |
+| mfpadm [--configfile=file] config secure boolean | |
+| mfpadm [--configfile=file] config user name | |
+| mfpadm [--configfile=file] config password | Prompts for the password. |
+| mfpadm [--configfile=file] config timeout seconds | |
+| mfpadm [--configfile=file] config connect-timeout seconds | |
+| mfpadm [--configfile=file] config socket-timeout seconds | |
+| mfpadm [--configfile=file] config connection-request-timeout seconds | |
+| mfpadm [--configfile=file] config lock-timeout seconds | |
+| mfpadm [--configfile=file] config runtime runtime-name | |
 
 Use this command to list the values that are stored in the configuration file: `mfpadm [--configfile=file] config`
 
@@ -232,10 +257,10 @@ The configuration file is a text file, in the encoding of the current locale, in
 {: #generic-options }
 There are also the usual generic options:
 
-| Option	| Description | 
+| Option	| Description |
 |-----------|-------------|
-| --help	| Shows some usage help | 
-| --version	| Shows the version | 
+| --help	| Shows some usage help |
+| --version	| Shows the version |
 
 #### XML format
 {: #xml-format }
@@ -267,7 +292,7 @@ It takes the following options:
 
 | Argument | Description |
 |----------|-------------|
-| --xml    | Produces XML output instead of tabular output. | 
+| --xml    | Produces XML output instead of tabular output. |
 
 **Example**  
 
@@ -292,9 +317,9 @@ It takes the following arguments:
 
 The `show user-config` command takes the following options after the verb.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Required | Default |
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output | 
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **Example**  
 
@@ -313,20 +338,20 @@ Syntax for the entire configuration: `set user-config [runtime-name] file`
 
 It takes the following arguments:
 
-| Attribute | Description | 
+| Attribute | Description |
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | Name of the runtime. |
+| file | Name of the JSON or XML file that contains the new configuration. |
 
 Syntax for a single property: `set user-config [runtime-name] property = value`
 
 The `set user-config` command takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | Name of the runtime. |
 | property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. |
-| value | The value of the property. | 
+| value | The value of the property. |
 
 **Examples**  
 
@@ -376,10 +401,10 @@ Syntax: `set confidential-clients [runtime-name] file`
 
 Its takes the following arguments:
 
-| Attribute | Description | 
+| Attribute | Description |
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file	Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | Name of the runtime. |
+| file	Name of the JSON or XML file that contains the new configuration. |
 
 **Example**
 
@@ -400,11 +425,11 @@ It takes the following arguments:
 
 | Attribute	| Description |
 |-----------|-------------|
-| runtime | Name of the runtime. | 
-| id | The identifier of the rule. | 
-| displayName | The display name of the rule. | 
-| secret | The secret of the rule. | 
-| allowedScope | The scope of the rule. A space-separated list of tokens. Use double-quotes to pass a list of two or more tokens. | 
+| runtime | Name of the runtime. |
+| id | The identifier of the rule. |
+| displayName | The display name of the rule. |
+| secret | The secret of the rule. |
+| allowedScope | The scope of the rule. A space-separated list of tokens. Use double-quotes to pass a list of two or more tokens. |
 
 **Example**
 
@@ -426,15 +451,15 @@ Syntax: `list adapters [runtime-name]`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
 | runtime-name | Name of the runtime. |
 
 The `list adapters` command takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. | 
+| --xml | Produce XML output instead of tabular output. |
 
 **Example**  
 
@@ -453,7 +478,7 @@ Syntax: `deploy adapter [runtime-name] file`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
 | runtime-name | Name of the runtime. |
 | file | Binary adapter file (.adapter) |
@@ -475,7 +500,7 @@ Syntax: `show adapter [runtime-name] adapter-name`
 
 It takes the following arguments.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
 | runtime-name | Name of the runtime. |
 | adapter-name | Name of an adapter |
@@ -505,8 +530,8 @@ It takes the following arguments:
 
 | Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | Name of the runtime. |
+| adapter-name | Name of an adapter. |
 
 **Example**
 
@@ -521,10 +546,10 @@ This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowl
 {: #the-adapter-command-prefix }
 The `adapter` command prefix takes the following arguments before the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | Name of the runtime. |
+| adapter-name | Name of an adapter. |
 
 <br/>
 #### The `adapter get binary` command
@@ -535,7 +560,7 @@ Syntax: `adapter [runtime-name] adapter-name get binary [> tofile]`
 
 It takes the following options after the verb.
 
-| Option | Description | Required | Default | 
+| Option | Description | Required | Default |
 |--------|-------------|----------|---------|
 | > tofile | Name of the output file. | No | Standard output |
 
@@ -558,7 +583,7 @@ It takes the following options after the verb.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Produces output in XML format instead of JSON format. | 
+| --xml | Produces output in XML format instead of JSON format. |
 
 **Example**
 
@@ -577,7 +602,7 @@ Syntax for the entire configuration: `adapter [runtime-name] adapter-name set us
 
 It takes the following arguments after the verb.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
 | file | Name of the JSON or XML file that contains the new configuration. |
 
@@ -587,8 +612,8 @@ It takes the following arguments after the verb.
 
 | Option | Description |
 |--------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. |
+| value | The value of the property. |
 
 **Examples**
 
@@ -614,7 +639,7 @@ Syntax: `list apps [runtime-name]`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
 | runtime-name | Name of the runtime. |
 
@@ -640,7 +665,7 @@ Syntax: `deploy app [runtime-name] file`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
 | runtime-name | Name of the runtime. |
 | file | The application descriptor, a JSON file. |
@@ -661,10 +686,10 @@ Syntax: `show app [runtime-name] app-name`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | Name of the runtime. |
+| app-name | Name of an app. |
 
 The `show app` command takes the following options after the object.
 
@@ -688,10 +713,10 @@ Syntax: `delete app [runtime-name] app-name`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app | 
+| runtime-name | Name of the runtime. |
+| app-name | Name of an app |
 
 **Example**
 
@@ -709,18 +734,18 @@ Syntax: `show app version [runtime-name] app-name environment version`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | Name of the runtime. |
+| app-name | Name of an app. |
+| environment | Mobile platform. |
+| version | Version of the app. |
 
 The `show app version` command takes the following options after the object.
 
-| Argument | Description | 
+| Argument | Description |
 | ---------|-------------|
-| -- xml | Produces XML output instead of tabular output. | 
+| -- xml | Produces XML output instead of tabular output. |
 
 **Example**
 
@@ -738,12 +763,12 @@ Syntax: `delete app version [runtime-name] app-name environment version`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | Name of the runtime. |
+| app-name | Name of an app. |
+| environment | Mobile platform. |
+| version | Version of the app. |
 
 **Example**
 
@@ -757,10 +782,10 @@ This command is based on the [Application Version (DELETE)](http://www.ibm.com/s
 {: #the-app-command-prefix }
 The `app` command prefix takes the following arguments before the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | Name of the runtime. |
+| app-name | Name of an app. |
 
 #### The `app show license-config` command
 {: #the-app-show-license-config-command }
@@ -770,9 +795,9 @@ Syntax: `app [runtime-name] app-name show license-config`
 
 It takes the following options after the object:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Produces XML output instead of tabular output. |
 
 **Example**
 
@@ -790,10 +815,10 @@ Syntax: `app [runtime-name] app-name set license-config app-type license-type`
 
 It takes the following arguments after the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| appType | Type of app: B2C or B2E. | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | 
+| appType | Type of app: B2C or B2E. |
+| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. |
 
 **Example**
 
@@ -821,12 +846,12 @@ This command is based on the [License configuration (DELETE)](http://www.ibm.com
 {: #the-app-version-command-prefix }
 The `app version` command prefix takes the following arguments before the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform | 
-| version | Version of the app | 
+| runtime-name | Name of the runtime. |
+| app-name | Name of an app. |
+| environment | Mobile platform |
+| version | Version of the app |
 
 #### The `app version get descriptor` command
 {: #the-app-version-get-descriptor-command }
@@ -836,9 +861,9 @@ Syntax: `app version [runtime-name] app-name environment version get descriptor 
 
 It takes the following arguments after the verb.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Required | Default |
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | Name of the output file. | No | Standard output |
 
 **Example**
 
@@ -856,9 +881,9 @@ Syntax: `app version [runtime-name] app-name environment version get web-resourc
 
 It takes the following arguments after the verb.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Required | Default |
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | Name of the output file. | No | Standard output |
 
 **Example**
 
@@ -876,8 +901,8 @@ Syntax: `app version [runtime-name] app-name environment version set web-resourc
 
 It takes the following arguments after the verb.
 
-| Argument | Description | 
-| file | Name of the input file (must be a .zip file). | 
+| Argument | Description |
+| file | Name of the input file (must be a .zip file). |
 
 **Example**
 
@@ -895,8 +920,8 @@ Syntax: `app version [runtime-name] app-name environment version get authenticit
 
 It takes the following arguments after the verb.
 
-| Argument | Description | Required | Default | 
-| > tofile | Name of the output file. | No | Standard output | 
+| Argument | Description | Required | Default |
+| > tofile | Name of the output file. | No | Standard output |
 
 **Example**
 
@@ -914,9 +939,9 @@ Syntax: `app version [runtime-name] app-name environment version set authenticit
 
 It takes the following arguments after the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| file | Name of the input file:<ul><li>Either a .authenticity_data file,</li><li>Or a device file (.ipa or .apk or .appx), from which the authenticity data is extracted.</li></ul>| 
+| file | Name of the input file:<ul><li>Either a .authenticity_data file,</li><li>Or a device file (.ipa or .apk or .appx), from which the authenticity data is extracted.</li></ul>|
 
 **Examples**
 
@@ -956,9 +981,9 @@ Syntax: `app version [runtime-name] app-name environment version show user-confi
 
 It takes the following options after the verb.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Required | Default |
 |----------|-------------|----------|---------|
-| [--xml] | Produce output in XML format instead of JSON format. | No | Standard output | 
+| [--xml] | Produce output in XML format instead of JSON format. | No | Standard output |
 
 **Example**
 
@@ -976,18 +1001,18 @@ Syntax for the entire configuration: `app version [runtime-name] app-name enviro
 
 It takes the following arguments after the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| file | Name of the JSON or XML file that contains the new configuration. |
 
 Syntax for a single property: `app version [runtime-name] app-name environment version set user-config property = value`
 
 The `app version set user-config` command takes the following arguments after the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. |
+| value | The value of the property. |
 
 **Examples**
 
@@ -1013,16 +1038,16 @@ Syntax: `list devices [runtime-name] [--query query]`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| query | A friendly name or user identifier, to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this string (with case-insensitive matching) are returned. | 
+| runtime-name | Name of the runtime. |
+| query | A friendly name or user identifier, to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this string (with case-insensitive matching) are returned. |
 
 The `list devices` command takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Produces XML output instead of tabular output. |
 
 **Examples**
 
@@ -1044,10 +1069,10 @@ Syntax: `remove device [runtime-name] id`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | Name of the runtime. |
+| id | Unique device identifier. |
 
 **Example**
 
@@ -1061,10 +1086,10 @@ This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowle
 {: #the-device-command-prefix }
 The `device` command prefix takes the following arguments before the verb.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | Name of the runtime. |
+| id | Unique device identifier. |
 
 #### The `device set status` command
 {: #the-device-set-status-command }
@@ -1074,9 +1099,9 @@ Syntax: `device [runtime-name] id set status new-status`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| new-status | New status. | 
+| new-status | New status. |
 
 The status can have one of the following values:
 
@@ -1102,10 +1127,10 @@ Syntax: `device [runtime-name] id set appstatus app-name new-status`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| app-name | Name of an app. | 
-| new-status | New status. | 
+| app-name | Name of an app. |
+| new-status | New status. |
 
 The status can have one of the following values:
 
@@ -1133,7 +1158,7 @@ Syntax: `show info`
 
 It takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
 | --xml | Produces XML output instead of tabular output. |
 
@@ -1155,9 +1180,9 @@ Syntax: `show versions`
 
 It takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Produces XML output instead of tabular output. |
 
 **Example**
 
@@ -1173,9 +1198,9 @@ Syntax: `show diagnostics`
 
 It takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Produces XML output instead of tabular output. |
 
 **Example**
 
@@ -1201,10 +1226,10 @@ Syntax: `list runtimes [--in-database]`
 
 It takes the following options:
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --in-database	| Whether to look in the database instead of via MBeans | 
-| --xml | Produces XML output instead of tabular output. | 
+| --in-database	| Whether to look in the database instead of via MBeans |
+| --xml | Produces XML output instead of tabular output. |
 
 **Examples**
 
@@ -1226,15 +1251,15 @@ Syntax: `show runtime [runtime-name]`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | Name of the runtime. |
 
 The `show runtime` command takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Produces XML output instead of tabular output. |
 
 This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
 
@@ -1252,9 +1277,9 @@ Syntax: `delete runtime [runtime-name] condition`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | Name of the runtime. |
 | condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. |
 
 **Example**
@@ -1273,15 +1298,15 @@ Syntax: `list farm-members [runtime-name]`
 
 It takes the following arguments:
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | Name of the runtime. |
 
 The `list farm-members` command takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Produces XML output instead of tabular output. |
 
 **Example**
 
@@ -1299,16 +1324,16 @@ Syntax: `remove farm-member [runtime-name] server-id`
 
 It takes the following arguments.
 
-| Argument | Description | 
+| Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| server-id | Identifier of the server. | 
+| runtime-name | Name of the runtime. |
+| server-id | Identifier of the server. |
 
 The `remove farm-member` command takes the following options after the object.
 
-| Option | Description | 
+| Option | Description |
 |--------|-------------|
-| --force | Force removal of a farm member, even if it is available and connected. | 
+| --force | Force removal of a farm member, even if it is available and connected. |
 
 **Example**
 

@@ -25,6 +25,12 @@ To run {{ site.data.keys.product }} on Bluemix IBM Containers, several component
 
 To run {{ site.data.keys.product}} on a Bluemix Liberty for Java runtime, the following components are used: an **Cloudfoundry app** that contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it.
 
+### Kubernetes Cluster on Bluemix
+Kubernetes is an orchestration tool for scheduling app containers onto a cluster of compute machines. With Kubernetes, developers can rapidly develop highly available applications by leveraging the power and flexibility of containers.
+You can use the IBM Bluemix Container Service CLI or the Kubernetes CLI to create and manage your Kubernetes clusters.
+
+[Learn more about Kubernetes Cluster on Bluemix](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
+
 ### IBM Containers
 {: #ibm-containers }
 IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
@@ -39,8 +45,11 @@ The Liberty for Java runtime is powered by the liberty-for-java buildpack. The l
 
 [Learn more about Liberty for Java](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html).
 
+
 ## Tutorials to follow next
 {: #tutorials-to-follow-next }
+
+* Create a {{ site.data.keys.mf_bm_short }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-kubernetes/) using Kubernetes Cluster.
 * Create a {{ site.data.keys.mf_server }} instance [using the {{ site.data.keys.mf_bm }} service](using-mobile-foundation/).
 * Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.
-* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty Build Pack.
+* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty

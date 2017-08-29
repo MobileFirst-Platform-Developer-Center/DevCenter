@@ -7,8 +7,9 @@ tags:
 - MobileFirst_Foundation
 - Announcement
 - iFix_8.0
+- iFix
 author:
-  name: Idan Adar 
+  name: Idan Adar
 ---
 A new iFix has been released for MobileFirst Foundation 8.0, dated **January 25th, 2017**.
 
@@ -104,8 +105,8 @@ cordova-plugin-mfp 8.0.2017012210
  +cordova-plugin-mfp-jsonstore 8.0.2017012210  
  +cordova-plugin-mfp-fips 8.0.2017012210  
  +cordova-plugin-mfp-encrypt-utils 8.0.2017012210  
- +cordova-template-mfp 8.0.2017012210 
- 
+ +cordova-template-mfp 8.0.2017012210
+
 *Update - available on npm*  
 cordova-plugin-mfp 8.0.2017013103    
 cordova-plugin-mfp-push 8.0.2017012410  
@@ -116,3 +117,11 @@ cordova-template-mfp 8.0.2017013103
 
 **Tools**  
 mfpdev-cli 8.0.201701201  
+
+**artifacts**  
+*Update - available on Maven*  
+adapter-maven-api 8.0.2017012516  
+adapter-maven-archetype-http 8.0.2017012516  
+adapter-maven-archetype-java 8.0.2017012516  
+adapter-maven-archetype-sql 8.0.2017012516  
+adapter-maven-plugin 8.0.2017012516  

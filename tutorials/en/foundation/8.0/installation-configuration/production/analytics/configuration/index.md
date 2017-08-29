@@ -131,7 +131,23 @@ These values can be set by using basic time units as follows.
 * 1s = 1 second
 * 1ms = 1 millisecond
 
-> Note: If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+List of supported document-types are as follows:
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **Note:** If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 {: #elasticsearch }

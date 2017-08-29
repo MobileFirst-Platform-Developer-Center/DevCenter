@@ -1,0 +1,262 @@
+---
+layout: tutorial
+title: Xamarin の開発
+show_disqus: false
+use_dropdown: false
+print_pdf: false
+show_in_nav: false
+indexed: false
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<br>
+以下のチュートリアルに従うことで、Xamarin アプリケーションを開発してください。{{ site.data.keys.product }} 8.0 オファリングとの統合により、開発環境をセットアップし、製品を体験し、価値を追加してください。<br/><br/>
+
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象" name="q">
+                </div>
+            </form>
+
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションの イメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        ここから始めます
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        SDK &amp; API の使用
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        セキュリティーの追加
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        測定とエンゲージ
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tutorials-list">
+    <hr/>
+
+    <h2><a href="../product-overview/">製品概要</a></h2>
+    {{ site.data.keys.product }} オファリングについて学習します。
+
+    <ul>
+        <li><a href="../product-overview/capabilities">主な機能</a></li>
+        <li><a href="../product-overview/components">製品のコンポーネント</a></li>
+        <li><a href="../product-overview/requirements">システム要件</a></li>
+        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }} のライセンス</a></li>
+        <li><a href="../product-overview/features-matrix">機能とプラットフォームのマトリックス</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー機能</a></li>
+        <li><a href="../product-overview/release-notes">リリース・ノート</a></li>
+    </ul>
+
+    <h2><a href="../installation-configuration">インストールおよび構成</a></h2>
+    {{ site.data.keys.product_full }} で作業するための開発環境をセットアップします。
+
+    <ul>
+        <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 開発環境のセットアップ</a></li>
+        <li><a href="../installation-configuration/development/xamarin/">Xamarin 開発環境の セットアップ</a></li>
+        <li><a href="../product-overview/components/console/">{{ site.data.keys.mf_console }} の使用</a></li>
+    </ul>
+
+    <hr id="start-here"/>
+    <h2><a href="../quick-start/">クイック・スタート</a></h2>
+    {{ site.data.keys.product_full }} を体感します。
+
+    <ul>
+        <li><a href="../quick-start/xamarin/">Xamarin のクイック・スタート</a></li>
+    </ul>
+
+    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK の追加</a></h2>
+    {{ site.data.keys.product }} SDK を Cordova、Xamarin、ネイティブ iOS、Android、Windows 8.1 Universal、または Windows 10 UWP のアプリケーションに追加します。
+
+    <ul>
+        <li><a href="../application-development/sdk/xamarin/">{{ site.data.keys.product }} SDK のXamarin アプリケーションへの追加</a></li>
+    </ul>
+
+    <hr id="get-sdk-and-apis"/>
+
+    <h2><a href="../application-development">アプリケーションの開発</a></h2>
+    {{ site.data.keys.product_adj }} API (ダイレクト・アップデート、JSONStore、WLResourceRequest、クライアント・サイド・トランスレーション、アプリケーションのデバッグ、開発者 CLI など...) の使用について学習します。
+
+    <ul>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理</a></li>
+        <li><a href="../application-development/resource-request/xamarin/">Xamarin アプリケーションからのリソース要求</a></li>
+        <li><a href="../application-development/jsonstore/">JSONStore</a>
+           <ul>
+             <li><a href="../application-development/jsonstore/ios/">iOS アプリケーションでの JSONStore</a></li>
+             <li><a href="../application-development/jsonstore/android/">Android アプリケーションでの JSONStore</a></li>
+             <li><a href="../application-development/jsonstore/security-utilities/">JSONStore のセキュリティー・ユーティリティー</a></li>
+             <li><a href="../application-development/jsonstore/code-examples/">JSONStore のコード例</a></li>
+           </ul>
+        </li>
+        <li><a href="../application-development/live-update/">ライブ・アップデート</a></li>
+        <li><a href="../application-development/simple-data-sharing/">単純データ共有</a></li>
+        <li>クライアント・サイドのログ収集
+            <ul>
+                <li><a href="../application-development/client-side-log-collection/">クライアント・サイドのログ収集の概要</a></li>
+                <li><a href="../application-development/client-side-log-collection/ios/">iOS アプリケーションでのログ収集</a></li>
+                <li><a href="../application-development/client-side-log-collection/android/">Android アプリケーションでの ログ収集</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../adapters/">アダプターの開発</a></h2>
+    エンタープライズ・バックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
+
+    <ul>
+        <li><a href="../adapters/">アダプターの概要</a></li>
+        <li><a href="../adapters/creating-adapters/">Java アダプターおよび JavaScript アダプターの作成</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript アダプター</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP アダプター</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP アダプターでの SSL の使用</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL アダプター</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript アダプターでの Java の使用</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Java アダプター</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP アダプター</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL アダプター</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">IDE でのアダプターの開発</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">アダプターのテストおよびデバッグ</a></li>
+        <li>サーバー・サイドのログ収集
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">サーバー・サイドのログ収集の概要</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java アダプターでのログ収集</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript アダプターでのログ収集</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">拡張アダプターの使用法とマッシュアップ</a></li>
+        <li><a href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a></li>
+    </ul>
+
+    <hr id="implement-authentication-and-security"/>
+
+    <h2><a href="../authentication-and-security">認証およびセキュリティー</a></h2>
+    アプリケーションにさまざまな層の保護を追加します。
+
+    <ul>
+        <li><a href="../authentication-and-security/">許可の概念</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">セキュリティー検査の作成</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">セキュリティー検査コントラクト</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">セキュリティー検査の実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">セキュリティー検査の実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">ステップアップ認証</a></li>
+        <li><a href="../authentication-and-security/enrollment/">登録</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA セキュリティー検査</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">機密クライアント</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">外部リソースの保護</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">トラスト・アソシエーション・インターセプター</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java トークンの検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js の検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET メッセージ・インスペクター</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">アプリケーション認証性</a></li>
+        <li><a href="../authentication-and-security/device-sso/">デバイスのシングル・サインオンの構成</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">証明書ピン留め</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 鍵ストアの構成</a></li>
+    </ul>
+
+    <hr id="measure-and-engage"/>
+    
+    <h2><a href="../notifications">通知</a></h2>
+    {{ site.data.keys.product_full }} で通知を送信します。
+
+    <ul>
+        <li><a href="../notifications/">通知の概要</a></li>
+        <li><a href="../notifications/sending-notifications/">通知の送信</a></li>
+        <li><a href="../notifications/handling-push-notifications/">プッシュ通知の処理</a>
+            <ul>
+                <li><a href="../notifications/handling-push-notifications/ios/">iOS アプリケーションでのプッシュ通知の処理</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">対話式通知</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">サイレント通知</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/android/">Android アプリケーションでのプッシュ通知の処理</a></li>
+                <li><a href="../notifications/handling-push-notifications/windows/">Windows アプリケーションでのプッシュ通知の処理</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/handling-sms-notifications/">SMS 通知の処理</a>
+            <ul>
+                <li><a href="../notifications/handling-sms-notifications/android/">Android アプリケーションでの SMS 通知の処理</a></li>
+                <li><a href="../notifications/handling-sms-notifications/ios/">iOS アプリケーションでの SMS 通知の処理</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/analytics/">プッシュ通知のための Analytics サポートのセットアップ</a></li>
+        <li><a href="../notifications/rest-apis/">プッシュ・サービス REST API</a></li>
+    </ul>
+    
+    
+    <h2><a href="../bluemix">Bluemix 上の Foundation</a></h2>
+    Bluemix を使用するクラウドに MobileFirst Foundation をデプロイします。
+
+    <ul>
+        <li><a href="../bluemix/">Bluemix 上の {{ site.data.keys.product_full }} の概要</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container サービスのスクリプトを使用した、IBM Containers 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">ログとトレースの収集</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Liberty for Java のスクリプトを使用した、Bluemix 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../../../../en/product-integration/8.0">製品の統合</a></h2>
+    {{ site.data.keys.product_full }} 8.0 アプリケーションと他の IBM 製品との統合
+
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">使用可能な製品統合のリスト</a></li>
+    </ul>
+    <br/>
+</div>

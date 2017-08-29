@@ -1,0 +1,426 @@
+---
+layout: tutorial
+title: 문서 및 학습서
+breadcrumb_title: 모두
+weight: 0
+show_disqus: false
+print_pdf: false
+indexed: false
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<br>
+아래 학습서에 따라 사용자의 애플리케이션을 개발합니다. 개발 환경을 설정하고, 제품을 경험하며 {{ site.data.keys.product }} 8.0 오퍼링과 통합하여 값을 추가합니다.<br/><br/>
+
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes" class="hidden-xs hidden-sm">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="인라인 검색 필드" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="검색 필드" type="text" class="form-control" placeholder="검색..." name="q">
+                </div>
+            </form>
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        여기서 시작
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        SDK 및 API 사용
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        보안 추가
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        측정 및 계약
+                    </div>
+                </a>
+            </div>  
+        </div>          
+    </div>
+</div>
+
+<hr />
+
+<div id="tutorials-list">
+    <h2><a href="../product-overview/">제품 개요</a></h2>
+    {{ site.data.keys.product }} 오퍼링에 대해 학습합니다.
+
+    <ul>
+        <li><a href="../product-overview/capabilities">기본 기능</a></li>
+        <li><a href="../product-overview/components">제품 컴포넌트</a>
+            <ul>
+                <li><a href="../product-overview/components/server">{{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../product-overview/components/console">{{ site.data.keys.mf_console }}</a></li>
+            </ul>
+        </li>
+        <li><a href="../product-overview/requirements">시스템 요구사항</a></li>
+        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }}에서 라이센싱</a></li>
+        <li><a href="../product-overview/features-matrix">기능 및 플랫폼의 매트릭스</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }}의 내게 필요한 옵션 기능</a></li>
+        <li><a href="../product-overview/release-notes">릴리스 정보</a></li>
+    </ul>
+    
+    <h2><a href="../installation-configuration/">설치 및 구성</a></h2>
+    {{ site.data.keys.product_full }}에 대해 작업할 수 있도록 개발 환경 또는 프로덕션 환경을 설정합니다.
+
+    <ul>
+        <li><a href="../installation-configuration/development">개발 환경 설정</a>
+            <ul>
+                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 환경</a>
+                    <ul>
+                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">설치 안내서</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">Eclipse에서 {{ site.data.keys.mf_server }} 사용</a></li>
+                    </ul>
+                </li>
+                <li><a href="../installation-configuration/development/cordova/">Cordova 환경</a></li>
+                <li><a href="../installation-configuration/development/ios/">iOS 환경</a></li>
+                <li><a href="../installation-configuration/development/android/">Android 환경</a></li>
+                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal 및 Windows 10 UWP 환경</a></li>
+                <li><a href="../installation-configuration/development/web/">웹 환경</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production">프로덕션 환경 설정</a>
+            <ul>
+                <li>프로덕션 설치 학습서
+                    <ul>
+                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a></li>
+                        <li><a href="../installation-configuration/production/tutorials/command-line">명령행에서 {{ site.data.keys.mf_server }} 설치</a></li>
+                    </ul>
+                </li>
+                <li><a href="../installation-configuration/production/installation-manager">IBM Installation Manager 실행</a></li>
+                <li><a href="../installation-configuration/production/databases">데이터베이스 설정</a></li>
+                <li><a href="../installation-configuration/production/topologies">토폴로지 및 네트워크 플로우</a></li>
+                <li><a href="../installation-configuration/production/appserver">{{ site.data.keys.mf_server }} 설치</a></li>
+                <li><a href="../installation-configuration/production/server-configuration">{{ site.data.keys.mf_server }} 구성</a></li>
+                <li><a href="../installation-configuration/production/token-licensing">토큰 라이센싱을 위한 설치 및 구성</a></li>
+                <li><a href="../installation-configuration/production/">{{ site.data.keys.mf_analytics_server }} 설치 및 구성</a></li>
+                <li><a href="../installation-configuration/production/appcenter">Application Center 설치 및 구성</a></li>
+                <li><a href="../installation-configuration/production/installation-reference">설치 참조</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production/pure-application">IBM PureApplication System에 {{ site.data.keys.mf_server }} 배치</a></li>
+    </ul>
+    
+    <h2><a href="../administering-apps/">애플리케이션 관리</a></h2>
+    {{ site.data.keys.product_full }}에서는 개발 또는 프로덕션에서 {{ site.data.keys.product_adj }} 애플리케이션을 관리하는 몇 가지 방법을 제공합니다.
+
+    <ul>
+        <li><a href="../administering-apps/deployment">테스트 및 프로덕션 환경에 애플리케이션 배치</a></li>
+        <li><a href="../administering-apps/using-console/">{{ site.data.keys.mf_console }}을 통한 애플리케이션 관리</a></li>
+        <li><a href="../administering-apps/using-ant/">Ant를 통한 애플리케이션 관리</a></li>
+        <li><a href="../administering-apps/using-cli/">명령행을 통한 애플리케이션 관리</a></li>
+        <li><a href="../administering-apps/federal/">{{ site.data.keys.product }}에서 연합 표준 지원</a></li>
+        <li><a href="../administering-apps/license-tracking/">라이센스 추적</a></li>
+    </ul> 
+    
+    <h2 id="upgrading_to_current_version"><a href="../upgrading/">{{ site.data.keys.product_full }} {{ site.data.keys.product_version }}으로 업그레이드</a></h2>
+    {{ site.data.keys.product_adj }} 애플리케이션의 마이그레이션을 준비하고 계획하기 위한 제품 변경사항에 대해 학습합니다.
+
+    <ul>
+        <li><a href="../upgrading/migration-cookbook">마이그레이션 안내서</a></li>
+        <li><a href="../upgrading/">이전 릴리스에서 마이그레이션</a>
+            <ul>
+                <li><a href="../upgrading/migrating-client-applications">클라이언트 애플리케이션 마이그레이션</a>
+                    <ul>
+                        <li><a href="../upgrading/migrating-client-applications/cordova">기존 Cordova 및 Hybrid 애플리케이션 마이그레이션</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/ios">기존 기본 iOS 애플리케이션 마이그레이션</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/android">기존 기본 Android 애플리케이션 마이그레이션</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/windows">기존 기본 Windows 애플리케이션 마이그레이션</a></li>
+                    </ul>
+                </li>
+                <li><a href="../upgrading/migrating-adapters">{{ site.data.keys.mf_server }} v8.0 아래에서 작업하도록 기존 어댑터 마이그레이션</a></li>
+                <li><a href="../upgrading/migrating-push-notifications">푸시 알림 마이그레이션</a></li>
+                <li><a href="../upgrading/migrating-data">IMFData 또는 Cloudant SDK로 Cloudant에서 모바일 데이터를 저장하여 앱 마이그레이션</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    <hr id="start-here"/>
+    
+    <h2><a href="../quick-start/">빠른 시작</a></h2>
+    {{ site.data.keys.product }}에 대해 알게 됩니다.
+
+    <ul>
+        <li><a href="../quick-start/cordova/">Cordova의 빠른 시작</a></li>
+        <li><a href="../quick-start/ios/">iOS의 빠른 시작</a></li>
+        <li><a href="../quick-start/android/">Android의 빠른 시작</a></li>
+        <li><a href="../quick-start/windows-8-10/">Windows 8.1 Universal 및 Windows 10 UWP의 빠른 시작</a></li>
+        <li><a href="../quick-start/web/">웹 앱의 빠른 시작</a></li>
+        <li><a href="../quick-start/xamarin/">Xamarin의 빠른 시작</a></li>
+    </ul>
+    
+    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK 추가</a></h2>
+    {{ site.data.keys.product }} SDK를 Cordova 또는 기본 iOS, Android, Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션에 추가합니다.
+
+    <ul>
+        <li><a href="../application-development/sdk/cordova/">{{ site.data.keys.product }} SDK를 Cordova 애플리케이션에 추가</a></li>
+        <li><a href="../application-development/sdk/ios/">{{ site.data.keys.product }} SDK를 iOS 애플리케이션에 추가</a></li>
+        <li><a href="../application-development/sdk/android/">{{ site.data.keys.product }} SDK를 Android 애플리케이션에 추가</a></li>
+        <li><a href="../application-development/sdk/windows-8-10/">{{ site.data.keys.product }} SDK를 Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에 추가</a></li>
+        <li><a href="../application-development/sdk/web/">{{ site.data.keys.product }} SDK를 웹 애플리케이션에 추가</a></li>
+        <li><a href="../application-development/sdk/xamarin/">{{ site.data.keys.product }} SDK를 Xamarin 애플리케이션에 추가</a></li>
+    </ul>
+    
+    <hr id="get-sdk-and-apis"/>
+
+    <h2><a href="../application-development">애플리케이션 개발</a></h2>
+    {{ site.data.keys.product_adj }} API 사용을 위한 학습: 직접 업데이트, JSONStore, WLResourceRequest, 클라이언트 측 변환, 애플리케이션 디버깅, {{ site.data.keys.mf_cli }} 등...
+
+    <ul>
+        <li><a href="../application-development/cordova-apps/">Cordova 애플리케이션에서 {{ site.data.keys.product }} SDK 개발</a>
+            <ul>
+                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가</a></li>
+                <li><a href="../application-development/cordova-apps/securing-apps">Cordova 애플리케이션 보안</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }}를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Eclipse에서 {{ site.data.keys.mf_cli }} 사용</a></li>
+        <li>클라이언트 애플리케이션에서 자원 요청
+            <ul>
+                <li><a href="../application-development/resource-request/javascript/">JavaScript(Cordova, 웹) 애플리케이션에서 자원 요청</a></li>
+                <li><a href="../application-development/resource-request/ios/">iOS 애플리케이션에서 자원 요청</a></li>
+                <li><a href="../application-development/resource-request/android/">Android 애플리케이션에서 자원 요청</a></li>
+                <li><a href="../application-development/resource-request/windows/">Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션에서 자원 요청</a></li>
+                <li><a href="../application-development/resource-request/xamarin/">Xamarin 애플리케이션에서 자원 요청</a></li>
+            </ul>
+        </li>
+        <li>JSONStore<ul>
+                <li><a href="../application-development/jsonstore/">JSONStore 개요</a></li>
+                <li><a href="../application-development/jsonstore/cordova/">Cordova 애플리케이션의 JSONStore</a></li>
+            	<li><a href="../application-development/jsonstore/ios/">iOS 애플리케이션의 JSONStore</a></li>
+            	<li><a href="../application-development/jsonstore/android/">Android 애플리케이션의 JSONStore</a></li>
+                <li><a href="../application-development/jsonstore/security-utilities/">보안 유틸리티</a></li>
+                <li><a href="../application-development/jsonstore/code-examples/">코드 예제</a></li>
+            </ul>
+        </li>
+        <li>클라이언트 측 로그 콜렉션
+            <ul>
+                <li><a href="../application-development/client-side-log-collection/">클라이언트 측 로그 콜렉션 개요</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">JavaScript(Cordova, 웹) 애플리케이션의 로그 콜렉션</a></li>
+            	<li><a href="../application-development/client-side-log-collection/ios/">iOS 애플리케이션의 로그 콜렉션</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Android 애플리케이션의 로그 콜렉션</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/direct-update/">Cordova 애플리케이션에서 직접 업데이트 사용</a>
+            <ul>
+                <li><a href="../application-development/direct-update/cdn-support">CDN에서 직접 업데이트 요청 지원</a></li>
+                <li><a href="../application-development/direct-update/secure-direct-update">보안 직접 업데이트 구현</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/translation/">JavaScript(Cordova, 웹) 애플리케이션의 다국어 번역</a></li>
+        <li><a href="../application-development/debugging-applications/">JavaScript(Cordova, 웹) 애플리케이션 디버깅</a></li>
+        <li><a href="../application-development/live-update/">활성 업데이트</a></li>
+        <li><a href="../application-development/watchos/">Apple watchOS 2용 개발</a></li>
+        <li><a href="../application-development/simple-data-sharing/">단순 데이터 공유</a></li>
+    </ul>
+    
+    <h2><a href="../adapters/">어댑터 개발</a></h2>
+    엔터프라이즈 백엔드 시스템 및 클라우드 서비스와 통합하는 서버 측 코드를 개발합니다.
+
+    <ul>
+        <li><a href="../adapters/">어댑터 개요</a></li>
+        <li><a href="../adapters/creating-adapters/">Java 및 JavaScript 어댑터 작성</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript 어댑터</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP 어댑터</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP 어댑터에서 SSL 사용</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL 어댑터</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript 어댑터에서 Java 사용</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Java 어댑터</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP 어댑터</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL 어댑터</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">Eclipse에서 어댑터 개발</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">어댑터 테스트 및 디버깅</a></li>
+        <li>서버 측 로그 콜렉션
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">서버 측 로그 콜렉션 개요</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java 어댑터의 로그 콜렉션</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript 어댑터의 로그 콜렉션</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">고급 어댑터 사용법 및 매시업</a></li>
+        <li><a href="../adapters/cloudant/">어댑터를 사용하여 Cloudant와 통합</a></li>
+    </ul>
+    
+    <hr id="implement-authentication-and-security"/>
+
+    <h2><a href="../authentication-and-security/">인증 및 보안</a></h2>
+    사용자의 애플리케이션에 다양한 보호 계층을 추가합니다.
+
+    <ul>
+        <li><a href="../authentication-and-security/">권한 개념</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">보안 검사 작성</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">보안 검사 규약</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">보안 검사 구현</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">JavaScript(Cordova, 웹) 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/ios/">iOS 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/android/">Android 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">보안 검사 구현</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">JavaScript(Cordova, 웹) 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+                <li><a href="../authentication-and-security/user-authentication/ios/">iOS 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+                <li><a href="../authentication-and-security/user-authentication/android/">Android 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에서 인증 확인 핸들러 구현</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">인증 강화</a></li>
+        <li><a href="../authentication-and-security/enrollment/">등록</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA 보안 검사</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">기밀 클라이언트</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">외부 자원 보호</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">신뢰 연관 인터셉터</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java 토큰 유효성 검증</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js 유효성 검증</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET 메시지 검사기</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">애플리케이션 인증</a></li>
+        <li><a href="../authentication-and-security/device-sso/">디바이스 싱글 사인온 구성</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">인증서 고정</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 키 저장소 구성</a></li>
+    </ul>
+
+    <hr id="measure-and-engage"/>
+
+    <h2><a href="../notifications">알림</a></h2>
+    {{ site.data.keys.product_full }}에서 알림을 보냅니다.
+
+    <ul>
+        <li><a href="../notifications/">알림 개요</a></li>
+        <li><a href="../notifications/sending-notifications/">알림 전송</a></li>
+        <li><a href="../notifications/handling-push-notifications/">푸시 알림 처리</a><ul>
+                <li><a href="../notifications/handling-push-notifications/cordova/">Cordova 애플리케이션에서 푸시 알림 처리</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">대화식 알림</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">자동 알림</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/ios/">iOS 애플리케이션에서 푸시 알림 처리</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">대화식 알림</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">자동 알림</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/android/">Android 애플리케이션에서 푸시 알림 처리</a></li>
+                <li><a href="../notifications/handling-push-notifications/windows/">Windows 애플리케이션에서 푸시 알림 처리</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/handling-sms-notifications/">SMS 알림 처리</a>
+            <ul>
+                <li><a href="../notifications/handling-sms-notifications/cordova/">Cordova 애플리케이션에서 SMS 알림 처리</a></li>
+                <li><a href="../notifications/handling-sms-notifications/android/">Android 애플리케이션에서 SMS 알림 처리</a></li>
+                <li><a href="../notifications/handling-sms-notifications/ios/">iOS 애플리케이션에서 SMS 알림 처리</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/analytics/">푸시 알림에 대한 분석 지원 설정</a></li>
+        <li><a href="../notifications/rest-apis/">푸시 서비스 REST API</a></li>
+    </ul>
+    
+    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
+    배치된 애플리케이션 및 어댑터를 모니터하고, 애플리케이션에 대한 통찰을 얻고, 오류를 찾는 등의 작업을 수행합니다.
+
+    <ul>
+        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} 소개</a></li>
+        <li><a href="../analytics/analytics-api/">클라이언트 애플리케이션에서 분석 API 사용</a></li>
+        <li><a href="../analytics/analytics-rest-api/">분석 REST API 사용</a></li>
+        <li><a href="../analytics/elasticsearch/">탄력 검색</a></li>
+        <li><a href="../analytics/console/">운영 및 분석 콘솔</a>
+           <ul>
+             <li><a href="../analytics/console/alerts/">경보 관리</a></li>
+             <li><a href="../analytics/console/log-filters/">로그 필터 구성</a></li>
+             <li><a href="../analytics/console/custom-charts/">사용자 정의 차트 작성</a></li>
+             <li><a href="../analytics/console/scenario-loader/">시나리오 로더</a></li>
+             <li><a href="../analytics/console/scenario-loader/">푸시 알림</a></li>
+             <li><a href="../analytics/console/analytics-data-purge">데이터 유지 및 제거</a></li>
+          </ul>
+        </li>
+        <li><a href="../analytics/workflows/">분석 워크플로우</a></li>
+    </ul>
+    
+    <h2><a href="../bluemix">Foundation on Bluemix</a></h2>
+    Bluemix를 사용하여 클라우드에 {{ site.data.keys.product }}을 배치합니다.
+
+    <ul>
+        <li><a href="../bluemix/">{{ site.data.keys.product_full }} on Bluemix 소개</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix 서비스를 사용하여 {{ site.data.keys.mf_server }} 인스턴스 작성</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container Service에서 스크립트를 사용하여 IBM Containers에 대해 {{ site.data.keys.mf_server }} 설정</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">로그 및 추적 콜렉션</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">컨테이너 보안</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">문제점 해결</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Java용 Liberty에 대한 스크립트를 사용하여 Bluemix에서 {{ site.data.keys.mf_server }} 설정</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">컨테이너 보안</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">문제점 해결</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2><a href="../appcenter">Application Center</a></h2>
+    IBM MoblieFirst Foundation Application Center를 설치, 구성하고 사용합니다.
+
+    <ul>
+        <li><a href="../appcenter/">Application Center 개요</a></li>
+        <li><a href="../appcenter/preparations">모바일 클라이언트 사용을 위한 준비</a></li>
+        <li><a href="../appcenter/push-notifications">애플리케이션 업데이트의 푸시 알림</a></li>
+        <li><a href="../appcenter/appcenter-console">Application Center 콘솔</a></li>
+        <li><a href="../appcenter/command-line">애플리케이션 업로드 또는 삭제를 위한 명령행 도구</a></li>
+        <li><a href="../appcenter/mobile-client">모바일 클라이언트</a></li>
+        <li><a href="../appcenter/logging-and-tracing">애플리케이션 서버에서 Application Center에 대한 로깅 및 추적 설정</a></li>
+        <li><a href="../appcenter/app-center-tutorial/">Application Center 학습서로 모바일 애플리케이션 분배</a></li>
+    </ul>
+    
+    <h2><a href="../troubleshooting/">공통 문제점 해결</a></h2>
+    자주 묻는 질문과 응답입니다.
+
+    <ul>
+        <li><a href="../troubleshooting/notifications">푸시 알림</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+        <li><a href="../troubleshooting/analytics">분석</a></li>
+    </ul>
+    
+    <h2><a href="../../../../en/product-integration/8.0">제품 통합</a></h2>
+    {{ site.data.keys.product }} 8.0 앱을 다른 IBM 제품과 통합
+
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">사용 가능한 제품 통합 목록</a></li>
+    </ul>
+    <br/>
+</div>

@@ -26,3 +26,7 @@ The update to the iOS SDK makes sure that the following APIs will not break duri
 * `registerChallengeHandler`
 * `sendUrlRequest`
 * `canHandleResponse`
+
+> **Update:** We now claim support for Swift 3.0 for MobileFirst platform v6.3 to v7.1 without any changes to API naming.All the features of IBM MobileFirst Platform v6.3 to v7.1 work as expected. Existing apps when upgraded to Swift 3.0 work seamlessly.
+
+**Limitation:** Live Update SDK is not yet tested for Swift 3.x. Please watch this space for upcoming fixes in Live Update SDK, samples and tutorials related to Swift 3 support .
