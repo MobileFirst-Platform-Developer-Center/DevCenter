@@ -9,17 +9,6 @@ tags:
 author:
   name: Srutha K Kotta
 ---
----
-title: MobileFirst Platform on cordova browser platform
-date: 2017-08-29
-version:
-- 8.0
-tags:
-- MobileFirst_Foundation
-- cordova
-author:
-  name: Srutha K Kotta
----
 
 The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
 
