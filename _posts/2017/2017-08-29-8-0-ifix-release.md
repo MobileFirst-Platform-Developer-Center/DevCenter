@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170823-1236 released
-date: 2017-08-23
+date: 2017-08-29
 version:
 - 8.0
 tags:
