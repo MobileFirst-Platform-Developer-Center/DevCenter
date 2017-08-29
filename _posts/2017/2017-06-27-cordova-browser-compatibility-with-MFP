@@ -1,4 +1,16 @@
-<h2>MobileFirst Platform on cordova browser platform</h2>
+---
+title: MobileFirst Platform on cordova browser platform
+date: 2017-08-23
+version:
+- 8.0
+tags:
+- MobileFirst_Foundation
+- cordova
+author:
+  name: Srutha K Kotta
+---
+
+## MobileFirst Platform on cordova browser platform
 
 The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
 
@@ -174,7 +186,7 @@ Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and ab
 * Click the **New** button next to the _*Applications*_ option.
 * Provide a name to your application, select **Web** as the platform and provide your application's id (which was defined in the **wlInitOptions** function of your `index.js`).
 >
-**Remember:** Add the server details to the `config.xml` of your application.
+>**Remember:** Add the server details to the `config.xml` of your application.
 
 If you are using **mfpdev-cli** (more about the `cli` commands can be found [here](https://www.ibm.com/support/knowledgecenter/en/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/t_gs_cli.html)), add the MFP server using the following command:
 
@@ -225,7 +237,6 @@ Steps to create this nodejs instance is as below:
 * Change the reference of the `index.js` in `index.html` to point to where the `css` and `js` files are now located in the project.
 * Next replace contents of the `app.js` with the contents of `proxy.js` (the `proxy.js` can be found in `<your cordova project's root folder>/plugins/cordova-plugin-mfp/src/browser/`) of your cordova project.
 
-</br>
 
 **Changes to `app.js`**
 
@@ -235,16 +246,16 @@ Add these lines at the top of the file
 var path = require('path');
 var cfenv = require('cfenv');
 ```
-<br/>
+
 Replace app.use('/' + appName, express.static(__dirname + '/../../../../www')); with below line
 
-```
+```javascript
 app.use(express.static(path.join(__dirname, './public')));
 ```
-<br/>
+
 Add the below lines in the end of the file
 
-```
+```javascript
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
@@ -253,8 +264,6 @@ app.listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
-
-
 ```
 <br/>
 Add the dependent node_module dependencies in the dependencies list in the `package.json` file in your nodejs sample's root folder like below :
@@ -325,7 +334,7 @@ Execute `cf login`, enter your _*username*_ and _*password*_. Execute a `cf push
 
 Follow the instruction to use WebSphere Liberty in <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/">this</a> tutorial and make the below changes.
 
-Add the entire contents of your browser project's `www` folder to `[MyWebApp] → src → Main → webapp ` as mentioned in Step 1 of "Building the Maven webapp with the web application’s resources" section of the above tutorial. Finally register your app on your Liberty server and test it by running it in the browser with the path `localhost:9080/MyWebApp`. Also add the `sjcl` and `jssha` folders to their parent folder and change their reference in the `ibmmfpf.js` file(This step can be found in more detail in the above <b>'Adding the proxy MFP server to a Bluemix nodejs runtime'</b> section).
+Add the entire contents of your browser project's `www` folder to `[MyWebApp] → src → Main → webapp ` as mentioned in Step 1 of "Building the Maven webapp with the web application’s resources" section of the above tutorial. Finally register your app on your Liberty server and test it by running it in the browser with the path `localhost:9080/MyWebApp`. Also add the `sjcl` and `jssha` folders to their parent folder and change their reference in the `ibmmfpf.js` file (this step can be found in more detail in the **Adding the proxy MFP server to a Bluemix nodejs runtime** section).
 
 
 
