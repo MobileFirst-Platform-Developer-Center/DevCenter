@@ -217,7 +217,7 @@ cordova run
 
 If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
 
-This will launch a browser that runs on a proxy server (on port '9081') and connects to the MFP server. The cordova-browser's default proxy server(that runs on port '8000') has been suppressed as it cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)).
+This will launch a browser that runs on a proxy server (on port '9081') and connects to the MFP server. The cordova-browser's default proxy server(that runs on port '8000') has been suppressed as it cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
 
 > The default browser to run is set to **Chrome**. Use the `--target` option to run on different browsers and can be used using the following command:
 ```bash
