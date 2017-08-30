@@ -55,13 +55,32 @@ indexed: false
    <!-- Carousel indicators -->
    <ul class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <!--<li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>-->
    </ul>
 
    <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
      <div class="item active">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 carousel-caption" role="tab">
+                  <h1 class="no-anchor">Mobile Foundation<br>as-a-Service on IBM Bluemix</h1>
+                  <p class="caption-text">Quickly and easily stand-up scalable Developer or<br/>Production environments of {{ site.data.keys.product_full }} on IBM cloud.</p>
+                  <p><a class="custombtn btn-lg btn-default containers" href="https://console.bluemix.net/catalog/services/mobile-foundation" role="button">Experience {{ site.data.keys.product }} on IBM Bluemix</a></p>
+
+               </div>
+
+               <div class="hidden-xs col-md-5 carousel-caption">
+                  <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix" />
+                  <p/>
+                  <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<br><span class="more-posts hidden-xs hidden-sm"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
+
+               </div>
+            </div>
+         </div>
+      </div>
+<!--     <div class="item">
          <div class="container">
             <div class="row">
                <div class="col-md-7 carousel-caption" role="tab">
@@ -93,22 +112,6 @@ indexed: false
          </div>
       </div>
 
-     <div class="item">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-7 carousel-caption" role="tab">
-                  <h1 class="no-anchor">IBM Mobile Foundation Bluemix service</h1>
-                  <p class="caption-text">Quickly and easily stand-up scalable Developer or<br/>Production environments of {{ site.data.keys.product_full }} on IBM cloud.</p>
-                  <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/" role="button">Experience {{ site.data.keys.product }} on IBM Bluemix</a></p>
-               </div>
-
-               <div class="hidden-xs col-md-5 carousel-caption">
-                  <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="bluemix" />
-               </div>
-            </div>
-         </div>
-      </div>
-
       <div class="item">
          <div class="container">
                <div class="row">
@@ -123,7 +126,7 @@ indexed: false
                   </div>
               </div>
          </div>
-      </div>
+      </div>-->
 
 
    </div>
@@ -138,23 +141,28 @@ indexed: false
    </a>
 </div>
 
-<!-- Latest blog post -->
-<div id="blogPosts">
-   <div class="container" role="note">
-      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<span class="more-posts hidden-xs hidden-sm"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
-   </div>
-</div>
+
 <!--<div id="multilingualDC">
    <div class="container" role="section">
       <span class="latestPostTitle">Click <a href="https://multilingual-mobilefirstplatform-devcenter.mybluemix.net/">here</a> to access MobileFirst v8.0 documentation in eight other languages.</span>
    </div>
 </div>-->
-<div id="slackStrip">
+<!-- Latest blog post -->
+<!--<div id="blogPosts">
    <div class="container" role="note">
-      <span class="latestPostTitle"><a href="{{site.baseurl}}/blog/2017/05/26/come-chat-with-us/"><img alt="Slack" src="{{site.baseurl}}/assets/help/slack.png"></a>&nbsp;&nbsp;<a href="{{site.baseurl}}/blog/2017/05/26/come-chat-with-us/">Join the MobileFirst community on Slack!</a></span>
+      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<span class="more-posts hidden-xs hidden-sm"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
+   </div>
+</div>-->
+<div id="blogPosts">
+   <div class="container" role="note">
+     <span class="latestPost"><span class="latestPostTitle">Use our detailed documentation and migration cookbooks to plan your migration to {{ site.data.keys.product_full }} v8.</span><span class="more-posts hidden-xs hidden-sm"><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/">Plan your migration</a> | <a href="{{ site.baseurl}}/blog/tag/Migration">Migration blog posts</a></span>
    </div>
 </div>
-
+<div id="slackStrip">
+   <div class="container" role="note">
+       <a href="{{site.baseurl}}/blog/2017/05/26/come-chat-with-us/"><img alt="Slack" src="{{site.baseurl}}/assets/help/slack.png"></a>&nbsp;&nbsp;<span class="latestPostTitle hidden-xs hidden-sm"><a href="{{site.baseurl}}/blog/2017/05/26/come-chat-with-us/">Join the IBM Mobile community on Slack!</a></span>
+   </div>
+</div>
 <div id="index_sections">
    <!-- Overview -->
    <div id="index_overview" class="container" role="complementary">
@@ -292,9 +300,7 @@ indexed: false
          </div>
       </div>
    </div>
-
    <hr/>
-
    <!-- Get Help -->
    <div id="index_help" class="container hidden-xs hidden-sm" role="complementary" style="width: 50%">
       <h1 class="no-anchor">Get Help</h1>
@@ -303,4 +309,5 @@ indexed: false
          <a href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion" target="_blank"><img alt="StackOverflow" src="{{site.baseurl}}/assets/front-page/stackoverflow.png"></a><a href="{{ site.baseurl }}/blog/2017/05/26/come-chat-with-us/" target="_blank"><img alt="Slack" src="{{site.baseurl}}/assets/front-page/slack.png"></a><a href="{{ site.baseurl }}/help"><img src="{{site.baseurl}}/assets/front-page/ibm.svg" alt="help page"></a>
       </div>
    </div>
+
 </div>

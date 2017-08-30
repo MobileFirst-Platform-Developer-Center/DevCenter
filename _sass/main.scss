@@ -57,9 +57,9 @@ body {
 }
 
 #blogPosts {
-	background-color: #5AAAFA;
+	background-color: #264a60;
 	font-family: HelvNeuLightForIBM;
-	color: white;
+	color: #008fb3;
 	width: 100%;
 	padding: 10px 0 10px 0;
 	font-size: 120%;
@@ -92,10 +92,10 @@ body {
 		margin-top: 3px;
 
 		a {
-			color: #0B2B40;
+			color: #008fb3;
 
 			&:visited {
-				color: #0B2B40;
+				color: #008fb3;
 			}
 		}
 	}
@@ -133,7 +133,7 @@ body {
 }
 
 #slackStrip {
-	background-color: #068D7C;
+	background-color: #e6f9ff;
 	font-family: HelvNeuLightForIBM;
 	color: white;
 	width: 100%;
@@ -148,7 +148,7 @@ body {
 	.latestPostTitle {
 		font-size: 85%;
 		a {
-			color: white;
+			color: black;
 			text-decoration: underline;
 
 			&:hover {
@@ -157,7 +157,7 @@ body {
 
 			&:visited {
 				text-decoration: underline;
-				color: white;
+				color: black;
 			}
 		}
 	}
