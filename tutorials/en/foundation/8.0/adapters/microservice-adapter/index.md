@@ -18,7 +18,7 @@ Auto-generation of an adapter from its OpenAPI specification (Swagger Specificat
 
 >**Note:** This feature is available only in DevKit.
 
-To use this feature, the OpenAPI specification JSON for the microservice (or the desired back-end service) should be available. The adapter generation feature is made available by an extension adapter called **Microservice Connector**, also referred to as **Microservice Adapter Generator**, which is available for download from the **Download Center** on {{ site.data.keys.product }} Console.
+To use this feature, the OpenAPI specification (.json or .yaml) for the microservice (or the desired back-end service) should be available. The adapter generation feature is made available by an extension adapter called **Microservice Connector**, also referred to as **Microservice Adapter Generator**, which is available for download from the **Download Center** on {{ site.data.keys.product }} Console.
 
 >**Note:** As a prerequisite, configure the JAVA_HOME variable to point to the installed JDK folder.
 
@@ -32,12 +32,12 @@ Download the **Microservice Adapter Generator** adapter and deploy it to {{ site
   ![Image of Adapter generator in navigation pane](./AdapterGen_naviagtionPane.png)
 
 
-Clicking the **Microservice Adapter Generator** will launch the page, where the user can provide the OpenAPI Specification JSON file and can choose to generate the adapter from the provided OpenAPI specification.
+Clicking the **Microservice Adapter Generator** will launch the page, where the user can provide the OpenAPI Specification (.json or .yaml) file and can choose to generate the adapter from the provided OpenAPI specification.
 
   ![Image of Adapter generator page](./AdapterGen_generationPage.png)
 
 
-After the adapter is generated it will be automatically downloaded to the browser. The user is then required to deploy the generated adapter, for use in their apps.
+After the adapter is generated it will be automatically downloaded to the browser. The user is then required to deploy the generated adapter, for use in their apps. Selecting the option **Include adapter source** will download the adapter source code and generated adapter as a zip file. User can modify the generated adapter source code, rebuild and deploy the adapter.
 
 The adapter generator depends on the accuracy of the OpenAPI specification JSON. If the specification is incomplete or incorrect, the generation may fail or may result in the generation of adapter APIs that do not match the APIs of the back-end microservices.
 
