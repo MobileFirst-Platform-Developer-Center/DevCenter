@@ -21,6 +21,7 @@ For MFP DevKit, there are three predefined confidential clients, namely ***admin
 ![Predefined Confidential Clients in DevKit]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientDevKit.png)
 
 For MFP Production setup, when you use either Server Configuration Tool(SCT) or Ant tasks for creating the profile, you have an option to either install the push service or not.
+
 ***Note that only if you select the option to install Push service, the default confidential clients, admin and push, will be available in MobileFirst Server.*** 
 
 When SCT is used to create a profile, you have an option to change the push and authorization url instead of using the default push and authorization server url. There is no option for you to rename the default predefined confidential clients. 
@@ -54,7 +55,7 @@ During startup, MFP reads these JNDI properties and deploys the confidential cli
 Apart from the pre-built confidential clients, you can add any number of confidential clients to allow a non-mobile client access the resoruces. 
 
 If you are getting an error similar to the one shown below, then most common reaons for it is that the above JNDI properties are not defined or the values of
-the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks same there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** in it.
+the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks same there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** at the end.
 
 ![Error in Push Setting Page in Operations Console]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientError.png)
 
