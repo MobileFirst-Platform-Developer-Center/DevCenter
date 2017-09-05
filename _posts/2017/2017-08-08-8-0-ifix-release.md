@@ -13,6 +13,8 @@ author:
 ---
 A new iFix has been released for MobileFirst Foundation 8.0, dated **August 3rd, 2017**.
 
+> **Important:** There is a known issue with this iFix causing the Mobile Foundation server to not start properly. This is fixed in [iFix 8.0.0.0-MFPF-IF20170901-1903](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/05/8-0-ifix-release/).
+
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
