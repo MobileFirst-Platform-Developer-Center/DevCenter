@@ -16,17 +16,18 @@ Confidential clients are clients that are capable of maintaining the confidentia
 
 ### Configure Confidential Clients
 
-For MFP DevKit, there are three predefined confidential clients, namely ***admin, push*** and ***test***, that comes pre-deployed with MFP. The confidential clients with client id ***admin*** and ***push*** is internal to MFP and it's required for notification service to work. If these client ids are not available, then you will not be able to register an app with push service from MobileFirst Operation console and won't be able to send any push notification from Operations Console. Note that with MFP 8.0, when an app is registered with MFP, then the app will be automatically get registered with Push service. If there is some issue with registering confidential clients, ***admin and push***, then the app won't be getting registered with Push. 
+For MFP DevKit, there are three predefined confidential clients, namely ***admin, push*** and ***test***, that comes pre-deployed with MFP. The confidential clients with client id ***admin*** and ***push*** is internal to MFP and it's required for notification service to work. If these client ids are not available, then you will not be able to register an app with push service from MobileFirst Operation console and won't be able to send any push notification from Operations Console. Note that with MFP 8.0, when an app is registered with MFP, then the app will be automatically get registered with Push service. If there is some issue with registering confidential clients, ***admin*** and ***push***, then the app won't be getting registered with Push. 
 
 ![Predefined Confidential Clients in DevKit]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientDevKit.png)
 
-For MFP Production setup, when you use either Server Configuration Tool(SCT) or Ant tasks for creating the profile, you have an option to either install the push service or not. ***Note that only if you select the option to install Push service, the default confidential clients, admin and push, will be available in MobileFirst Server.*** 
+For MFP Production setup, when you use either Server Configuration Tool(SCT) or Ant tasks for creating the profile, you have an option to either install the push service or not.
+***Note that only if you select the option to install Push service, the default confidential clients, admin and push, will be available in MobileFirst Server.*** 
 
 When SCT is used to create a profile, you have an option to change the push and authorization url instead of using the default push and authorization server url. There is no option for you to rename the default predefined confidential clients. 
 
 When Intall Ant task is used for creating a profile, you have the option to change the defaut push and authroization serverl url as well as renaming and changing the client name and credential of the predefined confidential clients.
 
-***Note: The confidential clients ids should be unique across Administration Service and Push Service. ***
+***Note: The confidential clients ids should be unique across Administration Service and Push Service.***
 
 ### How does confidential clients get registered with MobileFirst Platform
 
@@ -53,7 +54,7 @@ During startup, MFP reads these JNDI properties and deploys the confidential cli
 Apart from the pre-built confidential clients, you can add any number of confidential clients to allow a non-mobile client access the resoruces. 
 
 If you are getting an error similar to the one shown below, then most common reaons for it is that the above JNDI properties are not defined or the values of
-the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties.
+the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks same there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** in it.
 
 ![Error in Push Setting Page in Operations Console]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientError.png)
 
