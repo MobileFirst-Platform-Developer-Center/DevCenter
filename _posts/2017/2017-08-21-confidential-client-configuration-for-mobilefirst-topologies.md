@@ -26,13 +26,13 @@ For MFP Production setup, when you use either Server Configuration Tool(SCT) or 
 
 When SCT is used to create a profile, you have an option to change the push and authorization url instead of using the default push and authorization server url. There is no option for you to rename the default predefined confidential clients. 
 
-When Intall Ant task is used for creating a profile, you have the option to change the defaut push and authroization serverl url as well as renaming and changing the client name and credential of the predefined confidential clients.
+When intall Ant task is used to create a profile, you have the option to change the defaut push and authroization serverl url as well as rename and change the client name and credential of the predefined confidential clients.
 
 ***Note: The confidential clients ids should be unique across Administration Service and Push Service.***
 
 ### How does confidential clients get registered with MobileFirst Platform
 
- If you have installed MFP DevKit or have created a production setup with SCT or Ant tasks, with Push service enabled, then you can find the confidential clients JNDI properties from the server.xml. Note that for Cluster Setup (WAS ND), the confidential client JNDI properties can be found via the WAS console 
+ If you have installed MFP DevKit or have created a production setup with SCT or Ant tasks, with Push service enabled, then you can find the confidential clients JNDI properties in the server.xml. For Cluster Setup (WAS ND), the confidential client JNDI properties can be found via the WAS console 
 
 ```
     <!-- Declare the JNDI properties for the MobileFirst Administration Service. -->
@@ -55,7 +55,7 @@ During startup, MFP reads these JNDI properties and deploys the confidential cli
 Apart from the pre-built confidential clients, you can add any number of confidential clients to allow a non-mobile client access the resoruces. 
 
 If you are getting an error similar to the one shown below, then most common reaons for it is that the above JNDI properties are not defined or the values of
-the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks same there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** at the end.
+the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks same, there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** at the end.
 
 ![Error in Push Setting Page in Operations Console]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientError.png)
 
