@@ -12,11 +12,11 @@ author:
 
 ## Confidential Clients
 
-Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the MobileFirst authorization server to grant confidential clients access to protected resources, in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the Mobile Foundation **REST APIs**, such as the REST API for **push notifications**.
+Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the MobileFirst authorization server to grant confidential clients access to protected resources in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the Mobile Foundation REST APIs, such as the REST API for **push notifications**.
 
-### Configuring Confidential Clients
+### Configure Confidential Clients
 
-For MFP DevKit, there are three predefined confidential clients, namely admin, push and test, that comes pre-deployed with MFP. The confidential clients with client id admin and push is internal to MFP and it's required for notification service to work. If these client ids are not available, then you will not be able to register an app with push service from MobileFirst Operation console and won't be able to send any push notification from Operations Console. Note that with MFP 8.0, when an app is registered with MFP, then the app will be automatically get registered with Push service. If there is some issue with registering confidential clients, admin and push, then the app won't be getting registered with Push. 
+For MFP DevKit, there are three predefined confidential clients, namely ***admin, push*** and ***test***, that comes pre-deployed with MFP. The confidential clients with client id ***admin*** and ***push*** is internal to MFP and it's required for notification service to work. If these client ids are not available, then you will not be able to register an app with push service from MobileFirst Operation console and won't be able to send any push notification from Operations Console. Note that with MFP 8.0, when an app is registered with MFP, then the app will be automatically get registered with Push service. If there is some issue with registering confidential clients, ***admin and push***, then the app won't be getting registered with Push. 
 
 ![Predefined Confidential Clients in DevKit]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientDevKit.png)
 
@@ -74,7 +74,7 @@ All these errors and exception indicate that the JNDI properties that are mentio
 
 ### Configure Confidential Clients to work with LDAP
 
-You can configure MobileFirst administration security to enable connecting out to an external LDAP repository. When the LDAP repository configuration is enabled, you must add the confidential client ids to LDP registery. If the confidential clients are not registred with LDAP, then either you will not see the confidential clients registered with MFP server or you will get the same error that was shown in the previous image.
+You can configure MobileFirst administration security to enable connecting out to an external LDAP repository. When the LDAP repository configuration is enabled, you must add the confidential client ids to LDP registery. If the confidential clients are not registred with LDAP, then either you will not see the confidential clients registered with MFP server or you will get the same error that was shown in the previous image. Confidential client ids should be unique and that unique client id should be added to the LDAP registery.
 
 
 
