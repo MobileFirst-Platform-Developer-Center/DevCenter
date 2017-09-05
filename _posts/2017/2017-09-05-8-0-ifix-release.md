@@ -1,6 +1,6 @@
 ---
-title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170823-1236 released
-date: 2017-08-29
+title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170901-1903 released
+date: 2017-09-05
 version:
 - 8.0
 tags:
@@ -11,26 +11,15 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix has been released for MobileFirst Foundation 8.0, dated **August 23rd, 2017**.
-
-> **Important:** There is a known issue with this iFix causing the Mobile Foundation server to not start properly. This is fixed in [iFix 8.0.0.0-MFPF-IF20170901-1903](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/05/8-0-ifix-release/).
+A new iFix has been released for MobileFirst Foundation 8.0, dated **September 1st, 2017**.
 
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
-### Support for cordova browser platform
-Starting with this iFix, {{ site.data.keys.product }} supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
-
 ### APARs Fixed
 
-**PI86226** MOBILEFIRST SERVER IN FARM RUNNING ON DEDICATED BLUEMIX FAILS TO START CORRECTLY WITH SYNC MESSAGES OCCURRING.<br>
-**PI86157** WHEN USER REOPENS THE APP AFTER SUCCESSFUL REGISTRATION, UNABLE TO UNSUBSCRIBE OR UNREGISTER WITH DEVICEID UNAUTHORISED ERROR. <br>
-**PI86156** JSONARRAY IS NOT SET TO RESPONSE JSON ON ANDROID <br>
-**PI86037** SECURITY ANNOTATIONS ARE NOT GETTING UPDATED IN MOBILE FIRST CONSOLE WHEN PATH ANNOTATION HAS REGEX EXPRESSION FILTERS <br>
-**PI85962** JSONSTORE ISSUE ON ANDROID X86_64 EMULATOR <br>
-**PI84989** USING IBM MOBILEFIRSTPLATFORMFOUNDATIONJSONSTORE.H MIGHT RESULT IN FILE NOT FOUND EXCEPTION <br>
-**PI80054** CLIENT-SIDE LOG CAPTURE CONFIGURATION FROM OPERATIONS CONSOLE MAY NOT BE EFFECTIVE <br>
-**PI75098** MALFORMED HTTP RESPONSE CAUSED IOS APP CRASH.
+**PI86791** MFP 8.0 SERVER FAILS TO START UP WHEN IFIXES FROM AUGUST 2017 ARE IN USE.<br>
+**PI86155** KUBERNETES DEPLOYMENT SUPPORT FOR MOBILEFIRST APPLICATION CENTER.
 
 
 ## How to upgrade
@@ -53,25 +42,25 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
         </div>
         <div id="collapse-mfp-devkit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit">
             <div class="panel-body">
-                  <b>8.0.0.0-MFPF-DevKit-Linux-IF201708231236.bin</b><br/>
-                  <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201708231236.zip</b><br/>
-                  <b>8.0.0.0-MFPF-DevKit-Windows-IF201708231236.exe</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-Linux-IF201709011903.bin</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201709011903.zip</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-Windows-IF201709011903.exe</b><br/>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="cordova-plugins">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-cordova-plugins" aria-expanded="true" aria-controls="collapse-cordova-plugins"><b>Cordova plugins</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-cordova-plugins" aria-expanded="true" aria-controls="collapse-cordova-plugins">Cordova plugins</a>
             </h4>
         </div>
         <div id="collapse-cordova-plugins" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova-plugins">
             <div class="panel-body">
-                  <b>cordova-plugin-mfp              8.0.2017082110</b><br/>
+                  cordova-plugin-mfp              8.0.2017082110<br/>
                   cordova-plugin-mfp-encrypt-utils   8.0.2017021815<br/>
                   cordova-plugin-mfp-fips            8.0.2017021815<br/>
-                  <b>cordova-plugin-mfp-jsonstore       8.0.2017082110</b><br/>
-                  <b>cordova-plugin-mfp-push            8.0.2017082110</b><br/>
+                  cordova-plugin-mfp-jsonstore       8.0.2017082110<br/>
+                  cordova-plugin-mfp-push            8.0.2017082110<br/>
                   cordova-template-mfp               8.0.2017060206<br/>
                   ibm-mfp-web-sdk                    8.0.2017021409<br/>
                   passport-mfp-token-validation      8.0.2017010917<br/>
@@ -94,13 +83,13 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-ios-sdk" aria-expanded="true" aria-controls="collapse-ios-sdk"><b>iOS SDK</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-ios-sdk" aria-expanded="true" aria-controls="collapse-ios-sdk">iOS SDK</a>
             </h4>
         </div>
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                    <b>IBMMobileFirstPlatformFoundation             8.0.2017080719</b><br/>
-                    <b>IBMMobileFirstPlatformFoundationOpenSSLUtils 8.0.2017080719</b><br/>
+                    IBMMobileFirstPlatformFoundation             8.0.2017080719<br/>
+                    IBMMobileFirstPlatformFoundationOpenSSLUtils 8.0.2017080719<br/>
                     IBMMobileFirstPlatformFoundationPush         8.0.2017061612<br/>
                     IBMMobileFirstPlatformFoundationJSONStore    8.0.2017053010<br/>
             </div>
