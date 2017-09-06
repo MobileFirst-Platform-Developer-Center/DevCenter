@@ -11,6 +11,8 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
+<p><font color="red">Please <b>do not</b> download this iFix as there is a known issue with this iFix.</font></p>
+
 A new iFix has been released for MobileFirst Foundation 8.0, dated **August 3rd, 2017**.
 
 > **Important:** There is a known issue with this iFix causing the Mobile Foundation server to not start properly. This is fixed in [iFix 8.0.0.0-MFPF-IF20170901-1903](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/05/8-0-ifix-release/).
