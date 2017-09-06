@@ -1,9 +1,9 @@
 ---
 title: 'All about configuring Confidential Clients for IBM MobileFirst Platform'
-date: 2017-09-03
+date: 2017-09-06
 tags:
 - MobileFirst_Foundation
-- Confidential Clients
+- Confidential_Clients
 version:
 - 8.0
 author: 
@@ -16,7 +16,7 @@ Confidential clients are clients that are capable of maintaining the confidentia
 
 ### Configure Confidential Clients
 
-For MFP DevKit, there are three predefined confidential clients, namely ***admin, push*** and ***test***, that comes pre-deployed with MFP. The confidential clients with client id ***admin*** and ***push*** is internal to MFP and it's required for notification service to work. If these client ids are not available, then you will not be able to register an app with push service from MobileFirst Operation console and won't be able to send any push notification from Operations Console. Note that with MFP 8.0, when an app is registered with MFP, then the app will be automatically get registered with Push service. If there is some issue with registering confidential clients, ***admin*** and ***push***, then the app won't be getting registered with Push. 
+For MobileFirst Platform (MFP) DevKit, there are three predefined confidential clients, namely ***admin, push*** and ***test***, that comes pre-deployed with MFP. The confidential clients with client id ***admin*** and ***push*** is internal to MFP and it's required for notification service to work. If these client ids are not available, then you will not be able to register an app with push service from MobileFirst Operation console and will not be able to send any push notification from Operations Console. Note that with MFP 8.0, when an app is registered with MFP, the app will automatically get registered with Push service. If there is some issue with registering confidential clients, ***admin*** and ***push***, then the app will not be getting registered with Push. 
 
 ![Predefined Confidential Clients in DevKit]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientDevKit.png)
 
@@ -26,7 +26,7 @@ For MFP Production setup, when you use either Server Configuration Tool(SCT) or 
 
 When SCT is used to create a profile, you have an option to change the push and authorization url instead of using the default push and authorization server url. There is no option for you to rename the default predefined confidential clients. 
 
-When intall Ant task is used to create a profile, you have the option to change the defaut push and authroization serverl url as well as rename and change the client name and credential of the predefined confidential clients.
+When intall Ant task is used to create a profile, you have the option to change the defaut push and authroization server url as well options to rename and change the client name and credential of the predefined confidential clients.
 
 ***Note: The confidential clients ids should be unique across Administration Service and Push Service.***
 
@@ -34,7 +34,7 @@ When intall Ant task is used to create a profile, you have the option to change 
 
  If you have installed MFP DevKit or have created a production setup with SCT or Ant tasks, with Push service enabled, then you can find the confidential clients JNDI properties in the server.xml. For Cluster Setup (WAS ND), the confidential client JNDI properties can be found via the WAS console 
 
-```
+```xml
     <!-- Declare the JNDI properties for the MobileFirst Administration Service. -->
     <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value='"http://localhost:${default.http.port}/imfpush"'/>
     <jndiEntry jndiName="mfpadmin/mfp.admin.authorization.server.url" value='"http://localhost:${default.http.port}/mfp"'/>
@@ -54,8 +54,7 @@ During startup, MFP reads these JNDI properties and deploys the confidential cli
 
 Apart from the pre-built confidential clients, you can add any number of confidential clients to allow a non-mobile client access the resoruces. 
 
-If you are getting an error similar to the one shown below, then most common reaons for it is that the above JNDI properties are not defined or the values of
-the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks same, there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** at the end.
+If you are getting an error similar to the one shown below, then most common reasons for this is that the above JNDI properties are not defined or the values of the above JNDI properties are incorrect, especially the ***mfp.admin.authorization.server.url*** and ***mfp.push.authorization.server.url*** properties, though the values for them looks the same, there is a difference in the url value, where ***mfp.push.authorization.server.url*** has an ***api*** at the end.
 
 ![Error in Push Setting Page in Operations Console]({{site.baseurl}}/assets/blog/2017-08-21-confidential-client-configuration-for-mobilefirst-topologies/ConfidentialClientError.png)
 
@@ -76,7 +75,7 @@ All these errors and exception indicate that the JNDI properties that are mentio
 
 ### Configure Confidential Clients to work with LDAP
 
-You can configure MobileFirst administration security to enable connecting out to an external LDAP repository. When the LDAP repository configuration is enabled, you must add the confidential client ids to LDP registery. If the confidential clients are not registred with LDAP, then either you will not see the confidential clients registered with MFP server or you will get the same error that was shown in the previous image. Confidential client ids should be unique and that unique client id should be added to the LDAP registery.
+You can configure MobileFirst administration security to enable connecting to an external LDAP repository. When the LDAP repository configuration is enabled, you must add the confidential client ids to LDAP registry. If the confidential clients are not registered with LDAP, then either you will not see the confidential clients registered with MFP server or you will get the same error that was shown in the image above. Confidential client ids should be unique and that unique client id should be added to the LDAP registery.
 
 
 
