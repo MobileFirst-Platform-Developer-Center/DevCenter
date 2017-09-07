@@ -7,7 +7,7 @@ tags:
 - MobileFirst_Foundation
 - cordova
 author:
-  name: Srutha K Kotta
+name: Srutha K Kotta
 ---
 
 The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
@@ -34,32 +34,32 @@ You can use the sample code below:
 <html>
 
 <head>
-   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
 
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
 
-  <!-- load script with wlCommonInit defined before loading cordova.js -->
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript" src="cordova.js"></script>
+<!-- load script with wlCommonInit defined before loading cordova.js -->
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
 
-  <title>MFP Starter - Cordova</title>
+<title>MFP Starter - Cordova</title>
 </head>
 
 <body>
 
-  <div id="main">
-    <div id="main_title">Hello MobileFirst</div>
-    <div id="main_status"></div>
-    <div id="main_info"></div>
-  </div>
+<div id="main">
+<div id="main_title">Hello MobileFirst</div>
+<div id="main_status"></div>
+<div id="main_info"></div>
+</div>
 
-  <div id="button_content">
-    <button id="ping_button" style="display:none">Ping MobileFirst Server</button>
-  </div>
+<div id="button_content">
+<button id="ping_button" style="display:none">Ping MobileFirst Server</button>
+</div>
 
 </body>
 
@@ -71,52 +71,52 @@ You can use the sample code below:
 ```javascript
 
 var Messages = {
-  // Add here your messages for the default language.
-  // Generate a similar file with a language suffix containing the translated messages.
-  // key1 : message1,
+// Add here your messages for the default language.
+// Generate a similar file with a language suffix containing the translated messages.
+// key1 : message1,
 };
 
 var wlInitOptions = {
-  // Options to initialize with the WL.Client object.
-  // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
-   mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
-    applicationId : 'io.cordova.hellocordova' // Replace with your own app id/package name.
+// Options to initialize with the WL.Client object.
+// For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
+mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
+applicationId : 'io.cordova.hellocordova' // Replace with your own app id/package name.
 };
 
 function wlCommonInit() {
-  app.init();
+app.init();
 }
 
 var app = {
-  //initialize app
-  "init": function init() {
-    var buttonElement = document.getElementById("ping_button");
-    buttonElement.style.display = "block";
-    buttonElement.addEventListener('click', app.testServerConnection, false);
-  },
-  //test server connection
-  "testServerConnection": function testServerConnection() {
+//initialize app
+"init": function init() {
+var buttonElement = document.getElementById("ping_button");
+buttonElement.style.display = "block";
+buttonElement.addEventListener('click', app.testServerConnection, false);
+},
+//test server connection
+"testServerConnection": function testServerConnection() {
 
-    var titleText = document.getElementById("main_title");
-    var statusText = document.getElementById("main_status");
-    var infoText = document.getElementById("main_info");
-    titleText.innerHTML = "Hello MobileFirst";
-    statusText.innerHTML = "Connecting to Server...";
-    infoText.innerHTML = "";
+var titleText = document.getElementById("main_title");
+var statusText = document.getElementById("main_status");
+var infoText = document.getElementById("main_info");
+titleText.innerHTML = "Hello MobileFirst";
+statusText.innerHTML = "Connecting to Server...";
+infoText.innerHTML = "";
 
-    WLAuthorizationManager.obtainAccessToken()
-      .then(
-        function (accessToken) {
-          titleText.innerHTML = "Yay!";
-          statusText.innerHTML = "Connected to MobileFirst Server";
-        },
-        function (error) {
-          titleText.innerHTML = "Bummer...";
-          statusText.innerHTML = "Failed to connect to MobileFirst Server";
-        }
-        );
-    },
- }
+WLAuthorizationManager.obtainAccessToken()
+.then(
+function (accessToken) {
+titleText.innerHTML = "Yay!";
+statusText.innerHTML = "Connected to MobileFirst Server";
+},
+function (error) {
+titleText.innerHTML = "Bummer...";
+statusText.innerHTML = "Failed to connect to MobileFirst Server";
+}
+);
+},
+}
 
 ```
 
@@ -126,48 +126,48 @@ var app = {
 
 ```css
 body {
-    position: static;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    margin: 0px;
-	padding: 0px;
+position: static;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-weight: 300;
+margin: 0px;
+padding: 0px;
 }
 
 #button_content {
-  position: absolute;
-  bottom: 10%;
-  width: 100%;
+position: absolute;
+bottom: 10%;
+width: 100%;
 }
 
 #ping_button {
-  display: block;
-  margin: 0 auto;
-  height: 50px;
-  width: 240px;
-  font-size: 20px;
-  color: white;
-  background-color: #325c80;
+display: block;
+margin: 0 auto;
+height: 50px;
+width: 240px;
+font-size: 20px;
+color: white;
+background-color: #325c80;
 }
 
 #main {
-  top: 10%;
-  position: absolute;
-  text-align: center;
-  width: 100%
+top: 10%;
+position: absolute;
+text-align: center;
+width: 100%
 }
 
 #main_title {
-  font-size: 40px;
+font-size: 40px;
 }
 
 #main_status {
-  font-size: 20px;
-  margin-top: 10px;
+font-size: 20px;
+margin-top: 10px;
 }
 
 #main_info {
-  font-size: 14px;
-  margin-top: 10px;
+font-size: 14px;
+margin-top: 10px;
 }
 
 ```
@@ -178,7 +178,7 @@ Add the browser platform using the following command:
 cordova platform add browser
 ```
 
- (Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
+(Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
 
 > To manually register your application:
 >
@@ -202,8 +202,8 @@ mfpdev app register
 ```
 -->
 
- 
- >Note: mfpdev-cli to register browser platform app will be released soon.
+
+>Note: mfpdev-cli to register browser platform app will be released soon.
 
 Then execute the following commands:
 
@@ -221,8 +221,8 @@ This will launch a browser that runs on a proxy server (on port '9081') and conn
 
 > The default browser to run is set to **Chrome**. Use the `--target` option to run on different browsers and can be used using the following command:
 ```bash
- cordova run --target=Firefox
- ```
+cordova run --target=Firefox
+```
 
 The app can be previewed using the command:
 
@@ -239,6 +239,7 @@ You can deploy your browser application on bluemix as a nodejs instance.
 Steps to create this nodejs instance is as below:
 
 * Create a nodejs instance (from the Bluemix **Catalog**, Select **SDK for Node.js** from under **Cloud Foundry Apps**) in Bluemix and download the sample application.
+* For the sample starter app, you could also clone the repo : https://github.com/IBM-Bluemix/get-started-node.
 * Add the contents of the browser platform's `www` folder from your cordova project (i.e. `/rootFolderOfYourCordovaApp/platforms/browser/`) to the `public` folder. Ensure that the `index.js` and `index.css` are not within the `js` and `css` folders but are in the same folder level as the `index.html`.
 * Change the reference of the `index.js` in `index.html` to point to where the `css` and `js` files are now located in the project.
 * Next replace contents of the `app.js` with the contents of `proxy.js` (the `proxy.js` can be found in `<your cordova project's root folder>/plugins/cordova-plugin-mfp/src/browser/`) of your cordova project.
@@ -253,11 +254,23 @@ var path = require('path');
 var cfenv = require('cfenv');
 ```
 
-Replace app.use('/' + appName, express.static(__dirname + '/../../../../www')); with below line
+Replace 
+
+```javascript 
+app.use('/' + appName, express.static(__dirname + '/../../../../www'));
+```
+
+with below line
 
 ```javascript
 app.use(express.static(path.join(__dirname, './public')));
 ```
+
+Ensure to replace the value of the variable <b>mfpServer</b> in your app.js with your MFP server url (including port number), i.e. :
+
+```javascript
+var mfpServer = "https://<yourMFPServerURL>:<port>";
+``` 
 
 Add the below lines in the end of the file
 
@@ -267,8 +280,8 @@ var appEnv = cfenv.getAppEnv();
 
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
-  // print a message when the server starts listening
-  console.log("server starting on " + appEnv.url);
+// print a message when the server starts listening
+console.log("server starting on " + appEnv.url);
 });
 ```
 <br/>
@@ -277,18 +290,18 @@ Add the dependent node_module dependencies in the dependencies list in the `pack
 ```
 "dependencies": {
 //List of already existing dependencies ,
-	 "body-parser": "^1.16.1",
-    "cfenv": "^1.0.x",
-    "cloudant": "^1.7.1",
-    "cordova-serve": "^1.0.1",
-    "dotenv": "^4.0.0",
-     "express": "^4.13.3",
-     "nopt":"4.0.1",
-     "elementtree":"0.1.7",
-    "npmlog":"4.0.2",
-    "underscore":"1.8.3",
-    "request": "^2.0.0"
-	}
+"body-parser": "^1.16.1",
+"cfenv": "^1.0.x",
+"cloudant": "^1.7.1",
+"cordova-serve": "^1.0.1",
+"dotenv": "^4.0.0",
+"express": "^4.13.3",
+"nopt":"4.0.1",
+"elementtree":"0.1.7",
+"npmlog":"4.0.2",
+"underscore":"1.8.3",
+"request": "^2.0.0"
+}
 ```
 
 Copy the folders `sjcl` and `jssha` from `rootFolderOfNodeApp/public/plugins/cordova-plugin-mfp/worklight/node_modules` to its parent folder, i.e. `rootFolderOfNodeApp/public/plugins/cordova-plugin-mfp/worklight` and change the reference of these modules in the `ibmmfpf.js` file that can be found in `rootFolderOfNodeApp/public/plugins/cordova-plugin-mfp/worklight`, to point to the new location.
