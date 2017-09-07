@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform on cordova browser platform
-date: 2017-08-29
+date: 2017-09-07
 version:
 - 8.0
 tags:
@@ -239,6 +239,7 @@ You can deploy your browser application on bluemix as a nodejs instance.
 Steps to create this nodejs instance is as below:
 
 * Create a nodejs instance (from the Bluemix **Catalog**, Select **SDK for Node.js** from under **Cloud Foundry Apps**) in Bluemix and download the sample application.
+* For the sample starter app, you could also clone the repo : https://github.com/IBM-Bluemix/get-started-node.
 * Add the contents of the browser platform's `www` folder from your cordova project (i.e. `/rootFolderOfYourCordovaApp/platforms/browser/`) to the `public` folder. Ensure that the `index.js` and `index.css` are not within the `js` and `css` folders but are in the same folder level as the `index.html`.
 * Change the reference of the `index.js` in `index.html` to point to where the `css` and `js` files are now located in the project.
 * Next replace contents of the `app.js` with the contents of `proxy.js` (the `proxy.js` can be found in `<your cordova project's root folder>/plugins/cordova-plugin-mfp/src/browser/`) of your cordova project.
@@ -253,11 +254,24 @@ var path = require('path');
 var cfenv = require('cfenv');
 ```
 
+Replace 
+
+```javascript 
+app.use('/' + appName, express.static(__dirname + '/../../../../www'));
+```
+
+with below line
+
 Replace app.use('/' + appName, express.static(__dirname + '/../../../../www')); with below line
 
 ```javascript
 app.use(express.static(path.join(__dirname, './public')));
 ```
+Ensure to replace the value of the variable <b>mfpServer</b> in your app.js with your MFP server url (including port number), i.e. :
+
+```javascript
+var mfpServer = "https://<yourMFPServerURL>:<port>";
+``` 
 
 Add the below lines in the end of the file
 
