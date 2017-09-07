@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform on cordova browser platform
-date: 2017-08-29
+date: 2017-09-07
 version:
 - 8.0
 tags:
