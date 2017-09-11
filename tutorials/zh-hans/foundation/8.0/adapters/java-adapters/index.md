@@ -51,11 +51,10 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
-	
-	</mfp:adapter>
+</mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -255,8 +254,9 @@ Java 适配器可以使用服务器端 Java API 执行与 {{ site.data.keys.mf_s
 
 ```java
 @Context
-ConfigurationAPI configurationAPI;
-```
+	ConfigurationAPI configurationAPI;
+
+	```
 
 然后，您可以使用 `configurationAPI` 实例获取属性：
 
