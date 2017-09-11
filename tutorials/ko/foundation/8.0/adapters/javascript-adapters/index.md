@@ -18,9 +18,9 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### adapter-resources 폴더 
+### adapter-resources 폴더
 {: #the-adapter-resources-folder }
- 
+
 **adapter-resources** 폴더는 XML 구성 파일을 포함합니다. 이 구성 파일은 연결 옵션을 설명하고, 애플리케이션 또는 기타 어댑터에 제공되는 프로시저를 나열합니다. 
 
 ```xml
@@ -42,7 +42,7 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -73,7 +73,7 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
                             <li><code>audit</code>: <i>선택사항.</i> 프로시저에 대한 호출이 감사 로그에
 로그되는지 여부를 정의합니다. 유효값은 다음과 같습니다.<ul>
                                     <li><code>true</code>: 프로시저에 대한 호출이 감사 로그에 기록됩니다.
-</li> 
+</li>
                                     <li><code>false</code>: 기본값입니다. 프로시저에 대한 호출이 감사 로그에 로그되지 않습니다.
 </li>
                                 </ul>
@@ -132,7 +132,7 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * 구성 파일을 **푸시**하려면 다음을 실행하십시오. 
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -144,7 +144,7 @@ JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리�
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * 구성 파일을 **푸시**하려면 다음을 실행하십시오. 
   ```bash
   mfpdev adapter push
@@ -169,7 +169,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 ### js 폴더
 {: #the-js-folder }
- 
+
 이 폴더는 **adapter.xml** 파일에서 선언되는 프로시저의 모든 JavaScript
 구현 파일을 포함합니다. 또한 0개 또는 하나 이상의 XSL 파일을 포함하며, 검색된 원시 XML 데이터를 위한 변환 스키마를 포함합니다. 어댑터가 검색하는 데이터는 원시 상태로 또는 어댑터 자체에 의해 사전 처리되어 리턴될 수 있습니다. 어느 경우이든 **JSON 오브젝트**로 애플리케이션에 제공됩니다. 
 
@@ -239,7 +239,7 @@ MFP.Server.getPropertyValue("name");
 function getAuthUserId(){
    var securityContext = MFP.Server.getTokenIntrospectionData();
    var user = securityContext.getAuthenticatedUser();
- 
+
    return "User ID: " + user.getId;
 }
 ```

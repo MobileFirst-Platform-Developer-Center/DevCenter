@@ -53,11 +53,11 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
 
 아카이브 파일에는 파일 레이아웃을 빌드하는 데 필요한 파일(**dependencies**, **mfpf-libs**), {{ site.data.keys.mf_analytics }} Container를 빌드하고 배치하는 데 필요한 파일(**mfpf-analytics**), {{ site.data.keys.mf_server }} Cloud Foundry 앱을 구성하는 데 필요한 파일(**mfpf-server-libertyapp**)이 들어 있습니다. 
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>클릭하면 아카이브 파일 컨텐츠에 대해 자세히 볼 수 있습니다.</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>클릭하면 아카이브 파일 컨텐츠에 대해 자세히 볼 수 있습니다.</b></a>
             </h4>
         </div>
 
@@ -121,7 +121,7 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
 
 >**참고:** 설치 프로그램과 DB 도구는 사내 구축형 {{ site.data.keys.mf_app_center }} 설치 폴더(`installer` 및 `tools` folders)에서 다운로드할 수 있습니다.
 
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -129,7 +129,7 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
             </h4>
         </div>
 
-        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. <b>args</b> 폴더에서 비어 있는 템플리트 파일과 인수에 대한 설명을 찾거나 <b>recorded-args</b> 폴더에 대화식 스크립트 실행한 후에 게시할 수 있습니다. 파일은 다음과 같습니다. <br/>
 
@@ -156,7 +156,7 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
             </h4>
         </div>
 
-        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
               <ol>
@@ -198,7 +198,7 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 
                   </li>
                   <li><b>initenv.sh(선택사항) – Bluemix에 로그인</b><br />
-                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직 및 공간과 다른 조직 및 공간에서 서버를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 initenv.properties를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.
+                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직과 공간 이외의 조직과 공간에서 서버를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 initenv.properties를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -256,15 +256,15 @@ IBM Bluemix에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모�
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2-mf" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step-foundation-1">
+        <div class="panel-heading" role="tab" id="step-foundation-1-mf">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">구성 파일 사용</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-1-mf" aria-expanded="false" aria-controls="collapse-step-foundation-1-mf">구성 파일 사용</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. <b>args</b> 폴더에서 비어 있는 템플리트 파일과 인수에 대한 설명을 찾거나 <b>recorded-args</b> 폴더에 대화식 스크립트 실행한 후에 게시할 수 있습니다. 파일은 다음과 같습니다. <br/>
 
@@ -287,11 +287,11 @@ IBM Bluemix에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">스크립트 실행</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">스크립트 실행</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
               <ol>
@@ -332,7 +332,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 </li>
                   <li><b>initenv.sh(선택사항) – Bluemix에 로그인</b><br />
-                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직 및 공간과 다른 조직 및 공간에서 서버를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 initenv.properties를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.
+                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직과 공간 이외의 조직과 공간에서 서버를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 initenv.properties를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -440,7 +440,7 @@ Analytics Server를 설정했으며 이를 이 {{ site.data.keys.mf_server }}에
 
     이전 배치에서 사용한 인수 사본은 `recorded-args/` 디렉토리에 저장되었습니다. 배치에 이러한 특성을 사용할 수 있습니다. 
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix에서 데이터베이스 서비스 구성 제거
 {: #removing-the-database-service-configuration-from-bluemix }

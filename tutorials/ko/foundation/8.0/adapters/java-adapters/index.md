@@ -50,11 +50,10 @@ Java 어댑터는 JAX-RS 2.0 스펙을 기반으로 합니다. 즉, Java 어댑�
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
-	
-	</mfp:adapter>
+</mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -259,8 +258,9 @@ Java 클래스 내부에서 클래스 레벨로 다음을 추가하십시오.
 
 ```java
 @Context
-ConfigurationAPI configurationAPI;
-```
+	ConfigurationAPI configurationAPI;
+
+	```
 
 그런 다음 `configurationAPI` 인스턴스를 사용하여
 특성을 가져올 수 있습니다. 

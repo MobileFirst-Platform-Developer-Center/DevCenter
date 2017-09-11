@@ -4,8 +4,8 @@ title: JavaScript HTTP 어댑터
 breadcrumb_title: HTTP 어댑터
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 어댑터 Maven 프로젝트 다운로드
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - 이름: 어댑터 Maven 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -60,7 +60,7 @@ XML 파일은 설정과 메타데이터를 포함합니다.
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -129,8 +129,7 @@ SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용�
                     <li><b>proxy</b>: <i>선택사항.</i> proxy 요소는 백엔드 애플리케이션에 액세스할 때 사용하는 프록시 서버의 세부사항을 지정합니다. 프록시 세부사항에는 프로토콜 도메인 및 포트가 포함되어야 합니다. 프록시에서 인증이 필요한 경우 <code>proxy</code> 안에
 중첩된 <code>authentication</code> 요소를
 추가하십시오. 이 요소는 어댑터의 인증 프로토콜을 기술할 때 사용한 것과 구조가 동일합니다.
-다음 예제는 기본 인증을 요구하고, 서버 ID를 사용하는 프록시를 보여줍니다.                     
-{% highlight xml %}
+다음 예제는 기본 인증을 요구하고, 서버 ID를 사용하는 프록시를 보여줍니다. {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
   <domain>www.bbc.co.uk</domain>
@@ -271,7 +270,7 @@ Options 오브젝트는 다음 특성을 포함해야 합니다.
 
 ```js
 var input = {
-	method: 'post',
+      method: 'post',
 	returnedContentType: 'xml',
 	path: '/globalweather.asmx',
 	body: {

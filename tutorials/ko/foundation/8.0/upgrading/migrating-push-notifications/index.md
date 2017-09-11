@@ -22,15 +22,15 @@ weight: 4
 
 다음 표는 두 모델 사이의 비교를 제공합니다. 
 
-| 사용자 요구사항 | 이벤트 소스 모델 | 푸시 서비스 모델 | 
+| 사용자 요구사항| 이벤트 소스 모델| 푸시 서비스 모델|
 |------------------|--------------------|--------------------|
-| 애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>이벤트 소스 어댑터를 작성하고 해당 어댑터 내에 EventSource를 작성하십시오. </li><li>푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. </li></ul>{:/} | 푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오.  | 
-| 모바일 클라이언트 애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>WLClient 작성</li><li>{{ site.data.keys.mf_server }}에 연결</li><li>푸시 클라이언트 인스턴스 가져오기</li><li>이벤트 소스에 등록</li></ul>{:/} | {::nomarkdown}<ul><li>푸시 클라이언트 인스턴스화</li><li>푸시 클라이언트 초기화</li><li>모바일 디바이스 등록</li></ul>{:/} |
-| 특정 태그 기반의 알림에 모바일 클라이언트 애플리케이션 사용 | 지원되지 않음.  | 태그 이름을 사용하여 관심있는 태그에 등록하십시오.  | 
-| 모바일 클라이언트 애플리케이션에서 알림 수신 및 처리 | 리스너 구현을 등록하십시오.  | 리스너 구현을 등록하십시오.  |
-| 모바일 클라이언트 애플리케이션에 푸시 알림 보내기 | {::nomarkdown}<ul><li>WL.Server API를 내부적으로 호출하여 푸시 알림을 보낼 어댑터 프로시저를 구현하십시오. </li><li>WL Server API는 알림을 보낼 방법을 제공합니다. <ul><li>사용자가 수행</li><li>디바이스로 수행</li><li><li>브로드캐스트(모든 디바이스)</li></ul></li><li>그런 다음 백엔드 서버 애플리케이션이 푸시 알림을 애플리케이션 로직의 일부로 트리거하는 어댑터 프로시저를 호출할 수 있습니다. </li></ul>{:/} | {::nomarkdown}<ul><li>백엔드 서버 애플리케이션은 messages REST API를 직접 호출할 수 있습니다. 그러나 이러한 애플리케이션은 {{ site.data.keys.mf_server }}에 기밀 클라이언트로 등록하고 REST API의 권한 부여 헤더에 전달되어야 하는 올바른 OAuth 액세스 토큰을 얻어야 합니다. </li><li>REST API는 알림을 보내는 옵션을 제공합니다. <ul><li>사용자가 수행</li><li>디바이스로 수행</li><li>플랫폼으로 수행</li><li>태그로 수행</li><li>브로드캐스트(모든 디바이스)</li></ul></li></ul>{:/} |
-| 정기적(폴링 간격)으로 푸시 알림 트리거 |  이벤트 소스 어댑터 내에서 푸시 알림을 보내는 기능을 createEventSource 함수 호출의 일부로 구현합니다.  | 지원되지 않음.  |
-| 이름, URL 및 이벤트 유형에 후크 등록 | 푸시 알림에 대한 디바이스 등록 또는 등록 취소 경로에 후크를 구현합니다.  | 지원되지 않음.  | 
+| 애플리케이션에서 푸시 알림 사용| {::nomarkdown}<ul><li>이벤트 소스 어댑터를 작성하고 해당 어댑터 내에 EventSource를 작성하십시오. </li><li>푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. </li></ul>{:/} | 푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. |
+| 모바일 클라이언트 애플리케이션에서 푸시 알림 사용| {::nomarkdown}<ul><li>WLClient 작성</li><li>{{ site.data.keys.mf_server }}에 연결</li><li>푸시 클라이언트 인스턴스 가져오기</li><li>이벤트 소스에 등록</li></ul>{:/} | {::nomarkdown}<ul><li>푸시 클라이언트 인스턴스화</li><li>푸시 클라이언트 초기화</li><li>모바일 디바이스 등록</li></ul>{:/} |
+| 특정 태그 기반의 알림에 모바일 클라이언트 애플리케이션 사용| 지원되지 않음. | 태그 이름을 사용하여 관심있는 태그에 등록하십시오. |
+| 모바일 클라이언트 애플리케이션에서 알림 수신 및 처리| 리스너 구현을 등록하십시오. | 리스너 구현을 등록하십시오. |
+| 모바일 클라이언트 애플리케이션에 푸시 알림 보내기| {::nomarkdown}<ul><li>WL.Server API를 내부적으로 호출하여 푸시 알림을 보낼 어댑터 프로시저를 구현하십시오. </li><li>WL Server API는 알림을 보낼 방법을 제공합니다. <ul><li>사용자가 수행</li><li>디바이스로 수행</li><li><li>브로드캐스트(모든 디바이스)</li></ul></li><li>그런 다음 백엔드 서버 애플리케이션이 푸시 알림을 애플리케이션 로직의 일부로 트리거하는 어댑터 프로시저를 호출할 수 있습니다. </li></ul>{:/} | {::nomarkdown}<ul><li>백엔드 서버 애플리케이션은 messages REST API를 직접 호출할 수 있습니다. 그러나 이러한 애플리케이션은 {{ site.data.keys.mf_server }}에 기밀 클라이언트로 등록하고 REST API의 권한 부여 헤더에 전달되어야 하는 올바른 OAuth 액세스 토큰을 얻어야 합니다. </li><li>REST API는 알림을 보내는 옵션을 제공합니다. <ul><li>사용자가 수행</li><li>디바이스로 수행</li><li>플랫폼으로 수행</li><li>태그로 수행</li><li>브로드캐스트(모든 디바이스)</li></ul></li></ul>{:/} |
+| 정기적(폴링 간격)으로 푸시 알림 트리거|  이벤트 소스 어댑터 내에서 푸시 알림을 보내는 기능을 createEventSource 함수 호출의 일부로 구현합니다. | 지원되지 않음. |
+| 이름, URL 및 이벤트 유형에 후크 등록| 푸시 알림에 대한 디바이스 등록 또는 등록 취소 경로에 후크를 구현합니다. | 지원되지 않음. |
 
 ## 마이그레이션 시나리오
 {: #migration-scenarios }
@@ -38,8 +38,8 @@ weight: 4
 
 IBM MobileFirst Platform Foundation의 이전 버전에서 기존 이벤트 소스 기반 애플리케이션은 v8.0의 새 푸시 서비스 모델로 마이그레이션되어야 합니다. 
 
-#### 다음으로 이동
-{: #jump-to }
+#### 다음 섹션으로 이동
+{: #jump-to-section }
 * [하이브리드 애플리케이션](#hybrid-applications)
 * [고유 Android 애플리케이션](#native-android-applications)
 * [고유 iOS 애플리케이션](#native-ios-applications)
@@ -61,20 +61,20 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-   MFPPush.registerNotificationsCallback(notificationReceived); }, 
+   MFPPush.registerNotificationsCallback(notificationReceived); },
    function(failureResponse){alert("Failed to initialize");    
                               }  
    );
    ```
-    
+
 2. 알림 콜백 메소드를 구현하십시오. 
 
    ```javascript
    var notificationReceived = function(message) {
-        alert(JSON.stringify(message)); 
+        alert(JSON.stringify(message));
    };
    ```
-    
+
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
    ```javascript
@@ -86,9 +86,9 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
- 
+
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
 		alert("Successfully unregistered");
@@ -98,7 +98,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 5. WL.Client.Push.isPushSupported()가 사용된 경우 이를 제거하고 다음을 사용하십시오. 
 
    ```javascript
@@ -110,7 +110,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	   }
    );
    ```
-    
+
 6. 등록할 이벤트 소스가 없으므로 다음 `WL.Client.Push` API를 제거하고 알림 콜백을 등록하십시오. 
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -147,13 +147,13 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		MFPPush.registerNotificationsCallback(notificationReceived);              					},
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
    );
    ```
-    
+
 2. 알림 콜백 메소드를 구현하십시오. 
 
    ```javascript
@@ -173,7 +173,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```javascript
@@ -185,7 +185,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 5. `WL.Client.Push.isPushSupported()`가 사용된 경우 이를 제거하고 다음을 사용하십시오. 
 
    ```javascript
@@ -197,7 +197,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 6. 등록할 이벤트 소스가 없으므로 다음 `WL.Client.Push` API를 제거하고 알림 콜백을 등록하십시오. 
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -229,7 +229,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 ##### 서버
 {: #server-hybrid-2 }
 어댑터에서 다음 `WL.Server` API가 사용된 경우 이를 제거하십시오. 
@@ -258,13 +258,13 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-        MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+        MFPPush.registerNotificationsCallback(notificationReceived);              					},
         function(failureResponse){
             alert("Failed to initialize");
         }
    );
    ```
-    
+
 2. 알림 콜백 메소드를 구현하십시오. 
 
    ```javascript
@@ -272,7 +272,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
         alert(JSON.stringify(message));
    };
    ```
-    
+
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
    ```javascript
@@ -284,7 +284,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
         }
    );
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```javascript
@@ -335,7 +335,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		MFPPush.registerNotificationsCallback(notificationReceived);              					},
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
@@ -373,7 +373,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 	    }
    );
    ```
-    
+
 5. `WL.Client.Push.isPushSupported()`가 사용된 경우 이를 제거하고 다음을 사용하십시오. 
 
    ```javascript
@@ -419,7 +419,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
    ```
 
 ##### 서버
-{: #client-hybrid-4 }
+{: #server-hybrid-4 }
 어댑터에서 `WL.Server.sendMessage()`가 사용된 경우 이를 제거하십시오.   
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오. 
 
@@ -430,7 +430,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오. 
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다. 
     * {{ site.data.keys.mf_console }}. [등록자에게 푸시 알림 전송](../../notifications/sending-notifications/#sending-notifications)을 참조하십시오. 
-    * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`.  
+    * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`. 
 
 ### 고유 Android 애플리케이션
 {: #native-android-applications }
@@ -459,7 +459,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
    ```java
@@ -475,7 +475,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```java
@@ -491,7 +491,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 `push.isPushSupported();`를 사용하십시오. 
 6. 등록할 이벤트 소스가 없으므로 다음 `WLClient.Push` API를 제거하고 알림 콜백을 등록하십시오. 
     * `registerEventSourceCallback()`
@@ -518,7 +518,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오. 
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다. 
     * {{ site.data.keys.mf_console }}. [등록자에게 푸시 알림 전송](../../notifications/sending-notifications/#sending-notifications)을 참조하십시오. 
-    * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`.  
+    * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`. 
 
 #### 시나리오 2: 애플리케이션에서 여러 이벤트 소스를 사용하는 기존 애플리케이션
 {: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
@@ -534,7 +534,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
-    
+
 2. MFPPushNotificationListener 인터페이스를 구현하고 onReceive()를 정의하십시오. 
 
    ```java
@@ -558,9 +558,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
-  
+
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){   
        @Override
@@ -574,7 +574,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 `push.isPushSupported();`를 사용하십시오. 
 6. 등록할 이벤트 소스가 없으므로 다음 `WLClient.Push` API를 제거하고 알림 콜백을 등록하십시오. 
     * `registerEventSourceCallback()`
@@ -602,9 +602,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 9. (선택사항) 태그에서 등록을 취소하십시오. 
- 
+
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
@@ -622,7 +622,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-   
+
 ##### 서버
 {: #server-android-2 }
 어댑터에서 다음 `WL.Server` API가 사용된 경우 이를 제거하십시오. 
@@ -654,7 +654,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
-    
+
 2. `MFPPushNotificationListener` 인터페이스를 구현하고 `onReceive()`를 정의하십시오. 
 
    ```java
@@ -663,7 +663,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
    ```java
@@ -679,7 +679,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```java
@@ -729,16 +729,16 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    ```
 
 2. MFPPushNotificationListener 인터페이스를 구현하고 onReceive()를 정의하십시오. 
- 
+
    ```java
    @Override
    public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
-    
+
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -751,9 +751,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
- 
+
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -767,7 +767,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    });
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 `push.isPushSupported()`를 사용하십시오. 
 6. 다음 `WLClient.Push` API를 제거하십시오. 
     * `subscribeTag()`
@@ -845,7 +845,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
-    
+
 2. `didReceiveRemoteNotification()`에서 알림 처리를 구현하십시오. 
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
@@ -858,7 +858,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```objc
@@ -870,7 +870,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 다음을 사용하십시오. 
 
    ```objc
@@ -889,7 +889,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    ```objc
    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
    ```
-    
+
 ##### 서버
 {: #server-ios-1 }
 어댑터에서 다음 WL.Server API가 사용된 경우 이를 제거하십시오. 
@@ -936,7 +936,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```objc
@@ -948,13 +948,13 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 다음을 사용하십시오. 
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
-    
+
 6. 등록할 이벤트 소스가 없으므로 다음 `WLClient.Push` API를 제거하고 알림 콜백을 등록하십시오. 
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -977,7 +977,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 9. (선택사항) 태그에서 등록을 취소하십시오. 
 
    ```objc
@@ -992,7 +992,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 ##### 서버
 :{: #server-ios-2 }
 어댑터에서 `WL.Server`가 사용된 경우 이를 제거하십시오. 
@@ -1022,7 +1022,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
-    
+
 2. `didReceiveRemoteNotification()`에서 알림 처리를 구현하십시오. 
 3. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
@@ -1035,7 +1035,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
 
    ```objc
@@ -1047,7 +1047,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 다음을 사용하십시오. 
 
    ```objc
@@ -1096,9 +1096,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 4. (선택사항) 푸시 알림 서비스에서 모바일 디바이스의 등록을 취소하십시오. 
- 
+
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
@@ -1108,7 +1108,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 `[[MFPPush sharedInstance] isPushSupported]`를 사용하십시오. 
 6. 등록할 이벤트 소스가 없으므로 다음 `WLClient.Push` API를 제거하고 알림 콜백을 등록하십시오. 
     * `registerEventSourceCallback()`
@@ -1119,7 +1119,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 7. `didRegisterForRemoteNotificationsWithDeviceToken`에서 `sendDeviceToken()`을 호출하십시오. 
 8. 태그에 등록하십시오. 
- 
+
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
    [tags addObject:@"sample-tag1"];
@@ -1132,7 +1132,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
        }
    }];
    ```
-    
+
 9. (선택사항) 태그에서 등록을 취소하십시오. 
 
    ```objc
@@ -1183,12 +1183,12 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
-    
+
 2. 푸시 알림 서비스에 모바일 디바이스를 등록하십시오. 
 
    ```csharp
@@ -1257,12 +1257,12 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
-    
+
 2. IMFPUSH 서비스에 모바일 디바이스를 등록하십시오. 
 
    ```csharp
@@ -1313,7 +1313,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Debug.WriteLine("Failed to subscribe");
    }
    ```
-    
+
 7. (선택사항) 태그에서 등록을 취소하십시오. 
 
    ```csharp
@@ -1328,7 +1328,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Debug.WriteLine("Failed to unsubscribe");
    }
    ```
-    
+
 ##### 서버
 {: #windows-server-2 }
 어댑터에서 다음 `WL.Server` API가 사용된 경우 이를 제거하십시오. 
@@ -1359,7 +1359,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
@@ -1392,7 +1392,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Debug.WriteLine("Push Notifications Unregistered successfully");
    }
    ```
-    
+
 4. `WLClient.Push.isPushSupported()`가 사용된 경우 이를 제거하고 `push.IsPushSupported();`를 사용하십시오. 
 5. 다음 `WLClient.Push` API를 제거하십시오. 
     * `registerEventSourceCallback()`
@@ -1420,14 +1420,14 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    MFPPush push = MFPPush.GetInstance();
    push.Initialize();
    ```
-    
+
 2. MFPPushNotificationListener 인터페이스를 구현하고 onReceive()를 정의하십시오. 
 
    ```csharp
-   class Pushlistener : MFPPushNotificationListener
+class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
@@ -1482,7 +1482,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Debug.WriteLine("Failed to subscribe");
    }
    ```
-    
+
 8. (선택사항) 태그에서 등록을 취소하십시오. 
 
    ```csharp
@@ -1497,7 +1497,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
         Debug.WriteLine("Failed to unsubscribe");
    }
    ```
-    
+
 ##### 서버
 {: #windows-server-4 }
 어댑터에서 `WL.Server.sendMessage()`가 사용된 경우 이를 제거하십시오. 
@@ -1535,25 +1535,25 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 {: #procedure }
 1. [다음 GitHub 저장소](http://github.com)에서 마이그레이션 도구를 다운로드하십시오. 
 2. 도구를 다운로드한 후 **migration.properties** 파일에서 다음 세부사항을 제공하십시오. 
-	
-    | 값                | 설명  | 샘플 값 |
+
+    | 값| 설명| 샘플 값|
     |----------------------|--------------|---------------|
-    | w.db.type		       | 고려 중인 데이터베이스의 유형	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB URL  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB URL      | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB 사용자 이름 | pw.db.username=root |
-    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB 비밀번호 | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB 사용자 이름     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB 비밀번호     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 DB URL						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 DB 사용자 이름						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 DB 비밀번호						| pw.db.passwordTarget=root |
-    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB 스키마 | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB 스키마     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB 스키마    | MFPDATA |
-    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime 이름		 | runtime=worklight |
-    | applicationId	       | MobileFirst Platform Foundation 7.1에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오.  | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | {{ site.data.keys.product }} 8.0에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오.    | com.HybridTestApp,com.NativeiOSTestApp |
+    | w.db.type		       | 고려 중인 데이터베이스의 유형| pw.db.type = db2 possible values DB2,Oracle,MySql,Derby|
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB URL| jdbc:mysql://localhost:3306/WRKLGHT|
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB URL| jdbc:mysql://localhost:3306/ADMIN|
+    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB 사용자 이름| pw.db.username=root|
+    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB 비밀번호| pw.db.password=root|
+    | pw.db.adminusername| MobileFirst Platform Foundation 7.1 Admin DB 사용자 이름| pw.db.adminusername=root|
+    | pw.db.adminpassword| MobileFirst Platform Foundation 7.1 Admin DB 비밀번호| pw.db.adminpassword=root|
+    | pw.db.urlTarget	   | MFP 8.0 DB URL| jdbc:mysql://localhost:3306/MFPDATA|
+    | pw.db.usernameTarget| MFP 8.0 DB 사용자 이름| pw.db.usernameTarget=root|
+    | pw.db.passwordTarget| MFP 8.0 DB 비밀번호| pw.db.passwordTarget=root|
+    | pw.db.schema| MobileFirst Platform Foundation 7.1 Worklight DB 스키마| WRKLGT|
+    | pw.db.adminschema| MobileFirst Platform Foundation 7.1 Admin DB 스키마| WLADMIN|
+    | pw.db.targetschema| {{ site.data.keys.product }} 8.0 worklight DB 스키마| MFPDATA|
+    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime 이름| runtime=worklight|
+    | applicationId	       | MobileFirst Platform Foundation 7.1에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오. | HybridTestApp,NativeiOSTestApp|
+    | targetApplicationId| {{ site.data.keys.product }} 8.0에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오. | com.HybridTestApp,com.NativeiOSTestApp|
 
     * 적절한 순서로 **applicationID** 및 **targetApplicationId**의 값을 둘 다 제공했는지 확인하십시오. 맵핑은 일대일(또는 N대N) 방식으로 수행됩니다. 즉, **applicationId** 목록에서 첫 번째 애플리케이션의 데이터는 **targetApplicationId** 목록의 첫 번째 애플리케이션으로 마이그레이션됩니다. 
 	* **targetApplicationId** 목록에서 애플리케이션에 대해 packageName/BundleId를 제공하십시오. 즉, MobileFirst Platform Foundation 7.1에 있는 TestApp1의 경우 **targetApplicationId**는 com.TestApp1인 TestApp1의 packageName/BundleId가 됩니다. MobileFirst Platform Foundation 7.1 **applicationId**는 애플리케이션 이름이며 {{ site.data.keys.mf_server }} 8.0에서는 애플리케이션 환경 기반의 packageName/BundleId/packageIdentityName이기 때문입니다. 
@@ -1563,6 +1563,5 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    ```bash
    java -jar pushDataMigration.jar path-to-migration.properties
    ```
-   
-   * 도구 .jar 파일 및 properties 파일이 다른 위치에 있는 경우 **path-to-migration.properties**를 **migration.properties**의 경로로 대체하십시오. 그렇지 않으면 명령에서 해당 경로를 제거하십시오. 
 
+   * 도구 .jar 파일 및 properties 파일이 다른 위치에 있는 경우 **path-to-migration.properties**를 **migration.properties**의 경로로 대체하십시오. 그렇지 않으면 명령에서 해당 경로를 제거하십시오. 

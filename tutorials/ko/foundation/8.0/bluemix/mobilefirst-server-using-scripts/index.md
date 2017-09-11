@@ -85,11 +85,11 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 
 아카이브 파일에는 이미지를 빌드하는 데 필요한 파일(**dependencies**, **mfpf-libs**), {{ site.data.keys.mf_analytics }} Container를 빌드하고 배치하는 데 필요한 파일(**mfpf-analytics**), {{ site.data.keys.mf_server }} Container를 구성하는 데 필요한 파일(**mfpf-server**)이 들어 있습니다. 
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>클릭하면 사용할 아카이브 파일 컨텐츠와 사용 가능한 환경 특성에 대해 자세히 볼 수 있습니다.</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>클릭하면 사용할 아카이브 파일 컨텐츠와 사용 가능한 환경 특성에 대해 자세히 볼 수 있습니다.</b></a>
             </h4>
         </div>
 
@@ -124,7 +124,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
                     <li><b>env</b> 폴더: 서버 초기화에 사용되는 환경 특성(server.env)과 사용자 정의 JVM 옵션(jvm.options)이 들어 있습니다. </li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-server-env" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -309,7 +309,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 
 >**참고:** 설치 프로그램과 DB 도구는 사내 구축형 {{ site.data.keys.mf_app_center }} 설치 폴더(`installer` 및 `tools` folders)에서 다운로드할 수 있습니다.
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
             <h4 class="panel-title">
@@ -317,7 +317,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
             </h4>
         </div>
 
-        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오. <br/>
               <h4>initenv.properties</h4>
@@ -369,7 +369,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
             </h4>
         </div>
 
-        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
                 <ol>
@@ -378,7 +378,7 @@ IBM Containers에서 {{ site.data.keys.product }}를 빌드하고 실행하는 �
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-initenv">
                                     <h4 class="panel-title">
@@ -434,7 +434,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenterdbs" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
                                     <h4 class="panel-title">
@@ -489,7 +489,7 @@ Bluemix 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
                                     <h4 class="panel-title">
@@ -529,7 +529,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
                                     <h4 class="panel-title">
@@ -614,7 +614,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcentergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
                                     <h4 class="panel-title">
@@ -710,15 +710,15 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_server }}에서 분석을 사용하려면 여기에서 시작하십시오. 
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts-analytics" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step1">
+        <div class="panel-heading" role="tab" id="step1-analytics">
             <h4 class="panel-title">
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">구성 파일 사용</a>
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오. <br/>
             <b>참고:</b> 필수 인수만 포함합니다. 추가 인수에 대해 자세히 알아보려면 특성 파일에 있는 문서를 참조하십시오.
@@ -760,7 +760,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
                 <ol>
@@ -769,7 +769,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
@@ -827,7 +827,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         Bluemix 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오. <br/>
                         목록은 이미지 이름, 작성 날짜, ID를 포함합니다. 
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
@@ -868,7 +868,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
@@ -966,7 +966,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
@@ -1063,7 +1063,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -1071,7 +1071,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다.  다음 파일의 인수 값을 채우십시오. <br/>
 
@@ -1126,7 +1126,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
 
@@ -1137,7 +1137,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-initenv" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
@@ -1191,7 +1191,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserverdbs" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
@@ -1258,7 +1258,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
@@ -1296,7 +1296,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-startserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
@@ -1380,7 +1380,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-startservergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
@@ -1511,7 +1511,7 @@ IBM Bluemix에서 {{ site.data.keys.mf_server }}가 실행되면 애플리케이
 
     b. 서버 이미지를 독립형 컨테이너로 실행하려면 `startserver.sh` 스크립트를 실행하고, 서버 이미지를 컨테이너 그룹으로 실행하려면 `startservergroup.sh`를 실행하십시오. 
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix에서 컨테이너 제거
 {: #removing-a-container-from-bluemix }
