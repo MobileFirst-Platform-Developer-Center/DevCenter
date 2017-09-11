@@ -15,9 +15,9 @@ weight: 13
 
 ## 证书锁定过程
 {: #certificate-pinning-process }
-证书锁定是将主机与其期望的公用密钥关联的过程。由于您同时拥有服务器端代码和客户机端代码，因此可以将客户机代码配置为仅接受用于自己域名的特定证书，而不接受与操作系统或浏览器认可的可信 CA 根证书对应的任何证书。
+证书锁定是将主机与其期望的公用密钥关联的过程。由于您同时拥有服务器端代码和客户机端代码，因此可以将客户机代码配置为仅接受用于自己域名的特定证书，而不接受与操作系统或浏览器认可的可信 CA 根证书对应的任何证书。证书副本将放入客户机应用程序中。在 SSL 握手（第一次向服务器发出请求）期间，{{ site.data.keys.product_adj }} 客户机 SDK 会验证服务器证书的公用密钥是否与应用程序中存储的证书的公用密钥匹配。
 
-证书副本将放入应用程序中，并在 SSL 握手（针对服务器的第一条请求）期间使用。{{ site.data.keys.product_adj }} 客户机 SDK 会验证服务器证书的公用密钥是否与应用程序中存储的证书的公用密钥匹配。
+您还可以将多个证书与客户机应用程序锁定。所有证书的副本都应放入客户机应用程序中。在 SSL 握手（第一次向服务器发出请求）期间，{{ site.data.keys.product_adj }} 客户机 SDK 会验证服务器证书的公用密钥是否与应用程序中存储的证书之一的公用密钥匹配。
 
 #### 重要信息
 {: #important }
@@ -41,32 +41,73 @@ weight: 13
 
 ## 证书锁定 API
 {: #certificate-pinning-api }
-证书锁定包含一个 API 方法，该方法具有 `certificateFilename` 参数，其中 `certificateFilename` 是证书文件的名称。
+证书锁定包含以下过载 API 方法，其中一个方法具有参数 `certificateFilename`，其中 `certificateFilename` 是证书文件的名称，第二个方法具有参数 `certificateFilenames`，其中 `certificateFilenames` 是证书文件的名称数组。
 
 ### Android
 {: #android }
+单证书：
+语法：
+pinTrustedCertificatePublicKeyFromFile(String certificateFilename);
+示例：
 ```java
 WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
+多个证书：
 
-在以下两种情况下，证书锁定方法将抛出异常：
-
+语法：
+pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
+示例：
+```java
+String[] certificates={"myCertificate.cer","myCertificate1.cer"};
+WLClient.getInstance().pinTrustedCertificatePublicKey(certificates);
+```
+在以下两种情况下，证书锁定方法将引发异常：
 * 文件不存在
 * 文件格式错误
 
+
 ### iOS
 {: #ios }
-**在 Objective-C 中：**
+单证书锁定语法：
+pinTrustedCertificatePublicKeyFromFile:(NSString*) certificateFilename;
 
+在以下两种情况下，证书锁定方法将引发异常：
+* 文件不存在
+* 文件格式错误
+
+多证书锁定语法：
+pinTrustedCertificatePublicKeyFromFiles:(NSArray*) certificateFilenames;
+
+在以下两种情况下，证书锁定方法将引发异常：
+* 不存在证书文件
+* 不存在格式正确的证书文件
+
+**在 Objective-C 中：**
+示例：
+单证书：
 ```objc
 [[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
 
 ```
+多证书：
+示例：
+```objc
+NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“Cert3",nil];
+[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFiles:arrayOfCerts];
+```
 
 **在 Swift 中：**
 
+单证书：
+示例：
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+```
+多证书：
+示例：
+```swift
+let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
+WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
 ```
 
 在以下两种情况下，证书锁定方法将引发异常：
@@ -76,9 +117,17 @@ WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.
 
 ### Cordova
 {: #cordova }
-```javascript
-WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure);
 
+单证书锁定：
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess, onFailure);
+```
+
+多证书锁定：
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey(['Cert1.cer','Cert2.cer','Cert3.cer']).then(onSuccess, onFailure);
 ```
 
 证书锁定方法会返回预期结果：

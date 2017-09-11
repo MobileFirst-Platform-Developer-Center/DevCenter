@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 进行了重大更改，极大地改善了您的 {{ site.data.keys.product_adj }} 应用程序开发、部署和管理体验。
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ weight: 1
 
                 <h3>运行时的更新后的 REST API</h3>
                 <p>{{ site.data.keys.product_adj }} 运行时的 REST API 现在为移动式客户机和保密客户机提供多个服务，以调用适配器、获取访问令牌以及获取直接更新内容等。 大多数 REST API 端点受 OAuth 保护。 在开发服务器上，您可以在以下位置查看运行时 API 的 Swagger 文档：<code>http(s)://server_ip:server_port/context_root/doc</code>。</p>
+
+                <h3>多证书锁定支持</h3>
+                <p>从 iFix 8.0.0.0-IF201706240159 开始，{{ site.data.keys.mf_bm_short }} 支持锁定多个证书。这使得用户能够安全访问多个主机。在此 iFix 之前，{{ site.data.keys.mf_bm_short }} 支持锁定单个证书。{{ site.data.keys.mf_bm_short }} 引入了一个新 API，通过允许用户将多个 X509 证书（购买自认证中心）的公用密钥锁定到客户机应用程序，来允许连接到多个主机。应将所有证书的副本放置在您的客户机应用程序中。在 SSL 握手期间，{{ site.data.keys.product_full }} 客户机 SDK 将验证服务器证书的公用密钥与存储在应用程序中的某个证书的公用密钥是否匹配。</p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>引入了全新的 {{ site.data.keys.product }} 功能来帮助您部署和管理应用程序。 您现在无需重新启动 {{ site.data.keys.mf_server }} 即可更新应用程序和适配器。</p>
 
