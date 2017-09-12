@@ -64,9 +64,7 @@ das Abonnement des reservierten Tags `Push.all` beendet wird.
 
 #### Unicastbenachrichtigungen
 {:# unicast-notifications }
-Unicastbenachrichtigungen oder mit OAuth geschützte authentifizierte Benachrichtigungen
-sind Benachrichtigungen, die an ein
-bestimmtes Gerät oder an bestimmte Benutzer-IDs gesendet werden. Die Benutzer-ID (userID) im Benutzerabonnement kann aus dem
+Unicastbenachrichtigungen oder mit OAuth geschützte authentifizierte Benachrichtigungen sind Benachrichtigungen, die an ein bestimmtes Gerät oder an bestimmte Benutzer-IDs gesendet werden. Die Benutzer-ID (userID) im Benutzerabonnement kann aus dem
 zugrunde liegenden Sicherheitskontext stammen. 
 
 #### Interaktive Benachrichtigungen
