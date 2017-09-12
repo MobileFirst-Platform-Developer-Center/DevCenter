@@ -1,6 +1,6 @@
 ---
-title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170803-1112 released
-date: 2017-08-08
+title: MobileFirst Foundation iFix 8.0.0.0-MFPF-IF20170823-1236 released
+date: 2017-08-29
 version:
 - 8.0
 tags:
@@ -11,25 +11,29 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-<p><font color="red">Please <b>do not</b> download this iFix as there is a known issue with this iFix.</font></p>
+<p><font color="red">Please <b>do not</b> download this iFix as there is a known issue with this iFix. </font></p>
 
-A new iFix has been released for MobileFirst Foundation 8.0, dated **August 3rd, 2017**.
+A new iFix has been released for MobileFirst Foundation 8.0, dated **August 23rd, 2017**.
 
 > **Important:** There is a known issue with this iFix causing the Mobile Foundation server to not start properly. This is fixed in [iFix 8.0.0.0-MFPF-IF20170901-1903](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/05/8-0-ifix-release/).
 
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
-###  Generate an adapter from its OpenAPI specification
-{{ site.data.keys.product }} introduces the capability to auto-generate an adapter from its OpenAPI specification. {{ site.data.keys.product }} users can now focus on the application logic instead of creating the {{ site.data.keys.product }} adapter, which connects the application to the desired back-end service. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/microservice-adapter/).
-
-### Support for pinning multiple certificates in the Cordova SDK
-Starting with the iFix **8.0.0.0-MFPF-IF20170624-0159**, Mobile Foundation had introduced the support for pinning of multiple certificates. This was supported only for native android and iOS apps. Now, starting with this iFix (**8.0.0.0-MFPF-IF20170803-1112**) pinning of multiple certificates is supported in the Cordova SDK. Read more on **Multiple certificate pinning support** from [What's new](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/), under the section *What's new in MobileFirst APIs* .
+### Support for cordova browser platform
+Starting with this iFix, {{ site.data.keys.product }} supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
 
 ### APARs Fixed
 
-**PI84719** NEW JNDI PROPERTY TO CONTROL ANALYTIC EVENT QUEUE SIZE TO IMPROVE PERFORMANCE <br>
-**PI84522** MobileFirst SDK cannot pin a certificate using the WL.Client.pinTrustedCertificatePublicKey API when Web ResourcesE<br>
+**PI86226** MOBILEFIRST SERVER IN FARM RUNNING ON DEDICATED BLUEMIX FAILS TO START CORRECTLY WITH SYNC MESSAGES OCCURRING.<br>
+**PI86157** WHEN USER REOPENS THE APP AFTER SUCCESSFUL REGISTRATION, UNABLE TO UNSUBSCRIBE OR UNREGISTER WITH DEVICEID UNAUTHORISED ERROR. <br>
+**PI86156** JSONARRAY IS NOT SET TO RESPONSE JSON ON ANDROID <br>
+**PI86037** SECURITY ANNOTATIONS ARE NOT GETTING UPDATED IN MOBILE FIRST CONSOLE WHEN PATH ANNOTATION HAS REGEX EXPRESSION FILTERS <br>
+**PI85962** JSONSTORE ISSUE ON ANDROID X86_64 EMULATOR <br>
+**PI84989** USING IBM MOBILEFIRSTPLATFORMFOUNDATIONJSONSTORE.H MIGHT RESULT IN FILE NOT FOUND EXCEPTION <br>
+**PI80054** CLIENT-SIDE LOG CAPTURE CONFIGURATION FROM OPERATIONS CONSOLE MAY NOT BE EFFECTIVE <br>
+**PI75098** MALFORMED HTTP RESPONSE CAUSED IOS APP CRASH.
+
 
 ## How to upgrade
 **Server**  
@@ -51,9 +55,9 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
         </div>
         <div id="collapse-mfp-devkit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit">
             <div class="panel-body">
-                  <b>8.0.0.0-MFPF-DevKit-Linux-IF201708031112.bin</b><br/>
-                  <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201708031112.zip</b><br/>
-                  <b>8.0.0.0-MFPF-DevKit-Windows-IF201708031112.exe</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-Linux-IF201708231236.bin</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201708231236.zip</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-Windows-IF201708231236.exe</b><br/>
             </div>
         </div>      
     </div>
@@ -65,11 +69,11 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
         </div>
         <div id="collapse-cordova-plugins" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova-plugins">
             <div class="panel-body">
-                  <b>cordova-plugin-mfp              8.0.2017072706</b><br/>
+                  <b>cordova-plugin-mfp              8.0.2017082110</b><br/>
                   cordova-plugin-mfp-encrypt-utils   8.0.2017021815<br/>
                   cordova-plugin-mfp-fips            8.0.2017021815<br/>
-                  cordova-plugin-mfp-jsonstore       8.0.2017070506<br/>
-                  cordova-plugin-mfp-push            8.0.2017062111<br/>
+                  <b>cordova-plugin-mfp-jsonstore       8.0.2017082110</b><br/>
+                  <b>cordova-plugin-mfp-push            8.0.2017082110</b><br/>
                   cordova-template-mfp               8.0.2017060206<br/>
                   ibm-mfp-web-sdk                    8.0.2017021409<br/>
                   passport-mfp-token-validation      8.0.2017010917<br/>
@@ -79,12 +83,12 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="tools">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-tools" aria-expanded="true" aria-controls="collapse-tools"><b>Tools</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-tools" aria-expanded="true" aria-controls="collapse-tools">Tools</a>
             </h4>
         </div>
         <div id="collapse-tools" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools">
             <div class="panel-body">
-                  <b>mfpdev-cli 8.0.2017080206</b><br/>
+                  mfpdev-cli 8.0.2017080206<br/>
                   mfpmigrate-cli 8.0.2017061505<br/>
             </div>
         </div>      
@@ -97,8 +101,8 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
         </div>
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                    <b>IBMMobileFirstPlatformFoundation             8.0.2017072608</b><br/>
-                    <b>IBMMobileFirstPlatformFoundationOpenSSLUtils 8.0.2017072608</b><br/>
+                    <b>IBMMobileFirstPlatformFoundation             8.0.2017080719</b><br/>
+                    <b>IBMMobileFirstPlatformFoundationOpenSSLUtils 8.0.2017080719</b><br/>
                     IBMMobileFirstPlatformFoundationPush         8.0.2017061612<br/>
                     IBMMobileFirstPlatformFoundationJSONStore    8.0.2017053010<br/>
             </div>
@@ -107,14 +111,14 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-android-sdk" aria-expanded="true" aria-controls="collapse-android-sdk"><b>Android SDK</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-android-sdk" aria-expanded="true" aria-controls="collapse-android-sdk">Android SDK</a>
             </h4>
         </div>
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
-                    <b>ibmmobilefirstplatformfoundation 8.0.2017062702</b><br/>
+                    ibmmobilefirstplatformfoundation 8.0.2017062702<br/>
                     ibmmobilefirstplatformfoundationpush            8.0.2017011813<br/>
-                    <b>ibmmobilefirstplatformfoundationjsonstore       8.0.2017052514</b><br/>
+                    ibmmobilefirstplatformfoundationjsonstore       8.0.2017052514<br/>
                     adapter-maven-plugin              8.0.2017021701<br/>
                     adapter-maven-archetype-sql       8.0.2017021701<br/>
                     adapter-maven-archetype-java      8.0.2017021701<br/>
