@@ -69,8 +69,8 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 3. Fügen Sie im Abschnitt `android` die folgende Zeile hinzu: 
 
    ```xml
-   packagingOptions {
-        pickFirst 'META-INF/ASL2.0'
+packagingOptions {
+pickFirst 'META-INF/ASL2.0'
         pickFirst 'META-INF/LICENSE'
         pickFirst 'META-INF/NOTICE'
    }
@@ -79,12 +79,13 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu: 
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
-   name: 'ibmmobilefirstplatformfoundation',
-   version: '8.0.+',
-   ext: 'aar',
-   transitive: true
-   ```
+compile group: 'com.ibm.mobile.foundation',
+        name: 'ibmmobilefirstplatformfoundation',
+        version: '8.0.+',
+        ext: 'aar',
+        transitive: true
+
+        ```
 
    Oder in einer einzelnen Zeile: 
 
@@ -111,7 +112,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 {: #manually-adding-the-mobilefirst-native-sdk }
 Sie können das SDK der {{ site.data.keys.product_adj }} auch manuell hinzufügen: 
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -161,8 +162,7 @@ repositories {
     ```bash
     mfpdev app register
     ```
-    - Wenn ein ferner Server verwendet wird,
-fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
+    - Wenn ein ferner Server verwendet wird, fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu.
 
 Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung zu
 {{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren.
@@ -204,13 +204,13 @@ Diese Datei befindet sich im Ordner **./app/src/main/assets/** des Android-Studi
 enthält die clientseitigen Eigenschaften für die Registrierung Ihrer
 Android-App bei {{ site.data.keys.mf_server }}. 
 
-| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
+| Eigenschaft | Beschreibung | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
-| wlServerHost        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
-| wlServerPort        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
-| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
+| wlServerProtocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
+| wlServerHost | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
+| wlServerPort | Port von {{ site.data.keys.mf_server }} | 9080 |
+| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
 
 ## Unterstützung für Javadoc und den Android-Service
 {: #support-for-javadoc-and-android-service }
