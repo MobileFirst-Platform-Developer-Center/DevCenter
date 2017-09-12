@@ -1292,7 +1292,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 ```xml
 <Realm className="org.apache.catalina.realm.MemoryRealm"/>
-      ```
+```
 #### 配置详细信息
 {: #configuration-details-tomcat }
 <div class="panel-group accordion" id="manual-installation-apache-tomcat" role="tablist">
@@ -1963,7 +1963,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                             <br/><br/>
                             要启用 {{ site.data.keys.mf_server }} 组件使用的数据库的配置，请设置以下属性的值：
                                 <ul>
-                                    <li>将 <b>mfp.process.admin</b> 设置为 <b>true</b>。针对管理服务和实时更新服务配置数据库。/li>
+                                    <li>将 <b>mfp.process.admin</b> 设置为 <b>true</b>。针对管理服务和实时更新服务配置数据库。</li>
                                     <li>将 <b>mfp.process.runtime</b> 设置为 <b>true</b>。针对运行时配置数据库。</li>
                                 </ul>
                             </li>

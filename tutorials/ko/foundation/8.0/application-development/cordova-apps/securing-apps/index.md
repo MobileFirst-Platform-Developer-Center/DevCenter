@@ -14,7 +14,7 @@ weight: 1
 
 * Cordova 개발 도구가 설치되어 있어야 합니다. 이 예제에서는 Apache Cordova CLI를 사용합니다. 다른 Cordova 개발 도구를 사용하는 경우 일부 단계가 다릅니다. 지시사항은 Cordova 도구 문서를 참조하십시오. 
 * {{ site.data.keys.mf_cli }}가 설치되어 있어야 합니다. 
-* { site.data.keys.product_adj }} Cordova 플러그인이 설치되어 있어야 합니다. 
+* {{ site.data.keys.product_adj }} Cordova 플러그인이 설치되어 있어야 합니다.
 
 앱 개발을 완료한 후 앱을 배치할 준비가 되었을 때 이 프로시저를 완료하는 것이 가장 좋습니다. 웹 자원 암호화 프로시저를 완료한 후에 다음 명령을 실행하면 암호화된 컨텐츠가 복호화됩니다. 
 
@@ -54,8 +54,8 @@ Android 운영 체제용 앱이고 **resources.zip** 파일 크기가 1MB를 초
 **전제조건:**
 
 * Cordova 개발 도구가 설치되어 있어야 합니다. 이 예제에서는 Apache Cordova CLI를 사용합니다. 다른 Cordova 개발 도구를 사용하는 경우 일부 단계가 다릅니다. 지시사항은 Cordova 도구 문서를 참조하십시오. 
-* {{ site.data.keys.mf_cli }}가 설치되어 있어야 합니다.  
-* { site.data.keys.product_adj }} 플러그인이 설치되어 있어야 합니다. 
+* {{ site.data.keys.mf_cli }}가 설치되어 있어야 합니다. 
+* {{ site.data.keys.product_adj }} 플러그인이 설치되어 있어야 합니다. 
 * 운영 체제에 웹 자원 체크섬 기능을 사용할 수 있으려면 먼저 `cordova platform add [android|ios|windows|browser]` 명령을 입력하여 Cordova 프로젝트에 해당 플랫폼을 추가해야 합니다. 
 
 Cordova 앱에 웹 자원 체크섬 기능을 사용하려면 다음 단계를 완료하십시오. 
@@ -68,27 +68,27 @@ Cordova 앱에 웹 자원 체크섬 기능을 사용하려면 다음 단계를 �
    ```
 
    예:   
-    
+
    ```bash
    mfpdev app config android_security_test_web_resources_checksum true
    ```
 
    명령에서 **true**를 **false**로 바꾸면 기능을 사용 안함으로 설정할 수 있습니다. 
-   
+
    > **팁:** `mfpdev help app config`를 입력하여 `mfpdev app config` 명령에 대한 정보를 볼 수 있습니다. 
-    
+
 3. 다음 명령을 입력하여 체크섬 테스트 중에 무시할 파일 유형을 식별하십시오. 
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
    ```
-    
+
    확장자가 여러 개인 경우 공백 없이 쉼표로 구분해야 합니다. 예: 
-    
+
    ```bash
    mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
    ```
-    
+
 **중요:** 이 명령을 실행하면 설정된 값을 겹쳐씁니다. 
 
 테스트 시 웹 자원 체크섬이 스캔하는 파일 수가 많을수록 앱을 여는 데 걸리는 시간이 길어집니다. 건너뛸 파일 유형의 확장자를 지정하여 앱이 시작되는 속도를 빠르게 할 수 있습니다. 

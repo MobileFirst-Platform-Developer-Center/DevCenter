@@ -118,7 +118,7 @@ weight: 1
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova 애플리케이션 개발</a>에 대해 자세히 학습하십시오. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
@@ -169,15 +169,15 @@ weight: 1
                         <h4>3단계</h4>
                         <p>이제 Cordova 앱에서 애플리케이션의 소스 코드를 사용하여 몇몇 코드 블록을 추가하거나 편집해야 합니다. </p>
 
-                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="setupCordova" role="tablist">
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="setupCordova">
+                            <div class="panel-heading" role="tab" id="setupCordova-inner">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">지시사항을 보려면 클릭</a>
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova-inner">
                                 <div class="panel-body">
                                     <ol>
                                         <li><b>www/index.html</b> 파일을 업데이트하십시오.
@@ -301,11 +301,11 @@ if (document.addEventListener) {
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">웹 애플리케이션 개발</a>에 대해 자세히 학습하십시오. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-web" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">모바일 웹/데스크탑 브라우저 애플리케이션 마이그레이션</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-web" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">모바일 웹/데스크탑 브라우저 애플리케이션 마이그레이션</a>
                     </h4>
                 </div>
 
@@ -364,11 +364,11 @@ if (document.addEventListener) {
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">고유 애플리케이션 개발</a>에 대해 자세히 학습하십시오. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">고유 애플리케이션에서 SDK 업데이트</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">고유 애플리케이션에서 SDK 업데이트</a>
                     </h4>
                 </div>
 
@@ -410,7 +410,7 @@ if (document.addEventListener) {
                         </ul>
 
                         <br/>
-                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion1" role="tablist">
                            <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="removeiOSSDK">
                                  <h4 class="panel-title">
@@ -521,7 +521,7 @@ end{% endhighlight %}
                         <br/>
 
                         <b>Android</b><br/>
-                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion2" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
                                     <h4 class="panel-title">
@@ -598,7 +598,7 @@ transitive: true{% endhighlight %}</li>
                         <br/>
 
                         <b>Windows</b><br/>
-                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion3" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
                                     <h4 class="panel-title">
@@ -692,11 +692,11 @@ transitive: true{% endhighlight %}</li>
         <br/>
         <p>어댑터를 Maven 프로젝트로 마이그레이션하는 단계에는 일치하는 새 Maven 프로젝트 작성 및 기존 어댑터의 소스 코드로 복사(몇몇 수정과 함께)가 포함됩니다. 그런 다음 Maven 프로젝트를 빌드하여 오류를 찾습니다. </p>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration-maven" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="prereqs">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven 설치의 전제조건</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven 설치의 전제조건</a>
                     </h4>
                 </div>
 
@@ -735,7 +735,7 @@ export MVN_PATH="/usr/local/bin"
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">새 Maven 프로젝트 작성</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">새 Maven 프로젝트 작성</a>
                     </h4>
                 </div>
 
@@ -962,7 +962,7 @@ export MVN_PATH="/usr/local/bin"
 
         <blockquote><a href="../migrating-security/" target="_blank">인증 및 보안 마이그레이션</a>의 학습서에서 보안을 마이그레이션하는 방법을 학습하십시오. 보안 프레임워크 및 권한 부여 개념에 대해 자세히 학습하려면 <a href="../../authentication-and-security/" target="_blank">인증 및 보안 학습서</a>를 참조하십시오. </blockquote>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
                     <h4 class="panel-title">

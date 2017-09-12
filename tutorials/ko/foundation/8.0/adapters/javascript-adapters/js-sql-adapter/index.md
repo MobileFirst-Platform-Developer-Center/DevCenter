@@ -4,8 +4,8 @@ title: JavaScript SQL 어댑터
 breadcrumb_title: SQL 어댑터
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 어댑터 Maven 프로젝트 다운로드
-url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - 이름: 어댑터 Maven 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -54,7 +54,7 @@ XML 파일은 설정과 메타데이터를 포함합니다.
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -83,7 +83,7 @@ sql:SQLConnectionPolicy로 설정되어야 합니다.
 
                     <li><b>dataSourceJNDIName</b>: <i>선택사항.</i> 애플리케이션 서버에서 제공하는 데이터 소스의 JNDI 이름을 사용하여 데이터 소스에 연결합니다. 어댑터는 JNDI 이름과 연관되는 서버 연결 풀에서 연결을 가져옵니다. 애플리케이션 서버에서는 데이터 소스를 구성하는
 방법을 보여줍니다. 자세한 정보는 애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치를 참조하십시오. 예: 
-                    
+
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
@@ -158,7 +158,7 @@ function getAccountTransactions2(accountId){
 
 ### 다중 매개변수 사용
 {: #using-multiple-parameters }
- 
+
 SQL 조회에서 단일 또는 다중 매개변수를 사용할 때 함수의 변수를 승인하고 이러한 변수를 **array**의 `invokeSQLStatement` 또는 `invokeSQLStoredProcedure` 매개변수로 전달해야 합니다. 
 
 ```javascript

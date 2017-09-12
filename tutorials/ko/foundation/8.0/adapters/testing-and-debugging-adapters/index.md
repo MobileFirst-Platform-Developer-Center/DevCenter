@@ -87,6 +87,8 @@ JavaScript 어댑터에서 보안을 사용 안함으로 설정하려면 `secure
 2.  기밀 클라이언트 ID("테스트") 및 시크릿("테스트")과 함께 `Basic authentication`을 사용하여 `authorization header`를 추가하십시오. 
     > 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오.
 
+
+
     ![Postman 권한 부여 구성 이미지](Authorization_configuration.png)
 
 
@@ -125,14 +127,16 @@ Swagger에 액세스하려면 다음을 수행하십시오.
 
 <img alt="Swagger UI의 켜기/끄기 스위치 이미지" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### 테스트 토큰
-{: #test-token }
+#### 테스트 토큰 추가
+{: #adding-a-test-token }
 
 요청에 테스트 토큰을 추가하여 보안 프레임워크가 자원을 보호하는 보안 문제를 건너뛰게 하려면 엔드포인트의 조작의 오른쪽 구석에 있는 **켜기/끄기 스위치** 단추를 클릭하십시오. 
 
 Swagger UI에 부여하려는 범위를 선택하도록 요청됩니다. (테스트 용도의 경우 모두를 선택할 수 있습니다.) 처음으로 Swagger UI를 사용 중인 경우 기밀 클라이언트 ID와 시크릿으로 로그인해야 할 수 있습니다. 이를 위해서 **허용된 범위**를 `*`로 지정하여 새 기밀 클라이언트를 작성해야 합니다. 
 
-> [기밀 클라이언트](../../authentication-and-security/confidential-clients) 학습서에서 기밀 클라이언트에 대해 자세히 알아보십시오. <br/><br/>
+> [기밀 클라이언트](../../authentication-and-security/confidential-clients) 학습서에서 기밀 클라이언트에 대해 자세히 알아보십시오. 
+
+<br/><br/>
 
 #### 요청 전송
 
@@ -140,7 +144,7 @@ Swagger UI에 부여하려는 범위를 선택하도록 요청됩니다. (테스
 
 엔드포인트의 조작을 확장하고 필수 매개변수(필요한 경우)를 입력한 다음 **시험해 보기!** 단추를 클릭하십시오. 
 
-  ![테스트 토큰과 함께 Swagger을 사용하는 어댑터 요청](SwaggerReq.png)
+  ![테스트 토큰과 함께 Swagger를 사용하는 어댑터 요청](SwaggerReq.png)
 
 #### Swagger 어노테이션
 {: #swagger-annotations }

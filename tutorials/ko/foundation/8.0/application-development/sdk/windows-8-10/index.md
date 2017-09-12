@@ -23,7 +23,7 @@ weight: 4
 #### 다음으로 이동:
 {: #jump-to }
 - [{{ site.data.keys.product_adj }} 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
-- [수동으로 {{ site.data.keys.product_adj }} 고유 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk) 
+- [수동으로 {{ site.data.keys.product_adj }} 고유 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk)
 - [{{ site.data.keys.product_adj }} 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
 - [생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
 - [다음 학습서](#tutorials-to-follow-next)
@@ -65,7 +65,7 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 
 {{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
 
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">
