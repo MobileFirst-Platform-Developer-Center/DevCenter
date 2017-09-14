@@ -1,4 +1,4 @@
-﻿---
+---
 layout: tutorial
 title: Guide d'installation du poste de travail
 breadcrumb_title: Guide d'installation
