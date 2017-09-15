@@ -121,7 +121,7 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-win-sdk" aria-expanded="true" aria-controls="collapse-win-sdk"><b>Windows SDK<b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-win-sdk" aria-expanded="true" aria-controls="collapse-win-sdk"><b>Windows SDK</b></a>
             </h4>
         </div>
         <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
