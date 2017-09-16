@@ -59,17 +59,31 @@ Highlighted features that were tested are:
 * Analytics
 * Push Notifications
 * Remote Disable
+* Application Center
 
 All the above features were validated to work on iOS 11 beta 3.  
 
 #### Known Issues
-* JSONStrore feature to "add data to collection" does not work as expected when device is upgraded from iOS 10 to iOS 11.
-* Access disable option does not navigate to the newly upgraded url on MobileFirst_Foundation 7.1
-These issues are under investigation.
+* Starting with iOS 11, Apple had updated WebCrypto API in Safari 11 which is not compatible with the current MobileFirst API.  As a result, the MobileFirst Mobile and Web app might failed to start when the device has upgraded to iOS 11.
+The fix is added to IBM Web SDK , can be downloaded from [here](https://www.npmjs.com/package/ibm-mfp-web-sdk)
+
+* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick demo of the issue and the fix is shown in the video below:
+
+
+
+In the html file of the app set ‘ viewport-fit=cover’  in viewport meta tag.    
+
+```html
+ <meta name=“viewport” content=“user-scalable=no, initial-scale=1,viewport-fit=cover, maximum-scale=1, minimum-scale=1, width=device-width”> .
+```
+Also in  Also in  .css file add the padding as below  under header .
+
+```html
+header { /* …other header content.. */   padding-top: constant(safe-area-inset-top);  }
+```
 
 iOS11 compatibility tests are planned for following:
 * Live Update SDK
-* Application Center
 * Mobile Foundation WatchOS framework with WatchOS4
 
 Please continue to watch out this space for any new updates related to iOS 11 Support.
