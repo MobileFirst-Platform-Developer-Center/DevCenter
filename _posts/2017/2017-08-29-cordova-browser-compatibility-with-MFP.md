@@ -172,12 +172,12 @@ body {
 
 ```
 
-<!--
+
 Add the browser platform using the following command:
 ```bash
 cordova platform add browser
 ```
-
+<!--
  (Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
 
 > To manually register your application:
