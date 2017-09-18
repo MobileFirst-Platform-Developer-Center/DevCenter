@@ -67,7 +67,14 @@ All the above features were validated to work on iOS 11 beta 3.
 * Starting with iOS 11, Apple had updated WebCrypto API in Safari 11 which is not compatible with the current MobileFirst API.  As a result, the MobileFirst Mobile and Web app might failed to start when the device has upgraded to iOS 11.
 The fix is added to IBM Web SDK , can be downloaded from [here.](https://www.npmjs.com/package/ibm-mfp-web-sdk)
 
-* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick demo to cover the issue and the fix is  [here.]https://www.youtube.com/watch?v=3JJ9UqVWjvQ&feature=youtu.be
+* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick video to explain the issue and the fix is available below.
+
+
+<div class="sizer">
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/watch?v=3JJ9UqVWjvQ&feature=youtu.be"></iframe>
+  </div>
+</div>
 
 In the html file of the app set ‘ viewport-fit=cover’  in viewport meta tag.    
 
