@@ -69,10 +69,9 @@ The fix is added to IBM Web SDK , can be downloaded from [here.](https://www.npm
 
 * Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick video to explain the issue and the fix is available below.
 
-
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/watch?v=3JJ9UqVWjvQ&feature=youtu.be"></iframe>
+    <iframe src="https://www.youtube.com/embed/3JJ9UqVWjvQ"></iframe>
   </div>
 </div>
 
@@ -83,7 +82,7 @@ In the html file of the app set ‘ viewport-fit=cover’  in viewport meta tag.
 ```
 Also in  Also in  .css file add the padding as below  under header .
 
-```html
+```css
 header { /* …other header content.. */   padding-top: constant(safe-area-inset-top);  }
 ```
 iOS11 compatibility tests are planned for following:
