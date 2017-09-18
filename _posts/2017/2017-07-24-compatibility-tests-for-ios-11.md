@@ -67,7 +67,12 @@ All the above features were validated to work on iOS 11 beta 3.
 * Starting with iOS 11, Apple had updated WebCrypto API in Safari 11 which is not compatible with the current MobileFirst API.  As a result, the MobileFirst Mobile and Web app might failed to start when the device has upgraded to iOS 11.
 The fix is added to IBM Web SDK , can be downloaded from [here.](https://www.npmjs.com/package/ibm-mfp-web-sdk)
 
-* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick video to explain the issue and the fix is available below.
+* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.We observed following issues.
+
+** We observed UI contains white areas at the top and bottom of the screen when running on iPhone X simulator as below.
+![iPhone X Ui Issue]({{site.baseurl}}/assets/blog/2017-07-24-compatibility-tests-for-ios-11/IPhoneX_UIIssue.png)
+
+** As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick video to explain the issue and the fix is available below.
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
