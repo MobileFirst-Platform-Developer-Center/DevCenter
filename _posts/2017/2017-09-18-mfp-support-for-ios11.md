@@ -8,25 +8,37 @@ tags:
 version:
 - 8.0
 - 7.1
+
 author:
   name: Sandhya Suman
 ---
 
-Every year Apple releases a new iOS iteration. With every new release, the commitment to ensure compatibility by embracing iOS changes smoothly and with minimal impacts is kept. With this year's Apple release of iOS11, we are pleased to announce that we extend MobileFirst Platform Foundation v7.1 and v8.0 support on iOS 11. And even better we do not need an update for iOS11 for MobileFirst Platform Foundation v8.0 except IBM Web SDK
+Every year Apple releases a new iOS iteration, and with every release we keep our promise to customer by ensuring compatibility, embracing iOS changes smoothly with minimal impacts. With this years Apple release of iOS11, we are pleased to announce that we extend MobileFirst Platform Foundation v7.1 and v8.0 support on iOS 11.For reference, make sure to read through our [support plan for Android O and iOS 11](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
-For reference, make sure to read through our [support plan for Android O and iOS 11](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
+We have been testing the iOS11 beta version and details can be seen [Compatibility tests for iOS 11.]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/).  We have verified various features of MobileFirst Platform Foundation on the iOS11 seed build for MobileFirst Platform Foundation v7.1 and v8.0.
+MobileFirst Platform Foundation v7.1, v8.0 has embraced iOS 11 very well except few UI glitches, we tested following features.
 
-We have been testing the iOS11 beta version and details can be seen in the post [Compatibility tests for iOS 11.]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/).  We have verified various features of MobileFirst Platform Foundation on the iOS11 seed build as well for MobileFirst Platform Foundation v7.1 and v8.0.
-MobileFirst Platform Foundation v7.1, v8.0 has embraced iOS 11 very well except for few UI glitches, we tested a bunch of features like connection to the server, OAuth flow, form based authentication, invoking of JavaScript adapters, push notifications, AppCenter, remote disable to name a few. All these features work well, however we did notice few issues which we have documented here.
+* OAuth authorization flow
+* Adapters
+* JSONStore
+* Direct Update
+* Application Management
+* Application Authenticity
+* Analytics
+* Push Notifications
+* Remote Disable
+* Application Center
+
+All these features work well, however we did notice few issues which we have documented below.
 
 > **Disclaimer:** *Some of the action items that are addressed in the list below are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
 
 #### Known Issues
-* Starting with iOS 11, Apple had updated WebCrypto API in Safari 11 which is not compatible with the current MobileFirst API.  As a result, the MobileFirst Mobile and Web app might failed to start when the device has upgraded to iOS 11. Updating to the latest version of IBM Web sdk will resolve this issue and can be downloaded from [here](https://www.npmjs.com/package/ibm-mfp-web-sdk).
+* Starting with iOS 11, Apple has updated WebCrypto API in Safari 11 which is not compatible with the current MobileFirst API.  As a result, the MobileFirst Mobile and Web app might failed to start when the device has upgraded to iOS 11. Updating to the latest version of IBM Web sdk will resolve this issue and can be downloaded from [here.](https://www.npmjs.com/package/ibm-mfp-web-sdk)
 
-* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.As you scroll up, the content will move up behind the status bar. Updating to the [latest iFix](TBD) of IBM MobileFirst Platform Foundation v7.1 will resolve the above issue. For MobileFirst Platform Foundation v8.0, developer can fix on their own as fix suggested in [Known Issues for iOS 11]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/).
+* Starting with iOS 11, Apple has updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11. The issue can be fixed for MobileFirst Platform Foundation v7.1 and v8.0, one suggested in blog [compatibility-tests-for-ios-11]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/).
 
-* We also see issue when using command "cordova emulate ios" similar to one reported [here]( https://github.com/phonegap/ios-sim/issues/218).
+* We also see issue when using command `cordova emulate ios` similar to one reported [here]( https://github.com/phonegap/ios-sim/issues/218).The issue can be fixed by applying latest Cordova [update](https://github.com/apache/cordova-ios/) using command `cordova platform add ios`.
 
 ### WatchOS 4
 Apple has released WatchOS 4 alongside iOS 11.To support watchOS 2 onwards, MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework. This framework can be used in WatchKit extension in the Xcode project.
