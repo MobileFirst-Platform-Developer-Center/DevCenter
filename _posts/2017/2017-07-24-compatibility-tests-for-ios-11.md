@@ -41,8 +41,9 @@ Review the following section to learn what actions you need to take so that your
 We highly encourage to migrate your existing apps to 64 bit.
 
 * Swift Apps on iOS11 - [Xcode 9 build](https://developer.apple.com/download) can build targets written in only Swift 4 or Swift 3. Xcode 9 can be used for migration to Swift 4, This can be easily done using the [migration guide](https://swift.org/migration-guide).
-As per Apple, If your app is written in Swift, you can submit your apps to the App Store written in either Swift 3.0 or 2.3. We strongly encourage you to migrate your code to Swift 3. However, if you need to first update your code to Swift 2.3, you can run the Xcode 8 migrator later to move from 2.3 to 3.0.
-We have planned to check Swift 4.0 compatibility with MobileFirst Platform Foundation 7.1 and 8.0 in near future and will talk in another blog.
+
+As per Apple, if your app is written in Swift, you can submit your apps to the App Store written in either Swift 3.0 or 2.3. We strongly encourage you to migrate your code to Swift 3. However, if you need to first update your code to Swift 2.3, you can run the Xcode 8 migrator later to move from 2.3 to 3.0.
+We have planned to check Swift 4.0 compatibility with MobileFirst Platform Foundation 7.1 and 8.0 in near future and will share the information in a separate post.
 
 Compatibility tests with [iOS 11 beta 3](https://developer.apple.com/download) have been performed for MobileFirst Platform Foundation 7.1 as well as MobileFirst Foundation 8.0 using an iPhone 6 that was upgraded from iOS 10.3.x to iOS 11 beta 3.
 
@@ -66,18 +67,18 @@ All the above features were validated to work on iOS 11 beta 3.
 #### Known Issues
 * Starting with iOS 11, Apple has updated [WebCrypto API](https://www.w3.org/TR/WebCryptoAPI/) in Safari 11 which is not compatible with the current MobileFirst API.Refer [Whats New In Safari  11](https://developer.apple.com/library/content/releasenotes/General/WhatsNewInSafari/Safari_11_0/Safari_11_0.html) for details.As a results, a web app consuming the Web SDK for MobileFirst will fail to launch on a device running on iOS 11. Updating to the latest version of IBM Web sdk will resolve this issue and can be downloaded from [here.](https://www.npmjs.com/package/ibm-mfp-web-sdk)
 
-* Starting with iOS 11, Apple had updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11.We observed following issues.
+* Starting with iOS 11, Apple has updated behaviour around the status bar area which will be particularly important for developers using tools like Apache Cordova or Ionic. In particular, this change in behaviour affects any web-based apps that use fixed position header bars when they are built for iOS 11. Following issues were observed:
 
-* We observed UI contains white areas at the top and bottom of the screen when running on iPhone X simulator as below.
-![iPhone X Ui Issue]({{site.baseurl}}/assets/blog/2017-07-24-compatibility-tests-for-ios-11/IPhoneX_UIIssue.png)
+  * We observed UI contains white areas at the top and bottom of the screen when running on iPhone X simulator as below.
+  ![iPhone X Ui Issue]({{site.baseurl}}/assets/blog/2017-07-24-compatibility-tests-for-ios-11/IPhoneX_UIIssue.png)
 
-* As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the status bar.A quick video to explain the issue and the fix is available below.
+  * As you scroll up, the content will move up behind the status bar. As you scroll down, it will again fall down below the   status bar.A quick video to explain the issue and the fix is available below.
 
-<div class="sizer">
-  <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/3JJ9UqVWjvQ"></iframe>
+  <div class="sizer">
+   <div class="embed-responsive embed-responsive-16by9">
+      <iframe src="https://www.youtube.com/embed/3JJ9UqVWjvQ"></iframe>
+    </div>
   </div>
-</div>
 
 In the html file of the app set ‘ viewport-fit=cover’  in viewport meta tag.    
 
