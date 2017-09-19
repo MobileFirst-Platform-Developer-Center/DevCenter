@@ -136,7 +136,7 @@ weight: 6
 
 그 후에 어댑터 응답이 Xamarin Studio 콘솔에 출력됩니다.
 
-![{{ site.data.keys.mf_server }}](console-output.png)에서 자원을 호출한 애플리케이션의 이미지
+![{{ site.data.keys.mf_server }}에서 자원을 호출한 애플리케이션의 이미지](console-output.png)
 
 ## 다음 단계
 {: #next-steps }

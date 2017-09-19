@@ -156,9 +156,29 @@ weight: 1
 
 ## 서버 로그에 액세스
 {: #accessing-server-logs }
-서버 로그에 액세스하려면 사이드바 탐색을 열고 **앱 → Cloud Foundary 앱**을 클릭하십시오. 서비스를 선택하고 **런타임**을 클릭한 후 **파일** 탭을 클릭하십시오. 
+서버 로그에 액세스하려면 아래에서 설명한 단계를 수행하십시오.
 
-**logs** 폴더에 **messages.log** 파일과 **trace.log** 파일이 있습니다. 
+**시나리오 1:**
+
+1. 호스트 시스템을 설정하십시오.<br/>
+Bluemix Cloud Foundry 앱을 관리하려면 Cloud Foundry CLI를 설치해야 합니다. <br/>
+[Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases)를 설치하십시오. 
+2. 터미널을 열고 `cf login`을 사용하여 *조직* 및 *공간*에 로그인하십시오.
+3. CLI에서 다음 명령을 실행하십시오.
+```bash
+  cf ssh <mfp_Appname> -c "/bin/cat logs/messages.log" > messages.log
+```
+4. 추적이 사용 가능한 경우에만 다음 명령을 실행하십시오.
+```bash
+cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
+ ```
+
+**시나리오 2:**      
+
+* 서버 로그에 액세스하려면 사이드바 탐색을 열고 **앱 → 대시보드 → Cloud Foundry 앱**을 클릭하십시오. 
+* 앱을 선택하고 **로그 → Kibana에서 보기**를 클릭하십시오.
+* 로그 메시지를 선택하고 복사하십시오.
+
 
 #### 추적
 {: #tracing }
@@ -166,7 +186,7 @@ weight: 1
 
 1. **런타임 → 메모리 및 인스턴스**에서 서비스 인스턴스(인스턴스 ID는 **0**으로 시작됨)를 선택하십시오. 
 2. **추적** 조치 옵션을 클릭하십시오. 
-3. 추적 명령문 `com.worklight.*=debug=enabled`를 입력하고 **추적 제출**을 클릭하십시오. 
+3. 추적 명령문 `com.ibm.mfp.*=all`을 입력하고 **추적 제출**을 클릭하십시오.
 
 이제 위에 지정된 위치에서 **trace.log** 파일을 사용할 수 있습니다. 
 

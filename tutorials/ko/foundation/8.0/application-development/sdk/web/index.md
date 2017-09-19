@@ -46,7 +46,7 @@ SDK에는 다음 파일이 포함됩니다.
 
 이 명령은 다음 디렉토리 구조를 작성합니다. 
 
-![SDK 폴더 컨텐츠(sdk-folder.png)
+![SDK 폴더 컨텐츠](sdk-folder.png)
 
 ### SDK 추가
 {: #adding-the-sdk }
@@ -93,8 +93,8 @@ require(['mfp'], function(WL) {
 웹 애플리케이션의 기본 JavaScript 파일에서 **컨텍스트 루트** 및 **애플리케이션 ID** 값을 지정하여 {{ site.data.keys.product }} 웹 SDK를 초기화하십시오. 
 
 ```javascript
-var wlInitOptions = {
-    mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
+   var wlInitOptions = {
+      mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
 };
 
@@ -118,7 +118,7 @@ WL.Client.init(wlInitOptions).then (
 3. **웹**을 플랫폼으로 선택하고 이름 및 ID를 제공하십시오. 
 4. **애플리케이션 등록**을 클릭하십시오. 
 
-![웹 플랫폼 추가(add-web-platform.png)
+![웹 플랫폼 추가](add-web-platform.png)
 
 #### {{ site.data.keys.mf_cli }}에서
 {: #from-mobilefirst-cli }

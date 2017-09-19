@@ -464,7 +464,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 | mfp.push.authorization.client.id| 선택사항/조건부 필수| 푸시 서비스에 대한 OAuth 권한 부여를 처리하는 기밀 클라이언트의 ID입니다. **mfp.admin.push.url** 특성이 지정된 경우에만 필수입니다.|
 | mfp.push.authorization.client.secret| 선택사항/조건부 필수| 푸시 서비스에 대한 OAuth 권한 부여를 처리하는 기밀 클라이언트의 시크릿입니다. **mfp.admin.push.url** 특성이 지정된 경우에만 필수입니다.|
 | mfp.admin.authorization.client.id| 선택사항/조건부 필수| 관리 서비스에 대한 OAuth 권한 부여를 처리하는 기밀 클라이언트의 ID입니다. **mfp.admin.push.url** 특성이 지정된 경우에만 필수입니다.|
-| mfp.push.authorization.client.secret| 선택사항/조건부 필수| 관리 서비스에 대한 OAuth 권한 부여를 처리하는 기밀 클라이언트의 시크릿입니다. **mfp.admin.push.url** 특성이 지정된 경우에만 필수입니다.|
+| mfp.admin.authorization.client.secret | 선택사항/조건부 필수| 관리 서비스에 대한 OAuth 권한 부여를 처리하는 기밀 클라이언트의 시크릿입니다. **mfp.admin.push.url** 특성이 지정된 경우에만 필수입니다.|
 
 ### {{ site.data.keys.mf_console }}의 JNDI 특성
 {: #jndi-properties-for-mobilefirst-operations-console }

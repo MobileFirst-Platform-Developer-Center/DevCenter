@@ -68,6 +68,7 @@ weight: 6
 {{ site.data.keys.product }}에서 토큰 라이센싱을 사용하려면 다음 예비 단계를 다음 순서로 수행해야 합니다. 
 
 > **중요:** 토큰 라이센싱을 지원하는 설치의 일부로서 수행한 토큰 라이센싱에 대한 선택(활성화 여부)은 수정할 수 없습니다. 나중에 토큰 라이센싱 옵션을 변경해야 하는 경우, {{ site.data.keys.product }}를 설치 제거한 후 다시 설치해야 합니다.
+
 1. IBM  Installation Manager를 실행하여 {{ site.data.keys.product }}를 설치할 때 토큰 라이센싱을 활성화하십시오.
 
    #### 그래픽 모드 설치
@@ -151,8 +152,7 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
 
 1. Rational Common Licensing 클라이언트용 공유 라이브러리를 정의하십시오. 이 라이브러리는 원시 코드를 사용하며 애플리케이션 서버에서 한 번만 로드할 수 있습니다. 따라서 이 라이브러리를 사용하는 애플리케이션은 이를 공통 라이브러리로 참조해야 합니다.
    * Rational Common Licensing 기본 라이브러리를 선택하십시오. 사용하는 운영 체제와 Liberty 프로파일이 실행 중인 JRE(Java Runtime Environment)의 비트 버전에 따라 **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**에서 올바른 기본 라이브러리를 선택해야 합니다. 예를 들어, 64비트 JRE가 설치된 Linux x86의 경우, 라이브러리는 **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**에 있습니다. 
-   * {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 컴퓨터로 기본 라이브러리를 복사하십시오. 디렉토리는 **${shared.resource.dir}/rcllib**일 수 있습니다. **${shared.resource.dir}** 디렉토리는 보통 **usr/shared/resources**에 있습니다. 여기서 usr은 usr/servers 디렉토리도 포함된 디렉토리입니다. **${shared.resource.dir}**의 표준 위치에 대한 자세한 정보는 [WebSphere  Application Server Liberty Core - 디렉토리 위치 및 특성](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc)을 참조하십시오. **rcllib** 폴더가 없으면 이 폴더를 작성한 후 기본 라이브러리 파일을 여기로 복사하십시오.
-
+   * {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 컴퓨터로 기본 라이브러리를 복사하십시오. 디렉토리는 **${shared.resource.dir}/rcllib**일 수 있습니다. **${shared.resource.dir}** 디렉토리는 보통 **usr/shared/resources**에 있습니다. 여기서 usr은 usr/servers 디렉토리도 포함된 디렉토리입니다. **${shared.resource.dir}**의 표준 위치에 대한 자세한 정보는 [WebSphere  Application Server Liberty Core - 디렉토리 위치 및 특성](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc)을 참조하십시오. **rcllib** 폴더가 없으면 이 폴더를 작성한 후 기본 라이브러리 파일을 여기로 복사하십시오. 
     
    > **참고:** 애플리케이션 서버의 JVM(Java Virtual Machine)에 기본 라이브러리에 대한 읽기 및 실행 권한이 모두 있어야 합니다. Windows에서는, 애플리케이션 서버의 JVM에 복사된 기본 라이브러리에 대한 실행 권한이 없는 경우 다음 예외가 표시됩니다.
     
@@ -161,8 +161,7 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
    ```
    * **rcl_ibmratl.jar** 파일을 **${shared.resource.dir}/rcllib**로 복사하십시오. **rcl_ibmratl.jar** 파일은 **product_install_dir/MobileFirstServer/tokenLibs** 디렉토리에 있는 Rational Common Licensing Java 라이브러리입니다. 
 
-   > **참고:** Liberty 프로파일의 JVM(Java Virtual Machine)은 복사된 Java 라이브러리를 읽을 수 있어야 합니다. 또한 사용하는 운영 체제에서(최소한 애플리케이션 서버 프로세스를 위해) 이 파일을 읽을 수 있어야 합니다.
-    
+   > **참고:** Liberty 프로파일의 JVM(Java Virtual Machine)은 복사된 Java 라이브러리를 읽을 수 있어야 합니다. 또한 사용하는 운영 체제에서(최소한 애플리케이션 서버 프로세스를 위해) 이 파일을 읽을 수 있어야 합니다.     
    * **${server.config.dir}/server.xml** 파일에서 **rcl_ibmratl.jar** 파일을 사용하는 공유 라이브러리를 선언하십시오.
 
    ```xml
@@ -176,15 +175,14 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
 
    ```xml
    <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
-      [...]
-      <!- Declare the shared library as an attribute commonLibraryRef to 
+            [...]
+      <!- Declare the shared library as an attribute commonLibraryRef to
           the class loader of the application. -->
       <classloader delegation="parentLast" commonLibraryRef="RCLLibrary">
       </classloader>
    </application>
    ```
-   * Oracle을 데이터베이스로 사용 중인 경우, **server.xml**에는 이미 다음 클래스 로더가 있습니다.
-
+   * Oracle을 데이터베이스로 사용 중인 경우, **server.xml**에는 이미 다음 클래스 로더가 있습니다. 
 
    ```xml
    <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
@@ -245,8 +243,7 @@ Liberty 프로파일 서버 팜에서 {{ site.data.keys.mf_server }}의 연결�
     * 사용하는 플랫폼에 해당하는 기본 라이브러리를 운영 체제의 폴더에 배치하십시오. 예를 들면, **/opt/IBM/RCL_Native_Library/**입니다.
     * **rcl_ibmratl.jar** 파일을 **/opt/IBM/RCL_Native_Library/**로 복사하십시오. **rcl_ibmratl.jar** 파일은 **product_install_dir/MobileFirstServer/tokenLibs** 디렉토리에 있는 Rational Common Licensing Java 라이브러리입니다. 
     
-        > **중요:** 애플리케이션 서버의 JVM(Java Virtual Machine)은 복사된 기본 및 Java 라이브러리에 대해 읽기 및 실행 권한이 필요합니다. 또한 사용하는 운영 체제에서 최소한 애플리케이션 서버 프로세스 동안 복사된 두 파일을 모두 읽고 실행할 수 있어야 합니다.
-    
+        > **중요:** 애플리케이션 서버의 JVM(Java Virtual Machine)은 복사된 기본 및 Java 라이브러리에 대해 읽기 및 실행 권한이 필요합니다. 또한 사용하는 운영 체제에서 최소한 애플리케이션 서버 프로세스 동안 복사된 두 파일을 모두 읽고 실행할 수 있어야 합니다.     
     * WebSphere Application Server 관리 콘솔에서 공유 라이브러리를 선언하십시오. 
         * WebSphere Application Server 관리 콘솔에 로그인하십시오.
         * **환경 → 공유 라이브러리**를 펼치십시오. 
@@ -293,8 +290,7 @@ Liberty 프로파일 서버 팜에서 {{ site.data.keys.mf_server }}의 연결�
 
 ### WebSphere Application Server Network Deployment에 Rational Common Licensing 라이브러리 설치
 {: #installing-rational-common-licensing-library-on-websphere-application-server-network-deployment }
-WebSphere Application Server Network Deployment에 기본 라이브러리를 설치하려면 위의 [독립형 서버에 Rational Common Licensing 라이브러리 설치](#installing-rational-common-licensing-library-on-a-stand-alone-server)에 설명된 모든 단계를 수행해야 합니다. 변경사항을 적용하려면 구성한 서버 또는 클러스터를 다시 시작해야 합니다.
-
+WebSphere Application Server Network Deployment에 기본 라이브러리를 설치하려면 위의 [독립형 서버에 Rational Common Licensing 라이브러리 설치](#installing-rational-common-licensing-library-on-a-stand-alone-server)에 설명된 모든 단계를 수행해야 합니다. 변경사항을 적용하려면 구성한 서버 또는 클러스터를 다시 시작해야 합니다. 
 
 WebSphere Application Server Network Deployment의 각 노드에 Rational Common Licensing 기본 라이브러리의 사본이 있어야 합니다. 
 
@@ -310,15 +306,13 @@ WebSphere Application Server Network Deployment의 각 노드에 Rational Common
 
 이 라이브러리는 Java 라이브러리와 기본 라이브러리로 구성됩니다. 이러한 기본 라이브러리는 {{ site.data.keys.mf_server }}가 실행 중인 플랫폼에 의존합니다. 따라서 {{ site.data.keys.mf_server }}에 의한 토큰 라이센싱은 Rational Common Licensing 라이브러리가 실행될 수 있는 플랫폼에서만 지원됩니다. 
 
-다음 표에서는 토큰 라이센싱이 사용되는 {{ site.data.keys.mf_server }}를 지원하는 플랫폼에 대해 설명합니다.
+다음 표에서는 토큰 라이센싱이 사용되는 {{ site.data.keys.mf_server }}를 지원하는 플랫폼에 대해 설명합니다. 
 
-
-| 운영 체제             | 운영 체제 버전 |	하드웨어 아키텍처 |
+| 운영 체제| 운영 체제 버전|	하드웨어 아키텍처|
 |------------------------------|--------------------------|-----------------------|
-| AIX
-                          | 7.1                      |	POWER8(64비트 전용) |
-| SUSE Linux Enterprise Server | 11	                      | x86-64 전용           |
-| Windows Server               | 2012	                  | x86-64 전용           |
+| AIX                          | 7.1|	POWER8(64비트 전용)|
+| SUSE Linux Enterprise Server| 11	                      | x86-64 전용|
+| Windows Server| 2012	                  | x86-64 전용|
 
 토큰 라이센싱은 32비트 JRE(Java Runtime Environment)를 지원하지 않습니다. 애플리케이션 서버가 64비트 JRE를 사용하는지 확인하십시오.
 
