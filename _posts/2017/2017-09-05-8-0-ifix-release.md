@@ -16,8 +16,27 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **September 1
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
+###  Generate an adapter from its OpenAPI specification
+{{ site.data.keys.product }} introduces the capability to auto-generate an adapter from its OpenAPI specification. {{ site.data.keys.product }} users can now focus on the application logic instead of creating the {{ site.data.keys.product }} adapter, which connects the application to the desired back-end service. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/microservice-adapter/).
+
+### Support for pinning multiple certificates in the Cordova SDK
+Starting with the iFix **8.0.0.0-MFPF-IF20170624-0159**, Mobile Foundation had introduced the support for pinning of multiple certificates. This was supported only for native android and iOS apps. Now, starting with this iFix (**8.0.0.0-MFPF-IF20170803-1112**) pinning of multiple certificates is supported in the Cordova SDK. Read more on **Multiple certificate pinning support** from [What's new](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/), under the section *What's new in MobileFirst APIs* .
+
+### Support for cordova browser platform
+Starting with this iFix, {{ site.data.keys.product }} supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
+
 ### APARs Fixed
 
+**PI84719** NEW JNDI PROPERTY TO CONTROL ANALYTIC EVENT QUEUE SIZE TO IMPROVE PERFORMANCE <br>
+**PI84522** MobileFirst SDK cannot pin a certificate using the WL.Client.pinTrustedCertificatePublicKey API when Web ResourcesE<br>
+**PI86226** MOBILEFIRST SERVER IN FARM RUNNING ON DEDICATED BLUEMIX FAILS TO START CORRECTLY WITH SYNC MESSAGES OCCURRING.<br>
+**PI86157** WHEN USER REOPENS THE APP AFTER SUCCESSFUL REGISTRATION, UNABLE TO UNSUBSCRIBE OR UNREGISTER WITH DEVICEID UNAUTHORISED ERROR. <br>
+**PI86156** JSONARRAY IS NOT SET TO RESPONSE JSON ON ANDROID <br>
+**PI86037** SECURITY ANNOTATIONS ARE NOT GETTING UPDATED IN MOBILE FIRST CONSOLE WHEN PATH ANNOTATION HAS REGEX EXPRESSION FILTERS <br>
+**PI85962** JSONSTORE ISSUE ON ANDROID X86_64 EMULATOR <br>
+**PI84989** USING IBM MOBILEFIRSTPLATFORMFOUNDATIONJSONSTORE.H MIGHT RESULT IN FILE NOT FOUND EXCEPTION <br>
+**PI80054** CLIENT-SIDE LOG CAPTURE CONFIGURATION FROM OPERATIONS CONSOLE MAY NOT BE EFFECTIVE <br>
+**PI75098** MALFORMED HTTP RESPONSE CAUSED IOS APP CRASH. <br>
 **PI86791** MFP 8.0 SERVER FAILS TO START UP WHEN IFIXES FROM AUGUST 2017 ARE IN USE.<br>
 **PI86155** KUBERNETES DEPLOYMENT SUPPORT FOR MOBILEFIRST APPLICATION CENTER.
 
