@@ -6,7 +6,8 @@ show_disqus: false
 show_breadcrumb: true
 breadcrumb_title: 한국어
 use_dropdown: true
-use_dropdown_home: foundation/8.0/all-tutorials
+#use_dropdown_home: foundation/8.0/all-tutorials
+use_dropdown_url_replace: false
 print_pdf: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->

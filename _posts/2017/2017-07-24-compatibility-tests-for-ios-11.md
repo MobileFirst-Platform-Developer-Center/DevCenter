@@ -84,7 +84,7 @@ In the html file of the app set ‘ viewport-fit=cover’  in viewport meta tag.
 ```html
  <meta name=“viewport” content=“user-scalable=no, initial-scale=1,viewport-fit=cover, maximum-scale=1, minimum-scale=1, width=device-width”> .
 ```
-Also in  Also in  .css file add the padding as below  under header .
+Also in the .css file add the padding as below under *header* .
 
 ```css
 header { /* …other header content.. */   padding-top: constant(safe-area-inset-top);  }
