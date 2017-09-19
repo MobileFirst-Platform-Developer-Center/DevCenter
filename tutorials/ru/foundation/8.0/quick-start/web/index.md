@@ -52,7 +52,7 @@ weight: 5
 2. Выберите файл **client/js/index.js** и вставьте следующий фрагмент кода, заменив существующую функцию `WLAuthorizationManager.obtainAccessToken()`:
 
    ```javascript
-WLAuthorizationManager.obtainAccessToken()
+   WLAuthorizationManager.obtainAccessToken()
         .then(
         function(accessToken) {
                 titleText.innerHTML = "Yay!";
