@@ -12,7 +12,7 @@ iOS 9부터 모든 앱에서 TLS(Transport Layer Security) 프로토콜 버전 1
 
 Apple ATS(App Transport Security)는 iOS 9의 새로운 기능으로, 앱과 서버 간 연결에 대해 우수 사례를 적용합니다. 기본적으로 이 기능은 보안을 개선하는 일부 연결 요구사항을 적용합니다. 해당 요구사항에는 클라이언트 측 HTTPS 요청 및 서버 측 인증서와 FS(Forward Secrecy)를 사용하여 TLS(Transport Layer Security) 버전 1.2를 준수하는 연결 암호가 포함됩니다. 
 
-개**발 용도**로 사용하는 경우 ATS(App Transport Security) 기술 노트에 설명된 것처럼 앱의 info.plist 파일에서 예외를 지정하여 기본 동작을 대체할 수 있습니다. 그러나 **전체 프로덕션** 환경에서는 TLS 보안 연결을 강제 실행하여 모든 iOS 앱이 올바르게 작동하도록 해야 합니다. 
+**개발 용도**로 사용하는 경우 App Transport Security 기술 노트에 설명된 것처럼 앱의 info.plist 파일에서 예외를 지정하여 기본 동작을 대체할 수 있습니다. 그러나 **전체 프로덕션** 환경에서는 TLS 보안 연결을 강제 실행하여 모든 iOS 앱이 올바르게 작동하도록 해야 합니다. 
 
 비TLS 연결을 사용하려면 **project-name\Resources** 폴더의 **project-name-info.plist** 파일에 다음 예외가 표시되어야 합니다. 
 

@@ -30,8 +30,7 @@ Java 어댑터는 백엔드 시스템으로 연결에 대한 제어를 개발자
 ## 데이터 소스 설정
 {: #setting-up-the-data-source }
 
-MySQL 서버에 연결할 수 있도록 {{site.data.keys.mf_server }}를 구성하려면 어댑터의
-XML 파일이 **configuration properties**로 구성되어야 합니다. 이러한 특성은 {{site.data.keys.mf_console }}을 통해 나중에 편집될 수 있습니다. 
+MySQL 서버에 연결할 수 있도록 {{site.data.keys.mf_server }}를 구성하려면 어댑터의 XML 파일이 **configuration properties**로 구성되어야 합니다. 이러한 특성은 {{site.data.keys.mf_console }}을 통해 나중에 편집될 수 있습니다. 
 
 adater.xml 파일을 편집하고 다음 특성을 추가하십시오.
 
@@ -54,6 +53,7 @@ adater.xml 파일을 편집하고 다음 특성을 추가하십시오.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **참고:** 구성 특성 요소는 항상 `JAXRSApplicationClass` 요소 *아래*에 위치해야 합니다.   
 여기서 연결 설정을 정의하고 기본값을 제공하여 나중에 AdapterApplication 클래스에 사용할 수 있습니다.
+
 ## 어댑터 자원 클래스에서 SQL 구현
 {: #implementing-sql-in-the-adapter-resource-class }
 
@@ -63,18 +63,16 @@ adater.xml 파일을 편집하고 다음 특성을 추가하십시오.
 
 ```java
 @Path("/")
-  public class JavaSQLResource {
+public class JavaSQLResource {
 }
 ```
 
 `@Path("/")`는 자원이 URL `http(s)://host:port/ProjectName/adapters/AdapterName/`에서 사용 가능함을 의미합니다. 
 
-### 데이터 소스 사용
-
+### 데이터 소스 사용 
 {: #using-datasource }
 
-어댑터가 배치될 때 또는 구성이 {{site.data.keys.mf_console }}에서 변경될 때마다 어댑터의
-`MFPJAXRSApplication`의 `init` 메소드가 호출됩니다. 이는 [연결 특성 로드](../#configuration-api) 및 `DataSource`를 작성하는 좋은 위치입니다. 
+어댑터가 배치될 때 또는 구성이 {{site.data.keys.mf_console }}에서 변경될 때마다 어댑터의 `MFPJAXRSApplication`의 `init` 메소드가 호출됩니다. 이는 [연결 특성 로드](../#configuration-api) 및 `DataSource`를 작성하는 좋은 위치입니다. 
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -95,8 +93,8 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 }
 ```
 
-자원 클래스에서 SQL 연결을 얻기 위한 헬퍼 방법을 작성하십시오. 현재 `MFPJAXRSApplication` 인스턴스를 얻으려면 `AdaptersAPI`를
-사용하십시오.
+자원 클래스에서 SQL 연결을 얻기 위한 헬퍼 방법을 작성하십시오.
+현재 `MFPJAXRSApplication` 인스턴스를 얻으려면 `AdaptersAPI`를 사용하십시오.
 
 ```java
 @Context
@@ -111,7 +109,6 @@ public Connection getSQLConnection() throws SQLException{
 
 
 ### 사용자 작성
-
 {: #create-user }
 
 데이터베이스에서 새 사용자 레코드를 작성하는 데 사용됩니다. 
@@ -151,18 +148,16 @@ public Response createUser(@FormParam("userId") String userId,
 이 메소드가 `@Path`를 가지지 않으므로, 자원의 루트 URL로 액세스 가능합니다. `@POST`을 사용하기 때문에, `HTTP POST`를 통해서만 액세스 가능합니다.   
 메소드는 일련의 `@FormParam` 인수를 가지고 있으며, 이러한 인수는 `x-www-form-urlencoded` 매개변수로서 HTTP 본문에서 전송될 수 있습니다. 
 
-`@Consumes(MediaType.APPLICATION_JSON)`를 사용하여 JSON 오브젝트로서
-HTTP 본문에서 매개변수를 전달할 수도 있습니다. 이 경우에 메소드에 `JSONObject`
-인수 또는 JSON 특성 이름과 일치하는 특성을 가진 단순한 Java 오브젝트가 필요합니다. 
+`@Consumes(MediaType.APPLICATION_JSON)`를 사용하여 JSON 오브젝트로서 HTTP 본문에서 매개변수를 전달할 수도 있습니다. 이 경우에 메소드에 `JSONObject` 인수 또는 JSON 특성 이름과 일치하는 특성을 가진 단순한 Java 오브젝트가 필요합니다. 
 
 `Connection con = getSQLConnection();` 메소드는 더 먼저 정의된 데이터 소스에서 연결을 얻습니다. 
 
 SQL 조회는 `PreparedStatement` 메소드에 의해 빌드됩니다. 
 
-삽입에 성공하면, `return Response.ok().build()` 메소드는 `200
-OK`를 클라이언트로 다시 전송하는 데 사용됩니다. 오류가 있으면, 다른 `Response` 오브젝트가 특정 HTTP 상태 코드로 빌드될 수 있습니다. 이 예에서, `409 Conflict` 오류 코드가 전송됩니다. 또한 모든 매개변수가 전송되는지 여부(여기에 표시되지 않음) 또는 기타 데이터 유효성 검증을 확인하는 것이 권장됩니다.
+삽입에 성공하면, `return Response.ok().build()` 메소드는 `200 OK`를 클라이언트로 다시 전송하는 데 사용됩니다. 오류가 있으면, 다른 `Response` 오브젝트가 특정 HTTP 상태 코드로 빌드될 수 있습니다. 이 예에서, `409 Conflict` 오류 코드가 전송됩니다. 또한 모든 매개변수가 전송되는지 여부(여기에 표시되지 않음) 또는 기타 데이터 유효성 검증을 확인하는 것이 권장됩니다.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 준비된 명령문 및 연결과 같은 자원을 닫았는지 확인하십시오.
+
 ### 사용자 가져오기
 {: #get-user }
 
@@ -242,7 +237,6 @@ public Response getAllUsers() throws SQLException{
 ```
 
 ### 사용자 업데이트
-
 {: #update-user }
 
 데이터베이스에서 사용자 레코드를 업데이트하십시오. 

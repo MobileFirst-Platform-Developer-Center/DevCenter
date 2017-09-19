@@ -92,7 +92,7 @@ shards를 1로 구성하면 각 색인에는 데이터가 작성된 하나의 �
 
 ## WebSphere Application Server Liberty에 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-{{ site.data.keys.mf_analytics }} EAR 파일을 이미 가지고 있는지 확인하십시오. 설치 아티팩트에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../appserver)를 참조하십시오. **analytics.ear** 파일은 **<mf_server_install_dir>\analytics** 폴더에 있습니다. WebSphere Application Server Liberty를 다운로드하여 설치하는 방법에 대한 자세한 정보는 IBM developerWorks에서 [WebSphere Liberty 정보](https://developer.ibm.com/wasdev/websphere-liberty/) 기사를 참조하십시오. 
+{{ site.data.keys.mf_analytics }} EAR 파일을 이미 가지고 있는지 확인하십시오. 설치 아티팩트에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../appserver)를 참조하십시오. **analytics.ear **파일은 **<mf_server_install_dir>\analytics** 폴더에 있습니다. WebSphere Application Server Liberty를 다운로드하여 설치하는 방법에 대한 자세한 정보는 IBM developerWorks에서 [WebSphere Liberty 정보](https://developer.ibm.com/wasdev/websphere-liberty/) 기사를 참조하십시오. 
 
 1. **./wlp/bin** 폴더에서 다음 명령을 실행하여 서버를 작성하십시오. 
 
@@ -174,8 +174,8 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
 2. **conf/server.xml** 파일에서 다음 섹션을 주석 해제하십시오. 이 섹션은 새로 다운로드한 Tomcat 아카이브에 주석 처리된 상태로 있습니다. 
 
    ```xml
-   <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
-   ```
+   <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
+```
 
 3. **conf/server.xml** 파일에서 두 개의 war 파일을 선언하고 사용자 레지스트리를 정의하십시오. 
 
@@ -250,7 +250,7 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
     * WebSphere Application Server 관리 콘솔에 로그인하십시오. 
     * **보안 > 글로벌 보안** 메뉴에서 **관리 보안 사용**과 **애플리케이션 보안 사용**이 모두 선택되어 있는지 확인하십시오. 참고: 애플리케이션 보안은 **관리 보안**이 사용으로 설정된 후에만 선택할 수 있습니다. 
     * **확인**을 클릭하고 변경사항을 저장하십시오. 
-9. {{ site.data.keys.mf_analytics }} 애플리케이션을 시작한 후 브라우저에서 `http://<hostname>:<port>/analytics/console` 링크로 이동하십시오. 
+9. {{ site.data.keys.mf_analytics }} 애플리케이션을 시작한 후 브라우저에서 `http://<hostname>:<port>/analytics/console` 링크로 이동하십시오.
 
 ## Ant 태스크를 사용한 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-with-ant-tasks }
@@ -269,6 +269,7 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
     > * Apache Ant 매뉴얼의 [특성](http://ant.apache.org/manual/properties.html) 절에 설명된 대로 ${variable} 구문을 통해 Ant 변수를 명시적으로 참조하려는 경우가 아니면 달러 부호($)는 $$로 써야 합니다.
     > * XML 엔티티를 명시적으로 참조하려는 경우가 아니면 앰퍼샌드 문자(&)는 &amp;로 써야 합니다. 
     > * 작은따옴표로 묶인 문자열에 있는 경우를 제외하고 큰따옴표(")는 &quot;로 써야 합니다.
+
 
 2. 여러 서버에 노드의 클러스터를 설치하는 경우: 
     * **wl.analytics.masters.list** 특성을 주석 해제하고 해당 값을 마스터 노드의 전송 포트 및 호스트 이름의 목록으로 설정해야 합니다. 예를 들어, `node1.mycompany.com:96000,node2.mycompany.com:96000`입니다. 
@@ -297,26 +298,26 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
 
 다음 테이블은 이전 이벤트 유형과 새 이벤트 유형 사이의 맵핑을 보여줍니다. 일부 이벤트 유형은 변경되지 않았습니다. 
 
-| 이전 이벤트 유형            | 새 이벤트 유형         |
+| 이전 이벤트 유형| 새 이벤트 유형|
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition        |
-| AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	            | CustomChart            |
-| CustomData	            | CustomData             |
-| Devices	                | Device                 |
-| MfpAppLogs                | AppLog                 |
-| MfpAppPushAction          | AppPushAction          |
-| MfpAppSession	            | AppSession             |
-| ServerLogs	            | ServerLog              |
-| ServerNetworkTransactions | NetworkTransaction     |
-| ServerPushNotifications   | PushNotification       |
-| ServerPushSubscriptions   | PushSubscription       |
-| Users	                    | User                   |
-| inboundRequestURL	        | resourceURL            |
-| mfpAppName	            | appName                |
-| mfpAppVersion	            | appVersion             |
+| AlertDefinition	        | AlertDefinition|
+| AlertNotification	        | AlertNotification|
+| AlertRunnerNode	        | AlertRunnerNode|
+| AnalyticsConfiguration| AnalyticsConfiguration|
+| CustomCharts	            | CustomChart|
+| CustomData	            | CustomData|
+| Devices	                | Device|
+| MfpAppLogs| AppLog|
+| MfpAppPushAction| AppPushAction|
+| MfpAppSession	            | AppSession|
+| ServerLogs	            | ServerLog|
+| ServerNetworkTransactions| NetworkTransaction|
+| ServerPushNotifications| PushNotification|
+| ServerPushSubscriptions| PushSubscription|
+| Users	                    | User|
+| inboundRequestURL	        | resourceURL|
+| mfpAppName	            | appName|
+| mfpAppVersion	            | appVersion|
 
 ### Analytics 데이터 마이그레이션
 {: #analytics-data-migration }
@@ -339,6 +340,8 @@ V8.0.0으로 업그레이드한 후 처음으로 {{ site.data.keys.mf_analytics_
 ![콘솔의 마이그레이션 페이지](migration_page.jpg)
 
 > **참고:** 이 프로세스는 사용자가 가지고 있는 데이터의 양에 따라 시간이 오래 걸릴 수 있으며 마이그레이션 중에 중지할 수 없습니다.
+
+
 
 RAM이 32G이고 JVM에 16G가 할당되었으며 4-코어 프로세서가 장착된 단일 노드에서 1백만 개의 문서를 마이그레이션 하는 경우 약 3분이 소요될 수 있습니다. 마이그레이션되지 않은 문서는 조회되지 않으므로 {{ site.data.keys.mf_analytics_console }}에 렌더링되지 않습니다. 
 

@@ -10,7 +10,7 @@ weight: 2
 
 다음 그림은 {{ site.data.keys.product }}의 컴포넌트를 표시합니다. 
 
-![{{ site.data.keys.product }} 솔루션의 아키텍처](architecture.jpg)
+![ {{ site.data.keys.product }} 솔루션의 아키텍처](architecture.jpg)
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }

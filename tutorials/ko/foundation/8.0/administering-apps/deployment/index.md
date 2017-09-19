@@ -35,6 +35,8 @@ weight: 1
 
     > **참고:** 애플리케이션 서버가 WebSphere  Application Server Liberty인 경우에는 인증서가 Liberty 신뢰 저장소에도 있어야 합니다.
 
+
+
 3. 어댑터의 서버 측 구성을 확인하십시오. 
 4. `mfpadm deploy adapter` 명령과 `mfpadm adapter set user-config` 명령을 사용하여 어댑터와 해당 구성을 업로드하십시오. 
 

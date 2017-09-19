@@ -58,17 +58,15 @@ XML 파일은 설정과 메타데이터를 포함합니다.
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a></h4>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a>
+            </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>필수.</i> 이 속성 값은
-sql:SQLConnectionPolicy로 설정되어야 합니다.
-</li>
-                    <li><b>dataSourceDefinition</b>: <i>선택사항.</i> 데이터 소스에 연결하는 데 필요한 매개변수를 포함합니다. 어댑터는
-각 요청에 대한 연결을 작성합니다.예: 
+                    <li><b>xsi:type</b>: <i>필수.</i> 이 속성 값은 sql:SQLConnectionPolicy로 설정되어야 합니다. </li>
+                    <li><b>dataSourceDefinition</b>: <i>선택사항.</i> 데이터 소스에 연결하는 데 필요한 매개변수를 포함합니다. 어댑터는 각 요청에 대한 연결을 작성합니다. 예: 
 
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -81,8 +79,7 @@ sql:SQLConnectionPolicy로 설정되어야 합니다.
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>선택사항.</i> 애플리케이션 서버에서 제공하는 데이터 소스의 JNDI 이름을 사용하여 데이터 소스에 연결합니다. 어댑터는 JNDI 이름과 연관되는 서버 연결 풀에서 연결을 가져옵니다. 애플리케이션 서버에서는 데이터 소스를 구성하는
-방법을 보여줍니다. 자세한 정보는 애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치를 참조하십시오. 예: 
+                    <li><b>dataSourceJNDIName</b>: <i>선택사항.</i> 애플리케이션 서버에서 제공하는 데이터 소스의 JNDI 이름을 사용하여 데이터 소스에 연결합니다. 어댑터는 JNDI 이름과 연관되는 서버 연결 풀에서 연결을 가져옵니다. 애플리케이션 서버에서는 데이터 소스를 구성하는 방법을 보여줍니다. 자세한 정보는 애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치를 참조하십시오. 예: 
 
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -142,8 +139,7 @@ SQL문을 실행하는 두 가지 방법이 있습니다.
 ### SQL 스토어드 프로시저
 {: #sql-stored-procedure }
 
-SQL 스토어드 프로시저를 실행하려면 `MFP.Server.invokeSQLStoredProcedure`
-메소드를 사용하십시오. 호출 매개변수로 SQL 스토어드 프로시저 이름을 지정하십시오. 
+SQL 스토어드 프로시저를 실행하려면 `MFP.Server.invokeSQLStoredProcedure` 메소드를 사용하십시오. 호출 매개변수로 SQL 스토어드 프로시저 이름을 지정하십시오. 
 
 ```javascript
 // Invoke stored SQL procedure and return invocation result

@@ -14,9 +14,7 @@ weight: 1
 
 HTTP 어댑터를 사용하여 GET 또는 POST HTTP 요청을 보내고 데이터를 응답 헤더와 본문에서 검색할 수 있습니다. HTTP 어댑터는 RESTful 및 SOAP 기반 서비스에서 작동하며 구조화된 HTTP 소스(예: RSS 피드)를 읽을 수 있습니다. 
 
-단순한 서버 측
-JavaScript 코드를 사용하여 HTTP 어댑터를 쉽게 사용자 정의할 수 있습니다.
-예를 들어, 필요한 경우 서버 측 필터링을 설정할 수 있습니다. 검색된 데이터는 XML, HTML, JSON 또는 일반 텍스트 형식으로 되어 있습니다. 
+단순한 서버 측 JavaScript 코드를 사용하여 HTTP 어댑터를 쉽게 사용자 정의할 수 있습니다. 예를 들어, 필요한 경우 서버 측 필터링을 설정할 수 있습니다. 검색된 데이터는 XML, HTML, JSON 또는 일반 텍스트 형식으로 되어 있습니다. 
 
 어댑터는 어댑터 특성과 프로시저를 정의하기 위해 XML으로 구성됩니다.   
 선택적으로 수신한 레코드와 필드를 필터링하기 위해 XSL을 사용할 수도 있습니다. 
@@ -64,16 +62,16 @@ XML 파일은 설정과 메타데이터를 포함합니다.
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b><code>connectionPolicy</code> 속성 및 하위 요소에 대해 클릭</b></a> </h4>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b><code>connectionPolicy</code> 속성 및 하위 요소에 대해 클릭</b></a>
+</h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
                     <li><b>xsi:type</b>: <i>필수.</i> 이 속성 값은 http:HTTPConnectionPolicyType이어야 합니다.</li>
-                    <li><b>cookiePolicy</b>: <i>선택사항.</i> 이 속성은 백엔드 애플리케이션에서 도착하는 쿠키를
-HTTP 어댑터에서 처리하는 방법을 설정합니다. 올바른 값은 다음과 같습니다.
-<ul>
+                    <li><b>cookiePolicy</b>: <i>선택사항.</i> 이 속성은 백엔드 애플리케이션에서 도착하는 쿠키를 HTTP 어댑터에서 처리하는 방법을 설정합니다. 올바른 값은 다음과 같습니다.
+                            <ul>
                             <li>BEST_MATCH: 기본값</li>
                             <li>BROWSER_COMPATIBILITY</li>
                             <li>RFC_2109</li>
@@ -81,25 +79,14 @@ HTTP 어댑터에서 처리하는 방법을 설정합니다. 올바른 값은 �
                             <li>NETSCAPE</li>
                             <li>IGNORE_COOKIES</li>
                         </ul>
-이러한 값에 대한 자세한 정보는 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 구성요소</a> 페이지를 참조하십시오. </li>
-                    <li><b>maxRedirects</b>: <i>선택사항.</i> HTTP 어댑터가 따를 수 있는 최대
-경로 재지정 수입니다. 이 속성은 인증 실패와 같은
-몇 가지 오류로 인해 백엔드 애플리케이션이 순환 경로 재지정을 전송할 때
-유용합니다. 이 속성이 0으로 설정되면, 어댑터는 경로 재지정을 따르려고 전혀 시도하지 않고 HTTP 302 응답이 사용자에게 리턴됩니다. 기본값은
-10입니다. </li>
+                        이러한 값에 대한 자세한 정보는 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 구성요소</a> 페이지를 참조하십시오. </li>
+                    <li><b>maxRedirects</b>: <i>선택사항.</i> HTTP 어댑터가 따를 수 있는 최대 경로 재지정 수입니다. 이 속성은 인증 실패와 같은 몇 가지 오류로 인해 백엔드 애플리케이션이 순환 경로 재지정을 전송할 때 유용합니다. 이 속성이 0으로 설정되면, 어댑터는 경로 재지정을 따르려고 전혀 시도하지 않고 HTTP 302 응답이 사용자에게 리턴됩니다. 기본값은 10입니다. </li>
                     <li><b>protocol</b>: <i>선택사항.</i> 사용할 URL 프로토콜입니다. 유효값은 다음과 같습니다. <b>http</b>(기본값), <b>https</b>. </li>
                     <li><b>domain</b>: <i>필수.</i> 호스트 주소입니다.</li>
                     <li><b>port</b>: <i>선택사항.</i> 포트 주소입니다. 포트가 지정되지 않으면 기본 HTTP/S 포트가 사용됩니다(80/443). </li>
-                    <li><b>sslCertificateAlias</b>: 정규 HTTP 인증 및 단순 SSL 인증의 경우 선택적입니다. 상호 SSL 인증의 경우 필수입니다.
-어댑터 개인용 SSL 키의 별명으로, 키 저장소의 올바른
-SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용합니다.
-키 저장소 설정 프로세스에 대한 자세한 정보는 <a href="using-ssl">HTTP 어댑터에서 SSL 사용</a> 학습서를 참조하십시오. </li>
-                    <li><b>sslCertificatePassword</b>: 정규 HTTP 인증 및 단순 SSL 인증의 경우선택적입니다. 상호 SSL 인증의 경우 필수입니다.
-어댑터 개인용 SSL 키의 비밀번호로, 키 저장소의 올바른
-SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용합니다.
-키 저장소 설정 프로세스에 대한 자세한 정보는 <a href="using-ssl">HTTP 어댑터에서 SSL 사용</a> 학습서를 참조하십시오. </li>
-                    <li><b>authentication</b>: <i>선택사항.</i> HTTP 어댑터의 인증 구성입니다. HTTP 어댑터는 두 가지 인증 프로토콜 중
-하나를 사용할 수 있습니다. 다음과 같이, <b>authentication</b>< 요소를 정의하십시오. <ul>
+                    <li><b>sslCertificateAlias</b>: 정규 HTTP 인증 및 단순 SSL 인증의 경우 선택적입니다. 상호 SSL 인증의 경우 필수입니다. 어댑터 개인용 SSL 키의 별명으로, 키 저장소의 올바른 SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용합니다. 키 저장소 설정 프로세스에 대한 자세한 정보는 <a href="using-ssl">HTTP 어댑터에서 SSL 사용</a> 학습서를 참조하십시오. </li>
+                    <li><b>sslCertificatePassword</b>: 정규 HTTP 인증 및 단순 SSL 인증의 경우선택적입니다. 상호 SSL 인증의 경우 필수입니다. 어댑터 개인용 SSL 키의 비밀번호로, 키 저장소의 올바른 SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용합니다. 키 저장소 설정 프로세스에 대한 자세한 정보는 <a href="using-ssl">HTTP 어댑터에서 SSL 사용</a> 학습서를 참조하십시오. </li>
+                    <li><b>authentication</b>: <i>선택사항.</i> HTTP 어댑터의 인증 구성입니다. HTTP 어댑터는 두 가지 인증 프로토콜 중 하나를 사용할 수 있습니다. 다음과 같이, <b>authentication</b>< 요소를 정의하십시오. <ul>
                             <li>Basic authentication
 {% highlight xml %}
 <authentication>
@@ -126,10 +113,9 @@ SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용�
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>: <i>선택사항.</i> proxy 요소는 백엔드 애플리케이션에 액세스할 때 사용하는 프록시 서버의 세부사항을 지정합니다. 프록시 세부사항에는 프로토콜 도메인 및 포트가 포함되어야 합니다. 프록시에서 인증이 필요한 경우 <code>proxy</code> 안에
-중첩된 <code>authentication</code> 요소를
-추가하십시오. 이 요소는 어댑터의 인증 프로토콜을 기술할 때 사용한 것과 구조가 동일합니다.
-다음 예제는 기본 인증을 요구하고, 서버 ID를 사용하는 프록시를 보여줍니다. {% highlight xml %}
+                    <li><b>proxy</b>: <i>선택사항.</i> proxy 요소는 백엔드 애플리케이션에 액세스할 때 사용하는 프록시 서버의 세부사항을 지정합니다. 프록시 세부사항에는 프로토콜 도메인 및 포트가 포함되어야 합니다. 프록시에서 인증이 필요한 경우 <code>proxy</code> 안에 중첩된 <code>authentication</code> 요소를 추가하십시오. 이 요소는 어댑터의 인증 프로토콜을 기술할 때 사용한 것과 구조가 동일합니다. 다음 예제는 기본 인증을 요구하고, 서버 ID를 사용하는 프록시를 보여줍니다.
+
+{% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
   <domain>www.bbc.co.uk</domain>
@@ -147,9 +133,9 @@ SSL 인증서에 액세스하기 위해 HTTP 어댑터 키 관리자가 사용�
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>선택사항.</i> {{ site.data.keys.mf_server }}가
-백엔드에 대해 열 수 있는 최대 동시 연결 수를 정의합니다. {{ site.data.keys.product }}는
-애플리케이션으로부터의 수신 서비스 요청 수는 제한하지 않습니다. 이는 백엔드 서비스에 대한 동시 HTTP 연결 수만 제한합니다. <br/><br/>
+                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>선택사항.</i> {{ site.data.keys.mf_server }}가 백엔드에 대해 열 수 있는 최대 동시 연결 수를 정의합니다. {{ site.data.keys.product }}는 애플리케이션으로부터의 수신 서비스 요청 수는 제한하지 않습니다. 이는 백엔드 서비스에 대한 동시 HTTP 연결 수만 제한합니다.
+
+<br/><br/>
                     동시 HTTP 연결 수의 기본값은 50입니다. 백엔드 서비스에서 허용된 최대 요청 수 및 어댑터에 대한 예상 동시 요청 수를 기반으로 이 기본값을 변경할 수 있습니다. 또한 수신되는 동시 요청 수를 제한하기 위해 백엔드 서비스를 구성할 수도 있습니다. <br/><br/>
                     2-노드 시스템이 있으며 이 시스템에 100개의 동시 요청이 로드될 것으로 예상되고 백엔드 서비스가 지원할 수 있는 동시 요청 수는 최대 80개라고 가정합니다. maxConcurrentConnectionsPerNode를 40으로 설정할 수 있습니다. 이 설정은 백엔드 서비스에 대한 동시 요청이 최대 80개가 넘지 않게 해줍니다. <br/><br/>
                     값을 늘리면 백엔드 애플리케이션에 더 많은 메모리가 필요합니다. 메모리 문제를 피하려면 너무 높은 값을 설정하지 마십시오. 그 대신, 초당 평균 및 최대 트랜잭션 수를

@@ -6,9 +6,9 @@ relevantTo: [ios]
 downloads:
   - 이름: Xcode 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - 이름: 어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-가중치: 4
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요

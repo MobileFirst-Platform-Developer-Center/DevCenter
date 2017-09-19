@@ -739,7 +739,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 {: #to-specify-a-connection-to-the-push-service-database-1 }
 `<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 푸시 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="Push">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, configuredatabase Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<property>` 요소가 있을 수 있습니다.
+단일 데이터베이스를 선언해야 합니다. `<database kind="Push">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, configuredatabase Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<dba>` 및 `<client>` 요소가 있을 수 있습니다.`<property>` 요소가 있을 수 있습니다.
 
 `<database>` 요소에는 다음과 같은 속성이 있습니다.
 
@@ -868,7 +868,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 |
 | profile|	WebSphere Application Server 프로파일 또는 Liberty입니다. | 예	    | 없음
 |
-| user            I	WebSphere Application Server 관리자 이름입니다. | 예(Liberty 제외)| 없음
+| userI	WebSphere Application Server 관리자 이름입니다. | 예(Liberty 제외)| 없음
 |
 | 비밀번호| WebSphere Application Server 관리자 비밀번호입니다. | 아니오 |         |
 | libertyEncoding|	WebSphere Application Server Liberty에 대한 데이터 소스 비밀번호를 인코딩하는 알고리즘입니다. 가능한 값은 없음, xor 및 aes입니다. xor 또는 aes 인코딩이 사용되는지 여부에 관계없이 명확한 비밀번호가 인수로 securityUtility 프로그램에 전달되며 이는 외부 프로세스를 통해 호출됩니다. ps 명령을 사용하거나 UNIX 운영 체제의 /proc 파일 시스템에서 비밀번호를 볼 수 있습니다. | 아니오|	xor|
@@ -941,7 +941,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | 이름| 노드 이름입니다. | 예	    | 없음
 |
 
-Network Deployment 컨텍스트에서 사용되는 `<server>` 요소에는 다음과 같은 속성이 있습니다.
+`<server>` 요소(Network Deployment 컨텍스트에서 사용됨)에는 다음과 같은 속성이 있습니다.
 
 | 속성     | 설명          | 필수     | 기본값 |
 |------------|------------------|----------|---------|
@@ -960,7 +960,7 @@ Network Deployment 컨텍스트에서 사용되는 `<server>` 요소에는 다�
 | farmServerId	| 서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다. | 예   | 없음
 |
 
-`<database>` 요소는 특정 데이터베이스에 액세스하는 데 필요한 정보를 지정합니다. `<database>` 요소는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고는, configuredatabase Ant 태스크와 마찬가지로 지정됩니다. 하지만 `<property>` 요소는 있을 수 있습니다. `<database>` 요소에는 다음과 같은 속성이 있습니다.
+`<database>` 요소는 특정 데이터베이스에 액세스하는 데 필요한 정보를 지정합니다. `<database>` 요소는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고는, configuredatabase Ant 태스크와 마찬가지로 지정됩니다. 그러나 `<property>` 요소가 있을 수 있습니다.`<database>` 요소에는 다음과 같은 속성이 있습니다.
 
 | 속성     | 설명          | 필수     | 기본값 |
 |-----------|--------------------------------------------|----------|---------|
@@ -1156,7 +1156,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 `<driverclasspath>` 요소에는 Oracle JDBC 드라이버 JAR 파일이 있어야 합니다.[JDBC, SQLJ, Oracle JPublisher 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 Oracle JDBC 드라이버를 다운로드할 수 있습니다. 
 
-`<derby>`, `<db2>`,` <mysql>` 또는 `<oracle>` 요소에서 사용할 수 있는 `<property>` 요소에는 다음과 같은 속성이 있습니다.
+`<property>` 요소(`<derby>`, `<db2>`,` <mysql>` 또는 `<oracle>` 요소에서 사용할 수 있음)에는 다음과 같은 속성이 있습니다.
 
 | 속성     | 설명          | 필수     | 기본값 |
 |------------|--------------------------------------------|----------|---------|
@@ -1198,7 +1198,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 #### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
-`<uninstallApplicationCenter>` Ant 태스크는 이전에 실행된 `<installApplicationCenter>`의 영향을 실행 취소합니다. 이 태스크는 다음과 같은 영향을 미칩니다. 
+`<uninstallApplicationCenter>` Ant 태스크는 이전 `<installApplicationCenter>` 실행의 영향을 실행 취소합니다. 이 태스크는 다음과 같은 영향을 미칩니다. 
 
 * **/applicationcenter** 컨텍스트 루트를 가진 Application Center 서비스 웹 애플리케이션의 구성을 제거합니다. 그 결과 이 태스크는 해당 애플리케이션에 수동으로 추가된 설정도 제거합니다. 
 * 애플리케이션 서버에서 Application Center 서비스 및 콘솔 WAR 파일을 모두 제거합니다. 
@@ -1209,7 +1209,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 ### 속성 및 요소
 {: #attributes-and-elements-3 }
-`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` 태스크에는 다음과 같은 속성이 있습니다.
+`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` 태스크에는 다음 속성이 있습니다.
 
 | 속성     | 설명          | 필수     | 기본값 |
 |--------------|--------------------------------------------|----------|---------|
@@ -1241,7 +1241,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 **aapt** 프로그램은 {{ site.data.keys.product }} 배포의 일부입니다. **product_install_dir/ApplicationCenter/tools/android-sdk**.  
 이 속성이 설정되지 않은 경우 apk 애플리케이션 업로드 중에 Application Center는 제한이 있는 자체 코드를 사용하여 해당 애플리케이션을 구문 분석합니다. 
 
-`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` 태스크에서는 다음과 같은 요소를 지원합니다.
+`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` 태스크에서는 다음 요소를 지원합니다.
 
 | 요소   | 설명	                | 개수 |
 |-------------------|-------------------------------------------|-------|
@@ -1260,7 +1260,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### 애플리케이션 서버 지정
 {: #to-specify-an-application-server-3 }
-`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 달라지는 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다. 
+`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 다른 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다. 
 
 | 요소   | 설명	                | 개수 |
 |-------------------|-------------------------------------------|-------|
@@ -1273,7 +1273,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 {: #to-specify-a-connection-to-the-services-database }
 `<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="ApplicationCenter">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, `<configuredatabase>` Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<property>` 요소가 있을 수 있습니다.
+단일 데이터베이스를 선언해야 합니다. `<database kind="ApplicationCenter">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, `<configuredatabase>` Ant 태스크와 비슷하게 `<property>` 요소를 지정합니다. `<property>` 요소는 있을 수 있습니다.
 
 `<database>` 요소에는 다음과 같은 속성이 있습니다.
 

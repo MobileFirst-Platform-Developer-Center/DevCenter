@@ -249,7 +249,7 @@ prepareappcenter.sh --name APP_NAME
         </div>
     </div>
 </div>
-URL `http://APP_HOST.mybluemix.net/appcenterconsole`을 로드하여 {{ site.data.keys.mf_app_center }} 콘솔을 실행하십시오. 실행하는 데 몇 분 정도 걸릴 수 있습니다.    
+{{ site.data.keys.mf_app_center }} 콘솔을 실행하려면 URL `http://APP_HOST.mybluemix.net/appcenterconsole`을 로드하십시오. 실행하는 데 몇 분 정도 걸릴 수 있습니다.    
 
 IBM Bluemix에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모바일 앱을 Application Center로 업로드할 수 있습니다. 
 

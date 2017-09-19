@@ -341,12 +341,12 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 {% endhighlight %}
                 </li>
                 <li><b>initenv.sh(선택사항) – Bluemix에 로그인</b><br />
-                      이 단계는 DB2 서비스 인스턴스를 사용할 수 있는 조직과 공간 이외의 조직과 공간에서 컨테이너를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 initenv.properties를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.
+                      이 단계는 DB2 서비스 인스턴스를 사용할 수 있는 조직과 공간 이외의 조직과 공간에서 컨테이너를 작성해야 하는 경우에만 필수입니다. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-</li>
+                </li>
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} 이미지 준비</b><br />
                     {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }} 이미지를 빌드하여 Bluemix 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. Bluemix 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오. <br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다. <br/>
@@ -367,7 +367,8 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
                   <em>my-cluster</em>를 클러스터 이름으로 대체한 후 위의 명령을 복사하고 붙여넣어 터미널에서 환경 변수를 설정하고 <b>Enter</b>를 누르십시오.
                   </li>
-                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> <b>지속적 볼륨 클레임</b>을 작성하십시오. 이는 지속적 분석 데이터에 사용됩니다. 일회성 단계입니다. 이전에 이미 작성한 경우 <b>PVC</b>를 재사용할 수 있습니다. <em>yaml</em> 파일을 편집한 후 <b>args/mfpf-persistent-volume-claim.yaml</b> 명령을 실행하십시오. 다음 <em>kubectl</em> 명령을 실행하기 전에 모든 변수는 해당 값으로 대체되어야 합니다. <br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
+                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> <b>지속적 볼륨 클레임</b>을 작성하십시오. 이는 지속적 분석 데이터에 사용됩니다. 일회성 단계입니다. 이전에 이미 작성한 경우 <b>PVC</b>를 재사용할 수 있습니다. <em>yaml</em> 파일을 편집한 후 <b>args/mfpf-persistent-volume-claim.yaml</b> 명령을 실행하십시오.
+                  다음 <em>kubectl</em> 명령을 실행하기 전에 모든 변수는 해당 값으로 대체되어야 합니다. <br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
                   후속 단계에서 제공해야 하므로 <b>지속적 볼륨 클레임</b>의 이름을 기록하십시오.
                   </li>
                   <li><b>수신 도메인</b>을 가져오려면 다음 명령을 실행하십시오. <br/>

@@ -4,8 +4,8 @@ title: CredentialsValidationSecurityCheck 클래스 구현
 breadcrumb_title: 보안 검사
 relevantTo: [android,ios,windows,javascript]
 weight: 1
-다운로드:
-  - 이름: 보안 검사 다운로드
+downloads:
+  - name: 보안 검사 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -119,7 +119,7 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 
 ```java
 public PinCodeConfig(Properties properties) {
-    //Make sure to load the parent properties
+        //Make sure to load the parent properties
     super(properties);
 
     //Load the pinCode property
@@ -183,7 +183,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ## 보안 검사 구성
 {: #configuring-the-security-check }
-adapter.xml에서 `<securityCheckDefinition>` 요소를 추가하십시오. 
+adapter.xml에서 `<securityCheckDefinition>` 요소를 추가하십시오.
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">

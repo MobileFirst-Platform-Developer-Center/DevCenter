@@ -6,7 +6,7 @@ relevantTo: [xamarin]
 downloads:
   - 이름: Xamarin 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
-  - 이름: 어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
@@ -85,7 +85,7 @@ request.SetQueryParameter("params","['value1', 'value2']");
 
 ### 양식 매개변수
 {: #form-parameters }
-본문에서 양식 매개변수를 보내려면 `.Send()` 대신 `.Send(Dictionary<string, string> formParameters)`를 사용하십시오.   
+본문에서 양식 매개변수를 보내려면 `.Send(Dictionary<string, string> formParameters)`를 `.Send()` 대신 사용하십시오.  
 
 ```cshrap
 Dictionary<string,string> formParams = new Dictionary<string,string>();
