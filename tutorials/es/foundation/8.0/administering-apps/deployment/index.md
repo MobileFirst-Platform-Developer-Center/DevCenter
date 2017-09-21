@@ -35,6 +35,8 @@ Los adaptadores se pueden subir, actualizar o configurar mientras el servidor de
     Para obtener más información, consulte [Utilización de SSL en adaptadores HTTP](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). Para obtener más información acerca de cómo utilizar certificados autofirmados, consulte [Configuración SSL entre adaptadores y servidores de fondo utilizando certificados autofirmados](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
     > **Nota:** Si el servidor de aplicaciones es WebSphere Application Server Liberty, los certificados también se deben encontrar en el almacén de confianza de Liberty.
+
+
 3. Verifique la configuración del lado del servidor del adaptador.
 4. Utilice los mandatos `mfpadm deploy adapter` y `mfpadm adapter set user-config` para subir el adaptador y su configuración. 
 
@@ -52,8 +54,7 @@ No utilice la característica de exportación en un navegador web.
 
 2. Importe el certificado del servidor de fondo en el almacén de claves de {{ site.data.keys.product_adj }}. 
 3. Despliegue el nuevo almacén de claves de {{ site.data.keys.product_adj }}.
-Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
-
+Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
 
 ### Ejemplo
 {: #example }
@@ -160,8 +161,8 @@ Para obtener más información, consulte [Configuración del almacén de claves 
 
     Se define el nombre de tiempo de ejecución y el URL del servidor de destino en el archivo de propiedades del cliente.
 También puede cambiar el servidor de destino utilizando {{ site.data.keys.mf_cli }}.
-Para configurar la aplicación para un servidor de destino sin registrar la aplicación para un servidor en ejecución, puede utilizar los mandatos `mfpdev app config server <URL servidor>` y `mfpdev app config runtime <nombre_tiempo_ejecución>`.
-Otra posibilidad es registrar la aplicación para un servidor en ejecución ejecutando el mandato `mfpdev app register`.
+Para configurar la aplicación para un servidor de destino sin registrar la aplicación para un servidor en ejecución, puede utilizar los mandatos `mfpdev app config server
+<server URL>` y `mfpdev app config runtime <runtime_name>`. Otra posibilidad es registrar la aplicación para un servidor en ejecución ejecutando el mandato `mfpdev app register`.
 Utilice el URL público del servidor.
 Este URL lo utiliza la aplicación móvil para conectarse a {{ site.data.keys.mf_server }}.
     

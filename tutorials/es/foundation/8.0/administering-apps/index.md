@@ -52,7 +52,7 @@ En este rol, el usuario puede realizar todas las operaciones de administración 
 
 
 Está disponible un conjunto de servicios REST para realizar operaciones de administración.
-Para obtener la documentación de referencia de API de estos servicios, consulte [API REST REST API para el servicio de administración de {{site.data.keys.mf_server }}](../api/rest/administration-service/).
+Para obtener la documentación de referencia de API de estos servicios, consulte [API REST REST API para el servicio de administración de {{ site.data.keys.mf_server }}](../api/rest/administration-service/).
 
 Con este conjunto de servicios REST, puede realizar las mismas operaciones que hace en {{ site.data.keys.mf_console }}.
 Puede gestionar aplicaciones, adaptadores, y, por ejemplo, subir una nueva versión de una aplicación o inhabilitar una versión antigua.

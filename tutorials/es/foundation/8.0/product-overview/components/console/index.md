@@ -110,7 +110,7 @@ El desplegable proporciona un acceso rápido a las distintas acciones de la cons
 Edite las propiedades de tiempo de ejecución, las variables de la seguridad global, el almacén de claves y los clientes confidenciales.
 
 
-![Imagen de la pantalla Valores de tiempo de ejecución](runtime-settings.png)
+![Imagen de la pantalla de Valores de entorno de ejecución ](runtime-settings.png)
 
 ### Registro de errores
 {: #error-log }
@@ -158,7 +158,7 @@ Configure los parámetros de seguridad de las aplicaciones como, por ejemplo, el
 > [Obtenga más información](../../../authentication-and-security/) sobre la infraestructura de seguridad de {{ site.data.keys.product_adj }}.
 
 
-![Imagen de la pantalla de configuración de seguridad de aplicación](authentication-and-security.png)
+![Imagen de la pantalla de configuración de la seguridad de aplicaciones](authentication-and-security.png)
 
 #### Valores de aplicación
 {: #application-settings }
