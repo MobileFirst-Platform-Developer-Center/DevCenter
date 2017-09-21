@@ -92,6 +92,8 @@ weight: 5
 
    > Maven 및 {{ site.data.keys.mf_cli }}가 설치되지 않은 경우, 화면상의 **개발 환경 설정** 지시사항을 따르십시오.
 
+
+
 2. **명령행** 창에서 어댑터의 Maven 프로젝트 루트 폴더로 이동해서 다음 명령을 실행하십시오.
 
    ```bash
@@ -139,7 +141,7 @@ weight: 5
 ### 결과
 {: #results }
 * **{{ site.data.keys.mf_server }} Ping** 단추를 클릭하면 **{{ site.data.keys.mf_server }}에 연결됨**이 표시됩니다.
-* 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 없는 경우, 배치된 Java 어댑터를 사용하는 자원 요청이 발생합니다. 
+* 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 있는 경우, 배치된 Java 어댑터를 사용하는 자원 요청 호출이 발생합니다. 
 
 그 후에 어댑터 응답이 경보에 표시됩니다.
 

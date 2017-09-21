@@ -12,6 +12,7 @@ weight: 2
 #### 다음으로 이동
 {: #jump-to }
 * [ATS(App Transport Security) 구성](#configuring-app-transport-security-ats)
+* [{{ site.data.keys.mf_app_center }}에 대한 SSL 구성](#ssl-configuration-for-application-center)
 * [IBM Containers에서 {{ site.data.keys.product_full }}의 보안 구성](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
 * [컨테이너의 LDAP 구성](#ldap-configuration-for-containers)
 
@@ -19,8 +20,9 @@ weight: 2
 {: #configuring-app-transport-security-ats }
 ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플리케이션에는 영향을 미치지 않습니다. 기타 모바일 운영 체제에서는 서버가 ATS 레벨의 보안에서 통신하지 않아도 되지만 ATS가 구성된 서버와 계속 통신할 수 있습니다. 컨테이너 이미지를 구성하기 전에 생성된 인증서를 준비하십시오. 다음 단계에서는 키 저장소 파일 **ssl_cert.p12**에 개인용 인증서가 있으며 **ca.crt**가 서명 인증서라고 가정합니다. 
 
-1. **ssl_cert.p12** 파일을 **mfpf-server/usr/security/** 폴더에 복사하십시오. 
-2. **mfpf-server/usr/config/keystore.xml** 파일을 다음 예제 구성과 유사하게 수정하십시오. 
+1. **ssl_cert.p12** 파일을 **mfpf-server/usr/security/** 폴더 또는 Application Center의 **mfp-appcenter/user/security/**에 복사하십시오. 
+
+2. **mfpf-server/usr/config/keystore.xml** 및 **appcenter/usr/config/keystore.xml**(appcenter용) 파일을 다음 예제 구성과 유사하게 수정하십시오. 
 
    ```bash
    <server>
@@ -44,7 +46,7 @@ ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플�
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384
 
-이러한 암호를 사용하고 IBM Java SDK를 사용하는 경우 정책 파일을 [다운로드](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk)할 수 있습니다. 해당 정책 파일은 두 개의 파일 **US_export_policy.jar**, **local_policy.jar**입니다. 두 파일 모두 **mfpf-server/usr/security** 폴더에 추가한 후 **mfpf-server/usr/env/jvm.options** 파일에 JVM 옵션 `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`를 추가하십시오. 
+이러한 암호를 사용하고 IBM Java SDK를 사용하는 경우 정책 파일을 [다운로드](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk)할 수 있습니다. 해당 정책 파일은 두 개의 파일 **US_export_policy.jar**, **local_policy.jar**입니다. 두 파일 모두 **mfpf-server/usr/security** 폴더 및 **mfp-appcenter/usr/security**(appcenter용)에 추가한 후 **mfpf-server/usr/env/jvm.options** 파일에 JVM 옵션 `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`를 추가하십시오. 
 
 개발 단계 용도로만 info.plist 파일에 다음 특성을 추가하여 ATS를 사용 안함으로 설정할 수 있습니다. 
 
@@ -56,7 +58,19 @@ ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플�
 </dict>
 ```
 
-## IBM Containers에서 {{ site.data.keys.product_full }}의 보안 구성	
+## {{ site.data.keys.mf_app_center }}의 SSL 구성
+{: #ssl-configuration-for-application-center }
+
+### {{ site.data.keys.mf_app_center }} 콘솔의 SSL 구성
+{: #configure-ssl-for-application-center-console }
+
+{{ site.data.keys.mf_app_center }} 서버에서 HTTPS(HTTP over SSL)를 사용하여 {{ site.data.keys.mf_app_center }} 콘솔에 대한 액세스를 보호할 수 있습니다. {{ site.data.keys.mf_app_center }} 서버에서 HTTPS를 사용하려면 인증서를 포함하는 키 저장소를 작성하여 `usr/security` 폴더에 배치하십시오. 그런 다음 구성된 키 저장소를 사용하도록 `usr/config/keystore.xml` 파일을 업데이트하십시오. 
+
+### 백엔드에 대한 연결 보안 설정
+{: #securing-a-connection-to-the-back-end }
+컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 Bluemix Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 [IBM Bluemix Containers의 Mobile Foundation에서 사내 구축형 백엔드에 안전하게 연결](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/) 블로그 게시물에서 제공됩니다. 
+
+## IBM Containers에서 {{ site.data.keys.product_full }}의 보안 구성
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
 IBM Containers의 {{ site.data.keys.product }} 인스턴스 보안 구성은 비밀번호 암호화, 애플리케이션 인증 검사 사용, 콘솔에 대한 액세스 보호를 포함해야 합니다. 
 
@@ -73,9 +87,11 @@ IBM Containers의 {{ site.data.keys.product }} 인스턴스 보안 구성은 비
 {{ site.data.keys.mf_server }}에서 HTTPS(HTTP over SSL)를 사용하여 {{ site.data.keys.mf_console }}과 {{ site.data.keys.mf_analytics_console }}에 대한 액세스를 보호할 수 있습니다.   
 {{ site.data.keys.mf_server }}에서 HTTPS를 사용하려면 인증서를 포함하는 키 저장소를 작성하여 **usr/security** 폴더에 배치하십시오. 그런 다음 구성된 키 저장소를 사용하도록 **usr/config/keystore.xml** 파일을 업데이트하십시오. 
 
-### 백엔드에 대한 연결 보안 설정
+<!-- Duplicate section
+### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
-컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 Bluemix Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 IBM Bluemix Containers의 {{ site.data.keys.product }}에서 사내 구축형 백엔드에 안전하게 연결 문서에서 제공됩니다. 
+If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Bluemix containers.
+-->
 
 #### {{ site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
@@ -93,7 +109,7 @@ IBM Containers의 {{ site.data.keys.product }} 인스턴스 보안 구성은 비
 </server>
 ```
 
-#### 개인용 IP 주소를 사용하여 컨테이너 통신 보안 설정	
+#### 개인용 IP 주소를 사용하여 컨테이너 통신 보안 설정
 {: securing-container-communication-using-a-private-ip-address }
 {{ site.data.keys.mf_server }} 컨테이너와 {{ site.data.keys.mf_analytics }} 컨테이너 간 통신을 보호하려면 `mfpfProperties.xml` 파일에 {{ site.data.keys.mf_analytics }} 컨테이너의 개인용 IP 주소를 포함해야 합니다. 
 
@@ -104,10 +120,10 @@ mfpf-server/usr/config/mfpfproperties.xml 파일을 편집하여 다음 단계�
 1. **mfp.analytics.url** 특성을 {{ site.data.keys.mf_analytics }} 컨테이너의 개인용 IP 주소로 설정하십시오. 예: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
     개인용 IP 주소가 변경된 경우 mfpfproperties.xml 파일에 새 IP 주소를 제공하고 prepareserver.sh 스크립트와 starterserver.sh 스크립트를 실행하여 컨테이너를 다시 빌드하고 배치하십시오. 
-    
+
 2. 네트워크에서 {{ site.data.keys.mf_analytics_console }}에 액세스할 수 있도록 **mfp.analytics.console.url** 특성을 {{ site.data.keys.mf_analytics }} 컨테이너의 공용 IP 주소로 설정하십시오. 예: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
-#### 컨테이너에서 실행 중인 콘솔에 대한 액세스 제한	
+#### 컨테이너에서 실행 중인 콘솔에 대한 액세스 제한
 {: #restricting-access-to-the-consoles-running-on-containers }
 IBM Containers에서 실행 중인 콘솔에 대한 요청을 차단하기 위해 TAI(Trust Association Interceptor)를 작성하고 배치하여 프로덕션 환경에서 {{ site.data.keys.mf_console }}과 {{ site.data.keys.mf_analytics_console }}에 대한 액세스를 제한할 수 있습니다. 
 
@@ -150,7 +166,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
     	   if(requestURI.contains("worklightConsole")) {
     		   interceptMFPConsoleRequest = true;
     	   }
-    		   
+
     	   return interceptMFPConsoleRequest;
        }
 
@@ -169,26 +185,26 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
             	if (ipAddress == null) { 
             	  ipAddress = request.getRemoteAddr();  
             	}
-            	
+
             	if(checkIPMatch(ipAddress, allowedIP)) {
             		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
             	}
             	else {
             		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
             	}
-            		
+
             }
             return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         }
-       
+
        private static boolean checkIPMatch(String ipAddress, String pattern) {
-    	   
+
     	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
     		      return true;
 
     	   String[] mask = pattern.split("\\.");
     	   String[] ip_address = ipAddress.split("\\.");
-    	   
+
     	   for (int i = 0; i < mask.length; i++)
     	   {
     		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -235,7 +251,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
         {}
    }
    ```
-    
+
 2. 사용자 정의 TAI 구현을 .jar 파일에 내보내 적용 가능한 **env** 폴더(**mfpf-server/usr/env 또는 mfpf-analytics/usr/env**)에 배치하십시오. 
 3. TAI 인터셉터에 대한 세부사항을 포함하는 XML 구성 파일을 작성한 후(1단계에 제공된 TAI 구성 예제 코드 참조 .xml 파일을 적용 가능한 폴더(**mfpf-server/usr/config** 또는 **mfpf-analytics/usr/config**)에 추가하십시오. .xml 파일은 다음 예제와 유사해야 합니다. **팁:** 구현을 반영하도록 클래스 이름과 특성을 업데이트하십시오. 
 
@@ -246,18 +262,18 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
             <feature>appSecurity-2.0</feature> 
         </featureManager> 
 
-        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
             <interceptors id="MFPConsoleTAI" enabled="true"  
-                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
-                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI"> 
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
+                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
                 <properties allowedIPs="9.182.149.*"/>
-            </interceptors> 
-        </trustAssociation> 
+            </interceptors>
+        </trustAssociation>
 
-        <library id="MFPConsoleTAI"> 
-            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/> 
-        </library> 
+        <library id="MFPConsoleTAI">
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+        </library>
    </server>
    ```
 
@@ -269,7 +285,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
 
 다음과 같은 용도로 컨테이너에서 외부 LDAP 레지스트리를 사용할 수 있습니다. 
 
-* 외부 LDAP 레지스트리로 {{ site.data.keys.product_adj }} 관리 보안을 구성합니다. 
+* 외부 LDAP 레지스트리로 {{ site.data.keys.product_adj }} 관리 또는 {{ site.data.keys.mf_app_center }} 보안을 구성합니다. 
 * 외부 LDAP 레지스트리에 대해 작업하도록 {{ site.data.keys.product_adj }} 모바일 애플리케이션을 구성합니다. 
 
 ### LDAP을 사용하여 관리 보안 구성
@@ -290,7 +306,7 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
 1. **registry.xml**을 열고 `basicRegistry` 요소를 찾으십시오. `basicRegistry` 요소를 다음 스니펫과 유사한 코드로 대체하십시오. 
 
    ```xml
-   <ldapRegistry 
+   <ldapRegistry
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -305,15 +321,21 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
-    항목 | 설명
+
+        항목| 설명
+
     --- | ---
     `host` 및 `port` | 로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
+    
     `baseDN` | 특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
-    `bindDN="uid=admin,ou=system"	` | LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
-    `bindPassword="secret"	` | LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    
+    `bindDN="uid=admin,ou=system"	`| LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
+    
+    `bindPassword="secret"	`| LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
-        
+
+
 2. `appSecurity-2.0`과 `ldapRegistry-3.0`에 다음 기능을 사용할 수 있는지 확인하십시오. 
 
    ```xml
@@ -322,9 +344,9 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
     여러 LDAP 서버 저장소 구성에 대한 세부사항은 [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html)를 참조하십시오. 
-    
+
 #### 보안 게이트웨이
 {: #secure-gateway }
 LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 태스크를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다. 
@@ -338,7 +360,7 @@ LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix�
 7. **대상 ID** 값과 **클라우드 호스트:포트** 값을 캡처하십시오. registry.xml 파일로 이동해서 해당 값을 추가하여 기존 값을 대체하십시오. registry.xml 파일에 있는 업데이트된 코드 스니펫의 다음 예를 참조하십시오. 
 
 ```xml
-<ldapRegistry 
+<ldapRegistry
     id="ldap"
     host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
     baseDN="dc=worklight,dc=com"

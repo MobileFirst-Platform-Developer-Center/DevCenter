@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 apporte des modifications significatives qui modernisent votre expérience en matière de développement, de déploiement et de gestion d'applications {{ site.data.keys.product_adj }}.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ weight: 1
 
                 <h3>API REST mise à jour pour le contexte d'exécution</h3>
                 <p>L'API REST pour l'exécution de {{ site.data.keys.product_adj }} offre désormais plusieurs services pour les clients mobiles et les clients confidentiels pour appeler des adaptateurs, obtenir des jetons d'accès, obtenir du contenu de mise à jour directe, et plus encore. La plupart des noeuds finaux de l'API REST sont protégés par OAuth. Sur un serveur de développement, vous pouvez afficher le doc swagger pour l'API d'exécution sur le site : <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Possibilité d'épingler plusieurs certificats</h3>
+                <p>A partir du correctif temporaire 8.0.0.0-IF201706240159, {{ site.data.keys.mf_bm_short }} prend en charge l'épinglage de plusieurs certificats. Cette fonction permet aux utilisateurs d'accéder sans risque à différents hôtes. Avant ce correctif temporaire, {{ site.data.keys.mf_bm_short }} ne permettait d'épingler qu'un seul certificat. {{ site.data.keys.mf_bm_short }} met en oeuvre une nouvelle API qui permet de se connecter à plusieurs hôtes en autorisant l'utilisateur à épingler les clés publiques de plusieurs certificats X509 (obtenus auprès d'une autorité de certification) à l'application client. Une copie de tous les certificats doit être placée dans votre application client. Lors de l'établissement de la liaison SSL, le SDK du client {{ site.data.keys.product_full }} vérifie que la clé publique du certificat du serveur correspond bien à celle de l'un des certificats stockés dans l'application.</p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>De nouvelles fonctions {{ site.data.keys.product }} ont été introduites pour vous aider à déployer et gérer vos applications. Vous pouvez désormais mettre à jour vos applications et adaptateurs sans avoir à redémarrer {{ site.data.keys.mf_server }}.</p>
 

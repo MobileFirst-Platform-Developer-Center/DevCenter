@@ -78,37 +78,45 @@ WebSphere Application Server의 JNDI 특성은 환경 변수로 사용할 수 �
 {: #mobilefirst-server }
 다음 테이블에서는 {{ site.data.keys.mf_server }}에서 설정할 수 있는 특성을 보여줍니다. 
 
-| 특성                               | 설명                                                  | 기본값        |
+| 특성| 설명| 기본값       |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | 이 특성을 {{ site.data.keys.mf_analytics_console }}의 URL로 설정하십시오. 예를 들어, http://hostname:port/analytics/console입니다. 이 특성을 설정하면 {{ site.data.keys.mf_console }}에서 분석 아이콘을 사용할 수 있습니다.  | 없음 |
-| mfp.analytics.logs.forward         | 이 특성이 true로 설정되면 {{ site.data.keys.mf_server }}에서 기록되는 서버 로그가 {{ site.data.keys.mf_analytics }}에서 캡처됩니다.  | true |
-| mfp.analytics.url                  |필수입니다. 수신 분석 데이터를 수신하는 {{ site.data.keys.mf_analytics_server }}에 의해 노출되는 URL입니다. 예를 들어, http://hostname:port/analytics-service/rest/v2입니다.  | 없음 |
-| analyticsconsole/mfp.analytics.url |	선택사항입니다. Analytics REST 서비스의 전체 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 이 값은 URI 프로토콜, 호스트 이름 또는 포트 대신 *를 포함하여 수신 URL의 해당 파트를 나타낼 수 있습니다. *://*:*/analytics-service(프로토콜, 호스트 이름 및 포트가 동적으로 판별됨) |
-| mfp.analytics.username             | 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 사용자 이름입니다.  | 없음 |
-| mfp.analytics.password             | 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 비밀번호입니다.  | 없음 |
+| mfp.analytics.console.url| 이 특성을 {{ site.data.keys.mf_analytics_console }}의 URL로 설정하십시오. 예를 들어, http://hostname:port/analytics/console입니다. 이 특성을 설정하면 {{ site.data.keys.mf_console }}에서 분석 아이콘을 사용할 수 있습니다. | 없음
+|
+| mfp.analytics.logs.forward| 이 특성이 true로 설정되면 {{ site.data.keys.mf_server }}에서 기록되는 서버 로그가 {{ site.data.keys.mf_analytics }}에서 캡처됩니다. | true|
+| mfp.analytics.url|필수입니다. 수신 분석 데이터를 수신하는 {{ site.data.keys.mf_analytics_server }}에 의해 노출되는 URL입니다. 예를 들어, http://hostname:port/analytics-service/rest/v2입니다. | 없음
+|
+| analyticsconsole/mfp.analytics.url|	선택사항입니다. Analytics REST 서비스의 전체 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 이 값은 URI 프로토콜, 호스트 이름 또는 포트 대신 *를 포함하여 수신 URL의 해당 파트를 나타낼 수 있습니다. *://*:*/analytics-service(프로토콜, 호스트 이름 및 포트가 동적으로 판별됨) |
+| mfp.analytics.username| 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 사용자 이름입니다. | 없음
+|
+| mfp.analytics.password| 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 비밀번호입니다. | 없음
+|
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
 다음 테이블에서는 {{ site.data.keys.mf_analytics_server }}에서 설정할 수 있는 특성을 보여줍니다. 
 
-| 특성                               | 설명                                                  | 기본값        |
+| 특성| 설명| 기본값       |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Elasticsearch 노드 유형을 정의합니다. 올바른 값은 master 및 data입니다. 이 특성이 설정되지 않은 경우에는 노드가 마스터 적격 노드와 데이터 노드의 역할을 모두 수행합니다.  | 	없음 |
-| analytics/shards | 색인당 샤드 수입니다. 이 값은 클러스터에서 시작되는 첫 번째 노드에서만 설정할 수 있으며 변경할 수 없습니다.  | 1 |
-| analytics/replicas_per_shard | 클러스터 내 각 샤드의 복제본 수입니다. 이 값은 실행 중인 클러스터에서 동적으로 변경될 수 있습니다.  | 0 |
-| analytics/masternodes | 마스터 적격 노드의 호스트 이름 및 포트가 포함된 쉼표로 구분된 문자열입니다.  | 없음 |
-| analytics/clustername | 클러스터의 이름입니다. 동일한 서브세트에서 작동하는 여러 클러스터를 보유할 계획이고 이들 클러스터를 고유하게 식별해야 하는 경우 이 값을 설정하십시오.  | worklight |
-| analytics/nodename | 클러스터 내 노드의 이름입니다.  | 무작위로 생성되는 문자열
-| analytics/datapath | 파일 시스템에서 분석 데이터가 저장되는 경로입니다.  | ./analyticsData |
-| analytics/settingspath | Elasticsearch 설정 파일의 경로입니다. 자세한 정보는 Elasticsearch를 참조하십시오.  | 없음 |
-| analytics/transportport | 노드 간 통신에 사용되는 포트입니다.  | 9600 |
-| analytics/httpport | Elasticsearch에 대한 HTTP 통신에 사용되는 포트입니다.  | 9500 |
-| analytics/http.enabled | Elasticsearch에 대한 HTTP 통신을 사용 또는 사용 안함으로 설정합니다.  | false |
-| analytics/serviceProxyURL | 분석 UI WAR 파일 및 분석 서비스 WAR 파일은 별도의 애플리케이션 서버에 설치될 수 있습니다. 이를 수행하도록 선택하는 경우에는 UI WAR 파일의 JavaScript 런타임이 브라우저의 XSS(Cross-site scripting) 차단에 의해 차단될 수 있음을 숙지해야 합니다. 이 차단을 무시하기 위해 JavaScript 런타임이 원래 서버에서 REST API 응답을 검색하도록 UI WAR 파일에 Java 프록시 코드가 포함됩니다. 하지만 프록시는 REST API 요청을 분석 서비스 WAR 파일에 전달하도록 구성됩니다. WAR 파일을 별도의 애플리케이션 서버에 설치한 경우 이 특성을 구성하십시오.  | 없음 |
-| analytics/bootstrap.mlockall | 이 특성은 Elasticsearch 메모리가 디스크로 스왑되지 않도록 방지합니다.  | true |
-| analytics/multicast | 멀티캐스트 노드 발견을 사용 또는 사용 안함으로 설정합니다.  | false |
-| analytics/warmupFrequencyInSeconds | 준비 조회가 실행되는 빈도입니다. 준비 조회는 백그라운드에서 실행되어 조회 결과를 메모리에 강제 상주시켜 웹 콘솔 성능을 향상시킵니다. 음수 값은 준비 조회를 사용 안함으로 설정합니다.  | 600 |
-| analytics/tenant | 기본 Elasticsearch 색인의 이름입니다. worklight |
+| analytics/nodetype| Elasticsearch 노드 유형을 정의합니다. 올바른 값은 master 및 data입니다. 이 특성이 설정되지 않은 경우에는 노드가 마스터 적격 노드와 데이터 노드의 역할을 모두 수행합니다. | 	없음
+|
+| analytics/shards| 색인당 샤드 수입니다. 이 값은 클러스터에서 시작되는 첫 번째 노드에서만 설정할 수 있으며 변경할 수 없습니다. | 1|
+| analytics/replicas_per_shard| 클러스터 내 각 샤드의 복제본 수입니다. 이 값은 실행 중인 클러스터에서 동적으로 변경될 수 있습니다. | 0|
+| analytics/masternodes| 마스터 적격 노드의 호스트 이름 및 포트가 포함된 쉼표로 구분된 문자열입니다. | 없음
+|
+| analytics/clustername| 클러스터의 이름입니다. 동일한 서브세트에서 작동하는 여러 클러스터를 보유할 계획이고 이들 클러스터를 고유하게 식별해야 하는 경우 이 값을 설정하십시오. | worklight|
+| analytics/nodename| 클러스터 내 노드의 이름입니다. | 무작위로 생성되는 문자열
+| analytics/datapath| 파일 시스템에서 분석 데이터가 저장되는 경로입니다. | ./analyticsData|
+| analytics/settingspath| Elasticsearch 설정 파일의 경로입니다. 자세한 정보는 Elasticsearch를 참조하십시오. | 없음
+|
+| analytics/transportport| 노드 간 통신에 사용되는 포트입니다. | 9600|
+| analytics/httpport| Elasticsearch에 대한 HTTP 통신에 사용되는 포트입니다. | 9500|
+| analytics/http.enabled| Elasticsearch에 대한 HTTP 통신을 사용 또는 사용 안함으로 설정합니다. | false|
+| analytics/serviceProxyURL| 분석 UI WAR 파일 및 분석 서비스 WAR 파일은 별도의 애플리케이션 서버에 설치될 수 있습니다. 이를 수행하도록 선택하는 경우에는 UI WAR 파일의 JavaScript 런타임이 브라우저의 XSS(Cross-site scripting) 차단에 의해 차단될 수 있음을 숙지해야 합니다. 이 차단을 무시하기 위해 JavaScript 런타임이 원래 서버에서 REST API 응답을 검색하도록 UI WAR 파일에 Java 프록시 코드가 포함됩니다. 하지만 프록시는 REST API 요청을 분석 서비스 WAR 파일에 전달하도록 구성됩니다. WAR 파일을 별도의 애플리케이션 서버에 설치한 경우 이 특성을 구성하십시오. | 없음
+|
+| analytics/bootstrap.mlockall| 이 특성은 Elasticsearch 메모리가 디스크로 스왑되지 않도록 방지합니다. | true|
+| analytics/multicast| 멀티캐스트 노드 발견을 사용 또는 사용 안함으로 설정합니다. | false|
+| analytics/warmupFrequencyInSeconds| 준비 조회가 실행되는 빈도입니다. 준비 조회는 백그라운드에서 실행되어 조회 결과를 메모리에 강제 상주시켜 웹 콘솔 성능을 향상시킵니다. 음수 값은 준비 조회를 사용 안함으로 설정합니다. | 600|
+| analytics/tenant| 기본 Elasticsearch 색인의 이름입니다. worklight|
 
 키에 점이 포함되어 있지 않은 모든 경우(**http.enabled**가 아니라 **httpport**) 변수 이름에 **ANALYTICS_** 접두부가 있는 시스템 환경 변수를 통해 설정을 제어할 수 있습니다. JNDI 특성과 시스템 환경 변수가 모두 설정된 경우에는 시스템 환경 변수가 우선합니다. 예를 들어, **analytics/httpport** JNDI 특성과 **ANALTYICS_httpport** 시스템 환경 변수가 모두 설정된 경우에는 **ANALYTICS_httpport**의 값이 사용됩니다. 
 
@@ -131,7 +139,23 @@ TTL은 효과적으로 데이터 보유 정책을 설정하고 유지보수할 �
 * 1s = 1초
 * 1ms = 1밀리초
 
-> 참고: 이전 {{ site.data.keys.mf_analytics_server }} 버전에서 마이그레이션하는 경우 TTL JNDI 특성을 이전에 구성했으면 [이전 {{ site.data.keys.mf_analytics_server }} 버전에서 사용하는 서버 특성 마이그레이션](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)을 참조하십시오.
+지원되는 문서 유형의 목록은 다음과 같습니다. 
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **참고:** 이전 {{ site.data.keys.mf_analytics_server }} 버전에서 마이그레이션하는 경우 TTL JNDI 특성을 이전에 구성했으면 [이전 {{ site.data.keys.mf_analytics_server }} 버전에서 사용하는 서버 특성 마이그레이션](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)을 참조하십시오.
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -196,14 +220,15 @@ Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있
 
 2. JNDI 특성에 대한 애플리케이션 서버의 구성 파일을 편집(또는 시스템 환경 변수를 사용)하여 최소한 다음과 같은 플래그를 구성하십시오. 
 
-    | 플래그 | 값(예) | 기본값 | 참고 |
+    | 플래그| 값(예)| 기본값 | 참고|
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	이 노드가 참여할 클러스터입니다.  |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	실수로 클러스터에 참여하는 것을 방지하려면 false로 설정하십시오.  |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	없음 | 	기존 클러스터의 마스터 노드 목록입니다. 마스터 노드에서 전송 포트 설정을 지정한 경우 기본 포트인 9600을 변경하십시오.  |
-    | node.master | 	false | 	true | 	이 노드를 마스터로 허용하지 마십시오.  |
-    | node.data|	false | 	true | 	이 노드가 데이터를 저장하도록 허용하지 마십시오.  |
-    | http.enabled | 	true	 | true | 	Elasticsearch REST API에 대해 비보안 HTTP 포트 9200을 여십시오.  |
+    | cluster.name| 	worklight	 | worklight| 	이 노드가 참여할 클러스터입니다. |
+    | discovery.zen.ping.multicast.enabled| 	false| 	true| 	실수로 클러스터에 참여하는 것을 방지하려면 false로 설정하십시오. |
+    | discovery.zen.ping.unicast.hosts| 	["9.8.7.6:9600"]| 	없음
+| 	기존 클러스터의 마스터 노드 목록입니다. 마스터 노드에서 전송 포트 설정을 지정한 경우 기본 포트인 9600을 변경하십시오. |
+    | node.master| 	false| 	true| 	이 노드를 마스터로 허용하지 마십시오. |
+    | node.data|	false| 	true| 	이 노드가 데이터를 저장하도록 허용하지 마십시오. |
+    | http.enabled| 	true	 | true| 	Elasticsearch REST API에 대해 비보안 HTTP 포트 9200을 여십시오. |
 
 3. 프로덕션 시나리오의 모든 구성 플래그를 고려하십시오. Elasticsearch에서 해당 데이터가 아닌 다른 파일 시스템 디렉토리에서 플러그인을 보관하길 원하므로 **path.plugins** 플래그를 설정해야 합니다. 
 4. 필요한 경우 애플리케이션 서버를 실행하고 WAR 애플리케이션을 시작하십시오. 
@@ -226,14 +251,15 @@ Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있
 2. 파일의 압축을 푸십시오. 
 3. **config/elasticsearch.yml** 파일을 편집하고 최소한 다음과 같은 플래그를 구성하십시오. 
 
-    | 플래그 | 값(예) | 기본값 | 참고 |
+    | 플래그| 값(예)| 기본값 | 참고|
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	이 노드가 참여할 클러스터입니다.  |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	실수로 클러스터에 참여하는 것을 방지하려면 false로 설정하십시오.  |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	없음 | 	기존 클러스터의 마스터 노드 목록입니다. 마스터 노드에서 전송 포트 설정을 지정한 경우 기본 포트인 9600을 변경하십시오.  |
-    | node.master | 	false | 	true | 	이 노드를 마스터로 허용하지 마십시오.  |
-    | node.data|	false | 	true | 	이 노드가 데이터를 저장하도록 허용하지 마십시오.  |
-    | http.enabled | 	true	 | true | 	Elasticsearch REST API에 대해 비보안 HTTP 포트 9200을 여십시오.  |
+    | cluster.name| 	worklight	 | worklight| 	이 노드가 참여할 클러스터입니다. |
+    | discovery.zen.ping.multicast.enabled| 	false| 	true| 	실수로 클러스터에 참여하는 것을 방지하려면 false로 설정하십시오. |
+    | discovery.zen.ping.unicast.hosts| 	["9.8.7.6:9600"]| 	없음
+| 	기존 클러스터의 마스터 노드 목록입니다. 마스터 노드에서 전송 포트 설정을 지정한 경우 기본 포트인 9600을 변경하십시오. |
+    | node.master| 	false| 	true| 	이 노드를 마스터로 허용하지 마십시오. |
+    | node.data|	false| 	true| 	이 노드가 데이터를 저장하도록 허용하지 마십시오. |
+    | http.enabled| 	true	 | true| 	Elasticsearch REST API에 대해 비보안 HTTP 포트 9200을 여십시오. |
 
 
 4. 프로덕션 시나리오의 모든 구성 플래그를 고려하십시오. Elasticsearch에서 해당 데이터가 아닌 다른 파일 시스템 디렉토리에서 플러그인을 보관하길 원하므로 path.plugins 플래그를 설정해야 합니다. 

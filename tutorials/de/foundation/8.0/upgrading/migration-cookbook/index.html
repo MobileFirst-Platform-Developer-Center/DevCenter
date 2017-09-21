@@ -136,7 +136,7 @@ installieren Sie zunächst das Unterstützungstool für die Migration, das Sie s
 
         <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Entwicklung von Cordova-Anwendungen</a>.</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
@@ -192,15 +192,15 @@ können Sie diese mit <a href="http://cordova.apache.org/docs/en/latest/guide/cl
                         <h4>Schritt 3</h4>
                         <p>Jetzt, da sich der Quellcode der Anwendung in der Cordova-App befindet, müssen Sie ein paar Codeblöcke hinzufügen oder bearbeiten. </p>
 
-                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="setupCordova" role="tablist">
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="setupCordova">
+                            <div class="panel-heading" role="tab" id="setupCordova-inner">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">Für Anweisungen hier klicken</a>
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova-inner">
                                 <div class="panel-body">
                                     <ol>
                                         <li>Aktualisieren Sie die Datei <b>www/index.html</b>. <ul>
@@ -234,10 +234,8 @@ jQuery-Version herunterladen und wie in der folgenden Codezeile angegeben laden.
 <br />
 							<code>&lt;script src="lib/jquery.min.js"&gt;&lt;/script&gt;</code>
 							<br />
-Sie müssen die optionale
-jQuery-Ergänzung nicht in den Ordner lib verschieben.
-Sie können diese Ergänzung an eine beliebige Position verschieben, müssen jedoch in der Datei
-index.html einen ordnungsgemäßen Verweis angeben. </li>
+                                                        Sie müssen die optionale jQuery-Ergänzung nicht in den Ordner lib verschieben. Sie können diese Ergänzung an eine beliebige Position verschieben, müssen jedoch in der Datei index.html einen ordnungsgemäßen Verweis angeben.
+                                                    </li>
                                                 </ul>
                                             </li>
 
@@ -343,11 +341,11 @@ Die Bereitstellung von Services für die Webanwendung erfolgt mit Standardmethod
 
         <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Entwicklung von Webanwendungen</a>. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-web" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Mobile-Web- bzw. Desktop-Browser-Anwendungen umstellen</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-web" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Mobile-Web- bzw. Desktop-Browser-Anwendungen umstellen</a>
                     </h4>
                 </div>
 
@@ -419,11 +417,11 @@ und <a href="https://www.nuget.org/" target="_blank">NuGet für Windows</a>. Mit
 
         <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">Entwicklung nativer Anwendungen</a>. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">SDKs in nativen Anwendungen aktualisieren</a></h4>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">SDKs in nativen Anwendungen aktualisieren</a></h4>
                 </div>
 
                 <div id="collapseMigrateNative" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-native-apps">
@@ -465,7 +463,7 @@ und <a href="https://www.nuget.org/" target="_blank">NuGet für Windows</a>. Mit
                         </ul>
 
                         <br/>
-                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion1" role="tablist">
                            <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="removeiOSSDK">
                                  <h4 class="panel-title">
@@ -587,7 +585,7 @@ Swift:
                         <br/>
 
                         <b>Android</b><br/>
-                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion2" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
                                     <h4 class="panel-title">
@@ -665,7 +663,7 @@ transitive: true{% endhighlight %}</li>
                         <br/>
 
                         <b>Windows</b><br/>
-                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion3" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
                                     <h4 class="panel-title">
@@ -770,11 +768,11 @@ live in der {{ site.data.keys.mf_console }} konfigurieren, ohne den Adapter erne
         <p>Zu den Schritten für die Umstellung Ihrer Adapter auf Maven-Projekte gehören die Erstellung eines passenden neuen Maven-Projekts und das Kopieren des
 Projekts in den Quellcode des vorhandenen Adapters (mit einigen Modifikationen). Im Anschluss wird der Maven-Projektbuild erstellt, um Fehler zu finden. </p>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration-maven" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="prereqs">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Voraussetzungen für die Einrichtung von Apache Maven</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Voraussetzungen für die Einrichtung von Apache Maven</a>
                     </h4>
                 </div>
 
@@ -815,7 +813,7 @@ auch über das Download-Center in der {{ site.data.keys.mf_console }} herunterla
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Neues Maven-Projekt erstellen</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Neues Maven-Projekt erstellen</a>
                     </h4>
                 </div>
 
@@ -1068,7 +1066,7 @@ bisher bekannten Entitäten wie Sicherheitstests, Realms und Anmeldemodule erset
 zum Sicherheitsframework und zu Autorisierungskonzepten finden Sie in den
 Lernprogrammen zur <a href="../../authentication-and-security/" target="_blank">Authentifizierung und Sicherheit</a>. </blockquote>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
                     <h4 class="panel-title">

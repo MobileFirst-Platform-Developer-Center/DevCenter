@@ -91,7 +91,7 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 #### 初始化分析
-{: #initialize-analytics }
+{: #initialize-analytics-ios }
 
 **Objective-C**  
 无需设置。缺省情况下已预初始化。
@@ -110,7 +110,7 @@ import com.worklight.common.WLAnalytics;
 ```
 
 #### 初始化分析
-{: #initialize-analytics }
+{: #initialize-analytics-android }
 
 在您的主活动的 `onCreate` 方法内包含：
 
@@ -150,7 +150,7 @@ Analytics API 使开发人员能够自由地启用和禁用要在 {{ site.data.k
 使用 {{ site.data.keys.mf_analytics_short }} API 来启用或禁用应用程序会话收集。
 
 #### JavaScript
-{: #javascript }
+{: #javascript-lifecycle-events }
 
 **Web**  
 要使用客户机生命周期事件，请对分析进行初始化：
@@ -173,7 +173,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 	* 运行下列命令来构建 Cordova 项目：`cordova build`。
 
 #### Android
-{: #android }
+{: #android-lifecycle-events }
 
 要启用客户机生命周期事件日志记录：
 
@@ -188,7 +188,7 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-lifecycle-events }
 
 要启用客户机生命周期事件日志记录：
 
@@ -253,7 +253,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 	* 运行下列命令来构建 Cordova 项目：`cordova build`。
 
 #### iOS
-{: #ios }
+{: #ios-network-activities }
 
 要启用客户机网络事件日志记录：
 
@@ -284,7 +284,7 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 #### Android
-{: #android }
+{: #android-network-activities }
 
 要启用客户机网络事件日志记录：
 
@@ -304,14 +304,14 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 使用以下 API 方法来创建定制事件。
 
 #### JavaScript (Cordova)
-{: #javascript-cordova }
+{: #javascript-cordova-custom-events }
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 ```
 
 #### JavaScript (Web)
-{: #javascript-web }
+{: #javascript-web-custom-events }
 
 对于 Web API，使用 `addEvent` 方法来发送定制数据。
 
@@ -321,7 +321,7 @@ ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
 ```
 
 #### Android
-{: #android }
+{: #android-custom-events }
 
 在设置前两个配置之后，您可以开始记录数据，如该示例中所示：
 
@@ -338,7 +338,7 @@ WLAnalytics.log("Message", json);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-custom-events }
 
 在导入 WLAnalytics 之后，您现在可以使用 API 来收集定制数据，如下所示：
 
@@ -366,7 +366,7 @@ WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 要跟踪个别用户，请使用 `setUserContext` 方法：
 
 #### Cordova
-{: #cordova }
+{: #cordova-tracking-users }
 
 不受支持。
 
@@ -378,7 +378,7 @@ ibmmfpfanalytics.setUserContext(user);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-tracking-users }
 
 **Objective-C**
 
@@ -393,7 +393,7 @@ WLAnalytics.sharedInstance().setUserContext("John Doe")
 ```
 
 #### Android
-{: #android }
+{: #android-tracking-users }
 
 ```java
 WLAnalytics.setUserContext("John Doe");
@@ -402,17 +402,17 @@ WLAnalytics.setUserContext("John Doe");
 要取消跟踪个别用户，请使用 `setUserContext` 方法：
 
 #### Cordova
-{: #cordova }
+{: #cordova-untracking-users }
 
 不受支持。
 
 #### Web 应用程序
-{: #web-applications }
+{: #web-applications-untracking-users }
 
 {{ site.data.keys.product_adj }} Web SDK 中没有 `unsetUserContext`。用户会话将在 30 分钟不活动后结束，除非对 `ibmmfpfanalytics.setUserContext(user)` 发出另一个调用。
 
 #### iOS
-{: #ios }
+{: #ios-untracking-users }
 
 **Objective-C**
 
@@ -427,7 +427,7 @@ WLAnalytics.sharedInstance().unsetUserContext
 ```
 
 #### Android
-{: #android }
+{: #android-untracking-users }
 
 ```java
 WLAnalytics.unsetUserContext();
@@ -441,7 +441,7 @@ WLAnalytics.unsetUserContext();
 考虑定期将捕获的日志发送到服务器。定期发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中看到最新分析数据。
 
 #### JavaScript (Cordova)
-{: #javascript-cordova }
+{: #javascript-cordova-sending-data }
 
 在 Cordova 应用程序中，使用以下 JavaScript API 方法：
 
@@ -450,7 +450,7 @@ WL.Analytics.send();
 ```
 
 #### JavaScript (Web)
-{: #javascript-web }
+{: #javascript-web-sending-data }
 
 在 Web 应用程序中，使用以下 JavaScript API 方法（取决于您已选择的名称空间）：
 
@@ -459,7 +459,7 @@ ibmmfpfanalytics.send();
 ```
 
 #### iOS
-{: #ios }
+{: #ios-sending-data }
 
 **Objective-C**
 
@@ -474,7 +474,7 @@ WLAnalytics.sharedInstance().send();
 ```
 
 #### Android
-{: #android }
+{: #android-sending-data }
 
 在 Android 应用程序中，使用以下 Java API 方法：
 

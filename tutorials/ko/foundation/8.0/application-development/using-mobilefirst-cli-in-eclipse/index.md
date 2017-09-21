@@ -107,15 +107,20 @@ Eclipse에 [THyM](#installing-the-thym-plug-in) 및 [{{ site.data.keys.mf_cli }}
 
 여기에서 다음 명령 중에 선택할 수 있습니다. 
 
-| 메뉴 옵션         | 조치                                                                                                                                       | 해당 MobileFirst 명령행 인터페이스 |
+| 메뉴 옵션| 조치| 해당 MobileFirst 명령행 인터페이스|
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| 서버 콘솔 열기 | 서버 정의가 있는 경우 지정된 서버의 조치를 볼 수 있도록 콘솔을 엽니다.                                    | mfpdev server console                         |
-| 앱 미리보기         | 브라우저 미리보기 모드에서 앱을 엽니다.                                                                                                   | 브라우저 미리보기 모드에서 앱을 엽니다.    |
-| 앱 등록        | 서버 정의에 지정된 서버에 앱을 등록합니다.                                                              | mfpdev app register                           |
-| 앱 암호화         | 앱에서 웹 자원 암호화 도구를 실행합니다.                                                                                           | mfpdev app webencrypt                         |
-| 앱 가져오기            | 서버 정의에 지정된 서버에서 기존 앱 구성을 검색합니다.                                         | mfpdev app pull                               |
-| 앱 푸시            | 현재 앱의 앱 구성을 빌드 정의에 지정된 서버에 전송하여 다른 앱에 재사용할 수 있도록 합니다. | mfpdev app push                               |
-| 업데이트된 앱         | www 폴더의 컨텐츠를 .zip 파일에 패키지하고 해당 패키지로 서버의 버전을 대체합니다.                             | mfpdev app webupdate                          |
+| 서버 콘솔 열기| 서버 정의가 있는 경우 지정된 서버의 조치를 볼 수 있도록 콘솔을 엽니다.| mfpdev server console
+|
+| 앱 미리보기| 브라우저 미리보기 모드에서 앱을 엽니다.| 브라우저 미리보기 모드에서 앱을 엽니다.|
+| 앱 등록| 서버 정의에 지정된 서버에 앱을 등록합니다.| mfpdev app register
+|
+| 앱 암호화| 앱에서 웹 자원 암호화 도구를 실행합니다.| mfpdev app webencrypt|
+| 앱 가져오기| 서버 정의에 지정된 서버에서 기존 앱 구성을 검색합니다.| mfpdev app pull
+|
+| 앱 푸시| 현재 앱의 앱 구성을 빌드 정의에 지정된 서버에 전송하여 다른 앱에 재사용할 수 있도록 합니다.| mfpdev app push
+|
+| 업데이트된 앱| www 폴더의 컨텐츠를 .zip 파일에 패키지하고 해당 패키지로 서버의 버전을 대체합니다.| mfpdev app webupdate
+|
 
 
 ## 팁과 요령
@@ -144,7 +149,7 @@ Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디�
 	1. 이를 수행하면 Eclipse에서 콘솔 옆에 탭이 추가되어야 합니다. 
 	1. 여기서 Cordova CLI 명령을 사용하여 플랫폼을 수동으로 추가할 수 있습니다. 
 		*  `cordova platform ls`는 설치되고 사용 가능한 플랫폼을 나열합니다. 
-		*  `cordova platform add <platform>`. 여기서 *<platform>*은 원하는 플랫폼이며, 해당 명령은 지정된 플랫폼을 프로젝트에 추가합니다. 
+		*  `cordova platform add <platform>`. 여기서 *<platform>*은 원하는 플랫폼이며, 해당 명령은 지정된 플랫폼을 프로젝트에 추가합니다.
 		*  Cordova 플랫폼 특정 명령에 대한 자세한 정보는 <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command 문서</a>를 참조하십시오. 
 
 ### 디버그 모드

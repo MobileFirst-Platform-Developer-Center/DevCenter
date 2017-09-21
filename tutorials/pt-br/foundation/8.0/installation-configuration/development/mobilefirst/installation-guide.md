@@ -17,16 +17,16 @@ O [{{ site.data.keys.mf_dev_kit }} Installer]({{site.baseurl}}/tutorials/en/foun
 O instalador requer o Java instalado.
 
 1. [Instalar JRE do Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
-    
+
 2. Inclua uma variável `JAVA_HOME`, apontando para o JRE
 
     *Mac e Linux:* Edite seu **~/.bash_profile**:
-    
+
     ```bash
     #### ORACLE JAVA
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home"
     ```
-    
+
     *Windows:*  
     [Siga esse guia](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
@@ -71,13 +71,13 @@ O [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/app
 
 2. Alguns comandos da CLI, como criar, construir e implementar adaptadores requerem o Maven. Consulte a próxima seção para obter instruções de instalação.
 
-### Tarefas de Instalação
-{: #installation }
+### Instalação do {{ site.data.keys.mf_cli }}
+{: #installation-cli }
 Abra Terminal e execute: `npm install -g mfpdev-cli`.  
 
 *Mac e Linux:* Observe que pode ser necessário executar o comando usando `sudo`.  
 Leia mais sobre [corrigindo permissões de NPM](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
-    
+
 Para verificar a instalação, abra uma janela de linha de comandos e execute: `mfpdev -v` ou `mfpdev help`.
 
 ![console](mfpdev-cli.png)
@@ -88,12 +88,12 @@ Para verificar a instalação, abra uma janela de linha de comandos e execute: `
 
 **Pré-requisito: **  
 O Apache Maven é necessário para configuração antes da criação de adaptadores e verificações de segurança.  
-    
+
 1. [Faça download do .zip do Apache Maven](https://maven.apache.org/download.cgi)
 2. Inclua uma variável `MVN_PATH`, apontando para a pasta Maven
-    
+
     *Mac e Linux:* Edite seu **~/.bash_profile**:
-    
+
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
@@ -107,4 +107,3 @@ Verifique a instalação executando: `mvn -v`.
 {: #usage }
 Com o Apache Maven instalado, agora é possível criar adaptadores por meio de comandos da linha de comandos do Maven ou usando o {{ site.data.keys.mf_cli }}.  
 Para obter informações adicionais, revise os [tutoriais Adaptadores]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
-

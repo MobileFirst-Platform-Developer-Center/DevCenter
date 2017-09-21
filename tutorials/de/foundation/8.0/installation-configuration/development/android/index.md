@@ -1,37 +1,48 @@
 ---
 layout: tutorial
-title: Setting up the Android development environment
+title: Android-Entwicklungsumgebung einrichten
 breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+In diesem Lernprogramm wird Entwicklern erklärt, wie Android-Anwendungen entwickelt und getestet werden. Im Rahmen der dafür notwendigen Schritte müssen
+Android Studio installiert und das Android-SDK konfiguriert werden. 
 
-**Prerequisite:** As you setup your Android development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**Voraussetzung:** Wenn Sie Ihre Android-Entwicklungsumgebung
+einrichten, müssen Sie das Lernprogramm [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../mobilefirst/) durchgearbeitet haben. 
 
-#### Support level
+#### Support-Level
 {: #support-level }
-{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+Das {{ site.data.keys.product_adj }}-SDK
+ist mit der Android-Version Ice Cream Sandwich (API-Ebene 14) und
+aktuelleren Versionen kompatibel. 
 
 ### Android Studio
-Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
+Führen Sie die auf der Website [Android Developers](http://developer.android.com/develop/index.html) beschriebenen Schritte aus,
+um Android Studio herunterzuladen und zu installieren.
 
-![Configure the Android SDK](android-studio.png)
+![Android-SDK konfigurieren(android-studio.png)
 
-### Android SDK
-The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
+### Android-SDK
+Das Android-SDK stellt die erforderlichen Tools und APIs für die Entwicklung von Anwendungen auf der Android-Plattform unter Verwendung der Programmiersprache Java bereit. 
 
-Once you open Android Studio for the first time, you will be able to configure the Android SDK using the SDK Manager.
+Wenn Sie Android Studio zum ersten Mal öffnen, können Sie das Android-SDK mit dem SDK-Manager konfigurieren.
 
-In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
+Im SDK-Manager können Sie erforderliche Pakete installieren. Weitere Informationen finden Sie auf der Website [Android Developer](http://developer.android.com/sdk/index.html).
 
 #### Android Virtual Devices
 {: #android-virtual-devices }
-You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
+Sie können Ihre Anwendung mit einem Android Virtual Device (AVD) testen. Ausführliche Erläuterungen zu allen verfügbaren Optionen
+finden Sie
+auf der Website für Android-Entwickler im Abschnitt [Managing Virtual Devices](http://developer.android.com/tools/devices/index.html) der Dokumentation. 
 
-## What's Next
+## Weitere Schritte
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.
+Jetzt, da Sie die {{ site.data.keys.product_adj }}- und Android-Entwicklungsumgebung eingerichtet haben,
+können Sie zur Kategorie [Schnelleinstieg](../../../quick-start/android/) wechseln, um
+Erfahrungen mit {{ site.data.keys.product_adj }} zu sammeln, oder zur Kategorie
+[Alle Lernprogramme](../../../all-tutorials), um sich über konkrete Aspekte der
+{{ site.data.keys.product_adj }}-Entwicklung zu informieren. 

@@ -108,6 +108,8 @@ cordova build ios
 
 > **참고:** 애플리케이션 UI 및 동작을 자유롭게 사용자 정의할 수 있지만, 이러한 변경사항은 IBM의 지원 계약에 포함되지 않습니다.
 
+
+
 #### Android
 {: #android }
 * Android Studio를 여십시오. 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 保护 MobilFirst Server
+title: 保护 MobileFirst 服务器
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -19,7 +19,7 @@ weight: 2
 ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序。其他移动操作系统不要求服务器在 ATS 安全级别上进行通信，但是仍可以与 ATS 配置的服务器进行通信。在配置服务器之前，准备好已生成的证书。以下步骤假定密钥库文件 **ssl_cert.p12** 具有个人证书并且 **ca.crt** 是签名证书。
 
 1. 将 **ssl_cert.p12** 文件复制到 **mfpf-server-libertyapp/usr/security/** 文件夹中。
-2. 修改 **mfpf-server-libertyapp/usr/config/keystore.xml** 文件，使其类似于以下示例配置：
+2. 修改 **mfpf-server-libertyapp/usr/config/keystore.xml** 和 **appcenter/usr/config/keystore.xml**（针对 appcenter）文件，使其类似于以下示例配置：
 
    ```xml
    <server>
@@ -113,7 +113,8 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-String allowedIP =null;
+
+       String allowedIP =null; 
 public MFPConsoleTAI() {
 super();
        }
@@ -128,12 +129,12 @@ super();
 boolean interceptMFPConsoleRequest = false;
     	   String requestURI = req.getRequestURI();
 
-    	   if(requestURI.contains("mfpconsole")) {
+	   if(requestURI.contains("mfpconsole")) {
 		   interceptMFPConsoleRequest = true;
-    	   }
+	   }
 
-    	   return interceptMFPConsoleRequest;
-       }
+	   return interceptMFPConsoleRequest;
+    }
 
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#negotiateValidateandEstablishTrust
@@ -144,25 +145,27 @@ boolean interceptMFPConsoleRequest = false;
                     HttpServletResponse resp) throws WebTrustAssociationFailedException {
         // Add logic to authenticate a request and return a TAI result.
 String tai_user = "MFPConsoleCheck";
-if(allowedIP != null) {
-String ipAddress = request.getHeader("X-FORWARDED-FOR");
-            	if (ipAddress == null) {
-            	  ipAddress = request.getRemoteAddr();
-            	}
 
-            	if(checkIPMatch(ipAddress, allowedIP)) {
-TAIResult.create(HttpServletResponse.SC_OK, tai_user);
+        if(allowedIP != null) {
+
+        	String ipAddress = request.getHeader("X-FORWARDED-FOR");  
+            	if (ipAddress == null) {
+        	  ipAddress = request.getRemoteAddr();  
+        	}
+
+        	if(checkIPMatch(ipAddress, allowedIP)) {
+        		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
             	}
             	else {
             		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
-            	}
+        	}
 
-            }
-            return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         }
+        return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
+    }
 
-       private static boolean checkIPMatch(String ipAddress, String pattern) {
-if (pattern.equals("*.*.*.*") || pattern.equals("*"))
+    private static boolean checkIPMatch(String ipAddress, String pattern) {   
+	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 return true;
 String[] mask = pattern.split("\\.");
     	   String[] ip_address = ipAddress.split("\\.");
@@ -214,37 +217,37 @@ return "1.0";
     public void cleanup()
 {}
    }
-```
+   ```
+
 2. 将定制 TAI 实施导出到 .jar 文件并将其放置在适合的 **env** 文件夹 (**mfpf-server-libertyapp/usr/env**) 中。
-3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹 (**mfpf-server-libertyapp/usr/config**) 中。您的 .xml 文件应当类似于以下示例。**提示：请确保更新类名和属性以反映您的实施**。
+3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹 (**mfpf-server-libertyapp/usr/config**) 中。您的 .xml 文件应当类似于以下示例。**提示：**请确保更新类名和属性以反映您的实施。
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-     <server description="new server">
-       <featureManager>
-         <feature>appSecurity-2.0</feature>
-       </featureManager>
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+        <server description="new server">
+        <featureManager> 
+            <feature>appSecurity-2.0</feature> 
+        </featureManager>
 
-      <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
-                       failOverToAppAuthType="false">
-         <interceptors id="MFPConsoleTAI" enabled="true"
-                       className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
-                       invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
-                       <properties allowedIPs="9.182.149.*"/>
-         </interceptors>
-       </trustAssociation>
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
+                          failOverToAppAuthType="false">
+            <interceptors id="MFPConsoleTAI" enabled="true"  
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
+                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
+                <properties allowedIPs="9.182.149.*"/>
+            </interceptors>
+        </trustAssociation>
 
         <library id="MFPConsoleTAI">
-          <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
         </library>
-    </server>
-    ```
+   </server>
+   ```
+
 4. 重新部署服务器。现在，仅在满足配置的 TAI 安全性机制时才可访问 MobileFirst Operations Console。
 
-
 ## 容器的 LDAP 配置
-{: #ldap-configuration-for-containers}
-
+{: #ldap-configuration-for-containers }
 可以配置 IBM MobileFirst Foundation 以安全地连接到外部 LDAP 存储库。
 
 可针对以下目的使用外部 LDAP 注册表：
@@ -287,10 +290,15 @@ return "1.0";
    </ldapRegistry>
    ```
 
-    条目 | 描述    
+    条目 | 描述
     --- | ---
-    `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。`baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。`bindDN="uid=admin,ou=system"
-` | LDAP 服务器的绑定详细信息。例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。`bindPassword="secret"	` | LDAP 服务器的绑定密码。例如，Apache 目录服务的缺省值为 `secret`。`<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。        
+    `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。
+    `baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。
+    `bindDN="uid=admin,ou=system"
+` | LDAP 服务器的绑定详细信息。例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。
+    `bindPassword="secret"	` | LDAP 服务器的绑定密码。例如，Apache 目录服务的缺省值为 `secret`。
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。
+
 2. 确保为 `appSecurity-2.0` 和 `ldapRegistry-3.0` 启用以下功能：
 
    ```xml
