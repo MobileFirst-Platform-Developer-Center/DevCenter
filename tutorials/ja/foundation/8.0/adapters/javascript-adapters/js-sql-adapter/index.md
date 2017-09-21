@@ -54,7 +54,7 @@ XML ファイルには、設定およびメタデータが含まれています�
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -80,7 +80,7 @@ XML ファイルには、設定およびメタデータが含まれています�
 {% endhighlight %}</li>
 
                     <li><b>dataSourceJNDIName</b>: <i>オプション。</i> アプリケーション・サーバーで提供されているデータ・ソースの JNDI 名を使用して、データ・ソースに接続します。アダプターは、JNDI 名に関連付けられたサーバー接続プールから接続を受け取ります。アプリケーション・サーバーには、データ・ソースを構成する方法が用意されています。詳しくは、アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストールを参照してください。以下に例を示します。
-                    
+
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
@@ -96,7 +96,7 @@ XML ファイルには、設定およびメタデータが含まれています�
 `connectionPolicy` を構成して、アダプター XML ファイル内でプロシージャーを宣言します。
 
 ```js
-<procedure name="getAccountTransactions1"/>
+<procedure name = "getAccountTransactions1" />
 ```
 
 ## JavaScript 実装
@@ -154,7 +154,7 @@ function getAccountTransactions2(accountId){
 
 ### 複数のパラメーターの使用
 {: #using-multiple-parameters }
- 
+
 SQL 照会で単一または複数のパラメーターを使用する場合には、関数で変数を受け入れ、変数を `invokeSQLStatement` または `invokeSQLStoredProcedure` のパラメーターに**配列**で渡してください。
 
 ```javascript

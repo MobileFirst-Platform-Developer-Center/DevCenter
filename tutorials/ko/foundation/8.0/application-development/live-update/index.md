@@ -89,8 +89,8 @@ downloads:
 {: #schema-and-segments }
 활성 업데이트 설정 화면에서 다음 두 개의 탭을 사용할 수 있습니다. 
 
-#### 스키마
-{: #schema }
+#### 스키마 개념
+{: #what-is-schema }
 스키마는 기능 및 특성이 정의되는 위치입니다.   
 
 * "기능"을 사용하여 구성 가능한 애플리케이션 기능을 정의하고 해당 기본값을 설정할 수 있습니다.   
@@ -220,9 +220,9 @@ cordova plugin add cordova-plugin-mfp-liveupdate
 예: 
 
    ```xml
-   use_frameworks!
+use_frameworks!
 
-   target 'your-Xcode-project-target' do
+target 'your-Xcode-project-target' do
       pod 'IBMMobileFirstPlatformFoundation'
       pod 'IBMMobileFirstPlatformFoundationLiveUpdate'
    end
@@ -326,7 +326,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 
 매개변수로 구성을 가져오려면 활성 업데이트 API를 사용하여 요청을 보내십시오. 
 
-#### Cordova
+#### Cordova 분석기
 {: cordova-resolver }
 ```javascript
 var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
@@ -470,17 +470,17 @@ public class ResolverAdapterData {
 
 | **속성** |  **값**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
-| *URL*           | /segment                                                                                          |
-| *메소드*        | POST                                                                                              |               
-| *컨텐츠 유형*  | 애플리케이션/JSON                                                                                  |
+| *URL*           | /segment|
+| *메소드*        | POST|               
+| *컨텐츠 유형*  | 애플리케이션/JSON|
 | *본문*          | &lt;세그먼트 분석에 필요한 모든 정보가 포함된 JSON 오브젝트&gt;                     |
 
 **응답**
 
-|  **속성**   |  **값**                                |
+|  **속성** |  **값**                                                                                     |
 |:-------------------|:--------------------------------------------|
-| *컨텐츠 유형*     | 텍스트/일반                                  |                                                                          
-| *본문*             |  &lt;세그먼트 ID를 설명하는 문자열&gt;   |
+| *컨텐츠 유형*  | 텍스트/일반|                                                                          
+| *본문*          |  &lt;세그먼트 ID를 설명하는 문자열&gt;   |
 
 
 ## 고급 주제 
@@ -536,7 +536,7 @@ done
 
 #### Cordova
 {: #cordova-caching }
-선택적 *useClientCache* 부울 플래그를 사용하여 클라이언트 측 캐시 제어
+선택적 _useClientCache_ 부울 플래그를 사용하여 클라이언트 측 캐시 제어
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };

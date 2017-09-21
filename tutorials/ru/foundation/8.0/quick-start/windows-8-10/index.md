@@ -54,10 +54,10 @@ weight: 4
 
    ```csharp
    try
-      {
+                   {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -119,7 +119,7 @@ weight: 4
 
 Ответ адаптера отображается в консоли вывода Visual Studio.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }}](success_response.png)
+![Приложение после успешного вызова ресурса из {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Дальнейшие действия
 {: #next-steps }

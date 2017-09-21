@@ -153,7 +153,7 @@ weight: 3
 
 Ответ адаптера отображается в представлении LogCat Android Studio.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }}](success_response.png)
+![Приложение после успешного вызова ресурса из {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Дальнейшие действия
 {: #next-steps }

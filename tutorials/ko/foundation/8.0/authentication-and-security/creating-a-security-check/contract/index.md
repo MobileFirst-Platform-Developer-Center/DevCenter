@@ -69,6 +69,8 @@ weight: 1
 변경될 수 있습니다.
 
 > [ExternalizableSecurityCheck](../../externalizable-security-check) 학습서에서 `authorize` 및 `introspect` 메소드에 대해 자세히 알아보십시오.
+
+
 ### 보안 검사 상태 관리
 {: #security-check-state-management }
 보안 검사는 Stateful이므로, 해당 상호작용 상태를 추적하고 유지할 수 있습니다.

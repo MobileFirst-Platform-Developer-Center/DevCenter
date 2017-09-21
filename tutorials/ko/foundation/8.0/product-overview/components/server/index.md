@@ -21,7 +21,7 @@ weight: 1
 {: #mobilefirst-server-components }
 {{ site.data.keys.mf_server }} 컴포넌트의 아키텍처는 다음과 같이 설명됩니다. 
 
-![{{ site.data.keys.mf_server }}를 구성하는 컴포넌트](server_components.jpg) 
+![{{ site.data.keys.mf_server }}](server_components.jpg)
 
 ### {{ site.data.keys.mf_server }}의 코어 컴포넌트
 {: #core-components-of-mobilefirst-server }

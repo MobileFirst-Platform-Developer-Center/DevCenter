@@ -4,13 +4,13 @@ title: Windows 애플리케이션의 자원 요청
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
-  - 이름: 고유 Windows 8 프로젝트 다운로드
+  - 이름: Native Windows 8 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
-  - 이름: 고유 Windows 10 프로젝트 다운로드
+  - 이름: Native Windows 10 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - 이름:  어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-가중치: 6
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -87,7 +87,7 @@ request.SetQueryParameter("params","['value1', 'value2']");
 
 ### 양식 매개변수
 {: #form-parameters }
-본문에서 양식 매개변수를 보내려면 `.Send()` 대신 `.Send(Dictionary<string, string> formParameters)`를 사용하십시오.   
+본문에서 양식 매개변수를 보내려면 `.Send(Dictionary<string, string> formParameters)`를 `.Send()` 대신 사용하십시오.  
 
 ```cs
 Dictionary<string,string> formParams = new Dictionary<string,string>();

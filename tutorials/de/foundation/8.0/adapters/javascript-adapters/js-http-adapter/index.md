@@ -62,7 +62,7 @@ Deklarieren Sie die erforderlichen Prozeduren unterhalb des Elements `connectivi
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -130,8 +130,7 @@ Weitere Informationen zum Setup-Prozess für Keystores enthält das Lernprogramm
                     <li><b>proxy</b>: Dieses <i>optionale</i> Element gibt die Details des Proxy-Servers an, der beim Zugriff auf die Back-End-Anwendung verwendet
 werden soll. Die Proxydetails müssen die Protokolldomäne und den Port enthalten. Falls der Proxy eine Authentifizierung erfordert, fügen Sie innerhalb des Elements <code>proxy</code> ein verschachteltes Element
 <code>authentication</code> hinzu. Dieses Element hat dieselbe Struktur wie das Element, mit dem das Authentifizierungsprotokoll
-des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die Basisauthentifizierung erfordert und eine Serveridentität verwendet.                    
-{% highlight xml %}
+des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die Basisauthentifizierung erfordert und eine Serveridentität verwendet.{% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
   <domain>www.bbc.co.uk</domain>
@@ -277,7 +276,7 @@ und `contentType`
 
 ```js
 var input = {
-	method: 'post',
+      method: 'post',
 	returnedContentType: 'xml',
 	path: '/globalweather.asmx',
 	body: {
