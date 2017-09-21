@@ -52,15 +52,12 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *developer* plan
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }}.
+  * You can instantly access and work with the {{ site.data.keys.mf_server }}.
+  * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the Bluemix console.
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
-
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+  ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
@@ -157,9 +154,29 @@ Updates to the {{ site.data.keys.mf_bm }} services are applied automatically wit
 
 ## Accessing server logs
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+To access server logs, follow the steps described below.
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+**Scenario 1:**
+
+1. Set up your host machine.<br/>
+   To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.<br/>
+   Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases).
+2. Open the terminal and log in to your *Organization* and *Space* using `cf login`.
+3. Execute the following command in the CLI:
+```bash
+  cf ssh <mfp_Appname> -c "/bin/cat logs/messages.log" > messages.log
+```
+4. Only if trace is enabled, execute the following command:
+```bash
+cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
+ ```
+
+**Scenario 2:**      
+
+* To access server logs, open the sidebar navigation and click on **Apps → Dashboard → Cloud Foundry Apps**.
+* Select your App and click on **Logs → View in Kibana**.
+* Select and copy the logs messages.
+
 
 #### Tracing
 {: #tracing }
@@ -167,7 +184,7 @@ To enable tracing, in order to view DEBUG-level messages in the **trace.log** fi
 
 1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
 2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+3. Input the following trace statement: `com.ibm.mfp.*=all` and click **Submit trace**.
 
 The **trace.log** file is now available in the above specified location.
 
