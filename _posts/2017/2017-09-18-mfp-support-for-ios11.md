@@ -14,8 +14,8 @@ author:
 
 Every year Apple releases a new version of iOS, and with every release MobileFirst keeps a promise to our customers by ensuring compatibility with the latest version and embracing new iOS changes with minimal impact. With this year's release of Apple iOS11, MobileFirst is pleased to announce the support of iOS 11 on MobileFirst Platform Foundation v7.1 and v8.0.  For more details, read through our [support plan for Android O and iOS 11](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
-The beta version of iOS 11 has been extensively tested with MFP and details can be seen [Compatibility tests for iOS 11.]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/).  Complete features of MobileFirst Platform foundation has been tested on iOS11 seed build for versions v7.1 and v8.0.
-MobileFirst Platform Foundation v7.1, v8.0  is compatible with iOS 11 and all the functions works fine with the exception of a few UI glitches.  The following features have been extensively tested
+The beta version of iOS 11 has been extensively tested with MFP and details can be seen [Compatibility tests for iOS 11.]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/). Complete features of MobileFirst Platform foundation has been tested on iOS11 seed build for versions v7.1 and v8.0.
+MobileFirst Platform Foundation v7.1, v8.0 is compatible with iOS 11 and all the functions work well with the exception of a few UI glitches. The following features have been extensively tested:
 
 * OAuth authorization flow
 * Adapters
@@ -28,7 +28,7 @@ MobileFirst Platform Foundation v7.1, v8.0  is compatible with iOS 11 and all th
 * Remote Disable
 * Application Center
 
-The above mentioned functions of MobileFirst works fine with iOS 11, however few issues maybe noted, which are documented below.
+The above mentioned functions of MobileFirst work well with iOS 11, however few issues maybe noticed, these are documented below.
 
 > **Disclaimer:** *Some of the action items that are addressed in the list below are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
 
