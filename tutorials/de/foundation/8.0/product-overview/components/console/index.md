@@ -156,7 +156,7 @@ Konfigurieren Sie den Anzeigenamen der Anwendung in der Konsole sowie den Anwend
 Sie können [Push-Benachrichtigungen](../../../notifications/) und die zugehörigen Parameter konfigurieren (z. B.
 Zertifikate und GCM-Details), Tags definieren und Benachrichtigungen an Geräte senden. 
 
-![Setup-Anzeige für Push-Benachrichtigungen](push-notifications.png)
+![Konfigurationsanzeige für Push-Benachrichtigungen](push-notifications.png)
 
 ### Adapter
 {: #adapters }

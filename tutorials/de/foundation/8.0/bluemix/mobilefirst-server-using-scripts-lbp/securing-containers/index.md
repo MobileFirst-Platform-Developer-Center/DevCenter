@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: MobilFirst Server schützen
+title: MobileFirst Server schützen
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -123,8 +123,8 @@ Lesen Sie hierzu auch den Artikel [Angepassten TAI für das Liberty-Profil entwi
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
 
-       String allowedIP =null;
-
+       String allowedIP =null; 
+       
        public MFPConsoleTAI() {
           super();
        }
@@ -137,7 +137,7 @@ Lesen Sie hierzu auch den Artikel [Angepassten TAI für das Liberty-Profil entwi
                   throws WebTrustAssociationException {
       // Logik hinzufügen, die festlegt, ob diese Anforderung abgefangen werden soll
 
-	   boolean interceptMFPConsoleRequest = false;
+    boolean interceptMFPConsoleRequest = false;
 	   String requestURI = req.getRequestURI();
 	
 	   if(requestURI.contains("mfpconsole")) {
@@ -302,14 +302,13 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
    </ldapRegistry>
    ```
 
-    Eintrag | Beschreibung 
+    Eintrag | Beschreibung
     --- | ---
-    `host` und `port` | Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers 
-    `baseDN` | Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation 
-    `bindDN="uid=admin,ou=system"	` | Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten. 
-    `bindPassword="secret"` | Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`. 
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung 
-
+    `host` und `port` | Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers
+    `baseDN` | Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation
+    `bindDN="uid=admin,ou=system"	` | Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten.
+    `bindPassword="secret"` | Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung
 2. Stellen Sie sicher, dass die folgenden Features für `appSecurity-2.0` und `ldapRegistry-3.0` aktiviert sind:
 
    ```xml

@@ -147,7 +147,7 @@ mit den Servern an eine Position verschieben, für die keine besonderen Berechti
 erforderlich sind. So können die Installationsoperationen ohne spezielle Berechtigungen ausgeführt werden.
     * Wechseln Sie zum Installationsverzeichnis von Liberty.
     * Erstellen Sie ein Verzeichnis **etc**. Sie benötigen Administrator- oder Rootberechtigung.
-    * Erstellen Sie im Verzeichnis **etc** eine Datei **server.env** mit folgendem Inhalt: `WLP_USER_DIR=<Pfad_zu_einem_Verzeichnis_mit_globaler_Schreibberechtigung>`.
+    * Erstellen Sie im Verzeichnis **etc** eine Datei **server.env** mit folgendem Inhalt: `WLP_USER_DIR=<Pfad_zu_einem_Verzeichnis_mit_globaler_Schreibberechtigung>`. 
     
     Beispiel für Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Erstellen Sie einen Liberty-Server, in dem später in diesem Lernprogramm der erste MobileFirst-Server-Knoten installiert wird.
@@ -206,8 +206,7 @@ das Fenster
 **Weiter**.
 4. Wählen Sie die Option **Neue Paketgruppe erstellen** aus, um das Produkt in dieser neuen Paketgruppe
 zu installieren. 
-5. Klicken Sie auf
-**Weiter**.
+5. Klicken Sie auf **Weiter**.
 6. Wählen Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing**
 die Option **Do not activate
 token licensing** mit der Option **Rational License Key Server** aus. 
@@ -371,8 +370,7 @@ die {{ site.data.keys.mf_console }} mit dem Standardkontextstammverzeichnis zu i
 **db2jcc4.jar** erwartet.
 In demselben Verzeichnis muss sich außerdem die Datei **db2jcc\_license\_cu.jar** befinden. In einer DB2-Standarddistribution befinden sich diese Dateien
 unter **DB2-Installationsverzeichnis/java**.
-    * Klicken Sie auf
-**Next**.
+    * Klicken Sie auf **Next**.
 
     Wenn der DB2 Server mit den von Ihnen eingegebenen Berechtigungsnachweisen nicht erreicht werden kann,
 inaktiviert das Server Configuration Tool die Schaltfläche
@@ -458,7 +456,7 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-Notieren Sie die folgenden Datenbankfaktoren: 
+Beachten Sie die folgenden Datenbankfaktoren: 
 
 #### Hinweis zum Datenbankbenutzer
 {: #database-user-consideration }
@@ -719,22 +717,18 @@ Abschluss der Installation können Sie wie folgt vorgehen, um die installierten 
 **Liberty-Installationsverzeichnis/bin**.
 2. Testen Sie die {{ site.data.keys.mf_console }} mit einem
 Web-Browser. Rufen Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) auf.
-Der Server wird standardmäßig am Port 9080 ausgeführt. Sie können den Wert anhand des Elements
-`<httpEndpoint>` in der Datei
-**server.xml** überprüfen. Eine Anmeldeanzeige erscheint.
+Der Server wird standardmäßig am Port 9080 ausgeführt. Sie können den Wert anhand des Elements `<httpEndpoint>` in der Datei **server.xml** überprüfen. Eine Anmeldeanzeige erscheint.
 
 
 
-![Anmeldeanzeige der Konsole(mfpconsole_signin.jpg)
+![Anmeldeanzeige der Konsole](mfpconsole_signin.jpg)
 
 3. Melden Sie sich mit **admin/admin** an. Dieser Benutzer wird standardmäßig vom
 Server Configuration Tool erstellt. 
 
     > **Hinweis:** Wenn Sie die Verbindung mit
 HTTP herstellen, werden die Anmelde-ID und das Kennwort im Klartext über das Netz gesendet. Verwenden Sie für eine sichere Serveranmeldung HTTPS.
-Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements
-`<httpEndpoint>` in der Datei **server.xml**.
-Der Standardwert ist 9443.
+Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements `<httpEndpoint>` in der Datei **server.xml**. Der Standardwert ist 9443.
 
 4. Melden Sie sich über **Hallo
 Admin → Abmelden** bei der Konsole ab.

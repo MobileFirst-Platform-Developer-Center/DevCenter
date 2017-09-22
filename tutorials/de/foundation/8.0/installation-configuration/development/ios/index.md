@@ -35,7 +35,7 @@ Sie eine [Mac](https://www.apple.com/mac/)-Workstation mit installiertem [Xcode]
 
 Xcode stellt die erforderlichen Tools und APIs für die Entwicklung von Anwendungen auf der iOS-Plattform unter Verwendung der Programmiersprache Objective-C oder Swift bereit. </p>
 
-![Xcode-IDE(xcode.png)
+![Xcode-IDE](xcode.png)
 
 Xcode ist eine IDE, die folgende Möglichkeiten bietet: 
 
@@ -50,7 +50,7 @@ Xcode ist eine IDE, die folgende Möglichkeiten bietet:
 {: #ios-simulator }
 Xcode stellt einen iOS-Simulator zum Testen Ihrer Anwendung bereit. Ausführliche Erläuterungen zu allen verfügbaren Optionen
 finden Sie
-auf der Website für Apple-Entwickler im Abschnitt [About Simulator](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html) der Dokumentation. 
+auf der Website für Apple-Entwickler in der Dokumentation unter [About Simulator](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html). 
 
 ## Weitere Schritte
 {: #whats-next }

@@ -88,8 +88,8 @@ aufheben.
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
-   if error == nil {
-       // Aufhebung der Registrierung erfolgreich
+    if error == nil {
+        // Aufhebung der Registrierung erfolgreich
     } else {
         // Aufhebung der Registrierung fehlgeschlagen
     }

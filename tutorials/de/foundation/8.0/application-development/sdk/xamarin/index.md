@@ -54,9 +54,9 @@ Erstellen Sie in Xamarin Studio oder Visual Studio eine Xamarin-Lösung oder ver
 1. Das native {{ site.data.keys.product_adj }}-SDK wird über den Xamarin Components Store bereitgestellt.
 2. Blenden Sie das Android- oder iOS-Projekt ein. 
 3. Klicken Sie im Android- oder iOS-Projekt mit der rechten Maustaste auf **Components**.
-4. Wählen Sie **Get More Components** aus. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
-5. Suchen Sie nach dem **IBM MobileFirst SDK** und wählen Sie es aus. Wählen Sie dann **Add to App** aus.
-![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
+4. Wählen Sie **Get More Components** aus. ![Xamarin-SDK zur Lösungssuche hinzufügen](Add-Xamarin-tosolution.png)
+5. Suchen Sie nach dem **IBM MobileFirst SDK** und wählen Sie es aus. /MD:STRONG>. Wählen Sie dann **Add to App** aus.
+![Xamarin-SDK zur Lösung hinzufügen](Add-XamarinSDK-toApp.png)
 6. Klicken Sie mit der rechten Maustaste auf **Packages** und wählen Sie
 **Add packages** aus. Suchen Sie nach **Json.NET** und fügen Sie es hinzu. Damit wird die Newtonsoft-Abhängigket von Nuget übertragen. Dieser Schritt muss für Android- und iOS-Projekte gesondert ausgeführt werden. 
 7. Klicken Sie mit der rechten Maustaste auf **References** und wählen Sie **Edit References** aus. Klicken Sie auf der Registerkarte **.Net Assembly** auf "Browse". Navigieren Sie vom Stammverzeichnis des Projekts aus zu `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Wählen Sie **Worklight.Core.dll** aus.
@@ -79,10 +79,8 @@ Wählen Sie **Content** aus.
 
 #### mfpclient.properties
 {: #mfpclientproperties }
-1. Klicken Sie mit der rechten Maustaste auf den Ordner *Assets* des Xamarin-Android-Projekts und wählen Sie **Add files..** aus.
-Navigieren Sie zur Datei `mfpclient.properties`. Wenn Sie dazu aufgefordert werden, wählen Sie **Copy file to project** aus. 
-2. Klicken Sie mit der rechten Maustaste auf die Datei `mfpclient.properties` und wählen Sie **Build action** aus.
-Wählen Sie **Android asset** aus.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner *Assets* des Xamarin-Android-Projekts und wählen Sie **Add files..** aus. Navigieren Sie zur Datei `mfpclient.properties`. Wenn Sie dazu aufgefordert werden, wählen Sie **Copy file to project** aus.
+2. Klicken Sie mit der rechten Maustaste auf die Datei `mfpclient.properties` und wählen Sie **Build action** aus. Wählen Sie **Android asset** aus.
 
 ### SDK referenzieren
 {: #referencing-the-sdk }
@@ -118,13 +116,13 @@ In dieser Datei sind die clientseitigen Eigenschaften für die Registrierung Ihr
 iOS-App bei {{ site.data.keys.mf_server }}
 definiert.
 
-| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
+| Eigenschaft | Beschreibung | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
-| host        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
-| port        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
-| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
+| protocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
+| host | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
+| port | Port von {{ site.data.keys.mf_server }} | 9080 |
+| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
 
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }

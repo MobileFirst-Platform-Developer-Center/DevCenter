@@ -77,6 +77,8 @@ Sicherheitsüberprüfung führen, auch wenn der Ablaufzeitpunkt für den aktuell
 > Weitere Informationen zu den Methoden `authorize` und
 `introspect` enthält das Lernprogramm [ExternalizableSecurityCheck](../../externalizable-security-check).
 
+
+
 ### Zustandsverwaltung für Sicherheitsüberprüfungen
 {: #security-check-state-management }
 Sicherheitsüberprüfungen sind zustandsabhängig,
