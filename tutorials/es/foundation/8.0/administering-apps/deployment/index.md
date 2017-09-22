@@ -10,7 +10,7 @@ weight: 1
 Cuando finalice un ciclo de desarrollo de su aplicación, despliéguela en un entorno de prueba y, a continuación en un entorno de producción.
 
 
-### Ir a 
+### Ir a
 {: #jump-to }
 
 * [Despliegue o actualización de un adaptador en un entorno de producción](#deploying-or-updating-an-adapter-to-a-production-environment)
@@ -24,37 +24,37 @@ Cuando finalice un ciclo de desarrollo de su aplicación, despliéguela en un en
 {: #deploying-or-updating-an-adapter-to-a-production-environment }
 Los adaptadores contienen código del lado del servidor de aplicaciones que se despliegan en {{ site.data.keys.product }} y las que éste da servicio. Lea esta lista de comprobación antes de desplegar o actualizar un adaptador en un entorno de producción. Para obtener más información sobre cómo crear y construir adaptadores, consulte [Desarrollo del lado del servidor de una aplicación de {{ site.data.keys.product_adj }}](../../adapters).
 
-Los adaptadores se pueden subir, actualizar o configurar mientras el servidor de producción se encuentra en ejecución. Después de que todos los nodos de una granja de servidores reciban el nuevo adaptador o la nueva configuración, todas las solicitudes entrantes al adaptador utilizarán los nuevos valores. 
+Los adaptadores se pueden subir, actualizar o configurar mientras el servidor de producción se encuentra en ejecución. Después de que todos los nodos de una granja de servidores reciban el nuevo adaptador o la nueva configuración, todas las solicitudes entrantes al adaptador utilizarán los nuevos valores.
 
-1. Si actualiza un adaptador existente en un entorno de producción, asegúrese de que el adaptador no contiene incompatibilidades o regresiones con aplicaciones existentes registradas en un servidor. 
+1. Si actualiza un adaptador existente en un entorno de producción, asegúrese de que el adaptador no contiene incompatibilidades o regresiones con aplicaciones existentes registradas en un servidor.
 
-    El mismo adaptador puede ser utilizado por varias aplicaciones, o por varias versiones de la misma aplicación, que ya están utilizadas y publicadas para la tienda. Antes de actualizar el adaptador en un entorno de producción, ejecuta pruebas de no regresión en un servidor de prueba en relación al nuevo adaptador y copias de las aplicaciones se construyen para el servidor de prueba. 
+    El mismo adaptador puede ser utilizado por varias aplicaciones, o por varias versiones de la misma aplicación, que ya están utilizadas y publicadas para la tienda. Antes de actualizar el adaptador en un entorno de producción, ejecuta pruebas de no regresión en un servidor de prueba en relación al nuevo adaptador y copias de las aplicaciones se construyen para el servidor de prueba.
 
-2. Con adaptadores Java, si el adaptador utiliza Java URLConnection con HTTPS, asegúrese de que los certificados de fondo se encuentran en el almacén de claves de {{ site.data.keys.mf_server }}. 
-        
+2. Con adaptadores Java, si el adaptador utiliza Java URLConnection con HTTPS, asegúrese de que los certificados de fondo se encuentran en el almacén de claves de {{ site.data.keys.mf_server }}.
+
     Para obtener más información, consulte [Utilización de SSL en adaptadores HTTP](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). Para obtener más información acerca de cómo utilizar certificados autofirmados, consulte [Configuración SSL entre adaptadores y servidores de fondo utilizando certificados autofirmados](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
     > **Nota:** Si el servidor de aplicaciones es WebSphere Application Server Liberty, los certificados también se deben encontrar en el almacén de confianza de Liberty.
 
 
 3. Verifique la configuración del lado del servidor del adaptador.
-4. Utilice los mandatos `mfpadm deploy adapter` y `mfpadm adapter set user-config` para subir el adaptador y su configuración. 
+4. Utilice los mandatos `mfpadm deploy adapter` y `mfpadm adapter set user-config` para subir el adaptador y su configuración.
 
     Para obtener más información sobre **mfpadm** para los adaptadores, consulte [Mandatos para adaptadores](../using-cli/#commands-for-adapters).
-        
+
 ## Configuración SSL entre adaptadores y servidores de fondo utilizando certificados autofirmados
 {: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
 SSL se configura entre los adaptadores y los servidores de fondo importando el certificado SSL autofirmado en el almacén de confianza de {{ site.data.keys.product_adj }}.
 
 
-1. Exporte el certificado público del servidor desde el almacén de claves del servidor de fondo. 
+1. Exporte el certificado público del servidor desde el almacén de claves del servidor de fondo.
 
     > **Nota:** Exporte los certificados públicos de fondo desde el almacén de confianza de fondo utilizando keytool o la biblioteca openssl.
 No utilice la característica de exportación en un navegador web.
 
-2. Importe el certificado del servidor de fondo en el almacén de claves de {{ site.data.keys.product_adj }}. 
+2. Importe el certificado del servidor de fondo en el almacén de claves de {{ site.data.keys.product_adj }}.
 3. Despliegue el nuevo almacén de claves de {{ site.data.keys.product_adj }}.
-Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 ### Ejemplo
 {: #example }
@@ -83,7 +83,7 @@ En el ejemplo siguiente se muestra cómo completar la configuración utilizando 
 
 1. Cree un almacén de claves de servidor de fondos con un certificado privado de 365 días.
 
-        
+
     ```bash
     keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
@@ -94,7 +94,7 @@ Por ejemplo, en Apache Tomcat, se cambia el archivo **server.xml**:
 
 
    ```xml
-   <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192" 
+   <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192"
       maxThreads="150" minSpareThreads="25" maxSpareThreads="200"
       enableLookups="false" disableUploadTimeout="true"         
       acceptCount="100" scheme="https" secure="true"
@@ -102,7 +102,7 @@ Por ejemplo, en Apache Tomcat, se cambia el archivo **server.xml**:
       keystoreFile="backend.keystore" keystorePass="password" keystoreType="JKS"
       keyAlias="backend"/>
    ```
-        
+
 3. Compruebe la configuración de conectividad en el archivo **adapter.xml**:
 
 
@@ -113,34 +113,34 @@ Por ejemplo, en Apache Tomcat, se cambia el archivo **server.xml**:
         <domain>mydomain.com</domain>
         <port>443</port>
         <!-- The following properties are used by adapter's key manager for choosing a specific certificate from the key store
-        <sslCertificateAlias></sslCertificateAlias> 
+        <sslCertificateAlias></sslCertificateAlias>
         <sslCertificatePassword></sslCertificatePassword>
         -->		
       </connectionPolicy>
       <loadConstraints maxConcurrentConnectionsPerNode="2"/>
    </connectivity>
    ```
-        
+
 4. Exporte el certificado público desde el almacén de claves del servidor de fondo que creó:
 
 
    ```bash
    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
    ```
-        
+
 5. Importe el certificado exportado en su almacén de claves de {{ site.data.keys.mf_server }}:
 
 
    ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
    ```
-        
+
 6. Compruebe que el certificado se importa de forma correcta en el almacén de claves:
 
    ```bash
    keytool -list -keystore mfp.keystore
    ```
-        
+
 7. Despliegue el nuevo almacén de claves de {{ site.data.keys.mf_server }}.
 
 
@@ -153,21 +153,16 @@ Para construir una aplicación para un entorno de producción, hay que seguir pa
 1. Asegúrese de que el almacén de claves del servidor de destino está configurado.
 Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
-
 2. Si piensa distribuir el artefacto instalable de la aplicación, incremente la versión de la aplicación.
 
 3. Antes de construir su aplicación, configúrela para el servidor de destino.
+  Se define el nombre de tiempo de ejecución y el URL del servidor de destino en el archivo de propiedades del cliente.
+  También puede cambiar el servidor de destino utilizando {{ site.data.keys.mf_cli }}.
+  Para configurar la aplicación para un servidor de destino sin registrar la aplicación para un servidor en ejecución, puede utilizar los mandatos `mfpdev app config server <server URL>` y `mfpdev app config runtime <runtime_name>`. Otra posibilidad es registrar la aplicación para un servidor en ejecución ejecutando el mandato `mfpdev app register`.
+  Utilice el URL público del servidor.
+  Este URL lo utiliza la aplicación móvil para conectarse a {{ site.data.keys.mf_server }}.    
+  Por ejemplo, para configurar la aplicación para un servidor de destino mfp.mycompany.com con un tiempo de ejecución que tiene el nombre predeterminado mfp, ejecute `mfpdev app config server https://mfp.mycompany.com` y `mfpdev app config runtime mfp`.
 
-
-    Se define el nombre de tiempo de ejecución y el URL del servidor de destino en el archivo de propiedades del cliente.
-También puede cambiar el servidor de destino utilizando {{ site.data.keys.mf_cli }}.
-Para configurar la aplicación para un servidor de destino sin registrar la aplicación para un servidor en ejecución, puede utilizar los mandatos `mfpdev app config server
-<server URL>` y `mfpdev app config runtime <runtime_name>`. Otra posibilidad es registrar la aplicación para un servidor en ejecución ejecutando el mandato `mfpdev app register`.
-Utilice el URL público del servidor.
-Este URL lo utiliza la aplicación móvil para conectarse a {{ site.data.keys.mf_server }}.
-    
-    Por ejemplo, para configurar la aplicación para un servidor de destino mfp.mycompany.com con un tiempo de ejecución que tiene el nombre predeterminado mfp, ejecute `mfpdev app config server https://mfp.mycompany.com` y `mfpdev app config runtime mfp`.
-    
 4. Configure las claves de secreto y los servidores autorizados para su aplicación.
 
     * Si su aplicación implementa fijación de certificado, utilice el certificado de su servidor de destino.
@@ -178,25 +173,21 @@ Para obtener más información sobre la fijación de certificado, consulte [Fija
     * Para configurar Direct Update de forma segura para una aplicación Apache Cordova, consulte [Implementación de Direct Update de forma segura en el lado del cliente](../../application-development/direct-update).
 
     * Si ha desarrollado su aplicación con Apache Cordova, configure Cordova Content Security Policy (CSP).
-    
 
-5. Si piensa utilizar Direct Update para una aplicación que se ha desarrollado con Apache Cordova, archive las versiones de los plugins de Cordova que utilizó para construir la aplicación. 
+5. Si piensa utilizar Direct Update para una aplicación que se ha desarrollado con Apache Cordova, archive las versiones de los plugins de Cordova que utilizó para construir la aplicación.
 
-    Direct Update no se puede utilizar para actualizar código nativo. Si cambió una biblioteca nativa o una de las herramientas de creación en un proyecto de Cordova y la subió a {{ site.data.keys.mf_server }}, el servidor detecta la diferencia y no envía ninguna actualización para la aplicación cliente. Los cambios en la biblioteca nativa puede incluir una versión Cordova diferente, un nuevo plugin Cordova iOS o incluso un fixpack de plugin mfpdev que sea más reciente que la utiliza para construir la aplicación original. 
-    
+    Direct Update no se puede utilizar para actualizar código nativo. Si cambió una biblioteca nativa o una de las herramientas de creación en un proyecto de Cordova y la subió a {{ site.data.keys.mf_server }}, el servidor detecta la diferencia y no envía ninguna actualización para la aplicación cliente. Los cambios en la biblioteca nativa puede incluir una versión Cordova diferente, un nuevo plugin Cordova iOS o incluso un fixpack de plugin mfpdev que sea más reciente que la utiliza para construir la aplicación original.
+
 6. Configure la aplicación para el uso de producción.
     * Considere inhabilitar la función de impresión en el registro del dispositivo.
 
     * Si tiene la intención de utilizar {{ site.data.keys.mf_analytics }}, verifique que su aplicación envía datos recopilados a {{ site.data.keys.mf_server }}.
     * Considere inhabilitar las características de su aplicación que llaman a la API `setServerURL`, a menos que piense en realizar una única construcción para varios servidores de prueba.
 
+7. Si construye para un servidor de producción y planea distribuir el artefacto   instalable, archive el código fuente de la aplicación para poder ejecutar pruebas de no regresión para esta aplicación en un servidor de prueba.
+  Por ejemplo, si actualiza un adaptador con posterioridad, puede ejecutar pruebas de no regresión en aplicaciones ya distribuidas que utilizan este adaptador.
+  Para obtener más información, consulte [Despliegue o actualización de un adaptador en un entorno de producción](#deploying-or-updating-an-adapter-to-a-production-environment).
 
-7. Si construye para un servidor de producción y planea distribuir el artefacto instalable, archive el código fuente de la aplicación para poder ejecutar pruebas de no regresión para esta aplicación en un servidor de prueba.
-
-
-    Por ejemplo, si actualiza un adaptador con posterioridad, puede ejecutar pruebas de no regresión en aplicaciones ya distribuidas que utilizan este adaptador.
-Para obtener más información, consulte [Despliegue o actualización de un adaptador en un entorno de producción](#deploying-or-updating-an-adapter-to-a-production-environment).
-    
 8. Opcional: Cree un archivo de autenticidad para su aplicación.
 
     Puede utilizar el archivo de autenticidad de aplicación después de registrar la aplicación en el servidor para habilitar la comprobación de seguridad de autenticidad de aplicación.
@@ -209,9 +200,9 @@ Para obtener más información, consulte [Despliegue o actualización de un adap
 Cuando registra una aplicación para un servidor de producción, se sube su descriptor de aplicación, se define su tipo de licencia y, opcionalmente, se activa la autenticidad de aplicación.
 
 
-#### Antes de empezar 
+#### Antes de empezar
 {: #before-you-begin }
-* Verifique que el almacén de claves de {{ site.data.keys.mf_server }} está configurado y no es el almacén de claves predeterminado. No utilice un servidor en producción con un almacén de claves predeterminado. El almacén de claves de {{ site.data.keys.mf_server }} define la identidad de las instancias de {{ site.data.keys.mf_server }}, y se utiliza para firmar digitalmente señales OAuth y paquetes de Direct Update. Debe configurar el almacén de claves del servidor con una clave secreta antes de utilizarlo en un entorno de producción. Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+* Verifique que el almacén de claves de {{ site.data.keys.mf_server }} está configurado y no es el almacén de claves predeterminado. No utilice un servidor en producción con un almacén de claves predeterminado. El almacén de claves de {{ site.data.keys.mf_server }} define la identidad de las instancias de {{ site.data.keys.mf_server }}, y se utiliza para firmar digitalmente señales OAuth y paquetes de Direct Update. Debe configurar el almacén de claves del servidor con una clave secreta antes de utilizarlo en un entorno de producción. Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 * Desplegar los adaptadores utilizados por la aplicación. Para obtener más información, consulte [Despliegue o actualización de un adaptador en un entorno de producción](#deploying-or-updating-an-adapter-to-a-production-environment).
 * Construya la aplicación para su servidor de destino. Para obtener más información, consulte [Construcción de una aplicación para un entorno de prueba o producción](#building-an-application-for-a-test-or-production-environment).
 
@@ -221,7 +212,7 @@ Cuando registra una aplicación con un servidor de producción, se sube su descr
 1. Si {{ site.data.keys.mf_server }} está configurado para licencias de señal, asegúrese de que tiene suficiente señales disponibles en License Key Server. Para obtener más información, consulte [Validación de licencias de señal](../license-tracking/#token-license-validation) y [Planificación para la utilización de gestión de licencias de señal](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
 
    > **Sugerencia:** Puede establecer el tipo de licencia de señal de su aplicación antes de registrar la primera versión de dicha aplicación. Para obtener más información, consulte [Establecimiento de la información de la licencia de la aplicación](../license-tracking/#setting-the-application-license-information).
-2. Transfiera el descriptor de la aplicación desde un servidor de prueba al servidor de producción. 
+2. Transfiera el descriptor de la aplicación desde un servidor de prueba al servidor de producción.
 
    Esta operación registra la aplicación para el servidor de producción y sube su configuración. Para obtener más información sobre la transferencia de un descriptor de aplicación, consulte [Transferencia de artefactos del lado del servidor a un servidor de prueba o producción](#transferring-server-side-artifacts-to-a-test-or-production-server).
 
@@ -231,7 +222,7 @@ Cuando registra una aplicación con un servidor de producción, se sube su descr
 
    > **Nota:** Necesita el archivo binario de aplicación para crear el archivo de autenticidad de aplicación. Para obtener más información, consulte [Habilitación de la comprobación de seguridad de autenticidad de aplicación](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
 
-5. Si su aplicación utiliza notificaciones push, suba los certificados de notificación push al servidor. Puede subir los certificados push para su aplicación con {{ site.data.keys.mf_console }}. Los certificados son comunes a todas las versiones de una aplicación. 
+5. Si su aplicación utiliza notificaciones push, suba los certificados de notificación push al servidor. Puede subir los certificados push para su aplicación con {{ site.data.keys.mf_console }}. Los certificados son comunes a todas las versiones de una aplicación.
 
    > **Nota:** Es posible que no pueda probar las notificaciones push para su aplicación con certificados de producción antes de que su aplicación se publique en la tienda.
 6. Verifique los elementos siguientes antes de publicar la aplicación en la tienda.
@@ -258,7 +249,7 @@ Para obtener más información, consulte [Configuración de la comprobación de 
 * Si no tiene acceso al código de la aplicación móvil, utilice el servicio de administración.
 
 
-#### Ir a 
+#### Ir a
 {: #jump-to-1 }
 
 * [Transferencia de una configuración de aplicación utilizando mfpdev](#transferring-an-application-configuration-by-using-mfpdev)
@@ -319,15 +310,15 @@ Por ejemplo, para una aplicación Android denominada **myapp1**:
    cd myapp1
    mfpdev app pull Server10 -password secretPassword!
    ```
-    
+
    Este mandato encuentra los archivos de configuración para la aplicación actual en la instancia de {{ site.data.keys.mf_server }} cuyo perfil de servidor de denomina Server10.
 A continuación, envía el archivo comprimido **myapp1-android-1.0.0-artifacts.zip**, que contiene estos archivos de configuración, al sistema local y lo coloca en el directorio **myapp1/mobilefirst**.
-    
+
 3. Ejecute el mandato **mfpdev app push**.
 Si especifica el mandato sin parámetros, la aplicación se recupera de la instancia de {{ site.data.keys.mf_server }} predeterminada.
 También puede especificar un servidor concreto y su contraseña de administrador.
 Por ejemplo, para la misma aplicación que se recuperó en el paso anterior: `mfpdev app push Server12 -password secretPass234!`.
-    
+
    Este mandato envía el archivo **myapp1-android-1.0.0-artifacts.zip** a la instancia de {{ site.data.keys.mf_server }} cuyo perfil de servidor se denomina Server12, que tiene la contraseña de administrador **secretPass234!**
 El archivo de propiedades de cliente **myapp1/app/src/main/assets/mfpclient.properties** se modifica para reflejar que el servidor en el que se registra la aplicación es Server12, con el URL del servidor.
 
@@ -342,7 +333,7 @@ Como administrador, puede transferir una configuración de aplicación de un ser
 No es necesario un código de aplicación, sin embargo, la aplicación de cliente se debe construir para el servidor de destino.
 
 
-#### Antes de empezar 
+#### Antes de empezar
 {: #before-you-begin-1 }
 Construya la aplicación de cliente para su servidor de destino.
 Para obtener más información, consulte [Construcción de una aplicación para un entorno de prueba o producción](#building-an-application-for-a-test-or-production-environment).
@@ -364,73 +355,73 @@ Consulte [Exportación e importación de aplicaciones y adaptadores desde {{ sit
 
     El siguiente URL devuelve el descriptor de aplicación para la aplicación de ID **my.test.application**, para la plataforma **ios** y la versión **0.0.1**.
 La llamada se realiza a la instancia de {{ site.data.keys.mf_server }}: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
-    
+
     Por ejemplo, puede utilizar URL como este en una herramienta como curl: `curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`.
-    
+
     <br/>
      Cambie los siguientes elementos del URL de acuerdo a la configuración de su servidor:
      * **9080** es el puerto HTTP predeterminado de {{ site.data.keys.mf_server }} durante el desarrollo.
 
      * **mfpadmin** es la raíz de contexto predeterminada del servicio de administración.
- 
+
 
     Para obtener información sobre la API REST, consulte las API REST para el servicio de administración de {{ site.data.keys.mf_server }}.
      * Descargue el descriptor de aplicación mediante **mfpadm**.
 
        El programa **mfpadm** está instalado al ejecutar el instalador de {{ site.data.keys.mf_server }}.
 Puede iniciarlo desde el directorio **product\_install\_dir/shortcuts/**, donde **product\_install\_dir** indica el directorio de instalación del producto {{ site.data.keys.mf_server }}.
-    
+
        En el siguiente ejemplo se crear un archivo de contraseña que se necesita para el mandato **mfpadm**, a continuación se descarga el descriptor de aplicación para la aplicación de ID **my.test.application**, para la plataforma **ios** y la versión **0.0.1**.
 El URL proporcionado es el URL HTTPS de {{ site.data.keys.mf_server }} durante el desarrollo.
 
-    
+
        ```bash
        echo password=admin > password.txt
        mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --passwordfile password.txt \ app version mfp my.test.application ios 0.0.1 get descriptor > desc.json
        rm password.txt
        ```
-    
+
        Cambie los siguientes elementos de la línea de mandatos de acuerdo a la configuración de su servidor:
         * **9443** es el puerto HTTPS predeterminado de {{ site.data.keys.mf_server }} durante el desarrollo.
 
         * **mfpadmin** es la raíz de contexto predeterminada del servicio de administración.
- 
+
         * --secure false indica que se aceptará el certificado SSL incluso si está autofirmado o si se ha creado para un nombre de host diferente del nombre de host del servidor utilizado en el URL.
 
 
        Para obtener información sobre el programa **mfpadm**, consulte [Administración de aplicaciones de {{ site.data.keys.product_adj }} a través de la línea de mandatos](../using-cli).
-    
+
 3. Suba el descriptor de aplicación al nuevo servidor para registrar la aplicación o actualizar su configuración.
 Puede subirla utilizando la API REST o **mfpadm**.
    * Para subir el descriptor de aplicación con la API REST, utilice la API REST [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-).
 
-    
+
      El siguiente URL sube el descriptor de aplicación al tiempo de ejecución de mfp.
 Puede enviar una solicitud POST. La carga útil está en el descriptor de aplicación JSON.
 En este ejemplo, se realiza una llamada al servidor que se ejecuta en el sistema local y que está configurado con el puerto HTTP 9081.
 
-    
+
      ```bash
      http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```
-    
+
      Por ejemplo, puede utilizar un URL como este en una herramienta como curl.
 
-    
+
      ```bash
      curl -H "Content-Type: application/json" -X POST -d @desc.json -u admin:admin \ http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```    
-    
+
    * Suba el descriptor de aplicación utilizando mfpadm.
 
-     
+
 En el siguiente ejemplo se crea un archivo de contraseña que se necesita para el mandato mfpadm, a continuación se sube el descriptor de aplicación con el ID my.test.application, para la plataforma ios y la versión 0.0.1.
 Se proporciona el URL HTTPS de un servidor que se ejecuta en el sistema local configurado con el puerto HTTPS 9444 para un tiempo de ejecución denominado mfp.
 
 
      ```bash
      echo password=admin > password.txt
-     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json 
+     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json
      rm password.txt
      ```
 
@@ -441,7 +432,7 @@ Como administrador o desplegador, también puede desplegar un archivador de expo
 No es necesario un código de aplicación, sin embargo, la aplicación de cliente se debe construir para el servidor de destino.
 
 
-#### Antes de empezar 
+#### Antes de empezar
 {: #before-you-begin-2 }
 Construya la aplicación de cliente para su servidor de destino.
 Para obtener más información, consulte [Construcción de una aplicación para un entorno de prueba o producción](#building-an-application-for-a-test-or-production-environment).
@@ -451,7 +442,7 @@ Utilice la API de despliegue para reutilizar el contenido archivado.
 
 
 > **Importante:** Considere con atención este caso de uso:
-  
+
 >  
 > * El archivo de exportación incluye datos de autenticidad de la aplicación.
 Los datos son específicos de la construcción de una aplicación móvil.
@@ -482,7 +473,7 @@ Por ejemplo, puede utilizar este mandato curl general para recuperar todos los r
   curl -X GET -u admin:admin -o exported.zip
   "http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export/all"
   ```
-    
+
 * Para desplegar un archivador que contenga dichos recursos de aplicación web como un adaptador, aplicación, configuración de licencia, almacén de claves o recurso web, utilice la API [Deploy (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc).
 Por ejemplo, puede utilizar este mandato curl para desplegar un archivo .zip existente que contenga artefactos.
 
@@ -518,8 +509,8 @@ Posteriormente puede importar el archivador para redesplegar la aplicación o ve
 
 
 > **Importante:** Considere con atención este caso de uso:
-  
-> 
+
+>
 > * El archivo de exportación incluye datos de autenticidad de la aplicación.
 Los datos son específicos de la construcción de una aplicación móvil.
 La aplicación móvil incluye el URL del servidor y su nombre de tiempo de ejecución.
