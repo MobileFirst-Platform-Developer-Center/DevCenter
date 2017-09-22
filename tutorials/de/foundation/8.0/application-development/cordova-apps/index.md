@@ -17,7 +17,7 @@ ermöglicht. Anwendungen werden innerhalb von Wrappern für die jeweilige Plattf
 Die {{ site.data.keys.product_full }} stelt ein aus mehreren Cordova-Plug-ins bestehendes SDK bereit. Informieren Sie sich darüber, wie das [SDK der {{ site.data.keys.product }} zu Cordova-Anwendungen hinzugefügt wird](../../application-development/sdk/cordova).
 
 > **Hinweis:** Archiv- bzw. IPA-Dateien, die für die Übergabe von iOS-Apps an einen Store oder für die Validierung von iOS-Apps mit Test Flight oder iTunes Connect generiert werden, können zu Laufzeitfehlern oder zu einem Laufzeitabsturz führen. Weitere Informationen hierzu finden Sie im Blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Cordova-Anwendungsentwicklung](#cordova-application-development)
@@ -34,7 +34,7 @@ Die {{ site.data.keys.product_full }} stelt ein aus mehreren Cordova-Plug-ins be
 
 ## Cordova-Anwendungsentwicklung
 {: #cordova-application-development }
-Mit Cordova entwickelte Anwendungen können durch folgende Cordova-Entwicklungspfade und -Features erweitert werden: 
+Mit Cordova entwickelte Anwendungen können durch folgende Cordova-Entwicklungspfade und -Features erweitert werden:
 
 ### Hooks
 {: #hooks }
@@ -51,7 +51,7 @@ Wenn Sie Cordova-Plug-ins verwenden, stehen Funktionserweiterungen zur Verfügun
 
 Sie finden Cordova-Plug-ins auf [GitHub.com](https://github.com) und auf bekannten Cordova-Plug-in-Websites wie [Plugreg](http://plugreg.com/) und [NPM](http://npmjs.org).
 
-Beispiel-Plug-ins: 
+Beispiel-Plug-ins:
 
 - [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs)
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
@@ -124,7 +124,7 @@ super.onCreate(savedInstanceState);
 
 if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
            WL.getInstance().showSplashScreen(this);
-       } 
+       }
    init();
    WL.getInstance().initializeWebFramework(getApplicationContext(), this);
 }
@@ -215,7 +215,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 
 ## Cordova-Anwendungssicherheit
 {: #cordova-application-security }
-Die {{ site.data.keys.product_full }} stellt Sicherheitsfunktionen bereit, die Ihnen helfen, Ihre Cordova-Apps zu schützen. 
+Die {{ site.data.keys.product_full }} stellt Sicherheitsfunktionen bereit, die Ihnen helfen, Ihre Cordova-Apps zu schützen.
 
 Ein großer Teil des Inhalts einer plattformübergreifenden App kann einfacher als bei einer nativen App
 von einer unberechtigten Person modifiziert werden. Da viele allgemeine Inhalte einer plattformübergreifenden App in einem lesbaren Format vorliegen, stellt die IBM MobileFirst Foundation Features bereit, die ein höheres Maß an Sicherheit für Ihre plattformübergreifenden Cordova-Apps ermöglichen.
@@ -227,11 +227,11 @@ Verwenden Sie die folgenden Funktionen, um die Sicherheit für Ihre Cordova-Apps
 * [Webressourcen Ihrer Cordova-Pakete verschlüsseln](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
     Verschlüsselt den Inhalt des Ordners www Ihrer Cordova-App und entschlüsselt ihn, wenn die App installiert und zum ersten Mal ausgeführt wird. Durch diese Verschlüsselung ist es schwieriger, den Inhalt dieses Ordners anzuzeigen oder zu modifizieren, während die App gepackt wird.
 * [Kontrollsummenfeature für Webressourcen aktivieren](securing-apps/#enabling-the-web-resources-checksum-feature)  
-    Stellt die Integrität der App beim Start sicher, indem der Inhalt mit dem Referenzkontrollsummenergebnis verglichen wird, das beim ersten Start der App erfasst wurde. Dieser Test hilft dabei, Modifizierungen einer App zu verhindern, die bereits installiert ist. 
+    Stellt die Integrität der App beim Start sicher, indem der Inhalt mit dem Referenzkontrollsummenergebnis verglichen wird, das beim ersten Start der App erfasst wurde. Dieser Test hilft dabei, Modifizierungen einer App zu verhindern, die bereits installiert ist.
 * [FIPS 140-2 aktivieren](../../administering-apps/federal/#enabling-fips-140-2)  
     Stellt sicher, dass die Verschlüsselungsalgorithmen zum Verschlüsseln ruhender und bewegter Daten mit dem Standard FIPS 140-2 (Federal Information Processing Standards) konform sind.
 * [Certificate Pinning](../../authentication-and-security/certificate-pinning)  
-    Hilft Man-in-the-Middle-Attacken zu verhindern, indem enem Host sein erwarteter öffentlicher Schlüssel zugeordnet wird. 
+    Hilft Man-in-the-Middle-Attacken zu verhindern, indem enem Host sein erwarteter öffentlicher Schlüssel zugeordnet wird.
 
 ## Cordova-Anwendungsressourcen
 {: #cordova-application-resources }
@@ -243,14 +243,14 @@ Wenn Sie die Standarddateinamen und -pfade von Ressourcen ändern möchten,
 müssen Sie diese Änderungen auch in der
 Cordova-Konfigurationsdatei (config.xml) angeben. In einigen Fällen können Sie die Standardnamen und -pfade auch mit
 dem Befehl mfpdev app config ändern. In solchen Fällen finden Sie
-im Abschnitt zu den Ressourcen einen entsprechenden Hinweis. 
+im Abschnitt zu den Ressourcen einen entsprechenden Hinweis.
 
 ### Cordova-Konfigurationsdatei (config.xml)
 {: #cordova-configuration-file-configxml }
 Die Cordova-Konfigurationsdatei ist eine erforderliche
 XML-Datei, die Anwendungsmetadaten enthält und im Stammverzeichnis der App gespeichert wird. Die Datei wird automatisch generiert, wenn Sie
 eine Cordova-Anwendung erstellen. Sie können sie modifizieren, um benutzerdefinierte Eigenschaften mit dem Befehl
-mfpdev app config hinzuzufügen. 
+mfpdev app config hinzuzufügen.
 
 ### Hauptdatei (index.html)
 {: #main-file-indexhtml}
@@ -258,7 +258,7 @@ Diese Hauptdatei ist eine HTML-5-Datei, die das Anwendungsgerüst enthält. Dies
 (Scripts und Style-Sheets), die erforderlich sind, um die allgemeinen Komponenten der Anwendung zu definieren und
 Anbindungen an erforderliche Dokumentereignisse zu erstellen. Sie finden diese Datei im Verzeichnis
 **Ihr_Projektname/www**. Sie können den Namen dieser Datei mit dem Befehl
-`mfpdev app config` ändern. 
+`mfpdev app config` ändern.
 
 ### Piktogramm
 {: #thumbnail-image }
@@ -268,12 +268,12 @@ von
 Ein Standardpiktogramm wird bereitgestellt, wenn Sie die Schablone verwenden. Sie können das Standardbild
 mit einem Ersatzbild
 überschreiben (indem Sie denselben Dateinamen verwenden). Sie finden die Datei thumbnail.png im Ornder **Ihr_Projektname/www/img**. Sie können den Namen oder Pfad dieser Datei mit dem Befehl
-`mfpdev app config` ändern. 
+`mfpdev app config` ändern.
 
 ### Begrüßungsbild
 {: #splash-image }
 Das Begrüßungsbild wird angezeigt, wenn die Anwendung
-initialisiert wird. Wenn Sie die MobileFirst-Standardschablone verwenden, werden Begrüßungsbilder bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert: 
+initialisiert wird. Wenn Sie die MobileFirst-Standardschablone verwenden, werden Begrüßungsbilder bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert:
 
 * iOS: <Ihr_Projektname>/res/screen/ios/
 * Android: <Ihr_Projektname>/res/screen/android/
@@ -287,22 +287,22 @@ ist das Plug-in **cordova-plugin-splashscreen** installiert. Wenn dieses Plug-in
 {{ site.data.keys.product }} verwendeten Bilder die von Cordova verwendeten Begrüßungsbilder angezeigt.
 Die Bilder im Ordner mit dem Bildformat screen.png sind die Cordova-Standardbegrüßungsbilder. Sie können angeben, welche Begrüßungsbilder angezeigt werden sollen, indem Sie die
 Einstellungen in der Cordova-Datei
-**config.xml** ändern. 
+**config.xml** ändern.
 
 Wenn Sie die
 {{ site.data.keys.product_adj }}-Schablone nicht verwenden,
 sind die angezeigten Standardbilder die vom
 {{ site.data.keys.product }}-Plug-in verwendeten Bilder.
 Die Dateinamen der standardmäßigen {{ site.data.keys.product_adj }}-Quellenbegrüßungsbilder haben das Format
-**splash-Zeichenfolge.9.png**. 
+**splash-Zeichenfolge.9.png**.
 
 > Weitere Informationen zur Verwendung eigener
 Begrüßungsbilder finden Sie unter
-[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons). 
+[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons).
 
 ### Anwendungssymbole
 {: #application-icons }
-Mit der Schablone werden Standardbilder für Anwendungssymbole bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert: 
+Mit der Schablone werden Standardbilder für Anwendungssymbole bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert:
 
 * iOS: <Ihr_Projektname>/res/icon/ios/
 * Android: <Ihr_Projektname>/res/icon/android/
@@ -311,18 +311,18 @@ Mit der Schablone werden Standardbilder für Anwendungssymbole bereitgestellt. D
 Sie können das Standardbild durch ein eigenes Bild ersetzen. Ihr angepasstes Anwendungssymbol muss dieselbe
 Größe und denselben Dateinamen wie das zu ersetzende Standardanwendungssymbol
 haben. Es stehen verschiedene Standardbilder zur Verfügung, die für verschiedene Anzeigen und Betriebssystemversionen
-geeignet sind. 
+geeignet sind.
 
 > Weitere Informationen zur Verwendung eigener
 Begrüßungsbilder finden Sie unter
-[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons). 
+[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons).
 
 ### Style-Sheets
 {: #stylesheets }
-Der App-Code kann CSS-Dateien enthalten, um die Anwendungsansicht zu definieren. 
+Der App-Code kann CSS-Dateien enthalten, um die Anwendungsansicht zu definieren.
 
 Die Style-Sheet-Dateien befinden sich im Verzeichnis
-<Ihr_Projektname>/www/css und werden in die folgenden plattformspezifischen Ordner kopiert: 
+`Ihr_Projektname/www/css` und werden in die folgenden plattformspezifischen Ordner kopiert:
 
 * iOS: <Ihr_Projektname>/platforms/ios/www/css
 * Android: <Ihr_Projektname>/platforms/android/assets/www/css
@@ -332,11 +332,11 @@ Die Style-Sheet-Dateien befinden sich im Verzeichnis
 {: #scripts }
 Ihr App-Code kann JavaScript-Dateien umfassen, mit denen diverse Funktionen Ihrer App implementiert werden, z. B.
 interaktive
-Benutzerschnittstellenkomponenten, Geschäftslogik und die Integration von Back-End-Abfragen. 
+Benutzerschnittstellenkomponenten, Geschäftslogik und die Integration von Back-End-Abfragen.
 
 Die JavaScript-Datei
 index.js wird mit der Schablone bereitgestellt. Sie befindet sich im Ordner **Ihr_Projektname/www/js**.
-Die Datei wird in die folgenden plattformspezifischen Ordner kopiert: 
+Die Datei wird in die folgenden plattformspezifischen Ordner kopiert:
 
 * iOS: <Ihr_Projektname>/platforms/ios/www/js
 * Android: <Ihr_Projektname>/platforms/android/assets/www/js
@@ -346,7 +346,7 @@ Die Datei wird in die folgenden plattformspezifischen Ordner kopiert:
 {: #previewing-an-applications-web-resources }
 Die Webressourcen einer Cordova-Anwendung können im iOS-Simulator, im Android-Emulator, im Windows-Emulator oder auf physischen Geräten vorangezeigt werden. In der
 {{ site.data.keys.product }} stehen zudem zwei Optionen für eine Livevorschau zur Verfügung:
-der {{ site.data.keys.mf_mbs_full }} und die einfache Darstellung in einem Browser. 
+der {{ site.data.keys.mf_mbs_full }} und die einfache Darstellung in einem Browser.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Sicherheitseinschränkung:** Sie können
 Ihre Webressourcen voranzeigen. Der Simulator unterstützt jedoch nicht alle {{ site.data.keys.product_adj }}-JavaScript-APIs. Insbesondere das OAuth-Protokoll wird nicht vollständig unterstützt.
@@ -355,7 +355,9 @@ In diesem Fall gilt: >
 > * Auf der Serverseite werden keine Sicherheitsüberprüfungen ausgeführt und an den im {{ site.data.keys.mf_mbs }} ausgeführten Client werden keine Sicherhetisabfragen gesendet.
 > * Wenn Sie {{ site.data.keys.mf_server }} in einer Entwicklungsumgebung nicht verwenden, registrieren Sie einen vertraulichen Client, in dessen Liste erlaubter Bereiche der Bereich des Adapters enthalten ist. Sie können einen vertraulichen Client in der {{ site.data.keys.mf_console }} über das Menü "Laufzeit -> Einstellungen" definieren. Weitere Informationen zu vertraulichen Clients finden Sie unter [Vertrauliche Clients](../../authentication-and-security/confidential-clients).
 >
-> **Hinweis:** In einer Entwicklungsumgebung enthält der {{ site.data.keys.mf_server }} einen vertraulichen Client mit dem Namen "test" und einem uneingeschränkten Bereich ("*"). Dieser vertrauliche Client wird standardmäßig von mfpdev app preview verwendet. #### Einfacher Browser
+> **Hinweis:** In einer Entwicklungsumgebung enthält der {{ site.data.keys.mf_server }} einen vertraulichen Client mit dem Namen "test" und einem uneingeschränkten Bereich ("*"). Dieser vertrauliche Client wird standardmäßig von mfpdev app preview verwendet.
+
+#### Einfacher Browser
 {: #simple-browser }
 Bei der einfachen Darstellung in einem Browser werden die Webressourcen der Anwendung im Desktop-Browser dargestellt, ohne als App betrachtet zu werden.
 Auf diese Weise ist es möglich, nur die Webressourcen zu debuggen.   
@@ -363,17 +365,17 @@ Auf diese Weise ist es möglich, nur die Webressourcen zu debuggen.
 #### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator }
 Der {{ site.data.keys.mf_mbs }} ist eine Webanwendung zum Testen von Cordova-Anwendungen. Der Simulator
-simuliert Gerätefeatures, ohne dass die App in einem Emulator oder auf einem physischen Gerät installiert werden muss. 
+simuliert Gerätefeatures, ohne dass die App in einem Emulator oder auf einem physischen Gerät installiert werden muss.
 
 **Unterstützte Browser:**
 
-* Firefox ab Version 38 
-* Chrome ab Version 49 
-* Safari ab Version 9 
+* Firefox ab Version 38
+* Chrome ab Version 49
+* Safari ab Version 9
 
 ### Vorschau
 {: #previewing }
-1. Führen Sie in einem **Befehlszeilenfenster** den folgenden Befehl aus: 
+1. Führen Sie in einem **Befehlszeilenfenster** den folgenden Befehl aus:
 
     ```bash
     mfpdev app preview
@@ -386,11 +388,11 @@ simuliert Gerätefeatures, ohne dass die App in einem Emulator oder auf einem ph
     ❯ browser: Simple browser rendering
     mbs: Mobile Browser Simulator
     ```
-3. Wählen Sie eine Plattform für die Vorschau aus (angezeigt werden nur hinzugefügte Plattformen): 
+3. Wählen Sie eine Plattform für die Vorschau aus (angezeigt werden nur hinzugefügte Plattformen):
 
     ```bash
     ❯◯ android
-    ◯ ios
+     ◯ ios
 	```
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Weitere Informationen zu den verschiedenen CLI-Befehlen enthält das Lernprogramm [{{ site.data.keys.product_adj }}-Artefakte über die CLI verwalten](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
