@@ -25,7 +25,7 @@ In diesem Lernprogramm erfahren Sie, wie die Befehlszeilenschnittstelle (`mfpdev
 und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adaptern verwendet wird.
 
 > Weitere Informationen zur SDK-Integration in Cordova-Anwendungen und nativen Anwendungen enthalten die Lernprogramme
-der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](./sdk/).
+der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/sdk/).
 
 #### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
