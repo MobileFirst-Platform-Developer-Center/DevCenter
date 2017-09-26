@@ -131,8 +131,7 @@ Wenn Sie beispielsweise für das Paket `myApp` nur Protokolle der Stufe ERROR er
 
 #### Web-Apps
 {: #fine-tuning-web-apps }
-Bei Verwendung des Web-SDK kann die Stufe nicht vom
-Client festgelegt werden. Die gesamte Protokollierung wird an den Server gesendet, bis die Konfiguration durch Abrufen des Serverkonfigurationsprofils geändert wird. 
+Bei Verwendung des Web-SDK kann die Stufe nicht vom Client festgelegt werden. Die gesamte Protokollierung wird an den Server gesendet, bis die Konfiguration durch Abrufen des Serverkonfigurationsprofils geändert wird.
 
 ## Serverkonfigurationsprofile abrufen
 {: #fetching-server-configuration-profiles }

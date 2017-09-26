@@ -78,11 +78,9 @@ auf der Registerkarte "Tools"  unter **Sicherheitsüberprüfungen** herunterlade
 Sicherheitsüberprüfungen und Ressourcen in das Adapterpaket oder in speziell dafür vorgesehene Adapter aufzunehmen.
 
 Wenn Sie die Standardimplementierung für **Ressourcen** entfernen möchten,
-löschen Sie die Dateien **[Adaptername]Application.java** und **[Adaptername]Resource.java**. Entfernen Sie
-außerdem das Element `<JAXRSApplicationClass>` aus der Datei **adapter.xml**. 
+löschen Sie die Dateien **[Adaptername]Application.java** und **[Adaptername]Resource.java**. Entfernen Sie außerdem das Element `<JAXRSApplicationClass>` aus der Datei **adapter.xml**. 
 
-Fügen Sie zur Datei **adapter.xml** des Java-Adapters ein XML-Element mit der Bezeichnung
-`securityCheckDefinition` hinzu. Beispiel: 
+Fügen Sie zur Datei **adapter.xml** des Java-Adapters ein XML-Element mit der Bezeichnung `securityCheckDefinition` hinzu. Beispiel: 
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -101,9 +99,7 @@ Wenn Sie einen Adapter mit einer Sicherheitsprüfungsdefinition erfolgreich in
 {{ site.data.keys.mf_server }} implementiert haben, können Sie Ihre Sicherheitsüberprüfung und die zugehörigen Konfigurationsdaten
 auch in der {{ site.data.keys.mf_console }} unter **Adapter → [Ihr Adapter]** anzeigen und dort Laufzeitkonfigurationsänderungen vornehmen: 
 
-* Auf der Registerkarte **Konfigurationsdateien** sehen Sie die Serverkopie
-Ihres Adapterdeskriptors mit dem Element
-`<securityCheckDefinition>`, das Ihre Sicherheitsüberprüfung und deren konfigurierbare Eigenschaften definiert. Sie können die [Adapterkonfiguration auch per Pull-Operation übertragen](../../adapters/java-adapters/#custom-properties) und per Push-Operation
+* Auf der Registerkarte **Konfigurationsdateien** sehen Sie die Serverkopie Ihres Adapterdeskriptors mit dem Element `<securityCheckDefinition>`, das Ihre Sicherheitsüberprüfung und deren konfigurierbare Eigenschaften definiert. Sie können die [Adapterkonfiguration auch per Pull-Operation übertragen](../../adapters/java-adapters/#custom-properties) und per Push-Operation
 an verschiedene Server senden. 
 * Auf der Registerkarte **Sicherheitsüberprüfungen** können Sie eine Liste aller Konfigurationseigenschaften sehen, die Sie in der Sicherheitsüberprüfung
 zugänglich gemacht haben. Auf die Eigenschaften wird mit dem Wert des konfigurierten Attributs
@@ -200,10 +196,8 @@ Diese Eigenschaften können auf verschiedenen Ebenen konfiguriert werden:
 
 ### adapter.xml
 {: #adapterxml }
-In der Datei **adapter.xml** des Java-Adapters können Sie innerhalb von
-`<securityCheckDefinition>` ein `<property>`-Element oder mehrere solche Elemente hinzufügen.   
+In der Datei **adapter.xml** des Java-Adapters können Sie innerhalb von `<securityCheckDefinition>` ein `<property>`-Element oder mehrere solche Elemente hinzufügen.   
 Das Element `<property>` wird mit folgenden Attributen verwendet:
-
 
 - **name**: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist
 - **defaultValue**: Setzt den in der Konfigurationsklasse definierten Wert außer Kraft

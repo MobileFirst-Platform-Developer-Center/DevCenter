@@ -121,6 +121,8 @@ Ihres konkreten Unternehmens aktualisieren.
 
 > **Hinweis:** Es steht Ihnen frei, die Benutzerschnittstelle und das Verhalten der Anwendung anzupassen. Solche Änderungen sind jedoch nicht vom IBM Unterstützungsvertrag abgedeckt.
 
+
+
 #### Android
 {: #android }
 * Öffnen Sie Android Studio.
@@ -206,7 +208,7 @@ Weitere Informationen finden Sie unter ) beschriebenen Voraussetzungen erfüllen
 
 ## Anwendungen in der Application-Center-Konsole verwalten
 {: #managing-applications-in-the-application-center-console }
-![Anwendungsverwaltung im Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Anwendungsmanagement im Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
 
 Verwenden Sie die Application-Center-Konsole, um Anwendungen im Katalog mit folgenden Aktionen zu verwalten: 
 
@@ -285,7 +287,7 @@ das in der Datei **Installationsverzeichnis/ApplicationCenter/installer/IBMAppli
 Unter Windows Phone 8 müssen Sie zusätzlich das Registrierungstoken, das Sie mit Ihrem Unternehmenskonto erhalten haben,
 in der Application-Center-Konsole installieren, damit Benutzer ihre Geräte registrieren können. Verwenden Sie die Seite mit den Application-Center-Einstellungen, die Sie über das Zahnradsymbol öffnen können. 
 
-![Registrierung einer Windows-Phone-8-App]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Registrierung von Windows-Phone-8-Apps]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
 Bevor Sie den mobilen Client installieren, müssen Sie das Gerät im Unternehmen registrieren, indem Sie das Registrierungstoken installieren: 
 

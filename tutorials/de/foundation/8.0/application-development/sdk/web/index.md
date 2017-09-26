@@ -45,7 +45,7 @@ Wenn Sie das SDK zu Webanwendungen hinzufügen möchten, müssen Sie es zunächs
 
 Dieser Befehl erstellt die folgende Verzeichnisstruktur:
 
-![SDK-Ordnerinhalt(sdk-folder.png)
+![SDK-Ordnerinhalt](sdk-folder.png)
 
 ### SDK hinzufügen
 {: #adding-the-sdk }
@@ -93,7 +93,7 @@ Initialisieren Sie das Web-SDK der {{ site.data.keys.product }}, indem Sie in de
 
 ```javascript
 var wlInitOptions = {
-    mfpContextRoot : '/mfp', // "mfp" ist das Standardkontextstammverzeichnis der {{ site.data.keys.product }}
+mfpContextRoot : '/mfp', // "mfp" ist das Standardkontextstammverzeichnis der {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Durch eigenen Wert ersetzen
 };
 
@@ -117,7 +117,7 @@ Sie können Anwendungen über die {{ site.data.keys.mf_console }} oder die {{ si
 3. Wählen Sie **Web** als Plattform aus und geben Sie einen Namen und eine ID an.
 4. Klicken Sie auf **Anwendung registrieren**.
 
-![Webplattform hinzufügen(add-web-platform.png)
+![Webplattform hinzufügen](add-web-platform.png)
 
 #### {{ site.data.keys.mf_cli }}
 {: #from-mobilefirst-cli }

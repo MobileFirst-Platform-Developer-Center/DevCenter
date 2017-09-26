@@ -49,7 +49,7 @@ folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }}
 
 ### Push-SDK hinzufügen
 {: #adding-the-push-sdk }
-1. Öffnen Sie die vorhandene **podfile** des Projekts und fügen Sie die folgenden Zeilen hinzu: 
+1. Öffnen Sie die vorhandene **podfile** des Projekts und fügen Sie die folgenden Zeilen hinzu:
 
    ```xml
    use_frameworks!
@@ -76,7 +76,7 @@ folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }}
         end
    end
    ```
-    - Ersetzen Sie **Xcode-project-target** durch den Namen Ihres Xcode-Projektziels. 
+    - Ersetzen Sie **Xcode-project-target** durch den Namen Ihres Xcode-Projektziels.
 
 2. Speichern Sie die **podfile** und schließen Sie sie.
 3. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Projekts. 
@@ -101,20 +101,22 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 
 > Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/ios).
 
+
+
 ### Clientseite
 {: #client-side }
 
-| Swift-Methoden | Beschreibung  |
+| Swift-Methoden | Beschreibung |
 |---------------|--------------|
-| [`initialize()`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext |
-| [`isPushSupported()`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen? |
+| [`initialize()`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext|
+| [`isPushSupported()`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen?|
 | [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registriert das Gerät beim Push-Benachrichtigungsservice|
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Sendet das Gerätetoken an den Server |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Ruft die derzeit vom Gerät abonnierten Tags ab  |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf              |
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Sendet das Gerätetoken an den Server|
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein|
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Ruft die derzeit vom Gerät abonnierten Tags ab |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags|
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
 
 #### Initialisierung
 {: #initialization }

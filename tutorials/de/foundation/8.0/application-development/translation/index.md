@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: JavaScript-Anwendungen (Cordova, Web) in mehrere Sprachen übersetzen
-breadcrumb_title: Übersetzung in mehrere Sprachen
+title: Übersetzung von JavaScript-Anwendungen (Cordova, Web) in mehrere Sprachen
+breadcrumb_title: Übersetung in mehrere Sprachen
 relevantTo: [javascript]
 weight: 9
 downloads:
@@ -108,13 +108,13 @@ Nachfolgend ist die Implementierung der Beispielanwendung für dieses Lernprogra
    }
    ```
 
-3. Aktualisieren Sie die grafische Benutzerschnittstelle mit den neuen Zeichenfolgen. Sie können weitere Aufgaben ausführen. Beispielsweise können Sie für Sprachen wie Hebräisch oder Arabisch die Ausrichtung des Textes von rechts nach links festlegen. Immer, wenn ein Element aktualisiert wird, erfolgt die Aktualisierung mit Zeichenfolgen der derzeit aktiven Sprache. 
+3. Aktualisieren Sie die grafische Benutzerschnittstelle mit den neuen Zeichenfolgen. Sie können weitere Aufgaben ausführen. Beispielsweise können Sie für Sprachen wie Hebräisch oder Arabisch die Ausrichtung des Textes von rechts nach links festlegen. Immer, wenn ein Element aktualisiert wird, erfolgt die Aktualisierung mit Zeichenfolgen der derzeit aktiven Sprache.
 
    ```javascript
    function languageChanged(lang) {
-        if (typeof(lang)!="string") 
+        if (typeof(lang)!="string")
             lang = $("#languages").val();
-        
+
         switch (lang) {
             case "english":
                 setEnglish();

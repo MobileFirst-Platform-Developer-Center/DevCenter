@@ -22,7 +22,7 @@ Windows 8.1 oder Windows 10 kann Xamarin auch als Plug-in zu Microsoft Visual St
 
 Sie können Xamarin Studio von der Seite [Xamarin Studio Downloads](https://www.xamarin.com/download) herunterladen. 
 
-![Xamarin Studio(xamarin-studio.png)
+![Xamarin Studio](xamarin-studio.png)
 
 ## Weitere Schritte
 {: #whats-next }

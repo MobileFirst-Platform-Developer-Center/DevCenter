@@ -136,9 +136,9 @@ Installation Manager nicht als root ausführen, benötigen Sie ein Benutzerkonto
 durchzuführen oder einen vorläufigen Fix anzuwenden. 
 
 Weitere Informationen zu den Installation-Manager-Modi
-finden Sie unter [Installing as an administrator, nonadministrator,
-or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) in der Dokumentation zu IBM Installation
-Manager. 
+finden Sie in der Dokumentation zu IBM Installation
+Manager unter [Installing as an administrator, nonadministrator,
+or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc). 
 
 ## Installation mit dem Installationsassistenten von IBM Installation Manager
 {: #installing-by-using-ibm-installation-manager-install-wizard }
@@ -220,10 +220,7 @@ im Auswahlfenster für die Konfiguration
 die Option Nein aus, damit das
 Application Center nicht installiert wird. 
 
-Wenn Sie Ja auswählen, müssen Sie in den folgenden Fenstern Angaben zur geplanten Datenbank und zu dem für die Implementierung
-des
-Application Center geplanten Anwendungsserver machen.
-Außerdem muss der JDBC-Treiber für Ihre Datenbank verfügbar sein. 9. Klicken Sie auf **Weiter**, bis die Anzeige **Thank
+Wenn Sie Ja auswählen, müssen Sie in den folgenden Fenstern Angaben zur geplanten Datenbank und zu dem für die Implementierung des Application Center geplanten Anwendungsserver machen. Außerdem muss der JDBC-Treiber für Ihre Datenbank verfügbar sein. 9. Klicken Sie auf **Weiter**, bis die Anzeige **Thank
 You** erscheint. Führen Sie dann die Installation aus. 
 
 Ein Installationsverzeichnis mit den Ressourcen für die Installation der
@@ -492,19 +489,14 @@ Informationen zu diesem Schritt finden Sie in der
 Dokumentation zu IBM Installation Manager
 unter [Repositorys](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html). 
 
-Passen Sie die Werte für alle Schlüssel-Wert-Paare im Element
-`<profile>` an.  
-Setzen Sie das Versionsattribut im Element
-`<offering>` im Element
-`<install>` auf das zu installierende Release oder entfernen Sie das Versionsattribut,
-wenn Sie die neueste verfügbare Version in den Repositorys installieren möchten.
+Passen Sie die Werte für alle Schlüssel-Wert-Paare im Element `<profile>` an.  
+Setzen Sie das Versionsattribut im Element `<offering>` im Element `<install>` auf das zu installierende Release oder entfernen Sie das Versionsattribut, wenn Sie die neueste verfügbare Version in den Repositorys installieren möchten.
+
 5. Geben Sie den folgenden Befehl ein: `<Installation-Manager-Pfad>/eclipse/tools/imcl input <Antwortdatei>  -log /tmp/installwl.log -acceptLicense`
 
     Für diese Angabe gilt Folgendes: 
-    * `<Installation-Manager-Pfad>` steht für das Installationsverzeichnis von IBM Installation
-Manager.
+    * `<Installation-Manager-Pfad>` steht für das Installationsverzeichnis von IBM Installation Manager.
     * `<Antwortdatei>` steht für den Namen der Datei, die Sie in Schritt 1 ausgewählt und aktualisiert haben.
-
 
 > Weitere Informationen finden Sie in der Dokumentation zu IBM Installation
 Manager im Abschnitt [Pakete unbeaufsichtigt mithilfe einer Antwortdatei installieren](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).    
@@ -903,62 +895,62 @@ Application Center</td>
 {: #distribution-structure-of-mobilefirst-server }
 Die Dateien und Tools für {{ site.data.keys.mf_server }} werden im Installationsverzeichnis von {{ site.data.keys.mf_server }} installiert.
 
-#### Dateien und Unterverzeichnisse im Unterverzeichnis Analytics
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'Analytics'
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **analytics.ear** und **analytics-*.war** | EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }} |
-| **configuration-samples** | Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks |
+| **analytics.ear** und **analytics-*.war** | EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }}|
+| **configuration-samples** | Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks|
 
-#### Dateien und Unterverzeichnisse im Unterverzeichnis ApplicationCenter
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'ApplicationCenter'
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **configuration-samples** | Ant-Beispieldateien für die Installation des Application Center. Die Ant-Tasks erstellen die Datenbanktabelle und implementieren WAR-Dateien in einem Anwendungsserver. | 
-| **console** | EAR- und WAR-Dateien für die Installation des Application Center. Die EAR-Datei ist für IBM PureApplication System bestimmt. | 
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für das Application Center |
-| **installer** | Ressourcen für die Erstellung des Application-Center-Clients  | 
-| **tools** | Tools des Application Center | 
+| **configuration-samples** | Ant-Beispieldateien für die Installation des Application Center. Die Ant-Tasks erstellen die Datenbanktabelle und implementieren WAR-Dateien in einem Anwendungsserver.| 
+| **console** | EAR- und WAR-Dateien für die Installation des Application Center. Die EAR-Datei ist für IBM PureApplication System bestimmt.| 
+| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für das Application Center|
+| **installer** | Ressourcen für die Erstellung des Application-Center-Clients | 
+| **tools** | Tools des Application Center| 
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'MobileFirstServer'
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **mfp-ant-deployer.jar** | Reihe von Ant-Tasks für {{ site.data.keys.mf_server }} |
-| **mfp-*.war** | WAR-Dateien der MobileFirst-Server-Komponenten |
-| **configuration-samples** | Ant-Beispieldateien für die Installation der MobileFirst-Server-Komponenten mit Ant-Tasks | 
-| **ConfigurationTool** | Binärdateien des Server Configuration Tool. Das Tool wird im Verzeichnis **MFP-Server-Installationsverzeichnis/shortcuts** gestartet. |
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für die MobileFirst-Server-Komponenten (MobileFirst-Server-Verwaltungsservice und -Konfigurationsservice und {{ site.data.keys.product_adj }}-Laufzeit) | 
-| **external-server-libraries** |  JAR-Dateien, die von verschiedenen Tools verwendet werden (z. B. dem Authentizitätstool und dem OAuth-Sicherheitstool) |
+| **mfp-ant-deployer.jar** | Reihe von Ant-Tasks für {{ site.data.keys.mf_server }}|
+| **mfp-*.war** | WAR-Dateien der MobileFirst-Server-Komponenten|
+| **configuration-samples** | Ant-Beispieldateien für die Installation der MobileFirst-Server-Komponenten mit Ant-Tasks| 
+| **ConfigurationTool** | Binärdateien des Server Configuration Tool. Das Tool wird im Verzeichnis **MFP-Server-Installationsverzeichnis/shortcuts** gestartet.|
+| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für die MobileFirst-Server-Komponenten (MobileFirst-Server-Verwaltungsservice und -Konfigurationsservice und {{ site.data.keys.product_adj }}-Laufzeit)| 
+| **external-server-libraries** |  JAR-Dateien, die von verschiedenen Tools verwendet werden (z. B. dem Authentizitätstool und dem OAuth-Sicherheitstool)|
 
-#### Dateien und Unterverzeichnisse im Unterverzeichnis PushService
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'PushService'
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **mfp-push-service.war** | WAR-Datei für die Installation des MobileFirst-Server-Push-Service |
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für den MobileFirst-Server-Push-Service | 
+| **mfp-push-service.war** | WAR-Datei für die Installation des MobileFirst-Server-Push-Service|
+| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für den MobileFirst-Server-Push-Service| 
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'License'
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **Text** | Lizenz für die {{ site.data.keys.product }} | 
+| **Text** | Lizenz für die {{ site.data.keys.product }}| 
 
 #### Dateien und Unterverzeichnisse im Installationsverzeichnis von {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **shortcuts** | Starterscripts für Apache Ant, das Server Configuration Tool von und den Befehl mfpadmin, die mit {{ site.data.keys.mf_server }} bereitgestellt werden. | 
+| **shortcuts** | Starterscripts für Apache Ant, das Server Configuration Tool von und den Befehl mfpadmin, die mit {{ site.data.keys.mf_server }} bereitgestellt werden.| 
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'tools'
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **tools/apache-ant-version-number** | Vom Server Configuration Tool verwendete Binärdatei für die Installation von Apache Ant, mit der auch die Ant-Tasks ausgeführt werden können | 
+| **tools/apache-ant-version-number** | Vom Server Configuration Tool verwendete Binärdatei für die Installation von Apache Ant, mit der auch die Ant-Tasks ausgeführt werden können| 

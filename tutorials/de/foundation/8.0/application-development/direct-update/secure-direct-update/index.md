@@ -70,26 +70,21 @@ Für das Generieren eines Zertifikats müssten Sie in dem Fall den folgenden Bef
    -keystore keystore.jks -storepass keypassword
    ```
     
-   Eine Zertifikatdatei wird generiert.   
-Setzen Sie den folgenden Befehl ab, um den öffentlichen Schlüssel zu extrahieren: 
+   Eine Zertifikatdatei wird generiert.  
+Setzen Sie den folgenden Befehl ab, um den öffentlichen Schlüssel zu extrahieren:
     
    ```bash
    openssl x509 -inform der -in certfile.cert -pubkey -noout
    ```
     
-   Hinweis:** Nur mit keytool
-können öffentliche Schlüssel im Base64-Format nicht extrahiert werden. 
+   **Hinweis:** Nur mit keytool können öffentliche Schlüssel im Base64-Format nicht extrahiert werden.
     
-2. Führen Sie einen der folgenden Schritte aus: 
-    * Kopieren Sie den resultierenden Text ohne die Marker `BEGIN PUBLIC KEY` und `END PUBLIC
-KEY` unmittelbar im Anschluss an wlSecureDirectUpdatePublicKey in die Eigenschaftendatei mfpclient der Anwendung. 
-    * Setzen Sie an der Eingabeaufforderung den folgenden Befehl ab: `mfpdev app config direct_update_authenticity_public_key <öffentlicher_Schlüssel>`. 
+2. Führen Sie einen der folgenden Schritte aus:
+    * Kopieren Sie den resultierenden Text ohne die Marker `BEGIN PUBLIC KEY` und `END PUBLIC KEY` unmittelbar im Anschluss an wlSecureDirectUpdatePublicKey in die Eigenschaftendatei mfpclient der Anwendung.
+    * Setzen Sie an der Eingabeaufforderung den folgenden Befehl ab: `mfpdev app config direct_update_authenticity_public_key <öffentlicher_Schlüssel>`.
     
-    Fügen Sie
-für `<öffentlicher_Schlüssel>` den resultierenden Text aus Schritt 1 ohne die Marker
-`BEGIN
-PUBLIC KEY` und `END PUBLIC KEY` ein. 
+    Fügen Sie für `<öffentlicher_Schlüssel>` den resultierenden Text aus Schritt 1 ohne die Marker `BEGIN PUBLIC KEY` und `END PUBLIC KEY` ein. 
 
-3. Führen Sie den Befehl "cordova build" aus, um den öffentlichen Schlüssel in der Anwendung zu speichern. 
+3. Führen Sie den Befehl "cordova build" aus, um den öffentlichen Schlüssel in der Anwendung zu speichern.
 
 

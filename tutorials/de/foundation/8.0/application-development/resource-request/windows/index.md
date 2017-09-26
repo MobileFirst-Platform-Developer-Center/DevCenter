@@ -90,8 +90,7 @@ Dieses Array sollte mit `GET` verwendet werden.
 
 ### Formularparameter
 {: #form-parameters }
-Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie
-`.Send(Dictionary<string, string> formParameters)` anstelle von `.Send()`:  
+Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie `.Send(Dictionary<string, string> formParameters)` anstelle von `.Send()`:  
 
 ```cs
 Dictionary<string,string> formParams = new Dictionary<string,string>();
