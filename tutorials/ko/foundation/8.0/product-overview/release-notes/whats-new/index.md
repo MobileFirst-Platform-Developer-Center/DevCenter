@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0에서는 {{ site.data.keys.product_adj }} 애플리케이션 개발, 배치 및 관리 환경을 현대화하는 중요한 변경사항을 가져옵니다.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ weight: 1
 
                 <h3>업데이트된 런타임용 REST API</h3>
                 <p>이제 {{ site.data.keys.product_adj }} 런타임용 REST API에서 모바일 클라이언트 및 기밀 클라이언트를 위한 어댑터를 호출하고, 액세스 토큰을 획득하고, 직접 업데이트 컨텐츠를 가져오는 등의 몇 가지 서비스를 제공합니다. 대부분의 REST API 엔드포인트는 OAuth로 보호됩니다. 개발 서버의 <code>http(s)://server_ip:server_port/context_root/doc</code>에서 런타임 API에 대한 Swagger 문서를 볼 수 있습니다.</p>
+
+                <h3>다중 인증서 고정 지원</h3>
+                <p>{{ site.data.keys.mf_bm_short }}은 iFix 8.0.0.0-IF201706240159부터 다중 인증서의 고정을 지원합니다. 이를 통해 사용자는 다중 호스트에 대한 보안 액세스 권한을 갖게 됩니다. 이 iFix 이전에 {{ site.data.keys.mf_bm_short }}은 단일 인증서의 고정을 지원했습니다. {{ site.data.keys.mf_bm_short }}은 사용자가 다중 X509 인증서(인증 기관에서 구입)의 공개 키를 클라이언트 애플리케이션에 고정할 수 있도록 하는 새 API를 도입했습니다. 모든 인증서의 사본은 클라이언트 애플리케이션에 배치되어야 합니다. SSL 핸드쉐이크 중에 {{ site.data.keys.product_full }} 클라이언트 SDK는 서버 인증서의 공개 키가 앱에 저장된 인증서 중 하나와 일치하는지 확인합니다. </p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>앱 배치 및 관리를 지원하기 위해 새 {{ site.data.keys.product }} 기능이 도입되었습니다. 이제 {{ site.data.keys.mf_server }}를 다시 시작하지 않고도 앱 및 어댑터를 업데이트할 수 있습니다.</p>
 

@@ -18,9 +18,9 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### adapter-resources 文件夹 
+### adapter-resources 文件夹
 {: #the-adapter-resources-folder }
- 
+
 **adapter-resources** 文件夹包含 XML 配置文件。该配置文件描述连接选项并列示向应用程序或其他适配器公开的过程。
 
 ```xml
@@ -42,7 +42,7 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -66,7 +66,7 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
 <ul>
                             <li><code>name</code>：<i>必填。</i> 过程的名称。该名称在适配器内必须是唯一的。它可以包含字母数据字符和下划线，且必须以字母开头。</li>
                             <li><code>audit</code>：<i>可选。</i>用于定义过程调用是否会记录在审计日志中。以下值有效：<ul>
-                                    <li><code>true</code>：对过程的调用会记录在审计日志中。</li> 
+                                    <li><code>true</code>：对过程的调用会记录在审计日志中。</li>
                                     <li><code>false</code>：缺省值。对过程的调用不会记录在审计日志中。</li>
                                 </ul>
                             </li>
@@ -121,7 +121,7 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * 要**推送**配置文件
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -133,7 +133,7 @@ JavaScript 适配器提供用于连接到 HTTP 和 SQL 后端的模板。此模�
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * 要**推送**配置文件
   ```bash
   mfpdev adapter push
@@ -158,7 +158,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 ### js 文件夹
 {: #the-js-folder }
- 
+
 该文件夹包含 **adapter.xml** 文件中声明的过程的所有 JavaScript 实施文件。还包含零个、一个或多个 XSL 文件，此类文件中包含用于检索到的原始 XML 数据的转换方案。适配器检索到的数据可以按原始格式返回或由适配器本身进行预处理。
 不论哪种，都会作为 **JSON 对象**提供给应用程序。
 
@@ -222,7 +222,7 @@ MFP.Server.getPropertyValue("name");
 function getAuthUserId(){
    var securityContext = MFP.Server.getTokenIntrospectionData();
    var user = securityContext.getAuthenticatedUser();
- 
+
    return "User ID: " + user.getId;
 }
 ```

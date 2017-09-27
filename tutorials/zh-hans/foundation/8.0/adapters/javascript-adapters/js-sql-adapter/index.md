@@ -54,7 +54,7 @@ SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 S
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -80,7 +80,7 @@ SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 S
 {% endhighlight %}</li>
 
                     <li><b>dataSourceJNDIName</b>：<i>可选。</i>使用应用程序服务器提供的数据源的 JNDI 名称来连接到数据源。适配器从与该 JNDI 名称关联的服务器连接池中获取连接。应用程序服务器提供了一种配置数据源的方式。有关更多信息，请参阅“将 {{ site.data.keys.mf_server }} 安装到应用程序服务器”。例如：
-                    
+
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
@@ -154,7 +154,7 @@ function getAccountTransactions2(accountId){
 
 ### 使用多个参数
 {: #using-multiple-parameters }
- 
+
 在 SQL 查询中使用单个或多个参数时，请确保接受函数中的变量，并将其传递给 **array** 中的 `invokeSQLStatement` 或 `invokeSQLStoredProcedure` 参数。
 
 ```javascript

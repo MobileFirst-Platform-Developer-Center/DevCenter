@@ -42,7 +42,7 @@ CDN에서 직접 업데이트 요청을 처리하려면 구성이 다음 조건�
 
 #### {{ site.data.keys.product_adj }} 관리자
 {: #mobilefirst-administrator }
-새 cdn.yourcompany.com 도메인을 {{ site.data.keys.product_adj }} 애플리케이션의 {{ site.data.keys.mf_server }} URL로 설정하십시오. 예를 들어 Ant 빌더 태스크의 경우 특성은 `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`입니다. 
+새 cdn.yourcompany.com 도메인을 {{ site.data.keys.product_adj }} 애플리케이션의 {{ site.data.keys.mf_server }} URL로 설정하십시오. 예를 들어, Ant 빌더 태스크의 경우 특성은 다음과 같습니다. `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
 
 #### Akamai 관리자
 {: #akamai-administrator }
@@ -64,11 +64,11 @@ CDN에서 직접 업데이트 요청을 처리하려면 구성이 다음 조건�
     
 5. 직접 업데이트 URL을 캐시하고 TTL을 설정하려면 다음 값과 유사한 값을 설정하여 캐싱 동작을 구성하십시오. 
 
-    | 필드 | 값 |
+    | 필드| 값|
     |-------|-------|
-    | 캐싱 옵션 | 캐시 |
-    | 시간이 경과된(stale) 오브젝트의 재평가 강제 실행 | 유효성 검증할 수 없는 경우 시간 경과됨(stale)으로 처리 |
-    | 최대 시간 | 3분 |
+    | 캐싱 옵션| 캐시|
+    | 시간이 경과된(stale) 오브젝트의 재평가 강제 실행| 유효성 검증할 수 없는 경우 시간 경과됨(stale)으로 처리|
+    | 최대 시간| 3분|
 
     ![캐싱 동작을 구성하는 값 설정](direct_update_cdn_7.jpg)
 

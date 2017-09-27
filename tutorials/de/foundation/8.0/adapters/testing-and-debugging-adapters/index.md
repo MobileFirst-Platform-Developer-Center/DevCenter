@@ -80,12 +80,10 @@ in Ihre Postman-App mit einer fertigen Anforderung importieren oder den nächste
 1. Erstellen Sie in der {{ site.data.keys.mf_console }} auf der Registerkarte **Einstellungen** → **Vertrauliche Clients** einen vertraulichen Client. Sie können auch den Standardclient verwenden.  
 Setzen Sie **Zulässiger Bereich** für Testzwecke auf `**`.
 
-  ![Vertraulichen Client definieren](confidential_client.png)
+  ![Vertraulichen Client festlegen](confidential_client.png)
 {% endcomment %}
 
-1.  Setzen Sie mit Ihrem HTTP-Client (Postman) eine HTTP-`POST`-Anforderung an
-`http://<IP-Adresse>:<PORT>/mfp/api/az/v1/token` ab. Verwenden Sie
-`Content-Type: application/x-www-form-urlencoded` und die folgenden Parameter:
+1.  Setzen Sie mit Ihrem HTTP-Client (Postman) eine HTTP-`POST`-Anforderung an `http://<IP-Adresse>:<PORT>/mfp/api/az/v1/token` ab. Verwenden Sie `Content-Type: application/x-www-form-urlencoded` und die folgenden Parameter:
 
     - Setzen Sie `grant_type` auf den Wert `client_credentials`.
     - Setzen Sie `scope` auf den schützenden Bereich für Ihre Ressource. Wenn Ihrer Ressource kein schützender Bereich zugewiesen ist, lassen Sie diesen Parameter weg, damit der Standardbereich (`RegisteredClient`) verwendet wird. Weitere Informationen finden Sie unter [Bereiche](../../authentication-and-security/#scopes).
@@ -95,6 +93,8 @@ Setzen Sie **Zulässiger Bereich** für Testzwecke auf `**`.
 2.  Fügen Sie einen Autorisierungsheader (`authorization header`) hinzu. Verwenden Sie die Basisauthentifizierung
 (`Basic authentication`) mit "test" als ID des vertraulichen Clients und "test" als geheimem Schlüssel. 
     > Weitere Informationen zu vertraulichen Clients finden Sie unter [Vertrauliche Clients](../../authentication-and-security/confidential-clients).
+
+
 
     ![Autorisierungskonfiguration in Postman](Authorization_configuration.png)
 
@@ -116,7 +116,7 @@ Das Ergebnis ist ein JSON-Objekt mit einem temporär gültigen Zugriffstoken:
 Fügen Sie in Ihren künftigen Anforderungen an die Adapterendpunkte einen HTTP-Header mit dem Namen `Authorization` und den Wert, den
 Sie erhalten haben (und der mit Bearer beginnt), hinzu. Das Sicherheitsframework übergeht alle Sicherheitsabfragen zum Schutz Ihrer Ressource. 
 
-  ![Adapteranforderung mit dem Testtoken in Postman](Adapter-response.png)
+  ![Adapteranforderung unter Verwendung von Postman mit dem Testtoken](Adapter-response.png)
 
 ### Swagger
 {: #using-swagger }
@@ -135,8 +135,8 @@ Greifen Sie wie folgt auf Swagger zu:
 
 <img alt="ON/OFF-Schaltfläche auf der Swagger-Benutzerschnittstelle" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### Testtoken
-{: #test-token }
+#### Testtoken hinzufügen
+{: #adding-a-test-token }
 
 Wenn Sie ein Testtoken zu der Anforderung hinzufügen möchten, damit das Sicherheitsframework alle Sicherheitsabfragen zum Schutz Ihrer Ressource übergeht,
 klicken Sie am rechten Rand neben einer Endpunktoperation auf die Schaltfläche **ON/OFF**. 
@@ -146,6 +146,8 @@ Sie werden aufgefordert, die Bereiche auszuwählen, für die Sie die Swagger-Ben
 
 > Weitere Informationen zum vertraulichen Client enthält das Lernprogramm [Vertraulicher Client](../../authentication-and-security/confidential-clients).
 
+
+
 <br/><br/>
 
 #### Anforderung senden
@@ -154,7 +156,7 @@ Sie werden aufgefordert, die Bereiche auszuwählen, für die Sie die Swagger-Ben
 Blenden Sie die Operation des Endpunkts ein, geben Sie (sofern erforderlich) die Parameter ein und klicken Sie auf
 die Schaltfläche **Try it out!**. 
 
-  ![Adapteranforderung mit dem Testtoken in Swagger](SwaggerReq.png)
+  ![Adapteranforderung unter Verwendung von Swagger mit dem Testtoken](SwaggerReq.png)
 
 #### Swagger-Annotationen
 {: #swagger-annotations }
@@ -183,7 +185,7 @@ public Map<String, String> enterInfo(
 }
 ```
 
-![Endpunkt mit mehreren Parameter auf der Swagger-Benutzerschnittstelle](Multiple_Parameter.png)
+![Swagger-Benutzerschnittstelle mit einem Endpunkt mit mehreren Parametern](Multiple_Parameter.png)
 
 
 {% comment %}
@@ -254,7 +256,7 @@ folgen Sie den Anweisungen unter [M2Eclipse](http://www.eclipse.org/m2e/), um Ma
 
 2. Wenn Maven in Eclipse verfügbar ist, importieren Sie das Maven-Adapterprojekt. 
 
-    ![Import eines Maven-Adapterprojekts in Eclipse](import-adapter-maven-project.png)
+    ![Import eines Adapter-Maven-Projekts in Eclipse](import-adapter-maven-project.png)
 
 3. Geben Sie wie folgt die Debugparameter an: 
     - Klicken Sie auf **Ausführen** → **Debugkonfigurationen**.
@@ -265,7 +267,7 @@ folgen Sie den Anweisungen unter [M2Eclipse](http://www.eclipse.org/m2e/), um Ma
     - Klicken Sie auf **Durchsuchen** und wählen Sie das Maven-Projekt aus. 
     - Klicken Sie auf **Debug**.
 
-    ![Debugparameter für {{ site.data.keys.mf_server }} festlegen](setting-debug-parameters.png)
+    ![MobileFirst-Server-Debugparameter festlegen](setting-debug-parameters.png)
 
 4. Klicken Sie auf **Fenster → Sicht anzeigen → Debug**, um *debug mode* einzugeben. Jetzt können Sie den Java-Code normal debuggen, wie Sie es in einer Java-Standardanwendung tun würden. Sie müssen eine Anforderung an den Adapter absetzen, damit der Code ausgeführt wird und die definierten Breakpoints erreicht werden. Befolgen Sie zu diesem Zweck die Anweisungen für das Aufrufen einer Adapterressource im Abschnitt [Adapter testen](#testing-adapters).
 

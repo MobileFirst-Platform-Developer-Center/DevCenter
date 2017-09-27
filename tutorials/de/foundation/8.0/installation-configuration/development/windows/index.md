@@ -1,55 +1,61 @@
 ---
 layout: tutorial
-title: Setting up the Windows 8.1 and Windows 10 development environment
+title: Windows-8.1- und Windows-10-Entwicklungsumgebung einrichten
 breadcrumb_title: Windows
 relevantTo: [windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.
+In diesem Lernprogramm wird Entwicklern erklärt, wie universelle Windows-8.1- und Windows-10-UWP-Anwendungen entwickelt und getestet werden. 
 
-**Prerequisite:** As you setup your Windows development environment, make sure to also read the [Setting up the {{ site.data.keys.product }} development environment](../mobilefirst/) tutorial.
+**Voraussetzung:** Wenn Sie Ihre Windows-Entwicklungsumgebung
+einrichten, müssen Sie das Lernprogramm [Entwicklungsumgebung der {{ site.data.keys.product }} einrichten](../mobilefirst/) durchgearbeitet haben. 
 
-### Registration
+### Registrierung
 {: #registration }
-1. Register as a Windows developer
+1. Registrieren Sie sich als Windows-Entwickler. 
 
-- [Create an Microsoft account](https://signup.live.com/) to be used by your organization/team admin.
-- Using the Microsoft ID, sign-in to the [Windows Dev Center](https://dev.windows.com/en-us/programs/join).
+- [Erstellen Sie ein Microsoft-Konto](https://signup.live.com/) für den Administrator Ihrer Organisation bzw. Ihres Teams. 
+- Melden Sie sich mit der Microsoft-ID beim [Windows Dev Center](https://dev.windows.com/en-us/programs/join) an.
 
-> Learn more in the [Windows developer support](https://dev.windows.com/en-us/support) website
+> Weitere Informationen finden Sie auf der Website [Windows developer support](https://dev.windows.com/en-us/support). 
 
-### Development
+### Entwicklung
 {: #development }
-Application development for either Windows 8.1 Universal or Windows 10 UWP requires a PC workstation running either the Windows 8.1 or Windows 10 operating system, with Microsoft  Visual Studio 2013 or 2015.
+Für die Entwicklung von Anwendungen für Windows 8.1 Universal oder Windows 10 UWP
+benötigen Sie eine PC-Workstation mit dem Betriebssystem Windows 8.1 oder Windows 10 und mit Microsoft Visual Studio 2013 oder 2015.
 
 #### Windows 8.1 Universal
 {: #windows-81-universal }
-A Windows 8.1 Universal application Solution is made up from three projects:
+Zu einer universellen Windows-8.1-Anwendungslösung gehören drei Projekte: 
 
-- Shared code for business logic
-- A project for Windows Desktop/tablet applications
-- A project for Windows Phone applications
+- Gemeinsamer Code für die Geschäftslogik
+- Projekt für Windows-Desktop/Tablet-Anwendungen
+- Projekt für Windows-Phone-Anwendungen
 
-Windows 8.1 Universal requires:
+Für Windows 8.1 Universal wird Folgendes vorausgesetzt: 
 
-- Windows OS 8.1 or higher
-- Visual Studio 2013 or 2015
+- Windows ab Version 8.1
+- Visual Studio 2013 oder 2015
 
 #### Windows 10 UWP
 {: #windows-10-uwp }
-A Windows 10 UWP (Universal Windows Platform) application Solution is made up from a single project containing:
+Eine Windows-10-UWP-Anwendungslösung (universelle Windows-Plattform) besteht aus einem Projekt, das Folgendes enthält: 
 
-- Shared code for business logic
-- Adaptive UI (for both Desktop/tablet and Phone) 
+- Gemeinsamer Code für die Geschäftslogik
+- Adaptive Benutzerschnittstelle (für Desktops/Tablets und für Telefone) 
 
-Windows 10 UWP requires:
+Für Windows 10 UWP wird Folgendes vorausgesetzt: 
 
-- Windows OS 8.1 or higher
+- Windows ab Version 8.1
 - Visual Studio 2015
 
-## What's Next
+## Weitere Schritte
 {: #whats-next }
-Now that the {{ site.data.keys.product }} and Windows development environment are set up, continue to [Quick Start](../../../quick-start/windows-8-10/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+Jetzt, da Sie die MobileFirst-Foundation- und Windows-Entwicklungsumgebung eingerichtet haben,
+können Sie zur Kategorie [Schnelleinstieg](../../../quick-start/windows-8-10/) wechseln, um
+Erfahrungen mit {{ site.data.keys.product }} zu sammeln, oder zur Kategorie
+[Alle Lernprogramme](../../../all-tutorials), um sich über konkrete Aspekte der
+MobileFirst-Foundation-Entwicklung zu informieren. 

@@ -96,7 +96,7 @@ Application Center에서 애플리케이션은 하나의 버전 번호만 있습
 
 Application Center는 UWP 앱 설치를 위한 Windows 10 UWP 클라이언트 프로젝트를 제공합니다. 이 프로젝트를 Visual Studio에서 열고 배포를 위한 바이너리(예: **.appx**)를 작성할 수 있습니다. Application Center는 모바일 클라이언트 배포를 위한 사전 정의된 방법을 제공하지 않습니다. 
 
-Application Center에서 애플리케이션은 하나의 버전 번호만 있습니다. 이 버전 번호는 최신 버전을 구별하는 데 사용됩니다. Windows 10 UWP 애플리케이션의 경우 버전 번호는 **Package.appxmanifest** 파일의 ***Version*** 필드에 있습니다. 이 버전 번호의 형식은 a.b.c.d여야 하며, 여기서 a, b, c, d는 음수가 아닌 정수입니다. 
+Application Center에서 애플리케이션은 하나의 버전 번호만 있습니다. 이 버전 번호는 최신 버전을 구별하는 데 사용됩니다. Windows 10 UWP 애플리케이션의 경우 버전 번호는 **Package.appxmanifest** 파일의 _**버전**_ 필드에 있습니다. 이 버전 번호의 형식은 a.b.c.d여야 하며, 여기서 a, b, c, d는 음수가 아닌 정수입니다. 
 
 
 ## 일반 아키텍처

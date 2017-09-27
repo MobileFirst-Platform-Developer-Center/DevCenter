@@ -98,7 +98,7 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 #### Analytics initialisieren
-{: #initialize-analytics }
+{: #initialize-analytics-ios }
 
 **Objective-C**  
 Es ist kein Setup erforderlich. Analytics ist standardmäßig bereits initialisiert. 
@@ -117,7 +117,7 @@ import com.worklight.common.WLAnalytics;
 ```
 
 #### Analytics initialisieren
-{: #initialize-analytics }
+{: #initialize-analytics-android }
 
 Nehmen Sie in die Methode `onCreate` Ihrer Hauptaktivität Folgendes auf: 
 
@@ -171,7 +171,7 @@ wird die {{ site.data.keys.mf_analytics_console_short }} mit Daten gefüllt (sie
 Mit der {{ site.data.keys.mf_analytics_short }}-API können Sie die Erfassung von App-Sitzungen aktivieren oder inaktivieren.
 
 #### JavaScript
-{: #javascript }
+{: #javascript-lifecycle-events }
 
 **Web**  
 Initialisieren Sie Analytics wie folgt, um Clientlebenszyklusereignisse zu verwenden: 
@@ -196,7 +196,7 @@ Lebenszyklusaktivitäten (`LIFECYCLE`) zu aktivieren oder zu inaktivieren.
 	* Führen Sie für die Erstellung des Cordova-Projekts den Befehl `cordova build` aus.
 
 #### Android
-{: #android }
+{: #android-lifecycle-events }
 
 Aktivieren Sie wie folgt die Protokollierung von Clientlebenszyklusereignissen: 
 
@@ -211,7 +211,7 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-lifecycle-events }
 
 Aktivieren Sie wie folgt die Protokollierung von Clientlebenszyklusereignissen: 
 
@@ -279,7 +279,7 @@ Netzaktivitäten (`NETWORK`) zu aktivieren oder zu inaktivieren.
 	* Führen Sie für die Erstellung des Cordova-Projekts den Befehl `cordova build` aus.
 
 #### iOS
-{: #ios }
+{: #ios-network-activities }
 
 Aktivieren Sie wie folgt die Protokollierung von Clientnetzereignissen: 
 
@@ -310,7 +310,7 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 #### Android
-{: #android }
+{: #android-network-activities }
 
 Aktivieren Sie wie folgt die Protokollierung von Clientnetzereignissen: 
 
@@ -330,14 +330,14 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 Mit den folgenden API-Methoden können Sie kundenspezifische Ereignisse erstellen. 
 
 #### JavaScript (Cordova)
-{: #javascript-cordova }
+{: #javascript-cordova-custom-events }
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 ```
 
 #### JavaScript (Web)
-{: #javascript-web }
+{: #javascript-web-custom-events }
 
 Bei Verwendung der Web-API werden kundenspezifische Daten mit der Methode
 `addEvent`
@@ -349,7 +349,7 @@ ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
 ```
 
 #### Android
-{: #android }
+{: #android-custom-events }
 
 Wenn Sie die beiden ersten Konfigurationen erstellt haben, können Sie mit der Protokollierung von Daten wie im folgenden Beispiel beginnen: 
 
@@ -366,7 +366,7 @@ WLAnalytics.log("Message", json);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-custom-events }
 
 Nach dem Import von WLAnalytics können Sie die API wie folgt für die Erfassung kundenspezifischer Daten verwenden: 
 
@@ -394,7 +394,7 @@ WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 Verwenden Sie für die Verfolgung einzelner Benutzer die Methode `setUserContext`. 
 
 #### Cordova
-{: #cordova }
+{: #cordova-tracking-users }
 
 Nicht unterstützt
 
@@ -406,7 +406,7 @@ ibmmfpfanalytics.setUserContext(user);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-tracking-users }
 
 **Objective-C**
 
@@ -421,7 +421,7 @@ WLAnalytics.sharedInstance().setUserContext("John Doe")
 ```
 
 #### Android
-{: #android }
+{: #android-tracking-users }
 
 ```java
 WLAnalytics.setUserContext("John Doe");
@@ -430,18 +430,18 @@ WLAnalytics.setUserContext("John Doe");
 Wenn Sie einzelne Benutzer nicht verfolgen möchten, verwenden Sie die Methode `unsetUserContext`. 
 
 #### Cordova
-{: #cordova }
+{: #cordova-untracking-users }
 
 Nicht unterstützt
 
 #### Webanwendungen
-{: #web-applications }
+{: #web-applications-untracking-users }
 
 Es gibt keine Methode `unsetUserContext` im {{ site.data.keys.product_adj }}-Web-SDK. Die Benutzersitzung endet nach 30 Minuten Inaktivität, sofern nicht
 `ibmmfpfanalytics.setUserContext(user)` erneut aufgerufen wird. 
 
 #### iOS
-{: #ios }
+{: #ios-untracking-users }
 
 **Objective-C**
 
@@ -456,7 +456,7 @@ WLAnalytics.sharedInstance().unsetUserContext
 ```
 
 #### Android
-{: #android }
+{: #android-untracking-users }
 
 ```java
 WLAnalytics.unsetUserContext();
@@ -474,7 +474,7 @@ dass Sie in der
 {{ site.data.keys.mf_analytics_console }} aktuelle Analysedaten sehen.
 
 #### JavaScript (Cordova)
-{: #javascript-cordova }
+{: #javascript-cordova-sending-data }
 
 Verwenden Sie in einer Cordova-Anwendung die folgende JavaScript-API-Methode: 
 
@@ -483,7 +483,7 @@ WL.Analytics.send();
 ```
 
 #### JavaScript (Web)
-{: #javascript-web }
+{: #javascript-web-sending-data }
 
 Verwenden Sie in einer Webanwendung (abhängig vom ausgewählten Namespace) die folgende JavaScript-API-Methode: 
 
@@ -492,7 +492,7 @@ ibmmfpfanalytics.send();
 ```
 
 #### iOS
-{: #ios }
+{: #ios-sending-data }
 
 **Objective-C**
 
@@ -507,7 +507,7 @@ WLAnalytics.sharedInstance().send();
 ```
 
 #### Android
-{: #android }
+{: #android-sending-data }
 
 Verwenden Sie in einer Android-Anwendung die folgende Java-API-Methode: 
 

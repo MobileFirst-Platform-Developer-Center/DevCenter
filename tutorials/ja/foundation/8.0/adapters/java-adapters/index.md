@@ -50,11 +50,10 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
-	
-	</mfp:adapter>
+</mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -161,7 +160,6 @@ JAX-RS 2.0 アプリケーション・クラスは、そのアプリケーショ
 
 ```java
 package com.sample.adapter;
-
 import java.util.logging.Logger;
 import com.ibm.mfp.adapter.api.MFPJAXRSApplication;
 
@@ -191,7 +189,6 @@ JAX-RS 2.0 リソースは、ルート URL にマップされる POJO (Plain Old
 
 ```java
 package com.sample.adapter;
-
 import java.util.logging.Logger;
 
 import javax.ws.rs.GET;
@@ -253,14 +250,14 @@ Java クラス内に、クラス・レベルで以下を追加します。
 
 ```java
 @Context
-ConfigurationAPI configurationAPI;
-```
+	ConfigurationAPI configurationAPI;
+
+	```
 
 その後、`configurationAPI` インスタンスを使用してプロパティーを取得できます。
 
 ```java
-configurationAPI.getPropertyValue("DB_url");
-```
+configurationAPI.getPropertyValue ("DB_url");```
 
 アダプター構成が {{ site.data.keys.mf_console }} から変更されると、JAX-RS アプリケーション・クラスが再ロードされ、その `init` メソッドが再び呼び出されます。
 
@@ -276,8 +273,7 @@ configurationAPI.getPropertyValue("DB_url");
 Java クラス内に、クラス・レベルで以下を追加します。
 
 ```java
-@Context
-AdaptersAPI adaptersAPI;
+@Context AdaptersAPI adaptersAPI; 
 ```
 
 [拡張アダプターの使用法とマッシュアップ](../advanced-adapter-usage-mashup)チュートリアルで使用例を参照できます。

@@ -88,6 +88,8 @@ cordova build ios
 
 > **참고:** 애플리케이션 UI 및 동작을 자유롭게 사용자 정의할 수 있지만, 이러한 변경사항은 IBM의 지원 계약에 포함되지 않습니다.
 
+
+
 #### Android
 {: #android }
 * Android Studio를 여십시오. 
@@ -122,16 +124,16 @@ iOS 및 Android용 Cordova 프로젝트를 사용하는 대신에, MobileFirst S
 
 **IBMAppCenter** 프로젝트를 빌드하십시오. MobileFirst 프로젝트에는 **AppCenter**라는 단일 애플리케이션이 포함되어 있습니다. 애플리케이션을 마우스 오른쪽 단추로 클릭하고 **실행 도구 → 모든 환경 빌드**를 선택하십시오. 
 
-#### Android
-{: #android }
+#### Android에서 프로젝트 가져오기 및 빌드
+{: #importing-building-projects-android }
 MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/android/native**에 원시 Android 프로젝트를 생성합니다. 원시 Android 개발 도구(ADT) 프로젝트는 android/native 폴더에 있습니다. ADT 도구를 사용하여 이 프로젝트를 컴파일하고 서명할 수 있습니다. 생성되는 APK가 모든 Android 버전 2.3 이상과 호환 가능하도록 이 프로젝트에서는 Android SDK 레벨 16을 설치해야 합니다. 프로젝트를 빌드할 때 상위 레벨의 Android SDK를 선택하는 경우 생성되는 APK는 Android 버전 2.3과 호환 가능하지 않습니다. 
 
 모바일 클라이언트 애플리케이션에 영향을 미치는 특정 Android 정보는 [개발자용 Android 사이트](https://developer.android.com/index.html)를 참조하십시오. 
 
 애플리케이션 업데이트에 대한 푸시 알림을 사용하려면 먼저 Application Center 클라이언트 특성을 구성해야 합니다. 자세한 정보는 [애플리케이션 업데이트에 대한 푸시 알림 구성](../push-notifications)을 참조하십시오. 
 
-#### iOS
-{: #ios }
+#### iOS에서 프로젝트 가져오기 및 빌드
+{: #importing-building-projects-ios }
 MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/iphone/native**에 원시 iOS 프로젝트를 생성합니다. **IBMAppCenterAppCenterIphone.xcodeproj** 파일은 iphone/native 폴더에 있습니다. 이 파일은 Xcode를 사용하여 컴파일하고 서명해야 하는 Xcode 프로젝트입니다. 
 
 iOS 모바일 클라이언트 애플리케이션을 서명하는 방법에 대해 자세히 알아보려면 [Apple 개발자 사이트](https://developer.apple.com/)를 참조하십시오. iOS 애플리케이션을 서명하려면 사용하는 프로비저닝 프로파일과 함께 사용할 수 있는 번들 ID로 애플리케이션의 번들 ID를 변경해야 합니다. 값은 Xcode 프로젝트 설정에서 **com.your\_internet\_domain\_name.appcenter**로 정의됩니다. 여기서 **your\_internet\_domain\_name**은 인터넷 도메인의 이름입니다. 
@@ -190,20 +192,20 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 
 이 파일에는 다음 표에 표시된 특성이 포함되어 있습니다. 
 
-| 특성     | 설명        |
+| 특성    | 설명       |
 |----------|-------------|
-| url | Application Center 서버의 하드코딩된 주소. 이 특성이 설정되면 로그인 보기의 주소 필드가 표시되지 않습니다.  |
-| defaultPort | url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 포트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다.  |
-| defaultContext | url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 컨텍스트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다.  |
-| ssl | 로그인 보기의 SSL 전환에 대한 기본값.  |
-| allowDowngrade | 이 특성은 이전 버전의 설치 권한이 부여되었는지 여부를 표시합니다. 이전 버전은 운영 체제 및 버전이 다운그레이드를 허용하는 경우에만 설치할 수 있습니다.  |
-| showPreviousVersions | 이 특성은 디바이스 사용자가 모든 버전의 애플리케이션에 대한 세부사항을 표시할 수 있는지 아니면 최신 버전의 세부사항만 표시할 수 있는지를 표시합니다.  |
-| showInternalVersion | 이 특성은 내부 버전이 표시되는지 여부를 표시합니다. 값이 false인 경우 상업용 버전이 설정되지 않은 경우에만 내부 버전이 표시됩니다.  |
-| listItemRenderer | 이 특성 값은 다음 중 하나입니다. <br/>- **full** (기본값): 애플리케이션 목록에 애플리케이션 이름, 등급, 최신 버전이 표시됩니다.<br/>- **simple**: 애플리케이션 목록에 애플리케이션 이름만 표시됩니다. |
-| listAverageRating | 이 특성 값은 다음 중 하나입니다. <br/>-  **latestVersion**: 애플리케이션 목록에 최신 버전의 애플리케이션에 대한 평균 등급이 표시됩니다. <br/>-  **allVersions**: 애플리케이션 목록에 모든 버전의 애플리케이션에 대한 평균 등급이 표시됩니다. |
-| requestTimeout | 이 특성은 Application Center 서버에 대한 요청의 제한시간(밀리초)을 표시합니다.  |
-| gcmProjectId | Android 푸시 알림에 필요한 Google API 프로젝트 ID(프로젝트 이름 = com.ibm.appcenter). 예: 123456789012.  |
-| allowAppLinkReview | 이 특성은 외부 애플리케이션 스토어에서 애플리케이션의 로컬 검토를 Application Center에서 등록하고 찾아볼 수 있는지 여부를 표시합니다. 이러한 로컬 검토는 외부 애플리케이션 스토어에서 볼 수 없습니다. 이러한 검토는 Application Center 서버에 저장됩니다.  |
+| url| Application Center 서버의 하드코딩된 주소. 이 특성이 설정되면 로그인 보기의 주소 필드가 표시되지 않습니다. |
+| defaultPort| url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 포트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다. |
+| defaultContext| url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 컨텍스트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다. |
+| ssl| 로그인 보기의 SSL 전환에 대한 기본값. |
+| allowDowngrade| 이 특성은 이전 버전의 설치 권한이 부여되었는지 여부를 표시합니다. 이전 버전은 운영 체제 및 버전이 다운그레이드를 허용하는 경우에만 설치할 수 있습니다. |
+| showPreviousVersions| 이 특성은 디바이스 사용자가 모든 버전의 애플리케이션에 대한 세부사항을 표시할 수 있는지 아니면 최신 버전의 세부사항만 표시할 수 있는지를 표시합니다. |
+| showInternalVersion| 이 특성은 내부 버전이 표시되는지 여부를 표시합니다. 값이 false인 경우 상업용 버전이 설정되지 않은 경우에만 내부 버전이 표시됩니다. |
+| listItemRenderer| 이 특성 값은 다음 중 하나입니다. <br/>- **full** (기본값): 애플리케이션 목록에 애플리케이션 이름, 등급, 최신 버전이 표시됩니다.<br/>- **simple**: 애플리케이션 목록에 애플리케이션 이름만 표시됩니다.|
+| listAverageRating| 이 특성 값은 다음 중 하나입니다. <br/>-  **latestVersion**: 애플리케이션 목록에 최신 버전의 애플리케이션에 대한 평균 등급이 표시됩니다. <br/>-  **allVersions**: 애플리케이션 목록에 모든 버전의 애플리케이션에 대한 평균 등급이 표시됩니다.|
+| requestTimeout| 이 특성은 Application Center 서버에 대한 요청의 제한시간(밀리초)을 표시합니다. |
+| gcmProjectId| Android 푸시 알림에 필요한 Google API 프로젝트 ID(프로젝트 이름 = com.ibm.appcenter). 예: 123456789012. |
+| allowAppLinkReview| 이 특성은 외부 애플리케이션 스토어에서 애플리케이션의 로컬 검토를 Application Center에서 등록하고 찾아볼 수 있는지 여부를 표시합니다. 이러한 로컬 검토는 외부 애플리케이션 스토어에서 볼 수 없습니다. 이러한 검토는 Application Center 서버에 저장됩니다. |
 
 ### 기타 자원
 {: #other-resources }
@@ -214,7 +216,7 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 * **Android:** Android Studio 프로젝트의 **/res/drawabledensity** 디렉토리(각 밀도에 대해 하나의 디렉토리가 있음)에 있는 **icon.png** 파일. 
 * **iOS:** Xcode 프로젝트의 **Resources** 디렉토리에 있는 **iconsize.png** 파일. 
 * **Windows Phone:** Windows Phone용 MobileFirst Studio 환경 폴더의 **native** 디렉토리에 있는 **ApplicationIcon.png**, **IconicTileSmallIcon.png** 및 **IconicTileMediumIcon.png** 파일. 
-* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Assets** 디렉토리에 있는, 이름이 **Square\*Logo\*.png**, **StoreLogo.png** 및 **Wide\*Logo\*.png**인 파일. 
+* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Assets** 디렉토리에 있는 이름이 **Square\*Logo\*.png**, **StoreLogo.png** 및 **Wide\*Logo\*.png**인 파일. 
 
 
 #### 애플리케이션 이름
@@ -231,7 +233,7 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 * **iOS:** Xcode 프로젝트의 **Resources** 디렉토리에서 **Default-size.png** 파일을 편집하십시오. 
 * 자동 로그인 동안 표시되는 Cordova/MobileFirst Studio 기반 프로젝트의 스플래시 화면: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Windows Phone용 MobileFirst Studio 환경 폴더의 **native** 디렉토리에서 **SplashScreenImage.png** 파일을 편집하십시오. 
-* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Assets** 디렉토리에 있는, 이름이 **SplashScreen*.png**인 파일을 편집하십시오. 
+* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Assets** 디렉토리에 있는 이름이 **SplashScreen*.png**인 파일을 편집하십시오. 
 
 #### 애플리케이션의 아이콘(단추, 별, 유사 오브젝트)
 {: #icons }

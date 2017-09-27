@@ -91,7 +91,7 @@ weight: 2
 {: #runtime-settings }
 런타임 특성, 글로벌 보안 변수, 서버 키 저장소 및 기밀 클라이언트를 편집하십시오. 
 
-![런타임 설정 화면의 이미지 ](runtime-settings.png)
+![런타임 설정 화면 이미지 ](runtime-settings.png)
 
 ### 오류 로그
 {: #error-log }
@@ -131,7 +131,7 @@ weight: 2
 
 > {{ site.data.keys.product_adj }} 보안 프레임워크에 대해 [자세히 알아보십시오](../../../authentication-and-security/).
 
-![애플리케이션 보안 구성 화면의 이미지](authentication-and-security.png)
+![애플리케이션 보안 구성 화면 이미지](authentication-and-security.png)
 
 #### 애플리케이션 설정
 {: #application-settings }
@@ -143,7 +143,7 @@ weight: 2
 {: #notifications }
 인증서 및 GCM 세부사항 같은 [푸시 알림](../../../notifications/) 및 관련 매개변수 설정은 알림을 디바이스에 보낼 뿐 아니라 태그를 정의합니다.
 
-![푸시 알림 설정 화면의 이미지](push-notifications.png)
+![푸시 알림 설정 화면 이미지](push-notifications.png)
 
 ### 어댑터 
 {: #adapters }

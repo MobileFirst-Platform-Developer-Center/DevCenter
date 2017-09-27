@@ -17,16 +17,16 @@ weight: 1
 설치 프로그램을 사용하려면 Java가 설치되어 있어야 합니다. 
 
 1. [Oracle의 JRE를 설치](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)하십시오. 
-    
+
 2. JRE를 가리키는 `JAVA_HOME` 변수를 추가하십시오. 
 
     *Mac 및 Linux:* **~/.bash_profile**을 편집하십시오. 
-    
+
     ```bash
     #### ORACLE JAVA
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home"
     ```
-    
+
     *Windows:*  
     [이 안내서를 따르십시오](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html). 
 
@@ -72,13 +72,13 @@ weight: 1
 
 2. 어댑터 작성, 빌드 및 배치 등의 일부 CLI 명령에는 Maven이 필요합니다. 다음 절에서 설치 지시사항을 참조하십시오. 
 
-### 설치
-{: #installation }
+### {{ site.data.keys.mf_cli }} 설치
+{: #installation-cli }
 터미널을 열고 `npm install -g mfpdev-cli`를 실행하십시오.   
 
 *Mac 및 Linux:* `sudo`를 사용하여 명령을 실행해야 할 수 있습니다.   
 [NPM 권한 수정](https://docs.npmjs.com/getting-started/fixing-npm-permissions)에 대해 자세히 읽으십시오. 
-    
+
 설치를 확인하려면 명령행 창을 열고 `mfpdev -v` 또는 `mfpdev help`를 실행하십시오. 
 
 ![콘솔](mfpdev-cli.png)
@@ -89,12 +89,12 @@ weight: 1
 
 **전제조건:**  
 어댑터 및 보안 검사를 작성하려면 먼저 Apache Maven을 설정해야 합니다.   
-    
+
 1. [Apache Maven .zip을 다운로드하십시오](https://maven.apache.org/download.cgi). 
 2. Maven 폴더를 가리키는 `MVN_PATH` 변수를 추가하십시오. 
-    
+
     *Mac 및 Linux:* **~/.bash_profile**을 편집하십시오. 
-    
+
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
@@ -108,4 +108,3 @@ weight: 1
 {: #usage }
 Apache Maven이 설치되어 있으니 이제 {{ site.data.keys.mf_cli }}를 사용하거나 Maven 명령행 명령을 통해 어댑터를 작성할 수 있습니다.   
 자세한 정보는 [어댑터 학습서]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)를 검토하십시오. 
-

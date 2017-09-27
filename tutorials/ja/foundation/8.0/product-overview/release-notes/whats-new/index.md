@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 では、{{ site.data.keys.product_adj }} アプリケーションの開発、デプロイメント、および管理を最新の方法でできるようにする大幅な変更が加えられています。
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ weight: 1
 
                 <h3>ランタイム用の REST API の更新</h3>
                 <p>{{ site.data.keys.product_adj }} ランタイム用の REST API は、モバイル・クライアントおよび機密クライアント用に、アダプターの呼び出し、アクセス・トークンの取得、ダイレクト・アップデートのコンテンツの取得などを行うための、いくつかのサービスを提供するようになりました。REST API エンドポイントのほとんどは、OAuth によって保護されています。開発サーバーでは、次の場所で、ランタイム API 用の Swagger 文書を表示できます。<code>http(s)://server_ip:server_port/context_root/doc</code></p>
+
+                <h3>複数の証明書のピン留めをサポート</h3>
+                <p>iFix 8.0.0.0-IF201706240159 以降、{{ site.data.keys.mf_bm_short }} は複数の証明書のピン留めをサポートします。これにより、ユーザーは複数のホストにセキュアにアクセスできます。この iFix より前では、{{ site.data.keys.mf_bm_short }} は単一の証明書のピン留めをサポートしていました。{{ site.data.keys.mf_bm_short }} では、複数のホストへの接続を可能にする新しい API が導入されました。これは、ユーザーが複数の X509 証明書 (認証局から購入したもの) の公開鍵をクライアント・アプリケーションにピン留めできるようにすることによって可能になります。すべての証明書のコピーが、クライアント・アプリケーションに配置されている必要があります。SSL ハンドシェーク中に、{{ site.data.keys.product_full }} クライアント SDK によって、サーバー証明書の公開鍵が、アプリケーションに保管されているいずれかの証明書からの公開鍵と一致するかが検証されます。</p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>アプリケーションのデプロイおよび管理に役立つ新しい {{ site.data.keys.product }} 機能が導入されています。{{ site.data.keys.mf_server }} を再始動しなくても、アプリケーションおよびアダプターを更新できるようになりました。</p>
 

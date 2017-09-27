@@ -4,16 +4,16 @@ title: JavaScript(Cordova, 웹) 애플리케이션에서 인증 확인 핸들러
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
-다운로드:
-  - 이름: PreemptiveLogin Cordova 프로젝트 다운로드
+downloads:
+  - name: PreemptiveLogin Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80
-  - 이름: PreemptiveLogin 웹 프로젝트 다운로드
+  - name: PreemptiveLogin 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80
-  - 이름: RememberMe Cordova 프로젝트 다운로드
+  - name: RememberMe Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80
-  - 이름: RememberMe 웹 프로젝트 다운로드
+  - name: RememberMe 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWeb/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -25,7 +25,7 @@ weight: 2
 
 ## 로그인
 {: #login }
-이 예제에서 `UserLogin`은 `username` 및 `password`라는 *키:값*을 예상합니다. 선택적으로 더 긴 기간 동안 이 사용자를 기억하도록 보안 검사에 알리는 부울 `rememberMe` 키를 허용하기도 합니다. 이는 샘플 애플리케이션에서 로그인 양식의 선택란에서 부울 값을 사용하여 수집됩니다. 
+이 예제에서 `UserLogin`은 `username` 및 `password`라는 *키:값**을 예상합니다. 선택적으로 더 긴 기간 동안 이 사용자를 기억하도록 보안 검사에 알리는 부울 `rememberMe` 키를 허용하기도 합니다. 이는 샘플 애플리케이션에서 로그인 양식의 선택란에서 부울 값을 사용하여 수집됩니다. 
 
 ```js
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});

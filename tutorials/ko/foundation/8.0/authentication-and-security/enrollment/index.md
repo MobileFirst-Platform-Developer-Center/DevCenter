@@ -4,16 +4,16 @@ title: 등록
 breadcrumb_title: 등록
 relevantTo: [android,ios,windows,javascript]
 weight: 7
-다운로드:
-  - 이름: Cordova 프로젝트 다운로드
+downloads:
+  - name: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - 이름: iOS Swift 프로젝트 다운로드
+  - name: iOS Swift 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - 이름: Android 프로젝트 다운로드
+  - name: Android 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - 이름: 웹 프로젝트 다운로드
+  - name: 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -150,7 +150,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 protected boolean validateCredentials(Map<String, Object> credentials) {
     PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-    if(credentials!=null && credentials.containsKey("pin")){
+    if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals(attributes.get("pinCode"))){

@@ -43,37 +43,32 @@ Java 어댑터는 JAX-RS 2.0 스펙을 기반으로 합니다. 즉, Java 어댑�
 	<description>JavaAdapter</description>
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
-	
+
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+
+	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
-	
-	</mfp:adapter>
+</mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a></h4>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a>
+        </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>필수.</i> 어댑터 이름입니다.
-이 이름은
-{{ site.data.keys.mf_server }}
-내에서 고유해야 합니다. 이름은 영숫자 문자 및 밑줄을 포함할 수 있으며 문자로 시작해야 합니다. 어댑터를 정의하고 배치한 후에는 이름을 수정할 수 없습니다. </li>
-					<li><b>displayName</b>: <i>선택사항.</i> {{ site.data.keys.mf_console }}에
-표시되는 어댑터의 이름입니다. 이 요소가 지정되지 않으면 이름 속성 값이 대신 사용됩니다. </li>
-					<li><b>description</b>: <i>선택사항.</i> 어댑터에 대한 추가 정보입니다.
-{{ site.data.keys.mf_console }}에 표시됩니다. </li>
-					<li><b>JAXRSApplicationClass</b>: <i>어댑터 엔드포인트를 노출하기 위해 필수. </i> 이 어댑터의 JAX-RS 애플리케이션의
-클래스 이름을 정의합니다. 이 예에서는 <b>com.sample.JavaAdapterApplication</b>입니다. </li>
+                    <li><b>name</b>: <i>필수.</i> 어댑터 이름입니다. 이 이름은 {{ site.data.keys.mf_server }} 내에서 고유해야 합니다. 이름은 영숫자 문자 및 밑줄을 포함할 수 있으며 문자로 시작해야 합니다. 어댑터를 정의하고 배치한 후에는 이름을 수정할 수 없습니다. </li>
+					<li><b>displayName</b>: <i>선택사항.</i> {{ site.data.keys.mf_console }}에 표시되는 어댑터의 이름입니다. 이 요소가 지정되지 않으면 이름 속성 값이 대신 사용됩니다. </li>
+					<li><b>description</b>: <i>선택사항.</i> 어댑터에 대한 추가 정보입니다. {{ site.data.keys.mf_console }}에 표시됩니다. </li>
+					<li><b>JAXRSApplicationClass</b>: <i>어댑터 엔드포인트를 노출하기 위해 필수. </i> 이 어댑터의 JAX-RS 애플리케이션의 클래스 이름을 정의합니다. 이 예에서는 <b>com.sample.JavaAdapterApplication</b>입니다. </li>
 					<li><b>securityCheckDefinition</b>: <i>선택사항.</i> 보안 검사 오브젝트를 정의합니다. <a href="../../authentication-and-security/creating-a-security-check">보안 검사 작성</a> 학습서에서 보안 검사에 대해 자세히 알아보십시오. </li>
 					<li><b>property</b>: <i>선택사항.</i> 사용자 정의 특성을 선언합니다. 아래 사용자 정의 특성 주제에서 자세히 알아보십시오. </li>
                 </ul>
@@ -91,6 +86,7 @@ Java 어댑터는 JAX-RS 2.0 스펙을 기반으로 합니다. 즉, Java 어댑�
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **참고:** 구성 특성 요소는 `JAXRSApplicationClass` 요소 **아래**에 위치해야 합니다.   
 위의 예제에서 연결 설정을 정의했고 기본값을 제공했으므로 나중에 AdapterApplication 클래스에 사용할 수 있습니다.
+
 `<property>` 요소는 다음 속성을 사용합니다. 
 
 - **name**: 구성 클래스에 정의된 특성의 이름입니다. 
@@ -186,8 +182,7 @@ public class JavaAdapterApplication extends MFPJAXRSApplication{
 }
 ```
 
-`MFPJAXRSApplication` 클래스는 JAX-RS 2.0 자원에 대한 패키지를 스캔하고
-목록을 자동으로 작성합니다. 또한 `init` 메소드는 어댑터가 배치된 즉시(제공을 시작하기 전에) 및 {{ site.data.keys.product }} 런타임이 시작될 때 {{ site.data.keys.mf_server }}에서 호출합니다. 
+`MFPJAXRSApplication` 클래스는 JAX-RS 2.0 자원에 대한 패키지를 스캔하고 목록을 자동으로 작성합니다. 또한 `init` 메소드는 어댑터가 배치된 즉시(제공을 시작하기 전에) 및 {{ site.data.keys.product }} 런타임이 시작될 때 {{ site.data.keys.mf_server }}에서 호출합니다. 
 
 ## JAX-RS 2.0 자원 구현
 {: #implementing-a-jax-rs-20-resource }
@@ -240,7 +235,6 @@ public class JavaAdapterResource {
 
 
 ## HTTP 세션
-
 {: #http-session }
 
 {{ site.data.keys.mf_server }}는 HTTP 세션에 의존하지 않으며 각 요청은 다른 노드에 도달할 수 있습니다. 한 요청에서 다른 요청까지 데이터를 유지하려면 HTTP 세션에 의존하면 안 됩니다. 
@@ -262,18 +256,15 @@ Java 클래스 내부에서 클래스 레벨로 다음을 추가하십시오.
 ConfigurationAPI configurationAPI;
 ```
 
-그런 다음 `configurationAPI` 인스턴스를 사용하여
-특성을 가져올 수 있습니다. 
+그런 다음 `configurationAPI` 인스턴스를 사용하여 특성을 가져올 수 있습니다. 
 
 ```java
 configurationAPI.getPropertyValue("DB_url");
 ```
 
-어댑터 구성이 {{site.data.keys.mf_console }}에서 수정될 때 JAX-RS 애플리케이션 클래스가
-다시 로드되고 해당 `init` 메소드가 다시 호출됩니다. 
+어댑터 구성이 {{site.data.keys.mf_console }}에서 수정될 때 JAX-RS 애플리케이션 클래스가 다시 로드되고 해당 `init` 메소드가 다시 호출됩니다. 
 
-`getServerJNDIProperty`
-메소드는 서버 구성에서 JNDI 특성을 검색하도록 사용될 수도 있습니다. 
+`getServerJNDIProperty` 메소드는 서버 구성에서 JNDI 특성을 검색하도록 사용될 수도 있습니다. 
 
 [Java SQL 어댑터 학습서](java-sql-adapter)에서 사용법 예제를 참조할 수 있습니다. 
 
