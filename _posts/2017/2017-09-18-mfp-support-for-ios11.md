@@ -10,8 +10,8 @@ version:
 - 7.1
 author:
   name: Sandhya Suman
-co-author:
-  name: Shubha S
+additional_authors:
+- Shubha S
 ---
 
 Every year Apple releases a new version of iOS, and with every new release MobileFirst keeps up the promise of compatibility with latest version, to customers. With each new version, iOS changes are embraced with minimal impact. With this year's release of Apple iOS11, MobileFirst is pleased to announce the support of iOS 11 on MobileFirst Platform Foundation (MFP) v7.1 and v8.0. For further details, read through our [support plan for Android O and iOS 11](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
