@@ -44,7 +44,7 @@ See our earlier [blog post]({{site.baseurl}}/blog/2017/07/24/compatibility-tests
 
 * Though this change is not an issue with MobileFirst, customers must be aware of an issue when using command `cordova emulate ios`. See [here]( https://github.com/phonegap/ios-sim/issues/218), for more details.
 To overcome this issue apply the latest Cordova update, using the command `cordova platform add ios@https://github.com/apache/cordova-ios/`.
->**Update :** Cordova has fixed this issue in its latest cordova-ios 4.5.1 version release.To adapt this fix use  `cordova platform add ios@4.5.1` while adding ios platform to your cordova application.
+  >**Update :** Cordova has fixed this issue in its latest cordova-ios 4.5.1 version release.To adapt this fix use  `cordova platform add ios@4.5.1` while adding ios platform to your cordova application.
 
 ### WatchOS 4
 Apple has released WatchOS 4 alongside iOS 11. To support watchOS 2 onwards, MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework. This framework can be used in WatchKit extension in the Xcode project.
