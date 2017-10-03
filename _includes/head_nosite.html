@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="mobilefirst, ibm, ibm mobilefirst, mobile, mobile foundation, ibm mobile foundation, ibm mobilefirst platform, ibm mobile cloud" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+{% feed_meta %}
+{% if page.excerpt and page.url != '/'%}
+  <meta name="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | strip | truncatewords: 20}}">
+  <meta name="og:description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | strip | truncatewords: 20}}">
+{% else %}
+  <meta name="description" content="{{site.description}}">
+  <meta name="og:description" content="{{site.description}}">
+{% endif %}
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{page.title}}" />
+<meta property="og:url" content="{{site.url}}{{site.baseurl}}{{page.url}}" />
+<meta property="og:site_name" content="{{site.name}}" />
+{% if page.image %}<meta property="og:image" content="{{site.url}}{{site.baseurl}}{{page.image}}" />{% endif %}
+<link rel="icon" href="{{site.baseurl}}/favicon.ico">
+<!-- Custom styles for this template -->
+<link href="{{site.baseurl}}/css/combined.css?v=21022017" rel="stylesheet">
+
+{% if page.title %}
+  <title>{{page.title}}</title>
+{% else %}
+  <title>{{site.name}}</title>
+{% endif %}

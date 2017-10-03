@@ -1,0 +1,52 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include head_nosite.html %}
+</head>
+
+<body>
+	<div id="wrap">
+		{{ content }}
+	</div>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/bootstrap/js/bootstrap.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script type="text/javascript" src="{{site.baseurl}}/lib/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="{{site.baseurl}}/lib/clipboardjs/clipboard.min.js"></script>
+<script type="text/javascript" src='{{site.baseurl}}/js/snippet.js'></script>
+<script type="text/javascript" src='{{site.baseurl}}/lib/jquery.timeago.js'></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/jsrender/jsrender.min.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/imagesloaded.pkgd.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/anchorjs/anchor.min.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/gifplayer/jquery.gifplayer.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+<script src='{{site.baseurl}}/js/main.js' type="text/javascript"></script>
+
+{% if page.custom_js %}
+  {% for js_file in page.custom_js %}
+    <script src='{{site.baseurl}}/{{ js_file }}' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}
+{% if layout.custom_js %}
+  {% for js_file in layout.custom_js %}
+    <script src='{{site.baseurl}}/{{ js_file }}' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}
+</body>
+</html>
