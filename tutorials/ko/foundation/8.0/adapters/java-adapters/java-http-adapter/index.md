@@ -61,10 +61,7 @@ public static void init() {
 }
 ```
 
-자원에 대한 모든 요청이 `JavaHTTPResource`의 새 인스턴스를 작성하므로,
-성능에 영향을 줄 수 있는 오브젝트를 재사용하는 것은 중요합니다. 이 예에서 Http 클라이언트를 `static` 오브젝트로 만들었고, static `init()`
-메소드에서 초기화했으며, 위에서 설명한 바와 같이 `JavaHTTPApplication`의 `init()`에
-의해 호출됩니다. 
+자원에 대한 모든 요청이 `JavaHTTPResource`의 새 인스턴스를 작성하므로, 성능에 영향을 줄 수 있는 오브젝트를 재사용하는 것은 중요합니다. 이 예에서 Http 클라이언트를 `static` 오브젝트로 만들었고, static `init()` 메소드에서 초기화했으며, 위에서 설명한 바와 같이 `JavaHTTPApplication`의 `init()`에 의해 호출됩니다. 
 
 ### 프로시저 자원
 {: #procedure-resource }
@@ -74,7 +71,7 @@ public static void init() {
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag)
     throws IOException, IllegalStateException, SAXException {
-  if(tag!=null && !tag.isEmpty()){
+  if(tag!=null &&  !tag.isEmpty()){
     execute(new HttpGet("/blog/atom/"+ tag +".xml"), response);
   }
   else{
@@ -89,8 +86,7 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 * `@GET`은 이 프로시저가 `HTTP GET` 요청에 응답함을 의미합니다. 
 * `@Produces("application/json)`는 보낼 응답의 컨텐츠 유형을 지정합니다. 클라이언트 측에서 용이하도록 `JSON` 오브젝트로 응답을 보내기로 선택했습니다. 
 * `@Context HttpServletResponse response`는 응답 출력 스트림에 쓰는 데 사용됩니다. 이는 단순 문자열을 리턴하는 것보다 더 세분화할 수 있게 합니다. 
-* `@QueryParam("tag)` 문자열 태그는 프로시저가 매개변수를 수신할 수 있게 합니다. `QueryParam`을 선택하는 것은 매개변수가 조회( `/JavaHTTP/?tag=MobileFirst_Platform`)에서 전달됨을 의미합니다. 다른 옵션에는 `@PathParam`, `@HeaderParam`,
-`@CookieParam`, `@FormParam` 등이 포함됩니다. 
+* `@QueryParam("tag)` 문자열 태그는 프로시저가 매개변수를 수신할 수 있게 합니다. `QueryParam`을 선택하는 것은 매개변수가 조회( `/JavaHTTP/?tag=MobileFirst_Platform`)에서 전달됨을 의미합니다. 다른 옵션에는 `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam` 등이 포함됩니다. 
 * `throws IOException, ...`은 클라이언트로 예외를 다시 전달하고 있음을 의미합니다. 클라이언트 코드는 `HTTP 500` 오류로 수신되는 잠재적 예외를 처리하는 것을 담당합니다. (프로덕션 코드에서 더 가능성이 많은) 다른 솔루션은 서버 Java 코드에서 예외를 처리하고 정확한 오류를 기반으로 클라이언트에 전송할 내용을 결정하는 것입니다. 
 * `execute(new HttpGet("/feed.xml"), response)`. 백 엔드 서비스에 대한 실제 HTTP 요청은 나중에 정의된 다른 메소드에서 처리합니다.
 

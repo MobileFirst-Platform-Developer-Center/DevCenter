@@ -16,9 +16,7 @@ bewährte Verfahren umsetzt. Standardmäßig werden mit diesem Feature bestimmte
 zur Erhöhung der Sicherheit durchgesetzt. Dazu gehören clientseitige HTTPS-Anforderungen
 und serverseitige Zertifikate und Verbindungsschlüssel gemäß Transport Layer Security (TLS) Version 1.2 mit zukunftssicherer Geheimhaltung. 
 
-Für **Entwicklungszwecke** können Sie das Standardverhalten außer Kraft setzen und in der Datei
-info.plist Ihrer App eine
-Ausnahme angeben (siehe App Transport Security Technote). In einer **reinen Produktionsumgebung** funktionieren jedoch sämtliche iOS-Apps nur,
+Für **Entwicklungszwecke** können Sie das Standardverhalten außer Kraft setzen und in der Datei info.plist Ihrer App eine Ausnahme angeben (siehe "App Transport Security Technote"). In einer **reinen Produktionsumgebung** funktionieren jedoch sämtliche iOS-Apps nur,
 wenn sie TLS-gesicherte Verbindungen umsetzen. 
 
 Wenn Nicht-TLS-Verbindungen
@@ -32,11 +30,11 @@ ermöglicht werden sollen, muss in der Datei
         <key>yourserver.com</key>
     
             <dict>
-            <!--Include to allow subdomains-->
+            <!-- Aufnehmen, um Unterdomänen zu ermöglichen -->
             <key>NSIncludesSubdomains</key>
             <true/>
 
-            <!--Include to allow insecure HTTP requests-->
+            <!-- Aufnehmen, um nicht gesicherte HTTP-Anforderungen zu ermöglichen -->
             <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
             <true/>
         </dict>
@@ -99,8 +97,7 @@ Cordova-Plug-in installieren.
 cordova plugin add cordova-plugin-mfp-encrypt-utils
 ```
 
-Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung
-aktiviert: 
+Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung aktiviert: 
 
 * WL.SecurityUtils.enableNativeEncryption(false)
 

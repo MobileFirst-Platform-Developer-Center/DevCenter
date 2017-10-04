@@ -22,7 +22,7 @@ Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 �
 
 #### 스플래시 화면
 {: #splash-screens }
-앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용하지 *않은* 경우 표시되는 스플래시 이미지는 {{ site.data.keys.product_adj }} 이미지 위치에서 검색되는 스플래시 이미지입니다. 템플리트를 사용하지 않은 경우 대상 파일 경로 및 파일 이름은 예제와 동일하게 유지되어야 합니다. 소스 경로 및 파일 이름(`src`)을 표시하려는 파일의 경로로 변경하십시오. **config.xml** 파일에서 `<platform name="android">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오.  
+앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용하지 *않은* 경우 표시되는 스플래시 이미지는 {{ site.data.keys.product_adj }} 이미지 위치에서 검색되는 스플래시 이미지입니다. 템플리트를 사용하지 않은 경우 대상 파일 경로 및 파일 이름은 예제와 동일하게 유지되어야 합니다. 소스 경로 및 파일 이름(`src`)을 표시하려는 파일의 경로로 변경하십시오. **config.xml** 파일에서 `<platform name="android">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오.
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -60,7 +60,7 @@ Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 �
 
 ### iOS
 {: #ios }
-iOS 앱이 있는 경우 `<platform name="ios">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오. 
+iOS 앱이 있는 경우 `<platform name="ios">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오.
     
 #### 스플래시 화면
 {: #splash-screens-ios }
@@ -104,7 +104,7 @@ iOS 앱이 있는 경우 `<platform name="ios">` 및 `</platform>` 태그 사이
 
 ### Windows
 {: #windows }
-Windows 앱이 있는 경우 `<platform name="windows">` 및 `</platform>` 태그 사이에 다음 예제의 행과 유사한 행을 추가하십시오. 
+Windows 앱이 있는 경우 `<platform name="windows">` 및 `</platform>` 태그 사이에 다음 예제의 행과 유사한 행을 추가하십시오.
 
 #### 스플래시 화면
 {: #splash-screens-windows }

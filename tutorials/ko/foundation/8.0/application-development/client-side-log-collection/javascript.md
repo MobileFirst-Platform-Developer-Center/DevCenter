@@ -41,10 +41,19 @@ ibmmfpfanalytics.logger.enable(false);
 #### Cordova 앱
 {: #cordova-apps }
 
+캡처된 모든 로그가 전송되도록 하려면 다음 전략 중 하나를 고려하십시오. 
+
+* 일정한 시간 간격으로 `send` 메소드를 호출합니다. 
+* 앱 라이프사이클 이벤트 콜백 내에서 `send` 메소드를 호출합니다. 
+* 지속적 로그 버퍼의 최대 파일 크기(바이트)를 늘립니다. 
 ```javascript
 setInterval(function() {
     WL.Logger.send();
 }, 60000);
+```
+
+```javascript
+WL.Logger.config({ maxFileSize: 150000 });
 ```
 
 #### 웹 앱
@@ -56,29 +65,14 @@ setInterval(function() {
 }, 60000);
 ```
 
-캡처된 모든 로그가 전송되도록 하려면 다음 전략 중 하나를 고려하십시오. 
-
-* 일정한 시간 간격으로 `send` 메소드를 호출합니다. 
-* 앱 라이프사이클 이벤트 콜백 내에서 `send` 메소드를 호출합니다. 
-* 지속적 로그 버퍼의 최대 파일 크기(바이트)를 늘립니다. 
-
-#### Cordova 앱
-{: #cordova-apps }
-
-```javascript
-WL.Logger.config({ maxFileSize: 150000 });
-```
-
-#### 웹 앱
-{: #web-apps }
 웹 API의 최대 파일 크기는 5MB이며 변경할 수 없습니다. 
 
 ## 자동 로그 전송
 {: auto-log-sending }
 자동 로그 전송은 기본적으로 사용됩니다. 올바른 자원 요청이 서버에 전송될 때마다 전송 간에 최소 60초의 간격을 두고 캡처된 로그도 전송됩니다. 클라이언트에서 자동 로그 전송을 사용 또는 사용 안함으로 설정할 수 있습니다. 자동 로그 전송은 기본적으로 사용됩니다. 
 
-#### Cordova 앱
-{: #cordova-apps }
+#### Cordova 앱의 경우
+{: #for-cordova-apps }
 사용으로 설정하려면 다음을 수행하십시오. 
 
 ```javascript
@@ -91,8 +85,8 @@ WL.Logger.config({autoSendLogs: true});
 WL.Logger.config({autoSendLogs: false});
 ```
 
-#### 웹 앱
-{: #web-apps }
+#### 웹 앱의 경우
+{: #for-web-apps }
 사용으로 설정하려면 다음을 수행하십시오. 
 
 ```javascript
@@ -111,8 +105,8 @@ ibmmfpfanalytics.autoSendLogs(false);
 
 예를 들어 패키지 이름 `myApp`에 대해 레벨이 ERROR인 로그만 캡처하려면 다음 단계를 수행하십시오. 
 
-#### Cordova 앱
-{: #cordova-apps }
+#### Cordova 앱 미세 튜닝
+{: #fine-tuning-cordova-apps }
 1. `WL.Logger` 인스턴스를 패키지 이름 `myApp`과 함께 사용하십시오. 
 
    ```javascript
@@ -132,7 +126,7 @@ ibmmfpfanalytics.autoSendLogs(false);
 3. **선택사항:** 서버 구성 프로파일을 페치하여 원격으로 필터를 제어하십시오. 
 
 #### 웹 앱
-{: #web-apps }
+{: #fine-tuning-web-apps }
 웹 SDK의 경우 클라이언트가 레벨을 설정할 수 없습니다. 서버 구성 프로파일을 검색하여 구성이 변경될 때까지 모든 로깅이 서버에 전송됩니다. 
 
 ## 서버 구성 프로파일 페치
@@ -141,15 +135,15 @@ ibmmfpfanalytics.autoSendLogs(false);
 
 클라이언트가 서버에 설정된 구성 대체를 페치하려면 앱 라이프사이클 콜백과 같이 정기적으로 실행되는 코드의 한 위치에서 `updateConfigFromServer` 메소드를 호출해야 합니다. 
 
-#### Cordova 앱
-{: #cordova-apps }
+#### Cordova 앱에 대한 서버 구성 프로파일 페치
+{: #fetching-server-configuration-profiles-cordova-apps }
 
 ```javascript
 WL.Logger.updateConfigFromServer();
 ```
 
-#### 웹 앱
-{: #web-apps }
+#### 웹 앱에 대한 서버 구성 프로파일 페치
+{: #fetching-server-configuration-profiles-web-apps }
 
 ```javascript
 ibmmfpfanalytics.logger.updateConfigFromServer();
@@ -159,8 +153,8 @@ ibmmfpfanalytics.logger.updateConfigFromServer();
 {: #logging-example }
 브라우저 JavaScript 콘솔, LogCat 또는 Xcode 콘솔에 대한 출력
 
-### Cordova
-{: #cordova }
+### 예제 Cordova 로깅
+{: #logging-example-cordova }
 
 ```javascript
 var MathUtils = function(){
@@ -173,8 +167,8 @@ var MathUtils = function(){
 }();
 ```
 
-### 웹
-{: #web }
+### 예제 웹 로깅
+{: #logging-example-web }
 웹 애플리케이션을 사용하는 로깅의 경우 앞의 예제를 사용하십시오. 
 
 ```javascript

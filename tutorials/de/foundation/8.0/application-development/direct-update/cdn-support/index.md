@@ -82,18 +82,18 @@ Für die Ant-Builder-Task lautet die Eigenschaft beispielsweise `<property name=
 neuen Domäne.
 
 
-    ![Eigenschaft 'host name' auf die neue Domäne setzen](direct_update_cdn_3.jpg)
+    ![Wert der Eigenschaft 'host name' auf die neue Domäne setzen](direct_update_cdn_3.jpg)
     
 2. Auf der Registerkarte "Default Rule" konfiguriert er
 Host und Port des ursprünglichen {{ site.data.keys.mf_server }} und setzt den
 Wert **Custom Forward Host Header** auf die neu erstellte Domäne.
 
 
-    !['Custom Forward Host Header' auf die neu erstellte Domäne setzen](direct_update_cdn_4.jpg)
+    ![Wert der Eigenschaft 'Custom Forward Host Header' auf neu erstellte Domäne setzen](direct_update_cdn_4.jpg)
     
 3. Wählen Sie in der Liste **Caching Option** den Eintrag **No Store** aus. 
 
-    !['No Store' in der Liste 'Caching Option' auswählen](direct_update_cdn_5.jpg)
+    ![Eintrag 'No Store' in der Liste 'Caching Option' auswählen](direct_update_cdn_5.jpg)
 
 4. Konfigurieren Sie auf der Registerkarte **Static Content** die Übereinstimmungskriterien nach Maßgabe der Anwendungs-URL für direkte Aktualisierung. Erstellen Sie beispielsweise eine Bedingung `If Path matches one of URL_für_direkte_Aktualisierung`.
 
@@ -107,10 +107,10 @@ Wert **Custom Forward Host Header** auf die neu erstellte Domäne.
     | Force Revaluation of Stale Objects | Serve stale if unable to validate |
     | Max-Age | 3 minutes |
 
-    ![Werte für das Caching-Verhalten festlegen](direct_update_cdn_7.jpg)
+    ![Werte zum Konfigurieren des Caching-Verhaltens festlegen](direct_update_cdn_7.jpg)
 
 6. Konfigurieren Sie das Verhalten für den Cacheschlüssel so, dass im Cacheschlüssel alle Anforderungsparameter verwendet werden. (Dies ist notwendig, damit verschiedene Archive für die direkte Aktualisierung für verschiedene Anwendungen oder Versionen zwischengespeichert werden können.) Wählen Sie beispielsweise in der Liste **Behavior** die `Option Include all parameters (preserve order from request)` aus.
 
-    ![Verhalten für den Cacheschlüssel so konfigurieren, dass im Schlüssel alle Anforderungsparameter verwendet werden](direct_update_cdn_8.jpg)
+    ![Verhalten des Cacheschlüssels so konfigurieren, dass alle Anforderungsparameter in dem Schlüssel verwendet werden](direct_update_cdn_8.jpg)
 
 

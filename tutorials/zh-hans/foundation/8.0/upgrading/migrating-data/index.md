@@ -7,12 +7,12 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-您可以将移动应用程序的数据存储在 Cloudant 数据库中。Cloudant 是一种高级的非关系型数据库，能够处理多种数据类型，如 JSON、全文本和地理空间数据。SDK 可用于 Java™、Objective-C 和 Swift。
+您可以将移动应用程序的数据存储在 Cloudant 数据库中。 Cloudant 是一种高级的非关系型数据库，能够处理多种数据类型，如 JSON、全文本和地理空间数据。 SDK 可用于 Java™、Objective-C 和 Swift。
 
 > 在 {{ site.data.keys.product_full }} V8.0 中已停用 CloudantToolkit 和 IMFData 框架。
 
 * 对于 iOS，使用 [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK 替代 CloudantToolkit 和 IMFData 框架。
-* 对于 Android，使用 [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) 替代 CloudantToolkit 和 IMFData 框架。依靠 Cloudant Sync，可以将数据持久存储在本地，并使用远程数据存储器复制数据。
+* 对于 Android，使用 [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) 替代 CloudantToolkit 和 IMFData 框架。 依靠 Cloudant Sync，可以将数据持久存储在本地，并使用远程数据存储器复制数据。
 
 如果希望直接访问远程存储器，请在应用程序中使用 REST 调用并参考 [Cloudant API 参考](https://docs.cloudant.com/api.html)。
 
@@ -51,9 +51,9 @@ Bluelist 适配器样本具有两个主要功能：
 * 将 {{ site.data.keys.product_adj }} OAuth 令牌交换成 Cloudant 会话 cookie
 * 从 Bluelist 样本中对 Cloudant 执行所需的管理请求。
 
-该样本演示了如何在安全的服务器上执行需要管理访问权的 API 请求。尽管可以将管理凭证放在移动设备上，但更好的做法是限制从移动设备进行访问。
+该样本演示了如何在安全的服务器上执行需要管理访问权的 API 请求。 尽管可以将管理凭证放在移动设备上，但更好的做法是限制从移动设备进行访问。
 
-Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全性集成。适配器样本将 {{ site.data.keys.product_adj }} 身份映射到 Cloudant 身份。移动设备接收 Cloudant 会话 cookie，以执行非管理 API 请求。样本使用 Couch 安全模型。
+Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全性集成。 适配器样本将 {{ site.data.keys.product_adj }} 身份映射到 Cloudant 身份。 移动设备接收 Cloudant 会话 cookie，以执行非管理 API 请求。 样本使用 Couch 安全模型。
 
 ### 注册 REST 端点
 {: #enroll-rest-endpoint }
@@ -64,7 +64,7 @@ Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全
 1. 移动设备从 {{ site.data.keys.mf_server }} 获取 {{ site.data.keys.product_adj }} OAuth 令牌。
 2. 移动设备调用适配器上的 **/enroll** 端点。
 3. 适配器样本使用 {{ site.data.keys.mf_server }} 验证 {{ site.data.keys.product_adj }} OAuth 令牌。
-4. 如果有效，请对 Cloudant 执行管理 API 请求。该样本检查 **_users** 数据库中是否存在现有 Cloudant 用户。
+4. 如果有效，请对 Cloudant 执行管理 API 请求。 该样本检查 **_users** 数据库中是否存在现有 Cloudant 用户。
     * 如果该用户存在，那么在 **_users** 数据库中查找 Cloudant 用户凭证。
     * 如果新用户通过了验证，请使用 Cloudant 管理凭证，创建新的 Cloudant 用户，并将其存储在 **_users** 数据库中。
     * 为用户生成唯一数据库名称并使用该名称在 Cloudant 上创建远程数据库。
@@ -76,7 +76,8 @@ Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全
 
 ### 会话 cookie REST 端点
 {: #sessioncookie-rest-endpoint }
-如果会话 cookie 已到期，那么移动设备可以与 **/sessioncookie** 端点交换 Cloudant 会话 cookie 的有效 {{ site.data.keys.product_adj }} OAuth 令牌。
+如果会话 cookie 已到期，那
+么移动设备可以与 **/sessioncookie** 端点交换 Cloudant 会话 cookie 的有效 {{ site.data.keys.product_adj }} OAuth 令牌。
 
 ## 创建数据库
 {: #creating-databases }
@@ -110,9 +111,9 @@ let name = "automobiledb"
 
 var store:CDTStore?
 do {
-store = try manager.localStore(name)
+    store = try manager.localStore(name)
 } catch let error as NSError {
-// Handle error
+    // Handle error
 }
 ```
 
@@ -174,12 +175,12 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 });
 ```
 
-##### AFTER（使用 Cloudant Sync）：
-{: #after-with-cloudant-sync }
+##### AFTER（使用 Cloudant Sync）：Android：
+{: #after-with-cloudant-sync-android }
 ```java
 // Create DatastoreManager
-       File path = context.getDir("databasedir", Context.MODE_PRIVATE);
-       DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
+   File path = context.getDir("databasedir", Context.MODE_PRIVATE);
+   DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
 
        // Create a Datastore
        String name = "automobiledb";
@@ -190,10 +191,10 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 {: #creating-remote-data-stores }
 要在远程数据存储中保存数据，请提供数据存储名称。
 
-#### iOS
-{: #ios }
-##### BEFORE（使用 IMFData/CloudantToolkit）：
-{: #before-with-imfdata-cloudanttoolkit }
+#### 针对 iOS
+{: #for-ios }
+##### BEFORE（使用 IMFData/CloudantToolkit）：针对 iOS：
+{: #before-with-imfdata-cloudanttoolkit-for-ios }
 
 **Objective-c**
 
@@ -229,8 +230,8 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 })
 ```
 
-##### AFTER（使用 Cloudant Sync）：
-{: #after-with-cloudant-sync }
+##### AFTER（使用 Cloudant Sync）：针对 iOS：
+{: #after-with-cloudant-sync-for-ios }
 **Objective-c**
 
 ```objc
@@ -241,16 +242,16 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 ```swift
 ```
 
-#### Android
-{: #android }
-##### BEFORE（使用 IMFData/CloudantToolkit）：
-{: #before-with-imfdata-cloudanttoolkit }
+#### 针对 Android
+{: #for-android }
+##### BEFORE（使用 IMFData/CloudantToolkit）：针对 Android：
+{: #before-with-imfdata-cloudanttoolkit-for-android }
 
 ```java
 ```
 
-##### AFTER（使用 Cloudant Sync）：
-{: #after-with-cloudant-sync }
+##### AFTER（使用 Cloudant Sync）：针对 Android：
+{: #after-with-cloudant-sync-for-android }
 ```java
 ```
 
@@ -262,53 +263,53 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 {: #encrypting-data-on-ios-devices }
 1. 使用 CocoaPods 获取加密功能。
    * 打开 Podfile 并添加以下行：
-        
+
    ##### Before（使用 IMFData/CloudantToolkit）：
    {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
-        
-   ##### After（使用 Cloudant Sync）：
-   {: after-with-cloudant-sync }
+
+   ##### After（使用 Cloudant Sync）：加密 iOS 设备上的数据：
+   {: after-with-cloudant-sync-encrypt-ios-devices }
    ```xml
    pod 'CDTDatastore/SQLCipher'
    ```        
-        
+
    有关更多信息，请参阅 [CDTDatastore 加密文档](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md)。
-    
+
    * 运行以下命令将依赖关系添加到应用程序。
 
      ```bash
      pod install
      ```
 
-2. 要使用 Swift 应用程序内的加密功能，请将以下导入添加到应用程序的关联桥接头： 
-    
-   ##### Before（使用 IMFData/CloudantToolkit）：
-   {: #before-with-imfdata-cloudanttoolkit}
+2. 要使用 Swift 应用程序内的加密功能，请将以下导入添加到应用程序的关联桥接头：
+
+   ##### Before（使用 IMFData/CloudantToolkit）：加密 iOS 设备上的数据：
+   {: #before-with-imfdata-cloudanttoolkit-encrypt-ios-devices}
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    #import <CloudantToolkit/CloudantToolkit.h>
    #import <IMFData/IMFData.h>
    ```
-    
-   ##### After（使用 Cloudant Sync）：
-   {: #after-with-cloudant-sync }
+
+   ##### After（使用 Cloudant Sync）：加密 iOS 设备上的数据 (Swift)：
+   {: #after-with-cloudant-sync-encrypt-ios-swift }
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    ```
-        
+
 3. 初始化本地存储器来通过密钥提供者进行加密。
 
-   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库已加密后，即无法更改密码。必须删除数据库才能更改密码。
+   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。 数据库已加密后，即无法更改密码。 必须删除数据库才能更改密码。
 
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：针对加密初始化本地存储：
+   {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
    **Objective-C**
-    
+
    ```objc
    //Get reference to data manager
    IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -321,9 +322,9 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    //Initialize local store
    CDTStore *localStore = [manager localStore: name withEncryptionKeyProvider: keyProvider error: &error];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    let manager = IMFDataManager.sharedInstance()
    let name = "automobiledb"
@@ -331,14 +332,14 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    let keyProvider = CDTEncryptionKeychainProvider(password: "passw0rd", forIdentifier: "identifier")
    var store:CDTStore?
    do {
-store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
+        store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
    } catch let error as NSError {
         // Handle error
 }
-```
-    
-   ##### AFTER（使用 Cloudant Sync）：
-   {: #after-with-cloudant-sync }
+   ```
+
+   ##### AFTER（使用 Cloudant Sync）：针对加密初始化本地存储：
+   {: #after-with-cloudant-sync-initialize-local-store }
    **Objective-C**
 
    ```objc
@@ -355,7 +356,7 @@ store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
    ```
 
    **Swift**
-    
+
    ```swift
    // Get reference to datastore manager
    let datastoreManager:CDTDatastoreManager = existingDatastoreManager
@@ -370,13 +371,13 @@ store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
         // Handle error
    }
    ```
-    
+
 4. 使用加密的本地存储器复制数据时，必须使用密钥提供者来初始化 CDTPullReplication 和 CDTPushReplication 方法。
 
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：   
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：通过密钥提供者来进行初始化：   
+   {: #before-with-imfdata-cloudanttoolkit-initialize-with-key-provider }
    **Objective-C**
-    
+
    ```objc
    //Get reference to data manager
    IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -391,9 +392,9 @@ store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
    // push replication
    CDTPushReplication *push = [manager pushReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    //Get reference to data manager
    let manager = IMFDataManager.sharedInstance()
@@ -408,31 +409,31 @@ store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
    // push replication
    let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
    ```
-    
-   ##### AFTER（使用 Cloudant Sync）：
-   {: #after-with-cloudant-sync }
+
+   ##### AFTER（使用 Cloudant Sync）：通过密钥提供者来进行初始化：
+   {: #after-with-cloudant-sync-initialize-with-key-provider }
    使用加密数据库进行复制与使用未加密数据库进行复制的过程一样。
 
 ### 加密 Android 设备上的数据
 {: #encrypting-data-on-android-devices }
-要加密 Android 设备上的数据，请通过在应用程序中包含正确的库来获取加密功能。然后，可以初始化本地存储器来加密和复制数据。
+要加密 Android 设备上的数据，请通过在应用程序中包含正确的库来获取加密功能。 然后，可以初始化本地存储器来加密和复制数据。
 
 1. 将 Cloudant Toolkit 库添加为 build.gradle 文件中的依赖关系：
 
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：加密 Android 设备上的数据：
+   {: #before-with-imfdata-cloudanttoolkit-encrypt-android-devices }
    ```xml
    repositories {
    mavenCentral()
    }
 
    dependencies {
-compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
+       compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
    }
    ```
-    
-   ##### AFTER（使用 Cloudant Sync）：
-   {: #after-with-cloudant-sync }
+
+   ##### AFTER（使用 Cloudant Sync）：加密 Android 设备上的数据：
+   {: #after-with-cloudant-sync-encrypt-android-devices }
     ```xml
     repositories {
         mavenLocal()
@@ -441,22 +442,22 @@ compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
     }
 
     dependencies {
-compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'
-compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'0.13.2'
-compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
+        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'
+        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'0.13.2'
+        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
     }
     ```
-    
-2. 下载 [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) **.jar** 和 **.so** 二进制文件，并将其包含在应用程序结构中相应文件夹内的应用程序中：
-    * 添加库。将共享库文件和 SQLCipher 归档添加到 Android 应用程序目录下的 **jniLibs** 文件夹中。
-    * 将所需的 ICU 压缩文件添加到应用程序的 assets 文件夹中。
-    * 将 **sqlcipher.jar** 添加为文件依赖关系。从 Android Studio 中的应用程序文件夹菜单的**打开模块设置**下，选择**依赖关系**选项卡。
-3. 初始化本地存储器来通过密钥提供者进行加密。
-    
-   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库加密后，即无法更改密码。必须删除数据库才能更改密码。
 
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：
-   {: #before-with-imfdata-cloudanttoolkit }
+2. 下载 [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) **.jar** 和 **.so** 二进制文件，并将其包含在应用程序结构中相应文件夹内的应用程序中：
+    * 添加库。 将共享库文件和 SQLCipher 归档添加到 Android 应用程序目录下的 **jniLibs** 文件夹中。
+    * 将所需的 ICU 压缩文件添加到应用程序的 assets 文件夹中。
+    * 将 **sqlcipher.jar** 添加为文件依赖关系。 从 Android Studio 中的应用程序文件夹菜单的**打开模块设置**下，选择**依赖关系**选项卡。
+3. 初始化本地存储器来通过密钥提供者进行加密。
+
+   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。 数据库加密后，即无法更改密码。 必须删除数据库才能更改密码。
+
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：初始化本地存储 (Android)：
+   {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }
    ```java
    // Get reference to DataManager
    DataManager manager = DataManager.getInstance();
@@ -471,18 +472,18 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
         @Override
         public Void then(Task<Store> task) throws Exception {
             if (task.isFaulted()) {
-// Handle error
+                // Handle error
     } else {
-        // Do something with Store
+                // Do something with Store
                 Store store = task.getResult();
             }
             return null;
          }
    });
    ```
-    
-   ##### AFTER（使用 Cloudant Sync）：
-   {: #after-with-cloudant-sync }   
+
+   ##### AFTER（使用 Cloudant Sync）：初始化本地存储 (Android)：
+   {: #after-with-cloudant-sync-initialize-local-store-android }   
    ```java
    // Load SQLCipher libs
    SQLiteDatabase.loadLibs(context);
@@ -500,8 +501,8 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
 
 4. 使用加密的本地存储器复制数据时，必须将 KeyProvider 对象传递到 `pullReplicationForStore()` 或 `pushReplicationForStore()` 方法。
 
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### BEFORE（使用 IMFData/CloudantToolkit）：通过密钥提供者来进行初始化 (Android)：
+   {: #before-with-imfdata-cloudanttoolkit-initialize-with-key-provider-android }
    ```java
    //Get reference to data manager
    DataManager manager = DataManager.getInstance();
@@ -517,16 +518,16 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
    Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
    ```
 
-   ##### AFTER（使用 Cloudant Sync）：
-   {: #after-with-cloudant-sync }
+   ##### AFTER（使用 Cloudant Sync）：通过密钥提供者来进行初始化 (Android)
+   {: #after-with-cloudant-sync-initialize-with-key-provider-android }
    使用加密数据库进行复制与使用未加密数据库进行复制的过程一样。
 
 ## 设置用户许可权
 {: #setting-user-permissions }
 您可设置用户对远程数据库的许可权。
 
-##### BEFORE（使用 IMFData/CloudantToolkit）：
-{: #before-with-imfdata-cloudanttoolkit }
+##### BEFORE（使用 IMFData/CloudantToolkit）：设置用户许可权：
+{: #before-with-imfdata-cloudanttoolkit-setting-user-permissions }
 **Objective-C**
 
 ```objc
@@ -553,7 +554,7 @@ let manager = IMFDataManager.sharedInstance()
 manager.setCurrentUserPermissions(DB_ACCESS_GROUP_MEMBERS, forStoreName: "automobiledb") { (success:Bool, error:NSError!) -> Void in
     if nil != error {
         // Handle error
-    } else {
+        } else {
         // setting permissions was successful
     }
 }
@@ -565,7 +566,7 @@ manager.setCurrentUserPermissions(DB_ACCESS_GROUP_MEMBERS, forStoreName: "automo
 Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, "automobiledb");
 
 permissionsTask.continueWith(new Continuation<Boolean, Object>() {
-@Override
+    @Override
     public Object then(Task<Boolean> task) throws Exception {
         if(task.isFaulted()){
             // Handle error
@@ -577,16 +578,16 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 });
 ```
 
-##### AFTER（使用 Cloudant Sync）：
-{: #after-with-cloudant-sync }
-无法从移动设备设置用户许可权。必须使用 Cloudant 仪表板或服务器端代码设置许可权。有关如何将 {{ site.data.keys.product_adj }} OAuth 令牌与 Cloudant 安全性集成的样本，请参阅 [Bluelist 样本](https://github.ibm.com/MFPSamples/BlueList-On-Premise)。
+##### AFTER（使用 Cloudant Sync）：设置用户许可权：
+{: #after-with-cloudant-sync-setting-user-permissions }
+无法从移动设备设置用户许可权。 必须使用 Cloudant 仪表板或服务器端代码设置许可权。 有关如何将 {{ site.data.keys.product_adj }} OAuth 令牌与 Cloudant 安全性集成的样本，请参阅 [Bluelist 样本](https://github.ibm.com/MFPSamples/BlueList-On-Premise)。
 
 ## 数据建模
 {: #modeling-data }
-Cloudant 将数据存储为 JSON 文档。要将数据存储为应用程序中的对象，请使用包含的数据对象映射器类，用于将本机对象映射为底层 JSON 文档格式。
+Cloudant 将数据存储为 JSON 文档。 要将数据存储为应用程序中的对象，请使用包含的数据对象映射器类，用于将本机对象映射为底层 JSON 文档格式。
 
-* iOS：Cloudant 将数据存储为 JSON 文档。CloudantToolkit 框架提供了对象映射器，能够在本机对象与 JSON 文档之间进行映射。CDTDatastore API 未提供此功能。以下部分中的片段说明了如何使用 CDTDatastore 对象完成相同操作。
-* Android：AndroidCloudant 将数据存储为 JSON 文档。CloudantToolkit API 提供了对象映射器，能够在本机对象与 JSON 文档之间进行映射。Cloudant Sync 未提供此功能。以下部分中的片段说明了如何使用 DocumentRevision 对象完成相同操作。
+* iOS：Cloudant 将数据存储为 JSON 文档。 CloudantToolkit 框架提供了对象映射器，能够在本机对象与 JSON 文档之间进行映射。 CDTDatastore API 未提供此功能。 以下部分中的片段说明了如何使用 CDTDatastore 对象完成相同操作。
+* Android：AndroidCloudant 将数据存储为 JSON 文档。 CloudantToolkit API 提供了对象映射器，能够在本机对象与 JSON 文档之间进行映射。 Cloudant Sync 未提供此功能。 以下部分中的片段说明了如何使用 DocumentRevision 对象完成相同操作。
 
 ## 执行 CRUD 操作
 {: #performing-crud-operations }
@@ -597,8 +598,8 @@ Cloudant 将数据存储为 JSON 文档。要将数据存储为应用程序中�
 
 ### 创建数据
 {: #creating-data }
-##### BEFORE
-{: #before }
+
+_**BEFORE**_
 
 **Objective-C**
 
@@ -610,8 +611,8 @@ CDTStore *store = existingStore;
 Automobile *automobile = [[Automobile alloc] initWithMake:@"Toyota" model:@"Corolla" year: 2006];
 
 [store save:automobile completionHandler:^(id savedObject, NSError *error) {
-if (error) {
-// save was not successful, handler received an error
+    if (error) {
+        // save was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = savedObject;
@@ -649,12 +650,12 @@ Store store = existingStore;
 Automobile automobile = new Automobile("Toyota", "Corolla", 2006);
 
 // Save automobile to store
-Task<Object> saveTask = store.save(automobile); 
+Task<Object> saveTask = store.save(automobile);
 saveTask.continueWith(new Continuation<Object, Void>() {
     @Override
     public Void then(Task<Object> task) throws Exception {
         if (task.isFaulted()) {
-// save was not successful, task.getError() contains the error
+            // save was not successful, task.getError() contains the error
         } else {
             // use the result
             Automobile savedAutomobile = (Automobile) task.getResult();
@@ -664,8 +665,8 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
-{: #after }
+_**AFTER**_
+
 ```objc
 // Use an existing store
 CDTDatastore *datastore = existingDatastore;
@@ -678,7 +679,7 @@ NSError *error = nil;
 CDTDocumentRevision *createdRevision = [datastore createDocumentFromRevision:revision error:&error];
 
 if (error) {
-// save was not successful, handler received an error
+    // save was not successful, handler received an error
 } else {
     // use the result
     NSLog(@"Revision: %@", createdRevision);
@@ -727,8 +728,8 @@ DocumentRevision savedRevision = datastore.createDocumentFromRevision(revision);
 
 ### 读取数据
 {: #reading-data }
-##### BEFORE
-{: #before }
+
+_**BEFORE**_
 
 **Objective-C**
 
@@ -739,7 +740,7 @@ NSString *automobileId = existingAutomobileId;
 // Fetch Autombile from Store
 [store fetchById:automobileId completionHandler:^(id object, NSError *error) {
     if (error) {
-// fetch was not successful, handler received an error
+        // fetch was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = object;
@@ -780,7 +781,7 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
     @Override
     public Void then(Task<Object> task) throws Exception {
         if (task.isFaulted()) {
-// fetch was not successful, task.getError() contains the error
+            // fetch was not successful, task.getError() contains the error
         } else {
             // use the result 
             Automobile fetchedAutomobile = (Automobile) task.getResult();
@@ -790,8 +791,8 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
-{: #after }
+_**AFTER**_
+
 **Objective-C**
 
 ```objc
@@ -804,7 +805,7 @@ NSError *error = nil;
 CDTDocumentRevision *fetchedRevision = [datastore getDocumentWithId:documentId error:&error];
 
 if (error) {
-// fetch was not successful, handler received an error
+    // fetch was not successful, handler received an error
 } else {
     // use the result
     NSLog(@"Revision: %@", fetchedRevision);
@@ -840,8 +841,8 @@ DocumentRevision fetchedRevision = datastore.getDocument(documentId);
 
 ### 更新数据
 {: #updating-data }
-##### BEFORE
-{: #before }
+
+_**BEFORE**_
 
 **Objective-C**
 
@@ -856,7 +857,7 @@ automobile.year = 2015;
 // Save Autombile to the store
 [store save:automobile completionHandler:^(id savedObject, NSError *error) {
     if (error) {
-// sasve was not successful, handler received an error
+        // sasve was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = savedObject;
@@ -903,7 +904,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
     @Override
     public Void then(Task<Object> task) throws Exception {
         if (task.isFaulted()) {
-// save was not successful, task.getError() contains the error
+            // save was not successful, task.getError() contains the error
         } else {
             // use the result
             Automobile savedAutomobile = (Automobile) task.getResult();
@@ -913,8 +914,8 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
-{: #after }
+_**AFTER**_
+
 **Objective-C**
 
 ```objc
@@ -977,8 +978,8 @@ DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 {: #deleting-data }
 要删除对象，请将要删除的对象传递到存储器。
 
-##### BEFORE
-{: #before }
+_**BEFORE**_
+
 **Objective-C**
 
 ```objc
@@ -989,7 +990,7 @@ Automobile *automobile = existingAutomobile;
 // Delete the Automobile object from the store
 [store delete:automobile completionHandler:^(NSString *deletedObjectId, NSString *deletedRevisionId, NSError *error) {
     if (error) {
-// delete was not successful, handler received an error
+        // delete was not successful, handler received an error
     } else {
         // use the result
         NSLog(@"deleted Automobile doc-%@-rev-%@", deletedObjectId, deletedRevisionId);
@@ -1028,7 +1029,7 @@ deleteTask.continueWith(new Continuation<String, Void>() {
     @Override
     public Void then(Task<String> task) throws Exception {
         if (task.isFaulted()) {
-// delete was not successful, task.getError() contains the error
+            // delete was not successful, task.getError() contains the error
         } else {
             // use the result
             String deletedAutomobileId = task.getResult();
@@ -1038,8 +1039,8 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 });
 ```
 
-##### AFTER
-{: #after }
+_**AFTER**_
+
 **Objective-C**
 
 ```objc
@@ -1089,15 +1090,15 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 {: #creating-indexes }
 要执行查询，必须创建索引。
 
-* iOS：有关更多详细信息，请参阅 [CDTDatastore 查询文档](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)。要了解针对远程存储器的查询操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
-* Android：有关更多详细信息，请参阅 [Cloudant Sync 查询文档](https://github.com/cloudant/sync-android/blob/master/doc/query.md)。要了解针对远程存储器的 CRUD 操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
+* iOS：有关更多详细信息，请参阅 [CDTDatastore 查询文档](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)。 要了解针对远程存储器的查询操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
+* Android：有关更多详细信息，请参阅 [Cloudant Sync 查询文档](https://github.com/cloudant/sync-android/blob/master/doc/query.md)。 要了解针对远程存储器的 CRUD 操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
 
-1. 创建包含数据类型的索引。在数据存储上设置了对象映射器的情况下，创建包含数据类型的索引很有用。
+1. 创建包含数据类型的索引。 在数据存储上设置了对象映射器的情况下，创建包含数据类型的索引很有用。
 
-   ##### BEFORE
-   {: #before }
+   _**BEFORE**_
+
    **Objective-C**
-    
+
    ```objc
    // Use an existing data store
    CDTStore *store = existingStore;
@@ -1114,14 +1115,14 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
         }
    }];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // A store that has been previously created.
    let store:CDTStore = existingStore
 
-// The data type to use for the Automobile class
+   // The data type to use for the Automobile class
    let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
 
    // Create the index
@@ -1133,9 +1134,9 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
         }
    }
    ```
-    
+
    **Java**
-    
+
    ```java
    // Use an existing data store
    Store store = existingStore;
@@ -1144,7 +1145,7 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    String dataType = store.getMapper().getDataTypeForClassName(Automobile.class.getCanonicalName());
 
    // The fields to index.
-List<IndexField> indexFields = new ArrayList<IndexField>();
+   List<IndexField> indexFields = new ArrayList<IndexField>();
    indexFields.add(new IndexField("year"));
    indexFields.add(new IndexField("make"));
 
@@ -1162,36 +1163,36 @@ List<IndexField> indexFields = new ArrayList<IndexField>();
         }
    });
    ```
-    
-   ##### AFTER
-   {: #after }
+
+   _**AFTER**_
+
    **Objective-C**
-    
+
    ```objc
    // A store that has been previously created.
    CDTDatastore *datastore = existingDatastore;
-   
-NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"] withName:@"automobileindex"];
+
+   NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"] withName:@"automobileindex"];
    if(!indexName){
         // Handle error
    }
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // A store that has been previously created.
    let datastore:CDTDatastore = existingDatastore
-   
-// Create the index
+
+   // Create the index
    let indexName:String? = datastore.ensureIndexed(["@datatype","year","make"], withName: "automobileindex")
    if(indexName == nil){
         // Handle error
    }
    ```
-    
+
    **Java**
-    
+
    ```java
    // Use an existing store
    Datastore datastore = existingStore;
@@ -1200,7 +1201,7 @@ NSString *indexName = [datastore ensureIndexed:@[@"@datatype", @"year", @"make"]
    IndexManager indexManager = new IndexManager(datastore);
 
    // The fields to index.
-List<Object> indexFields = new ArrayList<Object>();
+   List<Object> indexFields = new ArrayList<Object>();
    indexFields.add("@datatype");
    indexFields.add("year");
    indexFields.add("make");
@@ -1208,11 +1209,11 @@ List<Object> indexFields = new ArrayList<Object>();
    // Create the index
    indexManager.ensureIndexed(indexFields, "automobile_index");
    ```
-    
+
 2. 删除索引。
 
-   ##### BEFORE
-   {: #before }
+   _**BEFORE**_
+
    **Objective-C**
 
    ```objc
@@ -1271,8 +1272,8 @@ List<Object> indexFields = new ArrayList<Object>();
    });
    ```
 
-   ##### AFTER
-   {: #after }
+   _**AFTER**_
+
    **Objective-C**
 
    ```objc
@@ -1302,7 +1303,7 @@ List<Object> indexFields = new ArrayList<Object>();
    ```
 
    **Java**
-   
+
    ```java
    // Use an existing store
    Datastore datastore = existingStore;
@@ -1321,10 +1322,10 @@ List<Object> indexFields = new ArrayList<Object>();
 * Android：有关更多详细信息，请参阅 [Cloudant Sync 查询文档](https://github.com/cloudant/sync-android/blob/master/doc/query.md)。
 * 要了解针对远程存储器的查询操作，请参阅 [Cloudant 查询 API](https://docs.cloudant.com/cloudant_query.html)。
 
-#### iOS
-{: #ios }
-##### BEFORE（使用 IMFData/CloudantToolkit）：
-{: #before-with-imfdata-cloudanttoolkit }
+#### iOS（查询数据）
+{: #ios-querying-data }
+##### BEFORE（使用 IMFData/CloudantToolkit）：iOS（查询数据）：
+{: #before-with-imfdata-cloudanttoolkit-querying-data-ios }
 
 **Objective-C**
 
@@ -1336,11 +1337,11 @@ NSPredicate *queryPredicate = [NSPredicate predicateWithFormat:@"(year = 2006)"]
 CDTCloudantQuery *query = [[CDTCloudantQuery alloc] initDataType:[store.mapper dataTypeForClassName:NSStringFromClass([Automobile class])] withPredicate:queryPredicate];
 
 [store performQuery:query completionHandler:^(NSArray *results, NSError *error) {
-if(error){
+    if(error){
         // Handle error
     }else{
         // Use result of query.  Result will be Automobile objects.
-}
+    }
 }];
 ```
 
@@ -1356,14 +1357,14 @@ let query:CDTCloudantQuery = CDTCloudantQuery(dataType: "Automobile", withPredic
 store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSError!) -> Void in
     if nil != error {
         // Handle error
-    } else {
+        } else {
         // Use result of query.  Result will be Automobile objects.
-}
+    }
 })
 ```
 
-##### AFTER（使用 Cloudant Sync）：
-{: #after-with-cloudant-sync }
+##### AFTER（使用 Cloudant Sync）（查询数据）：
+{: #after-with-cloudant-sync-querying-data }
 **Objective-C**
 
 ```objc
@@ -1386,12 +1387,12 @@ if(results == nil){
 }
 ```
 
-#### Android
-{: #android }
-要针对对象运行查询，请使用针对数据类型的查询过滤器来创建 Cloudant 查询。针对 Store 对象运行查询。
+#### Android（查询数据）
+{: #android-querying-data }
+要针对对象运行查询，请使用针对数据类型的查询过滤器来创建 Cloudant 查询。 针对 Store 对象运行查询。
 
-##### BEFORE（使用 IMFData/CloudantToolkit）：
-{: #before-with-imfdata-cloudanttoolkit }
+##### BEFORE（使用 IMFData/CloudantToolkit）：Android（查询数据）：
+{: #before-with-imfdata-cloudanttoolkit-querying-data-android }
 ```java
 // Use an existing store
 Store store = existingStore;
@@ -1440,8 +1441,8 @@ queryTask.continueWith(new Continuation<List, Object>() {
 });
 ```
 
-##### AFTER（使用 Cloudant Sync）：
-{: #after-with-cloudant-sync }
+##### AFTER（使用 Cloudant Sync）：Android（查询数据）：
+{: #after-with-cloudant-sync-android-querying-data }
 ```java
 // Use an existing store
 Datastore datastore = existingStore;
@@ -1475,15 +1476,15 @@ QueryResult result = indexManager.find(selectorMap);
 
 ## 支持脱机存储和同步
 {: #supporting-offline-storage-and-synchronization }
-您可以将移动设备上的数据与远程数据库实例进行同步。可以将远程数据库中的更新拉到移动设备上的本地数据库，或将本地数据库更新推送到远程数据库。
+您可以将移动设备上的数据与远程数据库实例进行同步。 可以将远程数据库中的更新拉到移动设备上的本地数据库，或将本地数据库更新推送到远程数据库。
 
 * iOS：有关更多详细信息，请参阅 [CDTDatastore 复制文档](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md)。
-* Android：有关更多详细信息，请参阅 [Cloudant Sync 重复文档](https://github.com/cloudant/sync-android/blob/master/doc/replication.md)。要了解针对远程存储器的 CRUD 操作，请参阅 [Cloudant 复制 API](https://docs.cloudant.com/replication.html)。
+* Android：有关更多详细信息，请参阅 [Cloudant Sync 重复文档](https://github.com/cloudant/sync-android/blob/master/doc/replication.md)。 要了解针对远程存储器的 CRUD 操作，请参阅 [Cloudant 复制 API](https://docs.cloudant.com/replication.html)。
 
 ### 运行拉取复制
 {: #running-pull-replication }
-##### BEFORE
-{: #before }
+
+_**BEFORE**_
 
 **Objective-C**
 
@@ -1519,21 +1520,21 @@ while (replicator.isActive) {
 let store:CDTStore = existingStore
 
 do {
-// store is an existing CDTStore object created using IMFDataManager remoteStore
+    // store is an existing CDTStore object created using IMFDataManager remoteStore
     let pull:CDTPullReplication = manager.pullReplicationForStore(store.name)
     let replicator:CDTReplicator = try manager.replicatorFactory.oneWay(pull)
-    
+
     // start replication
     try replicator.start()
-    
+
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
-print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
-}
+        print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
+    }
 
 } catch let error as NSError {
-// Handle error
+    // Handle error
 }
 ```
 
@@ -1558,12 +1559,12 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {
             replicator.start();
         }
         return null;
-    } 
+    }
 });
 ```
 
-##### AFTER
-{: #after }
+_**AFTER**_
+
 **Objective-C**
 
 ```objc
@@ -1606,22 +1607,22 @@ let datastore:CDTDatastore = existingDatastore
 
 
 do {
-// store is an existing CDTStore object created using IMFDataManager remoteStore
+    // store is an existing CDTStore object created using IMFDataManager remoteStore
     let replicatorFactory = CDTReplicatorFactory(datastoreManager: datastoreManager)
     let pull:CDTPullReplication = CDTPullReplication(source: remoteStoreUrl, target: datastore)
     let replicator:CDTReplicator = try replicatorFactory.oneWay(pull)
-    
+
     // start replication
     try replicator.start()
 
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
-print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
-}
+        print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
+    }
 
 } catch let error as NSError {
-// Handle error
+    // Handle error
 }
 ```
 
@@ -1657,8 +1658,8 @@ replicator.start();
 
 ### 运行推送复制
 {: #running-push-replication }
-##### BEFORE
-{: #before }
+
+_**BEFORE**_
 
 **Objective-C**
 
@@ -1694,20 +1695,20 @@ while (replicator.isActive) {
 let store:CDTStore = existingStore
 
 do {
-// store is an existing CDTStore object created using IMFDataManager localStore
+    // store is an existing CDTStore object created using IMFDataManager localStore
     let push:CDTPushReplication = manager.pushReplicationForStore(store.name)
     let replicator:CDTReplicator = try manager.replicatorFactory.oneWay(push)
-    
+
     // Start replication
     try replicator.start()
 
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
-print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
-}
+        print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
+    }
 } catch let error as NSError {
-// Handle error
+    // Handle error
 }
 ```
 
@@ -1736,8 +1737,8 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {
 });
 ```
 
-##### AFTER
-{: #after }
+_**AFTER**_
+
 **Objective-C**
 
 ```objc
@@ -1780,20 +1781,20 @@ let datastore:CDTDatastore = existingDatastore
 
 
 do {
-// store is an existing CDTStore object created using IMFDataManager remoteStore
+    // store is an existing CDTStore object created using IMFDataManager remoteStore
     let replicatorFactory = CDTReplicatorFactory(datastoreManager: datastoreManager)
     let push:CDTPushReplication = CDTPushReplication(source: datastore, target: remoteStoreUrl)
     let replicator:CDTReplicator = try replicatorFactory.oneWay(push)
-    
+
     // start replication
     try replicator.start()
-    
+
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
-print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
+        print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
     }
-    
+
 } catch let error as NSError {
     // Handle error
 }

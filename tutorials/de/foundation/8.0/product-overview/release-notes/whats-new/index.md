@@ -7,7 +7,7 @@ weight: 1
 <br/>
 In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen für eine zeitgemäße Entwicklung, Implementierung und Verwaltung Ihrer {{ site.data.keys.product_adj }}-Anwendungen.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Aktualisierte REST-API für die Laufzeit</h3>
                 <p>Die REST-API für die {{ site.data.keys.product_adj }}-Laufzeit stellt jetzt diverse Services bereit, mit denen mobile und vertrauliche Clients Adapter aufrufen, Zugriffstoken anfordern, Inhalte der direkten Aktualisierung abrufen können und vieles mehr. Die meisten REST-API-Endpunkte werden mit OAuth geschützt. Auf einem Entwicklungsserver können Sie das Swagger-Dokument zur Laufzeit-API unter <code>http(s)://Server-IP-Adresse:Server-Port/Kontextstammverzeichnis/doc</code> anzeigen.</p>
+
+                <h3>Unterstützung für mehrfaches Certificate Pinning</h3>
+                <p>Ab iFix 8.0.0.0-IF201706240159 unterstützt die {{ site.data.keys.mf_bm_short }} das Certificate Pinning für mehrere Zertifikate, um Benutzern den sicheren Zugriff auf mehrere Hosts zu ermöglichen. Bis zu diesem iFix hat die {{ site.data.keys.mf_bm_short }} das Certificate Pinning nur für ein Zertifikat unterstützt. In der {{ site.data.keys.mf_bm_short }} gibt es eine neue API, die dem Benutzer das Herstellen von Verbindungen zu mehreren Hosts ermöglicht, indem er die öffentlichen Schlüssel von mehreren X509-Zertifikaten (die er bei einer Zertifizierungsstelle gekauft hat) in der Clientanwendung verankert. Eine Kopie aller Zertifikate sollten Sie in Ihre Clientanwendung aufnehmen. Beim SSL-Handshake überprüft das Client-SDK der {{ site.data.keys.product_full }}, ob der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel eines der in der App gespeicherten Zertifikate übereinstimmt. </p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>In die {{ site.data.keys.product }} wurden neue Leistungsmerkmale integriert, die Sie bei der Implementierung und Verwaltung Ihrer Apps unterstützen sollen. Sie können Ihre Apps und Adapter jetzt aktualisieren, ohne {{ site.data.keys.mf_server }} neu zu starten.</p>
 

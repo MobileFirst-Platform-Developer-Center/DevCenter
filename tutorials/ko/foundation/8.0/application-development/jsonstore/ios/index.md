@@ -7,7 +7,7 @@ weight: 2
 downloads:
   - 이름: Xcode 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - 이름: 어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -77,6 +77,7 @@ do {
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
+
 ```
 
 이제 변수 `collection`을 사용하여 `people` 콜렉션에 대한 조작(예: `add`, `find` 및 `replace`)을 수행할 수 있습니다. 

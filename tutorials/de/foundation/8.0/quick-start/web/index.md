@@ -51,8 +51,7 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
 {: #editing-application-logic }
 1. Öffnen Sie das Projekt in einem Editor Ihrer Wahl. 
 
-2. Wählen Sie die Datei **client/js/index.js** aus und fügen Sie das folgende Code-Snippet
-als Ersatz für die vorhandene Funktion `WLAuthorizationManager.obtainAccessToken()` ein: 
+2. Wählen Sie die Datei **client/js/index.js** aus und fügen Sie das folgende Code-Snippet als Ersatz für die vorhandene Funktion `WLAuthorizationManager.obtainAccessToken()` ein:
 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
@@ -96,6 +95,8 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
 
    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
 folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
+
+
 
 2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den
 folgenden Befehl aus: 

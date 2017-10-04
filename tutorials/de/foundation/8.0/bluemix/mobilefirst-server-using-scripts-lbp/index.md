@@ -54,11 +54,11 @@ Wenn Sie die {{ site.data.keys.product }} in Liberty on Java einrichten möchten
 
 Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**dependencies** und **mfpf-libs**), die Dateien für die Erstellung und Implementierung eines Containers mit {{ site.data.keys.mf_analytics }} (**mfpf-analytics**) und Dateien zum Konfigurieren einer MobileFirst-Server-Cloud-Foundry-App (**mfpf-server-libertyapp**).
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für mehr Informationen zum Inhalt der Archivdatei hier klicken</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>Für mehr Informationen zum Inhalt der Archivdatei hier klicken</b></a>
             </h4>
         </div>
 
@@ -109,7 +109,7 @@ Ein guter Ausgangspunkt ist die einmalige interaktive Ausführung der Scripts, w
 
 > **Hinweis:** Kennwörter werden nicht aufgezeichnet. Sie müssen die Kennwörter manuell zu den Dateien mit Argumenten hinzufügen. 
 
-* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprecvhende Konfigurationsdatei als Argument. 
+* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprechende Konfigurationsdatei als Argument. 
 * Interaktiv: Führen Sie die Scripts ohne Argumente aus. 
 
 Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich wenigstens mit den Argumenten, die angegeben werden müssen, zu beschäftigen. 
@@ -120,7 +120,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
 
 >**Hinweis:** Sie können Installationsprogramme und Datenbanktools aus den lokalen Installationsordnern des {{ site.data.keys.mf_app_center }} (`installer` und `tools`) herunterladen.
 
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -128,7 +128,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
             </h4>
         </div>
 
-        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Die leeren Schablonendateien und eine Erläuterung der Argumente finden Sie im Ordner <b>args</b> oder nach einer interaktiven Ausführung der Scripts im Ordner <b>recorded-args</b>. Es handelt sich um folgende Dateien:<br/>
 
@@ -155,7 +155,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
             </h4>
         </div>
 
-        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
               <ol>
@@ -197,13 +197,13 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 
                   </li>
                   <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenter.sh - Erstellung des {{ site.data.keys.mf_app_center }}</b><br />
-                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich der Anmeldung zu sehen.<br/>
+                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben. <br/>
 
 
 {% highlight bash %}
@@ -254,15 +254,15 @@ Mit dem in IBM Bluemix ausgeführten {{ site.data.keys.mf_app_center }} können 
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2-mf" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step-foundation-1">
+        <div class="panel-heading" role="tab" id="step-foundation-1-mf">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Konfigurationsdateien verwenden</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-1-mf" aria-expanded="false" aria-controls="collapse-step-foundation-1-mf">Konfigurationsdateien verwenden</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Die leeren Schablonendateien und eine Erläuterung der Argumente finden Sie im Ordner <b>args</b> oder nach einer interaktiven Ausführung der Scripts im Ordner <b>recorded-args</b>. Es handelt sich um folgende Dateien:<br/>
 
@@ -285,11 +285,11 @@ Mit dem in IBM Bluemix ausgeführten {{ site.data.keys.mf_app_center }} können 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Scripts ausführen</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Scripts ausführen</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
               <ol>
@@ -331,14 +331,14 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 </li>
                   <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
                   <li><b>prepareserver.sh - Erstellung eines {{ site.data.keys.mf_server }}</b><br />
                     Führen Sie das Script <b>prepareserver.sh</b> aus, um einen {{ site.data.keys.mf_server }} zu erstellen
-und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich der Anmeldung zu sehen.<br/>
+und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben.<br/>
 
 
 {% highlight bash %}
@@ -401,7 +401,7 @@ dass Sie die Analytics-URL in **/usr/config/mfpfproperties.xml** aktualisieren m
 ### Analytics-Server-Konfiguration zu {{ site.data.keys.mf_server }} hinzufügen
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
 Wenn Sie einen Analytics-Server eingerichtet haben und möchten, dass dieser Server eine Verbindung zu diesem {{ site.data.keys.mf_server }}
-herstellen können soll, bearbeiten Sie die Datei **mfpfproperties.xml** im Ordner **package_root/mfpf-server-libertyapp/usr/config** wie unten angegeben. Ersetzen Sie die mit `<>` gekennzeichneten Token durch reale Werte Ihrer Implementierung. 
+herstellen können soll, bearbeiten Sie die Datei **mfpfproperties.xml** im Ordner **Paketstammverzeichnis/mfpf-server-libertyapp/usr/config** wie unten angegeben. Ersetzen Sie die mit `<>` gekennzeichneten Token durch reale Werte Ihrer Implementierung. 
 
 ```xml
 <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>
@@ -422,27 +422,27 @@ herstellen können soll, bearbeiten Sie die Datei **mfpfproperties.xml** im Ordn
 Vorläufige Fixes für {{ site.data.keys.mf_server }} in Bluemix können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.  
 Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den
 folgenden Ordnern: 
-* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
-* {{ site.data.keys.mf_server }} (Liberty-Cloud-Foundry-Anwendung): **package_root/mfpf-server-libertyapp/usr**
-* {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter-libertyapp/usr**
+* {{ site.data.keys.mf_analytics }}: **Paketstammverzeichnis/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} (Liberty-Cloud-Foundry-Anwendung): **Paketstammverzeichnis/mfpf-server-libertyapp/usr**
+* {{ site.data.keys.mf_app_center_short }}: **Paketstammverzeichnis/mfp-appcenter-libertyapp/usr**
 
 ### Anwendung des iFix:
 
 1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben.
-2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **package_root/mfpf-analytics/usr**, **package_root/mfpf-server-libertyapp/usr** und **package_root/mfp-appcenter-libertyapp/usr**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
-3. Bearbeiten Sie die Datei **package_root/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie: 
+2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **Paketstammverzeichnis/mfpf-analytics/usr**, **Paketstammverzeichnis/mfpf-server-libertyapp/usr** und **Paketstammverzeichnis/mfp-appcenter-libertyapp/usr**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
+3. Bearbeiten Sie die Datei **Paketstammverzeichnis/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie: 
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
 ```
     Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren. Führen Sie die folgenden Scripts erneut mit den gleichen Parametern aus.
 
-    a. `./prepareserver.sh` zum Hochladen der aktualisierten Artefakte in Bluemix 
+    a. `./prepareserver.sh` zum Hochladen der aktualisierten Artefakte in Bluemix
 
     b. `./startserver.sh` zum Starten des aktualisierten Servers
 
     Eine Kopie der für die vorherige Implementierung verwendeten Argumente wurde im Verzeichnis `recorded-args/` gespeichert. Sie können diese Eigenschaften für Ihre Implementierung verwenden. 
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Datenbankservicekonfiguration aus Bluemix entfernen
 {: #removing-the-database-service-configuration-from-bluemix }

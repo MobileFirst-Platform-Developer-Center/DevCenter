@@ -47,9 +47,7 @@ die Identität Ihres
 Wenn Sie bereits eine passende Keystore-Datei haben, übergehen Sie den nächsten Schritt. 
 
    > **Hinweis:** Der Algorithmus für das Schlüsselpaar mit dem Alias muss vom Typ RSA sein. Nachfolgend ist erklärt, wie der
-Algorithmustyp bei Verwendung des Dienstprogramms **keytool** auf RSA gesetzt wird.    Sie können die Keystore-Datei mit einem Tool eines anderen Anbieters erstellen. Sie können beispielsweise eine JKS-Datei generieren, indem Sie den folgenden Befehl des
-Java-Dienstprogramms **keytool** ausführen.
-(Im Befehl steht `<Keystore-Name>` für den Namen Ihres Keystores und `<Alias>` für Ihren gewählten Alias.)
+Algorithmustyp bei Verwendung des Dienstprogramms **keytool** auf RSA gesetzt wird.    Sie können die Keystore-Datei mit einem Tool eines anderen Anbieters erstellen. Sie können beispielsweise eine JKS-Datei generieren, indem Sie den folgenden Befehl des Java-Dienstprogramms **keytool** ausführen. (Im Befehl steht `<Keystore-Name>` für den Namen Ihres Keystores und `<Alias>` für Ihren gewählten Alias.)
 
     
    ```bash
@@ -64,7 +62,9 @@ Java-Dienstprogramms **keytool** ausführen.
     
    Das Dienstprogramm fordert Sie zur Eingabe verschiedener Eingabeparameter auf. Sie müssen unter anderem das Kennwort für Ihre Keystore-Datei und für den Alias angeben. 
 
-   > **Hinweis:** Sie müssen die Option `-keyalg RSA` festlegen, damit der Algorithmus für die Schlüsselgenerierung auf den Typ RSA und nicht auf den Standardtyp DSA gesetzt wird.    Wenn Sie den Keystore für die gegenseitige SSL-Authentifizierung zwischen
+   > **Hinweis:** Sie müssen die Option `-keyalg RSA` festlegen, damit der Algorithmus für die Schlüsselgenerierung auf den Typ RSA und nicht auf den Standardtyp DSA gesetzt wird. 
+
+   Wenn Sie den Keystore für die gegenseitige SSL-Authentifizierung zwischen
 einem Adapter und einem Back-End-Server
 verwenden möchten, fügen Sie außerdem
 einen Alias für die SSL-Clientidentität der {{ site.data.keys.product }}
@@ -86,8 +86,4 @@ MobileFirst-Server-Identität und Kennwort für den Alias.
 Bei erfolgreicher Konfiguration ändert sich der Status in
 "Benutzerdefiniert". Anderfalls wird ein Fehler angezeigt und der Status bleibt "Standard".
 
-Der Alias für die SSL-Clientidentität (falls verwendet) und das zugehörige Kennwort werden in der Deskriptordatei des betreffenden Adapters
-in den Unterelementen
-`<sslCertificateAlias>`
-und `<sslCertificatePassword>` des Elements `<connectionPolicy>`
-konfiguriert (siehe [Element 'connectionPolicy' des HTTP-Adapters](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)).
+Der Alias für die SSL-Clientidentität (falls verwendet) und das zugehörige Kennwort werden in der Deskriptordatei des betreffenden Adapters in den Unterelementen `<sslCertificateAlias>` und `<sslCertificatePassword>` des Elements `<connectionPolicy>` konfiguriert (siehe [Element 'connectionPolicy' des HTTP-Adapters](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)).

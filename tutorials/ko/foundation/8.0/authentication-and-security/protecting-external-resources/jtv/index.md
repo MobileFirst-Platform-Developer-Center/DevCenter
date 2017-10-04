@@ -4,8 +4,8 @@ title: Java 토큰 유효성 검증기
 breadcrumb_title: Java 토큰 유효성 검증기
 relevantTo: [android,ios,windows,javascript]
 weight: 1
-다운로드:
-  - 이름: 샘플 다운로드
+downloads:
+  - name: 샘플 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

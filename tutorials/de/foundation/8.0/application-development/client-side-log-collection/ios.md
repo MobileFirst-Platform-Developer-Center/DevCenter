@@ -16,7 +16,7 @@ Dieses Lernprogramm enthält die Code-Snippets, die erforderlich sind, um Protok
 
 ```swift
 extension OCLogger {
-    // Protokollmethoden ohne Metadaten
+// Protokollmethoden ohne Metadaten
 
     func logTraceWithMessages(message:String, _ args: CVarArgType...) {
         logWithLevel(OCLogger_TRACE, message: message, args:getVaList(args), userInfo:Dictionary<String, String>())
@@ -146,17 +146,17 @@ OCLogger.setMaxFileSize(150000);
 
 ## Protokolle automatisch senden
 {: #auto-log-sending }
-Das automatische Senden von Protokollen ist standardmäßig inaktiviert. Immer, wenn eine Ressourcenanforderung erfolgreich an den Server gesendet wird, werden auch die erfassten Protokolle gesendet, wobei zwischen den Sendevorgängen ein zeitlicher Abstand von mindestens 60 Sekunden liegen muss. Das automatische Senden von Protokollen kann vom Client aktiviert oder inaktiviert werden. Standardmäßig ist das automatische Senden von Protokollen inaktiviert. 
+Das automatische Senden von Protokollen ist standardmäßig inaktiviert. Immer, wenn eine Ressourcenanforderung erfolgreich an den Server gesendet wird, werden auch die erfassten Protokolle gesendet, wobei zwischen den Sendevorgängen ein zeitlicher Abstand von mindestens 60 Sekunden liegen muss. Das automatische Senden von Protokollen kann vom Client aktiviert oder inaktiviert werden. Standardmäßig ist das automatische Senden von Protokollen inaktiviert.
 
 **Objective-C**
 
-Aktivierung: 
+Aktivierung:
 
 ```objc
 [OCLogger setAutoSendLogs:YES];
 ```
 
-Inaktivierung: 
+Inaktivierung:
 
 ```objc
 [OCLogger setAutoSendLogs:NO];
@@ -164,13 +164,13 @@ Inaktivierung:
 
 **Swift**
 
-Aktivierung: 
+Aktivierung:
 
 ```swift
 OCLogger.setAutoSendLogs(true);
 ```
 
-Inaktivierung: 
+Inaktivierung:
 
 ```swift
 OCLogger.setAutoSendLogs(false);

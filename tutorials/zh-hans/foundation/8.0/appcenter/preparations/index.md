@@ -86,6 +86,8 @@ cordova build ios
 您可以进一步定制应用程序，例如，针对特定公司或需求来更新其用户界面。
 
 > **注：**虽然您可以自由地定制应用程序 UI 和行为，但此类更改不在 IBM 支持协议的服务范围内。
+
+
 #### Android
 {: #android }
 * 打开 Android Studio。
@@ -118,8 +120,8 @@ cordova build ios
 
 构建 **IBMAppCenter** 项目。MobileFirst 项目包含一个名为 **AppCenter** 的应用程序。右键单击该应用程序，然后选择**运行为 → 构建所有环境**。
 
-#### Android
-{: #android }
+#### 在 Android 中导入和构建项目
+{: #importing-building-projects-android }
 MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/android/native** 中生成本机 Android 项目。本机 Android 开发工具 (ADT) 项目位于 android/native 文件夹中。
 您可以使用 ADT 工具来编译和签署此项目。该项目需要安装 Android SDK 级别 16，以便生成的 APK 与所有 Android V2.3 及更高版本兼容。
 如果在构建项目时选择更高级别的 Android SDK，那么生成的 APK 将与 Android V2.3 不兼容。
@@ -128,8 +130,8 @@ MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/android/native** 中生成�
 
 如果您要启用应用程序更新的推送通知，必须首先配置 Application Center 客户机属性。请参阅[为应用程序更新配置推送通知](../push-notifications)以获取更多信息。
 
-#### iOS
-{: #ios }
+#### 在 iOS 中导入和构建项目
+{: #importing-building-projects-ios }
 MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/iphone/native** 中生成本机 iOS 项目。**IBMAppCenterAppCenterIphone.xcodeproj** 文件位于 iphone/native 文件夹中。该文件是必须使用 Xcode 进行编译和签署的 Xcode 项目。
 
 请参阅 [Apple 开发人员站点](https://developer.apple.com/)，以了解有关如何签署 iOS 移动式客户机应用程序的更多信息。要签署 iOS 应用程序，必须将应用程序的捆绑标识更改为可与所使用的供应概要文件共同使用的捆绑标识。在 Xcode 项目设置中将该值定义为 **com.your\_internet\_domain\_name.appcenter**，其中 **your\_internet\_domain\_name** 是因特网域的名称。
@@ -190,20 +192,20 @@ Windows 10 Universal 项目在 **IBMAppCenterUWP\IBMAppCenterUWP.csproj** 中作
 
 此文件包含下表中显示的属性。
 
-| 属性 | 描述 |
+| 属性| 描述|
 |----------|-------------|
-| url | Application Center 服务器的硬编码地址。如果设置了该属性，那么不会显示“登录”视图的地址字段。 |
-| defaultPort | 如果 url 属性为空，那么该属性会预填充手机上“登录”视图的 port 字段。这是缺省值；用户可编辑该字段。 |
-| defaultContext | 如果 url 属性为空，那么该属性会预填充手机上“登录”视图的 context 字段。这是缺省值；用户可编辑该字段。 |
-| ssl | “登录”视图的 SSL 开关的缺省值。 |
-| allowDowngrade | 该属性指示是否授权安装较旧版本；仅当操作系统和版本允许降级时，才可安装较旧版本。 |
-| showPreviousVersions | 此属性指示设备用户可显示应用程序的所有版本的详细信息还是只能显示最新版本的详细信息。 |
-| showInternalVersion | 此属性指示是否显示内部版本。如果值为 false，那么仅当未设置商业版本时才会显示内部版本。 |
-| listItemRenderer | 此属性可具有以下某个值：<br/>- **full**：缺省值；应用程序列表显示应用程序名称、评级和最新版本。<br/>- **simple**：应用程序列表仅显示应用程序名称。 |
-| listAverageRating | 此属性可具有以下某个值：<br/>- **latestVersion**：应用程序列表显示应用程序的最新版本的平均评级。<br/>- **allVersions**：应用程序列表显示应用程序的所有版本的平均评级。 |
-| requestTimeout | 该属性指示请求 Application Center 服务器的超时（单位为毫秒）。 |
-| gcmProjectId | Google API 项目标识（项目名称 = com.ibm.appcenter），这是 Android 推送通知所必需的；例如，123456789012。 |
-| allowAppLinkReview | 该属性指示能否在 Application Center 中注册和浏览来自外部应用商店的本地应用程序评论。在外部应用商店中看不到这些本地评论。这些评论存储在 Application Center 服务器中。 |
+| url| Application Center 服务器的硬编码地址。如果设置了该属性，那么不会显示“登录”视图的地址字段。|
+| defaultPort| 如果 url 属性为空，那么该属性会预填充手机上“登录”视图的 port 字段。这是缺省值；用户可编辑该字段。|
+| defaultContext| 如果 url 属性为空，那么该属性会预填充手机上“登录”视图的 context 字段。这是缺省值；用户可编辑该字段。|
+| ssl| “登录”视图的 SSL 开关的缺省值。|
+| allowDowngrade| 该属性指示是否授权安装较旧版本；仅当操作系统和版本允许降级时，才可安装较旧版本。|
+| showPreviousVersions| 此属性指示设备用户可显示应用程序的所有版本的详细信息还是只能显示最新版本的详细信息。|
+| showInternalVersion| 此属性指示是否显示内部版本。如果值为 false，那么仅当未设置商业版本时才会显示内部版本。|
+| listItemRenderer| 此属性可具有以下某个值：<br/>- **full**：缺省值；应用程序列表显示应用程序名称、评级和最新版本。<br/>- **simple**：应用程序列表仅显示应用程序名称。|
+| listAverageRating| 此属性可具有以下某个值：<br/>- **latestVersion**：应用程序列表显示应用程序的最新版本的平均评级。<br/>- **allVersions**：应用程序列表显示应用程序的所有版本的平均评级。|
+| requestTimeout| 该属性指示请求 Application Center 服务器的超时（单位为毫秒）。|
+| gcmProjectId| Google API 项目标识（项目名称 = com.ibm.appcenter），这是 Android 推送通知所必需的；例如，123456789012。|
+| allowAppLinkReview| 该属性指示能否在 Application Center 中注册和浏览来自外部应用商店的本地应用程序评论。在外部应用商店中看不到这些本地评论。这些评论存储在 Application Center 服务器中。|
 
 ### 其他资源
 {: #other-resources }

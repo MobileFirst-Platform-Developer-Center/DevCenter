@@ -37,7 +37,9 @@ anhand folgender Elemente identifiziert:
 * Versionsnummer
 * Zielimplementierungsplattform
 
-> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für Webanwendungen nicht zutreffend. Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
+> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für Webanwendungen nicht zutreffend. 
+
+Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
 implementiert werden und nur die ihnen zugewiesenen Ressourcen nutzen. Unterschiedliche Komponenten der
 {{ site.data.keys.product }} verwenden verschiedene Kombinationen dieser
 Kennungen auf unterschiedliche Art. 
@@ -92,6 +94,8 @@ Die Serverkonfiguration für die App umfasst Informationen wie den App-Managemen
 die direkte Aktualisierung, konfigurierte Sicherheitsbereiche und die Protokollkonfiguration. 
 
 > In den Lernprogrammen zum [Hinzufügen der SDKs der {{ site.data.keys.product }}](sdk) erfahren Sie, wie die {{ site.data.keys.product_adj }}-Client-SDKs hinzugefügt werden.
+
+
 
 Die Clientkonfiguration muss definiert werden, bevor Sie
 den Anwendungsbuild erstellen. Die Konfigurationseigenschaften in der Client-App müssen zu den Eigenschaften passen, die in

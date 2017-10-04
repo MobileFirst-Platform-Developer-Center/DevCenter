@@ -22,49 +22,49 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 {: #comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before }
 {{ site.data.keys.product_adj }} v8.0으로 개발된 Cordova 앱과 IBM MobileFirst Platform Foundation v7.1로 개발된 하이브리드 앱을 비교하십시오. 
 
-| 기능 | Cordova 앱<br/>IBM {{ site.data.keys.product }} v8.0으로 개발 |	Cordova 앱<br/>IBM MobileFirst Platform Foundation v7.1로 개발 | MobileFirst 하이브리드 앱<br/>IBM MobileFirst Platform Foundation V7.1로 개발 |
+| 기능| Cordova 앱<br/>IBM {{ site.data.keys.product }} v8.0으로 개발|	Cordova 앱<br/>IBM MobileFirst Platform Foundation v7.1로 개발| MobileFirst 하이브리드 앱<br/>IBM MobileFirst Platform Foundation V7.1로 개발|
 |---------|-------|---------|-------|------|
 | **IDE Eclipse Studio** | | | |  	 	 
-| Eclipse 플러그인 및 통합 | 예 | 지원되지 않음 | 예(전용) |
-| 애플리케이션 컴포넌트 | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(전용) |
-| 프로젝트 템플리트 | 예(Cordova) <br/><br/>참고: Apache Cordova `cordova create --template` 명령을 사용하십시오.  | 예(Cordova) <br/><br/>참고: `mfp cordova create --template` 또는 Apache Cordova 명령 `cordova create --copy-from`을 사용하십시오.  | 예(전용) |
-| Dojo 및 jQuery IDE 인스트루먼테이션 | 예<br/><br/>참고: Dojo 및 jQuery Mobile은 Cordova 앱에서 사용할 수 있는 JavaScript 프레임워크입니다.  | 예<br/><br/>참고: Dojo 및 jQuery Mobile은 Cordova 앱에서 사용할 수 있는 JavaScript 프레임워크입니다.  | 예 |
-| 모바일 UI 패턴 | 지원되지 않음 | 지원되지 않음 | 더 이상 사용되지 않음 |
+| Eclipse 플러그인 및 통합| 예| 지원되지 않음| 예(전용)|
+| 애플리케이션 컴포넌트| 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오. | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오. | 예(전용)|
+| 프로젝트 템플리트| 예(Cordova) <br/><br/>참고: Apache Cordova `cordova create --template` 명령을 사용하십시오. | 예(Cordova) <br/><br/>참고: `mfp cordova create --template` 또는 Apache Cordova 명령 `cordova create --copy-from`을 사용하십시오. | 예(전용)|
+| Dojo 및 jQuery IDE 인스트루먼테이션| 예<br/><br/>참고: Dojo 및 jQuery Mobile은 Cordova 앱에서 사용할 수 있는 JavaScript 프레임워크입니다. | 예<br/><br/>참고: Dojo 및 jQuery Mobile은 Cordova 앱에서 사용할 수 있는 JavaScript 프레임워크입니다. | 예|
+| 모바일 UI 패턴| 지원되지 않음| 지원되지 않음| 더 이상 사용되지 않음|
 | **애플리케이션 하위 유형** | | |
-| 쉘 컴포넌트 | 지원되지 않음<br/><br/>참고: 이전 하이브리드 앱에서 쉘 및 내부 애플리케이션을 사용한 경우 Cordova 디자인 패턴을 채택하고 쉘 컴포넌트를 애플리케이션 간에 공유될 수 있는 Cordova 플러그인으로 구현할 것을 권장합니다.  | 지원되지 않음 | 예 |
-| 내부 하이브리드 애플리케이션 | 지원되지 않음<br/><br/>참고: 이전 하이브리드 앱에서 쉘 및 내부 애플리케이션을 사용한 경우 Cordova 디자인 패턴을 채택하고 쉘 컴포넌트를 애플리케이션 간에 공유될 수 있는 Cordova 플러그인으로 구현할 것을 권장합니다.  | 지원되지 않음 | 예 |
+| 쉘 컴포넌트| 지원되지 않음<br/><br/>참고: 이전 하이브리드 앱에서 쉘 및 내부 애플리케이션을 사용한 경우 Cordova 디자인 패턴을 채택하고 쉘 컴포넌트를 애플리케이션 간에 공유될 수 있는 Cordova 플러그인으로 구현할 것을 권장합니다. | 지원되지 않음| 예|
+| 내부 하이브리드 애플리케이션| 지원되지 않음<br/><br/>참고: 이전 하이브리드 앱에서 쉘 및 내부 애플리케이션을 사용한 경우 Cordova 디자인 패턴을 채택하고 쉘 컴포넌트를 애플리케이션 간에 공유될 수 있는 Cordova 플러그인으로 구현할 것을 권장합니다. | 지원되지 않음| 예|
 | **애플리케이션 기능** | | | 	 	 	 
-| 모바일 OS	| iOS 8 이상, Android 4.1 이상, Windows Phone 8.1, Windows Phone 10. | iOS 7 이상, Android 4 이상.  | iOS, Android 및 Windows Phone 8 |
-| 웹 애플리케이션 | 예. Apache Cordova 없이 개발된 JavaScript 애플리케이션.  | 지원되지 않음 | 예. desktopbrowser 또는 mobilewebapp 환경.  |
-| 직접 업데이트 | 예.  | 예 | 예 |
-| {{ site.data.keys.product_adj }} 보안 프레임워크 | 예 | 예 | 예 |
-| 애플리케이션 인증 | 예 | 예 | 예 |
-| 인증서 고정 | 예 | 아니오 | 예 |
-| JSONStore | 예.  | cordova-plugin-mfp-jsonstore 플러그인을 사용하십시오.  | 예 |
-| FIPS 140-2 | 예. cordova-plugin-mfp-fips 플러그인을 사용하십시오.<br/><br/>제한사항: FIPS는 Android 및 iOS를 위해 지원됩니다. FIPS는 Windows를 위해 지원되지 않습니다.  | 아니오 | 예 |
-| 애플리케이션 2진 파일 내에서 애플리케이션과 연관된 웹 자원의 암호화 | 예 |	아니오 | 예 |
-| 앱이 실행을 시작할 때마다 체크섬을 사용하여 웹 자원의 무결성 검증 | 예 | 지원되지 않음 | 예 |
-| 주소 지정 가능 디바이스 라이센스 추적을 위한 앱의 대상 카테고리(B2E 또는 B2C) 스펙 | 예 | 아니오 | 예 |
-| 단순 데이터 공유 | 아니오 | 예 | 예 |
-| 싱글 사인온 | 예<br/><br/>참고: 디바이스 싱글 사인온(SSO)은 이제 새 사전 정의된 enableSSO 보안 검사 애플리케이션 디스크립터 구성 특성을 사용하여 지원됩니다.  | 예 | 예 |
-| {{ site.data.keys.product_adj }} 애플리케이션 스킨 | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 예 |
-| 환경 최적화 | 예(Cordova).  |  merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오.  | 예(Cordova). merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오. 자세한 정보는 Apache Cordova 문서의 merges를 사용하여 각 플랫폼 사용자 정의를 참조하십시오.  | 
-| 푸시 알림 | 예. cordova-plugin-mfp-push 플러그인을 사용하십시오.<br/><br/>제한사항: 사전 정의된 {{ site.data.keys.product_adj }} 보안 검사는 push.mobileclient 범위에만 맵핑할 수 있습니다. JavaScript 인증 확인 핸들러가 호출되지 않으므로 사용자 정의 보안 검사는 지원되지 않습니다.  | 예<br/><br/>참고: Android의 경우, cordova-plugin-mfp-push 플러그인을 추가해야 합니다. 코어 mfp 플러그인에 iOS에 대한 푸시 클라이언트 측 지원이 포함되어 있으므로 iOS의 경우에는 이 플러그인이 필요하지 않습니다.  | 예 |
-| Cordova 플러그인 관리 | 예 | 예 | 아니오 |
-| MESSAGES(i18n) | 예 | 예 | 예 |
-| 토큰 라이센싱 | 예 | 예 | 예 |
+| 모바일 OS	| iOS 8 이상, Android 4.1 이상, Windows Phone 8.1, Windows Phone 10.| iOS 7 이상, Android 4 이상. | iOS, Android 및 Windows Phone 8|
+| 웹 애플리케이션| 예. Apache Cordova 없이 개발된 JavaScript 애플리케이션. | 지원되지 않음| 예. desktopbrowser 또는 mobilewebapp 환경. |
+| 직접 업데이트| 예. | 예| 예|
+| {{ site.data.keys.product_adj }} 보안 프레임워크| 예| 예| 예|
+| 애플리케이션 인증| 예| 예| 예|
+| 인증서 고정| 예| 아니오| 예|
+| JSONStore| 예. | cordova-plugin-mfp-jsonstore 플러그인을 사용하십시오. | 예|
+| FIPS 140-2| 예. cordova-plugin-mfp-fips 플러그인을 사용하십시오.<br/><br/>제한사항: FIPS는 Android 및 iOS를 위해 지원됩니다. FIPS는 Windows를 위해 지원되지 않습니다. | 아니오| 예|
+| 애플리케이션 2진 파일 내에서 애플리케이션과 연관된 웹 자원의 암호화| 예|	아니오| 예|
+| 앱이 실행을 시작할 때마다 체크섬을 사용하여 웹 자원의 무결성 검증| 예| 지원되지 않음| 예|
+| 주소 지정 가능 디바이스 라이센스 추적을 위한 앱의 대상 카테고리(B2E 또는 B2C) 스펙| 예| 아니오| 예|
+| 단순 데이터 공유| 아니오| 예| 예|
+| 싱글 사인온| 예<br/><br/>참고: 디바이스 싱글 사인온(SSO)은 이제 새 사전 정의된 enableSSO 보안 검사 애플리케이션 디스크립터 구성 특성을 사용하여 지원됩니다. | 예| 예|
+| {{ site.data.keys.product_adj }} 애플리케이션 스킨| 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오. | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오. | 예|
+| 환경 최적화| 예(Cordova). |  merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오. | 예(Cordova). merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오. 자세한 정보는 Apache Cordova 문서의 merges를 사용하여 각 플랫폼 사용자 정의를 참조하십시오. |
+| 푸시 알림| 예. cordova-plugin-mfp-push 플러그인을 사용하십시오.<br/><br/>제한사항: 사전 정의된 {{ site.data.keys.product_adj }} 보안 검사는 push.mobileclient 범위에만 맵핑할 수 있습니다. JavaScript 인증 확인 핸들러가 호출되지 않으므로 사용자 정의 보안 검사는 지원되지 않습니다. | 예<br/><br/>참고: Android의 경우, cordova-plugin-mfp-push 플러그인을 추가해야 합니다. 코어 mfp 플러그인에 iOS에 대한 푸시 클라이언트 측 지원이 포함되어 있으므로 iOS의 경우에는 이 플러그인이 필요하지 않습니다. | 예|
+| Cordova 플러그인 관리| 예| 예| 아니오|
+| MESSAGES(i18n)| 예| 예| 예|
+| 토큰 라이센싱| 예| 예| 예|
 | **애플리케이션 최적화** | | |
-| 축소 | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
-| JS 및 CSS의 연결 | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
-| 난독화 | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
-| Android Pro Guard | 예<br/><br/>참고: {{ site.data.keys.product }} V8.0.0에는 Android ProGuard 난독화를 위해 {{ site.data.keys.product_adj }} Android 애플리케이션과 함께 사전 정의된 proguard-project.txt 구성 파일이 포함되지 않습니다.  | 예<br/><br/>참고: Pro Guard를 사용하려면 Android 문서를 참조하십시오.  | 예 |
+| 축소| 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오. | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오. | 예(전용)|
+| JS 및 CSS의 연결| 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오. | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오. | 예(전용)|
+| 난독화| 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오. | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오. | 예(전용)|
+| Android Pro Guard| 예<br/><br/>참고: {{ site.data.keys.product }} V8.0.0에는 Android ProGuard 난독화를 위해 {{ site.data.keys.product_adj }} Android 애플리케이션과 함께 사전 정의된 proguard-project.txt 구성 파일이 포함되지 않습니다. | 예<br/><br/>참고: Pro Guard를 사용하려면 Android 문서를 참조하십시오. | 예|
 
 ## 기존 하이브리드 또는 크로스 플랫폼 앱을 {{ site.data.keys.product }} 8.0이 지원하는 Cordova 앱으로 마이그레이션
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
 IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하이브리드 또는 크로스 플랫폼(Cordova) 앱을 {{ site.data.keys.product }} v8.0에서 지원되는 Cordova 앱으로 마이그레이션할 수 있습니다. 
 
-#### 다음으로 이동
-{: #jump-to }
+#### 다음 섹션으로 이동
+{: #jump-to-section }
 * [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
 * [{{ site.data.keys.product_adj }} 하이브리드 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-hybrid-app)
 * [{{ site.data.keys.product_adj }} Cordova 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-cordova-app)
@@ -89,7 +89,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 마이그레이션 지원 도구는 앱의 주석 또는 개발자 코드를 수정하거나 이동하지 않습니다. 이 도구를 실행한 후 [MobileFirst 하이브리드 앱 마이그레이션 완료](#completing-migration-of-a-mobilefirst-hybrid-app) 또는 [MobileFirst Cordova 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-cordova-app)로 마이그레이션 프로세스를 계속해야 합니다. 
 
 <!--1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
+    * Download the .tgz file from the [Git repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli).
     * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
     * Download the tool by using the instructions that are provided. -->
 1. 마이그레이션 지원 도구를 설치하십시오. 
@@ -103,7 +103,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 2. 다음 명령을 입력하여 IBM MobileFirst Platform Foundation 앱을 스캔하고 복사하십시오. 
 
    ```bash
-   mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
+   mfpmigrate client --in source_directory --out destination_directory --projectName new-project-directory
    ```
 
    * **source_directory**  
@@ -133,9 +133,9 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 3. 새 Cordova 앱에서 API 문제를 해결하십시오. 
     * 명령이 완료될 때 **destination_directory** 디렉토리에 작성되고 기본 브라우저에 열린 **api-report.html** 파일을 검토하십시오. 이 파일에서 테이블의 각 행은 앱에서 사용되지만 버전 8.0과 호환 불가능한 더 이상 사용되지 않거나 변경되거나 제거된 API를 식별합니다. 이 파일에는 사용 가능한 경우 제거된 API의 대체 API도 지정됩니다. 
 
-    | 파일 경로 | 행 번호 | API | 행 컨텐츠 | API 변경 카테고리 | 설명 및 조치 항목 |
+    | 파일 경로| 행 번호| API| 행 컨텐츠| API 변경 카테고리| 설명 및 조치 항목|
     |-----------|-------------|-----|--------------|------------|-----------|
-    | c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | {::nomarkdown}<ul><li><code>document.getElementById('app_version')</code></li><li><code>textContent = WL.Client.getAppProperty("APP_VERSION");</code></li></ul>{:/} | 지원되지 않음 | 8.0에서 제거되었습니다. Cordova 플러그인을 사용하여 앱 버전을 가져오십시오. 대체 API가 없습니다.  |
+    | c:\local\Cordova\www\js\index.js|	15| `WL.Client.getAppProperty` | {::nomarkdown}<ul><li><code>document.getElementById('app_version')</code></li><li><code>textContent = WL.Client.getAppProperty("APP_VERSION");</code></li></ul>{:/} | 지원되지 않음| 8.0에서 제거되었습니다. Cordova 플러그인을 사용하여 앱 버전을 가져오십시오. 대체 API가 없습니다. |
 
     * **api-report.html** 파일에서 식별된 API 문제를 해결하십시오. 
 4. 초기 앱 구조에서 새 Cordova 구조의 올바른 위치로 개발자 코드를 수동으로 복사하십시오. 소스 IBM MobileFirst Platform Foundation 앱의 유형에 따라 다음 디렉토리의 컨텐츠를 복사하십시오. 
@@ -322,71 +322,71 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 #### 중단된 JavaScript UI 요소
 {: #discontinued-javascript-ui-elements }
 
-| API 요소 | 마이그레이션 경로 |
+| API 요소| 마이그레이션 경로|
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Cordova 플러그인 또는 HTML 5 요소를 사용하십시오.  |
-| `WL.App.close()` | {{ site.data.keys.product_adj }} 외부에서 이 이벤트를 처리하십시오.  |
-| `WL.App.copyToClipboard()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.  |
-| `WL.App.openUrl(url, target, options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova InAppBrowser 플러그인이 이 기능을 제공합니다. |
-| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova backbutton 플러그인이 이 기능을 제공합니다. |
-| `WL.App.getDeviceLanguage()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
-| `WL.App.getDeviceLocale()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/> 참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
-| `WL.App.BackgroundHandler` | 사용자 정의 핸들러 함수를 실행하려면 표준 Cordova 일시정지 이벤트 리스너를 사용하십시오. 개인정보 보호정책을 제공하는 Cordova 플러그인을 사용하여 iOS 및 Android 시스템과 사용자의 스냅샷 또는 화면 캡처를 방지하십시오. 자세한 정보는 [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)에서 PrivacyScreenPlugin의 설명을 참조하십시오.  |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| 이 함수는 {{ site.data.keys.product }} v8.0에서는 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 제공되었습니다.  |
-| `WL.Toast.show(string)` | Toast에 대한 Cordova 플러그인을 사용하십시오.  |
+| {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Cordova 플러그인 또는 HTML 5 요소를 사용하십시오. |
+| `WL.App.close()` | {{ site.data.keys.product_adj }} 외부에서 이 이벤트를 처리하십시오. |
+| `WL.App.copyToClipboard()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. |
+| `WL.App.openUrl(url, target, options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova InAppBrowser 플러그인이 이 기능을 제공합니다.|
+| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova backbutton 플러그인이 이 기능을 제공합니다.|
+| `WL.App.getDeviceLanguage()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다.|
+| `WL.App.getDeviceLocale()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/> 참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다.|
+| `WL.App.BackgroundHandler` | 사용자 정의 핸들러 함수를 실행하려면 표준 Cordova 일시정지 이벤트 리스너를 사용하십시오. 개인정보 보호정책을 제공하는 Cordova 플러그인을 사용하여 iOS 및 Android 시스템과 사용자의 스냅샷 또는 화면 캡처를 방지하십시오. 자세한 정보는 [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)에서 PrivacyScreenPlugin의 설명을 참조하십시오. |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| 이 함수는 {{ site.data.keys.product }} v8.0에서는 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 제공되었습니다. |
+| `WL.Toast.show(string)` | Toast에 대한 Cordova 플러그인을 사용하십시오. |
 
 #### 기타 중단된 JavaScript 요소
 {: #other-discontinued-javascript-elements }
 
-| API | 마이그레이션 경로 |
+| API| 마이그레이션 경로|
 |-----|----------------|
-| `WL.Client.checkForDirectUpdate(options)` | 대체 없음.<br/><br/>참고: 사용 가능한 경우 [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 호출하여 직접 업데이트를 트리거할 수 있습니다. 서버에서 직접 업데이트를 사용할 수 있는 경우 보안 토큰에 액세스하면 직접 업데이트가 트리거됩니다. 그러나 요청 시 직접 업데이트를 트리거할 수 없습니다.  |
+| `WL.Client.checkForDirectUpdate(options)` | 대체 없음.<br/><br/>참고: 사용 가능한 경우 [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 호출하여 직접 업데이트를 트리거할 수 있습니다. 서버에서 직접 업데이트를 사용할 수 있는 경우 보안 토큰에 액세스하면 직접 업데이트가 트리거됩니다. 그러나 요청 시 직접 업데이트를 트리거할 수 없습니다. |
 | {::nomarkdown}<ul><li><code>WL.Client.setSharedToken({key: myName, value: myValue})</code></li><li><code>WL.Client.getSharedToken({key: myName})</code></li><li><code>WL.Client.clearSharedToken({key: myName})</code></li></ul>{:/} | 대체 없음. |
-| {::nomarkdown}<ul><li><code>WL.Client.isConnected()</code></li><li><code>connectOnStartup</code> init option</li></ul> | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하여 서버에 대한 연결을 확인하고 애플리케이션 관리 규칙을 적용하십시오.  |
-| {::nomarkdown}<ul><li><code>WL.Client.setUserPref(key,value, options)</code></li><li><code>WL.Client.setUserPrefs(userPrefsHash, options)</code></li><li><code>WL.Client.deleteUserPrefs(key, options)</code></li></ul>{:/} | 대체 없음. 어댑터와 [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) API를 사용하여 사용자 환경 설정을 관리할 수 있습니다.  |
+| {::nomarkdown}<ul><li><code>WL.Client.isConnected()</code></li><li><code>connectOnStartup</code> init option</li></ul> | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하여 서버에 대한 연결을 확인하고 애플리케이션 관리 규칙을 적용하십시오. |
+| {::nomarkdown}<ul><li><code>WL.Client.setUserPref(key,value, options)</code></li><li><code>WL.Client.setUserPrefs(userPrefsHash, options)</code></li><li><code>WL.Client.deleteUserPrefs(key, options)</code></li></ul>{:/} | 대체 없음. 어댑터와 [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
 | {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | 대체 없음. |
-| `WL.Client.logActivity(activityType)` | [`WL.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Logger.html?view=kc)를 사용하십시오.  |
-| `WL.Client.login(realm, options)` | [`WLAuthorizationManager.login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#login)을 사용하십시오.  |
-| `WL.Client.logout(realm, options)` | [`WLAuthorizationManager.logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#logout)을 사용하십시오.  |
-| `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하십시오.  |
-| {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer()</code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | 이러한 이벤트의 알림을 수신할 사용자 정의 어댑터를 작성하십시오.  |
-| {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo</code></li></ul>{:/} | 위치정보에 대한 고유 API 또는 써드파티 Cordova 플러그인을 사용하십시오.  |
-| `WL.Client.makeRequest (url, options)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오.  |
-| `WL.Device.getID(options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: **cordova-plugin-device** 플러그인의 **device.uuid**가 이 기능을 제공합니다. |
-| `WL.Device.getFriendlyName()` | `WL.Client.getDeviceDisplayName`을 사용하십시오.  |
-| `WL.Device.setFriendlyName()` | `WL.Client.setDeviceDisplayName`을 사용하십시오.  |
-| `WL.Device.getNetworkInfo(callback)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: **cordova-plugin-network-information** 플러그인이 이 기능을 제공합니다. |
-| `WLUtils.wlCheckReachability()` | 사용자 정의 어댑터를 작성하여 서버 가용성을 확인하십시오.  |
-| `WL.EncryptedCache` | JSONStore를 사용하여 암호화된 데이터를 로컬로 저장하십시오. JSONStore는 **cordova-plugin-mfp-jsonstore**에 있습니다.  |
-| `WL.SecurityUtils.remoteRandomString(bytes)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오.  |
-| `WL.Client.getAppProperty(property)` | cordova plugin add **cordova-plugin-appversion** 플러그인을 사용하여 앱 버전 특성을 검색할 수 있습니다. 리턴되는 버전은 기본 앱 버전입니다(Android 및 iOS만 해당).  |
-| `WL.Client.Push.*` | **cordova-plugin-mfp-push** 플러그인에서 [JavaScript client-side push API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api)를 사용하십시오. 자세한 정보는 [이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션](../../migrating-push-notifications)을 참조하십시오.  |
-| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | [`MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-mfp-push-hybrid/html/MFPPush.html?view=kc#registerDevice)를 사용하여 푸시 및 SMS를 위해 디바이스를 등록하십시오.  |
-| `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하여 필요한 범위에 대한 토큰을 얻으십시오.  |
-| `WLClient.getLastAccessToken(scope)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하십시오.  |
-| {::nomarkdown}<ul><li><code>WLClient.getLoginName()</code></li><li><code>WL.Client.getUserName(realm)</code></li></ul>{:/} | 대체 없음 |
-| `WL.Client.getRequiredAccessTokenScope(status, header)` | [`WLAuthorizationManager.isAuthorizationRequired`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#isAuthorizationRequired) 및 [`WLAuthorizationManager.getResourceScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#getResourceScope)를 사용하십시오.  |
-| `WL.Client.isUserAuthenticated(realm)` | 대체 없음 |
-| `WLUserAuth.deleteCertificate(provisioningEntity)` | 대체 없음 |
-| `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 대체 없음 |
-| `WL.Client.createChallengeHandler(realmName)` | 사용자 정의 게이트웨이 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오.  |
-| `WL.Client.createWLChallengeHandler(realmName)` | [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오.  |
-| `challengeHandler.isCustomResponse()` 여기서 `challengeHandler`는 `WL.Client.createChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다.  | `gatewayChallengeHandler.canHandleResponse()`를 사용하십시오. 여기서 `gatewayChallengeHandler`는 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다.  |
-| `wlChallengeHandler.processSucccess()` 여기서 `wlChallengeHandler`는 `WL.Client.createWLChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다.  | `securityCheckChallengeHandler.handleSuccess()`를 사용하십시오. 여기서 `securityCheckChallengeHandler`는 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다.  |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오.  |
-| `WL.Client.AbstractChallengeHandler.submitFailure(err)` | [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel)을 사용하십시오.  |
+| `WL.Client.logActivity(activityType)` | [`WL.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Logger.html?view=kc)를 사용하십시오. |
+| `WL.Client.login(realm, options)` | [`WLAuthorizationManager.login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#login)을 사용하십시오. |
+| `WL.Client.logout(realm, options)` | [`WLAuthorizationManager.logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#logout)을 사용하십시오. |
+| `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하십시오. |
+| {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer()</code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | 이러한 이벤트의 알림을 수신할 사용자 정의 어댑터를 작성하십시오. |
+| {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo</code></li></ul>{:/} | 위치정보에 대한 고유 API 또는 써드파티 Cordova 플러그인을 사용하십시오. |
+| `WL.Client.makeRequest (url, options)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오. |
+| `WL.Device.getID(options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: **cordova-plugin-device** 플러그인의 **device.uuid**가 이 기능을 제공합니다.|
+| `WL.Device.getFriendlyName()` | `WL.Client.getDeviceDisplayName`을 사용하십시오. |
+| `WL.Device.setFriendlyName()` | `WL.Client.setDeviceDisplayName`을 사용하십시오. |
+| `WL.Device.getNetworkInfo(callback)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: **cordova-plugin-network-information** 플러그인이 이 기능을 제공합니다.|
+| `WLUtils.wlCheckReachability()` | 사용자 정의 어댑터를 작성하여 서버 가용성을 확인하십시오. |
+| `WL.EncryptedCache` | JSONStore를 사용하여 암호화된 데이터를 로컬로 저장하십시오. JSONStore는 **cordova-plugin-mfp-jsonstore**에 있습니다. |
+| `WL.SecurityUtils.remoteRandomString(bytes)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오. |
+| `WL.Client.getAppProperty(property)` | cordova plugin add **cordova-plugin-appversion** 플러그인을 사용하여 앱 버전 특성을 검색할 수 있습니다. 리턴되는 버전은 기본 앱 버전입니다(Android 및 iOS만 해당). |
+| `WL.Client.Push.*` | **cordova-plugin-mfp-push** 플러그인에서 [JavaScript client-side push API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api)를 사용하십시오. 자세한 정보는 [이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션](../../migrating-push-notifications)을 참조하십시오. |
+| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | [`MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-mfp-push-hybrid/html/MFPPush.html?view=kc#registerDevice)를 사용하여 푸시 및 SMS를 위해 디바이스를 등록하십시오. |
+| `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하여 필요한 범위에 대한 토큰을 얻으십시오. |
+| `WLClient.getLastAccessToken(scope)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하십시오. |
+| {::nomarkdown}<ul><li><code>WLClient.getLoginName()</code></li><li><code>WL.Client.getUserName(realm)</code></li></ul>{:/} | 대체 없음|
+| `WL.Client.getRequiredAccessTokenScope(status, header)` | [`WLAuthorizationManager.isAuthorizationRequired`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#isAuthorizationRequired) 및 [`WLAuthorizationManager.getResourceScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#getResourceScope)를 사용하십시오. |
+| `WL.Client.isUserAuthenticated(realm)` | 대체 없음|
+| `WLUserAuth.deleteCertificate(provisioningEntity)` | 대체 없음|
+| `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 대체 없음|
+| `WL.Client.createChallengeHandler(realmName)` | 사용자 정의 게이트웨이 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오. |
+| `WL.Client.createWLChallengeHandler(realmName)` | [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오. |
+| `challengeHandler.isCustomResponse()` 여기서 `challengeHandler`는 `WL.Client.createChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다. | `gatewayChallengeHandler.canHandleResponse()`를 사용하십시오. 여기서 `gatewayChallengeHandler`는 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다. |
+| `wlChallengeHandler.processSucccess()` 여기서 `wlChallengeHandler`는 `WL.Client.createWLChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다. | `securityCheckChallengeHandler.handleSuccess()`를 사용하십시오. 여기서 `securityCheckChallengeHandler`는 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다. |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오. |
+| `WL.Client.AbstractChallengeHandler.submitFailure(err)` | [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel)을 사용하십시오. |
 | `WL.Client.createProvisioningChallengeHandler()` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.
- |
+|
 
 #### 더 이상 사용되지 않는 JavaScript API
 {: #deprecated-javascript-apis }
 
-| API | 마이그레이션 경로 |
+| API| 마이그레이션 경로|
 |-----|----------------|
-| {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | 대신 `WLResourceRequest`를 사용하십시오. 참고: invokeProcedure의 구현은 WLResourceRequest를 사용합니다.  |
-| `WLClient.getEnvironment` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. 참고: device.platform 플러그인이 이 기능을 제공합니다.  |
-| `WL.Client.getLanguage` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. 참고: **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다.  |
-| `WL.Client.connect(options)` | `WLAuthorizationManager.obtainAccessToken`을 사용하여 서버에 대한 연결을 확인하고 애플리케이션 관리 규칙을 적용하십시오.  |
+| {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | 대신 `WLResourceRequest`를 사용하십시오. 참고: invokeProcedure의 구현은 WLResourceRequest를 사용합니다. |
+| `WLClient.getEnvironment` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. 참고: device.platform 플러그인이 이 기능을 제공합니다. |
+| `WL.Client.getLanguage` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. 참고: **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
+| `WL.Client.connect(options)` | `WLAuthorizationManager.obtainAccessToken`을 사용하여 서버에 대한 연결을 확인하고 애플리케이션 관리 규칙을 적용하십시오. |
 
 ## 제거된 컴포넌트
 {: #removed-components }

@@ -70,9 +70,9 @@ Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swif
     - Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen: 
 
       ```xml
-      use_frameworks!
+use_frameworks!
 
-      platform :ios, 8.0
+platform :ios, 8.0
       target "Xcode-project-target" do
           pod 'IBMMobileFirstPlatformFoundation'
       end
@@ -91,7 +91,7 @@ enthält. (Alle Projektabhängigkeiten werden vom CocoaPods-Manager mit Pull üb
 {: #manually-adding-the-mobilefirst-native-sdk }
 Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen: 
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
@@ -165,8 +165,7 @@ Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen:
     ```bash
     mfpdev app register
     ```
-    - Wenn ein ferner Server verwendet wird,
-fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
+    - Wenn ein ferner Server verwendet wird, fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu.
 
     Sie werden aufgefordert, die Bundle-ID anzugeben. **Wichtiger Hinweis**: Bei der Bundle-ID muss die **Groß-/Kleinschreibung beachtet** werden.  
 
@@ -263,13 +262,13 @@ In dieser Datei, die sich im Stammverzeichnis des Projekts befindet, sind die cl
 iOS-App bei {{ site.data.keys.mf_server }}
 definiert.
 
-| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
+| Eigenschaft| Beschreibung | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
-| host        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
-| port        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
-| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
+| protocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
+| host | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
+| port | Port von {{ site.data.keys.mf_server }} | 9080 |
+| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
 
 ## Bitcode und TLS 1.2
 {: #bitcode-and-tls-12 }

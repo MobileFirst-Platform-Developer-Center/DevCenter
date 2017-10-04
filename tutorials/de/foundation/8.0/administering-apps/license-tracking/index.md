@@ -72,8 +72,7 @@ Gehen Sie wie folgt vor, um den Lizenztyp in der {{ site.data.keys.mf_console }}
 3. Legen Sie den **Anwendungstyp** und den **Tokenlizenztyp** fest. 
 4. Klicken Sie auf **Speichern**. 
 
-Wenn Sie den Lizenztyp mit dem Programm mfpadm festlegen möchten, verwenden Sie
-`mfpadm app <App-Name> set license-config <Anwendungstyp> <Tokenlizenztyp>`. 
+Wenn Sie den Lizenztyp mit dem Programm mfpadm festlegen möchten, verwenden Sie `mfpadm app <App-Name> set license-config <Anwendungstyp> <Tokenlizenztyp>`. 
 
 Im folgenden Beispiel werden für die Anwendung
 **my.test.application** die Lizeninformationen B2E/APPLICATION festgelegt. 
@@ -183,11 +182,11 @@ Server zugegriffen werden.
 Je nach Lizenztyp einer Anwendung werden die folgenden
 Features verwendet. 
 
-| Tokenlizenztyp | Featurename | 
+| Tokenlizenztyp| Featurename| 
 |--------------------|--------------|
-| APPLICATION        | 	ibmmfpfa    | 
-| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (kein Feature) | 
+| APPLICATION| 	ibmmfpfa| 
+| ADDITIONAL\_BRAND\_DEPLOYMENT|	ibmmfpabd| 
+| NON_PRODUCTION	| (kein Feature)| 
 
 ## Integration des IBM License Metric Tool
 {: #integration-with-ibm-license-metric-tool }
@@ -282,8 +281,7 @@ als eine Einheit gezählt.
 {: #about-the-addressable_device-metric }
 Die Metrik ADDRESSABLE_DEVICE hat folgenden Subtyp: 
 
-* Application: `<Anwendungsname>`, Category:
-`<Anwendungstyp>`
+* Application: `<Anwendungsname>`, Category: `<Anwendungstyp>`
 
 Der Anwendungstyp ist **B2C**, **B2E** oder
 **UNDEFINED**. Wie der Anwendungstyp für eine Anwendung definiert wird, erfahren Sie unter [Daten der Anwendungslizenz festlegen](#setting-the-application-license-information).

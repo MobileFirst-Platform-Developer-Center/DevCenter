@@ -7,7 +7,7 @@ weight: 1
 <br/>
 O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que modernizam sua experiência de desenvolvimento, implementação e gerenciamento de aplicativos no {{ site.data.keys.product_adj }}.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>API REST atualizada para o tempo de execução</h3>
                 <p>A API REST para o tempo de execução do {{ site.data.keys.product_adj }} agora fornece vários serviços para clientes móveis e clientes confidenciais para chamar adaptadores, obter tokens de acesso, obter conteúdo de Atualização direta e mais. A maioria dos terminais de API REST é protegida por OAuth. Em um servidor de desenvolvimento, é possível visualizar o doc do Swagger para a API de tempo de execução em: <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Suporte de fixação de certificado múltiplo</h3>
+                <p>Iniciando com iFix 8.0.0.0-IF201706240159, o {{ site.data.keys.mf_bm_short }} suporta a fixação de vários certificados. Isso permite que usuários tenham acesso seguro a diversos hosts. Antes desta iFix, o {{ site.data.keys.mf_bm_short }} suportava fixação de um único certificado. O {{ site.data.keys.mf_bm_short }} introduziu uma nova API, que permite conexão com vários hosts, permitindo que o usuário fixe chaves públicas de vários certificados X509 (adquiridas com uma autoridade de certificação) para o aplicativo cliente. Uma cópia de todos os certificados deve ser colocada em seu aplicativo cliente. Durante o handshake SSL, o cliente SDK do {{ site.data.keys.product_full }} verifica se a chave pública do certificado do servidor corresponde à chave pública de um dos certificados armazenados no aplicativo.</p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>Novos recursos do {{ site.data.keys.product }} foram introduzidos para ajudá-lo a implementar e gerenciar seus aplicativos. Agora é possível atualizar seus aplicativos e adaptadores sem reiniciar o {{ site.data.keys.mf_server }}.</p>
 
@@ -470,7 +473,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_app_center }} é suportado pelo Bluemix (baseado em contêineres) por meio de scripts BYOL.</p>
+                <p>O {{ site.data.keys.mf_app_center }} agora é suportado no Bluemix (com base em contêineres) através de scripts BYOL.</p>
             </div>
         </div>
     </div>

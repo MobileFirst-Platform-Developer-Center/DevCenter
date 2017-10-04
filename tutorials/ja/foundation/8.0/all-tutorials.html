@@ -14,7 +14,7 @@ indexed: false
 <div id="container">
     <div class="row">
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="textbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象..." name="q">
                 </div>
@@ -50,8 +50,8 @@ indexed: false
                         測定とエンゲージ
                     </div>
                 </a>
-            </div>  
-        </div>          
+            </div>
+        </div>
     </div>
 </div>
 
@@ -75,7 +75,7 @@ indexed: false
         <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー機能</a></li>
         <li><a href="../product-overview/release-notes">リリース・ノート</a></li>
     </ul>
-    
+
     <h2><a href="../installation-configuration/">インストールおよび構成</a></h2>
     {{ site.data.keys.product_full }} で作業するための開発環境または実稼働環境をセットアップします。
 
@@ -116,7 +116,7 @@ indexed: false
         </li>
         <li><a href="../installation-configuration/production/pure-application">IBM PureApplication System への {{ site.data.keys.mf_server }} のデプロイ</a></li>
     </ul>
-    
+
     <h2><a href="../administering-apps/">アプリケーションの管理</a></h2>
     {{ site.data.keys.product_full }} では、開発や実稼働で {{ site.data.keys.product_adj }} アプリケーションを管理するいくつかの方法を提供します。
 
@@ -127,8 +127,8 @@ indexed: false
         <li><a href="../administering-apps/using-cli/">コマンド・ラインを使用したアプリケーションの管理</a></li>
         <li><a href="../administering-apps/federal/">{{ site.data.keys.product }} での連邦標準サポート</a></li>
         <li><a href="../administering-apps/license-tracking/">ライセンス・トラッキング</a></li>
-    </ul> 
-    
+    </ul>
+
     <h2 id="upgrading_to_current_version"><a href="../upgrading/">{{ site.data.keys.product_full }} {{ site.data.keys.product_version }} へのアップグレード</a></h2>
     {{ site.data.keys.product_adj }} アプリケーションのマイグレーションを準備および計画するために、製品の変更について説明します。
 
@@ -150,9 +150,9 @@ indexed: false
             </ul>
         </li>
     </ul>
-    
+
     <hr id="start-here"/>
-    
+
     <h2><a href="../quick-start/">クイック・スタート</a></h2>
     {{ site.data.keys.product }} の感触をつかみます。
 
@@ -164,7 +164,7 @@ indexed: false
         <li><a href="../quick-start/web/">Web アプリケーションでのクイック・スタート</a></li>
         <li><a href="../quick-start/xamarin/">Xamarin でのクイック・スタート</a></li>
     </ul>
-    
+
     <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK の追加</a></h2>
     {{ site.data.keys.product }} SDK を Cordova、またはネイティブ iOS、Android、Windows 8.1 Universal、Windows 10 UWP のアプリケーションに追加します。
 
@@ -176,7 +176,7 @@ indexed: false
         <li><a href="../application-development/sdk/web/">{{ site.data.keys.product }} SDK の Web アプリケーションへの追加</a></li>
         <li><a href="../application-development/sdk/xamarin/">{{ site.data.keys.product }} SDK の Xamarin アプリケーションへの追加</a></li>
     </ul>
-    
+
     <hr id="get-sdk-and-apis"/>
 
     <h2><a href="../application-development">アプリケーションの開発</a></h2>
@@ -230,7 +230,7 @@ indexed: false
         <li><a href="../application-development/watchos/">Apple watchOS 2 の開発</a></li>
         <li><a href="../application-development/simple-data-sharing/">単純データ共有</a></li>
     </ul>
-    
+
     <h2><a href="../adapters/">アダプターの開発</a></h2>
     エンタープライズ・バックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
 
@@ -266,7 +266,7 @@ indexed: false
         <li><a href="../adapters/advanced-adapter-usage-mashup/">アダプターの高度な使用方法とマッシュアップ</a></li>
         <li><a href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a></li>
     </ul>
-    
+
     <hr id="implement-authentication-and-security"/>
 
     <h2><a href="../authentication-and-security/">認証およびセキュリティー</a></h2>
@@ -352,7 +352,7 @@ indexed: false
         <li><a href="../notifications/analytics/">プッシュ通知のための Analytics サポートのセットアップ</a></li>
         <li><a href="../notifications/rest-apis/">プッシュ・サービス REST API</a></li>
     </ul>
-    
+
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
     デプロイされたアプリケーションとアダプターのモニター、アプリケーションの使用状況の洞察、発生したエラーの検出、その他を行います。
 
@@ -373,7 +373,7 @@ indexed: false
         </li>
         <li><a href="../analytics/workflows/">Analytics ワークフロー</a></li>
     </ul>
-    
+
     <h2><a href="../bluemix">Bluemix 上 の Foundation</a></h2>
     Bluemix を使用して、{{ site.data.keys.product }} をクラウドにデプロイします。
 
@@ -394,7 +394,7 @@ indexed: false
             </ul>
         </li>
     </ul>
-    
+
     <h2><a href="../appcenter">Application Center</a></h2>
     IBM MoblieFirst Foundation Application Center をインストールおよび構成し、使用します。
 
@@ -408,7 +408,7 @@ indexed: false
         <li><a href="../appcenter/logging-and-tracing">アプリケーション・サーバーでの Application Center のロギングとトレースの設定</a></li>
         <li><a href="../appcenter/app-center-tutorial/">Application Center を使用したモバイル・アプリケーション配布のチュートリアル</a></li>
     </ul>
-    
+
     <h2><a href="../troubleshooting/">共通問題のトラブルシューティング</a></h2>
     よくある質問と、それに対する回答です。
 
@@ -417,7 +417,7 @@ indexed: false
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
     </ul>
-    
+
     <h2><a href="../../../../en/product-integration/8.0">製品の統合</a></h2>
     {{ site.data.keys.product }} 8.0 アプリケーションの他の IBM 製品との統合
 

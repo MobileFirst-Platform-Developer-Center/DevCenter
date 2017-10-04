@@ -99,8 +99,8 @@ Wenn Sie in Ihrer Anwendung eine Sicherheitsüberprüfung verwenden, können Sie
 {: #schema-and-segments }
 Die Anzeige "Einstellungen für Liveaktualisierung" umfasst zwei Registerkarten: 
 
-#### Schema
-{: #schema }
+#### Was ist ein Schema?
+{: #what-is-schema }
 In einem Schema sind Features und Eigenschaften definiert.   
 
 * Mit "features" können Sie konfigurierbare Anwendungsfeatures definieren und deren Standardwerte festlegen.   
@@ -338,7 +338,7 @@ um zu entscheiden, zu welchem Segment der Endbenutzer gehört. Das ermittelte Se
 
 Wenn Sie die einzelnen Konfigurationsparameter abrufen möchten, senden Sie die Anforderung über die API für Liveaktualisierung: 
 
-#### Cordova
+#### Cordova-Resolver
 {: cordova-resolver }
 ```javascript
 var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
@@ -484,17 +484,17 @@ public class ResolverAdapterData {
 
 | **Attribut** |  **Wert**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
-| *URL*           | /segment                                                                                          |
-| *Method*        | POST                                                                                              |               
-| *Content-type*  | application/json                                                                                  |
-| *Body*          | &lt;JSON-Objekt mit allen erforderlichen Informationen für die Segmentauflösung&gt;                     |
+| *URL*           | /segment|
+| *Method*        | POST|               
+| *Content-type*  | application/json|
+| *Body*          | &lt;JSON-Objekt mit allen erforderlichen Informationen für die Segmentauflösung&gt; |
 
 **Antwort**
 
-|  **Attribut**   |  **Wert**                                |
+|  **Attribut** |  **Wert**                                                                                     |
 |:-------------------|:--------------------------------------------|
-| *Content-type*     | text/plain                                  |                                                                          
-| *Body*             |  &lt;Zeichenfolge mit einer Beschreibung der Segment-ID&gt;   |
+| *Content-type*  | text/plain |                                                                          
+| *Body*             |  &lt;Zeichenfolge mit einer Beschreibung der Segment-ID&gt; |
 
 
 ## Themen für Fortgeschrittene
@@ -550,7 +550,7 @@ Sie können das Caching inaktivieren, wenn häufigere Aktualisierungen erforderl
 
 #### Cordova
 {: #cordova-caching }
-Den clientseitigen Cache können Sie mit einem optionalen booleschen Flag (*useClientCache*) steuern: 
+Den clientseitigen Cache können Sie mit einem optionalen booleschen Flag (_useClientCache_) steuern: 
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };

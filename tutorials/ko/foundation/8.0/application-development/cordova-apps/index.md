@@ -85,7 +85,7 @@ Cordova 애플리케이션에 [{{ site.data.keys.product_adj }} Cordova SDK를 �
 
 ## {{ site.data.keys.product_adj }} SDK 시작 플로우
 {: #mobilefirst-sdk-startup-flow }
-<div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="startup-flows" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">
             <h4 class="panel-title">
@@ -159,6 +159,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>닫기 섹션</b></a>
             </div>
@@ -176,22 +177,8 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
             <div class="panel-body">
                 <p>iOS 플랫폼에서 {{ site.data.keys.product_adj }} 프레임워크가 초기화되어 {{ site.data.keys.product_adj }}를 사용하여 Cordova 앱에 WebView를 표시합니다. </p>
 
-                <b>main.m</b>
-                <p><code>main.m</code> 파일에서 {{ site.data.keys.product_adj }} 플러그인은 기본 주 애플리케이션 <code>AppDelegate</code>를 <code>MFPAppDelegate</code>로 대체합니다. </p>
-
-{% highlight objc %}
-#import <UIKit/UIKit.h>
-int main(int argc, char *argv[]) {
- @autoreleasepool
-    {    
-        int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
-        return retVal; 
-    }
-}
-{% endhighlight %}
-
-                <b>MFPAppDelegate.m</b>
-                <p><code>MFPAppDelegate.m</code> 파일은 플러그인 폴더에 있습니다. 이는 기본 Cordova <code>AppDelegate.m</code> 파일을 대체하고 보기 제어기에서 WebView를 로드하기 전에 {{ site.data.keys.product_adj }} 프레임워크를 초기화합니다. </p>
+                <b>AppDelegate.m</b>
+                <p><code>AppDelegate.m</code> 파일은 클래스 폴더에 있습니다. 이는 보기 제어기에서 WebView를 로드하기 전에 {{ site.data.keys.product_adj }} 프레임워크를 초기화합니다. </p>
 
                 <p><code>didFinishLaunchingWithOptions</code> 메소드는 프레임워크를 초기화합니다. </p>
 
@@ -199,7 +186,7 @@ int main(int argc, char *argv[]) {
 [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
 {% endhighlight %}
 
-                <p>초기화에 성공하면 <code>wlInitWebFrameworkDidCompleteWithResult</code>는 {{ site.data.keys.product_adj }} 프레임워크가 로드되었는지 확인하고 <code>wlInitDidCompleteSuccessfully</code>를 호출하며 데이터 수신에 필요한 리스너를 작성합니다. <code>wlInitDidCompleteSuccessfully</code>는 기본 <b>index.html</b> 페이지에 연결되는 <code>cordovaViewController</code>를 작성합니다. </p>
+                <p>초기화에 성공하면 <code>wlInitWebFrameworkDidCompleteWithResult</code>는 {{ site.data.keys.product_adj }} 프레임워크가 로드되었는지 확인하고 기본 <b>index.html</b> 페이지에 연결하는 <code>MainViewController</code>를 작성합니다. </p>
 
                 <p>iOS Cordova 앱이 오류 없이 Xcode에 빌드되면 고유 플랫폼과 WebView에 기능을 추가할 수 있습니다. </p>
 
@@ -281,7 +268,7 @@ Cordova 구성 파일은 애플리케이션 메타 데이터를 포함하고 앱
 
 {{ site.data.keys.product_adj }} 템플리트를 사용하지 않는 경우 기본적으로 표시되는 스플래시 이미지는 {{ site.data.keys.product }} 플러그인에서 사용하는 이미지입니다. 기본 {{ site.data.keys.product_adj }} 소스 스플래시 이미지의 파일 이름은 **splash-string.9.png** 양식으로 되어 있습니다. 
 
-> 고유 스플래시 이미지 사용에 대한 자세한 정보는 [Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가](adding-images-and-icons)를 참조하십시오.
+> 고유 스플래시 이미지 사용에 대한 자세한 정보는 [Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가](adding-images-and-icons)를 참조하십시오. 
 
 ### 애플리케이션 아이콘
 {: #application-icons }
@@ -293,7 +280,7 @@ Cordova 구성 파일은 애플리케이션 메타 데이터를 포함하고 앱
 
 기본 이미지를 사용자 고유 이미지로 대체할 수 있습니다. 사용자 정의 애플리케이션 이미지는 대체할 기본 애플리케이션 이미지의 크기와 일치해야 하며 동일한 파일 이름을 사용해야 합니다. 여러 디스플레이 및 운영 체제 버전에 적합한 다양한 기본 이미지가 제공됩니다. 
 
-> 고유 스플래시 이미지 사용에 대한 자세한 정보는 [Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가](adding-images-and-icons)를 참조하십시오.
+> 고유 스플래시 이미지 사용에 대한 자세한 정보는 [Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가](adding-images-and-icons)를 참조하십시오. 
 
 ### 스타일시트
 {: #stylesheets }
@@ -321,7 +308,7 @@ iOS 시뮬레이터, Android 에뮬레이터, Windows 에뮬레이터 또는 물
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **보안 제한사항:** 웹 자원을 미리 볼 수는 있지만 시뮬레이터에서는 일부 {{ site.data.keys.product_adj }} JavaScript API가 지원되지 않습니다. 특히 OAuth 프로토콜은 제한적으로 지원됩니다. 그러나 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다. 이 경우
 >
-> * 서버 측에서 보안 검사가 실행되지 않으며 {{ site.data.keys.mf_mbs }}에서 실행되는 클라이언트에 보안 인증 확인이 전송되지 않습니다.
+> * 서버 측에서 보안 검사가 실행되지 않으며 {{ site.data.keys.mf_mbs }}에서 실행되는 클라이언트에 보안 인증 확인이 전송되지 않습니다. 
 > * 개발 환경에서 {{ site.data.keys.mf_server }}를 사용하지 않는 경우 허용되는 범위 목록에 어댑터의 범위가 포함되어 있는 기밀 클라이언트를 등록하십시오. {{ site.data.keys.mf_console }}에서 런타임/설정 메뉴를 사용하여 기밀 클라이언트를 정의할 수 있습니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오.
 >
 > **참고:** 개발 환경의 {{ site.data.keys.mf_server }}에는 허용 범위가 무제한("*")인 기밀 클라이언트 "테스트"가 포함되어 있습니다. 기본적으로 mfpdev app preview는 이 기밀 클라이언트를 사용합니다.
@@ -366,22 +353,22 @@ Simple Browser 미리보기에서는 애플리케이션의 웹 자원이 "앱"�
 
 ### 실시간 미리보기
 {: #live-preview }
-이제 실시간 미리보기를 사용하여 애플리케이션 코드(HTML, CSS 및 JS)를 실시간으로 편집할 수 있습니다.    
-자원을 변경한 후에 변경사항을 저장하면 브라우저에 즉시 반영됩니다. 
+이제 실시간 미리보기를 사용하여 애플리케이션 코드(HTML, CSS 및 JS)를 실시간으로 편집할 수 있습니다.
+자원을 변경한 후에 변경사항을 저장하면 브라우저에 즉시 반영됩니다.
 
 ### 실시간 다시 로드
 {: #live-reload }
-물리적 디바이스 또는 시뮬레이터/에뮬레이터에서 미리 보는 동안 유사한 효과를 얻으려면 **cordova-plugin-livereload** 플러그인을 추가하십시오. 사용법 지시사항은 [플러그인 GitHub 페이지를 참조](https://github.com/omefire/cordova-plugin-livereload)하십시오. 
+물리적 디바이스 또는 시뮬레이터/에뮬레이터에서 미리 보는 동안 유사한 효과를 얻으려면 **cordova-plugin-livereload** 플러그인을 추가하십시오. 사용법 지시사항은 [플러그인 GitHub 페이지를 참조](https://github.com/omefire/cordova-plugin-livereload)하십시오.
 
 ### 에뮬레이터 또는 물리적 디바이스에서 애플리케이션 실행
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-애플리케이션을 에뮬레이트하려면 Cordova CLI 명령 `cordova emulate ios|android|windows`를 실행하십시오. 예: 
+애플리케이션을 에뮬레이트하려면 Cordova CLI 명령 `cordova emulate ios|android|windows`를 실행하십시오. 예:
 
 ```bash
 cordova emulate ios
 ```
 
-개발 워크스테이션에 연결된 물리적 디바이스에서 애플리케이션을 실행하려면 Cordova CLI 명령 `cordova run ios|android|windows`를 실행하십시오. 예: 
+개발 워크스테이션에 연결된 물리적 디바이스에서 애플리케이션을 실행하려면 Cordova CLI 명령 `cordova run ios|android|windows`를 실행하십시오. 예:
 
 ```bash
 cordova run ios
@@ -389,33 +376,33 @@ cordova run ios
 
 ## JavaScript 코드 구현
 {: #implementing-javascript-code }
-JavaScript에 대한 자동 완성 기능을 제공하는 IDE를 사용하여 보다 편리하게 WebView 자원을 편집할 수 있습니다. 
+JavaScript에 대한 자동 완성 기능을 제공하는 IDE를 사용하여 보다 편리하게 WebView 자원을 편집할 수 있습니다.
 
-Xcode, Android Studio 및 Visual Studio는 Objective C, Swift, C# 및 Java 편집에 사용되는 완전한 편집 기능을 제공하지만 JavaScript 편집을 지원하는 방법에 제한사항이 있을 수 있습니다. {{ site.data.keys.product_adj }} Cordova 프로젝트에는 {{ site.data.keys.product_adj }} API 요소에 대한 자동 완성 기능을 제공하는 정의 파일이 포함되어 JavaScript 편집을 용이하게 합니다. 
+Xcode, Android Studio 및 Visual Studio는 Objective C, Swift, C# 및 Java 편집에 사용되는 완전한 편집 기능을 제공하지만 JavaScript 편집을 지원하는 방법에 제한사항이 있을 수 있습니다. {{ site.data.keys.product_adj }} Cordova 프로젝트에는 {{ site.data.keys.product_adj }} API 요소에 대한 자동 완성 기능을 제공하는 정의 파일이 포함되어 JavaScript 편집을 용이하게 합니다.
 
-각 {{ site.data.keys.product_adj }} Cordova 플러그인에서는 각 {{ site.data.keys.product_adj }} JavaScript 파일에 대한 `d.ts` 구성 파일을 제공합니다. `d.ts` 파일 이름은 해당 JavaScript 파일 이름과 일치하며 플러그인 폴더 내에 있습니다. 예를 들어 기본 {{ site.data.keys.product_adj }} SDK의 경우 파일 위치는 **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**입니다. 
+각 {{ site.data.keys.product_adj }} Cordova 플러그인에서는 각 {{ site.data.keys.product_adj }} JavaScript 파일에 대한 `d.ts` 구성 파일을 제공합니다. `d.ts` 파일 이름은 해당 JavaScript 파일 이름과 일치하며 플러그인 폴더 내에 있습니다. 예를 들어 기본 {{ site.data.keys.product_adj }} SDK의 경우 파일 위치는 **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**입니다.
 
-`d.ts` 구성 파일은 TypeScript가 지원되는 모든 IDE([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript))에 자동 완성 기능을 제공합니다. 
+`d.ts` 구성 파일은 TypeScript가 지원되는 모든 IDE([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript))에 자동 완성 기능을 제공합니다.
 
-WebView의 자원(HTML 및 JavaScript 파일)은 **[myapp]\www** 폴더에 있습니다. cordova build 명령으로 프로젝트가 빌드되거나 cordova prepare 명령이 실행되면 이러한 자원은 **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www** 또는 **[myapp]\platforms\windows\www** 폴더 내의 해당 **www** 폴더에 복사됩니다. 
+WebView의 자원(HTML 및 JavaScript 파일)은 **[myapp]\www** 폴더에 있습니다. cordova build 명령으로 프로젝트가 빌드되거나 cordova prepare 명령이 실행되면 이러한 자원은 **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www** 또는 **[myapp]\platforms\windows\www** 폴더 내의 해당 **www** 폴더에 복사됩니다.
 
-이전 IDE 중 하나를 사용하여 기본 앱 폴더를 여는 경우 컨텍스트가 유지됩니다. 이제 IDE 편집기가 관련 `d.ts` 파일에 링크되어 입력 시 {{ site.data.keys.product_adj }} API 요소를 자동 완성합니다. 
+이전 IDE 중 하나를 사용하여 기본 앱 폴더를 여는 경우 컨텍스트가 유지됩니다. 이제 IDE 편집기가 관련 `d.ts` 파일에 링크되어 입력 시 {{ site.data.keys.product_adj }} API 요소를 자동 완성합니다.
 
 ## Android에 대한 CrossWalk 지원
 {: #crosswalk-support-for-android }
-Android 플랫폼용 Cordova 애플리케이션은 기본 WebView를 [CrossWalk WebView](https://crosswalk-project.org/)로 대체할 수 있습니다.   
-이를 추가하려면 다음을 수행하십시오. 
+Android 플랫폼용 Cordova 애플리케이션은 기본 WebView를 [CrossWalk WebView](https://crosswalk-project.org/)로 대체할 수 있습니다.
+이를 추가하려면 다음을 수행하십시오.
 
-1. **명령행**에서 다음 명령을 실행하십시오. 
+1. **Command-line** 에서 다음 명령을 실행하십시오.
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
-   이 명령은 애플리케이션에 CrossWalk WebView를 추가합니다.   
-    백그라운드에서 {{ site.data.keys.product_adj }} Cordova SDK는 CrossWalk WebView를 사용하도록 Android 프로젝트 활동을 조정합니다.
+   이 명령은 애플리케이션에 CrossWalk WebView를 추가합니다.
+   백그라운드에서 {{ site.data.keys.product_adj }} Cordova SDK는 CrossWalk WebView를 사용하도록 Android 프로젝트 활동을 조정합니다.
 
-2. 다음 명령을 실행하여 프로젝트를 빌드하십시오. 
+2. 다음 명령을 실행하여 프로젝트를 빌드하십시오.
 
    ```bash
    cordova build
@@ -423,19 +410,19 @@ Android 플랫폼용 Cordova 애플리케이션은 기본 WebView를 [CrossWalk 
 
 ## iOS에 대한 WKWebView 지원
 {: #wkwebview-support-for-ios }
-Cordova iOS 애플리케이션에서 사용되는 기본 UIWebView를 [Apple의 WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/)로 대체할 수 있습니다.   
-추가하려면 명령행 창에서 `cordova plugin add cordova-plugin-wkwebview-engine` 명령을 실행하십시오. 
+Cordova iOS 애플리케이션에서 사용되는 기본 UIWebView를 [Apple의 WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/)로 대체할 수 있습니다.
+추가하려면 명령행 창에서 `cordova plugin add cordova-plugin-wkwebview-engine` 명령을 실행하십시오.
 
-> [Cordova WKWebView 플러그인](https://github.com/apache/cordova-plugin-wkwebview-engine)에 대해 자세히 알아보십시오. 
+> [Cordova WKWebView 플러그인](https://github.com/apache/cordova-plugin-wkwebview-engine)에 대해 자세히 알아보십시오.
 
 ## 추가 참조
 {: #further-reading }
-다음 항목에서 Cordova에 대해 자세히 알아보십시오. 
+다음 항목에서 Cordova에 대해 자세히 알아보십시오.
 
 - [Cordova 개요](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
 - [Cordova 우수 사례, 테스트, 디버깅, 고려사항 및 최신 상태 유지](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
-- [Cordova 애플리케이션 개발 시작하기](https://cordova.apache.org/#getstarted)
+- [Cordova 애플리케이션 개발 시작](https://cordova.apache.org/#getstarted)
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-[Cordova 애플리케이션에 MobileFirst SDK 추가](../../application-development/sdk/cordova)에서 시작하고 [모든 학습서](../../all-tutorials/) 섹션의 {{ site.data.keys.product_adj }}에서 제공하는 기능을 검토하십시오. 
+[Cordova 애플리케이션에 MobileFirst SDK 추가](../../application-development/sdk/cordova)에서 시작하고 [모든 학습서](../../all-tutorials/) 섹션의 {{ site.data.keys.product_adj }}에서 제공하는 기능을 검토하십시오.

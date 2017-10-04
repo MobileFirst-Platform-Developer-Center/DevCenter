@@ -33,8 +33,8 @@ weight: 10
 MBS를 사용하려면 **명령행** 창을 열고 다음 명령을 입력하십시오. 
 
 ```bash
-mfpdev app preview
-```
+    mfpdev app preview
+    ```
 
 애플리케이션이 여러 개의 플랫폼으로 구성된 경우 미리 볼 플랫폼을 다음과 같이 지정하십시오. 
 
@@ -77,7 +77,7 @@ Apache Ripple™은 모바일 웹 애플리케이션의 디버깅에 사용되�
 Ripple이 설치된 후에 Cordova 프로젝트 위치에서 터미널을 열고 다음을 입력하십시오. 
 
 ```bash
-ripple emulate
+ripple 에뮬레이트
 ```
 
 ![Ripple 에뮬레이터](Ripple2.png)

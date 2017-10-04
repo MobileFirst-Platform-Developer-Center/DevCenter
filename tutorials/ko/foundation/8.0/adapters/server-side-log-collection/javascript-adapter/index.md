@@ -12,8 +12,7 @@ relevantTo: [ios,android,windows,javascript]
 ## 로깅 예제
 {: #logging-example }
 
-아래 메시지는 애플리케이션 서버의 `trace.log` 파일에 출력됩니다. 서버 관리자가 로그를 {{ site.data.keys.mf_server }}에서
-{{ site.data.keys.mf_analytics_server }}로 전달 중인 경우 `logger` 메시지가 {{ site.data.keys.mf_analytics_console }}의 **인프라스트럭처 → 서버 로그 검색** 보기에도 표시됩니다. 
+아래 메시지는 애플리케이션 서버의 `trace.log` 파일에 출력됩니다. 서버 관리자가 로그를 {{ site.data.keys.mf_server }}에서 {{ site.data.keys.mf_analytics_server }}로 전달 중인 경우 `logger` 메시지가 {{ site.data.keys.mf_analytics_console }}의 **인프라스트럭처 → 서버 로그 검색** 보기에도 표시됩니다. 
 
 ```javascript
 MFP.Logger.debug("This is a debug message from a JavaScript adapter");

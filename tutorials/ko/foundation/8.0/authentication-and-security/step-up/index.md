@@ -1,23 +1,23 @@
 ---
 layout: tutorial
 title: 인증 설정
-breadcrumb_title: 인증 설정
+breadcrumb_title: 인증 설정n
 relevantTo: [android,ios,windows,javascript]
 weight: 5
-다운로드:
-  - 이름: Cordova 프로젝트 다운로드
+downloads:
+  - name: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - 이름: iOS Swift 프로젝트 다운로드
+  - name: iOS Swift 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - 이름: Android 프로젝트 다운로드
+  - name: Android 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - 이름: Win8 프로젝트 다운로드
+  - name: Win8 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - 이름: Win10 프로젝트 다운로드
+  - name: Win10 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - 이름: 웹 프로젝트 다운로드
+  - name: 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

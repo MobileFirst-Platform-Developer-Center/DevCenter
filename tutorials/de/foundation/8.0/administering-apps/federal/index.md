@@ -225,9 +225,7 @@ onFipsReady: function() {
 Wenn Sie den Wert der Eigenschaft **enableFIPS** definiert haben, müssen Sie einen
 neuen Build der Android-Umgebung erstellen. 
 
-**Hinweis:** Sie müssen das FIPS-Cordova-Plug-in installiert haben, bevor Sie die Eigenschaft
-enableFIPS auf true setzen.
-Andernfalls wird eine Warnung protokolliert, weil der Wert von initOptions gesetzt ist, das optionale Feature
+**Hinweis:** Sie müssen das FIPS-Cordova-Plug-in installiert haben, bevor Sie die Eigenschaft enableFIPS auf true setzen. Andernfalls wird eine Warnung protokolliert, weil der Wert von initOptions gesetzt ist, das optionale Feature
 jedoch nicht gefunden wurde. Beide Features, FIPS 140-2 und
 JSONStore, sind unter dem Android-Betriebssystem optional. FIPS 140-2 wird nur für die Verschlüsselung von JSONStore-Daten
 verwendet, wenn das optionale Feature JSONStore ebenfalls aktiviert ist.

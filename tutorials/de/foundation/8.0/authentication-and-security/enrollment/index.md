@@ -179,7 +179,7 @@ die Berechtigungsnachweise mit dem gespeicherten Attribut **pinCode** verglichen
 
 protected boolean validateCredentials(Map<String, Object> credentials) {
     PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-    if(credentials!=null && credentials.containsKey("pin")){
+    if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals(attributes.get("pinCode"))){

@@ -72,10 +72,10 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 	* Fügen Sie am Anfang des Tags `manifest` die folgenden Berechtigungen hinzu: 
 
 	  ```xml
-	  <!-- Permissions -->
-      hj<uses-permission android:name="android.permission.WAKE_LOCK" />
+	  <!-- Berechtigungen -->
+      <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-      <!-- GCM Permissions -->
+      <!-- GCM-Berechtigungen -->
       <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
       <permission
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
@@ -113,7 +113,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-
+      
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -133,12 +133,9 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 {: #notifications-api }
 ### MFPPush-Instanz
 {: #mfppush-instance }
-Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie
-ein Feld auf Klassenebene erstellen, z. B. `private MFPPush push = MFPPush.getInstance();`, und dann
-in der gesamten Klasse `push.<API-Aufruf>` aufrufen. 
+Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie ein Feld auf Klassenebene erstellen, z. B. `private MFPPush push = MFPPush.getInstance();`, und dann in der gesamten Klasse `push.<API-Aufruf>` aufrufen. 
 
-Alternativ dazu können Sie `MFPPush.getInstance().<API-Aufruf>` für jede Instanz aufrufen,
-in der Sie auf die Push-API-Methoden zugreifen müssen. 
+Alternativ dazu können Sie `MFPPush.getInstance().<API-Aufruf>` für jede Instanz aufrufen, in der Sie auf die Push-API-Methoden zugreifen müssen. 
 
 ### Abfrage-Handler
 {: #challenge-handlers }
@@ -147,19 +144,21 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 
 > Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/android).
 
+
+
 ### Clientseite
 {: #client-side }
 
-| Java-Methoden | Beschreibung |
+| Java-Methoden| Beschreibung |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext |
-| [`isPushSupported();`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen? |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab  |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf |
+| [`initialize(Context context);`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext|
+| [`isPushSupported();`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen?|
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice|
+| [`getTags(MFPPushResponseListener)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein|
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags|
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
 
 #### Initialisierung
 {: #initialization }
@@ -309,10 +308,9 @@ folgenden Methoden implementieren.
 {: #option-one }
 Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möchten, die folgenden Schritte aus: 
 
-1. Fügen Sie `implements MFPPushNofiticationListener` zur Klassendeklaration hinzu. 
-2. Definieren Sie die Klasse als Listener, indem Sie
-`MFPPush.getInstance().listen(this)` in der Methode `onCreate` aufrufen. 
-2. Anschließend müssen Sie die folgende *erforderliche* Methode hinzufügen: 
+1. Fügen Sie `implements MFPPushNofiticationListener` zur Klassendeklaration hinzu.
+2. Definieren Sie die Klasse als Listener, indem Sie `MFPPush.getInstance().listen(this)` in der Methode `onCreate` aufrufen.
+2. Anschließend müssen Sie die folgende *erforderliche* Methode hinzufügen:
 
    ```java
    @Override
@@ -321,7 +319,7 @@ Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möc
    }
    ```
 
-3. In dieser Methode werden Sie `MFPSimplePushNotification` empfangen und können für die Benachrichtigung das gewünschte Verhalten festlegen. 
+3. In dieser Methode werden Sie `MFPSimplePushNotification` empfangen und können für die Benachrichtigung das gewünschte Verhalten festlegen.
 
 ### Option zwei
 {: #option-two }
@@ -332,8 +330,8 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
     @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Hier Behandlung von Push-Benachrichtigungen
-   }
-   });
+    }
+});
 ```
 
 <img alt="Beispielanwendung" src="notifications-app.png" style="float:right"/>
