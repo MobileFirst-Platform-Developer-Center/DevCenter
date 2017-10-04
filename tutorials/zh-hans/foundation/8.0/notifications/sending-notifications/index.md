@@ -53,8 +53,8 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 如果贵组织的防火墙限制了与因特网之间的流量，那么必须执行以下步骤：  
 
 * 将防火墙配置为允许与 FCM 的连接，以便 FCM 客户机应用程序能够接收消息。
-* 需要打开的端口包括 5228、5229 和 5230。FCM 通常只使用 5228，但有时也会使用 5229 和 5230。 
-* FCM 没有提供特定的 IP，因此您必须允许防火墙接受与 Google ASN 15169 中所列 IP 块中的所有 IP 地址的出站连接。 
+* 需要打开的端口包括 5228、5229 和 5230。FCM 通常只使用 5228，但有时也会使用 5229 和 5230。
+* FCM 没有提供特定的 IP，因此您必须允许防火墙接受与 Google ASN 15169 中所列 IP 块中的所有 IP 地址的出站连接。
 * 确保防火墙接受端口 443 上从 {{ site.data.keys.mf_server }} 到 android.googleapis.com 的出站连接。
 
 <img class="gifplayer" alt="添加 GCM 凭证的图像" src="gcm-setup.png"/>
@@ -127,7 +127,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 1. 装入 {{ site.data.keys.mf_console }}，然后导航至 **[您的应用程序] → 安全性 → 作用域/元素映射**，单击**新建**。
 2. 在**作用域元素**字段中写入“push.mobileclient”。然后，单击**添加**。
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
@@ -135,7 +135,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
@@ -229,7 +229,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 2. 选择安全性检查。然后，单击**添加**。
 
     <img class="gifplayer" alt="已认证的通知" src="authenticated-notifications.png"/>
-    
+
 ## 定义标记
 {: #defining-tags }
 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 标记**中，单击**新建**。  
@@ -252,7 +252,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 
 #### 标记通知
 {: #tag-notifications }
-标记通知是只将预订了特定标记的所有设备作为目标的通知消息。标记表示用户感兴趣的主题，并且能够根据所选兴趣来接收通知。 
+标记通知是只将预订了特定标记的所有设备作为目标的通知消息。标记表示用户感兴趣的主题，并且能够根据所选兴趣来接收通知。
 
 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**按标记划分的设备**，并提供**通知文本**。然后，单击**发送**。
 
@@ -271,7 +271,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 使用 REST API 发送通知时，可以发送所有形式的通知：标记通知、广播通知和已认证的通知。
 
 要发送通知，可使用 POST 向 REST 端点发出请求：`imfpush/v1/apps/<application-identifier>/messages`。  
-示例 URL： 
+示例 URL：
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
@@ -280,23 +280,32 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 > 要查看所有推送通知 REST API，请参阅用户文档中的 [REST API 运行时服务](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)主题。
 #### 通知有效内容
 {: #notification-payload }
-请求可以包含以下有效内容属性： 
+请求可以包含以下有效内容属性：
 
 有效内容属性| 定义
+
 --- | ---
-message | 要发送的警报消息
-settings | 设置是通知的不同属性。target | 目标集可以是使用者标识、设备、平台或标记。
-只可以设置目标之一。deviceIds | 设备标识表示的一组设备。
+message| 要发送的警报消息
+settings| 设置是通知的不同属性。
+target| 目标集可以是使用者标识、设备、平台或标记。
+只可以设置目标之一。
+deviceIds| 设备标识表示的一组设备。
 具有这些标识的设备将收到通知。这是单点广播通知。
-notificationType | 表示用于发送消息的通道（推送/SMS）的整数值。允许的值包括 1（仅推送）、2（仅 SMS）和 3（推送和 SMS）
-platforms | 一组设备平台。运行在这些平台上的设备将收到通知。受支持的值有 A (Apple/iOS)、G (Google/Android) 和 M (Microsoft/Windows)。tagNames | 指定为 tagNames 的一组标记。预订这些标记的设备将收到通知。对基于标记的通知使用此类型的目标。userIds | 通过 userIds 表示的一组要发送通知的用户。
+
+notificationType| 表示用于发送消息的通道（推送/SMS）的整数值。允许的值包括 1（仅推送）、2（仅 SMS）和 3（推送和 SMS）
+platforms| 一组设备平台。运行在这些平台上的设备将收到通知。受支持的值有 A (Apple/iOS)、G (Google/Android) 和 M (Microsoft/Windows)。
+tagNames| 指定为 tagNames 的一组标记。预订这些标记的设备将收到通知。对基于标记的通知使用此类型的目标。
+userIds| 通过 userIds 表示的一组要发送通知的用户。
 这是单点广播通知。
-phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广播通知。
+
+phoneNumber| 用于注册设备和接收通知的电话号码。这是单点广播通知。
+
+
 **推送通知有效内容 JSON 示例**
 
 ```json
 {
-  "message" : {
+    "message" : {
 "alert" : "Test message",
   },
   "settings" : {
@@ -344,13 +353,13 @@ phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广
 出于测试目的，将使用 Postman，如下所述：
 
 1. [配置保密客户机](../../authentication-and-security/confidential-clients/)。   
-    通过 REST API 发送推送通知时，将使用由空格分隔的作用域元素 `messages.write` 和 `push.application.<applicationId>`。
-    
+通过 REST API 发送推送通知时，将使用由空格分隔的作用域元素 `messages.write` 和 `push.application.<applicationId>。`
+
     <img class="gifplayer" alt="配置保密客户机" src="push-confidential-client.png"/>
 
 2. [创建访问令牌](../../authentication-and-security/confidential-clients#obtaining-an-access-token)。  
-    
-    
+
+
 3. 向 **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages** 发出 **POST** 请求
     - 如果使用远程 {{ site.data.keys.product_adj }}，请将 `hostname` 和 `port` 值替换为您自己的值。
     - 使用您自己的值更新应用程序标识值。
@@ -358,7 +367,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广
 4. 设置头：
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - 将“Bearer”后面的值替换为上述步骤 (1) 中的访问令牌值。
-    
+
     ![authorization 头](postman_authorization_header.png)
 
 5. 设置主体：
@@ -372,9 +381,9 @@ phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广
         }
    }
    ```
-    
+
    ![authorization 头](postman_json.png)
-    
+
 在单击**发送**按钮后，设备现在应该收到通知：
 
 ![样本应用程序的图像](notifications-app.png)

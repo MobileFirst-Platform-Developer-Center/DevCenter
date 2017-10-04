@@ -42,7 +42,7 @@ weight: 2
 
 [Java 또는 JavaScript 어댑터를 작성](../../adapters/creating-adapters/)하거나 기존 어댑터를 사용하십시오. 
 
-> Java 어댑터를 작성할 때 기본 템플리트는 어댑터가 **자원**을 제공한다고 가정합니다. 동일한 어댑터에 보안 검사와 자원을 번들할 것인지 아니면 별도 어댑터로 분리할 것인지는 개발자의 선택입니다. 기본 **자원** 구현을 제거하려면 **[AdapterName]Application.java** 및 **[AdapterName]Resource.java** 파일을 삭제하십시오. **adapter.xml**에서도`<JAXRSApplicationClass>` 요소를 제거하십시오. 
+> Java 어댑터를 작성할 때 기본 템플리트는 어댑터가 **자원**을 제공한다고 가정합니다. 동일한 어댑터에 보안 검사와 자원을 번들할 것인지 아니면 별도 어댑터로 분리할 것인지는 개발자의 선택입니다. 기본 **자원** 구현을 제거하려면 **[AdapterName]Application.java** 및 **[AdapterName]Resource.java** 파일을 삭제하십시오. **adapter.xml**에서도 `<JAXRSApplicationClass>` 요소를 제거하십시오.
 
 Java 어댑터의 **adapter.xml** 파일에서 `securityCheckDefinition`라는 XML 요소를 추가하십시오. 예: 
 
@@ -138,8 +138,8 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 
 ### adapter.xml
 {: #adapterxml }
-Java 어댑터 **adapter.xml** 파일의 `<securityCheckDefinition>` 내부에서 하나 이상의 `<property>` 요소를 추가할 수 있습니다.   
-`<property>` 요소는 다음 속성을 가집니다. 
+Java 어댑터 **adapter.xml** 파일의 `<securityCheckDefinition>` 내부에서 하나 이상의 `<property>` 요소를 추가할 수 있습니다.  
+`<property>` 요소는 다음 속성을 사용합니다. 
 
 - **name**: 구성 클래스에서 정의된 특성의 이름입니다. 
 - **defaultValue**: 구성 클래스에서 정의된 기본값을 대체합니다. 

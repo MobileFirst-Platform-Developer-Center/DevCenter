@@ -7,7 +7,7 @@ weight: 1
 downloads:
   - 이름: Cordova 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
-  - 이름: 어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -42,7 +42,8 @@ Cordova 애플리케이션에 JSONStore 플러그인을 추가하려면 다음�
 
 ```javascript
 var collections = {
-    people : {
+
+  people : {
         searchFields: {name: 'string', age: 'integer'}
     }
 };
@@ -120,7 +121,7 @@ else {
   };
   WL.JSONStore.get(collectionName).find(query, options).then(function (res) {
     // handle success - results (array of documents found)
-  }).fail(function (errorObject) {
+}).fail(function (errorObject) {
     // handle failure
   });
 }
@@ -209,6 +210,7 @@ WL.JSONStore.destroy().then(function () {
 
 ```javascript
 var collections = {
+
   people: {
     searchFields: {name: 'string'}
   }
@@ -234,6 +236,7 @@ WL.JSONStore.init(collections, options).then(function () {
 
 ```javascript
 var collections = {
+
   people: {
     searchFields: {name: 'string'}
   }
@@ -291,6 +294,7 @@ function replacePerson(data) {
 {: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {
+
   people : {
     searchFields : {name: 'string', age: 'integer'},
     adapter : {

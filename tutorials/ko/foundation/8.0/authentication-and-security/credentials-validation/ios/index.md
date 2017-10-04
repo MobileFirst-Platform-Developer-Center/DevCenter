@@ -4,10 +4,10 @@ title: iOS 애플리케이션에서 인증 확인 핸들러 구현
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
-다운로드:
-  - 이름: Xcode 프로젝트 다운로드
+downloads:
+  - name: Xcode 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Securing MobilFirst server
+title: Securing MobileFirst server
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

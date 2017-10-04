@@ -1,54 +1,62 @@
 ---
 layout: tutorial
-title: Setting up the iOS development environment
+title: iOS-Entwicklungsumgebung einrichten
 breadcrumb_title: iOS
 relevantTo: [ios,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
+In diesem Lernprogramm wird Entwicklern erklärt, wie iOS-Anwendungen entwickelt und getestet werden. Im Rahmen der erforderlichen Schritte werden Sie sich als Apple-Entwickler registrieren und Xcode installieren. 
 
-#### Support level
+#### Support-Level
 {: #support-level }
 
-* Xcode 7.1 and later
-* iOS 8 and later
+* Xcode ab Version 7.1
+* iOS ab Version 8
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product }} development environment](../mobilefirst/) tutorial.
+**Voraussetzung:** Wenn Sie Ihre iOS-Entwicklungsumgebung
+einrichten, müssen Sie das Lernprogramm [Entwicklungsumgebung der {{ site.data.keys.product }} einrichten](../mobilefirst/) durchgearbeitet haben. 
 
-### Registration
+### Registrierung
 {: #registration }
-1. Register as an iOS developer
- - [Create an Apple ID](https://appleid.apple.com/account) to be used by your organization/team admin.
- - Using the Apple ID, sign-in to the [Apple Developer Member Center](https://developer.apple.com/).
-2. Inside the Member Center > Programs &amp; Add-ons section register for the appropriate program for your organization
+1. Registrieren Sie sich als iOS-Entwickler. 
+ - [Erstellen Sie eine Apple-ID](https://appleid.apple.com/account) für den Administrator Ihrer Organisation bzw. Ihres Teams. 
+ - Melden Sie sich mit der Apple-ID beim [Apple Developer Member Center](https://developer.apple.com/) an.
+2. Registrieren Sie sich unter "Member Center" > "Programs &amp; Add-ons" für das für Ihre Organisation passende Programm. 
 
-> To learn more, [visit the Apple Developer support website](https://developer.apple.com/support/)
+> Weitere Informationen finden Sie auf der Website [Apple Developer Support](https://developer.apple.com/support/). 
 
-### Development
+### Entwicklung
 {: #development }
-To develop either Cordova or Native iOS applications, a [Mac](https://www.apple.com/mac/) workstation needs to be used with [Xcode](https://developer.apple.com/xcode/) installed.
+Für die Entwicklung von Cordova-Anwendungen oder nativen iOS-Anwendungen benötigen
+Sie eine [Mac](https://www.apple.com/mac/)-Workstation mit installiertem [Xcode](https://developer.apple.com/xcode/). 
 
-Xcode provides with it the tools and APIs required to develop applications for the iOS platform, using either Objective-C or Swift programming languages.</p>
+Xcode stellt die erforderlichen Tools und APIs für die Entwicklung von Anwendungen auf der iOS-Plattform unter Verwendung der Programmiersprache Objective-C oder Swift bereit. </p>
 
-![xcode IDE](xcode.png)
+![Xcode-IDE](xcode.png)
 
-Xcode is an IDE which you can use to:
+Xcode ist eine IDE, die folgende Möglichkeiten bietet: 
 
-- Manage your test devices
-- Use the iOS simulator
-- Install apps on iOS devices
-- Develop, debug, test performance, and more
+- Testgeräte verwalten
+- iOS-Simulator verwenden
+- Apps auf iOS-Geräten installieren
+- Entwicklung, Debugging, Leistungstests u. a. 
 
-> To learn more, [visit the iOS Developer Library website](https://developer.apple.com/library/ios/navigation/)
+> Weitere Informationen finden Sie auf der Website [iOS Developer Library](https://developer.apple.com/library/ios/navigation/). 
 
-#### iOS Simulator
+#### iOS-Simulator
 {: #ios-simulator }
-Xcode provides an iOS Simulator to test your application. For a detailed explanation of all available options, see the [About Simulator documentation topic](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html) in the Apple Developers website.
+Xcode stellt einen iOS-Simulator zum Testen Ihrer Anwendung bereit. Ausführliche Erläuterungen zu allen verfügbaren Optionen
+finden Sie
+auf der Website für Apple-Entwickler in der Dokumentation unter [About Simulator](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html). 
 
-## What's Next
+## Weitere Schritte
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and iOS development environment are set up, continue to [Quick Start](../../../quick-start/ios/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+Jetzt, da Sie die {{ site.data.keys.product_adj }}- und iOS-Entwicklungsumgebung eingerichtet haben,
+können Sie zur Kategorie [Schnelleinstieg](../../../quick-start/ios/) wechseln, um
+Erfahrungen mit {{ site.data.keys.product }} zu sammeln, oder zur Kategorie
+[Alle Lernprogramme](../../../all-tutorials), um sich über konkrete Aspekte der
+MobileFirst-Foundation-Entwicklung zu informieren. 
 

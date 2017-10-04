@@ -60,14 +60,13 @@ L'application Web d'exécution d'Analytics doit être redémarrée pour que les 
 Pour définir une propriété JNDI sur WebSphere Application Server Liberty, ajoutez une balise dans le fichier **server.xml** comme suit :
 
 ```xml
-<jndiEntry jndiName="{NOM PROPRIETE}" value="{VALEUR PROPRIETE}}" />
+<jndiEntry jndiName="{PROPERTY NAME}" value="{PROPERTY VALUE}}" />
 ```
 
 Pour définir une propriété JNDI sur Tomcat, ajoutez une balise dans le fichier context.xml comme suit :
 
 ```xml
-<Environment name="{NOM PROPRIETE}" value="{VALEUR PROPRIETE}"
-type="java.lang.String" override="false" />
+<Environment name="{PROPERTY NAME}" value="{PROPERTY VALUE}" type="java.lang.String" override="false" />
 ```
 
 Les propriétés JNDI sur WebSphere Application Server sont disponibles sous forme de variables d'environnement.
@@ -133,7 +132,23 @@ Ces valeurs peuvent être définies avec des unités de temps basiques, comme su
 * 1s = 1 seconde
 * 1ms = 1 milliseconde
 
-> Remarque : si vous procédez à la migration depuis des versions précédentes de {{ site.data.keys.mf_analytics_server }} et que vous avez déjà configuré des propriétés JNDI de durée de vie, voir [Migration des propriétés de serveur utilisées par des versions précédentes de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+Les types de document pris en charge sont les suivants :
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **Remarque :** Si vous procédez à la migration depuis des versions précédentes de {{ site.data.keys.mf_analytics_server }} et que vous avez déjà configuré des propriétés JNDI de durée de vie, voir [Migration des propriétés de serveur utilisées par des versions précédentes de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 {: #elasticsearch }

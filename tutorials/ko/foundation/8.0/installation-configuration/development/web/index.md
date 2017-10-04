@@ -32,7 +32,7 @@ weight: 6
 -   {: #web-app-supported-browsers }
     다음 브라우저 버전용 웹 애플리케이션이 지원됩니다. 버전 번호는 각 브라우저의 완전히 지원되는 버전 중 가장 빠른 버전을 나타냅니다. 
 
-    | 브라우저               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android 브라우저   |
+    | 브라우저| Chrome| Safari<sup>*</sup>   | Internet Explorer| Firefox| Android 브라우저|
     |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
     | **지원되는 버전** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
 

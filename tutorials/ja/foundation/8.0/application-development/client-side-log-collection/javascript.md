@@ -23,14 +23,12 @@ weight: 1
 ### Cordova
 {: #cordova }
 ```javascript
-WL.Logger.config({capture: false});
-```
+WL.Logger.config({ capture: false });```
 
 ### Web
 {: #web }
 ```javascript
-ibmmfpfanalytics.logger.enable(false);
-```
+ibmmfpfanalytics.logger.enable(false);```
 
 ## キャプチャーしたログの送信
 {: #sending-captured-logs }
@@ -41,44 +39,37 @@ ibmmfpfanalytics.logger.enable(false);
 #### Cordova アプリケーション
 {: #cordova-apps }
 
-```javascript
-setInterval(function() {
-    WL.Logger.send();
-}, 60000);
-```
-
-#### Web アプリケーション
-{: #web-apps }
-
-```javascript
-setInterval(function() {
-    ibmmfpfanalytics.logger.send();
-}, 60000);
-```
-
 キャプチャーしたすべてのログが確実に送信されるようにするために、以下のいずれかの方法を検討してください。
 
 * 一定の時間インターバルで `send` メソッドを呼び出す。
 * アプリケーション・ライフサイクル・イベント・コールバック内から `send` メソッドを呼び出す。
 * 以下のようにして、永続ログ・バッファーの最大ファイル・サイズを増やす (バイト単位)。
-
-#### Cordova アプリケーション
-{: #cordova-apps }
+```javascript
+setInterval(function() {
+WL.Logger.send();
+}, 60000);
+```
 
 ```javascript
-WL.Logger.config({ maxFileSize: 150000 });
-```
+WL.Logger.config({ maxFileSize: 150000 });```
 
 #### Web アプリケーション
 {: #web-apps }
+
+```javascript
+setInterval(function() {
+ibmmfpfanalytics.logger.send();
+}, 60000);
+```
+
 Web API の最大ファイル・サイズは 5 mb で変更不可です。
 
 ## 自動ログ送信
 {: auto-log-sending }
 デフォルトでは、自動ログ送信が有効になっています。正常なリソース要求がサーバーに送信されるたびに、キャプチャーされたログも最小で 60 秒の送信間隔で送信されます。自動ログ送信は、クライアントから有効または無効にすることができます。 
 
-#### Cordova アプリケーション
-{: #cordova-apps }
+#### Cordova アプリケーションの場合
+{: #for-cordova-apps }
 有効にするには、以下のようにします。
 
 ```javascript
@@ -88,11 +79,10 @@ WL.Logger.config({autoSendLogs: true});
 無効にするには、以下のようにします。
 
 ```javascript
-WL.Logger.config({autoSendLogs: false});
-```
+WL.Logger.config({autoSendLogs: false});```
 
-#### Web アプリケーション
-{: #web-apps }
+#### Web アプリケーションの場合
+{: #for-web-apps }
 有効にするには、以下のようにします。
 
 ```javascript
@@ -111,13 +101,12 @@ ibmmfpfanalytics.autoSendLogs(false);
 
 パッケージ名が `myApp` で、レベルが ERROR のログのみをキャプチャーする例のステップを以下に示します。
 
-#### Cordova アプリケーション
-{: #cordova-apps }
+#### Cordova アプリケーションの細かい調整
+{: #fine-tuning-cordova-apps }
 1. パッケージ名 `myApp` を指定して、`WL.Logger` インスタンスを使用します。
 
    ```javascript
-   var logger = WL.Logger.create({ pkg: 'MyApp' });
-   ```
+var logger = WL.Logger.create({ pkg: 'MyApp' });```
 
 2. **オプション: **指定されたレベルとパッケージのみにログ・キャプチャーとログ出力をプログラムで制限するフィルターを指定します。
 
@@ -132,33 +121,31 @@ ibmmfpfanalytics.autoSendLogs(false);
 3. **オプション:** サーバー構成プロファイルを取り出して、リモートでフィルターを制御します。
 
 #### Web アプリケーション
-{: #web-apps }
+{: #fine-tuning-web-apps }
 Web SDK では、クライアントがレベルを設定することはできません。サーバー構成プロファイルを取得して構成が変更されるまで、すべてのログがサーバーに送信されます。
 
 ## サーバー構成プロファイルの取り出し
 {: #fetching-server-configuration-profiles }
 ロギング・レベルは、クライアントが設定することも、サーバーから構成プロファイルを取得することによって設定することもできます。{{ site.data.keys.mf_analytics_console }} から、ログ・レベルは、グローバル (すべてのロガー・インスタンス) に設定することも、特定のパッケージ (複数可) に設定することも可能です。{{ site.data.keys.mf_analytics_console }}からのフィルターの構成については、[『ログ・フィルターの構成』](../../../analytics/console/log-filters/)を参照してください。サーバーで設定された構成オーバーライドをクライアントが取り出すには、アプリケーション・ライフサイクル・コールバック内など、定期的に実行されるコード内の場所から `updateConfigFromServer` メソッドを呼び出す必要があります。
 
-#### Cordova アプリケーション
-{: #cordova-apps }
+#### Cordova アプリケーションのサーバー構成プロファイルの取り出し
+{: #fetching-server-configuration-profiles-cordova-apps }
 
 ```javascript
-WL.Logger.updateConfigFromServer();
-```
+WL.Logger.updateConfigFromServer();```
 
-#### Web アプリケーション
-{: #web-apps }
+#### Web アプリケーションのサーバー構成プロファイルの取り出し
+{: #fetching-server-configuration-profiles-web-apps }
 
 ```javascript
-ibmmfpfanalytics.logger.updateConfigFromServer();
-```
+ibmmfpfanalytics.logger.updateConfigFromServer();```
 
 ## ロギングの例
 {: #logging-example }
 ブラウザーの JavaScript コンソール、LogCat、または Xcode コンソールに出力します。
 
-### Cordova
-{: #cordova }
+### Cordova のロギングの例
+{: #logging-example-cordova }
 
 ```javascript
 var MathUtils = function(){
@@ -171,12 +158,12 @@ var MathUtils = function(){
 }();
 ```
 
-### Web
-{: #web }
+### Web のロギングの例
+{: #logging-example-web }
 Web アプリケーションでのロギングについては、前述の例を使用し、それを置き換えてください。
 
 ```javascript
-var logger = WL.Logger.create({pkg: 'MathUtils'});
+  var logger = WL.Logger.create({pkg: 'MathUtils'});
 ```
 
 これを以下に置き換えます。

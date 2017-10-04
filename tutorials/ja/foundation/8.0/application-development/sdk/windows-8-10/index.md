@@ -23,7 +23,7 @@ weight: 4
 #### ジャンプ先:
 {: #jump-to }
 - [{{ site.data.keys.product_adj }} ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
-- [{{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加](#manually-adding-the-mobilefirst-win-native-sdk) 
+- [{{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加](#manually-adding-the-mobilefirst-win-native-sdk)
 - [{{ site.data.keys.product_adj }} ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
 - [生成される {{ site.data.keys.product_adj }} ネイティブ SDK 成果物](#generated-mobilefirst-native-sdk-artifacts)
 - [次に使用するチュートリアル](#tutorials-to-follow-next)
@@ -65,7 +65,7 @@ NuGet は、.NET などの Microsoft 開発プラットフォーム用のパッ�
 
 次のように、{{ site.data.keys.product }} SDK を手動で追加することもできます。
 
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">
@@ -111,8 +111,8 @@ NuGet は、.NET などの Microsoft 開発プラットフォーム用のパッ�
 2. 次のコマンドを実行します:
 
    ```bash
-    mfpdev app register
-    ```
+   mfpdev app register
+   ```
     - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
 `mfpdev app register` CLI コマンドは、まず最初に {{ site.data.keys.mf_server }} に接続してアプリケーションを登録した後、Visual Studio プロジェクトの **strings** フォルダー内にある **mfpclient.resw** ファイルを更新し、これに {{ site.data.keys.mf_server }} を識別するメタデータを追加します。

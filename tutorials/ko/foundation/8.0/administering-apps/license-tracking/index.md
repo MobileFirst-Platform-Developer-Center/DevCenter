@@ -48,8 +48,7 @@ weight: 6
 3. **애플리케이션 유형**과 **토큰 라이센스 유형**을 설정하십시오. 
 4. **저장**을 클릭하십시오. 
 
-mfpadm 프로그램에서 라이센스 유형을 설정하려면
-`mfpadm app <appname> set license-config <application-type> <token license type>`을 사용하십시오. 
+mfpadm 프로그램에서 라이센스 유형을 설정하려면 `mfpadm app <appname> set license-config <application-type> <token license type>`을 사용하십시오.
 
 다음 예제에서는 **my.test.application** 애플리케이션에 라이센스 정보 B2E/APPLICATION을 설정합니다. 
 
@@ -134,11 +133,11 @@ rm password.txt
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 애플리케이션의 토큰 라이센스 유형에 따라 다음과 같은 기능이 사용됩니다. 
 
-| 토큰 라이센스 유형 | 기능 이름 | 
+| 토큰 라이센스 유형| 기능 이름| 
 |--------------------|--------------|
 | APPLICATION        | 	ibmmfpfa    | 
 | ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (기능 없음) | 
+| NON_PRODUCTION	| (기능 없음)| 
 
 ## IBM License Metric Tool과 통합
 {: #integration-with-ibm-license-metric-tool }

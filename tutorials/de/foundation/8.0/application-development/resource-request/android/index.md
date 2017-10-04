@@ -89,8 +89,7 @@ Dieses Array sollte mit `WLResourceRequest.GET` verwendet werden.
 
 ### Formularparameter
 {: #form-parameters }
-Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie
-`.send(HashMap<String, String> formParameters, WLResponseListener)` anstelle von `.send(WLResponseListener)`:  
+Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie `.send(HashMap<String, String> formParameters, WLResponseListener)` anstelle von `.send(WLResponseListener)`:  
 
 ```java
 HashMap formParams = new HashMap();
@@ -98,7 +97,8 @@ formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
 
-#### JavaScript-Adapter
+#### Parameter - JavaScript-Adapter
+{: #parameters-javascript-adapters}
 JavaScript-Adapter verwenden sortierte unbenannte Parameter. Wenn Sie Parameter an einen JavaScript-Adapter übergeben möchten, definieren Sie ein Parameter-Array mit dem Namen `params`:
 
 ```java

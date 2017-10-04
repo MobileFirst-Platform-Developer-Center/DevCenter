@@ -14,7 +14,7 @@ indexed: false
 <div id="container">
     <div class="row">
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="内嵌搜索字段" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="textbox" aria-label="内嵌搜索字段" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="搜索字段" type="text" class="form-control" placeholder="搜索..." name="q">
                 </div>
@@ -46,8 +46,8 @@ indexed: false
                         <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
                         度量与互动</div>
                 </a>
-            </div>  
-        </div>          
+            </div>
+        </div>
     </div>
 </div>
 
@@ -55,7 +55,7 @@ indexed: false
 
 <div id="tutorials-list">
     <h2><a href="../product-overview/">产品概述</a></h2>
-   了解 {{ site.data.keys.product }} 产品。<ul>
+    了解 {{ site.data.keys.product }} 产品。<ul>
         <li><a href="../product-overview/capabilities">主要功能</a></li>
         <li><a href="../product-overview/components">产品组件</a>
             <ul>
@@ -69,9 +69,9 @@ indexed: false
         <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} 的辅助功能</a></li>
         <li><a href="../product-overview/release-notes">发行说明</a></li>
     </ul>
-    
+
     <h2><a href="../installation-configuration/">安装和配置</a></h2>
-设置开发环境或生产环境以使用 {{ site.data.keys.product_full }}。
+    设置开发环境或生产环境以使用 {{ site.data.keys.product_full }}。
     <ul>
         <li><a href="../installation-configuration/development">设置开发环境</a><ul>
                 <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 环境</a>
@@ -106,7 +106,7 @@ indexed: false
         </li>
         <li><a href="../installation-configuration/production/pure-application">在 IBM PureApplication System 上部署 {{ site.data.keys.mf_server }}</a></li>
     </ul>
-    
+
     <h2><a href="../administering-apps/">管理应用程序</a></h2>
     {{ site.data.keys.product_full }} 提供多种方式以用于在开发或生产环境中管理 {{ site.data.keys.product_adj }} 应用程序<ul>
         <li><a href="../administering-apps/deployment">将应用程序部署到测试环境和生产环境</a></li>
@@ -115,8 +115,8 @@ indexed: false
         <li><a href="../administering-apps/using-cli/">通过命令行管理应用程序</a></li>
         <li><a href="../administering-apps/federal/">{{ site.data.keys.product }} 中的联合标准支持</a></li>
         <li><a href="../administering-apps/license-tracking/">许可证跟踪</a></li>
-    </ul> 
-    
+    </ul>
+
     <h2 id="upgrading_to_current_version"><a href="../upgrading/">升级至 {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h2>
     了解产品更改，准备并规划迁移 {{ site.data.keys.product_adj }} 应用程序。<ul>
         <li><a href="../upgrading/migration-cookbook">迁移手册</a></li>
@@ -134,9 +134,9 @@ indexed: false
             </ul>
         </li>
     </ul>
-    
+
     <hr id="start-here"/>
-    
+
     <h2><a href="../quick-start/">快速入门</a></h2>
     体验 {{ site.data.keys.product }}。<ul>
         <li><a href="../quick-start/cordova/">Cordova 快速入门</a></li>
@@ -146,9 +146,9 @@ indexed: false
         <li><a href="../quick-start/web/">Web 应用程序快速入门</a></li>
         <li><a href="../quick-start/xamarin/">Xamarin 快速入门</a></li>
     </ul>
-    
+
     <h2><a href="../application-development/sdk">添加 {{ site.data.keys.product_adj }} SDK</a></h2>
-将 {{ site.data.keys.product }} SDK 添加到 Cordova、本机 iOS、Android、Windows 8.1 Universal 或 Windows 10 UWP 应用程序。<ul>
+    将 {{ site.data.keys.product }} SDK 添加到 Cordova、本机 iOS、Android、Windows 8.1 Universal 或 Windows 10 UWP 应用程序。<ul>
         <li><a href="../application-development/sdk/cordova/">将 {{ site.data.keys.product }} SDK 添加到 Cordova 应用程序</a></li>
         <li><a href="../application-development/sdk/ios/">将 {{ site.data.keys.product }} SDK 添加到 iOS 应用程序</a></li>
         <li><a href="../application-development/sdk/android/">将 {{ site.data.keys.product }} SDK 添加到 Android 应用程序</a></li>
@@ -156,7 +156,7 @@ indexed: false
         <li><a href="../application-development/sdk/web/">将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序</a></li>
         <li><a href="../application-development/sdk/xamarin/">将 {{ site.data.keys.product }} SDK 添加到 Xamarin 应用程序</a></li>
     </ul>
-    
+
     <hr id="get-sdk-and-apis"/>
 
     <h2><a href="../application-development">开发应用程序</a></h2>
@@ -204,7 +204,7 @@ indexed: false
         <li><a href="../application-development/watchos/">针对 Apple watchOS 2 进行开发</a></li>
         <li><a href="../application-development/simple-data-sharing/">简单数据共享</a></li>
     </ul>
-    
+
     <h2><a href="../adapters/">开发适配器</a></h2>
     开发服务器端代码以与企业后端系统和云服务集成。<ul>
         <li><a href="../adapters/">适配器概述</a></li>
@@ -234,7 +234,7 @@ indexed: false
         <li><a href="../adapters/advanced-adapter-usage-mashup/">高级适配器用法和 Mashup</a></li>
         <li><a href="../adapters/cloudant/">使用适配器与 Cloudant 集成</a></li>
     </ul>
-    
+
     <hr id="implement-authentication-and-security"/>
 
     <h2><a href="../authentication-and-security/">认证和安全性</a></h2>
@@ -281,7 +281,7 @@ indexed: false
     <hr id="measure-and-engage"/>
 
     <h2><a href="../notifications">通知</a></h2>
-使用 {{ site.data.keys.product_full }} 发送通知。<ul>
+    使用 {{ site.data.keys.product_full }} 发送通知。<ul>
         <li><a href="../notifications/">通知概述</a></li>
         <li><a href="../notifications/sending-notifications/">发送通知</a></li>
         <li><a href="../notifications/handling-push-notifications/">处理推送通知</a><ul>
@@ -308,9 +308,9 @@ indexed: false
         <li><a href="../notifications/analytics/">对“分析”支持设置推送通知</a></li>
         <li><a href="../notifications/rest-apis/">推送服务 REST API</a></li>
     </ul>
-    
+
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-   监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。<ul>
+    监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。<ul>
         <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} 简介</a></li>
         <li><a href="../analytics/analytics-api/">在客户机应用程序中使用分析 API</a></li>
         <li><a href="../analytics/analytics-rest-api/">使用分析 REST API</a></li>
@@ -326,7 +326,7 @@ indexed: false
         </li>
         <li><a href="../analytics/workflows/">分析工作流程</a></li>
     </ul>
-    
+
     <h2><a href="../bluemix">Bluemix 基础</a></h2>
     使用 Bluemix 将 {{ site.data.keys.product }} 部署到云。<ul>
         <li><a href="../bluemix/">Bluemix 上的 {{ site.data.keys.product_full }} 简介</a></li>
@@ -344,7 +344,7 @@ indexed: false
             </ul>
         </li>
     </ul>
-    
+
     <h2><a href="../appcenter">Application Center</a></h2>
     安装、配置和使用 IBM MoblieFirst Foundation Application Center。<ul>
         <li><a href="../appcenter/">Application Center 概述</a></li>
@@ -356,14 +356,14 @@ indexed: false
         <li><a href="../appcenter/logging-and-tracing">在应用程序服务器上为 Application Center 设置日志记录和跟踪</a></li>
         <li><a href="../appcenter/app-center-tutorial/">“使用 Application Center 分发移动应用程序”教程</a></li>
     </ul>
-    
+
     <h2><a href="../troubleshooting/">对常见问题进行故障诊断</a></h2>
-常见问题及解答。<ul>
+    常见问题及解答。<ul>
         <li><a href="../troubleshooting/notifications">推送通知</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">分析</a></li>
     </ul>
-    
+
     <h2><a href="../../../../en/product-integration/8.0">产品集成</a></h2>
     将 {{ site.data.keys.product }} 8.0 应用程序与其他 IBM 产品集成<ul>
         <li><a href="../../../../en/product-integration/8.0">可用产品集成列表</a></li>

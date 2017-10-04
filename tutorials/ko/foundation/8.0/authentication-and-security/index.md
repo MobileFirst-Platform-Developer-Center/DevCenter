@@ -52,7 +52,7 @@ OAuth 프로토콜은 자원이 호스팅되는 자원 서버와 권한 부여 �
 
 만기 시간이 경과할 때까지 부여된 액세스 토큰은 유효한 상태를 유지합니다. 액세스 토큰의 만기 시간은 범위에 포함된 모든 보안 검사의 만기 시간들 중에서 가장 짧은 만기 시간으로 설정됩니다. 그러나 이 가장 짧은 만기 시간이 애플리케이션의 최대 토큰 만기 기간보다 더 길면 토큰의 만기 시간은 '현재 시간 + 최대 만기 기간'으로 설정됩니다. 기본 최대 토큰 만기 기간(유효성 기간)은 3,600초(1시간)이지만 `maxTokenExpiration` 특성의 값을 설정하여 구성할 수 있습니다. 최대 액세스 토큰 만기 기간 구성을 참조하십시오. 
 
-<div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="configuration-explanation" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
@@ -66,7 +66,7 @@ OAuth 프로토콜은 자원이 호스팅되는 자원 서버와 권한 부여 �
             <ul>
                 <li>{{ site.data.keys.mf_console }} 사용
                     <ul>
-                        <li><b>사용자 애플리케이션] → 보안</b> 탭을 선택하십시오. </li>
+                        <li><b>[사용자 애플리케이션] → 보안</b> 탭을 선택하십시오. </li>
                         <li><b>토큰 구성</b> 섹션에서, <b>토큰 만기 기간(초)</b> 필드의 값을 선호하는 값으로 설정한 다음 <b>저장</b>을 클릭하십시오. 언제든지 이 프로시저를 반복하여 최대 토큰 만기 기간을 변경하거나, <b>기본값 복원</b>을 선택하여 기본값을 복원할 수 있습니다.</li>
                     </ul>
                 </li>
@@ -86,7 +86,7 @@ OAuth 프로토콜은 자원이 호스팅되는 자원 서버와 권한 부여 �
                     </ol>
                 </li>
             </ul>
-                
+
             <br/>
             <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>닫기 섹션</b></a>
             </div>
@@ -94,11 +94,11 @@ OAuth 프로토콜은 자원이 호스팅되는 자원 서버와 권한 부여 �
     </div>
 </div>
 
-<div class="panel-group accordion" id="response-access-token" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="response-access-token" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>액세스 토큰 응답 구조</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>액세스 토큰 응답 구조</b></a>
             </h4>
         </div>
 
@@ -199,7 +199,7 @@ scope = `access-restricted deletePrivilege`
   * `access-restricted`는 `PinCodeAttempts`에 맵핑됩니다.
   * `deletePrivilege`는 `UserLogin`에 맵핑됩니다. 
 
-> 사용자의 범위 요소를 빈 문자열에 맵핑하려면 **새 범위 요소 맵핑 추가** 팝업 메뉴에서 보안 검사를 선택하지 마십시오.
+> 사용자의 범위 요소를 빈 문자열에 맵핑하려면 **새 범위 요소 맵핑 추가** 팝업 메뉴에서 보안 검사를 선택하지 마십시오.  
 
 <img class="gifplayer" alt="범위 맵핑" src="scope_mapping.png"/>
 
@@ -247,8 +247,8 @@ OAuth 모델에서 보호 자원은 액세스 토큰을 요구하는 자원입�
 3.  `mandatoryScope` 특성을 정의하고 특성 값을 선택한 범위 요소의 공백으로 구분된 목록을 포함하는 범위 문자열로 설정하여 파일을 편집하십시오. 예: 
 
     ```xml
-   "mandatoryScope": "appAuthenticity PincodeValidation"
-   ```
+    "mandatoryScope": "appAuthenticity PincodeValidation"
+    ```
 4.  다음 명령 `mfpdev app push`를 실행하여 업데이트된 구성 JSON 파일을 배치하십시오. 
 
 > 또한 원격 서버에 업데이트 구성을 푸시할 수 있습니다. [{{ site.data.keys.product_adj }} 아티팩트를 관리하기 위해 {{ site.data.keys.mf_cli }} 사용](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) 학습서를 검토하십시오.
@@ -429,4 +429,3 @@ JavaScript 어댑터 자원(프로시저)에 대해 OAuth 보호를 완전히 �
 {: #tutorials-to-follow-next }
 
 사이드바 탐색에서 학습서에 따라 {{ site.data.keys.product_adj }} Foundation에서 인증에 대해 읽기를 계속하십시오. 
-

@@ -4,23 +4,23 @@ title: 实时更新
 relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
-  - 名称：下载 Xcode 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
-  - 名称：下载 Android Studio 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
-  - 名称：下载实时更新适配器
-    url：https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
+  - name: 下载 Xcode 项目
+    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
+  - name: 下载 Android Studio 项目
+    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
+  - name: 下载实时更新适配器
+    url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-用户分段是将用户分组的做法，反映每个组的用户之间的相似度。常见示例是[地理分段](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)，也就是按地理划分用户。分段用户的目标是决定如何关联每个分段中的用户以使价值最大化。
+用户分段是将用户分组的做法，反映每个组的用户之间的相似度。 常见示例是[地理分段](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)，也就是按地理划分用户。 分段用户的目标是决定如何关联每个分段中的用户以使价值最大化。
 
-{{ site.data.keys.product }} 中的实时更新功能部件提供一种简单方式以针对应用程序的每个用户分段定义和提供不同的配置。其包含 {{ site.data.keys.mf_console }} 中的组件以供定义配置结构以及每个分段的配置值。另外，随附一个客户机 SDK（适用于 Android 和 iOS **本机**应用程序以及 Cordova 应用程序）以供使用配置。
+{{ site.data.keys.product }} 中的实时更新功能部件提供一种简单方式以针对应用程序的每个用户分段定义和提供不同的配置。 其包含 {{ site.data.keys.mf_console }} 中的组件以供定义配置结构以及每个分段的配置值。 另外，随附一个客户机 SDK（适用于 Android 和 iOS **本机**应用程序以及 Cordova 应用程序）以供使用配置。
 
 #### 常见用例
 {: #common-use-cases }
-实时更新支持定义和使用基于分段的配置，从而易于对应用程序进行基于分段的定制。常见用例可以是：
+实时更新支持定义和使用基于分段的配置，从而易于对应用程序进行基于分段的定制。 常见用例可以是：
 
 * 发行培训和功能部件开关
 * A/B 测试
@@ -57,16 +57,16 @@ downloads:
 * **实时更新适配器：**提供以下功能的适配器：
  - 应用程序模式和分段管理
  - 向应用程序提供配置
-* **分段解析器适配器：***可选*。开发人员实施的定制适配器。适配器接收应用程序上下文（例如，设备和用户上下文以及定制参数）并返回对应于上下文的分段标识。
+* **分段解析器适配器：***可选*。 开发人员实施的定制适配器。 适配器接收应用程序上下文（例如，设备和用户上下文以及定制参数）并返回对应于上下文的分段标识。
 * **客户机端 SDK：**实时更新 SDK 用于从 {{ site.data.keys.mf_server }} 检索和访问配置元素，例如，功能部件和属性。
 * **{{ site.data.keys.mf_console }}：**用于配置实时更新适配器和设置。
-* **配置服务：***内部*。针对实时更新适配器提供配置管理服务。
+* **配置服务：***内部*。 针对实时更新适配器提供配置管理服务。
 
 ## 向 {{ site.data.keys.mf_server }} 添加实时更新
 {: #adding-live-update-to-mobilefirst-server }
-缺省情况下，将隐藏 {{ site.data.keys.mf_console }} 中的“实时更新设置”。要启用，需要部署提供的实时更新适配器。  
+缺省情况下，将隐藏 {{ site.data.keys.mf_console }} 中的“实时更新设置”。 要启用，需要部署提供的实时更新适配器。  
 
-1. 打开 {{ site.data.keys.mf_console }}。从侧边栏，单击**下载中心 → 工具**选项卡。
+1. 打开 {{ site.data.keys.mf_console }}。 从侧边栏，单击**下载中心 → 工具**选项卡。
 2. 下载并部署实时更新适配器。
 
 一旦部署，那么将针对每个已注册的应用程序显示**实时更新设置**屏幕。
@@ -75,9 +75,9 @@ downloads:
 
 ## 配置应用程序安全性
 {: #configuring-application-security }
-为支持与实时更新集成，需要一个作用域元素。如果没有，适配器将拒绝来自客户机应用程序的请求。  
+为支持与实时更新集成，需要一个作用域元素。 如果没有，适配器将拒绝来自客户机应用程序的请求。  
 
-装入 {{ site.data.keys.mf_console }}，然后单击**[您的应用程序] → 安全性选项卡 → 作用域/元素映射**。单击**新建**并输入作用域元素 **configuration-user-login**。然后，单击**添加**。
+装入 {{ site.data.keys.mf_console }}，然后单击**[您的应用程序] → 安全性选项卡 → 作用域/元素映射**。 单击**新建**并输入作用域元素 **configuration-user-login**。 然后，单击**添加**。
 
 在应用程序中使用时，也可以将作用域元素映射到安全性检查。
 
@@ -89,8 +89,8 @@ downloads:
 {: #schema-and-segments }
 “实时更新设置”屏幕上提供两个选项卡：
 
-#### 模式
-{: #schema }
+#### 什么是模式
+{: #what-is-schema }
 模式用于定义功能部件和属性。  
 
 * 使用“功能部件”，您可以定义可配置的应用程序功能部件并设置其缺省值。  
@@ -116,6 +116,7 @@ downloads:
 <br/>
 在决定参数后，可添加“模式功能部件和属性”以及“分段”。  
 要添加，请单击**新建**并提供请求的值。
+
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="schema">
@@ -127,18 +128,20 @@ downloads:
         <div id="collapseSchema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema">
             <div class="panel-body">
                 <ul>
-                    <li><b>功能部件：</b>功能部件确定是启用还是禁用某些部分的应用程序功能。在应用程序模式中定义功能部件时，应提供以下元素：<ul>
-                            <li><i>id</i> - 唯一功能部件标识。字符串，不可编辑。</li>
-                            <li><i>name</i> - 功能部件的描述性名称。字符串，可编辑。</li>
-                            <li><i>description</i> - 功能部件的简短描述。字符串，可编辑。</li>
-                            <li><i>defaultValue</i> - 将提供的功能部件的缺省值，除非在分段内进行覆盖（请参阅以下分段）。布尔值，可编辑。</li>
+                    <li><b>功能部件：</b>功能部件确定是启用还是禁用某些部分的应用程序功能。 在应用程序模式中定义功能部件时，应提供以下元素：
+                        <ul>
+                            <li><i>id</i> - 唯一功能部件标识。 字符串，不可编辑。</li>
+                            <li><i>name</i> - 功能部件的描述性名称。 字符串，可编辑。</li>
+                            <li><i>description</i> - 功能部件的简短描述。 字符串，可编辑。</li>
+                            <li><i>defaultValue</i> - 将提供的功能部件的缺省值，除非在分段内进行覆盖（请参阅以下分段）。 布尔值，可编辑。</li>
                         </ul>
                     </li>
-                    <li><b>属性：</b>属性是一个可用于定制应用程序的“键:值”实体。在应用程序模式中定义属性时，应提供以下元素：<ul>
-                            <li><i>id</i> - 唯一属性标识。字符串，不可编辑。</li>
-                            <li><i>name</i> - 属性的描述性名称。字符串，可编辑。</li>
-                            <li><i>description</i> - 属性的简短描述。字符串，可编辑。</li>
-                            <li><i>defaultValue</i> - 将提供的属性的缺省值，除非在分段内进行覆盖（请参阅以下分段）。字符串，可编辑。</li>
+                    <li><b>属性：</b>属性是一个可用于定制应用程序的“键:值”实体。 在应用程序模式中定义属性时，应提供以下元素：
+                        <ul>
+                            <li><i>id</i> - 唯一属性标识。 字符串，不可编辑。</li>
+                            <li><i>name</i> - 属性的描述性名称。 字符串，可编辑。</li>
+                            <li><i>description</i> - 属性的简短描述。 字符串，可编辑。</li>
+                            <li><i>defaultValue</i> - 将提供的属性的缺省值，除非在分段内进行覆盖（请参阅以下分段）。 字符串，可编辑。</li>
                         </ul>
                     </li>
                 </ul>
@@ -156,10 +159,11 @@ downloads:
         <div id="collapseSegment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="segment">
             <div class="panel-body">
                 <ul>
-                    <li><b>分段：</b>分段是对应于消费群的实体。其包含在模式中定义的功能和属性，可能会覆盖值。在定义分段时，应提供以下元素：<ul>
-                            <li><i>id</i> - 唯一分段标识。字符串，不可编辑。</li>
-                            <li><i>name</i> - 分段的描述性名称。字符串，可编辑。</li>
-                            <li><i>description</i> - 分段的简短描述。字符串，可编辑。</li>
+                    <li><b>分段：</b>分段是对应于消费群的实体。 其包含在模式中定义的功能和属性，可能会覆盖值。 在定义分段时，应提供以下元素：
+                        <ul>
+                            <li><i>id</i> - 唯一分段标识。 字符串，不可编辑。</li>
+                            <li><i>name</i> - 分段的描述性名称。 字符串，可编辑。</li>
+                            <li><i>description</i> - 分段的简短描述。 字符串，可编辑。</li>
                             <li><i>Features</i> - 在模式中定义的功能部件列表，用户可为功能部件设置不同于模式缺省值的静态值。</li>
                             <li><i>Properties</i> - 模式中定义的属性列表，用户可为属性设置不同于模式缺省值的静态值。</li>
                         </ul>
@@ -268,7 +272,7 @@ cordova plugin add cordova-plugin-mfp-liveupdate
     } ,
     function(err) {
         if (err) {
-alert('liveupdate error:'+err);
+           alert('liveupdate error:'+err);
         }
   });
 ```
@@ -304,7 +308,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 });
 ```
 
-利用检索的实时更新配置，可用逻辑和应用程序流程可基于功能部件和属性的状态。例如，如果今天是全国性假日，那么在应用程序中引入新的市场营销促销活动。
+利用检索的实时更新配置，可用逻辑和应用程序流程可基于功能部件和属性的状态。 例如，如果今天是全国性假日，那么在应用程序中引入新的市场营销促销活动。
 
 ### 分段解析器适配器
 {: #segment-resolver-adapter }
@@ -317,11 +321,11 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 2. 在**适配器 → 实时更新适配器 → segmentResolverAdapterName** 中将适配器定义为分段解析器适配器。
 3. 在完成开发后，请记住要[重新构建并部署](../../adapters/creating-adapters/)。
 
-分段解析器适配器可定义 REST 接口。此适配器的请求在其主体中包含所有必需的信息，以决定最终用户所属的分段并将其发送回应用程序。
+分段解析器适配器可定义 REST 接口。 此适配器的请求在其主体中包含所有必需的信息，以决定最终用户所属的分段并将其发送回应用程序。
 
 要通过参数获取配置，请使用实时更新 API 来发送请求：
 
-#### Cordova
+#### Cordova 解析器
 {: cordova-resolver }
 ```javascript
 var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
@@ -331,7 +335,7 @@ LiveUpdateManager.obtainConfiguration(input,function(configuration) {
     } ,
     function(err) {
         if (err) {
-alert('liveupdate error:'+err);
+           alert('liveupdate error:'+err);
         }
   });
 ```
@@ -372,7 +376,7 @@ LiveUpdateManager.getInstance().obtainConfiguration(params , new ConfigurationLi
 
 #### 适配器实现
 {: #adapter-implementation }
-然后，会将应用程序使用实时更新客户机 SDK 提供的参数传递到实时更新适配器，并从此处传递到分段解析器适配器。实时更新适配器自动完成此操作，而无需开发人员执行任何操作。
+然后，会将应用程序使用实时更新客户机 SDK 提供的参数传递到实时更新适配器，并从此处传递到分段解析器适配器。 实时更新适配器自动完成此操作，而无需开发人员执行任何操作。
 
 更新新创建的分段解析器适配器的实现，以处理这些参数，从而返回相关分段。  
 以下是可使用的样本代码。
@@ -466,16 +470,16 @@ public class ResolverAdapterData {
 | **属性** |  **值**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
 | *URL*           | /segment                                                                                          |
-| *方法*        | POST                                                                                              |               
-| *内容类型*  | application/json                                                                                  |
-| *主体*          | &lt;包含分段解析的所有必需信息的 JSON 对象&gt;                     |
+| *Method*        | POST                                                                                              |               
+| *Content-type*  | application/json                                                                                  |
+| *Body*          | &lt;JSON 对象，其中包含要进行分段解析而必需的所有信息&gt;                     |
 
 **响应**
 
-|  **属性**   |  **值**                                |
+|  **属性** |  **值**                             |
 |:-------------------|:--------------------------------------------|
-| *内容类型*     | 文本/纯文本                                  |                                                                          
-| *主体*             |  &lt;描述分段标识的字符串&gt;   |
+| *Content-type*     | text/plain                                  |                                                                          
+| *Body*             |  &lt;描述分段标识的字符串&gt;   |
 
 
 ## 高级主题
@@ -485,7 +489,6 @@ public class ResolverAdapterData {
 在定义模式和分段后，系统管理员可将其导出并导入到其他服务器实例。
 
 #### 导出模式
-
 {: #export-schema }
 ```bash
 curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > schema.txt
@@ -527,12 +530,12 @@ done
 
 ### 高速缓存
 {: #caching }
-缺省情况下，启用高速缓存以避免网络等待时间。这意味着更新可能不会立即发生。  
+缺省情况下，启用高速缓存以避免网络等待时间。 这意味着更新可能不会立即发生。  
 如果需要较频繁的更新，那么可禁用高速缓存。
 
 #### Cordova
 {: #cordova-caching }
-使用可选的 *useClientCache* 布尔标志控制客户机端高速缓存：
+使用可选的 _useClientCache_ 布尔标志控制客户机端高速缓存：
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };
@@ -543,7 +546,7 @@ done
         } ,
         function(err) {
                 if (err) {
-alert('liveupdate error:'+err);
+                   alert('liveupdate error:'+err);
                 }
   });
 ```
@@ -587,7 +590,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 
 ## 示例应用程序
 {: #sample-application }
-在样本应用程序中，选择国家或地区标志并使用实时更新，然后应用程序以对应于选中国家或地区的语言输出文本。如果启用地图功能并提供地图，那么将显示对应国家或地区的地图。
+在样本应用程序中，选择国家或地区标志并使用实时更新，然后应用程序以对应于选中国家或地区的语言输出文本。 如果启用地图功能并提供地图，那么将显示对应国家或地区的地图。
 
 [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) Xcode 项目。  
 [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) Android Studio 项目。
@@ -598,7 +601,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 
 #### 更改实时更新设置
 {: #changing-live-update-settings }
-每个分段从模式获取缺省值。根据语言更改每项。例如，对于法语，添加：**helloText** - **Bonjour le monde**。
+每个分段从模式获取缺省值。 根据语言更改每项。 例如，对于法语，添加：**helloText** - **Bonjour le monde**。
 
 在 **{{ site.data.keys.mf_console }} → [您的应用程序] → 实时更新设置 → 分段选项卡**中，单击所属的**属性**链接，例如，**FR**。
 

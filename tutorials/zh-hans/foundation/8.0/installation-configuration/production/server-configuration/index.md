@@ -25,22 +25,24 @@ weight: 5
 {: #endpoints-of-the-mobilefirst-server-production-server }
 您可以为 IBM {{ site.data.keys.mf_server }} 的端点创建白名单和黑名单。
 
-> **注：**{{ site.data.keys.product }} 所公开的 URL 相关信息将作为准则提供。组织必须根据白名单和黑名单启用的内容，确保在企业基础结构中对这些 URL 进行测试。| API URL（位于 `<runtime context root>/api/` 下） | 描述                               | 针对白名单建议？ |
+> **注：**{{ site.data.keys.product }} 所公开的 URL 相关信息将作为准则提供。组织必须根据白名单和黑名单启用的内容，确保在企业基础结构中对这些 URL 进行测试。
+
+| API URL（位于 `<runtime context root>/api/` 下）| 描述| 针对白名单建议？|
 |---------------------------------------------|-------------------------------------------|--------------------------|
-| /adapterdoc/*	                              | 为指定适配器返回适配器的 Swagger 文档 | 否。仅供管理员和开发人员内部使用 |
-| /adapters/*  | 适配器服务 | 是 |
-| /az/v1/authorization/* | 授权客户机访问特定范围 | 是 |
-| /az/v1/introspection | 反思客户机的访问令牌 | 否。此 API 仅用于保密客户机。 |
-| /az/v1/token | 为客户机生成访问令牌 | 是 |
-| /clientLogProfile/* | 获取客户机日志概要文件 | 是 |
-| /directupdate/* | 获取直接更新 .zip 文件 | 是，如果您计划使用“直接更新” |
-| /loguploader | 将客户机日志上载到服务器 | 是 |
-| /preauth/v1/heartbeat | 接受客户机的脉动信号，并注意上一次活动时间 | 是 |
-| /preauth/v1/logout | 注销安全性检查 | 是 |
-| /preauth/v1/preauthorize | 为特定范围映射和执行安全性检查 | 是 |
-| /reach | 服务器可访问 | 否，仅供内部使用 |
-| /registration/v1/clients/* | 注册服务客户机 API | 否。此 API 仅用于保密客户机。 |
-| /registration/v1/self/* | 注册服务客户机自注册 API | 是 |
+| /adapterdoc/*	                              | 为指定适配器返回适配器的 Swagger 文档| 否。仅供管理员和开发人员内部使用|
+| /adapters/*| 适配器服务| 是|
+| /az/v1/authorization/*| 授权客户机访问特定范围| 是|
+| /az/v1/introspection| 反思客户机的访问令牌| 否。此 API 仅用于保密客户机。|
+| /az/v1/token| 为客户机生成访问令牌| 是|
+| /clientLogProfile/*| 获取客户机日志概要文件| 是|
+| /directupdate/*| 获取直接更新 .zip 文件| 是，如果您计划使用“直接更新”|
+| /loguploader| 将客户机日志上载到服务器| 是|
+| /preauth/v1/heartbeat| 接受客户机的脉动信号，并注意上一次活动时间| 是|
+| /preauth/v1/logout| 注销安全性检查| 是|
+| /preauth/v1/preauthorize| 为特定范围映射和执行安全性检查| 是|
+| /reach| 服务器可访问| 否，仅供内部使用|
+| /registration/v1/clients/*| 注册服务客户机 API| 否。此 API 仅用于保密客户机。|
+| /registration/v1/self/*| 注册服务客户机自注册 API| 是|
 
 ## 配置 {{ site.data.keys.mf_server }} 以启用 TLS V1.2
 {: #configuring-mobilefirst-server-to-enable-tls-v12 }
@@ -53,7 +55,8 @@ weight: 5
 
 ### Apache Tomcat
 {: #apache-tomcat }
-1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。确保您具有以下某个 JRE 版本：
+1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。
+    确保您具有以下某个 JRE 版本：
     * Oracle JRE 1.7.0_75 或更高版本
     * Oracle JRE 1.8.0_31 或更高版本
 2. 编辑 **conf/server.xml** 文件，并修改用于声明 HTTPS 端口的 `Connector` 元素，以使 **sslEnabledProtocols** 属性具有以下值：`sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"`。
@@ -76,8 +79,8 @@ weight: 5
 1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。
 
     确保针对 POODLE 漏洞对 IBM Java SDK 打好补丁。您可以在 [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173) 中找到包含 WebSphere Application Server 版本补丁的最低的 IBM Java SDK 版本。
-        > **注：**您可以使用安全公告中所列的版本或更高版本。
-2. 登录到 WebSphere Application Server 管理控制台，然后单击**安全性 → SSL 证书和密钥管理 → SSL 配置**。
+    > **注：**您可以使用安全公告中所列的版本或更高版本。
+    2. 登录到 WebSphere Application Server 管理控制台，然后单击**安全性 → SSL 证书和密钥管理 → SSL 配置**。
 3. 针对所列的每个 SSL 配置，修改该配置以启用 TLS V1.2。
     * 选择 SSL 配置，然后在**其他属性**下单击**保护质量 (QoP) **设置。
     * 从**协议**列表中，选择 **SSL_TLSv2**。
@@ -87,7 +90,9 @@ weight: 5
 {: #configuring-user-authentication-for-mobilefirst-server-administration }
 {{ site.data.keys.mf_server }} 管理需要用户认证。您可以配置用户认证并选择认证方法。然后，配置过程将取决于您所使用的 Web 应用程序服务器。
 
-> **要点：**如果使用独立的 WebSphere  Application Server Full Profile，请在全局安全性中使用“简单 WebSphere 认证方法”(SWAM) 以外的认证方法。您可以使用轻量级第三方认证 (LTPA)。如果使用 SWAM，那么可能会发生意外的认证失败。安装程序在 Web 应用程序服务器中部署 {{ site.data.keys.mf_server }} 管理 Web 应用程序之后，您必须配置认证。
+> **要点：**如果使用独立的 WebSphere  Application Server Full Profile，请在全局安全性中使用“简单 WebSphere 认证方法”(SWAM) 以外的认证方法。您可以使用轻量级第三方认证 (LTPA)。如果使用 SWAM，那么可能会发生意外的认证失败。
+
+安装程序在 Web 应用程序服务器中部署 {{ site.data.keys.mf_server }} 管理 Web 应用程序之后，您必须配置认证。
 
 {{ site.data.keys.mf_server }} 管理定义了以下 Java Platform，Enterprise Edition ((Java EE) 安全角色：
 
@@ -101,53 +106,53 @@ weight: 5
 #### 部署
 {: #deployment }
 
-|                        | 管理员 | 部署者    | 操作员    | 监控者    |
+|                        | 管理员| 部署者| 操作员| 监控者|
 |------------------------|---------------|-------------|-------------|------------|
-| Java EE 安全角色。 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 部署应用程序。 | 是           | 是         | 否          | 否         |
-| 部署适配器。     | 是           | 是         | 否          | 否         |
+| Java EE 安全角色。| mfpadmin| mfpdeployer| mfpoperator| mfpmonitor|
+| 部署应用程序。| 是| 是| 否| 否|
+| 部署适配器。| 是| 是| 否| 否|
 
 #### {{ site.data.keys.mf_server }} 管理
 {: #mobilefirst-server-management }
 
-|                            | 管理员 | 部署者    | 操作员    | 监控者    |
+|                            | 管理员| 部署者| 操作员| 监控者|
 |----------------------------|---------------|-------------|-------------|------------|
-| Java EE 安全角色。     | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 配置运行时设置。| 是           | 是         | 否          | 否         |
+| Java EE 安全角色。| mfpadmin| mfpdeployer| mfpoperator| mfpmonitor|
+| 配置运行时设置。| 是| 是| 否| 否|
 
 #### 应用程序管理
-{: #mobilefirst-server-management }
+{: #application-management }
 
-|                                     | 管理员 | 部署者    | 操作员    | 监控者    |
+|                                     | 管理员| 部署者| 操作员| 监控者|
 |-------------------------------------|---------------|-------------|-------------|------------|
-| Java EE 安全角色。              | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 上载新的 {{ site.data.keys.product_adj }} 应用程序。 | 是           | 是         | 否          | 否         |
-| 除去 {{ site.data.keys.product_adj }} 应用程序。	  | 是           | 是         | 否          | 否         |
-| 上载新的适配器。     | 是           | 是         | 否          | 否         |
-| 除去适配器。         | 是           | 是         | 否          | 否         |
-| 打开或关闭对应用程序的应用程序真实性测试。 | 是 | 是 | 否 | 否    |
-| 更改 {{ site.data.keys.product_adj }} 应用程序状态的属性：活动、活动通知以及已禁用。 | 是 | 是 | 是 | 否 |
+| Java EE 安全角色。| mfpadmin| mfpdeployer| mfpoperator| mfpmonitor|
+| 上载新的 {{ site.data.keys.product_adj }} 应用程序。| 是| 是| 否| 否|
+| 除去 {{ site.data.keys.product_adj }} 应用程序。| 是| 是| 否| 否|
+| 上载新的适配器。| 是| 是| 否| 否|
+| 除去适配器。| 是| 是| 否| 否|
+| 打开或关闭对应用程序的应用程序真实性测试。| 是| 是| 否| 否|
+| 更改 {{ site.data.keys.product_adj }} 应用程序状态的属性：活动、活动通知以及已禁用。| 是| 是| 是| 否|
 
 基本上，所有角色都可以发出 GET 请求，**mfpadmin**、**mfpdeployer** 和 **mfpmonitor** 角色也可以发出 POST 和 PUT 请求，且 **mfpadmin** 和 **mfpdeployer** 角色还可以发出 DELETE 请求。
 
 #### 与推送通知相关的请求
 {: #requests-related-to-push-notifications }
 
-|                        | 管理员 | 部署者    | 操作员    | 监控者    |
+|                        | 管理员| 部署者| 操作员| 监控者|
 |------------------------|---------------|-------------|-------------|------------|
-| Java EE 安全角色。 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| GET 请求{::nomarkdown}<ul><li>获取对应用程序使用推送通知的所有设备的列表</li><li>获取特定设备的详细信息</li><li>获取预订列表</li><li>获取与预订标识关联的预订信息</li><li>获取 GCM 配置的详细信息</li><li>获取 APNS 配置的详细信息</li><li>获取为应用程序定义的标记的列表</li><li>获取特定标记的详细信息</li></ul>{:/}| 是           | 是         | 是         | 是        |
-| POST 和 PUT 请求{::nomarkdown}<ul><li>向应用程序注册推送通知</li><li>更新推送设备注册</li><li>创建预订</li><li>添加或更新 GCM 配置</li><li>添加或更新 APNS 配置</li><li>将通知提交到设备</li><li>创建或更新标记</li></ul>{:/} | 是           | 是         | 是         | 否         |
-| DELETE 请求{::nomarkdown}<ul><li>删除推送通知的设备注册</li><li>删除预订</li><li>通过标记取消预订设备</li><li>删除 GCM 配置</li><li>删除 APNS 配置</li><li>删除标记</li></ul>{:/} | 是           | 是         | 否          | 否         |
+| Java EE 安全角色。| mfpadmin| mfpdeployer| mfpoperator| mfpmonitor|
+| GET 请求{::nomarkdown}<ul><li>获取对应用程序使用推送通知的所有设备的列表</li><li>获取特定设备的详细信息</li><li>获取预订列表</li><li>获取与预订标识关联的预订信息</li><li>获取 GCM 配置的详细信息</li><li>获取 APNS 配置的详细信息</li><li>获取为应用程序定义的标记的列表</li><li>获取特定标记的详细信息</li></ul>{:/}| 是| 是| 是| 是|
+| POST 和 PUT 请求{::nomarkdown}<ul><li>向应用程序注册推送通知</li><li>更新推送设备注册</li><li>创建预订</li><li>添加或更新 GCM 配置</li><li>添加或更新 APNS 配置</li><li>将通知提交到设备</li><li>创建或更新标记</li></ul>{:/} | 是| 是| 是| 否|
+| DELETE 请求{::nomarkdown}<ul><li>删除推送通知的设备注册</li><li>删除预订</li><li>通过标记取消预订设备</li><li>删除 GCM 配置</li><li>删除 APNS 配置</li><li>删除标记</li></ul>{:/} | 是| 是| 否| 否|
 
 #### 禁用
 {: #disabling }
 
-|                        | 管理员 | 部署者    | 操作员    | 监控者    |
+|                        | 管理员| 部署者| 操作员| 监控者|
 |------------------------|---------------|-------------|-------------|------------|
-| Java EE 安全角色。 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 禁用特定设备，将其状态标记为丢失或被盗，从而阻止该设备上任何应用程序发出的访问请求。       | 是           | 是         | 是          | 否        |
-| 禁用特定应用程序，将其状态标记为已禁用，从而阻止该设备上这个特定应用程序发出的访问请求。              | 是           | 是         | 是         | 否         |
+| Java EE 安全角色。| mfpadmin| mfpdeployer| mfpoperator| mfpmonitor|
+| 禁用特定设备，将其状态标记为丢失或被盗，从而阻止该设备上任何应用程序发出的访问请求。| 是| 是| 是| 否|
+| 禁用特定应用程序，将其状态标记为已禁用，从而阻止该设备上这个特定应用程序发出的访问请求。| 是| 是| 是| 否|
 
 如果选择使用通过用户资源库的认证方法（如 LDAP），那么您可配置 {{ site.data.keys.mf_server }} 管理，以便能够通过用户资源库使用用户和组来定义 {{ site.data.keys.mf_server }} 管理的访问控制表 (ACL)。
 该过程取决于您所使用的 Web 应用程序服务器的类型和版本。
@@ -177,8 +182,7 @@ weight: 5
 在 WebSphere  Application Server Liberty Profile 中，可以在服务器的 **server.xml** 配置文件中配置 **mfpadmin**、**mfpdeployer**、**mfpmonitor** 和 **mfpoperator** 角色。
 
 要配置安全角色，您必须编辑 **server.xml** 文件。
-在每个 `<application>` 元素的 `<application-bnd>` 元素中，创建 `<security-role>` 元素。每个 `<security-role>` 元素对应每个角色：**mfpadmin**、mfpdeployer、mfpmonitor 和 mfpoperator。将角色映射到相应的用户组名，在此示例中为：**mfpadmingroup**、**mfpdeployergroup**、**mfpmonitorgroup** 或 **mfpoperatorgroup**。通过 `<basicRegistry>` 元素定义这些组。
-您可以定制该元素或将其完全替换为 `<ldapRegistry>` 元素或 `<safRegistry>` 元素。
+在每个 `<application>` 元素的 `<application-bnd>` 元素中，创建 `<security-role>` 元素。每个 `<security-role>` 元素对应每个角色：**mfpadmin**、mfpdeployer、mfpmonitor 和 mfpoperator。将角色映射到相应的用户组名，在此示例中为：**mfpadmingroup**、**mfpdeployergroup**、**mfpmonitorgroup** 或 **mfpoperatorgroup**。这些组是通过 `<basicRegistry>` 元素定义的。您可以定制该元素或将其完全替换为 `<ldapRegistry>` 元素或 `<safRegistry>` 元素。
 
 稍后，通过大量已安装的应用程序，维护良好的响应时间，例如，在有 80 个应用程序的情况下，您应该配置管理数据库的连接池。
 
@@ -221,8 +225,7 @@ weight: 5
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3. 在元素 `<dataSource>` 中，为连接管理器定义一个引用：
-
+3. 在 `<dataSource>` 元素中，为连接管理器定义一个引用：
 
    ```xml
    <dataSource id="MFPADMIN" jndiName="mfpadmin/jdbc/mfpAdminDS" connectionManagerRef="AppCenterPool">
@@ -337,12 +340,9 @@ Service 的上下文根为 **/mfpadmin**，
 
   在 **mfp_install_dir/MobileFirstServer/configuration-samples** 中，编辑 Ant 任务的配置 XML 文件，并使用以下标记内的 property 元素来声明 JNDI 属性的值：
 
-  * `<installmobilefirstadmin>`，针对
-{{ site.data.keys.mf_server }}
-管理、{{ site.data.keys.mf_console }} 和实时更新服务。有关更多信息，请参阅[用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)。
-  * `<installmobilefirstruntime>`，针对
-{{ site.data.keys.product_adj }} 运行时配置属性。有关更多信息，请参阅[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)。
-  * `<installmobilefirstpush>`，针对推送服务的配置。有关更多信息，请参阅[用于安装 {{ site.data.keys.mf_server }} 推送服务的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)。
+  * `<installmobilefirstadmin>`，用于 {{ site.data.keys.mf_server }} 管理、{{ site.data.keys.mf_console }} 和实时更新服务。有关更多信息，请参阅[用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)。
+  * `<installmobilefirstruntime>`，用于 {{ site.data.keys.product_adj }} 运行时配置属性。有关更多信息，请参阅[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)。
+  * `<installmobilefirstpush>`，用于推送服务的配置。有关更多信息，请参阅[用于安装 {{ site.data.keys.mf_server }} 推送服务的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)。
 
   例如：
 
@@ -362,148 +362,152 @@ Service 的上下文根为 **/mfpadmin**，
 #### 管理服务的 JNDI 属性：JMX
 {: #jndi-properties-for-administration-service-jmx }
 
-| 属性                 | 可选或必需 | 描述 | 局限性 |
+| 属性| 可选或必需| 描述| 局限性|
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector  | 可选	           | Java 管理扩展 (JMX) 接口类型。<br/>可能值为 `SOAP` 和 `RMI`。缺省值为 SOAP。 | 仅限 WebSphere Application Server。 |
-| mfp.admin.jmx.host       | 可选	           | 用于 JMX REST 连接的主机名。 | 仅限于 Liberty Profile。 |
-| mfp.admin.jmx.port	   | 可选	           | 用于 JMX REST 连接的端口。 | 仅限于 Liberty Profile。 |
-| mfp.admin.jmx.user       | 对于 Liberty Profile 和 WebSphere Application Server 场为必需，对于其他项为可选 | 用于 JMX REST 连接的用户名。 | WebSphere Application Server Liberty Profile：JMX REST 连接的用户名。<br/><br/>WebSphere Application Server 场：SOAP 连接的用户名。<br/><br/>WebSphere Application Server Network Deployment：如果映射到 {{ site.data.keys.mf_server }} 管理应用程序的虚拟主机不是缺省主机，那么为 WebSphere 管理员的用户名。<br/><br/>Liberty 集合体：在 Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的用户名。 |
-| mfp.admin.jmx.pwd	| 对于 Liberty Profile 和 WebSphere Application Server 场为必需，对于其他项为可选 | 用于 JMX REST 连接的用户密码。 | WebSphere Application Server Liberty Profile：JMX REST 连接的用户密码。<br/><br/>>WebSphere Application Server 场：SOAP 连接的用户密码。<br/><br/>WebSphere Application Server Network Deployment：如果映射到 {{ site.data.keys.mf_server }} 服务器管理应用程序的虚拟主机不是缺省主机，那么为 WebSphere 管理员的用户密码。<br/><br/>Liberty 集合体：Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的密码。 |
-| mfp.admin.rmi.registryPort | 可选 | 通过防火墙的 JMX 连接的 RMI 注册表端口。 | 仅限 Tomcat。 |
-| mfp.admin.rmi.serverPort | 可选 | 通过防火墙的 JMX 连接的 RMI 服务器端口。 | 仅限 Tomcat。 |
-| mfp.admin.jmx.dmgr.host | 必需 | Deployment Manager 主机名。 | 仅限 WebSphere Application Server Network Deployment。 |
-| mfp.admin.jmx.dmgr.port | 必需 | Deployment Manager RMI 或 SOAP 端口。 | 仅限 WebSphere Application Server Network Deployment。 |
+| mfp.admin.jmx.connector| 可选	           | Java 管理扩展 (JMX) 接口类型。<br/>可能值为 `SOAP` 和 `RMI`。缺省值为 SOAP。| 仅限 WebSphere Application Server。|
+| mfp.admin.jmx.host
+        | 可选	           | 用于 JMX REST 连接的主机名。| 仅限于 Liberty Profile。|
+| mfp.admin.jmx.port	   | 可选	           | 用于 JMX REST 连接的端口。| 仅限于 Liberty Profile。|
+| mfp.admin.jmx.user
+        | 对于 Liberty Profile 和 WebSphere Application Server 场为必需，对于其他项为可选| 用于 JMX REST 连接的用户名。| WebSphere Application Server Liberty Profile：JMX REST 连接的用户名。<br/><br/>WebSphere Application Server 场：SOAP 连接的用户名。<br/><br/>WebSphere Application Server Network Deployment：如果映射到 {{ site.data.keys.mf_server }} 管理应用程序的虚拟主机不是缺省主机，那么为 WebSphere 管理员的用户名。<br/><br/>Liberty 集合体：在 Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的用户名。|
+| mfp.admin.jmx.pwd	| 对于 Liberty Profile 和 WebSphere Application Server 场为必需，对于其他项为可选| 用于 JMX REST 连接的用户密码。| WebSphere Application Server Liberty Profile：JMX REST 连接的用户密码。<br/><br/>>WebSphere Application Server 场：SOAP 连接的用户密码。<br/><br/>WebSphere Application Server Network Deployment：如果映射到 {{ site.data.keys.mf_server }} 服务器管理应用程序的虚拟主机不是缺省主机，那么为 WebSphere 管理员的用户密码。<br/><br/>Liberty 集合体：在 Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的密码。|
+| mfp.admin.rmi.registryPort| 可选| 通过防火墙的 JMX 连接的 RMI 注册表端口。| 仅限 Tomcat。|
+| mfp.admin.rmi.serverPort| 可选| 通过防火墙的 JMX 连接的 RMI 服务器端口。| 仅限 Tomcat。|
+| mfp.admin.jmx.dmgr.host| 必需| Deployment Manager 主机名。| 仅限 WebSphere Application Server Network Deployment。|
+| mfp.admin.jmx.dmgr.port| 必需| Deployment Manager RMI 或 SOAP 端口。| 仅限 WebSphere Application Server Network Deployment。|
 
 #### 管理服务的 JNDI 属性：超时
 {: #jndi-properties-for-administration-service-timeout }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.actions.prepareTimeout | 可选 | 在部署事务期间将数据从管理服务传输到运行时的超时时间，以毫秒为单位。如果无法在该时间内到达运行时，将出现错误且部署事务结束。<br/><br/>缺省值：1800000 毫秒（30 分钟） |
-| mfp.admin.actions.commitRejectTimeout | 可选 | 与运行时通信以提交或拒绝部署事务时的超时时间，以毫秒为单位。如果无法在该时间内到达运行时，将出现错误且部署事务结束。<br/><br/>缺省值：120000 毫秒（2 分钟） |
-| mfp.admin.lockTimeoutInMillis | 可选 |获取事务锁定的超时时间，以毫秒为单位。由于部署事务是顺序运行的，因此使用锁定。事务必须等待上一个事务完成。此超时是事务等待的最大时间。<br/><br/>缺省值：1200000 毫秒（20 分钟） |
-| mfp.admin.maxLockTimeInMillis | 可选 | 某流程可在事务锁定上花费的最大时间。由于部署事务是顺序运行的，因此使用锁定。发生应用程序服务器在执行锁定时失败的这种情况的前提十分罕见：即重新启动下一个应用程序服务器时未释放锁定。在此情况下，将在最大锁定时间后自动释放锁定，以确保服务器不会永久阻塞。设置长于正常事务的时间。<br/><br/>缺省值：1800000 毫秒（30 分钟） |
+| mfp.admin.actions.prepareTimeout| 可选| 在部署事务期间将数据从管理服务传输到运行时的超时时间，以毫秒为单位。如果无法在该时间内到达运行时，将出现错误且部署事务结束。<br/><br/>缺省值：1800000 毫秒（30 分钟）|
+| mfp.admin.actions.commitRejectTimeout| 可选| 与运行时通信以提交或拒绝部署事务时的超时时间，以毫秒为单位。如果无法在该时间内到达运行时，将出现错误且部署事务结束。<br/><br/>缺省值：120000 毫秒（2 分钟）|
+| mfp.admin.lockTimeoutInMillis| 可选|获取事务锁定的超时时间，以毫秒为单位。由于部署事务是顺序运行的，因此使用锁定。事务必须等待上一个事务完成。此超时是事务等待的最大时间。<br/><br/>缺省值：1200000 毫秒（20 分钟）|
+| mfp.admin.maxLockTimeInMillis| 可选| 某流程可在事务锁定上花费的最大时间。由于部署事务是顺序运行的，因此使用锁定。发生应用程序服务器在执行锁定时失败的这种情况的前提十分罕见：即重新启动下一个应用程序服务器时未释放锁定。在此情况下，将在最大锁定时间后自动释放锁定，以确保服务器不会永久阻塞。设置长于正常事务的时间。<br/><br/>缺省值：1800000 毫秒（30 分钟）|
 
 #### 管理服务的 JNDI 属性：日志记录
 {: #jndi-properties-for-administration-service-logging }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.logging.formatjson | 可选 | 将此属性设置为 true，以支持对响应和日志消息中的 JSON 对象进行正确格式化（多余的空格）。调试服务器时设置该属性十分有用。缺省值：false。 |
-| mfp.admin.logging.tosystemerror | 可选 | 指定是否所有的日志记录消息都指向 System.Error。调试服务器时设置该属性十分有用。 |
+| mfp.admin.logging.formatjson| 可选| 将此属性设置为 true，以支持对响应和日志消息中的 JSON 对象进行正确格式化（多余的空格）。调试服务器时设置该属性十分有用。缺省值：false。|
+| mfp.admin.logging.tosystemerror| 可选| 指定是否所有的日志记录消息都指向 System.Error。调试服务器时设置该属性十分有用。|
 
 #### 管理服务的 JNDI 属性：代理
 {: #jndi-properties-for-administration-service-proxies }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.proxy.port | 可选 | 如果 {{ site.data.keys.product_adj }} 管理服务器在防火墙或逆向代理的后面，那么该属性将指定主机的地址。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常此属性是代理的端口，例如 443。仅当外部和内部 URI 的协议不同时才需要此属性。 |
-| mfp.admin.proxy.protocol | 可选 | 如果将 {{ site.data.keys.product_adj }}
-管理服务器置于防火墙或逆向代理后面，那么该属性指定协议（HTTP 或 HTTPS）。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性设置为代理的协议。例如，wl.net。仅当外部和内部 URI 的协议不同时才需要此属性。 |
-| mfp.admin.proxy.scheme | 可选 | 此属性只是 mfp.admin.proxy.protocol 的替代名称。 |
-| mfp.admin.proxy.host | 可选 | 如果 {{ site.data.keys.product_adj }} 管理服务器在防火墙或逆向代理的后面，那么该属性将指定主机的地址。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性是代理的地址。 |
+| mfp.admin.proxy.port| 可选| 如果 {{ site.data.keys.product_adj }} 管理服务器在防火墙或逆向代理的后面，那么该属性将指定主机的地址。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常此属性是代理的端口，例如 443。仅当外部和内部 URI 的协议不同时才需要此属性。|
+| mfp.admin.proxy.protocol| 可选| 如果将 {{ site.data.keys.product_adj }}
+管理服务器置于防火墙或逆向代理后面，那么该属性指定协议（HTTP 或 HTTPS）。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性设置为代理的协议。例如，wl.net。仅当外部和内部 URI 的协议不同时才需要此属性。|
+| mfp.admin.proxy.scheme| 可选| 此属性只是 mfp.admin.proxy.protocol 的替代名称。|
+| mfp.admin.proxy.host| 可选| 如果 {{ site.data.keys.product_adj }} 管理服务器在防火墙或逆向代理的后面，那么该属性将指定主机的地址。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性是代理的地址。|
 
 #### 管理服务的 JNDI 属性：拓扑
 {: #jndi-properties-for-administration-service-topologies }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.audit | 可选。 | 将此属性设置为 false 可禁用 {{ site.data.keys.mf_console }} 的审计功能。缺省值为 true。 |
-| mfp.admin.environmentid | 可选。 | MBean 注册的环境标识。在同一应用程序服务器上安装 {{ site.data.keys.mf_server }} 的不同实例时使用该标识。该标识确定哪个管理服务、哪个控制台以及哪个运行时属于同一安装。管理服务仅管理具有同一环境标识的运行时。 |
-| mfp.admin.serverid | 对于服务器场和 Liberty 集合体为必需，对于其他项为可选。 | 服务器场：服务器标识。场中的每个服务器的标识必须不同。
+| mfp.admin.audit| 可选。| 将此属性设置为 false 可禁用 {{ site.data.keys.mf_console }} 的审计功能。缺省值为 true。|
+| mfp.admin.environmentid| 可选。| MBean 注册的环境标识。在同一应用程序服务器上安装 {{ site.data.keys.mf_server }} 的不同实例时使用该标识。该标识确定哪个管理服务、哪个控制台以及哪个运行时属于同一安装。管理服务仅管理具有相同环境标识的运行时。|
+| mfp.admin.serverid| 对于服务器场和 Liberty 集合体为必需，对于其他项为可选。| 服务器场：服务器标识。场中的每个服务器的标识必须不同。
 <br/><br/> Liberty 集合体：该值必须为 controller。
- |
-| mfp.admin.hsts | 可选。 | 设置为 true 以根据 RFC 6797 启用 HTTP Strict Transport Security。 |
-| mfp.topology.platform | 可选 | 服务器类型。有效值：{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}如果未设置该值，应用程序会尝试猜测服务器类型。 |
-| mfp.topology.clustermode | 可选 | 除服务器类型外，还在此处指定服务器拓扑。有效值：{::nomarkdown}<ul><li>独立</li><li>集群</li><li>场</li></ul>{:/}缺省值为“独立” |
-| mfp.admin.farm.heartbeat | 可选 | 此属性可用于设置服务器场拓扑中所用脉动信号速率持续的时间（以分钟为单位）。缺省值为 2 分钟。<br/><br/>在服务器场中，所有成员都必须使用相同的脉动信号速率。如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。 |
-| mfp.admin.farm.missed.heartbeats.timeout | 可选 | 此属性可用于设置在服务器场成员的状态被视为发生故障或关闭之前，该成员缺少的脉动信号数。缺省值为 2。<br/><br/>在服务器场中，所有成员都必须使用相同的缺失脉动信号数。
-如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。 |
-| mfp.admin.farm.reinitialize | 可选 | 布尔值（true 或 false），用于重新注册或重新初始化场成员。 |
-| mfp.swagger.ui.url | 可选 | 此属性定义要显示在管理控制台中的 Swagger 用户界面的 URL。 |
+|
+| mfp.admin.hsts| 可选。| 设置为 true 以根据 RFC 6797 启用 HTTP Strict Transport Security。|
+| mfp.topology.platform
+        | 可选| 服务器类型。有效值：{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}如果未设置该值，应用程序会尝试猜测服务器类型。|
+| mfp.topology.clustermode
+        | 可选| 除服务器类型外，还在此处指定服务器拓扑。有效值：{::nomarkdown}<ul><li>独立</li><li>集群</li><li>场</li></ul>{:/}缺省值为“独立”。|
+| mfp.admin.farm.heartbeat| 可选| 此属性可用于设置服务器场拓扑中所用脉动信号速率持续的时间（以分钟为单位）。缺省值为 2 分钟。<br/><br/>在服务器场中，所有成员都必须使用相同的脉动信号速率。如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。|
+| mfp.admin.farm.missed.heartbeats.timeout| 可选| 此属性可用于设置在服务器场成员的状态被视为发生故障或关闭之前，该成员缺少的脉动信号数。缺省值为 2。<br/><br/>在服务器场中，所有成员都必须使用相同的缺失脉动信号数。
+如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。|
+| mfp.admin.farm.reinitialize| 可选| 布尔值（true 或 false），用于重新注册或重新初始化场成员。|
+| mfp.server.swagger.ui.url | 可选| 此属性定义要显示在管理控制台中的 Swagger 用户界面的 URL。|
 
 #### 管理服务的 JNDI 属性：关系数据库
 {: #jndi-properties-for-administration-service-relational-database }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.db.jndi.name | 可选 | 数据库的 JNDI 名称。该参数是指定数据库的正常机制。缺省值为 **java:comp/env/jdbc/mfpAdminDS**。 |
-| mfp.admin.db.openjpa.ConnectionDriverName | 可选/有条件的必需项 | 数据库连接驱动程序类的标准名称。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。 |
-| mfp.admin.db.openjpa.ConnectionURL | 可选/有条件的必需项 | 数据库连接的 URL。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。 |
-| mfp.admin.db.openjpa.ConnectionUserName | 可选/有条件的必需项 | 数据库连接的用户名。
-仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。 |
-| mfp.admin.db.openjpa.ConnectionPassword | 可选/有条件的必需项 | 用于数据库连接的密码。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。 |
-| mfp.admin.db.openjpa.Log | 可选 | 此属性传递到 OpenJPA，并启用 JPA 日志记录。有关更多信息，请参阅 [Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html)。 |
-| mfp.admin.db.type | 可选 | 此属性定义数据库类型。
-缺省值是从连接 URL 推断得出。 |
+| mfp.admin.db.jndi.name| 可选| 数据库的 JNDI 名称。该参数是指定数据库的正常机制。缺省值为 **java:comp/env/jdbc/mfpAdminDS**。|
+| mfp.admin.db.openjpa.ConnectionDriverName| 可选/有条件的必需项| 数据库连接驱动程序类的标准名称。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
+| mfp.admin.db.openjpa.ConnectionURL| 可选/有条件的必需项| 数据库连接的 URL。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
+| mfp.admin.db.openjpa.ConnectionUserName| 可选/有条件的必需项| 数据库连接的用户名。
+仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
+| mfp.admin.db.openjpa.ConnectionPassword| 可选/有条件的必需项| 用于数据库连接的密码。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
+| mfp.admin.db.openjpa.Log| 可选| 此属性传递到 OpenJPA，并启用 JPA 日志记录。有关更多信息，请参阅 [Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html)。|
+| mfp.admin.db.type| 可选| 此属性定义数据库类型。
+缺省值是从连接 URL 推断得出。|
 
 #### 管理服务的 JNDI 属性：许可
 {: #jndi-properties-for-administration-service-licensing }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.license.key.server.host	| {::nomarkdown}<ul><li>对于永久许可证为可选</li><li>对于令牌许可证为必需</li></ul>{:/} | Rational License Key Server 的主机名。 |
-| mfp.admin.license.key.server.port	| {::nomarkdown}<ul><li>对于永久许可证为可选</li><li>对于令牌许可证为必需</li></ul>{:/} | Rational License Key Server 的端口号。 |
+| mfp.admin.license.key.server.host| {::nomarkdown}<ul><li>对于永久许可证为可选</li><li>对于令牌许可证为必需</li></ul>{:/} | Rational License Key Server 的主机名。|
+| mfp.admin.license.key.server.port| {::nomarkdown}<ul><li>对于永久许可证为可选</li><li>对于令牌许可证为必需</li></ul>{:/} | Rational License Key Server 的端口号。|
 
 #### 管理服务的 JNDI 属性：JNDI 配置
 {: #jndi-properties-for-administration-service-jndi-configurations }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.jndi.configuration | 可选 | 如果必须从插入 WAR 文件内的属性文件中读取 JNDI 属性（此属性除外），那么这是指 JNDI 配置的名称。如果未设置此属性，那么将不会从属性文件中读取 JNDI 属性。 |
-| mfp.jndi.file | 可选 | 如果必须从安装在 Web 服务器内的文件中读取 JNDI 属性（此属性除外），那么这是指包含 JNDI 配置的文件的名称。如果未设置此属性，那么将不会从属性文件中读取 JNDI 属性。 |
+| mfp.jndi.configuration| 可选| 如果必须从插入 WAR 文件内的属性文件中读取 JNDI 属性（此属性除外），那么这是指 JNDI 配置的名称。如果未设置此属性，那么将不会从属性文件中读取 JNDI 属性。|
+| mfp.jndi.file| 可选| 如果必须从安装在 Web 服务器内的文件中读取 JNDI 属性（此属性除外），那么这是指包含 JNDI 配置的文件的名称。如果未设置此属性，那么将不会从属性文件中读取 JNDI 属性。|
 
 管理服务使用实时更新服务作为辅助工具来存储各种配置。使用下列属性来配置访问实时更新服务的方式。
 
 #### 管理服务的 JNDI 属性：实时更新服务
 {: #jndi-properties-for-administration-service-live-update-service }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.config.service.url | （可选）实时更新服务的 URL。通过将 config 添加到管理服务的上下文根，从管理服务的 URL 派生缺省 URL。 |
-| mfp.config.service.user | 必需 | 用于访问实时更新服务的用户名。
-在服务器场拓扑中，对于场的所有成员，该用户名必须相同。 |
-| mfp.config.service.password | 必需 | 用于访问实时更新服务的密码。
-在服务器场拓扑中，对于场的所有成员，该密码必须相同。 |
-| mfp.config.service.schema | 可选 | 实时更新服务所使用的模式的名称。 |
+| mfp.config.service.url| （可选）实时更新服务的 URL。通过将 config 添加到管理服务的上下文根，从管理服务的 URL 派生缺省 URL。|
+| mfp.config.service.user| 必需| 用于访问实时更新服务的用户名。
+在服务器场拓扑中，对于场的所有成员，该用户名必须相同。|
+| mfp.config.service.password| 必需| 用于访问实时更新服务的密码。
+在服务器场拓扑中，对于场的所有成员，该密码必须相同。|
+| mfp.config.service.schema| 可选| 实时更新服务所使用的模式的名称。|
 
 管理服务使用推送服务作为辅助工具来存储各种推送设置。使用下列属性来配置访问推送服务的方式。由于推送服务受 OAuth 安全模型保护，因此必须设置各种属性以在 OAuth 中启用保密客户机。
 
 #### 管理服务的 JNDI 属性：推送服务
 {: #jndi-properties-for-administration-service-push-service }
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.push.url | 可选 | 推送服务的 URL。如果未指定该属性，那么会视为已禁用推送服务。如果未正确设置该属性，那么管理服务将无法联系推送服务，并且无法在 {{ site.data.keys.mf_console }} 中管理推送服务。 |
-| mfp.admin.authorization.server.url | 可选 | 推送服务所使用的 OAuth 授权服务器的 URL。通过将上下文根更改为第一个已安装运行时的上下文根，从管理服务的 URL 派生缺省 URL。如果安装多个运行时，那么最好设置该属性。如果未正确设置该属性，那么管理服务将无法联系推送服务，并且无法在 {{ site.data.keys.mf_console }} 中管理推送服务。 |
-| mfp.push.authorization.client.id | 可选/有条件的必需项 | 处理推送服务的 OAuth 授权的保密客户机的标识。仅当指定 **mfp.admin.push.url** 属性时才必需。 |
-| mfp.push.authorization.client.secret | 可选/有条件的必需项 | 处理推送服务的 OAuth 授权的保密客户机的密钥。
-仅当指定 **mfp.admin.push.url** 属性时才必需。 |
-| mfp.admin.authorization.client.id | 可选/有条件的必需项 | 处理管理服务的 OAuth 授权的保密客户机的标识。仅当指定 **mfp.admin.push.url** 属性时才必需。 |
-| mfp.push.authorization.client.secret | 可选/有条件的必需项 | 处理管理服务的 OAuth 授权的保密客户机的密钥。仅当指定 **mfp.admin.push.url** 属性时才必需。 |
+| mfp.admin.push.url| 可选| 推送服务的 URL。如果未指定该属性，那么会视为已禁用推送服务。如果未正确设置该属性，那么管理服务将无法联系推送服务，并且无法在 {{ site.data.keys.mf_console }} 中管理推送服务。|
+| mfp.admin.authorization.server.url| 可选| 推送服务所使用的 OAuth 授权服务器的 URL。通过将上下文根更改为第一个已安装运行时的上下文根，从管理服务的 URL 派生缺省 URL。如果安装多个运行时，那么最好设置该属性。如果未正确设置该属性，那么管理服务将无法联系推送服务，并且无法在 {{ site.data.keys.mf_console }} 中管理推送服务。|
+| mfp.push.authorization.client.id| 可选/有条件的必需项| 处理推送服务的 OAuth 授权的保密客户机的标识。仅当指定 **mfp.admin.push.url** 属性时才必需。|
+| mfp.push.authorization.client.secret| 可选/有条件的必需项| 处理推送服务的 OAuth 授权的保密客户机的密钥。
+仅当指定 **mfp.admin.push.url** 属性时才必需。|
+| mfp.admin.authorization.client.id| 可选/有条件的必需项| 处理管理服务的 OAuth 授权的保密客户机的标识。仅当指定 **mfp.admin.push.url** 属性时才必需。|
+| mfp.push.authorization.client.secret| 可选/有条件的必需项| 处理管理服务的 OAuth 授权的保密客户机的密钥。仅当指定 **mfp.admin.push.url** 属性时才必需。|
 
 ### {{ site.data.keys.mf_console }} 的 JNDI 属性
 {: #jndi-properties-for-mobilefirst-operations-console }
 在 {{ site.data.keys.mf_console }} 的 Web 应用程序 (mfp-admin-ui.war) 上可以设置以下属性。
 
-| 属性                 | 可选或必需 | 描述  |
+| 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.endpoint | 可选 | 使 {{ site.data.keys.mf_console }} 能够查找 {{ site.data.keys.mf_server }}
-管理 REST 服务。指定 **mfp-admin-service.war** Web 应用程序的外部地址和上下文根。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。例如，https://wl.net:443/mfpadmin。 |
-| mfp.admin.global.logout | 可选 | 在控制台注销期间清除 WebSphere 用户认证高速缓存。此属性仅适用于 WebSphere Application Server V7。缺省值为 false。 |
-| mfp.admin.hsts | 可选 | 将此属性设置为 true 以根据 RFC 6797 启用 HTTP [Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security)。有关更多信息，请参阅 W3C
-Strict Transport Security 页面。缺省值为 false。 |
-| mfp.admin.ui.cors | 可选 | 缺省值为 true。有关更多信息，请参阅 [W3C Cross-Origin Resource Sharing 页面](http://www.w3.org/TR/cors/)。 |
-| mfp.admin.ui.cors.strictssl | 可选 | 设置为 false，以在使用 SSL（HTTPS 协议）保护 {{ site.data.keys.mf_console }} 但未保护 {{ site.data.keys.mf_server }} 管理服务的情况（或相反情况）下允许 CORS 情况。该属性仅在 **mfp.admin.ui.cors** 属性已启用时生效。 |
+| mfp.admin.endpoint| 可选| 使 {{ site.data.keys.mf_console }} 能够查找 {{ site.data.keys.mf_server }}
+管理 REST 服务。指定 **mfp-admin-service.war** Web 应用程序的外部地址和上下文根。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。例如，https://wl.net:443/mfpadmin。|
+| mfp.admin.global.logout| 可选| 在控制台注销期间清除 WebSphere 用户认证高速缓存。此属性仅适用于 WebSphere Application Server V7。缺省值为 false。|
+| mfp.admin.hsts| 可选| 将此属性设置为 true 以根据 RFC 6797 启用 HTTP [Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security)。有关更多信息，请参阅 W3C
+Strict Transport Security 页面。缺省值为 false。|
+| mfp.admin.ui.cors| 可选| 缺省值为 true。有关更多信息，请参阅 [W3C Cross-Origin Resource Sharing 页面](http://www.w3.org/TR/cors/)。|
+| mfp.admin.ui.cors.strictssl| 可选| 设置为 false，以在使用 SSL（HTTPS 协议）保护 {{ site.data.keys.mf_console }} 但未保护 {{ site.data.keys.mf_server }} 管理服务的情况（或相反情况）下允许 CORS 情况。该属性仅在 **mfp.admin.ui.cors** 属性已启用时生效。|
 
 ### {{ site.data.keys.mf_server }} 实时更新服务的 JNDI 属性列表
 {: #list-of-jndi-properties-for-mobilefirst-server-live-update-service }
 在为应用程序服务器配置 {{ site.data.keys.mf_server }} 实时更新服务时，您可以设置以下 JNDI 属性。该表列出 IBM 关系数据库实时更新服务的 JNDI 属性。
 
-| 属性 | 可选或必需 | 描述 |
+| 属性| 可选或必需| 描述|
 |----------|-----------------------|-------------|
-| mfp.db.relational.queryTimeout | 可选 | 在 RDBMS 中执行查询时允许的超时（秒）。零值表示无限超时。负值表示缺省值（不覆盖）。<br/><br/>如果未配置任何值，那么将使用缺省值。有关更多信息，请参阅 [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int))。
- |
+| mfp.db.relational.queryTimeout| 可选| 在 RDBMS 中执行查询时允许的超时（秒）。零值表示无限超时。负值表示缺省值（不覆盖）。<br/><br/>如果未配置任何值，那么将使用缺省值。有关更多信息，请参阅 [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int))。
+|
 
 要了解如何设置这些属性，请参阅[设置 {{ site.data.keys.mf_server }} Web 应用程序的 JNDI 属性](#setting-up-jndi-properties-for-mobilefirst-server-web-applications)。
 
@@ -512,93 +516,98 @@ Strict Transport Security 页面。缺省值为 false。 |
 如果为应用程序服务器配置 {{ site.data.keys.mf_server }} 运行时，那么需设置可选或必需的 JNDI 属性。  
 下表列出了始终作为 JNDI 条目可用的 {{ site.data.keys.product_adj }} 属性：
 
-| 属性 | 描述 |
+| 属性| 描述|
 |----------|-------------|
-| mfp.admin.jmx.dmgr.host | 必需。Deployment Manager 的主机名。仅限 WebSphere Application Server Network Deployment。 |
-| mfp.admin.jmx.dmgr.port | 必需。Deployment Manager 的 RMI 或 SOAP 端口。仅限 WebSphere Application Server Network Deployment。 |
-| mfp.admin.jmx.host | 仅限 Liberty。用于 JMX REST 连接的主机名。对于 Liberty 集合体，请使用控制器的主机名。 |
-| mfp.admin.jmx.port | 仅限 Liberty。用于 JMX REST 连接的端口号。对于 Liberty 集合体，REST 接口的端口必须与 `<httpEndpoint>` 元素中声明的 httpsPort 属性值相同。在 Liberty 控制器的 server.xml 文件中声明该元素。 |
-| mfp.admin.jmx.user | 可选。WebSphere Application Server 场：SOAP 连接的用户名。<br/><br/>Liberty 集合体：在 Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的用户名。 |
-| mfp.admin.jmx.pwd | 可选。WebSphere Application Server 场：SOAP 连接的用户密码。<br/><br/>Liberty 集合体：Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的密码。 |
-| mfp.admin.serverid | 对于服务器场和 Liberty 集合体为必需，对于其他项为可选。<br/><br/>服务器场：服务器标识。场中的每个服务器的标识必须不同。
+| mfp.admin.jmx.dmgr.host| 必需。Deployment Manager 的主机名。仅限 WebSphere Application Server Network Deployment。|
+| mfp.admin.jmx.dmgr.port| 必需。Deployment Manager 的 RMI 或 SOAP 端口。仅限 WebSphere Application Server Network Deployment。|
+| mfp.admin.jmx.host
+        | 仅限 Liberty。用于 JMX REST 连接的主机名。对于 Liberty 集合体，请使用控制器的主机名。|
+| mfp.admin.jmx.port
+        | 仅限 Liberty。用于 JMX REST 连接的端口号。对于 Liberty 集合体，REST 接口的端口必须与 `<httpEndpoint>` 元素中声明的 httpsPort 属性值相同。在 Liberty 控制器的 server.xml 文件中声明该元素。|
+| mfp.admin.jmx.user
+        | 可选。WebSphere Application Server 场：SOAP 连接的用户名。<br/><br/>Liberty 集合体：在 Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的用户名。|
+| mfp.admin.jmx.pwd
+        | 可选。WebSphere Application Server 场：SOAP 连接的用户密码。<br/><br/>Liberty 集合体：在 Liberty 控制器的 server.xml 文件的 `<administrator-role>` 元素中定义的控制器管理员的密码。|
+| mfp.admin.serverid| 对于服务器场和 Liberty 集合体为必需，对于其他项为可选。<br/><br/>服务器场：服务器标识。场中的每个服务器的标识必须不同。
 <br/><br/>Liberty 集合体：成员标识。
-对于集合体中的各个成员，该标识必须不同。不能使用值 controller，因为该值专为集合体控制器保留。 |
-| mfp.topology.platform | 可选。服务器类型。有效值为：<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>如果未设置该值，应用程序会尝试猜测服务器类型。 |
-| mfp.topology.clustermode | 可选。除服务器类型外，还在此处指定服务器拓扑。有效值：<ul><li>独立<li>集群</li><li>场</li></ul>缺省值为“独立” |
-| mfp.admin.jmx.replica | 可选。仅用于 Liberty 集合体。<br/><br/>仅当用于管理此运行时的管理组件已部署在不同的 Liberty 控制器（副本）中时，才设置该属性。<br/><br/>使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n
-hostname:replica-n port` |
-| mfp.analytics.console.url | 可选。由 IBM {{ site.data.keys.mf_analytics }} 公开的可链接到分析控制台的 URL。如果要通过 {{ site.data.keys.mf_console }} 访问分析控制台，请设置该属性。
+对于集合体中的各个成员，该标识必须不同。不能使用值 controller，因为该值专为集合体控制器保留。|
+| mfp.topology.platform
+        | 可选。服务器类型。有效值为：<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>如果未设置该值，应用程序会尝试猜测服务器类型。|
+| mfp.topology.clustermode
+        | 可选。除服务器类型外，还在此处指定服务器拓扑。有效值：<ul><li>独立<li>集群</li><li>场</li></ul>缺省值为“独立”|
+| mfp.admin.jmx.replica| 可选。仅用于 Liberty 集合体。<br/><br/>仅当用于管理此运行时的管理组件已部署在不同的 Liberty 控制器（副本）中时，才设置该属性。<br/><br/>使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+| mfp.analytics.console.url| 可选。由 IBM {{ site.data.keys.mf_analytics }} 公开的可链接到分析控制台的 URL。如果要通过 {{ site.data.keys.mf_console }} 访问分析控制台，请设置该属性。
 例如，`http://<hostname>:<port>/analytics/console` |
-| mfp.analytics.password | 通过基本认证保护 IBM {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的密码。 |
-| mfp.analytics.url | 由收到入局分析数据的 IBM {{ site.data.keys.mf_analytics }} 公开的 URL。例如，`http://<hostname>:<port>/analytics-service/rest` |
-| mfp.analytics.username | 通过基本认证保护 IBM {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的用户名。|
-| mfp.device.decommissionProcessingInterval | 定义执行停用任务的频率（秒）。缺省值：86400，即一天。 |
-| mfp.device.decommission.when | 设备停用任务将客户机设备停用之前所需经过的不活动天数。
-缺省值：90 天。 |
-| mfp.device.archiveDecommissioned.when | 归档停用的客户机设备前需经过的不活动天数。<br/><br/>此任务将停用的客户机设备写入归档文件。
+| mfp.analytics.password| 通过基本认证保护 IBM {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的密码。|
+| mfp.analytics.url| 由收到入局分析数据的 IBM {{ site.data.keys.mf_analytics }} 公开的 URL。例如，`http://<hostname>:<port>/analytics-service/rest` |
+| mfp.analytics.username| 通过基本认证保护 IBM {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的用户名。|
+| mfp.device.decommissionProcessingInterval| 定义执行停用任务的频率（秒）。缺省值：86400，即一天。|
+| mfp.device.decommission.when| 设备停用任务将客户机设备停用之前所需经过的不活动天数。
+缺省值：90 天。|
+| mfp.device.archiveDecommissioned.when| 归档停用的客户机设备前需经过的不活动天数。<br/><br/>此任务将停用的客户机设备写入归档文件。
 归档客户机设备会写入 {{ site.data.keys.mf_server }} **home\devices_archive** 目录中的文件。
-该文件名包含创建归档文件的时间戳记。缺省值：90 天。 |
-| mfp.licenseTracking.enabled | 用于在 {{ site.data.keys.product }} 中启用或禁用设备跟踪的值。<br/><br/>出于性能原因，当 {{ site.data.keys.product }} 仅运行商家到消费者 (B2C) 应用程序时，您可以禁用设备跟踪。
+该文件名包含创建归档文件的时间戳记。缺省值：90 天。|
+| mfp.licenseTracking.enabled| 用于在 {{ site.data.keys.product }} 中启用或禁用设备跟踪的值。<br/><br/>出于性能原因，当 {{ site.data.keys.product }} 仅运行商家到消费者 (B2C) 应用程序时，您可以禁用设备跟踪。
  禁用设备跟踪后，还会禁用许可证报告，并且不会生成任何许可证度量值。<br/><br/>可能值为 true（缺省值）和 false。
- |
-| mfp.runtime.temp.folder | 定义运行时临时文件的文件夹。如果未设置，将使用 Web 容器的缺省临时文件夹位置。 |
-| mfp.adapter.invocation.url | 要用于从内部 Java 适配器或 JavaScript 适配器（使用其余端点调用这些适配器）调用适配器过程的 URL。如果未设置此属性，将使用当前正在执行请求的 URL（这是缺省行为）。此值应包含完整 URL，包括上下文根。 |
-| mfp.authorization.server | 授权服务器方式。可以是以下某种方式：{::nomarkdown}<ul><li>embedded：使用 {{ site.data.keys.product_adj }} 授权服务器。</li><li>external：使用外部授权服务器</li></ul>{:/}. 在设置此值时，还必须为外部服务器设置 **mfp.external.authorization.server.secret** 和 **mfp.external.authorization.server.introspection.url** 属性。 |
-| mfp.external.authorization.server.secret | 外部授权服务器的密钥。在使用外部授权服务器（即，将 **mfp.authorization.server** 设置为 external）时需要此属性，否则将忽略此属性。 |
-| mfp.external.authorization.server.introspection.url | 外部授权服务器的自省端点的 URL。在使用外部授权服务器（即，将 **mfp.authorization.server** 设置为 **external**）时必需此属性，否则将忽略此属性。 |
-| ssl.websphere.config | 用于为 HTTP 适配器配置密钥库。在设置为 false（缺省值）时，指示 {{ site.data.keys.product_adj }} 运行时使用 {{ site.data.keys.product_adj }} 密钥库。在设置为 true 时，指示 {{ site.data.keys.product_adj }} 运行时使用 WebSphere SSL 配置。有关更多信息，请参阅 [WebSphere Application Server SSL 配置和 HTTP 适配器](#websphere-application-server-ssl-configuration-and-http-adapters)。 |
+|
+| mfp.runtime.temp.folder| 定义运行时临时文件的文件夹。如果未设置，将使用 Web 容器的缺省临时文件夹位置。|
+| mfp.adapter.invocation.url| 要用于从内部 Java 适配器或 JavaScript 适配器（使用其余端点调用这些适配器）调用适配器过程的 URL。如果未设置此属性，将使用当前正在执行请求的 URL（这是缺省行为）。此值应包含完整 URL，包括上下文根。|
+| mfp.authorization.server| 授权服务器方式。可以是以下某种方式：{::nomarkdown}<ul><li>embedded：使用 {{ site.data.keys.product_adj }} 授权服务器。</li><li>external：使用外部授权服务器</li></ul>{:/}. 在设置此值时，还必须为外部服务器设置 **mfp.external.authorization.server.secret** 和 **mfp.external.authorization.server.introspection.url** 属性。|
+| mfp.external.authorization.server.secret| 外部授权服务器的密钥。在使用外部授权服务器（即，将 **mfp.authorization.server** 设置为 external）时需要此属性，否则将忽略此属性。|
+| mfp.external.authorization.server.introspection.url| 外部授权服务器的自省端点的 URL。在使用外部授权服务器（即，将 **mfp.authorization.server** 设置为 **external**）时必需此属性，否则将忽略此属性。|
+| ssl.websphere.config| 用于为 HTTP 适配器配置密钥库。在设置为 false（缺省值）时，指示 {{ site.data.keys.product_adj }} 运行时使用 {{ site.data.keys.product_adj }} 密钥库。在设置为 true 时，指示 {{ site.data.keys.product_adj }} 运行时使用 WebSphere SSL 配置。有关更多信息，请参阅 [WebSphere Application Server SSL 配置和 HTTP 适配器](#websphere-application-server-ssl-configuration-and-http-adapters)。|
 
 ### {{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表
 {: #list-of-jndi-properties-for-mobilefirst-server-push-service }
 
-| 属性 | 可选或必需 | 描述 |
+| 属性| 可选或必需| 描述|
 |----------|-----------------------|-------------|
-| mfp.push.db.type | 可选 | 数据库类型。可能的值：DB、CLOUDANT。缺省值：DB |
-| mfp.push.db.queue.connections | 可选 | 线程池中执行数据库操作的线程数。缺省值：3 |
-| mfp.push.db.cloudant.url | 可选 | Cloudant 帐户 URL。定义该属性时，Cloudant 数据库将定向到此 URL。 |
-| mfp.push.db.cloudant.dbName | 可选 | Cloudant 帐户中数据库的名称。它必须以小写字母开头，并且只能包含小写字母、数字以及 _、$ 和 - 等字符。缺省值：mfp\_push\_db |
-| mfp.push.db.cloudant.username | 可选 | Cloudant 帐户的用户名，用于存储数据库。未定义该属性时，将使用关系数据库。 |
-| mfp.push.db.cloudant.password | 可选 | Cloudant 帐户的密码，用于存储数据库。设置 mfp.db.cloudant.username 时，必须设置该属性。 |
-| mfp.push.db.cloudant.doc.version | 可选 | Cloudant 文档版本。 |
-| mfp.push.db.cloudant.socketTimeout | 可选	| 检测 Cloudant 网络连接断开超时，以毫秒为单位。零值表示无限超时。负值表示缺省值（不覆盖）。此为缺省值。请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。 |
-| mfp.push.db.cloudant.connectionTimeout | 可选	| 建立 Cloudant 网络连接超时，以毫秒为单位。零值表示无限超时。负值表示缺省值（不覆盖）。此为缺省值。请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。 |
-| mfp.push.db.cloudant.maxConnections | 可选 | Cloudant 接口的最大连接数。此为缺省值。请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。 |
-| mfp.push.db.cloudant.ssl.authentication | 可选 | 布尔值（true 或 false），指定是否为到 Cloudant 数据库的 HTTPS 连接启用 SSL 证书链验证和主机名验证。缺省值：True |
-| mfp.push.db.cloudant.ssl.configuration | 可选	| （仅限 WAS Full Profile）对于到 Cloudant 数据库的 HTTPS 连接：WebSphere Application Server 配置中 SSL 配置的名称，以便在没有为主机和端口指定任何配置时使用。 |
-| mfp.push.db.cloudant.proxyHost | 可选	| Cloudant 接口的代理主机。此为缺省值：请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。 |
-| mfp.push.db.cloudant.proxyPort | 可选	| Cloudant 接口的代理端口。此为缺省值：请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。 |
-| mfp.push.services.ext.security | 可选	| 安全扩展插件。 |
-| mfp.push.security.endpoint | 可选	| 授权服务器的端点 URL。 |
-| mfp.push.security.user | 可选	| 用于访问授权服务器的用户名。 |
-| mfp.push.security.password | 可选	| 用于访问授权服务器的密码。 |
-| mfp.push.services.ext.analytics | 可选 | 分析扩展插件。 |
-| mfp.push.analytics.endpoint | 可选 | 分析服务器的端点 URL。 |
-| mfp.push.analytics.user | 可选 | 用于访问分析服务器的用户名。 |
-| mfp.push.analytics.password | 可选 | 用于访问分析服务器的密码。 |
-| mfp.push.analytics.events.notificationDispatch | 可选	| 将要分派通知时的分析事件。缺省值：true |
-| mfp.push.internalQueue.maxLength | 可选 | 分派前保留通知任务的队列的长度。缺省值：200000 |
-| mfp.push.gcm.proxy.enabled | 可选	| 显示是否必须通过代理访问 Google GCM。缺省值：false |
-| mfp.push.gcm.proxy.protocol | 可选 | 可以是 http 或 https。 |
-| mfp.push.gcm.proxy.host | 可选 | GCM 代理主机。负值意味着缺省端口。 |
-| mfp.push.gcm.proxy.port | 可选 | GCM 代理端口。缺省值：-1 |
-| mfp.push.gcm.proxy.user | 可选 | 代理用户名（如果代理要求认证）。
-空的用户名表示没有认证。 |
-| mfp.push.gcm.proxy.password | 可选 | 代理密码（如果代理要求认证）。 |
-| mfp.push.gcm.connections | 可选 | 推送 GCM 最大连接数。缺省值：10 |
-| mfp.push.apns.proxy.enabled | 可选 | 显示是否必须通过代理访问 APN。缺省值：false |
-| mfp.push.apns.proxy.type | 可选 | APN 代理类型。 |
-| mfp.push.apns.proxy.host | 可选 | APN 代理主机。 |
-| mfp.push.apns.proxy.port | 可选 | APN 代理端口。缺省值：-1 |
-| mfp.push.apns.proxy.user | 可选 | 代理用户名（如果代理要求认证）。
-空的用户名表示没有认证。 |
-| mfp.push.apns.proxy.password | 可选 | 代理密码（如果代理要求认证）。 |
-| mfp.push.apns.connections | 可选 | 推送 APN 最大连接数。缺省值：3 |
-| mfp.push.apns.connectionIdleTimeout | 可选 | APN 空闲连接超时。缺省值：0 |
+| mfp.push.db.type| 可选| 数据库类型。可能的值：DB、CLOUDANT。缺省值：DB|
+| mfp.push.db.queue.connections| 可选| 线程池中执行数据库操作的线程数。缺省值：3|
+| mfp.push.db.cloudant.url| 可选| Cloudant 帐户 URL。定义该属性时，Cloudant 数据库将定向到此 URL。|
+| mfp.push.db.cloudant.dbName| 可选| Cloudant 帐户中数据库的名称。它必须以小写字母开头，并且只能包含小写字母、数字以及 _、$ 和 - 等字符。缺省值：mfp\_push\_db|
+| mfp.push.db.cloudant.username| 可选| Cloudant 帐户的用户名，用于存储数据库。未定义该属性时，将使用关系数据库。|
+| mfp.push.db.cloudant.password| 可选| Cloudant 帐户的密码，用于存储数据库。设置 mfp.db.cloudant.username 时，必须设置该属性。|
+| mfp.push.db.cloudant.doc.version| 可选| Cloudant 文档版本。|
+| mfp.push.db.cloudant.socketTimeout| 可选| 检测 Cloudant 网络连接断开超时，以毫秒为单位。零值表示无限超时。负值表示缺省值（不覆盖）。此为缺省值。请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。|
+| mfp.push.db.cloudant.connectionTimeout| 可选| 建立 Cloudant 网络连接超时，以毫秒为单位。零值表示无限超时。负值表示缺省值（不覆盖）。此为缺省值。请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。|
+| mfp.push.db.cloudant.maxConnections| 可选| Cloudant 接口的最大连接数。此为缺省值。请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。|
+| mfp.push.db.cloudant.ssl.authentication| 可选| 布尔值（true 或 false），指定是否为到 Cloudant 数据库的 HTTPS 连接启用 SSL 证书链验证和主机名验证。缺省值：True|
+| mfp.push.db.cloudant.ssl.configuration| 可选| （仅限 WAS Full Profile）对于到 Cloudant 数据库的 HTTPS 连接：WebSphere Application Server 配置中 SSL 配置的名称，以便在没有为主机和端口指定任何配置时使用。|
+| mfp.push.db.cloudant.proxyHost| 可选| Cloudant 接口的代理主机。此为缺省值：请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。|
+| mfp.push.db.cloudant.proxyPort| 可选| Cloudant 接口的代理端口。此为缺省值：请访问 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration)。|
+| mfp.push.services.ext.security| 可选| 安全扩展插件。|
+| mfp.push.security.endpoint| 可选| 授权服务器的端点 URL。|
+| mfp.push.security.user| 可选| 用于访问授权服务器的用户名。|
+| mfp.push.security.password| 可选| 用于访问授权服务器的密码。|
+| mfp.push.services.ext.analytics| 可选| 分析扩展插件。|
+| mfp.push.analytics.endpoint| 可选| 分析服务器的端点 URL。|
+| mfp.push.analytics.user| 可选| 用于访问分析服务器的用户名。|
+| mfp.push.analytics.password| 可选| 用于访问分析服务器的密码。|
+| mfp.push.analytics.events.notificationDispatch| 可选| 将要分派通知时的分析事件。缺省值：true|
+| mfp.push.internalQueue.maxLength| 可选| 分派前保留通知任务的队列的长度。缺省值：200000|
+| mfp.push.gcm.proxy.enabled| 可选| 显示是否必须通过代理访问 Google GCM。缺省值：false|
+| mfp.push.gcm.proxy.protocol| 可选| 可以是 http 或 https。|
+| mfp.push.gcm.proxy.host| 可选| GCM 代理主机。负值意味着缺省端口。|
+| mfp.push.gcm.proxy.port| 可选| GCM 代理端口。缺省值：-1|
+| mfp.push.gcm.proxy.user| 可选| 代理用户名（如果代理要求认证）。
+空的用户名表示没有认证。|
+| mfp.push.gcm.proxy.password| 可选| 代理密码（如果代理要求认证）。|
+| mfp.push.gcm.connections| 可选| 推送 GCM 最大连接数。缺省值：10|
+| mfp.push.apns.proxy.enabled| 可选| 显示是否必须通过代理访问 APN。缺省值：false|
+| mfp.push.apns.proxy.type| 可选| APN 代理类型。|
+| mfp.push.apns.proxy.host| 可选| APN 代理主机。|
+| mfp.push.apns.proxy.port| 可选| APN 代理端口。缺省值：-1|
+| mfp.push.apns.proxy.user| 可选| 代理用户名（如果代理要求认证）。
+空的用户名表示没有认证。|
+| mfp.push.apns.proxy.password| 可选| 代理密码（如果代理要求认证）。|
+| mfp.push.apns.connections| 可选| 推送 APN 最大连接数。缺省值：3|
+| mfp.push.apns.connectionIdleTimeout| 可选| APN 空闲连接超时。缺省值：0|
 
 
 {% comment %}
 <!-- START NON-TRANSLATABLE -->
-The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
+The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |
@@ -675,7 +684,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 每个应用程序的内容都存储在 {{ site.data.keys.product_adj }} 管理数据库中。
 
-活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB 的日志空间。
+活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**)* 4096 KB 的日志空间。
 
 `DB2 GET DATABASE CONFIGURATION` 命令包含有关日志文件大小的信息，以及主要和辅助日志文件的数量。
 
@@ -769,12 +778,12 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 超时值主要取决于并行打开的连接数，但是也与池中的最小和最大连接数有关。因此，必须调整不同的 **connectionManager** 属性以确定最适合的值。有关 **connectionManager** 元素的更多信息，请参阅 [Liberty：**server.xml** 文件中的配置元素](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html)。
 
 > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
-### 通过 {{ site.data.keys.mf_console }} 创建或删除应用程序后的旧数据 
+### 通过{{ site.data.keys.mf_console }}
+创建或删除应用程序后的旧数据
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么通过 {{ site.data.keys.mf_console }} 对服务的一些调用将返回 404 错误。
 
-在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么当您使用
-{{ site.data.keys.mf_console }} 删除应用程序或添加新应用程序并多次尝试刷新控制台时，您可能会看到旧数据。例如，用户可能会在列表中看到已删除的应用程序。
+在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么当您使用{{ site.data.keys.mf_console }} 删除应用程序或添加新应用程序并多次尝试刷新控制台时，您可能会看到旧数据。例如，用户可能会在列表中看到已删除的应用程序。
 
 为避免此问题，请在数据源或数据库管理系统中将隔离级别更改为 **READ_COMMITTED**。
 
@@ -820,11 +829,11 @@ Application Center 日志以 **com.ibm.puremeap** 开头。
 
 有关每个应用程序服务器的日志记录模型的更多信息（包括日志文件的位置），请参阅相关应用程序服务器的文档，如下表所示。
 
-| 应用程序服务器 | 文档位置 |
+| 应用程序服务器| 文档位置|
 | -------------------|---------------------------|
-| Apache Tomcat	     | [http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)) |
-| WebSphere Application Server Full Profile V8.5 | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html) |
-| WebSphere Application Server Liberty Profile V8.5 | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0) |
+| Apache Tomcat	     | [http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default))|
+| WebSphere Application Server Full Profile V8.5| 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html) |
+| WebSphere Application Server Liberty Profile V8.5| 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0) |
 
 ### 日志级别映射
 {: #log-level-mappings }

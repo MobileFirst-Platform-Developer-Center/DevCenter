@@ -53,7 +53,8 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
     protected Map<String, Object> createChallenge() {
         return null;
     }
-}
+
+    }
 ```
 
 ## Abfrage erstellen
@@ -63,8 +64,8 @@ Die Abfrage ist exakt die unter
 
 ```java
 @Override
-protected Map<String, Object> createChallenge() {
-    Map challenge = new HashMap();
+    protected Map<String, Object> createChallenge() {
+        Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
     challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
@@ -82,11 +83,11 @@ In diesem Beispiel werden die Berechtigungsnachweise als gültig (valid) angeseh
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
         String username = credentials.get("username").toString();
         String password = credentials.get("password").toString();
-        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+        if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
             return true;
         }
         else {
@@ -118,11 +119,11 @@ In diesem Beispiel wird `username` für die Parameter `id` und `displayName` ver
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-            String username = credentials.get("username").toString();
-            String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-                userId = username;
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
+            userId = username;
                 displayName = username;
                 return true;
             }
@@ -194,11 +195,11 @@ er einen booleschen Wert (`boolean`) als Teil der übergebenen Berechtigungsnach
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-            String username = credentials.get("username").toString();
-            String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-                userId = username;
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
+            userId = username;
                 displayName = username;
 
                 // Optionales RememberMe

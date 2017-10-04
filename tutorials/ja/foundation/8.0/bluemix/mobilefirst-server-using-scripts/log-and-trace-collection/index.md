@@ -5,19 +5,19 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 概説 
+## 概説
 {: #overview }
 IBM Containers for Bluemix では、コンテナーの CPU、メモリー、およびネットワーキングに関連したロギングおよびモニター用の組み込み機能がいくつか提供されています。 オプションで、{{ site.data.keys.product_adj }} コンテナーのログ・レベルを変更できます。
 
-{{ site.data.keys.mf_server }} コンテナーおよび {{ site.data.keys.mf_analytics }} コンテナーのログ・ファイルを作成するオプションは、(レベル `*=info` を使用して) デフォルトで有効になっています。ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。コンテナーのログとサーバーまたはランタイムのログはどちらも、Kibana 可視化ツールを使用して Bluemix logmet コンソールから表示できます。モニターは、オープン・ソースのメトリック・ダッシュボードおよびグラフ・エディターである Grafana を使用して、Bluemix logmet コンソールから実行できます。
+{{ site.data.keys.mf_server }} コンテナー、{{ site.data.keys.mf_analytics }} コンテナー、および {{ site.data.keys.mf_app_center }} コンテナーのログ・ファイルを作成するオプションは、(レベル `*=info` を使用して) デフォルトで有効になっています。ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。コンテナーのログとサーバーまたはランタイムのログはどちらも、Kibana 可視化ツールを使用して Bluemix logmet コンソールから表示できます。モニターは、オープン・ソースのメトリック・ダッシュボードおよびグラフ・エディターである Grafana を使用して、Bluemix logmet コンソールから実行できます。
 
 {{ site.data.keys.product_adj }} コンテナーがセキュア・シェル (SSH) 鍵を有効にして作成され、パブリック IP アドレスにバインドされている場合は、適切な秘密鍵を使用して、コンテナー・インスタンスのログを安全に表示できます。
 
 ### ロギングのオーバーライド
 {: #logging-overrides }
-ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。ログ・レベルを変更するための、手動でのコード・オーバーライドの追加は、最初にイメージを準備しているときに行う必要があります。新しいロギング構成を、別個の構成スニペットとして **package\_root/mfpf-[analytics|server]/usr/config** フォルダーに追加する必要があります。それが、Liberty サーバー上の configDropins/overrides フォルダーにコピーされます。
+ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。ログ・レベルを変更するための、手動でのコード・オーバーライドの追加は、最初にイメージを準備しているときに行う必要があります。新しいロギング構成を、別個の構成スニペットとして **package\_root/mfpf-[analytics|server]/usr/config** フォルダーと **package_root/mfp-appcenter/usr/config** フォルダーに追加する必要があります。それが、Liberty サーバー上の configDropins/overrides フォルダーにコピーされます。
 
-ログ・レベルを変更するための、特定のスクリプト・ファイルを使用したコードの注入は、V8.0.0 パッケージで提供されている start\*.sh スクリプト・ファイル (**startserver.sh**、 **startanalytics.sh**、**startservergroup.sh**、**startanalyticsgroup.sh**) のいずれかの実行時に、特定のコマンド・ライン引数を使用することにより達成できます。以下に示す、オプションのコマンド・ライン引数を適用できます。
+ログ・レベルを変更するための、特定のスクリプト・ファイルを使用したコードの注入は、V8.0.0 パッケージで提供されている start\*.sh スクリプト・ファイル (**startserver.sh**、 **startanalytics.sh**、**startservergroup.sh**、**startanalyticsgroup.sh**、**startappcenter.sh**、**startappcentergroup.sh**) のいずれかの実行時に、特定のコマンド・ライン引数を使用することにより達成できます。以下に示す、オプションのコマンド・ライン引数を適用できます。
 
 * `[-tr|--trace]` trace_specification
 * `[-ml|--maxlog]` maximum\_number\_of\_log\_files
@@ -31,6 +31,13 @@ IBM Containers for Bluemix では、コンテナーの CPU、メモリー、お�
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/trace.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/ffdc/*
+
+ログ・ファイルは、各コンテナー・インスタンスの {{ site.data.keys.mf_app_center }} Server および Liberty Profile のランタイム・アクティビティーに関して生成され、以下の場所にあります。
+
+* /opt/ibm/wlp/usr/servers/appcenter/logs/messages.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/console.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/trace.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/ffdc/*
 
 ログ・ファイルへのアクセスに示された手順に従ってコンテナーにログインし、ログ・ファイルにアクセスすることができます。
 
@@ -72,7 +79,7 @@ SSH を有効にするには、**prepareserver.sh** スクリプトまたは **p
 2. ログ・ファイルまたはトレースを見つけるために、以下のコマンド例を使用します。
 
    ```bash
-   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp 
+   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
    container_instance@root# vi messages.log
    ```
 
@@ -97,7 +104,7 @@ container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
-ログ・アーカイブをローカル・ワークステーションにダウンロードします。例: 
+ログ・アーカイブをローカル・ワークステーションにダウンロードします。例:
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

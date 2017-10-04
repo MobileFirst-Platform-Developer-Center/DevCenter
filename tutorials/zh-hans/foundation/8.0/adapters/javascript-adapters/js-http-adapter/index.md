@@ -58,7 +58,7 @@ weight: 1
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -113,8 +113,7 @@ weight: 1
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>：<i>可选。</i>proxy 元素指定访问后端应用程序时要使用的代理服务器的详细信息。代理详细信息中必须包含协议域和端口。如果代理需要认证，请在 <code>proxy</code> 中添加嵌套 <code>authentication</code> 元素。此元素与描述适配器的认证协议的元素具有相同的结构。以下示例显示需要基本认证并使用服务器身份的代理。                    
-{% highlight xml %}
+                    <li><b>proxy</b>：<i>可选。</i>proxy 元素指定访问后端应用程序时要使用的代理服务器的详细信息。代理详细信息中必须包含协议域和端口。如果代理需要认证，请在 <code>proxy</code> 中添加嵌套 <code>authentication</code> 元素。此元素与描述适配器的认证协议的元素具有相同的结构。以下示例显示需要基本认证并使用服务器身份的代理。{% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
   <domain>www.bbc.co.uk</domain>
@@ -241,8 +240,8 @@ Options 对象必须包含以下属性：
 * `body` 属性：`content`（SOAP XML 作为字符串）和 `contentType`
 
 ```js
-var input = {
-	method: 'post',
+var input = { 
+method: 'post',
 	returnedContentType: 'xml',
 	path: '/globalweather.asmx',
 	body: {

@@ -14,7 +14,9 @@ Cloudant는 IBM Bluemix 및 `cloudant.com`에서 DBaaS(Database-as-a-Service) �
 
 Cloudant 문서에서 설명된 바와 같이, 
 > 문서는 JSON 오브젝트입니다. 문서는 데이터의 컨테이너이고 Cloudant 데이터베이스의 기초입니다.   
-모든 문서는 두 개의 필드 즉, 고유 `_id` 필드와 `_rev` 필드가 있어야 합니다. `_id` 필드는 사용자가 작성하거나 Cloudant가 UUID로 자동으로 생성합니다. `_rev` 필드는 개정 번호이고 Cloudant 애플리케이션 프로토콜에 필수적입니다. 이러한 두 개의 필수 필드 외에 문서는 JSON으로 표현된 기타 컨텐츠를 포함할 수 있습니다. Cloudant API는 [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) 사이트에 문서화되어 있습니다. 
+모든 문서는 두 개의 필드 즉, 고유 `_id` 필드와 `_rev` 필드가 있어야 합니다. `_id` 필드는 사용자가 작성하거나 Cloudant가 UUID로 자동으로 생성합니다. `_rev` 필드는 개정 번호이고 Cloudant 애플리케이션 프로토콜에 필수적입니다. 이러한 두 개의 필수 필드 외에 문서는 JSON으로 표현된 기타 컨텐츠를 포함할 수 있습니다.
+
+Cloudant API는 [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) 사이트에 문서화되어 있습니다. 
 
 원격 Cloudant 데이터베이스와 통신하기 위해 어댑터를 사용할 수 있습니다. 이 학습서는 사용자에게 일부 예제를 보여줍니다. 
 
@@ -67,8 +69,7 @@ Cloudant는 여러 양식의 인증을 지원합니다. 인증에 대한 Cloudan
 
 ### 프로시저
 {: #procedures }
-어댑터 프로시저는 HTTP 요청을 Cloudant가 정의한 URL 중 하나에게 보내기 위해 `invokeHttp`
-메소드를 사용합니다.   
+어댑터 프로시저는 HTTP 요청을 Cloudant가 정의한 URL 중 하나에게 보내기 위해 `invokeHttp` 메소드를 사용합니다.   
 예를 들어, 저장하려는 문서에 대한 JSON 표시인 본문과 함께 `POST` 요청을 `/{*your-database*}/`에 전송하여 새 문서를 작성할 수 있습니다. 
 
 ```js
@@ -108,6 +109,7 @@ db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
 [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) 및 JAX-RS 2.0(RESTful 웹 서비스용 표준 Java API)을 사용하여 HTTP 요청에 문서의 JSON 표시를 전송함으로써 Cloudant에서 새 문서를 작성할 수 있습니다.
+
 ```java
 @POST
 @Consumes(MediaType.APPLICATION_JSON)
