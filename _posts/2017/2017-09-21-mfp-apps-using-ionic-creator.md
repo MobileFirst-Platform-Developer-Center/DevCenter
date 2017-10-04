@@ -77,7 +77,7 @@ In this tutorial, building of an iOS Application using Ionic Creator and applica
   * Copy and paste the contents from your zip export into the src directory.
   * Overwrite the `app` directory, `pages `directory, and `index.html`. This step adds the UI generated using Ionic Creator in the mobile application.
 
-- Add the following snippet inside _**body**_ tag in `index.html` file which is located inside the path `src/index.html`.
+- Add the following snippet inside _**body**_ tag in `index.html` file which is located inside the path `src/index.html`. This is the requirement introduced only from ionic version 3.5.3 onwards.
 
   ```html
   <script src="build/vendor.js"></script>
@@ -129,6 +129,7 @@ In this tutorial, building of an iOS Application using Ionic Creator and applica
 	}
   ```
 This step adds the functionality of simple OAuth token fetch call with MobileFirst Server.
+> **Note :** Please make sure that you have added the Mobilefirst APIs typescript reference tag in the first line.
 
  Building of the application is now complete, the next step is to create Mobile Foundation service instance on Bluemix and invoking it from the client application.
 
@@ -140,7 +141,7 @@ This step adds the functionality of simple OAuth token fetch call with MobileFir
 - Register the server profile of newly created Mobile Foundation service in MobileFirst CLI by running the following command in the terminal:
 
 	```bash
-  mfpdev server register
+  mfpdev server add
   ```
 
 	and make the server profile as default.
