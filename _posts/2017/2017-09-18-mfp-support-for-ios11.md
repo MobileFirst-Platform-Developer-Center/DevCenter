@@ -10,6 +10,8 @@ version:
 - 7.1
 author:
   name: Sandhya Suman
+additional_authors:
+- Shubha S
 ---
 
 Every year Apple releases a new version of iOS, and with every new release MobileFirst keeps up the promise of compatibility with latest version, to customers. With each new version, iOS changes are embraced with minimal impact. With this year's release of Apple iOS11, MobileFirst is pleased to announce the support of iOS 11 on MobileFirst Platform Foundation (MFP) v7.1 and v8.0. For further details, read through our [support plan for Android O and iOS 11](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
@@ -27,6 +29,7 @@ MobileFirst Platform Foundation v7.1 and v8.0 is compatible with iOS 11 and all 
 * Push Notifications
 * Remote Disable
 * Application Center
+* LiveUpdateSdk
 
 The above mentioned features of MobileFirst work well with iOS 11, however few issues maybe noticed, these are documented below.
 
@@ -41,6 +44,7 @@ See our earlier [blog post]({{site.baseurl}}/blog/2017/07/24/compatibility-tests
 
 * Though this change is not an issue with MobileFirst, customers must be aware of an issue when using command `cordova emulate ios`. See [here]( https://github.com/phonegap/ios-sim/issues/218), for more details.
 To overcome this issue apply the latest Cordova update, using the command `cordova platform add ios@https://github.com/apache/cordova-ios/`.
+  >**Update :** Cordova has fixed this issue in its latest cordova-ios 4.5.1 version release.To adapt this fix use  `cordova platform add ios@4.5.1` while adding ios platform to your cordova application.
 
 ### WatchOS 4
 Apple has released WatchOS 4 alongside iOS 11. To support watchOS 2 onwards, MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework. This framework can be used in WatchKit extension in the Xcode project.
