@@ -172,9 +172,9 @@ Open the application in Xcode IDE (`mfpsample/platforms/ios/MyApp.xcodeproj`) & 
 <div><center>
 <table style="width:100%" cellpadding="0">
   <tr>
-    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-screen.png" alt="" border="1" width="100%" /></td>
-    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-success.png" alt="" border="1" width="100%" /></td>
-    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-disable.png" alt="" border="1" width="100%" /></td>
+    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-screen.png" alt="iphone-screen" border="1" width="100%" /></td>
+    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-success.png" alt="iphone-success" border="1" width="100%" /></td>
+    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-disable.png" alt="iphone-disable" border="1" width="100%" /></td>
   </tr>
 </table>
 </center></div>

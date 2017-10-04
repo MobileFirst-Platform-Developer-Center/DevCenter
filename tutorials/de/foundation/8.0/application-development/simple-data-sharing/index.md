@@ -89,7 +89,7 @@ den Anwendungen einer Familie die gemeinsame Nutzung einfacher Zeichenfolgen zu 
 ### Android
 {: #android }
 1. Aktivieren Sie die Option für die gemeinsame Nutzung einfacher Daten, indem Sie in Ihrer Datei **AndroidManifest.xml**
-im Tag "manifest" den Namen der Anwendungsfamilie mit dem Element **android:sharedUserId** angeben. Beispiel: 
+im Tag "manifest" den Namen der Anwendungsfamilie mit dem Element **android:sharedUserId** angeben. Beispiel:
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -137,6 +137,8 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 
 > Weitere Hinweise zu den Objective-C-APIs finden Sie in der Beschreibung der Klasse [WLSimpleDataSharing](../../api/client-side-api/objc/client/) in den API-Referenzinformationen.
 
+
+
 ### Java
 {: #java }
 ```java
@@ -146,6 +148,8 @@ WLSimpleSharedData.clearSharedToken(myName);
 ```
 
 > Weitere Hinweise zu den Java-APIs finden Sie in der Beschreibung der Klasse [WLSimpleDataSharing](../../api/client-side-api/java/client/) in den API-Referenzinformationen.
+
+
 
 ## Beschränkungen und Hinweise
 {: #limitations-and-considerations }

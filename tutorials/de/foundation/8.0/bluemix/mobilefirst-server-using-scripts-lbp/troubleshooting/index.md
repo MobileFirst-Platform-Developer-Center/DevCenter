@@ -59,7 +59,7 @@ Solche Fehler könnten wie folgt aussehen:
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
 **Problemlösung**  
-Führen Sie manuell einen Neustart der Liberty-App durch. Besteht das Problem weiterhin, überprüfen Sie, ob die Anzahl der Verbindungen zum Datenbankservice
+Starten Sie die Liberty-App manuell. Besteht das Problem weiterhin, überprüfen Sie, ob die Anzahl der Verbindungen zum Datenbankservice
 die in Ihrem Datenbankplan vorgesehene Anzahl Verbindungen überschreitet. Ist das der Fall, nehmen Sie die erforderlichen Anpassungen vor. 
 
 Wenn das Problem durch nicht aufgelöste Eigenschaften hervorgerufen wurde, stellen Sie sicher, dass Ihr Editor beim Bearbeiten der bereitgestellten Dateien

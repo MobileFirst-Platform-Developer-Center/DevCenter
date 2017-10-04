@@ -37,8 +37,7 @@ erstellt haben, werden die von der
 {{ site.data.keys.product_adj }}-Bildposition abgerufenen Begrüßungsbilder
 angezeigt. Die Zieldateipfade und -dateinamen müssen exakt aus dem Beispiel übernommen
 werden, wenn Sie die Schablone nicht verwenden. Ändern Sie die Quellenpfade und Dateinamen
-(`src`) in die Pfade der Dateien, die angezeigt werden sollen. Fügen Sie in der Datei **config.xml** zwischen den Tags
-`<platform name="android">` und `</platform>` Zeilen wie die im folgenden Beispiel hinzu:  
+(`src`) in die Pfade der Dateien, die angezeigt werden sollen. Fügen Sie in der Datei **config.xml** zwischen den Tags `<platform name="android">` und `</platform>` Zeilen wie die im folgenden Beispiel hinzu:  
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -79,8 +78,7 @@ Größe.
 
 ### iOS
 {: #ios }
-Wenn Sie eine iOS-App haben, fügen Sie Zeilen ähnlich den folgenden zwischen den Tags
-`<platform name="ios">` und `</platform>` ein: 
+Wenn Sie eine iOS-App haben, fügen Sie Zeilen ähnlich den folgenden zwischen den Tags `<platform name="ios">` und `</platform>` ein: 
     
 #### Begrüßungsanzeigen
 {: #splash-screens-ios }
@@ -126,8 +124,7 @@ Größe.
 
 ### Windows
 {: #windows }
-Wenn Sie eine Windows-App haben, fügen Sie Zeilen ähnlich denen im folgenden Beispiel zwischen den Tags
-`<platform name="windows">` und `</platform>` ein: 
+Wenn Sie eine Windows-App haben, fügen Sie Zeilen ähnlich denen im folgenden Beispiel zwischen den Tags `<platform name="windows">` und `</platform>` ein: 
 
 #### Begrüßungsanzeigen
 {: #splash-screens-windows }

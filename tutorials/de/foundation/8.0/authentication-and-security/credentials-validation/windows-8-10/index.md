@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und Windows-10-UWP-Anwendungen implementieren
+title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und in Windows-10-UWP-Anwendungen implementieren
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Win8-Projekt herunterladen
+  - name: Windows-8-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: Win10-Projekt herunterladen
+  - name: Windows-10-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
   - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80

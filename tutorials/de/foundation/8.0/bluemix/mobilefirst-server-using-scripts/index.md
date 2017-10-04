@@ -197,12 +197,12 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
-                                            <td>admin</td>
+                                            <td>Administrator</td>
                                             <td>Benutzername für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_PASSWORD	</td>
-                                            <td>admin</td>
+                                            <td>Administrator</td>
                                             <td>Kennwort für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                     </table>
@@ -937,15 +937,15 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)	</td>
-                                                <td>Geben Sie die Position an, an der die Daten gespeichert werden sollen. Der Name des Standardordners ist <b>/analyticsData</b>. </td>
+                                                <td>Geben Sie die Position an, an der die Daten gespeichert werden sollen. Der Name des Standardordners ist <b>/analyticsData</b>.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
-                                                <td>Geben Sie jeweils durch ein Komma getrennte Eigenschaften von {{ site.data.keys.mf_analytics }} als Schlüssel-Wert-Paare an. Hinweis: Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein. </td>
+                                                <td>Geben Sie jeweils durch ein Komma getrennte Eigenschaften von {{ site.data.keys.mf_analytics }} als Schlüssel-Wert-Paare an. Hinweis: Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
                                             </tr>
                                         </table>
 
-                                        <p>Beispiel: </p>
+                                        <p>Beispiel:</p>
                         {% highlight bash %}
                         startanalytics.sh --tag Image-Tagname --name Containername --ip Container-IP-Adresse
                         {% endhighlight %}
@@ -1247,8 +1247,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
-                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. <br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
+                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
@@ -1364,7 +1364,8 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% highlight bash %}
 startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adresse
 {% endhighlight %}
-<br/>
+
+                                <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Abschnitt schließen</b></a>
                             </div>
                         </div>
@@ -1460,7 +1461,8 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
 {% highlight bash %}
 startservergroup.sh --tag Image-Name --name Containergruppenname --host Hostname_der_Containergruppe --domain Domänenname_der_Containergruppe
 {% endhighlight %}
-<br/>
+
+                                        <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Abschnitt schließen</b></a>
                                     </div>
                                 </div>

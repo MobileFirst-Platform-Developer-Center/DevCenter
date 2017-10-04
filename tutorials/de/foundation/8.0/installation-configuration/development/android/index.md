@@ -24,7 +24,7 @@ aktuelleren Versionen kompatibel.
 Führen Sie die auf der Website [Android Developers](http://developer.android.com/develop/index.html) beschriebenen Schritte aus,
 um Android Studio herunterzuladen und zu installieren.
 
-![Android-SDK konfigurieren(android-studio.png)
+![Android-SDK konfigurieren](android-studio.png)
 
 ### Android-SDK
 Das Android-SDK stellt die erforderlichen Tools und APIs für die Entwicklung von Anwendungen auf der Android-Plattform unter Verwendung der Programmiersprache Java bereit. 
@@ -37,7 +37,7 @@ Im SDK-Manager können Sie erforderliche Pakete installieren. Weitere Informatio
 {: #android-virtual-devices }
 Sie können Ihre Anwendung mit einem Android Virtual Device (AVD) testen. Ausführliche Erläuterungen zu allen verfügbaren Optionen
 finden Sie
-auf der Website für Android-Entwickler im Abschnitt [Managing Virtual Devices](http://developer.android.com/tools/devices/index.html) der Dokumentation. 
+auf der Website für Android-Entwickler in der Dokumentation unter [Managing Virtual Devices](http://developer.android.com/tools/devices/index.html). 
 
 ## Weitere Schritte
 {: #whats-next }

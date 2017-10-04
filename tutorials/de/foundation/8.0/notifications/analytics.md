@@ -21,9 +21,9 @@ Die folgenden Eigenschaften sind erforderlich, um das
 MobileFirst-Analytics-Plug-in zu konfigurieren und zu initialisieren. Die Authentifizierung gegenäber dem Analytics-Service am angegebenen Endpunkt erfolgt mit Benutzernamen und Kennwort. 
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<MFP-Server:Port>/analytics-service/rest/data"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<Benutzername>"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<Kennwort>"/>
 ```
 
 <!--

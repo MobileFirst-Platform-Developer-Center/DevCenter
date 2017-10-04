@@ -105,11 +105,11 @@ Das Beispiel in diesem Lernprogramm zeigt die Implementierung dieses Szenarios a
 In jeder dieser Kombinationen unterscheiden sich die Adapternamen geringfügig.   
 Es folgt eine Liste der Kombinationen mit den entsprechenden Adapternamen: 
 
-| Szenario                                         |      Name des SQL-Adapters        |  Name des HTTP-Adapters    |  
+| Szenario|      Name des SQL-Adapters|  Name des HTTP-Adapters|  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript**-Adapter → **JavaScript**-Adapter  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java**-Adapter → **JavaScript**-Adapter        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java**-Adapter → **Java**-Adapter              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript**-Adapter → **JavaScript**-Adapter| SQLAdapterJS| HTTPAdapterJS|  
+| **Java**-Adapter → **JavaScript**-Adapter| SQLAdapterJava| HTTPAdapterJS|  
+| **Java**-Adapter → **Java**-Adapter| SQLAdapterJava| HTTPAdapterJava|
 
 
 ### Ablauf des Kombinationsbeispiels

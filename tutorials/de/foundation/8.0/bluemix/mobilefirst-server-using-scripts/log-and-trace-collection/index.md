@@ -11,7 +11,8 @@ IBM Container für Bluemix stellen einige integrierte Protokollierungs- und Übe
 Container-CPU, Speicher und Netzbetrieb bereit.
 Bei Bedarf können Sie die Protokollebene für Ihre {{ site.data.keys.product_adj }}-Container ändern. 
 
-Die Option für die Erstellung von Protokolldateien für den Container mit {{ site.data.keys.mf_server }}, den Container mit {{ site.data.keys.mf_analytics }} und den Container mit dem {{ site.data.keys.mf_app_center }} ist standardmäßig (mit der Ebene `*=info`) aktiviert. Sie können die Protokollebenen ändern, indem Sie manuell Korrekturcode hinzufügen oder indem Sie Code mit einer Scriptdatei injizieren. In einer Bluemix-Logmet-Konsole können Containerprotokolle und Server- oder Laufzeitprotokolle mit dem Visualisierungstool Kibana angezeigt werden. Die Überwachung kann in einer Bluemix-Logmet-Konsole mithilfe des Open-Source-Metrikdashboards und -Diagrammeditors durchgeführt werden. 
+Die Option für die Erstellung von Protokolldateien für den Container mit {{ site.data.keys.mf_server }}, den Container mit {{ site.data.keys.mf_analytics }} und den Container mit dem {{ site.data.keys.mf_app_center }} ist standardmäßig (mit der Ebene `*=info`) aktiviert. Sie können die Protokollebenen ändern, indem Sie manuell Korrekturcode hinzufügen oder
+indem Sie Code mit einer Scriptdatei injizieren. In einer Bluemix-Logmet-Konsole können Containerprotokolle und Server- oder Laufzeitprotokolle mit dem Visualisierungstool Kibana angezeigt werden. Die Überwachung kann in einer Bluemix-Logmet-Konsole mithilfe des Open-Source-Metrikdashboards und -Diagrammeditors durchgeführt werden. 
 
 Wenn Ihr {{ site.data.keys.product_adj }}-Container mit einem SSH-Schlüssel erstellt und an eine öffentliche IP-Adresse gebunden wurde, können Sie die Protokolle für die Containerinstanz mithilfe eines passenden privaten Schlüssels in einer geschützten Ansicht anzeigen. 
 
@@ -108,12 +109,14 @@ SSH müssen Sie den öffentlichen SSH-Schlüssel in den Ordner **mfp-server\serv
 1. Richten Sie eine SSH-Anforderung an den Container. Beispiel: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
 2. Archivieren Sie die Position der Protokolldateien. Beispiel:
 
+
 ```bash
 container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
 Laden Sie das Protokollarchiv auf Ihre lokale Workstation herunter. Beispiel:
+
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

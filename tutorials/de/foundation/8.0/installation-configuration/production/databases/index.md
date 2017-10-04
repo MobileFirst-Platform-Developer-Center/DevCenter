@@ -113,6 +113,8 @@ erfüllt sind.
 
 > Eine aktuelle Liste der unterstützten Datenbanksoftwareversionen finden Sie auf der Seite mit den [Systemvoraussetzungen](../../../product-overview/requirements/).
 
+
+
 ### Datenbank- und Benutzeranforderungen für DB2
 {: #db2-database-and-user-requirements }
 Lesen Sie sich die Datenbankanforderungen für DB2 durch. Führen Sie die Schritte für die Benutzer- und Datenbankerstellung aus und richten
@@ -306,8 +308,7 @@ Mit der folgenden Prozedur werden die Tabellen aller Anwendungen gemäß
 demselben Schema (MFPSCM) erstellt. Es wird davon ausgegangen, dass bereits eine Datenbank und ein Benutzer erstellt wurden. Weitere Informationen finden Sie unter
 [Datenbank- und Benutzeranforderungen für DB2](#db2-database-and-user-requirements).
 
-Führen Sie die folgenden DB2-Befehle
-mit dem Benutzer mfpuser aus: 
+Führen Sie die folgenden DB2-Befehle als Benutzer mfpuser aus: 
 
 ```sql
 db2 CONNECT TO MFPDATA

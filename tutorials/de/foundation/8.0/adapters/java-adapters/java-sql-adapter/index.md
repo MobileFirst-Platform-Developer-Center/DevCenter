@@ -65,7 +65,7 @@ Im bereitgestellten Beispieladapter hat die Klasse den Namen `JavaSQLResource`.
 
 ```java
 @Path("/")
-  public class JavaSQLResource {
+public class JavaSQLResource {
 }
 ```
 

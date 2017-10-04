@@ -1,17 +1,17 @@
 ---
 layout: tutorial
-title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und Windows-10-UWP-Anwendungen implementieren
+title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und in Windows-10-UWP-Anwendungen implementieren
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Win8-Projekt RememberMe herunterladen
+  - name: Windows-8-Projekt RememberMe herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Win10-Projekt RememberMe herunterladen
+  - name: Windows-10-Projekt RememberMe herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
-  - name: Win8-Projekt PreemptiveLogin herunterladen
+  - name: Windows-8-Projekt PreemptiveLogin herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Win10-Projekt PreemptiveLogin herunterladen
+  - name: Windows-10-Projekt PreemptiveLogin herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
   - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
@@ -82,7 +82,7 @@ Das SDK der {{ site.data.keys.product }} stellt die API `ObtainAccessToken` bere
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
 
-if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+if(accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
 {
   Debug.WriteLine("Auto login success");
 }

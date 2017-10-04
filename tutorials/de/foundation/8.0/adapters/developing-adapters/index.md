@@ -38,12 +38,12 @@ Folgen Sie den nachstehenden Anweisungen, um ein neues Maven-Adapterprojekt zu e
 1. Wählen Sie für die Erstellung eines neuen Maven-Adapterprojekts **Datei → Neu → Andere... → Maven → Maven-Projekt** aus und
 klicken Sie auf **Weiter**.
 
-    ![Erstellung eines Maven-Adapterprojekts in Eclipse](new-maven-project.png)
+    ![Erstellung eines Adapter-Maven-Projekts in Eclipse](new-maven-project.png)
 
 2. Geben Sie den Projektnamen und die Projektposition an.   
     - Vergewissern Sie sich, dass die Option für die Erstellung eines einfachen Projekts **abgewählt** ist, und klicken Sie auf **Weiter**.
 
-    ![Erstellung eines Maven-Adapterprojekts in Eclipse](select-project-name-and-location.png)
+    ![Erstellung eines Adapter-Maven-Projekts in Eclipse](select-project-name-and-location.png)
 
 3. Wählen Sie den Archetyp aus oder fügen Sie ihn hinzu. 
     - Wenn Sie die [Archetypen lokal installiert haben](../creating-adapters/#install-maven) und sie nicht in der Liste der Archetypen angezeigt werden, wählen Sie **Konfigurieren → Lokalen Katalog hinzufügen → Durchsuchen** aus und navigieren Sie im Ausgangsverzeichnis zur Datei /.m2/repository/archetype-catalog.xml. 
@@ -52,21 +52,21 @@ klicken Sie auf **Weiter**.
         - **Artefakt-ID für Archetyp**: `adapter-maven-archetype-java`, `adapter-maven-archetype-http` oder `adapter-maven-archetype-sql`
         - **Archetype Version**: Die aktuell verfügbare Version finden Sie in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp). 
 
-    ![Erstellung eines Maven-Adapterprojekts in Eclipse](create-an-archetype.png)
+    ![Erstellung eines Adapter-Maven-Projekts in Eclipse](create-an-archetype.png)
 
 4. Geben Sie Maven-Projektparameter an.   
     - Geben Sie die erforderlichen Parameter
 **Gruppen-ID**, **Artefakt-ID**, **Version** und **Paket** an und klicken
 Sie auf **Fertigstellen**.
 
-    ![Erstellung eines Maven-Adapterprojekts in Eclipse](project-parameters.png)
+    ![Erstellung eines Adapter-Maven-Projekts in Eclipse](project-parameters.png)
 
 ### Vorhandenes Maven-Adapterprojekt importieren
 {: #importing-an-existing-adapter-maven-project }
 
 Wählen Sie für den Import des Maven-Adapterprojekts **Datei → Importieren... → Maven → Vorhandene Maven-Projekte** aus.
 
-![Import eines Maven-Adapterprojekts in Eclipse](import-adapter-maven-project.png)
+![Import eines Adapter-Maven-Projekts in Eclipse](import-adapter-maven-project.png)
 
 ## Maven-Adapterprojekt erstellen und implementieren
 {: #building-and-deploying-an-adapter-maven-project }

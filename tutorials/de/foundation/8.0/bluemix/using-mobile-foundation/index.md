@@ -16,7 +16,7 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 
 1. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan unterstützt nicht die Verwendung externer Datenbanken und die Definition mehrerer Knoten. *Er ist nur für Entwicklung und Tests bestimmt*. Die Serverinstanz ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. In diesem Plan ist der {{ site.data.keys.mf_analytics_service }} Service standardmäßig enthalten. 
 
-    > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenbank an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
+    > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenban an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
 2. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
 
@@ -66,9 +66,7 @@ Wenn Sie den {{ site.data.keys.mf_bm_short }} Service erstellen, wird der {{ sit
 
     > Informieren Sie sich über die [Einrichtung einer dashDB-Datenbankinstanz]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
 
-
-
-    Wenn Sie bereits eine dashDB-Serviceinstanz haben (DashDB Enterprise Transactional 2.8.500 oder Enterprise Transactional 12.128.1400), wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an. 
+    Wenn Sie bereits eine dashDB-Serviceinstanz haben (DashDB Enterprise Transactional 2.8.500 oder Enterprise Transactional 12.128.1400), wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an.
 
     ![Mobile-Foundation-Setup](create-dashdb-instance-existing.png)
 
@@ -157,9 +155,29 @@ Aktualisierungen für die {{ site.data.keys.mf_bm }} Services werden automatisch
 
 ## Zugriff auf Serverprotokolle
 {: #accessing-server-logs }
-Öffnen Sie für den Zugriff auf Serverprotokolle die Seitenleistennavigation und klicken Sie auf **Apps → Cloud Foundry Apps**. Wählen Sie Ihren Service aus und klicken Sie auf **Laufzeit**. Klicken Sie dann auf das Register **Dateien**. 
+Führen Sie für den Zugriff auf Serverprotokolle die folgenden Schritte aus. 
 
-Im Ordner **logs** finden Sie die Dateien **messages.log** und **trace.log**. 
+**Szenario 1:**
+
+1. Richten Sie Ihre Hostmaschine ein. <br/>
+Für die Verwaltung der Bluemix-Cloud-Foundry-App müssen Sie die Cloud-Foundry-CLI installieren.<br/>
+Installieren Sie die [Cloud-Foundry-CLI](https://github.com/cloudfoundry/cli/releases).
+2. Öffnen Sie das Terminal und melden Sie sich mit `cf login` für Ihre *Organisation* und Ihren *Bereich* an.
+3. Führen Sie auf der Befehlszeilenschnittstelle den folgenden Befehl aus:
+```bash
+  cf ssh <Name_der_MFP-App> -c "/bin/cat logs/messages.log" > messages.log
+```
+4. Wenn der Trace aktiviert ist, führen Sie den folgenden Befehl aus:
+```bash
+  cf ssh <Name_der_MFP-App> -c "/bin/cat logs/trace.log" > trace.log
+ ```
+
+**Szenario 2:**      
+
+* Öffnen Sie für den Zugriff auf Serverprotokolle die Seitenleistennavigation und klicken Sie auf **Apps → Dashboard → Cloud Foundry Apps**.
+* Wählen Sie Ihre App aus und klicken Sie auf **Logs → View in Kibana**.
+* Wählen Sie die Protokollnachrichten aus und kopieren Sie sie.
+
 
 #### Tracefunktion
 {: #tracing }
@@ -167,7 +185,7 @@ Wenn Sie die Tracefunktion aktivieren, werden in der Datei **trace.log** Nachric
 
 1. Wählen Sie unter **Laufzeit → Memory and Instances** Ihre Serviceinstanz aus. (Instanz-IDs beginnen bei **0**.) 
 2. Klicken Sie auf die Aktionsoption **Trace**. 
-3. Geben Sie die Traceanweisung `com.worklight.*=debug=enabled` ein und klicken Sie auf **Submit trace**.
+3. Geben Sie die Traceanweisung `com.ibm.mfp.*=all` ein und klicken Sie auf **Submit trace**.
 
 Die Datei **trace.log** ist jetzt an der oben angegebenen Position verfügbar. 
 

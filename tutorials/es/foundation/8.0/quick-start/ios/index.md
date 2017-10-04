@@ -149,6 +149,8 @@ Descargue el ejemplo de adaptador **Java** de ejemplo "Hello World".
 
 
    > Si Maven y {{ site.data.keys.mf_cli }} no están instalados, siga las instrucciones de **Definir su entorno de desarrollo** en la pantalla.
+
+
 2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Maven del adaptador y ejecute el mandato:
 
 
@@ -186,7 +188,7 @@ Si se utiliza una instancia remota de {{ site.data.keys.mf_server }}, [ejecute e
 La respuesta del adaptador se visualiza entonces en la consola de Xcode.
 
 
-![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }} ](success_response.png)
+![Imagen de una aplicación que ha llamado de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }} ](success_response.png)
 
 ## Siguientes pasos
 {: #next-steps }

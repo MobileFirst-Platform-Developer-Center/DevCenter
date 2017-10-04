@@ -289,7 +289,7 @@ auf einem der unterstützten App-Server.
 2. Bearbeiten Sie die Konfigurationsdatei des Anwendungsservers, um JNDI-Eigenschaften zu konfigurieren. (Sie können auch Systemumgebungsvariablen verwenden.) Konfigurieren Sie mindestens die folgenden Flags: 
 
     | Flag | Wert (Beispiel) | Standardwert | Hinweis |
-    | ---- | --------------- | ------------ | ------- |
+    |------|-----------------|---------|------|
     | cluster.name | 	worklight	| worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
     | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
@@ -329,7 +329,7 @@ für Überwachung und dynamische Konfiguration zugänglich zu machen.
 3. Bearbeiten Sie die Datei **config/elasticsearch.yml** und konfigurieren Sie mindestens die folgenden Flags.
 
     | Flag | Wert (Beispiel) | Standardwert | Hinweis |
-    | ---- | --------------- | ------------ | ------- |
+    |------|-----------------|---------|------|
     | cluster.name | 	worklight	| worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
     | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
