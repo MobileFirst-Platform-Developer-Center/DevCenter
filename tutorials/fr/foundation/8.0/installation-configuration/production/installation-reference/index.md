@@ -94,7 +94,7 @@ L'élément `<derby>` possède les attributs suivants :
 
 | Attribut | Description                                | Obligatoire | Valeur par défaut                                                                      |
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
-| database  | Nom de la base de données.                         | Non    | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind.             |
+| database  | Nom de la base de données.                         | Non	    | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind.             |
 | datadir   | Répertoire contenant les bases de données. | Oui      | Aucune                                                                         |
 | schema	| Nom du schéma.                           | Non       | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH ou APPCENTER, selon l'attribut kind. |
 
@@ -114,11 +114,11 @@ L'élément `<db2>` possède les attributs suivants :
 |-----------|----------------------------------------|----------|---------|
 | database  | Nom de la base de données.                     | Non       | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind. |
 | server    | Nom d'hôte du serveur de base de données.	 | Oui      | Aucune  |
-| port      | Port sur le serveur de base de données.       | Non    | 50000 |
+| port      | Port sur le serveur de base de données.       | Non	    | 50000 |
 | user      | Nom d'utilisateur permettant d'accéder aux bases de données. | Oui	    | Aucune  |
-| password  | Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non    | Demandée en mode interactif |
-| instance  | Nom de l'instance DB2.          | Non    | Dépend du serveur |
-| schema    | Nom du schéma.                       | Non    | Dépend de l'utilisateur   |
+| password  | Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non	    | Demandée en mode interactif |
+| instance  | Nom de l'instance DB2.          | Non	    | Dépend du serveur |
+| schema    | Nom du schéma.                       | Non	    | Dépend de l'utilisateur   |
 
 Pour plus d'informations sur les comptes utilisateur DB2, voir [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
 L'élément `<db2>` prend en charge les éléments suivants :
@@ -134,7 +134,7 @@ L'élément interne `<dba>` spécifie les données d'identification des administ
 | Attribut | Description                            | Obligatoire | Valeur par défaut |
 |-----------|----------------------------------------|----------|---------|
 | user      | Nom d'utilisateur permettant d'accéder à la base de données.  | Oui      | Aucune    |
-| password  | Mot de passe permettant d'accéder à la base de données.    | Non    | Demandée en mode interactif |
+| password  | Mot de passe permettant d'accéder à la base de données.    | Non	    | Demandée en mode interactif |
 
 L'utilisateur spécifié dans l'élément `<dba>` doit disposer du privilège DB2 SYSADM ou SYSCTRL. Pour plus d'informations, voir [Authorities overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html).
 
@@ -154,9 +154,9 @@ L'élément `<mysql>` possède les attributs suivants :
 |-----------|----------------------------------------|----------|---------|
 | database	| Nom de la base de données.	                 | Non       | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind. |
 | server	| Nom d'hôte du serveur de base de données.	 | Oui	    | Aucune |
-| port	    | Port sur le serveur de base de données.	     | Non    | 3306 |
+| port	    | Port sur le serveur de base de données.	     | Non	    | 3306 |
 | user	    | Nom d'utilisateur permettant d'accéder aux bases de données. | Oui	    | Aucune |
-| password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non    | Demandée en mode interactif |
+| password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non	    | Demandée en mode interactif |
 
 Pour plus d'informations sur les comptes utilisateur MySQL, voir [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
 L'élément `<mysql>` prend en charge les éléments suivants :
@@ -174,7 +174,7 @@ L'élément interne `<dba>` spécifie les données d'identification de l'adminis
 | Attribut | Description                            | Obligatoire | Valeur par défaut |
 |-----------|----------------------------------------|----------|---------|
 | user	    | Nom d'utilisateur permettant d'accéder aux bases de données. | Oui	    | Aucune |
-| password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non    | Demandée en mode interactif |
+| password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non	    | Demandée en mode interactif |
 
 L'utilisateur spécifié dans un élément `<dba>` doit être un compte superutilisateur MySQL. Pour plus d'informations, voir [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html).
 
@@ -182,7 +182,7 @@ Chaque élément interne `<client>` spécifie un ordinateur client ou un caract�
 
 | Attribut | Description                                                              | Obligatoire | Valeur par défaut |
 |-----------|--------------------------------------------------------------------------|----------|---------|
-| hostname	| Nom d'hôte symbolique, adresse IP ou modèle avec % comme marque de réservation. | Oui	    | Aucune    |
+| hostname	| Nom d'hôte symbolique, adresse IP ou modèle avec % comme marque de réservation. | Oui	  | Aucune    |
 
 Pour plus d'informations sur la syntaxe de l'attribut hostname, voir [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html).
 
@@ -196,7 +196,7 @@ Vous pouvez aussi utiliser l'élément `<mysql>` avec les attributs suivants :
 | user	    | Nom d'utilisateur permettant d'accéder aux bases de données. | Oui      | Aucune                  |
 | password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non       | Demandée en mode interactif |
 
-> `Remarque :` Si vous spécifiez la base de données avec des attributs alternatifs, cette base de données doit exister, le compte utilisateur doit exister et la base de données doit être déjà accessible pour l'utilisateur. Dans ce cas, la tâche **configuredatabase** ne tente pas de créer la base de données ou l'utilisateur ni d'accorder l'accès à l'utilisateur. La tâche **configuredatabase** garantit seulement que la base de données comporte les tables requises pour la version en cours de {{ site.data.keys.mf_server }}. Vous n'avez pas besoin de spécifier les éléments internes `<dba>` et `<client>`.
+> `Remarque :` Si vous spécifiez la base de données avec des attributs alternatifs, cette base de données doit exister, le compte utilisateur doit exister et la base de données doit être déjà accessible pour l'utilisateur. Dans ce cas, la tâche **configuredatabase** ne tente pas de créer la base de données ou l'utilisateur ni d'accorder l'accès à l'utilisateur. La tâche **configuredatabase** garantit seulement que la base de données comporte les tables requises pour la version en cours de {{ site.data.keys.mf_server }}. Vous n'avez pas besoin de spécifier les éléments internes `<dba>` ou `<client>`.
 
 #### Oracle
 {: #oracle }
@@ -207,7 +207,7 @@ L'élément `<oracle>` possède les attributs suivants :
 | database       | Nom de base de données, ou nom de service Oracle. **Remarque :** Vous devez toujours utiliser un nom de service pour vous connecter à une base de données PDB. | Non | ORCL |
 | server	     | Nom d'hôte du serveur de base de données.                                    | Oui      | Aucune |
 | port	         | Port sur le serveur de base de données.                                         | Non       | 1521 |
-| user	         | Nom d'utilisateur permettant d'accéder aux bases de données. Voir la note sous ce tableau.| Oui      | Aucune |
+| user	         | Nom d'utilisateur permettant d'accéder aux bases de données. Voir la note sous ce tableau.	| Oui      | Aucune |
 | password	     | Nom d'utilisateur permettant d'accéder aux bases de données.                                    | Non       | Demandée en mode interactif |
 | sysPassword	 | Mot de passe de l'utilisateur SYS.                                           | Non       | Demandée en mode interactif si la base de données n'existe pas encore |
 | systemPassword | Mot de passe de l'utilisateur SYSTEM.                                        | Non       | Demandée en mode interactif si la base de données ou l'utilisateur n'existe pas encore |
@@ -229,7 +229,7 @@ L'élément interne `<dba>` spécifie les données d'identification de l'adminis
 
 | Attribut      | Description                                                              | Obligatoire | Valeur par défaut |
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| user	         | Nom d'utilisateur permettant d'accéder aux bases de données. Voir la note sous ce tableau.| Oui      | Aucune    |
+| user	         | Nom d'utilisateur permettant d'accéder aux bases de données. Voir la note sous ce tableau.	| Oui      | Aucune    |
 | password	     | Nom d'utilisateur permettant d'accéder aux bases de données.                                    | Non       | Demandée en mode interactif |
 
 L'élément `<driverclasspath>` doit contenir un fichier JAR de pilote JDBC Oracle. Vous pouvez télécharger des pilotes JDBC Oracle depuis la page [JDBC, SQLJ, Oracle JPublisher and Universal Connection
@@ -348,8 +348,8 @@ Les tâches Ant **installmobilefirstadmin**, **updatemobilefirstadmin** et **uni
 | `<console>`           | Console d'administration.                      | 0..1  |
 | `<database>`          | Bases de données.                                   | 1     |
 | `<jmx>`               | Permet d'activer Java Management Extensions.	           | 1     |
-| `<property>`          | Propriétés.                                 | 0..   |
-| `<push>`              | Service push.                               | 0..1  |
+| `<property>`          | Propriétés.	                               | 0..   |
+| `<push>`              | Service push.	                               | 0..1  |
 | `<user>`              | Utilisateur à mapper à un rôle de sécurité.	       | 0..   |
 
 ### Pour spécifier {{ site.data.keys.mf_console }}
@@ -367,7 +367,7 @@ L'élément `<console>` prend en charge l'élément suivant :
 | Elément               | Description                                      | Nombre |
 |-----------------------|--------------------------------------------------|-------|
 | `<artifacts>`         | Artefacts de {{ site.data.keys.mf_server }}.                | 0..1  |
-| `<property>`	        | Propriétés.                              | 0..   |
+| `<property>`	        | Propriétés.	                               | 0..   |
 
 L'élément `<artifacts>` possède les attributs suivants :
 
@@ -412,7 +412,7 @@ L'élément `<collectiveController>` possède les attributs suivants :
 | serverName               | Nom du contrôleur de collectivité.	| Oui      | Aucune    |
 | controllerAdminName      | Nom d'administrateur qui est défini dans le contrôleur de collectivité. Il s'agit du même utilisateur que celui utilisé pour joindre de nouveaux membres à la collectivité.                                                         | Oui      | Aucune    |
 | controllerAdminPassword  | Mot de passe de l'administrateur.	    | Oui      | Aucune    |
-| createControllerAdmin    | Permet d'indiquer si l'administrateur doit être créé dans le registre de base du contrôleur de collectivité. Les valeurs possibles sont true ou false.                                                              | Non    | true    |
+| createControllerAdmin    | Permet d'indiquer si l'administrateur doit être créé dans le registre de base du contrôleur de collectivité. Les valeurs possibles sont true ou false.                                                              | Non	   | true    |
 
 ### Pour spécifier la configuration du service Live Update
 {: #to-specify-the-live-update-service-configuration }
@@ -431,7 +431,7 @@ L'élément `<configuration>` prend en charge les éléments suivants :
 | Elément      | Description                           | Nombre |
 |--------------|---------------------------------------|-------|
 | `<user>`     | Utilisateur du service Live Update. | 0..1  |
-| `<property>` | Propriétés.                         | 0..   |
+| `<property>` | Propriétés.	                   | 0..   |
 
 L'élément `<user>` collecte les paramètres relatifs à un utilisateur qui doivent être inclus dans un rôle de sécurité spécifique pour une application.
 
@@ -477,7 +477,7 @@ L'élément `<collectiveMember>` possède les attributs suivants :
 | Attribut   | Description                                             | Obligatoire | Valeur par défaut |
 |-------------|---------------------------------------------------------|----------|---------|
 | serverName  |	Nom du membre de collectivité.                      | Oui      | Aucune    |
-| clusterName |	Nom du cluster auquel appartient le membre de collectivité. | Oui	    | Aucune    |
+| clusterName |	Nom du cluster auquel appartient le membre de collectivité. | Oui	   | Aucune    |
 
 > **Remarque :** Si le service push et les composants d'exécution sont installés dans le membre de collectivité, ils doivent porter le même nom de cluster. Si ces composants sont installés sur des membres distincts de la même collectivité, les noms de cluster peuvent être différents.
 
@@ -488,10 +488,10 @@ L'élément `<analytics>` indique que vous souhaitez connecter le service push d
 | Attribut     | Description                                                               | Obligatoire | Valeur par défaut |
 |---------------|---------------------------------------------------------------------------|----------|---------|
 | install	    | Permet d'indiquer si le service push doit être connecté à {{ site.data.keys.mf_analytics }}. | Non       | false   |
-| analyticsURL 	| URL des services {{ site.data.keys.mf_analytics }}.	                            | Oui	    | Aucune    |
-| username	    | Nom d'utilisateur.	                                                        | Oui	    | Aucune    |
-| password	    | Mot de passe.	                                                            | Oui	    | Aucune    |
-| validate	    | Permet de déterminer si la {{ site.data.keys.mf_analytics_console }} est accessible ou non.	| Non    | true    |
+| analyticsURL 	| URL des services {{ site.data.keys.mf_analytics }}.	                            | Oui	   | Aucune    |
+| username	    | Nom d'utilisateur.	                                                        | Oui	   | Aucune    |
+| password	    | Mot de passe.	                                                            | Oui	   | Aucune    |
+| validate	    | Permet de déterminer si la {{ site.data.keys.mf_analytics_console }} est accessible ou non.	| Non	   | true    |
 
 **install**  
 Utilisez l'attribut install pour indiquer que ce service push doit être connecté et pour envoyer des événements à {{ site.data.keys.mf_analytics }}. Les valeurs valides sont true ou false.
@@ -523,7 +523,7 @@ L'élément `<database>` possède les attributs suivants :
 
 | Attribut     | Description                                     | Obligatoire | Valeur par défaut |
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | Type de base de données (Push).	                  | Oui	    | Aucune    |
+| kind          | Type de base de données (Push).	                  | Oui	     | Aucune    |
 | validate	    | Permet de déterminer si la base de données est accessible. | Non       | true    |
 
 L'élément `<database>` prend en charge les éléments suivants. Pour plus d'informations sur la configuration de ces éléments de base de données pour le système de gestion de base de données relationnelle, voir les tableaux de la page [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
@@ -542,8 +542,8 @@ L'élément `<database>` prend en charge les éléments suivants. Pour plus d'in
 | Attribut     | Description                                     | Obligatoire | Valeur par défaut                   |
 |---------------|-------------------------------------------------|----------|---------------------------|
 | url           | URL du compte Cloudant.                | Non       | https://user.cloudant.com |
-| user          | Nom d'utilisateur du compte Cloudant.	      | Oui	    | Aucune                      |
-| password      | Mot de passe du compte Cloudant.	          | Non    | Demandée en mode interactif     |
+| user          | Nom d'utilisateur du compte Cloudant.	      | Oui	     | Aucune                      |
+| password      | Mot de passe du compte Cloudant.	          | Non	     | Demandée en mode interactif     |
 | dbName        | Nom de la base de données Cloudant. **Important :** Ce nom de base de données doit commencer par un caractère en minuscule et ne peut contenir que des caractères en minuscules (a-z), des chiffres (0-9) et les caractères _, $ et -.                                | Non       | mfp_push_db               |
 
 ## Tâches Ant pour l'installation du service push de {{ site.data.keys.mf_server }}
@@ -576,8 +576,8 @@ Les tâches Ant **installmobilefirstpush**, **updatemobilefirstpush** et **unins
 
 | Attribut | Description                           | Obligatoire | Valeur par défaut     |
 |-----------|---------------------------------------|----------|-------------|
-| id        | Permet de distinguer différents déploiements.	| Non    | Vide
-| warFile	| Fichier WAR du service push.	| Non    | Le fichier ../PushService/mfp-push-service.war est relatif au répertoire MobileFirstServer contenant le fichier mfp-ant-deployer.jar. |
+| id        | Permet de distinguer différents déploiements.	| Non	   | Vide
+| warFile	| Fichier WAR du service push.	| Non	   | Le fichier ../PushService/mfp-push-service.war est relatif au répertoire MobileFirstServer contenant le fichier mfp-ant-deployer.jar. |
 
 ### Id
 {: #id }
@@ -593,10 +593,10 @@ Les tâches Ant **installmobilefirstpush**, **updatemobilefirstpush** et **unins
 | Elément               | Description             | Nombre |
 |-----------------------|-------------------------|-------|
 | `<applicationserver>` | Serveur d'applications. | 1     |
-| `<analytics>`	        | Analyses.        	      | 0..1  |
+| `<analytics>`	        | Analyses.	      | 0..1  |
 | `<authorization>`	    | Serveur d'autorisations permettant d'authentifier la communication avec d'autres composants {{ site.data.keys.mf_server }}. | 1 |
-| `<database>`	        | Bases de données.        | 1     |
-| `<property>`	        | Propriétés.              | 0..∞  |
+| `<database>`	        | Bases de données.	      | 1     |
+| `<property>`	        | Propriétés.	      | 0..∞  |
 
 ### Pour spécifier le serveur d'autorisations
 {: #to-specify-the-authorization-server }
@@ -606,7 +606,7 @@ L'élément `<authorization>` collecte des informations afin de configurer le se
 |--------------------|---------------------------------------|----------|-------------|
 | auto               | Permet d'indiquer si l'URL de serveur d'autorisations est calculé. Les valeurs possibles sont true ou false.	| Obligatoire sur un cluster ou un noeud WebSphere Application Server Network Deployment.   	 | true |
 | authorizationURL   | URL du serveur d'autorisations.	 | Si le mode n'est pas auto. | Racine de contexte de l'environnement d'exécution sur le serveur local. |
-| runtimeContextRoot | Racine de contexte de l'environnement d'exécution.	     | Non    | /mfp       |
+| runtimeContextRoot | Racine de contexte de l'environnement d'exécution.	     | Non	     | /mfp       |
 | pushClientID	     | ID confidentiel de service push dans le serveur d'autorisations.  | Oui | Aucune |
 | pushClientSecret	 | Mot de passe client confidentiel de service push dans le serveur d'autorisations. | Oui | Aucune |
 
@@ -633,8 +633,8 @@ L'élément `<property>` spécifie une propriété de déploiement à définir d
 
 | Attribut  | Description                | Obligatoire | Valeur par défaut |
 |------------|----------------------------|----------|---------|
-| name       | Nom de la propriété.  |	Oui	    | Aucune    |
-| value	     | Valeur de la propriété. |	Oui	    | Aucune    |
+| name       | Nom de la propriété.  |	Oui	     | Aucune    |
+| value	     | Valeur de la propriété. |	Oui	     | Aucune    |
 
 Vous pouvez utiliser cet élément pour définir vos propres propriétés JNDI ou remplacer la valeur par défaut des propriétés JNDI qui sont fournies par le fichier WAR de service push.
 
@@ -736,7 +736,7 @@ L'élément `<database>` prend en charge les éléments suivants. Pour plus d'in
 | url	       | URL du compte Cloudant.       | Non         | https://user.cloudant.com |
 | user	       | Nom d'utilisateur du compte Cloudant. | Oui | Aucune |
 | password	   | Mot de passe du compte Cloudant.	| Non  | Demandée en mode interactif |
-| dbName	   | Nom de la base de données Cloudant. **Important :** Ce nom de base de données doit commencer par un caractère en minuscule et ne peut contenir que des caractères en minuscules (a-z), des chiffres (0-9) et les caractères _, $ et -. |Non    | mfp_push_db |
+| dbName	   | Nom de la base de données Cloudant. **Important :** Ce nom de base de données doit commencer par un caractère en minuscule et ne peut contenir que des caractères en minuscules (a-z), des chiffres (0-9) et les caractères _, $ et -. |Non	| mfp_push_db |
 
 ## Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
@@ -809,7 +809,7 @@ Les tâches **installmobilefirstruntime**, **updatemobilefirstruntime** et **uni
 
 | Elément               | Description                                      | Nombre |
 |-----------------------|--------------------------------------------------|-------|
-| `<property>`          | Propriétés.                                      | 0..   |
+| `<property>`          | Propriétés.	                               | 0..   |
 | `<applicationserver>` | Serveur d'applications.                          | 1     |
 | `<database>`          | Bases de données.                                   | 1     |
 | `<analytics>`         | Composant Analytics.                                   | 0..1  |
@@ -834,12 +834,12 @@ L'élément `<websphereapplicationserver>` (ou `<was>` dans sa forme abrégée) 
 | Attribut       | Description                                            | Obligatoire                 | Valeur par défaut |
 |-----------------|--------------------------------------------------------|--------------------------|---------|
 | installdir      |	Répertoire d'installation de WebSphere Application Server.   | Oui                      | Aucune    |
-| profile         |	Profil WebSphere Application Server ou Liberty.      | Oui	           | Aucune    |
+| profile         |	Profil WebSphere Application Server ou Liberty.      | Oui	                  | Aucune    |
 | user	Nom de l'administrateur WebSphere Application Server.	               | Oui, sauf pour Liberty  | Aucune    |
 | password        | Mot de passe de l'administrateur WebSphere Application Server.   | Non demandée de manière interactive |         |
 | libertyEncoding |	Algorithme permettant de coder les mots de passe de source de données pour WebSphere Application Server Liberty. Les valeurs possibles sont none, xor et aes. Que le codage xor ou aes soit utilisé, le mot de passe déchiffré est transmis en tant qu'argument au programme securityUtility, appelé via un processus externe. Vous pouvez afficher le mot de passe à l'aide d'une commande ps ou dans le système de fichiers /proc sur les systèmes d'exploitation UNIX.                                                         | Non                       |	xor     |
 | jeeVersion      |	Pour le profil Liberty. Permet de spécifier si les fonctions du profil Web JEE6 ou du profil Web JEE7 doivent être installées. Les valeurs possibles sont 6, 7 ou auto.| Non | auto |
-| configureFarm   |	Pour le profil Liberty de WebSphere Application Server et pour le profil complet de WebSphere Application Server (non pour l'édition WebSphere Application Server Network Deployment et la collectivité Liberty). Permet de spécifier si le serveur est membre d'un parc de serveurs. Les valeurs possibles sont true ou false. | Non    | false   |
+| configureFarm   |	Pour le profil Liberty de WebSphere Application Server et pour le profil complet de WebSphere Application Server (non pour l'édition WebSphere Application Server Network Deployment et la collectivité Liberty). Permet de spécifier si le serveur est membre d'un parc de serveurs. Les valeurs possibles sont true ou false. | Non	      | false   |
 | farmServerId    |	Chaîne qui identifie de manière unique un serveur dans un parc de serveurs. Les services d'administration de {{ site.data.keys.mf_server }} et tous les environnements d'exécution de {{ site.data.keys.product_adj }} qui communiquent avec lui doivent partager la même valeur.                                                                | Oui                      |	Aucune    |
 
 Il prend en charge les éléments ci-après pour un déploiement sur un serveur unique :
@@ -888,7 +888,7 @@ L'élément `<cluster>` possède les attributs suivants :
 
 | Attribut | Description       | Obligatoire | Valeur par défaut |
 |-----------|-------------------|----------|---------|
-| name      | Nom du cluster. | Oui    | Aucune    |
+| name      | Nom du cluster. | Oui	   | Aucune    |
 
 L'élément `<node>` possède les attributs suivants :
 
@@ -900,7 +900,7 @@ L'élément `<server>`, qui est utilisé dans un contexte Network Deployment, po
 
 | Attribut  | Description      | Obligatoire | Valeur par défaut |
 |------------|------------------|----------|---------|
-| nodeName   | Nom du noeud.   | Oui      | Aucune    |
+| nodeName   | Nom du noeud.   | Oui	   | Aucune    |
 | serverName | Nom du serveur. | Oui      | Aucune    |
 
 L'élément `<tomcat>` désigne un serveur Apache Tomcat. Il possède l'attribut suivant :
@@ -936,8 +936,8 @@ L'élément `<analytics>` indique que vous souhaitez connecter l'environnement d
 | analyticsURL | URL des services {{ site.data.keys.mf_analytics }}.	                                      | Oui      | Aucune    |
 | consoleURL   | URL de {{ site.data.keys.mf_analytics_console }}.	                                      | Oui      | Aucune    |
 | username     | Nom d'utilisateur.	                                                                  | Oui      | Aucune    |
-| password     | Mot de passe.	                                                          | Oui      | Aucune    |
-| validate     | Permet de déterminer si la {{ site.data.keys.mf_analytics_console }} est accessible ou non.	      | Non    | true    |
+| password     | Mot de passe.	                                                                  | Oui      | Aucune    |
+| validate     | Permet de déterminer si la {{ site.data.keys.mf_analytics_console }} est accessible ou non.	      | Non	     | true    |
 | tenant       | Titulaire des données d'indexation qui sont collectées depuis un environnement d'exécution de {{ site.data.keys.product_adj }}.	      | Non       | Identificateur interne |
 
 #### install
@@ -985,8 +985,8 @@ L'élément `<derby>` possède les attributs suivants :
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
 | database	 | Nom de la base de données.	                      | Non       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind. |
-| datadir	 | Répertoire contenant les bases de données. |	Oui	    | Aucune    |
-| schema     |	Nom du schéma.                          |	Non    | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH ou APPCENTER, selon l'attribut kind. |
+| datadir	 | Répertoire contenant les bases de données. |	Oui	     | Aucune    |
+| schema     |	Nom du schéma.                          |	Non	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH ou APPCENTER, selon l'attribut kind. |
 
 L'élément `<derby>` prend en charge l'élément suivant :
 
@@ -1014,8 +1014,8 @@ L'élément `<db2>` possède les attributs suivants :
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
 | database   | Nom de la base de données. | Non MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind. |
-| server     | Nom d'hôte du serveur de base de données.      | Oui	    | Aucune    |
-| port       | Port sur le serveur de base de données.           | Non    | 50000   |
+| server     | Nom d'hôte du serveur de base de données.      | Oui	     | Aucune    |
+| port       | Port sur le serveur de base de données.           | Non	     | 50000   |
 | user       | Nom d'utilisateur permettant d'accéder aux bases de données.     | Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec des privilèges restreints                                 | répertoriés dans Utilisateurs de base de données et privilèges correspondants. | Oui Aucune |
 | password   | Nom d'utilisateur permettant d'accéder aux bases de données.      | Non       | Demandée en mode interactif |
 | schema     | Nom du schéma.                           | Non       | Dépend de l'utilisateur |
@@ -1043,16 +1043,16 @@ L'élément `<mysql>` possède les attributs suivants :
 |------------|--------------------------------------------|----------|---------|
 | database	 | Nom de la base de données.	                      | Non       | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, selon l'attribut kind. |
 | server	 | Nom d'hôte du serveur de base de données.	  | Oui      | Aucune    |
-| port	     | Port sur le serveur de base de données.           | Non    | 3306    |
+| port	     | Port sur le serveur de base de données.           | Non	     | 3306    |
 | user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec des privilèges restreints | répertoriés dans Utilisateurs de base de données et privilèges correspondants. | Oui | Aucune |
-| password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non    | Demandée en mode interactif |
+| password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non	     | Demandée en mode interactif |
 
 A la place de **database**, **server**
 et **port**, vous pouvez aussi spécifier une adresse URL. Dans ce cas, utilisez les attributs ci-après.
 
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
-| url	     | URL pour la connexion à la base de données.	  | Oui	    | Aucune    |
+| url	     | URL pour la connexion à la base de données.	  | Oui	     | Aucune    |
 | user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants | Oui  | Aucune |
 | password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non       | Demandée en mode interactif |
 
@@ -1080,7 +1080,7 @@ L'élément `<oracle>` possède les attributs suivants :
 | database   | Nom de base de données, ou nom de service Oracle. Remarque : Vous devez toujours utiliser un nom de service pour vous connecter à une base de données PDB. | Non | ORCL |
 | server	 | Nom d'hôte du serveur de base de données.	Oui Aucune
 | port	     | Port sur le serveur de base de données.	Non	1521
-| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants. Voir la note sous ce tableau.| Oui | Aucune |
+| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants. Voir la note sous ce tableau. | Oui | Aucune |
 | password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non       | Demandée en mode interactif |
 
 > **Remarque:** Pour l'attribut **user**, utilisez plutôt un nom d'utilisateur en lettres majuscules. Les noms d'utilisateur Oracle sont en général
@@ -1095,8 +1095,8 @@ et **port**, vous pouvez aussi spécifier une adresse URL. Dans ce cas, utilisez
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
 | url	     | URL pour la connexion à la base de données.	  | Oui      | Aucune    |
-| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants. Voir la note sous ce tableau.| Oui | Aucune |
-| password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non    | Demandée en mode interactif |
+| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants. Voir la note sous ce tableau. | Oui | Aucune |
+| password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non	     | Demandée en mode interactif |
 
 > **Remarque:** Pour l'attribut **user**, utilisez plutôt un nom d'utilisateur en lettres majuscules. Les noms d'utilisateur Oracle sont en général
 en lettres majuscules. A la différence des autres outils de bases de données, la tâche Ant **installmobilefirstruntime**
@@ -1219,8 +1219,8 @@ Les tâches `<installApplicationCenter>`, `<updateApplicationCenter>` et `<unins
 |-------------------|-------------------------------------------|-------|
 | applicationserver	| Serveur d'applications.                   | 1     |
 | console           | Console Application Center.	        | 1     |
-| database          | Bases de données.                   | 1     |
-| user	             | Utilisateur à mapper à un rôle de sécurité. | 0..∞  |
+| database          | Bases de données.	                        | 1     |
+| user	            | Utilisateur à mapper à un rôle de sécurité. | 0..∞  |
 
 ### Pour spécifier une console Application Center
 {: #to-specify-an-application-center-console }
@@ -1243,7 +1243,7 @@ Les attributs et les éléments internes de ces éléments sont décrits dans le
 
 ### Pour spécifier une connexion à la base de données des services
 {: #to-specify-a-connection-to-the-services-database }
-L'élément `<database>` collecte les paramètres permettant de spécifier une déclaration de source de données dans un serveur d'applications pour accéder à la base de données des services. 
+L'élément `<database>` collecte les paramètres permettant de spécifier une déclaration de source de données dans un serveur d'applications pour accéder à la base de données des services.
 
 Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
 
@@ -1327,11 +1327,11 @@ Les tâches `<installanalytics>`, `<updateanalytics>` et `<uninstallanalytics>` 
 
 | Attribut         | Description                               | Obligatoire | Valeur par défaut |
 |-------------------|-------------------------------------------|----------|---------|
-| console	        | {{ site.data.keys.mf_analytics }}   	                | Oui	  | 1       |
-| user	            | Utilisateur à mapper à un rôle de sécurité.	| Non    | 0..     |
+| console	        | {{ site.data.keys.mf_analytics }}   	                | Oui	   | 1       |
+| user	            | Utilisateur à mapper à un rôle de sécurité.	| Non	   | 0..     |
 | storage	        | Type de stockage.	                    | Oui 	   | 1       |
-| applicationserver	| Serveur d'applications.	                | Oui	  | 1       |
-| property          | Propriétés.                             | Non 	   | 0..     |
+| applicationserver	| Serveur d'applications.	                | Oui	   | 1       |
+| property          | Propriétés.	                            | Non 	   | 0..     |
 
 ### Pour spécifier {{ site.data.keys.mf_analytics_console }}
 {: #to-specify-a-mobilefirst-analytics-console }

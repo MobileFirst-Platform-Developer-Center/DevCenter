@@ -103,7 +103,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 {: #4-deploy-an-adapter }
 Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions →  Déployer un adaptateur**.
 
-Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.
+Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
 
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'exemple d'adaptateur **Java** "Hello World".
 

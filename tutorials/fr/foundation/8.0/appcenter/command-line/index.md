@@ -39,7 +39,7 @@ Utilisez l'outil autonome en suivant ces étapes.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
 
    ```bash
-   java com.ibm.appcenter.Upload [options] [files]
+   java com.ibm.appcenter.Upload [options] [fichiers]
    ```
 
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
@@ -76,7 +76,7 @@ Utilisez l'outil autonome en suivant ces étapes.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
 
    ```bash
-   java com.ibm.appcenter.Upload -delete [options] [files or applications]
+   java com.ibm.appcenter.Upload -delete [options] [fichiers ou applications]
    ```
 
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
