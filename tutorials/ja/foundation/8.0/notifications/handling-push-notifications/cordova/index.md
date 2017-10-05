@@ -55,7 +55,8 @@ cordova plugin add cordova-plugin-mfp-push```
 3. 以下のコマンドを実行して、Cordova プロジェクトをビルドします。
 
    ```bash
-cordova build```
+cordova build
+```
 
 ### iOS プラットフォーム
 {: #ios-platform }
@@ -74,7 +75,7 @@ Android Studio では、以下の `activity` を `application` タグに追加�
 ```xml
 <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
-	  ```
+```
 
 ## 通知 API
 {: #notifications-api }
@@ -83,14 +84,14 @@ Android Studio では、以下の `activity` を `application` タグに追加�
 
 | Javascript 関数| 説明|
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。| 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。| 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。| 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。| 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。| 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。| 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。| 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。| 
+| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。|
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。|
+| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。|
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。|
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。|
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
 
 ### API 実装
 {: #api-implementation }

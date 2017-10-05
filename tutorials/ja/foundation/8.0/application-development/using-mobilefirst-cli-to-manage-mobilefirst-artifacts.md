@@ -167,7 +167,8 @@ mfpdev server info
 ローカルまたはリモートの {{ site.data.keys.mf_server }} インスタンスをさらに使用する場合、次のコマンドを使用して、使用可能なインスタンスのリストに、そのインスタンスを追加できます。
 
 ```bash
-mfpdev server add```
+mfpdev server add
+```
 
 対話式プロンプトに従って、サーバーの名前、サーバー URL、およびユーザー/パスワード資格情報を指定します。  
 例えば、Mobile Foundation Bluemix サービス上で稼働している {{ site.data.keys.mf_server }} を追加するには、次のようにします。
@@ -184,7 +185,7 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'MyBluemixServer' added successfully. 
+Server profile 'MyBluemixServer' added successfully.
 ```
 
 - 「fully qualified URL of this server」は、使用するサーバーの URL に置き換えてください。
@@ -218,7 +219,8 @@ mfpdev server remove
 登録済みデフォルト・サーバーのコンソールを開くには、次のコマンドを実行します。
 
 ```bash
-mfpdev server console```
+mfpdev server console
+```
 
 別のサーバーのコンソールを開くには、次のように、コマンドのパラメーターとしてサーバー名を指定します。
 
@@ -279,7 +281,8 @@ mfpdev app register -w windows8
 これらの属性の値を変更するには、次のコマンドを実行します。
 
 ```bash
-mfpdev app config```
+mfpdev app config
+```
 
 このコマンドを実行すると、変更できる属性のリストが対話式に提示され、当該属性の新規値を求めるプロンプトが出されます。  
 使用可能な属性は、各プラットフォーム (iOS、Android、Windows) ごとに異なります。
@@ -393,12 +396,14 @@ mfpContextRoot:'/mfp', // "mfp" is the default context root of {{ site.data.keys
  3. 以下のコマンドを実行します。
 
     ```bash
-cordova prepare```
+cordova prepare
+    ```
 
  4. 次のコマンドを Cordova アプリケーションのルート・フォルダーから実行することで、Cordova アプリケーションをプレビューします。
 
     ```bash
-mfpdev app preview```
+mfpdev app preview
+    ```
 
 どのプラットフォームをプレビューし、どのタイプのプレビューを使用するかを選択するためのプロンプトが出されます。
 プレビューのオプションには、MBS とブラウザーの 2 つがあります。
@@ -419,7 +424,8 @@ mfpdev app preview```
 更新対象の Web リソースの新規セットを Cordova アプリケーションに送信するには、次のコマンドを実行します。
 
 ```bash
-mfpdev app webupdate```
+mfpdev app webupdate
+```
 
 このコマンドにより、更新された Web リソースが .zip ファイルにパッケージ化され、登録済みのデフォルトの {{ site.data.keys.mf_server }} にアップロードされます。パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
 
@@ -432,7 +438,8 @@ mfpdev app webupdate <server_name> <runtime>
 --build パラメーターを使用すると、パッケージ化された Web リソースが含まれた .zip ファイルを、サーバーにアップロードすることなく生成できます。
 
 ```bash
-mfpdev app webupdate --build```
+mfpdev app webupdate --build
+```
 
 以前にビルド済みのパッケージをアップロードするには、--file パラメーターを使用します。
 
@@ -451,12 +458,14 @@ mfpdev app webupdate --encrypt
 {{ site.data.keys.product_adj }} アプリケーションを {{ site.data.keys.mf_server }} に登録したら、{{ site.data.keys.mf_server }} Console を使用してアプリケーション構成の一部を変更し、それらの構成を、次のコマンドでサーバーからアプリケーションにプルすることができます。
 
 ```bash
-mfpdev app pull```
+mfpdev app pull
+```
 
 また、アプリケーション構成をローカルに変更して、次のコマンドで変更を {{ site.data.keys.mf_server }} にプッシュすることもできます。
 
 ```bash
-mfpdev app push```
+mfpdev app push
+```
 
 **例:** {{ site.data.keys.mf_console }} でセキュリティー検査へのスコープ・マッピングを実行した後、上記のコマンドを使用してサーバーからプルすることができます。ダウンロードした .zip ファイルは、プロジェクトの **[root directory]/mobilefirst** フォルダーに保管されるので、後でこれを `mfpdev app push` コマンドを使用して別の {{ site.data.keys.mf_server }} にアップロードすることができます。このように、事前に定義済みの構成を再利用することで、迅速な構成とセットアップが可能になります。
 
@@ -524,7 +533,8 @@ mfpdev config
 全 mfpdev コマンドが記述されたヘルプ・コンテンツを参照するには、次のコマンドを使用します。
 
 ```bash
-mfpdev help```
+mfpdev help
+```
 
 次のコマンドを実行すると、ご使用の環境に関する情報が含まれたリストが生成されます。
 
