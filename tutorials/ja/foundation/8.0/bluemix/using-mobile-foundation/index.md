@@ -31,7 +31,7 @@ weight: 1
 * [{{ site.data.keys.mf_bm_short }} サービスの使用](#using-the-mobile-foundation-service)
 * [サーバー構成](#server-configuration)
 * [拡張サーバー構成](#advanced-server-configuration)
-* [Analytics サポートの追加](#adding-analytics-support)
+* [分析サポートの追加](#adding-analytics-support)
 * [Analytics サポートの削除](#removing-analytics-support)
 * [IBM Containers にデプロイされた Analytics から Analytics サービスへの切り替え](#switching-from-analytics-container-to-analytics-service)
 * [{{ site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
@@ -93,7 +93,7 @@ weight: 1
 ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](service-dashboard.png)
 
 **「Analytics の追加」**をクリックして、サーバー・インスタンスに {{ site.data.keys.mf_analytics_service }} サポートを追加します。
-『[Analytics サポートの追加](#adding-analytics-support)』セクションで詳しく学びます。
+『[分析サポートの追加](#adding-analytics-support)』セクションで詳しく学びます。
 
 **「コンソールの起動」**をクリックして {{ site.data.keys.mf_console }} を開きます。デフォルトのユーザー名は「admin」で、「目」アイコンをクリックすることでパスワードを明らかにすることができます。
 
@@ -156,9 +156,29 @@ weight: 1
 
 ## サーバー・ログへのアクセス
 {: #accessing-server-logs }
-サーバー・ログにアクセスするには、サイドバー・ナビゲーションを開き、**「アプリケーション」→「Cloud Foundary アプリケーション」**をクリックします。サービスを選択し、**「ランタイム」**をクリックします。次に、**「ファイル」**タブをクリックします。
+サーバー・ログにアクセスするには、以下で説明する手順に従います。
 
-**logs** フォルダーに **messages.log** ファイルと **trace.log** ファイルがあります。
+**シナリオ 1:**
+
+1. ホスト・マシンをセットアップします。<br/>
+Bluemix Cloud Foundry アプリケーションを管理するには、Cloud Foundry CLI をインストールする必要があります。<br/>
+[Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases) をインストールします。
+2. 端末を開き、*組織*および*スペース*に `cf login` を使用してログインします。
+3. CLI で次のコマンドを実行します。
+```bash
+  cf ssh <mfp_Appname> -c "/bin/cat logs/messages.log" > messages.log
+```
+4. トレースが使用可能な場合に限り、次のコマンドを実行します。
+```bash
+cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
+ ```
+
+**シナリオ 2:**      
+
+* サーバー・ログにアクセスするには、サイドバー・ナビゲーションを開き、**「アプリケーション」→「ダッシュボード」→「Cloud Foundry アプリケーション」**をクリックします。
+* アプリケーションを選択して、**「ログ」→「Kibana で表示」**をクリックします。
+* ログ・メッセージを選択してコピーします。
+
 
 #### トレース
 {: #tracing }
@@ -166,7 +186,7 @@ weight: 1
 
 1. **「ランタイム」→「メモリーとインスタンス (Memory and Instances)」**で、サービス・インスタンス (**0** で始まるインスタンス ID) を選択します。
 2. **「トレース」**アクション・オプションをクリックします。
-3. トレース・ステートメントとして `com.worklight.*=debug=enabled` と入力し、 **「トレースを実行依頼 (Submit trace)」**をクリックします。
+3. トレース・ステートメントとして `com.ibm.mfp.*=all` と入力し、**「トレースを実行依頼 (Submit trace)」**をクリックします。
 
 これで、上記で指定した場所で **trace.log** ファイルを使用できるようになりました。
 

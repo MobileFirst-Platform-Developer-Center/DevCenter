@@ -88,7 +88,7 @@ WL.Analytics.send();
 Web アプリケーションの場合、リスナーは不要です。`WLlogger` クラスを通じて分析を有効化および無効化することができます。
 
 ```javascript                                    
-ibmmfpfanalytics.logger.config({analyticsCapture: true});                
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ibmmfpfanalytics.send();
 ```
 
@@ -180,7 +180,7 @@ ibmmfpfanalytics.send();
 
 ```objc
 - (void)sendMFPAnalyticData {
-  [OCLogger send];
+[OCLogger send];
   [[WLAnalytics sharedInstance] send];
 }
 
@@ -229,7 +229,7 @@ timer.schedule(new TimerTask() {
 
 ```Java
 setInterval(function() {
-  WL.Logger.send();
+WL.Logger.send();
   WL.Analytics.send();
 }, 60000)
 ```
@@ -239,7 +239,7 @@ setInterval(function() {
 
 ```Java
 setInterval(function() {
-  ibmmfpfanalytics.logger.send();
+ibmmfpfanalytics.logger.send();
 }, 60000);
 ```
 

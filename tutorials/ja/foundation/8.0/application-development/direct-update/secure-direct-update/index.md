@@ -57,8 +57,7 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 次のコマンドを実行して公開鍵を抽出します。
     
    ```bash
-   openssl x509 -inform der -in certfile.cert -pubkey -noout
-   ```
+openssl x509 -inform der -in certfile.cert -pubkey -noout```
     
    **注:** 鍵ツール単独で公開鍵を Base64 形式で抽出することはできません。
     

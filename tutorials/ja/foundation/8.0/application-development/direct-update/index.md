@@ -6,7 +6,7 @@ relevantTo: [cordova]
 weight: 8
 downloads:
   - name: Cordova プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -75,24 +75,21 @@ downloads:
 
 代替方法:
 
-* .zip ファイルを作成し、コマンド `mfpdev app webupdate [server-name][runtime-name]` を使用して別の {{ site.data.keys.mf_server }} にアップロードします。例えば、次のとおりです。
+* .zip ファイルを作成し、コマンド `mfpdev app webupdate [server-name] [runtime-name]` を使用して別の {{ site.data.keys.mf_server }} にアップロードします。例えば、次のとおりです。
 
   ```bash
-  mfpdev app webupdate myQAServer MyBankApps
-  ```
+mfpdev app webupdate myQAServer MyBankApps```
 
-* コマンド `mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]` を使用して、以前に生成した .zip ファイルをアップロードします。 例えば、次のとおりです。
+* コマンド `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]` を使用して、以前に生成した .zip ファイルをアップロードします。例えば、次のとおりです。
 
   ```bash
-  mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
-  ```
+mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip```
 
 * パッケージした Web リソースを {{ site.data.keys.mf_server }} に手動でアップロードします。
  1. それをアップロードせずに .zip ファイルを作成します。
 
     ```bash
-    mfpdev app webupdate --build
-    ```
+mfpdev app webupdate --build```
  2. {{ site.data.keys.mf_console }} をロードし、そのアプリケーション項目をクリックします。
  3. **「Web リソース・ファイルのアップロード (Upload Web Resources File)」**をクリックして、パッケージした Webリソースをアップロードします。
 
@@ -113,7 +110,7 @@ downloads:
 
 ```javascript
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
-    // Implement custom Direct Update logic
+// Implement custom Direct Update logic
 };
 ```
 
@@ -135,7 +132,7 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
-    navigator.notification.confirm(  // Creates a dialog.
+navigator.notification.confirm(  // Creates a dialog.
 'Custom dialog body text',
         // Handle dialog buttons.
           directUpdateContext.start();
@@ -154,8 +151,8 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 * `directUpdateContext.start(directUpdateCustomListener)` などのリスナー関数が指定されると、ダイレクト・アップデート・プロセスは、リスナーへのライフサイクル・イベントの送信中にバックグラウンドで実行されます。カスタム・リスナーは以下のメソッドを実装する必要があります。
 
 ```javascript
-var  directUpdateCustomListener  = {
-    onStart : function ( totalSize ){ }, 
+var  directUpdateCustomListener  = { 
+onStart : function ( totalSize ){ }, 
     onProgress : function ( status , totalSize , completedSize ){ }, 
     onFinish : function ( status ){ } 
 };
@@ -167,17 +164,17 @@ var  directUpdateCustomListener  = {
 * `onProgress` は、状況 `UNZIP_IN_PROGRESS` で呼び出されます。
 * `onFinish` は、次のいずれかの最終状況コードで呼び出されます。
 
-| 状況コード | 説明 |
+| 状況コード| 説明|
 |-------------|-------------|
-| `SUCCESS` | ダイレクト・アップデートがエラーなしで終了しました。 |
-| `CANCELED` | ダイレクト・アップデートが取り消されました (例えば、`stop()` メソッドが呼び出されたため)。 |
-| `FAILURE_NETWORK_PROBLEM` | 更新時にネットワーク接続に関する問題がありました。 |
-| `FAILURE_DOWNLOADING` | ファイルが完全にダウンロードされませんでした。 |
-| `FAILURE_NOT_ENOUGH_SPACE` | 更新ファイルをダウンロードして解凍するだけの十分なスペースがデバイスにありません。 |
-| `FAILURE_UNZIPPING` | 更新ファイルの解凍中に問題がありました。 |
-| `FAILURE_ALREADY_IN_PROGRESS` | ダイレクト・アップデートが既に実行しているときに start メソッドが呼び出されました。 |
-| `FAILURE_INTEGRITY` | 更新ファイルの認証性を検証できません。 |
-| `FAILURE_UNKNOWN` | 予期しない内部エラー。 |
+| `SUCCESS` | ダイレクト・アップデートがエラーなしで終了しました。|
+| `CANCELED` | ダイレクト・アップデートが取り消されました (例えば、`stop()` メソッドが呼び出されたため)。|
+| `FAILURE_NETWORK_PROBLEM` | 更新時にネットワーク接続に関する問題がありました。|
+| `FAILURE_DOWNLOADING` | ファイルが完全にダウンロードされませんでした。|
+| `FAILURE_NOT_ENOUGH_SPACE` | 更新ファイルをダウンロードして解凍するだけの十分なスペースがデバイスにありません。|
+| `FAILURE_UNZIPPING` | 更新ファイルの解凍中に問題がありました。|
+| `FAILURE_ALREADY_IN_PROGRESS` | ダイレクト・アップデートが既に実行しているときに start メソッドが呼び出されました。|
+| `FAILURE_INTEGRITY` | 更新ファイルの認証性を検証できません。|
+| `FAILURE_UNKNOWN` | 予期しない内部エラー。|
 
 カスタム・ダイレクト・アップデート・リスナーを実装する場合は、ダイレクト・アップデート・プロセスが完了して `onFinish()` メソッドが呼び出されたときにアプリケーションが再ロードされるようにする必要があります。また、ダイレクト・アップデート・プロセスが正常に完了できなかった場合には `wl_directUpdateChalengeHandler.submitFailure()` を呼び出す必要があります。
 
@@ -185,7 +182,7 @@ var  directUpdateCustomListener  = {
 
 ```javascript
 var  directUpdateCustomListener  = { 
-    onStart: function(totalSize){
+onStart: function(totalSize){
     //show custom progress dialog
   },
   onProgress: function(status,totalSize,completedSize){
@@ -232,7 +229,7 @@ UI なしのダイレクト・アップデートを実行するには、`directU
 
 ```javascript
 var  directUpdateCustomListener  = { 
-    onStart: function(totalSize){
+onStart: function(totalSize){
   },
   onProgress: function(status,totalSize,completeSize){
   },
@@ -263,8 +260,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ダイレクト・アップデート・コンテキストを格納するグローバル変数を作成して、その後ダイレクト・アップデート・プロセスが失敗したときにそのダイレクト・アップデート・コンテキストを使用できるようにします。例えば、次のとおりです。
 
 ```javascript
-var savedDirectUpdateContext;
-```
+var savedDirectUpdateContext;```
 
 ダイレクト・アップデート・チャレンジ・ハンドラーを実装します。ダイレクト・アップデート・コンテキストをここに保存します。例えば、次のとおりです。
 
@@ -289,7 +285,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 
 ```javascript
 restartDirectUpdate = function () {
-  savedDirectUpdateContext.start(directUpdateCustomListener); // use saved direct update context to restart direct update
+savedDirectUpdateContext.start(directUpdateCustomListener); // use saved direct update context to restart direct update
 };
 ```
 
@@ -297,7 +293,7 @@ restartDirectUpdate = function () {
 
 ```javascript
 var  directUpdateCustomListener  = { 
-    onStart: function(totalSize){
+onStart: function(totalSize){
     alert('onStart: totalSize = ' + totalSize + 'Byte');
   },
   onProgress: function(status,totalSize,completeSize){

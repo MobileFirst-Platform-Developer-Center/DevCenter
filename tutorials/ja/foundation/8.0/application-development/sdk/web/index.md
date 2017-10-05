@@ -93,7 +93,7 @@ require(['mfp'], function(WL) {
 
 ```javascript
 var wlInitOptions = {
-    mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
+mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
 };
 

@@ -212,9 +212,7 @@ Elasticsearch は {{ site.data.keys.mf_analytics_server }} に組み込まれて
 
 2. JNDI プロパティーに関するアプリケーション・サーバーの構成ファイルを編集 (またはシステム環境変数を使用) して、少なくとも以下のフラグを構成します。
 
-    | フラグ| 値 (例)| デフォルト
-| 注記
-|
+    | フラグ| 値 (例)| デフォルト | 注記 |
     |------|-----------------|---------|------|
     | cluster.name| 	worklight	 | worklight| 	このノードが参加するクラスター。|
     | discovery.zen.ping.multicast.enabled| 	false| 	true| 	偶発的なクラスター参加を回避するには、false に設定します。|
@@ -244,9 +242,7 @@ Elasticsearch は {{ site.data.keys.mf_analytics_server }} に組み込まれて
 2. ファイルを解凍します。
 3. **config/elasticsearch.yml** ファイルを編集し、少なくとも以下のフラグを構成します。
 
-    | フラグ| 値 (例)| デフォルト
-| 注記
-|
+    | フラグ| 値 (例)| デフォルト | 注記 |
     |------|-----------------|---------|------|
     | cluster.name| 	worklight	 | worklight| 	このノードが参加するクラスター。|
     | discovery.zen.ping.multicast.enabled| 	false| 	true| 	偶発的なクラスター参加を回避するには、false に設定します。|

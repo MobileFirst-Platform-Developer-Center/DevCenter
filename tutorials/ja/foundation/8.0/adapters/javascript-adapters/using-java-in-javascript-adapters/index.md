@@ -31,8 +31,7 @@ Java クラスにメソッドを追加します。
 
 ```java
 public class Calculator {
-
-  // Add two integers.
+// Add two integers.
   public static int addTwoIntegers(int first, int second){
     return first + second;
   }
@@ -63,7 +62,7 @@ function addTwoIntegers(a,b){
 
 ```javascript
 function subtractTwoIntegers(a,b){
-    var calcInstance = new com.sample.customcode.Calculator();
+    var calcInstance = new com.sample.customcode.Calculator();   
     return {
         result : calcInstance.subtractTwoIntegers(a,b)
     };
