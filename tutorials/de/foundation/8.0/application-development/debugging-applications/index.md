@@ -37,8 +37,8 @@ Sie können den {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (M
 Öffnen Sie dazu ein **Befehlszeilenfenster** und fühgen Sie folgenden Befehl aus: 
 
 ```bash
-mfpdev app preview
-```
+    mfpdev app preview
+    ```
 
 Wenn es in Ihrer Anwendung mehr als eine Plattform gibt, geben Sie die Plattform für die Vorschau an: 
 

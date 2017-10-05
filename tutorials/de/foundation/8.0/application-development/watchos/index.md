@@ -101,13 +101,13 @@ der Uhr mit watchOS oder der Apple Watch gibt.
 
 | Feature | Einschränkung |
 |---------|------------|
-| openSSL | Nicht unterstützt |
+| openSSL| Nicht unterstützt |
 | JSONStore| Nicht unterstützt |
-| Benachrichtigungen | Nicht unterstützt |
-| Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts | Nicht unterstützt |
-| Validierung der Anwendungsauthentizität | Nicht mit Bitcode kompatibel und daher nicht unterstützt |
-| Inaktivierung/Benachrichtigung über Fernzugriff	| Erfordert Anpassungen (siehe unten) |
-| Sicherheitsüberprüfung mit Benutzernamen/Kennwort | Sicherheitsüberprüfung CredentialsValidation verwenden |
+| Benachrichtigungen| Nicht unterstützt |
+| Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts| Nicht unterstützt |
+| Validierung der Anwendungsauthentizität| Nicht mit Bitcode kompatibel und daher nicht unterstützt|
+| Ferne Inaktivierung/Benachrichtigung | Erfordert Anpassungen (siehe unten)|
+| Sicherheitsüberprüfung mit Benutzernamen/Kennwort| Sicherheitsüberprüfung CredentialsValidation verwenden|
 
 ### Inaktivierung/Benachrichtigung über Fernzugriff
 {: #remote-disablenotify }

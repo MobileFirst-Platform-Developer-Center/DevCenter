@@ -127,7 +127,7 @@ var myObject = {
 var query1 = {name: 'carlos'};
 ```
 
-**`이름`이 `carlos`와 일치하고 `연령`이 `99`와 일치하는 문서 찾기**
+**`이름`이 `carlos`와 일치하고 `나이`가 `99`인 문서 찾기**
 
 ```javascript
 var query2 = {name: 'carlos', age: 99};
@@ -147,18 +147,18 @@ JSONStore는 {{ site.data.keys.product_adj }} 플러그인을 사용하는 Cordo
 
 JSONStore은 LocalStorage, 색인이 작성된 DB, Cordova 스토리지 API 및 Cordova 파일 API 등의 기술과 유사합니다. 다음 테이블은 JSONStore에서 제공하는 일부 기능이 다른 기술과 비교하여 어떻게 다른지 보여줍니다. JSONStore 기능은 iOS 및 Android 디바이스와 시뮬레이터에서만 사용 가능합니다. 
 
-| 기능                                            | JSONStore      | LocalStorage | IndexedDB | Cordova 스토리지 API | Cordova 파일 API |
+| 기능| JSONStore| LocalStorage| IndexedDB| Cordova 스토리지 API| Cordova 파일 API|
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
 | Android 지원(Cordova &amp; 고유 애플리케이션)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS 지원(Cordova & 고유 애플리케이션)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal 및 Windows 10 UWP(Cordova 애플리케이션)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| iOS 지원(Cordova & 고유 애플리케이션)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal 및 Windows 10 UWP(Cordova 애플리케이션)|	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
 | 데이터 암호화	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| 최대 스토리지	                                 |사용 가능한 공간 |    ~5MB     |   ~5MB 	 | 사용 가능한 공간	   | 사용 가능한 공간  |
-| 신뢰할 수 있는 스토리지(참고 참조)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| 로컬 변경사항 추적	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| 다중 사용자 지원                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| 색인 작성	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| 스토리지 유형	                                 | JSON 문서 | 키/값 쌍 | JSON 문서 | 관계형(SQL) | 문자열     |
+| 최대 스토리지	                                 |사용 가능한 공간|    ~5MB|   ~5MB 	 | 사용 가능한 공간	   | 사용 가능한 공간|
+| 신뢰할 수 있는 스토리지(참고 참조)|	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| 로컬 변경사항 추적|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 다중 사용자 지원|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 색인화	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
+| 스토리지 유형| JSON 문서| 키/값 쌍| JSON 문서| 관계형(SQL)| 문자열|
 
 **참고:** 신뢰할 수 있는 스토리지는 다음 이벤트 중 하나가 발생하는 경우를 제외하고는 데이터가 삭제되지 않음을 의미합니다. 
 
@@ -505,7 +505,6 @@ change API에서 대체되거나 추가된 문서를 더티로 표시할지 여�
 
 ```javascript
 .then(function (responseFromAdapter) {
-
   var accessor = WL.JSONStore.get('people');
 
   var data = responseFromAdapter.responseJSON;
@@ -576,7 +575,7 @@ accessor.remove(doc, {markDirty: true})
 ```javascript
 var accessor = WL.JSONStore.get('people');
 
-accessor.getAllDirty()
+  accessor.getAllDirty()
 
 .then(function (dirtyDocs) {
   // ...
@@ -698,7 +697,6 @@ $.when.apply(this, arrayOfPromises)
 
 ```javascript
 .then(function (dirtyDocs) {
-
   return $.ajax({
     type: 'POST',
     url: 'http://example.org/updatePeople',
@@ -716,7 +714,6 @@ $.when.apply(this, arrayOfPromises)
 
 ```javascript
 .then(function (responseFromAdapter) {
-
   if (responseFromAdapter is successful) {
     WL.JSONStore.get('people').markClean(dirtyDocs);
   }

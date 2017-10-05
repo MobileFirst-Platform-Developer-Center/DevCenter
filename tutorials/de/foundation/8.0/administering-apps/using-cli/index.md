@@ -665,8 +665,7 @@ angegeben.
 <br/>
 #### Befehl `adapter get binary`
 {: #the-adapter-get-binary-command }
-Der Befehl `adapter
-get binary` gibt die binäre Adapterdatei zurück.
+Der Befehl `adapter get binary` gibt die binäre Adapterdatei zurück.
 
 Syntax: `adapter [Laufzeitname] Adaptername get binary [> Zieldatei]`
 
@@ -1031,8 +1030,7 @@ auf dem REST-Service [Application Descriptor (GET)](http://www.ibm.com/support/k
 
 #### Befehl `app version get web-resources`
 {: #the-app-version-get-web-resources-command }
-Der Befehl `app version get web-resources` gibt die Webressourcen für eine App-Version
-als .zip-Datei zurück. 
+Der Befehl `app version get web-resources` gibt die Webressourcen für eine App-Version als .zip-Datei zurück. 
 
 Syntax: `app version [Laufzeitname] App-Name Umgebung Version get web-resources [> Zieldatei]`
 

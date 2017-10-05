@@ -48,7 +48,7 @@ var Messages = {
 Messages.headerText
 ```
 
-**클래스가 "translate"인 HTML 요소의 ID로:**
+**`class="translate"`가 있는 HTML 요소의 ID로:**
 
 ```html
 <h1 id="headerText" class="translate"></h1>

@@ -25,6 +25,12 @@ IBM Bluemix는 IBM 개방형 클라우드 아키텍처의 구현입니다. Bluem
 
 Bluemix Liberty for Java 런타임에서 {{ site.data.keys.product}}을 실행하기 위해 **WebSphere Liberty 설치**를 포함하고 **{{ site.data.keys.mf_server }} 인스턴스**가 배치되어 있는 **Cloudfoundry 앱** 컴포넌트를 사용합니다. 
 
+### Bluemix의 Kubernetes Cluster
+Kubernetes는 컴퓨팅 머신의 클러스터에 대한 앱 컨테이너를 스케줄링하는 오케스트레이션 도구입니다. Kubernetes를 통해 개발자는 컨테이너의 성능과 유연성을 활용하여 고가용성 애플리케이션을 신속하게 개발할 수 있습니다.
+Kubernetes Cluster를 작성하고 관리하는 데 IBM Bluemix Container Service CLI 또는 Kubernetes CLI를 사용할 수 있습니다. 
+
+[Bluemix에서 Kubernetes Cluster에 대해 자세히 알아보기](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
+
 ### IBM Containers
 {: #ibm-containers }
 IBM Containers는 호스팅된 클라우드 환경에서 이미지를 실행하는 데 사용되는 오브젝트입니다. IBM Containers는 앱에서 실행해야 하는 모든 항목을 보유합니다. 
@@ -39,8 +45,11 @@ Liberty for Java 런타임은 liberty-for-java 빌드팩으로 구현됩니다. 
 
 [Liberty for Java에 대해 자세히 알아보십시오](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html). 
 
+
 ## 다음 학습서
 {: #tutorials-to-follow-next }
+
+* Kubernetes Cluster를 사용하여 [IBM에서 제공하는 스크립트를 통해](mobilefirst-server-using-kubernetes/) Bluemix에서 {{ site.data.keys.mf_bm_short }} 인스턴스를 작성합니다. 
 * [{{ site.data.keys.mf_bm }} 서비스를 사용해](using-mobile-foundation/) {{ site.data.keys.mf_server }} 인스턴스를 작성합니다. 
 * IBM Containers를 사용하여 [IBM에서 제공하는 스크립트를 통해](mobilefirst-server-using-scripts/) Bluemix에서 {{ site.data.keys.mf_server }} 인스턴스를 작성합니다. 
-* Liberty 빌드 팩을 사용하여 [IBM에서 제공하는 스크립트를 통해](mobilefirst-server-using-scripts-lbp/) Bluemix에서 {{ site.data.keys.mf_server }} 인스턴스를 작성합니다. 
+* Liberty를 사용하여 [IBM에서 제공하는 스크립트를 통해](mobilefirst-server-using-scripts-lbp/) Bluemix에서 {{ site.data.keys.mf_server }} 인스턴스를 작성합니다. 

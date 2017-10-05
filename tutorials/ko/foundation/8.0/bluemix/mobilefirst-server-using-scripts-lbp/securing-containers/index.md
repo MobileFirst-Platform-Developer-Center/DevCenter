@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: MobilFirst Server 보호
+title: MobileFirst server 보호
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -19,7 +19,7 @@ weight: 2
 ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플리케이션에는 영향을 미치지 않습니다. 기타 모바일 운영 체제에서는 서버가 ATS 레벨의 보안에서 통신하지 않아도 되지만 ATS가 구성된 서버와 계속 통신할 수 있습니다. 서버를 구성하기 전에 생성된 인증서를 준비하십시오. 다음 단계에서는 키 저장소 파일 **ssl_cert.p12**에 개인용 인증서가 있으며 **ca.crt**가 서명 인증서라고 가정합니다. 
 
 1. **ssl_cert.p12** 파일을 **mfpf-server-libertyapp/usr/security/** 폴더에 복사하십시오. 
-2. **mfpf-server-libertyapp/usr/config/keystore.xml** 파일을 다음 예제 구성과 유사하게 수정하십시오. 
+2. **mfpf-server-libertyapp/usr/config/keystore.xml** 및 **appcenter/usr/config/keystore.xml**(appcenter용) 파일을 다음 예제 구성과 유사하게 수정하십시오. 
 
    ```xml
    <server>
@@ -88,7 +88,7 @@ IBM MobileFirst Foundation 인스턴스 보안 구성은 비밀번호 암호화,
 </server>
 ```
 
-#### 컨테이너에서 실행 중인 콘솔에 대한 액세스 제한	
+#### 컨테이너에서 실행 중인 콘솔에 대한 액세스 제한
 {: #restricting-access-to-the-consoles-running-on-containers }
 콘솔에 대한 요청을 차단하기 위해 TAI(Trust Association Interceptor)를 작성하고 배치하여 프로덕션 환경에서 MobileFirst Operations Console과 MobileFirst Analytics Console에 대한 액세스를 제한할 수 있습니다. 
 
@@ -110,8 +110,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
    import com.ibm.wsspi.security.tai.TAIResult;
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
-   public class MFPConsoleTAI implements TrustAssociationInterceptor {
-    	
+   public class MFPConsoleTAI implements TrustAssociationInterceptor {	
        String allowedIP =null; 
        
        public MFPConsoleTAI() {
@@ -132,7 +131,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
 	   if(requestURI.contains("mfpconsole")) {
 		   interceptMFPConsoleRequest = true;
 	   }
-		   
+
 	   return interceptMFPConsoleRequest;
     }
 
@@ -140,37 +139,37 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#negotiateValidateandEstablishTrust
      * (javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
      */
-       
+
     public TAIResult negotiateValidateandEstablishTrust(HttpServletRequest request,
                     HttpServletResponse resp) throws WebTrustAssociationFailedException {
         // Add logic to authenticate a request and return a TAI result.
         String tai_user = "MFPConsoleCheck";
-        
-        if(allowedIP != null) {
-        	
-        	String ipAddress = request.getHeader("X-FORWARDED-FOR");  
-        	if (ipAddress == null) { 
-        	  ipAddress = request.getRemoteAddr();  
+            
+            if(allowedIP != null) {
+            	
+            	String ipAddress = request.getHeader("X-FORWARDED-FOR");  
+            	if (ipAddress == null) { 
+            	  ipAddress = request.getRemoteAddr();  
         	}
-        	
+
         	if(checkIPMatch(ipAddress, allowedIP)) {
         		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         	}
         	else {
         		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
         	}
-        		
+
         }
         return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
     }
-       
+
     private static boolean checkIPMatch(String ipAddress, String pattern) {   
 	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 		      return true;
 
 	   String[] mask = pattern.split("\\.");
 	   String[] ip_address = ipAddress.split("\\.");
-	   
+
 	   for (int i = 0; i < mask.length; i++)
 	   {
 		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -184,7 +183,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#initialize(java.util.Properties)
      */
-        
+
     public int initialize(Properties properties)
                     throws WebTrustAssociationFailedException {
     	
@@ -199,7 +198,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#getVersion()
      */
-    
+
     public String getVersion() {
         return "1.0";
     }
@@ -214,12 +213,12 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#cleanup()
      */
-    
+
     public void cleanup()
         {}
    }
    ```
-    
+
 2. 사용자 정의 TAI 구현을 .jar 파일에 내보내 적용 가능한 **env** 폴더(**mfpf-server-libertyapp/usr/env**)에 배치하십시오. 
 3. TAI 인터셉터에 대한 세부사항을 포함하는 XML 구성 파일을 작성한 후(1단계에 제공된 TAI 구성 예제 코드 참조 .xml 파일을 적용 가능한 폴더(**mfpf-server-libertyapp/usr/config**)에 추가하십시오. .xml 파일은 다음 예제와 유사해야 합니다. **팁:** 구현을 반영하도록 클래스 이름과 특성을 업데이트하십시오. 
 
@@ -230,18 +229,18 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
             <feature>appSecurity-2.0</feature> 
         </featureManager> 
 
-        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
             <interceptors id="MFPConsoleTAI" enabled="true"  
-                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
-                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI"> 
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
+                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
                 <properties allowedIPs="9.182.149.*"/>
-            </interceptors> 
-        </trustAssociation> 
+            </interceptors>
+        </trustAssociation>
 
-        <library id="MFPConsoleTAI"> 
-            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/> 
-        </library> 
+        <library id="MFPConsoleTAI">
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+        </library>
    </server>
    ```
 
@@ -274,7 +273,7 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
 1. **registry.xml**을 열고 `basicRegistry` 요소를 찾으십시오. `basicRegistry` 요소를 다음 스니펫과 유사한 코드로 대체하십시오. 
 
    ```xml
-   <ldapRegistry 
+   <ldapRegistry
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -289,15 +288,21 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
-    항목 | 설명
+
+        항목| 설명
+
     --- | ---
     `host` 및 `port` | 로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
+    
     `baseDN` | 특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
-    `bindDN="uid=admin,ou=system"	` | LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
-    `bindPassword="secret"	` | LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    
+    `bindDN="uid=admin,ou=system"	`| LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
+    
+    `bindPassword="secret"	`| LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
-        
+
+
 2. `appSecurity-2.0`과 `ldapRegistry-3.0`에 다음 기능을 사용할 수 있는지 확인하십시오. 
 
    ```xml
@@ -306,9 +311,9 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
    여러 LDAP 서버 저장소 구성에 대한 세부사항은 [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html)를 참조하십시오. 
-    
+
 #### 보안 게이트웨이
 {: #secure-gateway }
 LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 태스크를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다. 
@@ -322,7 +327,7 @@ LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix�
 7. **대상 ID** 값과 **클라우드 호스트:포트** 값을 캡처하십시오. registry.xml 파일로 이동해서 해당 값을 추가하여 기존 값을 대체하십시오. registry.xml 파일에 있는 업데이트된 코드 스니펫의 다음 예를 참조하십시오. 
 
 ```xml
-<ldapRegistry 
+<ldapRegistry
     id="ldap"
     host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
     baseDN="dc=worklight,dc=com"

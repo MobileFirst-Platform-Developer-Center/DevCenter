@@ -69,19 +69,19 @@ Gehen Sie wie folgt vor, um interaktive Benachrichtigungen zu empfangen:
 
                 // Optionale Liste mit Aktionen, die im Lockscreen mit der Benachrichtigungszentrale angezeigt werden muss
                 // Fehlt die Liste, werden die ersten beiden Aktionen angezeigt.
-                minimalContextActions: ['poll_ok','poll_nok'] 
+                minimalContextActions: ['poll_ok','poll_nok']
             }]     
         }
    }
    ```
 
-2. Übergeben Sie das `options`-Objekt während der Registrierung des Geräts für Push-Benachrichtigungen. 
+2. Übergeben Sie das `options`-Objekt während der Registrierung des Geräts für Push-Benachrichtigungen.
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
   		navigator.notification.alert("Successfully registered");
   		enableButtons();
-   });  
+   });
    ```
 
 ## Interaktive Benachrichtigungen in nativen iOS-Anwendungen

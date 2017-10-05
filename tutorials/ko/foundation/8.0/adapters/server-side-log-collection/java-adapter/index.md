@@ -30,8 +30,7 @@ static Logger logger = Logger.getLogger(JavaLoggerTestResource.class.getName());
 logger.warning("Logging warning message...");
 ```
 
-이 메시지는 애플리케이션 서버의 `trace.log` 파일에 출력됩니다. 서버 관리자가 로그를 {{ site.data.keys.mf_server }}에서
-{{ site.data.keys.mf_analytics_server }}로 전달 중인 경우 `logger` 메시지가 {{ site.data.keys.mf_analytics_console }}의 **인프라스트럭처 → 서버 로그 검색** 보기에도 표시됩니다. 
+이 메시지는 애플리케이션 서버의 `trace.log` 파일에 출력됩니다. 서버 관리자가 로그를 {{ site.data.keys.mf_server }}에서 {{ site.data.keys.mf_analytics_server }}로 전달 중인 경우 `logger` 메시지가 {{ site.data.keys.mf_analytics_console }}의 **인프라스트럭처 → 서버 로그 검색** 보기에도 표시됩니다. 
 
 ## 로그 파일에 액세스
 {: #accessing-the-log-files }

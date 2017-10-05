@@ -53,11 +53,12 @@ weight: 4
 2. 솔루션의 **MainPage.xaml.cs** 파일을 선택해서 다음 코드 스니펫을 GetAccessToken() 메소드에 다음과 같이 붙여넣기하십시오.
 
    ```csharp
-   try
-      {
-          IWorklightClient _newClient = WorklightClient.CreateInstance();
+try
+                   {
+       
+                       IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -104,7 +105,7 @@ weight: 4
 <img src="windowsQuickStart.png" alt="샘플 앱" style="float:right"/>
 ### 5. 애플리케이션 테스트
 {: 5-testing-the-application }
-1. Visual Studio에서 **mfpclient.resw** 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 올바른 값으로 편집하십시오.
+1. Visual Studio에서 **mfpclient.resw** 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 대한 올바른 값으로 편집하십시오.
     * 로컬 {{ site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
     * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(Bluemix에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
 
@@ -115,11 +116,11 @@ weight: 4
 ### 결과
 {: #results }
 * **{{ site.data.keys.mf_server }} Ping** 단추를 클릭하면 **{{ site.data.keys.mf_server }}에 연결됨**이 표시됩니다.
-* 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 없는 경우, 배치된 Java 어댑터를 사용하는 자원 요청이 발생합니다. 
+* 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 있는 경우, 배치된 Java 어댑터를 사용하는 자원 요청 호출이 발생합니다. 
 
 그 후에 어댑터 응답이 Visual Studio의 출력 콘솔에 출력됩니다.
 
-![{{ site.data.keys.mf_server }}에서 자원을 호출한 애플리케이션의 이미지](success_response.png)
+![ {{ site.data.keys.mf_server }}](success_response.png)
 
 ## 다음 단계
 {: #next-steps }

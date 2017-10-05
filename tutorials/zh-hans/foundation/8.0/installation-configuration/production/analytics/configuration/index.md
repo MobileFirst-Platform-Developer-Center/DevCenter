@@ -80,37 +80,37 @@ WebSphere Application Server 上的 JNDI 属性可用作环境变量。
 {: #mobilefirst-server }
 下表显示了可在 {{ site.data.keys.mf_server }} 中设置的属性。
 
-| 属性                           | 描述                                           | 缺省值 |
+| 属性| 描述| 缺省值|
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | 将该属性设置为 {{ site.data.keys.mf_analytics_console }} 的 URL。
-例如，http://hostname:port/analytics/console。设置该属性会在 {{ site.data.keys.mf_console }} 上启用分析图标。 | 无 |
-| mfp.analytics.logs.forward         | 如果该属性设置为 true，那么将会在 {{ site.data.keys.mf_analytics }} 中捕获 {{ site.data.keys.mf_server }} 上记录的服务器日志。 | true |
-| mfp.analytics.url                  |必需。由 {{ site.data.keys.mf_analytics_server }} 公开的用于接收入局分析数据的 URL。例如，http://hostname:port/analytics-service/rest/v2。 | 无 |
-| analyticsconsole/mfp.analytics.url |	可选。分析 REST 服务的完整 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI，不能为本地 LAN 中的内部 URI。该值可用 * 代替 URI 协议、主机名或端口，以表示入局 URL 的对应部分。*://*:*/analytics-service，动态确定协议、主机名和端口 |
-| mfp.analytics.username             | 通过基本认证保护数据入口点时使用的用户名。 | 无 |
-| mfp.analytics.password             | 通过基本认证保护数据入口点时使用的密码。 | 无 |
+| mfp.analytics.console.url| 将该属性设置为 {{ site.data.keys.mf_analytics_console }} 的 URL。
+例如，http://hostname:port/analytics/console。设置该属性会在 {{ site.data.keys.mf_console }} 上启用分析图标。| 无|
+| mfp.analytics.logs.forward| 如果该属性设置为 true，那么将会在 {{ site.data.keys.mf_analytics }} 中捕获 {{ site.data.keys.mf_server }} 上记录的服务器日志。| true|
+| mfp.analytics.url|必需。由 {{ site.data.keys.mf_analytics_server }} 公开的用于接收入局分析数据的 URL。例如，http://hostname:port/analytics-service/rest/v2。| 无|
+| analyticsconsole/mfp.analytics.url|	可选。分析 REST 服务的完整 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI，不能为本地 LAN 中的内部 URI。该值可用 * 代替 URI 协议、主机名或端口，以表示入局 URL 的对应部分。*://*:*/analytics-service，动态确定协议、主机名和端口|
+| mfp.analytics.username| 通过基本认证保护数据入口点时使用的用户名。| 无|
+| mfp.analytics.password| 通过基本认证保护数据入口点时使用的密码。| 无|
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
 下表显示了可在 {{ site.data.keys.mf_analytics_server }} 中设置的属性。
 
-| 属性                           | 描述                                           | 缺省值 |
+| 属性| 描述| 缺省值|
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | 定义 Elasticsearch 节点类型。有效值为 master 和 data。如果未设置该属性，那么该节点将充当主合格节点和数据节点。 | 	无 |
-| analytics/shards | 每个索引的分片数量。该值只能通过集群中启动的第一个节点进行设置，并且不能更改。 | 1 |
-| analytics/replicas_per_shard | 集群中每个分片的副本数量。此值可在运行的集群中动态更改。 | 0 |
-| analytics/masternodes | 逗号分隔的字符串，其中包含主合格节点的主机名和端口。 | 无 |
-| analytics/clustername | 集群的名称。如果计划让多个集群在同一个子集中运行并且需要唯一标识这些集群，请设置该值。 | worklight |
-| analytics/nodename | 集群中节点的名称。 | 随机生成的字符串| analytics/datapath | 分析数据在文件系统上的保存路径。 | ./analyticsData |
-| analytics/settingspath | 到 Elasticsearch 设置文件的路径。有关更多信息，请参阅 Elasticsearch。 | 无 |
-| analytics/transportport | 用于节点到节点通信的端口。 | 9600 |
-| analytics/httpport | 用于到 Elasticsearch 的 HTTP 通信的端口。 | 9500 |
-| analytics/http.enabled | 启用或禁用到 Elasticsearch 的 HTTP 通信。 | false |
-| analytics/serviceProxyURL | 可将分析 UI WAR 文件和分析服务 WAR 文件安装到不同的应用程序服务器。如果您选择这样做，必须了解在浏览器中阻止跨站点脚本编制可能阻止 UI WAR 文件中的 JavaScript 运行时。为绕过此阻止，UI WAR 文件包含 Java 代理代码，以便 JavaScript 运行时从源服务器检索 REST API 响应。但代理配置为将 REST API 请求转发至分析服务 WAR 文件。如果已将 WAR 文件安装至独立应用程序服务器，请配置该属性。 | 无 |
-| analytics/bootstrap.mlockall | 此属性可防止将任何 Elasticsearch 内存交换至磁盘。 | true |
-| analytics/multicast | 启用或禁用多点广播节点发现。 | false |
-| analytics/warmupFrequencyInSeconds | 热启动查询运行频率。热启动查询在后台运行，以强制将查询结果保存到内存中，从而提高 Web 控制台性能。负值会禁用热启动查询。 | 600 |
-| analytics/tenant | 主 Elasticsearch 索引的名称。worklight |
+| analytics/nodetype| 定义 Elasticsearch 节点类型。有效值为 master 和 data。如果未设置该属性，那么该节点将充当主合格节点和数据节点。| 	无|
+| analytics/shards| 每个索引的分片数量。该值只能通过集群中启动的第一个节点进行设置，并且不能更改。| 1|
+| analytics/replicas_per_shard| 集群中每个分片的副本数量。此值可在运行的集群中动态更改。| 0|
+| analytics/masternodes| 逗号分隔的字符串，其中包含主合格节点的主机名和端口。| 无|
+| analytics/clustername| 集群的名称。如果计划让多个集群在同一个子集中运行并且需要唯一标识这些集群，请设置该值。| worklight|
+| analytics/nodename| 集群中节点的名称。| 随机生成的字符串| analytics/datapath| 分析数据在文件系统上的保存路径。| ./analyticsData|
+| analytics/settingspath| 到 Elasticsearch 设置文件的路径。有关更多信息，请参阅 Elasticsearch。| 无|
+| analytics/transportport| 用于节点到节点通信的端口。| 9600|
+| analytics/httpport| 用于到 Elasticsearch 的 HTTP 通信的端口。| 9500|
+| analytics/http.enabled| 启用或禁用到 Elasticsearch 的 HTTP 通信。| false|
+| analytics/serviceProxyURL| 可将分析 UI WAR 文件和分析服务 WAR 文件安装到不同的应用程序服务器。如果您选择这样做，必须了解在浏览器中阻止跨站点脚本编制可能阻止 UI WAR 文件中的 JavaScript 运行时。为绕过此阻止，UI WAR 文件包含 Java 代理代码，以便 JavaScript 运行时从源服务器检索 REST API 响应。但代理配置为将 REST API 请求转发至分析服务 WAR 文件。如果已将 WAR 文件安装至独立应用程序服务器，请配置该属性。| 无|
+| analytics/bootstrap.mlockall| 此属性可防止将任何 Elasticsearch 内存交换至磁盘。| true|
+| analytics/multicast| 启用或禁用多点广播节点发现。| false|
+| analytics/warmupFrequencyInSeconds| 热启动查询运行频率。热启动查询在后台运行，以强制将查询结果保存到内存中，从而提高 Web 控制台性能。负值会禁用热启动查询。| 600|
+| analytics/tenant| 主 Elasticsearch 索引的名称。worklight|
 
 在密钥不包含句点（例如 **httpport** 而不是 **http.enabled**）的所有情况下，可通过变量名带有 **ANALYTICS_** 前缀的系统环境变量来控制设置。同时设置 JNDI 属性和系统环境变量时，系统环境变量优先。例如，如果已设置 **analytics/httpport** JNDI 属性和 **ANALTYICS_httpport** 系统环境变量，那么将使用 **ANALYTICS_httpport** 的值。
 
@@ -133,7 +133,24 @@ TTL 能有效帮助您建立和维护数据保留时间策略。您的决定对�
 * 1s = 1 秒
 * 1ms = 1 毫秒
 
-> 注意：如果要从先前版本的 {{ site.data.keys.mf_analytics_server }} 迁移并且先前已配置任何 TTL JNDI 属性，请参阅[迁移先前版本的 {{ site.data.keys.mf_analytics_server }} 使用的服务器属性](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)。
+受支持的文档类型的列表如下所示：
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **注意：**如果要从先前版本的 {{ site.data.keys.mf_analytics_server }} 迁移并且先前已配置任何 TTL JNDI 属性，请参阅[迁移先前版本的 {{ site.data.keys.mf_analytics_server }} 使用的服务器属性](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)。
+
 #### Elasticsearch
 {: #elasticsearch }
 为 {{ site.data.keys.mf_analytics_console }} 服务的底层存储和集群技术即 Elasticsearch。  
@@ -198,14 +215,14 @@ REST API 用于进行监控和动态配置。
 
 2. 为 JNDI 属性编辑应用程序服务器配置文件（或使用系统环境变量）以配置以下至少一个标记。
 
-    | 标记 | 值（示例） | 缺省值 | 注释 |
+    | 标记| 值（示例）| 缺省值| 注释|
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	您希望此节点加入的集群。 |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	设置为 false 以避免意外加入集群。 |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	无 | 	现有集群中主节点的列表。如果已在主节点上指定传输端口设置，请更改缺省值 9600。 |
-    | node.master | 	false | 	true | 	不允许此节点成为主节点。 |
-    | node.data|	false | 	true | 	不允许此节点存储数据。 |
-    | http.enabled | 	true	 | true | 	为 Elasticsearch REST API 打开不受保护的 HTTP 端口 9200。 |
+    | cluster.name| 	worklight	 | worklight| 	您希望此节点加入的集群。|
+    | discovery.zen.ping.multicast.enabled| 	false| 	true| 	设置为 false 以避免意外加入集群。|
+    | discovery.zen.ping.unicast.hosts| 	["9.8.7.6:9600"]| 	无| 	现有集群中主节点的列表。如果已在主节点上指定传输端口设置，请更改缺省值 9600。|
+    | node.master| 	false| 	true| 	不允许此节点成为主节点。|
+    | node.data|	false| 	true| 	不允许此节点存储数据。|
+    | http.enabled| 	true	 | true| 	为 Elasticsearch REST API 打开不受保护的 HTTP 端口 9200。|
 
 3. 在生产方案中考虑所有配置标记。您可能希望 Elasticsearch 将插件与数据保留在不同文件系统目录中，因此必须设置 **path.plugins** 标记。
 4. 根据需要运行应用程序服务器并启动 WAR 应用程序。
@@ -229,14 +246,14 @@ REST API 用于进行监控和动态配置。
 2. 解压缩此文件。
 3. 编辑 **config/elasticsearch.yml** 文件，并配置以下至少一个标记。
 
-    | 标记 | 值（示例） | 缺省值 | 注释 |
+    | 标记| 值（示例）| 缺省值| 注释|
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	您希望此节点加入的集群。 |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	设置为 false 以避免意外加入集群。 |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	无 | 	现有集群中主节点的列表。如果已在主节点上指定传输端口设置，请更改缺省值 9600。 |
-    | node.master | 	false | 	true | 	不允许此节点成为主节点。 |
-    | node.data|	false | 	true | 	不允许此节点存储数据。 |
-    | http.enabled | 	true	 | true | 	为 Elasticsearch REST API 打开不受保护的 HTTP 端口 9200。 |
+    | cluster.name| 	worklight	 | worklight| 	您希望此节点加入的集群。|
+    | discovery.zen.ping.multicast.enabled| 	false| 	true| 	设置为 false 以避免意外加入集群。|
+    | discovery.zen.ping.unicast.hosts| 	["9.8.7.6:9600"]| 	无| 	现有集群中主节点的列表。如果已在主节点上指定传输端口设置，请更改缺省值 9600。|
+    | node.master| 	false| 	true| 	不允许此节点成为主节点。|
+    | node.data|	false| 	true| 	不允许此节点存储数据。|
+    | http.enabled| 	true	 | true| 	为 Elasticsearch REST API 打开不受保护的 HTTP 端口 9200。|
 
 
 4. 在生产方案中考虑所有配置标记。您可能希望 Elasticsearch 将插件与数据保留在不同文件系统目录中，因此必须设置 path.plugins 标记。

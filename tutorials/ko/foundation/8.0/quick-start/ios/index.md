@@ -141,6 +141,8 @@ weight: 2
 
    > Maven 및 {{ site.data.keys.mf_cli }}가 설치되지 않은 경우, 화면상의 **개발 환경 설정** 지시사항을 따르십시오.
 
+
+
 2. **명령행** 창에서 어댑터의 Maven 프로젝트 루트 폴더로 이동해서 다음 명령을 실행하십시오.
 
    ```bash
@@ -154,7 +156,7 @@ weight: 2
 <img src="iosQuickStart.png" alt="샘플 앱" style="float:right"/>
 ### 5. 애플리케이션 테스트
 {: #5-testing-the-application }
-1. Xcode에서 **mfpclient.plist** 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 올바른 값으로 편집하십시오.
+1. Xcode에서 **mfpclient.plist** 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 대한 올바른 값으로 편집하십시오.
     * 로컬 {{ site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
     * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(Bluemix에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
      
@@ -166,11 +168,11 @@ weight: 2
 ### 결과
 {: #results }
 * **{{ site.data.keys.mf_server }} Ping** 단추를 클릭하면 **{{ site.data.keys.mf_server }}에 연결됨**이 표시됩니다.
-* 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 없는 경우, 배치된 Java 어댑터를 사용하는 자원 요청이 발생합니다. 
+* 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 있는 경우, 배치된 Java 어댑터를 사용하는 자원 요청 호출이 발생합니다. 
 
 그 후에 어댑터 응답이 Xcode 콘솔에 출력됩니다.
 
-![{{ site.data.keys.mf_server }}에서 자원을 호출한 애플리케이션의 이미지](success_response.png)
+![ {{ site.data.keys.mf_server }}에서 자원을 호출한 애플리케이션의 이미지 ](success_response.png)
 
 ## 다음 단계
 {: #next-steps }

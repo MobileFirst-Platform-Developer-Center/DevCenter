@@ -14,7 +14,7 @@ weight: 1
 
 * Cordova 開発ツールがインストールされている必要があります。この例では、Apache Cordova CLI を使用します。他の Cordova 開発ツールを使用する場合は、手順が一部異なります。手順については、ご使用の Cordova ツールの資料を参照してください。
 * {{ site.data.keys.mf_cli }} がインストールされている必要があります。
-* { site.data.keys.product_adj }} Cordova プラグインがインストールされている必要があります。
+* {{ site.data.keys.product_adj }} Cordova プラグインがインストールされている必要があります。
 
 この手順を実行する最適のタイミングは、アプリケーションの開発が終わってアプリケーションをデプロイする準備ができたときです。Web リソース暗号化手順を実行した後に以下のコマンドのいずれかを実行した場合、暗号化されたコンテンツが暗号化解除されます。
 
@@ -55,8 +55,8 @@ Web リソース・チェックサム機能は、有効になっている場合�
 **前提条件:**
 
 * Cordova 開発ツールがインストールされている必要があります。この例では、Apache Cordova CLI を使用します。他の Cordova 開発ツールを使用する場合は、手順が一部異なります。手順については、ご使用の Cordova ツールの資料を参照してください。
-* {{ site.data.keys.mf_cli }} がインストールされている必要があります。 
-* { site.data.keys.product_adj }} プラグインがインストールされている必要があります。
+* {{ site.data.keys.mf_cli }} がインストールされている必要があります。
+* {{ site.data.keys.product_adj }} プラグインがインストールされている必要があります。
 * 対象オペレーティング・システムの Web リソース・チェックサム機能を有効にするには、その前に、`cordova platform add [android|ios|windows|browser]` コマンドを入力して、当該プラットフォームを Cordova プロジェクトに追加しておく必要があります。
 
 Cordova アプリケーションの Web リソース・チェックサム機能を有効にするには、以下のステップを実行します。
@@ -69,27 +69,25 @@ Cordova アプリケーションの Web リソース・チェックサム機能�
    ```
 
    例えば、次のとおりです。  
-    
+
    ```bash
-   mfpdev app config android_security_test_web_resources_checksum true
-   ```
+mfpdev app config android_security_test_web_resources_checksum true```
 
    コマンドで **true** を **false** に置き換えることで、この機能を無効にすることができます。
-   
+
    > **ヒント:** `mfpdev help app config` と入力することで、`mfpdev app config` コマンドに関する情報を表示できます。
-    
+
 3. 以下のコマンドを入力して、チェックサム・テスト時に無視するファイルのタイプを指定します。
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
    ```
-    
+
    複数の拡張子は、間にスペースを入れず、コンマで区切る必要があります。例えば、次のとおりです。
-    
+
    ```bash
-   mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
-   ```
-    
+mfpdev app config android_security_ignore_file_extensions jpg,png,pdf```
+
 **重要:** このコマンドを実行すると、設定されている値が上書きされます。
 
 Web リソース・チェックサムがテストのためにスキャンするファイルが増えるほど、アプリケーションを開くためにかかる時間が長くなります。スキップするファイル・タイプの拡張子を指定できます。これにより、アプリケーションの開始速度が改善される可能性があります。

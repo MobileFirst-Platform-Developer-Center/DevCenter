@@ -4,8 +4,8 @@ title: Windows .NET 메시지 검사기
 breadcrumb_title: Windows .NET 메시지 검사기
 relevantTo: [android,ios,windows,javascript]
 weight: 4
-다운로드:
-  - 이름: 샘플 다운로드
+downloads:
+  - name: 샘플 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -187,7 +187,7 @@ private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 그 다음 `validateRequest` 메소드를 작성하며 이 메소드는 메시지 검사기에서 구현할 유효성 검증 프로세스의 시작점이 됩니다. 그리고 나서 앞에서 언급한 `AfterReceiveRequest` 메소드 내부에 이 메소드에 대한 호출을 추가합니다. 
 
 ```csharp
-public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
+public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext){
   validateRequest(request);
   return null;
 }
@@ -384,7 +384,7 @@ postProcess 메소드의 기본 목적은 {{ site.data.keys.product_adj }} 권�
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
 {
-  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
+  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true &  scope)
   {
     if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized) // We have a real problem since we already obtained a new token
     {

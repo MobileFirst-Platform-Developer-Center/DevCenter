@@ -92,6 +92,8 @@ Ant 태스크 또는 Server Configuration Tool을 사용한 설치를 실행하�
 
 > 지원되는 데이터베이스 소프트웨어 버전의 최신 목록은 [시스템 요구사항](../../../product-overview/requirements/) 페이지를 참조하십시오.
 
+
+
 ### DB2 데이터베이스 및 사용자 요구사항
 {: #db2-database-and-user-requirements }
 DB2에 대한 데이터베이스 요구사항을 검토하십시오. 단계를 수행하여 사용자 및 데이터베이스를 작성하고 특정 요구사항을 충족하도록 데이터베이스를 설정하십시오. 

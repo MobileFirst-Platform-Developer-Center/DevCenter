@@ -4,8 +4,8 @@ title: 신뢰 연관 인터셉터
 breadcrumb_title: 신뢰 연관 인터셉터
 relevantTo: [android,ios,windows,javascript]
 weight: 2
-다운로드:
-  - 이름: 다운로드 샘플
+downloads:
+  - name: 샘플 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

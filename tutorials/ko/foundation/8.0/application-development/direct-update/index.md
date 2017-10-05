@@ -4,7 +4,7 @@ title: Cordova 애플리케이션에서 직접 업데이트 사용
 breadcrumb_title: 직접 업데이트
 relevantTo: [cordova]
 weight: 8
-download:
+downloads:
   - 이름: Cordova 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
@@ -60,7 +60,7 @@ download:
 
 직접 업데이트를 수행한 후에는 애플리케이션에서 미리 패키지된 웹 자원을 더 이상 사용하지 않습니다. 대신 애플리케이션의 샌드박스에서 다운로드된 웹 자원을 사용합니다. 디바이스에서 애플리케이션의 캐시가 지워지면 원래 패키지된 자원이 다시 사용됩니다. 
 
-![직접 업데이트 작업 방식의 다이어그램(internal_function.jpg)
+![직접 업데이트의 작업 방식에 대한 다이어그램](internal_function.jpg)
 
 ### 버전화
 {: #versioning }
@@ -77,13 +77,13 @@ download:
 
 대체:
 
-* .zip 파일을 빌드하고 다른 {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name][runtime-name]`에 업로드하십시오. 예: 
+* .zip 파일을 빌드하고 다른 {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`에 업로드하십시오. 예: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* 이전에 생성된 .zip 파일 `mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]`을 업로드하십시오. 예: 
+* 이전에 생성된 .zip 파일(`mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`)을 업로드하십시오. 예: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -93,12 +93,12 @@ download:
  1. 업로드하지 않고 .zip 파일을 빌드하십시오. 
 
     ```bash
-    mfpdev app webupdate --build
-    ```
+mfpdev app webupdate --build
+```
  2. {{ site.data.keys.mf_console }}을 로드하고 애플리케이션 항목을 클릭하십시오. 
  3. **웹 자원 파일 업로드**를 클릭하고 패키지된 웹 자원을 업로드하십시오. 
 
-    ![콘솔에서 직접 업데이트 .zip 파일 업로드(upload-direct-update-package.png)
+    ![콘솔에서 직접 업데이트 .zip 파일 업로드](upload-direct-update-package.png)
 
 > 자세히 알아보려면 `mfpdev help app webupdate` 명령을 실행하십시오. 
 
@@ -106,7 +106,7 @@ download:
 {: #user-experience }
 기본적으로 직접 업데이트를 수신한 후에 대화 상자가 표시되고 사용자에게 업데이트 프로세스를 시작할지 여부를 묻습니다. 사용자가 승인하면 진행 표시줄 대화 상자가 표시되고 웹 자원이 다운로드됩니다. 애플리케이션은 업데이트가 완료된 후에 자동으로 다시 로드됩니다. 
 
-![직접 업데이트 예제(direct-update-flow.png)
+![직접 업데이트 예제](direct-update-flow.png)
 
 ## 직접 업데이트 UI 사용자 정의
 {: #customizing-the-direct-update-ui }
@@ -136,7 +136,7 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 - 기타
 
 ```javascript
-wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
+wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
     navigator.notification.confirm(  // Creates a dialog.
         'Custom dialog body text',
         // Handle dialog buttons.
@@ -156,7 +156,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 * 리스너 함수(예: `directUpdateContext.start(directUpdateCustomListener)`가 제공되면 프로세스가 리스너에 라이프사이클 이벤트를 전송하는 동안 직접 업데이트 프로세스가 백그라운드에서 실행됩니다. 사용자 정의 리스너는 다음 메소드를 구현해야 합니다. 
 
 ```javascript
-var  directUpdateCustomListener  = { 
+var  directUpdateCustomListener  = {
     onStart : function ( totalSize ){ }, 
     onProgress : function ( status , totalSize , completedSize ){ }, 
     onFinish : function ( status ){ } 
@@ -169,17 +169,17 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다. 
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다. 
 
-| 상태 코드 | 설명 |
+| 상태 코드| 설명|
 |-------------|-------------|
-| `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
-| `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
-| `FAILURE_NETWORK_PROBLEM` | 업데이트 중에 네트워크 연결에 문제점이 발생했습니다. |
-| `FAILURE_DOWNLOADING` | 파일이 완전히 다운로드되지 않았습니다. |
-| `FAILURE_NOT_ENOUGH_SPACE` | 디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다. |
-| `FAILURE_UNZIPPING` | 업데이트 파일을 언팩하는 중에 문제점이 발생했습니다. |
-| `FAILURE_ALREADY_IN_PROGRESS` | 직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다. |
-| `FAILURE_INTEGRITY` | 업데이트 파일의 신뢰성을 확인할 수 없습니다. |
-| `FAILURE_UNKNOWN` | 예기치 않은 내부 오류가 발생했습니다. |
+| `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다.|
+| `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서).|
+| `FAILURE_NETWORK_PROBLEM` | 업데이트 중에 네트워크 연결에 문제점이 발생했습니다.|
+| `FAILURE_DOWNLOADING` | 파일이 완전히 다운로드되지 않았습니다.|
+| `FAILURE_NOT_ENOUGH_SPACE` | 디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다.|
+| `FAILURE_UNZIPPING` | 업데이트 파일을 언팩하는 중에 문제점이 발생했습니다.|
+| `FAILURE_ALREADY_IN_PROGRESS` | 직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다.|
+| `FAILURE_INTEGRITY` | 업데이트 파일의 신뢰성을 확인할 수 없습니다.|
+| `FAILURE_UNKNOWN` | 예기치 않은 내부 오류가 발생했습니다.|
 
 사용자 정의 직접 업데이트 리스너를 구현하는 경우 직접 업데이트 프로세스가 완료되고 `onFinish()` 메소드가 호출되었을 때 앱이 다시 로드되는지 확인해야 합니다. 또한 직접 업데이트 프로세스가 올바르게 완료되지 못하면 `wl_directUpdateChalengeHandler.submitFailure()`를 호출해야 합니다. 
 

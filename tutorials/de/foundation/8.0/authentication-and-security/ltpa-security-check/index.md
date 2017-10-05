@@ -18,7 +18,7 @@ Server verwendet werden.
 
 Einfacher Client < - > Serverablauf mit LTPA:
 
-![Einfacher LTPA-basierter Client < - > Serverablauf](ltpa_simple_client_server.jpg)
+![Einfacher LTPA-basierter Client <-> Serverablauf](ltpa_simple_client_server.jpg)
 
 Nach der Anmeldung eines Benutzers beim Server
 generiert der Server ein LTPA-Token, bei dem es sich um einen verschlüsselten Hash-Wert mit

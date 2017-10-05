@@ -4,12 +4,12 @@ title: JavaScript(Cordova, 웹) 애플리케이션에서 인증 확인 핸들러
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
-다운로드:
-  - 이름: 웹 프로젝트 다운로드
+downloads:
+  - name: 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
-  - 이름: Cordova 프로젝트 다운로드
+  - name: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

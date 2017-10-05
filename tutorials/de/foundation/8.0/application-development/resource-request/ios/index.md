@@ -58,7 +58,7 @@ Objective-C
 
 ```objc
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-    if (error == nil){
+if (error == nil){
         NSLog(@"%@", response.responseText);
     } else {
         NSLog(@"%@", error.description);
@@ -130,7 +130,7 @@ Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie `sendWith
 Objective-C
 
 ```objc
-// @FormParam("height")
+//@FormParam("height")
 NSDictionary *formParams = @{@"height":@"175"};
 
 // Anforderung mit Formularparametern senden
@@ -145,7 +145,7 @@ NSDictionary *formParams = @{@"height":@"175"};
 Swift
 
 ```swift
-// @FormParam("height")
+//@FormParam("height")
 let formParams = ["height":"175"]
 
 // Anforderung mit Formularparametern senden
@@ -183,13 +183,13 @@ Wenn Sie einen Parameter als HTTP-Header senden möchten, verwenden Sie die API 
 Objective-C
 
 ```objc
-// @HeaderParam("Date")
+//@HeaderParam("Date")
 [request setHeaderValue:@"2015-06-06" forName:@"birthdate"];
 ```
 Swift
 
 ```swift
-// @HeaderParam("Date")
+//@HeaderParam("Date")
 request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
