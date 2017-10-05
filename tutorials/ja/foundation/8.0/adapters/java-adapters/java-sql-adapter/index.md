@@ -63,7 +63,7 @@ adater.xml ファイルを編集して、以下のプロパティーを追加し
 
 ```java
 @Path("/")
-  public class JavaSQLResource {
+public class JavaSQLResource {
 }
 ```
 
@@ -97,9 +97,7 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 `AdaptersAPI` を使用して、現行の `MFPJAXRSApplication` インスタンスを取得します。
 
 ```java
-@Context
-AdaptersAPI adaptersAPI;
-
+@Context AdaptersAPI adaptersAPI; 
 public Connection getSQLConnection() throws SQLException{
   // Create a connection object to the database
   JavaSQLApplication app = adaptersAPI.getJaxRsApplication(JavaSQLApplication.class);

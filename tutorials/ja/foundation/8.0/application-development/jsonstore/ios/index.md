@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: iOS アプリケーション内の JSONStore
+title: iOS アプリケーションでの JSONStore
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
   - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
@@ -28,8 +28,7 @@ downloads:
 1. Xcode プロジェクトのルートにある既存の `podfile` に以下を追加します。
 
    ```xml
-   pod 'IBMMobileFirstPlatformFoundationJSONStore'
-   ```
+pod 'IBMMobileFirstPlatformFoundationJSONStore'```
 
 2. **コマンド・ライン**・ウィンドウで、Xcode プロジェクトのルートにナビゲートし、コマンド `pod install` を実行します。このアクションにはしばらく時間がかかる場合があることに注意してください。
 
@@ -43,8 +42,7 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundationJSONStore    
-```
+import IBMMobileFirstPlatformFoundationJSONStore```
 
 ## 基本的な使用法
 {: #basic-usage }
@@ -77,6 +75,7 @@ do  {
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
+
 ```
 
 これで、変数 `collection` を使用して、`people` コレクションに対して `add`、`find`、`replace` などの操作を実行できます。
@@ -136,7 +135,7 @@ var replacement:Dictionary<String, AnyObject> = Dictionary()
 replacement["_id"] = 1
 replacement["json"] = document
 
-do {
+do  {
   try collection.replaceDocuments([replacement], andMarkDirty: true)
 } catch let error as NSError {
   // handle error
@@ -186,7 +185,7 @@ do  {
 * すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
 ```swift
-do {
+do  {
   try JSONStore.sharedInstance().destroyData()
 } catch let error as NSError {
   // handle error
@@ -251,8 +250,8 @@ do {
 アダプターを作成し、"**People**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;

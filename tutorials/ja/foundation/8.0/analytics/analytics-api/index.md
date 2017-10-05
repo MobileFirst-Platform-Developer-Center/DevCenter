@@ -67,8 +67,7 @@ require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 
 
 ```javascript
-ibmmfpfanalytics.logger.config({analyticsCapture: true});
-```
+ibmmfpfanalytics.logger.config({analyticsCapture: true});```
 
  **重要**:  Cordova と Web SDK 間には JavaScript API においていくつかの相違点があります。ユーザー資料の[『API リファレンス』トピック](../../api/)を参照してください。
 
@@ -87,8 +86,7 @@ import "WLAnalytics.h"
 **Swift**
 
 ```Swift
-import IBMMobileFirstPlatformFoundation
-```
+import IBMMobileFirstPlatformFoundation```
 
 #### Analytics の初期設定
 {: #initialize-analytics-ios }
@@ -159,8 +157,7 @@ Analytics SDK が構成された後、ユーザーのデバイス上でアプリ
 クライアント・ライフサイクル・イベントを使用するには、以下のようにして Analytics を初期設定します。
 
 ```javascript
-ibmmfpfanalytics.logger.config({analyticsCapture: true});
-```
+ibmmfpfanalytics.logger.config({analyticsCapture: true});```
 
 **Cordova**  
 ライフサイクル・イベントのキャプチャーを有効にするには、Cordova アプリケーションのネイティブ・プラットフォームで初期設定する必要があります。
@@ -198,8 +195,7 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 **Objective-C:**
 
 ```objc
-[[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
-```
+[[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];```
 
 **Swift:**
 
@@ -239,8 +235,7 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 クライアント・ネットワーク・イベントを使用するには、以下のようにして Analytics を初期設定します。
 
 ```javascript
-ibmmfpfanalytics.logger.config({analyticsCapture: true});
-```
+ibmmfpfanalytics.logger.config({analyticsCapture: true});```
 
 **Cordova**  
 ネットワーク・イベントのキャプチャーを有効にするには、Cordova アプリケーションのネイティブ・プラットフォームで初期設定する必要があります。
@@ -377,8 +372,7 @@ WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 {: #web-applications }
 
 ```javascript
-ibmmfpfanalytics.setUserContext(user);
-```
+ibmmfpfanalytics.setUserContext(user);```
 
 #### iOS
 {: #ios-tracking-users }
@@ -386,8 +380,7 @@ ibmmfpfanalytics.setUserContext(user);
 **Objective-C**
 
 ```objc
-[[WLAnalytics sharedInstance] setUserContext:@"John Doe"];
-```
+[[WLAnalytics sharedInstance] setUserContext:@"John Doe"];```
 
 **Swift**
 
@@ -399,8 +392,7 @@ WLAnalytics.sharedInstance().setUserContext("John Doe")
 {: #android-tracking-users }
 
 ```java
-WLAnalytics.setUserContext("John Doe");
-```
+WLAnalytics.setUserContext("John Doe");```
 
 個々のユーザーのトラッキングを解除するには、以下のように `unsetUserContext` メソッドを使用します。
 
@@ -420,8 +412,7 @@ WLAnalytics.setUserContext("John Doe");
 **Objective-C**
 
 ```objc
-[[WLAnalytics sharedInstance] unsetUserContext];
-```
+[[WLAnalytics sharedInstance] unsetUserContext];```
 
 **Swift**
 
@@ -433,8 +424,7 @@ WLAnalytics.sharedInstance().unsetUserContext
 {: #android-untracking-users }
 
 ```java
-WLAnalytics.unsetUserContext();
-```
+WLAnalytics.unsetUserContext();```
 
 ## Analytics データの送信
 {: #sending-analytics-data }

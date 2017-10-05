@@ -22,8 +22,7 @@ weight: 3
 ログ・キャプチャーを無効にするには、以下のようにします。
 
 ```java
-Logger.setCapture(false);
-```
+Logger.setCapture(false);```
 
 ## キャプチャーしたログの送信
 {: #sending-captured-logs }
@@ -48,8 +47,7 @@ timer.schedule(new TimerTask() {
 * 以下のようにして、永続ログ・バッファーの最大ファイル・サイズを増やす (バイト単位)。
 
 ```java
-Logger.setMaxFileSize(150000);
-```
+Logger.setMaxFileSize(150000);```
 
 ## 自動ログ送信
 {: auto-log-sending }
@@ -76,8 +74,7 @@ Logger.setAutoSendLogs(false);
 1. パッケージ名 `myApp` を指定して、`logger` インスタンスを使用します。
 
    ```java
-   Logger logger = Logger.getInstance("MyApp");
-   ```
+Logger logger = Logger.getInstance("MyApp");```
 
 2. **オプション: **指定されたレベルとパッケージのみにログ・キャプチャーとログ出力をプログラムで制限するフィルターを指定します。
 
@@ -98,8 +95,7 @@ Logger.setAutoSendLogs(false);
 サーバーで設定された構成オーバーライドをクライアントが取り出すには、アプリケーション・ライフサイクル・コールバック内など、定期的に実行されるコード内の場所から `updateConfigFromServer` メソッドを呼び出す必要があります。
 
 ```java
-Logger.updateConfigFromServer();
-```
+Logger.updateConfigFromServer();```
 
 ## ロギングの例
 {: #logging-example }
@@ -107,7 +103,6 @@ Logger.updateConfigFromServer();
 
 ```java
 import com.worklight.common.Logger;
-
 public class MathUtils{
   private static final Logger logger = Logger.getInstance(MathUtils.class.getName());
   public int sum(final int a, final int b){

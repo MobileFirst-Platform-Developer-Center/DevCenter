@@ -18,7 +18,7 @@ weight: 2
 
 通知のカテゴリーを示すストリングを通知オブジェクトに設定できます。この設定は、**{{ site.data.keys.mf_console }} →「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」→「iOS カスタム設定」**で行います。カテゴリー値に基づいて、通知アクション・ボタンが表示されます。例えば、次のとおりです。
 
-![{{ site.data.keys.mf_console }} での iOS 対話式通知のカテゴリーの設定](categories-for-interactive-notifications.png)
+![{{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
 
 ## Cordova アプリケーションでの対話式プッシュ通知の処理
 {: #handling-interactive-push-notifications-in-cordova-applications }
@@ -27,8 +27,8 @@ weight: 2
 1. メインの JavaScript 内で、対話式通知用に登録済みのカテゴリーを定義し、それをデバイス登録呼び出し `MFPPush.registerDevice` に渡します。
 
    ```javascript
-   var options = {
-        ios: {
+var options = {
+ios: {
             alert: true,
             badge: true,
             sound: true,
@@ -80,7 +80,7 @@ weight: 2
    MFPPush.registerDevice(options, function(successResponse) {
   		navigator.notification.alert("Successfully registered");
   		enableButtons();
-   });  
+   });
    ```
 
 ## ネイティブ iOS アプリケーションでの対話式プッシュ通知の処理
