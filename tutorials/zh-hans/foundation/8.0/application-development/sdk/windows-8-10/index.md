@@ -78,7 +78,7 @@ NuGet 是 Microsoft 开发平台（包括 .NET）的软件包管理器。 NuGet 
                 <p>可以通过手动获取框架和库文件，准备用于开发 MobileFirst 应用程序的环境。 NuGet 还提供 {{ site.data.keys.product }} SDK for Windows 8 和 Windows 10 Universal Windows Platform (UWP)。</p>
 
                 <ol>
-                    <li>从 {{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡获得 {{ site.data.keys.product }}SDK<b>。
+                    <li>从 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡获得 {{ site.data.keys.product }}SDK。
                     </li>
                     <li>解压缩通过步骤 1 下载的 SDK 的内容。</li>
                     <li>在 Visual Studio 中打开 Windows Universal 本机项目。 执行以下步骤。
