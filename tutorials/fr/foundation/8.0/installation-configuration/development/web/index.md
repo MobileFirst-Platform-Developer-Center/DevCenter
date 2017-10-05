@@ -1,8 +1,7 @@
-﻿---
+---
 layout: tutorial
 title: Configuration de l'environnement de développement Web
 breadcrumb_title: Web
-relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -58,7 +57,7 @@ Pour que vous puissiez traiter les ressources de l'application Web, celles-ci do
     - Remplacez **MaSociété** et **MonAppWeb** par vos propres valeurs.
     - Pour entrer les valeurs une par une, supprimez l'indicateur `-DinteractiveMode=false`.
 
-### Génération de l'application Web Maven avec les ressources de l'application Web 
+### Génération de l'application Web Maven avec les ressources de l'application Web
 {: #building-the-maven-webapp-with-the-web-applications-resources }
 1. Placez les ressources de l'application Web (comme les fichiers HTML, CSS, JavaScript et image) dans le dossier **[MonAppWeb] → src → Main → webapp**.
 
@@ -66,7 +65,7 @@ Pour que vous puissiez traiter les ressources de l'application Web, celles-ci do
 
 2. Exécutez la commande `mvn clean install` pour générer un fichier .war contenant les ressources Web de l'application.  
    Le fichier .war généré est disponible dans le dossier **[MonAppWeb] target**.
-   
+
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important :** vous devez exécuter la commande `mvn clean install` à chaque fois que vous mettez à jour une ressource Web.
 
 ### Ajout de l'application Web Maven sur le serveur d'applications
@@ -90,7 +89,7 @@ Lorsque vous êtes prêt à tester votre application Web, accédez à l'adresse 
 {: #using-nodejs }
 Vous pouvez utiliser Node.js comme proxy inverse pour acheminer les demandes depuis l'application Web vers {{ site.data.keys.mf_server }}.
 
-1. Depuis une fenêtre de **ligne de commande**, accédez au dossier de votre application Web et exécutez l'ensemble de commandes suivant : 
+1. Depuis une fenêtre de **ligne de commande**, accédez au dossier de votre application Web et exécutez l'ensemble de commandes suivant :
 
    ```bash
    npm init
