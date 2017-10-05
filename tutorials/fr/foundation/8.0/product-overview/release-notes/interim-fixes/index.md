@@ -8,13 +8,13 @@ weight: 2
 <br/>
 Les correctifs temporaires fournissent des modules de correction et de mises à jour permettant de corriger des problèmes et de maintenir {{ site.data.keys.product_full }} à jour pour les nouvelles éditions des systèmes d'exploitation mobiles.
 
-Les correctifs temporaires sont cumulatifs. Lorsque vous téléchargez le dernier correctif temporaire v8.0, vous obtenez tous les correctifs des correctifs temporaires antérieurs
+Les correctifs temporaires sont cumulatifs. Lorsque vous téléchargez le dernier correctif temporaire v8.0, vous obtenez tous les correctifs des correctifs temporaires antérieurs.
 
 Téléchargez et installez le dernier correctif temporaire pour obtenir tous les correctifs décrits dans les sections ci-après. Si vous installez des correctifs antérieurs, vous n'obtiendrez peut-être pas tous les correctifs décrits ci-après.
 
 > Pour obtenir la liste des éditions de correctif temporaire de {{ site.data.keys.product }} 8.0, [voir ces articles de blogue]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
-Pour un numéro d'APAR répertorié, vous pouvez confirmer qu'un correctif temporaire possède cette fonction en recherchant ce numéro d'APAR dans le fichier README du correctif temporaire.
+Lorsqu'un numéro d'APAR est indiqué, vous pouvez vérifier qu'un correctif temporaire possède cette fonction en recherchant ce numéro dans le fichier README du correctif temporaire.
 
 ### Octroi de licence
 {: #licensing }
@@ -42,7 +42,7 @@ l'interface de ligne de commande {{ site.data.keys.mf_cli }}.
 {: #cordova-applications }
 #### Ouverture de l'environnement de développement intégré natif pour un projet Cordova à partir d'Eclipse à l'aide du plug-in Studio
 {: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-Le plug-in Studio étant installé dans votre environnement de développement intégré Eclipse, vous pouvez ouvrir un projet Cordova existant dans Android Studio ouXcode à partir de l'interface Eclipse afin de générer et d'exécuter le projet.
+Le plug-in Studio étant installé dans votre environnement de développement intégré Eclipse, vous pouvez ouvrir un projet Cordova existant dans Android Studio ou Xcode à partir de l'interface Eclipse afin de générer et d'exécuter le projet.
 
 #### Répertoire *projectName* ajouté en tant qu'option lors de l'utilisation de l'outil Assistance à la migration
 {: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }

@@ -12,7 +12,7 @@ l'interface de ligne de commande {{ site.data.keys.mf_cli }}, le serveur
 
 La figure suivante représente les composants de {{ site.data.keys.product }} :
 
-![Architecture de la solution {{ site.data.keys.product }}](architecture.jpg)
+![Architecture de la solution {{ site.data.keys.product }} ](architecture.jpg)
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
@@ -33,7 +33,7 @@ Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les type
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-Le serveur {{ site.data.keys.mf_server }} fournit une connectivité de back end sécurisée, la gestion d'applications, la prise en charge de la notification push et des fonctions d'analyse, ainsi que la surveillance des applications {{ site.data.keys.product_adj }}. Il ne s'agit pas d'un serveur d'applications au sens de Java Platform, Enterprise Edition (Java EE). Il agit comme un conteneur pour les packages d'applications {{ site.data.keys.product }} et est en réalité un ensemble d'applications Web, éventuellement fournies sous la forme d'un fichier d'archive d'entreprise (EAR) qui s'exécutent par dessus les serveurs d'applications traditionnels.
+Le serveur {{ site.data.keys.mf_server }} fournit une connectivité de back end sécurisée, la gestion d'applications, la prise en charge de la notification push et des fonctions d'analyse, ainsi que la surveillance des applications {{ site.data.keys.product_adj }}. Il ne s'agit pas d'un serveur d'applications au sens de Java Platform, Enterprise Edition (Java EE). Il agit comme un conteneur pour les packages d'applications {{ site.data.keys.product }} et est en réalité un ensemble d'applications Web, éventuellement fournies sous la forme d'un fichier d'archive d'entreprise (EAR) qui s'exécutent par-dessus les serveurs d'applications traditionnels.
 
 Le serveur {{ site.data.keys.mf_server }} s'intègre à votre environnement d'entreprise et utilise des ressources et une infrastructure existantes. Cette intégration est basée sur des adaptateurs, qui sont des composants logiciels côté serveur chargés d'acheminer des systèmes d'entreprise expéditeurs et des services reposant sur le cloud jusqu'à l'unité utilisateur. Vous pouvez utiliser des adaptateurs pour extraire et mettre à jour des données à partir de sources d'information et pour autoriser des utilisateurs à effectuer des transactions et à démarrer d'autres services et applications.
 
