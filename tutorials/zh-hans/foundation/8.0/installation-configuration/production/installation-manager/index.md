@@ -18,8 +18,7 @@ IBM Installation Manager 在计算机上安装 {{ site.data.keys.mf_server_full 
 
 ### 令牌许可
 {: #token-licensing }
-令牌许可是 {{ site.data.keys.mf_server }} 支持的两种许可方法之一。您必须确定是否需要激活令牌许可。如果您没有定义将令牌许可用于 Rational License
-Key Server 的合同，那么请不要激活令牌许可。如果激活令牌许可，那么必须针对令牌许可配置 {{ site.data.keys.mf_server }}。有关更多信息，请参阅[针对令牌许可进行安装和配置](../token-licensing)。
+令牌许可是 {{ site.data.keys.mf_server }} 支持的两种许可方法之一。您必须确定是否需要激活令牌许可。如果您没有定义将令牌许可用于 Rational License Key Server 的合同，那么请不要激活令牌许可。如果激活令牌许可，那么必须针对令牌许可配置 {{ site.data.keys.mf_server }}。有关更多信息，请参阅[针对令牌许可进行安装和配置](../token-licensing)。
 
 ### {{ site.data.keys.mf_app_center_full }}
 {: #ibm-mobilefirst-foundation-application-center }
@@ -38,6 +37,7 @@ Application Center 是 {{ site.data.keys.product }} 的组件。利用 Applicati
 
 > **要点：**{{ site.data.keys.mf_server }} 安装程序仅将 {{ site.data.keys.mf_server }} 二进制文件和工具安装在磁盘上。它不会将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。使用 Installation Manager 运行安装后，必须设置数据库并将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。  
 > 类似地，运行 Installation Manager 以更新现有安装时，将仅更新磁盘上的文件。需执行更多操作以更新部署到应用程序服务器的应用程序。
+
 #### 跳转至
 {: #jump-to }
 * [管理员与用户方式](#administrator-versus-user-mode)
@@ -63,10 +63,10 @@ Application Center 是 {{ site.data.keys.product }} 的组件。利用 Applicati
 
 ### 用户（非管理员）方式
 {: #user-nonadministrator-mode }
-在用户方式下，不具有特定权限的任何用户均可运行 Installation Manager。但是，Installation Manager 的存储库文件存储在用户主目录中。只有该用户能够升级产品安装。
-如果未作为 root 用户运行 Installation Manager，请确保您在升级产品安装过程或应用临时修订后提供用户帐户。
+在用户方式下，不具有特定权限的任何用户均可运行 Installation Manager。但是，Installation Manager 的存储库文件存储在用户主目录中。只有该用户能够升级产品安装。如果未作为 root 用户运行 Installation Manager，请确保您在升级产品安装过程或应用临时修订后提供用户帐户。
 
-有关 Installation Manager 方式的更多信息，请参阅 IBM Installation Manager 文档中的 [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc)。
+有关 Installation Manager 方式的更多信息，请参阅 IBM Installation
+Manager 文档中的 [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc)。
 
 ## 使用 IBM Installation Manager 安装向导进行安装
 {: #installing-by-using-ibm-installation-manager-install-wizard }
@@ -159,7 +159,7 @@ Application Center 是 {{ site.data.keys.product }} 的组件。利用 Applicati
         
 5. 如果要使用最新的临时修订进行安装，请在 **-repositories** 参数中添加临时修订存储库。**-repositories** 参数用于提取存储库的逗号分隔列表。
 
-    通过将 **com.ibm.mobilefirst.foundation.server** 替换为 **com.ibm.mobilefirst.foundation.server_version**，来添加临时修订版本。**version** 的格式为 **8.0.0.0-buildNumber**。例如，如果要安装临时修订 **8.0.0.0-IF20160103101**5，请输入以下命令：`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`。
+    通过将 **com.ibm.mobilefirst.foundation.server** 替换为 **com.ibm.mobilefirst.foundation.server_version**，来添加临时修订版本。**version** 的格式为 **8.0.0.0-buildNumber**。例如，如果要安装临时修订 **8.0.0.0-IF201601031015**，请输入以下命令：`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`。
     
     有关 imcl 命令的更多信息，请参阅 [Installation Manager：使用 `imcl` 命令安装软件包](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en)。
     
@@ -201,7 +201,7 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
     > 
     > * 对于不在应用程序服务器上安装 Application Center 的安装，请使用名为 **install-no-appcenter.xml** 的文件。
     > * 对于要安装 Application Center 的安装，请根据应用程序服务器和数据库从下表中选取样本响应文件。
-
+  
    #### **Silent\_Install\_Sample_Files.zip** 文件中用于安装 Application Center 的样本安装响应文件
     
     <table>
@@ -262,7 +262,9 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
         </tr>
     </table>
     
-    > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。    对于卸载，使用的样本文件取决于在特定软件包组中最初安装的 {{ site.data.keys.mf_server }} 或 Worklight Server 的版本：
+    > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。
+    
+    有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。    对于卸载，使用的样本文件取决于在特定软件包组中最初安装的 {{ site.data.keys.mf_server }} 或 Worklight Server 的版本：
     
     * {{ site.data.keys.mf_server }} 使用软件包组 {{ site.data.keys.mf_server }}。
     * Worklight Server V6.x 或更高版本使用软件包组 IBM Worklight。
@@ -303,15 +305,13 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
         </tr>
     </table>
 
-2. 更改样本文件的文件访问权限，尽可能提高其限制性。步骤 4 将会要求您提供一些密码。
-如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 read 权限。您可以使用命令，如以下示例：
+2. 更改样本文件的文件访问权限，尽可能提高其限制性。步骤 4 将会要求您提供一些密码。如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 read 权限。您可以使用命令，如以下示例：
     * 在 UNIX 上：`chmod 600 <target-file.xml>`
     * 在 Windows 上：`cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. 同样，如果服务器是 WebSphere Application Server Liberty Profile 或 Apache Tomcat 服务器，并且打算只通过您的用户帐户启动该服务器，那么还必须除去除您之外的其他用户对以下文件“读”许可权：
     * 对于 WebSphere Application Server Liberty Profile：`wlp/usr/servers/<server>/server.xml`
     * 对于 Apache Tomcat：`conf/server.xml`
-4. 使用 <server> 元素来调整存储库列表。
-有关此步骤的更多信息，请参阅[存储库](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)中的 IBM Installation Manager 文档。
+4. 使用 <server> 元素来调整存储库列表。有关此步骤的更多信息，请参阅[存储库](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)中的 IBM Installation Manager 文档。
 
     使用 `<profile>` 元素来调整每个键/值对的值。  
     在 `<install>` 元素的 `<offering>` 元素中，设置版本属性，使其与要安装的发行版匹配；但是如果要在存储库中安装可用的最新版本，请除去版本属性。
@@ -327,10 +327,8 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
 ### 处理在不同机器上记录的响应文件
 {: #working-with-a-response-file-recorded-on-a-different-machine }
 
-1. 在可以使用 GUI 的机器上，以向导方式运行 IBM Installation
-Manager 并使用 `-record responseFile` 选项，以记录响应文件。有关更多详细信息，请参阅[使用 Installation Manager 记录响应文件](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html)。
-2. 更改响应文件的文件访问权，使其限制性尽可能高。步骤 4 将会要求您提供一些密码。
-如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 **read** 权限。您可以使用命令，如以下示例：
+1. 在可以使用 GUI 的机器上，以向导方式运行 IBM Installation Manager 并使用 `-record responseFile` 选项，以记录响应文件。有关更多详细信息，请参阅[使用 Installation Manager 记录响应文件](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html)。
+2. 更改响应文件的文件访问权，使其限制性尽可能高。步骤 4 将会要求您提供一些密码。如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 **read** 权限。您可以使用命令，如以下示例：
     * 在 UNIX 上：`chmod 600 response-file.xml`
     * 在 Windows 上：`cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. 同样，如果服务器是 WebSphere Application Server Liberty 或 Apache Tomcat 服务器，并且打算只通过您的用户帐户启动该服务器，那么还必须除去除您之外的其他用户对以下文件“读”许可权：
@@ -357,8 +355,7 @@ Manager 并使用 `-record responseFile` 选项，以记录响应文件。有关
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>总是</td>
-        <td>激活令牌许可。如果您计划将此产品与 Rational License
-Key Server 一起使用，那么必须激活令牌许可。<br/><br/>在此情况下，将值设置为 <code>true</code>。如果不计划将此产品与 Rational License Key Server 一起使用，那么将值设置为 <code>false</code>。<br/><br/>如果您激活许可令牌，那么在将产品部署到应用程序服务器后将需要执行特定的配置步骤。</td>
+        <td>激活令牌许可。如果您计划将此产品与 Rational License Key Server 一起使用，那么必须激活令牌许可。<br/><br/>在此情况下，将值设置为 <code>true</code>。如果不计划将此产品与 Rational License Key Server 一起使用，那么将值设置为 <code>false</code>。<br/><br/>如果您激活许可令牌，那么在将产品部署到应用程序服务器后将需要执行特定的配置步骤。</td>
         <td><code>true</code> 或 <code>false</code></td>    
     </tr>
     <tr>
@@ -376,95 +373,78 @@ Key Server 一起使用，那么必须激活令牌许可。<br/><br/>在此情�
     <tr>
         <td>user.appserver.was.profile</td>
         <td>${user.appserver.selection2} == was</td>
-        <td>要在其中安装应用程序的概要文件。
-对于 WebSphere Application Server Network Deployment，请指定 Deployment Manager 概要文件。Liberty 表示 Liberty 概要文件（子目录 wlp）。</td>
+        <td>要在其中安装应用程序的概要文件。对于 WebSphere Application Server Network Deployment，请指定 Deployment Manager 概要文件。Liberty 表示 Liberty 概要文件（子目录 wlp）。</td>
         <td>某个 WebSphere Application Server 概要文件的名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.cell</td>
-        <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+        <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
         <td>要在其中安装应用程序的 WebSphere Application Server 单元。</td>
         <td>WebSphere Application Server 单元的名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.node</td>
-        <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+        <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
         <td>要在其中安装应用程序的 WebSphere Application Server 节点。这对应于当前机器。</td>
         <td>当前机器的 WebSphere Application Server 节点的名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.scope</td>
-        <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+        <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
         <td>要在其中安装应用程序的服务器集合的类型。<br/><br/><code>server</code> 表示独立服务器。<br/><br/><code>nd-cell</code> 表示 WebSphere Application Server Network Deployment 单元。<code>nd-cluster</code> 表示 WebSphere Application Server Network Deployment 集群。<br/><br/><code>nd-node</code> 表示 WebSphere Application Server Network Deployment 节点（排除集群）。<br/><br/><code>nd-server</code> 表示受管 WebSphere Application Server Network Deployment 服务器。</td>
         <td><code>server</code>、<code>nd-cell</code>、<code>nd-cluster</code>、<code>nd-node</code> 和 <code>nd-server</code></td>
     </tr>
     <tr>
       <td>user.appserver.was.serverInstance</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope}
-== server</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == server</td>
       <td>要在其中安装应用程序的 WebSphere Application Server 服务器的名称。</td>
       <td>当前机器上的 WebSphere Application Server 服务器的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.cluster</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope}
-== nd-cluster</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == nd-cluster</td>
       <td>要在其中安装应用程序的 WebSphere Application Server Network Deployment 集群的名称。</td>
       <td>WebSphere Application Server 单元中 WebSphere Application Server Network Deployment 集群的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.node</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty && (${user.appserver.was.scope}
-== nd-node || ${user.appserver.was.scope} == nd-server)</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && (${user.appserver.was.scope} == nd-node || ${user.appserver.was.scope} == nd-server)</td>
       <td>要在其中安装应用程序的 WebSphere Application Server Network Deployment 节点的名称。</td>
       <td>WebSphere Application Server 单元中 WebSphere Application Server Network Deployment 节点的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.server</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope}
-== nd-server</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == nd-server</td>
       <td>要在其中安装应用程序的 WebSphere Application Server Network Deployment 服务器的名称。</td>
       <td>指定的 WebSphere Application Server Network Deployment 节点中 WebSphere Application Server Network Deployment 服务器的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.admin.name</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
       <td>WebSphere Application Server 管理员的名称。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.admin.password2</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
       <td>WebSphere Application Server 管理员的密码（可以选择以特定方式加密）。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.appcenteradmin.password</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
       <td>要添加到 WebSphere Application Server 用户列表的 <code>appcenteradmin</code> 用户的密码（可以选择以特定方式加密）。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.serial</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} != Liberty</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
       <td>用于区分要安装的应用程序与其他 {{ site.data.keys.mf_server }} 安装的后缀。</td>
       <td>含 10 个十进制数字的字符串。</td>
     </tr>
     <tr>
       <td>user.appserver.was85liberty.serverInstance_</td>
-      <td>${user.appserver.selection2} == was &&
-${user.appserver.was.profile} == Liberty</td>
+      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} == Liberty</td>
       <td>要在其中安装应用程序的 WebSphere Application Server Liberty 服务器的名称。</td>
       <td></td>
     </tr>
@@ -617,7 +597,7 @@ ${user.appserver.was.profile} == Liberty</td>
       <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
       <td>Application Center 的 Oracle 数据库的名称。</td>
       <td>非空；一个有效的 Oracle 数据库名称。
-</td>
+      </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>
@@ -652,60 +632,59 @@ ${user.appserver.was.profile} == Liberty</td>
 #### Analytics 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **analytics.ear** 和 **analytics-*.war** | 用于安装 {{ site.data.keys.mf_analytics }} 的 EAR 和 WAR 文件。 |
-| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_analytics }}。 |
+| **analytics.ear** 和 **analytics-*.war** | 用于安装 {{ site.data.keys.mf_analytics }} 的 EAR 和 WAR 文件。|
+| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_analytics }}。|
 
 #### ApplicationCenter 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **configuration-samples** | 包含用于安装 Application Center 的样本 Ant 文件。Ant 任务将创建数据库表并将 WAR 文件部署到应用程序服务器。 | 
-| **控制台** | 包含用于安装 Application Center 的 EAR 和 WAR 文件。EAR 文件对于 IBM
-PureApplication System 而言唯一。 | 
-| **数据库** | 包含用于为 Application Center 手动创建表的 SQL 脚本。 |
-| **安装程序** | 包含用于创建 Application Center 客户机的资源。 | 
-| **工具** | Application Center 的工具。 | 
+| **configuration-samples** | 包含用于安装 Application Center 的样本 Ant 文件。Ant 任务将创建数据库表并将 WAR 文件部署到应用程序服务器。| 
+| **console** | 包含用于安装 Application Center 的 EAR 和 WAR 文件。EAR 文件对于 IBM PureApplication System 而言唯一。| 
+| **databases** | 包含用于为 Application Center 手动创建表的 SQL 脚本。|
+| **installer** | 包含用于创建 Application Center 客户机的资源。| 
+| **tools** | Application Center 的工具。| 
 
 #### {{ site.data.keys.mf_server }} 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **mfp-ant-deployer.jar** | 一组 {{ site.data.keys.mf_server }} Ant 任务。 |
-| **mfp-*.war** | {{ site.data.keys.mf_server }} 组件的 WAR 文件。 |
-| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_server }} 组件。 | 
-| **ConfigurationTool** | 包含 Server Configuration Tool 的二进制文件。可通过 **mfp_server_install_dir/shortcuts** 启动此工具。 |
-| **数据库** | 包含用于为 {{ site.data.keys.mf_server }} 组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 配置服务和 {{ site.data.keys.product_adj }} 运行时）手动创建表的 SQL 脚本。 | 
-| **external-server-libraries** |  包含不同工具（如真实性工具和 OAuth 安全工具）使用的 JAR 文件。 |
+| **mfp-ant-deployer.jar** | 一组 {{ site.data.keys.mf_server }} Ant 任务。|
+| **mfp-*.war** | {{ site.data.keys.mf_server }} 组件的 WAR 文件。|
+| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_server }} 组件。| 
+| **ConfigurationTool** | 包含 Server Configuration Tool 的二进制文件。可通过 **mfp_server_install_dir/shortcuts** 启动此工具。|
+| **databases** | 包含用于为 {{ site.data.keys.mf_server }} 组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 配置服务和 {{ site.data.keys.product_adj }} 运行时）手动创建表的 SQL 脚本。| 
+| **external-server-libraries** |  包含不同工具（如真实性工具和 OAuth 安全工具）使用的 JAR 文件。|
 
 #### PushService 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **mfp-push-service.war** | 用于安装 {{ site.data.keys.mf_server }} 推送服务的 WAR 文件。 |
-| **数据库** | 包含用于为 {{ site.data.keys.mf_server }} 推送服务手动创建表的 SQL 脚本。 | 
+| **mfp-push-service.war** | 用于安装 {{ site.data.keys.mf_server }} 推送服务的 WAR 文件。|
+| **databases** | 包含用于为 {{ site.data.keys.mf_server }} 推送服务手动创建表的 SQL 脚本。| 
 
 #### License 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **Text** | 包含 {{ site.data.keys.product }} 的许可证。 | 
+| **Text** | 包含 {{ site.data.keys.product }} 的许可证。| 
 
 #### {{ site.data.keys.mf_server }} 安装目录中的文件和子目录
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **shortcuts** | {{ site.data.keys.mf_server }} 随附了 Apache Ant 的启动程序脚本、Server Configuration Tool 和 mfpadmin 命令。 | 
+| **shortcuts** | {{ site.data.keys.mf_server }} 随附了 Apache Ant 的启动程序脚本、Server Configuration Tool 和 mfpadmin 命令。| 
 
 #### tools 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| 项目 | 描述 |
+| 项目| 描述|
 |------|-------------|
-| **tools/apache-ant-version-number** | Server Configuration Tool 所使用的 Apache Ant 的二进制安装。它还可用于运行 Ant 任务。 | 
+| **tools/apache-ant-version-number** | Server Configuration Tool 所使用的 Apache Ant 的二进制安装。它还可用于运行 Ant 任务。| 

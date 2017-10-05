@@ -34,12 +34,12 @@ weight: 5
 
 1. 要新建一个适配器 Maven 项目，选择：**文件 → 新建 → 其他... → Maven → Maven 项目**，然后单击**下一步**。
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](new-maven-project.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](new-maven-project.png)
 
 2. 提供项目名称和位置。  
     - 确保将创建简单项目的选项标记为**关闭**，然后单击**下一步**。
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](select-project-name-and-location.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](select-project-name-and-location.png)
 
 3. 选择或添加适配器 Archetype。
     - 如果[在本地安装了 archetype](../creating-adapters/#install-maven)，但它们并没有出现在 archetype 列表中，请选择**配置 → 添加本地目录 → 浏览到主目录中的 /.m2/repository/archetype-catalog.xml**。
@@ -48,19 +48,19 @@ weight: 5
         - **Archetype 工件标识**： `adapter-maven-archetype-java`、`adapter-maven-archetype-http` 或 `adapter-maven-archetype-sql`
         - **Archetype 版本**：您可以在 [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp) 中找到最新的可用版本
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](create-an-archetype.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](create-an-archetype.png)
 
 4. 指定 Maven 项目参数。  
     - 指定所需的**组标识**、**工件标识**、**版本**和**包**参数，然后单击**完成**。
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](project-parameters.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](project-parameters.png)
 
 ### 导入现有适配器 Maven 项目
 {: #importing-an-existing-adapter-maven-project }
 
 要导入适配器 Maven 项目，选择**文件 → 导入... → Maven → 现有 Maven 项目**。
 
-![图像显示如何将适配器 Maven 项目导入到 Eclipse](import-adapter-maven-project.png)
+![显示如何将适配器 Maven 项目导入 Eclipse 的图示](import-adapter-maven-project.png)
 
 ## 构建并部署适配器 Maven 项目
 {: #building-and-deploying-an-adapter-maven-project }

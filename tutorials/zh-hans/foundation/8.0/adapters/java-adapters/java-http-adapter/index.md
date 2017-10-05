@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java HTTP 适配器
-breadcrumb_title: HTTP Adapter
+breadcrumb_title: HTTP 适配器
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: 下载适配器 Maven 项目
@@ -27,8 +27,8 @@ Java 适配器可自由控制与后端系统的连接。因此，开发人员有
 
 ```java
 @Override
-protected void init() throws Exception {
-    JavaHTTPResource.init();
+    protected void init() throws Exception {
+        JavaHTTPResource.init();
     logger.info("Adapter initialized!");
 }
 ```
@@ -71,7 +71,7 @@ public static void init() {
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag)
     throws IOException, IllegalStateException, SAXException {
-  if(tag!=null && !tag.isEmpty()){
+  if(tag!=null &&  !tag.isEmpty()){
     execute(new HttpGet("/blog/atom/"+ tag +".xml"), response);
   }
   else{
