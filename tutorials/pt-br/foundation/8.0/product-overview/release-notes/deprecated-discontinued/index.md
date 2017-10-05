@@ -244,7 +244,7 @@ As tabelas a seguir listam os elementos de API do lado do servidor descontinuado
 
 | Elemento da API                                | Caminho de substituição                               |
 |-------------------------------------------|------------------------------------------------|
-| Interface `AdaptersAPI` no pacote `com.worklight.adapters.rest.api` | Use a interface `AdaptersAPI` no pacote `com.ibm.mfp.adapter.api`. |
+| Interface `AdaptersAPI` no `com.worklight.adapters.rest.api package` | Use a interface `AdaptersAPI` no pacote `com.ibm.mfp.adapter.api`. |
 | Interface `AnalyticsAPI` no pacote `com.worklight.adapters.rest.api` | Use a interface `AnalyticsAPI` no pacote `com.ibm.mfp.adapter.api`. |
 | Interface `ConfigurationAPI` no pacote `com.worklight.adapters.rest.api` | Use a interface `ConfigurationAPI` no pacote `com.ibm.mfp.adapter.api`. |
 | Anotação `OAuthSecurity` no pacote `com.worklight.core.auth` | Use a anotação `OAuthSecurity` no pacote `com.ibm.mfp.adapter.api`. |
@@ -290,7 +290,7 @@ Este conjunto de APIs não é mais suportado na v8.0.
 | `WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` | Crie um adaptador customizado para receber notificações desses eventos. |
 | `WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` | Use API nativa ou plug-ins Cordova de terceiros para localização geográfica. |
 | `WL.Client.makeRequest (url, options)` | Crie um adaptador customizado que forneça a mesma funcionalidade |
-| `WLDevice.getID(options)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, `device.uuid` do plug-in c**ordova-plugin-device** fornece esse recurso. |
+| `WLDevice.getID(options)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Observação:** para sua informação, o `device.uuid` do plug-in c**ordova-plugin-device** fornece esse recurso. |
 | `WL.Device.getFriendlyName()` | Use `WL.Client.getDeviceDisplayName` |
 | `WL.Device.setFriendlyName()` | Use `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **cordova-plugin-network-information** fornece esse recurso. |
@@ -309,8 +309,8 @@ Este conjunto de APIs não é mais suportado na v8.0.
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | Nenhuma substituição |
 | `WL.Client.createChallengeHandler(realmName)` | Para criar um manipulador de desafios para manipulação de desafios de gateway customizados, use `WL.Client.createGatewayChallengeHandler(gatewayName)`. Para criar um manipulador de desafios para manipular desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. |
 | `WL.Client.createWLChallengeHandler(realmName)` | Use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. |
-| `challengeHandler.isCustomResponse()`, em que challengeHandler é um objeto manipulador de desafios que é retornado por `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()`, em que `gatewayChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. |
-| `wlChallengeHandler.processSucccess()`, em que `wlChallengeHandler` é um objeto manipulador de desafios que é retornado pelo `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()`, em que `securityCheckChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. |
+| `challengeHandler.isCustomResponse()`, em que challengeHandler é um objeto manipulador de desafios retornado pelo `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()`, em que `gatewayChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. |
+| `wlChallengeHandler.processSucccess()`, em que `wlChallengeHandler` é um objeto manipulador de desafios retornado pelo `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()`, em que `securityCheckChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. |
 | `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafios de gateway customizados, use um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. Para manipuladores de desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. |
 | `WL.Client.createProvisioningChallengeHandler()` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura de segurança. |
 
@@ -365,12 +365,12 @@ Este conjunto de APIs não é mais suportado na v8.0.
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
 | `org.apache.http.Header[]` foi descontinuado. Portanto, os métodos a seguir foram removidos:||
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Use no lugar a nova API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Em vez disso, use a API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | Use a nova API `WLResourceRequest.addHeader(String name, String value)`. |
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Use no lugar a nova API `List<String> WLResourceRequest.getHeaders(String headerName)`. |
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Em vez disso, use a API `List<String> WLResourceRequest.getHeaders(String headerName)`. |
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Use no lugar a nova API `WLResourceRequest.getHeaders(String headerName)`. |
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Use no lugar a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | Use no lugar a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Em vez disso, use a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | Em vez disso, use a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Substituído por `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | Nenhuma substituição. Cliente MFP permite redirecionamentos circulares. |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Removido devido às dependências do cliente Apache HTTP descontinuadas. Crie sua própria solicitação para ter controle total sobre a solicitação e a resposta. |
@@ -407,11 +407,8 @@ Este conjunto de APIs não é mais suportado na v8.0.
 | `[WLClient (void) logActivity:(NSString *) activityType]` | Removido. Use um criador de logs Objective C. |
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | Use as APIs do sistema operacional para compartilhar tokens entre aplicativos. |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use `BaseChallengeHandler.cancel()`. |
-| `BaseProvisioningChallengeHandler` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura
-de segurança. |
-| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
-{{ site.data.keys.product_adj }},
-use `SecurityCheckChallengeHandler`. |
+| `BaseProvisioningChallengeHandler` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura de segurança. |
+| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
@@ -423,14 +420,9 @@ use `SecurityCheckChallengeHandler`. |
 
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
-| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
-{{ site.data.keys.product_adj }},
-use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler. isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
-| `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
-de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do
-{{ site.data.keys.product_adj }},
-use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Para manipuladores de desafio de gateway customizados, use `GatewayChallengeHandler.Shouldcancel`. Para manipuladores de desafio de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler.ShouldCancel`. |
 | `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
