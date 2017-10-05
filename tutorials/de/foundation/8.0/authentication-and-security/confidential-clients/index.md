@@ -53,8 +53,7 @@ allowed-scope, als dessen Wert nur ein Stern
 **Beispiele für Bereiche:**
 
 - Für den [Schutz externer Ressourcen](../protecting-external-resources) wird der Bereich `authorization.introspect` verwendet.
-- Wenn Sie eine [Push-Benachrichtigung über die REST-API senden](../../notifications/sending-notifications), werden die jeweils durch ein Leerzeichen getrennten
-Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwendet. 
+- Wenn Sie eine [Push-Benachrichtigung über die REST-API senden](../../notifications/sending-notifications), werden die jeweils durch ein Leerzeichen getrennten Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwendet.
 - Adapter können mit einem angepassten Bereichselement wie `accessRestricted` geschützt werden.
 - Mit dem Bereich `*` wird alles abgedeckt und der Zugriff auf jeden angeforderten Bereich gewährt. 
 
@@ -87,7 +86,7 @@ Ein Token kann vom **Tokenendpunkt** des {{ site.data.keys.mf_server }} abgerufe
 **Für Testzwecke** können Sie Postman verwenden, wie es unten beschrieben ist.   
 Implementieren Sie Postman mit einer Technologie Ihrer Wahl in einer realen Situation in Ihre Back-End-Logik. 
 
-1.  Setzen Sie eine **POST**-Anforderung an **http(s)://[IP-Adresse_oder_Hostname]:[Port]/[runtime]/api/az/v1/token** ab.  
+1.  Setzen Sie eine **POST**-Anforderung an **http(s)://[IP-Adresse_oder_Hostname]: [Port]/[Laufzeit]/api/az/v1/token** ab.  
     Beispiel: `http://localhost:9080/mfp/api/az/v1/token`
     - In einer Entwicklungsumgebung verwendet {{ site.data.keys.mf_server }} eine bereits vorhandene `mfp`-Laufzeit.   
     - Ersetzen Sie den Laufzeitwert in einer Produktionsumgebung durch den Namen Ihrer Laufzeit. 

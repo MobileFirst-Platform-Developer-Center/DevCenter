@@ -67,8 +67,8 @@ Sie können Fehler oder gültige Introspektionsdaten aus dem resultierenden `Tok
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
-if (tokenValidationRes.getAuthenticationError() != null) {
-    // Fehler
+    			if (tokenValidationRes.getAuthenticationError() != null) {
+    				// Fehler
     AuthenticationError error = tokenValidationRes.getAuthenticationError();
     httpServletResponse.setStatus(error.getStatus());
     httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());

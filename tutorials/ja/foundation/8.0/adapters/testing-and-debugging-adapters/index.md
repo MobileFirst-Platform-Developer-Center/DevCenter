@@ -74,7 +74,7 @@ JavaScript アダプターでセキュリティーを使用不可にするには
   ![機密クライアントの設定のイメージ](confidential_client.png)
 {% endcomment %}
 
-1.  `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを指定した、`http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を作成するには、HTTP クライアント (Postman) を使用します。
+1.  `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを指定して、`http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を行うには、HTTP クライアント (Postman) を使用します。
 
     - `grant_type` - 値を `client_credentials` に設定します。
     - `scope` - 値をリソースの保護スコープに設定します。リソースに保護スコープが割り当てられていない場合は、このパラメーターを省略して、デフォルトのスコープ (`RegisteredClient`) を適用します。詳しくは、[スコープ](../../authentication-and-security/#scopes)を参照してください。
@@ -83,6 +83,8 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 
 2.  `Basic authentication` を使用し、機密クライアント ID (「test」) と秘密鍵 (「test」) を指定して、`authorization header` を追加します。
     > 機密クライアントについて詳しくは、[機密クライアント](../../authentication-and-security/confidential-clients)を参照してください。
+
+
 
     ![Postman の許可構成のイメージ](Authorization_configuration.png)
 
@@ -103,7 +105,7 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 
 アダプター・エンドポイントに対する以後の要求では、`Authorization` という名前の HTTP ヘッダーと、前に受け取った値 (Bearer で始まる) を追加します。セキュリティー・フレームワークは、リソースを保護しているセキュリティー・チャレンジをスキップします。
 
-  ![テスト・トークンを持つ Postman を使用したアダプター要求](Adapter-response.png)
+  ![テスト・トークンとともに Postman を使用したアダプター要求](Adapter-response.png)
 
 ### Swagger の使用
 {: #using-swagger }
@@ -122,14 +124,16 @@ Swagger にアクセスするには、次のようにします。
 
 <img alt="Swagger UI のオン/オフ・スイッチのイメージ" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### テスト・トークン
-{: #test-token }
+#### テスト・トークンの追加
+{: #adding-a-test-token }
 
 要求にテスト・トークンを追加して、リソースを保護しているセキュリティー・チャレンジをセキュリティー・フレームワークがスキップできるようにするには、エンドポイントの操作部の右隅にある**「オン/オフ・スイッチ」**ボタンをクリックします。
 
 Swagger UI に対して認可するスコープを選択するように求められます (テスト目的の場合、すべて選択することができます)。初めて Swagger UI を使用する場合は、機密クライアント ID と秘密鍵を指定してログインするように要求されることがあります。その場合は、**「許可されるスコープ」**に `*` を指定した新規機密クライアントを作成する必要があります。
 
 > 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
+
+
 
 <br/><br/>
 
@@ -138,7 +142,7 @@ Swagger UI に対して認可するスコープを選択するように求めら
 
 エンドポイントの操作を展開し、必須パラメーター (必要な場合) を入力して**「試用」**ボタンをクリックします。
 
-  ![テスト・トークンを持つ Swagger を使用したアダプター要求](SwaggerReq.png)
+  ![テスト・トークンとともに Swagger を使用したアダプター要求](SwaggerReq.png)
 
 #### Swagger アノテーション
 {: #swagger-annotations }
@@ -167,7 +171,7 @@ public Map<String, String> enterInfo(
 }
 ```
 
-![Swagger UI の複数パラメーターのエンドポイント](Multiple_Parameter.png)
+![Swagger UI での複数のパラメーター・エンドポイント](Multiple_Parameter.png)
 
 
 {% comment %}
@@ -236,7 +240,7 @@ Hello World
 
 2. Maven が Eclipse で使用可能になったら、次のようにしてアダプター Maven プロジェクトをインポートします。
 
-    ![Eclipse へのアダプター Maven プロジェクトのインポート方法を示すイメージ](import-adapter-maven-project.png)
+    ![アダプター Maven プロジェクトを Eclipse にインポートする方法を示すイメージ](import-adapter-maven-project.png)
 
 3. 次のようにして、デバッグ・パラメーターを指定します。
     - **「実行」**→**「デバッグ構成」**をクリックします。
@@ -247,7 +251,7 @@ Hello World
     - **「参照」**をクリックして、Maven プロジェクトを選択します。
     - **「デバッグ」**をクリックします。
 
-    ![{{ site.data.keys.mf_server }} のデバッグ・パラメーターの設定方法を示すイメージ](setting-debug-parameters.png)
+    ![{{ site.data.keys.mf_server }} デバッグ・パラメーターを設定する方法を示すイメージ](setting-debug-parameters.png)
 
 4. **「ウィンドウ」→「ビューの表示」→「デバッグ」**をクリックして、*デバッグ・モード* を入力します。これで、標準 Java アプリケーションの場合と同様に、Java コードを正常にデバッグすることができます。アダプターのコードを実行して設定されたブレークポイントがヒットするようにするには、アダプターに対して要求を発行する必要があります。[アダプターのテスト・セクション](#testing-adapters)に記載されたアダプター・リソースの呼び出し方法の説明に従うことで、これを実行できます。
 

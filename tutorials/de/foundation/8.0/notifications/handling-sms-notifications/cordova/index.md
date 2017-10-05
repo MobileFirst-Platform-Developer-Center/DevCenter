@@ -43,7 +43,7 @@ MFPPush.registerNotificationsCallback(notificationReceived);
 
 function registerDevice() {
     var phoneNumber = prompt("Enter Your 10 digit phone number");
-    if(phoneNumber != null && phoneNumber!="" && /^\d+$/.test(phoneNumber)) {
+    if(phoneNumber != null &&  phoneNumber!="" &&  /^\d+$/.test(phoneNumber)) {
         var options = {};
         options.phoneNumber = phoneNumber;
         MFPPush.registerDevice(options, 

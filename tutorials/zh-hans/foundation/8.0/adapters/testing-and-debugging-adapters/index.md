@@ -71,17 +71,20 @@ weight: 6
 1. 在 {{ site.data.keys.mf_console }} → **设置** → **机密客户机**选项卡中，创建机密客户机或使用缺省值：  
 出于测试目的，将**允许的作用域**设置为 `**`。
 
-  ![“设置机密客户机”图](confidential_client.png) {% endcomment %}
+  ![设置机密客户机的图示](confidential_client.png)
+{% endcomment %}
 
 1.  通过 HTTP 客户机 (Postman)，使用下列 `Content-Type: application/x-www-form-urlencoded` 格式的参数，向 `http://<IP>:<PORT>/mfp/api/az/v1/token` 发出 HTTP `POST` 请求：
 
     - `grant_type` - 将值设置为 `client_credentials`。
     - `scope` - 将值设置为资源的保护作用域。如果没有为资源分配保护作用域，请省略此参数以应用缺省作用域 (`RegisteredClient`)。有关更多信息，请参阅[作用域](../../authentication-and-security/#scopes)。
 
-    ![“Postman 主体配置”图](Body_configuration.png)
+    ![“Postman 主体配置”图像](Body_configuration.png)
 
 2.  使用带机密客户机标识（“test”）和密钥（“test”）的`基本认证`添加`授权头`。
     > 有关机密客户机的更多信息，请参阅[机密客户机](../../authentication-and-security/confidential-clients)。
+
+
 
     ![“Postman 授权配置”图](Authorization_configuration.png)
 
@@ -121,14 +124,16 @@ Swagger 文档 UI 是适配器 REST 端点的可视化表示形式。
 
 <img alt="“Swagger UI 中的开关”图" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### 测试令牌
-{: #test-token }
+#### 添加测试令牌
+{: #adding-a-test-token }
 
 要向请求添加测试令牌，以使安全框架跳过保护资源的任何安全挑战，请单击端点操作右上角的**开关**按钮。
 
 这会要求您选择授予 Swagger UI 的作用域（出于测试目的，您可以全部选择）。如果是首次使用 Swagger UI，那么可能会要求您使用机密客户机标识和密码登录。为此，您需要创建一个新的机密客户机，并将 `*` 作为其**允许的作用域**。
 
 > 在[机密客户机](../../authentication-and-security/confidential-clients)教程中了解有关“机密客户机”的更多信息。
+
+
 <br/><br/>
 
 #### 发送请求
@@ -231,7 +236,7 @@ Hello World
 
 2. Maven 一旦在 Eclipse 中可用，请导入适配器 Maven 项目：
 
-    ![图像显示如何将适配器 Maven 项目导入到 Eclipse](import-adapter-maven-project.png)
+    ![显示如何将适配器 Maven 项目导入 Eclipse 的图示](import-adapter-maven-project.png)
 
 3. 提供调试参数：
     - 单击**运行** → **调试配置**。
@@ -242,7 +247,7 @@ Hello World
     - 单击**浏览**，然后选择 Maven 项目。
     - 单击**调试**。
 
-    ![图像显示如何设置 {{ site.data.keys.mf_server }} 调试参数](setting-debug-parameters.png)
+    ![显示如何设置 {{ site.data.keys.mf_server }} 调试参数的图示](setting-debug-parameters.png)
 
 4. 单击**窗口 → 显示视图 → 调试**以进入*调试方式*。现在，您可以像在标准 Java 应用程序中一样正常调试 Java 代码。您需要向适配器发出请求，以使代码运行并命中任何设置断点。通过遵循[“测试适配器”部分](#testing-adapters)中有关如何调用适配器资源的指示信息，即可完成此操作。
 

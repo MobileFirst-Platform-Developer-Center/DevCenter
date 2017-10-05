@@ -78,7 +78,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
 {: #manually-adding-the-mobilefirst-native-sdk }
 次のように、{{ site.data.keys.product }} SDK を手動で追加することもできます。
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
@@ -182,8 +182,7 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundation
-```
+import IBMMobileFirstPlatformFoundation```
 
 <br>
 #### iOS 9 以上に関する注:
@@ -242,13 +241,13 @@ SDK のリリースは、SDK の [CocoaPods リポジトリー](https://cocoapod
 {: #mfpclientplist }
 プロジェクトのルートに配置されているこのファイルは、{{ site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-| プロパティー            | 説明                                                         | 値の例 |
+| プロパティー| 説明| 値の例|
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
-| host        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
-| port        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
-| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
+| protocol| {{ site.data.keys.mf_server }} との通信プロトコル。| http または https|
+| host| {{ site.data.keys.mf_server }} のホスト名。| 192.168.1.63|
+| port| {{ site.data.keys.mf_server }} のポート。| 9080|
+| wlServerContext| {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。| /mfp/|
+| languagePreferences| クライアントの SDK システム・メッセージのデフォルト言語を設定します。| en|
 
 ## ビットコードと TLS 1.2
 {: #bitcode-and-tls-12 }

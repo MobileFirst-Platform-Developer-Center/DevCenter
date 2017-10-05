@@ -16,6 +16,7 @@ Importieren Sie wie folgt das Java-Protokollierungspaket:
 
 ```java
 import java.util.logging.Logger;
+
 ```
 
 Definieren Sie wie folgt einen Logger: 

@@ -19,9 +19,9 @@ sowie mobile Apps, die diese Prozeduren durch das Absetzen von Ajax-Anforderunge
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### Ordner 'adapter-resources' 
+### Ordner 'adapter-resources'
 {: #the-adapter-resources-folder }
- 
+
 Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Konfigurationsdatei beschreibt die Konnektivitätsoptionen und listet die Prozeduren auf, die für die Anwendung oder andere Adapter zugänglich gemacht werden. 
 
 ```xml
@@ -43,7 +43,7 @@ Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Ko
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -67,7 +67,7 @@ Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Ko
                             <li><code>name</code>: Dieses <i>obligatorische</i> Element gibt den Namen der Prozedur an. Dieser Name muss innerhalb des Adapters eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen.</li>
                             <li><code>audit</code>: Dieses <i>optionale</i> Element definiert, ob Aufrufe der Prozedur im Prüfprotokoll erfasst werden. Folgende Werte sind gültig:
                                 <ul>
-                                    <li><code>true</code>: Aufrufe der Prozedur werden im Prüfprotokoll erfasst.</li> 
+                                    <li><code>true</code>: Aufrufe der Prozedur werden im Prüfprotokoll erfasst.</li>
                                     <li><code>false</code>: Standardwert. Aufrufe der Prozedur werden nicht im Prüfprotokoll erfasst.</li>
                                 </ul>
                             </li>
@@ -131,7 +131,7 @@ Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus.
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * Konfigurationsdatei mit **push** übertragen
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -143,7 +143,7 @@ Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus.
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * Konfigurationsdatei mit **push** übertragen
   ```bash
   mfpdev adapter push
@@ -169,7 +169,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 ### Ordner 'js'
 {: #the-js-folder }
- 
+
 Dieser Ordner enthält die JavaScript-Implementierungsdatei für alle Prozeduren, die in der Datei **adapter.xml** deklariert sind. Außerdem kann der Ordner XSL-Dateien mit einem Umwandlungsschema für abgerufene XML-Rohdaten enthalten. Von einem Adapter abgerufene Daten können als Rohdaten oder als vom Adapter vorverarbeitete Daten zurückgegeben werden. In beiden Fällen werden die Daten der Anwendung als **JSON-Objekt** präsentiert.
 
 ## Prozeduren von JavaScript-Adaptern
@@ -246,7 +246,7 @@ Benutzer-ID abzurufen:
 function getAuthUserId(){
    var securityContext = MFP.Server.getTokenIntrospectionData();
    var user = securityContext.getAuthenticatedUser();
- 
+
    return "User ID: " + user.getId;
 }
 ```

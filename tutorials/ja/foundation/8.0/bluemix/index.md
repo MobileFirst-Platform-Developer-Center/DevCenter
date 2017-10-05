@@ -25,6 +25,12 @@ IBM Bluemix は、IBM のオープン・クラウド・アーキテクチャー�
 
 {{ site.data.keys.product}} を Bluemix の Liberty for Java ランタイム上で実行させる場合に使用するコンポーネントは、**WebSphere Liberty のインストール済み環境** が含まれた **Cloudfoundry アプリケーション**で、これに **{{ site.data.keys.mf_server }} インスタンス**をデプロイして使用します。
 
+### Bluemix 上の Kubernetes クラスター
+Kubernetes は、コンピュート・マシンのクラスター上にアプリケーション・コンテナーをスケジューリングするためのオーケストレーション・ツールです。Kubernetes を使用すると、開発者はコンテナーの処理能力や柔軟性を活用して、可用性の高いアプリケーションを短時間で開発できます。
+IBM Bluemix Container Service CLI または Kubernetes CLI を使用して、Kubernetes クラスターを作成および管理できます。
+
+[Bluemix 上の Kubernetes クラスターの詳細](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
+
 ### IBM Containers
 {: #ibm-containers }
 IBM Containers は、ホストされているクラウド環境において、イメージの実行に使用されるオブジェクトです。IBM Containers には、アプリの実行に必要なものがすべて保持されます。
@@ -39,8 +45,11 @@ Liberty for Java ランタイムには liberty-for-java ビルドパックの機
 
 [Liberty for Java についてもっとよく知る](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html)。
 
+
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
+
+* [IBM 提供のスクリプトを使用して ](mobilefirst-server-using-kubernetes/)Kubernetes クラスターを使用して {{ site.data.keys.mf_bm_short }} インスタンスを Bluemix 上に作成します。
 * [{{ site.data.keys.mf_bm }} サービス](using-mobile-foundation/)を使用して {{ site.data.keys.mf_server }} インスタンスを作成します。
 * IBM コンテナーを使用し、 [IBM 提供のスクリプトを使用して](mobilefirst-server-using-scripts/)、{{ site.data.keys.mf_server }} インスタンスを Bluemix 上に作成します。
-* Liberty  ビルド・パックを使用し、 [IBM 提供のスクリプトを使用して](mobilefirst-server-using-scripts-lbp/)、{{ site.data.keys.mf_server }} インスタンスを Bluemix 上に作成します。
+* [IBM 提供のスクリプトを使用して ](mobilefirst-server-using-scripts-lbp/)Liberty を使用して {{ site.data.keys.mf_server }} インスタンスを Bluemix 上に作成します。

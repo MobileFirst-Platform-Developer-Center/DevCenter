@@ -39,11 +39,11 @@ ermöglicht werden sollen, muss in der Datei
         <key>yourserver.com</key>
     
             <dict>
-            <!--Include to allow subdomains-->
+            <!-- Aufnehmen, um Unterdomänen zu ermöglichen -->
             <key>NSIncludesSubdomains</key>
             <true/>
 
-            <!--Include to allow insecure HTTP requests-->
+            <!-- Aufnehmen, um nicht gesicherte HTTP-Anforderungen zu ermöglichen -->
             <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
             <true/>
         </dict>
@@ -103,11 +103,8 @@ ist standardmäßig inaktiviert. Gehen Sie für die Aktivierung wie folgt vor:
 
 1. Installieren Sie die OpenSSL-Frameworks:
     * CocoaPods: Installieren Sie mit CocoaPods den Pod `IBMMobileFirstPlatformFoundationOpenSSLUtils`. 
-    * Xcode: Verbinden Sie die Frameworks `IBMMobileFirstPlatformFoundationOpenSSLUtils` und
-"openssl" manuell im Abschnitt "Link Binary With
-Libraries" der Registerkarte "Build Phases". 
-2. Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung
-aktiviert: 
+    * Xcode: Verbinden Sie die Frameworks `IBMMobileFirstPlatformFoundationOpenSSLUtils` und "openssl" manuell im Abschnitt "Link Binary With Libraries" der Registerkarte "Build Phases".
+2. Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung aktiviert:
 
    ```xml
    WLSecurityUtils enableOSNativeEncryption:NO

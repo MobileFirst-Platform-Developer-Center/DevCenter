@@ -5,19 +5,19 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 개요 
+## 개요
 {: #overview }
 IBM Containers for Bluemix에서는 컨테이너 CPU, 메모리, 네트워크에 대한 몇몇 기본 제공 로깅 기능과 모니터링 기능을 제공합니다. 선택적으로 {{ site.data.keys.product_adj }} 컨테이너의 로그 레벨을 변경할 수 있습니다. 
 
-{{ site.data.keys.mf_server }}와 {{ site.data.keys.mf_analytics }} 컨테이너의 로그 파일을 작성하는 옵션은 기본적으로 사용으로 설정되어 있습니다(`*=info` 레벨 사용). 수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. Kibana 시각화 도구를 사용하여 Bluemix logmet 콘솔에서 컨테이너 로그와 서버 또는 런타임 로그를 모두 볼 수 있습니다. 개방형 소스 메트릭 대시보드이며 그래프 편집기인 Grafana를 사용하여 Bluemix logmet 콘솔에서 모니터링을 수행할 수 있습니다. 
+{{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} 및 {{ site.data.keys.mf_app_center }} 컨테이너의 로그 파일을 작성하는 옵션은 기본적으로 사용으로 설정되어 있습니다(`*=info` 레벨 사용). 수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. Kibana 시각화 도구를 사용하여 Bluemix logmet 콘솔에서 컨테이너 로그와 서버 또는 런타임 로그를 모두 볼 수 있습니다. 개방형 소스 메트릭 대시보드이며 그래프 편집기인 Grafana를 사용하여 Bluemix logmet 콘솔에서 모니터링을 수행할 수 있습니다. 
 
 {{ site.data.keys.product_adj }} 컨테이너가 SSH(Secure Shell) 키를 사용하여 작성되고 공용 IP 주소에 바인드된 경우 적절한 개인 키를 사용해 컨테이너 인스턴스의 로그를 안전하게 볼 수 있습니다. 
 
 ### 로깅 대체
 {: #logging-overrides }
-수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. 로그 레벨을 변경하기 위해 수동으로 코드 대체를 추가하는 작업은 이미지를 처음 준비할 때 수행되어야 합니다. 새 로깅 구성을 **package\_root/mfpf-[analytics|server]/usr/config** 폴더에 별도의 구성 스니펫으로 추가해야 하며 이 폴더는 Liberty 서버의 configDropins/overrides 폴더에 복사됩니다. 
+수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. 로그 레벨을 변경하기 위해 수동으로 코드 대체를 추가하는 작업은 이미지를 처음 준비할 때 수행되어야 합니다. 새 로깅 구성을 **package\_root/mfpf-[analytics|server]/usr/config** 폴더 및 **package_root/mfp-appcenter/usr/config** 폴더에 별도의 구성 스니펫으로 추가해야 하며 이 폴더는 Liberty 서버의 configDropins/overrides 폴더에 복사됩니다. 
 
-V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**)을 실행할 때 특정 명령행 인수를 사용하여 로그 레벨을 변경하기 위해 주어진 스크립트 파일을 사용해 코드를 삽입할 수 있습니다. 다음 선택적 명령행 인수를 적용할 수 있습니다. 
+V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**, **startappcenter.sh**, **startappcentergroup.sh**)을 실행할 때 특정 명령행 인수를 사용하여 로그 레벨을 변경하기 위해 주어진 스크립트 파일을 사용해 코드를 삽입할 수 있습니다. 다음 선택적 명령행 인수를 적용할 수 있습니다. 
 
 * `[-tr|--trace]` trace_specification
 * `[-ml|--maxlog]` maximum\_number\_of\_log\_files
@@ -31,6 +31,13 @@ V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/trace.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/ffdc/*
+
+각 컨테이너 인스턴스의 Liberty Profile 런타임 활동과 {{ site.data.keys.mf_app_center }} 서버에 대한 로그 파일이 생성되며 로그 파일은 다음 위치에 있습니다. 
+
+* /opt/ibm/wlp/usr/servers/appcenter/logs/messages.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/console.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/trace.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/ffdc/*
 
 로그 파일 액세스 단계를 수행하여 컨테이너에 로그인하고 로그 파일에 액세스할 수 있습니다. 
 
@@ -72,7 +79,7 @@ SSH가 이미지 사용자 정의의 일부로 사용되지 않는 경우 **star
 2. 로그 파일 또는 추적을 찾으려면 다음 예제 명령을 사용하십시오. 
 
    ```bash
-   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp 
+   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
    container_instance@root# vi messages.log
    ```
 
@@ -97,7 +104,7 @@ container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
-로그 아카이브를 로컬 워크스테이션에 다운로드하십시오. 예:  
+로그 아카이브를 로컬 워크스테이션에 다운로드하십시오. 예: 
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

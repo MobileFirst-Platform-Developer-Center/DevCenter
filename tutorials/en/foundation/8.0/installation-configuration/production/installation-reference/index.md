@@ -1078,7 +1078,7 @@ The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallAp
 
 ### Task effects
 {: #task-effects-3 }
-### <installApplicationCenter>
+### installApplicationCenter
 {: #installapplicationcenter }
 The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
 
@@ -1091,7 +1091,7 @@ The `<installApplicationCenter>` task configures an application server to run th
 * It configures users that it maps to roles used by the Application Center Console and Services web applications.
 * On WebSphere Application Server, it configures the necessary custom property for the web container.
 
-#### <updateApplicationCenter>
+#### updateApplicationCenter
 {: #updateApplicationCenter }
 The `<updateApplicationCenter>` task updates an already configured Application Center application on an application server. This task has the following effects:
 
@@ -1102,7 +1102,7 @@ The task does not change the application server configuration, that is, the web 
 
 > **Note:** On WebSphere Application Server Liberty profile, the task does not change the features, which leaves a potential non-minimal list of features in the server.xml file for the installed application.
 
-#### <uninstallApplicationCenter>
+#### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
 The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run of `<installApplicationCenter>`. This task has the following effects:
 

@@ -51,7 +51,7 @@ OAuth 协议将授权服务器与托管资源的资源服务器的角色相分�
 
 授予的访问令牌将一直保持有效直至到期。访问令牌的到期时间设置为作用域内所有安全性检查到期时间中最短的到期时间。但是，如果到最短到期时间的时间段长于应用程序的最长令牌到期时间段，那么令牌的到期时间将设置为当前时间加上最长到期时间段。缺省最长令牌到期时间段（有效持续时间）为 3600 秒（1 小时），但是可通过设置 `maxTokenExpiration` 属性的值进行配置。请参阅“配置最长访问令牌到期时间段”。
 
-<div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="configuration-explanation" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
@@ -84,7 +84,7 @@ OAuth 协议将授权服务器与托管资源的资源服务器的角色相分�
                     </ol>
                 </li>
             </ul>
-                
+
             <br/>
             <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>结束部分</b></a>
             </div>
@@ -92,11 +92,11 @@ OAuth 协议将授权服务器与托管资源的资源服务器的角色相分�
     </div>
 </div>
 
-<div class="panel-group accordion" id="response-access-token" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="response-access-token" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>访问令牌响应结构</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>访问令牌响应结构</b></a>
             </h4>
         </div>
 
@@ -194,6 +194,8 @@ scope = `access-restricted deletePrivilege`
   * `deletePrivilege` 映射到 `UserLogin`。
 
 > 要将作用域元素映射到空字符串，请勿在**添加新作用域元素映射**弹出菜单中选择任何安全性检查。
+
+
 <img class="gifplayer" alt="作用域映射" src="scope_mapping.png"/>
 
 您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
@@ -238,8 +240,8 @@ scope = `access-restricted deletePrivilege`
 3.  通过定义 `mandatoryScope` 属性，并将属性值设置为包含选中作用域元素的空格分隔列表的作用域字符串来编辑文件。例如：
 
     ```xml
-   "mandatoryScope": "appAuthenticity PincodeValidation"
-   ```
+    "mandatoryScope": "appAuthenticity PincodeValidation"
+    ```
 4.  运行以下命令来部署更新的配置 JSON 文件：`mfpdev app push`。
 
 > 您还可以将更新的配置推送到远程服务器。请查看[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)教程。
@@ -416,4 +418,3 @@ public class WebSphereResources {
 {: #tutorials-to-follow-next }
 
 通过关注侧边栏导航中的教程，继续阅读 {{ site.data.keys.product_adj }} Foundation 中有关认证的信息。
-

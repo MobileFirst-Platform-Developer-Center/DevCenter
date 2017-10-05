@@ -54,7 +54,7 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
    -keystore keystore.jks -storepass keypassword
    ```
     
-   인증서 파일이 생성됩니다.   
+   인증 파일이 생성됩니다.   
    다음 명령을 실행하여 공개 키를 추출하십시오. 
     
    ```bash
@@ -65,9 +65,9 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
     
 2. 다음 프로시저 중 하나를 수행하십시오. 
     * 애플리케이션의 mfpclient 특성에 `BEGIN PUBLIC KEY` 및 `END PUBLIC KEY` 마커를 사용하지 말고 `wlSecureDirectUpdatePublicKey` 바로 뒤에 결과 텍스트를 복사하십시오. 
-    * 명령 프롬프트에서 `mfpdev app config direct_update_authenticity_public_key <public_key>` 명령을 실행하십시오. 
+    * 명령 프롬프트에서 다음 명령을 실행하십시오. `mfpdev app config direct_update_authenticity_public_key <public_key>`
     
-    `<public_key>`의 경우 `BEGIN PUBLIC KEY` 및 `END PUBLIC KEY` 마커 없이 1단계의 결과 텍스트를 붙여넣으십시오. 
+    `<public_key>`의 경우 `BEGIN PUBLIC KEY` 및 `END PUBLIC KEY` 마커 없이 1단계의 결과 텍스트를 붙여넣으십시오.
 
 3. cordova build 명령을 실행하여 애플리케이션에 공개 키를 저장하십시오. 
 

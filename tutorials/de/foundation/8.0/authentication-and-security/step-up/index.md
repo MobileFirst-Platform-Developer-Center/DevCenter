@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Authentifizierung intensivieren
-breadcrumb_title: Authentifizierung intensivieren
+title: Authentifizierung einrichten
+breadcrumb_title: Authentifizierung einrichten
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
@@ -11,9 +11,9 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
   - name: Android-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - name: Win8-Projekt herunterladen
+  - name: Windows-8-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - name: Win10-Projekt herunterladen
+  - name: Windows-10-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
   - name: Webprojekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
@@ -153,11 +153,11 @@ In `StepUpPinCode` können Sie dann die Methode
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    // Richtigen PIN-Code aus der Datenbank abrufen
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        // Richtigen PIN-Code aus der Datenbank abrufen
     User user = userManager.getUser(userLogin.getUser().getId());
 
-    if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
+    if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
         if(pinCode.equals(user.getPinCode())){

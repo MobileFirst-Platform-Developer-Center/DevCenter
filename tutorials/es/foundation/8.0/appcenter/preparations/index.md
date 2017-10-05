@@ -88,6 +88,8 @@ Puede personalizar más la aplicación, como por ejemplo actualizar su interfaz 
 
 > **Nota:** Aunque puede personalizar libremente la IU de aplicaciones y el comportamiento, tales cambios no están en el acuerdo de soporte de IBM.
 
+
+
 #### Android
 {: #android }
 * Abra Android Studio.
@@ -122,16 +124,16 @@ Debe importar el proyecto **IBMAppCenter** en {{ site.data.keys.mf_studio }} y, 
 
 Cree el proyecto **IBMAppCenter**. El proyecto MobileFirst contiene una única aplicación denominada **AppCenter**. Pulse con el botón derecho del ratón la aplicación y seleccione **Ejecutar como → Crear todos los entornos**.
 
-#### Android
-{: #android }
+#### Importación y creación de un proyecto en Android
+{: #importing-building-projects-android }
 MobileFirst Studio genera un proyecto nativo de Android en **IBMAppCenter/apps/AppCenter/android/native**. Hay un proyecto nativo de las herramientas de desarrollo de Android (ADT) en la carpeta android/native. Puede compilar y firmar este proyecto mediante las herramientas de ADT. Este proyecto requiere que se instale Android SDK nivel 16, por lo que el APK resultante es compatible con todas las versiones de Android 2.3 y posteriores. Si selecciona un nivel superior del Android SDK al crear el proyecto, el APK resultante no será compatible con Android versión 2.3.
 
 Consulte el [Sitio Android para desarrolladores](https://developer.android.com/index.html) para obtener información de Android más específica que afecte a la aplicación del cliente móvil.
 
 Si desea habilitar las notificaciones push para actualizaciones de aplicaciones, debe configurar en primer lugar las propiedades del cliente de Application Center. Consulte [Configuración de notificaciones push para las actualizaciones de aplicaciones para obtener más información](../push-notifications).
 
-#### iOS
-{: #ios }
+#### Importación y creación de un proyecto en iOS
+{: #importing-building-projects-ios }
 MobileFirst Studio genera un proyecto nativo de iOS en **IBMAppCenter/apps/AppCenter/iphone/native**. El archivo **IBMAppCenterAppCenterIphone.xcodeproj** se encuentra en la carpeta iphone/native. Este archivo es el proyecto de Xcode que debe compilar y firmar con Xcode.
 
 Consulte [El sitio de desarrolladores de Apple](https://developer.apple.com/) para obtener más información sobre cómo firmar la aplicación del cliente móvil de iOS. Para firmar una aplicación iOS, debe cambiar el Identificador de paquete de la aplicación a un identificador de paquete que se pueda utilizar con el perfil de suministro que utilice. El valor está definido en la configuración del proyecto de Xcode como **com.your\_internet\_domain\_name.appcenter**, donde **your\_internet\_domain\_name** es el nombre del dominio de Internet.
@@ -193,20 +195,20 @@ Para personalizar características: varias características están controladas p
 
 Este archivo contiene las propiedades que se muestran en la tabla siguiente.
 
-| Propiedad | Descripción |
+| Propiedad| Descripción|
 |----------|-------------|
-| url | La dirección codificada del servidor de Application Center. Si se establece esta propiedad, no se mostrarán los campos de direcciones de la vista Inicio de sesión.  |
-| defaultPort | Si la propiedad url es null, esta propiedad prerrellena el campo port de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo.  |
-| defaultContext | Si la propiedad url es null, esta propiedad prerrellena el campo context de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo.  |
-| ssl | El valor predeterminado del conmutador de SSL de la vista Inicio de sesión. |
-| allowDowngrade | Esta propiedad indica si la instalación de versiones anteriores está autorizada o no; sólo se puede instalar una versión anterior si el sistema operativo y la versión permiten la degradación. |
-| showPreviousVersions | Esta propiedad indica si el usuario del dispositivo puede mostrar los detalles de todas las versiones de las aplicaciones o sólo los detalles de la versión más reciente. |
-| showInternalVersion | Esta propiedad indica si la versión interna se muestra o no. Si el valor es false, la versión interna sólo se mostrará si no se ha establecido ninguna versión comercial. |
-| listItemRenderer | Esta propiedad puede tener uno de estos valores:<br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente. <br/>- **simple**: la aplicación lista sólo el nombre de aplicación.  |
-| listAverageRating | Esta propiedad puede tener uno de estos valores:<br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación. <br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación.  |
-| requestTimeout | Esta propiedad indica el tiempo de espera en milisegundos para solicitudes en el servidor de Application Center. |
-| gcmProjectId | El ID de proyecto de la API de Google (nombre de proyecto = com.ibm.appcenter), necesario para las notificaciones push de Android; por ejemplo, 123456789012. |
-| allowAppLinkReview | Esta propiedad indica si las opiniones locales de aplicaciones desde almacenes de aplicaciones externos se pueden registrar y examinar en el Application Center. Estas opiniones locales no serán visibles en el almacén de aplicaciones externo. Estas opiniones se almacenarán en el servidor de Application Center. |
+| url| La dirección codificada del servidor de Application Center. Si se establece esta propiedad, no se mostrarán los campos de direcciones de la vista Inicio de sesión. |
+| defaultPort| Si la propiedad url es null, esta propiedad prerrellena el campo port de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
+| defaultContext| Si la propiedad url es null, esta propiedad prerrellena el campo context de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
+| ssl| El valor predeterminado del conmutador de SSL de la vista Inicio de sesión.|
+| allowDowngrade| Esta propiedad indica si la instalación de versiones anteriores está autorizada o no; sólo se puede instalar una versión anterior si el sistema operativo y la versión permiten la degradación.|
+| showPreviousVersions| Esta propiedad indica si el usuario del dispositivo puede mostrar los detalles de todas las versiones de las aplicaciones o sólo los detalles de la versión más reciente.|
+| showInternalVersion| Esta propiedad indica si la versión interna se muestra o no. Si el valor es false, la versión interna sólo se mostrará si no se ha establecido ninguna versión comercial.|
+| listItemRenderer| Esta propiedad puede tener uno de estos valores:<br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente. <br/>- **simple**: la aplicación lista sólo el nombre de aplicación. |
+| listAverageRating| Esta propiedad puede tener uno de estos valores:<br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación. <br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación. |
+| requestTimeout| Esta propiedad indica el tiempo de espera en milisegundos para solicitudes en el servidor de Application Center.|
+| gcmProjectId| El ID de proyecto de la API de Google (nombre de proyecto = com.ibm.appcenter), necesario para las notificaciones push de Android; por ejemplo, 123456789012.|
+| allowAppLinkReview| Esta propiedad indica si las opiniones locales de aplicaciones desde almacenes de aplicaciones externos se pueden registrar y examinar en el Application Center. Estas opiniones locales no serán visibles en el almacén de aplicaciones externo. Estas opiniones se almacenarán en el servidor de Application Center.|
 
 ### Otros recursos
 {: #other-resources }

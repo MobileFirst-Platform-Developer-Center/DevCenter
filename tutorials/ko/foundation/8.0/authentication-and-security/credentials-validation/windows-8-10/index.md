@@ -4,12 +4,12 @@ title: Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에서 인증 
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
-다운로드:
-  - 이름: Win8 프로젝트 다운로드
+downloads:
+  - name: Win8 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - 이름: Win10 프로젝트 다운로드
+  - name: Win10 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

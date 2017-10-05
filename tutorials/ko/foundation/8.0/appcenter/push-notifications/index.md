@@ -145,11 +145,11 @@ Apple 푸시 알림 서비스(APN)로 iOS 프로젝트를 구성하려면 사용
 
 표의 예는 Apache Tomcat 서버의 server.xml 파일에서 JNDI 특성이 정의되는 방식을 보여줍니다. 
 
-| JNDI 특성    	| 유형 및 설명         | Apache Tomcat 서버의 예          | 
+| JNDI 특성     | 유형 및 설명        | Apache Tomcat 서버의 예         | 
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location | .p12 인증서의 전체 경로를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | 인증서에 액세스하는 데 필요한 비밀번호를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	인증서를 생성하는 데 사용된 프로비저닝 프로파일이 개발 인증서인지 여부를 정의하는 부울 값(true 또는 false로 식별됨). | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.location| .p12 인증서의 전체 경로를 정의하는 문자열 값.| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.password| 인증서에 액세스하는 데 필요한 비밀번호를 정의하는 문자열 값.| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	인증서를 생성하는 데 사용된 프로비저닝 프로파일이 개발 인증서인지 여부를 정의하는 부울 값(true 또는 false로 식별됨).| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
 
 설정할 수 있는 JNDI 특성의 전체 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오. 
 

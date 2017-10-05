@@ -15,9 +15,9 @@ weight: 13
 
 ## 証明書ピン留めプロセス
 {: #certificate-pinning-process }
-証明書ピン留めとは、ホストと予期される公開鍵とを関連付けるプロセスです。ユーザーはサーバー・サイド・コードとクライアント・サイド・コードの両方を所有しているため、オペレーティング・システムまたはブラウザーによって認識されるトラステッド CA ルート証明書に対応する証明書の代わりに、ユーザーのドメイン・ネーム用の特定の証明書のみを受け入れるように、クライアント・コードを構成することができます。
+証明書ピン留めとは、ホストと予期される公開鍵とを関連付けるプロセスです。ユーザーはサーバー・サイド・コードとクライアント・サイド・コードの両方を所有しているため、オペレーティング・システムまたはブラウザーによって認識されるトラステッド CA ルート証明書に対応する証明書の代わりに、ユーザーのドメイン・ネーム用の特定の証明書のみを受け入れるように、クライアント・コードを構成することができます。証明書のコピーがクライアント・アプリケーション内に置かれます。SSL ハンドシェーク (サーバーへの最初の要求) の間、{{ site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリに保管されている証明書の公開鍵に一致することを検証します。
 
-証明書のコピーがアプリケーション内に置かれ、SSL ハンドシェーク時に (サーバーに対する初めての要求で) 使用されます。{{ site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリケーションに保管されている証明書の公開鍵と一致するかを検証します。
+複数の証明書をクライアント・アプリケーションにピン留めすることもできます。すべての証明書のコピーをクライアント・アプリケーション内に配置する必要があります。SSL ハンドシェーク (サーバーへの最初の要求) の間、{{ site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリケーションに保管されているいずれかの証明書の公開鍵に一致することを検証します。
 
 #### 重要
 {: #important }
@@ -41,32 +41,69 @@ weight: 13
 
 ## 証明書ピン留め API
 {: #certificate-pinning-api }
-証明書ピン留めは単一の API メソッドからなり、このメソッドにはパラメーター `certificateFilename` があります (`certificateFilename` は証明書ファイルの名前です)。
+証明書ピン留めは次の多重定義された API メソッドからなります。1 つのメソッドにはパラメーター `certificateFilename` (`certificateFilename` は証明書ファイルの名前) があり、2 番目のメソッドにはパラメーター `certificateFilenames` (`certificateFilenames` は証明書ファイルの名前の配列です) があります。
 
 ### Android
 {: #android }
+単一の証明書:
+構文:
+pinTrustedCertificatePublicKeyFromFile(String certificateFilename);
+例:
 ```java
-WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
+WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");```
+複数の証明書:
+
+構文:
+pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
+例:
+```java
+String[] certificates={"myCertificate.cer","myCertificate1.cer"};
+WLClient.getInstance().pinTrustedCertificatePublicKey(certificates);
 ```
-
-証明書ピン留めメソッドは、次の 2 つの場合に例外をスローします。
-
-* ファイルが存在しない
+証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。* ファイルが存在しない
 * ファイルのフォーマットが正しくない
+
 
 ### iOS
 {: #ios }
+単一の証明書ピン留めの構文:
+pinTrustedCertificatePublicKeyFromFile:(NSString*) certificateFilename;
+
+証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。
+* ファイルが存在しない
+* ファイルのフォーマットが正しくない
+
+複数の証明書ピン留めの構文:
+pinTrustedCertificatePublicKeyFromFiles:(NSArray*) certificateFilenames;
+
+証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。
+* 証明書ファイルが存在しない
+* 正しいフォーマットの証明書ファイルがない
+
 **Objective-C の場合:**
-
+例:
+単一の証明書:
 ```objc
-[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
-
+[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"]; ```
+複数の証明書:
+例:
+```objc
+NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“Cert3",nil];
+[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFiles:arrayOfCerts];
 ```
 
 **Swift の場合:**
 
+単一の証明書:
+例:
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+```
+複数の証明書:
+例:
+```swift
+let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
+WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
 ```
 
 証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。
@@ -76,9 +113,17 @@ WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.
 
 ### Cordova
 {: #cordova }
-```javascript
-WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure);
 
+単一の証明書ピン留め:
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess, onFailure);
+```
+
+複数の証明書ピン留め:
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey(['Cert1.cer','Cert2.cer','Cert3.cer']).then(onSuccess, onFailure);
 ```
 
 証明書ピン留めメソッドは、次のように確約を返します。

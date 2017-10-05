@@ -51,8 +51,7 @@ eine Base64-Codierung, dass sich die Größe der ursprünglichen Daten um etwa d
 * Base64-Decodierung: Diese API wendet auf eine Base64-codierte Zeichenfolge die Base64-Decodierung an.
 
 ## Setup
-Sie müssen die folgenden Dateien importieren, um die APIs der JSONStore-Sicherheitsdienstprogramme
-verwenden zu können.
+Sie müssen die folgenden Dateien importieren, um die APIs der JSONStore-Sicherheitsdienstprogramme verwenden zu können.
 
 ### iOS
 
@@ -67,15 +66,14 @@ import com.worklight.wlclient.api.SecurityUtils
 ```
 
 ### JavaScript
-Es ist kein Setup
-erforderlich.
+Es ist kein Setup erforderlich.
 
 ## Beispiele
 ### iOS
 #### Ver- und Entschlüsselung
 
 ```objc
-// Vom Benutzer angegebenes Kennwort; aus Gründen der Einfachheit im Klartext
+// Vom Benutzer angegebenes Kennwort, aus Gründen der Einfachheit im Klartext
 NSString* password = @"HelloPassword";
 
 // Zufälliges Salt mit empfohlener Länge
@@ -200,7 +198,7 @@ String randomString = SecurityUtils.getRandomString(byteLength);
 #### Ver- und Entschlüsselung
 
 ```javascript
-// Belassen Sie den Schlüssel in einer Variablen, damit er an die Ver- und Entwchlüsselungs-API übergeben werden kann.
+// Balassen Sie den Schlüssel in einer Variablen, damit er an die Ver- und Entwchlüsselungs-API übergeben werden kann.
 var key;
 
 // Schlüssel generieren

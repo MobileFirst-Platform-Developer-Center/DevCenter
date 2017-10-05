@@ -45,7 +45,7 @@ weight: 9
 2. 탐색 사이드바에서 애플리케이션을 선택하고 **인증** 메뉴 항목을 클릭하십시오.
 3. **상태** 상자의 **설정/해제** 단추를 토글하십시오. 
 
-![애플리케이션 인증 사용(enable_application_authenticity.png)
+![애플리케이션 인증 사용](enable_application_authenticity.png)
 
 ### 애플리케이션 인증 사용 안함
 {: #disabling-application-authenticity }
@@ -71,7 +71,7 @@ weight: 9
 
 3. 새 값을 초 단위로 설정하십시오. 
 
-![콘솔에서 expirationSec 특성 구성(configuring_expirationSec.png)
+![콘솔에서 expirationSec 특성 구성](configuring_expirationSec.png)
 
 ## BTS(Build Time Secret)
 {: #bts }

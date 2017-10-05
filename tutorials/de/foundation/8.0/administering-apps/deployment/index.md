@@ -40,6 +40,8 @@ enthalten sind.
 [SSL in HTTP-Adaptern verwenden](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). Weitere Informationen zur Verwendung selbst signierter Zertifikate finden Sie unter [SSL zwischen MobileFirst-Adaptern und Back-End-Servern mit selbst signierten Zertifikaten konfigurieren](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
     > **Hinweis:** Wenn der Anwendungsserver WebSphere Application Server Liberty ist, müssen sich die Zertifikate auch im Liberty-Truststore befinden.
+
+
 3. Überprüfen Sie die serverseitige Konfiguration des Adapters. 
 4. Verwenden Sie die Befehle `mfpadm deploy adapter` und `mfpadm adapter set
 user-config`, um den Adapter und seine Konfiguration hochzuladen. 
@@ -55,10 +57,7 @@ Sie können SSL zwischen Adaptern und Back-End-Servern konfigurieren, indem Sie 
     > **Hinweis:** Exportieren Sie öffentliche Back-End-Zertifikate aus dem Back-End-Keystore mit keytool oder openssl lib. Verwenden Sie
 das Exportfeature export nicht in einem Web-Browser.
 2. Importieren Sie das Back-End-Serverzertifikat in den {{ site.data.keys.product_adj }}-Keystore.
-3. Implementieren Sie das neue Zertifikat im {{ site.data.keys.product_adj }}-Keystore. Weitere Informationen
-finden Sie unter
-[Keystore von
-{{ site.data.keys.mf_server }} konfigurieren](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+3. Implementieren Sie das neue Zertifikat im {{ site.data.keys.product_adj }}-Keystore. Weitere Informationen finden Sie unter [Keystore von {{ site.data.keys.mf_server }} konfigurieren](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 ### Beispiel
 {: #example }
@@ -120,8 +119,8 @@ Für Apache Tomcat müssen Sie beispielsweise die Datei
         <protocol>https</protocol>
         <domain>mydomain.com</domain>
         <port>443</port>
-        <!-- The following properties are used by adapter's key manager for choosing a specific certificate from the key store
-        <sslCertificateAlias></sslCertificateAlias> 
+        <!-- Mit den folgenden Eigenschaften wählt der Key Manager des Adapters ein bestimmtes Zertifikat aus dem Keystore aus.
+        <sslCertificateAlias></sslCertificateAlias>
         <sslCertificatePassword></sslCertificatePassword>
         -->		
       </connectionPolicy>
@@ -135,9 +134,7 @@ Für Apache Tomcat müssen Sie beispielsweise die Datei
    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
    ```
         
-5. Importieren Sie das exportierte Zertifikat wie folgt in Ihren
-MobileFirst-Server-Keystore:
-
+5. Importieren Sie das exportierte Zertifikat wie folgt in Ihren MobileFirst-Server-Keystore:
 
    ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
@@ -198,7 +195,8 @@ Wenn Sie eine Anwendung auf einem Produktionsserver registrieren, ladenSie den A
 {: #before-you-begin }
 * Vergewissern Sie sich, dass der Keystore von {{ site.data.keys.mf_server }} konfiguriert und nicht der Standard-Keystore ist. Verwenden Sie einen Server in der Produktion nicht mit dem Standard-Keystore. Der Keystore von {{ site.data.keys.mf_server }} definiert die Identität von MobileFirst-Server-Instanzen und wird zum digitalen Signieren von OAuth-Token und Paketen für direkte Aktualisierung verwendet. Bevor Sie den Keystore des Servers in der Produktion verwenden, müssen Sie ihn mit einem geheimen Schlüssel konfigurieren. Weitere Informationen finden Sie unter [Keystore von {{ site.data.keys.mf_server }} konfigurieren](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 * Implementieren Sie die von der App verwendeten Adapter. Weitere Informationen finden Sie unter [Adapter in einer Produktionsumgebung implementieren oder aktualisieren](#deploying-or-updating-an-adapter-to-a-production-environment).
-* Erstellen Sie den Anwendungsbuild für Ihren Zielserver. Weitere Informationen finden Sie unter [Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
+* Erstellen Sie den Anwendungsbuild für Ihren Zielserver. Weitere Informationen finden Sie unter
+[Anwendungsbuild für eine Test- oder Produktionsumgebung erstellen](#building-an-application-for-a-test-or-production-environment).
 
 Wenn Sie eine Anwendung bei einem Produktionsserver registrieren, laden Sie den Anwendungsdeskriptor hoch, definieren Sie den Lizenztyp der Anwendung und aktivieren Sie ggf. die Anwendungsauthentizität. Sie können auch eine Aktualisierungsstrategie definieren, wenn bereits eine Version Ihrer App implementiert ist. In den folgenden Abschnitten lernen Sie wichtige Schritte und Möglichkeiten für die Automation dieser Schritte mit dem Programm **mfpadm** kennen.
 
@@ -258,7 +256,7 @@ Mit diesen Befehlen können Sie auch eine Laufzeitkonfiguration auf einen andere
 Zu den Konfigurationsdaten gehören der Inhalt des Anwendungsdeskriptors, über den der Server die App eindeutig identifizieren kann, und weitere, für die App spezifische Informationen. Die Konfigurationsdateien werden als komprimierte Dateien (im ZIP-Format) bereitgestellt. Die ZIP-Dateien werden in das Verzeichnis **App-Name/mobilefirst** gestellt, und wie folgt benannt:
 
 ```bash
-App-ID-Plattform-Version-artifacts.zip
+appID-platform-version-artifacts.zip
 ```
 
 Hier steht **App-ID** für den Anwendungsnamen, **Plattform** für **android**, **ios** oder **windows** und **Version** für den Versionsstand Ihrer App. Bei Cordova-Apps wird für jede Zielplattform eine gesonderte ZIP-Datei erstellt.
@@ -349,7 +347,7 @@ Laden Sie den Anwendungsdeskriptor von dem Server, auf dem die Anwendung konfigu
 
      ```bash
      echo password=admin > password.txt
-     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json
+     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json 
      rm password.txt
      ```
 
