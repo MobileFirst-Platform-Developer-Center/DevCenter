@@ -108,7 +108,8 @@ weight: 6
 
    > 如果未安装 Maven 和 {{ site.data.keys.mf_cli }}，请遵循屏幕上的 **设置开发环境** 指示信息。
 2. 从 **命令行** 窗口中，导航至适配器的 Maven 项目根文件夹并运行以下命令：
-```bash
+
+   ```bash
    mfpdev adapter build
    ```
 
@@ -130,8 +131,7 @@ weight: 6
 * 单击 **Ping MobileFirst 服务器** 按钮将显示 **已连接到 MobileFirst 服务器**。
 * 如果应用程序能够连接到 {{ site.data.keys.mf_server }}，那么将使用部署的 Java 适配器进行资源请求调用。
 
-然后，适配器响应将列显在 Xamarin Studio 控制台中。
-![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](console-output.png)
+然后，适配器响应将列显在 Xamarin Studio 控制台中。![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](console-output.png)
 ## 下一步
 {: #next-steps }
 要详细了解有关在应用程序中使用适配器，如何集成附加服务（如推送通知），使用 {{ site.data.keys.product_adj }} 安全框架及其他内容，请：

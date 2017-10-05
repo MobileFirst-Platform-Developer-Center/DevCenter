@@ -14,6 +14,6 @@ weight: 10
 
 ## Swagger
 {: #swagger }
-在 [DevKit 安装程序](../../installation-configuration/development/mobilefirst)提供的开发环境中，还可以从 Swagger UI 访问推送 REST API。要访问推送 REST API，请装入以下 URL：[http://localhost:9080/doc/?url=/imfpush/v1/swagger.json](http://localhost:9080/doc/?url=/imfpush/v1/swagger.json)。
+在 [DevKit 安装程序](../../installation-configuration/development/mobilefirst)提供的开发环境中，还可以从 Swagger UI 访问推送 REST API。 要访问推送 REST API，请装入以下 URL：[http://localhost:9080/doc/?url=/imfpush/v1/swagger.json](http://localhost:9080/doc/?url=/imfpush/v1/swagger.json)。
 
 

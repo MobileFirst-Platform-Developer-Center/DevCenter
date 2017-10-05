@@ -50,7 +50,6 @@ V7.1 样本中的 `AccountAdpter` 方法使用 `@OAuthSecurity` 注释进行保�
 
 ```java
 @OAuthSecurity(scope="UserLogin")
-
 @OAuthSecurity(scope="PinCode")
 ```
 
@@ -81,8 +80,8 @@ String userName = securityContext.getAuthenticatedUser().getDisplayName();
 
 接下来，迁移客户机应用程序。有关详细的客户机应用程序迁移指示信息，请参阅 [V8.0 迁移手册](../migration-cookbook)。本教程重点介绍安全码的迁移。在此阶段，通过编辑应用程序的主 HTML 文件 **index.html**，在用于导入验证问题处理程序代码的行前后添加注释符号，从而排除验证问题处理程序代码：
 
-```html
-      <!--  
+```html 
+<!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
  -->
@@ -160,13 +159,14 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
     protected boolean validateCredentials(Map<String, Object> credentials) {
-        if (credentials!=null && credentials.containsKey("username") &&
+        if (credentials!=null &&  credentials.containsKey("username") &&
+
 		credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
 
             // the authentication logic, copied from the V7.1 login module
-            if (!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if (!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
 
@@ -214,7 +214,7 @@ V7.1 样本应用程序的 `PinCodeRealm` 域是通过基于适配器的认证�
 *  `createChallenge` 实现类似于 `UserLogin` 安全性检查的实现。`PinCode` 安全性检查没有特殊信息要包含在向客户机发送的验证问题中。因此，只需向验证问题对象添加发生错误时要显示的错误消息。
 
    ```java
-    @Override
+       @Override
     protected Map<String, Object> createChallenge() {
         Map challenge = new HashMap();
         challenge.put("errorMsg",errorMsg);
@@ -225,9 +225,9 @@ V7.1 样本应用程序的 `PinCodeRealm` 域是通过基于适配器的认证�
 *  `validateCredentials` 方法将验证 pin 码。在以下示例中，验证代码由一行构成，但也可以将验证代码从 V7.1 认证适配器复制到该 `validateCredentials` 方法中。
 
    ```java
-@Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if (credentials!=null && credentials.containsKey("pin")){
+   @Override
+    protected boolean validateCredentials(Map<String, Object> credentials) {
+        if (credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
         if (pinCode.equals("1234")) {
             return true;
@@ -250,8 +250,8 @@ errorMsg = "Pin code was not provided";
 
 在[迁移客户机应用程序](#migrating-the-client-application)后，可通过注释掉应用程序主 HTML 文件 **index.html** 中的相关行来排除验证问题处理程序代码。现在，通过除去先前添加在这些行前后的注释符号，重新添加应用程序的验证问题处理程序代码。
 
-```html
-      <script src="js/UserLoginChallengeHandler.js"></script>
+```html 
+    <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
 
@@ -262,8 +262,9 @@ errorMsg = "Pin code was not provided";
 *  将用于创建验证问题处理程序的代码替换为以下代码，该代码将调用 V8.0 `WL.Client.createSecurityCheckChallengeHandler` 方法：
 
    ```javascript
-var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
-```
+   var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
+
+    ```
    
    `WL.Client.createSecurityCheckChallengeHandler` 将创建验证问题处理程序以处理来自 {{ site.data.keys.product_adj }} 安全性检查的验证问题。V8.0 还引入了 `WL.Client.createGatewayChallengeHandler` 方法，可处理来自第三方网关的验证问题，该方法在 V8.0 中称为网关验证问题处理程序。将 V7.1 应用程序迁移至 V8.0 时，针对 `WL.Client` `createWLChallengeHandler` 或 `createChallengeHandler` 方法的调用将替换为调用与期望的验证问题源匹配的 V8.0 `WL.Client` 验证问题处理程序创建方法。例如，如果您的资源受到用于将定制登录表单发送到客户机的 DataPower 逆向代理的保护，那么应使用 `createGatewayChallengeHandler` 创建网关验证问题处理程序来处理网关验证问题。
 
@@ -274,8 +275,8 @@ var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('U
 *  将针对 `submitLoginForm` 方法的调用替换为调用 V8.0 `submitChallengeAnswer` 验证问题处理程序方法：
 
    ```javascript
-userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
-```
+   userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
+   ```
    
 在应用这些更改之后验证问题处理程序的完整代码如下所示：
    
@@ -333,7 +334,8 @@ pin 码验证问题处理程序 (`pinCodeChallengeHandler`) 的迁移类似于�
 *  [应用程序真实性](#application-authenticity)
 *  [LTPA 域](#ltpa-realm)
 *  [设备配置](#device-provisioning)
-*  [反跨站请求伪造 (anti-XSRF) 域](#anti-cross-site-request-forgery-anti-xsrf-realm)
+*  [反跨站请求伪造 (anti-XSRF) 域
+](#anti-cross-site-request-forgery-anti-xsrf-realm)
 *  [直接更新域](#direct-update-realm)
 *  [远程禁用域](#remote-disable-realm)
 *  [定制认证器和登录模块](#custom-authenticators-and-login-modules)

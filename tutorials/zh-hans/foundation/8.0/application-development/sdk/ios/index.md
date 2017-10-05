@@ -248,7 +248,7 @@ pod update
 的通信协议。             | http 或 https  |
 | host        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
 | port        | {{ site.data.keys.mf_server }} 的端口。                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。| /mfp/          |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 
 ## 位码和 TLS 1.2

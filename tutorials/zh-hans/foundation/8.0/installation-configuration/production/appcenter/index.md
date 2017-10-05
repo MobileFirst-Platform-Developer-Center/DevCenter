@@ -122,7 +122,7 @@ weight: 8
     * 在步骤**数据库内容**的**定制脚本**选项卡上，请勿运行 SQL 脚本，因为您必须首先创建用户帐户。
     * 在步骤**初始化参数**的**字符集**选项卡上，选择**使用 Unicode (AL32UTF8) 字符集和 UTF8 - Unicode 3.0 UTF-8 国家字符集**。
     * 在接受缺省值的情况下完成此过程。
-2. 通过使用 **Oracle Database Control** 或 **Oracle SQLPlu**s 命令行解释器来创建数据库用户。
+2. 通过使用 **Oracle Database Control** 或 **Oracle SQLPlus** 命令行解释器来创建数据库用户。
     * 使用 **Oracle Database Control**：
         * 以 **SYSDBA** 身份连接。
         * 转至**用户**页面：单击**服务器**，然后单击**安全**部分中的**用户**。
@@ -158,12 +158,12 @@ weight: 8
     > **注意：**请勿在选择了应用程序服务器概要文件之后又选择单个受管服务器：这样做会导致 Deployment Manager 覆盖服务器的配置，而不管您是在运行 Deployment Manager 的机器上还是在其他机器上进行安装。
 3. 根据您想要将 Application Center 安装到何处来选择所需的作用域。下表列出了可用的作用域：
 
-    | 作用域	 | 说明 |
+    | 作用域| 说明|
     |--------|-------------|
-    | 单元	 | 将 Application Center 安装到单元的所有应用程序服务器中。 |
-    | 集群| 将 Application Center 安装到指定集群的所有应用程序服务器中。 |
-    | 节点   | （不包括集群）将 Application Center 安装到属于指定节点但不在集群中的所有应用程序服务器中。 |
-    | 服务器 | 将 Application Center 安装到指定的服务器（不在集群中）中。 |
+    | 单元| 将 Application Center 安装到单元的所有应用程序服务器中。|
+    | 集群| 将 Application Center 安装到指定集群的所有应用程序服务器中。|
+    | 节点| （不包括集群）将 Application Center 安装到属于指定节点但不在集群中的所有应用程序服务器中。|
+    | 服务器| 将 Application Center 安装到指定的服务器（不在集群中）中。|
 
 4. 按照下文[完成安装](#completing-the-installation)中的过程来重新启动目标服务器。
 
@@ -248,6 +248,8 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 * 位于 **mf\_server\_install\_dir/ApplicationCenter/configuration-samples** 中的 Ant 样本文件
 
 > **注：****mf\_server\_install\_dir** 占位符表示 {{ site.data.keys.mf_server }} 的安装目录。
+
+
 
 如果您未按照[可选的数据库创建](#optional-creation-of-databases)中所述手动创建数据库，请执行下面的步骤 1 到 3。
 如果已存在数据库，那么必须仅创建数据库表。请执行下面的步骤 4 到 7。
@@ -382,9 +384,9 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 3. 输入以下数据库管理器和 SQL 语句以创建名为 **APPCNTR** 的数据库：
 
    ```bash
-   CREATE DATABASE APPCNTR COLLATE USING SYSTEM PAGESIZE 32768 
-   CONNECT TO APPCNTR 
-   GRANT CONNECT ON DATABASE TO USER worklight 
+   CREATE DATABASE APPCNTR COLLATE USING SYSTEM PAGESIZE 32768
+   CONNECT TO APPCNTR
+   GRANT CONNECT ON DATABASE TO USER worklight
    QUIT
    ```
 
@@ -415,7 +417,7 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
    <library id="DB2Lib">
         <fileset dir="${shared.resource.dir}/db2" includes="*.jar"/>
    </library>
-    
+
    <!-- Declare the IBM Application Center database. -->
    <dataSource jndiName="jdbc/AppCenterDS" transactional="false">
       <jdbcDriver libraryRef="DB2Lib"/>
@@ -545,9 +547,7 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 
 1. 在要创建数据库的位置中，在 Windows 系统上运行 **ij.bat**，或者在 UNIX 和 Linux 系统上运行 **ij.sh**。
 
-   > **注：**ij 程序是 Apache Derby 的一部分。如果未安装该程序，可从 [Apache Derby: Downloads](http://db.apache.org/derby/derby_downloads) 下载。   
-   
-   有关 Apache Derby 的受支持版本，请参阅[系统需求](../../../product-overview/requirements)。  
+   > **注：**ij 程序是 Apache Derby 的一部分。如果未安装该程序，可从 [Apache Derby: Downloads](http://db.apache.org/derby/derby_downloads) 下载。   有关 Apache Derby 的受支持版本，请参阅[系统需求](../../../product-overview/requirements)。  
    该脚本显示 ij 版本号。
 
 2. 在命令提示符中，输入以下命令：
@@ -601,7 +601,8 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
     * 将**数据库类型**设置为**用户定义**。
     * 将**类实现名**设置为 **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**。
     * 将**名称**设置为 **Worklight - Derby JDBC 提供程序**。
-    * 将**描述**设置为 **Worklight 的 Derby JDBC 提供程序**。
+    * 将**描述**设置为 **Worklight 的 Derby
+JDBC 提供程序**。
     * 单击**下一步**。
     * 将**类路径**设置为步骤 1 中确定的目录中的 JAR 文件，并将 **was\_install\_dir/profiles/profile-name** 替换为 WebSphere Application Server 变量引用 **${USER\_INSTALL\_ROOT}**。
     * 单击**完成**。
@@ -609,7 +610,8 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
     * 在 WebSphere Application Server 控制台中，单击**资源 → JDBC → 数据源**。
     * 从**作用域**组合框中，选择相应的作用域。
     * 单击**新建**。
-    * 将**数据源名称**设置为 **Application Center 数据库**。
+    * 将**数据源名称**设置为 **Application
+Center 数据库**。
     * 将 **JNDI** 名称设置为 **jdbc/AppCenterDS**。
     * 单击**下一步**。
     * 选择名为 **Worklight - Derby JDBC 提供程序**的现有 JDBC 提供程序。
@@ -918,12 +920,12 @@ Application Server 数据源属性**。
     * 单击**新建**。
     * 按照下表中的指示来填写 **JDBC** 提供程序字段：
 
-        | 字段 | 值 |
+        | 字段| 值|
         |-------|-------|
-        | 数据库类型 | Oracle |
-        | 提供程序类型 | Oracle JDBC 驱动程序 |
-        | 实现类型 | 连接池数据源 |
-        | 名称 | Oracle JDBC 驱动程序 |
+        | 数据库类型| Oracle|
+        | 提供程序类型| Oracle JDBC 驱动程序|
+        | 实现类型| 连接池数据源|
+        | 名称| Oracle JDBC 驱动程序|
     * 单击**下一步**。
     * 将**类路径**设置为步骤 1 中确定的目录中的 JAR 文件，并将 **WAS\_INSTALL\_DIR/profiles/profile-name** 替换为 WebSphere Application Server 变量引用 **${USER_INSTALL_ROOT}**
     * 单击**下一步**。
@@ -1007,7 +1009,7 @@ JDBC 驱动程序数据源**。
    <!-- The directory with binaries of the 'aapt' program, from the Android SDK's
          platform-tools package. -->
    <jndiEntry jndiName="android.aapt.dir" value="product_install_dir/ApplicationCenter/tools/android-sdk"/>
-<!-- Declare the Application Center Console application. -->
+   <!-- Declare the Application Center Console application. -->
    <application id="appcenterconsole"
                  name="appcenterconsole"
                  location="appcenterconsole.war"
@@ -1031,13 +1033,14 @@ JDBC 驱动程序数据源**。
           <group name="appcentergroup"/>
         </security-role>
       </application-bnd>
-      <classloader delegation="parentLast">
-</classloader>
+      <classloader delegation="parentLast">           
+      </classloader>
    </application>
 
    <!-- Declare the user registry for the IBM Application Center. -->
-   <basicRegistry id="applicationcenter-registry" realm="ApplicationCenter">
-<!-- The users defined here are members of group "appcentergroup",
+   <basicRegistry id="applicationcenter-registry"
+                   realm="ApplicationCenter">
+      <!-- The users defined here are members of group "appcentergroup",
            thus have role "appcenteradmin", and can therefore perform
            administrative tasks through the Application Center Console. -->
       <user name="appcenteradmin" password="admin"/>
@@ -1049,7 +1052,7 @@ JDBC 驱动程序数据源**。
    </basicRegistry>
    ```
 
-   在 `basicRegistry` 中定义的组和用户是可用于测试 Application Center 的登录示例。同样，在 `<security-rolename="appcenteradmin">` 中为 Application Center 控制台和 Application Center 服务定义的组也都是示例。有关如何修改这些组的更多信息，请参阅[在 WebSphere Application Server Liberty Profile 上配置 Java EE 安全角色](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)。
+   在 `basicRegistry` 中定义的组和用户是可用于测试 Application Center 的登录示例。同样，在 `<security-role name="appcenteradmin">` 中为 Application Center 控制台和 Application Center 服务定义的组也都是示例。有关如何修改这些组的更多信息，请参阅[在 WebSphere Application Server Liberty Profile 上配置 Java EE 安全角色](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)。
 
 3. 如果数据库为 Oracle，请将 **commonLibraryRef** 属性添加到 Application Center 服务应用程序的类装入器中。
 
@@ -1072,9 +1075,9 @@ JDBC 驱动程序数据源**。
 
       ```bash
       mmkdir LIBERTY_HOME\wlp\usr\servers\server_name\apps
-      copy /B product_install_dir\ApplicationCenter\console\appcenterconsole.war 
+      copy /B product_install_dir\ApplicationCenter\console\appcenterconsole.war
       LIBERTY_HOME\wlp\usr\servers\server_name\apps\appcenterconsole.war
-      copy /B product_install_dir\ApplicationCenter\console\applicationcenter.war 
+      copy /B product_install_dir\ApplicationCenter\console\applicationcenter.war
       LIBERTY_HOME\wlp\usr\servers\server_name\apps\applicationcenter.war
       ```
 
@@ -1083,19 +1086,19 @@ JDBC 驱动程序数据源**。
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
-      ```
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  ```
     * 在 Windows 系统上：
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
-      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
-      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
-      ```
+  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+  ```
 
 6. 启动 Liberty Server。
 
@@ -1208,13 +1211,13 @@ JDBC 驱动程序数据源**。
       </Context>
 <!-- Declare the IBM Application Center Services application. -->
       <Context path="/applicationcenter" docBase="applicationcenter">
-<!-- The directory with binaries of the 'aapt' program, from
+          <!-- The directory with binaries of the 'aapt' program, from
                the Android SDK's platform-tools package. -->
           <Environment name="android.aapt.dir"
                        value="product_install_dir/ApplicationCenter/tools/android-sdk"
                        type="java.lang.String" override="false"/>
           <!-- The protocol of the application resources URI.
-               This property is optional. It is only needed if the protocol
+               该属性为可选属性。It is only needed if the protocol
                of the external and internal URI are different. -->
           <!-- <Environment name="ibm.appcenter.proxy.protocol"
                             value="http" type="java.lang.String" override="false"/>
@@ -1303,13 +1306,14 @@ JDBC 驱动程序数据源**。
           <group name="appcentergroup"/>
         </security-role>
       </application-bnd>
-      <classloader delegation="parentLast">
-</classloader>
+      <classloader delegation="parentLast">           
+      </classloader>
    </application>
 
    <!-- Declare the user registry for the IBM Application Center. -->
-   <basicRegistry id="applicationcenter-registry" realm="ApplicationCenter">
-<!-- The users defined here are members of group "appcentergroup",
+   <basicRegistry id="applicationcenter-registry"
+                   realm="ApplicationCenter">
+      <!-- The users defined here are members of group "appcentergroup",
            thus have role "appcenteradmin", and can therefore perform
            administrative tasks through the Application Center Console. -->
       <user name="appcenteradmin" password="admin"/>
@@ -1321,8 +1325,7 @@ JDBC 驱动程序数据源**。
    </basicRegistry>
    ```
 
-   在 **basicRegistry** 元素中定义的组和用户是可用于测试 Application Center 的登录示例。同样，在 `<security-role
-name="appcenteradmin">` 元素中定义的组也都是示例。有关如何修改这些组的更多信息，请参阅[在 WebSphere Application Server Liberty Profile 上配置 Java EE 安全角色](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)。
+   在 **basicRegistry** 元素中定义的组和用户是可用于测试 Application Center 的登录示例。同样，在 `<security-role name="appcenteradmin">` 元素中定义的组也都是示例。有关如何修改这些组的更多信息，请参阅[在 WebSphere Application Server Liberty Profile 上配置 Java EE 安全角色](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)。
 
 3. 如果数据库为 Oracle，请将 **commonLibraryRef** 属性添加到 Application Center 应用程序的类装入器中。
 
@@ -1346,7 +1349,7 @@ name="appcenteradmin">` 元素中定义的组也都是示例。有关如何修�
 
        ```bash
        mkdir LIBERTY_HOME\wlp\usr\servers\server_name\apps
-       copy /B product_install_dir\ApplicationCenter\console\applicationcenter.ear 
+       copy /B product_install_dir\ApplicationCenter\console\applicationcenter.ear
        LIBERTY_HOME\wlp\usr\servers\server_name\apps\applicationcenter.ear
        ```
 
@@ -1355,19 +1358,19 @@ name="appcenteradmin">` 元素中定义的组也都是示例。有关如何修�
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
-      ```
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  ```
     * 在 Windows 系统上：
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
-      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
-      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
-      ```
+  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+  ```
 
 6. 启动 Liberty Server。
 
@@ -1496,8 +1499,7 @@ Application Center 定义了两个 Java™ Platform，Enterprise Edition (Java E
 
         ![映射 Application Center 角色](ac_ws_full_maproles.jpg)
     * 选择 **IBM\_Application\_Center\_Services**。
-    * 在“配置”选项卡中，选择**详细信息 → 安全角色到用户/组的映射**。
-        ![将 Application Center 角色映射到用户组](ac_ws_full_usergrp.jpg)    
+    * 在“配置”选项卡中，选择**详细信息 → 安全角色到用户/组的映射**。![将 Application Center 角色映射到用户组](ac_ws_full_usergrp.jpg)    
     * 进行必要的定制。
     * 单击**确定**。
     * 重复这些步骤以映射控制台 Web 应用程序的角色；选择 **IBM\_Application\_Center\_Console**。
@@ -1516,10 +1518,8 @@ Application Center 定义了两个 Java™ Platform，Enterprise Edition (Java E
 在 **server.xml** 文件中配置 Application Center 和数据源的 Java™ EE 安全角色。
 
 要配置安全角色，您必须编辑 **server.xml** 文件。
-在每个 `<application>` 元素的`<application-bnd>` 元素中，创建两个 `<security-role>` 元素。
-第一个 `<security-role>` 元素用于 **appcenteruser** 角色，另外一个元素用于 **appcenteradmin** 角色。将角色映射至合适的用户组名称 **appcenterusergroup** 或 **appcenteradmingroup**。
-通过 `<basicRegistry>` 元素定义这些组。
-您可以定制该元素或将其完全替换为 `<ldapRegistry>` 元素或 `<safRegistry>` 元素。
+在每个 `<application>` 元素的 `<application-bnd>` 元素中，创建两个 `<security-role>` 元素。一个 `<security-role>` 元素用于 **appcenteruser** 角色，另一个元素用于 **appcenteradmin** 角色。将角色映射至合适的用户组名称 **appcenterusergroup** 或 **appcenteradmingroup**。
+这些组是通过 `<basicRegistry>` 元素定义的。您可以定制该元素或将其完全替换为 `<ldapRegistry>` 元素或 `<safRegistry>` 元素。
 
 然后，要在已安装了大量应用程序（例如，80 个应用程序）的情况下保持较短的响应时间，您应该为 Application Center 数据库配置一个连接池。
 
@@ -1565,8 +1565,7 @@ Application Center 定义了两个 Java™ Platform，Enterprise Edition (Java E
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3. 在元素 `<dataSource>` 中，为连接管理器定义一个引用：
-
+3. 在 `<dataSource>` 元素中，为连接管理器定义一个引用：
 
    ```xml
    <dataSource id="APPCNTR" jndiName="jdbc/AppCenterDS" connectionManagerRef="AppCenterPool">
@@ -1737,7 +1736,7 @@ Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改�
 下图显示了正确设置情况下定制属性的一个示例。
 
 
-![在 WebSphere Application Server V8 上使用 LDAP 为 Application Center 配置 ACL 管理](ac_ldap_props_w8.jpg)
+![WebSphere Application Server V8 上用于 Application Center 的 LDAP ACL 管理](ac_ldap_props_w8.jpg)
 
 **后续步骤**  
 
@@ -1786,10 +1785,10 @@ Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改�
    <ldapRegistry baseDN="o=ibm.com" host="employees.com" id="Employees"
                   ldapType="IBM Tivoli Directory Server" port="389" realm="AppCenterLdap"
                   recursiveSearch="true">
-      <idsFilters 
-          groupFilter="(&amp;(cn=%v)(|(objectclass=groupOfNames)(objectclass=groupOfUniqueNames))) " id="Employees" 
-          userFilter="(&amp;(emailAddress=%v)(objectclass=ibmPerson))" 
-          groupMemberIdMap="ibm-allGroups:member;ibm-allGroups:uniqueMember" 
+      <idsFilters
+          groupFilter="(&amp;(cn=%v)(|(objectclass=groupOfNames)(objectclass=groupOfUniqueNames))) " id="Employees"
+          userFilter="(&amp;(emailAddress=%v)(objectclass=ibmPerson))"
+          groupMemberIdMap="ibm-allGroups:member;ibm-allGroups:uniqueMember"
           userIdMap="*:emailAddress"/>
    </ldapRegistry>
    ```
@@ -1854,29 +1853,29 @@ Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改�
 * **JNDI\_property\_name** 是要添加的属性的名称。
 * **property\_value** 是要添加的属性的值。
 
-| 属性 | 描述 |
+| 属性| 描述|
 |----------|-------------|
-| ibm.appcenter.ldap.active | 设置为 true 可启用 LDAP；设置为 false 可禁用 LDAP。 |
-| ibm.appcenter.ldap.federated.active | 自 WebSphere Application Server Liberty Profile V8.5.5 起：设置为 true 可启用联合注册表；设置为 false 可禁用联合注册表（缺省设置）。 |
-| ibm.appcenter.ldap.connectionURL | LDAP 连接 URL。 |
-| ibm.appcenter.ldap.user.base | 用户的搜索条件。 |
-| ibm.appcenter.ldap.user.loginName | LDAP 登录属性。 |
-| ibm.appcenter.ldap.user.displayName | 要显示的用户名的 LDAP 属性，例如，人员的全名。 |
-| ibm.appcenter.ldap.group.base | 组的搜索条件。 |
-| ibm.appcenter.ldap.group.name | 组名的 LDAP 属性。 |
-| ibm.appcenter.ldap.group.uniquemember | 用于标识组成员的 LDAP 属性。 |
-| ibm.appcenter.ldap.user.groupmembership | 用于标识用户所属组的 LDAP 属性。 |
-| ibm.appcenter.ldap.group.nesting | 嵌套组的管理：如果嵌套组不是受管型，请将该值设置为 false。 |
-| ibm.appcenter.ldap.user.filter |  针对用户登录名属性的 LDAP 用户搜索过滤器。使用 %v 作为登录名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.displayName.filter | 针对用户显示名属性的 LDAP 用户搜索过滤器。使用 %v 作为显示名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.group.filter | LDAP 组搜索过滤器。使用 %v 作为组属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.security.sasl | 在需要 LDAP 外部 SASL 认证机制以绑定到 LDAP 服务器的情况下，安全认证机制的值。该值取决于 LDAP 服务器；通常，其设置为“EXTERNAL”。 |
-| ibm.appcenter.ldap.security.binddn | 此属性标识被允许搜索 LDAP 目录的用户的专有名称。仅在需要安全绑定时使用该属性。 |
-| ibm.appcenter.ldap.security.bindpwd | 此属性标识被允许搜索 LDAP 目录的用户的密码。
-仅在需要安全绑定时使用该属性。可通过“Liberty Profile securityUtility”工具对密码进行编码。运行该工具，然后将该属性的值设置为工具生成的编码后的密码。受支持的编码类型为 xor 和 aes。编辑 Liberty Profile 的 server.xml 文件，以检查是否启用 classloader 来装入用于解码密码的 JAR 文件。 |
-| ibm.appcenter.ldap.cache.expiration.seconds | 在 LDAP 缓存到期之前出现的延迟（以秒为单位）。如果未输入任何值，缺省值为 86400，即 24 个小时。延迟过后，Application Center 可以看到 LDAP 服务器上的用户和组的更改，这是由 **ibm.appcenter.ldap.cache.expiration.seconds** 指定的。
-Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改内容才可见。缺省情况下，延迟时间为 24 小时。如果在更改用户和组之后不想等待该延迟到期，可以调用以下命令来清除 LDAP 数据的缓存：`acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`。请参阅[使用独立工具来清除 LDAP 缓存](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)以获取详细信息。 |
-| ibm.appcenter.ldap.referral | 用于指示引荐是否受 JNDI API 支持的属性。如果未指定任何值，JNDI API 将不会处理 LDAP 引荐。可能的值为：{::nomarkdown}<ul><li>ignore：忽略在 LDAP 服务器中发现的引荐。</li><li>follow：自动跟踪在 LDAP 服务器中发现的任何引荐。</li><li>throw：使 LDAP 服务器中发现的每个引荐都抛出异常。</li></ul>{:/} |
+| ibm.appcenter.ldap.active| 设置为 true 可启用 LDAP；设置为 false 可禁用 LDAP。|
+| ibm.appcenter.ldap.federated.active| 自 WebSphere Application Server Liberty Profile V8.5.5 起：设置为 true 可启用联合注册表；设置为 false 可禁用联合注册表（缺省设置）。|
+| ibm.appcenter.ldap.connectionURL| LDAP 连接 URL。|
+| ibm.appcenter.ldap.user.base| 用户的搜索条件。|
+| ibm.appcenter.ldap.user.loginName| LDAP 登录属性。|
+| ibm.appcenter.ldap.user.displayName| 要显示的用户名的 LDAP 属性，例如，人员的全名。|
+| ibm.appcenter.ldap.group.base| 组的搜索条件。|
+| ibm.appcenter.ldap.group.name| 组名的 LDAP 属性。|
+| ibm.appcenter.ldap.group.uniquemember| 用于标识组成员的 LDAP 属性。|
+| ibm.appcenter.ldap.user.groupmembership| 用于标识用户所属组的 LDAP 属性。|
+| ibm.appcenter.ldap.group.nesting| 嵌套组的管理：如果嵌套组不是受管型，请将该值设置为 false。|
+| ibm.appcenter.ldap.user.filter|  针对用户登录名属性的 LDAP 用户搜索过滤器。使用 %v 作为登录名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.displayName.filter| 针对用户显示名属性的 LDAP 用户搜索过滤器。使用 %v 作为显示名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.group.filter| LDAP 组搜索过滤器。使用 %v 作为组属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.security.sasl| 在需要 LDAP 外部 SASL 认证机制以绑定到 LDAP 服务器的情况下，安全认证机制的值。该值取决于 LDAP 服务器；通常，其设置为“EXTERNAL”。|
+| ibm.appcenter.ldap.security.binddn| 此属性标识被允许搜索 LDAP 目录的用户的专有名称。仅在需要安全绑定时使用该属性。|
+| ibm.appcenter.ldap.security.bindpwd| 此属性标识被允许搜索 LDAP 目录的用户的密码。
+仅在需要安全绑定时使用该属性。可通过“Liberty Profile securityUtility”工具对密码进行编码。运行该工具，然后将该属性的值设置为工具生成的编码后的密码。受支持的编码类型为 xor 和 aes。编辑 Liberty Profile 的 server.xml 文件，以检查是否启用 classloader 来装入用于解码密码的 JAR 文件。|
+| ibm.appcenter.ldap.cache.expiration.seconds| 在 LDAP 缓存到期之前出现的延迟（以秒为单位）。如果未输入任何值，缺省值为 86400，即 24 个小时。延迟过后，Application Center 可以看到 LDAP 服务器上的用户和组的更改，这是由 **ibm.appcenter.ldap.cache.expiration.seconds** 指定的。
+Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改内容才可见。缺省情况下，延迟时间为 24 小时。如果在更改用户和组之后不想等待该延迟到期，可以调用以下命令来清除 LDAP 数据的缓存：`acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`。请参阅[使用独立工具来清除 LDAP 缓存](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)以获取详细信息。|
+| ibm.appcenter.ldap.referral| 用于指示引荐是否受 JNDI API 支持的属性。如果未指定任何值，JNDI API 将不会处理 LDAP 引荐。可能的值为：{::nomarkdown}<ul><li>ignore：忽略在 LDAP 服务器中发现的引荐。</li><li>follow：自动跟踪在 LDAP 服务器中发现的任何引荐。</li><li>throw：使 LDAP 服务器中发现的每个引荐都抛出异常。</li></ul>{:/} |
 
 请参阅 [Application Center 的 JNDI 属性](#jndi-properties-for-application-center)，以获取可设置的 LDAP 属性的完整列表。
 
@@ -1925,7 +1924,7 @@ Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改�
 为 Apache Tomcat 服务器配置 LDAP 认证，并在 Application Center 服务 Web 应用程序 (**applicationcenter.war**) 和 Application Center 控制台 Web 应用程序 (**appcenterconsole.war**) 的 web.xml 文件中配置安全性 (Java™ Platform, Enterprise Edition)。
 
 **LDAP 用户认证**  
-必须在配置 **server.xml** 文件的 `<Host>` 元素中的 **JNDIRealm**。有关配置域的更多信息，请参阅 Apache Tomcat Web 站点上的“域组件”。
+必须配置 **server.xml** 文件的 `<Host>` 元素中的 **JNDIRealm**。有关配置域的更多信息，请参阅 Apache Tomcat Web 站点上的“域组件”。
 
 **在 Apache Tomcat 上配置以针对 LDAP 服务器进行认证的示例**  
 该示例说明如何通过与支持 LDAP 认证的服务器上的用户认证进行比较，从而在 Apache Tomcat 服务器上配置用户认证。
@@ -2066,29 +2065,29 @@ Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改�
 * **JNDI\_property\_name** 是要添加的属性的名称。
 * **property\_value** 是要添加的属性的值。
 
-| 属性 | 描述 |
+| 属性| 描述|
 |----------|-------------|
-| ibm.appcenter.ldap.active | 设置为 true 可启用 LDAP；设置为 false 可禁用 LDAP。 |
-| ibm.appcenter.ldap.federated.active | 自 WebSphere Application Server Liberty Profile V8.5.5 起：设置为 true 可启用联合注册表；设置为 false 可禁用联合注册表（缺省设置）。 |
-| ibm.appcenter.ldap.connectionURL | LDAP 连接 URL。 |
-| ibm.appcenter.ldap.user.base | 用户的搜索条件。 |
-| ibm.appcenter.ldap.user.loginName | LDAP 登录属性。 |
-| ibm.appcenter.ldap.user.displayName | 要显示的用户名的 LDAP 属性，例如，人员的全名。 |
-| ibm.appcenter.ldap.group.base | 组的搜索条件。 |
-| ibm.appcenter.ldap.group.name | 组名的 LDAP 属性。 |
-| ibm.appcenter.ldap.group.uniquemember | 用于标识组成员的 LDAP 属性。 |
-| ibm.appcenter.ldap.user.groupmembership | 用于标识用户所属组的 LDAP 属性。 |
-| ibm.appcenter.ldap.group.nesting | 嵌套组的管理：如果嵌套组不是受管型，请将该值设置为 false。 |
-| ibm.appcenter.ldap.user.filter |  针对用户登录名属性的 LDAP 用户搜索过滤器。使用 %v 作为登录名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.displayName.filter | 针对用户显示名属性的 LDAP 用户搜索过滤器。使用 %v 作为显示名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.group.filter | LDAP 组搜索过滤器。使用 %v 作为组属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.security.sasl | 在需要 LDAP 外部 SASL 认证机制以绑定到 LDAP 服务器的情况下，安全认证机制的值。该值取决于 LDAP 服务器；通常，其设置为“EXTERNAL”。 |
-| ibm.appcenter.ldap.security.binddn | 此属性标识被允许搜索 LDAP 目录的用户的专有名称。仅在需要安全绑定时使用该属性。 |
-| ibm.appcenter.ldap.security.bindpwd | 此属性标识被允许搜索 LDAP 目录的用户的密码。
-仅在需要安全绑定时使用该属性。可通过“Liberty Profile securityUtility”工具对密码进行编码。运行该工具，然后将该属性的值设置为工具生成的编码后的密码。受支持的编码类型为 xor 和 aes。编辑 Liberty Profile 的 server.xml 文件，以检查是否启用 classloader 来装入用于解码密码的 JAR 文件。 |
-| ibm.appcenter.ldap.cache.expiration.seconds | 在 LDAP 缓存到期之前出现的延迟（以秒为单位）。如果未输入任何值，缺省值为 86400，即 24 个小时。延迟过后，Application Center 可以看到 LDAP 服务器上的用户和组的更改，这是由 **ibm.appcenter.ldap.cache.expiration.seconds** 指定的。
-Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改内容才可见。缺省情况下，延迟时间为 24 小时。如果在更改用户和组之后不想等待该延迟到期，可以调用以下命令来清除 LDAP 数据的缓存：`acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`。请参阅[使用独立工具来清除 LDAP 缓存](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)以获取详细信息。 |
-| ibm.appcenter.ldap.referral | 用于指示引荐是否受 JNDI API 支持的属性。如果未指定任何值，JNDI API 将不会处理 LDAP 引荐。可能的值为：{::nomarkdown}<ul><li>ignore：忽略在 LDAP 服务器中发现的引荐。</li><li>follow：自动跟踪在 LDAP 服务器中发现的任何引荐。</li><li>throw：使 LDAP 服务器中发现的每个引荐都抛出异常。</li></ul>{:/} |
+| ibm.appcenter.ldap.active| 设置为 true 可启用 LDAP；设置为 false 可禁用 LDAP。|
+| ibm.appcenter.ldap.federated.active| 自 WebSphere Application Server Liberty Profile V8.5.5 起：设置为 true 可启用联合注册表；设置为 false 可禁用联合注册表（缺省设置）。|
+| ibm.appcenter.ldap.connectionURL| LDAP 连接 URL。|
+| ibm.appcenter.ldap.user.base| 用户的搜索条件。|
+| ibm.appcenter.ldap.user.loginName| LDAP 登录属性。|
+| ibm.appcenter.ldap.user.displayName| 要显示的用户名的 LDAP 属性，例如，人员的全名。|
+| ibm.appcenter.ldap.group.base| 组的搜索条件。|
+| ibm.appcenter.ldap.group.name| 组名的 LDAP 属性。|
+| ibm.appcenter.ldap.group.uniquemember| 用于标识组成员的 LDAP 属性。|
+| ibm.appcenter.ldap.user.groupmembership| 用于标识用户所属组的 LDAP 属性。|
+| ibm.appcenter.ldap.group.nesting| 嵌套组的管理：如果嵌套组不是受管型，请将该值设置为 false。|
+| ibm.appcenter.ldap.user.filter|  针对用户登录名属性的 LDAP 用户搜索过滤器。使用 %v 作为登录名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.displayName.filter| 针对用户显示名属性的 LDAP 用户搜索过滤器。使用 %v 作为显示名属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.group.filter| LDAP 组搜索过滤器。使用 %v 作为组属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.security.sasl| 在需要 LDAP 外部 SASL 认证机制以绑定到 LDAP 服务器的情况下，安全认证机制的值。该值取决于 LDAP 服务器；通常，其设置为“EXTERNAL”。|
+| ibm.appcenter.ldap.security.binddn| 此属性标识被允许搜索 LDAP 目录的用户的专有名称。仅在需要安全绑定时使用该属性。|
+| ibm.appcenter.ldap.security.bindpwd| 此属性标识被允许搜索 LDAP 目录的用户的密码。
+仅在需要安全绑定时使用该属性。可通过“Liberty Profile securityUtility”工具对密码进行编码。运行该工具，然后将该属性的值设置为工具生成的编码后的密码。受支持的编码类型为 xor 和 aes。编辑 Liberty Profile 的 server.xml 文件，以检查是否启用 classloader 来装入用于解码密码的 JAR 文件。|
+| ibm.appcenter.ldap.cache.expiration.seconds| 在 LDAP 缓存到期之前出现的延迟（以秒为单位）。如果未输入任何值，缺省值为 86400，即 24 个小时。延迟过后，Application Center 可以看到 LDAP 服务器上的用户和组的更改，这是由 **ibm.appcenter.ldap.cache.expiration.seconds** 指定的。
+Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改内容才可见。缺省情况下，延迟时间为 24 小时。如果在更改用户和组之后不想等待该延迟到期，可以调用以下命令来清除 LDAP 数据的缓存：`acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`。请参阅[使用独立工具来清除 LDAP 缓存](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)以获取详细信息。|
+| ibm.appcenter.ldap.referral| 用于指示引荐是否受 JNDI API 支持的属性。如果未指定任何值，JNDI API 将不会处理 LDAP 引荐。可能的值为：{::nomarkdown}<ul><li>ignore：忽略在 LDAP 服务器中发现的引荐。</li><li>follow：自动跟踪在 LDAP 服务器中发现的任何引荐。</li><li>throw：使 LDAP 服务器中发现的每个引荐都抛出异常。</li></ul>{:/} |
 
 请参阅 [Application Center 的 JNDI 属性](#jndi-properties-for-application-center)，以获取可设置的 LDAP 属性的完整列表。
 
@@ -2172,12 +2171,12 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 #### 端点属性
 {: #endpoint-properties }
 
-| 属性名 | 用途 | 示例 |
+| 属性名| 用途| 示例|
 |---------------|---------|---------|
-| ibm.appcenter.services.endpoint | 该属性使 Application Center 控制台能够找到 Application Center REST 服务。该属性的值必须指定为 applicationcenter.war Web 应用程序的外部地址和上下文根。您可以使用星号 (\*) 字符作为通配符，以指定 Application Center REST 服务使用与 Application Center 控制台相同的值。例如：*://*:*/appcenter 表示使用与 Application Center 控制台相同的协议、主机和端口，但是使用 appcenter 作为上下文根。必须为 Application Center 控制台应用程序指定该属性。 | https://appcntr.net:443/applicationcenter |
-| ibm.appcenter.proxy.protocol | 该属性指定外部应用程序连接到 Application Center 所需的协议。 | https |
-| ibm.appcenter.proxy.host | 该属性指定外部应用程序连接到 Application Center 所需的主机名。 | appcntr.net |
-| ibm.appcenter.proxy.port | 该属性指定外部应用程序连接到 Application Center 所需的端口。 | 443 |
+| ibm.appcenter.services.endpoint| 该属性使 Application Center 控制台能够找到 Application Center REST 服务。该属性的值必须指定为 applicationcenter.war Web 应用程序的外部地址和上下文根。您可以使用星号 (\*) 字符作为通配符，以指定 Application Center REST 服务使用与 Application Center 控制台相同的值。例如：*://*:*/appcenter 表示使用与 Application Center 控制台相同的协议、主机和端口，但是使用 appcenter 作为上下文根。必须为 Application Center 控制台应用程序指定该属性。| https://appcntr.net:443/applicationcenter|
+| ibm.appcenter.proxy.protocol| 该属性指定外部应用程序连接到 Application Center 所需的协议。| https|
+| ibm.appcenter.proxy.host| 该属性指定外部应用程序连接到 Application Center 所需的主机名。| appcntr.net|
+| ibm.appcenter.proxy.port| 该属性指定外部应用程序连接到 Application Center 所需的端口。| 443|
 
 #### 跳至：
 {: #jump-to-13 }
@@ -2256,12 +2255,12 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 * **JNDI\_property\_name** 是要添加的属性的名称。
 * **property\_value** 是要添加的属性的值。
 
-| 属性 | 描述 |
+| 属性| 描述|
 |----------|-------------|
-| ibm.appcenter.services.endpoint | Application Center REST 服务的 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。 |
-| ibm.appcenter.proxy.protocol	应用程序资源 URI 的协议。该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。 |
-| ibm.appcenter.proxy.host | 应用程序资源 URI 的主机名。 |
-| ibm.appcenter.proxy.port | 应用程序资源 URI 的端口。该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。 |
+| ibm.appcenter.services.endpoint| Application Center REST 服务的 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。|
+| ibm.appcenter.proxy.protocol	应用程序资源 URI 的协议。该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。|
+| ibm.appcenter.proxy.host| 应用程序资源 URI 的主机名。|
+| ibm.appcenter.proxy.port| 应用程序资源 URI 的端口。该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。|
 
 有关可设置的 LAPD 属性的完整列表，请参阅 [Application Center 的 JNDI 属性](#jndi-properties-for-application-center)。
 
@@ -2297,13 +2296,13 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 * **property\_value** 是要添加的属性的值。
 * **property\_type** 是要添加的属性的类型。
 
-| 属性 | 类型 | 描述 |
+| 属性| 类型| 描述|
 |----------|------|-------------|
-| ibm.appcenter.services.endpoint | java.lang.String | Application Center REST 服务 (applicationcenter.war) 的 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。 |
-| ibm.appcenter.proxy.protocol | java.lang.String | 应用程序资源 URI 的协议。
-该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。 |
-| ibm.appcenter.proxy.host | java.lang.String | 应用程序资源 URI 的主机名。 |
-| ibm.appcenter.proxy.port | java.lang.Integer | 应用程序资源 URI 的端口。该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。 |
+| ibm.appcenter.services.endpoint| java.lang.String| Application Center REST 服务 (applicationcenter.war) 的 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。|
+| ibm.appcenter.proxy.protocol| java.lang.String| 应用程序资源 URI 的协议。
+该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。|
+| ibm.appcenter.proxy.host| java.lang.String| 应用程序资源 URI 的主机名。|
+| ibm.appcenter.proxy.port| java.lang.Integer| 应用程序资源 URI 的端口。该属性为可选属性。仅在外部和内部 URI 不同的情况下才需要。|
 
 有关可设置的 JNDI 属性的完整列表，请参阅 [Application Center 的 JNDI 属性](#jndi-properties-for-application-center)。
 
@@ -2465,58 +2464,58 @@ SSL 证书必须与 Android 和 iOS 兼容。 自签名证书对 Application Cen
 {: #jndi-properties-for-application-center }
 您可以配置 Application Center 的某些 JNDI 属性。
 
-| 属性 | 描述 |
+| 属性| 描述|
 |----------|-------------|
-| appcenter.database.type | 数据库类型，仅当 appcenter.jndi.name 中未指定数据库时才需要该属性。 |
-| appcenter.jndi.name | 数据库的 JNDI 名称。该参数是指定数据库的正常机制。缺省值为 java:comp/env/jdbc/AppCenterDS。 |
-| appcenter.openjpa.ConnectionDriverName | 数据库连接驱动程序类的标准类名。仅当 appcenter.jndi.name 中未指定数据库时才需要该属性。 |
-| appcenter.openjpa.ConnectionPassword | 用于数据库连接的密码。仅当 appcenter.jndi.name 中未指定数据库时才设置该属性。 |
-| appcenter.openjpa.ConnectionURL | 数据库连接驱动程序类的 URL。仅当 appcenter.jndi.name 中未指定数据库时才设置该属性。 |
-| appcenter.openjpa.ConnectionUserName | 数据库连接的用户名。仅当 appcenter.jndi.name 中未指定数据库时才设置该属性。 |
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate | 将该属性设置为 true 可指定 Application Center 发送 iOS 应用程序更新的相关推送通知时所使用的证书是否是开发证书。如果不是开发证书，请将该属性设置为 **false**。请参阅[配置 Application Center 服务器以连接至 Apple 推送通知服务](../../../appcenter/push-notifications/#apns)。 |
-| ibm.appcenter.apns.p12.certificate.location | Application Center 发送 iOS 应用程序更新的相关推送通知时所使用的开发证书文件的路径。例如**/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12**。
-请参阅[配置 Application Center 服务器以连接至 Apple 推送通知服务](../../../appcenter/push-notifications/#apns)。 |
-| ibm.appcenter.apns.p12.certificate.password | Application Center 发送 iOS 应用程序更新的相关推送通知时所使用的证书的密码。请参阅[配置 Application Center 服务器以连接至 Apple 推送通知服务](../../../appcenter/push-notifications/#apns)。 |
-| ibm.appcenter.forceUpgradeDBTo60 | 自 IBM Worklight V6.0 起，已更改了数据库设计。数据库会在 Application Center Web 应用程序启动时自动更新。如果想要重复该更新，可将该参数设置为 **true**，并再次启动 Web 应用程序。稍后可将该参数重置为 **false**。 |
-| ibm.appcenter.gcm.signature.googleapikey | Application Center 发送 Android 应用程序更新的相关推送通知时所使用的 Google API 密钥。例如，AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs。请参阅[配置 Application Center 服务器以连接至 Google Cloud Messaging](../../../appcenter/push-notifications/#gcm)。 |
-| ibm.appcenter.ios.plist.onetimeur | 指定 iOS PList 清单中存储的 URL 是否使用不带凭证的一次性 URL 机制。如果将该属性设置为 true，由于一次性 URL 由加密机制生成以防有人猜测出 URL 但不要求用户登录，因此安全级别为中级。将该属性设置为 false 可提供最高级别的安全性，因为此时每个 URL 都需要用户登录。但是，安装时要求用户多次登录会降低用户体验。请参阅[在 iOS 移动设备上安装客户机](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device)。 |
-| ibm.appcenter.ldap.active | 指定是否为 Application Center 配置了 LDAP。将该属性设置为 true 可启用 LDAP，或者将该属性设置为 false 可禁用 LDAP。请参阅[使用 LDAP 管理用户](#managing-users-with-ldap)。 |
-| ibm.appcenter.ldap.cache.expiration.seconds | Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改内容才可见。指定 LDAP 高速缓存中的某个条目保持有效的秒数。将该属性的值设置为大于 3600（1 小时）以减少 LDAP 请求的数量。如果未输入任何值，缺省值为 86400，即 24 个小时。如果需要手动清除 LDAP 数据的缓存，请输入以下命令：`acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`。请参阅[使用独立工具来清除 LDAP 高速缓存](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)。 |
-| ibm.appcenter.ldap.connectionURL | 未使用任何虚拟成员管理器 (VMM) 时用于访问 LDAP 服务器的 URL。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.federated.active | 指定是否使用联合存储库为 Application Center 配置 LDAP。从 WebSphere Application Server Liberty Profile V8.5.5 起，将该属性设置为 true 可启用联合注册表。将该属性设置为 false（缺省设置）可禁用联合注册表。
-请参阅[使用 LDAP 管理用户](#managing-users-with-ldap)。 |
-| ibm.appcenter.ldap.group.base | 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时用于查找组的搜索条件。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.group.filter | LDAP 组搜索过滤器。使用 **%v** 作为组属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。 |
-| ibm.appcenter.ldap.group.name | 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的组名属性。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.group.nesting | 指定当所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时，LDAP 是否包含嵌套组（即，组中组）。将该属性设置为 false 可加快 LDAP 访问速度，因为不会递归搜索组。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.group.uniquemember | 指定当所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的组成员。该属性是 ibm.appcenter.ldap.user.groupmembership 属性的逆属性。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.referral | 指定引荐是否受 JNDI API 支持。如果未指定任何值，那么 JNDI API 不会处理 LDAP 引荐。以下是可能值：{::nomarkdown}<ul><li>ignore：忽略在 LDAP 服务器中发现的引荐。</li><li>follow：自动跟踪在 LDAP 服务器中发现的任何引荐。</li><li>throw：使 LDAP 服务器中发现的每个引荐都抛出异常。</li></ul>{:/} |
-| ibm.appcenter.ldap.security.binddn | 允许搜索 LDAP 目录的用户的专有名称。仅在需要安全绑定时使用该属性。 |
-| ibm.appcenter.ldap.security.bindpwd | 有权搜索 LDAP 目录的用户的密码。仅在需要安全绑定时使用该属性。<br><br>可通过 Liberty Profile securityUtility 工具对密码进行编码。运行该工具，然后将该属性的值设置为该工具生成的已编码密码。<br><br>编辑 Liberty Profile 的 server.xml 文件，以检查是否启用 classloader 来装入用于解码密码的 JAR 文件。<br><br>请参阅[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.security.sasl | 指定需要 LDAP 外部 SASL 认证机制以绑定到 LDAP 服务器的情况下的安全认证机制。该值取决于 LDAP 服务器，通常设置为 EXTERNAL。当设置该属性时，需要进行安全认证才能连接到未使用虚拟成员管理器 (VMM) 的 LDAP。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.user.base | 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时用于查找用户的搜索条件。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.user.displayName | 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的显示名称属性（如用户的真实姓名）。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.displayName.filter | 适用于 ibm.appcenter.ldap.user.displayName 属性的 LDAP 用户搜索过滤器。使用 %v 作为显示名属性的占位符。<br><br>仅当在相同的子树中定义 LDAP 用户和组时（即，当属性 ibm.appcenter.ldap.user.base 和 ibm.appcenter.ldap.group.base 具有相同值时）才需要该属性。 |
-| ibm.appcenter.ldap.user.filter | 适用于 ibm.appcenter.ldap.user.loginName 属性的 LDAP 用户搜索过滤器。使用 **%v** 作为登录名属性的占位符。<br><br>仅当在相同的子树中定义 LDAP 用户和组时（即，当属性 ibm.appcenter.ldap.user.base 和 ibm.appcenter.ldap.group.base 具有相同值时）才需要该属性。 |
-| ibm.appcenter.ldap.user.groupmembership | 指定所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的成员组。该属性是 ibm.appcenter.ldap.group.uniquemember 属性的逆属性。该属性为可选，但是，当指定该属性时，LDAP 访问速度更快。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.user.loginName | 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的登录名属性。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。 |
-| ibm.appcenter.ldap.vmm.active | 将该属性设置为 true 可指定通过虚拟成员管理器 (VMM) 完成 LDAP，或者将该属性设置为 false 可指定其他行为。请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。 |
-| ibm.appcenter.ldap.vmm.adminpwd | 通过虚拟成员管理器 (VMM) 完成 LDAP 时的密码。请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。 |
-| ibm.appcenter.ldap.vmm.adminuser | 通过虚拟成员管理器 (VMM) 完成 LDAP 时的用户。请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。 |
-| ibm.appcenter.logging.formatjson | 该属性仅在 ibm.appcenter.logging.tosystemerror 设置为 true 时生效。如果启用该属性，将对定向到 System.Error 的日志记录消息中的 JSON 响应进行格式化。调试服务器时设置该属性十分有用。 |
-| ibm.appcenter.logging.tosystemerror | 指定是否所有的日志记录消息都定向到 System.Error。调试服务器时设置该属性十分有用。 |
-| ibm.appcenter.openjpa.Log | 此属性传递到 OpenJPA，并启用 JPA 日志记录。有关更多详细信息，请参阅 [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)。 |
-| ibm.appcenter.proxy.host | 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定主机的地址。设置该属性以允许防火墙外部的用户访问 Application Center 服务器。通常该属性是代理的地址。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。 |
-| ibm.appcenter.proxy.port | 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定主机的地址。设置该属性以允许防火墙外部的用户访问 Application Center 服务器。通常此属性是代理的端口，例如 443。仅在外部 URI 协议和内部 URI 协议不同的情况下才需要该属性。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。 |
-| ibm.appcenter.proxy.protocol | 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定协议（http 或 https）。设置该属性以允许防火墙外部的用户访问 Application Center 服务器。通常该属性设置为代理的协议。例如，appcntr.net。仅在外部和内部 URI 协议不同的情况下才需要该属性。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。 |
-| ibm.appcenter.proxy.scheme | 该属性只是 ibm.appcenter.proxy.protocol 的替代名称。 |
-| ibm.appcenter.push.schedule.period.amount | 指定发送应用程序更新的推送通知的时间调度。服务器上的应用程序频繁更改时，设置该属性以发送成批的通知。
-例如，发送过去一小时内发生的全部通知，而不是逐个发送通知。 |
-| ibm.appcenter.push.schedule.period.unit | 指定发送应用程序更新的推送通知时时间调度的单位。 |
-| ibm.appcenter.services.endpoint | 允许 Application Center 控制台查找 Application Center REST 服务。指定 applicationcenter.war Web 应用程序的外部地址和上下文根。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。例如，https://appcntr.net:443/applicationcenter。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。 |
-| ibm.appcenter.services.iconCacheMaxAge | 指定 Application Center 控制台和客户机的已缓存图标保持有效的秒数。应用程序图标很少发生更改，因此会对其进行缓存。指定值大于 600（10 分钟）以减少图标的数据传输量。 |
-| mfp.jndi.configuration | 可选。如果将 JNDI 配置插入到 WAR 文件或将其作为共享库提供，那么该属性的值是 JNDI 配置的名称。您还可以将该值指定为系统属性。 |
-| mfp.jndi.file | 可选。如果将 JNDI 配置存储为外部文件，那么该属性的值是描述 JNDI 配置的文件的路径。您还可以将该值指定为系统属性。 |
+| appcenter.database.type| 数据库类型，仅当 appcenter.jndi.name 中未指定数据库时才需要该属性。|
+| appcenter.jndi.name| 数据库的 JNDI 名称。该参数是指定数据库的正常机制。缺省值为 java:comp/env/jdbc/AppCenterDS。|
+| appcenter.openjpa.ConnectionDriverName| 数据库连接驱动程序类的标准类名。仅当 appcenter.jndi.name 中未指定数据库时才需要该属性。|
+| appcenter.openjpa.ConnectionPassword| 用于数据库连接的密码。仅当 appcenter.jndi.name 中未指定数据库时才设置该属性。|
+| appcenter.openjpa.ConnectionURL| 数据库连接驱动程序类的 URL。仅当 appcenter.jndi.name 中未指定数据库时才设置该属性。|
+| appcenter.openjpa.ConnectionUserName| 数据库连接的用户名。仅当 appcenter.jndi.name 中未指定数据库时才设置该属性。|
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate| 将该属性设置为 true 可指定 Application Center 发送 iOS 应用程序更新的相关推送通知时所使用的证书是否是开发证书。如果不是开发证书，请将该属性设置为 **false**。请参阅[配置 Application Center 服务器以连接至 Apple 推送通知服务](../../../appcenter/push-notifications/#apns)。|
+| ibm.appcenter.apns.p12.certificate.location| Application Center 发送 iOS 应用程序更新的相关推送通知时所使用的开发证书文件的路径。例如**/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12**。
+请参阅[配置 Application Center 服务器以连接至 Apple 推送通知服务](../../../appcenter/push-notifications/#apns)。|
+| ibm.appcenter.apns.p12.certificate.password| Application Center 发送 iOS 应用程序更新的相关推送通知时所使用的证书的密码。请参阅[配置 Application Center 服务器以连接至 Apple 推送通知服务](../../../appcenter/push-notifications/#apns)。|
+| ibm.appcenter.forceUpgradeDBTo60| 自 IBM Worklight V6.0 起，已更改了数据库设计。数据库会在 Application Center Web 应用程序启动时自动更新。如果想要重复该更新，可将该参数设置为 **true**，并再次启动 Web 应用程序。稍后可将该参数重置为 **false**。|
+| ibm.appcenter.gcm.signature.googleapikey| Application Center 发送 Android 应用程序更新的相关推送通知时所使用的 Google API 密钥。例如，AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs。请参阅[配置 Application Center 服务器以连接至 Google Cloud Messaging](../../../appcenter/push-notifications/#gcm)。|
+| ibm.appcenter.ios.plist.onetimeur| 指定 iOS PList 清单中存储的 URL 是否使用不带凭证的一次性 URL 机制。如果将该属性设置为 true，由于一次性 URL 由加密机制生成以防有人猜测出 URL 但不要求用户登录，因此安全级别为中级。将该属性设置为 false 可提供最高级别的安全性，因为此时每个 URL 都需要用户登录。但是，安装时要求用户多次登录会降低用户体验。请参阅[在 iOS 移动设备上安装客户机](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device)。|
+| ibm.appcenter.ldap.active| 指定是否为 Application Center 配置了 LDAP。将该属性设置为 true 可启用 LDAP，或者将该属性设置为 false 可禁用 LDAP。请参阅[使用 LDAP 管理用户](#managing-users-with-ldap)。|
+| ibm.appcenter.ldap.cache.expiration.seconds| Application Center 将维护 LDAP 数据的缓存，仅在缓存到期后更改内容才可见。指定 LDAP 高速缓存中的某个条目保持有效的秒数。将该属性的值设置为大于 3600（1 小时）以减少 LDAP 请求的数量。如果未输入任何值，缺省值为 86400，即 24 个小时。如果需要手动清除 LDAP 数据的缓存，请输入以下命令：`acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password`。请参阅[使用独立工具来清除 LDAP 高速缓存](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)。|
+| ibm.appcenter.ldap.connectionURL| 未使用任何虚拟成员管理器 (VMM) 时用于访问 LDAP 服务器的 URL。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.federated.active| 指定是否使用联合存储库为 Application Center 配置 LDAP。从 WebSphere Application Server Liberty Profile V8.5.5 起，将该属性设置为 true 可启用联合注册表。将该属性设置为 false（缺省设置）可禁用联合注册表。
+请参阅[使用 LDAP 管理用户](#managing-users-with-ldap)。|
+| ibm.appcenter.ldap.group.base| 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时用于查找组的搜索条件。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.group.filter| LDAP 组搜索过滤器。使用 **%v** 作为组属性的占位符。仅当在相同的子树中定义 LDAP 用户和组时才需要该属性；即，当属性 **ibm.appcenter.ldap.user.base** 和 **ibm.appcenter.ldap.group.base** 具有相同值时。|
+| ibm.appcenter.ldap.group.name| 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的组名属性。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.group.nesting| 指定当所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时，LDAP 是否包含嵌套组（即，组中组）。将该属性设置为 false 可加快 LDAP 访问速度，因为不会递归搜索组。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.group.uniquemember| 指定当所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的组成员。该属性是 ibm.appcenter.ldap.user.groupmembership 属性的逆属性。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.referral| 指定引荐是否受 JNDI API 支持。如果未指定任何值，那么 JNDI API 不会处理 LDAP 引荐。以下是可能值：{::nomarkdown}<ul><li>ignore：忽略在 LDAP 服务器中发现的引荐。</li><li>follow：自动跟踪在 LDAP 服务器中发现的任何引荐。</li><li>throw：使 LDAP 服务器中发现的每个引荐都抛出异常。</li></ul>{:/} |
+| ibm.appcenter.ldap.security.binddn| 允许搜索 LDAP 目录的用户的专有名称。仅在需要安全绑定时使用该属性。|
+| ibm.appcenter.ldap.security.bindpwd| 有权搜索 LDAP 目录的用户的密码。仅在需要安全绑定时使用该属性。<br><br>可通过 Liberty Profile securityUtility 工具对密码进行编码。运行该工具，然后将该属性的值设置为该工具生成的已编码密码。<br><br>编辑 Liberty Profile 的 server.xml 文件，以检查是否启用 classloader 来装入用于解码密码的 JAR 文件。<br><br>请参阅[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.security.sasl| 指定需要 LDAP 外部 SASL 认证机制以绑定到 LDAP 服务器的情况下的安全认证机制。该值取决于 LDAP 服务器，通常设置为 EXTERNAL。当设置该属性时，需要进行安全认证才能连接到未使用虚拟成员管理器 (VMM) 的 LDAP。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.user.base| 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时用于查找用户的搜索条件。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.user.displayName| 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的显示名称属性（如用户的真实姓名）。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.displayName.filter| 适用于 ibm.appcenter.ldap.user.displayName 属性的 LDAP 用户搜索过滤器。使用 %v 作为显示名属性的占位符。<br><br>仅当在相同的子树中定义 LDAP 用户和组时（即，当属性 ibm.appcenter.ldap.user.base 和 ibm.appcenter.ldap.group.base 具有相同值时）才需要该属性。|
+| ibm.appcenter.ldap.user.filter| 适用于 ibm.appcenter.ldap.user.loginName 属性的 LDAP 用户搜索过滤器。使用 **%v** 作为登录名属性的占位符。<br><br>仅当在相同的子树中定义 LDAP 用户和组时（即，当属性 ibm.appcenter.ldap.user.base 和 ibm.appcenter.ldap.group.base 具有相同值时）才需要该属性。|
+| ibm.appcenter.ldap.user.groupmembership| 指定所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的成员组。该属性是 ibm.appcenter.ldap.group.uniquemember 属性的逆属性。该属性为可选，但是，当指定该属性时，LDAP 访问速度更快。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.user.loginName| 所使用的 LDAP 未使用虚拟成员管理器 (VMM) 时的登录名属性。请参阅[配置 LDAP ACL 管理 (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) 和[配置 LDAP ACL 管理 (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)。|
+| ibm.appcenter.ldap.vmm.active| 将该属性设置为 true 可指定通过虚拟成员管理器 (VMM) 完成 LDAP，或者将该属性设置为 false 可指定其他行为。请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。|
+| ibm.appcenter.ldap.vmm.adminpwd| 通过虚拟成员管理器 (VMM) 完成 LDAP 时的密码。请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。|
+| ibm.appcenter.ldap.vmm.adminuser| 通过虚拟成员管理器 (VMM) 完成 LDAP 时的用户。请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。|
+| ibm.appcenter.logging.formatjson| 该属性仅在 ibm.appcenter.logging.tosystemerror 设置为 true 时生效。如果启用该属性，将对定向到 System.Error 的日志记录消息中的 JSON 响应进行格式化。调试服务器时设置该属性十分有用。|
+| ibm.appcenter.logging.tosystemerror| 指定是否所有的日志记录消息都定向到 System.Error。调试服务器时设置该属性十分有用。|
+| ibm.appcenter.openjpa.Log| 此属性传递到 OpenJPA，并启用 JPA 日志记录。有关更多详细信息，请参阅 [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)。|
+| ibm.appcenter.proxy.host| 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定主机的地址。设置该属性以允许防火墙外部的用户访问 Application Center 服务器。通常该属性是代理的地址。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。|
+| ibm.appcenter.proxy.port| 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定主机的地址。设置该属性以允许防火墙外部的用户访问 Application Center 服务器。通常此属性是代理的端口，例如 443。仅在外部 URI 协议和内部 URI 协议不同的情况下才需要该属性。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。|
+| ibm.appcenter.proxy.protocol| 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定协议（http 或 https）。设置该属性以允许防火墙外部的用户访问 Application Center 服务器。通常该属性设置为代理的协议。例如，appcntr.net。仅在外部和内部 URI 协议不同的情况下才需要该属性。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。|
+| ibm.appcenter.proxy.scheme| 该属性只是 ibm.appcenter.proxy.protocol 的替代名称。|
+| ibm.appcenter.push.schedule.period.amount| 指定发送应用程序更新的推送通知的时间调度。服务器上的应用程序频繁更改时，设置该属性以发送成批的通知。
+例如，发送过去一小时内发生的全部通知，而不是逐个发送通知。|
+| ibm.appcenter.push.schedule.period.unit| 指定发送应用程序更新的推送通知时时间调度的单位。|
+| ibm.appcenter.services.endpoint| 允许 Application Center 控制台查找 Application Center REST 服务。指定 applicationcenter.war Web 应用程序的外部地址和上下文根。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI 且不能为本地 LAN 中的内部 URI。例如，https://appcntr.net:443/applicationcenter。请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。|
+| ibm.appcenter.services.iconCacheMaxAge| 指定 Application Center 控制台和客户机的已缓存图标保持有效的秒数。应用程序图标很少发生更改，因此会对其进行缓存。指定值大于 600（10 分钟）以减少图标的数据传输量。|
+| mfp.jndi.configuration| 可选。如果将 JNDI 配置插入到 WAR 文件或将其作为共享库提供，那么该属性的值是 JNDI 配置的名称。您还可以将该值指定为系统属性。|
+| mfp.jndi.file| 可选。如果将 JNDI 配置存储为外部文件，那么该属性的值是描述 JNDI 配置的文件的路径。您还可以将该值指定为系统属性。|
 
 ### 配置 WebSphere Application Server 以支持公共应用商店中的应用程序
 {: #configuring-websphere-application-server-to-support-applications-in-public-app-stores }

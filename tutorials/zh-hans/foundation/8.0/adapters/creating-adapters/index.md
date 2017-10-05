@@ -401,7 +401,7 @@ mfpdev adapter deploy all
 如果没有 Maven Central Repository 的在线访问权，那么您可以共享贵组织内部存储库中的 {{ site.data.keys.product }} Maven 工件。
 
 1. [访问“下载”页面]({{site.baseurl}}/downloads/)，然后下载 {{ site.data.keys.mf_dev_kit_full }} 安装程序。
-2. 启动 {{ site.data.keys.mf_server }}，然后在浏览器中从以下 URL 装入 {{ site.data.keys.mf_console }}：`http://<your-server-host:server-port>/mfpconsole`。
+2. 启动 {{ site.data.keys.mf_server }}，然后在浏览器中从以下 URL 加载 {{ site.data.keys.mf_console }}：`http://<your-server-host:server-port>/mfpconsole`。
 3. 单击**下载中心**。在**工具 → 适配器 Archetype** 下，单击**下载**。这样会下载 **mfp-maven-central-artifacts-adapter.zip** 归档。
 4. 通过运行适用于 Linux 和 Mac 的 **install.sh** 脚本或适用于 Windows 的 **install.bat** 脚本，将适配器 archetype 和安全性检查添加到内部 Maven 存储库。
 5. adapter-maven-api 需要以下 JAR 文件。确保这些文件位于开发人员的本地 **.m2** 文件夹或位于贵组织的 Maven 存储库中。您可以从 The Central Repository 下载这些文件。
