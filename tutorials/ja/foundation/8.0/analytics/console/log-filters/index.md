@@ -21,29 +21,25 @@ weight: 2
 {: #android }
 
 ```java
-Logger.updateConfigFromServer();
-```
+Logger.updateConfigFromServer();```
 
 #### iOS
 {: #ios }
 
 ```objective-c
-[OCLogger updateConfigFromServer];
-```
+[OCLogger updateConfigFromServer];```
 
 #### Cordova
 {: #cordova }
 
 ```javascript
-WL.Logger.updateConfigFromServer();
-```
+WL.Logger.updateConfigFromServer();```
 
 #### Web
 {: #web }
 
 ```javascript
-ibmmfpfanalytics.logger.updateConfigFromServer();
-```
+ibmmfpfanalytics.logger.updateConfigFromServer();```
 
 サーバーが返す `Logger` 構成値は、クライアント・サイドに設定されているすべての値に優先します。クライアント・ログ・プロファイルが削除されている場合、クライアントは、クライアント・ログ・プロファイルの取得を試みても空のペイロードを受け取ります。この場合、`Logger` 構成は、デフォルトである、クライアントに元々構成されていたものになります。
 

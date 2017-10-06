@@ -42,7 +42,7 @@ MFPPush.registerNotificationsCallback(notificationReceived);
 
 function registerDevice() {
     var phoneNumber = prompt("Enter Your 10 digit phone number");
-    if(phoneNumber != null && phoneNumber!="" && /^\d+$/.test(phoneNumber)) {
+    if(phoneNumber != null &&  phoneNumber!="" &&  /^\d+$/.test(phoneNumber)) {
         var options = {};
         options.phoneNumber = phoneNumber;
         MFPPush.registerDevice(options, 
@@ -62,9 +62,10 @@ function registerDevice() {
 ```
 
 > 也可以使用[推送设备注册 (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html) 来注册设备
+
 ## 使用 SMS 预订 servlet
 {: #using-an-sms-subscribe-servlet}
-可使用 REST API 将通知发送到已注册的设备。可以发送所有形式的通知：标记通知、广播通知和已认证的通知
+可使用 REST API 将通知发送到已注册的设备。 可以发送所有形式的通知：标记通知、广播通知和已认证的通知
 
 要发送通知，可使用 POST 向 REST 端点发出请求：`imfpush/v1/apps/<application-identifier>/messages`。  
 示例 URL： 
@@ -74,6 +75,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > 要查看所有推送通知 REST API，请参阅用户文档中的 <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API 运行时服务</a>主题。
+
 要发送通知，请参阅[发送通知](../../sending-notifications)教程。
 
 <img alt="样本应用程序图像" src="sample-app.png" style="float:right"/>

@@ -5,9 +5,9 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
   - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -56,7 +56,7 @@ Objective-C
 
 ```objc
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-    if (error == nil){
+if (error == nil){
         NSLog(@"%@", response.responseText);
     } else {
         NSLog(@"%@", error.description);

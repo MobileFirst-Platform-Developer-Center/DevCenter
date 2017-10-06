@@ -19,7 +19,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-该样本演示了定制注册流程和递增授权。在此一次性注册流程中，用户需要输入其用户名和密码，还需要定义 PIN 码。  
+该样本演示了定制注册流程和递增授权。 在此一次性注册流程中，用户需要输入其用户名和密码，还需要定义 PIN 码。  
 
 **先决条件：**确保阅读 [ExternalizableSecurityCheck](../externalizable-security-check/) 和[递增](../step-up/)教程。
 
@@ -34,14 +34,14 @@ downloads:
 {: #application-flow }
 * 在应用程序初次启动时（注册前），会显示具有以下两个按钮的 UI：**获取公共数据**和**注册**。
 * 在用户点击**注册**按钮开始注册时，会使用登录表单进行提示，然后请求该用户设置 PIN 码。
-* 在用户成功注册后，UI 包含四个按钮：**获取公共数据**、**获取余额**、**获取交易**和**注销**。用户无需输入 PIN 码，便可访问全部四个按钮。
-* 再次启动应用程序时（注册后），UI 仍包含所有四个按钮。然而，当用户单击**获取交易*** 按钮时，会要求该用户输入 PIN 码。
+* 在用户成功注册后，UI 包含四个按钮：**获取公共数据**、**获取余额**、**获取交易**和**注销**。 用户无需输入 PIN 码，便可访问全部四个按钮。
+* 再次启动应用程序时（注册后），UI 仍包含所有四个按钮。 然而，当用户单击**获取交易*** 按钮时，会要求该用户输入 PIN 码。
 
 尝试输入 PIN 码三次失败后，会提示该用户使用用户名和密码重新认证和重置 PIN 码。
 
 ## 将数据存储在持久性属性中
 {: #storing-data-in-persistent-attributes }
-您可以选择将受保护数据保存在 `PersistentAttributes` 对象中，此对象是已注册客户机的定制属性的容器。可以从安全性检查类或从适配器资源类访问该对象。
+您可以选择将受保护数据保存在 `PersistentAttributes` 对象中，此对象是已注册客户机的定制属性的容器。 可以从安全性检查类或从适配器资源类访问该对象。
 
 在提供的样本应用程序中，在适配器资源类中使用 `PersistentAttributes` 对象来存储 PIN 码：
 
@@ -85,7 +85,7 @@ downloads:
 
 ### EnrollmentUserLogin
 {: #enrollmentuserlogin }
-`EnrollmentUserLogin` 安全性检查保护 **setPinCode** 资源，以便只有已认证的用户才能够设置 PIN 码。此安全性检查意味着快速到期，并且仅在“初次体验”期间进行。它与[实现 UserAuthenticationSecurityCheck](../user-authentication/security-check) 教程中所解释的 `UserLogin` 安全性检查相同，但额外的 `isLoggedIn` 和 `getRegisteredUser` 方法除外。  
+`EnrollmentUserLogin` 安全性检查保护 **setPinCode** 资源，以便只有已认证的用户才能够设置 PIN 码。 此安全性检查意味着快速到期，并且仅在“初次体验”期间进行。 它与[实现 UserAuthenticationSecurityCheck](../user-authentication/security-check) 教程中所解释的 `UserLogin` 安全性检查相同， 但额外的 `isLoggedIn` 和 `getRegisteredUser` 方法除外。  
 如果安全性检查状态等于 SUCCESS，`isLoggedIn` 方法会返回 `true`，否则将返回 `false`。  
 `getRegisteredUser` 方法会返回已认证的用户。
 
@@ -104,14 +104,14 @@ public AuthenticatedUser getRegisteredUser() {
 {: #enrollmentpincode }
 `EnrollmentPinCode` 安全性检查可保护**获取交易**资源，与[实现 CredentialsValidationSecurityCheck](../credentials-validation/security-check) 教程中所解释的 `PinCodeAttempts` 安全性检查相似（一些更改除外）。
 
-在本教程的示例中，`EnrollmentPinCode` **取决于** `EnrollmentUserLogin`。成功登录到 `EnrollmentUserLogin` 后，只会要求用户输入 PIN 码。
+在本教程的示例中，`EnrollmentPinCode` **取决于** `EnrollmentUserLogin`。 成功登录到 `EnrollmentUserLogin` 后，只会要求用户输入 PIN 码。
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-在应用程序**初次**启动且用户成功注册时，用户必须能够在无需输入其刚刚设置的 PIN 码的情况下访问**获取交易**资源。为此，`authorize` 方法使用 `EnrollmentUserLogin.isLoggedIn` 方法来检查用户是否登录。这意味着只要 `EnrollmentUserLogin` 不到期，用户便能够访问**获取交易**。
+在应用程序**初次**启动且用户成功注册时，用户必须能够在无需输入其刚刚设置的 PIN 码的情况下访问**获取交易**资源。 为此，`authorize` 方法使用 `EnrollmentUserLogin.isLoggedIn` 方法来检查用户是否登录。 这意味着只要 `EnrollmentUserLogin` 不到期，用户便能够访问**获取交易**。
 
 ```java
 @Override
@@ -150,7 +150,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 protected boolean validateCredentials(Map<String, Object> credentials) {
     PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-    if(credentials!=null && credentials.containsKey("pin")){
+    if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals(attributes.get("pinCode"))){

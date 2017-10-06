@@ -85,8 +85,8 @@ com.worklight.level = ALL
 
 以下の JNDI プロパティーが、Application Center サービス (**applicationcenter.war**) 用の Web アプリケーションに適用されます。
 
-| プロパティーの設定 | 設定 | 説明 | 
+| プロパティーの設定| 設定| 説明| 
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | デフォルトでは、このプロパティーは false に設定されます。ログ・ファイル内で読みやすくするために JSON 出力をブランク・スペースでフォーマットするには、この値を true に設定してください。 | 
-| ibm.appcenter.logging.tosystemerror | true | デフォルトでは、このプロパティーは false に設定されます。システム・エラーへのすべてのログ・メッセージをログ・ファイルに出力するには、この値を true に設定してください。このプロパティーを使用すると、グローバルなロギングをオンにすることができます。 | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE | この設定は、生成されるすべての SQL ステートメントをログ・ファイルに出力します。 | 
+| ibm.appcenter.logging.formatjson| true| デフォルトでは、このプロパティーは false に設定されます。ログ・ファイル内で読みやすくするために JSON 出力をブランク・スペースでフォーマットするには、この値を true に設定してください。| 
+| ibm.appcenter.logging.tosystemerror| true| デフォルトでは、このプロパティーは false に設定されます。システム・エラーへのすべてのログ・メッセージをログ・ファイルに出力するには、この値を true に設定してください。このプロパティーを使用すると、グローバルなロギングをオンにすることができます。| 
+| ibm.appcenter.openjpa.Log| DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE| この設定は、生成されるすべての SQL ステートメントをログ・ファイルに出力します。| 

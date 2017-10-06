@@ -949,7 +949,7 @@ Para funcionarem corretamente, os nós do serviço de administração do {{ site
         * Clique em **Enviar ação**.
         * Espere até que o status do aplicativo na coluna **Status** mostre o ícone interrompido.
         * Na coluna **Ação**, selecione **Iniciar**.
-        * Clique em E**nviar ação**.
+        * Clique em **Enviar Ação**.
 
         Repita esta etapa para cada aplicativo de tempo de execução do {{ site.data.keys.product }} na lista.
 
@@ -1065,7 +1065,7 @@ Alguns parâmetros de pacotes de scripts no modelo foram configurados com os val
 Para obter informações adicionais sobre as opções de composição e de configuração do modelo predefinido que é usado nesse procedimento, consulte [Modelo do {{ site.data.keys.mf_app_center }} (único nó do WAS)](#mobilefirst-application-center-was-single-node-template).
 
 1. Criar um padrão a partir do modelo predefinido:
-    * No painel **IBM PureApplication System**, clique em P**adrões → Padrões de sistema virtual**. A página Padrões de Sistema Virtual é aberta.
+    * No painel **IBM PureApplication System**, clique em P**adrões → Padrões de Sistema Virtual**. A página Padrões de Sistema Virtual é aberta.
     * Na página **Padrões de Sistema Virtual**, clique em **Criar novo** e, em seguida, na janela pop-up, selecione **MobileFirst Platform (único nó do AppCenter Liberty)** da lista de modelos predefinidos. Se o nome for visível apenas parcialmente devido a seu comprimento, é possível confirmar se o modelo correto foi selecionando, visualizando sua descrição na guia Mais informações.
     * No campo **Nome**, forneça um nome para o padrão.
     * No campo **Versão**, especifique o número da versão do padrão.
@@ -1200,7 +1200,7 @@ seguintes tópicos:
     * Salve o padrão.
 
 3. Configurar a administração do {{ site.data.keys.mf_server }}:
-    * No IBM PureApplication System, no painel, clique em P**adrões → Padrões de sistema virtual**. A página Padrões de Sistema Virtual é aberta.
+    * Em IBM PureApplication System, no painel, clique em P**adrões → Padrões de Sistema Virtual**. A página Padrões de Sistema Virtual é aberta.
     * Na página **Padrões de sistema virtual**, use o campo **Procurar** para localizar e selecionar o padrão criado e, em seguida, clique em **Abrir** para abrir a página **Construtor de Padrões**.
     * No nó MobileFirst Platform Server (ou no nó DmgrNode quando usar o modelo do {{ site.data.keys.product }} (WAS ND)), selecione o componente MFP Server Administration. As propriedades do componente selecionado são exibidas próximo à tela.
     * Forneça as seguintes informações de LDAP nos campos fornecidos:
@@ -1337,7 +1337,7 @@ Esse procedimento envolve configurar os parâmetros de banco de dados externo pa
     * [Implementando o {{ site.data.keys.mf_server }} em clusters de servidores do WebSphere Application Server Network Deployment](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
 2. Selecione **MobileFirst Platform DB** e clique em **Remover componente**.
-3. Configure a administração do {{ site.data.keys.mf_server }}:
+3. Configurar a administração do {{ site.data.keys.mf_server }}:
     * No IBM PureApplication System, no painel, clique em **Padrões → Padrões de Sistema Virtual**. A página **Padrões de Sistema Virtual** é aberta.
     * Na página **Padrões de sistema virtual**, use o campo **Procurar** para localizar e selecionar o padrão criado e, em seguida, clique em **Abrir** para abrir a página **Construtor de Padrões**.
     * No nó MobileFirst Platform Server (ou no nó DmgrNode quando usar o modelo do {{ site.data.keys.product }} (WAS ND)), selecione o componente **MFP Server Administration**. As propriedades do componente selecionado são exibidas próximo à tela.
@@ -1386,7 +1386,8 @@ Se você pretende usar um repositório LDAP para proteger o Console do Analytics
 
 > **Importante:** Quando a configuração de repositório LDAP estiver ativada no componente Analytics, um usuário de administração padrão não será criado para o {{ site.data.keys.mf_analytics }}. Em vez disso, é preciso especificar os valores de nome do usuário e senha de administração que estão armazenados no repositório LDAP. Esses valores não necessários para proteger o Console do Analytics.
 
-1. Construir um padrão com a topologia necessária. Para obter informações adicionais, consulte os seguintes tópicos:
+1. Construir um padrão com a topologia necessária. Para obter informações adicionais, consulte os
+seguintes tópicos:
     * [Implementando o {{ site.data.keys.mf_server }} em um servidor de perfil Liberty do WebSphere Application Server de único nó](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
     * [Implementando o {{ site.data.keys.mf_server }} em um servidor de perfil Liberty do WebSphere Application Server de vários nós](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
     * [Implementando o {{ site.data.keys.mf_server }} em um servidor de perfil completo do WebSphere Application Server de único nó](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
@@ -1493,11 +1494,11 @@ Se você pretende usar um repositório LDAP para proteger o Console do Analytics
         * Repita o processo para configurar uma dependência de dados de **analytics\_admin\_password** para **admin_password**.
         * Clique em **OK** para salvar suas mudanças.
             
-            ![Incluindo link do componente MFP Server Runtime Deployment para o componente MFP Analytics](pureapp_analytics_link_2.jpg)
+            ![Incluindo link do componente MFP Server Runtime Deployment no componente MFP Analytics](pureapp_analytics_link_2.jpg)
             
     A figura a seguir mostra um exemplo de um nó {{ site.data.keys.mf_analytics }} incluído em um padrão do {{ site.data.keys.product }} WAS ND:
 
-    ![Nó {{ site.data.keys.mf_analytics }} incluído em um padrão do {{ site.data.keys.product }} WAS ND](pureapp_analytics_node.jpg)
+    Nó ![{{ site.data.keys.mf_analytics }} incluído em um padrão do {{ site.data.keys.product }} WAS ND](pureapp_analytics_node.jpg)
 
 4. Configurar e ativar a implementação padrão.
 
@@ -1538,7 +1539,7 @@ Os seguintes modelos estão disponíveis:
 {: #mobilefirst-foundation-liberty-single-node-template }
 O diagrama a seguir mostra a composição do modelo do "MobileFirst Platform (único nó do Liberty)".
 
-![Modelo do {{ site.data.keys.product }} (único nó do Liberty)](pureapp_templ_Lib_single_node.jpg)
+Modelo do ![{{ site.data.keys.product }} (único nó do Liberty)](pureapp_templ_Lib_single_node.jpg)
 
 O modelo do {{ site.data.keys.product }} (único nó do Liberty) é composto dos seguintes nós e componentes:
 
@@ -1551,7 +1552,7 @@ O modelo do {{ site.data.keys.product }} (único nó do Liberty) é composto dos
 {: #mobilefirst-foundation-liberty-server-farm-template }
 O diagrama a seguir mostra a composição do modelo do "MobileFirst Platform (server farm do Liberty)".
 
-![Modelo do {{ site.data.keys.product }} (server farm do Liberty)](pureapp_templ_Lib_server_farm.jpg)
+Modelo do ![{{ site.data.keys.product }} (server farm do Liberty)](pureapp_templ_Lib_server_farm.jpg)
 
 O modelo do {{ site.data.keys.product }} (server farm do Liberty) é composto dos seguintes nós e componentes:
 
@@ -1565,49 +1566,51 @@ O modelo do {{ site.data.keys.product }} (server farm do Liberty) é composto do
 {: #mobilefirst-foundation-was-single-node-template }
 O diagrama a seguir mostra a composição do modelo do "MobileFirst Platform (único nó do WAS)".
 
-![Modelo do {{ site.data.keys.product }} (único nó do WAS)](pureapp_templ_WAS_single_node.jpg)
+Modelo do ![{{ site.data.keys.product }} (único nó do WAS)](pureapp_templ_WAS_single_node.jpg)
 
 O modelo do {{ site.data.keys.product }} (único nó do WAS) é composto dos seguintes nós e componentes:
 
 | Nó | Componentes | 
 |------|------------|
-| MobileFirst Platform Server | **Servidor independente **<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição:<br/>Não mude os valores para os atributos de componentes a seguir: {::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação dos padrões que se baseiam nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }} **<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>Adaptador {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform Server | **Servidor independente
+**<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição:<br/>Não mude os valores para os atributos de componentes a seguir: {::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }} **<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>Adaptador {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
 | MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
 
 ### Modelo do {{ site.data.keys.product }} (server farm do WAS)
 {: #mobilefirst-foundation-was-server-farm-template }
 O diagrama a seguir mostra a composição do modelo do "MobileFirst Platform (server farm do WAS)".
 
-![Modelo do {{ site.data.keys.product }} (server farm do WAS)](pureapp_templ_WAS_server_farm.jpg)
+Modelo do ![{{ site.data.keys.product }} (server farm do WAS)](pureapp_templ_WAS_server_farm.jpg)
 
 O modelo do {{ site.data.keys.product }} (server farm do WAS) é composto dos seguintes nós e componentes:
 
 | Nó | Componentes | 
 |------|------------|
 | Servidor IHS | **Servidores HTTP IBM**<br/>Instalação do IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuração automática do IBM HTTP Server. | 
-| MobileFirst Platform Server | **Servidor independente **<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação dos padrões que se baseiam nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }} **<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}.<br/><br/>**Política de ajuste de escala base**<br/>Política de ajuste de escala de VM: número de VMs. | 
+| MobileFirst Platform Server | **Servidor independente
+**<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }} **<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}.<br/><br/>**Política de ajuste de escala base**<br/>Política de ajuste de escala de VM: número de VMs. | 
 | MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
 
 ### Modelo do {{ site.data.keys.product }} (WAS ND)
 {: #mobilefirst-foundation-was-nd-template }
 O diagrama a seguir mostra a composição do modelo do "MobileFirst Platform (WAS ND)".
 
-![Modelo do {{ site.data.keys.product }} (WAS ND)](pureapp_templ_WAS_ND.jpg)
+Modelo do ![{{ site.data.keys.product }} (WAS ND)](pureapp_templ_WAS_ND.jpg)
 
 O modelo do {{ site.data.keys.product }} (WAS ND) é composto dos seguintes nós e componentes:
 
 | Nó | Componentes | 
 |------|------------|
 | Servidor IHS | **Servidores HTTP IBM**<br/>Instalação do IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuração automática do IBM HTTP Server. | 
-| DmgrNode | **Gerenciador de implementação**<br/>Instalação do gerenciador de implementação do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação dos padrões que se baseiam nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Arquivo WAR de tempo de execução.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**MFP Application**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Adapter**<br/>Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
+| DmgrNode | **Gerenciador de implementação**<br/>Instalação do gerenciador de implementação do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Arquivo WAR de tempo de execução.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**MFP Application**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Adapter**<br/>Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
 | MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
-| CustomNode | **Nós Personalizados**<br/>Detalhes das células e nós nos clusters de servidores do WebSphere Application Server Network Deployment.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação dos padrões que se baseiam nesse modelo falhará.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>As portas que devem ser abertas para permitir conexão com o servidor de banco de dados e o servidor LDAP.<br/><br/>**Política de ajuste de escala base **<br/>Número de instâncias da máquina virtual necessárias para a topologia escolhida. | 
+| CustomNode | **Nós Personalizados**<br/>Detalhes das células e nós nos clusters de servidores do WebSphere Application Server Network Deployment.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>As portas que devem ser abertas para permitir conexão com o servidor de banco de dados e o servidor LDAP.<br/><br/>**Política de ajuste de escala base **<br/>Número de instâncias da máquina virtual necessárias para a topologia escolhida. | 
 
 ### Modelo do {{ site.data.keys.mf_app_center }} (único nó do Liberty)
 {: #mobilefirst-application-center-liberty-single-node-template }
 O diagrama a seguir mostra a composição do modelo do "MobileFirst Platform Application Center (único nó do Liberty)".
 
-![Modelo do {{ site.data.keys.mf_app_center }} (único nó do Liberty)](pureapp_templ_appC_Lib_single_node.jpg)
+Modelo do ![{{ site.data.keys.mf_app_center }} (único nó do Liberty)](pureapp_templ_appC_Lib_single_node.jpg)
 
 O modelo do {{ site.data.keys.mf_app_center }} (único nó do Liberty) é composto dos seguintes nós e componentes:
 
@@ -1620,14 +1623,15 @@ O modelo do {{ site.data.keys.mf_app_center }} (único nó do Liberty) é compos
 {: #mobilefirst-application-center-was-single-node-template }
 O diagrama mostra a composição do modelo do "MobileFirst Platform Application Center (único nó do WAS)".
 
-![Modelo do {{ site.data.keys.mf_app_center }} (único nó do WAS)](pureapp_templ_appC_WAS_single_node.jpg)
+Modelo do ![{{ site.data.keys.mf_app_center }} (único nó do WAS)](pureapp_templ_appC_WAS_single_node.jpg)
 
 O modelo do {{ site.data.keys.mf_app_center }} (único nó do WAS) é composto dos seguintes nós e componentes:
 
 | Nó | Componentes | 
 |------|------------|
 | MFP AppCenter DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
-| MFP AppCenter Server | **Servidor independente **<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação dos padrões que se baseiam nesse modelo falhará.<br/><br/>**MFP WAS SDK Level**<br/>O propósito desse script é configurar o nível de SDK necessário como o SDK padrão para o Perfil do WAS<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Application Center**<br/>Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server. | 
+| MFP AppCenter Server | **Servidor independente
+**<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP WAS SDK Level**<br/>O propósito desse script é configurar o nível de SDK necessário como o SDK padrão para o Perfil do WAS<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Application Center**<br/>Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server. | 
 
 
 ## Pacotes de scripts para {{ site.data.keys.mf_server }}
@@ -1680,7 +1684,7 @@ Esse pacote de scripts configura o {{ site.data.keys.mf_analytics_server }} em u
 | BASE_DN | (parâmetro LDAP) DN base. | 
 | BIND_DN | (parâmetro LDAP) DN de ligação. | 
 | BIND_PASSWORD | (parâmetro LDAP) Senha do DN de ligação. | 
-| REQUIRE_SSL | (parâmetro LDAP) Configure-o como true para conexão segura com o servidor LDAP.{::nomarkdown}<ul><li>Quando for true, LDAP_SSL_PORT será usado e CERT_FILE_PATH será necessário para localizar o arquivo de certificação do servidor LDAP.</li><li>Quando for false, LDAP_PORT será usado.</li></ul>{:/}Valor padrão: falso. | 
+| REQUIRE_SSL | (parâmetro LDAP) Configure-o como true para conexão segura com o servidor LDAP.{::nomarkdown}<ul><li>Quando for true, LDAP_SSL_PORT será usado e CERT_FILE_PATH será necessário para localizar o arquivo de certificação do servidor LDAP.</li><li>Quando for false, LDAP_PORT será usado.</li></ul>{:/}Valor padrão: false. | 
 | USER_FILTER | (parâmetro LDAP) Filtro de usuário LDAP que procura usuários no registro do usuário existente. | 
 | GROUP_FILTER | (parâmetro LDAP) Filtro de grupo LDAP que procura grupos no registro do usuário existente. | 
 | LDAP\_REPOSITORY\_NAME | (parâmetro LDAP) Nome do servidor LDAP. | 
@@ -1712,7 +1716,7 @@ Esse pacote de scripts é aplicável somente para Nós customizados no modelo pa
 | WAS_ROOT | Obrigatório. Diretório de instalação de Nós customizados do WebSphere Application Server Network Deployment no nó CustomNode. Nos modelos padrão, ele é mapeado para o atributo de saída install_directory do servidor de Nós customizados. |
 | profile_name | Obrigatório. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída cn_profile_name de Nós customizados. | 
 | WAS\_admin\_user | Obrigatório. É mapeado para o atributo de saída was_admin de Nós customizados no modelo padrão. | 
-| Portas	| Obrigatório. Outras portas que precisam ser abertas para conexão com o servidor DB2 e o servidor LDAP (opcional). Os valores de porta podem ser separados por ponto-e-vírgula; por exemplo, '50000;636'<br/><br/>Valor padrão: 50000. | 
+| Ports	| Obrigatório. Outras portas que precisam ser abertas para conexão com o servidor DB2 e o servidor LDAP (opcional). Os valores de porta podem ser separados por ponto-e-vírgula; por exemplo, '50000;636'<br/><br/>Valor padrão: 50000. | 
 
 ### MFP WAS SDK Level
 {: #mfp-was-sdk-level }
@@ -1766,7 +1770,7 @@ O pacote de scripts deve ser usado com o componente de software do servidor de p
 | BASE_DN | (parâmetro LDAP) DN base. | 
 | BIND_DN | (parâmetro LDAP) DN de ligação. | 
 | BIND_PASSWORD | (parâmetro LDAP) Senha do DN de ligação. | 
-| REQUIRE_SSL | (parâmetro LDAP) Configure como true para conexão segura com o servidor LDAP.{::nomarkdown}<ul><li>Quando true, o LDAP\_SSL\_PORT será usado e CERT\_FILE\_PATH será necessário para localizar o arquivo de certificação do servidor LDAP.</li><li>Quando false, LDAP_PORT será usado.</li></ul>{:/}Valor padrão: falso. | 
+| REQUIRE_SSL | (parâmetro LDAP) Configure como true para conexão segura com o servidor LDAP.{::nomarkdown}<ul><li>Quando true, o LDAP\_SSL\_PORT será usado e CERT\_FILE\_PATH será necessário para localizar o arquivo de certificação do servidor LDAP.</li><li>Quando false, LDAP_PORT será usado.</li></ul>{:/}Valor padrão: false. | 
 | USER_FILTER | (parâmetro LDAP) Filtro de usuário que procura usuários no registro do usuário existente. | 
 | GROUP_FILTER | (parâmetro LDAP) Filtro de grupo LDAP que procura grupos no registro do usuário existente. | 
 | LDAP\_REPOSITORY\_NAME | (parâmetro LDAP) Nome do servidor LDAP. | 

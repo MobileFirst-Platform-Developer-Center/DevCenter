@@ -105,20 +105,20 @@ weight: 4
 5. **「読み取り専用」**ボタンをクリックして、プロパティーを再度ロックします。
 
 
-![コンソールでの Analytics サポートの有効化/無効化](enable-disable-analytics.png)
+![コンソールでの Analytics サポートの有効化または無効化](enable-disable-analytics.png)
 
 
 ### ロール・ベースのアクセス制御
 {{ site.data.keys.mf_analytics_console_short }} のコンテンツは、事前定義のセキュリティー・ロールによって制限されます。  
 {{ site.data.keys.mf_analytics_console_short }} は、ログイン・ユーザーのセキュリティー・ロールに基づいて異なるコンテンツを表示します。以下の表では、 {{ site.data.keys.mf_analytics_console_short }}でのセキュリティー・ロールおよびアクセス権限について示します。
 
-| ロール           | ロール名                | 表示アクセス権限                                                     | 編集アクセス権限  |
+| ロール| ロール名| 表示アクセス権限| 編集アクセス権限|
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| 管理者  | analytics_administrator  | すべて	                                                     | すべて     |
-| インフラストラクチャー | analytics_infrastructure	| すべて	                                                     | すべて     |
-| デベロッパー      | analytics_developer	    | 「管理」ページ以外のすべて		             | すべて     |
-| サポート        | analytics_support        | 「管理」ページ以外のすべて		             | すべて     |
-| ビジネス       | analytics_business       | 「管理」ページおよび「インフラストラクチャー」ページ以外のすべて | すべて     |
+| 管理者| analytics_administrator| すべて | すべて|
+| インフラストラクチャー| analytics_infrastructure| すべて | すべて|
+| デベロッパー| analytics_developer| 「管理」ページ以外のすべて| すべて|
+| サポート| analytics_support| 「管理」ページ以外のすべて| すべて|
+| ビジネス| analytics_business| 「管理」ページおよび「インフラストラクチャー」ページ以外のすべて| すべて|
 
 > ロールのセットアップについては、[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 

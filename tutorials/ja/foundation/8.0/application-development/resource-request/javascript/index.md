@@ -5,11 +5,11 @@ breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
   - name: Web プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
   - name: Cordova プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -143,8 +143,8 @@ Java アダプターを使用しているか、JavaScript アダプターを使�
 例えば、次のとおりです。
 
 ```js
-onSuccess: function(response) {
-    resultText = "Successfully called the resource: " + response.responseText;
+      onSuccess: function(response) {
+resultText = "Successfully called the resource: " + response.responseText;
 },
 
 onFailure: function(response) {

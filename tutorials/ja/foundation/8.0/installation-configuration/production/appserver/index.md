@@ -86,8 +86,8 @@ weight: 4
 {% highlight xml %}
 -Dcom.sun.management.jmxremote=true
 -Dcom.sun.management.jmxremote.port=8686
--Dcom.sun.management.jmxremote.ssl=true 
--Dcom.sun.management.jmxremote.authenticate=false 
+-Dcom.sun.management.jmxremote.ssl=true
+-Dcom.sun.management.jmxremote.authenticate=false
 -Djava.rmi.server.hostname=localhost  
 -Djavax.net.ssl.trustStore=<key store location>
 -Djavax.net.ssl.trustStorePassword=<key store password>
@@ -429,7 +429,9 @@ Ant ファイルは、製品インストールの一部である Ant ディス�
 * **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml install** - このコマンドは、Ant ファイルのプロパティーに入力されたパラメーターを使用して、DB2 をデータ・ソースとして、{{ site.data.keys.mf_server }} を WebSphere Application Server Network Deployment クラスター上にインストールします。
 
 <br/>
-インストール後、フィックスパックを適用する際に再使用できるように、Ant ファイルのコピーを作成します。### Ant ファイルを使用したフィックスパックの適用
+インストール後、フィックスパックを適用する際に再使用できるように、Ant ファイルのコピーを作成します。
+
+### Ant ファイルを使用したフィックスパックの適用
 {: #applying-a-fix-pack-by-using-the-ant-files }
 
 #### サンプル Ant ファイルを使用した更新
@@ -510,7 +512,7 @@ Java EE 6 フィーチャーの特定のレベルを強制するには、`<websp
 
 ```xml
 <installmobilefirstadmin execute="${mfp.process.admin}" contextroot="${mfp.admin.contextroot}">
-[...]
+    [...]
     <applicationserver>
       <websphereapplicationserver installdir="${appserver.was.installdir}"
         profile="Liberty" jeeversion="6">
@@ -1708,7 +1710,8 @@ WebSphere Application Server Network Deployment にインストールするに�
             <div class="panel-body">
                 <p>このランタイムは、アプリケーション・サーバーにデプロイするための WAR アプリケーションとしてパッケージされています。<b>server.xml </b> ファイル内で、このアプリケーションに固有の構成をいくつか行う必要があります。
                 <br/><br/>
-                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。<br/><br/>
+                続行する前に、すべてのサービスに共通の構成詳細について<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server および WebSphere Application Server Network Deployment への手動インストール</a>を検討してください。
+                <br/><br/>
                 ランタイム WAR ファイルは、<b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> にあります。コンテキスト・ルートは自由に定義できます。ただし、デフォルトでは <b>/mfp</b> です。</p>
 
                 <h3>必須の JNDI プロパティー</h3>
@@ -1965,7 +1968,8 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             </li>
                             <li><b>mfp_install_dir/MobileFirstServer/configuration-samples</b> ディレクトリーから以下のコマンドを実行します。<b>create-database-ant-file.xml</b> は選択した実際の Ant ファイル名に置き換えてください。<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> および <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>
                             <br/><br/>
-                            {{ site.data.keys.mf_server }} データベースはファーム内のアプリケーション・サーバー間で共有されるため、これら 2 つのコマンドは、ファーム内のサーバーの数にかかわらず、1 回のみ実行すればすみます。</li>
+                            {{ site.data.keys.mf_server }} データベースはファーム内のアプリケーション・サーバー間で共有されるため、これら 2 つのコマンドは、ファーム内のサーバーの数にかかわらず、1 回のみ実行すればすみます。
+                            </li>
                             <li>オプションで、別のランタイムを実行したい場合は、別のデータベースを別のデータベース名またはスキーマで構成する必要があります。これを行うには、Ant ファイルを編集してプロパティーを変更し、ファーム内のサーバーの数にかかわらず、以下のコマンドを 1 回だけ実行します。<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code></li>
                         </ul>
                     </li>

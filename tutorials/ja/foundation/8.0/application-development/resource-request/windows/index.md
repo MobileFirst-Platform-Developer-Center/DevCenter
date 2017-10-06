@@ -5,11 +5,11 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
   - name: ネイティブ Windows 8 プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
   - name: ネイティブ Windows 10 プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -385,7 +385,7 @@ postProcess メソッドの主な目的は、{{ site.data.keys.product_adj }} �
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
 {
-  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
+  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true &  scope)
   {
     if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized) // We have a real problem since we already obtained a new token
     {

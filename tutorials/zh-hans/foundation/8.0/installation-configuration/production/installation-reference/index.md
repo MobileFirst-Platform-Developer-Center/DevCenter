@@ -60,8 +60,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
-只有当 **kind** 属性为 **MobileFirstAdmin** 时，才可以使用 **includeConfigurationTables** 属性。有效值可能为 true 或 false。当将此属性设置为 true 时，**configuredatabase** 任务将在单个运行中对管理服务数据库和实时更新服务数据库执行数据库操作。
-当将此属性设置为 false 时，**configuredatabase** 任务将只对管理服务数据库执行数据库操作。
+只有当 **kind** 属性为 **MobileFirstAdmin** 时，才可以使用 **includeConfigurationTables** 属性。有效值可能为 true 或 false。当将此属性设置为 true 时，**configuredatabase** 任务将在单个运行中对管理服务数据库和实时更新服务数据库执行数据库操作。当将此属性设置为 false 时，**configuredatabase** 任务将只对管理服务数据库执行数据库操作。
 
 #### execute
 {: #execute }
@@ -77,8 +76,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | `<oracle>`          |	Oracle 的参数。| 0..1|
 | `<driverclasspath>` | JDBC 驱动程序类路径。| 0..1|
 
-对于每种数据库类型，您可以使用 `<property>` 元素指定 JDBC 连接属性来访问该数据库。
-`<property>` 元素具有以下属性：
+对于每种数据库类型，您可以使用 `<property>` 元素指定 JDBC 连接属性来访问该数据库。`<property>` 元素具有以下属性：
 
 | 属性| 描述| 必需| 缺省值|
 |-----------|----------------------------|----------|---------|
@@ -181,8 +179,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 有关 hostname 语法的更多信息，请参阅 [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html)。
 
-`<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download
-Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件。
+`<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件。
 
 或者，您可以将 `<mysql>` 元素与以下属性结合使用：
 
@@ -192,11 +189,8 @@ Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件�
 | user	    | 用于访问数据库的用户名。| 是| 无|
 | password	| 用于访问数据库的密码。| 否| 交互式查询|
 
-> `注：`如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，**configuredatabase** 任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅
-确保数据库具有当前
-{{ site.data.keys.mf_server }}
-版本的必需表。
-您无需指定内部元素 `<dba>` 或 `<client>`。
+> `注：`如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，**configuredatabase** 任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前 {{ site.data.keys.mf_server }} 版本的必需表。您无需指定内部元素 `<dba>` 或 `<client>`。
+
 #### Oracle
 {: #oracle }
 元素 `<oracle>` 具有以下属性：
@@ -211,7 +205,9 @@ Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件�
 | sysPassword	 | 用户 SYS 的密码。| 否| 交互式查询（如果数据库尚不存在）|
 | systemPassword| 用户 SYSTEM 的密码。| 否| 交互式查询（如果数据库或用户尚不存在）|
 
-> `注：` 对于 user 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**configuredatabase** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **configuredatabase** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。有关 Oracle 用户帐户的更多信息，请参阅[认证方法概述](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)。  
+> `注：` 对于 user 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**configuredatabase** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **configuredatabase** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。
+
+有关 Oracle 用户帐户的更多信息，请参阅[认证方法概述](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)。  
 `<oracle>` 元素支持以下元素：
 
 | 元素| 描述| 计数|
@@ -227,8 +223,7 @@ Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件�
 | user	    | 用于访问数据库的用户名。请参阅此表下方的注释。| 是| 无|
 | password	| 用于访问数据库的密码。| 否| 交互式查询|
 
-`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection
-Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
+`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
 
 不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。要控制表空间，可以手动创建用户帐户并在运行 Ant 任务之前向其分配缺省表空间。要控制其他详细信息，必须使用 [Oracle 数据库和用户需求](../databases/#oracle-database-and-user-requirements)部分中的手动操作指示信息。
 
@@ -238,11 +233,8 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | user	    | 用于访问数据库的用户名。| 是| 无|
 | password	| 用于访问数据库的密码。| 否| 交互式查询|
 
-> **注：**如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅
-确保数据库具有当前
-{{ site.data.keys.mf_server }}
-版本的必需表。
-您无需指定内部元素 `<dba>`。
+> **注：**如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前 {{ site.data.keys.mf_server }} 版本的必需表。您无需指定内部元素 `<dba>`。
+
 ## 用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
 现在提供了 **installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务以用于安装 {{ site.data.keys.mf_console }}、工件组件、管理服务和实时更新服务。
@@ -279,7 +271,8 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 * 此任务将更新管理服务 WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
 * 此任务将更新实时更新服务 WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
-* 此任务将更新 {{ site.data.keys.mf_console }} WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。该任务不会更改应用程序服务器配置，即 Web 应用程序配置、数据源、JNDI 环境条目、用户到角色映射以及 JMX 配置。
+* 此任务将更新 {{ site.data.keys.mf_console }} WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
+该任务不会更改应用程序服务器配置，即 Web 应用程序配置、数据源、JNDI 环境条目、用户到角色映射以及 JMX 配置。
 
 #### uninstallmobilefirstadmin
 {: #uninstallmobilefirstadmin }
@@ -372,8 +365,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 使用该元素时，可以定义自己的 JNDI 属性，或覆盖管理服务和 {{ site.data.keys.mf_console }} WAR 文件提供的 JNDI 属性的缺省值。
 
-`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
-它具有以下属性：
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。它具有以下属性：
 
 | 属性| 描述| 必需| 缺省值|
 |------------|----------------------------|----------|---------|
@@ -405,8 +397,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | 属性| 描述| 必需| 缺省值|
 |--------------------------|----------------------------------------|----------|---------|
 | serverName| 集合体控制器的名称。| 是| 无|
-| controllerAdminName| 集合体控制器中定义的管理用户名。
-此用户还负责将新成员加入到集合体中。| 是| 无|
+| controllerAdminName| 集合体控制器中定义的管理用户名。此用户还负责将新成员加入到集合体中。| 是| 无|
 | controllerAdminPassword| 管理用户密码。| 是| 无|
 | createControllerAdmin| 用于指示是否必须在集合体控制器的基本注册表中创建管理用户。可能值为 true 或 false。| 否| true|
 
@@ -443,9 +434,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 > **提示：**如果用户存在于外部 LDAP 目录中，仅设置 **role** 和 **name** 属性，但是不定义任何密码。
 
-
-`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
-它具有以下属性：
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。它具有以下属性：
 
 | 属性| 描述| 必需| 缺省值|
 |------------|----------------------------|----------|---------|
@@ -479,6 +468,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 > **注：**如果推送服务和运行时组件安装在同一个集合体成员中，那么它们必须具有相同的集群名称。如果这些组件安装在同一个集合体的不同成员中，那么集群名称可以不同。
 ### 指定分析
+
 {: #to-specify-analytics }
 `<analytics>` 元素表示您想要将 {{ site.data.keys.product_adj }} 推送服务连接至已安装的 {{ site.data.keys.mf_analytics }} 服务。它具有以下属性：
 
@@ -491,8 +481,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | validate	    | 验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问。| 否| true|
 
 **install**  
-使用 install 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。
-有效值为 true 或 false。
+使用 install 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。有效值为 true 或 false。
 
 **analyticsURL**  
 使用 analyticsURL 属性来指定由收到入局分析数据的 {{ site.data.keys.mf_analytics }} 公开的 URL。
@@ -550,8 +539,10 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 {: #task-effects-1 }
 #### installmobilefirstpush
 {: #installmobilefirstpush }
-**installmobilefirstpush** Ant 任务配置应用程序服务器，以将推送服务 WAR 文件作为 Web 应用程序运行。此任务具有以下影响：此任务将在 **/imfpush** 上下文根中声明推送服务 Web 应用程序。
-无法更改上下文根。对于关系数据库，此任务将为推送服务声明数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。此任务将使用 JNDI 环境条目配置推送服务的配置属性。这些 JNDI 环境条目将配置与 {{ site.data.keys.product_adj }} 授权服务器、{{ site.data.keys.mf_analytics }} 以及 Cloudant（如果使用 Cloudant）的 OAuth 通信。
+**installmobilefirstpush** Ant 任务配置应用程序服务器，以将推送服务 WAR 文件作为 Web 应用程序运行。
+此任务具有以下影响：此任务将在 **/imfpush** 上下文根中声明推送服务 Web 应用程序。
+无法更改上下文根。对于关系数据库，此任务将为推送服务声明数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。
+此任务将使用 JNDI 环境条目配置推送服务的配置属性。这些 JNDI 环境条目将配置与 {{ site.data.keys.product_adj }} 授权服务器、{{ site.data.keys.mf_analytics }} 以及 Cloudant（如果使用 Cloudant）的 OAuth 通信。
 
 #### updatemobilefirstpush
 {: #updatemobilefirstpush }
@@ -559,7 +550,11 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 #### uninstallmobilefirstpush
 {: #uninstallmobilefirstpush }
-**uninstallmobilefirstpush** Ant 任务将撤销早期运行 **installmobilefirstpush** 的影响。此任务具有以下影响：将除去具有指定上下文根的推送服务 Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。此任务提供从应用程序服务器中除去推送服务 WAR 文件的选项。对于关系 DBMS，此任务将除去推送服务的数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。此任务将除去关联的 JNDI 环境条目。
+**uninstallmobilefirstpush** Ant 任务将撤销早期运行 **installmobilefirstpush** 的影响。
+此任务具有以下影响：将除去具有指定上下文根的推送服务 Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
+此任务提供从应用程序服务器中除去推送服务 WAR 文件的选项。
+对于关系 DBMS，此任务将除去推送服务的数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。
+此任务将除去关联的 JNDI 环境条目。
 
 ### 属性和元素
 {: #attributes-and-elements-1 }
@@ -567,7 +562,8 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 | 属性| 描述| 必需| 缺省值|
 |-----------|---------------------------------------|----------|-------------|
-| id| 区分不同的部署。| 否| 空| warFile	| 推送服务的 WAR 文件。| 否| ../PushService/mfp-push-service.war 文件相对于包含 mfp-ant-deployer.jar 文件的 MobileFirstServer 目录。|
+| id| 区分不同的部署。| 否| 空
+| warFile	| 推送服务的 WAR 文件。| 否| ../PushService/mfp-push-service.war 文件相对于包含 mfp-ant-deployer.jar 文件的 MobileFirstServer 目录。|
 
 ### Id
 {: #id }
@@ -618,8 +614,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 {: #pushclientsecret }
 此充当授权服务器的保密客户机的推送服务实例的密钥。必须为授权服务器注册标识和密钥。可以通过 **installmobilefirstadmin** Ant 任务或 {{ site.data.keys.mf_console }} 注册。
 
-`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
-它具有以下属性：
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。它具有以下属性：
 
 | 属性| 描述| 必需| 缺省值|
 |------------|----------------------------|----------|---------|
@@ -655,6 +650,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | clusterName|	集合体成员所属的集群名称。| 是| 无|
 
 > **注：**如果推送服务和运行时组件安装在同一个集合体成员中，那么它们必须具有相同的集群名称。如果这些组件安装在同一个集合体的不同成员中，那么集群名称可以不同。
+
 ### 指定分析
 {: #to-specify-analytics-1 }
 `<analytics>` 元素表示您想要将 {{ site.data.keys.product_adj }} 推送服务连接至已安装的 {{ site.data.keys.mf_analytics }} 服务。它具有以下属性：
@@ -669,8 +665,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 #### install
 {: #install }
-使用 **install** 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。
-有效值为 true 或 false。
+使用 **install** 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。有效值为 true 或 false。
 
 #### analyticsURL
 {: #analyticsurl }
@@ -679,13 +674,11 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 #### username
 {: #username }
-使用 **username** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
-的数据入口点时所使用的用户名。
+使用 **username** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的用户名。
 
 #### password
 {: #password }
-使用 **password** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
-的数据入口点时所使用的密码。
+使用 **password** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}的数据入口点时所使用的密码。
 
 #### validate
 {: #validate }
@@ -771,7 +764,6 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 {: #contextroot-and-id-1 }
 **contextroot** 和 **id** 属性区分不同的 {{ site.data.keys.product_adj }} 项目。
 
-
 在 WebSphere Application Server Liberty Profile 和 Tomcat 环境中，contextroot 参数足以实现该目的。在 WebSphere Application Server Full Profile 环境中，改为使用 id 属性。
 
 #### environmentId
@@ -795,8 +787,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | `<database>`          | 数据库。| 1|
 | `<analytics>`         | 分析。| 0..1|
 
-`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
-它具有以下属性：
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。它具有以下属性：
 
 | 属性| 描述| 必需| 缺省值|
 |-----------|----------------------------|----------|---------|
@@ -850,8 +841,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | serverId|	用于唯一标识集合体成员的字符串。| 是| 无|
 | controllerHost|	集合体控制器的名称。| 是| 无|
 | controllerHttpsPort|	集合体控制器的 HTTPS 端口。| 是| 无|
-| controllerAdminName|	集合体控制器中定义的管理用户名。
-此用户还负责将新成员加入到集合体中。| 是| 无|
+| controllerAdminName|	集合体控制器中定义的管理用户名。此用户还负责将新成员加入到集合体中。| 是| 无|
 | controllerAdminPassword|	管理用户密码。| 是| 无|
 | createControllerAdmin|	用于指示是否必须在集合体成员的基本注册表中创建管理用户。可能值为 true 或 false。| 否| true|
 
@@ -920,13 +910,11 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 | username| 用户名。| 是| 无|
 | password| 密码。| 是| 无|
 | validate| 验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问。| 否| true|
-| tenant| 从 {{ site.data.keys.product_adj }}
-运行时收集的索引数据的租户。| 否| 内部标识|
+| tenant| 从 {{ site.data.keys.product_adj }}运行时收集的索引数据的租户。| 否| 内部标识|
 
 #### install
 {: #install-1 }
-使用 **install** 属性来指示必须将该 {{ site.data.keys.product_adj }} 运行时连接至 {{ site.data.keys.mf_analytics }} 并向其发送事件。
-有效值为 **true** 或 **false**。
+使用 **install** 属性来指示必须将该 {{ site.data.keys.product_adj }} 运行时连接至 {{ site.data.keys.mf_analytics }} 并向其发送事件。有效值为 **true** 或 **false**。
 
 #### analyticsURL
 {: #analyticsurl-1 }
@@ -940,13 +928,11 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 #### username
 {: #username-1 }
-使用 **username** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
-的数据入口点时所使用的用户名。
+使用 **username** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}的数据入口点时所使用的用户名。
 
 #### password
 {: #password-1 }
-使用 **password** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
-的数据入口点时所使用的密码。
+使用 **password** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}的数据入口点时所使用的密码。
 
 #### validate
 {: #validate-1 }
@@ -974,8 +960,7 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 
 有关可用属性的更多信息，请参阅 Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html) 的文档。另请参阅 [Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html) 的文档。
 
-有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml
-file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中 properties.derby.embedded 的文档。
+有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中 properties.derby.embedded 的文档。
 
 当在 {{ site.data.keys.product }} 的安装目录中使用 **mfp-ant-deployer.jar** 文件时，不需要 `<driverclasspath>` 元素。
 
@@ -1001,8 +986,7 @@ file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/
 
 有关可用属性的更多信息，请参阅 [IBM  Data Server Driver for JDBC and SQLJ 的属性](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)。
 
-有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml
-file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 properties.db2.jcc 部分。
+有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 properties.db2.jcc 部分。
 
 `<driverclasspath>` 元素必须包含 DB2 JDBC 驱动程序和关联许可证的 JAR 文件。您可以从 [DB2 JDBC 驱动程序版本](http://www.ibm.com/support/docview.wss?uid=swg21363866)下载 DB2 JDBC 驱动程序。
 
@@ -1034,11 +1018,9 @@ file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/
 |---------------|-------------------------------|-------|
 | `<property>`  | 数据源属性或 JDBC 连接属性。| 0..|
 
-有关可用属性的更多信息，请参阅 [Driver/Datasource Class Names, URL Syntax and Configuration
-Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) 中的文档。
+有关可用属性的更多信息，请参阅 [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) 中的文档。
 
-有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml
-file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 properties 部分。
+有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 properties 部分。
 
 `<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download Connector/J](http://www.mysql.com/downloads/connector/j/) 下载该文件。
 
@@ -1049,10 +1031,14 @@ file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/
 | 属性| 描述| 必需| 缺省值|
 |------------|--------------------------------------------|----------|---------|
 | database| 数据库名称或 Oracle 服务名称。注：必须始终使用服务名称来连接到 PDB 数据库。| 否| ORCL|
-| server	 | 数据库服务器的主机名。是	无| port	     | 数据库服务器上的端口。否	1521| user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的受限特权的用户。请参阅此表下方的注释。| 是| 无|
+| server	 | 数据库服务器的主机名。是	无
+| port	     | 数据库服务器上的端口。否	1521
+| user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的受限特权的用户。请参阅此表下方的注释。| 是| 无|
 | password	 | 用于访问数据库的密码。| 否| 交互式查询|
 
-> **注：**对于 **user** 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**installmobilefirstruntime** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **installmobilefirstruntime** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。还可以指定 URL 来替代 **database**、**server** 和 **port**。在此情况下，使用以下属性：
+> **注：**对于 **user** 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。
+
+不像其他数据库工具，**installmobilefirstruntime** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **installmobilefirstruntime** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。还可以指定 URL 来替代 **database**、**server** 和 **port**。在此情况下，使用以下属性：
 
 | 属性| 描述| 必需| 缺省值|
 |------------|--------------------------------------------|----------|---------|
@@ -1060,10 +1046,11 @@ file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/
 | user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的受限特权的用户。请参阅此表下方的注释。| 是| 无|
 | password	 | 用于访问数据库的密码。| 否| 交互式查询|
 
-> **注：**对于 **user** 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**installmobilefirstruntime** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **installmobilefirstruntime** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。有关 Oracle 用户帐户的更多信息，请参阅[认证方法概述](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)。
+> **注：**对于 **user** 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**installmobilefirstruntime** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **installmobilefirstruntime** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。
 
-有关 Oracle 数据库连接 URL 的更多信息，请参阅 [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) 中的 **Database
-URLs and Database Specifiers** 部分。
+有关 Oracle 用户帐户的更多信息，请参阅[认证方法概述](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)。
+
+有关 Oracle 数据库连接 URL 的更多信息，请参阅 [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) 中的 **Database URLs and Database Specifiers** 部分。
 
 它支持以下元素：
 
@@ -1075,8 +1062,7 @@ URLs and Database Specifiers** 部分。
 
 有关 Liberty 服务器可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 **properties.oracle** 部分。
 
-`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection
-Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
+`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
 
 元素 `<property>`（可用于 `<derby>`、`<db2>`、` <mysql>` 或 `<oracle>` 元素内部）具有以下属性：
 
@@ -1096,18 +1082,13 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 {: #installapplicationcenter }
 `<installApplicationCenter>` 任务配置应用程序服务器以将 Application Center Services WAR 文件作为 Web 应用程序运行，并安装 Application Center Console。该任务具有以下影响：
 
-* 该任务声明了 /applicationcenter 上下文根中的
-Application Center Services Web 应用程序。
+* 该任务声明了 /applicationcenter 上下文根中的Application Center Services Web 应用程序。
 * 该任务声明数据源，并且在 WebSphere Application Server Full Profile 上还声明了 Application Center Services 的 JDBC 提供程序。
-* 该任务在应用程序服务器上部署
-Application Center Services Web 应用程序。
-* 该任务在 /appcenterconsole 上下文根中将
-Application Center Console 声明为一个 Web 应用程序。
+* 该任务在应用程序服务器上部署Application Center Services Web 应用程序。
+* 该任务在 /appcenterconsole 上下文根中将Application Center Console 声明为一个 Web 应用程序。
 * 该任务在应用程序服务器上部署 Application Center Console WAR 文件。
-* 该任务使用 JNDI 环境条目配置
-Application Center Services 的配置属性。已注释与端点和代理相关的 JNDI 环境条目。在某些情况下，您必须对它们取消注释。
-* 此任务对用户进行配置，将其映射到
-Application Center Console 和 Services Web 应用程序使用的角色。
+* 该任务使用 JNDI 环境条目配置Application Center Services 的配置属性。已注释与端点和代理相关的 JNDI 环境条目。在某些情况下，您必须对它们取消注释。
+* 此任务对用户进行配置，将其映射到Application Center Console 和 Services Web 应用程序使用的角色。
 * 此任务在 WebSphere Application Server 上，配置 Web 容器所需的定制属性。
 
 #### updateApplicationCenter
@@ -1120,18 +1101,15 @@ Application Center Console 和 Services Web 应用程序使用的角色。
 该任务不会更改应用程序服务器配置，即 Web 应用程序配置、数据源、JNDI 环境条目以及用户到角色的映射。该任务仅适用于使用此主题中描述的 <installApplicationCenter> 任务所执行的安装。
 
 > **注：**在 WebSphere Application Server Liberty Profile 上，该任务不会更改功能，这将在已安装应用程序的 server.xml 文件中遗留下潜在的非最小功能列表。
+
 #### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
 `<uninstallApplicationCenter>` Ant 任务撤销早期运行 `<installApplicationCenter>` 的影响。该任务具有以下影响：
 
-* 此任务将除去具有 **/applicationcenter** 上下文根的
-Application Center Services Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
-* 此任务从应用程序服务器除去
-Application Center Services and Console WAR 文件。
-* 此任务将除去数据源，并且在 WebSphere Application Server Full Profile 上还除去
-Application Center Services 的 JDBC 提供程序。
-* 此任务从应用程序服务器除去已由
-Application Center Services 使用的数据库驱动程序。
+* 此任务将除去具有 **/applicationcenter** 上下文根的Application Center Services Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
+* 此任务从应用程序服务器除去Application Center Services and Console WAR 文件。
+* 此任务将除去数据源，并且在 WebSphere Application Server Full Profile 上还除去Application Center Services 的 JDBC 提供程序。
+* 此任务从应用程序服务器除去已由Application Center Services 使用的数据库驱动程序。
 * 此任务将除去关联的 JNDI 环境条目。
 * 此任务除去由 `<installApplicationCenter>` 调用配置的用户。
 
@@ -1152,17 +1130,14 @@ Application Center Services 使用的数据库驱动程序。
 
 #### servicewar
 {: #servicewar-1 }
-使用 **servicewar** 属性来指定
-Application Center Services WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
+使用 **servicewar** 属性来指定Application Center Services WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
 #### shortcutsDir
 {: #shortcutsdir-1 }
 **shortcutsDir** 属性指定将 Application Center Console 的快捷方式放置在何处。如果设置了该属性，会将以下文件添加到该目录：
 
-* **appcenter-console.url**：该文件是 Windows 快捷方式。该文件会在浏览器中打开
-Application Center Console。
-* **appcenter-console.sh**：该文件是 UNIX Shell 脚本。该文件会在浏览器中打开
-Application Center Console。
+* **appcenter-console.url**：该文件是 Windows 快捷方式。该文件会在浏览器中打开Application Center Console。
+* **appcenter-console.sh**：该文件是 UNIX Shell 脚本。该文件会在浏览器中打开Application Center Console。
 
 #### aaptDir
 {: #aaptdir }
@@ -1234,8 +1209,7 @@ Application Center Console。
 {: #ant-tasks-for-installation-of-mobilefirst-analytics }
 **installanalytics**、**updateanalytics** 和 **uninstallanalytics** Ant 任务是为了 {{ site.data.keys.mf_analytics }} 的安装而提供的。
 
-这些 Ant 任务的目的是使用应用程序服务器上数据的相应存储器来配置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }}
-Service。该任务将安装作为主节点的 {{ site.data.keys.mf_analytics }}
+这些 Ant 任务的目的是使用应用程序服务器上数据的相应存储器来配置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }}Service。该任务将安装作为主节点的 {{ site.data.keys.mf_analytics }}
 节点和数据。有关更多信息，请参阅[集群管理和 Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch)。
 
 ### 任务影响
@@ -1244,19 +1218,16 @@ Service。该任务将安装作为主节点的 {{ site.data.keys.mf_analytics }}
 {: #installanalytics }
 **installanalytics** Ant 任务配置应用程序服务器以运行 {{ site.data.keys.mf_analytics }}。该任务具有以下影响：
 
-* 该任务在应用程序服务器上部署 {{ site.data.keys.mf_analytics }}
-Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
+* 该任务在应用程序服务器上部署 {{ site.data.keys.mf_analytics }}Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
 * 该任务在指定的上下文根 (/analytics-service) 中声明 {{ site.data.keys.mf_analytics }} Service Web 应用程序。
 * 该任务在指定的上下文根 (/analytics) 中声明 {{ site.data.keys.mf_analytics_console }} Web 应用程序。
-* 该任务通过 JNDI 环境条目设置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }}
-Services 配置属性。
+* 该任务通过 JNDI 环境条目设置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }}Services 配置属性。
 * 在 WebSphere Application Server Liberty Profile 上，该任务配置 Web 容器。
 * （可选）该任务创建使用 {{ site.data.keys.mf_analytics_console }} 的用户。
 
 #### updateanalytics
 {: #updateanalytics }
-**updateanalytics** Ant 任务在应用程序服务器上更新已配置的 {{ site.data.keys.mf_analytics }}
-Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序 WAR 文件。这些文件必须具有与先前部署的项目 WAR 文件相同的基本名称。
+**updateanalytics** Ant 任务在应用程序服务器上更新已配置的 {{ site.data.keys.mf_analytics }}Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序 WAR 文件。这些文件必须具有与先前部署的项目 WAR 文件相同的基本名称。
 
 该任务不会更改应用程序服务器配置，即 Web 应用程序配置和 JNDI 环境条目。
 
@@ -1264,10 +1235,8 @@ Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序 WAR 文�
 {: #uninstallanalytics }
 **uninstallanalytics** Ant 任务用于撤销早先运行 **installanalytics** 的影响。该任务具有以下影响：
 
-* 该任务使用 {{ site.data.keys.mf_analytics }}
-Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序各自的上下文根除去其配置。
-* 该任务从应用程序服务器除去 {{ site.data.keys.mf_analytics }}
-Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
+* 该任务使用 {{ site.data.keys.mf_analytics }}Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序各自的上下文根除去其配置。
+* 该任务从应用程序服务器除去 {{ site.data.keys.mf_analytics }}Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
 * 此任务将除去关联的 JNDI 环境条目。
 
 ### 属性和元素
@@ -1276,13 +1245,11 @@ Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
 
 | 属性| 描述| 必需| 缺省值|
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar| 用于 {{ site.data.keys.mf_analytics }}
-Service 的 WAR 文件| 否| analytics-service.war 文件位于 Analytics 目录中。|
+| serviceWar| 用于 {{ site.data.keys.mf_analytics }}Service 的 WAR 文件| 否| analytics-service.war 文件位于 Analytics 目录中。|
 
 #### serviceWar
 {: #servicewar-2 }
-使用 **serviceWar** 属性来指定 {{ site.data.keys.mf_analytics }}
-Services WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
+使用 **serviceWar** 属性来指定 {{ site.data.keys.mf_analytics }}Services WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
 `<installanalytics>`、`<updateanalytics>` 和 `<uninstallanalytics>` 任务支持以下元素：
 
@@ -1350,8 +1317,7 @@ Services WAR 文件的不同目录。您可以使用绝对路径或相对路径�
 
 ### 指定 {{ site.data.keys.mf_analytics }} 的存储器类型
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-`<storage>` 元素表示 {{ site.data.keys.mf_analytics }}
-用于存储其收集的信息和数据的存储器的底层类型。
+`<storage>` 元素表示 {{ site.data.keys.mf_analytics }}用于存储其收集的信息和数据的存储器的底层类型。
 
 它支持以下元素：
 
@@ -1402,8 +1368,7 @@ Services WAR 文件的不同目录。您可以使用绝对路径或相对路径�
 * 对于 Apache Tomcat，位置为：`${CATALINA_HOME}/bin/analyticsData`。
 * 对于 WebSphere Application Server 和 WebSphere Application Server Network Deployment，位置为 `${was.install.root}/profiles/<profileName>/analyticsData`。
 
-在 {{ site.data.keys.mf_analytics }}
-Service 组件接收事件时，在运行时将自动创建 **analyticsData** 目录及其包含的子目录和文件的层次结构（如果这些对象先前不存在）。
+在 {{ site.data.keys.mf_analytics }}Service 组件接收事件时，在运行时将自动创建 **analyticsData** 目录及其包含的子目录和文件的层次结构（如果这些对象先前不存在）。
 
 #### shards
 {: #shards }
@@ -1413,8 +1378,7 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 {: #replicaspershard }
 使用 **replicasPerShard** 属性来指定要在 ElasticSearch 集群中为每个分片创建的副本数量。
 
-每个分片可以没有副本，或者具有一个或多个副本。缺省情况下，每个分片具有一个副本，但可以在 {{ site.data.keys.mf_analytics }} 中的现有索引上动态更改副本数量。
-副本分片决不能在其分片所在的节点上启动。
+每个分片可以没有副本，或者具有一个或多个副本。缺省情况下，每个分片具有一个副本，但可以在 {{ site.data.keys.mf_analytics }} 中的现有索引上动态更改副本数量。副本分片决不能在其分片所在的节点上启动。
 
 #### transportPort
 {: #transportport }
@@ -1461,8 +1425,7 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 | LICENSE_TERMS	                 | 存储每次运行设备停用任务时捕获的各种许可证度量值。| 数十行。该值不超过 JNDI 属性 mfp.device.decommission.when 设置的值。有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)|
 | ADDRESSABLE_DEVICE	         | 每日存储可寻址设备度量。每次启动集群时，还会添加 1 个条目。| 400 行左右。每天删除久于 13 个月的条目。|
 | MFP_PERSISTENT_DATA| 存储已向 OAuth 服务器注册的客户机应用程序的实例，包括有关设备、应用程序、与客户机关联的用户以及设备状态的信息。| 每个设备和应用程序对 1 行。|
-| MFP_PERSISTENT_CUSTOM_ATTR| 与客户机应用程序实例关联的定制属性。
-定制属性是根据每个客户机实例通过应用程序注册的特定于应用程序的属性。| 每个设备和应用程序对 0 行或更多行|
+| MFP_PERSISTENT_CUSTOM_ATTR| 与客户机应用程序实例关联的定制属性。定制属性是根据每个客户机实例通过应用程序注册的特定于应用程序的属性。| 每个设备和应用程序对 0 行或更多行|
 | MFP_TRANSIENT_DATA	         | 客户机和设备的认证上下文| 每个设备和应用程序对 2 行；如果使用设备单点登录，那么每个设备另外增加 2 行。有关 SSO 的更多信息，请参阅[配置设备单点登录 (SSO)](../../../authentication-and-security/device-sso)。|
 | SERVER_VERSION	             | 产品版本。| 一行|
 
@@ -1474,8 +1437,7 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 |--------------------------------|-------------|--------------------|
 | ADMIN_NODE	                 | 存储有关运行管理服务的服务器的信息。在仅使用 1 台服务器的独立拓扑中，不使用该实体。| 每个服务器 1 行；使用独立服务器时为空。|
 | AUDIT_TRAIL	                 | 存储在使用管理服务器执行的所有管理操作的审计跟踪。| 数千行。|
-| CONFIG_LINKS	                 | 存储指向实时更新服务的链接。适配器和应用程序可能具有存储在实时更新服务中的配置，链接用于查找这些配置。| 数百行。每个适配器将使用 2 到 3 行。
-每个应用程序将使用 4 到 6 行。|
+| CONFIG_LINKS	                 | 存储指向实时更新服务的链接。适配器和应用程序可能具有存储在实时更新服务中的配置，链接用于查找这些配置。| 数百行。每个适配器将使用 2 到 3 行。每个应用程序将使用 4 到 6 行。|
 | FARM_CONFIG	                 | 存储使用服务器场时场节点的配置。| 数十行；如果未使用服务器场，那么为空。|
 | GLOBAL_CONFIG	                 | 存储一些全局配置数据。| 1 行。|
 | PROJECT	                     | 存储已部署项目的名称。| 数十行。|
@@ -1491,8 +1453,7 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 |--------------------------------|-------------|--------------------|
 | CS_SCHEMAS	                 | 存储存在于平台中的版本化模式。| 每个模式 1 行。|
 | CS_CONFIGURATIONS	             | 存储每个版本化模式的配置的实例。| 每个配置 1 行。|
-| CS_TAGS	                     | 存储每个配置实例的可搜索字段和值。| 对配置中每个字段名称使用行，每个可搜索字段使用值。
-|
+| CS_TAGS	                     | 存储每个配置实例的可搜索字段和值。| 对配置中每个字段名称使用行，每个可搜索字段使用值。|
 | CS_ATTACHMENTS	             | 存储每个配置实例的附件。| 每个附件 1 行。|
 | CS_VERSION	                 | 存储已创建表或实例的 MFP 的版本。| 具有 MFP 版本的表中的一行。|
 
@@ -1542,9 +1503,7 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 
 ## {{ site.data.keys.mf_analytics }} 的样本配置文件
 {: #sample-configuration-files-for-mobilefirst-analytics }
-{{ site.data.keys.product }}
-包含多个样本配置文件，这些样本配置文件可帮助您启动 Ant 任务来安装 {{ site.data.keys.mf_analytics }}
-Services 和 {{ site.data.keys.mf_analytics_console }}。
+{{ site.data.keys.product }} 包含多个样本配置文件，这些样本配置文件可帮助您启动 Ant 任务来安装 {{ site.data.keys.mf_analytics }}Services 和 {{ site.data.keys.mf_analytics_console }}。
 
 开始学习 `<installanalytics>`、`<updateanalytics>` 和 `<uninstallanalytics>` Ant 任务的最简单方式就是通过使用 {{ site.data.keys.mf_server }} 分发版的 **Analytics/configuration-samples/** 目录中提供的样本配置文件。
 
@@ -1555,8 +1514,7 @@ Services 和 {{ site.data.keys.mf_analytics_console }}。
 | 任务| 应用程序服务器|
 |------|--------------------|
 | 在 WebSphere Application Server Liberty Profile 上安装 {{ site.data.keys.mf_analytics }} Services and Console| configure-liberty-analytics.xml|
-| 在 Apache Tomcat 上安装 {{ site.data.keys.mf_analytics }}
-Services and Console| configure-tomcat-analytics.xml|
+| 在 Apache Tomcat 上安装 {{ site.data.keys.mf_analytics }}Services and Console| configure-tomcat-analytics.xml|
 | 在 WebSphere Application Server Full Profile 上安装 {{ site.data.keys.mf_analytics }} Services and Console| configure-was-analytics.xml|
 | 在 WebSphere Application Server Network Deployment 单台服务器上安装 {{ site.data.keys.mf_analytics }} Services and Console。| configure-wasnd-server-analytics.xml|
 | 在 WebSphere Application Server Network Deployment 单元上安装 {{ site.data.keys.mf_analytics }} Services and Console| configure-wasnd-cell-analytics.xml|
@@ -1591,7 +1549,6 @@ wasnd 的配置文件包含作用域，可将其设置为 **cluster**、**node**
 
 **注：**  
 当在 Ant XML 脚本值中使用以下特殊字符时，必须对这些字符进行转义：
-
 
 * 美元符号 (`$`) 必须写作 $$，除非您明确希望通过语法 `${variable}` 引用 Ant 变量，如 Apache Ant Manual 的 Properties 部分中所述。
 * 和号字符 (`&`) 必须写作 `&amp;`，除非您明确希望引用 XML 实体。

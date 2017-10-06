@@ -75,7 +75,7 @@ weight: 6
    #### 图形方式安装
    如果以图形方式安装产品，请在安装期间选择**常规设置**面板中的**使用 Rational License Key Server 激活令牌许可**选项。
     
-   ![在 IBM installation Manager 中激活令牌许可](licensing_with_tokens_activate.jpg)
+   ![在 IBM Installation Manager 中激活令牌许可](licensing_with_tokens_activate.jpg)
     
    #### 命令行方式安装
    如果采用静默方式进行安装，请将响应文件中 **user.licensed.by.tokens** 参数的值设置为 **true**。  
@@ -165,7 +165,7 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
    > **注：**确保应用程序服务器的 Java 虚拟机 (JVM) 具有本机库的读和执行权限。在 Windows 上，如果应用程序服务器的 JVM 不具有已复制本机库的执行权限，那么应用程序服务器日志中会出现以下异常。
     
    ```bash
-   com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl（访问被拒绝）。
+   com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
    ```
    * 将 **rcl_ibmratl.jar** 文件复制到 **${shared.resource.dir}/rcllib** 中。**rcl_ibmratl.jar** 文件是 Rational Common Licensing Java 库，位于 **product_install_dir/MobileFirstServer/tokenLibs** 目录中。
 
@@ -183,7 +183,7 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
 
    ```xml
    <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
-      [...]
+            [...]
       <!- Declare the shared library as an attribute commonLibraryRef to 
           the class loader of the application. -->
       <classloader delegation="parentLast" commonLibraryRef="RCLLibrary">
@@ -318,11 +318,11 @@ WebSphere Application Server Network Deployment 的每个节点必须具有 Rati
 
 下表描述了支持具有令牌许可的 {{ site.data.keys.mf_server }} 的平台。
 
-| 操作系统             | 操作系统版本 |	硬件体系结构 |
+| 操作系统| 操作系统版本|	硬件体系结构|
 |------------------------------|--------------------------|-----------------------|
-| AIX                          | 7.1                      |	POWER8（仅限 64 位）  |
-| SUSE Linux Enterprise Server | 11	                      | 仅限 x86-64           |
-| Windows Server               | 2012  	                  | 仅限 x86-64           |
+| AIX| 7.1|	POWER8（仅限 64 位） |
+| SUSE Linux Enterprise Server| 11	                      | 仅限 x86-64|
+| Windows Server| 2012	                  | 仅限 x86-64|
 
 令牌许可不支持 32 位 Java 运行时环境 (JRE)。确保应用程序服务器使用 64 位 JRE。
 
