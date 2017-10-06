@@ -140,6 +140,8 @@ weight: 2
 1. 选择**操作 → 下载样本**选项。下载“Hello World”**Java** 适配器样本。
 
    > 如果未安装 Maven 和 {{ site.data.keys.mf_cli }}，请遵循屏幕上的**设置开发环境**指示信息。
+
+
 2. 从**命令行**窗口中，导航至适配器的 Maven 项目根文件夹并运行以下命令：
 
    ```bash
@@ -169,7 +171,7 @@ weight: 2
 
 然后，适配器响应将列显在 Xcode 控制台中。
 
-![成功从 {{ site.data.keys.mf_server }} 调用资源的应用程序图像](success_response.png)
+![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](success_response.png)
 
 ## 后续步骤
 {: #next-steps }

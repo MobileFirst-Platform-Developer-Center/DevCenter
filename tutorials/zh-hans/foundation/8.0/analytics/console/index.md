@@ -112,13 +112,13 @@ weight: 4
 {{ site.data.keys.mf_analytics_console_short }} 中的内容受到预定义的安全角色的限制。  
 {{ site.data.keys.mf_analytics_console_short }} 基于登录用户的安全角色显示不同的内容。下表显示了安全角色及其对 {{ site.data.keys.mf_analytics_console_short }} 的访问权。
 
-| 角色           | 角色名称                | 查看访问权                                                     | 编辑访问权  |
+| 角色| 角色名称| 查看访问权| 编辑访问权|
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| 管理员  | analytics_administrator  | 全部。	                                                     | 全部。     |
-| 基础结构 | analytics_infrastructure	| 全部。	                                                     | 全部。     |
-| 开发人员      | analytics_developer	    | 除“管理”页面外的全部。		             | 全部。     |
-| 支持        | analytics_support        | 除“管理”页面外的全部。		             | 全部。     |
-| 业务       | analytics_business       | 除“管理”和“基础结构”页面外的全部。 | 全部。     |
+| 管理员| analytics_administrator| 全部。| 全部。|
+| 基础结构| analytics_infrastructure| 全部。| 全部。|
+| 开发人员| analytics_developer| 除“管理”页面外的全部。| 全部。|
+| 支持| analytics_support| 除“管理”页面外的全部。| 全部。|
+| 业务| analytics_business| 除“管理”和“基础结构”页面外的全部。| 全部。|
 
 > 有关设置角色的信息，请参阅[为 {{ site.data.keys.mf_server }} 管理配置用户认证](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)。
 ## 相关博客帖子

@@ -6,9 +6,9 @@ relevantTo: [cordova]
 weight: 1
 downloads:
   - name: Cordova プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
@@ -42,7 +42,8 @@ Cordova アプリケーションに JSONStore プラグインを追加するに�
 
 ```javascript
 var collections = {
-    people : {
+
+  people : {
         searchFields : {name: 'string', age: 'integer'}
   }
 };
@@ -132,7 +133,7 @@ else {
 
 ```javascript
 var document = {
-  _id: 1, json: {name: 'chevy', age: 23}
+_id: 1, json: {name: 'chevy', age: 23}
 };
 var collectionName = 'people';
 var options = {};
@@ -209,6 +210,7 @@ WL.JSONStore.destroy().then(function () {
 
 ```javascript
 var collections = {
+
   people: {
     searchFields: {name: 'string'}
   }
@@ -234,6 +236,7 @@ WL.JSONStore.init(collections, options).then(function () {
 
 ```javascript
 var collections = {
+
   people: {
     searchFields: {name: 'string'}
   }
@@ -259,8 +262,8 @@ WL.JSONStore.init(collections, options).then(function () {
 このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;
@@ -291,6 +294,7 @@ function replacePerson(data) {
 {: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {
+
   people : {
     searchFields : {name: 'string', age: 'integer'},
     adapter : {

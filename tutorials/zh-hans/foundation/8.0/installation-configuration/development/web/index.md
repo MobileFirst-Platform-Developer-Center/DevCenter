@@ -32,7 +32,7 @@ weight: 6
 -   {: #web-app-supported-browsers }
     Web 应用程序在以下浏览器版本中受支持。版本号表示各自浏览器的最早完全受支持的版本。
 
-    | 浏览器               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android 浏览器   |
+    | 浏览器| Chrome| Safari<sup>*</sup>   | Internet Explorer| Firefox| Android 浏览器|
     |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
     | **受支持的版本** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
 

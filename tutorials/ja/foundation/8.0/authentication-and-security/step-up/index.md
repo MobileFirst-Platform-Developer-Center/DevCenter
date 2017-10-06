@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: ステップアップ認証
-breadcrumb_title: ステップアップ認証
+title: 認証のセットアップ
+breadcrumb_title: 認証のセットアップ
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
@@ -130,11 +130,11 @@ public AuthenticatedUser getUser(){
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    //Get the correct PIN code from the database
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        //Get the correct PIN code from the database
     User user = userManager.getUser(userLogin.getUser().getId());
 
-    if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
+    if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
         if(pinCode.equals(user.getPinCode())){

@@ -38,7 +38,8 @@ weight: 3
 
 ### Google 云消息传递/ Firebase 云消息传递
 {: #google-cloud-messaging--firebase-cloud-messaging }
-> **注：**Google [最近宣布](https://firebase.google.com/support/faq/#gcm-fcm)已从 GCM 转变为 FCM。同时，也相应地更新了下列指示信息。另请注意，现行的 GCM 配置将继续有效，但不能使用新的 GCM 配置，而必须改为使用 FCM。
+> **注：**Google [最近宣布](https://firebase.google.com/support/faq/#gcm-fcm)已从 GCM 转变为 FCM。 同时，也相应地更新了下列指示信息。 另请注意，现行的 GCM 配置将继续有效，但不能使用新的 GCM 配置，而必须改为使用 FCM。
+
 Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。  
 要设置 FCM：
 
@@ -48,12 +49,13 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 4. 单击**云消息传递**选项卡以生成**服务器 API 密钥**和**发送方标识**，然后单击**保存**。
 
 > 您还可以使用 [{{ site.data.keys.product_adj }} 推送服务 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) 或 [{{ site.data.keys.product_adj }} 管理服务 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi) 来设置 FCM
+
 #### 注
 {: #notes }
 如果贵组织的防火墙限制了与因特网之间的流量，那么必须执行以下步骤：  
 
 * 将防火墙配置为允许与 FCM 的连接，以便 FCM 客户机应用程序能够接收消息。
-* 需要打开的端口包括 5228、5229 和 5230。FCM 通常只使用 5228，但有时也会使用 5229 和 5230。
+* 需要打开的端口包括 5228、5229 和 5230。 FCM 通常只使用 5228，但有时也会使用 5229 和 5230。
 * FCM 没有提供特定的 IP，因此您必须允许防火墙接受与 Google ASN 15169 中所列 IP 块中的所有 IP 地址的出站连接。
 * 确保防火墙接受端口 443 上从 {{ site.data.keys.mf_server }} 到 android.googleapis.com 的出站连接。
 
@@ -65,7 +67,7 @@ iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。
 要设置 APNS：
 
 1. [为开发或生产环境生成推送通知证书](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv)。
-2. 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 推送设置**中，选择证书类型并提供证书的文件和密码。然后，单击**保存**。
+2. 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 推送设置**中，选择证书类型并提供证书的文件和密码。 然后，单击**保存**。
 
 #### 注
 {: #notes-apns }
@@ -82,6 +84,7 @@ iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。
     * 只有在将利用 APNS 生产证书的应用程序成功提交到 Apple 应用商店后才能测试该证书。
 
 > 您还可以使用 [{{ site.data.keys.product_adj }} 推送服务 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) 或 [{{ site.data.keys.product_adj }} 管理服务 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc) 来设置 APNS
+
 <img class="gifplayer" alt="添加 APNS 凭证的图像" src="apns-setup.png"/>
 
 ### Windows 推送通知服务
@@ -98,7 +101,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 
 ### SMS 通知服务
 {: #sms-notification-service }
-将使用以下 JSON 来设置用于发送 SMS 通知的 SMS 网关。[使用 `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) 以利用 SMS 网关配置来更新 {{ site.data.keys.mf_server }}
+将使用以下 JSON 来设置用于发送 SMS 通知的 SMS 网关。 [使用 `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) 以利用 SMS 网关配置来更新 {{ site.data.keys.mf_server }}
 
 ```json
 {
@@ -120,12 +123,13 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 ```
 
 > 可在[推送服务 API 参考](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)中找到与 SMS 相关的更多 REST API
+
 ### 作用域映射
 {: #scope-mapping }
 将 **push.mobileclient** 作用域元素映射到应用程序。
 
 1. 装入 {{ site.data.keys.mf_console }}，然后导航至 **[您的应用程序] → 安全性 → 作用域/元素映射**，单击**新建**。
-2. 在**作用域元素**字段中写入“push.mobileclient”。然后，单击**添加**。
+2. 在**作用域元素**字段中写入“push.mobileclient”。 然后，单击**添加**。
 
     <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
@@ -226,7 +230,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 将 **push.mobileclient** 作用域元素映射到应用程序所使用的安全性检查。  
 
 1. 装入 {{ site.data.keys.mf_console }}，然后导航至 **[您的应用程序] → 安全性 → 作用域/元素映射**，然后单击**新建**或编辑现有作用域元素条目。
-2. 选择安全性检查。然后，单击**添加**。
+2. 选择安全性检查。 然后，单击**添加**。
 
     <img class="gifplayer" alt="已认证的通知" src="authenticated-notifications.png"/>
 
@@ -237,7 +241,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 
 <img class="gifplayer" alt="添加标记" src="adding-tags.png"/>
 
-预订将设备注册与标记捆绑在一起。当从标记中注销设备时，将从该设备自身自动取消预订所有相关的预订。在一个设备有多个用户的情况下，在移动应用程序中应根据用户登录条件来实施预订。例如，在用户成功登录到应用程序时发出预订调用，而在处理注销操作的过程中显式发出取消预订调用。
+预订将设备注册与标记捆绑在一起。 当从标记中注销设备时，将从该设备自身自动取消预订所有相关的预订。 在一个设备有多个用户的情况下，在移动应用程序中应根据用户登录条件来实施预订。 例如，在用户成功登录到应用程序时发出预订调用，而在处理注销操作的过程中显式发出取消预订调用。
 
 ## 发送通知
 {: #sending-notifications }
@@ -252,17 +256,17 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 
 #### 标记通知
 {: #tag-notifications }
-标记通知是只将预订了特定标记的所有设备作为目标的通知消息。标记表示用户感兴趣的主题，并且能够根据所选兴趣来接收通知。
+标记通知是只将预订了特定标记的所有设备作为目标的通知消息。 标记表示用户感兴趣的主题，并且能够根据所选兴趣来接收通知。
 
-在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**按标记划分的设备**，并提供**通知文本**。然后，单击**发送**。
+在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**按标记划分的设备**，并提供**通知文本**。 然后，单击**发送**。
 
 <img class="gifplayer" alt="按标记发送" src="sending-by-tag.png"/>
 
 #### 广播通知
 {: #breadcast-notifications }
-广播通知是标记推送通知的一种形式，其将所有预订设备作为目标。任何支持推送的 {{ site.data.keys.product_adj }} 应用程序在缺省情况下都可通过预订保留的 `Push.all` 标记（为每个设备自动创建）来启用广播通知。可以使用编程方式取消预订 `Push.all` 标记。
+广播通知是标记推送通知的一种形式，其将所有预订设备作为目标。 任何支持推送的 {{ site.data.keys.product_adj }} 应用程序在缺省情况下都可通过预订保留的 `Push.all` 标记（为每个设备自动创建）来启用广播通知。 可以使用编程方式取消预订 `Push.all` 标记。
 
-在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**所有**，并提供**通知文本**。然后，单击**发送**。
+在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**所有**，并提供**通知文本**。 然后，单击**发送**。
 
 ![发送到所有](sending-to-all.png)
 
@@ -278,39 +282,33 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
 > 要查看所有推送通知 REST API，请参阅用户文档中的 [REST API 运行时服务](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)主题。
+
 #### 通知有效内容
 {: #notification-payload }
 请求可以包含以下有效内容属性：
 
 有效内容属性| 定义
-
 --- | ---
-message| 要发送的警报消息
-settings| 设置是通知的不同属性。
-target| 目标集可以是使用者标识、设备、平台或标记。
-只可以设置目标之一。
-deviceIds| 设备标识表示的一组设备。
-具有这些标识的设备将收到通知。这是单点广播通知。
-
-notificationType| 表示用于发送消息的通道（推送/SMS）的整数值。允许的值包括 1（仅推送）、2（仅 SMS）和 3（推送和 SMS）
-platforms| 一组设备平台。运行在这些平台上的设备将收到通知。受支持的值有 A (Apple/iOS)、G (Google/Android) 和 M (Microsoft/Windows)。
-tagNames| 指定为 tagNames 的一组标记。预订这些标记的设备将收到通知。对基于标记的通知使用此类型的目标。
-userIds| 通过 userIds 表示的一组要发送通知的用户。
-这是单点广播通知。
-
-phoneNumber| 用于注册设备和接收通知的电话号码。这是单点广播通知。
-
+message | 要发送的警报消息
+settings | 设置是通知的不同属性。
+target | 目标集可以是使用者标识、设备、平台或标记。 只可以设置目标之一。
+deviceIds | 设备标识表示的一组设备。 具有这些标识的设备将收到通知。 这是单点广播通知。
+notificationType | 表示用于发送消息的通道（推送/SMS）的整数值。 允许的值包括 1（仅推送）、2（仅 SMS）和 3（推送和 SMS）
+platforms | 一组设备平台。 运行在这些平台上的设备将收到通知。 受支持的值有 A (Apple/iOS)、G (Google/Android) 和 M (Microsoft/Windows)。
+tagNames | 指定为 tagNames 的一组标记。 预订这些标记的设备将收到通知。 对基于标记的通知使用此类型的目标。
+userIds | 通过 userIds 表示的一组要发送通知的用户。 这是单点广播通知。
+phoneNumber | 用于注册设备和接收通知的电话号码。 这是单点广播通知。
 
 **推送通知有效内容 JSON 示例**
 
 ```json
 {
     "message" : {
-"alert" : "Test message",
+    "alert" : "Test message",
   },
   "settings" : {
     "apns" : {
-"badge" : 1,
+      "badge" : 1,
       "iosActionKey" : "Ok",
       "payload" : "",
       "sound" : "song.mp3",
@@ -338,7 +336,7 @@ phoneNumber| 用于注册设备和接收通知的电话号码。这是单点广�
 ```json
 {
   "message" : {
-"alert": "Hello World from an SMS message"
+    "alert": "Hello World from an SMS message"
   },
   "notificationType":3,
    "target" : {
@@ -353,7 +351,7 @@ phoneNumber| 用于注册设备和接收通知的电话号码。这是单点广�
 出于测试目的，将使用 Postman，如下所述：
 
 1. [配置保密客户机](../../authentication-and-security/confidential-clients/)。   
-通过 REST API 发送推送通知时，将使用由空格分隔的作用域元素 `messages.write` 和 `push.application.<applicationId>。`
+    通过 REST API 发送推送通知时，将使用由空格分隔的作用域元素 `messages.write` 和 `push.application.<applicationId>。`
 
     <img class="gifplayer" alt="配置保密客户机" src="push-confidential-client.png"/>
 
@@ -377,7 +375,7 @@ phoneNumber| 用于注册设备和接收通知的电话号码。这是单点广�
    ```json
    {
         "message" : {
-"alert" : "Hello World!"
+            "alert" : "Hello World!"
         }
    }
    ```
@@ -407,7 +405,7 @@ phoneNumber| 用于注册设备和接收通知的电话号码。这是单点广�
 
 ## 代理支持
 {: #proxy-support }
-可使用代理设置来设置可选代理，通知将通过此可选代理发送至 Android 和 iOS 设备。可以使用 **push.apns.proxy.** 和 **push.gcm.proxy.** 配置属性来设置代理。有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
+可使用代理设置来设置可选代理，通知将通过此可选代理发送至 Android 和 iOS 设备。 可以使用 **push.apns.proxy.** 和 **push.gcm.proxy.** 配置属性来设置代理。 有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 
 ## 后续教程
 {: #tutorials-to-follow-next }

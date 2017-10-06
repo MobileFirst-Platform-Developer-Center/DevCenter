@@ -59,7 +59,9 @@ weight: 3
         <td><p>在 V8.0 中未提供。</p></td>
     </tr>
     <tr>
-        <td><p>在 V8.0 中未提供针对 IBM Business Process Manager (IBM BPM) 流程应用程序的服务发现和适配器生成功能、Microsoft Azure Marketplace DataMarket、OData RESTful API、RESTful 资源、SAP Netweaver Gateway 公开的服务以及 Web Service。</p></td>
+        <td><p>在 V8.0 中未提供针对 IBM Business Process Manager (IBM BPM) 流程应用程序的服务发现和适配器生成功能、Microsoft Azure
+Marketplace DataMarket、OData RESTful API、RESTful
+资源、SAP Netweaver Gateway 公开的服务以及 Web Service。</p></td>
         <td><p>在 V8.0 中未提供。</p></td>
     </tr>
     <tr>
@@ -156,7 +158,8 @@ weight: 3
     </tr>
     <tr>
         <td>已废弃 {{ site.data.keys.product_adj }} 数据代理功能。 也废弃了 Cloudant IMFData 和 CloudantToolkit API。	</td>
-        <td>已废弃。 有关替换您的应用程序中的 IMFData 和 CloudantToolkit API 的更多信息，请参阅“迁移通过 IMFData 或 Cloudant SDK 将移动数据存储在 Cloudant 中的应用程序”。</td>
+        <td>已废弃。 有关替换您的应用程序中的 IMFData 和 CloudantToolkit API 的更多信息，请参阅“迁移通过 IMFData 或 Cloudant
+SDK 将移动数据存储在 Cloudant 中的应用程序”。</td>
     </tr>
     <tr>
         <td>IBM Tealeaf SDK 不再与 {{ site.data.keys.product }} 捆绑在一起。	</td>
@@ -290,7 +293,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用
 | `WL.Client.transmitEvent(event, immediate)`、`WL.Client.purgeEventTransmissionBuffer()`、`WL.Client.setEventTransmissionPolicy(policy)` | 为接收这些事件的通知创建定制适配器。 |
 | `WL.Device.getContext()`、`WL.Device.startAcquisition(policy, triggers, onFailure)`、`WL.Device.stopAcquisition()`、`WL.Device.Wifi`、`WL.Device.Geo.Profiles`、`WL.Geo` | 使用本机 API 或第三方 Cordova 插件进行地理定位。 |
 | `WL.Client.makeRequest (url, options)` | 创建提供同一功能的定制适配器。 |
-| `WLDevice.getID(options)` | 使用提供此功能的 Cordova 插件。 **注：**供您参考：来自 c**ordova-plugin-device** 的 `device.uuid` 插件提供此功能。 |
+| `WLDevice.getID(options)` | 使用提供此功能的 Cordova 插件。 **注：**供您参考，来自 **cordova-plugin-device** 插件的 `device.uuid` 提供此功能。|
 | `WL.Device.getFriendlyName()` | 使用 `WL.Client.getDeviceDisplayName` |
 | `WL.Device.setFriendlyName()` | 使用 `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | 使用提供此功能的 Cordova 插件。 **注：**供您参考：**cordova-plugin-network-information** 插件提供此功能。 |
@@ -349,7 +352,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。 |
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 |
+| `ChallengeHandler.submitAdapterAuthentication` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 |
 
 #### 不推荐的 Android API
 {: #deprecated-android-apis }
@@ -410,7 +413,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。 |
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler.submitAdapterAuthentication` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
 
 ### Windows C# API
 {: #windows-c-apis }
@@ -421,7 +424,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用
 |-----------------------|------------------------------------------|
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler. isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler.submitAdapterAuthentication` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler.Shouldcancel()`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |
 | `WLAuthorizationManager` | 改用 `WorklightClient.WorklightAuthorizationManager`。 |
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |

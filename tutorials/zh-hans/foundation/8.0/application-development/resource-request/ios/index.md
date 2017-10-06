@@ -6,7 +6,7 @@ relevantTo: [ios]
 downloads:
   - name: 下载 Xcode 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: 下载 Adapter Maven 项目
+  - name: 下载适配器 Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
@@ -43,7 +43,7 @@ let request = WLResourceRequest(
 ```
 
 * 对于 **JavaScript 适配器**，请使用 `/adapters/{AdapterName}/{procedureName}`
-* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。`path` 取决于您如何在 Java 代码中定义 `@Path` 注释。这也将包含您使用的任何 `@PathParam`。
+* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。 `path` 取决于您如何在 Java 代码中定义 `@Path` 注释。 这也将包含您使用的任何 `@PathParam`。
 * 要访问项目外面的资源，请根据外部服务器的需求使用完整 URL。
 * **超时**：可选，请求超时（毫秒）
 
@@ -76,7 +76,7 @@ request.sendWithCompletionHandler { (response, error) -> Void in
 }
 ```
 
-或者，您可以使用 `sendWithDelegate` 并提供遵守 `NSURLConnectionDataDelegate` 和 `NSURLConnectionDelegate` 协议的委派。这将允许您处理具有更高粒度的响应，如处理二进制响应。   
+或者，您可以使用 `sendWithDelegate` 并提供遵守 `NSURLConnectionDataDelegate` 和 `NSURLConnectionDelegate` 协议的委派。 这将允许您处理具有更高粒度的响应，如处理二进制响应。   
 
 ## 参数
 {: #parameters }
@@ -105,7 +105,7 @@ request.setQueryParameterValue("value2", forName: "param2")
 
 #### JavaScript 适配器
 {: #javascript-adapters-query }
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 Objective-C
 
@@ -159,7 +159,7 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 
 #### JavaScript 适配器
 {: #javascript-adapters-form }
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 Objective-C
 
@@ -234,7 +234,7 @@ request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void i
 
 ## 响应
 {: #the response }
-`response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。常用属性包括：`responseText`（字符串）、`responseJSON`（字典）（如果以 JSON 格式响应）和 `status`（整数）（响应的 HTTP 状态）。
+`response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。 常用属性包括：`responseText`（字符串）、`responseJSON`（字典）（如果以 JSON 格式响应）和 `status`（整数）（响应的 HTTP 状态）。
 
 使用 `response` 和 `error` 对象获取从适配器检索的数据。
 
@@ -258,7 +258,7 @@ ResourceRequestSwift 项目包含使用 Swift 实现的 iOS 应用程序，该�
 #### 关于 iOS 9 的注意事项：
 {: #note-about-ios-9 }
 
-> Xcode 7 缺省情况下会启用[应用程序传输安全性 (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)。要完成教程，请禁用 ATS（[阅读更多](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)）。
+> Xcode 7 缺省情况下会启用[应用程序传输安全性 (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)。 要完成教程，请禁用 ATS（[阅读更多](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)）。
 >   1. 在 Xcode 中，右键单击 **[project]/info.plist 文件 → 打开方式 → 源代码**
 >   2. 粘贴以下内容：
 >

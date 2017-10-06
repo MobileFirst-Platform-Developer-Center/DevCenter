@@ -78,7 +78,7 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
     このチュートリアルの目的で、**liberty\_install\_dir** が非管理者または非 root ユーザーがファイルを変更できないロケーションを指している場合、サーバーを含むそのディレクトリーを、特定の特権が必要とされないロケーションに移動してください。そうすることで、特定の特権がなくてもインストールの操作を行うことができます。
     * Liberty のインストール・ディレクトリーに移動します。
     * etc という名前のディレクトリーを作成します。管理者または root の特権が必要です。
-    * **etc** ディレクトリー内に、`WLP_USER_DIR=<どのユーザーでも書き込めるディレクトリーのパス>` というコンテンツを含む **server.env** ファイルを作成します。例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
+    * **etc** ディレクトリー内に、**server.env** ファイルを作成し、ファイル内に `WLP_USER_DIR=<path to a directory where any user can write>` というコンテンツを含めます。例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
 7.  チュートリアルのこの後のパートで {{ site.data.keys.mf_server }} の最初のノードのインストールに使用する Liberty サーバーを作成します。
     * コマンド・ラインを開始します。
     * **liberty\_install\_dir/bin** に移動し、**server create mfp1** と入力します。
@@ -288,7 +288,7 @@ FWLSE3000E: サーバー・エラーが検出されました。
 * **mfpadmin**、管理サービス
 * **mfpadminconfig**、ライブ更新サービス
 * **mfpconsole**、{{ site.data.keys.mf_console }}
-* **mobilefirs**t、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
+* **mobilefirst**、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
 * **imfpush**、プッシュ・サービス
 
 サーバー構成ツールはすべてのアプリケーションを同じサーバーにインストールします。アプリケーションを別のアプリケーション・サーバーに分離することもできますが、[トポロジーとネットワーク・フロー](../../topologies)に記載された特定の制約を受けることになります。  
@@ -350,7 +350,7 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
 インストールが完了した後、この手順を使用して、インストールされたコンポーネントをテストすることができます。
 
 1. コマンド **server start mfp1** を使用してサーバーを始動します。サーバーのバイナリー・ファイルは **liberty\_install\_dir/bin** にあります。
-2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルで定義されているエレメント `<httpEndpoint>` でポートを確認できます。ログイン画面が表示されます。
+2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルに定義されている `<httpEndpoint>` エレメントでポートを確認できます。ログイン画面が表示されます。
 
 ![コンソールのログイン画面](mfpconsole_signin.jpg)
 
@@ -399,8 +399,8 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
 3. [Ant タスクを使用した {{ site.data.keys.mf_server }} の Liberty へのデプロイ](#deploying-mobilefirst-server-to-liberty-with-ant-tasks)で使用した Ant ファイルをコピーして、プロパティー **appserver.was85liberty.serverInstance** の値を **mfp2** に変更します。Ant タスクはデータベースが存在することを検出し、表を作成しません (以下のログ抽出を参照)。次に、アプリケーションがサーバーにデプロイされます。  
 
    ```bash
-   [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
-   [configuredatabase] データベース MFPDATA が存在します。
+[configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
+[configuredatabase] データベース MFPDATA が存在します。
    [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' での MobileFirstAdmin データベース MFPDATA への接続が成功しました。
    [configuredatabase] MobileFirstAdmin データベース MFPDATA のバージョンを取得しています...
    [configuredatabase] 表 MFPADMIN_VERSION が存在し、その値をチェックしています...
@@ -449,8 +449,8 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
 1. 以下の 2 つのサーバーを始動します。
 
    ```bash
-    server start mfp1
-    server start mfp2
-    ```
+   server start mfp1
+   server start mfp2
+   ```
         
 2. コンソールにアクセスします。例えば、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)、または HTTPS では [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) です。左側のサイドバーに、**「サーバー・ファームのノード」**という名前の追加メニューが表示されます。**「サーバー・ファームのノード」**をクリックすると、各ノードの状況を表示できます。両方のノードが始動するまで、しばらく待たなければならない場合があります。

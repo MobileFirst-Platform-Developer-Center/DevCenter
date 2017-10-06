@@ -35,11 +35,11 @@ weight: 2
 
 ## 在 Bluemix 上注册帐户
 {: #register-an-account-on-bluemix }
-如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。 您需要填写注册表单，然后才能进入下一步。
+如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
 
 ### Bluemix 仪表板
 {: #the-bluemix-dashboard }
-在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。 缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
+在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。缺省情况下，此工作区命名为“dev”。如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
@@ -85,12 +85,12 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                 <ul>
                     <li><b>Dockerfile-mfpf-server</b>：包含构建 {{ site.data.keys.mf_server }} 映像所需的所有命令的文本文档。</li>
                     <li><b>Dockerfile-mfpf-analytics</b>：包含构建 {{ site.data.keys.mf_analytics }} 映像所需的所有命令的文本文档。</li>
-                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含登录 Bluemix、构建 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 映像和在 Bluemix 上推送与运行此映像时所需的脚本。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。它还包含登录 Bluemix、构建 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 映像和在 Bluemix 上推送与运行此映像时所需的脚本。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
                     <li><b>usr-mfpf-server</b> 和 <b>usr-mfpf-analytics</b> 文件夹：
                         <ul>
                             <li><b>bin</b> 文件夹：包含将在容器启动时执行的脚本文件 (mfp-init)。您可以添加自己的定制代码以执行这些代码。</li>
                             <li><b>config</b> 文件夹：包含 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 所使用的服务器配置片段（密钥库、服务器属性、用户注册表）。</li>
-                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。 必须在 ./usr/security 文件夹中引用列出的文件。</li>
+                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。必须在 ./usr/security 文件夹中引用列出的文件。</li>
                             <li><b>ltpa.xml</b> - 定义 LTPA 密钥及其密码的配置文件。</li>
                             <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 的配置属性。 请参阅以下文档主题中列出的受支持属性：
                                 <ul>
@@ -99,7 +99,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                                 </ul>
                             </li>
                             <li><b>mfpfsqldb.xml</b> - 用于连接到 DB2 或 dashDB 数据库的 JDBC 数据源定义。</li>
-                            <li><b>registry.xml</b> - 用户注册表配置。 basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。 可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
+                            <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                             <li><b>tracespec.xml</b> - 用于启用调试和记录级别的跟踪规范。</li>
                         </ul>
                     </li>
@@ -224,7 +224,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭此节</b></a>
-            </div>
+                                    </div>
         </div>
     </div>
 </div>
@@ -315,7 +315,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择以非交互方式来运行，那么还提供了命令行自变量的列表：</p>
+            <p>以下指示信息演示了如何使用配置文件来运行脚本。如果选择以非交互方式来运行，那么还提供了命令行自变量的列表：</p>
 
             <ol>
                 <li><b>initenv.sh - 登录 Bluemix </b><br />
@@ -414,7 +414,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 {: #applying-mobilefirst-server-fixes }
 
 IBM Containers 上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。  
-应用临时修订之前，请备份现有的配置文件。 配置文件位于以下文件夹中：
+应用临时修订之前，请备份现有的配置文件。配置文件位于以下文件夹中：
 * {{ site.data.keys.mf_analytics }}：**package_root/bmx-kubernetes/usr-mfpf-analytics**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry 应用程序：**package_root/bmx-kubernetes/usr-mfpf-server**
 
@@ -464,11 +464,11 @@ bx cr image-rm image-name（从注册表中除去映像）
 
 ## 从 Bluemix 中除去数据库服务配置
 {: #removing-the-database-service-configuration-from-bluemix }
-如果在配置 {{ site.data.keys.mf_server }} 映像期间运行了 **prepareserverdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_server }} 所需的配置和数据库表。 此脚本还会针对容器创建数据库模式。
+如果在配置 {{ site.data.keys.mf_server }} 映像期间运行了 **prepareserverdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_server }} 所需的配置和数据库表。此脚本还会针对容器创建数据库模式。
 
 要从 Bluemix 中除去数据库服务配置，请使用 Bluemix 仪表板执行以下过程。
 
 1. 从 Bluemix 仪表板，选择使用的 DB2 on cloud 服务。选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
 2. 启动 DB2 控制台以使用选中的 DB2 服务实例的模式和数据库对象。
-3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
-4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 Bluemix 中除去数据库配置。
+3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
+4. 在仔细检查每个模式名称以及其下的对象后，删除模式。这将从 Bluemix 中除去数据库配置。

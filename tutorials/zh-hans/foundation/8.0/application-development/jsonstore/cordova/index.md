@@ -5,16 +5,16 @@ breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 downloads:
-  - 名称：下载 Cordova 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
-  - 名称：下载适配器 Maven 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: 下载 Cordova 项目
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
+  - name: 下载适配器 Maven 项目
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 先决条件
 {: #prerequisites }
 * 阅读 [JSONStore 父教程](../)
-* 确保已将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目。遵循[向 Cordova 应用程序添加 {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova/) 教程。 
+* 确保已将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目。 遵循[向 Cordova 应用程序添加 {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova/) 教程。 
 
 #### 跳转至：
 {: #jump-to}
@@ -38,7 +38,7 @@ downloads:
 {: #initialize }
 使用 `init` 以启动一个或多个 JSONStore 集合。  
 
-启动或供应集合意味着创建包含集合和文档的持久存储（如果不存在）。如果持久存储已加密且传递了正确密码，那么将运行必需的安全过程才能访问数据。
+启动或供应集合意味着创建包含集合和文档的持久存储（如果不存在）。 如果持久存储已加密且传递了正确密码，那么将运行必需的安全过程才能访问数据。
 
 ```javascript
 var collections = {
@@ -55,6 +55,7 @@ WL.JSONStore.init(collections).then(function (collections) {
 ```
 
 > 有关可在初始化时启用的可选功能，请参阅本教程第二部分中的**安全性**、**多用户支持**和 **{{ site.data.keys.product_adj }} 适配器集成**。
+
 ### 获取
 {: #get }
 使用 `get` 来创建集合存取器。必须在调用 get 前调用 `init`，否则 `get` 的结果将不确定。
@@ -165,7 +166,7 @@ WL.JSONStore.get(collectionName).remove(query, options).then(function (numberOfD
 
 ### 除去集合
 {: #remove-collection }
-使用 `removeCollection` 以删除集合中存储的所有文档。此操作类似于数据库术语中的删除表。
+使用 `removeCollection` 以删除集合中存储的所有文档。 此操作类似于数据库术语中的删除表。
 
 ```javascript
 var collectionName = 'people';
@@ -198,13 +199,13 @@ WL.JSONStore.destroy().then(function () {
 
 ### 安全性
 {: #security }
-您可以通过将密码传递到 `init` 函数来保护存储区中的所有集合。如果未传递密码，那么将不会加密存储区中所有集合的文档。
+您可以通过将密码传递到 `init` 函数来保护存储区中的所有集合。 如果未传递密码，那么将不会加密存储区中所有集合的文档。
 
 数据加密仅适用于 Android、iOS、Windows 8.1 Universal 和 Windows 10 UWP 环境。  
 某些安全元数据存储在*密钥链* (iOS)、*共享首选项* (Android) 或*凭据保险箱* (Windows8.1) 中。  
-此存储区利用 256 位高级加密标准 (AES) 密钥进行加密。所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。
+此存储区利用 256 位高级加密标准 (AES) 密钥进行加密。 所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。
 
-使用 `closeAll` 以锁定对所有集合的访问，直至再次调用 `init`。如果将 `init` 当作登录函数，那么可将 `closeAll` 当作对应的注销函数。使用 `changePassword` 来更改密码。
+使用 `closeAll` 以锁定对所有集合的访问，直至再次调用 `init`。 如果将 `init` 当作登录函数，那么可将 `closeAll` 当作对应的注销函数。 使用 `changePassword` 来更改密码。
 
 ```javascript
 var collections = {
@@ -222,14 +223,14 @@ WL.JSONStore.init(collections, options).then(function () {
 
 #### 加密
 {: #encryption }
-*仅限 iOS*。缺省情况下，{{ site.data.keys.product_adj }} Cordova SDK for iOS 依赖 iOS 提供的 API 进行加密。如果想要将此替换为 OpenSSL：
+*仅限 iOS*。 缺省情况下，{{ site.data.keys.product_adj }} Cordova SDK for iOS 依赖 iOS 提供的 API 进行加密。 如果想要将此替换为 OpenSSL：
 
 1. 添加 cordova-plugin-mfp-encrypt-utils 插件：`cordova plugin add cordova-plugin-mfp-encrypt-utils`。
 2. 在适用逻辑中，使用：`WL.SecurityUtils.enableNativeEncryption(false)` 以启用 OpenSSL 选项。
 
 ### 多用户支持
 {: #multiple-user-support }
-您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储区。`init` 函数可使用包含用户名的选项对象。如果未指定用户名，那么缺省用户名为 **jsonstore**。
+您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储区。`init` 函数可使用包含用户名的选项对象。 如果未指定用户名，那么缺省用户名为 **jsonstore**。
 
 ```javascript
 var collections = {
@@ -249,8 +250,7 @@ WL.JSONStore.init(collections, options).then(function () {
 {: #mobilefirst-adapter-integration }
 此部分假定您熟悉适配器。  
 
-适配器集成为可选，其支持将数据从集合发送到适配器以及从适配器将数据获取到集合。
-  
+适配器集成为可选，其支持将数据从集合发送到适配器以及从适配器将数据获取到集合。  
 如果需要提高灵活性，可以使用 `WLResourceRequest` 或 `jQuery.ajax` 来实现这些目标。
 
 ### 适配器实现
@@ -330,7 +330,7 @@ WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
 
 #### 获取所需推送（脏文档）
 {: #get-push-required-dirty-documents }
-调用 `getPushRequired` 将返回名为*“脏文档”*的数组，这些是包含后端系统上不存在的本地修订的文档。在调用 `push` 时，会将这些文档发送到适配器。
+调用 `getPushRequired` 将返回名为*“脏文档”*的数组，这些是包含后端系统上不存在的本地修订的文档。 在调用 `push` 时，会将这些文档发送到适配器。
 
 ```javascript
 var collectionName = 'people';
@@ -356,7 +356,7 @@ WL.JSONStore.get(collectionName).getAllDirty()
 
 #### 推送
 {: #push }
-`push` 将更改的文档发送到正确的适配器程序（例如，通过本地添加的文档调用 `addPerson`）。此机制基于与更改的文档相关联的最新操作以及传递到 `init` 的适配器元数据。
+`push` 将更改的文档发送到正确的适配器程序（例如，通过本地添加的文档调用 `addPerson`）。 此机制基于与更改的文档相关联的最新操作以及传递到 `init` 的适配器元数据。
 
 ```javascript
 var collectionName = 'people';
@@ -372,7 +372,7 @@ WL.JSONStore.get(collectionName).push().then(function (response) {
 ### 增强
 {: #enhance }
 通过向集合原型添加函数，使用 `enhance` 以扩展核心 API 来适合您的需求。
-此示例（以下代码片段）显示如何使用 `enhance` 来添加处理 `keyvalue` 集合的函数 `getValue`。其使用 `key`（字符串）作为其唯一参数并返回单个结果。
+此示例（以下代码片段）显示如何使用 `enhance` 来添加处理 `keyvalue` 集合的函数 `getValue`。 其使用 `key`（字符串）作为其唯一参数并返回单个结果。
 
 ```javascript
 var collectionName = 'keyvalue';

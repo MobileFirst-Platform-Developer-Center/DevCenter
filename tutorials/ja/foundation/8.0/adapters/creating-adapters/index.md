@@ -72,13 +72,13 @@ Maven アダプター・プロジェクトを作成するには、`mfpdev adapte
   * JavaScript SQL アダプターを作成するには、`SQL` を選択します。  
   * Java アダプターを作成するには、`Java` を選択します。
 
-4. アダプター・パッケージを入力します (このオプションは Java アダプターの場合にのみ有効です)。以下に例を示します。 
+4. アダプター・パッケージを入力します (このオプションは Java アダプターの場合にのみ有効です)。以下に例を示します。
 
    ```bash
    ? Enter Package: com.mypackage
    ```
 
-5. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。以下に例を示します。 
+5. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。以下に例を示します。
 
    ```bash
    ? Enter Group ID: com.mycompany
@@ -119,25 +119,25 @@ Maven アダプター・プロジェクトを作成するには、`archetype:gen
      * JavaScript HTTP アダプターを作成するには、`adapter-maven-archetype-http` を使用します。
      * JavaScript SQL アダプターを作成するには、`adapter-maven-archetype-sql` を使用します。  
 
-3. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。以下に例を示します。 
+3. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。以下に例を示します。
 
    ```bash
    Define value for property 'groupId': : com.mycompany
    ```
 
-4. Maven プロジェクトの成果物 ID を入力します。**この ID は、後でアダプター名としても使用されます**。以下に例を示します。 
+4. Maven プロジェクトの成果物 ID を入力します。**この ID は、後でアダプター名としても使用されます**。以下に例を示します。
 
    ```bash
    Define value for property 'artifactId': : SampleAdapter
    ```
 
-5. Maven プロジェクトのバージョンを入力します (デフォルトは `1.0-SNAPSHOT` です)。以下に例を示します。 
+5. Maven プロジェクトのバージョンを入力します (デフォルトは `1.0-SNAPSHOT` です)。以下に例を示します。
 
    ```bash
    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
    ```
 
-6. アダプターのパッケージ名を入力します (デフォルトは `groupId` です)。以下に例を示します。 
+6. アダプターのパッケージ名を入力します (デフォルトは `groupId` です)。以下に例を示します。
 
    ```bash
    Define value for property 'package':  com.mycompany: : com.mypackage
@@ -343,7 +343,7 @@ mfpdev adapter deploy all
   3. 各アダプターの **`module`** エレメントを追加します。
   4. **`build`** エレメントを追加します。
   5. **オプション**。**localhost:9080** を特定の {{ site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
-  6. **オプション**。**`mfpfUser`** および **`mfpfPassword`** のデフォルト値を管理ユーザー名およびパスワードで置き換えます。
+  6. **オプション**。**`mfpfUser`** および **`mfpfPassword`** のデフォルト値を、管理ユーザー名およびパスワードで置き換えます。
   7. **オプション**。**`mfpfRuntime`** のデフォルト値をランタイム名で置き換えます。
 
 4. すべてのアダプターを[ビルドまたはデプロイ](#build-and-deploy-adapters)するには、ルートの「GroupAdapters」プロジェクトから Maven コマンドを実行します。
@@ -400,7 +400,7 @@ mfpdev adapter deploy all
 Maven 中央リポジトリーにオンラインでアクセスできない場合、組織の内部リポジトリーで {{ site.data.keys.product }} Maven 成果物を共有できます。
 
 1. [ダウンロード・ページにアクセス]({{site.baseurl}}/downloads/)し、{{ site.data.keys.mf_dev_kit_full }} インストーラーをダウンロードします。
-2. {{ site.data.keys.mf_server }} を開始し、ブラウザーで URL `http://<your-server-host:server-port>/mfpconsole` から {{ site.data.keys.mf_console }} をロードします。
+2. {{ site.data.keys.mf_server }} を始動し、ブラウザーで、URL: `http://<your-server-host:server-port>/mfpconsole` から {{ site.data.keys.mf_console }} をロードします。
 3. **「ダウンロード・センター」**をクリックします。**「ツール」→「アダプターのアーキタイプ」**の**「ダウンロード」**をクリックします。**mfp-maven-central-artifacts-adapter.zip** アーカイブがダウンロードされます。
 4. **install.sh** スクリプト (Linux および Mac の場合) または **install.bat** スクリプト (Windows の場合) を実行して、アダプター・アーキタイプおよびセキュリティー検査を内部 Maven リポジトリーに追加します。
 5. adapter-maven-api には、以下の JAR ファイルが必要です。これらが、開発者のローカル **.m2** フォルダーまたは組織の Maven リポジトリーのいずれかに配置されていることを確認してください。これらは、中央リポジトリーからダウンロードできます。

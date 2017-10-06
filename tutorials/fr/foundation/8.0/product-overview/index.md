@@ -16,13 +16,9 @@ gestion intégrée, qui sont tous pris en charge par divers mécanismes de sécu
 
 Avec {{ site.data.keys.product }},
 votre organisation peut efficacement développer des applications mobiles riches qui ont accès à l'intégralité des fonctions de vos appareils mobiles cible,
-s'y connecter, les exécuter et les gérer. {{ site.data.keys.product }}
-peut réduire le temps de mise sur le marché, le coût et la complexité du développement, et offre un acquis utilisateur optimisé pour les clients et les
-employés dans plusieurs environnements.
+s'y connecter, les exécuter et les gérer. {{ site.data.keys.product }} peut réduire le temps de mise sur le marché, le coût et la complexité du développement et offre aux clients et aux employés un acquis utilisateur optimisé dans différentes environnements.
 
-Dans le cadre de cette solution mobile complète,
-{{ site.data.keys.product }} peut être intégré à des capacités de cycle
-de vie, de sécurité, de gestion et d'analyse pour vous aider à répondre aux besoins de votre activité en matière d'applications mobiles.
+Dans le cadre de cette solution mobile complète, {{ site.data.keys.product }} peut être intégré à des capacités de cycle de vie, de sécurité, de gestion et d'analyse pour vous aider à répondre aux besoins de votre activité en matière d'applications mobiles.
 
 Découvrez ci-après davantage d'informations sur le produit. Fonctions principales et composants du produit, configuration système requise, fonctions prises en charge et notes sur l'édition.
 

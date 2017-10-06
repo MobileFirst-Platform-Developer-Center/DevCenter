@@ -89,6 +89,8 @@ weight: 2
 * [MySQL 数据库和用户需求](#mysql-database-and-user-requirements)
 
 > 有关受支持的数据库软件版本的最新列表，请参阅[系统需求](../../../product-overview/requirements/)页面。
+
+
 ### DB2 数据库和用户需求
 {: #db2-database-and-user-requirements }
 查看 DB2 的数据库需求。遵循步骤来创建用户和数据库，并设置您的数据库以满足特定需求。
@@ -280,7 +282,6 @@ DISCONNECT;
 
 
 #### 使用 Server Configuration Tool 安装
-
 {: #installation-with-the-server-configuration-tool-2 }
 同一数据库用于所有组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.product }} 运行时）
 

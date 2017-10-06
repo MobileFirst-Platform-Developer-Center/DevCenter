@@ -8,11 +8,11 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-如果使用 **cordova-plugin-mfp** 插件且未使用 {{ site.data.keys.product_adj }} 模板或向应用程序添加 Cordova **cordova-plugin-splashscreen** 插件，那么可以将 {{ site.data.keys.product_full }} 提供的图标和启动屏幕图像替换为自己的图像。如果使用模板，那么可替换 Cordova 应用程序使用的启动图像，因为它们是显示的文件。
+如果使用 **cordova-plugin-mfp** 插件且未使用 {{ site.data.keys.product_adj }} 模板或向应用程序添加 Cordova **cordova-plugin-splashscreen** 插件，那么可以将 {{ site.data.keys.product_full }} 提供的图标和启动屏幕图像替换为自己的图像。 如果使用模板，那么可替换 Cordova 应用程序使用的启动图像，因为它们是显示的文件。
 
 您必须创建新文件夹以保存启动图像和图标，并修改 **config.xml** 配置文件以指向它们。
 
-1. 在 Cordova 项目的根目录中创建一个文件夹。在父文件夹位于 Cordova 项目根目录中时，文件夹可处于嵌套子文件夹的任意级别。
+1. 在 Cordova 项目的根目录中创建一个文件夹。 在父文件夹位于 Cordova 项目根目录中时，文件夹可处于嵌套子文件夹的任意级别。
 2. 将源启动图像和图标图像放入此文件夹中。
 3. 更新 **config.xml** 配置文件以指向您的定制文件。
 
@@ -22,7 +22,7 @@ weight: 1
 
 #### 启动屏幕
 {: #splash-screens }
-如果在创建应用程序时*未*使用 {{ site.data.keys.product_adj }} 模板，那么显示的启动图像将是从 {{ site.data.keys.product_adj }} 图像位置检索的图像。在不使用模板时，目标文件路径和文件名必须仍与示例保持完全相同。将源路径和文件名 (`src`) 更改为想要显示的文件的路径。在 **config.xml** 文件的 `<platform name="android">` 和 `</platform>` 标记之间添加类似于以下示例的行： 
+如果在创建应用程序时*未*使用 {{ site.data.keys.product_adj }} 模板，那么显示的启动图像将是从 {{ site.data.keys.product_adj }} 图像位置检索的图像。 在不使用模板时，目标文件路径和文件名必须仍与示例保持完全相同。 将源路径和文件名 (`src`) 更改为想要显示的文件的路径。 在 **config.xml** 文件的 `<platform name="android">` 和 `</platform>` 标记之间添加类似于以下示例的行： 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +32,7 @@ weight: 1
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-如果在创建应用程序时使用 {{ site.data.keys.product_adj }} 模板，那么必须更新 Cordova 使用的启动图像。将源路径和文件名 (src) 更改为想要显示的文件的路径。在 config.xml 文件的 <platform name="android"> 和 </platform> 标记之间添加类似于以下示例的行：
+如果在创建应用程序时使用 {{ site.data.keys.product_adj }} 模板，那么必须更新 Cordova 使用的启动图像。 将源路径和文件名 (src) 更改为想要显示的文件的路径。 在 config.xml 文件的 <platform name="android"> 和 </platform> 标记之间添加类似于以下示例的行：
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -47,7 +47,7 @@ weight: 1
 
 #### 图标
 {: #icons }
-图标文件的文件名必须与以下示例中的条目相同。路径可以是任何路径。每个图像的名称对应于其大小。
+图标文件的文件名必须与以下示例中的条目相同。 路径可以是任何路径。 每个图像的名称对应于其大小。
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -64,7 +64,7 @@ weight: 1
     
 #### 启动屏幕
 {: #splash-screens-ios }
-启动屏幕文件的路径和文件名必须与以下示例中的名称相同。每个图像的名称对应于其大小。
+启动屏幕文件的路径和文件名必须与以下示例中的名称相同。 每个图像的名称对应于其大小。
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -80,7 +80,7 @@ weight: 1
 
 #### 图标
 {: #icons-ios}
-图标文件的文件名必须与以下示例中的名称相同。路径可以是任何路径。每个图像的名称对应于其大小。
+图标文件的文件名必须与以下示例中的名称相同。 路径可以是任何路径。 每个图像的名称对应于其大小。
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -104,11 +104,11 @@ weight: 1
 
 ### Windows
 {: #windows }
-如果您有 Windows 应用程序，在 `<platform name="windows">` 和 `</platform>` 标记之间添加与以下示例中的行类似的行：
+如果您有 Windows 应用程序，那么在 `<platform name="windows">` 和 `</platform>` 标记之间添加类似于以下示例的行：
 
 #### 启动屏幕
 {: #splash-screens-windows }
-启动屏幕文件的路径和文件名必须与以下示例中的名称相同。每个图像的名称对应于其大小。
+启动屏幕文件的路径和文件名必须与以下示例中的名称相同。 每个图像的名称对应于其大小。
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -119,7 +119,7 @@ weight: 1
 
 #### 图标
 {: #icons-windows }
-图标文件的文件名必须与以下示例中的名称相同。路径可以是任何路径。每个图像的名称对应于其大小。
+图标文件的文件名必须与以下示例中的名称相同。 路径可以是任何路径。 每个图像的名称对应于其大小。
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

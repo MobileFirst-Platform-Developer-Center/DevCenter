@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Windows 8.1 Universal および Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
+title: Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5

@@ -134,11 +134,11 @@ IBM {{ site.data.keys.mf_server }} をトークン・ライセンス用にイン
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 アプリケーションのトークン・ライセンス ・タイプに応じて、以下のフィーチャーが使用されます。
 
-| トークン・ライセンス・タイプ | フィーチャー名 | 
+| トークン・ライセンス・タイプ| フィーチャー名| 
 |--------------------|--------------|
-| APPLICATION        | 	ibmmfpfa    | 
-| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (フィーチャーなし) | 
+| APPLICATION| 	ibmmfpfa| 
+| ADDITIONAL\_BRAND\_DEPLOYMENT|	ibmmfpabd| 
+| NON_PRODUCTION	| (フィーチャーなし)| 
 
 ## IBM License Metric Tool との統合
 {: #integration-with-ibm-license-metric-tool }
@@ -193,7 +193,7 @@ APPLICATION メトリックは、MobileFirst ランタイム環境が開発サ�
 {: #about-the-addressable_device-metric }
 ADDRESSABLE_DEVICE メトリックには以下のサブタイプがあります。
 
-* アプリケーション: `<applicationName>`、カテゴリー: `<applicationtype>`
+* アプリケーション: `<applicationName>`、カテゴリー: `<application type>`
 
 アプリケーション・タイプは、**B2C**、**B2E**、または **UNDEFINED** です。アプリケーションのアプリケーション・タイプを定義するには、[アプリケーション・ライセンス情報の設定](#setting-the-application-license-information)を参照してください。
 

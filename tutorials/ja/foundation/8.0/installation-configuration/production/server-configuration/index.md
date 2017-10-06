@@ -459,7 +459,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.push.authorization.client.id| オプション/条件によって必須| プッシュ・サービス用の OAuth 許可を処理する機密クライアントの ID。**mfp.admin.push.url** プロパティーが指定されている場合のみ必須。|
 | mfp.push.authorization.client.secret| オプション/条件によって必須| プッシュ・サービス用の OAuth 許可を処理する機密クライアントの秘密鍵。**mfp.admin.push.url** プロパティーが指定されている場合のみ必須。|
 | mfp.admin.authorization.client.id| オプション/条件によって必須| 管理サービス用の OAuth 許可を処理する機密クライアントの ID。**mfp.admin.push.url** プロパティーが指定されている場合のみ必須。|
-| mfp.push.authorization.client.secret| オプション/条件によって必須| 管理サービス用の OAuth 許可を処理する機密クライアントの秘密鍵。**mfp.admin.push.url** プロパティーが指定されている場合のみ必須。|
+| mfp.admin.authorization.client.secret | オプション/条件によって必須| 管理サービス用の OAuth 許可を処理する機密クライアントの秘密鍵。**mfp.admin.push.url** プロパティーが指定されている場合のみ必須。|
 
 ### {{ site.data.keys.mf_console }} の JNDI プロパティー
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -641,8 +641,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 各アプリケーションのコンテンツは {{ site.data.keys.product_adj }} 管理データベースに格納されます。
 
 アクティブなログ・ファイルは、**LOGPRIMARY** と **LOGSECOND** の各データベース構成パラメーターでその数が定義され、**LOGFILSIZ** データベース構成パラメーターでそのサイズが定義されます。単一トランザクションでは、
-**LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**)
-* 4096 KB より大きいログ・スペースは使用できません。
+**LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB より大きいログ・スペースは使用できません。
 
 `DB2 GET DATABASE CONFIGURATION` コマンドには、ログ・ファイル・サイズ、および 1 次ログ・ファイルと 2 次ログ・ファイルの数に関する情報が含まれています。
 

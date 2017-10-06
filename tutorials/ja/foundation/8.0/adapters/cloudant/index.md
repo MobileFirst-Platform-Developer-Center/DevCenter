@@ -74,8 +74,7 @@ Cloudant は複数の認証形態をサポートします。認証に関する C
 
 ```js
 function addEntry(entry){
-
-    var input = {
+var input = {
 method : 'post',
             returnedContentType : 'json',
             path : DATABASE_NAME + '/',

@@ -444,8 +444,10 @@ O serviço de administração usa um serviço de atualização em tempo real com
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | Opcional A URL do serviço de atualização em tempo real. A URL padrão é derivada da URL do serviço de administração, incluindo configuração na raiz de contexto do serviço de administração. |
-| mfp.config.service.user | Obrigatório | O nome do usuário que é usado para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, o nome do usuário deve ser o mesmo para todos os membros do farm. |
-| mfp.config.service.password | Obrigatório | A senha que é usada para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, a senha deve ser a mesma para todos os membros do farm. |
+| mfp.config.service.user | Obrigatório | O nome do usuário que é usado para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, o nome do usuário deve ser o mesmo
+para todos os membros do farm. |
+| mfp.config.service.password | Obrigatório | A senha que é usada para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, a senha deve ser a mesma para todos
+os membros do farm. |
 | mfp.config.service.schema | Opcional | O nome do esquema usado pelo serviço de atualização em tempo real. |
 
 O serviço de administração usa um serviço de push como recurso auxiliar para armazenar várias configurações de push. Use essas propriedades para configurar como atingir o serviço de push. Como o serviço de push é protegido pelo modelo de segurança OAuth, deve-se configurar várias propriedades para permitir clientes confidenciais em OAuth.
@@ -460,7 +462,7 @@ O serviço de administração usa um serviço de push como recurso auxiliar para
 | mfp.push.authorization.client.id | Opcional/Condicionalmente obrigatório | O identificador o cliente confidencial que manipula autorização OAuth para o serviço de push. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
 | mfp.push.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de push. Obrigatório somente se a propriedade **mfp.admin.push.url** for especificada |
 | mfp.admin.authorization.client.id | Opcional/Condicionalmente obrigatório | O identificador do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
-| mfp.push.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
+| mfp.admin.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
 
 ### Propriedades da JNDI para o {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -528,24 +530,24 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 | mfp.push.db.cloudant.username | Opcional | O nome do usuário da conta do Cloudant usado para armazenar o banco de dados. Quando essa propriedade não for definida, um banco de dados relacional será usado. |
 | mfp.push.db.cloudant.password | Opcional | A senha da conta do Cloudant usada para armazenar o banco de dados. Essa propriedade deve ser configurada quando mfp.db.cloudant.username estiver configurado. |
 | mfp.push.db.cloudant.doc.version | Opcional | A versão do documento do Cloudant. |
-| mfp.push.db.cloudant.socketTimeout | Opcional	           | Um tempo limite para detectar a perda de uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.connectionTimeout | Opcional	           | Um tempo limite para estabelecer uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.socketTimeout | Opcional	| Um tempo limite para detectar a perda de uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.connectionTimeout | Opcional	| Um tempo limite para estabelecer uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.maxConnections | Opcional | O máximo de conexões do conector do Cloudant. Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.ssl.authentication | Opcional | Um valor booleano (true ou false) que especifica se a validação de cadeia de certificados SSL e verificação de nome de host estão ativadas para conexões HTTPS para o banco de dados Cloudant. Padrão: verdadeiro |
-| mfp.push.db.cloudant.ssl.configuration | Opcional	           | (Somente perfil completo do WAS) Para conexões HTTPS com o banco de dados Cloudant: o nome de uma configuração SSL na configuração do WebSphere Application Server, a ser usado quando nenhuma configuração for especificada para o host e para a porta. |
-| mfp.push.db.cloudant.proxyHost | Opcional	           | Host do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.proxyPort | Opcional	           | Porta do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.services.ext.security | Opcional	           | O plug-in de extensão de segurança. |
-| mfp.push.security.endpoint | Opcional	           | A URL de terminal para o servidor de autorizações. |
-| mfp.push.security.user | Opcional	           | O nome do usuário para acessar o servidor de autorizações. |
-| mfp.push.security.password | Opcional	           | A senha para acessar o servidor de autorizações. |
+| mfp.push.db.cloudant.ssl.configuration | Opcional	| (Somente perfil completo do WAS) Para conexões HTTPS com o banco de dados Cloudant: o nome de uma configuração SSL na configuração do WebSphere Application Server, a ser usado quando nenhuma configuração for especificada para o host e para a porta. |
+| mfp.push.db.cloudant.proxyHost | Opcional	| Host do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.proxyPort | Opcional	| Porta do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.services.ext.security | Opcional	| O plug-in de extensão de segurança. |
+| mfp.push.security.endpoint | Opcional	| A URL de terminal para o servidor de autorizações. |
+| mfp.push.security.user | Opcional	| O nome do usuário para acessar o servidor de autorizações. |
+| mfp.push.security.password | Opcional	| A senha para acessar o servidor de autorizações. |
 | mfp.push.services.ext.analytics | Opcional | O plug-in de extensão de análise de dados. |
 | mfp.push.analytics.endpoint | Opcional | A URL de terminal para o servidor de análise de dados. |
 | mfp.push.analytics.user | Opcional | O nome do usuário para acessar o servidor de análise de dados. |
 | mfp.push.analytics.password | Opcional | A senha para acessar o servidor de análise de dados. |
-| mfp.push.analytics.events.notificationDispatch | Opcional	           | O evento analítico quando a notificação está prestes a ser despachada. Default: true |
+| mfp.push.analytics.events.notificationDispatch | Opcional	| O evento analítico quando a notificação está prestes a ser despachada. Default: true |
 | mfp.push.internalQueue.maxLength | Opcional | O comprimento da fila que retém tarefas de notificação antes do despacho. Padrão: 200000 |
-| mfp.push.gcm.proxy.enabled | Opcional	           | Mostra se o Google GCM deve ser acessado por meio de um proxy. Padrão: falso |
+| mfp.push.gcm.proxy.enabled | Opcional	| Mostra se o Google GCM deve ser acessado por meio de um proxy. Padrão: falso |
 | mfp.push.gcm.proxy.protocol | Opcional | Pode ser http ou https. |
 | mfp.push.gcm.proxy.host | Opcional | Host do proxy GCM. Valor negativo significa porta padrão. |
 | mfp.push.gcm.proxy.port | Opcional | Porta do proxy GCM. Padrão: -1 |
