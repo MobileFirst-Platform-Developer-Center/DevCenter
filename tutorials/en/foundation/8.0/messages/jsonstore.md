@@ -3,7 +3,7 @@ layout: tutorial
 title: JSONStore Messages
 breadcrumb_title: JSONStore
 relevantTo: [ios,android,cordova]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

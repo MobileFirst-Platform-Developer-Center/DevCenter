@@ -11,6 +11,7 @@ Find information about messages that appear in client and server logs created by
 #### Jump to
 {: #jump-to }
 * [Analytics](analytics)
+* [Application Center](appcenter)
 * [Cordova](cordova)
 * [Foundation Server](server)
 * [Push Notifications](push)
