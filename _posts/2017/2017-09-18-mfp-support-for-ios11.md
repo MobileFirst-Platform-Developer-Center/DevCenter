@@ -41,13 +41,13 @@ The above mentioned features of MobileFirst work well with iOS 11, however few i
 * Starting iOS 11, Apple has modified the way the status bar area is shown on the screen. This change is done particularly to support iPhone X, which comes with a notch in the display. This is important for cross-platform developers using tools such as Apache Cordova or Ionic. This change in behaviour affects any webview based apps that use fixed position header bars when they are built for iOS 11.
 
 See our earlier [blog post]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/) for guidance on how to fix this issue for MobileFirst Platform Foundation v7.1 and v8.0. IBM MFP's future iFix release shall include the fix, which makes this change available to you when you create a new hybrid project. However, for existing apps the change has to be made in their HTML.
-  >**Update :** The issue is fixed and published for MobileFirst v7.1 . The fix is available with latest IFix release version 7.1.0.0-MFPF-IF201710051201 .
+  >**Update :** The issue is fixed and published for MobileFirst v7.1. The fix is available with latest iFix release version 7.1.0.0-MFPF-IF201710051201.
 
 * Though this change is not an issue with MobileFirst, customers must be aware of an issue when using command `cordova emulate ios`. See [here]( https://github.com/phonegap/ios-sim/issues/218), for more details.
 To overcome this issue apply the latest Cordova update, using the command `cordova platform add ios@https://github.com/apache/cordova-ios/`.
   >**Update :** Cordova has fixed this issue in its latest cordova-ios 4.5.1 version release.To adapt this fix use  `cordova platform add ios@4.5.1` while adding ios platform to your cordova application.
 
- * With iOS 11,Apple has modified the UIWebView.And this has impact on select drop-down list.The drop down display incorrect list values.It is bug on Apple refer [here](https://forums.developer.apple.com/thread/84585) and not an issue with MobileFirst . To fix this issue on MobileFirst v8.0 add WKWebView plugin to your cordova project.
+ * With iOS 11, Apple has modified the UIWebView, this impacts the select drop-down list. The drop down displays incorrect list values. This is a bug with iOS11 ([see here](https://forums.developer.apple.com/thread/84585) and not an issue with MobileFirst. To fix this issue on MobileFirst v8.0 add WKWebView plugin to your cordova project.
 
 ### WatchOS 4
 Apple has released WatchOS 4 alongside iOS 11. To support watchOS 2 onwards, MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework. This framework can be used in WatchKit extension in the Xcode project.
