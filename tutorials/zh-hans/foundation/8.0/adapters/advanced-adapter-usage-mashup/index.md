@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 高级适配器用法和聚合
-breadcrumb_title: Adapter Mashup
+breadcrumb_title: 适配器聚合
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: 下载 Cordova 项目
@@ -100,11 +100,11 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 其中，适配器名称略有不同。  
 下面列示了聚合类型和相应的适配器名称：
 
-| 场景                                         |      SQL 适配器名称        |  HTTP 适配器名称    |  
+| 场景|      SQL 适配器名称|  HTTP 适配器名称|  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** 适配器 → **JavaScript** 适配器  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** 适配器 → **JavaScript** 适配器        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** 适配器 → **Java** 适配器              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** 适配器 → **JavaScript** 适配器| SQLAdapterJS| HTTPAdapterJS|  
+| **Java** 适配器 → **JavaScript** 适配器| SQLAdapterJava| HTTPAdapterJS|  
+| **Java** 适配器 → **Java** 适配器| SQLAdapterJava| HTTPAdapterJava|
 
 
 ### 聚合样本流程

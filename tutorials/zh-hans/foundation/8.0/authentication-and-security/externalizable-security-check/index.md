@@ -11,7 +11,7 @@ weight: 5
 抽象的 `ExternalizableSecurityCheck` 类实现了 `SecurityCheck` 接口，并处理安全性检查功能的两个重要方面：外部化和状态管理。
 
 * 外部化 - 该类实现 `Externalizable` 接口，因此派生类无需自行实现。
-* 状态管理 - 该类预定义 `STATE_EXPIRED` 状态，这意味着安全性检查已到期并且不会保留其状态。派生类需要定义其安全性检查所支持的其他状态。
+* 状态管理 - 该类预定义 `STATE_EXPIRED` 状态，这意味着安全性检查已到期并且不会保留其状态。 派生类需要定义其安全性检查所支持的其他状态。
 
 子类需要实现三种方法：`initStateDurations`、`authorize` 和 `introspect`。
 
@@ -29,7 +29,7 @@ weight: 5
 
 ## initStateDurations 方法
 {: #the-initstatedurations-method }
-`ExternalizableSecurityCheck` 定义名为 `initStateDurations` 的抽象方法。子类必须通过提供其安全性检查支持的所有状态的名称和持续时间来实现此方法。持续时间值通常来自安全性检查配置。
+`ExternalizableSecurityCheck` 定义名为 `initStateDurations` 的抽象方法。 子类必须通过提供其安全性检查支持的所有状态的名称和持续时间来实现此方法。 持续时间值通常来自安全性检查配置。
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -40,9 +40,10 @@ protected void initStateDurations(Map<String, Integer> durations) {
 ```
 
 > 有关安全性检查配置的更多信息，请参阅“实现 CredentialsValidationSecurityCheck”教程中的[配置类部分](../credentials-validation/security-check/#configuration-class)。
+
 ## authorize 方法
 {: #the-authorize-method }
-`SecurityCheck` 接口定义名为 `authorize` 的方法。此方法负责实施安全性检查的主逻辑、管理状态以及向客户机发送响应（成功、验证问题或失败）。
+`SecurityCheck` 接口定义名为 `authorize` 的方法。 此方法负责实施安全性检查的主逻辑、管理状态以及向客户机发送响应（成功、验证问题或失败）。
 
 使用以下 helper 方法来管理状态：
 
@@ -53,6 +54,7 @@ protected void setState(String name)
 public String getState()
 ```
 以下示例仅检查用户是否登录，并相应地返回成功或失败：
+
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
     if (loggedIn){
@@ -67,7 +69,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-`AuthorizationResponse.addSuccess` 方法会向响应对象添加成功作用域及其到期时间。它需要：
+`AuthorizationResponse.addSuccess` 方法会向响应对象添加成功作用域及其到期时间。 它需要：
 
 * 安全性检查授权的作用域。
 * 已授权作用域的到期时间。  
@@ -79,19 +81,19 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
    
 * 安全性检查的名称。
 
-`AuthorizationResponse.addFailure` 方法会向响应对象添加失败。它需要：
+`AuthorizationResponse.addFailure` 方法会向响应对象添加失败。 它需要：
 
 * 安全性检查的名称。
 * 失败 `Map` 对象。
 
-`AuthorizationResponse.addChallenge` 方法会向响应对象添加验证问题。它需要：
+`AuthorizationResponse.addChallenge` 方法会向响应对象添加验证问题。 它需要：
 
 * 安全性检查的名称。
 * 验证问题 `Map` 对象。
 
 ## introspect 方法
 {: #the-introspect-method }
-`SecurityCheck` 接口定义名为 `introspect` 的方法。此方法必须确保安全性检查处于授予所请求作用域的状态。如果授予作用域，那么安全性检查必须向结果参数报告授予的作用域、其到期时间以及定制自省数据。如果未授予作用域，那么安全性检查不会执行任何操作。  
+`SecurityCheck` 接口定义名为 `introspect` 的方法。 此方法必须确保安全性检查处于授予所请求作用域的状态。 如果授予作用域，那么安全性检查必须向结果参数报告授予的作用域、其到期时间以及定制自省数据。 如果未授予作用域，那么安全性检查不会执行任何操作。  
 此方法可能更改安全性检查和/或客户机注册记录的状态。
 
 ```java

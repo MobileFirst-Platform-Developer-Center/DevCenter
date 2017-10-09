@@ -12,7 +12,6 @@ weight: 6
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
-
 // Objekt, das alle Sammlungen definiert
 var collections = {
 
@@ -69,7 +68,6 @@ WL.JSONStore.init(collections, options)
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
-
 // Alle übereinstimmenden Dokumente für Abfragen finden
 var queryPart1 = WL.JSONStore.QueryPart()
                    .equal('name', 'carlos')
@@ -111,7 +109,6 @@ WL.JSONStore.get(collectionName)
 
 ```javascript 
 var collectionName = 'people';
-
 // Dokumente werden über ihr Feld '_id' gefunden
 // und durch die Daten im Feld 'json' ersetzt.
 var docs = [{_id: 1, json: {name: 'carlitos', age: 99}}];
@@ -139,7 +136,6 @@ WL.JSONStore.get(collectionName)
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
-
 // Alle übereinstimmenden Dokumente für Abfragen entfernen
 var queries = [{_id: 1}];
 
@@ -169,7 +165,6 @@ WL.JSONStore.get(collectionName)
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
-
 // Übereinstimmende Dokumente für Abfrage zählen
 // Mit der Standardabfrage '{}' wird jedes Dokument
 // in der Sammlung gezählt.
@@ -197,7 +192,6 @@ WL.JSONStore.get(collectionName)
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
-
 .then(function () {
   // Erfolg behandeln
 })
@@ -211,7 +205,6 @@ WL.JSONStore.destroy()
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
-
 .then(function () {
   // Erfolg behandeln
 })
@@ -224,7 +217,7 @@ WL.JSONStore.closeAll()
 #### Sicherheit - Kennwort für Zugriff auf einen Store ändern
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
-// Das Kennwort sollte eine Benutzereingabe sein.
+// Das Kennwort sollte eine Benutzereingabe sein. 
 // Der Kürze halber ist es als Klartext angegeben.
 var oldPassword = '123';
 var newPassword = '456';
@@ -300,7 +293,6 @@ WL.JSONStore.get(collectionName)
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
- 
 var adapter = 'adapter-name';
 var procedure = 'procedure-name-2';
  
@@ -371,7 +363,6 @@ WL.JSONStore.get(collectionName)
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
-
 WL.JSONStore.get(collectionName)
 
 .countAllDirty()
@@ -389,7 +380,6 @@ WL.JSONStore.get(collectionName)
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
-
 WL.JSONStore.get(collectionName)
 
 .removeCollection()
@@ -410,7 +400,6 @@ WL.JSONStore.get(collectionName)
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
-
 WL.JSONStore.get(collectionName)
 
 .clear()
@@ -427,12 +416,10 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Transaktion starten, Daten hinzufügen, ein Dokument entfernen, Transaktion festschreiben und im Falle eines Fehlers
-rückgängig machen
+#### Transaktion starten, Daten hinzufügen, ein Dokument entfernen, Transaktion festschreiben und im Falle eines Fehlers rückgängig machen
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
-
 .then(function () {
   // Behandlung bei Erfolg von startTransaction
   // Sie können jede Methode der JSONStore-API außer init,
@@ -1082,8 +1069,8 @@ catch (JSONStoreException ex) {
 
 #### Sicherheit - Kennwort für Zugriff auf einen Store ändern
 {: #android-security-change-the-password-that-is-used-to-access-a-store }
-```java
-// Das Kennwort sollte eine Benutzereingabe sein.
+```java 
+// Das Kennwort sollte eine Benutzereingabe sein. 
 // Der Kürze halber ist es als Klartext angegeben.
 String username = "carlos";
 String oldPassword = "123";

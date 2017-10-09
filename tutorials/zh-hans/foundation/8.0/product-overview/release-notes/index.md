@@ -19,7 +19,7 @@ weight: 7
 
 ### 不推荐使用的功能和 API 元素
 {: #deprecated-features-and-api-elements }
-{{ site.data.keys.product }} 的新发行版可能会引入取代过去发行版中的功能部件和 API 元素的功能部件或 API 元素。不推荐使用所取代的功能部件和 API 元素，并且在未来发行版中可能会将其移除。  
+{{ site.data.keys.product }} 的新发行版可能会引入取代过去发行版中的功能部件和 API 元素的功能部件或 API 元素。 不推荐使用所取代的功能部件和 API 元素，并且在未来发行版中可能会将其移除。  
 [阅读了解不推荐的功能和 API 元素](deprecated-discontinued)。
 
 ### 已废弃的功能和 API 元素
@@ -30,7 +30,7 @@ weight: 7
 ### 已知问题和限制
 {: #known-issues-and-limitations }
 浏览该动态文档列表，即可发现用于该产品发行版及其所有修订包的最新已知问题及其解决办法。  
-一般限制适用于 {{ site.data.keys.product_adj }}，如此处所详述。适用于特定功能的限制会在描述这些功能的主题中加以说明。  
+一般限制适用于 {{ site.data.keys.product_adj }}，如此处所详述。 适用于特定功能的限制会在描述这些功能的主题中加以说明。  
 
 [阅读了解已知问题和限制](known-issues-limitations)。
 

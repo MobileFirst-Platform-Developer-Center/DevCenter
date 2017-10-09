@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 proporciona cambios significativos que modernizan la experiencia en la gestión, despliegue y desarrollo de aplicaciones {{ site.data.keys.product_adj }}.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -132,6 +132,9 @@ weight: 1
 
                 <h3>API REST actualizada para el tiempo de ejecución </h3>
                 <p>Ahora la API REST para el tiempo de ejecución de {{ site.data.keys.product_adj }} proporciona varios servicios para clientes móviles y clientes confidenciales para llamar a adaptadores, obtener señales de acceso, obtener contenido de Direct Update, etc. OAuth protege la mayoría de los puntos finales de API REST. En un servidor de desarrollo, puede visualizar el documento Swagger para la API del entorno de tiempo de ejecución en: <code>http(s)://ip_servidor:puerto_servidor/raíz_contexto/doc</code>.</p>
+
+                <h3>Soporte para la fijación de varios certificados</h3>
+                <p>A partir del iFix 8.0.0.0-IF201706240159, {{ site.data.keys.mf_bm_short }} da soporte a la fijación ("pinning") de varios certificados. Esto permite que los usuarios tengan un acceso seguro a varios hosts. Con anterioridad a este iFix, {{ site.data.keys.mf_bm_short }} daba soporte a la fijación de un único certificado. {{ site.data.keys.mf_bm_short }} incorpora una nueva API, que permite la conexión a varios hosts permitiendo que el usuario fije claves públicas de varios certificados X509 (comprados a una autoridad de certificación) para la aplicación de cliente. Se debería colocar una copia de todos los certificados en su aplicación de cliente. Durante el reconocimiento de SSL, el SKD de cliente de {{ site.data.keys.product_full }} verifica que la clave pública del certificado de servidor coincida con la clave pública de uno de los certificados  almacenados en la aplicación. </p>
             </div>
         </div>
     </div>
@@ -245,7 +248,7 @@ weight: 1
                 <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-deploy-manage-apps" aria-expanded="true" aria-controls="collapse-deploy-manage-apps">Novedades en el despliegue y la gestión de aplicaciones</a> </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>Se presentan nuevas funcionalidades de {{ site.data.keys.product }} que ayudan a desplegar y gestionar sus aplicaciones. Ahora se podrán actualizar aplicaciones y adaptadores sin tener que reiniciar {{ site.data.keys.mf_server }}. </p>
 

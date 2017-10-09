@@ -193,8 +193,7 @@ können Sie {{ site.data.keys.mf_server }} installieren.
 
     Geben Sie den folgenden Befehl ein: `imcl install com.ibm.mobilefirst.foundation.server -repositories MFP-Repositoryverzeichnis/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense`
 
-    Die folgenden Eigenschaften müssen für eine Installation ohne
-Application Center definiert werden: 
+    Die folgenden Eigenschaften müssen für eine Installation ohne Application Center definiert werden: 
     * **user.appserver.selection2=none**
     * **user.database.selection2=none**
     * **user.database.preinstalled=false**
@@ -408,7 +407,7 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-Notieren Sie die folgenden Datenbankfaktoren: 
+Beachten Sie die folgenden Datenbankfaktoren: 
 
 #### Hinweis zum Datenbankbenutzer
 {: #database-user-consideration }
@@ -659,22 +658,18 @@ Abschluss der Installation können Sie wie folgt vorgehen, um die installierten 
 **Liberty-Installationsverzeichnis/bin**.
 2. Testen Sie die {{ site.data.keys.mf_console }} mit einem
 Web-Browser. Rufen Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) auf.
-Der Server wird standardmäßig am Port 9080 ausgeführt. Sie können den Wert anhand des Elements
-`<httpEndpoint>` in der Datei
-**server.xml** überprüfen. Eine Anmeldeanzeige erscheint.
+Der Server wird standardmäßig am Port 9080 ausgeführt. Sie können den Wert anhand des Elements `<httpEndpoint>` in der Datei **server.xml** überprüfen. Eine Anmeldeanzeige erscheint.
 
 
 
-![Anmeldeanzeige der Konsole(mfpconsole_signin.jpg)
+![Anmeldeanzeige der Konsole](mfpconsole_signin.jpg)
 
 3. Melden Sie sich mit **admin/admin** an. Dieser Benutzer wird standardmäßig vom
 Server Configuration Tool erstellt. 
 
     > **Hinweis:** Wenn Sie die Verbindung mit
 HTTP herstellen, werden die Anmelde-ID und das Kennwort im Klartext über das Netz gesendet. Verwenden Sie für eine sichere Serveranmeldung HTTPS.
-Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements
-`<httpEndpoint>` in der Datei **server.xml**.
-Der Standardwert ist 9443.
+Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements `<httpEndpoint>` in der Datei **server.xml**. Der Standardwert ist 9443.
 
 4. Melden Sie sich über **Hallo
 Admin → Abmelden** bei der Konsole ab.

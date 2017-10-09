@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 O {{ site.data.keys.mf_console_full }} é uma UI baseada na web que possibilita fluxos de trabalho simplificados para o desenvolvedor e o administrador para criar, monitorar, proteger e administrar aplicativos e adaptadores.
 
@@ -63,8 +63,7 @@ Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instal
     Execute o comando: `mfpdev server add` e siga as instruções na tela.
 
     *Modo Direto*  
-    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por
-exemplo:
+    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por exemplo:
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
@@ -86,13 +85,13 @@ O Painel fornece uma visualização rápida dos projetos implementados.
 {: #actions-dropdown }
 A lista suspensa fornece acesso rápido a várias ações do console.
 
-![Imagem da lista suspensa Ações](actions-dropdown.png)
+![Imagem de ações suspensas](actions-dropdown.png)
 
 ### Configurações de tempo de execução
 {: #runtime-settings }
 Edite as propriedades de tempo de execução, as variáveis de segurança global, o keystore do servidor e os clientes confidenciais.
 
-![Imagem da tela Configurações de tempo de execução ](runtime-settings.png)
+![Imagem da tela Configurações de tempo de execução](runtime-settings.png)
 
 ### log de erro
 {: #error-log }
@@ -118,7 +117,7 @@ Um nome fácil é um nome que é associado com o dispositivo para distingui-lo d
 {: #registering-applications }
 Forneça valores de aplicativo básicos e faça download do código de início. 
 
-![Imagem da tela de registro do aplicativo](register-applications.png)
+![Imagem da tela de registro de aplicativo](register-applications.png)
 
 #### Gerenciando aplicativos
 {: #managing-applications }
@@ -186,5 +185,5 @@ Ao rastrear o uso de dispositivos do cliente e determinar se os dispositivos est
 {: #downloads }
 Para situações em que a conectividade com a Internet não está disponível, é possível fazer download de uma captura instantânea dos vários artefatos de desenvolvimento do {{ site.data.keys.product }} a partir do Download Center no {{ site.data.keys.mf_console }}.
 
-![Imagem de artefatos disponíveis](downloads.png)
+![Imagem dos artefatos disponíveis](downloads.png)
 

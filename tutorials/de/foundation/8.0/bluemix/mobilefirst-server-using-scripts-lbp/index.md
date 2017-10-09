@@ -165,7 +165,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organisationsname --space Bluemix-Bereichsname
@@ -224,7 +224,7 @@ prepareappcenter.sh --name APP_NAME
 
                   </li>
                   <li><b>startappcenter.sh - Starten des {{ site.data.keys.mf_app_center }}</b><br />
-                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:<p/>
+                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: <p/>
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -299,7 +299,7 @@ Mit dem in IBM Bluemix ausgeführten {{ site.data.keys.mf_app_center }} können 
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organisationsname --space Bluemix-Bereichsname
@@ -358,7 +358,7 @@ prepareserver.sh --name APP_NAME
 {% endhighlight %}                  
 </li>
                   <li><b>startserver.sh - Starten des Servers</b><br />
-                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:<p/>
+                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: <p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -436,7 +436,7 @@ folgenden Ordnern:
 ```
     Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren. Führen Sie die folgenden Scripts erneut mit den gleichen Parametern aus.
 
-    a. `./prepareserver.sh` zum Hochladen der aktualisierten Artefakte in Bluemix 
+    a. `./prepareserver.sh` zum Hochladen der aktualisierten Artefakte in Bluemix
 
     b. `./startserver.sh` zum Starten des aktualisierten Servers
 

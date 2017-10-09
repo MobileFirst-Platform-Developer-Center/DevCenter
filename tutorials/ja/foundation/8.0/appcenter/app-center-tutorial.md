@@ -108,6 +108,8 @@ cordova build ios
 
 > **注:** アプリケーションの UI および動作を自由にカスタマイズできる一方、このような変更は IBM によるサポート契約の対象外です。
 
+
+
 #### Android
 {: #android }
 * Android Studio を開きます。
@@ -190,7 +192,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 
 ### ストアへの新規アプリケーションの追加
 {: #adding-new-applications-to-the-store }
-![App Center にアプリケーションを追加するイメージ]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![Application Center へのアプリケーション追加のイメージ]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 ストアに新規アプリケーションを追加するには、以下のようにします。
 
@@ -213,7 +215,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 
 新規アプリケーションがストアに追加されます。
 
-![App Center でのアクセス制御のイメージ]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![Application Center でのアクセス制御のイメージ]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
 
 デフォルトでは、アプリケーションをインストールできるのはストアの許可ユーザーです。
 

@@ -307,7 +307,7 @@ Cette commande est basée sur le service REST [Global Configuration (GET)](http:
 {: #the-show-user-config-command }
 La commande `show user-config` affiche la configuration utilisateur d'un module d'exécution.
 
-Syntaxe : `show user-config [--xml][runtime-name]`
+Syntaxe : `show user-config [--xml] [runtime-name]`
 
 Elle accepte les arguments suivants :
 
@@ -370,7 +370,7 @@ Cette commande est basée sur le service REST [Runtime configuration (PUT)](http
 {: #the-show-confidential-clients-command }
 La commande `show confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients).
 
-Syntaxe : `show confidential-clients [--xml][runtime-name]`
+Syntaxe : `show confidential-clients [--xml] [runtime-name]`
 
 Elle accepte les arguments suivants :
 
@@ -902,7 +902,7 @@ Syntaxe : `app version [runtime-name] app-name environment version set web-resou
 Elle accepte les arguments suivants après le verbe.
 
 | Argument | Description |
-| file | Nom du fichier d'entrée (il doit s'agit d'un fichier .zip). |
+| file | Nom du fichier d'entrée (il doit s'agir d'un fichier .zip). |
 
 **Exemple**
 
@@ -1034,7 +1034,7 @@ Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes c
 {: #the-list-devices-command }
 La commande `list devices` renvoie la liste des appareils ayant contacté les applications d'un environnement d'exécution.
 
-Syntaxe : `list devices [runtime-name][--query query]`
+Syntaxe : `list devices [runtime-name] [--query query]`
 
 Elle accepte les arguments suivants :
 

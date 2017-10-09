@@ -459,7 +459,7 @@ mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden:
 
 | Eigenschaft | Optional oder obligatorisch | Beschreibung | Einschränkungen |
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector | Optional | JMX-Connectortyp (Java Management Extensions)<br/>Die gültigen Werte sind `SOAP` und `RMI`. Der Standardwert ist SOAP. | Nur WebSphere Application Server |
+| mfp.admin.jmx.connector| Optional | JMX-Connectortyp (Java Management Extensions)<br/>Die gültigen Werte sind `SOAP` und `RMI`. Der Standardwert ist SOAP. | Nur WebSphere Application Server |
 | mfp.admin.jmx.host | Optional | Hostname für die JMX-REST-Verbindung | Nur Liberty Profile |
 | mfp.admin.jmx.port	   | Optional	           | Port für die JMX-REST-Verbindung | Nur Liberty Profile |
 | mfp.admin.jmx.user       | Obligatorisch für Liberty Profile und eine WebSphere-Application-Server-Farm; andernfalls optional | Benutzername für die JMX-REST-Verbindung | WebSphere Application Server Liberty Profile: Benutzername für die JMX-REST-Verbindung<br/><br/>WebSphere-Application-Server-Farm: Benutzername für die SOAP-Verbindung<br/><br/>WebSphere Application Server Network Deployment: Benutzername des WebSphere-Administrators, wenn der der Anwendung für MobileFirst-Server-Verwaltung zugeordnete virtuelle Host nicht der Standardhost ist<br/><br/>Liberty-Verbund: Benutzername des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
@@ -568,7 +568,7 @@ müssen Sie verschiedene Eigenschaften definieren, um in OAuth vertrauliche Clie
 | mfp.push.authorization.client.id| Optional / Bedingt obligatorisch| Kennung des vertraulichen Clients, der die OAuth-Autorisierung für den Push-Service ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
 | mfp.push.authorization.client.secret| Optional / Bedingt obligatorisch| Geheimer Schlüssel des vertraulichen Clients, der die OAuth-Autorisierung für den Push-Service ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
 | mfp.admin.authorization.client.id| Optional / Bedingt obligatorisch| Kennung des vertraulichen Clients, der die OAuth-Autorisierung für den Verwaltungsservice ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
-| mfp.push.authorization.client.secret| Optional / Bedingt obligatorisch| Geheimer Schlüssel des vertraulichen Clients, der die OAuth-Autorisierung für den Verwaltungsservice ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
+| mfp.admin.authorization.client.secret | Optional / Bedingt obligatorisch| Geheimer Schlüssel des vertraulichen Clients, der die OAuth-Autorisierung für den Verwaltungsservice ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
 
 ### JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -607,7 +607,7 @@ verfügbar sind:
 
 | Eigenschaft | Beschreibung |
 |----------|-------------|
-| mfp.admin.jmx.dmgr.host | Diese obligatorische Eigenschaft gibt den Hostnamen des Deployment Manager an (nur WebSphere Application Server Network Deployment). |
+| mfp.admin.jmx.dmgr.host | ObligatorischHostname des Deployment ManagerNur WebSphere Application Server Network Deployment |
 | mfp.admin.jmx.dmgr.port | Diese obligatorische Eigenschaft gibt den RMI- oder SOAP-Port des Deployment Manager an (nur WebSphere Application Server Network Deployment). |
 | mfp.admin.jmx.host | Nur Liberty. Hostname für die JMX-REST-Verbindung. Verwenden Sie in einem Liberty-Verbund den Hostnamen des Controllers. |
 | mfp.admin.jmx.port | Nur Liberty. Port-Nummer für die JMX-REST-Verbindung. In einem Liberty-Verbund muss der Port des REST-Connectors mit dem Wert des Attributs httpsPort, das im Element `<httpEndpoint>` deklariert ist, übereinstimmen. Das Element ist in der Datei server.xml des Liberty-Controllers deklariert. |
@@ -615,7 +615,7 @@ verfügbar sind:
 | mfp.admin.jmx.pwd | WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung (optional)<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
 | mfp.admin.serverid | Obligatorisch für Server-Farmen und einen Liberty-Verbund, ansonsten optional<br/><br/>Server-Farm: Die Serverkennung. Die ID muss für jeden Server in der Farm eindeutig sein.<br/><br/>Liberty-Verbund: die Memberkennung. Jedes Member des Verbunds muss eine andere Kennung haben. Der Wert controller kann nicht verwendet werden, weil er für den Verbundcontroller reserviert ist. |
 | mfp.topology.platform | Optional. Der Servertyp. Gültige Werte: <ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Wenn Sie den Wert nicht definieren, versucht die Anwendung, den Servertyp zu raten. |
-| mfp.topology.clustermode | Zusätzlich zum Servertyp geben Sie mit dieser optionalen Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
+| mfp.topology.clustermode | Optional Zusätzlich zum Servertyp geben Sie mit dieser Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
 | mfp.admin.jmx.replica | Nur für einen Liberty-Verbund (optional).<br/><br/>Legen Sie diese Eigenschaft nur fest, wenn die Verwaltungskomponenten, mit denen diese Laufzeit verwaltet wird, in verschiedenen Liberty-Controllern (d. h. Replikaten) implementiert sind.<br/><br/>Syntax der Endpunktliste mit den verschiedenen Controllerreplikaten: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 | mfp.analytics.console.url | Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für die Verbindung zur Analytics Console (optional). Wenn Sie von der {{ site.data.keys.mf_console }} auf die Analytics Console zugreifen möchten, definieren Sie diese Eigenschaft. Beispiel: `http://<Hostname>:<Port>/analytics/console` |
 | mfp.analytics.password | Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |

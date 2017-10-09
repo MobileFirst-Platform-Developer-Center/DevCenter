@@ -14,7 +14,8 @@ weight: 2
 * 用于生产或测试的安全方式：`https://hostname:secure_port/mfpconsole`
 * 开发：`http://server_name:port/mfpconsole`
 
-您必须具有授权您访问 {{ site.data.keys.mf_console }} 的登录名和密码。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 管理的用户认证](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)。
+您必须具有授权您访问
+{{ site.data.keys.mf_console }} 的登录名和密码。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 管理的用户认证](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)。
 
 可以使用 {{ site.data.keys.mf_console }} 管理应用程序。
 
@@ -70,7 +71,8 @@ weight: 2
 
 “设备状态”列显示设备的状态。可以将设备状态更改为**丢失**、**失窃**或**禁用**，以阻止从该设备访问受保护资源。将状态更改回**活动**，将恢复原始访问权。
 
-可选择**操作**列中的**注销**来注销设备。注销设备会删除设备上安装的所有 {{ site.data.keys.product_adj }} 应用程序的注册数据。此外，还会删除设备显示名称、与设备关联的用户列表以及应用程序为该设备注册的公共属性。
+可选择**操作**列中的**注销**来注销设备。
+注销设备会删除设备上安装的所有 {{ site.data.keys.product_adj }} 应用程序的注册数据。此外，还会删除设备显示名称、与设备关联的用户列表以及应用程序为该设备注册的公共属性。
 
 **注：****注销**操作是不可逆的。下一次设备上的其中一个 {{ site.data.keys.product_adj }} 应用程序尝试访问服务器时，将使用新的设备标识重新注册。选择重新注册设备时，设备状态将设置为**活动**，并且无论先前阻止情况如何，设备都有权访问受保护资源。因此，如果要阻止设备，请不要注销。相反，应将设备状态更改为**丢失**、**失窃**或**禁用**。
 
@@ -89,13 +91,14 @@ weight: 2
 
 1. 从控制台的导航侧边栏的**应用程序**部分中选择应用程序版本，然后选择应用程序**管理**选项卡。
 2. 将状态更改为**已禁用访问**。
-3. 在**最新版本的 URL** 字段中，可选择为更新版本的应用程序提供 URL（通常在相应的公共或专用应用程序商店中）。对于某些环境，Application Center 提供一个 URL，用于直接访问应用程序版本的“详细信息”视图。请参阅[应用程序属性](../../appcenter/appcenter-console/#application-properties)。
+3. 在**最新版本的 URL** 字段中，可选择为更新版本的应用程序提供 URL（通常在相应的公共或专用应用程序商店中）。对于某些环境，Application Center 提供一个 URL，用于直接访问应用程序版本的“详细信息”视图。
+请参阅[应用程序属性](../../appcenter/appcenter-console/#application-properties)。
 4. 在**缺省通知消息**字段中，添加当用户尝试访问应用程序时要显示的定制通知消息。以下样本消息会指导用户升级至最新版本：
 
 
    ```bash
-   This version is no longer supported. 请升级至最新版本。
-   ```
+不再支持此版本。请升级至最新版本。
+```
 
 5. 在**受支持的语言环境**部分中，可选择以其他语言提供通知消息。
 6. 选择**保存**以应用您的更改。
@@ -147,8 +150,7 @@ weight: 2
    he,האפליקציה חסמומה
    ```
 
-4. 在**验证通知消息**部分中，可从 CSV 文件查看语言环境代码和消息的表格。验证消息，然后选择**确定**。
-可以随时选择“编辑”以替换语言环境 CSV 文件。还可以使用该选项来上载空的 CSV 文件以除去所有语言环境。
+4. 在**验证通知消息**部分中，可从 CSV 文件查看语言环境代码和消息的表格。验证消息，然后选择**确定**。可以随时选择“编辑”以替换语言环境 CSV 文件。还可以使用该选项来上载空的 CSV 文件以除去所有语言环境。
 5. 选择**保存**以应用您的更改。
 
 根据设备语言环境，用户的移动设备上会显示本地化通知消息。如未对设备语言环境配置消息，那么将显示您提供的缺省消息。
@@ -170,13 +172,16 @@ The application got blocked because its license expired
 The application got blocked because its license expired but a license is available now
 ```
 
-显示状态仍然为**已阻止**。您必须通过编辑“状态”字段，手动从存储空间或您自己的记录中恢复正确的当前状态。{{ site.data.keys.product }} 不管理因许可证令牌不足而被阻止的应用程序在 {{ site.data.keys.mf_console }}中显示的**已阻止**状态。您应当自行将此类已阻止应用程序恢复为可通过 {{ site.data.keys.mf_console }}显示的实际状态。
+显示状态仍然为**已阻止**。您必须通过编辑“状态”字段，手动从存储空间或您自己的记录中恢复正确的当前状态。{{ site.data.keys.product }} 不管理因许可证令牌不足而被阻止的应用程序在 {{ site.data.keys.mf_console }}中显示的**已阻止**状态。
+您应当自行将此类已阻止应用程序恢复为可通过 {{ site.data.keys.mf_console }}显示的实际状态。
 
 ## 运行时环境上操作的错误日志
 {: #error-log-of-operations-on-runtime-environments }
 使用错误日志可访问在选择的运行时环境中从 {{ site.data.keys.mf_console }} 或命令行启动的失败管理操作以及查看失败对服务器产生的影响。
 
-事务失败时，状态栏中会显示错误通知和一个到错误日志的链接。使用错误日志获取有关该错误的更多详细信息（例如，具有特定错误消息的每台服务器的状态），或者获取错误的历史记录。在错误日志中，最新的操作显示在前面。
+事务失败时，状态栏中会显示错误通知和一个到错误日志的链接。
+使用错误日志获取有关该错误的更多详细信息（例如，具有特定错误消息的每台服务器的状态），或者获取错误的历史记录。
+在错误日志中，最新的操作显示在前面。
 
 通过单击 {{ site.data.keys.mf_console }} 中运行时环境的**错误日志**来访问错误日志。
 
@@ -192,14 +197,14 @@ The application got blocked because its license expired but a license is availab
 
 要访问审计日志，请单击标题栏中的用户名，选择**关于**，单击**其他支持信息**，然后选择**下载审计日志**。
 
-| 字段名称 | 描述 |
+| 字段名称| 描述|
 |------------|-------------|
-| 时间戳记	 | 记录的创建日期和时间。 |
-| 类型	     | 操作的类型。请参阅下面的操作类型列表以获取可能值。 |
-| 用户	     | 已登录用户的**用户名**。 |
-| 结果	 | 操作的结果；可能值为 SUCCESS、ERROR 以及 PENDING。 |
-| ErrorCode	 | 如果结果为 ERROR，那么 ErrorCode 指示是什么错误。 |
-| 运行时	 | 与操作相关联的 {{ site.data.keys.product_adj }} 项目的名称。 |
+| Timestamp	 | 记录的创建日期和时间。|
+| Type	     | 操作的类型。请参阅下面的操作类型列表以获取可能值。|
+| User	     | 已登录用户的**用户名**。|
+| Outcome	 | 操作的结果；可能值为 SUCCESS、ERROR 以及 PENDING。|
+| ErrorCode	 | 如果结果为 ERROR，那么 ErrorCode 指示是什么错误。|
+| Runtime	 | 与操作相关联的 {{ site.data.keys.product_adj }} 项目的名称。|
 
 以下列表显示了操作类型的可能值。
 

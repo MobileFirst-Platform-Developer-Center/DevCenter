@@ -59,7 +59,7 @@ RMI verwendet. Lesen Sie dazu weiter unten den Abschnitt **JMX-Verbindung für A
 
         <div id="collapse-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="jmx-connection">
             <div class="panel-body">
-                <p>Sie müssen eine sichere JMX-Verbindung für den Apache Tomcat-Anwendungsserver konfigurieren.</p>
+                <p>Sie müssen eine sichere JMX-Verbindung für den Apache-Tomcat-Anwendungsserver konfigurieren.</p>
                 <p>Mit dem Server Configuration Tool und den Ant-Tasks können Sie eine sichere JMX-Standardverbindung konfigurieren. Die Konfiguration umfasst die Definition eines fernen JMX-Ports und die Definition von Authentifizierungseigenschaften. Das Tool und die Tasks ändern die Dateien <b>Tomcat-Installationsverzeichnis/bin/setenv.bat</b> und <b>Tomcat-Installationsverzeichnis/bin/setenv.sh</b> und fügen <b>CATALINA_OPTS</b> die folgenden Optionen hinzu:</p>
 {% highlight xml %}
 -Djava.rmi.server.hostname=localhost
@@ -176,27 +176,13 @@ Liberty-Installationsverzeichnis/bin/productInfo featureInfo
 
 ### Voraussetzungen für WebSphere Application Server und WebSphere Application Server Network Deployment
 {: #websphere-application-server-and-websphere-application-server-network-deployment-prerequisites }
-{{ site.data.keys.mf_server }} stellt gewisse
-Anforderungen an die Konfiguration von WebSphere Application Server
-und WebSphere Application Server Network Deployment, die in den folgenden Abschnitten ausführlich erläutert werden.  
+{{ site.data.keys.mf_server }} stellt gewisse Anforderungen an die Konfiguration von WebSphere Application Server und WebSphere Application Server Network Deployment, die in den folgenden Abschnitten ausführlich erläutert werden.  
 Stellen Sie sicher, dass die folgenden Bedingungen erfüllt sind: 
 
-* Sie verwenden eine unterstützte Version von WebSphere Application Server (siehe
-[Systemvoraussetzungen](../../../product-overview/requirements)).
-* Der Anwendungsserver wird mit JRE 7.0 ausgeführt. WebSphere Application Server
-verwendet standardmäßig das SDK von Java 6.0. Wie Sie zum
-SDK von Java 7.0 wechseln können, erfahren Sie unter
-[Switching to Java 7.0
-SDK in WebSphere Application
-Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
-* Die Verwaltungssicherheit ist aktiviert. Die {{ site.data.keys.mf_console }},
-der MobileFirst-Server Verwaltungsservice und der
-MobileFirst-Server-Konfigurationsservice sind mit Sicherheitsrollen geschützt. Weitere Informationen finden Sie im Artikel
-[Sicherheit aktivieren](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
-* Die JMX-Konfiguration lässt die Kommunikation zwischen dem Verwaltungsservice und der Laufzeitkomponente zu. Die Kommunikation verwendet
-SOAP. Für WebSphere Application Server Network Deployment
-kann RMI verwendet werden. Weitere Informationen finden Sie unten im Abschnitt
-**JMX-Verbindung für WebSphere Application Server und WebSphere Application Server Network Deployment konfigurieren**. 
+* Sie verwenden eine unterstützte Version von WebSphere Application Server (siehe [Systemvoraussetzungen](../../../product-overview/requirements)).
+* Der Anwendungsserver wird mit JRE 7.0 ausgeführt. WebSphere Application Server verwendet standardmäßig das SDK von Java 6.0. Wie Sie zum SDK von Java 7.0 wechseln können, erfahren Sie unter [Switching to Java 7.0 SDK in WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
+* Die Verwaltungssicherheit ist aktiviert. Die {{ site.data.keys.mf_console }}, der MobileFirst-Server Verwaltungsservice und der MobileFirst-Server-Konfigurationsservice sind mit Sicherheitsrollen geschützt. Weitere Informationen finden Sie im Artikel [Sicherheit aktivieren](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
+* Die JMX-Konfiguration lässt die Kommunikation zwischen dem Verwaltungsservice und der Laufzeitkomponente zu. Die Kommunikation verwendet SOAP. Für WebSphere Application Server Network Deployment kann RMI verwendet werden. Weitere Informationen finden Sie unten im Abschnitt **JMX-Verbindung für WebSphere Application Server und WebSphere Application Server Network Deployment konfigurieren**.
 
 <div class="panel-group accordion" id="websphere-nd-prereq" role="tablist">
     <div class="panel panel-default">
@@ -767,7 +753,7 @@ MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../to
 {: #application-server-settings }
 Sie müssen das Element
 **webContainer** so konfigurieren, dass die Servlets sofort geladen werden. Diese Einstellung ist für die Initialisierung mit
-JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`
+JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`.
 
 Um Probleme durch Zeitlimitüberschreitungen zu vermeiden, die
 in einigen Liberty-Versionen die Startsequenz für die Laufzeit und den Verwaltungsservice unterbrechen,
@@ -823,7 +809,7 @@ JMX-Kommunikation zwischen der Laufzeit und dem Verwaltungsservice zu konfigurie
 * **mfp.topology.platform**
 * **mfp.topology.clustermode**
 
-Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`
+Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
 > **Hinweis:** Verwenden Sie beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der 075 in 61 oder 31.500 in 31.5 konvertiert werden würde.
 
@@ -854,8 +840,7 @@ Das Klassenladeprogramm für alle Anwendungen muss mit der Delegierung
 {: #password-decoder-user-feature }
 Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 
-* Auf UNIX- und
-Linux-Systemen: 
+* Auf UNIX- und Linux-Systemen:
 
   ```bash
   mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
@@ -1128,7 +1113,7 @@ MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../to
 {: #application-server-settings-collective }
 Sie müssen das Element
 **webContainer** so konfigurieren, dass die Servlets sofort geladen werden. Diese Einstellung ist für die Initialisierung mit
-JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`
+JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`.
 
 Um Probleme durch Zeitlimitüberschreitungen zu vermeiden, die
 in einigen Liberty-Versionen die Startsequenz für die Laufzeit und den Verwaltungsservice unterbrechen,
@@ -1186,7 +1171,7 @@ JMX-Kommunikation zwischen der Laufzeit und dem Verwaltungsservice zu konfigurie
 * **mfp.topology.clustermode**
 * **mfp.admin.serverid**
 
-Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`
+Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
 > **Hinweis:** Verwenden Sie
 beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der
@@ -1214,8 +1199,7 @@ Das Klassenladeprogramm für alle Anwendungen muss mit der Delegierung
 {: #password-decoder-user-feature-collective }
 Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 
-* Auf UNIX- und
-Linux-Systemen: 
+* Auf UNIX- und Linux-Systemen:
 
   ```bash
   mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
@@ -1749,8 +1733,8 @@ in der Administrationskonsole von WebSphere Application Server aktivieren:
 4. Klicken Sie auf **OK**. 
 5. Speichern Sie die Änderungen.
 
-Weitere Informationen finden Sie im Abschnitt
-[Sicherheit aktivieren](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) der Dokumentation zu WebSphere Application Server. 
+Weitere Informationen finden Sie in der Dokumentation zu WebSphere Application Server unter
+[Sicherheit aktivieren](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) . 
 
 Die Klassenladerrichtlinie des Servers
 muss die Delegierung "übergeordneter zuletzt" unterstützen. Die WAR-Dateien von
@@ -2398,7 +2382,7 @@ dass sie Member einer Server-Farm werden.
                                 Sie können den Truststore mit IBM Dienstprogrammen wie Keytool oder iKeyman konfigurieren.
                                 <ul>
                                     <li>Weitere Informationen zu Keytool finden Sie in der Dokumentation zu IBM SDK Java Technology Edition im Abschnitt <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a>.</li>
-                                    <li>Weitere Informationen zu iKeyman finden sie in der Dokumentation zu IBM SDK Java Technology Edition im Abschnitt <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>.</li>
+                                    <li>Weitere Informationen zu iKeyman finden Sie in der Dokumentation zu IBM SDK Java Technology Edition im Abschnitt <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>.</li>
                                 </ul>
                                 Die Keystore- und Truststore-Position ist in der Datei <b>server.xml</b> definiert. Lesen Sie die Beschreibung der Attribute <b>keyStoreRef</b> und <b>trustStoreRef</b> unter <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL-Konfigurationsattribute</a>. Standardmäßig befindet sich der Liberty-Profile-Keystore unter <b>${server.config.dir}/resources/security/key.jks</b>. Wenn der Truststore-Verweis in der Datei <b>server.xml</b> fehlt oder nicht definiert ist, wird der mit <b>keyStoreRef</b> angegebene Keystore verwendet. Der Server verwendet den Standard-Keystore. Die Datei wird erstellt, wenn der Server zum ersten Mal ausgeführt wird. In dem Fall wird ein Standardzertifikat mit einem Gültigkeitszeitraum von 365 Tagen erstellt. Für die Produktion sollten Sie die Verwendung eines eigenen Zertifikats (ggf. einschließlich der Zwischenzertifikate) in Betracht ziehen oder das Verfallsdatum des generierten Zertifikats ändern.<blockquote>Hinweis: Wenn Sie die Position des Truststore bestätigen möchten, fügen Sie die folgende Deklaration zur Datei server.xml hinzu:
 {% highlight xml %}

@@ -65,8 +65,7 @@ Portnummer Ihres {{ site.data.keys.mf_server }}.
 durch die in der {{ site.data.keys.mf_console }} definierten Werte.
  * `analytics`: Das Element analytics ist generell optional und nur erforderlich, wenn Sie
 in der {{ site.data.keys.product }} Analyseereignisse protokollieren möchten.  
-Ersetzen Sie `localhost:9080`, `username` und `password` durch die IP-Adresse, die Portnummer,
-den Benutzernamen und das Kennwort für Ihren Analytics Server. 
+Ersetzen Sie `localhost:9080`, `username` und `password` durch die IP-Adresse, die Portnummer, den Benutzernamen und das Kennwort für Ihren Analytics Server.
 
 * Rufen Sie für die Authentifizierung von Anforderungen `passport.authenticate` auf: 
 

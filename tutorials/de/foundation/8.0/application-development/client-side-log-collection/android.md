@@ -53,15 +53,15 @@ Logger.setMaxFileSize(150000);
 
 ## Protokolle automatisch senden
 {: auto-log-sending }
-Das automatische Senden von Protokollen ist standardmäßig inaktiviert. Immer, wenn eine Ressourcenanforderung erfolgreich an den Server gesendet wird, werden auch die erfassten Protokolle gesendet, wobei zwischen den Sendevorgängen ein zeitlicher Abstand von mindestens 60 Sekunden liegen muss. Das automatische Senden von Protokollen kann vom Client aktiviert oder inaktiviert werden. 
+Das automatische Senden von Protokollen ist standardmäßig inaktiviert. Immer, wenn eine Ressourcenanforderung erfolgreich an den Server gesendet wird, werden auch die erfassten Protokolle gesendet, wobei zwischen den Sendevorgängen ein zeitlicher Abstand von mindestens 60 Sekunden liegen muss. Das automatische Senden von Protokollen kann vom Client aktiviert oder inaktiviert werden.
 
-Aktivierung: 
+Aktivierung:
 
 ```java
 Logger.setAutoSendLogs(true);
 ```
 
-Inaktivierung: 
+Inaktivierung:
 
 ```java
 Logger.setAutoSendLogs(false);
@@ -117,7 +117,6 @@ Die Ausgabe erfolgt in einem Browser in einer JavaScript-Konsole, in LogCat oder
 
 ```java
 import com.worklight.common.Logger;
-
 public class MathUtils{
   private static final Logger logger = Logger.getInstance(MathUtils.class.getName());
   public int sum(final int a, final int b){

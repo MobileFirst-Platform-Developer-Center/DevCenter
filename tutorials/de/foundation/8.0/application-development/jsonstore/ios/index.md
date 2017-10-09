@@ -37,8 +37,8 @@ Wenn Sie JSONStore verwenden möchten, müssen Sie den JSONStore-Header importie
 Objective-C:
 
 ```objc
-#import <IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h>
-```
+   #import <IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h>
+   ```
 
 Swift:
 
@@ -82,6 +82,7 @@ Mit `getCollectionWithName` können Sie einen Mechanismus für den Zugriff auf d
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
+
 ```
 
 Die Variable `collection` kann jetzt verwendet werden, um Operationen für die Sammlung `people` auszuführen (z. B.
@@ -265,8 +266,8 @@ Erstellen Sie einen Adapter mit dem Namen **People**.Definieren Sie für den Ada
 `addPerson`, `getPeople`, `pushPeople`, `removePerson` und `replacePerson`.
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;

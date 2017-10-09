@@ -59,12 +59,12 @@ WLAuthorizationManager.obtainAccessToken()
         function(accessToken) {
             titleText.innerHTML = "Yay!";
             statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-            
+
             var resourceRequest = new WLResourceRequest(
                 "/adapters/javaAdapter/resource/greet/",
                 WLResourceRequest.GET
             );
-            
+
             resourceRequest.setQueryParameter("name", "world");
             resourceRequest.send().then(
                 function(response) {
@@ -92,13 +92,16 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
         
 1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter. 
 
-    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind, folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
+    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
+folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
+
+
 
 2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den folgenden Befehl aus:
 
     ```bash
-   mfpdev adapter build
-   ```
+    mfpdev adapter build
+    ```
 
 3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner **[adapter]/target**.
     

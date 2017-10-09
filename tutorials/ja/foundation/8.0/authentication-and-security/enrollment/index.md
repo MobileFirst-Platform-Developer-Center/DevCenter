@@ -7,7 +7,7 @@ weight: 7
 downloads:
   - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: iOS プロジェクトのダウンロード
+  - name: iOS Swift プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
   - name: Android プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
@@ -51,7 +51,7 @@ PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユー�
   @POST
   @OAuthSecurity(scope = "setPinCode")
   @Path("/setPinCode/{pinCode}")
-  
+
   public Response setPinCode(@PathParam("pinCode") String pinCode){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		clientData.getProtectedAttributes().put("pinCode", pinCode);
@@ -68,7 +68,7 @@ PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユー�
   @DELETE
   @OAuthSecurity(scope = "unenroll")
   @Path("/unenroll")
-  
+
   public Response unenroll(){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		if (clientData.getProtectedAttributes().get("pinCode") != null){
@@ -147,9 +147,8 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 ```java
 @Override
-
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
     if(credentials!=null && credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 

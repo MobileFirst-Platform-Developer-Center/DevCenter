@@ -189,8 +189,7 @@ Center gibt keinen Weg für die Verteilung des mobilen Clients vor.
 
 Im
 Application Center haben
-Anwendungen nur eine Versionsnummer zur Unterscheidung der Aktualität von Versionen. Bei Windows-10-UWP-Anwendungen befindet sich die Versionsnummer
-im Feld ***Version*** der Datei **Package.appxmanifest**. Diese Versionsnummer muss das Format a.b.c.d haben. Hier stehen
+Anwendungen nur eine Versionsnummer zur Unterscheidung der Aktualität von Versionen. Bei Windows-10-UWP-Anwendungen befindet sich die Versionsnummer im Feld _**Version**_ der Datei **Package.appxmanifest**. Diese Versionsnummer muss das Format a.b.c.d haben. Hier stehen
 a, b, c und d für nicht negative ganze Zahlen. 
 
 

@@ -25,9 +25,7 @@ weight: 5
 {: #endpoints-of-the-mobilefirst-server-production-server }
 您可以为 IBM {{ site.data.keys.mf_server }} 的端点创建白名单和黑名单。
 
-> **注：**{{ site.data.keys.product }} 所公开的 URL 相关信息将作为准则提供。组织必须根据白名单和黑名单启用的内容，确保在企业基础结构中对这些 URL 进行测试。
-
-| API URL（位于 `<runtime context root>/api/` 下）| 描述| 针对白名单建议？|
+> **注：**{{ site.data.keys.product }} 所公开的 URL 相关信息将作为准则提供。组织必须根据白名单和黑名单启用的内容，确保在企业基础结构中对这些 URL 进行测试。| API URL（位于 `<runtime context root>/api/` 下）| 描述| 针对白名单建议？|
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | 为指定适配器返回适配器的 Swagger 文档| 否。仅供管理员和开发人员内部使用|
 | /adapters/*| 适配器服务| 是|
@@ -55,8 +53,7 @@ weight: 5
 
 ### Apache Tomcat
 {: #apache-tomcat }
-1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。
-    确保您具有以下某个 JRE 版本：
+1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。确保您具有以下某个 JRE 版本：
     * Oracle JRE 1.7.0_75 或更高版本
     * Oracle JRE 1.8.0_31 或更高版本
 2. 编辑 **conf/server.xml** 文件，并修改用于声明 HTTPS 端口的 `Connector` 元素，以使 **sslEnabledProtocols** 属性具有以下值：`sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"`。
@@ -79,8 +76,8 @@ weight: 5
 1. 确认 Java 运行时环境 (JRE) 支持 TLS V1.2。
 
     确保针对 POODLE 漏洞对 IBM Java SDK 打好补丁。您可以在 [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173) 中找到包含 WebSphere Application Server 版本补丁的最低的 IBM Java SDK 版本。
-    > **注：**您可以使用安全公告中所列的版本或更高版本。
-    2. 登录到 WebSphere Application Server 管理控制台，然后单击**安全性 → SSL 证书和密钥管理 → SSL 配置**。
+        > **注：**您可以使用安全公告中所列的版本或更高版本。
+	2. 登录到 WebSphere Application Server 管理控制台，然后单击**安全性 → SSL 证书和密钥管理 → SSL 配置**。
 3. 针对所列的每个 SSL 配置，修改该配置以启用 TLS V1.2。
     * 选择 SSL 配置，然后在**其他属性**下单击**保护质量 (QoP) **设置。
     * 从**协议**列表中，选择 **SSL_TLSv2**。
@@ -90,9 +87,7 @@ weight: 5
 {: #configuring-user-authentication-for-mobilefirst-server-administration }
 {{ site.data.keys.mf_server }} 管理需要用户认证。您可以配置用户认证并选择认证方法。然后，配置过程将取决于您所使用的 Web 应用程序服务器。
 
-> **要点：**如果使用独立的 WebSphere  Application Server Full Profile，请在全局安全性中使用“简单 WebSphere 认证方法”(SWAM) 以外的认证方法。您可以使用轻量级第三方认证 (LTPA)。如果使用 SWAM，那么可能会发生意外的认证失败。
-
-安装程序在 Web 应用程序服务器中部署 {{ site.data.keys.mf_server }} 管理 Web 应用程序之后，您必须配置认证。
+> **要点：**如果使用独立的 WebSphere  Application Server Full Profile，请在全局安全性中使用“简单 WebSphere 认证方法”(SWAM) 以外的认证方法。您可以使用轻量级第三方认证 (LTPA)。如果使用 SWAM，那么可能会发生意外的认证失败。安装程序在 Web 应用程序服务器中部署 {{ site.data.keys.mf_server }} 管理 Web 应用程序之后，您必须配置认证。
 
 {{ site.data.keys.mf_server }} 管理定义了以下 Java Platform，Enterprise Edition ((Java EE) 安全角色：
 
@@ -186,8 +181,7 @@ weight: 5
 
 稍后，通过大量已安装的应用程序，维护良好的响应时间，例如，在有 80 个应用程序的情况下，您应该配置管理数据库的连接池。
 
-1. 编辑 **server.xml** 文件。
-例如：
+1. 编辑 **server.xml** 文件。例如：
 
    ```xml
    <security-role name="mfpadmin">
@@ -264,11 +258,9 @@ weight: 5
 * [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](#list-of-jndi-properties-for-mobilefirst-runtime)
 * [{{ site.data.keys.mf_server }}推送服务的 JNDI 属性列表](#list-of-jndi-properties-for-mobilefirst-server-push-service)
 
-### 为
-{{ site.data.keys.mf_server }} Web 应用程序设置 JNDI 属性
-{: #setting-up-jndi-properties-for-mobilefirst-server-web-applications }
-设置 JNDI 属性以配置部署到应用程序服务器的
-{{ site.data.keys.mf_server }} Web 应用程序。  
+### 为 {{ site.data.keys.mf_server }} Web 应用程序设置 JNDI 属性
+{: #setting-up-jndi-properties-for-mobilefirst-server-web-applications } 
+设置 JNDI 属性以配置部署到应用程序服务器的 {{ site.data.keys.mf_server }} Web 应用程序。  
 通过以下某种方式设置 JNDI 环境条目：
 
 * 配置服务器环境条目。用于配置服务器环境条目的步骤取决于所使用的应用程序服务器：
@@ -295,15 +287,8 @@ weight: 5
       对于所有其他 JNDI 属性，必须使用应用程序的上下文根作为名称的前缀：
 
        * 对于实时更新服务，上下文根必须是 **/[adminContextRoot]config**。例如，如果管理服务的上下文根为 **/mfpadmin**，那么实时更新服务的上下文根必须为 **/mfpadminconfig**。
-       * 对于推送服务，您必须将上下文根定义为 **/imfpush**。
-否则，由于在 SDK 中对上下文根进行硬编码，因此客户机设备无法连接到此上下文根。
-       * 对于 {{ site.data.keys.product_adj }} Administration
-Service 应用程序、
-{{ site.data.keys.mf_console }}
-和 {{ site.data.keys.product_adj }} 运行时，可以根据需要定义上下文根。但缺省情况下，{{ site.data.keys.product_adj }} Administration
-Service 的上下文根为 **/mfpadmin**，
-{{ site.data.keys.mf_console }}
-的上下文根为 **/mfpconsole**，{{ site.data.keys.product_adj }} 运行时的上下文根为 **/mfp**。
+       * 对于推送服务，您必须将上下文根定义为 **/imfpush**。否则，由于在 SDK 中对上下文根进行硬编码，因此客户机设备无法连接到此上下文根。
+       * 对于 {{ site.data.keys.product_adj }} Administration Service 应用程序、{{ site.data.keys.mf_console }} 和 {{ site.data.keys.product_adj }} 运行时，可以根据需要定义上下文根。但缺省情况下，{{ site.data.keys.product_adj }} Administration Service 的上下文根为 **/mfpadmin**，{{ site.data.keys.mf_console }}的上下文根为 **/mfpconsole**，{{ site.data.keys.product_adj }} 运行时的上下文根为 **/mfp**。
 
       例如：
 
@@ -400,8 +385,7 @@ Service 的上下文根为 **/mfpadmin**，
 | 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.proxy.port| 可选| 如果 {{ site.data.keys.product_adj }} 管理服务器在防火墙或逆向代理的后面，那么该属性将指定主机的地址。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常此属性是代理的端口，例如 443。仅当外部和内部 URI 的协议不同时才需要此属性。|
-| mfp.admin.proxy.protocol| 可选| 如果将 {{ site.data.keys.product_adj }}
-管理服务器置于防火墙或逆向代理后面，那么该属性指定协议（HTTP 或 HTTPS）。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性设置为代理的协议。例如，wl.net。仅当外部和内部 URI 的协议不同时才需要此属性。|
+| mfp.admin.proxy.protocol| 可选| 如果将 {{ site.data.keys.product_adj }}管理服务器置于防火墙或逆向代理后面，那么该属性指定协议（HTTP 或 HTTPS）。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性设置为代理的协议。例如，wl.net。仅当外部和内部 URI 的协议不同时才需要此属性。|
 | mfp.admin.proxy.scheme| 可选| 此属性只是 mfp.admin.proxy.protocol 的替代名称。|
 | mfp.admin.proxy.host| 可选| 如果 {{ site.data.keys.product_adj }} 管理服务器在防火墙或逆向代理的后面，那么该属性将指定主机的地址。设置该属性以使防火墙外部的用户能够访问 {{ site.data.keys.product_adj }} 管理服务器。通常该属性是代理的地址。|
 
@@ -412,14 +396,11 @@ Service 的上下文根为 **/mfpadmin**，
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit| 可选。| 将此属性设置为 false 可禁用 {{ site.data.keys.mf_console }} 的审计功能。缺省值为 true。|
 | mfp.admin.environmentid| 可选。| MBean 注册的环境标识。在同一应用程序服务器上安装 {{ site.data.keys.mf_server }} 的不同实例时使用该标识。该标识确定哪个管理服务、哪个控制台以及哪个运行时属于同一安装。管理服务仅管理具有相同环境标识的运行时。|
-| mfp.admin.serverid| 对于服务器场和 Liberty 集合体为必需，对于其他项为可选。| 服务器场：服务器标识。场中的每个服务器的标识必须不同。
-<br/><br/> Liberty 集合体：该值必须为 controller。
+| mfp.admin.serverid| 对于服务器场和 Liberty 集合体为必需，对于其他项为可选。| 服务器场：服务器标识。场中的每个服务器的标识必须不同。<br/><br/> Liberty 集合体：该值必须为 controller。
 |
 | mfp.admin.hsts| 可选。| 设置为 true 以根据 RFC 6797 启用 HTTP Strict Transport Security。|
-| mfp.topology.platform
-        | 可选| 服务器类型。有效值：{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}如果未设置该值，应用程序会尝试猜测服务器类型。|
-| mfp.topology.clustermode
-        | 可选| 除服务器类型外，还在此处指定服务器拓扑。有效值：{::nomarkdown}<ul><li>独立</li><li>集群</li><li>场</li></ul>{:/}缺省值为“独立”。|
+| mfp.topology.platform        | 可选| 服务器类型。有效值：{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}如果未设置该值，应用程序会尝试猜测服务器类型。|
+| mfp.topology.clustermode        | 可选| 除服务器类型外，还在此处指定服务器拓扑。有效值：{::nomarkdown}<ul><li>独立</li><li>集群</li><li>场</li></ul>{:/}缺省值为“独立”。|
 | mfp.admin.farm.heartbeat| 可选| 此属性可用于设置服务器场拓扑中所用脉动信号速率持续的时间（以分钟为单位）。缺省值为 2 分钟。<br/><br/>在服务器场中，所有成员都必须使用相同的脉动信号速率。如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。|
 | mfp.admin.farm.missed.heartbeats.timeout| 可选| 此属性可用于设置在服务器场成员的状态被视为发生故障或关闭之前，该成员缺少的脉动信号数。缺省值为 2。<br/><br/>在服务器场中，所有成员都必须使用相同的缺失脉动信号数。
 如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。|
@@ -434,12 +415,10 @@ Service 的上下文根为 **/mfpadmin**，
 | mfp.admin.db.jndi.name| 可选| 数据库的 JNDI 名称。该参数是指定数据库的正常机制。缺省值为 **java:comp/env/jdbc/mfpAdminDS**。|
 | mfp.admin.db.openjpa.ConnectionDriverName| 可选/有条件的必需项| 数据库连接驱动程序类的标准名称。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
 | mfp.admin.db.openjpa.ConnectionURL| 可选/有条件的必需项| 数据库连接的 URL。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
-| mfp.admin.db.openjpa.ConnectionUserName| 可选/有条件的必需项| 数据库连接的用户名。
-仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
+| mfp.admin.db.openjpa.ConnectionUserName| 可选/有条件的必需项| 数据库连接的用户名。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
 | mfp.admin.db.openjpa.ConnectionPassword| 可选/有条件的必需项| 用于数据库连接的密码。仅当 **mfp.admin.db.jndi.name ** 属性指定的数据源未在应用程序服务器配置中定义时，才是必需的。|
 | mfp.admin.db.openjpa.Log| 可选| 此属性传递到 OpenJPA，并启用 JPA 日志记录。有关更多信息，请参阅 [Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html)。|
-| mfp.admin.db.type| 可选| 此属性定义数据库类型。
-缺省值是从连接 URL 推断得出。|
+| mfp.admin.db.type| 可选| 此属性定义数据库类型。缺省值是从连接 URL 推断得出。|
 
 #### 管理服务的 JNDI 属性：许可
 {: #jndi-properties-for-administration-service-licensing }
@@ -465,10 +444,8 @@ Service 的上下文根为 **/mfpadmin**，
 | 属性| 可选或必需| 描述|
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url| （可选）实时更新服务的 URL。通过将 config 添加到管理服务的上下文根，从管理服务的 URL 派生缺省 URL。|
-| mfp.config.service.user| 必需| 用于访问实时更新服务的用户名。
-在服务器场拓扑中，对于场的所有成员，该用户名必须相同。|
-| mfp.config.service.password| 必需| 用于访问实时更新服务的密码。
-在服务器场拓扑中，对于场的所有成员，该密码必须相同。|
+| mfp.config.service.user| 必需| 用于访问实时更新服务的用户名。在服务器场拓扑中，对于场的所有成员，该用户名必须相同。|
+| mfp.config.service.password| 必需| 用于访问实时更新服务的密码。在服务器场拓扑中，对于场的所有成员，该密码必须相同。|
 | mfp.config.service.schema| 可选| 实时更新服务所使用的模式的名称。|
 
 管理服务使用推送服务作为辅助工具来存储各种推送设置。使用下列属性来配置访问推送服务的方式。由于推送服务受 OAuth 安全模型保护，因此必须设置各种属性以在 OAuth 中启用保密客户机。
@@ -484,7 +461,7 @@ Service 的上下文根为 **/mfpadmin**，
 | mfp.push.authorization.client.secret| 可选/有条件的必需项| 处理推送服务的 OAuth 授权的保密客户机的密钥。
 仅当指定 **mfp.admin.push.url** 属性时才必需。|
 | mfp.admin.authorization.client.id| 可选/有条件的必需项| 处理管理服务的 OAuth 授权的保密客户机的标识。仅当指定 **mfp.admin.push.url** 属性时才必需。|
-| mfp.push.authorization.client.secret| 可选/有条件的必需项| 处理管理服务的 OAuth 授权的保密客户机的密钥。仅当指定 **mfp.admin.push.url** 属性时才必需。|
+| mfp.admin.authorization.client.secret | 可选/有条件的必需项| 处理管理服务的 OAuth 授权的保密客户机的密钥。仅当指定 **mfp.admin.push.url** 属性时才必需。|
 
 ### {{ site.data.keys.mf_console }} 的 JNDI 属性
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -684,7 +661,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 每个应用程序的内容都存储在 {{ site.data.keys.product_adj }} 管理数据库中。
 
-活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**)* 4096 KB 的日志空间。
+活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB 的日志空间。
 
 `DB2 GET DATABASE CONFIGURATION` 命令包含有关日志文件大小的信息，以及主要和辅助日志文件的数量。
 
@@ -700,13 +677,11 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 DB2 HADR 的缺省行为是，DB2 JDBC 驱动程序会在首次尝试重复使用现有连接期间执行数据库检测，一旦检测到数据库故障就会重新分配客户机路由，同时该驱动程序会触发 **com.ibm.db2.jcc.am.ClientRerouteException**，并返回 **ERRORCODE=-4498** 和 **SQLSTATE=08506**。在应用程序接收此异常前，WebSphere Application Server 会将其映射到 **com.ibm.websphere.ce.cm.StaleConnectionException**。
 
-在这种情况下，应用程序将不得不捕获异常并重新执行该事务。{{ site.data.keys.product_adj }} 和
-Application Center 运行时环境不管理异常，但依赖于一项被称为“无缝故障转移”的功能。要启用该功能，必须将 **enableSeamlessFailover** JDBC 属性设置为“1”。
+在这种情况下，应用程序将不得不捕获异常并重新执行该事务。{{ site.data.keys.product_adj }} 和 Application Center 运行时环境不管理异常，但依赖于一项被称为“无缝故障转移”的功能。要启用该功能，必须将 **enableSeamlessFailover** JDBC 属性设置为“1”。
 
 #### WebSphere Application Server Liberty Profile 配置
 {: #websphere-application-server-liberty-profile-configuration }
-必须编辑 **server.xml** 文件，并将 **enableSeamlessFailover** 属性添加到 {{ site.data.keys.product_adj }} 和
-Application Center 数据源的 **properties.db2.jcc** 元素中。例如：
+必须编辑 **server.xml** 文件，并将 **enableSeamlessFailover** 属性添加到 {{ site.data.keys.product_adj }} 和Application Center 数据源的 **properties.db2.jcc** 元素中。例如：
 
 ```xml
 <dataSource jndiName="jdbc/WorklightAdminDS" transactional="false">
@@ -778,12 +753,12 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 超时值主要取决于并行打开的连接数，但是也与池中的最小和最大连接数有关。因此，必须调整不同的 **connectionManager** 属性以确定最适合的值。有关 **connectionManager** 元素的更多信息，请参阅 [Liberty：**server.xml** 文件中的配置元素](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html)。
 
 > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
-### 通过{{ site.data.keys.mf_console }}
-创建或删除应用程序后的旧数据
+### 通过 {{ site.data.keys.mf_console }} 创建或删除应用程序后的旧数据
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么通过 {{ site.data.keys.mf_console }} 对服务的一些调用将返回 404 错误。
 
-在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么当您使用{{ site.data.keys.mf_console }} 删除应用程序或添加新应用程序并多次尝试刷新控制台时，您可能会看到旧数据。例如，用户可能会在列表中看到已删除的应用程序。
+在 Tomcat 8 应用程序服务器上，如果使用 MySQL 数据库，那么当您使用
+{{ site.data.keys.mf_console }} 删除应用程序或添加新应用程序并多次尝试刷新控制台时，您可能会看到旧数据。例如，用户可能会在列表中看到已删除的应用程序。
 
 为避免此问题，请在数据源或数据库管理系统中将隔离级别更改为 **READ_COMMITTED**。
 
@@ -824,8 +799,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 {: #mobilefirst-server }
 {{ site.data.keys.product }}（简称 {{ site.data.keys.mf_server }}）使用标准 java.util.logging 包。缺省情况下，所有的 {{ site.data.keys.product_adj }} 日志记录都将记入应用程序服务器日志文件。您可以使用每个应用程序服务器中可用的标准工具来控制 {{ site.data.keys.mf_server }} 日志记录。例如，如果要在 WebSphere Application Server Liberty 中激活跟踪日志记录，请向 server.xml 文件添加跟踪元素。要在 WebSphere Application Server 中激活跟踪日志记录，请使用控制台中的日志记录屏幕并对 {{ site.data.keys.product_adj }} 日志启用跟踪。
 
-{{ site.data.keys.product_adj }} 日志均以 **com.ibm.mfp** 开头。  
-Application Center 日志以 **com.ibm.puremeap** 开头。
+{{ site.data.keys.product_adj }} 日志均以 **com.ibm.mfp** 开头。  Application Center 日志以 **com.ibm.puremeap** 开头。
 
 有关每个应用程序服务器的日志记录模型的更多信息（包括日志文件的位置），请参阅相关应用程序服务器的文档，如下表所示。
 

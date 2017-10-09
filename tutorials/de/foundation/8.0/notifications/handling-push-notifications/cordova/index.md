@@ -56,13 +56,13 @@ folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }}
 {: #adding-the-push-plug-in }
 1. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Cordova-Projekts.   
 
-2. Fügen Sie das Push-Plug-in hinzu, indem Sie den folgenden Befehl ausführen: 
+2. Fügen Sie das Push-Plug-in hinzu, indem Sie den folgenden Befehl ausführen:
 
    ```bash
    cordova plugin add cordova-plugin-mfp-push
    ```
 
-3. Erstellen Sie das Cordova-Projekt mit folgendem Befehl: 
+3. Erstellen Sie das Cordova-Projekt mit folgendem Befehl:
 
    ```bash
    cordova build
@@ -76,7 +76,7 @@ In Xcode müssen Sie Push-Benachrichtigungen für Ihre Anwendung in der Anzeige 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Die für die Anwendung
 ausgewählte Bundle-ID (bundleId) muss mit der App-ID (AppId) übereinstimmen, die Sie zuvor auf der Apple-Developer-Site erstellt haben. Sehen Sie sich dazu das Lernprogramm [Übersicht über Push-Benachrichtigungen] an.
 
-![Position von 'Capabilities' in Xcode](push-capability.png)
+![Funktionalität in Xcode](push-capability.png)
 
 ### Android-Plattform
 {: #android-platform }
@@ -92,16 +92,16 @@ Fügen Sie in Android Studio die folgende Aktivität (`activity`) zum Tag `appli
 ### Clientseite
 {: #client-side }
 
-| Javascript-Funktion | Beschreibung |
+| JavaScript-Funktion | Beschreibung |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush-Instanz initialisieren   | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen? | 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice | 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | Ruft alle verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab | 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Abonniert einen bestimmten Tag  | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab       | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Beendet das Abonnement eines bestimmten Tags | 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf | 
+| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush-Instanz initialisieren  | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen?| 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice| 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | Ruft alle verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab| 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Abonniert einen bestimmten Tag | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab      | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Beendet das Abonnement eines bestimmten Tags| 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf| 
 
 ### API-Implementierung
 {: #api-implementation }
@@ -114,9 +114,8 @@ Initialisieren Sie die **MFPPush**-Instanz.
 - Die Callback-Funktion wird für die Handhabung empfangener Push-Benachrichtigungen registriert. 
 
 ```javascript
-MFPPush.initialize (
-    function(successResponse) {
-        alert("Successfully intialized");
+MFPPush.initialize(function(successResponse){
+alert("Successfully intialized");
         MFPPush.registerNotificationsCallback(notificationReceived);
     },
     function(failureResponse) {
@@ -130,9 +129,8 @@ MFPPush.initialize (
 Überprüfen Sie, ob das Gerät Push-Benachrichtigungen unterstützt. 
 
 ```javascript
-MFPPush.isPushSupported (
-    function(successResponse) {
-        alert("Push Supported: " + successResponse);
+MFPPush.isPushSupported (function(successResponse) {
+alert("Push Supported: " + successResponse);
     },
     function(failureResponse) {
         alert("Failed to get push support status");
@@ -230,9 +228,8 @@ Sie können die Registrierung des Geräts bei der Instanz des Push-Benachrichtig
 aufheben. 
 
 ```javascript
-MFPPush.unregisterDevice(
-    function(successResponse) {
-        alert("Unregistered successfully");
+MFPPush.unregisterDevice(function(successResponse) {
+alert("Unregistered successfully");
     },
     function() {
         alert("Failed to unregister");

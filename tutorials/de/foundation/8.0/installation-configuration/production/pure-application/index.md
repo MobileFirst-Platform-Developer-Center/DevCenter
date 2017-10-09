@@ -1710,7 +1710,7 @@ auf
     * Öffnen Sie die Administrationskonsole von WebSphere Application Server mit folgender URL: 
     
         ```bash
-        https://{öffentliche IP-Adresse der DmgrNode-VM}:9043/ibm/console
+        https://{öffentliche IP-Adresse der VM für DmgrNode Server}:9043/ibm/console
         ```
     
         Verwenden Sie die Benutzer-ID und das Kennwort,
@@ -1814,8 +1814,7 @@ Server Application Center** auf dem Knoten **MFP AppCenter Server**.
     > **Hinweis:** Wenn Sie für die Verwaltungssicherheit einen LDAP-Server konfigurieren möchten, müssen Sie LDAP-Informationen
 angeben (siehe
 [{{ site.data.keys.product_adj }}-Verwaltungssicherheit mit einer externen LDAP-Registry konfigurieren](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)).
-    * Klicken Sie auf dem Knoten **MFP AppCenter Server* auf die Komponente
-*MFP Server Application Center**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
+    * Klicken Sie auf dem Knoten **MFP AppCenter Server** auf die Komponente **MFP Server Application Center**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
     * Klicken Sie neben den Feldern **admin_user**
 und
 **admin_password** auf die Schaltfläche Löschen, um die Parametereinstellungen auf Musterebene zu löschen. 
@@ -2603,7 +2602,7 @@ gespeichert.
         * Klicken Sie auf die Schaltfläche **Hinzufügen**, um die neue Datenabhängigkeit hinzuzufügen.
         * Klicken Sie auf **OK**, um Ihre Änderungen zu speichern.
 
-            ![Link von der Komponente 'MFP Server Runtime' zum Liberty-Server hinzufügen(pureapp_analytics_link_1.jpg)
+            ![Link von der Komponente 'MFP Server Runtime' zum Liberty-Server hinzufügen](pureapp_analytics_link_1.jpg)
             
             Die Verbindung von der Komponente "MFP Server Runtime Deployment" zur Komponente "Liberty Profile Server" (oder "Standalone Server") ist hergestellt.
     * Ziehen Sie mit der Maus eine weitere Verbindung von der Komponente "MFP Server Runtime Deployment" zur Komponente "MFP Analytics" auf dem Knoten "{{ site.data.keys.mf_analytics }}". Das Popup-Fenster "Datenabhängigkeiten konfigurieren" wird geöffnet.
@@ -2614,11 +2613,11 @@ gespeichert.
         * Wiederholen Sie den Prozess, um eine Datenabhängigkeit zwischen **analytics\_admin\_password** und **admin_password** zu konfigurieren.
         * Klicken Sie auf **OK**, um Ihre Änderungen zu speichern.
             
-            ![Link von der Komponente 'MFP Server Runtime Deployment' zur Koponente 'MFP Analytics' hinzufügen(pureapp_analytics_link_2.jpg)
+            ![Link von der Komponente 'MFP Server Runtime Deployment' zur Komponente 'MFP Analytics' hinzufügen](pureapp_analytics_link_2.jpg)
             
     Die folgende Abbildung zeigt ein Beispiel für einen Knoten "{{ site.data.keys.mf_analytics }}", der zu einem Muster "{{ site.data.keys.product }} (WAS ND)" hinzugefügt wurde.
 
-    ![Zu einem Muster '{{ site.data.keys.product }} (WAS ND)' hinzugefügter Knoten '{{ site.data.keys.mf_analytics }}'(pureapp_analytics_node.jpg)
+    ![MobileFirst-Analytics-Knoten, der zu einem Muster '{{ site.data.keys.product }} WAS ND' hinzugefügt wurde](pureapp_analytics_node.jpg)
 
 4. Konfigurieren und starten Sie die Musterimplementierung.
 
@@ -2661,96 +2660,96 @@ Das folgende Diagramm zeigt den
 Aufbau der Schablone "MobileFirst Platform (Liberty
 Single Node)". 
 
-![Schablone '{{ site.data.keys.product }} (Liberty Single Node)'(pureapp_templ_Lib_single_node.jpg)
+![Schablone '{{ site.data.keys.product }} (Liberty Single Node)'](pureapp_templ_Lib_single_node.jpg)
 
 Die Schablone "{{ site.data.keys.product }} (Liberty Single Node)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten | 
+| Knoten| Komponenten| 
 |------|------------|
-| MobileFirst Platform Server | **Liberty Profile Server**<br/>Installation von WebSphere Application Server Liberty Profile<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Adapter**<br/>Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }} | 
-| MobileFirst Platform DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die MobileFirst-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
+| MobileFirst Platform Server| **Liberty Profile Server**<br/>Installation von WebSphere Application Server Liberty Profile<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Adapter**<br/>Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}| 
+| MobileFirst Platform DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die MobileFirst-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
 
 ### Schablone '{{ site.data.keys.product }} (Liberty Server Farm)'
 {: #mobilefirst-foundation-liberty-server-farm-template }
 Das folgende Diagramm zeigt den Aufbau der Schablone "MobileFirst Platform (Liberty Server Farm)".
 
-![Schablone '{{ site.data.keys.product }} (Liberty Server Farm)'(pureapp_templ_Lib_server_farm.jpg)
+![Schablone '{{ site.data.keys.product }} (Liberty Server Farm)'](pureapp_templ_Lib_server_farm.jpg)
 
 Die Schablone "{{ site.data.keys.product }} (Liberty Server Farm)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten | 
+| Knoten| Komponenten| 
 |------|------------|
-| IHS | **IBM HTTP Server**<br/>Installation von IBM HTTP Server<br/><br/>**MFP IHS Configuration**<br/>Automatische Konfiguration von IBM HTTP Server | 
-| MobileFirst Platform Server | **Liberty Profile Server**<br/>Installation von WebSphere Application Server Liberty Profile<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Adapter**<br/>Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}<br/><br/>**Base Scaling Policy**<br/>VM-Skalierungsrichtlinie mit der Anzahl virtueller Maschinen | 
-| MobileFirst Platform DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
+| IHS| **IBM HTTP Server**<br/>Installation von IBM HTTP Server<br/><br/>**MFP IHS Configuration**<br/>Automatische Konfiguration von IBM HTTP Server| 
+| MobileFirst Platform Server| **Liberty Profile Server**<br/>Installation von WebSphere Application Server Liberty Profile<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Adapter**<br/>Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}<br/><br/>**Base Scaling Policy**<br/>VM-Skalierungsrichtlinie mit der Anzahl virtueller Maschinen| 
+| MobileFirst Platform DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
 
 ### Schablone '{{ site.data.keys.product }} (WAS Single Node)'
 {: #mobilefirst-foundation-was-single-node-template }
 Das folgende Diagramm zeigt den Aufbau der Schablone "MobileFirst Platform (WAS Single Node)".
 
-![Schablone '{{ site.data.keys.product }} (WAS Single Node)'(pureapp_templ_WAS_single_node.jpg)
+![Schablone '{{ site.data.keys.product }} (WAS Single Node)'](pureapp_templ_WAS_single_node.jpg)
 
 Die Schablone "{{ site.data.keys.product }} (WAS Single Node)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten | 
+| Knoten| Komponenten| 
 |------|------------|
-| MobileFirst Platform Server | **Standalone Server**<br/>Installation von WebSphere Application Server Full Profile<br/><br/>Einschränkung:<br/>Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl.<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>{{ site.data.keys.product_adj }}-Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }} | 
-| MobileFirst Platform DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
+| MobileFirst Platform Server| **Standalone Server**<br/>Installation von WebSphere Application Server Full Profile<br/><br/>Einschränkung:<br/>Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl.<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>{{ site.data.keys.product_adj }}-Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}| 
+| MobileFirst Platform DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
 
 ### Schablone '{{ site.data.keys.product }} (WAS Server Farm)'
 {: #mobilefirst-foundation-was-server-farm-template }
 Das folgende Diagramm zeigt den Aufbau der Schablone "MobileFirst Platform (WAS Server Farm)".
 
-![Schablone '{{ site.data.keys.product }} (WAS Server Farm)'(pureapp_templ_WAS_server_farm.jpg)
+![Schablone '{{ site.data.keys.product }} (WAS Server Farm)'](pureapp_templ_WAS_server_farm.jpg)
 
 Die Schablone "{{ site.data.keys.product }} (WAS Server Farm)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten | 
+| Knoten| Komponenten| 
 |------|------------|
-| IHS | **IBM HTTP Server**<br/>Installation von IBM HTTP Server<br/><br/>**MFP IHS Configuration**<br/>Automatische Konfiguration von IBM HTTP Server | 
-| MobileFirst Platform Server | **Standalone Server**<br/>Installation von WebSphere Application Server Full Profile<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**{{ site.data.keys.product_adj }} Adapter** Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}<br/><br/>**Base Scaling Policy**<br/>VM-Skalierungsrichtlinie mit der Anzahl virtueller Maschinen | 
-| MobileFirst Platform DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
+| IHS| **IBM HTTP Server**<br/>Installation von IBM HTTP Server<br/><br/>**MFP IHS Configuration**<br/>Automatische Konfiguration von IBM HTTP Server| 
+| MobileFirst Platform Server| **Standalone Server**<br/>Installation von WebSphere Application Server Full Profile<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**{{ site.data.keys.product_adj }}-Adapter**, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}<br/><br/>**Base Scaling Policy**<br/>VM-Skalierungsrichtlinie mit der Anzahl virtueller Maschinen| 
+| MobileFirst Platform DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
 
 ### Schablone '{{ site.data.keys.product }} (WAS ND)'
 {: #mobilefirst-foundation-was-nd-template }
 Das folgende Diagramm zeigt den Aufbau der Schablone "MobileFirst Platform (WAS ND)".
 
-![Schablone '{{ site.data.keys.product }} (WAS ND)'(pureapp_templ_WAS_ND.jpg)
+![Schablone '{{ site.data.keys.product }} (WAS ND)'](pureapp_templ_WAS_ND.jpg)
 
 Die Schablone "{{ site.data.keys.product }} (WAS ND)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten | 
+| Knoten| Komponenten| 
 |------|------------|
-| IHS | **IBM HTTP Server**<br/>Installation von IBM HTTP Server<br/><br/>**MFP IHS Configuration**<br/>Automatische Konfiguration von IBM HTTP Server | 
-| DmgrNode | **Deployment Manager**<br/>Installation von WebSphere Application Server Deployment Manager<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Runtime**<br/>Laufzeit-WAR-Datei<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**MFP Application**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Adapter**<br/>Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }} | 
-| MobileFirst Platform DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
-| CustomNode | **Custom Nodes**<br/>Details der Zellen und Knoten in Serverclustern mit WebSphere Application Server Network Deployment<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports, die offen sein müssen, damit eine Verbindung zum Datenbankserver und zum LDAP-Server hergestellt werden kann<br/><br/>**Base Scaling Policy**<br/>Anzahl der für die gewählte Topologie erforderlichen VM-Instanzen | 
+| IHS| **IBM HTTP Server**<br/>Installation von IBM HTTP Server<br/><br/>**MFP IHS Configuration**<br/>Automatische Konfiguration von IBM HTTP Server| 
+| DmgrNode| **Deployment Manager**<br/>Installation von WebSphere Application Server Deployment Manager<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Administration**<br/>Webanwendung für MobileFirst-Server-Verwaltung mit der {{ site.data.keys.mf_console }}<br/><br/>**MFP Runtime**<br/>Laufzeit-WAR-Datei<br/><br/>**MFP Server Runtime Deployment**<br/>Konfiguration des Laufzeitkontextstammverzeichnisses<br/><br/>**MFP Application**<br/>{{ site.data.keys.product_adj }}-Anwendung, die zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Adapter**<br/>Adapter, der zur Implementierung hinzugefügt werden soll<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementierung von Anwendungen und Adaptern in {{ site.data.keys.mf_server }}| 
+| MobileFirst Platform DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**MFP Administration DB**<br/>Installation des Schemas für die {{ site.data.keys.product_adj }}-Verwaltungsdatenbank<br/><br/>**MFP Runtime DB**<br/>Installation des Schemas für die {{ site.data.keys.product }}-Laufzeitdatenbank<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
+| CustomNode| **Custom Nodes**<br/>Details der Zellen und Knoten in Serverclustern mit WebSphere Application Server Network Deployment<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports, die offen sein müssen, damit eine Verbindung zum Datenbankserver und zum LDAP-Server hergestellt werden kann<br/><br/>**Base Scaling Policy**<br/>Anzahl der für die gewählte Topologie erforderlichen VM-Instanzen| 
 
 ### Schablone '{{ site.data.keys.mf_app_center }} (Liberty Single Node)'
 {: #mobilefirst-application-center-liberty-single-node-template }
 Das folgende Diagramm zeigt den Aufbau der Schablone "MobileFirst Platform Application Center (Liberty Single Node)".
 
-![Schablone '{{ site.data.keys.mf_app_center }} (Liberty Single Node)'(pureapp_templ_appC_Lib_single_node.jpg)
+![Schablone '{{ site.data.keys.mf_app_center }} (Liberty Single Node)'](pureapp_templ_appC_Lib_single_node.jpg)
 
 Die Schablone "{{ site.data.keys.mf_app_center }} (Liberty Single Node)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten |
+| Knoten| Komponenten|
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
-| MFP AppCenter Server | **Liberty Profile Server**<br/>Installation von WebSphere Application Server Liberty Profile<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Application Center**<br/>Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphere Application Server Full Profile oder WebSphere Application Server Liberty Profile eingerichtet. | 
+| MFP AppCenter DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
+| MFP AppCenter Server| **Liberty Profile Server**<br/>Installation von WebSphere Application Server Liberty Profile<br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Application Center**<br/>Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphere Application Server Full Profile oder WebSphere Application Server Liberty Profile eingerichtet. | 
 
 ### Schablone '{{ site.data.keys.mf_app_center }} (WAS Single Node)'
 {: #mobilefirst-application-center-was-single-node-template }
 Das folgende Diagramm zeigt den Aufbau der Schablone "MobileFirst Platform Application Center (WAS Single Node)".
 
-![Schablone '{{ site.data.keys.mf_app_center }} (WAS Single Node)'(pureapp_templ_appC_WAS_single_node.jpg)
+![Schablone '{{ site.data.keys.mf_app_center }} (WAS Single Node)'](pureapp_templ_appC_WAS_single_node.jpg)
 
 Die Schablone "{{ site.data.keys.mf_app_center }} (WAS Single Node)" setzt sich aus folgenden Knoten und Komponenten zusammen: 
 
-| Knoten | Komponenten | 
+| Knoten| Komponenten| 
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße | 
-| MFP AppCenter Server | **Standalone Server**<br/>Installation von WebSphere Application Server Full Profile<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP WAS SDK Level**<br/>Dieses Script dient dazu, die erforderliche SDK-Version als Standard-SDK für das WAS-Profil festzulegen. <br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Application Center**<br/>Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphere Application Server Full Profile oder WebSphere Application Server Liberty Profile eingerichtet. | 
+| MFP AppCenter DB| **Database Server**<br/>Installation des DB2-Datenbankservers<br/><br/>**Default Add Disk**<br/>Konfiguration der Datenträgergröße| 
+| MFP AppCenter Server| **Standalone Server**<br/>Installation von WebSphere Application Server Full Profile<br/><br/>Einschränkung: Ändern Sie nicht die Werte für die folgenden Komponentenattribute: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Wenn Sie eines dieser Attribute ändern, schlägt die Implementierung von auf dieser Schablone basierenden Mustern fehl. <br/><br/>**MFP WAS SDK Level**<br/>Dieses Script dient dazu, die erforderliche SDK-Version als Standard-SDK für das WAS-Profil festzulegen. <br/><br/>**MFP Server Prerequisite**<br/>Vorbedingungen für die Installation von {{ site.data.keys.mf_server }}, einschließlich SSL und Ant<br/><br/>**MFP Server Application Center**<br/>Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphere Application Server Full Profile oder WebSphere Application Server Liberty Profile eingerichtet. | 
 
 
 ## Scriptpakete für {{ site.data.keys.mf_server }}
@@ -2777,12 +2776,12 @@ In den folgenden Abschnitten sind die Parameter für die einzelnen Scriptpakete 
 Mit diesem Scriptpaket wird das Verwaltungsdatenbankschema in einer DB2-Datenbank eingerichtet. Es muss mit der
 Softwarekomponente des Datenbankservers (DB2) verwendet werden. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| db_user   | Dieser obligatorische Parameter gibt den Benutzernamen für die Erstellung der Verwaltungsdatenbank an. Er kann dem Instanznamen der Datenbankserverkomponente zugeordnet werden. Standardwert: db2inst1. |
-| db_name	| Dieser obligatorische Parameter gibt den Datenbanknamen für die Erstellung der Verwaltungsdatenbank an. Standardwert: WLADM. |
-| db_password |	Dieser obligatorische Parameter gibt das Benutzerkennwort für die Erstellung der Verwaltungsdatenbank an. Er kann dem Instanzeigner der Datenbankserverkomponente zugeordnet werden. Standardwert: passw0rd (als Parameter auf Musterebene). |
-| other\_db\_args | Vier obligatorische Parameter für die Erstellung der Verwaltungsdatenbank: SQL type, Codeset,Territory und Collate. Standardwert: DB2 UTF-8 US SYSTEM. |
+| db_user| Dieser obligatorische Parameter gibt den Benutzernamen für die Erstellung der Verwaltungsdatenbank an. Er kann dem Instanznamen der Datenbankserverkomponente zugeordnet werden. Standardwert: db2inst1.|
+| db_name	| Dieser obligatorische Parameter gibt den Datenbanknamen für die Erstellung der Verwaltungsdatenbank an. Standardwert: WLADM.|
+| db_password|	Dieser obligatorische Parameter gibt das Benutzerkennwort für die Erstellung der Verwaltungsdatenbank an. Er kann dem Instanzeigner der Datenbankserverkomponente zugeordnet werden. Standardwert: passw0rd (als Parameter auf Musterebene).|
+| other\_db\_args| Vier obligatorische Parameter für die Erstellung der Verwaltungsdatenbank: SQL type, Codeset,Territory und Collate. Standardwert: DB2 UTF-8 US SYSTEM.|
 
 ### MFP Analytics
 {: #mfp-analytics }
@@ -2797,27 +2796,27 @@ WebSphere Application Server Liberty
 Profile oder WebSphere Application Server Full Profile
 (Anzeigename: Standalone Server) verwendet werden. Es muss nach der Softwarekomponente "Liberty Profile" oder "Standalone Server" installiert werden. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| WAS_ROOT  | Obligatorisch{::nomarkdown}<ul><li>Wenn Analytics in WebSphere Application Server Liberty Profile installiert wird, geben Sie das Installationsverzeichnis von WebSphere Application Server Liberty Profile an.</li><li>Wenn Analytics in WebSphere Application Server Full Profile installiert wird, geben Sie das Installationsverzeichnis von WebSphere Application Server Full Profile an.</li></ul>{:/} | 
-| HEAP\_MIN\_SIZE | Nur WebSphere Application Server Full Profile.<br/><br/>Abhängig vom Umfang der generierten Analysedaten kann mehr Hauptspeicher für die Datenbehandlung erforderlich sein. Legen Sie den Wert so fest, dass für WebSphere Application Server Full Profile eine größere Mindestgröße des Heapspeichers möglich ist. Stellen Sie sicher, dass die für die Komponente "Core OS" von {{ site.data.keys.mf_analytics }} angegebene Speicherkapazität über diesem Wert liegt. Es wird empfohlen, denselben Wert wie für HEAP_MAX_SIZE festzulegen.<br/><br/>Standardwert: 4096 (MB). | 
-| HEAP\_MAX\_SIZE	| Nur WebSphere Application Server Full Profile.<br/><br/>Abhängig vom Umfang der generierten Analysedaten kann mehr Hauptspeicher für die Datenbehandlung erforderlich sein. Legen Sie den Wert so fest, dass für WebSphere Application Server Full Profile eine größere Maximalgröße des Heapspeichers möglich ist. Stellen Sie sicher, dass die für die Komponente "Core OS" von {{ site.data.keys.mf_analytics }} angegebene Speicherkapazität über diesem Wert liegt. Es wird empfohlen, denselben Wert wie für HEAP_MIN_SIZE festzulegen.<br/><br/>Standardwert: 4096 (MB). | 
-| WAS\_admin\_user | Nur WebSphere Application Server Full Profile.<br/><br/>Dieser Parameter gibt den Benutzer mit Administratorberechtigung von WebSphere Application Server Full Profile für den Analytics-Server an. Übernehmen Sie für WebSphere Application Server Liberty Profile den Standardwert. | 
-| WAS\_admin\_password | Nur WebSphere Application Server Full Profile.<br/><br/>Dieser Parameter gibt das Kennwort des Benutzers mit Administratorberechtigung von WebSphere Application Server Full Profile für den Analytics-Server an. Übernehmen Sie für WebSphere Application Server Liberty Profile den Standardwert. | 
-| admin_user | Obligatorisch{::nomarkdown}<ul><li>Wenn das LDAP-Repository nicht aktiviert ist, erstellen Sie zum Schutz der {{ site.data.keys.mf_analytics_console }} einen Standardbenutzer mit Administratorberechtigung.</li><li>Wenn das LDAP-Repository aktiviert ist, geben Sie den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_analytics }} an. Dieser Wert wird im LDAP-Repository gespeichert.</li></ul> |
-| admin_password | Obligatorisch<ul><li>Wenn kein LDAP-Repository aktiviert ist, geben Sie das Kennwort des Standardbenutzers mit Administratorberechtigung zum Schutz der {{ site.data.keys.mf_analytics_console }} an.</li><li>Wenn ein LDAP-Repository aktiviert ist, geben Sie das Kennwort des Benutzers mit Administratorberechtigung an. Dieser Wert wird im LDAP-Repository gespeichert.</li></ul>{:/} | 
-| LDAP_TYPE | Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry: <br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
-| LDAP_IP | LDAP-Parameter. IP-Adresse des LDAP-Servers | 
-| LDAP\_SSL\_PORT | Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an. | 
-| LDAP_PORT | Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an. | 
-| BASE_DN | Dieser LDAP-Parameter gibt den Basis-DN an. | 
-| BIND_DN | Dieser LDAP-Parameter gibt den Bindungs-DN an. | 
-| BIND_PASSWORD | Dieser LDAP-Parameter gibt das Bindungs-DN-Kennwort an. | 
-| REQUIRE_SSL | Setzen Sie diesen LDAP-Parameter für eine sichere Verbindung zum LDAP-Server auf true. {::nomarkdown}<ul><li>Der Wert true gibt an, dass LDAP_SSL_PORT verwendet wird und CERT_FILE_PATH erforderlich ist, um die Zertifizierungsdatei des LDAP-Servers zu finden.</li><li>Der Wert false gibt an, dass LDAP_PORT verwendet wird.</li></ul>{:/}Der Standardwert ist false. | 
-| USER_FILTER | Dieser LDAP-Parameter gibt den LDAP-Benutzerfilter an, mit dem die vorhandene Benutzerregistry nach Benutzern durchsucht wird. | 
-| GROUP_FILTER | Dieser LDAP-Parameter gibt den LDAP-Gruppenfilter an, mit dem die vorhandene Benutzerregistry nach Gruppen durchsucht wird. | 
-| LDAP\_REPOSITORY\_NAME | Dieser LDAP-Parameter gibt den LDAP-Servernamen an. | 
-| CERT\_FILE\_PATH | Dieser LDAP-Parameter gibt den Zielpfad für das hochgeladene LDAP-Serverzertifikat an. Er ist obligatorisch, wenn REQUIRE_SSL auf true gesetzt ist. | 
+| WAS_ROOT| Obligatorisch{::nomarkdown}<ul><li>Wenn Analytics in WebSphere Application Server Liberty Profile installiert wird, geben Sie das Installationsverzeichnis von WebSphere Application Server Liberty Profile an.</li><li>Wenn Analytics in WebSphere Application Server Full Profile installiert wird, geben Sie das Installationsverzeichnis von WebSphere Application Server Full Profile an.</li></ul>{:/} | 
+| HEAP\_MIN\_SIZE| Nur WebSphere Application Server Full Profile.<br/><br/>Abhängig vom Umfang der generierten Analysedaten kann mehr Hauptspeicher für die Datenbehandlung erforderlich sein. Legen Sie den Wert so fest, dass für WebSphere Application Server Full Profile eine größere Mindestgröße des Heapspeichers möglich ist. Stellen Sie sicher, dass die für die Komponente "Core OS" von {{ site.data.keys.mf_analytics }} angegebene Speicherkapazität über diesem Wert liegt. Es wird empfohlen, denselben Wert wie für HEAP_MAX_SIZE festzulegen.<br/><br/>Standardwert: 4096 (MB).| 
+| HEAP\_MAX\_SIZE	| Nur WebSphere Application Server Full Profile.<br/><br/>Abhängig vom Umfang der generierten Analysedaten kann mehr Hauptspeicher für die Datenbehandlung erforderlich sein. Legen Sie den Wert so fest, dass für WebSphere Application Server Full Profile eine größere Maximalgröße des Heapspeichers möglich ist. Stellen Sie sicher, dass die für die Komponente "Core OS" von {{ site.data.keys.mf_analytics }} angegebene Speicherkapazität über diesem Wert liegt. Es wird empfohlen, denselben Wert wie für HEAP_MIN_SIZE festzulegen.<br/><br/>Standardwert: 4096 (MB).| 
+| WAS\_admin\_user| Nur WebSphere Application Server Full Profile.<br/><br/>Dieser Parameter gibt den Benutzer mit Administratorberechtigung von WebSphere Application Server Full Profile für den Analytics-Server an. Übernehmen Sie für WebSphere Application Server Liberty Profile den Standardwert.| 
+| WAS\_admin\_password| Nur WebSphere Application Server Full Profile.<br/><br/>Dieser Parameter gibt das Kennwort des Benutzers mit Administratorberechtigung von WebSphere Application Server Full Profile für den Analytics-Server an. Übernehmen Sie für WebSphere Application Server Liberty Profile den Standardwert.| 
+| admin_user| Obligatorisch{::nomarkdown}<ul><li>Wenn das LDAP-Repository nicht aktiviert ist, erstellen Sie zum Schutz der {{ site.data.keys.mf_analytics_console }} einen Standardbenutzer mit Administratorberechtigung.</li><li>Wenn das LDAP-Repository aktiviert ist, geben Sie den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_analytics }} an. Dieser Wert wird im LDAP-Repository gespeichert.</li></ul> |
+| admin_password| Obligatorisch<ul><li>Wenn kein LDAP-Repository aktiviert ist, geben Sie das Kennwort des Standardbenutzers mit Administratorberechtigung zum Schutz der {{ site.data.keys.mf_analytics_console }} an.</li><li>Wenn ein LDAP-Repository aktiviert ist, geben Sie das Kennwort des Benutzers mit Administratorberechtigung an. Dieser Wert wird im LDAP-Repository gespeichert.</li></ul>{:/} | 
+| LDAP_TYPE| Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry: <br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
+| LDAP_IP| LDAP-Parameter.     IP-Adresse des LDAP-Servers| 
+| LDAP\_SSL\_PORT| Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an.| 
+| LDAP_PORT| Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an.| 
+| BASE_DN| Dieser LDAP-Parameter gibt den Basis-DN an.| 
+| BIND_DN| Dieser LDAP-Parameter gibt den Bindungs-DN an.| 
+| BIND_PASSWORD| Dieser LDAP-Parameter gibt das Bindungs-DN-Kennwort an.| 
+| REQUIRE_SSL| Setzen Sie diesen LDAP-Parameter für eine sichere Verbindung zum LDAP-Server auf true. {::nomarkdown}<ul><li>Der Wert true gibt an, dass LDAP_SSL_PORT verwendet wird und CERT_FILE_PATH erforderlich ist, um die Zertifizierungsdatei des LDAP-Servers zu finden.</li><li>Der Wert false gibt an, dass LDAP_PORT verwendet wird.</li></ul>{:/}Der Standardwert ist false.| 
+| USER_FILTER| Dieser LDAP-Parameter gibt den LDAP-Benutzerfilter an, mit dem die vorhandene Benutzerregistry nach Benutzern durchsucht wird.| 
+| GROUP_FILTER| Dieser LDAP-Parameter gibt den LDAP-Gruppenfilter an, mit dem die vorhandene Benutzerregistry nach Gruppen durchsucht wird.| 
+| LDAP\_REPOSITORY\_NAME| Dieser LDAP-Parameter gibt den LDAP-Servernamen an.| 
+| CERT\_FILE\_PATH| Dieser LDAP-Parameter gibt den Zielpfad für das hochgeladene LDAP-Serverzertifikat an. Er ist obligatorisch, wenn REQUIRE_SSL auf true gesetzt ist.| 
 | mfpadmin | Dieser LDAP-Parameter gibt die Verwaltungsrolle für {{ site.data.keys.mf_server }} an:<br/><br/>None<br/>Kein Benutzer<br/><br/>AllAuthenticatedUsers<br/>Authentifizierte Benutzer<br/><br/>Everyone<br/>Alle Benutzer<br/><br/>Standardwert: None. | 
 | mfpdeployer | Dieser LDAP-Parameter gibt die Implementiererrolle für {{ site.data.keys.mf_server }} an:<br/><br/>None<br/>Kein Benutzer<br/><br/>AllAuthenticatedUsers<br/>Authentifizierte Benutzer<br/><br/>Everyone<br/>Alle Benutzer<br/><br/>Standardwert: None. | 
 | mfpmonitor | Dieser LDAP-Parameter gibt die Monitorrolle für {{ site.data.keys.mf_server }} an:<br/><br/>None<br/>Kein Benutzer<br/><br/>AllAuthenticatedUsers<br/>Authentifizierte Benutzer<br/><br/>Everyone<br/>Alle Benutzer<br/><br/>Standardwert: None. | 
@@ -2829,14 +2828,14 @@ Mit diesem Scriptpaket wird IBM HTTP Server als Load Balancer für mehrere Insta
 {{ site.data.keys.mf_server }} konfiguriert. Das Paket muss mit der
 Softwarekomponente IBM HTTP Server verwendet und nach dieser Softwarekomponente installiert werden. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| WAS_ROOT | Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut `install_directory` des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet. | 
-| profile_name | Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält.<br/><br/>In den Musterschablonen wird er dem Ausgabeattribut **dmgr\_profile\_name** des Deployment Manager oder dem Ausgabeattribut **sa\_profile\_name** des eigenständigen Servers zugeordnet. | 
-| runtime\_contextRoot\_list | Dieser obligatorische Parameter gibt die Liste der Laufzeitkontextstammverzeichnisse an, die IHS ermöglicht, Anforderungen mit übereinstimmenden Kontextstammverzeichnissen weiterzuleiten. Die Laufzeitkontextstammverzeichnisse müssen jeweils durch ein Semikolon (;) getrennt sein. Beispiel: HelloMobileFirst;HelloWorld<br/><br/>Wichtiger Hinweis: Der Parameter muss an das Kontextstammverzeichnis angeglichen werden, das in "MFP Server Runtime Deployment" angegeben ist. Andernfalls kann IHS Anforderungen mit dem Laufzeitkontextstammverzeichnis nicht ordnungsgemäß weiterleiten. | 
-| http_port | Dieser obligatorische Parameter öffnet den Firewall-Port des IHS-Knotens, um den HTTP-Transport von IHS zu {{ site.data.keys.mf_server }} zu ermöglichen. Der Parameter muss auf 9080 gesetzt sein. | 
-| https_port | Dieser obligatorische Parameter öffnet den Firewall-Port des IHS-Knotens, um den HTTPS-Transport von IHS zu {{ site.data.keys.mf_server }} zu ermöglichen. Der Parameter muss auf 9443 gesetzt sein. | 
-| server_hostname | Dieser obligatorische Parameter gibt den Hostnamen von IBM HTTP Server an. Er wird dem Ausgabeattribut host von IBM HTTP Server in der Musterschablone zugeordnet. | 
+| WAS_ROOT| Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut `install_directory` des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet.| 
+| profile_name| Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält.<br/><br/>In den Musterschablonen wird er dem Ausgabeattribut **dmgr\_profile\_name** des Deployment Manager oder dem Ausgabeattribut **sa\_profile\_name** des eigenständigen Servers zugeordnet.| 
+| runtime\_contextRoot\_list| Dieser obligatorische Parameter gibt die Liste der Laufzeitkontextstammverzeichnisse an, die IHS ermöglicht, Anforderungen mit übereinstimmenden Kontextstammverzeichnissen weiterzuleiten. Die Laufzeitkontextstammverzeichnisse müssen jeweils durch ein Semikolon (;) getrennt sein. Beispiel: HelloMobileFirst;HelloWorld<br/><br/>Wichtiger Hinweis: Der Parameter muss an das Kontextstammverzeichnis angeglichen werden, das in "MFP Server Runtime Deployment" angegeben ist. Andernfalls kann IHS Anforderungen mit dem Laufzeitkontextstammverzeichnis nicht ordnungsgemäß weiterleiten.| 
+| http_port| Dieser obligatorische Parameter öffnet den Firewall-Port des IHS-Knotens, um den HTTP-Transport von IHS zu {{ site.data.keys.mf_server }} zu ermöglichen. Der Parameter muss auf 9080 gesetzt sein.| 
+| https_port| Dieser obligatorische Parameter öffnet den Firewall-Port des IHS-Knotens, um den HTTPS-Transport von IHS zu {{ site.data.keys.mf_server }} zu ermöglichen. Der Parameter muss auf 9443 gesetzt sein.| 
+| server_hostname| Dieser obligatorische Parameter gibt den Hostnamen von IBM HTTP Server an. Er wird dem Ausgabeattribut host von IBM HTTP Server in der Musterschablone zugeordnet.| 
 
 ### MFP Open Firewall Ports for WAS
 {: #mfp-open-firewall-ports-for-was }
@@ -2848,34 +2847,34 @@ MobileFirst-Laufzeit bereitstellen. Sie müssen nicht nur einige vordefinierte P
 WebSphere Application Server festlegen, sondern auch die anderen Ports
 für Verbindungen zum DB2 Server und zum LDAP-Server angeben. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| WAS_ROOT | Dieser obligatorische Parameter gibt das Installationsverzeichnis der Komponente "Custom Nodes" von WebSphere Application Server Network Deployment auf dem Knoten "CustomNode" an. In den Musterschablonen wird er dem Ausgabeattribut install_directory des Custom-Nodes-Servers zugeordnet. |
-| profile_name | Dieser obligatorische Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut cn_profile_name von "Custom Nodes" zugeordnet. | 
-| WAS\_admin\_user | Dieser obligatorische Parameter wird in der Musterschablone dem Ausgabeattribut was_admin von "Custom Nodes" zugeordnet. | 
-| Ports	| Dieser obligatorische Parameter gibt andere Ports an, die für die Verbindung zum DB2-Server und (optional) zum LDAP-Server geöffnet werden müssen. Die Portwerte können durch ein Semikolon getrennt angegeben werden, z. B. '50000;636'.<br/>br/>Standardwert: 50000. | 
+| WAS_ROOT| Dieser obligatorische Parameter gibt das Installationsverzeichnis der Komponente "Custom Nodes" von WebSphere Application Server Network Deployment auf dem Knoten "CustomNode" an. In den Musterschablonen wird er dem Ausgabeattribut install_directory des Custom-Nodes-Servers zugeordnet.|
+| profile_name| Dieser obligatorische Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut cn_profile_name von "Custom Nodes" zugeordnet.| 
+| WAS\_admin\_user| Dieser obligatorische Parameter wird in der Musterschablone dem Ausgabeattribut was_admin von "Custom Nodes" zugeordnet.| 
+| Ports	| Dieser obligatorische Parameter gibt andere Ports an, die für die Verbindung zum DB2-Server und (optional) zum LDAP-Server geöffnet werden müssen. Die Portwerte können durch ein Semikolon getrennt angegeben werden, z. B. '50000;636'.<br/>br/>Standardwert: 50000.| 
 
 ### MFP WAS SDK Level
 {: #mfp-was-sdk-level }
 Dieses Scriptpaket ist nur anwendbar, wenn die WAS-Profile in der
 Musterschablone verfügbar sind (WebSphere Application Server Network Deployment). 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| WAS_ROOT | Dieser Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut **install_directory** des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet. |
-| profile_name | Dieser Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut **dmgr\_profile\_name** des Deployment Manager oder dem Ausgabeattribut **sa\_profile\_name** des eigenständigen Servers zugeordnet. | 
-| SDK_name | Name des SDK, das für diese WebSphere-Installation aktiviert werden muss | 
+| WAS_ROOT| Dieser Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut **install_directory** des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet.|
+| profile_name| Dieser Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut **dmgr\_profile\_name** des Deployment Manager oder dem Ausgabeattribut **sa\_profile\_name** des eigenständigen Servers zugeordnet.| 
+| SDK_name| Name des SDK, das für diese WebSphere-Installation aktiviert werden muss| 
 
 ### MFP Runtime DB
 {: #mfp-runtime-db }
 Mit diesem Scriptpaket wird das Laufzeitdatenbankschema in einer DB2-Datenbank eingerichtet. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| db_user | Dieser obligatorische Parameter gibt den Benutzernamen für die Erstellung der Laufzeitdatenbank an. Er kann dem Instanznamen der Datenbankserverkomponente zugeordnet werden. Standardwert: db2inst1. | 
-| db_name | Dieser obligatorische Parameter gibt den Datenbanknamen für die Erstellung der Laufzeitdatenbank an. Standardwert: WLRTIME. | 
-| db_password | Dieser obligatorische Parameter gibt das Benutzerkennwort für die Erstellung der Laufzeitdatenbank an. Er kann dem Instanzeigner der Datenbankserverkomponente zugeordnet werden. Standardwert: passw0rd (als Parameter auf Musterebene). | 
-| other\_db\_args |	Vier obligatorische Parameter für die Erstellung der Laufzeitdatenbank: SQL type, Codeset,Territory und Collate. Standardwert: DB2 UTF-8 US SYSTEM. | 
+| db_user| Dieser obligatorische Parameter gibt den Benutzernamen für die Erstellung der Laufzeitdatenbank an. Er kann dem Instanznamen der Datenbankserverkomponente zugeordnet werden. Standardwert: db2inst1.| 
+| db_name| Dieser obligatorische Parameter gibt den Datenbanknamen für die Erstellung der Laufzeitdatenbank an. Standardwert: WLRTIME.| 
+| db_password| Dieser obligatorische Parameter gibt das Benutzerkennwort für die Erstellung der Laufzeitdatenbank an. Er kann dem Instanzeigner der Datenbankserverkomponente zugeordnet werden. Standardwert: passw0rd (als Parameter auf Musterebene).| 
+| other\_db\_args|	Vier obligatorische Parameter für die Erstellung der Laufzeitdatenbank: SQL type, Codeset,Territory und Collate. Standardwert: DB2 UTF-8 US SYSTEM.| 
 
 ### MFP Server Administration
 {: #mfp-server-administration }
@@ -2894,36 +2893,36 @@ verwendet werden (Anzeigename: Standalone Server) und nach dem Paket "MFP Server
 MFP*-Scriptpaketen auf dem VM-Knoten mit {{ site.data.keys.mf_server }}
 installiert werden. 
 
-| Parameter | Beschreibung |
+| Parameter| Beschreibung |
 |-----------|-------------|
-| WAS_ROOT | Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut `install_directory` des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet. | 
-| profile_name | Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut dmgr_profile_name des Deployment Manager oder dem Ausgabeattribut sa_profile_name des eigenständigen Servers zugeordnet. | 
-| NUMBER\_OF\_CLUSTERMEMBERS | Dieser optionale Parameter gilt nur für die Musterschablone "{{ site.data.keys.product }} (WAS ND)". Er gibt die Anzahl der Cluster-Member des Clusters an, in dem der MFP-Verwaltungsservice implementiert werden soll. Standardwert: 2. | 
-| db_user | Dieser obligatorische Parameter gibt den Namen des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_user des Scriptpakets MFP Administration DB zugeordnet. | 
-| db_name | Dieser obligatorische Parameter gibt den Namen der Verwaltungsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets MFP Administration DB zugeordnet. | 
-| db_password |	Dieser obligatorische Parameter gibt das Kennwort des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_password des Scriptpakets MFP Administration DB zugeordnet. | 
-| db_ip | Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet. | 
-| db_port |  Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. | 
-| admin_user | Dieser Parameter gibt den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} an.{::nomarkdown}<ul><li>Wenn LDAP_TYPE auf None gesetzt ist, wird der Standardbenutzer mit Administratorberechtigung erstellt.</li><li>Wenn LDAP_TYPE auf TivoliDirectoryServer oder ActiveDirectory gesetzt ist und andere LDAP-Parameter entsprechend Ihrer LDAP-Serverkonfiguration angegeben sind, muss der Wert von admin_user aus dem konfigurierten LDAP-Benutzerrepository übernommen werden. Der Parameter ist nicht erforderlich, wenn {{ site.data.keys.mf_server }} auf einem Einzelknoten mit WebSphere Application Server Full Profile implementiert werden soll.</li></ul> | 
-| admin_password | Dieser Parameter gibt das Kennwort des Benutzers mit Administratorberechtigung an.<ul><li>Wenn LDAP_TYPE auf None gesetzt ist, wird das Standardkennwort für den Benutzer mit Administratorberechtigung erstellt.</li><li>Wenn ein externer LDAP-Server konfiguriert ist, wird das Benutzerkennwort aus dem LDAP-Repository übernommen. Der Parameter ist nicht erforderlich, wenn {{ site.data.keys.mf_server }} auf einem Einzelknoten mit WebSphere Application Server Full Profile implementiert werden soll.</li></ul> | 
-| install_console | Dieser Parameter gibt an, ob die {{ site.data.keys.mf_console }} auf dem MobileFirst-Platform-Server-Knoten implementiert werden soll. Standardwert: Kontrollkästchen ausgewählt |
-| WAS\_admin\_user | Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet. | 
-| WAS\_admin\_password | Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des Deployment Manager zugeordnet. | 
-| server_hostname | Dieser obligatorische Parameter gibt den Hostnamen des {{ site.data.keys.mf_server }} oder des Deployment Manager an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet. | 
-| server\_farm\_mode | Dieser obligatorische Parameter gibt an, ob {{ site.data.keys.mf_server }} im Server-Farmmodus implementiert werden soll. Er muss für eine Server-Farmtopologie ausgewählt und für eine eigenständige Topologie abgewählt sein. Standardwert: Einstellung gemäß der in der Musterschablone definierten Topologie. | 
-| webserver_ip | Wenn IBM HTTP Server in der Musterschablone implementiert ist, wird dieser optionale Parameter dem Ausgabeattribut IP von IBM HTTP Server zugeordnet. | 
-| LDAP_TYPE | Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry. Gültige Werte:<ul>None – Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert ausgewählt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.</li><li>TivoliDirectoryServer: Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.</li><li>ActiveDirectory: Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.</li></ul>{:/}Standardwert: None. | 
-| LDAP_IP | Dieser LDAP-Parameter gibt die IP-Adresse des LDAP-Servers an. | 
-| LDAP_SSL_PORT | Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an. | 
-| LDAP_PORT | Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an. | 
-| BASE_DN | Dieser LDAP-Parameter gibt den Basis-DN an. | 
-| BIND_DN | Dieser LDAP-Parameter gibt den Bindungs-DN an. | 
-| BIND_PASSWORD | Dieser LDAP-Parameter gibt das Bindungs-DN-Kennwort an. | 
-| REQUIRE_SSL | Dieser LDAP-Parameter wird für eine sichere Verbindung zum LDAP-Server auf true gesetzt.{::nomarkdown}<ul><li>Der Wert true gibt an, dass LDAP\_SSL\_PORT verwendet wird und CERT\_FILE\_PATH erforderlich ist, um die Zertifizierungsdatei des LDAP-Servers zu finden.</li><li>Der Wert false gibt an, dass LDAP_PORT verwendet wird.</li></ul>{:/}Der Standardwert ist false. | 
-| USER_FILTER | Dieser LDAP-Parameter gibt den Benutzerfilter an, mit dem die vorhandene Benutzerregistry nach Benutzern durchsucht wird. | 
-| GROUP_FILTER | Dieser LDAP-Parameter gibt den LDAP-Gruppenfilter an, mit dem die vorhandene Benutzerregistry nach Gruppen durchsucht wird. | 
-| LDAP\_REPOSITORY\_NAME | Dieser LDAP-Parameter gibt den LDAP-Servernamen an. | 
-| CERT\_FILE\_PATH | Dieser LDAP-Parameter gibt den Zielpfad für das hochgeladene LDAP-Serverzertifikat an. Er ist obligatorisch, wenn REQUIRE_SSL auf true gesetzt ist. | 
+| WAS_ROOT| Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut `install_directory` des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet.| 
+| profile_name| Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut dmgr_profile_name des Deployment Manager oder dem Ausgabeattribut sa_profile_name des eigenständigen Servers zugeordnet.| 
+| NUMBER\_OF\_CLUSTERMEMBERS| Dieser optionale Parameter gilt nur für die Musterschablone "{{ site.data.keys.product }} (WAS ND)". Er gibt die Anzahl der Cluster-Member des Clusters an, in dem der MFP-Verwaltungsservice implementiert werden soll. Standardwert: 2.| 
+| db_user| Dieser obligatorische Parameter gibt den Namen des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_user des Scriptpakets MFP Administration DB zugeordnet.| 
+| db_name| Dieser obligatorische Parameter gibt den Namen der Verwaltungsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets MFP Administration DB zugeordnet.| 
+| db_password|	Dieser obligatorische Parameter gibt das Kennwort des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_password des Scriptpakets MFP Administration DB zugeordnet. | 
+| db_ip| Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet.| 
+| db_port|  Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. | 
+| admin_user| Dieser Parameter gibt den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} an.{::nomarkdown}<ul><li>Wenn LDAP_TYPE auf None gesetzt ist, wird der Standardbenutzer mit Administratorberechtigung erstellt.</li><li>Wenn LDAP_TYPE auf TivoliDirectoryServer oder ActiveDirectory gesetzt ist und andere LDAP-Parameter entsprechend Ihrer LDAP-Serverkonfiguration angegeben sind, muss der Wert von admin_user aus dem konfigurierten LDAP-Benutzerrepository übernommen werden. Der Parameter ist nicht erforderlich, wenn {{ site.data.keys.mf_server }} auf einem Einzelknoten mit WebSphere Application Server Full Profile implementiert werden soll.</li></ul> | 
+| admin_password| Dieser Parameter gibt das Kennwort des Benutzers mit Administratorberechtigung an.<ul><li>Wenn LDAP_TYPE auf None gesetzt ist, wird das Standardkennwort für den Benutzer mit Administratorberechtigung erstellt.</li><li>Wenn ein externer LDAP-Server konfiguriert ist, wird das Benutzerkennwort aus dem LDAP-Repository übernommen. Der Parameter ist nicht erforderlich, wenn {{ site.data.keys.mf_server }} auf einem Einzelknoten mit WebSphere Application Server Full Profile implementiert werden soll.</li></ul> | 
+| install_console| Dieser Parameter gibt an, ob die {{ site.data.keys.mf_console }} auf dem MobileFirst-Platform-Server-Knoten implementiert werden soll. Standardwert: Kontrollkästchen ausgewählt|
+| WAS\_admin\_user| Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet.| 
+| WAS\_admin\_password| Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des Deployment Manager zugeordnet.| 
+| server_hostname| Dieser obligatorische Parameter gibt den Hostnamen des {{ site.data.keys.mf_server }} oder des Deployment Manager an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet.| 
+| server\_farm\_mode| Dieser obligatorische Parameter gibt an, ob {{ site.data.keys.mf_server }} im Server-Farmmodus implementiert werden soll. Er muss für eine Server-Farmtopologie ausgewählt und für eine eigenständige Topologie abgewählt sein. Standardwert: Einstellung gemäß der in der Musterschablone definierten Topologie.| 
+| webserver_ip| Wenn IBM HTTP Server in der Musterschablone implementiert ist, wird dieser optionale Parameter dem Ausgabeattribut IP von IBM HTTP Server zugeordnet.| 
+| LDAP_TYPE| Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry. Gültige Werte:<ul>None – Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert ausgewählt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.</li><li>TivoliDirectoryServer: Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.</li><li>ActiveDirectory: Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.</li></ul>{:/}Standardwert: None. | 
+| LDAP_IP| Dieser LDAP-Parameter gibt die IP-Adresse des LDAP-Servers an.| 
+| LDAP_SSL_PORT| Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an.| 
+| LDAP_PORT| Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an.| 
+| BASE_DN| Dieser LDAP-Parameter gibt den Basis-DN an.| 
+| BIND_DN| Dieser LDAP-Parameter gibt den Bindungs-DN an.| 
+| BIND_PASSWORD| Dieser LDAP-Parameter gibt das Bindungs-DN-Kennwort an.| 
+| REQUIRE_SSL| Dieser LDAP-Parameter wird für eine sichere Verbindung zum LDAP-Server auf true gesetzt.{::nomarkdown}<ul><li>Der Wert true gibt an, dass LDAP\_SSL\_PORT verwendet wird und CERT\_FILE\_PATH erforderlich ist, um die Zertifizierungsdatei des LDAP-Servers zu finden.</li><li>Der Wert false gibt an, dass LDAP_PORT verwendet wird.</li></ul>{:/}Der Standardwert ist false.| 
+| USER_FILTER| Dieser LDAP-Parameter gibt den Benutzerfilter an, mit dem die vorhandene Benutzerregistry nach Benutzern durchsucht wird.| 
+| GROUP_FILTER| Dieser LDAP-Parameter gibt den LDAP-Gruppenfilter an, mit dem die vorhandene Benutzerregistry nach Gruppen durchsucht wird.| 
+| LDAP\_REPOSITORY\_NAME| Dieser LDAP-Parameter gibt den LDAP-Servernamen an.| 
+| CERT\_FILE\_PATH| Dieser LDAP-Parameter gibt den Zielpfad für das hochgeladene LDAP-Serverzertifikat an. Er ist obligatorisch, wenn REQUIRE_SSL auf true gesetzt ist.| 
 | mfpadmin | Verwaltungsrolle für {{ site.data.keys.mf_server }}. Gültige Werte:<br/><br/>None<br/>Kein Benutzer<br/><br/>AllAuthenticatedUsers<br/>Authentifizierte Benutzer<br/><br/>Everyone<br/>Alle Benutzer<br/><br/>Standardwert: None. | 
 | mfpdeployer | Dieser LDAP-Parameter gibt die Implementiererrolle für {{ site.data.keys.mf_server }} an:<br/><br/>None<br/>Kein Benutzer<br/><br/>AllAuthenticatedUsers<br/>Authentifizierte Benutzer<br/><br/>Everyone<br/>Alle Benutzer<br/><br/>Standardwert: None. | 
 | mfpmonitor | Dieser LDAP-Parameter gibt die Monitorrolle für {{ site.data.keys.mf_server }} an:<br/><br/>None<br/>Kein Benutzer<br/><br/>AllAuthenticatedUsers<br/>Authentifizierte Benutzer<br/><br/>Everyone<br/>Alle Benutzer<br/><br/>Standardwert: None. | 
@@ -2936,52 +2935,47 @@ in {{ site.data.keys.mf_server }} implementiert. Es muss
 nach dem Scriptpaket "MFP Server Runtime Deployment" installiert werden, mit dem die Laufzeit installiert wurde, in der die Anwendungen und Adapter
 implementiert werden sollen. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| artifact_dir | Dieser obligatorische Parameter gibt den Installationspfad von Anwendungen und Adaptern für die Implementierung an. In der Musterschablone wird er dem Ausgabeattribut target_path der {{ site.data.keys.product_adj }}-App-Komponente zugeordnet. | 
-| admin_context | Dieser obligatorische Parameter muss auf mfpadmin gesetzt sein. | 
-| runtime_context | Dieser obligatorische Parameter muss an das Laufzeitkontextstammverzeichnis angeglichen werden, das in der Komponente "MFP Server Runtime Deployment" angegeben ist. Er wird dem Ausgabeattribut runtime_contextRoot der Komponente "MFP Server Runtime Deployment" zugeordnet. | 
-| deployer_user | Dieser obligatorische Parameter gibt das Benutzerkonto mit der Implementierungsberechtigung für Anwendungen und Adapter an. Der Parameter wird in der Musterschablone als Parameter auf Musterebene festgelegt. | 
-| deployer_password | Dieser obligatorische Parameter gibt das Kennwort des Benutzers mit der Implementierungsberechtigung für Anwendungen und Adapter an. Der Parameter wird in der Musterschablone als Parameter auf Musterebene festgelegt. | 
-| webserver_ip | Wenn IBM HTTP Server in der Musterschablone implementiert ist, wird dieser optionale Parameter dem gleichen Ausgabeattribut von "MFP Server Administration" zugeordnet. | 
+| artifact_dir| Dieser obligatorische Parameter gibt den Installationspfad von Anwendungen und Adaptern für die Implementierung an. In der Musterschablone wird er dem Ausgabeattribut target_path der {{ site.data.keys.product_adj }}-App-Komponente zugeordnet.| 
+| admin_context| Dieser obligatorische Parameter muss auf mfpadmin gesetzt sein.| 
+| runtime_context| Dieser obligatorische Parameter muss an das Laufzeitkontextstammverzeichnis angeglichen werden, das in der Komponente "MFP Server Runtime Deployment" angegeben ist. Er wird dem Ausgabeattribut runtime_contextRoot der Komponente "MFP Server Runtime Deployment" zugeordnet.| 
+| deployer_user| Dieser obligatorische Parameter gibt das Benutzerkonto mit der Implementierungsberechtigung für Anwendungen und Adapter an. Der Parameter wird in der Musterschablone als Parameter auf Musterebene festgelegt.| 
+| deployer_password| Dieser obligatorische Parameter gibt das Kennwort des Benutzers mit der Implementierungsberechtigung für Anwendungen und Adapter an. Der Parameter wird in der Musterschablone als Parameter auf Musterebene festgelegt.| 
+| webserver_ip| Wenn IBM HTTP Server in der Musterschablone implementiert ist, wird dieser optionale Parameter dem gleichen Ausgabeattribut von "MFP Server Administration" zugeordnet.| 
 
 ### MFP Server Application Center
 {: #mfp-server-application-center }
-Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server
-in
-WebSphere Application Server Full Profile oder
-WebSphere Application Server Liberty Profile eingerichtet. Es muss mit der Serversoftwarekomponente
-"MFP Server Prerequisite" oder "WebSphere Application Server Full Profile
-(Standalone Server)", "MFP WAS SDK Level" und "MFP Server Prerequisite" verwendet werden. Es muss nach der Softwarekomponente "Liberty Profile" oder "Standalone Server" installiert werden. 
+Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphere Application Server Full Profile oder WebSphere Application Server Liberty Profile eingerichtet. Es muss mit der Serversoftwarekomponente "MFP Server Prerequisite" oder "WebSphere Application Server Full Profile (Standalone Server)", "MFP WAS SDK Level" und "MFP Server Prerequisite" verwendet werden. Es muss nach der Softwarekomponente "Liberty Profile" oder "Standalone Server" installiert werden. 
 
-| Parameter | Beschreibung | 
+| Parameter| Beschreibung | 
 |-----------|-------------|
-| WAS_ROOT | Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" an. In den Musterschablonen wird er dem Ausgabeattribut `install_directory` des Liberty-Profile-Servers oder eigenständigen Servers zugeordnet. | 
-| profile_name | Dieser Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut sa_profile_name des "Standalone Server" zugeordnet. | 
-| db_instance | Name der Datenbankinstanz. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. | 
-| db_user | Dieser Parameter gibt den Namen des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_user des Scriptpakets MFP Administration DB zugeordnet. | 
-| db_name | Dieser Parameter gibt den Namen der Verwaltungsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets MFP Administration DB zugeordnet. |
-| db_password | Dieser Parameter gibt das Kennwort des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_password des Scriptpakets MFP Administration DB zugeordnet. | 
-| db_ip | Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet. | 
-| db_port | Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. |
-| admin_user | Dieser Parameter gibt den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} an.<br/><br/>Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind. | 
-| admin_password | Kennwort des Benutzers mit Administratorberechtigung.<br/><br/>Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind. | 
-| WAS\_admin\_user | Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet.<br/><br/>Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet. | 
-| WAS\_admin\_password | Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des eigenständigen Servers zugeordnet. |
-| server_hostname | Dieser Parameter gibt den Hostnamen von {{ site.data.keys.mf_server }} an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers oder des eigenständigen Servers (Standalone Server) zugeordnet. |
-| LDAP_TYPE | Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry:<br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
-| LDAP_IP | LDAP-Parameter. IP-Adresse des LDAP-Servers | 
-| LDAP\_SSL\_PORT | Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an. | 
-| LDAP_PORT | Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an. | 
-| BASE_DN | Dieser LDAP-Parameter gibt den Basis-DN an. | 
-| BIND_DN | Dieser LDAP-Parameter gibt den Bindungs-DN an. | 
-| BIND_PASSWORD | Dieser LDAP-Parameter gibt das Bindungs-DN-Kennwort an. | 
-| REQUIRE_SSL | Setzen Sie diesen LDAP-Parameter für eine sichere Verbindung zum LDAP-Server auf true.{::nomarkdown}<ul><li>Der Wert true gibt an, dass LDAP_SSL_PORT verwendet wird und CERT_FILE_PATH erforderlich ist, um die Zertifizierungsdatei des LDAP-Servers zu finden.</li><li>Der Wert false gibt an, dass LDAP_PORT verwendet wird.</li></ul>Der Standardwert ist false. | 
-| USER_FILTER | Dieser LDAP-Parameter gibt den LDAP-Benutzerfilter an, mit dem die vorhandene Benutzerregistry nach Benutzern durchsucht wird. | 
-| GROUP_FILTER | Dieser LDAP-Parameter gibt den LDAP-Gruppenfilter an, mit dem die vorhandene Benutzerregistry nach Gruppen durchsucht wird. | 
-| LDAP\_REPOSITORY\_NAME | Dieser LDAP-Parameter gibt den LDAP-Servernamen an. | 
-| CERT\_FILE\_PATH | Dieser LDAP-Parameter gibt den Zielpfad für das hochgeladene LDAP-Serverzertifikat an. Er ist obligatorisch, wenn REQUIRE_SSL auf true gesetzt ist. | 
-| appcenteradmin | Verwaltungsrolle für {{ site.data.keys.mf_app_center }}. Verwenden Sie einen der folgenden Werte:<ul><li>None</li><li>Kein Benutzer</li><li>AllAuthenticatedUsers</li>Authentifizierte Benutzer</li><li>Everyone</li><li>Alle Benutzer</li></ul>{:/}Standardwert: None | 
+| WAS_ROOT| Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" an. In den Musterschablonen wird er dem Ausgabeattribut `install_directory` des Liberty-Profile-Servers oder eigenständigen Servers zugeordnet.| 
+| profile_name| Dieser Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut sa_profile_name des "Standalone Server" zugeordnet.| 
+| db_instance| Name der Datenbankinstanz. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. | 
+| db_user| Dieser Parameter gibt den Namen des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_user des Scriptpakets MFP Administration DB zugeordnet.| 
+| db_name| Dieser Parameter gibt den Namen der Verwaltungsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets MFP Administration DB zugeordnet.|
+| db_password| Dieser Parameter gibt das Kennwort des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_password des Scriptpakets MFP Administration DB zugeordnet. | 
+| db_ip| Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet.| 
+| db_port| Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. |
+| admin_user| Dieser Parameter gibt den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} an.<br/><br/>Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind.| 
+| admin_password| Kennwort des Benutzers mit Administratorberechtigung.<br/><br/>Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind.| 
+| WAS\_admin\_user| Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet.<br/><br/>Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet.| 
+| WAS\_admin\_password| Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des eigenständigen Servers zugeordnet.|
+| server_hostname| Dieser Parameter gibt den Hostnamen von {{ site.data.keys.mf_server }} an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers oder des eigenständigen Servers (Standalone Server) zugeordnet.|
+| LDAP_TYPE| Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry:<br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
+| LDAP_IP| LDAP-Parameter.     IP-Adresse des LDAP-Servers| 
+| LDAP\_SSL\_PORT| Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an.| 
+| LDAP_PORT| Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an.| 
+| BASE_DN| Dieser LDAP-Parameter gibt den Basis-DN an.| 
+| BIND_DN| Dieser LDAP-Parameter gibt den Bindungs-DN an.| 
+| BIND_PASSWORD| Dieser LDAP-Parameter gibt das Bindungs-DN-Kennwort an.| 
+| REQUIRE_SSL| Setzen Sie diesen LDAP-Parameter für eine sichere Verbindung zum LDAP-Server auf true. {::nomarkdown}<ul><li>Der Wert true gibt an, dass LDAP_SSL_PORT verwendet wird und CERT_FILE_PATH erforderlich ist, um die Zertifizierungsdatei des LDAP-Servers zu finden.</li><li>Der Wert false gibt an, dass LDAP_PORT verwendet wird.</li></ul>Der Standardwert ist false.| 
+| USER_FILTER| Dieser LDAP-Parameter gibt den LDAP-Benutzerfilter an, mit dem die vorhandene Benutzerregistry nach Benutzern durchsucht wird.| 
+| GROUP_FILTER| Dieser LDAP-Parameter gibt den LDAP-Gruppenfilter an, mit dem die vorhandene Benutzerregistry nach Gruppen durchsucht wird.| 
+| LDAP\_REPOSITORY\_NAME| Dieser LDAP-Parameter gibt den LDAP-Servernamen an.| 
+| CERT\_FILE\_PATH| Dieser LDAP-Parameter gibt den Zielpfad für das hochgeladene LDAP-Serverzertifikat an. Er ist obligatorisch, wenn REQUIRE_SSL auf true gesetzt ist.| 
+| appcenteradmin| Verwaltungsrolle für {{ site.data.keys.mf_app_center }}. Verwenden Sie einen der folgenden Werte:<ul><li>None</li><li>Kein Benutzer</li><li>AllAuthenticatedUsers</li>Authentifizierte Benutzer</li><li>Everyone</li><li>Alle Benutzer</li></ul>{:/}Standardwert: None| 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }
@@ -2995,9 +2989,9 @@ verwendet werden (Anzeigename: Standalone Server) und nach der Serversoftwarekom
 MFP*-Scriptpaketen auf dem MobileFirst-Platform-Server-Knoten
 installiert werden. 
 
-| Parameter | Beschreibung |
+| Parameter| Beschreibung |
 |-----------|-------------|
-| Keiner | Es gibt keine Parameter für dieses Scriptpaket. | 
+| Keiner | Es gibt keine Parameter für dieses Scriptpaket.| 
 
 ### MFP Server Runtime Deployment
 {: #mfp-server-runtime-deployment }
@@ -3009,30 +3003,30 @@ installiert. Das Scriptpaket richtet auch die Verbindung
 zum {{ site.data.keys.mf_analytics_server }}
 ein. Es muss nach dem Scriptpaket "MFP Server Administration" installiert werden. 
 
-| Parameter | Beschreibung |
+| Parameter| Beschreibung |
 |-----------|-------------|
-| WAS_ROOT | Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut install_directory des Liberty-Profile-Servers oder eigenständigen Servers zugeordnet. | 
-| profile_name | Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut **dmgr\_profile\_name** des Deployment Manager oder dem Ausgabeattribut **sa\_profile\_name** des eigenständigen Servers zugeordnet. |
-| NUMBER\_OF\_CLUSTERMEMBERS | Dieser optionale Parameter gilt nur für die Musterschablone "{{ site.data.keys.product }} (WAS ND)". Er gibt die Anzahl der Cluster-Member des Clusters an, in dem die MFP-Laufzeit implementiert werden soll. Standardwert: 2. | 
-| db_ip | Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Laufzeitdatenbank (und optional die Berichtsdatenbank) installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet. |
-| db_port | Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Laufzeitdatenbank (und optional die Berichtsdatenbank) installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Datenbankserversoftwarekomponente zugeordnet. |
-| admin_user | Dieser obligatorische Parameter gibt den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} an. Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind. | 
-| admin_password | Dieser obligatorische Parameter gibt das Kennwort des Benutzers mit Administratorberechtigung an. Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind. | 
-| runtime_path | Dieser obligatorische Parameter gibt den Installationspfad für die Laufzeit-WAR-Datei an. Er kann in der Musterschablone beispielsweise dem Ausgabeattribut target_path der Komponente "MFP Server Runtime" zugeordnet werden. | 
-| runtime_contextRoot | Dieser obligatorische Parameter gibt das Laufzeitkontextstammverzeichnis an. Er muss mit einem Schrägstrich (/) beginnen, z. B. "/HelloWorld". Der Parameter wird in der Musterschablone als Parameter auf Musterebene festgelegt. | 
-| rtdb_name | Dieser obligatorische Parameter gibt den Namen der Laufzeitdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets "MFP Runtime DB" zugeordnet. | 
-| rtdb_user | Dieser obligatorische Parameter gibt den Benutzer an, der die Laufzeitdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_user` des Scriptpakets "MFP Runtime DB" zugeordnet. |
-| rtdb_password | Dieser obligatorische Parameter gibt das Kennwort des Benutzers an, der die Laufzeitdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_password` des Scriptpakets "MFP Runtime DB" zugeordnet. |
-| rptdb_name | Dieser optionale Parameter gibt den Namen der Berichtsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets "MFP Reports DB" zugeordnet. Machen Sie keine Angabe, wenn Sie keine Verbindung zu einer Berichtsdatenbank herstellen möchten. |
-| rptdb_user | Dieser optionale Parameter gibt den Benutzer an, der die Berichtsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_user` des Scriptpakets "MFP Reports DB" zugeordnet. | 
-| rptdb_password | Dieser optionale Parameter gibt das Kennwort des Benutzers an, der die Berichtsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_password` des Scriptpakets "MFP Reports DB" zugeordnet. |
-| was\_admin\_user	| Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet. |
-| was_admin_password | Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin_password des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin_password des Deployment Manager zugeordnet. | 
-| server_farm_mode | Dieser obligatorische Parameter wird dem gleichnamigen Attribut in "MFP Server Administration" zugeordnet. | 
-| server_hostname | Dieser obligatorische Parameter gibt den Hostnamen von {{ site.data.keys.mf_server }} an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet. |
-| analytics_ip | Dieser optionale Parameter gibt die IP-Adresse des Knotens mit {{ site.data.keys.mf_analytics }} an, um die Analysefunktionalität der Komponente "MFP Server Runtime" zu aktivieren. |
-| analytics_admin_user | Dieser optionale Parameter gibt den Namen des Administrators für den {{ site.data.keys.mf_analytics_server }} an. | 
-| analytics_admin_password | Dieser optionale Parameter gibt das Kennwort des Administrators für den {{ site.data.keys.mf_analytics_server }} an. | 
+| WAS_ROOT| Dieser obligatorische Parameter gibt das Installationsverzeichnis von WebSphere Application Server Liberty Profile oder WebSphere Application Server Full Profile auf dem Knoten "MobileFirst Platform Server" oder das Installationsverzeichnis für den Deployment Manager auf dem Knoten "DmgrNode" an. In den Musterschablonen wird er dem Ausgabeattribut install_directory des Liberty-Profile-Servers oder eigenständigen Servers zugeordnet.| 
+| profile_name| Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut **dmgr\_profile\_name** des Deployment Manager oder dem Ausgabeattribut **sa\_profile\_name** des eigenständigen Servers zugeordnet.|
+| NUMBER\_OF\_CLUSTERMEMBERS| Dieser optionale Parameter gilt nur für die Musterschablone "{{ site.data.keys.product }} (WAS ND)". Er gibt die Anzahl der Cluster-Member des Clusters an, in dem die MFP-Laufzeit implementiert werden soll. Standardwert: 2.| 
+| db_ip| Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Laufzeitdatenbank (und optional die Berichtsdatenbank) installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet.|
+| db_port| Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Laufzeitdatenbank (und optional die Berichtsdatenbank) installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Datenbankserversoftwarekomponente zugeordnet.|
+| admin_user| Dieser obligatorische Parameter gibt den Namen des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} an. Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind.| 
+| admin_password| Dieser obligatorische Parameter gibt das Kennwort des Benutzers mit Administratorberechtigung an. Er wird in der Musterschablone als Parameter auf Musterebene dem gleichnamigen Parameter im Scriptpaket MFP Server Administration zugeordnet, um sicherzustellen, dass beide Parameter auf denselben Wert gesetzt sind.| 
+| runtime_path| Dieser obligatorische Parameter gibt den Installationspfad für die Laufzeit-WAR-Datei an. Er kann in der Musterschablone beispielsweise dem Ausgabeattribut target_path der Komponente "MFP Server Runtime" zugeordnet werden.| 
+| runtime_contextRoot| Dieser obligatorische Parameter gibt das Laufzeitkontextstammverzeichnis an. Er muss mit einem Schrägstrich (/) beginnen, z. B. "/HelloWorld". Der Parameter wird in der Musterschablone als Parameter auf Musterebene festgelegt.| 
+| rtdb_name| Dieser obligatorische Parameter gibt den Namen der Laufzeitdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets "MFP Runtime DB" zugeordnet.| 
+| rtdb_user| Dieser obligatorische Parameter gibt den Benutzer an, der die Laufzeitdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_user` des Scriptpakets "MFP Runtime DB" zugeordnet.|
+| rtdb_password| Dieser obligatorische Parameter gibt das Kennwort des Benutzers an, der die Laufzeitdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_password` des Scriptpakets "MFP Runtime DB" zugeordnet.|
+| rptdb_name| Dieser optionale Parameter gibt den Namen der Berichtsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets "MFP Reports DB" zugeordnet. Machen Sie keine Angabe, wenn Sie keine Verbindung zu einer Berichtsdatenbank herstellen möchten.|
+| rptdb_user| Dieser optionale Parameter gibt den Benutzer an, der die Berichtsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_user` des Scriptpakets "MFP Reports DB" zugeordnet.| 
+| rptdb_password| Dieser optionale Parameter gibt das Kennwort des Benutzers an, der die Berichtsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut `db_password` des Scriptpakets "MFP Reports DB" zugeordnet.\ 
+| was\_admin\_user	| Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet.|
+| was_admin_password| Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin_password des eigenständigen Servers zugeordnet. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin_password des Deployment Manager zugeordnet.| 
+| server_farm_mode| Dieser obligatorische Parameter wird dem gleichnamigen Attribut in "MFP Server Administration" zugeordnet.| 
+| server_hostname| Dieser obligatorische Parameter gibt den Hostnamen von {{ site.data.keys.mf_server }} an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers, des eigenständigen Servers oder des Deployment Manager zugeordnet.|
+| analytics_ip| Dieser optionale Parameter gibt die IP-Adresse des Knotens mit {{ site.data.keys.mf_analytics }} an, um die Analysefunktionalität der Komponente "MFP Server Runtime" zu aktivieren.|
+| analytics_admin_user| Dieser optionale Parameter gibt den Namen des Administrators für den {{ site.data.keys.mf_analytics_server }} an.| 
+| analytics_admin_password| Dieser optionale Parameter gibt das Kennwort des Administrators für den {{ site.data.keys.mf_analytics_server }} an.| 
 
 ## Upgrade für {{ site.data.keys.mf_system_pattern }}
 {: #upgrading-mobilefirst-system-pattern }

@@ -92,7 +92,7 @@ WLAuthorizationManager.obtainAccessToken()
         
 1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
+    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。  
 
 2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
@@ -110,7 +110,7 @@ WLAuthorizationManager.obtainAccessToken()
 {: #5-testing-the-application }
 1. **コマンド・ライン**・ウィンドウから Cordova プロジェクトのルート・フォルダーにナビゲートします。
 2. コマンド `cordova platform add ios|android|windows` を実行してプラットフォームを追加します。
-3. Cordova プロジェクトで、**config.xml** ファイルを選択し、**protocol**、**host**、および **port** の各プロパティーを含む `<mfp:server ... url=" "/>` 値をご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
+3. Cordova プロジェクトで、**config.xml** ファイルを選択し、**protocol**、**host**、および **port** の各プロパティーを含む `<mfp:server ... url=" "/>` 値を、ご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
     * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
 

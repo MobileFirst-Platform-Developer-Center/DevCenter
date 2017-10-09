@@ -84,8 +84,9 @@ var options = {
 
   // Search fields to return, default: ['_id', 'json'].
   filter: ['_id', 'json'],
-// How to sort the returned values, default no sort.
-sort: [{name: WL.constant.ASCENDING}, {age: WL.constant.DESCENDING}]
+
+  // How to sort the returned values, default no sort.
+  sort: [{name: WL.constant.ASCENDING}, {age: WL.constant.DESCENDING}]
 };
 
 WL.JSONStore.get(collectionName)
@@ -108,7 +109,7 @@ WL.JSONStore.get(collectionName)
 
 #### 替换 - 更改已存储在集合内的文档
 
-```javascript
+```javascript 
 var collectionName = 'people';
 
 // Documents will be located with their '_id' field 
@@ -124,6 +125,7 @@ var options = {
 WL.JSONStore.get(collectionName)
 
 .replace(docs, options)
+
 .then(function (numberOfDocumentsReplaced) {
   // Handle success.
 })
@@ -140,6 +142,7 @@ var collectionName = 'people';
 
 // Remove all documents that match the queries.
 var queries = [{_id: 1}];
+
 var options = {
 
   // Exact match (true) or fuzzy search (false), default fuzzy search.
@@ -154,7 +157,7 @@ WL.JSONStore.get(collectionName)
 .remove(queries, options)
 
 .then(function (numberOfDocumentsRemoved) {
-// Handle success.
+  // Handle success.
 })
 
 .fail(function (errorObject) {
@@ -227,18 +230,19 @@ var oldPassword = '123';
 var newPassword = '456';
 
 var clearPasswords = function () {
-oldPassword = null;
+  oldPassword = null;
   newPassword = null;
 };
 
 // Default username if none is passed is: 'jsonstore'.
 var username = 'carlos';
+
 WL.JSONStore.changePassword(oldPassword, newPassword, username)
 
 .then(function () {
 
   // Make sure you do not leave the password(s) in memory.
-clearPasswords();
+  clearPasswords();
 
   // Handle success.
 })
@@ -246,7 +250,7 @@ clearPasswords();
 .fail(function (errorObject) {
 
   // Make sure you do not leave the password(s) in memory.
-clearPasswords();
+  clearPasswords();
 
   // Handle failure.
 });
@@ -261,9 +265,11 @@ var dirtyDocs;
 WL.JSONStore.get(collectionName)
  
 .getAllDirty()
+ 
 .then(function (arrayOfDirtyDocuments) {
-// Handle getAllDirty success.
-dirtyDocs = arrayOfDirtyDocuments;
+  // Handle getAllDirty success.
+ 
+  dirtyDocs = arrayOfDirtyDocuments;
  
   var procedure = 'procedure-name-1';
   var adapter = 'adapter-name';
@@ -323,8 +329,9 @@ resource.send()
  
     // Data that does not exist in the Collection will be added, default false.
     addNew : true,
-// Mark data as dirty (true = yes, false = no), default false.
-markDirty : false
+ 
+    // Mark data as dirty (true = yes, false = no), default false.
+    markDirty : false
   };
  
   return WL.JSONStore.get(collectionName).change(data, changeOptions);
@@ -431,7 +438,8 @@ WL.JSONStore.startTransaction()
   // init, destroy, removeCollection, and closeAll.
 
   var data = [{name: 'carlos'}];
-return WL.JSONStore.get(collectionName).add(data);
+
+  return WL.JSONStore.get(collectionName).add(data);
 })
 
 .then(function () {
@@ -454,7 +462,7 @@ return WL.JSONStore.get(collectionName).add(data);
 
   .then(function () {
     // Handle rollback success.
-})
+  })
 
   .fail(function () {
     // Handle rollback failure.
@@ -512,6 +520,7 @@ JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Open the collections.
 [[JSONStore sharedInstance] openCollections:@[people] withOptions:options error:&error];
 
@@ -544,7 +553,8 @@ Initialize with a secure random token from the server
 
   // This points to an error if one occurs.
   NSError *error = nil;
-[[JSONStore sharedInstance] openCollections:@[ppl] withOptions:options error:&error];
+
+  [[JSONStore sharedInstance] openCollections:@[ppl] withOptions:options error:&error];
 
   // Other JSONStore operations (e.g. add, remove, replace, etc.) go here.
 }];
@@ -558,6 +568,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Add additional find options (optional).
 JSONStoreQueryOptions* options = [JSONStoreQueryOptions new];
 [options setLimit:@10]; // Returns a maximum of 10 documents, default no limit.
@@ -600,6 +611,7 @@ NSArray* docs = @[ @{@"_id" : @1, @"json" : @{ @"name": @"carlitos", @"age" : @9
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Perform the replacement.
 int docsReplaced = [[people replaceDocuments:docs andMarkDirty:NO error:&error] intValue];
 ```
@@ -612,6 +624,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Find document with _id equal to 1 and remove it.
 int docsRemoved = [[people removeWithIds:@[@1] andMarkDirty:NO error:&error] intValue];
 ```
@@ -630,6 +643,7 @@ JSONStoreQueryPart *queryPart = [[JSONStoreQueryPart alloc] init];
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Perform the count.
 int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intValue];
 ```
@@ -639,6 +653,7 @@ int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intVal
 ```objc
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Perform the destroy.
 [[JSONStore sharedInstance] destroyDataAndReturnError:&error];
 ```
@@ -648,6 +663,7 @@ NSError *error = nil;
 ```objc
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Close access to all collections in the store.
 [[JSONStore sharedInstance] closeAllCollectionsAndReturnError:&error];
 ```
@@ -663,6 +679,7 @@ NSString* username = @"carlos";
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Perform the change password operation.
 [[JSONStore sharedInstance] changeCurrentPassword:oldPassword withNewPassword:newPassword forUsername:username error:&error];
 
@@ -698,6 +715,8 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
+
 // ACTION REQUIRED: Get data (e.g. Adapter).
 // For this example, it is hardcoded.
 NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
@@ -714,6 +733,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Check if document with _id '1' is dirty.
 BOOL isDirtyResult = [people isDirtyWithDocumentId:1 error:&error];
 ```
@@ -726,6 +746,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Check if document with _id '1' is dirty.
 int dirtyDocsCount = [[people countAllDirtyDocumentsWithError:&error] intValue];
 ```
@@ -738,6 +759,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Remove the collection.
 [people removeCollectionWithError:&error];
 ```
@@ -750,6 +772,7 @@ JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:
 
 // This object will point to an error if one occurs.
 NSError *error = nil;
+
 // Remove the collection.
 [people clearCollectionWithError:&error];
 ```
@@ -774,10 +797,11 @@ NSError* removeError = nil;
 [people removeWithIds:@[@1] andMarkDirty:NO error:&removeError];
 
 if (addError != nil || removeError != nil) {
-// Return the store to the state before start transaction was called.
+
+  // Return the store to the state before start transaction was called.
   [[JSONStore sharedInstance] rollbackTransactionAndReturnError:&error];
 } else {
-// Commit the transaction thus ensuring atomicity.
+  // Commit the transaction thus ensuring atomicity.
   [[JSONStore sharedInstance] commitTransactionAndReturnError:&error];
 }
 ```
@@ -801,8 +825,8 @@ NSArray* results = [[JSONStore sharedInstance] fileInfoAndReturnError:&error];
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
+try {
+  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
   // Create the collections object that will be initialized.
   JSONStoreCollection peopleCollection = new JSONStoreCollection("people");
   peopleCollection.setSearchField("name", SearchFieldType.STRING);
@@ -821,7 +845,7 @@ List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
   WLJSONStore.getInstance(ctx).openCollections(collections, initOptions);
 
   // Add data to the collection.
-JSONObject newDocument = new JSONObject("{name: 'carlos', age: 10}");
+  JSONObject newDocument = new JSONObject("{name: 'carlos', age: 10}");
   JSONStoreAddOptions addOptions = new JSONStoreAddOptions();
   addOptions.setMarkDirty(true);
   peopleCollection.addData(newDocument, addOptions);
@@ -856,8 +880,8 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
       public void onSuccess(WLResponse response) {
         String secureRandom = response.getResponseText();
 
-        try { 
-List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
+        try {
+          List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
           // Create the collections object that will be initialized.
           JSONStoreCollection peopleCollection = new JSONStoreCollection("people");
           peopleCollection.setSearchField("name", SearchFieldType.STRING);
@@ -902,9 +926,9 @@ aTask.execute(ctx);
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   JSONStoreQueryParts findQuery = new JSONStoreQueryParts();
   JSONStoreQueryPart part = new JSONStoreQueryPart();
@@ -914,16 +938,18 @@ JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollecti
 
   // Add additional find options (optional).
   JSONStoreFindOptions findOptions = new JSONStoreFindOptions();
-// Returns a maximum of 10 documents, default no limit.
+
+  // Returns a maximum of 10 documents, default no limit.
   findOptions.setLimit(10);
   // Skip 0 documents, default no offset.
   findOptions.setOffset(0);
-// Search fields to return, default: ['_id', 'json'].
+
+  // Search fields to return, default: ['_id', 'json'].
   findOptions.addSearchFilter("_id");
   findOptions.addSearchFilter("json");
 
   // How to sort the returned values, default no sort.
-findOptions.sortBySearchFieldAscending("name");
+  findOptions.sortBySearchFieldAscending("name");
   findOptions.sortBySeachFieldDescending("age");
 
   // Find documents that match the query.
@@ -941,9 +967,9 @@ catch (JSONStoreException ex) {
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Documents will be located with their '_id' field 
   //and replaced with the data in the 'json' field.
@@ -958,7 +984,7 @@ JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollecti
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 ```
 
@@ -968,12 +994,12 @@ throw ex;
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Documents will be located with their '_id' field.
-int id = 1;
+  int id = 1;
 
   JSONStoreRemoveOptions removeOptions = new JSONStoreRemoveOptions();
 
@@ -999,12 +1025,12 @@ catch (JSONException ex) {
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Count all documents that match the query.
-JSONStoreQueryParts countQuery = new JSONStoreQueryParts();
+  JSONStoreQueryParts countQuery = new JSONStoreQueryParts();
   JSONStoreQueryPart part = new JSONStoreQueryPart();
 
   // Exact match.
@@ -1027,9 +1053,9 @@ catch (JSONStoreException ex) {
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Destroy the Store.
-WLJSONStore.getInstance(ctx).destroy();
+try {
+  // Destroy the Store.
+  WLJSONStore.getInstance(ctx).destroy();
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations
@@ -1043,13 +1069,13 @@ catch (JSONStoreException ex) {
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Close access to all collections.
+try {
+  // Close access to all collections.
   WLJSONStore.getInstance(ctx).closeAll();
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 ```
 
@@ -1065,12 +1091,12 @@ String newPassword = "456";
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-WLJSONStore.getInstance(ctx).changePassword(oldPassword, newPassword, username);
+try {
+  WLJSONStore.getInstance(ctx).changePassword(oldPassword, newPassword, username);
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 } 
 finally {
   // It is good practice to not leave passwords in memory
@@ -1085,9 +1111,9 @@ finally {
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Check if document with _id 3 is dirty.
   List<JSONObject> allDirtyDocuments = peopleCollection.findAllDirtyDocuments();
@@ -1107,9 +1133,9 @@ JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollecti
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Pull data here and place in newDocs. For this example, it is hard-coded.
   List<JSONObject> newDocs = new ArrayList<JSONObject>();
@@ -1122,7 +1148,7 @@ JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollecti
   changeOptions.setAddNew(true); 
 
   // Mark data as dirty (true = yes, false = no), default false.
-changeOptions.setMarkDirty(true);
+  changeOptions.setMarkDirty(true);
 
   // The following example assumes that 'id' and 'ssn' are search fields, 
   // default will use all search fields
@@ -1134,7 +1160,7 @@ changeOptions.setMarkDirty(true);
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 catch (JSONException ex) {
   // Handle failure for any JSON parsing issues.
@@ -1148,16 +1174,16 @@ catch (JSONException ex) {
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Check if document with id '3' is dirty.
   boolean isDirty = peopleCollection.isDocumentDirty(3); 
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 ```
 
@@ -1167,16 +1193,16 @@ throw ex;
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Get the count of all dirty documents in the people collection.
   int totalDirty = peopleCollection.countAllDirtyDocuments();
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 ```
 
@@ -1186,9 +1212,9 @@ throw ex;
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Remove the collection. The collection object is
   // no longer usable.
@@ -1196,7 +1222,7 @@ JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollecti
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 ```
 
@@ -1206,16 +1232,16 @@ throw ex;
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try { 
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try {
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Clear the collection.
-peopleCollection.clearCollection();    
+  peopleCollection.clearCollection();    
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-throw ex;
+  throw ex;
 }
 ```
 
@@ -1226,8 +1252,8 @@ throw ex;
 Context ctx = getContext();
 
 try {
-// Get the already initialized collection.
-JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+  // Get the already initialized collection.
+  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   WLJSONStore.getInstance(ctx).startTransaction();
 
@@ -1244,7 +1270,8 @@ JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollecti
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-// An exception occured. Take care of it to prevent further damage.
+
+  // An exception occured. Take care of it to prevent further damage.
   WLJSONStore.getInstance(ctx).rollbackTransaction();
 
   throw ex;

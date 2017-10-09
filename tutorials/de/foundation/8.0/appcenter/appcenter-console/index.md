@@ -199,7 +199,7 @@ Windows-Entwicklerdokumentation zu Paketen und zur Anwendungsimplementierung im 
 6. Klicken Sie auf
 **Fertigstellen**.
 
-![Anwendungseigenschaften beim Hinzufügen einer Anwendung](ac_add_app_props.jpg)
+![Anwendungseigenschaften - Anwendung hinzufügen](ac_add_app_props.jpg)
 
 ## Anwendung aus einem öffentlichen App Store hinzufügen
 {: #adding-an-application-from-a-public-app-store }
@@ -253,7 +253,7 @@ Linkerstellung abbrechen.
 Anschließend können Sie die Anwendungsbeschreibung in den Anwendungseigenschaften modifizieren, bevor Sie
 mit dem nächsten Schritt fortfahren. 
 
-    ![In den Anwendungseigenschaften modifizierte Anwendungsbeschreibung](ac_add_public_app_details.jpg)
+    ![Modifizierte Anwendungsbeschreibung in den Anwendungseigenschaften](ac_add_public_app_details.jpg)
 
 4. Klicken Sie auf **Done**, um den Anwendungslink zu erstellen.
 
@@ -436,8 +436,7 @@ durchführen. Gehen Sie wie folgt vor, um die neue Version der Anwendung zu impl
 1. Implementieren Sie HelloWorld 2.0 im Application Center (siehe [Mobile Anwendung hinzufügen](#adding-a-mobile-application)).
 2. Kopieren Sie auf der Seite "Anwendungsdetails" die Einstellung für die externe URL.
 
-    ![Kopieren der externen URL
-aus den Anwendungsdetails](ac_copy_ext_url.jpg)
+    ![Externe URL aus den Anwendungsdetails kopieren](ac_copy_ext_url.jpg)
 
 3. Wenn Sie die externe URL in die Zwischenablage kopiert haben, öffnen Sie die
 {{ site.data.keys.mf_console }}.
@@ -449,7 +448,7 @@ inaktiviert".
 zu {{ site.data.keys.mf_server }} herstellt und versucht,
 HelloWorld Version 1.0 auszuführen, wird der Gerätebenutzer aufgefordert, ein Upgrade auf die neue Anwendungsversion durchzuführen. 
 
-    ![Alte Version einer Anwendung über Fernzugriff inaktivieren](ac_remote_disable_app_cli.jpg)
+    ![Ferne Inaktivierung einer alten Version einer Anwendung](ac_remote_disable_app_cli.jpg)
 
 6. Klicken Sie auf **Upgrade**, um den Application-Center-Client zu öffnen. Bei richtiger Angabe der Anmeldedetails können Sie direkt auf die Seite "Details" von HelloWorld Version 2.0 zugreifen.
 
@@ -510,7 +509,7 @@ registrierter Benutzer des Application Center mit folgenden Einträgen:
 * Lokale Gruppenmitglieder
 * Einträge in einer Zugriffssteuerungsliste
 
-![Liste der registrierten Benutzer im Application Center](ac_reg_users.jpg)
+![Liste der registrierten Benutzer des Application Center](ac_reg_users.jpg)
 
 Wenn das Application Center mit einem LDAP-Repository verbunden
 ist, können Sie die Anzeigenamen von Benutzern nicht bearbeiten. Wenn das Repository kein LDAP-Repository ist, können
@@ -586,7 +585,7 @@ Sie können die Zugriffssteuerung wie folgt bearbeiten:
 
 1. Klicken Sie im Anwendungsmanagement unter "Verfügbare Anwendungen" auf den Installationszustand "unrestricted" oder "restricted" für eine Anwendung.
 
-    ![Klickposition für uneingeschränkten oder eingeschränkten Modus](ac_app_access_state.jpg)
+    ![Klicken für den uneingeschränkten oder eingeschränkten Modus](ac_app_access_state.jpg)
 
 2. Wählen Sie **Access control enabled** aus, um die Zugriffssteuerung zu aktivieren.
 3. Fügen Sie Benutzer oder Gruppen zur Zugriffsliste hinzu.
@@ -607,7 +606,7 @@ Wenn Sie alle Benutzer einer Anwendung hinzufügen möchten, klicken Sie auf **A
 und wählen Sie die zutreffende Anwendung aus.  
 Wenn Sie das Zugriffsrecht für einen Benutzer oder eine Gruppe entfernen möchten, klicken Sie rechts neben dem Namen auf das Kreuz. 
 
-![Benutzer in Zugriffsliste hinzufügen oder entfernen](ac_instal_access.jpg)
+![Benutzer zur Zugriffsliste hinzufügen oder aus der Liste entfernen](ac_instal_access.jpg)
 
 ## Geräteverwaltung
 {: #device-management }
