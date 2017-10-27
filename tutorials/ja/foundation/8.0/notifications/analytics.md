@@ -18,7 +18,7 @@ weight: 5
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
 ```
 

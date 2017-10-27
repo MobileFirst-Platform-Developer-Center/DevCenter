@@ -8,10 +8,11 @@ weight: 2
 {: #overview }
 Os componentes do {{ site.data.keys.mf_server_full }} a seguir precisam armazenar dados técnicos em um banco de dados:
 
-* {{ site.data.keys.mf_server }} Serviço de Administração do
-* {{ site.data.keys.mf_server }} Serviço de atualização em tempo real do
-* {{ site.data.keys.mf_server }} serviço de push do
-* {{ site.data.keys.product }} Tempo de execução
+* Serviço de Administração do {{ site.data.keys.mf_server }}
+* Serviço de atualização em tempo real do {{ site.data.keys.mf_server }}
+* serviço de push do {{ site.data.keys.mf_server }}
+* Tempo de execução
+{{ site.data.keys.product }}
 
 > **Nota:** Se várias instâncias de tempo de execução estiverem instaladas com uma raiz de contexto diferente, cada instância precisará de seu próprio conjunto de tabelas.
 > O banco de dados pode ser um banco de dados relacional, como IBM DB2, Oracle ou MySQL.
@@ -245,7 +246,8 @@ Se as tabelas forem criadas por mfpuser, esse usuário terá privilégios nas ta
 {: #creating-the-oracle-database-tables-manually }
 Use os scripts SQL fornecidos na instalação do {{ site.data.keys.mf_server }} para criar tabelas de banco de dados Oracle.
 
-Conforme descrito na seção Visão Geral, todos os quatro componentes do {{ site.data.keys.mf_server }} precisam de tabelas. Eles podem ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{ site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Os detalhes são descritos em [Usuários e privilégios do banco de dados](#database-users-and-privileges).
+Conforme descrito na seção Visão Geral, todos os quatro componentes do {{ site.data.keys.mf_server }} precisam de tabelas. Eles podem
+ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{ site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Os detalhes são descritos em [Usuários e privilégios do banco de dados](#database-users-and-privileges).
 
 As tabelas devem ser criadas no esquema padrão do usuário do tempo de execução. Os scripts para criar as tabelas são os seguintes:
 
@@ -273,7 +275,8 @@ Se as tabelas forem criadas por MFPUSER, esse usuário terá os privilégios nas
 {: #creating-the-mysql-database-tables-manually }
 Use os scripts SQL que são fornecidos na instalação do {{ site.data.keys.mf_server }} para criar as tabelas de banco de dados MySQL.
 
-Conforme descrito na seção Visão Geral, todos os quatro componentes do {{ site.data.keys.mf_server }} precisam de tabelas. Eles podem ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{ site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Eles são semelhantes ao tópico sobre os possíveis usuários para MySQL, conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges).
+Conforme descrito na seção Visão Geral, todos os quatro componentes do {{ site.data.keys.mf_server }} precisam de tabelas. Eles podem
+ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{ site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Eles são semelhantes ao tópico sobre os possíveis usuários para MySQL, conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges).
 
 #### Instalação com o Server Configuration Tool
 {: #installation-with-the-server-configuration-tool-2 }

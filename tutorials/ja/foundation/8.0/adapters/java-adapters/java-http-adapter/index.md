@@ -27,8 +27,8 @@ Java アダプターでは、バックエンド・システムへの接続を自
 
 ```java
 @Override
-protected void init() throws Exception {
-    JavaHTTPResource.init();
+    protected void init() throws Exception {
+        JavaHTTPResource.init();
     logger.info("Adapter initialized!");
 }
 ```
@@ -71,7 +71,7 @@ public static void init() {
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag)
     throws IOException, IllegalStateException, SAXException {
-  if(tag!=null && !tag.isEmpty()){
+  if(tag!=null &&  !tag.isEmpty()){
     execute(new HttpGet("/blog/atom/"+ tag +".xml"), response);
   }
   else{

@@ -4,13 +4,13 @@ title: Componentes do produto
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 O {{ site.data.keys.product_full }} consiste nos componentes a seguir: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, componentes de tempo de execução do lado do cliente, {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }} e {{ site.data.keys.mf_system_pattern }}.
 
 A figura a seguir mostra os componentes do {{ site.data.keys.product }}:
 
-![Arquitetura da solução {{ site.data.keys.product }}](architecture.jpg)
+![Arquitetura da solução {{ site.data.keys.product }} ](architecture.jpg)
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }

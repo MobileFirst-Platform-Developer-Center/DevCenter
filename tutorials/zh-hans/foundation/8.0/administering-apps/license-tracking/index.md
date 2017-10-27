@@ -137,11 +137,11 @@ rm password.txt
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 根据应用程序的令牌许可证类型，将使用以下功能部件。
 
-| 令牌许可证类型 | 功能部件名称 | 
+| 令牌许可证类型| 功能部件名称| 
 |--------------------|--------------|
-| APPLICATION        | 	ibmmfpfa    | 
-| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| （无功能部件） | 
+| APPLICATION| 	ibmmfpfa| 
+| ADDITIONAL\_BRAND\_DEPLOYMENT|	ibmmfpabd| 
+| NON_PRODUCTION	| （无功能部件）| 
 
 ## 与 IBM License Metric Tool 进行集成
 {: #integration-with-ibm-license-metric-tool }
@@ -203,8 +203,7 @@ APPLICATION 度量值没有任何子类型，除非 MobileFirst 运行时环境�
 {: #about-the-addressable_device-metric }
 ADDRESSABLE_DEVICE 度量值具有以下子类型：
 
-* 应用程序：`<applicationName>`，类别：`<application
-type>`
+* 应用程序：`<applicationName>`，类别：`<application type>`
 
 应用程序类型为
 **B2C**、**B2E** 或

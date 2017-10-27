@@ -92,7 +92,7 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 
 ## {{ site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-{{ site.data.keys.mf_analytics }} EAR ファイルがあることを確認します。インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics.ear **ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
+{{ site.data.keys.mf_analytics }} EAR ファイルがあることを確認します。インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics.ear** ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
 
 1. **./wlp/bin** フォルダーで次のコマンドを実行して、サーバーを作成します。
 
@@ -103,11 +103,10 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 2. **./bin** フォルダーで次のコマンドを実行して、該当フィーチャーをインストールします。
 
    ```bash
-   ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
-   ```
+./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0```
 
 3. Liberty サーバーの **./usr/servers/<serverName>/apps** フォルダーに **analytics.ear** ファイルを追加します。
-4. **./usr/servers/<serverName>/server.xml** ファイルの `<featureManager>` タグのコンテンツを以下に置き換えます。
+4. **./usr/servers/<serverName>/server.xml** ファイルの `<featureManager>` タグのコンテンツを以下のコンテンツに置換します。
 
    ```xml
    <featureManager>
@@ -161,8 +160,7 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 7. {{ site.data.keys.mf_analytics_console }} に移動します。
 
    ```bash
-   http://localhost:9080/analytics/console
-   ```
+http://localhost:9080/analytics/console```
 
 WebSphere Application Server Liberty の管理について詳しくは、WebSphere Application Server 製品資料で[コマンド行からの Liberty の管理](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html)のトピックを参照してください。
 
@@ -174,8 +172,8 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
 2. **conf/server.xml** ファイルで以下のセクションのコメントを外します。これは、新しくダウンロードした Tomcat アーカイブ内に存在しますが、コメント化されています。
 
    ```xml
-   <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
-   ```
+   <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
+```
 
 3. **conf/server.xml** ファイルに 2 つの WAR ファイルを宣言し、ユーザー・レジストリーを定義します。
 
@@ -209,8 +207,7 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
     * Tomcat サーバーを始動し、{{ site.data.keys.mf_analytics_console }}に移動します。
 
       ```xml
-      http://localhost:8080/analytics/console
-      ```
+http://localhost:8080/analytics/console```
 
     Tomcat サーバーの始動方法について詳しくは、Tomcat の公式サイトを参照してください。例えば、Tomcat 7.0 の場合、[「Apache Tomcat 7」](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html)です。
 
@@ -250,7 +247,7 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
     * WebSphere Application Server 管理コンソールにログインします。
     * **「セキュリティー」>「グローバル・セキュリティー」**メニューで、**「管理セキュリティーを使用可能にする」**と**「アプリケーション・セキュリティーを使用可能にする」**の両方を必ず選択します。注: アプリケーション・セキュリティーは、**管理セキュリティー**が使用可能にされた後にのみ、選択可能です。
     * **「OK」**をクリックし、変更を保存します。
-9. {{ site.data.keys.mf_analytics }} アプリケーションを開始し、次のブラウザー内のリンクに移動します。`http://<hostname>:<port>/analytics/console`
+9. {{ site.data.keys.mf_analytics }} アプリケーションを開始し、ブラウザー内のリンクに移動します (`http://<hostname>:<port>/analytics/console`)。
 
 ## Ant タスクを使用した {{ site.data.keys.mf_analytics }} のインストール
 {: #installing-mobilefirst-analytics-with-ant-tasks }
@@ -297,26 +294,26 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
 
 以下の表に、古いイベント・タイプと新しいイベント・タイプのマッピングを示します。変更されなかったイベント・タイプもいくつかあります。
 
-| 古いイベント・タイプ            | 新しいイベント・タイプ         |
+| 古いイベント・タイプ| 新しいイベント・タイプ|
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition        |
-| AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	            | CustomChart            |
-| CustomData	            | CustomData             |
-| Devices	                | Device                 |
-| MfpAppLogs                | AppLog                 |
-| MfpAppPushAction          | AppPushAction          |
-| MfpAppSession	            | AppSession             |
-| ServerLogs	            | ServerLog              |
-| ServerNetworkTransactions | NetworkTransaction     |
-| ServerPushNotifications   | PushNotification       |
-| ServerPushSubscriptions   | PushSubscription       |
-| Users	                    | User                   |
-| inboundRequestURL	        | resourceURL            |
-| mfpAppName	            | appName                |
-| mfpAppVersion	            | appVersion             |
+| AlertDefinition	        | AlertDefinition|
+| AlertNotification	        | AlertNotification|
+| AlertRunnerNode	        | AlertRunnerNode|
+| AnalyticsConfiguration| AnalyticsConfiguration|
+| CustomCharts	            | CustomChart|
+| CustomData	            | CustomData|
+| Devices	                | Device|
+| MfpAppLogs| AppLog|
+| MfpAppPushAction| AppPushAction|
+| MfpAppSession	            | AppSession|
+| ServerLogs	            | ServerLog|
+| ServerNetworkTransactions| NetworkTransaction|
+| ServerPushNotifications| PushNotification|
+| ServerPushSubscriptions| PushSubscription|
+| Users	                    | User|
+| inboundRequestURL	        | resourceURL|
+| mfpAppName	            | appName|
+| mfpAppVersion	            | appVersion|
 
 ### Analytics データのマイグレーション
 {: #analytics-data-migration }
@@ -339,6 +336,8 @@ V8.0.0 へのアップグレード後初めて {{ site.data.keys.mf_analytics_co
 ![コンソールの「マイグレーション」ページ](migration_page.jpg)
 
 > **注:** ユーザーのデータの量に応じてこのプロセスには長い時間がかかる場合があります。マイグレーション中にプロセスを停止することはできません。
+
+
 
 このマイグレーションでは、単一ノード (RAM 32 GB、JVM への割り振り 16 GB、4 コア・プロセッサー) で 100 万個の文書をマイグレーションするのに約 3 分かかる可能性があります。マイグレーションされない文書は照会されないため、それらは {{ site.data.keys.mf_analytics_console }} でレンダリングされません。
 

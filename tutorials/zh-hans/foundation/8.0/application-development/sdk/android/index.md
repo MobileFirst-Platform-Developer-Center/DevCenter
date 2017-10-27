@@ -189,7 +189,7 @@ WLClient.createInstance(this);
 的通信协议。             | http 或 https  |
 | wlServerHost        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
 | wlServerPort        | {{ site.data.keys.mf_server }} 的端口。                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。| /mfp/          |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 
 ## 对 Javadoc 和 Android 服务的支持

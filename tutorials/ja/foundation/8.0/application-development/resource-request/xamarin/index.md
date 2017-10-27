@@ -5,9 +5,9 @@ breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 downloads:
   - name: Xamarin プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

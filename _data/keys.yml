@@ -27,7 +27,7 @@
 #product:                        "MobileFirst Foundation"                                # [DITA: product_short: "IBM MobileFirst Foundation"]
 #product_full:                   "IBM MobileFirst Foundation"                            # DITA: product_wl
 product:                        "Mobile Foundation"                                # [DITA: product_short: "IBM MobileFirst Foundation"]
-product_full:                   "IBM Mobile Foundation"   
+product_full:                   "IBM Mobile Foundation"
 
 ## Product adjective
 # "MobileFirst" cannot be used on its own, as a shorthand for the product name, but it can be used as an adjective in description of product elements, such as "{{ site.data.keys.product_adj }} security framework".
@@ -77,7 +77,7 @@ prod_maven_adapter_version:     "8.0.2016061011"
 
 # MF on Bluemix service containers package
 mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
-
+mf_bm_v71_pkg_name:             "ibm-mfpf-container-7.1.0.0"
 # MF system-pattern file
 mf_system_pattern_file:          "vsys.mobilefirst-8.0.0.0.tgz"
 

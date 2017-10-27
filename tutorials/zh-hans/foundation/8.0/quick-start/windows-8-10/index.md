@@ -54,10 +54,11 @@ weight: 4
 
    ```csharp
    try
-      {
-          IWorklightClient _newClient = WorklightClient.CreateInstance();
+                   {
+       
+                       IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -119,7 +120,7 @@ weight: 4
 
 然后，适配器响应将列显在 Visual Studio 的 Outpout 控制台中。
 
-![成功从 {{ site.data.keys.mf_server }} 调用资源的应用程序图像](success_response.png)
+![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](success_response.png)
 
 ## 后续步骤
 {: #next-steps }

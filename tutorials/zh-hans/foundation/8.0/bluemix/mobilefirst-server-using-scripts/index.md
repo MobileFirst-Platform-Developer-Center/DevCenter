@@ -480,8 +480,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }} 映像</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像并将其推送到 Bluemix 存储库。 要查看 Bluemix 存储库中的所有可用映像，请运行 <code>cf ic images</code>
-                    此列表包含映像名称、创建日期和标识。
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像并将其推送到 Bluemix 存储库。 要查看 Bluemix 存储库中的所有可用映像，请运行 <code>cf ic images</code> 此列表包含映像名称、创建日期和标识。
 
                         运行：
 {% highlight bash %}

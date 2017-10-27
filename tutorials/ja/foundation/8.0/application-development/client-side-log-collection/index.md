@@ -32,6 +32,8 @@ weight: 7
 
 > **注:** FATAL を使用すると、アプリケーションの異常終了が収集されます。アプリケーションの異常終了データのスキューを回避するには、このキーワードを使用しないことをお勧めします。
 
+
+
 クライアント SDK はデフォルトでは FATAL の詳細度で構成され、生のデバッグ・ログの出力およびキャプチャーはほとんど行われないか、まったく行われません。{{ site.data.keys.mf_analytics_console }} で構成プロファイルを設定することで、プログラムでログ詳細度を調整することも、手動で調整することもできます。これは、アプリケーションで明示的に取得されなければなりません。
 
 ### クライアント・アプリケーションからのロギング
@@ -51,8 +53,7 @@ weight: 7
 **Objective-C**
 
 ```objc
-[OCLogger setLevel:OCLogger_DEBUG];
-```
+[OCLogger setLevel:OCLogger_DEBUG];```
 
 **Swift**
 
@@ -63,14 +64,12 @@ weight: 7
 #### Android
 {: #android }
 ```java
-Logger.setLevel(Logger.LEVEL.DEBUG);
-```
+Logger.setLevel(Logger.LEVEL.DEBUG);```
 
 #### JavaScript (Cordova)
 {: #javascript-cordova }
 ```javascript
-WL.Logger.config({ level: 'DEBUG' });
-```
+WL.Logger.config({ level: 'DEBUG' });```
 
 #### JavaScript (Web)
 {: #javascript-web }

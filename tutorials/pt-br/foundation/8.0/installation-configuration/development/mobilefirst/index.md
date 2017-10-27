@@ -41,7 +41,7 @@ Os componentes estão disponíveis por meio do Download Center do {{ site.data.k
 
 > Para fazer download do instalador, visite a página de [downloads]({{site.baseurl}}/downloads/).
 
-## {{ site.data.keys.product }} os componentes do 
+## {{ site.data.keys.product }} os componentes do
 {: #mobilefirst-foundation-components }
 
 ### {{ site.data.keys.mf_server }}

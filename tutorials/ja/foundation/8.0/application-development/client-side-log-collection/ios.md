@@ -16,7 +16,7 @@ weight: 2
 
 ```swift
 extension OCLogger {
-    //Log methods with no metadata
+//Log methods with no metadata
 
     func logTraceWithMessages(message:String, _ args: CVarArgType...) {
         logWithLevel(OCLogger_TRACE, message: message, args:getVaList(args), userInfo:Dictionary<String, String>())
@@ -91,8 +91,7 @@ extension OCLogger {
 **Objective-C**
 
 ```objc
-[OCLogger setCapture:NO];
-```
+[OCLogger setCapture:NO];```
 
 **Swift**
 
@@ -135,9 +134,7 @@ var timer = NSTimer.scheduledTimerWithTimeInterval(60,
 **Objective-C**
 
 ```objc
-[OCLogger setMaxFileSize:150000];
-
-```
+[OCLogger setMaxFileSize:150000];```
 
 **Swift**
 
@@ -188,14 +185,12 @@ OCLogger.setAutoSendLogs(false);
 1. パッケージ名 `myApp` を指定して、`logger` インスタンスを使用します。
 
    ```objc
-   OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];
-   ```
+OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];```
 
 2. **オプション: **指定されたレベルとパッケージのみにログ・キャプチャーとログ出力をプログラムで制限するフィルターを指定します。
 
    ```objc
-   [OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];
-   ```
+[OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];```
 
 3. **オプション:** サーバー構成プロファイルを取り出して、リモートでフィルターを制御します。
 
@@ -222,8 +217,7 @@ OCLogger.setAutoSendLogs(false);
 **Objective-C**
 
 ```objc
-[OCLogger updateConfigFromServer];
-```
+[OCLogger updateConfigFromServer];```
 
 **Swift**
 

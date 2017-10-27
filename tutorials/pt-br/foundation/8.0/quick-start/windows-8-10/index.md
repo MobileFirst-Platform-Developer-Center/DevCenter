@@ -10,8 +10,7 @@ weight: 4
 {: #overview }
 O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
-1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido
-por download a partir do {{ site.data.keys.mf_console }}.
+1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido por download a partir do {{ site.data.keys.mf_console }}.
 2. Um adaptador novo ou fornecido é implementado no {{ site.data.keys.mf_console }}.  
 3. A lógica de aplicativo é alterada para fazer uma solicitação de recurso.
 
@@ -34,9 +33,7 @@ para a pasta do servidor e execute o comando: `./run.cmd`.
 
 ### 2. Criando um aplicativo
 {: #2-creating-an-application }
-Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL:
-`http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use:
-[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
+Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL: `http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
 
 1. Clique no botão **Novo** próximo de **Aplicativos**
     * Selecione uma plataforma **Windows**
@@ -60,10 +57,10 @@ Windows 10.
 
    ```csharp
    try
-      {
+                   {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -136,7 +133,7 @@ adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no console de saída do Visual Studio.
 
-![Imagem do aplicativo que chamou um recurso do {{ site.data.keys.mf_server }}](success_response.png) com sucesso
+![Imagem de um aplicativo que chamou com sucesso um recurso do {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Etapas Seguintes
 {: #next-steps }

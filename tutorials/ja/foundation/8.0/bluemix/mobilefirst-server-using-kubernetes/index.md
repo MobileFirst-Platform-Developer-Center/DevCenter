@@ -392,8 +392,7 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
                     </ol>
                     次のコマンドを実行します。<br/>
                     <code>kubectl create -f ./args/mfpf-deployment-all.yaml</code>
-                    <blockquote><b>注:
-<br/></b>以下のテンプレート yaml ファイルが提供されます。<br/>
+                    <blockquote><b>注:<br/></b>以下のテンプレート yaml ファイルが提供されます。<br/>
                     <ul><li><b>mfpf-deployment-all.yaml</b>: {{ site.data.keys.mf_server }} と {{ site.data.keys.mf_analytics }} を http でデプロイします。</li>
                       <li><b>mfpf-deployment-all-tls.yaml</b>: {{ site.data.keys.mf_server }} と {{ site.data.keys.mf_analytics }} を https でデプロイします。</li>
                       <li><b>mfpf-deployment-server.yaml</b>: {{ site.data.keys.mf_server }} を http でデプロイします。</li>

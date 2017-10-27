@@ -84,7 +84,7 @@ l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée,
 {: #dashboard }
 Le tableau de bord fournit une vue générale des projets déployés.
 
-![Image du tableau de bord de console](dashboard.png)
+![Illustration du tableau de bord de console](dashboard.png)
 
 #### Liste déroulante des actions
 {: #actions-dropdown }
@@ -96,7 +96,7 @@ La liste déroulante fournit un accès rapide aux différentes actions de la con
 {: #runtime-settings }
 Editez les propriétés d'exécution, les variables de sécurité globales, le magasin de clés du serveur et les clients confidentiels.
 
-![Illustration de l'écran Paramètres de l'environnement d'exécution](runtime-settings.png)
+![Illustration de l'écran Paramètres d'exécution ](runtime-settings.png)
 
 ### Journal des erreurs
 {: #error-log }
@@ -136,7 +136,7 @@ Configurez des paramètres de sécurité d'application, tels que la valeur d'exp
 
 > [En savoir plus](../../../authentication-and-security/) sur l'infrastructure de sécurité {{ site.data.keys.product_adj }}.
 
-![Illustration de l'écran de configuration de la sécurité d'application](authentication-and-security.png)
+![Illustration de l'écran de configuration de la sécurité des applications](authentication-and-security.png)
 
 #### Paramètres d'application
 {: #application-settings }
@@ -148,7 +148,7 @@ Configurez le nom d'affichage de l'application dans la console, ainsi que le typ
 {: #notifications }
 Configurez des [notifications push](../../../notifications/) et les paramètres connexes, par exemple des certificats et des détails GCM, définissez des étiquettes et envoyez des notifications à des appareils.
 
-![Illustration de l'écran de configuration de notifications push](push-notifications.png)
+![Illustration de l'écran de configuration des notifications push](push-notifications.png)
 
 ### Adaptateurs
 {: #adapters }
@@ -172,7 +172,7 @@ Lorsqu'un administrateur crée un profil de configuration, la configuration de j
 
 > Pour plus d'informations, voir la rubrique sur la configuration de capture de journal côté client dans la documentation utilisateur.
 
-![Illustration de l'écran de journaux client](client-logs.png)
+![Illustration de l'écran des journaux client](client-logs.png)
 
 ### Suivi des licences
 {: #license-tracking }

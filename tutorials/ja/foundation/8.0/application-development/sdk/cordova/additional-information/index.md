@@ -12,7 +12,7 @@ iOS 9 以降、すべてのアプリケーションでバージョン 1.2 の Tr
 
 Apple の App Transport Security (ATS) は、アプリケーションとサーバーの間の接続にベスト・プラクティスを適用する iOS 9 の新しいフィーチャーです。デフォルトでは、このフィーチャーはセキュリティーを向上させるいくつかの接続要件を適用します。これには、クライアント・サイドの HTTPS 要求とサーバー・サイド証明書、および前方秘匿性を使用して Transport Layer Security (TLS) バージョン 1.2 に準拠する接続暗号が含まれます。
 
-**開発目的**のため、App Transport Security Technote に記載されているように、アプリケーション内の info.plist ファイルで例外を指定することによって、デフォルトの動作をオーバーライドすることができます。ただし**完全な実稼働** 環境では、すべての iOS アプリケーションで、正しく機能するために TLS セキュア接続を適用する必要があります。
+**開発目的**のため、App Transport Security Technote で説明するように、アプリケーション内の info.plist ファイルで例外を指定することによって、デフォルトの動作をオーバーライドすることができます。ただし**完全な実稼働**環境では、すべての iOS アプリケーションで、正しく機能するために TLS セキュア接続を適用する必要があります。
 
 非 TLS 接続を有効にするには、**project-name\Resources** フォルダーにある **project-name-info.plist** ファイル内に、以下の例外が記述されている必要があります。
 
@@ -73,8 +73,7 @@ Apple の App Transport Security (ATS) は、アプリケーションとサー�
 OpenSSL をサポートするために必要なフレームワークをインストールするには、まず、以下のように Cordova プラグインをインストールします。
 
 ```bash
-cordova plugin add cordova-plugin-mfp-encrypt-utils
-```
+cordova plugin add cordova-plugin-mfp-encrypt-utils```
 
 以下のコードは、暗号化/暗号化解除の OpenSSL オプションを有効にします。
 

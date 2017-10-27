@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
 {: #overview }
-Para uma introdução ao [desenvolvimento do Cordova (PhoneGap)](https://cordova.apache.org/), a etapa muito básica necessária é instalar o Cordova CLI. O Cordova CLI é a ferramenta que permite criar aplicativos do Cordova. Esses aplicativos podem ser mais aprimorados usando várias estruturas e ferramentas de terceiros, como Ionic, AngularJS, jQuery Mobile e muito mais.
+Para uma introdução ao [desenvolvimento do Cordova (PhoneGap)](https://cordova.apache.org/), a etapa muito básica necessária é instalar o Cordova CLI. O Cordova CLI é a ferramenta que permite criar aplicativos do Cordova. Esses aplicativos podem ser mais aprimorados usando várias estruturas e ferramentas de terceiros, como Ionic, AngularJS, jQuery Mobile e muito mais. 
 Com aplicativos do Cordova, é possível usar seu editor de código preferencial, como o Atom.io, Visual Studio Code, Eclipse, IntelliJ e outros para implementar seus aplicativos e adaptadores.
 
 **Pré-requisito:** Conforme você configura seu ambiente de desenvolvimento do Cordova, certifique-se também de ler o tutorial [Configurando o ambiente de desenvolvimento do {{ site.data.keys.product_adj }}](../mobilefirst/).
