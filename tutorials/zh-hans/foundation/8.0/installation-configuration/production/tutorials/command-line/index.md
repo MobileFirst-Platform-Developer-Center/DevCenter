@@ -74,7 +74,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 6. 将包含服务器的目录移至无需特定权限的位置。
 
     在本教程范围内，如果 **liberty\_install\_dir** 指向非管理员用户或非 root 用户无法修改文件的位置，请将包含服务器的目录移至无需特定权限的位置。由此可在无需特定权限的情况下完成安装操作。
-    * 请跳至 Liberty 的安装目录。
+        * 请跳至 Liberty 的安装目录。
     * 创建名为 etc 的目录。您需要管理员权限或 root 用户权限。
     * 在 **etc** 目录中，使用以下内容创建 **server.env** 文件：`WLP_USER_DIR=<任何用户都可以写入的目录的路径>`。例如，在 Windows 上：`WLP_USER_DIR=C:\LibertyServers\usr`。
 7.  创建 Liberty 服务器，在本教程后半部分，此服务器将用于安装 {{ site.data.keys.mf_server }} 的首个节点。
@@ -89,7 +89,6 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 可在 [http://localhost:9080](http://localhost:9080) 查看缺省主页。
 
 > **注：**对于生产环境，需要确保启动主计算机时，Liberty 服务器作为服务启动。本教程中不涉及将 Liberty 服务器作为服务启动的内容。
-
 ## 安装 {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
 确保已安装 Installation Manager V1.8.4 或更高版本。使用更低版本的 Installation Manager 安装 {{ site.data.keys.mf_server }} 可能不会成功，因为安装后操作需要 Java 7。更低版本的 Installation Manager 随附 Java 6。
@@ -127,7 +126,8 @@ Application Center 是产品的另一个组件。在本教程中，不需要随�
 * **Analytics** 文件夹（针对 {{ site.data.keys.mf_analytics }}）
 
 本教程的目的是通过使用 **MobileFirstServer** 文件夹中的资源来安装 {{ site.data.keys.mf_server }}。  
-您还可以在 **shortcuts** 文件夹中找到 Server Configuration Tool、Ant 和 **mfpadm** 程序的一些快捷方式。
+您还可以在 **shortcuts** 文件夹中找到 Server Configuration Tool、Ant 和 **mfpadm**
+程序的一些快捷方式。
 
 ## 创建数据库
 {: #creating-a-database }
@@ -143,11 +143,12 @@ Application Center 是产品的另一个组件。在本教程中，不需要随�
 在本教程中，所有组件的表都置于相同模式下。  
 **注：**此任务中的步骤适合于 DB2。如果您计划使用 MySQL 或 Oracle，请参阅[数据库需求](../../databases/#database-requirements)。
 
+
 1. 登录至正在运行 DB2 服务器的计算机。假定存在 DB2 用户，例如名为 **mfpuser** 的用户。
 2. 验证此 DB2 用户是否具有对页面大小不小于 32768 的数据库的访问权，并且允许此用户在该数据库中创建隐式模式和表。
 
     缺省情况下，此用户是运行 DB2 的计算机的操作系统上声明的用户。即，具有此计算机的登录权限的用户。如果存在此类用户，那么无需执行步骤 3 中的下一个操作。
-3. 如果没有数据库，请使用针对此安装的正确页面大小创建一个数据库。
+    3. 如果没有数据库，请使用针对此安装的正确页面大小创建一个数据库。
     * 使用具有 **SYSADM** 或 **SYSCTRL** 权限的用户身份打开一个会话。例如，使用属于由 DB2 安装程序创建的缺省管理用户的用户 **db2inst1**。
     * 打开 DB2 命令行处理器：
         * 在 Windows 系统中，单击**开始 → IBM DB2 → 命令行处理器**。
@@ -181,7 +182,8 @@ Ant 任务不部署以下 {{ site.data.keys.product_adj }} 应用程序：
 {{ site.data.keys.mf_analytics }}
 由于内存需求较高，因此通常与 {{ site.data.keys.mf_server }} 部署在不同的服务器集上。{{ site.data.keys.mf_analytics }} 可手动安装或通过 Ant 任务来安装。如果已安装，可以在 Server Configuration Tool 中输入其 URL、用户名和密码来将数据发送到其中。然后，Server Configuration Tool 会将 {{ site.data.keys.product_adj }} 应用配置为向 {{ site.data.keys.mf_analytics }} 发送数据。 
 
-#### Application Center
+#### Application
+Center
 {: #application-center }
 此应用程序可用于在内部向使用移动应用程序的员工分发这些应用程序，或者用于测试。它独立于 {{ site.data.keys.mf_server }}，并且无需与 {{ site.data.keys.mf_server }} 一起安装。 
 
@@ -205,8 +207,11 @@ Ant 任务不部署以下 {{ site.data.keys.product_adj }} 应用程序：
     * 将 **mfp.admin.client.secret** 设置为 **adminSecret**（或选择其他密码）。
     * 将 **mfp.push.client.id** 设置为 **push-client-id**。
     * 将 **mfp.push.client.secret** 设置为 **pushSecret**（或选择其他密码）。
-    * 将 **mfp.config.admin.user** 设置为 {{ site.data.keys.mf_server }} 实时更新服务的用户名。在服务器场拓扑中，对于场的所有成员，该用户名必须相同。
-    * 将 **mfp.config.admin.password** 设置为 {{ site.data.keys.mf_server }} 实时更新服务的密码。在服务器场拓扑中，对于场的所有成员，该密码必须相同。
+    * 将 **mfp.config.admin.user** 设置为
+{{ site.data.keys.mf_server }}
+实时更新服务的用户名。在服务器场拓扑中，对于场的所有成员，该用户名必须相同。
+    * 将 **mfp.config.admin.password** 设置为
+{{ site.data.keys.mf_server }} 实时更新服务的密码。在服务器场拓扑中，对于场的所有成员，该密码必须相同。
 * 保留以下属性的现有缺省值：
     * 将 **mfp.admin.console.install** 设置为 true
     * 将 **mfp.admin.default.user** 设置为 **admin** - 创建的登录 {{ site.data.keys.mf_console }} 的缺省用户名。
@@ -258,19 +263,19 @@ QUIT
 2. 在 `httpEndPoint` 声明中添加 `host='*'`。
 
     此设置旨在允许从所有网络接口连接至服务器。在生产环境中，您可能希望限制 HTTP 端点的主机值。
-3. 在服务器配置中添加 **tcpOptions** 元素 (**tcpOptions soReuseAddr="true"**) 以启用与无活动侦听器的端口的即时重新绑定，并改进服务器的吞吐量。
+    3. 在服务器配置中添加 **tcpOptions** 元素 (**tcpOptions soReuseAddr="true"**) 以启用与无活动侦听器的端口的即时重新绑定，并改进服务器的吞吐量。
 4. 如果不存在标识为 **defaultKeyStore** 的密钥库，那么会创建此密钥库。
 
     此密钥库旨在启用 HTTPS 端口，更具体而言，旨在启用管理服务 (mfp-admin-service.war) 与运行时组件 (mfp-server.war) 之间的 JMX 通信。这两个应用程序通过 JMX 进行通信。对于 Liberty 概要文件，restConnector 用于单一服务器中这两个应用程序之间的通信，也用于 Liberty 场中服务器之间的通信。它需要使用 HTTPS。对于缺省情况下创建的密钥库，Liberty 概要文件会创建一个证书，其有效期为 365 天。此配置不适用于生产用途。对于生产环境，您需要重新考虑使用自己的证书。    
 
     为启用 JMX，在基本注册表中会创建一个具有管理员角色的用户（名为 MfpRESTUser）。其名称和密码作为 JNDI 属性（mfp.admin.jmx.user 和 mfp.admin.jmx.pwd）提供，供运行时组件和管理服务用于运行 JMX 查询。在全局 JMX 属性中，某些属性用于定义集群方式（独立服务器或在场中工作）。Server Configuration Tool 在 Liberty 服务器中将 mfp.topology.clustermode 属性设置为 Standalone。在本教程后半部分有关创建场的内容中，该属性修改为 Cluster。
-5. 创建用户（对 Apache Tomcat 和 WebSphere Application Server 同样有效）
+    5. 创建用户（对 Apache Tomcat 和 WebSphere Application Server 同样有效）
     * 可选用户：Server Configuration Tool 会创建一名测试用户 (admin/admin) 以便您在安装后使用此用户登录控制台。
     * 必需用户：Server Configuration Tool 还会创建一名用户（名为 configUser_mfpadmin，使用随机生成的密码）供管理服务用于联系本地实时更新服务。对于 Liberty 服务器，会创建 MfpRESTUser。如果您的应用程序服务器没有配置为使用基本注册表（例如，LDAP 注册表），那么 Server Configuration Tool 将无法请求现有用户的名称。在此情况下，您需要使用 Ant 任务。
 6. **webContainer** 元素已修改。
 
     `deferServletLoad` Web 容器定制属性设置为 false。启动服务器时，必须启动运行时组件和管理服务。这些组件由此可注册 JMX Bean，并启动同步过程，以允许运行时组件下载需要维护的所有应用程序和适配器。
-7. 如果您使用的是 Liberty V8.5.5.5 或更早版本，缺省执行程序需要进行定制，以将 `coreThreads` 和 `maxThreads` 设置为较大的值。从 V8.5.5.6 开始，缺省执行程序由 Liberty 自动调整。
+    7. 如果您使用的是 Liberty V8.5.5.5 或更早版本，缺省执行程序需要进行定制，以将 `coreThreads` 和 `maxThreads` 设置为较大的值。从 V8.5.5.6 开始，缺省执行程序由 Liberty 自动调整。
 
     此设置避免了破坏某些 Liberty 版本上的运行时组件和管理服务的启动顺序的超时问题。在服务器日志文件中，缺少此语句可能导致出现以下错误：
     
@@ -285,7 +290,7 @@ FWLSE3000E: A server error was detected.
 * **mfpadmin**，管理服务
 * **mfpadminconfig**，实时更新服务
 * **mfpconsole**，{{ site.data.keys.mf_console }}
-* **mobilefirs**t，{{ site.data.keys.product_adj }} 运行时组件
+* **mobilefirst**，{{ site.data.keys.product_adj }} 运行时组件
 * **imfpush**，推送服务
 
 Server Configuration Tool 在同一服务器上安装所有应用程序。您可以在不同应用程序服务器中分隔这些应用程序，但必须遵循[拓扑和网络流](../../topologies)中所述的某些约束。  
@@ -354,7 +359,7 @@ Server Configuration Tool 提供了一个 JNDI 属性 **mfp.admin.endpoint**，�
 3. 使用 **admin/admin** 登录。缺省情况下，该用户由 Server Configuration Tool 创建。
 
     > **注：**如果使用 HTTP 连接，将在网络中以明文发送登录标识和密码。要进行安全登录，请使用 HTTPS 来登录服务器。可以在 **server.xml** 文件的 `<httpEndpoint>` 元素的 httpsPort 属性中查看 Liberty 服务器的 HTTPS 端口。缺省情况下，该值为 9443。
-4. 使用**欢迎管理员 → 注销**来从控制台注销。
+    4. 使用**欢迎管理员 → 注销**来从控制台注销。
 5. 在 Web 浏览器中输入以下 URL：[https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)，并接受证书。缺省情况下，Liberty 服务器会生成对 Web 浏览器未知的缺省证书，您需要接受此证书。Mozilla Firefox 将此证书显示为安全性异常。
 6. 使用 **admin/admin** 再次登录。在 Web 浏览器与 {{ site.data.keys.mf_server }} 之间会对登录和密码加密。对于生产环境，可以关闭 HTTP 端口。
 

@@ -500,7 +500,7 @@ Pour vous servir d'un utilisateur existant au lieu de créer un utilisateur, vou
         ...
    ```
 
-De plus, l'utilisateur créé par les fichiers d'exemple Ant est mappé aux rôles de sécurité du service d'administration et de la console. Avec ce paramètre, vous pouvez utiliser cet utilisateur pour vous connecter à {{ site.data.keys.mf_server }} après l'installation. Pour changer ce comportement, supprimez l'élément `<user>` des exemples de fichier Ant. Vous pouvez aussi supprimer l'attribut **password** de l'élément `<user>` pour ne pas créer l'utilisateur dans le registre local du serveur d'applications. 
+De plus, l'utilisateur créé par les fichiers d'exemple Ant est mappé aux rôles de sécurité du service d'administration et de la console. Avec ce paramètre, vous pouvez utiliser cet utilisateur pour vous connecter à {{ site.data.keys.mf_server }} après l'installation. Pour changer ce comportement, supprimez l'élément `<user>` des exemples de fichier Ant. Vous pouvez aussi supprimer l'attribut **password** de l'élément `<user>` pour ne pas créer l'utilisateur dans le registre local du serveur d'applications.
 
 #### Spécification du niveau Java EE de Liberty
 {: #specify-liberty-java-ee-level }

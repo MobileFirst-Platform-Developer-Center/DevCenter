@@ -22,7 +22,7 @@ weight: 3
 {{ site.data.keys.mf_server }} 组件可通过 JMX 或 HTTP 相互通信。您需要配置特定的 JNDI 属性以启用通信。  
 可通过下图展示组件与设备间的网络流：
 
-![{{ site.data.keys.product }} 组件网络流图](mfp_components_network_flows.jpg)
+![{{ site.data.keys.product }} 组件网络流的图](mfp_components_network_flows.jpg)
 
 以下部分中说明了各种 {{ site.data.keys.mf_server }} 组件、{{ site.data.keys.mf_analytics }}、移动设备以及应用程序服务器间的流程：
 
@@ -82,7 +82,9 @@ weight: 3
 
 ### WebSphere Application Server Network Deployment 上的 {{ site.data.keys.mf_server }} 管理服务和 MobileFirst 运行时到 Deployment Manager
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-在 WebSphere Application Server Network Deployment 上，运行时和管理服务可通过与 Deployment Manager 进行通信，来获取 [{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)和其他服务器中 [{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)中使用的 JMX MBean。在 [管理服务的 JNDI 属性：JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)中，对应的 JNDI 属性为 **mfp.admin.jmx.dmgr.***。
+在 WebSphere Application Server Network Deployment 上，运行时和管理服务可通过与 Deployment Manager 进行通信，来获取
+[{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)和其他服务器中
+[{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)中使用的 JMX MBean。在 [管理服务的 JNDI 属性：JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)中，对应的 JNDI 属性为 **mfp.admin.jmx.dmgr.***。
 
 必须运行 Deployment Manager 以支持需要运行时与管理服务间进行 JMX 通信的操作。此类操作可以是运行时初始化，或通知通过管理服务执行的修改。
 
@@ -90,16 +92,19 @@ weight: 3
 {: #mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics }
 运行时可通过 HTTP 或 HTTPS 向 {{ site.data.keys.mf_analytics }} 发送数据。用于定义此通信的运行时的 JNDI 属性为：
 
-* **mfp.analytics.url ** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从运行时接收传入的分析数据。示例：`http://<hostname>:<port>/analytics-service/rest`
+* **mfp.analytics.url ** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从运行时接收传入的分析数据。
+例如：`http://<hostname>:<port>/analytics-service/rest`
 
     当安装 {{ site.data.keys.mf_analytics }} 作为集群时，可将数据发送至集群中的任何成员。
 
 * **mfp.analytics.username** - 用于访问 {{ site.data.keys.mf_analytics }} 服务的用户名。分析服务受安全角色保护。
 * **mfp.analytics.password** - 用于访问分析服务的密码。
-* **mfp.analytics.console.url** - 传递到 {{ site.data.keys.mf_console }} 以显示指向 {{ site.data.keys.mf_analytics_console }} 的链接的 URL。示例：`http://<hostname>:<port>/analytics/console`
+* **mfp.analytics.console.url** - 传递到 {{ site.data.keys.mf_console }} 以显示指向 {{ site.data.keys.mf_analytics_console }} 的链接的 URL。
+例如：`http://<hostname>:<port>/analytics/console`
 
     用于定义此通信的推送服务的 JNDI 属性为：
-    * **mfp.push.analytics.endpoint** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从推送服务接收传入的分析数据。示例：`http://<hostname>:<port>/analytics-service/rest`
+    * **mfp.push.analytics.endpoint** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从推送服务接收传入的分析数据。
+例如：`http://<hostname>:<port>/analytics-service/rest`
 
     当安装 {{ site.data.keys.mf_analytics }} 作为集群时，可将数据发送至集群中的任何成员。    
 * **mfp.push.analytics.username** - 用于访问 {{ site.data.keys.mf_analytics }} 服务的用户名。分析服务受安全角色保护。
@@ -109,7 +114,7 @@ weight: 3
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service }
 管理服务可与实时更新服务进行通信，以存储和检索有关 {{ site.data.keys.product }} 工件的配置信息。通过 HTTP 或 HTTPS 执行通信。
 
-管理服务将自动生成用于联系实时更新服务的 URL。两项服务都必须在同一应用程序服务器上。必须以如下方式定义实时更新服务的上下文根：`<adminContextRoot>config`。例如，如果管理服务的上下文根为 **mfpadmin**，那么实时更新服务的上下文根必须为 **mfpadminconfig**。可在管理服务中通过定义 JNDI 属性（**mfp.admin.proxy.port**、**mfp.admin.proxy.protocol** 和 **mfp.admin.proxy.host**）来覆盖缺省 URL 生成过程。
+管理服务将自动生成用于联系实时更新服务的 URL。两项服务都必须在同一应用程序服务器上。必须按以下方式定义实时更新服务的上下文根：`<adminContextRoot>config`。例如，如果管理服务的上下文根为 **mfpadmin**，那么实时更新服务的上下文根必须为 **mfpadminconfig**。可在管理服务中通过定义 JNDI 属性（**mfp.admin.proxy.port**、**mfp.admin.proxy.protocol** 和 **mfp.admin.proxy.host**）来覆盖缺省 URL 生成过程。
 
 用于配置这两项服务间的此通信的 JNDI 属性为：
 
@@ -128,7 +133,8 @@ weight: 3
 为控制台应用程序指定该属性。
 ### {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 推送服务，再到授权服务器
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
-管理服务可与推送服务通信，以请求各种推送操作。将通过 OAuth 协议保护此通信的安全。需注册两项服务作为保密客户端。可在安装时执行初始注册。在此过程中，两项服务均需要联系授权服务器。此授权服务器可以是 {{ site.data.keys.product }} 运行时。
+管理服务可与推送服务通信，以请求各种推送操作。
+将通过 OAuth 协议保护此通信的安全。需注册两项服务作为保密客户端。可在安装时执行初始注册。在此过程中，两项服务均需要联系授权服务器。此授权服务器可以是 {{ site.data.keys.product }} 运行时。
 
 用于配置此通信的管理服务的 JNDI 属性为：
 
@@ -220,14 +226,20 @@ weight: 3
 **独立 WebSphere Application Server Liberty Profile 服务器**  
 以下全局 JNDI 属性是管理服务和运行时所必需的。
 
-| JNDI 属性          | 值 |
+| JNDI 属性| 值|
 |--------------------------|--------|
-| mfp.topology.platform	   | Liberty |
-| mfp.topology.clustermode | 独立 |
-| mfp.admin.jmx.host       | WebSphere Application Server Liberty Profile 服务器的主机名。 |
-| mfp.admin.jmx.port       | REST 接口的端口，即 WebSphere Application Server Liberty Profile 服务器的 server.xml 文件中的 `<httpEndpoint>` 元素中声明的 httpsPort 属性的端口。该属性没有缺省值。 |
-| mfp.admin.jmx.user       | WebSphere Application Server Liberty 管理员的用户名，必须与 WebSphere Application Server Liberty Profile 服务器的 server.xml 文件中的 `<administrator-role>` 元素中定义的名称相同。 |
-| mfp.admin.jmx.pwd        | WebSphere Application Server Liberty 管理员用户的密码。 |
+| mfp.topology.platform
+        | Liberty|
+| mfp.topology.clustermode
+        | 独立|
+| mfp.admin.jmx.host
+        | WebSphere Application Server Liberty Profile 服务器的主机名。|
+| mfp.admin.jmx.port
+        | REST 接口的端口，即 WebSphere Application Server Liberty Profile 服务器的 server.xml 文件中的 `<httpEndpoint>` 元素中声明的 httpsPort 属性的端口。该属性没有缺省值。|
+| mfp.admin.jmx.user
+        | WebSphere Application Server Liberty 管理员的用户名，必须与 WebSphere Application Server Liberty Profile 服务器的 server.xml 文件中的 `<administrator-role>` 元素中定义的名称相同。|
+| mfp.admin.jmx.pwd
+        | WebSphere Application Server Liberty 管理员用户的密码。|
 
 可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。
 
@@ -239,10 +251,12 @@ weight: 3
 **独立 Apache Tomcat 服务器**
 以下局部 JNDI 属性是管理服务和运行时所必需的。
 
-| JNDI 属性        |	值    |
+| JNDI 属性|	值|
 |------------------------|------------|
-| mfp.topology.platform   | Tomcat     |
-| mfp.topology.clustermode | 独立 |
+| mfp.topology.platform
+        | Tomcat|
+| mfp.topology.clustermode
+        | 独立|
 
 还需要使用 JVM 属性来定义 Java 管理扩展 (JMX) 远程方法调用 (RMI)。有关更多信息，请参阅[配置 Apache Tomcat 的 JMX 连接](../appserver/#apache-tomcat-prerequisites)。
 
@@ -259,11 +273,13 @@ JNDI 属性是管理服务所必需的。请参阅[配置 Apache Tomcat 的 JMX 
 **  
 以下局部 JNDI 属性是管理服务和运行时所必需的。
 
-| JNDI 属性          | 值                 |
+| JNDI 属性| 值|
 |--------------------------| -----------------------|
-| mfp.topology.platform    | WAS                    |
-| mfp.topology.clustermode | 独立             |
-| mfp.admin.jmx.connector  | JMX 接口类型；该值可以是 SOAP 或 RMI。 |
+| mfp.topology.platform
+        | WAS|
+| mfp.topology.clustermode
+        | 独立|
+| mfp.admin.jmx.connector| JMX 接口类型；该值可以是 SOAP 或 RMI。|
 
 可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。  
 部署多个管理组件时，必须指定：
@@ -375,10 +391,12 @@ JNDI 属性是管理服务所必需的。请参阅[配置 Apache Tomcat 的 JMX 
 **Apache Tomcat 服务器场**  
 在场的每个服务器中，管理服务和运行时需要以下全局 JNDI 属性。
 
-| JNDI 属性          |	值 |
+| JNDI 属性|	值|
 |--------------------------|-----------|
-| mfp.topology.platform	   | Tomcat    |
-| mfp.topology.clustermode | 场      |
+| mfp.topology.platform
+        | Tomcat|
+| mfp.topology.clustermode
+        | 场|
 
 还需要使用 JVM 属性来定义 Java 管理扩展 (JMX) 远程方法调用 (RMI)。有关更多信息，请参阅[配置 Apache Tomcat 的 JMX 连接](../appserver/#apache-tomcat-prerequisites)。
 
@@ -394,19 +412,21 @@ JNDI 属性是管理服务所必需的。请参阅[配置 Apache Tomcat 的 JMX 
 **WebSphere Application Server Full Profile 服务器场**  
 在场中的每个服务器上，管理服务和运行时需要以下全局 JNDI 属性。
 
-| JNDI 属性            | 值 |
+| JNDI 属性| 值|
 |----------------------------|--------|
-| mfp.topology.platform	WAS  | WAS    |
-| mfp.topology.clustermode   | 场   |
-| mfp.admin.jmx.connector    | SOAP   |
+| mfp.topology.platform	WAS| WAS|
+| mfp.topology.clustermode
+        | 场|
+| mfp.admin.jmx.connector| SOAP|
 
 管理服务需要使用以下 JNDI 属性来管理服务器场配置。
 
-| JNDI 属性    | 值 |
+| JNDI 属性| 值|
 |--------------------|--------|
-| mfp.admin.jmx.user | WebSphere Application Server 的用户名。必须在 WebSphere Application Server 用户注册表中定义此用户。 |
-| mfp.admin.jmx.pwd	 | WebSphere Application Server 用户的密码。 |
-| mfp.admin.serverid | 服务器标识，场中的每个服务器的标识必须不同，并且必须与此服务器的服务器场配置文件中使用的该属性值相同。 |
+| mfp.admin.jmx.user
+        | WebSphere Application Server 的用户名。必须在 WebSphere Application Server 用户注册表中定义此用户。|
+| mfp.admin.jmx.pwd	| WebSphere Application Server 用户的密码。|
+| mfp.admin.serverid| 服务器标识，场中的每个服务器的标识必须不同，并且必须与此服务器的服务器场配置文件中使用的该属性值相同。|
 
 可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。
 
@@ -535,10 +555,9 @@ JNDI 属性是管理服务所必需的。请参阅[配置 Apache Tomcat 的 JMX 
 
 当使用的若干个控制器（副本）使用同一个管理组件时，运行时需要以下 JNDI 属性：
 
-| JNDI 属性 | 值 | 
+| JNDI 属性| 值| 
 |-----------------|--------|
-| mfp.admin.jmx.replica | 使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n
-hostname:replica-n port` | 
+| mfp.admin.jmx.replica| 使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
 
 当在控制器中部署了若干管理组件时，每个运行时的局部 **mfp.admin.environmentid** JNDI 属性值必须与针对用于管理该运行时的管理服务定义的值相同。
 
@@ -604,13 +623,15 @@ hostname:replica-n port` |
 
 以下局部 JNDI 属性是管理服务和运行时所必需的：
 
-| JNDI 属性 |	值 |
+| JNDI 属性|	值|
 |-----------------|--------|
-| mfp.topology.platform	| WAS |
-| mfp.topology.clustermode | 集群 |
-| mfp.admin.jmx.connector |	与 Deployment Manager 相连的 JMX 接口类型。该值可以是 SOAP 或 RMI。SOAP 是缺省值和首选值。如果禁用 SOAP 端口，那么必须使用 RMI。 |
-| mfp.admin.jmx.dmgr.host |	Deployment Manager 的主机名。 |
-| mfp.admin.jmx.dmgr.port |	Deployment Manager 使用的 RMI 或 SOAP 端口（取决于 mfp.admin.jmx.connector 的值）。 |
+| mfp.topology.platform
+        | WAS|
+| mfp.topology.clustermode
+        | 集群|
+| mfp.admin.jmx.connector|	与 Deployment Manager 相连的 JMX 接口类型。该值可以是 SOAP 或 RMI。SOAP 是缺省值和首选值。如果禁用 SOAP 端口，那么必须使用 RMI。|
+| mfp.admin.jmx.dmgr.host|	Deployment Manager 的主机名。|
+| mfp.admin.jmx.dmgr.port|	Deployment Manager 使用的 RMI 或 SOAP 端口（取决于 mfp.admin.jmx.connector 的值）。|
 
 可以部署多个管理组件，以支持运行相同的服务器或集群，并由单独的管理组件管理各个运行时。
 
@@ -641,11 +662,11 @@ hostname:replica-n port` |
 
 当在应用程序服务器基础结构的前端使用逆向代理时，必须为管理服务定义以下 JNDI 属性。
 
-| JNDI 属性 |	值 |
+| JNDI 属性|	值|
 |-----------------|--------|
-| mfp.admin.proxy.protocol | 用于与逆向代理进行通信的协议。可以为 HTTP 或 HTTPS。 |
-| mfp.admin.proxy.host | 逆向代理的主机名。 |
-| mfp.admin.proxy.port | 逆向代理的端口号。 |
+| mfp.admin.proxy.protocol| 用于与逆向代理进行通信的协议。可以为 HTTP 或 HTTPS。|
+| mfp.admin.proxy.host| 逆向代理的主机名。|
+| mfp.admin.proxy.port| 逆向代理的端口号。|
 
 引用逆向代理 URL 的 **mfp.admin.endpoint** 属性也是 {{ site.data.keys.mf_console }} 所必需的。
 

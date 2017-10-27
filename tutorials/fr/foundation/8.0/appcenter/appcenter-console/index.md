@@ -150,7 +150,7 @@ Pour ajouter une application afin de la rendre disponible pour l'installation su
 5. Configurez les propriétés pour définir l'application. Voir [Propriétés d'application](#application-properties) pour plus d'informations sur la définition des valeurs de propriété.
 6. Cliquez sur **Finish**.
 
-![Propriétés d'application, ajout d'une application](ac_add_app_props.jpg)
+![Propriétés d'une application, ajout d'une application](ac_add_app_props.jpg)
 
 ## Ajout d'une application à partir d'un magasin d'applications public
 {: #adding-an-application-from-a-public-app-store }
@@ -185,13 +185,13 @@ L'adresse d'Apple iTunes Store est [https://linkmaker.itunes.apple.com/](https:/
     * Si la validation échoue, un message d'erreur s'affiche dans la page **Add an application**. Vous pouvez essayer un autre lien ou annuler la tentative de création du lien en cours.
     * Si la validation est réussie, cette action permet d'afficher les propriétés de l'application. Vous pouvez ensuite modifier la description d'application dans les propriétés d'application avant de passer à l'étape suivante.
 
-    ![Description d'application modifiée dans les propriétés de l'application](ac_add_public_app_details.jpg)
+    ![Description de l'application modifiée dans ses propriétés](ac_add_public_app_details.jpg)
 
 4. Cliquez sur **Done** pour créer le lien de l'application.
 
     Cette action met l'application à la disposition de la version correspondante du client mobile Application Center. Une petite icône de lien apparaît sur l'icône de l'application pour indiquer que cette application est stockée dans un magasin public d'applications et diffère d'une application binaire.
 
-    ![Lien vers une application stockée dans Google Play](ac_public_app_available.jpg)
+    ![Lien à une application stockée dans Google play](ac_public_app_available.jpg)
 
 ## Propriétés d'application
 {: #application-properties }
@@ -314,7 +314,7 @@ La version 2.0 de HelloWorld est disponible et vous souhaitez que les utilisateu
 1. Déployez HelloWorld 2.0 dans Application Center. Voir [Ajout d'une application mobile](#adding-a-mobile-application).
 2. Dans la page Application Details, copiez le paramètre de l'URL externe.
 
-    ![Copie de l'URL externe dans la page Application Details](ac_copy_ext_url.jpg)
+    ![Copie de l'URL externe depuis Application Details](ac_copy_ext_url.jpg)
 
 3. Lorsque l'URL externe est copiée dans le presse-papiers, ouvrez {{ site.data.keys.mf_console }}.
 4. Remplacez la règle d'accès de Hello World version 1.0 par "Access Disabled".
@@ -373,7 +373,7 @@ Pour gérer les utilisateurs enregistrés, cliquez sur l'onglet **Users/Groups**
 * Les membres de groupe local
 * Les membres d'une liste de contrôle d'accès
 
-![Liste des utilisateurs enregistrés Application Center](ac_reg_users.jpg)
+![Liste des utilisateurs enregistrés d'Application Center](ac_reg_users.jpg)
 
 Si Application Center est connecté à un référentiel LDAP, vous ne pouvez pas modifier les noms d'affichage des utilisateurs. Si le référentiel n'est pas LDAP, vous pouvez modifier un nom d'affichage d'utilisateur en le sélectionnant et en le modifiant.
 
@@ -427,7 +427,7 @@ Vous pouvez modifier le contrôle d'accès :
 
 1. Dans Application Management sous Available Applications, cliquez sur l'état non restreint ou restreint de l'installation d'une application.
 
-    ![Où cliquer sur le mode non restreint ou restreint](ac_app_access_state.jpg)
+    ![Où cliquer en mode restreint ou non restreint](ac_app_access_state.jpg)
 
 2. Sélectionnez **Access control enabled** pour activer le contrôle d'accès.
 3. Ajoutez des utilisateurs ou des groupes à la liste d'accès.

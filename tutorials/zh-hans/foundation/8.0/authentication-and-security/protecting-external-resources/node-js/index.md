@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Node.js 验证程序
-breadcrumb_title: Node.js 验证程序
+title: Node.js 验证器
+breadcrumb_title: Node.js 验证器
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:

@@ -31,8 +31,8 @@ weight: 11
 3. ファイルを編集して、選択したカスタム・セキュリティー検査のデバイス SSO を有効にします。デバイス SSO を有効にするには、カスタム・セキュリティー検査の `enableSSO` プロパティーを `true` に設定します。このプロパティー構成は、`securityCheckConfigurations` オブジェクト内にネストされているセキュリティー検査オブジェクトに含まれています。これらのオブジェクトをアプリケーション記述子ファイル内で見つけるか、欠落している場合は作成します。例えば、次のとおりです。
 
    ```xml
-   "securityCheckConfigurations": {
-        "UserAuthentication": {
+"securityCheckConfigurations": {
+"UserAuthentication": {
             ...
             ...
             "enableSSO": true

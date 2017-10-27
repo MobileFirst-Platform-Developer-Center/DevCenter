@@ -37,7 +37,7 @@ weight: 4
 
 1. 要启用方案装入程序，请设置 JVM 参数 `-DwlDevEnv=true` 或环境变量 `ANALYTICS_DEBUG=true`。
 
-2. 使用控制台 URL 在浏览器中访问方案装入程序：`http://<console-path>/scenarioLoader`，其中，`<console-path>` 是在 `mfp-server/usr/servers/mfp/server.xml` 文件中定义的 JNDI 属性值，例如：
+2. 使用控制台 URL 在浏览器中访问方案装入程序：`http://<console-path>/scenarioLoader`，其中 `<console-path>` 是在 `mfp-server/usr/servers/mfp/server.xml` 文件中定义的 JNDI 属性值，例如：
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 

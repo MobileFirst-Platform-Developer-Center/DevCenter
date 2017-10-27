@@ -33,7 +33,7 @@ Para desenvolver aplicativos Cordova ou iOS Nativos, uma estação de trabalho d
 
 O Xcode fornece as ferramentas e APIs necessárias para desenvolver aplicativos para a plataforma iOS, usando linguagens de programação Objective-C ou Swift.</p>
 
-![IDE de xcode](xcode.png)
+![xcode IDE](xcode.png)
 
 Xcode é um IDE que pode ser usado para:
 

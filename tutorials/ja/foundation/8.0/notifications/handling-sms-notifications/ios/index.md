@@ -84,8 +84,8 @@ if JSONSerialization.isValidJSONObject(jsonOptions) {
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
-   if error == nil {
-       // Unregistered successfully
+    if error == nil {
+        // Unregistered successfully
     } else {
         // Failed to unregister
     }

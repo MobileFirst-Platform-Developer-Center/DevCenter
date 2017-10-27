@@ -35,12 +35,12 @@ weight: 5
 
 1. 新規のアダプター Maven プロジェクトを作成するには、**「ファイル」 → 「新規」 → 「その他...」 → 「Maven」 → 「Maven プロジェクト」**を選択し、**「次へ」**をクリックします。
 
-    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](new-maven-project.png)
+    ![Eclipse でアダプター Maven プロジェクトを作成する方法を示すイメージ](new-maven-project.png)
 
 2. プロジェクトの名前とその場所を指定します。  
     - 単純なプロジェクトを作成するオプションのチェック・マークが**オフ**になっていることを確認して、**「次へ」**をクリックします。
 
-    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](select-project-name-and-location.png)
+    ![Eclipse でアダプター Maven プロジェクトを作成する方法を示すイメージ](select-project-name-and-location.png)
 
 3. アダプターのアーキタイプを選択または追加します。
     - [アーキタイプをローカルにインストールしてあり](../creating-adapters/#install-maven)、それらのアーキタイプがアーキタイプのリストに表示されていない場合は、**「構成」 → 「ローカル・カタログの追加」 → 「ホーム・ディレクトリーの  /.m2/repository/archetype-catalog.xml を参照」**を選択します。
@@ -49,19 +49,19 @@ weight: 5
         - **アーキタイプ成果物 ID**: `adapter-maven-archetype-java`、`adapter-maven-archetype-http`、または `adapter-maven-archetype-sql`
         - **アーキタイプ・バージョン**: 使用可能な最新バージョンは [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp) で検索できます。
 
-    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](create-an-archetype.png)
+    ![Eclipse でアダプター Maven プロジェクトを作成する方法を示すイメージ](create-an-archetype.png)
 
 4. Maven プロジェクト・パラメーターを指定します。  
     - 必須の**「グループ ID」**、**「成果物 ID」**、 **「バージョン」**、および**「パッケージ」**の各パラメーターを指定して、**「終了」**をクリックします。
 
-    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](project-parameters.png)
+    ![Eclipse でアダプター Maven プロジェクトを作成する方法を示すイメージ](project-parameters.png)
 
 ### 既存のアダプター Maven プロジェクトのインポート
 {: #importing-an-existing-adapter-maven-project }
 
 アダプター Maven プロジェクトをインポートするには、**「ファイル」 → 「インポート...」 → 「Maven」 → 「既存の Maven プロジェクト」**を選択します。
 
-![Eclipse へのアダプター Maven プロジェクトのインポート方法を示すイメージ](import-adapter-maven-project.png)
+![アダプター Maven プロジェクトを Eclipse にインポートする方法を示すイメージ](import-adapter-maven-project.png)
 
 ## アダプター Maven プロジェクトのビルドとデプロイ
 {: #building-and-deploying-an-adapter-maven-project }
