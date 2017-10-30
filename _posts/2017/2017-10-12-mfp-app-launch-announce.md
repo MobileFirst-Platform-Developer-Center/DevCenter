@@ -1,5 +1,6 @@
 ---
 title: Take control of your app feature rollout and measure the effectiveness using Bluemix App Launch service
+published: false
 date: 2017-10-12
 tags:
 - Announcement
