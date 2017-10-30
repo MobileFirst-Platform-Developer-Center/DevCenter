@@ -8,14 +8,18 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 
 # Overview
-
 {: #overview }
-Find information to help resolve issues that you might encounter when you use the {{ site.data.keys.mf_analytics }}.
+Find information to help resolve issues that you might encounter when using {{ site.data.keys.mf_analytics }}.
 
-## Test Table
 
-|                        | Administrator | Deployer    | Operator    | Monitor    |
-|------------------------|---------------|-------------|-------------|------------|
-| Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Deploy an application. | Yes           | Yes         | No          | No         |
-| Deploy an adapter.     | Yes           | Yes         | No          | No         |
+# Analytics Service Error Messages
+{: #analytics-service-error-codes }
+
+**Prefix:** _____<br/>
+**Range:** 3000-3299
+
+| **Error Code**  | **Description** |
+|-----------------|-----------------|
+| **FWLSE3000E:** | **A server error was detected.** |
+| **FWLSE3001E:** | **A conflict was detected.** |
+| **FWLSE3002E:** | **The resource is not found.** |

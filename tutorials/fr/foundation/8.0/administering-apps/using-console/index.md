@@ -93,7 +93,7 @@ Utilisez {{ site.data.keys.mf_console }} (la console) pour désactiver l'accès 
 4. Ajoutez dans la zone **Message de notification par défaut** le message de notification personnalisé à afficher lorsque l'utilisateur tente d'accéder à l'application. L'exemple de message suivant indique aux utilisateurs qu'ils doivent effectuer une mise à niveau vers la version la plus récente :
 
    ```bash
-   This version is no longer supported. Please upgrade to the latest version.
+   Cette version n'est plus prise en charge. Effectuez une mise à niveau vers la dernière version.
    ```
 
 5. Vous pouvez éventuellement indiquer le message de notification dans d'autres langues dans la section **Environnements locaux pris en charge**.
@@ -112,7 +112,7 @@ Suivez la procédure décrite pour configurer le message de notification. Vous p
 3. Ajoutez un message de démarrage personnalisé. L'exemple de message suivant signale à l'utilisateur une activité de maintenance planifiée pour l'application :
 
    ```bash
-   The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
+   Le serveur sera indisponible samedi entre 4 h 00 et 6 h 00 en raison d'une opération de maintenance planifiée.
    ```
 
 4. Vous pouvez éventuellement indiquer le message de notification dans d'autres langues dans la section Environnements locaux pris en charge.
@@ -165,7 +165,7 @@ L'application a été bloquée car sa licence a expiré
 Si un nombre suffisant de jetons pour exécuter l'application se libère ultérieurement ou si votre organisation acquiert d'autres jetons, le message suivant s'affiche dans la console {{ site.data.keys.mf_console }} :
 
 ```bash
-L'application a été bloquée car sa licence a expiré. Une nouvelle licence est désormais disponible.
+L'application a été bloquée car sa licence a expiré. Une nouvelle licence est désormais disponible
 ```
 
 Le statut d'affichage est toujours **Bloqué**. Vous devez restaurer manuellement le statut actuel correct de la mémoire ou de vos propres enregistrements en éditant la zone Statut. {{ site.data.keys.product }} ne gère pas l'affichage du statut **Bloqué** dans la console {{ site.data.keys.mf_console }} d'une application qui a été bloquée en raison d'un nombre de jetons de licence insuffisant. Il vous incombe de restaurer un statut réel pour une application ainsi bloquée pouvant être affiché via la console {{ site.data.keys.mf_console }}.

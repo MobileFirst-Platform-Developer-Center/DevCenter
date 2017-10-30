@@ -103,7 +103,7 @@ PinCodeChallengeHandler.cancel();
 PinCodeChallengeHandler.handleFailure = function(error) {
     WL.Logger.debug("Challenge Handler Failure!");
 
-    if(error.failure && error.failure == "account blocked") {
+    if(error.failure &&  error.failure == "account blocked") {
         alert("No Remaining Attempts!");  
     } else {
 alert("Error! " + JSON.stringify(error));

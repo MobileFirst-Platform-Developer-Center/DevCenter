@@ -159,7 +159,7 @@ Installation Manager のモードについて詳しくは、IBM Installation Man
         
 5. 最新の暫定修正も一緒にインストールする場合は、**-repositories** パラメーターに暫定修正・リポジトリーを追加してください。**-repositories** パラメーターは、リポジトリーのコンマ区切りリストを受け入れます。
 
-    **com.ibm.mobilefirst.foundation.server** を **com.ibm.mobilefirst.foundation.server_version** に置換することで、暫定修正のバージョンを追加します。**version** の形式は **8.0.0.0-buildNumber** となります。例えば、暫定修正 **8.0.0.0-IF20160103101**5 をインストールする場合、次のコマンドを入力します。 `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`
+    **com.ibm.mobilefirst.foundation.server** を **com.ibm.mobilefirst.foundation.server_version** に置換することで、暫定修正のバージョンを追加します。**version** の形式は **8.0.0.0-buildNumber** となります。例えば、暫定修正 **8.0.0.0-IF201601031015** をインストールする場合は、次のコマンドを入力します。`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`
     
     imcl コマンドについて詳しくは、[Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en) を参照してください。
     
@@ -314,12 +314,12 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 4. <server> エレメント内のリポジトリーのリストを調整します。 このステップについて詳しくは、[リポジトリー](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)にある IBM Installation Manager の資料を参照してください。
 
     `<profile>` エレメント内のキー/値の各ペアの値を調整します。  
-    `<install>` エレメントの `<offering>` エレメント内で、インストールするリリースに合致するよう version 属性を設定するか、リポジトリー内の最新バージョンをインストールする場合は version 属性を削除します。
-5. 以下のコマンドを入力してください。`<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
+    `<install>` エレメントの `<offering>` エレメント内で、インストールするリリースに一致するように version 属性を設定するか、リポジトリー内の最新バージョンをインストールする場合は version 属性を削除します。
+5. 次のコマンドを入力します。`<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     各部の意味は次のとおりです。
     * `<InstallationManagerPath>` は、IBM Installation Manager のインストール・ディレクトリーです。
-    * `<responseFile>` は、ステップ 1 で選択および更新されるファイルの名前です。
+    * `<responseFile>` は、ステップ 1 で選択および更新されたファイルの名前です。
 
 > 詳細については、IBM Installation Manager 資料の[応答ファイルを使用したパッケージのサイレント・インストール](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)を参照してください。
     
@@ -328,7 +328,7 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 {: #working-with-a-response-file-recorded-on-a-different-machine }
 
 1. GUI が使用可能なマシン上で IBM Installation Manager をオプション `-record responseFile` を指定してウィザード・モードで実行することによって、応答ファイルを記録します。詳しくは、[Installation Manager による応答ファイルの記録](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html)を参照してください。
-2. 応答ファイルのファイル・アクセス権限を、できる限り制限されたものに変更します。ステップ 4 では、いくつかのパスワードを指定する必要があります。 同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにする必要がある場合は、自分以外のユーザーに対して、ファイルの **read** 権限を削除する必要があります。以下の例のようなコマンドを使用できます。
+2. 応答ファイルのファイル・アクセス権限を、できる限り制限されたものに変更します。ステップ 4 では、いくつかのパスワードを指定する必要があります。同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにする必要がある場合は、自分以外のユーザーに対して、ファイルの **read** 権限を削除する必要があります。以下の例のようなコマンドを使用できます。
     * UNIX の場合: `chmod 600 response-file.xml`
     * Windows の場合: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. 同様に、サーバーが WebSphere Application Server Liberty または Apache Tomcat サーバーで、そのサーバーが自分のアカウントからのみ始動するようにする場合は、次のファイルから自分以外のユーザーの read 権限も削除する必要があります。
@@ -633,59 +633,59 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 #### Analytics サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **analytics.ear** および **analytics-*.war** | {{ site.data.keys.mf_analytics }} をインストールするための EAR ファイルと WAR ファイル。 |
-| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_analytics }} をインストールするためのサンプル Ant ファイルが含まれています。 |
+| **analytics.ear** および **analytics-*.war** | {{ site.data.keys.mf_analytics }} をインストールするための EAR ファイルと WAR ファイル。|
+| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_analytics }} をインストールするためのサンプル Ant ファイルが含まれています。|
 
 #### ApplicationCenter サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **configuration-samples** | Application Center をインストールするためのサンプル Ant ファイルが含まれています。これらの Ant タスクはデータベース表を作成し、WAR ファイルをアプリケーション・サーバーにデプロイします。 | 
-| **console** | Application Center をインストールするための EAR ファイルと WAR ファイルが含まれています。この EAR ファイルは IBM PureApplication システムに一意的に使用されます。 | 
-| **databases** | Application Center 用の表の手動作成に使用される SQL スクリプトが含まれています。 |
-| **installer** | Application Center クライアントを作成するためのリソースが含まれています。 | 
-| **tools** | Application Center のツール。 | 
+| **configuration-samples** | Application Center をインストールするためのサンプル Ant ファイルが含まれています。これらの Ant タスクはデータベース表を作成し、WAR ファイルをアプリケーション・サーバーにデプロイします。| 
+| **console** | Application Center をインストールするための EAR ファイルと WAR ファイルが含まれています。この EAR ファイルは IBM PureApplication システムに一意的に使用されます。| 
+| **databases** | Application Center 用の表の手動作成に使用される SQL スクリプトが含まれています。|
+| **installer** | Application Center クライアントを作成するためのリソースが含まれています。| 
+| **tools** | Application Center のツール。| 
 
 #### {{ site.data.keys.mf_server }} サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **mfp-ant-deployer.jar** | {{ site.data.keys.mf_server }} Ant タスクのセット。 |
-| **mfp-*.war** | {{ site.data.keys.mf_server }} コンポーネントの WAR ファイル。 |
-| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_server }} コンポーネントをインストールするためのサンプル Ant ファイルが含まれています。 | 
-| **ConfigurationTool** | サーバー構成ツールのバイナリー・ファイルが含まれています。このツールは、**mfp_server_install_dir/shortcuts** から起動されます。 |
-| **databases** | {{ site.data.keys.mf_server }} コンポーネント ({{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} 構成サービス、および {{ site.data.keys.product_adj }} ランタイム) 用の表の手動作成に使用される SQL スクリプトが含まれています。 | 
-| **external-server-libraries** |  さまざまなツール (認証性ツールおよび OAuth セキュリティー・ツールなど) によって使用される JAR ファイルが含まれています。 |
+| **mfp-ant-deployer.jar** | {{ site.data.keys.mf_server }} Ant タスクのセット。|
+| **mfp-*.war** | {{ site.data.keys.mf_server }} コンポーネントの WAR ファイル。|
+| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_server }} コンポーネントをインストールするためのサンプル Ant ファイルが含まれています。| 
+| **ConfigurationTool** | サーバー構成ツールのバイナリー・ファイルが含まれています。このツールは、**mfp_server_install_dir/shortcuts** から起動されます。|
+| **databases** | {{ site.data.keys.mf_server }} コンポーネント ({{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} 構成サービス、および {{ site.data.keys.product_adj }} ランタイム) 用の表の手動作成に使用される SQL スクリプトが含まれています。| 
+| **external-server-libraries** |  さまざまなツール (認証性ツールおよび OAuth セキュリティー・ツールなど) によって使用される JAR ファイルが含まれています。|
 
 #### PushService サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **mfp-push-service.war** | {{ site.data.keys.mf_server }} プッシュ・サービスをインストールするための WAR ファイル。 |
-| **databases** | {{ site.data.keys.mf_server }} プッシュ・サービス用の表の手動作成に使用される SQL スクリプトが含まれています。 | 
+| **mfp-push-service.war** | {{ site.data.keys.mf_server }} プッシュ・サービスをインストールするための WAR ファイル。|
+| **databases** | {{ site.data.keys.mf_server }} プッシュ・サービス用の表の手動作成に使用される SQL スクリプトが含まれています。| 
 
 #### License サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **Text** | {{ site.data.keys.product }} のライセンスが含まれています。 | 
+| **Text** | {{ site.data.keys.product }} のライセンスが含まれています。| 
 
 #### {{ site.data.keys.mf_server }} インストール・ディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **shortcuts** | Apache Ant 用ランチャー・スクリプト、サーバー構成ツール、および mfpadmin コマンド。これらは、{{ site.data.keys.mf_server }} と共に提供されています。 | 
+| **shortcuts** | Apache Ant 用ランチャー・スクリプト、サーバー構成ツール、および mfpadmin コマンド。これらは、{{ site.data.keys.mf_server }} と共に提供されています。| 
 
 #### tools サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| アイテム | 説明 |
+| アイテム| 説明|
 |------|-------------|
-| **tools/apache-ant-version-number** | サーバー構成ツールによって使用される Apache Ant のバイナリー・インストール。これは、Ant タスクを実行するためにも使用できます。 | 
+| **tools/apache-ant-version-number** | サーバー構成ツールによって使用される Apache Ant のバイナリー・インストール。これは、Ant タスクを実行するためにも使用できます。| 

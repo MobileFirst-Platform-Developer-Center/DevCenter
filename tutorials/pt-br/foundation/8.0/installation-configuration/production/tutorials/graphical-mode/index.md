@@ -102,12 +102,12 @@ problema.
 administradores ou não raiz não poderão modificar os arquivos. Para o escopo deste tutorial, mova o diretório **usr** contendo os servidores para um local que não precise de privilégios específicos. Dessa forma, as operações de instalação podem ser feitas sem privilégios específicos.
     * Acesse o diretório de instalação do Liberty.
     * Crie um diretório chamado **etc**. São necessários privilégios de administrador.
-    * No diretório **etc**, crie um arquivo **server.env** com o seguinte conteúdo: `WLP_USER_DIR=<caminho para o diretório em que qualquer usuário pode gravar>`
+    * No diretório **etc**, crie um arquivo **server.env** com o seguinte conteúdo: `WLP_USER_DIR=<path to a directory where any user can write>`
     
     Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Crie um servidor Liberty que será usado para instalar o primeiro nó do {{ site.data.keys.mf_server }} na parte posterior do tutorial.
     * Inicie uma linha de comandos.
-    * Acesse l**iberty\_install\_dir/bin**, e insira `server create mfp1`.
+    * Acesse l**iberty\_install\_dir/bin** e insira `server create mfp1`.
     
     Esse comando cria uma instância de servidor Liberty denominada mfp1. É possível ver sua definição em **liberty\_install\_dir/usr/servers/mfp1** ou **WLP\_USER\_DIR/servers/mfp1** (se você modificar o diretório conforme descrito na etapa 6).
     
@@ -191,13 +191,7 @@ instalação, caso ainda não tenha feito isso.
         * Insira as instruções SQL a seguir para criar um banco de dados chamado **MFPDATA**:
         
         ```sql
-        CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
-        CONNECT TO MFPDATA
-        GRANT CONNECT ON DATABASE TO USER mfpuser
-        GRANT CREATETAB ON DATABASE TO USER mfpuser
-        GRANT IMPLICIT_SCHEMA ON DATABASE TO USER mfpuser
-        DISCONNECT MFPDATA
-        QUIT
+        CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768 CONNECT TO MFPDATA GRANT CONNECT ON DATABASE TO USER mfpuser GRANT CREATETAB ON DATABASE TO USER mfpuser GRANT IMPLICIT_SCHEMA ON DATABASE TO USER mfpuser DISCONNECT MFPDATA QUIT
         ```
         
 Se você definiu um nome de usuário diferente, substitua mfpuser por seu próprio nome de usuário.  
@@ -355,7 +349,7 @@ Os aplicativos a seguir estão instalados:
 * **mfpadmin**, o serviço de administração
 * **mfpadminconfig**, o serviço de atualização em tempo real
 * **mfpconsole**, {{ site.data.keys.mf_console }}
-* **mobilefirs**t, componente de tempo de execução do {{ site.data.keys.product_adj }}
+* **mobilefirs**t, {{site.data.keys.product_adj }} componente de tempo de execução
 * **imfpush**, o serviço de push
 
 O Server Configuration Tool instala todos os aplicativos no mesmo servidor. É possível separar os aplicativos em diferentes servidores de aplicativos, mas
@@ -420,13 +414,13 @@ O arquivo jvm.options do perfil Liberty é modificado. Uma propriedade (com.ibm.
 Após a instalação ser concluída, é possível usar esse procedimento para testar os componentes instalados.
 
 1. Inicie o servidor usando o comando **server start mfp1**. O arquivo binário para o servidor está em **liberty\_install\_dir/bin**.
-2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>` conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
+2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>` como definido no arquivo **server.xml**. Uma tela de login é exibida.
 
 ![A tela de login do console](mfpconsole_signin.jpg)
 
 3. Efetue login com **admin/admin**. Por padrão, esse usuário é criado pelo Server Configuration Tool.
 
-    > **Nota:** Se você se conectar ao HTTP, o ID e a senha de login serão enviados em texto não criptografado na rede. Para um login seguro, use HTTPS para efetuar login no servidor. É possível ver a porta HTTPS do servidor Liberty no atributo httpsPort do elemento `<httpEndpoint>` no arquivo **server.xml**. Por padrão, o valor é 9443.
+    > **Nota:** Se você se conectar ao HTTP, o ID e a senha de login serão enviados em texto não criptografado na rede. Para um login seguro, use HTTPS para efetuar login no servidor. É possível ver a porta HTTPS do servidor Liberty no atributo httpsPort do `<httpEndpoint>` elemento no arquivo **server.xml**. Por padrão, o valor é 9443.
 
 4. Efetue logout do console com **Hello Admin → Sair**.
 5. Insira a seguinte URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) no navegador da web e aceite o certificado. Por padrão, o servidor Liberty gera um certificado padrão que não é conhecido pelo seu navegador da web e você precisa aceitar o certificado. Mozilla Firefox apresenta essa certificação como uma exceção de segurança.
@@ -452,17 +446,17 @@ operações de gerenciamento sejam replicadas para todos os componentes de tempo
 
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
-    httpPort="9080"
-    httpsPort="9443" />
-    ```
+        httpPort="9080"
+        httpsPort="9443" />
+      ```
     
     por:
     
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
-    httpPort="9081"
-    httpsPort="9444" />
-    ```
+        httpPort="9081"
+        httpsPort="9444" />
+      ```
     
     As portas HTTP e HTTPS do servidor mfp2 não entram em conflito com as portas do servidor mfp1 com essa mudança. Certifique-se de modificar as portas antes de executar a instalação do {{ site.data.keys.mf_server }}. Caso contrário, se você modificar a porta após a instalação ser feita, também será necessário refletir a mudança da porta na propriedade JNDI:
 **mfp.admin.jmx.port**.
@@ -473,14 +467,14 @@ operações de gerenciamento sejam replicadas para todos os componentes de tempo
 
     > **Nota:**  
     > 
-    > * Se você usar um ID de ambiente para o servidor mfp1 (não sugerido no tutorial), o mesmo ID de ambiente deverá ser usado para o servidor mfp2.
+    > * Se você usar um ID de ambiente para o servidor mfp1 (não sugerido neste tutorial), o mesmo ID de ambiente deverá ser usado para o servidor mfp2.
     > * Se você modificar a raiz de contexto para alguns aplicativos, use a mesma raiz de contexto para o servidor mfp2. Os servidores de um farm devem ser simétricos.
     > * Se você criar um usuário padrão (admin/admin), crie o mesmo usuário no servidor mfp2.
 
     As tarefas Ant detectam que os bancos de dados existem e não criam as tabelas (consulte a extração de log a seguir). Em seguida, os aplicativos são implementados no servidor.
     
     ```xml
-    [configuredatabase] Verificando a conectividade com o banco de dados MobileFirstAdmin MFPDATA com o esquema 'MFPDATA' e o usuário 'mfpuser'...
+    [configuredatabase] Verificando a conectividade com o banco de dados MobileFirstAdmin MFPDATA com esquema 'MFPDATA' e usuário 'mfpuser'...
     [configuredatabase] Banco de dados MFPDATA existe.
     [configuredatabase] Conexão com o banco de dados MobileFirstAdmin MFPDATA com esquema 'MFPDATA' e usuário 'mfpuser' estabelecida com sucesso.
     [configuredatabase] Obtendo a versão do banco de dados MobileFirstAdmin MFPDATA...
@@ -501,8 +495,7 @@ operações de gerenciamento sejam replicadas para todos os componentes de tempo
     * Pare ambos os servidores com estes comandos:
     
         ```bash
-        server stop mfp1
-        server stop mfp2
+        server stop mfp1 server stop mfp2
         ```
     * Copie as chaves LTPA do servidor mfp1 no servidor mfp2.
         Em **liberty\_install\_dir/usr/servers** ou **WLP\_USER\_DIR/servers**, execute o seguinte comando, dependendo de seu sistema operacional. 
@@ -526,8 +519,7 @@ operações de gerenciamento sejam replicadas para todos os componentes de tempo
 1. Inicie os dois servidores:
 
     ```bash
-    server start mfp1
-    server start mfp2
+    server start mfp1 server start mfp2
     ```
     
 2. Acesse o console. Por exemplo, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) ou [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) em HTTPS. Na barra lateral esquerda, um menu extra rotulado como **Nós do Server Farm** aparece. Se você clicar em **Nós do Server Farm**, é possível ver o status de cada nó. Talvez você tenha que esperar um pouco até que os nós sejam iniciados.

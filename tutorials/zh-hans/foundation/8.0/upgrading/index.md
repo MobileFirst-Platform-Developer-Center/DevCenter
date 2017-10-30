@@ -75,7 +75,6 @@ MobileFirst 项目不再存在。相反，您使用所选的开发环境来开�
 * 有关迁移 Cordova 或混合应用程序的更多信息，请参阅[迁移现有 Cordova 和混合应用程序](migrating-client-applications/cordova)。
 
 > **注：**迁移推送通知支持需要更改客户端和服务器端，稍后会在“迁移推送通知支持”中对此进行描述。
-
 ## 迁移本机应用程序
 {: #migrating-a-native-application }
 要迁移本机应用程序，需要遵循以下步骤：

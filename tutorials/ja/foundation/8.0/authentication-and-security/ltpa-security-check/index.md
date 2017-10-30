@@ -12,7 +12,7 @@ LTPA (Lightweight Third-Party Authentication) トークンは、IBM WebSphere Ap
 
 以下は、LTPA を使用するシンプルな「クライアント < - > サーバー」のフローを示します。
 
-![シンプルな LTPA ベースのクライアント <-> サーバーのフロー](ltpa_simple_client_server.jpg)
+![シンプルな LTPA ベースの「クライアント <-> サーバー」のフロー](ltpa_simple_client_server.jpg)
 
 ユーザーがサーバーにログインした後、サーバーは LTPA トークン (認証ユーザーの情報を含む暗号化されたハッシュ) を生成します。このトークンは、トークンをデコードするすべてのサーバー間で共用される秘密鍵によって署名されます。このトークンは通常、HTTP サービス の Cookie 形式です。トークンを Cookie として送信することにより、以降のユーザー対話が不要となります。
 

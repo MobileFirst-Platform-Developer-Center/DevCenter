@@ -62,7 +62,7 @@ Java 适配器能够使开发人员控制到后端系统的连接。因此，开
 
 ```java
 @Path("/")
-  public class JavaSQLResource {
+public class JavaSQLResource {
 }
 ```
 
@@ -98,7 +98,6 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 ```java
 @Context
 AdaptersAPI adaptersAPI;
-
 public Connection getSQLConnection() throws SQLException{
   // Create a connection object to the database
   JavaSQLApplication app = adaptersAPI.getJaxRsApplication(JavaSQLApplication.class);

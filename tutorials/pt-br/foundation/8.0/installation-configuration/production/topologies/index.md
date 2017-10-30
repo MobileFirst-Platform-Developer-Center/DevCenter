@@ -22,7 +22,7 @@ Os componentes são implementados de acordo com a topologia de servidor usada. O
 Os componentes do {{ site.data.keys.mf_server }} podem se comunicar uns com os outros sobre JMX ou HTTP. É necessário configurar certas propriedades JNDI para ativar comunicações.  
 Os fluxos de rede entre os componentes e o dispositivo podem ser ilustrados pela seguinte imagem:
 
-![Diagrama dos fluxos de rede de componentes do {{ site.data.keys.product }}](mfp_components_network_flows.jpg)
+![Diagrama dos fluxos de rede de componentes {{ site.data.keys.product }}](mfp_components_network_flows.jpg)
 
 Os fluxos entre os vários componentes do {{ site.data.keys.mf_server }},
 {{ site.data.keys.mf_analytics }},
@@ -113,7 +113,7 @@ O tempo de execução envia dados para o {{ site.data.keys.mf_analytics }} por m
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service }
 O serviço de administração comunica-se com o serviço de atualização em tempo real para armazenar e recuperar informações de configuração sobre os artefatos do {{ site.data.keys.product }}. A comunicação é executada por meio de HTTP ou HTTPS.
 
-A URL para conectar o serviço de atualização em tempo real é gerada automaticamente pelo serviço de administração. Ambos os serviços devem estar no mesmo servidor de aplicativos. A raiz de contexto do serviço de atualização em tempo real deve ser definida dessa forma: `<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for
+A URL para conectar o serviço de atualização em tempo real é gerada automaticamente pelo serviço de administração. Ambos os serviços devem estar no mesmo servidor de aplicativos. A raiz de contexto do serviço de atualização em tempo real deve ser definida da seguinte forma: `<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for
 **mfpadmin**, a raiz de contexto do serviço de atualização em tempo real deverá ser **mfpadminconfig**. É possível substituir a geração de URL padrão definindo as propriedades JNDI (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol** e
 **mfp.admin.proxy.host**) no serviço de administração.
 
@@ -174,7 +174,7 @@ Entenda as restrições nos vários componentes do {{ site.data.keys.mf_server }
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
 Descubra as restrições e o modo de implementação do serviço de administração, serviço de atualização em tempo real e tempo de execução por topologia de servidor.
 
-O serviço de atualização em tempo real deve ser sempre instalado com o serviço de administração no mesmo servidor de aplicativos, conforme explicado em [Serviço de administração do {{ site.data.keys.mf_server }} para o serviço de atualização em tempo real do {{ site.data.keys.mf_server }}](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). A raiz de contexto do serviço de atualização em tempo real deve ser definida dessa forma: `/<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for **/mfpadmin**, a raiz de contexto do serviço de atualização em tempo real deverá ser **/mfpadminconfig**.
+O serviço de atualização em tempo real deve ser sempre instalado com o serviço de administração no mesmo servidor de aplicativos, conforme explicado em [Serviço de administração do {{ site.data.keys.mf_server }} para o serviço de atualização em tempo real do {{ site.data.keys.mf_server }}](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). A raiz de contexto do serviço de atualização em tempo real deve ser definida da seguinte forma: `/<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for **/mfpadmin**, a raiz de contexto do serviço de atualização em tempo real deverá ser **/mfpadminconfig**.
 
 É possível usar as seguintes topologias de servidores de aplicativos:
 
@@ -208,7 +208,7 @@ A implementação assimétrica é suportada somente para a topologia de célula 
 É possível configurar uma topologia independente para o perfil completo do WebSphere Application Server, o perfil Liberty do WebSphere Application Server e o Apache Tomcat.
 Nessa topologia, todos os componentes de administração e os tempos de execução são implementados em uma única Java Virtual Machine (JVM).
 
-![Topologia Independente](standalone_topology.jpg)
+![Topologia independente](standalone_topology.jpg)
 
 Com uma JVM, somente a implementação simétrica é possível com as seguintes características:
 
@@ -232,8 +232,8 @@ As propriedades JNDI globais são necessárias para serviços de administração
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Standalone |
 | mfp.admin.jmx.host       | O nome do host do servidor de perfil Liberty do WebSphere Application Server. |
-| mfp.admin.jmx.port       | A porta do conector REST que é a porta do atributo httpsPort declarado no elemento `<httpEndpoint>` do arquivo server.xml do servidor de perfil Liberty do WebSphere Application Server. Essa propriedade não tem nenhum valor padrão. |
-| mfp.admin.jmx.user       | O nome do usuário do administrador do WebSphere Application Server Liberty, que deve ser idêntico ao nome definido no elemento `<administrator-role>` do arquivo server.xml do servidor de perfil Liberty do WebSphere Application Server. |
+| mfp.admin.jmx.port       | A porta do conector REST que é a porta do atributo httpsPort declarado no `<httpEndpoint>` elemento do arquivo server.xml do servidor de perfil do WebSphere Application Server Liberty. Essa propriedade não tem nenhum valor padrão. |
+| mfp.admin.jmx.user       | O nome do usuário do administrador do WebSphere Application Server Liberty, que deve ser idêntico ao nome definido no `<administrator-role>` elemento do arquivo server.xml do servidor de perfil do WebSphere Application Server Liberty. |
 | mfp.admin.jmx.pwd        | A senha do usuário administrador do WebSphere Application Server Liberty. |
 
 Vários componentes de administração podem ser implementados para ativar a mesma JVM para executar em componentes de administração separados que gerenciam diferentes tempos de execução.
@@ -284,7 +284,7 @@ Um farm é um conjunto de servidores individuais no qual os mesmos componentes s
 
 Nessa topologia, todos os componentes de administração ({{ site.data.keys.mf_console }}, o serviço de administração e o serviço de atualização em tempo real) e tempos de execução são implementados em cada servidor no farm.
 
-![Topologia para um servidor farm](server_farm_topology.jpg)
+![Topologia para um server farm](server_farm_topology.jpg)
 
 Essa topologia suporta somente a implementação simétrica. Os tempos de execução e os componentes de administração devem ser implementados em cada servidor no farm. A implementação dessa topologia tem as seguintes características:
 
@@ -432,7 +432,7 @@ Quando você implementa vários componentes de administração, deve especificar
 
 Na topologia Liberty Collective, os componentes de administração do {{ site.data.keys.mf_server }} ({{ site.data.keys.mf_console }}, o serviço de administração e o serviço de atualização em tempo real) são implementados em um controlador coletivo e os tempos de execução do {{ site.data.keys.product }} em um membro coletivo. Essa topologia suporta somente implementação assimétrica, e os tempos de execução não podem ser implementados em um controlador coletivo.
 
-![Topologia para Liberty Collective](liberty_collective_topology.jpg)
+![Topologia para o Liberty Collective](liberty_collective_topology.jpg)
 
 A implementação dessa topologia tem as seguintes características:
 
@@ -558,7 +558,7 @@ A propriedade JNDI a seguir é necessária para o tempo de execução quando vá
 
 | Propriedades JNDI | Valores | 
 |-----------------|--------|
-| mfp.admin.jmx.replica | Lista de terminais de diferentes réplicas do controlador com a seguinte sintaxe: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | Lista de endpoints das diferentes réplicas do controlador com a sintaxe a seguir: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
 
 Quando vários componentes de administração são implementados no controlador, cada tempo de execução deve ter o mesmo valor para a propriedade JNDI **mfp.admin.environmentid** local que o valor definido para o serviço de administração gerenciando o tempo de execução.
 
@@ -572,7 +572,7 @@ Exemplos dessas topologias suportam implementação assimétrica ou simétrica, 
 {: #symmetric-deployment-in-the-same-server-or-cluster }
 O diagrama abaixo mostra a implementação simétrica em que os tempos de execução e os componentes de administração são implementados no mesmo servidor ou cluster.
 
-![Uma topologia do WAS ND](was_nd_topology_1.jpg)
+![Uma topologia de WAS ND](was_nd_topology_1.jpg)
 
 A implementação dessa topologia tem as seguintes características:
 

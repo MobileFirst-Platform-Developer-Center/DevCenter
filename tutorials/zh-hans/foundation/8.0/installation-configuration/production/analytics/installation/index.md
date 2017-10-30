@@ -96,7 +96,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 WebSphere Application Server Liberty 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。**analytics.ear ** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
+确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。**analytics.ear** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
 
 1. 在 **./wlp/bin** 文件夹中运行以下命令以创建服务器。
 
@@ -144,7 +144,8 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
             </security-role>
         </application-bnd>
    </application>
-<basicRegistry id="worklight" realm="worklightRealm">
+
+   <basicRegistry id="worklight" realm="worklightRealm">
         <user name="business" password="demo"/>
         <user name="developer" password="demo"/>
         <user name="support" password="demo"/>
@@ -177,8 +178,8 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 2. 取消注释 **conf/server.xml** 文件中的以下节（此节存在于新下载的 Tomcat 归档中，但已被注释掉）。
 
    ```xml
-   <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
-   ```
+   <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
+```
 
 3. 在 **conf/server.xml** 文件中声明两个 WAR 文件，并定义一个用户注册表。
 
@@ -303,26 +304,26 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 下表显示了旧事件类型与新事件类型之间的映射。一些事件类型未更改。
 
-| 旧事件类型            | 新事件类型         |
+| 旧事件类型| 新事件类型|
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition        |
-| AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	            | CustomChart            |
-| CustomData	            | CustomData             |
-| Devices	                | Device                 |
-| MfpAppLogs                | AppLog                 |
-| MfpAppPushAction          | AppPushAction          |
-| MfpAppSession	            | AppSession             |
-| ServerLogs	            | ServerLog              |
-| ServerNetworkTransactions | NetworkTransaction     |
-| ServerPushNotifications   | PushNotification       |
-| ServerPushSubscriptions   | PushSubscription       |
-| Users	                    | User                   |
-| inboundRequestURL	        | resourceURL            |
-| mfpAppName	            | appName                |
-| mfpAppVersion	            | appVersion             |
+| AlertDefinition	        | AlertDefinition|
+| AlertNotification	        | AlertNotification|
+| AlertRunnerNode	        | AlertRunnerNode|
+| AnalyticsConfiguration| AnalyticsConfiguration|
+| CustomCharts	            | CustomChart|
+| CustomData	            | CustomData|
+| Devices	                | Device|
+| MfpAppLogs| AppLog|
+| MfpAppPushAction| AppPushAction|
+| MfpAppSession	            | AppSession|
+| ServerLogs	            | ServerLog|
+| ServerNetworkTransactions| NetworkTransaction|
+| ServerPushNotifications| PushNotification|
+| ServerPushSubscriptions| PushSubscription|
+| Users	                    | User|
+| inboundRequestURL	        | resourceURL|
+| mfpAppName	            | appName|
+| mfpAppVersion	            | appVersion|
 
 ### 分析数据迁移
 {: #analytics-data-migration }
@@ -345,6 +346,8 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 ![控制台中的“迁移”页面](migration_page.jpg)
 
 > **注：**该过程可能需要较长时间（具体取决于您拥有的数据量），并且在迁移期间不能停止该过程。
+
+
 
 在具有 32G 的 RAM、16G 的 JVM 以及 4 核处理器的单个节点上迁移 100 万个文档大约需要 3 分钟。由于无法查询到未迁移的文档，因而未在 {{ site.data.keys.mf_analytics_console }} 中呈现这些文档。
 

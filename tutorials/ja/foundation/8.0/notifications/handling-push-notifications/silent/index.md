@@ -22,7 +22,7 @@ iOS 用にサポートされている 3 つのタイプの通知は、`DEFAULT`�
 
 > **注:** 通知がサイレントの場合、**アラート**、**サウンド**、および**バッジ**のプロパティーは無視されます。
 
-![{{ site.data.keys.mf_console }} での iOS サイレント通知の通知タイプの設定](notification-type-for-silent-notifications.png)
+![{{ site.data.keys.mf_console }}](notification-type-for-silent-notifications.png)
 
 ## Cordova アプリケーションでのサイレント・プッシュ通知の処理
 {: #handling-silent-push-notifications-in-cordova-applications }
@@ -31,8 +31,8 @@ JavaScript プッシュ通知のコールバック・メソッド内で、以下
 1. 通知タイプをチェックします。例えば、次のとおりです。
 
    ```javascript
-   if(props['content-available'] == 1) {
-        //Silent Notification or Mixed Notification. Perform non-GUI tasks here.
+if(props['content-available'] == 1) {
+//Silent Notification or Mixed Notification. Perform non-GUI tasks here.
    } else {
         //Normal notification
    }

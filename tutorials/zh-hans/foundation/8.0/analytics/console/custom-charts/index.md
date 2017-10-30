@@ -144,6 +144,7 @@ weight: 3
 日志信息还包含有关设备的上下文信息，包括环境、应用程序名称和应用程序版本。
 
 > **注：**您必须记录定制事件以填充定制图表。有关从客户机应用程序发送定制事件的信息，请参阅[捕获定制数据](../../analytics-api/#custom-events)。
+
 1. 从客户机应用程序，通过将捕获到的日志发送至服务器来填充数据。参阅[发送捕获的日志](../../analytics-api/#sending-analytics-data)。
 2. 在 {{ site.data.keys.mf_analytics_console }} 中，单击**定制图表**选项卡并继续创建图表：
     * **图表标题**：应用程序和日志级别
@@ -175,8 +176,7 @@ weight: 3
 ## 导出和导入定制图表定义
 {: #exporting-and-importing-custom-chart-definitions }
 
-您可以在 {{ site.data.keys.mf_analytics_console_short }} 中导出和导入定制图表定义。
-如果从测试环境迁移至生产部署，可以通过导出定制图表定义来节省时间，而无需为新集群重新创建定制图表。
+您可以在 {{ site.data.keys.mf_analytics_console_short }} 中导出和导入定制图表定义。如果从测试环境迁移至生产部署，可以通过导出定制图表定义来节省时间，而无需为新集群重新创建定制图表。
 
 1. 单击 {{ site.data.keys.mf_analytics_console_short }} 仪表板中的**定制图表**选项卡。
 2. 单击**导出图表**以下载带有您的图表定义的 JSON 文件。

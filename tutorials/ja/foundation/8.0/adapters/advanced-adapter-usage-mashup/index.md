@@ -48,8 +48,7 @@ MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions
 別のアダプターを呼び出す前に - AdaptersAPI を変数に割り当てる必要があります。
 
 ```java
-@Context
-AdaptersAPI adaptersAPI;
+@Context AdaptersAPI adaptersAPI; 
 ```
 
 ### Java アダプターからの Java アダプターの呼び出し
@@ -98,11 +97,11 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 それぞれのタイプで、アダプターの名前がやや異なります。  
 マッシュアップ・タイプとそれに該当するアダプター名のリストは次のとおりです。
 
-| シナリオ                                         |      SQL アダプター名        |  HTTP アダプター名    |  
+| シナリオ|      SQL アダプター名|  HTTP アダプター名|  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** アダプター → **JavaScript** アダプター  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** アダプター → **JavaScript** アダプター        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** アダプター → **Java** アダプター              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** アダプター → **JavaScript** アダプター| SQLAdapterJS| HTTPAdapterJS|  
+| **Java** アダプター → **JavaScript** アダプター| SQLAdapterJava| HTTPAdapterJS|  
+| **Java** アダプター → **Java** アダプター| SQLAdapterJava| HTTPAdapterJava|
 
 
 ### マッシュアップのサンプル・フロー

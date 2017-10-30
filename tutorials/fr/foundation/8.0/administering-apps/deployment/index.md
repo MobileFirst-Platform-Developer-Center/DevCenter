@@ -102,8 +102,8 @@ le fichier **server.xml** :
         <protocol>https</protocol>
         <domain>mydomain.com</domain>
         <port>443</port>
-        <!-- The following properties are used by adapter's key manager for choosing a specific certificate from the key store
-        <sslCertificateAlias></sslCertificateAlias> 
+        <!-- Les propriétés suivantes sont utilisées par le gestionnaire de clés de l'adaptateur pour choisir un certificat spécifique dans le magasin de clés
+        <sslCertificateAlias></sslCertificateAlias>
         <sslCertificatePassword></sslCertificatePassword>
         -->		
       </connectionPolicy>
@@ -141,7 +141,7 @@ Pour plus d'informations, voir [Configuration du magasin de clés {{ site.data.k
 2. Si vous prévoyez de distribuer l'artefact installable de l'application, incrémentez la version de l'application.
 3. Avant de générer votre application, configurez-la pour le serveur cible.
 
-    Vous définissez l'URL et le nom d'exécution du serveur cible dans le fichier de propriétés du client. Vous pouvez également modifier le serveur cible en utilisant l'{{ site.data.keys.mf_cli }}. Pour configurer l'application pour un serveur cible sans enregistrer l'application sur un serveur en cours d'exécution, vous pouvez utiliser les commandes `mfpdev app config server <server URL>` et `mfpdev app config runtime <runtime_name>`. Vous pouvez aussi enregistrer l'application sur un serveur en cours d'exécution en exécutant la commande `mfpdev app register`. Utilisez l'URL publique du serveur. L'application mobile utilise cette URL pour se connecter  au serveur {{ site.data.keys.mf_server }}.
+    Vous définissez l'URL et le nom d'exécution du serveur cible dans le fichier de propriétés du client. Vous pouvez également modifier le serveur cible en utilisant l'{{ site.data.keys.mf_cli }}. Pour configurer l'application pour un serveur cible sans l'enregistrer sur un serveur en cours d'exécution, vous pouvez utiliser les commandes `mfpdev app config server<server URL>` et `mfpdev app config runtime<runtime_name>`. Vous pouvez aussi enregistrer l'application sur un serveur en cours d'exécution en exécutant la commande `mfpdev app register`. Utilisez l'URL publique du serveur. L'application mobile utilise cette URL pour se connecter  au serveur {{ site.data.keys.mf_server }}.
     
     Par exemple, pour configurer l'application pour un serveur cible mfp.mycompany.com avec un environnement d'exécution dont le nom par défaut est mfp, exécutez
     `mfpdev app config server https://mfp.mycompany.com` et `mfpdev app config runtime mfp`.
