@@ -1,6 +1,18 @@
 name: "IBM Mobile Foundation Developer Center"
 description: "Develop, test, manage, and secure your native and hybrid apps. Use the labs, blog posts, tutorials and videos to learn about Mobile Foundation on Bluemix or on-premise. Download product components and samples related to Mobile Foundation."
 url: https://mobilefirstplatform.ibmcloud.com
+languages: ["de", "en", "es", "fr", "ja", "ko", "pt-br", "ru", "zh-hans"]
+defaultLanguage: en
+languageNames:
+  de: Deutsch
+  en: English
+  es: Spanish
+  fr: French
+  ja: Japanese
+  ko: Korean
+  pt-br: Portugese
+  ru: Russian
+  zh-hans: Chinese
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
 paginate: 20
@@ -58,7 +70,87 @@ defaults:
       indexed: true
   -
     scope:
-      path: "tutorials"
+      path: "tutorials/en"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/de"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/es"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/fr"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ja"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ko"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/pt-br"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/ru"
+    values:
+      layout: tutorial
+      category: tutorial
+      show_breadcrumb: true
+      show_disqus: true
+      show_in_nav: true
+      print_pdf: true
+  -
+    scope:
+      path: "tutorials/zh-hans"
     values:
       layout: tutorial
       category: tutorial
