@@ -1,5 +1,5 @@
 ---
-title: IBM MobileFirst Platform Foundation Support for iOS 11 and IPhone X
+title: IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X
 date: 2017-09-18
 tags:
 - MobileFirst_Platform
@@ -44,12 +44,12 @@ See our earlier [blog post]({{site.baseurl}}/blog/2017/07/24/compatibility-tests
   >**Update :** The issue is fixed and published for MobileFirst v7.1. The fix is available with latest iFix release version 7.1.0.0-MFPF-IF201710051201.
 
 * Though this change is not an issue with MobileFirst, customers must be aware of an issue when using command `cordova emulate ios`. See [here]( https://github.com/phonegap/ios-sim/issues/218), for more details.
-To overcome this issue apply the latest Cordova update, using the command `cordova platform add ios@https://github.com/apache/cordova-ios/`.
+To overcome this issue apply the latest Cordova update, using the command `cordova platform add ios@https://github.com/apache/cordova-ios/` .
   >**Update :** Cordova has fixed this issue in its latest cordova-ios 4.5.1 version release.To adapt this fix use  `cordova platform add ios@4.5.1` while adding ios platform to your cordova application.
 
 * With iOS 11, Apple has modified the UIWebView, this impacts the select drop-down list. The drop down displays incorrect list values. This is a bug with iOS11 ([see here](https://forums.developer.apple.com/thread/84585) and not an issue with MobileFirst. To fix this issue on MobileFirst v8.0 add WKWebView plugin to your cordova project.
 
-* With new Iphone X release from Apple, there is a new display, which has notch at the top. The cordova/hybrid apps are affected by this new notch introduced in Iphone X. This issue is not addressed/fixed by Apple or cordova, hence, MobileFirst hybrid apps will have rectangular display, as before. A related post that talks about the same issue and a work-around for it is [here](https://stackoverflow.com/questions/46232812/cordova-app-not-displaying-correctly-on-iphone-x-simulator). Meanwhile, we will continue watching for an update from cordova/Apple on a fix for this issue in their future update/releases, and accordingly, we will adapt those changes into MobileFirst v7.1.
+* With new iPhone X release from Apple, there is a new display, which has notch at the top. The cordova/hybrid apps are affected by this new notch introduced in iPhone X. This issue is not addressed/fixed by Apple or cordova, hence, MobileFirst hybrid apps will have rectangular display, as before. A related post that talks about the same issue and a work-around for it is [here](https://stackoverflow.com/questions/46232812/cordova-app-not-displaying-correctly-on-iphone-x-simulator). Meanwhile, we will continue watching for an update from cordova/Apple on a fix for this issue in their future update/releases, and accordingly, we will adapt those changes into MobileFirst v7.1.
 
 ### WatchOS 4
 Apple has released WatchOS 4 alongside iOS 11. To support watchOS 2 onwards, MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework. This framework can be used in WatchKit extension in the Xcode project.
