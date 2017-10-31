@@ -83,15 +83,15 @@ Jekyll::Hooks.register :site, :post_write do |site|
       elsif document.url.include? '/ko/'
         element['language'] = ['ko']
       elsif document.url.include? '/pt-br/'
-        element['language'] = ['pt-br']
+        element['language'] = ['pt']
       elsif document.url.include? '/ru/'
         element['language'] = ['ru']
       elsif document.url.include? '/de/'
         element['language'] = ['de']
       elsif document.url.include? '/zh-hans/'
-        element['language'] = ['zh-hans']
+        element['language'] = ['zh']
       elsif document.url.include? '/ja/'
-        element['language'] = ['ja']   
+        element['language'] = ['ja']
       end
 
       # create the index object
