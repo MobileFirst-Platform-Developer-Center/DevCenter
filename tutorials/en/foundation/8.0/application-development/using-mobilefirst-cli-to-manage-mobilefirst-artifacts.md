@@ -34,17 +34,17 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 {: #prerequisites }
 The {{ site.data.keys.mf_cli }} is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
 
-Ensure **node.js** is installed in the development environment in order to install NPM packages.  
+Ensure **node.js** and **npm** is installed in the development environment in order to install NPM packages.  
 Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
 
 To confirm that node.js is properly installed, run the command `node -v`.
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **Note:** Minimum supported node.js version is 4.2.3
+> **Note:** Minimum supported **node.js** version is **4.2.3**. Also, with the fast evolving **node** and **npm** packages, the MobileFirst CLI might not be fully functional with all the available versions of **node** and **npm** including the latest versions. Ensure that **node** is on version **6.11.1** and **npm** version is **3.10.10**, for proper functioning of the CLI.
 
 ## Installing the {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
