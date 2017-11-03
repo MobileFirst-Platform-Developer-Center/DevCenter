@@ -44,7 +44,7 @@ node -v
 v6.11.1
 ```
 
-> **Note:** Minimum supported node.js version is 4.2.3. Also note that with the fast changing node and npm packages, the MobileFirst CLI might not be fully functional with all the existing versions of node and npm including the latest versions. Please ensure, the node is on version 6.11.1 and npm version 3.10.10 for proper functioning of the CLI.
+> **Note:** Minimum supported **node.js** version is **4.2.3**. Also, with the fast evolving **node** and **npm** packages, the MobileFirst CLI might not be fully functional with all the available versions of **node** and **npm** including the latest versions. Ensure that **node** is on version **6.11.1** and **npm** version is **3.10.10**, for proper functioning of the CLI.
 
 ## Installing the {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
