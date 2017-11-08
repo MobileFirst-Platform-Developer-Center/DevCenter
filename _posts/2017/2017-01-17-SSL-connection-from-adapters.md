@@ -94,7 +94,7 @@ Follow the steps below to configure {{ site.data.keys.mf_server }} to use your k
    * **Javascript adapter**
      In the {{ site.data.keys.mf_console }} navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined {{ site.data.keys.mf_server }} keystore. The steps include uploading your keystore file, indicating its type and providing your keystore password, the name of your {{ site.data.keys.mf_server }} identity alias, and the alias password.
      When configured successfully, the **Status** changes to *User Defined*, else an error is displayed and the status remains *Default*.
-     The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
+     The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/javascript-adapters/js-http-adapter/#the-xml-file).
 
    * **Java adapter**
      To configure mutual SSL authentication for Java adapter the server's keystore needs to be updated. This can be done by following the steps below:

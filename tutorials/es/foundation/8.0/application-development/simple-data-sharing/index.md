@@ -1,72 +1,104 @@
 ---
 layout: tutorial
-title: Simple Data Sharing
+title: Compartición de datos simple
 relevantTo: [ios,android,cordova]
 weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-The Simple Data Sharing feature makes it possible to securely share lightweight information among a family of applications on a single device. This feature uses native APIs that are already present in the different mobile SDKs to provide one unified developer API. This {{ site.data.keys.product_adj }} API abstracts the different platform complexities, making it easier for developers to quickly implement code that allows for inter-application communication.
+La característica de compartición de datos simple permite compartir de forma segura pequeñas cantidades de información entre una familia de aplicaciones en un único dispositivo.
+Esta característica utiliza las API nativas que ya están presentes en los distintos SDK móviles para proporcionar una API de desarrollador unificada.
+Esta API de {{ site.data.keys.product_adj }} permite abstraerse de las distintas complejidades de cada plataforma, facilitando a los desarrolladores una implementación de código rápida que permite una comunicación entre aplicaciones.
 
-This feature is supported on iOS and Android for both Cordova and native applications.
 
-After you enable the Simple Data Sharing feature, you can use the provided Cordova and native APIs to exchange simple string tokens among a family of applications on a device.
+Se da soporte a esta característica tanto en iOS como en Android, tanto para aplicaciones nativas como de Cordova.
 
-#### Jump to
+
+Después de habilitar la característica de compartición de datos simple, utilice las API nativas y de Cordova que se proporcionan para intercambiar señales de series simples entre una familia de aplicaciones en un dispositivo.
+
+
+#### Ir a 
 {: #jump-to}
-* [Terminology](#terminology)
-* [Enabling the Simple Data Sharing feature](#enabling-the-simple-data-sharing-feature)
-* [Simple Data Sharing API concepts](#simple-data-sharing-api-concepts)
-* [Limitations and considerations](#limitations-and-considerations)
+* [Terminología](#terminology)
+* [Habilitación de la característica de compartición de datos simple](#enabling-the-simple-data-sharing-feature)
+* [Conceptos de API de compartición de datos simple](#simple-data-sharing-api-concepts)
+* [Limitaciones y consideraciones](#limitations-and-considerations)
 
-## Terminology
+## Terminología
 {: #terminology }
-### {{ site.data.keys.product_adj }} application family
+### Familia de aplicaciones de {{ site.data.keys.product_adj }}
 {: #mobilefirst-application-family }
-An application family is a way to associate a group of applications which share the same level of trust. Applications in the same family can securely and safely share information with each other.
+Una familia de aplicaciones es una forma de asociar un grupo de aplicaciones que comparten el mismo nivel de confianza.
+Las aplicaciones en la misma familia pueden compartir información de forma segura y protegida entre sí.
 
-To be considered part of the same {{ site.data.keys.product_adj }} application family, all applications in the same family must comply with the following requirements:
 
-* Specify the same value for the application family in the application descriptor.
-	* For iOS applications, this requirement is synonymous to the access group entitlements value.
-	* For Android applications, this requirement is synonymous to the **sharedUserId** value in the **AndroidManifest.xml** file.
-		
-    > **Note:** For Android, the name must be in the **x.y** format.
+Para ser considerado parte de la misma familia de aplicaciones de {{ site.data.keys.product_adj }}, todas las aplicaciones en la misma familia deben cumplir con los siguientes requisitos:
 
-* Applications must be signed by the same signing identity. This requirement means that only applications from the same organization can use this feature.	
-    * For iOS applications, this requirement means the same Application ID prefix, provisioning profile, and signing identity is used to sign the application.
-	* For Android applications, this requirement means the same signing certificate and key.
 
-Aside from the {{ site.data.keys.product }} provided APIs, applications in the same {{ site.data.keys.product_adj }} application family can also use the data sharing APIs that are available through their respective native mobile SDK APIs.
+* Especificar el mismo valor para la familia de aplicaciones en el descriptor de aplicación.
 
-### String tokens
+	* Para aplicaciones iOS, este requisito es sinónimo del valor de titularidad de grupo de acceso.
+
+	* Para aplicaciones Android, este requisito es sinónimo del valor **sharedUserId** en el archivo **AndroidManifest.xml**.
+
+
+    > **Nota:** En Android, el nombre debe tener el formato **x.y**.
+
+
+* Las aplicaciones deben estar firmadas por la misma identidad de firma.
+Este requisito significa que solo aplicaciones de la misma organización pueden utilizar esta característica.
+
+    * Para aplicaciones iOS, este requisito significa que el mismo prefijo de ID de aplicación, perfil de aprovisionamiento e identidad de firma se utilizan para firmar la aplicación.
+
+	* Para aplicaciones Android, este requisito significa la misma clave y certificado de firma.
+
+
+Además de las API de {{ site.data.keys.product }} que se proporcionan, las aplicaciones en la misma familia de aplicaciones de {{ site.data.keys.product_adj }} pueden utilizar las API de compartición de datos que están disponibles a través de sus respectivas API de SDK de móvil nativas.
+
+
+### Señales de serie
 {: #string-tokens }
-Sharing string tokens across applications of the same {{ site.data.keys.product_adj }} application family can now be accomplished in hybrid or native iOS and Android applications through the Simple Data Sharing feature.
+La compartición de señales de serie en las aplicaciones de la misma familia de {{ site.data.keys.product_adj }} se puede lograr ahora en aplicaciones Android e iOS nativas o híbridas a través de la característica de compartición de datos simple.
 
-String tokens are considered simple strings, such as passwords or cookies. Using large strings results in considerable performance degradation.
 
-Consider encrypting tokens when you use the APIs for added security.
+Las señales de serie se consideran como series simples como, por ejemplo, contraseñas o cookies.
+La utilización de series largas dan lugar a una considerable degradación del rendimiento.
 
-> For more information, see [JSONStore security utilities](../jsonstore/security-utilities/).
 
-## Enabling the Simple Data Sharing feature
+Considere la utilización de señales cifradas al utilizar las API para añadir una mayor seguridad.
+
+
+> Para obtener más información, consulte [Programas de utilidad de seguridad de JSONStore](../jsonstore/security-utilities/). 
+
+## Habilitación de la característica de compartición de datos simple
 {: #enabling-the-simple-data-sharing-feature }
-Wheter your app is a native app or a Cordova-based app, the instructions below apply to both.  
-Open your application in Xcode/Android Studio and:
+Independientemente de si su aplicación es nativa o se basa en Cordova, las siguientes instrucciones se aplican a ambas.
+  
+Abra su aplicación en Xcode/Android Studio y: 
 
 ### iOS
 {: #ios }
-1. In Xcode, add a Keychain Access Group with a unique name for all the apps which you want to make part of the same application family. The application-identifier entitlement must be the same for all applications in your family.
-2. Ensure that applications that are part of the same family share the same Application ID prefix. For more information, see 3. Managing Multiple App ID Prefixes in the iOS Developer Library.
-4. Save and sign applications. Ensure that all applications in this group are signed by the same iOS certificate and provisioning profiles.
-5. Repeat the steps for all applications that you want to make part of the same application family.
+1. En Xcode, añada un grupo de acceso de cadena de claves con un nombre exclusivo para todas las aplicaciones que desee que sean parte de la misma familia.
+La titularidad del identificador de aplicaciones debe ser el mismo para todas las aplicaciones en la familia.
 
-You can now use the native Simple Data Sharing APIs to share simple strings among the group of applications in the same family. 
+2. Asegúrese de que las aplicaciones que son parte de la misma familia comparten el mismo prefijo de ID de aplicación.
+Para obtener más información, consulte 3. Gestión de varios prefijos de ID de aplicación en iOS Developer Library.
+
+4. Guarde y firme las aplicaciones.
+Asegúrese de que todas las aplicaciones en este grupo se firman con los mismos perfiles de aprovisionamiento y certificados de iOS.
+
+5. Repita los pasos para todas las aplicaciones que desea sean parte de la misma familia de aplicaciones.
+
+
+Ahora podrá utilizar las API de compartición de datos simple para compartir series simples entre el grupo de aplicaciones en la misma familia.
+
 
 ### Android
 {: #android }
-1. Enable the Simple Data Sharing option by specifying the application family name as the **android:sharedUserId** element in the manifest tag of your **AndroidManifest.xml** file. For example: 
+1. Habilite la opción de compartición de datos simple especificando el nombre de la familia de aplicaciones como el elemento **android:sharedUserId** en la etiqueta manifest de su archivo **AndroidManifest.xml**.
+Por ejemplo:
+
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -74,19 +106,26 @@ You can now use the native Simple Data Sharing APIs to share simple strings amon
         android:versionName="1.0"
         android:sharedUserId="com.myGroup1">
    ```
-    
-2. Ensure that applications that are part of the same family are signed by the same signing credentials.
-3. Uninstall any earlier versions of the applications that did not specify a **sharedUserId** or that used a different **sharedUserId**.
-4. Install the application on the device.
-5. Repeat the steps for all applications that you want to make part of the same application family.
 
-You can now use the native Simple Data Sharing APIs that are provided to share simple strings among the group of applications in the same family.
+2. Asegúrese de que las aplicaciones que son parte de la misma familia se firmen con las mismas credenciales de firma.
 
-## Simple Data Sharing API concepts
+3. Desinstale cualquier versión anterior de aplicaciones que no especificaban un **sharedUserId** o que utilizaban un **sharedUserId** diferente.
+
+4. Instale la aplicación en el dispositivo.
+
+5. Repita los pasos para todas las aplicaciones que desea sean parte de la misma familia de aplicaciones.
+
+
+Ahora podrá utilizar las API de compartición de datos que se proporcionan para compartir series simples entre el grupo de aplicaciones en la misma familia.
+
+
+## Conceptos de API de compartición de datos simple
 {: #simple-data-sharing-api-concepts }
-The Simple Data Sharing APIs allow any application in the same family to set, get, and clear key-value pairs from a common place. The Simple Data Sharing APIs are similar for every platform, and provide an abstraction layer, hiding the complexities that exist with each native SDK's APIs, making it easy to use.
+Las API de compartición de datos simple permiten a las aplicaciones de la misma familia establecer, obtener y borrar parejas de clave-valor en un lugar común.
+Las API de compartición de datos simple son similares en cada plataforma y proporcionan una capa de abstracción, ocultando las complejidades que existen con las API de los SDK nativos, facilitando su uso.
 
-The following examples show how you can set, get, and delete tokens from the shared credential storage for the different environments.
+
+Los siguientes ejemplos muestran cómo establecer, obtener y suprimir señales de un almacenamiento de credenciales compartido para distintos entornos. 
 
 ### JavaScript
 {: #javascript }
@@ -96,8 +135,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> For more information about the Cordova APIs, see the [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken), [setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken), and [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) functions in the API reference.
-
+> Para obtener más información sobre las API de Cordova, consulte las funciones [getSharedToken](../../api/client-side-api/javascript/client/), [setSharedToken](../../api/client-side-api/javascript/client/) y [clearSharedToken](../../api/client-side-api/javascript/client/) en la referencia de API `WL.Client`.
 ### Objective-C
 {: #objective-c }
 ```objc
@@ -106,7 +144,8 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 [WLSimpleDataSharing clearSharedToken: myName];
 ```
 
-> For more information about the Objective-C APIs, see the [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) class in the API reference.
+> Para obtener más información sobre las API de Objective-C, consulte la clase [WLSimpleDataSharing](../../api/client-side-api/objc/client/) en la referencia de API.
+
 
 ### Java
 {: #java }
@@ -116,30 +155,40 @@ String token = WLSimpleSharedData.getSharedToken(myName);
 WLSimpleSharedData.clearSharedToken(myName);
 ```
 
-> For more information about the Java APIs, see Class [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html) in the API reference.
+> Para obtener más información sobre las API de Java, consulte la clase [WLSimpleDataSharing](../../api/client-side-api/java/client/) en la referencia de API.
 
-## Limitations and considerations
+
+## Limitaciones y consideraciones
 {: #limitations-and-considerations }
-### Security considerations
+### Consideraciones de seguridad
 {: #security-considerations }
-Because this feature allows for data access among a group of applications, special care must be taken to protect access to the device from unauthorized users. Consider the following security aspects:
+Puesto que esta característica permite acceder a los datos para un grupo de aplicaciones, se debe tener un cuidado especial para proteger el acceso al dispositivo desde usuarios no autorizados.
+Considere los siguientes aspectos sobre la seguridad:
 
-#### Device Lock
+#### Bloqueo de dispositivo
 {: #device-lock }
-For added security, ensure that devices are secured by a device password, passcode, or pin, so that access to the device is secured if the device is lost or stolen.
+Para una mayor seguridad, asegúrese de que los dispositivos están protegidos mediante contraseñas, códigos o pin de forma que el acceso al dispositivo esté protegido incluso cuando se pierde o es robado.
 
-#### Jailbreak Detection
+
+#### Detección de Jailbreak
 {: #jailbreak-detection }
-Consider using a mobile device management solution to ensure that devices in your enterprise are not jailbroken or rooted.
+Considere utilizar una solución de gestión de dispositivo móvil que asegure que no se realizan operaciones de jailbreak o root sobre dicho dispositivo.
 
-#### Encryption
+
+#### Cifrado
 {: #encryption }
-Consider encrypting any tokens before you share them for added security. For more information, see JSONStore security utilities.
+Para una mayor seguridad, considere cifrar todas las señales antes de compartirlas.
+Para obtener más información, consulte programas de utilidad de seguridad de JSONStore.
 
-### Size limit
+
+### Limite de tamaño
 {: #size-limit }
-This feature is meant for sharing of small strings, such as passwords or cookies. Be cognizant not to abuse this feature, as there are performance implications with such attempts to encrypt and decrypt or read and write any large values of data.
+Esta característica está pensada para compartir series pequeñas como, por ejemplo, contraseñas o cookies.
+Intente no utilizar esta característica con otros propósitos puesto que puede afectar al rendimiento al cifrar, descifrar, leer o escribir grandes cantidades de datos.
 
-### Maintenance challenges
+
+### Retos de mantenimiento
 {: #maintenance-challenges }
-Android developers must be aware that enabling this feature, or changing the application family value, results in their inability to upgrade existing applications that were installed under a different family name. For security reasons, Android requires earlier applications to be uninstalled before applications under a new family name can be installed.
+Los desarrolladores de Android deben saber que al habilitar esta característica, o al cambiar el valor de la familia de aplicaciones, dará lugar a la imposibilidad de actualizar aplicaciones existentes que se instalaron bajo un nombre diferente.
+Por razones de seguridad, es necesario desinstalar aplicaciones anteriores antes de poder instalar aplicaciones bajo el nuevo nombre de familia.
+

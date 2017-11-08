@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Multilingual translation of JavaScript (Cordova, Web) applications
-breadcrumb_title: Multilingual translation
+title: Traducción multilingüe de aplicaciones (Cordova, Web)
+breadcrumb_title: Traducción multilingüe
 relevantTo: [javascript]
 weight: 9
 downloads:
@@ -9,27 +9,33 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
-Items that can be translated are application strings and system messages. 
+Utilice la infraestructura de {{ site.data.keys.product_full }} para añadir traducción multilingüe en aplicaciones JavaScript (Cordova, Web) en otros idiomas.
+  
+Los elementos que se pueden traducir son mensajes del sistema y series de texto de la aplicación.
+ 
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Translating application strings](#translating-application-strings)
-* [Translating system messages](#translating-system-messages)
-* [Multilanguage translation](#multilanguage-translation)
-* [Detecting the device locale and language](#detecting-the-device-locale-and-language)
-* [Sample application](#sample-application)
+* [Traducción de series de la aplicación](#translating-application-strings)
+* [Traducción de mensajes del sistema](#translating-system-messages)
+* [Traducción multilingüe
+](#multilanguage-translation)
+* [Detección del idioma y entorno local del dispositivo](#detecting-the-device-locale-and-language)
+* [Aplicación de ejemplo](#sample-application)
 
-## Translating application strings
+## Traducción de series de la aplicación
 {: #translating-application-strings }
-Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
+Las series destinadas a ser traducidas se almacenan en un objeto `JSON` denominado "Messages".
+ 
 
-- In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
-- In Web applications, you need to add it.
+- En aplicaciones de Cordova que utilizan {{ site.data.keys.product_adj }} SDK,
+podrá encontrarlo en el archivo **index.js** de la aplicación Cordova: **[directorio-raíz-proyecto-cordova]/www/js/index.js**.
+- En aplicaciones web, necesita añadirlo.
 
-### JSON object structure example
+
+### Ejemplo de estructura de objeto JSON
 {: #json-object-structure-example }
 
 ```javascript
@@ -40,49 +46,60 @@ var Messages = {
 };
 ```
 
-Strings stored in the Messages `JSON` object can be referenced in two ways in the application logic:
+Se puede hacer referencia a las series almacenadas en el objeto `JSON` de dos formas en la lógica de la aplicación:
 
-**As a JavaScript object property:**
+
+**Como una propiedad de objeto JavaScript:**
 
 ```javascript
 Messages.headerText
 ```
 
-**As an ID of an HTML element with `class="translate"`:**
+**Como un ID de un elemento HTML con `class="translate"`:**
 
 ```html
 <h1 id="headerText" class="translate"></h1>
 ```
 
-## Translating system messages
+## Traducción de mensajes del sistema
 {: #translating-system-messages }
-It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
+También es posible traducir los mensajes del sistema que la aplicación muestra, por ejemplo "La conexión de internet no está disponible" o "Nombre de usuario o contraseña no válidos".
+Los mensajes del sistema se almacenan en el objeto `WL.ClientMessages`.
 
-**Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
 
-### Web applications
+**Nota:** Modifique los mensajes del sistema a un nivel de JavaScript global porque algunas partes del código se ejecutan únicamente después de que la aplicación se haya inicializado de forma satisfactoria.   
+
+### Aplicaciones web
 {: #web-applications }
-You can find a full list of system messages in the `messages.json` file, located in the **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**.
+Encontrará una lista completa de mensajes del sistema en el archivo `messages.json`,
+ubicado en la carpeta **[carpeta raíz proyecto]\node_modules\ibm-mfp-web-sdk\lib\messages\**.
 
-### Cordova applications
+### Aplicaciones de Cordova
 {: #cordova-applications }
-You can find a full list of system messages in the `messages.json` file, located inside the generated project.
+Encontrará una lista completa de mensajes del sistema en el archivo `messages.json`, que se encuentra dentro del proyecto generado.
 
-- Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
-- iOS, Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
 
-To translate a system message, override it in the application code.
+- Android: `[Proyecto-cordova]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
+
+- iOS, Windows: `[Proyecto-cordova]\platforms\[ios o windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
+
+Para traducir un mensaje de sistema, modifíquelo en el código de la aplicación.
+
 
 ```javascript
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 ```
 
-## Multilanguage translation
-{: #multilanguage-translation }
-Using JavaScript, you can implement multilanguage translation for your application.  
-The below steps explain the implementation of this tutorial's sample application.
+## Traducción multilingüe
 
-1. Set up the default application strings in the `index.js` file.
+{: #multilanguage-translation }
+Con la ayuda de JavaScript es posible implementar una traducción multilingüe a su aplicación.
+  
+En los siguientes pasos se explica la implementación de esta aplicación de ejemplo de esta guía de aprendizaje.
+
+
+1. Configure las series de aplicación predeterminadas en el archivo `index.js`.
+
 
    ```javascript
    var Messages = {
@@ -96,7 +113,8 @@ The below steps explain the implementation of this tutorial's sample application
    };
    ```
 
-2. Override specific strings when required.
+2. Modifique las series específicas si es necesario.
+
 
    ```javascript
    function setFrench(){
@@ -106,7 +124,10 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
+3. Actualice los componentes de la interfaz gráfica de usuario (GUI) con las nuevas series.
+Podrá realizar más tareas como, por ejemplo, obtener la dirección de escritura en los idiomas en los que se escribe de derecha a izquierda como, por ejemplo, el hebreo o el árabe.
+Cada vez que se actualiza un elemento, se actualiza con diferentes series de acuerdo al idioma activo.
+
 
    ```javascript
    function languageChanged(lang) {
@@ -139,20 +160,24 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-## Detecting the device locale and language
+## Detección del idioma y entorno local del dispositivo
 {: #detecting-the-device-locale-and-language }
-To detect the language used by the device or browser:
+Para detectar el idioma que utiliza el dispositivo o el navegador:
 
-### Web applications
+
+### Aplicaciones web
 {: #web-applications-locale}
-Detect the browser language using `navigator.language` or any number of available frameworks and solutins.
+Detecte el idioma del navegador mediante `navigator.language` o con cualquiera de las soluciones e infraestructuras disponibles.
 
-### Cordova applications
+
+### Aplicaciones de Cordova
 {: #cordova-applications-locale }
-Detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
-The globalization plug-in is auto-installed when adding a platform to the Cordova application.
+Detecte el entorno local y el idioma del dispositivo utilizando el plugin de globalización de Cordova:`cordova-plugin-globalization`.  
+El plugin de globalización se instala de forma automática al añadir una plataforma a la aplicación Cordova.
 
-Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
+
+Utilice las funciones `navigator.globalization.getLocaleName` y `navigator.globalization.getPreferredLanguage` para detectar el entorno local y el idioma respectivamente.
+
 
 ```javascript
 navigator.globalization.getLocaleName(
@@ -179,15 +204,18 @@ navigator.globalization.getPreferredLanguage(
 );
 ```
 
-The result can then be seen in the device log, for example from Android Studio's LogCat:  
-![Get device localle and language](DeviceLocaleLangugae.png)
+El resultado se puede ver en el registro del dispositivo, por ejemplo desde LogCat de Android Studio:
+  
+![Obtención del idioma y el entorno local](DeviceLocaleLangugae.png)
 
-## Sample application
+## Aplicación de ejemplo
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
+[
+Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Translation) el proyecto de Cordova.
+  
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Sugerencia:** Puede inspeccionar el LogCat de Android desde la consola de LogCat de Android Studio mientras la aplicación está en ejecución.

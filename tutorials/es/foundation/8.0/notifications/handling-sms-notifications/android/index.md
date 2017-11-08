@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Handling SMS Notifications in Android
-breadcrumb_title: Handling SMS in Android
+title: Manejo de notificaciones SMS en Android
+breadcrumb_title: Manejo de SMS en Android
 relevantTo: [android]
 weight: 10
 downloads:
@@ -9,48 +9,53 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../../) tutorials.
-
-**Prerequisites:**
-
-* Make sure you have read the following tutorials:
-  * [Notifications Overview](../../)
-  * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-  * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+Las notificaciones SMS son un subconjunto de las notificaciones push, y por lo tanto, primero [consulte las guías de aprendizaje de notificaciones push en Android](../../).
 
 
-#### Jump to:
+**Requisitos previos: **
+
+* Asegúrese de haber leído las siguientes guías de aprendizaje:
+
+  * [Visión general de las notificaciones](../../)
+  * [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/#installing-a-development-environment)
+  * [Adición de {{ site.data.keys.product }} SDK a aplicaciones iOS](../../../application-development/sdk/ios)
+* {{ site.data.keys.mf_server }} para ejecutar localmente, o un remotamente ejecutando {{ site.data.keys.mf_server }}.
+* {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador
+
+
+#### Ir a: 
 {: #jump-to }
-* [Notifications API](#notifications-api)   
-* [Using an SMS subscribe servlet](#using-an-sms-subscribe-servlet)     
-* [Sample Application](#sample-application)
+* [API de notificaciones](#notifications-api)   
+* [Utilización de un servlet de suscripción SMS](#using-an-sms-subscribe-servlet)     
+* [Aplicación de ejemplo](#sample-application)
 
-## Notifications API
+## API de notificaciones
 {: #notifications-api }
-In SMS notifications, when registering the device, a phone number value is passed.
+En notificaciones SMS, al registrar el dispositivo, se pasa un valor de número de teléfono.
 
-#### Challenge Handlers
+
+#### Manejadores de desafíos
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación de seguridad**, debe asegurarse de que existen **manejadores de desafíos** coincidentes registrados antes de utilizar las API de push.
 
-#### Initialization
+
+#### Inicialización
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+Requerido para la aplicación de cliente para conectarse al servicio MFPPush con el contexto de aplicación correcto. 
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* Primero se debe llamar al método de la API antes de utilizar cualquier otra API MFPPush.
+
+* Registra la función de retorno de llamada para manejar las notificaciones push recibidas. 
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Register Device
+#### Registrar dispositivo
 {: #register-device }
-Register the device to the push notifications service.
+Registre el dispositivo para el servicio de notificaciones push. 
 
 ```java
 MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
@@ -66,7 +71,7 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
 }, optionObject);
 ```
 
-* **optionObject**: an `JSONObject` containing the phone number to register the device with. For example:
+* **optionObject**: `JSONObject` que contiene el número de teléfono con el que registrar el dispositivo. Por ejemplo:
 
 ```java
 JSONObject optionObject = new JSONObject();
@@ -79,11 +84,10 @@ catch(Exception ex) {
 }
 ```
 
-> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
-
-#### Unregister Device
+> El dispositivo también se puede registrar utilizando la [API REST (POST) de registro de dispositivo de push](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
+#### Anular el registro del dispositivo
 {: #unregister-device }
-Unregister the device from push notification service instance.
+Anule el registro del dispositivo de una instancia de servicio de notificaciones push. 
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -100,28 +104,35 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Using an SMS subscribe servlet
+## Utilización de un servlet de suscripción de SMS
 {: #using-an-sms-subscribe-servlet }
-REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
+Las API REST sirven para enviar notificaciones a dispositivos registrados.
+Es posible enviar cualquier forma de notificación: notificaciones de difusión y etiqueta y notificaciones autenticadas
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+
+Para enviar una notificación, realice una solicitud mediante POST al punto final REST:
+`imfpush/v1/apps/<application-identifier>/messages`.  
+URL de ejemplo:
+ 
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
-> To review all Push Notifications REST APIs, see the <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API runtime services</a> topic in the user documentation.
+> Para revisar todas las API REST de notificaciones push, consulte el tema de los <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">servicios de ejecución de API REST</a> en la documentación de usuario.
+Para enviar una notificación, consulte la guía de aprendizaje de [envío de notificaciones](../../sending-notifications).
 
-To send a notification, see the [sending notifications](../../sending-notifications) tutorial.
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
-## Sample application
+<img alt="Imagen de la aplicación de ejemplo" src="sample-app.png" style="float:right"/>
+## Aplicación de ejemplo
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) the Android project.
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) el proyecto Android.
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
-### Sample usage
+**Nota:** Se necesita instalada la última versión de Google Play Services en el dispositivo Android para poder ejecutar el ejemplo.
+
+
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.
+
