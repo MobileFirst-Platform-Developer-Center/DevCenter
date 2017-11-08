@@ -12,6 +12,9 @@ author:
 additional_authors:
 - Shubha S
 ---
+
+Please refer our latest [blog]({{site.baseurl}}/blog/2017/09/18/mfp-support-for-ios11/) for the latest news on iOS11 compatibility with MobileFirst . 
+
 Apple announced iOS 11 during their annual WWDC2017 conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 11 [in this news bulletin](https://developer.apple.com/ios/).
 
 ![iOS11]({{site.baseurl}}/assets/blog/2017-07-24-compatibility-tests-for-ios-11/ios11_beta.png)
@@ -94,4 +97,4 @@ iOS11 compatibility tests are planned for following:
 * Live Update SDK
 * Mobile Foundation WatchOS framework with WatchOS4
 
-Please refer our latest [blog]({{site.baseurl}}/blog/2017/09/18/mfp-support-for-ios11/) for any further news on iOS11 compatibility.
+
