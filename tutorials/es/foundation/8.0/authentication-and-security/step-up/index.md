@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Step Up Authentication
-breadcrumb_title: Step Up Authentication
+title: Autenticación de paso ascendente
+breadcrumb_title: Autenticación de paso ascendente
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
@@ -21,54 +21,53 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Resources can be protected by several security checks. In such a scenario, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
+Los recursos pueden protegerse por varias comprobaciones de seguridad. En este caso, {{ site.data.keys.mf_server }} envía a la aplicación todos los desafíos relevantes simultáneamente.  
 
-A security check can also be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
-For example, this tutorial describes an application that has two resources protected by a user name and password, where the second resource also requires an additional PIN code.
+Una comprobación de seguridad también puede depender de otra comprobación de seguridad. Por lo tanto, es importante poder controlar cuando se envían los desafíos.   
+Por ejemplo, esta guía de aprendizaje describe una aplicación que tiene dos recursos protegidos por un nombre de usuario y una contraseña, en la que el segundo recurso también requiere un código PIN adicional. 
 
-**Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](../user-authentication) tutorials before continuing.
+**Requisitos previos:** Lea las guías de aprendizaje [CredentialsValidationSecurityCheck](../credentials-validation) y [UserAuthenticationSecurityCheck](../user-authentication) antes de continuar.
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Referencing a Security Check](#referencing-a-security-check)
-* [State Machine](#state-machine)
-* [The Authorize Method](#the-authorize-method)
-* [Challenge Handlers](#challenge-handlers)
-* [Sample Applications](#sample-applications)
+* [Referencia a una comprobación de seguridad](#referencing-a-security-check)
+* [Máquina de estados](#state-machine)
+* [El método authorize](#the-authorize-method)
+* [Manejadores de desafíos](#challenge-handlers)
+* [Aplicaciones de ejemplo](#sample-applications)
 
-## Referencing a Security Check
+## Referencia a una comprobación de seguridad
 {: #referencing-a-security-check }
-Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as the implementation described in the [Credentials Validation](../credentials-validation/security-check/) and [User Authentication](../user-authentication/security-check/) tutorials.
+Cree dos comprobaciones de seguridad separadas: `StepUpPinCode` y `StepUpUserLogin`. La implementación inicial es la misma que la implementación descrita en las guías de aprendizaje [Validación de credenciales](../credentials-validation/security-check/) y [Autenticación de usuario](../user-authentication/security-check/).
 
-In this example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should be asked to enter a PIN code only after a successful login to `StepUpUserLogin`. For this purpose, `StepUpPinCode` must be able to **reference** the `StepUpUserLogin` class.  
+En este ejemplo, `StepUpPinCode` **depende de ** `StepUpUserLogin`. Se debería pedir al usuario que introduzca un código PIN solo después de haber iniciado sesión en `StepUpUserLogin` correctamente. Para ello, `StepUpPinCode` debe poder **referenciar** la clase `StepUpUserLogin`.  
 
-The {{ site.data.keys.product_adj }} framework provides an annotation to inject a reference.  
-In your `StepUpPinCode` class, at the class level, add:
+La infraestructura de {{ site.data.keys.product_adj }} proporciona una anotación para añadir una referencia.  
+En la clase `StepUpPinCode`, a nivel de clase, añada:
 
 ```java
 @SecurityCheckReference
 private transient StepUpUserLogin userLogin;
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Both security check implementations need to be bundled inside the same adapter.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Las dos implementaciones de comprobación de seguridad deben estar empaquetadas en el mismo adaptador.
+Para resolver esta referencia, la infraestructura busca una comprobación de seguridad con la clase apropiada, y la añade a la referencia correspondiente en la comprobación de seguridad dependiente.   
+Si hay más de una comprobación de seguridad de la misma clase, la anotación tiene un parámetro `name` opcional, que puede utilizar para especificar el nombre exclusivo de la comprobación a la que se hace referencia.
 
-To resolve this reference, the framework looks up for a security check with the appropriate class, and injects its reference into the dependent security check.  
-If there are more than one security check of the same class, the annotation has an optional `name` parameter, which you can use to specify the unique name of the referred check.
-
-## State machine
+## Máquina de estados
 {: #state-machine }
-All classes that extend `CredentialsValidationSecurityCheck` (which includes both `StepUpPinCode` and `StepUpUserLogin`) inherit a simple state machine. At any given moment, the security check can be in one of these states:
+Todas las clases que amplían `CredentialsValidationSecurityCheck` (que incluye `StepUpPinCode` y `StepUpUserLogin`) heredan una máquina de estados simple. En cualquier momento, la comprobación de seguridad puede ser uno de los estados siguientes: 
 
-- `STATE_ATTEMPTING`: A challenge has been sent and the security check is waiting for the client response. The attempt count is maintained during this state.
-- `STATE_SUCCESS`: The credentials have been successfully validated.
-- `STATE_BLOCKED`: The maximum number of attempts has been reached and the check is in locked state.
+- `STATE_ATTEMPTING`: Se ha enviado un desafío y la comprobación de seguridad espera la respuesta del cliente.El recuento del intento se mantiene durante este estado. 
+- `STATE_SUCCESS`: Las credenciales se han validado correctamente.
+- `STATE_BLOCKED`: Se ha alcanzado el número máximo de intentos y la verificación está en estado de bloqueo.
 
-The current state can be obtained using the inherited `getState()` method.
+El estado actual puede obtenerse utilizando el método `getState()` heredado.
 
-In `StepUpUserLogin`, add a convenience method to check whether the user is currently logged-in.
-This method is used later in the tutorial.
+En `StepUpUserLogin`, añada un método de conveniencia para verificar si el usuario ha iniciado sesión.
+El método se utilizará más adelante en la guía de aprendizaje.
 
 ```java
 public boolean isLoggedIn(){
@@ -76,12 +75,12 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The Authorize Method
+## El método authorize
 {: #the-authorize-method }
-The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
-The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.
+La interfaz `SecurityCheck` define un método denominado `authorize`. Este método es responsable de implementar la lógica principal de la comprobación de seguridad como, por ejemplo, el envío de un desafío o la validación de la solicitud.  
+La clase `CredentialsValidationSecurityCheck`, que amplia `StepUpPinCode`, ya incluye una implementación para este método. Sin embargo, en este caso, el objetivo es verificar el estado de `StepUpUserLogin` antes de iniciar el comportamiento predeterminado del método `authorize`.
 
-To do so, **override** the `authorize` method:
+Para ello, **sustituya** el método `authorize`:
 
 ```java
 @Override
@@ -92,14 +91,14 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-This implementation checks the current state of the `StepUpUserLogin` reference:
+Esta implementación comprueba el estado actual de la referencia `StepUpUserLogin`:
 
-* If the state is `STATE_SUCCESS` (the user is logged in), the normal flow of the security check continues.
-* If `StepUpUserLogin` is in any other state, nothing is done: no challenge is sent, neither success nor failure.
+* Si el estado es `STATE_SUCCESS` (el usuario ha iniciado sesión), el flujo normal de la comprobación de seguridad continua. 
+* Si el estado de `StepUpUserLogin` es otro diferente, no se realiza ninguna acción: no se envía ningún desafío y el resultado no es ni éxito ni error.
 
-Assuming the resource is protected by **both** `StepUpPinCode` and `StepUpUserLogin`, this flow makes sure that the user is logged in before being prompted for the secondary credential (PIN code). The client never receives both challenges at the same time, even though both security checks are activated.
+Si damos por hecho que el recurso lo protegen **** `StepUpPinCode` y `StepUpUserLogin`, el flujo se asegura de que el usuario ha iniciado sesión antes de que se le solicite una segunda credencial (código PIN). El cliente nunca recibe ambos desafíos al mismo tiempo, aunque las dos comprobaciones de seguridad estén activas.
 
-Alternatively, if the resource is protected **only** by `StepUpPinCode` (the framework will activate only this security check), you can change the `authorize` implementation to trigger `StepUpUserLogin` manually:
+De forma alternativa, si el recurso **solo** está protegido por `StepUpPinCode` (la infraestructura activará solo esta comprobación de seguridad), puede modificar la implementación `authorize` para iniciar `StepUpUserLogin` manualmente:
 
 ```java
 @Override
@@ -114,11 +113,11 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-## Retrieve current user
+## Recuperar el usuario actual
 {: #retrieve-current-user }
-In the `StepUpPinCode` security check, you are interested in knowing the current user's ID so that you can look up this user's PIN code in some database.
+En la comprobación de seguridad `StepUpPinCode`, le interesa saber el ID del usuario actual para poder buscar el código PIN del usuario en alguna base de datos.
 
-In the `StepUpUserLogin` security check, add the following method to obtain the current user from the **authorization context**:
+En la comprobación de seguridad `StepUpUserLogin`, añada el siguiente método para obtener el usuario actual del **contexto de autorización**:
 
 ```java
 public AuthenticatedUser getUser(){
@@ -126,7 +125,7 @@ public AuthenticatedUser getUser(){
 }
 ```
 
-In `StepUpPinCode`, you can then use the `userLogin.getUser()` method to get the current user from the `StepUpUserLogin` security check, and check the valid PIN code for this specific user:
+En `StepUpPinCode`, puede utilizar el método `userLogin.getUser()` para obtener el usuario actual de la comprobación de seguridad `StepUpUserLogin` y verificar el código PIN válido para este usuario específico:
 
 ```java
 @Override
@@ -149,29 +148,29 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Challenge Handlers
+## Manejadores de desafíos
 {: #challenge-handlers }
-On the client side, there are no special APIs to handle multiple steps. Rather, each challenge handler handles its own challenge. In this example, you must register two separate challenge handlers: one to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpPincode`.
+En el lado del cliente, no hay API especiales para manejar varios pasos. En su lugar, cada manejador de desafíos manejar su propio desafío.En este ejemplo, debe registrar dos manejadores de desafíos distintos: uno para manejar desafíos desde `StepUpUserLogin` y otro para manejarlos desde `StepUpPincode`.
 
-<img alt="Step-up sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="Aplicación de ejemplo de paso ascendente" src="sample_application.png" style="float:right"/>
+## Aplicaciones de ejemplo
 {: #sample-applications }
-### Security check
+### Comprobación de seguridad
 {: #security-check }
-The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks project under the StepUp Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+Las comprobaciones de seguridad `StepUpUserLogin` y `StepUpPinCode` están disponibles en el proyecto SecurityChecks del proyecto Maven StepUp.
+[Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) el proyecto Maven de comprobaciones de seguridad.
 
-### Applications
+### Aplicaciones
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cordova, and Web.
+Las aplicaciones de ejemplo están disponibles para iOS (Swift), Android, Windows 8.1/10 Cordova y Web.
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) the Windows 8.1 project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) the Windows 10 project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) the Web app project.
+* [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) el proyecto Cordova.
+* [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) el proyecto iOS Swift.
+* [Haga clic para descargar ](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) el proyecto Android.
+* [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) el proyecto de Windows 8.1.
+* [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) el proyecto de Windows 10.
+* [Haga clic para descargar ](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) el proyecto de aplicación Web.
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md del ejemplo para obtener instrucciones.

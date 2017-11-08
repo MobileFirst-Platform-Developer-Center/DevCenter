@@ -1,43 +1,43 @@
 ---
 layout: tutorial
-title: Windows .NET Message Inspector
-breadcrumb_title: Windows .NET Message Inspector
+title: Inspector de mensajes Windows .NET
+breadcrumb_title: Inspector de mensajes Windows .NET
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Download sample
+  - name: Descargar ejemplo:
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-This tutorial will show how to protect a simple Windows .NET resource, `GetBalanceService`, using a scope (`accessRestricted`).
-In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.
+Esta guía de aprendizaje le mostrará cómo proteger un recurso de Windows .NET simple `GetBalanceService`, utilizando un ámbito(`accessRestricted`).
+En el ejemplo protegeremos un servicio autoalojado por una aplicación de consola denominada DotNetTokenValidator.
 
-First we will define a **Message Inspector** that will help us controlling the incoming request to the `GetBalanceService` resource.
-Using this Message Inspector we will examine the incoming request and validate that it provides all the necessary headers required by **{{ site.data.keys.product_adj }} Authorization Server**.
+Primero definiremos un **inspector de mensajes** que nos ayudará a controlar la solicitud entrante en el recurso `GetBalanceService`.
+Con este inspector de mensajes examinaremos la solicitud entrante y validaremos que proporciona todas las cabeceras necesarias que requiere el servidor de autorización de **{{ site.data.keys.product_adj }}**.
 
-**Prerequesites:**
+**Requisitos previos:**
 
-* Make sure to read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }}security framework](../../).
+* Asegúrese de leer la guía de aprendizaje [Utilización de {{ site.data.keys.mf_server }} para autenticar recursos externos](../).
+* Comprensión de la infraestructura de seguridad de [{{ site.data.keys.product_adj }}](../../).
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Create and configure WCF Web HTTP Service](#create-and-configure-wcf-web-http-service)
-* [Define a Message Inspector](#define-a-message-inspector)
-* [Message Inspector Implementation](#message-inspector-implementation)
-    * [Pre-process Validation](#pre-process-validation)
-    * [Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
-    * [Send request to Introspection Endpoint with client token](#send-request-to-introspection-endpoint-with-client-token)
-    * [Post-process Validation](#post-process-validation)
+* [Crear y configurar un servicio HTTP web de WCF](#create-and-configure-wcf-web-http-service)
+* [Definir un inspector de mensaje](#define-a-message-inspector)
+* [Implementación de inspector de mensaje](#message-inspector-implementation)
+    * [Validación de proceso previo](#pre-process-validation)
+    * [Obtener señal de acceso del servidor de autorización de {{ site.data.keys.product_adj }}](#obtain-access-token-from-mobilefirst-authorization-server)
+    * [Enviar una solicitud al punto final de introspección con la señal de cliente](#send-request-to-introspection-endpoint-with-client-token)
+    * [Validación de proceso posterior](#post-process-validation)
 
-## Create and configure WCF Web HTTP Service
+## Crear y configurar un servicio HTTP web de WCF
 {: #create-and-configure-wcf-web-http-service }
-First we will create a **WCF service** and call it `GetBalanceService` which we will protect later by a **message inspector**.
-In our example we are using a console application as a hosting program for the service.
+Primero crearemos un **servicio WCF** y le denominaremos `GetBalanceService`, que posteriormente protegeremos con un **inspector de mensaje**.
+En el ejemplo utilizamos una aplicación de consola como programa de host para el servicio.
 
-Here is the code of `getBalance` (the protected resource):
+A continuación encontrará el código de `getBalance` (el recurso protegido):
 
 ```csharp
 public class GetBalanceService : IGetBalanceService {
@@ -49,7 +49,7 @@ public class GetBalanceService : IGetBalanceService {
 }
 ```
 
-We should also define a `ServiceContract`:
+También definiremos `ServiceContract`:
 
 ```csharp
 [ServiceContract]
@@ -64,7 +64,7 @@ public interface IGetBalanceService
 }
 ```
 
-Now that we have our service ready we can configure how it will be used by the host application. This is done in the App.config file as follows:
+Ahora que el servicio está listo, podemos configurar cómo lo utilizará la aplicación de host. Esta acción se lleva a cabo en el archivo App.config de la siguiente manera:
 
 ```xml
 <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
@@ -76,7 +76,7 @@ Now that we have our service ready we can configure how it will be used by the h
   </host>
 </service>
 ```
-Lastly we should run it from the hosting program `Main` method:
+Finalmente, lo ejecutaremos en el método `Main` del programa de host:
 
 ```csharp
 static void Main(string[] args) {
@@ -99,18 +99,17 @@ static void Main(string[] args) {
 }
 ```
 
-> For More information about WCF REST services refer to [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
-
-## Define a Message Inspector
-{: #define-a-message-inspector }
-Before we dive into the validation process we must create and define a **message inspector** which we will use to protect the resource (the service endpoint).
-A message inspector is an extensibility object that can be used in the service to inspect and alter messages after they are received or before they are sent. Service message inspectors should implement the `IDispatchMessageInspector` interface:
+> Para obtener más información acerca de los servicios REST WCF, consulte [Crear un servicio HTTP web WCF](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
+## Definir un inspector de mensaje
+{: #define-a-message-inspector}
+Antes de iniciar proceso de validación, es necesario crear y definir un **inspector de mensaje ** que utilizaremos para proteger el recurso (el punto final de servicio).
+Un inspector de mensaje es un objeto de extensibilidad que puede utilizarse en el servicio para inspeccionar y alterar los mensajes después de haberlos recibido o antes de que se envíen. Los inspectores de mensaje de servicio deben implementar la interfaz `IDispatchMessageInspector`:
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector
 ```
 
-Any service message inspector must implement the two `IDispatchMessageInspector` methods `AfterReceiveRequest` and `BeforeSendReply`:
+Cualquier inspector de mensaje de servicio debe implementar los dos métodos `IDispatchMessageInspector`, `AfterReceiveRequest` y `BeforeSendReply`:
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector {
@@ -125,8 +124,8 @@ public class MyInspector : IDispatchMessageInspector {
 }
 ```
 
-After creating the message inspector it should be defined to protect a certain endpoint. This is done by using behaviors. A **behavior** is a class that changes the behavior of the service model runtime by changing the default configuration or adding extensions (such as message inspectors) to it.
-This is done using 2 classes: one that configures the message inspector to protect the application endpoint,  and the other to return this behavior class instance and type.
+Después de crear el inspector de mensaje, debería definirse para proteger un punto final determinado. Esta acción se lleva a cabo utilizando comportamientos. Un **comportamiento** es una clase que modifica el comportamiento de un tiempo de ejecución de modelo de servicio cambiando la configuración predeterminada o añadiéndole extensiones (como los inspectores de mensajes).
+Esta acción se lleva a cabo utilizando 2 clases: una que configura el inspector de mensajes para proteger el punto final de aplicación y el otro para devolver la instancia de clase de comportamiento  y el tipo.
 
 ```csharp
 public class MyCustomBehavior : IEndpointBehavior
@@ -153,7 +152,7 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 }
 ```
 
-In the `App.config` file we define a `behaviorExtension` and attach it to the behavior class we just created:
+En el archivo `App.config`, definimos `behaviorExtension` y lo adjuntamos a la clase de comportamiento que acabamos de crear:
 
 ```xml
 <extensions>
@@ -163,7 +162,7 @@ In the `App.config` file we define a `behaviorExtension` and attach it to the be
 </extensions>
 ```
 
-Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior:
+A continuación, añadimos behaviorExtension al elemento webBehavior configurado en nuestro servicio como un comportamiento de punto final:
 
 ```xml
 <behavior name="webBehavior">
@@ -172,10 +171,10 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 </behavior>
 ```
 
-## Message Inspector Implementation
+## Implementación de inspector de mensajes
 {: #message-inspector-implementation}
 
-First let's define some constants as class members in our message inspector: {{ site.data.keys.mf_server }} URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from {{ site.data.keys.product_adj }} Authorization server, so it will be available to all users:
+Primero definimos algunas constantes como miembros de clase en el inspector de mensaje: URL de {{ site.data.keys.mf_server }}, las credenciales de cliente confidenciales y el `ámbito` que utilizaremos para proteger el servicio. También podemos definir una variable estática para conservar la señal que hemos recibido del servidor de autorización de {{ site.data.keys.product_adj }}, de manera que esté  disponible para todos los usuarios:
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -185,7 +184,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-Next we will create our `validateRequest` method which is the starting-point of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
+A continuación, crearemos el método `validateRequest`, que es el punto de partida del proceso de validación que implementaremos en el inspector de mensaje. Añadiremos una llamada a este método dentro del método `AfterReceiveRequest` que hemos mencionado anteriormente:
 
 ```csharp
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -194,11 +193,11 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 }
 ```
 
-Inside `validateRequest` there are 3 main steps that we will implement:
+En `validateRequest` hay 3 pasos principales que implementaremos:
 
-1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the **"Bearer"** prefix.
-2. **Get token** from {{ site.data.keys.product_adj }} Authorization Server - This token will be used to authenticate the client's token against {{ site.data.keys.product_adj }} Authorization Server.
-3. **Post-process validation** - check for **conflicts**, validate that the request sent the right **scope**, and check that the request is **active**.
+1. **Validación de proceso previo** - compruebe si la solicitud tiene una **cabecera de autorización**, y en caso de que la tenga, si empieza con el prefijo **"Bearer"**.
+2. **Obtenga una señal ** del servidor de autorización de {{ site.data.keys.product_adj }} - Esta señal se utilizará para autenticar la señal del cliente en relación con el servidor de autorización de {{ site.data.keys.product_adj }}.
+3. **Validación de proceso posterior** - compruebe si hay **conflictos**, valide que ha enviado la solicitud al **ámbito** correcto y compruebe que la solicitud está **activa**.
 
 ```csharp
 private void validateRequest(Message request)
@@ -228,16 +227,16 @@ private void validateRequest(Message request)
 }
 ```
 
-## Pre-process Validation
+## Validación de proceso previo
 {: #pre-process-validation }
-The pre-process validation is done as part of the getClientTokenFromHeader() method.
-This process is based upon 2 checks:
+La validación del proceso previo se realiza como parte del método getClientTokenFromHeader().
+Este proceso se basa en dos comprobaciones:
 
-1. Check that the authorization header of the request is not empty.
-2. If it is not empty - check that the authorization header starts with the "Bearer " prefix.
+1. Compruebe que la cabecera de autorización de la solicitud no está vacía.
+2. Si no lo está, compruebe que la cabecera de autorización empieza con el prefijo "Bearer".
 
-In both cases we should respond with an **Unauthorized response status** (401) and add the **WWW-Authenticate:Bearer** header.  
-After validating the authorization header this method returns the token received from the client application.
+En ambos casos, debemos responder con un **estado de respuesta no autorizado** (401) y la cabecera **WWW-Authenticate:Bearer**.  
+Después de validar la cabecera de autorización el método devuelve la señal recibida de la aplicación cliente.
 
 ```csharp
 private string getClientTokenFromHeader(Message request)
@@ -269,7 +268,7 @@ private string getClientTokenFromHeader(Message request)
 }
 ```
 
-`returnErrorResponse` is a helper method that receives an httpStatusCode and a WebHeaderCollection, prepares the response and sends it back to the client application. After sending the response to the client application it completes the request.
+`returnErrorResponse` es un método de ayuda que recibe httpStatusCode y WebHeaderCollection, prepara la respuesta y la devuelve a la aplicación cliente. Después de enviar la respuesta a la aplicación cliente, completa la solicitud.
 
 ```csharp
 private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
@@ -283,11 +282,11 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 }
 ```
 
-## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
+## Obtener acceso a la señal de acceso del servidor de autorización de {{ site.data.keys.product_adj }}
 {: #obtain-access-token-from-mobilefirst-authorization-server}
 
-In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
-Later we will use this received token to pass the client token for introspection.
+Para poder autenticar la señal de cliente deberíamos **obtener una señal de acceso como el inspector de mensaje** realizando una solicitud al **punto final de señal**.
+Más adelante utilizaremos esta señal recibida para la introspección de la señal de cliente.
 
 ```csharp
 private string getIntrospectionToken()
@@ -323,8 +322,8 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to {{ site.data.keys.product_adj }} Authorization server.  
-It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
+El método `sendRequest` es un método de ayuda responsable de enviar solicitudes al servidor de autorización de {{ site.data.keys.product_adj }}.  
+El método `getIntrospectionToken` lo está utilizando para enviar una solicitud al punto final de la señal, e `introspectClientRequest` para enviar una solicitud al punto final de introspección. Este método devuelve `HttpWebResponse`, que debemos utilizar en el método `getIntrospectionToken` para extraer la señal de acceso y almacenarla como señal de inspector de mensaje. En el método `introspectClientRequest` se utiliza solo para devolver la respuesta de servidor de autorización de MFP.
 
 ```csharp
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -350,10 +349,10 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 }
 ```
 
-## Send request to Introspection Endpoint with client token
+## Enviar una solicitud al punto final de introspección con la señal de cliente
 {: #send-request-to-introspection-endpoint-with-client-token }
-Now that we are authorized by {{ site.data.keys.product_adj }} Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
-Next we will examine the response from {{ site.data.keys.product_adj }} Authorization Server in `postProcess` method.
+Ahora que el servidor de autorización de {{ site.data.keys.product_adj }} nos ha autorizado, podemos **validar el contenido de la señal de cliente**. Enviamos una solicitud al **punto final de introspección**, añadiendo la señal que hemos recibido en el paso previo (`filterIntrospectionToken`) a la cabecera de solicitud y la señal de cliente en los datos de publicación de la solicitud.  
+A continuación, examinaremos la respuesta del servidor de autorización de {{ site.data.keys.product_adj }} en el método `postProcess`.
 
 ```csharp
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -366,10 +365,10 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 }
 ```
 
-## Post-process Validation
+## Validación de proceso posterior
 {: #post-process-validation }
-Before proceeding to the `postProcess` method we want to make sure that the response status is not **401 (Unauthorized)**.  
-401 (Unauthorized) response status at this point indicates that the message inspector token (`filterIntrospectionToken`) has expired. If the response status is 401 (Unauthorized) then we call `getIntrospectionToken` to get a new token for the message inspector and call `introspectClientRequest` again with the new token.
+Antes de proceder al método `postProcess` queremos asegurarnos de que el estado de respuesta no es **401 (no autorizado)**.  
+El estado de respuesta 401 (no autorizado) indica que la señal del inspector de mensaje (`filterIntrospectionToken`) ha caducado. Si el estado de respuesta es 401 (no autorizado), llamamos a `getIntrospectionToken` para obtener una nueva señal para el inspector de mensajes y, a continuación, a `introspectClientRequest` con la nueva señal.
 
 ```csharp
 if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -379,8 +378,8 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }}  Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
-If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the {{ site.data.keys.product_adj }} Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
+El propósito principal del método postProcess es examinar la respuesta que hemos recibido del servidor de autorización de {{ site.data.keys.product_adj }}, pero antes de extraer y comprobar la respuesta, debemos **asegurarnos de que el estado de respuesta es 200 (aceptado)**. Si el estado de respuesta es **409 (conflicto)** deberíamos reenviar la respuesta a la aplicación cliente o, de lo contrario, lanzar una excepción.  
+Si el estado de respuesta es 200 (aceptado), debemos inicializar la clase `AzResponse`, que es una clase definida para representar la respuesta del servidor de autorización de {{ site.data.keys.product_adj }} con la respuesta actual.A continuación, comprobamos que la **respuesta está activa** y que incluye el **ámbito correcto**:
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
@@ -419,15 +418,15 @@ private void postProcess(HttpWebResponse introspectionResponse)
 }
 ```
 
-## Sample application
+## Aplicación de ejemplo
 {: #sample-application }
-[Download the .NET message inspector sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
+[Descargue el ejemplo de inspector de mensaje .NET](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-1. Use Visual Studio to open, build and run the sample as a service (run Visual Studio as an administrator).
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. Utilice Visual Studio para abrir, crear y ejecutar una muestra como servicio (ejecutar Visual Studio como administrador). 
+2. Asegúrese de [actualizar el cliente confidencial](../#confidential-client) y los valores secretos en {{ site.data.keys.mf_console }}.
+3. Despliegue alguna de las comprobaciones de seguridad: **[UserLogin](../../user-authentication/security-check/)** o **[PinCodeAttempts](../../credentials-validation/security-check/)**.
+4. Registre la aplicación coincidente.
+5. Correlacione el ámbito `accessRestricted` en la comprobación de seguridad.
+6. Actualice la aplicación de cliente para crear `WLResourceRequest` en su URL de servlet.

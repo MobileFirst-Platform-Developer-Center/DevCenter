@@ -1,256 +1,255 @@
 ---
 layout: tutorial
-title: Installation Reference
+title: Referencia de instalación
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Reference information about Ant tasks and configuration sample files for the installation of {{ site.data.keys.mf_server_full }}, {{ site.data.keys.mf_app_center_full }}, and {{ site.data.keys.mf_analytics_full }}.
+La información de referencia sobre tareas Ant y archivos de ejemplo de configuración para la instalación de {{ site.data.keys.mf_server_full }}, {{ site.data.keys.mf_app_center_full }} y {{ site.data.keys.mf_analytics_full }}.
 
-#### Jump to
+#### Ir a
 {: #jump-to }
-* [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
-* [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
-* [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
-* [Ant tasks for installation of {{ site.data.keys.mf_analytics }}](#ant-tasks-for-installation-of-mobilefirst-analytics)
-* [Internal runtime databases](#internal-runtime-databases)
-* [Sample configuration files](#list-of-sample-configuration-files)
-* [Sample configuration files for {{ site.data.keys.mf_analytics }}](#sample-configuration-files-for-mobilefirst-analytics)
+* [Referencia de tarea configuredatabase Ant](#ant-configuredatabase-task-reference)
+* [Tareas Ant para la instalación de {{ site.data.keys.mf_console }}, artefactos de {{ site.data.keys.mf_server }}, administración de {{ site.data.keys.mf_server }} y servicios de Live Update](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [Tareas Ant para la instalación del servicio de envío por push de {{ site.data.keys.mf_server }}](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Tareas Ant para la instalación de Application Center](#ant-tasks-for-installation-of-application-center)
+* [Tareas Ant para la instalación de {{ site.data.keys.mf_analytics }}](#ant-tasks-for-installation-of-mobilefirst-analytics)
+* [Bases de datos de tiempo de ejecución internas](#internal-runtime-databases)
+* [Archivos de configuración de ejemplo](#list-of-sample-configuration-files)
+* [Archivos de configuración de ejemplo para {{ site.data.keys.mf_analytics }}](#sample-configuration-files-for-mobilefirst-analytics)
 
-## Ant configuredatabase task reference
+## Referencia de tarea configuredatabase Ant
 {: #ant-configuredatabase-task-reference }
-Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant .
+Información de referencia para la tarea Ant configuredatabase. Esta información de referencia es sólo para bases de datos relacionales. No se aplica a Cloudant.
 
-The **configuredatabase** Ant task creates the relational databases that are used by {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, {{ site.data.keys.product_adj }} runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
+La tarea Ant **configuredatabase** crea las bases de datos relacionales que utiliza el servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }}, el servicio de envío por push de {{ site.data.keys.mf_server }}, el tiempo de ejecución de {{ site.data.keys.product_adj }} y los servicios de Application Center. Esta tarea Ant configura una base de datos relacional a través de las siguientes acciones:
 
-* Checks whether the {{ site.data.keys.product_adj }} tables exist and creates them if necessary.
-* If the tables exist for an older version of {{ site.data.keys.product }}, migrates them to the current version.
-* If the tables exist for the current version of {{ site.data.keys.product }}, does nothing.
+* Comprueba si existen las tablas de {{ site.data.keys.product_adj }} y las crea si es necesario.
+* Si las tablas existen para una versión posterior de {{ site.data.keys.product }}, las migra a la versión actual.
+* Si las tablas existen para la versión actual de {{ site.data.keys.product }}, no haga nada.
 
-In addition, if one of the following conditions is met:
+Además, si se cumple una de las condiciones siguientes:
 
-* The DBMS type is Derby.
-* An inner element `<dba>` is present.
-* The DBMS type is DB2 , and the specified user has the permissions to create databases.
+* El tipo de DBMS será Derby.
+* Habrá presente un elemento interno `<dba>`.
+* El tipo de DBMS será DB2, y el usuario especificado tendrá los permisos para crear bases de datos.
 
-Then, the task can have the following effects:
+A continuación, la tarea puede tener los efectos siguientes:
 
-* Create the database if necessary (except for Oracle 12c, and Cloudant).
-* Create a user, if necessary, and grants that user access rights to the database.
+* Cree la base de datos si es necesario (excepto para Oracle 12c y Cloudant).
+* Cree un usuario, si es necesario, y otórguele derechos de acceso a la base de datos.
 
-> **Note:** The configuredatabase Ant task has not effect if you use it with Cloudant.
+> **Nota:** La tarea Ant configuredatabase no tendrá ningún efecto si la utiliza con Cloudant.
 
-### Attributes and elements for configuredatabase task
+### Atributos y elementos para la tarea configuredatabase
 {: #attributes-and-elements-for-configuredatabase-task }
 
-The **configuredatabase** task has the following attributes:
+La tarea **configuredatabase** tiene los atributos siguientes:
 
-| Attribute | Description | Required | Default |
+| Atributo | Descripción | Obligatorio | Predeterminado |
 |-----------|-------------|----------|---------|
-| kind      | The type of database: In {{ site.data.keys.mf_server }}: MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin, or push. In Application Center: ApplicationCenter. | Yes | None |
-| includeConfigurationTables | To specify whether to perform database operations on both the live update service and the administration service or on the administration service only. The value is either true or false. |  No | true |
-| execute | To specify whether to execute the configuredatabase Ant task. The value is either true or false. | No | true |
+| kind      | El tipo de base de datos: En {{ site.data.keys.mf_server }}: MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin, o push. En Application Center: ApplicationCenter. | Sí | Ninguno |
+| includeConfigurationTables | Para especificar si se van a realizar operaciones de base de datos en el servicio de Live Update y en el servicio de administración o sólo en el servicio de administración. El valor puede ser true o false. |  No | true |
+| execute | Para especificar si se debe ejecutar la tarea Ant configuredatabase. El valor puede ser true o false. | No | true |
 
 #### kind
 {: #kind }
-{{ site.data.keys.product }} supports four kinds of database: {{ site.data.keys.product_adj }} runtime uses **MobileFirstRuntime** database. {{ site.data.keys.mf_server }} administration service uses the **MobileFirstAdmin** database. {{ site.data.keys.mf_server }} Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. {{ site.data.keys.mf_server }} push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
+{{ site.data.keys.product }} da soporte a cuatro tipos de bases de datos: el tiempo de ejecución de {{ site.data.keys.product_adj }} utiliza la base de datos **MobileFirstRuntime**. El servicio de administración de {{ site.data.keys.mf_server }} utiliza la base de datos **MobileFirstAdmin**. El servicio de Live Update de {{ site.data.keys.mf_server }} utiliza la base de datos **MobileFirstConfig**. De forma predeterminada, se crea con el tipo **MobileFirstAdmin**. El servicio de envío por push de {{ site.data.keys.mf_server }} utiliza la base de datos **push**. Application Center utiliza la base de datos **ApplicationCenter**.
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
-The **includeConfigurationTables** attribute can be used only when the **kind** attribute is **MobileFirstAdmin**. The valid value can be true or false. When this attribute is set to true, the **configuredatabase** task performs database operations on both the administration service database and the Live Update service database in a single run. When this attribute is set to false, the **configuredatabase** task performs database operations only on the administration service database.
+El atributo **includeConfigurationTables** sólo se puede utilizar cuando el atributo **kind** sea **MobileFirstAdmin**. El valor válido puede ser true o false. Cuando este atributo se establezca en true, la tarea **configuredatabase** realizará operaciones de base de datos en la base de datos de servicio de administración y en la base de datos de servicio de Live Update en una única ejecución. Cuando este atributo se establezca en false, la tarea **configuredatabase** realizará operaciones de base de datos sólo en la base de datos del servicio de administración.
 
 #### execute
 {: #execute }
-The **execute** attribute enables or disables the execution of the **configuredatabase** Ant task. The valid value can be true or false. When this attribute is set to false, the **configuredatabase** task performs no configuration or database operations.
+El atributo **execute** habilita o inhabilita la ejecución de la tarea Ant **configuredatabase**. El valor válido puede ser true o false. Cuando este atributo se establezca en false, la tarea **configuredatabase** no realizará ninguna operación de configuración ni de base de datos.
 
-The **configuredatabase** task supports the following elements:
+La tarea **configuredatabase** da soporte a los siguientes elementos:
 
-| Element             | Description	                | Count |
+| Elemento             | Descripción	                | Recuento |
 |---------------------|-----------------------------|-------|
-| `<derby>`           | The parameters for Derby.   | 0..1  |
-| `<db2>`             |	The parameters for DB2.     | 0..1  |
-| `<mysql>`           |	The parameters for MySQL.   | 0..1  |
-| `<oracle>`          |	The parameters for Oracle.  | 0..1  |
-| `<driverclasspath>` | The JDBC driver class path. | 0..1  |
+| `<derby>`           | Los parámetros para Derby.   | 0..1  |
+| `<db2>`             |	Los parámetros para DB2.     | 0..1  |
+| `<mysql>`           |	Los parámetros para MySQL.   | 0..1  |
+| `<oracle>`          |	Los parámetros para Oracle.  | 0..1  |
+| `<driverclasspath>` | La vía de acceso de clase de controlador JDBC. | 0..1  |
 
-For each database type, you can use a `<property>` element to specify a JDBC connection property for access to the database. The `<property>` element has the following attributes:
+Para cada tipo de base de datos, puede utilizar un elemento `<property>` para especificar una propiedad de conexión JDBC para acceder a la base de datos. El elemento `<property>` tiene los atributos siguientes:
 
-| Attribute | Description                | Required | Default |
+| Atributo | Descripción                | Obligatorio | Predeterminado |
 |-----------|----------------------------|----------|---------|
-| name      | The name of the property.	 | Yes      | None    |
-| value	    | The value for the property.| Yes	    | None    |   
+| name      | El nombre de la propiedad.	 | Sí      | Ninguno    |
+| value	    | El valor de la propiedad.| Sí	    | Ninguno    |   
 
 #### Apache Derby
 {: #apache-derby }
-The `<derby>` element has the following attributes:
+El elemento `<derby>` tiene los atributos siguientes:
 
-| Attribute | Description                                | Required | Default                                                                      |
+| Atributo | Descripción                                | Obligatorio | Predeterminado                                                                      |
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
-| database  | The database name.                         | No	    | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind.             |
-| datadir   | The directory that contains the databases. | Yes      | None                                                                         |
-| schema	| The schema name.                           | No       | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+| database  | El nombre de la base de datos.                         | No	    | MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo.             |
+| datadir   | El directorio que contiene las bases de datos. | Sí      | Ninguno                                                                         |
+| schema	| El nombre de esquema.                           | No       | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, o APPCENTER, dependiendo del tipo. |
 
-The `<derby>` element supports the following element:
+El elemento `<derby>` da soporte al elemento siguiente:
 
-| Element      | Description                     | Count   |
+| Elemento      | Descripción                     | Recuento   |
 |--------------|---------------------------------|---------|
-| `<property>` | The JDBC connection property.   | 0..∞    |
+| `<property>` | La propiedad de conexión JDBC.   | 0..∞    |
 
-For the available properties, see [Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html).
+Para ver las propiedades disponibles, consulte [Configuración de atributos para el URL de conexión de base de datos](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html).
 
 #### DB2
 {: #db2 }
-The `<db2>` element has the following attributes:
+El elemento `<db2>` tiene los atributos siguientes:
 
-| Attribute | Description                            | Required | Default |
+| Atributo | Descripción                            | Obligatorio | Predeterminado |
 |-----------|----------------------------------------|----------|---------|
-| database  | The database name.                     | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server    | The host name of the database server.	 | Yes      | None  |
-| port      | The port on the database server.       | No	    | 50000 |
-| user      | The user name for accessing databases. | Yes	    | None  |
-| password  | The password for accessing databases.	 | No	    | Queried interactively |
-| instance  | The name of the DB2 instance.          | No	    | Depends on the server |
-| schema    | The schema name.                       | No	    | Depends on the user   |
+| database  | El nombre de la base de datos.                     | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| server    | El nombre de host del servidor de bases de datos.	 | Sí      | Ninguno  |
+| port      | El puerto en el servidor de bases de datos.       | No	    | 50000 |
+| user      | El nombre de usuario para acceder a las bases de datos. | Sí	    | Ninguno  |
+| password  | La contraseña para acceder a las bases de datos.	 | No	    | Consultado de forma interactiva |
+| instance  | El nombre de la instancia de DB2.          | No	    | Depende del servidor |
+| schema    | El nombre de esquema.                       | No	    | Depende del usuario   |
 
-For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
-The `<db2>` element supports the following elements:
+Para obtener más información sobre las cuentas de usuario de DB2, consulte [Visión general del modelo de seguridad de DB2](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
+El elemento `<db2>` da soporte a los elementos siguientes:
 
-| Element      | Description                             | Count   |
+| Elemento      | Descripción                             | Recuento   |
 |--------------|-----------------------------------------|---------|
-| `<property>` | The JDBC connection property.           | 0..∞    |
-| `<dba>`      | The database administrator credentials. | 0..1    |
+| `<property>` | La propiedad de conexión JDBC.           | 0..∞    |
+| `<dba>`      | Las credenciales del administrador de bases de datos. | 0..1    |
 
-For the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).  
-The inner element `<dba>` specifies the credentials for the database administrators. This element has the following attributes:
+Para ver las propiedades disponibles, consulte [Propiedades para IBM Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).  
+El elemento interno `<dba>` especifica las credenciales para los administradores de bases de datos. Este elemento tiene los siguientes atributos:
 
-| Attribute | Description                            | Required | Default |
+| Atributo | Descripción                            | Obligatorio | Predeterminado |
 |-----------|----------------------------------------|----------|---------|
-| user      | The user name for accessing database.  | Yes      | None    |
-| password  | The password or accessing database.    | No	    | Queried interactively |
+| user      | El nombre de usuario para acceder a la base de datos.  | Sí      | Ninguno    |
+| password  | La contraseña para acceder a la base de datos.    | No	    | Consultado de forma interactiva |
 
-The user that is specified in a `<dba>` element must have the SYSADM or SYSCTRL DB2 privilege. For more information, see [Authorities overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html).
+El usuario que se especifica en un elemento `<dba>` debe tener el privilegio de DB2 SYSADM o SYSCTRL. Para obtener más información, consulte [Visión general de Autorizaciones](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html).
 
-The `<driverclasspath>` element must contain the JAR files for the DB2 JDBC driver and for the associated license. You can retrieve those files in one of the following ways:
+El elemento `<driverclasspath>` debe contener los archivos JAR para el controlador de DB2 JDBC y para la licencia asociada. Puede recuperar estos archivos de una de las siguientes formas:
 
-* Download DB2 JDBC drivers from the [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) page
-* Or fetch the **db2jcc4.jar** file and its associated **db2jcc_license_*.jar** files from the **DB2_INSTALL_DIR/java** directory on the DB2 server.
+* Descargue los controladores DB2 JDBC desde la página [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866)
+* O capte el archivo **db2jcc4.jar** y sus archivos **db2jcc_license_*.jar** asociados desde el directorio **DB2_INSTALL_DIR/java** del servidor de DB2.
 
-You cannot specify details of table allocations, such as the table space, by using the Ant task. To control the table space, you must use the manual instructions in section [DB2 database and user requirements](../databases/#db2-database-and-user-requirements).
+No puede especificar detalles de las asignaciones de tabla, como por ejemplo el espacio de tabla, utilizando la tarea Ant. Para controlar el espacio de tabla, debe utilizar las instrucciones manuales en la sección [Base de datos DB2 y requisitos de usuario](../databases/#db2-database-and-user-requirements).
 
 #### MySQL
 {: #mysql }
-The element `<mysql>` has the following attributes:
+El elemento `<mysql>` tiene los siguientes atributos:
 
-| Attribute | Description                            | Required | Default |
+| Atributo | Descripción                            | Obligatorio | Predeterminado |
 |-----------|----------------------------------------|----------|---------|
-| database	| The database name.	                 | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server	| The host name of the database server.	 | Yes	    | None |
-| port	    | The port on the database server.	     | No	    | 3306 |
-| user	    | The user name for accessing databases. | Yes	    | None |
-| password	| The password for accessing databases.	 | No	    | Queried interactively |
+| database	| El nombre de la base de datos.	                 | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| server	| El nombre de host del servidor de bases de datos.	 | Sí	    | Ninguno |
+| port	    | El puerto en el servidor de bases de datos.	     | No	    | 3306 |
+| user	    | El nombre de usuario para acceder a las bases de datos. | Sí	    | Ninguno |
+| password	| La contraseña para acceder a las bases de datos.	 | No	    | Consultado de forma interactiva |
 
-For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
-The `<mysql>` element supports the following elements:
+Para obtener más información sobre las cuentas de usuario de MySQL, consulte [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
+El elemento `<mysql>` da soporte a los elementos siguientes:
 
-| Element      | Description                                      | Count |
+| Elemento      | Descripción                                      | Recuento |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | The JDBC connection property.                    | 0..∞  |
-| `<dba>`      | The database administrator credentials.          | 0..1  |
-| `<client>`   | The host that is allowed to access the database. | 0..∞  |
+| `<property>` | La propiedad de conexión JDBC.                    | 0..∞  |
+| `<dba>`      | Las credenciales del administrador de bases de datos.          | 0..1  |
+| `<client>`   | El host que está autorizado a acceder a la base de datos. | 0..∞  |
 
-For the available properties, see [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).  
-The inner element `<dba>` specifies the database administrator credentials. This element has the following attributes:
+Para las propiedades disponibles, consulte [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).  
+El elemento interno `<dba>` especifica las credenciales del administrador de bases de datos. Este elemento tiene los siguientes atributos:
 
-| Attribute | Description                            | Required | Default |
+| Atributo | Descripción                            | Obligatorio | Predeterminado |
 |-----------|----------------------------------------|----------|---------|
-| user	    | The user name for accessing databases. | Yes	    | None |
-| password	| The password for accessing databases.	 | No	    | Queried interactively |
+| user	    | El nombre de usuario para acceder a las bases de datos. | Sí	    | Ninguno |
+| password	| La contraseña para acceder a las bases de datos.	 | No	    | Consultado de forma interactiva |
 
-The user that is specified in a `<dba>` element must be a MySQL superuser account. For more information, see [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html).
+El usuario que se especifica en un elemento `<dba>` debe ser una cuenta de superusuario de MySQL. Para obtener más información, consulte [Protección de cuentas iniciales de MySQL](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html).
 
-Each `<client>` inner element specifies a client computer or a wildcard for client computers. These computers are allowed to connect to the database. This element has the following attributes:
+Cada elemento interno de `<client>` especifica un sistema del cliente o un comodín para los sistemas cliente. Estos sistemas tienen permiso para conectarse a la base de datos. Este elemento tiene los siguientes atributos:
 
-| Attribute | Description                                                              | Required | Default |
+| Atributo | Descripción                                                              | Obligatorio | Predeterminado |
 |-----------|--------------------------------------------------------------------------|----------|---------|
-| hostname	| The symbolic host name, IP address, or template with % as a placeholder. | Yes	  | None    |
+| hostname	| El nombre de host simbólico, dirección IP, o plantilla con % como marcador. | Sí	  | Ninguno    |
 
-For more information about the hostname syntax, see [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html).
+Para obtener más información sobre la sintaxis del nombre de host, consulte [Cómo especificar nombres de cuenta](http://dev.mysql.com/doc/refman/5.5/en/account-names.html).
 
-The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download that file from the [Download Connector/J](http://www.mysql.com/downloads/connector/j/) page.
+El elemento `<driverclasspath>` debe contener un archivo JAR de MySQL Connector/J. Puede descargar dicho archivo desde la página [Download Connector/J](http://www.mysql.com/downloads/connector/j/).
 
-Alternatively, you can use the `<mysql>` element with the following attributes:
+Como alternativa, puede utilizar el elemento `<mysql>` con los atributos siguientes:
 
-| Attribute | Description                            | Required | Default               |
+| Atributo | Descripción                            | Obligatorio | Predeterminado               |
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | The database connection URL.	         | Yes      | None                  |
-| user	    | The user name for accessing databases. | Yes      | None                  |
-| password	| The password for accessing databases.	 | No       | Queried interactively |
+| url       | El URL de conexión de base de datos.	         | Sí      | Ninguno                  |
+| user	    | El nombre de usuario para acceder a las bases de datos. | Sí      | Ninguno                  |
+| password	| La contraseña para acceder a las bases de datos.	 | No       | Consultado de forma interactiva |
 
-> `Note:` If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the **configuredatabase** task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner elements `<dba>` or `<client>`.
+> `Nota:` Si especifica la base de datos con atributos alternativos, esta base de datos debe existir, la cuenta de usuario debe existir, y la base de datos ya debe estar accesible para el usuario. En este caso, la tarea **configuredatabase** no intentará crear la base de datos ni el usuario, ni intentará otorgar acceso al usuario. La tarea **configuredatabase** sólo garantiza que la base de datos tenga las tablas necesarias para la versión actual de {{ site.data.keys.mf_server }}. No tiene que especificar los elementos internos `<dba>` ni `<client>`.
 
 #### Oracle
 {: #oracle }
-The element `<oracle>` has the following attributes:
+El elemento `<oracle>` tiene los siguientes atributos:
 
-| Attribute      | Description                                                              | Required | Default |
+| Atributo      | Descripción                                                              | Obligatorio | Predeterminado |
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| database       | The database name, or Oracle service name. **Note:** You must always use a service name to connect to a PDB database. | No | ORCL |
-| server	     | The host name of the database server.                                    | Yes      | None |
-| port	         | The port on the database server.                                         | No       | 1521 |
-| user	         | The user name for accessing databases. See the note under this table.	| Yes      | None |
-| password	     | The password for accessing databases.                                    | No       | Queried interactively |
-| sysPassword	 | The password for the user SYS.                                           | No       | Queried interactively if the database does not yet exist |
-| systemPassword | The password for the user SYSTEM.                                        | No       | Queried interactively if the database or the user does not exist yet |
+| database       | El nombre de base de datos, o el nombre de servicio de Oracle. **Nota:** Siempre debe utilizar un nombre de servicio para conectarse a una base de datos PDB. | No | ORCL |
+| server	     | El nombre de host del servidor de bases de datos.                                    | Sí      | Ninguno |
+| port	         | El puerto en el servidor de bases de datos.                                         | No       | 1521 |
+| user	         | El nombre de usuario para acceder a las bases de datos. Consulte la nota bajo esta tabla.	| Sí      | Ninguno |
+| password	     | La contraseña para acceder a las bases de datos.                                    | No       | Consultado de forma interactiva |
+| sysPassword	 | La contraseña para el usuario SYS.                                           | No       | Consultado de forma interactiva si la base de datos no existe aún |
+| systemPassword | La contraseña para el usuario SYSTEM.                                        | No       | Consultado de forma interactiva si la base de datos o el usuario no existe aún |
 
-> `Note:` For the user attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **configuredatabase** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **configuredatabase** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> `Nota:` Para el atributo de usuario, utilice preferiblemente un nombre de usuario en letras mayúsculas. Los nombres de usuario de Oracle están generalmente en letras mayúsculas. A diferencia de otras herramientas de base de datos, la tarea Ant **configuredatabase** no convierte las letras en minúscula en letras en mayúscula en el nombre de usuario. Si la tarea Ant **configuredatabase** no consigue conectarse a la base de datos, intente escribir el valor para el atributo **user** en letras mayúsculas.
+Para obtener más información sobre las cuentas de usuario de Oracle, consulte [Visión general de métodos de autenticación](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).  
+El elemento `<oracle>` da soporte a los elementos siguientes:
 
-For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).  
-The `<oracle>` element supports the following elements:
-
-| Element      | Description                                      | Count |
+| Elemento      | Descripción                                      | Recuento |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | The JDBC connection property.                    | 0..∞  |
-| `<dba>`      | The database administrator credentials.          | 0..1  |
+| `<property>` | La propiedad de conexión JDBC.                    | 0..∞  |
+| `<dba>`      | Las credenciales del administrador de bases de datos.          | 0..1  |
 
-For information about the available connection properties, see [Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html).  
-The inner element `<dba>` specifies the database administrator credentials. This element has the following attributes:
+Para obtener información sobre las propiedades de conexión disponibles, consulte [Clase OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html).  
+El elemento interno `<dba>` especifica las credenciales del administrador de bases de datos. Este elemento tiene los siguientes atributos:
 
-| Attribute      | Description                                                              | Required | Default |
+| Atributo      | Descripción                                                              | Obligatorio | Predeterminado |
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| user	         | The user name for accessing databases. See the note under this table.	| Yes      | None    |
-| password	     | The password for accessing databases.                                    | No       | Queried interactively |
+| user	         | El nombre de usuario para acceder a las bases de datos. Consulte la nota bajo esta tabla.	| Sí      | Ninguno    |
+| password	     | La contraseña para acceder a las bases de datos.                                    | No       | Consultado de forma interactiva |
 
-The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+El elemento `<driverclasspath>` debe contener un archivo JAR del controlador JDBC de Oracle. Puede descargar los controladores JDBC de Oracle desde [JDBC, SQLJ, Oracle JPublisher y Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-You cannot specify details of table allocation, such as the table space, by using the Ant task. To control the table space, you can create the user account manually and assign it a default table space before you run the Ant task. To control other details, you must use the manual instructions in section [Oracle database and user requirements](../databases/#oracle-database-and-user-requirements).
+No puede especificar detalles de asignación de tabla, como por ejemplo el espacio de tabla, utilizando la tarea Ant. Para controlar el espacio de tabla, puede crear la cuenta de usuario manualmente y asignarle un espacio de tabla predeterminado antes de ejecutar la tarea Ant. Para controlar otros detalles, debe utilizar las instrucciones manuales de la sección [Base de datos Oracle y requisitos de usuario](../databases/#oracle-database-and-user-requirements).
 
-| Attribute | Description                            | Required | Default               |
+| Atributo | Descripción                            | Obligatorio | Predeterminado               |
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | The database connection URL.	         | Yes      | None                  |
-| user	    | The user name for accessing databases. | Yes      | None                  |
-| password	| The password for accessing databases.	 | No       | Queried interactively |
+| url       | El URL de conexión de base de datos.	         | Sí      | Ninguno                  |
+| user	    | El nombre de usuario para acceder a las bases de datos. | Sí      | Ninguno                  |
+| password	| La contraseña para acceder a las bases de datos.	 | No       | Consultado de forma interactiva |
 
-> **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner element `<dba>`.
+> **Nota:** Si especifica la base de datos con atributos alternativos, esta base de datos debe existir, la cuenta de usuario debe existir, y la base de datos ya debe estar accesible para el usuario. En este caso, la tarea no intentará crear la base de datos ni el usuario, ni intentará otorgar acceso al usuario. La tarea **configuredatabase** sólo garantiza que la base de datos tenga las tablas necesarias para la versión actual de {{ site.data.keys.mf_server }}. No tiene que especificar el elemento interno `<dba>`.
 
-## Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services
+## Tareas Ant para la instalación de artefactos de {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }}, administración de {{ site.data.keys.mf_server }} y servicios de Live Update
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of {{ site.data.keys.mf_console }}, the artifacts component, the administration service, and the live update service.
+Las tareas Ant **installmobilefirstadmin**, **updatemobilefirstadmin**, y **uninstallmobilefirstadmin** se proporcionan para la instalación de {{ site.data.keys.mf_console }}, el componente de artefactos, el servicio de administración y el servicio de Live Update.
 
-### Task effects
+### Efectos de tareas
 {: #task-effects }
 
 #### installmobilefirstadmin
 {: #installmobilefirstadmin }
-The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the {{ site.data.keys.mf_console }}. This task has the following effects:
+La tarea Ant **installmobilefirstadmin** configura un servidor de aplicaciones para ejecutar los archivos WAR de la administración y los servicios de Live Update como aplicaciones web y, opcionalmente, para instalar {{ site.data.keys.mf_console }}. Esta tarea tiene los siguientes efectos:
 
-* It declares the administration service web application in the specified context root, by default /mfpadmin.
-* It declares the live update service web application in a context root derived from the specified context root of the administration service. By default, /mfpadminconfig.
-* For the relational databases, it declares data sources and on WebSphere  Application Server full profile, JDBC providers for the administration services.
-* It deploys the administration service and the live update service on the application server.
-* Optionally, it declares{{ site.data.keys.mf_console }} as a web application in the specified context root, by default /mfpconsole. If the {{ site.data.keys.mf_console }} instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
+* Declara la aplicación web del servicio de administración en la raíz de contexto especificada, de forma predeterminada /mfpadmin.
+* Declara la aplicación web del servicio de Live Update en una raíz de contexto derivada de la raíz de contexto especificada del servicio de administración. De forma predeterminada, /mfpadminconfig.
+* Para las bases de datos relacionales, declara orígenes de datos y en el perfil completo de WebSphere Application Server, proveedores JDBC para los servicios de administración.
+* Despliega el servicio de administración y el servicio de Live Update en el servidor de aplicaciones.
+* Opcionalmente, declara {{ site.data.keys.mf_console }} como una aplicación web en la raíz de contexto especificada, de forma predeterminada /mfpconsole. Si se especifica la instancia de {{ site.data.keys.mf_console }}, la tarea Ant declara la entrada de entorno JNDI apropiada para comunicarse con el servicio de gestión correspondiente. Por ejemplo,
 
 ```xml
 <target name="adminstall">
@@ -258,1309 +257,1307 @@ The **installmobilefirstadmin** Ant task configures an application server to run
     <console install="${mfp.admin.console.install}" warFile="${mfp.console.war.file}"/>
 ```
 
-* Optionally, it declares the {{ site.data.keys.mf_server }} artifacts web application in the specified context root /mfp-dev-artifacts when {{ site.data.keys.mf_console }} is installed.
-* It configures the configuration properties for the administration service by using JNDI environment entries. These JNDI environment entries also give some additional information about the application server topology, for example whether the topology is a stand-alone configuration, a cluster, or a server farm.
-* Optionally, it configures users that it maps to roles used by {{ site.data.keys.mf_console }}, and the administration and live update services web applications.
-* It configures the application server for use of JMX.
-* Optionally, it configures the communication with the {{ site.data.keys.mf_server }} push service.
-* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the {{ site.data.keys.mf_server }} administration part.
+* Opcionalmente, declara la aplicación web de artefactos de {{ site.data.keys.mf_server }} en la raíz de contexto especificada /mfp-dev-artifacts cuando se instala {{ site.data.keys.mf_console }}.
+* Configura las propiedades de configuración para el servicio de administración utilizando entradas de entorno JNDI. Estas entradas de entorno JNDI también dan alguna información adicional sobre la topología del servidor de aplicaciones, por ejemplo si la topología es una configuración autónoma, un clúster, o una granja de servidores.
+* Opcionalmente, configura usuarios que correlaciona con roles utilizados por {{ site.data.keys.mf_console }}, y la administración y las aplicaciones web de servicios de Live Update.
+* Configura el servidor de aplicaciones para el uso de JMX.
+* Opcionalmente, configura la comunicación con el servicio de envío por push de {{ site.data.keys.mf_server }}.
+* Opcionalmente, establece las entradas de entorno JNDI de MobileFirst para configurar el servidor de aplicaciones como un miembro de la granja de servidores para el componente de administración de {{ site.data.keys.mf_server }}.
 
 #### updatemobilefirstadmin
 {: #updatemobilefirstadmin }
-The **updatemobilefirstadmin** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task has the following effects:
+La tarea Ant **updatemobilefirstadmin** actualiza una aplicación web {{ site.data.keys.mf_server }} ya configurada en un servidor de aplicaciones. Esta tarea tiene los siguientes efectos:
 
-* It updates the administration service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the live update service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the {{ site.data.keys.mf_console }} WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, user-to-role mappings, and JMX configuration.
+* Actualiza el archivo WAR del servicio de administración. Este archivo debe tener el mismo nombre base que el archivo WAR correspondiente desplegado anteriormente.
+* Actualiza el archivo WAR del servicio de Live Update. Este archivo debe tener el mismo nombre base que el archivo WAR correspondiente desplegado anteriormente.
+* Actualiza el archivo WAR de {{ site.data.keys.mf_console }}. Este archivo debe tener el mismo nombre base que el archivo WAR correspondiente desplegado anteriormente.
+La tarea no cambia la configuración del servidor de aplicaciones, es decir, la configuración de la aplicación web, los orígenes de datos, las entradas de entorno JNDI, las correlaciones de usuario a rol ni la configuración de JMX.
 
 #### uninstallmobilefirstadmin
 {: #uninstallmobilefirstadmin }
-The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run of installmobilefirstadmin. This task has the following effects:
+La tarea Ant **uninstallmobilefirstadmin** deshace los efectos de una ejecución anterior de installmobilefirstadmin. Esta tarea tiene los siguientes efectos:
 
-* It removes the configuration of the administration service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes the WAR files of the administration and live update services, and {{ site.data.keys.mf_console }} from the application server as an option.
-* For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile the JDBC providers for the administration and live update services.
-* For the relational DBMS, it removes the database drivers that were used by the administration and live update services from the application server.
-* It removes the associated JNDI environment entries.
-* On WebSphere Application Server Liberty and Apache Tomcat, it removes the users configured by the installmobilefirstadmin invocation.
-* It removes the JMX configuration.
+* Elimina la configuración de la aplicación web del servicio de administración con la raíz de contexto especificada. Como consecuencia, la tarea también elimina los valores que se han añadido manualmente a dicha aplicación.
+* Elimina los archivos WAR de la administración y de los servicios de Live Update, y {{ site.data.keys.mf_console }} desde el servidor de aplicaciones como una opción.
+* Para el DBMS relacional, elimina los orígenes de datos y en el perfil completo de WebSphere Application Server los proveedores JDBC para la administración y los servicios de Live Update.
+* Para el DBMS relacional, elimina los controladores de base de datos que utilizaron la administración y los servicios de Live Update desde el servidor de aplicaciones.
+* Elimina las entradas de entorno JNDI asociadas.
+* En WebSphere Application Server Liberty y Apache Tomcat, elimina los usuarios configurados por la invocación de installmobilefirstadmin.
+* Elimina la configuración de JMX.
 
-### Attributes and elements
+### Atributos y elementos
 {: #attributes-and-elements }
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks have the following attributes:
+Las tareas Ant **installmobilefirstadmin**, **updatemobilefirstadmin**, y **uninstallmobilefirstadmin** tienen los atributos siguientes:
 
-| Attribute         | Description                                                              | Required | Default |
+| Atributo         | Descripción                                                              | Obligatorio | Predeterminado |
 |-------------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot       | The common prefix for URLs to the administration service to get information about {{ site.data.keys.product_adj }} runtime environments, applications, and adapters. | No | /mfpadmin |
-| id                | To distinguish different deployments.              | No | Empty |
-| environmentId     | To distinguish different {{ site.data.keys.product_adj }} environments. | No | Empty |
-| servicewar        | The WAR file for the administration service.       | No | The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file. |
-| shortcutsDir      | The directory where to place shortcuts.            | No | None |
-| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 |
+| contextroot       | El prefijo común para URL en el servicio de administración para obtener información sobre los entornos de tiempo de ejecución, las aplicaciones y los adaptadores de {{ site.data.keys.product_adj }}. | No | /mfpadmin |
+| id                | Para distinguir los distintos despliegues.              | No | Vacío |
+| environmentId     | Para distinguir los distintos entornos de {{ site.data.keys.product_adj }}. | No | Vacío |
+| servicewar        | El archivo WAR para el servicio de administración.       | No | El archivo mfp-admin-service.war se encuentra en el mismo directorio que el archivo mfp-ant-deployer.jar. |
+| shortcutsDir      | El directorio donde se colocarán los atajos.            | No | Ninguno |
+| wasStartingWeight | El orden de inicio para WebSphere Application Server. Los valores inferiores comenzarán en primer lugar. | No | 1 |
 
-#### contextroot and id
+#### contextroot e id
 {: #contextroot-and-id }
-The **contextroot** and **id** attributes distinguish different deployments of {{ site.data.keys.mf_console }} and the administration service.
+Los atributos **contextroot** e **id** distinguen los diferentes despliegues de {{ site.data.keys.mf_console }} y el servicio de administración.
 
-In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+En los perfiles de WebSphere Application Server Liberty y en los entornos de Tomcat, el parámetro contextroot es suficiente para esta finalidad. En los entornos de perfil completo de WebSphere Application Server, se utilizará el atributo id en su lugar. Sin este atributo id, pueden entrar en conflicto dos archivos WAR con las mismas raíces de contexto y es posible que estos archivos no se desplieguen.
 
 #### environmentId
 {: #environmentid }
-Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the {{ site.data.keys.product_adj }} runtime projects use when they communicate through Java Management Extensions (JMX).
+Utilice el atributo **environmentId** para distinguir varios entornos, cada uno de los cuales consta del servicio de administración de {{ site.data.keys.mf_server }} y de las aplicaciones web de tiempo de ejecución de {{ site.data.keys.product_adj }}, que deben funcionar independientemente. Por ejemplo, con esta opción puede alojar un entorno de prueba, un entorno de preproducción y un entorno de producción en el mismo servidor o en la misma célula de WebSphere Application Server Network Deployment. Este atributo environmentId crea un sufijo que se añade a los nombres de MBean que utiliza el servicio de administración y los proyectos de tiempo de ejecución de {{ site.data.keys.product_adj }} cuando se comunican mediante Java Management Extensions (JMX).
 
 #### servicewar
 {: #servicewar }
-Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Utilice el atributo **servicewar** para especificar un directorio distinto para el archivo WAR del servicio de administración. Puede especificar el nombre de este archivo WAR con una vía de acceso absoluta o relativa.
 
 #### shortcutsDir
 {: #shortcutsdir }
-The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_console }}. If you set this attribute, you can add the following files to that directory:
+El atributo **shortcutsDir** especifica dónde colocar atajos en la {{ site.data.keys.mf_console }}. Si establece este atributo, puede añadir los archivos siguientes a dicho directorio:
 
-* **mobilefirst-console.url** - this file is a Windows shortcut. It opens the {{ site.data.keys.mf_console }} in a browser.
-* **mobilefirst-console.sh**- this file is a UNIX shell script and opens the {{ site.data.keys.mf_console }} in a browser.
-* **mobilefirst-admin-service.url** - this file is a Windows shortcut. It opens in a browser and calls a REST service that returns a list of the {{ site.data.keys.product_adj }} projects that can be managed in JSON format. For each listed {{ site.data.keys.product_adj }} project, some details are also available about their artifacts, such as the number of applications, the number of adapters, the number of active devices, the number of decommissioned devices. The list also indicates whether the {{ site.data.keys.product_adj }} project runtime is running or idle.
-* **mobilefirst-admin-service.sh** - this file is a UNIX shell script that provides the same output as the **mobilefirst-admin-service.url** file.
+* **mobilefirst-console.url**: este archivo es un atajo de Windows. Abre la {{ site.data.keys.mf_console }} en un navegador.
+* **mobilefirst-console.sh**: este archivo es un script de shell de UNIX y abre la {{ site.data.keys.mf_console }} en un navegador.
+* **mobilefirst-admin-service.url**: este archivo es un atajo de Windows. Se abre en un navegador y llama a un servicio REST que devuelve una lista de los proyectos de {{ site.data.keys.product_adj }} que se pueden gestionar en formato JSON. Para cada proyecto en la lista de {{ site.data.keys.product_adj }}, también hay disponibles algunos detalles sobre sus artefactos, como el número de aplicaciones, de adaptadores, de dispositivos activos, de dispositivos fuera de servicio. La lista también indica si el tiempo de ejecución del proyecto de {{ site.data.keys.product_adj }} está en ejecución o no.
+* **mobilefirst-admin-service.sh**: este archivo es un script de shell de UNIX que proporciona el mismo resultado que el archivo **mobilefirst-admin-service.url**.
 
 #### wasStartingWeight
 {: #wasstartingweight }
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
+Utilice el atributo **wasStartingWeight** para especificar un valor que se utiliza en WebSphere Application Server como un peso para asegurarse de que se respeta un orden de inicio. Como resultado del valor de orden de inicio, la aplicación web del servicio de administración se desplegará y se iniciará antes de cualquier otro proyecto de tiempo de ejecución de {{ site.data.keys.product_adj }}. Si los proyectos de {{ site.data.keys.product_adj }} se despliegan o se inician antes de la aplicación web, no se establecerá la comunicación de JMX y el tiempo de ejecución no se podrá sincronizar con la base de datos del servicio de administración y no podrá manejar las solicitudes del servidor.
 
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks support the following elements:
+Las tareas Ant **installmobilefirstadmin**, **updatemobilefirstadmin**, y **uninstallmobilefirstadmin** dan soporte a los elementos siguientes:
 
-| Element               | Description                                      | Count |
+| Elemento               | Descripción                                      | Recuento |
 |-----------------------|--------------------------------------------------|-------|
-| `<applicationserver>` | The application server.                          | 1     |
-| `<configuration>`     | The live update service.	                       | 1     |
-| `<console>`           | The administration console.                      | 0..1  |
-| `<database>`          | The databases.                                   | 1     |
-| `<jmx>`               | To enable Java Management Extensions.	           | 1     |
-| `<property>`          | The properties.	                               | 0..   |
-| `<push>`              | The push service.	                               | 0..1  |
-| `<user>`              | The user to be mapped to a security role.	       | 0..   |
+| `<applicationserver>` | El servidor de aplicaciones.                          | 1     |
+| `<configuration>`     | El servicio de Live Update.	                       | 1     |
+| `<console>`           | La consola de administración.                      | 0..1  |
+| `<database>`          | Las bases de datos.                                   | 1     |
+| `<jmx>`               | Para habilitar Java Management Extensions.	           | 1     |
+| `<property>`          | Las propiedades.	                               | 0..   |
+| `<push>`              | El servicio de envío por push.	                               | 0..1  |
+| `<user>`              | El usuario que se correlacionará con un rol de seguridad.	       | 0..   |
 
-### To specify a {{ site.data.keys.mf_console }}
+### Para especificar una {{ site.data.keys.mf_console }}
 {: #to-specify-a-mobilefirst-operations-console }
-The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_console }}. This element has the following attributes:
+El elemento `<console>` recopila información para personalizar la instalación de la {{ site.data.keys.mf_console }}. Este elemento tiene los siguientes atributos:
 
-| Attribute         | Description                                                               | Required | Default     |
+| Atributo         | Descripción                                                               | Obligatorio | Predeterminado     |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| contextroot       | The URI of the {{ site.data.keys.mf_console }}.                            | No       | /mfpconsole |
-| install           | To indicate whether the {{ site.data.keys.mf_console }} must be installed. | No       | Yes         |
-| warfile           | The console WAR file.	                                                    |No        | The mfp-admin-ui.war file is in the same directory as  themfp-ant-deployer.jar file. |
+| contextroot       | El URI de la {{ site.data.keys.mf_console }}.                            | No       | /mfpconsole |
+| install           | Para indicar si se debe instalar la {{ site.data.keys.mf_console }}. | No       | Sí         |
+| warfile           | El archivo WAR de la consola.	                                                    |No        | El archivo mfp-admin-ui.war se encuentra en el mismo directorio que el archivo themfp-ant-deployer.jar. |
 
-The `<console>` element supports the following element:
+El elemento `<console>` da soporte al elemento siguiente:
 
-| Element               | Description                                      | Count |
+| Elemento               | Descripción                                      | Recuento |
 |-----------------------|--------------------------------------------------|-------|
-| `<artifacts>`         | The {{ site.data.keys.mf_server }} artifacts.                | 0..1  |
-| `<property>`	        | The properties.	                               | 0..   |
+| `<artifacts>`         | Los artefactos de {{ site.data.keys.mf_server }}.                | 0..1  |
+| `<property>`	        | Las propiedades.	                               | 0..   |
 
-The `<artifacts>` element has the following attributes:
+El elemento `<artifacts>` tiene los atributos siguientes:
 
-| Attribute         | Description                                                               | Required | Default     |
+| Atributo         | Descripción                                                               | Obligatorio | Predeterminado     |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| install           | To indicate whether the artifacts component must be installed.            | No       | true        |
-| warFile           | The artifacts WAR file.                                                   | No       | The mfp-dev-artifacts.war file is in the same directory as the mfp-ant-deployer.jar file |
+| install           | Para indicar si se debe instalar el componente de artefactos.            | No       | true        |
+| warFile           | El archivo WAR de artefactos.                                                   | No       | El archivo mfp-dev-artifacts.war se encuentra en el mismo directorio que el archivo mfp-ant-deployer.jar |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
+Al utilizar este elemento, puede definir sus propias propiedades JNDI o sobrescribir el valor predeterminado de las propiedades JNDI que proporciona el servicio de administración y los archivos WAR de {{ site.data.keys.mf_console }}.
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+El elemento `<property>` especifica una propiedad de despliegue que se definirá en el servidor de aplicaciones. Tiene los atributos siguientes:
 
-| Attribute  | Description                | Required | Default |
+| Atributo  | Descripción                | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    |
-| value	     | The value of the property. |	Yes      | None    |
+| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
+| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
+Al utilizar este elemento, puede definir sus propias propiedades JNDI o sobrescribir el valor predeterminado de las propiedades JNDI que proporciona el servicio de administración y los archivos WAR de {{ site.data.keys.mf_console }}.
 
-For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Para obtener más información sobre las propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
-### To specify an application server
+### Para especificar un servidor de aplicaciones
 {: #to-specify-an-application-server }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+Utilice el elemento `<applicationserver>` para definir los parámetros que dependen del servidor de aplicaciones subyacente. El elemento `<applicationserver>` da soporte a los elementos siguientes.
 
-| Element                                   | Description                                      | Count |
+| Elemento                                   | Descripción                                      | Recuento |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` or `<was>` | The parameters for WebSphere Application Server. <br/><br/>The `<websphereapplicationserver>` element (or `was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment.               | 0..1  |
-| `<tomcat>`                                | The parameters for Apache Tomcat.	               | 0..1  |
+| `<websphereapplicationserver>` o `<was>` | Los parámetros para WebSphere Application Server. <br/><br/>El elemento `<websphereapplicationserver>` (o `was>` en su formato abreviado) denota una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core y WebSphere Application Server Liberty Network Deployment.               | 0..1  |
+| `<tomcat>`                                | Los parámetros para Apache Tomcat.	               | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
-However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+Los atributos y los elementos internos de estos elementos están descritos en las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
+Sin embargo, para el elemento interno del elemento `<was>` para el colectivo de Liberty, consulte la tabla siguiente:
 
-| Element                  | Description                      | Count |
+| Elemento                  | Descripción                      | Recuento |
 |--------------------------|----------------------------------|-------|
-| `<collectiveController>` | A Liberty collective controller. |	0..1  |
+| `<collectiveController>` | Un controlador colectivo de Liberty. |	0..1  |
 
-The `<collectiveController>` element has the following attributes:
+El elemento `<collectiveController>` tiene los atributos siguientes:
 
-| Attribute                | Description                            | Required | Default |
+| Atributo                | Descripción                            | Obligatorio | Predeterminado |
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               | The name of the collective controller.	| Yes      | None    |
-| controllerAdminName      | The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the   collective.                                                         | Yes      | None    |
-| controllerAdminPassword  | The administrative user password.	    | Yes      | None    |
-| createControllerAdmin    | To indicate whether the administrative user must be created in the basic registry of the collective controller. Possible values are true or false.                                                              | No	   | true    |
+| serverName               | El nombre del controlador colectivo.	| Sí      | Ninguno    |
+| controllerAdminName      | El nombre de usuario administrativo definido en el controlador colectivo. Este es el mismo usuario que se utiliza para unirse a nuevos miembros en el colectivo.                                                         | Sí      | Ninguno    |
+| controllerAdminPassword  | La contraseña de usuario administrativo.	    | Sí      | Ninguno    |
+| createControllerAdmin    | Para indicar si el usuario administrativo debe crearse en el registro básico del controlador colectivo. Los valores posibles son true o false.                                                              | No	   | true    |
 
-### To specify the live update service configuration
+### Para especificar la configuración del servicio de Live Update
 {: #to-specify-the-live-update-service-configuration }
-Use the `<configuration>` element to define the parameters that depend on the live update service. The `<configuration>` element has the following attributes.
+Utilice el elemento `<configuration>` para definir los parámetros que dependen del servicio de Live Update. El elemento `<configuration>` tiene los atributos siguientes.
 
-| Attribute                | Description                                                    | Required | Default |
+| Atributo                | Descripción                                                    | Obligatorio | Predeterminado |
 |--------------------------|----------------------------------------------------------------|----------|---------|
-| install                  | To indicate whether the live update service must be installed.	| Yes | true |
-| configAdminUser	       | The administrator for the live update service.	                | No. However, it is required for a server farm topology. |If not defined, a user is generated. In a server farm topology, the user name must be the same for all the members of the farm. |
-| configAdminPassword      | The administrator password for live update service user.       | If a user is specified for **configAdminUser**. | None. In a server farm topology, the password must be the same for all the members of the farm. |
-| createConfigAdminUser	   | To indicate whether to create an admin user in the basic registry of the application server, if it is missing. | No | true |
-| warFile                  | The live update service WAR file.	                            | No         | The mfp-live-update.war file is in the same directory as the mfp-ant-deployer.jar file. |
+| install                  | Para indicar si se debe instalar el servicio de Live Update. | Sí | true |
+| configAdminUser	       | El administrador para el servicio de Live Update.	                | No. Sin embargo, es necesario para una topología de granja de servidores. |Si no está definido, se generará un usuario. En una topología de granja de servidores, el nombre de usuario debe ser el mismo para todos los miembros de la granja de servidores.|
+| configAdminPassword      | La contraseña del administrador para el usuario de servicio de Live Update.       | Si se especifica un usuario para **configAdminUser**. | Ninguno. En una topología de granja de servidores, la contraseña debe ser el mismo para todos los miembros de la granja de servidores.|
+| createConfigAdminUser	   | Para indicar si se creará un usuario admin en el registro básico del servidor de aplicaciones, si falta. | No | true |
+| warFile                  | El archivo WAR del servicio de Live Update.	                            | No         | El archivo mfp-live-update.war se encuentra en el mismo directorio que el archivo mfp-ant-deployer.jar. |
 
-The `<configuration>` element supports the following elements:
+El elemento `<configuration>` da soporte a los elementos siguientes:
 
-| Element      | Description                           | Count |
+| Elemento      | Descripción                           | Recuento |
 |--------------|---------------------------------------|-------|
-| `<user>`     | The user for the live update service. | 0..1  |
-| `<property>` | The properties.	                   | 0..   |
+| `<user>`     | El usuario para el servicio de Live Update. | 0..1  |
+| `<property>` | Las propiedades.	                   | 0..   |
 
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+El elemento `<user>` recopila los parámetros sobre un usuario para incluirlos en un determinado rol de seguridad para una aplicación.
 
-| Attribute   | Description                                                             | Required | Default |
+| Atributo   | Descripción                                                             | Obligatorio | Predeterminado |
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| role	      | A valid security role for the application. Possible value: configadmin.	| Yes      | None    |
-| name	      | The user name.	                                                        | Yes      | None    |
-| password	  | The password if the user needs to be created.	                        | No       | None    |
+| role	      | Un rol de seguridad válido para la aplicación. Valor posible: configadmin.	| Sí      | Ninguno    |
+| name	      | El nombre de usuario.	                                                        | Sí      | Ninguno    |
+| password	  | La contraseña si el usuario debe crearse.	                        | No       | Ninguno    |
 
-After you defined the users by using the `<user>` element, you can map them to any of the following roles for authentication in {{ site.data.keys.mf_console }}: `configadmin`.
+Una vez definidos los usuarios utilizando el elemento `<user>`, puede correlacionarlos con cualquiera de los roles siguientes para la autenticación en {{ site.data.keys.mf_console }}: `configadmin`.
 
-For more information about which authorizations are implied by the specific roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+Para obtener más información sobre qué autorizaciones están implícitas mediante los roles específicos, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
-> **Tip:** If the users exist in an external LDAP directory, set only the **role** and **name** attributes but do not define any passwords.
+> **Consejo:** Si los usuarios existen en un directorio LDAP externo, establezca sólo los atributos **role** y **name** pero no defina ninguna contraseña.
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+El elemento `<property>` especifica una propiedad de despliegue que se definirá en el servidor de aplicaciones. Tiene los atributos siguientes:
 
-| Attribute  | Description                | Required | Default |
+| Atributo  | Descripción                | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    |
-| value	     | The value of the property. |	Yes      | None    |
+| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
+| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files. For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Al utilizar este elemento, puede definir sus propias propiedades JNDI o sobrescribir el valor predeterminado de las propiedades JNDI que proporciona el servicio de administración y los archivos WAR de {{ site.data.keys.mf_console }}. Para obtener más información sobre las propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
-### To specify an application server
+### Para especificar un servidor de aplicaciones
 {: #to-specify-an-application-server-1 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+Utilice el elemento `<applicationserver>` para definir los parámetros que dependen del servidor de aplicaciones subyacente. El elemento `<applicationserver>` da soporte a los elementos siguientes:
 
-| Element      | Description                                              | Count |
+| Elemento      | Descripción                                              | Recuento |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` or `<was>`	| The parameters for WebSphere Application Server.<br/><br/>The <websphereapplicationserver> element (or <was> in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1  |
-| `<tomcat>`   | The parameters for Apache Tomcat.                        | 0..1  |
+| `<websphereapplicationserver>` o `<was>`	| Los parámetros para WebSphere Application Server.<br/><br/>El elemento <websphereapplicationserver> (o <was> en su formato abreviado) denota una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core y WebSphere Application Server Liberty Network Deployment. | 0..1  |
+| `<tomcat>`   | Los parámetros para Apache Tomcat.                        | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
-However, for the inner element of the <was> element for Liberty collective, see the following table:
+Los atributos y los elementos internos de estos elementos están descritos en las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
+Sin embargo, para el elemento interno del elemento <was> para el colectivo de Liberty, consulte la tabla siguiente:
 
-| Element               | Description                  | Count |
+| Elemento               | Descripción                  | Recuento |
 |-----------------------|----------------------------- |-------|
-| `<collectiveMember>`	| A Liberty collective member. | 0..1  |
+| `<collectiveMember>`	| Un miembro de colectivo de Liberty. | 0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+El elemento `<collectiveMember>` tiene los atributos siguientes:
 
-| Attribute   | Description                                             | Required | Default |
+| Atributo   | Descripción                                             | Obligatorio | Predeterminado |
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	The name of the collective member.                      | Yes      | None    |
-| clusterName |	The cluster name that the collective member belongs to. | Yes	   | None    |
+| serverName  |	El nombre del miembro de colectivo.                      | Sí      | Ninguno    |
+| clusterName |	El nombre de clúster al que pertenece el miembro de colectivo. | Sí	   | Ninguno    |
 
-> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
-
-### To specify Analytics
+> **Nota:** Si el servicio de envío por push y los componentes de tiempo de ejecución están instalados en el mismo miembro de colectivo, deben tener el mismo nombre de clúster. Si estos componentes están instalados en miembros distintos del mismo colectivo, los nombres de clúster pueden ser distintos.
+### Para especificar Analytics
 {: #to-specify-analytics }
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
+El elemento `<analytics>` indica que desea conectar el servicio de envío por push de {{ site.data.keys.product_adj }} a un servicio de {{ site.data.keys.mf_analytics }} ya instalado. Tiene los atributos siguientes:
 
-| Attribute     | Description                                                               | Required | Default |
+| Atributo     | Descripción                                                               | Obligatorio | Predeterminado |
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL 	| The URL of {{ site.data.keys.mf_analytics }} services.	                            | Yes	   | None    |
-| username	    | The user name.	                                                        | Yes	   | None    |
-| password	    | The password.	                                                            | Yes	   | None    |
-| validate	    | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	| No	   | true    |
+| install	    | Para indicar si se debe conectar el servicio de envío por push a {{ site.data.keys.mf_analytics }}. | No       | false   |
+| analyticsURL 	| El URL de los servicios de {{ site.data.keys.mf_analytics }}.	                            | Sí	   | Ninguno    |
+| username	    | El nombre de usuario.	                                                        | Sí	   | Ninguno    |
+| password	    | La contraseña.	                                                            | Sí	   | Ninguno    |
+| validate	    | Para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no.	| No	   | true    |
 
 **install**  
-Use the install attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
+Utilice el atributo install para indicar que este servicio de envío por push debe estar conectado y debe enviar sucesos a {{ site.data.keys.mf_analytics }}. Los valores válidos son true o false.
 
 **analyticsURL**  
-Use the analyticsURL attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.
+Utilice el atributo analyticsURL para especificar el URL expuesto por {{ site.data.keys.mf_analytics }}, que recibe datos analíticos entrantes.
 
-For example: `http://<hostname>:<port>/analytics-service/rest`
+Por ejemplo: `http://<hostname>:<port>/analytics-service/rest`
 
 **username**  
-Use the username attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+Utilice el atributo username para especificar el nombre de usuario que se utilizará si el punto de entrada de datos para {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.
 
 **password**  
-Use the password attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+Utilice el atributo password para especificar la contraseña que se utilizará si el punto de entrada de datos para {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.
 
 **validate**  
-Use the validate attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+Utilice el atributo validate para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no, y para comprobar la autenticación de nombre de usuario con una contraseña. Los valores posibles son true, o false.
 
-### To specify a connection to the push service database
+### Para especificar una conexión con la base de datos de servicio de envío por push
 {: #to-specify-a-connection-to-the-push-service-database }
 
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+El elemento `<database>` recopila los parámetros que especifican una declaración de origen de datos en un servidor de aplicaciones para acceder a la base de datos de servicio de envío por push.
 
-You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+Debe declarar una única base de datos: `<database kind="Push">`. Especifique el elemento `<database>` de forma parecida a la tarea Ant configuredatabase, excepto que el elemento `<database>` no tiene los elementos `<dba>` ni `<client>`. Podría tener los elementos `<property>`.
 
-The `<database>` element has the following attributes:
+El elemento `<database>` tiene los atributos siguientes:
 
-| Attribute     | Description                                     | Required | Default |
+| Atributo     | Descripción                                     | Obligatorio | Predeterminado |
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | The kind of database (Push).	                  | Yes	     | None    |
-| validate	    | To validate whether the database is accessible. | No       | true    |
+| kind          | El tipo de base de datos (Push).	                  | Sí	   | Ninguno    |
+| validate	    | Para validar si se puede acceder a la base de datos. | No       | true    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+El elemento `<database>` da soporte a los elementos siguientes. Para obtener más información sobre la configuración de estos elementos de base de datos para DBMS relacional, consulte las tablas de [tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
-| Element            | Description                                                      | Count |
+| Elemento            | Descripción                                                      | Recuento |
 |--------------------|----------------------------------------------------------------- |-------|
-| <db2>	             | The parameter for DB2  databases.	                            | 0..1  |
-| <derby>	         | The parameter for Apache Derby databases.	                    | 0..1  |
-| <mysql>	         | The parameter for MySQL databases.                               | 0..1  |
-| <oracle>	         | The parameter for Oracle databases.	                            | 0..1  |
-| <cloudant>	     | The parameter for Cloudant databases.	                        | 0..1  |
-| <driverclasspath>	 | The parameter for JDBC driver class path (relational DBMS only). | 0..1  |
+| <db2>	             | El parámetro para bases de datos DB2.	                            | 0..1  |
+| <derby>	         | El parámetro para bases de datos Apache Derby.	                    | 0..1  |
+| <mysql>	         | El parámetro para bases de datos MySQL.                               | 0..1  |
+| <oracle>	         | El parámetro para bases de datos Oracle.	                            | 0..1  |
+| <cloudant>	     | El parámetro para bases de datos Cloudant.	                        | 0..1  |
+| <driverclasspath>	 | El parámetro para la vía de acceso de la clase de controlador JDBC (sólo DBMS relacional). | 0..1  |
 
-> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+> **Nota:** Los atributos del elemento `<cloudant>` son ligeramente distintos del tiempo de ejecución. Para obtener más información, consulte la siguiente tabla:
 
-| Attribute     | Description                                     | Required | Default                   |
+| Atributo     | Descripción                                     | Obligatorio | Predeterminado                   |
 |---------------|-------------------------------------------------|----------|---------------------------|
-| url           | The URL of the Cloudant account.                | No       | https://user.cloudant.com |
-| user          | The user name of the Cloudant account.	      | Yes	     | None                      |
-| password      | The password of the Cloudant account.	          | No	     | Queried interactively     |
-| dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
+| url           | El URL de la cuenta de Cloudant.                | No       | https://user.cloudant.com |
+| user          | El nombre de usuario de la cuenta de Cloudant.	      | Sí	   | Ninguno                      |
+| password      | La contraseña de la cuenta de Cloudant.	          | No	     | Consultado de forma interactiva     |
+| dbName        | El nombre de base de datos de Cloudant. **Importante:** Este nombre de base de datos debe comenzar por una letra en minúscula y contener sólo caracteres en minúscula (a-z), dígitos (0-9), cualquiera de los caracteres _, $, y -.                                | No       | mfp_push_db               |
 
-## Ant tasks for installation of {{ site.data.keys.mf_server }} push service
+## Tareas Ant para la instalación del servicio de envío por push de {{ site.data.keys.mf_server }}
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks are provided for the installation of the push service.
+Las tareas Ant **installmobilefirstpush**, **updatemobilefirstpush**, y **uninstallmobilefirstpush** se proporcionan para la instalación del servicio de envío por push.
 
-### Task effects
+### Efectos de tareas
 {: #task-effects-1 }
 #### installmobilefirstpush
 {: #installmobilefirstpush }
-The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
-It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
-For the relational databases, it declares data sources and, on WebSphere  Application Server Full Profile, JDBC providers for push service.
-It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the {{ site.data.keys.product_adj }} authorization server, {{ site.data.keys.mf_analytics }}, and with Cloudant  in case Cloudant is used.
+La tarea Ant **installmobilefirstpush** configura un servidor de aplicaciones para ejecutar el archivo WAR del servicio de envío por push como una aplicación web. Esta tarea tiene los siguientes efectos:
+Declara la aplicación web del servicio de envío por push en la raíz de contexto **/imfpush**. La raíz de contexto no se puede modificar.
+Para las bases de datos relacionales, declara los orígenes de datos y, en el perfil completo de WebSphere Application Server, los proveedores JDBC para servicio de envío por push.
+Configura las propiedades de configuración para el servicio de envío por push utilizando entradas de entorno JNDI. Estas entradas de entorno JNDI configuran la comunicación de OAuth con el servidor de autorizaciones de {{ site.data.keys.product_adj }}, {{ site.data.keys.mf_analytics }}, y con Cloudant en caso de que se utilice Cloudant.
 
 #### updatemobilefirstpush
 {: #updatemobilefirstpush }
-The **updatemobilefirstpush** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+La tarea Ant **updatemobilefirstpush** actualiza una aplicación web de {{ site.data.keys.mf_server }} ya configurada en un servidor de aplicaciones. Esta tarea actualiza el archivo WAR del servicio de envío por push. Este archivo debe tener el mismo nombre base que el archivo WAR correspondiente desplegado anteriormente.
 
 #### uninstallmobilefirstpush
 {: #uninstallmobilefirstpush }
-The **uninstallmobilefirstpush** Ant task undoes the effects of an earlier run of **installmobilefirstpush**. This task has the following effects:
-It removes the configuration of the push service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-It removes the push service WAR file from the application server as an option.
-For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile – the JDBC providers for the push service.
-It removes the associated JNDI environment entries.
+La tarea Ant **uninstallmobilefirstpush** deshace los efectos de una ejecución anterior de **installmobilefirstpush**. Esta tarea tiene los siguientes efectos:
+Elimina la configuración de la aplicación web del servicio de envío por push con la raíz de contexto especificada. Como consecuencia, la tarea también elimina los valores que se han añadido manualmente a dicha aplicación.
+Elimina el archivo WAR del servicio de envío por push del servidor de aplicaciones como una opción.
+Para DBMS relacional, elimina los orígenes de datos y, en el perfil completo de WebSphere Application Server, los proveedores JDBC para el servicio de envío por push.
+Elimina las entradas de entorno JNDI asociadas.
 
-### Attributes and elements
+### Atributos y elementos
 {: #attributes-and-elements-1 }
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks have the following attributes:
+Las tareas Ant **installmobilefirstpush**, **updatemobilefirstpush**, y **uninstallmobilefirstpush** tienen los siguientes atributos:
 
-| Attribute | Description                           | Required | Default     |
+| Atributo | Descripción                           | Obligatorio | Predeterminado     |
 |-----------|---------------------------------------|----------|-------------|
-| id        | To distinguish different deployments.	| No	   | Empty
-| warFile	| The WAR file for the push service.	| No	   | The ../PushService/mfp-push-service.war file is relative to the MobileFirstServer directory that contains the  mfp-ant-deployer.jar file. |
+| id        | Para distinguir los distintos despliegues.	| No	   | Vacío
+| warFile	| El archivo WAR para el servicio de envío por push. | No	   | El archivo ../PushService/mfp-push-service.war es relativo al directorio MobileFirstServer que contiene el archivo mfp-ant-deployer.jar. |
 
 ### Id
 {: #id }
-The **id** attribute distinguishes different deployments of the push service in the same WebSphere Application Server cell. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+El atributo **id** distingue distintos despliegues del servicio de envío por push en la misma célula de WebSphere Application Server. Sin este atributo id, pueden entrar en conflicto dos archivos WAR con las mismas raíces de contexto y es posible que estos archivos no se desplieguen.
 
 ### warFile
 {: #warfile }
-Use the **warFile** attribute to specify a different directory for the push service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Utilice el atributo **warFile** para especificar un directorio distinto para el archivo WAR del servicio de envío por push. Puede especificar el nombre de este archivo WAR con una vía de acceso absoluta o relativa.
 
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks support the following elements:
+Las tareas Ant **installmobilefirstpush**, **updatemobilefirstpush**, y **uninstallmobilefirstpush** dan soporte a los siguientes elementos:
 
-| Element               | Description             | Count |
+| Elemento               | Descripción             | Recuento |
 |-----------------------|-------------------------|-------|
-| `<applicationserver>` | The application server. | 1     |
-| `<analytics>`	        | The Analytics.	      | 0..1  |
-| `<authorization>`	    | The authorization server for authenticating the communication with other {{ site.data.keys.mf_server }} components. | 1 |
-| `<database>`	        | The databases.	      | 1     |
-| `<property>`	        | The properties.	      | 0..∞  |
+| `<applicationserver>` | El servidor de aplicaciones. | 1     |
+| `<analytics>`	        | Analytics.	      | 0..1  |
+| `<authorization>`	    | El servidor de autorizaciones para autenticar la comunicación con otros componentes {{ site.data.keys.mf_server }}. | 1 |
+| `<database>`	        | Las bases de datos.	      | 1     |
+| `<property>`	        | Las propiedades.	      | 0..∞  |
 
-### To specify the authorization server
+### Para especificar el servidor de autorizaciones
 {: #to-specify-the-authorization-server }
-The `<authorization>` element collects information to configure the authorization server for the authentication communication with other {{ site.data.keys.mf_server }} components. This element has the following attributes:
+El elemento `<authorization>` recopila información para configurar el servidor de autorizaciones para la comunicación de autenticación con otros componentes de {{ site.data.keys.mf_server }}. Este elemento tiene los siguientes atributos:
 
-| Attribute          | Description                           | Required | Default     |
+| Atributo          | Descripción                           | Obligatorio | Predeterminado     |
 |--------------------|---------------------------------------|----------|-------------|
-| auto               | To indicate whether the authorization server URL is computed. The possible values are true or false.	| Required on a WebSphere Application Server Network Deployment cluster or node.   	 | true |
-| authorizationURL   | The URL of the authorization server.	 | If mode is not auto. | The context root of the runtime on the local server. |
-| runtimeContextRoot | The context root of the runtime.	     | No	     | /mfp       |
-| pushClientID	     | The push service confidential ID in the authorization server.  | Yes | None |
-| pushClientSecret	 | The push service confidential client password in the authorization server. | Yes | None |
+| auto               | Para indicar si el URL del servidor de autorizaciones está calculado. Los valores posibles son true o false.	| Necesario en un clúster o en un nodo de WebSphere Application Server Network Deployment.   	 | true |
+| authorizationURL   | El URL del servidor de autorizaciones.	 | Si la modalidad no es auto. | La raíz de contexto del tiempo de ejecución en el servidor local. |
+| runtimeContextRoot | La raíz de contexto del tiempo de ejecución.	     | No	     | /mfp       |
+| pushClientID	     | El ID confidencial del servicio de envío por push del servidor de autorizaciones.  | Sí | Ninguno |
+| pushClientSecret	 | La contraseña de cliente confidencial del servicio de envío por push del servidor de autorizaciones. | Sí | Ninguno |
 
 #### auto
 {: #auto }
-If the value is set to true, the URL of the authorization server is computed automatically by using the context root of the runtime on the local application server. The auto mode is not supported if you deploy on WebSphere Application Server Network Deployment on a cluster.
+Si el valor se establece en true, el URL del servidor de autorizaciones se calculará automáticamente utilizando la raíz de contexto del tiempo de ejecución en el servidor de aplicaciones local. La modalidad automática no estará soportada si despliega en WebSphere Application Server Network Deployment en un clúster.
 
 #### authorizationURL
 {: #authorizationurl }
-The URL of the authorization server. If the authorization server is the {{ site.data.keys.product_adj }} runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
+El URL del servidor de autorizaciones. Si el servidor de autorizaciones es el tiempo de ejecución de {{ site.data.keys.product_adj }}, el URL es el del tiempo de ejecución. Por ejemplo: `http://myHost:9080/mfp`.
 
 #### runtimeContextRoot
 {: #runtimecontextroot }
-The context root of the runtime that is used to compute the URL of the authorization server in the automatic mode.
+La raíz de contexto del tiempo de ejecución que se utiliza para calcular el URL del servidor de autorizaciones en la modalidad automática.
 #### pushClientID
 {: #pushclientid }
-The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
+El ID de esta instancia del servicio de envío por push como cliente confidencial del servidor de autorizaciones. El ID y el secreto deben estar registrados para el servidor de autorizaciones. Pueden estar registrados por la tarea Ant **installmobilefirstadmin**, o desde {{ site.data.keys.mf_console }}.
 
 #### pushClientSecret
 {: #pushclientsecret }
-The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
+La clave secreta de esta instancia de servicio de envío por push como cliente confidencial del servidor de autorizaciones. El ID y el secreto deben estar registrados para el servidor de autorizaciones. Pueden estar registrados por la tarea Ant **installmobilefirstadmin**, o desde {{ site.data.keys.mf_console }}.
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+El elemento `<property>` especifica una propiedad de despliegue que se definirá en el servidor de aplicaciones. Tiene los atributos siguientes:
 
-| Attribute  | Description                | Required | Default |
+| Atributo  | Descripción                | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  |	Yes	     | None    |
-| value	     | The value of the property. |	Yes	     | None    |
+| name       | El nombre de la propiedad.  |	Sí	   | Ninguno    |
+| value	     | El valor de la propiedad. |	Sí	   | Ninguno    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the push service WAR file.
+Al utilizar este elemento, puede definir sus propias propiedades JNDI o sobrescribir el valor predeterminado de las propiedades JNDI que proporciona el archivo WAR del servicio de envío por push.
 
-For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+Para obtener más información sobre las propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de envío por push de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
-### To specify an application server
+### Para especificar un servidor de aplicaciones
 {: #to-specify-an-application-server-2 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+Utilice el elemento `<applicationserver>` para definir los parámetros que dependen del servidor de aplicaciones subyacente. El elemento `<applicationserver>` da soporte a los elementos siguientes:
 
-| Element                               | Description                                      | Count |
+| Elemento                               | Descripción                                      | Recuento |
 |---------------------------------------|--------------------------------------------------|-------|
-| <websphereapplicationserver> or <was>	| The parameters for WebSphere Application Server. | The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1 |
-| `<tomcat>` | The parameters for Apache Tomcat. | 0..1 |
+| <websphereapplicationserver> o <was>	| Los parámetros para WebSphere Application Server. | El elemento `<websphereapplicationserver>` (o `<was>` en su formato abreviado) denota una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core y WebSphere Application Server Liberty Network Deployment. | 0..1 |
+| `<tomcat>` | Los parámetros para Apache Tomcat. | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+Los atributos y los elementos internos de estos elementos están descritos en las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
-However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+Sin embargo, para el elemento interno del elemento `<was>` para el colectivo de Liberty, consulte la tabla siguiente:
 
-| Element              | Description                  | Count |
+| Elemento              | Descripción                  | Recuento |
 |----------------------|------------------------------|-------|
-| `<collectiveMember>` | A Liberty collective member. |	0..1  |
+| `<collectiveMember>` | Un miembro de colectivo de Liberty. |	0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+El elemento `<collectiveMember>` tiene los atributos siguientes:
 
-| Attribute   | Description                        | Required | Default |
+| Atributo   | Descripción                        | Obligatorio | Predeterminado |
 |-------------|------------------------------------|----------|---------|
-| serverName  | The name of the collective member. | Yes      | None    |
-| clusterName |	The cluster name that the collective member belongs to. | Yes | None |
+| serverName  | El nombre del miembro de colectivo. | Sí      | Ninguno    |
+| clusterName |	El nombre de clúster al que pertenece el miembro de colectivo. | Sí | Ninguno |
 
-> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
-
-### To specify Analytics
+> **Nota:** Si el servicio de envío por push y los componentes de tiempo de ejecución están instalados en el mismo miembro de colectivo, deben tener el mismo nombre de clúster. Si estos componentes están instalados en miembros distintos del mismo colectivo, los nombres de clúster pueden ser distintos.
+### Para especificar Analytics
 {: #to-specify-analytics-1 }
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
+El elemento `<analytics>` indica que desea conectar el servicio de envío por push de {{ site.data.keys.product_adj }} a un servicio de {{ site.data.keys.mf_analytics }} ya instalado. Tiene los atributos siguientes:
 
-| Attribute    | Description                        | Required | Default |
+| Atributo    | Descripción                        | Obligatorio | Predeterminado |
 |--------------|------------------------------------|----------|---------|
-| install	   | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No | false |
-| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services. | Yes | None |
-| username	   | The user name. | Yes | None |
-| password	   | The password. | Yes | None |
-| validate	   | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not. | No | true |
+| install	   | Para indicar si se debe conectar el servicio de envío por push a {{ site.data.keys.mf_analytics }}. | No | false |
+| analyticsURL | El URL de los servicios de {{ site.data.keys.mf_analytics }}. | Sí | Ninguno |
+| username	   | El nombre de usuario. | Sí | Ninguno |
+| password	   | La contraseña. | Sí | Ninguno |
+| validate	   | Para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no.	| No | true |
 
 #### install
 {: #install }
-Use the **install** attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
+Utilice el atributo **install** para indicar que este servicio de envío por push debe estar conectado y enviar sucesos a {{ site.data.keys.mf_analytics }}. Los valores válidos son true o false.
 
 #### analyticsURL
 {: #analyticsurl }
-Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
-For example: `http://<hostname>:<port>/analytics-service/rest`
+Utilice el atributo **analyticsURL** para especificar el URL expuesto por {{ site.data.keys.mf_analytics }}, que recibe datos analíticos entrantes.  
+Por ejemplo: `http://<hostname>:<port>/analytics-service/rest`
 
 #### username
 {: #username }
-Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+Utilice el atributo **username** para especificar el nombre de usuario que se utilizará si el punto de entrada de datos para {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.
 
 #### password
 {: #password }
-Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+Utilice el atributo **password** para especificar la contraseña que se utilizará si el punto de entrada de datos para {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.
 
 #### validate
 {: #validate }
-Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+Utilice el atributo **validate** para validar si se puede acceder a la {{ site.data.keys.mf_analytics_console }} o no, y para comprobar la autenticación del nombre de usuario con una contraseña. Los valores posibles son true, o false.
 
-### To specify a connection to the push service database
+### Para especificar una conexión con la base de datos de servicio de envío por push
 {: #to-specify-a-connection-to-the-push-service-database-1 }
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+El elemento `<database>` recopila los parámetros que especifican una declaración de origen de datos en un servidor de aplicaciones para acceder a la base de datos de servicio de envío por push.
 
-You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+Debe declarar una única base de datos: `<database kind="Push">`. Especifique el elemento `<database>` de forma parecida a la tarea Ant configuredatabase, excepto que el elemento `<database>` no tiene los elementos `<dba>` ni `<client>`. Podría tener los elementos `<property>`.
 
-The `<database>` element has the following attributes:
+El elemento `<database>` tiene los atributos siguientes:
 
-| Attribute    | Description                  | Required | Default |
+| Atributo    | Descripción                  | Obligatorio | Predeterminado |
 |--------------|------------------------------|----------|---------|
-| kind         | The kind of database (Push). | Yes      | None    |
-| validate	   | To validate whether the database is accessible. | No | true |
+| kind         | El tipo de base de datos (Push). | Sí      | Ninguno    |
+| validate	   | Para validar si se puede acceder a la base de datos. | No | true |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+El elemento `<database>` da soporte a los elementos siguientes. Para obtener más información sobre la configuración de estos elementos de base de datos para DBMS relacionales, consulte las tablas de las [tareas Ant para la instalación de los entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
-| Element              | Description                               | Count |
+| Elemento              | Descripción                               | Recuento |
 |----------------------|-------------------------------------------|-------|
-| `<db2>`	           | The parameter for DB2  databases.         | 0..1  |
-| `<derby>`	           | The parameter for Apache Derby databases. | 0..1  |
-| `<mysql>`	           | The parameter for MySQL databases.        | 0..1  |
-| `<oracle>`           | The parameter for Oracle databases.       | 0..1  |
-| `<cloudant>`	       | The parameter for Cloudant databases.     | 0..1  |
-| `<driverclasspath>`  | The parameter for JDBC driver class path (relational DBMS only). | 0..1 |
+| `<db2>`	           | El parámetro para bases de datos DB2.         | 0..1  |
+| `<derby>`	           | El parámetro para bases de datos Apache Derby. | 0..1  |
+| `<mysql>`	           | El parámetro para bases de datos MySQL.        | 0..1  |
+| `<oracle>`           | El parámetro para bases de datos Oracle.       | 0..1  |
+| `<cloudant>`	       | El parámetro para bases de datos Cloudant.     | 0..1  |
+| `<driverclasspath>`  | El parámetro para la vía de acceso de la clase de controlador JDBC (sólo DBMS relacional). | 0..1 |
 
-> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+> **Nota:** Los atributos del elemento `<cloudant>` son ligeramente distintos del tiempo de ejecución. Para obtener más información, consulte la siguiente tabla:
 
-| Attribute    | Description                            | Required   | Default |
+| Atributo    | Descripción                            | Obligatorio   | Predeterminado |
 |--------------|----------------------------------------|------------|---------|
-| url	       | The URL of the Cloudant account.       | No         | https://user.cloudant.com |
-| user	       | The user name of the Cloudant account. | Yes | None |
-| password	   | The password of the Cloudant account.	| No  | Queried interactively |
-| dbName	   | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -. |No	| mfp_push_db |
+| url	       | El URL de la cuenta de Cloudant.       | No         | https://user.cloudant.com |
+| user	       | El nombre de usuario de la cuenta de Cloudant. | Sí | Ninguno |
+| password	   | La contraseña de la cuenta de Cloudant.	| No  | Consultado de forma interactiva |
+| dbName	   | El nombre de base de datos de Cloudant. **Importante:** Este nombre de base de datos debe comenzar por una letra en minúscula y contener sólo caracteres en minúscula (a-z), dígitos (0-9), cualquiera de los caracteres _, $, y -. |No	| mfp_push_db |
 
-## Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments
+## Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
-Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
+Información de referencia para las tareas Ant **installmobilefirstruntime**, **updatemobilefirstruntime**, y **uninstallmobilefirstruntime**.
 
-### Task effects
+### Efectos de tareas
 {: #task-effects-2 }
 
 #### installmobilefirstruntime
 {: #installmobilefirstruntime }
-The **installmobilefirstruntime** Ant task configures an application server to run a {{ site.data.keys.product_adj }} runtime WAR file as a web application. This task has the following effects.
+La tarea Ant **installmobilefirstruntime** configura un servidor de aplicaciones para ejecutar un archivo WAR de tiempo de ejecución de {{ site.data.keys.product_adj }} como una aplicación web. Esta tarea tiene los siguientes efectos.
 
-* It declares the {{ site.data.keys.product_adj }} web application in the specified context root, by default /mfp.
-* It deploys the runtime WAR file on the application server.
-* It declares data sources and on WebSphere  Application Server full profile JDBC providers for the runtime.
-* It deploys the database drivers in the application server.
-* It sets {{ site.data.keys.product_adj }} configuration properties through JNDI environment entries.
-* Optionally, it sets the {{ site.data.keys.product_adj }} JNDI environment entries to configure the application server as a server farm member for the runtime.
+* Declara la aplicación web de {{ site.data.keys.product_adj }} en la raíz de contexto especificada, de forma predeterminada /mfp.
+* Despliega el archivo WAR de tiempo de ejecución en el servidor de aplicaciones.
+* Declara orígenes de datos y en el perfil completo de WebSphere Application Server, los proveedores JDBC para el tiempo de ejecución.
+* Despliega los controladores de base de datos en el servidor de aplicaciones.
+* Establece propiedades de configuración de {{ site.data.keys.product_adj }} mediante entradas de entorno de JNDI.
+* Opcionalmente, establece las entradas de entorno JNDI de {{ site.data.keys.product_adj }} para configurar el servidor de aplicaciones como miembro de la granja de servidores para el tiempo de ejecución.
 
 #### updatemobilefirstruntime
 {: #updatemobilefirstruntime }
-The **updatemobilefirstruntime** Ant task updates a {{ site.data.keys.product_adj }} runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
+La tarea Ant **updatemobilefirstruntime** actualiza un tiempo de ejecución de {{ site.data.keys.product_adj }} que ya está configurado en un servidor de aplicaciones. Esta tarea actualiza el archivo WAR de tiempo de ejecución. El archivo debe tener el mismo nombre base que el archivo WAR de tiempo de ejecución que se desplegó anteriormente. Aparte de esto, la tarea no cambia la configuración del servidor de aplicaciones, es decir, la configuración de la aplicación web, de los orígenes de datos ni las entradas de entorno JNDI.
 
 #### uninstallmobilefirstruntime
 {: #uninstallmobilefirstruntime }
-The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **installmobilefirstruntime** run. This task has the following effects.
+La tarea Ant **uninstallmobilefirstruntime** deshace los efectos de una ejecución anterior de **installmobilefirstruntime**. Esta tarea tiene los siguientes efectos.
 
-* It removes the configuration of the {{ site.data.keys.product_adj }} web application with the specified context root. The task also removes the settings that are added manually to that application.
-* It removes the runtime WAR file from the application server.
-* It removes the data sources and on WebSphere Application Server full profile the JDBC providers for the runtime.
-* It removes the associated JNDI environment entries.
+* Elimina la configuración de la aplicación web de {{ site.data.keys.product_adj }} con la raíz de contexto especificada. La tarea también elimina los valores añadidos manualmente a dicha aplicación.
+* Elimina el archivo WAR de tiempo de ejecución del servidor de aplicaciones.
+* Elimina los orígenes de datos y en el perfil completo de WebSphere Application Server, los proveedores JDBC para el tiempo de ejecución.
+* Elimina las entradas de entorno JNDI asociadas.
 
-### Attributes and elements
+### Atributos y elementos
 {: #attributes-and-elements-2 }
-The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks have the following attributes:
+Las tareas Ant **installmobilefirstruntime**, **updatemobilefirstruntime**, y **uninstallmobilefirstruntime** tienen los siguientes atributos:
 
-| Attribute         | Description                                                                 | Required   | Default                   |
+| Atributo         | Descripción                                                                 | Obligatorio   | Predeterminado                   |
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
-| contextroot       | The common prefix in URLs to the application (context root).                | No | /mfp  |
-| id	            | To distinguish different deployments.                                       | No | Empty |
-| environmentId	    | To distinguish different {{ site.data.keys.product_adj }} environments.                          | No | Empty |
-| warFile	        | The WAR file for {{ site.data.keys.product_adj }} runtime.                                       | No | The mfp-server.war file is in the same directory as the mfp-ant-deployer.jar file. |
-| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 2     |                           |
+| contextroot       | El prefijo común en los URL con la aplicación (raíz de contexto).                | No | /mfp  |
+| id	            | Para distinguir los distintos despliegues.                                       | No | Vacío |
+| environmentId	    | Para distinguir los distintos entornos de {{ site.data.keys.product_adj }}.                          | No | Vacío |
+| warFile	        | El archivo WAR para el tiempo de ejecución de {{ site.data.keys.product_adj }}.                                       | No | El archivo mfp-server.war se encuentra en el mismo directorio que el archivo mfp-ant-deployer.jar. |
+| wasStartingWeight | El orden de inicio para WebSphere Application Server. Los valores inferiores comenzarán en primer lugar. | No | 2     |                           |
 
-#### contextroot and id
+#### contextroot e id
 {: #contextroot-and-id-1 }
-The **contextroot** and **id** attributes distinguish different {{ site.data.keys.product_adj }} projects.
+Los atributos **contextroot** e **id** distinguen entre los distintos proyectos de {{ site.data.keys.product_adj }}.
 
-In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server full profile environments, the id attribute is used instead.
+En los perfiles de WebSphere Application Server Liberty y en los entornos de Tomcat, el parámetro contextroot es suficiente para esta finalidad. En los entornos de perfil completo de WebSphere Application Server, se utilizará el atributo id en su lugar.
 
 #### environmentId
 {: #environmentid-1 }
-Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
+Utilice el atributo **environmentId** para distinguir varios entornos, cada uno de los cuales consta del servicio de administración de {{ site.data.keys.mf_server }} y de las aplicaciones web de tiempo de ejecución de {{ site.data.keys.product_adj }}, que deben funcionar independientemente. Debe establecer este atributo en el mismo valor para la aplicación de ejecución que el que se estableció en la invocación de <installmobilefirstadmin>, para la aplicación del servicio de administración.
 
 #### warFile
 {: #warfile-1 }
-Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.product_adj }} runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Utilice el atributo **warFile** para especificar un directorio distinto para el archivo WAR de tiempo de ejecución de {{ site.data.keys.product_adj }}. Puede especificar el nombre de este archivo WAR con una vía de acceso absoluta o relativa.
 
 #### wasStartingWeight
 {: #wasstartingweight-1 }
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the {{ site.data.keys.mf_server }} administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your {{ site.data.keys.product_adj }} projects.
+Utilice el atributo **wasStartingWeight** para especificar un valor que se utiliza en WebSphere Application Server como un peso para asegurarse de que se respeta un orden de inicio. Como resultado del valor de la orden de inicio, se desplegará la aplicación web del servicio de administración de {{ site.data.keys.mf_server }} y se iniciará antes que cualquier otro proyecto de tiempo de ejecución de {{ site.data.keys.product_adj }}. Si los proyectos de {{ site.data.keys.product_adj }} se despliegan o se inician antes que la aplicación web, no se establece la comunicación de JMX y no podrá gestionar los proyectos de {{ site.data.keys.product_adj }}.
 
-The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** tasks support the following elements:
+Las tareas **installmobilefirstruntime**, **updatemobilefirstruntime**, y **uninstallmobilefirstruntime** dan soporte a los siguientes elementos:
 
-| Element               | Description                                      | Count |
+| Elemento               | Descripción                                      | Recuento |
 |-----------------------|--------------------------------------------------|-------|
-| `<property>`          | The properties.	                               | 0..   |
-| `<applicationserver>` | The application server.                          | 1     |
-| `<database>`          | The databases.                                   | 1     |
-| `<analytics>`         | The analytics.                                   | 0..1  |
+| `<property>`          | Las propiedades.	                               | 0..   |
+| `<applicationserver>` | El servidor de aplicaciones.                          | 1     |
+| `<database>`          | Las bases de datos.                                   | 1     |
+| `<analytics>`         | Las analíticas.                                   | 0..1  |
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+El elemento `<property>` especifica una propiedad de despliegue que se definirá en el servidor de aplicaciones. Tiene los atributos siguientes:
 
-| Attribute | Description                | Required | Default |
+| Atributo | Descripción                | Obligatorio | Predeterminado |
 |-----------|----------------------------|----------|---------|
-| name      | The name of the property.	 | Yes      | None    |
-| value	    | The value for the property.| Yes	    | None    |  
+| name      | El nombre de la propiedad.	 | Sí      | Ninguno    |
+| value	    | El valor de la propiedad.| Sí	    | Ninguno    |  
 
-The `<applicationserver>` element describes the application server to which the {{ site.data.keys.product_adj }} application is deployed. It is a container for one of the following elements:
+El elemento `<applicationserver>` describe el servidor de aplicaciones en el que se despliega la aplicación de {{ site.data.keys.product_adj }}. Es un contenedor para uno de los elementos siguientes:
 
-| Element                                    | Description                                      | Count |
+| Elemento                                    | Descripción                                      | Recuento |
 |--------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` or `<was>`  | The parameters for WebSphere Application Server.	| 0..1  |
-| `<tomcat>`                                 | The parameters for Apache Tomcat.                | 0..1  |
+| `<websphereapplicationserver>` o `<was>`  | Los parámetros para WebSphere Application Server.	| 0..1  |
+| `<tomcat>`                                 | Los parámetros para Apache Tomcat.                | 0..1  |
 
-The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. The `<websphereapplicationserver>` element has the following attributes:
+El elemento `<websphereapplicationserver>` (o `<was>` en su formato abreviado) denota una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core y WebSphere Application Server Liberty Network Deployment. El elemento `<websphereapplicationserver>` tiene los atributos siguientes:
 
-| Attribute       | Description                                            | Required                 | Default |
+| Atributo       | Descripción                                            | Obligatorio                 | Predeterminado |
 |-----------------|--------------------------------------------------------|--------------------------|---------|
-| installdir      |	WebSphere Application Server installation directory.   | Yes                      | None    |
-| profile         |	WebSphere Application Server profile, or Liberty.      | Yes	                  | None    |
-| user	WebSphere Application Server administrator name.	               | Yes, except for Liberty  | None    |
-| password        | WebSphere Application Server administrator password.   | No	Queried interactively |         |
-| libertyEncoding |	The algorithm to encode data source passwords for WebSphere Application Server Liberty. The possible values are none, xor, and aes. Whether the xor or aes encoding is used, the clear password is passed as argument to the securityUtility program, which is called through an external process. You can see the password with a ps command, or in the /proc file system on UNIX operating systems.                                                         | No                       |	xor     |
-| jeeVersion      |	For Liberty profile. To specify whether to install the features of the JEE6 web profile or the JEE7 web profile. Possible values are 6, 7, or auto.| No | auto |
-| configureFarm   |	For WebSphere Application Server Liberty, and WebSphere Application Server full profile (not for WebSphere Application Server Network Deployment edition and Liberty collective). To specify whether the server is a server farm member. Possible values are true or false. | No	      | false   |
-| farmServerId    |	A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value.                                                                | Yes                      |	None    |
+| installdir      |	Directorio de instalación de WebSphere Application Server.   | Sí                      | Ninguno    |
+| profile         |	Perfil de WebSphere Application Server, o Liberty.      | Sí	                  | Ninguno    |
+| user	| Nombre del administrador de WebSphere Application Server.	               | Sí, excepto para Liberty  | Ninguno    |
+| password        | Contraseña del administrador de WebSphere Application Server.   | No	| Consultado de forma interactiva |         |
+| libertyEncoding |	El algoritmo para codificar las contraseñas de origen de datos para WebSphere Application Server Liberty. Los valores posibles son none, xor, y aes. Ya se utilice la codificación xor o aes, se pasará la contraseña borrada como argumento al programa securityUtility, que se llamará a través de un proceso externo. Puede ver la contraseña con un mandato ps, o en el sistema de archivos /proc en sistemas operativos UNIX.                                                         | No                       |	xor     |
+| jeeVersion      |	Para el perfil de Liberty. Para especificar si se instalarán las características del perfil web de JEE6 o del perfil web de JEE7. Los valores posibles son 6, 7, o auto.| No | auto |
+| configureFarm   |	Para WebSphere Application Server Liberty, y el perfil completo de WebSphere Application Server (no para la edición de WebSphere Application Server Network Deployment ni el colectivo de Liberty). Para especificar si el servidor es un miembro de la granja de servidores. Los valores posibles son true o false. | No	      | false   |
+| farmServerId    |	Una serie que identifica de forma exclusiva un servidor de la granja de servidores. Los servicios de administración de {{ site.data.keys.mf_server }} y todos los tiempos de ejecución de {{ site.data.keys.product_adj }} que se comunican con él deben compartir el mismo valor.                                                                | Sí                      |	Ninguno    |
 
-It supports the following element for single-server deployment:
+Da soporte al elemento siguiente para el despliegue en un solo servidor:
 
-| Element     | Description      | Count |
+| Elemento     | Descripción      | Recuento |
 |-------------|------------------|-------|
-| `<server>`  | A single server. | 0..1  |
+| `<server>`  | Un único servidor. | 0..1  |
 
-The <server> element, which is used in this context, has the following attribute:
+El elemento <server>, que se utiliza en este contexto, tiene el atributo siguiente:
 
-| Attribute | Description      | Required | Default |
+| Atributo | Descripción      | Obligatorio | Predeterminado |
 |-----------|------------------|----------|---------|
-| name	    | The server name. | Yes      | None    |
+| name	    | El nombre del servidor. | Sí      | Ninguno    |
 
-It supports the following elements for Liberty collective:
+Se da soporte a los siguientes elementos para el colectivo de Liberty:
 
-| Element               | Description                  | Count |
+| Elemento               | Descripción                  | Recuento |
 |-----------------------|------------------------------|-------|
-| `<collectiveMember>`  | A Liberty collective member. | 0..1  |
+| `<collectiveMember>`  | Un miembro de colectivo de Liberty. | 0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+El elemento `<collectiveMember>` tiene los atributos siguientes:
 
-| Attribute               | Description      | Required | Default |
+| Atributo               | Descripción      | Obligatorio | Predeterminado |
 |-------------------------|------------------|----------|---------|
-| serverName              |	The name of the collective member.                       | Yes | None |
-| clusterName             |	The cluster name that the collective member belongs to.  | Yes | None |
-| serverId                |	A string that uniquely identifies the collective member. | Yes | None |
-| controllerHost          |	The name of the collective controller.                   | Yes | None |
-| controllerHttpsPort     |	The HTTPS port of the collective controller.             | Yes | None |
-| controllerAdminName     |	The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the collective. | Yes | None |
-| controllerAdminPassword |	The administrative user password.	                     | Yes | None |
-| createControllerAdmin   |	To indicate whether the administrative user must be created in the basic registry of the collective member. Possible values are true or false. | No | true |
+| serverName              |	El nombre del miembro de colectivo.                       | Sí | Ninguno |
+| clusterName             |	El nombre de clúster al que pertenece el miembro de colectivo.  | Sí | Ninguno |
+| serverId                |	Un serie que identifica de forma exclusiva al miembro de colectivo. | Sí | Ninguno |
+| controllerHost          |	El nombre del controlador colectivo.                   | Sí | Ninguno |
+| controllerHttpsPort     |	El puerto HTTPS del controlador colectivo.             | Sí | Ninguno |
+| controllerAdminName     |	El nombre de usuario administrativo definido en el controlador colectivo. Este es el mismo usuario que se utiliza para unirse a nuevos miembros en el colectivo. | Sí | Ninguno |
+| controllerAdminPassword |	La contraseña de usuario administrativo.	                     | Sí | Ninguno |
+| createControllerAdmin   |	Para indicar si se debe crear el usuario administrativo en el registro básico del miembro de colectivo. Los valores posibles son true o false. | No | true |
 
-It supports the following elements for Network Deployment:
+Se da soporte a los siguientes elementos para Network Deployment:
 
-| Element     | Description                                   | Count |
+| Elemento     | Descripción                                   | Recuento |
 |-------------|-----------------------------------------------|-------|
-| `<cell>`    |	The entire cell.	                          | 0..1  |
-| `<cluster>` |	All the servers of a cluster.                 |	0..1  |
-| `<node>`    |	All the servers in a node, clusters excluded. | 0..1  |
-| `<server>`  |	A single server.	                          | 0..1  |
+| `<cell>`    |	La célula completa.	                          | 0..1  |
+| `<cluster>` |	Todos los servidores de un clúster.                 |	0..1  |
+| `<node>`    |	Todos los servidores de un nodo, clústeres excluidos. | 0..1  |
+| `<server>`  |	Un único servidor.	                          | 0..1  |
 
-The `<cell>` element has no attributes.
+El elemento `<cell>` no tiene atributos.
 
-The `<cluster>` element has the following attribute:
+El elemento `<cluster>` tiene el atributo siguiente:
 
-| Attribute | Description       | Required | Default |
+| Atributo | Descripción       | Obligatorio | Predeterminado |
 |-----------|-------------------|----------|---------|
-| name      | The cluster name. | Yes	   | None    |
+| name      | El nombre de clúster. | Sí	   | Ninguno    |
 
-The `<node>` element has the following attribute:
+El elemento `<node>` tiene el atributo siguiente:
 
-| Attribute | Description    | Required | Default |
+| Atributo | Descripción    | Obligatorio | Predeterminado |
 |-----------|----------------|----------|---------|
-| name      | The node name. | Yes	    | None    |
+| name      | El nombre de nodo. | Sí	    | Ninguno    |
 
-The `<server>` element, which is used in a Network Deployment context, has the following attributes:
+El elemento `<server>`, que se utiliza en un contexto de Network Deployment, tiene los atributos siguientes:
 
-| Attribute  | Description      | Required | Default |
+| Atributo  | Descripción      | Obligatorio | Predeterminado |
 |------------|------------------|----------|---------|
-| nodeName   | The node name.   | Yes	   | None    |
-| serverName | The server name. | Yes      | None    |
+| nodeName   | El nombre de nodo.   | Sí	   | Ninguno    |
+| serverName | El nombre del servidor. | Sí      | Ninguno    |
 
-The `<tomcat>` element denotes an Apache Tomcat server. It has the following attribute:
+El elemento `<tomcat>` indica un servidor Apache Tomcat. Tiene el atributo siguiente:
 
-| Attribute     | Description      | Required | Default |
+| Atributo     | Descripción      | Obligatorio | Predeterminado |
 |---------------|------------------|----------|---------|
-| installdir    | The installation directory of Apache Tomcat. For a Tomcat installation that is split between a CATALINA_HOME directory and a CATALINA_BASE directory, specify the value of the CATALINA_BASE environment variable.     | Yes | None    |
-| configureFarm | To specify whether the server is a server farm member. Possible values are true or false.	| No | false |
-| farmServerId	| A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value. | Yes | None |
+| installdir    | El directorio de instalación de Apache Tomcat. Para una instalación de Tomcat que se divide entre un directorio CATALINA_HOME y un directorio CATALINA_BASE, especifique el valor de la variable de entorno CATALINA_BASE.     | Sí | Ninguno    |
+| configureFarm | Para especificar si el servidor es un miembro de la granja de servidores. Los valores posibles son true o false. | No | false |
+| farmServerId	| Una serie que identifica de forma exclusiva un servidor de la granja de servidores. Los servicios de administración de {{ site.data.keys.mf_server }} y todos los tiempos de ejecución de {{ site.data.keys.product_adj }} que se comunican con él deben compartir el mismo valor. | Sí | Ninguno |
 
-The `<database>` element specifies what information is necessary to access a particular database. The `<database>` element is specified like the configuredatabase Ant task, except that it does not have the `<dba>` and `<client>` elements. However, it might have `<property>` elements. The `<database>` element has the following attributes:
+El elemento `<database>` especifica qué información es necesaria para acceder a una base de datos determinada. El elemento `<database>` se especifica como la tarea Ant configuredatabase, excepto que no tiene los elementos `<dba>` ni `<client>`. Sin embargo, podría tener los elementos `<property>`. El elemento `<database>` tiene los atributos siguientes:
 
-| Attribute | Description                                | Required | Default |
+| Atributo | Descripción                                | Obligatorio | Predeterminado |
 |-----------|--------------------------------------------|----------|---------|
-| kind      | The kind of database ({{ site.data.keys.product_adj }} Runtime). | Yes | None |
-| validate  | To validate whether the database is accessible or not. The possible values are true or false. | No | true |
+| kind      | El tipo de base de datos (Tiempo de ejecución de {{ site.data.keys.product_adj }}). | Sí | Ninguno |
+| validate  | Para validar si se puede acceder a la base de datos o no. Los valores posibles son true o false.	| No | true |
 
-The `<database>` element supports the following elements:
+El elemento `<database>` da soporte a los elementos siguientes:
 
-| Element             | Description	                | Count |
+| Elemento             | Descripción	                | Recuento |
 |---------------------|-----------------------------|-------|
-| `<derby>`           | The parameters for Derby.   | 0..1  |
-| `<db2>`             |	The parameters for DB2.     | 0..1  |
-| `<mysql>`           |	The parameters for MySQL.   | 0..1  |
-| `<oracle>`          |	The parameters for Oracle.  | 0..1  |
-| `<driverclasspath>` | The JDBC driver class path. | 0..1  |
+| `<derby>`           | Los parámetros para Derby.   | 0..1  |
+| `<db2>`             |	Los parámetros para DB2.     | 0..1  |
+| `<mysql>`           |	Los parámetros para MySQL.   | 0..1  |
+| `<oracle>`          |	Los parámetros para Oracle.  | 0..1  |
+| `<driverclasspath>` | La vía de acceso de clase de controlador JDBC. | 0..1  |
 
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} runtime to an already installed {{ site.data.keys.mf_analytics_console }} and services. It has the following attributes:
+El elemento `<analytics>` indica que desea conectar el tiempo de ejecución de {{ site.data.keys.product_adj }} a una {{ site.data.keys.mf_analytics_console }} y a unos servicios ya instalados. Tiene los atributos siguientes:
 
-| Attribute    | Description                                                                      | Required | Default |
+| Atributo    | Descripción                                                                      | Obligatorio | Predeterminado |
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | To indicate whether to connect the {{ site.data.keys.product_adj }} runtime to {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services.	                                      | Yes      | None    |
-| consoleURL   | The URL of{{ site.data.keys.mf_analytics_console }}.	                                      | Yes      | None    |
-| username     | The user name.	                                                                  | Yes      | None    |
-| password     | The password.	                                                                  | Yes      | None    |
-| validate     | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	      | No	     | true    |
-| tenant       | The tenant for indexing data that is collected from a {{ site.data.keys.product_adj }} runtime.	      | No       | Internal identifier |
+| install      | Para indicar si conectará el tiempo de ejecución de {{ site.data.keys.product_adj }} a {{ site.data.keys.mf_analytics }}. | No       | false   |
+| analyticsURL | El URL de los servicios de {{ site.data.keys.mf_analytics }}.	                                      | Sí      | Ninguno    |
+| consoleURL   | El URL de {{ site.data.keys.mf_analytics_console }}.	                                      | Sí      | Ninguno    |
+| username     | El nombre de usuario.	                                                                  | Sí      | Ninguno    |
+| password     | La contraseña.	                                                                  | Sí      | Ninguno    |
+| validate     | Para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no.	      | No	     | true    |
+| tenant       | El arrendatario para los datos de indexación que se recopilan de un tiempo de ejecución de {{ site.data.keys.product_adj }}.	    | No       | Identificador interno |
 
 #### install
 {: #install-1 }
-Use the **install** attribute to indicate that this {{ site.data.keys.product_adj }} runtime must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are **true** or **false**.
+Utilice el atributo **install** para indicar que este tiempo de ejecución de {{ site.data.keys.product_adj }} debe estar conectado y enviar sucesos a {{ site.data.keys.mf_analytics }}. Los valores válidos son **true** o **false**.
 
 #### analyticsURL
 {: #analyticsurl-1 }
-Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
-For example: `http://<hostname>:<port>/analytics-service/rest`
+Utilice el atributo **analyticsURL** para especificar el URL expuesto por {{ site.data.keys.mf_analytics }}, que recibe datos analíticos entrantes.  
+Por ejemplo: `http://<hostname>:<port>/analytics-service/rest`
 
 #### consoleURL
 {: #consoleurl }
-Use the **consoleURL** attribute to the URL that is exposed by {{ site.data.keys.mf_analytics }}, which links to the {{ site.data.keys.mf_analytics_console }}.  
-For example: `http://<hostname>:<port>/analytics/console`
+Utilice el atributo **consoleURL** para el URL que expone {{ site.data.keys.mf_analytics }}, que enlaza a la {{ site.data.keys.mf_analytics_console }}.  
+Por ejemplo: `http://<hostname>:<port>/analytics/console`
 
 #### username
 {: #username-1 }
-Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+Utilice el atributo **username** para especificar el nombre de usuario que se utilizará si el punto de entrada de datos para {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.
 
 #### password
 {: #password-1 }
-Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+Utilice el atributo **password** para especificar la contraseña que se utilizará si el punto de entrada de datos para {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.
 
 #### validate
 {: #validate-1 }
-Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
+Utilice el atributo **validate** para validar si se puede acceder a la {{ site.data.keys.mf_analytics_console }} o no, y para comprobar la autenticación del nombre de usuario con una contraseña. Los valores posibles son **true** o **false**.
 
 #### tenant
 {: #tenant }
-For more information about this attribute, see [Configuration properties](../analytics/configuration/#configuration-properties).
+Para obtener más información sobre este atributo, consulte [Propiedades de configuración](../analytics/configuration/#configuration-properties).
 
-### To specify an Apache Derby database
+### Para especificar una base de datos Apache Derby
 {: #to-specify-an-apache-derby-database }
-The `<derby>` element has the following attributes:
+El elemento `<derby>` tiene los atributos siguientes:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| database	 | The database name.	                      | No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| datadir	 | The directory that contains the databases. |	Yes	     | None    |
-| schema     |	The schema name.                          |	No	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+| database	 | El nombre de la base de datos.	                      | No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| datadir	 | El directorio que contiene las bases de datos. |	Sí	     | Ninguno    |
+| schema     |	El nombre de esquema.                          |	No	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, o APPCENTER, dependiendo del tipo. |
 
-The `<derby>` element supports the following element:
+El elemento `<derby>` da soporte al elemento siguiente:
 
-| Element       | Description	                | Count |
+| Elemento       | Descripción	                | Recuento |
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | La propiedad de origen de datos o la propiedad de conexión JDBC.	| 0.. |
 
-For more information about the available properties, see the documentation for Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html). See also the documentation for [Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html).
+Para obtener más información sobre las propiedades disponibles, consulte la documentación para Clase [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html). Consulte también la documentación de [Clase EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html).
 
-For more information about the available properties for a Liberty server, see the documentation for `properties.derby.embedded` at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Para obtener más información sobre las propiedades disponibles para un servidor Liberty, consulte la documentación de `properties.derby.embedded` en [Perfil de Liberty: Elementos de configuración en el archivo server.xml](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
-When the **mfp-ant-deployer.jar** file is used within the installation directory of {{ site.data.keys.product }}, a `<driverclasspath>` element is not necessary.
+Cuando se utilice el archivo **mfp-ant-deployer.jar** dentro del directorio de instalación de {{ site.data.keys.product }}, no será necesario un elemento `<driverclasspath>`.
 
-### To specify a DB2 database
+### Para especificar una base de datos DB2
 {: #to-specify-a-db2-database }
-The `<db2>` element has the following attributes:
+El elemento `<db2>` tiene los atributos siguientes:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| database   | The database name. | No	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server     | The host name of the database server.      | Yes	     | None    |
-| port       | The port on the database server.           | No	     | 50000   |
-| user       | The user name for accessing databases.     | This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges                                 | that are listed in Database users and privileges. | Yes	None |
-| password   | The password for accessing databases.      | No       | Queried interactively |
-| schema     | The schema name.                           | No       | Depends on the user |
+| database   | El nombre de la base de datos. | No	| MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| server     | El nombre de host del servidor de bases de datos.      | Sí	     | Ninguno    |
+| port       | El puerto en el servidor de bases de datos.           | No	     | 50000   |
+| user       | El nombre de usuario para acceder a las bases de datos.     | Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos                                 | que se listan en Usuarios de base de datos y privilegios. | Sí | Ninguno |
+| password   | La contraseña para acceder a las bases de datos.      | No       | Consultado de forma interactiva |
+| schema     | El nombre de esquema.                           | No       | Depende del usuario |
 
-For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
-The `<db2>` element supports the following element:
+Para obtener más información sobre las cuentas de usuario de DB2, consulte [Visión general del modelo de seguridad de DB2](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
+El elemento `<db2>` da soporte al elemento siguiente:
 
-| Element       | Description	                | Count |
+| Elemento       | Descripción	                | Recuento |
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | La propiedad de origen de datos o la propiedad de conexión JDBC.	| 0.. |
 
-For more information about the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
+Para obtener más información sobre las propiedades disponibles, consulte [Propiedades para IBM Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
 
-For more information about the available properties for a Liberty server, see the **properties.db2.jcc** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Para obtener más información sobre las propiedades disponibles para un servidor Liberty, consulte la sección **properties.db2.jcc** en [Perfil de Liberty: Elementos de configuración en el archivo server.xml](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
-The `<driverclasspath>` element must contain JAR files for the DB2 JDBC driver and the associated license. You can download DB2 JDBC drivers from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+El elemento `<driverclasspath>` debe contener los archivos JAR para el controlador de DB2 JDBC y para la licencia asociada. Puede descargar los controladores de DB2 JDBC desde [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
 
-### To specify a MySQL database
+### Para especificar una base de datos MySQL
 {: #to-specify-a-mysql-database }
-The `<mysql>` element has the following attributes:
+El elemento `<mysql>` tiene los atributos siguientes:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| database	 | The database name.	                      | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server	 | The host name of the database server.	  | Yes      | None    |
-| port	     | The port on the database server.           | No	     | 3306    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges | that are listed in Database users and privileges. | Yes | None |
-| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+| database	 | El nombre de la base de datos.	                      | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| server	 | El nombre de host del servidor de bases de datos.	  | Sí      | Ninguno    |
+| port	     | El puerto en el servidor de bases de datos.           | No	     | 3306    |
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos | que se listan en Usuarios de base de datos y privilegios. | Sí | Ninguno |
+| password	 | La contraseña para acceder a las bases de datos.	  | No	     | Consultado de forma interactiva |
 
-Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+En lugar de **database**, **server** y **port**, también puede especificar un URL. En este caso, utilice los siguientes atributos:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| url	     | The URL for connection to the database.	  | Yes	     | None    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. | Yes  | None |
-| password	 | The password for accessing databases.	  | No       | Queried interactively |
+| url	     | El URL para la conexión a la base de datos.	  | Sí	     | Ninguno    |
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. | Sí  | Ninguno |
+| password	 | La contraseña para acceder a las bases de datos.	  | No       | Consultado de forma interactiva |
 
-For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
+Para obtener más información sobre las cuentas de usuario de MySQL, consulte [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
 
-The `<mysql>` element supports the following element:
+El elemento `<mysql>` da soporte al elemento siguiente:
 
-| Element       | Description	                | Count |
+| Elemento       | Descripción	                | Recuento |
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | La propiedad de origen de datos o la propiedad de conexión JDBC.	| 0.. |
 
-For more information about the available properties, see the documentation at [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
+Para obtener más información sobre las propiedades disponibles, consulte la documentación en [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
 
-For more information about the available properties for a Liberty server, see the properties section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Para obtener más información sobre las propiedades disponibles para un servidor Liberty, consulte la sección de propiedades en [Perfil de Liberty: Elementos de configuración en el archivo server.xml](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
-The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download it from [Download Connector/J](http://www.mysql.com/downloads/connector/j/).
+El elemento `<driverclasspath>` debe contener un archivo JAR de MySQL Connector/J. Puede descargarlo desde [Descargar Connector/J](http://www.mysql.com/downloads/connector/j/).
 
-### To specify an Oracle database
+### Para especificar una base de datos Oracle
 {: #to-specify-an-oracle-database }
-The `<oracle>` element has the following attributes:
+El elemento `<oracle>` tiene los atributos siguientes:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| database   | The database name, or Oracle service name. Note: You must always use a service name to connect to a PDB database. | No | ORCL |
-| server	 | The host name of the database server.	Yes	None
-| port	     | The port on the database server.	No	1521
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
-| password	 | The password for accessing databases.	  | No       | Queried interactively |
+| database   | El nombre de base de datos, o el nombre de servicio de Oracle. Nota: Siempre debe utilizar un nombre de servicio para conectarse a una base de datos PDB. | No | ORCL |
+| server	 | El nombre de host del servidor de bases de datos.	Sí	| Ninguno
+| port	     | El puerto en el servidor de bases de datos.	No	| 1521
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. Consulte la nota bajo esta tabla. | Sí | Ninguno |
+| password	 | La contraseña para acceder a las bases de datos.	  | No       | Consultado de forma interactiva |
 
-> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> **Nota:** Para el atributo **user**, utilice preferiblemente un nombre de usuario en letras mayúsculas. Los nombres de usuario de Oracle están generalmente en letras mayúsculas. A diferencia de otras herramientas de base de datos, la tarea Ant **installmobilefirstruntime** no convierte letras minúsculas a mayúsculas en el nombre de usuario. Si la tarea Ant **installmobilefirstruntime** no puede conectarse a la base de datos, intente escribir el valor para el atributo **user** en letras mayúsculas.
 
-Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+En lugar de **database**, **server** y **port**, también puede especificar un URL. En este caso, utilice los siguientes atributos:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| url	     | The URL for connection to the database.	  | Yes      | None    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
-| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+| url	     | El URL para la conexión a la base de datos.	  | Sí      | Ninguno    |
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. Consulte la nota bajo esta tabla. | Sí | Ninguno |
+| password	 | La contraseña para acceder a las bases de datos.	  | No	     | Consultado de forma interactiva |
 
-> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> **Nota:** Para el atributo **user**, utilice preferiblemente un nombre de usuario en letras mayúsculas. Los nombres de usuario de Oracle están generalmente en letras mayúsculas. A diferencia de otras herramientas de base de datos, la tarea Ant **installmobilefirstruntime** no convierte letras minúsculas a mayúsculas en el nombre de usuario. Si la tarea Ant **installmobilefirstruntime** no puede conectarse a la base de datos, intente escribir el valor para el atributo **user** en letras mayúsculas.
 
-For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).
+Para obtener más información sobre las cuentas de usuario de Oracle, consulte [Visión general de métodos de autenticación](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).
 
-For more information about Oracle database connection URLs, see the **Database URLs and Database Specifiers** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+Para obtener más información sobre los URL de conexión de base de datos Oracle, consulte la sección **Database URLs and Database Specifiers** en [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
 
-It supports the following element:
+Da soporte al elemento siguiente:
 
-| Element       | Description	                | Count |
+| Elemento       | Descripción	                | Recuento |
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | La propiedad de origen de datos o la propiedad de conexión JDBC.	| 0.. |
 
-For more information about the available properties, see the **Data Sources and URLs** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+Para obtener más información sobre las propiedades disponibles, consulte la sección **Data Sources and URLs** en [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
 
-For more information about the available properties for a Liberty server, see the **properties.oracle** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Para obtener más información sobre las propiedades disponibles para un servidor Liberty, consulte la sección **properties.oracle** en [Perfil de Liberty: Elementos de configuración en el archivo server.xml](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
 
-The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+El elemento `<driverclasspath>` debe contener un archivo JAR del controlador JDBC de Oracle. Puede descargar los controladores JDBC de Oracle desde [JDBC, SQLJ, Oracle JPublisher y Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`, or `<oracle>` elements, has the following attributes:
+El elemento `<property>`, que se puede utilizar dentro de los elementos `<derby>`, `<db2>`,` <mysql>`, o `<oracle>`, tiene los atributos siguientes:
 
-| Attribute  | Description                                | Required | Default |
+| Atributo  | Descripción                                | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| name       | The name of the property.	              | Yes      | None    |
-| type	     | Java type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
-| value	     | The value for the property.	              | Yes      |  None   |
+| name       | El nombre de la propiedad.	              | Sí      | Ninguno    |
+| type	     | Tipo Java de los valores de propiedades, normalmente java.lang.String/Integer/Boolean. | No | java.lang.String |
+| value	     | El valor de la propiedad.	              | Sí      |  Ninguno   |
 
-## Ant tasks for installation of Application Center
+## Tareas Ant para la instalación de Application Center
 {: #ant-tasks-for-installation-of-application-center }
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` Ant tasks are provided for the installation of the Application Center Console and Services.
+Las tareas Ant `<installApplicationCenter>`, `<updateApplicationCenter>`, y `<uninstallApplicationCenter>` se proporcionan para la instalación de Application Center Console and Services.
 
-### Task effects
+### Efectos de tareas
 {: #task-effects-3 }
-### <installApplicationCenter>
+### installApplicationCenter
 {: #installapplicationcenter }
-The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
+La tarea `<installApplicationCenter>` configura un servidor de aplicaciones para ejecutar el archivo WAR de Application Center Services como una aplicación web, y para instalar Application Center Console. Esta tarea tiene los siguientes efectos:
 
-* It declares the Application Center Services web application in the /applicationcenter context root.
-* It declares data sources, and on WebSphere  Application Server full profile, it declares also JDBC providers for Application Center Services.
-* It deploys the Application Center Services web application on the application server.
-* It declares the Application Center Console as a web application in the /appcenterconsole context root.
-* It deploys the Application Center Console WAR file on the application server.
-* It configures configuration properties for Application Center Services by using JNDI environment entries. The JNDI environment entries that are related to the endpoint and proxies are commented. You must uncomment them in some cases.
-* It configures users that it maps to roles used by the Application Center Console and Services web applications.
-* On WebSphere Application Server, it configures the necessary custom property for the web container.
+* Declara la aplicación web de Application Center Services en la raíz de contexto /applicationcenter.
+* Declara orígenes de datos, y en el perfil completo de WebSphere Application Server, declara también proveedores JDBC para Application Center Services.
+* Despliega la aplicación web de Application Center Services en el servidor de aplicaciones.
+* Declara la Application Center Console como una aplicación web en la raíz de contexto /appcenterconsole.
+* Despliega el archivo WAR de Application Center Console en el servidor de aplicaciones.
+* Configura propiedades de configuración para Application Center Services utilizando entradas de entorno JNDI. Las entradas de entorno JNDI relacionadas con el punto final y los proxies están comentadas. Debe eliminar el comentario en ellas en algunos casos.
+* Configura usuarios que correlaciona para los roles utilizados por las aplicaciones web de Application Center Console and Services.
+* En WebSphere Application Server, configura la propiedad personalizada necesaria para el contenedor web.
 
-#### <updateApplicationCenter>
+#### updateApplicationCenter
 {: #updateApplicationCenter }
-The `<updateApplicationCenter>` task updates an already configured Application Center application on an application server. This task has the following effects:
+La tarea `<updateApplicationCenter>` actualiza una aplicación de Application Center ya configurada en un servidor de aplicaciones. Esta tarea tiene los siguientes efectos:
 
-* It updates the Application Center Services WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the Application Center Console WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+* Actualiza el archivo WAR de Application Center Services. Este archivo debe tener el mismo nombre base que el archivo WAR correspondiente desplegado anteriormente.
+* Actualiza el archivo WAR de Application Center Console. Este archivo debe tener el mismo nombre base que el archivo WAR correspondiente desplegado anteriormente.
 
-The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, and user-to-role mappings. This task applies only to an installation that is performed by using the <installApplicationCenter> task that is described in this topic.
+La tarea no cambia la configuración del servidor de aplicaciones, es decir, la configuración de la aplicación web, los orígenes de datos, las entradas de entorno JNDI ni las correlaciones de usuario a rol. Esta tarea sólo se aplica a una instalación realizada mediante la tarea <installApplicationCenter> descrita en este tema.
 
-> **Note:** On WebSphere Application Server Liberty profile, the task does not change the features, which leaves a potential non-minimal list of features in the server.xml file for the installed application.
+> **Nota:** En el perfil de WebSphere Application Server Liberty, la tarea no cambia las características, lo que deja una lista de características no mínimas potenciales en el archivo server.xml para la aplicación instalada.
 
-#### <uninstallApplicationCenter>
+#### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
-The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run of `<installApplicationCenter>`. This task has the following effects:
+La tarea Ant `<uninstallApplicationCenter>` deshace los efectos de una ejecución anterior de `<installApplicationCenter>`. Esta tarea tiene los siguientes efectos:
 
-* It removes the configuration of the Application Center Services web application with the **/applicationcenter** context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes both the Application Center Services and Console WAR files from the application server.
-* It removes the data sources and, on WebSphere Application Server full profile, it also removes the JDBC providers for the Application Center Services.
-* It removes the database drivers that were used by Application Center Services from the application server.
-* It removes the associated JNDI environment entries.
-* It removes the users who are configured by the `<installApplicationCenter>` invocation.
+* Elimina la configuración de la aplicación web Application Center Services con la raíz de contexto **/applicationcenter**. Como consecuencia, la tarea también elimina los valores que se han añadido manualmente a dicha aplicación.
+* Elimina los archivos WAR de Application Center Services and Console del servidor de aplicaciones.
+* Elimina los orígenes de datos y, en el perfil completo de WebSphere Application Server, también elimina los proveedores JDBC para Application Center Services.
+* Elimina los controladores de base de datos que utilizaron los Application Center Services del servidor de aplicaciones.
+* Elimina las entradas de entorno JNDI asociadas.
+* Elimina los usuarios configurados por la invocación de `<installApplicationCenter>`.
 
-### Attributes and elements
+### Atributos y elementos
 {: #attributes-and-elements-3 }
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks have the following attributes:
+Las tareas `<installApplicationCenter>`, `<updateApplicationCenter>`, y `<uninstallApplicationCenter>` tienen los atributos siguientes:
 
-| Attribute    | Description                                | Required | Default |
+| Atributo    | Descripción                                | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------|----------|---------|
-| id	       | It distinguishes different deployments in WebSphere Application Server full profile.	| No | Empty |
-| servicewar   | The WAR file for the Application Center Services. | No | The applicationcenter.war file is in the application Center console directory: **product_install_dir/ApplicationCenter/console.** |
-| shortcutsDir | The directory where you place the shortcuts. | No | None |
-| aaptDir | The directory that contains the aapt program, from the Android SDK platform-tools package. | No | None |
+| id	       | Distingue los diferentes despliegues del perfil completo de WebSphere Application Server. | No | Vacío |
+| servicewar   | El archivo WAR para Application Center Services. | No | El archivo applicationcenter.war se encuentra en el directorio de la consola Center de la aplicación: **dir_instal_producto/ApplicationCenter/console.** |
+| shortcutsDir | El directorio donde coloca los atajos. | No | Ninguno |
+| aaptDir | El directorio que contiene el programa aapt, desde el paquete de herramientas de la plataforma Android SDK. | No | Ninguno |
 
 #### id
 {: #id-1 }
-In WebSphere Application Server full profile environments, the **id** attribute is used to distinguish different deployments of Application Center Console and Services. Without this **id** attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+En los entornos del perfil completo de WebSphere Application Server, se utiliza el atributo **id** para distinguir distintos despliegues de Application Center Console and Services. Sin este atributo **id**, pueden entrar en conflicto dos archivos WAR con las mismas raíces de contexto y es posible que no se desplieguen estos archivos.
 
 #### servicewar
 {: #servicewar-1 }
-Use the **servicewar** attribute to specify a different directory for the Application Center Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Utilice el atributo **servicewar** para especificar un directorio distinto para el archivo WAR de Application Center Services. Puede especificar el nombre de este archivo WAR con una vía de acceso absoluta o relativa.
 
 #### shortcutsDir
 {: #shortcutsdir-1 }
-The **shortcutsDir** attribute specifies where to place shortcuts to the Application Center Console. If you set this attribute, the following files are added to this directory:
+El atributo **shortcutsDir** especifica dónde colocar atajos en Application Center Console. Si establece este atributo, se añadirán los archivos siguientes a este directorio:
 
-* **appcenter-console.url**: This file is a Windows shortcut. It opens the Application Center Console in a browser.
-* **appcenter-console.sh**: This file is a UNIX shell script. It opens the Application Center Console in a browser.
+* **appcenter-console.url**: Este archivo es un atajo de Windows. Abre Application Center Console en un navegador.
+* **appcenter-console.sh**: Este archivo es un script de shell de UNIX. Abre Application Center Console en un navegador.
 
 #### aaptDir
 {: #aaptdir }
-The **aapt** program is part of the {{ site.data.keys.product }} distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
-If this attribute is not set, during the upload of an apk application, Application Center parses it by using its own code, which might have limitations.
+El programa **aapt** forma parte de la distribución de {{ site.data.keys.product }}: **dir_instal_producto/ApplicationCenter/tools/android-sdk**.  
+Si este atributo no está establecido, durante la subida de una aplicación apk, Application Center lo analizará utilizando su propio código, que puede tener limitaciones.
 
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks support the following elements:
+Las tareas `<installApplicationCenter>`, `<updateApplicationCenter>`, y `<uninstallApplicationCenter>` dan soporte a los siguientes elementos:
 
-| Element           | Description	                            | Count |
+| Elemento           | Descripción	                            | Recuento |
 |-------------------|-------------------------------------------|-------|
-| applicationserver	| The application server.                   | 1     |
-| console           | The Application Center console.	        | 1     |
-| database          | The databases.	                        | 1     |
-| user	            | The user to be mapped to a security role. | 0..∞  |
+| applicationserver	| El servidor de aplicaciones.                   | 1     |
+| console           | La consola de Application Center.	        | 1     |
+| database          | Las bases de datos.	                        | 1     |
+| user	            | El usuario que se correlacionará con un rol de seguridad. | 0..∞  |
 
-### To specify an Application Center console
+### Para especificar una consola de Application Center
 {: #to-specify-an-application-center-console }
-The `<console>` element collects information to customize the installation of the Application Center Console. This element has the following attributes:
+El elemento `<console>` recopila información para personalizar la instalación de Application Center Console. Este elemento tiene los siguientes atributos:
 
-| Attribute    | Description                                      | Required | Default |
+| Atributo    | Descripción                                      | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------|----------|---------|
-| warfile      | The WAR file for the Application Center Console. |	No       | The appcenterconsole.war file is in the Application Center console directory:  **product_install_dir/ApplicationCenter/console**. |
+| warfile      | El archivo WAR para Application Center Console. |	No       | El archivo appcenterconsole.war se encuentra en el directorio de consola de Application Center: **dir_instal_producto/ApplicationCenter/console**. |
 
-### To specify an application server
+### Para especificar un servidor de aplicaciones
 {: #to-specify-an-application-server-3 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+Utilice el elemento `<applicationserver>` para definir los parámetros que dependen del servidor de aplicaciones subyacente. El elemento `<applicationserver>` da soporte a los elementos siguientes.
 
-| Element           | Description	                            | Count |
+| Elemento           | Descripción	                            | Recuento |
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** or **was**	| The parameters for WebSphere Application Server. The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core. Liberty collective is not supported for Application Center. | 0..1 |
-| tomcat            | The parameters for Apache Tomcat. | 0..1 |
+| **websphereapplicationserver** o **was**	| Los parámetros para WebSphere Application Server. El elemento `<websphereapplicationserver>` (o `<was>` en su formato abreviado) denota una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core. El colectivo de Liberty no está soportado para Application Center. | 0..1 |
+| tomcat            | Los parámetros para Apache Tomcat. | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+Los atributos y elementos internos de estos elementos se describen en las tablas de la página [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
-### To specify a connection to the services database
+### Para especificar una conexión a la base de datos de servicio
 {: #to-specify-a-connection-to-the-services-database }
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the services database.
+El elemento `<database>` recopila los parámetros que especifican una declaración de origen de datos en un servidor de aplicaciones para acceder a la base de datos de servicios.
 
-You must declare a single database: `<database kind="ApplicationCenter">`. You specify the `<database>` element similarly to the `<configuredatabase>` Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+Debe declarar una única base de datos: `<database kind="ApplicationCenter">`. Especifique el elemento `<database>` de forma parecida a la tarea Ant `<configuredatabase>`, excepto que el elemento `<database>` no tiene los elementos `<dba>` ni `<client>`. Podría tener los elementos `<property>`.
 
-The `<database>` element has the following attributes:
+El elemento `<database>` tiene los atributos siguientes:
 
-| Attribute    | Description                                            | Required | Default |
+| Atributo    | Descripción                                            | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------------|----------|---------|
-| kind         | The kind of database (ApplicationCenter).              | Yes      | None    |
-| validate	   | To validate whether the database is accessible or not. | No       | True    |
+| kind         | El tipo de base de datos (ApplicationCenter).              | Sí      | Ninguno    |
+| validate	   | Para validar si se puede acceder a la base de datos o no. | No       | True    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+El elemento `<database>` da soporte a los elementos siguientes. Para obtener más información sobre la configuración de estos elementos de base de datos, consulte las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
-| Element           | Description	                            | Count |
+| Elemento           | Descripción	                            | Recuento |
 |-------------------|-------------------------------------------|-------|
-| db2	            | The parameter for DB2  databases.	        | 0..1  |
-| derby             | The parameter for Apache Derby databases.	| 0..1  |
-| mysql             | The parameter for MySQL databases.	    | 0..1  |
-| oracle	        | The parameter for Oracle databases.	    | 0..1  |
-| driverclasspath   | The parameter for JDBC driver class path.	| 0..1  |
+| db2	            | El parámetro para bases de datos DB2.	        | 0..1  |
+| derby             | El parámetro para bases de datos Apache Derby.	| 0..1  |
+| mysql             | El parámetro para bases de datos MySQL.	    | 0..1  |
+| oracle	        | El parámetro para bases de datos Oracle.	    | 0..1  |
+| driverclasspath   | El parámetro para la vía de acceso de clase de controlador JDBC.	| 0..1  |
 
-### To specify a user and a security role
+### Para especificar un usuario y un rol de seguridad
 {: #to-specify-a-user-and-a-security-role }
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+El elemento `<user>` recopila los parámetros sobre un usuario para incluirlos en un determinado rol de seguridad para una aplicación.
 
-| Attribute    | Description                                            | Required | Default |
+| Atributo    | Descripción                                            | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------------|----------|---------|
-| role         | The user role appcenteradmin. | Yes | None |
-| name	       | The user name. | Yes | None |
-| password	   | The password, if you must create the user.	| No | None |
+| role         | El rol de usuario appcenteradmin. | Sí | Ninguno |
+| name	       | El nombre de usuario. | Sí | Ninguno |
+| password	   | La contraseña, si debe crear el usuario.	| No | Ninguno |
 
-## Ant tasks for installation of {{ site.data.keys.mf_analytics }}
+## Tareas Ant para la instalación de {{ site.data.keys.mf_analytics }}
 {: #ant-tasks-for-installation-of-mobilefirst-analytics }
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of {{ site.data.keys.mf_analytics }}.
+Las tareas Ant **installanalytics**, **updateanalytics**, y **uninstallanalytics** se proporcionan para la instalación de {{ site.data.keys.mf_analytics }}.
 
-The purpose of these Ant Tasks is to configure the {{ site.data.keys.mf_analytics_console }} and the {{ site.data.keys.mf_analytics }} service with the appropriate storage for the data on an application server.
-The task installs {{ site.data.keys.mf_analytics }} nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
+El objetivo de estas Tareas Ant es configurar el servicio de {{ site.data.keys.mf_analytics_console }} y de {{ site.data.keys.mf_analytics }} con el almacenamiento apropiado para los datos en un servidor de aplicaciones.
+La tarea instala nodos de {{ site.data.keys.mf_analytics }} que actúan como un maestro y datos. Para obtener más información, consulte [Gestión de clústeres y Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
 
-### Task effects
+### Efectos de tareas
 {: #task-effects-4 }
 #### installanalytics
 {: #installanalytics }
-The **installanalytics** Ant task configures an application server to run IBM {{ site.data.keys.mf_analytics }}. This task has the following effects:
+La tarea Ant **installanalytics** configura un servidor de aplicaciones para ejecutar IBM {{ site.data.keys.mf_analytics }}. Esta tarea tiene los siguientes efectos:
 
-* It deploys the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files on the application server.
-* It declares the {{ site.data.keys.mf_analytics }} Service web application in the specified context root /analytics-service.
-* It declares the {{ site.data.keys.mf_analytics_console }} web application in the specified context root /analytics.
-* It sets {{ site.data.keys.mf_analytics_console }} and {{ site.data.keys.mf_analytics }} Services configuration properties through JNDI environment entries.
-* On WebSphere  Application Server Liberty profile, it configures the web container.
-* Optionally, it creates users to use the {{ site.data.keys.mf_analytics_console }}.
+* Despliega los archivos WAR de {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} en el servidor de aplicaciones.
+* Declara la aplicación web de {{ site.data.keys.mf_analytics }} Service en la raíz de contexto especificada /analytics-service.
+* Declara la aplicación web {{ site.data.keys.mf_analytics_console }} en la raíz de contexto especificada /analytics.
+* Establece las propiedades de configuración de {{ site.data.keys.mf_analytics_console }} and {{ site.data.keys.mf_analytics }} Services mediante entradas de entorno de JNDI.
+* En el perfil de WebSphere Application Server Liberty, configura el contenedor web.
+* Opcionalmente, crea usuarios para que utilicen la {{ site.data.keys.mf_analytics_console }}.
 
 #### updateanalytics
 {: #updateanalytics }
-The **updateanalytics** Ant task updates the already configured {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
+La tarea Ant **updateanalytics** actualiza los archivos WAR de las aplicaciones web de {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} ya configuradas en un servidor de aplicaciones. Estos archivos deben tener los mismos nombres base que los archivos WAR del proyecto desplegados anteriormente.
 
-The task does not change the application server configuration, that is, the web application configuration and JNDI environment entries.
+La tarea no cambia la configuración del servidor de aplicaciones, es decir, la configuración de la aplicación web ni las entradas de entorno JNDI.
 
 #### uninstallanalytics
 {: #uninstallanalytics }
-The **uninstallanalytics** Ant task undoes the effects of an earlier **installanalytics** run. This task has the following effects:
+La tarea Ant **uninstallanalytics** deshace los efectos de una ejecución anterior de **installanalytics**. Esta tarea tiene los siguientes efectos:
 
-* It removes the configuration of both the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} web applications with their respective context roots.
-* It removes the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files from the application server.
-* It removes the associated JNDI environment entries.
+* Elimina la configuración de las aplicaciones web de {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} con sus raíces de contexto respectivas.
+* Elimina los archivos WAR de {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} del servidor de aplicaciones.
+* Elimina las entradas de entorno JNDI asociadas.
 
-### Attributes and elements
+### Atributos y elementos
 {: #attributes-and-elements-4 }
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks have the following attributes:
+Las tareas **installanalytics**, **updateanalytics**, y **uninstallanalytics** tienen los atributos siguientes:
 
-| Attribute    | Description                                            | Required | Default |
+| Atributo    | Descripción                                            | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | The WAR file for the {{ site.data.keys.mf_analytics }} Service     | No       | The analytics-service.war file is in the directory Analytics. |
+| serviceWar   | El archivo WAR para {{ site.data.keys.mf_analytics }} Service     | No       | El archivo analytics-service.war se encuentra en el directorio Analytics. |
 
 #### serviceWar
 {: #servicewar-2 }
-Use the **serviceWar** attribute to specify a different directory for the {{ site.data.keys.mf_analytics }} Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Utilice el atributo **serviceWar** para especificar un directorio distinto para el archivo WAR de {{ site.data.keys.mf_analytics }} Services. Puede especificar el nombre de este archivo WAR con una vía de acceso absoluta o relativa.
 
-The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks support the following elements:
+Las tareas `<installanalytics>`, `<updateanalytics>`, y `<uninstallanalytics>` dan soporte a los siguientes elementos:
 
-| Attribute         | Description                               | Required | Default |
+| Atributo         | Descripción                               | Obligatorio | Predeterminado |
 |-------------------|-------------------------------------------|----------|---------|
-| console	        | {{ site.data.keys.mf_analytics }}   	                | Yes	   | 1       |
-| user	            | The user to be mapped to a security role.	| No	   | 0..     |
-| storage	        | The type of storage.	                    | Yes 	   | 1       |
-| applicationserver	| The application server.	                | Yes	   | 1       |
-| property          | Properties.	                            | No 	   | 0..     |
+| console	        | {{ site.data.keys.mf_analytics }}   	                | Sí	   | 1       |
+| user	            | El usuario que se correlacionará con un rol de seguridad.	| No	   | 0..     |
+| storage	        | El tipo de almacenamiento.	                    | Sí 	   | 1       |
+| applicationserver	| El servidor de aplicaciones.	                | Sí	   | 1       |
+| property          | Propiedades.	                            | No 	   | 0..     |
 
-### To specify a {{ site.data.keys.mf_analytics_console }}
+### Para especificar una {{ site.data.keys.mf_analytics_console }}
 {: #to-specify-a-mobilefirst-analytics-console }
-The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_analytics_console }}. This element has the following attributes:
+El elemento `<console>` recopila información para personalizar la instalación de la {{ site.data.keys.mf_analytics_console }}. Este elemento tiene los siguientes atributos:
 
-| Attribute    | Description                                  | Required | Default |
+| Atributo    | Descripción                                  | Obligatorio | Predeterminado |
 |--------------|----------------------------------------------|----------|---------|
-| warfile	   | The console WAR file	                      | No	     | The analytics-ui.war file is in the Analytics directory. |
-| shortcutsdir | The directory where you place the shortcuts. | No	     | None    |
+| warfile	   | El archivo WAR de la consola	                      | No	     | El archivo analytics-ui.war se encuentra en el directorio Analytics. |
+| shortcutsdir | El directorio donde coloca los atajos. | No	     | Ninguno    |
 
 #### warFile
 {: #warfile-2 }
-Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.mf_analytics_console }} WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+Utilice el atributo **warFile** para especificar un directorio distinto para el archivo WAR de {{ site.data.keys.mf_analytics_console }}. Puede especificar el nombre de este archivo WAR con una vía de acceso absoluta o relativa.
 
 #### shortcutsDir
 {: #shortcutsdir-2 }
-The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_analytics_console }}. If you set this attribute, you can add the following files to that directory:
+El atributo **shortcutsDir** especifica dónde colocar atajos en la {{ site.data.keys.mf_analytics_console }}. Si establece este atributo, puede añadir los archivos siguientes a dicho directorio:
 
-* **analytics-console.url**: This file is a Windows shortcut. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
-* **analytics-console.sh**: This file is a UNIX shell script. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
+* **analytics-console.url**: Este archivo es un atajo de Windows. Abre la {{ site.data.keys.mf_analytics_console }} en un navegador.
+* **analytics-console.sh**: Este archivo es un script de shell de UNIX. Abre la {{ site.data.keys.mf_analytics_console }} en un navegador.
 
-> Note: These shortcuts do not include the ElasticSearch tenant parameter.
+> Nota: Estos atajos no incluyen el parámetro de arrendatario de ElasticSearch.
 
-The `<console>` element supports the following nested element:
+El elemento `<console>` da soporte al siguiente elemento anidado:
 
-| Element  | Description	| Count |
+| Elemento  | Descripción	| Recuento |
 |----------|----------------|-------|
-| property | Properties	    | 0..   |
+| property | Propiedades	    | 0..   |
 
-With this element, you can define your own JNDI properties.
+Con este elemento, puede definir sus propias propiedades JNDI.
 
-The `<property>` element has the following attributes:
+El elemento `<property>` tiene los atributos siguientes:
 
-| Attribute  | Description                | Required | Default |
+| Atributo  | Descripción                | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    |
-| value	     | The value of the property. |	Yes      | None    |
+| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
+| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
 
-### To specify a user and a security role
+### Para especificar un usuario y un rol de seguridad
 {: #to-specify-a-user-and-a-security-role-1 }
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+El elemento `<user>` recopila los parámetros sobre un usuario para incluirlos en un determinado rol de seguridad para una aplicación.
 
-| Attribute   | Description                                   | Required | Default |
+| Atributo   | Descripción                                   | Obligatorio | Predeterminado |
 |-------------|-----------------------------------------------|----------|---------|
-| role	      | A valid security role for the application.    | Yes      | None    |
-| name	      | The user name.	                              | Yes      | None    |
-| password	  | The password if the user needs to be created. | No       | None    |
+| role	      | Un rol de seguridad válido para la aplicación.    | Sí      | Ninguno    |
+| name	      | El nombre de usuario.	                              | Sí      | Ninguno    |
+| password	  | La contraseña si el usuario debe crearse. | No       | Ninguno    |
 
-After you defined users by using the` <user>` element, you can map them to any of the following roles for authentication in the {{ site.data.keys.mf_console }}:
+Una vez definidos los usuarios utilizando el elemento ` <user>`, puede correlacionarlos con cualquiera de los siguientes roles para la autenticación en la {{ site.data.keys.mf_console }}:
 
 * **mfpmonitor**
 * **mfpoperator**
 * **mfpdeployer**
 * **mfpadmin**
 
-### To specify a type of storage for {{ site.data.keys.mf_analytics }}
+### Para especificar un tipo de almacenamiento para {{ site.data.keys.mf_analytics }}
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-The `<storage>` element indicates which underlying type of storage {{ site.data.keys.mf_analytics }} uses to store the information and data it collects.
+El elemento `<storage>` indica qué tipo de almacenamiento subyacente {{ site.data.keys.mf_analytics }} utiliza para almacenar la información y los datos que recopila.
 
-It supports the following element:
+Da soporte al elemento siguiente:
 
-| Element       | Description	| Count   |
+| Elemento       | Descripción	| Recuento   |
 |---------------|---------------|---------|
-| elasticsearch	| ElasticSearch | cluster |
+| elasticsearch	| ElasticSearch | clúster |
 
-The `<elasticsearch>` element collects the parameters about an ElasticSearch cluster.
+El elemento `<elasticsearch>` recopila los parámetros sobre un clúster de ElasticSearch.
 
-| Attribute        | Description                                   | Required | Default   |
+| Atributo        | Descripción                                   | Obligatorio | Predeterminado   |
 |------------------|-----------------------------------------------|----------|-----------|
-| clusterName	   | The ElasticSearch cluster name.	           | No       | worklight |
-| nodeName	       | The ElasticSearch node name. This name must be unique in an ElasticSearch cluster.	| No | `worklightNode_<random number>` |
-| mastersList	   | A comma-delimited string that contains the host name and ports of the ElasticSearch master nodes in the ElasticSearch cluster (For example: hostname1:transport-port1,hostname2:transport-port2)	           | No       |	Depends on the topology |
-| dataPath	       | The ElasticSearch cluster location.	       | No	      | Depends on the application server |
-| shards	       | The number of shards that the ElasticSearch cluster creates. This value can be set only by the master nodes that are created in the ElasticSearch cluster.	| No | 5 |
-| replicasPerShard | The number of replicas for each shard in the ElasticSearch cluster. This value can be set only by the master nodes that are created in the ElasticSearch cluster. | No | 1 |
-| transportPort	   | The port used for node-to-node communication in the ElasticSearch cluster.	| No | 9600 |
+| clusterName	   | El nombre de clúster de ElasticSearch.	           | No       | worklight |
+| nodeName	       | El nombre de nodo de ElasticSearch. Este nombre debe ser exclusivo en un clúster de ElasticSearch.	| No | `worklightNode_<random number>` |
+| mastersList	   | Una serie delimitada por comas que contiene el nombre de host y los puertos de los nodos maestro de ElasticSearch en el clúster de ElasticSearch (Por ejemplo: hostname1:transport-port1,hostname2:transport-port2)	           | No       |	Depende de la topología |
+| dataPath	       | La ubicación del clúster de ElasticSearch.	       | No	      | Depende del servidor de aplicaciones |
+| shards	       | El número de fragmentos que crea el clúster de ElasticSearch. Este valor sólo lo pueden establecer los nodos maestro creados en el clúster de ElasticSearch.	| No | 5 |
+| replicasPerShard | El número de réplicas para cada fragmento del clúster de ElasticSearch. Este valor sólo lo pueden establecer los nodos maestro creados en el clúster de ElasticSearch. | No | 1 |
+| transportPort	   | El puerto utilizado para la comunicación de nodo a nodo en el clúster de ElasticSearch.	| No | 9600 |
 
 #### clusterName
 {: #clustername }
-Use the **clusterName** attribute to specify a name of your choice for the ElasticSearch cluster.
+Utilice el atributo **clusterName** para especificar un nombre de su elección para el clúster de ElasticSearch.
 
-An ElasticSearch cluster consists of one or more nodes that share the same cluster name so you might specify the same value for the **clusterName** attribute if you configure several nodes.
+Un clúster de ElasticSearch consta de uno o varios nodos que comparten el mismo nombre de clúster, de forma que es posible especificar el mismo valor para el atributo **clusterName** si configura varios nodos.
 
 #### nodeName
 {: #nodename }
-Use the **nodeName** attribute to specify a name of your choice for the node to configure in the ElasticSearch cluster. Each node name must be unique in the ElasticSearch cluster even if nodes span on several machines.
+Utilice el atributo **nodeName** para especificar un nombre de su elección para el nodo que se va a configurar en el clúster de ElasticSearch. Cada nombre de nodo debe ser exclusivo en el clúster de ElasticSearch, aún cuando los nodos estén en varias máquinas.
 
 #### mastersList
 {: #masterslist }
-Use the **mastersList** attribute to provide a comma-separated list of the master nodes in your ElasticSearch cluster. Each master node in this list must be identified by its host name, and the ElasticSearch node-to-node communication port. This port is 9600 by default, or it is the port number that you specified with the attribute **transportPort** when you configured that master node.
+Utilice el atributo **mastersList** para proporcionar una lista separada por comas de los nodos maestro del clúster de ElasticSearch. Cada nodo maestro de la lista debe identificarse por su nombre de host, y el puerto de comunicación de nodo a nodo de ElasticSearch. Este puerto es 9600 de forma predeterminada, o es el número de puerto que ha especificado con el atributo **transportPort** al configurar dicho nodo maestro.
 
-For example: `hostname1:transport-port1, hostname2:transport-port2`.
+Por ejemplo: `hostname1:transport-port1, hostname2:transport-port2`.
 
-**Note:**
+**Nota:**
 
-* If you specify a **transportPort** that is different than the default value 9600, you must also set this value with the attribute **transportPort**. By default, when the attribute **mastersList** is omitted, an attempt is made to detect the host name and the ElasticSearch transport port on all supported application servers.
-* If the target application server is WebSphere Application Server Network Deployment cluster, and if you add or remove a server from this cluster at a later point in time, you must edit this list manually to keep in sync with the ElasticSearch cluster.
+* Si especifica un **transportPort** distinto al valor predeterminado 9600, también debe establecer este valor con el atributo **transportPort**. De forma predeterminada, cuando se omita el atributo **mastersList**, se realizará un intento para detectar el nombre de host y el puerto de transporte de ElasticSearch en todos los servidores de aplicaciones soportados.
+* Si el servidor de aplicaciones de destino es el clúster de WebSphere Application Server Network Deployment, y si añade o elimina un servidor de este clúster en un momento posterior, debe editar esta lista manualmente para mantenerla sincronizada con el clúster de ElasticSearch.
 
 #### dataPath
 {: #datapath }
-Use the **dataPath** attribute to specify a different directory to store ElasticsSearch data. You can specify an absolute path or a relative path.
+Utilice el atributo **dataPath** para especificar un directorio distinto para almacenar datos de ElasticsSearch. Puede especificar una vía de acceso absoluta o una vía de acceso relativa.
 
-If the attribute **dataPath** is not specified, then ElasticSearch cluster data is stored in a default directory that is called **analyticsData**, whose location depends on the application server:
+Si no se especifica el atributo **dataPath**, los datos del clúster de ElasticSearch se almacenarán en un directorio predeterminado llamado **analyticsData**, cuya ubicación depende del servidor de aplicaciones:
 
-* For WebSphere Application Server Liberty profile, the location is `${wlp.user.dir}/servers/serverName/analyticsData`.
-* For Apache Tomcat, the location is `${CATALINA_HOME}/bin/analyticsData`.
-* For WebSphere Application Server and WebSphere Application Server Network Deployment, the location is `${was.install.root}/profiles/<profileName>/analyticsData`.
+* Para el perfil de WebSphere Application Server Liberty, la ubicación es `${wlp.user.dir}/servers/serverName/analyticsData`.
+* Para Apache Tomcat, la ubicación es `${CATALINA_HOME}/bin/analyticsData`.
+* Para WebSphere Application Server y WebSphere Application Server Network Deployment, la ubicación es `${was.install.root}/profiles/<profileName>/analyticsData`.
 
-The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the {{ site.data.keys.mf_analytics }} Service component receives events.
+El directorio **analyticsData** y la jerarquía de subdirectorios y archivos que contiene se crearán automáticamente en tiempo de ejecución, si no existen ya cuando el componente de {{ site.data.keys.mf_analytics }} Service reciba sucesos.
 
 #### shards
 {: #shards }
-Use the **shards** attribute to specify the number of shards to create in the ElasticSearch cluster.
+Utilice el atributo **shards** para especificar el número de fragmentos que se crearán en el clúster de ElasticSearch.
 
 #### replicasPerShard
 {: #replicaspershard }
-Use the **replicasPerShard** attribute to specify the number of replicas to create for each shard in the ElasticSearch cluster.
+Utilice el atributo **replicasPerShard** para especificar el número de réplicas que se crearán para cada fragmento en el clúster de ElasticSearch.
 
-Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the {{ site.data.keys.mf_analytics }}. A replica shard can never be started on the same node as its shard.
+Cada fragmento puede tener cero o más réplicas. De forma predeterminada, cada fragmento tiene una réplica, pero el número de réplicas puede cambiar de forma dinámica en un índice existente de {{ site.data.keys.mf_analytics }}. Un fragmento de réplica no se puede iniciar nunca en el mismo nodo que su fragmento.
 
 #### transportPort
 {: #transportport }
-Use the **transportPort** attribute to specify a port that other nodes in the ElasticSearch cluster must use when communicating with this node. You must ensure that this port is available and accessible if this node is behind a proxy or firewall.
+Utilice el atributo **transportPort** para especificar un puerto que otros nodos del clúster de ElasticSearch deben utilizar al comunicarse con este nodo. Debe asegurarse de que este puerto esté disponible y accesible si este nodo está detrás de un proxy o de un cortafuegos.
 
-### To specify an application server
+### Para especificar un servidor de aplicaciones
 {: #to-specify-an-application-server-4 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+Utilice el elemento `<applicationserver>` para definir los parámetros que dependen del servidor de aplicaciones subyacente. El elemento `<applicationserver>` da soporte a los elementos siguientes.
 
-**Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+**Nota:** Los atributos y los elementos internos de este elemento se describen en las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
-| Element                                   | Description	| Count   |
+| Elemento                                   | Descripción	| Recuento   |
 |-------------------------------------------|---------------|---------|
-| **websphereapplicationserver** or **was** | The parameters for WebSphere Application Server.	| 0..1 |
-| tomcat	                                | The parameters for Apache Tomcat.	| 0..1 |
+| **websphereapplicationserver** o **was** | Los parámetros para WebSphere Application Server.	| 0..1 |
+| tomcat	                                | Los parámetros para Apache Tomcat.	| 0..1 |
 
-### To specify custom JNDI properties
+### Para especificar propiedades JNDI personalizadas
 {: #to-specify-custom-jndi-properties }
-The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` elements support the following element:
+Los elementos `<installanalytics>`, `<updateanalytics>`, y `<uninstallanalytics>` dan soporte al elemento siguiente:
 
-| Element  | Description | Count |
+| Elemento  | Descripción | Recuento |
 |----------|-------------|-------|
-| property | Properties	 | 0..   |
+| property | Propiedades	 | 0..   |
 
-By using this element, you can define your own JNDI properties.
+Al utilizar este elemento, puede definir sus propias propiedades JNDI.
 
-This element has the following attributes:
+Este elemento tiene los siguientes atributos:
 
-| Attribute  | Description                | Required | Default |
+| Atributo  | Descripción                | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    |
-| value	     | The value of the property. |	Yes      | None    |
+| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
+| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
 
-## Internal runtime databases
+## Bases de datos de tiempo de ejecución interno
 {: #internal-runtime-databases }
-Learn about runtime database tables, their purpose, and order of magnitude of data stored in each table. In relational databases, the entities are organized in database tables.
+Obtenga más información acerca de las tablas de base de datos de tiempo de ejecución, su finalidad, y el orden de magnitud de datos almacenados en cada tabla. En bases de datos relacionales, las entidades están organizadas en tablas de base de datos.
 
-### Database used by {{ site.data.keys.mf_server }} runtime
+### Base de datos utilizada por el tiempo de ejecución de {{ site.data.keys.mf_server }}
 {: #database-used-by-mobilefirst-server-runtime }
-The following table provides a list of runtime database tables, their descriptions, and how they are used in relational databases.
+En la tabla siguiente se proporciona una lista de tablas de base de datos de tiempo de ejecución, sus descripciones, y cómo se utilizan en bases de datos relacionales.
 
-| Relational database table name | Description | Order of magnitude |
+| Nombre de tabla de base de datos relacional | Descripción | Orden de magnitud |
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | Stores the various license metrics captured every time the device decommissioning task is run. | Tens of rows. This value does not exceed the value set by the JNDI property mfp.device.decommission.when property. For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) |
-| ADDRESSABLE_DEVICE	         | Stores the addressable device metrics daily. An entry is also added each time that a cluster is started.	| About 400 rows. Entries older than 13 months are deleted daily. |
-| MFP_PERSISTENT_DATA	         | Stores instances of client applications that have registered with the OAuth server, including information about the device, the application, users associated with the client and the device status. | One row per device and application pair. |
-| MFP_PERSISTENT_CUSTOM_ATTR	 | Custom attributes that are associated with instances of client applications. Custom attributes are application-specific attributes that were registered by the application per each client instance. | Zero or more rows per device and application pair |
-| MFP_TRANSIENT_DATA	         | Authentication context of clients and devices | Two rows per device and application pair; if using device single sign-on an extra two rows per device. For more information about SSO, see [Configuring device single sign-on (SSO)](../../../authentication-and-security/device-sso). |
-| SERVER_VERSION	             | The product version.	| One row |
+| LICENSE_TERMS	                 | Almacena las diversas métricas de licencias capturadas cada vez que se ejecuta la tarea de decomisionado de dispositivos. | Decenas de filas. Este valor no supera el valor establecido por la propiedad mfp.device.decommission.when de la propiedad JNDI. Para obtener más información sobre propiedades JNDI, consulte [Lista de propiedades JNDI para el tiempo de ejecución de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) |
+| ADDRESSABLE_DEVICE	         | Almacena las métricas de dispositivos dirigibles cada día. También se añade una entrada cada vez que se inicia un clúster.	| Acerca de 400 filas. Las entradas más antiguas de 13 meses se suprimen cada día. |
+| MFP_PERSISTENT_DATA	         | Almacena instancias de aplicaciones cliente que se han registrado con el servidor OAuth, incluida la información sobre el dispositivo, la aplicación, usuarios asociados con el cliente y el estado del dispositivo. | Una fila por par de dispositivos y aplicaciones. |
+| MFP_PERSISTENT_CUSTOM_ATTR	 | Los atributos personalizados que están asociados con las instancias de aplicaciones cliente. Los atributos personalizados son específicos de la aplicación registrados por la aplicación por cada instancia de cliente. | Cero o más filas por par de dispositivos y aplicaciones |
+| MFP_TRANSIENT_DATA	         | Contexto de autenticación de clientes y dispositivos | Dos filas por par de dispositivos y aplicaciones; si se utiliza el inicio de sesión único de dispositivos en dos filas adicionales por dispositivo. Para obtener más información sobre SSO, consulte [Configuración de inicio de sesión único de dispositivo (SSO)](../../../authentication-and-security/device-sso). |
+| SERVER_VERSION	             | La versión del producto.	| Una fila |
 
-### Database used by {{ site.data.keys.mf_server }} administration service
+### Base de datos utilizada por el servicio de administración de {{ site.data.keys.mf_server }}
 {: #database-used-by-mobilefirst-server-administration-service }
-The following table provides a list of administration database tables, their descriptions, and how they are used in relational databases.
+En la tabla siguiente se proporciona una lista de tablas de la base de datos de administración, sus descripciones, y cómo se utilizan en bases de datos relacionales.
 
-| Relational database table name | Description | Order of magnitude |
+| Nombre de tabla de base de datos relacional | Descripción | Orden de magnitud |
 |--------------------------------|-------------|--------------------|
-| ADMIN_NODE	                 | Stores information about the servers that run the administration service. In a stand-alone topology with only one server, this entity is not used. | One row per server; empty if a stand-alone server is used. |
-| AUDIT_TRAIL	                 | Stores an audit trail of all administrative actions performed with the administration service. | Thousands of rows. |
-| CONFIG_LINKS	                 | Stores the links to the live update service. Adapters and applications might have configurations that are stored in the live update service, and the links are used to find those configurations.	| Hundreds of rows. Per adapter, 2-3 rows are used. Per application, 4-6 rows are used. |
-| FARM_CONFIG	                 | Stores the configuration of farm nodes when a server farm is used. | Tens of rows; empty if no server farm is used. |
-| GLOBAL_CONFIG	                 | Stores some global configuration data. | 1 row. |
-| PROJECT	                     | Stores the names of the deployed projects. | Tens of rows. |
-| PROJECT_LOCK	                 | Internal cluster synchronization tasks. | Tens of rows. |
-| TRANSACTIONS	                 | Internal cluster synchronization table; stores the state of all current administrative actions. | Tens of rows. |
-| MFPADMIN_VERSION	             | The product version.	| One row. |
+| ADMIN_NODE	                 | Almacena información sobre los servidores que ejecutan el servicio de administración. No se utilizará esta entidad en una topología autónoma con sólo un servidor. | Una fila por servidor; vacío si se utiliza un servidor autónomo. |
+| AUDIT_TRAIL	                 | Almacena un seguimiento de auditoría de todas las acciones administrativas realizadas con el servicio de administración. | Miles de filas. |
+| CONFIG_LINKS	                 | Almacena los enlaces en el servicio de Live Update. Los adaptadores y las aplicaciones podrían tener configuraciones almacenadas en el servicio de Live Update, y los enlaces se utilizarán para buscar dichas configuraciones.	| Cientos de filas. Se utilizan de 2 a 3 filas por adaptador. Se utilizan de 4 a 6 filas por aplicación. |
+| FARM_CONFIG	                 | Almacena la configuración de nodos de granja de servidores cuando se utiliza una granja de servidores. | Decenas de filas; vacío si no se utiliza ninguna granja de servidores. |
+| GLOBAL_CONFIG	                 | Almacena algunos datos de configuración global. | 1 fila. |
+| PROJECT	                     | Almacena los nombres de los proyectos desplegados. | Decenas de filas. |
+| PROJECT_LOCK	                 | Tareas de sincronización del clúster interno. | Decenas de filas. |
+| TRANSACTIONS	                 | Tabla de sincronización del clúster interno; almacena el estado de todas las acciones de administración actuales. | Decenas de filas. |
+| MFPADMIN_VERSION	             | La versión del producto.	| Una fila. |
 
-### Database used by {{ site.data.keys.mf_server }} live update service
+### Base de datos utilizada por el servicio de Live Update de {{ site.data.keys.mf_server }}
 {: #database-used-by-mobilefirst-server-live-update-service }
-The following table provides a list of live update service database tables, their descriptions, and how they are used in relational databases.
+En la tabla siguiente se proporciona una lista de tablas de base de datos de servicio de Live Update, sus descripciones, y cómo se utilizan en bases de datos relacionales.
 
-| Relational database table name | Description | Order of magnitude |
+| Nombre de tabla de base de datos relacional | Descripción | Orden de magnitud |
 |--------------------------------|-------------|--------------------|
-| CS_SCHEMAS	                 | Stores the versioned schemas that exist in the platform.	| One row per schema. |
-| CS_CONFIGURATIONS	             | Stores instances of configurations for each versioned schema. | One row per configuration |
-| CS_TAGS	                     | Stores the searchable fields and values for each configuration instance.	| Row for each field name and value for each searchable field in configuration. |
-| CS_ATTACHMENTS	             | Stores the attachments for each configuration instance. | One row per attachment. |
-| CS_VERSION	                 | Stores the version of the MFP that created the tables or instances. | Single row in the table with the version of MFP. |
+| CS_SCHEMAS	                 | Almacena los esquemas versionados que existen en la plataforma.	| Una fila por esquema. |
+| CS_CONFIGURATIONS	             | Almacena instancias de configuraciones para cada esquema versionado. | Una fila por configuración |
+| CS_TAGS	                     | Almacena los campos en los que se pueden realizar búsquedas y los valores para cada instancia de configuración.	| Fila para cada nombre de campo y valor para cada campos en el que se pueden realizar búsquedas en la configuración. |
+| CS_ATTACHMENTS	             | Almacena los archivos adjuntos para cada instancia de la configuración. | Una fila por archivo adjunto. |
+| CS_VERSION	                 | Almacena la versión del MFP que ha creado las tablas o instancias. | Fila única en la tabla con la versión de MFP. |
 
-### Database used by {{ site.data.keys.mf_server }} push service
+### Base de datos utilizada por el servicio de envío por push de {{ site.data.keys.mf_server }}
 {: #database-used-by-mobilefirst-server-push-service }
-The following table provides a list of push service database tables, their descriptions, and how they are used in relational databases.
+En la tabla siguiente se proporciona una lista de tablas de base de datos de servicio de envío por push, sus descripciones, y cómo se utilizan en bases de datos relacionales.
 
-| Relational database table name | Description | Order of magnitude |
+| Nombre de tabla de base de datos relacional | Descripción | Orden de magnitud |
 |--------------------------------|-------------|--------------------|
-| PUSH_APPS	                     | Push notification table; stores details of push applications. | One row per application. |
-| PUSH_ENV	                     | Push notification table; stores details of push environments. | Tens of rows. |
-| PUSH_TAGS	                     | Push notification table; stores details of defined tags.	     | Tens of rows. |
-| PUSH_DEVICES	                 | Push notification table. Stores a record per device.	         | One row per device. |
-| PUSH_SUBSCRIPTIONS	         | Push notification table. Stores a record per tag subscription. | One row per device subscription. |
-| PUSH_MESSAGES	                 | Push notification table; stores details of push messages.	 | Tens of rows. |
-| PUSH_MESSAGE_SEQUENCE_TABLE	 | Push notification table; stores the generated sequence ID.	 | One row. |
-| PUSH_VERSION	                 | The product version.	                                         | One row. |
+| PUSH_APPS	                     | Tabla de notificaciones push; almacena detalles de aplicaciones push. | Una fila por aplicación. |
+| PUSH_ENV	                     | Tabla de notificaciones push; almacena detalles de entornos push. | Decenas de filas. |
+| PUSH_TAGS	                     | Tabla de notificaciones push; almacena detalles de etiquetas definidas.	     | Decenas de filas. |
+| PUSH_DEVICES	                 | Tabla de notificaciones push. Almacena un registro por dispositivo.	         | Una fila por dispositivo. |
+| PUSH_SUBSCRIPTIONS	         | Tabla de notificaciones push. Almacena un registro por suscripción de etiquetas. | Una fila por suscripción de dispositivos. |
+| PUSH_MESSAGES	                 | Tabla de notificaciones push; almacena detalles de mensajes push.	 | Decenas de filas. |
+| PUSH_MESSAGE_SEQUENCE_TABLE	 | Tabla de notificaciones push; almacena el ID de secuencia generado.	 | Una fila. |
+| PUSH_VERSION	                 | La versión del producto.	                                         | Una fila. |
 
-For more information about setting up the databases, see [Setting up databases](../databases).
+Para obtener más información sobre cómo configurar las bases de datos, consulte [Configuración de bases de datos](../databases).
 
-## Sample configuration files
-{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_server }}.
+## Archivos de configuración de ejemplo
+{{ site.data.keys.product }} incluye un número de archivos de configuración de ejemplo para ayudarle a comenzar con las tareas Ant para instalar el {{ site.data.keys.mf_server }}.
 
-The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
+La forma más sencilla de empezar con estas tareas Ant es trabajar con los archivos de configuración de ejemplo que se proporcionan en el directorio **MobileFirstServer/configuration-samples/** de la distribución de {{ site.data.keys.mf_server }}. Para obtener más información sobre cómo instalar {{ site.data.keys.mf_server }} con tareas Ant, consulte [Instalación con Tareas Ant](../appserver/#installing-with-ant-tasks).
 
-### List of sample configuration files
+### Lista de archivos de configuración de ejemplo
 {: #list-of-sample-configuration-files }
-Pick the appropriate sample configuration file. The following files are provided.
+Elija el archivo de configuración de ejemplo apropiado. Se proporcionan los siguientes archivos.
 
-| Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      |
+| Tarea                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      |
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
-| Create databases with database administrator credentials | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
-| Install {{ site.data.keys.mf_server }} on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on WebSphere  Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+| Crear bases de datos con credenciales de administradores de bases de datos | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
+| Instalar {{ site.data.keys.mf_server }} en Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (Consulte Nota sobre MySQL) | configure-liberty-oracle.xml |
+| Instalar {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, servidor único |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (Consulte Nota sobre MySQL) | configure-was-oracle.xml |
+| Instalar {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment (Consulte Nota sobre los archivos de configuración) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (Consulte Nota sobre MySQL),  configure-wasnd-server-mysql.xml (Consulte Nota sobre MySQL), configure-wasnd-node-mysql.xml (Consulte Nota sobre MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
+| Instalar {{ site.data.keys.mf_server }} en Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
+| Instalar {{ site.data.keys.mf_server }} en el colectivo de Liberty	       | No relevante              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
-**Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM  DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+**Nota sobre MySQL:** MySQL en combinación con el perfil de WebSphere Application Server Liberty o el perfil completo de WebSphere Application Server no se clasifica como una configuración soportada. Para obtener más información, consulte WebSphere Application Server Support Statement. Considere la posibilidad de utilizar IBM DB2 u otra base de datos soportada por WebSphere Application Server para beneficiarse de una configuración que esté completamente soportada por IBM Support.
 
-**Note on configuration files for WebSphere Application Server Network Deployment:** The configuration files for **wasnd** contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-derby.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+**Nota sobre archivos de configuración para WebSphere Application Server Network Deployment:** Los archivos de configuración para **wasnd** contienen un ámbito que se puede establecer en **clúster**, **nodo**, **servidor**, o **célula**. Por ejemplo, para **configure-wasnd-cluster-derby.xml**, el ámbito es **clúster**. Estos tipos de ámbito definen el destino de despliegue tal como se indica a continuación:
 
-* **cluster**: To deploy to a cluster.
-* **server**: To deploy to a single server that is managed by the deployment manager.
-* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
-* **cell**: To deploy to all the servers on a cell.
+* **clúster**: Para desplegar en un clúster.
+* **servidor**: Para desplegar en un único servidor gestionado por el gestor de despliegue.
+* **nodo**: Para desplegar en todos los servidores que se ejecutan en un nodo, pero que no pertenecen a un clúster.
+* **célula**: Para desplegar en todos los servidores en una célula.
 
-## Sample configuration files for {{ site.data.keys.mf_analytics }}
+## Archivos de configuración de ejemplo para {{ site.data.keys.mf_analytics }}
 {: #sample-configuration-files-for-mobilefirst-analytics }
-{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_analytics }} Services, and the {{ site.data.keys.mf_analytics_console }}.
+{{ site.data.keys.product }} incluye varios archivos de configuración de ejemplo para ayudarle a comenzar con las tareas Ant para instalar los Servicios de {{ site.data.keys.mf_analytics }}, y la {{ site.data.keys.mf_analytics_console }}.
 
-The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution.
+La forma más sencilla de empezar con las tareas Ant `<installanalytics>`, `<updateanalytics>`, y `<uninstallanalytics>` es trabajando con los archivos de configuración de ejemplo proporcionados en el directorio **Analytics/configuration-samples/** de la distribución de {{ site.data.keys.mf_server }}.
 
-### Step 1
+### Paso 1
 {: #step-1 }
-Pick the appropriate sample configuration file. The following XML files are provided. They are referred to as **configure-file.xml** in the next steps.
+Elija el archivo de configuración de ejemplo apropiado. Se proporcionan los siguientes archivos XML. Se les conoce como **configure-file.xml** en los pasos siguientes.
 
-| Task | Application server |
+| Tarea | Servidor de aplicaciones |
 |------|--------------------|
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere  Application Server Liberty profile | configure-liberty-analytics.xml |
-| Install {{ site.data.keys.mf_analytics }} Services and Console on Apache Tomcat | configure-tomcat-analytics.xml |
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml |
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml |
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cell | configure-wasnd-cell-analytics.xml |
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, node | configure-wasnd-node.xml |
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cluster | configure-wasnd-cluster-analytics.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en el perfil de WebSphere Application Server Liberty | configure-liberty-analytics.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en Apache Tomcat | configure-tomcat-analytics.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en el perfil completo de WebSphere Application Server | configure-was-analytics.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en WebSphere Application Server Network Deployment, servidor único | configure-wasnd-server-analytics.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en WebSphere Application Server Network Deployment, célula | configure-wasnd-cell-analytics.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en WebSphere Application Server Network Deployment, nodo | configure-wasnd-node.xml |
+| Instale {{ site.data.keys.mf_analytics }} Services and Console en WebSphere Application Server Network Deployment, clúster | configure-wasnd-cluster-analytics.xml |
 
-**Note on configuration files for WebSphere Application Server Network Deployment:**  
-The configuration files for wasnd contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-analytics.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+**Nota sobre los archivos de configuración para WebSphere Application Server Network Deployment:**  
+Los archivos de configuración para wasnd contienen un ámbito que se puede establecer en **clúster**, **nodo**, **servidor**, o **célula**. Por ejemplo, para **configure-wasnd-cluster-analytics.xml**, el ámbito es **clúster**. Estos tipos de ámbito definen el destino de despliegue tal como se indica a continuación:
 
-* **cluster**: To deploy to a cluster.
-* **server**: To deploy to a single server that is managed by the deployment manager.
-* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
-* **cell**: To deploy to all the servers on a cell.
+* **clúster**: Para desplegar en un clúster.
+* **servidor**: Para desplegar en un único servidor gestionado por el gestor de despliegue.
+* **nodo**: Para desplegar en todos los servidores que se ejecutan en un nodo, pero que no pertenecen a un clúster.
+* **célula**: Para desplegar en todos los servidores en una célula.
 
-### Step 2
+### Paso 2
 {: #step-2 }
-Change the file access rights of the sample file to be as restrictive as possible. Step 3 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
+Cambie los derechos de acceso del archivo del archivo de ejemplo para que sean lo más restrictivos posible. El paso 3 requiere que proporcione algunas contraseñas. Si debe impedir que otros usuarios del mismo sistema conozcan estas contraseñas, debe eliminar los permisos de lectura del archivo para usuarios distintos a usted mismo. Puede utilizar un mandato, como los ejemplos siguientes:
 
-On UNIX: `chmod 600 configure-file.xml`
-On Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+En UNIX: `chmod 600 configure-file.xml`
+En Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-### Step 3
+### Paso 3
 {: #step-3 }
-Similarly, if your application server is WebSphere Application Server Liberty profile, or Apache Tomcat, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following files:
+De forma similar, si el servidor de aplicaciones es el perfil de WebSphere Application Server Liberty, o Apache Tomcat, y el servidor está pensado para iniciarse sólo desde la cuenta de usuario, debe también eliminar los permisos de lectura para usuarios que no sean usted mismo desde los siguientes archivos:
 
-* For WebSphere Application Server Liberty profile: **wlp/usr/servers/<server>/server.xml**
-* For Apache Tomcat: **conf/server.xml**
+* Para el perfil de WebSphere Application Server Liberty: **wlp/usr/servers/<server>/server.xml**
+* Para Apache Tomcat: **conf/server.xml**
 
-### Step 4
+### Paso 4
 {: #step-4 }
-Replace the placeholder values for the properties at the beginning of the file.
+Sustituya los valores de marcador por las propiedades que hay al principio del archivo.
 
-**Note:**  
-The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+**Nota:**  
+Los caracteres especiales siguientes deben escaparse cuando se utilicen en los valores de los scripts Ant XML:
 
-* The dollar sign (`$`) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax `${variable}`, as described in Properties section of the Apache Ant Manual.
-* The ampersand character (`&`) must be written as `&amp;`, unless you explicitly want to reference an XML entity.
-* Double quotation marks (`"`) must be written as `&quot;`, except when it is inside a string that is enclosed in single quotation marks.
+* El signo de dólar (`$`) se debe escribir como $$, a no ser que desee hacer referencia explícitamente a una variable Ant mediante la sintaxis `${variable}`, tal como se describe en la sección Propiedades de Apache Ant Manual.
+* El carácter ampersand (`&`) se debe escribir como `&amp;`, a no ser que desee explícitamente hacer referencia a una entidad XML.
+* Las comillas dobles (`"`) se deben escribir como `&quot;`, excepto cuando estén dentro de una serie que esté entre comillas simples.
 
-### Step 5
+### Paso 5
 {: #step-5 }
-Run the command: `ant -f configure-file.xml install`
+Ejecute el mandato: `ant -f configure-file.xml install`
 
-This command installs your {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components in the application server.
-To install updated {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components, for example if you apply a {{ site.data.keys.mf_server }} fix pack, run the following command: `ant -f configure-file.xml minimal-update`.
+Este mandato instala los componentes {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} en el servidor de aplicaciones.
+Para instalar componentes actualizados de {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }}, por ejemplo si aplica un fixpack de {{ site.data.keys.mf_server }}, ejecute el siguiente mandato: `ant -f configure-file.xml minimal-update`.
 
-To reverse the installation step, run the command: `ant -f configure-file.xml uninstall`
+Para invertir el paso de instalación, ejecute el mandato: `ant -f configure-file.xml uninstall`
 
-This command uninstalls the {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components.
+Este mandato desinstala los componentes {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }}.

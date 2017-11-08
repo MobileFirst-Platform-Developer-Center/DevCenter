@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Implementing the UserAuthenticationSecurityCheck Class
-breadcrumb_title: Security Check
+title: Implementación de la clase UserAuthenticationSecurityCheck
+breadcrumb_title: Comprobación de seguridad
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -9,27 +9,27 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that is accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
+Esta clase abstracta amplia `CredentialsValidationSecurityCheck` y se compila para ajustarse a los casos de uso más comunes de la autenticación de usuario simple. Además de validar las credenciales, crea una **identidad de usuario** a la que se puede acceder desde varias partes de la infraestructura, permitiéndolo identificar el usuario actual. De forma opcional, `UserAuthenticationSecurityCheck` también proporciona funcionalidades de **Recuérdame**.
 
-This tutorial uses the example of a security check that asks for a user name and password, and uses the user name to represent an authenticated user.
+Este tutorial utiliza el ejemplo de una comprobación de seguridad que solicita un nombre de usuario y contraseña, y utiliza el nombre de usuario para representar un usuario autenticado.
 
-**Prerequisites:** Make sure to read the [CredentialsValidationSecurityCheck](../../credentials-validation/) tutorial.
+**Requisitos previos:** Asegúrese de leer la guía de aprendizaje [CredentialsValidationSecurityCheck](../../credentials-validation/).
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
-* [Adding RememberMe functionality](#adding-rememberme-functionality)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [Creación de la comprobación de seguridad](#creating-the-security-check)
+* [Creación del desafío](#creating-the-challenge)
+* [Validación de las credenciales de usuario](#validating-the-user-credentials)
+* [Creación del objeto AuthenticatedUser](#creating-the-authenticateduser-object)
+* [Adición de la funcionalidad RememberMe](#adding-rememberme-functionality)
+* [Configuración de la comprobación de seguridad](#configuring-the-security-check)
+* [Comprobación de seguridad de ejemplo](#sample-security-check)
 
-## Creating the Security Check
+## Creación de la comprobación de seguridad
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
+[Cree un adaptador Java](../../../adapters/creating-adapters) y añada una clase Java denominada `UserLogin` que amplíe `UserAuthenticationSecurityCheck`.
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -51,9 +51,9 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## Creación del desafío
 {: #creating-the-challenge }
-The challenge is exactly the same as the one described in [Implementing the CredentialsValidationSecurityCheck](../../credentials-validation/security-check/).
+El desafío es el mismo que el descrito en [Implementación de CredentialsValidationSecurityCheck](../../credentials-validation/security-check/).
 
 ```java
 @Override
@@ -65,11 +65,11 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-## Validating the user credentials
+## Validación de las credenciales de usuario
 {: #validating-the-user-credentials }
-When the client sends the challenge answer, the answer is passed to `validateCredentials` as a `Map`. Use this method to implement your logic. The method returns `true` if the credentials are valid.
+Cuando el cliente envía una respuesta al desafío, la respuesta se pasa a `validateCredentials` como `Map`. Utilice este método para implementar la lógica.El método devuelve el valor `true` si las credenciales son válidas.
 
-In this example, credentials are considered "valid" when`username` and `password` are the same:
+En este ejemplo, las credenciales se consideran "válidas" cuando `username` y `password` son lo mismo:
 
 ```java
 @Override
@@ -91,14 +91,14 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Creating the AuthenticatedUser object
+## Creación del objeto AuthenticatedUser
 {: #creating-the-authenticateduser-object }
-The `UserAuthenticationSecurityCheck` class stores a representation of the current client (user, device, application) in persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
-Users are represented by an instance of the class `AuthenticatedUser`. Its constructor takes the `id`, `displayName`, and `securityCheckName` parameters.
+La clase `UserAuthenticationSecurityCheck` almacena una representación del cliente actual (usuario, dispositivo, aplicación) en los datos persistentes, permitiendo recuperar el usuario actual en varias partes del código como, por ejemplo, los manejadores de desafíos o los adaptadores.
+Los usuarios se representan por una instancia de la clase `AuthenticatedUser`. El constructor toma los parámetros `id`, `displayName`, y `securityCheckName`.
 
-This example uses `username` for both the `id` and `displayName` parameters.
+Este ejemplo utiliza `username` para los parámetros `id` y `displayName`.
 
-1. First, modify the `validateCredentials` method to save the `username` argument:
+1. Primero, modifique el método `validateCredentials` para guardar el argumento `username`:
 
    ```java
    private String userId, displayName;
@@ -124,7 +124,7 @@ This example uses `username` for both the `id` and `displayName` parameters.
    }
    ```
 
-2. Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
+2. A continuación, sustituya el método `createUser` para devolver una nueva instancia de `AuthenticatedUser`:
 
    ```java
    @Override
@@ -133,36 +133,36 @@ This example uses `username` for both the `id` and `displayName` parameters.
    }
    ```
 
-You can use `this.getName()` to get the current security check name.
+Puede utilizar `this.getName()` para obtener el nombre de la comprobación de seguridad actual.
 
-`UserAuthenticationSecurityCheck` calls your `createUser()` implementation after a successful `validateCredentials`.
+`UserAuthenticationSecurityCheck` llama a la implementación `createUser()` después que de `validateCredentials` se complete con éxito.
 
-### Storing attributes in the AuthenticatedUser
+### Almacenamiento de atributos en AuthenticatedUser
 {: #storing-attributes-in-the-authenticateduser }
-`AuthenticatedUser` has an alternate constructor:
+`AuthenticatedUser` tiene un constructor alternativo:
 
 ```java
 AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
 ```
 
-This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
+Este constructor añade el atributo `Map` de los atributos personalizados para almacenarlo con la representación del usuario. La correlación puede utilizarse para almacenar información adicional como, por ejemplo, una foto de perfil, un sitio web, etc. Se puede acceder a esta información en el lado del cliente (manejador de usuarios) y en el recurso (mediante los datos de introspección). 
 
-> **Note:**
-> The attributes `Map` must contain only objects of types/classes bundled in the Java library (such as `String`, `int`, `Map`, etc), and **not** custom classes.
+> **Nota:**
+> Los atributos `Map` deben contener solo objetos de tipos/clases empaquetados en la biblioteca Java (por ejemplo `String`, `int`, `Map`, etc), y **no** clases personalizadas.
 
-## Adding RememberMe functionality
+## Adición de la funcionalidad RememberMe
 {: #adding-rememberme-functionality }
-By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
+De forma predeterminada, `UserAuthenticationSecurityCheck` utiliza la propiedad `successStateExpirationSec` para determinar la duración del estado de éxito. Esta propiedad se hereda de `CredentialsValidationSecurityCheck`.
 
-If you want to allow users to stay logged-in past the `successStateExpirationSec` value, `UserAuthenticationSecurityCheck` adds this capability.
+Si desea permitir que los usuarios permanezcan con la sesión iniciada pasado el valor `successStateExpirationSec`, `UserAuthenticationSecurityCheck` añade esta funcionalidad.
 
-`UserAuthenticationSecurityCheck` adds a property called `rememberMeDurationSec` whose default value is `0`: by default, users are remembered for **0 seconds**, which means that by default, the feature is disabled. Change this value to a number that makes sense for your application (a day, a week, a month...).
+`UserAuthenticationSecurityCheck` añade una propiedad denominada `rememberMeDurationSec` cuyo valor predeterminado es `0`: de forma predeterminada, los usuarios se recuerdan durante **0 segundos**, lo que significa que esta función está inhabilitada de forma predeterminada. Modifique el valor a un número que tenga sentido para la aplicación (un día, una semana, un mes...).
 
-You can also manage the feature by overriding the `rememberCreatedUser()` method, which returns `true` by default, meaning that the feature is active by default (provided that you changed the duration property).
+También puede gestionar la función sustituyendo el método `rememberCreatedUser()`, que devuelve el valor `true` de forma predeterminada, lo que significa que la función está activa de forma predeterminada (siempre que haya modificado la duración de la propiedad).
 
-In this example, the client decides to enable/disable the **RememberMe** feature by sending a `boolean` value as part of the submitted credentials.
+En este ejemplo, el cliente decide habilitar/inhabilitar la función **RememberMe** enviando un valor `boolean` como parte de las credenciales enviadas.
 
-1. First, modify the `validateCredentials` method to save the `rememberMe` choice:
+1. Primero, modifique el método `validateCredentials` para guardar la opción `rememberMe`:
 
    ```java
    private String userId, displayName;
@@ -195,7 +195,7 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    }
    ```
 
-2. Then, override the `rememberCreatedUser()` method:
+2. A continuación, sustituya el método `rememberCreatedUser()`:
 
    ```java
    @Override
@@ -204,9 +204,9 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    }
    ```
 
-## Configuring the security check
+## Configuración de la comprobación de seguridad
 {: #configuring-the-security-check }
-In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
+En el archivo **adapter.xml**, añada un elemento de `<securityCheckDefinition>`:
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
@@ -216,12 +216,12 @@ In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
   <property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered by the RememberMe feature (seconds)."/>
 </securityCheckDefinition>
 ```
-As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `blockedStateExpirationSec`, `successStateExpirationSec`, etc.
+Como se ha mencionado anteriormente, `UserAuthenticationSecurityCheck` hereda todas las propiedades `CredentialsValidationSecurityCheck` como `blockedStateExpirationSec`, `successStateExpirationSec`, etc.
 
-In addition, you can also configure a `rememberMeDurationSec` property.
+Además, también puede configurar una propiedad `rememberMeDurationSec`.
 
-## Sample Security Check
+## Comprobación de seguridad de ejemplo
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+[Descargue](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) el proyecto de Maven de comprobaciones de seguridad.
 
-The Maven project contains an implementation of `UserAuthenticationSecurityCheck`.
+El proyecto Maven contiene una implementación de `UserAuthenticationSecurityCheck`.
