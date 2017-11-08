@@ -1,184 +1,250 @@
 ---
 layout: tutorial
-title: Creating Custom Charts
-breadcrumb_title: Custom Charts
+title: Creación de gráficos personalizados
+breadcrumb_title: Gráficos personalizados
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
+Los gráficos personalizados permiten visualizar los datos recopilados en el almacén de datos de analíticas como gráficos que no están disponibles de forma predeterminada en {{ site.data.keys.mf_analytics_console }}.
+Esta característica de visualización es una manera efectiva de analizar los datos más significativos de la empresa.
 
-Available custom chart types: **App Session**, **Network Transactions**, **Push Notifications**, **Client Logs**, **Server Logs**, **Custom Data**.
 
-#### Jump to
+Tipos de gráficos personalizados disponibles: **Sesiones de app**, **Transacciones de red**, **Notificaciones push**, **Registros de cliente**, **Registros de servidor** y **Datos personalizados**.
+
+#### Ir a
 {: #jump-to }
 
-* [Creating a custom chart](#creating-a-custom-chart)
-* [Chart types](#chart-types)
-* [Creating custom charts for client logs](#creating-custom-charts-for-client-logs)
-* [Exporting custom chart data](#exporting-custom-chart-data)
-* [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
+* [Creación de un diagrama personalizado](#creating-a-custom-chart)
+* [Tipos de gráficos](#chart-types)
+* [Creación de gráficos personalizados para registros de cliente](#creating-custom-charts-for-client-logs)
+* [Exportación de datos de gráficos personalizados](#exporting-custom-chart-data)
+* [Exportación e importación de definiciones de gráficos personalizados](#exporting-and-importing-custom-chart-definitions)
 
-## Creating a custom chart
+## Creación de un gráfico personalizado
 {: #creating-a-custom-chart }
 
-In the {{ site.data.keys.mf_analytics_console }}, from the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
+En {{ site.data.keys.mf_analytics_console }}, desde el **Panel de control**, el asistente de creación de gráficos personalizado le lleva por cuatro pasos básicos:
 
-### 1. General settings
+
+### 1. Valores generales
 {: #1-general-settings }
 
-Click the **Create Chart** button in the **Custom Charts** tab.  
+Pulse el botón **Crear gráfico** en el separador **Gráficos personalizados**.
+  
 
-In the **General Settings** tab, select Chart Title, Event Type and the Chart Type.  
-After selecting the Event Type and Chart Type, the **Chart Definition** tab appears.
+En el separador **Valores generales**, seleccione el Título de gráfico, el Tipo de suceso y el Tipo de gráfico.
+  
+Después de seleccionar el Tipo de suceso y el Tipo de gráfico, aparece el separador **Definición de gráfico**.
 
-### 2. The Chart Definition tab
+
+### 2. Separador Definición de gráfico
 {: #2-the-chart-definition-tab }
 
-Use the **Chart Definition** tab to define the chart for the specified chart type that you previously selected. After you define the chart, you can set the chart filters and chart properties.
+Utilice el separador **Definición de gráfico** para definir el gráfico especificado para el tipo de gráfico que se ha seleccionado anteriormente.
+Después de definir el gráfico, puede establecer filtros y propiedades del gráfico. 
 
-### 3. The Chart Filters tab
+### 3. Separador Filtros de gráfico
 {: #3-the-chart-filters-tab }
 
-**Chart Filters** are used to fine-tune the custom chart. Multiple filters can be defined for any chart.  
-For example, if you are interested in seeing the average app session duration for a particular app, you can specify the following options:
+El separador **Filtros de gráfico** permite realizar ajustes más precisos al gráfico personalizado.
+Se pueden definir varios filtros para los gráficos.
+  
+Por ejemplo, si está interesado en ver el promedio de la duración de la sesión de una determinada aplicación, puede especificar las opciones siguientes:
 
-1. Select **Application Name** for **Property**.
-2. Select **Equals** for **Operator**.
-3. Select the name of your app for **Value**.
-4. Click **Add Filter**.
+1. Seleccione **Nombre de aplicación** como **Propiedad**.
+2. Seleccione **Igual a** como **Operador**.
+3. Seleccione el nombre de su aplicación como **Valor**.
+4. Pulse **Añadir filtro**.
 
-The app name filter is added to the table of filters for your chart.
+El filtro del nombre de la aplicación se añade a la tabla de filtros de su gráfico.
 
-### 4. Chart properties
+
+### 4. Propiedades del gráfico
 {: #4-chart-properties }
 
-Chart properties are available for the **Table**, **Bar Graph**, and **Line Graph** chart types. The goal of chart properties is to enhance how the data is presented so that the visualization is more effective.
+Las propiedades del gráfico están disponibles en los tipos de gráfico **Tabla**, **Gráfico de barras** y **Gráfico de líneas**.
+El objetivo de las propiedades del gráfico es mejorar la presentación de los datos para que la visualización sea más efectiva. 
 
-If you created a **Table chart**, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field.
+Si ha creado un **Gráfico de tabla**, las propiedades del gráfico sirven para establecer el tamaño de la página de la tabla, el campo por el que ordenar o el orden de clasificación del campo.
 
-If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
 
-<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
+Si ha creado un **Gráfico de barras** o un **Gráfico de líneas**, las propiedades del gráfico se pueden establecer para etiquetar las líneas de umbral para añadir un marco de referencia para los usuarios que supervisen el gráfico.
 
-## Chart types
+
+<img class="gifplayer"  alt="Creación de un gráfico personalizado" src="creating-custom-charts.png"/>
+
+## Tipos de gráfico
 {: #chart-types }
 
-### Bar graph
+### Gráfico de barras
 {: #bar-graph }
 
-The bar graph allows for visualization of numeric data over an X-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
+El gráfico de barras permite la visualización de datos numéricos a lo largo de un eje X.
+Al definir un gráfico de barras, primero se debe elegir el valor para el eje X.
+Puede elegir entre los siguientes posibles valores.
 
-* **Timeline** - choose Timeline for X-Axis if you want to see your data as a trend (for example, average app session duration over time).
-* **Property** - choose Property if you want to see a count breakdown for the specific property. If you choose Property for X-Axis, then Total is implicitly chosen for Y-Axis. For example, choose Property for X-Axis and Application Name for Property to see a count for a specified event type, which is broken down by app name.
 
-After you define a value for X-Axis, you can define a value for Y-Axis. If you choose Timeline for X-Axis, you can choose the following possible values for Y-Axis.
+* **Línea temporal** - elija Línea temporal para el eje X si desea ver los datos como una tendencia (por ejemplo, la duración media de una sesión de aplicación a lo largo del tiempo).
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **Propiedad** - elija Propiedad si desea ver un desglose de recuento por la propiedad especificada.
+Si elige Propiedad para el eje X, de forma implícita se elige el Total para el eje Y.
+Por ejemplo, elija Propiedad para el eje X y Nombre de aplicación para Propiedad para ver un recuento de un tipo de suceso especificado, que se desglosa por los nombres de aplicación.
 
-After you define the chart axes, you must choose a value for Property.
 
-### Line graph
+Después de definir un valor para el eje X, puede definir un valor para el eje Y.
+Si elige Línea temporal para eje X, puede elegir los siguientes valores para el eje Y.
+
+
+* **Media** - calcula el valor medio de una propiedad numérica en el tipo de suceso especificado.
+
+* **Total** - un recuento total de una propiedad en el tipo de suceso proporcionado.
+
+* **Exclusivo** - un recuento exclusivo de una propiedad en el tipo de suceso proporcionado.
+
+
+Después de definir los ejes del gráfico, debe elegir un valor para la propiedad.
+
+
+### Gráfico de líneas
 {: #line-graph }
 
-The line graph allows for the visualization of some metric over time. This type of chart is valuable when you want to visualize data in terms of a trend over time. The first value to define when you create a line graph is Measure, which has the following possible values.
+El gráfico de líneas permite la visualización de algunas métricas a lo largo del tiempo.
+Este tipo de gráfico es útil cuando se desean visualizar datos en términos de una tendencia a lo largo del tiempo.
+El primer valor que se define al crear un gráfico de líneas es la Medida, que tiene los siguientes posibles valores.
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
 
-After you define the measurement, you must choose a value for Property.
+* **Media** - calcula el valor medio de una propiedad numérica en el tipo de suceso especificado.
 
-### Flow chart
+* **Total** - un recuento total de una propiedad en el tipo de suceso proporcionado.
+
+* **Exclusivo** - un recuento exclusivo de una propiedad en el tipo de suceso proporcionado.
+
+
+Después de definir la medida, debe elegir un valor para la propiedad.
+
+
+### Gráfico de flujo
 {: #flow-chart }
 
-The flow chart allows for the visualization of flow breakdown of one property to another. For a flow chart, the following properties must be set.
+El gráfico de flujo permite la visualización de desglose del flujo desglose de una propiedad a otra.
+Con un gráfico de flujo, se deben establecer las siguientes propiedades.
 
-* **Source** - the value of a source node in the diagram.
-* **Destination** - the value of the destination node in the diagram.
-* **Property** - a property value from either the source node or the destination node.
 
-With the flow chart, you can see the density breakdown of various sources that flow to a destination, or vice versa. For example, if you want to see the breakdown of log severities for an app, you can define the following values.
+* **Origen** - valor del nodo origen en el diagrama. 
+* **Destino** - valor del nodo de destino en el diagrama. 
+* **Propiedad** - valor de propiedad desde el nodo origen o desde el nodo de destino. 
 
-* Select Application Name for Source.
-* Select Log Level for Destination.
-* Select the name of your app for Property.
+Con el gráfico de flujo, puede ver el desglose de densidad de los distintos orígenes que fluyen a un destino o viceversa.
+Por ejemplo, si desea desglosar las gravedades de un registro de una aplicación, puede definir los siguientes valores.
 
-### Metric group
+
+* Seleccione Nombre de aplicación como Origen.
+* Seleccione Nivel de registro como Destino. 
+* Seleccione el nombre de su aplicación como Propiedad. 
+
+### Grupo de métricas
 {: #metric-group }
 
-The metric group can be used to visualize a single metric that is measured as either an average value, a total count, or a unique count. To define a metric group, you must define one of the following possible values for Measure.
+El grupo de métricas permite visualizar una métrica individual que se mide como un valor promedio, un recuento total o un valor exclusivo.
+Para definir un grupo de métricas, debe definir uno de los siguientes valores posibles para Medida.
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
 
-After you define the measurement, you must choose a value for Property. This metric is displayed in the metric group.
+* **Media** - calcula el valor medio de una propiedad numérica en el tipo de suceso especificado.
 
-### Pie chart
+* **Total** - un recuento total de una propiedad en el tipo de suceso proporcionado.
+
+* **Exclusivo** - un recuento exclusivo de una propiedad en el tipo de suceso proporcionado.
+
+
+Después de definir la medida, debe elegir un valor para la propiedad.
+Esta métrica se visualiza en el grupo de métricas.
+
+
+### Gráfico circular
 {: #pie-chart }
 
-The pie chart can be used to visualize the count breakdown of values for a particular property. For example, if you want to see a crash breakdown, define the following values.
+El gráfico circular se puede utilizar para visualizar el desglose del recuento de valores de una propiedad concreta.
+Por ejemplo, si desea visualizar un desglose de bloqueos, defina los siguientes valores.
 
-* Select App Session for Event Type.
-* Select Pie Chart for Chart Type.
-* Select Closed By for Property.
 
-The resulting pie chart shows the breakdown of app sessions that were closed by the user as opposed to app sessions that were closed by a crash.
+* Seleccione Sesión de aplicación como Tipo de suceso. 
+* Seleccione Gráfico circular como Tipo de gráfico. 
+* Seleccione Cerrado por como Propiedad. 
 
-### Table
+El gráfico circular que se obtiene muestra el desglose de las sesiones de aplicación que el usuario cerró en oposición a las sesiones de aplicación que se cerraron debido a un bloqueo.
+
+
+### Tabla
 {: #table }
 
-The table is useful when you want to see the raw data. Building a table is as simple as adding columns for the raw data that you want to see.  
-Because not all properties are required for specific event types, null values can appear in your table. If you want to prevent these rows from appearing in your table, add an Exists filter for a specific property in the Chart Filters tab.
+La tabla es útil cuando desea ver los datos sin procesar.
+La generación de una tabla es tan simple como añadir columnas de los datos sin procesar que desea ver.
+  
+Dado que no todas las propiedades son necesarias para tipos de suceso específicos, pueden aparecer valores nulos en la tabla.
+Si desea evitar que estas filas aparezcan en la tabla, añada un filtro de Existe para una propiedad específica en el separador de Filtros de gráfico.
 
-## Creating custom charts for client logs
+
+## Creación de gráficos personalizados para registros de cliente
 {: #creating-custom-charts-for-client-logs }
 
-You can create a custom chart for client logs that contain log information that is sent with the platform's Logger API.  
-The log information also includes contextual information about the device, including environment, app name, and app version.
+Existe la posibilidad de crear un gráfico personalizado para los registros de cliente que contiene información que se envía con la API del registrador de la plataforma.
+  
+La información de registro también incluye información contextual sobre el dispositivo, incluido el entorno, el nombre de la aplicación y la versión de la aplicación.
 
-> **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../../analytics-api/#custom-events).
 
-1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../../analytics-api/#sending-analytics-data).
-2. In the {{ site.data.keys.mf_analytics_console }}, click the **Custom Charts** tab and continue to a create a chart:
-    * **Chart Title**: Application and Log Levels
-    * **Event Type**: Client Logs
-    * **Chart Type**: Flow Chart
+> **Nota:** Debe registrar sucesos personalizados para cumplimentar los gráficos personalizados.
+Para obtener información sobre cómo enviar sucesos personalizados desde las aplicaciones de cliente, consulte [Captura de datos personalizados](../../analytics-api/#custom-events).
+1. Desde la aplicación de cliente, cumplimente los datos enviando registros capturados al servidor.
+Consulte [Envío de registros capturados](../../analytics-api/#sending-analytics-data).
+2. En {{ site.data.keys.mf_analytics_console }}, pulse el separador **Gráficos personalizados** y continúe para crear un gráfico:
 
-3. Click the **Chart Definition** tab and provide the following values:
-    * **Source**: Application Name
-    * **Destination**: Log Level
-    * **Property**: your app name
+    * **Título de gráfico**: Niveles de registro y aplicación
+    * **Tipo de suceso**: Registros de cliente
+    * **Tipo de gráfico**: Gráfico de flujo
 
-4. Click the **Save** button.
+3. Pulse el separador **Definición de gráfico** y proporcione los siguientes valores:
 
-## Exporting custom chart data
+    * **Origen**: Nombre de aplicación
+    * **Destino**: Nivel de registro
+    * **Propiedad**: el nombre de su aplicación
+
+4. Pulse el botón **Guardar**. 
+
+## Exportación de los datos de gráfico personalizado
 {: #exporting-custom-chart-data }
 
-You can download the data that is shown for any custom chart.  
+Puede descargar los datos que se muestran en cualquier gráfico personalizado.  
 
-![Export custom chart data using these icons](export-data.png)
+![Exportar datos de gráficos personalizados mediante estos iconos](export-data.png)
 
-* **Export with URL** - looks like a chain link
-* **Download Chart** - looks like a down arrow
-* **Edit Chart** - looks like a pencil
-* **Delete Chart** - looks like a trash can
+* **Exportar con URL** - tiene el aspecto de un eslabón de una cadena
+* **Descargar gráfico** - tiene el aspecto de una flecha hacia abajo
+* **Editar gráfico** - tiene el aspecto de un lápiz
+* **Suprimir gráfico** - tiene el aspecto de una papelera
 
-Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console_short }}.  
-Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
+Pulse el icono **Descargar gráfico** para descargar un archivo en formato JSON desde {{ site.data.keys.mf_analytics_console_short }}.
+  
+Pulse el icono **Exportar con URL** para genera un enlace de exportación desde {{ site.data.keys.mf_analytics_console_short }} al que puede llamar desde un cliente HTTP.
+Esta opción es útil si desea escribir un script para automatizar los procesos de exportación durante un intervalo de tiempo especificado.
 
-## Exporting and importing custom chart definitions
+
+## Exportación e importación de definiciones de gráficos personalizados
 {: #exporting-and-importing-custom-chart-definitions }
 
-You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts for your new cluster.
+Las definiciones de los gráficos personalizados se pueden exportar e importar en {{ site.data.keys.mf_analytics_console_short }}.
+Si está migrando desde un entorno de prueba a uno de despliegue de producción, puede ahorrar tiempo si exporta las definiciones de los gráficos personalizados en lugar de volverlos a crear para su nuevo clúster.
 
-1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
-2. Click **Export Charts** to download a JSON file with your chart definition.
-3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that already exists, you create duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.
+
+1. Pulse el separador **Gráficos personalizados** en el panel de control de {{ site.data.keys.mf_analytics_console_short }}.
+
+2. Pulse **Exportar gráficos** para exportar un archivo JSON con su definición de gráfico.
+
+3. Elija la ubicación en la que guardar el archivo JSON.
+
+4. Pulse **Importar gráficos** para importar el archivo JSON.
+Si importa una definición de gráfico personalizado que ya exista, creará definiciones duplicadas, lo que también significa que {{ site.data.keys.mf_analytics_console_short }} mostrará gráficos duplicados.
+
