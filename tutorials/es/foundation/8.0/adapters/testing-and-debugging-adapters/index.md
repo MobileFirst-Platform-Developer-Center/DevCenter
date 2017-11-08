@@ -1,94 +1,93 @@
 ---
 layout: tutorial
-title: Testing and Debugging Adapters
+title: Pruebas y depuración de adaptadores
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general 
 {: #overview }
 
-You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
+Utilice entornos de desarrollo integrado (IDE) como, por ejemplo, Eclipse, IntelliJ o similares, para probar adaptadores Java y JavaScript, y para depurar código Java implementado para utilizar en adaptadores Java o JavaScript.   
 
-This tutorial demonstrates how to test adapters by using the {{ site.data.keys.mf_cli }} and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
+Esta guía de aprendizaje muestra cómo probar adaptadores mediante {{ site.data.keys.mf_cli }} y Postman. También muestra cómo depurar un adaptador Java mediante el IDE de Eclipse. 
 
-#### Jump to
+#### Ir a
 {: #jump-to }
 
-* [Testing Adapters](#testing-adapters)
- * [Using Postman](#using-postman)
- * [Using Swagger](#using-swagger)
-* [Debugging Adapters](#debugging-adapters)
- * [JavaScript adapters](#debugging-javascript-adapters)
- * [Java adapters](#debugging-java-adapters)
+* [Prueba de adaptadores](#testing-adapters)
+ * [Utilización de Postman](#using-postman)
+ * [Utilización de Swagger](#using-swagger)
+* [Depuración de adaptadores](#debugging-adapters)
+ * [Adaptadores de JavaScript](#debugging-javascript-adapters)
+ * [Adaptadores Java](#debugging-java-adapters)
 
-## Testing Adapters
+## Prueba de adaptadores
 {: #testing-adapters }
 
-Adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
+Los adaptadores están disponibles a través de una interfaz REST. Esto significa que si conoce el URL de un recurso, puede utilizar herramientas HTTP como, por ejemplo, Postman para probar solicitudes y pasar parámetros de `URL`, parámetros de `vía de acceso`, parámetros de `cuerpo` o parámetros de `cabeceras` según sea necesario. 
 
-The structure of the URL used to access the adapter resource is:
+La estructura del URL utilizada para acceder al recurso de adaptador es: 
 
-* In JavaScript adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{procedure-name}`
-* In Java adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
+* En adaptadores JavaScript - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{procedure-name}`
+* En adaptadores Java - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
 
-### Passing parameters
+### Cómo pasar parámetros
 {: #passing-parameters }
 
-* When using Java adapters, you can pass parameters in the URL, body, form, etc, depending on how you configured your adapter.
-* When using JavaScript adapters, you pass parameters as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+* Cuando se utilizan adaptadores Java, se pueden pasar parámetros en el URL, el cuerpo, el formulario, etc, dependiendo de cómo se haya configurado el adaptador. 
+* Cuando se utilizan adaptadores JavaScript, los parámetros se pasan como `params=["param1", "param2"]`. En otras palabras, un procedimiento JavaScript recibe un solo parámetro denominado `params` que debe ser **una matriz ordenada de valores sin nombre**. Este parámetro puede estar en el URL (`GET`) o en el cuerpo (`POST`) utilizando `Content-Type: application/x-www-form-urlencoded`. 
 
-### Handling security
+### Manejo de la seguridad
 {: #handling-security }
 
-The {{ site.data.keys.product }} security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
+La infraestructura de seguridad de {{ site.data.keys.product }} precisa de una señal de acceso para todos los recursos de adaptadores, incluso cuando a estos no se les haya sido asignado de forma explícita un ámbito.  Por ello, a no ser que de forma específica haya inhabilitado la seguridad, el punto final siempre estará protegido.  
 
-To disable security in Java adapters, attach the `OAuthSecurity` annotation to the method/class:
+Para inhabilitar la seguridad en adaptadores Java, adjunte la anotación `OAuthSecurity` al método/clase: 
 
 ```java
 @OAuthSecurity(enabled=false)
 ```
 
-To disable security in JavaScript adapters, add the `secured` attribute to the procedure:
+Para inhabilitar la seguridad en adaptadores JavaScript, añada el atributo `secured` al procedimiento: 
 
 ```js
 <procedure name="adapter-procedure-name" secured="false"/>
 ```
 
-Alternatively, the development version of the {{ site.data.keys.mf_server }} includes a test token endpoint to bypass the security challenges.
+De forma alternativa, la versión de desarrollo de {{ site.data.keys.mf_server }} incluye un punto final de señal de prueba para omitir los desafíos de seguridad. 
 
-### Using Postman
+### Utilización de Postman
 {: #using-postman }
 
-#### Test Token
+#### Señal de prueba
 {: #test-token }
 
-To receive a Test Token, either click the "Run in Postman" button below to import a Collection to your Postman app that contains a ready request, or follow the next steps to create the request yourself.
+Para recibir una señal de prueba, pulse el botón "Ejecutar en Postman" abajo para importar una recopilación para su aplicación Postman que contenga una solicitud lista, o siga los siguientes pasos para crear usted mismo la solicitud. 
 
-<a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
+<a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Ejecutar en Postman" style="margin: 0"></a>
 
 {% comment %}
-1. In the {{ site.data.keys.mf_console }} → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
-For testing purposes, set **Allowed Scopes** as `**`.
+1. En el separador {{ site.data.keys.mf_console }} → **Valores** → **Clientes confidenciales**, cree un cliente confidencial o utilice el predeterminado:   
+A efectos de realización de pruebas, establezca **Ámbitos permitidos** en `**`. 
 
-  ![Image of setting a confidential client](confidential_client.png)
+  ![Imagen de configuración de un cliente confidencial](confidential_client.png)
 {% endcomment %}
 
-1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+1.  Utilice su cliente HTTP (Postman) para realizar una solicitud `POST` HTTP a `http://<IP>:<PORT>/mfp/api/az/v1/token` con los siguientes parámetros utilizando `Content-Type: application/x-www-form-urlencoded`:  
 
-* `grant_type` : `client_credentials`
-* `scope` : Use the scope protecting the resource.  
-If you don't use a scope to protect your resource, use an empty string.
+    - `grant_type` - Establezca el valor en `client_credentials`.
+    - `scope` - Establezca el valor en el ámbito de protección de su recurso. Si su recurso no está asignado a un ámbito de protección, omita este parámetro para aplicar el ámbito predeterminado (`RegisteredClient`). Para obtener más información, consulte [Ámbitos](../../authentication-and-security/#scopes).
+
+    ![Imagen de configuración del cuerpo de Postman](Body_configuration.png)
+
+2.  Añada una `cabecera de autorización` mediante `Autenticación básica` con ID de cliente confidencial ("test") y secreto ("test").
+    > Para obtener información sobre los clientes confidenciales, consulte [Clientes confidenciales](../../authentication-and-security/confidential-clients).
+
+    ![Imagen de la configuración de la autorización de Postman](Authorization_configuration.png)
 
 
-  ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
-> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
-
-  ![Image of Postman Authorization configuration](Authorization_configuration.png)
-
-
-The result is a JSON object with a temporary valid access token:
+El resultado es un objeto JSON con una señal de acceso válido temporal:
 
 ```json
 {
@@ -99,55 +98,54 @@ The result is a JSON object with a temporary valid access token:
 }
 ```
 <br/><br/>
-#### Sending request
+#### Envío de solicitudes
 {: #sending-request }
 
-Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
+Ahora con cualquier solicitud futura a puntos finales de adaptador, añada una cabecera HTTP con el nombre de `Authorization` y el valor recibido con anterioridad (empezando con Bearer).  La infraestructura de seguridad omitirá los desafíos de seguridad que protegen a sus recursos. 
 
-  ![Adapter request using Postman with the test token](Adapter-response.png)
+  ![Solicitud de adaptador utilizando Postman con la señal de prueba](Adapter-response.png)
 
-### Using Swagger
+### Utilización de Swagger
 {: #using-swagger }
 
-The Swagger docs UI is a visual representation of an adapter's REST endpoints.  
-Using Swagger, a developer can test the adapter endpoints before they are consumed by a client application.
+La interfaz de usuarios de documentos de Swagger es una representación visual de los puntos finales REST de un adaptador.   
+Con la ayuda de Swagger, un desarrollador puede probar los puntos finales de un adaptador antes de que los consuma una aplicación de cliente. 
 
-To access Swagger:
+Para acceder a Swagger:
 
-1. Open the {{ site.data.keys.mf_console }} and select an adapter from the adapters list.
-2. Click on the **Resources** tab.
-3. Click on the **View swagger Docs** button.  
-4. Click on the **Show/Hide** button.
+1. Abra {{ site.data.keys.mf_console }} y seleccione un adaptador de la lista de adaptadores. 
+2. Pulse en el separador **Recursos**. 
+3. Pulse en el botón **Ver documentos de Swagger**.   
+4. Pulse el botón **Mostrar/Ocultar**. 
 
-  ![Image of the Swagger UI](SwaggerUI.png)
+  ![Imagen de la interfaz de usuario de Swagger ](SwaggerUI.png)
 
-<img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
+<img alt="Imagen del conmutador para activar/desactivar en la interfaz de usuario de Swagger" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### Test Token
-{: #test-token }
+#### Adición de una señal de prueba
+{: #adding-a-test-token }
 
-To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
+Para añadir una señal de prueba a la solicitud, de forma que la infraestructura de seguridad omita los desafíos de seguridad que protegen a su recurso, pulse el botón **conmutador de activar/desactivar** en la esquina superior derecha de una operación de punto final. 
 
-You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with a Confidential Client ID and Secret. For this, you will need to create a new confidential client with `*` as its **Allowed Scope**.
+Se le solicitará seleccionar los ámbitos en los que desea otorgar a la interfaz de usuario de Swagger (a efectos de realización de las pruebas, puede seleccionarlos todos). Si está utilizando la interfaz de usuario de Swagger por primera vez, se le podría solicitar iniciar una sesión con un ID de cliente confidencial y un secreto. Para esto, necesitará crear un nuevo cliente confidencial con `*` como su **Ámbito permitido**.
 
-> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
+> Obtenga más información obre el cliente confidencial en la guía de aprendizaje [Cliente confidencial](../../authentication-and-security/confidential-clients). 
 
 <br/><br/>
 
-#### Sending Request
+#### Envío de solicitudes
 {: #sending-request-swagger }
 
-Expand the endpoint's operation, enter the required parameters (if needed) and click on the **Try it out!** button.
+Expanda la operación del punto final, especifique los parámetros necesarios (si es necesario) y pulse en el botón de **Probarlo**.  
 
-  ![Adapter request using Swagger with the test token](SwaggerReq.png)
+  ![Solicitud de adaptador mediante Swagger con la señal de prueba](SwaggerReq.png)
 
-#### Swagger Annotations
+#### Anotaciones de Swagger
 {: #swagger-annotations }
-Available only in Java adapters.
+Únicamente disponible en adaptadores Java.
 
-To generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
-> To learn more about Swagger Annotations, see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
-
+Para generar la documentación Swagger para los adaptadores Java, utilice las anotaciones proporcionadas con Swagger en su implementación de Java.   
+> Para obtener más información sobre las anotaciones de Swagger, consulte la [Documentación de Swagger](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
 ```java
 @ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
 @ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
@@ -168,26 +166,26 @@ public Map<String, String> enterInfo(
 }
 ```
 
-![Multiple parameter endpoint in the swagger UI](Multiple_Parameter.png)
+![Punto final de varios parámetros en la interfaz de usuario de Swagger](Multiple_Parameter.png)
 
 
 {% comment %}
-### Using {{ site.data.keys.mf_cli }}
+### Utilización de {{ site.data.keys.mf_cli }}
 {: #using-mobilefirst-cli }
 
-In order to test the adapter functionality, use the `mfpdev adapter call` command to call Java or JavaScript adapters from the command line.
-You can choose to run the command interactively or directly. The following is an example of using the direct mode:
+Con el propósito de probar la funcionalidad del adaptador, utilice el mandato `mfpdev adapter call` para llamar a adaptadores Java o JavaScript desde la línea de mandatos. Puede ejecutar el mandato de forma interactiva o de forma directa.
+A continuación se muestra un ejemplo de utilización de la modalidad directa: 
 
-#### Java adapters
+#### Adaptadores Java
 {: #java-adapters-adapters-cli }
 
-Open a **Command-line** window and run:
+Abra una ventana de **línea de mandatos** y ejecute:
+
 
 ```bash
 mfpdev adapter call adapterName/path
 ```
-For example:
-
+Por ejemplo:
 ```bash
 mfpdev adapter call SampleAdapter/users/World
 
@@ -196,16 +194,16 @@ Response:
 Hello World
 ```
 
-#### JavaScript adapters
+#### Adaptadores de JavaScript
 {: #javascript-adapters-cli }
 
-Open a **Command-line** window and run:
+Abra una ventana de **línea de mandatos** y ejecute:
+
 
 ```bash
 mfpdev adapter call adapterName/procedureName
 ```
-For example:
-
+Por ejemplo:
 ```bash
 mfpdev adapter call SampleAdapter/getFeed
 
@@ -216,42 +214,44 @@ Hello World
 
 {% endcomment %}
 
-## Debugging Adapters
+## Depuración de adaptadores
 {: #debugging-adapters }
 
-### JavaScript adapters
+### Adaptadores de JavaScript
 {: #debugging-javascript-adapters }
-You can debug JavaScript code in JavaScrit adapters by using the `MFP.Logger` API.  
-Available logging levels, from least to most verbose, are: `MFP.Logger.error`, `MFP.Logger.warn`, `MFP.Logger.info` and `MFP.Logger.debug`.
+Depure código JavaScript en adaptadores JavaScript mediante la API `MFP.Logger`.   
+Los niveles de creación de registro disponibles, de menos detallado o más detallado son: `MFP.Logger.error`, `MFP.Logger.warn`, `MFP.Logger.info` y `MFP.Logger.debug`.
 
-The logs are then printed to the log file of the application server.  
-Be sure to set the server verbosity level accordingly, otherwise you will not see the logging in the log file.
+Los registros se imprimen entonces en el archivo de registro del servidor de aplicaciones.   
+Asegúrese de establecer consecuentemente el nivel de detalle del servidor, de lo contrario los registros no se anotarán en el archivo de registro. 
 
-### Java adapters
+### Adaptadores Java
 {: #debugging-java-adapters }
 
-Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
+Antes de poder depurar el código Java de un adaptador, es necesario configurar Eclipse de la siguiente manera: 
 
-1. **Maven integration** - Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse.  
-If your Eclipse instance does not support Maven, [follow the m2e instructions](http://www.eclipse.org/m2e/) to add Maven support.
+1. **Integración Maven** - A partir de Eclipse Kepler (v4.3), el soporte a Maven está incorporado en Eclipse.   
+Si su instancia de Eclipse no da soporte a Maven, [siga las instrucciones de m2e](http://www.eclipse.org/m2e/) para añadir el soporte a Maven.
 
-2. Once Maven is available in Eclipse, import the adapter Maven project:
 
-    ![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
+2. Una vez Maven esté disponible en Eclipse, importe el proyecto Maven del adaptador: 
 
-3. Provide debugging parameters:
-    - Click **Run** → **Debug Configurations**.
-    - Double-click on **Remote Java application**.
-    - Provide a **Name** for this configuration.
-    - Set the **Host** value: use "localhost" if running a local server, or provide your remote server host name.
-    - Set the **Port** value to "10777".
-    - Click **Browse** and select the Maven project.
-    - Click **Debug**.
+    ![Imagen que muestran cómo importar un proyecto Maven de adaptador en Eclipse](import-adapter-maven-project.png)
 
-    ![Image showing how to set {{ site.data.keys.mf_server }} debug parameters](setting-debug-parameters.png)
+3. Proporcione los parámetros de depuración: 
+    - Pulse **Ejecutar** → **Configuraciones de depuración**.
+    - Efectúe una doble pulsación en **Aplicación Java remota**.
+    - Proporcione un **Nombre** para esta configuración. 
+    - Establezca el valor de **Host**: utilice "localhost" si está ejecutando un servidor local, o proporcione el nombre del host de servidor remoto. 
+    - Establezca el valor de **Puerto** en "10777".
+    - Pulse **Examinar** y seleccione el proyecto Maven. 
+    - Pulse **Depurar**.
 
-4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](#testing-adapters).
+    ![Imagen que muestra cómo establecer los parámetros de depuración de {{ site.data.keys.mf_server }} ](setting-debug-parameters.png)
 
-    ![Image showing a being-debugged adapter](debugging.png)
+4. Pulse en **Ventana → Mostrar vista → Depuración** para entrar en la *modalidad de depuración*. 
+Puede ahora depurar el código Java normalmente como lo haría en una aplicación Java estándar. Necesitará emitir una solicitud al adaptador para poder ejecutar el código y alcanzar los puntos de interrupción que haya establecido.  Esto se puede lograr siguiendo las instrucciones sobre cómo llamar a un recurso de adaptador en la sección de [Prueba de adaptadores](#testing-adapters). 
 
-> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
+    ![Imagen que muestra un adaptador que se está depurando](debugging.png)
+
+> Para obtener instrucciones de como utilizar IntelliJ para depurar adaptadores Java, consulte el artículo del blog [Utilización de IntelliJ para desarrollar adaptadores Java de MobileFirst]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters).

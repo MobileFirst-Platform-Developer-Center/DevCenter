@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Implementing the ExternalizableSecurityCheck
+title: Implementación de ExternalizableSecurityCheck
 breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
+La clase abstracta `ExternalizableSecurityCheck` implementa la interfaz `SecurityCheck` y maneja dos aspectos importantes de la funcionalidad de comprobación de seguridad: externalización y gestión de estado. 
 
-* Externalization - this class implements the `Externalizable` interface, so that the derived classes don't need to implement it themselves.
-* State management - this class predefines a `STATE_EXPIRED` state, which means that the security check is expired and its state is not preserved. The derived classes need to define other states supported by their security check.
+* Externalización - esta clase implementa la interfaz `Externalizable`, para que no tengan que implementarse las clases derivadas.
+* Gestión de estado - esta clase predefine un estado `STATE_EXPIRED`, lo que significa que la comprobación de seguridad ha caducado y el estado no se conserva.Las clases derivadas necesitan definir otros estados que la comprobación de seguridad soporta. 
 
-Three methods are required to be implemented by the subclasses: `initStateDurations`, `authorize`, and `introspect`.
+Es necesario que las subclases implementen tres métodos: `initStateDurations`, `authorize`, e `introspect`.
 
-This tutorial explains how to implement the class and demonstrates how to manage states.
+Este tutorial describe cómo implementar la clase y muestra cómo gestionar estados. 
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../) and [Creating a Security Check](../creating-a-security-check) tutorials.
+**Requisitos previos:** Asegúrese de leer los tutoriales [Conceptos de autorización](../) y [Creación de una comprobación de seguridad](../creating-a-security-check).
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [The initStateDurations Method](#the-initstatedurations-method)
-* [The authorize Method](#the-authorize-method)
-* [The introspect Method](#the-introspect-method)
-* [The AuthorizationContext Object](#the-authorizationcontext-object)
-* [The RegistrationContext Object](#the-registrationcontext-object)
+* [El método initStateDurations](#the-initstatedurations-method)
+* [El método authorize](#the-authorize-method)
+* [El método introspect](#the-introspect-method)
+* [El objeto AuthorizationContext](#the-authorizationcontext-object)
+* [El objeto RegistrationContext](#the-registrationcontext-object)
 
-## The initStateDurations Method
+## El método initStateDurations
 {: #the-initstatedurations-method }
-The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method by providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
+El `ExternalizableSecurityCheck` define un método abstracto llamado `initStateDurations`. Las subclases deben implementar este método proporcionando los nombres y duraciones para todos los estados soportados por la comprobación de seguridad.Los valores de duración normalmente provienen de la configuración de comprobación de seguridad.
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -39,13 +39,12 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-> For more information about security check configuration, see the [configuration class section](../credentials-validation/security-check/#configuration-class) in the Implementing the CredentialsValidationSecurityCheck tutorial.
-
-## The authorize Method
+> Para obtener más información acerca de la configuración de comprobación de seguridad, consulte la [sección de clase de configuración](../credentials-validation/security-check/#configuration-class) en el tutorial de implementación de CredentialsValidationSecurityCheck.
+## El método authorize
 {: #the-authorize-method }
-The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, managing states and sending a response to the client (success, challenge, or failure).
+La interfaz `SecurityCheck` define un método denominado `authorize`. Este método es el responsable de implementar la lógica principal de la comprobación de seguridad, de gestionar estados y enviar una respuesta al cliente (acierto, desafío o error). 
 
-Use the following helper methods to manage states:
+Utilice los métodos de ayudante siguientes para gestionar estados:
 
 ```java
 protected void setState(String name)
@@ -53,8 +52,7 @@ protected void setState(String name)
 ```java
 public String getState()
 ```
-The following example simply checks whether the user is logged-in and returns success or failure accordingly:
-
+El siguiente ejemplo verifica si el usuario ha iniciado sesión o devuelve acierto o error en consecuencia:
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
     if (loggedIn){
@@ -69,32 +67,32 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `AuthorizationResponse.addSuccess` method adds the success scope and its expiration to the response object. It requires:
+El método `AuthorizationResponse.addSuccess` añade el ámbito de éxito y la caducidad al objeto de respuesta. Requiere:
 
-* The scope granted by the security check.
-* The expiration of the granted scope.  
-The `getExpiresAt` helper method returns the time at which the current state expires, or 0 if the current state is null:
+* El ámbito otorgado por la comprobación de seguridad.
+* El vencimiento del ámbito otorgado.  
+El método de ayudante `getExpiresAt` devuelve la hora en la que el estado caduca, o 0 si el estado actual es cero:
 
   ```java
   public long getExpiresAt()
   ```
    
-* The name of the security check.
+* El nombre de la comprobación de seguridad.
 
-The `AuthorizationResponse.addFailure` method adds a failure to the response object. It requires:
+El método `AuthorizationResponse.addFailure` añade un valor de error en el objeto de respuesta. Requiere: 
 
-* The name of the security check.
-* A failure `Map` object.
+* El nombre de la comprobación de seguridad.
+* Un objeto `Map` de error.
 
-The `AuthorizationResponse.addChallenge` method adds a challenge to the response object. It requires:
+El método `AuthorizationResponse.addChallenge` añade un desafío al objeto de respuesta. Requiere:
 
-* The name of the security check.
-* A challenge `Map` object.
+* El nombre de la comprobación de seguridad.
+* Un objeto `Map` de desafío.
 
-## The introspect Method
+## El método introspect
 {: #the-introspect-method }
-The `SecurityCheck` interface defines a method called `introspect`. This method must make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check must report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does nothing.  
-This method might change the state of the security check and/or the client registration record.
+La interfaz `SecurityCheck` define un método llamado `introspect`. Este método debe asegurar que la comprobación de seguridad está en el estado que concede el ámbito solicitado. Si se concede el ámbito, la comprobación de seguridad debe informar al parámetro de resultado sobre el ámbito concedido, el vencimiento, y los datos de introspección. Si no se ha concedido el ámbito, la verificación de seguridad no hace nada.  
+Es posible que el método cambie el estado de la comprobación de seguridad y del registro de registro de cliente. 
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {
@@ -104,58 +102,58 @@ public void introspect(Set<String> checkScope, IntrospectionResponse response) {
 }
 ```
 
-## The AuthorizationContext Object
+## El objeto AuthorizationContext
 {: #the-authorizationcontext-object }
-The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object which is used for storing transient data associated with the current client for the security check.  
-Use the following methods to store and obtain data:
+La clase `ExternalizableSecurityCheck` proporciona el objeto `AuthorizationContext authorizationContext` que se utiliza para almacenar los datos transitorios asociados con el cliente actual para la comprobación de seguridad.  
+Utilice los métodos siguientes para almacenar y obtener datos:
 
-* Get the authenticated user set by this security check for the current client:
+* Obtenga el usuario autenticado que la comprobación de seguridad ha establecido para el cliente actual:
 
   ```java
   AuthenticatedUser getActiveUser();
   ```
   
-* Set the active user for the current client by this security check:
+* Establezca el usuario activo para el cliente actual con esta comprobación de seguridad:
 
   ```java
   void setActiveUser(AuthenticatedUser user);
   ```
 
-## The RegistrationContext Object
+## El objeto RegistrationContext
 {: #the-registrationcontext-object }
-The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object which is used for storing persistent/deployment data associated with the current client.  
-Use the following methods to store and obtain data:
+La clase `ExternalizableSecurityCheck` proporciona el objeto `RegistrationContext registrationContext` que se utiliza para almacenar los datos de despliegue/persistentes asociados con el cliente actual.  
+Utilice los métodos siguientes para almacenar y obtener datos:
 
-* Get the user that is registered by this security check for the current client:
+* Obtenga el usuario que la comprobación de seguridad ha registrado para el cliente actual:
 
   ```java
   AuthenticatedUser getRegisteredUser();
   ```
   
-* Register the given user for the current client:
+* Registre el usuario proporcionado para el cliente actual:
 
   ```java
   setRegisteredUser(AuthenticatedUser user);
   ```
   
-* Get the public persistent attributes of the current client:
+* Obtenga los atributos persistentes públicos del cliente actual:
 
   ```java
   PersistentAttributes getRegisteredPublicAttributes();
   ```
   
-* Get the protected persistent attributes of the current client:
+* Obtenga los atributos persistentes protegidos del cliente actual:
 
   ```java
   PersistentAttributes getRegisteredProtectedAttributes();
   ```
   
-* Find the registration data of mobile clients by the given search criteria:
+* Encuentre los datos de registro de los clientes móviles de acuerdo con los criterios de búsqueda proporcionados:
 
   ```java
   List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
   ```
 
-## Sample Application
+## Aplicación de ejemplo
 {: #sample-application }
-For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.
+Para un ejemplo que implementa `ExternalizableSecurityCheck`, consulte el tutorial [Inscripción](../enrollment).

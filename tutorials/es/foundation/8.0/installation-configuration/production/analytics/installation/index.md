@@ -1,34 +1,34 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server Installation Guide
-breadcrumb_title: Installation Guide
+title: Guía de instalación de MobileFirst Analytics Server
+breadcrumb_title: Guía de instalación
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-{{ site.data.keys.mf_analytics_server }} is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
+{{ site.data.keys.mf_analytics_server }} se implementa y se suministra como un conjunto de dos archivos WAR (archivo de aplicaciones web estándares de Java EE), o un archivo EAR (enterprise application archive). Por lo tanto, se puede instalar en uno de los siguientes servidores de aplicaciones soportados: WebSphere Application Server, WebSphere Application Server Liberty o Apache Tomcat (sólo archivos WAR).
 
-{{ site.data.keys.mf_analytics_server }} uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
+{{ site.data.keys.mf_analytics_server }} utiliza una biblioteca Elasticsearch incorporada para el almacenamiento de datos y la gestión de clústeres. Puesto que pretende ser un motor de consulta y una búsqueda en memoria muy eficiente, que requiere la E/S de disco rápido, debe seguir algunos requisitos del sistema de producción. En general, es más probable que se quede sin memoria y sin disco (o que descubra que la E/S del disco es el cuello de botella de rendimiento) antes de que CPU se convierta en un problema. En un entorno en clúster, desea un clúster de nodos rápido, fiable y coubicado.
 
-#### Jump to
+#### Ir a
 {: #jump-to }
 
-* [System requirements](#system-requirements)
-* [Capacity considerations](#capacity-considerations)
-* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-* [Installing {{ site.data.keys.mf_analytics }} on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
-* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
-* [Installing {{ site.data.keys.mf_analytics }} with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
-* [Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
+* [Requisitos del sistema](#system-requirements)
+* [Consideraciones de capacidad](#capacity-considerations)
+* [Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+* [Instalación de {{ site.data.keys.mf_analytics }} en Tomcat](#installing-mobilefirst-analytics-on-tomcat)
+* [Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
+* [Instalación de {{ site.data.keys.mf_analytics }} con tareas Ant](#installing-mobilefirst-analytics-with-ant-tasks)
+* [Instalación de {{ site.data.keys.mf_analytics_server }} en servidores que ejecutan versiones anteriores](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
 
-## System requirements
+## Requisitos del sistema
 {: #system-requirements }
 
-### Operating systems
+### Sistemas operativos
 {: #operating-systems }
 * CentOS/RHEL 6.x/7.x
-* Oracle Enterprise Linux 6/7 with RHEL Kernel only
+* Oracle Enterprise Linux 6/7 sólo con Kernel RHEL
 * Ubuntu 12.04/14.04
 * SLES 11/12
 * OpenSuSE 13.2
@@ -43,71 +43,71 @@ weight: 1
 
 ### Hardware
 {: #hardware }
-* RAM: More RAM is better, but no more than 64 GB per node. 32 GB and 16 GB are also acceptable. Less than 8 GB requires many small nodes in the cluster, and 64 GB is wasteful and problematic due to the way Java uses memory for pointers.
-* Disk: Use SSDs when possible, or fast spinning traditional disks in RAID 0 configuration if SSDs are not possible.
-* CPU: CPU tends not to be the performance bottleneck. Use systems with 2 to 8 cores.
-* Network: When you cross into the need to scale out horizontally, you need a fast, reliable, data center with 1 GbE to 10 GbE supported speeds.
+* RAM: Más RAM es mejor, pero no más de 64 GB por nodo. 32 GB y 16 GB también son aceptables. Menos que 8 GB requiere muchos nodos pequeños en el clúster, y 64 GB es un derroche y es problemático debido a la forma en que Java utiliza la memoria para punteros.
+* Disco: Utilice SSD cuando sea posible, o girar rápidamente discos tradicionales en la configuración de RAID 0 si los SSD no son posibles.
+* CPU: CPU tiende a no ser el cuello de botella de rendimiento. Utilice sistemas con 2 a 8 núcleos.
+* Red: Cuando tenga la necesidad de escalar horizontalmente, necesita un centro de datos rápido y fiable con velocidades soportadas de 1 GbE a 10 GbE.
 
-### Hardware configuration
+### Configuración de hardware
 {: #hardware-configuration }
-* Give your JVM half of the available RAM, but do not cross 32 GB
-    * Setting the **ES\_HEAP\_SIZE** environment variable to 32g.
-    * Setting the JVM flags by using -Xmx32g -Xms32g.
-* Turn off disk swap. Allowing the operating system to swap heap on and off disk significantly degrades performance.
-    * Temporarily: `sudo swapoff -a`
-    * Permanently: Edit **/etc/fstab** according to the operating system documentation.
-    * If neither option is possible, set the Elasticsearch option **bootstrap.mlockall: true** (this value is the default in the embedded Elasticsearch instance).
-* Increase the allowed open file descriptors.
-    * Linux typically limits a per-process number of open file descriptors to a small 1024.
-    * Consult your operating system documentation for how to permanently increase this value to something much larger, like 64,000.
-* Elasticsearch also uses a mix of NioFS and MMapFS for the various files. Increase the maximum map count so plenty of virtual memory is available for mmapped files.
-    * Temporarily: `sysctl -w vm.max_map_count=262144`
-    * Permanently: Modify the **vm.max\_map\_count** setting in your **/etc/sysctl.conf**.
-* If you use BSDs and Linux, ensure that your operating system I/O scheduler is set to **deadline** or **noop**, not **cfq**.
+* Dé a su JVM la mitad de la RAM disponible, pero no sobrepase los 32 GB
+    * Establecimiento de la variable de entorno **ES\_HEAP\_SIZE** a 32g.
+    * Establecimiento de los distintivos de JVM utilizando -Xmx32g -Xms32g.
+* Desactive el intercambio de discos. Permitir al sistema operativo intercambiar la activación o desactivación del almacenamiento dinámico del disco degrada significativamente el rendimiento.
+    * Temporalmente: `sudo swapoff -a`
+    * Permanentemente: Edite **/etc/fstab** según la documentación del sistema operativo.
+    * Si no es posible ninguna opción, establezca la opción de Elasticsearch **bootstrap.mlockall: true** (este valor es el valor predeterminado en la instancia incluida de Elasticsearch).
+* Aumente los descriptores de archivos abiertos permitidos.
+    * Linux limita normalmente un número por proceso de descriptores de archivos abiertos a un pequeño 1024.
+    * Consulte la documentación de su sistema operativo para ver cómo aumentar permanentemente este valor en algo mucho mayor, como 64.000.
+* Elasticsearch también utiliza una combinación de NioFS y MMapFS para los diversos archivos. Aumente el recuento de correlaciones máximo para que haya disponible mucha memoria virtual para los archivos correlacionados.
+    * Temporalmente: `sysctl -w vm.max_map_count=262144`
+    * Permanentemente: Modifique el valor **vm.max\_map\_count** en su **/etc/sysctl.conf**.
+* Si utiliza BSD y Linux, asegúrese de que el planificador de E/S del sistema operativo esté establecido en **deadline** o **noop**, no en **cfq**.
 
-## Capacity considerations
+## Consideraciones de capacidad
 {: #capacity-considerations }
-Capacity is the single-most common question. How much RAM do you need? How much disk space? How many nodes? The answer is always: it depends.
+La capacidad es la pregunta única más común. ¿Cuánta RAM necesita? ¿Cuánto espacio de disco? ¿Cuántos nodos? La respuesta siempre es: depende.
 
-IBM {{ site.data.keys.mf_analytics }} Analytics gives you the opportunity to collect many heterogeneous event types, including raw client SDK debug logs, server-reported network events, custom data, and much more. It is a big data system with big data system requirements.
+IBM {{ site.data.keys.mf_analytics }} Analytics le proporciona la oportunidad de recopilar muchos tipos de sucesos heterogéneos, incluidos registros de depuración de SDK de clientes sin formato, sucesos de red de los que ha informado el servidor, datos personalizados, etc. Es un sistema con un elevado número de datos con unos requisitos del sistema de datos elevados.
 
-The type and amount of data that you choose to collect, and how long you choose to keep it, has a dramatic impact on your storage requirements and overall performance. As an example, consider the following questions.
+El tipo y la cantidad de datos que elija recopilar, y por cuánto tiempo desee conservarlos, tiene un impacto drástico en los requisitos de almacenamiento y en el rendimiento global. Como ejemplo, tenga en cuenta las preguntas siguientes.
 
-* Are raw debug client logs useful after a month?
-* Are you using the **Alerts** feature in {{ site.data.keys.mf_analytics }}? If so, are you querying on events that occurred in the last few minutes or over a longer range?
-* Are you using custom charts? If so, are you creating these charts for built-in data or custom instrumented key/value pairs? How long do you keep the data?
+* ¿Son los registros de cliente de depuración sin formato útiles tras un mes?
+* ¿Está utilizando la característica **Alertas** en {{ site.data.keys.mf_analytics }}? Si es así, ¿está consultando sucesos que se han producido en los últimos minutos o a lo largo de un rango mayor?
+* ¿Está utilizando gráficos personalizados? Si es así, ¿está creando estos gráficos para los datos incorporados o los pares clave/valor instrumentados personalizados? ¿Cuánto tiempo desea conservar los datos?
 
-The built-in charts on the {{ site.data.keys.mf_analytics_console }} are rendered by querying data that the {{ site.data.keys.mf_analytics_server }} already summarized and optimized specifically for the fastest possible console user experience. Because it is pre-summarized and optimized for the built-in charts, it is not suitable for use in alerts or custom charts where the console user defines the queries.
+Los gráficos incorporados en {{ site.data.keys.mf_analytics_console }} se representan consultando datos que {{ site.data.keys.mf_analytics_server }} ya ha resumido y optimizado específicamente para la experiencia de usuario de consola lo más rápida posible. Dado que se prerresumen y se optimizan para los gráficos incorporados, no es adecuado utilizarlos en alertas ni gráficos personalizados donde el usuario de la consola define las consultas.
 
-When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the {{ site.data.keys.mf_analytics_server }}. Is real-time console visibility truly useful for data from four months ago?
+Cuando consulte documentos sin formato, aplique filtros, realice agregaciones y pida al motor de consulta subyacente que calcule los promedios y los porcentajes, el rendimiento de consultas sufrirá necesariamente. Es este caso de uso lo que requiere consideraciones de capacidad cuidadosas. Una vez que sufra el rendimiento de la consulta, será el momento de decidir si debe realmente conservar datos antiguos para la visibilidad de la consola en tiempo real o depurarlos del {{ site.data.keys.mf_analytics_server }}. ¿Es la visibilidad de la consola en tiempo real realmente útil para los datos de hace cuatro meses?
 
-### Indicies, Shards, and Nodes
+### Índices, fragmentos y nodos
 {: #indicies-shards-and-nodes }
-The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The {{ site.data.keys.mf_analytics_server }} creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the {{ site.data.keys.mf_analytics_server }}.
+El almacén de datos subyacente es Elasticsearch. Debe saber un poco sobre índices, fragmentos y nodos, y cómo afecta la configuración al rendimiento. Aproximadamente, puede pensar en un índice como una unidad lógica de datos. Un índice se correlaciona de forma simple y múltiple en fragmentos donde la clave de configuración son los fragmentos. {{ site.data.keys.mf_analytics_server }} crea un índice independiente por tipo de documento. Si su configuración no descarta ningún tipo de documento, tiene un número de índices creados que es equivalente al número de tipos de documentos ofrecidos por {{ site.data.keys.mf_analytics_server }}.
 
-If you configure the shards to 1, each index only ever has one primary shard to which data is written. If you set shards to 10, each index can balance to 10 shards. However, more shards have a performance cost when you have only one node. That one node is now balancing each index to 10 shards on the same physical disk. Only set shards to 10 if you plan to immediately (or nearly immediately) scale up to 10 physical nodes in the cluster.
+Si configura los fragmentos en 1, cada índice sólo tendrá un fragmento primario en el que se escriben los datos. Si ha establecido los fragmentos en 10, cada índice puede equilibrarse en 10 fragmentos. Sin embargo, más fragmentos tienen un coste de rendimiento cuando sólo tiene un nodo. Dicho nodo está ahora equilibrando cada índice a 10 fragmentos en el mismo disco físico. Establezca los fragmentos únicamente en 10 si tiene pensado escalar de forma inmediata (o casi inmediata) a 10 nodos físicos del clúster.
 
-The same principle applies to **replicas**. Only set **replicas** to something greater than 0 if you intend to immediately (or nearly immediately) scale up to the number of nodes to match the math.  
-For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 8 nodes, which is 4 * 2.
+El mismo principio se aplica a **réplicas**. Establezca únicamente **réplicas** a un valor mayor que 0 si pretende escalar de forma inmediata (o casi inmediata) al número de nodos para que coincidan.  
+Por ejemplo, si establece **fragmentos** en 4 y **réplicas** en 2, podrá escalar a 8 nodos, lo que es 4 * 2.
 
-## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty
+## Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
+Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). El archivo **analytics.ear** se encuentra en la carpeta **<dir_instalación_servidor_mf>\analytics**. Para obtener más información sobre cómo descargar e instalar WebSphere Application Server Liberty, consulte el artículo [Acerca de WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) en IBM developerWorks .
 
-1. Create a server by running the following command in your **./wlp/bin** folder.
+1. Cree un servidor ejecutando el siguiente mandato en su carpeta **./wlp/bin**.
 
    ```bash
    ./server create <serverName>
    ```
 
-2. Install the following features by running the following command in your **./bin** folder.
+2. Instale las características siguientes ejecutando el siguiente mandato en la carpeta **./bin**.
 
    ```bash
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Add the **analytics.ear** file to the **./usr/servers/<serverName>/apps** folder of your Liberty Server.
-4. Replace the contents of the `<featureManager>` tag of the **./usr/servers/<serverName>/server.xml** file with the following content:
+3. Añada el archivo **analytics.ear** a la carpeta **./usr/servers/<serverName>/apps** del servidor de Liberty.
+4. Sustituya el contenido de la etiqueta `<featureManager>` del archivo **./usr/servers/<serverName>/server.xml** por el contenido siguiente:
 
    ```xml
    <featureManager>
@@ -118,7 +118,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    </featureManager>
    ```
 
-5. Configure **analytics.ear** as an application with role-based security in the **server.xml** file. The following example creates a basic hardcoded user registry, and assigns a user to each of the different analytics roles.
+5. Configure **analytics.ear** como una aplicación con seguridad basada en roles en el archivo **server.xml**. En el ejemplo siguiente se crea un registro de usuarios codificado básico, y se asigna un usuario a cada uno de los roles de análisis distintos.
 
    ```xml
    <application location="analytics.ear" name="analytics-ear" type="ear">
@@ -150,34 +150,34 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    </basicRegistry>
    ```
 
-   > For more information about how to configure other user registry types, such as LDAP, see the [Configuring a user registry for Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) topic in the WebSphere Application Server product documentation.
+   > Para obtener más información sobre cómo configurar otros tipos de registro de usuarios, como por ejemplo LDAP, consulte el tema [Configuración de un registro de usuarios para Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) en la documentación del producto WebSphere Application Server.
 
-6. Start the Liberty Server by running the following command inside your **bin** folder
+6. Inicie el servidor de Liberty ejecutando el siguiente mandato dentro de su carpeta **bin**
 
    ```bash
    ./server start <serverName>
    ```
 
-7. Go to the {{ site.data.keys.mf_analytics_console }}.
+7. Vaya a {{ site.data.keys.mf_analytics_console }}.
 
    ```bash
    http://localhost:9080/analytics/console
    ```
 
-For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
+Para obtener más información sobre la administración de WebSphere Application Server Liberty, consulte el tema [Administración de Liberty desde la línea de mandatos](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) en la documentación del producto WebSphere Application Server.
 
-## Installing {{ site.data.keys.mf_analytics }} on Tomcat
+## Instalación de {{ site.data.keys.mf_analytics }} en Tomcat
 {: #installing-mobilefirst-analytics-on-tomcat }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+Asegúrese de que ya disponga de los archivos WAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). Los archivos **analytics-ui.war** y **analytics-service.war** se encuentran en la carpeta **<dir_instalación_servidor_mf>\analytics**. Para obtener más información sobre cómo descargar e instalar Tomcat, consulte [Apache Tomcat](http://tomcat.apache.org/). Asegúrese de que descarga la versión que da soporte a Java 7 o superior. Para obtener más información sobre qué versión de Tomcat da soporte a Java 7, consulte [Versiones de Apache Tomcat](http://tomcat.apache.org/whichversion.html).
 
-1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
-2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.
+1. Añada los archivos **analytics-service.war** y **analytics-ui.war** a la carpeta **webapps** de Tomcat.
+2. Descomente la sección siguiente en el archivo **conf/server.xml**, que está presente, pero comentado, en un archivado de Tomcat recién descargado.
 
    ```xml
    <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
-3. Declare the two war files in the **conf/server.xml** file, and define a user registry.
+3. Declare los dos archivos war al archivo **conf/server.xml** y defina un registro de usuarios.
 
    ```xml
    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
@@ -185,10 +185,10 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
    <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
    ```
 
-   The **MemoryRealm** recognizes the users that are defined in the **conf/tomcat-users.xml** file. For more information about other choices, see [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+   **MemoryRealm** reconoce los usuarios definidos en el archivo **conf/tomcat-users.xml**. Para obtener más información sobre otras opciones, consulte [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
-4. Add the following sections to the **conf/tomcat-users.xml** file to configure a **MemoryRealm**.
-    * Add the security roles.
+4. Añada las secciones siguientes al archivo **conf/tomcat-users.xml** para configurar un **MemoryRealm**.
+    * Añada los roles de seguridad.
 
       ```xml
       <role rolename="analytics_administrator"/>
@@ -197,7 +197,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
       <role rolename="analytics_developer"/>
       <role rolename="analytics_business"/>
       ```
-    * Add a few users with the roles you want.
+    * Añada algunos usuarios con los roles que desee.
 
       ```xml
       <user name="admin" password="admin" roles="analytics_administrator"/>
@@ -206,98 +206,98 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
       <user name="developer" password="demo" roles="analytics_developer"/>
       <user name="infrastructure" password="demo" roles="analytics_infrastructure"/>
       ```    
-    * Start your Tomcat Server and go to the {{ site.data.keys.mf_analytics_console }}.
+    * Inicie el servidor de Tomcat y vaya a {{ site.data.keys.mf_analytics_console }}.
 
       ```xml
       http://localhost:8080/analytics/console
       ```
 
-    For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
+    Para obtener más información sobre cómo iniciar el servidor de Tomcat, consulte el sitio oficial de Tomcat. Por ejemplo, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), para Tomcat 7.0.
 
-## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server
+## Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
+Para obtener más información sobre los pasos de instalación iniciales para adquirir los artefactos de instalación (archivos JAR y EAR), consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). Los archivos **analytics.ear**, **analytics-ui.war** y **analytics-service.war** se encuentran en la carpeta **<dir_instalación_servidor_mf>\analytics**.
 
-The following steps describe how to install and run the Analytics EAR file on WebSphere Application Server. If you are installing the individual WAR files on WebSphere Application Server, follow only steps 2 - 7 on the **analytics-service** WAR file after you deploy both WAR files. The class loading order must not be altered on the analytics-ui WAR file.
+Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analytics en WebSphere Application Server. Si está instalando los archivos WAR individuales en WebSphere Application Server, siga sólo los pasos del 2 al 7 en el archivo WAR de **analytics-service** una vez que haya desplegado los archivos WAR. El orden de carga de clases no se debe modificar en el archivo WAR de analytics-ui.
 
-1. Deploy the EAR file to the application server, but do not start it. . For more information about how to install an EAR file on WebSphere Application Server, see the [Installing enterprise application files with the console](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) topic in the WebSphere Application Server product documentation.
+1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie. Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
 
-2. Select the **MobileFirst Analytics** application from the **Enterprise Applications** list.
+2. Seleccione la aplicación **MobileFirst Analytics** desde la lista **Enterprise Applications**.
 
-    ![Install WebSphere Enterprise applications](install_webphere_ent_app.jpg)
+    ![Instalar aplicaciones de WebSphere Enterprise](install_webphere_ent_app.jpg)
 
-3. Click **Class loading and update detection**.
+3. Pulse **Carga de clase y detección de actualización**.
 
-    ![Class loading in WebSphere](install_websphere_class_load.jpg)
+    ![Carga de clase en WebSphere](install_websphere_class_load.jpg)
 
-4. Set the class loading order to **parent last**.
+4. Establezca el orden de carga de clase en **último padre**.
 
-    ![Change the class loading order](install_websphere_app_class_load_order.jpg)
+    ![Cambiar el orden de carga de clases](install_websphere_app_class_load_order.jpg)
 
-5. Click **Security role to user/group mapping** to map the admin user.
+5. Pulse **Rol de seguridad para correlación de usuario/grupo** para correlacionar el usuario administrativo.
 
-    ![War class loading order](install_websphere_sec_role.jpg)
+    ![Orden de carga de la clase War](install_websphere_sec_role.jpg)
 
-6. Click **Manage Modules**.
+6. Pulse **Gestionar módulos**.
 
-    ![Managing modules in WebSphere](install_websphere_manage_modules.jpg)
+    ![Gestión de módulos en WebSphere](install_websphere_manage_modules.jpg)
 
-7. Select the **analytics** module and change the class loader order to **parent last**.
+7. Seleccione el módulo de **análisis** y cambie el orden de cargador de clases a **último padre**.
 
-    ![Analytics module in WebSphere](install_websphere_module_class_load_order.jpg)
+    ![Módulo de Analíticas en WebSphere](install_websphere_module_class_load_order.jpg)
 
-8. Enable **Administrative security** and **application security** in the WebSphere Application Server administration console:
-    * Log in to the WebSphere Application Server administration console.
-    * In the **Security > Global Security** menu, ensure that **Enable administrative security** and **Enable application security** are both selected. Note: Application security can be selected only after **Administrative security** is enabled.
-    * Click **OK** and save changes.
-9. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
+8. Habilite **Seguridad administrativa** y **seguridad de la aplicación** en la consola de administración de WebSphere Application Server:
+    * Inicie sesión en la consola de administración de WebSphere Application Server.
+    * En el menú **Seguridad > Seguridad global**, asegúrese de que **Habilitar seguridad administrativa** y **Habilitar seguridad de aplicación** estén seleccionados. Nota: La seguridad de aplicación sólo se puede seleccionar una vez que **Seguridad administrativa** esté habilitado.
+    * Pulse **Aceptar** y guarde los cambios.
+9. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace del navegador: `http://<hostname>:<port>/analytics/console`.
 
-## Installing {{ site.data.keys.mf_analytics }} with Ant tasks
+## Instalación de {{ site.data.keys.mf_analytics }} con tareas Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
+Asegúrese de que tenga los archivos WAR y de configuración necesarios: **analytics-ui.war** y **analytics-service.war**. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). Los archivos **analytics-ui.war** y **analytics-service.war** se encuentran en **MobileFirst_Platform_Server\analytics**.
 
-You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
+Debe ejecutar la tarea Ant en el sistema donde está instalado el servidor de aplicaciones, o el Network Deployment Manager para WebSphere Application Server Network Deployment. Si desea iniciar la tarea Ant desde un sistema en el que {{ site.data.keys.mf_server }} no está instalado, debe copiar el archivo **<dir_instalación_servidor_mf>/MobileFirstServer/mfp-ant-deployer.jar** en ese sistema.
 
-> Note: The **mf_server_install_dir** placeholder is the directory where you installed {{ site.data.keys.mf_server }}.
+> Nota: El marcador de posición **dir_instalación_servidor_mf** es el directorio en el que ha instalado {{ site.data.keys.mf_server }}.
 
-1. Edit the Ant script that you use later to deploy {{ site.data.keys.mf_analytics }} WAR files.
-    * Review the sample configuration files in [Sample configuration files for {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
-    * Replace the placeholder values with the properties at the beginning of the file.
+1. Edite el script Ant que utilizará más adelante para desplegar archivos WAR de {{ site.data.keys.mf_analytics }}.
+    * Revise los archivos de configuración de ejemplo en [Archivos de configuración de ejemplo para {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
+    * Sustituya los valores de marcador por las propiedades al principio del archivo.
 
-    > Note: The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+    > Nota: Los siguientes caracteres especiales deben escaparse cuando se utilizan en los valores de los scripts Ant XML:
     >
-    > * The dollar sign ($) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax ${variable}, as described in the  [Properties](http://ant.apache.org/manual/properties.html) section of the Apache Ant Manual.
-    > * The ampersand character (&) must be written as &amp;, unless you explicitly want to reference an XML entity.
-    > * Double quotation marks (") must be written as &quot;, except when it is inside a string that is enclosed in single quotation marks.
+    > * El signo de dólar ($) se debe escribir como $$, a no ser que desee explícitamente hacer referencia a una variable Ant a través de la sintaxis ${variable}, tal como se describe en la sección [Propiedades](http://ant.apache.org/manual/properties.html) de Apache Ant Manual.
+    > * El carácter ampersand (&) se debe escribir como &amp;, a no ser que desee explícitamente hacer referencia a una entidad XML.
+    > * Las comillas dobles (") se deben escribir como &quot;, excepto cuando estén dentro de una serie que esté entre comillas simples.
 
-2. If you install a cluster of nodes on several servers:
-    * You must uncomment the property **wl.analytics.masters.list**, and set its value to the list of host name and transport port of the master nodes. For example: `node1.mycompany.com:96000,node2.mycompany.com:96000`
-    * Add the attribute **mastersList** to the **elasticsearch** elements in the tasks **installanalytics**, **updateanalytics**, and **uninstallanalytics**.
+2. Si instala un clúster de nodos en varios servidores:
+    * Debe descomentar la propiedad **wl.analytics.masters.list**, y establecer su valor en la lista de nombre de host y puerto de transporte de los nodos maestro. Por ejemplo: `node1.mycompany.com:96000,node2.mycompany.com:96000`
+    * Añada el atributo **mastersList** a los elementos **elasticsearch** de las tareas **installanalytics**, **updateanalytics** y **uninstallanalytics**.
 
-    **Note:** If you install on a cluster on WebSphere Application Server Network Deployment, and you do not set the property, the Ant task computes the data end points for all the members of the cluster at the time of installation, and sets the **masternodes** JNDI property to that value.
+    **Nota:** Si instala en un clúster en WebSphere Application Server Network Deployment, y no establece la propiedad, la tarea Ant calcula los puntos finales de datos para todos los miembros del clúster en el momento de la instalación, y establece la propiedad JNDI **masternodes** en dicho valor.
 
-3. To deploy the WAR files, run the following command: `ant -f configure-appServer-analytics.xml install`
-    You can find the Ant command in **mf_server_install_dir/shortcuts**. This installs a node of {{ site.data.keys.mf_analytics }}, with the default type master and data, on the server, or on each member of a cluster if you install on WebSphere Application Server Network Deployment.
-4. Save the Ant file. You might need it later to apply a fix pack or perform an upgrade.
-    If you do not want to save the passwords, you can replace them by "************" (12 stars) for interactive prompting.
+3. Para desplegar los archivos WAR, ejecute el mandato siguiente: `ant -f configure-appServer-analytics.xml install`
+    Puede encontrar el mandato Ant en **mf_server_install_dir/shortcuts**. Esto instala un nodo de {{ site.data.keys.mf_analytics }}, con el maestro de tipo predeterminado y los datos, en el servidor, o en cada miembro de un clúster si instala en WebSphere Application Server Network Deployment.
+4. Guarde el archivo Ant. Es posible que lo necesite más adelante para aplicar un fixpack o para realizar una actualización.
+    Si no desea guardar las contraseñas, puede sustituirlas por "************" (12 estrellas) para la solicitud interactiva.
 
-    **Note:** If you add a node to a cluster of {{ site.data.keys.mf_analytics }}, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
+    **Nota:** Si añade un nodo a un clúster de {{ site.data.keys.mf_analytics }}, debe actualizar la propiedad JNDI analytics/masternodes, de modo que contenga los puertos de todos los nodos maestro del clúster.
 
-## Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions
+## Instalación de {{ site.data.keys.mf_analytics_server }} en servidores que ejecutan versiones anteriores
 {: #installing-mobilefirst-analytics-server-on-servers-running-previous-versions }
-Although there is no option to upgrade previous versions of the {{ site.data.keys.mf_analytics_server }}, when you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
+Aunque no hay ninguna opción para actualizar las versiones anteriores del {{ site.data.keys.mf_analytics_server }}, al instalar {{ site.data.keys.mf_analytics_server }} V8.0.0 en un servidor que aloja una versión anterior, deben migrarse algunas propiedades y datos de análisis.
 
-For servers previously running earlier of versions of {{ site.data.keys.mf_analytics_server }} update the analytics data and the JNDI properties.
+Para los servidores anteriormente en ejecución anteriores a las versiones de {{ site.data.keys.mf_analytics_server }}, actualice los datos de análisis y las propiedades JNDI.
 
-### Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}
+### Migración de propiedades de servidor utilizadas por versiones anteriores de {{ site.data.keys.mf_analytics_server }}
 {: #migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server }
-If you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that was previously running an earlier version of {{ site.data.keys.mf_analytics_server }}, you must update the values of the JNDI properties on the hosting server.
+Si instala {{ site.data.keys.mf_analytics_server }} V8.0.0 en un servidor que estaba ejecutando anteriormente una versión anterior de {{ site.data.keys.mf_analytics_server }}, debe actualizar los valores de las propiedades JNDI en el servidor que aloja.
 
-Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.
+Algunos tipos de sucesos se han cambiado entre versiones anteriores de {{ site.data.keys.mf_analytics_server }} y V8.0.0. Debido a este cambio, cualquier propiedad JNDI que se haya configurado previamente en el archivo de configuración del servidor debe convertirse en el nuevo tipo de suceso.
 
-The following table shows the mapping between old event types and new event types. Some event types did not change.
+La tabla siguiente muestra la correlación entre tipos de sucesos antiguos y nuevos. Algunos tipos de sucesos no han cambiado.
 
-| Old event type            | New event type         |
+| Tipo de suceso antiguo            | Tipo de suceso nuevo         |
 |---------------------------|------------------------|
 | AlertDefinition	        | AlertDefinition        |
 | AlertNotification	        | AlertNotification      |
@@ -318,28 +318,28 @@ The following table shows the mapping between old event types and new event type
 | mfpAppName	            | appName                |
 | mfpAppVersion	            | appVersion             |
 
-### Analytics data migration
+### Migración de datos analíticos
 {: #analytics-data-migration }
-The internals of the {{ site.data.keys.mf_analytics_console }} were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.
+Los componentes internos de {{ site.data.keys.mf_analytics_console }} se han mejorado, lo que requiere cambiar el formato en el que se almacenan los datos. Para continuar interactuando con los datos analíticos que ya se han recopilado, los datos deben migrarse al nuevo formato de datos.
 
-When you first view the {{ site.data.keys.mf_analytics_console }} after you upgrade to V8.0.0, no statistics are rendered in the {{ site.data.keys.mf_analytics_console }}. Your data is not lost, but it must be migrated to the new data format.
+Cuando se visualice por primera vez {{ site.data.keys.mf_analytics_console }} después de realizar la actualización a V8.0.0, no se representarán estadísticas en {{ site.data.keys.mf_analytics_console }}. Sus datos no se han perdido, pero deben migrarse al nuevo formato de datos.
 
-An alert is displayed on every page of the {{ site.data.keys.mf_analytics_console }} that reminds you that documents must be migrated. The alert text includes a link to the **Migration** page.
+Se mostrará una alerta en cada una de las páginas de {{ site.data.keys.mf_analytics_console }} que le recuerdan que se deben migrar los documentos. El texto de alerta incluye un enlace a la página **Migración**.
 
-The following image shows a sample alert from the **Overview** page of the **Dashboard** section:
+La imagen siguiente muestra una alerta de ejemplo de la página **Visión general** de la sección **Panel de control**:
 
-![Migration alert in the console](migration_alert.jpg)
+![Alerta de migración en la consola](migration_alert.jpg)
 
-### Migration page
+### Página de migración
 {: #migration-page }
-You can access the Migration page from the wrench icon in the {{ site.data.keys.mf_analytics_console }}. From the **Migration** page, you can see how many documents must be migrated, and which indices they are stored on. Only one action is available: **Perform Migration**.
+Puede acceder a la página Migración desde el icono de llave inglesa en {{ site.data.keys.mf_analytics_console }}. Desde la página **Migración**, puede ver cuántos documentos deben migrarse, y en qué índices están almacenados. Sólo está disponible una acción: **Realizar migración**.
 
-The following image shows the **Migration** page when you have documents that must be migrated:
+La imagen siguiente muestra la página **Migración** cuando tiene documentos que deban migrarse:
 
-![Migration page in the console](migration_page.jpg)
+![Página de migración en la consola](migration_page.jpg)
 
-> **Note:** This process might take a long time, depending on the amount of data you have, and it cannot be stopped during migration.
+> **Nota:** Este proceso puede tardar mucho tiempo, en función de la cantidad de datos que tenga, y no se puede detener durante la migración.
 
-The migration can take approximately 3 minutes to migrate 1 million documents on a single node with 32G of RAM, with 16G allocated to the JVM, with a 4-core processor. Documents that are not migrated are not queried, so they are not rendered in the {{ site.data.keys.mf_analytics_console }}.
+La migración puede tardar aproximadamente 3 minutos para migrar un millón de documentos en un único nodo con 32 G de RAM, con 16 G asignados en la JVM, con un procesador de 4 núcleos. Los documentos que no se han migrado no se consultan, por lo que no se representan en {{ site.data.keys.mf_analytics_console }}.
 
-If the migration fails while in progress, retry the migration. Retrying the migration does not remigrate documents that were already migrated, and your data integrity is maintained.
+Si la migración falla mientras está en curso, vuelva a intentar la migración. Reintentar la migración no vuelve a migrar documentos que ya estaban migrados, y se mantendrá la integridad de datos.

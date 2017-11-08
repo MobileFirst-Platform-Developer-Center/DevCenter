@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications
+title: Implementación del manejador de desafíos en las aplicaciones Windows 8.1 Universal y Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
@@ -13,10 +13,10 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+Al intentar acceder al recurso protegido, el servidor (la comprobación de seguridad) devuelve al cliente una lista que contiene uno o más **desafíos** que debe gestionar el cliente.  
+Esta lista se recibe como un objeto `JSON`, listando el nombre de la comprobación de seguridad con un `JSON` opcional de datos adicionales:
 
 ```json
 {
@@ -29,16 +29,16 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client should then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+A continuación, el cliente debe registrar un **manejador de desafíos** para cada comprobación de seguridad.  
+El manejador de desafíos define el comportamiento del lado de cliente que es específico de la comprobación de seguridad.
 
-## Creating the challenge handler
+## Creación del manejador de desafíos
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles the challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+Un manejador de desafíos es una clase que maneja desafíos enviados por {{ site.data.keys.mf_server }} como, por ejemplo, la visualización de una pantalla de inicio de sesión, la recopilación de credenciales y la devolución a la comprobación de seguridad.
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
+En este ejemplo, la comprobación de seguridad es `PinCodeAttempts` que se definió en [Implementación de CredentialsValidationSecurityCheck](../security-check). El desafío que ha enviado la comprobación de seguridad contiene el número de intentos restantes para iniciar sesión (`remainingAttempts`), y un `errorMsg` opcional.
 
-Create a C# class that extends `Worklight.SecurityCheckChallengeHandler`:
+Cree una clase C# que amplíe `Worklight.SecurityCheckChallengeHandler`:
 
 ```csharp
 public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
@@ -46,11 +46,11 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 }
 ```
 
-## Handling the challenge
+## Manejo de un desafío
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` class is to implement a constructor and a `HandleChallenge` method, that is responsible for asking the user to provide the credentials. The `HandleChallenge` method receives the challenge as an `Object`.
+El requisito mínimo de la clase `SecurityCheckChallengeHandler` es implementar un constructor y un método `HandleChallenge`, que es el responsable de solicitar al usuario las credenciales. El método `HandleChallenge` recibe el desafío como un `Object`.
 
-Add a constructor method:
+Añadir un método constructor:
 
 ```csharp
 public PinCodeChallengeHandler(String securityCheck) {
@@ -58,7 +58,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `HandleChallenge` example, an alert prompts the user to enter the PIN code:
+En este ejemplo de `HandleChallenge`, una alerta le solicita al usuario que introduzca el código PIN: 
 
 ```csharp
 public override void HandleChallenge(Object challenge)
@@ -96,13 +96,13 @@ public override void HandleChallenge(Object challenge)
 }
 ```
 
-> The implementation of `showChallenge` is included in the sample application.
+> La implementación de `showChallenge` se incluye en la aplicación de ejemplo.
 
-If the credentials are incorrect, you can expect the framework to call `HandleChallenge` again.
+Si las credenciales son incorrectas, puede esperar que la infraestructura llame a `HandleChallenge` de nuevo.
 
-## Submitting the challenge's answer
+## Envío de la respuesta de comprobación
 {: #submitting-the-challenges-answer }
-After the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` methods to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a Boolean value that indicates whether the challenge response should be sent back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Cuando haya recopilado las credenciales de la IU, utilice los métodos `ShouldSubmitChallengeAnswer()` y `GetChallengeAnswer()` de `SecurityCheckChallengeHandler` para enviar una respuesta a la comprobación de seguridad. `ShouldSubmitChallengeAnswer()` devuelve un valor booleano que indica si la respuesta de verificación de identidad debería enviarse a la comprobación de seguridad.En este ejemplo, `PinCodeAttempts` espera una propiedad denominada `pin` que contiene el código PIN enviado:
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()
@@ -120,11 +120,11 @@ public override JObject GetChallengeAnswer()
 
 ```
 
-## Cancelling the challenge
+## Cancelación del desafío
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+En algunos casos, como cuando se pulsa el botón **Cancelar** en la IU, desea indicarle a la infraestructura que descarte este desafío por completo.
 
-To achieve this, override the `ShouldCancel` method.
+Para ello, sustituya el método `ShouldCancel`.
 
 
 ```csharp
@@ -134,34 +134,34 @@ public override bool ShouldCancel()
 }
 ```
 
-## Registering the challenge handler
+## Registro del manejador de desafíos
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+Para que el manejador de desafíos escuche los desafíos adecuados, debe pedirle a la infraestructura que se asocie con el manejador de desafíos con un nombre de comprobación de seguridad específico.
 
-To do so, initialize the challenge handler with the security check as follows:
+Para ello, inicialice el manejador de desafíos con la comprobación de seguridad de la siguiente manera:
 
 ```csharp
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts");
 ```
 
-You must then **register** the challenge handler instance:
+A continuación, debe **registrar** la instancia del manejador de desafíos:
 
 ```csharp
 IWorklightClient client = WorklightClient.createInstance();
 client.RegisterChallengeHandler(pinCodeChallengeHandler);
 ```
 
-## Sample application
+## Aplicación de ejemplo
 {: #sample-application }
-The **PinCodeWin8** and **PinCodeWin10** samples are C# applications that use `ResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+Los ejemplos **PinCodeWin8** y **PinCodeWin10** son aplicaciones C# que utilizan `ResourceRequest` para obtener un saldo de banco.  
+El método está protegido con un código PIN y un máximo de 3 intentos.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) the Windows 8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) the Windows 10 UWP project.
+[Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) el proyecto Maven de SecurityCheckAdapters.  
+[Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) el proyecto de Windows 8.  
+[Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) el proyecto Windows 10 UWP.
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md del ejemplo para obtener instrucciones.
 
-![Sample application](sample-application.png)   
+![Aplicación de ejemplo](sample-application.png)   
