@@ -63,6 +63,8 @@ También puede configurar el comportamiento de la comprobación de seguridad de 
 La comprobación de seguridad de inicio de sesión único (SSO) basada en LTPA (**LtpaBasedSSO**) tiene una propiedad configurable única: **expirationSec**. Esta propiedad establece el período de caducidad de un estado de comprobación de seguridad correcto. El período de caducidad determina el intervalo mínimo de invocación de una comprobación después de haberse ejecutado correctamente. 
 
 > **Nota:** El procedimiento explica cómo utilizar {{ site.data.keys.mf_console }} para configurar el valor de propiedad.De forma alternativa, también puede establecer el valor de propiedad directamente en el archivo **application-descriptor**. Para obtener información detallada, consulte Configuración de las propiedades de comprobación de seguridad de aplicación.
+
+
 1. Abra una ventana de {{ site.data.keys.mf_console }}. Seleccione la versión de aplicación en la **barra lateral de navegación**, y luego pulse el separador **Seguridad**.
 2. En la sección **Configuración de la comprobación de seguridad**, pulse **Nueva**.
 3. En la ventana **Configurar propiedades de comprobación de seguridad**, configure la comprobación de seguridad **SSO basada en LTPA**:

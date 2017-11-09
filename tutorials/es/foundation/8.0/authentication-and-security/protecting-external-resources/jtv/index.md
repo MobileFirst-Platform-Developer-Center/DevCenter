@@ -48,6 +48,8 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 - `clientSecret`: El secreto de cliente confidencial que ha configurado en {{ site.data.keys.mf_console }}.
 
 > La biblioteca expone una API que encapsula y simplifica la interacción con el punto final de introspección del servidor de autorización. Para obtener una referencia de API detallada, [consulte la {{ site.data.keys.product_adj }} referencia de API del validador de señal Java](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
+
+
 ## Validación de credenciales
 {: #validating-the-credentials }
 El método API `validate` ofrece al servidor de autorización la validación de la cabecera de autorización: 

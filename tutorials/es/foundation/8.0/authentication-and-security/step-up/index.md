@@ -53,6 +53,8 @@ private transient StepUpUserLogin userLogin;
 ```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Las dos implementaciones de comprobación de seguridad deben estar empaquetadas en el mismo adaptador.
+
+
 Para resolver esta referencia, la infraestructura busca una comprobación de seguridad con la clase apropiada, y la añade a la referencia correspondiente en la comprobación de seguridad dependiente.   
 Si hay más de una comprobación de seguridad de la misma clase, la anotación tiene un parámetro `name` opcional, que puede utilizar para especificar el nombre exclusivo de la comprobación a la que se hace referencia.
 

@@ -21,6 +21,8 @@ Continúe leyendo para obtener más información sobre los componentes de {{ sit
 > Para evaluar {{ site.data.keys.product }} solo es necesario desplegar una instancia de {{ site.data.keys.mf_server }} en Bluemix mediante el servicio Mobile Foundation Bluemix.
 Consulte la guía de aprendizaje [Utilización de Mobile Foundation](../../../bluemix/using-mobile-foundation/) para obtener las instrucciones necesarias.
 También puede elegir instalar {{ site.data.keys.mf_dev_kit_short }} de forma local.
+
+
 #### Ir a: 
 {: #jump-to }
 
@@ -44,6 +46,8 @@ El kit está formado por los siguientes componentes: {{ site.data.keys.mf_server
 > **Nota:**
 Si necesita configurar su entorno de desarrollo en un sistema que no tiene acceso a internet, puede instalar los componentes fuera de línea.
 Consulte [Configuración de un entorno de desarrollo de IBM MobileFirst fuera de línea]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment).
+
+
 ### Instalador de {{ site.data.keys.mf_dev_kit_short }} 
 {: #developer-kit-installer }
 El instalador empaqueta componentes para una instalación local donde no haya conectividad a Internet.
@@ -92,6 +96,8 @@ Un desarrollador puede:
 - Generar scripts de DevOps para flujos de trabajo de integración continua y ciclos de desarrollo más rápidos
 
 > Obtenga más información sobre {{ site.data.keys.mf_console }} en la guía de aprendizaje [Utilización de la consola de operaciones de MobileFirst](../../../product-overview/components/console/).
+
+
 ### Interfaz de línea de mandatos (CLI) de {{ site.data.keys.product }} 
 {: #mobilefirst-foundation-command-line-interface }
 Utilice {{ site.data.keys.mf_cli }} para desarrollar y gestionar aplicaciones, además de utilizar {{ site.data.keys.mf_console }}.

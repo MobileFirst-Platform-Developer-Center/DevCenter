@@ -68,6 +68,8 @@ Si necesita probar una aplicación no de producción en un servidor de producci�
 Si tiene la intención de utilizar licencias de señales con {{ site.data.keys.product }}, asegúrese de que lleva a cabo los siguientes pasos preliminares en este orden.
 
 > **Importante:** Su elección sobre las licencias de señales (activarlas o no), como parte de una instalación que soporta licencias de señales, no se puede modificar. Si más adelante necesita cambiar la opción de licencias de señales, debe desinstalar y volver a instalar {{ site.data.keys.product }}.
+
+
 1. Active las licencias de señales al ejecutar IBM Installation Manager para instalar {{ site.data.keys.product }}.
 
    #### Instalación en modalidad de gráficos
@@ -107,6 +109,7 @@ Debe instalar las bibliotecas nativa y Java de Rational Common Licensing en el s
     > **Nota:** **${CATALINA_HOME}** es el directorio de instalación de su Apache Tomcat.
 3. Copie el archivo **rcl_ibmratl.jar** en **${CATALINA_HOME}/lib**. El archivo **rcl_ibmratl.jar** es una biblioteca Java de Rational Common Licensing que se encuentra en el directorio **dir\_instalación\_producto/MobileFirstServer/tokenLibs**. La biblioteca utiliza la biblioteca nativa copiada en el paso 2 y solo se puede cargar una vez en Apache Tomcat. Este archivo debe ubicarse en el directorio **${CATALINA_HOME}/lib** o en cualquier directorio de la vía de acceso del cargador de clases común de Apache Tomcat.
     > **Importante:** La máquina virtual Java (JVM) de Apache Tomcat necesita privilegios de lectura y ejecución en las bibliotecas copiadas Java y nativa. Ambos archivos copiados deben ser leíbles y ejecutables por lo menos por el proceso del servidor de aplicaciones en su sistema operativo.
+
 4. Configure el acceso de la JVM de su servidor de aplicaciones a la biblioteca de Rational Common Licensing. Para cualquier sistema operativo, configure el archivo **${CATALINA_HOME}/bin/setenv.bat** (o **setenv.sh** en UNIX) añadiendo la siguiente línea:
 
    **Windows:**  
@@ -122,6 +125,8 @@ Debe instalar las bibliotecas nativa y Java de Rational Common Licensing en el s
    ```
     
    > **Nota:** Si mueve la carpeta de configuración del servidor donde se ejecuta el servicio de administración, debe actualizar **java.library.path** con la nueva vía de acceso absoluta.
+
+
 5. Configure {{ site.data.keys.mf_server }} para acceder a Rational License Key Server. En el archivo **${CATALINA_HOME}/conf/server.xml**, busque el elemento `Context` de la aplicación de servicio de administración y añada las siguientes líneas de configuración JNDI.
 
    ```xml
@@ -153,6 +158,7 @@ Debe instalar las bibliotecas nativa y Java de Rational Common Licensing en el p
    * Copie la biblioteca nativa en el sistema donde se ejecuta el servicio de administración de {{ site.data.keys.mf_server }}. El directorio puede ser **${shared.resource.dir}/rcllib**. El directorio **${shared.resource.dir}** se encuentra, normalmente, en **usr/shared/resources**, donde usr es el directorio que contiene también el directorio usr/servers. Para obtener más información sobre la ubicación estándar de **${shared.resource.dir}**, consulte [ WebSphere Application Server, Liberty Core - Ubicaciones de directorio y propiedades](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc). Si la carpeta **rcllib** no existe, cree la carpeta y copie el archivo de biblioteca nativa en ella.
     
    > **Nota:** Asegúrese de que la máquina virtual Java (JVM) del servidor de aplicaciones tiene privilegios de lectura y ejecución en la biblioteca nativa. En Windows, aparece la siguiente excepción en el registro del servidor de aplicaciones si la JVM del servidor de aplicaciones no tiene derechos de ejecutable en la biblioteca nativa copiada.
+
     
    ```bash
    com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
@@ -201,6 +207,8 @@ Debe instalar las bibliotecas nativa y Java de Rational Common Licensing en el p
    ```
     
    > **Nota:** Si mueve la carpeta de configuración del servidor donde se ejecuta el servicio de administración, debe actualizar **java.library.path** con la nueva vía de acceso absoluta.
+
+
    El directorio **${wlp.user.dir}** se encuentra, normalmente, en **dir_instalación_liberty/usr** y contiene el directorio de servidores. Sin embargo, su ubicación se puede personalizar. Para obtener más información, consulte [ Personalización del entorno Liberty](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc).
     
 2. Configure {{ site.data.keys.mf_server }} para acceder a Rational License Key Server. 
@@ -252,6 +260,7 @@ Debe configurar una biblioteca compartida para las bibliotecas de Rational Commo
         * Pulse **Aceptar** y guarde los cambios. Este valor entra en vigor cuando se reinicia el servidor.
     
         > **Nota:** La vía de acceso de la biblioteca nativa de esta biblioteca se establece en el paso 3 en la propiedad **ld.library.path** de la máquina virtual Java del servidor.
+
     * Asocie la biblioteca compartida con todos los servidores que ejecuten el servicio de administración de {{ site.data.keys.mf_server }}.
     
         Asociar la biblioteca compartida a un servidor permite que la biblioteca compartida se utilice en varias aplicaciones. Si solo necesita el cliente de Rational Common Licensing para el servicio de administración de {{ site.data.keys.mf_server }}, puede crear una biblioteca compartida con un cargador de clases aislado y asociarlo con la aplicación de servicio de administración.
@@ -295,6 +304,8 @@ Cada nodo de su WebSphere Application Server Network Deployment debe tener una c
 Cada servidor donde se ejecuta el servicio de administración de {{ site.data.keys.mf_server }} debe estar configurado para tener acceso a la biblioteca nativa copiada en su sistema local. Estos servidores también se deben configurar para conectarse a Rational License Key Server.
 
 > **Importante:** Si utiliza un clúster con WebSphere Application Server Network Deployment, su clúster puede cambiar. Debe configurar cada servidor nuevo en su clúster, donde se ejecutan los servicios de administración.
+
+
 ## Limitaciones de plataformas soportadas para licencias de señales
 {: #limitations-of-supported-platforms-for-token-licensing }
 La lista de sistema operativo, su versión y la arquitectura de hardware que soporta {{ site.data.keys.mf_server }} con licencias de señales habilitadas.
@@ -329,6 +340,8 @@ Compruebe el archivo **messages.log**.
 Compruebe el archivo **SystemOut.log**.
 
 > **Importante:** Si las licencias de señales están instaladas en WebSphere Application Server Network Deployment o en un clúster, debe comprobar el registro de cada servidor.
+
+
 A continuación se muestra una lista de excepciones que pueden ocurrir tras la instalación y configuración de licencias de señales:
 
 * [No se ha encontrado la biblioteca nativa de Rational Common Licensing](#rational-common-licensing-native-library-is-not-found)
@@ -343,6 +356,8 @@ A continuación se muestra una lista de excepciones que pueden ocurrir tras la i
 {: #rational-common-licensing-native-library-is-not-found }
 
 > FWLSE3125E: No se ha encontrado la biblioteca nativa de Rational Common Licensing. Asegúrese de que la propiedad JVM (java.library.path) está definida con la vía de acceso correcta y de que se puede ejecutar la biblioteca nativa. Reinicie {{ site.data.keys.mf_server }} después de emprender una acción correctiva.
+
+
 #### Para perfil completo de WebSphere Application Server
 {: #for-websphere-application-server-full-profile }
 Las causas posibles de este error pueden ser:
@@ -373,6 +388,8 @@ El Java Runtime Environment del servidor de aplicaciones necesita privilegios de
 {: #rational-common-licensing-shared-library-is-not-found }
 
 > FWLSE3126E: No se ha encontrado la biblioteca compartida de Rational Common Licensing. Asegúrese de que la biblioteca compartida está configurada. Reinicie {{ site.data.keys.mf_server }} después de emprender una acción correctiva.
+
+
 Las causas posibles de este error pueden ser:
 
 * El archivo **rcl_ibmratl.jar** no se encuentra en el directorio previsto.
@@ -388,6 +405,8 @@ La propiedad **java.library.path** no está establecida para el servidor de apli
 {: #the-rational-license-key-server-connection-is-not-configured }
 
 > FWLSE3127E: No se ha configurado la conexión de Rational License Key Server. Asegúrese de que las propiedades JNDI de administrador "mfp.admin.license.key.server.port" y "mfp.admin.license.key.server.host" están establecidas. Reinicie {{ site.data.keys.mf_server }} después de emprender una acción correctiva.
+
+
 Las causas posibles de este error pueden ser:
 
 * La biblioteca nativa de Rational Common Licensing y la biblioteca compartida que utiliza el archivo **rcl_ibmratl.jar** están configuradas correctamente pero el valor de las propiedades JNDI (**mfp.admin.license.key.server.host** y **mfp.admin.license.key.server.port**) no está establecido en la aplicación de servicio de administración de {{ site.data.keys.mf_server }}.
@@ -398,6 +417,8 @@ Las causas posibles de este error pueden ser:
 {: #the-rational-license-key-server-is-not-accessible }
 
 > FWLSE3128E: Rational License Key Server "{port}@{IP address or hostname}" no está accesible. Asegúrese de que el servidor de licencias se está ejecutando y es accesible en {{ site.data.keys.mf_server }}. Si se produce este error al iniciar el tiempo de ejecución, reinicie {{ site.data.keys.mf_server }} después de emprender una acción correctiva.
+
+
 Las causas posibles de este error pueden ser:
 
 * La biblioteca compartida de Rational Common Licensing y la biblioteca nativa están definidas correctamente pero no hay ninguna configuración válida para conectar con el Rational License Key Server. Compruebe la dirección IP, el nombre de host y el puerto del servidor de licencias. Asegúrese de que el servidor de licencias se ha iniciado y es accesible desde el sistema donde está instalado el servidor de aplicaciones.
@@ -412,6 +433,8 @@ Asegúrese de que el puerto daemon gestor de licencias (lmgrd) y el puerto daemo
 {: #failed-to-initialize-rational-common-licensing-api }
 
 > No se ha podido inicializar la API de Rational Common Licensing (RCL) porque su biblioteca nativa no se ha podido encontrar o cargar com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (No se ha encontrado en java.library.path)
+
+
 Las causas posibles de este error pueden ser:
 
 * No se ha encontrado la biblioteca nativa de Rational Common Licensing en la vía de acceso definida en la propiedad **java.library.path**. Compruebe que la biblioteca nativa existe en la vía de acceso definida con el nombre esperado.
@@ -429,6 +452,8 @@ Este error se produce cuando el número de licencias de señal restantes en Rati
 {: #invalid-rcl_ibmratljar-file }
 
 > UTLS0002E: La biblioteca compartida Biblioteca compartida de RCL contiene una entrada de classpath que no se resuelve en un archivo jar válido, la biblioteca jar está previsto que se encuentre en {0}/rcl_ibmratl.jar.
+
+
 **Nota:** Solo para WebSphere Application Server y WebSphere Application Server Network Deployment
 
 Las causas posibles de este error pueden ser:

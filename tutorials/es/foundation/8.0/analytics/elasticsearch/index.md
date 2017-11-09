@@ -33,6 +33,8 @@ Elasticsearch está incluido en {{ site.data.keys.mf_analytics_server }} y parti
 
 
 > Para obtener más información sobre la configuración de Elasticsearch en el servidor de analíticas, consulte [Gestión del clúster y Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) en el tema [Guía de configuración de {{ site.data.keys.mf_analytics_server }}](../../installation-configuration/production/analytics/configuration).
+
+
 ### Propiedades de Elasticsearch
 {: #elasticsearch properties }
 
@@ -85,3 +87,4 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch expone muchos más puntos finales REST.
 Para obtener más información, visite la [Documentación de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+

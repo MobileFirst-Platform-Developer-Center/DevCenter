@@ -59,4 +59,6 @@ Pulsando en **Ampliar operaciones**, podrá ver notas de implementación, parám
 > Aviso: Todos los datos que envíe mediante **Try it out!** 
 podrían interferir con datos que ya estén en el almacén de datos. Si no está probando de forma específica enviar datos a su entorno de producción, utilice un nombre de prueba para la `x-mfp-analytics-api-key`.
 
+
+
 ![Probar Swagger Docs](test-swagger.png)

@@ -162,6 +162,9 @@ En la tabla siguiente se muestran los roles de seguridad y su acceso a {{ site.d
 | Business       | analytics_business       | Todo excepto páginas del administrador y de infraestructura. | Todo. |
 
 > Para obtener información sobre cómo configurar roles, consulte [Configuración de la autenticación de usuarios para la administración de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
+
+
+
 ## Artículos de blog relacionados
 * [Más información sobre la instrumentación de analíticas personalizadas]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * ´[Más información sobre los enganches web]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

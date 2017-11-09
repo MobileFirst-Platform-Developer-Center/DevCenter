@@ -13,7 +13,9 @@ Las comprobaciones de seguridad constituyen el bloque de construcción de lado d
 
 Un adaptador puede ser un adaptador de *recursos* (lo que significa que presenta recursos y contenido para enviar al cliente), un adaptador *SecurityCheck*, o **ambos**.
 
-> <b>Nota:</b> Cuando las comprobaciones de seguridad se implementan en adaptadores, la infraestructura de seguridad {{ site.data.keys.product_adj }} y las API de adaptador se separan y no pueden mezclarse. Por lo tanto, no puede utilizar un API de adaptador, como la interfaz `AdpatersAPI` en el código de comprobación de seguridad, ni API de comprobación de seguridad en el código de recursos de adaptador. La arquitectura de la infraestructura de seguridad es modular y flexible y, por lo tanto, la implementación de la comprobación de seguridad no es intrínsecamente independiente de cualquier recurso o aplicación. Puede reutilizar la misma comprobación de seguridad para proteger diferentes recursos y utilizar combinaciones de comprobación de seguridad diferentes para varios flujos de autorización. Para ampliar la flexibilidad, una clase de comprobación de seguridad expone las propiedades de configuración que pueden personalizarse al nivel de adaptador en la definición de comprobación de seguridad y durante el tiempo de ejecución de {{ site.data.keys.mf_console }}.
+> <b>Nota:</b> Cuando las comprobaciones de seguridad se implementan en adaptadores, la infraestructura de seguridad {{ site.data.keys.product_adj }} y las API de adaptador se separan y no pueden mezclarse. Por lo tanto, no puede utilizar un API de adaptador, como la interfaz `AdpatersAPI` en el código de comprobación de seguridad, ni API de comprobación de seguridad en el código de recursos de adaptador. 
+
+La arquitectura de la infraestructura de seguridad es modular y flexible y, por lo tanto, la implementación de la comprobación de seguridad no es intrínsecamente independiente de cualquier recurso o aplicación. Puede reutilizar la misma comprobación de seguridad para proteger diferentes recursos y utilizar combinaciones de comprobación de seguridad diferentes para varios flujos de autorización. Para ampliar la flexibilidad, una clase de comprobación de seguridad expone las propiedades de configuración que pueden personalizarse al nivel de adaptador en la definición de comprobación de seguridad y durante el tiempo de ejecución de {{ site.data.keys.mf_console }}.
 
 Para facilitar y acelerar el proceso de desarrollo, {{ site.data.keys.product }} proporciona implementaciones abstractas base de la interfaz de `SecurityCheck`. Se proporciona una implementación abstracta base de la interfaz de `SecurityCheckConfiguration` (`SecurityCheckConfigurationBase`), además de clases de configuración de comprobación de seguridad de muestras complementarias para cada una de las clases de comprobación de seguridad base proporcionadas. Empiece con la implementación de comprobación de seguridad base (y la configuración de muestra relacionada) que mejor se ajuste a sus necesidades de desarrollo y amplíe y modifique la implementación según proceda.
 
@@ -41,6 +43,8 @@ Las clases base de comprobación de seguridad que se describen a continuación e
 [Crear un adaptador Java o JavaScript](../../adapters/creating-adapters/) o utilizar uno existente.
 
 > Al crear un adaptador Java, la plantilla predeterminada supone que el adaptador presentará **recursos**. Es elección del usuario empaquetar comprobaciones de seguridad y recursos en el mismo adaptador o separarlos en adaptadores distintos.
+
+
 Para eliminar la implementación de **recursos** predeterminada, suprima los archivos **[NombreAdaptador]Application.java** y **[NombreAdaptador]Resource.java**. Elimine también el `<JAXRSApplicationClass>`elemento de **adapter.xml**.
 
 En el archivo del adaptador Java **adapter.xml**, añada un elemento XML llamado `securityCheckDefinition`. Por ejemplo: 
@@ -149,6 +153,8 @@ Ejemplo:
 ```
 
 > Para ver un ejemplo real, consulte la [sección Configuración de una comprobación de seguridad](../credentials-validation/security-check/#configuring-the-security-check) del tutorial de comprobación de seguridad CredentialsValidation.
+
+
 ### {{ site.data.keys.mf_console }} - Adaptador
 {: #mobilefirst-operations-console-adapter }
 En {{ site.data.keys.mf_console }} → **[su adaptador] → separador Comprobación de seguridad**, puede modificar el valor de una propiedad definida en el archivo **adapter.xml**.  
@@ -187,7 +193,7 @@ También puede editar de forma manual el archivo JSON de configuración del adap
 
 1. Desde una **ventana de línea de mandatos**, navegue a la carpeta de raíz de proyecto y ejecute `mfpdev app pull`.
 2. Abra el archivo de configuración ubicado en la carpeta **project-folder\mobilefirst**.
-3. Edite el archivo y busque el objeto `securityCheckConfigurations`. En este objeto, busque o cree un objeto que se llame como la comprobación de seguridad que ha seleccionado. En el objeto de comprobación de seguridad, añada una pareja de propiedad de configuración nombre valor para cada propiedad de configuración disponible que desee configurar. Por ejemplo: 
+3. Edite el archivo y busque el objeto `securityCheckConfigurations`. En este objeto, busque o cree un objeto que se llame como la comprobación de seguridad que ha seleccionado.En el objeto de comprobación de seguridad, añada una pareja de propiedad de configuración nombre valor para cada propiedad de configuración disponible que desee configurar. Por ejemplo: 
 
    ```xml
    "SecurityCheckConfigurations": {

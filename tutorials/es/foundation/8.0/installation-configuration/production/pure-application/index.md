@@ -182,6 +182,8 @@ Puede encontrar el archivo **{{ site.data.keys.mf_system_pattern_file }}**. Aseg
 Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, debe instalar IBM Rational License Key Server y configurarlo con sus licencias antes de desplegar {{ site.data.keys.mf_system_pattern_full }}.
 
 > **Importante:** La plantilla de patrón de {{ site.data.keys.product }} (WAS ND) no soporta licencias de señales. Debe utilizar licencias perpetuas para desplegar patrones basados en la plantilla de patrón {{ site.data.keys.product }} (WAS ND). Todas las otras plantillas de patrón dan soporte a las licencias de señales.
+
+
 Su IBM Rational License Key Server debe ser externo a su PureApplication System. {{ site.data.keys.system_pattern }} no soporta el servicio compartido de PureApplication System para IBM Rational License Key Server.
 
 Además, debe saber la siguiente información sobre su Rational License Key Server para añadir la información del servidor de clave de licencia a sus atributos de patrón:
@@ -227,6 +229,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -247,6 +250,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
+
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -273,6 +277,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
         
         **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -351,6 +356,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -371,6 +377,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
+
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -379,7 +386,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración del despliegue de patrón en el paso 9. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -401,6 +408,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
         
         **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -479,6 +487,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -499,6 +508,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
+
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -507,7 +517,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración del despliegue de patrón en el paso 9. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -525,6 +535,8 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
         
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
+
         **Nombre de usuario administrativo de WebSphere**  
         ID de usuario administrativo para el inicio de sesión en WebSphere Administration Console. Valor predeterminado: virtuser.
 
@@ -615,6 +627,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -635,6 +648,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
+
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -643,7 +657,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración de despliegue de patrón en el paso 10. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -665,6 +679,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
         
         **runtime_contextRoot_list**  
         Nombre de raíz de contexto del tiempo de ejecución de {{ site.data.keys.mf_server }} en caso de que existan varios tiempos de ejecución. Utilice punto y coma, ";" para separar cada raíz de contexto de tiempo de ejecución; por ejemplo, **HelloMobileFirst;HelloWorld**.
@@ -756,6 +771,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -788,6 +804,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
+
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -796,7 +813,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 7. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Componentes**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.wlapp**.
 
@@ -817,6 +834,8 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
         
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
+
         **Nombre de usuario administrativo de WebSphere**  
         ID de usuario administrativo para el inicio de sesión en WebSphere Administration Console. Valor predeterminado: virtuser.
 
@@ -904,6 +923,7 @@ Para trabajar correctamente, los nodos de servicio de administración de {{ site
     * En el panel de control de PureApplication System, pulse Patrones y, a continuación, en Instancias de patrón, pulse Servicios compartidos.
 
         > **Importante:** Los servicios compartidos aparecen dos veces en el menú **Patrones**, asegúrese de pulsar en **Servicios compartidos** dentro de **Instancias de patrón** y no dentro de Patrones.
+
     * En la página de **Instancias de servicio compartido**, busque un nombre que empiece por **Supervisor del sistema para WebSphere Application Server**. Pulse ese nombre para expandir su entrada
     
         Si no ve una entrada de **Supervisor del sistema para WebSphere Application Server**, el supervisor del sistema para el servicio compartido de WebSphere Application Server no está desplegado y no es necesario continuar con este procedimiento.
@@ -973,6 +993,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure **MFP Server Application Center** en el nodo **MFP AppCenter Server**.
     
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo **MFP AppCenter Server**, pulse el componente **MFP Server Application Center**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -992,6 +1013,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
     Proporcione la siguiente información en los campos suministrados:
 
     > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     
     **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -1077,6 +1099,7 @@ Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplicati
 3. Opcional: Configure **MFP Server Application Center** en el nodo **MFP AppCenter Server**.
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
     * En el nodo **MFP AppCenter Server**, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -1099,6 +1122,7 @@ Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplicati
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+
         
         **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -1255,7 +1279,7 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.
     
-    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
     
     **mfpmonitor**  
     Rol de supervisor para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:    
@@ -1266,7 +1290,7 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.
     
-    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
     
     **mfpoperator**  
     Rol de operador para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:
@@ -1277,12 +1301,12 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.
 
-    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 4. Opcional: Configure la conexión SSL LDAP. Este paso solo es necesario si ha establecido **REQUIRE_SSL** en true en el paso anterior para utilizar conexiones seguras en el servidor LDAP:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre al componente "MobileFirst LDAP Cert", por ejemplo.
     * Pase el cursor por encima del nuevo componente y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar la posición del componente en el nodo. Asegúrese de que se encuentra entre el componente **MFP Server Prerequisite** y el componente **MFP Server Administration**.
-    * Pulse el componente **MobileFirst LDAP Cert**. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba el artefacto de certificación LDAP en el campo **Archivo adicional** pulsando el botón **Explorar** para localizarlo
+    * Pulse el componente **MobileFirst LDAP Cert**. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba el artefacto de certificación LDAP en el campo **Archivo adicional** pulsando el botón **Explorar** para localizarlo
     * En el campo **Vía de acceso de destino**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/tdscert.der**.
     * En el nodo MobileFirst Platform Server (o en el nodo DmgrNode cuando utiliza la plantilla {{ site.data.keys.product }} (WebSphere Application Server Network Deployment)), seleccione el componente MFP Server Administration y, a continuación, pulse el botón **Añadir referencia** junto el campo **CERT\_FILE\_PATH**. En la ventana emergente, pulse el separador **Parámetro a nivel de componente**. En la lista de componentes, seleccione **MobileFirst LDAP Cert**. En la lista de atributos de **Salida**, seleccione **target\_path**. Pulse el botón **Añadir** para actualizar el campo **Valor de salida** y, a continuación, pulse **Aceptar**.
 
@@ -1342,6 +1366,7 @@ Este procedimiento implica la configuración de los parámetros de base de datos
         Número de puerto de base de datos externa.
         
         > **Nota:** Si está utilizando la plantilla de patrón de {{ site.data.keys.product }} (WAS ND), también necesita configurar el atributo **Open firewall ports for WAS** en el número de puerto de base de datos externa.
+
     * En el nodo MobileFirst Platform Server (o en el nodo DmgrNode cuando utiliza la plantilla {{ site.data.keys.product }} (WAS ND)), seleccione el componente **MFP Server Runtime Deployment**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En **USE\_EXTERNAL\_DATABASE** configure los siguientes parámetros:
 
@@ -1365,6 +1390,8 @@ Antes de empezar,
 Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas, asegúrese de que el servidor LDAP funcione y consulte a su administrador LDAP para obtener la información de configuración necesaria.
 
 > **Importante:** Cuando la configuración de repositorio LDAP está habilitada en el componente Analíticas, no se crea de forma automática un usuario de administración predeterminado para {{ site.data.keys.mf_analytics }}. En su lugar, debe especificar los valores del nombre de usuario de administración y la contraseña almacenados en el repositorio LDAP. Estos valores son necesarios para proteger la consola de analíticas.
+
+
 1. Compilar un patrón con la topología que necesite. Para obtener más información, consulte los siguientes temas:
     * [Despliegue de {{ site.data.keys.mf_server }} en un servidor de perfil de WebSphere Application Server Liberty de nodo único](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
     * [Despliegue de {{ site.data.keys.mf_server }} en un servidor de perfil de WebSphere Application Server Liberty de varios nodos](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
@@ -1385,10 +1412,11 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
 
         Se crea un nodo nuevo con el nombre "OS Node". Cambie el nombre a "{{ site.data.keys.mf_analytics }}".
     * Realice los siguientes cambios de configuración dependiendo del tipo de servidor de aplicaciones en el que desee desplegar las analíticas:
-        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil de Liberty de WebSphere Application Server Liberty, pulse **Servidor de perfil de Liberty** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo. En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/Liberty** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
-        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil completo de WebSphere Application Server, pulse **Servidor autónomo** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo. En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/AppServer/Profiles**, cambie el nombre del perfil por **AppSrv01** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
+        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil de Liberty de WebSphere Application Server Liberty, pulse **Servidor de perfil de Liberty** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo.En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/Liberty** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
+        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil completo de WebSphere Application Server, pulse **Servidor autónomo** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo.En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/AppServer/Profiles**, cambie el nombre del perfil por **AppSrv01** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
     
         > **Importante:** El usuario administrativo de WebSphere Application Server se creará en el repositorio de usuarios de WebSphere Application Server. Si va a configurar LDAP para el servidor de analíticas, evite conflictos de nombre de usuario con el usuario administrativo de WebSphere Application Server. Por ejemplo, si el servidor LDAP va a introducir "user1" a través de su configuración, no establezca "user1" como nombre de usuario administrativo de WebSphere Application Server.
+
     * En la lista de componentes, expanda **Scripts** y, a continuación, arrastre y suelte un componente **MFP Server Prerequisite** y un componente MFP WAS SDK Level en el nodo {{ site.data.keys.mf_analytics }} en el lienzo.
     * En la lista de componentes, expanda **Scripts** y, a continuación, arrastre y suelte un componente **MFP Analytics** y un componente en el nodo {{ site.data.keys.mf_analytics }} en el lienzo. Asegúrese de que el componente MFP Analytics está situado después del componente de servidor de perfil de Liberty (o el componente de servidor autónomo).
     * Proporcione la siguiente información de {{ site.data.keys.mf_analytics }} en los campos suministrados:
@@ -1396,6 +1424,7 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
         Los parámetros LDAP son exactamente los mismos que los parámetros de MFP Server Administration. Para obtener más información, consulte el paso "Configurar MFP Server Administration" en 3:
         
         > **Importante:** Para la configuración de conexión SSL LDAP en {{ site.data.keys.mf_analytics }}, asegúrese que en el paso 4b [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), el componente CERT LDAP de {{ site.data.keys.product_adj }} arrastrado en el nodo {{ site.data.keys.mf_analytics }} debe moverse entre el servidor de perfil de Liberty (o servidor autónomo) y el paquete de script MFP Analytics.
+
         
    #### WAS_ROOT
     * Si se está instalando {{ site.data.keys.mf_analytics }} en un perfil de Liberty de WebSphere Application Server, especifique el directorio de instalación del perfil de Liberty para Analíticas:
@@ -1652,7 +1681,7 @@ Este paquete script configura {{ site.data.keys.mf_analytics_server }} en un per
 | WAS\_admin\_password | Solo en el perfil completo de WebSphere Application Server.<br/><br/>Contraseña de usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas. Para el perfil de Liberty de WebSphere Application Server, deje el valor sin cambiarlo. | 
 | admin_user | Obligatorio. {::nomarkdown}<ul><li>Si no hay un repositorio LDAP habilitado, cree un usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.</li><li>Si hay un repositorio LDAP habilitado, especifique el nombre de usuario con privilegio de administración de {{ site.data.keys.mf_analytics }}. El valor se almacena en el repositorio LDAP. </li></ul> |
 | admin_password | Obligatorio. <ul><li>Si no hay un repositorio LDAP habilitado, especifique la contraseña del usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.</li><li>Si hay un repositorio LDAP habilitado, especifique la contraseña de usuario administrativo. El valor se almacena en el repositorio LDAP. </li></ul>{:/} | 
-| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios: <br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None. | 
+| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios: <br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None.| 
 | LDAP_IP | (Parámetro LDAP). Dirección IP del servidor LDAP.| 
 | LDAP\_SSL\_PORT | (Parámetro LDAP) Puerto LDAP para conexión segura. | 
 | LDAP_PORT | (Parámetro LDAP) Puerto LDAP para conexión no segura. | 
@@ -1664,10 +1693,10 @@ Este paquete script configura {{ site.data.keys.mf_analytics_server }} en un per
 | GROUP_FILTER | (Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
 | LDAP\_REPOSITORY\_NAME | (Parámetro LDAP) Nombre de servidor LDAP. | 
 | CERT\_FILE\_PATH | (Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
-| mfpadmin | (Parámetro LDAP) Rol de administración de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
-| mfpdeployer | (Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
-| mfpmonitor | (Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
-| mfpoperator | (Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpadmin | (Parámetro LDAP) Rol de administración de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| mfpdeployer | (Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| mfpmonitor | (Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| mfpoperator | (Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
@@ -1688,7 +1717,7 @@ Este paquete script solo se aplica para los nodos personalizados en la plantilla
 
 | Parámetro | Descripción | 
 |-----------|-------------|
-| WAS_ROOT | Obligatorio. Directorio de instalación de nodos personalizados de WebSphere Application Server Network Deployment en el nodo CustomNode. En las plantillas de patrón está correlacionado con el atributo de salida install_directory del servidor de nodos personalizados. |
+| WAS_ROOT  | Obligatorio. Directorio de instalación de nodos personalizados de WebSphere Application Server Network Deployment en el nodo CustomNode. En las plantillas de patrón está correlacionado con el atributo de salida install_directory del servidor de nodos personalizados. |
 | profile_name | Obligatorio. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón está correlacionado con el atributo de salida cn_profile_name de los nodos personalizados. | 
 | WAS\_admin\_user | Obligatorio. Está correlacionado con el atributo de salida del was_admin de los nodos personalizados en la plantilla de patrón. | 
 | Ports	| Obligatorio. Otros puertos que deben abrirse para conectarse con el servidor DB2 y el servidor LDAP (opcional). Los valores de puerto pueden separarse por punto y coma; por ejemplo, "50000;636"<br/><br/>Valor predeterminado: 50000. | 
@@ -1699,7 +1728,7 @@ Este paquete script solo se aplica si están disponibles los perfiles WAS en la 
 
 | Parámetro | Descripción | 
 |-----------|-------------|
-| WAS_ROOT | Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida **install_directory** del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. |
+| WAS_ROOT  | Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida **install_directory** del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. |
 | profile_name | El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida **dmgr\_profile\_name** del gestor de despliegue o **sa\_profile\_name** del servidor autónomo. | 
 | SDK_name | Nombre del SDK que debe habilitarse para esta instalación de WebSphere| 
 
@@ -1722,7 +1751,7 @@ El paquete script debe utilizarse con el componente de software del servidor de 
 
 | Parámetro | Descripción |
 |-----------|-------------|
-| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
+| WAS_ROOT  | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
 | profile_name | Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida dmgr_profile_name del gestor de despliegue o sa_profile_name del servidor autónomo. | 
 | NUMBER\_OF\_CLUSTERMEMBERS | Opcional. Solo aplicable para la plantilla de patrón de {{ site.data.keys.product }} (WAS ND). Especifica el número de miembros de clúster para que el clúster despliegue el servicio de administración de MFP. Valor predeterminado: 2. | 
 | db_user | Obligatorio. Nombre de usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_user del paquete script de MFP Administration DB en la plantilla de patrón. | 
@@ -1738,7 +1767,7 @@ El paquete script debe utilizarse con el componente de software del servidor de 
 | server_hostname | Obligatorio. Nombre de host de {{ site.data.keys.mf_server }} o del gestor de despliegue. Correlacionado con el atributo de salida de host del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
 | server\_farm\_mode | Obligatorio. Si debe desplegarse {{ site.data.keys.mf_server }} en el nodo granja de servidores. Debe estar seleccionado para una topología de granja de servidores y debe estar deseleccionado para una topología autónoma. Valor predeterminado: establecer según la topología definida en la plantilla de patrón. | 
 | webserver_ip | Opcional. Cuando se despliega IBM HTTP servers en la plantilla de patrón, este parámetro se correlaciona con el atributo de salida IP de IBM HTTP servers. | 
-| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios. Uno de los siguientes valores:<ul>None: La conexión LDAP está inhabilitada. Cuando este valor está seleccionado, todos los demás parámetros LDAP se tratan como solo marcadores.</li><li>TivoliDirectoryServer: Seleccione este valor si el repositorio LDAP es IBM Tivoli Directory Server</li><li>ActiveDirectory: Seleccione este valor si el repositorio LDAP es Microsoft Active Directory</li></ul>{:/}Valor predeterminado: None. | 
+| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios. Uno de los siguientes valores:<ul>None: La conexión LDAP está inhabilitada. Cuando este valor está seleccionado, todos los demás parámetros LDAP se tratan como solo marcadores.</li><li>TivoliDirectoryServer: Seleccione este valor si el repositorio LDAP es IBM Tivoli Directory Server</li><li>ActiveDirectory: Seleccione este valor si el repositorio LDAP es Microsoft Active Directory</li></ul>{:/}Valor predeterminado: None.| 
 | LDAP_IP | (Parámetro LDAP) Dirección IP del servidor LDAP. | 
 | LDAP_SSL_PORT | (Parámetro LDAP) Puerto LDAP para conexión segura. | 
 | LDAP_PORT | (Parámetro LDAP) Puerto LDAP para conexión no segura. | 
@@ -1750,10 +1779,10 @@ El paquete script debe utilizarse con el componente de software del servidor de 
 | GROUP_FILTER | (Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
 | LDAP\_REPOSITORY\_NAME | (Parámetro LDAP) Nombre de servidor LDAP. | 
 | CERT\_FILE\_PATH | (Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
-| mfpadmin | Rol de administración para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
-| mfpdeployer | (Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
-| mfpmonitor | (Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
-| mfpoperator | (Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpadmin | Rol de administración para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| mfpdeployer | (Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| mfpmonitor | (Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| mfpoperator | (Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
@@ -1774,7 +1803,7 @@ Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en 
 
 | Parámetro | Descripción | 
 |-----------|-------------|
-| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty o servidor autónomo. | 
+| WAS_ROOT  | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty o servidor autónomo. | 
 | profile_name | El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida sa_profile_name del servidor autónomo. | 
 | db_instance | Nombre de la instancia de base de datos. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
 | db_user | Nombre de usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_user del paquete script de MFP Administration DB en la plantilla de patrón. | 
@@ -1787,7 +1816,7 @@ Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en 
 | WAS\_admin\_user | Obligatorio para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón. <br/><br/>Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. | 
 | WAS\_admin\_password | Obligatorio para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was\_admin\_password del servidor autónomo en la plantilla de patrón. |
 | server_hostname | Nombre de host de {{ site.data.keys.mf_server }}. Está correlacionada con el atributo de salida de host del servidor de perfil de Liberty o servidor autónomo. |
-| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios: <br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None. | 
+| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios: <br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None.| 
 | LDAP_IP | (Parámetro LDAP). Dirección IP del servidor LDAP.| 
 | LDAP\_SSL\_PORT | (Parámetro LDAP) Puerto LDAP para conexión segura. | 
 | LDAP_PORT | (Parámetro LDAP) Puerto LDAP para conexión no segura. | 
@@ -1815,7 +1844,7 @@ Este paquete script instala el tiempo de ejecución de {{ site.data.keys.product
 
 | Parámetro | Descripción |
 |-----------|-------------|
-| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server, o directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida install_directory del servidor de perfil de Liberty o servidor autónomo. | 
+| WAS_ROOT  | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server, o directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida install_directory del servidor de perfil de Liberty o servidor autónomo. | 
 | profile_name | Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida dmgr\_profile\_name del gestor de despliegue o sa\_profile\_name del servidor autónomo. |
 | NUMBER\_OF\_CLUSTERMEMBERS | Opcional. Solo aplicable para la plantilla de patrón de {{ site.data.keys.product }} (WAS ND). Especifica el número de miembros de clúster para que el clúster despliegue el tiempo de ejecución de MFP. Valor predeterminado: 2. | 
 | db_ip | Dirección IP del servidor DB donde está instalada la base de datos de tiempo de ejecución (y los informes opcionales). Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. |

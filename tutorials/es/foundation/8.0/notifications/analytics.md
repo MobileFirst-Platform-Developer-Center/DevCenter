@@ -55,4 +55,5 @@ Para obtener información sobre cómo visualizar informes de notificaciones push
 
 
 > Para obtener más información sobre las propiedades JNDI para el servicio push, consulte [Lista de propiedades JNDI para el servicio push de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
-> **Nota:** El instalador de {{ site.data.keys.product_full }} crea y configura estas propiedades en los valores predeterminados.
+**Nota:** El instalador de {{ site.data.keys.product_full }} crea y configura estas propiedades en los valores predeterminados.
+

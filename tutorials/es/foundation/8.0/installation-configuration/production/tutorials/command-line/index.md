@@ -17,6 +17,8 @@ Utilice la modalidad de línea de mandatos de IBM Installation Manager y las tar
         * Oracle
 
         > **Importante:** Debe tener una base de datos donde pueda crear las tablas necesarias para el producto y un usuario de base de datos que pueda crear tablas en esa base de datos.
+
+
         En la guía de aprendizaje, los pasos para crear las tablas son para DB2. Puede encontrar el instalador de DB2 como paquete de {{ site.data.keys.product }} eAssembly en IBM Passport Advantage.
 
 * Controlador JDBC para su base de datos.
@@ -91,6 +93,8 @@ Para detener el servidor, introduzca el mandato: `server stop mfp1` desde **libe
 La página de inicio predeterminada se puede ver en [http://localhost:9080](http://localhost:9080).
 
 > **Nota:** Para producción, debe asegurarse de que el servidor Liberty está iniciado como servicio cuando se inicia el sistema principal. Hacer que el servidor Liberty se inicie como servicio no es parte de esta guía de aprendizaje.
+
+
 ## Instalación de {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
 Asegúrese de que Installation Manager V1.8.4 o posterior está instalado. Es posible que la instalación de {{ site.data.keys.mf_server }} no tenga éxito con una versión anterior de Installation Manager ya que las instalaciones posteriores requieren Java 7. Las versiones anteriores de Installation Manager se suministran con Java 6.
@@ -168,6 +172,8 @@ En esta guía de aprendizaje, las tablas de todos los componentes están colocad
     
     > **Nota:** La sentencia no elimina los privilegios predeterminados concedidos a PUBLIC en una base de datos predeterminada de DB2. Para producción, es posible que tenga que reducir los privilegios en esta base de datos a los requisitos mínimos para el producto. Para obtener más información sobre la seguridad DB2 y un ejemplo de las prácticas de seguridad, consulte [Seguridad DB2, Parte 8: Doce procedimientos recomendados de seguridad DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
 
+
+
 ## Despliegue de {{ site.data.keys.mf_server }} en Liberty con tareas Ant
 {: #deploying-mobilefirst-server-to-liberty-with-ant-tasks }
 Utilice las tareas Ant para ejecutar las operaciones siguientes:
@@ -218,6 +224,8 @@ Seleccione el archivo XML adecuado que contiene las tareas Ant y configure las p
 * Ejecute `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install` para instalar {{ site.data.keys.mf_server }}.
 
 > **Nota:** Si no tiene DB2 y desea probar la instalación con Derby incluido como base de datos, utilice el archivo **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml**. Sin embargo, no puede realizar el último paso de esta guía de aprendizaje (Creación de una granja de servidores de dos servidores Liberty que ejecutan {{ site.data.keys.mf_server }}) porque varios servidores Liberty no pueden acceder a la base de datos Derby. Debe establecer las propiedades excepto aquellas relacionadas con DB2 (**database.db2**, ...). Para Derby, establezca el valor de la propiedad **database.derby.datadir** en el directorio donde se puede crear la base de datos Derby. Además, establezca el valor de la propiedad **database.derby.mfp.dbname** en **MFPDATA**.
+
+
 
 Las tareas Ant ejecutan las siguientes operaciones:
 
@@ -356,6 +364,8 @@ Una vez finalizada la instalación, puede utilizar este procedimiento para proba
 
     > **Nota:** Si se conecta con HTTP, el ID de inicio de sesión y la contraseña se envían como texto simple en la red. Para un inicio de sesión seguro, utilice HTTPS para iniciar sesión en el servidor. Puede ver el puerto HTTPS del servidor Liberty en el atributo httpsPort del elemento `<httpEndpoint>` del archivo **server.xml**. De forma predeterminada, el valor es 9443.
 
+
+
 4. Cierre la sesión de la consola con **Hola, administrador → Finalizar sesión**.
 5. Especifique el siguiente URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) en el navegador web y acepte el certificado. De forma predeterminada, el servidor Liberty genera un certificado predeterminado que no es conocido por su navegador web, debe aceptar el certificado. Mozilla Firefox presenta esta certificación como excepción de seguridad.
 6. Vuelva a iniciar sesión con **admin/admin**. El inicio de sesión y la contraseña se encriptan entre su navegador web y {{ site.data.keys.mf_server }}. En producción, es posible que desee cerrar el puerto HTTP.
@@ -434,7 +444,8 @@ Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecut
 
     La comunicación JMX con Liberty se realiza mediante el conector REST de Liberty en el protocolo HTTPS. Para habilitar esta comunicación, cada servidor de la granja de servidores debe ser capaz de reconocer el certificado SSL de los otros miembros. Debe intercambiar los certificados HTTPS en sus almacenes de confianza. Utilice los programas de utilidad de IBM como Keytool, que es parte de la distribución de JRE de IBM en **java/bin** para configurar el almacén de confianza. Las ubicaciones del almacén de claves y del almacén de confianza están definidas en el archivo **server.xml**. De forma predeterminada, el almacén de claves del perfil de Liberty se encuentra en **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. La contraseña de este almacén de claves predeterminado, como se puede ver en el archivo **server.xml**, es **mobilefirst**.
         
-    > **Sugerencia:** Puede cambiarla con el programa de utilidad keytool Keytool, pero también debe cambiar la contraseña en el archivo server.xml para que el servidor Liberty pueda leer este almacén de claves. En esta guía de aprendizaje, utilice la contraseña predeterminada.    
+    > **Sugerencia:** Puede cambiarla con el programa de utilidad keytool Keytool, pero también debe cambiar la contraseña en el archivo server.xml para que el servidor Liberty pueda leer este almacén de claves. En esta guía de aprendizaje, utilice la contraseña predeterminada.
+    
     * En **WLP\_USER\_DIR/servers/mfp1/resources/security**, especifique `keytool -list -keystore key.jks`. El mandato muestra los certificados en el almacén de claves. Solo hay uno llamado **default**. Se le solicitará la contraseña del almacén de claves (mobilefirst) antes de poder ver las claves. Este es el caso de todos los mandatos siguientes con el programa de utilidad Keytool.
     * Exporte el certificado predeterminado del servidor mfp1 con el mandato: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
     * En **WLP\_USER\_DIR/servers/mfp2/resources/security**, exporte el certificado predeterminado del servidor mfp2 con el mandato: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.

@@ -68,6 +68,8 @@ El archivo .war generado estará disponible en la carpeta **[MyWebApp] → targe
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Se debe ejecutar `mvn clean install` cada vez que actualiza un recurso web.
 
+
+
 ### Adición de la webapp de Maven al servidor de aplicaciones
 {: #adding-the-maven-webapp-to-the-application-server }
 1. Edite el archivo **server.xml** de su servidor de aplicaciones de WebSphere.   

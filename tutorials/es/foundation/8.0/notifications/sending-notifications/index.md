@@ -14,7 +14,7 @@ Las notificaciones entonces se pueden enviar a: todos los dispositivos (difusió
 **Requisito previo**: Asegúrese de completar la guía de aprendizaje [Visión general de notificaciones](../).
 
 
-#### Ir a
+#### Ir a 
 {: #jump-to }
 * [Configuración de notificaciones](#setting-up-notifications)
     * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
@@ -45,20 +45,21 @@ En el lado del servidor, la configuración necesaria incluye: la configuración 
 Las siguientes instrucciones se han actualizado en consonancia a este último aspecto.
 Además tenga en cuenta que las configuraciones GCM existentes desplegadas continuarán funcionando, sin embargo, las nuevas configuraciones GCM no lo harán, siendo preciso utilizar FCM en su lugar.
 Los dispositivos Android utilizan el servicio Firebase Cloud Messaging (FCM) para las notificaciones push.
-
+  
 Siga estos pasos para configurar FCM:
 
-1. Visite la [Consola de Firebase](https://console.firebase.google.com/?pli=1).
-2. Cree un proyecto nuevo y dele un nombre.
+1. Visite la [Consola de Firebase](https://console.firebase.google.com/?pli=1). 
+2. Cree un proyecto nuevo y dele un nombre. 
 3. Pule el icono de la rueda dentada de valores y seleccione **Valores de proyecto**.
 4. Pulse el separador **Cloud Messaging** para generar una **clave de API de servidor** y un **ID de remitente** y pulse **Guardar**.
 
 
 > También puede configurar FCM mediante la [API REST para el servicio push de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) o la [API REST para el servicio de administración de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
+
 #### Notas
 {: #notes }
 Si su organización dispone de un cortafuegos que restringe el tráfico a o desde Internet, debe seguir los pasos siguientes:
-
+  
 
 * Configurar el cortafuegos para permitir la conectividad con FCM a fin de que las aplicaciones de cliente de FCM reciban mensajes.
 
@@ -74,7 +75,7 @@ Si su organización dispone de un cortafuegos que restringe el tráfico a o desd
 ### Servicio de notificaciones push de Apple
 {: #apple-push-notifications-service }
 Los dispositivos iOS utilizan APNS (Push Notification Service) de Apple para las notificaciones push.
-
+  
 Siga estos pasos para configurar APNS:
 
 1. [Genere un certificado de notificación push para el desarrollo o la producción](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
@@ -84,9 +85,9 @@ A continuación, pulse **Guardar**.
 #### Notas
 {: #notes-apns }
 * Para que se envíen las notificaciones push, los siguientes servidores deben estar disponibles desde una instancia de {{ site.data.keys.mf_server }}:
-
+  
     * Servidores de recinto de pruebas:
-
+  
         * gateway.sandbox.push.apple.com:2195
         * feedback.sandbox.push.apple.com:2196
     * Servidores de producción:  
@@ -101,12 +102,13 @@ A continuación, pulse **Guardar**.
 
 
 > También es posible configurar APNS utilizando la [API REST para el servicio push de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) o la [API REST para el servicio de administración de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
+
 <img class="gifplayer" alt="Imagen de adición de credenciales APNS" src="apns-setup.png"/>
 
 ### Servicio de notificaciones push de Windows
 {: #windows-push-notifications-service }
 Los dispositivos Windows utilizan WNS (Windows Push Notifications Service) para las notificaciones push.
-
+  
 Siga estos pasos para configurar WNS:
 
 1. Siga las [instrucciones que Microsoft proporciona](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) para generar los valores de **SID (Package Security Identifier)** y **Secreto de cliente**.
@@ -115,6 +117,7 @@ Siga estos pasos para configurar WNS:
 
 
 > También es posible configurar WNS utilizando la [API REST para el servicio push de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) o la [API REST para el servicio de administración de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
+
 <img class="gifplayer" alt="Imagen de adición de credenciales WNS" src="wns-setup.png"/>
 
 ### Servicio de notificación SMS
@@ -248,7 +251,7 @@ A continuación, pulse **Añadir**.
 Las notificaciones autenticadas son las que se envían a uno o varios `userIds`.  
 
 Correlacione el elemento de ámbito **push.mobileclient** para la comprobación de seguridad utilizada para la aplicación.
-
+  
 
 1. Cargue {{ site.data.keys.mf_console }} y vaya a **[su aplicación] → Seguridad → Correlación de elementos de ámbito**, pulse en **Nuevo** o edite una entrada de correlación de ámbito existente.
 
@@ -324,22 +327,24 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
 > Para revisar todas las API REST de notificaciones push, consulte el tema [API REST de servicios de tiempo de ejecución](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) en la documentación de usuario.
+
+
 #### Carga útil de notificación
 {: #notification-payload }
 La solicitud puede contener las siguientes propiedades de carga útil:
 
 
-Propiedades de carga útil | Definición
+Propiedades de carga útil | Definición 
 --- | ---
-message | Mensaje de alerta a enviar.
-settings | Los valores son los distintos atributos de la notificación.
-target | Conjunto de destinos: etiquetas, plataformas, dispositivos o ID de consumidor. Solo se puede especificar uno de los destinos.
-deviceIds | Matriz de los dispositivos representados por los identificadores de dispositivo. Los dispositivos con estos identificadores recibirán la notificación. Se trata de una notificación de difusión única.
+message | Mensaje de alerta a enviar. 
+settings | Los valores son los distintos atributos de la notificación. 
+target | Conjunto de destinos: etiquetas, plataformas, dispositivos o ID de consumidor. Solo se puede especificar uno de los destinos. 
+deviceIds | Matriz de los dispositivos representados por los identificadores de dispositivo. Los dispositivos con estos identificadores recibirán la notificación. Se trata de una notificación de difusión única. 
 notificationType | Valor entero para indicar el canal (Push/SMS) utilizado para enviar el mensaje. Los valores permitidos son 1 (solo push), 2 (solo SMS) y 3 (push y SMS)
 platforms | Matriz de plataformas de dispositivo. Los dispositivos que se ejecuten en estas plataformas recibirán la notificación. Los valores soportados son (Apple/iOS), G (Google/Android) y M (Microsoft/Windows).
-tagNames | Matriz de etiquetas especificados como tagNames. Los dispositivos suscritos a estas etiquetas recibirán la notificación. Este tipo de destino se utiliza con notificaciones basadas en etiquetas.
-userIds | Matriz de usuarios representados por sus userIds para enviar la notificación. Se trata de una notificación de difusión única.
-phoneNumber | Número de teléfono utilizado para registrar el dispositivo y recibir notificaciones. Se trata de una notificación de difusión única.
+tagNames | Matriz de etiquetas especificados como tagNames. Los dispositivos suscritos a estas etiquetas recibirán la notificación. Este tipo de destino se utiliza con notificaciones basadas en etiquetas. 
+userIds | Matriz de usuarios representados por sus userIds para enviar la notificación. Se trata de una notificación de difusión única. 
+phoneNumber | Número de teléfono utilizado para registrar el dispositivo y recibir notificaciones. Se trata de una notificación de difusión única. 
 
 **Ejemplo JSON de carga útil de notificaciones push**
 
@@ -390,12 +395,13 @@ phoneNumber | Número de teléfono utilizado para registrar el dispositivo y rec
 #### Envío de la notificación
 {: #sending-the-notification }
 La notificación se puede envían utilizando diferentes herramientas.
-
+  
 Para realizar pruebas, se utiliza Postman tal como se describe a continuación:
 
 
 1. [Configuración de un cliente confidencial](../../authentication-and-security/confidential-clients/).   
-El envío de una notificación push a través de la API REST utiliza elementos de ámbito separados por espacios `messages.write` y `push.application.<applicationId>.`
+El envío de una notificación push a través de la API REST utiliza elementos de ámbito separados por espacios `messages.write` y `push.application.
+<applicationId>.`
 
     <img class="gifplayer" alt="Configuración de un cliente confidencial" src="push-confidential-client.png"/>
 
@@ -405,16 +411,16 @@ El envío de una notificación push a través de la API REST utiliza elementos d
 3. Realice una solicitud **POST** a **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
     - Si está utilizando una instancia remota de {{ site.data.keys.product_adj }}, sustituya los valores de `hostname` y `port` con los suyos propios.
 
-    - Actualice el valor del identificador de aplicación con el suyo propio.
+    - Actualice el valor del identificador de aplicación con el suyo propio. 
 
-4. Establezca una cabecera:
+4. Establezca una cabecera: 
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - Sustituya el valor después de "Bearer" con su señal de acceso obtenida en el paso (1) anterior.
 
 
     ![cabecera de autorización](postman_authorization_header.png)
 
-5. Establezca un cuerpo:
+5. Establezca un cuerpo: 
     - Actualice sus propiedades tal como se describe anteriormente en [Carga útil de notificación](#notification-payload).
 
     - Por ejemplo, añadiendo la propiedad **target** con el atributo **userIds**, podrá enviar una notificación a usuarios específicamente registrados.
@@ -438,7 +444,7 @@ Después de pulsar el botón **Enviar**, el dispositivo debería haber recibido 
 ### Personalización de notificaciones
 {: #customizing-notifications }
 Antes de enviar el mensaje de notificación, también puede personalizar los siguientes atributos de notificación.
-
+  
 
 En {{ site.data.keys.mf_console }} → **[su aplicación] → Push → Etiquetas → separador Enviar notificaciones**, amplíe la sección **Valores personalizados de iOS/Android** para cambiar los atributos de notificación.
 

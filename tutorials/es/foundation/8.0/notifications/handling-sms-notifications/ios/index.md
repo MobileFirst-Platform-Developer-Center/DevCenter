@@ -112,6 +112,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > Para revisar todas las API REST de notificaciones push, consulte el tema de los <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">servicios de ejecución de API REST</a> en la documentación de usuario.
+
+
 Para enviar una notificación, consulte la guía de aprendizaje de [envío de notificaciones](../../sending-notifications).
 
 

@@ -303,6 +303,7 @@ Los datos se pueden mostrar de dos maneras:
 Debe instrumentar sus aplicaciones para recopilar bloqueos y usos de la aplicación para que los datos aparezcan en los gráficos.
 Si no se recopilan los datos de `MfpAppSession`, se consultan los documentos de `MfpAppLog`.
 En este caso, el gráfico puede indicar el número de bloqueos, pero no puede calcular la frecuencia de bloqueos porque se desconoce el número de usos de aplicación, lo que resulta en la limitación siguiente:
+
 >
 > * El gráfico **Bloqueos** no visualiza datos cuando se selecciona **Mostrar frecuencia de bloqueos**. 
 
@@ -344,6 +345,7 @@ El gráfico de barras de **Bloqueos** es el mismo gráfico que el que se visuali
 > **Nota:** Ambos gráficos realizan consultas con relación a los documentos `MfpAppSession`.  Debe instrumentar sus aplicaciones para recopilar bloqueos y usos de la aplicación para que los datos aparezcan en los gráficos.
 Si no se recopilan los datos de `MfpAppSession`, se consultan los documentos de `MfpAppLog`.
 En este caso, los gráficos pueden indicar el número de bloqueos, pero no puede calcular la frecuencia de bloqueos porque se desconoce el número de usos de aplicación, lo que resulta en las limitaciones siguientes:
+
 >
 > * La tabla Visión general de bloqueo tiene columnas vacías para Usos totales y Frecuencia de bloqueos.
 > * El gráfico de barras de Bloqueos no muestra datos cuando se selecciona Mostrar frecuencia de bloqueos.
@@ -374,3 +376,4 @@ Amplíe las entradas en la tabla **Detalles de bloqueo** para obtener más infor
 
 > **Nota:** Los datos en la tabla **Resumen de bloqueos** se cumplimentan consultado los registros de cliente con un nivel de fatal.
 Si su aplicación no recopila registro de cliente con un nivel fatal, no habrá datos disponibles.
+

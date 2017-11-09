@@ -1,18 +1,18 @@
 ---
-layout: tutorial
-title: Configuración de MobileFirst Server en IBM Bluemix Kubernetes Cluster
-breadcrumb_title: Kubernetes Cluster en IBM Cluster
+layout: guía de aprendizaje
+title: Configuración de MobileFirst Appcenter en IBM Bluemix Kubernetes Cluster
+breadcrumb_title: Appcenter en Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }}, así como una instancia de {{ site.data.keys.mf_analytics }} en IBM Bluemix. Para llevarlo a cabo, realice los pasos siguientes:
+Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_app_center }} en IBM Bluemix. Para llevarlo a cabo, realice los pasos siguientes:
 
 * Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago). 
 * Configure el sistema host con las herramientas necesarias (Docker, Cloud Foundry CLI ( cf ), Bluemix CLI ( bx ), Container Service Plugin for Bluemix CLI ( bx cs ), Container Registry Plugin for Bluemix CLI ( bx cr ), Kubernetes CLI (kubectl).
-* Cree una imagen de {{ site.data.keys.mf_server }} Docker y haga push para el repositorio de Bluemix.
+* Cree una imagen de {{ site.data.keys.mf_app_center }} Docker y haga push para el repositorio de Bluemix.
 * Finalmente, ejecutará la imagen de Docker en Kubernetes Cluster.
 
 >**Nota:**  
@@ -27,8 +27,7 @@ Siga las instrucciones siguientes para configurar una instancia de {{ site.data.
 * [Crear y configurar Kubernetes Cluster con IBM Bluemix Container Service](#setup-kube-cluster)
 * [Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}](#download-the-ibm-mfpf-container-8000-archive)
 * [Requisitos previos](#prerequisites)
-* [Configuración de {{ site.data.keys.product_adj }} y Analytics Servers en Kubernetes Cluster con IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
-* [Aplicar arreglos de {{ site.data.keys.mf_server }}](#applying-mobilefirst-server-fixes)
+* [Configuración de {{ site.data.keys.mf_app_center }} en Kubernetes Cluster con IBM Containers](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
 * [Eliminar el contenedor de Bluemix](#removing-the-container-from-bluemix)
 * [Eliminar despliegues de Kubernetes desde Bluemix](#removing-kube-deployments)
 * [Eliminar la configuración del servicio de base de datos desde Bluemix](#removing-the-database-service-configuration-from-bluemix)
@@ -39,7 +38,7 @@ Si todavía no tiene una cuenta, vaya al [sitio web de Bluemix](https://bluemix.
 
 ### El panel de control de Bluemix 
 {: #the-bluemix-dashboard }
-Después de iniciar sesión en Bluemix, se le presentará el panel de control de Bluemix, que proporciona una visión general del **espacio** activo de Bluemix. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
+Después de iniciar sesión en Bluemix, se le presentará el panel de control de Bluemix, que proporciona una visión general del **espacio** activo de Bluemix. De forma predeterminada, esta área de trabajo recibe el nombre de *dev*. Puede crear varios espacios o áreas de trabajo, si es necesario.
 
 ## Configurar la máquina host
 {: #set-up-your-host-machine }
@@ -60,11 +59,11 @@ Consulte la documentación de Bluemix para [configurar Kubernetes Cluster en Blu
 
 ## Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}
 {: #download-the-ibm-mfpf-container-8000-archive}
-Para configurar {{ site.data.keys.mf_bm_short }} como Kubernetes Cluster utilizando contenedores de Bluemix, en primer lugar, debe crear una imagen que posteriormente se enviará mediante push a Bluemix.<br/>
+Para configurar {{ site.data.keys.mf_app_center }} como Kubernetes Cluster utilizando contenedores de Bluemix, en primer lugar, debe crear una imagen que posteriormente se enviará mediante push a Bluemix.<br/>
 Se pueden obtener los arreglos internos para MobileFirst Server en IBM Containers en [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
-Descargue el arreglo temporal más reciente desde Fix central. El soporte de Kubernetes está disponible en iFix **8.0.0.0-IF201707051849**.
+Descargue el arreglo temporal más reciente desde Fix central. El soporte de Kubernetes está disponible en iFix **8.0.0.0-IF201708220656**.
 
-El archivo contiene los archivos para crear una imagen (**dependencies** y **mfpf-libs**) y los archivos para compilar y desplegar un {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} en Kubernetes (bmx-kubenetes).
+El archivo contiene los archivos para crear una imagen (**dependencies** y **mfpf-libs**) y los archivos para compilar y desplegar un {{ site.data.keys.mf_app_center }} en Kubernetes (bmx-kubernetes).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -80,25 +79,18 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
                 <h4>carpeta bmx-kubernetes</h4>
                 <p>Contiene los archivos de personalización y los scripts necesarios para desplegar Kubernetes Cluster con IBM Bluemix Container Service.</p>
 
-                <h4>Dockerfile-mfpf-analytics y Dockerfile-mfpf-server</h4>
+                <h4>Dockerfile-mfp-appcenter</h4>
 
                 <ul>
-                    <li><b>Dockerfile-mfpf-server</b>: Documento de texto que contiene todos los mandatos necesarios para crear la imagen de {{ site.data.keys.mf_server }}.</li>
-                    <li><b>Dockerfile-mfpf-analytics</b>: Documento de texto que contiene todos los mandatos necesarios para crear la imagen de {{ site.data.keys.mf_analytics }}.</li>
-                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene los scripts necesarios para iniciar sesión en Bluemix, crear una imagen de {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} para hacer push en Bluemix y ejecutar la imagen en Bluemix. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración, como se describe más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
-                    <li>Carpetas <b>usr-mfpf-server</b> y <b>usr-mfpf-analytics</b>:
+                    <li><b>Dockerfile-mfp-appcenter</b>: Documento de texto que contiene todos los mandatos necesarios para crear la imagen de {{ site.data.keys.mf_app_center }}.</li>
+                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene los scripts necesarios para iniciar sesión en Bluemix, crear una imagen de {{ site.data.keys.mf_app_center }} para hacer push en Bluemix y ejecutar la imagen en Bluemix. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración, como se describe más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
+                    <li>Carpeta <b>usr-mfp-appcenter</b>:
                         <ul>
-                            <li>Carpeta <b>bin</b>: contiene el archivo de script (mfp-init) que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo. </li>
-                            <li>Carpeta <b>config</b>: Contiene los fragmentos de configuración del servidor (almacén de claves, propiedades del servidor, registro de usuarios) que utilizan {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
+                            <li>Carpeta <b>bin</b> folder: Contiene el archivo de script (mfp-appcenter-init) que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo. </li>
+                            <li>Carpeta <b>config</b>: Contiene los fragmentos de configuración del servidor (almacén de claves, propiedades del servidor, registro de usuarios) que utiliza {{ site.data.keys.mf_app_center }}.</li>
                             <li><b>keystore.xml</b> - la configuración del repositorio de los certificados de seguridad que se utilizan para el cifrado SSL. Debe hacerse referencia a los archivos listados en la carpeta ./usr/security.</li>
                             <li><b>ltpa.xml</b> - el archivo de configuración que define la clave LTPA y su contraseña.</li>
-                            <li><b>mfpfproperties.xml</b> - propiedades de configuración para {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }}. Consulte las propiedades soportadas en estos temas de la documentación:
-                                <ul>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propiedades de JNDI para el servicio de administración de {{ site.data.keys.mf_server }}</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propiedades de JNDI para el tiempo de ejecución de {{ site.data.keys.product_adj }}</a></li>
-                                </ul>
-                            </li>
-                            <li><b>mfpfsqldb.xml</b> - Definición de origen de datos JDBC para conectar con la base de datos DB2 o dashDB.</li>
+                            <li><b>appcentersqldb.xml</b>: Definición de origen de datos JDBC para conectar con la base de datos DB2 o dashDB.</li>
                             <li><b>registry.xml</b> - configuración del registro de usuarios. La configuración de basicRegistry (de forma predeterminada, se proporciona una configuración de registro de usuarios básico basado en XML). Se pueden configurar los nombres de usuarios y las contraseñas para basicRegistry o puede configurar ldapRegistry.</li>
                             <li><b>tracespec.xml</b> - La especificación de rastreo para habilitar la depuración, así como los niveles de registro.</li>
                         </ul>
@@ -125,96 +117,39 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
                                             <td><b>Descripción</b></td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_HTTPPORT</td>
+                                            <td>APPCENTER_SERVER_HTTPPORT</td>
                                             <td>9080*</td>
                                             <td>El puerto utilizado para las solicitudes HTTP de cliente. Utilice -1 para inhabilitar este puerto.</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_HTTPSPORT	</td>
+                                            <td>APPCENTER_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
                                             <td>El puerto utilizado para las solicitudes HTTP de cliente protegidas con SSL (HTTPS). Utilice -1 para inhabilitar este puerto.</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_ADMIN_ROOT	</td>
-                                            <td>mfpadmin</td>
-                                            <td>La raíz de contexto en la que estarán disponibles los servicios de administración de {{ site.data.keys.mf_server }}.</td>
+                                            <td>APPCENTER_ROOT	</td>
+                                            <td>applicationcenter</td>
+                                            <td>La raíz de contexto en la que estarán disponibles los servicios de administración de {{ site.data.keys.mf_app_center }}.</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_CONSOLE_ROOT	</td>
-                                            <td>mfpconsole</td>
-                                            <td>La raíz de contexto en la que estarán disponibles los servicios de administración de {{ site.data.keys.mf_console }}.</td>
+                                            <td>APPCENTER_CONSOLE_ROOT	</td>
+                                            <td>appcenterconsole</td>
+                                            <td>La raíz de contexto en la que estará disponible la consola de {{ site.data.keys.mf_app_center }}.</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_ADMIN_GROUP</td>
-                                            <td>mfpadmingroup</td>
-                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>mfpadmin</code> predefinido.</td>
+                                            <td>APPCENTER_ADMIN_GROUP</td>
+                                            <td>appcenteradmingroup</td>
+                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>appcenteradmin</code> predefinido.</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_DEPLOYER_GROUP	</td>
-                                            <td>mfpdeployergroup</td>
-                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>mfpdeployer</code> predefinido.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>MFPF_MONITOR_GROUP	</td>
-                                            <td>mfpmonitorgroup</td>
-                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>mfpmonitor</code> predefinido.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>MFPF_OPERATOR_GROUP	</td>
-                                            <td>mfpoperatorgroup</td>
-                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>mfpoperator</code> predefinido.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>MFPF_SERVER_ADMIN_USER	</td>
-                                            <td>WorklightRESTUser</td>
-                                            <td>El usuario administrador del servidor Liberty para los servicios de administración de {{ site.data.keys.mf_server }}.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
-                                            <td>mfpadmin. Asegúrese de que cambia el valor predeterminado por una contraseña privada antes del despliegue a un entorno de producción.</td>
-                                            <td>La contraseña del usuario administrador del servidor Liberty para los servicios de administración de {{ site.data.keys.mf_server }}.</td>
+                                            <td>APPCENTER_USER_GROUP	</td>
+                                            <td>appcenterusergroup</td>
+                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>appcenteruser</code> predefinido.</td>
                                         </tr>
                                     </table>
 
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Cerrar sección</b></a>
-            </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="analytics-env">
-                                <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Pulse para obtener una lista de las propiedades de entorno de Analytics soportadas</b></a>
-                                </h4>
-                            </div>
-
-                            <div id="collapse-analytics-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
-                                <div class="panel-body">
-                                    <table class="table table-striped">
-                                        <tr>
-                                            <td><b>Propiedad</b></td>
-                                            <td><b>Valor predeterminado</b></td>
-                                            <td><b>Descripción</b></td>
-                                        </tr>
-                                        <tr>
-                                            <td>ANALYTICS_SERVER_HTTP PORT	</td>
-                                            <td>9080*</td>
-                                            <td>El puerto utilizado para las solicitudes HTTP de cliente. Utilice -1 para inhabilitar este puerto.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ANALYTICS_SERVER_HTTPS PORT	</td>
-                                            <td>9443*	</td>
-                                            <td>El puerto utilizado para las solicitudes HTTP de cliente. Utilice -1 para inhabilitar este puerto.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ANALYTICS_ADMIN_GROUP</td>
-                                            <td>analyticsadmingroup</td>
-                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <b>worklightadmin</b> predefinido.</td>
-                                        </tr>
-                                    </table>
-
-                    				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Cerrar sección</b></a>
             </div>
                             </div>
                         </div>
@@ -235,8 +170,8 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
 Debe tener conocimientos para trabajar con Kubernetes. Consulte los [documentos de Kubernetes](https://kubernetes.io/docs/concepts/), para obtener más información.
 
 
-## Configuración de {{ site.data.keys.product_adj }} y Analytics Servers en Kubernetes Cluster con IBM Containers
-{: #setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers }
+## Configuración de {{ site.data.keys.mf_app_center }} en Kubernetes Cluster con IBM Containers
+{: #setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers }
 Como se ha descrito anteriormente, puede optar por ejecutar los scripts de forma interactiva o utilizar los archivos de configuración:
 
 * **Utilización de los archivos de configuración** - Ejecute los scripts y pase el archivo de configuración respectivo como un argumento.
@@ -269,8 +204,8 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
                     <li><b>BLUEMIX_ORG - </b>El nombre de su organización de Bluemix.</li>
                     <li><b>BLUEMIX_SPACE - </b>Su espacio Bluemix (como se ha descrito anteriormente).</li>
                 </ul><br/>
-                <h4>prepareserverdbs.properties</h4>
-                El servicio de {{ site.data.keys.mf_bm_short }} requiere una instancia de <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 en Cloud</i></a>.<br/>
+                <h4>prepareappcenterdbs.properties</h4>
+                {{ site.data.keys.mf_app_center }} requiere una instancia de <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 en Cloud</i></a>.<br/>
                 <blockquote><b>Nota:</b> También puede utilizar su propia base de datos DB2. Bluemix Kubenetes Cluster se debe configurar para su conexión con la base de datos.</blockquote>
                 Después de configurar la instancia de DB2, proporcione los argumentos necesarios:
                 <ul>
@@ -284,21 +219,16 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
                       </ul>
                     </li>
                     <li>Proporcione lo siguiente si utiliza DB2 on Cloud (por ejemplo, DB_TYPE=dashDB).
-                      <ul><li><b>ADMIN_DB_SRV_NAME</b> - El nombre de su instancia de servicio de dashDB, para almacenar los datos de administrador.</li>
-                          <li><b>RUNTIME_DB_SRV_NAME </b> - El nombre de su instancia de servicio de dashDB, para almacenar los datos de tiempo de ejecución. El valor predeterminado es el nombre de servicio de administración.</li>
-                          <li><b>PUSH_DB_SRV_NAME </b> - El nombre de su instancia de servicio de dashDB, para almacenar los datos de tiempo de ejecución. El valor predeterminado es el nombre de servicio de administración.</li>
+                      <ul><li><b>APPCENTER_DB_SRV_NAME</b>: El nombre de su instancia de servicio de dashDB, para almacenar los datos de Appcenter.</li>
                       </ul>
                     </li>
-                    <li><b>ADMIN_SCHEMA_NAME</b> - Su nombre de esquema para los datos de administrador. El valor predeterminado es <i>MFPDATA</i>.</li>
-                    <li><b>RUNTIME_SCHEMA_NAME - </b>Su nombre de esquema para los datos de tiempo de ejecución. El valor predeterminado es <i>MFPDATA</i>.</li>
-                    <li><b>PUSH_SCHEMA_NAME - </b>Su nombre de esquema para los datos de tiempo de ejecución. El valor predeterminado es <i>MFPDATA</i>.</li>
-                    <blockquote><b>Nota:</b> Si su instancia de servicio de base de datos DB2 la comparten muchos usuarios o varios despliegues de {{ site.data.keys.mf_bm_short }}, asegúrese de que proporciona nombres de esquema exclusivos.</blockquote>
+                    <li><b>APPCENTER_SCHEMA_NAME</b>: Su nombre de esquema para los datos de Appcenter. El valor predeterminado es <i>APPCNTR</i>.</li>
+                    <blockquote><b>Nota:</b> Si su instancia de servicio de base de datos DB2 la comparten muchos usuarios o varios despliegues de {{ site.data.keys.mf_app_center }}, asegúrese de que proporciona nombres de esquema exclusivos.</blockquote>
                 </ul><br/>
-                <h4>prepareserver.properties</h4>
+                <h4>prepareappcenter.properties</h4>
                 <ul>
                   <li><b>SERVER_IMAGE_TAG</b> - Una etiqueta para la imagen. Debe tener el formato: <em>registry-url/namespace/image:tag</em>.</li>
-                  <li><b>ANALYTICS_IMAGE_TAG</b> - Una etiqueta para la imagen. Debe tener el formato: <em>registry-url/namespace/image:tag</em>.</li>
-                  <blockquote>Por ejemplo: <em>registry.ng.bluemix.net/myuniquenamespace/mymfpserver:v1</em><br/>Si todavía no ha creado un espacio de nombres de registro, cree el espacio de nombres de registro utilizando uno de estos mandatos:<br/>
+                  <blockquote>Por ejemplo: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>Si todavía no ha creado un espacio de nombres de registro, cree el espacio de nombres de registro utilizando uno de estos mandatos:<br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
                 </ul>
@@ -319,7 +249,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 
             <ol>
                 <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
-                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_bm_short }} en IBM Containers:
+Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_app_center }} en IBM Containers:
                     <b>Modo interactivo</b>
 {% highlight bash %}
 ./initenv.sh
@@ -329,15 +259,15 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                 </li>
-                <li><b>prepareserverdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_server }}</b><br />
-                    El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos DB2. La instancia de servicio de DB2 debe estar disponible en la Organización y Espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
-                    <b>Modo interactivo</b>
+                <li><b>prepareappcenterdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_app_center }} </b><br />
+                El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos DB2. La instancia de servicio de DB2 debe estar disponible en la Organización y Espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                    <b>Interactive Mode</b>
 {% highlight bash %}
-./prepareserverdbs.sh
+./prepareappcenterdbs.sh
 {% endhighlight %}
-                    <b>Modo no interactivo</b>
+                    <b>Non-interactive Mode</b>
 {% highlight bash %}
-./prepareserverdbs.sh args/prepareserverdbs.properties
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
                 <li><b>initenv.sh (Opcional) – Inicio de sesión en Bluemix </b><br />
@@ -346,55 +276,45 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
-                <li><b>prepareserver.sh - Preparar una imagen de {{ site.data.keys.mf_server }}</b><br />
-                    Ejecute el script <b>prepareserver.sh</b> para crear la imagen de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analytics }} y enviarlas mediante push al repositorio de Bluemix. Para ver todas las imágenes disponibles en el repositorio de Bluemix, ejecute: <code>bx cr image-list</code><br/>
+                <li><b>prepareappcenter.sh - Prepare una imagen de {{ site.data.keys.mf_app_center }}</b><br />
+                    Ejecute el script <b>prepareappcenter.sh</b> para crear una imagen de {{ site.data.keys.mf_app_center }} y enviarla mediante push al repositorio de Bluemix. Para ver todas las imágenes disponibles en el repositorio de Bluemix, ejecute: <code>bx cr image-list</code><br/>
                     La lista contiene el nombre, la fecha de creación y el ID de la imagen.<br/>
                     <b>Modo interactivo</b>
 {% highlight bash %}
-./prepareserver.sh
+./prepareappcenter.sh
 {% endhighlight %}
                     <b>Modo no interactivo</b>
 {% highlight bash %}
-./prepareserver.sh args/prepareserver.properties
+./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
                 </li>
-                <li>Despliegue {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} en contenedores Docker en Kubernetes Cluster utilizando Bluemix Container Service.
-                <ol>
+                <li>Despliegue {{ site.data.keys.mf_app_center }} en contenedores Docker en Kubernetes Cluster utilizando Bluemix Container Service.<ol>
                   <li>Establezca el contexto del terminal en su clúster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
                   Para averiguar el nombre del clúster, ejecute el mandato siguiente: <br/><code>bx cs clusters</code><br/>
                   En la salida, la vía de acceso del archivo de configuración se muestra como un mandato para establecer la variable de entorno, por ejemplo:<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
                   Copie y pegue el mandato anterior, después de sustituir <em>my-cluster</em> por el nombre de clúster, establezca la variable de entorno de su terminal y pulse <b>Intro</b>.
                   </li>
-                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> Cree una <b>Reclamación de volumen persistente</b>. Esto se utilizará para la persistencia de datos de Analytics. Este es un paso de una sola vez. Puede reutilizar <b>PVC</b> si ya ha lo ha creado anteriormente. Edite el archivo <em>yaml</em> <b>args/mfpf-persistent-volume-claim.yaml</b> y, a continuación, ejecute el mandato.
-                  Se deben sustituir todas las variables por sus valores antes de ejecutar el mandato <em>kubectl</em> siguiente.<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
-                  Anote el nombre de la <b>Reclamación de volumen persistente</b>, ya que deberá proporcionarlo en el paso siguiente.
-                  </li>
                   <li>Para obtener su <b>dominio de ingreso</b>, ejecute el mandato siguiente:<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
                    Anote el dominio de ingreso. Si necesita configurar TLS, anote el <b>secreto de ingreso</b>.</li>
-                  <li>Cree los despliegues de Kubernetes<br/>Edite el archivo yaml <b>args/mfpf-deployment-all.yaml</b> y rellene los detalles. Se deben sustituir todas las variables por sus valores antes de ejecutar el mandato <em>kubectl</em>.<br/>
-                  <b>./args/mfpf-deployment-all.yaml</b> contiene el despliegue para lo siguiente:
-                  <ul>
-                    <li>un despliegue de kubernetes para {{ site.data.keys.mf_server }} que consta de 3 instancias (réplicas), con una memoria de 1024 MB y CPU de 1 núcleo.</li>
-                    <li>un despliegue de kubernetes para {{ site.data.keys.mf_analytics }} que consta de 2 instancias (réplicas), con una memoria de 1024 MB y CPU de 1 núcleo.</li>
-                    <li>un servicio de kubernetes para {{ site.data.keys.mf_server }}.</li>
-                    <li>un servicio de kubernetes para {{ site.data.keys.mf_analytics }}.</li>
-                    <li>un ingreso para toda la configuración que incluya todos los puntos finales REST para {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }}.</li>
-                    <li>un configMap para que las variables de entorno estén disponibles en las instancias de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analytics }}.</li>
+                  <li>Cree los despliegues de Kubernetes<br/>Edite el archivo yaml <b>args/mfp-deployment-appcenter.yaml</b> y rellene los detalles. Se deben sustituir todas las variables por sus valores antes de ejecutar el mandato <em>kubectl</em>.<br/>
+                  <b>./args/mfp-deployment-appcenter.yaml</b> contiene el despliegue para lo siguiente:<ul>
+                    <li>un despliegue de kubernetes para {{ site.data.keys.mf_app_center }} que consta de 1 instancia (réplica), con una memoria de 1024 MB y CPU de 1 núcleo.</li>
+                    <li>un servicio de kubernetes para {{ site.data.keys.mf_app_center }}.</li>
+                    <li>un ingreso para toda la configuración que incluya todos los puntos finales REST para {{ site.data.keys.mf_app_center }}.</li>
+                    <li>un configMap para que las variables de entorno estén disponibles en las instancias de {{ site.data.keys.mf_app_center }} instance.</li>
                   </ul>
                   Los valores siguientes se deben editar en el archivo YAML:<br/>
                     <ol><li>Las diferentes apariciones de <em>my-cluster.us-south.containers.mybluemix.net</em> con la salida del <b>Dominio de ingreso</b> de la salida del mandato <code>bx cs cluster-get</code>, como se ha indicado anteriormente.</li>
-                    <li><em>registry.ng.bluemix.net/repository/mfpfanalytics:latest</em> y <em>registry.ng.bluemix.net/repository/mfpfserver:latest</em> - Utilice los mismos nombres que ha utilizado en prepareserver.sh para subir las imágenes.</li>
-                    <li><b>claimName</b>: <em>mfppvc</em> - Utilice el nombre de Reclamación de volumen persistente que ha utilizado anteriormente para crear PVC.<br/></li>
+                    <li><em>registry.ng.bluemix.net/repository/mfpappcenter:latest</em>: Utilice los mismos nombres que ha utilizado en prepareappcenter.sh para subir la imagen.</li>
                     </ol>
                     Ejecute el mandato siguiente:<br/>
-                    <code>kubectl create -f ./args/mfpf-deployment-all.yaml</code>
+                    <code>kubectl create -f ./args/mfp-deployment-appcenter.yaml</code>
                     <blockquote><b>Nota:<br/></b>Se proporcionan los siguientes archivos yaml de plantilla:<br/>
-                    <ul><li><b>mfpf-deployment-all.yaml</b>: Despliega {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} con http.</li>
-                      <li><b>mfpf-deployment-all-tls.yaml</b>: Despliega {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} con https.</li>
-                      <li><b>mfpf-deployment-server.yaml</b>: Despliega {{ site.data.keys.mf_server }} con http.</li>
-                      <li><b>mfpf-deployment-analytics.yaml</b>: Despliega {{ site.data.keys.mf_analytics }} con http.</li></ul></blockquote>
+                    <ul><li><b>mfp-deployment-appcenter.yaml</b>: Despliega {{ site.data.keys.mf_app_center }} con http.</li>
+                      <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: Despliega {{ site.data.keys.mf_app_center }} con https.</li>
+                    </ul></blockquote>
                       Después de su creación, para utilizar el panel de control de Kubernetes, ejecute el siguiente mandato:<br/>
                       <code>kubectl proxy</code><br/>Abra <b>localhost:8001/ui</b>, en su navegador.
                   </li>
@@ -405,33 +325,30 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
         </div>
     </div>
 </div>
-
-Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Bluemix, puede iniciar el desarrollo de su aplicación. Revise las {{ site.data.keys.product }} [guías de aprendizaje](../../all-tutorials).
-
-
-## Aplicar arreglos de {{ site.data.keys.mf_server }}
+<!--
+## Applying {{ site.data.keys.mf_server }} Fixes
 {: #applying-mobilefirst-server-fixes }
 
-Los arreglos temporales para {{ site.data.keys.mf_server }} en IBM Containers se pueden obtener en [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
-Antes de aplicar un arreglo temporal, realice una copia de seguridad de los archivos de configuración existentes. Los archivos de configuración se encuentran en las carpetas siguientes:
+Interim fixes for the {{ site.data.keys.mf_server }} on IBM Containers can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
+Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the the following folders:
 * {{ site.data.keys.mf_analytics }}: **package_root/bmx-kubernetes/usr-mfpf-analytics**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry Application: **package_root/bmx-kubernetes/usr-mfpf-server**
 
-### Pasos para aplicar iFix:
+### Steps to apply the iFix:
 
-1. Descargue el archivo de arreglo temporal y extraiga el contenido en la carpeta de instalación existente, sobrescribiendo los archivos existentes.
-2. Restaure los archivos de configuración de copia de seguridad en las carpetas **package_root/bmx-kubernetes/usr-mfpf-server** y **package_root/bmx-kubernetes/usr-mfpf-analytics**, sobrescribiendo los archivos de configuración instalados recientemente. 
-3. Edite el archivo **package_root/bmx-kubernetes/usr-mfpf-server/env/jvm.options** en su editor y elimine la siguiente línea, si existe:
+1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
+2. Restore your backed-up configuration files into the **package_root/bmx-kubernetes/usr-mfpf-server** and **package_root/bmx-kubernetes/usr-mfpf-analytics** folders, overwriting the newly installed configuration files.
+3. Edit **package_root/bmx-kubernetes/usr-mfpf-server/env/jvm.options** file in your editor and remove the following line, if it exists:
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
 ```
-    Ahora puede compilar y desplegar el servidor actualizado.
+    You can now build and deploy the updated server.
 
-    a. Ejecute el script `prepareserver.sh` para volver a crear la imagen del servidor y enviarla mediante push al servicio IBM Containers.
+    a. Run the `prepareserver.sh` script to rebuild the server image and push it to the IBM Containers service.
 
-    b. Realice una actualización acumulativa ejecutando el mandato siguiente:
+    b. Perform a rolling update by running the following command:
       <code>kubectl rolling-update NAME -f FILE</code>
-
+-->
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Eliminar el contenedor de Bluemix
@@ -453,7 +370,7 @@ Ejecute los siguientes mandatos cf ic para eliminar un nombre de imagen del regi
 
 Ejecute los mandatos siguientes para eliminar las instancias desplegadas de Bluemix Kubernetes Cluster:
 
-`kubectl delete -f mfpf-deployment-all.yaml` (Elimina todos los tipos de kubernetes definidos en el archivo yaml)
+`kubectl delete -f mfp-deployment-appcenter.yaml` (Elimina todos los tipos de kubernetes definidos en el archivo yaml).
 
 Ejecute los siguientes mandatos para eliminar el nombre de imagen del registro de Bluemix:
 ```bash
@@ -463,11 +380,11 @@ bx cr image-rm image-name (Elimina la imagen del registro)
 
 ## Eliminar la configuración del servicio de base de datos de Bluemix
 {: #removing-the-database-service-configuration-from-bluemix }
-Si ha ejecutado el script **prepareserverdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_server }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_server }}. Este script también crea el esquema de base de datos para el contenedor.
+Si ha ejecutado el script **prepareappcenterdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_app_center }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_app_center }}. Este script también crea el esquema de base de datos para el contenedor.
 
 Para eliminar la configuración del servicio de base de datos desde Bluemix, realice el siguiente procedimiento utilizando el panel de control de Bluemix. 
 
-1. En el panel de control de Bluemix, seleccione el servicio DB2 on Cloud que ha utilizado. Seleccione el nombre del servicio DB2 on Cloud que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
+1. En el panel de control de Bluemix, seleccione el servicio DB2 on Cloud que ha utilizado. Seleccione el nombre del servicio DB2 on Cloud que ha proporcionado como un parámetro cuando ejecutaba el script **prepareappcenterdbs.sh**.
 2. Inicie la consola de DB2 para trabajar con los esquemas y los objetos de base de datos de la instancia de servicio DB2 seleccionada.
-3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**. 
+3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareappcenterdbs.sh**. 
 4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de Bluemix.

@@ -38,6 +38,8 @@ Sin embargo, para la instalación de producción, utilice tareas Ant para instal
 > **Importante:** El instalador de {{ site.data.keys.mf_server }} sólo instala los archivos binarios y las herramientas de {{ site.data.keys.mf_server }} en el disco. No despliega las aplicaciones de {{ site.data.keys.mf_server }} en el servidor de aplicaciones. Después de ejecutar la instalación con Installation Manager, debe configurar las bases de datos y desplegar las aplicaciones de {{ site.data.keys.mf_server }} en su servidor de aplicaciones.  
 > De forma similar, al ejecutar Installation Manager para actualizar una instalación existente, sólo actualizará los archivos del disco. Debe llevar a cabo más acciones para actualizar las aplicaciones desplegadas en los servidores de aplicaciones.
 
+
+
 #### Ir a
 {: #jump-to }
 * [Administrador frente a modalidad de usuario](#administrator-versus-user-mode)
@@ -202,6 +204,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     > * Para una instalación que no instala Application Center en un servidor de aplicaciones, utilice el archivo denominado **install-no-appcenter.xml**.
     > * Para una instalación que instala Application Center, elija el archivo de respuestas de ejemplo desde la tabla siguiente, dependiendo del servidor de aplicaciones y de la base de datos.
 
+
    #### Archivos de respuestas de instalación de ejemplo en el archivo **Silent\_Install\_Sample_Files.zip** para instalar el Application Center
     
     <table>
@@ -263,6 +266,8 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     </table>
     
     > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Puede utilizar IBM DB2 u otro DBMS soportado por WebSphere Application Server para beneficiarse de una configuración completamente soportada por IBM Support.
+
+
     Para la desinstalación, utilice un archivo de ejemplo que dependa de la versión de {{ site.data.keys.mf_server }} o Worklight Server que ha instalado inicialmente en el grupo de paquetes concreto:
     
     * {{ site.data.keys.mf_server }} utiliza el grupo de paquetes {{ site.data.keys.mf_server }}.
@@ -321,6 +326,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     * `<responseFile>` es el nombre del archivo seleccionado y actualizado en el paso 1.
 
 > Para obtener más información, consulte la documentación de IBM Installation Manager en [Instalación de un paquete de forma silenciosa utilizando un archivo de respuestas](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+
     
 
 ### Cómo trabajar con un archivo de respuestas registrado en una máquina distinta
