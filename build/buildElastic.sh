@@ -23,5 +23,5 @@ rm -f _site/*.log
 
 #curl -u $ELASTICCREDENTIALS -X DELETE "mfpsearch.mybluemix.net/dev_center"
 #curl -u $ELASTICCREDENTIALS -XPOST 'mfpsearch.mybluemix.net/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
-curl -u admin:XJAYEVDEZQUFDZCF -X DELETE "bluemix-sandbox-dal-9-portal.0.dblayer.com:30448/_cluster/health?pretty"
-curl -u admin:XJAYEVDEZQUFDZCF -XPOST 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448/_cluster/health?pretty' --data-binary "@_site/js/data/elastic.json"
+curl -u $ELASTICCREDENTIALS2 -X DELETE "bluemix-sandbox-dal-9-portal.0.dblayer.com:30448/_cluster/health?pretty"
+curl -u $ELASTICCREDENTIALS2 -XPOST 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448/_cluster/health?pretty' --data-binary "@_site/js/data/elastic.json"
