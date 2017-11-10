@@ -12,7 +12,7 @@ set -e
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile --log-level :debug
+bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile --verbose
 rm -f _site/*.log
 bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css" --log-level :debug
 
