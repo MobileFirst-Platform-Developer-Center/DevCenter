@@ -1,14 +1,16 @@
 ---
 layout: tutorial
-title: Handling SMS Notifications in client applications
-breadcrumb_title: Handling SMS Notifications
+title: Manejo de notificaciones SMS en aplicaciones de cliente
+breadcrumb_title: Manejo de notificaciones SMS
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Before iOS and Android Native-based or Cordova-based applications are able to receive and display incoming SMS notifications, the application must first be set-up, and APIs must be implemented.
+Antes de que aplicaciones basadas en Cordova o nativas basadas en iOS o Android puedan recibir y visualizar notificaciones SMS entrantes, primero es necesario configurar la aplicación e implementar las API.
 
-Refer to the following topics to learn how to handle incoming SMS notifications in client applications: 
+
+Consulte los siguientes temas para aprender a manejar notificaciones SMS entrantes en las aplicaciones de cliente:
+ 

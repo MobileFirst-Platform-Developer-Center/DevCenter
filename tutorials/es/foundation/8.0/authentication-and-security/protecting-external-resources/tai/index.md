@@ -1,38 +1,38 @@
 ---
 layout: tutorial
-title: Trust Association Interceptor
-breadcrumb_title: Trust Association Interceptor
+title: Interceptor de asociación de confianza
+breadcrumb_title: Interceptor de asociación de confianza
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: Download sample
+  - name: Descargar ejemplo
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-{{ site.data.keys.product_full }} provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
+{{ site.data.keys.product_full }} proporciona una biblioteca Java para facilitar la autenticación de recursos externos mediante [los interceptores de asociación de confianza de IBM WebSphere](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
 
-The Java library is provided as a JAR file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
+La biblioteca Java se proporciona como un archivo JAR (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
-This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by using a scope (`accessRestricted`).
+Esta guía de aprendizaje muestra cómo proteger un Servlet Java simple, `TAI/GetBalance`, utilizando un ámbito (`accessRestricted`).
 
-**Prerequisite:**
+**Requisito previos:**
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Be familiar with the [{{ site.data.keys.product }} security framework](../../).
+* Lea la guía de aprendizaje [Utilización de {{ site.data.keys.mf_server }} para autenticar recursos externos](../).
+* Conozca mejor la [infraestructura de seguridad de {{ site.data.keys.product }}](../../).
 
-![Flow](TAI_flow.jpg)
+![Flujo](TAI_flow.jpg)
 
-## Server setup
+## Configuración de servidor
 {: #server-setup }
-1. Download the Security Tools .zip from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. In it you will find a `mfp-oauth-tai.zip` archive. Unpack this zip.
-2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere Application Server instance inside **usr/extension/lib**.
-3. Add the `OAuthTai.mf` file to the WebSphere Application Server instance inside **usr/extension/lib/features**.
+1. Descargue el archivo .zip de las herramientas de seguridad en el separador **{{ site.data.keys.mf_console }} → Centro de descargas → Herramientas**. Encontrará un archivo `mfp-oauth-tai.zip`. Desempaquete el zip.
+2. Añada el archivo `com.ibm.mfp.oauth.tai.jar` a la instancia de WebSphere Application Server en **usr/extension/lib**.
+3. Añada el archivo `OAuthTai.mf` a la instancia de WebSphere Application Server en **usr/extension/lib/features**.
 
 ### web.xml setup
 {: #webxml-setup }
-Add a security constraint and a security role to the `web.xml` file of the WebSphere Application Server instance:
+Añada una restricción de seguridad y un rol de seguridad al archivo `web.xml` de la instancia WebSphere Application Server:
 
 ```xml
 <security-constraint>
@@ -53,9 +53,9 @@ Add a security constraint and a security role to the `web.xml` file of the WebSp
 
 ### server.xml
 {: #serverxml }
-Modify the WebSphere Application Server `server.xml` file to your external resource.
+Modifique el archivo `server.xml` de WebSphere Application Server en el recurso externo.
 
-* Configure the feature manager to include the following features:
+* Configure el gestor de características para incluir las características siguientes:
 
   ```xml
   <featureManager>
@@ -67,13 +67,13 @@ Modify the WebSphere Application Server `server.xml` file to your external resou
   </featureManager>
   ```
 
-* Add a security role as a class annotation in your Java servlet :
+* Añada un rol de seguridad como anotación de clase en el servlet de Java :
 
 ```java
 @ServletSecurity(@HttpConstraint(rolesAllowed = "TAIUserRole"))
 ```
 
-If you are using servlet-2.x , you need to define the security role in your web.xml file:
+Si está utilizando servlet-2.x, debe definir el rol de seguridad del archivo web.xml:
 
 ```xml
 <application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
@@ -85,29 +85,29 @@ If you are using servlet-2.x , you need to define the security role in your web.
 </application>
 ```
 
-* Configure OAuthTAI. This is where URLs are set to be protected:
+* Configure OAuthTAI. Aquí se fijan los URL para protegerlos:
 
   ```xml
   <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
             <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/GetBalance"></securityConstraint>
   </usr_OAuthTAI>
   ```
-    - **authorizationURL**:  Either your {{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
+    - **authorizationURL**: Su {{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`), o un servidor AZ externo como IBM DataPower.
 
-    - **clientID**: The Resource server must be a registered confidential client. To learn how to register a confidential client, read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client **MUST** have the allowed scope `authorization.introspect` so that it can validate tokens.
+    - **clientID**: El servidor de recurso debe ser un cliente confidencial registrado. Para saber cómo registrar un cliente confidencial, lea la guía de aprendizaje [Clientes confidenciales](../../confidential-clients/). *El cliente confidencial **DEBE** tener el ámbito permito `authorization.introspect` para poder validar las señales.
 
-    - **clientSecret**: The Resource server must be a registered confidential client. To learn how to register a confidential client, read the [Confidential Clients](../../confidential-clients/) tutorial.
-    - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data as values, so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
+    - **clientSecret**: El servidor de recurso debe ser un cliente confidencial registrado. Para saber cómo registrar un cliente confidencial, lea la guía de aprendizaje [Clientes confidenciales](../../confidential-clients/). 
+    - **cacheSize (opcional)**: El interceptor de asociación de confianza (TAI) utiliza la memoria caché del validador de señal Java para copiar en caché las señales y los datos de introspección en forma de valores, para que no sea necesario volver a hacer una introspección de la señal de la solicitud del cliente en un intervalo de tiempo breve.
 
-        The default size is 50,000 tokens.  
+        El tamaño predeterminado es de 50,000 señales.  
 
-        If you want to guarantee that the tokens are introspected on each request, set the cache value to 0.  
+        Si desea asegurar que se ha realizado una introspección de cada solicitud, establezca el valor de la memoria caché en 0.  
 
-    - **scope**: The resource server authenticates against one or more scopes. A scope can be a security check or a scope element mapped to security checks.
+    - **scope**: El servidor de recurso se autentica en relación con uno o más ámbitos. Un ámbito puede ser una comprobación de seguridad o un elemento de ámbito correlacionado con comprobaciones de seguridad.
 
-## Using the Token Introspection Data From the TAI
+## Utilización de los datos de introspección de la señal del interceptor de asociación de confianza (TAI)
 {: #using-the-token-introspection-data-from-the-tai }
-From your resource, you may want to access the token information that was intercepted and validated by the TAI. You can find the list of data found on the token [in the API Reference](../../../api/java-token-validator). To obtain this data, use the [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
+En su recurso, es posible que desee acceder a la información de la señal interceptada y validada por el TAI.Encontrará la lista de los datos encontrados en la señal [de la referencia de API](../../../api/java-token-validator). Para obtenerlos, utilice la [API WSSubject](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();
@@ -116,16 +116,16 @@ JSONObject securityContext = new JSONObject(credentials.get("securityContext"));
 securityContext.get('mfp-device')
 ```
 
-## Sample application
+## Aplicación de ejemplo
 {: #sample-application }
-You can deploy the project on supported application servers (WebSphere Application Server full profile and WebSphere Application Server Liberty profile).  
-[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
+Puede desplegar el proyecto en los servidores de aplicaciones soportados (el perfil completo de WebSphere Application Server y el perfil de WebSphere Application Server Liberty).  
+[Descargue el servlet Java simple](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-3. Register the matching application.
-4. Map the `accessRestricted` scope to the security check.
-5. Update the client application to make the `WLResourceRequest` to your servlet URL.
-6. Set the scope of your securityConstraint scope to be the security check that your client needs to authenticate against.
+1. Asegúrese de [actualizar el cliente confidencial](../#confidential-client) y los valores secretos en {{ site.data.keys.mf_console }}.
+2. Despliegue alguna de las comprobaciones de seguridad: **[UserLogin](../../user-authentication/security-check/)** o **[PinCodeAttempts](../../credentials-validation/security-check/)**.
+3. Registre la aplicación coincidente.
+4. Correlacione el ámbito `accessRestricted` en la comprobación de seguridad.
+5. Actualice la aplicación de cliente para crear `WLResourceRequest` en su URL de servlet.
+6. Establezca el ámbito de securityConstraint para que sea la comprobación de seguridad que su cliente debe autenticar.

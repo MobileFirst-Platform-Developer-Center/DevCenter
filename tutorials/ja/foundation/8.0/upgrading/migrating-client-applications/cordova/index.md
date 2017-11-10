@@ -179,7 +179,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **注:** **worklight.css** ファイルは、body 属性を relative に設定します。これがアプリケーションのスタイルに影響する場合は、ユーザー自身の CSS コードで position に別の値を宣言してください。 例えば、以下のようにします。
+      > **注:** **worklight.css** ファイルは、body 属性を relative に設定します。これがアプリケーションのスタイルに影響する場合は、ユーザー自身の CSS コードで position に別の値を宣言してください。 以下に例を示します。
 
       ```css
 body {

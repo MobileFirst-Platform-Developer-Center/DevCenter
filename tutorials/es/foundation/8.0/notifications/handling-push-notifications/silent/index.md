@@ -1,34 +1,49 @@
 ---
 layout: tutorial
-title: Silent notifications
+title: Notificaciones silenciosas
 relevantTo: [ios,cordova]
 show_in_nav: false
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Silent notifications are notifications that do not display alerts or otherwise disturb the user. When a silent notification arrives, the application handing code runs in background without bringing the application to foreground. Currently, the silent notifications are supported on iOS devices with version 7 onwards. If the silent notification is sent to iOS devices with version lesser than 7, the notification is ignored if the application is running in background. If the application is running in the foreground, then the notification callback method is invoked.
+Las notificaciones silenciosas son notificaciones que no visualizan alertas ni interrumpen al usuario.
+Cuando llega una notificación silenciosa, la aplicación que se encarga del código lo ejecuta en un segundo plano sin llevar la aplicación a un primer plano.
+Actualmente, se da soporte a las instalaciones silenciosas en dispositivos iOS a partir de la versión 7.
+Si se envía una notificación silenciosa a dispositivos iOS con una versión anterior a la 7, si la aplicación se ejecuta en un segundo plano, se ignora la notificación.
+Si la aplicación se está ejecutando en un primer plano, se invoca al método de llamada de retorno de notificación.
 
-## Sending silent push notifications
+
+## Enviar notificaciones push silenciosas
 {: #sending-silent-push-notifications }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+La notificación se debe preparar antes de enviarla.
+Para obtener más información, consulte [Envío de notificaciones push](../../sending-notifications).
 
-The three types of notifications that are supported for iOS are represented by constants `DEFAULT`, `SILENT`, and `MIXED`. When the type is not explicitly specified, the `DEFAULT` type is assumed.
 
-For `MIXED` type notifications, a message is displayed on the device while, in the background, the app awakens and processes a silent notification. The callback method for `MIXED` type notifications gets called twice - once when the silent notification reaches the device and once when the application is opened by tapping on the notification.
+Los tres tipos de notificaciones a las que iOS da soporte se representan con las constantes `DEFAULT`, `SILENT` y `MIXED`.
+Cuando el tipo no se especifica de forma explícita, se presupone el tipo `DEFAULT`.
 
-Based on the requirement choose the appropriate type under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. 
 
-> **Note:** If the notification is silent, the **alert**, **sound**, and **badge** properties are ignored.
+Para las notificaciones del tipo `MIXED`, se visualiza un mensaje en el dispositivo a la vez que, en un segundo plano, la aplicación se activa y procesa la notificación silenciosa.
+El método de retorno de llamada para las notificaciones del tipo `MIXED` es llamado dos veces, una vez cuando la notificación silenciosa llega al dispositivo y otra al abrir la aplicación al pulsar en la notificación.
 
-![Setting notification type for iOS silent notifications in the {{ site.data.keys.mf_console }}](notification-type-for-silent-notifications.png)
 
-## Handling silent push notifications in Cordova applications
+Basándose en sus requisitos elija el tipo apropiado bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados de iOS**.
+ 
+
+> **Nota:** Si la alerta es silenciosa, se ignoran las propiedades **alert**, **sound** y **badge**.
+
+
+![Configuración del tipo de notificación silenciosa de iOS en {{ site.data.keys.mf_console }}](notification-type-for-silent-notifications.png)
+
+
+## Manejar notificaciones push silenciosas en aplicaciones Cordova
 {: #handling-silent-push-notifications-in-cordova-applications }
-In the JavaScript push notification callback method, you must do the following steps:
+En el método de llamada de retorno de notificación push JavaScript, debe realizar los siguientes pasos:
 
-1. Check the notification type. For example:
+
+1. Compruebe el tipo de notificación. Por ejemplo:
 
    ```javascript
    if(props['content-available'] == 1) {
@@ -38,12 +53,18 @@ In the JavaScript push notification callback method, you must do the following s
    }
    ```
 
-2. If the notification is silent or mixed, after you complete the background job, invoke `WL.Client.Push.backgroundJobDone` API.
+2. Si la notificación es silenciosa o mixta, después de completar el trabajo de fondo, invoque a la API `WL.Client.Push.backgroundJobDone`.
 
-## Handling silent push notifications in native iOS applications
+
+## Manejar notificaciones push silenciosas en aplicaciones iOS nativas
 {: #handling-silent-push-notifications-in-native-ios-applications }
-You must follow these steps to receive silent notifications:
+Debe seguir estos pasos para recibir notificaciones silenciosas:
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications.
-2. Check whether the notification is silent or not by checking that the `content-available` key is set to **1**.
-3. After you finish processing the notification, you must call the block in the handler parameter immediately, otherwise  your app will be terminated. Your app has up to 30 seconds to process the notification and call the specified completion handler block.
+
+1. Habilite la funcionalidad de la aplicación para realizar tareas de fondo al recibir las notificaciones remotas.
+
+2. Compruebe si la notificación es silenciosa verificando si la clave `content-available` se ha establecido en **1**.
+
+3. Después de finalizar el proceso de notificación, debe llamar inmediatamente al bloque en el parámetro de manejador, de lo contrario su aplicación habrá terminado.
+Su aplicación tiene hasta 30 segundos para procesar la notificación y llamar al bloque del manejador de finalización especificado.
+

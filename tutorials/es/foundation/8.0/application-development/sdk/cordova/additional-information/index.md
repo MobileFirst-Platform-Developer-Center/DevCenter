@@ -1,20 +1,28 @@
 ---
 layout: tutorial
-title: Additional Information
-breadcrumb_title: Additional information
+title: Información adicional
+breadcrumb_title: Información adicional
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Enforcing TLS-secure connections in iOS apps
+### Imposición de conexiones seguras TLS en aplicaciones iOS
 {: #enforcing-tls-secure-connections-in-ios-apps }
-Starting from iOS 9, Transport Layer Security (TLS) protocol version 1.2 must be enforced in all apps. You can disable this protocol and bypass the iOS 9 requirement for development purposes.
+A partir de iOS 9, se obliga a utilizar el protocolo TLS (Transport Layer Security) versión 1.2 en todas las aplicaciones.
+Existe la posibilidad de inhabilitar este protocolo y omitir el requisito de iOS 9 a efectos de desarrollo.
 
-Apple App Transport Security (ATS) is a new feature of iOS 9 that enforces best practices for connections between the app and the server. By default, this feature enforces some connection requirements that improve security. These include client-side HTTPS requests and server-side certificates and connection ciphers that conform to Transport Layer Security (TLS) version 1.2 using forward secrecy.
 
-For d**evelopment purposes**, you can override the default behavior by specifying an exception in the info.plist file in your app, as described in App Transport Security Technote. However, in a **full production** environment, all iOS apps must enforce TLS-secure connections for them to work properly.
+ATS (Apple App Transport Security) es una nueva característica de iOS 9 que obliga a utilizar los procedimientos recomendados para conexiones entre la aplicación y el servidor.
+De forma predeterminada, esta característica impone algunos requisitos de conexión que mejoran la seguridad.
+Entre otros, se incluye la utilización de cifradores de conexión y de certificados del lado del servidor y solicitudes HTTPS del lado del cliente que se adhieren a TLS (Transport Layer Security) versión 1.2 utilizando la propiedad de secreto adelante ("forward secrecy").
 
-To enable non-TLS connections, the following exception must appear in the **project-name-info.plist** file in the **project-name\Resources** folder:
+
+A **efectos de desarrollo**, puede modificar el comportamiento predeterminado especificando una excepción en el archivo info.plist de su aplicación, tal como se describe en la nota técnica App Transport Security.
+Sin embargo, en un entorno de **producción completa**, todas las aplicaciones iOS deben imponer conexiones seguras TLS para que funcionen correctamente.
+
+
+Para habilitar las conexiones no TLS, la siguiente excepción debe aparece en el archivo **project-name-info.plist** en la carpeta **project-name\Resources**:
+
 
 ```xml
 <key>NSExceptionDomains</key>
@@ -33,10 +41,12 @@ To enable non-TLS connections, the following exception must appear in the **proj
     </dict>
 ```
 
-To prepare for production
+Preparación para el entorno de producción
 
-1. Remove, or comment out the code that appears earlier in this page.  
-2. Set up the client to send HTTPS requests by using the following entry to the dictionary:  
+1. Elimine o comente el código que aparece con anterioridad en esta página.
+  
+2. Configure el cliente para enviar solicitudes HTTPS utilizando la siguiente entrada al diccionario:
+  
 
    ```xml
    <key>protocol</key>
@@ -46,50 +56,72 @@ To prepare for production
    <string>10443</string>
    ```
    
-   The SSL port number is defined on the server in **server.xml** in the `httpEndpoint` definition.
+   El número de puerto SSL se define en el servidor en el archivo **server.xml** en la definición `httpEndpoint`.
+
     
-3. Configure a server that is enabled for the TLS 1.2 protocol. For more information, [see Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
-4. Make settings for ciphers and certificates, as they apply to your setup. For more information, see [App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Secure communications using Secure Sockets Layer (SSL) for WebSphere  Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en), and [Enabling SSL communication for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
+3. Configure un servidor que esté habilitado para el protocolo TLS 1.2.
+Para obtener más información, [consulte Configuración de {{ site.data.keys.mf_server }} para habilitar TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659).
 
-## Enabling OpenSSL in Cordova Applications
+4. Configure certificados y cifradores, a medida que se aplican a su configuración.
+Para obtener más información, consulte la [Nota técnica App Transport Security](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Comunicaciones seguras utilizando SSL (Secure Sockets Layer) para WebSphere Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en) y [Habilitación de la comunicación SSL para el perfil de Liberty](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
+
+
+## Habilitación de OpenSSL en aplicaciones Cordova
 {: #enabling-openssl-in-cordova-applications }
-The {{ site.data.keys.product_adj }} Cordova SDK for iOS uses native iOS APIs for cryptography. You can configure the application to instead use the OpenSSL cryptography library in your Cordova iOS app.
+{{ site.data.keys.product_adj }} Cordova SDK para iOS utiliza las API iOS nativas para la criptografía.
+Configure la aplicación para utilizar en su lugar la biblioteca de criptografía OpenSSL en su aplicación iOS de Cordova.
 
-The encryption/decryption functionalities are provided with the following Javascript APIs:
+
+Las funcionalidades de cifrado/descifrado se proporcionan con las siguientes API de JavaScript:
+
 
 * WL.SecurityUtils.encryptText
 * WL.SecurityUtils.decryptWithKey
 
-### Option 1: Native encryption/decryption
+### Opción 1: Cifrado/descifrado nativo
 {: #option-1-native-encryptiondecryption }
-By default {{ site.data.keys.product_adj }} provides native encryption/decryption, without using OpenSSL. This is equivalent to explicitly setting the encryption/decryption behavior:
+De forma predeterminada {{ site.data.keys.product_adj }} proporciona cifrado/descifrado nativo, sin utilizar OpenSSL.
+Esto equivale a establecer de forma explícita el comportamiento de cifrado/descifrado:
+
 
 * WL.SecurityUtils.enableNativeEncryption(true)
 
-## Option 2: Enabling OpenSSL
+## Opción 2: Habilitación OpenSSL
 {: #option-2-enabling-openssl }
-{{ site.data.keys.product_adj }} provided OpenSSL is disabled by default.
+La opción OpenSSL que {{ site.data.keys.product_adj }} proporciona está inhabilitada de forma predeterminada.
 
-To install the necessary frameworks for supporting OpenSSL, first install the Cordova plug-in:
+
+Para instalar todas las infraestructuras necesarias para dar soporte a OpenSSL, instale primero el plugin de Cordova:
+
 
 ```bash
 cordova plugin add cordova-plugin-mfp-encrypt-utils
 ```
 
-The following code enables the OpenSSL option for the encryption/decryption:
+El siguiente código habilita la opción OpenSSL para el cifrado/descifrado:
+
 
 * WL.SecurityUtils.enableNativeEncryption(false)
 
-With this setup, the encryption/decryption calls use OpenSSL as in previous versions of {{ site.data.keys.product }}.
+Con esta configuración, las llamadas de cifrado/descifrado utilizan OpenSSL como en versiones anteriores de {{ site.data.keys.product }}.
 
-### Migration options
+
+### Opciones de migración
 {: #migration-options }
-If you have a {{ site.data.keys.product_adj }} project that was written with an earlier version of the product, you might need to incorporate changes to continue using OpenSSL.
+Si tiene un proyecto de {{ site.data.keys.product_adj }} escrito en una versión anterior del producto, podría necesitar incorporar cambios para continuar utilizando OpenSSL.
 
-* If the application is not using encryption/decryption APIs, and no encrypted data is cached on the device, no action is needed.
-* If the application is using encryption/decryption APIs you have the option of using these APIs with or without OpenSSL.
-    - **Migrating to native encryption:**
-        1. Make sure the default native encryption/decryption option is chosen (see **Option 1**).
-        2. **Migrating cached data**: If the previous product installation of saved encrypted data to the device using OpenSSL, but the native encryption/decryption option is now chosen, the stored data must be decrypted. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. This way the data will be auto-migrated to native encryption.
-        **Note:** To allow the decryption from OpenSSL, you must add the OpenSSL frameworks by installing the Cordova plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`
-    - **Continuing with OpenSSL:** If OpenSSL is required use the setup described in **Option 2**.
+
+* Si la aplicación no está utilizando las API de cifrado/descifrado, y no se colocan datos cifrado en la caché del dispositivo, no es necesaria acción alguna.
+
+* Si la aplicación está utilizando API de cifrado/descifrado tiene la opción de utilizar estas API con o sin OpenSSL.
+
+    - **Migración al cifrado nativo:
+**
+        1. Asegúrese de que se elige la opción de cifrado/descifrado (consulte la **Opción 1**).
+        2. **Migración de datos en caché**:
+Si la instalación anterior del producto guardó datos cifrados en el dispositivo utilizando OpenSSL, y ahora se ha elegido la opción de cifrado/descifrado nativo, se descifrarán los datos almacenados.
+La primera vez que la aplicación intenta descifrar los datos volverá de nuevo a OpenSSL y, a continuación, cifrará los datos con el cifrado nativo.
+De esta forma, los datos se migrarán de forma automática al cifrado nativo.
+**Nota:** Para permitir el descifrado desde OpenSSL, debe añadir las infraestructuras OpenSSL instalando el plugin Cordova: `cordova plugin add cordova-plugin-mfp-encrypt-utils`
+    - **Continuación con OpenSSL:** Si se necesita OpenSSL utilice la configuración descrita en la **Opción 2**.
+

@@ -6,56 +6,77 @@ show_children: true
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-The {{ site.data.keys.product_full }} **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+{{ site.data.keys.product_full }} **JSONStore** es una API del lado del cliente opcional que proporciona un sistema ligero de almacenamiento orientado a documentos.
+JSONStore ofrece un almacenamiento persistente de **documentos JSON**.
+Los documentos en una aplicación están disponibles en JSONStore incluso cuando el dispositivo que ejecuta la aplicación está fuera de línea.
+Este almacenamiento persistente que siempre está disponible puede ser útil para que los usuarios accedan a documentos cuando, por ejemplo, no hay ninguna conexión de red disponible en el dispositivo.
 
-![JSONStore feature workflow](jstore_workflow.jpg)
 
-Because it is familiar to developers, relational database terminology is used in this documentation at times to help explain JSONStore. There are many differences between a relational database and JSONStore however. For example, the strict schema that is used to store data in relational databases is different from JSONStore's approach. With JSONStore, you can store any JSON content, and index the content that you need to search.
+![Flujo de trabajo de la característica JSONStore](jstore_workflow.jpg)
 
-#### Key features
+Puesto que es familiar para los desarrolladores, a veces en esta documentación se utiliza terminología de bases de datos relacionales para explicar JSONStore.
+Sin embargo, hay muchas diferencias entre una base de datos relacional y JSONStore.
+Por ejemplo, el esquema estricto que se utiliza para almacenar datos en las bases de datos relacionales es distinto de la aproximación con JSONStore.
+Con JSONStore, se puede almacenar cualquier contenido JSON e indexar el contenido que se necesita buscar.
+
+
+#### Características clave
 {: #key-features }
-* Data indexing for efficient searching
-* Mechanism for tracking local-only changes to the stored data
-* Support for multiple users
-* AES 256 encryption of stored data provides security and confidentiality. You can segment protection by user with password-protection, in the case of more than one user on a single device.
+* Indexación de datos para una búsqueda eficiente
 
-A single store can have many collections, and each collection can have many documents. It is also possible to have a {{ site.data.keys.product_adj }} application that contains multiple stores. For information, see JSONStore multiple user support.
+* Mecanismo de seguimiento cambios únicamente locales en los datos almacenados
 
-#### Support level
+* Soporte a múltiples usuarios
+* El cifrado AES 256 de los datos almacenados proporciona seguridad y confidencialidad.
+Existe la posibilidad de segmentar la protección por usuario con protección de contraseña en el caso de que haya más de un usuario en un único dispositivo.
+
+
+Un único almacén puede tener muchas recopilaciones y cada recopilación puede tener muchos documentos.
+También es posible tener una aplicación {{ site.data.keys.product_adj }} con varios almacenes.
+Consulte el soporte de múltiples usuarios de JSONStore para obtener más información.
+
+
+#### Nivel de soporte
 {: #support-level }
-* JSONStore is supported in Native iOS and Android applications (no support for native Windows (Universal and UWP)).
-* JSONStore is supported in Cordova iOS, Android and Windows (Universal and UWP) applications.
+* JSONStore está soportado en aplicaciones Android e iOS nativas (no hay soporte para Windows nativo (Universal y UWP)).
+* JSONStore está soportado en aplicaciones Cordova iOS, Android y Windows (Universal y UWP).
 
-#### Jump to
+
+#### Ir a 
 {: #jump-to }
-* [General JSONStore terminology](#general-jsonstore-terminology)
-* [Features table](#features-table)
-* [Multiple User Support](#multiple-user-support)
-* [Security](#security)
-* [Performance](#performance)
-* [Concurrency](#concurrency)
-* [Analytics](#analytics)
-* [Working with External Data](#working-with-external-data)
-* [Troubleshooting](#troubleshooting)
-* [API Usage](#api-usage)
+* [Terminología general de JSONStore ](#general-jsonstore-terminology)
+* [Tabla de características](#features-table)
+* [Soporte a múltiples usuarios](#multiple-user-support)
+* [Seguridad](#security)
+* [Rendimiento](#performance)
+* [Simultaneidad](#concurrency)
+* [Analíticas](#analytics)
+* [Cómo trabajar con datos externos](#working-with-external-data)
+* [Resolución de problemas](#troubleshooting)
+* [Uso de API](#api-usage)
 
-## General JSONStore Terminology
+## Terminología general de JSONStore 
 {: #general-jsonstore-terminology }
-### Document
+### Documento
 {: #document }
-A document is the basic building block of JSONStore.
+Un documento es el bloque constructivo básico de JSONStore.
 
-A JSONStore document is a JSON object with an automatically generated identifier (`_id`) and JSON data. It is similar to a record or a row in database terminology. The value of `_id` is always a unique integer inside a specific collection. Some functions like `add`, `replace`, and `remove` in the `JSONStoreInstance` class take an Array of Documents/Objects. These methods are useful to perform operations on various Documents/Objects at a time.
+Un documento JSONStore es un objeto JSON con un identificador que se genera de forma automática (`_id`) y con unos datos JSON.
+Es similar a un registro o a una fila en la terminología de base de datos.
+El valor de `_id` siempre es un entero exclusivo dentro de una recopilación específica.
+Algunas operaciones como, por ejemplo, `add`, `replace` y `remove` en la clase `JSONStoreInstance` utilizan una matriz de objetos/documentos.
+Estos métodos son útiles para realizar operaciones con diversos documentos/objetos al mismo tiempo.
 
-**Single document**  
+
+**Documento individual**  
 
 ```javascript
 var doc = { _id: 1, json: {name: 'carlos', age: 99} };
 ```
 
-**Array of documents**
+**Matriz de documentos**
 
 ```javascript
 var docs = [
@@ -64,10 +85,12 @@ var docs = [
 ]
 ```
 
-### Collection
+### Recopilación
 {: #collection }
-A JSONStore collection is similar to a table, in database terminology.  
-The below code example is not the way that the documents are stored on disk, but it is a good way to visualize what a collection looks like at a high level.
+Una recopilación JSONStore es parecido a una tabla en la terminología de base de datos.
+  
+El siguiente ejemplo de código no corresponde a la forma en la que se almacenan los documentos en el disco, pero son una manera fácil de visualizar una recopilación a un alto nivel.
+
 
 ```javascript
 [
@@ -76,30 +99,42 @@ The below code example is not the way that the documents are stored on disk, but
 ]
 ```
 
-### Store
+### Almacén
 {: #store }
-A store is the persistent JSONStore file that contains one or more collections.  
-A store is similar to a relational database, in database terminology. A store is also referred to as a JSONStore.
+Un almacén es un archivo JSONStore persistente que contiene una o varias recopilaciones.
+  
+Un almacén es similar a una base de datos relacional en la terminología de base de datos.
+También se hace referencia al almacén como JSONStore.
 
-### Search fields
+### Campos de búsqueda
 {: #search-fields }
-A search field is a key/value pair.  
-Search fields are keys that are indexed for fast lookup times, similar to column fields or attributes, in database terminology.
+Un campo de búsqueda es una pareja de clave/valor.
+  
+Los campos de búsqueda son claves que se indexan para disminuir los tiempos de búsqueda, de forma parecida a los atributos o campos de columna en la terminología de base de datos.
 
-Extra search fields are keys that are indexed but that are not part of the JSON data that is stored. These fields define the key whose values (in the JSON collection) are indexed and can be used to search more quickly.
 
-Valid data types are: string, boolean, number, and integer. These types are only type hints, there is no type validation. Furthermore, these types determine how indexable fields are stored. For example, `{age: 'number'}` will index 1 as 1.0 and `{age: 'integer'}` will index 1 as 1.
+Los campos de búsqueda adicionales son claves indexadas que no son parte de los datos JSON almacenados.
+Estos campos definen la clave cuyos valores (en la recopilación JSON) están indexados y que se utilizan para realizar las búsquedas con mayor rapidez.
 
-**Search fields and extra search fields**
+
+Los tipos de datos válidos son: string, boolean, number e integer.
+Estos tipos son únicamente sugerencias de tipo, no hay una validación de tipo.
+Es más, estos tipos determinan cómo se almacenan los campos indexables.
+Por ejemplo, `{age: 'number'}` indexará 1 como 1,0 y `{age: 'integer'}` indexará 1 como 1.
+
+
+**Campos de búsqueda y campos de búsqueda adicional**
 
 ```javascript
 var searchField = {name: 'string', age: 'integer'};
 var additionalSearchField = {key: 'string'};
 ```
 
-It is only possible to index keys inside an object, not the object itself. Arrays are handled in a pass-through fashion, meaning that you cannot index an array or a specific index of the array (arr[n]), but you can index objects inside an array.
+Sólo es posible indexar claves dentro de un objeto, no el objeto en sí mismo.
+En las matrices no es posible indexar una matriz o un índice específico de la matriz (matriz[n]), pero puede indexar objetos dentro de una matriz.
 
-**Indexing values inside an array**
+
+**Indexación de valores dentro de una matriz**
 
 ```javascript
 
@@ -116,154 +151,263 @@ var myObject = {
 };
 ```
 
-### Queries
+### Consultas
 {: #queries }
-Queries are objects that use search fields or extra search fields to look for documents.  
-These examples presumes that the name search field is of type string and the age search field is of type integer.
+Las consultas son objetos que utilizan campos de búsqueda o campos de búsqueda adicionales para buscar documentos.
+  
+En estos ejemplos se presupone que el campo de búsqueda del nombre es de tipo serie y que el campo de búsqueda de edad es de tipo entero.
 
-**Find documents with `name` that matches `carlos`**
+
+**Encontrar documentos donde `name` coincida con `carlos`** 
 
 ```javascript
 var query1 = {name: 'carlos'};
 ```
 
-**Find documents with `name` that matches ``carlos`` and `age` matches `99`**
+**Encontrar documentos con `name` que coincida con `carlos` y `age` coincida con `99`**
 
 ```javascript
 var query2 = {name: 'carlos', age: 99};
 ```
 
-### Query parts
+### Partes de consulta
 {: #query-parts }
-Query parts are used to build more advanced searches. Some JSONStore operations, such as some versions of `find` or `count` take query parts. Everything within a query part is joined by `AND` statements, while query parts themselves are joined by `OR` statements. The search criteria returns a match only if everything within a query part is **true**. You can use more than one query part to search for matches that satisfy one or more of the query parts.
+Las partes de consulta se utilizan para crear búsquedas más avanzadas.
+Algunas operaciones de JSONStore como, por ejemplo, algunas versiones de `find` o `count` utilizan partes de consulta.
+La información dentro de la parte de consulta está unida mediante sentencias `AND` y `OR`.
+El criterio de búsqueda solo devuelve una coincidencia si todos elementos de la parte de consulta se evalúan como **true**.
+Utilice una o varias partes de consulta para buscar coincidencias que satisfagan una o varias de las partes de consulta.
 
-Find with query parts operate only on top-level search fields. For example: `name`, and not `name.first`. Use multiple collections where all search fields are top-level to get around this. The query parts operations that work with non top-level search fields are: `equal`, `notEqual`, `like`, `notLike`, `rightLike`, `notRightLike`, `leftLike`, and `notLeftLike`. The behavior is undetermined if you use non-top-level search fields.
 
-## Features table
+Las búsquedas con partes de consulta solo funcionan con campos de búsqueda de nivel superior.
+Por ejemplo: `name` y no `name.first`.
+Utilice varias recopilaciones donde todos los campos de búsqueda sean de nivel superior para resolver esta situación.
+Las operaciones de partes de consulta que funcionan con campos de búsqueda de nivel superior son:
+`equal`, `notEqual`, `like`, `notLike`, `rightLike`, `notRightLike`, `leftLike` y `notLeftLike`.
+El comportamiento es indeterminado si utiliza campos de búsqueda que no sean de un nivel superior.
+
+
+## Tabla de características
 {: #features-table }
-Compare JSONStore features to those features of other data storage technologies and formats.
+Compare las características de JSONStore con aquellas otras características de otros formatos y tecnologías de almacenamiento de datos.
 
-JSONStore is a JavaScript API for storing data inside Cordova applications that use the {{ site.data.keys.product_adj }} plug-in, an Objective-C API for native iOS applications, and a Java API for native Android applications. For reference, here is a comparison of different JavaScript storage technologies to see how JSONStore compares to them.
 
-JSONStore is similar to technologies such as LocalStorage, Indexed DB, Cordova Storage API, and Cordova File API. The table shows how some features that are provided by JSONStore compare with other technologies. The JSONStore feature is only available on iOS and Android devices and simulators.
+JSONStore es una API de JavaScript para almacenar datos dentro de aplicaciones Cordova que utilizan el plugin {{ site.data.keys.product_adj }}, una API Objective-C para aplicaciones iOS nativas, y una API Java para aplicaciones Android nativas.
+Como referencia, se proporciona una comparación entre las distintas tecnologías de almacenamiento JavaScript para ver como JSONStore se compara frente a las mismas.
 
-| Feature                                            | JSONStore      | LocalStorage | IndexedDB | Cordova storage API | Cordova file API |
+
+JSONStore es similar a otras tecnologías como, por ejemplo, LocalStorage, Indexed DB, Cordova Storage API y Cordova File API.
+En la tabla se muestra como algunas de las características que JSONStore proporciona frente a otras tecnologías.
+La característica JSONStore solo está disponible en simuladores y dispositivos iOS y Android.
+
+
+| Característica                                     | JSONStore      | LocalStorage | IndexedDB | Cordova storage API | Cordova file API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Android Support (Cordova &amp; Native Applications)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS Support (Cordova & Native Applications)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal anND Windows 10 UWP          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-| Data encryption	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Maximum Storage	                                 |Available Space |    ~5MB     |   ~5MB 	 | Available Space	   | Available Space  |
-| Reliable Storage (See note)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| Keep Track of Local Changes	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Multi-user support                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Indexing	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| Type of Storage	                                 | JSON documents | Key/value pairs | JSON documents | Relational (SQL) | Strings     |
+| Soporte Android (aplicaciones nativas y Cordova)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Soporte iOS (aplicaciones nativas y Cordova)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal y Windows 10 UWP (aplicaciones Cordova)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| Cifrado de datos                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| Máximo almacenamiento                                 |Espacio disponible |    ~5MB     |   ~5MB 	 | Espacio disponible | Espacio disponible |
+| Almacenamiento fiable (ver nota)              |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| Mantener seguimiento de cambios locales         |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| Soporte a varios usuarios                   |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| Indexación   |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
+| Tipo de almacenamiento                   | Documentos JSON| Parejas clave/valor | Documentos JSON| Relacional (SQL) | Series |
 
-**Note:** Reliable Storage means that your data is not deleted unless one of the following events occurs:
+**Nota:** Almacenamiento fiable significa que no se suprimen los datos a no ser que se produzca una de las siguientes situaciones:
 
-* The application is removed from the device.
-* One of the methods that removes data is called.
 
-## Multiple User Support	
+* La aplicación se elimina del dispositivo. 
+* Se llama a uno de los métodos que eliminan los datos. 
+
+## Soporte a múltiples usuarios	
 {: #multiple-user-support }
-With JSONStore, you can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application.
+Con JSONStore, es posible crear varios almacenes con varias recopilaciones en una única aplicación de {{ site.data.keys.product_adj }}.
 
-The init (JavaScript) or open (Native iOS and Native Android) API can take an options object with a user name. Different stores are separate files in the file system. The user name is used as the file name of the store. These separate stores can be encrypted with different passwords for security and privacy reasons. Calling the closeAll API removes access to all the collections. It is also possible to change the password of an encrypted store by calling the changePassword API.
 
-An example use case would be various employees that share a physical device (for example an iPad or Android tablet) and {{ site.data.keys.product_adj }} application. In addition, if the employees work different shifts and handle private data from different customers while they use the {{ site.data.keys.product_adj }} application, multiple user support is useful.
+La API init (JavaScript) u open (iOS nativo y Android nativo) pueden tomar un objeto de opciones con un nombre de usuario.
+Los distintos almacenes son archivos diferentes en el sistema de archivos.
+El nombre de usuario se utiliza como el nombre de archivo del almacén.
+Estos distintos almacenes se pueden cifrar con distintas contraseñas por razones de seguridad y privacidad.
+Al llamar a la API closeAll se elimina el acceso a todas las recopilaciones.
+También es posible cambiar la contraseña de un almacén de cifrado llamando a la API changePassword.
 
-## Security
+
+Un caso de uso de ejemplo sería el de varios usuarios que comparten un dispositivo físico (por ejemplo, una tableta iPad o Android) y una aplicación de {{ site.data.keys.product_adj }}.
+Además, si los empleados trabajasen en distintos turnos y manejasen datos de distintos clientes al utilizar la aplicación de {{ site.data.keys.product_adj }}, el soporte de múltiples usuarios sería útil.
+
+
+## Seguridad
 {: #security }
-You can secure all of the collections in a store by encrypting them.
+Todas las recopilaciones se pueden cifrar en un almacén para protegerlas.
 
-To encrypt all of the collections in a store, pass a password to the `init` (JavaScript) or `open` (Native iOS and Native Android) API. If no password is passed, none of the documents in the store collections are encrypted.
 
-Some security artifacts (for example salt) are stored in the keychain (iOS), shared preferences (Android) and the credential locker (Windows Universal 8.1 and Windows 10 UWP). The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2). You can choose to encrypt data collections for an application, but you cannot switch between encrypted and plain-text formats, or to mix formats within a store.
+Para cifrar todas las recopilaciones en un almacén, pase una contraseña a la API `init` (JavaScript) o `open` (iOS nativo y Android nativo).
+Si no se pasa una contraseña, no se cifrará ningún documento en las recopilaciones del almacén.
 
-The key that protects the data in the store is based on the user password that you provide. The key does not expire, but you can change it by calling the changePassword API.
 
-The data protection key (DPK) is the key that is used to decrypt the contents of the store. The DPK is kept in the iOS keychain even if the application is uninstalled. To remove both the key in the keychain and everything else that JSONStore puts in the application, use the destroy API. This process is not applicable to Android because the encrypted DPK is stored in shared preferences and wiped out when the application is uninstalled.
+Algunos artefactos de seguridad (por ejemplo los de sal) se almacenan en la cadena de claves (iOS), las preferencias compartidas (Android) y en la caja de seguridad de credenciales (Windows Universal 8.1 y Windows 10 UWP).
+El almacén se cifra con una clave AES (Advanced Encryption Standard) de 256 bits.
+Todas las claves están reforzadas mediante PBKDF2 (Password-Based Key Derivation Function 2).
+Puede decidir cifrar las recopilaciones de datos de una aplicación, sin embargo, no puede conmutar entre los formatos cifrados y sin cifrar ni utilizar ambos formatos dentro de un almacén.
 
-The first time that JSONStore opens a collection with a password, which means that the developer wants to encrypt data inside the store, JSONStore needs a random token. That random token can be obtained from the client or from the server.
 
-When the localKeyGen key is present in the JavaScript implementation of the JSONStore API, and it has a value of true, a cryptographically secure token is generated locally. Otherwise, the token is generated by contacting the server, thus requiring connectivity to the {{ site.data.keys.mf_server }}. This token is required only the first time that a store is opened with a password. The native implementations (Objective-C and Java) generate a cryptographically secure token locally by default, or you can pass one through the secureRandom option.
+La clave que proteje los datos en el almacén se basa en la contraseña de usuario que proporcione.
+La clave no caduca y puede cambiarla llamando a la API changePassword.
 
-The trade-off is between opening a store offline and trusting the client to generate that random token (less secure), or opening the store with access to the {{ site.data.keys.mf_server }} (requires connectivity) and trusting the server (more secure).
+La clave de protección de datos (DPK) es la clave que se utiliza para descifrar el contenido del almacén.
+La DPK se mantiene en la cadena de claves de iOS incluso si la aplicación está desinstalada.
+Para eliminar tanto la clave la cadena de herramientas como todo lo demás que JSONStore coloca en la aplicación, utilice la API destroy.
+Este proceso no se aplica a Android porque la DPK cifrada se almacena en las preferencias compartidas y se borra de las mismas al desinstalar la aplicación.
 
-### Security Utilities
+
+La primera vez que JSONStore abre una recopilación con una contraseña, lo que significa que el desarrollador desea cifrar los datos dentro del almacén, JSONStore necesita una señal aleatoria.
+Dicha señal se puede obtener desde el cliente o desde el servidor.
+
+
+Cuando la clave localKeyGen está presente en la implementación JavaScript de la API JSONStore, y tiene un valor true, se genera localmente una señal criptográfica segura.
+De lo contrario, la señal se genera poniéndose en contacto con el servidor, con lo que se necesita conectividad a {{ site.data.keys.mf_server }}.
+Esta señal solamente es necesaria la primera vez que se abre un almacén con una contraseña.
+Con las implementaciones nativas (Objective-C y Java) se puede genera una señal criptográficamente segura de forma predeterminada, o el usuario puede pasar una mediante la opción secureRandom.
+
+
+Deberá valorar si es más conveniente abrir un almacén fuera de línea y confiar en el cliente para generar esta señal aleatoria (menos seguro) o abrir el almacén con acceso a {{ site.data.keys.mf_server }} (es necesaria conectividad) y confiar en el servidor (más seguro).
+
+
+### Programa de utilidad de seguridad
 {: #security-utilities }
-The {{ site.data.keys.product_adj }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+La API del lado del cliente de {{ site.data.keys.product_adj }} proporciona algunos programas de utilidad de seguridad para proteger los datos del usuario.
+Las características como JSONStore son de gran utilidad si desea proteger objetos JSON.
+Sin embargo, no se recomienda almacenar blobs binarios en una recopilación de JSONStore.
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
 
-> Learn more about [JSONStore Security Utilities](security-utilities).
+En su lugar, almacene los datos binarios en el sistema de archivos, y almacene las vías de acceso de archivos y otros metadatos dentro de una recopilación JSONStore.
+Si desea proteger los archivos como, por ejemplo, imágenes, puede codificarlas como series base64, cifrarlas, y grabar la salida en el disco.
+Cuando llegue el momento de descifrar los datos, podrá buscar en los metadatos en una recopilación JSONStore, leer los datos cifrados del disco, y descifrarlos mediante los metadatos almacenados.
+Estos metadatos pueden incluir la clave, la sal, el vector de inicialización (IV), el tipo de archivo o la vía de acceso al archivo, entre otros.
 
-### Windows 8.1 Universal and Windows 10 UWP encryption
+
+> Aprenda más sobre los [Programas de utilidad de JSONStore](security-utilities).
+
+### Cifrado de Windows 8.1 Universal y Windows 10 UWP 
 {: #windows-81-universal-and-windows-10-uwp-encryption }
-You can secure all of the collections in a store by encrypting them.
+Todas las recopilaciones se pueden cifrar en un almacén para protegerlas.
 
-JSONStore uses [SQLCipher](http://sqlcipher.net/) as its underlying database technology. SQLCipher is a build of SQLite that is produced by Zetetic, LLC adds a layer of encryption to the database.
 
-JSONStore uses SQLCipher on all platforms. On Android and iOS a free, open source version of SQLCipher is available, known as the Community Edition and is incorporated into the versions of JSONStore that is included in {{ site.data.keys.product }}. The Windows versions of SQLCipher are only available under a commercial license and cannot be directly redistributed by {{ site.data.keys.product }}.
+JSONStore utiliza [SQLCipher](http://sqlcipher.net/) como su tecnología de base de datos subyacente.
+SQLCipher es una compilación de SQLite creada por Zetetic, LLC que añade una capa de cifrado a la base de datos.
 
-Instead, JSONStore for Windows 8 Universal include SQLite as the underlying database. If you need to encrypt data for either of these platforms, you need to acquire your own version of SQLCipher and swap out the SQLite version that is included in {{ site.data.keys.product }}.
 
-If you do not need encryption, the JSONStore is fully functional (minus encryption) by using the SQLite version in {{ site.data.keys.product }}.
+JSONStore utiliza SQLCipher en todas las plataformas.
+En Android e iOS existe una versión de código abierto de SQLCipher, denominada Community Edition que se incorpora a las versiones de JSONStore que se incluyen en {{ site.data.keys.product }}.
+Las versiones de Windows de SQLCipher únicamente están disponibles a través de una licencia comercial y {{ site.data.keys.product }} no las puede distribuir directamente.
 
-#### Replacing SQLite with SQLCipher for Windows Universal and Windows UWP
+
+En lugar de ello, JSONStore para Windows 8 Universal incluye SQLite como la base de datos subyacente.
+Si necesita cifrar datos para alguna de estas plataformas, necesita adquirir su propia versión de SQLCipher y cambiar la versión de SQLite que se incluye en {{ site.data.keys.product }}.
+
+
+Si no necesita cifrado, JSONStore es funcionalmente completo (excepto por el cifrado) al utilizar la versión de SQLite en {{ site.data.keys.product }}.
+
+
+#### Sustitución de SQLite con SQLCipher para Windows Universal y Windows UWP
 {: #replacing-sqlite-with-sqlcipher-for-windows-universal-and-windows-uwp }
-1. Run the SQLCipher for Windows Runtime 8.1/10 extension that comes with the SQLCipher for Windows Runtime Commercial Edition.
-2. After the extension finishes installing, locate the SQLCipher version of the **sqlite3.dll** file that was just created. There is one for x86, one for x64, and one for ARM.
+1. Ejecute SQLCipher para la extensión de Windows Runtime 8.1/10 que viene con SQLCipher for Windows Runtime Commercial Edition.
+
+2. Una vez haya finalizado de la extensión, ubique la versión de SQLCipher del archivo **sqlite3.dll** que se acaba de crear.
+Hay uno para x86, uno para x64 y uno para ARM.
+
 
    ```bash
    C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
    ```
     
-3. Copy and replace this file to your {{ site.data.keys.product_adj }} application.
+3. Copie y sustituya este archivo con su aplicación de {{ site.data.keys.product_adj }}.
+
 
    ```bash
    <Worklight project name>\apps\<application name>\windows8\native\buildtarget\<platform>
    ```
 
-## Performance
+## Rendimiento
 {: #performance }
-The following are factors that can affect JSONStore performance.
+Los siguientes factores pueden afectar al rendimiento de JSONStore.
 
-### Network
+
+### Red
 {: #network }
-* Check network connectivity before you perform operations, such as sending all dirty documents to an adapter.
-* The amount of data that is sent over the network to a client heavily affects performance. Send only the data that is required by the application, instead of copying everything inside your backend database.
-* If you are using an adapter, consider setting the compressResponse flag to true. That way, responses are compressed, which generally uses less bandwidth and has a faster transfer time than without compression.
+* Compruebe la conectividad de red antes de realizar operaciones como, por ejemplo, enviar todos los documentos "sucios" a un adaptador.
 
-### Memory
+* La cantidad de datos que se envían a través de la red a un cliente afectan en gran medida al rendimiento.
+Envíe solo los datos que sean necesarios para la aplicación, en lugar de copiar todo dentro de su base de datos de fondo.
+
+* Si está utilizando un adaptador, considere establecer el distintivo compressResponse en true.
+De este modo, las respuestas se comprimen, lo que generalmente supone utilizar menos ancho de banda y tiene un tiempo de transferencia más bajo que sin compresión.
+
+
+### Memoria
 {: #memory }
-* When you use the JavaScript API, JSONStore documents are serialized and deserialized as Strings between the Native (Objective-C, Java, or C#) Layer and the JavaScript Layer. One way to mitigate possible memory issues is by using limit and offset when you use the find API. That way, you limit the amount of memory that is allocated for the results and can implement things like pagination (show X number of results per page).
-* Instead of using long key names that are eventually serialized and deserialized as Strings, consider mapping those long key names into smaller ones (for example: `myVeryVeryVerLongKeyName` to `k` or `key`). Ideally, you map them to short key names when you send them from the adapter to the client, and map them to the original long key names when you send data back to the backend.
-* Consider splitting the data inside a store into various collections. Have small documents over various collections instead of monolithic documents in a single collection. This consideration depends on how closely related the data is and the use cases for said data.
-* When you use the add API with an array of objects, it is possible to run into memory issues. To mitigate this issue, call these methods with fewer JSON objects at a time.
-* JavaScript and Java have garbage collectors, while Objective-C has Automatic Reference Counting. Allow it to work, but do not depend on it entirely. Try to null references that are no longer used and use profiling tools to check that memory usage is going down when you expect it to go down.
+* Cuando se utiliza la API de JavaScript, los documentos JSONStore se serializan y deserializan como series entre la capa nativa (Objective-C, Java o C#) y la capa de JavaScript.
+Una forma para mitigar posibles problemas de memoria es utilizar limit y offset al utilizar la API find.
+De esta forma, limita la cantidad de memoria asignada a los resultados y puede implementar funcionalidades como la paginación (mostrar x números de resultados por página).
+
+* En lugar de utilizar nombres de clave largos que al final se serializan y deserializan como series, considere el correlacionar estos nombres de clave largos con otros más cortos (por ejemplo: `myVeryVeryVerLongKeyName` en `k` o `key`).
+Lo ideal sería correlacionarlos con nombres de clave cortos al enviarlos desde el adaptador al cliente, y correlacionarlos con los nombres de clave largos al enviar datos de nuevo a los sistemas de fondo.
+
+* Considere dividir los datos dentro de un almacén en varias recopilaciones.
+Es mejor utilizar varios documentos pequeños en distintas recopilaciones en lugar de utilizar documentos monolíticos en una única recopilación.
+Este aspecto depende de cómo están relacionados los datos y los casos de uso para dichos datos.
+
+* Cuando utiliza la API add con una matriz de objetos, es posible que aparezcan problemas de memoria.
+Para mitigar este problema, llame a estos métodos con menos objetos JSON al mismo tiempo.
+
+* JavaScript y Java tienen recopiladores de basura, mientras que Objective-C utiliza ARC (Automatic Reference Counting). Deje que funcionen, pero no dependa de ellos en su totalidad.
+Intente asignar a null las referencias que no utilice y utilice la herramienta de creación de perfiles para comprobar que la utilización de memoria disminuye cuando espere que así ocurra.
+
 
 ### CPU
 {: #cpu }
-* The amount of search fields and extra search fields that are used affect performance when you call the add method, which does the indexing. Only index the values that are used in queries for the find method.
-* By default, JSONStore tracks local changes to its documents. This behavior can be disabled, thus saving a few cycles, by setting the `markDirty` flag to **false** when you use the add, remove, and replace APIs.
-* Enabling security adds some overhead to the `init` or `open` APIs and other operations that work with documents inside the collection. Consider whether security is genuinely required. For example, the open API is much slower with encryption because it must generate the encryption keys that are used for encryption and decryption.
-* The `replace` and `remove` APIs depend on the collection size as they must go through the whole collection to replace or remove all occurrences. Because it must go through each record, it must decrypt every one of them, which makes it much slower when encryption is used. This performance hit is more noticeable on large collections.
-* The `count` API is relatively expensive. However, you can keep a variable that keeps the count for that collection. Update it every time that you store or remove things from the collection.
-* The `find` APIs (`find`, `findAll`, and `findById`) are affected by encryption, since they must decrypt every document to see whether it is a match or not. For find by query, if a limit is passed, it is potentially faster as it stops when it reaches the limit of results. JSONStore does not need to decrypt the rest of the documents to figure out if any other search results remain.
+* La cantidad de campos de búsqueda y campos de búsqueda adicionales que se utilizan afectan al rendimiento cuando se llama al método add, que realiza la indexación.
+Indexe únicamente los valores que utilice en las consultas para el método find.
 
-## Concurrency
+* De forma predeterminada, JSONStore realiza un seguimiento de los cambios locales a sus documentos.
+Este comportamiento se puede inhabilitar, ahorrando por lo tanto ciclos, estableciendo el distintivo `markDirty` en **false** al utilizar las API add, remove y replace.
+
+* La habilitación de la seguridad añade algo de sobrecarga a las API `init` o `open`, así como a otras operaciones, que funcionan con documentos dentro de la recopilación.
+Considere si la seguridad está realmente justificada.
+Por ejemplo, la API open es mucho más lenta con cifrado puesto que debe generar las claves de cifrado que se utilizarán para el cifrado y el descifrado.
+
+* Las API `replace` y `remove` dependen del tamaño de la recopilación puesto que deben recorrerla en su totalidad para sustituir o eliminar todas las apariciones.
+Puesto que debe recorrer cada registro, desde descifrarlos uno a uno, lo que hace que sea más lento cuando se utiliza el cifrado.
+Este coste en el rendimiento es más evidente en recopilaciones grandes.
+
+* La API `count` es relativamente costosa.
+Sin embargo, puede mantener una variable que mantenga el recuento de dicha recopilación.
+Actualízela cada vez que almacene o elimine elementos en la recopilación.
+
+* Las API `find` (`find`, `findAll` y `findById`) se ven afectadas por el cifrado, puesto que deben descifrar cada documento para ver si hay una coincidencia.
+Para una búsqueda mediante una consulta, si se pasa un límite, podría ser más rápido al detenerse la consulta al alcanzar el límite de los resultados.
+JSONStore no necesita descifrar el resto de los documentos para averiguar si quedan otros resultados de búsqueda.
+
+
+## Simultaneidad
 {: #concurrency }
 ### JavaScript
 {: #javascript }
-Most of the operations that can be performed on a collection, such as add and find, are asynchronous. These operations return a jQuery promise that is resolved when the operation completes successfully and rejected when a failure occurs. These promises are similar to success and failure callbacks.
+La mayoría de las operaciones que se pueden realizar en una recopilación, como son las de añadir o buscar, son asíncronas.
+Estas operaciones devuelven una promesa de jQuery que se resuelve cuando la operación se completa de forma satisfactoria y se rechaza cuando se da una anomalía.
+Estas promesas son similares a las devoluciones de llamada de éxito y anomalías.
 
-A jQuery Deferred is a promise that can be resolved or rejected. The following examples are not specific to JSONStore, but are intended to help you understand their usage in general.
 
-Instead of promises and callbacks, you can also listen to JSONStore `success` and `failure` events. Perform actions that are based on the arguments that are passed to the event listener.
+Un deferred de JQuery es una promesa que se puede resolver o rechazar.
+Los siguientes ejemplos no son específicos para JSONStore, están pensados para ayudar a entender su uso en general.
 
-**Example promise definition**
+
+En lugar de promesas y devoluciones de llamadas, también se pueden escuchar los sucesos `success` y `failure` de JSONStore.
+Ejecute acciones basadas en los argumentos que se pasan al escucha de sucesos.
+
+
+**Ejemplo de definición de promesa**
 
 ```javascript
 var asyncOperation = function () {
@@ -278,7 +422,7 @@ var asyncOperation = function () {
 };
 ```
 
-**Example promise usage**
+**Ejemplo de uso de promesa**
 
 ```javascript
 // The function that is passed to .then is executed after 1000 ms.
@@ -287,7 +431,7 @@ asyncOperation.then(function (response) {
 });
 ```
 
-**Example callback definition**
+**Ejemplo de definición de devolución de llamada**
 
 ```javascript
 var asyncOperation = function (callback) {
@@ -297,7 +441,7 @@ var asyncOperation = function (callback) {
 };
 ```
 
-**Example callback usage**
+**Ejemplo de uso de devolución de llamada**
 
 ```javascript
 // The function that is passed to asyncOperation is executed after 1000 ms.
@@ -306,7 +450,7 @@ asyncOperation(function (response) {
 });
 ```
 
-**Example events**
+**Sucesos de ejemplo**
 
 ```javascript
 $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collectionName) {
@@ -320,25 +464,35 @@ $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collection
 
 ### Objective-C
 {: #objective-c }
-When you use the Native iOS API for JSONStore, all operations are added to a synchronous dispatch queue. This behavior ensures that operations that touch the store are executed in order on a thread that is not the main thread. For more information, see the Apple documentation at [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ).
+Cuando se utiliza la API iOS nativa para JSONStore, todas las operaciones se añaden a la cola de asignación asíncrona.
+Este comportamiento asegura que las operaciones que afectan al almacén se ejecutan en orden en una hebra que no es la hebra principal.
+Para obtener más información, consulte la documentación de Apple en [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ).
 
 ### Java
 {: #java }
-When you use the Native Android API for JSONStore, all operations are executed on the main thread. You must create threads or use thread pools to have asynchronous behavior. All store operations are thread-safe.
+Cuando se utiliza la API Android nativa para JSONStore, todas las operaciones se ejecutan en la hebra principal.
+Debe crear hebras o utilizar agrupaciones de hebras para obtener un comportamiento asíncrono.
+Todas las operaciones de almacenamiento son de proceso múltiple.
 
-## Analytics 
+
+## Analíticas 
 {: #analytics }
-ou can collect key pieces of analytics information that are related to JSONStore 
+Recopile elementos clave de información analítica relacionados con JSONStore 
 
-### File information
+### Información de archivo
 {: #file-information }
-File information is collected once per application session if the JSONStore API is called with the analytics flag set to **true**. An application session is defined as loading the application into memory and removing it from memory. You can use this information to determine how much space is being used by JSONStore content in the application.
+La información de archivo se recopila una vez por sesión de aplicación si se llama a la API JSONStore con el distintivo de analíticas establecido en **true**.
+Una sesión de aplicación se define al cargar la aplicación en memoria hasta que se elimina de la memoria.
+Utilice esta información para determinar el espacio que el contenido de JSONStore está utilizando en la aplicación.
 
-### Performance metrics
+
+### Métricas de rendimiento
 {: #performance-metrics }
-Performance metrics are collected every time a JSONStore API is called with information about the start and end times of an operation. You can use this information to determine how much time various operations take in milliseconds.
+Las métricas de rendimiento se recopilan cada vez que se llama a una API JSONStore con información sobre los tiempos de inicio y finalización de una operación.
+Utilice esta información para determinar lo que pueden tardar las distintas operaciones en milisegundos.
 
-### Examples
+
+### Ejemplos
 {: #examples }
 #### iOS
 {: #ios-example}
@@ -368,35 +522,47 @@ var options = {
 WL.JSONStore.init(..., options);
 ```
 
-## Working With External Data
+## Cómo trabajar con datos externos
 {: #working-with-external-data }
-You can work with external data in several different concepts: **Pull** and **Push**.
+Se puede trabajar con los datos externos en diferentes conceptos: **Pull** y **Push**.
 
 ### Pull
 {: #pull }
-Many systems use the term pull to refer to getting data from an external source.  
-There are three important pieces:
+Muchos sistemas utilizan el término pull para hacer referencia a la obtención de datos de una origen externo.   
+Los tres elementos más importantes son:
 
-#### External Data Source
+
+#### Origen de datos externo
 {: #external-data-source }
-This source can be a database, a REST or SOAP API, or many others. The only requirement is that it must be accessible from either the {{ site.data.keys.mf_server }} or directly from the client application. Ideally, you want this source to return data in JSON format.
+Este origen puede ser una base de datos, una API SOAP o REST, o muchos otros.
+El único requisito es que debe ser accesible desde {{ site.data.keys.mf_server }} o directamente desde la aplicación de cliente.
+Lo más conveniente es que este origen de datos devuelva datos en formato JSON.
 
-#### Transport Layer
+
+#### Capa de transporte
 {: #transport-layer }
-This source is how you get data from the external source into your internal source, a JSONStore collection inside the store. One alternative is an adapter.
+Este origen es cómo obtiene datos desde el origen externo en su origen interno, una recopilación de JSONStore dentro del almacén.
+Una alternativa es un adaptador.
 
-#### Internal Data Source API
+
+#### API de origen de datos interno
 {: #internal-data-source-api }
-This source is the JSONStore APIs that you can use to add JSON data to a collection.
+Este origen son las API de JSONStore que se pueden utilizar para añadir datos JSON a una recopilación.
 
-**Note:** You can populate the internal store with data that is read from a file, an input field, or hardcoded data in a variable. It does not have to come exclusively from an external source that requires network communication.
 
-All of the following code examples are written in pseudocode that looks similar to JavaScript.
+**Nota:** El almacén interno se puede cumplimentar con datos que se leen desde un archivo, un campo de entrada o datos codificados mediante programación para una variable.
+No tienen que venir de una forma exclusiva desde un origen externo que precisa comunicación de red.
 
-**Note:** Use  adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
 
-**External Data Source: Backend REST endpoint**  
-Imagine that you have a REST endpoint that read data from a database and returns it as an array of JSON objects.
+Todos los siguientes ejemplos de código están escritos en un pseudocódigo similar a JavaScript.
+
+**Nota:** Utilice adaptadores para la capa de transporte.
+Algunas de las ventajas de utilizar adaptadores son conversión XML a JSON, seguridad, filtrado, desacoplamiento de código del lado del cliente y de código del lado del servidor.
+
+
+**Origen de datos externos: punto final REST de fondo**  
+Imagine que tiene un punto final REST que lee datos de una base de datos y devuelve una matriz de objetos JSON.
+
 
 ```javascript
 app.get('/people', function (req, res) {
@@ -407,7 +573,8 @@ app.get('/people', function (req, res) {
 });
 ```
 
-The data that is returned can look like the following example:
+Los datos que se devuelven pueden ser similares a los del siguiente ejemplo:
+
 
 ```xml
 [{id: 0, name: 'carlos', ssn: '111-22-3333'},
@@ -415,8 +582,11 @@ The data that is returned can look like the following example:
  {id: 2, name: 'dgonz' ssn: '111-55-3333')]
 ```
 
-**Transport Layer: adapter**  
-Imagine that you created an adapter that is called people and you defined a procedure that is called getPeople. The procedure calls the REST endpoint and returns the array of JSON objects to the client. You might want to do more work here, for example, return only a subset of the data to the client.
+**Capa de transporte: adaptador**  
+Imagine que ha creado un adaptador que se denomina people y que ha definido un procedimiento que se denomina getPeople.
+El procedimiento llama al punto final REST y devuelve la matriz de objetos JSON al cliente.
+Es posible que aquí desee realizar más tareas, por ejemplo, devolver un subconjunto de datos al cliente.
+
 
 ```javascript
 function getPeople () {
@@ -430,7 +600,10 @@ function getPeople () {
 }
 ```
 
-On the client, you can use the WLResourceRequest API to get the data. Additionally, you might want to pass some parameters from the client to the adapter. One example is a date with the last time that the client got new data from the external source through the adapter.
+En el cliente, puede utilizar la API WLResourceRequest para obtener datos.
+Además, podría desear pasar parámetros desde el cliente al adaptador.
+Un ejemplo es una fecha con la última vez que el cliente obtuvo nuevos datos del origen externo a través del adaptador.
+
 
 ```javascript
 var adapter = 'people';
@@ -443,8 +616,10 @@ resource.send()
 });
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.  
-Alternatively, you can skip the adapter and use something like jQuery.ajax to directly contact the REST endpoint with the data that you want to store.
+**Nota:** Podría desear aprovecharse de `compressResponse`, `timeout` y de otros parámetros que se pueden pasar a la API `WLResourceRequest`.
+  
+Otra posibilidad es omitir el adaptador y utilizar algo como jQuery.ajax para contactar directamente al punto final REST con los datos almacenados.
+
 
 ```javascript
 $.ajax({
@@ -456,52 +631,69 @@ $.ajax({
 });
 ```
 
-**Internal Data Source API: JSONStore**
-After you have the response from the backend, you can work with that data by using JSONStore.
-JSONStore provides a way to track local changes. It enables some APIs to mark documents as dirty. The API records the last operation that was performed on the document, and when the document was marked as dirty. You can then use this information to implement features like data synchronization.
+**API de origen de datos internos: JSONStore**
+Después de tener una respuesta del sistema de fondo, puede trabajar con los datos mediante JSONStore.
+JSONStore proporciona una forma de realizar un seguimiento de los cambios locales.
+Habilita algunas API para marcar documentos como "sucios".
+La API graba la última operación que se realizó en el documento, y cuándo el documento se marcó como "sucio". Puede utilizar esta información para implementar características como la sincronización de datos.
 
-The change API takes the data and some options:
+
+La API change toma los datos y algunas opciones:
+
 
 **replaceCriteria**  
-These search fields are part of the input data. They are used to locate documents that are already inside a collection. For example, if you select:
+Estos campos de búsqueda son parte de los datos de entrada.
+Se utilizan para encontrar documentos que ya existen dentro de una recopilación.
+Por ejemplo, si selecciona: 
 
 ```javascript
 ['id', 'ssn']
 ```
 
-as the replace criteria, pass the following array as the input data:
+como criterio de sustitución, pase la siguiente matriz como los datos de entrada:
+
 
 ```javascript
 [{id: 1, ssn: '111-22-3333', name: 'Carlos'}]
 ```
 
-and the `people` collection already contains the following document:
+y la recopilación `people` ya contiene el siguiente documento:
+
 
 ```javascript
 {_id: 1,json: {id: 1, ssn: '111-22-3333', name: 'Carlitos'}}
 ```
 
-The `change` operation locates a document that matches exactly the following query:
+La operación `change` busca un documento que coincida exactamente con la siguiente consulta:
+
 
 ```javascript
 {id: 1, ssn: '111-22-3333'}
 ```
 
-Then the `change` operation performs a replacement with the input data and the collection contains:
+A continuación, la operación `change` realiza una sustitución con los datos de entrada y la recopilación contendrá:
+
 
 ```javascript
 {_id: 1, json: {id:1, ssn: '111-22-3333', name: 'Carlos'}}
 ```
 
-The name was changed from `Carlitos` to `Carlos`. If more than one document matches the replace criteria, then all documents that match are replaced with the respective input data.
+El nombre se ha cambiado de `Carlitos` a `Carlos`.
+Si más de un documento coincide con el criterio de sustitución, todos los documentos que coincidan son sustituidos con los respectivos datos de entrada.
+
 
 **addNew**  
-When no documents match the replace criteria, the change API looks at the value of this flag. If the flag is set to **true**, the change API creates a new document and adds it to the store. Otherwise, no further action is taken.
+Cuando no hay documentos que coincidan con el criterio de sustitución, la API change busca los valores de este distintivo.
+Si el distintivo se establece en **true**, la API change crea un nuevo documento y lo añade al almacén.
+De lo contrario, no se realiza ninguna acción.
+
 
 **markDirty**  
-Determines whether the change API marks documents that are replaced or added as dirty.
+Determina si la API change marca documentos sustituidos o añadidos como "sucios".
 
-An array of data is returned from the adapter:
+
+Se devuelve una matriz de datos desde el adaptador:
+
 
 ```javascript
 .then(function (responseFromAdapter) {
@@ -524,25 +716,35 @@ An array of data is returned from the adapter:
 })
 ```
 
-You can use other APIs to track changes to the local documents that are stored. Always get an accessor to the collection that you perform operations on.
+Puede utilizar otras API para realizar cambios en los documentos locales que se almacenan.
+Obtenga siempre un accesor para la recopilación en la que desea realizar operaciones.
+
 
 ```javascript
 var accessor = WL.JSONStore.get('people')
 ```
 
-Then, you can add data (array of JSON objects) and decide whether you want it to be marked dirty or not. Typically, you want to set the markDirty flag to false when you get changes from the external source. Then, set the flag to true when you add data locally.
+A continuación, puede añadir datos (una matriz de objetos JSON) y decidir si desea marcarlos como "sucios".
+Normalmente, establecerá el distintivo markDirty en false cuando quiera obtener cambios del origen externo.
+Establezca el distintivo en true cuando quiera añadir datos de forma local.
+
 
 ```javascript
 accessor.add(data, {markDirty: true})
 ```
 
-You can also replace a document, and opt to mark the document with the replacements as dirty or not.
+También puede sustituir un documento, y opcionalmente marcar el documento con las sustituciones como "sucio".
+
 
 ```javascript
 accessor.replace(doc, {markDirty: true})
 ```
 
-Similarly, you can remove a document, and opt to mark the removal as dirty or not. Documents that are removed and marked dirty do not show up when you use the find API. However, they are still inside the collection until you use the `markClean` API, which physically removes the documents from the collection. If the document is not marked as dirty, it is physically removed from the collection.
+De forma parecida, puede eliminar un documento y opcionalmente marcar la eliminación como "sucia".
+Los documentos que se eliminan y marcan como sucios no aparecerán al utilizar la API find.
+Sin embargo, continuarán dentro de la recopilación a no ser que utilice la API `markClean`, que físicamente elimina los documentos de la recopilación.
+Si el documento no se marca como sucio, se elimina físicamente de la recopilación.
+
 
 ```javascript
 accessor.remove(doc, {markDirty: true})
@@ -550,28 +752,37 @@ accessor.remove(doc, {markDirty: true})
 
 ### Push
 {: #push }
-Many systems use the term push to refer to sending data to an external source.
+Muchos sistemas utilizan el término push para hacer referencia al envío de datos a un origen externo.
 
-There are three important pieces:
 
-#### Internal Data Source API
+Los tres elementos más importantes son:
+
+
+#### API de origen de datos interno
 {: #internal-data-source-api-push }
-This source is the JSONStore API that returns documents with local-only changes (dirty).
+Este origen de datos es la API JSONStore que devuelve documentos únicamente con cambios locales ("sucios").
 
-#### Transport Layer
+
+#### Capa de transporte
 {: #transport-layer-push }
-This source is how you want to contact the external data source to send the changes.
+Este origen permitirá contactar con el origen de datos externo para enviar los cambios.
 
-#### External Data Source
+
+#### Origen de datos externo
 {: #external-data-source-push }
-This source is typically a database, REST or SOAP endpoint, among others, that receives the updates that the client made to the data.
+Este origen de datos es habitualmente una base de datos, un punto final REST o SOAP, entre otros, que recibe las actualizaciones que el cliente realiza a los datos.
 
-All of the following code examples are written in pseudocode that looks similar to JavaScript.
 
-**Note:** Use adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
+Todos los siguientes ejemplos de código están escritos en un pseudocódigo similar a JavaScript. 
 
-**Internal Data Source API: JSONStore**  
-After you have an accessor to the collection, you can call the `getAllDirty` API to get all documents that are marked as dirty. These documents have local-only changes that you want to send to the external data source through a transport layer.
+**Nota:** Utilice adaptadores para la capa de transporte.
+Algunas de las ventajas de utilizar adaptadores son conversión XML a JSON, seguridad, filtrado, desacoplamiento de código del lado del cliente y de código del lado del servidor.
+
+
+**API de origen de datos interno: JSONStore**  
+Después de que tenga un accesor para la recopilación, llame a la API `getAllDirty` para obtener todos los elementos marcados como "sucios".
+Estos documentos tienen cambios únicamente locales que desea enviar al origen de datos externo a través de una capa de transporte.
+
 
 ```javascript
 var accessor = WL.JSONStore.get('people');
@@ -583,7 +794,7 @@ accessor.getAllDirty()
 });
 ```
 
-The `dirtyDocs` argument looks like the following example:
+El argumento `dirtyDocs` es similar a: 
 
 ```javascript
 [{_id: 1,
@@ -592,14 +803,22 @@ The `dirtyDocs` argument looks like the following example:
   _dirty: '1395774961,12902'}]
 ```
 
-The fields are:
-* `_id`: Internal field that JSONStore uses. Every document is assigned a unique one.
-* `json`: The data that was stored.
-* `_operation`: The last operation that was performed on the document. Possible values are add, store, replace, and remove.
-* `_dirty`: A time stamp that is stored as a number to represent when the document was marked dirty.
+Los campos son:
 
-**Transport Layer: MobileFirst adapter**  
-You can choose to send dirty documents to a adapter. Assume that you have a `people` adapter that is defined with an `updatePeople` procedure.
+* `_id`: Campo interno que utiliza JSONStore.
+A cada documento se le asigna un identificador único.
+
+* `json`: Los datos que se almacenan. 
+* `_operation`: La última operación realizada en el documento.
+Los valores posibles son add, store, replace y remove.
+
+* `_dirty`: Indicación de fecha y hora que se almacena como un valor numérico que representa el momento en que el documento se marcó como "sucio".
+
+
+**Capa de transporte: adaptador de MobileFirst**  
+Puede elegir enviar documentos "sucios" a un adaptador.
+Se presupone que tiene el adaptador `people` definido con un procedimiento `updatePeople`.
+
 
 ```javascript
 .then(function (dirtyDocs) {
@@ -616,9 +835,11 @@ You can choose to send dirty documents to a adapter. Assume that you have a `peo
 })
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.
+**Nota:** Podría desear aprovecharse de `compressResponse`, `timeout` y de otros parámetros que se pueden pasar a la API `WLResourceRequest`.
 
-On the {{ site.data.keys.mf_server }}, the adapter has the `updatePeople` procedure, which might look like the following example:
+
+En {{ site.data.keys.mf_server }}, el adaptador tiene el procedimiento `updatePeople`, que podría ser como el del siguiente ejemplo:
+
 
 ```javascript
 function updatePeople (dirtyDocs) {
@@ -636,9 +857,14 @@ function updatePeople (dirtyDocs) {
 }
 ```
 
-Instead of relaying the output from the `getAllDirty` API on the client, you might have to update the payload to match a format that is expected by the backend. You might have to split the replacements, removals, and inclusions into separate backend API calls.
+En lugar de basarse en la salida de la API `getAllDirty` en el cliente, podría tener que actualizar la carga útil para encontrar un formato que fuese el esperado por el proceso de fondo.
+Podría tener que dividir las sustituciones, las eliminaciones e inclusiones en llamadas de API de fondo diferentes.
 
-Alternatively, you can iterate over the `dirtyDocs` array and check the `_operation` field. Then, send replacements to one procedure, removals to another procedure, and inclusions to another procedure. The previous example sends all dirty documents in bulk to the adapter.
+
+Otra posibilidad sería iterar a través de la matriz `dirtyDocs` y comprobar el campo `_operation`.
+A continuación, enviar sustituciones a un procedimiento, las eliminaciones a otro procedimiento y las inclusiones a otro procedimiento.
+El ejemplo anterior envía todos los documentos "sucios" de forma general al adaptador.
+
 
 ```javascript
 var len = dirtyDocs.length;
@@ -694,7 +920,8 @@ $.when.apply(this, arrayOfPromises)
 });
 ```
 
-Alternatively, you can skip the adapter and contact the REST endpoint directly.
+De forma alternativa, puede omitir el adaptador y ponerse directamente en contacto con el punto final REST.
+
 
 ```javascript
 .then(function (dirtyDocs) {
@@ -711,8 +938,10 @@ Alternatively, you can skip the adapter and contact the REST endpoint directly.
 });
 ```
 
-**External Data Source: Backend REST endpoint**  
-The backend accepts or rejects changes, and then relays a response back to the client. After the client looks at the response, it can pass documents that were updated to the markClean API.
+**Origen de datos externos: punto final REST de fondo**  
+El sistema de fondo acepta o rechaza los cambios y, a continuación, retransmite de vuelta una respuesta al cliente.
+Después de que el cliente inspeccione la respuesta, puede pasar a la API markClean documentos que se actualizaron.
+
 
 ```javascript
 .then(function (responseFromAdapter) {
@@ -727,12 +956,14 @@ The backend accepts or rejects changes, and then relays a response back to the c
 })
 ```
 
-After documents are marked as clean, they do not show up in the output from the `getAllDirty` API.
+Después de que los documentos se marquen como "limpios", no aparecerán en la salida de la API `getAllDirty`.
 
-## Troubleshooting
+
+## Resolución de problemas
 {: #troubleshooting }
-For more information, see the [JSONStore troubleshooting](../../troubleshooting/jsonstore) section.
+Para obtener más información, consulte la sección [Resolución de problemas de JSONStore](../../troubleshooting/jsonstore).
 
-## API Usage
+
+## Uso de API
 {: #api-usage }
-Select a platform: 
+Seleccione una plataforma:  

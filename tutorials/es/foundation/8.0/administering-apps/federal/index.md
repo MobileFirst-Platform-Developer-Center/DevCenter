@@ -51,6 +51,8 @@ Si se realiza correctamente, el cliente utiliza un conjunto de cifrado aprobado 
 > **Nota:** Las instancias del módulo criptográfico que se utilizan en el cliente no están necesariamente validadas de acuerdo a FIPS 140-2.
 Consulte más abajo para conocer qué opciones hay para utilizar bibliotecas validadas FIPS 140-2 en dispositivos de cliente.
 
+
+
 Específicamente, el cliente y el servidor están utilizando el mismo conjunto de cifrado (SSL_RSA_WITH_AES_128_CBC_SHA, por ejemplo), pero el módulo criptográfico de cifrado de cliente tal vez no ejecutó el proceso de validación FIPS 140-2, mientras que el servidor está utilizando módulos certificado FIPS 140-2.
 
 

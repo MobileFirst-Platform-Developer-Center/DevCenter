@@ -38,6 +38,8 @@ La versión de Windows Phone del cliente móvil está incluida como un archivo d
 
 > **Importante:** El archivo .xap no firmado no se puede utilizar directamente. Debe firmarlo con el certificado de la empresa que proporciona Symantec/Microsoft para poder instalarlo en un dispositivo.
 
+
+
 Opcional: Si es necesario, también puede crear la versión de Windows Phone desde las fuentes. Por este motivo, debe tener la versión más reciente de Microsoft Visual Studio.
 
 ### Requisitos previos específicos del sistema operativo Microsoft Windows 8
@@ -100,6 +102,8 @@ Esta acción puede tardar algún tiempo. Una vez que se haya hecho, ya podrá pe
 
 > **Nota:** Seleccione omitir la opción de actualización en la ventana emergente, para actualizar la versión de Gradle. Consulte `grade-wrapper.properties` para la versión.
 
+
+
 #### iOS
 {: #ios }
 * Vaya a **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
@@ -114,6 +118,8 @@ En lugar de utilizar el proyecto de Cordova para iOS y Android, también puede e
 Debe importar el proyecto **IBMAppCenter** en {{ site.data.keys.mf_studio }} y, a continuación, crear el proyecto.
 
 > **Nota:** Para V8.0.0, utilice MobileFirst Studio 7.1. Puede descargar MobileFirst Studio desde la [página de Descargas]({{site.baseurl}}/downloads). Para obtener las instrucciones de instalación, consulte [Instalación de MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) en el IBM Knowledge Center for 7.1.
+
+
 
 1. Seleccione **Archivo → Importar**.
 2. Seleccione **General → Proyecto existente en el espacio de trabajo**.

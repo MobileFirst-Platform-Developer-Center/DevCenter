@@ -33,7 +33,7 @@ Consulte [Configuración de un servidor de desarrollo de {{ site.data.keys.produ
 {: #mobilefirst-server-components }
 A continuación se presenta la arquitectura de los componentes de {{ site.data.keys.mf_server }}:
 
-![Componentes que componen {{ site.data.keys.mf_server }}](server_components.jpg)
+![Componentes que forman {{ site.data.keys.mf_server }}](server_components.jpg)
 
 ### Componentes principales de {{ site.data.keys.mf_server }}
 {: #core-components-of-mobilefirst-server }

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Integrating with Cloudant
+title: Integración con Cloudant
 relevantTo: [javascript]
 downloads:
   - name: Download Cordova project
@@ -8,40 +8,55 @@ downloads:
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general 
 {: #overview }
-Cloudant is a NoSQL Database based on CouchDB, which is available as a stand-alone product as well as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
+Cloudant es una base de datos no SQL que se basa en CouchDB, que está disponible como un producto independiente así como un DBaaS (Database-as-a-Service) en IBM Bluemix y `cloudant.com`.
 
-As described in the Cloudant documentation:
-> Documents are JSON objects. Documents are containers for your data, and are the basis of the Cloudant database.  
-All documents must have two fields: a unique `_id` field, and a `_rev` field. The `_id` field is either created by you, or generated automatically as a UUID by Cloudant. The `_rev` field is a revision number, and is essential to the Cloudant replication protocol. In addition to these two mandatory fields, documents can contain any other content expressed as JSON.
+Tal como se describe en la documentación de Cloudant:
+> Los documentos son objetos JSON.
+Los documentos son contenedores para los datos y son el fundamento de la base de datos Cloudant.
+  
+Todos los documentos deben tener dos campos: un campo `_id` exclusivo y un campo `_rev`.
+El campo `_id` lo crea el usuario o lo genera Cloudant de forma automática como un UUID.
+El campo `_rev` es un número de revisión y es esencial para el protocolo de réplica de Cloudant.
+Además de estos dos campos obligatorios, los documentos pueden poseer cualquier otro contenido expresado en formato JSON.
 
-The Cloudant API is documented on the [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) site.
+La API de Cloudant se documenta en el sitio de [Documentación de IBM Cloudant](https://docs.cloudant.com/index.html).
 
-You can use adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.
 
-This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../javascript-adapters/js-http-adapter) or [Java Adapters](../java-adapters).
+Puede utilizar los adaptadores para comunicarse con una base de datos Cloudant.
+En esta guía de aprendizaje se muestran algunos ejemplos.
 
-### Jump to
+
+En esta guía de aprendizaje se presupone que está familiarizado con los adaptadores.
+Consulte [Adaptador JavaScript HTTP](../javascript-adapters/js-http-adapter) o [Adaptadores Java](../java-adapters).
+
+### Ir a
 {: #jump-to}
-* [JavaScript HTTP adapter](#javascript-http-adapter)
-* [Java adapters](#java-adapters)
-* [Sample application](#sample-application)
+* [Adaptador JavaScript HTTP](#javascript-http-adapter)
+* [Adaptadores Java](#java-adapters)
+* [Aplicación de ejemplo](#sample-application)
 
 
-## JavaScript HTTP adapter
+## Adaptador JavaScript HTTP
 {: #javascript-http-adapter }
-The Cloudant API can be accessed as a simple HTTP web service.
+Existe la posibilidad de acceder a la API de Cloudant como un servicio web HTTP simple.
 
-Using an HTTP adapter, you can connect to the Cloudant HTTP service with the `invokeHttp` method.
 
-### Authentication
+Con la utilización de un adaptador HTTP, podrá conectarse al servicio HTTP de Cloudant con el método `invokeHttp`.
+
+
+### Autenticación
 {: #authentication }
-Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html). With a JavaScript HTTP adapter, you can use **Basic Authentication**.
+Cloudant da soporte a varias formas de autenticación.
+Consulte la documentación de Cloudant para obtener información sobre la autenticación en [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html).   Con un adaptador JavaScript HTTP, puede utilizar la **Autenticación básica**.
 
-In your adapter XML file, specify the `domain` for your Cloudant instance, the `port` and add an `authentication` element of type `basic`. The framework will use those credentials to generate an `Authorization: Basic` HTTP header.
+En el archivo XML del adaptador, especifique el `domain` de su instancia de Cloudant, el `port` y añada un elemento `authentication` del tipo `basic`. 
+La infraestructura utilizará estas credenciales para generar una cabecera HTTP `Authorization: Basic`.
 
-**Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
+
+**Nota:** Con Cloudant, puede generar claves de API exclusivas que puede utilizar en lugar de su nombre de usuario y contraseña reales.
+
 
 ```xml
 <connectivity>
@@ -67,10 +82,12 @@ In your adapter XML file, specify the `domain` for your Cloudant instance, the `
 </connectivity>
 ```
 
-### Procedures
+### Procedimientos
 {: #procedures }
-Your adapter procedures use the `invokeHttp` method to send an HTTP request to one of the URLs that are defined by Cloudant.  
-For example, you can create a new document by sending a `POST` request to `/{*your-database*}/` with the body being a JSON representation of the document that you wish to store.
+Los procedimientos del adaptador utilizan el método `invokeHttp` para enviar una solicitud HTTP a uno de los URL que Cloudant define.
+  
+Por ejemplo, puede crear un nuevo documento enviando una solicitud `POST` a `/{*your-database*}/` siendo el cuerpo una representación JSON del documento que desea almacenar.
+
 
 ```js
 function addEntry(entry){
@@ -94,21 +111,26 @@ function addEntry(entry){
 }
 ```
 
-The same idea can be applied to all Cloudant functions. See the Cloudant documentation about documents at [https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html)
+La misma idea se puede aplicar a todas las funciones Cloudant.
+Consulte la documentación de Cloudant para obtener información sobre los documentos en [https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html).
 
-## Java adapters
+
+## Adaptadores Java
 {: #java-adapters }
-Cloudant provides a [Java client library](https://github.com/cloudant/java-cloudant) for you to easily use all the features of Cloudant.
+Cloudant proporciona una [biblioteca de cliente de Java](https://github.com/cloudant/java-cloudant) para que sea más fácil utilizar todas las características de Cloudant.
 
-During the initialization of your Java adapter, set up a `CloudantClient` instance to work with.  
-**Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
+
+Durante la inicialización de su adaptador de Java, configure una instancia de `CloudantClient` con la que trabajar.
+  
+**Nota:** Con Cloudant, puede generar claves de API exclusivas que puede utilizar en lugar de su nombre de usuario y contraseña reales.
+
 
 ```java
 CloudantClient cloudantClient = new CloudantClient(cloudantAccount,cloudantKey,cloudantPassword);
 db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
-Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS 2.0), you can create a new document on Cloudant by sending a JSON representation of the document in the HTTP request.
+Utilizando de los [POJO (Plain Old Java Objects)](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) y la API Java estándar para servicios web RESTful (JAX-RS 2.0), puede crear un nuevo documento en Cloudant enviando una representación JSON del documento en la solicitud HTTP.
 
 ```java
 @POST
@@ -124,16 +146,22 @@ public Response addEntry(User user){
 }
 ```
 
-<img alt="Image of the sample application" src="cloudant-app.png" style="float:right"/>
-## Sample application
+<img alt="Imagen de la aplicación de ejemplo" src="cloudant-app.png" style="float:right"/>
+## Aplicación de ejemplo
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) the Cordova project.
+[
+Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) el proyecto Cordova.
 
-The sample contains two adapters, one in JavaScript and one in Java.  
-It also contains a Cordova application that works with both the Java and JavaScript adapters.
 
-> **Note:** The sample uses Cloudant Java Client v1.2.3 due to known limitation.
+El ejemplo contiene dos adaptadores, uno en JavaScript y otro en Java.
+  
+También contiene una aplicación Cordova que funciona tanto con adaptadores JavaScript como Java.
 
-### Sample usage
+
+> **Nota:** El ejemplo utiliza Cloudant Java Client v1.2.3 debido a una limitación conocida.
+
+
+### Uso de ejemplo 
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.
+

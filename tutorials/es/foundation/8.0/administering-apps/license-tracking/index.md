@@ -148,6 +148,8 @@ El servidor desactiva las aplicaciones si no hay disponbiles señales suficiente
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones.
 Después de incrementar el número de señales disponibles, debe reactivar las aplicaciones de forma manual.
 Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
+
+
 #### Al caducar la licencia
 {: #on-license-expiration }
 Después de cierto tiempo, la licencia caduca y se debe extraer de nuevo.
@@ -156,6 +158,8 @@ El servidor desactiva las aplicaciones si no hay disponbiles señales suficiente
 
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones.
 Después de aumentar el número de señales disponibles, debe volver a activar las aplicaciones manualmente. Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
+
+
 #### Al concluir el servidor
 {: #at-server-shutdown }
 Durante la conclusión de un servidor se incorporan las licencias de todas las aplicaciones desplegadas.
@@ -215,7 +219,11 @@ IBM Installation Manager añade o actualiza el archivo SWID que License Metric T
 
 > Para obtener más información sobre {{ site.data.keys.product_full }} Extension, consulte [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
+
+
 > Para obtener más información sobre la gestión de licencias de PVU, consulte [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+
+
 
 ### Etiquetas SLMT
 {: #slmt-tags }

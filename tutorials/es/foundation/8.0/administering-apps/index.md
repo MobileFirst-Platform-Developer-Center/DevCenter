@@ -45,6 +45,8 @@ En este rol, el usuario puede realizar las mismas operaciones que el operador pe
 En este rol, el usuario puede realizar todas las operaciones de administración de las aplicaciones.
 
 > Para obtener más información sobre los roles de administración de {{ site.data.keys.product_adj }}, consulte [Configuración de la autenticación de usuarios para la administración de {{ site.data.keys.mf_server }}](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+
+
 ## Herramientas de administración 
 {: #administration-tools }
 {{ site.data.keys.mf_console }} no es la única manera que hay para administrar aplicaciones de {{ site.data.keys.product_adj }}.
