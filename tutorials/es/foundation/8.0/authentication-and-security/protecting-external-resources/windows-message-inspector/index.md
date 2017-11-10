@@ -5,7 +5,7 @@ breadcrumb_title: Inspector de mensajes Windows .NET
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Descargar ejemplo:
+  - name: Descargar ejemplo
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -426,7 +426,7 @@ private void postProcess(HttpWebResponse introspectionResponse)
 
 ### Uso de ejemplo
 {: #sample-usage }
-1. Utilice Visual Studio para abrir, crear y ejecutar una muestra como servicio (ejecutar Visual Studio como administrador). 
+1. Utilice Visual Studio para abrir, crear y ejecutar una muestra como servicio (ejecutar Visual Studio como administrador).
 2. Asegúrese de [actualizar el cliente confidencial](../#confidential-client) y los valores secretos en {{ site.data.keys.mf_console }}.
 3. Despliegue alguna de las comprobaciones de seguridad: **[UserLogin](../../user-authentication/security-check/)** o **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 4. Registre la aplicación coincidente.

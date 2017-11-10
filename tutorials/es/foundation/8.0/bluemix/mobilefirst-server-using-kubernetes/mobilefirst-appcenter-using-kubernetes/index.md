@@ -1,5 +1,5 @@
 ---
-layout: guía de aprendizaje
+layout: tutorial
 title: Configuración de MobileFirst Appcenter en IBM Bluemix Kubernetes Cluster
 breadcrumb_title: Appcenter en Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
@@ -10,7 +10,7 @@ weight: 1
 {: #overview }
 Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_app_center }} en IBM Bluemix. Para llevarlo a cabo, realice los pasos siguientes:
 
-* Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago). 
+* Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago).
 * Configure el sistema host con las herramientas necesarias (Docker, Cloud Foundry CLI ( cf ), Bluemix CLI ( bx ), Container Service Plugin for Bluemix CLI ( bx cs ), Container Registry Plugin for Bluemix CLI ( bx cr ), Kubernetes CLI (kubectl).
 * Cree una imagen de {{ site.data.keys.mf_app_center }} Docker y haga push para el repositorio de Bluemix.
 * Finalmente, ejecutará la imagen de Docker en Kubernetes Cluster.
@@ -18,7 +18,7 @@ Siga las instrucciones siguientes para configurar una instancia de {{ site.data.
 >**Nota:**  
 >
 * Actualmente el sistema operativo Windows no está soportado para ejecutar estos scripts.  
-* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers. 
+* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers.
 
 #### Ir a:
 {: #jump-to }
@@ -36,7 +36,7 @@ Siga las instrucciones siguientes para configurar una instancia de {{ site.data.
 {: #register-an-account-on-bluemix }
 Si todavía no tiene una cuenta, vaya al [sitio web de Bluemix](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
 
-### El panel de control de Bluemix 
+### El panel de control de Bluemix
 {: #the-bluemix-dashboard }
 Después de iniciar sesión en Bluemix, se le presentará el panel de control de Bluemix, que proporciona una visión general del **espacio** activo de Bluemix. De forma predeterminada, esta área de trabajo recibe el nombre de *dev*. Puede crear varios espacios o áreas de trabajo, si es necesario.
 
@@ -164,7 +164,7 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
     </div>
 </div>
 
-## Requisitos previos 
+## Requisitos previos
 {: #prerequisites }
 
 Debe tener conocimientos para trabajar con Kubernetes. Consulte los [documentos de Kubernetes](https://kubernetes.io/docs/concepts/), para obtener más información.
@@ -175,7 +175,7 @@ Debe tener conocimientos para trabajar con Kubernetes. Consulte los [documentos 
 Como se ha descrito anteriormente, puede optar por ejecutar los scripts de forma interactiva o utilizar los archivos de configuración:
 
 * **Utilización de los archivos de configuración** - Ejecute los scripts y pase el archivo de configuración respectivo como un argumento.
-* **Interactivamente** - Ejecute los scripts sin argumentos. 
+* **Interactivamente** - Ejecute los scripts sin argumentos.
 
 >**Nota:** Si opta por ejecutar los scripts de forma interactiva, puede omitir la configuración, pero se le recomienda que lea y comprenda los argumentos que deberá proporcionar.
 
@@ -356,7 +356,7 @@ Before you apply an interim fix, back up your existing configuration files. The 
 Cuando elimina un contenedor de Bluemix, también debe eliminar el nombre de imagen del registro.  
 Ejecute los mandatos siguientes para eliminar un contenedor desde Bluemix:
 
-1. `cf ic ps` (Lista los contenedores que se están ejecutando) 
+1. `cf ic ps` (Lista los contenedores que se están ejecutando)
 2. `cf ic stop container_id` (Detiene el contenedor)
 3. `cf ic rm container_id` (Elimina el contenedor)
 
@@ -382,9 +382,9 @@ bx cr image-rm image-name (Elimina la imagen del registro)
 {: #removing-the-database-service-configuration-from-bluemix }
 Si ha ejecutado el script **prepareappcenterdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_app_center }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_app_center }}. Este script también crea el esquema de base de datos para el contenedor.
 
-Para eliminar la configuración del servicio de base de datos desde Bluemix, realice el siguiente procedimiento utilizando el panel de control de Bluemix. 
+Para eliminar la configuración del servicio de base de datos desde Bluemix, realice el siguiente procedimiento utilizando el panel de control de Bluemix.
 
 1. En el panel de control de Bluemix, seleccione el servicio DB2 on Cloud que ha utilizado. Seleccione el nombre del servicio DB2 on Cloud que ha proporcionado como un parámetro cuando ejecutaba el script **prepareappcenterdbs.sh**.
 2. Inicie la consola de DB2 para trabajar con los esquemas y los objetos de base de datos de la instancia de servicio DB2 seleccionada.
-3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareappcenterdbs.sh**. 
+3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareappcenterdbs.sh**.
 4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de Bluemix.

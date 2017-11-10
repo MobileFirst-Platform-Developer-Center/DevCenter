@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Implementación del manejador de desafíos en las aplicaciones de Windows 8.1 Universal y Windows 10 UWP breadcrumb_title: Windows
+title: Implementación del manejador de desafíos en las aplicaciones de Windows 8.1 Universal y Windows 10 UWP
+breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
@@ -24,7 +25,7 @@ La guía de aprendizaje del manejador de desafíos muestra algunas característi
 
 ## Inicio de sesión
 {: #login }
-En este ejemplo, `UserLoginSecurityCheck` espera los *valores clave* llamados `username` y `password`. De forma opcional, también acepta una clave booleana `rememberMe`, que le pide a la comprobación de seguridad que recuerde el usuario durante más tiempo.En la aplicación de ejemplo, lo recopila un valor booleano del recuadro de selección en el formulario de inicio de sesión. 
+En este ejemplo, `UserLoginSecurityCheck` espera los *valores clave* llamados `username` y `password`. De forma opcional, también acepta una clave booleana `rememberMe`, que le pide a la comprobación de seguridad que recuerde el usuario durante más tiempo.En la aplicación de ejemplo, lo recopila un valor booleano del recuadro de selección en el formulario de inicio de sesión.
 
 El argumento `credentials` es `JSONObject` que contiene los valores `username`, `password`, and `rememberMe`:
 
@@ -82,7 +83,7 @@ else
 
 ```
 
-Si el cliente ya ha iniciado sesión o está en estado *recordado*, la API da como resultado "éxito". Si el cliente no ha iniciado sesión, la comprobación de seguridad devuelve un desafío. 
+Si el cliente ya ha iniciado sesión o está en estado *recordado*, la API da como resultado "éxito". Si el cliente no ha iniciado sesión, la comprobación de seguridad devuelve un desafío.
 
 La API `ObtainAccessToken` incluye un **ámbito**. El ámbito puede ser el nombre de su **comprobación de seguridad**.
 
@@ -147,6 +148,6 @@ Los ejemplos utilizan la misma comprobación de seguridad `UserLoginSecurityChec
 
 ### Uso de ejemplo
 {: #sample-usage }
-Siga el archivo README.md del ejemplo para obtener instrucciones.El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john". 
+Siga el archivo README.md del ejemplo para obtener instrucciones.El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john".
 
 ![aplicación de ejemplo](RememberMe.png)
