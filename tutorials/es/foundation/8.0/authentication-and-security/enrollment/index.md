@@ -301,6 +301,8 @@ public String getTransactions(){
 ```
     
 > Para obtener más información acerca de `securityContext`, consulte la sección [API Seguridad](../../adapters/java-adapters/#security-api) en el tutorial de adaptador Java.
+
+
 Añada el usuario registrado al objeto de respuesta de la forma siguiente:
 
 ```java

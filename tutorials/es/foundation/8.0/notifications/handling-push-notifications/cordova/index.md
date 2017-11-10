@@ -12,13 +12,15 @@ weight: 4
 ## Visión general
 {: #overview }
 Antes de que las aplicaciones iOS, Android y Windows Cordova reciban y visualicen notificaciones push, es necesario añadir el plugin Cordova **cordova-plugin-mfp-push** al proyecto Cordova.
-Una vez se haya configurado la aplicación, se pueden utilizar la API de notificaciones que {{ site.data.keys.product_adj}} proporciona con el propósito de registrar y anular el registro de dispositivos, suscribir y anular la suscripción de etiquetas y manejar aplicaciones.
+Una vez se haya configurado la aplicación, se pueden utilizar la API de notificaciones que {{ site.data.keys.product_adj }} proporciona con el propósito de registrar y anular el registro de dispositivos, suscribir y anular la suscripción de etiquetas y manejar aplicaciones.
 En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones Cordova.
 
 
 > **Nota:** Actualmente en Cordova **no se da soporte** a las notificaciones autenticadas debido a un defecto.
 Sin embargo se proporciona un método alternativo: cada llamada de API de `MFPPush` puede ser acomodada mediante `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`.
 La aplicación de ejemplo que se proporciona utiliza este método alternativo.
+
+
 Para obtener información sobre las notificaciones interactivas o silenciosas en iOS, consulte: 
 
 * [Notificaciones silenciosas](../silent)
@@ -47,6 +49,8 @@ Para obtener información sobre las notificaciones interactivas o silenciosas en
 Cree un nuevo proyecto Cordova o utilice uno ya existente, y añada una o varias de las plataformas soportadas: iOS, Android, Windows.
 
 > Si {{ site.data.keys.product_adj }} Cordova SDK todavía no está presente en el proyecto, siga las instrucciones en la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para aplicaciones Cordova](../../../application-development/sdk/cordova).
+
+
 ### Añadir el plugin de push
 {: #adding-the-push-plug-in }
 1. Desde una ventana de **línea de mandatos**, vaya a la raíz del proyecto Cordova.
@@ -73,6 +77,8 @@ En Xcode, habilite el envío de notificaciones para la aplicación en la pantall
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** el bundleId seleccionado para la aplicación debe coincidir con el AppID creado con anterioridad en el sitio de Apple Developer.
 Consulte la guía de aprendizaje [Visión general de notificaciones push].
+
+
 
 ![imagen de la funcionalidad en Xcode](push-capability.png)
 

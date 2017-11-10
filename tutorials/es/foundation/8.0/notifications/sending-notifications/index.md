@@ -55,6 +55,7 @@ Siga estos pasos para configurar FCM:
 
 
 > También puede configurar FCM mediante la [API REST para el servicio push de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) o la [API REST para el servicio de administración de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
+
 #### Notas
 {: #notes }
 Si su organización dispone de un cortafuegos que restringe el tráfico a o desde Internet, debe seguir los pasos siguientes:
@@ -101,6 +102,7 @@ A continuación, pulse **Guardar**.
 
 
 > También es posible configurar APNS utilizando la [API REST para el servicio push de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) o la [API REST para el servicio de administración de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
+
 <img class="gifplayer" alt="Imagen de adición de credenciales APNS" src="apns-setup.png"/>
 
 ### Servicio de notificaciones push de Windows
@@ -115,6 +117,7 @@ Siga estos pasos para configurar WNS:
 
 
 > También es posible configurar WNS utilizando la [API REST para el servicio push de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) o la [API REST para el servicio de administración de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
+
 <img class="gifplayer" alt="Imagen de adición de credenciales WNS" src="wns-setup.png"/>
 
 ### Servicio de notificación SMS
@@ -324,6 +327,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
 > Para revisar todas las API REST de notificaciones push, consulte el tema [API REST de servicios de tiempo de ejecución](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) en la documentación de usuario.
+
+
 #### Carga útil de notificación
 {: #notification-payload }
 La solicitud puede contener las siguientes propiedades de carga útil:

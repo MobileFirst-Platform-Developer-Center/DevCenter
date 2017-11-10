@@ -95,6 +95,7 @@ El tiempo de ejecución envía datos a {{ site.data.keys.mf_analytics }} a trav�
 * **mfp.analytics.username**: El nombre de usuario utilizado para acceder al servicio {{ site.data.keys.mf_analytics }}. El servicio de analítica está protegido por un rol de seguridad.
 * **mfp.analytics.password**: La contraseña para acceder al servicio de análisis.
 * **mfp.analytics.console.url**: El URL que se pasa a {{ site.data.keys.mf_console }} para visualizar un enlace a {{ site.data.keys.mf_analytics_console }}. Ejemplo: `http://<hostname>:<port>/analytics/console`
+
     Las propiedades JNDI del servicio de envío por push que se utilizan para definir estas comunicaciones son:
 * **mfp.push.analytics.endpoint**: El URL expuesto por el servicio {{ site.data.keys.mf_analytics }} para recibir datos analíticos entrantes desde el servicio de envío por push. Ejemplo: `http://<hostname>:<port>/analytics-service/rest`
 
@@ -121,6 +122,8 @@ Las propiedades JNDI para configurar esta comunicación entre los dos servicios 
 Las propiedades JNDI para configurar esta comunicación están en [Propiedades JNDI para {{ site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
 
 > Nota: La propiedad **mfp.admin.endpoint** permite a la consola localizar el servicio de administración. Puede utilizar el carácter asterisco "\*" como comodín para especificar que el URL, generado por la consola para contactar con el servicio de administración, utiliza el mismo valor que la última solicitud HTTP entrante en la consola. Por ejemplo: `*://*:*/mfpadmin` significa que utiliza el mismo protocolo, host y puerto que la consola pero utiliza **mfpadmin** como raíz de contexto. Esta propiedad se especifica para la aplicación de consola.
+
+
 ### Servicio de administración de {{ site.data.keys.mf_server }} para servicio de envío por push de {{ site.data.keys.mf_server }} y para el servidor de autorizaciones
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
 El servicio de administración se comunica con el servicio de envío por push para solicitar varias operaciones de envío por push. Esta comunicación está protegida mediante el protocolo OAuth. Ambos servicios deben estar registrados como clientes confidenciales. Se puede realizar un registro inicial al instalar. En este proceso, ambos servicios deben contactar con un servidor de autorizaciones. Este servidor de autorizaciones puede ser el tiempo de ejecución de {{ site.data.keys.product }}.
@@ -133,6 +136,8 @@ Las propiedades JNDI del servicio de administración para configurar estas comun
 * **mfp.admin.authorization.client.secret**: El código secreto utilizado para obtener las señales basadas en OAuth.
 
 > Nota: Las propiedades **mfp.push.authorization.client.id** y **mfp.push.authorization.client.secret** del servicio de administración se pueden utilizar para registrar el servicio de envío por push de forma automática como cliente confidencial cuando se inicia el servicio de administración. El servicio de envío por push debe configurarse con los mismos valores.
+
+
 Las propiedades JNDI del servicio de envío por push para configurar estas comunicaciones son:
 
 * **mfp.push.authorization.server.url**: El URL del servidor de autorizaciones de {{ site.data.keys.product }}. Igual que la propiedad **mfp.admin.authorization.server.url**.
@@ -238,7 +243,7 @@ Las siguientes propiedades JNDI locales son necesarias para los servicios de adm
 | Propiedades JNDI       |	Valores    |
 |------------------------|------------|
 | mfp.topology.platform  | Tomcat     |
-| mfp.topology.clustermode | Autónomo |
+| mfp.topology.clustermode | Autónomo|
 
 Las propiedades JVM también son necesarias para definir la invocación a método remoto (RMI) de Java Management Extensions (JMX). Para obtener más información, consulte [Configuración de la conexión de JMX para Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
@@ -374,7 +379,7 @@ Cuando despliega varios los componentes de administración, debe especificar:
 **Granja de servidores Apache Tomcat**  
 Las siguientes propiedades JNDI globales son necesarias en cada servicio de la granja para los servicios de administración y los tiempos de ejecución.
 
-| Propiedades JNDI         |	Valores   |
+| Propiedades JNDI         |	Valores |
 |--------------------------|-----------|
 | mfp.topology.platform	   | Tomcat    |
 | mfp.topology.clustermode | Granja de servidores |
@@ -393,7 +398,7 @@ Cuando despliega varios los componentes de administración, debe especificar:
 **Granja de servidores de perfil completo de WebSphere Application Server**  
 Las siguientes propiedades JNDI globales son necesarias en cada servidor en la granja para los servicios de administración y los tiempos de ejecución.
 
-| Propiedades JNDI           | Valores|
+| Propiedades JNDI           | Valores |
 |----------------------------|--------|
 | mfp.topology.platform	WAS  | WAS    |
 | mfp.topology.clustermode   | Granja de servidores|
@@ -401,7 +406,7 @@ Las siguientes propiedades JNDI globales son necesarias en cada servidor en la g
 
 Las siguientes propiedades JNDI son necesarias para que el servicio de administración gestione la configuración de granja de servidores. 
 
-| Propiedades JNDI   | Valores|
+| Propiedades JNDI   | Valores |
 |--------------------|--------|
 | mfp.admin.jmx.user | El nombre de usuario de WebSphere Application Server. Este usuario debe definirse en el registro de usuarios de WebSphere Application Server. |
 | mfp.admin.jmx.pwd	 | La contraseña del usuario de WebSphere Application Server. |
@@ -540,7 +545,7 @@ Las siguientes propiedades JNDI globales son necesarias para los tiempos de ejec
 
 La siguiente propiedad JNDI es necesaria para el tiempo de ejecución cuando se utilizan varios controladores (réplicas) que utilizan los mismos componentes de administración:
 
-| Propiedades JNDI| Valores| 
+| Propiedades JNDI| Valores | 
 |-----------------|--------|
 | mfp.admin.jmx.replica | Lista de puntos finales de las diferentes réplicas de controlador con la siguiente sintaxis: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
 
@@ -607,7 +612,7 @@ Algunas propiedades JNDI son necesarias para habilitar la comunicación JMX entr
 
 Las siguientes propiedades JNDI locales son necesarias para los servicios de administración y los tiempos de ejecución:
 
-| Propiedades JNDI|	Valores|
+| Propiedades JNDI|	Valores |
 |-----------------|--------|
 | mfp.topology.platform	| WAS |
 | mfp.topology.clustermode | Clúster|
@@ -643,7 +648,7 @@ Si el proxy inverso está en una DMZ (una configuración de cortafuegos para ase
 
 Cuando se utiliza un proxy inverso delante de la infraestructura de servidor de aplicaciones, se deben definir las siguientes propiedades JNDI para el servicio de administración.
 
-| Propiedades JNDI|	Valores|
+| Propiedades JNDI|	Valores |
 |-----------------|--------|
 | mfp.admin.proxy.protocol | El protocolo utilizado para comunicar con el proxy inverso. Puede ser HTTP o HTTPS. |
 | mfp.admin.proxy.host | El nombre de host del proxy inverso. |

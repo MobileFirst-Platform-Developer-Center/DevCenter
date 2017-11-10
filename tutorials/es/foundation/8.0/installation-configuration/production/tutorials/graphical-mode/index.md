@@ -108,6 +108,8 @@ Después de crear el servidor, puede iniciarlo con `server start mfp1` desde **l
 La página de inicio predeterminada se puede ver en http://localhost:9080.
 
 > **Nota:** Para producción, debe asegurarse de que el servidor Liberty está iniciado como servicio cuando se inicia el sistema principal. Hacer que el servidor Liberty se inicie como servicio no es parte de esta guía de aprendizaje.
+
+
 ### Instalación de {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
 Ejecute Installation Manager para instalar los archivos binarios de {{ site.data.keys.mf_server }} en su disco antes de crear las bases de datos y desplegar {{ site.data.keys.mf_server }} en el perfil de Liberty. Durante la instalación de {{ site.data.keys.mf_server }} con Installation Manager, se le propone una opción para instalar {{ site.data.keys.mf_app_center }}. Application Center es un componente diferente del producto. Para esta guía de aprendizaje, no es necesario instalarlo con {{ site.data.keys.mf_server }}.
@@ -122,6 +124,7 @@ Ejecute Installation Manager para instalar los archivos binarios de {{ site.data
         También es posible que desee aplicar el fixpack más reciente que se puede descargar desde [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Asegúrese de escribir el repositorio para el fixpack. Si descomprime el fixpack en la carpeta **fixpack_directory**, el archivo de repositorio se encontrará en **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
 
         > **Nota:** No puede instalar el fixpack sin el repositorio de la versión base en los repositorios de Installation Manager. Los fixpacks son instaladores incrementales y necesitan el repositorio de la versión base que va a instalarse.
+
     * Seleccione el archivo y pulse **Aceptar**.
     * Pulse **Aceptar** para cerrar el panel Preferencias.
 
@@ -159,6 +162,7 @@ La base de datos se utiliza para almacenar los datos técnicos utilizados por lo
 En esta guía de aprendizaje, las tablas de todos los componentes están colocadas en el mismo esquema. La Herramienta de configuración del servidor crea las tablas en el mismo esquema. Para una mayor flexibilidad, es posible que desee utilizar las tareas Ant o una instalación manual.
 
 > **Nota:** Los pasos de esta tarea son para DB2. Si tiene la intención de utilizar MySQL u Oracle, consulte [Requisitos de base de datos](../../databases/#database-requirements).
+
 1. Inicie sesión en el sistema que está ejecutando el servidor DB2. Se presupone que existe un usuario de DB2, por ejemplo, **mfpuser**.
 2. Verifique que este usuario de DB2 tiene acceso a una base de datos con un tamaño de página de 32768 o más, y tiene permiso para crear esquemas y tablas implícitas en la base de datos.
 
@@ -185,6 +189,8 @@ Al final de la guía de aprendizaje, la Herramienta de configuración del servid
 Si ha definido un nombre de usuario diferente, sustituya mfpuser con su propio nombre de usuario.  
 
 > **Nota:** La sentencia no elimina los privilegios predeterminados concedidos a PUBLIC en una base de datos predeterminada de DB2. Para producción, es posible que tenga que reducir los privilegios en esta base de datos a los requisitos mínimos para el producto. Para obtener más información sobre la seguridad DB2 y un ejemplo de las prácticas de seguridad, consulte [Seguridad DB2, Parte 8: Doce procedimientos recomendados de seguridad DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
+
+
 
 ### Ejecución de la Herramienta de configuración del servidor
 {: #running-the-server-configuration-tool }
@@ -396,6 +402,8 @@ Una vez finalizada la instalación, puede utilizar este procedimiento para proba
 3. Inicie sesión con **admin/admin**. Este usuario lo crea de forma predeterminada la Herramienta de configuración del servidor.
 
     > **Nota:** Si se conecta con HTTP, el ID de inicio de sesión y la contraseña se envían como texto simple en la red. Para un inicio de sesión seguro, utilice HTTPS para iniciar sesión en el servidor. Puede ver el puerto HTTPS del servidor Liberty en el atributo httpsPort del elemento `<httpEndpoint>` del archivo **server.xml**. De forma predeterminada, el valor es 9443.
+
+
 
 4. Cierre la sesión de la consola con **Hola, administrador → Finalizar sesión**.
 5. Especifique el siguiente URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) en el navegador web y acepte el certificado. De forma predeterminada, el servidor Liberty genera un certificado predeterminado que no es conocido por su navegador web, debe aceptar el certificado. Mozilla Firefox presenta esta certificación como excepción de seguridad.

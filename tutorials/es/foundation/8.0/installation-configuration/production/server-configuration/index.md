@@ -27,6 +27,8 @@ Puede crear listas blancas y negras para los puntos finales de IBM {{ site.data.
 
 > **Nota:** La información relativa a los URL expuestos por {{ site.data.keys.product }} se proporcionan como una directriz. Las organizaciones deben asegurarse de que se prueban los URL en una infraestructura de empresa, en función de lo que se ha habilitado en las listas blancas y negras.
 
+
+
 | URL de API en `<runtime context root>/api/` | Descripción                               | ¿Sugerencias para la lista blanca?|
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | Devuelve la documentación del Swagger del adaptador para el adaptador mencionado| No. Solo utilizado internamente por el administrador y los desarrolladores |
@@ -91,6 +93,8 @@ Los pasos para configurar {{ site.data.keys.mf_server }} para habilitar Transpor
 La administración de {{ site.data.keys.mf_server }} requiere autenticación de usuario. Puede configurar la autenticación de usuario y elija un método de autenticación. Por lo tanto, el procedimiento de configuración depende del servidor de aplicaciones web que utilice. 
 
 > **Importante:** Si utiliza un perfil completo de WebSphere Application Server de servidor autónomo, utilice un método de autenticación diferente al método de autenticación de WebSphere simple (SWAM) en la seguridad global. Puede utilizar lightweight third-party authentication (LTPA). Si utiliza SWAM, puede experimentar errores de autenticación inesperados.
+
+
 Debe configurar la autenticación después de que el instalador despliegue aplicaciones web de administración de {{ site.data.keys.mf_server }} en el servidor de aplicaciones web.
 
 
@@ -142,8 +146,8 @@ Básicamente, todos los roles pueden emitir solicitudes GET, los roles **mfpadmi
 |                        | Administrador | Desplegador | Operador    | Supervisor |
 |------------------------|---------------|-------------|-------------|------------|
 | Rol de seguridad de Java EE. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Solicitudes GET {::nomarkdown}<ul><li>Obtener una lista de todos los dispositivos que utilizan notificaciones push para una aplicación</li><li>Obtener los detalles de un dispositivo específico</li><li>Obtener la lista de suscripciones</li><li>Obtener la información de suscripción asociada con un ID de suscripción.</li><li>Obtener los detalles de una configuración GCM</li><li>Obtener los detalles de una configuración APNS</li><li>Obtener la lista de etiquetas definidas por la aplicación</li><li>Obtener los detalles de una etiqueta específica</li></ul>{:/}| Sí            | Sí          | Sí          | Sí          |
-| Solicitudes POST y PUT {::nomarkdown}<ul><li>Registrar una aplicación con notificaciones push</li><li>Actualizar un registro de dispositivo push</li><li>Crear una suscripción</li><li>Añadir o actualizar una configuración GCM</li><li>Añadir o actualizar una configuración APNS</li><li>Enviar notificaciones a un dispositivo</li><li>Crear o actualizar una etiqueta</li></ul>{:/} | Sí            | Sí          | Sí          | No         |
+| Solicitudes GET {::nomarkdown}<ul><li>Obtener una lista de todos los dispositivos que utilizan notificaciones push para una aplicación</li><li>Obtener los detalles de un dispositivo específico</li><li>Obtener la lista de suscripciones</li><li>Obtener la información de suscripción asociada con un ID de suscripción.</li><li>Obtener los detalles de una configuración GCM</li><li>Obtener los detalles de una configuración APNS</li><li>Obtener la lista de etiquetas definidas por la aplicación</li><li>Obtener los detalles de una etiqueta específica</li></ul>{:/}| Sí          | Sí          | Sí          | Sí          |
+| Solicitudes POST y PUT {::nomarkdown}<ul><li>Registrar una aplicación con notificaciones push</li><li>Actualizar un registro de dispositivo push</li><li>Crear una suscripción</li><li>Añadir o actualizar una configuración GCM</li><li>Añadir o actualizar una configuración APNS</li><li>Enviar notificaciones a un dispositivo</li><li>Crear o actualizar una etiqueta</li></ul>{:/} | Sí          | Sí          | Sí          | No         |
 | Solicitudes DELETE {::nomarkdown}<ul><li>Suprimir el registro de un dispositivo a notificaciones push</li><li>Suprimir una suscripción</li><li>Anular una suscripción de un dispositivo a una etiqueta</li><li>Suprimir una configuración GCM</li><li>Suprimir una configuración APNS</li><li>Suprimir una etiqueta</li></ul>{:/} | Sí            | Sí          | No          | No         |
 
 #### Inhabilitación
@@ -152,8 +156,8 @@ Básicamente, todos los roles pueden emitir solicitudes GET, los roles **mfpadmi
 |                        | Administrador | Desplegador | Operador    | Supervisor |
 |------------------------|---------------|-------------|-------------|------------|
 | Rol de seguridad de Java EE. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Inhabilitar el dispositivo específico, marcando el estado como perdido o robado para bloquear el acceso de cualquier aplicación en ese dispositivo. | Sí            | Sí          | Sí          | No        |
-| Inhabilitar una aplicación específica, marcando el estado como inhabilitada para bloquear el acceso de esa aplicación en ese dispositivo. | Sí            | Sí          | Sí          | No         |
+| Inhabilitar el dispositivo específico, marcando el estado como perdido o robado para bloquear el acceso de cualquier aplicación en ese dispositivo. | Sí          | Sí          | Sí          | No        |
+| Inhabilitar una aplicación específica, marcando el estado como inhabilitada para bloquear el acceso de esa aplicación en ese dispositivo. | Sí          | Sí          | Sí          | No         |
 
 Si elige utilizar un método de autenticación a través de un repositorio de usuarios como LDAP, puede configurar la administración de {{ site.data.keys.mf_server }} de modo que pueda utilizar usuarios y grupos con el repositorio de usuarios para definir la lista de control de acceso (ACL) de la administración de {{ site.data.keys.mf_server }}. Este procedimiento depende del tipo y la versión del servidor de aplicaciones web que utilice. 
 
@@ -288,6 +292,8 @@ Configure las entradas de entorno JNDI de una de las siguientes maneras:
       La raíz de contexto (en el ejemplo anterior: **app\_context\_root**) se conecta entre la entrada JNDI y una aplicación {{ site.data.keys.product_adj }} específica. Si existen varias aplicaciones {{ site.data.keys.product_adj }} en el mismo servidor, puede definir entradas JNDI específicas para cada aplicación utilizando el prefijo de vía de acceso de contexto.
 
       > **Nota:** Algunas propiedades se definen de forma global en WebSphere Application Server Liberty, sin prefijar el nombre de la propiedad con la raíz de contexto. Para obtener una lista de estas propiedades, consulte [Entradas JNDI globales](../appserver/#global-jndi-entries).
+
+
 
       En el resto de las propiedades JNDI, los nombres deben prefijarse con la raíz de contexto de la aplicación:
 
@@ -731,6 +737,8 @@ Edite el archivo **server.xml** y, para cada elemento `<dataSource>` (bases de d
 El valor de tiempo de espera depende, principalmente, de la cantidad de conexiones abiertas en paralelo pero también del número máximo y mínimo de conexiones en la agrupación. Por lo tanto, debe ajustar los diferentes atributos **connectionManager** para identificar los valores más apropiados. Para obtener más información sobre el elemento **connectionManager**, consulte [Liberty: Elementos de configuración en el archivo **server.xml**](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html).
 
 > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Utilice IBM DB2 u otra base de datos soportada por WebSphere Application Server para que se beneficie de una configuración que está totalmente soportada por IBM Support.
+
+
 ### Datos obsoletos tras crear o suprimir aplicaciones de {{ site.data.keys.mf_console }}
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 En un servidor de aplicaciones Tomcat 8, si utiliza una base de datos MySQL algunas llamadas de {{ site.data.keys.mf_console }} a servicios devuelven un error 404.
@@ -768,6 +776,8 @@ Para obtener más información, consulte [Valores de agrupación de conexiones](
     * Pulse **Aceptar**.
 
 > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Utilice IBM DB2 u otra base de datos soportada por WebSphere Application Server para que se beneficie de una configuración que está totalmente soportada por IBM Support.
+
+
 ## Configuración de los mecanismos de registro y supervisión
 {: #configuring-logging-and-monitoring-mechanisms }
 {{ site.data.keys.product }} informa de errores, avisos y mensajes informativos en un archivo de registro. El mecanismo de registro subyacente varía en función del servidor de aplicaciones.
@@ -821,6 +831,8 @@ Para diagnosticar problemas de inicio de sesión y autenticación, habilite el p
 Puede configurar {{ site.data.keys.mf_server }} con varios tiempos de ejecución, creando una diferenciación visual entre "tipos" de aplicación en {{ site.data.keys.mf_console }}.
 
 > **Nota:** En una instancia de servidor de Mobile Foundation creada por el servicio Mobile Foundation Bluemix no se soportan varios tiempos de ejecución. En el servicio de Bluemix, debe crear varias instancias de servicio en su lugar.
+
+
 #### Ir a
 {: #jump-to-1 }
 * [Configuración de varios tiempos de ejecución en el perfil de Liberty de WebSphere](#configuring-multiple-runtimes-in-websphere-liberty-profile)
@@ -914,6 +926,8 @@ Por ejemplo, puede configurar una configuración de tiempo de ejecución en un e
 
 > Descubra todas las API REST [en la referencia de API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
 
+
+
 ## Configuración de seguimiento de licencias
 {: #configuring-license-tracking }
 El seguimiento de licencias está habilitado de forma predeterminada. Lea los siguientes temas para saber cómo puede configurar el seguimiento de licencias. Para obtener más información sobre el seguimiento de licencias, consulte [Seguimiento de licencia](../../../administering-apps/license-tracking).
@@ -926,6 +940,8 @@ El seguimiento de licencias está habilitado de forma predeterminada. Lea los si
 El seguimiento de licencia para dispositivos cliente y dispositivos dirigibles está habilitada de forma predeterminada. Los informes de licencia están disponibles en {{ site.data.keys.mf_console }}. Puede especificar las siguientes propiedades JNDI para cambiar los valores predeterminados para el seguimiento de licencia.
 
 > **Nota:** Si tiene un contrato que defina la utilización de licencias de señales, consulte también [Instalación y configuración para la gestión de licencias de señal](../token-licensing).
+
+
 
 Puede especificar las siguientes propiedades JNDI para cambiar los valores predeterminados para el seguimiento de licencia.
 

@@ -198,6 +198,8 @@ La información de registro también incluye información contextual sobre el di
 
 > **Nota:** Debe registrar sucesos personalizados para cumplimentar los gráficos personalizados.
 Para obtener información sobre cómo enviar sucesos personalizados desde las aplicaciones de cliente, consulte [Captura de datos personalizados](../../analytics-api/#custom-events).
+
+
 1. Desde la aplicación de cliente, cumplimente los datos enviando registros capturados al servidor.
 Consulte [Envío de registros capturados](../../analytics-api/#sending-analytics-data).
 2. En {{ site.data.keys.mf_analytics_console }}, pulse el separador **Gráficos personalizados** y continúe para crear un gráfico:

@@ -11,6 +11,8 @@ weight: 7
 
 > **Nota:** No instale más de una instancia de {{ site.data.keys.mf_analytics_server }} en una única máquina host. Para obtener más información sobre cómo gestionar el clúster, consulte la documentación de Elasticsearch.
 
+
+
 Los archivos WAR y EAR de análisis se incluyen con la instalación de MobileFirst Server. Para obtener más información, consulte la Estructura de distribución de MobileFirst Server. Al desplegar el archivo WAR, la consola de MobileFirst Analytics estará disponible en: `http://<hostname>:<port>/analytics/console`, por ejemplo: `http://localhost:9080/analytics/console`.
 
 * Para obtener más información sobre cómo instalar {{ site.data.keys.mf_analytics_server }}, consulte [Guía de instalación de {{ site.data.keys.mf_analytics_server }}](installation).

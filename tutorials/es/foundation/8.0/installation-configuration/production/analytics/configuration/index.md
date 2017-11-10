@@ -149,6 +149,8 @@ La lista de tipos de documentos soportados es la siguiente:
 
 > **Nota:** Si va a migrar desde las versiones anteriores de {{ site.data.keys.mf_analytics_server }} y ha configurado previamente cualquier propiedad TTL JNDI, consulte [Migración de propiedades del servidor utilizadas por versiones anteriores de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
+
+
 #### Elasticsearch
 {: #elasticsearch }
 La tecnología de almacenamiento y de agrupación en clúster subyacente que sirve a {{ site.data.keys.mf_analytics_console }} es Elasticsearch.  

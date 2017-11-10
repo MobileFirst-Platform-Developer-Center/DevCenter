@@ -649,6 +649,8 @@ Estas entradas JNDI globales se establecen con esta sintaxis y no tienen como pr
 
 > **Nota:** Para proteger contra una conversión automática de los valores JNDI, para que 075 no se convierta a 61 o que 31,500 no se convierta en 31,5, utilice esta sintaxis '"075"' al definir el valor.
 
+
+
 Para obtener más información sobre las propiedades JNDI para el servicio de administración, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
 Para la configuración en una granja de servidores, consulte también los temas siguientes:
@@ -991,6 +993,8 @@ Las siguientes entradas JNDI globales son necesarias para configurar la comunica
 Estas entradas JNDI globales se establecen con esta sintaxis y no tienen como prefijos una raíz de contexto. Por ejemplo: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
 > **Nota:** Para proteger contra una conversión automática de los valores JNDI, para que 075 no se convierta a 61 o que 31,500 no se convierta en 31,5, utilice esta sintaxis '"075"' al definir el valor.
+
+
 
 * Para obtener más información sobre las propiedades JNDI para el servicio de administración, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 * Para obtener más información sobre las propiedades JNDI para el tiempo de ejecución, consulte [Lista de propiedades JNDI para el tiempo de ejecución de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
@@ -1424,8 +1428,7 @@ Opcionalmente, es posible que desee activar el dominio de memoria si los usuario
 
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
-                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
-                <br/><br/>
+                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-apache-tomcat">Instalación manual en Apache Tomcat</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR de tiempo de ejecución se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. Puede definir la raíz de contexto como desee. Sin embargo, es <b>/mfp</b> de forma predeterminada.</p>
@@ -1642,8 +1645,7 @@ Para establecer la delegación del cargador de clases a último padre una vez qu
 
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
-                <p>El servicio de Live Update está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
-                <br/><br/>
+                <p>El servicio de Live Update está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalación manual en WebSphere Application Server y WebSphere Application Server Network Deployment</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR del servicio de Live Update se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. La raíz de contexto del servicio de Live Update debe definirse de esta forma: <b>/the-adminContextRoot/config</b>. Por ejemplo, si la raíz de contexto del servicio de administración es <b>/mfpadmin</b>, la raíz de contexto del servicio de Live Update debe ser <b>/mfpadminconfig</b>.</p>
@@ -1705,8 +1707,7 @@ Para establecer la delegación del cargador de clases a último padre una vez qu
 
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
-                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
-                <br/><br/>
+                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalación manual en WebSphere Application Server y WebSphere Application Server Network Deployment</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR de tiempo de ejecución se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. Puede definir la raíz de contexto como desee. Sin embargo, es <b>/mfp</b> de forma predeterminada.</p>

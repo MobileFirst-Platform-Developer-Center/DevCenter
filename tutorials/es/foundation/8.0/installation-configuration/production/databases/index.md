@@ -23,8 +23,10 @@ Cada componente necesita un conjunto de tablas. Las tablas pueden crearse manual
 Sin embargo, si decide instalar varias instancias de tiempo de ejecución de {{ site.data.keys.product }}, cada una con su propia raíz de contexto en el servidor de aplicaciones, cada instancia necesitará su propio conjunto de tablas. En este caso, deben estar en distintos esquemas.
 
 > **Nota sobre DB2:** Los licenciatarios de {{ site.data.keys.product_adj }} están autorizados a utilizar DB2 como un sistema de soporte para Foundation. Para beneficiarse de esto, debe, después de instalar el software de DB2:
+
 > 
 > * Descargar la imagen de activación de uso restringido directamente desde el [sitio web de IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
+
 > * Aplicar el archivo de licencia de activación de uso restringido **db2xxxx.lic** utilizando el mandato **db2licm**
 >
 > Obtenga más información en el [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)

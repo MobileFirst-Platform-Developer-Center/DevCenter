@@ -19,6 +19,8 @@ Una vez que haya instalado Application Center en el servidor de aplicaciones web
 
 > **Nota:** Si va a realizar la instalación de aplicaciones en dispositivos iOS a través de Application Center, debe configurar en primer lugar el servidor de Application Center con SSL.
 
+
+
 Para obtener una lista de archivos y herramientas instalados, consulte [Estructura de distribución de {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
 #### Ir a
@@ -71,6 +73,8 @@ El instalador puede crear la base de datos de Application Center si especifica e
 Cuando cree manualmente la base de datos, puede sustituir el nombre de la base de datos (aquí APPCNTR) y la contraseña por un nombre y contraseña de base de datos de su elección.
 
 > **Importante:** Puede poner un nombre distinto a su base de datos y usuario, o establecer una contraseña distinta, pero asegúrese de que especifica el nombre de base de datos adecuado, el nombre de usuario y la contraseña correctamente en la configuración de la base de datos de DB2. DB2 tiene un límite de nombre de base de datos de 8 caracteres en todas las plataformas, y tiene un límite de longitud de nombre de usuario y de contraseña de 8 caracteres para sistemas UNIX y Linux, y de 30 caracteres para Windows.
+
+
 1. Cree un usuario del sistema, por ejemplo, con el nombre **wluser** en un grupo de administración de DB2 como por ejemplo **DB2USERS**, utilizando los mandatos adecuados para su sistema operativo. Otórguele una contraseña, por ejemplo, **wluser**. Si desea que varias instancias de IBM {{ site.data.keys.mf_server }} se conecten a la misma base de datos, utilice un nombre de usuario distinto para cada conexión. Cada usuario de base de datos tiene un esquema predeterminado independiente. Para obtener más información acerca de los usuarios de base de datos, consulte la documentación de DB2 y la documentación para su sistema operativo.
 
 2. Abra un procesador de línea de mandatos de DB2, con un usuario que tenga permisos **SYSADM** o **SYSCTRL**:
@@ -151,6 +155,7 @@ Para instalar Application Center en una granja de servidores de WebSphere Applic
 2. En el panel de instalador en el que especifique el directorio de instalación de WebSphere Application Server, seleccione el perfil de gestor de despliegue.
 
     > **Atención:** No seleccione un perfil de servidor de aplicaciones y a continuación un único servidor gestionado: hacerlo hace que el gestor de despliegue sobrescriba la configuración del servidor independientemente de si se instala en la máquina en la que el gestor de despliegue se está ejecutando o en una máquina distinta.
+
 3. Seleccione el ámbito necesario dependiendo de dónde desee que se instale Application Center. En la tabla siguiente se listan los ámbitos disponibles:
 
     | Ámbito	 | Explicación |
@@ -165,6 +170,8 @@ Para instalar Application Center en una granja de servidores de WebSphere Applic
 La instalación no tiene ningún efecto fuera de la granja de servidores en el ámbito especificado. Los proveedores de JDBC y los orígenes de datos JDBC están definidos con el ámbito especificado. Las entidades que tienen un ámbito de toda la célula (las aplicaciones y, para DB2, el alias de autenticación) tienen un sufijo en su nombre que los hace exclusivos. Por lo tanto, puede instalar Application Center en distintas configuraciones o incluso en versiones distintas de Application Center, en clústeres distintos de la misma célula.
 
 > **Nota:** Puesto que el controlador de JDBC sólo está instalado en el conjunto especificado de servidores de aplicaciones, es posible que no funcione el botón Probar conexión para los orígenes de datos de JDBC en la consola de administración de WebSphere Application Server del gestor de despliegue.
+
+
 Si utiliza un servidor HTTP frontal, también debe configurar el URL público.
 
 ### Finalización de la instalación
@@ -332,6 +339,8 @@ Es necesaria una reconfiguración para que {{ site.data.keys.mf_server }} utilic
 En servidores de aplicaciones que no sean Apache Tomcat, puede desplegar Application Center desde dos archivos WAR o un archivo EAR.
 
 > **Restricción:** Si instala Application Center con IBM Installation Manager como parte de la instalación de {{ site.data.keys.mf_server }} o manualmente, recuerde que las "actualizaciones continuas" de Application Center no están soportadas. Es decir, no se pueden instalar dos versiones de Application Center (por ejemplo, V5.0.6 y V6.0.0) que operan en la misma base de datos.
+
+
 
 #### Ir a
 {: #jump-to-4 }
@@ -539,6 +548,8 @@ Configure la base de datos de Apache Derby para Application Center creando el es
 
    > **Nota:** El programa ij forma parte de Apache Derby. Si todavía no lo ha instalado, puede descargarlo de [Apache Derby: Descargas](http://db.apache.org/derby/derby_downloads).
 
+
+
    Para ver las versiones soportadas de Apache Derby, consulte [Requisitos del sistema](../../../product-overview/requirements).  
    El script muestra el número de versión de ij.
 
@@ -689,6 +700,8 @@ Complete el procedimiento siguiente para configurar la base de datos de MySQL.
 Si desea establecer y configurar manualmente la base de datos de MySQL para Application Center con el perfil de Liberty de WebSphere Application Server, utilice el procedimiento siguiente. Complete el procedimiento de configuración de la base de datos de MySQL antes de continuar.
 
 > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Puede utilizar IBM DB2 u otra base de datos soportada por WebSphere Application Server para que se beneficie de una configuración que está totalmente soportada por IBM Support.
+
+
 1. Añada el archivo JAR del controlador de MySQL JDBC en **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**. Si dicho directorio no existe, créelo.
 2. Configure el origen de datos en el archivo **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** (**worklightServer** se puede sustituir en esta vía de acceso por el nombre del servidor) de la siguiente manera:
 
@@ -716,6 +729,8 @@ Si desea establecer y configurar manualmente la base de datos de MySQL para Appl
 Si desea establecer y configurar manualmente la base de datos de MySQL para Application Center con WebSphere Application Server, utilice el procedimiento centro de aplicaciones. Complete el procedimiento de configuración de la base de datos de MySQL antes de continuar.
 
 > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Le sugerimos que utilice IBM DB2 u otra base de datos soportada por WebSphere Application Server para beneficiarse de una configuración que está totalmente soportada por IBM Support.
+
+
 1. Determine un directorio adecuado para el archivo JAR del controlador de JDBC en el directorio de instalación de WebSphere Application Server.
     * Para un servidor autónomo, puede utilizar un directorio como por ejemplo **WAS\_INSTALL\_DIR/optionalLibraries/IBM/Worklight/mysql**.
     * Para el despliegue a una célula ND de WebSphere Application Server, utilice **WAS\_INSTALL\_DIR/profiles/profile-name/config/cells/cell-name/Worklight/mysql**.
@@ -886,6 +901,8 @@ Puede establecer y configurar la base de datos de Oracle manualmente para Applic
 
     > **Nota:** Para obtener más información sobre cómo conectar el servidor de Liberty a la base de datos de Oracle con un nombre de servicio, o con un URL, consulte la [documentación de WebSphere Application Server Liberty Core 8.5.5](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0), sección **properties.oracle**.
 
+
+
 3. Puede cifrar la contraseña de base de datos con el programa securityUtility en **liberty\_install\_dir/bin**.
 
 ##### Configuración de WebSphere Application Server for Oracle manualmente para Application Center
@@ -967,6 +984,8 @@ El procedimiento para desplegar manualmente los archivos WAR de Application Cent
 Estas instrucciones manuales presuponen que está familiarizado con el servidor de aplicaciones.
 
 > **Nota:** El uso del instalador de {{ site.data.keys.mf_server }} para instalar Application Center es más fiable que instalarlo manualmente, y debería utilizarse siempre que fuera posible.
+
+
 
 Si prefiere utilizar el proceso manual, siga estos pasos para configurar el servidor de aplicaciones para Application Center. Debe desplegar los archivos appcenterconsole.war y applicationcenter.war en su Application Center. Los archivos se encuentran en **product\_install\_dir/ApplicationCenter/console**.
 
@@ -1266,6 +1285,8 @@ Como alternativa al programa de instalador de {{ site.data.keys.mf_server }}, pu
 El procedimiento para desplegar el archivo EAR de Application Center manualmente en un servidor de aplicaciones depende del tipo de servidor de aplicaciones. El despliegue manual sólo está soportado para el perfil de Liberty de WebSphere Application Server y WebSphere Application Server.
 
 > **Consejo:** Es más fiable instalar Application Center a través del instalador de {{ site.data.keys.mf_server }} en lugar de manualmente. Por lo tanto, siempre que sea posible, utilice el instalador de {{ site.data.keys.mf_server }}. Si, sin embargo, prefiere el procedimiento manual, despliegue el archivo **appcentercenter.ear**, que puede encontrar en el directorio **product\_install\_dir/ApplicationCenter/console**.
+
+
 
 #### Configuración del perfil de Liberty para Application Center manualmente
 {: #configuring-the-liberty-profile-for-application-center-manually-1 }
@@ -2220,9 +2241,9 @@ Donde:
 | Propiedad | Descripción |
 |----------|-------------|
 | ibm.appcenter.services.endpoint | El URI de los servicios REST de Application Center. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.|
-| ibm.appcenter.proxy.protocol	El protocolo del URI de recursos de aplicaciones. Esta propiedad es opcional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
+| ibm.appcenter.proxy.protocol	El protocolo del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
 | ibm.appcenter.proxy.host | El nombre de host del URI de recursos de aplicaciones. |
-| ibm.appcenter.proxy.port | El puerto del URI de recursos de aplicaciones. Esta propiedad es opcional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
+| ibm.appcenter.proxy.port | El puerto del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
 
 Para obtener una lista completa de propiedades LAPD que puede establecer, consulte [Propiedades JNDI para Application Center](#jndi-properties-for-application-center).
 
@@ -2261,9 +2282,9 @@ Donde:
 | Propiedad | Tipo | Descripción |
 |----------|------|-------------|
 | ibm.appcenter.services.endpoint | java.lang.String | El URI de los servicios REST de Application Center (applicationcenter.war). En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.|
-| ibm.appcenter.proxy.protocol | java.lang.String | El protocolo del URI de recursos de aplicaciones. Esta propiedad es opcional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
+| ibm.appcenter.proxy.protocol | java.lang.String | El protocolo del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
 | ibm.appcenter.proxy.host | java.lang.String | El nombre de host del URI de recursos de aplicaciones. |
-| ibm.appcenter.proxy.port | java.lang.Integer | El puerto del URI de recursos de aplicaciones. Esta propiedad es opcional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
+| ibm.appcenter.proxy.port | java.lang.Integer | El puerto del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
 
 Para obtener una lista completa de las propiedades JNDI que puede establecer, consulte [Propiedades JNDI para Application Center](#jndi-properties-for-application-center).
 
@@ -2271,7 +2292,7 @@ Para obtener una lista completa de las propiedades JNDI que puede establecer, co
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 Este ejemplo muestra los valores de las propiedades del archivo **server.xml** necesarios para configurar el punto final de los recursos de aplicaciones.
 
-En la sección `<context>` de la aplicación de consola de Application Center:
+En el elemento `<context>` de la aplicación de consola de Application Center:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2279,7 +2300,7 @@ En la sección `<context>` de la aplicación de consola de Application Center:
 
 Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center. Por ejemplo: `*://*:*/appcenter` significa utilizar el mismo protocolo, host y puerto que la consola de Application Center, pero utilizar appcenter como raíz de contexto.
 
-En la sección `<context>` de la aplicación de servicios de Application Center:
+En el elemento `<context>` de la aplicación de servicios de Application Center:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2469,7 +2490,7 @@ Puede configurar algunas propiedades JNDI para Application Center.
 | ibm.appcenter.proxy.scheme | Esta propiedad es tan sólo un nombre alternativo para ibm.appcenter.proxy.protocol. |
 | ibm.appcenter.push.schedule.period.amount | Especifica la planificación de tiempo al enviar notificaciones push de actualizaciones de aplicaciones. Cuando las aplicaciones se cambien frecuentemente en el servidor, establezca esta propiedad para enviar lotes de notificaciones. Por ejemplo, envíe todas las notificaciones que han tenido lugar dentro de la hora anterior, en lugar de enviar cada notificación individual. |
 | ibm.appcenter.push.schedule.period.unit | Especifica la unidad para la planificación de tiempo al enviar notificaciones push de actualizaciones de aplicaciones. |
-| ibm.appcenter.services.endpoint | Permite a la consola de Application Center ubicar los servicios REST de Application Center. Especifique la dirección externa y la raíz de contexto de la aplicación web applicationcenter.war. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local. Por ejemplo, https://appcntr.net:443/applicationcenter. Consulte [Definición del punto final de los recursos de aplicaciones](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.services.endpoint | Permite a la consola de Application Center ubicar los servicios REST de Application Center. Especifique la dirección externa y la raíz de contexto de la aplicación web applicationcenter.war. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.Por ejemplo, https://appcntr.net:443/applicationcenter. Consulte [Definición del punto final de los recursos de aplicaciones](#defining-the-endpoint-of-the-application-resources). |
 | ibm.appcenter.services.iconCacheMaxAge | Especifica el número de segundos durante los que los iconos almacenados en memoria caché siguen siendo válidos para la consola y el cliente de Application Center. Los iconos de aplicaciones raramente cambian, por lo que se almacenan en la memoria caché. Especifique valores mayores de 600 (10 min) para reducir la cantidad de transferencia de datos para los iconos. |
 | mfp.jndi.configuration | Opcional. Si la configuración de JNDI se inyecta en los archivos WAR o se proporciona como una biblioteca compartida, el valor de esta propiedad será el nombre de la configuración JNDI. También puede especificar este valor como una propiedad del sistema. |
 | mfp.jndi.file | Opcional. Si la configuración JNDI se almacena como un archivo externo, el valor de esta propiedad será la vía de acceso de un archivo que describe la configuración JNDI. También puede especificar este valor como una propiedad del sistema. |

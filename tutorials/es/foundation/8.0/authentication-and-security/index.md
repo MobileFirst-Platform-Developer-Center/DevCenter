@@ -162,6 +162,8 @@ Un manejar de desafíos es una entidad del lado del cliente que implementa la l�
 **Importante**: Una vez recibido el desafío, no puede ignorarse. Debe responder o cancelarlo. Ignorar un desafío puede provocar comportamientos inesperados. 
 
 > Obtenga más información acerca de las comprobaciones de seguridad en la guía de aprendizaje [Creación de una comprobación de seguridad](creating-a-security-check/) y de los manejadores de seguridad en la guía de aprendizaje [Validación de credenciales](credentials-validation).
+
+
 ### Ámbitos 
 {: #scopes }
 
@@ -206,7 +208,7 @@ También puede editar el archivo JSON de configuración de la aplicación de for
 
 1. Desde una **ventana de línea de mandatos**, navegue a la carpeta de raíz de proyecto y ejecute `mfpdev app pull`.
 2. Abra el archivo de configuración ubicado en la carpeta **[project-folder]\mobilefirst**.
-3. Edite el archivo definiendo una propiedad `scopeElementMapping`; en esta propiedad defina pares de datos compuestos por el nombre del elemento de ámbito seleccionado y una cadena de comprobaciones de seguridad separadas por espacio a las que se correlaciona el elemento. Por ejemplo: 
+3. Edite el archivo definiendo una propiedad `scopeElementMapping`; en esta propiedad defina pares de datos compuestos por el nombre del elemento de ámbito seleccionado y una cadena de comprobaciones de seguridad separadas por espacio a las que se correlaciona el elemento. Por ejemplo:
 
     ```xml
     "scopeElementMapping": {
@@ -217,6 +219,8 @@ También puede editar el archivo JSON de configuración de la aplicación de for
 4. Despliegue el archivo JSON de configuración actualizando ejecutando el mandato: `mfpdev app push`.
 
 > También puede enviar configuraciones actualizadas a servidores remotos. Revise la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
+
+
 
 ## Protección de recursos
 {: #protecting-resources }
@@ -251,6 +255,8 @@ También puede editar el archivo JSON de configuración de la aplicación de for
 
 > También puede enviar configuraciones actualizadas a servidores remotos. Revise la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
+
+
 ### Protección de recursos de adaptador
 {: #protecting-adapter-resources }
 
@@ -259,6 +265,8 @@ En el adaptador puede especificar el ámbito de protección para el método Java
 El ámbito de {{ site.data.keys.product_adj }} predeterminado es `RegisteredClient`, que requiere una señal de acceso para acceder al recurso y verifica que la solicitud de recurso es de una aplicación registrada con {{ site.data.keys.mf_server }}. Esta protección siempre se aplica, a menos que [inhabilite la protección de recurso](#disabling-resource-protection). Por lo tanto, incluso si no establece un ámbito para el recurso, este sigue protegido. 
 
 > <b>Nota:</b> `RegisteredClient` se reserva a la palabra clave de {{ site.data.keys.product_adj }}. No defina elementos de ámbito de persona personalizados o comprobaciones de seguridad con este nombre.
+
+
 #### Protección de recursos de adaptador Java
 {: #protecting-java-adapter-resources }
 
@@ -398,12 +406,18 @@ Antes de solicitar una señal de acceso, el cliente se registra con {{ site.data
 1.  La aplicación cliente envía una solicitud para obtener una señal de acceso para un ámbito especificado.
 
     > El cliente solicita una señal de acceso con un ámbito determinado. El ámbito solicitado debería correlacionarse con la misma comprobación de seguridad como ámbito del recurso protegido al que el cliente quiere acceder y, de forma opcional, también puede correlacionarse con comprobaciones de seguridad adicionales.Si el cliente no tiene conocimiento previo acerca del ámbito del recurso protegido, primero puede solicitar una señal de acceso con un ámbito vacío e intentar acceder al recurso con la señal obtenida. El cliente recibirá una respuesta con un error 403 (Prohibido) y el ámbito necesario del recurso solicitado.
+
+
 2.  La aplicación de cliente se somete a comprobaciones de seguridad en función del ámbito solicitado.
 
     > {{ site.data.keys.mf_server }} ejecuta comprobaciones de seguridad a las que se correlaciona el ámbito de la solicitud del cliente. El servidor de autorización otorga o rechaza la solicitud del cliente en función de los resultados de estas comprobaciones. Si se define un ámbito de aplicación obligatorio, las comprobaciones de seguridad del ámbito se ejecutan además de las comprobaciones del ámbito solicitado.
+
+
 3.  Cuando el proceso de solicitud finaliza correctamente, la aplicación cliente reenvía la solicitud al servidor de autorización.
 
     > Si la autorización se realiza correctamente, el cliente se redirige al punto final de la señal del servidor de autorización, en el que se autentica utilizando la clave pública proporcionada como parte del registro del cliente. Si la autenticación es correcta, el servidor de autorización emite al cliente una señal de acceso firmada digitalmente que encapsula el ID del cliente, el ámbito solicitado y la hora de caducidad de la señal.
+
+
 4.  La aplicación de cliente recibe la señal de acceso.
 
 ### Utilización de una señal para acceder a un recurso protegido

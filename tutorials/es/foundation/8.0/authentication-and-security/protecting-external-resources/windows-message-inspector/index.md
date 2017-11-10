@@ -100,6 +100,8 @@ static void Main(string[] args) {
 ```
 
 > Para obtener más información acerca de los servicios REST WCF, consulte [Crear un servicio HTTP web WCF](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
+
+
 ## Definir un inspector de mensaje
 {: #define-a-message-inspector}
 Antes de iniciar proceso de validación, es necesario crear y definir un **inspector de mensaje ** que utilizaremos para proteger el recurso (el punto final de servicio).

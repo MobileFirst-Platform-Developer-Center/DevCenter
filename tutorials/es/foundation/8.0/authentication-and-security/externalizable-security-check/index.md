@@ -40,6 +40,8 @@ protected void initStateDurations(Map<String, Integer> durations) {
 ```
 
 > Para obtener más información acerca de la configuración de comprobación de seguridad, consulte la [sección de clase de configuración](../credentials-validation/security-check/#configuration-class) en el tutorial de implementación de CredentialsValidationSecurityCheck.
+
+
 ## El método authorize
 {: #the-authorize-method }
 La interfaz `SecurityCheck` define un método denominado `authorize`. Este método es el responsable de implementar la lógica principal de la comprobación de seguridad, de gestionar estados y enviar una respuesta al cliente (acierto, desafío o error). 
@@ -79,7 +81,7 @@ El método de ayudante `getExpiresAt` devuelve la hora en la que el estado caduc
    
 * El nombre de la comprobación de seguridad.
 
-El método `AuthorizationResponse.addFailure` añade un valor de error en el objeto de respuesta. Requiere: 
+El método `AuthorizationResponse.addFailure` añade un valor de error en el objeto de respuesta. Requiere:
 
 * El nombre de la comprobación de seguridad.
 * Un objeto `Map` de error.

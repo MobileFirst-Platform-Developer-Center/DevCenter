@@ -152,6 +152,8 @@ Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. 
 
    > Para obtener más información sobre cómo configurar otros tipos de registro de usuarios, como por ejemplo LDAP, consulte el tema [Configuración de un registro de usuarios para Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) en la documentación del producto WebSphere Application Server.
 
+
+
 6. Inicie el servidor de Liberty ejecutando el siguiente mandato dentro de su carpeta **bin**
 
    ```bash
@@ -267,6 +269,7 @@ Debe ejecutar la tarea Ant en el sistema donde está instalado el servidor de ap
     > Nota: Los siguientes caracteres especiales deben escaparse cuando se utilizan en los valores de los scripts Ant XML:
     >
     > * El signo de dólar ($) se debe escribir como $$, a no ser que desee explícitamente hacer referencia a una variable Ant a través de la sintaxis ${variable}, tal como se describe en la sección [Propiedades](http://ant.apache.org/manual/properties.html) de Apache Ant Manual.
+
     > * El carácter ampersand (&) se debe escribir como &amp;, a no ser que desee explícitamente hacer referencia a una entidad XML.
     > * Las comillas dobles (") se deben escribir como &quot;, excepto cuando estén dentro de una serie que esté entre comillas simples.
 

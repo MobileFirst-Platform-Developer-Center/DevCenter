@@ -52,6 +52,8 @@ SSL se configura entre los adaptadores y los servidores de fondo importando el c
     > **Nota:** Exporte los certificados públicos de fondo desde el almacén de confianza de fondo utilizando keytool o la biblioteca openssl.
 No utilice la característica de exportación en un navegador web.
 
+
+
 2. Importe el certificado del servidor de fondo en el almacén de claves de {{ site.data.keys.product_adj }}.
 3. Despliegue el nuevo almacén de claves de {{ site.data.keys.product_adj }}.
 Para obtener más información, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
@@ -89,6 +91,8 @@ En el ejemplo siguiente se muestra cómo completar la configuración utilizando 
     ```
 
     > **Nota:** El campo **Nombre y apellido** contiene el URL de servidor, que se utiliza en el archivo de configuración **adapter.xml**, por ejemplo **mydomain.com** o **localhost**.
+
+
 2. Configure su servidor de fondo para trabajar con el almacén de claves.
 Por ejemplo, en Apache Tomcat, se cambia el archivo **server.xml**:
 
@@ -156,12 +160,15 @@ Para obtener más información, consulte [Configuración del almacén de claves 
 2. Si piensa distribuir el artefacto instalable de la aplicación, incremente la versión de la aplicación.
 
 3. Antes de construir su aplicación, configúrela para el servidor de destino.
-  Se define el nombre de tiempo de ejecución y el URL del servidor de destino en el archivo de propiedades del cliente.
-  También puede cambiar el servidor de destino utilizando {{ site.data.keys.mf_cli }}.
-  Para configurar la aplicación para un servidor de destino sin registrar la aplicación para un servidor en ejecución, puede utilizar los mandatos `mfpdev app config server <server URL>` y `mfpdev app config runtime <runtime_name>`. Otra posibilidad es registrar la aplicación para un servidor en ejecución ejecutando el mandato `mfpdev app register`.
-  Utilice el URL público del servidor.
-  Este URL lo utiliza la aplicación móvil para conectarse a {{ site.data.keys.mf_server }}.    
-  Por ejemplo, para configurar la aplicación para un servidor de destino mfp.mycompany.com con un tiempo de ejecución que tiene el nombre predeterminado mfp, ejecute `mfpdev app config server https://mfp.mycompany.com` y `mfpdev app config runtime mfp`.
+
+
+    Se define el nombre de tiempo de ejecución y el URL del servidor de destino en el archivo de propiedades del cliente.
+También puede cambiar el servidor de destino utilizando {{ site.data.keys.mf_cli }}.
+Para configurar la aplicación para un servidor de destino sin registrar la aplicación para un servidor en ejecución, puede utilizar los mandatos `mfpdev app config server <server URL>` y `mfpdev app config runtime <runtime_name>`. Otra posibilidad es registrar la aplicación para un servidor en ejecución ejecutando el mandato `mfpdev app register`.
+Utilice el URL público del servidor.
+Este URL lo utiliza la aplicación móvil para conectarse a {{ site.data.keys.mf_server }}.
+
+    Por ejemplo, para configurar la aplicación para un servidor de destino mfp.mycompany.com con un tiempo de ejecución que tiene el nombre predeterminado mfp, ejecute `mfpdev app config server https://mfp.mycompany.com` y `mfpdev app config runtime mfp`.
 
 4. Configure las claves de secreto y los servidores autorizados para su aplicación.
 
@@ -174,6 +181,7 @@ Para obtener más información sobre la fijación de certificado, consulte [Fija
 
     * Si ha desarrollado su aplicación con Apache Cordova, configure Cordova Content Security Policy (CSP).
 
+
 5. Si piensa utilizar Direct Update para una aplicación que se ha desarrollado con Apache Cordova, archive las versiones de los plugins de Cordova que utilizó para construir la aplicación.
 
     Direct Update no se puede utilizar para actualizar código nativo. Si cambió una biblioteca nativa o una de las herramientas de creación en un proyecto de Cordova y la subió a {{ site.data.keys.mf_server }}, el servidor detecta la diferencia y no envía ninguna actualización para la aplicación cliente. Los cambios en la biblioteca nativa puede incluir una versión Cordova diferente, un nuevo plugin Cordova iOS o incluso un fixpack de plugin mfpdev que sea más reciente que la utiliza para construir la aplicación original.
@@ -184,9 +192,12 @@ Para obtener más información sobre la fijación de certificado, consulte [Fija
     * Si tiene la intención de utilizar {{ site.data.keys.mf_analytics }}, verifique que su aplicación envía datos recopilados a {{ site.data.keys.mf_server }}.
     * Considere inhabilitar las características de su aplicación que llaman a la API `setServerURL`, a menos que piense en realizar una única construcción para varios servidores de prueba.
 
-7. Si construye para un servidor de producción y planea distribuir el artefacto   instalable, archive el código fuente de la aplicación para poder ejecutar pruebas de no regresión para esta aplicación en un servidor de prueba.
-  Por ejemplo, si actualiza un adaptador con posterioridad, puede ejecutar pruebas de no regresión en aplicaciones ya distribuidas que utilizan este adaptador.
-  Para obtener más información, consulte [Despliegue o actualización de un adaptador en un entorno de producción](#deploying-or-updating-an-adapter-to-a-production-environment).
+
+7. Si construye para un servidor de producción y planea distribuir el artefacto instalable, archive el código fuente de la aplicación para poder ejecutar pruebas de no regresión para esta aplicación en un servidor de prueba.
+
+
+    Por ejemplo, si actualiza un adaptador con posterioridad, puede ejecutar pruebas de no regresión en aplicaciones ya distribuidas que utilizan este adaptador.
+Para obtener más información, consulte [Despliegue o actualización de un adaptador en un entorno de producción](#deploying-or-updating-an-adapter-to-a-production-environment).
 
 8. Opcional: Cree un archivo de autenticidad para su aplicación.
 
@@ -212,6 +223,8 @@ Cuando registra una aplicación con un servidor de producción, se sube su descr
 1. Si {{ site.data.keys.mf_server }} está configurado para licencias de señal, asegúrese de que tiene suficiente señales disponibles en License Key Server. Para obtener más información, consulte [Validación de licencias de señal](../license-tracking/#token-license-validation) y [Planificación para la utilización de gestión de licencias de señal](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
 
    > **Sugerencia:** Puede establecer el tipo de licencia de señal de su aplicación antes de registrar la primera versión de dicha aplicación. Para obtener más información, consulte [Establecimiento de la información de la licencia de la aplicación](../license-tracking/#setting-the-application-license-information).
+
+
 2. Transfiera el descriptor de la aplicación desde un servidor de prueba al servidor de producción.
 
    Esta operación registra la aplicación para el servidor de producción y sube su configuración. Para obtener más información sobre la transferencia de un descriptor de aplicación, consulte [Transferencia de artefactos del lado del servidor a un servidor de prueba o producción](#transferring-server-side-artifacts-to-a-test-or-production-server).
@@ -225,6 +238,8 @@ Cuando registra una aplicación con un servidor de producción, se sube su descr
 5. Si su aplicación utiliza notificaciones push, suba los certificados de notificación push al servidor. Puede subir los certificados push para su aplicación con {{ site.data.keys.mf_console }}. Los certificados son comunes a todas las versiones de una aplicación.
 
    > **Nota:** Es posible que no pueda probar las notificaciones push para su aplicación con certificados de producción antes de que su aplicación se publique en la tienda.
+
+
 6. Verifique los elementos siguientes antes de publicar la aplicación en la tienda.
 
     * Pruebe la característica de gestión de aplicaciones móviles que piensa utilizar como, por ejemplo, la inhabilitación de aplicaciones remotas o la visualización de un mensaje de administrador. Para obtener más información, consulte [Gestión de aplicaciones móviles](../using-console/#mobile-application-management).
@@ -244,6 +259,8 @@ Hay disponibles varios procedimientos, dependiendo de si desarrolla las aplicaci
 
 > **Importante:** Si importa una aplicación que incluye datos de autenticidad, y si la propia aplicación se ha recompilado desde que se generaron los datos de autenticidad, debe renovar los datos de autenticidad.
 Para obtener más información, consulte [Configuración de la comprobación de seguridad de autenticidad de aplicación](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+
+
 * Si tiene acceso al código de la aplicación móvil, utilice los mandatos `mfpdev app pull` y `mfpdev app push`.
 
 * Si no tiene acceso al código de la aplicación móvil, utilice el servicio de administración.
@@ -350,6 +367,7 @@ Puede descargarla utilizando la API REST o **mfpadm**.
 
    > **Nota:** También puede exportar una aplicación o versión de aplicación desde {{ site.data.keys.mf_console }}.
 Consulte [Exportación e importación de aplicaciones y adaptadores desde {{ site.data.keys.mf_console }}](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
+
     * Para descargar el descriptor de aplicación con la API REST, utilice la API REST [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-).
 
 
@@ -449,9 +467,12 @@ Los datos son específicos de la construcción de una aplicación móvil.
 La aplicación móvil incluye el URL del servidor y su nombre de tiempo de ejecución.
 Por lo tanto, si desea utilizar otro servidor u otro entorno de tiempo de ejecución, debe reconstruir la aplicación.
 Transferir únicamente los archivos de la aplicación no será suficiente.
+
 > * Algunos artefactos pueden variar de un servidor a otro.
 Las credenciales push son diferentes dependiendo de si trabaja en un entorno de desarrollo o un entorno de producción.
+
 > * La configuración del tiempo de ejecución de la aplicación (que contiene el estado activo/inhabilitado y los archivos de registro) se pueden transferir en algunos casos, pero no en todos.
+
 > * La transferencia de recursos web podría no tener sentido en algunos casos, por ejemplo, si se realiza la reconstrucción para utilizar un nuevo servidor.
 
 * Para exportar todos los recursos, o un subconjunto seleccionado de recursos, para un adaptador o para todos adaptadores, utilice la API [Export adapter resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) o [Export adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc).
@@ -516,9 +537,12 @@ Los datos son específicos de la construcción de una aplicación móvil.
 La aplicación móvil incluye el URL del servidor y su nombre de tiempo de ejecución.
 Por lo tanto, si desea utilizar otro servidor u otro entorno de tiempo de ejecución, debe reconstruir la aplicación.
 Transferir únicamente los archivos de la aplicación no será suficiente.
+
 > * Algunos artefactos pueden variar de un servidor a otro.
 Las credenciales push son diferentes dependiendo de si trabaja en un entorno de desarrollo o un entorno de producción.
+
 > * La configuración del tiempo de ejecución de la aplicación (que contiene el estado activo/inhabilitado y los archivos de registro) se pueden transferir en algunos casos, pero no en todos.
+
 > * La transferencia de recursos web podría no tener sentido en algunos casos, por ejemplo, si se realiza la reconstrucción para utilizar un nuevo servidor.
 
 Puede transferir también descriptores de aplicación utilizando la API REST o la herramienta mfpadm.
@@ -600,6 +624,8 @@ Consulte [Inhabilitación de forma remota del acceso de la aplicación a recurso
 
 > **Nota:** Si inhabilita la antigua aplicación, ya no podrá comunicarse con {{ site.data.keys.mf_server }}.
 Los usuarios todavía podrán iniciar la aplicación y trabajar con ella fuera de línea, a menos que fuerce una conexión al servidor al iniciar la aplicación.
+
+
 ### Direct Update (sin cambios de código nativo)
 {: #direct-update-no-native-code-changes }
 Direct Update es un mecanismo de actualización obligatorio que se utiliza para desplegar arreglos de forma rápida en una aplicación de producción.

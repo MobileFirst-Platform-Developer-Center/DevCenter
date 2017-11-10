@@ -371,7 +371,7 @@ Fragmento de código existente:
 
 ```objc
 (void)wlInitDidCompleteSuccessfully
-{ 
+{
 UIViewController* rootViewController = self.window.rootViewController; 
 // Create a Cordova View Controller 
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ; 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de MobileFirst Server en IBM Bluemix Kubernetes Cluster
-breadcrumb_title: Kubernetes Cluster en IBM Bluemix
+breadcrumb_title: Kubernetes Cluster en IBM Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -242,7 +242,9 @@ Como se ha descrito anteriormente, puede optar por ejecutar los scripts de forma
 * **Utilización de los archivos de configuración** - Ejecute los scripts y pase el archivo de configuración respectivo como un argumento.
 * **Interactivamente** - Ejecute los scripts sin argumentos. 
 
->**Nota:** Si opta por ejecutar los scripts de forma interactiva, puede omitir la configuración, pero se le recomienda que lea y comprenda los argumentos que deberá proporcionar.Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos proporcionados en un directorio: `./recorded-args/`. De este modo, puede utilizar la modalidad interactiva la primera vez y reutilizar los archivos de propiedades como una referencia para despliegues futuros.
+>**Nota:** Si opta por ejecutar los scripts de forma interactiva, puede omitir la configuración, pero se le recomienda que lea y comprenda los argumentos que deberá proporcionar.
+
+Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos proporcionados en un directorio: `./recorded-args/`. De este modo, puede utilizar la modalidad interactiva la primera vez y reutilizar los archivos de propiedades como una referencia para despliegues futuros.
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
