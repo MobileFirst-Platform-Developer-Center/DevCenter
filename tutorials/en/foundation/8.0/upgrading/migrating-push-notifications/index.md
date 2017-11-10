@@ -1533,7 +1533,7 @@ The following information is important to know before you use the migration tool
 
 #### Procedure
 {: #procedure }
-1. Download the migration tool from [its following GitHub repository](http://github.com).
+1. Download the migration tool from [its following GitHub repository](https://github.com/mfpdev/push-migration-tool).
 2. After downloading the tool, provide the following details in the **migration.properties** file:
 
     | Value                | Description  | Sample Values |
@@ -1561,7 +1561,9 @@ The following information is important to know before you use the migration tool
 2. Run the tool by using the following command:
 
    ```bash
-   java -jar pushDataMigration.jar path-to-migration.properties
+   java -jar mfp-push-data-migration.jar path-to-migration.properties
    ```
 
    * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+   
+    *Keep lib folder containing required libraries at the same location as tool .jar file.

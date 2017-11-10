@@ -13,10 +13,16 @@ Writing custom CSS style for each component from scratch can deliver a high leve
 Sometimes it is better to use the existing JavaScript UI frameworks.
 This topic describes how to develop {{ site.data.keys.product_adj }} applications with two UI frameworks jQuery Mobile and a WYSIWYG editor provided in {{ site.data.keys.product_adj }} Studio’s Eclipse.
 
+To develop UI for cordova application using MobileFirst Eclipse plugin, do the following:
+
+1. Download Eclipse.
+2. Install [Thym](http://marketplace.eclipse.org/content/eclipse-thym) plugin from the marketplace.
+3. Install [MobileFirst platform plugin](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio) from the marketplace.
+
 
 ## WYSIWYG Editor
 {: #wysiwyg-editor }
-A basic WYSIWYG editor is provided for Mobile widgets for developer convenience.
+A basic WYSIWYG editor is provided with the MobileFirst platform eclipse plugin for Mobile widgets for developer convenience.
 This editor provides the basic palette for the user to drag and drop a simple button or a text box and other HTML widgets. This is a Rapid Mobile Application Development tool that enables the user to develop a basic cordova application quickly.
 
 ![WYSIWYG Editor](wysiwyg-editor.png)
@@ -27,12 +33,11 @@ jQuery is a fast and concise JavaScript framework that simplifies HTML document 
 
 To add jQuery mobile to your application, do the following:
 
-1. Download Eclipse and install [Thym](http://marketplace.eclipse.org/content/eclipse-thym) and [MobileFirst platform plugin](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio) from the market place.
-2. Create a Thym project in eclipse by clicking **File -> New -> new Hybrid Mobile (Cordova) application project**.
-3. [Download jQuery mobile package](http://jquerymobile.com/download/).
-4. Copy the downloaded jQuery Mobile package into the `www` directory of your hybrid application, as shown in the image below
+1. Create a Thym project in eclipse by clicking **File -> New -> new Hybrid Mobile (Cordova) application project**.
+2. [Download jQuery mobile package](http://jquerymobile.com/download/).
+3. Copy the downloaded jQuery Mobile package into the `www` directory of your hybrid application, as shown in the image below
   ![www directory](www-dir.png)
-5. Open the main `index.html` as shown in the screenshot and add the jQuery references (shown in the snippet) to the project:
+4. Open the main `index.html` as shown in the screenshot and add the jQuery references (shown in the snippet) to the project:
     ![Add JQuery references](add-jquery-refs.png)
 
     ```html
