@@ -49,6 +49,8 @@ Utilice las propiedades JNDI para definir estas variables.
 
 > **Importante:** En producción, evite establecer la unidad en segundos. Cuanto más corto sea el tiempo transcurrido, mayor será la carga en el servidor. La unidad expresada en segundos sólo se implementa para fines de prueba y evaluación. Por ejemplo, cuando el tiempo transcurrido se establece en 10 segundos, los mensajes push se enviarán casi inmediatamente.
 
+
+
 Consulte [Propiedades JNDI para Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) para obtener una lista completa de propiedades que puede establecer.
 
 ### Ejemplo para servidor Apache Tomcat
@@ -81,8 +83,10 @@ Para habilitar Google Cloud Messaging (GCM) para una aplicación, debe adjuntar 
 
 > Importante: El cliente de Application Center sin Google Cloud Messaging: El Application Center se basa en la disponibilidad de la API de Google Cloud Messaging (GCM). Es posible que esta API no esté disponible en dispositivos de algunos territorios, como por ejemplo China. Para dar soporte a estos territorios, puede crear una versión del cliente de Application Center que no dependa de la API de GCM. La característica de notificaciones push no funciona en dicha versión del cliente de Application Center. Consulte [Creación de una versión del cliente móvil que no dependa de la API de GCM](#no-gcm) para obtener más detalles.
 
+
+
 1. Si no tiene la cuenta de Google apropiada, vaya a [Crear una cuenta de Google](https://mail.google.com/mail/signup) y cree una para el cliente de Application Center.
-2. Registre esta cuenta mediante la API de Google en la [Consola de la API de Google](https://code.google.com/apis/console/). El registro crea un nuevo proyecto predeterminado que puede renombrar. El nombre que dé a este proyecto de GCM no está relacionado con el nombre del paquete de aplicaciones de Android. Cuando se cree el proyecto, se añadirá un ID de proyecto de GCM al final del URL del proyecto. Debería registrar este número de rastreo como su ID de proyecto para su referencia futura.
+2. Registre esta cuenta mediante la API de Google en la [Consola de la API de Google](https://code.google.com/apis/console/). El registro crea un nuevo proyecto predeterminado que puede renombrar. El nombre que dé a este proyecto de GCM no está relacionado con el nombre del paquete de aplicaciones de Android. Cuando se cree el proyecto, se añadirá un ID de proyecto de GCM al final del URL del proyecto. Debería registrar este número de que se añade al final como su ID de proyecto para su referencia futura.
 3. Habilite el servicio de GCM para el proyecto; en la consola de la API de Google, pulse el separador **Servicios** de la izquierda y habilite el servicio "Google Cloud Messaging for Android" en la lista de servicios.
 4. Asegúrese de que haya disponible una clave de Simple API Access Server para las comunicaciones entre aplicaciones.
     * Pulse el separador vertical **API Access** a la izquierda de la consola.
@@ -145,11 +149,11 @@ Donde x es un entero.
 
 Los ejemplos de la tabla muestran cómo están definidas las propiedades JNDI en el archivo server.xml del servidor de Apache Tomcat.
 
-| Propiedad JNDI	| Tipo y descripción | Ejemplo para servidor Apache Tomcat | 
+| Propiedad JNDI| Tipo y descripción| Ejemplo para servidor Apache Tomcat| 
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location | Un valor de serie que define la vía de acceso completa al certificado .p12. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | Un valor de serie que define la contraseña necesaria para acceder al certificado. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	Un valor booleano (identificado como true o false) que define si el perfil de suministro utilizado para generar el certificado de autenticación era un certificado de desarrollo. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.location| Un valor de serie que define la vía de acceso completa al certificado .p12.| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.password| Un valor de serie que define la contraseña necesaria para acceder al certificado.| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	Un valor booleano (identificado como true o false) que define si el perfil de suministro utilizado para generar el certificado de autenticación era un certificado de desarrollo.| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
 
 Consulte [Propiedades JNDI para Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) para obtener una lista completa de propiedades JNDI que puede establecer.
 

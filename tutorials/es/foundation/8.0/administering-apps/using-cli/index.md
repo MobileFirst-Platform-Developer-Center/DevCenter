@@ -11,6 +11,7 @@ Puede administrar aplicaciones {{ site.data.keys.product_adj }} a través del pr
 
 
 >Las versiones del {{ site.data.keys.product_full }} SDK posteriores a la versión **8.0.0.0-MFPF-IF201701250919** tienen un soporte de autenticidad de aplicación actualizado, con mandatos `mfpadm` para conmutar entre una validación `dinámica` y otra `estática` (también es posible restablecerla).
+
 >
 Vaya hasta el directorio de instalación de {{ site.data.keys.product_full }} `/MobilefirstPlatformServer/shortcuts` y ejecute los mandatos `mfpadm`. 
 >
@@ -120,7 +121,7 @@ El programa **mfpadm** tiene las siguientes opciones:
 | --url| 	 | URL| URL base de la aplicación web de {{ site.data.keys.product_adj }} para los servicios de administración| Sí| |
 | --secure	 | Booleano| Evitar operaciones con riesgos de seguridad| No| verdadero|
 | --user	 | nombre| Nombre de usuario para acceder a los servicios de administración de {{ site.data.keys.product_adj }}| Sí|  | 	 
-| --passwordfile| archivo | Archivo con la contraseña del usuario| No|
+| --passwordfile| file | Archivo con la contraseña del usuario| No|
 | --timeout	     | Número | Tiempo de espera para todo el acceso al servicio REST, en segundos| No| 	 
 | --connect-timeout| Número | Tiempo de espera para establecer una conexión de red, en segundos| No|
 | --socket-timeout| Número | Tiempo de espera para detectar la pérdida de una conexión de red, en segundos| No|
@@ -277,6 +278,8 @@ El archivo de configuración es un archivo de texto, en la codificación del ent
 **Nota:** Cuando no se especifica una opción `--configfile`, el archivo de configuración predeterminado únicamente se utiliza en la modalidad interactiva y en mandatos config. Para utilización no interactiva de otros mandatos, debe designar de forma explícita el archivo de configuración si desea utilizar uno. 
 
 > **Importante:** La contraseña se almacena en un formato enmascarado que la oculta de una visualización accidental. Sin embargo, este enmascaramiento no proporciona seguridad.
+
+
 
 #### Opciones genéricas
 {: #generic-options }

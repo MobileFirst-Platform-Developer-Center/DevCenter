@@ -89,8 +89,8 @@ En todas las plataformas soportadas, puede utilizar propiedades de Java Naming a
 
 Las siguientes propiedades de JNDI son aplicables para la aplicación web para servicios de Application Center (**applicationcenter.war**).
 
-| Valores de la propiedad | Valor | Descripción | 
+| Valores de la propiedad| Valor| Descripción| 
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para formatear la salida JSON con espacios en blanco, para una lectura más sencilla en archivos de registro. | 
-| ibm.appcenter.logging.tosystemerror | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para imprimir todos los mensajes de registro del error de sistema en archivos de registro. Utilice la propiedad para activar el registro de forma global. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Este valor imprime todas las sentencias SQL generadas en los archivos de registro. | 
+| ibm.appcenter.logging.formatjson| true| De manera predeterminada, esta propiedad se establece en false. Establézcala en true para formatear la salida JSON con espacios en blanco, para una lectura más sencilla en archivos de registro.| 
+| ibm.appcenter.logging.tosystemerror| true| De manera predeterminada, esta propiedad se establece en false. Establézcala en true para imprimir todos los mensajes de registro del error de sistema en archivos de registro. Utilice la propiedad para activar el registro de forma global.| 
+| ibm.appcenter.openjpa.Log| DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE| Este valor imprime todas las sentencias SQL generadas en los archivos de registro.| 
