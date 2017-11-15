@@ -146,6 +146,8 @@ El mandato de interfaz de línea de mandatos (CLI) `mfpdev app register` primero
 > 3. Después de que se registre la aplicación, vaya al separador **Archivos de configuración** y copie o descargue el archivo **mfpclient.resw**.
 Siga las instrucciones en la pantalla para añadir el archivo al proyecto.
 
+
+
 ## Actualización de {{ site.data.keys.product_adj }} Native SDK
 {: #updating-the-mobilefirst-native-sdk }
 Para actualizar {{ site.data.keys.product_adj }} Native SDK con el último release, ejecute el siguiente mandato desde la carpeta raíz del proyecto Visual Studio en una ventana de **línea de mandatos**:

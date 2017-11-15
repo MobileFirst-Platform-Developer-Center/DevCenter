@@ -82,7 +82,7 @@ A efectos de realización de pruebas, establezca **Ámbitos permitidos** en `**`
     ![Imagen de configuración del cuerpo de Postman](Body_configuration.png)
 
 2.  Añada una `cabecera de autorización` mediante `Autenticación básica` con ID de cliente confidencial ("test") y secreto ("test").
-    > Para obtener información sobre los clientes confidenciales, consulte [Clientes confidenciales](../../authentication-and-security/confidential-clients).
+    > Para obtener más información sobre los clientes confidenciales, consulte [Clientes confidenciales](../../authentication-and-security/confidential-clients).
 
     ![Imagen de la configuración de la autorización de Postman](Authorization_configuration.png)
 
@@ -255,3 +255,4 @@ Puede ahora depurar el código Java normalmente como lo haría en una aplicació
     ![Imagen que muestra un adaptador que se está depurando](debugging.png)
 
 > Para obtener instrucciones de como utilizar IntelliJ para depurar adaptadores Java, consulte el artículo del blog [Utilización de IntelliJ para desarrollar adaptadores Java de MobileFirst]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters).
+

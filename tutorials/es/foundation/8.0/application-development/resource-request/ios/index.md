@@ -289,6 +289,7 @@ Siga el archivo README.md de ejemplo para obtener instrucciones.
 
 > Xcode 7 habilita [ATS (Application Transport Security)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) de forma predeterminada.
 Para completar la guía de aprendizaje inhabilite ATS ([pulse aquí para obtener más información](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+
 >   1. En Xcode, pulse con el botón derecho del ratón sobre **archivo [proyecto]/info.plist → Abrir como → Código fuente**
 >   2. Pegue lo siguiente:
 

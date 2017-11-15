@@ -27,6 +27,8 @@ Para utilizar una biblioteca Java existente, añada el archivo JAR como una depe
 Para añadir código Java personalizado al proyecto, añada una carpeta denominada **java** a la carpeta **src/main** en su proyecto de adaptador y coloque en ella su paquete. En el ejemplo de esta guía de aprendizaje se utiliza un paquete `com.sample.customcode` y un archivo de clase Java denominado `Calculator.java`.    
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** El nombre del paquete debe empezar con `com`, `org` o `net`.
+
+
 Adición de métodos a su clase de Java.   
 A continuación se muestran ejemplos de un método estático (que no precisa una nueva instancia) y un método de instancia: 
 

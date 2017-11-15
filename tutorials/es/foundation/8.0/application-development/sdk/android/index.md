@@ -186,6 +186,8 @@ El mandato de interfaz de línea de mandatos `mfpdev app register` se conecta pr
 > 3. Después de que se registre la aplicación, vaya al separador **Archivos de configuración** y copie o descargue el archivo **mfpclient.properties**.
 Siga las instrucciones en la pantalla para añadir el archivo al proyecto.
 
+
+
 ### Creación de una instancia de WLClient 
 {: #creating-a-wlclient-instance }
 Antes de utilizar las API de {{ site.data.keys.product_adj }}, cree una instancia de `WLClient`:

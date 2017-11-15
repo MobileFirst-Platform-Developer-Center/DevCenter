@@ -41,6 +41,8 @@ Los plugins de MobileFirst dan soporte a las siguientes versiones de plataforma 
 
 > **Nota:** La funcionalidad de **compartición de la cadena de claves** es obligatoria al ejecutar aplicaciones iOS en el simulador de iOS al utilizar Xcode 8. Necesitará habilitar esta funcionalidad de forma manual antes de compilar el proyecto Xcode.
 
+
+
 ## Componentes de Cordova SDK
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
@@ -86,6 +88,8 @@ Para obtener más información, consulte [Habilitación de OpenSSL para Cordova 
 - Lea las guías de aprendizaje [
 Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/development/mobilefirst) y [Configuración del entorno de desarrollo de Cordova](../../../installation-configuration/development/cordova).
 
+- Para cordova-windows, debe instalarse una versión de Visual C++ que sea compatible con las versiones de Visual Studio y .NET instaladas en la máquina.
+- En el caso de Windows Phone SDK 8.0 y Visual Studio Tools for Universal Windows Apps, asegúrese de que las aplicaciones cordova-windows creadas tengan todas las bibliotecas de soporte necesarias.
 
 ## Adición de {{ site.data.keys.product }} Cordova SDK
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -97,6 +101,8 @@ Antes de empezar, asegúrese de que {{ site.data.keys.mf_server }} está en ejec
 Si está utilizando un servidor instalado localmente: Desde una ventana de **línea de mandatos**, vaya a la carpeta del servidor y ejecute el mandato: `./run.sh`.
 
 > **Nota:** Si está añadiendo el SDK a una aplicación existente de Cordova, el plugin sobrescribe el archivo `MainActivity.java` en Android y el archivo `Main.m` en iOS.
+
+
 ### Adición del SDK
 {: #adding-the-sdk }
 Considere la posibilidad de crear el proyecto mediante la **plantilla de aplicación** de {{ site.data.keys.product_adj }} Cordova.
@@ -121,6 +127,8 @@ Por ejemplo:
 
     > El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
 
+
+
 2. Cambie al directorio raíz del proyecto Cordova: `cd hello`
 
 3. Añada una o más plataformas soportadas al proyecto Cordova mediante mandatos de la interfaz de línea de mandatos (CLI) de Cordova: `cordova platform add ios|android|windows`.
@@ -132,6 +140,8 @@ Por ejemplo:
    ```
 
    > **Nota:** Puesto que la aplicación se configuró mediante la plantilla {{ site.data.keys.product_adj }}, el plugin principal de Cordova {{ site.data.keys.product_adj }} se añadió de forma automática con la plataforma en el paso 3.
+
+
 4. Prepare los recursos de la aplicación ejecutando el mandato `cordova prepare`:
 
 

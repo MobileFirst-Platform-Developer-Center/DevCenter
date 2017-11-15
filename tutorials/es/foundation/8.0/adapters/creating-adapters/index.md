@@ -32,7 +32,7 @@ Para aprender a utilizar los IDE de Eclipse o IntelliJ para crear y compilar ada
 * [Descarga y despliegue de adaptadores mediante {{ site.data.keys.mf_console }}](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
 * [Actualización del proyecto Maven del adaptador](#updating-the-adapter-maven-project)
 * [Funcionamiento fuera de línea](#working-offline)
-* [Guías de aprendizaje con las que continuar ](#tutorials-to-follow-next)
+* [Guías de aprendizaje con las que continuar](#tutorials-to-follow-next)
 
 ## Instalación de Maven
 {: #install-maven }
