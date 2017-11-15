@@ -283,6 +283,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 > すべてのプッシュ通知 REST API を確認するには、ユーザー資料の [REST API ランタイム・サービス](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)のトピックを参照してください。
 
+
+
 #### 通知ペイロード
 {: #notification-payload }
 要求には、以下のペイロード・プロパティーを含めることができます。
@@ -296,8 +298,8 @@ deviceIds| デバイス ID によってあらわされるデバイスの配列�
 notificationType| メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
 platforms| デバイス・プラットフォームの配列。これらのプラットフォームを実行しているデバイスが通知を受け取ります。サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
 tagNames| tagNames として指定されたタグの配列。これらのタグにサブスクライブされているデバイスが通知を受け取ります。タグ・ベース通知にはこのタイプのターゲットを使用します。
-userIds| 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。これはユニキャスト通知です。 
-phoneNumber| デバイスを登録し、通知を受け取るために使用される電話番号。これはユニキャスト通知です。 
+userIds| 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。これはユニキャスト通知です。
+phoneNumber| デバイスを登録し、通知を受け取るために使用される電話番号。これはユニキャスト通知です。
 
 **プッシュ通知ペイロード JSON サンプル**
 

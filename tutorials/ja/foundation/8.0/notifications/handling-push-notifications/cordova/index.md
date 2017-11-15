@@ -104,8 +104,9 @@ Android Studio では、以下の `activity` を `application` タグに追加�
 - 受け取ったプッシュ通知を処理するコールバック関数を登録します。
 
 ```javascript
-MFPPush.initialize(function(successResponse){
-alert("Successfully intialized");
+MFPPush.initialize (
+    function(successResponse) {
+        alert("Successfully intialized");
         MFPPush.registerNotificationsCallback(notificationReceived);
     },
     function(failureResponse) {
@@ -119,8 +120,9 @@ alert("Successfully intialized");
 デバイスがプッシュ通知をサポートするかどうかをチェックします。
 
 ```javascript
-MFPPush.isPushSupported (function(successResponse) {
-alert("Push Supported: " + successResponse);
+MFPPush.isPushSupported (
+    function(successResponse) {
+        alert("Push Supported: " + successResponse);
     },
     function(failureResponse) {
         alert("Failed to get push support status");
@@ -217,8 +219,9 @@ MFPPush.unsubscribe(
 プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```javascript
-MFPPush.unregisterDevice(function(successResponse) {
-alert("Unregistered successfully");
+MFPPush.unregisterDevice(
+    function(successResponse) {
+        alert("Unregistered successfully");
     },
     function() {
         alert("Failed to unregister");
@@ -232,7 +235,7 @@ alert("Unregistered successfully");
 
 ```javascript
 var notificationReceived = function(message) {
-alert(JSON.stringify(message));
+    alert(JSON.stringify(message));
 };
 ```
 

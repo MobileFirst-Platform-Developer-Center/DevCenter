@@ -37,6 +37,8 @@ MobileFirst プラグインでサポートされる Cordova プラットフォ�
 
 > **注:** Xcode 8 を使用する場合、iOS シミュレーターでの iOS アプリケーションの実行中は、**キーチェーン共有**機能が必須です。Xcode プロジェクトをビルドする前に、この機能を手動で有効にする必要があります。
 
+
+
 ## Cordova SDK コンポーネント
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
@@ -71,6 +73,8 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 - [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 - {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
 - [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Cordova 開発環境のセットアップ](../../../installation-configuration/development/cordova)の両チュートリアルを読む。
+- cordova-windows の場合、マシンにインストールされている Visual Studio と .NET のバージョンと互換性のある Visual C++ のバージョンがインストールされている必要があります。
+- Universal Windows アプリケーションの Windows Phone SDK 8.0 および Visual Studio Tools の場合、作成された cordova-windows アプリケーションが必要なすべてのサポート・ライブラリーを持つようにしてください。
 
 ## {{ site.data.keys.product }} Cordova SDK の追加
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -81,6 +85,8 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 > **注:** SDK を既存の Cordova アプリケーションに追加すると、プラグインによって、Android 用の `MainActivity.java` ファイルと iOS 用の `Main.m` ファイルが上書きされます。
 
+
+
 ### SDK の追加
 {: #adding-the-sdk }
 {{ site.data.keys.product_adj }} Cordova **アプリケーション・テンプレート**を使用することによってプロジェクトを作成することを検討します。テンプレートを使用すると、{{ site.data.keys.product_adj }} 固有の必須プラグイン・エントリーが Cordova プロジェクトの **config.xml** ファイルに追加され、{{ site.data.keys.product_adj }} 固有の、使用準備の整った **index.js** ファイル ({{ site.data.keys.product_adj }} アプリケーション開発用に調整されている) が提供されます。
@@ -88,7 +94,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 #### 新規アプリケーション
 {: #new-application }
 1. 次のコマンドで Cordova プロジェクトを作成します。`cordova create projectName applicationId applicationName --template cordova-template-mfp`  
-例えば、次のとおりです。
+   例えば、次のとおりです。
 
    ```bash
    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
@@ -98,28 +104,31 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
      - 「HelloWorld」は、アプリケーションの名前です。
      - --template を指定すると、{{ site.data.keys.product_adj }} 固有の追加によってアプリケーションが変更されます。
 
-    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{ site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。)
+    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{ site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。) 
 
 2. `cd hello` コマンドで、ディレクトリーを Cordova プロジェクトのルートに変更します。
 
 3. 次の Cordova CLI コマンドを使用して、サポートされているプラットフォームを 1 つ以上 Cordova プロジェクトに追加します。`cordova platform add ios|android|windows` 例えば、次のとおりです。
 
    ```bash
-cordova platform add ios```
+   cordova platform add ios
+   ```
 
    > **注:** このアプリケーションは {{ site.data.keys.product_adj }} テンプレートを使用して構成されたため、ステップ 3 でプラットフォームが追加されたときに {{ site.data.keys.product_adj }} のコア Cordova プラグインが自動的に追加されます。
 
 4. 次のように `cordova prepare コマンド`を実行することで、アプリケーション・リソースを準備します。
 
    ```bash
-cordova prepare```
+   cordova prepare
+   ```
 
 #### アプリケーションの終了
 {: #existing-application }
 1. 既存の Cordova プロジェクトのルートに移動し、次のように {{ site.data.keys.product_adj }} コア Cordova プラグインを追加します。
 
    ```bash
-cordova plugin add cordova-plugin-mfp```
+   cordova plugin add cordova-plugin-mfp
+   ```
 
 2. **www\js** フォルダーに移動し、**index.js** ファイルを選択します。
 
@@ -313,7 +322,8 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
 {{ site.data.keys.mf_cli }} を使用して次のコマンドを実行することで、上記の設定を編集できます。
 
 ```bash
-mfpdev app config```
+mfpdev app config
+```
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }

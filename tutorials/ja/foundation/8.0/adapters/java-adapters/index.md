@@ -47,7 +47,8 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+
+	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
 </mfp:adapter>
@@ -226,6 +227,7 @@ public class JavaAdapterResource {
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**重要:** アダプター実装内で `javax.ws.rs.*` または `javax.servlet.*` からクラスへの静的参照を使用する場合、以下のいずれかのオプションを使用して必ず **RuntimeDelegate** を構成する必要があります。
+
 *	Liberty `jvm.options` で `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
 または
 *	システム・プロパティーまたは JVM カスタム・プロパティー `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します

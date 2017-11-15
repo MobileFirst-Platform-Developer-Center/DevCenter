@@ -26,7 +26,7 @@ IBM インストールは、IBM Installation Manager と呼ばれる IBM 製品�
 
 > **重要:** 必ず IBM Installation Manager V1.8.4 以降を使用してください。製品のポストインストール操作に Java 7 が必要なため、古いバージョンの Installation Manager は {{ site.data.keys.product }} {{ site.data.keys.product_version }} をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
 
-  {{ site.data.keys.mf_server }} インストーラーは、{{ site.data.keys.mf_server }} コンポーネント、およびオプションで {{ site.data.keys.mf_app_center_full }} をアプリケーション・サーバーにデプロイするために必要なすべてのツールおよびライブラリーをユーザーのコンピューターにコピーします。
+{{ site.data.keys.mf_server }} インストーラーは、{{ site.data.keys.mf_server }} コンポーネント、およびオプションで {{ site.data.keys.mf_app_center_full }} をアプリケーション・サーバーにデプロイするために必要なすべてのツールおよびライブラリーをユーザーのコンピューターにコピーします。
 
 テスト・サーバーまたは実動サーバーをインストールする場合、次の **{{ site.data.keys.mf_server }} のインストールについてのチュートリアル**を使用して開始すると、シンプルなインストールを実行して、{{ site.data.keys.mf_server }} のインストールについて学習することができます。ご使用の特定の環境を対象としたインストールの準備について詳しくは、[実稼働環境用の {{ site.data.keys.mf_server }} のインストール](production)を参照してください。
 

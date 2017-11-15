@@ -52,8 +52,7 @@ JSONStore ドキュメントは、自動的に生成される ID (`_id`) と JSO
 **単一のドキュメント**  
 
 ```javascript
-var doc = { _id: 1, json: {name: 'carlos', age: 99} };
-```
+var doc = { _id: 1, json: {name: 'carlos', age: 99} };```
 
 **ドキュメント配列**
 
@@ -109,10 +108,10 @@ var searchFields = {
 };
 
 var myObject = {
-    people : [
-        {name: 'carlos', age: 99},
+    people : [ 
+        {name: 'carlos', age: 99}, 
         {name: 'tim', age: 100}
-    ]
+    ] 
 };
 ```
 
@@ -124,14 +123,12 @@ var myObject = {
 **`carlos` と一致する `name` のドキュメントを検索**
 
 ```javascript
-var query1 = {name: 'carlos'};
-```
+var query1 = {name: 'carlos'};```
 
 **`carlos` と一致する `name` で、`99` と一致する `age` のドキュメントを検索**
 
 ```javascript
-var query2 = {name: 'carlos', age: 99};
-```
+var query2 = {name: 'carlos', age: 99};```
 
 ### 照会部分
 {: #query-parts }
@@ -165,7 +162,7 @@ JSONStore は、LocalStorage、Indexed DB、Cordova Storage API、Cordova File A
 * アプリケーションがデバイスから除去された。
 * データを除去するメソッドのいずれかが呼び出された。
 
-## 複数ユーザー・サポート
+## 複数ユーザー・サポート	
 {: #multiple-user-support }
 JSONStore では、単一の {{ site.data.keys.product_adj }} アプリケーションで異なるコレクションを含む複数のストアを作成できます。
 
@@ -219,7 +216,7 @@ JSONStore は、すべてのプラットフォームで SQLCipher を使用し�
    ```bash
    C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
    ```
-
+    
 3. このファイルをご使用の {{ site.data.keys.product_adj }} アプリケーションにコピーして置換します。
 
    ```bash
@@ -325,9 +322,9 @@ JSONStore 用のネイティブ iOS API を使用すると、すべての操作�
 {: #java }
 JSONStore 用のネイティブ Android API を使用すると、すべての操作がメイン・スレッドに対して実行されます。振る舞いを非同期にするには、スレッドを作成するか、スレッド・プールを使用する必要があります。すべてのストア操作はスレッド・セーフです。
 
-## 分析
+## 分析 
 {: #analytics }
-JSONStore に関する重要な分析情報を収集することができます。
+JSONStore に関する重要な分析情報を収集することができます。 
 
 ### ファイル情報
 {: #file-information }
@@ -432,7 +429,7 @@ var input = {
 ```javascript
 var adapter = 'people';
 var procedure = 'getPeople';
-
+ 
 var resource = new WLResourceRequest('/adapters' + '/' + adapter + '/' + procedure, WLResourceRequest.GET);
 resource.send()
 .then(function (responseFromAdapter) {
@@ -463,32 +460,27 @@ change API がデータといくつかのオプションを取ります。
 これらの検索フィールドは、入力データの一部です。既にコレクション内部にあるドキュメントを見つけるのに使用されます。例えば、置き換え基準として以下を選択したとします。
 
 ```javascript
-['id', 'ssn']
-```
+['id', 'ssn']```
 
 この場合、以下の配列が入力データとして渡されます。
 
 ```javascript
-[{id: 1, ssn: '111-22-3333', name: 'Carlos'}]
-```
+[{id: 1, ssn: '111-22-3333', name: 'Carlos'}]```
 
 さらに `people` コレクションには既に以下のドキュメントが入っています。
 
 ```javascript
-{_id: 1,json: {id: 1, ssn: '111-22-3333', name: 'Carlitos'}}
-```
+{_id: 1,json: {id: 1, ssn: '111-22-3333', name: 'Carlitos'}}```
 
 `change` 操作では、以下の照会と正確に一致するドキュメントが検索されます。
 
 ```javascript
-{id: 1, ssn: '111-22-3333'}
-```
+{id: 1, ssn: '111-22-3333'}```
 
 次に `change` 操作で入力データによる置き換えが実行され、コレクションに以下のものが含まれます。
 
 ```javascript
-{_id: 1, json: {id:1, ssn: '111-22-3333', name: 'Carlos'}}
-```
+{_id: 1, json: {id:1, ssn: '111-22-3333', name: 'Carlos'}}```
 
 名前が `Carlitos` から `Carlos` に変更されました。複数のドキュメントが置き換え基準に一致した場合、一致するすべてのドキュメントが対応する入力データに置き換えられます。
 
@@ -523,26 +515,22 @@ change API が置き換えまたは追加されるドキュメントをダーテ
 他の API を使用して、保管されたローカル・ドキュメントに対する変更をトラッキングすることができます。操作が実行されるコレクションに対するアクセサーを常に取得します。
 
 ```javascript
-var accessor = WL.JSONStore.get('people')
-```
+var accessor = WL.JSONStore.get('people')```
 
 そうすると、データ (JSON オブジェクトの配列) を追加し、そのデータにダーティーまたは非ダーティーのマークが付けられるようにしたいかどうかを決定することができます。一般的に、外部ソースから変更を取得する場合は、markDirty フラグを false に設定します。次に、データをローカルに追加する場合は、このフラグを true に設定します。
 
 ```javascript
-accessor.add(data, {markDirty: true})
-```
+accessor.add(data, {markDirty: true})```
 
 また、ドキュメントを置き換え、代替物のあるそのドキュメントをダーティーまたは非ダーティーとしてマーク付けすることを選択することができます。
 
 ```javascript
-accessor.replace(doc, {markDirty: true})
-```
+accessor.replace(doc, {markDirty: true})```
 
 同様に、ドキュメントを除去し、その除去をダーティーまたは非ダーティーとしてマーク付けすることを選択することができます。除去されてダーティーのマークが付けられたドキュメントは、find API を使用したときに表示されません。ただし、コレクションからドキュメントを物理的に除去する `markClean` API を使用するまでは、これらのドキュメントはコレクション内部に残っています。ドキュメントがダーティーとしてマーク付けされていない場合、そのドキュメントはコレクションから物理的に除去されます。
 
 ```javascript
-accessor.remove(doc, {markDirty: true})
-```
+accessor.remove(doc, {markDirty: true})```
 
 ### プッシュ
 {: #push }
@@ -601,12 +589,12 @@ var accessor = WL.JSONStore.get('people');
 .then(function (dirtyDocs) {
   var adapter = 'people',
   procedure = 'updatePeople';
-
+ 
   var resource = new WLResourceRequest('/adapters/' + adapter + '/' + procedure, WLResourceRequest.GET)
   resource.setQueryParameter('params', [dirtyDocs]);
   return resource.send();
 })
-
+ 
 .then(function (responseFromAdapter) {
   // ...
 })
@@ -641,44 +629,44 @@ var arrayOfPromises = [];
 var adapter = 'people';
 var procedure = 'addPerson';
 var resource;
-
+ 
 while (len--) {
-
+ 
   var currentDirtyDoc = dirtyDocs[len];
-
+ 
   switch (currentDirtyDoc._operation) {
-
+ 
     case 'add':
     case 'store':
-
+ 
     resource = new WLResourceRequest('/adapters/people/addPerson', WLResourceRequest.GET);
     resource.setQueryParameter('params', [currentDirtyDoc]);
-
+ 
       arrayOfPromises.push(resource.send());
-
+ 
     break;
-
+ 
     case 'replace':
     case 'refresh':
-
+ 
     resource = new WLResourceRequest('/adapters/people/replacePerson', WLResourceRequest.GET);
     resource.setQueryParameter('params', [currentDirtyDoc]);
-
-
+ 
+ 
       arrayOfPromises.push(resource.send());
-
+ 
     break;
-
+ 
     case 'remove':
     case 'erase':
-
+ 
     resource = new WLResourceRequest('/adapters/people/removePerson', WLResourceRequest.GET);
     resource.setQueryParameter('params', [currentDirtyDoc]);
-
+ 
       arrayOfPromises.push(resource.send());
   }
 }
-
+ 
 $.when.apply(this, arrayOfPromises)
 .then(function () {
   var len = arguments.length;
@@ -728,4 +716,4 @@ $.when.apply(this, arrayOfPromises)
 
 ## API 使用法
 {: #api-usage }
-プラットフォームを選択してください。
+プラットフォームを選択してください。 

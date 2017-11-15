@@ -28,8 +28,7 @@ downloads:
 1. Xcode プロジェクトのルートにある既存の `podfile` に以下を追加します。
 
    ```xml
-pod 'IBMMobileFirstPlatformFoundationJSONStore'
-```
+pod 'IBMMobileFirstPlatformFoundationJSONStore'```
 
 2. **コマンド・ライン**・ウィンドウで、Xcode プロジェクトのルートにナビゲートし、コマンド `pod install` を実行します。このアクションにはしばらく時間がかかる場合があることに注意してください。
 
@@ -43,8 +42,7 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundationJSONStore
-```
+import IBMMobileFirstPlatformFoundationJSONStore```
 
 ## 基本的な使用法
 {: #basic-usage }
@@ -55,7 +53,7 @@ import IBMMobileFirstPlatformFoundationJSONStore
 コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。  
 永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
-初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください**。
+初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -149,7 +147,7 @@ do  {
 ### 削除
 {: #remove }
 ドキュメントをコレクションから削除するには、`removeWithIds` を使用します。
-`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください**。
+`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```swift
 let collectionName:String = "people"
@@ -184,7 +182,7 @@ do  {
 * すべてのドキュメント
 * すべてのコレクション
 * すべてのストア - このチュートリアル後半の**『複数ユーザー・サポート』**を参照してください。
-* すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください**。
+* すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
 ```swift
 do  {

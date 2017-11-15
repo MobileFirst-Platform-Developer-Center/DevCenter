@@ -131,8 +131,8 @@ public PinCodeConfig(Properties properties) {
     }
 
     //Check that the PIN code is numeric. Triggers warning.
-                try {
-int i = Integer.parseInt(pinCode);
+    try {
+        int i = Integer.parseInt(pinCode);
     }
     catch(NumberFormatException nfe) {
         addMessage(warnings,"pinCode","PIN code contains non-numeric characters");

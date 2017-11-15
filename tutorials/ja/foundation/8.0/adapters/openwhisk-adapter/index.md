@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: OpenWhisk アダプター
-breadcrumb_title: OpenWhisk アダプター
+title: Cloud Functions アダプター
+breadcrumb_title: Cloud Functions アダプター
 relevantTo: [ios,android,cordova]
 weight: 10
 ---
@@ -9,21 +9,23 @@ weight: 10
 ## 概説
 {: #overview }
 
-OpenWhisk は、拡張が容易なサーバーレス環境でコードを実行できるようにする Function-as-a-Service (FaaS) プラットフォームです。OpenWhisk プラットフォームのユース・ケースの 1 つには、サーバーレス・モバイル・バックエンド・コードの開発と実行があります。Bluemix 上の OpenWhisk プラットフォームについて詳しくは、[ここ](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south)を参照してください。
+> OpenWhisk は、Cloud Functions と呼ばれるようになりました。
 
-{{ site.data.keys.product }} アダプターを使用して、すべての必要なサーバー・サイド・ロジックを実行し、バックエンド・システムから情報を取得して、クライアント・アプリケーションおよびクラウド・サービスに転送します。{{ site.data.keys.product }} では、OpenWhisk 機能用のアダプターが提供されるようになりました。
+IBM Cloud Functions は、拡張が容易なサーバーレス環境でコードを実行できるようにする Function-as-a-Service (FaaS) プラットフォームです。Cloud Functions プラットフォームのユース・ケースの 1 つには、サーバーレス・モバイル・バックエンド・コードの開発と実行があります。Bluemix 上の Cloud Functions プラットフォームについて詳しくは、[ここ](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south)を参照してください。
 
-##  OpenWhisk アダプター
-{: #openwhisk-adapter}
+{{ site.data.keys.product }} アダプターを使用して、すべての必要なサーバー・サイド・ロジックを実行し、バックエンド・システムから情報を取得して、クライアント・アプリケーションおよびクラウド・サービスに転送します。{{ site.data.keys.product }} では、Cloud Functions 用のアダプターが提供されるようになりました。
 
-[iFix 8.0.0.0-MFPF-IF20170710-1834](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/11/8-0-ifix-release/) 以降の {{ site.data.keys.product_full }} では、OpenWhisk アダプターが用意されています。このアダプターは、Mobile Foundation コンソールの**ダウンロード・センター**からダウンロードしてデプロイできます。
+##  Cloud Functions アダプター
+{: #cloud-functions-adapter}
 
-アダプターをダウンロードしてデプロイした後で、OpenWhisk に接続するように構成する必要があります。
+[iFix 8.0.0.0-MFPF-IF20170710-1834](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/11/8-0-ifix-release/) 以降の {{ site.data.keys.product_full }} では、Cloud Functions アダプターが用意されています。このアダプターは、Mobile Foundation コンソールの**ダウンロード・センター**からダウンロードしてデプロイできます。
 
-### OpenWhisk に接続するようにアダプターを構成
-{: configure-adapter-connect-openwhisk}
+アダプターをダウンロードしてデプロイした後で、Cloud Functions に接続するように構成する必要があります。
 
-OpenWhisk に接続するようにアダプターを構成するには、**「アダプター構成 (Adapter Configuration)」**ページに移動して、OpenWhisk の許可キーの_**ユーザー名**_ と_**パスワード**_ を指定します。OpenWhisk の_**ユーザー名**_ と_**パスワード**_ を入手するには、以下の OpenWhisk CLI コマンドを実行します。
+### Cloud Functions に接続するようにアダプターを構成
+{: configure-adapter-connect-cloud-functions}
+
+Cloud Functions に接続するようにアダプターを構成するには、**「アダプター構成 (Adapter Configuration)」**ページに移動して、Cloud Functions の許可キーの_**ユーザー名**_ と_**パスワード**_ を指定します。Cloud Functions の_**ユーザー名**_ と_**パスワード**_ を入手するには、以下の CLI コマンドを実行します。
 
 ```bash
 ./wsk property get --auth KEY
@@ -33,6 +35,6 @@ OpenWhisk に接続するようにアダプターを構成するには、**「�
 
 _**username:password**_
 
-前述のとおりに入手した_**ユーザー名**_ と_**パスワード**_ を OpenWhisk アダプターの構成ページで指定して、構成を保存する必要があります。これで、クライアント・アプリケーションは、OpenWhisk バックエンド・コードを呼び出すためにアダプター API を呼び出すことができるようになります。
+前述のとおりに入手した_**ユーザー名**_ と_**パスワード**_ を Cloud Functions アダプターの構成ページで指定して、構成を保存する必要があります。これで、クライアント・アプリケーションは、Cloud Functions バックエンド・コードを呼び出すためにアダプター API を呼び出すことができるようになります。
 
->OpenWhisk アダプターを変更するために、この [Github リポジトリー](https://github.com/mfpdev/mfp-extension-adapters)からアダプターのソース・コードをダウンロードできます。
+>Cloud Functions アダプターを変更するために、この [Github リポジトリー](https://github.com/mfpdev/mfp-extension-adapters)からアダプターのソース・コードをダウンロードできます。

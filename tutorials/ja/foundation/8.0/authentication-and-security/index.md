@@ -162,6 +162,8 @@ Pragma: no-cache
 
 > セキュリティー検査について詳しくは、[セキュリティー検査の作成](creating-a-security-check/)チュートリアルを参照してください。また、チャレンジ・ハンドラーについては、[資格情報の検証](credentials-validation)チュートリアルを参照してください。
 
+
+
 ### スコープ
 {: #scopes }
 
@@ -218,6 +220,8 @@ scope = `access-restricted deletePrivilege`
 
 > 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
 
+
+
 ## リソースの保護
 {: #protecting-resources }
 
@@ -251,6 +255,8 @@ OAuth モデルでは、保護リソースは、アクセス・トークンを�
 
 > 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
 
+
+
 ### アダプター・リソースの保護
 {: #protecting-adapter-resources }
 
@@ -259,6 +265,8 @@ OAuth モデルでは、保護リソースは、アクセス・トークンを�
 デフォルトの {{ site.data.keys.product_adj }} スコープは `RegisteredClient` です。これは、リソースにアクセスするためにアクセス・トークンを必要とし、そのリソース要求が {{ site.data.keys.mf_server }} に登録されたアプリケーションから出されたものであることを検証します。この保護は、[リソース保護を無効](#disabling-resource-protection)にした場合を除き常に適用されます。そのため、リソースのスコープを設定しない場合でも、リソースは引き続き保護されます。
 
 > <b>注:</b> `RegisteredClient` は、予約済みの {{ site.data.keys.product_adj }} キーワードです。カスタム・スコープ・エレメントやセキュリティー検査をこの名前で定義することはしないでください。
+
+
 
 #### Java アダプター・リソースの保護
 {: #protecting-java-adapter-resources }

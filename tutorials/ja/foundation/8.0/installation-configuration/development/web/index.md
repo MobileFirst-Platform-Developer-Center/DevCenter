@@ -68,6 +68,8 @@ Web アプリケーションのリソースを処理するには、これらが 
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** Web リソースを更新するたびに `mvn clean install` を実行する必要があります。
 
+
+
 ### アプリケーション・サーバーへの Maven webapp の追加
 {: #adding-the-maven-webapp-to-the-application-server }
 1. WebSphere Application Server の **server.xml ファイル**を編集します。  

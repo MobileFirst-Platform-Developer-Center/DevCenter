@@ -26,27 +26,39 @@ weight: 14
    > **注:** この別名による鍵ペアのアルゴリズムのタイプは、RSA でなければなりません。以下の説明は、**keytool** ユーティリティーを使用する場合に、アルゴリズムのタイプを RSA に設定する方法を示しています。
 
    鍵ストア・ファイルの作成には、サード・パーティー・ツールを使用できます。例えば、以下のコマンドで Java **keytool** ユーティリティーを実行することで、JKS 鍵ストア・ファイルを生成できます (ここで、`<keystore name>` は鍵ストアの名前、`<alias name>` は選択した別名です)。
-    
+
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
    ```
-    
+
    以下のサンプル・コマンドでは、`my_alias` という別名で JKS ファイル **my_company.keystore** を生成します。
-    
+
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
-    
+
    ユーティリティーによって、鍵ストア・ファイルと別名のパスワードなど、さまざまな入力パラメーターの指定が求められます。
 
    > **注:** 必ず `-keyalg RSA` オプションを設定して、生成後の鍵アルゴリズムのタイプを、デフォルトの DSA ではなく RSA に設定してください。
 
-
-
    アダプターとバックエンド・サーバーの間の相互 SSL 認証に鍵ストアを使用するには、{{ site.data.keys.product }} SSL クライアント ID の別名も鍵ストアに追加します。これを行うは、{{ site.data.keys.mf_server }} ID の別名で鍵ストア・ファイルを作成する場合と同じ方法を使用できますが、代わりに、SSL クライアント ID の別名とパスワードを指定します。
 
-2. 以下のようにして、鍵ストアを使用するように {{ site.data.keys.mf_server }} を構成します。{{ site.data.keys.mf_console }} ナビゲーション・サイドバーで、**「ランタイム設定」**を選択して**「鍵ストア」**タブを選択します。このタブの手順に従って、ユーザー定義の {{ site.data.keys.mf_server }} 鍵ストアを構成します。このステップでは、鍵ストア・ファイルをアップロードし、そのタイプを指示して、 鍵ストア・パスワード、{{ site.data.keys.mf_server }} ID 別名の名前、および別名パスワードを指定します。 
+2. 鍵ストアを使用するように {{ site.data.keys.mf_server }} を構成します。
+   次の手順に従って、鍵ストアを使用するように {{ site.data.keys.mf_server }} を構成します。
 
-正常に構成されると、状況が「ユーザー定義」に変わります。それ以外の場合、エラーが表示され、状況は「デフォルト」のままになります。
+      * **JavaScript アダプター**
+        {{ site.data.keys.mf_console }} ナビゲーション・サイドバーで、**「ランタイム設定」**を選択し、次に**「鍵ストア」**タブを選択します。このタブの手順に従って、ユーザー定義の {{ site.data.keys.mf_server }} 鍵ストアを構成します。このステップでは、鍵ストア・ファイルをアップロードし、そのタイプを指示して、 鍵ストア・パスワード、{{ site.data.keys.mf_server }} ID 別名の名前、および別名パスワードを指定します。
+        正常に構成されると、**「状況」**が*「ユーザー定義」*に変わり、それ以外の場合はエラーが表示され、状況は*「デフォルト」*のままになります。
+        SSL クライアント ID 別名 (使用された場合) とそのパスワードは、`<connectionPolicy>` エレメントの `<sslCertificateAlias>` サブエレメントおよび `<sslCertificatePassword>` サブエレメント内で、関連アダプターの記述子ファイルに構成されます。[HTTP アダプター connectionPolicy エレメント](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)を参照してください。
 
-SSL クライアント ID 別名 (使用された場合) とそのパスワードは、`<connectionPolicy>` エレメントの `<sslCertificateAlias>` サブエレメントおよび `<sslCertificatePassword>` サブエレメント内で、関連アダプターの記述子ファイルに構成されます。[HTTP アダプター connectionPolicy エレメント](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)を参照してください。
+      * **Java アダプター**
+        Java アダプターの相互 SSL 認証を構成するには、サーバーの鍵ストアを更新する必要があります。これは、以下の手順に従って行うことができます。
+
+        * 鍵ストア・ファイルを `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security` にコピーします。
+
+        * `server.xml` ファイル `<ServerInstallation>/mfp-server/usr/servers/mfp/server.xml` を編集します。
+
+        * 適切なファイル名、パスワード、およびタイプを使用して、鍵ストア構成を更新します。
+        `<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
+
+Bluemix 上の {{ site.data.keys.mf_bm_short}} サービス使用してデプロイする場合は、サーバーをデプロイする前に、**「詳細設定」**の下の鍵ストア・ファイルをアップロードできます。
