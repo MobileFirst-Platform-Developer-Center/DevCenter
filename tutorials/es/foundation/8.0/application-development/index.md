@@ -75,6 +75,8 @@ Por ejemplo, las siguientes aplicaciones se consideran que son aplicaciones de i
 
 > **Nota:** La funcionalidad de **compartición de la cadena de claves** es obligatoria al ejecutar aplicaciones iOS en el simulador de iOS al utilizar Xcode 8. Necesitará habilitar esta funcionalidad de forma manual antes de compilar el proyecto Xcode.
 
+
+
 ### Configuración de la aplicación
 {: #application-configuration }
 Como se ha mencionado, una aplicación se configura tanto en el lado del cliente como en el lado del servidor.
@@ -113,6 +115,8 @@ También puede utilizar estos métodos para automatizar la configuración de {{ 
 
 > **Recuerde: ** La configuración del servidor se puede modificar incluso cuando {{ site.data.keys.mf_server }} está en ejecución y recibiendo tráfico de las aplicaciones.
 No es necesario detener el servidor para cambiar la configuración del servidor para una aplicación.
+
+
 En un servidor de producción, la versión de la aplicación normalmente se corresponde con la versión de la aplicación publicada en la tienda de aplicaciones.
 Algunos elementos de configuración como, por ejemplo, la configuración para la autenticidad de la aplicación, son exclusivos para la aplicación publicada en la tienda.
 
@@ -137,6 +141,8 @@ Necesitará utilizar {{ site.data.keys.mf_server }} durante el ciclo de vida de 
 
 > Existe un servidor configurado de forma previa para que lo pueda utilizar al desarrollar sus aplicaciones.
 Para obtener información sobre {{ site.data.keys.mf_server }} y cómo utilizarlo mientras desarrolla sus aplicaciones, consulte [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../installation-configuration/development).
+
+
 
 {{ site.data.keys.mf_server }} consta de los siguientes componentes.
 Todos estos componentes también se incluyen en {{ site.data.keys.mf_server }}.

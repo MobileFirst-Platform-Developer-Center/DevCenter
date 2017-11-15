@@ -82,6 +82,8 @@ Después, la aplicación comprueba si hay actualizaciones en cada solicitud a {{
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Nota:** después de que se realice una actualización de Direct Update, se comprueba de nuevo al cabo de 60 minutos.
 
+
+
 Después de una actualización de Direct Update, la aplicación deja de utilizar los recursos web empaquetados de forma previa.
 En su lugar se utilizarán los recursos web descargados desde el recinto de seguridad de la aplicación.
 Si se borra la caché de la aplicación en el dispositivo, se utilizarán de nuevo los recursos web empaquetados originales.
@@ -342,8 +344,7 @@ Se visualiza un diálogo ofreciendo al usuario la opción de intentarlo de nuevo
 
 
 Cree una variable global para almacenar el contexto de la actualización directa de forma que lo puede utilizar más tarde cuando el proceso de actualización directa falle.
-Por ejemplo:
-
+Por ejemplo: 
 
 ```javascript
 var savedDirectUpdateContext;
@@ -351,8 +352,7 @@ var savedDirectUpdateContext;
 
 Implemente un manejador de desafío de actualización directa.
 Aquí se guarda el contexto de la actualización directa.
-Por ejemplo:
-
+Por ejemplo: 
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
@@ -372,8 +372,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 Cree una función que inicie el proceso de actualización directa utilizando el contexto de la actualización directa.
-Por ejemplo:
-
+Por ejemplo: 
 
 ```javascript
 restartDirectUpdate = function () {
@@ -384,8 +383,7 @@ restartDirectUpdate = function () {
 Implemente `directUpdateCustomListener`.
 Añada una comprobación de estado en el método `onFinish`.
 Si el estado empieza con "FAILURE", se abre un diálogo modal con la opción de intentarlo de nuevo.
-Por ejemplo:
-
+Por ejemplo: 
 
 ```javascript
 var directUpdateCustomListener = {
@@ -419,6 +417,8 @@ Esto reduce el tiempo de descarga, conserva el ancho de banda y mejora la experi
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Una **actualización delta** solo es posible si los recursos web de la aplicación del cliente están una versión por debajo de versión de la aplicación actualmente desplegada en el servidor.
 Las aplicaciones de cliente que están más de una versión por detrás de la aplicación desplegada actualmente (es decir, la aplicación se desplegó en el servidor al menos dos veces desde que la aplicación de cliente se actualizó), recibirán una **actualización completa** (es decir, se descargarán y actualizarán todos los recursos web).
+
+
 ## Direct Update seguro
 {: #secure-direct-update }
 Inhabilitado de forma predeterminada, Direct Update seguro impide que un atacante modifique los recursos web que se transmiten desde {{ site.data.keys.mf_server }} (o desde una CDN (Content Delivery Network) a la aplicación de cliente.

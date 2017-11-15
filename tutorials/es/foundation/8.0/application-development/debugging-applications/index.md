@@ -22,6 +22,8 @@ En esta guía de aprendizaje se exploran varios enfoques para la depuración de 
 > Aprenda más sobre la depuración y realización de pruebas de Cordova en el sitio web de Cordova:
 [Depuración de aplicaciones](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
+
+
 #### Ir a:
 {: #jump-to }
 
@@ -54,6 +56,8 @@ mfpdev app preview -p <platform>
 Su aplicación podría no comportarse de la forma esperada durante la vista previa.
 Por ejemplo, omite las características de seguridad utilizando un cliente confidencial, de forma que no se desencadenan los manejadores de retos de seguridad.
 
+ 
+
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
 
@@ -65,6 +69,8 @@ Por ejemplo, omite las características de seguridad utilizando un cliente confi
 ![MBS](simple.png)
 
 > Aprenda más sobre {{ site.data.keys.mf_cli }} en la guía de aprendizaje de [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
+
+
 ## Depuración con Ripple
 {: #debugging-with-ripple }
 Apache Ripple es un simulador de entornos móviles basado en la web para depurar aplicaciones web móviles.
@@ -97,6 +103,8 @@ ripple emulate
 ![Emulador Ripple](Ripple2.png)
 
 > Encontrará más información sobre Apache Ripple en la [página de Apache Ripple](http://ripple.incubator.apache.org/) o en la [página de npm ripple-emulator](https://www.npmjs.com/package/ripple-emulator).
+
+
 
 ## Depuración con iOS Remote Web Inspector
 {: #debugging-with-ios-remote-web-inspector }

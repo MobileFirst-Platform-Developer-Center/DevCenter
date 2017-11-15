@@ -25,6 +25,8 @@ En esta guía de aprendizaje aprenderá a instalar el `mfpdev` CLI (Command Line
 
 
 > Para obtener más información con relación a la integración de SDK en aplicaciones Cordova y nativas, consulte las guías de aprendizaje en la categoría de [Adición de {{ site.data.keys.product }} SDK](../../application-development/sdk/).
+
+
 #### Ir a 
 {: #jump-to }
 * [Requisitos previos](#prerequisites)
@@ -41,7 +43,7 @@ En esta guía de aprendizaje aprenderá a instalar el `mfpdev` CLI (Command Line
 {: #prerequisites }
 {{ site.data.keys.mf_cli }} está disponible como un paquete NPM en el [registro NPM](https://www.npmjs.com/).  
 
-Asegúrese de que **node.js** está instalado en el entorno de desarrollo con el propósito de instalar paquetes NPM.
+Asegúrese de que **node.js** y **npm** estén instalados en el entorno de desarrollo con el propósito de instalar paquetes NPM.
   
 Siga las instrucciones de instalación en [nodejs.org](https://nodejs.org) para instalar node.js.
 
@@ -49,10 +51,10 @@ Para confirmar que node.js está correctamente instalado, ejecute el mandato `no
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **Nota:** La versión de node.js mínima soportada es la 4.2.3
+> **Nota:** La versión de **node.js** mínima soportada es **4.2.3**. Además, con los paquetes en rápida evolución de **node** y **npm**, la CLI de MobileFirst puede no ser totalmente funcional con todas las versiones disponibles de **node** y **npm** incluidas las versiones más recientes. Asegúrese de que **node** tenga la versión **6.11.1** y **npm** tenga la versión **3.10.10**, para el funcionamiento adecuado de la CLI.
 
 ## Instalación de {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
@@ -320,12 +322,15 @@ Las configuraciones disponibles son:
 * El tiempo de ejecución y la dirección de servidor que se registrarán
 
     > **Ejemplo de caso de uso:** con el propósito de registrar una aplicación para {{ site.data.keys.mf_server }} con una determinada dirección, pero también para que la aplicación se conecte a una dirección de servidor diferente, por ejemplo un dispositivo DataPower:
+
     >
     > 1. Ejecute `mfpdev app register` para registrar la aplicación en la dirección de {{ site.data.keys.mf_server }} esperada.
 
     > 2. Ejecute `mfpdev app config` y cambie el valor de la propiedad **server** para que coincida con la dirección del dispositivo DataPower. 
 También puede ejecutar el mandato en la **modalidad directa**:
 `mfpdev app config server http(s)://server-ip-or-host:port`.
+
+
 
 * Estableciendo una clave pública para la característica de autenticidad de Direct Update
 * Estableciendo un idioma predeterminado de aplicación (el valor predeterminado es inglés (en))

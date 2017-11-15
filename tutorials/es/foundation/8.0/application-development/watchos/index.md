@@ -50,6 +50,8 @@ Para configurar el entorno de desarrollo para watchOS, cree el proyecto Xcode, a
 ![infraestructuras enlazadas de watchOS](watchOSlinkedframeworks.jpg)
 
         > **Nota:** WatchOS 2 precisa de bitcode. Desde Xcode 7 **Opciones de compilación** se establece con **Habilitar bitcode sí** (separador **Valores de compilación**, sección **Opciones de compilación**).
+
+
 3. Registre tanto la aplicación principal como la extensión WatchKit en el servidor.
 Ejecute `mfpdev app register` para cada ID de paquete (o registre desde {{ site.data.keys.mf_console }}):
 

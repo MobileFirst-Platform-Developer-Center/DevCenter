@@ -15,6 +15,8 @@ En esta guía de aprendizaje se crea y compila un adaptador en el IDE de Eclipse
 
 
 > Para obtener las instrucciones para utilizar IntelliJ consulte el artículo del blog de [Utilización de IntelliJ para desarrollar adaptadores Java de MobileFirst]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters).
+
+
 **Requisitos previos:
 **
 
@@ -87,6 +89,8 @@ Un proyecto de adaptador se puede compilar y desplegar mediante mandatos de lín
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Sugerencia:** También es posible mejorar Eclipse para facilitar el paso de despliegue integrando una ventana de **línea de mandatos** mediante un plugin, creando un entorno de desarrollo coherente.
 Desde esta ventana se pueden ejecutar mandatos de {{ site.data.keys.mf_cli }} o Maven.
+
+
 ### Compilación de un adaptador
 {: #building-an-adapter }
 

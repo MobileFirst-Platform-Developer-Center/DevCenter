@@ -13,6 +13,8 @@ Esta guía de aprendizaje proporciona fragmentos de código con el propósito de
 **Requisito previo:** Asegúrese de leer la [visión general de recopilación de registro del lado del cliente](../).
 
 > **Nota:** La utilización de `OCLogger` en Swift precisa la creación de una clase de extensión `OCLogger` (esta clase puede ser un archivo Swift distinto, o una extensión de su archivo Swift actual):
+
+
 ```swift
 extension OCLogger {
     //Log methods with no metadata
@@ -88,6 +90,8 @@ Los registros se envían al servidor con una llamada de envío explícita, o med
 
 
 > **Nota:** La habilitación de la captura del registro en niveles de detalle elevados puede afectar al consumo de la CPU del dispositivo, el espacio del sistema de archivos y el tamaño de la carga útil cuando el cliente envía registros a través de la red.
+
+
 Para inhabilitar la captura de registro:
 
 **Objective-C**
@@ -111,6 +115,8 @@ Si los registros no se envían antes de que alcancen el tamaño máximo, el arch
 
 > **Nota:** Adopte el siguiente patrón al recopilar datos de registro.
 El envío de datos de forma periódica garantiza que está viendo sus datos de registro en tiempo casi real en {{ site.data.keys.mf_analytics_console }}.
+
+
 **Objective-C**
 
 ```objc
@@ -219,7 +225,6 @@ A modo de ejemplo de captura de registros únicamente cuando el nivel es `ERROR`
 3. **Opcional:** Controle los filtros de manera remota recuperando un perfil de configuración de servidor.
 
 ### Swift
-
 {: #swift }
 1. Utilizando la extensión explicada en la Visión general, cree una instancia del registrador para su paquete.
 
