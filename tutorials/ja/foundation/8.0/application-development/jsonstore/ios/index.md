@@ -28,7 +28,8 @@ downloads:
 1. Xcode プロジェクトのルートにある既存の `podfile` に以下を追加します。
 
    ```xml
-pod 'IBMMobileFirstPlatformFoundationJSONStore'```
+    pod 'IBMMobileFirstPlatformFoundationJSONStore'
+   ```
 
 2. **コマンド・ライン**・ウィンドウで、Xcode プロジェクトのルートにナビゲートし、コマンド `pod install` を実行します。このアクションにはしばらく時間がかかる場合があることに注意してください。
 
@@ -42,7 +43,8 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundationJSONStore```
+import IBMMobileFirstPlatformFoundationJSONStore
+```
 
 ## 基本的な使用法
 {: #basic-usage }
