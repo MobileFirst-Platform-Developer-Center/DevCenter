@@ -11,6 +11,8 @@ weight: 7
 
 > **注:** 単一のホスト・マシンに {{ site.data.keys.mf_analytics_server }} の複数のインスタンスをインストールしないでください。クラスターの管理について詳しくは、Elasticsearch の資料を参照してください。
 
+
+
 analytics WAR ファイルおよび EAR ファイルは、MobileFirst Server インストールと共に格納されます。詳しくは、MobileFirst Server の配布構造を参照してください。WAR ファイルをデプロイする場合、`http://<hostname>:<port>/analytics/console` で MobileFirst Analytics Console を使用できます (例えば、`http://localhost:9080/analytics/console`)。
 
 * {{ site.data.keys.mf_analytics_server }} のインストール方法について詳しくは、[{{ site.data.keys.mf_analytics_server }} インストール・ガイド](installation)を参照してください。

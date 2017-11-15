@@ -17,6 +17,8 @@ weight: 10
 
 > Cordova のデバッグおよびテストについて詳しくは、Cordova Web サイト [アプリケーションのデバッグ](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)を参照してください。
 
+
+
 #### ジャンプ先:
 {: #jump-to }
 
@@ -43,6 +45,8 @@ mfpdev app preview -p <platform>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** プレビュー・フィーチャーにはいくつかの既知の制限があります。アプリケーションは、プレビュー中は予想どおりに動作しない場合があります。例えば、機密クライアントを使用してセキュリティー・フィーチャーを迂回します。したがって、チャレンジ・ハンドラーはトリガーされません。
 
+ 
+
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
 
@@ -54,6 +58,8 @@ mfpdev app preview -p <platform>
 ![MBS](simple.png)
 
 > {{ site.data.keys.mf_cli }} については、[『{{ site.data.keys.mf_cli }} を使用した{{ site.data.keys.product_adj }} 成果物の管理』](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを参照してください。
+
+
 
 ## Ripple によるデバッグ
 {: #debugging-with-ripple }
@@ -82,6 +88,8 @@ ripple emulate
 ![Ripple エミュレーター](Ripple2.png)
 
 > Apache Ripple™ の詳細情報は、[Apache Ripple ページ](http://ripple.incubator.apache.org/)または [npm ripple-emulator ページ](https://www.npmjs.com/package/ripple-emulator)にあります。
+
+
 
 ## iOS Remote Web Inspector によるデバッグ
 {: #debugging-with-ios-remote-web-inspector }

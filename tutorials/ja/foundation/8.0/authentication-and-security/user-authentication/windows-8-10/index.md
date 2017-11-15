@@ -105,7 +105,7 @@ public override void HandleSuccess(JObject identity)
         localSettings.Values["useridentity"] = identity.GetValue("user");
 
     } catch (Exception e) {
-Debug.WriteLine(e.StackTrace);
+        Debug.WriteLine(e.StackTrace);
     }
 }
 ```
