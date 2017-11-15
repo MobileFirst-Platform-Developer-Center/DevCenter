@@ -19,7 +19,9 @@ Die Protokollerfassung ist standardmäßig
 aktiviert. Sie speichert Protokolle im Client und kann programmgesteuert aktiviert oder inaktiviert werden. Protokolle werden mit einem expliziten Sendeaufruf oder automatisch an den Server gesendet. 
 
 > **Hinweis:** Die Aktivierung der Protokollerfassung auf einer Ebene mit großer Ausführlichkeit kann sich
-auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. Inaktivieren Sie die Protokollerfassung wie folgt: 
+auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. 
+
+Inaktivieren Sie die Protokollerfassung wie folgt: 
 
 ```java
 Logger.setCapture(false);
@@ -101,6 +103,8 @@ oder über das Abrufen von Konfigurationsdateien vom Server. In der
 (für alle Logger-Instanzen) oder für bestimmte Pakete festgelegt werden. 
 
 > Informationen zum KOnfigurieren der Filter in der {{ site.data.keys.mf_analytics_console }} finden Sie unter [Protokollfilter konfigurieren](../../../analytics/console/log-filters/).
+
+
 
 Damit der Client die auf dem Server festgelegten
 prioritären Konfigurationswerte abruft, muss die Methode

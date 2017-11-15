@@ -66,9 +66,7 @@ In diesem Lernprogramm werden wir uns mit der Installation des Plug-ins THyM und
 In diesem Abschnitt geht es um die Ertellung eines neuen Cordova-Projekts unter Verwendung von THyM.
 
 1. Klicken Sie in Eclipse auf **Datei → Neu → Andere...**
-2. Grenzen Sie die Optionen ein, indem Sie nach "Cordova" suchen.
-Wählen Sie unter **Mobile** den Eintrag **Hybrid Mobile (Cordova) Application Project** aus und klicken Sie auf
-**Weiter**. 
+2. Grenzen Sie die Optionen ein, indem Sie nach "Cordova" suchen. Wählen Sie unter **Mobile** den Eintrag **Hybrid Mobile (Cordova) Application Project** aus und klicken Sie auf **Next**.
 
 	![Assistent für neues Cordova-Projekt](New_cordova_wizard.png)
 

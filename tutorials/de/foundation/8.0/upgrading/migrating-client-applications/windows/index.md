@@ -104,7 +104,9 @@ Microsoft Visual C++ 2013 Runtime-Paket für Windows oder das Microsoft
 Visual C++ 2013 Runtime-Paket für Windows Phone als Referenz zu Ihrer App hinzufügen. Klicken Sie dazu
 in
 Visual Studio mit der rechten Maustaste auf die Referenzen Ihres nativen Projekts und führen Sie
-abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus:         * Windows-Desktops und -Tablets: Klicken Sie mit der rechten Maustaste auf
+abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus: 
+
+        * Windows-Desktops und -Tablets: Klicken Sie mit der rechten Maustaste auf
 **Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows → OK** aus.
         * Windows Phone 8 Universal: Klicken Sie mit der rechten Maustaste auf
 **Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → OK** aus.
@@ -156,28 +158,28 @@ gibt es eine Reihe von Änderungen am Windows-SDK, durch die Änderungen an Apps
 
 | Kategorie | Beschreibung | Empfohlene Aktion |
 |----------|-------------|--------------------|
-| `ChallengeHandler`  | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler`, `isCustomResponse()`  | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
-| `ChallengeHandler.submitAdapterAuthentication` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. |
-| `WLAuthorizationManager` | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`. |
-| `WLChallengeHandler` | Verwenden Sie `SecurityCheckChallengeHandler`. |
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  |	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`.|
-| `WLClient` | 	Verwenden Sie stattdessen `WorklightClient`. |
-| `WLErrorCode` | 	Nicht unterstützt |
-| `WLFailResponse` | 	Verwenden Sie stattdessen `WorklightResponse`. |
-| `WLResponse` | Verwenden Sie stattdessen `WorklightResponse`. |
-| `WLProcedureInvocationData` | Verwenden Sie stattdessen `WorklightProcedureInvocationData`. |
-| `WLProcedureInvocationFailResponse` | 	Nicht unterstützt |
-| `WLProcedureInvocationResult` | 	Nicht unterstützt |
-| `WLRequestOptions` | 	Nicht unterstützt |
-| `WLResourceRequest` | 	Verwenden Sie stattdessen `WorklightResourceRequest`. |
+| `ChallengeHandler` | | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler`, `isCustomResponse()` | | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
+| `ChallengeHandler.submitAdapterAuthentication` | | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLAuthorizationManager` | | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`. |
+| `WLChallengeHandler` | | Verwenden Sie `SecurityCheckChallengeHandler`. |
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | |	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLClient` | |	Verwenden Sie stattdessen `WorklightClient`. |
+| `WLErrorCode` | Nicht unterstützt | |
+| `WLFailResponse` | |	Verwenden Sie stattdessen `WorklightResponse`. |
+| `WLResponse` | | Verwenden Sie stattdessen `WorklightResponse`. |
+| `WLProcedureInvocationData` | | Verwenden Sie stattdessen `WorklightProcedureInvocationData`. |
+| `WLProcedureInvocationFailResponse` | Nicht unterstützt | |
+| `WLProcedureInvocationResult` | Nicht unterstützt | |
+| `WLRequestOptions` | Nicht unterstützt | |
+| `WLResourceRequest` | |	Verwenden Sie stattdessen `WorklightResourceRequest`. |
 
 #### Nicht weiter verwendete Windows-C#-API-Schnittstellen
 {: #deprecated-windows-c-api-interfaces }
 
 | Kategorie | Beschreibung | Empfohlene Aktion |
 |----------|-------------|--------------------|
-| `WLHttpResponseListener` | Nicht unterstützt |
-| `WLResponseListener` | Die Antwort ist als ein `WorklightResponse`-Objekt verfügbar. |
-| `WLAuthorizationPersistencePolicy` | Nicht unterstützt |
+| `WLHttpResponseListener` | Nicht unterstützt | |
+| `WLResponseListener` | Die Antwort ist als ein `WorklightResponse`-Objekt verfügbar. | |
+| `WLAuthorizationPersistencePolicy` | Nicht unterstützt | |

@@ -59,6 +59,8 @@ WL.JSONStore.init(collections).then(function (collections) {
 **Sicherheit**, **Unterstützung für mehrere Benutzer**
 und **{{ site.data.keys.product_adj }}-Adapter integrieren**.
 
+
+
 ### Get
 {: #get }
 Mit `get` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `init` aufrufen, bevor Sie "get" aufrufen. Andernfalls ist das Ergebnis von `get` undefiniert. 

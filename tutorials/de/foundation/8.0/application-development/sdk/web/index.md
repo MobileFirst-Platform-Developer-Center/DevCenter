@@ -87,6 +87,8 @@ require(['mfp'], function(WL) {
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Wenn Sie Analytics-Unterstützung hinzufügen  möchten, platzieren Sie die Verweise auf die Datei **ibmmfpfanalytics.js** **vor** dem Verweis auf die Datei **ibmmfpf.js**.
 
+
+
 ## {{ site.data.keys.product_adj }}-Web-SDK initialisieren
 {: #initializing-the-mobilefirst-web-sdk }
 Initialisieren Sie das Web-SDK der {{ site.data.keys.product }}, indem Sie in der Haupt-JavaScript-Datei Ihrer Webanwendung das **Kontextstammverzeichnis** und die **Anwendungs-ID** angeben: 

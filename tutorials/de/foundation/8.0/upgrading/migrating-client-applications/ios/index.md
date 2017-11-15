@@ -102,8 +102,7 @@ With Libraries** die erforderliche Hauptframeworkdatei **IBMMobileFirstPlatformF
 zentrale MobileFirst-Funktionen bereit. Analog dazu können Sie [weitere, für optionale Funktionen benötigte Frameworks](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk) hinzufügen.
 Frameworks für iOS).
 
-4. Ähnlich wie im vorherigen Schritt müssen Sie im Abschnitt **Link Binary With
-Libraries** der Registerkarte **Build Phases** die folgenden Ressourcen mit Ihrem Projekt verbunden werden. 
+4. Ähnlich wie im vorherigen Schritt müssen Sie im Abschnitt **Link Binary With Libraries** der Registerkarte **Build Phases** die folgenden Ressourcen mit Ihrem Projekt verbunden werden.
     * SystemConfiguration.framework
     * MobileCoreServices.framework
     * Security.framework
@@ -116,17 +115,15 @@ Libraries** der Registerkarte **Build Phases** die folgenden Ressourcen mit Ihre
     * Objective-C:
 
       ```objc
-#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
-```
+      #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
+      ```
     * Swift:
 
       ```swift
-import IBMMobileFirstPlatformFoundation
-```
+      import IBMMobileFirstPlatformFoundation
+      ```
 
-Ihre Anwendung ist jetzt aktualisiert und kann mit dem iOS-SDK von
-{{ site.data.keys.product }} Version 8.0
-verwendet werden. 
+Ihre Anwendung ist jetzt aktualisiert und kann mit dem iOS-SDK von {{ site.data.keys.product }} Version 8.0 verwendet werden. 
 
 #### Nächste Schritte
 {: #what-to-do-next }
@@ -195,21 +192,19 @@ ab. Führen Sie die folgenden Schritte aus, um das SDK abzurufen:
     * Öffnen Sie in einem Texteditor die Podfile, die sich im Stammverzeichnis
 des Projekts befindet. 
     * Setzen Sie den vorhandenen Inhalt auf Kommentar oder entfernen Sie ihn. 
-    * Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen, einschließlich der iOS-Version: 
+    * Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen, einschließlich der iOS-Version:
 
       ```xml
-   use_frameworks!
-
-   platform :ios, 9.0
+      use_frameworks!
+      platform :ios, 9.0
       pod 'IBMMobileFirstPlatformFoundation'
       ```
 
     * Geben Sie weitere Pods aus der obigen Liste in der Datei an, wenn Ihre App die Funktionalität dieser Pods benötigt. Wenn Ihre App beispielsweise OpenSSL verwendet, könnte die **Podfile** etwa wie folgt aussehen:
 
       ```xml
-   use_frameworks!
-
-   platform :ios, 9.0
+      use_frameworks!
+      platform :ios, 9.0
       pod 'IBMMobileFirstPlatformFoundation'
       pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
       ```
@@ -239,17 +234,16 @@ Anschließend generiert er das Pods-Projekt und integriert das {{ site.data.keys
    **Objective-C**
 
    ```objc
-#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
-```
+   #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
+   ```
 
    **Swift**
 
    ```swift
-import IBMMobileFirstPlatformFoundation
-```
+   import IBMMobileFirstPlatformFoundation
+   ```
 
    Wenn Sie Push oder JSONStore verwenden, müssen Sie einen unabhängigen Import aufnehmen.
-
 
    #### Push
    {: #push }
@@ -316,7 +310,7 @@ In der folgenden Tabelle sind die iOS-API-Änderungen aufgelistet.
 | API-Element | Migrationspfad |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} | Die Geoortung wurde entfernt. Verwenden Sie für die Geoortung native iOS-Optionen oder Pakete von anderen Anbietern.|
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz. |
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz |
 | `WL.Client.deleteUserPref(key, options)` | Kein Ersatz. Sie können einen Adapter und die API [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) verwenden, um Benutzervorgaben zu verwalten. |
 | `[WLClient getRequiredAccessTokenScopeFromStatus]` | Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
 | `[WLClient login:withDelegate:]` | Verwenden Sie [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:). |

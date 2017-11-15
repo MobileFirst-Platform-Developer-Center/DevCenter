@@ -137,7 +137,7 @@ Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:
 >
 > 1. Laden Sie die {{ site.data.keys.mf_console }}.  
 > 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
-> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.resw** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.resw** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen. 
 
 ## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }

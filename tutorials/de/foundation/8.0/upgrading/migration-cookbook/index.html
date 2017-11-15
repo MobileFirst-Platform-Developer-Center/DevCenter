@@ -66,7 +66,7 @@ Implementierung und Konfiguation von Sicherheit und Authentifizierung und zu vie
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">Adapter<br/>umstellen</h3>
+                        <h3 class="migratingAdapters no-anchor">Adapter<br/>migrieren</h3>
 
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Voraussetzungen für das<br/>Apache-Maven-Setup</a></li>
@@ -545,11 +545,8 @@ die in der Podfile und in den Abhängigkeiten angegeben sind. Anschließend gene
 {{ site.data.keys.product_adj }}-SDK in das Clientprojekt. </li>
                                           </ul>
                                        </li>
-                                       <li>Öffnen Sie Ihre Datei <b>Projektname.xcworkspace</b> in
-Xcode. Geben Sie dazu in einer Befehlszeile <b>open Projektname.xcworkspace</b> ein. Die Datei befindet sich in demselben Verzeichnis wie die Datei
-Projektname.xcodeproj. Sie können auch im Finder doppelt auf die Datei klicken. </li>
-                                       <li>Ersetzen Sie alle vorhandenen MobileFirst-Importe in Headern durch
-nur einen Eintrag im folgenden neuen Umbrella-Header: <br/>
+                                       <li>Öffnen Sie Ihre Datei <b>Projektname.xcworkspace</b> in Xcode. Geben Sie dazu in einer Befehlszeile <b>open Projektname.xcworkspace</b> ein. Die Datei befindet sich in demselben Verzeichnis wie die Datei Projektname.xcodeproj. Sie können auch im Finder doppelt auf die Datei klicken.</li>
+                                       <li>Ersetzen Sie alle vorhandenen MobileFirst-Importe in Headern durch nur einen Eintrag im folgenden neuen Umbrella-Header:<br/>
 
                                             <b>Objective-C:</b><br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
@@ -559,21 +556,19 @@ nur einen Eintrag im folgenden neuen Umbrella-Header: <br/>
                                        </li>
                                        <li>Fügen Sie auf der Registerkarte <b>Build Settings</b> unter <b>Other Linker Flags</b> am Anfang des Flags <b>-ObjC</b> <code>$(inherited)</code> hinzu. </li>
                                        <li>Wenn Sie Push-Benachrichtigungen oder JSONStore verwenden, müssen Sie einen unabhängigen Import aufnehmen.
-<br/><br/>
+                                            <br/><br/>
                                             <b>Push-Benachrichtigungen</b><br/>
-Objective-C:<br/>
+                                            Objective-C:<br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h&gt;</code>
                                             <br/><br/>
-Swift:
-<br/>
+                                            Swift:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationPush</code>
                                             <br/><br/>
                                             <b>JSONStore</b><br/>
-Objective-C:<br/>
+                                            Objective-C:<br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h&gt;</code>
                                             <br/><br/>
-Swift:
-<br/>
+                                            Swift:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
                                        </li>
                                     </ol>

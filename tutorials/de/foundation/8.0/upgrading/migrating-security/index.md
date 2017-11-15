@@ -68,6 +68,7 @@ in Version 8.0 für den Ressourcenschutz verwendet werden.
 > *  Die folgenden Anweisungen gelten für die Migration des Beispielressourcenadapters `AccountAdapter`. Den Beispieladapter `PinCodeAdapter` müssen Sie nicht migrieren, weil die mit diesem Adapter implementierte adapterbasierte Authentifizierung in Version 8.0 nicht mehr unterstützt wird. Im Schritt
 [Adapterbasiertes Authentifizierungsrealm mit PIN-Code ersetzen](#replacing-the-pin-code-adapter-based-authentication-realm) ist erläutert, wie
 der PIN-Code-Adapter aus Version 7.1 durch eine Sicherheitsüberprüfung der Version 8.0 mit vergleichbarem Schutz ersetzt wird.
+
 > *  Anweisungen für die Umstellung von Adaptern auf Version 8.0 finden Sie im [Migrations-Cookbook für Version 8.0](../migration-cookbook).
 
 Die Methoden von `AccountAdpter` im Beispiel aus Version 7.1 sind mit der Annotation
