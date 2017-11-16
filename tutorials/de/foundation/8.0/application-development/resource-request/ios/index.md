@@ -264,6 +264,7 @@ Anweisungen finden Sie in der Datei README.md zum Beispiel.
 {: #note-about-ios-9 }
 
 > Xcode 7 aktiviert standardmäßig [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14). Für das Lernprogramm müssen Sie ATS inaktivieren. ([Lesen Sie hier mehr](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).)
+
 >   1. Klicken Sie in Xcode mit der rechten Maustaste auf **[Projekt]/info.plist → Open As → Source Code**. 
 >   2. Fügen Sie Folgendes ein: 
 >

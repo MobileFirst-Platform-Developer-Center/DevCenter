@@ -93,6 +93,8 @@ Sie können den mobilen Client oder eine signierte Anwendung, die mit der Instal
 
 > **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).
 
+
+
 Die JNDI-Eigenschaft **ibm.appcenter.ios.plist.onetimeurl** der IBM Application-Center-Services steuert, ob bei Installation des mobilen Clients auf einem mobilen iOS-Gerät Einmal-URLs verwendet werden. Setzen Sie diese Eigenschaft auf "false", um die maximale Sicherheit zu gewährleisten. Wenn Sie diese Eigenschaft auf "false" setzen, müssen Benutzer ihre Berechtigungsnachweise bei Installation des mobilen Clients mehrfach angeben, einmal bei Auswahl des Clients und einmal bei Installation des Clients.
 
 Wenn Sie die Eigenschaft auf "true" setzen, geben Benutzer ihre Berechtigungsnachweise nur einmal ein. Eine temporäre Download-URL mit einem kryptografischen Hashwert wird generiert, wenn der Benutzer die Berechtigungsnachweise eingibt. Diese temporäre Download-URL ist für eine Stunde gültig und erfordert keine weitere Authentifizierung. Bei dieser Kompromisslösung sind Sicherheit und Ergonomie gleichermaßen berücksichtigt.
@@ -130,7 +132,7 @@ Die Installation des mobilen Clients auf einem iOS-Gerät erfolgt ganz ähnlich 
 5. Tippen Sie auf das Register **Installationsprogramme** und wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen.
 6. Tippen Sie auf **Installieren**, um den mobilen Client herunterzuladen.
 7. Geben Sie Ihre Berechtigungsnachweise ein, um die Downloader-Transaktion zu autorisieren.
-8. Tippen Sie zum Autorisieren des Downloads auf **Install**.
+8. Tippen Sie zum Autorisieren des Downloads auf **Installieren**.
 
     ![App-Installation bestätigen](ac_instal_client_ios_conf.jpg)
 
@@ -206,6 +208,8 @@ Sie können erst von Ihrem Unternehmen veröffentlichte Apps installieren, nachd
     Windows 8 Universal gibt keine Rückmeldung zur Installation der Anwendung.
 
 > **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. Unter "Anwendung auf einem Windows-Phone-Gerät installieren" finden Sie mögliche Fehlernachrichten.
+
+
 
 Nach Abschluss der Installation sollte die mobile Clientanwendung unter Windows Phone in Ihrer Anwendungsliste verfügbar sein.
 
@@ -406,6 +410,8 @@ Von der Ansicht **Details** aus können Sie eine Anwendungsversion auf Ihrem mob
 
 > **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).
 
+
+
 1. Tippen Sie in der Ansicht **Details** auf **Installieren**. Sie werden aufgefordert, das Herunterladen und die Installation der Anwendungsversion zu bestätigen.
 2. Tippen Sie auf **Installieren**, um das Herunterladen und die Installation der Anwendungsversion zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen.
 
@@ -454,7 +460,7 @@ In der Ansicht **Details** der ausgewählten Anwendung werden Informationen zu d
 
     ![Installation einer Unternehmensanwendung auf einem Windows-Phone-Gerät bestätigen oder abbrechen](ac_confirm_instal_app_wp.jpg)
 
-> **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen.
+> **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. 
 
 Folgende Fehlernachrichten können angezeigt werden:
 
@@ -462,7 +468,7 @@ Folgende Fehlernachrichten können angezeigt werden:
 
     Wahrscheinlich verwenden Sie eine nicht signierte Windows-Phone-Anwendungspaketdatei (.xap). Sie müssen Anwendungspaketdateien (.xap) signieren, bevor Sie sie im Application Center verwenden. Diese Nachricht kann auch angezeigt werden, wenn der Microsoft-Server nicht reagiert und die Signatur der Unternehmensanwendung nicht überprüft werden kann. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen.
 
-* **Before you install this app, you need to add ... company account.**
+* **Bevor Sie diese App installieren, müssen Sie ein Unternehmenskonto hinzufügen.**
 
     Die Windows-Phone-Anwendungspaketdatei (.xap) ist signiert, aber das Gerät ist nicht für Unternehmensanwendungen registriert. Sie müssen zuerst das Anwendungsregistrierungstoken des Unternehmens auf dem Gerät installieren.
 
@@ -472,9 +478,12 @@ Folgende Fehlernachrichten können angezeigt werden:
 
 > **Hinweis:** Wenn ein Gerät mit mehreren Unternehmenskonten registriert ist, kann es sein, dass das Betriebssystem Windows Phone in der Nachricht **Möchten Sie "Anwendung" von "Firmenname" installieren?** das falsche Unternehmenskonto anzeigt. Das Application Center hat keine Kontrolle über diese Nachricht. Es handelt sich um ein Anzeigeproblem, das keinen Einfluss auf die Funktionalität hat.
 
+
+
 Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht.
 
 > **Tipp:** Der Installationsprozess funktioniert nicht, wenn das PFX-Zertifikat abgelaufen ist, mit dem die Anwendungspaketdatei (.xap) der zu installierenden Anwendung digital signiert wurde. Das Betriebssystem Windows Phone gibt einen Fehler mit **HRESULT 0x81030110** zurück. Wenn Sie das PFX-Zertifikat erneuern, müssen Sie mit diesem neuen Zertifikat nochmals alle entwickelten Anwendungen in Ihrem Application-Center-Katalog digital signieren.
+
 >
 Wenn Sie Ihr digitales PFX-Signaturzertifikat erneuern, müssen Sie auch das Registrierungstoken erneuern und in der Application-Center-Konsole implementieren. Geräte müssen ebenfalls mit diesem neuen Token erneut unter dem Unternehmenkonto registriert werden. Benutzer von Geräten, die mit einem abgelaufenen Token registriert wurden, können keine Anwendungen installieren. 
 
@@ -492,6 +501,8 @@ Die Installation von APPX-Paketen über das Application Center erfolgt mit einem
 Wenn Sie eine Windows-Store-Anwendung entwickeln, generiert Microsoft Visual Studio automatisch ein selbst signiertes Zertifikat, um damit das Anwendungspaket digital zu signieren. Sie müssen dieses Zertifikat auf dem "lokalen Computer" in den Store "Vertrauenswürdige Stammzertifizierungsstellen" importieren, damit Sie die Anwendung später über das Application Center installieren können. Der Import des Zertifikats ist ein manueller Prozess. 
 
 > **Hinweis:** Die manuelle Installation eines Zertifikats ist nur in der Entwicklungsphase erforderlich, weil für das Signieren von APPX-Code ein von Microsoft Visual Studio generiertes, selbst signiertes Zertifikat notwendig ist. In der Produktion muss Ihre APPX-Datei mit einem echten Zertifikat signiert werden, das Sie bei einer anerkannten Stammzertifizierungsstelle erworben haben.
+
+
 
 Im ersten Schritt dieser Prozedur wird Ihnen mitgeteilt, wie das Zertifikat installiert wird, bevor Sie die Anwendung über das Application Center installieren.
 

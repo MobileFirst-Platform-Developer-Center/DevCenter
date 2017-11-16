@@ -72,7 +72,9 @@ die Einheit nicht auf
 "seconds" setzen. Je kürzer das Zeitintervall ist, desto größer ist die Last für den Server. Ein in Sekunden (seconds) angegebenes
 Intervall ist nur für Test- und Bewertungszwecke gedacht.
 Wenn die Zeit beispielsweise auf zehn Sekunden gesetzt ist, werden Push-Nachrichten fast sofort
-gesendet.Unter [JNDI-Eigenschaften für das Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) sind alle Eigenschaften aufgeführt, die Sie festlegen können.
+gesendet.
+
+Unter [JNDI-Eigenschaften für das Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) sind alle Eigenschaften aufgeführt, die Sie festlegen können.
 
 ### Beispiel für Apache-Tomcat-Server
 {: tomcat }
@@ -117,6 +119,8 @@ Application-Center-Clients erstellen, die nicht von der GCM-API abhängig ist.
 In einer solchen Version des
 Application-Center-Clients funktionieren keine Push-Benachrichtigungen. Einzelheiten finden Sie unter
 [Nicht von der GCM-API abhängige Version des mobilen Clients erstellen](#no-gcm).
+
+
 
 1. Wenn Sie kein entsprechendes Google-Konto haben,
 rufen Sie die Seite [Google-Konto erstellen](https://mail.google.com/mail/signup) auf und erstellen Sie ein Konto für den Application-Center-Client.

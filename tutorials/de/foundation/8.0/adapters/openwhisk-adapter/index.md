@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: OpenWhisk-Adapter
-breadcrumb_title: OpenWhisk-Adapter
+title: Cloud-Functions-Adapter
+breadcrumb_title: Cloud-Functions-Adapter
 relevantTo: [ios,android,cordova]
 weight: 10
 ---
@@ -9,21 +9,23 @@ weight: 10
 ## Übersicht
 {: #overview }
 
-OpenWhisk ist eine FaaS-Plattform (Function-as-a-Service), die die Ausführung von Code in einer serverlosen und skalierbaren Umgebung ermöglicht. Eines der Einsatzgebiete der Plattform OpenWhisk ist die Entwicklung und Ausführung von serverlosem Back-End-Code für mobile Geräte. [Hier](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south) erfahren Sie mehr über die Plattform OpenWhisk für Bluemix.
+> OpenWhisk hat jetzt die Bezeichnung Cloud Functions.
 
-Mit MobileFirst-Foundation-Adaptern wird die notwendige serverseitige Logik ausgeführt. Adapter werden zudem verwendet, um Informationen für Clientanwendungen und Cloud-Services von Back-End-Systemen abzurufen. Die {{ site.data.keys.product }} stellt jetzt einen Adapter für OpenWhisk-Funktionen bereit. 
+IBM Cloud Functions ist eine FaaS-Plattform (Function-as-a-Service), die die Ausführung von Code in einer serverlosen und skalierbaren Umgebung ermöglicht. Eines der Einsatzgebiete der Cloud-Functions-Plattform ist die Entwicklung und Ausführung von serverlosem Back-End-Code für mobile Geräte. [Hier](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south) erfahren Sie mehr über die Cloud-Functions-Plattform für Bluemix.
 
-##  OpenWhisk-Adapter
-{: #openwhisk-adapter}
+Mit MobileFirst-Foundation-Adaptern wird die notwendige serverseitige Logik ausgeführt. Adapter werden zudem verwendet, um Informationen für Clientanwendungen und Cloud-Services von Back-End-Systemen abzurufen. Die {{ site.data.keys.product }} stellt jetzt einen Adapter für Cloud Functions bereit. 
 
-Die {{ site.data.keys.product_full }} stellt mit dem [iFix 8.0.0.0-MFPF-IF20170710-1834](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/11/8-0-ifix-release/) einen OpenWhisk-Adapter bereit. Dieser Adapter kann in der Mobile-Foundation-Konsole über das **Download-Center** heruntergeladen und implementiert werden. 
+##  Cloud-Functions-Adapter
+{: #cloud-functions-adapter}
 
-Nachdem Sie den Adapter heruntergeladen und implementiert haben, müssen Sie ihn so konfigurieren, dass er eine Verbindung zu OpenWhisk herstellt.
+Die {{ site.data.keys.product_full }} stellt mit dem [iFix 8.0.0.0-MFPF-IF20170710-1834](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/11/8-0-ifix-release/) einen Cloud-Functions-Adapter bereit. Dieser Adapter kann in der Mobile-Foundation-Konsole über das **Download-Center** heruntergeladen und implementiert werden. 
 
-### Adapter für Verbindung zu OpenWhisk konfigurieren
-{: configure-adapter-connect-openwhisk}
+Nachdem Sie den Adapter heruntergeladen und implementiert haben, müssen Sie ihn so konfigurieren, dass er eine Verbindung zu Cloud Funcions herstellt.
 
-Wenn Sie den Adapter für eine Verbindung zu OpenWhisk konfigurieren möchten, öffnen Sie die Seite **Adapter Configuration** und tragen Sie aus dem OpenWhisk-Autorisierungsschlüssel die Werte für _**username**_ und _**password**_ ein. Die Werte für _**username**_ und _**password**_ erhalten Sie, indem Sie den folgenden OpenWhisk-CLI-Befehl ausführen: 
+### Adapter für Verbindung zu Cloud Functions konfigurieren
+{: configure-adapter-connect-cloud-functions}
+
+Wenn Sie den Adapter für eine Verbindung zu Cloud Functions konfigurieren möchten, öffnen Sie die Seite **Adapter Configuration** und tragen Sie aus dem Cloud-Functions-Autorisierungsschlüssel die Werte für _**username**_ und _**password**_ ein. Die Werte für _**username**_ und _**password**_ erhalten Sie, indem Sie den folgenden Cloud-Functions-CLI-Befehl ausführen: 
 
 ```bash
 ./wsk property get --auth KEY
@@ -33,6 +35,6 @@ Der obige Befehl gibt den Autorisierungsschlüssel zurück. Der Schlüssel enth�
 
 _**username:password**_
 
-Die mit dem obigen Befehl abgerufenen Werte für _**username**_ und _**password**_ müssen auf der Konfigurationsseite für den OpenWhisk-Adapter angegeben werden. Speichern Sie dann die Konfiguration. Die Client-Apps können jetzt die Adapter-API aufrufen, um den OpenWhisk-Back-End-Code aufzurufen. 
+Die mit dem obigen Befehl abgerufenen Werte für _**username**_ und _**password**_ müssen auf der Konfigurationsseite für den Cloud-Functions-Adapter angegeben werden. Speichern Sie dann die Konfiguration. Die Client-Apps können jetzt die Adapter-API aufrufen, um den Cloud-Functions-Back-End-Code aufzurufen. 
 
->Falls Sie den Quellcode des OpenWhisk-Adapters modifizieren möchten, können Sie ihn aus diesem [Github-Repository](https://github.com/mfpdev/mfp-extension-adapters) herunterladen.
+>Falls Sie den Quellcode des Cloud-Functions-Adapters modifizieren möchten, können Sie ihn aus diesem [Github-Repository](https://github.com/mfpdev/mfp-extension-adapters) herunterladen.

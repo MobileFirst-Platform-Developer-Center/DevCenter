@@ -13,7 +13,7 @@ Die serverseitige Entwicklung stellt die Tools und Funktionen bereit, die erford
 
 <form role="search"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
-        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Suchen..." name="q">
+        <input style="width: 206px" id="search-input" type="text" aria-label="search field" class="form-control" placeholder="Suchen nach..." name="q">
     </div>
 </form>
 

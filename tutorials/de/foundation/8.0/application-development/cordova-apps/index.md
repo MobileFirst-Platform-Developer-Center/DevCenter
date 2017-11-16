@@ -14,9 +14,14 @@ weight: 4
 für die plattformübergreifende Entwicklung unter Vermeidung der nativen Entwicklungssprachen der einzelnen mobilen Plattformen
 ermöglicht. Anwendungen werden innerhalb von Wrappern für die jeweilige Plattform ausgeführt und stützen sich auf standardkonforme API-Bindungen, um auf Sensoren, Daten und den Netzstatus der einzelnen Geräte zuzugreifen.
 
+
+
 Die {{ site.data.keys.product_full }} stelt ein aus mehreren Cordova-Plug-ins bestehendes SDK bereit. Informieren Sie sich darüber, wie das [SDK der {{ site.data.keys.product }} zu Cordova-Anwendungen hinzugefügt wird](../../application-development/sdk/cordova).
 
 > **Hinweis:** Archiv- bzw. IPA-Dateien, die für die Übergabe von iOS-Apps an einen Store oder für die Validierung von iOS-Apps mit Test Flight oder iTunes Connect generiert werden, können zu Laufzeitfehlern oder zu einem Laufzeitabsturz führen. Weitere Informationen hierzu finden Sie im Blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
+
+
+
 #### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
@@ -57,7 +62,8 @@ Beispiel-Plug-ins:
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
->**Hinweis:** Die Modifikation des Standardverhaltens einer Cordova-App (z. B. durch Außerkraftsetzen des Verhaltens der Schaltfläche "Back") beim Hinzufügen des {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt, kann dazu führen, dass die App bei Übergabe an den Google Play Store zurückgewiesen wird. Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.
+>**Hinweis:** Die Modifikation des Standardverhaltens einer Cordova-App (z. B. durch Außerkraftsetzen des Verhaltens der Schaltfläche "Back") beim Hinzufügen des {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt, kann dazu führen, dass die App bei Übergabe an den Google Play Store zurückgewiesen wird. 
+Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.
 
 
 ### Frameworks anderer Anbieter
@@ -215,7 +221,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 
 ## Cordova-Anwendungssicherheit
 {: #cordova-application-security }
-Die {{ site.data.keys.product_full }} stellt Sicherheitsfunktionen bereit, die Ihnen helfen, Ihre Cordova-Apps zu schützen.
+Die {{ site.data.keys.product_full }} stellt Sicherheitsfunktionen bereit, die Ihnen helfen, Ihre Cordova-Apps zu schützen. 
 
 Ein großer Teil des Inhalts einer plattformübergreifenden App kann einfacher als bei einer nativen App
 von einer unberechtigten Person modifiziert werden. Da viele allgemeine Inhalte einer plattformübergreifenden App in einem lesbaren Format vorliegen, stellt die IBM MobileFirst Foundation Features bereit, die ein höheres Maß an Sicherheit für Ihre plattformübergreifenden Cordova-Apps ermöglichen.
@@ -227,11 +233,11 @@ Verwenden Sie die folgenden Funktionen, um die Sicherheit für Ihre Cordova-Apps
 * [Webressourcen Ihrer Cordova-Pakete verschlüsseln](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
     Verschlüsselt den Inhalt des Ordners www Ihrer Cordova-App und entschlüsselt ihn, wenn die App installiert und zum ersten Mal ausgeführt wird. Durch diese Verschlüsselung ist es schwieriger, den Inhalt dieses Ordners anzuzeigen oder zu modifizieren, während die App gepackt wird.
 * [Kontrollsummenfeature für Webressourcen aktivieren](securing-apps/#enabling-the-web-resources-checksum-feature)  
-    Stellt die Integrität der App beim Start sicher, indem der Inhalt mit dem Referenzkontrollsummenergebnis verglichen wird, das beim ersten Start der App erfasst wurde. Dieser Test hilft dabei, Modifizierungen einer App zu verhindern, die bereits installiert ist.
+    Stellt die Integrität der App beim Start sicher, indem der Inhalt mit dem Referenzkontrollsummenergebnis verglichen wird, das beim ersten Start der App erfasst wurde. Dieser Test hilft dabei, Modifizierungen einer App zu verhindern, die bereits installiert ist. 
 * [FIPS 140-2 aktivieren](../../administering-apps/federal/#enabling-fips-140-2)  
     Stellt sicher, dass die Verschlüsselungsalgorithmen zum Verschlüsseln ruhender und bewegter Daten mit dem Standard FIPS 140-2 (Federal Information Processing Standards) konform sind.
 * [Certificate Pinning](../../authentication-and-security/certificate-pinning)  
-    Hilft Man-in-the-Middle-Attacken zu verhindern, indem enem Host sein erwarteter öffentlicher Schlüssel zugeordnet wird.
+    Hilft Man-in-the-Middle-Attacken zu verhindern, indem enem Host sein erwarteter öffentlicher Schlüssel zugeordnet wird. 
 
 ## Cordova-Anwendungsressourcen
 {: #cordova-application-resources }
@@ -243,14 +249,14 @@ Wenn Sie die Standarddateinamen und -pfade von Ressourcen ändern möchten,
 müssen Sie diese Änderungen auch in der
 Cordova-Konfigurationsdatei (config.xml) angeben. In einigen Fällen können Sie die Standardnamen und -pfade auch mit
 dem Befehl mfpdev app config ändern. In solchen Fällen finden Sie
-im Abschnitt zu den Ressourcen einen entsprechenden Hinweis.
+im Abschnitt zu den Ressourcen einen entsprechenden Hinweis. 
 
 ### Cordova-Konfigurationsdatei (config.xml)
 {: #cordova-configuration-file-configxml }
 Die Cordova-Konfigurationsdatei ist eine erforderliche
 XML-Datei, die Anwendungsmetadaten enthält und im Stammverzeichnis der App gespeichert wird. Die Datei wird automatisch generiert, wenn Sie
 eine Cordova-Anwendung erstellen. Sie können sie modifizieren, um benutzerdefinierte Eigenschaften mit dem Befehl
-mfpdev app config hinzuzufügen.
+mfpdev app config hinzuzufügen. 
 
 ### Hauptdatei (index.html)
 {: #main-file-indexhtml}
@@ -258,7 +264,7 @@ Diese Hauptdatei ist eine HTML-5-Datei, die das Anwendungsgerüst enthält. Dies
 (Scripts und Style-Sheets), die erforderlich sind, um die allgemeinen Komponenten der Anwendung zu definieren und
 Anbindungen an erforderliche Dokumentereignisse zu erstellen. Sie finden diese Datei im Verzeichnis
 **Ihr_Projektname/www**. Sie können den Namen dieser Datei mit dem Befehl
-`mfpdev app config` ändern.
+`mfpdev app config` ändern. 
 
 ### Piktogramm
 {: #thumbnail-image }
@@ -268,12 +274,12 @@ von
 Ein Standardpiktogramm wird bereitgestellt, wenn Sie die Schablone verwenden. Sie können das Standardbild
 mit einem Ersatzbild
 überschreiben (indem Sie denselben Dateinamen verwenden). Sie finden die Datei thumbnail.png im Ornder **Ihr_Projektname/www/img**. Sie können den Namen oder Pfad dieser Datei mit dem Befehl
-`mfpdev app config` ändern.
+`mfpdev app config` ändern. 
 
 ### Begrüßungsbild
 {: #splash-image }
 Das Begrüßungsbild wird angezeigt, wenn die Anwendung
-initialisiert wird. Wenn Sie die MobileFirst-Standardschablone verwenden, werden Begrüßungsbilder bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert:
+initialisiert wird. Wenn Sie die MobileFirst-Standardschablone verwenden, werden Begrüßungsbilder bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert: 
 
 * iOS: <Ihr_Projektname>/res/screen/ios/
 * Android: <Ihr_Projektname>/res/screen/android/
@@ -287,22 +293,22 @@ ist das Plug-in **cordova-plugin-splashscreen** installiert. Wenn dieses Plug-in
 {{ site.data.keys.product }} verwendeten Bilder die von Cordova verwendeten Begrüßungsbilder angezeigt.
 Die Bilder im Ordner mit dem Bildformat screen.png sind die Cordova-Standardbegrüßungsbilder. Sie können angeben, welche Begrüßungsbilder angezeigt werden sollen, indem Sie die
 Einstellungen in der Cordova-Datei
-**config.xml** ändern.
+**config.xml** ändern. 
 
 Wenn Sie die
 {{ site.data.keys.product_adj }}-Schablone nicht verwenden,
 sind die angezeigten Standardbilder die vom
 {{ site.data.keys.product }}-Plug-in verwendeten Bilder.
 Die Dateinamen der standardmäßigen {{ site.data.keys.product_adj }}-Quellenbegrüßungsbilder haben das Format
-**splash-Zeichenfolge.9.png**.
+**splash-Zeichenfolge.9.png**. 
 
 > Weitere Informationen zur Verwendung eigener
 Begrüßungsbilder finden Sie unter
-[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons).
+[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons). 
 
 ### Anwendungssymbole
 {: #application-icons }
-Mit der Schablone werden Standardbilder für Anwendungssymbole bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert:
+Mit der Schablone werden Standardbilder für Anwendungssymbole bereitgestellt. Diese Standardbilder sind in folgenden Verzeichnissen gespeichert: 
 
 * iOS: <Ihr_Projektname>/res/icon/ios/
 * Android: <Ihr_Projektname>/res/icon/android/
@@ -311,18 +317,17 @@ Mit der Schablone werden Standardbilder für Anwendungssymbole bereitgestellt. D
 Sie können das Standardbild durch ein eigenes Bild ersetzen. Ihr angepasstes Anwendungssymbol muss dieselbe
 Größe und denselben Dateinamen wie das zu ersetzende Standardanwendungssymbol
 haben. Es stehen verschiedene Standardbilder zur Verfügung, die für verschiedene Anzeigen und Betriebssystemversionen
-geeignet sind.
+geeignet sind. 
 
 > Weitere Informationen zur Verwendung eigener
 Begrüßungsbilder finden Sie unter
-[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons).
+[Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen](adding-images-and-icons). 
 
 ### Style-Sheets
 {: #stylesheets }
-Der App-Code kann CSS-Dateien enthalten, um die Anwendungsansicht zu definieren.
+Der App-Code kann CSS-Dateien enthalten, um die Anwendungsansicht zu definieren. 
 
-Die Style-Sheet-Dateien befinden sich im Verzeichnis
-`Ihr_Projektname/www/css` und werden in die folgenden plattformspezifischen Ordner kopiert:
+Die Style-Sheet-Dateien befinden sich im Verzeichnis <Ihr_Projektname>/www/css und werden in die folgenden plattformspezifischen Ordner kopiert: 
 
 * iOS: <Ihr_Projektname>/platforms/ios/www/css
 * Android: <Ihr_Projektname>/platforms/android/assets/www/css
@@ -330,13 +335,9 @@ Die Style-Sheet-Dateien befinden sich im Verzeichnis
 
 ### Scripts
 {: #scripts }
-Ihr App-Code kann JavaScript-Dateien umfassen, mit denen diverse Funktionen Ihrer App implementiert werden, z. B.
-interaktive
-Benutzerschnittstellenkomponenten, Geschäftslogik und die Integration von Back-End-Abfragen.
+Ihr App-Code kann JavaScript-Dateien umfassen, mit denen diverse Funktionen Ihrer App implementiert werden, z. B. interaktive Benutzerschnittstellenkomponenten, Geschäftslogik und die Integration von Back-End-Abfragen.
 
-Die JavaScript-Datei
-index.js wird mit der Schablone bereitgestellt. Sie befindet sich im Ordner **Ihr_Projektname/www/js**.
-Die Datei wird in die folgenden plattformspezifischen Ordner kopiert:
+Die JavaScript-Datei index.js wird mit der Schablone bereitgestellt. Sie befindet sich im Ordner **Ihr_Projektname/www/js**. Die Datei wird in die folgenden plattformspezifischen Ordner kopiert:
 
 * iOS: <Ihr_Projektname>/platforms/ios/www/js
 * Android: <Ihr_Projektname>/platforms/android/assets/www/js
@@ -346,26 +347,28 @@ Die Datei wird in die folgenden plattformspezifischen Ordner kopiert:
 {: #previewing-an-applications-web-resources }
 Die Webressourcen einer Cordova-Anwendung können im iOS-Simulator, im Android-Emulator, im Windows-Emulator oder auf physischen Geräten vorangezeigt werden. In der
 {{ site.data.keys.product }} stehen zudem zwei Optionen für eine Livevorschau zur Verfügung:
-der {{ site.data.keys.mf_mbs_full }} und die einfache Darstellung in einem Browser.
+der {{ site.data.keys.mf_mbs_full }} und die einfache Darstellung in einem Browser. 
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Sicherheitseinschränkung:** Sie können
 Ihre Webressourcen voranzeigen. Der Simulator unterstützt jedoch nicht alle {{ site.data.keys.product_adj }}-JavaScript-APIs. Insbesondere das OAuth-Protokoll wird nicht vollständig unterstützt.
 Sie können jedoch Adapteraufrufe mit `WLResourceRequest` testen.
-In diesem Fall gilt: >
+In diesem Fall gilt: 
+>
 > * Auf der Serverseite werden keine Sicherheitsüberprüfungen ausgeführt und an den im {{ site.data.keys.mf_mbs }} ausgeführten Client werden keine Sicherhetisabfragen gesendet.
 > * Wenn Sie {{ site.data.keys.mf_server }} in einer Entwicklungsumgebung nicht verwenden, registrieren Sie einen vertraulichen Client, in dessen Liste erlaubter Bereiche der Bereich des Adapters enthalten ist. Sie können einen vertraulichen Client in der {{ site.data.keys.mf_console }} über das Menü "Laufzeit -> Einstellungen" definieren. Weitere Informationen zu vertraulichen Clients finden Sie unter [Vertrauliche Clients](../../authentication-and-security/confidential-clients).
+
 >
 > **Hinweis:** In einer Entwicklungsumgebung enthält der {{ site.data.keys.mf_server }} einen vertraulichen Client mit dem Namen "test" und einem uneingeschränkten Bereich ("*"). Dieser vertrauliche Client wird standardmäßig von mfpdev app preview verwendet.
 
+
+
 #### Einfacher Browser
 {: #simple-browser }
-Bei der einfachen Darstellung in einem Browser werden die Webressourcen der Anwendung im Desktop-Browser dargestellt, ohne als App betrachtet zu werden.
-Auf diese Weise ist es möglich, nur die Webressourcen zu debuggen.   
+Bei der einfachen Darstellung in einem Browser werden die Webressourcen der Anwendung im Desktop-Browser dargestellt, ohne als App betrachtet zu werden. Auf diese Weise ist es möglich, nur die Webressourcen zu debuggen.   
 
 #### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator }
-Der {{ site.data.keys.mf_mbs }} ist eine Webanwendung zum Testen von Cordova-Anwendungen. Der Simulator
-simuliert Gerätefeatures, ohne dass die App in einem Emulator oder auf einem physischen Gerät installiert werden muss.
+Der {{ site.data.keys.mf_mbs }} ist eine Webanwendung zum Testen von Cordova-Anwendungen. Der Simulator simuliert Gerätefeatures, ohne dass die App in einem Emulator oder auf einem physischen Gerät installiert werden muss.
 
 **Unterstützte Browser:**
 
@@ -392,7 +395,7 @@ simuliert Gerätefeatures, ohne dass die App in einem Emulator oder auf einem ph
 
     ```bash
     ❯◯ android
-     ◯ ios
+    ◯ ios
 	```
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Weitere Informationen zu den verschiedenen CLI-Befehlen enthält das Lernprogramm [{{ site.data.keys.product_adj }}-Artefakte über die CLI verwalten](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
@@ -404,17 +407,17 @@ Wenn Sie eine Ressource ändern und die Änderung speichern, spiegelt sie sich s
 
 ### Livereload
 {: #live-reload }
-Wenn Sie für die Voranzeige auf physischen Geräten oder in Simulatoren/Emulatoren einen ähnlichen Effekt wünschen, fügen Sie das Plug-in **cordova-plugin-livereload** hinzu. Verwendungsanweisungen finden Sie auf der [GitHub-Seite für das Plug-in](https://github.com/omefire/cordova-plugin-livereload).
+Wenn Sie für die Voranzeige auf physischen Geräten oder in Simulatoren/Emulatoren einen ähnlichen Effekt wünschen, fügen Sie das Plug-in cordova-plugin-livereload hinzu. Verwendungsanweisungen finden Sie auf der [GitHub-Seite für das Plug-in](https://github.com/omefire/cordova-plugin-livereload).
 
 ### Anwendung in einem Emulator oder auf einem phyischen Gerät ausführen
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-Sie können die Anwendungsausführung mit dem Cordova-CLI-Befehl `cordova emulate ios|android|windows` emulieren. Beispiel:
+Sie können die Anwendungsausführung mit dem Cordova-CLI-Befehl cordova emulate ios|android|windows emulieren. Beispiel:
 
 ```bash
 cordova emulate ios
 ```
 
-Wenn Sie die Anwendung auf einem mit der Entwicklungsworkstation verbundenen physischen Gerät ausführen möchten, führen Sie den Cordova-CLI-Befehl `cordova run ios|android|windows` aus. Beispiel:
+Wenn Sie die Anwendung auf einem mit der Entwicklungsworkstation verbundenen physischen Gerät ausführen möchten, führen Sie den Cordova-CLI-Befehl cordova run ios|android|windows aus. Beispiel:
 
 ```bash
 cordova run ios
@@ -427,12 +430,9 @@ WebView-Ressourcen lassen sich besser in einer IDE mit automatischer Vervollstä
 In Xcode, Android Studio und Visual Studio gibt es umfassende Bearbeitungsfunktionen für
 Objective-C, Swift, C# und and  Java. Hinsichtlich der Unterstützung für die Bearbeitung von
 JavaScript kann es jedoch Einschränkungen geben.
-Zur Vereinfachung der JavaScript-Berabeitung enthält das
-{{ site.data.keys.product_adj }}-Cordova-Projekt eine Definitionsdatei
-für die automatische Vervollständigung
-von {{ site.data.keys.product_adj }}-API-Elementen. In jedem {{ site.data.keys.product_adj }}-Cordova-Plug-in gibt es eine Konfigurationsdatei `d.ts` für jede {{ site.data.keys.product_adj }}-JavaScript-Datei. Der Dateiname von `d.ts` passt zum Namen der entsprechenden JavaScript-Datei. Die Konfigurationsdatei befindet sich im Plug-in-Ordner. Die Datei für das {{ site.data.keys.product_adj }}-Haupt-SDK befindet sich beispielsweise an folgender Position: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
+Zur Vereinfachung der JavaScript-Berabeitung enthält das {{ site.data.keys.product_adj }}-Cordova-Projekt eine Definitionsdatei für die automatische Vervollständigung von {{ site.data.keys.product_adj }}-API-Elementen. In jedem {{ site.data.keys.product_adj }}-Cordova-Plug-in gibt es eine Konfigurationsdatei d.ts für jede {{ site.data.keys.product_adj }}-JavaScript-Datei. Der Dateiname von d.ts passt zum Namen der entsprechenden JavaScript-Datei. Die Konfigurationsdatei befindet sich im Plug-in-Ordner. Die Datei für das {{ site.data.keys.product_adj }}-Haupt-SDK befindet sich beispielsweise an folgender Position: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
 
-Die Konfigurationsdatei `d.ts` stellt für alle IDEs mit TypeScript-Unterstützung ([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript)) die automatische Vervollständigung bereit.
+Die Konfigurationsdatei d.ts stellt für alle IDEs mit TypeScript-Unterstützung ([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript)) die automatische Vervollständigung bereit.
 
 Die Ressourcen (HTML- und JavaScript-Dateien) für WebView befinden sich im Ordner **[myapp]\www**. Wenn das Projekt mit dem Befehl cordova build erstellt oder der Befehl cordova prepare ausgeführt wird, werden diese Ressourcen in den entsprechenden Ordner **www**, d. h. in **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www** oder **[myapp]\platforms\windows\www**, kopiert.
 
@@ -449,7 +449,8 @@ Gehen Sie zum Hinzufügen von CrossWalk WebView wie folgt vor:
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
-   Der Befehl fügt CrossWalk WebView zu der Anwendung hinzu. Im Hintergrund passt das {{ site.data.keys.product_adj }}-Cordova-SDK die Android-Projektaktivitäten so an, dass CrossWalk WebView verwendet werden kann.
+   Der Befehl fügt CrossWalk WebView zu der Anwendung hinzu.
+    Im Hintergrund passt das {{ site.data.keys.product_adj }}-Cordova-SDK die Android-Projektaktivitäten so an, dass CrossWalk WebView verwendet werden kann.
 
 2. Erstellen Sie das Projekt mit folgendem Befehl:
 
@@ -460,7 +461,7 @@ Gehen Sie zum Hinzufügen von CrossWalk WebView wie folgt vor:
 ## WKWebView-Unterstützung für iOS
 {: #wkwebview-support-for-ios }
 In Cordova-iOS-Anwendungen kann das standardmäßig verwendete UIWebView durch [Apple WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) ersetzt werden.
-Führen Sie in einem Befehlszeilenfenster den folgenden Befehl aus, um WKWebView hinzuzufügen: `cordova plugin add cordova-plugin-wkwebview-engine`.
+Führen Sie in einem Befehlszeilenfenster den folgenden Befehl aus, um WKWebView hinzuzufügen: cordova plugin add cordova-plugin-wkwebview-engine.
 
 > Informieren Sie sich über das [Cordova-WKWebView-Plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
 

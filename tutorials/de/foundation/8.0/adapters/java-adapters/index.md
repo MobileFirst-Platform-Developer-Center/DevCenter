@@ -254,7 +254,8 @@ eine Annotation für HTTP-Anforderungen wie `@GET`, `@PUT`, `@POST`, `@DELETE` o
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**Wichtiger Hinweis:** Wenn Sie in Ihrer Adapterimplementierung statische Referenzen auf Klassen von `javax.ws.rs.*` oder `javax.servlet.*` verwenden, müssen Sie **RuntimeDelegate** mit einer der folgenden Optionen konfigurieren:
-*	Legen Sie `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in `jvm.options` in Liberty fest.
+
+*	Legen Sie in Liberty in der Datei `jvm.options` `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 ODER
 *	Legen Sie Sie die Systemeigenschaft oder angepasste JVM-Eigenschaft `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 

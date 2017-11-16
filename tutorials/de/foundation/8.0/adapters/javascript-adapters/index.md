@@ -71,10 +71,10 @@ Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Ko
                                     <li><code>false</code>: Standardwert. Aufrufe der Prozedur werden nicht im Prüfprotokoll erfasst.</li>
                                 </ul>
                             </li>
-                            <li><code>scope</code>: Dieses <i>optionale</i> Element gibt den Sicherheitsbereich, der die Adapterressourcenprozedur schützt, an. Der Bereich kann eine Zeichenfolge mit null oder mehr Bereichselementen ("scope") sein, die jeweils durch ein Leerzeichen getrennt sind, oder auf null gesetzt werden, damit der Standardbereich angewendet wird. Ein Bereichselement kann ein Schlüsselwort sein, das einer Sicherheitsüberprüfung zugeordnet ist, oder der Name einer Sicherheitsüberprüfung. Der Standardbereich ist <code>RegisteredClient</code>, wobei es sich um ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort handelt. Nach Standardschutz ist ein Zugriffstoken für den Zugriff auf die Ressource erforderlich. <br/>
+                            <li><code>scope</code>: Dieses <i>optionale</i> Element gibt den Sicherheitsbereich an, der die Adapterressourcenprozedur schützt. Der Bereich kann eine Zeichenfolge mit null oder mehr Bereichselementen ("scope") sein, die jeweils durch ein Leerzeichen getrennt sind, oder auf null gesetzt werden, damit der Standardbereich angewendet wird. Ein Bereichselement kann ein Schlüsselwort sein, das einer Sicherheitsüberprüfung zugeordnet ist, oder der Name einer Sicherheitsüberprüfung. Der Standardbereich ist <code>RegisteredClient</code>, wobei es sich um ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort handelt. Nach Standardschutz ist ein Zugriffstoken für den Zugriff auf die Ressource erforderlich. <br/>
 								Weitere Informationen zum {{ site.data.keys.product_adj }}-OAuth-Ressourcenschutz und zum Konfigurieren des Ressourcenschutzes für JavaScript-Adapterressourcen finden Sie unter <a href="../../authentication-and-security/#protecting-adapter-resources">Adapterressourcen schützen</a>.<br/>
 								Wenn das Attribut <code>secured</code> den Wert <code>false</code> hat, wird das Attribut <code>scope</code> ignoriert. </li>
-                            <li><code>secured</code>: Dieses <i>optionale</i> Element definiert, ob die Adapterprozedur vom Sicherheitsframework der {{ site.data.keys.product_adj }} geschützt wird. Folgende Werte sind gültig:
+                            <li><code>secured</code>: Dieses <i>optionale</i> Element definiert, ob die Adapterprozedur vom {{ site.data.keys.product_adj }}-Sicherheitsframework geschützt wird. Folgende Werte sind gültig:
                                 <ul>
                                     <li><code>true</code>: Standardwert. Die Prozedur wird geschützt. Zum Aufrufen der Prozedur ist ein gültiges Zugriffstoken erforderlich.</li>
                                     <li><code>false</code>: Die Prozedur wird nicht geschützt. Zum Aufrufen der Prozedur ist kein Zugriffstoken erforderlich (siehe <a href="../../authentication-and-security/#unprotected-resources">Ungeschützte Ressourcen</a>). Wenn dieser Wert festgelegt ist, wird das Attribut <code>scope</code> ignoriert. </li>
@@ -102,6 +102,8 @@ und später zur Laufzeit weiter angepasst werden.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Hinweis:** Die Elemente für die Konfigurationseigenschaften müssen
 sich immer *unterhalb* der &lt;procedure&gt;-Elemente befinden. Im obigen Beispiel wurde eine Eigenschaft &lt;displayName&gt; mit einem Standardwert definiert, sodass sie später verwendet werden kann.
+
+
 
 Das Element &lt;property&gt; wird mit folgenden Attributen verwendet:
 

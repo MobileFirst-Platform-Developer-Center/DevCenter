@@ -14,6 +14,8 @@ Dieses Lernprogramm enthält die Code-Snippets, die erforderlich sind, um Protok
 
 > **Hinweis:** Die Verwendung von `OCLogger` in Swift erfordert die Erstellung einer `OCLogger`-Erweiterungsklasse. (Diese Klasse kann eine gesonderte Swift-Datei oder eine Erweiterung Ihrer bestehenden Swift-Datei sein.)
 
+
+
 ```swift
 extension OCLogger {
 // Protokollmethoden ohne Metadaten
@@ -86,7 +88,9 @@ Die Protokollerfassung ist standardmäßig
 aktiviert. Sie speichert Protokolle im Client und kann programmgesteuert aktiviert oder inaktiviert werden. Protokolle werden mit einem expliziten Sendeaufruf oder automatisch an den Server gesendet. 
 
 > **Hinweis:** Die Aktivierung der Protokollerfassung auf einer Ebene mit großer Ausführlichkeit kann sich
-auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. Inaktivieren Sie die Protokollerfassung wie folgt: 
+auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. 
+
+Inaktivieren Sie die Protokollerfassung wie folgt: 
 
 **Objective-C**
 
@@ -105,7 +109,9 @@ OCLogger.setCapture(false);
 Sie können Protokolle gemäß Ihrer Anwendungslogik an {{ site.data.keys.product_adj }} senden. Sie können auch das automatische Senden von Protokollen aktivieren. Wenn Protokolle nicht vor dem Erreichen ihrer maximalen Größe gesendet werden, wird die Protokolldatei zugunsten aktuellerer Protokolle bereinigt. 
 
 > **Hinweis:** Übernehmen Sie das folgende Muster für die Erfassung von Protokolldaten. Durch das regelmäßige Senden von Daten stellen Sie sicher, dass Sie Ihre Protokolldaten in der
-{{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.**Objective-C**
+{{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.
+
+**Objective-C**
 
 ```objc
 [NSTimer scheduledTimerWithTimeInterval:60
