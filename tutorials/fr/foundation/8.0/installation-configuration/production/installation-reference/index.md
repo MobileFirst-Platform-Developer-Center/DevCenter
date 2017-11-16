@@ -200,7 +200,7 @@ Vous pouvez aussi utiliser l'élément `<mysql>` avec les attributs suivants :
 
 #### Oracle
 {: #oracle }
-L'élément `<oracle>` possède les attributs suivants :
+L'élément `<oracle>` dispose des attributs suivants :
 
 | Attribut      | Description                                                              | Obligatoire | Valeur par défaut |
 |----------------|--------------------------------------------------------------------------|----------|---------|
@@ -526,7 +526,7 @@ L'élément `<database>` possède les attributs suivants :
 | kind          | Type de base de données (Push).	                  | Oui	     | Aucune    |
 | validate	    | Permet de déterminer si la base de données est accessible. | Non       | true    |
 
-L'élément `<database>` prend en charge les éléments suivants. Pour plus d'informations sur la configuration de ces éléments de base de données pour le système de gestion de base de données relationnelle, voir les tableaux de la page [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+L'élément `<database>` prend en charge les éléments suivants : Pour plus d'informations sur la configuration de ces éléments de base de données pour le système de gestion de base de données relationnelle, voir les tableaux de la page [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 | Elément            | Description                                                      | Nombre |
 |--------------------|----------------------------------------------------------------- |-------|
@@ -709,7 +709,7 @@ Utilisez l'attribut **validate** pour déterminer si la console {{ site.data.key
 {: #to-specify-a-connection-to-the-push-service-database-1 }
 L'élément `<database>` collecte les paramètres permettant de spécifier une déclaration de source de données dans un serveur d'applications pour accéder à la base de données du service push.
 
-Vous devez déclarer une seule base de données : `<database kind="Push">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche Ant configuredatabase, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
+Vous devez déclarer une seule base de données : `<database kind="Push">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche Ant configuredatabase, à ceci près que l'élément `<database>`  ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
 
 L'élément `<database>` possède les attributs suivants :
 
@@ -718,7 +718,7 @@ L'élément `<database>` possède les attributs suivants :
 | kind         | Type de base de données (Push). | Oui      | Aucune    |
 | validate	   | Permet de déterminer si la base de données est accessible. | Non | true |
 
-L'élément `<database>` prend en charge les éléments suivants. Pour plus d'informations sur la configuration de ces éléments de base de données pour le système de gestion de base de données relationnelle, voir les tableaux de la page [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+L'élément `<database>` prend en charge les éléments suivants : Pour plus d'informations sur la configuration de ces éléments de base de données pour le système de gestion de base de données relationnelle, voir les tableaux de la page [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
 | Elément              | Description                               | Nombre |
 |----------------------|-------------------------------------------|-------|
@@ -1080,7 +1080,7 @@ L'élément `<oracle>` possède les attributs suivants :
 | database   | Nom de base de données, ou nom de service Oracle. Remarque : Vous devez toujours utiliser un nom de service pour vous connecter à une base de données PDB. | Non | ORCL |
 | server	 | Nom d'hôte du serveur de base de données.	Oui Aucune
 | port	     | Port sur le serveur de base de données.	Non	1521
-| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants. Voir la note sous ce tableau. | Oui | Aucune |
+| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants Voir la note sous ce tableau. | Oui | Aucune |
 | password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non       | Demandée en mode interactif |
 
 > **Remarque:** Pour l'attribut **user**, utilisez plutôt un nom d'utilisateur en lettres majuscules. Les noms d'utilisateur Oracle sont en général
@@ -1095,7 +1095,7 @@ et **port**, vous pouvez aussi spécifier une adresse URL. Dans ce cas, utilisez
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
 | url	     | URL pour la connexion à la base de données.	  | Oui      | Aucune    |
-| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants. Voir la note sous ce tableau. | Oui | Aucune |
+| user	     | Nom d'utilisateur permettant d'accéder aux bases de données. Cet utilisateur n'a pas besoin de privilèges étendus pour les bases de données. Si vous implémentez des restrictions sur la base de données, vous pouvez définir un utilisateur avec les privilèges restreints répertoriés dans Utilisateurs de base de données et privilèges correspondants Voir la note sous ce tableau. | Oui | Aucune |
 | password	 | Nom d'utilisateur permettant d'accéder aux bases de données.	  | Non	     | Demandée en mode interactif |
 
 > **Remarque:** Pour l'attribut **user**, utilisez plutôt un nom d'utilisateur en lettres majuscules. Les noms d'utilisateur Oracle sont en général
@@ -1130,7 +1130,9 @@ profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#S
 L'élément `<driverclasspath>` doit contenir un fichier JAR de pilote JDBC Oracle. Vous pouvez télécharger des pilotes JDBC Oracle depuis la page [JDBC, SQLJ, Oracle JPublisher and Universal Connection
 Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-L'élément `<property>`, qui peut être utilisé au sein des éléments `<derby>`, `<db2>`,` <mysql>` et `<oracle>`, possède les attributs suivants :
+L'élément `<property>`, qui peut être utilisé dans les éléments
+`<derby>`, `<db2>`,` <mysql>` ou
+`<oracle>`, dispose des attributs suivants :
 
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
@@ -1183,7 +1185,9 @@ La tâche Ant `<uninstallApplicationCenter>` annule les effets d'une précédent
 
 ### Attributs et éléments
 {: #attributes-and-elements-3 }
-Les tâches `<installApplicationCenter>`, `<updateApplicationCenter>` et `<uninstallApplicationCenter>` possèdent les attributs suivants :
+Les tâches `<installApplicationCenter>`,
+`<updateApplicationCenter>` et
+`<uninstallApplicationCenter>` ont les attributs suivants :
 
 | Attribut    | Description                                | Obligatoire | Valeur par défaut |
 |--------------|--------------------------------------------|----------|---------|
@@ -1213,7 +1217,9 @@ L'attribut **shortcutsDir** indique où placer les raccourcis vers la console Ap
 Le programme **aapt** fait partie de la distribution {{ site.data.keys.product }} : **rép_install_produit/ApplicationCenter/tools/android-sdk**.  
 Si cet attribut n'est pas défini, lors du téléchargement d'une application apk, Application Center effectue l'analyse syntaxique de cette dernière à l'aide de son propre code, ce qui peut entraîner les limitations.
 
-Les tâches `<installApplicationCenter>`, `<updateApplicationCenter>` et `<uninstallApplicationCenter>` prennent en charge les éléments suivants :
+Les tâches `<installApplicationCenter>`,
+`<updateApplicationCenter>` et
+`<uninstallApplicationCenter>` prennent en charge les éléments suivants :
 
 | Elément           | Description	                            | Nombre |
 |-------------------|-------------------------------------------|-------|
@@ -1245,7 +1251,8 @@ Les attributs et les éléments internes de ces éléments sont décrits dans le
 {: #to-specify-a-connection-to-the-services-database }
 L'élément `<database>` collecte les paramètres permettant de spécifier une déclaration de source de données dans un serveur d'applications pour accéder à la base de données des services.
 
-Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
+Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. 
+Vous spécifiez l'élément `<database>` en procédant comme pour la tâche  Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
 
 L'élément `<database>` possède les attributs suivants :
 
@@ -1254,7 +1261,7 @@ L'élément `<database>` possède les attributs suivants :
 | kind         | Type de base de données (ApplicationCenter).              | Oui      | Aucune    |
 | validate	   | Pour déterminer si la base de données est accessible ou non. | Non       | True    |
 
-L'élément `<database>` prend en charge les éléments suivants. Pour plus d'informations sur la configuration de ces éléments de base de données, voir les tableaux dans la section [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}.](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+L'élément `<database>` prend en charge les éléments suivants : Pour plus d'informations sur la configuration de ces éléments de base de données, voir les tableaux dans la section [Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}.](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
 | Elément           | Description	                            | Nombre |
 |-------------------|-------------------------------------------|-------|
@@ -1473,7 +1480,7 @@ pour communiquer avec ce noeud. Vous devez vous assurer que ce port est disponib
 
 ### Pour spécifier un serveur d'applications
 {: #to-specify-an-application-server-4 }
-Utilisez l'élément `<applicationserver>` pour définir les paramètres qui dépendent du serveur d'applications sous-jacent. L'élément `<applicationserver>` prend en charge les éléments suivants.
+Utilisez l'élément `<applicationserver>` pour définir les paramètres qui dépendent du serveur d'applications sous-jacent. L'élément `<applicationserver>` prend en charge les éléments suivants :
 
 **Remarque :** Les attributs et les éléments internes de cet élément sont décrits dans les tableaux de la page[Tâches Ant pour l'installation des environnements d'exécution de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 

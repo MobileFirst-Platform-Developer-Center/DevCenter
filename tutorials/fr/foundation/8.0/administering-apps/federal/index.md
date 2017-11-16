@@ -39,6 +39,7 @@ Les normes FIPS (Federal Information Processing Standards) sont des instructions
 Lorsqu'un client {{ site.data.keys.product_adj }} négocie une connexion SSL (Secure Socket Layer) avec un serveur {{ site.data.keys.mf_server }}, qui s'exécute sur un serveur d'applications utilisant le mode FIPS 140-2, il en résulte une utilisation réussie de la suite de chiffrement approuvée par FIPS 140-2. Si la plateforme client ne prend pas en charge l'une des suites de chiffrement approuvées par FIPS 140-2, la transaction SSL échoue et le client ne peut pas établir de connexion SSL au serveur. Dans le cas contraire, le client utilise une suite de chiffrement approuvée par FIPS 140-2.
 
 > **Remarque :** Les instances de module cryptographique utilisées sur le client ne sont pas nécessairement validées par FIPS 140-2. Pour connaître les options permettant d'utiliser les bibliothèques validées par FIPS 140-2 sur des appareils client, voir les informations décrites ci-après.
+
 Précisément, le client et le serveur utilisent la même suite de chiffrement (SSL_RSA_WITH_AES_128_CBC_SHA par exemple), mais il se peut que le module cryptographique côté client n'ait pas réussi le processus de validation FIPS 140-2, alors que le côté serveur utilise des modules certifiés par FIPS 140-2.
 
 ### Norme FIPS 140-2 sur l'appareil client {{ site.data.keys.product_adj }} pour assurer la protection des données inactives dans JSONStore et des données dynamiques lors de l'utilisation de communications HTTPS
