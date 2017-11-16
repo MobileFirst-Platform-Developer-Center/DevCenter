@@ -156,6 +156,8 @@ SQL 照会は `PreparedStatement` メソッドによってビルドされます�
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** リソース (作成されたステートメントや接続など) を必ず閉じてください。
 
+
+
 ### ユーザーの取得
 {: #get-user }
 

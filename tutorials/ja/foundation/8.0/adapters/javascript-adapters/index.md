@@ -98,6 +98,8 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず &lt;procedure&gt; エレメントの*下に* 配置する必要があります。上の例では、デフォルト値を使用して &lt;displayName&gt; プロパティーを定義し、このプロパティーを後で使用できるようにしてあります。
 
+
+
 &lt;property&gt; エレメントには以下の属性があります。
 
 - `name`: 構成クラスで定義されている、プロパティーの名前。 

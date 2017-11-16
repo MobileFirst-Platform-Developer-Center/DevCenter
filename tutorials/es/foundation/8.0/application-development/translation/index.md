@@ -219,3 +219,4 @@ Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/T
 Siga el archivo README.md de ejemplo para obtener instrucciones.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Sugerencia:** Puede inspeccionar el LogCat de Android desde la consola de LogCat de Android Studio mientras la aplicación está en ejecución.
+

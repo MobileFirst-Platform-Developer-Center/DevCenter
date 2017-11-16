@@ -60,7 +60,7 @@ Le serveur hôte peut être soit un serveur appartenant à un client, soit le se
 #### Ligne de commande
 {: #command-line-remote }
 A partir d'une fenêtre de **ligne de commande**, avec
-l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée, 
+l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée,
 
 1. Ajoutez une définition de serveur distant :
 
@@ -110,7 +110,7 @@ Le journal des erreurs répertorie les opérations de gestion ayant échoué qui
 {: #devices }
 Les administrateurs peuvent rechercher des appareils qui accèdent au serveur {{ site.data.keys.mf_server }} et peuvent gérer leurs droits d'accès.  
 Les appareils peuvent être recherchés à l'aide d'un ID utilisateur ou d'un nom explicite. L'ID utilisateur est l'identificateur qui a été utilisé pour la connexion.  
-Un nom explicite est un nom qui est associé à l'appareil afin de le distinguer des autres appareils qui partagent l'ID utilisateur. 
+Un nom explicite est un nom qui est associé à l'appareil afin de le distinguer des autres appareils qui partagent l'ID utilisateur.
 
 > Pour plus d'informations, voir la rubrique sur la gestion des accès d'appareil dans la documentation utilisateur.
 
@@ -120,7 +120,7 @@ Un nom explicite est un nom qui est associé à l'appareil afin de le distinguer
 {: #applications }
 #### Enregistrement d'applications
 {: #registering-applications }
-Fournissez des valeurs d'application de base et téléchargez un code de démarrage. 
+Fournissez des valeurs d'application de base et téléchargez un code de démarrage.
 
 ![Illustration de l'écran d'enregistrement d'application](register-applications.png)
 
@@ -184,11 +184,10 @@ En assurant le suivi de l'utilisation des appareils client et en déterminant si
 
 > Pour plus d'informations, voir la rubrique sur le suivi des licences dans la documentation utilisateur.
 
-![Illustration de l'écran des journaux client](license-tracking.png)
+![Illustration de l'écran de suivi de licence](license-tracking.png)
 
 ### Téléchargements
 {: #downloads }
 Lorsque la connectivité Internet est indisponible, vous pouvez télécharger un instantané des différents artefacts de développement de {{ site.data.keys.product }} à partir du centre de téléchargement dans la console {{ site.data.keys.mf_console }}.
 
 ![Illustration des artefacts disponibles](downloads.png)
-

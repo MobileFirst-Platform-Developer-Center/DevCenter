@@ -16,6 +16,7 @@ Mit Java-Adaptern können Sie die Konnektivität zu einem Back-End-System steuer
 **Voraussetzung:** Arbeiten Sie zuerst das Lernprogramm [Java-Adapter](../) durch. 
 
 >**Wichtiger Hinweis:** Wenn Sie in Ihrer Adapterimplementierung statische Referenzen auf Klassen von `javax.ws.rs.*` oder `javax.servlet.*` verwenden, müssen Sie **RuntimeDelegate** mit einer der folgenden Optionen konfigurieren:
+
 *	Legen Sie in Liberty in der Datei `jvm.options` `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 ODER
 *	Legen Sie Sie die Systemeigenschaft oder angepasste JVM-Eigenschaft `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.

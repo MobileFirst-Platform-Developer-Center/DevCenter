@@ -191,3 +191,4 @@ navigator.globalization.getPreferredLanguage(
 サンプルの README.md ファイルの指示に従ってください。
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Android の LogCat は、アプリケーションの実行中に Android Studio の LogCat コンソールで調べることができます。
+

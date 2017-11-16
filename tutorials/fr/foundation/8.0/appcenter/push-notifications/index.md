@@ -145,7 +145,7 @@ Où x est un nombre entier.
 
 Les exemples du tableau montrent comment les propriétés JNDI sont définies dans le fichier server.xml du serveur Apache Tomcat.
 
-| Propriété JNDI| Type et description | Exemple pour le serveur Apache Tomcat | 
+| Propriété JNDI	| Type et description | Exemple pour le serveur Apache Tomcat | 
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | Valeur de chaîne qui définit le chemin d'accès complet au certificat .p12. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
 | ibm.appcenter.apns.p12.certificate.password | Valeur de chaîne définissant le mot de passe nécessaire pour accéder au certificat. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 

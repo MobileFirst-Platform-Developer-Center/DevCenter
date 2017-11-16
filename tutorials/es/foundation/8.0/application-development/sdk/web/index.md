@@ -95,6 +95,8 @@ require(['mfp'], function(WL) {
 ```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Si está añadiendo el soporte para las analíticas, coloque la referencia al archivo **ibmmfpfanalytics.js** **antes** de la referencia al archivo **ibmmfpf.js**.
+
+
 ## Inicialización de {{ site.data.keys.product_adj }} Web SDK
 {: #initializing-the-mobilefirst-web-sdk }
 Inicialización de {{ site.data.keys.product }} Web SDK especificando los valores de **raíz de contexto** y el **ID de aplicación** en el archivo JavaScript principal de su aplicación web:

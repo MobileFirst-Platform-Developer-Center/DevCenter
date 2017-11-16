@@ -14,11 +14,15 @@ De [http://cordova.apache.org/](http://cordova.apache.org/):
 Permite utilizar tecnologías web estándar como, por ejemplo, HTML5, CSS3 y JavaScript para un desarrollo entre varias plataformas, evitando el lenguaje de desarrollo nativo de cada plataforma móvil.
 Las aplicaciones se ejecutan dentro de derivadores destinados a cada plataforma, y se basan en enlaces de API que siguen los estándares para acceder a los sensores de los dispositivos, a los datos y al estado de la red.
 
+
+
 {{ site.data.keys.product_full }} proporciona un SDK en forma de varios plugins de Cordova.
 Aprenda a [Añadir {{ site.data.keys.product }} SDK a aplicaciones Cordova](../../application-development/sdk/cordova).
 
 > **Nota:** Los archivos de archivado/IPA generados mediante Test Flight o iTunes Connect para almacenar envíos/validación de aplicaciones iOS, podrían originar fallos/bloqueos en tiempo de ejecución. Consulte el blog [
 Preparación de aplicaciones iOS para enviarlas a App Store en {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) para obtener más información.
+
+
 #### Ir a:
 {: #jump-to }
 
@@ -68,6 +72,7 @@ Plugins de ejemplo:
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
 >**Nota:** La modificación del comportamiento predeterminado de una aplicación Cordova (por ejemplo, modificando el comportamiento del botón de ir hacia atrás) cuando {{ site.data.keys.product_adj }} Cordova SDK se añade al proyecto, puede hacer que Google Play Store la rechace cuando la envíe.
+
 Póngase en contacto con el soporte de Google para conocer otras anomalías al enviar una aplicación a Google Play Store.
 ### Infraestructuras de terceros
 {: #3rd-party-frameworks }
@@ -382,14 +387,18 @@ En {{ site.data.keys.product }}, hay disponibles dos opciones de vista previa di
 En concreto, no hay un soporte completo al protocolo OAuth.
 Sin embargo, puede probar las llamadas a adaptadores con `WLResourceRequest`.
 En este caso,
+
 >
 > * Las comprobaciones de seguridad no se ejecutan en el lado del servidor y los retos de seguridad no se envían al cliente que se ejecuta en {{ site.data.keys.mf_mbs }}.
 > * Si no utiliza {{ site.data.keys.mf_server }} en un entorno de desarrollo, registre un cliente confidencial que tenga el ámbito del adaptador en su lista de ámbitos permitidos.
 Defina un cliente confidencial con {{ site.data.keys.mf_console }}, mediante el menú Tiempo de ejecución/Valores.
 Para obtener más información sobre los clientes confidenciales, consulte [Clientes confidenciales](../../authentication-and-security/confidential-clients).
+
 >
 > **Nota:** {{ site.data.keys.mf_server }} en un entorno de desarrollo incluye un cliente confidencial "test" con un ámbito permitido ilimitado ("*").
 De forma predeterminada la aplicación mfpdev utiliza este cliente confidencial.
+
+
 #### Navegador simple
 {: #simple-browser }
 La vista previa del Navegador simple, los recursos web de la aplicación se representan en el navegador de escritorio sin que sean tratados como una aplicación móvil, permitiendo una depuración sencilla de tan solo recursos web.

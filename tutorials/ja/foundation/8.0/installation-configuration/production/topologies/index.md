@@ -123,6 +123,8 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 
 > 注: **mfp.admin.endpoint** プロパティーにより、コンソールは管理サービスの場所を探索できます。アスタリスク文字「\*」をワイルドカードとして使用して、管理サービスへの接続のためにコンソールが生成する URL が、コンソールへの着信 HTTP 要求と同じ値を使用するように指定することができます。例えば、`*://*:*/mfpadmin` は、コンソールと同じプロトコル、ホスト、およびポートを使用するが、**mfpadmin** をコンテキスト・ルートとして使用することを意味します。このプロパティーは、コンソール・アプリケーションに対して指定します。
 
+
+
 ### {{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} プッシュ・サービスおよび許可サーバーへ
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
 管理サービスはプッシュ・サービスと通信して、さまざまなプッシュ操作を要求します。 この通信は、OAuth プロトコルを使用して保護されます。両方のサービスが、機密クライアントとして登録されている必要があります。初期登録は、インストール時に行うことができます。このプロセスでは、両方のサービスが許可サーバーに接続する必要があります。この許可サーバーは、{{ site.data.keys.product }} ランタイムにすることができます。
@@ -135,6 +137,8 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 * **mfp.admin.authorization.client.secret** - OAuth ベースのトークンの取得に使用される秘密コード。
 
 > 注: 管理サービスの **mfp.push.authorization.client.id** プロパティーおよび **mfp.push.authorization.client.secret** プロパティーを使用して、管理サービスの開始時にプッシュ・サービスを機密クライアントとして自動的に登録することができます。プッシュ・サービスは同じ値で構成する必要があります。
+
+
 
 この通信を構成するための、プッシュ・サービスの JNDI プロパティーは次のとおりです。
 
@@ -221,7 +225,7 @@ WebSphere Application Server 完全プロファイル、WebSphere Application Se
 
 |             JNDI プロパティー |             値 |
 |--------------------------|--------|
-| mfp.topology.platform	   | Liberty |
+| mfp.topology.platform    | Liberty |
 | mfp.topology.clustermode | Standalone|
 | mfp.admin.jmx.host     | WebSphere Application Server Liberty プロファイル・サーバーのホスト名。|
 | mfp.admin.jmx.port       | REST コネクターのポート。WebSphere Application Server Liberty プロファイル・サーバーの server.xml ファイル内の `<httpEndpoint>` エレメントに宣言されている httpsPort 属性のポートです。このプロパティーにはデフォルト値がありません。 |
@@ -240,7 +244,7 @@ WebSphere Application Server 完全プロファイル、WebSphere Application Se
 
 | JNDI プロパティー  |	            値 |
 |------------------------|------------|
-| mfp.topology.platform   | Tomcat|
+| mfp.topology.platform    | Tomcat|
 | mfp.topology.clustermode | Standalone|
 
 Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) を定義する JVM プロパティーも必要です。詳しくは、[Apache Tomcat 用の JMX 接続の構成](../appserver/#apache-tomcat-prerequisites)を参照してください。
@@ -380,7 +384,7 @@ WebSphere Application Server 完全プロファイル、WebSphere Application Se
 
 |             JNDI プロパティー |	            値 |
 |--------------------------|-----------|
-| mfp.topology.platform	   | Tomcat|
+| mfp.topology.platform    | Tomcat|
 | mfp.topology.clustermode | Farm      |
 
 Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) を定義する JVM プロパティーも必要です。詳しくは、[Apache Tomcat 用の JMX 接続の構成](../appserver/#apache-tomcat-prerequisites)を参照してください。
@@ -397,7 +401,7 @@ Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) �
 **WebSphere Application Server 完全プロファイルのサーバー・ファーム**  
 管理サービスとランタイムについて、ファーム内の各サーバーで以下のグローバル JNDI プロパティーが必要です。
 
-|             JNDI プロパティー |             値 |
+| JNDI プロパティー  |             値 |
 |----------------------------|--------|
 | mfp.topology.platform	WAS| WAS|
 | mfp.topology.clustermode   | Farm   |
@@ -405,7 +409,7 @@ Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) �
 
 管理サービスでサーバー・ファーム構成を管理するために、以下の JNDI プロパティーが必要です。
 
-|             JNDI プロパティー |             値 |
+| JNDI プロパティー  |             値 |
 |--------------------|--------|
 | mfp.admin.jmx.user | WebSphere Application Server のユーザー名。このユーザーは、WebSphere Application Server ユーザー・レジストリーで定義されていなければなりません。|
 | mfp.admin.jmx.pwd	| WebSphere Application Server ユーザーのパスワード。|
@@ -548,7 +552,7 @@ Liberty 集合トポロジーでは、{{ site.data.keys.mf_server }} 管理コ�
 
 同じ管理コンポーネントを使用している複数のコントローラー (レプリカ) が使用される場合、ランタイム用の以下の JNDI プロパティーが必要です。
 
-|             JNDI プロパティー |             値 | 
+| JNDI プロパティー  |             値 | 
 |-----------------|--------|
 | mfp.admin.jmx.replica | 複数の異なるコントローラー・レプリカのエンドポイント・リスト (`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 構文を使用)。 | 
 
@@ -615,7 +619,7 @@ Liberty 集合トポロジーでは、{{ site.data.keys.mf_server }} 管理コ�
 
 管理サービスとランタイムについて、以下のローカル JNDI プロパティーが必要です。
 
-|             JNDI プロパティー |	            値 |
+| JNDI プロパティー  |	            値 |
 |-----------------|--------|
 | mfp.topology.platform	| WAS|
 | mfp.topology.clustermode | クラスター|
@@ -651,7 +655,7 @@ Liberty 集合トポロジーでは、{{ site.data.keys.mf_server }} 管理コ�
 
 アプリケーション・サーバー・インフラストラクチャーの前面にリバース・プロキシーが使用される場合は、管理サービスの以下の JNDI プロパティーが定義されなければなりません。
 
-|             JNDI プロパティー |	            値 |
+| JNDI プロパティー  |	            値 |
 |-----------------|--------|
 | mfp.admin.proxy.protocol| リバース・プロキシーとの通信に使用するプロトコル。HTTP または HTTPS が可能です。|
 | mfp.admin.proxy.host| リバース・プロキシーのホスト名。|

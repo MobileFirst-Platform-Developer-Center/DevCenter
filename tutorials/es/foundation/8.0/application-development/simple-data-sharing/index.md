@@ -136,6 +136,8 @@ WL.Client.clearSharedToken({key: myName})
 ```
 
 > Para obtener más información sobre las API de Cordova, consulte las funciones [getSharedToken](../../api/client-side-api/javascript/client/), [setSharedToken](../../api/client-side-api/javascript/client/) y [clearSharedToken](../../api/client-side-api/javascript/client/) en la referencia de API `WL.Client`.
+
+
 ### Objective-C
 {: #objective-c }
 ```objc

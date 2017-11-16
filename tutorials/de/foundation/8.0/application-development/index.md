@@ -77,6 +77,8 @@ werden in der
 
 > **Hinweis:** Die Funktion **Keychain Sharing** ist obligatorisch, wenn Sie Xcode 8 verwenden und iOS-Apps im iOS-Simulator ausführen. Sie müssen diese Funktion manuell aktivieren, bevor Sie das Xcode-Projekt erstellen.
 
+
+
 ### Anwendungskonfiguration
 {: #application-configuration }
 Wie bereits erwähnt, wird eine Anwendung sowohl auf der Clientseite als auch auf der Serverseite konfiguriert.   
@@ -124,7 +126,9 @@ Konfiguration Ihres {{ site.data.keys.mf_server }} automatisieren.
 
 > **Beachten Sie Folgendes:** Sie können die Serverkonfiguration sogar modifizieren, während der
 {{ site.data.keys.mf_server }} aktiv ist und Datenverkehr von Apps empfängt. Sie müssen den Server nicht stoppen,
-um die Serverkonfiguration für eine App zu ändern. Auf einem Produktionsserver entspricht
+um die Serverkonfiguration für eine App zu ändern. 
+
+Auf einem Produktionsserver entspricht
 die App-Version üblicherweise der in einem App Store veröffentlichten Version einer Anwendung. Einige Serverkonfigurationselemente wie die Konfiguration der
 App-Authentizität, sind für die im Store veröffentlichte App eindeutig. 
 
@@ -149,7 +153,9 @@ bis hin zur Implementierung in der Produktion und zur Wartung.
 
 > Wenn Sie Ihre App entwickeln, steht Ihnen ein vorkonfigurierter Server
 zur Verfügung. Informationen zur Verwendung von {{ site.data.keys.mf_server }} für die Entwicklung Ihrer App
-finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development). {{ site.data.keys.mf_server }} umfasst die folgenden Komponenten, die
+finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development). 
+
+{{ site.data.keys.mf_server }} umfasst die folgenden Komponenten, die
 alle auch im
 {{ site.data.keys.mf_server }} enthalten sind.
 In einfachen Fällen werden alle Komponenten in demselben Anwendungsserver ausgeführt.

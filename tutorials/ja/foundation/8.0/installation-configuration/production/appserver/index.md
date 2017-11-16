@@ -649,6 +649,8 @@ WebSphere Application Server Network Deployment にインストールするに�
 
 > **注:** JNDI 値の自動変換から保護し、075 が 61 に、または 31.500 が 31.5 に変換されないようにするには、値を定義するときにこの構文 '"075"' を使用してください。
 
+
+
 管理サービスの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。  
 
 ファーム構成については、以下のトピックも参照してください。
@@ -991,6 +993,8 @@ WebSphere Application Server Network Deployment にインストールするに�
 
 > **注:** JNDI 値の自動変換から保護し、075 が 61 に、または 31.500 が 31.5 に変換されないようにするには、値を定義するときにこの構文 '"075"' を使用してください。
 
+
+
 * 管理サービスの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。  
 * ランタイムの JNDI プロパティーについて詳しくは、[{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。
 
@@ -1179,7 +1183,6 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
                 <p><b>mobilefirst/mfp.authorization.server</b> プロパティーを定義する必要があります。例えば、次のとおりです。</p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>

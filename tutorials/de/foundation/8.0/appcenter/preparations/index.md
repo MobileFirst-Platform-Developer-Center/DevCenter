@@ -55,7 +55,9 @@ bereitgestellt. Die Datei **IBMApplicationCenterUnsigned.xap** befindet sich im 
 
 > **Wichtiger Hinweis:** Die nicht signierte .xap-Datei kann nicht direkt verwendet werden. Sie müssen die Datei vor der Installation auf einem Gerät mit Ihrem Unternehmenszertifikat signieren, das
 Sie von
-Symantec/Microsoft erhalten haben. Optional: Sie können die
+Symantec/Microsoft erhalten haben. 
+
+Optional: Sie können die
 Windows-Phone-Version ggf. auch aus Quellen erstellen. Dazu benötigen Sie die neueste Version von
 Microsoft Visual Studio.
 
@@ -127,6 +129,8 @@ Dies kann eine Weile dauern. Sobald dieser Schritt abgeschlossen ist, können Si
 
 > **Hinweis:** Wählen Sie im Popup-Fenster aus, dass Sie das Upgrade für die Gradle-Version überspringen möchten. Informationen zur Version finden Sie in `grade-wrapper.properties`.
 
+
+
 #### iOS
 {: #ios }
 * Navigieren Sie zu **Installationsverzeichnis/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
@@ -145,6 +149,8 @@ Sie müssen das Projekt **IBMAppCenter** in
 
 > **Hinweis:** Verwenden Sie für Version 8.0.0 MobileFirst Studio 7.1. Sie können
 MobileFirst Studio von der Seite [Downloads]({{site.baseurl}}/downloads) herunterladen. Installationsanweisungen finden Sie im IBM Knowledge Center für Version 7.1 unter [MobileFirst Studio installieren](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html).
+
+
 
 1. Wählen Sie **Datei → Importieren** aus.
 2. Wählen Sie **Allgemein → Vorhandenes Projekt in den Arbeitsbereich** aus.

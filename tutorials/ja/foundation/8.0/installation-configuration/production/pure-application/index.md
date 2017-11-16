@@ -183,6 +183,8 @@ MobileFirst Studio V6.3.0 以前を使用してアプリケーションを開発
 
 > **重要:** 「{{ site.data.keys.product }} (WAS ND)」パターン・テンプレートは、トークン・ライセンスをサポートしません。「{{ site.data.keys.product }} (WAS ND)」パターン・テンプレートに基づいてパターンをデプロイする場合は、永久ライセンスを使用する必要があります。その他のパターン・テンプレートはすべて、トークン・ライセンスをサポートします。
 
+
+
 IBM Rational License Key Server は、PureApplication System の外部になければなりません。{{ site.data.keys.system_pattern }} は、IBM Rational License Key Server に対して PureApplication System 共有サービスをサポートしません。
 
 さらに、パターン属性にライセンス・キー・サーバー情報を追加するために、Rational License Key Server に関する以下の情報を入手しておくことも必要です。
@@ -248,6 +250,7 @@ Rational License Key Server のインストールおよび構成について詳�
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
     > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -288,12 +291,10 @@ Rational License Key Server のインストールおよび構成について詳�
         ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。
-        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
         ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -374,6 +375,7 @@ Rational License Key Server のインストールおよび構成について詳�
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
     > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -418,12 +420,10 @@ Rational License Key Server のインストールおよび構成について詳�
         ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
         ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -504,6 +504,7 @@ Rational License Key Server のインストールおよび構成について詳�
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
     > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -530,6 +531,7 @@ Rational License Key Server のインストールおよび構成について詳�
         示されたフィールドに以下の情報を指定します。
         
         > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+
         **WebSphere 管理ユーザー名**  
         WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
 
@@ -549,12 +551,10 @@ Rational License Key Server のインストールおよび構成について詳�
         ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
         ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -642,6 +642,7 @@ Rational License Key Server のインストールおよび構成について詳�
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
     > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -697,12 +698,10 @@ Rational License Key Server のインストールおよび構成について詳�
         ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
         ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -798,6 +797,7 @@ System Monitoring for WebSphere Application Server 共有サービスを実行�
 6. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
     > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -829,7 +829,7 @@ System Monitoring for WebSphere Application Server 共有サービスを実行�
         > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
 
         **WebSphere 管理ユーザー名**  
-          WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
+        WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
 
         **WebSphere 管理パスワード**  
         WebSphere 管理コンソール・ログインの管理ユーザー・パスワード。デフォルト値: passw0rd。
@@ -847,12 +847,10 @@ System Monitoring for WebSphere Application Server 共有サービスを実行�
         ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
         ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -917,6 +915,7 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
     * PureApplication System のダッシュボードで、「パターン」をクリックしてから、「パターン・インスタンス」の下で「共有サービス」をクリックします。
 
         > **重要:** 「共有サービス」は**「パターン」**メニュー内に 2 つあるため、「パターン」ではなく、**「パターン・インスタンス」**の下にある**「共有サービス」**を必ずクリックしてください。
+
     * **「共有サービス・インスタンス」**ページで、**「System Monitoring for WebSphere Application Server」**で開始する名前を探します。その名前をクリックして、その項目を展開します。
     
         **「System Monitoring for WebSphere Application Server」**の項目が表示されない場合は、System Monitoring for WebSphere Application Server 共有サービスがデプロイされていないため、この手順を進める必要はありません。
@@ -1020,11 +1019,11 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
     
     **LMGRD\_PORT**   
     ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-    デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
     **IBMRATL\_PORT**  
     ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-    デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
     **runtime\_contextRoot**  
     ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -1128,12 +1127,10 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
         ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。
-        デフォルトのベンダー・デーモン・ポートは通常 27001 です。
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{ site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。        それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
         ステップ 5 で構成された場合、表示されません。{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
@@ -1272,7 +1269,7 @@ LDAP リポジトリー構成が使用可能である場合、{{ site.data.keys.
     --- **Everyone**  
         すべてのユーザー。
     
-        デフォルト値: None。セキュリティー役割について詳しくは、『[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
+    デフォルト値: None。セキュリティー役割について詳しくは、『[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
     
     **mfpmonitor**  
 {{ site.data.keys.mf_server }} のモニター役割。以下のいずれかの値になります。    
@@ -1283,7 +1280,7 @@ LDAP リポジトリー構成が使用可能である場合、{{ site.data.keys.
     --- **Everyone**  
         すべてのユーザー。
     
-        デフォルト値: None。セキュリティー役割について詳しくは、『[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
+    デフォルト値: None。セキュリティー役割について詳しくは、『[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
     
     **mfpoperator**  
 {{ site.data.keys.mf_server }} のオペレーター役割。以下のいずれかの値になります。
@@ -1294,7 +1291,7 @@ LDAP リポジトリー構成が使用可能である場合、{{ site.data.keys.
     --- **Everyone**  
         すべてのユーザー。
 
-        デフォルト値: None。セキュリティー役割について詳しくは、『[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
+    デフォルト値: None。セキュリティー役割について詳しくは、『[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
 
 4. オプション: LDAP SSL 接続を構成します。このステップは、LDAP サーバーへのセキュア接続を使用するために、前のステップで **REQUIRE_SSL** を true に設定した場合にのみ必要です。
     * **「資産」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。例えば、コンポーネント「MobileFirst LDAP Cert」を名前変更します。
@@ -1360,6 +1357,7 @@ LDAP リポジトリー構成が使用可能である場合、{{ site.data.keys.
         外部データベース・ポート番号。
         
         > **注:** {{ site.data.keys.product }} (WAS ND) パターン・テンプレートを使用している場合は、さらに、属性**「Open firewall ports for WAS」**を外部データベース・ポート番号に構成する必要があります。
+
     * MobileFirst Platform Server ノード (または {{ site.data.keys.product }} (WAS ND) テンプレートを使用する場合は、DmgrNode ノード) で、**「MFP Server Runtime Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「USE\_EXTERNAL\_DATABASE」**の下で、以下のパラメーターを構成します。
 
@@ -1383,6 +1381,8 @@ WebSphere Application Server Liberty プロファイルとフル・プロファ�
 LDAP リポジトリーを使用して Analytics コンソールを保護する予定の場合は、LDAP サーバーが機能していることを確認し、LDAP 管理者に問い合わせて必要な構成情報を入手してください。
 
 > **重要:** Analytics コンポーネントで LDAP リポジトリー構成が使用可能になっている場合、{{ site.data.keys.mf_analytics }} 用のデフォルト管理ユーザーは作成されません。代わりに、LDAP リポジトリーに格納されている管理ユーザー名とパスワードの値を指定する必要があります。これらの値は、Analytics コンソールを保護するために必要です。
+
+
 
 1. 必要なトポロジーを使用してパターンをビルドします。詳しくは、以下のトピックを参照してください。
     * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{ site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
@@ -1408,6 +1408,7 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
         * {{ site.data.keys.mf_analytics }} を WebSphere Application Server フル・プロファイルにデプロイする場合、{{ site.data.keys.mf_analytics }} ノードで**「Standalone server」**をクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。**「構成データ・ロケーション」**フィールドに **/opt/IBM/WebSphere/AppServer/Profiles** のパスを指定し、「プロファイル名」を**「AppSrv01」**に変更し、管理ユーザー名とパスワードを指定します。その他のパラメーターについてはデフォルト値を使用します。
     
         > **重要:** WebSphere Application Server 管理ユーザーが、WebSphere Application Server ユーザー・リポジトリーに作成されます。Analytics サーバー用に LDAP が構成される場合は、WebSphere Application Server 管理ユーザーと競合するユーザー名を使用しないようにしてください。例えば、LDAP サーバーの構成により「user1」が導入される場合は、「user1」を WebSphere Application Server 管理ユーザー名として設定しないでください。
+
     * 「コンポーネント」リストから、**「スクリプト」**を展開し、キャンバス上の {{ site.data.keys.mf_analytics }} ノードに**「MFP Server Prerequisite」**コンポーネントおよび「MFP WAS SDK Level」コンポーネントをドラッグ・アンド・ドロップします。
     * 「コンポーネント」リストから**「スクリプト」**を展開し、キャンバス上の {{ site.data.keys.mf_analytics }} ノードに**「MFP Analytics」**コンポーネントをドラッグ・アンド・ドロップします。MFP Analytics コンポーネントは、Liberty profile server コンポーネント (または Standalone server コンポーネント) の後に配置するようにしてください。
     * 示されたフィールドに以下の {{ site.data.keys.mf_analytics }} 情報を指定します。

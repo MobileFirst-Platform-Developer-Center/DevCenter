@@ -88,15 +88,14 @@ Setzen Sie **Zulässiger Bereich** für Testzwecke auf `**`.
     - Setzen Sie `grant_type` auf den Wert `client_credentials`.
     - Setzen Sie `scope` auf den schützenden Bereich für Ihre Ressource. Wenn Ihrer Ressource kein schützender Bereich zugewiesen ist, lassen Sie diesen Parameter weg, damit der Standardbereich (`RegisteredClient`) verwendet wird. Weitere Informationen finden Sie unter [Bereiche](../../authentication-and-security/#scopes).
 
-    ![Hauptteilkonfiguration in Postman](Body_configuration.png)
+    ![Konfiguration des Postman-Hauptteils](Body_configuration.png)
 
-2.  Fügen Sie einen Autorisierungsheader (`authorization header`) hinzu. Verwenden Sie die Basisauthentifizierung
-(`Basic authentication`) mit "test" als ID des vertraulichen Clients und "test" als geheimem Schlüssel. 
+2.  Fügen Sie einen Autorisierungsheader (`authorization header`) hinzu. Verwenden Sie die Basisauthentifizierung (`Basic authentication`) mit "test" als ID des vertraulichen Clients und "test" als geheimem Schlüssel.
     > Weitere Informationen zu vertraulichen Clients finden Sie unter [Vertrauliche Clients](../../authentication-and-security/confidential-clients).
 
 
 
-    ![Autorisierungskonfiguration in Postman](Authorization_configuration.png)
+    ![Konfiguration der Postman-Autorisierung](Authorization_configuration.png)
 
 
 Das Ergebnis ist ein JSON-Objekt mit einem temporär gültigen Zugriffstoken: 
@@ -274,3 +273,5 @@ folgen Sie den Anweisungen unter [M2Eclipse](http://www.eclipse.org/m2e/), um Ma
     ![Adapter während des Debuggens](debugging.png)
 
 > Anweisungen für die Nutzung von IntelliJ zum Debuggen von Java-Adaptern finden Sie im Blogbeitrag [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters).
+
+

@@ -62,6 +62,8 @@ WL.JSONStore.init(collections).then(function (collections) {
 ```
 
 > Para obtener más información sobre las características opcionales que es posible habilitar en el tiempo de inicialización, consulte **Seguridad**, **Soporte a múltiples usuarios** e **Integración de adaptadores de {{ site.data.keys.product_adj }}** en la segunda parte de esta guía de aprendizaje.
+
+
 ### Obtener
 {: #get }
 Utilice `get` para crear un accesor a la recopilación.

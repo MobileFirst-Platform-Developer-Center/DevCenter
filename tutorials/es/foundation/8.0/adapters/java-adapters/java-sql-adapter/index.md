@@ -178,6 +178,8 @@ También es recomendable comprobar si se envían todos los parámetros (no se mu
 
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Asegúrese de cerrar recursos como, por ejemplo, sentencias preparadas y conexiones.
+
+
 ### Obtención de usuario
 {: #get-user }
 
