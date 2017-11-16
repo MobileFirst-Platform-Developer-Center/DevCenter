@@ -350,6 +350,7 @@ L'API d'exportation extrait les artefacts sélectionnés pour un environnement d
 > * Le fichier d'exportation inclut les données d'authenticité d'application. Ces données sont propres à la génération d'une application mobile. Celle-ci comporte l'URL du serveur et le nom de son environnement d'exécution. Par conséquent, si vous souhaitez utiliser un autre serveur ou environnement d'exécution, vous devez régénérer l'application. Si vous transférez uniquement les fichiers d'application exportés, cela ne fonctionnera pas.
 > * Certains artefacts peuvent varier d'un serveur à un autre. Les données d'identification push varient selon que vous travaillez dans un environnement de développement ou de production.
 > * La configuration de contexte d'exécution d'application (contenant l'état actif/désactivé et les profils de journal) peut être transférée dans certains cas, mais pas toujours.
+
 > * Le transfert de ressources Web peut être inutile dans certains cas, par exemple, si vous régénérez l'application afin d'utiliser un nouveau serveur.
 
 * Pour exporter toutes les ressources, ou un sous-ensemble de ressources sélectionné, pour un adaptateur ou pour tous les adaptateurs, utilisez l'API [Export adapter resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) ou [Export adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc).
@@ -387,7 +388,7 @@ Si vous possédez le rôle d'administrateur **mfpadmin** et le rôle de déploye
 > 
 > * Le fichier d'exportation inclut les données d'authenticité d'application. Ces données sont propres à la génération d'une application mobile. Celle-ci comporte l'URL du serveur et le nom de son environnement d'exécution. Par conséquent, si vous souhaitez utiliser un autre serveur ou environnement d'exécution, vous devez régénérer l'application. Si vous transférez uniquement les fichiers d'application exportés, cela ne fonctionnera pas.
 > * Certains artefacts peuvent varier d'un serveur à un autre. Les données d'identification push varient selon que vous travaillez dans un environnement de développement ou de production.
-> * La configuration de contexte d'exécution d'application (contenant l'état actif/désactivé et les profils de journal) peut être transférée dans certains cas, mais pas toujours.
+> * La configuration de contexte d'exécution d'application (contenant l'état actif/désactivé et les profils de journal) peut être transférée dans certains cas, mais pas toujours. 
 > * Le transfert de ressources Web peut être inutile dans certains cas, par exemple, si vous régénérez l'application afin d'utiliser un nouveau serveur.
 
 Vous pouvez également transférer des descripteurs d'application à l'aide de l'API REST ou de l'outil mfpadm. Pour plus d'informations, voir [Transfert d'une configuration d'application à l'aide du service d'administration](#transferring-an-application-configuration-with-the-administration-service).

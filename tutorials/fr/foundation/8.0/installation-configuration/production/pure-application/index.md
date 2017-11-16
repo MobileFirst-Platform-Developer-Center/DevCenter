@@ -353,7 +353,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
     * Sauvegardez le canevas.
 3. Facultatif : Configurez l'administration de {{ site.data.keys.mf_server }}. Vous pouvez ignorer cette étape si vous souhaitez spécifier les données d'identification d'utilisateur dotées du privilège d'administration de {{ site.data.keys.mf_server }} ultérieurement lors de la phase de configuration de déploiement de canevas à l'étape 9. Pour les spécifier maintenant, procédez comme suit :
 
-    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des information LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des informations LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
     * Dans le noeud MobileFirst Platform Server, cliquez sur le composant **MFP Server Administration**. Les propriétés du composant sélectionné sont affichées en regard du canevas.
     * En regard des zones **admin_user** et **admin_password**, cliquez sur le bouton Delete pour effacer leurs paramètres de niveau de modèle.
     * Dans les zones **admin_user** et **admin\_password**, spécifiez le nom d'utilisateur et le mot de passe d'administration.
@@ -439,7 +439,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
         
         **MFP DB Password(Instance owner)**  
         Mot de passe de propriétaire d'instance pour le noeud MobileFirst Platform DB. Valeur par défaut : **passw0rd**.    
-    * Cliquez sur l'option **Quick Deploy** pour lancer le déploiement du canevas. Au bout de quelques secondes, un message s'affiche pour vous indiquer que le déploiement du canevas a démarré. Vous pouvez cliquer sur l'URL fournie dans le message pour suivre le statut du déploiement de votre canevas ou accéder à **Canevas → Instances de système virtuel** pour ouvrir la page Instances de système virtuel et y rechercher votre canevas.
+    * Cliquez sur l'option **Quick Deploy** pour lancer le déploiement du canevas. Au bout de quelques secondes, un message s'affiche pour vous indiquer que le déploiement du canevas a démarré. Vous pouvez cliquer sur l'URL fournie dans le message pour suivre le statut du déploiement de votre canevas ou accéder à **Patterns → Virtual System Instances** pour ouvrir la page Virtual System Instances et y rechercher votre canevas.
 
     Si vous utilisez l'octroi de licence de jeton pour {{ site.data.keys.product }}, le déploiement de votre canevas échoue si le nombre de jetons disponibles est insuffisant ou si l'adresse IP et le port du serveur de clé de licence n'ont pas été saisis correctement.
     
@@ -466,7 +466,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
 
 1. Créez un canevas à partir du modèle prédéfini :
     * Dans le tableau de bord IBM PureApplication System, cliquez sur **Patterns → Virtual System Patterns**. La page **Virtual System Patterns** s'affiche.
-    * Sur la page **Virtual System Patterns**, cliquez sur **Create New**, puis dans la fenêtre en incrustation, sélectionnez **MobileFirst Platform (noeud unique WAS)** dans la liste de modèles prédéfinis. Si le nom n'est que partiellement visible (en raison de sa longueur), vous pouvez vérifier que le modèle approprié est sélectionné en affichant sa description sur l'onglet **More information**.
+    * Sur la page **Virtual System Patterns**, cliquez sur **Create New**, puis dans la fenêtre en incrustation, sélectionnez **MobileFirst Platform (noeud unique WAS)** dans la liste de modèles prédéfinis. Si le nom n'est que partiellement visible (en raison de sa longueur), vous pouvez vérifier que le modèle approprié est sélectionné en affichant sa description sur l'onglet **Informations supplémentaires**.
     * Dans la zone **Name**, indiquez un nom pour le canevas.
     * Dans la zone **Version**, spécifiez le numéro de version du canevas.
     * Cliquez sur **Start Building**.
@@ -483,7 +483,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
     * Sauvegardez le canevas.
 3. Facultatif : Configurez l'administration de {{ site.data.keys.mf_server }}. Vous pouvez ignorer cette étape si vous souhaitez spécifier les données d'identification d'utilisateur dotées du privilège d'administration de {{ site.data.keys.mf_server }} ultérieurement lors de la phase de configuration de déploiement de canevas à l'étape 9. Pour les spécifier maintenant, procédez comme suit :
 
-    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des information LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des informations LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
     * Dans le noeud MobileFirst Platform Server, cliquez sur le composant **MFP Server Administration**. Les propriétés du composant sélectionné sont affichées en regard du canevas.
     * En regard des zones **admin_user** et **admin_password**, cliquez sur le bouton Delete pour effacer leurs paramètres de niveau de modèle.
     * Dans les zones **admin_user** et **admin\_password**, spécifiez le nom d'utilisateur et le mot de passe d'administration.
@@ -622,7 +622,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
     * Sauvegardez le canevas.
 3. Facultatif : Configurez l'administration de {{ site.data.keys.mf_server }}. Vous pouvez ignorer cette étape si vous souhaitez spécifier les données d'identification d'utilisateur dotées du privilège d'administration de {{ site.data.keys.mf_server }} ultérieurement lors de la phase de configuration de déploiement de canevas à l'étape 9. Pour les spécifier maintenant, procédez comme suit :
 
-    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des information LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des informations LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
     * Dans le noeud MobileFirst Platform Server, cliquez sur le composant **MFP Server Administration**. Les propriétés du composant sélectionné sont affichées en regard du canevas.
     * En regard des zones **admin_user** et **admin_password**, cliquez sur le bouton Delete pour effacer leurs paramètres de niveau de modèle.
     * Dans les zones **admin_user** et **admin\_password**, spécifiez le nom d'utilisateur et le mot de passe d'administration.
@@ -748,7 +748,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
 
 1. Créez un canevas à partir du modèle prédéfini :
     * Dans le tableau de bord IBM PureApplication System, cliquez sur **Patterns → Virtual System Patterns**. La page Virtual System Patterns s'affiche.
-    * Sur la page **Virtual System Patterns**, cliquez sur **Create New**, puis dans la fenêtre en incrustation, sélectionnez **MobileFirst Platform (WAS ND)** dans la liste de modèles prédéfinis. Si le nom n'est que partiellement visible (en raison de sa longueur), vous pouvez vérifier que le modèle approprié est sélectionné en affichant sa description sur l'onglet **More information**.
+    * Sur la page **Virtual System Patterns**, cliquez sur **Create New**, puis dans la fenêtre en incrustation, sélectionnez **MobileFirst Platform (WAS ND)** dans la liste de modèles prédéfinis. Si le nom n'est que partiellement visible (en raison de sa longueur), vous pouvez vérifier que le modèle approprié est sélectionné en affichant sa description sur l'onglet **Informations supplémentaires**.
     * Dans la zone **Name**, indiquez un nom pour le canevas.
     * Dans la zone **Version**, spécifiez le numéro de version du canevas.
     * Cliquez sur **Start Building**.
@@ -765,7 +765,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
     * Sauvegardez le canevas.
 3. Facultatif : Configurez l'administration de {{ site.data.keys.mf_server }}. Vous pouvez ignorer cette étape si vous souhaitez spécifier les données d'identification d'utilisateur dotées du privilège d'administration de {{ site.data.keys.mf_server }} ultérieurement lors de la phase de configuration de déploiement de canevas à l'étape 9. Pour les spécifier maintenant, procédez comme suit :
 
-    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des information LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    > **Remarque :** Si vous souhaitez configurer la sécurité d'administration avec un serveur LDAP, vous devez indiquer des informations LDAP supplémentaires. Pour plus d'informations, voir [Configuration de la sécurité d'administration de {{ site.data.keys.product_adj }} à l'aide d'un référentiel LDAP externe](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
     * Dans le noeud MobileFirst Platform Server, cliquez sur le composant **MFP Server Administration**. Les propriétés du composant sélectionné sont affichées en regard du canevas.
     * En regard des zones **admin_user** et **admin_password**, cliquez sur le bouton Delete pour effacer leurs paramètres de niveau de modèle.
     * Dans les zones **admin_user** et **admin\_password**, spécifiez le nom d'utilisateur et le mot de passe d'administration.
@@ -969,7 +969,7 @@ Pour plus d'informations sur les options de composition et de configuration du m
 
 1. Créez un canevas à partir du modèle prédéfini :
     * Dans le tableau de bord IBM PureApplication System, cliquez sur **Patterns → Virtual System Patterns**. La page Virtual System Patterns s'affiche.
-    * Sur la page **Virtual System Patterns**, cliquez sur **Create New**, puis dans la fenêtre en incrustation, sélectionnez **MobileFirst Platform (noeud unique AppCenter Liberty)** dans la liste de modèles prédéfinis. Si le nom n'est que partiellement visible (en raison de sa longueur), vous pouvez vérifier que le modèle approprié est sélectionné en affichant sa description sur l'onglet **More information**.
+    * Sur la page **Virtual System Patterns**, cliquez sur **Create New**, puis dans la fenêtre en incrustation, sélectionnez **MobileFirst Platform (noeud unique AppCenter Liberty)** dans la liste de modèles prédéfinis. Si le nom n'est que partiellement visible (en raison de sa longueur), vous pouvez vérifier que le modèle approprié est sélectionné en affichant sa description sur l'onglet **Informations supplémentaires**.
     * Dans la zone **Name**, indiquez un nom pour le canevas.
     * Dans la zone **Version**, spécifiez le numéro de version du canevas.
     * Cliquez sur **Start Building**.
@@ -1298,7 +1298,7 @@ Si l'environnement d'exécution à déployer dans le canevas est configuré pour
     Valeur par défaut : None. Pour plus d'informations sur les rôles de sécurité, voir [Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 4. Facultatif : Configurez la connexion SSL LDAP. Cette étape est obligatoire uniquement si vous affectez à **REQUIRE_SSL** la valeur true au cours de l'étape précédente pour utiliser des connexions sécurisées avec le serveur LDAP :
-    * Dans la barre d'outils **Actifs**, développez **Composants logiciels**, puis copiez et collez le composant **Fichier supplémentaire** dans le noeud MobileFirst Platform Server dans le canevas. Renommez le composant "MobileFirst LDAP Cert", par exemple :
+    * Dans la barre d'outils **Assets**, développez **Software Components**, puis copiez et collez un composant **Additional file** dans le noeud MobileFirst Platform Server dans le canevas. Renommez le composant "MobileFirst LDAP Cert", par exemple :
     * Survolez le composant nouvellement ajouté, puis cliquez sur les boutons **Move up** et **Move down** pour ajuster sa position dans le noeud. Prenez soin de le placer entre le composant **MFP Server Prerequisite** et le composant **MFP Server Administration**.
     * Cliquez sur le composant **MobileFirst LDAP Cert**. Les propriétés du composant sélectionné sont affichées en regard du canevas. Téléchargez l'artefact de certification LDAP dans la zone **Additional file** en cliquant sur le bouton **Browse** pour le localiser.
     * Dans la zone **Target path**, spécifiez le chemin d'accès complet pour le stockage de l'artefact, y compris son nom de fichier, par exemple, **/opt/tmp/tdscert.der**.
@@ -1601,7 +1601,7 @@ Le modèle {{ site.data.keys.product }} (WAS ND) est composé des noeuds et comp
 | Noeud | Composants | 
 |------|------------|
 | IHS Server | **Serveurs HTTP IBM HTTP Server**<br/>Installation d'IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuration automatique d'IBM HTTP Server. | 
-| DmgrNode | **Gestionnaire de déploiement**<br/>Installation du gestionnaire de déploiement de WebSphere Application Server.<br/><br/>Restriction : ne modifiez pas les valeurs des attributs de composant suivants :{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Si vous modifiez l'un de ces attributs, le déploiement des canevas basés sur ce modèle échoue.<br/><br/>**MFP Server Prerequisite**<br/>Prérequis pour l'installation de {{ site.data.keys.mf_server }} avec SSL et Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Application d'administration web incluant {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Fichier WAR d'exécution.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuration de la racine du contexte d'exécution.<br/><br/>**MFP Application**<br/>{{ site.data.keys.product_adj }} application à ajouter au déploiement.<br/><br/>**MFP Adapter**<br/>Adaptateur à ajouter au déploiement.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Déploiement de l'application
+| DmgrNode | **Gestionnaire de déploiement**<br/>Installation du gestionnaire de déploiement de WebSphere Application Server.<br/><br/>Restriction : ne modifiez pas les valeurs des attributs de composant suivants :{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Si vous modifiez l'un de ces attributs, le déploiement des canevas basés sur ce modèle échoue.<br/><br/>**MFP Server Prerequisite**<br/>Prérequis pour l'installation de {{ site.data.keys.mf_server }} avec SSL et Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Application d'administration web incluant {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Fichier WAR d'exécution.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuration de la racine de contexte d'exécution.<br/><br/>**MFP Application**<br/>{{ site.data.keys.product_adj }} application à ajouter au déploiement.<br/><br/>**MFP Adapter**<br/>Adaptateur à ajouter au déploiement.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Déploiement de l'application
 et de l'adaptateur dans {{ site.data.keys.mf_server }}. | 
 | MobileFirst Platform DB | **Serveur de base de données**<br/>Installation du serveur de base de données DB2.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} installation du schéma de base de données d'administration.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }}Installation du schema de base de données d'exécution.<br/><br/>**Disque d'ajout par défaut**<br/>Configuration de la taille du disque. | 
 | CustomNode | **Noeuds personnalisés**<br/>Détails des cellules et des noeuds dans les clusters des serveurs de déploiement réseau de WebSphere Application Server.<br/><br/>Restriction : ne modifiez pas les valeurs des attributs de composant suivants :{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}Si vous modifiez l'un de ces attributs, le déploiement des canevas basés sur ce modèle échoue.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports qui doivent être ouverts pour permettre la connexion au serveur de base de données et au serveur LDAP.<br/><br/>**Stratégie de dimensionnement de base**<br/>Nombre de d'instances de machine virtuelle nécessaire pour la topologie sélectionnée. | 
@@ -1688,10 +1688,10 @@ Ce package de script configure {{ site.data.keys.mf_analytics_server }} dans le 
 | GROUP_FILTER | (Paramètre LDAP) Filtre de groupe LDAP qui s'applique lors de la recherche de groupes dans le registre d'utilisateurs existant. | 
 | LDAP\_REPOSITORY\_NAME | (Paramètre LDAP) Nom de serveur LDAP. | 
 | CERT\_FILE\_PATH | (Paramètre LDAP) Chemin cible de la certification de serveur LDAP téléchargée. Obligatoire lorsque REQUIRE_SSL a pour valeur true. | 
-| mfpadmin | (Paramètre LDAP) Rôle Admin pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpadmin | (Paramètre LDAP) Rôle Admin pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
@@ -1699,7 +1699,7 @@ Ce package de script configure IBM HTTP Server pour fonctionner en tant qu'équi
 
 | Paramètre | Description | 
 |-----------|-------------|
-| WAS_ROOT | Obligatoire. Répertoire d'installation de profil Liberty de WebSphere Application Server ou de profil complet de WebSphere Application Server dans le noeud MobileFirst Platform Server ou répertoire d'installation de Deployment manager dans le noeud DmgrNode. Dans les modèles de canevas, il est mappé à l'attribut de sortie `répertoire_install` du composant Liberty profile server, Standalone server ou Deployment manager.| 
+| WAS_ROOT | Obligatoire. Répertoire d'installation de profil Liberty de WebSphere Application Server ou de profil complet de WebSphere Application Server dans le noeud MobileFirst Platform Server ou répertoire d'installation de Deployment manager dans le noeud DmgrNode. Dans les modèles de canevas, il est mappé à l'attribut de sortie `répertoire_install` du composant Liberty profile server, Standalone server ou Deployment manager. | 
 | profile_name | Facultatif. Nom de profil contenant les fichiers de l'environnement d'exécution de WebSphere Application Server.<br/><br/>Dans les modèles de canevas///, il est mappé à l'attribut de sortie **dmgr\_profile\_name** du gestionnaire de déploiement ou du profil sa_profile_name du serveur autonome. | 
 | runtime\_contextRoot\_list | Obligatoire. Liste de racines de contexte d'exécution qui permet à IHS d'acheminer des demandes dotées de racines de contexte correspondantes. Utilisez des points-virgules (;) pour séparer les racines de contexte d'exécution. Par exemple, HelloMobileFirst;HelloWorld<br/><br/>Important : A aligner avec la racine de contexte spécifiée dans MFP Server Runtime Deployment. Sinon, IHS ne peut pas acheminer correctement des demandes contenant la racine de contexte d'exécution. | 
 | http_port | Obligatoire. Ouvrez le port de pare-feu dans le noeud IHS Server pour autoriser le transport HTTP entre IHS Server et {{ site.data.keys.mf_server }}. Doit être 9080. | 
@@ -1723,7 +1723,7 @@ Ce package de script ne s'applique que lorsque des profils WAS sont disponibles 
 
 | Paramètre | Description | 
 |-----------|-------------|
-| WAS_ROOT | Répertoire d'installation de profil Liberty de WebSphere Application Server ou de profil complet de WebSphere Application Server dans le noeud MobileFirst Platform Server ou répertoire d'installation du composant Deployment manager dans le noeud DmgrNode. Dans les modèles de canevas, il est mappé à l'attribut de sortie **répertoire_install** du composant Liberty profile server, Standalone server ou Deployment manager.|
+| WAS_ROOT | Répertoire d'installation de profil Liberty de WebSphere Application Server ou de profil complet de WebSphere Application Server dans le noeud MobileFirst Platform Server ou répertoire d'installation du composant Deployment manager dans le noeud DmgrNode. Dans les modèles de canevas, il est mappé à l'attribut de sortie **répertoire_install** du composant Liberty profile server, Standalone server ou Deployment manager. |
 | profile_name | Nom de profil contenant les fichiers de l'environnement d'exécution de WebSphere Application Server. Dans les modèles de canevas, il est mappé à l'attribut de sortie **dmgr\_profile\_name** du composant Deployment manager ou à l'attribut de sortie **sa\_profile\_name** du composant Standalone server. | 
 | SDK_name | Nom du logiciel SDK qui doit être activé pour cette installation de WebSphere. | 
 
@@ -1746,7 +1746,7 @@ Il doit être utilisé avec le composant logiciel du profil Liberty de WebSphere
 
 | Paramètre | Description |
 |-----------|-------------|
-| WAS_ROOT | Obligatoire. Répertoire d'installation de profil Liberty de WebSphere Application Server ou de profil complet de WebSphere Application Server dans le noeud MobileFirst Platform Server ou répertoire d'installation du composant Deployment manager dans le noeud DmgrNode. Dans les modèles de canevas, il est mappé à l'attribut de sortie `répertoire_install` du composant Liberty profile server, Standalone server ou Deployment manager.| 
+| WAS_ROOT | Obligatoire. Répertoire d'installation de profil Liberty de WebSphere Application Server ou de profil complet de WebSphere Application Server dans le noeud MobileFirst Platform Server ou répertoire d'installation du composant Deployment manager dans le noeud DmgrNode. Dans les modèles de canevas, il est mappé à l'attribut de sortie `répertoire_install` du composant Liberty profile server, Standalone server ou Deployment manager. | 
 | profile_name | Facultatif. Nom de profil contenant les fichiers de l'environnement d'exécution de WebSphere Application Server. Dans les modèles de canevas, il est mappé à l'attribut de sortie dmgr_profile_name du composant Deployment manager ou à l'attribut de sortie sa_profile_name du composant Standalone server. | 
 | NUMBER\_OF\_CLUSTERMEMBERS | Facultatif. S'applique uniquement au modèle de canevas {{ site.data.keys.product }} (WAS ND). Spécifie le nombre de membres d'un cluster pour que celui-ci puisse déployer le service d'administration de MFP. Valeur par défaut : 2. | 
 | db_user | Obligatoire. Nom d'utilisateur ayant créé la base de données d'administration. Il est mappé à l'attribut de sortie db_user du package de script MFP Administration DB dans le modèle de canevas. | 
@@ -1774,10 +1774,10 @@ Il doit être utilisé avec le composant logiciel du profil Liberty de WebSphere
 | GROUP_FILTER | (Paramètre LDAP) Filtre de groupe LDAP qui s'applique lors de la recherche de groupes dans le registre d'utilisateurs existant. | 
 | LDAP\_REPOSITORY\_NAME | (Paramètre LDAP) Nom de serveur LDAP. | 
 | CERT\_FILE\_PATH | (Paramètre LDAP) Chemin cible de la certification de serveur LDAP téléchargée. Obligatoire lorsque REQUIRE_SSL a pour valeur true. | 
-| mfpadmin | Rôle d'administrateur pour {{ site.data.keys.mf_server }}. Valeurs possibles :<br/><br/>Aucune<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpadmin | Rôle d'administrateur pour {{ site.data.keys.mf_server }}. Valeurs possibles :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
@@ -1811,7 +1811,7 @@ Ce package de script configure le serveur {{ site.data.keys.mf_app_center }} dan
 | WAS\_admin\_user | Obligatoire pour WebSphere Application Server. Facultatif pour WebSphere Application Server Liberty. Lorsque {{ site.data.keys.mf_server }} est déployé sur le profil complet de WebSphere Application Server, il est mappé à l'attribut de sortie was_admin du composant Standalone server dans le modèle de canevas.<br/><br/>Lorsque {{ site.data.keys.mf_server }} est déployé sur WebSphere Application Server Network Deployment, il est mappé à l'attribut de sortie was_admin du composant Deployment manager dans le modèle de canevas. | 
 | WAS\_admin\_password | Obligatoire pour WebSphere Application Server. Facultatif pour WebSphere Application Server Liberty. Lorsque {{ site.data.keys.mf_server }} est déployé sur le profil complet de WebSphere Application Server, il est mappé à l'attribut de sortie was\_admin\_password du composant Standalone server dans le modèle de canevas. |
 | server_hostname | Nom d'hôte de {{ site.data.keys.mf_server }}. Il est mappé à l'attribut de sortie host des composants Liberty profile server ou Standalone server. |
-| LDAP_TYPE | (Paramètre LDAP) Obligatoire. Type de serveur LDAP de votre registre d'utilisateurs :<br/><br/>Aucun<br/>La connexion LDAP est désactivée. Lorsque cette valeur est définie, tous les autres paramètres LDAP sont traités comme des marques de réservation uniquement.<br/><br/>TivoliDirectoryServer<br/>Sélectionnez cette valeur si le référentiel LDAP est un système IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Sélectionnez cette valeur si le référentiel LDAP est un système Microsoft Active Directory.<br/><br/>Valeur par défaut : None. | 
+| LDAP_TYPE | (Paramètre LDAP) Obligatoire. Type de serveur LDAP de votre registre d'utilisateurs :<br/><br/>None<br/>La connexion LDAP est désactivée. Lorsque cette valeur est définie, tous les autres paramètres LDAP sont traités comme des marques de réservation uniquement.<br/><br/>TivoliDirectoryServer<br/>Sélectionnez cette valeur si le référentiel LDAP est un système IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Sélectionnez cette valeur si le référentiel LDAP est un système Microsoft Active Directory.<br/><br/>Valeur par défaut : None. | 
 | LDAP_IP | (Paramètre LDAP). Adresse IP du serveur LDAP. | 
 | LDAP\_SSL\_PORT | (Paramètre LDAP) Port LDAP pour la connexion sécurisée. | 
 | LDAP_PORT | (Paramètre LDAP) Port LDAP pour la connexion non sécurisée. | 
@@ -1823,7 +1823,7 @@ Ce package de script configure le serveur {{ site.data.keys.mf_app_center }} dan
 | GROUP_FILTER | (Paramètre LDAP) Filtre de groupe LDAP qui s'applique lors de la recherche de groupes dans le registre d'utilisateurs existant. | 
 | LDAP\_REPOSITORY\_NAME | (Paramètre LDAP) Nom de serveur LDAP. | 
 | CERT\_FILE\_PATH | (Paramètre LDAP) Chemin cible de la certification de serveur LDAP téléchargée. Obligatoire lorsque REQUIRE_SSL a pour valeur true. | 
-| appcenteradmin | Rôle d'administrateur pour {{ site.data.keys.mf_app_center }}. Valeurs possibles :<ul><li>Aucune</li><li>Aucun utilisateur</li><li>AllAuthenticatedUsers</li>Utilisateurs authentifiés</li><li>Everyone</li><li>Tous les utilisateurs</li></ul>{:/}Valeur par défaut : None | 
+| appcenteradmin | Rôle d'administrateur pour {{ site.data.keys.mf_app_center }}. Valeurs possibles :<ul><li>None</li><li>Aucun utilisateur</li><li>AllAuthenticatedUsers</li>Utilisateurs authentifiés</li><li>Everyone</li><li>Tous les utilisateurs</li></ul>{:/}Valeur par défaut : None | 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }
