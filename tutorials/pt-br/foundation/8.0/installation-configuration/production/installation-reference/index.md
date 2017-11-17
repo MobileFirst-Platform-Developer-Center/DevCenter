@@ -428,11 +428,9 @@ O elemento `<user>` coleta os parâmetros sobre um usuário para incluir em uma 
 
 | Atributo   | Descrição (Description)                                                             | Necessário | Padrão |
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| função	    | Uma função de segurança válida para o aplicativo. Valor possível: configadmin.	| Sim      | Nenhuma    |
-| nome	      | O nome de usuário.	
-| Sim      | Nenhuma    |
-| senha	  | A senha, caso o usuário precise ser criado.	
-| No       | Nenhuma    |
+| função	      | Uma função de segurança válida para o aplicativo. Valor possível: configadmin.	| Sim      | Nenhuma    |
+| nome	      | O nome de usuário.	                                                        | Sim      | Nenhuma    |
+| senha	  | A senha, caso o usuário precise ser criado.	                        | No       | Nenhuma    |
 
 Após ter definido os usuários usando o elemento `<user>`, é possível mapeá-los para qualquer uma das funções a seguir para autenticação no {{site.data.keys.mf_console }}: `configadmin`.
 
@@ -483,7 +481,7 @@ O elemento `<analytics>` indica que você deseja conectar o serviço de push do 
 |---------------|---------------------------------------------------------------------------|----------|---------|
 | instalar	    | Para indicar se deseja conectar o serviço de push ao {{ site.data.keys.mf_analytics }}. | No       | falso   |
 | analyticsURL 	| A URL dos serviços {{ site.data.keys.mf_analytics }}.	                            | Sim	   | Nenhuma    |
-| username	    | O nome de usuário.	                                                       | Sim	   | Nenhuma    |
+| username	    | O nome de usuário.	                                                        | Sim	   | Nenhuma    |
 | senha	    | A senha.	                                                            | Sim	   | Nenhuma    |
 | validar	    | Para validar se o {{ site.data.keys.mf_analytics_console }} está ou não acessível.	| Não	   | verdadeiro    |
 
@@ -648,7 +646,8 @@ No entanto, para o elemento interno do elemento `<was>` para Liberty Collective,
 
 | Elemento              | Descrição (Description)                  | Conta |
 |----------------------|------------------------------|-------|
-| `<collectiveMember>` | Um membro do Liberty Collective. |	0..1  |
+| `<collectiveMember>` | Um membro do Liberty
+Collective. |	0..1  |
 
 O elemento `<collectiveMember>` possui os atributos a seguir:
 
@@ -838,7 +837,8 @@ Suporta os seguintes elementos para o Liberty Collective:
 
 | Elemento               | Descrição (Description)                  | Conta |
 |-----------------------|------------------------------|-------|
-| `<collectiveMember>`  | Um membro do Liberty Collective. | 0..1  |
+| `<collectiveMember>`  | Um membro do Liberty
+Collective. | 0..1  |
 
 O elemento `<collectiveMember>` possui os atributos a seguir:
 
@@ -1155,7 +1155,8 @@ O atributo **shortcutsDir** especifica onde colocar atalhos para o Application C
 O programa **aapt** faz parte da distribuição do {{ site.data.keys.product }}: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
 Se esse atributo não for configurado, durante o upload de um aplicativo apk, o Application Center o analisa usando seu próprio código, que pode ter limitações.
 
-O elemento `<installApplicationCenter>`, `<updateApplicationCenter>` e `<uninstallApplicationCenter>` suportam os elementos a seguir:
+O elemento `<installApplicationCenter>`, `<updateApplicationCenter>`
+e `<uninstallApplicationCenter>` suportam os elementos a seguir:
 
 | Elemento           | Descrição	                            | Conta |
 |-------------------|-------------------------------------------|-------|
@@ -1262,7 +1263,8 @@ As tarefas **installanalytics**, **updateanalytics** e **uninstallanalytics** t�
 {: #servicewar-2 }
 Use o atributo **serviceWar** para especificar um diretório diferente para o arquivo WAR de Serviços do {{ site.data.keys.mf_analytics }}. Você pode especificar o nome desse arquivo WAR com um caminho absoluto ou um caminho relativo.
 
-O elemento `<installanalytics>`, `<updateanalytics>` e `<uninstallanalytics>` suportam os elementos a seguir:
+O elemento `<installanalytics>`, `<updateanalytics>`
+e `<uninstallanalytics>` suportam os elementos a seguir:
 
 | Atributo         | Descrição (Description)                               | Necessário | Padrão |
 |-------------------|-------------------------------------------|----------|---------|
@@ -1408,7 +1410,8 @@ Use o elemento `<applicationserver>` para definir os parâmetros que dependem do
 
 ### Para especificar propriedades JNDI customizadas
 {: #to-specify-custom-jndi-properties }
-O elemento `<installanalytics>`, `<updateanalytics>` e `<uninstallanalytics>` suportam o elemento a seguir:
+O elemento `<installanalytics>`, `<updateanalytics>`
+e `<uninstallanalytics>` suportam o elemento a seguir:
 
 | Elemento  | Descrição (Description) | Conta |
 |----------|-------------|-------|
@@ -1516,7 +1519,8 @@ Selecione o arquivo de configuração de amostra apropriado. Os seguintes arquiv
 {: #sample-configuration-files-for-mobilefirst-analytics }
 {{ site.data.keys.product }} O inclui vários arquivos de configuração de amostra para ajudá-lo a começar a usar as tarefas Ant para instalar o {{ site.data.keys.mf_analytics }} Services e o {{ site.data.keys.mf_analytics_console }}.
 
-A maneira mais fácil de começar a usar as tarefas Ant `<installanalytics>`, `<updateanalytics>` e `<uninstallanalytics>` é trabalhando com os arquivos de configuração de amostra fornecidos no diretório **Analytics/configuration-samples/** da distribuição do {{ site.data.keys.mf_server }}.
+A maneira mais fácil de começar a usar as tarefas Ant `<installanalytics>`, `<updateanalytics>`
+e `<uninstallanalytics>` é trabalhando com os arquivos de configuração de amostra fornecidos no diretório **Analytics/configuration-samples/** da distribuição do {{ site.data.keys.mf_server }}.
 
 ### Etapa 1
 {: #step-1 }

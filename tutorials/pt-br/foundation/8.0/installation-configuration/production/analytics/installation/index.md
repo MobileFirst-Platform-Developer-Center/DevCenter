@@ -266,7 +266,7 @@ Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos est
 
     > Nota: os seguintes caracteres especiais devem estar escapados quando forem usados nos valores dos scripts XML Ant:
     >
-    > * O símbolo de dólar ($) deve ser escrito como $$, , a menos que você deseje referenciar explicitamente uma variável Ant por meio da sintaxe ${variable}, conforme descrito na seção [Propriedades](http://ant.apache.org/manual/properties.html) do Manual do Apache Ant.
+    > * O símbolo de dólar ($) deve ser escrito como $$, , a não ser que você explicitamente deseje referenciar uma variável Ant por meio a sintaxe ${variável}, conforme descrito na seção [Propriedades](http://ant.apache.org/manual/properties.html) do Manual do Apache Ant.
     > * O caractere e comercial (&) deve ser escrito como &amp;, a menos que você deseje referenciar explicitamente uma entidade XML.
     > * Aspas duplas (") devem ser escritas como &quot;, exceto quando estiverem dentro de uma sequência que estiver dentro de aspas simples.
 

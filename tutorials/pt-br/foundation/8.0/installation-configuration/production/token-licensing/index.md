@@ -211,7 +211,7 @@ Deve-se instalar as bibliotecas nativas e Java do Rational Common Licensing no p
    No arquivo **${wlp.user.dir}/servers/server_name/server.xml**, inclua essas linhas de configuração JNDI.
     
    ```xml
-   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/>
+   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
    <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
    ```
    * **rlks_hostname** é o nome do host do Rational License Key Server.
