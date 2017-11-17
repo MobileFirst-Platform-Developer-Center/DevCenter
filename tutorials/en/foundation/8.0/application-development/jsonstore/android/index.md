@@ -365,6 +365,11 @@ try {
   // handle error
 }
 ```
+**** Note ****
+Mobilefirst JSONstore uses "sqlcipher" third party library which does not have support for 64 bit architecture . And thus the devices which is a 64 bit architercture device(for example Google Pixel XL) might result in getting exception as 'java.lang.UnsatisfiedLinkError: dlopen failed: "libcrypto.so.1.0.0" is 32-bit instead of 64-bit' . Hence it is recommended to use abi filters in "DefaultConfig" section of build.gradle file in such scenarios as below :
+ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
 
 <img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
 ## Sample application
