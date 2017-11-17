@@ -35,7 +35,7 @@ weight: 3
 在**常规设置**选项卡中，选择“图表标题”、“事件类型”和“图表类型”。  
 在选择“事件类型”和“图表类型”之后，将显示**图表定义**选项卡。
 
-### 2. “图表定义”选项卡
+### 2. “图标定义”选项卡
 {: #2-the-chart-definition-tab }
 
 使用**图表定义**选项卡为先前选择的指定图表类型定义图表。定义图表后，可以设置图表过滤器和图表属性。
@@ -176,7 +176,8 @@ weight: 3
 ## 导出和导入定制图表定义
 {: #exporting-and-importing-custom-chart-definitions }
 
-您可以在 {{ site.data.keys.mf_analytics_console_short }} 中导出和导入定制图表定义。如果从测试环境迁移至生产部署，可以通过导出定制图表定义来节省时间，而无需为新集群重新创建定制图表。
+您可以在 {{ site.data.keys.mf_analytics_console_short }} 中导出和导入定制图表定义。
+如果从测试环境迁移至生产部署，可以通过导出定制图表定义来节省时间，而无需为新集群重新创建定制图表。
 
 1. 单击 {{ site.data.keys.mf_analytics_console_short }} 仪表板中的**定制图表**选项卡。
 2. 单击**导出图表**以下载带有您的图表定义的 JSON 文件。

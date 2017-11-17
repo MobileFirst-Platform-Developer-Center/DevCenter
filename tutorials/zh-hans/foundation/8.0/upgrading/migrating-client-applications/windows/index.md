@@ -113,7 +113,7 @@ for Windows Phone 作为对应用程序的引用。要执行此操作，请在 V
 
 | 类别 | 描述 | 推荐操作 |
 |----------|-------------|--------------------|
-| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler`  | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler`, `isCustomResponse()`  | 使用 `GatewayChallengeHandler.canHandleResponse()。` |
 | `ChallengeHandler.submitAdapterAuthentication` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler.Shouldcancel()`。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |

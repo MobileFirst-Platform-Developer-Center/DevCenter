@@ -34,7 +34,7 @@ weight: 1
 | shell 组件 | 不支持<br/><br/>注：如果先前混合应用程序使用 shell 和内部应用程序，那么建议采用 Cordova 设计模式，并将 shell 组件作为可以跨应用程序共享的 Cordova 插件进行实施。 | 不支持 | 是 |
 | 内部混合应用程序 | 不支持<br/><br/>注：如果先前混合应用程序使用 shell 和内部应用程序，那么建议采用 Cordova 设计模式，并将 shell 组件作为可以跨应用程序共享的 Cordova 插件进行实施。 | 不支持 | 是 |
 | **应用程序功能部件** | | | 	 	 	 
-| 移动操作系统| iOS 8 或更高版本、Android 4.1 或更高版本、Windows Phone 8.1 和 Windows Phone 10。 | iOS 7 或更高版本、Android 4 或更高版本。 | iOS、Android 和 Windows Phone 8 |
+| 移动操作系统	| iOS 8 或更高版本、Android 4.1 或更高版本、Windows Phone 8.1 和 Windows Phone 10。 | iOS 7 或更高版本、Android 4 或更高版本。 | iOS、Android 和 Windows Phone 8 |
 | Web 应用程序 | 是，用作未使用 Apache Cordova 开发的 JavaScript 应用程序。 | 不支持 | 是，用作 desktopbrowser 或 mobilewebapp 环境。 |
 | 直接更新 | 是。 | 是 | 是 |
 | {{ site.data.keys.product_adj }}安全框架 | 是 | 是 | 是 |
@@ -359,7 +359,7 @@ options)</code></li></ul>{:/} | 无替换。 您可以使用适配器和 [MFP.Se
 | `WL.Device.setFriendlyName()` | 使用 `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，**cordova-plugin-network-information** 插件提供此功能。 |
 | `WLUtils.wlCheckReachability()` | 创建用于检查服务器可用性的定制适配器。 |
-| `WL.EncryptedCache` | 使用 JSONStore 以在本地存储加密数据。 JSONStore 位于 **cordova-plugin-mfp-jsonstore** 中|
+| `WL.EncryptedCache` | 使用 JSONStore 以在本地存储加密数据。 JSONStore 位于 **cordova-plugin-mfp-jsonstore** 中 |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | 创建提供同一功能的定制适配器。 |
 | `WL.Client.getAppProperty(property)` | 可以使用 cordova plugin add **cordova-plugin-appversion** 插件来检索应用程序版本属性。 所返回的版本是本机应用程序版本（仅限 Android 和 iOS）。 |
 | `WL.Client.Push.*` | 使用 **cordova-plugin-mfp-push** 插件中的 [JavaScript 客户端推送 API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api)。 有关更多信息，请参阅[从基于事件源的通知迁移到推送通知](../../migrating-push-notifications)。 |
@@ -373,8 +373,8 @@ options)</code></li></ul>{:/} | 无替换。 您可以使用适配器和 [MFP.Se
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 无替换 |
 | `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)。 要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)。 |
 | `WL.Client.createWLChallengeHandler(realmName)` | 使用 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)。 |
-| `challengeHandler.isCustomResponse()`，其中 `challengeHandler` 是 `WL.Client.createChallengeHandler()` 返回的验证问题处理程序对象| 使用 `gatewayChallengeHandler.canHandleResponse()`，其中 `gatewayChallengeHandler` 是 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) 返回的验证问题处理程序对象。 |
-| `wlChallengeHandler.processSucccess()`，其中 `wlChallengeHandler` 是 `WL.Client.createWLChallengeHandler()` 返回的验证问题处理程序对象| 使用 `securityCheckChallengeHandler.handleSuccess()`，其中 `securityCheckChallengeHandler` 是 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) 返回的验证问题处理程序对象。 |
+| `challengeHandler.isCustomResponse()`，其中 `challengeHandler` 是 `WL.Client.createChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `gatewayChallengeHandler.canHandleResponse()`，其中 `gatewayChallengeHandler` 是 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) 返回的验证问题处理程序对象。 |
+| `wlChallengeHandler.processSucccess()`，其中 `wlChallengeHandler` 是 `WL.Client.createWLChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `securityCheckChallengeHandler.handleSuccess()`，其中 `securityCheckChallengeHandler` 是 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) 返回的验证问题处理程序对象。 |
 | `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。 对于定制网关验证问题处理程序，请使用 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) 返回的验证问题处理程序对象。 对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) 返回的验证问题处理程序对象。 |
 | `WL.Client.AbstractChallengeHandler.submitFailure(err)` | 使用 [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel)。 |
 | `WL.Client.createProvisioningChallengeHandler()` | 无替换。 设备供应现在由安全框架自动处理。 |
