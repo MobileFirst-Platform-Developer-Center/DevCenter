@@ -164,6 +164,8 @@ SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택�
 
       > **참고:** 위의 구문은 **IBMMobileFirstPlatformFoundation** POD의 최신 버전을 가져옵니다. 최신 버전의 {{ site.data.keys.product_adj }}를 사용 중이 아닌 경우, 주 버전 번호, 부 버전 번호 및 패치 번호를 포함하여 전체 버전 번호를 추가해야 합니다. 패치 번호의 형식은 YYYYMMDDHH입니다. 예를 들어, **IBMMobileFirstPlatformFoundation** POD의 특정 패치 버전 8.0.2016021411을 가져오기 위한 행은 다음과 같습니다.
 
+      
+
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
       ```

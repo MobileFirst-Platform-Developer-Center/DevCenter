@@ -229,6 +229,7 @@ public class JavaAdapterResource {
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**중요:** 어댑터 구현 내에서 `javax.ws.rs.*` 또는 `javax.servlet.*`의 클래스에 대해 정적 참조를 사용하는 경우에는 아래 옵션 중 하나를 사용하여 **RuntimeDelegate**를 구성해야 합니다.
+
 *	Liberty `jvm.options`의 `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` 설정
 또는
 *	시스템 특성 또는 JVM 사용자 정의 특성 `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` 설정
@@ -262,7 +263,7 @@ ConfigurationAPI configurationAPI;
 configurationAPI.getPropertyValue("DB_url");
 ```
 
-어댑터 구성이 {{site.data.keys.mf_console }}에서 수정될 때 JAX-RS 애플리케이션 클래스가 다시 로드되고 해당 `init` 메소드가 다시 호출됩니다. 
+어댑터 구성이 {{ site.data.keys.mf_console }}에서 수정될 때 JAX-RS 애플리케이션 클래스가 다시 로드되고 해당 `init` 메소드가 다시 호출됩니다. 
 
 `getServerJNDIProperty` 메소드는 서버 구성에서 JNDI 특성을 검색하도록 사용될 수도 있습니다. 
 

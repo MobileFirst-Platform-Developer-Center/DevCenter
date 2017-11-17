@@ -74,6 +74,8 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요**: 여기서부터 `[ProjectName].xcworkspace` 파일을 사용하여 Xcode에서 프로젝트를 여십시오. `[ProjectName].xcodeproj` 파일을 사용하지 **마십시오**. CocoaPods 기반 프로젝트는 애플리케이션(실행 파일) 및 라이브러리(CocoaPod 관리자가 가져오는 모든 프로젝트 종속 항목)를 포함하는 작업공간으로 관리됩니다.
 
+
+
 ### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
 {: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
@@ -163,7 +165,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
 >
 > 1. {{ site.data.keys.mf_console }}을 로드하십시오. 
 > 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.   
-> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.plist** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
+> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.plist** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오. 
 
 ### 설정 프로세스 완료
 {: #completing-the-setup-process }

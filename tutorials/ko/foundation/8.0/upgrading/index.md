@@ -62,6 +62,8 @@ MobileFirst 프로젝트는 더 이상 존재하지 않습니다. 대신 선택�
 
 > 중단된 기능 및 대체 경로에 대한 자세한 정보는 [v8.0에서 중단된 기능 및 v8.0에 포함되지 않은 기능](../product-overview/release-notes/deprecated-discontinued)을 참조하십시오.
 
+
+
 ## Cordova 또는 하이브리드 애플리케이션 마이그레이션
 {: #migrating-a-cordova-or-hybrid-application }
 Apache Cordova 명령행 도구 또는 Cordova 사용 IDE(예: Visual Studio Code, Eclipse, IntelliJ 등)로 Cordova 앱 개발을 시작합니다. 
@@ -78,6 +80,8 @@ Cordova 또는 하이브리드 앱을 마이그레이션하려면 다음을 수�
 
 > **참고:** 푸시 알림 지원을 마이그레이션하려면 클라이언트 측 및 서버 측 변경사항이 필요하며, 이에 대해서는 나중에 푸시 알림 지원 마이그레이션에서 설명합니다.
 
+
+
 ## 고유 애플리케이션 마이그레이션
 {: #migrating-a-native-application }
 고유 애플리케이션을 마이그레이션하려면 다음 단계를 수행해야 합니다. 
@@ -91,6 +95,8 @@ Cordova 또는 하이브리드 앱을 마이그레이션하려면 다음을 수�
     * 고유 Windows 앱의 마이그레이션에 대한 자세한 정보는 [기존 고유 Windows 애플리케이션 마이그레이션](migrating-client-applications/windows)을 참조하십시오. 
 
 > **참고:** 푸시 알림 지원을 마이그레이션하려면 클라이언트 측 및 서버 측 변경사항이 필요하며, 이에 대해서는 나중에 [푸시 알림 지원 마이그레이션](#migrating-push-notifications-support)에서 설명합니다.
+
+
 
 ## 어댑터 및 보안 마이그레이션
 {: #migrating-adapters-and-security }

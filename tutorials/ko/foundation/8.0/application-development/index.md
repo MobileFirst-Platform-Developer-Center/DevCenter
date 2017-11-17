@@ -64,6 +64,8 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 > **참고:** Xcode 8을 사용하는 경우 iOS 시뮬레이터에서 iOS 앱을 실행 중이면 **키 체인 공유** 기능은 필수입니다. 이 기능을 수동으로 사용하도록 설정한 후에 Xcode 프로젝트를 빌드해야 합니다.
 
+
+
 ### 애플리케이션 구성
 {: #application-configuration }
 언급된 것과 같이 애플리케이션은 클라이언트 측 및 서버 측 모두에 구성됩니다.   
@@ -89,6 +91,8 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 > **중요:** {{ site.data.keys.mf_server }}가 실행 중이고 앱에서 트래픽을 수신하는 중에도 서버 구성을 수정할 수 있습니다. 앱의 서버 구성 변경 시에 서버를 중지할 필요가 없습니다.
 
+
+
 프로덕션 서버에서 앱 버전은 일반적으로 앱 스토어에 공개되는 애플리케이션 버전과 일치합니다. 앱 신뢰성의 구성과 같은 일부 서버 구성 요소는 스토어에 공개된 앱에 특정됩니다. 
 
 ## {{ site.data.keys.mf_server }}
@@ -107,6 +111,8 @@ ID는 개발자가 지정한 고유 ID입니다.
 개발 및 테스트에서 프로덕션 배치 및 유지보수에 이르는 앱 라이프사이클 전반에서 {{ site.data.keys.mf_server }}를 사용해야 합니다.   
 
 > 앱 개발 시에 사전 구성된 서버를 사용할 수 있습니다. 앱 개발 시 사용할 {{ site.data.keys.mf_server }}에 대한 정보는 [{{ site.data.keys.product_adj }} 개발 환경 설정](../installation-configuration/development)을 참조하십시오.
+
+
 
 {{ site.data.keys.mf_server }}는 다음 컴포넌트로 구성되어 있습니다. 이러한 컴포넌트는 {{ site.data.keys.mf_server }}에도 모두 포함됩니다. 단순 케이스의 경우 모두 동일한 애플리케이션 서버에서 실행되지만 프로덕션 또는 테스트 환경에서는 여러 애플리케이션 서버에서 이러한 컴포넌트를 실행할 수 있습니다. 이러한 {{ site.data.keys.mf_server }} 컴포넌트의 가능한 토폴로지에 대한 정보는 [토폴로지 및 네트워크 플로우](../installation-configuration/production/topologies)를 참조하십시오. 
 

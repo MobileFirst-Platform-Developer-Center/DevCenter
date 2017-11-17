@@ -160,6 +160,8 @@ Application Center는 Google Play 또는 Apple iTunes와 같은 써드파티 애
 
 > **참고:** 현재 Application Center는 Google Play 및 Apple iTunes만 지원합니다. Windows Phone 스토어 및 Windows 스토어는 아직 지원되지 않습니다.
 
+
+
 애플리케이션 실행 파일 대신에 애플리케이션이 저장되는 써드파티 애플리케이션 스토어에 URL을 제공해야 합니다. 콘솔은 올바른 애플리케이션 링크를 쉽게 찾을 수 있도록 지원된 써드파티 애플리케이션 스토어 웹 사이트에 대한 직접 링크를 **애플리케이션 추가** 페이지에 제공합니다. 
 
 Google Play 스토어 주소는 [https://play.google.com/store/apps](https://play.google.com/store/apps)입니다. 
@@ -293,6 +295,8 @@ Apple iTunes 스토어 주소는 [https://linkmaker.itunes.apple.com/](https://l
 
     > **중요:** 파일을 업데이트하려는 경우 동일한 패키지에 속해야 하며 버전 번호가 동일해야 합니다. 이러한 특성 중 하나가 동일하지 않은 경우 애플리케이션 목록으로 돌아가서 새 버전을 먼저 추가해야 합니다.
 
+
+
 4. **확인**을 클릭하여 변경사항을 저장하고 사용 가능한 애플리케이션으로 돌아가거나 **적용**을 클릭하여 저장한 후 애플리케이션 세부사항을 열린 상태로 유지하십시오. 
 
 ![편집을 위한 애플리케이션 특성](ac_edit_app_props.jpg)
@@ -301,6 +305,9 @@ Apple iTunes 스토어 주소는 [https://linkmaker.itunes.apple.com/](https://l
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
 > 이는 Android, iOS 및 Windows Phone에만 지원되며 Windows 10 Universal, Blackberry 또는 Windows 8 Universal에는 현재 지원되지 않습니다.
+
+
+
 
 
 {{ site.data.keys.mf_console }} 및 Application Center의 조합을 사용하여 배치된 모바일 애플리케이션을 쉽게 업그레이드할 수 있습니다. 
@@ -463,6 +470,8 @@ Application Center 모바일 클라이언트 및 해당 특성에서 Application
 디바이스의 이름입니다. 이 특성을 편집할 수 있습니다. 
 
 > **참고:** iOS에서 사용자는 설정 > 일반 > 정보 > 이름의 디바이스 설정에서 이 이름을 정의할 수 있습니다. 동일한 이름이 iTunes에 표시됩니다.
+
+
 
 **사용자 이름**  
 디바이스에 로그인한 첫 번째 사용자의 이름. 

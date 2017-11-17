@@ -486,7 +486,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 
 새 사용자를 작성하는 대신 기존 사용자를 사용하려면 다음과 같은 조작을 수행하십시오. 
 
-1. `<jmx>` 요소에서 사용자 및 비밀번호를 지정하고 **createLibertyAdmin** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다. 
+1.     `<jmx>` 요소에서, 사용자 및 비밀번호를 지정하고 **createLibertyAdmin** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다. 
 
    ```xml
    <installmobilefirstadmin ...>
@@ -494,7 +494,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
        ...
    ```
 
-2. `<configuration>` 요소에서 사용자 및 비밀번호를 지정하고 **createConfigAdminUser** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다. 
+2.     `<configuration>` 요소에서, 사용자 및 비밀번호를 지정하고 **createConfigAdminUser** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다. 
 
    ```xml
     <installmobilefirstadmin ...>
@@ -520,7 +520,7 @@ Java EE 6 기능의 특정 레벨을 강제 실행하려면 `<websphereapplicati
 
 #### 데이터 소스 JDBC 특성 지정
 {: #specify-data-source-jdbc-properties }
-JDBC 연결에 대한 특성을 지정할 수 있습니다. `<property>` 요소(`<database>` 요소의)를 사용하십시오. 이 요소는 **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크에서 사용할 수 있습니다. 예를 들어, 다음과 같습니다. 
+JDBC 연결에 대한 특성을 지정할 수 있습니다. `<property>` 요소(`<database>` 요소)를 사용하십시오. 이 요소는 **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크에서 사용할 수 있습니다. 예를 들어, 다음과 같습니다. 
 
 ```xml
 <configuredatabase kind="MobileFirstAdmin">
@@ -648,6 +648,8 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 사용할 수 �
 이 글로벌 JNDI 항목은 이 구문을 사용하여 설정되며 컨텍스트 루트가 접두부로 사용되지 않습니다. 예를 들어, `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`입니다.
 
 > **참고:** 075가 61로 변환되거나 31.500이 31.5로 변환되지 않도록 JNDI 값의 자동 변환에 대해 보호하려면 값을 정의할 때 이 구문 '"075"'를 사용하십시오.
+
+
 
 관리 서비스의 JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.   
 
@@ -834,7 +836,6 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 사용할 수 �
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
                 <p><b>mobilefirst/mfp.authorization.server</b> 특성을 정의해야 합니다. 예를 들어, 다음과 같습니다. </p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
@@ -991,6 +992,8 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 이 글로벌 JNDI 항목은 이 구문을 사용하여 설정되며 컨텍스트 루트가 접두부로 사용되지 않습니다. 예를 들어, `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`입니다.
 
 > **참고:** 075가 61로 변환되거나 31.500이 31.5로 변환되지 않도록 JNDI 값의 자동 변환에 대해 보호하려면 값을 정의할 때 이 구문 '"075"'를 사용하십시오.
+
+
 
 * 관리 서비스의 JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.   
 * 런타임의 JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. 
@@ -1180,7 +1183,6 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
                 <p><b>mobilefirst/mfp.authorization.server</b> 특성을 정의해야 합니다. 예를 들어, 다음과 같습니다. </p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
@@ -1579,8 +1581,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
             <div class="panel-body">
                 <p>관리 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
-                <br/><br/>
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오. <br/><br/>
                 관리 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpadmin</b>입니다. </p>
 
                 <h3>필수 JNDI 특성</h3>
@@ -1710,15 +1711,14 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
             <div class="panel-body">
                 <p>런타임은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
-                <br/><br/>
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오. <br/><br/>
                 런타임 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 기본적으로는 <b>/mfp</b>입니다. </p>
 
                 <h3>필수 JNDI 특성</h3>
                 <p>WebSphere Application Server 관리 콘솔을 사용하여 JNDI 특성을 설정할 수 있습니다. <b>애플리케이션 → 애플리케이션 유형 → WebSphere 엔터프라이즈 애플리케이션 → application_name → 웹 모듈용 환경 항목</b>으로 이동하여 항목을 설정하십시오. </p>
 
                 <p>값이 임베드된 <b>mfp.authorization.server</b> 특성을 정의해야 합니다. <br/>
-                 또한 다음과 같은 JNDI 특성을 정의하여 관리 서비스와의 JMX 통신을 사용으로 설정하십시오. </p>
+                또한 다음과 같은 JNDI 특성을 정의하여 관리 서비스와의 JMX 통신을 사용으로 설정하십시오. </p>
 
                 <b>WebSphere Application Server Network Deployment의 경우</b>
                 <ul>

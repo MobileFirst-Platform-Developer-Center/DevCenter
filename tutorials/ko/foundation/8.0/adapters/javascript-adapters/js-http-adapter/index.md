@@ -194,7 +194,7 @@ function getFeed() {
 }
 ```
 
-> 옵션의 전체 목록은 사용자 문서에서 "MFP.Server.invokeHttp"에 대한 API 참조를 참조하십시오. 
+> 옵션의 전체 목록은 사용자 문서에서 "MFP.Server.invokeHttp"에 대해 API 참조서를 참조하십시오. 
 
 ## XSL
 변환 필터링

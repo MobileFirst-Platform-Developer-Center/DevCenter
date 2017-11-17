@@ -38,6 +38,8 @@ iOS 버전을 빌드하려면 적절한 {{ site.data.keys.product_full }} 및 Ap
 
 > **중요:** 서명되지 않은 .xap 파일은 직접 사용할 수 없습니다. 디바이스에 설치할 수 있으려면 Symantec/Microsoft에서 확보한 회사 인증서로 이 파일에 서명해야 합니다.
 
+
+
 선택사항: 필요한 경우 소스에서 Windows Phone 버전을 빌드할 수도 있습니다. 이 작업을 수행하려면 최신 버전의 Microsoft Visual Studio가 있어야 합니다. 
 
 ### Microsoft Windows 8 운영 체제에 특정한 전제조건
@@ -100,6 +102,8 @@ cordova build ios
 
 > **참고:** Gradle 버전 업그레이드의 경우 팝업 창에서 업데이트 옵션을 건너뛰도록 선택하십시오. 버전은 `grade-wrapper.properties`를 참조하십시오.
 
+
+
 #### iOS
 {: #ios }
 * **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**로 이동하십시오. 
@@ -114,6 +118,8 @@ iOS 및 Android용 Cordova 프로젝트를 사용하는 대신에, MobileFirst S
 **IBMAppCenter** 프로젝트를 {{ site.data.keys.mf_studio }}에 가져온 후 프로젝트를 빌드해야 합니다. 
 
 > **참고:** V8.0.0의 경우 MobileFirst Studio 7.1을 사용하십시오. MobileFirst Studio는 [다운로드 페이지]({{site.baseurl}}/downloads)에서 다운로드할 수 있습니다. 설치 지시사항은 7.1용 IBM Knowledge Center의 [MobileFirst Studio 설치](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)를 참조하십시오.
+
+
 
 1. **파일 → 가져오기**를 선택하십시오. 
 2. **일반 → 기존 프로젝트를 작업공간으로**를 선택하십시오. 
