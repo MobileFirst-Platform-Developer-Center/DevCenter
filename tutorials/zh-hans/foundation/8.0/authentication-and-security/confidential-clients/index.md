@@ -33,7 +33,7 @@ weight: 10
 **作用域示例：**
 
 - [保护外部资源](../protecting-external-resources)使用 `authorization.introspect` 作用域。
-- 通过 REST API [发送推送通知](../../notifications/sending-notifications)使用空格分隔的作用域元素 `messages.write` 和 `push.application.<applicationId>`。
+- 通过 REST API [发送推送通知](../../notifications/sending-notifications)使用空格分隔的作用域元素 `messages.write` 和 `push.application.<applicationId>`.
 - 适配器可由定制作用域元素（如 `accessRestricted`）来保护。
 - `*` 作用域是全方位作用域，授权访问任何请求的作用域。
 

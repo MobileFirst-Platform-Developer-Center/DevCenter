@@ -69,14 +69,14 @@ Apple Watch 和 iPhone 设备在物理上不同。 因此，针对各设备的�
 {: #watchos-limitation }
 没有为 watchOS 开发提供用于向 {{ site.data.keys.product_adj }} 应用程序添加功能的可选框架。 一些其他功能受 watchOS 或 Apple Watch 设备施加的约束限制。
 
-| 功能| 限制 |
+| 功能 | 限制 |
 |---------|------------|
 | openSSL | 不受支持 |
 | JSONStore| 不受支持 |
 | 通知 | 不受支持 |
 | {{ site.data.keys.product_adj }} 代码显示的消息警报 | 不受支持 |
 | 应用程序真实性验证 | 与位码不兼容，因此不受支持 |
-| 远程禁用/通知| 需要定制（见下文） |
+| 远程禁用/通知	| 需要定制（见下文） |
 | 用户名/密码安全性检查 | 使用 CredentialsValidation 安全性检查 |
 
 ### 远程禁用/通知

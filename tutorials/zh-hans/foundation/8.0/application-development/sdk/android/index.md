@@ -157,7 +157,7 @@ repositories {
 >
 > 1. 装入 {{ site.data.keys.mf_console }}。  
 > 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
-> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.properties** 文件。 遵循屏幕上的指示信息将此文件添加到您的项目。
+> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.properties** 文件。遵循屏幕上指示信息将此文件添加到您的项目。
 
 ### 创建 WLClient 实例
 {: #creating-a-wlclient-instance }

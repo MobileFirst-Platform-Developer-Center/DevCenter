@@ -12,7 +12,7 @@ relevantTo: [ios,android,windows,javascript]
 ## 日志记录示例
 {: #logging-example }
 
-下面的消息输出至应用程序服务器的 `trace.log` 文件。如果服务器管理员正在从 {{ site.data.keys.mf_server }} 向 {{ site.data.keys.mf_analytics_server }} 转发日志，那么 `logger` 消息还将显示在 {{ site.data.keys.mf_analytics_console }} 的**基础架构 → 服务器日志搜索**视图中。
+下面的消息输出至应用程序服务器的 `trace.log` 文件。 如果服务器管理员正在从 {{ site.data.keys.mf_server }} 向 {{ site.data.keys.mf_analytics_server }} 转发日志，那么 `logger` 消息还将显示在 {{ site.data.keys.mf_analytics_console }} 的**基础架构 → 服务器日志搜索**视图中。
 
 ```javascript
 MFP.Logger.debug("This is a debug message from a JavaScript adapter");

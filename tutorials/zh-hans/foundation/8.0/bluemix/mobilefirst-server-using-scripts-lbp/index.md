@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-遵循以下指示信息在 Bluemix 上的 Liberty for Java 运行时上配置 {{ site.data.keys.mf_server }} 实例。（{{ site.data.keys.mf_analytics }} 实例只能在 IBM Containers 上运行。）为此您需要完成以下步骤：
+遵循以下指示信息在 Bluemix 上的 Liberty for Java 运行时上配置 {{ site.data.keys.mf_server }} 实例。 （{{ site.data.keys.mf_analytics }} 实例只能在 IBM Containers 上运行。） 为此您需要完成以下步骤：
 
 * 使用所需工具 (Cloud Foundry CLI) 设置主计算机
 * 设置 Bluemix 帐户
@@ -33,11 +33,11 @@ weight: 3
 
 ## 在 Bluemix 上注册帐户
 {: #register-an-account-at-bluemix }
-如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
+如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。 您需要填写注册表单，然后才能进入下一步。
 
 ### Bluemix 仪表板
 {: #the-bluemix-dashboard }
-在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。缺省情况下，此工作区命名为“dev”。如果需要，您可以创建多个工作区/空间。
+在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。 缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
@@ -74,21 +74,22 @@ weight: 3
 
                 <ul>
 
-                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。它还包含登录 Bluemix、构建 {{ site.data.keys.product }} 应用程序以推送至 BLuemix 和在 Bluemix 上运行服务器时需要运行的脚本。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含登录 Bluemix、构建 {{ site.data.keys.product }} 应用程序以推送至 BLuemix 和在 Bluemix 上运行服务器时需要运行的脚本。 您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
                     <li><b>usr</b> 文件夹：
                         <ul>
                             <li><b>config</b> 文件夹：包含 {{ site.data.keys.mf_server }} 所使用的服务器配置片段（密钥库、服务器属性、用户注册表）。</li>
-                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。必须在 ./usr/security 文件夹中引用列出的文件。</li>
-                            <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }} 的配置属性。请参阅以下文档主题中列出的受支持属性：
+                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。 必须在 ./usr/security 文件夹中引用列出的文件。</li>
+                            <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }} 的配置属性。 请参阅以下文档主题中列出的受支持属性：
                                 <ul>
                                 <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a></li>
                                     <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }}运行时的 JNDI 属性的列表</a></li>
                                 </ul>
                             </li>
-                            <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
+                            <li><b>registry.xml</b> - 用户注册表配置。 basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。 可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                         </ul>
                     </li>
-                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。<br/>
+                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。
+                    <br/>
                     </li>
 
                     <li><b>security</b> 文件夹：用于存储密钥存储库、信任库和 LTPA 密钥文件 (ltpa.keys)。</li>
@@ -96,7 +97,7 @@ weight: 3
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭此节</b></a>
-                                    </div>
+            </div>
         </div>
     </div>
 </div>
@@ -104,7 +105,7 @@ weight: 3
 
 ## 设置 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_app_center }}
 {: #setting-up-the-mobilefirst-server }
-您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
+您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。 稍后，您可以使用自变量文件以非交互方式运行脚本。
 
 > **注：**不记录密码，您将需要在自变量文件中手动添加密码。
 
@@ -118,6 +119,7 @@ weight: 3
 {: #mobilefirst-appcenter }
 
 >**注：**可以从本地{{ site.data.keys.mf_app_center }} 安装文件夹（`installer` 和 `tools` 文件夹）下载安装程序和 DB 工具。
+
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -128,19 +130,19 @@ weight: 3
 
         <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者之后可在 <b>recorded-args</b> 文件夹中以交互方式运行脚本。文件如下：<br/>
+            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。 您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者之后可在 <b>recorded-args</b> 文件夹中以交互方式运行脚本。 文件如下：<br/>
 
               <h4>initenv.properties</h4>
               此文件包含用于运行环境初始化的属性。
               <h4>prepareappcenterdbs.properties</h4>
               {{ site.data.keys.mf_app_center }} 需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库实例</a>（标记为 OLTP 或 Transactional 的所有套餐）。<br/>
-              <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
+              <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。 请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
               在设置 dashDB 实例后，请提供所需自变量。
 
               <h4>prepareappcenter.properties</h4>
-              此文件用于 prepareappcenter.sh 脚本。这可为 {{ site.data.keys.mf_app_center_short }} 文件布局做好准备，并将其推送至 Bluemix 作为 Cloud Foundry 应用程序。
+              此文件用于 prepareappcenter.sh 脚本。 这可为 {{ site.data.keys.mf_app_center_short }} 文件布局做好准备，并将其推送至 Bluemix 作为 Cloud Foundry 应用程序。
               <h4>startappcenter.properties</h4>
-              此文件用于配置服务器的运行时属性并启动服务器。强烈建议您使用至少1024 MB (<b>SERVER_MEM=1024</b>) 和 3 个节点用于实现高可用性 (<b>INSTANCES=3</b>)
+              此文件用于配置服务器的运行时属性并启动服务器。 强烈建议您使用至少1024 MB (<b>SERVER_MEM=1024</b>) 和 3 个节点用于实现高可用性 (<b>INSTANCES=3</b>)
 
             </div>
         </div>
@@ -155,10 +157,10 @@ weight: 3
 
         <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-              <p>以下指示信息演示了如何使用配置文件来运行脚本。如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
+              <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
               <ol>
                   <li><b>initenv.sh - 登录 Bluemix </b><br />
-                      运行 <b>initenv.sh</b> 脚本以登录 Bluemix。针对 dashDB 服务绑定的组织和空间运行以下脚本：
+                      运行 <b>initenv.sh</b> 脚本以登录 Bluemix。 针对 dashDB 服务绑定的组织和空间运行以下脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -176,7 +178,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenterdbs.sh - 准备 {{ site.data.keys.mf_app_center }} 数据库</b><br />
-                  <b>prepareappcenterdbs.sh</b> 脚本用于通过 dashDB 数据库服务或可访问的 DB2 数据库服务器配置 {{ site.data.keys.mf_app_center }}。在本地安装 DB2 服务器的数据中心内运行 Bluemix 时，DB2 选项非常实用。如果使用 dashDB 服务，在步骤 1 中登录的组织和空间内应提供 dashDB 服务的服务实例。请运行：
+                  <b>prepareappcenterdbs.sh</b> 脚本用于通过 dashDB 数据库服务或可访问的 DB2 数据库服务器配置 {{ site.data.keys.mf_app_center }}。 在本地安装 DB2 服务器的数据中心内运行 Bluemix 时，DB2 选项非常实用。 如果使用 dashDB 服务，在步骤 1 中登录的组织和空间内应提供 dashDB 服务的服务实例。请运行：
  {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
@@ -195,15 +197,13 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 
                   </li>
                   <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
-                      仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
+                      仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。 如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-
-</li>
+                  </li>
                   <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }}</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code>
-<br/>
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。 要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
 
 
 {% highlight bash %}
@@ -224,7 +224,7 @@ prepareappcenter.sh --name APP_NAME
 
                   </li>
                   <li><b>startappcenter.sh - 启动 {{ site.data.keys.mf_app_center }}</b><br />
-                  <b>startappcenter.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_app_center }}。请运行：<p/>
+                  <b>startappcenter.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_app_center }}。 请运行：<p/>
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -264,19 +264,19 @@ prepareappcenter.sh --name APP_NAME
 
         <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者之后可在 <b>recorded-args</b> 文件夹中以交互方式运行脚本。文件如下：<br/>
+            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。 您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者之后可在 <b>recorded-args</b> 文件夹中以交互方式运行脚本。 文件如下：<br/>
 
               <h4>initenv.properties</h4>
               此文件包含用于运行环境初始化的属性。
               <h4>prepareserverdbs.properties</h4>
               {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库实例</a>（标记为 OLTP 或 Transactional 的所有套餐）。<br/>
-              <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
+              <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。 请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
               在设置 dashDB 实例后，请提供所需自变量。
 
               <h4>prepareserver.properties</h4>
-              此文件用于 prepareserver.sh 脚本。这可为服务器文件布局做好准备，并将其推送至 Bluemix 作为 Cloud Foundry 应用程序。
+              此文件用于 prepareserver.sh 脚本。 这可为服务器文件布局做好准备，并将其推送至 Bluemix 作为 Cloud Foundry 应用程序。
               <h4>startserver.properties</h4>
-              此文件用于配置服务器的运行时属性并启动服务器。强烈建议您使用至少1024 MB (<b>SERVER_MEM=1024</b>) 和 3 个节点用于实现高可用性 (<b>INSTANCES=3</b>)
+              此文件用于配置服务器的运行时属性并启动服务器。 强烈建议您使用至少1024 MB (<b>SERVER_MEM=1024</b>) 和 3 个节点用于实现高可用性 (<b>INSTANCES=3</b>)
 
             </div>
         </div>
@@ -291,10 +291,10 @@ prepareappcenter.sh --name APP_NAME
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-              <p>以下指示信息演示了如何使用配置文件来运行脚本。如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
+              <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
               <ol>
                   <li><b>initenv.sh - 登录 Bluemix </b><br />
-                      运行 <b>initenv.sh</b> 脚本以登录 Bluemix。针对 dashDB 服务绑定的组织和空间运行以下脚本：
+                      运行 <b>initenv.sh</b> 脚本以登录 Bluemix。 针对 dashDB 服务绑定的组织和空间运行以下脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -312,7 +312,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 {% endhighlight %}
                   </li>
                   <li><b>prepareserverdbs.sh - 准备 {{ site.data.keys.mf_server }} 数据库</b><br />
-                  <b>prepareserverdbs.sh</b> 脚本用于通过 dashDB 数据库服务或可访问的 DB2 数据库服务器配置 {{ site.data.keys.mf_server }}。在本地安装 DB2 服务器的数据中心内运行 Bluemix 时，DB2 选项非常实用。如果使用 dashDB 服务，在步骤 1 中登录的组织和空间内应提供了 dashDB 服务的服务实例。请运行：
+                  <b>prepareserverdbs.sh</b> 脚本用于通过 dashDB 数据库服务或可访问的 DB2 数据库服务器配置 {{ site.data.keys.mf_server }}。 在本地安装 DB2 服务器的数据中心内运行 Bluemix 时，DB2 选项非常实用。 如果使用 dashDB 服务，在步骤 1 中登录的组织和空间内应提供了 dashDB 服务的服务实例。请运行：
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -328,17 +328,16 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-</li>
+
+                  </li>
                   <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
-                      仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
+                      仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。 如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-
-</li>
+                  </li>
                   <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }}</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code>
-<br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。 要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
 
 
 {% highlight bash %}
@@ -356,9 +355,10 @@ prepareserver.sh --name APP_NAME
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-</li>
+
+                  </li>
                   <li><b>startserver.sh - 启动服务器</b><br />
-                  <b>startserver.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_server }}。请运行：<p/>
+                  <b>startserver.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_server }}。 请运行：<p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -390,14 +390,14 @@ prepareserver.sh --name APP_NAME
 
 #### 应用更改
 {: #applying-changes }
-您可能需要在部署服务器后对服务器布局应用更改，例如：要在 **/usr/config/mfpfproperties.xml** 中更新分析 URL。请完成更改，然后使用相同的自变量集重新运行以下脚本。
+您可能需要在部署服务器后对服务器布局应用更改，例如：要在 **/usr/config/mfpfproperties.xml** 中更新分析 URL。 请完成更改，然后使用相同的自变量集重新运行以下脚本。
 
 1. ./prepareserver.sh
 2. ./startserver.sh
 
 ### 将分析服务器配置添加到 {{ site.data.keys.mf_server }}
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
-如果已设置分析服务器并且想要将其连接到此 {{ site.data.keys.mf_server }}，那么请按以下指定的方式编辑文件夹 **package_root/mfpf-server-libertyapp/usr/config** 中的 **mfpfproperties.xml** 文件。将以 `<>` 标记的令牌替换为来自部署的正确值。
+如果已设置分析服务器并且想要将其连接到此 {{ site.data.keys.mf_server }}，那么请按以下指定的方式编辑文件夹 **package_root/mfpf-server-libertyapp/usr/config** 中的 **mfpfproperties.xml** 文件。 将以 `<>` 标记的令牌替换为来自部署的正确值。
 
 ```xml
 <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>
@@ -416,7 +416,7 @@ prepareserver.sh --name APP_NAME
 {: #applying-mobilefirst-server-fixes }
 
 Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。  
-应用临时修订之前，请备份现有的配置文件。配置文件位于以下文件夹中：
+应用临时修订之前，请备份现有的配置文件。 配置文件位于以下文件夹中：
 * {{ site.data.keys.mf_analytics }}：**package_root/mfpf-analytics/usr**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry Application：**package_root/mfpf-server-libertyapp/usr**
 * {{ site.data.keys.mf_app_center_short }}：**package_root/mfp-appcenter-libertyapp/usr**
@@ -429,25 +429,25 @@ Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Cent
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
 ```
-    现在，您可以构建并部署更新后的服务器。
-使用相同的自变量集重新运行以下脚本。
+    现在，您可以构建并部署更新后的服务器。 使用相同的自变量集重新运行以下脚本。
+
     a. `./prepareserver.sh`，将更新的工件上载到 Bluemix。
 
     b. `./startserver.sh`，启动更新后的服务器
 
-    先前部署中使用的自变量副本已保存在 `recorded-args/` 目录中。您可以将这些属性用于部署。
+    先前部署中使用的自变量副本已保存在 `recorded-args/` 目录中。 您可以将这些属性用于部署。
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## 从 Bluemix 中除去数据库服务配置
 {: #removing-the-database-service-configuration-from-bluemix }
-如果在配置 {{ site.data.keys.mf_server }} 映像期间运行了 **prepareserverdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_server }} 所需的配置和数据库表。此脚本还会针对 {{ site.data.keys.mf_server }} 创建数据库模式。
+如果在配置 {{ site.data.keys.mf_server }} 映像期间运行了 **prepareserverdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_server }} 所需的配置和数据库表。 此脚本还会针对 {{ site.data.keys.mf_server }} 创建数据库模式。
 
 要从 Bluemix 中除去数据库服务配置，请使用 Bluemix 仪表板执行以下过程。
 
-1. 从 Bluemix 仪表板，选择使用的 dashDB 服务。选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
+1. 从 Bluemix 仪表板，选择使用的 dashDB 服务。 选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
 2. 启动 dashDB 控制台以使用选中的 dashDB 服务实例的模式和数据库对象。
-3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
-4. 在仔细检查每个模式名称以及其下的对象后，删除模式。这将从 Bluemix 中除去数据库配置。
+3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
+4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 Bluemix 中除去数据库配置。
 
 同样，如果在配置 {{ site.data.keys.mf_app_center }} 时运行 **prepareappcenterdbs.sh**，请遵循上述步骤以除去 Bluemix 中的数据库服务配置。

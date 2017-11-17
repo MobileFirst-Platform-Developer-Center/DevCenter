@@ -55,7 +55,7 @@ weight: 2
 
 #### 命令行
 {: #command-line-remote }
-从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}， 
+从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}，
 
 1. 添加远程服务器定义：
 
@@ -72,6 +72,8 @@ weight: 2
 2. 运行命令：`mfpdev server console MyRemoteServer`。
 
 > 通过[使用 CLI 来管理 {{ site.data.keys.product_adj }} 工件](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)教程来了解有关各种 CLI 命令的更多信息。
+
+
 
 ## 浏览控制台
 {: #navigating-the-console }
@@ -105,7 +107,7 @@ weight: 2
 {: #devices }
 管理员可以搜索访问 {{ site.data.keys.mf_server }} 的设备，并管理访问权。  
 可使用用户标识或使用友好名称来搜索设备。 用户标识是用于登录的标识。  
-友好名称是与设备关联的名称，用于将此设备与共享用户标识的其他设备加以区分。 
+友好名称是与设备关联的名称，用于将此设备与共享用户标识的其他设备加以区分。
 
 > 有关更多信息，请参阅用户文档中有关设备访问管理的主题。
 
@@ -115,7 +117,7 @@ weight: 2
 {: #applications }
 #### 注册应用程序
 {: #registering-applications }
-提供基本应用程序值和下载起动器代码。 
+提供基本应用程序值和下载起动器代码。
 
 ![应用程序注册屏幕的图像](register-applications.png)
 
@@ -179,11 +181,10 @@ weight: 2
 
 > 有关更多信息，请参阅用户文档中有关许可证跟踪的主题。
 
-![客户端日志屏幕的图像](license-tracking.png)
+![许可证跟踪屏幕的图像](license-tracking.png)
 
 ### 下载
 {: #downloads }
 对于因特网连接不可用的情况，可以从 {{ site.data.keys.mf_console }} 中的下载中心下载 {{ site.data.keys.product }} 的各种开发工件快照。
 
 ![可用工件图像](downloads.png)
-

@@ -8,13 +8,14 @@ weight: 5
 ## 概述
 {: #overview }
 
-如先前[适配器教程](../)中所讨论，适配器是通过直接使用 Maven 或通过 {{ site.data.keys.mf_cli }} 创建的 Maven 项目。之后可在任何 IDE 中编辑适配器代码，以后使用 Maven 或 {{ site.data.keys.mf_cli }} 进行构建和部署。开发人员也可选择在支持的 IDE（如 Eclipse 或 IntelliJ）内创建、开发、构建和部署所有适配器。在本教程中，从 Eclipse IDE 创建和构建适配器。
+如先前[适配器教程](../)中所讨论，适配器是通过直接使用 Maven 或通过 {{ site.data.keys.mf_cli }} 创建的 Maven 项目。 之后可在任何 IDE 中编辑适配器代码，以后使用 Maven 或 {{ site.data.keys.mf_cli }} 进行构建和部署。 开发人员也可选择在支持的 IDE（如 Eclipse 或 IntelliJ）内创建、开发、构建和部署所有适配器。 在本教程中，从 Eclipse IDE 创建和构建适配器。
 
 > 有关如何使用 IntelliJ 的指示信息，请参阅[使用 IntelliJ 开发 MobileFirst Java 适配器]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)博客帖子。
+
 **先决条件：**
 
 * 先通过阅读[适配器教程](../)来熟悉适配器。
-* Eclipse 中的 Maven 集成。从 Eclipse Kepler (v4.3) 开始，Maven 支持内置于 Eclipse 中。如果您的 Eclipse 实例不支持 Maven，那么请遵循[ m2e 指示信息](http://www.eclipse.org/m2e/)以添加 Maven 支持。
+* Eclipse 中的 Maven 集成。 从 Eclipse Kepler (v4.3) 开始，Maven 支持内置于 Eclipse 中。 如果您的 Eclipse 实例不支持 Maven，那么请遵循[ m2e 指示信息](http://www.eclipse.org/m2e/)以添加 Maven 支持。
 
 #### 跳转至
 {: #jump-to }
@@ -68,7 +69,8 @@ weight: 5
 可使用 Maven 命令行命令、{{ site.data.keys.mf_cli }} 或从 Eclipse 构建并部署适配器项目。  
 [了解如何构建并部署适配器](../creating-adapters/#build-and-deploy-adapters)。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**也可通过使用插件集成**命令行**窗口，创建一致的开发环境来增强 Eclipse，从而简化开发步骤。可从此窗口运行 Maven 或 {{ site.data.keys.mf_cli }} 命令。
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**也可通过使用插件集成**命令行**窗口，创建一致的开发环境来增强 Eclipse，从而简化开发步骤。 可从此窗口运行 Maven 或 {{ site.data.keys.mf_cli }} 命令。
+
 ### 构建适配器
 {: #building-an-adapter }
 

@@ -158,7 +158,7 @@ weight: 2
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration Services 在其中可用的上下文根。</td>
+                                            <td>{{ site.data.keys.mf_server }} AdministrationServices 在其中可用的上下文根。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
@@ -1410,7 +1410,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>路径的主机名。</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>路径的域名。</td>
                                             </tr>
                                             <tr>

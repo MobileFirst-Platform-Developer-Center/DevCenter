@@ -13,13 +13,14 @@ weight: 9
 Cloudant 是基于 CouchDB 的非关系型数据库，其作为独立产品和数据库即服务 (DBaaS) 提供在 IBM Bluemix 和 `cloudant.com` 上。
 
 如 Cloudant 文档中所述：
-> 文档是 JSON 对象。文档是数据容器，是 Cloudant 数据库的基础。  
-所有文档都必须有两个字段：唯一的 `_id` 字段和 `_rev` 字段。由您创建 `_id` 字段，或由 Cloudant 自动生成为 UUID。`_rev` 字段是修订版号，并且是 Cloudant 复制协议必不可少的。除这两个必填字段外，文档还可以包含 JSON 格式的任何其他内容。
+> 文档是 JSON 对象。 文档是数据容器，是 Cloudant 数据库的基础。  
+所有文档都必须有两个字段：唯一的 `_id` 字段和 `_rev` 字段。 由您创建 `_id` 字段，或由 Cloudant 自动生成为 UUID。 `_rev` 字段是修订版号，并且是 Cloudant 复制协议必不可少的。 除这两个必填字段外，文档还可以包含 JSON 格式的任何其他内容。
+
 Cloudant API 记录于 [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) 站点中。
 
-您可以使用适配器与远程 Cloudant 数据库通信。本教程会向您展示一些示例。
+您可以使用适配器与远程 Cloudant 数据库通信。 本教程会向您展示一些示例。
 
-本教程假设您满意这些适配器。请参阅 [JavaScript HTTP 适配器](../javascript-adapters/js-http-adapter)或 [Java 适配器](../java-adapters)。
+本教程假设您满意这些适配器。 请参阅 [JavaScript HTTP 适配器](../javascript-adapters/js-http-adapter)或 [Java 适配器](../java-adapters)。
 
 ### 跳转至
 {: #jump-to}
@@ -36,9 +37,9 @@ Cloudant API 可作为简单的 HTTP Web 服务访问。
 
 ### 认证
 {: #authentication }
-Cloudant 支持多种认证形式。请参阅位于以下网址的有关认证的 Cloudant 文档：[https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html)。通过 JavaScript HTTP 适配器，您可以使用**基本认证**。
+Cloudant 支持多种认证形式。 请参阅位于以下网址的有关认证的 Cloudant 文档：[https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html)。 通过 JavaScript HTTP 适配器，您可以使用**基本认证**。
 
-在适配器 XML 文件中，指定 Cloudant 实例的 `domain` 和 `port`，并添加 `basic` 类型的 `authentication` 元素。框架将使用这些凭证生成 `Authorization: Basic` HTTP 头。
+在适配器 XML 文件中，指定 Cloudant 实例的 `domain` 和 `port`，并添加 `basic` 类型的 `authentication` 元素。 框架将使用这些凭证生成 `Authorization: Basic` HTTP 头。
 
 **注：**通过 Cloudant，可以生成唯一的 API 密钥，而不是使用真实的用户名和密码。
 
@@ -74,8 +75,8 @@ Cloudant 支持多种认证形式。请参阅位于以下网址的有关认证�
 ```js
 function addEntry(entry){
 
-    var input = { 
-method : 'post',
+    var input = {
+            method : 'post',
             returnedContentType : 'json',
             path : DATABASE_NAME + '/',
             body: {
@@ -93,7 +94,7 @@ method : 'post',
 }
 ```
 
-相同的想法可应用于所有 Cloudant 功能。请参阅位于以下网址的有关文档的 Cloudant 文档：[https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html)
+相同的想法可应用于所有 Cloudant 功能。 请参阅位于以下网址的有关文档的 Cloudant 文档：[https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html)
 
 ## Java 适配器
 {: #java-adapters }
@@ -108,6 +109,7 @@ db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
 使用[普通的旧 Java 对象](https://en.wikipedia.org/wiki/Plain_Old_Java_Object)和面向 RESTful Web 服务的标准 Java API (JAX-RS 2.0)，通过在 HTTP 请求中发送以 JSON 格式表示的文档，在 Cloudant 上创建一个新文档。
+
 ```java
 @POST
 @Consumes(MediaType.APPLICATION_JSON)

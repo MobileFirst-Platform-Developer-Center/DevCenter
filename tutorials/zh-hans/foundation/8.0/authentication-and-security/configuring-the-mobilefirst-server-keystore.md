@@ -26,25 +26,37 @@ weight: 14
    > **注：**别名密钥对算法类型必须为 RSA。 以下指示信息说明在使用 **keytool** 实用程序时，如何将算法类型设置为 RSA。
 
    您可以使用第三方工具来创建密钥库文件。 例如，您可以通过运行 Java **keytool** 实用程序并使用以下命令来生成 JKS 密钥库文件（其中，`<keystore name>` 是密钥库的名称，`<alias name>` 是您选择的别名）：
-    
+
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
    ```
-    
+
    以下样本命令将生成别名为 **my_alias** 的 `my_company.keystore` JKS 文件：
-    
+
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
-    
+
    实用程序将提示您提供不同的输入参数，包括密钥库文件和别名的密码。
 
    > **注：**必须设置 `-keyalg RSA` 选项，以将生成的密钥算法类型设置为 RSA，而不是缺省的 DSA。
 
    要将密钥库用于适配器与后端服务器之间的相互 SSL 认证，也要将 {{ site.data.keys.product }} SSL 客户机身份别名添加到密钥库。 您可以使用通过 {{ site.data.keys.mf_server }} 身份别名创建密钥库文件所用的相同方法来执行此操作，但是改为提供 SSL 客户机身份的别名和密码。
 
-2. 配置 {{ site.data.keys.mf_server }} 以使用密钥库：在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。 遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。 相关步骤包括上载密钥库文件、指示其类型以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。 
+2. 配置 {{ site.data.keys.mf_server }} 以使用密钥库：
+   执行以下步骤，配置 {{ site.data.keys.mf_server }} 以使用密钥库：
 
-成功配置后，状态将更改为“用户定义”。 否则，将显示错误，状态仍为“缺省”。
+      * **Javascript 适配器**
+        在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。 相关步骤包括上传密钥库文件，指明其类型，以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。成功配置后，**状态**将更改为*用户定义*，否则将显示错误并且状态仍为*缺省*。
+        在 `<connectionPolicy>` 元素的 `<sslCertificateAlias>` 和 `<sslCertificatePassword>` 子元素内，在相关适配器的描述符文件中配置 SSL 客户机身份别名（如使用）及其密码。 请参阅 [HTTP 适配器 connectionPolicy 元素](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)。
 
-在 `<connectionPolicy>` 元素的 `<sslCertificateAlias>` 和 `<sslCertificatePassword>` 子元素内，在相关适配器的描述符文件中配置 SSL 客户机身份别名（如使用）及其密码。请参阅 [HTTP 适配器 connectionPolicy 元素](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)。
+      * **Java 适配器**
+        要为 Java 适配器配置相互 SSL 认证，那么必须更新服务器的密钥库。可以通过执行以下步骤来实现：
+
+        * 将密钥库文件复制到 `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security`。
+
+        * 编辑 `server.xml` 文件 `<ServerInstallation>/mfp-server/usr/servers/mfp/server.xml`。
+
+        * 使用正确的文件名、密码和类型更新密钥库配置：`<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
+
+如果要在 Bluemix 上使用 {{ site.data.keys.mf_bm_short}} 服务进行部署，可以在部署服务器之前在**高级设置**下上传密钥库文件。
