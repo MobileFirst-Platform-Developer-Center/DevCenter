@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: JSONStore in Android applications
+title: JSONStore en aplicaciones Android
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
@@ -11,38 +11,46 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## Requisitos previos
 {: #prerequisites }
 
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* Lea la [Guía de aprendizaje principal de JSONStore](../)
+* Asegúrese de que el SDK nativo de {{ site.data.keys.product_adj }} se haya añadido al proyecto de Android Studio.
+Siga la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para aplicaciones Android](../../../application-development/sdk/android/).
 
-#### Jump to:
+
+#### Ir a:
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [Adición de JSONStore](#adding-jsonstore)
+* [Uso básico](#basic-usage)
+* [Uso avanzado](#advanced-usage)
+* [Aplicación de ejemplo](#sample-application)
 
-## Adding JSONStore
+## Adición de JSONStore
 {: #adding-jsonstore }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. En **Android → Scripts de Gradle**, seleccione el archivo **build.gradle (Módulo: app)**.
 
-2. Add the following to the existing `dependencies` section:
+
+2. Añada lo siguiente a la sección de `dependencies` existente:
+
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
-## Basic Usage
+## Uso básico
 {: #basic-usage }
-### Open
+### Abrir
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+Utilice `openCollections` para abrir una o varias recopilaciones de JSONStore.
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+Iniciar o aprovisionar una recopilación significa crear el almacenamiento persistente que contiene la recopilación y los documentos, si este no existe.
+Este almacenamiento persistente está cifrado y si se pasa una contraseña correcta, se ejecutan los procedimientos de seguridad necesarios para hacer que los datos estén accesibles.
+
+
+Para obtener más información sobre las características opcionales que es posible habilitar en el tiempo de inicialización, consulte **Seguridad, Soporte a múltiples usuarios** e **Integración de adaptadores de {{ site.data.keys.product_adj }}** en la segunda parte de esta guía de aprendizaje.
+
 
 ```java
 Context context = getContext();
@@ -59,9 +67,10 @@ try {
 }
 ```
 
-### Get
+### Obtener
 {: #get }
-Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+Utilice `getCollectionByName` para crear un accesor a la recopilación.
+Es necesario llamar a `openCollections` antes de llamar a `getCollectionByName`.
 
 ```java
 Context context = getContext();
@@ -74,11 +83,12 @@ try {
 }
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
+La variable `collection` se puede utilizar ahora para realizar operaciones en la recopilación `people` como, por ejemplo, `add`, `find` y `replace`.
 
-### Add
+
+### Añadir
 {: #add }
-Use `addData` to store data as documents inside a collection
+Utilice `addData` para almacenar datos como documentos dentro de la recopilación. 
 
 ```java
 Context context = getContext();
@@ -96,9 +106,11 @@ try {
 }
 ```
 
-### Find
+### Encontrar
 {: #find }
-Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
+Utilice `findDocuments` para encontrar documentos dentro de una recopilación utilizando una consulta.
+Utilice `findAllDocuments` para recuperar todos los documentos dentro de una recopilación.
+Utilice `findDocumentById` para buscar documentos según su identificador exclusivo de documento. 
 
 ```java
 Context context = getContext();
@@ -120,9 +132,11 @@ try {
 }
 ```
 
-### Replace
+### Sustituir
 {: #replace }
-Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+Utilice `replaceDocument` para modificar documentos dentro de una recopilación.
+El campo que se utiliza para realizar la sustitución es `_id,` el identificador exclusivo de documento.
+
 
 ```java
 Context context = getContext();
@@ -140,12 +154,15 @@ try {
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+En este ejemplo se supone que el documento `{_id: 1, json: {name: 'yoel', age: 23} }` está en la recopilación.
 
-### Remove
+
+### Eliminar
 {: #remove }
-Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+Utilice `removeDocumentById` para suprimir un documento de una recopilación.
+Los documentos no se quitan de la recopilación hasta que no llame a `markDocumentClean`.
+Para obtener más información, consulte la sección **Integración de adaptadores de {{ site.data.keys.product_adj }}** más adelante en esta guía de aprendizaje.
+
 
 ```java
 Context context = getContext();
@@ -162,9 +179,10 @@ try {
 }
 ```
 
-### Remove Collection
+### Eliminar recopilación
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+Utilice `removeCollection` para suprimir todos los documentos que se almacenan dentro de una recopilación.
+Esta operación es similar a descartar una tabla en términos de una base de datos.
 
 ```java
 Context context = getContext();
@@ -178,14 +196,14 @@ try {
 }
 ```
 
-### Destroy
+### Destruir
 {: #destroy }
-Use `destroy` to remove the following data:
+Utilice `destroy` para eliminar los siguientes datos:
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* Todos los documentos
+* Todas las recopilaciones
+* Todos los almacenes - Consulte **Soporte a múltiples usuarios** más adelante en esta guía de aprendizaje 
+* Todos los artefactos de seguridad y metadatos de JSONStore - Consulte **Seguridad** más adelante en esta guía de aprendizaje 
 
 ```java
 Context context = getContext();
@@ -197,18 +215,24 @@ try {
 }
 ```
 
-## Advanced Usage
+## Uso avanzado
 {: #advanced-usage }
-### Security
+### Seguridad
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+Proteja todas las recopilaciones en un almacén pasando un objeto `JSONStoreInitOptions` con una contraseña para la función `openCollections`.
+Si no se pasa una contraseña, los documentos de todas las recopilaciones en el almacén no se cifran.
 
-Some security metadata is stored in the shared preferences (Android).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
 
-Use `closeAll` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAll` as the corresponding logout function.
+Algunos metadatos de seguridad se almacenan en las preferencias compartidas (Android).  
+El almacén se cifra con una clave AES (Advanced Encryption Standard) de 256 bits.
+Todas las claves están reforzadas mediante PBKDF2 (Password-Based Key Derivation Function 2).
 
-Use `changePassword` to change the password.
+
+Utilice `closeAll` para bloquear el acceso a las recopilaciones hasta que llame a `openCollections` de nuevo.
+Si interpreta `openCollections` como una función de inicio de sesión, puede interpretar `closeAll` como la correspondiente función de finalización de sesión.
+
+
+Utilice `changePassword` para cambiar la contraseña.
 
 ```java
 Context context = getContext();
@@ -227,9 +251,11 @@ try {
 }
 ```
 
-#### Multiple User Support
+#### Soporte a múltiples usuarios
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+Es posible crear varios almacenes con varias recopilaciones en una única aplicación de {{ site.data.keys.product_adj }}.
+La función `openCollections` puede tomar un objeto de opciones con un nombre de usuario.
+Si no se proporciona un nombre de usuario, el predeterminado es ""**jsonstore**"".
 
 ```java
 Context context = getContext();
@@ -248,14 +274,17 @@ try {
 }
 ```
 
-#### {{ site.data.keys.product_adj }} Adapter Integration
+#### Integración de adaptadores de {{ site.data.keys.product_adj }}
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
+En esta sección se presupone que está familiarizado con los adaptadores.
+La integración del adaptador es opcional y proporciona formas de enviar datos desde una recopilación a un adaptador y obtener datos de dicho adaptador para la recopilación.
+Puede lograrlo utilizando funciones como, por ejemplo, `WLResourceRequest` o su propia instancia de `HttpClient` si necesita más flexibilidad.
 
-#### Adapter Implementation
+
+#### Implementación de adaptador
 {: #adapter-implementation }
-Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+Cree un adaptador con el nombre "**JSONStoreAdapter**".
+Defina sus procedimientos `addPerson`, `getPeople`, `pushPeople`, `removePerson` y `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -286,9 +315,9 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### Cargar datos desde el adaptador de {{ site.data.keys.product_adj }} 
 {: #load-data-from-mobilefirst-adapter }
-To load data from an adapter use `WLResourceRequest`.
+Para cargar datos desde un adaptador utilice `WLResourceRequest`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -314,9 +343,10 @@ try {
 }
 ```
 
-#### Get Push Required (Dirty Documents)
+#### Obtener push necesario (documentos sucios)
 {: #get-push-required-dirty-documents }
-Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+Al llamar a `findAllDirtyDocuments` se obtiene una matriz de los denominados "documentos sucios", documentos con modificaciones locales que no existen en el sistema de fondo.
+
 
 ```java
 Context  context = getContext();
@@ -330,11 +360,14 @@ try {
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
+Para evitar que JSONStore marque los documentos como "sucios", pase la opción `options.setMarkDirty(false)` para `add`, `replace` y `remove`.
 
-#### Push changes
+
+#### Hacer push a los cambios
 {: #push-changes }
-To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+Para hacer push a los cambios para un adaptador, llame a `findAllDirtyDocuments` para obtener una lista de documentos con modificaciones y, a continuación, utilizar `WLResourceRequest`.
+Después de enviar los datos y recibir una respuesta satisfactoria asegúrese de llamar a `markDocumentsClean`.
+
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -366,15 +399,18 @@ try {
 }
 ```
 
-<img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
-## Sample application
+<img alt="Imagen de la aplicación de ejemplo" src="android-native-screen.jpg" style="float:right; width:240px;"/>
+## Aplicación de ejemplo
 {: #sample-application }
-The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+El proyecto JSONStoreAndroid contiene una aplicación Android nativa que utiliza el conjunto de API de JSONStore.
+  
+Se incluye un proyecto Maven de un adaptador JavaScript.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
-### Sample usage
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) el proyecto Android nativo.
+  
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) el proyecto Maven del adaptador.    
+
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.

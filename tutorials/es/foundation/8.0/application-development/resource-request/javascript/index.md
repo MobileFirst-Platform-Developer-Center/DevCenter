@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from JavaScript (Cordova, Web) applications
+title: Solicitud de recursos desde aplicaciones JavaScript (Cordova, Web)
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
@@ -13,23 +13,29 @@ downloads:
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Las aplicaciones {{ site.data.keys.product_adj }} pueden acceder a los recursos utilizando la API REST `WLResourceRequest`.
+  
+La API REST funciona con todos los adaptadores y recursos externos.
 
-**Prerequisites**:
+**Requisitos previos**:
 
-- If you are implementing a Cordova application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova) to your Cordova application.
-- If you are implementing a Web application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/web) to your Web application.
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- Si está implementando una aplicación Cordova, asegúrese de que ha [añadido el {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova) a su aplicación de Cordova.
+
+- Si está implementando una aplicación web, asegúrese de que ha [añadido el {{ site.data.keys.product }} SDK](../../../application-development/sdk/web) a su aplicación web.
+
+- Aprenda a [crear adaptadores](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+La clase `WLResourceRequest` maneja solicitudes de recursos para recursos externos o adaptadores.
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` and `WLResourceRequest.DELETE`.
+
+Cree un objeto `WLResourceRequest` y especifique la vía de acceso al recurso y el método HTTP.
+  
+Los métodos disponibles son: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` y `WLResourceRequest.DELETE`.
+
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -38,17 +44,23 @@ var resourceRequest = new WLResourceRequest(
 );
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
+* Para **adaptadores JavaScript**, utilice `/adapters/{AdapterName}/{procedureName}`
+* Para **adaptadores Java**, utilice `/adapters/{AdapterName}/{path}`.  La `vía de acceso` depende de la forma en que haya definido sus anotaciones `@Path` en su código Java.
+También debería incluir todos los `@PathParam` que utilice.
 
-## Sending the request
+* Para acceder a recursos fuera del proyecto, utilice el URL completo según los requisitos del servidor externo.
+
+* **timeout**: Opcional, tiempo de espera de la solicitud en milisegundos. 
+
+## Envío de la solicitud
 {: #sending-the-request }
-Request the resource by using the `send()` method.  
-The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
+Solicitud de recurso utilizando el método `send()`.
+  
+El método `send()` toma un parámetro opcional, que puede ser un objeto JSON o una serie de texto simple, establece un cuerpo con la solicitud HTTP .
 
-Using JavaScript **promises**, you can define `onSuccess` and `onFailure` callback functions.
+
+Utilización de **promesas** para definir funciones de devolución de llamada `onSuccess` y `onFailure`.
+
 
 ```js
 resourceRequest.send().then(
@@ -59,28 +71,32 @@ resourceRequest.send().then(
 
 ### setQueryParameter
 {: #setqueryparameter }
-By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
+Mediante la utilización del método `setQueryParameter`, puede incluir parámetros de consulta (URL) en la solicitud REST.
+
 
 ```js
 resourceRequest.setQueryParameter("param1", "value1");
 resourceRequest.setQueryParameter("param2", "value2");
 ```
 
-#### JavaScript adapters
+#### Adaptadores JavaScript
 {: #javascript-adapters-setquery}
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+Los adaptadores JavaScript utilizan parámetros sin nombre ordenados.
+Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
 
-> **Note:** The `params` value should be a *string representation* of an array.
+
+> **Nota:** El valor `params` debería ser una *representación de serie* de una matriz. 
 
 ```js
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.GET`.
+Se debería utilizar con `WLResourceRequest.GET`.
 
 ### setHeader
 {: #setheader }
-By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
+Mediante la utilización del método `setHeader`, puede establecer una nueva cabecera HTTP o sustituir una cabecera existente con el mismo nombre en la solicitud REST.
+
 
 ```js
 resourceRequest.setHeader("Header-Name","value");
@@ -88,32 +104,41 @@ resourceRequest.setHeader("Header-Name","value");
 
 ### sendFormParameters(json)
 {: #sendformparamtersjson }
-To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body:
+Para enviar parámetros de formulario codificados de URL, utilice en su lugar el método `sendFormParameters(json)`.
+Este método convierte JSON en una serie codificada de URL, establece `content-type` en `application/x-www-form-urlencoded` y lo establece como un cuerpo HTTP:
+
 
 ```js
 var formParams = {"param1": "value1", "param2": "value2"};
 resourceRequest.sendFormParameters(formParams);
 ```
 
-#### JavaScript adapters
+#### Adaptadores JavaScript
 {: #javascript-adapters-sendform }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+Los adaptadores JavaScript utilizan parámetros sin nombre ordenados.
+Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+
 
 ```js
 var formParams = {"params":"['value1', 'value2']"};
 ```
 
-This should be used with `WLResourceRequest.POST`.
+Esto se debería utilizar con `WLResourceRequest.POST`.
 
 
-> For more information about `WLResourceRequest`, see the API reference in the user documentation.
+> Para obtener más información sobre `WLResourceRequest`, consulte la referencia de API en la documentación del usuario.
 
-## The response
+
+## La respuesta
 {: #the-response }
-Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The `response` object contains the response data and you can use its properties to retrieve the required information. Commonly used properties are `responseText`, `responseJSON` (JSON object, if the response is in JSON) and `status` (the HTTP status of the response).
+Tanto la llamada de devolución `onSuccess` como `onFailure` reciben un objeto `response`.
+El objeto `response` contiene los datos de respuesta. Utilice todas sus propiedades para recuperar la información necesaria.
+Las propiedades utilizadas habitualmente son `responseText`, `responseJSON` (objeto JSON, si la respuesta está en JSON) y `status` (el estado HTTP de la respuesta).
 
-In case of request failure, the `response` object also cotains a `errorMsg` property.  
-Depending if using a Java or JavaScript adapter, the response may contain other properties such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
+
+En caso de una respuesta anómala, el objeto `response` también contiene la propiedad `errorMsg`.
+  
+Dependiendo de su utiliza un adaptador Java o JavaScript, la respuesta puede contener otras propiedades como, por ejemplo, `responseHeaders`, `responseTime`, `statusCode`, `statusReason` y `totalTime`.
 
 ```json
 {
@@ -137,10 +162,12 @@ Depending if using a Java or JavaScript adapter, the response may contain other 
 }
 ```
 
-### Handling the response
+### Manejo de la respuesta
 {: #handling-the-response }
-The response object is received by the `onSuccess` and `onFailure` callback functions.  
-For example:
+El objeto response lo reciben las funciones de devolución de llamada `onSuccess` y `onFailure`.
+  
+Por ejemplo:
+
 
 ```js
 onSuccess: function(response) {
@@ -152,20 +179,26 @@ onFailure: function(response) {
 }
 ```
 
-## For more information
+## Para obtener más información
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html).
+> Para obtener más información sobre WLResourceRequest, [consulte la Referencia de API](../../../api/client-side-api/javascript/client/).
 
-<img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
-## Sample applications
+<img alt="Imagen de la aplicación de ejemplo" src="resource-request-success-cordova.png" style="float:right"/>
+## Aplicaciones de ejemplo
 {: #sample-applications }
-The **ResourceRequestWeb** and **ResourceRequestCordova** projects demonstrate a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+Los proyectos **ResourceRequestWeb** y **ResourceRequestCordova** demuestran una solicitud de recurso mediante un adaptador Java.
+  
+El proyecto Maven de adaptador contiene el adaptador Java utilizado durante la llamada de solicitud de recurso.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) the Web project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
-### Sample usage
+[
+Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) el proyecto de Cordova.
+  
+[
+Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) el proyecto de web.
+  
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) el proyecto Maven del adaptador.  
+
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.

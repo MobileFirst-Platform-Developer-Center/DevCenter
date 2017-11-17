@@ -224,7 +224,7 @@ String allowedIP =null;
 3. TAI インターセプターの詳細を含む XML 構成ファイルを作成し (ステップ 1 で提供された TAI 構成のコード例を参照)、.xml ファイルを該当するフォルダー (**mfpf-server-libertyapp/usr/config**) に追加します。.xml ファイルは次の例に似たものになります。**ヒント:** 実際の実装を反映するようにクラス名とプロパティーを更新してください。
   ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
-   <server description="new server">
+    <server description="new server">
         <featureManager>
             <feature>appSecurity-2.0</feature>
         </featureManager>

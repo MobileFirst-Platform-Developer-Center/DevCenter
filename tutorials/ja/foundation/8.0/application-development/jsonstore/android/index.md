@@ -31,7 +31,7 @@ downloads:
 2. 既存の `dependencies` セクションに以下を追加します。
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
 ## 基本的な使用法

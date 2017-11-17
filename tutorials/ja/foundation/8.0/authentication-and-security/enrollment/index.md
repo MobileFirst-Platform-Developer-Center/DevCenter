@@ -147,8 +147,9 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 ```java
 @Override
-   protected boolean validateCredentials(Map<String, Object> credentials) {
-        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+
+protected boolean validateCredentials(Map<String, Object> credentials) {
+    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
     if(credentials!=null && credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
@@ -301,6 +302,8 @@ public String getTransactions(){
 ```
     
 > `securityContext` について詳しくは、Java アダプターのチュートリアルにある[セキュリティー API](../../adapters/java-adapters/#security-api) セクションを参照してください。
+
+
 
 以下を追加することで、登録済みユーザーを応答オブジェクトに追加します。
 

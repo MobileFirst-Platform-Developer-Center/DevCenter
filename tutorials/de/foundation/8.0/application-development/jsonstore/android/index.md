@@ -32,7 +32,7 @@ downloads:
 2. Fügen Sie zum vorhandenen Abschnitt `dependencies` die folgenden Zeilen hinzu: 
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
 ## Grundlegende Verwendung

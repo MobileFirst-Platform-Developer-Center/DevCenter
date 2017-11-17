@@ -258,3 +258,4 @@ Hello World
     ![デバッグ中のアダプターを示すイメージ](debugging.png)
 
 > IntelliJ を使用した Java アダプターのデバッグ方法の手順については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
+

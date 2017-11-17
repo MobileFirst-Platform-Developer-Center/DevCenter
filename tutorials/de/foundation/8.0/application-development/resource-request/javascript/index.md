@@ -167,8 +167,8 @@ onFailure: function(response) {
 <img alt="Beispielanwendung" src="resource-request-success-cordova.png" style="float:right"/>
 ## Beispielanwendungen
 {: #sample-applications }
-Die Projekte **ResourceRequestWeb** und **ResourceRequestCordova** demonstrieren eine Ressourcenanforderung, die mithilfe eines Java-Adapters abgesetzt wird.   
-Das Adapter-Maven-Projekt enthält den beim Aufrufen der Ressourcenanforderung verwendeten Java-Adapter. 
+Die Projekte **ResourceRequestWeb** und **ResourceRequestCordova** demonstrieren eine Ressourcenanforderung, die mithilfe eines Java-Adapters abgesetzt wird.  
+Das Adapter-Maven-Projekt enthält den beim Aufrufen der Ressourcenanforderung verwendeten Java-Adapter.
 
 [Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80), um das Cordova-Projekt herunterzuladen.   
 [Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80), um das Webprojekt herunterzuladen.   

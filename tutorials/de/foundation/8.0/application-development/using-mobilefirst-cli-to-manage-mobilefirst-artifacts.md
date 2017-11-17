@@ -27,6 +27,8 @@ und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adapte
 > Weitere Informationen zur SDK-Integration in Cordova-Anwendungen und nativen Anwendungen enthalten die Lernprogramme
 der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](../../application-development/sdk/).
 
+
+
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Voraussetzungen](#prerequisites)
@@ -43,17 +45,18 @@ der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](../../applicati
 {: #prerequisites }
 Die {{ site.data.keys.mf_cli }} ist als NPM-Paket in der [NPM-Registry](https://www.npmjs.com/) verfügbar.  
 
-Stellen Sie sicher, dass in der Entwicklungsumgebung **Node.js** für die Instalation von NPM-Paketen installiert ist.   
+Stellen Sie sicher, dass in der Entwicklungsumgebung **Node.js** und **NPM** für die Instalation von NPM-Paketen installiert sind.   
 Folgen Sie für die Installation von Node.js den Anweisungen auf [nodejs.org](https://nodejs.org). 
 
 Führen Sie den Befehl `node -v` aus, um sich zu vergewissern, dass Node.js ordnungsgemäß installiert wurde.
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **Hinweis:** Die unterstützte Mindestversion von Node.js ist Version 4.2.3. 
+> **Hinweis:** Die unterstützte Mindestversion von **Node.js** ist Version **4.2.3**. Aufgrund der schnellen Entwicklung bei den **Node**- und
+**NPM**-Paketen besteht die Möglichkeit, dass die MobileFirst-CLI nicht mit allen verfügbaren Versionen von **Node** und **NPM**, einschließlich der jeweils neuesten Version, vollständig funktioniert. Stellen Sie für eine ordnungsgemäße Funktionsweise der CLI sicher, dass **Node** auf dem Stand von Version **6.11.1** und **NPM** auf dem Stand von Version **3.10.10** ist.
 
 ## {{ site.data.keys.mf_cli }} installieren
 {: #installing-the-mobilefirst-cli }
@@ -309,10 +312,12 @@ Verfügbare Konfigurationen:
 Sie möchten eine Anwendung bei einem {{ site.data.keys.mf_server }} mit einer bestimmten Adresse registrieren. Die Anwendung soll aber auch in der Lage sein,
 eine Verbindung zu einer anderen Serveradresse herzustellen, z. B. zu einem
 DataPower-Gerät.
+
     >
     > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren. 
-    > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server**
-an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
+    > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server** an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
+
+
 
 * Festlegung des öffentlichen Schlüssels für die direkte Aktualisierung
 * Festlegung der Standardpsrache für die Anwendung. (Die Standardsprache ist Englisch (en).)

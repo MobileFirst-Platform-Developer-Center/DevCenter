@@ -27,6 +27,8 @@ IBM {{ site.data.keys.mf_server }} のエンドポイントに対してホワイ
 
 > **注:** {{ site.data.keys.product }} によって公開されている URL に関する情報を、ガイドラインとして提供しています。組織は、ホワイトリストとブラックリストで有効になっているものに基づいて、それらの URL を企業のインフラストラクチャーで確実にテストする必要があります。
 
+
+
 | `<runtime context root>/api/` の下の API URL  | 説明| ホワイトリストとして推奨されるか?|
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | 指定されたアダプターに関して、アダプターの Swagger 文書を返す| いいえ。管理者と開発者が内部でのみ使用します。|
@@ -91,6 +93,8 @@ SSL プロトコルのうち Transport Layer Security v1.2 (TLS) V1.2 のみを�
 {{ site.data.keys.mf_server }} 管理には、ユーザー認証が必要です。ユーザー認証を構成して、認証方式を選択できます。構成手順は、使用する Web アプリケーション・サーバーによって異なります。
 
 > **重要:** スタンドアロンの WebSphere Application Server Full Profile を使用している場合は、グローバル・セキュリティーでのシンプルな WebSphere 認証方式 (SWAM) 以外の認証方式を使用してください。Lightweight Third Party Authentication (LTPA) を使用できます。SWAM を使用した場合、予期しない認証の失敗が発生する可能性があります。
+
+
 
 認証の構成は、インストーラーが {{ site.data.keys.mf_server }} 管理 Web アプリケーションを Web アプリケーション・サーバーにデプロイした後に実行する必要があります。
 
@@ -288,6 +292,8 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 
       > **注:** 一部のプロパティーは、コンテキスト・ルートでプロパティー名に接頭部を付けることなく、WebSphere Application Server Liberty でグローバルに定義されます。これらのプロパティーのリストについては、[グローバル JNDI 項目](../appserver/#global-jndi-entries)を参照してください。
 
+
+
       他のすべての JNDI プロパティーでは、名前の接頭部としてアプリケーションのコンテキスト・ルートを付加する必要があります。
 
        * ライブ更新サービスの場合、コンテキスト・ルートは **/[adminContextRoot]config** でなければなりません。例えば、管理サービスのコンテキスト・ルートが **/mfpadmin** の場合、ライブ更新サービスのコンテキスト・ルートは **/mfpadminconfig** でなければなりません。
@@ -359,8 +365,8 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.admin.jmx.pwd	| Liberty プロファイルおよび WebSphere Application Server ファームでは必須、その他の場合はオプション| JMX REST 接続のユーザー・パスワード。| WebSphere Application Server Liberty プロファイル: JMX REST 接続のユーザー・パスワード。<br/><br/>WebSphere Application Server ファーム: SOAP 接続のユーザー・パスワード。<br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 管理アプリケーションにマップされた仮想ホストがデフォルトのホストでなければ、WebSphere 管理者のユーザー・パスワード。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のパスワード。|
 | mfp.admin.rmi.registryPort| オプション| ファイアウォールを介した JMX 接続の RMI レジストリー・ポート。| Tomcat のみ。|
 | mfp.admin.rmi.serverPort| オプション| ファイアウォールを介した JMX 接続の RMI サーバー・ポート。| Tomcat のみ。|
-| mfp.admin.jmx.dmgr.host| 必須| デプロイメント・マネージャーのホスト名。| WebSphere Application Server Network Deployment のみ。|
-| mfp.admin.jmx.dmgr.port| 必須| デプロイメント・マネージャー RMI または SOAP ポート。| WebSphere Application Server Network Deployment のみ。|
+| mfp.admin.jmx.dmgr.host | 必須| デプロイメント・マネージャーのホスト名。| WebSphere Application Server Network Deployment のみ。|
+| mfp.admin.jmx.dmgr.port | 必須| デプロイメント・マネージャー RMI または SOAP ポート。| WebSphere Application Server Network Deployment のみ。|
 
 #### 管理サービスの JNDI プロパティー: タイムアウト
 {: #jndi-properties-for-administration-service-timeout }
@@ -397,7 +403,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit| オプション。| {{ site.data.keys.mf_console }} の監査フィーチャーを使用不可にするには、このプロパティーを false に設定します。 デフォルト値は true です。|
 | mfp.admin.environmentid| オプション。| MBean の登録のための環境 ID。この ID は、{{ site.data.keys.mf_server }} の異なるインスタンスが同じアプリケーション・サーバー上にインストールされている場合に使用します。この ID は、どの管理サービス、どのコンソール、およびどのランタイムが同じインストールに属しているかを判別します。管理サービスは、同じ環境 ID を持つランタイムのみを管理します。|
-| mfp.admin.serverid| サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。| サーバー・ファーム: サーバー ID。ファーム内のサーバーごとに異なる必要があります。<br/><br/> Liberty 集合: 値は controller でなければなりません。|
+| mfp.admin.serverid | サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。| サーバー・ファーム: サーバー ID。ファーム内のサーバーごとに異なる必要があります。<br/><br/> Liberty 集合: 値は controller でなければなりません。|
 | mfp.admin.hsts| オプション。| RFC 6797 に従って HTTP Strict Transport Security を有効にする場合は、true に設定します。|
 | mfp.topology.platform | オプション| サーバー・タイプ。有効な値は以下のとおりです。{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}この値を設定しないと、アプリケーションはサーバー・タイプを推測しようとします。|
 | mfp.topology.clustermode | オプション| サーバー・タイプに加え、ここにサーバー・トポロジーを指定します。有効な値は以下のとおりです。{::nomarkdown}<ul><li>Standalone</li><li>クラスター</li><li>Farm</li></ul>{:/}デフォルト値は Standalone です。|
@@ -731,6 +737,8 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 
 > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM サポートによってフルにサポートされている構成の利点を活用するためには、WebSphere Application Server によってサポートされている IBM DB2 データベースまたは別のデータベースを使用します。
 
+
+
 ### {{ site.data.keys.mf_console }} からのアプリケーションの作成または削除後の失効データ
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 Tomcat 8 アプリケーション・サーバーで、MySQL データベースを使用している場合、{{ site.data.keys.mf_console }} からのサービス呼び出しで 404 エラーが返されることがあります。
@@ -768,6 +776,8 @@ Tomcat 8 アプリケーション・サーバーで、MySQL データベース�
     * **「OK」**をクリックします。
 
 > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM サポートによってフルにサポートされている構成の利点を活用するためには、WebSphere Application Server によってサポートされている IBM DB2 データベースまたは別のデータベースを使用します。
+
+
 
 ## ロギングとモニタリングのメカニズムの構成
 {: #configuring-logging-and-monitoring-mechanisms }
@@ -822,6 +832,8 @@ WebSphere Application Server の場合、IBM Knowledge Center で説明されて
 複数のランタイムで {{ site.data.keys.mf_server }} を構成し、{{ site.data.keys.mf_console }} でアプリケーションの「タイプ」によって表示を区別することができます。
 
 > **注:** Mobile Foundation Bluemix サービスで作成された Mobile Foundation サーバー・インスタンスで、複数ランタイムはサポートされません。Bluemix サービスでは、代わりに複数サービス・インスタンスを作成してください。
+
+
 
 #### ジャンプ先
 {: #jump-to-1 }
@@ -916,6 +928,8 @@ mfpdev adapter deploy local second-runtime
 
 > 使用可能なすべての REST API の詳細は、[API リファレンス](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html)にあります。
 
+
+
 ## ライセンス・トラッキングの構成
 {: #configuring-license-tracking }
 ライセンス・トラッキングはデフォルトで有効になります。ライセンス・トラッキングの構成方法について詳しくは、以下のトピックをお読みください。ライセンス・トラッキングについて詳しくは、[ライセンス・トラッキング](../../../administering-apps/license-tracking)を参照してください。
@@ -928,6 +942,8 @@ mfpdev adapter deploy local second-runtime
 クライアント・デバイスおよびアドレス可能デバイスに対するライセンス・トラッキングはデフォルトで有効になります。ライセンス・レポートは {{ site.data.keys.mf_console }} で使用可能です。以下の JNDI プロパティーを指定して、ライセンス・トラッキングについてのデフォルト設定を変更することができます。
 
 > **注:** トークン・ライセンスの使用を定義した契約がある場合、[トークン・ライセンスのためのインストールおよび構成](../token-licensing)も参照してください。
+
+
 
 以下の JNDI プロパティーを指定して、ライセンス・トラッキングについてのデフォルト設定を変更することができます。
 

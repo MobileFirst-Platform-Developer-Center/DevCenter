@@ -254,7 +254,7 @@ String allowedIP =null;
 
 2. カスタム TAI 実装を .jar ファイルにエクスポートして、該当する **env** フォルダー (**mfpf-server/usr/env または mfpf-analytics/usr/env**) に入れます。
 3. TAI インターセプターの詳細を含む XML 構成ファイルを作成し (ステップ 1 で提供された TAI 構成のコード例を参照)、.xml ファイルを該当するフォルダー (**mfpf-server/usr/config** または **mfpf-analytics/usr/config**) に追加します。.xml ファイルは次の例に似たものになります。**ヒント:** 実際の実装を反映するようにクラス名とプロパティーを更新してください。
-  ```xml
+   ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
     <server description="new server">
         <featureManager>

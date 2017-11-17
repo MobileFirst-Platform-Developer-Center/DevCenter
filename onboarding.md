@@ -1,4 +1,6 @@
 ## Working with the developer center
+This document is an overview for experienced users of the technologies used to develop, build and run the DevCenter.  For more detailed instructions, please read the Onboarding Guide in our Github Wiki.
+
 This website is power by several technologies: 
 
 * Bootstrap for a responsive layout
@@ -76,6 +78,10 @@ You can also combine the two tricks above. Your final command should look like:
 
 1. After changes are made, you can commit them to your forked repository with a descriptive text.  
 2. Make a new pull request so that the admins will merge your changes, from your forked repository back into the master branch of the Developer Center's repository.  
+
+#### Enable others to load your site while running on your laptop
+
+To allow people to access your Jekyll server via your IP address or Bonjour name, add "--host 0.0.0.0" when you start Jekyll (e.g. "bundle exec jekyll serve --incremental --host 0.0.0.0")
 
 #### Keep your fork up to date!
 To avoid conflicts it is very important to keep your fork up to date with the original upstream repository. _Don't create a Pull Request if you are not up to date_.

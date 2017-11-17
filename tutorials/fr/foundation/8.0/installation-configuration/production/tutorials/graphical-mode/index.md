@@ -223,7 +223,7 @@ Cette application peut être utilisée pour distribuer des applications mobiles 
     * Entrez le nom d'hôte qui exécute le serveur DB2. S'il s'exécute sur votre ordinateur, vous pouvez entrer **localhost**.
     * Modifiez le numéro de port si l'instance DB2 que vous prévoyez d'utiliser n'écoute pas le port par défaut (50000).
     * Entrez le chemin d'accès au pilote JDBC DB2. Pour DB2, le fichier nommé **db2jcc4.jar** est attendu. En outre, le fichier **db2jcc\_license\_cu.jar** doit figurer dans le même répertoire. Dans une distribution DB2 standard, ces fichiers se trouvent dans **db2\_install\_dir/java**.
-    * Cliquez sur **Next**.
+    * Cliquez sur **Suivant**.
 
     S'il est impossible d'accéder au serveur DB2 avec les données d'identification fournies, l'outil de configuration de serveur désactive le bouton **Suivant** et affiche une erreur. Le bouton **Next** est également désactivé si le pilote JDBC ne contient pas les classes attendues. Si tout est correct, le bouton **Next** est activé.
     
@@ -242,7 +242,7 @@ Cette application peut être utilisée pour distribuer des applications mobiles 
     
     Cette option crée un utilisateur dans le registre de base du serveur Liberty et vous permet de vous connecter à {{ site.data.keys.mf_console }} ou au service d'administration. Pour une installation dans un environnement de production, n'utilisez pas cette option et configurez les rôles de sécurité des applications après l'installation, comme indiqué dans la rubrique Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}.
     * Sélectionnez l'option Server farm deployment pour le type de déploiement.
-    * Cliquez sur **Next**.
+    * Cliquez sur **Suivant**.
 13. Sélectionnez l'option **Install the Push service**.
 
     Lorsque le service push est installé, les flux HTTP ou HTTPS sont requis entre le service d'administration et le service push, et entre le service d'administration et le service push pour le composant d'environnement d'exécution.
@@ -252,7 +252,7 @@ Cette application peut être utilisée pour distribuer des applications mobiles 
 15. Conservez les entrées par défaut de l'option **Credentials for secure communication between the Administration and the Push service**.
 
     Un identificateur et un mot de passe de client sont requis pour enregistrer le service push et le service d'administration en tant que clients OAuth confidentiels pour le serveur d'autorisations (par défaut, il s'agit du composant d'environnement d'exécution). L'outil de configuration de serveur génère un ID et un mot de passe aléatoire pour chacun des services, que vous pouvez conserver tels quels pour ce tutoriel de mise en route.
-16. Cliquez sur **Next**.
+16. Cliquez sur **Suivant**.
 17. Conservez les entrées par défaut sur le panneau **Analytics Setting**.
 
     Pour activer la connexion au serveur Analytics, vous devez d'abord installer {{ site.data.keys.mf_analytics }}. Toutefois, l'installation n'est pas abordée dans ce tutoriel.

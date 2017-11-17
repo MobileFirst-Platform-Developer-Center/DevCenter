@@ -92,6 +92,8 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 
 > **注:** 実動用には、ホスト・コンピューターの始動時に Liberty サーバーがサービスとして始動するようにする必要があります。Liberty サーバーをサービスとして始動させる手順は、このチュートリアルには含まれていません。
 
+
+
 ## {{ site.data.keys.mf_server }} のインストール
 {: #installing-mobilefirst-server }
 Installation Manager V1.8.4 以降がインストールされていることを確認してください。Installation Manager のバージョンがこれより古いと、{{ site.data.keys.mf_server }} のインストールが正常に終了しない場合があります。これは、インストール後の操作に Java 7 が必要であり、古いバージョンの Installation Manager に付属するのは Java 6 であるためです。
@@ -169,6 +171,8 @@ Installation Manager V1.8.4 以降がインストールされていることを�
     
     > **注:** このステートメントにより、デフォルトの DB2 データベースで PUBLIC に付与されたデフォルトの特権が削除されることはありません。実動では、そのデータベース内の特権を、本製品の最小要件まで減らすことが必要になる場合もあります。DB2 セキュリティーおよびセキュリティーの実施例について詳しくは、[DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/) を参照してください。
 
+
+
 ## Ant タスクを使用した {{ site.data.keys.mf_server }} の Liberty へのデプロイ
 {: #deploying-mobilefirst-server-to-liberty-with-ant-tasks }
 Ant タスクを使用して、以下の操作を実行します。
@@ -219,6 +223,8 @@ Ant タスクを含む適切な XML ファイルを選択し、プロパティ�
 * 次のコマンドを実行して {{ site.data.keys.mf_server }} をインストールします。`mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install`
 
 > **注:** DB2 が存在せず、組み込みの Derby をデータベースとして使用してインストール済み環境をテストしたい場合は、**mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml** ファイルを使用してください。ただし、Derby データベースに複数の Liberty サーバーがアクセスすることはできないため、このチュートリアルの最後のステップ ({{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成) は実行できません。DB2 関連のプロパティー (**database.db2**, ...) を除くプロパティーを設定する必要があります。Derby を使用する場合は、プロパティー **database.derby.datadir** の値を、Derby データベースを作成できるディレクトリーに設定してください。また、プロパティー **database.derby.mfp.dbname** の値を **MFPDATA** に設定します。
+
+
 
 以下の操作が、Ant タスクにより実行されます。
 
@@ -436,6 +442,7 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
     Liberty との JMX 通信は、Liberty REST コネクター経由で、HTTPS プロトコルを使用して行われます。この通信を使用可能にするには、ファームの各サーバーが他のメンバーの SSL 証明書を認識できなければなりません。トラストストア内の HTTPS 証明書を交換する必要があります。IBM ユーティリティー (**java/bin** 内の IBM JRE ディストリビューションの一部である Keytool など) を使用して、トラストストアを構成します。鍵ストアおよびトラストストアのロケーションは、**server.xml** ファイルに定義されています。デフォルトで、Liberty プロファイルの鍵ストアは **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** にあります。**server.xml** ファイルで確認できるとおり、このデフォルトの鍵ストアのパスワードは **mobilefirst** です。
         
     > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。
+
     
     * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
     * 次のコマンドを使用して、サーバー mfp1 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`

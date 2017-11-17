@@ -505,7 +505,7 @@ La première étape de cette procédure vous indique comment installer le certif
     * Sélectionnez "Local Machine" et cliquez sur **Next**.
     ![Définition de la machine locale dans l'assistant d'importation de certificat](cert_localmachine_win8.jpg)    
     * Sélectionnez "Place all certificate in the following store" puis parcourez pour sélectionner "Trusted Root Certification Authorities".
-    ![Stockage du certificat dans ](cert_trustedroot_win8.jpg)    
+    ![Stockage du certificat dans "Trusted Root Certificate Authorities"](cert_trustedroot_win8.jpg)    
     * Cliquez sur **Next**, puis sur **Finish**. L'importation réussie du certificat doit être confirmée.
 
 Les étapes suivantes décrivent comment effectuer l'installation d'une application Windows Store sur un appareil Windows à l'aide d'Application Center.

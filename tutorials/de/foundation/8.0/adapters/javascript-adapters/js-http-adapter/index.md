@@ -73,9 +73,9 @@ Deklarieren Sie die erforderlichen Prozeduren unterhalb des Elements `connectivi
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: Dieses <i>obligatorische</i> Attribut muss den Wert
-http:HTTPConnectionPolicyType haben. </li>
-                    <li><b>cookiePolicy</b>: Dieses <i>optionale</i> Attribut legt fest, wie der HTTP-Adapter von der Back-End-Anwendung eingehende Cookies behandelt. Folgende Werte sind gültig: <ul>
+                    <li><b>xsi:type</b>: Dieses <i>obligatorische</i> Attribut muss den Wert http:HTTPConnectionPolicyType haben.</li>
+                    <li><b>cookiePolicy</b>: Dieses <i>optionale</i> Attribut legt fest, wie der HTTP-Adapter von der Back-End-Anwendung eingehende Cookies behandelt. Folgende Werte sind gültig:
+                        <ul>
                             <li>BEST_MATCH (Standardwert)</li>
                             <li>BROWSER_COMPATIBILITY</li>
                             <li>RFC_2109</li>
@@ -127,10 +127,9 @@ Weitere Informationen zum Setup-Prozess für Keystores enthält das Lernprogramm
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>: Dieses <i>optionale</i> Element gibt die Details des Proxy-Servers an, der beim Zugriff auf die Back-End-Anwendung verwendet
-werden soll. Die Proxydetails müssen die Protokolldomäne und den Port enthalten. Falls der Proxy eine Authentifizierung erfordert, fügen Sie innerhalb des Elements <code>proxy</code> ein verschachteltes Element
-<code>authentication</code> hinzu. Dieses Element hat dieselbe Struktur wie das Element, mit dem das Authentifizierungsprotokoll
-des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die Basisauthentifizierung erfordert und eine Serveridentität verwendet.{% highlight xml %}
+                    <li><b>proxy</b>: Dieses <i>optionale</i> Element gibt die Details des Proxy-Servers an, der beim Zugriff auf die Back-End-Anwendung verwendet werden soll. Die Proxydetails müssen die Protokolldomäne und den Port enthalten. Falls der Proxy eine Authentifizierung erfordert, fügen Sie innerhalb des Elements <code>proxy</code> ein verschachteltes Element <code>authentication</code> hinzu. Dieses Element hat dieselbe Struktur wie das Element, mit dem das Authentifizierungsprotokoll des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die Basisauthentifizierung erfordert und eine Serveridentität verwendet.
+
+{% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
   <domain>www.bbc.co.uk</domain>
@@ -148,9 +147,7 @@ des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die 
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: Dieses <i>optionale</i> Unterelement definiert die maximale Anzahl Verbindungen, die der
-{{ site.data.keys.mf_server }} gleichzeitig zum
-Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt.<br/><br/>
+                    <li><b>maxConcurrentConnectionsPerNode</b>: Dieses <i>optionale</i> Unterelement definiert die maximale Anzahl Verbindungen, die der {{ site.data.keys.mf_server }} gleichzeitig zum Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt.<br/><br/>
                     Standardmäßig sind 50 gleichzeitige HTTP-Verbindungen möglich. Schätzen Sie ein, wie viele gleichzeitige Anforderungen an den Adapter erwartet werden. Ausgehend von dieser Zahl und von den maximal zulässigen Anforderungen seitens des Back-End-Service können Sie die Anzahl der gleichzeitigen HTTP-Verbindungen modifizieren. Außerdem können Sie den Back-End-Service so konfigurieren, dass die Anzahl der gleichzeitig eingehenden Anforderungen begrenzt ist.<br/><br/>
                     Stellen Sie sich ein System mit zwei Knoten vor, für das eine Belastung von 100 parallelen Anforderungen erwartet wird. Der Back-End-Service kann aber nur maximal 80 gleichzeitige Anforderungen unterstützen. Für den Fall können Sie maxConcurrentConnectionsPerNode auf
 40 setzen.

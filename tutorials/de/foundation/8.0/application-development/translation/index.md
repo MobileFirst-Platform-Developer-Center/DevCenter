@@ -195,3 +195,4 @@ Anweisungen finden Sie in der Datei README.md zum Beispiel.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Das LogCat
 können Sie in der LogCat-Konsole von Android Studio untersuchen, während die Anwendung ausgeführt wird.
+

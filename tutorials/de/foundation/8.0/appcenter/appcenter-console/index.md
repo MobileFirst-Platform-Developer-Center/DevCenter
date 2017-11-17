@@ -215,7 +215,9 @@ an derselben Stelle wie eine im eigenen Unternehmen erstellte Anwendung hinzu
 
 > **Hinweis:** Zurzeit unterstützt das
 Application Center nur Google Play und Apple iTunes. Windows Phone Store und Windows Store
-werden noch nicht unterstützt.Anstelle der ausführbaren Datei
+werden noch nicht unterstützt.
+
+Anstelle der ausführbaren Datei
 der Anwendung müssen Sie eine URL für den Application Store des anderen Anbieters bereitstellen, in dem
 die Anwendung gespeichert ist. Damit Sie den richtigen Anwendungslink leichter finden, stellt die Konsole auf der Seite
 **Add an application** direkte Links zu den Websites unterstützter Application Stores von anderen Anbietern bereit.
@@ -401,7 +403,9 @@ Gehen Sie wie folgt vor, um die Eigenschaften einer hochgeladenen Anwendung zu b
 3. Bearbeiten Sie die gewünschten editierbaren Eigenschaften. Ausführliche Informationen zu diesen Eigenschaften finden Sie im Artikel [Anwendungseigenschaften](#application-properties). Der Name der aktuellen Anwendungsdatei wird nach den Eigenschaften angezeigt.
 
     > **Wichtiger Hinweis:** Wenn Sie die Datei aktualisieren wollen, muss sie zum gleichen Paket gehören und die gleiche Versionsnummer haben. Stimmt eine
-dieser Eigenschaften nicht überein, müssen Sie zur Anwendungsliste zurückkehren und zuerst die neue Version hinzufügen.4. Klicken Sie auf **OK**, um Ihre Änderungen zu speichern
+dieser Eigenschaften nicht überein, müssen Sie zur Anwendungsliste zurückkehren und zuerst die neue Version hinzufügen.
+
+4. Klicken Sie auf **OK**, um Ihre Änderungen zu speichern
 und zu den verfügbaren Anwendungen zurückzukehren, oder auf **Apply**, um die Anwendungsdetails geöffnet zu lassen.
 
 ![Editierbare Anwendungseigenschaften](ac_edit_app_props.jpg)
@@ -410,6 +414,9 @@ und zu den verfügbaren Anwendungen zurückzukehren, oder auf **Apply**, um die 
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
 > Diese Funktion wird nur für Android, iOS und Windows Phone unterstützt und derzeit nicht für Windows 10 Universal, Blackberry oder Windows 8 Universal unterstützt.
+
+
+
 
 
 Für implementierte mobile Anwendungen können Sie ohne großen Aufwand ein Upgrade durchführen, indem Sie
@@ -476,7 +483,7 @@ von Benutzern oder Testern mobiler Anwendungen zu einer Anwendungsversion anzuze
 
 1. Wählen Sie **Anwendungen** aus, um  die Liste der hochgeladenen Anwendungen unter **Verfügbare Anwendungen** zu sehen.
 2. Wählen Sie die Anwendungsversion aus.
-3. Wählen Sie im Menü **Reviews** aus.
+3. Wählen Sie im Menü **Rezensionen** aus.
 
     ![Rezensionen zu Anwendungsversionen](ac_appfeedbk.jpg)
 
@@ -635,7 +642,9 @@ bearbeiten.
 > **Hinweis:** Unter iOS kann der Benutzer diesen Namen in den Geräteeinstellungen
 unter "Einstellungen" > "Allgemein" > "Informationen" > "Name" bearbeiten. Der Name wird
 in
-iTunes angezeigt.**User Name**  
+iTunes angezeigt.
+
+**User Name**  
 Name des ersten Benutzers, der sich bei dem Gerät angemeldet hat.
 
 **Manufacturer**  

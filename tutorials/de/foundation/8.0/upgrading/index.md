@@ -62,6 +62,8 @@ Wenn Sie Ihre App entwickeln, verwenden Sie für viele Aufgaben die {{ site.data
 
 > Weitere Informationen zu weggefallenen Features und zum Ersetzungspfad finden Sie unter [In Version 8.0 weggefallene und nicht mehr enthaltene Features](../product-overview/release-notes/deprecated-discontinued).
 
+
+
 ## Cordova- oder Hybridanwendung umstellen
 {: #migrating-a-cordova-or-hybrid-application }
 Sie können die Entwicklung von Cordova-Apps mit dem Apache-Cordova-Befehlszeilentool oder in einer Cordova-fähigen IDE wie Visual Studio Code, Eclipse, IntelliJ und anderen beginnen. 
@@ -78,6 +80,8 @@ Für die Migration einer Cordova- oder Hybrid-App sind folgende Schritte erforde
 
 > **Hinweis:** Für die Migration der Unterstützung für Push-Benachrichtigungen sind sowohl auf der Clientseite als auch auf der Serverseite Änderungen notwendig, die weiter unten im Abschnitt "Unterstützung für Push-Benachrichtigungen umstellen" beschrieben sind.
 
+
+
 ## Native Anwendung umstellen
 {: #migrating-a-native-application }
 Für die Migration einer nativen Anwendung sind folgende Schritte erforderlich: 
@@ -91,6 +95,8 @@ Für die Migration einer nativen Anwendung sind folgende Schritte erforderlich:
     * Weitere Informationen zur Umstellung von nativen Windows-Apps finden Sie unter [Vorhandene native Windows-Anwendungen umstellen](migrating-client-applications/windows).
 
 > **Hinweis:** Für die Migration der Unterstützung für Push-Benachrichtigungen sind sowohl auf der Clientseite als auch auf der Serverseite Änderungen notwendig, die weiter unten im Abschnitt [Unterstützung für Push-Benachrichtigungen umstellen](#migrating-push-notifications-support) beschrieben sind.
+
+
 
 ## Adapter und Sicherheit umstellen
 {: #migrating-adapters-and-security }

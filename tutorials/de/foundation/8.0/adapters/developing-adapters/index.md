@@ -13,6 +13,8 @@ in Maven oder mithilfe der {{ site.data.keys.mf_cli }} erstellt werden. Der Adap
 
 > Anweisungen für die Nutzung von IntelliJ finden Sie im Blogbeitrag [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters).
 
+
+
 **Voraussetzungen:**
 
 * Gehen Sie zunächst die [Adapterlernprogramme](../) durch, um sich mit Adaptern vertraut zu machen. 
@@ -78,6 +80,8 @@ Ein Adapterprojekt kann mit Befehlen in der Maven-Befehlszeile, mit der {{ site.
 um den Implementierungsschritt zu erleichtern.
 Integrieren Sie dazu mit einem Plug-in ein **Befehlszeilenfenster**. Sie erhalten so eine konsistente Entwicklungsumgebung. In diesem Fenster können Maven-Befehle oder
 Befehle der {{ site.data.keys.mf_cli }} ausgeführt werden.
+
+
 
 ### Adapterbuild erstellen
 {: #building-an-adapter }

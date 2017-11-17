@@ -82,6 +82,8 @@ Die Webressourcen der Anwendung werden anfänglich in das Anwendungspaket aufgen
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Hinweis:** Nach einer direkten Aktualisierung findet die nächste Überprüfung nach 60 Minuten statt.
 
+
+
 Wenn eine direkte Aktualisierung durchgeführt wurde, verwendet die Anwendung nicht mehr die ursprünglich im Anwendungspaket enthaltenen Webressourcen. Sie verwendet stattdessen die aus der Anwendungs-Sandbox heruntergeladenen Webressourcen. Wenn der Anwendungscache auf dem Gerät gelöscht wird, werden wieder die Webressourcen aus dem ursprünglichen Paket verwendet. 
 
 ![Funktionsweise der direkten Aktualisierung](internal_function.jpg)
@@ -397,6 +399,8 @@ um eine Version hinter dem Stand der zurzeit auf dem Server implementierten Anwe
 derzeit implementierten anwendung zurück (was geschieht, wenn die Anwendung
 auf dem Server seit der letzten Aktualisierung der Clientanwendung mindestens zweimal implementiert wurde),
 wird eine **vollständige Aktualisierung** empfangen. (In dem Fall werden alle Webressourcen heruntergeladen und aktualisiert.)
+
+
 
 ## Sichere direkte Aktualisierung
 {: #secure-direct-update }
