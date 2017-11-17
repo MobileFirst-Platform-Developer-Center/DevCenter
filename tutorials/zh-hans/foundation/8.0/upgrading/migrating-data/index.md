@@ -1235,7 +1235,7 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 
    ```swift
    // Use an existing store
-   let store:CDTStore = existingStore
+let store:CDTStore = existingStore
 
    // The data type to use for the Automobile class
    let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))

@@ -96,18 +96,18 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 **mfpadm** 程序具有以下选项：
 
-| 选项| 类型| 描述| 必需| 缺省值|
+| 选项	| 类型 | 描述 | 必需 | 缺省值 |
 |-----------|------|-------------|----------|---------|
-| --url| 	 | URL| Administration Services 的 {{ site.data.keys.product_adj }} web 应用程序的基本 URL| 是| |
-| --secure	 | 布尔值| 是否避免存在安全风险的操作| 否| true|
-| --user	 | name| 用于访问 {{ site.data.keys.product_adj }} Administration Services 的用户名| 是|  | 	 
-| --passwordfile| 文件| 包含用户密码的文件| 否|
-| --timeout	     | 数字| 整个 REST 服务访问超时，以秒为单位| 否| 	 
-| --connect-timeout| 数字| 建立网络连接超时，以秒为单位| 否|
-| --socket-timeout| 数字| 检测网络连接断开超时，以秒为单位| 否|
-| --connection-request-timeout| 数字 | 从连接请求池获取条目超时，以秒为单位| 否|
-| --lock-timeout| 数字| 获取锁定时的超时，以秒为单位| 否| 2|
-| --verbose	     | 详细的输出| 否| |  
+| --url | 	 | URL | Administration Services 的 {{ site.data.keys.product_adj }} web 应用程序的基本 URL | 是 | |
+| --secure	 | 布尔值 | 是否避免存在安全风险的操作 | 否 | true |
+| --user	 | name | 用于访问 {{ site.data.keys.product_adj }} Administration Services 的用户名 | 是 |  | 	 
+| --passwordfile | 文件 | 包含用户密码的文件 | 否 |
+| --timeout	     | 数字  | 整个 REST 服务访问超时，以秒为单位 | 否 | 	 
+| --connect-timeout | 数字 | 建立网络连接超时，以秒为单位 | 否 |
+| --socket-timeout  | 数字 | 检测网络连接断开超时，以秒为单位 | 否 |
+| --connection-request-timeout | 数字 | 从连接请求池获取条目超时，以秒为单位 | 否 |
+| --lock-timeout | 数字 | 获取锁定时的超时，以秒为单位 | 否 | 2 |
+| --verbose	     | 详细的输出 | 否	| |  
 
 **url**  
 URL 最好使用 HTTPS 协议。 例如，如果使用缺省端口和上下文根，请使用此 URL：
@@ -131,51 +131,51 @@ URL 最好使用 HTTPS 协议。 例如，如果使用缺省端口和上下文�
 
 mfpadm 调用包含一个命令。 支持以下命令。
 
-| 命令| 描述|
+| 命令                           | 描述 |
 |-----------------------------------|-------------|
-| show info	| 显示用户和配置信息。|
-| show global-config| 显示全局配置信息。|
-| show diagnostics| 显示诊断信息。|
-| show versions	| 显示版本信息。|
-| unlock| 释放通用锁定。|
-| list runtimes [--in-database]| 列出运行时。|
-| show runtime [runtime-name]| 显示有关运行时的信息。|
-| delete runtime [runtime-name] condition| 删除运行时。|
-| show user-config [runtime-name]| 显示运行时的用户配置。|
-| set user-config [runtime-name] file| 指定运行时的用户配置。|
-| set user-config [runtime-name] property = value| 指定运行时的用户配置中的属性。|
-| show confidential-clients [runtime-name]| 显示运行时的保密客户机配置。|
-| set confidential-clients [runtime-name] file| 指定运行时的保密客户机配置。|
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope| 指定运行时的保密客户机配置规则。|
-| list adapters [runtime-name]| 列出适配器。|
-| deploy adapter [runtime-name] property = value| 部署适配器。|
-| show adapter [runtime-name] adapter-name| 显示有关适配器的信息。|
-| delete adapter [runtime-name] adapter-name| 删除适配器。|
-| adapter [runtime-name] adapter-name get binary [> tofile]| 获取适配器的二进制数据。|
-| list apps [runtime-name]| 列出应用程序。|
-| deploy app [runtime-name] file| 部署应用程序。|
-| show app [runtime-name] app-name| 显示有关应用程序的信息。|
-| delete app [runtime-name] app-name| 删除应用程序。|
-| show app version [runtime-name] app-name environment version| 显示有关应用程序版本的信息。|
-| delete app version [runtime-name] app-name environment version| 删除应用程序的版本。|
-| app [runtime-name] app-name show license-config| 显示应用程序的令牌许可证配置。|
-| app [runtime-name] app-name set license-config app-type license-type| 指定应用程序的令牌许可证配置。|
-| app [runtime-name] app-name delete license-config| 除去应用程序的令牌许可证配置。|
-| app version [runtime-name] app-name environment version get descriptor [> tofile]| 获取应用程序版本的描述符。|
-| app version [runtime-name] app-name environment version get web-resources [> tofile]| 获取应用程序版本的 Web 资源。|
-| app version [runtime-name] app-name environment version set web-resources file| 指定应用程序版本的 Web 资源。|
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile]| 获取应用程序版本的真实性数据。|
-| app version [runtime-name] app-name environment version set authenticity-data [file]| 指定应用程序版本的真实性数据。|
-| app version [runtime-name] app-name environment version delete authenticity-data| 删除应用程序版本的真实性数据。|
-| app version [runtime-name] app-name environment version show user-config| 显示应用程序版本的用户配置。|
-| app version [runtime-name] app-name environment version set user-config file| 指定应用程序版本的用户配置。|
-| app version [runtime-name] app-name environment version set user-config property = value| 指定应用程序版本的用户配置中的属性。|
-| list devices [runtime-name][--query query] | 列出设备。|
-| remove device [runtime-name] id| 除去设备。|
-| device [runtime-name] id set status new-status| 更改设备状态。|
-| device [runtime-name] id set appstatus app-name new-status| 更改应用程序的设备状态。|
-| list farm-members [runtime-name]| 列出作为服务器场成员的服务器。|
-| remove farm-member [runtime-name] server-id| 从场成员列表中除去服务器。|
+| show info	| 显示用户和配置信息。 |
+| show global-config | 显示全局配置信息。 |
+| show diagnostics | 显示诊断信息。 |
+| show versions	| 显示版本信息。 |
+| unlock | 释放通用锁定。 |
+| list runtimes [--in-database] | 列出运行时。 |
+| show runtime [runtime-name] | 显示有关运行时的信息。 |
+| delete runtime [runtime-name] condition | 删除运行时。 |
+| show user-config [runtime-name] | 显示运行时的用户配置。 |
+| set user-config [runtime-name] file | 指定运行时的用户配置。 |
+| set user-config [runtime-name] property = value | 指定运行时的用户配置中的属性。 |
+| show confidential-clients [runtime-name] | 显示运行时的保密客户机配置。 |
+| set confidential-clients [runtime-name] file | 指定运行时的保密客户机配置。 |
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | 指定运行时的保密客户机配置规则。 |
+| list adapters [runtime-name] | 列出适配器。 |
+| deploy adapter [runtime-name] property = value | 部署适配器。|
+| show adapter [runtime-name] adapter-name | 显示有关适配器的信息。|
+| delete adapter [runtime-name] adapter-name | 删除适配器。|
+| adapter [runtime-name] adapter-name get binary [> tofile]	| 获取适配器的二进制数据。|
+| list apps [runtime-name] | 列出应用程序。|
+| deploy app [runtime-name] file | 部署应用程序。|
+| show app [runtime-name] app-name | 显示有关应用程序的信息。|
+| delete app [runtime-name] app-name | 删除应用程序。 |
+| show app version [runtime-name] app-name environment version | 显示有关应用程序版本的信息。 |
+| delete app version [runtime-name] app-name environment version | 删除应用程序的版本。 |
+| app [runtime-name] app-name show license-config | 显示应用程序的令牌许可证配置。 |
+| app [runtime-name] app-name set license-config app-type license-type | 指定应用程序的令牌许可证配置。 |
+| app [runtime-name] app-name delete license-config | 除去应用程序的令牌许可证配置。 |
+| app version [runtime-name] app-name environment version get descriptor [> tofile]	| 获取应用程序版本的描述符。 |
+| app version [runtime-name] app-name environment version get web-resources [> tofile] | 获取应用程序版本的 Web 资源。 |
+| app version [runtime-name] app-name environment version set web-resources file | 指定应用程序版本的 Web 资源。 |
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | 获取应用程序版本的真实性数据。 |
+| app version [runtime-name] app-name environment version set authenticity-data [file] | 指定应用程序版本的真实性数据。 |
+| app version [runtime-name] app-name environment version delete authenticity-data | 删除应用程序版本的真实性数据。 |
+| app version [runtime-name] app-name environment version show user-config | 显示应用程序版本的用户配置。 |
+| app version [runtime-name] app-name environment version set user-config file | 指定应用程序版本的用户配置。 |
+| app version [runtime-name] app-name environment version set user-config property = value | 指定应用程序版本的用户配置中的属性。 |
+| list devices [runtime-name][--query query] | 列出设备。 |
+| remove device [runtime-name] id | 除去设备。 |
+| device [runtime-name] id set status new-status | 更改设备状态。 |
+| device [runtime-name] id set appstatus app-name new-status | 更改应用程序的设备状态。 |
+| list farm-members [runtime-name] | 列出作为服务器场成员的服务器。 |
+| remove farm-member [runtime-name] server-id | 从场成员列表中除去服务器。 |
 
 #### 交互方式
 {: #interactive-mode }
@@ -229,18 +229,18 @@ mfpadm 调用包含一个命令。 支持以下命令。
 
 使用这些命令，将这些值存储在配置文件中。
 
-| 命令| 注释|
+| 命令 | 注释 |
 |---------|---------|
-| mfpadm [--configfile=file] config url URL| |
-| mfpadm [--configfile=file] config secure boolean| |
-| mfpadm [--configfile=file] config user name| |
-| mfpadm [--configfile=file] config password| 提示输入密码。|
-| mfpadm [--configfile=file] config timeout seconds| |
-| mfpadm [--configfile=file] config connect-timeout seconds| |
-| mfpadm [--configfile=file] config socket-timeout seconds| |
-| mfpadm [--configfile=file] config connection-request-timeout seconds| |
-| mfpadm [--configfile=file] config lock-timeout seconds| |
-| mfpadm [--configfile=file] config runtime runtime-name| |
+| mfpadm [--configfile=file] config url URL | |
+| mfpadm [--configfile=file] config secure boolean | |
+| mfpadm [--configfile=file] config user name | |
+| mfpadm [--configfile=file] config password | 提示输入密码。 |
+| mfpadm [--configfile=file] config timeout seconds | |
+| mfpadm [--configfile=file] config connect-timeout seconds | |
+| mfpadm [--configfile=file] config socket-timeout seconds | |
+| mfpadm [--configfile=file] config connection-request-timeout seconds | |
+| mfpadm [--configfile=file] config lock-timeout seconds | |
+| mfpadm [--configfile=file] config runtime runtime-name | |
 
 使用以下命令可列出配置文件中存储的值：`mfpadm [--configfile=file] config`
 
@@ -257,10 +257,10 @@ mfpadm 调用包含一个命令。 支持以下命令。
 {: #generic-options }
 有一些常用的一般选项：
 
-| 选项| 描述|
+| 选项	| 描述 |
 |-----------|-------------|
-| --help	| 显示一些用法帮助|
-| --version	| 显示版本|
+| --help	| 显示一些用法帮助 |
+| --version	| 显示版本 |
 
 #### XML 格式
 {: #xml-format }
@@ -291,9 +291,9 @@ global-config` 命令可显示全局配置。
 
 它采用以下选项：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml    | 生成 XML 输出（而非表格输出）。 |
 
 **示例**  
 
@@ -313,15 +313,15 @@ user-config` 命令可显示运行时的用户配置。
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
+| runtime-name | 运行时的名称。 |
 
 `show user-config` 命令在动词后采用以下选项。
 
-| 参数| 描述| 必需| 缺省值|
+| 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml| 生成 XML 格式（而非 JSON 格式）的输出。| 否| 标准输出|
+| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
 
 **示例**  
 
@@ -341,20 +341,20 @@ user-config` 命令可指定运行时的用户配置或此配置中的单个属�
 
 它采用以下参数：
 
-| 属性| 描述|
+| 属性 | 描述 |
 |-----------|-------------|
-| runtime-name| 运行时的名称。|
-| 文件| 包含新配置的 JSON 或 XML 文件的名称。|
+| runtime-name | 运行时的名称。 |
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 |
 
 针对单个属性的语法：`set user-config [runtime-name] property = value`
 
 `set user-config` 命令采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| property| JSON 属性的名称。 对于嵌套属性，请使用语法 prop1.prop2.....propN。 对于 JSON 数组元素，请使用索引代替属性名称。|
-| value| 属性的值。|
+| runtime-name | 运行时的名称。 |
+| property | JSON 属性的名称。 对于嵌套属性，请使用语法 prop1.prop2.....propN。 对于 JSON 数组元素，请使用索引代替属性名称。 |
+| value | 属性的值。 |
 
 **示例**  
 
@@ -377,15 +377,15 @@ set user-config mfp timeout = 240
 
 它采用以下参数：
 
-| 属性| 描述|
+| 属性 | 描述 |
 |-----------|-------------|
-| runtime-name| 运行时的名称。|
+| runtime-name | 运行时的名称。 |
 
 `show confidential-clients` 命令在动词后采用以下选项。
 
-| 参数| 描述| 必需| 缺省值|
+| 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml| 生成 XML 格式（而非 JSON 格式）的输出。| 否| 标准输出|
+| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
 
 **示例**
 
@@ -404,10 +404,10 @@ show confidential-clients --xml mfp
 
 它采用以下参数：
 
-| 属性| 描述|
+| 属性 | 描述 |
 |-----------|-------------|
-| runtime-name| 运行时的名称。|
-| file	| 包含新配置的 JSON 或 XML 文件的名称。|
+| runtime-name | 运行时的名称。 |
+| file	| 包含新配置的 JSON 或 XML 文件的名称。 |
 
 **示例**
 
@@ -426,13 +426,13 @@ set confidential-clients mfp clients.xml
 
 它采用以下参数：
 
-| 属性	| 描述|
+| 属性	| 描述 |
 |-----------|-------------|
-| runtime| 运行时的名称。|
-| id| 规则的标识。|
-| displayName| 规则的显示名称。|
-| secret| 规则的密钥。|
-| allowedScope| 规则的作用域。 空格分隔的令牌列表。 使用双引号来传递由两个或更多个令牌组成的列表。|
+| runtime | 运行时的名称。 |
+| id | 规则的标识。 |
+| displayName | 规则的显示名称。 |
+| secret | 规则的密钥。 |
+| allowedScope | 规则的作用域。 空格分隔的令牌列表。 使用双引号来传递由两个或更多个令牌组成的列表。 |
 
 **示例**
 
@@ -454,15 +454,15 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
+| runtime-name | 运行时的名称。 |
 
 `list adapters` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**  
 
@@ -481,10 +481,10 @@ list adapters mfp
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| 文件| 二进制适配器文件 (.adapter)|
+| runtime-name | 运行时的名称。 |
+| 文件 | 二进制适配器文件 (.adapter) |
 
 **示例**
 
@@ -503,16 +503,16 @@ deploy adapter mfp MyAdapter.adapter
 
 它采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| adapter-name| 适配器的名称|
+| runtime-name | 运行时的名称。 |
+| adapter-name | 适配器的名称 |
 
 `show adapter` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -531,10 +531,10 @@ show adapter mfp MyAdapter
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| adapter-name| 适配器的名称。|
+| runtime-name | 运行时的名称。 |
+| adapter-name | 适配器的名称。 |
 
 **示例**
 
@@ -549,10 +549,10 @@ delete adapter mfp MyAdapter
 {: #the-adapter-command-prefix }
 `adapter` 命令前缀在动词前采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| adapter-name| 适配器的名称。|
+| runtime-name | 运行时的名称。 |
+| adapter-name | 适配器的名称。 |
 
 <br/>
 #### `adapter get binary` 命令
@@ -563,9 +563,9 @@ delete adapter mfp MyAdapter
 
 它在动词后采用以下选项。
 
-| 选项| 描述| 必需| 缺省值|
+| 选项 | 描述 | 必需 | 缺省值 |
 |--------|-------------|----------|---------|
-| > tofile| 输出文件的名称。| 否| 标准输出|
+| > tofile | 输出文件的名称。 | 否 | 标准输出 |
 
 **示例**
 
@@ -585,9 +585,9 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 它在动词后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 格式（而非 JSON 格式）的输出。|
+| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 |
 
 **示例**
 
@@ -606,18 +606,18 @@ adapter mfp MyAdapter show user-config
 
 它在动词后采用以下参数。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| 文件| 包含新配置的 JSON 或 XML 文件的名称。|
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 |
 
 针对单个属性的语法：`adapter [runtime-name] adapter-name set user-config property = value`
 
 它在动词后采用以下参数。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| property| JSON 属性的名称。 对于嵌套属性，请使用语法 prop1.prop2.....propN。 对于 JSON 数组元素，请使用索引代替属性名称。|
-| value| 属性的值。|
+| property | JSON 属性的名称。 对于嵌套属性，请使用语法 prop1.prop2.....propN。 对于 JSON 数组元素，请使用索引代替属性名称。 |
+| value | 属性的值。 |
 
 **示例**
 
@@ -643,15 +643,15 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
+| runtime-name | 运行时的名称。 |
 
 `list apps` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -670,10 +670,10 @@ app` 命令可在运行时中部署应用程序版本。
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| 文件| 作为应用程序描述符的 JSON 文件。|
+| runtime-name | 运行时的名称。 |
+| 文件 | 作为应用程序描述符的 JSON 文件。 |
 
 **示例**
 
@@ -691,16 +691,16 @@ deploy app mfp MyApp/application-descriptor.json
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| app-name| 应用程序的名称。|
+| runtime-name | 运行时的名称。 |
+| app-name | 应用程序的名称。 |
 
 `show app` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml	 | 生成 XML 输出（而非表格输出）。|
+| --xml	 | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -719,10 +719,10 @@ app` 命令可从运行时中除去（取消部署）应用程序（包含所有
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| app-name| 应用程序的名称|
+| runtime-name | 运行时的名称。 |
+| app-name | 应用程序的名称 |
 
 **示例**
 
@@ -741,18 +741,18 @@ version` 命令可显示有关运行时中应用程序版本的详细信息。
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| app-name| 应用程序的名称。|
-| environment| 移动平台。|
-| version| 应用程序的版本。|
+| runtime-name | 运行时的名称。 |
+| app-name | 应用程序的名称。 |
+| environment | 移动平台。 |
+| version | 应用程序的版本。 |
 
 `show app version` 命令在对象后采用以下选项。
 
-| 参数| 描述|
+| 参数 | 描述 |
 | ---------|-------------|
-| -- xml| 生成 XML 输出（而非表格输出）。|
+| -- xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -770,12 +770,12 @@ show app version mfp MyApp iPhone 1.1
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| app-name| 应用程序的名称。|
-| environment| 移动平台。|
-| version| 应用程序的版本。|
+| runtime-name | 运行时的名称。 |
+| app-name | 应用程序的名称。 |
+| environment | 移动平台。 |
+| version | 应用程序的版本。 |
 
 **示例**
 
@@ -789,10 +789,10 @@ delete app version mfp MyApp iPhone 1.1
 {: #the-app-command-prefix }
 `app` 命令前缀在动词前采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| app-name| 应用程序的名称。|
+| runtime-name | 运行时的名称。 |
+| app-name | 应用程序的名称。 |
 
 #### `app show license-config` 命令
 {: #the-app-show-license-config-command }
@@ -803,9 +803,9 @@ show license-config` 命令可显示应用程序的令牌许可证配置。
 
 它在对象后采用以下选项：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -825,10 +825,10 @@ license-config` 命令可指定应用程序的令牌许可证配置。
 
 它在动词后采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| appType| 应用程序类型：B2C 或 B2E。|
-| licenseType| 应用程序类型：APPLICATION、ADDITIONAL_BRAND_DEPLOYMENT 或 NON_PRODUCTION。|
+| appType | 应用程序类型：B2C 或 B2E。 |
+| licenseType | 应用程序类型：APPLICATION、ADDITIONAL_BRAND_DEPLOYMENT 或 NON_PRODUCTION。 |
 
 **示例**
 
@@ -858,12 +858,12 @@ app mfp MyApp iPhone 1.1 delete license-config
 {: #the-app-version-command-prefix }
 `app version` 命令前缀在动词前采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| app-name| 应用程序的名称。|
-| environment| 移动平台|
-| version| 应用程序的版本|
+| runtime-name | 运行时的名称。 |
+| app-name | 应用程序的名称。 |
+| environment | 移动平台 |
+| version | 应用程序的版本 |
 
 #### `app version get descriptor` 命令
 {: #the-app-version-get-descriptor-command }
@@ -874,9 +874,9 @@ version get descriptor` 命令返回应用程序版本的应用程序描述符�
 
 它在动词后采用以下参数。
 
-| 参数| 描述| 必需| 缺省值|
+| 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| > tofile| 输出文件的名称。| 否| 标准输出|
+| > tofile | 输出文件的名称。 | 否 | 标准输出 |
 
 **示例**
 
@@ -894,9 +894,9 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 
 它在动词后采用以下参数。
 
-| 参数| 描述| 必需| 缺省值|
+| 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| > tofile| 输出文件的名称。| 否| 标准输出|
+| > tofile | 输出文件的名称。 | 否 | 标准输出 |
 
 **示例**
 
@@ -915,7 +915,7 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 它在动词后采用以下参数。
 
 | 参数 | 描述 |
-| file | 输入文件的名称（必须为 .zip 文件）。|
+| file | 输入文件的名称（必须为 .zip 文件）。 |
 
 **示例**
 
@@ -934,7 +934,9 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 它在动词后采用以下参数。
 
 | 参数     | 描述   | 必需    | 缺省值   |
-| > tofile | 输出文件的名称。| 否 | 标准输出 |**示例**
+| > tofile | 输出文件的名称。 | 否 | 标准输出 |
+
+**示例**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
@@ -951,9 +953,9 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 它在动词后采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| 文件| 输入文件的名称：<ul><li>从中抽取真实性数据的 .authenticity_data 文件</li><li>或设备文件（.ipa、.apk 或 .appx）。</li></ul>|
+| 文件 | 输入文件的名称：<ul><li>从中抽取真实性数据的 .authenticity_data 文件</li><li>或设备文件（.ipa、.apk 或 .appx）。</li></ul>|
 
 **示例**
 
@@ -995,9 +997,9 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data
 
 它在动词后采用以下选项。
 
-| 参数| 描述| 必需| 缺省值|
+| 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| [--xml]| 生成 XML 格式（而非 JSON 格式）的输出。| 否| 标准输出|
+| [--xml] | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
 
 **示例**
 
@@ -1015,18 +1017,18 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 它在动词后采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| 文件| 包含新配置的 JSON 或 XML 文件的名称。|
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 |
 
 针对单个属性的语法：`app version [runtime-name] app-name environment version set user-config property = value`
 
 `app version set user-config` 命令在动词后采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| property| JSON 属性的名称。 对于嵌套属性，请使用语法 prop1.prop2.....propN。 对于 JSON 数组元素，请使用索引代替属性名称。|
-| value| 属性的值。|
+| property | JSON 属性的名称。 对于嵌套属性，请使用语法 prop1.prop2.....propN。 对于 JSON 数组元素，请使用索引代替属性名称。 |
+| value | 属性的值。 |
 
 **示例**
 
@@ -1053,16 +1055,16 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| query| 要搜索的友好名称或用户标识。 此参数可指定要搜索的字符串。 将返回其友好名称或用户标识中包含此字符串（以不区分大小写的方式匹配）的所有设备。|
+| runtime-name | 运行时的名称。 |
+| query | 要搜索的友好名称或用户标识。 此参数可指定要搜索的字符串。 将返回其友好名称或用户标识中包含此字符串（以不区分大小写的方式匹配）的所有设备。 |
 
 `list devices` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -1085,10 +1087,10 @@ device` 命令清除有关某一设备的记录，该设备已联系某一运行
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| id| 唯一设备标识。|
+| runtime-name | 运行时的名称。 |
+| id | 唯一设备标识。 |
 
 **示例**
 
@@ -1102,10 +1104,10 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 {: #the-device-command-prefix }
 `device` 命令前缀在动词前采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| id| 唯一设备标识。|
+| runtime-name | 运行时的名称。 |
+| id | 唯一设备标识。 |
 
 #### `device set status` 命令
 {: #the-device-set-status-command }
@@ -1116,9 +1118,9 @@ set status` 命令在运行时范围内更改设备的状态。
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| new-status| 新状态。|
+| new-status | 新状态。 |
 
 状态可以为下列值之一：
 
@@ -1144,10 +1146,10 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| app-name| 应用程序的名称。|
-| new-status| 新状态。|
+| app-name | 应用程序的名称。 |
+| new-status | 新状态。 |
 
 状态可以为下列值之一：
 
@@ -1175,9 +1177,9 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 它在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -1197,9 +1199,9 @@ show info
 
 它在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -1217,9 +1219,9 @@ diagnostics` 命令可显示 {{ site.data.keys.product_adj }}
 
 它在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -1246,10 +1248,10 @@ runtimes` 命令返回已部署的运行时的列表。
 
 它采用以下选项：
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --in-database	| 是否在数据库中查看，而不是通过 MBeans|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --in-database	| 是否在数据库中查看，而不是通过 MBeans |
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -1272,15 +1274,15 @@ runtime` 命令可显示有关给定的已部署运行时的信息。
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
+| runtime-name | 运行时的名称。 |
 
 `show runtime` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 服务。
 
@@ -1298,10 +1300,10 @@ show runtime mfp
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| condition| 删除条件：empty 或 always。 **注意：**请慎用 always 选项。|
+| runtime-name | 运行时的名称。 |
+| condition | 删除条件：empty 或 always。 **注意：**请慎用 always 选项。 |
 
 **示例**
 
@@ -1320,15 +1322,15 @@ farm-members` 命令会返回在其上部署了指定运行时的场成员服务
 
 它采用以下参数：
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
+| runtime-name | 运行时的名称。 |
 
 `list farm-members` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --xml| 生成 XML 输出（而非表格输出）。|
+| --xml | 生成 XML 输出（而非表格输出）。 |
 
 **示例**
 
@@ -1347,16 +1349,16 @@ farm-member` 命令可从在其上部署了指定运行时的场成员的列表�
 
 它采用以下参数。
 
-| 参数| 描述|
+| 参数 | 描述 |
 |----------|-------------|
-| runtime-name| 运行时的名称。|
-| server-id| 服务器的标识。|
+| runtime-name | 运行时的名称。 |
+| server-id | 服务器的标识。 |
 
 `remove farm-member` 命令在对象后采用以下选项。
 
-| 选项| 描述|
+| 选项 | 描述 |
 |--------|-------------|
-| --force| 强制除去场成员（即使在该成员可用且已连接的情况下）。|
+| --force | 强制除去场成员（即使在该成员可用且已连接的情况下）。 |
 
 **示例**
 
