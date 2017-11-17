@@ -28,8 +28,7 @@ Use o modo gráfico do IBM Installation Manager e o Server Configuration Tool pa
 * Java 7 ou posterior.
 
 * Faça download do instalador do IBM Installation Manager V1.8.4 ou a partir dos [links de download do Installation Manager e Packaging Utility](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* Também é preciso ter o repositório de instalação do {{ site.data.keys.mf_server }} e o instalador do WebSphere Application Server Liberty Core V8.5.5.3 ou mais recente. Faça download desses pacotes a partir do {{ site.data.keys.product }}
-eAssembly no Passport Advantage:
+* Também é preciso ter o repositório de instalação do {{ site.data.keys.mf_server }} e o instalador do WebSphere Application Server Liberty Core V8.5.5.3 ou mais recente. Faça download desses pacotes a partir do {{ site.data.keys.product }} eAssembly no Passport Advantage:
 
 **Repositório de instalação do {{ site.data.keys.mf_server }}**  
 Arquivo .zip do {{ site.data.keys.product }} V8.0 do Installation Manager Repository para {{ site.data.keys.mf_server }}
@@ -65,8 +64,7 @@ Criando um banco de dados](#creating-a-database)
 
 ### Instalando o IBM Installation Manager
 {: #installing-ibm-installation-manager }
-Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais antigas do Installation Manager não são capazes de instalar o
-{{ site.data.keys.product }} V8.0 porque operações pós-instalação do produto requerem Java 7. As versões mais antigas do Installation Manager vêm com Java 6.
+Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais antigas do Installation Manager não são capazes de instalar o {{ site.data.keys.product }} V8.0 porque operações pós-instalação do produto requerem Java 7. As versões mais antigas do Installation Manager vêm com Java 6.
 
 1. Extraia o archive do IBM Installation Manager que foi transferido por download. É possível localizar o instalador em [Links de download do Installation Manager e Packaging Utility](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 2. Instale o Installation Manager:
@@ -75,8 +73,7 @@ Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais an
 
 ### Instalando o WebSphere Application Server Liberty Core
 {: #installing-websphere-application-server-liberty-core }
-O instalador do WebSphere Application Server Liberty Core é fornecido como parte do pacote para o {{ site.data.keys.product }}. Nesta tarefa, o perfil Liberty é instalado e uma instância de servidor é criada, de modo que seja possível instalar o
-{{ site.data.keys.mf_server }} nele.
+O instalador do WebSphere Application Server Liberty Core é fornecido como parte do pacote para o {{ site.data.keys.product }}. Nesta tarefa, o perfil Liberty é instalado e uma instância de servidor é criada, de modo que seja possível instalar o {{ site.data.keys.mf_server }} nele.
 
 1. Extraia o arquivo compactado para o WebSphere Application Server Liberty Core que foi transferido por download.
 2. Inicie o Installation Manager.
@@ -182,8 +179,7 @@ Neste tutorial, as tabelas para todos os componentes são colocadas sob o mesmo 
 
     Por padrão, esse usuário é um usuário declarado no sistema operacional do computador que executa o DB2. Ou seja, um usuário com um login para esse computador. Se tal usuário existir, a próxima ação na etapa 3 não será necessária. Na parte final do tutorial, o Server Configuration Tool cria todas as tabelas requeridas pelo produto em um esquema nesse banco de dados.
 
-3. Crie um banco de dados com o tamanho da página correto para essa
-instalação, caso ainda não tenha feito isso.
+3. Crie um banco de dados com o tamanho da página correto para essa instalação, caso ainda não tenha feito isso.
     * Abra uma sessão com um usuário que tenha permissões `SYSADM` ou `SYSCTRL`. Por exemplo, use o usuário **db2inst1** que é o usuário administrativo padrão criado pelo instalador do DB2.
     * Abra um processador de linha de comandos do DB2:
         * Em sistemas Windows, clique em **Iniciar → IBM DB2 → Processador de Linha de Comandos**.
@@ -191,13 +187,18 @@ instalação, caso ainda não tenha feito isso.
         * Insira as instruções SQL a seguir para criar um banco de dados chamado **MFPDATA**:
         
         ```sql
-        CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768 CONNECT TO MFPDATA GRANT CONNECT ON DATABASE TO USER mfpuser GRANT CREATETAB ON DATABASE TO USER mfpuser GRANT IMPLICIT_SCHEMA ON DATABASE TO USER mfpuser DISCONNECT MFPDATA QUIT
+        CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
+        CONNECT TO MFPDATA
+        GRANT CONNECT ON DATABASE TO USER mfpuser
+        GRANT CREATETAB ON DATABASE TO USER mfpuser
+        GRANT IMPLICIT_SCHEMA ON DATABASE TO USER mfpuser
+        DISCONNECT MFPDATA
+        QUIT
         ```
         
 Se você definiu um nome de usuário diferente, substitua mfpuser por seu próprio nome de usuário.  
 
-> **Nota:** A instrução não remove os privilégios padrão concedidos a PUBLIC em um banco de dados DB2 padrão. Para produção, você pode precisar reduzir os privilégios nesse banco de dados para o requisito mínimo do produto. Para obter mais informações sobre a segurança do DB2 e obter um exemplo das práticas de segurança, consulte [Segurança do DB2.
-Parte 8: doze melhores práticas de segurança do DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
+> **Nota:** A instrução não remove os privilégios padrão concedidos a PUBLIC em um banco de dados DB2 padrão. Para produção, você pode precisar reduzir os privilégios nesse banco de dados para o requisito mínimo do produto. Para obter mais informações sobre a segurança do DB2 e obter um exemplo das práticas de segurança, consulte [Segurança do DB2. Parte 8: doze melhores práticas de segurança do DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
 
 ### Executando o Server Configuration Tool
 {: #running-the-server-configuration-tool }
@@ -210,9 +211,7 @@ O Server Configuration Tool não implementa os seguintes aplicativos do {{ site.
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }}
-normalmente é implementado em um conjunto de servidores diferente do {{ site.data.keys.mf_server }} devido aos seus requisitos de alta memória. {{ site.data.keys.mf_analytics }} pode ser instalado manualmente ou com tarefas Ant. Se ele
-já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool irá então configurar os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics }}. 
+{{ site.data.keys.mf_analytics }} normalmente é implementado em um conjunto de servidores diferente do {{ site.data.keys.mf_server }} devido aos seus requisitos de alta memória. {{ site.data.keys.mf_analytics }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool irá então configurar os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics }}. 
 
 #### Application Center
 {: #application-center }
@@ -303,8 +302,7 @@ Anote os seguintes fatores de banco de dados:
 
 #### Consideração sobre usuário do banco de dados
 {: #database-user-consideration }
-No Server Configuration Tool, somente um usuário do banco de dados é necessário. Esse usuário é usado para criar as tabelas, mas também é usado como usuário da origem de dados no servidor de aplicativos no tempo de execução. No ambiente de produção, talvez você queira restringir os privilégios do usuário que é usado no tempo de execução ao mínimo estrito (`SELECT / INSERT / DELETE / UPDATE)`, e assim, fornecer um usuário diferente para implementação no servidor de aplicativos. Os arquivos
-Ant fornecidos como exemplos também usam os mesmos usuários para ambos os casos. No entanto, no caso do DB2, talvez você queira criar suas próprias versões de arquivos. Desse modo, é possível distinguir o usuário usado para criar os bancos de dados do usuário usado para a origem de dados no servidor de aplicativos com tarefas Ant.
+No Server Configuration Tool, somente um usuário do banco de dados é necessário. Esse usuário é usado para criar as tabelas, mas também é usado como usuário da origem de dados no servidor de aplicativos no tempo de execução. No ambiente de produção, talvez você queira restringir os privilégios do usuário que é usado no tempo de execução ao mínimo estrito (`SELECT / INSERT / DELETE / UPDATE)`, e assim, fornecer um usuário diferente para implementação no servidor de aplicativos. Os arquivos Ant fornecidos como exemplos também usam os mesmos usuários para ambos os casos. No entanto, no caso do DB2, talvez você queira criar suas próprias versões de arquivos. Desse modo, é possível distinguir o usuário usado para criar os bancos de dados do usuário usado para a origem de dados no servidor de aplicativos com tarefas Ant.
 
 #### Criação de tabelas de banco de dados
 {: #database-tables-creation }
@@ -326,8 +324,7 @@ O arquivo **server.xml** e algumas configurações do servidor de aplicativos s�
 
     O keystore serve para ativar a porta HTTPS, e mais especificamente, para ativar a comunicação JMX entre o serviço de administração (mfp-admin-service.war) e o componente de tempo de execução (mfp-server.war). Os dois aplicativos se comunicam via JMX. No caso do perfil Liberty, restConnector é usado para se comunicar entre os aplicativos em um único servidor e também entre os servidores de um Liberty Farm. Isso requer o uso de HTTPS. Para o keystore criado por padrão, perfis Liberty criam um certificado com um período de validade de 365 dias. Essa configuração não deve ser usada para produção. Para produção, é necessário reconsiderar o uso de seu próprio certificado.    
 
-    Para ativar o JMX, um usuário com função de administrador (chamado MfpRESTUser) é criado no registro básico. Seu nome e senha são fornecidos como propriedades JNDI (mfp.admin.jmx.user e mfp.admin.jmx.pwd) e são usados pelo componente de tempo de execução e o serviço de administração para executar consultas JMX. Nas propriedades JMX globais, algumas propriedades são usadas para definir o modo de
-cluster (servidor independente ou trabalhando em um farm). O Server Configuration Tool configura a propriedade mfp.topology.clustermode como Independente no servidor Liberty. Na parte final desse tutorial sobre a criação de um farm, a propriedade é modificada para Cluster.
+    Para ativar o JMX, um usuário com função de administrador (chamado MfpRESTUser) é criado no registro básico. Seu nome e senha são fornecidos como propriedades JNDI (mfp.admin.jmx.user e mfp.admin.jmx.pwd) e são usados pelo componente de tempo de execução e o serviço de administração para executar consultas JMX. Nas propriedades JMX globais, algumas propriedades são usadas para definir o modo de cluster (servidor independente ou trabalhando em um farm). O Server Configuration Tool configura a propriedade mfp.topology.clustermode como Independente no servidor Liberty. Na parte final desse tutorial sobre a criação de um farm, a propriedade é modificada para Cluster.
 5. A criação de usuários (Válida também para o Apache Tomcat e o WebSphere Application Server)
     * Usuários opcionais: o Server Configuration Tool cria um usuário de teste (admin/admin) para que seja possível usar esse usuário para efetuar login no console após a instalação.
     * Usuários obrigatórios: o Server Configuration Tool também cria um usuário (chamado configUser_mfpadmin com uma senha gerada aleatoriamente) para ser usado pelo serviço de administração para entrar em contato com o serviço de atualização em tempo real local. Para o servidor Liberty, é criado MfpRESTUser. Se seu servidor de aplicativos não estiver configurado para usar um registro básico (por exemplo, um registro LDAP), o Server Configuration Tool não poderá solicitar o nome de um usuário existente. Nesse caso, é preciso usar tarefas Ant.
@@ -352,16 +349,14 @@ Os aplicativos a seguir estão instalados:
 * **mobilefirs**t, {{site.data.keys.product_adj }} componente de tempo de execução
 * **imfpush**, o serviço de push
 
-O Server Configuration Tool instala todos os aplicativos no mesmo servidor. É possível separar os aplicativos em diferentes servidores de aplicativos, mas
-com algumas restrições que estão documentadas em [Topologias e fluxos de rede](../../topologies).  
+O Server Configuration Tool instala todos os aplicativos no mesmo servidor. É possível separar os aplicativos em diferentes servidores de aplicativos, mas com algumas restrições que estão documentadas em [Topologias e fluxos de rede](../../topologies).  
 Para uma instalação em servidores diferentes, não é possível usar o Server Configuration Tool. Use tarefas Ant ou instale o produto manualmente.
 
 #### Serviço de administração
 {: #administration-service }
 O serviço de administração é o serviço para gerenciar aplicativos {{ site.data.keys.product_adj }}, adaptadores e suas configurações. Ele é protegido por funções de segurança. Por padrão, o Server Configuration Tool inclui um usuário (admin) com a função de administrador, que pode ser usado para efetuar login no console para teste. A configuração da função de segurança deve ser feita após uma instalação com o Server Configuration Tool (ou com tarefas Ant). Talvez você queira mapear usuários ou grupos que vêm do registro básico ou registro LDAP que você configura em seu servidor de aplicativos para cada função de segurança.
 
-O carregador de classes é configurado com a delegação de pai por último para o perfil Liberty e o WebSphere Application Server e para todos os aplicativos {{ site.data.keys.product_adj }}. Essa configuração é para evitar conflitos entre as classes empacotadas em aplicativos {{ site.data.keys.product_adj }} e classes do servidor de
-aplicativos. Esquecer de configurar a delegação do carregador de classes para último pai é uma frequente fonte de erros na instalação manual. Para o Apache Tomcat, essa declaração não é necessária.
+O carregador de classes é configurado com a delegação de pai por último para o perfil Liberty e o WebSphere Application Server e para todos os aplicativos {{ site.data.keys.product_adj }}. Essa configuração é para evitar conflitos entre as classes empacotadas em aplicativos {{ site.data.keys.product_adj }} e classes do servidor de aplicativos. Esquecer de configurar a delegação do carregador de classes para último pai é uma frequente fonte de erros na instalação manual. Para o Apache Tomcat, essa declaração não é necessária.
 
 No perfil Liberty, uma biblioteca comum é incluída no aplicativo para decriptografar senhas passadas como propriedades JNDI. O Server Configuration Tool define duas propriedades JNDI obrigatórias para o serviço de administração: **mfp.config.service.user** e **mfp.config.service.password**. Elas são usadas pelo serviço de administração para se conectarem ao serviço de atualização em tempo real com sua API REST. Mais propriedades JNDI podem ser definidas para ajustar o aplicativo ou adaptá-lo às particularidades de sua instalação. Para obter informações adicionais, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
@@ -430,12 +425,10 @@ Após a instalação ser concluída, é possível usar esse procedimento para te
 {: #creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server }
 Nesta tarefa, você criará um segundo servidor Liberty executando o mesmo {{ site.data.keys.mf_server }} e conectado ao mesmo banco de dados. Em produção, você pode usar mais de um servidor por motivos de desempenho para ter servidores suficientes para atender o número de transações por segundo necessário para seus aplicativos móveis em horário de pico. E também por motivos de alta disponibilidade para evitar um ponto único de falha.
 
-Quando se tem mais de um servidor executando o {{ site.data.keys.mf_server }}, os servidores devem ser configurados como um farm. Essa configuração permite que qualquer serviço de administração entre em contato com todos os tempos de execução
-de um farm. Se o cluster não estiver configurado como um farm, somente o tempo de execução que é executado no mesmo servidor de aplicativos que o serviço de gerenciamento executando a operação de gerenciamento é notificado. Outros tempos de execução não têm conhecimento da mudança. Por exemplo, você implementa uma nova versão de um adaptador em cluster não configurado como um farm; somente um servidor atenderia o novo adaptador. Os outros servidores continuariam atendendo o antigo adaptador. A única situação em que é possível ter um cluster e não precisar configurar um farm é quando você instala seus servidores no WebSphere Application Server Network Deployment. O serviço de administração está apto para localizar todos os servidores consultando os beans JMX com o gerenciador de implementação. O gerenciador de implementação deve estar em execução para permitir operações de gerenciamento, pois ele é usado para fornecer a lista dos beans JMX do
+Quando se tem mais de um servidor executando o {{ site.data.keys.mf_server }}, os servidores devem ser configurados como um farm. Essa configuração permite que qualquer serviço de administração entre em contato com todos os tempos de execução de um farm. Se o cluster não estiver configurado como um farm, somente o tempo de execução que é executado no mesmo servidor de aplicativos que o serviço de gerenciamento executando a operação de gerenciamento é notificado. Outros tempos de execução não têm conhecimento da mudança. Por exemplo, você implementa uma nova versão de um adaptador em cluster não configurado como um farm; somente um servidor atenderia o novo adaptador. Os outros servidores continuariam atendendo o antigo adaptador. A única situação em que é possível ter um cluster e não precisar configurar um farm é quando você instala seus servidores no WebSphere Application Server Network Deployment. O serviço de administração está apto para localizar todos os servidores consultando os beans JMX com o gerenciador de implementação. O gerenciador de implementação deve estar em execução para permitir operações de gerenciamento, pois ele é usado para fornecer a lista dos beans JMX do
 {{ site.data.keys.product_adj }} da célula.
 
-Quando você cria um farm, também é necessário configurar um servidor HTTP para enviar consultas para todos os membros do farm. A configuração de um servidor HTTP não está incluída neste tutorial. Este tutorial trata apenas da configuração do farm, de modo que as
-operações de gerenciamento sejam replicadas para todos os componentes de tempo de execução do cluster.
+Quando você cria um farm, também é necessário configurar um servidor HTTP para enviar consultas para todos os membros do farm. A configuração de um servidor HTTP não está incluída neste tutorial. Este tutorial trata apenas da configuração do farm, de modo que as operações de gerenciamento sejam replicadas para todos os componentes de tempo de execução do cluster.
 
 1. Crie um segundo servidor Liberty no mesmo computador.
     * Inicie uma linha de comandos.
@@ -448,7 +441,7 @@ operações de gerenciamento sejam replicadas para todos os componentes de tempo
     <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9080"
         httpsPort="9443" />
-      ```
+    ```
     
     por:
     
@@ -456,10 +449,9 @@ operações de gerenciamento sejam replicadas para todos os componentes de tempo
     <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9081"
         httpsPort="9444" />
-      ```
+    ```
     
-    As portas HTTP e HTTPS do servidor mfp2 não entram em conflito com as portas do servidor mfp1 com essa mudança. Certifique-se de modificar as portas antes de executar a instalação do {{ site.data.keys.mf_server }}. Caso contrário, se você modificar a porta após a instalação ser feita, também será necessário refletir a mudança da porta na propriedade JNDI:
-**mfp.admin.jmx.port**.
+    As portas HTTP e HTTPS do servidor mfp2 não entram em conflito com as portas do servidor mfp1 com essa mudança. Certifique-se de modificar as portas antes de executar a instalação do {{ site.data.keys.mf_server }}. Caso contrário, se você modificar a porta após a instalação ser feita, também será necessário refletir a mudança da porta na propriedade JNDI: **mfp.admin.jmx.port**.
     
 3. Execute o Server Configuration Tool.
     *  Crie uma configuração **Hello MobileFirst 2**.

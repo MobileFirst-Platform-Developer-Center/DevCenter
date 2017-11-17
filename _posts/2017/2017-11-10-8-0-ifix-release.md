@@ -91,7 +91,7 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
                     <b>IBMMobileFirstPlatformFoundation             8.0.2017101910</b><br/>
                     <b>IBMMobileFirstPlatformFoundationOpenSSLUtils 8.0.2017101910</b><br/>
                     IBMMobileFirstPlatformFoundationPush         8.0.2017061612<br/>
-                    IBMMobileFirstPlatformFoundationJSONStore    8.0.2017053010<br/>
+                    <b>IBMMobileFirstPlatformFoundationJSONStore    8.0.2017101910</b><br/>
             </div>
         </div>      
     </div>
