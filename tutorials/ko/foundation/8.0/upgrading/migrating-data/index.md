@@ -305,6 +305,8 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 
    > **경고:** 데이터베이스를 작성한 후 비밀번호를 변경하면 기존 데이터베이스가 복호화될 수 없으므로 오류가 발생합니다. 데이터베이스가 암호화된 후에는 비밀번호를 변경할 수 없습니다. 비밀번호를 변경하려면 데이터베이스를 삭제해야 합니다.
 
+
+
    ##### 이전(IMFData/CloudantToolkit 사용): 암호화를 위한 로컬 저장소 초기화:
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
    **Objective-C**
@@ -454,6 +456,8 @@ Android 디바이스에서 데이터를 암호화하려면 애플리케이션에
 3. 키 제공자로 암호화에 필요한 로컬 저장소를 초기화하십시오. 
 
    > **경고:** 데이터베이스를 작성한 후 비밀번호를 변경하면 기존 데이터베이스가 복호화될 수 없으므로 오류가 발생합니다. 데이터베이스가 암호화된 후에는 비밀번호를 변경할 수 없습니다. 비밀번호를 변경하려면 데이터베이스를 삭제해야 합니다.
+
+
 
    ##### 이전(IMFData/CloudantToolkit 사용): 로컬 저장소 초기화(Android):
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }
@@ -1233,10 +1237,10 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    **Swift**
 
    ```swift
-   // Use an existing store
-   let store:CDTStore = existingStore
+// Use an existing store
+let store:CDTStore = existingStore
 
-   // The data type to use for the Automobile class
+// The data type to use for the Automobile class
    let dataType:String = store.mapper.dataTypeForClassName(NSStringFromClass(Automobile.classForCoder()))
 
    // Delete the index

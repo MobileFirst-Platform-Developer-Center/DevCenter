@@ -42,6 +42,8 @@ watchOS의 개발 환경을 설정하려면 Xcode 프로젝트 작성, watchOS �
 
         > **참고:** WatchOS 2에는 비트 코드가 필요합니다. Xcode 7부터 **빌드 옵션**이 **비트 코드 사용 예**(**빌드 설정** 탭, **빌드 옵션** 섹션)로 설정됩니다.
 
+
+
 3. 서버에서 기본 앱 및 WatchKit 확장을 둘 다 등록하십시오. 각 번들 ID에 대해 `mfpdev app register`를 실행하거나 {{ site.data.keys.mf_console }}에서 등록하십시오. 
     * com.worklight.[프로젝트 이름]
     * com.worklight.[프로젝트 이름].watchkitextension

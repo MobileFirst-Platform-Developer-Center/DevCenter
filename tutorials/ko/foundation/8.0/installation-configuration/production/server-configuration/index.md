@@ -27,6 +27,8 @@ IBM {{ site.data.keys.mf_server }}의 엔드포인트에 대해 화이트리스�
 
 > **참고:** {{ site.data.keys.product }}에서 공개하는 URL 관련 정보는 가이드라인으로서 제공됩니다. 조직에서는 화이트리스트 및 블랙리스트에 포함된 항목을 기반으로 URL이 엔터프라이즈 인프라에서 테스트되었는지 확인해야 합니다.
 
+
+
 | `<runtime context root>/api/` 아래의 API URL| 설명          | 화이트리스트에 대해 제안?|
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | 이름 지정된 어댑터에 대한 어댑터의 Swagger 문서 리턴| 아니오. 관리자 및 개발자가 내부에서만 사용합니다.|
@@ -72,7 +74,7 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
         * Oracle JRE 1.8.0_31 이상
 2. IBM Java SDK를 사용하는 경우 **server.xml** 파일을 편집하십시오. 
     * 다음 행을 추가하십시오. `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
-    * 기존의 모든 `<ssl>` 요소에 `sslProtocol="SSL_TLSv2"` 속성을 추가하십시오. 
+    * `sslProtocol="SSL_TLSv2"` 속성을 기존의 모든 `<ssl>` 요소에 추가하십시오.
 
 ### WebSphere Application Server 전체 프로파일
 {: #websphere-application-server-full-profile }
@@ -91,6 +93,8 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
 {{ site.data.keys.mf_server }} 관리에는 사용자 인증이 필요합니다. 사용자 인증을 구성하고 인증 방법을 선택할 수 있습니다. 구성 프로시저는 사용하는 웹 애플리케이션 서버에 따라 다릅니다.
 
 > **중요:** 독립형 WebSphere  Application Server 전체 프로파일을 사용하는 경우, 글로벌 보안의 단순한 WebSphere 인증 방법(SWAM)이 아닌 다른 인증 방법을 사용하십시오. LTPA(Lightweight Third-Party Authentication)를 사용할 수 있습니다. SWAM을 사용하는 경우 예상치 못한 인증 실패가 발생할 수 있습니다.
+
+
 
 설치 프로그램이 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }} 관리 웹 애플리케이션을 배치한 후에 인증을 구성해야 합니다. 
 
@@ -181,7 +185,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 WebSphere  Application Server Liberty 프로파일에서는 서버의 **server.xml** 구성 파일에 **mfpadmin**, **mfpdeployer**, **mfpmonitor** 및 **mfpoperator**의 역할을 구성합니다. 
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에 `<security-role>` 요소를 작성하십시오. 각 `<security-role>` 요소는 **mfpadmin**, mfpdeployer, mfpmonitor 및 mfpoperator 역할 각각의 요소입니다. 이러한 역할을 적절한 사용자 그룹 이름(이 예에서는 **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup** 또는 **mfpoperatorgroup**)에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. `<application-bnd>` 요소(각 `<application>` 요소)에서 `<security-role>` 요소를 작성하십시오. 각 `<security-role>` 요소는 **mfpadmin**, mfpdeployer, mfpmonitor 및 mfpoperator 역할 각각에 대한 것입니다. 이러한 역할을 적절한 사용자 그룹 이름(이 예에서는 **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup** 또는 **mfpoperatorgroup**)에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다. 
 
 그런 다음, 다수의 애플리케이션(예를 들어, 80개의 애플리케이션)이 설치된 상태에서 양호한 응답 시간을 유지하기 위해 관리 데이터베이스에 대한 연결 풀을 구성해야 합니다. 
 
@@ -288,6 +292,8 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
       컨텍스트 루트(앞의 예에서 **app\_context\_root**)는 JNDI 항목과 특정 {{ site.data.keys.product_adj }} 애플리케이션을 연결합니다. 동일한 서버에 다수의 {{ site.data.keys.product_adj }} 애플리케이션이 있는 경우, 컨텍스트 경로 접두부를 사용하여 각 애플리케이션에 고유한 JNDI 항목을 정의할 수 있습니다. 
 
       > **참고:** 일부 특성은 WebSphere Application Server Liberty에서 글로벌로 정의되고 특성 이름 앞에 컨텍스트 루트가 접두부로 추가되지 않습니다. 이러한 특성의 목록은 [글로벌 JNDI 항목](../appserver/#global-jndi-entries)을 참조하십시오.
+
+
 
       다른 모든 JNDI 특성의 경우 이름 앞에 애플리케이션의 컨텍스트 루트가 접두부로 추가되어야 합니다. 
 
@@ -743,6 +749,8 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 
 > **참고:** MySQL과 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 조합은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM  DB2 를 사용하거나 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전하게 지원하는 구성의 이점을 활용할 수 있습니다.
 
+
+
 ### {{ site.data.keys.mf_console }}에서 앱 작성 또는 삭제 후 시간이 경과된(stale) 데이터
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 Tomcat 8 애플리케이션 서버에서 MySQL 데이터베이스를 사용하는 경우, {{ site.data.keys.mf_console }}에서 서비스를 호출할 때 일부 호출에서 404 오류를 리턴합니다. 
@@ -779,7 +787,9 @@ Tomcat 8 애플리케이션 서버에서 MySQL 데이터베이스를 사용하�
     * **경과된 제한시간** 특성의 값을 수정하십시오. MySQL이 연결을 닫기 전에 이러한 연결이 제거되도록 하려면 이 값이 MySQL **wait_timeout** 시스템 변수보다 낮아야 합니다. 
     * **확인**을 클릭하십시오.
 
-> **참고:** MySQL과 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 조합은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2를 사용하거나 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전하게 지원하는 구성의 이점을 활용할 수 있습니다.
+> **참고:** MySQL과 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 조합은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM  DB2 를 사용하거나 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전하게 지원하는 구성의 이점을 활용할 수 있습니다.
+
+
 
 ## 로깅 및 모니터링 메커니즘 구성
 {: #configuring-logging-and-monitoring-mechanisms }
@@ -834,6 +844,8 @@ WebSphere Application Server의 경우, IBM Knowledge Center에 설명된 로그
 복수의 런타임을 포함하도록 {{ site.data.keys.mf_server }}를 구성하고 {{ site.data.keys.mf_console }} 콘솔에서 애플리케이션 "유형" 간에 시각적 차이를 둘 수 있습니다. 
 
 > **참고:** Mobile Foundation Bluemix 서비스에 의해 작성된 Mobile Foundation 서버 인스턴스에서는 복수 런타임이 지원되지 않습니다. Bluemix 서비스에서는 대신 복수 서비스 인스턴스를 작성해야 합니다.
+
+
 
 #### 다음으로 이동
 {: #jump-to-1 }
@@ -928,6 +940,8 @@ mfpdev adapter deploy local second-runtime
 
 > [API 참조서](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html)에서 사용 가능한 모든 REST API를 찾으십시오.
 
+
+
 ## 라이센스 추적 구성
 {: #configuring-license-tracking }
 라이센스 추적은 기본적으로 사용 가능합니다. 라이센스 추적을 구성할 수 있는 방법을 알아보려면 다음 주제를 읽으십시오. 라이센스 추적에 대한 자세한 정보는 [라이센스 추적](../../../administering-apps/license-tracking)을 참조하십시오.
@@ -940,6 +954,8 @@ mfpdev adapter deploy local second-runtime
 클라이언트 디바이스 및 주소 지정 가능한 디바이스에 대한 라이센스 추적은 기본적으로 사용 가능합니다. 라이센스 보고서는 {{ site.data.keys.mf_console }}에서 사용 가능합니다. 다음 JNDI 특성을 지정하여 라이센스 추적에 대한 기본 설정을 변경할 수 있습니다.
 
 > **참고:** 토큰 라이센싱 사용을 정의하는 계약이 있는 경우에는 [토큰 라이센싱을 위한 설치 및 구성](../token-licensing)도 참조하십시오.
+
+
 
 다음 JNDI 특성을 지정하여 라이센스 추적에 대한 기본 설정을 변경할 수 있습니다.
 

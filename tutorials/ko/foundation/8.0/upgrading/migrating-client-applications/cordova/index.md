@@ -179,7 +179,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **참고:** **worklight.css** 파일은 상대에 body 속성을 설정합니다. 이 항목이 앱의 스타일에 영향을 미치는 경우 사용자의 CSS 코드에서 해당 위치에 대해 다른 값을 선언하십시오. 예:
+      > **참고:** **worklight.css** 파일은 상대에 body 속성을 설정합니다. 이 항목이 앱의 스타일에 영향을 미치는 경우 사용자의 CSS 코드에서 해당 위치에 대해 다른 값을 선언하십시오. 예: 
 
       ```css
       body {
@@ -279,6 +279,8 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
    ```
 
    > **참고:** **mfpmigrate** 마이그레이션 지원 도구가 {{ site.data.keys.product_adj }} 기능을 위한 Cordova 플러그인을 추가했으므로 이를 추가할 필요가 없습니다. 이러한 플러그인에 대한 자세한 정보는 [{{ site.data.keys.product_adj }}용 Cordova 플러그인](../../../application-development/sdk/cordova)을 참조하십시오.
+
+
 
 2. 선택사항: 원래 애플리케이션이 FIPS 기능을 사용하는 경우, JQuery 이벤트 리스너를 WL/FIPS/READY 이벤트를 청취하는 JavaScript 이벤트 리스너로 변경하십시오. FIPS에 대한 자세한 정보는 [FIPS 140-2 지원](../../../administering-apps/federal/#fips-140-2-support)을 참조하십시오. 
 3. 선택사항: 원래 애플리케이션이 마이그레이션 지원 도구로 대체되지 않거나 제공되지 않는 써드파티 Cordova 플러그인을 사용하는 경우, **cordova plugin add** 명령을 사용하여 해당 플러그인을 Cordova 앱에 수동으로 추가하십시오. 도구에 의해 대체되는 플러그인에 대한 정보는 [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)을 참조하십시오. 

@@ -152,6 +152,8 @@ shards를 1로 구성하면 각 색인에는 데이터가 작성된 하나의 �
 
    > 기타 사용자 레지스트리 유형(예: LDAP) 구성 방법에 대한 자세한 정보는 WebSphere Application Server 제품 문서에서 [Liberty에 대한 사용자 레지스트리 구성](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) 주제를 참조하십시오.
 
+
+
 6. **bin** 폴더에서 다음 명령을 실행하여 Liberty 서버를 시작하십시오. 
 
    ```bash
@@ -266,7 +268,7 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
 
     > 참고: 다음과 같은 특수 문자는 Ant XML 스크립트의 값에서 사용될 때 이스케이프해야 합니다. 
     >
-    > * Apache Ant 매뉴얼의 [특성](http://ant.apache.org/manual/properties.html) 절에 설명된 대로 ${variable} 구문을 통해 Ant 변수를 명시적으로 참조하려는 경우가 아니면 달러 부호($)는 $$로 써야 합니다.
+    > * Apache Ant 매뉴얼의 [특성](http://ant.apache.org/manual/properties.html) 절에 설명된 대로 ${variable} 구문을 통해 Ant 변수를 명시적으로 참조하려는 경우가 아니면 달러 부호($)는 $$로 써야 합니다. 
     > * XML 엔티티를 명시적으로 참조하려는 경우가 아니면 앰퍼샌드 문자(&)는 &amp;로 써야 합니다. 
     > * 작은따옴표로 묶인 문자열에 있는 경우를 제외하고 큰따옴표(")는 &quot;로 써야 합니다.
 

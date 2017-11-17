@@ -52,7 +52,9 @@ downloads:
 private transient StepUpUserLogin userLogin;
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 두 보안 검사 구현 모두 동일한 어댑터 내부에 번들되어야 합니다. 이 참조를 해결하기 위해 프레임워크는 적절한 클래스를 갖는 보안 검사를 검색하고 종속적 보안 검사로 참조를 삽입합니다.   
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 두 보안 검사 구현 모두 동일한 어댑터 내부에 번들되어야 합니다. 
+
+이 참조를 해결하기 위해 프레임워크는 적절한 클래스를 갖는 보안 검사를 검색하고 종속적 보안 검사로 참조를 삽입합니다.   
 동일한 클래스의 보안 검사가 둘 이상 있을 경우 어노테이션은 선호하는 검사의 고유 이름을 지정하는 데 사용할 수 있는 선택적인 `name` 매개변수를 가집니다. 
 
 ## 상태 머신

@@ -54,9 +54,9 @@ IBM {{ site.data.keys.mf_console }} 사용하는 외에도 {{ site.data.keys.mf_
 {: #mobilefirst-analytics }
 {{ site.data.keys.product }}에는 {{ site.data.keys.mf_console }}에서 액세스할 수 있는 확장성 있는 운영 {{ site.data.keys.mf_analytics_short }} 기능이 포함됩니다. {{ site.data.keys.mf_analytics_short }} 기능을 통해 엔터프라이즈는 패턴, 문제점 및 플랫폼 사용법 통계에 대해 디바이스, 앱 및 서버에서 수집된 로그 및 이벤트를 검색할 수 있습니다. 
 
-{{site.data.keys.mf_analytics }}에 대한 데이터는 다음 소스를 포함합니다.
+{{ site.data.keys.mf_analytics }}에 대한 데이터는 다음 소스를 포함합니다.
 
-* iOS 및 Android 디바이스의 애플리케이션에 대한 충돌 이벤트(고유 코드 및 JavaScript 오류에 대한 충돌 이벤트).
+* iOS 및 Android 디바이스의 애플리케이션에 대한 충돌 이벤트(네이티브 코드 및 JavaScript 오류에 대한 충돌 이벤트).
 * 애플리케이션-서버 활동의 상호작용(푸시 알림을 포함하여 {{ site.data.keys.mf_cli }}ent/server 프로토콜에서 지원되는 항목).
 * 일반적인 {{ site.data.keys.product_adj }} 로그 파일에서 캡처된 서버 측 로그.
 

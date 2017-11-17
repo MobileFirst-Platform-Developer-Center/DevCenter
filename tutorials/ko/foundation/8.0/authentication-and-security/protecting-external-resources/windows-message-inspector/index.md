@@ -101,6 +101,8 @@ static void Main(string[] args) {
 
 > WCF REST 서비스에 대한 자세한 정보는 [기본 WCF 웹 HTTP 서비스 작성](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100)을 참조하십시오.
 
+
+
 ## 메시지 검사기 정의
 {: #define-a-message-inspector}
 유효성 검증 프로세스를 시작하기 전에 자원(서비스 엔드포인트)을 보호하기 위해 사용할 **메시지 검사기**를 작성하고 정의해야 합니다.

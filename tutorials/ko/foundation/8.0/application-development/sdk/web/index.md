@@ -88,6 +88,8 @@ require(['mfp'], function(WL) {
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 분석 지원을 추가하는 경우 **ibmmfpfanalytics.js** 파일 참조를 **ibmmfpf.js** 파일 참조 **앞**에 두십시오.
 
+
+
 ## {{ site.data.keys.product_adj }} 웹 SDK 초기화
 {: #initializing-the-mobilefirst-web-sdk }
 웹 애플리케이션의 기본 JavaScript 파일에서 **컨텍스트 루트** 및 **애플리케이션 ID** 값을 지정하여 {{ site.data.keys.product }} 웹 SDK를 초기화하십시오. 

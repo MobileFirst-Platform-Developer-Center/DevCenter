@@ -308,6 +308,8 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 
 >**참고:** 설치 프로그램과 DB 도구는 사내 구축형 {{ site.data.keys.mf_app_center }} 설치 폴더(`installer` 및 `tools` folders)에서 다운로드할 수 있습니다.
 
+
+
 <div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
@@ -588,7 +590,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                                 <td>최대 로그 파일 크기입니다. 기본 크기는 20MB입니다.</td>
                                             </tr>
                                             <tr>
-                                                <td>선택사항:  [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>선택사항: [-v|--volume] ENABLE_VOLUME </td>
                                                 <td>컨테이너 로그의 마운팅 볼륨을 사용합니다. 허용되는 값은 Y 또는 N(기본값)입니다.</td>
                                             </tr>
 
@@ -641,7 +643,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                                 <td>경로의 호스트 이름입니다.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>경로의 도메인 이름입니다.</td>
                                             </tr>
                                             <tr>
@@ -1481,6 +1483,8 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 </div>
 
 > **참고:** 구성이 변경된 후에는 컨테이너를 다시 시작해야 합니다(`cf ic restart containerId`). 컨테이너 그룹의 경우 그룹 내의 각 컨테이너 인스턴스를 다시 시작해야 합니다. 예를 들어, 루트 인증서가 변경되면 새 인증서가 추가된 후 각 컨테이너 인스턴스를 다시 시작해야 합니다.
+
+
 
 http://MF\_CONTAINER\_HOST/mfpconsole URL을 로드하여 {{ site.data.keys.mf_console }}을 실행하십시오. 실행하는 데 시간이 걸릴 수 있습니다.   
 [{{ site.data.keys.mf_cli }}를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 학습서의 지시사항을 수행하여 원격 서버를 추가하십시오.   

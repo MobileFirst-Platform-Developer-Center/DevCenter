@@ -24,7 +24,7 @@ weight: 3
 {: #installing-a-test-or-production-server-on-premises }
 IBM 설치는 IBM Installation Manager라는 IBM 제품을 기반으로 합니다. {{ site.data.keys.product }}을 설치하기 전에 IBM Installation Manager V1.8.4 이상을 별도로 설치하십시오. 
 
-> **중요:** IBM Installation Manager V1.8.4 이상을 사용하는지 확인하십시오. 제품의 설치 후 작업에 Java 7이 필요하므로 이전 버전의 Installation Manager는 {{ site.data.keys.product }} {{ site.data.keys.product_version }}을 설치할 수 없습니다. 이전 버전의 Installation Manager는 Java 6와 함께 제공됩니다.
+> **중요:** IBM Installation Manager V1.8.4 이상을 사용하는지 확인하십시오. 제품의 설치 후 작업에 Java 7이 필요하므로 이전 버전의 Installation Manager는 {{ site.data.keys.product }} {{ site.data.keys.product_version }}을 설치할 수 없습니다. 이전 버전의 Installation Manager는 Java 6과 함께 제공됩니다. 
 
 {{ site.data.keys.mf_server }} 설치 프로그램은 {{ site.data.keys.mf_server }} 컴포넌트를 배치하기 위해 필요한 모든 도구 및 라이브러리를 컴퓨터에 복사하고 선택적으로 {{ site.data.keys.mf_app_center_full }}를 애플리케이션 서버에 복사합니다. 
 

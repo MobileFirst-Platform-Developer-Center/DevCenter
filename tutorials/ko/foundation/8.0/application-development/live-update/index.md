@@ -329,10 +329,10 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 #### Cordova 분석기
 {: cordova-resolver }
 ```javascript
-var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
+var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };
 LiveUpdateManager.obtainConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example:
-        // console.log(configuration.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
+        // console.log(configuration.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);
     } ,
     function(err) {
         if (err) {

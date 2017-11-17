@@ -26,6 +26,8 @@ JavaScript가 필요한 기능성을 구현하기에 충분하지 않을 때 또
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 패키지 이름은 `com`, `org` 또는 `net`로 시작해야 합니다.
 
+
+
 메소드를 Java 클래스에 추가하십시오.   
 (새 인스턴스를 요구하지 않는) 정적 메소드 및 인스턴스 메소드의 예는 다음과 같습니다.
 

@@ -203,7 +203,7 @@ hostname 구문에 대한 자세한 정보는 [계정 이름 지정](http://dev.
 |
 | password	| 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
 
-> `참고:` 대체 속성을 사용하여 데이터베이스를 지정하는 경우에는 이 데이터베이스가 존재해야 하고 사용자 계정이 존재해야 하고 사용자가 이미 데이터베이스에 액세스할 수 있어야 합니다. 이 경우 **configuredatabase** 태스크는 데이터베이스 또는 사용자 작성을 시도하지 않고 사용자에 대한 액세스 권한 부여도 시도하지 않습니다. **configuredatabase** 태스크는 데이터베이스에 현재 {{ site.data.keys.mf_server }} 버전에 대한 필수 테이블이 있는지만 확인합니다. 내부 요소 `<dba>` 또는 `<client>`를 지정하지 않아도 됩니다.
+> `참고:` 대체 속성을 사용하여 데이터베이스를 지정하는 경우에는 이 데이터베이스가 존재해야 하고 사용자 계정이 존재해야 하고 사용자가 이미 데이터베이스에 액세스할 수 있어야 합니다. 이 경우 **configuredatabase** 태스크는 데이터베이스 또는 사용자 작성을 시도하지 않고 사용자에 대한 액세스 권한 부여도 시도하지 않습니다. **configuredatabase** 태스크는 데이터베이스에 현재 {{ site.data.keys.mf_server }} 버전에 대한 필수 테이블이 있는지만 확인합니다. 내부 요소 `<dba>` 또는 `<client>`를 지정할 필요가 없습니다.
 
 #### Oracle
 {: #oracle }
@@ -217,11 +217,13 @@ hostname 구문에 대한 자세한 정보는 [계정 이름 지정](http://dev.
 | port	         | 데이터베이스 서버의 포트입니다. | 아니오| 1521|
 | user	         | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 테이블 아래의 참고를 참조하십시오. | 예   | 없음
 |
-| password	     | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
+| password	  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
 | sysPassword	 | 사용자 SYS에 대한 비밀번호입니다. | 아니오| 데이터베이스가 아직 없는 경우 대화식으로 조회됨|
 | systemPassword| 사용자 SYSTEM에 대한 비밀번호입니다. | 아니오| 데이터베이스 또는 사용자가 아직 없는 경우 대화식으로 조회됨|
 
 > `참고:` user 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **configuredatabase** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **configuredatabase** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성에 대한 값을 대문자로 입력하십시오.
+
+
 
 Oracle 사용자 계정에 대한 자세한 정보는 [인증 방법 개요](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)를 참조하십시오.   
 `<oracle>` 요소에서는 다음 요소를 지원합니다.
@@ -238,7 +240,7 @@ Oracle 사용자 계정에 대한 자세한 정보는 [인증 방법 개요](htt
 |----------------|--------------------------------------------------------------------------|----------|---------|
 | user	         | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 테이블 아래의 참고를 참조하십시오. | 예   | 없음
 |
-| password	     | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
+| password	  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
 
 `<driverclasspath>` 요소에는 Oracle JDBC 드라이버 JAR 파일이 있어야 합니다.[JDBC, SQLJ, Oracle JPublisher 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 Oracle JDBC 드라이버를 다운로드할 수 있습니다. 
 
@@ -253,6 +255,8 @@ Ant 태스크를 사용하여 테이블스페이스 등의 테이블 할당에 �
 | password	| 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
 
 > **참고:** 대체 속성을 사용하여 데이터베이스를 지정하는 경우에는 이 데이터베이스가 존재해야 하고 사용자 계정이 존재해야 하고 사용자가 이미 데이터베이스에 액세스할 수 있어야 합니다. 이 경우 태스크는 데이터베이스 또는 사용자 작성을 시도하지 않고 사용자에 대한 액세스 권한 부여도 시도하지 않습니다. **configuredatabase** 태스크는 데이터베이스에 현재 {{ site.data.keys.mf_server }} 버전에 대한 필수 테이블이 있는지만 확인합니다. 내부 요소 `<dba>`를 지정하지 않아도 됩니다.
+
+
 
 ## {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} 아티팩트, {{ site.data.keys.mf_server }} 관리 및 라이브 업데이트 서비스 설치를 위한 Ant 태스크
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
@@ -368,7 +372,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | 속성     | 설명          | 필수     | 기본값 |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
 | contextroot| {{ site.data.keys.mf_console }}의 URI입니다. | 아니오| /mfpconsole|
-| install| {{ site.data.keys.mf_console }}을 설치해야 하는지 여부를 표시합니다. | 아니오| 예   |
+| install| {{ site.data.keys.mf_console }}을 설치해야 하는지 여부를 표시합니다. | 아니오| 예|
 | warfile| 콘솔 WAR 파일입니다. |아니오| mfp-admin-ui.war 파일은 mfp-ant-deployer.jar 파일과 동일한 디렉토리에 있습니다. |
 
 `<console>` 요소에서는 다음 요소를 지원합니다.
@@ -504,6 +508,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 > **참고:** 푸시 서비스와 런타임 컴포넌트가 동일한 Collective 멤버에 설치되는 경우 이들은 동일한 클러스터 이름을 가지고 있어야 합니다. 이 컴포넌트가 동일한 Collective의 구별되는 멤버에 설치되는 경우 클러스터 이름은 다를 수 있습니다.
 
+
+
 ### Analytics 지정
 {: #to-specify-analytics }
 `<analytics>` 요소는 {{ site.data.keys.product_adj }} 푸시 서비스를 이미 설치된 {{ site.data.keys.mf_analytics }} 서비스에 연결하려 함을 나타냅니다. 이 요소는 다음과 같은 속성을 가지고 있습니다. 
@@ -541,7 +547,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 `<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 푸시 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="Push">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, configuredatabase Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<property>` 요소가 있을 수 있습니다.
+단일 데이터베이스를 선언해야 합니다. `<database kind="Push">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, configuredatabase Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<dba>` 및 `<client>` 요소가 있을 수 있습니다.`<property>` 요소가 있을 수 있습니다.
 
 `<database>` 요소에는 다음과 같은 속성이 있습니다.
 
@@ -699,6 +705,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 > **참고:** 푸시 서비스와 런타임 컴포넌트가 동일한 Collective 멤버에 설치되는 경우 이들은 동일한 클러스터 이름을 가지고 있어야 합니다. 이 컴포넌트가 동일한 Collective의 구별되는 멤버에 설치되는 경우 클러스터 이름은 다를 수 있습니다.
 
+
+
 ### Analytics 지정
 {: #to-specify-analytics-1 }
 `<analytics>` 요소는 {{ site.data.keys.product_adj }} 푸시 서비스를 이미 설치된 {{ site.data.keys.mf_analytics }} 서비스에 연결하려 함을 나타냅니다. 이 요소는 다음과 같은 속성을 가지고 있습니다. 
@@ -710,7 +718,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 |
 | username	    | 사용자 이름입니다. | 예   | 없음
 |
-| password	  | 비밀번호입니다. | 예   | 없음
+| password	   | 비밀번호입니다. | 예   | 없음
 |
 | validate	    | {{ site.data.keys.mf_analytics_console }}에 액세스 가능한지 여부를 유효성 검증합니다. | 아니오| true|
 
@@ -960,7 +968,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | farmServerId	| 서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다. | 예   | 없음
 |
 
-`<database>` 요소는 특정 데이터베이스에 액세스하는 데 필요한 정보를 지정합니다. `<database>` 요소는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고는, configuredatabase Ant 태스크와 마찬가지로 지정됩니다. 그러나 `<property>` 요소가 있을 수 있습니다.`<database>` 요소에는 다음과 같은 속성이 있습니다.
+`<database>` 요소는 특정 데이터베이스에 액세스하는 데 필요한 정보를 지정합니다. `<database>` 요소는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고는, configuredatabase Ant 태스크처럼 지정됩니다. 그러나 `<property>` 요소가 있을 수 있습니다.`<database>` 요소에는 다음과 같은 속성이 있습니다.
 
 | 속성     | 설명          | 필수     | 기본값 |
 |-----------|--------------------------------------------|----------|---------|
@@ -1087,7 +1095,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | port	         | 데이터베이스 서버의 포트입니다. | 아니오	    | 3306|
 | user	       | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. | 예| 예   | 없음
 |
-| password	   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오	    | 대화식으로 조회됨|
+| password	  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오	    | 대화식으로 조회됨|
 
 **database**, **server** 및 **port** 대신 URL을 지정할 수도 있습니다. 이 경우에는 다음과 같은 속성을 사용하십시오. 
 
@@ -1097,7 +1105,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 |
 | user	       | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. | 예   | 없음
 |
-| password	   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
+| password	  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
 
 MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관리](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html)를 참조하십시오. 
 
@@ -1124,9 +1132,11 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | port	         | 데이터베이스 서버의 포트입니다. I 없음 I 1521 I
 | user	       | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오. | 예   | 없음
 |
-| password	   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
+| password	  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오| 대화식으로 조회됨|
 
 > **참고:** **user** 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **installmobilefirstruntime** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **installmobilefirstruntime** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성의 값을 대문자로 입력하십시오.
+
+
 
 **database**, **server** 및 **port** 대신 URL을 지정할 수도 있습니다. 이 경우에는 다음과 같은 속성을 사용하십시오. 
 
@@ -1136,9 +1146,11 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 |
 | user	       | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오. | 예   | 없음
 |
-| password	   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오	    | 대화식으로 조회됨|
+| password	  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. | 아니오	    | 대화식으로 조회됨|
 
 > **참고:** **user** 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **installmobilefirstruntime** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **installmobilefirstruntime** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성의 값을 대문자로 입력하십시오.
+
+
 
 Oracle 사용자 계정에 대한 자세한 정보는 [인증 방법 개요](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)를 참조하십시오. 
 
@@ -1195,6 +1207,8 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 이 태스크는 웹 애플리케이션 구성, 데이터 소스, JNDI 환경 항목 및 사용자 대 역할 맵핑 등의 애플리케이션 서버 구성을 변경하지 않습니다. 이 태스크는 이 주제에 설명된 <installApplicationCenter> 태스크를 사용하여 수행되는 설치에만 적용됩니다. 
 
 > **참고:** WebSphere Application Server Liberty 프로파일의 경우 이 태스크는 기능을 변경하지 않고 설치된 애플리케이션에 대한 기능의 잠재적인 최소가 아닌 목록을 server.xml 파일에 남겨 둡니다.
+
+
 
 #### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
@@ -1273,7 +1287,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 {: #to-specify-a-connection-to-the-services-database }
 `<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="ApplicationCenter">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, `<configuredatabase>` Ant 태스크와 비슷하게 `<property>` 요소를 지정합니다. `<property>` 요소는 있을 수 있습니다.
+다음과 같은 단일 데이터베이스를 선언해야 합니다. `<database kind="ApplicationCenter">`. `<database>` 요소는 `<configuredatabase>` Ant 태스크와 유사하게 지정합니다. 다만, `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없습니다. `<property>` 요소는 있을 수 있습니다.
 
 `<database>` 요소에는 다음과 같은 속성이 있습니다.
 
@@ -1615,7 +1629,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 {: #sample-configuration-files-for-mobilefirst-analytics }
 {{ site.data.keys.product }}에는 {{ site.data.keys.mf_analytics }} 서비스 및 {{ site.data.keys.mf_analytics_console }}을 설치하기 위해 Ant 태스크를 시작하는 데 도움이 되는 다수의 샘플 구성 파일이 포함되어 있습니다. 
 
-`<installanalytics>`, `<updateanalytics>` 및 `<uninstallanalytics>` Ant 태스크를 시작하는 가장 쉬운 방법은 {{ site.data.keys.mf_server }} 배포의 **Analytics/configuration-samples/** 디렉토리에 제공된 샘플 구성 파일을 사용하여 작업하는 것입니다.
+`<installanalytics>`, `<updateanalytics>` 및 `<uninstallanalytics>` Ant 태스크를 시작하는 가장 쉬운 방법은 {{ site.data.keys.mf_server }} 배포의 **Analytics/configuration-samples/** 디렉토리에서 제공되는 샘플 구성 파일을 사용하여 작업하는 것입니다.
 
 ### 1단계
 {: #step-1 }

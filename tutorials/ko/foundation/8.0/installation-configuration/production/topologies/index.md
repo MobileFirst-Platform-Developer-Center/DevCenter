@@ -123,6 +123,8 @@ WebSphere Application Server Network Deployment에서 런타임 및 관리 서�
 
 > 참고: **mfp.admin.endpoint** 특성은 콘솔에서 관리 서비스를 찾는 데 사용됩니다.  관리 서비스에 접속하기 위해 콘솔에서 생성되는 URL에 콘솔로 수신되는 HTTP 요청과 동일한 값이 사용되도록 지정하는 데 별표 문자 "\*"를 와일드카드로 사용할 수 있습니다. 예: `*://*:*/mfpadmin`은 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 컨텍스트 루트로는 **mfpadmin**을 사용함을 의미합니다. 이 특성은 콘솔 애플리케이션에 대해 지정됩니다.
 
+
+
 ### {{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 푸시 서비스 및 권한 부여 서버로
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
 관리 서비스는 다양한 푸시 조작을 요청하기 위해 푸시 서비스와 통신합니다. 이 통신은 OAuth 프로토콜을 통해 보호됩니다. 두 서비스 모두 기밀 클라이언트로 등록되어야 합니다. 초기 등록은 설치 시에 수행할 수 있습니다. 이 프로세스에서는 두 서비스 모두 권한 부여 서버에 접속해야 합니다. 이 권한 부여 서버는 {{ site.data.keys.product }} 런타임일 수 있습니다.
@@ -135,6 +137,8 @@ WebSphere Application Server Network Deployment에서 런타임 및 관리 서�
 * **mfp.admin.authorization.client.secret** - OAuth 기반 토큰을 가져오는 데 사용되는 시크릿 코드입니다.
 
 > 참고: 관리 서비스의 **mfp.push.authorization.client.id** 및 **mfp.push.authorization.client.secret** 특성은 관리 서비스가 시작될 때 푸시 서비스를 기밀 클라이언트로서 자동으로 등록하는 데 사용될 수 있습니다. 푸시 서비스는 동일한 값으로 구성해야 합니다.
+
+
 
 이 통신을 구성하기 위한 푸시 서비스의 JNDI 특성은 다음과 같습니다.
 
