@@ -74,7 +74,8 @@ Android 平台需要一个额外步骤。
 在 Android Studio 中，将以下 `activity` 添加到 `application` 标记：
 
 ```xml
-<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
+<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
+           android:theme="@android:style/Theme.NoDisplay"/>
 ```
 
 ## 通知 API

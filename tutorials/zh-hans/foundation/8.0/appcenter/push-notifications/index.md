@@ -146,7 +146,7 @@ feedback.push.apple.com:2196
 
 下表中的示例显示了在 Apache Tomcat 服务器的 server.xml 文件中如何定义 JNDI 属性。
 
-| JNDI 属性| 类型和描述 | Apache Tomcat 服务器的示例 | 
+| JNDI 属性	| 类型和描述 | Apache Tomcat 服务器的示例 | 
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | 用于定义 .p12 证书的完整路径的字符串值。 | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
 | ibm.appcenter.apns.p12.certificate.password | 用于定义访问证书所需的密码的字符串值。 | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 

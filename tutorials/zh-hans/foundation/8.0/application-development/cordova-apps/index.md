@@ -309,7 +309,7 @@ Cordova 配置文件是包含应用程序元数据的必需的 XML 文件，其�
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **安全限制：**您可以预览 Web 资源，但是模拟器并非支持所有 {{ site.data.keys.product_adj }} JavaScript API。 特别是，不完全支持 OAuth 协议。 但是，可以使用 `WLResourceRequest` 测试适配器调用。 在这种情况下，
 >
 > * 安全性检查不在服务器端运行，也不会将安全验证问题发送到在 {{ site.data.keys.mf_mbs }} 中运行的客户机。
-> * 如果不在开发环境中使用 {{ site.data.keys.mf_server }}，请注册在允许的作用域列表中包含适配器作用域的保密客户机。 您可以通过 {{ site.data.keys.mf_console }} 使用“运行时/设置”菜单来定义保密客户机。 有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
+> * 如果不在开发环境中使用 {{ site.data.keys.mf_server }}，请注册在允许的作用域列表中包含适配器作用域的保密客户机。您可以通过 {{ site.data.keys.mf_console }} 使用“运行时/设置”菜单来定义保密客户机。 有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
 >
 > **注：**开发环境中的 {{ site.data.keys.mf_server }} 包含一个保密客户机“test”，其中具有无限制的允许范围（“*”）。 缺省情况下，mfpdev 应用程序预览使用此保密客户机。
 

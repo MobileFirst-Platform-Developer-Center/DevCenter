@@ -69,7 +69,7 @@ weight: 1
 
  要验证安装，请打开命令行窗口并执行以下命令：`node -v`。
 
-2. 某些 CLI 命令（如创建、构建和部署适配器）需要 Maven。请参阅下一部分，以获取安装指示信息。
+2. 某些 CLI 命令（如创建、构建和部署适配器）需要 Maven。 请参阅下一部分，以获取安装指示信息。
 
 ### 安装 {{ site.data.keys.mf_cli }}
 {: #installation-cli }
@@ -102,6 +102,7 @@ weight: 1
     *Windows：*  
     [遵循本指南](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/)。
 要验证安装，请执行以下命令：`mvn -v`。
+
 ### 用法
 {: #usage }
 安装 Apache Maven 后，您便可以通过 Maven 命令行命令或使用 {{ site.data.keys.mf_cli }} 来创建适配器。  

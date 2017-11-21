@@ -101,7 +101,7 @@ Application Center 未提供任何预定义方式来分发移动式客户机。
 
 Application Center 随附用于安装 UWP 应用程序的 Windows 10 UWP 客户机项目。 您可以在 Visual Studio 中打开项目，并创建二进制文件（例如：**.appx**）以用于分发。 Application Center 未提供预定义方法来分发移动式客户机。
 
-在 Application Center 中，应用程序只有一个版本号。 此版本号用于区别哪个版本更新。 对于 Windows 10 UWP 应用程序，版本号位于 **Package.appxmanifest** 文件的 _**Version**_ 字段中。此版本号必须采用以下格式：a.b.c.d（其中 a、b、c 和 d 为非负整数）。
+在 Application Center 中，应用程序只有一个版本号。 此版本号用于区别哪个版本更新。 对于 Windows 10 UWP 应用程序，版本号位于 **Package.appxmanifest** 文件的 _**Version**_ 字段中。 此版本号必须采用以下格式：a.b.c.d（其中 a、b、c 和 d 为非负整数）。
 
 
 ## 常规体系结构

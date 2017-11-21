@@ -78,7 +78,7 @@ NuGet 是 Microsoft 开发平台（包括 .NET）的软件包管理器。 NuGet 
                 <p>可以通过手动获取框架和库文件，准备用于开发 MobileFirst 应用程序的环境。 NuGet 还提供 {{ site.data.keys.product }} SDK for Windows 8 和 Windows 10 Universal Windows Platform (UWP)。</p>
 
                 <ol>
-                    <li>从 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡获得 {{ site.data.keys.product }}SDK。
+                    <li>从 {{ site.data.keys.mf_console }} → 下载中心 → SDK <b>选项卡获得 {{ site.data.keys.product }}SDK</b>。
                     </li>
                     <li>解压缩通过步骤 1 下载的 SDK 的内容。</li>
                     <li>在 Visual Studio 中打开 Windows Universal 本机项目。 执行以下步骤。
@@ -121,7 +121,7 @@ NuGet 是 Microsoft 开发平台（包括 .NET）的软件包管理器。 NuGet 
 >
 > 1. 装入 {{ site.data.keys.mf_console }}。  
 > 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
-> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.resw** 文件。 遵循屏幕上的指示信息将此文件添加到您的项目。
+> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.resw** 文件。遵循屏幕上指示信息将此文件添加到您的项目。
 
 ## 更新 {{ site.data.keys.product_adj }} 本机 SDK
 {: #updating-the-mobilefirst-native-sdk }
