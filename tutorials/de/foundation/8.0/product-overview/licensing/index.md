@@ -42,6 +42,8 @@ Berechtigung für 160 Value-Units pro Kern anfordern. Wird das Produkt auf zwei 
 
 > [Hier finden Sie weitere Informationen zur PVU-Lizenzierung](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
 
+
+
 ### Tokenlizenzierung
 {: #token-licensing }
 In einer Tokenumgebung konsumiert jedes Produkt pro Lizenz eine vordefinierte Tokenanzahl. In einer

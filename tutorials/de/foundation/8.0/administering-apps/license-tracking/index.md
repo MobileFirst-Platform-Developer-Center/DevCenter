@@ -148,6 +148,8 @@ verfügbar sind.
 manuell reaktivieren. Weitere Informationen zum Inaktivieren und Aktivieren von Anwendungen finden Sie unter
 [Anwendungszugriff auf geschützte Ressourcen über Fernzugriff inaktivieren](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
+
+
 #### Ablauf der Lizenz
 {: #on-license-expiration }
 Nach einer bestimmten Zeit laufen die Lizenzen ab und müssen neu ausgecheckt werden. Der Server inaktiviert Anwendungen, wenn nicht genug Token für alle Anwendungen
@@ -156,6 +158,8 @@ verfügbar sind.
 > **Wichtiger Hinweis:** Die Anwendungen werden nicht automatisch vom Server reaktiviert. Wenn Sie die Anzahl der verfügbaren Token erhöht haben, müssen Sie die Anwendungen
 manuell reaktivieren. Weitere Informationen zum Inaktivieren und Aktivieren von Anwendungen finden Sie unter
 [Anwendungszugriff auf geschützte Ressourcen über Fernzugriff inaktivieren](../using-console/#remotely-disabling-application-access-to-protected-resources).
+
+
 
 #### Herunterfahren des Servers
 {: #at-server-shutdown }
@@ -219,7 +223,11 @@ fügt die SWID-Datei hinzu oder aktualisiert sie, damit sie vom License Metric T
 > Weitere Informationen zu {{ site.data.keys.product_full }} Extension finden Sie unter
 [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
+
+
 > Weitere Informationen zur PVU-Lizenzierung finden Sie unter [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+
+
 
 ### SLMT-Tags
 {: #slmt-tags }

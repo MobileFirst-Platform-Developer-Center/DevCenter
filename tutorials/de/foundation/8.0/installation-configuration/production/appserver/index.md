@@ -813,6 +813,8 @@ Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Ein
 
 > **Hinweis:** Verwenden Sie beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der 075 in 61 oder 31.500 in 31.5 konvertiert werden würde.
 
+
+
 Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der
 [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
@@ -1173,11 +1175,11 @@ JMX-Kommunikation zwischen der Laufzeit und dem Verwaltungsservice zu konfigurie
 
 Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
-> **Hinweis:** Verwenden Sie
-beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der
-075 in
-61 oder 31.500 in
-31.5 konvertiert werden würde. * Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der
+> **Hinweis:** Verwenden Sie beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der 075 in 61 oder 31.500 in 31.5 konvertiert werden würde.
+
+
+
+* Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der
 [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 * Weitere Informationen zu den JNDI-Eigenschaften für die Laufzeit
 finden Sie in der [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
@@ -1465,7 +1467,8 @@ Vergewissern Sie sich, dass die unter [Voraussetzungen für Apache Tomcat](#apac
 
 #### Topologieeinschränkungen
 {: #topology-constraints-tomcat }
-Der MobileFirst-Server-Verwaltungsservice und -Liveaktualisierungsservice sowie die MobileFirst-Laufzeit müssen in einem Anwendungsserver installiert werden. Das Kontextstammverzeichnis des Liveaktualisierungsservice wird wie folgt definiert: "**Kontextstammverzeichnis_des_Verwaltungsservice**config". Das Kontextstammverzeichnis des Push-Service muss **imfpush** sein. Weitere Informationen zu den Einschränkungen finden Sie unter
+Der MobileFirst-Server-Verwaltungsservice und -Liveaktualisierungsservice sowie die MobileFirst-Laufzeit müssen in einem Anwendungsserver installiert werden. Das Kontextstammverzeichnis des Liveaktualisierungsservice wird wie folgt definiert:
+"**Kontextstammverzeichnis_des_Verwaltungsservice**config". Das Kontextstammverzeichnis des Push-Service muss **imfpush** sein. Weitere Informationen zu den Einschränkungen finden Sie unter
 [Einschränkungen für die
 MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
@@ -1733,8 +1736,7 @@ in der Administrationskonsole von WebSphere Application Server aktivieren:
 4. Klicken Sie auf **OK**. 
 5. Speichern Sie die Änderungen.
 
-Weitere Informationen finden Sie in der Dokumentation zu WebSphere Application Server unter
-[Sicherheit aktivieren](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) . 
+Weitere Informationen finden Sie in der Dokumentation zu WebSphere Application Server unter [Sicherheit aktivieren](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) . 
 
 Die Klassenladerrichtlinie des Servers
 muss die Delegierung "übergeordneter zuletzt" unterstützen. Die WAR-Dateien von
@@ -2026,8 +2028,7 @@ zuerst (übergeordneter zuletzt)** aus.
 
 ## Server-Farm installieren
 {: #installing-a-server-farm }
-Sie können Ihre Server-Farm mit Ant-Tasks,
-mit dem Server Configuration Tool oder manuell installieren. 
+Sie können Ihre Server-Farm mit Ant-Tasks, mit dem Server Configuration Tool oder manuell installieren.
 
 * [Konfiguration einer Server-Farm planen](#planning-the-configuration-of-a-server-farm)
 * [Server-Farm mit dem Server Configuration Tool installieren](#installing-a-server-farm-with-the-server-configuration-tool)

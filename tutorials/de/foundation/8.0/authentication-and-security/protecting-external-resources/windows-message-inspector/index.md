@@ -105,6 +105,8 @@ static void Main(string[] args) {
 > Weitere Informationen zu WCF-REST-Services finden Sie
 unter [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).
 
+
+
 ## Message Inspector definieren
 {: #define-a-message-inspector}
 Bevor wir uns mit dem Validierungsprozess beschäftigen, müssen wir einen

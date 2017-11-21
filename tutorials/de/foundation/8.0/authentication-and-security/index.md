@@ -212,6 +212,8 @@ muss abgebrochen werden. Das Ignorieren einer Abfrage kann zu nicht erwartetem V
 
 > Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm [Sicherheitsüberprüfungen erstellen](creating-a-security-check/). Weitere
 Informationen zu Abfrage-Handlern finden Sie im Lernprogramm [Berechtigungsnachweise validieren](credentials-validation).
+
+
 ### Bereiche
 {: #scopes }
 
@@ -280,6 +282,8 @@ Sicherheitsüberprüfungen besteht, denen das Element zugeordnet wird. Beispiel:
 [{{ site.data.keys.product_adj }}-Artefakte
 über die {{ site.data.keys.mf_cli }} verwalten](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) an.
 
+
+
 ## Ressourcen schützen
 {: #protecting-resources }
 
@@ -328,6 +332,8 @@ legen Sie als Eigenschaftswert eine Bereichszeichenfolge fest, die Ihre ausgewä
 [{{ site.data.keys.product_adj }}-Artefakte
 über die {{ site.data.keys.mf_cli }} verwalten](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) an.
 
+
+
 ### Adapterressourcen schützen
 {: #protecting-adapter-resources }
 
@@ -339,6 +345,8 @@ und überprüft, ob die Ressourcenanforderung von einer Anwendung stammt, die be
 den [Ressourcenschutz inaktivieren](#disabling-resource-protection). Wenn Sie also keinen Bereich für Ihre Ressource festlegen, ist die Ressource trotzdem geschütztz. 
 
 > <b>Hinweis:</b> `RegisteredClient` ist ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort. Definieren Sie keine angepassten Bereichselemente oder Sicherheitsüberprüfungen mit diesem Namen.
+
+
 
 #### Java-Adapterressourcen schützen
 {: #protecting-java-adapter-resources }
@@ -505,19 +513,25 @@ validiert.
 Sicherheitsüberprüfung zugeordnet sein wie der Bereich der geschützten Ressource, auf die der Client zugreifen möchte. Darüber hinaus kann der angeforderte Bereich
 weiteren Sicherheitsüberprüfungen zugeordnet sein. Wenn der Client den Bereich der geschützten Ressource nicht kennt, kann er zunächst ein Zugriffstoken mit einem leeren Bereich anfordern.
 Versucht er, mit dem empfangenen Token auf die Ressource zuzugreifen, empfängt er eine Antwort mit einem Fehler
-403 (Zugriff verboten) und dem erforderlichen Bereich für die angeforderte Ressource. 2.  Die Clientanwendung durchläuft die im angeforderten Bereich vorgesehenen
+403 (Zugriff verboten) und dem erforderlichen Bereich für die angeforderte Ressource. 
+
+2.  Die Clientanwendung durchläuft die im angeforderten Bereich vorgesehenen
 Sicherheitsüberprüfungen. 
 
     > {{ site.data.keys.mf_server }} führt
 die Sicherheitsüberprüfungen aus, denen der Bereich aus der Clientanforderung zugeordnet ist. Ausgehend vom Ergebnis dieser Überprüfung entspricht der
 Autorisierungsserver der Anforderung des Clients oder weist diese Anforderung zurück. Wenn ein obligatorischer Anwendungsbereich definiert ist,
 werden die Sicherheitsüberprüfungen nicht nur für den Bereich aus der Anforderung, sondern auch für den obligatorischen Bereich
-durchgeführt. 3.  Nach erfolgreichem Abschluss des Abfrageprozesses leitet die Clientanwendung die Anforderung an den Autorisierungsserver weiter. 
+durchgeführt. 
+
+3.  Nach erfolgreichem Abschluss des Abfrageprozesses leitet die Clientanwendung die Anforderung an den Autorisierungsserver weiter. 
 
     > Nach erfolgreicher Autorisierung wird der Client zum Tokenendpunkt des Autorisierungsservers umgeleitet, wo
 er mithilfe des öffentlichen Schlüssels, der bei der Clientregistrierung bereitgestellt wurde, authentifiziert
 wird. Auf erfolgreicher Authentifizierung stellt der
-Autorisierungsserver für den Client ein digital signiertes Zugriffstoken (mit der ID des Clients, dem angeforderten Bereich und der Ablaufzeit des Tokens) aus. 4.  Die Clientanwendung
+Autorisierungsserver für den Client ein digital signiertes Zugriffstoken (mit der ID des Clients, dem angeforderten Bereich und der Ablaufzeit des Tokens) aus. 
+
+4.  Die Clientanwendung
 empfängt das Zugriffstoken. 
 
 ### Token für den Zugriff auf eine geschützte Ressource verwenden

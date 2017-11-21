@@ -31,6 +31,7 @@ wird für jede Instanz eine eigene Gruppe von Tabellen benötigt. Die Tabellen m
 
 > **Hinweis zu DB2:** {{ site.data.keys.product_adj }}-Lizenzen erlauben die Nutzung von DB2 als unterstützendes System für die MobileFirst Foundation. Wenn Sie davon profitieren möchten, führen Sie nach der Installation
 der DB2-Software folgende Schritte aus:
+
 > 
 > * Laden Sie das Image zur Aktivierung für eine eingeschränkte Verwendung direkt von der Website [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) herunter.
 > * Wenden Sie die Datei zur Aktivierung für eine eingeschränkte Verwendung (**db2xxxx.lic**) an. Führen Sie dazu den Befehl **db2licm** aus. 
@@ -599,7 +600,7 @@ In diesem Abschnitt finden Sie relevante Informationen zum Einrichten der Datenb
 Sie können die MobileFirst-Server-Datenbanktabellen mit Ant-Tasks einrichten. In einigen Fällen können Sie auch eine Datenbank und einen Benutzer mit diesen Tasks erstellen. Eine Übersicht über den Installationsprozess mit Ant-Tasks
 finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../tutorials/command-line).
 
-Mit der Installation werden eine Reihe von Ant-Beispieldateien bereitgestellt, die Ihnen den Einstieg in das Arbeiten mit Ant-Tasks erleichtern sollen. Sie finden diese Dateien unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples**. Die Dateien sind nach folgendem Muster benannt: 
+Mit der Installation werden eine Reihe von Ant-Beispieldateien bereitgestellt, die Ihnen den Einstieg in das Arbeiten mit Ant-Tasks erleichtern sollen. Sie finden diese Dateien unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples**. Die Dateien sind nach folgendem Muster benannt:
 
 #### configure-appserver-dbms.xml
 {: #configure-appserver-dbmsxml }

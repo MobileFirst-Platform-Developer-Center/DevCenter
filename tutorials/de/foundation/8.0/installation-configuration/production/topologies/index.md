@@ -30,7 +30,7 @@ Die Abläufe zwischen den verschiedenen MobileFirst-Server-Komponenten, {{ site.
 
 1. [Abläufe zwischen MobileFirst-Foundation-Laufzeit und MobileFirst-Server-Verwaltungsservice](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
 2. [Abläufe zwischen MobileFirst-Server-Verwaltungsservice und MobileFirst-Foundation-Laufzeit auf anderen Servern](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
-3. [Abläufe zwischzen MobileFirst-Server-Verwaltungsservice, MobileFirst-Laufzeit und Deployment Manager in WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
+3. [Abläufe zwischen MobileFirst-Server-Verwaltungsservice, MobileFirst-Laufzeit und Deployment Manager in WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
 4. [Abläufe zwischen MobileFirst-Server-Push-Service, MobileFirst-Foundation-Laufzeit und {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
 5. [Abläufe zwischen MobileFirst-Server-Verwaltungsservice und MobileFirst-Server-Liveaktualisierungsservice](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
 6. [Abläufe zwischen {{ site.data.keys.mf_console }} und MobileFirst-Server-Verwaltungsservice](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
@@ -136,7 +136,7 @@ oder Apache Tomcat ist die Kommunikation nur möglich, wenn eine Farm konfigurie
 Weitere Informationen finden Sie unter
 [Server-Farm installileren](../appserver/#installing-a-server-farm).
 
-### Abläufe zwischzen MobileFirst-Server-Verwaltungsservice, MobileFirst-Laufzeit und Deployment Manager in WebSphere Application Server Network Deployment
+### Abläufe zwischen MobileFirst-Server-Verwaltungsservice, MobileFirst-Laufzeit und Deployment Manager in WebSphere Application Server Network Deployment
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
 In WebSphere Application Server Network Deployment
 kommunizieren die Laufzeit und der Verwaltungsservice mit dem Deployment Manager, um die unter [Abläufe zwischen
@@ -229,6 +229,8 @@ wenn Sie angeben möchten, dass die von der Konsole für den Kontakt zum Verwalt
 bei der Konsole eingehende HTTP-Anforderung verwenden soll. Die Angabe `*://*:*/mfpadmin` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
 wie die Konsole verwenden, aber **mfpadmin** als Kontextstammverzeichnis. Diese Eigenschaft wird für die Konsolenanwendung angegeben.
 
+
+
 ### Abläufe zwischen MobileFirst-Server-Verwaltungsservice, MobileFirst-Server-Push-Service und Autorisierungsserver
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
 Der Verwaltungsservice kommuniziert mit dem Push-Service, um diverse Push-Operationen anzufordern. Diese Kommunikation wird mit dem
@@ -249,7 +251,9 @@ JNDI-Eigenschaften des Verwaltungssservice konfiguriert:
 > Hinweis: Die Eigenschaften
 **mfp.push.authorization.client.id** und
 **mfp.push.authorization.client.secret** des Verwaltungsservice können verwendet werden, um den Push-Service automatisch als vertraulichen Client
-zu registrieren, wenn der Verwaltungsservice gestartet wird. Der Push-Service muss mit den gleichen Werten konfiguriert werden.Diese Kommunikation wird mit folgenden
+zu registrieren, wenn der Verwaltungsservice gestartet wird. Der Push-Service muss mit den gleichen Werten konfiguriert werden.
+
+Diese Kommunikation wird mit folgenden
 JNDI-Eigenschaften des Push-Service konfiguriert: 
 
 * **mfp.push.authorization.server.url**: URL des
@@ -356,9 +360,9 @@ Jede {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice u
 * Laufzeiten können implementiert werden. 
 * Eine {{ site.data.keys.mf_console }} kann mehrere Laufzeiten verwalten. 
 * Eine Laufzeit wird von nur einer {{ site.data.keys.mf_console }} verwaltet.
-* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema. 
-* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema. 
-* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema. 
+* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema.
+* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema.
+* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema.
 
 #### JNDI-Eigenschaften konfigurieren
 {: #configuration-of-jndi-properties }
@@ -377,7 +381,7 @@ Für die Verwaltungsservices und Laufzeiten sind die folgenden globalen JNDI-Eig
 | mfp.topology.clustermode | Standalone|
 | mfp.admin.jmx.host | Hostname des Servers mit WebSphere Application Server Liberty Profile|
 | mfp.admin.jmx.port | Port des REST-Connectors, der der Port des Attributs httpsPort ist, das im Element `<httpEndpoint>` der Datei server.xml des Servers mit WebSphere Application Server Liberty Profile deklariert ist. Diese Eigenschaft hat keinen Standardwert.|
-| mfp.admin.jmx.user | Benutzername des WebSphere-Application-Server-Liberty-Administrators, der mit dem im Element `<administrator-role>` der Datei server.xml des Servers mit WebSphere Application Server Liberty Profile definierten Namen übereinstimmen muss. |
+| mfp.admin.jmx.user       | Benutzername des WebSphere-Application-Server-Liberty-Administrators, der mit dem im Element `<administrator-role>` der Datei server.xml des Servers mit WebSphere Application Server Liberty Profile definierten Namen übereinstimmen muss. |
 | mfp.admin.jmx.pwd | Kennwort des WebSphere-Application-Server-Benutzers mit Administratorberechtigung|
 
 Sie können in einer JVM mehrere Verwaltungskomponenten implementieren, die unterschiedliche Laufzeiten verwalten. 
@@ -407,8 +411,7 @@ sind die JNDI-Eigenschaften
 **mfp.admin.rmi.registryPort** und **mfp.admin.rmi.serverPort**
 für den Verwaltungsservice erforderlich (siehe [JMX-Verbindung für Apache Tomcat konfigurieren](../appserver/#apache-tomcat-prerequisites)).
 
-Sie können in einer JVM mehrere Verwaltungskomponenten
-implementieren, die unterschiedliche Laufzeiten verwalten.   
+Sie können in einer JVM mehrere Verwaltungskomponenten implementieren, die unterschiedliche Laufzeiten verwalten.   
 Wenn Sie mehrere Verwaltungskomponenten implementieren, müssen Sie Folgendes angeben: 
 
 * Für jeden Verwaltungsservice einen eindeutigen Wert für die lokale JNDI-Eigenschaft mfp.admin.environmentid
@@ -425,8 +428,7 @@ Für die Verwaltungsservices und Laufzeiten sind die folgenden lokalen JNDI-Eige
 | mfp.topology.clustermode | Standalone|
 | mfp.admin.jmx.connector| JMX-Connectortyp. Der Wert kann SOAP oder RMI sein. |
 
-Sie können in einer JVM mehrere Verwaltungskomponenten
-implementieren, die unterschiedliche Laufzeiten verwalten.   
+Sie können in einer JVM mehrere Verwaltungskomponenten implementieren, die unterschiedliche Laufzeiten verwalten.   
 Wenn Sie mehrere Verwaltungskomponenten implementieren, müssen Sie Folgendes angeben: 
 
 * Für jeden Verwaltungsservice einen eindeutigen Wert für die lokale JNDI-Eigenschaft **mfp.admin.environmentid**
@@ -557,8 +559,7 @@ Kennwort des WebSphere-Application-Server-Benutzers mit Administratorberechtigun
 Die JNDI-Eigenschaft **mfp.admin.serverid** ist
 erforderlich, damit der Verwaltungsservice die Server-Farmkonfiguration verwalten kann. Der Wert dieser Eigenschaft ist die Server-ID. Jeder Server in der Farm muss eine andere ID haben. 
 
-Sie können in einer JVM mehrere Verwaltungskomponenten
-implementieren, die unterschiedliche Laufzeiten verwalten. 
+Sie können in einer JVM mehrere Verwaltungskomponenten implementieren, die unterschiedliche Laufzeiten verwalten. 
 
 Wenn Sie mehrere Verwaltungskomponenten implementieren, müssen Sie Folgendes angeben: 
 
@@ -582,8 +583,7 @@ JVM-Eigenschaften sind auch für die Definition von JMX (Java Management Extensi
 Die JNDI-Eigenschaft **mfp.admin.serverid** ist
 erforderlich, damit der Verwaltungsservice die Server-Farmkonfiguration verwalten kann. Der Wert dieser Eigenschaft ist die Server-ID. Jeder Server in der Farm muss eine andere ID haben. 
 
-Sie können in einer JVM mehrere Verwaltungskomponenten
-implementieren, die unterschiedliche Laufzeiten verwalten. 
+Sie können in einer JVM mehrere Verwaltungskomponenten implementieren, die unterschiedliche Laufzeiten verwalten. 
 
 Wenn Sie mehrere Verwaltungskomponenten implementieren, müssen Sie Folgendes angeben: 
 
@@ -613,8 +613,7 @@ WebSphere Application Server definiert sein. |
 | mfp.admin.serverid | Server-ID, die für jeden Server in der Farm eine andere sein muss und mit dem Wert dieser Eigenschaft, die in der Server-Farmkonfigurationsdatei für diesen Server
 verwendet wird, übereinstimmen muss|
 
-Sie können in einer JVM mehrere Verwaltungskomponenten
-implementieren, die unterschiedliche Laufzeiten verwalten. 
+Sie können in einer JVM mehrere Verwaltungskomponenten implementieren, die unterschiedliche Laufzeiten verwalten. 
 
 Wenn Sie mehrere Verwaltungskomponenten implementieren, müssen Sie die folgenden Werte angeben: 
 
@@ -645,9 +644,9 @@ Jede Instanz der * * {{ site.data.keys.mf_console }} kommuniziert mit einem Verw
 * Eine {{ site.data.keys.mf_console }} verwaltet mehrere Laufzeiten, die
 in den Clustermembern des Verbunds implementiert sind. 
 * Eine Laufzeit wird von nur einer {{ site.data.keys.mf_console }} verwaltet.
-* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema. 
-* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema. 
-* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema. 
+* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema.
+* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema.
+* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema.
 
 #### JNDI-Eigenschaften konfigurieren
 {: #configuration-of-jndi-properties-2 }
@@ -810,15 +809,14 @@ eine Topologie, bei der die Laufzeiten in einem anderen Server oder Cluster als 
 
 Die Implementierung dieser Topologie hat folgende Merkmale: 
 
-* Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden.
-Jede Instanz der * {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice. 
+* Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden. Jede Instanz der * {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice.
 * Laufzeiten können in anderen Servern oder Clustern der Zelle implementiert werden. 
 * Eine {{ site.data.keys.mf_console }} verwaltet
 mehrere Laufzeiten, die in anderen Servern oder Clustern der Zelle implementiert sind. 
 * Eine Laufzeit wird von nur einer {{ site.data.keys.mf_console }} verwaltet.
-* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema. 
-* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema. 
-* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema. 
+* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema.
+* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema.
+* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema.
 
 Diese Topologie ist vorteilhaft, weil die Laufzeiten von den Verwaltungskomponenten und von anderen
 Laufzeiten isoliert werden können. Sie kann für die Leistungsisolation, die Isolation kritischer Anwendungen und die Durchsetzung
@@ -837,16 +835,15 @@ die in Cluster 1 und Cluster 2 implementierten Laufzeiten.
 
 Die Implementierung dieser Topologie hat folgende Merkmale: 
 
-* Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden.
-Jede Instanz der {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice. 
+* Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden. Jede Instanz der {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice. 
 * Laufzeiten können in einem Server oder in mehreren Servern der Zelle implementiert werden.
 
 * Eine {{ site.data.keys.mf_console }} kann
 mehrere Laufzeiten verwalten, die in demselben oder in anderen Servern oder Clustern der Zelle implementiert sind. 
 * Eine Laufzeit wird von nur einer {{ site.data.keys.mf_console }} verwaltet.
-* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema. 
-* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema. 
-* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema. 
+* Jeder Verwaltungsservice verwendet sein eigenes Verwaltungsdatenbankschema.
+* Jeder Liveaktualisierungsservice verwendet sein eigenes Datenbankschema.
+* Jede Laufzeit verwendet ihr eigenes Laufzeitdatenbankschema.
 
 #### JNDI-Eigenschaften konfigurieren
 {: #configuration-of-jndi-properties-3 }

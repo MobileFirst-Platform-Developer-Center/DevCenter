@@ -190,6 +190,8 @@ Es folgt eine Liste der unterstützten Dokumenttypen:
 
 > **Hinweis:** Wenn Sie eine Migration für frühere Versionen von {{ site.data.keys.mf_analytics_server }} durchführen und zuvor JNDI-Eigenschaften für die Lebensdauer konfiguriert hatten, lesen Sie die Informationen unter [Von früheren Versionen von {{ site.data.keys.mf_analytics_server }} verwendete Servereigenschaften umstellen](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
+
+
 #### Elasticsearch
 {: #elasticsearch }
 Elasticsearch ist die Speicher- und Clustering-Technologie, die der {{ site.data.keys.mf_analytics_console }} zugrunde liegt.   

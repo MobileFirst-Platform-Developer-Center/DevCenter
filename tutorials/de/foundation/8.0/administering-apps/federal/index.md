@@ -69,7 +69,9 @@ Client eine mit FIPS 140-2 konforme Cipher-Suite.
 
 > **Hinweis:** Die Verschlüsselungsmodulinstanzen, die der Client verwendet,
 müssen nicht notwendigerweise dem Standard FIPS 140-2 entsprechen. Welche Optionen es für die Verwendung von Bibliotheken mit FIPS-140-2-Zulassung auf
-Clientgeräten gibt, erfahren Sie weiter unten. Es kann sein, dass Client und Server dieselbe Cipher-Suite
+Clientgeräten gibt, erfahren Sie weiter unten. 
+
+Es kann sein, dass Client und Server dieselbe Cipher-Suite
 (z. B. SSL_RSA_WITH_AES_128_CBC_SHA) verwenden, das clientseitige Verschlüsselungsmodul aber nicht den Zulassungsprozess nach
 FIPS 140-2 durchlaufen hat, während der Server Module verwendet, die nach FIPS
 140-2 zertifiziert sind.

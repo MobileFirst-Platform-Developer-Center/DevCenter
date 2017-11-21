@@ -162,6 +162,9 @@ Sicherheitsrollen und ihre Zugriffsrechte für die {{ site.data.keys.mf_analytic
 > Informationen zum Einrichten von Rollen finden Sie unter [Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
 
 
+
+
+
 ## Zugehörige Blogbeiträge
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
