@@ -2032,8 +2032,7 @@ Lorsque vous planifiez un parc de serveurs, créez d'abord des serveurs autonome
                         </ul>
                         Pour prendre connaissance des versions des serveurs d'applications prises en charge, voir <a href="../../../product-overview/requirements">Configuration système requise</a>.
 
-                        <blockquote><b>Important :</b>
-{{ site.data.keys.product }} ne prend en charge que des parcs de serveurs homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur d'applications. Si vous tentez d'associer des types différents de serveur d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere Application Server (profil complet) constitue une configuration non valide.</blockquote>
+                        <blockquote><b>Important :</b> {{ site.data.keys.product }} ne prend en charge que des parcs de serveurs homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur d'applications. Si vous tentez d'associer des types différents de serveur d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere Application Server (profil complet) constitue une configuration non valide.</blockquote>
                     </li>
                     <li>Choisissez la base de données à utiliser. Vous pouvez choisir :
                         <ul>

@@ -40,7 +40,7 @@ watchOS 用の開発環境をセットアップするには、Xcode プロジェ
             * **「ビルド・フェーズ (Build Phases)」**タブの**「バイナリーとライブラリーのリンク (Link Binary With Libraries)」**セクションに、次のように **IBMMobileFirstPlatformFoundationWatchOS.framework** ファイルがリストされます。
             ![watchOS にリンクされたフレームワーク](watchOSlinkedframeworks.jpg)
 
-        > **注:** WatchOS 2 にはビットコードが必要です。Xcode 7 以降、**「ビルド・オプション (Build Options)」**は**「ビットコードを有効にする - はい (Enable Bitcode Yes)」**に設定されます (**「ビルド設定 (Build Settings)」**タブの**「ビルド・オプション (Build Options)」**セクション)。
+        > **注:** WatchOS 2 にはビットコードが必要です。Xcode 7 以降、**「ビルド・オプション (Build Options)」**は**「ビットコードを有効にする - はい (Enable Bitcode Yes)」**に設定されます (**「ビルド設定 (Build Settings)」**タブの**「ビルド・オプション (Build Options)」**セクション)。 
 
 3. メイン・アプリケーションと WatchKit Extension の両方をサーバーに登録します。次のような各バンドル ID に対して、`mfpdev app register` を実行します (または {{ site.data.keys.mf_console }} から登録します)。
     * com.worklight.[project_name]

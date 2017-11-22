@@ -35,7 +35,7 @@ Siga la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para 
 
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
 ## Uso básico

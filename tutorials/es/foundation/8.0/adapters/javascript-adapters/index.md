@@ -143,6 +143,8 @@ Las propiedades definidas por el usuario se pueden leer con la [API getPropertyV
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Nota:** Los elementos de propiedades de configuración se deben ubicar siempre *debajo* de los elementos &lt;procedure&gt;.
 En el ejemplo anterior se definió una propiedad &lt;displayName&gt; con un valor predeterminado, de forma que se podía utilizar más tarde.
 
+
+
 El elemento &lt;property&gt; toma los siguientes atributos:
 
 

@@ -90,6 +90,8 @@ Android Studio erstellt wurde und das
 [SDK der {{ site.data.keys.product }}
 in Android Studio (7.1) zu einer neuen oder vorhandenen Anwendung hinzufügen](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)).
 
+
+
 Wenn Ihr Android-Studio-Projekt für das Hinzufügen einer früheren Version des
 {{ site.data.keys.product_adj }}-SDK konfiguriert war, entfernen Sie
 **compile group** aus den
@@ -109,7 +111,9 @@ Jetzt können Sie mit lokalen oder fernen SDK-Dateien das SDK und die Konfigurat
 > Hinweis: Nach dem Import des neuen SDK müssen Sie die Javadoc-Dateien manuell importieren
 (siehe
 [Javadocs in einem Android-Studio-Gradle-Projekt
-registrieren](../../../application-development/sdk/android/additional-information).Jetzt können Sie mit dem Entwickeln Ihrer nativen
+registrieren](../../../application-development/sdk/android/additional-information).
+
+Jetzt können Sie mit dem Entwickeln Ihrer nativen
 Android-Anwendung mit dem SDK der {{ site.data.keys.product_adj }}
 beginnen. Möglicherweise müssen Sie Ihren Code an die Änderungen
 der API von Version 8.0.0 anpassen (siehe [Android-Code aktualisieren](#updating-the-android-code)). 
@@ -155,10 +159,9 @@ am {{ site.data.keys.product_adj }}-Android-SDK aufgelistet.
 #### Von den traditionellen `org.apach.http`-APIs abhängige und nicht mehr unterstützte Android-APIs
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
 
-| API-Element| Migrationspfad|
+| API-Element | Migrationspfad |
 |-------------|----------------|
-| `org.apache.http.Header[]` wird nicht mehr verwendet. Aus diesem Grund wurden die folgenden Methoden
-entfernt: | |
+| `org.apache.http.Header[]` wird nicht mehr verwendet. Aus diesem Grund wurden die folgenden Methoden entfernt: | |
 | `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Verwenden Sie stattdessen die neue API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | Verwenden Sie stattdessen die neue API `WLResourceRequest.addHeader(String name, String value)`. |
 | `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Verwenden Sie stattdessen die neue API `List<String> WLResourceRequest.getHeaders(String headerName)`. |

@@ -12,9 +12,13 @@ weight: 4
 
 > Apache Cordova は、オープン・ソースのモバイル開発フレームワークです。HTML5、CSS3、および JavaScript など、クロスプラットフォーム開発用の標準 Web テクノロジーを使用することができ、個々のモバイル・プラットフォームのネイティブ開発言語を使用せずに済みます。アプリケーションは、個々のプラットフォームを対象としたラッパー内で実行され、標準に準拠した API バインディングに依存して、各デバイスのセンサー、データ、およびネットワーク状況にアクセスします。
 
+
+
 {{ site.data.keys.product_full }} は、複数の Cordova プラグインの形式で SDK を提供しています。[{{ site.data.keys.product }} SDKをCordova アプリケーションに追加する](../../application-development/sdk/cordova)方法を説明します。
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『{{ site.data.keys.product_full }} でのアプリ・ストアへの提出のための iOS アプリの準備』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)を参照してください。
+
+
 
 #### ジャンプ先:
 {: #jump-to }
@@ -57,6 +61,7 @@ Cordova プラグインは、[GitHub.com](https://github.com) 上、およびよ
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
 >**注:** {{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。
+
 Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。
 
 
@@ -310,11 +315,15 @@ JavaScript ファイル index.js がテンプレートによって提供され�
 Cordova アプリケーションの Web リソースは、iOS シミュレーター、Android エミュレーター、Windows エミュレーター、または物理デバイスのいずれかでプレビューできます。{{ site.data.keys.product }} では、{{ site.data.keys.mf_mbs_full }} と Simple Browser レンダリングの 2 つの追加のライブ・プレビュー・オプションを使用できます。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **セキュリティー制限:** Web リソースはプレビュー可能ですが、そのシミュレーターですべての {{ site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。このケースでは、次のようになります。
+
 >
 > * セキュリティー検査はサーバー・サイドでは実行されず、セキュリティー・チャレンジは {{ site.data.keys.mf_mbs }} 内で実行されるクライアントに送信されません。
 > * 開発環境で {{ site.data.keys.mf_server }} を使用しない場合、許可スコープのリスト中にアダプターのスコープが含まれている機密クライアントを登録してください。機密クライアントは {{ site.data.keys.mf_console }} で「ランタイム/設定」メニューを使用して定義できます。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
+
 >
 > **注:** 開発環境での {{ site.data.keys.mf_server }} には、無制限の許可スコープ (「*」) を持つ機密クライアント「test」が含まれています。デフォルトで、mfpdev app preview はこの機密クライアントを使用します。
+
+
 
 #### Simple Browser
 {: #simple-browser }

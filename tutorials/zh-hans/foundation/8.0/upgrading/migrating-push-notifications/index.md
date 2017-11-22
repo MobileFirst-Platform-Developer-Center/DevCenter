@@ -401,7 +401,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
    MFPPush.subscribe(tags, function(successResponse) {
-    	alert("Successfully subscribed");
+		alert("Successfully subscribed");
         },
       function(failureResponse) {
 		alert("Failed to subscribe");

@@ -96,6 +96,8 @@ Estos mandatos añaden los archivos de {{ site.data.keys.product }} Native SDK, 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante**: A partir de aquí, utilice el archivo `[NombreProyecto].xcworkspace` para abrir el proyecto en Xcode.
 **No** utilice el archivo `[NombreProyecto].xcodeproj`.
 Un proyecto basado en CocoaPods está gestionado como un espacio de trabajo con la aplicación (el ejecutable) y la biblioteca (todas las dependencias de proyecto recuperadas por el gestor de CocoaPods).
+
+
 ### Adición manual de {{ site.data.keys.product_adj }} Native SDK
 {: #manually-adding-the-mobilefirst-native-sdk }
 También es posible añadir el SDK de {{ site.data.keys.product }}:
@@ -195,6 +197,8 @@ El mandato de interfaz de línea de mandatos (CLI) `mfpdev app register` se cone
   
 > 3. Después de que se registre la aplicación, vaya al separador **Archivos de configuración** y copie o descargue el archivo **mfpclient.plist**.
 Siga las instrucciones en la pantalla para añadir el archivo al proyecto.
+
+
 
 ### Completar el proceso de configuración
 {: #completing-the-setup-process }

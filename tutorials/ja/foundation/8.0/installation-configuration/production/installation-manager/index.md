@@ -38,6 +38,8 @@ Application Center を Installation Manager でインストールすることを
 > **重要:** {{ site.data.keys.mf_server }} インストーラーがご使用のディスクにインストールするのは、{{ site.data.keys.mf_server }} バイナリー・ファイルおよびツールのみです。{{ site.data.keys.mf_server }} アプリケーションはご使用のアプリケーション・サーバーにデプロイされません。Installation Manager によるインストールを実行した後、データベースをセットアップし、{{ site.data.keys.mf_server }} アプリケーションをアプリケーション・サーバーにデプロイする必要があります。  
 > 同様に、Installation Manager を実行して既存のインストール済み環境を更新する場合、ご使用のディスク上のファイルのみが更新されます。アプリケーション・サーバーにデプロイされたアプリケーションを更新するには、追加のアクションを実行する必要があります。
 
+
+
 #### ジャンプ先
 {: #jump-to }
 * [管理者モード対ユーザー・モード](#administrator-versus-user-mode)
@@ -262,7 +264,7 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
         </tr>
     </table>
     
-    > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM DB2、または WebSphere Application Server によってサポートされる別の DBMSを使用して、IBM サポートによってフルにサポートされる構成の利点を活用することができます。
+    > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM DB2、または WebSphere Application Server によってサポートされる別の DBMSを使用して、IBM サポートによってフルにサポートされる構成の利点を活用することができます。 
 
     アンインストールする場合は、最初に特定のパッケージ・グループにインストールした {{ site.data.keys.mf_server }} または Worklight Server のバージョンに応じたサンプル・ファイルを使用してください。
     
@@ -322,6 +324,7 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
     * `<responseFile>` は、ステップ 1 で選択および更新されたファイルの名前です。
 
 > 詳細については、IBM Installation Manager 資料の[応答ファイルを使用したパッケージのサイレント・インストール](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)を参照してください。
+
     
 
 ### 別のマシンで記録された応答ファイルの処理

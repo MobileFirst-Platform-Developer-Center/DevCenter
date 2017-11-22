@@ -12,6 +12,8 @@ weight: 5
 
 > IntelliJ の使用方法の説明については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
 
+
+
 **前提条件:**
 
 * 最初に[アダプター・チュートリアル](../)を読み、アダプターについての知識を得てください。
@@ -70,6 +72,8 @@ weight: 5
 [アダプターのビルドとデプロイの方法について説明します。](../creating-adapters/#build-and-deploy-adapters).
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Eclipse を拡張してデプロイメント・ステップを容易にすることもできます。それには、プラグインを使用して**コマンド・ライン**・ウィンドウを統合し、一貫性のある開発環境を作成します。このウィンドウから、Maven コマンドまたは {{ site.data.keys.mf_cli }} コマンドを実行できます。
+
+
 
 ### アダプターのビルド
 {: #building-an-adapter }

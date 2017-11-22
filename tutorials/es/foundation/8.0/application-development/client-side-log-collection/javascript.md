@@ -21,6 +21,8 @@ Los registros se envían al servidor con una llamada de envío explícita, o med
 
 
 > **Nota:** La habilitación de la captura del registro en niveles de detalle elevados puede afectar al consumo de la CPU del dispositivo, el espacio del sistema de archivos y el tamaño de la carga útil cuando el cliente envía registros a través de la red.
+
+
 Para inhabilitar la captura de registro:
 
 ### Cordova
@@ -44,6 +46,8 @@ Si los registros no se envían antes de que alcancen el tamaño máximo, el arch
 
 > **Nota:** Adopte el siguiente patrón al recopilar datos de registro.
 El envío de datos en un intervalo de tiempo garantiza que está viendo sus datos de registro en tiempo casi real en {{ site.data.keys.mf_analytics_console }}.
+
+
 #### Aplicaciones Cordova
 {: #cordova-apps }
 

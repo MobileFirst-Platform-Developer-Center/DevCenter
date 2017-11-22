@@ -282,6 +282,7 @@ Consulte aquí el **Resumen de tipos de anotación**:
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**Importante:** Cuando utiliza referencias estáticas a clases desde `javax.ws.rs.*` o `javax.servlet.*`, dentro de su implementación de adaptador, debería asegurarse de configurar **RuntimeDelegate** mediante una se las siguientes opciones:
+
 *	Establecer `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` en las `jvm.options` de Liberty
 O BIEN
 

@@ -308,6 +308,8 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 >**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
 
+
+
 <div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
@@ -640,7 +642,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                                 <td>ルートのホスト名。</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>ルートのドメイン名。</td>
                                             </tr>
                                             <tr>
@@ -680,7 +682,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                                 <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>オプション:  [-v|--volume] ENABLE_VOLUME </td>
                                                 <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
 
@@ -1410,7 +1412,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>ルートのホスト名。</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>ルートのドメイン名。</td>
                                             </tr>
                                             <tr>
@@ -1480,6 +1482,8 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 </div>
 
 > **注:** 何らかの構成変更が行われた後は、コンテナーを再始動する必要があります (`cf ic restart containerId`)。コンテナー・グループの場合は、グループ内の各コンテナー・インスタンスを再始動する必要があります。例えば、ルート証明書を変更する場合、新規の証明書が追加された後で、各コンテナー・インスタンスを再始動する必要があります。
+
+
 
 次の URL をロードして {{ site.data.keys.mf_console }} を起動します。http://MF\_CONTAINER\_HOST/mfpconsole (しばらく時間がかかる場合があります)。  
 [{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)チュートリアルの指示に従って、リモート・サーバーを追加します。  

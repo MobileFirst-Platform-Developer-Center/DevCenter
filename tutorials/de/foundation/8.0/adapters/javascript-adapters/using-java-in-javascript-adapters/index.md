@@ -30,6 +30,8 @@ Wenn Sie angepassten Java-Code zu Ihrem Projekt hinzufügen möchten, fügen Sie
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Der Paketname muss
 mit `com`, `org` oder `net` beginnen.
 
+
+
 Fügen Sie Methoden zu Ihrer Java-Klasse hinzu.   
 Es folgen Beispiele für eine statische Methode (für die keine neue Instanz erforderlich ist) und einer Instanzdefinitionsmethode: 
 

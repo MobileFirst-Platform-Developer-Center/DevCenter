@@ -69,25 +69,24 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 3. Fügen Sie im Abschnitt `android` die folgende Zeile hinzu: 
 
    ```xml
-packagingOptions {
-pickFirst 'META-INF/ASL2.0'
+   packagingOptions {
+        pickFirst 'META-INF/ASL2.0'
         pickFirst 'META-INF/LICENSE'
         pickFirst 'META-INF/NOTICE'
    }
    ```
 
-4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu: 
+4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu:
 
    ```xml
-compile group: 'com.ibm.mobile.foundation',
-        name: 'ibmmobilefirstplatformfoundation',
-        version: '8.0.+',
-        ext: 'aar',
-        transitive: true
+   compile group: 'com.ibm.mobile.foundation',
+   name: 'ibmmobilefirstplatformfoundation',
+   version: '8.0.+',
+   ext: 'aar',
+   transitive: true
+   ```
 
-        ```
-
-   Oder in einer einzelnen Zeile: 
+   Oder in einer einzelnen Zeile:
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
@@ -175,7 +174,7 @@ Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:
 >
 > 1. Laden Sie die {{ site.data.keys.mf_console }}.  
 > 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
-> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.properties** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.properties** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen. 
 
 ### WLClient-Instanz erstellen
 {: #creating-a-wlclient-instance }

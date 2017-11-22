@@ -125,12 +125,12 @@ scope)</code></li></ul>{:/} | 使用 [`AuthorizationManager`](http://www.ibm.com
 | API 元素 | 迁移路径 |
 |-------------|----------------|
 | 现在不推荐使用 `org.apache.http.Header[]`。 因此，移除了以下方法： | |
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。|
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。 |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.addHeader(String name, String value)` API。 |
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。|
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。 |
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。|
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。|
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。 MFP 客户机允许循环重定向。 |
 | {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>，所有采用 <code>WLHttpResponseListener</code> 的方法：<ul><li><code>WLResourceRequest.send(java.util.HashMap

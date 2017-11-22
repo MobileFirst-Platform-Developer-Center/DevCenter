@@ -59,9 +59,7 @@ möglich sind.
 ## Beispielkonfiguration
 {: #example-configuration }
 In diesem Beispiel wird eine
-Akamai-CDN-Konfiguration verwendet, bei der das Archiv für direkte Aktualisierung zwischengespeichert wird. Folgende Aufgaben werden vom Netzadministrator,
-vom {{ site.data.keys.product_adj }}-Administrator
-und vom Akamai-Administrator ausgeführt:
+Akamai-CDN-Konfiguration verwendet, bei der das Archiv für direkte Aktualisierung zwischengespeichert wird. Folgende Aufgaben werden vom Netzadministrator, vom {{ site.data.keys.product_adj }}-Administrator und vom Akamai-Administrator ausgeführt:
 
 #### Netzadministrator
 {: #network-administrator }
