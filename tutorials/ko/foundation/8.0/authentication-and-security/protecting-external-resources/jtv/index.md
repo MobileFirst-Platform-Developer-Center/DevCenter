@@ -48,7 +48,9 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 - `clientId`: {{ site.data.keys.mf_console }}에서 구성한 기밀 클라이언트 ID입니다. 
 - `clientSecret`: {{ site.data.keys.mf_console }}에서 구성한 기밀 클라이언트 본인확인정보입니다. 
 
-> 라이브러리는 권한 부여 서버의 자체 점검 엔드포인트와 상호작용을 캡슐화하고 단순화하는 API를 표시합니다. 자세한 API 참조는 [{{site.data.keys.product_adj }} Java 토큰 유효성 검증기 API 참조](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)를 참조하십시오.
+> 라이브러리는 권한 부여 서버의 자체 점검 엔드포인트와 상호작용을 캡슐화하고 단순화하는 API를 표시합니다. 자세한 API 참조는 [{{ site.data.keys.product_adj }} Java 토큰 유효성 검증기 API 참조](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)를 참조하십시오.
+
+
 
 ## 신임 정보 유효성 검증
 {: #validating-the-credentials }

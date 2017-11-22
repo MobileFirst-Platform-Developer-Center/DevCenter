@@ -12,9 +12,13 @@ weight: 4
 
 > Apache Cordova는 개방형 소스 모바일 개발 프레임워크입니다. 이를 사용하여 각 모바일 플랫폼의 고유 개발 언어 대신 표준 웹 기술(예: HTML5, CSS3 및 JavaScript)을 크로스 플랫폼 개발에 사용할 수 있습니다. 애플리케이션은 각 플랫폼으로 대상 지정된 랩퍼 내에서 실행되며, 표준 준수 API 바인딩을 사용하여 각 디바이스의 센서, 데이터 및 네트워크 상태에 액세스합니다.
 
+
+
 {{ site.data.keys.product_full }}은 여러 Cordova 플러그인 양식으로 SDK를 제공합니다. [Cordova 애플리케이션에 {{ site.data.keys.product }} SDK를 추가](../../application-development/sdk/cordova)하는 방법에 대해 알아보십시오. 
 
 > **참고:** iOS 앱의 스토어 제출/유효성 검증 시 Test Flight 또는 iTunes Connect를 사용하여 생성된 아카이브/IPA 파일로 인해 런타임 충돌/실패가 발생할 수 있습니다. 자세히 알아보려면 [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 블로그를 읽으십시오.
+
+
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -57,6 +61,7 @@ Cordova 플러그인은 [GitHub.com](https://github.com) 및 인기있는 Cordov
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
 >**참고:** {{ site.data.keys.product_adj }} Cordova SDK가 프로젝트에 추가된 상태에서 Cordova 앱의 기본 작동을 수정하면(이전 단추 작동을 대체하는 등) 앱 제출 시 Google Play 스토어에서 앱이 거부될 수 있습니다.
+
 Google Play 스토어에 제출하면서 발생하는 다른 실패에 대해서는 Google 지원에 문의할 수 있습니다.
 
 
@@ -307,11 +312,15 @@ Cordova 구성 파일은 애플리케이션 메타 데이터를 포함하고 앱
 iOS 시뮬레이터, Android 에뮬레이터, Windows 에뮬레이터 또는 물리적 디바이스에서 Cordova 애플리케이션의 웹 자원을 미리 볼 수 있습니다. {{ site.data.keys.product }}에서는 두 개의 추가 실시간 미리보기 옵션인 {{ site.data.keys.mf_mbs_full }} 및 Simple Browser 렌더링을 사용할 수 있습니다. 
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **보안 제한사항:** 웹 자원을 미리 볼 수는 있지만 시뮬레이터에서는 일부 {{ site.data.keys.product_adj }} JavaScript API가 지원되지 않습니다. 특히 OAuth 프로토콜은 제한적으로 지원됩니다. 그러나 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다. 이 경우
+
 >
 > * 서버 측에서 보안 검사가 실행되지 않으며 {{ site.data.keys.mf_mbs }}에서 실행되는 클라이언트에 보안 인증 확인이 전송되지 않습니다. 
 > * 개발 환경에서 {{ site.data.keys.mf_server }}를 사용하지 않는 경우 허용되는 범위 목록에 어댑터의 범위가 포함되어 있는 기밀 클라이언트를 등록하십시오. {{ site.data.keys.mf_console }}에서 런타임/설정 메뉴를 사용하여 기밀 클라이언트를 정의할 수 있습니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오.
+
 >
 > **참고:** 개발 환경의 {{ site.data.keys.mf_server }}에는 허용 범위가 무제한("*")인 기밀 클라이언트 "테스트"가 포함되어 있습니다. 기본적으로 mfpdev app preview는 이 기밀 클라이언트를 사용합니다.
+
+
 
 #### Simple Browser
 {: #simple-browser }

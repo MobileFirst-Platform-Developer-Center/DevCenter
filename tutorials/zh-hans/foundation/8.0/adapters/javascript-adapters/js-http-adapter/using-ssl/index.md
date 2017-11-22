@@ -8,9 +8,10 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
 您可以在 HTTP 适配器中使用 SSL，以通过使用简单认证和相互认证来连接到后端服务。  
-SSL 表示传输级别安全性，独立于基本认证。能够通过 HTTP 或 HTTPS 实现基本认证。
+SSL 表示传输级别安全性，独立于基本认证。 能够通过 HTTP 或 HTTPS 实现基本认证。
+
 1. 在 adapter.xml 文件中，将 HTTP 适配器的 URL 协议设置为 <b>https</b>。
-2. 将 SSL 证书存储到 {{ site.data.keys.mf_server }} 密钥库中。[请参阅“配置 {{ site.data.keys.mf_server }} 密钥库”](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
+2. 将 SSL 证书存储到 {{ site.data.keys.mf_server }} 密钥库中。 [请参阅“配置 {{ site.data.keys.mf_server }} 密钥库”](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 
 ### 使用相互认证的 SSL
 {:# ssl-with-mutual-authentication }

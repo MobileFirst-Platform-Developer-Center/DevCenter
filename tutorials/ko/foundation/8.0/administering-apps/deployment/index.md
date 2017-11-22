@@ -50,6 +50,8 @@ weight: 1
 
     > **참고:** keytool 또는 openssl lib를 사용하여 백엔드 키 저장소에서 백엔드 공용 인증서를 내보내십시오. 웹 브라우저에서 내보내기 기능을 사용하지 마십시오.
 
+
+
 2. 백엔드 서버 인증서를 {{ site.data.keys.product_adj }} 키 저장소에 가져오십시오. 
 3. 새 {{ site.data.keys.product_adj }} 키 저장소를 배치하십시오. 자세한 정보는 [{{ site.data.keys.mf_server }} 키 저장소 구성](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)을 참조하십시오. 
 
@@ -82,6 +84,8 @@ weight: 1
     ```
 
     > **참고:** **이름과 성** 필드는 **adapter.xml** 구성 파일에서 사용되는 서버 URL을 포함합니다(예: **mydomain.com** 또는 **localhost**).
+
+
 
 2. 키 저장소에 대해 작업하도록 백엔드 서버를 구성하십시오. 예를 들어, Apache Tomcat에서는 다음과 같이 **server.xml** 파일을 변경합니다. 
 
@@ -188,6 +192,8 @@ weight: 1
 
    > **팁:** 앱의 첫 번째 버전을 등록하기 전에 앱의 토큰 라이센스 유형을 설정할 수 있습니다. 자세한 정보는 [애플리케이션 라이센스 정보 설정](../license-tracking/#setting-the-application-license-information)을 참조하십시오.
 
+
+
 2. 테스트 서버의 애플리케이션 디스크립터를 프로덕션 서버로 전송하십시오. 
 
    이 조작은 애플리케이션을 프로덕션 서버에 등록하고 해당 구성을 업로드합니다. 애플리케이션 디스크립터 전송에 대한 자세한 정보는 [테스트 또는 프로덕션 서버에 서버 측 아티팩트 전송](#transferring-server-side-artifacts-to-a-test-or-production-server)을 참조하십시오. 
@@ -201,6 +207,8 @@ weight: 1
 
    > **참고:** 앱이 스토어에 공개되기 전에는 프로덕션 인증서로 앱의 푸시 알림을 테스트할 수 없습니다.
 
+
+
 6. 애플리케이션을 스토어에 공개하기 전에 다음 항목을 확인하십시오. 
     * 사용할 모든 모바일 애플리케이션 관리 기능(예: 원격 애플리케이션 사용 안함 또는 관리자 메시지 표시)을 테스트하십시오. 자세한 정보는 [모바일 애플리케이션 관리](../using-console/#mobile-application-management)를 참조하십시오. 
     * 업데이트하는 경우 업데이트 전략을 정의하십시오. 자세한 정보는 [프로덕션에서 {{ site.data.keys.product_adj }} 앱 업데이트](#updating-mobilefirst-apps-in-production)를 참조하십시오. 
@@ -212,6 +220,8 @@ weight: 1
 애플리케이션 디스크립터 파일은 애플리케이션에 대한 설명과 구성이 포함된 JSON 파일입니다. {{ site.data.keys.mf_server }} 인스턴스에 연결하는 앱을 실행하는 경우 앱을 해당 서버에 등록하고 구성해야 합니다. 앱의 구성을 정의한 후 애플리케이션 디스크립터를 다른 서버(예: 테스트 서버 또는 프로덕션 서버)로 전송할 수 있습니다. 애플리케이션 디스크립터를 새 서버로 전송하면 앱이 새 서버에 등록됩니다. 모바일 애플리케이션을 개발하고 코드에 대한 액세스 권한이 있는지 여부 또는 서버를 관리하고 모바일 앱의 코드에 대한 액세스 권한이 없는지 여부에 따라 다른 프로시저를 사용할 수 있습니다. 
 
 > **중요:** 인증 데이터를 포함하는 애플리케이션을 가져온 경우와 인증 데이터가 생성된 이후 애플리케이션 자체가 재컴파일된 경우에는 인증 데이터를 새로 고쳐야합니다. 자세한 정보는 [애플리케이션 인증 보안 검사 구성](../../authentication-and-security/application-authenticity/#configuring-application-authenticity)을 참조하십시오.
+
+
 
 * 모바일 앱 코드에 대한 액세스 권한이 있는 경우 `mfpdev app pull` 명령과 `mfpdev app push` 명령을 사용하십시오. 
 * 모바일 앱 코드에 대한 액세스 권한이 없는 경우에는 관리 서비스를 사용하십시오. 
@@ -279,6 +289,7 @@ appID-platform-version-artifacts.zip
 2. 애플리케이션이 구성되어 있는 서버에서 애플리케이션 디스크립터를 다운로드하십시오. REST API 또는 **mfpadm**을 사용하여 다운로드할 수 있습니다. 
 
    > **참고:** {{ site.data.keys.mf_console }}에서 애플리케이션 또는 애플리케이션 버전을 내보낼 수도 있습니다. [{{ site.data.keys.mf_console }}에서 애플리케이션과 어댑터 내보내기 및 가져오기](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)를 참조하십시오.
+
     * REST API를 사용하여 애플리케이션 디스크립터를 다운로드하려면 [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API를 사용하십시오. 
 
     다음 URL에서는 앱 ID가 **my.test.application**이고 플랫폼이 **ios**이며 버전 **0.0.1**인 애플리케이션의 애플리케이션 디스크립터를 리턴합니다. 호출은 {{ site.data.keys.mf_server }}에 대해 이루어집니다. `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
@@ -348,9 +359,9 @@ REST API 또는 **mfpadm**을 사용하여 업로드할 수 있습니다.
 
 > **중요:** 주의깊게 유스 케이스를 고려하십시오.   
 >  
-> * 내보내기 파일은 애플리케이션 인증 데이터를 포함합니다. 해당 데이터는 모바일 앱의 빌드에 고유합니다. 모바일 앱은 서버의 URL과 해당 런타임 이름을 포함합니다. 그러므로 다른 서버 또는 다른 런타임을 사용하려면 앱을 다시 빌드해야 합니다. 내보낸 앱 파일만 전송하는 동작은 작동하지 않습니다.
-> * 일부 아티팩트는 서버마다 다릅니다. 개발 환경에서 작업하는지 또는 프로덕션 환경에서 작업하는지 여부에 따라 푸시 신임 정보가 다릅니다.
-> * 애플리케이션 런타임 구성(활성/사용 안함 상태와 로그 프로파일을 포함함)을 전송할 수 있는 경우가 있지만 항상 전송할 수 있는 것은 아닙니다.
+> * 내보내기 파일에는 애플리케이션 인증 데이터가 포함되어 있습니다. 해당 데이터는 모바일 앱의 빌드에 고유합니다. 모바일 앱은 서버의 URL과 해당 런타임 이름을 포함합니다. 그러므로 다른 서버 또는 다른 런타임을 사용하려면 앱을 다시 빌드해야 합니다. 내보낸 앱 파일만 전송하는 동작은 작동하지 않습니다. 
+> * 일부 아티팩트는 서버마다 다를 수 있습니다. 개발 환경에서 작업하는지 또는 프로덕션 환경에서 작업하는지 여부에 따라 푸시 신임 정보가 다릅니다. 
+> * 애플리케이션 런타임 구성(활성/사용 안함 상태 및 로그 프로파일 포함)은 일부 경우에는 전송할 수 있지만 항상 전송할 수 있는 것은 아닙니다. 
 > * 새 서버를 사용하기 위해 앱을 다시 빌드하는 경우와 같이 웹 자원 전송이 적합하지 않은 경우가 있습니다. 
 
 * 하나의 어댑터나 모든 어댑터의 모든 자원 또는 자원의 선택된 서브세트를 내보내려면 [어댑터 자원 내보내기(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) 또는 [어댑터 내보내기(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc) API를 사용하십시오. 
@@ -386,9 +397,9 @@ REST API 또는 **mfpadm**을 사용하여 업로드할 수 있습니다.
 
 > **중요:** 주의깊게 유스 케이스를 고려하십시오.   
 > 
-> * 내보내기 파일은 애플리케이션 인증 데이터를 포함합니다. 해당 데이터는 모바일 앱의 빌드에 고유합니다. 모바일 앱은 서버의 URL과 해당 런타임 이름을 포함합니다. 그러므로 다른 서버 또는 다른 런타임을 사용하려면 앱을 다시 빌드해야 합니다. 내보낸 앱 파일만 전송하는 동작은 작동하지 않습니다.
-> * 일부 아티팩트는 서버마다 다릅니다. 개발 환경에서 작업하는지 또는 프로덕션 환경에서 작업하는지 여부에 따라 푸시 신임 정보가 다릅니다.
-> * 애플리케이션 런타임 구성(활성/사용 안함 상태와 로그 프로파일을 포함함)을 전송할 수 있는 경우가 있지만 항상 전송할 수 있는 것은 아닙니다.
+> * 내보내기 파일에는 애플리케이션 인증 데이터가 포함되어 있습니다. 해당 데이터는 모바일 앱의 빌드에 고유합니다. 모바일 앱은 서버의 URL과 해당 런타임 이름을 포함합니다. 그러므로 다른 서버 또는 다른 런타임을 사용하려면 앱을 다시 빌드해야 합니다. 내보낸 앱 파일만 전송하는 동작은 작동하지 않습니다. 
+> * 일부 아티팩트는 서버마다 다를 수 있습니다. 개발 환경에서 작업하는지 또는 프로덕션 환경에서 작업하는지 여부에 따라 푸시 신임 정보가 다릅니다. 
+> * 애플리케이션 런타임 구성(활성/사용 안함 상태 및 로그 프로파일 포함)은 일부 경우에는 전송할 수 있지만 항상 전송할 수 있는 것은 아닙니다. 
 > * 새 서버를 사용하기 위해 앱을 다시 빌드하는 경우와 같이 웹 자원 전송이 적합하지 않은 경우가 있습니다. 
 
 REST API 또는 mfpadm 도구를 사용해 애플리케이션 디스크립터를 전송할 수도 있습니다. 자세한 정보는 [관리 서비스를 사용하여 애플리케이션 구성 전송](#transferring-an-application-configuration-with-the-administration-service)을 참조하십시오. 
@@ -441,6 +452,8 @@ REST API 또는 mfpadm 도구를 사용해 애플리케이션 디스크립터를
 
 > **참고:** 이전 앱을 사용 안함으로 설정하면 더 이상 {{ site.data.keys.mf_server }}와 통신할 수 없습니다. 앱 시작 시 서버 연결을 강제 실행하지 않는 한 사용자가 여전히 앱을 시작하고 오프라인으로 앱에서 작업할 수 있습니다.
 
+
+
 ### 직접 업데이트(네이티브 코드 변경사항 없음)
 {: #direct-update-no-native-code-changes }
 직접 업데이트는 프로덕션 앱에 수정사항을 빨리 배치하는 데 사용되는 필수 업그레이드 메커니즘입니다. 앱의 버전을 변경하지 않고 {{ site.data.keys.mf_server }}에 앱을 재배치하면 사용자가 서버에 연결할 때 {{ site.data.keys.mf_server }}가 업데이트된 웹 자원을 직접 디바이스에 푸시합니다. 업데이트된 네이티브 코드는 푸시하지 않습니다. 직접 업데이트를 하려는 경우 다음 사항을 유념해야 합니다. 
@@ -451,3 +464,4 @@ REST API 또는 mfpadm 도구를 사용해 애플리케이션 디스크립터를
 4. 애플리케이션이 초기 배치에 사용된 버전이 아닌 다른 {{ site.data.keys.product }} 버전으로 컴파일(빌드)되는 경우에는 직접 업데이트가 작동하지 않습니다. 
 
 > **참고:** iOS 앱의 스토어 제출/유효성 검증을 위해 Test Flight 또는 iTunes Connect를 사용하여 아카이브/IPA 파일을 생성하면 런타임 충돌/실패가 발생할 수 있습니다. 자세히 알아보려면 블로그 [Preparing iOS apps for App Store submission in {{ site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)의 내용을 읽으십시오.
+

@@ -109,11 +109,15 @@ rm password.txt
 
 > **중요:** 서버는 애플리케이션을 자동으로 다시 활성화하지 않습니다. 사용 가능한 토큰 수를 늘린 후 애플리케이션을 수동으로 다시 활성화해야 합니다. 애플리케이션 사용 안함 설정과 사용 설정에 대한 자세한 정보는 [보호된 자원에 대한 애플리케이션 액세스를 사용 안함으로 원격 설정](../using-console/#remotely-disabling-application-access-to-protected-resources)을 참조하십시오.
 
+
+
 #### 라이센스 만료 시
 {: #on-license-expiration }
 특정 기간이 지난 후에는 라이센스가 만료되며 다시 체크아웃해야 합니다. 모든 애플리케이션에 사용할 수 있는 토큰이 부족한 경우 서버에서 애플리케이션을 비활성화합니다. 
 
 > **중요:** 서버는 애플리케이션을 자동으로 다시 활성화하지 않습니다. 사용 가능한 토큰 수를 보강한 후 애플리케이션을 수동으로 다시 활성화해야 합니다. 애플리케이션 사용 안함 설정과 사용 설정에 대한 자세한 정보는 [보호된 자원에 대한 애플리케이션 액세스를 사용 안함으로 원격 설정](../using-console/#remotely-disabling-application-access-to-protected-resources)을 참조하십시오.
+
+
 
 #### 서버 종료 시
 {: #at-server-shutdown }
@@ -157,7 +161,11 @@ Foundation Extension의 PVU 라이센스는 IBM WebSphere Application Server Net
 
 > {{ site.data.keys.product_full }} Extension에 대한 자세한 정보는 [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)의 내용을 참조하십시오.
 
+
+
 > PVU 라이센싱에 대한 자세한 정보는 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)의 내용을 참조하십시오.
+
+
 
 ### SLMT 태그
 {: #slmt-tags }

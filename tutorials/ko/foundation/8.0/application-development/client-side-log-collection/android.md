@@ -19,6 +19,8 @@ weight: 3
 
 > **참고:** 상세 레벨에서 로그 캡처를 사용하도록 설정하면 클라이언트가 네트워크를 통해 로그를 전송하는 경우 디바이스 CPU 이용량, 파일 시스템 공간 및 페이로드 크기에 영향을 줄 수 있습니다.
 
+
+
 로그 캡처를 사용 안함으로 설정하려면 다음을 수행하십시오. 
 
 ```java
@@ -30,6 +32,8 @@ Logger.setCapture(false);
 애플리케이션 로직에 따라 {{ site.data.keys.product_adj }}에 로그를 전송하십시오. 자동 로그 전송을 사용하여 로그를 자동으로 전송할 수도 있습니다. 최대 크기에 도달하기 전에 로그가 전송되지 않으면 새 로그를 전송하도록 로그 파일이 제거됩니다. 
 
 > **참고:** 로그 데이터를 수집할 때 다음 패턴을 채택하십시오. 일정한 간격으로 데이터를 전송하면 {{ site.data.keys.mf_analytics_console }}에 거의 실시간으로 로그 데이터가 표시됩니다.
+
+
 
 ```java
 Timer timer = new Timer();
@@ -94,6 +98,8 @@ Logger.setAutoSendLogs(false);
 로깅 레벨은 클라이언트가 설정하거나 서버에서 구성 프로파일을 검색하여 설정할 수 있습니다. {{ site.data.keys.mf_analytics_console }}에서 로그 레벨을 글로벌로 설정하거나(모든 로거 인스턴스) 특정 패키지에 대해 설정할 수 있습니다. 
 
 > {{ site.data.keys.mf_analytics_console }}에서 필터를 구성하는 데 대한 정보는 [로그 필터 구성](../../../analytics/console/log-filters/)을 참조하십시오.
+
+
 
 클라이언트가 서버에 설정된 구성 대체를 페치하려면 앱 라이프사이클 콜백과 같이 정기적으로 실행되는 코드의 한 위치에서 `updateConfigFromServer` 메소드를 호출해야 합니다. 
 

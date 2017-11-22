@@ -348,7 +348,7 @@ mfpdev adapter deploy all
 
 4. 모든 어댑터를 [빌드 또는 배치](#build-and-deploy-adapters)하려면 루트 "GroupAdapters" 프로젝트에서 Maven 명령을 실행하십시오. 
 
-## {{site.data.keys.mf_console }}을 사용하여 어댑터 다운로드 또는 배치
+## {{ site.data.keys.mf_console }}을 사용하여 어댑터 다운로드 또는 배치
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
 1. 선택한 브라우저를 열고 주소 `http://<IP>:<PORT>/mfpconsole/`을 사용하여 {{ site.data.keys.mf_console }}을 로드하십시오.  
@@ -397,7 +397,7 @@ mfpdev adapter deploy all
 ## 오프라인으로 작업 
 {: #working-offline }
 
-Maven 중앙 저장소에 대한 온라인 액세스 권한이 없는 경우 조직의 내부 저장소에 있는 {{site.data.keys.product }} Maven 아티팩트를 공유할 수 있습니다. 
+Maven 중앙 저장소에 대한 온라인 액세스 권한이 없는 경우 조직의 내부 저장소에 있는 {{ site.data.keys.product }} Maven 아티팩트를 공유할 수 있습니다. 
 
 1. [다운로드 페이지를 방문]({{site.baseurl}}/downloads/)하여 {{ site.data.keys.mf_dev_kit_full }} 설치 프로그램을 다운로드하십시오. 
 2. {{ site.data.keys.mf_server }}를 시작하고 브라우저에서 URL: `http://<your-server-host:server-port>/mfpconsole`을 통해 {{ site.data.keys.mf_console }}을 로드하십시오.

@@ -32,6 +32,8 @@ IBM {{ site.data.keys.mf_server }}. Whitelists und Blacklists erstellen.
 
 > **Hinweis:** Informationen zu den von der {{ site.data.keys.product }} zugänglich gemachten URLs werden als Richtlinie bereitgestellt. Organisationen müssen sicherstellen, dass die URLs ausgehend von Whitelists und Blacklists in einer Unternehmensstruktur getestet werden.
 
+
+
 | API-URL unter `<Kontextstammverzeichnis der Laufzeit>/api/` | Beschreibung | Empfohlen für Whitelist? |
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | Gibt die Swagger-Dokumentation des benannten Adapters zurück | Nein; nur intern vom Administrator und von den Entwicklern verwendet |
@@ -121,7 +123,9 @@ richtet sich nach dem Webanwendungsserver, den Sie verwenden.
 > **Wichtiger Hinweis:** Wenn Sie einen eigenständigen WebSphere Application Server Full Profile
 verwenden, müssen Sie in der globalen Sicherheit eine andere Authentifizierungsmethode als SWAM (Simple
 WebSphere Authentication Mechanism) verwenden. Sie können LTPA (Lightweight Third-Party Authentication)
-nutzen. Wenn Sie SWAM verwenden, kann es zu nerwarteten Authentifizierungsfehlern kommen. Nachdem das Installationsprogramm die
+nutzen. Wenn Sie SWAM verwenden, kann es zu nerwarteten Authentifizierungsfehlern kommen. 
+
+Nachdem das Installationsprogramm die
 Webanwendungen für die MobileFirst-Server-Verwaltung
 im Webanwendungsserver implementiert hat, müssen Sie die Authentifizierung konfigurieren. 
 
@@ -177,9 +181,9 @@ DELETE-Anforderungen absetzen.
 #### Anforderungen in Bezug auf Push-Benachrichtigungen
 {: #requests-related-to-push-notifications }
 
-|                        | Administrator| Deployer| Operator| Monitor|
+|                        | Administrator | Deployer | Operator | Monitor |
 |------------------------|---------------|-------------|-------------|------------|
-| Java-EE-Sicherheitsrolle| mfpadmin| mfpdeployer| mfpoperator| mfpmonitor|
+| Java-EE-Sicherheitsrolle | mfpadmin | mfpdeployer | mfpoperator | mfpmonitor |
 | GET-Anforderungen{::nomarkdown}<ul><li>Liste aller Geräte abrufen, die Push-Benachrichtigungen für eine Anwendung verwenden</li><li>Details eines bestimmten Geräts abrufen</li><li>Liste der Abonnements abrufen</li><li>Abonnementinformationen zu einer Abonnement-ID abrufen </li><li>Details einer GCM-Konfiguration abrufen</li><li>Details einer APNS-Konfiguration abrufen</li><li>Liste der für die Anwendung definierten Tags abrufen</li><li>Details zu einem bestimmten Tag abrufen</li></ul>{:/}| Ja | Ja | Ja | Ja |
 | POST- und PUT-Anforderungen{::nomarkdown}<ul><li>App für Push-Benachrichtigungen registrieren</li><li>Geräteregistrierung für Push aktualisieren</li><li>Abonnement erstellen</li><li>GCM-Konfiguration hinzufügen oder aktualisieren</li><li>APNS-Konfiguration hinzufügen oder aktualisieren</li><li>Benachrichtigungen an ein Gerät senden</li><li>Tag erstellen oder aktualisieren</li></ul>{:/} | Ja | Ja | Ja | Nein |
 | DELETE-Anforderungen{::nomarkdown}<ul><li>Registrierung eines Geräts für Push-Benachrichtigungen löschen</li><li>Abonnement löschen</li><li>Abonnement eines Tags für ein Gerät beenden</li><li>GCM-Konfiguration löschen</li><li>APNS-Konfiguration löschen</li><li>Tag löschen
@@ -191,7 +195,7 @@ DELETE-Anforderungen absetzen.
 |                        | Administrator | Deployer | Operator | Monitor |
 |------------------------|---------------|-------------|-------------|------------|
 | Java-EE-Sicherheitsrolle | mfpadmin | mfpdeployer | mfpoperator | mfpmonitor |
-| Gerät inaktivieren und Zustand als "verloren" (lost) oder "gestohlen" (stolen) angeben, um den Zugriff durch Anwendungen auf diesem Gerät zu blockieren | Ja | Ja | Ja | Nein |
+| Gerät inaktivieren und Zustand als "verloren" (lost) oder "gestohlen" (stolen) angeben, um den Zugriff durch Anwendungen auf diesem Gerät zu blockieren | Ja | Ja | Ja |  Nein |
 | Anwendung inaktivieren und Zustand als "inaktiviert" (disabled) angeben, um den Zugriff durch diese Anwendung auf diesem Gerät zu blockieren | Ja | Ja | Ja | Nein |
 
 Wenn Sie sich für eine Authentifizierungsmethode über ein Benutzerrepository wie LDAP entscheiden,
@@ -366,27 +370,15 @@ ist die Verbindung zwischen dem JNDI-Eintrag und einer bestimmten {{ site.data.k
 {{ site.data.keys.product_adj }}-Anwendungen in demselben Server vorhanden sind, können
 Sie bestimmte JNDI-Einträge für jede Anwendung mit dem Kontextpfadpräfix definieren. 
 
-      > **Hinweis:** Einige Eingenschaften werden in
-WebSphere Application Server global definiert, ohne dass das Kontextstammverzeichnis
-als Präfix für den Eigenschaftsnamen verwendet wird. Eine Liste dieser Eigenschaften finden Sie unter [Globale JNDI-Einträge](../appserver/#global-jndi-entries).
-      Die Namen aller anderen
-JNDI-Eigenschaften müssen mit dem Konstextstammverzeichis der Anwendung als Präfix versehen sein. 
+      > **Hinweis:** Einige Eingenschaften werden in WebSphere Application Server global definiert, ohne dass das Kontextstammverzeichnis als Präfix für den Eigenschaftsnamen verwendet wird. Eine Liste dieser Eigenschaften finden Sie unter [Globale JNDI-Einträge](../appserver/#global-jndi-entries).
 
-       * Das Kontextstammverzeichnis für den Liveaktualisierungsservice muss **/[Kontextstammverzeichnis_des_Verwaltungsservice]config** lauten. Wenn das Kontextstammverzeichnis des Verwaltungsservice beispielsweise
-**/mfpadmin** ist, muss der Liveaktualisierungsservice das Kontextstammverzeichnis
-**/mfpadminconfig** haben.
-       * Für den Push-Service müssen Sie **/imfpush** als Kontextstammverzeichnis festlegen.
-Andernfalls können die Clientgeräte keine Verbindung zu dem Service herstellen, denn das Kontextstammverzeichnis ist im
-SDK fest codiert.
-       * Für den {{ site.data.keys.product_adj }}-Verwaltungsservice,
-die {{ site.data.keys.mf_console }}
-und die {{ site.data.keys.product_adj }}-Laufzeit können Sie das Kontextstammverzeichnis
-ganz nach Wunsch definieren. Die Standardwerte lauten
-**/mfpadmin** für den {{ site.data.keys.product_adj }}-Verwaltungsservice,
-**/mfpconsole** für die {{ site.data.keys.mf_console }} und
-**/mfp** für die {{ site.data.keys.product_adj }}-Laufzeit. 
+      Die Namen aller anderen JNDI-Eigenschaften müssen mit dem Konstextstammverzeichis der Anwendung als Präfix versehen sein.
 
-      Beispiel: 
+       * Das Kontextstammverzeichnis für den Liveaktualisierungsservice muss **/[Kontextstammverzeichnis_des_Verwaltungsservice]config** lauten. Wenn das Kontextstammverzeichnis des Verwaltungsservice beispielsweise **/mfpadmin** ist, muss der Liveaktualisierungsservice das Kontextstammverzeichnis **/mfpadminconfig** haben.
+       * Für den Push-Service müssen Sie **/imfpush** als Kontextstammverzeichnis festlegen. Andernfalls können die Clientgeräte keine Verbindung zu dem Service herstellen, denn das Kontextstammverzeichnis ist im SDK fest codiert.
+       * Für den {{ site.data.keys.product_adj }}-Verwaltungsservice, die {{ site.data.keys.mf_console }} und die {{ site.data.keys.product_adj }}-Laufzeit können Sie das Kontextstammverzeichnis ganz nach Wunsch definieren. Die Standardwerte lauten **/mfpadmin** für den {{ site.data.keys.product_adj }}-Verwaltungsservice, **/mfpconsole** für die {{ site.data.keys.mf_console }} und **/mfp** für die {{ site.data.keys.product_adj }}-Laufzeit.
+
+      Beispiel:
 
       ```xml
       <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
@@ -459,9 +451,9 @@ mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden:
 
 | Eigenschaft | Optional oder obligatorisch | Beschreibung | Einschränkungen |
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector| Optional | JMX-Connectortyp (Java Management Extensions)<br/>Die gültigen Werte sind `SOAP` und `RMI`. Der Standardwert ist SOAP. | Nur WebSphere Application Server |
-| mfp.admin.jmx.host | Optional | Hostname für die JMX-REST-Verbindung | Nur Liberty Profile |
-| mfp.admin.jmx.port	   | Optional	           | Port für die JMX-REST-Verbindung | Nur Liberty Profile |
+| mfp.admin.jmx.connector| Optional	| JMX-Connectortyp (Java Management Extensions)<br/>Die gültigen Werte sind `SOAP` und `RMI`. Der Standardwert ist SOAP. | Nur WebSphere Application Server |
+| mfp.admin.jmx.host | Optional	| Hostname für die JMX-REST-Verbindung | Nur Liberty Profile |
+| mfp.admin.jmx.port	   | Optional	| Port für die JMX-REST-Verbindung | Nur Liberty Profile |
 | mfp.admin.jmx.user       | Obligatorisch für Liberty Profile und eine WebSphere-Application-Server-Farm; andernfalls optional | Benutzername für die JMX-REST-Verbindung | WebSphere Application Server Liberty Profile: Benutzername für die JMX-REST-Verbindung<br/><br/>WebSphere-Application-Server-Farm: Benutzername für die SOAP-Verbindung<br/><br/>WebSphere Application Server Network Deployment: Benutzername des WebSphere-Administrators, wenn der der Anwendung für MobileFirst-Server-Verwaltung zugeordnete virtuelle Host nicht der Standardhost ist<br/><br/>Liberty-Verbund: Benutzername des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
 | mfp.admin.jmx.pwd	| Obligatorisch für Liberty Profile und eine WebSphere-Application-Server-Farm; andernfalls optional | Benutzerkennwort für die JMX-REST-Verbindung | WebSphere Application Server Liberty Profile: Benutzerkennwort für die JMX-REST-Verbindung<br/><br/>WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung<br/><br/>WebSphere Application Server Network Deployment: Kennwort des WebSphere-Administrators, wenn der der Anwendung für MobileFirst-Server-Verwaltung zugeordnete virtuelle Host nicht der Standardhost ist<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
 | mfp.admin.rmi.registryPort | Optional | RMI-Registryport für die JMX-Verbindung über eine Firewall | Nur Tomcat |
@@ -482,20 +474,20 @@ mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden:
 #### JNDI-Eigenschaften für den Verwaltungsservice: Protokollierung
 {: #jndi-properties-for-administration-service-logging }
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.logging.formatjson| Optional| Setzen Sie diese Eigenschaft auf true, um für JSON-Objekte eine besser lesbare Formatierung (mit zusätzlichem Leerzeichen) in Antworten und Protokollnachrichten zu aktivieren. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. Der Standardwert ist false.|
-| mfp.admin.logging.tosystemerror| Optional| Gibt an, ob alle Protokollierungsnachrichten auch an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
+| mfp.admin.logging.formatjson| Optional | Setzen Sie diese Eigenschaft auf true, um für JSON-Objekte eine besser lesbare Formatierung (mit zusätzlichem Leerzeichen) in Antworten und Protokollnachrichten zu aktivieren. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. Der Standardwert ist false.|
+| mfp.admin.logging.tosystemerror| Optional | Gibt an, ob alle Protokollierungsnachrichten auch an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
 
 #### JNDI-Eigenschaften für den Verwaltungsservice: Proxys
 {: #jndi-properties-for-administration-service-proxies }
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.proxy.port| Optional| Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft der Port des Proxys angegeben, z. B. 443. Die Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
-| mfp.admin.proxy.protocol| Optional| Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft das Protokoll an (HTTP oder HTTPS). Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird diese Eigenschaft auf das Protokoll des Proxys gesetzt, z. B. wl.net. Diese Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
+| mfp.admin.proxy.port| Optional | Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft der Port des Proxys angegeben, z. B. 443. Die Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
+| mfp.admin.proxy.protocol| Optional | Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft das Protokoll an (HTTP oder HTTPS). Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird diese Eigenschaft auf das Protokoll des Proxys gesetzt, z. B. wl.net. Diese Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
 | mfp.admin.proxy.scheme| Optional| Diese Eigenschaft ist lediglich ein alternativer Name für mfp.admin.proxy.protocol.|
-| mfp.admin.proxy.host| Optional| Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft die Adresse des Proxys angegeben. |
+| mfp.admin.proxy.host| Optional | Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft die Adresse des Proxys angegeben. |
 
 #### JNDI-Eigenschaften für den Verwaltungsservice: Topologien
 {: #jndi-properties-for-administration-service-topologies }
@@ -516,20 +508,20 @@ mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden:
 #### JNDI-Eigenschaften für den Verwaltungsservice: relationale Datenbank
 {: #jndi-properties-for-administration-service-relational-database }
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.db.jndi.name| Optional| Der JNDI-Name der Datenbank. Dieser Parameter ist der normale Mechanismus für die Angabe der Datenbank. Der Standardwert ist **java:comp/env/jdbc/mfpAdminDS**.|
+| mfp.admin.db.jndi.name| Optional | Der JNDI-Name der Datenbank. Dieser Parameter ist der normale Mechanismus für die Angabe der Datenbank. Der Standardwert ist **java:comp/env/jdbc/mfpAdminDS**.|
 | mfp.admin.db.openjpa.ConnectionDriverName| Optional / Bedingt obligatorisch| Der vollständig qualifizierte Name der Treiberklasse der Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
 | mfp.admin.db.openjpa.ConnectionURL| Optional / Bedingt obligatorisch| Die URL für die Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
 | mfp.admin.db.openjpa.ConnectionUserName| Optional / Bedingt obligatorisch| Der Benutzername für die Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
 | mfp.admin.db.openjpa.ConnectionPassword| Optional / Bedingt obligatorisch| Das Kennwort für die Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
-| mfp.admin.db.openjpa.Log| Optional| Diese Eigenschaft wird an OpenJPA übergeben und aktiviert die JPA-Protokollierung. Weitere Informationen finden Sie in der Veröffentlichung [Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html).|
-| mfp.admin.db.type| Optional| Diese Eigenschaft definiert den Datenbanktyp. Der Standardwert wird aus der Verbindungs-URL hergeleitet.|
+| mfp.admin.db.openjpa.Log| Optional | Diese Eigenschaft wird an OpenJPA übergeben und aktiviert die JPA-Protokollierung. Weitere Informationen finden Sie in der Veröffentlichung [Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html).|
+| mfp.admin.db.type| Optional | Diese Eigenschaft definiert den Datenbanktyp. Der Standardwert wird aus der Verbindungs-URL hergeleitet.|
 
 #### JNDI-Eigenschaften für den Verwaltungsservice: Lizenzierung
 {: #jndi-properties-for-administration-service-licensing }
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.license.key.server.host| {::nomarkdown}<ul><li>Optional für zeitlich unbegrenzte Lizenzen</li><li>Obligatorisch für Tokenlizenzen</li></ul>{:/} | Hostname von Rational License Key Server|
 | mfp.admin.license.key.server.port| {::nomarkdown}<ul><li>Optional für zeitlich unbegrenzte Lizenzen</li><li>Obligatorisch für Tokenlizenzen</li></ul>{:/} | Portnummer von Rational License Key Server|
@@ -537,10 +529,10 @@ mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden:
 #### JNDI-Eigenschaften für den Verwaltungsservice: JNDI-Konfigurationen
 {: #jndi-properties-for-administration-service-jndi-configurations }
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.jndi.configuration| Optional| Der Name der JNDI-Konfiguration, wenn die JNDI-Eigenschaften (bis auf diese) aus einer Eigenschaftendatei gelesen werden müssen, die in die WAR-Datei injiziert ist. Wenn Sie diese Eigenschaft nicht definieren, werden die JNDI-Eigenschaften nicht aus einer Eigenschaftendatei gelesen.|
-| mfp.jndi.file| Optional| Der Name der Datei mit der JNDI-Konfiguration, wenn die JNDI-Eigenschaften (bis auf diese) aus einer im Web-Server installierten Datei gelesen werden müssen. Wenn Sie diese Eigenschaft nicht definieren, werden die JNDI-Eigenschaften nicht aus einer Eigenschaftendatei gelesen.|
+| mfp.jndi.configuration| Optional | Der Name der JNDI-Konfiguration, wenn die JNDI-Eigenschaften (bis auf diese) aus einer Eigenschaftendatei gelesen werden müssen, die in die WAR-Datei injiziert ist. Wenn Sie diese Eigenschaft nicht definieren, werden die JNDI-Eigenschaften nicht aus einer Eigenschaftendatei gelesen.|
+| mfp.jndi.file| Optional | Der Name der Datei mit der JNDI-Konfiguration, wenn die JNDI-Eigenschaften (bis auf diese) aus einer im Web-Server installierten Datei gelesen werden müssen. Wenn Sie diese Eigenschaft nicht definieren, werden die JNDI-Eigenschaften nicht aus einer Eigenschaftendatei gelesen.|
 
 Der Verwaltungsservice verwendet einen Liveaktualisierungsservice als Hilfseinrichtung, um verschiedene Konfigurationen zu speichern. Mit diesen Eigenschaften legen Sie fest, wie der Liveaktualisierungsservice erreicht werden kann.
 
@@ -561,10 +553,10 @@ müssen Sie verschiedene Eigenschaften definieren, um in OAuth vertrauliche Clie
 #### JNDI-Eigenschaften für den Verwaltungsservice: Push-Service
 {: #jndi-properties-for-administration-service-push-service }
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.push.url| Optional| URL des Push-Service. Wenn die Eigenschaft nicht angegeben ist, wird der Push-Service als inaktiviert angesehen. Wenn die Eigenschaft nicht ordnungsgemäß definiert ist, kann der Verwaltungsservice keinen Kontakt zum Push-Service aufnehmen, sodass die Verwaltung der Push-Services in der {{ site.data.keys.mf_console }} nicht funktioniert.|
-| mfp.admin.authorization.server.url| Optional| URL des OAuth-Autorisierungsservers, der vom Push-Service verwendet wird. Die Standard-URL wird aus der URL des Verwaltungsservice abgeleitet, indem das Kontextstammverzeichnis in das Kontextstammverzeichnis der ersten installierten Laufzeit geändert wird. Wenn Sie mehrere Laufzeiten installieren, ist es am besten, die Eigenschaft zu definieren. Wenn die Eigenschaft nicht ordnungsgemäß definiert ist, kann der Verwaltungsservice keinen Kontakt zum Push-Service aufnehmen, sodass die Verwaltung der Push-Services in der {{ site.data.keys.mf_console }} nicht funktioniert.|
+| mfp.admin.push.url| Optional | URL des Push-Service. Wenn die Eigenschaft nicht angegeben ist, wird der Push-Service als inaktiviert angesehen. Wenn die Eigenschaft nicht ordnungsgemäß definiert ist, kann der Verwaltungsservice keinen Kontakt zum Push-Service aufnehmen, sodass die Verwaltung der Push-Services in der {{ site.data.keys.mf_console }} nicht funktioniert.|
+| mfp.admin.authorization.server.url| Optional | URL des OAuth-Autorisierungsservers, der vom Push-Service verwendet wird. Die Standard-URL wird aus der URL des Verwaltungsservice abgeleitet, indem das Kontextstammverzeichnis in das Kontextstammverzeichnis der ersten installierten Laufzeit geändert wird. Wenn Sie mehrere Laufzeiten installieren, ist es am besten, die Eigenschaft zu definieren. Wenn die Eigenschaft nicht ordnungsgemäß definiert ist, kann der Verwaltungsservice keinen Kontakt zum Push-Service aufnehmen, sodass die Verwaltung der Push-Services in der {{ site.data.keys.mf_console }} nicht funktioniert.|
 | mfp.push.authorization.client.id| Optional / Bedingt obligatorisch| Kennung des vertraulichen Clients, der die OAuth-Autorisierung für den Push-Service ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
 | mfp.push.authorization.client.secret| Optional / Bedingt obligatorisch| Geheimer Schlüssel des vertraulichen Clients, der die OAuth-Autorisierung für den Push-Service ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
 | mfp.admin.authorization.client.id| Optional / Bedingt obligatorisch| Kennung des vertraulichen Clients, der die OAuth-Autorisierung für den Verwaltungsservice ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
@@ -576,13 +568,13 @@ Für die
 Webanwendung für die {{ site.data.keys.mf_console }},
 mfp-admin-ui.war, können die folgenden Eigenschaften festgelegt werden: 
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.endpoint| Optional| Ermöglicht der {{ site.data.keys.mf_console }}, die REST-Services für die MobileFirst-Server-Verwaltung zu finden. Geben Sie die externe Adresse und das Kontextstammverzeichnis der Webanwendung **mfp-admin-service.war** an. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. Beispiel: https://wl.net:443/mfpadmin|
-| mfp.admin.global.logout| Optional| Löscht den WebSphere-Benutzerauthentifizierungscache während der Abmeldung von der Konsole. Diese Eigenschaft ist nur für WebSphere Application Server Version 7 hilfreich. Der Standardwert ist false.|
-| mfp.admin.hsts| Optional| Setzen Sie diese Eigenschaft auf true, um [HTTP Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security) gemäß RFC 6797 zu aktivieren. Weitere Informationen finden Sie auf der W3C-Webseite Strict Transport Security. Der Standardwert ist false.|
-| mfp.admin.ui.cors| Optional| Der Standardwert ist true.Weitere Informationen finden Sie auf der W3C-Webseite [Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/).|
-| mfp.admin.ui.cors.strictssl| Optional| Setzen Sie diese Eigenschaft auf false, um CORS-Situationen zuzulassen, in denen die {{ site.data.keys.mf_console }} mit SSL (HTTPS-Protokoll) gesichert ist, aber der MobileFirst-Server-Verwaltungsservice nicht, oder umgekehrt. Diese Eigenschaft wird nur wirksam, wenn die Eigenschaft **mfp.admin.ui.cors** aktiviert ist.|
+| mfp.admin.endpoint| Optional | Ermöglicht der {{ site.data.keys.mf_console }}, die REST-Services für die MobileFirst-Server-Verwaltung zu finden. Geben Sie die externe Adresse und das Kontextstammverzeichnis der Webanwendung **mfp-admin-service.war** an. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. Beispiel: https://wl.net:443/mfpadmin|
+| mfp.admin.global.logout| Optional | Löscht den WebSphere-Benutzerauthentifizierungscache während der Abmeldung von der Konsole. Diese Eigenschaft ist nur für WebSphere Application Server Version 7 hilfreich. Der Standardwert ist false.|
+| mfp.admin.hsts | Optional | Setzen Sie diese Eigenschaft auf true, um [HTTP Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security) gemäß RFC 6797 zu aktivieren. Weitere Informationen finden Sie auf der W3C-Webseite Strict Transport Security. Der Standardwert ist false.|
+| mfp.admin.ui.cors| Optional | Der Standardwert ist true. Weitere Informationen finden Sie auf der W3C-Webseite [Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/).|
+| mfp.admin.ui.cors.strictssl| Optional | Setzen Sie diese Eigenschaft auf false, um CORS-Situationen zuzulassen, in denen die {{ site.data.keys.mf_console }} mit SSL (HTTPS-Protokoll) gesichert ist, aber der MobileFirst-Server-Verwaltungsservice nicht, oder umgekehrt. Diese Eigenschaft wird nur wirksam, wenn die Eigenschaft **mfp.admin.ui.cors** aktiviert ist.|
 
 ### Liste der JNDI-Eigenschaften für den MobileFirst-Server-Liveaktualisierungsservice
 {: #list-of-jndi-properties-for-mobilefirst-server-live-update-service }
@@ -590,9 +582,9 @@ Wenn Sie den MobileFirst-Server-Liveaktualisierungsservice für Ihren Anwendungs
 JNDI-Eigenschaften festlegen. In der folgenden Tabelle sind die JNDI-Eigenschaften für den Liveaktualisierungsservice
 für die relationale IBM Datenbank aufgelistet. 
 
-| Eigenschaft| Optional oder obligatorisch| Beschreibung|
+| Eigenschaft | Optional oder obligatorisch | Beschreibung |
 |----------|-----------------------|-------------|
-| mfp.db.relational.queryTimeout| Optional| Zeitlimit für die Ausführung einer Abfrage im RDBMS in Sekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung).<br/><br/>Falls kein Wert konfiguriert ist, wird ein Standardwert verwendet. Weitere Informationen finden Sie unter [setQueryTimeout)](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int).|
+| mfp.db.relational.queryTimeout| Optional | Zeitlimit für die Ausführung einer Abfrage im RDBMS in Sekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung).<br/><br/>Falls kein Wert konfiguriert ist, wird ein Standardwert verwendet. Weitere Informationen finden Sie unter [setQueryTimeout)](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int).|
 
 Informationen zum Festlegen dieser Eigenschaften finden Sie unter [JNDI-Eigenschaften für MobileFirst-Server-Webanwendungen konfigurieren](#setting-up-jndi-properties-for-mobilefirst-server-web-applications). 
 
@@ -607,7 +599,7 @@ verfügbar sind:
 
 | Eigenschaft | Beschreibung |
 |----------|-------------|
-| mfp.admin.jmx.dmgr.host | ObligatorischHostname des Deployment ManagerNur WebSphere Application Server Network Deployment |
+| mfp.admin.jmx.dmgr.host | Diese obligatorische Eigenschaft gibt den Hostnamen des Deployment Manager an (nur WebSphere Application Server Network Deployment). |
 | mfp.admin.jmx.dmgr.port | Diese obligatorische Eigenschaft gibt den RMI- oder SOAP-Port des Deployment Manager an (nur WebSphere Application Server Network Deployment). |
 | mfp.admin.jmx.host | Nur Liberty. Hostname für die JMX-REST-Verbindung. Verwenden Sie in einem Liberty-Verbund den Hostnamen des Controllers. |
 | mfp.admin.jmx.port | Nur Liberty. Port-Nummer für die JMX-REST-Verbindung. In einem Liberty-Verbund muss der Port des REST-Connectors mit dem Wert des Attributs httpsPort, das im Element `<httpEndpoint>` deklariert ist, übereinstimmen. Das Element ist in der Datei server.xml des Liberty-Controllers deklariert. |
@@ -615,7 +607,7 @@ verfügbar sind:
 | mfp.admin.jmx.pwd | WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung (optional)<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
 | mfp.admin.serverid | Obligatorisch für Server-Farmen und einen Liberty-Verbund, ansonsten optional<br/><br/>Server-Farm: Die Serverkennung. Die ID muss für jeden Server in der Farm eindeutig sein.<br/><br/>Liberty-Verbund: die Memberkennung. Jedes Member des Verbunds muss eine andere Kennung haben. Der Wert controller kann nicht verwendet werden, weil er für den Verbundcontroller reserviert ist. |
 | mfp.topology.platform | Optional. Der Servertyp. Gültige Werte: <ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Wenn Sie den Wert nicht definieren, versucht die Anwendung, den Servertyp zu raten. |
-| mfp.topology.clustermode | Optional Zusätzlich zum Servertyp geben Sie mit dieser Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
+| mfp.topology.clustermode | Zusätzlich zum Servertyp geben Sie mit dieser optionalen Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
 | mfp.admin.jmx.replica | Nur für einen Liberty-Verbund (optional).<br/><br/>Legen Sie diese Eigenschaft nur fest, wenn die Verwaltungskomponenten, mit denen diese Laufzeit verwaltet wird, in verschiedenen Liberty-Controllern (d. h. Replikaten) implementiert sind.<br/><br/>Syntax der Endpunktliste mit den verschiedenen Controllerreplikaten: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 | mfp.analytics.console.url | Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für die Verbindung zur Analytics Console (optional). Wenn Sie von der {{ site.data.keys.mf_console }} auf die Analytics Console zugreifen möchten, definieren Sie diese Eigenschaft. Beispiel: `http://<Hostname>:<Port>/analytics/console` |
 | mfp.analytics.password | Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
@@ -623,7 +615,8 @@ verfügbar sind:
 | mfp.analytics.username | Der Benutzername, der verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
 | mfp.device.decommissionProcessingInterval | Definiert, wie häufig eine Stilllegung durchgeführt wird (Intervall in Sekunden). Standardwert: 86400 (ein Tag). |
 | mfp.device.decommission.when | Anzahl von Tagen der Inaktivität, nach denen ein Clientgerät mit der Aufgabe für Gerätestilllegung stillgelegt wird. Standardwert: 90 Tage |
-| mfp.device.archiveDecommissioned.when | Anzahl von Tagen der Inaktivität, nach denen ein stillgelegtes Clientgerät archiviert wird.<br/><br/>Diese Task schreibt die stillgelegten Clientgeräte in eine Archivdatei. Die archivierten Clientgeräte werden in eine Datei im MobileFirst-Server-Verzeichnis **home\devices_archive** geschrieben. Der Name der Datei enthält die Zeitmarke für den Erstellungszeitpunkt der Archivdatei. Standardwert: 90 Tage |
+| mfp.device.archiveDecommissioned.when | Anzahl von Tagen der Inaktivität, nach denen ein stillgelegtes Clientgerät archiviert wird.<br/><br/>Diese Task schreibt die stillgelegten Clientgeräte in eine Archivdatei. Die archivierten Clientgeräte werden in eine Datei im MobileFirst-Server-Verzeichnis **home\devices_archive** geschrieben. Der Name der Datei
+enthält die Zeitmarke für den Erstellungszeitpunkt der Archivdatei. Standardwert: 90 Tage |
 | mfp.licenseTracking.enabled | Mit dem Wert dieser Eigenschaft wird die Geräteüberwachung in der {{ site.data.keys.product }} aktiviert oder inaktiviert.<br/><br/>Aus Leistungsaspekten können Sie die Geräteüberwachung inaktivieren, wenn die {{ site.data.keys.product }} ausschließlich Business-to-Consumer-Apps (B2C) ausführt. Bei inaktivierter Geräteüberwachung sind auch die Lizenzberichte inaktiviert und es werden keine Lizenzmetriken generiert.<br/><br/>Gültige Werte sind true (Standard) und false. |
 | mfp.runtime.temp.folder | Definiert den Laufzeitordner für temporäre Dateien. Wenn kein Wert angegeben ist, wird die Posotion des Standardordners für temporäre Dateien für den Web-Container verwendet. |
 | mfp.adapter.invocation.url | URL zum Aufrufen von Adapterprozeduren in Java- oder JavaScript-Adaptern, die mit dem REST-Endpunkt aufgerufen werden. Wenn diese Eigenschaft nicht definiert ist, wird die URL der aktuell ausgeführten Anfrage verwendet. (Dies ist das Standardverhalten.) Als Wert muss eine vollständige URL mit Kontextstammverzeichnis angegeben werden. |
@@ -644,7 +637,7 @@ verfügbar sind:
 | mfp.push.db.cloudant.username | Optional | Benutzername des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Wenn diese Eigenschaft nicht definiert ist, wird eine relationale Datenbank verwendet. |
 | mfp.push.db.cloudant.password | Optional | Kennwort des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Diese Eigenschaft muss definiert sein, wenn mfp.db.cloudant.username definiert ist. |
 | mfp.push.db.cloudant.doc.version | Optional | Cloudant-Dokumentversion |
-| mfp.push.db.cloudant.socketTimeout | Optional | Zeitlimit für das Erkennen des Verlusts einer Cloudant-Netzverbindung in Millisekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung). Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.socketTimeout | Optional	| Zeitlimit für das Erkennen des Verlusts einer Cloudant-Netzverbindung in Millisekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung). Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.connectionTimeout | Optional	| Zeitlimit für das Herstellen einer Cloudant-Netzverbindung in Millisekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung). Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.maxConnections | Optional | Maximale Verbindungen für den Cloudant-Connector. Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.ssl.authentication | Optional | Boolescher Wert (true oder false), der angibt, ob für HTTPS-Verbindungen zur Cloudant-Datenbank die Validierung der SSL-Zertifikatkette und die Überprüfung des Hostnamens aktiviert sind. Standardwert: True |
@@ -892,6 +885,8 @@ eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
 einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
 
+
+
 ### Veraltete Daten nach dem Erstellen oder Löschen von Apps in der {{ site.data.keys.mf_console }}
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 Wenn Sie in einem Tomcat 8 Application Server eine MySQL-Datenbank verwenden,
@@ -927,11 +922,9 @@ Datenquelle.
 3. Setzen Sie **Mindestanzahl von Verbindungen** auf den Wert 0.
 4. Setzen Sie das **Bereinigungsintervall** auf einen Wert, der kleiner als der Wert
 für das **Zeitlimit für nicht verwendete Verbindungen** ist. 
-5. Stellen Sie sicher, dass die Eigenschaft **Löschrichtlinie** auf
-(die Standardeinstellung) **Gesamter Pool** gesetzt ist. 
+5. Stellen Sie sicher, dass die Eigenschaft **Löschrichtlinie** auf (die Standardeinstellung) **Gesamter Pool** gesetzt ist.
 
-Weitere Informationen finden Sie unter
-[Connection pool settings](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/udat_conpoolset.html).
+Weitere Informationen finden Sie unter [Connection pool settings](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/udat_conpoolset.html).
 
 **MySQL**  
 
@@ -955,6 +948,8 @@ Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311
 eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
 einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
+
+
 
 ## Protokollierungs- und Überwachungsmechanismen konfigurieren
 {: #configuring-logging-and-monitoring-mechanisms }
@@ -1040,6 +1035,8 @@ das Paket
 Sie können {{ site.data.keys.mf_server }} mit mehreren Laufzeiten konfigurieren und in der {{ site.data.keys.mf_console }} eine visuelle Abgrenzung der Anwendungstypen erstellen. 
 
 > **Hinweis:** Eine Mobile-Foundation-Server-Instanz, die mit dem Mobile-Foundation-Bluemix-Service erstellt wurde, bietet keine Unterstützung für mehrere Laufzeiten. Im Bluemix-Service müssen Sie stattdessen mehrere Serviceinstanzen erstellen.
+
+
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-1 }
@@ -1139,6 +1136,8 @@ In der Testumgebung können Sie die Definition der Konfiguration an die Umgebung
 
 > In den [API-Referenzinformationen](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html) erfahren Sie, welche REST-APIs zur Verfügung stehen.
 
+
+
 ## Lizenzüberwachung konfigurieren
 {: #configuring-license-tracking }
 Die Lizenzüberwachung ist standardmäßig aktiviert. In den folgenden Abschnitten erfahren Sie, wie Sie die Lizenzüberwachung
@@ -1155,7 +1154,9 @@ Die Lizenzüberwachung für Clientgeräte und adressierbare Geräte ist standard
 {{ site.data.keys.mf_console }} verfügbar.
 Sie können die folgenden JNDI-Eigenschaften angeben, um die Standardeinstellungen für die Lizenzüberwachung zu ändern. 
 
-> **Hinweis:** Wenn in Ihrem Vertrag die Tokenlizenzierung vereinbart ist, lesen Sie auch die Informationen unter [Installation und Konfiguration für Tokenlizenzierung](../token-licensing). Sie können die folgenden JNDI-Eigenschaften angeben, um die Standardeinstellungen für die Lizenzüberwachung zu ändern. 
+> **Hinweis:** Wenn in Ihrem Vertrag die Tokenlizenzierung vereinbart ist, lesen Sie auch die Informationen unter [Installation und Konfiguration für Tokenlizenzierung](../token-licensing). 
+
+Sie können die folgenden JNDI-Eigenschaften angeben, um die Standardeinstellungen für die Lizenzüberwachung zu ändern. 
 
 **mfp.device.decommission.when**  
 Anzahl von Tagen der Inaktivität, nach denen ein Gerät mit der Aufgabe für Gerätestilllegung stillgelegt wird. Für Lizenzberichte werden stillgelegte Geräte nicht als aktive

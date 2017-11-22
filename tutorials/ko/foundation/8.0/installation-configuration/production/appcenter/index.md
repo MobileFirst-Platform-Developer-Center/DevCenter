@@ -19,6 +19,8 @@ weight: 8
 
 > **참고:** Application Center를 통해 iOS 디바이스에 애플리케이션을 설치하려면 먼저 SSL을 사용하여 Application Center 서버를 구성해야 합니다.
 
+
+
 설치된 파일 및 도구의 목록은 [{{ site.data.keys.mf_server }}의 배포 구조](../installation-manager/#distribution-structure-of-mobilefirst-server)를 참조하십시오. 
 
 #### 다음으로 이동
@@ -71,6 +73,8 @@ DB2 SYSADM 또는 SYSCTRL 권한을 가진 사용자 계정의 이름 및 비밀
 수동으로 데이터베이스를 작성하는 경우 데이터베이스 이름(여기서는 APPCNTR) 및 비밀번호를 사용자가 선택하는 데이터베이스 이름 및 비밀번호로 바꿀 수 있습니다. 
 
 > **중요:** 데이터베이스 이름과 사용자 이름을 서로 다르게 지정하거나 다른 비밀번호를 설정할 수 있지만 DB2 데이터베이스 설정 전체에서 적절한 데이터베이스 이름, 사용자 이름 및 비밀번호를 올바르게 입력해야 합니다. DB2의 데이터베이스 이름 제한은 모든 플랫폼에서 8자이며 사용자 이름 및 비밀번호 길이 제한은 UNIX 및 Linux 시스템의 경우 8자이고 Windows의 경우 30자입니다.
+
+
 
 1. 사용자의 운영 체제에 적합한 명령을 사용하여 DB2 관리 그룹(예: **DB2USERS**)에서 시스템 사용자(예: **wluser**)를 작성하십시오. 해당 사용자 이름에 비밀번호(예: **wluser**)를 제공하십시오. IBM {{ site.data.keys.mf_server }}의 여러 인스턴스를 동일한 데이터베이스에 연결하려면 각각의 연결에 대해 서로 다른 사용자 이름을 사용하십시오. 각각의 데이터베이스 사용자는 별도의 기본 스키마를 가집니다. 데이터베이스 사용자에 대한 자세한 정보는 사용자의 운영 체제에 해당하는 문서 및 DB2 문서를 참조하십시오. 
 
@@ -152,6 +156,7 @@ WebSphere Application Server Network Deployment Server 세트에서 Application 
 2. WebSphere Application Server 설치 디렉토리를 지정하는 설치 프로그램 패널에서 배치 관리자 프로파일을 선택하십시오. 
 
     > **주의:** 애플리케이션 서버를 선택한 후 단일 관리 서버를 선택하지 마십시오. 이를 수행하면 배치 관리자가 실행 중인 머신에 설치하는지 아니면 다른 머신에 설치하는지에 관계없이 배치 관리자가 서버의 구성을 겹쳐씁니다.
+
 3. Application Center를 설치할 위치에 따라 필요한 범위를 선택하십시오. 다음 테이블에는 사용 가능한 범위가 나열되어 있습니다. 
 
     | 범위	 | 설명       |
@@ -166,6 +171,8 @@ WebSphere Application Server Network Deployment Server 세트에서 Application 
 설치는 지정된 범위에 있는 서버 세트 외에는 영향을 주지 않습니다. JDBC 제공자 및 JDBC 데이터 소스는 지정된 범위로 정의됩니다. 셀 전체 범위(애플리케이션과 인증 별명(DB2의 경우))를 가진 항목은 이름에 접미부를 가지고 있어 고유한 항목이 됩니다. 따라서 서로 다른 구성으로 Application Center를 설치하거나 동일한 셀의 서로 다른 클러스터에서 서로 다른 Application Center 버전을 설치할 수 있습니다. 
 
 > **참고:** JDBC 드라이버는 지정된 애플리케이션 서버 세트에서만 설치되므로 배치 관리자의 WebSphere Application Server 관리 콘솔에 있는 JDBC 데이터 소스에 대한 연결 테스트 단추가 작동하지 않습니다.
+
+
 
 프론트 엔드 HTTP 서버를 사용하는 경우에는 공용 URL도 구성해야 합니다. 
 
@@ -337,6 +344,8 @@ Apache Tomcat 이외의 애플리케이션 서버에서는 두 개의 WAR 파일
 
 > **제한사항:** {{ site.data.keys.mf_server }} 설치의 일부로 또는 수동으로 IBM Installation Manager를 사용하여 Application Center를 설치하는지에 관계없이 Application Center의 "롤링 업데이트"는 지원되지 않는다는 점을 기억하십시오. 즉, 동일한 데이터베이스에서 작동하는 두 개의 Application Center 버전(예: V5.0.6과 V6.0.0)을 설치할 수 없습니다.
 
+
+
 #### 다음으로 이동
 {: #jump-to-4 }
 
@@ -369,7 +378,7 @@ Apache Tomcat 이외의 애플리케이션 서버에서는 두 개의 WAR 파일
 
 1. 사용자의 운영 체제에 적합한 명령을 사용하여 DB2 관리 그룹(예: **DB2USERS**)에서 시스템 사용자(**worklight**)를 작성하십시오. 해당 사용자에게 비밀번호 **worklight**를 제공하십시오. 자세한 정보는 사용자의 운영 체제에 해당하는 문서 및 DB2 문서를 참조하십시오. 
 
-> **중요:** 사용자의 이름을 다르게 지정하거나 다른 비밀번호를 설정할 수 있지만 DB2 데이터베이스 설정 전체에서 적절한 사용자 이름 및 비밀번호를 올바르게 입력해야 합니다. DB2의 사용자 이름 및 비밀번호 길이 제한은 UNIX 및 Linux 시스템의 경우 8자이고 Windows의 경우 30자입니다.
+> **중요:** 사용자의 이름을 다르게 지정하거나 다른 비밀번호를 설정할 수 있지만 DB2 데이터베이스 설정 전체에서 적절한 사용자 이름 및 비밀번호를 올바르게 입력해야 합니다. DB2의 사용자 이름 및 비밀번호 길이 제한은 UNIX 및 Linux 시스템의 경우 8자이고 Windows의 경우 30자입니다. 
 
 2. **SYSADM** 또는 **SYSCTRL** 권한을 가진 사용자로 DB2 명령행 프로세서를 여십시오. 
     * Windows 시스템의 경우 **시작 → IBM DB2 → 명령행 프로세서**를 클릭하십시오. 
@@ -544,6 +553,8 @@ Apache Tomcat 서버를 가진 Application Center에 대해 DB2 데이터베이�
 
    > **참고:** ij 프로그램은 Apache Derby의 일부입니다. 아직 설치하지 않은 경우에는 [Apache Derby: 다운로드](http://db.apache.org/derby/derby_downloads)에서 다운로드할 수 있습니다.
 
+
+
    지원되는 Apache Derby 버전은 [시스템 요구사항](../../../product-overview/requirements)을 참조하십시오.   
 스크립트는 ij 버전 번호를 표시합니다. 
 
@@ -696,6 +707,8 @@ WebSphere Application Server Liberty 프로파일을 가진 Application Center�
 
 > **참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용할 수 있습니다.
 
+
+
 1. MySQL JDBC 드라이버 JAR 파일을 **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**에 추가하십시오. 해당 디렉토리가 없으면 해당 디렉토리를 작성하십시오. 
 2. 다음과 같이 **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** 파일에서 데이터 소스를 구성하십시오(**worklightServer**는 이 경로에서 서버의 이름으로 바꿀 수 있음). 
 
@@ -723,6 +736,8 @@ WebSphere Application Server Liberty 프로파일을 가진 Application Center�
 WebSphere Application Server를 가진 Application Center에 대해 수동으로 MySQL 데이터베이스를 설정하고 구성하려면 다음 프로시저를 사용하십시오. 계속하기 전에 MySQL 데이터베이스 설정 프로시저를 완료하십시오. 
 
 > **참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용하는 것이 좋습니다.
+
+
 
 1. WebSphere Application Server 설치 디렉토리에서 JDBC 드라이버 JAR 파일에 대해 적합한 디렉토리를 판별하십시오. 
     * 독립형 서버의 경우 **WAS\_INSTALL\_DIR/optionalLibraries/IBM/Worklight/mysql** 등의 디렉토리를 사용할 수 있습니다. 
@@ -894,6 +909,8 @@ Oracle JDBC 드라이버의 JAR 파일을 추가하여 WebSphere Application Ser
 
     > **참고:** 서비스 이름 또는 URL을 사용하여 Liberty 서버를 Oracle 데이터베이스에 연결하는 방법에 대한 자세한 정보는 [WebSphere Application Server Liberty Core 8.5.5 문서](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0)의 **properties.oracle** 절을 참조하십시오.
 
+
+
 3. **liberty\_install\_dir/bin**에서 securityUtility 프로그램을 사용하여 데이터베이스 비밀번호를 암호화할 수 있습니다. 
 
 ##### Application Center에 대해 수동으로 Oracle용 WebSphere Application Server 구성
@@ -975,6 +992,8 @@ Apache Tomcat 서버를 가진 Application Center에 대해 수동으로 Oracle 
 이 수동 지시사항에서는 사용자가 애플리케이션 서버에 익숙하다고 가정합니다. 
 
 > **참고:** {{ site.data.keys.mf_server }} 설치 프로그램을 사용하여 Application Center를 설치하는 것은 수동으로 설치하는 것보다 신뢰성이 높으므로 가능할 때마다 사용해야 합니다.
+
+
 
 수동 프로세스 사용을 선호하는 경우에는 이 단계를 수행하여 Application Center에 대해 애플리케이션 서버를 구성하십시오. appcenterconsole.war 및 applicationcenter.war 파일을 Application Center에 배치해야 합니다. 이 파일은 **product\_install\_dir/ApplicationCenter/console**에 있습니다. 
 
@@ -1275,6 +1294,8 @@ Application Center에 대해 수동으로 Apache Tomcat을 구성하려면 JAR �
 
 > **팁:** {{ site.data.keys.mf_server }} 설치 프로그램을 통해 Application Center를 설치하는 것이 수동으로 설치하는 것보다 신뢰성이 높습니다. 따라서 가능하면 {{ site.data.keys.mf_server }} 설치 프로그램을 사용하십시오. 하지만 수동 프로시저를 선호하는 경우에는 **appcentercenter.ear** 파일을 배치하십시오. 이 파일은 **product\_install\_dir/ApplicationCenter/console** 디렉토리에서 찾을 수 있습니다.
 
+
+
 #### Application Center에 대해 수동으로 Liberty 프로파일 구성
 {: #configuring-the-liberty-profile-for-application-center-manually-1 }
 Application Center EAR 파일을 배치한 후 Application Center에 대해 수동으로 WebSphere Application Server Liberty 프로파일을 구성하려면 server.xml 파일을 수정해야 합니다. 
@@ -1325,7 +1346,7 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
    </basicRegistry>
    ```
 
-   **basicRegistry** 요소에서 정의되는 그룹 및 사용자는 예제 로그인이며 Application Center를 테스트하는 데 사용할 수 있습니다. 마찬가지로 `<security-role name="appcenteradmin">` 요소에서 정의되는 그룹은 예입니다. 이 그룹을 수정하는 방법에 대한 자세한 정보는 [WebSphere Application Server Liberty 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)을 참조하십시오. 
+   **basicRegistry** 요소에서 정의되는 그룹 및 사용자는 예제 로그인이며 Application Center를 테스트하는 데 사용할 수 있습니다. 마찬가지로 Application Center 콘솔 및 Application Center 서비스에 대해 `<security-role name="appcenteradmin">` 요소에서 정의되는 그룹은 예입니다. 이 그룹을 수정하는 방법에 대한 자세한 정보는 [WebSphere Application Server Liberty 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)을 참조하십시오. 
 
 3. 데이터베이스가 Oracle인 경우에는 **commonLibraryRef** 속성을 Application Center 애플리케이션의 클래스 로더에 추가하십시오. 
 
@@ -1516,7 +1537,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 **server.xml** 파일에서 데이터 소스 및 Application Center의 Java™ EE 보안 역할을 구성하십시오. 
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. `<application-bnd>` 요소(각 `<application>` 요소)에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. `<application-bnd>` 요소(각 `<application>` 요소)에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
 
 그런 다음 설치된 많은 애플리케이션(예: 80개의 애플리케이션)에 대한 신속한 응답 시간을 유지하기 위해 Application Center 데이터베이스에 대한 연결 풀을 구성해야 합니다. 
 
@@ -1904,7 +1925,7 @@ Application Center의 ACL 관리를 구성하려면 이 프로세스를 수행�
 Application Center 서비스 웹 애플리케이션(**applicationcenter.war**) 및 Application Center 콘솔 웹 애플리케이션(**appcenterconsole.war**)의 web.xml 파일에서 보안(Java™ Platform, Enterprise Edition)을 구성하고 LDAP 인증을 위해 Apache Tomcat 서버를 구성합니다. 
 
 **LDAP 사용자 인증**  
-`<Host>` 요소의 **server.xml** 파일에서 **JNDIRealm**을 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오. 
+**server.xml** 파일에서 **JNDIRealm**을 `<Host>` 요소에서 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오. 
 
 **LDAP 서버에 대해 인증하기 위한 Apache Tomcat에서의 구성 예**  
 이 예에서는 LDAP 인증을 위해 사용으로 설정된 서버에서 이 사용자의 권한과 비교하여 Apache Tomcat 서버에서 사용자 인증을 구성하는 방법을 보여줍니다. 
@@ -2258,7 +2279,7 @@ Apache Tomcat 서버의 경우 **server.xml** 파일에서 애플리케이션 �
 IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하기 위해 Application Center 클라이언트가 사용하는 URI 프로토콜, 호스트 이름 및 포트를 변경해야 하는 경우 이 프로시저를 수행하십시오. 
 
 Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집하십시오.   
-해당 애플리케이션의 `<context>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다. 
+**server.xml** 파일의 `<context>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다. 
 
 ```xml
 <Environment name="JNDI_property_name" value="property_value" type="property_type" override="false"/>
@@ -2283,7 +2304,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 이 예에서는 **server.xml** 파일에서 애플리케이션 자원의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다. 
 
-Application Center 콘솔 애플리케이션의 `<context>` 섹션에서:
+`<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2291,7 +2312,7 @@ Application Center 콘솔 애플리케이션의 `<context>` 섹션에서:
 
 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, `*://*:*/appcenter`는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다. 
 
-Application Center 서비스 애플리케이션의 `<context>` 섹션에서:
+`<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>

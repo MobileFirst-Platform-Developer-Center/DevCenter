@@ -62,6 +62,8 @@ private transient StepUpUserLogin userLogin;
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Beide Implementierungen von Sicherheitsüberprüfungen
 müssen in einem Adapter gebündelt werden.
 
+
+
 Zum Auflösen dieser Referenz sucht das Framework nach einer Sicherheitsüberprüfung mit der entsprechenden Klasse und injiziert diese Referenz in die abhängige Sicherheitsüberprüfung.   
 Für den Fall, dass es für eine Klasse mehr als eine Sicherheitsüberprüfung gibt, hat die Annomation einen optionalen Parameter
 `name`, mit dem Sie einen eindeutigen Namen der referenzierten Überprüfung angeben können. 

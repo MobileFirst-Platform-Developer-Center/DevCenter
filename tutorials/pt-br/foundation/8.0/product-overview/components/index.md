@@ -4,7 +4,7 @@ title: Componentes do produto
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 O {{ site.data.keys.product_full }} consiste nos componentes a seguir: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, componentes de tempo de execução do lado do cliente, {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }} e {{ site.data.keys.mf_system_pattern }}.
 

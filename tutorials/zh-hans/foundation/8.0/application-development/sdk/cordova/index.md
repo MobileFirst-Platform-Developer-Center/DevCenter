@@ -35,7 +35,7 @@ MobileFirst 插件支持的 Cordova 平台版本包括：
 - [已生成 {{ site.data.keys.product_adj }} Cordova SDK 工件](#generated-mobilefirst-cordova-sdk-artifacts)
 - [接下来要学习的教程](#tutorials-to-follow-next)
 
-> **注：**使用 Xcode 8 的情况下在 iOS Simulator 中运行 iOS 应用程序时，**密钥链共享**功能是必需的。必须在构建 Xcode 项目之前手动启用此功能。
+> **注：**如果使用 Xcode 8，在 iOS 模拟器中运行 iOS 应用程序时，**密钥链共享**功能是必需的。在构建 Xcode 项目之前，必须手动启用此功能。
 
 ## Cordova SDK 组件
 {: #cordova-sdk-components }
@@ -71,6 +71,8 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 - [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
 - {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
 - 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Cordova 开发环境](../../../installation-configuration/development/cordova)教程。
+- 对于 cordova-windows，必须安装与机器中已安装的 Visual Studio 和 .NET 版本兼容的 Visual C++ 版本。
+- 如果使用 Windows Phone SDK 8.0 和 Visual Studio Tools for Universal Windows Apps，请确保创建的 cordova-windows 应用程序具有所有必需的支持库。
 
 ## 添加 {{ site.data.keys.product }} Cordova SDK
 {: #adding-the-mobilefirst-cordova-sdk }

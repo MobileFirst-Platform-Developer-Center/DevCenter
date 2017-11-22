@@ -121,6 +121,8 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
 
 >**참고:** 설치 프로그램과 DB 도구는 사내 구축형 {{ site.data.keys.mf_app_center }} 설치 폴더(`installer` 및 `tools` folders)에서 다운로드할 수 있습니다.
 
+
+
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">

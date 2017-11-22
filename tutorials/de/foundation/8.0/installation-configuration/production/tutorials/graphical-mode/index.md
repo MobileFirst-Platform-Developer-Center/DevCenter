@@ -167,7 +167,9 @@ Die Standardhomepage
 können Sie über http://localhost:9080 anzeigen. 
 
 > **Hinweis:** In der Produktion müssen Sie sicherstellen, dass der Liberty-Server beim Start des Hostcomputers
-als Dienst gestartet wird. Der Start des Liberty-Servers als Dienst ist nicht in diesem Lernprogramm beschrieben. ### {{ site.data.keys.mf_server }} installieren
+als Dienst gestartet wird. Der Start des Liberty-Servers als Dienst ist nicht in diesem Lernprogramm beschrieben. 
+
+### {{ site.data.keys.mf_server }} installieren
 {: #installing-mobilefirst-server }
 Führen Sie den Installation Manager aus, um die Binärdateien von
 {{ site.data.keys.mf_server }} auf Ihrer Platte zu installieren, bevor Sie die Datenbanken erstellen und
@@ -196,20 +198,17 @@ Wenn Sie das Fixpack im Ordner **Fixpackverzeichnis** entpackt haben,
 befindet sich die Repository-Datei unter **Fixpackverzeichnis/MobileFirst_Platform_Server/disk1/diskTag.inf**. 
     
         > **Hinweis:** Sie können das Fixpack nur installieren, wenn
-sich das Repository der Basisversion unter den Installation-Manager-Repositorys befindet. Die Fixpacks sind inkrementelle Installationsprogramme, für die das Repository der Basisversion installiert sein muss.     * Wählen Sie die Datei aus und klicken Sie auf **OK**.
+sich das Repository der Basisversion unter den Installation-Manager-Repositorys befindet. Die Fixpacks sind inkrementelle Installationsprogramme, für die das Repository der Basisversion installiert sein muss. 
+    * Wählen Sie die Datei aus und klicken Sie auf **OK**.
     * Klicken Sie auf
 **OK**, um
 das Fenster
 **Benutzervorgaben** zu schließen.
 
-3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf
-**Weiter**.
-4. Wählen Sie die Option **Neue Paketgruppe erstellen** aus, um das Produkt in dieser neuen Paketgruppe
-zu installieren. 
+3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf **Weiter**.
+4. Wählen Sie die Option **Neue Paketgruppe erstellen** aus, um das Produkt in dieser neuen Paketgruppe zu installieren.
 5. Klicken Sie auf **Weiter**.
-6. Wählen Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing**
-die Option **Do not activate
-token licensing** mit der Option **Rational License Key Server** aus. 
+6. Wählen Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing** die Option **Do not activate token licensing** mit der Option **Rational License Key Server** aus. 
 
 In diesem Lernprogramm wird davon ausgegangen, dass keine Tokenlizenzierung erforderlich ist. Daher finden Sie hier keine Schritte, um
 {{ site.data.keys.mf_server }} für die Tokenlizenzierung
@@ -267,6 +266,8 @@ Schema. Mehr Flexibilität haben Sie bei einer manuellen Installation oder bei d
 DB2. Wenn Sie
 MySQL oder Oracle verwenden möchten, lesen Sie die
 [Datenbankvoraussetzungen](../../databases/#database-requirements).
+
+
 1. Melden Sie sich bei dem Computer an, auf dem der DB2 Server ausgeführt wird. Es wird vorausgesetzt, dass es einen DB2-Benutzer gibt, der beispielsweise den Namen **mfpuser** haben könnte. 
 2. Vergewissern Sie sich, dass dieser DB2-Benutzer Zugriff auf eine Datenbank mit einer Seitengröße
 von mindestens 32768 hat und berechtigt ist, implizit Schemata und Tabellen in dieser Datenbank zu erstellen. 
@@ -300,6 +301,8 @@ DB2-Sicherheit und ein Beispiel für bewährte Sicherheitsverfahren finden Sie u
 [DB2 Security,
 Part 8: Twelve DB2 Security
 Best Practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
+
+
 ### Server Configuration Tool ausführen
 {: #running-the-server-configuration-tool }
 Mit dem Server Configuration Tool können Sie die folgenden Operationen ausführen: 
@@ -332,77 +335,41 @@ ist von {{ site.data.keys.mf_server }} abhängig, muss aber nicht zusammen mit
 {{ site.data.keys.mf_server }} installiert werden.
 
     
-1. Starten Sie das Server Configuration Tool. 
-    * Nutzen Sie unter Linux den Direktaufruf
-**Applications
-→ {{ site.data.keys.mf_server }} → Server Configuration
-Tool**. 
-    * Klicken Sie unter Windows auf
-**Start → Programme → IBM
-MobileFirst Platform Server → Server Configuration
-Tool**.
+1. Starten Sie das Server Configuration Tool.
+    * Nutzen Sie unter Linux den Direktaufruf **Applications → {{ site.data.keys.mf_server }} → Server Configuration Tool**.
+    * Klicken Sie unter Windows auf **Start → Programme → IBM MobileFirst Platform Server → Server Configuration Tool**.
     * Öffnen Sie unter macOS eine Shell-Konsole. Navigieren Sie zu **MFP-Server-Installationsverzeichnis/shortcuts** und geben Sie **./configuration-tool.sh** ein.
     
-MFP-Server-Installationsverzeichnis ist das Verzeichnis, in dem Sie
-{{ site.data.keys.mf_server }} installiert haben.
-2. Wählen Sie **File → New
-Configuration...** aus, um eine MobileFirst-Server-Konfiguration zu erstellen. 
-3. Nennen Sie die Konfiguration "Hello MobileFirst" und klicken Sie auf
-**OK**.
-4. Übernehmen Sie für Configuration Details die Standardeinträge und klicken Sie auf
-**Next**.
+MFP-Server-Installationsverzeichnis ist das Verzeichnis, in dem Sie {{ site.data.keys.mf_server }} installiert haben.
+2. Wählen Sie **File → New Configuration...** aus, um eine MobileFirst-Server-Konfiguration zu erstellen.
+3. Nennen Sie die Konfiguration "Hello MobileFirst" und klicken Sie auf **OK**.
+4. Übernehmen Sie für Configuration Details die Standardeinträge und klicken Sie auf **Next**.
     
 In diesem Lernprogramm wird keine Umgebungs-ID verwendet. Die Umgebungs-ID ist ein Feature für ein professionelles Implementierungsszenario.  
-Ein Beispiel für ein solches Szenario wäre die Installation mehrerer Instanzen von
-{{ site.data.keys.mf_server }} und des Verwaltungsservice in einem
-Anwendungsserver oder in einer WebSphere-Application-Server-Zelle.
-5. Übernehmen Sie das Standardkontextstammverzeichnis für den Verwaltungsservice und die Laufzeit. 
-6. Ändern Sie in der Anzeige **Console Settings** nicht die Standardeinträge. Klicken Sie auf **Next**, um
-die {{ site.data.keys.mf_console }} mit dem Standardkontextstammverzeichnis zu installieren. 
-7. Wählen Sie **IBM DB2** als Datenbank aus und klicken Sie auf
-**Next**.
-8. Machen Sie in der Anzeige **DB2 Database Settings** die folgenden Angaben: 
-    * Geben Sie den Namen des Hosts ein, auf dem Ihr DB2 Server ausgeführt wird. Falls der Server auf Ihrem Computer ausgeführt wird, können Sie
-**localhost** eingeben.
-    * Ändern Sie die Portnummer, wenn die DB2-Instanz, die Sie verwenden möchten, nicht am Standardport
-(50000) empfangsbereit ist. 
-    * Geben Sie den Pfad zum DB2-JDBC-Treiber ein. Für DB2 wird eine Datei mit dem Namen
-**db2jcc4.jar** erwartet.
-In demselben Verzeichnis muss sich außerdem die Datei **db2jcc\_license\_cu.jar** befinden. In einer DB2-Standarddistribution befinden sich diese Dateien
-unter **DB2-Installationsverzeichnis/java**.
+Ein Beispiel für ein solches Szenario wäre die Installation mehrerer Instanzen von {{ site.data.keys.mf_server }} und des Verwaltungsservice in einem Anwendungsserver oder in einer WebSphere-Application-Server-Zelle.
+5. Übernehmen Sie das Standardkontextstammverzeichnis für den Verwaltungsservice und die Laufzeit.
+6. Ändern Sie in der Anzeige **Console Settings** nicht die Standardeinträge. Klicken Sie auf **Next**, um die {{ site.data.keys.mf_console }} mit dem Standardkontextstammverzeichnis zu installieren.
+7. Wählen Sie **IBM DB2** als Datenbank aus und klicken Sie auf **Next**.
+8. Machen Sie in der Anzeige **DB2 Database Settings** die folgenden Angaben:
+    * Geben Sie den Namen des Hosts ein, auf dem Ihr DB2 Server ausgeführt wird. Falls der Server auf Ihrem Computer ausgeführt wird, können Sie **localhost** eingeben.
+    * Ändern Sie die Portnummer, wenn die DB2-Instanz, die Sie verwenden möchten, nicht am Standardport (50000) empfangsbereit ist.
+    * Geben Sie den Pfad zum DB2-JDBC-Treiber ein. Für DB2 wird eine Datei mit dem Namen **db2jcc4.jar** erwartet. In demselben Verzeichnis muss sich außerdem die Datei **db2jcc\_license\_cu.jar** befinden. In einer DB2-Standarddistribution befinden sich diese Dateien unter **DB2-Installationsverzeichnis/java**.
     * Klicken Sie auf **Next**.
 
-    Wenn der DB2 Server mit den von Ihnen eingegebenen Berechtigungsnachweisen nicht erreicht werden kann,
-inaktiviert das Server Configuration Tool die Schaltfläche
-**Next** und zeigt einen Fehler an. Die Schaltfläche **Next** wird auch inaktiviert, wenn der
-JDBC-Treiber nicht die erwarteten Klassen enthält. Wenn alles in Ordnung ist, wird die Schaltfläche **Next** aktiviert.
+    Wenn der DB2 Server mit den von Ihnen eingegebenen Berechtigungsnachweisen nicht erreicht werden kann, inaktiviert das Server Configuration Tool die Schaltfläche **Next** und zeigt einen Fehler an. Die Schaltfläche **Next** wird auch inaktiviert, wenn der JDBC-Treiber nicht die erwarteten Klassen enthält. Wenn alles in Ordnung ist, wird die Schaltfläche **Next** aktiviert.
     
-9. Machen Sie in der Anzeige **DB2 Additional Settings** die folgenden Angaben: 
-    * Geben Sie **mfpuser** als DB2-Benutzernamen mit dem zugehörigen Kennwort ein. Geben Sie
-Ihren eigenen DB2-Benutzernamen ein, wenn Sie
-**mfpuser** nicht verwenden.
-    * Geben Sie **MFPDATA** als Namen der Datenbank ein. 
-    * Übernehmen Sie **MFPDATA** als Schema, gemäß dem die Tabellen erstellt werden. Klicken Sie auf
-**Next**. Das Server Configuration Tool schlägt standardmäßig den Wert
-**MFPDATA** vor.
-10. Geben Sie in der Anzeige **Database Creation
-Request** keine Werte ein. Klicken Sie auf **Next**.
+9. Machen Sie in der Anzeige **DB2 Additional Settings** die folgenden Angaben:
+    * Geben Sie **mfpuser** als DB2-Benutzernamen mit dem zugehörigen Kennwort ein. Geben Sie Ihren eigenen DB2-Benutzernamen ein, wenn Sie **mfpuser** nicht verwenden.
+    * Geben Sie **MFPDATA** als Namen der Datenbank ein.
+    * Übernehmen Sie **MFPDATA** als Schema, gemäß dem die Tabellen erstellt werden. Klicken Sie auf **Next**. Das Server Configuration Tool schlägt standardmäßig den Wert **MFPDATA** vor.
+10. Geben Sie in der Anzeige **Database Creation Request** keine Werte ein. Klicken Sie auf **Next**.
 
-Dieses Fenster wird verwendet, wenn die im vorherigen Fenster eingegebene Datenbank nicht auf dem
-DB2 Server vorhanden ist.
-In dem Fall können Sie den Benutzernamen und das Kennwort des
-DB2-Administrators eingeben. Das Server Configuration Tool öffnet eine
-SSH-Sitzung mit dem DB2 Server
-und führt die Schritte unter [Datenbank erstellen](#creating-a-database) aus, um die Datenbank mit Standardeinstellungen und der richtigen Seitengröße
-zu erstellen.
-11. Wählen Sie im Fenster **Application Server Selection** die Option
-**WebSphere Application Server** aus und klicken Sie auf **Next**.
-12. Machen Sie in der Anzeige **Application Server Settings** die folgenden Angaben: 
-    * Geben Sie das Installationsverzeichnis für WebSphere Application Server Liberty ein. 
-    * Wählen Sie im Feld für den Servernamen den Server aus, auf dem das Produkt installiert werden soll. Wählen Sie den Server **mfp1** aus, den Sie im Abschnitt
-[WebSphere Application Server Liberty Core installieren](#installing-websphere-application-server-liberty-core) in Schritt
-7 erstellt haben. 
-    * Übernehmen Sie die Auswahl der Option **Create a user** mit den Standardwerten. 
+Dieses Fenster wird verwendet, wenn die im vorherigen Fenster eingegebene Datenbank nicht auf dem DB2 Server vorhanden ist. In dem Fall können Sie den Benutzernamen und das Kennwort des DB2-Administrators eingeben. Das Server Configuration Tool öffnet eine SSH-Sitzung mit dem DB2 Server und führt die Schritte unter [Datenbank erstellen](#creating-a-database) aus, um die Datenbank mit Standardeinstellungen und der richtigen Seitengröße zu erstellen.
+11. Wählen Sie im Fenster **Application Server Selection** die Option **WebSphere Application Server** aus und klicken Sie auf **Next**.
+12. Machen Sie in der Anzeige **Application Server Settings** die folgenden Angaben:
+    * Geben Sie das Installationsverzeichnis für WebSphere Application Server Liberty ein.
+    * Wählen Sie im Feld für den Servernamen den Server aus, auf dem das Produkt installiert werden soll. Wählen Sie den Server **mfp1** aus, den Sie im Abschnitt [WebSphere Application Server Liberty Core installieren](#installing-websphere-application-server-liberty-core) in Schritt 7 erstellt haben.
+    * Übernehmen Sie die Auswahl der Option **Create a user** mit den Standardwerten.
     
     Diese Option erstellt einen Benutzer in der Basisregistry des Liberty-Servers, sodass Sie sich bei der {{ site.data.keys.mf_console }} oder dem Verwaltungsservice anmelden können. Für eine Produktionsinstallation dürfen Sie diese Option nicht verwenden. Konfigurieren Sie für eine solche Installation die Sicherheitsrollen der Anwendungen im Anschluss an die Installation (siehe "Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren").
     * Wählen Sie für den Implementierungstyp die Option "Server farm deployment" aus.
@@ -521,7 +488,7 @@ HTTPS erfordert. Für den standardmäßig erstellten Keystore erstellt Liberty P
 von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.     
 
     Für die Aktivierung von JMX wird in der Basisregistry ein Benutzer mit Administratorrolle (MfpRESTUser) erstellt. Der Name und das Kennwort des Benutzers werden als JNDI-Eigenschaften (mfp.admin.jmx.user und mfp.admin.jmx.pwd) angegeben und von der Laufzeitkomponente sowie dem Verwaltungsservice für die Ausführung von JMX-Abfragen verwendet. Mit einigen der globalen JMX-Eigenschaften wird der Clustermodus (eigenständiger Server oder Farm) definiert. Das Server Configuration Tool setzt die Eigenschaft mfp.topology.clustermode des Liberty-Servers auf Standalone. In einem späteren Abschnitt dieses Lernprogramms wird diese Eigenschaft für die Erstelllung einer Farm auf Cluster gesetzt.
-5. Erstellung von Benutzern (auch zutreffend für Apache Tomcat und WebSphere Application Server)
+5. Benutzer werden erstellt (auch zutreffend für Apache Tomcat und WebSphere Application Server).
     * Optionale Benutzer: Das Server Configuration Tool erstellt einen Testbenutzer (admin/admin), den Sie nach der Installation für die Anmeldung bei der Konsole verwenden können.
     * Obligatorische Benutzer: Das Server Configuration Tool erstellt außerdem einen Benutzer configUser_mfpadmin mit generiertem Zufallskennwort, den der Verwaltungsservice verwendet, um Kontakt zum lolaken Liveaktualisierungsservice aufzunehmen. Für den Liberty-Server wird der Benutzer MfpRESTUser erstellt. Wenn Ihr Anwendungsserver nicht für die Verwendung einer Basisregistry konfiguriert ist (sondern beispielsweise für eine LDAP-Registry), kann das Server Configuration Tool nicht den Namen eines vorhandenen Benutzers abfragen. In dem Fall müssen Sie Ant-Tasks verwenden.
 6. Das Element **webContainer** wird modifiziert.
@@ -730,6 +697,8 @@ Server Configuration Tool erstellt.
 HTTP herstellen, werden die Anmelde-ID und das Kennwort im Klartext über das Netz gesendet. Verwenden Sie für eine sichere Serveranmeldung HTTPS.
 Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements `<httpEndpoint>` in der Datei **server.xml**. Der Standardwert ist 9443.
 
+
+
 4. Melden Sie sich über **Hallo
 Admin → Abmelden** bei der Konsole ab.
 5. Geben Sie im Web-Browser die URL [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) ein und akzeptieren Sie das
@@ -866,7 +835,8 @@ Das Kennwort für diesen Standard-Keystore ist
     
     > **Tipp:** Sie können es mit dem Dienstprogramm
 Keytool ändern, müssen das Kennwort dann aber auch in der Datei
-server.xml ändern, damit der Liberty-Server den Keystore lesen kann. In diesem Lernprogramm wird das Standardkennwort verwendet.     * Geben Sie im Verzeichnis **WLP\_USER\_DIR/servers/mfp1/resources/security** den Befehl
+server.xml ändern, damit der Liberty-Server den Keystore lesen kann. In diesem Lernprogramm wird das Standardkennwort verwendet. 
+    * Geben Sie im Verzeichnis **WLP\_USER\_DIR/servers/mfp1/resources/security** den Befehl
 `keytool -list -keystore key.jks` ein. Der Befehl zeigt die Zertifikate im Keystore an. Es gibt nur ein Zertifikat mit dem Namen
 **default**. Sie werden aufgefordert, das Kennwort für den Keystore einzugeben
 (mobilefirst), bevor Sie die Schlüssel sehen können. Dasselbe gilt für alle weitere Befehle, die Sie mit dem Dienstprogramm Keytool ausführen. 

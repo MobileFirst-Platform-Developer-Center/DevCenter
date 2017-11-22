@@ -718,7 +718,7 @@ app unterstützt die folgenden Elemente.
 <br/>
 #### Befehl `show-license-config`
 {: #the-show-license-config-command }
-Der Befehl `show-license-config` zeigt die Tokenlizenzkonfiguration für eine App an. Er wird mit folgenden Attributen verwendet. 
+Der Befehl `show-license-config` zeigt die Tokenlizenzkonfiguration für eine App an. Der Befehl wird mit folgenden Attributen verwendet.
 
 | Attribut| Beschreibung |	Erforderlich| Standardwert|
 |----------------|-------------|-------------|---------|
@@ -739,7 +739,7 @@ auf dem REST-Service [Application License Configuration (GET)](http://www.ibm.co
 <br/>
 #### Befehl `set-license-config`
 {: #the-set-license-config-command }
-Der Befehl `set-license-config` gibt die Tokenlizenzkonfiguration für eine App an. Er wird mit folgenden Attributen verwendet. 
+Der Befehl `set-license-config` gibt die Tokenlizenzkonfiguration für eine App an. Der Befehl wird mit folgenden Attributen verwendet.
 
 | Attribut| Beschreibung |	Erforderlich| Standardwert|
 |----------------|-------------|-------------|---------|
@@ -960,7 +960,7 @@ auf dem REST-Service [Application Configuration (GET)](http://www.ibm.com/suppor
 <br/>
 #### Befehl `set-user-config`
 {: #the-set-user-config-command-2 }
-Der Befehl `set-user-config` innerhalb eines Elements `<app-version>` gibt die Benutzerkonfiguration für eine App-Version an. Der Befehl wird mit folgenden Attributen zum Definieren der gesamten Konfiguration verwendet.
+Der Befehl `set-user-config` innerhalb eines `<app-version>`-Elements gibt die Benutzerkonfiguration für eine App-Version an. Er wird mit folgenden Attributen verwendet.
 
 | Attribut| Beschreibung |	Erforderlich| Standardwert|
 |----------------|-------------|-------------|---------|
@@ -1000,7 +1000,7 @@ die Liste der Geräte zurück, die Kontakt mit den Apps einer Laufzeit hatten. E
 | Attribut| Beschreibung |	Erforderlich| Standardwert|
 |----------------|-------------|-------------|---------|
 | runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| query	 | Ein Anzeigename oder eine Benutzer-ID, nach dem bzw. der gesucht werden soll. Dieser Parameter gibt die zu suchende Zeichenfolge an. Zurückgegeben werden alle Geräte, deren Anzeigename oder Benutzer-ID diese Zeichenfolge enthält (wobei die Groß-/Kleinschreibung nicht unterschieden wird). | Nein | Nicht verfügbar | 
+| query	 | Ein Anzeigename oder eine Benutzer-ID, nach dem bzw. der gesucht werden soll. Dieser Parameter gibt die zu suchende Zeichenfolge an. Zurückgegeben werden alle Geräte, deren Anzeigename oder Benutzer-ID diese | Zeichenfolge enthält (wobei die Groß-/Kleinschreibung nicht unterschieden wird). | Nein | Nicht verfügbar | 
 | output| 	Name der Ausgabedatei| Nein| Nicht verfügbar| 
 | outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
 

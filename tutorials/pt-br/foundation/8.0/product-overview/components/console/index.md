@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 O {{ site.data.keys.mf_console_full }} é uma UI baseada na web que possibilita fluxos de trabalho simplificados para o desenvolvedor e o administrador para criar, monitorar, proteger e administrar aplicativos e adaptadores.
 
@@ -55,7 +55,7 @@ O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM
 
 #### Linha de Comandos
 {: #command-line-remote }
-Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instalado, 
+Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instalado,
 
 1. Inclua uma definição do servidor remoto:
 
@@ -105,7 +105,7 @@ O log de erro mostra uma lista das operações de gerenciamento com falha que fo
 {: #devices }
 Os administradores podem procurar dispositivos que acessem o {{ site.data.keys.mf_server }} e podem gerenciar direitos de acesso.  
 Os dispositivos podem ser procurados usando qualquer ID do usuário ou usando um nome fácil. O ID do usuário é o identificador que foi usado para efetuar login.  
-Um nome fácil é um nome que é associado com o dispositivo para distingui-lo de outros dispositivos que compartilham o ID do usuário. 
+Um nome fácil é um nome que é associado com o dispositivo para distingui-lo de outros dispositivos que compartilham o ID do usuário.
 
 > Para obter mais informações, consulte o tópico sobre gerenciamento de acesso ao dispositivo na documentação do usuário.
 
@@ -115,7 +115,7 @@ Um nome fácil é um nome que é associado com o dispositivo para distingui-lo d
 {: #applications }
 #### Registrando Aplicativos
 {: #registering-applications }
-Forneça valores de aplicativo básicos e faça download do código de início. 
+Forneça valores de aplicativo básicos e faça download do código de início.
 
 ![Imagem da tela de registro de aplicativo](register-applications.png)
 
@@ -179,11 +179,10 @@ Ao rastrear o uso de dispositivos do cliente e determinar se os dispositivos est
 
 > Para obter mais informações, consulte o tópico sobre o rastreamento de licença na documentação do usuário.
 
-![Imagem da tela de logs do cliente](license-tracking.png)
+![Imagem da tela de rastreamento de licença](license-tracking.png)
 
 ### Downloads
 {: #downloads }
 Para situações em que a conectividade com a Internet não está disponível, é possível fazer download de uma captura instantânea dos vários artefatos de desenvolvimento do {{ site.data.keys.product }} a partir do Download Center no {{ site.data.keys.mf_console }}.
 
 ![Imagem dos artefatos disponíveis](downloads.png)
-

@@ -46,5 +46,5 @@ Push is meant to send two types of analytics events to the Analytics service. Th
 
 有关在分析控制台中查看推送通知报告的信息，请参阅[推送通知报告](../../analytics/console/push-notifications/)。
 
-> 有关推送服务的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
+> 有关推送服务的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }}推送服务的 JNDI 属性列表](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 > **注：**{{ site.data.keys.product_full }} 安装程序将创建这些属性并将其设置为缺省值。

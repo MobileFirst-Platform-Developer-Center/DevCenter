@@ -14,6 +14,8 @@ IBM Bluemix는 IBM 개방형 클라우드 아키텍처의 구현입니다. Bluem
 
 > [Bluemix 웹 사이트](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview)에서 Bluemix 아키텍처와 Bluemix 개념에 대해 자세히 알아보십시오.
 
+
+
 ### 작동 방식
 {: #how-does-it-work }
 간단히 말하면 라이센스 부여 유형에 따라 {{ site.data.keys.product }} on Bluemix를 실행하는 두 가지 방법이 있습니다. 

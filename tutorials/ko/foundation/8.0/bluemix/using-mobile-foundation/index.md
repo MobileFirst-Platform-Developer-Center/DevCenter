@@ -17,6 +17,8 @@ weight: 1
 
     > **참고:** Developer 플랜에서는 지속적 데이터베이스를 제공하지 않으므로 [문제점 해결 섹션](#troubleshooting)에 설명된 대로 구성을 백업하십시오.
 
+
+
 2. **Developer Pro**: 이 플랜은 {{ site.data.keys.mf_server }}를 Liberty for Java 런타임의 Cloud Foundry 앱으로 프로비저닝하며 사용자는 이 플랜을 사용해 개수에 상관 없이 여러 모바일 애플리케이션을 개발하고 테스트할 수 있습니다. 이 플랜을 사용하려면 **dashDB OLTP 서비스**가 있어야 합니다. dashDB 서비스는 별도로 작성되고 청구됩니다. 이 플랜은 크기가 제한되어 있으며 프로덕션이 아닌 팀 기반 개발 활동과 테스트 활동에 사용됩니다. 비용은 환경의 전체 크기에 따라 다릅니다. 선택적으로 **Analytics 추가** 단추를 클릭하여 {{ site.data.keys.mf_analytics_service }} 서비스를 추가할 수 있습니다. 
 
 3. **Professional(용량별):** 이 플랜을 사용하면 모바일 사용자 또는 디바이스의 수에 상관 없이 프로덕션에서 여러 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 이 플랜은 대규모 배치와 고가용성을 지원합니다. 이 플랜을 사용하려면 **dashDB OLTP 서비스**가 있어야 합니다. dashDB 서비스는 별도로 작성되고 청구됩니다. 비용은 환경의 전체 크기에 따라 다릅니다. 선택적으로 **Analytics 추가** 단추를 클릭하여 {{ site.data.keys.mf_analytics_service }} 서비스를 추가할 수 있습니다. 
@@ -24,6 +26,8 @@ weight: 1
 4. **Professional(단일 애플리케이션)**: 이 플랜은 Liberty for Java 런타임의 Cloud Foundry 앱에 {{ site.data.keys.mf_server }}를 프로비저닝합니다. 또한 이 플랜을 사용하려면 별도로 작성되고 청구되는 dashDB 데이터베이스 서비스가 필요합니다. 이 플랜을 사용하면 단일 모바일 애플리케이션을 빌드하고 관리할 수 있습니다. 단일 모바일 애플리케이션은 iOS, Android, Windows, Mobile Web과 같은 다중 플레이버로 구성될 수 있습니다. 선택적으로 **Analytics 추가** 단추를 클릭하여 {{ site.data.keys.mf_analytics_service }} 서비스를 추가할 수 있습니다. 
 
 > 사용 가능한 플랜과 해당 청구에 대한 자세한 정보는 [Bluemix.net의 서비스 페이지](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)를 참조하십시오.
+
+
 
 #### 다음으로 이동:
 {: #jump-to}
@@ -129,6 +133,8 @@ weight: 1
 
 >{{ site.data.keys.mf_bm_short }} 서비스의 **개발자** 플랜 인스턴스를 작성하거나 다시 작성하는 경우 기본적으로 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스가 추가됩니다.
 
+
+
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
@@ -147,6 +153,8 @@ weight: 1
 {: #switching-from-analytics-container-to-analytics-service}
 
 >**참고**: {{ site.data.keys.mf_analytics_service }}를 삭제하면 사용 가능한 모든 분석 데이터가 제거됩니다. 이 데이터는 새 {{ site.data.keys.mf_analytics_service }} 인스턴스에서 사용할 수 없습니다.
+
+
 
 사용자는 서비스 대시보드의 **Analytics 삭제** 단추를 클릭하여 현재 컨테이너를 삭제할 수 있습니다. 이로 인해 분석 인스턴스가 제거되고 새 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스를 추가하도록 사용자가 클릭할 수 있는 **Analytics 추가** 단추가 사용으로 설정됩니다. 
 
