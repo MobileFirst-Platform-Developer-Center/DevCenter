@@ -14,6 +14,8 @@ IBM Bluemix ist eine Implementierung der IBM Open Cloud Architecture, die Cloud 
 
 > Weitere Informationen zur Bluemix-Architektur und zu Bluemix-Konzepten finden Sie auf der [Bluemix-Website](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview).
 
+
+
 ### Funktionsweise
 {: #how-does-it-work }
 Kurz zusammengefasst gibt es je nach Lizenzberechtigung zwei Möglichkeiten, die {{ site.data.keys.product }} in Bluemix auszuführen. 

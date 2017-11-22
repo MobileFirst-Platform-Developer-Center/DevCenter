@@ -434,7 +434,7 @@ Die folgenden APIs werden in Version 8.0 nicht weiter unterstützt.
 | API-Element| Migrationspfad|
 |-----------------------|------------------------------------------|
 | `ChallengeHandler` | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler.isCustomResponse()` | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`.|
+| `ChallengeHandler. isCustomResponse()` | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. |
 | `WLAuthorizationManager` | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`. |
