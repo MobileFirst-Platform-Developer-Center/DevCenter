@@ -100,7 +100,7 @@ Editez les propriétés d'exécution, les variables de sécurité globales, le m
 
 ### Journal des erreurs
 {: #error-log }
-Le journal des erreurs répertorie les opérations de gestion ayant échoué qui ont été lancées à partir de la console {{ site.data.keys.mf_console }} ou de la ligne de commande, sur l'environnement d'exécution en cours. Consultez le journal pour voir l'impact des échecs sur les serveurs.
+Le journal des erreurs répertorie les opérations de gestion ayant échoué qui ont été lancées à partir de la console {{ site.data.keys.mf_console }} ou de la ligne de commande, dans l'environnement d'exécution en cours. Consultez le journal pour voir l'impact des échecs sur les serveurs.
 
 > Pour plus d'informations, voir dans la documentation utilisateur la rubrique sur le journal des erreurs liées aux opérations exécutées sur des environnements d'exécution.
 

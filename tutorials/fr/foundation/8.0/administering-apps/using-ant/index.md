@@ -27,8 +27,8 @@ Vous pouvez exécuter des opérations d'administration à l'aide d'{{ site.data.
 La tâche Ant **mfpadm**, le programme **mfpadm** et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que les suivantes :
 
 * Elimination d'erreurs d'opérateur dans des opérations répétitives, ou
-* exploitation en dehors des heures de travail normales de l'opérateur, ou
-* configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
+* Exploitation en dehors des heures de travail normales de l'opérateur, ou
+* Configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
 
 La tâche Ant **mfpadm** et le programme **mfpadm** sont plus simples à utiliser et fournissent une meilleure génération de rapports d'erreurs que les services REST. Comparée au programme mfpadm, la tâche Ant **mfpadm** présente l'avantage d'être non tributaire de la plateforme et plus facile à intégrer lorsque l'intégration à Ant est déjà disponible.
 

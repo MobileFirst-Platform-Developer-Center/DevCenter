@@ -25,7 +25,7 @@ sont
 pas entièrement prises en charge dans les langues bidirectionnelles. La mise en miroir des éléments d'interface graphique et le contrôle de la
 direction du texte ne sont pas mis à disposition par défaut. Cependant, aucune dépendance stricte n'existe dans les applications générées sur cette limitation. Les développeurs peuvent définir la compatibilité pour les langues bidirectionnelles en procédant à des ajustements manuels dans le code généré.
 
-Bien que la traduction en hébreu existe pour la fonctionnalité de base d'{{ site.data.keys.product }}, certains éléments de l'interface graphique
+Bien que la traduction en hébreu existe pour la fonctionnalité de base de {{ site.data.keys.product }}, certains éléments de l'interface graphique
 ne sont pas mis en miroir.
 
 * Contraintes sur les noms d'adaptateur : les noms des adaptateurs doivent être des noms valides pour créer un nom de classe Java. En outre, ils doivent être composés uniquement des caractères suivants :

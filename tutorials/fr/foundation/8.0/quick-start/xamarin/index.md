@@ -99,7 +99,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 
 * Appelez la méthode **ObtainToken** dans un constructeur de classe ou en cliquant sur un bouton.
 
-### 4. Déployez un adaptateur
+### 4. Déploiement d'un adaptateur
 {: #4-deploy-an-adapter }
 Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions →  Déployer un adaptateur**.
 
