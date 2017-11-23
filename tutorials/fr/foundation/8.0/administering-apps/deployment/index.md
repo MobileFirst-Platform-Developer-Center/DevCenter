@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Déploiement d'applications sur des environnements de test et de production
+title: Déploiement d'applications dans des environnements de test et de production
 breadcrumb_title: Déploiement d'applications sur des environnements
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Lorsque vous avez terminé un cycle de développement de votre application, déployez-le sur un environnement de test, puis sur un environnement de production.
+Lorsque vous avez terminé un cycle de développement de votre application, déployez-le dans un environnement de test, puis sur un environnement de production.
 
 ### Accéder à
 {: #jump-to }
@@ -15,13 +15,13 @@ Lorsque vous avez terminé un cycle de développement de votre application, dép
 * [Déploiement ou mise à jour d'un adaptateur dans un environnement de production](#deploying-or-updating-an-adapter-to-a-production-environment)
 * [Configuration de SSL entre des adaptateurs et des serveurs de back end à l'aide de certificats auto-signés](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
 * [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment)
-* [Enregistrement d'une application sur un environnement de production](#registering-an-application-to-a-production-environment)
+* [Enregistrement d'une application dans un environnement de production](#registering-an-application-to-a-production-environment)
 * [Transfert d'artefacts côté serveur vers un serveur de test ou de production](#transferring-server-side-artifacts-to-a-test-or-production-server)
 * [Mise à jour d'applications {{ site.data.keys.product_adj }} en production](#updating-mobilefirst-apps-in-production)
 
 ## Déploiement ou mise à jour d'un adaptateur dans un environnement de production
 {: #deploying-or-updating-an-adapter-to-a-production-environment }
-Les adaptateurs contiennent le code côté serveur des applications qui sont déployées et gérées par {{ site.data.keys.product }}. Consultez cette liste de contrôle avant de déployer ou de mettre à jour un adaptateur sur un environnement de production. Pour plus d'informations sur la création et la génération d'adaptateurs, voir [Développement du côté serveur d'une application {{ site.data.keys.product_adj }}](../../adapters).
+Les adaptateurs contiennent le code côté serveur des applications qui sont déployées et gérées par {{ site.data.keys.product }}. Consultez cette liste de contrôle avant de déployer ou de mettre à jour un adaptateur dans un environnement de production. Pour plus d'informations sur la création et la génération d'adaptateurs, voir [Développement du côté serveur d'une application {{ site.data.keys.product_adj }}](../../adapters).
 
 Les adaptateurs peuvent être envoyés par téléchargement, mis à jour ou configurés alors qu'un serveur de production est en cours d'exécution. Une fois que tous les noeuds d'un parc de serveurs ont reçu le nouvel adaptateur ou la nouvelle configuration, toutes les demandes entrantes sur l'adaptateur utilisent les nouveaux paramètres.
 
@@ -171,7 +171,7 @@ Pour plus d'informations, voir [Configuration du magasin de clés {{ site.data.k
     * Pour plus d'informations, voir [Activation du contrôle de sécurité de l'authenticité de l'application](../../authentication-and-security/application-authenticity).
     * Pour plus d'informations sur l'enregistrement d'une application sur un serveur de production, voir [Enregistrement d'une application sur un serveur de production](#registering-an-application-to-a-production-environment).
 
-## Enregistrement d'une application sur un environnement de production
+## Enregistrement d'une application dans un environnement de production
 {: #registering-an-application-to-a-production-environment }
 Lorsque vous enregistrez une application sur un serveur de production, vous envoyé par téléchargement son descripteur, vous définissez son type de licence et, le cas échéant, vous activez son authenticité.
 
