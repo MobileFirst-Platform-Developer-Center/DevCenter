@@ -97,7 +97,9 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 `AdaptersAPI` を使用して、現行の `MFPJAXRSApplication` インスタンスを取得します。
 
 ```java
-@Context AdaptersAPI adaptersAPI; 
+@Context
+AdaptersAPI adaptersAPI;
+
 public Connection getSQLConnection() throws SQLException{
   // Create a connection object to the database
   JavaSQLApplication app = adaptersAPI.getJaxRsApplication(JavaSQLApplication.class);
@@ -155,8 +157,6 @@ SQL 照会は `PreparedStatement` メソッドによってビルドされます�
 挿入が成功した場合は、`return Response.ok().build()` メソッドを使用して、クライアントに `200 OK` を返します。エラーが発生した場合は、特定の HTTP 状況コードを持つ別の `Response` オブジェクトをビルドすることができます。この例では、`409 Conflict` エラー・コードが送られます。すべてのパラメーターが送信されているかどうかや (ここでは示されていません)、その他のデータ検証についても確認することをお勧めします。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** リソース (作成されたステートメントや接続など) を必ず閉じてください。
-
-
 
 ### ユーザーの取得
 {: #get-user }

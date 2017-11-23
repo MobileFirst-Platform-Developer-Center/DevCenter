@@ -67,13 +67,12 @@ pickFirst 'META-INF/ASL2.0'
 4. 次の行を、`dependencies` セクション内に追加します。
 
    ```xml
-compile group: 'com.ibm.mobile.foundation',
-        name: 'ibmmobilefirstplatformfoundation',
-        version: '8.0.+',
-        ext: 'aar',
-        transitive: true
-
-        ```
+   compile group: 'com.ibm.mobile.foundation',
+   name: 'ibmmobilefirstplatformfoundation',
+   version: '8.0.+',
+   ext: 'aar',
+   transitive: true
+   ```
 
    または、次のように 1 行で追加します。
 

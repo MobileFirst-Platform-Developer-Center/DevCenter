@@ -74,8 +74,6 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。`[ProjectName].xcodeproj` ファイルは使用**しないでください**。CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
 
-
-
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: #manually-adding-the-mobilefirst-native-sdk }
 次のように、{{ site.data.keys.product }} SDK を手動で追加することもできます。
@@ -184,7 +182,8 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundation```
+import IBMMobileFirstPlatformFoundation
+```
 
 <br>
 #### iOS 9 以上に関する注:

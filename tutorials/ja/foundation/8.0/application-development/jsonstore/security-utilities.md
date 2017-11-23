@@ -30,12 +30,14 @@ weight: 4
 ### iOS
 
 ```objc
-#import "WLSecurityUtils.h"```
+#import "WLSecurityUtils.h"
+```
 
 ### Android
 
 ```java
-import com.worklight.wlclient.api.SecurityUtils```
+import com.worklight.wlclient.api.SecurityUtils
+```
 
 ### JavaScript
 セットアップは不要です。

@@ -45,7 +45,8 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 1. {{ site.data.keys.product_adj }} ネイティブ SDK は、Xamarin Components ストア経由で提供されます。
 2. Android プロジェクトまたは iOS プロジェクトを展開します。
 3. Android プロジェクトまたは iOS プロジェクトで、**「コンポーネント (Components)」**を右クリックします。
-4. **「さらにコンポーネントを取得 (Get More Components)」**を選択します。![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
+4. **「さらにコンポーネントを取得 (Get More Components)」**を選択します。
+![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
 5. **「IBM MobileFirst SDK」**を検索します。**「アプリケーションに追加 (Add to App)」**を選択して実行します。![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
 6. **「パッケージ (Packages)」**を右クリックして、**「パッケージの追加 (Add packages)」**を選択します。**「Json.NET」**を検索して追加します。これで Nuget から Newtonsoft 依存関係が取り込まれます。これは、Android プロジェクトと iOS プロジェクトの両方について別々に実行する必要があります。
 7. **「参照 (References)」**を右クリックして、**「参照を編集 (Edit References)」**を選択します。**「.Net アセンブリー (.Net Assembly)」**タブに移動して、「参照 (Browse)」をクリックします。プロジェクト・フォルダーのルートから、`「コンポーネント (Components)」->「ibm-worklight-8.0.0.1」->「lib」->「pcl」`に移動します。**Worklight.Core.dll** を選択します。

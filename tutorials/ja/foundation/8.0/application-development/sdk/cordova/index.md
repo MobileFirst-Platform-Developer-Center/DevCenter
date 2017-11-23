@@ -37,8 +37,6 @@ MobileFirst プラグインでサポートされる Cordova プラットフォ�
 
 > **注:** Xcode 8 を使用する場合、iOS シミュレーターでの iOS アプリケーションの実行中は、**キーチェーン共有**機能が必須です。Xcode プロジェクトをビルドする前に、この機能を手動で有効にする必要があります。
 
-
-
 ## Cordova SDK コンポーネント
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
@@ -84,8 +82,6 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、コマンド `./run.sh` を実行します。
 
 > **注:** SDK を既存の Cordova アプリケーションに追加すると、プラグインによって、Android 用の `MainActivity.java` ファイルと iOS 用の `Main.m` ファイルが上書きされます。
-
-
 
 ### SDK の追加
 {: #adding-the-sdk }

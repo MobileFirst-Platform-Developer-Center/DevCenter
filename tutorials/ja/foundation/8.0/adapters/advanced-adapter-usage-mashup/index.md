@@ -48,7 +48,8 @@ MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions
 別のアダプターを呼び出す前に - AdaptersAPI を変数に割り当てる必要があります。
 
 ```java
-@Context AdaptersAPI adaptersAPI; 
+@Context
+AdaptersAPI adaptersAPI;
 ```
 
 ### Java アダプターからの Java アダプターの呼び出し

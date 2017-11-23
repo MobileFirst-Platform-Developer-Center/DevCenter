@@ -98,8 +98,6 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず &lt;procedure&gt; エレメントの*下に* 配置する必要があります。上の例では、デフォルト値を使用して &lt;displayName&gt; プロパティーを定義し、このプロパティーを後で使用できるようにしてあります。
 
-
-
 &lt;property&gt; エレメントには以下の属性があります。
 
 - `name`: 構成クラスで定義されている、プロパティーの名前。 
@@ -210,7 +208,8 @@ JavaScript アダプターは、サーバー・サイド API を使用して、{
 `MFP.Server.getPropertyValue(propertyName)` API を使用して、**adapter.xml** または {{ site.data.keys.mf_console }} で定義されているプロパティーを取得します。
 
 ```js
-MFP.Server.getPropertyValue("name");```
+MFP.Server.getPropertyValue("name");
+```
 
 ### getTokenIntrospectionData
 {: #gettokenintrospectiondata }

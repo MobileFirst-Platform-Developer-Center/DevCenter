@@ -42,4 +42,3 @@ weight: 12
 アダプター生成プログラムは、OpenAPI 仕様 JSON の正確度に依存しています。仕様が不完全であったり正しくなかったりした場合、生成が失敗するか、バックエンド・マイクロサービスの API と一致しないアダプター API が生成されることがあります。
 
 >詳細については、「[Auto Generate Adapters for Microservices and backend systems from its OpenAPI Specification](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/10/autogenerate-adapter-from-openapi-specification/)」のブログ投稿を参照してください。
-

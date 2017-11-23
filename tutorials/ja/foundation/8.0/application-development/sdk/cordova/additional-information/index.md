@@ -73,7 +73,8 @@ Apple の App Transport Security (ATS) は、アプリケーションとサー�
 OpenSSL をサポートするために必要なフレームワークをインストールするには、まず、以下のように Cordova プラグインをインストールします。
 
 ```bash
-cordova plugin add cordova-plugin-mfp-encrypt-utils```
+cordova plugin add cordova-plugin-mfp-encrypt-utils
+```
 
 以下のコードは、暗号化/暗号化解除の OpenSSL オプションを有効にします。
 

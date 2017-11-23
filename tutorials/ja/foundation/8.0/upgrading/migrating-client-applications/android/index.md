@@ -38,7 +38,8 @@ IBM MobileFirst Platform Foundation バージョン 6.2.0 以降で作成され�
     * 以下のコマンドを入力することにより、NPM を使用してツールをインストールします。
 
    ```bash
-npm install -g```
+   npm install -g
+   ```
 
 3. 以下のコマンドを入力して、{{ site.data.keys.product }} アプリケーションをスキャンします。
 

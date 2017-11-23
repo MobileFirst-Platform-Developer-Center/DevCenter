@@ -84,8 +84,6 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 2.  `Basic authentication` を使用し、機密クライアント ID (「test」) と秘密鍵 (「test」) を指定して、`authorization header` を追加します。
     > 機密クライアントについて詳しくは、[機密クライアント](../../authentication-and-security/confidential-clients)を参照してください。
 
-
-
     ![Postman の許可構成のイメージ](Authorization_configuration.png)
 
 
@@ -132,8 +130,6 @@ Swagger にアクセスするには、次のようにします。
 Swagger UI に対して認可するスコープを選択するように求められます (テスト目的の場合、すべて選択することができます)。初めて Swagger UI を使用する場合は、機密クライアント ID と秘密鍵を指定してログインするように要求されることがあります。その場合は、**「許可されるスコープ」**に `*` を指定した新規機密クライアントを作成する必要があります。
 
 > 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
-
-
 
 <br/><br/>
 
@@ -258,4 +254,3 @@ Hello World
     ![デバッグ中のアダプターを示すイメージ](debugging.png)
 
 > IntelliJ を使用した Java アダプターのデバッグ方法の手順については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
-

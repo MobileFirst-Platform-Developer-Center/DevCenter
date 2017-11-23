@@ -5,7 +5,9 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-削除された機能および API エレメントが、ご使用の {{ site.data.keys.product_full }} 環境にどのように影響するかを慎重に検討してください。#### ジャンプ先
+削除された機能および API エレメントが、ご使用の {{ site.data.keys.product_full }} 環境にどのように影響するかを慎重に検討してください。
+
+#### ジャンプ先
 {: #jump-to }
 * [V8.0 で廃止された機能および V8.0 に含まれない機能](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [サーバー・サイド API の変更](#server-side-api-changes)

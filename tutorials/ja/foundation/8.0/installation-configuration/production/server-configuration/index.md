@@ -27,8 +27,6 @@ IBM {{ site.data.keys.mf_server }} のエンドポイントに対してホワイ
 
 > **注:** {{ site.data.keys.product }} によって公開されている URL に関する情報を、ガイドラインとして提供しています。組織は、ホワイトリストとブラックリストで有効になっているものに基づいて、それらの URL を企業のインフラストラクチャーで確実にテストする必要があります。
 
-
-
 | `<runtime context root>/api/` の下の API URL  | 説明| ホワイトリストとして推奨されるか?|
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | 指定されたアダプターに関して、アダプターの Swagger 文書を返す| いいえ。管理者と開発者が内部でのみ使用します。|
@@ -93,8 +91,6 @@ SSL プロトコルのうち Transport Layer Security v1.2 (TLS) V1.2 のみを�
 {{ site.data.keys.mf_server }} 管理には、ユーザー認証が必要です。ユーザー認証を構成して、認証方式を選択できます。構成手順は、使用する Web アプリケーション・サーバーによって異なります。
 
 > **重要:** スタンドアロンの WebSphere Application Server Full Profile を使用している場合は、グローバル・セキュリティーでのシンプルな WebSphere 認証方式 (SWAM) 以外の認証方式を使用してください。Lightweight Third Party Authentication (LTPA) を使用できます。SWAM を使用した場合、予期しない認証の失敗が発生する可能性があります。
-
-
 
 認証の構成は、インストーラーが {{ site.data.keys.mf_server }} 管理 Web アプリケーションを Web アプリケーション・サーバーにデプロイした後に実行する必要があります。
 
@@ -291,8 +287,6 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
       コンテキスト・ルート (前の例では **app\_context\_root**) は、JNDI エントリーと特定の {{ site.data.keys.product_adj }} アプリケーションを接続します。複数の {{ site.data.keys.product_adj }} アプリケーションが同じサーバー上に存在する場合は、コンテキスト・パスの接頭部を使用して、各アプリケーションに対して固有の JNDI エントリーを定義することができます。
 
       > **注:** 一部のプロパティーは、コンテキスト・ルートでプロパティー名に接頭部を付けることなく、WebSphere Application Server Liberty でグローバルに定義されます。これらのプロパティーのリストについては、[グローバル JNDI 項目](../appserver/#global-jndi-entries)を参照してください。
-
-
 
       他のすべての JNDI プロパティーでは、名前の接頭部としてアプリケーションのコンテキスト・ルートを付加する必要があります。
 
@@ -646,8 +640,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 各アプリケーションのコンテンツは {{ site.data.keys.product_adj }} 管理データベースに格納されます。
 
-アクティブなログ・ファイルは、**LOGPRIMARY** と **LOGSECOND** の各データベース構成パラメーターでその数が定義され、**LOGFILSIZ** データベース構成パラメーターでそのサイズが定義されます。単一トランザクションでは、
-**LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB より大きいログ・スペースは使用できません。
+アクティブなログ・ファイルは、**LOGPRIMARY** と **LOGSECOND** の各データベース構成パラメーターでその数が定義され、**LOGFILSIZ** データベース構成パラメーターでそのサイズが定義されます。単一トランザクションでは、**LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB より大きいログ・スペースは使用できません。
 
 `DB2 GET DATABASE CONFIGURATION` コマンドには、ログ・ファイル・サイズ、および 1 次ログ・ファイルと 2 次ログ・ファイルの数に関する情報が含まれています。
 
@@ -706,7 +699,8 @@ MySQL データベースは、一定期間アクティブでない接続があ�
 MySQL が接続をクローズした後にアプリケーションがデータベースに接続しようとすると、以下の例外が生成されます。
 
 ```xml
-com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.```
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.
+```
 
 **server.xml** ファイルおよび **context.xml** ファイルを編集し、各 `<Resource>` エレメントに以下のプロパティーを追加します。
 
@@ -737,8 +731,6 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
 
 > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM サポートによってフルにサポートされている構成の利点を活用するためには、WebSphere Application Server によってサポートされている IBM DB2 データベースまたは別のデータベースを使用します。
 
-
-
 ### {{ site.data.keys.mf_console }} からのアプリケーションの作成または削除後の失効データ
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
 Tomcat 8 アプリケーション・サーバーで、MySQL データベースを使用している場合、{{ site.data.keys.mf_console }} からのサービス呼び出しで 404 エラーが返されることがあります。
@@ -765,7 +757,7 @@ Tomcat 8 アプリケーション・サーバーで、MySQL データベース�
 
 詳しくは、[接続プール設定](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/udat_conpoolset.html)を参照してください。
 
-**MySQL **  
+**MySQL**  
 
 1. WebSphere Application Server 管理コンソールにログインします。
 2. **「リソース」→「JDBC」→「データ・ソース」**と選択します。
@@ -776,8 +768,6 @@ Tomcat 8 アプリケーション・サーバーで、MySQL データベース�
     * **「OK」**をクリックします。
 
 > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM サポートによってフルにサポートされている構成の利点を活用するためには、WebSphere Application Server によってサポートされている IBM DB2 データベースまたは別のデータベースを使用します。
-
-
 
 ## ロギングとモニタリングのメカニズムの構成
 {: #configuring-logging-and-monitoring-mechanisms }
@@ -832,8 +822,6 @@ WebSphere Application Server の場合、IBM Knowledge Center で説明されて
 複数のランタイムで {{ site.data.keys.mf_server }} を構成し、{{ site.data.keys.mf_console }} でアプリケーションの「タイプ」によって表示を区別することができます。
 
 > **注:** Mobile Foundation Bluemix サービスで作成された Mobile Foundation サーバー・インスタンスで、複数ランタイムはサポートされません。Bluemix サービスでは、代わりに複数サービス・インスタンスを作成してください。
-
-
 
 #### ジャンプ先
 {: #jump-to-1 }
@@ -928,8 +916,6 @@ mfpdev adapter deploy local second-runtime
 
 > 使用可能なすべての REST API の詳細は、[API リファレンス](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html)にあります。
 
-
-
 ## ライセンス・トラッキングの構成
 {: #configuring-license-tracking }
 ライセンス・トラッキングはデフォルトで有効になります。ライセンス・トラッキングの構成方法について詳しくは、以下のトピックをお読みください。ライセンス・トラッキングについて詳しくは、[ライセンス・トラッキング](../../../administering-apps/license-tracking)を参照してください。
@@ -942,8 +928,6 @@ mfpdev adapter deploy local second-runtime
 クライアント・デバイスおよびアドレス可能デバイスに対するライセンス・トラッキングはデフォルトで有効になります。ライセンス・レポートは {{ site.data.keys.mf_console }} で使用可能です。以下の JNDI プロパティーを指定して、ライセンス・トラッキングについてのデフォルト設定を変更することができます。
 
 > **注:** トークン・ライセンスの使用を定義した契約がある場合、[トークン・ライセンスのためのインストールおよび構成](../token-licensing)も参照してください。
-
-
 
 以下の JNDI プロパティーを指定して、ライセンス・トラッキングについてのデフォルト設定を変更することができます。
 

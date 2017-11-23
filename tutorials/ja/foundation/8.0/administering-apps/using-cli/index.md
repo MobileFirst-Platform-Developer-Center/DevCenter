@@ -299,7 +299,8 @@ mfpadm プログラムより生成される通常の出力は、現行のロケ�
 **例**  
 
 ```bash
-show global-config```
+show global-config
+```
 
 このコマンドは、[グローバル構成 (GET) (Global Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST サービスに基づいています。
 
@@ -325,7 +326,8 @@ show global-config```
 **例**  
 
 ```bash
-show user-config mfp```
+show user-config mfp
+```
 
 このコマンドは、[ランタイム構成 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST サービスに基づいています。
 
@@ -356,10 +358,12 @@ show user-config mfp```
 **例**  
 
 ```bash
-set user-config mfp myconfig.json```
+set user-config mfp myconfig.json
+```
 
 ```bash
-set user-config mfp timeout = 240```
+set user-config mfp timeout = 240
+```
 
 このコマンドは、[ランタイム構成 (PUT) (Runtime configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST サービスに基づいています。
 
@@ -385,7 +389,8 @@ set user-config mfp timeout = 240```
 **例**
 
 ```bash
-show confidential-clients --xml mfp```
+show confidential-clients --xml mfp
+```
 
 このコマンドは、[機密クライアント (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST サービスに基づいています。
 
@@ -406,7 +411,8 @@ show confidential-clients --xml mfp```
 **例**
 
 ```bash
-set confidential-clients mfp clients.xml```
+set confidential-clients mfp clients.xml
+```
 
 このコマンドは、[機密クライアント (PUT) (Confidential Clients (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST サービスに基づいています。
 
@@ -430,7 +436,8 @@ set confidential-clients mfp clients.xml```
 **例**
 
 ```bash
-set confidential-clients-rule mfp push Push lOa74Wxs "**"```
+set confidential-clients-rule mfp push Push lOa74Wxs "**"
+```
 
 このコマンドは、[機密クライアント (PUT) (Confidential Clients (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST サービスに基づいています。
 
@@ -459,7 +466,8 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"```
 **例**  
 
 ```xml
-list adapters mfp```
+list adapters mfp
+```
 
 このコマンドは、[Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST サービスに基づいています。
 
@@ -480,7 +488,8 @@ list adapters mfp```
 **例**
 
 ```bash
-deploy adapter mfp MyAdapter.adapter```
+deploy adapter mfp MyAdapter.adapter
+```
 
 このコマンドは、[Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST サービスに基づいています。
 
@@ -507,7 +516,8 @@ deploy adapter mfp MyAdapter.adapter```
 **例**
 
 ```bash
-show adapter mfp MyAdapter```
+show adapter mfp MyAdapter
+```
 
 このコマンドは、[Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
@@ -528,7 +538,8 @@ show adapter mfp MyAdapter```
 **例**
 
 ```bash
-delete adapter mfp MyAdapter```
+delete adapter mfp MyAdapter
+```
 
 このコマンドは、[Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST サービスに基づいています。
 
@@ -558,7 +569,8 @@ delete adapter mfp MyAdapter```
 **例**
 
 ```bash
-adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter```
+adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
+```
 
 このコマンドは、[ ランタイム・リソースのエクスポート (GET) (Export runtime resources (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
@@ -578,7 +590,8 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter```
 **例**
 
 ```bash
-adapter mfp MyAdapter show user-config```
+adapter mfp MyAdapter show user-config
+```
 
 このコマンドは、[ アダプター構成 (GET) (Adapter Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST サービスに基づいています。
 
@@ -607,10 +620,12 @@ adapter mfp MyAdapter show user-config```
 **例**
 
 ```bash
-adapter mfp MyAdapter set user-config myconfig.json```
+adapter mfp MyAdapter set user-config myconfig.json
+```
 
 ```bash
-adapter mfp MyAdapter set user-config timeout = 240```
+adapter mfp MyAdapter set user-config timeout = 240
+```
 
 このコマンドは、[アダプター構成 (PUT) (Adapter configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST サービスに基づいています。
 
@@ -639,7 +654,8 @@ adapter mfp MyAdapter set user-config timeout = 240```
 **例**
 
 ```bash
-list apps mfp```
+list apps mfp
+```
 
 このコマンドは、[Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST サービスに基づいています。
 
@@ -659,7 +675,8 @@ list apps mfp```
 **例**
 
 ```bash
-deploy app mfp MyApp/application-descriptor.json```
+deploy app mfp MyApp/application-descriptor.json
+```
 
 このコマンドは、[Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST サービスに基づいています。
 
@@ -685,7 +702,8 @@ deploy app mfp MyApp/application-descriptor.json```
 **例**
 
 ```bash
-show app mfp MyApp```
+show app mfp MyApp
+```
 
 このコマンドは、[Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST サービスに基づいています。
 
@@ -705,7 +723,8 @@ show app mfp MyApp```
 **例**
 
 ```bash
-delete app mfp MyApp```
+delete app mfp MyApp
+```
 
 このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
@@ -733,7 +752,8 @@ delete app mfp MyApp```
 **例**
 
 ```bash
-show app version mfp MyApp iPhone 1.1```
+show app version mfp MyApp iPhone 1.1
+```
 
 このコマンドは、[アプリケーション・バージョン (GET) (Application Version (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST サービスに基づいています。
 
@@ -755,7 +775,8 @@ show app version mfp MyApp iPhone 1.1```
 **例**
 
 ```bash
-delete app version mfp MyApp iPhone 1.1```
+delete app version mfp MyApp iPhone 1.1
+```
 
 このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
@@ -783,7 +804,8 @@ delete app version mfp MyApp iPhone 1.1```
 **例**
 
 ```bash
-app mfp MyApp show license-config```
+app mfp MyApp show license-config
+```
 
 このコマンドは、[ アプリケーション・ライセンス構成 (GET) (Application license configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST サービスに基づいています。
 
@@ -803,7 +825,8 @@ app mfp MyApp show license-config```
 **例**
 
 ```bash
-app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION```
+app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
+```
 
 このコマンドは、[アプリケーション・ライセンス構成 (POST) (Application License Configuration (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST サービスに基づいています。
 
@@ -816,7 +839,8 @@ app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION```
 **例**
 
 ```bash
-app mfp MyApp iPhone 1.1 delete license-config```
+app mfp MyApp iPhone 1.1 delete license-config
+```
 
 このコマンドは、[ライセンス構成 (DELETE) (License configuration (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST サービスに基づいています。
 
@@ -846,7 +870,8 @@ app mfp MyApp iPhone 1.1 delete license-config```
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json```
+app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json
+```
 
 このコマンドは、[アプリケーション記述子 (GET) (Application Descriptor (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST サービスに基づいています。
 
@@ -865,7 +890,8 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip```
+app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
+```
 
 このコマンドは、[Web リソースの取得 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST サービスに基づいています。
 
@@ -883,7 +909,8 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip```
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip```
+app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
+```
 
 このコマンドは、[Web リソースのデプロイ (POST) (Deploy a web resource (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST サービスに基づいています。
 
@@ -899,7 +926,8 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip```
 | > tofile | 出力ファイルの名前。| いいえ | 標準出力 |**例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data```
+app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
+```
 
 このコマンドは、[ ランタイム・リソースのエクスポート (GET) (Export runtime resources (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
@@ -918,13 +946,16 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 set authenticity-data /tmp/MyApp.authenticity_data```
+app version mfp MyApp iPhone 1.1 set authenticity-data /tmp/MyApp.authenticity_data
+```
 
 ```bash
-app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa```
+app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
+```
 
 ```bash
-app version mfp MyApp android 1.1 set authenticity-data MyApp.apk```
+app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
+```
 
 このコマンドは、[アプリケーション認証データのデプロイ (POST) (Deploy Application Authenticity Data (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST サービスに基づいています。
 
@@ -937,7 +968,8 @@ app version mfp MyApp android 1.1 set authenticity-data MyApp.apk```
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 delete authenticity-data```
+app version mfp MyApp iPhone 1.1 delete authenticity-data
+```
 
 このコマンドは、[ アプリケーション認証性 (DELETE) (Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST サービスに基づいています。
 
@@ -956,7 +988,8 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data```
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 show user-config```
+app version mfp MyApp iPhone 1.1 show user-config
+```
 
 このコマンドは、[アプリケーション構成 (GET) (Application Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST サービスに基づいています。
 
@@ -984,10 +1017,12 @@ app version mfp MyApp iPhone 1.1 show user-config```
 **例**
 
 ```bash
-app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json```
+app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
+```
 
 ```bash
-app version mfp MyApp iPhone 1.1 set user-config timeout = 240```
+app version mfp MyApp iPhone 1.1 set user-config timeout = 240
+```
 
 このコマンドは、[アプリケーション構成 (PUT) (Application Configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST サービスに基づいています。
 
@@ -1017,10 +1052,12 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240```
 **例**
 
 ```bash
-list-devices mfp```
+list-devices mfp
+```
 
 ```bash
-list-devices mfp --query=john```
+list-devices mfp --query=john
+```
 
 このコマンドは、[Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) サービスに基づいています。
 
@@ -1040,7 +1077,8 @@ list-devices mfp --query=john```
 **例**
 
 ```bash
-remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6```
+remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
+```
 
 このコマンドは、[Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST サービスに基づいています。
 
@@ -1076,7 +1114,8 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6```
 **例**
 
 ```bash
-device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED```
+device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
+```
 
 このコマンドは、[Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST サービスに基づいています。
 
@@ -1102,7 +1141,8 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED```
 **例**
 
 ```xml
-device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED```
+device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
+```
 
 このコマンドは、[Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST サービスに基づいています。
 
@@ -1125,7 +1165,8 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED```
 **例**
 
 ```bash
-show info```
+show info
+```
 
 #### `show versions` コマンド
 {: #the-show-versions-command }
@@ -1146,7 +1187,8 @@ show info```
 **例**
 
 ```bash
-show versions```
+show versions
+```
 
 #### `show diagnostics` コマンド
 {: #the-show-diagnostics-command }
@@ -1163,7 +1205,8 @@ show versions```
 **例**
 
 ```bash
-show diagnostics```
+show diagnostics
+```
 
 #### `unlock` コマンド
 {: #the-unlock-command }
@@ -1172,7 +1215,8 @@ show diagnostics```
 **例**
 
 ```bash
-unlock```
+unlock
+```
 
 #### `list runtimes` コマンド
 {: #the-list-runtimes-command }
@@ -1190,10 +1234,12 @@ unlock```
 **例**
 
 ```bash
-list runtimes```
+list runtimes
+```
 
 ```bash
-list runtimes --in-database```
+list runtimes --in-database
+```
 
 このコマンドは、[Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST サービスに基づいています。
 
@@ -1220,7 +1266,8 @@ list runtimes --in-database```
 **例**
 
 ```bash
-show runtime mfp```
+show runtime mfp
+```
 
 #### `delete runtime` コマンド
 {: #the-delete-runtime-command }
@@ -1238,7 +1285,8 @@ show runtime mfp```
 **例**
 
 ```bash
-delete runtime mfp empty```
+delete runtime mfp empty
+```
 
 このコマンドは、[Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST サービスに基づいています。
 
@@ -1263,7 +1311,8 @@ delete runtime mfp empty```
 **例**
 
 ```bash
-list farm-members mfp```
+list farm-members mfp
+```
 
 このコマンドは、[ファーム・トポロジー・メンバー (GET) (Farm topology members (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST サービスに基づきます。
 
@@ -1289,6 +1338,7 @@ list farm-members mfp```
 **例**
 
 ```bash
-remove farm-member mfp srvlx15```
+remove farm-member mfp srvlx15
+```
 
 このコマンドは、[ファーム・トポロジー・メンバー (Farm topology members (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST サービスに基づきます。
