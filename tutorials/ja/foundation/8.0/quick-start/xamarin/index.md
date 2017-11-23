@@ -134,7 +134,9 @@ weight: 6
 * **「MobileFirst Server の ping (Ping MobileFirst Server)」** ボタンをクリックすると、**「MobileFirst Server に接続 (Connected to MobileFirst Server)」** が表示されます。
 * アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
-その場合、アダプター応答が Xamarin Studio コンソールに出力されます。![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](console-output.png)
+その場合、アダプター応答が Xamarin Studio コンソールに出力されます。
+
+![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](console-output.png)
 
 ## 次のステップ
 {: #next-steps }

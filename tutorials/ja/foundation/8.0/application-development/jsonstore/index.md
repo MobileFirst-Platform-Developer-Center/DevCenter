@@ -8,7 +8,7 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{ site.data.keys.product_full }} **JSONStore** は、軽量なドキュメント指向のストレージ・システムを提供する、オプションのクライアント・サイド API です。JSONStore を使用すると、**JSON ドキュメント** を永続的に保管できます。JSONStore では、アプリケーションを実行しているデバイスがオフラインの時でも、アプリケーションのドキュメントを使用できます。この永続的に常時使用できるストレージにより、例えば、使用可能なネットワーク接続がデバイスにないときでも、ドキュメントにアクセスできるため便利です。
+{{ site.data.keys.product_full }} **JSONStore** は、軽量なドキュメント指向のストレージ・システムを提供する、オプションのクライアント・サイド API です。JSONStore を使用すると、**JSON ドキュメント**を永続的に保管できます。JSONStore では、アプリケーションを実行しているデバイスがオフラインの時でも、アプリケーションのドキュメントを使用できます。この永続的に常時使用できるストレージにより、例えば、使用可能なネットワーク接続がデバイスにないときでも、ドキュメントにアクセスできるため便利です。
 
 ![JSONStore フィーチャーのワークフロー](jstore_workflow.jpg)
 
@@ -52,13 +52,14 @@ JSONStore ドキュメントは、自動的に生成される ID (`_id`) と JSO
 **単一のドキュメント**  
 
 ```javascript
-var doc = { _id: 1, json: {name: 'carlos', age: 99} };```
+var doc = { _id: 1, json: {name: 'carlos', age: 99} };
+```
 
 **ドキュメント配列**
 
 ```javascript
 var docs = [
-{ _id: 1, json: {name: 'carlos', age: 99} },
+  { _id: 1, json: {name: 'carlos', age: 99} },
   { _id: 2, json: {name: 'tim', age: 100} }
 ]
 ```
@@ -108,10 +109,10 @@ var searchFields = {
 };
 
 var myObject = {
-    people : [
-        {name: 'carlos', age: 99},
+    people : [ 
+        {name: 'carlos', age: 99}, 
         {name: 'tim', age: 100}
-    ]
+    ] 
 };
 ```
 
@@ -164,7 +165,7 @@ JSONStore は、LocalStorage、Indexed DB、Cordova Storage API、Cordova File A
 * アプリケーションがデバイスから除去された。
 * データを除去するメソッドのいずれかが呼び出された。
 
-## 複数ユーザー・サポート
+## 複数ユーザー・サポート	
 {: #multiple-user-support }
 JSONStore では、単一の {{ site.data.keys.product_adj }} アプリケーションで異なるコレクションを含む複数のストアを作成できます。
 
@@ -218,7 +219,7 @@ JSONStore は、すべてのプラットフォームで SQLCipher を使用し�
    ```bash
    C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
    ```
-
+    
 3. このファイルをご使用の {{ site.data.keys.product_adj }} アプリケーションにコピーして置換します。
 
    ```bash
@@ -309,7 +310,8 @@ asyncOperation(function (response) {
 
 ```javascript
 $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collectionName) {
-// evt - Contains information about the event
+
+  // evt - Contains information about the event
   // data - Data that is sent ater the operation (add, find, etc.) finished
   // src - Name of the operation (add, find, push, etc.)
   // collectionName - Name of the collection
@@ -324,9 +326,9 @@ JSONStore 用のネイティブ iOS API を使用すると、すべての操作�
 {: #java }
 JSONStore 用のネイティブ Android API を使用すると、すべての操作がメイン・スレッドに対して実行されます。振る舞いを非同期にするには、スレッドを作成するか、スレッド・プールを使用する必要があります。すべてのストア操作はスレッド・セーフです。
 
-## 分析
+## 分析 
 {: #analytics }
-JSONStore に関する重要な分析情報を収集することができます。
+JSONStore に関する重要な分析情報を収集することができます。 
 
 ### ファイル情報
 {: #file-information }
@@ -368,7 +370,7 @@ WL.JSONStore.init(..., options);
 
 ## 外部データを使用した作業
 {: #working-with-external-data }
-**プル**と**プッシュ** という異なる概念で外部データを使用して作業できます。
+**プル**と**プッシュ**という異なる概念で外部データを使用して作業できます。
 
 ### プル
 {: #pull }
@@ -398,7 +400,8 @@ WL.JSONStore.init(..., options);
 
 ```javascript
 app.get('/people', function (req, res) {
-var people = database.getAll('people');
+
+  var people = database.getAll('people');
 
   res.json(people);
 });
@@ -417,7 +420,8 @@ people と呼ばれるアダプターを作成し、getPeople と呼ばれるプ
 
 ```javascript
 function getPeople () {
-var input = {
+
+  var input = {
     method : 'get',
     path : '/people'
   };
@@ -431,7 +435,7 @@ var input = {
 ```javascript
 var adapter = 'people';
 var procedure = 'getPeople';
-
+ 
 var resource = new WLResourceRequest('/adapters' + '/' + adapter + '/' + procedure, WLResourceRequest.GET);
 resource.send()
 .then(function (responseFromAdapter) {
@@ -501,6 +505,7 @@ change API が置き換えまたは追加されるドキュメントをダーテ
 
 ```javascript
 .then(function (responseFromAdapter) {
+
   var accessor = WL.JSONStore.get('people');
 
   var data = responseFromAdapter.responseJSON;
@@ -600,12 +605,12 @@ var accessor = WL.JSONStore.get('people');
 .then(function (dirtyDocs) {
   var adapter = 'people',
   procedure = 'updatePeople';
-
+ 
   var resource = new WLResourceRequest('/adapters/' + adapter + '/' + procedure, WLResourceRequest.GET)
   resource.setQueryParameter('params', [dirtyDocs]);
   return resource.send();
 })
-
+ 
 .then(function (responseFromAdapter) {
   // ...
 })
@@ -617,7 +622,8 @@ var accessor = WL.JSONStore.get('people');
 
 ```javascript
 function updatePeople (dirtyDocs) {
-var input = {
+
+  var input = {
     method : 'post',
     path : '/people',
     body: {
@@ -640,44 +646,44 @@ var arrayOfPromises = [];
 var adapter = 'people';
 var procedure = 'addPerson';
 var resource;
-
+ 
 while (len--) {
-
+ 
   var currentDirtyDoc = dirtyDocs[len];
-
+ 
   switch (currentDirtyDoc._operation) {
-
+ 
     case 'add':
     case 'store':
-
+ 
     resource = new WLResourceRequest('/adapters/people/addPerson', WLResourceRequest.GET);
     resource.setQueryParameter('params', [currentDirtyDoc]);
-
+ 
       arrayOfPromises.push(resource.send());
-
+ 
     break;
-
+ 
     case 'replace':
     case 'refresh':
-
+ 
     resource = new WLResourceRequest('/adapters/people/replacePerson', WLResourceRequest.GET);
     resource.setQueryParameter('params', [currentDirtyDoc]);
-
-
+ 
+ 
       arrayOfPromises.push(resource.send());
-
+ 
     break;
-
+ 
     case 'remove':
     case 'erase':
-
+ 
     resource = new WLResourceRequest('/adapters/people/removePerson', WLResourceRequest.GET);
     resource.setQueryParameter('params', [currentDirtyDoc]);
-
+ 
       arrayOfPromises.push(resource.send());
   }
 }
-
+ 
 $.when.apply(this, arrayOfPromises)
 .then(function () {
   var len = arguments.length;
@@ -692,6 +698,7 @@ $.when.apply(this, arrayOfPromises)
 
 ```javascript
 .then(function (dirtyDocs) {
+
   return $.ajax({
     type: 'POST',
     url: 'http://example.org/updatePeople',
@@ -709,6 +716,7 @@ $.when.apply(this, arrayOfPromises)
 
 ```javascript
 .then(function (responseFromAdapter) {
+
   if (responseFromAdapter is successful) {
     WL.JSONStore.get('people').markClean(dirtyDocs);
   }
@@ -727,4 +735,4 @@ $.when.apply(this, arrayOfPromises)
 
 ## API 使用法
 {: #api-usage }
-プラットフォームを選択してください。
+プラットフォームを選択してください。 

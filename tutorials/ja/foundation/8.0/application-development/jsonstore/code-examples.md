@@ -12,6 +12,7 @@ weight: 6
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
+
 // Object that defines all the collections.
 var collections = {
 
@@ -68,6 +69,7 @@ WL.JSONStore.init(collections, options)
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
+
 // Find all documents that match the queries.
 var queryPart1 = WL.JSONStore.QueryPart()
                    .equal('name', 'carlos')
@@ -109,6 +111,7 @@ WL.JSONStore.get(collectionName)
 
 ```javascript 
 var collectionName = 'people';
+
 // Documents will be located with their '_id' field 
 // and replaced with the data in the 'json' field.
 var docs = [{_id: 1, json: {name: 'carlitos', age: 99}}];
@@ -136,6 +139,7 @@ var options = {
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
+
 // Remove all documents that match the queries.
 var queries = [{_id: 1}];
 
@@ -165,6 +169,7 @@ var options = {
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
+
 // Count all documents that match the query.
 // The default query is '{}' which will 
 // count every document in the collection.
@@ -192,6 +197,7 @@ WL.JSONStore.get(collectionName)
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
+
 .then(function () {
   // Handle success.
 })
@@ -205,6 +211,7 @@ WL.JSONStore.destroy()
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
+
 .then(function () {
   // Handle success.
 })
@@ -293,6 +300,7 @@ WL.JSONStore.get(collectionName)
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
+
 var adapter = 'adapter-name';
 var procedure = 'procedure-name-2';
 
@@ -363,6 +371,7 @@ WL.JSONStore.get(collectionName)
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
+
 WL.JSONStore.get(collectionName)
 
 .countAllDirty()
@@ -380,6 +389,7 @@ WL.JSONStore.get(collectionName)
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
+
 WL.JSONStore.get(collectionName)
 
 .removeCollection()
@@ -400,6 +410,7 @@ WL.JSONStore.get(collectionName)
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
+
 WL.JSONStore.get(collectionName)
 
 .clear()
@@ -420,6 +431,7 @@ WL.JSONStore.get(collectionName)
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
+
 .then(function () {
   // Handle startTransaction success.
   // You can call every JSONStore API method except:

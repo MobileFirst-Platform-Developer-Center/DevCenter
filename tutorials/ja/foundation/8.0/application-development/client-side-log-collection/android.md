@@ -19,20 +19,17 @@ weight: 3
 
 > **注:** 詳細度を指定してログ・キャプチャーを有効にすることで、デバイス CPU やファイル・システム・スペースの消費、クライアントがネットワークでログを送信するときのペイロードのサイズに影響する可能性があります。
 
-
-
 ログ・キャプチャーを無効にするには、以下のようにします。
 
 ```java
-Logger.setCapture(false);```
+Logger.setCapture(false);
+```
 
 ## キャプチャーしたログの送信
 {: #sending-captured-logs }
 アプリケーションのロジックに基づいて、ログを {{ site.data.keys.product_adj }} に送信します。自動ログ送信を有効にして、自動的にログを送信することもできます。ログの最大サイズに達する前にログが送信されないと、ログ・ファイルがより新しいログで消去されます。
 
 > **注:** ログ・データを収集する場合は、以下のパターンを採用してください。一定のインターバルでデータを送信すると、{{ site.data.keys.mf_analytics_console }} でログ・データをほぼリアルタイムで見られるようにすることができます。
-
-
 
 ```java
 Timer timer = new Timer();
@@ -51,7 +48,8 @@ timer.schedule(new TimerTask() {
 * 以下のようにして、永続ログ・バッファーの最大ファイル・サイズを増やす (バイト単位)。
 
 ```java
-Logger.setMaxFileSize(150000);```
+Logger.setMaxFileSize(150000);
+```
 
 ## 自動ログ送信
 {: auto-log-sending }
@@ -78,7 +76,8 @@ Logger.setAutoSendLogs(false);
 1. パッケージ名 `myApp` を指定して、`logger` インスタンスを使用します。
 
    ```java
-Logger logger = Logger.getInstance("MyApp");```
+   Logger logger = Logger.getInstance("MyApp");
+   ```
 
 2. **オプション: **指定されたレベルとパッケージのみにログ・キャプチャーとログ出力をプログラムで制限するフィルターを指定します。
 
@@ -99,7 +98,8 @@ Logger logger = Logger.getInstance("MyApp");```
 サーバーで設定された構成オーバーライドをクライアントが取り出すには、アプリケーション・ライフサイクル・コールバック内など、定期的に実行されるコード内の場所から `updateConfigFromServer` メソッドを呼び出す必要があります。
 
 ```java
-Logger.updateConfigFromServer();```
+Logger.updateConfigFromServer();
+```
 
 ## ロギングの例
 {: #logging-example }
@@ -107,6 +107,7 @@ Logger.updateConfigFromServer();```
 
 ```java
 import com.worklight.common.Logger;
+
 public class MathUtils{
   private static final Logger logger = Logger.getInstance(MathUtils.class.getName());
   public int sum(final int a, final int b){

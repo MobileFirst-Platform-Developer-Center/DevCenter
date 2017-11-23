@@ -15,7 +15,8 @@ weight: 13
 
 ## 証明書ピン留めプロセス
 {: #certificate-pinning-process }
-証明書ピン留めとは、ホストと予期される公開鍵とを関連付けるプロセスです。ユーザーはサーバー・サイド・コードとクライアント・サイド・コードの両方を所有しているため、オペレーティング・システムまたはブラウザーによって認識されるトラステッド CA ルート証明書に対応する証明書の代わりに、ユーザーのドメイン・ネーム用の特定の証明書のみを受け入れるように、クライアント・コードを構成することができます。証明書のコピーがクライアント・アプリケーション内に置かれます。SSL ハンドシェーク (サーバーへの最初の要求) の間、{{ site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリに保管されている証明書の公開鍵に一致することを検証します。
+証明書ピン留めとは、ホストと予期される公開鍵とを関連付けるプロセスです。ユーザーはサーバー・サイド・コードとクライアント・サイド・コードの両方を所有しているため、オペレーティング・システムまたはブラウザーによって認識されるトラステッド CA ルート証明書に対応する証明書の代わりに、ユーザーのドメイン・ネーム用の特定の証明書のみを受け入れるように、クライアント・コードを構成することができます。
+証明書のコピーがクライアント・アプリケーション内に置かれます。SSL ハンドシェーク (サーバーへの最初の要求) の間、{{ site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリに保管されている証明書の公開鍵に一致することを検証します。
 
 複数の証明書をクライアント・アプリケーションにピン留めすることもできます。すべての証明書のコピーをクライアント・アプリケーション内に配置する必要があります。SSL ハンドシェーク (サーバーへの最初の要求) の間、{{ site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリケーションに保管されているいずれかの証明書の公開鍵に一致することを検証します。
 
@@ -50,7 +51,8 @@ weight: 13
 pinTrustedCertificatePublicKeyFromFile(String certificateFilename);
 例:
 ```java
-WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");```
+WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
+```
 複数の証明書:
 
 構文:
@@ -60,7 +62,8 @@ pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
 String[] certificates={"myCertificate.cer","myCertificate1.cer"};
 WLClient.getInstance().pinTrustedCertificatePublicKey(certificates);
 ```
-証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。* ファイルが存在しない
+証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。
+* ファイルが存在しない
 * ファイルのフォーマットが正しくない
 
 
@@ -84,7 +87,9 @@ pinTrustedCertificatePublicKeyFromFiles:(NSArray*) certificateFilenames;
 例:
 単一の証明書:
 ```objc
-[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"]; ```
+[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
+
+```
 複数の証明書:
 例:
 ```objc

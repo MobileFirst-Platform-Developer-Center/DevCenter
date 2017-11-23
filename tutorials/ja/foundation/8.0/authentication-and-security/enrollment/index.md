@@ -303,8 +303,6 @@ public String getTransactions(){
     
 > `securityContext` について詳しくは、Java アダプターのチュートリアルにある[セキュリティー API](../../adapters/java-adapters/#security-api) セクションを参照してください。
 
-
-
 以下を追加することで、登録済みユーザーを応答オブジェクトに追加します。
 
 ```java

@@ -1294,7 +1294,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 
 ```xml
 <Realm className="org.apache.catalina.realm.MemoryRealm"/>
-      ```
+```
 #### 構成の詳細
 {: #configuration-details-tomcat }
 <div class="panel-group accordion" id="manual-installation-apache-tomcat" role="tablist">

@@ -69,8 +69,6 @@ weight: 6
 
 > **重要:** トークン・ライセンスをサポートするインストールの一部として行ったトークン・ライセンスについての選択 (アクティブ化するかどうか) を変更することはできません。後でトークン・ライセンス・オプションの変更が必要になった場合、{{ site.data.keys.product }} をアンインストールしてから再インストールする必要があります。
 
-
-
 1. IBM Installation Manager を実行して {{ site.data.keys.product }} をインストールする際に、トークン・ライセンスをアクティブにします。
 
    #### グラフィック・モードでのインストール
@@ -256,7 +254,6 @@ Liberty プロファイル・サーバー・ファームで {{ site.data.keys.mf
         * **「OK」**をクリックし、変更を保存します。この設定は、サーバーが再始動されると有効になります。
     
         > **注:** このライブラリーのネイティブ・ライブラリー・パスは、ステップ 3 で、サーバーの Java 仮想マシンの **ld.library.path** プロパティーに設定されます。
-
     * 共有ライブラリーを、{{ site.data.keys.mf_server }} 管理サービスを実行するすべてのサーバーと関連付けます。
     
         共有ライブラリーをサーバーに関連付けることによって、共有ライブラリーが複数のアプリケーションで使用できるようになります。{{ site.data.keys.mf_server }} 管理サービス用にのみ Rational Common Licensing クライアントが必要な場合、隔離されたクラス・ローダーを使用して共有ライブラリーを作成し、それを管理サービス・アプリケーションと関連付けることができます。
@@ -301,8 +298,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > **重要:** WebSphere Application Server Network Deployment と共にクラスターを使用する場合、クラスターは変化する可能性があります。管理サービスが実行されるサーバーがクラスターに新しく追加されたら、そのサーバーを構成する必要があります。
 
-
-
 ## トークン・ライセンス用にサポートされるプラットフォームの制限
 {: #limitations-of-supported-platforms-for-token-licensing }
 トークン・ライセンスが有効にされている {{ site.data.keys.mf_server }} をサポートするオペレーティング・システム、そのバージョン、およびハードウェア・アーキテクチャーのリストを示します。
@@ -315,8 +310,7 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 | オペレーティング・システム| オペレーティング・システムのバージョン|	ハードウェア・アーキテクチャー|
 |------------------------------|--------------------------|-----------------------|
-| AIX
-| 7.1|	POWER8 (64 ビットのみ)|
+| AIX                          | 7.1|	POWER8 (64 ビットのみ)|
 | SUSE Linux Enterprise Server| 11	                      | x86-64 のみ|
 | Windows Server| 2012	                  | x86-64 のみ|
 
@@ -339,8 +333,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > **重要:** トークン・ライセンスが WebSphere Application Server Network Deployment またはクラスターにインストールされている場合は、各サーバーのログを確認する必要があります。
 
-
-
 以下は、トークン・ライセンスのインストールおよび構成後に発生する可能性のある例外のリストです。
 
 * [Rational Common Licensing のネイティブ・ライブラリーが見つからない](#rational-common-licensing-native-library-is-not-found)
@@ -355,8 +347,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #rational-common-licensing-native-library-is-not-found }
 
 > FWLSE3125E: Rational Common Licensing ネイティブ・ライブラリーが見つかりません。JVM プロパティー (java.library.path) が正しいパスで定義され、ネイティブ・ライブラリーが実行可能であることを確認してください。修正アクションを実行した後、{{ site.data.keys.mf_server }} を再始動してください。
-
-
 
 #### WebSphere Application Server フル・プロファイルの場合
 {: #for-websphere-application-server-full-profile }
@@ -388,8 +378,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > FWLSE3126E: Rational Common Licensing 共有ライブラリーが見つかりません。共有ライブラリーが構成されていることを確認してください。修正アクションを実行した後、{{ site.data.keys.mf_server }} を再始動してください。
 
-
-
 このエラーの考えられる原因は次のとおりです。
 
 * **rcl_ibmratl.jar** ファイルが、予期されたディレクトリーにない。
@@ -406,8 +394,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > FWLSE3127E: Rational License Key Server 接続が構成されていません。管理 JNDI プロパティー「mfp.admin.license.key.server.host」および「mfp.admin.license.key.server.port」が設定されていることを確認してください。修正アクションを実行した後、{{ site.data.keys.mf_server }} を再始動してください。
 
-
-
 このエラーの考えられる原因は次のとおりです。
 
 * Rational Common Licensing のネイティブ・ライブラリーと、**rcl_ibmratl.jar** ファイルを使用する共有ライブラリーは正しく構成されているが、JNDI プロパティー (**mfp.admin.license.key.server.host** および **mfp.admin.license.key.server.port**) の値が {{ site.data.keys.mf_server }} 管理サービス・アプリケーションに設定されていない。
@@ -418,8 +404,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #the-rational-license-key-server-is-not-accessible }
 
 > FWLSE3128E: Rational License Key Server "{port}@{IP address or hostname}" にアクセスできません。ライセンス・サーバーが稼働していて、{{ site.data.keys.mf_server }} にアクセス可能であることを確認してください。 このエラーがランタイム始動時に発生する場合は、修正アクションの後、{{ site.data.keys.mf_server }}  を再始動してください。
-
-
 
 このエラーの考えられる原因は次のとおりです。
 
@@ -435,8 +419,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #failed-to-initialize-rational-common-licensing-api }
 
 > Failed to initialize Rational Common Licensing (RCL) API because its native library could not be found or loaded com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Not found in java.library.path)
-
-
 
 このエラーの考えられる原因は次のとおりです。
 
@@ -455,8 +437,6 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #invalid-rcl_ibmratljar-file }
 
 > UTLS0002E: 共有ライブラリー RCL 共有ライブラリーに、有効な JAR ファイルに解決されないクラスパス項目が含まれています。このライブラリー JAR ファイルがあると思われる場所は {0}/rcl_ibmratl.jar です。
-
-
 
 **注:** WebSphere Application Server および WebSphere Application Server Network Deployment の場合のみ
 

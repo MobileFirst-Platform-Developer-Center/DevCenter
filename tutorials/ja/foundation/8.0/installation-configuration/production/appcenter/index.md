@@ -19,8 +19,6 @@ Application Center を {{ site.data.keys.mf_server }} インストールの一�
 
 > **注:** Application Center を使用して iOS デバイスにアプリケーションをインストールすることを予定している場合は、最初に、SSL を使用して Application Center サーバーを構成する必要があります。
 
-
-
 インストールされるファイルおよびツールのリストについては、[{{ site.data.keys.mf_server }} の配布構造](../installation-manager/#distribution-structure-of-mobilefirst-server)を参照してください。
 
 #### ジャンプ先
@@ -73,8 +71,6 @@ DB2 SYSADM または SYSCTRL 権限を持つデータベース・サーバー上
 手動でデータベースを作成する場合は、データベース名 (ここでは APPCNTR) とパスワードを、任意のデータベース名およびパスワードで置き換えることができます。
 
 > **重要:** データベースおよびユーザーを異なる名前にしたり、異なるパスワードを設定したりすることができますが、適切なデータベース名、ユーザー名、およびパスワードを DB2 データベース・セットアップ全体を通して正しく入力するように注意してください。DB2 では、すべてのプラットフォームでデータベース名の長さが 8 文字までという制限があり、また、ユーザー名とパスワードの長さが、UNIX および Linux システムでは 8 文字まで、Windows では 30 文字までという制限があります。
-
-
 
 1. ご使用のオペレーティング・システムに合った適切なコマンドを使用して、例えば **wluser** という名前のシステム・ユーザーを DB2 管理グループ (例えば **DB2USERS**) 内に作成します。それにパスワード (例えば **wluser**) を付与します。複数の IBM {{ site.data.keys.mf_server }} インスタンスが同じデータベースに接続するようにする場合は、接続ごとに異なるユーザー名を使用してください。各データベース・ユーザーは別々のデフォルト・スキーマを持ちます。データベース・ユーザーについて詳しくは、DB2 資料およびオペレーティング・システムの資料を参照してください。
 
@@ -156,7 +152,6 @@ Application Center を WebSphere Application Server Network Deployment サーバ
 2. WebSphere Application Server インストール・ディレクトリーを指定するインストーラー・パネルで、デプロイメント・マネージャー・プロファイルを選択します。
 
     > **重要:** アプリケーション・サーバー・プロファイルを選択した後に管理対象サーバーを 1 つ選択することはしないでください。これを行うと、デプロイメント・マネージャーが稼働しているマシンにインストールするか、別のマシンにインストールするかに関わらず、デプロイメント・マネージャーがサーバーの構成を上書きすることになります。
-
 3. Application Center のインストール先に応じて、必要な有効範囲を選択します。選択可能な有効範囲は以下の表のとおりです。
 
     | 有効範囲	 | 説明|
@@ -171,8 +166,6 @@ Application Center を WebSphere Application Server Network Deployment サーバ
 インストールは、指定した有効範囲内にあるサーバー・セットの外側には影響しません。JDBC プロバイダーおよび JDBC データ・ソースは、指定した有効範囲で定義されます。有効範囲がセル全体であるエンティティー (アプリケーションと、DB2 の場合は認証別名) の名前には、各エンティティーを一意に識別できるようにするための接尾部が付きます。したがって、Application Center を複数の異なる構成にインストールすることができ、異なるバージョンの Application Center を同一セルの別々のクラスターにインストールすることさえ可能です。
 
 > **注:** JDBC ドライバーは指定されたアプリケーション・サーバーのセットにのみインストールされるため、デプロイメント・マネージャーの WebSphere Application Server 管理コンソールでの JDBC データ・ソースに対する「接続のテスト (Test Connection)」ボタンは機能しないことがあります。
-
-
 
 フロントエンド HTTP サーバーを使用する場合、パブリック URL も構成する必要があります。
 
@@ -252,8 +245,6 @@ Application Center の Ant タスクは、{{ site.data.keys.mf_server }} の配�
 
 > **注:** **mf\_server\_install\_dir** プレースホルダーは、{{ site.data.keys.mf_server }} をインストールしたディレクトリーを表します。
 
-
-
 [オプションのデータベース作成](#optional-creation-of-databases)の説明に従ってデータベースを手動で作成しなかった場合には、次のステップ 1 から 3 を実行してください。
 データベースが既に存在する場合は、データベース表のみを作成する必要があります。次のステップ 4 から 7 を実行してください。
 
@@ -284,7 +275,8 @@ Application Center の Ant タスクは、{{ site.data.keys.mf_server }} の配�
 6. 以下のコマンドを実行して、データベースを構成します。
 
     ```bash
-ant -f configure-appcenter-<appServer>-<dbms>.xml databases```
+    ant -f configure-appcenter-<appServer>-<dbms>.xml databases
+    ```
 
     Ant コマンドは、**mf\_server\_install\_dir/shortcuts** にあります。
 
@@ -342,8 +334,6 @@ Ant タスクを使用して Application Center コンソールおよびサー�
 Apache Tomcat 以外のアプリケーション・サーバーでは、Application Center を 2 つの WAR ファイルまたは 1 つの EAR ファイルからデプロイできます。
 
 > **制約事項:** {{ site.data.keys.mf_server }} をインストールする一環として IBM Installation Manager を使用して Application Center をインストールするか、あるいは手動でインストールするかにかかわらず、 Application Center の「ローリング・アップデート」はサポートされないことを覚えておいてください。つまり、同じデータベースで作動する 2 つのバージョンの Application Center (例えば、V5.0.6 と V6.0.0) をインストールすることはできません。
-
-
 
 #### ジャンプ先
 {: #jump-to-4 }
@@ -551,8 +541,6 @@ Apache Derby データベースを手動で構成するには、データベー�
 
    > **注:** ij プログラムは Apache Derby の一部です。まだインストールしていない場合、[Apache Derby: Downloads](http://db.apache.org/derby/derby_downloads) からダウンロードできます。
 
-
-
    サポートされている Apache Derby のバージョンについては、[システム要件](../../../product-overview/requirements)を参照してください。  
    このスクリプトを実行すると、ij のバージョン番号が表示されます。
 
@@ -704,8 +692,6 @@ Application Center 用の MySQL データベースを WebSphere Application Serv
 
 > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM DB2 データベース、または WebSphere Application Server によってサポートされる別のデータベースを使用して、IBM サポートによってフルにサポートされる構成の利点を活用することができます。
 
-
-
 1. MySQL JDBC ドライバー JAR ファイルを **$LIBERTY_HOME/wlp/usr/shared/resources/mysql** に追加します。このディレクトリーが存在しない場合は、作成してください。
 2. **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** ファイル内のデータ・ソース (このパス中の **worklightServer** は、使用しているサーバーの名前で置き換えることができます) を以下のように構成します。
 
@@ -733,8 +719,6 @@ Application Center 用の MySQL データベースを WebSphere Application Serv
 WebSphere Application Server を使用して、Application Center 用に MySQL データベースを手動でセットアップおよび構成したい場合は、以下の手順を使用してください。先に進む前に MySQL データベースのセットアップ手順を実行します。
 
 > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。IBM サポートによってフルにサポートされている構成の利点を活用するために、IBM DB2 データベース、または WebSphere Application Server によってサポートされている別のデータベースを使用することをお勧めします。
-
-
 
 1. WebSphere Application Server インストール・ディレクトリー内の JDBC ドライバー JAR ファイルに適したディレクトリーを決定します。
     * スタンドアロン・サーバーの場合は、**WAS\_INSTALL\_DIR/optionalLibraries/IBM/Worklight/mysql** などのディレクトリーを使用することができます。
@@ -906,8 +890,6 @@ WebSphere Application Server Liberty プロファイルで、Oracle JDBC ドラ�
 
     > **注:** サービス名、または URL を使用して Liberty サーバーを Oracle データベースに接続する方法については詳しくは、[WebSphere Application Server Liberty Core 8.5.5 の資料](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0)の **properties.oracle** のセクションを参照してください。
 
-
-
 3. **liberty\_install\_dir/bin** 内の securityUtility プログラムを使用して、データベース・パスワードを暗号化することができます。
 
 ##### Application Center 用の Oracle のための WebSphere Application Server の手動構成
@@ -989,8 +971,6 @@ Application Center WAR ファイルをアプリケーション・サーバーに
 これらの手動での手順は、使用するアプリケーション・サーバーに精通していることを想定しています。
 
 > **注:** {{ site.data.keys.mf_server }} インストーラーを使用して Application Center をインストールする方法は、手動のインストールより信頼性が高いため、可能な限りその方法を使用してください。
-
-
 
 手動プロセスを使用したい場合は、以下の手順に従って、Application Center 用のアプリケーション・サーバーを構成してください。appcenterconsole.war ファイルおよび applicationcenter.war ファイルを Application Center にデプロイする必要があります。これらのファイルは **product\_install\_dir/ApplicationCenter/console** にあります。
 
@@ -1290,8 +1270,6 @@ Application Center 用の Apache Tomcat を手動で構成するには、JAR お
 Application Center EAR ファイルをアプリケーション・サーバーに手動でデプロイする手順は、アプリケーション・サーバーのタイプによって異なります。手動デプロイメントは、WebSphere Application Server Liberty プロファイルと WebSphere Application Server の場合にのみサポートされます。
 
 > **ヒント:** 手動より、{{ site.data.keys.mf_server }} インストーラーを使用して Application Center をインストールするほうが、信頼性が高くなります。そのため、可能な限り、{{ site.data.keys.mf_server }} インストーラーを使用してください。 それでも、手動でインストールしたい場合は、**product\_install\_dir/ApplicationCenter/console** ディレクトリーにある **appcentercenter.ear** ファイルをデプロイしてください。
-
-
 
 #### Application Center 用の Liberty プロファイルの手動構成
 {: #configuring-the-liberty-profile-for-application-center-manually-1 }
@@ -1729,7 +1707,8 @@ LDAP を使用した ACL を構成するには、**uid**、**sn**、および **
     LDAP サーバー上のユーザーおよびグループへの変更は、**ibm.appcenter.ldap.cache.expiration.seconds** で指定された遅延の後に Application Center に対して可視になります。 Application Center は LDAP データのキャッシュを維持していて、そのキャッシュの有効期限が切れてからでないと変更内容は可視になりません。デフォルトでは、遅延は 24 時間です。ユーザーおよびグループへの変更後にこの遅延時間が満了になるのを待機したくない場合、次のコマンドを呼び出して、LDAP データのキャッシュをクリアすることができます。
 
     ```xml
-acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password```
+    acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password
+    ```
 
     詳しくは、[スタンドアロン・ツールを使用した LDAP キャッシュのクリア](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)を参照してください。
 
@@ -1757,7 +1736,8 @@ acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password```
     特別な対象である「アプリケーション・レルム内のすべての認証済み」を appcenteruser および appcenteradmin のロールとして割り当てることができます。この特別な対象を割り当てることを選択した場合、IdMgrReader が以下のように構成されている必要があります。
 
     ```bash
-$AdminTask mapIdMgrGroupToRole {-roleName IdMgrReader -groupId ALLAUTHENTICATED}```
+    $AdminTask mapIdMgrGroupToRole {-roleName IdMgrReader -groupId ALLAUTHENTICATED}
+    ```
 
 6. **exit** を入力して **wsadmin** を終了します。
 

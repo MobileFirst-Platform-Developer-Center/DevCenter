@@ -73,8 +73,6 @@ weight: 2
 
 > 各種 CLI コマンドについては、 [CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルで学習してください。
 
-
-
 ## コンソールのナビゲート
 {: #navigating-the-console }
 ### ダッシュボード

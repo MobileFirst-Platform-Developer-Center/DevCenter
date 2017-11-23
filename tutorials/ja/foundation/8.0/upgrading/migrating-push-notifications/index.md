@@ -845,7 +845,8 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -875,7 +876,8 @@ if(error){
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
-[[MFPPush sharedInstance] isPushSupported]```
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -887,7 +889,8 @@ if(error){
 7. `didRegisterForRemoteNotificationsWithDeviceToken` で `sendDeviceToken()` を呼び出します。
 
    ```objc
-[[MFPPush sharedInstance] sendDeviceToken:deviceToken];```
+   [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
+   ```
 
 ##### サーバー
 {: #server-ios-1 }
@@ -920,7 +923,8 @@ if(error){
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -950,7 +954,8 @@ if(error){
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
-[[MFPPush sharedInstance] isPushSupported]```
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -1017,7 +1022,8 @@ if(error){
 1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -1047,7 +1053,8 @@ if(error){
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
-[[MFPPush sharedInstance] isPushSupported]```
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. 以下の `WLClient.Push` API を削除します。
     * `registerEventSourceCallback()`
@@ -1076,7 +1083,8 @@ if(error){
 1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。

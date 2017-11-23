@@ -275,9 +275,12 @@ function wlEnvInit() {
 1. 任意の Cordova 開発ツールを使用して、元のアプリケーションに含まれていた {{ site.data.keys.product_adj }}機能を有効にする Cordova プラグイン以外の任意の Cordova プラグインを追加します。例えば、Cordova CLI では、プラグイン **cordova-plugin-file** および **cordova-plugin-file-transfer** を追加するには、以下を入力します。 
 
    ```bash
-cordova plugin add cordova-plugin-file cordova-plugin-file-transfer```
+   cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
+   ```
 
    > **注:** **mfpmigrate** マイグレーション・アシスト・ツールによって {{ site.data.keys.product_adj }} フィーチャー用の Cordova プラグインが追加されていますので、ユーザーがそれらを追加する必要はありません。これらのプラグインについて詳しくは、[{{ site.data.keys.product_adj }} 用の Cordova プラグイン](../../../application-development/sdk/cordova)を参照してください。
+
+
 
 2. オプション: 元のアプリケーションで FIPS フィーチャーを使用している場合は、JQuery イベント・リスナーを、WL/FIPS/READY イベントを listen する JavaScript イベント・リスナーに変更します。FIPS について詳しくは、『[FIPS 140-2 サポート](../../../administering-apps/federal/#fips-140-2-support)』を参照してください。
 3. オプション: 元のアプリケーションで、マイグレーション・アシスト・ツールによって置き換えも提供もされない、サード・パーティーの Cordova プラグインを使用している場合は、**cordova plugin add** コマンドを使用して、手動でそれらのプラグインを Cordova アプリケーションに追加してください。このツールでどのプラグインが置き換えられるかについて詳しくは、[マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)を参照してください。

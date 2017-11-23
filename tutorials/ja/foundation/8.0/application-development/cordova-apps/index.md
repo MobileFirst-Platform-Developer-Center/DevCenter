@@ -12,13 +12,9 @@ weight: 4
 
 > Apache Cordova は、オープン・ソースのモバイル開発フレームワークです。HTML5、CSS3、および JavaScript など、クロスプラットフォーム開発用の標準 Web テクノロジーを使用することができ、個々のモバイル・プラットフォームのネイティブ開発言語を使用せずに済みます。アプリケーションは、個々のプラットフォームを対象としたラッパー内で実行され、標準に準拠した API バインディングに依存して、各デバイスのセンサー、データ、およびネットワーク状況にアクセスします。
 
-
-
 {{ site.data.keys.product_full }} は、複数の Cordova プラグインの形式で SDK を提供しています。[{{ site.data.keys.product }} SDKをCordova アプリケーションに追加する](../../application-development/sdk/cordova)方法を説明します。
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『{{ site.data.keys.product_full }} でのアプリ・ストアへの提出のための iOS アプリの準備』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)を参照してください。
-
-
 
 #### ジャンプ先:
 {: #jump-to }
@@ -61,7 +57,6 @@ Cordova プラグインは、[GitHub.com](https://github.com) 上、およびよ
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
 >**注:** {{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。
-
 Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。
 
 
@@ -162,6 +157,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
    }
 }
 {% endhighlight %}
+
 
 
                 <br/>
@@ -274,8 +270,6 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
 
 > ユーザー独自のスプラッシュ・イメージの使用について詳しくは、[『Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加』](adding-images-and-icons)を参照してください。
 
-
-
 ### アプリケーション・アイコン
 {: #application-icons }
 アプリケーション・アイコン用のデフォルト・イメージがテンプレートで提供されます。これらのデフォルトのイメージは、以下のディレクトリーに保管されています。
@@ -287,8 +281,6 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
 デフォルト・イメージを独自のイメージに置き換えることができます。カスタム・アプリケーション・イメージは、置き換えようとしているデフォルトのアプリケーション・イメージのサイズと一致する必要があり、同じファイル名を使用する必要があります。さまざまなディスプレイおよびオペレーティング・システム・バージョンに適した各種デフォルト・イメージが用意されています。
 
 > ユーザー独自のスプラッシュ・イメージの使用について詳しくは、[『Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加』](adding-images-and-icons)を参照してください。
-
-
 
 ### スタイル・シート
 {: #stylesheets }
@@ -315,15 +307,11 @@ JavaScript ファイル index.js がテンプレートによって提供され�
 Cordova アプリケーションの Web リソースは、iOS シミュレーター、Android エミュレーター、Windows エミュレーター、または物理デバイスのいずれかでプレビューできます。{{ site.data.keys.product }} では、{{ site.data.keys.mf_mbs_full }} と Simple Browser レンダリングの 2 つの追加のライブ・プレビュー・オプションを使用できます。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **セキュリティー制限:** Web リソースはプレビュー可能ですが、そのシミュレーターですべての {{ site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。このケースでは、次のようになります。
-
 >
 > * セキュリティー検査はサーバー・サイドでは実行されず、セキュリティー・チャレンジは {{ site.data.keys.mf_mbs }} 内で実行されるクライアントに送信されません。
 > * 開発環境で {{ site.data.keys.mf_server }} を使用しない場合、許可スコープのリスト中にアダプターのスコープが含まれている機密クライアントを登録してください。機密クライアントは {{ site.data.keys.mf_console }} で「ランタイム/設定」メニューを使用して定義できます。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
-
 >
 > **注:** 開発環境での {{ site.data.keys.mf_server }} には、無制限の許可スコープ (「*」) を持つ機密クライアント「test」が含まれています。デフォルトで、mfpdev app preview はこの機密クライアントを使用します。
-
-
 
 #### Simple Browser
 {: #simple-browser }
@@ -344,7 +332,8 @@ Simple Browser プレビューでは、アプリケーションの Web リソー
 1. **コマンド・ライン**・ウィンドウから、次のコマンドを実行します。
 
     ```bash
-mfpdev app preview```
+    mfpdev app preview
+    ```
 
 2. プレビュー・オプションを選択します。
 
@@ -361,6 +350,7 @@ mfpdev app preview```
 	```
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** さまざまな CLI コマンドについて詳しくは、『CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理』(../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) チュートリアルを参照してください。
+
 ### ライブ・プレビュー
 {: #live-preview }
 ライブ・プレビューを使用して、応用コード (HTML、CSS、および JS) をリアルタイムで編集できるようになりました。
@@ -388,13 +378,16 @@ cordova run ios
 {: #implementing-javascript-code }
 WebView リソースの編集は、JavaScript のオートコンプリートを可能にする IDE を使用すると便利です。
 
-Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。JavaScript の編集を容易にするには、{{ site.data.keys.product_adj }} Cordova プロジェクトに {{ site.data.keys.product_adj }} API エレメントのオートコンプリートを可能にする定義ファイルを含めます。各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに「d.ts」構成ファイルを提供します。「d.ts」ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは「[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts」です。
+Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。JavaScript の編集を容易にするには、{{ site.data.keys.product_adj }} Cordova プロジェクトに {{ site.data.keys.product_adj }} API エレメントのオートコンプリートを可能にする定義ファイルを含めます。
+
+各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに「d.ts」構成ファイルを提供します。「d.ts」ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは「[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts」です。
 
 「d.ts」構成ファイルを使用すると、TypeScript をサポートしているすべての IDE (TypeScript Playground (http://www.typescriptlang.org/Playground/)、Visual Studio Code (http://www.microsoft.com/visualstudio/eng)、WebStorm (http://www.jetbrains.com/webstorm/)、WebEssentials (http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、Eclipse (https://github.com/palantir/eclipse-typescript)) でオートコンプリートを使用できるようになります。
 
 WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、「[myapp]\www」フォルダーにあります。プロジェクトを cordova build コマンドでビルドする場合、または cordova prepare コマンドを実行する場合、これらのリソースは、「[myapp]\platforms\ios\www」、「[myapp]\platforms\android\assets\www」、または「[myapp]\platforms\windows\www」の各フォルダー内の対応する 「www」フォルダーにコピーされます。
 
 前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。IDE エディターは関連する「d.ts」ファイルにリンクされるようになり、入力したとおりに {{ site.data.keys.product_adj }} API エレメントをオートコンプリートします。
+
 ## Android 用の CrossWalk サポート
 {: #crosswalk-support-for-android }
 Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を「CrossWalk WebView」(https://crosswalk-project.org/) に置換できます。
@@ -406,7 +399,8 @@ Android プラットフォーム用の Cordova アプリケーションでは、
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
-   このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。表に出ないところで、{{ site.data.keys.product_adj }} Cordova SDK は、CrossWalk WebView を使用するように Android プロジェクト・アクティビティーを調整します。
+   このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。
+    表に出ないところで、{{ site.data.keys.product_adj }} Cordova SDK は、CrossWalk WebView を使用するように Android プロジェクト・アクティビティーを調整します。
 
 2. 次のコマンドを実行して、プロジェクトをビルドします。
 

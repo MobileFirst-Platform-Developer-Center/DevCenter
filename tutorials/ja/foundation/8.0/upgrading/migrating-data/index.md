@@ -272,14 +272,16 @@ pod 'IMFDataLocal/SQLCipher'
    ##### 変更後 (Cloudant Sync を使用): iOS デバイスのデータの暗号化:
    {: after-with-cloudant-sync-encrypt-ios-devices }
    ```xml
-pod 'CDTDatastore/SQLCipher'```        
+   pod 'CDTDatastore/SQLCipher'
+   ```        
 
    詳しくは、[CDTDatastore の暗号化に関する資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md)を参照してください。
 
    * 以下のコマンドを実行して、アプリケーションに依存関係を追加します。
 
      ```bash
-pod install```
+     pod install
+     ```
 
 2. Swift アプリケーション内で暗号化機能を使用するには、アプリケーションの関連ブリッジング・ヘッダーに以下の import を追加します。
 
@@ -302,6 +304,8 @@ pod install```
 3. 暗号化を行うように鍵プロバイダーと共にローカル・ストアを初期化します。
 
    > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
+
+
 
    ##### 変更前 (IMFData/CloudantToolkit を使用) : 暗号化のためのローカル・ストアの初期化:
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
@@ -453,6 +457,8 @@ Android デバイス上のデータを暗号化するには、アプリケーシ
 
    > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
 
+
+
    ##### 変更前 (IMFData/CloudantToolkit を使用) : ローカル・ストアの初期化 (Android):
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }
    ```java
@@ -517,7 +523,7 @@ Android デバイス上のデータを暗号化するには、アプリケーシ
 
    ##### 変更後 (Cloudant Sync を使用): 鍵プロバイダーとともに初期化 (Android)
    {: #after-with-cloudant-sync-initialize-with-key-provider-android }
-暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
+   暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
 
 ## ユーザー・アクセス権の設定
 {: #setting-user-permissions }

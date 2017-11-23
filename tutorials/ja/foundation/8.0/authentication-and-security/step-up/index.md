@@ -54,8 +54,6 @@ private transient StepUpUserLogin userLogin;
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** 両方のセキュリティー検査の実装が、同じアダプター内にバンドルされている必要があります。
 
-
-
 この参照を解決するために、フレームワークは該当クラスのセキュリティー検査を検索し、その参照を従属セキュリティー検査に注入します。  
 同じクラスのセキュリティー検査が複数存在する場合、アノテーションにはオプションの `name` パラメーターが付きます。このパラメーターを使用して、参照する検査の固有の名前を指定できます。
 
