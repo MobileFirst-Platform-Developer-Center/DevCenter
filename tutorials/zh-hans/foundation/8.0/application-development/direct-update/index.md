@@ -75,13 +75,13 @@ downloads:
 
 备用：
 
-* 构建 .zip 文件并将其上载到不同的 {{ site.data.keys.mf_server }}：`mfpdev app webupdate [server-name] [runtime-name]`。例如：
+* 构建 .zip 文件并将其上载到不同的 {{ site.data.keys.mf_server }}：`mfpdev app webupdate [server-name] [runtime-name]`。 例如：
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* 上载先前生成的 .zip 文件：`mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`。例如：
+* 上载先前生成的 .zip 文件：`mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`。 例如：
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip

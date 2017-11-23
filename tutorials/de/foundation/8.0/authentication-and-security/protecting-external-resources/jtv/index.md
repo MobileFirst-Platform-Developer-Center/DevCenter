@@ -52,6 +52,8 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 mit dem Introspektionsendpunkt des Autorisierungsservers eingebunden ist und die diese Interaktion vereinfacht. Ausführliche API-Referenzinformationen finden Sie unter
 [{{ site.data.keys.product_adj }}-Java-Token-Validator](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
+
+
 ## Berechtigungsnachweise validieren
 {: #validating-the-credentials }
 Die API-Methode `validate` fordert den Autorisierungsserver auf, den Authorization-Header zu validieren. 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in einem IBM Bluemix-Kubernetes-Cluster einrichten
-breadcrumb_title: Kubernetes-Cluster in IBM Bluemix
+breadcrumb_title: Foundation in einem Kubernetes-Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -244,6 +244,8 @@ Wie bereits erläutert, können Sie die Scripts interaktiv oder unter Verwendung
 
 >**Hinweis:** Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich mit den Argumenten, die angegeben werden müssen, zu beschäftigen.
 
+
+
 Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzeichnis `./recorded-args/` gespeichert. Sie können somit beim ersten Mal den interaktiven Modus nutzen und bei künftigen Implementierungen die Eigenschaftendateien wiederverwenden. 
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
@@ -422,7 +424,7 @@ Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen
 
 1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben.
 2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **Paketstammverzeichnis/bmx-kubernetes/usr-mfpf-server** und **Paketstammverzeichnis/bmx-kubernetes/usr-mfpf-analytics**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
-3. Bearbeiten Sie die Datei **Paketstammverzeichnis/bmx-kubernetes/usr-mfpf-server/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie: 
+3. Bearbeiten Sie die Datei **Paketstammverzeichnis/bmx-kubernetes/usr-mfpf-server/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie:
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
 ```
@@ -430,8 +432,7 @@ Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen
 
     a. Führen Sie das Script `prepareserver.sh` aus, um das Server-Image neu zu erstellen und per Push-Operation zum Service "IBM Containers" zu übertragen.
 
-    b. Führen Sie für ein schrittweises Update den folgenden Befehl aus:
-      <code>kubectl rolling-update NAME -f DATEI</code>
+    b. Führen Sie für ein schrittweises Update den folgenden Befehl aus: <code>kubectl rolling-update NAME -f DATEI</code>
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 

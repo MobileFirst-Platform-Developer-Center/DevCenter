@@ -88,9 +88,9 @@ Binärdateien und Tools für {{ site.data.keys.mf_server }} auf der Platte. Es i
 MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver. Wenn Sie die Installation mit dem Installation
 Manager ausgeführt haben, müssen Sie die Datenbanken einrichten und
 die MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver implementieren.   
-> Wenn Sie für eine vorhandene Installation ein Update mit dem
-Installation Manager durchführen, werden auch nur die Dateien auf der Platte aktualisiert. Für die Aktualisierung der in Ihren Anwendungsservern implementierten Anwendungen sind weitere
-Schritte erforderlich. #### Fahren Sie mit folgenden Abschnitten fort: 
+> Wenn Sie für eine vorhandene Installation ein Update mit dem Installation Manager durchführen, werden auch nur die Dateien auf der Platte aktualisiert. Für die Aktualisierung der in Ihren Anwendungsservern implementierten Anwendungen sind weitere Schritte erforderlich.
+
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Administratormodus und Benutzermodus im Vergleich](#administrator-versus-user-mode)
 * [Installation mit dem Installationsassistenten von IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
@@ -417,18 +417,9 @@ Die folgenden Prozeduren beschreiben die Verwendung dieser Dateien.
     
     > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM
-DB2 oder
-ein anderes von WebSphere Application Server unterstütztes Datenbankmanagementsystem (DBMS)
-verwenden, um die Vorteile
-einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
-    Für die Deinstallation
-müssen Sie eine Beispieldatei verwenden, die von der Version von
-{{ site.data.keys.mf_server }} oder
-Worklight Server abhängt, die Sie
-ursprünglich in der entsprechenden Paketgruppe installiert haben:
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder ein anderes von WebSphere Application Server unterstütztes Datenbankmanagementsystem (DBMS) verwenden, um die Vorteile einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
 
+    Für die Deinstallation müssen Sie eine Beispieldatei verwenden, die von der Version von {{ site.data.keys.mf_server }} oder Worklight Server abhängt, die Sie ursprünglich in der entsprechenden Paketgruppe installiert haben:
     
     * {{ site.data.keys.mf_server }} verwendet die Paketgruppe {{ site.data.keys.mf_server }}.
     * Worklight Server ab Version 6.x verwendet die Paketgruppe IBM Worklight.
@@ -499,7 +490,8 @@ Setzen Sie das Versionsattribut im Element `<offering>` im Element `<install>` a
     * `<Antwortdatei>` steht für den Namen der Datei, die Sie in Schritt 1 ausgewählt und aktualisiert haben.
 
 > Weitere Informationen finden Sie in der Dokumentation zu IBM Installation
-Manager im Abschnitt [Pakete unbeaufsichtigt mithilfe einer Antwortdatei installieren](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).    
+Manager im Abschnitt [Pakete unbeaufsichtigt mithilfe einer Antwortdatei installieren](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+    
 
 ### Mit einer Antwortdatei arbeiten, die auf einer anderen Maschine aufgezeichnet wurde
 {: #working-with-a-response-file-recorded-on-a-different-machine }

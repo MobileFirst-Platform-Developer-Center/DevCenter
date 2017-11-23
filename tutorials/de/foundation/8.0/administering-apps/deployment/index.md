@@ -56,6 +56,8 @@ Sie können SSL zwischen Adaptern und Back-End-Servern konfigurieren, indem Sie 
 
     > **Hinweis:** Exportieren Sie öffentliche Back-End-Zertifikate aus dem Back-End-Keystore mit keytool oder openssl lib. Verwenden Sie
 das Exportfeature export nicht in einem Web-Browser.
+
+
 2. Importieren Sie das Back-End-Serverzertifikat in den {{ site.data.keys.product_adj }}-Keystore.
 3. Implementieren Sie das neue Zertifikat im {{ site.data.keys.product_adj }}-Keystore. Weitere Informationen finden Sie unter [Keystore von {{ site.data.keys.mf_server }} konfigurieren](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
@@ -97,7 +99,9 @@ Konfiguration mit dem Programm "keytool" durchführen.
 **First
 and Last Name** enthält Ihre Server-URL, die Sie in der Konfigurationsdatei
 **adapter.xml** verwenden, z. B.
-**mydomain.com** oder **localhost**.2. Konfigurieren Sie Ihren Back-End-Server für die Interaktion mit dem Keystore.
+**mydomain.com** oder **localhost**.
+
+2. Konfigurieren Sie Ihren Back-End-Server für die Interaktion mit dem Keystore.
 Für Apache Tomcat müssen Sie beispielsweise die Datei
 **server.xml** wie folgt ändern: 
 
@@ -204,6 +208,8 @@ Wenn Sie eine Anwendung bei einem Produktionsserver registrieren, laden Sie den 
 
    > **Tipp:** Bevor Sie die erste Version Ihrer App registrieren, können Sie den Tokenlizenztyp für Ihre App festlegen. Weitere Informationen finden Sie unter [Angaben zur Anwendungslizenz festlegen](../license-tracking/#setting-the-application-license-information).
 
+
+
 2. Übertragen Sie den Anwendungsdeskriptor von einem Testserver auf einen Produktionsserver.
 
    Damit wird Ihre Anwendung beim Produktionsserver registriert und die Konfiguration Ihrer Anwendung hochgeladen. Weitere Informationen zum Übertragen eines Anwendungsdeskriptors finden Sie unter [Serverseitige Artefakte auf einen Test- oder Produktionsserver übertragen](#transferring-server-side-artifacts-to-a-test-or-production-server).
@@ -217,6 +223,8 @@ Wenn Sie eine Anwendung bei einem Produktionsserver registrieren, laden Sie den 
 
    > **Hinweis:** Unter Umständen können Sie die Push-Benachrichtigungen für Ihre App mit Produktionszertifikaten erst testen, wenn Ihre App im Store veröffentlicht ist.
 
+
+
 6. Überprüfen Sie die folgenden Punkte, bevor Sie die Anwendung im Store veröffentlichen:
     * Testen Sie die von Ihnen geplanten Verwaltungsfeatures für mobile Anwendungen, z. B. die Inaktivierung von Anwendungen über Fernzugriff oder die Anzeige einer Administratornachricht. Weitere Informationen finden Sie unter [Mobile Anwendungen verwalten](../using-console/#mobile-application-management).
     * Definieren Sie im Falle eines Updates eine passende Strategie. Weitere Informationen finden Sie unter [{{ site.data.keys.product_adj }}-Apps in der Produktion aktualisieren](#updating-mobilefirst-apps-in-production).
@@ -228,6 +236,8 @@ Mit Befehlszeilentools oder einer REST-API können Sie eine Anwendungskonfigurat
 Die Anwendungsdeskriptordatei ist eine JSON-Datei mit der Beschreibung und Konfiguration Ihrer Anwendung. Wenn Sie eine App ausführen, die eine Verbindung zu einer MobileFirst-Server-Instanz herstellt, muss die App bei diesem Server registriert und für diesen Server konfiguriert sein. Wenn Sie eine Konfiguration für Ihre App definiert haben, können Sie den Anwendungsdeskriptor auf einen anderen Server übertragen, z. B. auf einen Test- oder Produktionsserver. Nach der Übertragung des Anwendungsdeskriptors auf den neuen Server ist die App bei dem neuen Server registriert. Abhängig davon, ob Sie mobile Anwendungen entwickeln und Zugriff auf den Code haben oder Server verwalten und keinen Zugriff auf den Code der mobilen App haben, sind verschiedene Vorgehensweisen möglich.
 
 > **Wichtiger Hinweis:** Wenn Sie eine Anwendung mit Authentizitätsdaten importieren und diese Anwendung seit der Generierung der Authentizitätsdaten erneut kompiliert wurde, müssen Sie die Authentizitätsdaten aktualisieren. Weitere Informationen finden Sie unter [Sicherheitsüberprüfung der Anwendungsauthentizität konfigurieren](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+
+
 
 * Wenn Sie auf den Code der mobilen App zugreifen können, verwenden Sie die Befehle `mfpdev app pull` und `mfpdev app push`.
 * Wenn Sie keinen Zugriff auf den Code der mobilen App haben, verwenden Sie den Verwaltungsservice.
@@ -295,6 +305,7 @@ Laden Sie den Anwendungsdeskriptor von dem Server, auf dem die Anwendung konfigu
 2. Laden Sie den Anwendungsdeskriptor von dem Server herunter, auf dem die Anwendung konfiguriert ist. Für den Download können Sie die REST-API oder **mfpadm** verwenden.
 
    > **Hinweis:** Sie können in der {{ site.data.keys.mf_console }} auch eine Anwendung oder Anwendungsversion exportieren (siehe [Anwendungen und Adapter in der {{ site.data.keys.mf_console }} exportieren und importieren](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console)).
+
     * Wenn Sie den Anwendungsdeskriptor mit der REST-API herunterladen möchten, verwenden Sie die REST-API [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-).
 
     Die folgende URL gibt den Anwendungsdeskriptor der Anwendung mit der App-ID **my.test.application** für die Plattform **ios** und die Version **0.0.1** zurück. Der Aufruf wird an {{ site.data.keys.mf_server }} gerichtet: `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`.
@@ -368,7 +379,9 @@ Die Export-API ruft die ausgewählten Artefakte für eine Laufzeit als
 > **Wichtiger Hinweis:** Überdenken Sie Ihren Anwendungsfall gründlich.  
 >  
 > * Die Exportdatei enthält die Anwendungsauthentizitätsdaten. Diese Daten sind spezifisch für den Build einer mobilen App. Die mobile App enthält die URL und den Laufzeitnamen des Servers. Wenn Sie also einen anderen Server oder eine andere Laufzeit verwenden möchten, müssen Sie einen neuen App-Build erstellen. Eine Übertragung der exportierten App-Dateien ist nicht ausreichend.
+
 > * Bestimmte Artefakte können je nach Server verschieden sein. In einer Entwicklungsumgebung werden beispielsweise andere Push-Berechtigungsnachweise als in einer Produktionsumgebung verwendet.
+
 > * Die Anwendungslaufzeitkonfiguration (mit dem Aktivierungs-/Inaktivierungszustand und den Protokollprofilen) kann nicht in allen Fällen übertragen werden.
 > * Die Übertragung von Webressourcen ist in einigen Fällen nicht sinnvoll, z. B. wenn Sie einen neuen App-Build erstellen, weil Sie einen neuen Server verwenden möchten.
 
@@ -406,7 +419,9 @@ Wenn Ihnen die Administratorrolle **mfpadmin** oder die Deployer-Rolle **mfpdepl
 > **Wichtiger Hinweis:** Überdenken Sie Ihren Anwendungsfall gründlich.  
 > 
 > * Die Exportdatei enthält die Anwendungsauthentizitätsdaten. Diese Daten sind spezifisch für den Build einer mobilen App. Die mobile App enthält die URL und den Laufzeitnamen des Servers. Wenn Sie also einen anderen Server oder eine andere Laufzeit verwenden möchten, müssen Sie einen neuen App-Build erstellen. Eine Übertragung der exportierten App-Dateien ist nicht ausreichend.
+
 > * Bestimmte Artefakte können je nach Server verschieden sein. In einer Entwicklungsumgebung werden beispielsweise andere Push-Berechtigungsnachweise als in einer Produktionsumgebung verwendet.
+
 > * Die Anwendungslaufzeitkonfiguration (mit dem Aktivierungs-/Inaktivierungszustand und den Protokollprofilen) kann nicht in allen Fällen übertragen werden.
 > * Die Übertragung von Webressourcen ist in einigen Fällen nicht sinnvoll, z. B. wenn Sie einen neuen App-Build erstellen, weil Sie einen neuen Server verwenden möchten.
 
@@ -435,7 +450,7 @@ Wenn Sie ein Upgrade für eine App durchführen, können Sie eine neue App-Versi
 
 ### Neue App-Version implementieren und alte Version erhalten
 {: #deploying-a-new-app-version-and-leaving-the-old-version-working }
-Der am häufigsten gewählte Upgradepfad bei Einführung neuer Features oder Modifikation des nativen Codes ist, eine neue Version der App herauszugeben. Ziehen Sie die folgenden Schritte in Betracht:
+Der am häufigsten gewählte Upgradepfad bei Einführung neuer Features oder Modifikation des nativen Codes ist, eine neue Version der App herauszugeben. Folgende Schritte könnten Sie ausführen:
 
 1. Erhöhen Sie die App-Versionsnummer.
 2. Erstellen und testen Sie Ihre Anwendung. Weitere Informationen finden Sie unter
@@ -462,6 +477,8 @@ Dieser Upgradepfad wird verwendet, wenn Sie Benutzer veranlassen möchten, das U
 
 > **Hinweis:** Wenn Sie die alte App inaktivieren, ist keine Kommunikation mit {{ site.data.keys.mf_server }} mehr möglich. Benutzer können die App noch starten und damit offline arbeiten, bis Sie beim App-Start das Herstellen einer Serververbindung durchsetzen.
 
+
+
 ### Direkte Aktualisierung (keine Änderungen am nativen Code)
 {: #direct-update-no-native-code-changes }
 Die direkte Aktualisierung ist ein obligatorischer Upgrademechanismus für die Implementierung von Schnellkorrekturen in einer Produktions-App. Wenn Sie eine App erneut in {{ site.data.keys.mf_server }} implementieren, ohne die Version der App zu ändern, sendet {{ site.data.keys.mf_server }} die aktualisierten Webressourcen per Push-Operation direkt an das Gerät, sobald der Benutzer eine Verbindung zum Server herstellt. Aktualisierter nativer Code wird nicht per Push-Operation gesendet. Nachfolgend sind Faktoren aufgelistet, die Sie beachten müssen, wenn Sie eine direkte Aktualisierung durchführen möchten:
@@ -472,3 +489,4 @@ Die direkte Aktualisierung ist ein obligatorischer Upgrademechanismus für die I
 4. Die direkte Aktualisierung funktioniert nicht, wenn eine Anwendung nicht mit der für die Erstimplementierung verwendeten Version von {{ site.data.keys.product }} kompiliert (erstellt) wird.
 
 > **Hinweis:** Archiv- bzw. IPA-Dateien, die für die Übergabe von iOS-Apps an einen Store oder für die Validierung von iOS-Apps mit Test Flight oder iTunes Connect generiert werden, können zu Laufzeitfehlern oder zu einem Laufzeitabsturz führen. Weitere Informationen hierzu finden Sie im Blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
+

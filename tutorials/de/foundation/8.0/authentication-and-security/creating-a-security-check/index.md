@@ -28,6 +28,8 @@ und können nicht gemischt werden. Sie können daher
 keine Adapter-API wie die Schnittstelle `AdpatersAPI` im Code Ihrer Sicherheitsüberprüfung
 und keine APIs für Sicherheitsüberprüfungen im Quellcode von Adaptern verwenden.
 
+
+
 Die Architektur des Sicherheitsframeworks ist modular und
 flexibel, und die Implementierung der Sicherheitsüberprüfung ist grundsätzlich nicht von einer bestimmten Ressource oder Anwendung abhängig. Sie können eine
 Sicherheitsüberprüfung wiederverwenden, um andere Ressourcen zu schützen, und für verschiedene Autorisierungsabläufe unterschiedliche Kombinationen von Sicherheitsüberprüfungen verwenden. Für noch mehr Flexibilität macht eine Sicherheitsprüfungsklasse
@@ -76,6 +78,8 @@ auf der Registerkarte "Tools"  unter **Sicherheitsüberprüfungen** herunterlade
 
 > Wenn ein Java-Adapter mit der Standardschablone erstellt wird, wird davon ausgegangen, dass der Adapter **Ressourcen** bereitstellen soll. Der Entwickler kann beschließen,
 Sicherheitsüberprüfungen und Ressourcen in das Adapterpaket oder in speziell dafür vorgesehene Adapter aufzunehmen.
+
+
 
 Wenn Sie die Standardimplementierung für **Ressourcen** entfernen möchten,
 löschen Sie die Dateien **[Adaptername]Application.java** und **[Adaptername]Resource.java**. Entfernen Sie außerdem das Element `<JAXRSApplicationClass>` aus der Datei **adapter.xml**. 
@@ -215,6 +219,8 @@ Beispiel:
 > Ein Praxisbeispiel finden Sie
 im Abschnitt [Sicherheitsüberprüfung konfigurieren](../credentials-validation/security-check/#configuring-the-security-check)
 des Lernprogramms "CredentialsValidationSecurityCheck".
+
+
 
 ### {{ site.data.keys.mf_console }} - Adapter
 {: #mobilefirst-operations-console-adapter }

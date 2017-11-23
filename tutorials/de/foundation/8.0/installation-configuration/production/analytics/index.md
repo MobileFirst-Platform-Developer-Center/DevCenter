@@ -15,7 +15,9 @@ bereitgestellt.
 
 > **Hinweis:** Installieren Sie auf einer Hostmaschine nicht mehr als eine Instanz von
 {{ site.data.keys.mf_analytics_server }}. Weitere Informationen zur Verwaltung Ihres Clusters
-finden Sie in der Elasticsearch-Dokumentation. Die Analyse-WAR-Dateien und die Analyse-EAR-Datei werden bei der Installation von
+finden Sie in der Elasticsearch-Dokumentation. 
+
+Die Analyse-WAR-Dateien und die Analyse-EAR-Datei werden bei der Installation von
 MobileFirst Server ebenfalls installiert.
 Weitere Informationen finden Sie unter "MobileFirst-Server-Verteilungsstruktur". Wenn Sie die WAR-Datei implementieren, ist die MobileFirst Analytics Console unter `http://<Hostname>:<Port>/analytics/console` verfügbar, z. B. unter `http://localhost:9080/analytics/console`.
 

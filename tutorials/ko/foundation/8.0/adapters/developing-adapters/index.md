@@ -12,6 +12,8 @@ weight: 5
 
 > IntelliJ를 사용하는 방법에 대한 지시사항은 [MobileFirst Java 어댑터 개발을 위해 IntelliJ 사용]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) 블로그 게시물을 참조하십시오.
 
+
+
 **전제조건:**
 
 * 먼저 [어댑터 학습서](../)를 읽어 어댑터에 익숙해질 것. 
@@ -70,6 +72,8 @@ weight: 5
 [어댑터를 빌드하고 배치하는 방법을 학습하십시오](../creating-adapters/#build-and-deploy-adapters).
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** Eclipse는 플러그인을 사용하여 **명령행** 창을 통합함으로써 일관된 개발 환경을 작성하여 배치 단계를 용이하게 하도록 강화될 수도 있습니다. 이 창에서 Maven 또는 {{ site.data.keys.mf_cli }} 명령을 실행할 수 있습니다.
+
+
 
 ### 어댑터 빌드
 {: #building-an-adapter }

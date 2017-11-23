@@ -31,7 +31,7 @@ downloads:
 2. 将以下代码添加到现有 `dependencies` 部分：
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
 ## 基本用法

@@ -25,7 +25,7 @@ Entretanto, se você decidir instalar várias instâncias do tempo de execução
 
 > **Nota sobre o DB2:** Os licenciados do {{ site.data.keys.product_adj }} estão autorizados a usar o DB2 como um sistema de suporte para o Foundation. Para beneficiar-se disso você deve, depois de instalar o software DB2:
 > 
-> * Fazer download da imagem de ativação de uso restrito diretamente do [website do IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
+> * Faça o download a imagem de ativação de uso restrito direetamente do [website do IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
 > * Aplicar o arquivo de licença de ativação de uso restrito **db2xxxx.lic** usando o comando **db2licm**
 >
 > Saiba mais no [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)

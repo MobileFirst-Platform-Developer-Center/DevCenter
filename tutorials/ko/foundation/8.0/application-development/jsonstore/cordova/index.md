@@ -57,6 +57,8 @@ WL.JSONStore.init(collections).then(function (collections) {
 
 > 초기화 시 사용할 수 있는 선택적 기능은 이 학습서의 두 번째 파트에서 **보안**, **다중 사용자 지원** 및 **{{ site.data.keys.product_adj }} 어댑터 통합**을 참조하십시오.
 
+
+
 ### 가져오기
 {: #get }
 `get`을 사용하여 콜렉션에 대한 액세서를 작성하십시오. get을 호출하기 전에 `init`를 호출해야 하며, 그렇지 않은 경우 `get`의 결과가 정의되지 않습니다. 

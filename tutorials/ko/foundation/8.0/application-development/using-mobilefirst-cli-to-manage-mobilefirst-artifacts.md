@@ -18,6 +18,8 @@ relevantTo: [ios,android,windows,javascript]
 
 > Cordova 및 고유 애플리케이션의 SDK 통합과 관련된 자세한 정보는 [{{ site.data.keys.product }} SDK 추가](../../application-development/sdk/) 카테고리의 학습서를 참조하십시오.
 
+
+
 #### 다음으로 이동
 {: #jump-to }
 * [전제조건](#prerequisites)
@@ -34,17 +36,17 @@ relevantTo: [ios,android,windows,javascript]
 {: #prerequisites }
 {{ site.data.keys.mf_cli }}는 [NPM 레지스트리](https://www.npmjs.com/)에서 NPM 패키지로 사용 가능합니다.   
 
-NPM 패키지를 설치하려면 개발 환경에 **node.js**가 설치되어 있는지 확인하십시오.   
+NPM 패키지를 설치하려면 개발 환경에 **node.js** 및 **npm**이 설치되어 있는지 확인하십시오.  
 [nodejs.org](https://nodejs.org)의 설치 지시사항에 따라 node.js를 설치하십시오. 
 
 node.js가 올바르게 설치되었는지 확인하려면 `node -v` 명령을 실행하십시오. 
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **참고:** 지원되는 최소 node.js 버전은 4.2.3입니다. 
+> **참고:** 지원되는 최소 **node.js** 버전은 **4.2.3**입니다. 또한 **node**와 **npm** 패키지가 빠르게 전개되므로 MobileFirst CLI가 최신 버전을 포함하여 사용 가능한 모든 버전의 **node** 및 **npm**에서 완벽하게 작동하지 않을 수도 있습니다. CLI가 제대로 작동하려면 **node**의 버전이 **6.11.1**이고 **npm**의 버전이 **3.10.10**인지 확인하십시오.
 
 ## {{ site.data.keys.mf_cli }} 설치
 {: #installing-the-mobilefirst-cli }
@@ -292,9 +294,12 @@ mfpdev app config
 * 애플리케이션이 등록되는 서버 주소 및 런타임
 
     > **예제 유스 케이스:** 특정 주소를 사용하는 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하지만 다른 서버 주소(예: DataPower 어플라이언스)에도 애플리케이션을 연결하려는 경우 다음을 수행하십시오.
+
     >
     > 1. `mfpdev app register`를 실행하여 예상 {{ site.data.keys.mf_server }} 주소에 애플리케이션을 등록하십시오. 
     > 2. `mfpdev app config`를 실행하고 DataPower 어플라이언스의 주소와 일치하도록 **서버** 특성 값을 변경하십시오. 또한 **직접 모드**에서 다음 명령을 실행할 수도 있습니다. `mfpdev app config server http(s)://server-ip-or-host:port`
+
+
 
 * 직접 업데이트 인증 기능에 사용할 공개 키 설정
 * 애플리케이션 기본 언어 설정(기본값: 영어(en))

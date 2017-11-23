@@ -21,7 +21,7 @@ downloads:
 
 ## 登录
 {: #login }
-在此示例中，`UserLogin` 期望使用名为 `username` 和 `password` 的 *key:value*。它还可选择接受布尔值 `rememberMe` 键，这告知安全性检查在较长时间段内记住此用户。 在样本应用程序中，通过来自登录表单复选框中的布尔值收集此项。
+在此示例中，`UserLogin` 期望使用名为 `username` 和 `password` 的 *key:value*。 它还可选择接受布尔值 `rememberMe` 键，这告知安全性检查在较长时间段内记住此用户。 在样本应用程序中，通过来自登录表单复选框中的布尔值收集此项。
 
 `credentials` 自变量为包含 `username`、`password` 和 `rememberMe` 的 `JSONObject`：
 

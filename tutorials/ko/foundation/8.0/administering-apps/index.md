@@ -38,6 +38,8 @@ show_children: true
 
 > {{ site.data.keys.product_adj }} 관리 역할에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리를 위한 사용자 인증 구성](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오.
 
+
+
 ## 관리 도구
 {: #administration-tools }
 {{ site.data.keys.product_adj }} 애플리케이션을 관리하는 데 {{ site.data.keys.mf_console }}만 사용할 수 있는 것은 아닙니다. {{ site.data.keys.product }}은 빌드와 배치 프로세스에 관리 조작을 통합하는 다른 도구도 제공합니다. 

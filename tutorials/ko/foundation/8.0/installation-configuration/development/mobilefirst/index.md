@@ -15,6 +15,8 @@ weight: 1
 
 > {{ site.data.keys.product }}을 평가하려면 Mobile Foundation Bluemix 서비스를 사용하여 Bluemix에서 {{ site.data.keys.mf_server }}의 인스턴스를 회전시키기만 하면 됩니다. [Mobile Foundation 사용](../../../bluemix/using-mobile-foundation/) 학습서에서 지시사항을 참조하십시오. 로컬 설치를 위해 {{ site.data.keys.mf_dev_kit_short }}을 설치하도록 선택할 수도 있습니다.
 
+
+
 #### 다음으로 이동:
 {: #jump-to }
 
@@ -33,6 +35,8 @@ weight: 1
 {{ site.data.keys.mf_dev_kit_short }}은 필요한 구성이 최소인 개발 준비가 된 환경을 제공합니다. 이 킷은 {{ site.data.keys.mf_server }} &amp; {{ site.data.keys.mf_console }}, MobileFirst Developer CLI(Command-line Interface) 등의 컴포넌트로 구성되며 선택적으로 다운로드할 클라이언트 SDK 및 어댑터 도구를 제공합니다. 
 
 > **참고:** 인터넷 액세스가 없는 컴퓨터에서 개발 환경을 설정해야 하는 경우에는 컴포넌트를 오프라인으로 설치할 수 있습니다. [오프라인 IBM MobileFirst 개발 환경 설정 방법]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment)을 참조하십시오.
+
+
 
 ### {{ site.data.keys.mf_dev_kit_short }} 설치 프로그램
 {: #developer-kit-installer }
@@ -73,6 +77,8 @@ weight: 1
 - 지속적인 통합 워크플로우 및 빠른 개발 주기를 위한 DevOps 스크립트 생성
 
 > [MobilFirst Operations Console 사용](../../../product-overview/components/console/) 학습서에서 {{ site.data.keys.mf_console }}에 대해 자세히 학습하십시오.
+
+
 
 ### {{ site.data.keys.product }} 명령행 인터페이스
 {: #mobilefirst-foundation-command-line-interface }

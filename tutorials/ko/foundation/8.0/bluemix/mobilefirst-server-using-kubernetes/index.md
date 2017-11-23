@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Bluemix Kubernetes Cluster에서 MobileFirst Server 설정
-breadcrumb_title: IBM Bluemix의 Kubernetes Cluster
+breadcrumb_title: Kubernetes Cluster의 Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -244,6 +244,8 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 
 >**참고:** 스크립트를 대화식으로 실행할 경우 구성을 건너뛸 수 있지만 제공해야 하는 인수에 대해 읽고 이해해야 합니다.
 
+
+
 대화식으로 실행하는 경우 제공된 인수의 사본은 `./recorded-args/` 디렉토리에 저장됩니다. 따라서 처음으로 대화식 모드를 사용할 수 있고 이후 배치를 위한 참조로 특성 파일을 재사용할 수 있습니다. 
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
@@ -377,17 +379,17 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                   <li>Kubernetes 배치를 작성하십시오. <br/>yaml 파일인 <b>args/mfpf-deployment-all.yaml</b>을 편집하고 세부사항을 채우십시오. <em>kubectl</em> 명령을 실행하기 전에 모든 변수는 해당 값으로 대체되어야 합니다. <br/>
                   <b>./args/mfpf-deployment-all.yaml</b>에는 다음 항목에 대한 배치가 포함됩니다.
                   <ul>
-                    <li>{{ site.data.keys.mf_server }}의 Kubernetes 배치는 세 개의 인스턴스(복제본), 1024MB 메모리 및 1Core CPU로 구성됩니다. </li>
-                    <li>{{ site.data.keys.mf_analytics }}의 Kubernetes 배치는 두 개의 인스턴스(복제본), 1024MB 메모리 및 1Core CPU로 구성됩니다. </li>
-                    <li>{{ site.data.keys.mf_server }}의 Kubernetes 서비스입니다. </li>
-                    <li>{{ site.data.keys.mf_analytics }}의 Kubernetes 서비스입니다. </li>
-                    <li>{{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }}에 대한 모든 REST 엔드포인트를 포함하는 전체 설정에 대한 수신입니다. </li>
-                    <li>{{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }} 인스턴스에서 환경 변수를 사용할 수 있도록 하는 configMap입니다. </li>
+                    <li>{{ site.data.keys.mf_server }}의 Kubernetes 배치: 세 개의 인스턴스(복제본), 1024MB 메모리 및 1Core CPU로 구성.</li>
+                    <li>{{ site.data.keys.mf_analytics }}의 Kubernetes 배치: 두 개의 인스턴스(복제본), 1024MB 메모리 및 1Core CPU로 구성.</li>
+                    <li>{{ site.data.keys.mf_server }}의 Kubernetes 서비스.</li>
+                    <li>{{ site.data.keys.mf_analytics }}의 Kubernetes 서비스.</li>
+                    <li>{{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }}에 대한 모든 REST 엔드포인트를 포함하는 전체 설정에 대한 수신(ingress).</li>
+                    <li>{{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }} 인스턴스에서 환경 변수를 사용할 수 있도록 하는 configMap.</li>
                   </ul>
                   YAML 파일에서 다음 값을 편집해야 합니다. <br/>
                     <ol><li>위에 설명된 대로 <code>bx cs cluster-get</code> 명령의 출력과는 다른 <em>my-cluster.us-south.containers.mybluemix.net</em>의 발생(<b>수신 도메인</b>의 출력 사용)</li>
-                    <li><em>registry.ng.bluemix.net/repository/mfpfanalytics:latest</em> 및 <em>registry.ng.bluemix.net/repository/mfpfserver:latest</em> - prepareserver.sh에서 사용한 이름을 동일하게 사용하여 이미지를 업로드합니다. </li>
-                    <li><b>claimName</b>: <em>mfppvc</em> - 위에 사용한대로 지속적 볼륨 클레임 이름을 사용하여 PVC를 작성합니다. <br/></li>
+                    <li><em>registry.ng.bluemix.net/repository/mfpfanalytics:latest</em> 및 <em>registry.ng.bluemix.net/repository/mfpfserver:latest</em> - 이미지를 업로드하기 위해 prepareserver.sh에서 사용한 동일한 이름을 사용하십시오. </li>
+                    <li><b>claimName</b>: <em>mfppvc</em> - PVC를 작성하기 위해 위에서 사용한 대로 동일한 지속적 볼륨 클레임 이름을 사용하십시오. <br/></li>
                     </ol>
                     다음 명령을 실행하십시오. <br/>
                     <code>kubectl create -f ./args/mfpf-deployment-all.yaml</code>

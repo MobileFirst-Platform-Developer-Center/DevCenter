@@ -34,7 +34,7 @@ weight: 2
 
 ## 콘솔 액세스
 {: #accessing-the-console }
-다음 방법으로 {{site.data.keys.mf_console }}에 액세스할 수 있습니다.
+다음 방법으로 {{ site.data.keys.mf_console }}에 액세스할 수 있습니다.
 
 ### 로컬로 설치된 {{ site.data.keys.mf_server }}에서
 {: #from-a-locally-installed-mobilefirst-server }
@@ -55,7 +55,7 @@ weight: 2
 
 #### 명령행
 {: #command-line-remote }
-**명령행** 창에서 설치된 {{ site.data.keys.mf_cli }}를 사용하여 다음을 수행하십시오.  
+**명령행** 창에서 설치된 {{ site.data.keys.mf_cli }}를 사용하여 다음을 수행하십시오. 
 
 1. 원격 서버 정의를 추가하십시오.
 
@@ -72,6 +72,8 @@ weight: 2
 2. `mfpdev server console MyRemoteServer` 명령을 실행하십시오.
 
 > [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서의 다양한 CLI 명령에 대해 자세히 알아보십시오.
+
+
 
 ## 콘솔 탐색
 {: #navigating-the-console }
@@ -91,11 +93,11 @@ weight: 2
 {: #runtime-settings }
 런타임 특성, 글로벌 보안 변수, 서버 키 저장소 및 기밀 클라이언트를 편집하십시오. 
 
-![런타임 설정 화면 이미지 ](runtime-settings.png)
+![런타임 설정 화면의 이미지 ](runtime-settings.png)
 
 ### 오류 로그
 {: #error-log }
-오류 로그는 현재 런타임 환경에서 {{site.data.keys.mf_console }} 또는 명령행으로부터 초기화된 실패한 관리 조작의 목록을 표시합니다. 서버에 대한 실패의 영향을 보려면 로그를 사용하십시오.
+오류 로그는 현재 런타임 환경에서 {{ site.data.keys.mf_console }} 또는 명령행으로부터 초기화된 실패한 관리 조작의 목록을 표시합니다. 서버에 대한 실패의 영향을 보려면 로그를 사용하십시오.
 
 > 자세한 정보는 사용자 문서의 런타임 환경의 조작에 대한 오류 로그 관련 주제를 참조하십시오. 
 
@@ -105,7 +107,7 @@ weight: 2
 {: #devices }
 관리자는 {{ site.data.keys.mf_server }}에 액세스하고 액세스 권한을 관리하는 디바이스를 검색할 수 있습니다.   
 디바이스는 익숙한 이름을 사용하거나 사용자 ID를 사용하여 검색할 수 있습니다. 사용자 ID는 로그인에 사용된 ID입니다.   
-익숙한 이름은 사용자 ID를 공유하는 기타 디바이스에서 이를 구분하기 위해 디바이스와 연관된 이름입니다. 
+익숙한 이름은 사용자 ID를 공유하는 기타 디바이스에서 이를 구분하기 위해 디바이스와 연관된 이름입니다.
 
 > 자세한 정보는 사용자 문서의 디바이스 액세스 관리에 대한 주제를 참조하십시오. 
 
@@ -115,7 +117,7 @@ weight: 2
 {: #applications }
 #### 애플리케이션 등록
 {: #registering-applications }
-기본 애플리케이션 값 및 다운로드 시작 코드를 제공하십시오.  
+기본 애플리케이션 값 및 다운로드 시작 코드를 제공하십시오. 
 
 ![애플리케이션 등록 화면의 이미지](register-applications.png)
 
@@ -131,7 +133,7 @@ weight: 2
 
 > {{ site.data.keys.product_adj }} 보안 프레임워크에 대해 [자세히 알아보십시오](../../../authentication-and-security/).
 
-![애플리케이션 보안 구성 화면 이미지](authentication-and-security.png)
+![애플리케이션 보안 구성 화면의 이미지](authentication-and-security.png)
 
 #### 애플리케이션 설정
 {: #application-settings }
@@ -143,7 +145,7 @@ weight: 2
 {: #notifications }
 인증서 및 GCM 세부사항 같은 [푸시 알림](../../../notifications/) 및 관련 매개변수 설정은 알림을 디바이스에 보낼 뿐 아니라 태그를 정의합니다.
 
-![푸시 알림 설정 화면 이미지](push-notifications.png)
+![푸시 알림 설정 화면의 이미지](push-notifications.png)
 
 ### 어댑터 
 {: #adapters }
@@ -179,11 +181,10 @@ weight: 2
 
 > 자세한 정보는 사용자 문서에서 라이센스 추적에 대한 주제를 참조하십시오. 
 
-![클라이언트 로그 화면의 이미지](license-tracking.png)
+![라이센스 추적 화면의 이미지](license-tracking.png)
 
 ### 다운로드 
 {: #downloads }
 인터넷 연결성이 사용 가능하지 않은 상황에서는 {{ site.data.keys.mf_console }}의 다운로드 센터에서 {{ site.data.keys.product }}의 다양한 개발 아티팩트의 스냅샷을 다운로드할 수 있습니다.
 
 ![사용 가능한 아티팩트의 이미지](downloads.png)
-

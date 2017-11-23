@@ -69,6 +69,8 @@ weight: 6
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 웹 자원을 업데이트할 때마다 `mvn clean install`을 실행해야 합니다.
 
+
+
 ### 애플리케이션 서버에 Maven webapp 추가
 {: #adding-the-maven-webapp-to-the-application-server }
 1. WebSphere Application Server의 **server.xml 파일**을 편집하십시오.

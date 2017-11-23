@@ -30,7 +30,7 @@ Java 어댑터는 백엔드 시스템으로 연결에 대한 제어를 개발자
 ## 데이터 소스 설정
 {: #setting-up-the-data-source }
 
-MySQL 서버에 연결할 수 있도록 {{site.data.keys.mf_server }}를 구성하려면 어댑터의 XML 파일이 **configuration properties**로 구성되어야 합니다. 이러한 특성은 {{site.data.keys.mf_console }}을 통해 나중에 편집될 수 있습니다. 
+MySQL 서버에 연결할 수 있도록 {{ site.data.keys.mf_server }}를 구성하려면 어댑터의 XML 파일이 **configuration properties**로 구성되어야 합니다. 이러한 특성은 {{ site.data.keys.mf_console }}을 통해 나중에 편집될 수 있습니다. 
 
 adater.xml 파일을 편집하고 다음 특성을 추가하십시오.
 
@@ -72,7 +72,7 @@ public class JavaSQLResource {
 ### 데이터 소스 사용 
 {: #using-datasource }
 
-어댑터가 배치될 때 또는 구성이 {{site.data.keys.mf_console }}에서 변경될 때마다 어댑터의 `MFPJAXRSApplication`의 `init` 메소드가 호출됩니다. 이는 [연결 특성 로드](../#configuration-api) 및 `DataSource`를 작성하는 좋은 위치입니다. 
+어댑터가 배치될 때 또는 구성이 {{ site.data.keys.mf_console }}에서 변경될 때마다 어댑터의 `MFPJAXRSApplication`의 `init` 메소드가 호출됩니다. 이는 [연결 특성 로드](../#configuration-api) 및 `DataSource`를 작성하는 좋은 위치입니다. 
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -157,6 +157,8 @@ SQL 조회는 `PreparedStatement` 메소드에 의해 빌드됩니다.
 삽입에 성공하면, `return Response.ok().build()` 메소드는 `200 OK`를 클라이언트로 다시 전송하는 데 사용됩니다. 오류가 있으면, 다른 `Response` 오브젝트가 특정 HTTP 상태 코드로 빌드될 수 있습니다. 이 예에서, `409 Conflict` 오류 코드가 전송됩니다. 또한 모든 매개변수가 전송되는지 여부(여기에 표시되지 않음) 또는 기타 데이터 유효성 검증을 확인하는 것이 권장됩니다.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 준비된 명령문 및 연결과 같은 자원을 닫았는지 확인하십시오.
+
+
 
 ### 사용자 가져오기
 {: #get-user }

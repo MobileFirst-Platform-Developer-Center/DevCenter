@@ -26,11 +26,11 @@ Android SDK 提供了一些工具和 API，这些工具和 API 可用于通过 J
 
 在第一次打开 Android Studio 后，您就可以使用 SDK Manager 来配置 Android SDK。
 
-在 SDK Manager 中，您可以安装必需的软件包。有关更多信息，请[访问 Android Developers Web 站点](http://developer.android.com/sdk/index.html)。
+在 SDK Manager 中，您可以安装必需的软件包。 有关更多信息，请[访问 Android Developers Web 站点](http://developer.android.com/sdk/index.html)。
 
 #### Android 虚拟设备
 {: #android-virtual-devices }
-您可以使用 AVD 来测试应用程序。有关所有可用选项的详细说明，请参阅 Android Developers Web 站点中的[“管理虚拟设备”文档主题](http://developer.android.com/tools/devices/index.html)。
+您可以使用 AVD 来测试应用程序。 有关所有可用选项的详细说明，请参阅 Android Developers Web 站点中的[“管理虚拟设备”文档主题](http://developer.android.com/tools/devices/index.html)。
 
 ## 后续操作
 {: #whats-next }

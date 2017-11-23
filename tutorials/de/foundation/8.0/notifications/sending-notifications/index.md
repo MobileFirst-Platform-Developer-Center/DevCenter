@@ -328,22 +328,23 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 > Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt [REST-API-Laufzeitservices](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) der Benutzerdokumentation.
 
+
+
 #### Nutzdaten von Benachrichtigungen
 {: #notification-payload }
-Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten: 
+Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
-Eigenschaften der Nutzdaten| Definition
-
---- | ---
-message | Die zu sendende Alertnachricht 
-settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung.
-target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden.
-deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. 
-notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). 
-platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows).
-tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen.
-userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. 
-phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. 
+| Eigenschaften der Nutzdaten | Definition |
+| --- | --- |
+| message | Die zu sendende Alertnachricht |
+| settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
+| target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. |
+| deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. |
+| notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). | 
+| platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). |
+| tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. |
+| userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. |
+| phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. |
 
 **JSON-Beispiel für die Nutzdaten von Push-Benachrichtigungen**
 

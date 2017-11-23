@@ -12,11 +12,11 @@ weight: 1
 {: #deployment }
 {{ site.data.keys.product }}는 보안 모바일 애플리케이션(앱)의 개발, 최적화, 통합 및 관리를 사용하는 프레임워크를 제공합니다. {{ site.data.keys.product }}에서는 사용자가 학습해야 하는 전용 프로그래밍 언어 또는 모델을 소개하지 않습니다. 
 
-HTML5 및 CSS3과 JavaScript를 사용하여 앱을 개발할 수 있습니다. 선택적으로 고유 코드(Java 또는 Objective-C)를 작성할 수 있습니다. {{ site.data.keys.product }}는 고유 코드를 통해 액세스할 수 있는 라이브러리가 포함된 SDK를 제공합니다. 
+HTML5 및 CSS3과 JavaScript를 사용하여 앱을 개발할 수 있습니다. 선택적으로 네이티브 코드(Java 또는 Objective-C)를 작성할 수 있습니다. {{ site.data.keys.product }}는 네이티브 코드를 통해 액세스할 수 있는 라이브러리가 포함된 SDK를 제공합니다. 
 
-#### 지원되는 플랫폼  
+#### 지원되는 플랫폼
 {: #supported-platforms }
-{{site.data.keys.product }} SDK는 다음 플랫폼을 지원합니다.
+{{ site.data.keys.product }} SDK는 다음 플랫폼을 지원합니다.
 
 * iOS
 * Android

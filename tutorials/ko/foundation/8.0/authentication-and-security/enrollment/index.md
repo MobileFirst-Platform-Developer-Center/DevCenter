@@ -303,7 +303,9 @@ public String getTransactions(){
 ```
     
 > `securityContext`에 대한 자세한 정보는 Java 어댑터 학습서에서 [보안
-API](../../adapters/java-adapters/#security-api) 섹션을 참조하십시오. 다음을 추가하여 등록된 사용자를 응답 오브젝트에 추가하십시오.
+API](../../adapters/java-adapters/#security-api) 섹션을 참조하십시오. 
+
+다음을 추가하여 등록된 사용자를 응답 오브젝트에 추가하십시오.
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {

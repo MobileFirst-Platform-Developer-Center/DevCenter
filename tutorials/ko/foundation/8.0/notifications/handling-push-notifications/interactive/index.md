@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Interactive notifications
+title: 대화식 알림
 relevantTo: [ios, cordova]
 show_in_nav: false
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
+대화식 알림을 사용하면 알림이 도착할 때 사용자가 애플리케이션을 열지 않고도 조치를 취할 수 있습니다. 대화식 알림이 도착하면 디바이스는 알림 메시지와 함께 조치 단추를 표시합니다. 
 
-Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
+대화식 알림은 iOS 버전 8 이상이 설치된 디바이스에서 지원됩니다. 버전 8 이전 버전이 설치된 iOS 디바이스에 대화식 알림이 전송되는 경우에는 알림 조치가 표시되지 않습니다. 
 
-## Sending interactive push notification
+## 대화식 푸시 알림 전송
 {: #sending-interactive-push-notification }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+알림을 준비하고 알림을 전송하십시오. 자세한 정보는 [푸시 알림 전송](../../sending-notifications)을 참조하십시오. 
 
-You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
+**{{ site.data.keys.mf_console }} → [사용자의 애플리케이션] → 푸시 → 알림 전송 → iOS 사용자 정의 설정** 아래에서 알림 오브젝트가 있는 알림의 카테고리를 표시하는 문자열을 설정할 수 있습니다. 카테고리 값을 기반으로 알림 조치 단추가 표시됩니다. 예를 들어, 다음과 같습니다. 
 
-![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
+![{{ site.data.keys.mf_console }}에서 iOS 대화식 알림의 카테고리 설정](categories-for-interactive-notifications.png)
 
-## Handling interactive push notifications in Cordova applications
+## Cordova 애플리케이션에서 대화식 푸시 알림 처리
 {: #handling-interactive-push-notifications-in-cordova-applications }
-To receive interactive notifications, follow these steps:
+대화식 알림을 수신하려면 다음과 같은 단계를 수행하십시오. 
 
-1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
+1. 기본 JavaScript에서 대화식 알림에 대해 등록된 카테고리를 정의한 후 디바이스 등록 호출 `MFPPush.registerDevice`에 전달하십시오. 
 
    ```javascript
    var options = {
@@ -74,7 +74,7 @@ To receive interactive notifications, follow these steps:
    }
    ```
 
-2. Pass the `options` object while registering device for push notifications.
+2. 푸시 알림에 대해 디바이스를 등록하는 중에 `options` 오브젝트를 전달하십시오. 
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
@@ -83,12 +83,12 @@ To receive interactive notifications, follow these steps:
    });  
    ```
 
-## Handling interactive push notifications in native iOS applications
+## 고유 iOS 애플리케이션에서 대화식 푸시 알림 처리
 {: #handling-interactive-push-notifications-in-native-ios-applications }
-Follow these steps to receive interactive notifications:
+대화식 알림을 수신하려면 다음과 같은 단계를 수행하십시오. 
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
-2. Define registered categories for interactive notifications and pass them as options to `MFPPush.registerDevice`.
+1. 원격 알림 수신 시 백그라운드 태스크를 수행하는 애플리케이션 기능을 사용으로 설정하십시오. 일부 조치가 백그라운드 사용 조치인 경우 이 단계가 필요합니다. 
+2. 대화식 알림에 대해 등록된 카테고리를 정의한 후 옵션으로 `MFPPush.registerDevice`에 전달하십시오. 
 
    ```swift
    //define categories for Interactive Push
