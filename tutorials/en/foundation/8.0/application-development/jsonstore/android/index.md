@@ -34,11 +34,12 @@ downloads:
 compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 3. Add the following to the "DefaultConfig" section of your build.gradle file.
-
+```
   ndk {
         abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
       }
-  **Note** : We add the abiFilters to ensure that the apps having JSONStore will run in any of the architectures specified above. This is required as JSONStore is dependent on a third party library which supports only these architectures .
+ ```     
+ > **Note** : We add the abiFilters to ensure that the apps having JSONStore will run in any of the architectures specified above. This is required as JSONStore is dependent on a third party library which supports only these architectures .
 
 ## Basic Usage
 {: #basic-usage }
