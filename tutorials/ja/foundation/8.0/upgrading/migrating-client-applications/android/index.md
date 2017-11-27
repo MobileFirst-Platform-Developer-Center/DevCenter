@@ -63,8 +63,6 @@ Android Studio および Android SDK が適切にセットアップされてい�
 
 > **注:** このタスクでは、Android プロジェクトが Android Studio を使用して作成されていること、および [Android Studio (7.1) の使用による新規アプリケーションまたは既存アプリケーションへの {{ site.data.keys.product }} SDK の追加](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)で述べられているように、{{ site.data.keys.product_adj }} SDK が追加されていることを想定しています。
 
-
-
 Android Studio プロジェクトが、{{ site.data.keys.product_adj }} SDK の以前のバージョンを追加するようにセットアップされている場合は、**build.gradle** 依存関係エンクロージャーから **compile** グループを削除します。例えば、7.1 からアップグレードする場合は、以下のグループを削除します。
 
 ```xml
@@ -78,8 +76,6 @@ compile group: 'com.ibm.mobile.foundation',
 これで、ローカルまたはリモートの SDK ファイルを使用して V8.0.0 の SDK と構成を追加できるようになりました。[Android アプリケーションへの {{ site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/android)を参照してください。
 
 > 注: 新しい SDK をインポートした後は、Javadoc ファイルを手動でインポートする必要があります。『[Android Studio Gradle プロジェクトへの Javadoc の登録](../../../application-development/sdk/android/additional-information)』を参照してください。
-
-
 
 これで、{{ site.data.keys.product_adj }} SDK を使用してネイティブ Android アプリケーションの開発を始めることができます。V8.0.0 での API の変更にコードを適合させる必要がある場合があります ([Android コードの更新](#updating-the-android-code)を参照)。
 

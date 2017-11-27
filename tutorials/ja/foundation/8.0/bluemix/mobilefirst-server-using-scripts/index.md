@@ -308,8 +308,6 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 >**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
 
-
-
 <div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
@@ -348,7 +346,8 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                   <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em> で指定するものと同じ。</li>
                   <li><b>SERVER_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
                   <li><b>SERVER_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。</li>
-                  <blockquote>                    IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code>IP アドレスは、特定の Bluemix スペース内の複数のコンテナーで再使用できます。
+                  <blockquote>IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code>
+                  IP アドレスは、特定の Bluemix スペース内の複数のコンテナーで再使用できます。
                   既に割り当て済みの IP がある場合、<code>cf ic ip list</code> を実行できます。</blockquote>
               </ul>
               <h4>startappcentergroup.properties</h4>
@@ -1482,8 +1481,6 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 </div>
 
 > **注:** 何らかの構成変更が行われた後は、コンテナーを再始動する必要があります (`cf ic restart containerId`)。コンテナー・グループの場合は、グループ内の各コンテナー・インスタンスを再始動する必要があります。例えば、ルート証明書を変更する場合、新規の証明書が追加された後で、各コンテナー・インスタンスを再始動する必要があります。
-
-
 
 次の URL をロードして {{ site.data.keys.mf_console }} を起動します。http://MF\_CONTAINER\_HOST/mfpconsole (しばらく時間がかかる場合があります)。  
 [{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)チュートリアルの指示に従って、リモート・サーバーを追加します。  

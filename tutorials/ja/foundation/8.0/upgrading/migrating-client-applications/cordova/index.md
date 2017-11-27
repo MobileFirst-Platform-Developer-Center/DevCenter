@@ -280,8 +280,6 @@ function wlEnvInit() {
 
    > **注:** **mfpmigrate** マイグレーション・アシスト・ツールによって {{ site.data.keys.product_adj }} フィーチャー用の Cordova プラグインが追加されていますので、ユーザーがそれらを追加する必要はありません。これらのプラグインについて詳しくは、[{{ site.data.keys.product_adj }} 用の Cordova プラグイン](../../../application-development/sdk/cordova)を参照してください。
 
-
-
 2. オプション: 元のアプリケーションで FIPS フィーチャーを使用している場合は、JQuery イベント・リスナーを、WL/FIPS/READY イベントを listen する JavaScript イベント・リスナーに変更します。FIPS について詳しくは、『[FIPS 140-2 サポート](../../../administering-apps/federal/#fips-140-2-support)』を参照してください。
 3. オプション: 元のアプリケーションで、マイグレーション・アシスト・ツールによって置き換えも提供もされない、サード・パーティーの Cordova プラグインを使用している場合は、**cordova plugin add** コマンドを使用して、手動でそれらのプラグインを Cordova アプリケーションに追加してください。このツールでどのプラグインが置き換えられるかについて詳しくは、[マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)を参照してください。
 4. オプション: (iOS プラットフォームを含み、OpenSSL を使用するアプリケーションの場合のみ。) **cordova-plugin-mfp-encrypt-utils ** プラグインをアプリケーションに追加します。**cordova-plugin-mfp-encrypt-utils ** プラグインは、iOS プラットフォームを使用する Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。
@@ -292,9 +290,7 @@ function wlEnvInit() {
 {: #migrating-encryption-for-ios-cordova }
 iOS ハイブリッドまたは Cordova のアプリケーションで OpenSSL 暗号化を使用していた場合、アプリケーションを新しい V8.0.0 のネイティブ暗号化にマイグレーションできます。OpenSSL の使用を継続する場合は、追加の Cordova プラグインを追加する必要があります。
 
-マイグレーションに関する iOS Cordova 暗号化オプションについて詳しくは、
-[Cordova アプリケーションでの OpenSSL の有効化](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications)トピックの
-[マイグレーション・オプション](../../../application-development/sdk/cordova/additional-information/#migration-options)・セクションを参照してください。
+マイグレーションに関する iOS Cordova 暗号化オプションについて詳しくは、[Cordova アプリケーションでの OpenSSL の有効化](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications)トピックの [マイグレーション・オプション](../../../application-development/sdk/cordova/additional-information/#migration-options)・セクションを参照してください。
 
 ## ダイレクト・アップデートのマイグレーション
 {: #migrating-direct-update }

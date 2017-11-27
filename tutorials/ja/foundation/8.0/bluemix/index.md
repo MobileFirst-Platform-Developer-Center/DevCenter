@@ -14,8 +14,6 @@ IBM Bluemix は、IBM のオープン・クラウド・アーキテクチャー�
 
 > Bluemix のアーキテクチャーおよび Bluemix の概念について詳しくは、[Bluemix の Web サイト](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview)をご覧ください。
 
-
-
 ### 機能の仕組み
 {: #how-does-it-work }
 簡単に言うと、{{ site.data.keys.product }} を Bluemix で実行する方法には、ライセンス資格の種類によって 2 とおりあります。

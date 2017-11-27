@@ -71,7 +71,6 @@ Visual Studio プロジェクトを V8.0 に手動でアップグレードでき
 
         > **注:** アプリケーションでアプリケーション認証性フィーチャーまたは拡張認証性フィーチャーを使用している場合、Microsoft Visual C++ 2013 Runtime Package for Windows または Microsoft Visual C++ 2013 Runtime Package for Windows Phone のいずれかを参照としてアプリケーションに追加する必要があります。そうするには、Visual Studio で、ネイティブ・プロジェクトの参照を右クリックし、ネイティブ API アプリケーションに追加した環境に応じて以下のいずれかを行います。
 
-
         * Windows デスクトップおよびタブレットの場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows」→「OK」**の順に右クリックして選択します。
         * Windows Phone 8 Universal の場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows Phone」→「OK」**の順に右クリックして選択します。
         * Windows 10 Universal Windows Platform (UWP) の場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows Universal」→「OK」**の順に右クリックして選択します。

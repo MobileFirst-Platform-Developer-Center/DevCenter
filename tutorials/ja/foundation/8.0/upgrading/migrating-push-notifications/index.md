@@ -221,8 +221,8 @@ alert(successResponse);
 8. (オプション) タグからアンサブスクライブします。
 
    ```javascript
-MFPPush.unsubscribe(tags, function(successResponse) {
-alert("Successfully unsubscribed");
+   MFPPush.unsubscribe(tags, function(successResponse) {
+		alert("Successfully unsubscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unsubscribe");
@@ -258,54 +258,54 @@ alert("Successfully unsubscribed");
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					},
-		function(failureResponse){
-			alert("Failed to initialize");
-		}
+        MFPPush.registerNotificationsCallback(notificationReceived);              					},
+        function(failureResponse){
+            alert("Failed to initialize");
+        }
    );
    ```
 
 2. 通知コールバック・メソッドを実装します。
 
    ```javascript
-var notificationReceived = function(message) {
-alert(JSON.stringify(message));
+   var notificationReceived = function(message) {
+        alert(JSON.stringify(message));
    };
    ```
 
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
-MFPPush.registerDevice(function(successResponse) {
-alert("Successfully registered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to register");
-	    }
+   MFPPush.registerDevice(function(successResponse) {
+        alert("Successfully registered");
+        },
+      function(failureResponse) {
+        alert("Failed to register");
+        }
    );
    ```
 
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```javascript
-MFPPush.unregisterDevice(function(successResponse) {
-alert("Successfully unregistered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to unregister");
-	    }
+   MFPPush.unregisterDevice(function(successResponse) {
+        alert("Successfully unregistered");
+        },
+      function(failureResponse) {
+        alert("Failed to unregister");
+        }
    );
    ```
 
 5. WL.Client.Push.isPushSupported() を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
-MFPPush.isPushSupported (function(successResponse) {
-alert(successResponse);
-	   },
-	   function(failureResponse) {
-	       alert("Failed to get the push suport status");
-	   }
+   MFPPush.isPushSupported (function(successResponse) {
+        alert(successResponse);
+        },
+      function(failureResponse) {
+        alert("Failed to get the push suport status");
+        }
    );
    ```
 
@@ -398,19 +398,19 @@ alert(successResponse);
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
    MFPPush.subscribe(tags, function(successResponse) {
-    	alert("Successfully subscribed");
-        },
-      function(failureResponse) {
-    	alert("Failed to subscribe");
-        }
+		alert("Successfully subscribed");
+	    },
+	  function(failureResponse) {
+		alert("Failed to subscribe");
+	    }
    );
    ```
 
 8. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```javascript
-MFPPush.unsubscribe(tags, function(successResponse) {
-alert("Successfully unsubscribed");
+   MFPPush.unsubscribe(tags, function(successResponse) {
+		alert("Successfully unsubscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unsubscribe");
@@ -782,7 +782,6 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
-
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Failed to subscribe");
@@ -802,7 +801,6 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
-
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unsubscribe");
@@ -988,9 +986,9 @@ if(error){
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -1128,10 +1126,10 @@ if(error){
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
-        }
+	       NSLog(@"Successfully unregistered");
+       }
    }];
    ```
 

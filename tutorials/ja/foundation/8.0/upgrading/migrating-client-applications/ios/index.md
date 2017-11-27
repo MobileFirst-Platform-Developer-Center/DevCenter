@@ -164,8 +164,6 @@ platform :ios, 9.0
 
       > **注:** 上記の構文は、**IBMMobileFirstPlatformFoundation** pod の最新バージョンをインポートします。{{ site.data.keys.product_adj }} の最新バージョンを使用しない場合は、メジャー番号、マイナー番号、パッチ番号を含んだ完全なバージョン番号を追加する必要があります。パッチ番号は、YYYYMMDDHH という形式です。例えば、**IBMMobileFirstPlatformFoundation** pod の特定のパッチ・バージョンである 8.0.2016021411 をインポートする場合は、以下のような行になります。
 
-      
-
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
       ```
