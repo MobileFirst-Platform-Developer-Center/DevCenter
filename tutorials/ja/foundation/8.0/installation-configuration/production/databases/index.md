@@ -23,7 +23,6 @@ weight: 2
 ただし、{{ site.data.keys.product }} ランタイムの複数インスタンスを、インスタンスごとに独自のコンテキスト・ルートを指定してアプリケーション・サーバー内にインストールすることにした場合、各インスタンスに独自の表セットが必要となります。この場合、各インスタンスを異なるスキーマに置く必要があります。
 
 > **DB2 に関する注:** {{ site.data.keys.product_adj }} のライセンス所有者は、Foundation のサポート・システムとして DB2 を使用する資格があります。これを利用するには、DB2 ソフトウェアのインストール後に以下を行う必要があります。
-
 > 
 > * [IBM パスポート・アドバンテージ (PPA) Web サイト](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)から制限付き使用のアクティベーション・イメージを直接ダウンロードします。
 > * **db2licm** コマンドを使用して、制限付き使用のアクティベーション・ライセンス・ファイル **db2xxxx.lic** を適用します。
@@ -92,8 +91,6 @@ Ant タスクまたはサーバー構成ツールを使用してインストー�
 * [MySQL データベースおよびユーザーの要件](#mysql-database-and-user-requirements)
 
 > サポートされるデータベース・ソフトウェア・バージョンの最新リストについては、[システム要件](../../../product-overview/requirements/)ページを参照してください。
-
-
 
 ### DB2 データベースおよびユーザーの要件
 {: #db2-database-and-user-requirements }
@@ -535,4 +532,5 @@ Ant ファイル内に Oracle ユーザー名を入力する際は、大文字�
 1. **create-database-mysql.xml** ファイルで定義された **dba** エレメントに、MySQL 管理者のログイン ID とパスワードを入力します。デフォルトでは、管理者は **root** です。以下のプロパティーに値を割り当てることができます。
     * **database.mysql.admin.username**
     * **database.mysql.admin.password**
-2. **mysql** エレメントで、ユーザーがデータベースに接続する許可を得る各ホストに対し、**client** エレメントを追加します。これはすなわち、{{ site.data.keys.mf_server }} が実行されるすべてのホストです。Ant ファイルにすべてのデータベース資格情報が入力されたら、それを保存し、**databases** Ant ターゲットを実行します。
+2. **mysql** エレメントで、ユーザーがデータベースに接続する許可を得る各ホストに対し、**client** エレメントを追加します。これはすなわち、{{ site.data.keys.mf_server }} が実行されるすべてのホストです。
+Ant ファイルにすべてのデータベース資格情報が入力されたら、それを保存し、**databases** Ant ターゲットを実行します。

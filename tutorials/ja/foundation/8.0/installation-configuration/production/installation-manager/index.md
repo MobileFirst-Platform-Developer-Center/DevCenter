@@ -38,8 +38,6 @@ Application Center を Installation Manager でインストールすることを
 > **重要:** {{ site.data.keys.mf_server }} インストーラーがご使用のディスクにインストールするのは、{{ site.data.keys.mf_server }} バイナリー・ファイルおよびツールのみです。{{ site.data.keys.mf_server }} アプリケーションはご使用のアプリケーション・サーバーにデプロイされません。Installation Manager によるインストールを実行した後、データベースをセットアップし、{{ site.data.keys.mf_server }} アプリケーションをアプリケーション・サーバーにデプロイする必要があります。  
 > 同様に、Installation Manager を実行して既存のインストール済み環境を更新する場合、ご使用のディスク上のファイルのみが更新されます。アプリケーション・サーバーにデプロイされたアプリケーションを更新するには、追加のアクションを実行する必要があります。
 
-
-
 #### ジャンプ先
 {: #jump-to }
 * [管理者モード対ユーザー・モード](#administrator-versus-user-mode)
@@ -324,7 +322,6 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
     * `<responseFile>` は、ステップ 1 で選択および更新されたファイルの名前です。
 
 > 詳細については、IBM Installation Manager 資料の[応答ファイルを使用したパッケージのサイレント・インストール](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)を参照してください。
-
     
 
 ### 別のマシンで記録された応答ファイルの処理
@@ -394,8 +391,7 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>アプリケーションをインストールする先のサーバー・セットの
-タイプ。<br/><br/><code>server</code> は、スタンドアロン・サーバーを意味します。<br/><br/><code>nd-cell</code> は、WebSphere Application Server Network Deployment セルを意味します。<code>nd-cluster</code> は、WebSphere Application Server Network Deployment クラスターを意味します。<br/><br/><code>nd-node</code> は、WebSphere Application Server Network Deployment ノード (クラスターを除外) を意味します。<br/><br/><code>nd-server</code> は、管理対象 WebSphere Application Server Network Deployment サーバーを意味します。</td>
+        <td>アプリケーションをインストールする先のサーバー・セットのタイプ。<br/><br/><code>server</code> は、スタンドアロン・サーバーを意味します。<br/><br/><code>nd-cell</code> は、WebSphere Application Server Network Deployment セルを意味します。<code>nd-cluster</code> は、WebSphere Application Server Network Deployment クラスターを意味します。<br/><br/><code>nd-node</code> は、WebSphere Application Server Network Deployment ノード (クラスターを除外) を意味します。<br/><br/><code>nd-server</code> は、管理対象 WebSphere Application Server Network Deployment サーバーを意味します。</td>
         <td><code>server</code>、<code>nd-cell</code>、<code>nd-cluster</code>、<code>nd-node</code>、<code>nd-server</code></td>
     </tr>
     <tr>

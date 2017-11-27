@@ -49,8 +49,6 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 
 > このライブラリーは、許可サーバーのイントロスペクション・エンドポイントとの対話をカプセル化および簡素化する API を公開します。詳細な API リファレンスについては、[{{ site.data.keys.product_adj }} Java トークン・バリデーター API リファレンス](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)を参照してください。
 
-
-
 ## 資格情報の検証
 {: #validating-the-credentials }
 `validate` API メソッドは、許可ヘッダーの検証を許可サーバーに依頼します。

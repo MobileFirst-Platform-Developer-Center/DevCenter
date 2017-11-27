@@ -106,8 +106,6 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 
 > **注:** 実動用には、ホスト・コンピューターの始動時に Liberty サーバーがサービスとして始動するようにする必要があります。Liberty サーバーをサービスとして始動させる手順は、このチュートリアルには含まれていません。
 
-
-
 ### {{ site.data.keys.mf_server }} のインストール
 {: #installing-mobilefirst-server }
 データベースを作成して {{ site.data.keys.mf_server }} を Liberty プロファイルにデプロイする前に、Installation Manager を実行してご使用のディスクに {{ site.data.keys.mf_server }} のバイナリー・ファイルをインストールします。Installation Manager を使用した {{ site.data.keys.mf_server }} のインストール中に、{{ site.data.keys.mf_app_center }} をインストールするオプションが提案されます。 Application Center は、本製品の別のコンポーネントです。このチュートリアルでは、これを {{ site.data.keys.mf_server }} と共にインストールする必要はありません。
@@ -122,7 +120,6 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
         [IBM サポート・ポータル](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)からダウンロード可能な最新のフィックスパックを適用することもできます。フィックスパック用のリポジトリーを入力するようにしてください。**fixpack_directory** フォルダーにフィックスパックを解凍した場合、リポジトリー・ファイルは **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** にあります。
     
         > **注:** Installation Manager のリポジトリー内に基本バージョンのリポジトリーが存在しないと、フィックスパックをインストールすることができません。対象のフィックスパックは差分インストーラーで、インストールを行うのに基本バージョンのリポジトリーを必要とします。
-
     * ファイルを選択し、**「OK」**をクリックします。
     * **「OK」**をクリックして、「設定」パネルを閉じます。
 
@@ -186,8 +183,6 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 別のユーザー名を定義した場合は、mfpuser を独自のユーザー名に置き換えます。  
 
 > **注:** このステートメントにより、デフォルトの DB2 データベースで PUBLIC に付与されたデフォルトの特権が削除されることはありません。実動では、そのデータベース内の特権を、本製品の最小要件まで減らすことが必要になる場合もあります。DB2 セキュリティーおよびセキュリティーの実施例について詳しくは、[DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/) を参照してください。
-
-
 
 ### サーバー構成ツールの実行
 {: #running-the-server-configuration-tool }
@@ -443,8 +438,7 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     > **注: **  
     > 
     > * サーバー mfp1 の環境 ID を使用する場合 (このチュートリアルでは推奨されていません)、サーバー mfp2 にも同じ環境 ID を使用する必要があります。
-    > * 一部のアプリケーションのコンテキスト・ルートを変更する場合、サーバー mfp2 にも同じコンテキスト・ルートを使用してください。
-ファームのサーバーは、対称でなければなりません。
+    > * 一部のアプリケーションのコンテキスト・ルートを変更する場合、サーバー mfp2 にも同じコンテキスト・ルートを使用してください。ファームのサーバーは、対称でなければなりません。
     > * デフォルト・ユーザー (admin/admin) を作成する場合、サーバー mfp2 でも同じユーザーを作成してください。
 
     Ant タスクはデータベースが存在することを検出し、表を作成しません (以下のログ抽出を参照)。次に、アプリケーションがサーバーにデプロイされます。 
@@ -484,7 +478,6 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     Liberty との JMX 通信は、Liberty REST コネクター経由で、HTTPS プロトコルを使用して行われます。この通信を使用可能にするには、ファームの各サーバーが他のメンバーの SSL 証明書を認識できなければなりません。トラストストア内の HTTPS 証明書を交換する必要があります。IBM ユーティリティー (**java/bin** 内の IBM JRE ディストリビューションの一部である Keytool など) を使用して、トラストストアを構成します。鍵ストアおよびトラストストアのロケーションは、**server.xml** ファイルに定義されています。デフォルトで、Liberty プロファイルの鍵ストアは **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** にあります。**server.xml** ファイルで確認できるとおり、このデフォルトの鍵ストアのパスワードは **mobilefirst** です。
     
     > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。
-
     * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
     * 次のコマンドを使用して、サーバー mfp1 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`
         * **WLP\_USER\_DIR/servers/mfp2/resources/security** で、次のコマンドを使用してサーバー mfp2 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`

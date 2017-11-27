@@ -275,7 +275,8 @@ function wlEnvInit() {
 1. 任意の Cordova 開発ツールを使用して、元のアプリケーションに含まれていた {{ site.data.keys.product_adj }}機能を有効にする Cordova プラグイン以外の任意の Cordova プラグインを追加します。例えば、Cordova CLI では、プラグイン **cordova-plugin-file** および **cordova-plugin-file-transfer** を追加するには、以下を入力します。 
 
    ```bash
-cordova plugin add cordova-plugin-file cordova-plugin-file-transfer```
+   cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
+   ```
 
    > **注:** **mfpmigrate** マイグレーション・アシスト・ツールによって {{ site.data.keys.product_adj }} フィーチャー用の Cordova プラグインが追加されていますので、ユーザーがそれらを追加する必要はありません。これらのプラグインについて詳しくは、[{{ site.data.keys.product_adj }} 用の Cordova プラグイン](../../../application-development/sdk/cordova)を参照してください。
 
@@ -289,9 +290,7 @@ cordova plugin add cordova-plugin-file cordova-plugin-file-transfer```
 {: #migrating-encryption-for-ios-cordova }
 iOS ハイブリッドまたは Cordova のアプリケーションで OpenSSL 暗号化を使用していた場合、アプリケーションを新しい V8.0.0 のネイティブ暗号化にマイグレーションできます。OpenSSL の使用を継続する場合は、追加の Cordova プラグインを追加する必要があります。
 
-マイグレーションに関する iOS Cordova 暗号化オプションについて詳しくは、
-[Cordova アプリケーションでの OpenSSL の有効化](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications)トピックの
-[マイグレーション・オプション](../../../application-development/sdk/cordova/additional-information/#migration-options)・セクションを参照してください。
+マイグレーションに関する iOS Cordova 暗号化オプションについて詳しくは、[Cordova アプリケーションでの OpenSSL の有効化](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications)トピックの [マイグレーション・オプション](../../../application-development/sdk/cordova/additional-information/#migration-options)・セクションを参照してください。
 
 ## ダイレクト・アップデートのマイグレーション
 {: #migrating-direct-update }

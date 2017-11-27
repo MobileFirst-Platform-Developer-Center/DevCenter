@@ -121,8 +121,6 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 
 >**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
 
-
-
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -419,8 +417,9 @@ prepareserver.sh --name APP_NAME
 {: #applying-mobilefirst-server-fixes }
 
 Bluemix 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
-暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは次のフォルダー内にあります。
-* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
+暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは
+次のフォルダー内にあります。
+* {{ site.data.keys.mf_analytics }}:  **package_root/mfpf-analytics/usr**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry アプリケーション: **package_root/mfpf-server-libertyapp/usr**
 * {{ site.data.keys.mf_app_center_short }}:  **package_root/mfp-appcenter-libertyapp/usr**
 
@@ -433,6 +432,7 @@ Bluemix 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Cen
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
 ```
     これで、更新したサーバーをビルドおよびデプロイできるようになりました。同じ引数のセットを指定して、次のスクリプトを再実行します。
+
     a. `./prepareserver.sh`: 更新した成果物を Bluemix にアップロードします。
 
     b. `./startserver.sh`: 更新したサーバーを始動します。

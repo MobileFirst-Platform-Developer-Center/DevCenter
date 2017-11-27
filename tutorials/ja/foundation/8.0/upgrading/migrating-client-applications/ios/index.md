@@ -40,7 +40,8 @@ IBM MobileFirst™ Platform Foundation バージョン 6.2.0 以降で作成さ�
     * 以下のコマンドを入力することにより、NPM を使用してツールをインストールします。
 
    ```bash
-npm install -g```
+   npm install -g
+   ```
 
 3. 以下のコマンドを入力して、IBM MobileFirst Platform Foundation アプリケーションをスキャンします。
 
@@ -90,7 +91,8 @@ Xcode プロジェクト内の既存のネイティブ iOS プロジェクトを
     * Swift:
 
       ```swift
-import IBMMobileFirstPlatformFoundation```
+      import IBMMobileFirstPlatformFoundation
+      ```
 
 これで、{{ site.data.keys.product }}、V8.0 iOS SDK で機能するようにアプリケーションがアップグレードされました。
 
@@ -188,7 +190,8 @@ platform :ios, 9.0
    **Swift**
 
    ```swift
-import IBMMobileFirstPlatformFoundation```
+   import IBMMobileFirstPlatformFoundation
+   ```
 
    プッシュまたは JSONStore を使用している場合は、独立した import を組み込む必要があります。 
 
@@ -204,7 +207,8 @@ import IBMMobileFirstPlatformFoundation```
    **Swift**
 
    ```swift
-import IBMMobileFirstPlatformFoundationPush```
+   import IBMMobileFirstPlatformFoundationPush
+   ```
 
    ##### JSONStore
    {: #jsonstore }
@@ -218,7 +222,8 @@ import IBMMobileFirstPlatformFoundationPush```
    **Swift**
 
    ```swift
-import IBMMobileFirstPlatformFoundationJSONStore```
+   import IBMMobileFirstPlatformFoundationJSONStore
+   ```
 
 9. **「Build Settings」**タブの**「Other Linker Flags」**で、`-ObjC` フラグの始めに `$(inherited)` を追加します。以下に例を示します。
 

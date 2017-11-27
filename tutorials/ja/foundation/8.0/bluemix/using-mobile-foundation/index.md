@@ -17,8 +17,6 @@ weight: 1
 
     > **注:** 「開発者」プランでは、永続的なデータベースは提供されません。したがって、[トラブルシューティング・セクション](#troubleshooting)にある説明のとおりに、必ず構成をバックアップしてください。
 
-
-
 2. **開発者商用**: このプランでは {{ site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。このプランでは、**dashDB OLTPサービス** の準備が整っている必要があります。dashDB サービスは別に作成され請求されます。このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。料金は、ご使用の環境の合計サイズによって異なります。オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
 
 3. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。大規模のデプロイメントと高可用性がサポートされます。このプランでは、**dashDB OLTPサービス** の準備が整っている必要があります。dashDB サービスは別に作成され請求されます。料金は、ご使用の環境の合計サイズによって異なります。オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
@@ -26,8 +24,6 @@ weight: 1
 4. **1 つの商用アプリケーション**: このプランでは、{{ site.data.keys.mf_server }} が Liberty for Java ランタイム上のスケーラブルな Cloud Foundry アプリケーションにプロビジョンされます。また、このプランには、別に作成され請求される dashDB データベース・サービスも必要です。このプランでは、1 つのモバイル・アプリケーションの作成と管理を行うことができます。この 1 つのモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーで構成できます。 オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
 
 > 選択可能なプランとそれぞれの請求について詳しくは、[Bluemix.net のサービス・ページを参照してください](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)。
-
-
 
 #### ジャンプ先:
 {: #jump-to}
@@ -68,8 +64,6 @@ weight: 1
 1. これらのプランには、外部[dashDB トランザクション・データベース・インスタンス](https://console.ng.bluemix.net/catalog/services/dashdb/)が必要です。
 
     > [dashDB データベース・インスタンスのセットアップ]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/)についてもっとよく知る
-
-
 
     既存の dashDB サービス・インスタンス (DashDB Enterprise Transactional 2.8.500 または Enterprise Transactional 12.128.1400) がある場合は、**「既存のサービスの使用」**オプションを選択して、次のように資格情報を入力します。
 
@@ -133,8 +127,6 @@ weight: 1
 
 >{{ site.data.keys.mf_bm_short }} サービスの**開発者**プラン・インスタンスを作成または再作成すると、デフォルトで、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスが追加されます。
 
-
-
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
@@ -153,8 +145,6 @@ weight: 1
 {: #switching-from-analytics-container-to-analytics-service}
 
 >**注:** {{ site.data.keys.mf_analytics_service }} を削除すると、使用可能なすべての Analytics データが削除されます。このデータは、新しい {{ site.data.keys.mf_analytics_service }} インスタンスでは使用できません。
-
-
 
 ユーザーはサービス・ダッシュボードから**「Analytics の削除」**ボタンをクリックして、現在のコンテナーを削除できます。これにより Analytics インスタンスが削除され、**「Analytics の追加」**ボタンが使用可能になり、ユーザーはこれをクリックして新しい {{ site.data.keys.mf_analytics_service }} サービス・インスタンスを追加できます。
 

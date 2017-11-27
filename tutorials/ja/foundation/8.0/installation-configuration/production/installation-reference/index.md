@@ -207,8 +207,6 @@ hostname の構文について詳しくは、[Specifying Account Names](http://d
 
 > `注:` user 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**configuredatabase** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**configuredatabase** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
 
-
-
 Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。  
 `<oracle>` エレメントは以下のエレメントをサポートします。
 
@@ -236,8 +234,6 @@ Oracle ユーザー・アカウントについて詳しくは、[Overview of Aut
 | password	| データベースにアクセスするパスワード。| いいえ| 対話式に照会|
 
 > **注:** 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` を指定する必要はありません。
-
-
 
 ## {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
@@ -438,8 +434,6 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 
 > **ヒント:** ユーザーが外部 LDAP ディレクトリーに存在する場合は、**role** 属性と **name** 属性のみを設定し、パスワードは定義しないでください。
 
-
-
 `<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
 | 属性| 説明| 必須| デフォルト |
@@ -473,8 +467,6 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 | clusterName|	集合メンバーが所属しているクラスター名。| はい	  | なし|
 
 > **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、クラスター名は異なっていてもかまいません。
-
-
 
 ### Analytics の指定
 {: #to-specify-analytics }
@@ -658,8 +650,6 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 | clusterName|	集合メンバーが所属しているクラスター名。| はい| なし|
 
 > **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、クラスター名は異なっていてもかまいません。
-
-
 
 ### Analytics の指定
 {: #to-specify-analytics-1 }
@@ -1048,8 +1038,6 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 
 > **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
 
-
-
 **database**、**server**、および **port** の代わりに、URL を指定することもできます。この場合、以下の属性を使用します。
 
 | 属性| 説明| 必須| デフォルト |
@@ -1059,8 +1047,6 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 | password	 | データベースにアクセスするパスワード。| いいえ  | 対話式に照会|
 
 > **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
-
-
 
 Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。
 
@@ -1115,8 +1101,6 @@ Application Center コンソールおよびサービスのインストールに�
 このタスクは、アプリケーション・サーバー構成を変更しません。つまり、Web アプリケーション構成、データ・ソース、JNDI 環境項目、およびユーザーとロールのマッピングは変更されません。このタスクは、このトピックで説明している <installApplicationCenter> タスクを使用して実行されるインストールにのみ適用されます。
 
 > **注:** WebSphere Application Server Liberty プロファイルでは、このタスクはフィーチャーを変更しません。そのため、インストール済みアプリケーションの server.xml ファイルに含まれるフィーチャーのリストは最小限のものではない可能性がありますが、このタスクの実行後も、そのリストがそのまま残ります。
-
-
 
 #### uninstallApplicationCenter
 {: #uninstallApplicationCenter }

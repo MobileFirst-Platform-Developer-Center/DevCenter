@@ -14,7 +14,7 @@ La figure suivante représente les composants de {{ site.data.keys.product }} :
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-Vous pouvez utiliser l'interface de ligne de commande {{ site.data.keys.mf_cli_full }} pour développer et gérer des applications, en plus d'utiliser la console IBM {{ site.data.keys.mf_console }}. Certaines tâches du processus de développement {{ site.data.keys.product_adj }} doivent être effectuées dans l'interface de ligne de commande.  Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les types de tâche suivants :
+Vous pouvez utiliser {{ site.data.keys.mf_cli_full }} pour développer et gérer des applications, en plus d'utiliser la console IBM {{ site.data.keys.mf_console }}. Certaines tâches du processus de développement {{ site.data.keys.product_adj }} doivent être effectuées dans l'interface de ligne de commande.  Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les types de tâche suivants :
 
 * Enregistrement des applications sur le serveur {{ site.data.keys.mf_server }}
 * Configuration de votre application
@@ -75,7 +75,7 @@ Application Center est destiné à une utilisation privée au sein de l'entrepri
 
 ### {{ site.data.keys.mf_system_pattern }}
 {: #mobilefirst-system-pattern }
-Avec {{ site.data.keys.mf_system_pattern_full }}, vous pouvez déployer {{ site.data.keys.mf_server }} sur IBM PureApplication System ou IBM PureApplication Service on SoftLayer. Avec ces canevas, les administrateurs et les entreprises peuvent répondre rapidement aux changements de l'environnement métier en tirant profit des technologies de cloud sur site. Cette approche simplifie le processus de déploiement et augmente l'efficacité opérationnelle de manière à répondre à la demande croissante en matière de technologies mobiles. La demande accélère l'itération de solutions qui excèdent les cycles de demande traditionnels. L'utilisation de {{ site.data.keys.mf_server }} Pattern vous permet également d'accéder aux meilleures pratiques et à une expertise intégrée, comme les règles de mise à l'échelle intégrées.
+Avec {{ site.data.keys.mf_system_pattern_full }}, vous pouvez déployer {{ site.data.keys.mf_server }} sur IBM PureApplication System ou IBM PureApplication Service sur SoftLayer. Avec ces canevas, les administrateurs et les entreprises peuvent répondre rapidement aux changements de l'environnement métier en tirant profit des technologies de cloud sur site. Cette approche simplifie le processus de déploiement et augmente l'efficacité opérationnelle de manière à répondre à la demande croissante en matière de technologies mobiles. La demande accélère l'itération de solutions qui excèdent les cycles de demande traditionnels. L'utilisation de {{ site.data.keys.mf_server }} Pattern vous permet également d'accéder aux meilleures pratiques et à une expertise intégrée, comme les règles de mise à l'échelle intégrées.
 
 #### PureApplication System
 {: #pureapplication-system }

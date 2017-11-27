@@ -62,8 +62,6 @@ MobileFirst プロジェクトは、存在しなくなりました。代わり�
 
 > 使用が中止されたフィーチャーおよび置換パスについて詳しくは、[V8.0 で廃止された機能および V8.0 に含まれない機能](../product-overview/release-notes/deprecated-discontinued)を参照してください。
 
-
-
 ## Cordova アプリケーションまたはハイブリッド・アプリケーションのマイグレーション
 {: #migrating-a-cordova-or-hybrid-application }
 Apache Cordova コマンド・ライン・ツール、または Visual Studio Code、Eclipse、IntelliJ などの Cordova 対応 IDE を使用して Cordova アプリケーションの開発を開始します。
@@ -80,8 +78,6 @@ Cordova アプリケーションまたはハイブリッド・アプリケーシ
 
 > **注:** プッシュ通知サポートのマイグレーションには、クライアント・サイドとサーバー・サイドの変更が必要です。これについては、後述の『プッシュ通知サポートのマイグレーション』に説明があります。
 
-
-
 ## ネイティブ・アプリケーションのマイグレーション
 {: #migrating-a-native-application }
 ネイティブ・アプリケーションをマイグレーションするには、以下のステップを実行する必要があります。
@@ -95,8 +91,6 @@ Cordova アプリケーションまたはハイブリッド・アプリケーシ
     * ネイティブ Windows アプリケーションのマイグレーションについて詳しくは、[既存のネイティブ Windows アプリケーションのマイグレーション](migrating-client-applications/windows)を参照してください。
 
 > **注:** プッシュ通知サポートのマイグレーションには、クライアント・サイドとサーバー・サイドの変更が必要です。これについては、後述の[プッシュ通知サポートのマイグレーション](#migrating-push-notifications-support)に説明があります。
-
-
 
 ## アダプターおよびセキュリティーのマイグレーション
 {: #migrating-adapters-and-security }

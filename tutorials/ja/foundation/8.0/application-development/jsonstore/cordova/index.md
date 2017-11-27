@@ -42,8 +42,7 @@ Cordova アプリケーションに JSONStore プラグインを追加するに�
 
 ```javascript
 var collections = {
-
-  people : {
+    people : {
         searchFields : {name: 'string', age: 'integer'}
   }
 };
@@ -56,8 +55,6 @@ WL.JSONStore.init(collections).then(function (collections) {
 ```
 
 > 初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』**、**『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
-
-
 
 ### 取得
 {: #get }
@@ -212,7 +209,6 @@ WL.JSONStore.destroy().then(function () {
 
 ```javascript
 var collections = {
-
   people: {
     searchFields: {name: 'string'}
   }
@@ -238,7 +234,6 @@ WL.JSONStore.init(collections, options).then(function () {
 
 ```javascript
 var collections = {
-
   people: {
     searchFields: {name: 'string'}
   }
@@ -296,7 +291,6 @@ function replacePerson(data) {
 {: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {
-
   people : {
     searchFields : {name: 'string', age: 'integer'},
     adapter : {

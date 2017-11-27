@@ -149,8 +149,6 @@ TTL は実際上、データ保存ポリシーの設定および保守方法で�
 
 > **注:** 以前のバージョンの {{ site.data.keys.mf_analytics_server }} からのマイグレーションを実行しており、かつ、以前に TTL JNDI プロパティーを構成したことがある場合は、[{{ site.data.keys.mf_analytics_server }}の以前のバージョンで使用されたサーバー・プロパティーのマイグレーション ](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)を参照してください。
 
-
-
 #### Elasticsearch
 {: #elasticsearch }
 {{ site.data.keys.mf_analytics_console }} の処理を行うストレージおよびクラスタリングの基盤テクノロジーは Elasticsearch です。  

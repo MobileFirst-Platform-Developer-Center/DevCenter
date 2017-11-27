@@ -46,8 +46,9 @@ downloads:
 1. プロジェクトの既存の **podfile** を開き、以下の行を追加します。
 
    ```xml
-use_frameworks!
-platform :ios, 8.0
+   use_frameworks!
+
+   platform :ios, 8.0
    target "Xcode-project-target" do
         pod 'IBMMobileFirstPlatformFoundation'
         pod 'IBMMobileFirstPlatformFoundationPush'
@@ -89,8 +90,6 @@ platform :ios, 8.0
 `push.mobileclient` スコープが**セキュリティー検査**にマップされる場合、プッシュ API を使用する前に、一致する**チャレンジ・ハンドラー**が存在し、登録済みであることを確認する必要があります。
 
 > チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/ios)チュートリアルを参照してください。
-
-
 
 ### クライアント・サイド
 {: #client-side }

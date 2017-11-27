@@ -41,8 +41,6 @@ protected void initStateDurations(Map<String, Integer> durations) {
 
 > セキュリティー検査構成について詳しくは、『CredentialsValidationSecurityCheck の実装』チュートリアルの[構成クラス](../credentials-validation/security-check/#configuration-class)のセクションを参照してください。
 
-
-
 ## authorize メソッド
 {: #the-authorize-method }
 `SecurityCheck` インターフェースによって、`authorize` というメソッドが定義されます。このメソッドが、セキュリティー検査のメイン・ロジックの実装、状態の管理、およびクライアントへの応答の送信 (成功、チャレンジ、または失敗) の責任を負います。

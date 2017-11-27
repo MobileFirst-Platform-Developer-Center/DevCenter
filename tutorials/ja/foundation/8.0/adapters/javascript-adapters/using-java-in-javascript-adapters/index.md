@@ -26,14 +26,13 @@ weight: 3
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** パッケージ名の先頭は `com`、`org`、または `net` でなければなりません。
 
-
-
 Java クラスにメソッドを追加します。  
 静的メソッドの例 (新規インスタンスを必要としません) とインスタンス・メソッドの例を以下に示します。
 
 ```java
 public class Calculator {
-// Add two integers.
+
+  // Add two integers.
   public static int addTwoIntegers(int first, int second){
     return first + second;
   }

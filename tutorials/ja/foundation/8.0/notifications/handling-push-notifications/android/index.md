@@ -134,8 +134,6 @@ weight: 6
 
 > チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/android)チュートリアルを参照してください。
 
-
-
 ### クライアント・サイド
 {: #client-side }
 

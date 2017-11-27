@@ -272,14 +272,16 @@ pod 'IMFDataLocal/SQLCipher'
    ##### 変更後 (Cloudant Sync を使用): iOS デバイスのデータの暗号化:
    {: after-with-cloudant-sync-encrypt-ios-devices }
    ```xml
-pod 'CDTDatastore/SQLCipher'```        
+   pod 'CDTDatastore/SQLCipher'
+   ```        
 
    詳しくは、[CDTDatastore の暗号化に関する資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md)を参照してください。
 
    * 以下のコマンドを実行して、アプリケーションに依存関係を追加します。
 
      ```bash
-pod install```
+     pod install
+     ```
 
 2. Swift アプリケーション内で暗号化機能を使用するには、アプリケーションの関連ブリッジング・ヘッダーに以下の import を追加します。
 
@@ -517,7 +519,7 @@ Android デバイス上のデータを暗号化するには、アプリケーシ
 
    ##### 変更後 (Cloudant Sync を使用): 鍵プロバイダーとともに初期化 (Android)
    {: #after-with-cloudant-sync-initialize-with-key-provider-android }
-暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
+   暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
 
 ## ユーザー・アクセス権の設定
 {: #setting-user-permissions }
