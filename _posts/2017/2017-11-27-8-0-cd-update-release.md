@@ -92,6 +92,18 @@ Mobile Foundation announced the support for Android Oreo with this [blog post](h
 Mobile Foundation user can now deploy Mobile Foundation, which includes the Mobile Foundation Server, Mobile Analytics Server, and the Application Center, on Kubernetes clusters. The deployment package has been updated to support Kubernetes deployment. Read the [announcement](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
 
 
+### APAR Fixes in this CD update
+
+>
+**PI89436**   PUSH SDK DOES NOT PICK UP THE GATEWAY CONTEXT ROOT IN CLOUD ENVIRONMENT.<br/>
+**PI89422**   UNEXPECTED ERROR "FWLSE0803E" KEEP SHOWING IN MPF SERVER LOG.<br/>
+**PI89399**   CORDOVA APPLICATION THROWS UNCAUGHT EXCEPTION WHEN RUNNING ON WIN 10 PLATFORM.<br/>
+**PI88626**   DEVICE ID CHANGES FOR CORDOVA APPLICATIONS STARTING FROM THE SAME DEVICE UPON UPGRADE.<br/>
+**PI78066**   THE ONINITFRAMEWORKCOMPLETE() CALLBACK IS NOT CONSISTENTLY BEING CALLED.<br/>
+**PI73963**   INVALID DOC FOR WL.CLIENT.INIT - INITOPTIONS OBJECT IN WEB ENV.<br/>
+**PI86913**   IOS APP CRASHES WHEN ATTEMPTING TO ACCESS KEYCHAIN WHILE RUNNING IN BACKGROUND.
+>
+
 ## How to upgrade
 **Server**  
 To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/), [Developer Kit for customers / CD update package for on-prem production environment](https://www-945.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FOther%20software&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=All&platform=All&function=fixId&fixids=8.0.0.0-MFPF-IF201711230641-CDUpdate-01&includeRequisites=1&includeSupersedes=0&downloadMethod=http) (requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
