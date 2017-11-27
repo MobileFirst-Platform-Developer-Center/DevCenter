@@ -103,7 +103,7 @@ If you need a secure connection between your container and an on-premise back-en
 3. AES 暗号化を使用しており、デフォルトの鍵の代わりに独自の暗号鍵を使用した場合、その暗号鍵を含む構成ファイルを作成して、**usr/config** ディレクトリーに追加する必要があります。Liberty サーバーは、実行時にこのファイルにアクセスして、パスワードを暗号化解除します。構成ファイルは、.xml ファイル拡張子を持ち、以下のフォーマットに似たものでなければなりません。
 
 ```bash
-<?xml version="1.0" encoding="UTF-8" ?> 
+<?xml version="1.0" encoding="UTF-8" ?>
 <server>
     <variable name="wlp.password.encryption.key" value="yourKey" />
 </server>
@@ -159,10 +159,10 @@ String allowedIP =null;
        public boolean isTargetInterceptor(HttpServletRequest req)
                       throws WebTrustAssociationException {
           //Add logic to determine whether to intercept this request
-    	
+
     	   boolean interceptMFPConsoleRequest = false;
 	   String requestURI = req.getRequestURI();
-	
+
 	   if(requestURI.contains("worklightConsole")) {
     		   interceptMFPConsoleRequest = true;
     	   }
@@ -180,7 +180,7 @@ String allowedIP =null;
             String tai_user = "MFPConsoleCheck";
 
             if(allowedIP != null) {
-        	
+
         	String ipAddress = request.getHeader("X-FORWARDED-FOR");
             	if (ipAddress == null) {
             	  ipAddress = request.getRemoteAddr();  
@@ -220,7 +220,7 @@ String allowedIP =null;
      */
         public int initialize(Properties properties)
                         throws WebTrustAssociationFailedException {
-        	
+
         	if(properties != null) {
         		if(properties.containsKey("allowedIPs")) {
         			allowedIP = properties.getProperty("allowedIPs");
@@ -255,9 +255,9 @@ String allowedIP =null;
 2. カスタム TAI 実装を .jar ファイルにエクスポートして、該当する **env** フォルダー (**mfpf-server/usr/env または mfpf-analytics/usr/env**) に入れます。
 3. TAI インターセプターの詳細を含む XML 構成ファイルを作成し (ステップ 1 で提供された TAI 構成のコード例を参照)、.xml ファイルを該当するフォルダー (**mfpf-server/usr/config** または **mfpf-analytics/usr/config**) に追加します。.xml ファイルは次の例に似たものになります。**ヒント:** 実際の実装を反映するようにクラス名とプロパティーを更新してください。
 
-   ```xml
-   <?xml version="1.0" encoding="UTF-8" ?> 
-<server description="new server">
+  ```xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <server description="new server">
         <featureManager>
             <feature>appSecurity-2.0</feature>
         </featureManager>
@@ -274,8 +274,8 @@ String allowedIP =null;
         <library id="MFPConsoleTAI">
             <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
         </library>
-   </server>
-   ```
+    </server>
+  ```
 
 4. [イメージをビルドしてコンテナーを実行します](../)。これで、構成された TAI セキュリティー・メカニズムを満たしている場合にのみ、{{ site.data.keys.mf_console }} および Analytics Console にアクセス可能になりました。
 
