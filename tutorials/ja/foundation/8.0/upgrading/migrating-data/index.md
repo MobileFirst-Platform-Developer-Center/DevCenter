@@ -305,8 +305,6 @@ pod 'IMFDataLocal/SQLCipher'
 
    > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
 
-
-
    ##### 変更前 (IMFData/CloudantToolkit を使用) : 暗号化のためのローカル・ストアの初期化:
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
    **Objective-C**
@@ -456,8 +454,6 @@ Android デバイス上のデータを暗号化するには、アプリケーシ
 3. 暗号化を行うように鍵プロバイダーと共にローカル・ストアを初期化します。
 
    > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
-
-
 
    ##### 変更前 (IMFData/CloudantToolkit を使用) : ローカル・ストアの初期化 (Android):
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }

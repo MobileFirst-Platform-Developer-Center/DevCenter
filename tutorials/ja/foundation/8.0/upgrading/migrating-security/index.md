@@ -42,8 +42,7 @@ V7.1 のサンプル・アプリケーションを V8.0 にマイグレーショ
 {: #migrating-the-resource-adapter }
 リソース・アダプターのマイグレーションから始めます。アダプターがアプリケーション・プロジェクトの一部であった V7.1 とは異なり、{{ site.data.keys.product }} V8.0 では、アダプターを別個の Maven プロジェクトとして開発します。そのため、クライアント・アプリケーションとは独立して、リソース・アダプターをマイグレーションして、マイグレーション済みのアダプターをビルドしてデプロイすることができます。同じことが、V8.0 のクライアント・アプリケーションと V8.0 のセキュリティー検査 (アダプター内に実装されます) についても当てはまります。そのため、これらの成果物は任意の順序でマイグレーションできます。このチュートリアルでは、V8.0 のリソース保護に使用される OAuth セキュリティー・スコープ・エレメントの概要を含む、リソース・アダプターのマイグレーション手順から始めます。
 
-> **注:
-** 
+> **注:** 
 > *  以下の手順は、サンプルの `AccountAdapter` リソース・アダプターのマイグレーション手順です。サンプルの `PinCodeAdapter` をマイグレーションする必要はありません。これによって実装されるアダプター・ベースの認証は V8.0 ではサポートされなくなったためです。[PIN コード・アダプター・ベースの認証レルムを置き換える](#replacing-the-pin-code-adapter-based-authentication-realm)手順では、V7.1 の PIN コード・アダプターを、類似した保護を行う V8.0 のセキュリティー検査で置き換える方法について説明します。
 > *  アダプターを V8.0 にマイグレーションする方法については、[V8.0 マイグレーションの手引き](../migration-cookbook)を参照してください。
 
@@ -75,6 +74,7 @@ AdapterSecurityContext securityContext;
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
 アダプター・コードの編集後に、Maven または {{ site.data.keys.mf_cli }} のいずれかを使用して、アダプターをビルドしてこれをサーバーにデプロイします。詳しくは、[アダプターのビルドとデプロイ](../../adapters/creating-adapters/#build-and-deploy-adapters)を参照してください。
+
 ### クライアント・アプリケーションのマイグレーション
 {: #migrating-the-client-application }
 
@@ -159,14 +159,13 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
     protected boolean validateCredentials(Map<String, Object> credentials) {
-        if (credentials!=null &&  credentials.containsKey("username") &&
-
+        if (credentials!=null && credentials.containsKey("username") &&
 		credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
 
             // the authentication logic, copied from the V7.1 login module
-            if (!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
+            if (!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
                 userId = username;
                 displayName = username;
 
@@ -175,8 +174,8 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
             } else {
                 errorMsg = "Wrong Credentials";
             }
-        } else {             
-errorMsg = "Credentials not set properly";
+        } else {
+            errorMsg = "Credentials not set properly";
         }
         return false;
     }
@@ -205,8 +204,7 @@ errorMsg = "Credentials not set properly";
 
 V7.1 のサンプル・アプリケーションの `PinCodeRealm` レルムは、V8.0 ではサポートされなくなったアダプター・ベースの認証を使用して実装されています。このレルムの代わりに、新しい `PinCode` Java アダプターを作成して、{{ site.data.keys.product_adj }} `CredentialsValidationSecurityCheck` 抽象基本クラスを拡張する `PinCode` Java クラスをこのアダプターに追加します。
 
-**注:
-**
+**注:**
 *  `PinCode` アダプターを作成するためのステップは、[ユーザー・ログイン・フォーム・ベースの認証レルムの置き換え](#replacing-the-user-login-form-based-authentication-realm)のステップで概説されているように、`UserLogin` アダプターを作成するためのステップと似ています。
 *  `PinCode` セキュリティー検査で必要なのはログイン資格情報 (PIN コード) の検証だけで、ユーザー ID の割り当ては必要ありません。そのため、このセキュリティー検査クラスは `CredentialsValidationSecurityCheck` 基本クラスを拡張しますが、`UserLogin` セキュリティー検査に使用される `UserAuthenticationSecurityCheck` クラスは拡張しません。
 
@@ -247,7 +245,7 @@ V7.1 の認証レルムのセキュリティー検査へのマイグレーショ
 ### チャレンジ・ハンドラーのマイグレーション
 {: #migrating-the-challenge-handlers }
 
-この段階で、サンプルのリソース・アダプターとクライアント・アプリケーションはすでにマイグレーション済みであり、V7.1 の認証レルムは V8.0 のセキュリティ検査で置き換えられています。サンプル・アプリケーションのセキュリティー・マイグレーションを完了するためには、後はクライアント・アプリケーションのチャレンジ・ハンドラーをマイグレーションするだけです。クライアント・アプリケーションは、チャレンジ・ハンドラーを使用して、セキュリティー・チャレンジに応答して、ユーザーから受信した資格情報をセキュリティー検査に送信します。
+この段階で、サンプルのリソース・アダプターとクライアント・アプリケーションはすでにマイグレーション済みであり、V7.1 の認証レルムは V8.0 のセキュリティー検査で置き換えられています。サンプル・アプリケーションのセキュリティー・マイグレーションを完了するためには、後はクライアント・アプリケーションのチャレンジ・ハンドラーをマイグレーションするだけです。クライアント・アプリケーションは、チャレンジ・ハンドラーを使用して、セキュリティー・チャレンジに応答して、ユーザーから受信した資格情報をセキュリティー検査に送信します。
 
 [クライアント・アプリケーションのマイグレーション](#migrating-the-client-application)時に、アプリケーションのメイン HTML ファイルである **index.html** で該当する行をコメント化して、チャレンジ・ハンドラー・コードを除外しました。次に、これらの行の周囲に以前に追加したコメントを削除して、アプリケーションのチャレンジ・ハンドラー・コードを追加し直します。
 
@@ -263,9 +261,8 @@ V7.1 の場合と同じ機能を V8.0 で実行するユーザー・ログイン
 *  V8.0 の `WL.Client.createSecurityCheckChallengeHandler` メソッドを呼び出す以下のコードを使用して、チャレンジ・ハンドラーを作成するためのコードを置き換えます。
 
    ```javascript
-var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
-
-    ```
+   var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
+   ```
    
    `WL.Client.createSecurityCheckChallengeHandler` は、{{ site.data.keys.product_adj }} セキュリティー検査からのチャレンジを処理するチャレンジ・ハンドラーを作成します。V8.0 では、サード・パーティーのゲートウェイからのチャレンジを処理するための `WL.Client.createGatewayChallengeHandler` メソッドも導入されています。これは、V8.0 ではゲートウェイ・チャレンジ・ハンドラーと呼ばれています。V7.1 アプリケーションを V8.0 にマイグレーションする際に、`WL.Client` `createWLChallengeHandler` メソッドまたは `createChallengeHandler` メソッドの呼び出しを、予期したチャレンジ・ソースと一致する V8.0 の `WL.Client` チャレンジ・ハンドラー作成メソッドの呼び出しで置き換えます。例えば、カスタム・ログイン・フォームをクライアントに送信する DataPower リバース・プロキシーによってリソースが保護されている場合は、`createGatewayChallengeHandler` を使用して、ゲートウェイ・チャレンジを処理するためのゲートウェイ・チャレンジ・ハンドラーを作成します。
 
@@ -335,7 +332,8 @@ PIN コードのチャレンジ・ハンドラー (`pinCodeChallengeHandler`) �
 *  [アプリケーションの認証性](#application-authenticity)
 *  [LTPA レルム](#ltpa-realm)
 *  [デバイスのプロビジョニング](#device-provisioning)
-*  [クロスサイト・リクエスト・フォージェリー対策 (anti-XSRF) レルム](#anti-cross-site-request-forgery-anti-xsrf-realm)
+*  [クロスサイト・リクエスト・フォージェリー対策 (anti-XSRF) レルム
+](#anti-cross-site-request-forgery-anti-xsrf-realm)
 *  [ダイレクト・アップデート・レルム](#direct-update-realm)
 *  [リモート無効化レルム](#remote-disable-realm)
 *  [カスタム・オーセンティケーターおよびログイン・モジュール](#custom-authenticators-and-login-modules)

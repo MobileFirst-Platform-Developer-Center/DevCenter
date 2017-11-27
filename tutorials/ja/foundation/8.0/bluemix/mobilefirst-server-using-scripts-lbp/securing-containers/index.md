@@ -111,7 +111,8 @@ TAI により、要求をコンソールに転送するか、あるいは承認�
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-String allowedIP =null;
+
+       String allowedIP =null;
 
        public MFPConsoleTAI() {
           super();
@@ -160,12 +161,11 @@ String allowedIP =null;
             	}
 
             }
-            return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
-        }
+        return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
+    }
 
-       private static boolean checkIPMatch(String ipAddress, String pattern) {
-
-    	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
+    private static boolean checkIPMatch(String ipAddress, String pattern) {
+	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 		      return true;
 
 	   String[] mask = pattern.split("\\.");
@@ -222,6 +222,7 @@ String allowedIP =null;
 
 2. カスタム TAI 実装を .jar ファイルにエクスポートして、該当する **env** フォルダー (**mfpf-server-libertyapp/usr/env**) に入れます。
 3. TAI インターセプターの詳細を含む XML 構成ファイルを作成し (ステップ 1 で提供された TAI 構成のコード例を参照)、.xml ファイルを該当するフォルダー (**mfpf-server-libertyapp/usr/config**) に追加します。.xml ファイルは次の例に似たものになります。**ヒント:** 実際の実装を反映するようにクラス名とプロパティーを更新してください。
+
   ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
     <server description="new server">
@@ -241,8 +242,9 @@ String allowedIP =null;
         <library id="MFPConsoleTAI">
             <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
         </library>
-   </server>
-   ```
+    </server>
+  ```
+
 4. サーバーを再デプロイします。これで、構成された TAI セキュリティー・メカニズムを満たしている場合にのみ、MobileFirst Operations Console にアクセス可能になりました。
 
 ## コンテナーの LDAP 構成
@@ -288,14 +290,12 @@ LDAP リポジトリーにユーザーとグループを作成します。グル
    </ldapRegistry>
    ```
 
-    項目| 説明
+    項目 | 説明
     --- | ---
     `host` および `port` | ローカル LDAP サーバーのホスト名 (IP アドレス) およびポート番号。
     `baseDN` | 特定の組織に関するすべての詳細をキャプチャーする、LDAP 内のドメイン・ネーム (DN)。
     `bindDN="uid=admin,ou=system"	` | LDAP サーバーのバインディング詳細。例えば、Apache Directory Service の場合のデフォルト値は `uid=admin,ou=system` です。
-
     `bindPassword="secret"	`| LDAP サーバーのバインディング・パスワード。例えば、Apache Directory Service の場合のデフォルト値は `secret` です。
-
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 認証および許可でディレクトリー・サービス (Apache など) に照会する際に使用するカスタム・フィルター。
 
 2. `appSecurity-2.0` および `ldapRegistry-3.0` で以下のフィーチャーが有効になっていることを確認します。

@@ -160,8 +160,6 @@ Application Center は、サード・パーティーのアプリケーション�
 
 > **注:** 現在、Application Center は Google Play と Apple iTunes のみをサポートします。Windows Phone Store、および Windows Store はまだサポートされていません。
 
-
-
 アプリケーションの実行可能ファイルではなく、アプリケーションが保管されているサード・パーティー・アプリケーション・ストアへの URL を提供する必要があります。正しいアプリケーション・リンクを見つけやすいように、コンソールでは、サポートされているサード・パーティー・アプリケーション・ストアの Web サイトへの直接リンクを**「アプリケーションの追加」**ページで提供しています。
 
 Google play ストアのアドレスは [https://play.google.com/store/apps](https://play.google.com/store/apps) です。
@@ -303,9 +301,6 @@ Apple iTunes ストアのアドレスは [https://linkmaker.itunes.apple.com/](h
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
 > これは、Android、iOS、および Windows Phone でのみサポートされており、Windows 10 Universal、Blackberry、および Windows 8 Universal では現在サポートされていません。
-
-
-
 
 
 {{ site.data.keys.mf_console }} と Application Center を組み合わせて、デプロイされたモバイル・アプリケーションを簡単にアップグレードできます。
@@ -468,8 +463,6 @@ Application Center モバイル・クライアントから Application Center �
 装置の名前。 このプロパティーは編集可能です。 
 
 > **注:** iOS の場合は、「設定」>「一般」>「情報」>「名前」のデバイス設定で、この名前を定義することができます。同じ名前が iTunes に表示されます。
-
-
 
 **「ユーザー名 (User Name)」**  
 当該デバイスに最初にログインしたユーザーの名前。 

@@ -15,8 +15,7 @@ weight: 2
 * {{ site.data.keys.mf_server }} Docker イメージをビルドし、それを Bluemix リポジトリーにプッシュします。
 * 最後に、Kubernetes クラスター上で Docker イメージを実行します。
 
->**注:
-**  
+>**注:**  
 >
 * Windows OS でのこれらのスクリプトの実行は現在サポートされていません。  
 * {{ site.data.keys.mf_server }} 構成ツールは IBM Containers へのデプロイメントには使用できません。
@@ -245,8 +244,6 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 
 >**注:** スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
 
-
-
 対話式に実行する場合、指定された引数のコピーがディレクトリー: `./recorded-args/` に保存されます。このため、初めて対話モードを使用したあと、その後のデプロイメントの参照としてプロパティー・ファイルを再使用できます。
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
@@ -394,8 +391,7 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
                     </ol>
                     次のコマンドを実行します。<br/>
                     <code>kubectl create -f ./args/mfpf-deployment-all.yaml</code>
-                    <blockquote><b>注:
-<br/></b>以下のテンプレート yaml ファイルが提供されます。<br/>
+                    <blockquote><b>注: <br/></b>以下のテンプレート yaml ファイルが提供されます。<br/>
                     <ul><li><b>mfpf-deployment-all.yaml</b>: {{ site.data.keys.mf_server }} と {{ site.data.keys.mf_analytics }} を http でデプロイします。</li>
                       <li><b>mfpf-deployment-all-tls.yaml</b>: {{ site.data.keys.mf_server }} と {{ site.data.keys.mf_analytics }} を https でデプロイします。</li>
                       <li><b>mfpf-deployment-server.yaml</b>: {{ site.data.keys.mf_server }} を http でデプロイします。</li>

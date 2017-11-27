@@ -19,8 +19,6 @@ Application Center は、{{ site.data.keys.product_adj }} アプリケーショ�
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)をご覧ください。
 
-
-
 Application Center はさまざまな状況で使用できます。例えば、以下があります。 
 
 * 組織全体の企業アプリケーション・ストアとして。
@@ -110,8 +108,6 @@ cordova build ios
 
 > **注:** アプリケーションの UI および動作を自由にカスタマイズできる一方、このような変更は IBM によるサポート契約の対象外です。
 
-
-
 #### Android
 {: #android }
 * Android Studio を開きます。
@@ -121,8 +117,6 @@ cordova build ios
 これには時間がかかる場合があります。これが行われた後、カスタマイズする準備が整います。
 
 > **注:** ポップアップ・ウィンドウに表示される Gradle バージョンのアップグレードのための更新オプションはスキップすることを選択してください。このバージョンについては、`grade-wrapper.properties` を参照してください。
-
-
 
 #### iOS
 {: #ios }
@@ -137,8 +131,6 @@ cordova build ios
 
 > **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
 
-
-
 ### iPad および iPhone の場合
 {: #for-ipad-and-iphone }
 1. ソース・コードで提供されているクライアント・アプリケーションをコンパイルし、それに署名します。これは必須です。
@@ -151,8 +143,6 @@ cordova build ios
 結果のネイティブ・プロジェクト (**iphone\native** 内にあります) を Xcode で手動で開くか、iPhone フォルダーを右クリックして**「実行 (Run As)」→「Xcode プロジェクト (Xcode project)」**を選択します。このアクションにより、プロジェクトが生成され、Xcode で開きます。
 
 > **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
-
-
 
 ### Blackberry の場合
 {: #for-blackberry }
@@ -173,17 +163,11 @@ Application Center は、企業アカウントに付随する企業証明書を�
 
 > 企業アカウントおよび登録トークンについて詳しくは、[Microsoft Developer Web サイト→「Windows Phone 用の自社アプリの配布」](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) ページを参照してください。
 
-
-
 > Windows Phone モバイル・クライアント・アプリケーションの署名方法について詳しくは、[Microsoft Developer Web サイト](http://dev.windows.com/en-us/develop)を参照してください。
-
-
 
 <br/>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:**  未署名の `.xap` ファイルを直接使用することは**できません**。デバイスにこのファイルをインストールする前に、事前に、Symantec または Microsoft から取得した企業証明書を使用してファイルに署名する必要があります。
-
-
 
 ### Windows Store Apps for Windows 8.1 Pro の場合
 {: #for-windows-store-apps-for-windows-81-pro }
