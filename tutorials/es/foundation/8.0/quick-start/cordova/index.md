@@ -101,6 +101,8 @@ Descargue el ejemplo de adaptador **Java** de ejemplo "Hello World".
 
 
     > Si Maven y {{ site.data.keys.mf_cli }} no están instalados, siga las instrucciones de **Definir su entorno de desarrollo** en la pantalla.
+
+
 2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Maven del adaptador y ejecute el mandato:
 
 
@@ -120,8 +122,7 @@ El adaptador se puede encontrar en la carpeta **[adapter]/target**.
 {: #5-testing-the-application }
 1. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Cordova. 
 2. Ejecute el mandato: `cordova platform add ios|android|windows` para añadir una plataforma. 
-3. En el proyecto Cordova, seleccione el archivo **config.xml** y edite el valor `<mfp:server ... url=" "/>` con las propiedades **protocol**, **host** y **port** con los valores correctos para su instancia de {{ site.data.keys.mf_server }}.
-
+3. En el proyecto Cordova, seleccione el archivo **config.xml** y edite el valor  `<mfp:server ... url=" "/>` con las propiedades **protocol**, **host** y **port** con los valores correctos para su instancia de {{ site.data.keys.mf_server }}.
     * Si está utilizando una instancia de {{ site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
     * Si está utilizando una instancia remota de {{ site.data.keys.mf_server }} (en Bluemix), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
 

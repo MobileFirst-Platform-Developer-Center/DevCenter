@@ -42,6 +42,8 @@ watchOS의 개발 환경을 설정하려면 Xcode 프로젝트 작성, watchOS �
 
         > **참고:** WatchOS 2에는 비트 코드가 필요합니다. Xcode 7부터 **빌드 옵션**이 **비트 코드 사용 예**(**빌드 설정** 탭, **빌드 옵션** 섹션)로 설정됩니다.
 
+
+
 3. 서버에서 기본 앱 및 WatchKit 확장을 둘 다 등록하십시오. 각 번들 ID에 대해 `mfpdev app register`를 실행하거나 {{ site.data.keys.mf_console }}에서 등록하십시오. 
     * com.worklight.[프로젝트 이름]
     * com.worklight.[프로젝트 이름].watchkitextension
@@ -70,17 +72,17 @@ Apple Watch 및 iPhone 디바이스는 물리적으로 다릅니다. 따라서 �
 {: #watchos-limitation }
 watchOS 개발 시에는 {{ site.data.keys.product_adj }} 앱에 기능을 추가하는 선택적 프레임워크가 제공되지 않습니다. watchOS 또는 Apple Watch 디바이스에 의해 부과되는 제한조건으로 인해 일부 다른 기능이 제한됩니다. 
 
-| 기능 | 제한사항 |
+| 기능| 제한사항|
 |---------|------------|
-| openSSL | 지원되지 않음 |
-| JSONStore| 지원되지 않음 |
-| 알림 | 지원되지 않음 |
-| {{ site.data.keys.product_adj }} 코드에 의해 표시되는 메시지 경보 | 지원되지 않음 |
-| 애플리케이션 인증 유효성 검증 | 비트 코드와 호환되지 않으므로 지원되지 않음 |
-| 원격 비활성화/알림	| 사용자 정의 필요(아래 참조) |
-| 사용자 이름/비밀번호 보안 검사 | CredentialsValidation 보안 검사 사용 |
+| openSSL| 지원되지 않음|
+| JSONStore| 지원되지 않음|
+| 알림| 지원되지 않음|
+| {{ site.data.keys.product_adj }} 코드에 의해 표시되는 메시지 경보| 지원되지 않음|
+| 애플리케이션 인증 유효성 검증| 비트 코드와 호환되지 않으므로 지원되지 않음|
+| 원격 사용 안함/알림 | 사용자 정의 필요(아래 참조)|
+| 사용자 이름/비밀번호 보안 검사| CredentialsValidation 보안 검사 사용|
 
-### 원격 비활성화/알림
+### 원격 사용 안함/알림
 {: #remote-disablenotify }
 {{ site.data.keys.mf_console }}에서 실행 중인 버전에 따라 클라이언트 애플리케이션에 대한 액세스를 사용 안함으로 설정하고 메시지를 리턴하도록 {{ site.data.keys.mf_server }}를 구성할 수 있습니다([보호된 자원에 대한 애플리케이션 액세스를 원격으로 사용 안함으로 설정](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources) 참조). 두 가지 옵션으로 통해 기본 UI 경보가 제공됩니다. 
 

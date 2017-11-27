@@ -33,7 +33,7 @@ weight: 1
         
     詳しくは、[HTTP アダプターでの SSL の使用 (Using SSL in HTTP adapters)](../../adapters/javascript-adapters/js-http-adapter/using-ssl/) を参照してください。自己署名証明書の使用について詳しくは、[自己署名証明書の使用によるアダプターとバックエンド・サーバーの間の SSL の構成](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)を参照してください。
 
-    > **注:** アプリケーション・サーバーが WebSphere  Application Server Liberty の場合、証明書は Liberty のトラストストアにも格納する必要があります。
+    > **注:** アプリケーション・サーバーが WebSphere  Application Server Liberty の場合、証明書は Liberty のトラストストアにも格納する必要があります。  
 
 3. アダプターのサーバー・サイド構成を確認してください。
 4. `mfpadm deploy adapter` および `mfpadm adapter set user-config` コマンドを使用して、アダプターおよびその構成をアップロードします。
@@ -140,7 +140,7 @@ weight: 1
 2. アプリケーションのインストール可能な成果物を配布する予定の場合は、アプリケーションのバージョンをインクリメントします。
 3. アプリケーションを、ビルドする前にターゲット・サーバー用に構成します。
 
-    ターゲット・サーバーの URL とランタイム名を、クライアントのプロパティー・ファイルで定義します。{{ site.data.keys.mf_cli }} を使用してターゲット・サーバーを変更することもできます。実行中のサーバーにアプリ ケーションを登録せずにターゲット・サーバー用にアプリケーションを構成するには、`mfpdev app config server <server URL>` および `mfpdev app config runtime <runtime_name>` を使用することができます。あるいは、`mfpdev app register` コマンドを実行して、実行中のサーバーにアプリケーションを登録することもできます。サーバーの公開 URL を使用してください。この URL は、{{ site.data.keys.mf_server }} に接続するためにモバイル・アプリケーションによって使用されます。
+    ターゲット・サーバーの URL とランタイム名を、クライアントのプロパティー・ファイルで定義します。{{ site.data.keys.mf_cli }} を使用してターゲット・サーバーを変更することもできます。実行中のサーバーにアプリケーションを登録せずにターゲット・サーバー用にアプリケーションを構成するには、`mfpdev app config server <server URL>` コマンドおよび `mfpdev app config runtime <runtime_name>` コマンドを使用できます。あるいは、`mfpdev app register` コマンドを実行して、実行中のサーバーにアプリケーションを登録することもできます。サーバーの公開 URL を使用してください。この URL は、{{ site.data.keys.mf_server }} に接続するためにモバイル・アプリケーションによって使用されます。
     
     例えば、デフォルトの名前 mfp を持つランタイムを使用して、アプリケーションをターゲット・サーバー mfp.mycompany.com 用に構成するには、
     `mfpdev app config server https://mfp.mycompany.com` および `mfpdev app config runtime mfp` を実行します。
@@ -284,8 +284,7 @@ appID-platform-version-artifacts.zip
     例えば、次のように、curl のようなツールで、そのような URL を使用できます。`curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`
     
     <br/>
-
-サーバ―構成に応じて URL の次のエレメントを変更します。
+    サーバ―構成に応じて URL の次のエレメントを変更します。
      * **9080** は、開発中は {{ site.data.keys.mf_server }} のデフォルトの HTTP ポートです。
      * **mfpadmin** は、管理サービスのデフォルトのコンテキスト・ルートです。 
 
@@ -386,7 +385,9 @@ REST API または **mfpadm** を使用してアップロードすることが�
 > **重要:** ユース・ケースをよく考慮してください。  
 > 
 > * エクスポート・ファイルには、アプリケーション認証データが含まれます。そのデータは、モバイル・アプリケーションのビルドに固有です。モバイル・アプリケーションには、サーバーの URL とそのランタイム名が含まれます。そのため、別のサーバーや別のランタイムを使用する場合は、アプリケーションを再ビルドする必要があります。エクスポートされたアプリケーション・ファイルのみを転送しても機能しません。
+
 > * 一部の成果物は、サーバーによって異なる可能性があります。プッシュの資格情報は、開発環境で作業するか実稼働環境で作業するかによって異なります。
+
 > * アプリケーション・ランタイム構成 (アクティブか無効かの状態やログ・プロファイルを含む) は、一部のケースでは転送できますが、すべてのケースで転送できるわけではありません。
 > * Web リソースの転送は、例えば新規サーバーを使用するアプリケーションを再ビルドする場合など、一部のケースでは意味がない可能性があります。
 
@@ -440,6 +441,8 @@ Application Center またはアプリケーション・ストアで、既に実�
 
 > **注:** 旧アプリケーションを無効にした場合、旧アプリケーションは {{ site.data.keys.mf_server }} と通信できなくなります。アプリケーションの開始時にサーバーへの接続を強制しない限り、ユーザーは引き続き、アプリケーションを開始してオフラインで作業できます。
 
+
+
 ### 直接更新 (ネイティブ・コードの変更なし)
 {: #direct-update-no-native-code-changes }
 直接更新は、実動アプリケーションに迅速なフィックスをデプロイするために使用する、必須のアップグレード・メカニズムです。バージョンを変更せずにアプリケーションを {{ site.data.keys.mf_server }} に再デプロイすると、{{ site.data.keys.mf_server }} は、ユーザーがサーバーに接続したときに、更新された Web リソースをデバイスに直接的にプッシュします。更新されたネイティブ・コードはプッシュされません。直接更新を考慮する際に留意する必要がある事項は、以下のとおりです。
@@ -450,3 +453,4 @@ Application Center またはアプリケーション・ストアで、既に実�
 4. 最初のデプロイメントで使用したバージョンとは異なるバージョンの {{ site.data.keys.product }} を使用してアプリケーションをコンパイル (ビルド) すると、直接更新は機能しません。
 
 > **注:** iOS アプリケーションのサブミット/検証を保管するための Test Flight または iTunes Connect を使用して作成されたアーカイブ/IPA ファイルは、ランタイムのクラッシュ/失敗を発生させる可能性があります。詳しくは、ブログ [Preparing iOS apps for App Store submission を {{ site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) でお読みください。
+

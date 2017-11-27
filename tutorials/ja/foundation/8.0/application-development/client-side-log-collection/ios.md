@@ -14,9 +14,11 @@ weight: 2
 
 > **注:** Swift で `OCLogger` を使用するには、`OCLogger` 拡張クラスを作成する必要があります (このクラスは別個の Swift ファイルであるか、現行 Swift ファイルの拡張にします)。
 
+
+
 ```swift
 extension OCLogger {
-    //Log methods with no metadata
+//Log methods with no metadata
 
     func logTraceWithMessages(message:String, _ args: CVarArgType...) {
         logWithLevel(OCLogger_TRACE, message: message, args:getVaList(args), userInfo:Dictionary<String, String>())
@@ -86,13 +88,14 @@ extension OCLogger {
 
 > **注:** 詳細度を指定してログ・キャプチャーを有効にすることで、デバイス CPU やファイル・システム・スペースの消費、クライアントがネットワークでログを送信するときのペイロードのサイズに影響する可能性があります。
 
+
+
 ログ・キャプチャーを無効にするには、以下のようにします。
 
 **Objective-C**
 
 ```objc
-[OCLogger setCapture:NO];
-```
+[OCLogger setCapture:NO];```
 
 **Swift**
 
@@ -105,6 +108,8 @@ OCLogger.setCapture(false);
 アプリケーションのロジックに基づいて、ログを {{ site.data.keys.product_adj }} に送信します。自動ログ送信を有効にして、自動的にログを送信することもできます。ログの最大サイズに達する前にログが送信されないと、ログ・ファイルがより新しいログで消去されます。
 
 > **注:** ログ・データを収集する場合は、以下のパターンを採用してください。データを定期的に送信すると、{{ site.data.keys.mf_analytics_console }}でログ・データをほぼリアルタイムで見られるようにすることができます。
+
+
 
 **Objective-C**
 
@@ -135,9 +140,7 @@ var timer = NSTimer.scheduledTimerWithTimeInterval(60,
 **Objective-C**
 
 ```objc
-[OCLogger setMaxFileSize:150000];
-
-```
+[OCLogger setMaxFileSize:150000];```
 
 **Swift**
 
@@ -188,14 +191,12 @@ OCLogger.setAutoSendLogs(false);
 1. パッケージ名 `myApp` を指定して、`logger` インスタンスを使用します。
 
    ```objc
-   OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];
-   ```
+OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];```
 
 2. **オプション: **指定されたレベルとパッケージのみにログ・キャプチャーとログ出力をプログラムで制限するフィルターを指定します。
 
    ```objc
-   [OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];
-   ```
+[OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];```
 
 3. **オプション:** サーバー構成プロファイルを取り出して、リモートでフィルターを制御します。
 
@@ -222,8 +223,7 @@ OCLogger.setAutoSendLogs(false);
 **Objective-C**
 
 ```objc
-[OCLogger updateConfigFromServer];
-```
+[OCLogger updateConfigFromServer];```
 
 **Swift**
 

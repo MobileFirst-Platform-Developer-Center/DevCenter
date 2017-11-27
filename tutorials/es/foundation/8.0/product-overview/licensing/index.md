@@ -34,6 +34,8 @@ Si el producto se ha de ejecutar en dos procesadores de tipo B, la titularidad q
 
 
 > [Consulte aquí para obtener más información](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) sobre la gestión de licencias PVU.
+
+
 ### Gestión de licencias de señal
 
 {: #token-licensing }

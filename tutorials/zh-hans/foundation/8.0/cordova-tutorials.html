@@ -14,7 +14,7 @@ indexed: false
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="内嵌搜索字段" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="search" aria-label="内嵌搜索字段" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="搜索字段" type="text" class="form-control" placeholder="搜索..." name="q">
                 </div>
@@ -56,7 +56,7 @@ indexed: false
     <hr/>
 
     <h2><a href="../product-overview/">产品概述</a></h2>
-   了解 {{ site.data.keys.product }} 产品。<ul>
+    了解 {{ site.data.keys.product }} 产品。<ul>
         <li><a href="../product-overview/capabilities">主要功能</a></li>
         <li><a href="../product-overview/components">产品组件</a></li>
         <li><a href="../product-overview/requirements">系统需求</a></li>
@@ -72,6 +72,7 @@ indexed: false
     <ul>
         <li><a href="../installation-configuration/development/mobilefirst/">设置 {{ site.data.keys.product_adj }} 开发环境</a></li>
         <li><a href="../installation-configuration/development/cordova/">设置 Cordova 开发环境</a></li>
+        <li><a href="../application-development/cordova-apps/developing-ui/">为 Cordova 应用程序开发 UI</a></li>
         <li><a href="../product-overview/components/console/">使用 {{ site.data.keys.mf_console }}</a></li>
     </ul>
 
@@ -82,7 +83,7 @@ indexed: false
     </ul>
 
     <h2><a href="../application-development/sdk">添加 {{ site.data.keys.product_adj }} SDK</a></h2>
-将 {{ site.data.keys.product }} SDK 添加到 Cordova、本机 iOS、Android、Windows 8.1 Universal 或 Windows 10 UWP 应用程序。<ul>
+    将 {{ site.data.keys.product }} SDK 添加到 Cordova、本机 iOS、Android、Windows 8.1 Universal 或 Windows 10 UWP 应用程序。<ul>
         <li><a href="../application-development/sdk/cordova/">将 {{ site.data.keys.product }} SDK 添加到 Cordova 应用程序</a></li>
     </ul>
 
@@ -203,7 +204,7 @@ indexed: false
     </ul>
 
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-   监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。<ul>
+    监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。<ul>
         <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} 简介</a></li>
         <li><a href="../analytics/analytics-api/">在客户机应用程序中使用分析 API</a></li>
         <li><a href="../analytics/analytics-rest-api/">使用分析 REST API</a></li>

@@ -1,15 +1,16 @@
 ---
 layout: tutorial
-title: Resource Requests in client applications
-breadcrumb_title: Resource Requests
+title: Solicitudes de recurso en aplicaciones de cliente
+breadcrumb_title: Solicitudes de recurso
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview 
+## Visión general 
 {: #overview }
-IBM {{ site.data.keys.product_adj }}-based applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Las aplicaciones basadas en IBM {{ site.data.keys.product_adj }} pueden acceder a los recursos utilizando la API REST `WLResourceRequest`.
+  
+La API REST funciona con todos los adaptadores y recursos externos.
 
-**To continue, select a platform:**
+**Para continuar, seleccione una plataforma: **

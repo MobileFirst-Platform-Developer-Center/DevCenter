@@ -1,66 +1,77 @@
 ---
 layout: tutorial
-title: Creating Java and JavaScript Adapters
-breadcrumb_title: Creating Adapters
+title: Creación de adaptadores Java y JavaScript
+breadcrumb_title: Creación de adaptadores
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general 
 {: #overview }
-An adapter can be created using either Maven commands or by using the {{ site.data.keys.mf_cli }} (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy **Java or JavaScript adapters** using Maven and the {{ site.data.keys.mf_cli }}. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
+Un adaptador se puede crear utilizando mandatos de Maven o utilizando {{ site.data.keys.mf_cli }} (que depende de que Maven esté instalado y configurado).
+El código del adaptador se puede entonces editar y compilar utilizando el entorno de desarrollo integrado (IDE) de su elección como, por ejemplo, Eclipse o IntelliJ.
+Esta guía de aprendizaje explica como crear, compilar y desplegar **adaptadores de Java o JavaScript** mediante Maven y {{ site.data.keys.mf_cli }}.
+Para aprender a utilizar los IDE de Eclipse o IntelliJ para crear y compilar adaptadores, revise la guía de aprendizaje [Desarrollo de adaptadores en Eclipse](../developing-adapters).
 
-**Prerequisite:** Make sure that you read the [Adapters Overview](../) first.
 
-#### Jump to
+**Requisito previo: ** Asegúrese de haber leído primero [Visión general de adaptadores](../).
+
+
+#### Ir a
 {: #jump-to }
-* [Install Maven](#install-maven)
-* [Creating Adapters Using {{ site.data.keys.mf_cli }}](#creating-adapters-using-mobilefirst-cli)
-* [Install {{ site.data.keys.mf_cli }}](#install-mobilefirst-cli)
-* [Creating an Adapter](#creating-an-adapter)
-* [Creating Adapters Using Maven Archetype](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
-* [File Structure](#file-structure)
-* [Build and Deploy Adapters](#build-and-deploy-adapters)
-* [Dependencies](#dependencies)
-* [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
-* [Downloading or Deploying Adapters Using {{ site.data.keys.mf_console }}](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
-* [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
-* [Working offline](#working-offline)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Instalación de Maven](#install-maven)
+* [Creación de adaptadores mediante {{ site.data.keys.mf_cli }}](#creating-adapters-using-mobilefirst-cli)
+* [Instalación de {{ site.data.keys.mf_cli }}](#install-mobilefirst-cli)
+* [Creación de un adaptador](#creating-an-adapter)
+* [Creación de adaptadores mediante arquetipos de Maven](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
+* [Estructura de archivos](#file-structure)
+* [Compilación y despliegue de adaptadores](#build-and-deploy-adapters)
+* [Dependencias](#dependencies)
+* [Agrupación de adaptadores en un único proyecto Maven](#grouping-adapters-in-a-single-maven-project)
+* [Descarga y despliegue de adaptadores mediante {{ site.data.keys.mf_console }}](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [Actualización del proyecto Maven del adaptador](#updating-the-adapter-maven-project)
+* [Funcionamiento fuera de línea](#working-offline)
+* [Guías de aprendizaje con las que continuar](#tutorials-to-follow-next)
 
-## Install Maven
+## Instalación de Maven
 {: #install-maven }
-In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
+Con el propósito de crear un adaptador, primero es necesario descargar e instalar Maven.
+Vaya al [sitio web de Apache Maven](https://maven.apache.org/) y siga las instrucciones para descargar e instalar Maven.
 
-## Creating Adapters Using {{ site.data.keys.mf_cli }}
+
+## Creación de adaptadores mediante {{ site.data.keys.mf_cli }}
 {: #creating-adapters-using-mobilefirst-cli }
 
-### Install {{ site.data.keys.mf_cli }}
+### Instalación de {{ site.data.keys.mf_cli }}
 {: #install-mobilefirst-cli }
-Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install {{ site.data.keys.mf_cli }}.  
-**Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
+Siga las instrucciones de instalación en la página de [Descargas]({{site.baseurl}}/downloads/) para instalar {{ site.data.keys.mf_cli }}.
+  
+**Requisito previo:** Para crear adaptadores utilizando la interfaz de línea de mandatos del desarrollador, Maven debe estar instalado.
 
-### Creating an Adapter
+
+### Creación de un adaptador
 {: #creating-an-adapter }
-To create a Maven adapter project, use the `mfpdev adapter create` command.
-You can choose to run the command interactively or directly.
+Utilice el mandato `mfpdev adapter create` para crear un proyecto de un adaptador de Maven.
+Puede ejecutar el mandato de forma interactiva o de forma directa.
 
-#### Interactive Mode
+
+#### Modalidad interactiva 
 {: #interactive-mode }
-1. Open a **Command-line** window and run:
+1. Abra una ventana de **línea de mandatos** y ejecute:
+
 
    ```bash
    mfpdev adapter create
    ```
 
-2. Enter an adapter name. For example:
+2. Especifique un nombre de adaptador. Por ejemplo:
 
    ```bash
    ? Enter Adapter Name: SampleAdapter
    ```
 
-3. Select an adapter type using the arrows and the enter keys:
+3. Seleccione un tipo de adaptador utilizando las flechas y el especifique las claves:
 
    ```bash
    ? Select Adapter Type:
@@ -68,82 +79,99 @@ You can choose to run the command interactively or directly.
       SQL
    ❯ Java
    ```
-  * Select `HTTP` to create a JavaScript HTTP adapter
-  * Select `SQL` to create a JavaScript SQL adapter  
-  * Select `Java` to create a Java adapter
+  * Seleccione `HTTP` para crear un adaptador HTTP JavaScript
+  * Seleccione `SQL` para crear un adaptador SQL JavaScript  
+  * Seleccione `Java` para crear un adaptador Java
 
-4. Enter an adapter package (this option is valid for Java adapters only). For example:
+4. Especifique un paquete de adaptador (esta opción solo es válida con adaptadores Java).
+Por ejemplo:
 
    ```bash
    ? Enter Package: com.mypackage
    ```
 
-5. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+5. Especifique un [ID de grupo](https://maven.apache.org/guides/mini/guide-naming-conventions.html) del proyecto Maven a compilar.
+Por ejemplo:
 
    ```bash
    ? Enter Group ID: com.mycompany
    ```
 
-#### Direct Mode
+#### Modalidad directa
 {: #direct-mode }
-Replace the placeholders with the actual values and run the command:
+Sustituya los parámetros con los valores reales y ejecute el mandato:
+
 
 ```bash
 mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name> -g <maven_project_groupid>
 ```
 
-## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
+## Creación de adaptadores mediante arquetipos Maven "adapter-maven-archetype"
 {: #creating-adapters-using-maven-archetype-adapter-maven-archetype }
 
-The "adapter-maven-archetype" is a {{ site.data.keys.product }}-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the adapter Maven project.
+"adapter-maven-archetype" es un arquetipo que {{ site.data.keys.product }} proporciona, que se basa en el [Maven Archetype Toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) y que Maven utiliza con el propósito de crear un proyecto Maven de adaptador.
 
-To create a Maven adapter project, use the `archetype:generate` Maven command. Once the command is executed, Maven will download (or use the local repositories mentioned above) required files in order to generate the adapter Maven project.
 
-You can choose to run the command interactively or directly.
+Utilice el mandato Maven `archetype:generate` para crear un proyecto de adaptador Maven.
+Una vez ejecute el mandato, Maven descargará (o utilizará los repositorios locales mencionados con anterioridad) los archivos necesarios con el propósito de generar el proyecto Maven de adaptador.
 
-#### Interactive Mode
+
+Puede ejecutar el mandato de forma interactiva o de forma directa.
+
+
+#### Modalidad interactiva 
 {: #interactive-mode-archetype }
 
-1. From a **Command-line** window, navigate to a location of your choosing.  
-   This is also where the Maven project will be generated.
+1. Desde la ventana de **línea de mandatos**, vaya a la ubicación de su elección.
+  
+También es donde se generará el proyecto de Maven.
 
-2. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
+
+2. Sustituya el parámetro **DarchetypeArtifactId** con el valor real y ejecute:
+
 
    ```bash
    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
    ```
    
-  * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
-  * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
-     * Use `adapter-maven-archetype-java` to create a Java adapter
-     * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
-     * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
+  * `ID de grupo de arquetipo` y Versión de arquetipo son parámetros necesarios para identificar el arquetipo.
 
-3. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+  * El `ID de artefacto de arquetipo` es un parámetro necesario para identificar el tipo de adaptador:
+
+     * Utilice `adapter-maven-archetype-java` para crear el adaptador Java
+     * Utilice `adapter-maven-archetype-http` para crear el adaptador HTTP JavaScript
+     * Utilice `adapter-maven-archetype-sql` para crear el adaptador SQL JavaScript  
+
+3. Especifique un [ID de grupo](https://maven.apache.org/guides/mini/guide-naming-conventions.html) del proyecto Maven a compilar.
+Por ejemplo:
 
    ```bash
    Define value for property 'groupId': : com.mycompany
    ```
 
-4. Enter an Artifact Id of the Maven project **which will later be used also as the adapter name**. For example:
+4. Especifique un ID de artefacto del proyecto Maven **que más tarde también se utilizará como nombre de adaptador**.
+Por ejemplo:
 
    ```bash
    Define value for property 'artifactId': : SampleAdapter
    ```
 
-5. Enter a Maven project version (the default is `1.0-SNAPSHOT`). For example:
+5. Especifique la versión del proyecto Maven (el valor predeterminado es `1.0-SNAPSHOT`).
+Por ejemplo:
 
    ```bash
    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
    ```
 
-6. Enter an adapter package name (the default is the `groupId`). For example:
+6. Especifique un nombre de paquete del adaptador (el valor predeterminado es `groupId`).
+Por ejemplo:
 
    ```bash
    Define value for property 'package':  com.mycompany: : com.mypackage
    ```
 
-7. Enter `y` to confirm:
+7. Especifique `y` para confirmar:
+
 
    ```bash
    Confirm properties configuration:
@@ -155,56 +183,62 @@ You can choose to run the command interactively or directly.
    Y: : y
    ```
 
-#### Direct Mode
+#### Modalidad directa
 {: #direct-mode-archetype }
-Replace the placeholders with the actual values and run the command:
+Sustituya los parámetros con los valores reales y ejecute el mandato:
+
 
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid>  -Dpackage=<adapter_package_name>
 ```
 
-> For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
+> Para obtener más información sobre el mandato `archetype:generate` consulte la [Documentación de Maven](http://maven.apache.org/).
 
-## File Structure
+## Estructura de archivos
 {: #file-structure }
-After creating the adapter the result will be a Maven project containing a **src** folder and a **pom.xml** file:
+Después de crear el adaptador el resultado será un proyecto Maven con una carpeta **src** y un archivo **pom.xml**:
+
 
 ![mvn-adapter](adapter-fs.png)
 
-## Build and Deploy Adapters
+## Compilación y despliegue de adaptadores
 {: #build-and-deploy-adapters }
 
-### Build
+### Compilación
 {: #build }
 
-* **Using the {{ site.data.keys.mf_cli }}** - Run the `adapter build` command from the project's root folder.
+* **Mediante {{ site.data.keys.mf_cli }}** - Ejecute el mandato `adapter build` desde la carpeta raíz del proyecto.
+
     
   ```bash
   mfpdev adapter build
   ```
     
-* **Using Maven** - The adapter is built each time you run the `install` command to build the Maven project.
+* **Mediante Maven** - El adaptador se compila cada vez que ejecuta el mandato `install` para compilar el proyecto Maven.
+
 
   ```bash
   mvn install
   ```
 
-### Build All
+### Compilación de todo
 {: #build-all }
-If you have multiple adapters in a filesystem folder and you'd like to build all of them, use:
+Si tiene varios adaptadores en una carpeta del sistema de archivos y desea compilarlos todos, utilice:
+
 
 ```bash
 mfpdev adapter build all
 ```
 
-The outcome is an **.adapter** archive file which can be found in the **target** folder of each adapter:
+La salida es un archivo de archivado **.adapter** que encontrará en la carpeta **target** de cada adaptador:
+
 
 ![java-adapter-result](adapter-result.png)
 
-### Deploy
+### Despliegue
 {: #deploy }
 
-1. The **pom.xml** file contains the following `properties`:
+1. El archivo **pom.xml** contiene las siguientes `properties`:
 
    ```xml
    <properties>
@@ -216,52 +250,65 @@ The outcome is an **.adapter** archive file which can be found in the **target**
    </properties>
    ```
    
-   * Replace **localhost:9080** with your {{ site.data.keys.mf_server }} IP address and port number.
-   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your admin user name and password.
-   * **Optional**. Replace the **mfpfRuntime** default value with your runtime name.
-2. Run the deploy command from the project's root folder:
- * **Using the {{ site.data.keys.mf_cli }}**:
+   * Sustituya **localhost:9080** con su dirección IP y número de puerto de {{ site.data.keys.mf_server }}.
+
+   * **Opcional**. Sustituya los valores predeterminados de **mfpfUser** y **mfpfPassword** con su nombre de usuario y contraseña de administrador.
+
+   * **Opcional**. Sustituya el valor predeterminado de **mfpfRuntime** con el nombre de su tiempo de ejecución.
+
+2. Ejecute el mandato deploy desde la carpeta raíz del proyecto:
+
+ * **Utilización de {{ site.data.keys.mf_cli }}**:
 
    ```bash
    mfpdev adapter deploy -x
    ```
    
-   The `-x` option deploys the adapter to the {{ site.data.keys.mf_server }} that is specified in adapter's **pom.xml** file.  
-   If the option is not used, the CLI will use the default server specified in the CLI settings.
+   La opción `-x` despliega el adaptador en la instancia de {{ site.data.keys.mf_server }} que se especifique en el archivo **pom.xml** del adaptador.
+  
+Si no se utiliza esta opción, la interfaz de línea de mandatos utilizará el servidor predeterminado especificado en los valores de la CLI.
+
     
-   > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
+   > Para obtener más información sobre opciones de despliegue de CLI, ejecute el mandato: `mfpdev help adapter deploy`.
    
- * **Using Maven**:
+ * **Utilización de Maven**:
 
    ```bash
    mvn adapter:deploy
    ```
 
-### Deploy All
+### Despliegue de todo
 {:# deploy-all }
-If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use:
+Si tiene varios adaptadores en una carpeta del sistema de archivos y desea desplegarlos todos, utilice:
+
 
 ```bash
 mfpdev adapter deploy all
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Sugerencia:**
+También puede compilar y desplegar el adaptador con un único mandato:
+`mvn install adapter:deploy`
 
-### Deploying to different runtimes
+### Despliegue en distintos tiempos de ejecución
 {: #deploying-to-different-runtimes }
-If you run multiple runtimes, see [Registering applications and deploying adapters to different runtimes](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes).
+Si ejecuta varios tiempos de ejecución, consulte [Registro de aplicaciones y despliegue de adaptadores para distintos tiempos de ejecución](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes).
 
-## Dependencies
+
+## Dependencias
 {: #dependencies }
-In order to use an external library in your adapter, follow one of the following suggested instructions:
+Para poder utilizar una biblioteca externa en su adaptador, siga una de las siguientes instrucciones sugeridas:
 
-#### Adding a local dependency
+
+#### Adición de una dependencia local
 {: #adding-a-local-dependency }
 
-1. Add a **lib** folder under the root Maven project folder and put the external library in it.
-2. Add the library path under the `dependencies` element in the Maven project's **pom.xml** file.  
+1. Añada una carpeta **lib** bajo la carpeta de proyecto Maven raíz y coloque en ella la biblioteca externa.
 
-For example:
+2. Añada la vía de acceso a la biblioteca bajo el elemento `dependencies` en el archivo **pom.xml** del proyecto Maven.
+  
+
+Por ejemplo:
 
 ```xml
 <dependency>
@@ -273,13 +320,15 @@ For example:
 </dependency>
 ```
 
-#### Adding an external dependency
+#### Adición de una dependencia externa
 {: #adding-an-external-dependency }
 
-1. Search online repositories such as [The Central Repository](http://search.maven.org/) for the dependency.
-2. Copy the POM dependency information and paste it under the `dependencies` element in the Maven project's **pom.xml** file.
+1. Busque dependencias en repositorios en línea como, por ejemplo, [The Central Repository](http://search.maven.org/).
 
-The following example uses the `cloudant-client artifactId`:
+2. Copie la información de la dependencia de POM y péguela bajo el elemento `dependencies` en el archivo **pom.xml** del proyecto Maven.
+
+
+El siguiente ejemplo utiliza `cloudant-client artifactId`:
 
 ```xml
 <dependency>
@@ -289,18 +338,25 @@ The following example uses the `cloudant-client artifactId`:
 </dependency>
 ```
 
-> For more information about dependencies see the Maven documentation.
+> Consulte la documentación de Maven para obtener más información sobre las dependencias.
 
-## Grouping Adapters in a Single Maven Project
+
+## Agrupación de adaptadores en un único proyecto Maven
 {: #grouping-adapters-in-a-single-maven-project }
 
-If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all, deploy all and sharing dependencies. You can also build all and deploy all adapters even if they are not grouped in a single Maven project using the `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands.
+Si tiene varios adaptadores en su proyecto es posible que desee disponerlos bajo un único proyecto Maven.
+La agrupación de adaptadores proporciona ventajas como, por ejemplo, la posibilidad de compilarlos todos, desplegarlos todos o de compartir dependencias.
+También puede compilar y desplegar todos los adaptadores incluso si no están agrupados en un único proyecto Maven mediante los mandatos de CLI `mfpdev adapter build all` y `mfpdev adapter deploy all`.
 
-To group adapters you need to:
 
-1. Create a root folder and call it, for example, "GroupAdapters".
-2. Put the Maven adapter projects in it.
-3. Create a **pom.xml** file:
+Para agrupar los adaptadores que necesite:
+
+
+1. Cree una carpeta raíz y denomínela, por ejemplo, como "GroupAdapters".
+2. Coloque los proyectos de adaptador Maven en la misma.
+
+3. Cree un archivo **pom.xml**:
+
 
    ```xml
    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -338,41 +394,60 @@ To group adapters you need to:
    </project>
    ```
    
-  1. Define a **`groupId`** element of your choice
-  2. Add an **`artifactId`** element - the root folder's name
-  3. Add a **`module`** element for each adapter
-  4. Add the **`build`** element
-  5. **Optional**. Replace **localhost:9080** with your specific {{ site.data.keys.mf_server }} IP address and port number.
-  6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your admin user name and password.
-  7. **Optional**. Replace the **`mfpfRuntime`** default value with your runtime name.
+  1. Defina un elemento **`groupId`** que desee
 
-4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
+  2. Añada un elemento **`artifactId`** - el nombre de la carpeta raíz 
+  3. Añada un elemento **`module`** para cada adaptador
+  4. Añada el elemento **`build`**
+  5. **Opcional**. Sustituya **localhost:9080** con su dirección IP y número de puerto de {{ site.data.keys.mf_server }} específicos.
 
-## Downloading or Deploying Adapters Using {{ site.data.keys.mf_console }}
+  6. **Opcional**. Sustituya los valores predeterminados de **`mfpfUser`** y **`mfpfPassword`** con su nombre de usuario y contraseña de administrador.
+
+  7. **Opcional**. Sustituya el valor predeterminado de **`mfpfRuntime`** con el nombre de su tiempo de ejecución.
+
+
+4. Para [compilar o desplegar](#build-and-deploy-adapters) todos los adaptadores, ejecute los mandatos desde el proyecto "GroupAdapters" raíz.
+
+
+## Descarga o despliegue de adaptadores mediante {{ site.data.keys.mf_console }}
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
-1. Open your browser of choice and load the {{ site.data.keys.mf_console }} using the address `http://<IP>:<PORT>/mfpconsole/`.  
-2. Click on the "New" button next to Adapters. You have two options to create an adapter:
- * Using Maven or {{ site.data.keys.mf_cli }} as previously explained above.
- * Download a template adapter project (step 2).
-3. Build the adapter Using Maven or {{ site.data.keys.mf_cli }}.
-4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
- * Click on the Deploy Adapter button (step 5).
- * Drag and drop the file into the "Create new" adapter screen.
+1. Abra el navegador de su elección y cargue {{ site.data.keys.mf_console }} utilizando la dirección `http://<IP>:<PORT>/mfpconsole/`.  
+2. Pulse el botón "Nuevo" junto a Adaptadores.
+Tiene dos opciones para crear un adaptador:
 
-    ![Creating adapter using console](Create_adapter_console.png)
+ * Mediante Maven o {{ site.data.keys.mf_cli }} tal como se explicó con anterioridad.
 
-5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
- * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
- * Resources - a list of the adapter resources.
- * Configurations Files - adapter configuration data, to be used in DevOps environments.
+ * Descargue un proyecto de adaptador de plantilla (paso 2).
 
-## Updating the Adapter Maven Project
+3. Compile el adaptador mediante Maven o {{ site.data.keys.mf_cli }}.
+4. Elija una de las siguientes maneras para subir el archivo **.adapter** generado que se puede encontrar en la carpeta de destino del proyecto del adaptador:
+
+ * Pulse en el botón Desplegar adaptador (paso 5).
+
+ * Arrastre y suelte el archivo en la pantalla del adaptador "Crear nuevo".
+
+
+    ![Creación de un adaptador mediante la consola](Create_adapter_console.png)
+
+5. Después de desplegar de forma satisfactoria el adaptador, se visualizará la página de detalles con los siguientes separadores:
+
+ * Configuraciones - Contiene las propiedades que el archivo XML del adaptador define.
+Aquí se pueden cambiar las configuraciones sin tener que realizar de nuevo el despliegue.
+
+ * Recurso - Contiene una lista de los recursos de adaptador.
+
+ * Archivos de configuración - Contiene datos de configuración del adaptador para ser utilizados en los entornos de DevOps.
+
+
+## Actualización del proyecto Maven del adaptador
 {: #updating-the-adapter-maven-project }
 
-To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by searching for "IBM MobileFirst Platform", and update the following properties in the adapter Maven project's **pom.xml** file:
+Para actualizar el proyecto Maven del adaptador con el último release, encuentre el **número de versión** de la API y los artefactos de plugin [en el repositorio central de Maven](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) buscando "IBM MobileFirst Platform", y actualice las siguientes propiedades en el archivo **pom.xml** del proyecto Maven del adaptador:
 
-1. The `adapter-maven-api` version:
+
+1. La versión de `adapter-maven-api`:
+
 
    ```xml
    <dependency>
@@ -383,7 +458,8 @@ To update the adapter Maven project with the latest release, find the **version 
    </dependency>
    ```
    
-2. The `adapter-maven-plugin` version:
+2. La versión de `adapter-maven-plugin`:
+
 
    ```xml
    <plugin>
@@ -394,16 +470,26 @@ To update the adapter Maven project with the latest release, find the **version 
    </plugin>
    ```
 
-## Working offline
+## Funcionamiento fuera de línea
 {: #working-offline }
 
-If you do not have online access to the Maven Central Repository, you can share {{ site.data.keys.product }} Maven artifacts in the internal repository of your organization.
+Si no tiene acceso en línea al repositorio central de Maven, puede compartir los artefactos Maven de {{ site.data.keys.product }} en el repositorio interno de su organización.
 
-1. [Visit the Downloads page]({{site.baseurl}}/downloads/) and download the {{ site.data.keys.mf_dev_kit_full }} Installer.
-2. Start {{ site.data.keys.mf_server }} and in a browser, load the {{ site.data.keys.mf_console }} from the following URL: `http://<your-server-host:server-port>/mfpconsole`.
-3. Click **Download Center**. Under **Tools → Adapter Archetypes**, click **Download**. The **mfp-maven-central-artifacts-adapter.zip** archive is downloaded.
-4. Add the adapter archetypes and security checks to the internal Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
-5. The following JAR files are required by adapter-maven-api. Make sure they are located either in developers' local **.m2** folder, or in the Maven repository of your organization. You can download them from The Central Repository.
+
+1. [Visite la página de descargas]({{site.baseurl}}/downloads/) y descargue el instalador de {{ site.data.keys.mf_dev_kit_full }}.
+
+2. Inicie {{ site.data.keys.mf_server }} y en un navegador, cargue {{ site.data.keys.mf_console }} desde el siguiente URL:
+`http://<your-server-host:server-port>/mfpconsole`.
+3. Pulse **Centro de descargas**.
+Bajo **Herramientas → Arquetipos de adaptador**, pulse **Descargar**.
+Se descargará el archivador **mfp-maven-central-artifacts-adapter.zip**.
+
+4. Añada los arquetipos de adaptador y las comprobaciones de seguridad al repositorio Maven interno ejecutando el script **install.sh** para Linux y Mac o el script **install.bat** para Windows.
+
+5. Se necesitan los siguientes archivos JAR para adapter-maven-api.
+Asegúrese de que están ubicados en la carpeta **.m2** local de los desarrolladores o en el repositorio Maven de su organización.
+Puede descargarlos desde el The Central Repository.
+
     * javax.ws.rs:javax.ws.rs-api:2.0
     * javax:javaee-web-api:6.0
     * org.apache.httpcomponents:httpclient:4.3.4
@@ -415,11 +501,11 @@ If you do not have online access to the Maven Central Repository, you can share 
     * com.ibm.websphere.appserver.api:com.ibm.websphere.appserver.api.json:1.0
     * javax.servlet:javax.servlet-api:3.0.1
 
-## Tutorials to follow next
+## Guías de aprendizaje con las que continuar 
 {: #tutorials-to-follow-next }
 
-* [Learn about Java adapters](../java-adapters/)
-* [Learn about JavaScript adapters](../javascript-adapters/)
-* [Develop adapters in IDEs](../developing-adapters/)
-* [Testing and debugging adapters](../testing-and-debugging-adapters/)
-* [Review all Adapters tutorials](../#tutorials-to-follow-next)
+* [Aprender sobre adaptadores Java](../java-adapters/)
+* [Aprender sobre adaptadores JavaScript](../javascript-adapters/)
+* [Desarrollo de adaptadores en entornos de desarrollo integrado (IDE)](../developing-adapters/)
+* [Pruebas y depuración de adaptadores](../testing-and-debugging-adapters/)
+* [Revisar todas las guías de aprendizaje de adaptadores](../#tutorials-to-follow-next)

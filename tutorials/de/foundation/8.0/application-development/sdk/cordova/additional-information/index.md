@@ -16,9 +16,7 @@ bewährte Verfahren umsetzt. Standardmäßig werden mit diesem Feature bestimmte
 zur Erhöhung der Sicherheit durchgesetzt. Dazu gehören clientseitige HTTPS-Anforderungen
 und serverseitige Zertifikate und Verbindungsschlüssel gemäß Transport Layer Security (TLS) Version 1.2 mit zukunftssicherer Geheimhaltung. 
 
-Für **Entwicklungszwecke** können Sie das Standardverhalten außer Kraft setzen und in der Datei
-info.plist Ihrer App eine
-Ausnahme angeben (siehe App Transport Security Technote). In einer **reinen Produktionsumgebung** funktionieren jedoch sämtliche iOS-Apps nur,
+Für **Entwicklungszwecke** können Sie das Standardverhalten außer Kraft setzen und in der Datei info.plist Ihrer App eine Ausnahme angeben (siehe "App Transport Security Technote"). In einer **reinen Produktionsumgebung** funktionieren jedoch sämtliche iOS-Apps nur,
 wenn sie TLS-gesicherte Verbindungen umsetzen. 
 
 Wenn Nicht-TLS-Verbindungen
@@ -32,11 +30,11 @@ ermöglicht werden sollen, muss in der Datei
         <key>yourserver.com</key>
     
             <dict>
-            <!--Include to allow subdomains-->
+            <!-- Aufnehmen, um Unterdomänen zu ermöglichen -->
             <key>NSIncludesSubdomains</key>
             <true/>
 
-            <!--Include to allow insecure HTTP requests-->
+            <!-- Aufnehmen, um nicht gesicherte HTTP-Anforderungen zu ermöglichen -->
             <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
             <true/>
         </dict>
@@ -62,11 +60,7 @@ in der
     
 3. Konfigurieren Sie einen Server mit aktiviertem Protokoll TLS 1.2.
 Weitere Informationen finden Sie unter [How to configure {{ site.data.keys.mf_server }}  to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659). 
-4. Legen Sie Einstellungen für Verschlüsselungen und Zertifikate fest, soweit sie in Ihrem Setup anwendbar sind. Weitere Informationen
-finden Sie im [technischen Hinweis zu ATS (App Transport Security)](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/),
-unter [Secure communications using Secure Sockets
-Layer (SSL)](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en) und unter [Enabling SSL communication
-in Liberty](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0). 
+4. Legen Sie Einstellungen für Verschlüsselungen und Zertifikate fest, soweit sie in Ihrem Setup anwendbar sind. Weitere Informationen finden Sie im [technischen Hinweis zu ATS (App Transport Security)](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/) unter [Secure communications using Secure Sockets Layer (SSL)](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en) und unter [Enabling SSL communication in Liberty](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
 
 ## OpenSSL in Cordova-Anwendungen aktivieren
 {: #enabling-openssl-in-cordova-applications }
@@ -99,8 +93,7 @@ Cordova-Plug-in installieren.
 cordova plugin add cordova-plugin-mfp-encrypt-utils
 ```
 
-Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung
-aktiviert: 
+Mit dem folgenden Code wird die OpenSSL-Option für die Verschlüsselung/Entschlüsselung aktiviert: 
 
 * WL.SecurityUtils.enableNativeEncryption(false)
 

@@ -42,7 +42,7 @@ MFPPush.registerNotificationsCallback(notificationReceived);
 
 function registerDevice() {
     var phoneNumber = prompt("Enter Your 10 digit phone number");
-    if(phoneNumber != null && phoneNumber!="" && /^\d+$/.test(phoneNumber)) {
+    if(phoneNumber != null &&  phoneNumber!="" &&  /^\d+$/.test(phoneNumber)) {
         var options = {};
         options.phoneNumber = phoneNumber;
         MFPPush.registerDevice(options, 
@@ -75,6 +75,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > すべてのプッシュ通知 REST API を確認するには、ユーザー資料の <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API ランタイム・サービス</a>のトピックを参照してください。
+
+
 
 通知を送信するには、[通知の送信](../../sending-notifications)チュートリアルを参照してください。
 

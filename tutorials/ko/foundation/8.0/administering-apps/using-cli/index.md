@@ -10,10 +10,11 @@ weight: 4
 **mfpadm** 프로그램을 통해 {{ site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
 >**8.0.0.0-MFPF-IF201701250919** 이후의 {{ site.data.keys.product_full }} SDK 버전은 업데이트된 앱 인증 지원을 제공합니다. 이 지원은 `dynamic` 또는 `static` 유효성 검증 간에 전환하고 이 유효성 검증을 재설정하는 `mfpadm` 명령입니다.
+
 >
 {{ site.data.keys.product_full }} 설치 디렉토리 `/MobilefirstPlatformServer/shortcuts`로 이동한 후 `mfpadm` 명령을 실행하십시오. 
 >
-1. 다음과 같이 유효성 검증 유형 간에 전환합니다. 
+1.다음과 같이 유효성 검증 유형 간에 전환합니다.
 ```bash
 	mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
 ```  
@@ -96,18 +97,18 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 **mfpadm** 프로그램의 옵션은 다음과 같습니다. 
 
-| 옵션	| 유형 | 설명 | 필수 여부 | 기본값 |
+| 옵션	| 유형| 설명       | 필수 여부| 기본값|
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | 관리 서비스에 사용되는 {{ site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예 | |
-| --secure	 | 부울 | 보안 위험이 있는 조작을 수행하지 않을지 여부 | 아니오 | true |
-| --user	 | 이름 | {{ site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 |  | 	 
-| --passwordfile | 파일 | 사용자의 비밀번호가 있는 파일 | 아니오 |
-| --timeout	     | 숫자  | 전체 REST 서비스 액세스의 제한시간(초) | 아니오 | 	 
-| --connect-timeout | 숫자 | 네트워크 연결 설정의 제한시간(초) | 아니오 |
-| --socket-timeout  | 숫자 | 네트워크 연결 끊어짐을 발견할 제한시간(초) | 아니오 |
-| --connection-request-timeout | 숫자 연결 요청 풀에서 항목을 얻을 제한시간(초) | 아니오 |
-| --lock-timeout | 숫자 | 잠금 획득 제한시간(초) | 아니오 | 2 |
-| --verbose	     | 자세한 출력 | 아니오	| |  
+| --url| 	 | URL| 관리 서비스에 사용되는 {{ site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL| 예| |
+| --secure	 | 부울| 보안 위험이 있는 조작을 수행하지 않을지 여부| 아니오| true|
+| --user	 | 이름| {{ site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름| 예|  | 	 
+| --passwordfile| 파일| 사용자의 비밀번호가 있는 파일| 아니오|
+| --timeout	     | 숫자| 전체 REST 서비스 액세스의 제한시간(초)| 아니오| 	 
+| --connect-timeout| 숫자| 네트워크 연결 설정의 제한시간(초)| 아니오|
+| --socket-timeout| 숫자| 네트워크 연결 끊어짐을 발견할 제한시간(초)| 아니오|
+| --connection-request-timeout| 숫자 연결 요청 풀에서 항목을 얻을 제한시간(초)| 아니오|
+| --lock-timeout| 숫자| 잠금 획득 제한시간(초)| 아니오| 2|
+| --verbose	     | 자세한 출력| 아니오	| |  
 
 **url**  
 URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들어, 기본 포트와 컨텍스트 루트를 사용하는 경우 다음 URL을 사용하십시오. 
@@ -121,7 +122,7 @@ URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들�
 * 암호화되지 않은 HTTP를 통해서도 사용자와 비밀번호가 안전하지 않은 방법으로 전송될 수 있습니다. 
 * 서버의 SSL 인증서가 자체 서명되었거나 서버의 호스트 이름과 다른 호스트 이름에 대해 작성된 경우에도 해당 인증서가 허용됩니다. 
 
-**password**  
+**비밀번호**  
 `--passwordfile` 옵션으로 전달되는 별도의 파일에서 비밀번호를 지정합니다. 대화식 모드(대화식 모드 참조)에서 비밀번호를 대화식으로 지정할 수도 있습니다. 비밀번호는 민감한 정보이므로 보호되어야 합니다. 동일한 컴퓨터의 다른 사용자가 이 비밀번호를 알지 못하게 해야 합니다. 비밀번호에 대한 보안을 설정하려면 파일에 비밀번호를 입력하기 전에 자신이 아닌 다른 사용자의 파일 읽기 권한을 제거해야 합니다. 예를 들어, 다음 명령 중 하나를 사용할 수 있습니다. 
 
 * UNIX의 경우: `chmod 600 adminpassword.txt`
@@ -131,51 +132,51 @@ URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들�
 
 mfpadm 호출은 명령을 포함합니다. 다음 명령이 지원됩니다. 
 
-| 명령                           | 설명 |
+| 명령| 설명       |
 |-----------------------------------|-------------|
-| show info	| 사용자 정보와 구성 정보를 표시합니다.  |
-| show global-config | 글로벌 구성 정보를 표시합니다.  |
-| show diagnostics | 진단 정보를 표시합니다.  |
-| show versions	| 버전 정보를 표시합니다.  |
-| unlock | 일반 용도의 잠금을 해제합니다.  |
-| list runtimes [--in-database] | 런타임을 나열합니다.  |
-| show runtime [runtime-name] | 런타임에 대한 정보를 표시합니다.  |
-| delete runtime [runtime-name] condition | 런타임을 삭제합니다.  |
-| show user-config [runtime-name] | 런타임의 사용자 구성을 표시합니다.  |
-| set user-config [runtime-name] file | 런타임의 사용자 구성을 지정합니다.  |
-| set user-config [runtime-name] property = value | 런타임의 사용자 구성에서 특성을 지정합니다.  |
-| show confidential-clients [runtime-name] | 런타임의 기밀 클라이언트 구성을 표시합니다.  |
-| set confidential-clients [runtime-name] file | 런타임의 기밀 클라이언트 구성을 지정합니다.  |
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | 런타임의 기밀 클라이언트 구성에 대한 규칙을 지정합니다.  |
-| list adapters [runtime-name] | 어댑터를 나열합니다.  |
-| deploy adapter [runtime-name] property = value | 어댑터를 배치합니다. |
-| show adapter [runtime-name] adapter-name | 어댑터에 대한 정보를 표시합니다. |
-| delete adapter [runtime-name] adapter-name | 어댑터를 삭제합니다. |
-| adapter [runtime-name] adapter-name get binary [> tofile]	| 어댑터의 2진 데이터를 가져옵니다. |
-| list apps [runtime-name] | 앱을 나열합니다. |
-| deploy app [runtime-name] file | 앱을 배치합니다. |
-| show app [runtime-name] app-name | 앱에 대한 정보를 표시합니다. |
-| delete app [runtime-name] app-name | 앱을 삭제합니다.  |
-| show app version [runtime-name] app-name environment version | 앱 버전에 대한 정보를 표시합니다.  |
-| delete app version [runtime-name] app-name environment version | 앱 버전을 삭제합니다.  |
-| app [runtime-name] app-name show license-config | 앱의 토큰 라이센스 구성을 표시합니다.  |
-| app [runtime-name] app-name set license-config app-type license-type | 앱의 토큰 라이센스 구성을 지정합니다.  |
-| app [runtime-name] app-name delete license-config | 앱의 토큰 라이센스 구성을 제거합니다.  |
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| 앱 버전의 디스크립터를 가져옵니다.  |
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | 앱 버전의 웹 자원을 가져옵니다.  |
-| app version [runtime-name] app-name environment version set web-resources file | 앱 버전의 웹 자원을 지정합니다.  |
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | 앱 버전의 인증 데이터를 가져옵니다.  |
-| app version [runtime-name] app-name environment version set authenticity-data [file] | 앱 버전의 인증 데이터를 지정합니다.  |
-| app version [runtime-name] app-name environment version delete authenticity-data | 앱 버전의 인증 데이터를 삭제합니다.  |
-| app version [runtime-name] app-name environment version show user-config | 앱 버전의 사용자 구성을 표시합니다.  |
-| app version [runtime-name] app-name environment version set user-config file | 앱 버전의 사용자 구성을 지정합니다.  |
-| app version [runtime-name] app-name environment version set user-config property = value | 앱 버전의 사용자 구성에서 특성을 지정합니다.  |
-| list devices [runtime-name][--query query] | 디바이스를 나열합니다.  |
-| remove device [runtime-name] id | 디바이스를 제거합니다.  |
-| device [runtime-name] id set status new-status | 디바이스 상태를 변경합니다.  |
-| device [runtime-name] id set appstatus app-name new-status | 앱의 디바이스 상태를 변경합니다.  |
-| list farm-members [runtime-name] | 서버 팜 멤버인 서버를 나열합니다.  |
-| remove farm-member [runtime-name] server-id | 팜 멤버 목록에서 서버를 제거합니다.  |
+| show info	| 사용자 정보와 구성 정보를 표시합니다. |
+| show global-config| 글로벌 구성 정보를 표시합니다. |
+| show diagnostics| 진단 정보를 표시합니다. |
+| show versions	| 버전 정보를 표시합니다. |
+| unlock| 일반 용도의 잠금을 해제합니다. |
+| list runtimes [--in-database]| 런타임을 나열합니다. |
+| show runtime [runtime-name]| 런타임에 대한 정보를 표시합니다. |
+| delete runtime [runtime-name] condition| 런타임을 삭제합니다. |
+| show user-config [runtime-name]| 런타임의 사용자 구성을 표시합니다. |
+| set user-config [runtime-name] file| 런타임의 사용자 구성을 지정합니다. |
+| set user-config [runtime-name] property = value| 런타임의 사용자 구성에서 특성을 지정합니다. |
+| show confidential-clients [runtime-name]| 런타임의 기밀 클라이언트 구성을 표시합니다. |
+| set confidential-clients [runtime-name] file| 런타임의 기밀 클라이언트 구성을 지정합니다. |
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope| 런타임의 기밀 클라이언트 구성에 대한 규칙을 지정합니다. |
+| list adapters [runtime-name]| 어댑터를 나열합니다. |
+| deploy adapter [runtime-name] property = value| 어댑터를 배치합니다. |
+| show adapter [runtime-name] adapter-name| 어댑터에 대한 정보를 표시합니다. |
+| delete adapter [runtime-name] adapter-name| 어댑터를 삭제합니다. |
+| adapter [runtime-name] adapter-name get binary [> tofile]| 어댑터의 2진 데이터를 가져옵니다. |
+| list apps [runtime-name]| 앱을 나열합니다. |
+| deploy app [runtime-name] file| 앱을 배치합니다. |
+| show app [runtime-name] app-name| 앱에 대한 정보를 표시합니다. |
+| delete app [runtime-name] app-name| 앱을 삭제합니다. |
+| show app version [runtime-name] app-name environment version| 앱 버전에 대한 정보를 표시합니다. |
+| delete app version [runtime-name] app-name environment version| 앱 버전을 삭제합니다. |
+| app [runtime-name] app-name show license-config| 앱의 토큰 라이센스 구성을 표시합니다. |
+| app [runtime-name] app-name set license-config app-type license-type| 앱의 토큰 라이센스 구성을 지정합니다. |
+| app [runtime-name] app-name delete license-config| 앱의 토큰 라이센스 구성을 제거합니다. |
+| app version [runtime-name] app-name environment version get descriptor [> tofile]| 앱 버전의 디스크립터를 가져옵니다. |
+| app version [runtime-name] app-name environment version get web-resources [> tofile]| 앱 버전의 웹 자원을 가져옵니다. |
+| app version [runtime-name] app-name environment version set web-resources file| 앱 버전의 웹 자원을 지정합니다. |
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile]| 앱 버전의 인증 데이터를 가져옵니다. |
+| app version [runtime-name] app-name environment version set authenticity-data [file]| 앱 버전의 인증 데이터를 지정합니다. |
+| app version [runtime-name] app-name environment version delete authenticity-data| 앱 버전의 인증 데이터를 삭제합니다. |
+| app version [runtime-name] app-name environment version show user-config| 앱 버전의 사용자 구성을 표시합니다. |
+| app version [runtime-name] app-name environment version set user-config file| 앱 버전의 사용자 구성을 지정합니다. |
+| app version [runtime-name] app-name environment version set user-config property = value| 앱 버전의 사용자 구성에서 특성을 지정합니다. |
+| list devices [runtime-name][--query query] | 디바이스를 나열합니다. |
+| remove device [runtime-name] id| 디바이스를 제거합니다. |
+| device [runtime-name] id set status new-status| 디바이스 상태를 변경합니다. |
+| device [runtime-name] id set appstatus app-name new-status| 앱의 디바이스 상태를 변경합니다. |
+| list farm-members [runtime-name]| 서버 팜 멤버인 서버를 나열합니다. |
+| remove farm-member [runtime-name] server-id| 팜 멤버 목록에서 서버를 제거합니다. |
 
 #### 대화식 모드
 {: #interactive-mode }
@@ -229,18 +230,18 @@ rlwrap가 작동하지 않거나 필요 없는 환경에서는 `--no-readline` �
 
 다음 명령을 사용하여 이러한 값을 구성 파일에 저장합니다. 
 
-| 명령 | 주석 |
+| 명령| 주석|
 |---------|---------|
-| mfpadm [--configfile=file] config url URL | |
-| mfpadm [--configfile=file] config secure boolean | |
-| mfpadm [--configfile=file] config user name | |
-| mfpadm [--configfile=file] config password | 비밀번호를 입력하도록 프롬프트를 표시합니다.  |
-| mfpadm [--configfile=file] config timeout seconds | |
-| mfpadm [--configfile=file] config connect-timeout seconds | |
-| mfpadm [--configfile=file] config socket-timeout seconds | |
-| mfpadm [--configfile=file] config connection-request-timeout seconds | |
-| mfpadm [--configfile=file] config lock-timeout seconds | |
-| mfpadm [--configfile=file] config runtime runtime-name | |
+| mfpadm [--configfile=file] config url URL| |
+| mfpadm [--configfile=file] config secure boolean| |
+| mfpadm [--configfile=file] config user name| |
+| mfpadm [--configfile=file] config password| 비밀번호를 입력하도록 프롬프트를 표시합니다. |
+| mfpadm [--configfile=file] config timeout seconds| |
+| mfpadm [--configfile=file] config connect-timeout seconds| |
+| mfpadm [--configfile=file] config socket-timeout seconds| |
+| mfpadm [--configfile=file] config connection-request-timeout seconds| |
+| mfpadm [--configfile=file] config lock-timeout seconds| |
+| mfpadm [--configfile=file] config runtime runtime-name| |
 
 구성 파일에 저장된 값을 나열하려면 다음 명령을 사용하십시오. `mfpadm [--configfile=file] config`
 
@@ -253,14 +254,16 @@ rlwrap가 작동하지 않거나 필요 없는 환경에서는 `--no-readline` �
 
 > **중요:** 비밀번호는 잠시라도 보이지 않도록 비밀번호를 숨기는 난독화된 형식으로 저장됩니다. 그러나 이러한 난독화가 보안을 제공하지는 않습니다.
 
+
+
 #### 일반 옵션
 {: #generic-options }
 일반적인 옵션도 있습니다. 
 
-| 옵션	| 설명 |
+| 옵션	| 설명       |
 |-----------|-------------|
-| --help	| 몇몇 사용법 도움말 표시 |
-| --version	| 버전 표시 |
+| --help	| 몇몇 사용법 도움말 표시|
+| --version	| 버전 표시|
 
 #### XML 형식
 {: #xml-format }
@@ -290,9 +293,9 @@ mfpadm 프로그램에서 생성하는 일반 출력은 현재 로케일의 인�
 
 여기서는 다음 옵션을 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| --xml    | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**  
 
@@ -307,19 +310,19 @@ show global-config
 {: #the-show-user-config-command }
 `show user-config` 명령은 런타임의 사용자 구성을 표시합니다. 
 
-구문: `show user-config [--xml][runtime-name]`
+구문: `show user-config [--xml] [runtime-name]`
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
 
 `show user-config` 명령에서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| 인수 | 설명 | 필수 여부 | 기본값 |
+| 인수| 설명       | 필수 여부| 기본값|
 |----------|-------------|----------|---------|
-| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 아니오 | 표준 출력 |
+| --xml| JSON 형식 대신 XML 형식으로 출력을 생성합니다. | 아니오| 표준 출력|
 
 **예제**  
 
@@ -338,20 +341,20 @@ show user-config mfp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 속성 | 설명 |
+| 속성| 설명       |
 |-----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| 파일 | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| 파일| 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 단일 특성의 구문: `set user-config [runtime-name] property = value`
 
 `set user-config` 명령에서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| property | JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오.  |
-| value | 특성의 값입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| property| JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오. |
+| value| 특성의 값입니다. |
 
 **예제**  
 
@@ -370,19 +373,19 @@ set user-config mfp timeout = 240
 {: #the-show-confidential-clients-command }
 `show confidential-clients` 명령은 런타임에 액세스할 수 있는 기밀 클라이언트의 구성을 표시합니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오. 
 
-구문: `show confidential-clients [--xml][runtime-name]`
+구문: `show confidential-clients [--xml] [runtime-name]`
 
 여기서는 다음 인수를 사용합니다. 
 
-| 속성 | 설명 |
+| 속성| 설명       |
 |-----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
 
 `show confidential-clients` 명령에서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| 인수 | 설명 | 필수 여부 | 기본값 |
+| 인수| 설명       | 필수 여부| 기본값|
 |----------|-------------|----------|---------|
-| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 아니오 | 표준 출력 |
+| --xml| JSON 형식 대신 XML 형식으로 출력을 생성합니다. | 아니오| 표준 출력|
 
 **예제**
 
@@ -401,10 +404,10 @@ show confidential-clients --xml mfp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 속성 | 설명 |
+| 속성| 설명       |
 |-----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| 새 구성이 포함된 JSON 또는 XML 파일의 파일 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| 새 구성이 포함된 JSON 또는 XML 파일의 파일 이름입니다. |
 
 **예제**
 
@@ -423,13 +426,13 @@ set confidential-clients mfp clients.xml
 
 여기서는 다음 인수를 사용합니다. 
 
-| 속성	| 설명 |
+| 속성	| 설명       |
 |-----------|-------------|
-| runtime | 런타임의 이름입니다.  |
-| id | 규칙 ID입니다.  |
-| displayName | 규칙의 표시 이름입니다.  |
-| secret | 규칙의 시크릿입니다.  |
-| allowedScope | 규칙의 범위입니다. 공백으로 구분된 토큰 목록입니다. 둘 이상의 토큰 목록을 전달하려면 큰따옴표를 사용하십시오.  |
+| runtime| 런타임의 이름입니다. |
+| id| 규칙 ID입니다. |
+| displayName| 규칙의 표시 이름입니다. |
+| secret| 규칙의 시크릿입니다. |
+| allowedScope| 규칙의 범위입니다. 공백으로 구분된 토큰 목록입니다. 둘 이상의 토큰 목록을 전달하려면 큰따옴표를 사용하십시오. |
 
 **예제**
 
@@ -451,15 +454,15 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
 
 `list adapters` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**  
 
@@ -478,10 +481,10 @@ list adapters mfp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| 파일 | 2진 어댑터 파일입니다(.adapter).  |
+| runtime-name| 런타임의 이름입니다. |
+| 파일| 2진 어댑터 파일입니다(.adapter). |
 
 **예제**
 
@@ -500,16 +503,16 @@ deploy adapter mfp MyAdapter.adapter
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| adapter-name | 어댑터의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| adapter-name| 어댑터의 이름입니다. |
 
 `show adapter` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -528,10 +531,10 @@ show adapter mfp MyAdapter
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| adapter-name | 어댑터의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| adapter-name| 어댑터의 이름입니다. |
 
 **예제**
 
@@ -546,10 +549,10 @@ delete adapter mfp MyAdapter
 {: #the-adapter-command-prefix }
 `adapter` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| adapter-name | 어댑터의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| adapter-name| 어댑터의 이름입니다. |
 
 <br/>
 #### `adapter get binary` 명령
@@ -560,9 +563,9 @@ delete adapter mfp MyAdapter
 
 여기서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 | 필수 여부 | 기본값 |
+| 옵션| 설명       | 필수 여부| 기본값|
 |--------|-------------|----------|---------|
-| > tofile | 출력 파일의 이름입니다.  | 아니오 | 표준 출력 |
+| > tofile| 출력 파일의 이름입니다. | 아니오| 표준 출력|
 
 **예제**
 
@@ -581,9 +584,9 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 여기서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  |
+| --xml| JSON 형식 대신 XML 형식으로 출력을 생성합니다. |
 
 **예제**
 
@@ -602,18 +605,18 @@ adapter mfp MyAdapter show user-config
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| 파일 | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다.  |
+| 파일| 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 단일 특성의 구문: `adapter [runtime-name] adapter-name set user-config property = value`
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| property | JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오.  |
-| value | 특성의 값입니다.  |
+| property| JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오. |
+| value| 특성의 값입니다. |
 
 **예제**
 
@@ -639,15 +642,15 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
 
 `list apps` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -665,10 +668,10 @@ list apps mfp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| 파일 | 애플리케이션 디스크립터입니다(JSON 파일).  |
+| runtime-name| 런타임의 이름입니다. |
+| 파일| 애플리케이션 디스크립터입니다(JSON 파일). |
 
 **예제**
 
@@ -686,16 +689,16 @@ deploy app mfp MyApp/application-descriptor.json
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| app-name | 앱의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| app-name| 앱의 이름입니다. |
 
 `show app` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml	 | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml	 | 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -713,10 +716,10 @@ show app mfp MyApp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| app-name | 앱의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| app-name| 앱의 이름입니다. |
 
 **예제**
 
@@ -734,18 +737,18 @@ delete app mfp MyApp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| app-name | 앱의 이름입니다.  |
-| environment | 모바일 플랫폼입니다.  |
-| version | 앱의 버전입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| app-name| 앱의 이름입니다. |
+| environment| 모바일 플랫폼입니다. |
+| version| 앱의 버전입니다. |
 
 `show app version` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 | ---------|-------------|
-| -- xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| -- xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -763,12 +766,12 @@ show app version mfp MyApp iPhone 1.1
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| app-name | 앱의 이름입니다.  |
-| environment | 모바일 플랫폼입니다.  |
-| version | 앱의 버전입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| app-name| 앱의 이름입니다. |
+| environment| 모바일 플랫폼입니다. |
+| version| 앱의 버전입니다. |
 
 **예제**
 
@@ -782,10 +785,10 @@ delete app version mfp MyApp iPhone 1.1
 {: #the-app-command-prefix }
 `app` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| app-name | 앱의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| app-name| 앱의 이름입니다. |
 
 #### `app show license-config` 명령
 {: #the-app-show-license-config-command }
@@ -795,9 +798,9 @@ delete app version mfp MyApp iPhone 1.1
 
 여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -815,10 +818,10 @@ app mfp MyApp show license-config
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| appType | 앱의 유형입니다(B2C 또는 B2E).  |
-| licenseType | 애플리케이션의 유형입니다(APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT 또는 NON_PRODUCTION).  |
+| appType| 앱의 유형입니다(B2C 또는 B2E). |
+| licenseType| 애플리케이션의 유형입니다(APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT 또는 NON_PRODUCTION). |
 
 **예제**
 
@@ -846,12 +849,12 @@ app mfp MyApp iPhone 1.1 delete license-config
 {: #the-app-version-command-prefix }
 `app version` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| app-name | 앱의 이름입니다.  |
-| environment | 모바일 플랫폼입니다.  |
-| version | 앱의 버전입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| app-name| 앱의 이름입니다. |
+| environment| 모바일 플랫폼입니다. |
+| version| 앱의 버전입니다. |
 
 #### `app version get descriptor` 명령
 {: #the-app-version-get-descriptor-command }
@@ -861,9 +864,9 @@ app mfp MyApp iPhone 1.1 delete license-config
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 | 필수 여부 | 기본값 |
+| 인수| 설명       | 필수 여부| 기본값|
 |----------|-------------|----------|---------|
-| > tofile | 출력 파일의 이름입니다.  | 아니오 | 표준 출력 |
+| > tofile| 출력 파일의 이름입니다. | 아니오| 표준 출력|
 
 **예제**
 
@@ -881,9 +884,9 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 | 필수 여부 | 기본값 |
+| 인수| 설명       | 필수 여부| 기본값|
 |----------|-------------|----------|---------|
-| > tofile | 출력 파일의 이름입니다.  | 아니오 | 표준 출력 |
+| > tofile| 출력 파일의 이름입니다. | 아니오| 표준 출력|
 
 **예제**
 
@@ -902,7 +905,7 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
 | 인수 | 설명 |
-| 파일 | 입력 파일의 이름입니다(.zip 파일이어야 함). |
+| file | 입력 파일의 이름입니다(.zip 파일이어야 함). |
 
 **예제**
 
@@ -939,9 +942,9 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| 파일 | 입력 파일의 이름입니다. <ul><li>.authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx)이며 여기에서 인증 데이터를 추출합니다. </li></ul>|
+| 파일| 입력 파일의 이름입니다. <ul><li>.authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx)이며 여기에서 인증 데이터를 추출합니다. </li></ul>|
 
 **예제**
 
@@ -981,9 +984,9 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data
 
 여기서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| 인수 | 설명 | 필수 여부 | 기본값 |
+| 인수| 설명       | 필수 여부| 기본값|
 |----------|-------------|----------|---------|
-| [--xml] | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 아니오 | 표준 출력 |
+| [--xml]| JSON 형식 대신 XML 형식으로 출력을 생성합니다. | 아니오| 표준 출력|
 
 **예제**
 
@@ -1001,18 +1004,18 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| 파일 | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다.  |
+| 파일| 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 단일 특성의 구문: `app version [runtime-name] app-name environment version set user-config property = value`
 
 `app version set user-config` 명령에서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| property | JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오.  |
-| value | 특성의 값입니다.  |
+| property| JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오. |
+| value| 특성의 값입니다. |
 
 **예제**
 
@@ -1034,20 +1037,20 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 {: #the-list-devices-command }
 `list devices` 명령은 런타임의 앱에 접속한 디바이스의 목록을 리턴합니다. 
 
-구문: `list devices [runtime-name][--query query]`
+구문: `list devices [runtime-name] [--query query]`
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| query | 검색할 친숙한 이름 또는 사용자 ID입니다. 이 매개변수는 검색할 문자열을 지정합니다. 이 문자열(대소문자 구분 없이 일치)을 포함하는 친숙한 이름 또는 사용자 ID를 사용하는 모든 디바이스가 리턴됩니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| query| 검색할 친숙한 이름 또는 사용자 ID입니다. 이 매개변수는 검색할 문자열을 지정합니다. 이 문자열(대소문자 구분 없이 일치)을 포함하는 친숙한 이름 또는 사용자 ID를 사용하는 모든 디바이스가 리턴됩니다. |
 
 `list devices` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -1069,10 +1072,10 @@ list-devices mfp --query=john
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| id | 고유 디바이스 ID입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| id| 고유 디바이스 ID입니다. |
 
 **예제**
 
@@ -1086,10 +1089,10 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 {: #the-device-command-prefix }
 `device` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| id | 고유 디바이스 ID입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| id| 고유 디바이스 ID입니다. |
 
 #### `device set status` 명령
 {: #the-device-set-status-command }
@@ -1099,9 +1102,9 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| new-status | 새 상태입니다.  |
+| new-status| 새 상태입니다. |
 
 상태의 값은 다음 중 하나입니다. 
 
@@ -1127,10 +1130,10 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| app-name | 앱의 이름입니다.  |
-| new-status | 새 상태입니다.  |
+| app-name| 앱의 이름입니다. |
+| new-status| 새 상태입니다. |
 
 상태의 값은 다음 중 하나입니다. 
 
@@ -1158,9 +1161,9 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -1180,9 +1183,9 @@ show info
 
 여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -1198,9 +1201,9 @@ show versions
 
 여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -1226,10 +1229,10 @@ unlock
 
 여기서는 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --in-database	| MBean을 사용하는 대신 데이터베이스에서 찾을 것인지 여부 |
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --in-database	| MBean을 사용하는 대신 데이터베이스에서 찾을 것인지 여부|
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -1251,15 +1254,15 @@ list runtimes --in-database
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
 
 `show runtime` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 이 명령은 [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 서비스를 기반으로 합니다. 
 
@@ -1277,10 +1280,10 @@ show runtime mfp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| condition | 삭제 조건입니다(비어 있음 또는 항상). **주의:** 항상 옵션은 위험합니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| condition| 삭제 조건입니다(비어 있음 또는 항상). **주의:** 항상 옵션은 위험합니다. |
 
 **예제**
 
@@ -1298,15 +1301,15 @@ delete runtime mfp empty
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
+| runtime-name| 런타임의 이름입니다. |
 
 `list farm-members` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
+| --xml| 표 형식 출력 대신 XML 출력을 생성합니다. |
 
 **예제**
 
@@ -1324,16 +1327,16 @@ list farm-members mfp
 
 여기서는 다음 인수를 사용합니다. 
 
-| 인수 | 설명 |
+| 인수| 설명       |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다.  |
-| server-id | 서버의 ID입니다.  |
+| runtime-name| 런타임의 이름입니다. |
+| server-id| 서버의 ID입니다. |
 
 `remove farm-member` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| 옵션 | 설명 |
+| 옵션| 설명       |
 |--------|-------------|
-| --force | 사용 가능하거나 연결되어 있는 경우에도 팜 멤버의 제거를 강제 실행합니다.  |
+| --force| 사용 가능하거나 연결되어 있는 경우에도 팜 멤버의 제거를 강제 실행합니다. |
 
 **예제**
 

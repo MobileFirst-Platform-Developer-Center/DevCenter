@@ -48,11 +48,11 @@ configuredatabase Ant タスクの参照情報。この参照情報は、リレ�
 
 **configuredatabase** タスクには以下の属性があります。
 
-| 属性 | 説明 | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|-------------|----------|---------|
-| kind      | データベースのタイプ: {{ site.data.keys.mf_server }}: MobileFirstRuntime、MobileFirstConfig、MobileFirstAdmin、または push。Application Center: ApplicationCenter。 | はい | なし |
-| includeConfigurationTables | データベース操作をライブ更新サービスと管理サービスの両方で実行するか、または管理サービスのみで実行するかを指定します。値は true または false のいずれかになります。 |  いいえ | true |
-| execute | configuredatabase Ant タスクを実行するかどうかを指定します。値は true または false のいずれかになります。 | いいえ | true |
+| kind| データベースのタイプ: {{ site.data.keys.mf_server }}: MobileFirstRuntime、MobileFirstConfig、MobileFirstAdmin、または push。Application Center: ApplicationCenter。| はい| なし|
+| includeConfigurationTables| データベース操作をライブ更新サービスと管理サービスの両方で実行するか、または管理サービスのみで実行するかを指定します。値は true または false のいずれかになります。|  いいえ| true|
+| execute| configuredatabase Ant タスクを実行するかどうかを指定します。値は true または false のいずれかになります。| いいえ| true|
 
 #### kind
 {: #kind }
@@ -68,36 +68,36 @@ configuredatabase Ant タスクの参照情報。この参照情報は、リレ�
 
 **configuredatabase** タスクは、以下のエレメントをサポートします。
 
-| エレメント             | 説明	                | カウント |
+| エレメント| 説明       	                | カウント|
 |---------------------|-----------------------------|-------|
-| `<derby>`           | Derby のパラメーター。   | 0..1  |
-| `<db2>`             |	DB2 のパラメーター。     | 0..1  |
-| `<mysql>`           |	MySQL のパラメーター。   | 0..1  |
-| `<oracle>`          |	Oracle のパラメーター。  | 0..1  |
-| `<driverclasspath>` | JDBC ドライバーのクラスパス。 | 0..1  |
+| `<derby>`           | Derby のパラメーター。| 0..1|
+| `<db2>`             |	DB2 のパラメーター。| 0..1|
+| `<mysql>`           |	MySQL のパラメーター。| 0..1|
+| `<oracle>`          |	Oracle のパラメーター。| 0..1|
+| `<driverclasspath>` | JDBC ドライバーのクラスパス。| 0..1|
 
 各データベース・タイプに対し、`<property>` エレメントを使用してデータベースにアクセスするための JDBC 接続プロパティーを指定することができます。`<property>` エレメントには以下の属性があります。
 
-| 属性 | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------|----------|---------|
-| 名前      | プロパティーの名前。	 | はい      | なし    |
-| value	    | プロパティーの値。| はい	    | なし    |   
+| name      | プロパティーの名前。| はい| なし|
+| value	    | プロパティーの値。| はい	   | なし|   
 
 #### Apache Derby
 {: #apache-derby }
 `<derby>` エレメントには以下の属性があります。
 
-| 属性 | 説明                                | 必要 | デフォルト                                                                      |
+| 属性| 説明| 必須| デフォルト |
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
-| データベース  | データベース名。                         | いいえ	    | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。             |
-| datadir   | データベースを含むディレクトリー。 | はい      | なし                                                                         |
-| schema	| スキーマ名。                           | いいえ       | 種類に応じて、MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH、または APPCENTER。 |
+| database  | データベース名。| いいえ | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。|
+| datadir| データベースを含むディレクトリー。| はい| なし|
+| schema	| スキーマ名。| いいえ| 種類に応じて、MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH、または APPCENTER。|
 
 `<derby>` エレメントは以下のエレメントをサポートします。
 
-| エレメント      | 説明                     | カウント   |
+| エレメント| 説明| カウント|
 |--------------|---------------------------------|---------|
-| `<property>` | JDBC 接続プロパティー。   | 0..∞    |
+| `<property>` | JDBC 接続プロパティー。| 0..∞|
 
 使用可能なプロパティーについては、[Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html) を参照してください。
 
@@ -105,31 +105,31 @@ configuredatabase Ant タスクの参照情報。この参照情報は、リレ�
 {: #db2 }
 `<db2>` エレメントには以下の属性があります。
 
-| 属性 | 説明                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------------------|----------|---------|
-| データベース  | データベース名。                     | いいえ       | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
-| サーバー    | データベース・サーバーのホスト名。	 | はい      | なし  |
-| port      | データベース・サーバーのポート。       | いいえ	    | 50000 |
-| user      | データベースにアクセスするユーザー名。 | はい	    | なし  |
-| password  | データベースにアクセスするパスワード。	 | いいえ	    | 対話式に照会 |
-| instance  | DB2 インスタンスの名前。          | いいえ	    | サーバーに応じて異なる |
-| schema    | スキーマ名。                       | いいえ	    | ユーザーに応じて異なる   |
+| database  | データベース名。| いいえ| 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。|
+| server    | データベース・サーバーのホスト名。| はい| なし|
+| port| データベース・サーバーのポート。| いいえ | 50000|
+| user| データベースにアクセスするユーザー名。| はい	   | なし|
+| password| データベースにアクセスするパスワード。| いいえ | 対話式に照会|
+| instance| DB2 インスタンスの名前。| いいえ | サーバーに応じて異なる|
+| schema| スキーマ名。| いいえ | ユーザーに応じて異なる|
 
 DB2 ユーザー・アカウントについて詳しくは、[DB2 のセキュリティー・モデルの概要](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)を参照してください。  
 `<db2>` エレメントは以下のエレメントをサポートします。
 
-| エレメント      | 説明                             | カウント   |
+| エレメント| 説明| カウント|
 |--------------|-----------------------------------------|---------|
-| `<property>` | JDBC 接続プロパティー。           | 0..∞    |
-| `<dba>`      | データベース管理者の資格情報。 | 0..1    |
+| `<property>` | JDBC 接続プロパティー。| 0..∞|
+| `<dba>`      | データベース管理者の資格情報。| 0..1|
 
 使用可能なプロパティーについては、[IBM Data Server Driver for JDBC and SQLJ のプロパティー](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)を参照してください。  
 内部エレメント `<dba>` は、データベース管理者の資格情報を指定します。このエレメントには以下の属性があります。
 
-| 属性 | 説明                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------------------|----------|---------|
-| user      | データベースにアクセスするユーザー名。  | はい      | なし    |
-| password  | データベースにアクセスするパスワード。    | いいえ	    | 対話式に照会 |
+| user| データベースにアクセスするユーザー名。| はい| なし|
+| password| データベースにアクセスするパスワード。| いいえ | 対話式に照会|
 
 `<dba>` エレメントに指定するユーザーは、DB2 特権の SYSADM または SYSCTRL を持っている必要があります。詳しくは、[権限の概要](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html)を参照してください。
 
@@ -144,38 +144,38 @@ Ant タスクを使用して表スペースなどの表割り振りの詳細を�
 {: #mysql }
 エレメント `<mysql>` には以下の属性があります。
 
-| 属性 | 説明                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------------------|----------|---------|
-| データベース	| データベース名。	                 | いいえ       | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
-| サーバー	| データベース・サーバーのホスト名。	 | はい	    | なし |
-| port	    | データベース・サーバーのポート。	     | いいえ	    | 3306 |
-| user	    | データベースにアクセスするユーザー名。 | はい	    | なし |
-| password	| データベースにアクセスするパスワード。	 | いいえ	    | 対話式に照会 |
+| database	| データベース名。| いいえ| 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。|
+| server	| データベース・サーバーのホスト名。| はい	   | なし|
+| port	    | データベース・サーバーのポート。| いいえ | 3306|
+| user	    | データベースにアクセスするユーザー名。| はい	   | なし|
+| password	| データベースにアクセスするパスワード。| いいえ | 対話式に照会|
 
 MySQL ユーザー・アカウントについて詳しくは、[MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html) を参照してください。  
 `<mysql>` エレメントは以下のエレメントをサポートします。
 
-| エレメント      | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |--------------|--------------------------------------------------|-------|
-| `<property>` | JDBC 接続プロパティー。                    | 0..∞  |
-| `<dba>`      | データベース管理者の資格情報。          | 0..1  |
-| `<client>`   | データベースへのアクセスを許可されたホスト。 | 0..∞  |
+| `<property>` | JDBC 接続プロパティー。| 0..∞|
+| `<dba>`      | データベース管理者の資格情報。| 0..1|
+| `<client>`   | データベースへのアクセスを許可されたホスト。| 0..∞|
 
 使用可能なプロパティーについては、[Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) を参照してください。  
-内部エレメント `<dba>` は、データベース管理者資格情報を指定します。このエレメントには以下の属性があります。
+内部エレメント `<dba>` は、データベース管理者の資格情報を指定します。このエレメントには以下の属性があります。
 
-| 属性 | 説明                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------------------|----------|---------|
-| user	    | データベースにアクセスするユーザー名。 | はい	    | なし |
-| password	| データベースにアクセスするパスワード。	 | いいえ	    | 対話式に照会 |
+| user	    | データベースにアクセスするユーザー名。| はい	   | なし|
+| password	| データベースにアクセスするパスワード。| いいえ | 対話式に照会|
 
 `<dba>` エレメントに指定するユーザーは、MySQL スーパーユーザー・アカウントでなければなりません。詳しくは、[Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html) を参照してください。
 
 各 `<client>` 内部エレメントがクライアント・コンピューターまたはクライアント・コンピューターのワイルドカードを指定します。これらのコンピューターは、データベースへの接続が許可されます。このエレメントには以下の属性があります。
 
-| 属性 | 説明                                                              | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|--------------------------------------------------------------------------|----------|---------|
-| hostname	| シンボリック・ホスト名、IP アドレス、またはテンプレート (プレースホルダーとして % を使用) | はい	  | なし    |
+| hostname	| シンボリック・ホスト名、IP アドレス、またはテンプレート (プレースホルダーとして % を使用)| はい	 | なし|
 
 hostname の構文について詳しくは、[Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html) を参照してください。
 
@@ -183,57 +183,61 @@ hostname の構文について詳しくは、[Specifying Account Names](http://d
 
 または、以下の属性を持つ `<mysql>` エレメントを使用することもできます。
 
-| 属性 | 説明                            | 必要 | デフォルト               |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | データベース接続 URL。	         | はい      | なし                  |
-| user	    | データベースにアクセスするユーザー名。 | はい      | なし                  |
-| password	| データベースにアクセスするパスワード。	 | いいえ       | 対話式に照会 |
+| url| データベース接続 URL。| はい| なし|
+| user	    | データベースにアクセスするユーザー名。| はい| なし|
+| password	| データベースにアクセスするパスワード。| いいえ| 対話式に照会|
 
-> `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、
-ユーザーのアクセス権限の付与も試行しません。
-**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` と `<client>` を指定する必要はありません。#### Oracle 
+> `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメントである `<dba>` および `<client>` を指定する必要はありません。
+
+#### Oracle 
 {: #oracle }
 エレメント `<oracle>` には以下の属性があります。
 
-| 属性      | 説明                                                              | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| データベース       | データベース名、または Oracle サービス名。**注:** PDB データベースに接続するには、常にサービス名を使う必要があります。 | いいえ | ORCL |
-| サーバー	     | データベース・サーバーのホスト名。                                    | はい      | なし |
-| port	         | データベース・サーバーのポート。                                         | いいえ       | 1521 |
-| user	         | データベースにアクセスするユーザー名。この表の下の注を参照してください。	| はい      | なし |
-| password	     | データベースにアクセスするパスワード。                                    | いいえ       | 対話式に照会 |
-| sysPassword	 | ユーザー SYS のパスワード。                                           | いいえ       | 対話式に照会 (データベースがまだ存在しない場合) |
-| systemPassword | ユーザー SYSTEM のパスワード。                                        | いいえ       | 対話式に照会 (データベースまたはユーザーがまだ存在していない場合) |
+| database       | データベース名、または Oracle サービス名。**注:** PDB データベースに接続するには、常にサービス名を使う必要があります。| いいえ| ORCL|
+| server	     | データベース・サーバーのホスト名。| はい| なし|
+| port	         | データベース・サーバーのポート。| いいえ| 1521|
+| user	     | データベースにアクセスするユーザー名。この表の下の注を参照してください。| はい| なし|
+| password	   | データベースにアクセスするパスワード。| いいえ| 対話式に照会|
+| sysPassword	 | ユーザー SYS のパスワード。| いいえ| 対話式に照会 (データベースがまだ存在しない場合)|
+| systemPassword| ユーザー SYSTEM のパスワード。| いいえ| 対話式に照会 (データベースまたはユーザーがまだ存在していない場合)|
 
 > `注:` user 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**configuredatabase** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**configuredatabase** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
+
+
 
 Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。  
 `<oracle>` エレメントは以下のエレメントをサポートします。
 
-| エレメント      | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |--------------|--------------------------------------------------|-------|
-| `<property>` | JDBC 接続プロパティー。                    | 0..∞  |
-| `<dba>`      | データベース管理者の資格情報。          | 0..1  |
+| `<property>` | JDBC 接続プロパティー。| 0..∞|
+| `<dba>`      | データベース管理者の資格情報。| 0..1|
 
 使用可能な接続プロパティーについては、[Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html) を参照してください。  
-内部エレメント `<dba>` は、データベース管理者資格情報を指定します。このエレメントには以下の属性があります。
+内部エレメント `<dba>` は、データベース管理者の資格情報を指定します。このエレメントには以下の属性があります。
 
-| 属性      | 説明                                                              | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| user	         | データベースにアクセスするユーザー名。この表の下の注を参照してください。	| はい      | なし    |
-| password	     | データベースにアクセスするパスワード。                                    | いいえ       | 対話式に照会 |
+| user	     | データベースにアクセスするユーザー名。この表の下の注を参照してください。| はい| なし|
+| password	   | データベースにアクセスするパスワード。| いいえ| 対話式に照会|
 
 `<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。Oracle JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
 
 表スペースなどの表割り振りの詳細を、Ant タスクで指定することはできません。表スペースを制御する場合は、ユーザー・アカウントを手動で作成し、そのアカウントにデフォルト表スペースを割り当ててから、Ant タスクを実行することができます。他の詳細を制御する場合は、[Oracle データベースおよびユーザーの要件](../databases/#oracle-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
-| 属性 | 説明                            | 必要 | デフォルト               |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | データベース接続 URL。	         | はい      | なし                  |
-| user	    | データベースにアクセスするユーザー名。 | はい      | なし                  |
-| password	| データベースにアクセスするパスワード。	 | いいえ       | 対話式に照会 |
+| url| データベース接続 URL。| はい| なし|
+| user	    | データベースにアクセスするユーザー名。| はい| なし|
+| password	| データベースにアクセスするパスワード。| いいえ| 対話式に照会|
 
-> **注:** 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント`<dba>` を指定する必要はありません。
+> **注:** 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` を指定する必要はありません。
+
+
 
 ## {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
@@ -290,14 +294,14 @@ Oracle ユーザー・アカウントについて詳しくは、[Overview of Aut
 {: #attributes-and-elements }
 **installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクは以下の属性を持っています。
 
-| 属性         | 説明                                                              | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot       | {{ site.data.keys.product_adj }} ランタイム環境、アプリケーション、およびアダプターに関する情報を取得するための、管理サービスの URL の共通接頭部 | いいえ | /mfpadmin |
-| id                | さまざまなデプロイメントを区別する。              | いいえ | 空 |
-| environmentId     | さまざまな {{ site.data.keys.product_adj }} 環境を区別する。 | いいえ | 空 |
-| servicewar        | 管理サービスの WAR ファイル       | いいえ | mfp-admin-service.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
-| shortcutsDir      | ショートカットを配置するディレクトリー。            | いいえ | なし |
-| wasStartingWeight | WebSphere Application Server の開始順序。低い値から先に開始されます。 | いいえ | 1 |
+| contextroot| {{ site.data.keys.product_adj }} ランタイム環境、アプリケーション、およびアダプターに関する情報を取得するための、管理サービスの URL の共通接頭部| いいえ| /mfpadmin|
+| id| さまざまなデプロイメントを区別する。| いいえ| 空 |
+| environmentId| さまざまな {{ site.data.keys.product_adj }} 環境を区別する。| いいえ| 空 |
+| servicewar| 管理サービスの WAR ファイル| いいえ| mfp-admin-service.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。|
+| shortcutsDir| ショートカットを配置するディレクトリー。| いいえ| なし|
+| wasStartingWeight| WebSphere Application Server の開始順序。低い値から先に開始されます。| いいえ| 1|
 
 #### contextroot および id
 {: #contextroot-and-id }
@@ -328,49 +332,49 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 
 **installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクでは、以下のエレメントがサポートされます。
 
-| エレメント               | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |-----------------------|--------------------------------------------------|-------|
-| `<applicationserver>` | アプリケーション・サーバー。                          | 1     |
-| `<configuration>`     | ライブ更新サービス。	                       | 1     |
-| `<console>`           | 管理コンソール。                      | 0..1  |
-| `<database>`          | データベース。                                   | 1     |
-| `<jmx>`               | Java Management Extensions を使用可能にする。	           | 1     |
-| `<property>`          | プロパティー。	                               | 0..   |
-| `<push>`              | プッシュ・サービス。	                               | 0..1  |
-| `<user>`              | セキュリティー・ロールにマップされるユーザー。	       | 0..   |
+| `<applicationserver>` | アプリケーション・サーバー。| 1|
+| `<configuration>`     | ライブ更新サービス。| 1|
+| `<console>`           | 管理コンソール。| 0..1|
+| `<database>`          | データベース。| 1|
+| `<jmx>`               | Java Management Extensions を使用可能にする。| 1|
+| `<property>`          | プロパティー。 	                               | 0..|
+| `<push>`              | プッシュ・サービス。| 0..1|
+| `<user>`              | セキュリティー・ロールにマップされるユーザー。| 0..|
 
 ### {{ site.data.keys.mf_console }} を指定するには
 {: #to-specify-a-mobilefirst-operations-console }
 `<console>` エレメントは、{{ site.data.keys.mf_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
-| 属性         | 説明                                                               | 必要 | デフォルト     |
+| 属性| 説明| 必須| デフォルト |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| contextroot       | {{ site.data.keys.mf_console }} の URI。                            | いいえ       | /mfpconsole |
-| install           | {{ site.data.keys.mf_console }} をインストールする必要があるかどうかを示す。 | いいえ       | はい         |
-| warfile           | コンソール WAR ファイル。	                                                    |いいえ        | mfp-admin-ui.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
+| contextroot| {{ site.data.keys.mf_console }} の URI。| いいえ| /mfpconsole|
+| install| {{ site.data.keys.mf_console }} をインストールする必要があるかどうかを示す。| いいえ| はい|
+| warfile| コンソール WAR ファイル。|いいえ| mfp-admin-ui.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。|
 
-`<console>` エレメントでは、以下のエレメントがサポートされます。
+`<console>` エレメントは以下のエレメントをサポートします。
 
-| エレメント               | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |-----------------------|--------------------------------------------------|-------|
-| `<artifacts>`         | {{ site.data.keys.mf_server }} 成果物。                | 0..1  |
-| `<property>`	        | プロパティー。	                               | 0..   |
+| `<artifacts>`         | {{ site.data.keys.mf_server }} 成果物。| 0..1|
+| `<property>`	        | プロパティー。 	                               | 0..|
 
 `<artifacts>` エレメントには以下の属性があります。
 
-| 属性         | 説明                                                               | 必要 | デフォルト     |
+| 属性| 説明| 必須| デフォルト |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| install           | 成果物コンポーネントをインストールする必要があるかどうかを示す。            | いいえ       | true        |
-| warFile           | 成果物 WAR ファイル。                                                   | いいえ       | mfp-dev-artifacts.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
+| install| 成果物コンポーネントをインストールする必要があるかどうかを示す。| いいえ| true|
+| warFile| 成果物 WAR ファイル。| いいえ| mfp-dev-artifacts.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。|
 
 このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{ site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
 `<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
-| 属性  | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|----------------------------|----------|---------|
-| 名前       | プロパティーの名前。  | はい      | なし    |
-| value	     | プロパティーの値。 |	はい      | なし    |
+| name       | プロパティーの名前。| はい| なし|
+| value	     | プロパティーの値。|	はい| なし|
 
 このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{ site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
@@ -378,55 +382,55 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server }
-`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートします。
 
-| エレメント                                   | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` または `<was>` | WebSphere Application Server のパラメーター。<br/><br/>`<websphereapplicationserver>` エレメント (短縮形では `was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。               | 0..1  |
-| `<tomcat>`                                | Apache Tomcat のパラメーター。	               | 0..1  |
+| `<websphereapplicationserver>` または `<was>` | WebSphere Application Server のパラメーター。<br/><br/>`<websphereapplicationserver>` エレメント (短縮形では `was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。| 0..1|
+| `<tomcat>`                                | Apache Tomcat のパラメーター。| 0..1|
 
 これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
 ただし、Liberty 集合の `<was>` エレメントの内部エレメントについては、以下の表を参照してください。
 
-| エレメント                  | 説明                      | カウント |
+| エレメント| 説明| カウント|
 |--------------------------|----------------------------------|-------|
-| `<collectiveController>` | Liberty 集合コントローラー。 |	0..1  |
+| `<collectiveController>` | Liberty 集合コントローラー。|	0..1|
 
 `<collectiveController>` エレメントには以下の属性があります。
 
-| 属性                | 説明                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               | 集合コントローラーの名前。	| はい      | なし    |
-| controllerAdminName      | 集合コントローラーに定義された管理ユーザー名。 これは、新規メンバーを集合に参加させるために使用されるのと同じユーザーです。                                                         | はい      | なし    |
-| controllerAdminPassword  | 管理ユーザー・パスワード。	    | はい      | なし    |
-| createControllerAdmin    | 集合コントローラーの基本レジストリー内に管理ユーザーが作成される必要があるかどうかを示す。指定可能な値は true または false です。                                                              | いいえ	   | true    |
+| serverName| 集合コントローラーの名前。| はい| なし|
+| controllerAdminName| 集合コントローラーに定義された管理ユーザー名。 これは、新規メンバーを集合に参加させるために使用されるのと同じユーザーです。| はい| なし|
+| controllerAdminPassword| 管理ユーザー・パスワード。| はい| なし|
+| createControllerAdmin| 集合コントローラーの基本レジストリー内に管理ユーザーが作成される必要があるかどうかを示す。指定可能な値は true または false です。| いいえ  | true|
 
 ### ライブ更新サービスの構成を指定するには
 {: #to-specify-the-live-update-service-configuration }
 `<configuration>` エレメントを使用して、ライブ更新サービスに依存するパラメーターを定義します。`<configuration>` エレメントには以下の属性があります。
 
-| 属性                | 説明                                                    | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------------------|----------------------------------------------------------------|----------|---------|
-| install                  | ライブ更新サービスをインストールする必要があるかどうかを示す。	| はい | true |
-| configAdminUser	       | ライブ更新サービスの管理者。	                | いいえ。ただし、サーバー・ファーム・トポロジーの場合は必須。 |定義されていない場合、ユーザーが生成されます。サーバー・ファーム・トポロジーでは、ユーザー名はファームのすべてのメンバーで同じでなければなりません。 |
-| configAdminPassword      | ライブ更新サービス・ユーザーの管理者パスワード。       | ユーザーが **configAdminUser** に指定されている場合。 | なし。サーバー・ファーム・トポロジーでは、パスワードはファームのすべてのメンバーで同じでなければなりません。 |
-| createConfigAdminUser	   | アプリケーション・サーバーの基本レジストリー内に管理ユーザーがない場合に作成するかどうかを示す。 | いいえ | true |
-| warFile                  | ライブ更新サービス WAR ファイル。	                            | いいえ         | mfp-live-update.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
+| install| ライブ更新サービスをインストールする必要があるかどうかを示す。| はい| true|
+| configAdminUser	       | ライブ更新サービスの管理者。| いいえ。ただし、サーバー・ファーム・トポロジーの場合は必須。|定義されていない場合、ユーザーが生成されます。サーバー・ファーム・トポロジーでは、ユーザー名はファームのすべてのメンバーで同じでなければなりません。|
+| configAdminPassword| ライブ更新サービス・ユーザーの管理者パスワード。| ユーザーが **configAdminUser** に指定されている場合。| なし。サーバー・ファーム・トポロジーでは、パスワードはファームのすべてのメンバーで同じでなければなりません。|
+| createConfigAdminUser| アプリケーション・サーバーの基本レジストリー内に管理ユーザーがない場合に作成するかどうかを示す。| いいえ| true|
+| warFile| ライブ更新サービス WAR ファイル。| いいえ| mfp-live-update.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。|
 
 `<configuration>` エレメントは以下のエレメントをサポートします。
 
-| エレメント      | 説明                           | カウント |
+| エレメント| 説明| カウント|
 |--------------|---------------------------------------|-------|
-| `<user>`     | ライブ更新サービスのユーザー。 | 0..1  |
-| `<property>` | プロパティー。	                   | 0..   |
+| `<user>`     | ライブ更新サービスのユーザー。| 0..1|
+| `<property>` | プロパティー。 	                   | 0..|
 
 `<user>` エレメントは、アプリケーションの特定のセキュリティー・ロールに含める、ユーザーに関するパラメーターを収集します。
 
-| 属性   | 説明                                                             | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| role	      | アプリケーションの有効なセキュリティー・ロール。可能な値: configadmin。	| はい      | なし    |
-| 名前	      | ユーザー名。	                                                        | はい      | なし    |
-| password	  | ユーザーを作成する必要がある場合のパスワード。	                        | いいえ       | なし    |
+| role	      | アプリケーションの有効なセキュリティー・ロール。可能な値: configadmin。| はい| なし|
+| name	      | ユーザー名。| はい| なし|
+| password	   | ユーザーを作成する必要がある場合のパスワード。| いいえ| なし|
 
 `<user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{ site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。`configadmin`
 
@@ -434,51 +438,55 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 
 > **ヒント:** ユーザーが外部 LDAP ディレクトリーに存在する場合は、**role** 属性と **name** 属性のみを設定し、パスワードは定義しないでください。
 
+
+
 `<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
-| 属性  | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|----------------------------|----------|---------|
-| 名前       | プロパティーの名前。  | はい      | なし    |
-| value	     | プロパティーの値。 |	はい      | なし    |
+| name       | プロパティーの名前。| はい| なし|
+| value	     | プロパティーの値。|	はい| なし|
 
 このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{ site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-1 }
-`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートします。
 
-| エレメント      | 説明                                              | カウント |
+| エレメント| 説明| カウント|
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` または `<was>`	| WebSphere Application Server のパラメーター。<br/><br/><websphereapplicationserver> エレメント (短縮形では <was>) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。 | 0..1  |
-| `<tomcat>`   | Apache Tomcat のパラメーター。                        | 0..1  |
+| `<websphereapplicationserver>` または `<was>`	| WebSphere Application Server のパラメーター。<br/><br/><websphereapplicationserver> エレメント (短縮形では <was>) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。| 0..1|
+| `<tomcat>`   | Apache Tomcat のパラメーター。| 0..1|
 
 これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
 ただし、Liberty 集合の <was> エレメントの内部エレメントについては、以下の表を参照してください。
 
-| エレメント               | 説明                  | カウント |
+| エレメント| 説明| カウント|
 |-----------------------|----------------------------- |-------|
-| `<collectiveMember>`	| Liberty 集合メンバー。 | 0..1  |
+| `<collectiveMember>`	| Liberty 集合メンバー。| 0..1|
 
 `<collectiveMember>` エレメントには以下の属性があります。
 
-| 属性   | 説明                                             | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	集合メンバーの名前。                      | はい      | なし    |
-| clusterName |	集合メンバーが所属しているクラスター名。 | はい	   | なし    |
+| serverName|	集合メンバーの名前。| はい| なし|
+| clusterName|	集合メンバーが所属しているクラスター名。| はい	  | なし|
 
 > **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、クラスター名は異なっていてもかまいません。
+
+
 
 ### Analytics の指定
 {: #to-specify-analytics }
 `<analytics>` エレメントは、既にインストールされている {{ site.data.keys.mf_analytics }} サービスに {{ site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
 
-| 属性     | 説明                                                               | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | プッシュ・サービスを {{ site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ       | false   |
-| analyticsURL 	| {{ site.data.keys.mf_analytics }} サービスの URL。	                            | はい	   | なし    |
-| username	    | ユーザー名。	                                                        | はい	   | なし    |
-| password	    | パスワード。	                                                            | はい	   | なし    |
-| validate	    | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	| いいえ	   | true    |
+| install	    | プッシュ・サービスを {{ site.data.keys.mf_analytics }} に接続するかどうかを示します。| いいえ| false|
+| analyticsURL 	| {{ site.data.keys.mf_analytics }} サービスの URL。| はい	  | なし|
+| username	    | ユーザー名。| はい	  | なし|
+| password	   | パスワード。 	                                                            | はい	  | なし|
+| validate	    | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。| いいえ  | true|
 
 **install**  
 install 属性は、このプッシュ・サービスが接続され、イベントを {{ site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
@@ -486,7 +494,7 @@ install 属性は、このプッシュ・サービスが接続され、イベン
 **analyticsURL**  
 analyticsURL 属性は、着信分析データを受信する {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。
 
-例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
+例: `http://<hostname>:<port>/analytics-service/rest`
 
 **username**  
 username 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
@@ -502,34 +510,34 @@ validate 属性は、{{ site.data.keys.mf_analytics_console }}にアクセス可
 
 `<database>` エレメントは、プッシュ・サービス・データベースにアクセスするためのアプリケーション・サーバー内のデータ・ソース宣言を指定するパラメーターを収集します。
 
-次のように単一のデータベースを宣言する必要があります。`<database kind="Push">`。`<database>` エレメントは、configuredatabase Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
+次のように単一のデータベースを宣言する必要があります。`<database kind="Push">` `<database>` エレメントは、configuredatabase Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
 
 `<database>` エレメントには以下の属性があります。
 
-| 属性     | 説明                                     | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | データベースの種類 (Push)。	                  | はい	     | なし    |
-| validate	    | データベースがアクセス可能かどうかを検証します。 | いいえ       | true    |
+| kind| データベースの種類 (Push)。| はい     | なし|
+| validate	    | データベースがアクセス可能かどうかを検証します。| いいえ| true|
 
-`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
+`<database>` エレメントは以下のエレメントをサポートします。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
-| エレメント            | 説明                                                      | カウント |
+| エレメント| 説明| カウント|
 |--------------------|----------------------------------------------------------------- |-------|
-| <db2>	             | DB2 データベースのパラメーター。	                            | 0..1  |
-| <derby>	         | Apache Derby データベースのパラメーター。	                    | 0..1  |
-| <mysql>	         | MySQL データベースのパラメーター。                               | 0..1  |
-| <oracle>	         | Oracle データベースのパラメーター。	                            | 0..1  |
-| <cloudant>	     | Cloudant データベースのパラメーター。	                        | 0..1  |
-| <driverclasspath>	 | JDBC ドライバー・クラスパスのパラメーター (リレーショナル DBMS のみ)。 | 0..1  |
+| <db2>	             | DB2 データベースのパラメーター。| 0..1|
+| <derby>	         | Apache Derby データベースのパラメーター。| 0..1|
+| <mysql>	         | MySQL データベースのパラメーター。| 0..1|
+| <oracle>	         | Oracle データベースのパラメーター。| 0..1|
+| <cloudant>	     | Cloudant データベースのパラメーター。| 0..1|
+| <driverclasspath>	 | JDBC ドライバー・クラスパスのパラメーター (リレーショナル DBMS のみ)。| 0..1|
 
 > **注:** `<cloudant>` エレメントの属性は、ランタイムとは若干異なります。詳しくは、以下の表を参照してください。
 
-| 属性     | 説明                                     | 必要 | デフォルト                   |
+| 属性| 説明| 必須| デフォルト |
 |---------------|-------------------------------------------------|----------|---------------------------|
-| url           | Cloudant アカウントの URL。                | いいえ       | https://user.cloudant.com |
-| user          | Cloudant アカウントのユーザー名。	      | はい	     | なし                      |
-| password      | Cloudant アカウントのパスワード。	          | いいえ	     | 対話式に照会     |
-| dbName        | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。                                | いいえ       | mfp_push_db               |
+| url| Cloudant アカウントの URL。| いいえ| https://user.cloudant.com|
+| user| Cloudant アカウントのユーザー名。| はい     | なし|
+| password| Cloudant アカウントのパスワード。| いいえ  | 対話式に照会|
+| dbName| Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。| いいえ| mfp_push_db|
 
 ## {{ site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
@@ -560,10 +568,10 @@ JNDI 環境項目を使用してプッシュ・サービスの構成プロパテ
 {: #attributes-and-elements-1 }
 **installmobilefirstpush**、**updatemobilefirstpush**、および **uninstallmobilefirstpush** の各 Ant タスクには、以下の属性があります。
 
-| 属性 | 説明                           | 必要 | デフォルト     |
+| 属性| 説明| 必須| デフォルト |
 |-----------|---------------------------------------|----------|-------------|
-| id        | さまざまなデプロイメントを区別する。	| いいえ	   | 空
-| warFile	| プッシュ・サービスの WAR ファイル	| いいえ	   | ../PushService/mfp-push-service.war ファイルは、mfp-ant-deployer.jar ファイルを含む MobileFirstServer ディレクトリーに対して相対です。 |
+| id| さまざまなデプロイメントを区別する。| いいえ  | 空
+| warFile	| プッシュ・サービスの WAR ファイル| いいえ  | ../PushService/mfp-push-service.war ファイルは、mfp-ant-deployer.jar ファイルを含む MobileFirstServer ディレクトリーに対して相対です。|
 
 ### id
 {: #id }
@@ -575,25 +583,25 @@ JNDI 環境項目を使用してプッシュ・サービスの構成プロパテ
 
 **installmobilefirstpush**、**updatemobilefirstpush**、および **uninstallmobilefirstpush** の各 Ant タスクでは、以下のエレメントがサポートされます。
 
-| エレメント               | 説明             | カウント |
+| エレメント| 説明| カウント|
 |-----------------------|-------------------------|-------|
-| `<applicationserver>` | アプリケーション・サーバー。 | 1     |
-| `<analytics>`	        | 分析。	      | 0..1  |
-| `<authorization>`	    | 他の {{ site.data.keys.mf_server }} コンポーネントとの通信を認証するための許可サーバー。 | 1 |
-| `<database>`	        | データベース。	      | 1     |
-| `<property>`	        | プロパティー。	      | 0..∞  |
+| `<applicationserver>` | アプリケーション・サーバー。| 1|
+| `<analytics>`	        | 分析。| 0..1|
+| `<authorization>`	    | 他の {{ site.data.keys.mf_server }} コンポーネントとの通信を認証するための許可サーバー。| 1|
+| `<database>`	        | データベース。| 1|
+| `<property>`	        | プロパティー。| 0..∞|
 
 ### 許可サーバーを指定するには
 {: #to-specify-the-authorization-server }
 `<authorization>` エレメントは、他の {{ site.data.keys.mf_server }} コンポーネントとの認証通信用の許可サーバーを構成するための情報を収集します。このエレメントには以下の属性があります。
 
-| 属性          | 説明                           | 必要 | デフォルト     |
+| 属性| 説明| 必須| デフォルト |
 |--------------------|---------------------------------------|----------|-------------|
-| auto               | 許可サーバーの URL が計算されるかどうかを示します。指定可能な値は true または false です。	| WebSphere Application Server Network Deployment クラスターまたはノード上では必要。   	 | true |
-| authorizationURL   | 許可サーバーの URL。	 | モードが auto でない場合。 | ローカル・サーバー上のランタイムのコンテキスト・ルート。 |
-| runtimeContextRoot | ランタイムのコンテキスト・ルート。	     | いいえ	     | /mfp       |
-| pushClientID	     | 許可サーバーでのプッシュ・サービスの機密 ID。  | はい | なし |
-| pushClientSecret	 | 許可サーバーでのプッシュ・サービスの機密クライアントのパスワード。 | はい | なし |
+| auto| 許可サーバーの URL が計算されるかどうかを示します。指定可能な値は true または false です。| WebSphere Application Server Network Deployment クラスターまたはノード上では必要。| true|
+| authorizationURL| 許可サーバーの URL。| モードが auto でない場合。| ローカル・サーバー上のランタイムのコンテキスト・ルート。|
+| runtimeContextRoot| ランタイムのコンテキスト・ルート。| いいえ  | /mfp|
+| pushClientID	     | 許可サーバーでのプッシュ・サービスの機密 ID。| はい| なし|
+| pushClientSecret	 | 許可サーバーでのプッシュ・サービスの機密クライアントのパスワード。| はい| なし|
 
 #### auto
 {: #auto }
@@ -616,10 +624,10 @@ JNDI 環境項目を使用してプッシュ・サービスの構成プロパテ
 
 `<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
-| 属性  | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|----------------------------|----------|---------|
-| 名前       | プロパティーの名前。  |	はい	     | なし    |
-| value	     | プロパティーの値。 |	はい	     | なし    |
+| name       | プロパティーの名前。|	はい     | なし|
+| value	     | プロパティーの値。|	はい     | なし|
 
 このエレメントを使用して、独自の JNDI プロパティーを定義したり、プッシュ・サービス WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
@@ -627,41 +635,43 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-2 }
-`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートします。
 
-| エレメント                               | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |---------------------------------------|--------------------------------------------------|-------|
-| <websphereapplicationserver> または <was>	| WebSphere Application Server のパラメーター。 | `<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。 | 0..1 |
-| `<tomcat>` | Apache Tomcat のパラメーター。 | 0..1 |
+| <websphereapplicationserver> または <was>	| WebSphere Application Server のパラメーター。| `<websphereapplicationserver>` エレメント (短縮形では `<was>` ) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。| 0..1|
+| `<tomcat>` | Apache Tomcat のパラメーター。| 0..1|
 
 これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
 
 ただし、Liberty 集合の `<was>` エレメントの内部エレメントについては、以下の表を参照してください。
 
-| エレメント              | 説明                  | カウント |
+| エレメント| 説明| カウント|
 |----------------------|------------------------------|-------|
-| `<collectiveMember>` | Liberty 集合メンバー。 |	0..1  |
+| `<collectiveMember>` | Liberty 集合メンバー。|	0..1|
 
 `<collectiveMember>` エレメントには以下の属性があります。
 
-| 属性   | 説明                        | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------|------------------------------------|----------|---------|
-| serverName  | 集合メンバーの名前。 | はい      | なし    |
-| clusterName |	集合メンバーが所属しているクラスター名。 | はい | なし |
+| serverName| 集合メンバーの名前。| はい| なし|
+| clusterName|	集合メンバーが所属しているクラスター名。| はい| なし|
 
 > **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、クラスター名は異なっていてもかまいません。
+
+
 
 ### Analytics の指定
 {: #to-specify-analytics-1 }
 `<analytics>` エレメントは、既にインストールされている {{ site.data.keys.mf_analytics }} サービスに {{ site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
 
-| 属性    | 説明                        | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|------------------------------------|----------|---------|
-| install	   | プッシュ・サービスを {{ site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ | false |
-| analyticsURL | {{ site.data.keys.mf_analytics }} サービスの URL。 | はい | なし |
-| username	   | ユーザー名。 | はい | なし |
-| password	   | パスワード。 | はい | なし |
-| validate	   | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。 | いいえ | true |
+| install	   | プッシュ・サービスを {{ site.data.keys.mf_analytics }} に接続するかどうかを示します。| いいえ| false|
+| analyticsURL| {{ site.data.keys.mf_analytics }} サービスの URL。| はい| なし|
+| username	   | ユーザー名。| はい| なし|
+| password	   | パスワード。| はい| なし|
+| validate	   | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。| いいえ| true|
 
 #### install
 {: #install }
@@ -670,7 +680,7 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 #### analyticsURL
 {: #analyticsurl }
 **analyticsURL** 属性は、着信分析データを受信する {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
-例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
+例: `http://<hostname>:<port>/analytics-service/rest`
 
 #### username
 {: #username }
@@ -688,34 +698,34 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 {: #to-specify-a-connection-to-the-push-service-database-1 }
 `<database>` エレメントは、プッシュ・サービス・データベースにアクセスするためのアプリケーション・サーバー内のデータ・ソース宣言を指定するパラメーターを収集します。
 
-次のように単一のデータベースを宣言する必要があります。`<database kind="Push">`。`<database>` エレメントは、configuredatabase Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
+次のように単一のデータベースを宣言する必要があります。`<database kind="Push">` `<database>` エレメントは、configuredatabase Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
 
 `<database>` エレメントには以下の属性があります。
 
-| 属性    | 説明                  | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|------------------------------|----------|---------|
-| kind         | データベースの種類 (Push)。 | はい      | なし    |
-| validate	   | データベースがアクセス可能かどうかを検証します。 | いいえ | true |
+| kind| データベースの種類 (Push)。| はい| なし|
+| validate	   | データベースがアクセス可能かどうかを検証します。| いいえ| true|
 
-`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
+`<database>` エレメントは以下のエレメントをサポートします。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
-| エレメント              | 説明                               | カウント |
+| エレメント| 説明| カウント|
 |----------------------|-------------------------------------------|-------|
-| `<db2>`	           | DB2 データベースのパラメーター。         | 0..1  |
-| `<derby>`	           | Apache Derby データベースのパラメーター。 | 0..1  |
-| `<mysql>`	           | MySQL データベースのパラメーター。        | 0..1  |
-| `<oracle>`           | Oracle データベースのパラメーター。       | 0..1  |
-| `<cloudant>`	       | Cloudant データベースのパラメーター。     | 0..1  |
-| `<driverclasspath>`  | JDBC ドライバー・クラスパスのパラメーター (リレーショナル DBMS のみ)。 | 0..1 |
+| `<db2>`	           | DB2 データベースのパラメーター。| 0..1|
+| `<derby>`	           | Apache Derby データベースのパラメーター。| 0..1|
+| `<mysql>`	           | MySQL データベースのパラメーター。| 0..1|
+| `<oracle>`           | Oracle データベースのパラメーター。| 0..1|
+| `<cloudant>`	       | Cloudant データベースのパラメーター。| 0..1|
+| `<driverclasspath>`  | JDBC ドライバー・クラスパスのパラメーター (リレーショナル DBMS のみ)。| 0..1|
 
 > **注:** `<cloudant>` エレメントの属性は、ランタイムとは若干異なります。詳しくは、以下の表を参照してください。
 
-| 属性    | 説明                            | 必要   | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|----------------------------------------|------------|---------|
-| url	       | Cloudant アカウントの URL。       | いいえ         | https://user.cloudant.com |
-| user	       | Cloudant アカウントのユーザー名。 | はい | なし |
-| password	   | Cloudant アカウントのパスワード。	| いいえ  | 対話式に照会 |
-| dbName	   | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。 |いいえ	| mfp_push_db |
+| url	       | Cloudant アカウントの URL。| いいえ| https://user.cloudant.com|
+| user	     | Cloudant アカウントのユーザー名。| はい| なし|
+| password	   | Cloudant アカウントのパスワード。| いいえ| 対話式に照会|
+| dbName	   | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。|いいえ | mfp_push_db|
 
 ## {{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
@@ -752,13 +762,13 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 {: #attributes-and-elements-2 }
 **installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各 Ant タスクは以下の属性を持っています。
 
-| 属性         | 説明                                                                 | 必要   | デフォルト                   |
+| 属性| 説明| 必須| デフォルト |
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
-| contextroot       | アプリケーションの URL の共通接頭部 (コンテキスト・ルート)                | いいえ | /mfp  |
-| id	            | さまざまなデプロイメントを区別する。                                       | いいえ | 空 |
-| environmentId	    | さまざまな {{ site.data.keys.product_adj }} 環境を区別する。                          | いいえ | 空 |
-| warFile	        | {{ site.data.keys.product_adj }} ランタイムの WAR ファイル。                                       | いいえ | mfp-server.war ファイルは、mfp-ant-deployer.jar file と同じディレクトリー内にあります。 |
-| wasStartingWeight | WebSphere Application Server の開始順序。低い値から先に開始されます。 | いいえ | 2     |                           |
+| contextroot| アプリケーションの URL の共通接頭部 (コンテキスト・ルート)| いいえ| /mfp|
+| id	            | さまざまなデプロイメントを区別する。| いいえ| 空 |
+| environmentId	    | さまざまな {{ site.data.keys.product_adj }} 環境を区別する。| いいえ| 空 |
+| warFile	        | {{ site.data.keys.product_adj }} ランタイムの WAR ファイル。| いいえ| mfp-server.war ファイルは、mfp-ant-deployer.jar file と同じディレクトリー内にあります。|
+| wasStartingWeight| WebSphere Application Server の開始順序。低い値から先に開始されます。| いいえ| 2|                           |
 
 #### contextroot および id
 {: #contextroot-and-id-1 }
@@ -780,137 +790,137 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 
 **installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各タスクでは、以下のエレメントがサポートされます。
 
-| エレメント               | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |-----------------------|--------------------------------------------------|-------|
-| `<property>`          | プロパティー。	                               | 0..   |
-| `<applicationserver>` | アプリケーション・サーバー。                          | 1     |
-| `<database>`          | データベース。                                   | 1     |
-| `<analytics>`         | 分析。                                   | 0..1  |
+| `<property>`          | プロパティー。 	                               | 0..|
+| `<applicationserver>` | アプリケーション・サーバー。| 1|
+| `<database>`          | データベース。| 1|
+| `<analytics>`         | 分析。| 0..1|
 
 `<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
-| 属性 | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------------------|----------|---------|
-| 名前      | プロパティーの名前。	 | はい      | なし    |
-| value	    | プロパティーの値。| はい	    | なし    |  
+| name      | プロパティーの名前。| はい| なし|
+| value	    | プロパティーの値。| はい	   | なし|  
 
 `<applicationserver>` エレメントは、{{ site.data.keys.product_adj }} アプリケーションのデプロイ先のアプリケーション・サーバーを記述します。これは、以下のエレメントの 1 つに対するコンテナーです。
 
-| エレメント                                    | 説明                                      | カウント |
+| エレメント| 説明| カウント|
 |--------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` または `<was>`  | WebSphere Application Server のパラメーター。	| 0..1  |
-| `<tomcat>`                                 | Apache Tomcat のパラメーター。                | 0..1  |
+| `<websphereapplicationserver>` または `<was>`  | WebSphere Application Server のパラメーター。| 0..1|
+| `<tomcat>`                                 | Apache Tomcat のパラメーター。| 0..1|
 
-`<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。`<websphereapplicationserver>` エレメントには以下の属性があります。
+`<websphereapplicationserver>` エレメント (短縮形では `<was>` ) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。`<websphereapplicationserver>` エレメントには以下の属性があります。
 
-| 属性       | 説明                                            | 必要                 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------------|--------------------------------------------------------|--------------------------|---------|
-| installdir      |	WebSphere Application Server インストール・ディレクトリー。   | はい                      | なし    |
-| profile         |	WebSphere Application Server プロファイルまたは Liberty。      | はい	                  | なし    |
-| user	WebSphere Application Server 管理者名。	               | はい (Liberty の場合を除く)  | なし    |
-| password        | WebSphere Application Server 管理者パスワード。   | いいえ 対話式に照会 |         |
-| libertyEncoding |	WebSphere Application Server Liberty のデータ・ソース・パスワードをエンコードするアルゴリズム。指定可能な値は none、xor、および aes です。xor エンコードが使用されているか aes エンコードが使用されているかに関係なく、外部プロセスによって呼び出される securityUtility プログラムにクリア・パスワードが引数として渡されます。このパスワードは ps コマンドにより確認できます。また、UNIX オペレーティング・システム上では /proc ファイル・システム内で確認できます。                                                         | いいえ                       |	xor     |
-| jeeVersion      |	Liberty プロファイル用。JEE6 Web プロファイルまたは JEE7 Web プロファイルのフィーチャーをインストールするかどうかを指定する。指定可能な値は、6、7、または auto。| いいえ | auto |
-| configureFarm   |	WebSphere Application Server Liberty および WebSphere Application Server フル・プロファイル用 (WebSphere Application Server Network Deployment エディションおよび Liberty 集合用ではない)。サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。 | いいえ	      | false   |
-| farmServerId    |	サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{ site.data.keys.mf_server }} 管理サービスおよびすべての {{ site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。                                                                | はい                      |	なし    |
+| installdir|	WebSphere Application Server インストール・ディレクトリー。| はい| なし|
+| profile|	WebSphere Application Server プロファイルまたは Liberty。| はい	   | なし|
+| user	WebSphere Application Server 管理者名。| はい (Liberty の場合を除く)| なし|
+| password| WebSphere Application Server 管理者パスワード。| いいえ 対話式に照会|         |
+| libertyEncoding|	WebSphere Application Server Liberty のデータ・ソース・パスワードをエンコードするアルゴリズム。指定可能な値は none、xor、および aes です。xor エンコードが使用されているか aes エンコードが使用されているかに関係なく、外部プロセスによって呼び出される securityUtility プログラムにクリア・パスワードが引数として渡されます。このパスワードは ps コマンドにより確認できます。また、UNIX オペレーティング・システム上では /proc ファイル・システム内で確認できます。| いいえ|	xor|
+| jeeVersion|	Liberty プロファイル用。JEE6 Web プロファイルまたは JEE7 Web プロファイルのフィーチャーをインストールするかどうかを指定する。指定可能な値は、6、7、または auto。| いいえ| auto|
+| configureFarm|	WebSphere Application Server Liberty および WebSphere Application Server フル・プロファイル用 (WebSphere Application Server Network Deployment エディションおよび Liberty 集合用ではない)。サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。| いいえ   | false|
+| farmServerId|	サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{ site.data.keys.mf_server }} 管理サービスおよびすべての {{ site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。| はい|	なし|
 
 シングル・サーバー・デプロイメントの場合、以下のエレメントがサポートされます。
 
-| エレメント     | 説明      | カウント |
+| エレメント| 説明| カウント|
 |-------------|------------------|-------|
-| `<server>`  | シングル・サーバー。 | 0..1  |
+| `<server>`  | シングル・サーバー。| 0..1|
 
 このコンテキストで使用される <server> エレメントには以下の属性があります。
 
-| 属性 | 説明      | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|------------------|----------|---------|
-| 名前	    | サーバー名。 | はい      | なし    |
+| name	    | サーバー名。| はい| なし|
 
 Liberty 集合の場合、以下のエレメントがサポートされます。
 
-| エレメント               | 説明                  | カウント |
+| エレメント| 説明| カウント|
 |-----------------------|------------------------------|-------|
-| `<collectiveMember>`  | Liberty 集合メンバー。 | 0..1  |
+| `<collectiveMember>`  | Liberty 集合メンバー。| 0..1|
 
 `<collectiveMember>` エレメントには以下の属性があります。
 
-| 属性               | 説明      | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------------------|------------------|----------|---------|
-| serverName              |	集合メンバーの名前。                       | はい | なし |
-| clusterName             |	集合メンバーが所属しているクラスター名。  | はい | なし |
-| serverId                |	集合メンバーを一意的に識別するストリング。 | はい | なし |
-| controllerHost          |	集合コントローラーの名前。                   | はい | なし |
-| controllerHttpsPort     |	集合コントローラーの HTTPS ポート。             | はい | なし |
-| controllerAdminName     |	集合コントローラーに定義された管理ユーザー名。 これは、新規メンバーを集合に参加させるために使用されるのと同じユーザーです。 | はい | なし |
-| controllerAdminPassword |	管理ユーザー・パスワード。	                     | はい | なし |
-| createControllerAdmin   |	集合メンバーの基本レジストリー内に管理ユーザーが作成される必要があるかどうかを示す。指定可能な値は true または false です。 | いいえ | true |
+| serverName|	集合メンバーの名前。| はい| なし|
+| clusterName|	集合メンバーが所属しているクラスター名。| はい| なし|
+| serverId|	集合メンバーを一意的に識別するストリング。| はい| なし|
+| controllerHost|	集合コントローラーの名前。| はい| なし|
+| controllerHttpsPort|	集合コントローラーの HTTPS ポート。| はい| なし|
+| controllerAdminName|	集合コントローラーに定義された管理ユーザー名。 これは、新規メンバーを集合に参加させるために使用されるのと同じユーザーです。| はい| なし|
+| controllerAdminPassword|	管理ユーザー・パスワード。| はい| なし|
+| createControllerAdmin|	集合メンバーの基本レジストリー内に管理ユーザーが作成される必要があるかどうかを示す。指定可能な値は true または false です。| いいえ| true|
 
 Network Deployment の場合、以下のエレメントがサポートされます。
 
-| エレメント     | 説明                                   | カウント |
+| エレメント| 説明| カウント|
 |-------------|-----------------------------------------------|-------|
-| `<cell>`    |	セル全体。	                          | 0..1  |
-| `<cluster>` |	クラスターのすべてのサーバー。                 |	0..1  |
-| `<node>`    |	ノード内のすべてのサーバー (クラスターを除く)。 | 0..1  |
-| `<server>`  |	シングル・サーバー。	                          | 0..1  |
+| `<cell>`    |	セル全体。| 0..1|
+| `<cluster>` |	クラスターのすべてのサーバー。|	0..1|
+| `<node>`    |	ノード内のすべてのサーバー (クラスターを除く)。| 0..1|
+| `<server>`  |	シングル・サーバー。| 0..1|
 
 `<cell>` エレメントには属性はありません。
 
 `<cluster>` エレメントには以下の属性があります。
 
-| 属性 | 説明       | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|-------------------|----------|---------|
-| 名前      | クラスター名。 | はい	   | なし    |
+| name      | クラスター名。| はい	  | なし|
 
 `<node>` エレメントには以下の属性があります。
 
-| 属性 | 説明    | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|----------------|----------|---------|
-| 名前      | ノード名。 | はい	    | なし    |
+| name      | ノード名。| はい	   | なし|
 
 Network Deployment コンテキストで使用される `<server>` エレメントには以下の属性があります。
 
-| 属性  | 説明      | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|------------------|----------|---------|
-| nodeName   | ノード名。   | はい	   | なし    |
-| serverName | サーバー名。 | はい      | なし    |
+| nodeName| ノード名。| はい	  | なし|
+| serverName| サーバー名。| はい| なし|
 
 `<tomcat>` エレメントは Apache Tomcat サーバーを示します。これには、以下の属性があります。
 
-| 属性     | 説明      | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |---------------|------------------|----------|---------|
-| installdir    | Apache Tomcat のインストール・ディレクトリー。CATALINA_HOME ディレクトリーと CATALINA_BASE ディレクトリーに分割されている Tomcat のインストール済み環境の場合、CATALINA_BASE 環境変数の値を指定します。     | はい | なし    |
-| configureFarm | サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。	| いいえ | false |
-| farmServerId	| サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{ site.data.keys.mf_server }} 管理サービスおよびすべての {{ site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。 | はい | なし |
+| installdir| Apache Tomcat のインストール・ディレクトリー。CATALINA_HOME ディレクトリーと CATALINA_BASE ディレクトリーに分割されている Tomcat のインストール済み環境の場合、CATALINA_BASE 環境変数の値を指定します。| はい| なし|
+| configureFarm| サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。| いいえ| false|
+| farmServerId	| サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{ site.data.keys.mf_server }} 管理サービスおよびすべての {{ site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。| はい| なし|
 
 `<database>` エレメントは、特定のデータベースにアクセスするために必要な情報を指定します。`<database>` エレメントは、configuredatabase Ant タスクと同じように指定されますが、`<dba>` エレメントと `<client>` エレメントがない点は異なります。ただし、`<property>` エレメントを含めることはできます。`<database>` エレメントには以下の属性があります。
 
-| 属性 | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-----------|--------------------------------------------|----------|---------|
-| kind      | データベースの種類 ({{ site.data.keys.product_adj }} ランタイム)。 | はい | なし |
-| validate  | データベースがアクセス可能かどうかを検証します。指定可能な値は true または false です。 | いいえ | true |
+| kind| データベースの種類 ({{ site.data.keys.product_adj }} ランタイム)。| はい| なし|
+| validate| データベースがアクセス可能かどうかを検証します。指定可能な値は true または false です。| いいえ| true|
 
 `<database>` エレメントは以下のエレメントをサポートします。
 
-| エレメント             | 説明	                | カウント |
+| エレメント| 説明       	                | カウント|
 |---------------------|-----------------------------|-------|
-| `<derby>`           | Derby のパラメーター。   | 0..1  |
-| `<db2>`             |	DB2 のパラメーター。     | 0..1  |
-| `<mysql>`           |	MySQL のパラメーター。   | 0..1  |
-| `<oracle>`          |	Oracle のパラメーター。  | 0..1  |
-| `<driverclasspath>` | JDBC ドライバーのクラスパス。 | 0..1  |
+| `<derby>`           | Derby のパラメーター。| 0..1|
+| `<db2>`             |	DB2 のパラメーター。| 0..1|
+| `<mysql>`           |	MySQL のパラメーター。| 0..1|
+| `<oracle>`          |	Oracle のパラメーター。| 0..1|
+| `<driverclasspath>` | JDBC ドライバーのクラスパス。| 0..1|
 
 `<analytics>` エレメントは、既にインストールされている {{ site.data.keys.mf_analytics_console }} およびサービスに {{ site.data.keys.product_adj }} ランタイムを接続することを指示します。これには、以下の属性があります。
 
-| 属性    | 説明                                                                      | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | {{ site.data.keys.product_adj }} ランタイムを {{ site.data.keys.mf_analytics }} に接続するかどうかを示す。 | いいえ       | false   |
-| analyticsURL | {{ site.data.keys.mf_analytics }} サービスの URL。	                                      | はい      | なし    |
-| consoleURL   | {{ site.data.keys.mf_analytics_console }} の URL。	                                      | はい      | なし    |
-| username     | ユーザー名。	                                                                  | はい      | なし    |
-| password     | パスワード。	                                                                  | はい      | なし    |
-| validate     | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	      | いいえ	     | true    |
-| tenant       | {{ site.data.keys.product_adj }} ランタイムから収集されたデータを索引付けするためのテナント。	      | いいえ       | 内部 ID |
+| install| {{ site.data.keys.product_adj }} ランタイムを {{ site.data.keys.mf_analytics }} に接続するかどうかを示す。| いいえ| false|
+| analyticsURL| {{ site.data.keys.mf_analytics }} サービスの URL。| はい| なし|
+| consoleURL| {{ site.data.keys.mf_analytics_console }} の URL。| はい| なし|
+| username| ユーザー名。| はい| なし|
+| password| パスワード。 	                                                            | はい| なし|
+| validate| {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。| いいえ  | true|
+| tenant| {{ site.data.keys.product_adj }} ランタイムから収集されたデータを索引付けするためのテナント。| いいえ| 内部 ID|
 
 #### install
 {: #install-1 }
@@ -919,12 +929,12 @@ Network Deployment コンテキストで使用される `<server>` エレメン�
 #### analyticsURL
 {: #analyticsurl-1 }
 **analyticsURL** 属性は、着信分析データを受信する {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
-例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
+例: `http://<hostname>:<port>/analytics-service/rest`
 
 #### consoleURL
 {: #consoleurl }
 **consoleURL** 属性は、{{ site.data.keys.mf_analytics_console }}にリンクされる {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
-例えば、`http://<hostname>:<port>/analytics/console` などです。
+例: `http://<hostname>:<port>/analytics/console`
 
 #### username
 {: #username-1 }
@@ -946,17 +956,17 @@ Network Deployment コンテキストで使用される `<server>` エレメン�
 {: #to-specify-an-apache-derby-database }
 `<derby>` エレメントには以下の属性があります。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| データベース	 | データベース名。	                      | いいえ       |	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
-| datadir	 | データベースを含むディレクトリー。 |	はい	     | なし    |
-| schema     |	スキーマ名。                          |	いいえ	     | 種類に応じて、MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH、または APPCENTER。 |
+| database	 | データベース名。| いいえ|	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。|
+| datadir	 | データベースを含むディレクトリー。|	はい     | なし|
+| schema|	スキーマ名。|	いいえ  | 種類に応じて、MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH、または APPCENTER。|
 
 `<derby>` エレメントは以下のエレメントをサポートします。
 
-| エレメント       | 説明	                | カウント |
+| エレメント| 説明       	                | カウント|
 |---------------|-------------------------------|-------|
-| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。| 0..|
 
 使用可能なプロパティーについて詳しくは、Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html) の資料を参照してください。また、[Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html) の資料も参照してください。
 
@@ -968,56 +978,55 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 {: #to-specify-a-db2-database }
 `<db2>` エレメントには以下の属性があります。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| データベース   | データベース名。 | いいえ	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
-| サーバー     | データベース・サーバーのホスト名。      | はい	     | なし    |
-| port       | データベース・サーバーのポート。           | いいえ	     | 50000   |
-| user       | データベースにアクセスするユーザー名。     | このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。 | はい	なし
- |
-| password   | データベースにアクセスするパスワード。      | いいえ       | 対話式に照会 |
-| schema     | スキーマ名。                           | いいえ       | ユーザーに応じて異なる |
+| database       | データベース名。| いいえ	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。|
+| server     | データベース・サーバーのホスト名。| はい     | なし|
+| port| データベース・サーバーのポート。| いいえ  | 50000|
+| user| データベースにアクセスするユーザー名。| このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。 | はい	なし |
+| password| データベースにアクセスするパスワード。| いいえ| 対話式に照会|
+| schema| スキーマ名。| いいえ| ユーザーに応じて異なる|
 
 DB2 ユーザー・アカウントについて詳しくは、[DB2 のセキュリティー・モデルの概要](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)を参照してください。  
 `<db2>` エレメントは以下のエレメントをサポートします。
 
-| エレメント       | 説明	                | カウント |
+| エレメント| 説明       	                | カウント|
 |---------------|-------------------------------|-------|
-| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。| 0..|
 
 使用可能なプロパティーについて詳しくは、[IBM Data Server Driver for JDBC and SQLJ のプロパティー](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)を参照してください。
 
 Liberty サーバーで使用可能なプロパティーについて詳しくは、[Liberty プロファイル: server.xml ファイルの構成エレメント](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)の『**properties.db2.jcc**』セクションを参照してください。
 
-`<driverclasspath>` エレメントは、DB2 JDBC ドライバーおよび関連するライセンス用の JAR ファイルを含んでいる必要があります。DB2 JDBC ドライバーは、[DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866) からダウンロードできます。
+`<driverclasspath>` エレメントは、DB2 JDBC ドライバー用および関連するライセンス用の JAR ファイルを含んでいる必要があります。DB2 JDBC ドライバーは、[DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866) からダウンロードできます。
 
 ### MySQL データベースを指定するには
 {: #to-specify-a-mysql-database }
 `<mysql>` エレメントには以下の属性があります。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| データベース	 | データベース名。	                      | いいえ       | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
-| サーバー	 | データベース・サーバーのホスト名。	  | はい      | なし    |
-| port	     | データベース・サーバーのポート。           | いいえ	     | 3306    |
-| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。 | はい | なし |
-| password	 | データベースにアクセスするパスワード。	  | いいえ	     | 対話式に照会 |
+| database	 | データベース名。| いいえ| 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。|
+| server	 | データベース・サーバーのホスト名。| はい| なし|
+| port	     | データベース・サーバーのポート。| いいえ  | 3306|
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。 | はい| なし|
+| password	 | データベースにアクセスするパスワード。| いいえ  | 対話式に照会|
 
 **database**、**server**、および **port** の代わりに、URL を指定することもできます。この場合、以下の属性を使用します。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| url	     | データベースへの接続の URL。	  | はい	     | なし    |
-| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。 | はい  | なし |
-| password	 | データベースにアクセスするパスワード。	  | いいえ       | 対話式に照会 |
+| url	     | データベースへの接続の URL。| はい     | なし|
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。| はい| なし|
+| password	 | データベースにアクセスするパスワード。| いいえ| 対話式に照会|
 
 MySQL ユーザー・アカウントについて詳しくは、[MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html) を参照してください。
 
 `<mysql>` エレメントは以下のエレメントをサポートします。
 
-| エレメント       | 説明	                | カウント |
+| エレメント| 説明       	                | カウント|
 |---------------|-------------------------------|-------|
-| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。| 0..|
 
 使用可能なプロパティーについて詳しくは、[Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) の資料を参照してください。
 
@@ -1029,25 +1038,29 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 {: #to-specify-an-oracle-database }
 `<oracle>` エレメントには以下の属性があります。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| データベース   | データベース名、または Oracle サービス名。注: PDB データベースに接続するには、常にサービス名を使う必要があります。 | いいえ | ORCL |
-| サーバー	 | データベース・サーバーのホスト名。はい	なし
+| database       | データベース名、または Oracle サービス名。注: PDB データベースに接続するには、常にサービス名を使う必要があります。| いいえ| ORCL|
+| server	 | データベース・サーバーのホスト名。はい	なし
 | port	     | データベース・サーバーのポート。いいえ	1521
-| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。 | はい | なし |
-| password	 | データベースにアクセスするパスワード。	  | いいえ       | 対話式に照会 |
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。| はい| なし|
+| password	 | データベースにアクセスするパスワード。| いいえ| 対話式に照会|
 
 > **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
+
+
 
 **database**、**server**、および **port** の代わりに、URL を指定することもできます。この場合、以下の属性を使用します。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| url	     | データベースへの接続の URL。	  | はい      | なし    |
-| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。 | はい | なし |
-| password	 | データベースにアクセスするパスワード。	  | いいえ	     | 対話式に照会 |
+| url	     | データベースへの接続の URL。| はい| なし|
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。| はい| なし|
+| password	 | データベースにアクセスするパスワード。| いいえ  | 対話式に照会|
 
 > **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
+
+
 
 Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。
 
@@ -1055,9 +1068,9 @@ Oracle データベースの接続 URL について詳しくは、[Data Sources 
 
 以下のエレメントがサポートされます。
 
-| エレメント       | 説明	                | カウント |
+| エレメント| 説明       	                | カウント|
 |---------------|-------------------------------|-------|
-| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。| 0..|
 
 使用可能なプロパティーについて詳しくは、[Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) の『**Data Sources and URLs**』セクションを参照してください。
 
@@ -1065,23 +1078,23 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 
 `<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。Oracle JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
 
-`<property>` エレメント (`<derby>`、`<db2>`、` <mysql>`、および `<oracle>` の各エレメントの内部で使用可能) には、以下の属性があります。
+`<property>` エレメント (`<derby>`、`<db2>`、` <mysql>`、および `<oracle>`の各エレメントの内部で使用可能) には、以下の属性があります。
 
-| 属性  | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|--------------------------------------------|----------|---------|
-| 名前       | プロパティーの名前。	              | はい      | なし    |
-| type	     | プロパティーの値の Java タイプ (通常は java.lang.String/Integer/Boolean)。 | いいえ | java.lang.String |
-| value	     | プロパティーの値。	              | はい      |  なし   |
+| name       | プロパティーの名前。| はい| なし|
+| type	     | プロパティーの値の Java タイプ (通常は java.lang.String/Integer/Boolean)。| いいえ| java.lang.String|
+| value	     | プロパティーの値。| はい|  なし|
 
 ## Application Center のインストール用の Ant タスク
 {: #ant-tasks-for-installation-of-application-center }
-Application Center Console および Services のインストールに関して、`<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各 Ant タスクが用意されています。
+Application Center コンソールおよびサービスのインストールに関して、`<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各 Ant タスクが用意されています。
 
 ### タスクの結果
 {: #task-effects-3 }
-### <installApplicationCenter>
+### installApplicationCenter
 {: #installapplicationcenter }
-`<installApplicationCenter>` タスクは、Application Center Services の WAR ファイルを Web アプリケーションとして実行し、Application Center コンソールをインストールするようにアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
+`<installApplicationCenter>` タスクは、Application Center サービスの WAR ファイルを Web アプリケーションとして実行し、Application Center コンソールをインストールするようにアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
 
 * /applicationcenter コンテキスト・ルートで Application Center  Services の Web アプリケーションを宣言します。
 * データ・ソースを宣言します。また、WebSphere Application Server フル・プロファイルでは、Application Center Services の JDBC プロバイダーも宣言します。
@@ -1092,7 +1105,7 @@ Application Center Console および Services のインストールに関して�
 * Application Center コンソールおよびサービス Web アプリケーションによって使用されるロールにマップするユーザーを構成します。
 * WebSphere Application Server 上に、Web コンテナー用の必要なカスタム・プロパティーを構成します。
 
-#### <updateApplicationCenter>
+#### updateApplicationCenter
 {: #updateApplicationCenter }
 `<updateApplicationCenter>` タスクは、アプリケーション・サーバー上の構成済み Application Center アプリケーションを更新します。このタスクは以下のような結果をもたらします。
 
@@ -1103,7 +1116,9 @@ Application Center Console および Services のインストールに関して�
 
 > **注:** WebSphere Application Server Liberty プロファイルでは、このタスクはフィーチャーを変更しません。そのため、インストール済みアプリケーションの server.xml ファイルに含まれるフィーチャーのリストは最小限のものではない可能性がありますが、このタスクの実行後も、そのリストがそのまま残ります。
 
-#### <uninstallApplicationCenter>
+
+
+#### uninstallApplicationCenter
 {: #uninstallApplicationCenter }
 `<uninstallApplicationCenter>` Ant タスクは、`<installApplicationCenter>` の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。
 
@@ -1118,12 +1133,12 @@ Application Center Console および Services のインストールに関して�
 {: #attributes-and-elements-3 }
 `<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各タスクには、以下の属性があります。
 
-| 属性    | 説明                                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|--------------------------------------------|----------|---------|
-| id	       | WebSphere Application Server フル・プロファイルの異なるデプロイメントを識別します。	| いいえ | 空 |
-| servicewar   | Application Center Services の WAR ファイル。 | いいえ | applicationcenter.war ファイルは、アプリケーション・センター・コンソール・ディレクトリー (**product_install_dir/ApplicationCenter/console**) 内にあります。 |
-| shortcutsDir | ショートカットを配置するディレクトリー。 | いいえ | なし |
-| aaptDir | Android SDK platform-tools パッケージの aapt プログラムが含まれているディレクトリー。 | いいえ | なし |
+| id	       | WebSphere Application Server フル・プロファイルの異なるデプロイメントを識別します。| いいえ| 空 |
+| servicewar| Application Center Services の WAR ファイル。| いいえ| applicationcenter.war ファイルは、Application Center コンソールのディレクトリー (**product_install_dir/ApplicationCenter/console**) 内にあります。|
+| shortcutsDir| ショートカットを配置するディレクトリー。| いいえ| なし|
+| aaptDir| Android SDK platform-tools パッケージの aapt プログラムが含まれているディレクトリー。| いいえ| なし|
 
 #### id
 {: #id-1 }
@@ -1147,29 +1162,29 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 
 `<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各タスクは、以下のエレメントをサポートします。
 
-| エレメント           | 説明	                            | カウント |
+| エレメント| 説明          | カウント|
 |-------------------|-------------------------------------------|-------|
-| applicationserver	| アプリケーション・サーバー。                   | 1     |
-| コンソール           | Application Center コンソール。	        | 1     |
-| データベース          | データベース。	                        | 1     |
-| user	            | セキュリティー・ロールにマップされるユーザー。 | 0..∞  |
+| applicationserver	| アプリケーション・サーバー。| 1|
+| console           | Application Center コンソール。| 1|
+| database          | データベース。| 1|
+| user	            | セキュリティー・ロールにマップされるユーザー。| 0..∞|
 
 ### Application Center コンソールを指定するには
 {: #to-specify-an-application-center-console }
 `<console>` エレメントは、Application Center コンソールのインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
-| 属性    | 説明                                      | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|--------------------------------------------------|----------|---------|
-| warfile      | Application Center コンソールの WAR ファイル。 |	いいえ       | appcenterconsole.war ファイルは、Application Center コンソール・ディレクトリー (**product_install_dir/ApplicationCenter/console**) 内にあります。 |
+| warfile| Application Center コンソールの WAR ファイル。|	いいえ| appcenterconsole.war ファイルは、Application Center コンソール・ディレクトリー (**product_install_dir/ApplicationCenter/console**) 内にあります。|
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-3 }
-`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートします。
 
-| エレメント           | 説明	                            | カウント |
+| エレメント| 説明          | カウント|
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** または **was**	| WebSphere Application Server のパラメーター。`<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core もサポートされます。Application Center には Liberty 集合はサポートされません。 | 0..1 |
-| tomcat            | Apache Tomcat のパラメーター。 | 0..1 |
+| **websphereapplicationserver** または **was**	| WebSphere Application Server のパラメーター。`<websphereapplicationserver>` エレメント (短縮形では `<was>` ) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core もサポートされます。Application Center には Liberty 集合はサポートされません。| 0..1|
+| tomcat| Apache Tomcat のパラメーター。| 0..1|
 
 これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) ページの表に説明があります。
 
@@ -1177,34 +1192,34 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 {: #to-specify-a-connection-to-the-services-database }
 `<database>` エレメントは、サービス・データベースにアクセスするためのアプリケーション・サーバー内のデータ・ソース宣言を指定するパラメーターを収集します。
 
-次のように単一のデータベースを宣言する必要があります。`<database kind="ApplicationCenter">`. `<database>` エレメントは、`<configuredatabase>` Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと`<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
+次のように単一のデータベースを宣言する必要があります。`<database kind="ApplicationCenter">` `<database>` エレメントは、`<configuredatabase>` Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
 
 `<database>` エレメントには以下の属性があります。
 
-| 属性    | 説明                                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|--------------------------------------------------------|----------|---------|
-| kind         | データベースの種類 (ApplicationCenter)。              | はい      | なし    |
-| validate	   | データベースがアクセス可能かどうかを検証します。 | いいえ       | True    |
+| kind| データベースの種類 (ApplicationCenter)。| はい| なし|
+| validate	   | データベースがアクセス可能かどうかを検証します。| いいえ| True|
 
-`<database>` エレメントは以下のエレメントをサポートしています。これらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
+`<database>` エレメントは以下のエレメントをサポートします。これらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
-| エレメント           | 説明	                            | カウント |
+| エレメント| 説明          | カウント|
 |-------------------|-------------------------------------------|-------|
-| db2	            | DB2 データベースのパラメーター。	        | 0..1  |
-| derby             | Apache Derby データベースのパラメーター。	| 0..1  |
-| mysql             | MySQL データベースのパラメーター。	    | 0..1  |
-| oracle	        | Oracle データベースのパラメーター。	    | 0..1  |
-| driverclasspath   | JDBC ドライバー・クラスパスのパラメーター。	| 0..1  |
+| db2	            | DB2 データベースのパラメーター。| 0..1|
+| derby| Apache Derby データベースのパラメーター。| 0..1|
+| mysql| MySQL データベースのパラメーター。| 0..1|
+| oracle	        | Oracle データベースのパラメーター。| 0..1|
+| driverclasspath| JDBC ドライバー・クラスパスのパラメーター。| 0..1|
 
 ### ユーザーおよびセキュリティー・ロールを指定するには
 {: #to-specify-a-user-and-a-security-role }
 `<user>` エレメントは、アプリケーションの特定のセキュリティー・ロールに含める、ユーザーに関するパラメーターを収集します。
 
-| 属性    | 説明                                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|--------------------------------------------------------|----------|---------|
-| role         | ユーザー・ロール appcenteradmin。 | はい | なし |
-| 名前	       | ユーザー名。 | はい | なし |
-| password	   | パスワード (ユーザーを作成する必要がある場合)。	| いいえ | なし |
+| role| ユーザー・ロール appcenteradmin。| はい| なし|
+| name	       | ユーザー名。| はい| なし|
+| password	   | パスワード (ユーザーを作成する必要がある場合)。| いいえ| なし|
 
 ## {{ site.data.keys.mf_analytics }} のインストール用の Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-analytics }
@@ -1244,32 +1259,32 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 {: #attributes-and-elements-4 }
 **installanalytics**、**updateanalytics**、および **uninstallanalytics** の各タスクには、以下の属性があります。
 
-| 属性    | 説明                                            | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | {{ site.data.keys.mf_analytics }} サービスの WAR ファイル     | いいえ       | analytics-service.war ファイルはディレクトリー Analytics 内にあります。 |
+| serviceWar| {{ site.data.keys.mf_analytics }} サービスの WAR ファイル| いいえ| analytics-service.war ファイルはディレクトリー Analytics 内にあります。|
 
 #### serviceWar
 {: #servicewar-2 }
 **serviceWar** 属性を使用して、{{ site.data.keys.mf_analytics }} サービスの WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
-`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各タスクでは、以下のエレメントがサポートされます。
+`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各タスクは、以下のエレメントをサポートします。
 
-| 属性         | 説明                               | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------------|-------------------------------------------|----------|---------|
-| コンソール	        | {{ site.data.keys.mf_analytics }}   	                | はい	   | 1       |
-| user	            | セキュリティー・ロールにマップされるユーザー。	| いいえ	   | 0..     |
-| storage	        | ストレージのタイプ。	                    | はい 	   | 1       |
-| applicationserver	| アプリケーション・サーバー。	                | はい	   | 1       |
-| property          | プロパティー。	                            | いいえ 	   | 0..     |
+| console	        | {{ site.data.keys.mf_analytics }}   	                | はい	  | 1|
+| user	            | セキュリティー・ロールにマップされるユーザー。| いいえ  | 0..|
+| storage	        | ストレージのタイプ。| はい 	  | 1|
+| applicationserver	| アプリケーション・サーバー。| はい	  | 1|
+| property| プロパティー。	                            | いいえ | 0..|
 
 ### {{ site.data.keys.mf_analytics_console }} を指定するには
 {: #to-specify-a-mobilefirst-analytics-console }
 `<console>` エレメントは、{{ site.data.keys.mf_analytics_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
-| 属性    | 説明                                  | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |--------------|----------------------------------------------|----------|---------|
-| warfile	   | コンソール WAR ファイル	                      | いいえ	     | analytics-ui.war ファイルは、Analytics ディレクトリー内にあります。 |
-| shortcutsdir | ショートカットを配置するディレクトリー。 | いいえ	     | なし    |
+| warfile	   | コンソール WAR ファイル| いいえ  | analytics-ui.war ファイルは、Analytics ディレクトリー内にあります。|
+| shortcutsdir| ショートカットを配置するディレクトリー。| いいえ  | なし|
 
 #### warFile
 {: #warfile-2 }
@@ -1284,30 +1299,30 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 
 > 注: これらのショートカットには、ElasticSearch テナント・パラメーターは含まれません。
 
-`<console>` エレメントでは、以下のネスト・エレメントがサポートされます。
+`<console>` エレメントは以下のネスト・エレメントをサポートします。
 
-| エレメント  | 説明	| カウント |
+| エレメント| 説明          | カウント|
 |----------|----------------|-------|
-| property | プロパティー	    | 0..   |
+| property| プロパティー    | 0..|
 
 このエレメントでは、独自の JNDI プロパティーを定義できます。
 
 `<property>` エレメントには以下の属性があります。
 
-| 属性  | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|----------------------------|----------|---------|
-| 名前       | プロパティーの名前。  | はい      | なし    |
-| value	     | プロパティーの値。 |	はい      | なし    |
+| name       | プロパティーの名前。| はい| なし|
+| value	     | プロパティーの値。|	はい| なし|
 
 ### ユーザーおよびセキュリティー・ロールを指定するには
 {: #to-specify-a-user-and-a-security-role-1 }
 `<user>` エレメントは、アプリケーションの特定のセキュリティー・ロールに含める、ユーザーに関するパラメーターを収集します。
 
-| 属性   | 説明                                   | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |-------------|-----------------------------------------------|----------|---------|
-| role	      | アプリケーションの有効なセキュリティー・ロール。    | はい      | なし    |
-| 名前	      | ユーザー名。	                              | はい      | なし    |
-| password	  | ユーザーを作成する必要がある場合のパスワード。 | いいえ       | なし    |
+| role	      | アプリケーションの有効なセキュリティー・ロール。| はい| なし|
+| name	      | ユーザー名。| はい| なし|
+| password	   | ユーザーを作成する必要がある場合のパスワード。| いいえ| なし|
 
 ` <user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{ site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。
 
@@ -1322,21 +1337,21 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 
 以下のエレメントがサポートされます。
 
-| エレメント       | 説明	| カウント   |
+| エレメント| 説明          | カウント|
 |---------------|---------------|---------|
-| Elasticsearch	| ElasticSearch | クラスター (cluster) |
+| elasticsearch	| ElasticSearch| クラスター (cluster)|
 
 `<elasticsearch>` エレメントは、ElasticSearch クラスターに関するパラメーターを収集します。
 
-| 属性        | 説明                                   | 必要 | デフォルト   |
+| 属性| 説明| 必須| デフォルト |
 |------------------|-----------------------------------------------|----------|-----------|
-| clusterName	   | ElasticSearch クラスター名。	           | いいえ       | worklight |
-| nodeName	       | ElasticSearch ノード名。この名前は、ElasticSearch クラスター内で固有でなければなりません。	| いいえ | `worklightNode_<random number>` |
-| mastersList	   | ElasticSearch クラスター内の ElasticSearch マスター・ノードのホスト名とポートが含まれたコンマ区切りのストリング (例: hostname1:transport-port1,hostname2:transport-port2) 	           | いいえ       |	トポロジーに応じて異なる |
-| dataPath	       | ElasticSearch クラスターの場所。	       | いいえ	      | アプリケーション・サーバーに応じて異なる |
-| shards	       | ElasticSearch クラスターで作成されるシャードの数。この値は、ElasticSearch クラスターで作成されたマスター・ノードによってのみ設定できます。	| いいえ | 5 |
-| replicasPerShard | ElasticSearch クラスターのシャードごとのレプリカの数。この値は、ElasticSearch クラスターで作成されたマスター・ノードによってのみ設定できます。 | いいえ | 1 |
-| transportPort	   | ElasticSearch クラスターでのノード間通信に使用するポート。	| いいえ | 9600 |
+| clusterName	   | ElasticSearch クラスター名。| いいえ| worklight|
+| nodeName	       | ElasticSearch ノード名。この名前は、ElasticSearch クラスター内で固有でなければなりません。| いいえ| `worklightNode_<random number>` |
+| mastersList	   | ElasticSearch クラスター内の ElasticSearch マスター・ノードのホスト名とポートが含まれたコンマ区切りのストリング (例: hostname1:transport-port1,hostname2:transport-port2) | いいえ|	トポロジーに応じて異なる|
+| dataPath	       | ElasticSearch クラスターの場所。| いいえ   | アプリケーション・サーバーに応じて異なる|
+| shards	       | ElasticSearch クラスターで作成されるシャードの数。この値は、ElasticSearch クラスターで作成されたマスター・ノードによってのみ設定できます。| いいえ| 5|
+| replicasPerShard| ElasticSearch クラスターのシャードごとのレプリカの数。この値は、ElasticSearch クラスターで作成されたマスター・ノードによってのみ設定できます。| いいえ| 1|
+| transportPort	   | ElasticSearch クラスターでのノード間通信に使用するポート。| いいえ| 9600|
 
 #### clusterName
 {: #clustername }
@@ -1387,31 +1402,31 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-4 }
-`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートします。
 
 **注:** このエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
 
-| エレメント                                   | 説明	| カウント   |
+| エレメント| 説明          | カウント|
 |-------------------------------------------|---------------|---------|
-| **websphereapplicationserver** または **was** | WebSphere Application Server のパラメーター。	| 0..1 |
-| tomcat	                                | Apache Tomcat のパラメーター。	| 0..1 |
+| **websphereapplicationserver** または **was**	| WebSphere Application Server のパラメーター。| 0..1|
+| tomcat	                                | Apache Tomcat のパラメーター。| 0..1|
 
 ### カスタム JNDI プロパティーを指定するには
 {: #to-specify-custom-jndi-properties }
-`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各エレメントでは、以下のエレメントがサポートされます。
+`<installanalytics>` エレメント、`<updateanalytics>` エレメント、および `<uninstallanalytics>` エレメントは、以下のエレメントをサポートします。
 
-| エレメント  | 説明 | カウント |
+| エレメント| 説明| カウント|
 |----------|-------------|-------|
-| property | プロパティー	 | 0..   |
+| property| プロパティー | 0..|
 
 このエレメントを使用して、独自の JNDI プロパティーを定義できます。
 
 このエレメントには以下の属性があります。
 
-| 属性  | 説明                | 必要 | デフォルト |
+| 属性| 説明| 必須| デフォルト |
 |------------|----------------------------|----------|---------|
-| 名前       | プロパティーの名前。  | はい      | なし    |
-| value	     | プロパティーの値。 |	はい      | なし    |
+| name       | プロパティーの名前。| はい| なし|
+| value	     | プロパティーの値。|	はい| なし|
 
 ## 内部ランタイム・データベース
 {: #internal-runtime-databases }
@@ -1421,57 +1436,57 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 {: #database-used-by-mobilefirst-server-runtime }
 以下の表に、ランタイム・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| リレーショナル・データベースの表名 | 説明 | 概算規模 |
+| リレーショナル・データベースの表名| 説明| 概算規模|
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | デバイス廃棄タスクが実行されるごとにキャプチャーされる各種ライセンス・メトリックを保管します。 | 数十行。この値は、JNDI プロパティー mfp.device.decommission.when で設定された値を超えることはありません。JNDI プロパティーについて詳しくは、[{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。 |
-| ADDRESSABLE_DEVICE	         | アドレス可能デバイス・メトリック (日次) を保管します。また、クラスターが開始されるたびに、1 つの項目が追加されます。	| 約 400 行。毎日、13 カ月より古い項目が削除されます。 |
-| MFP_PERSISTENT_DATA	         | デバイスに関する情報、アプリケーション、クライアントに関連付けられたユーザー、およびデバイスの状況など、OAuth サーバーに登録したクライアント・アプリケーションのインスタンスを保管します。 | デバイスおよびアプリケーションのペアごとに 1 行。 |
-| MFP_PERSISTENT_CUSTOM_ATTR	 | クライアント・アプリケーションのインスタンスに関連付けられたカスタム属性。カスタム属性は、クライアント・インスタンスごとにアプリケーションによって登録されたアプリケーション固有属性です。 | デバイスまたはアプリケーションのペアごとにゼロ行以上。 |
-| MFP_TRANSIENT_DATA	         | クライアントおよびデバイスの認証コンテキスト | デバイスとアプリケーションのペアごとに 2 行。デバイス・シングル・サインオンを使用している場合はデバイスごとにさらに 2 行。SSO について詳しくは、[デバイス・シングル・サインオン (SSO) の構成](../../../authentication-and-security/device-sso)を参照してください。 |
-| SERVER_VERSION	             | 製品バージョン。	| 1 行 |
+| LICENSE_TERMS	                 | デバイス廃棄タスクが実行されるごとにキャプチャーされる各種ライセンス・メトリックを保管します。| 数十行。この値は、JNDI プロパティー mfp.device.decommission.when で設定された値を超えることはありません。JNDI プロパティーについて詳しくは、[{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。|
+| ADDRESSABLE_DEVICE	         | アドレス可能デバイス・メトリック (日次) を保管します。また、クラスターが開始されるたびに、1 つの項目が追加されます。| 約 400 行。毎日、13 カ月より古い項目が削除されます。|
+| MFP_PERSISTENT_DATA| デバイスに関する情報、アプリケーション、クライアントに関連付けられたユーザー、およびデバイスの状況など、OAuth サーバーに登録したクライアント・アプリケーションのインスタンスを保管します。| デバイスおよびアプリケーションのペアごとに 1 行。|
+| MFP_PERSISTENT_CUSTOM_ATTR| クライアント・アプリケーションのインスタンスに関連付けられたカスタム属性。カスタム属性は、クライアント・インスタンスごとにアプリケーションによって登録されたアプリケーション固有属性です。| デバイスまたはアプリケーションのペアごとにゼロ行以上。|
+| MFP_TRANSIENT_DATA	         | クライアントおよびデバイスの認証コンテキスト| デバイスとアプリケーションのペアごとに 2 行。デバイス・シングル・サインオンを使用している場合はデバイスごとにさらに 2 行。SSO について詳しくは、[デバイス・シングル・サインオン (SSO) の構成](../../../authentication-and-security/device-sso)を参照してください。|
+| SERVER_VERSION	             | 製品バージョン。| 1 行|
 
 ### {{ site.data.keys.mf_server }} 管理サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-administration-service }
 以下の表に、管理データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| リレーショナル・データベースの表名 | 説明 | 概算規模 |
+| リレーショナル・データベースの表名| 説明| 概算規模|
 |--------------------------------|-------------|--------------------|
-| ADMIN_NODE	                 | 管理サービスを実行するサーバーに関する情報を保管します。サーバーが 1 つのみのスタンドアロン・トポロジーでは、このエンティティーは使用されません。 | サーバーごとに 1 行。スタンドアロン・サーバーが使用されている場合、空。 |
-| AUDIT_TRAIL	                 | 管理サービスで実行されたすべての管理アクションの監査証跡を保管します。 | 数千行。 |
-| CONFIG_LINKS	                 | ライブ更新サービスへのリンクを保管します。アダプターやアプリケーションが使用する構成がライブ更新サービスに保管されている場合があり、リンクはそれらの構成を検出するために使用されます。	| 数百行。アダプターごとに、2 から 3 行が使用されます。アプリケーションごとに、4 から 6 行が使用されます。 |
-| FARM_CONFIG	                 | サーバー・ファームが使用されている場合のファーム・ノードの構成を保管します。 | 数十行。サーバー・ファームが使用されていない場合は空。 |
-| GLOBAL_CONFIG	                 | 一部のグローバル構成データを保管します。 | 1 行。 |
-| PROJECT	                     | デプロイされたプロジェクトの名前を保管します。 | 数十行。 |
-| PROJECT_LOCK	                 | 内部クラスター同期タスク。 | 数十行。 |
-| TRANSACTIONS	                 | 内部クラスター同期表。現行のすべての管理アクションの状態を保管します。 | 数十行。 |
-| MFPADMIN_VERSION	             | 製品バージョン。	| 1 行。 |
+| ADMIN_NODE	                 | 管理サービスを実行するサーバーに関する情報を保管します。サーバーが 1 つのみのスタンドアロン・トポロジーでは、このエンティティーは使用されません。| サーバーごとに 1 行。スタンドアロン・サーバーが使用されている場合、空。|
+| AUDIT_TRAIL	                 | 管理サービスで実行されたすべての管理アクションの監査証跡を保管します。| 数千行。|
+| CONFIG_LINKS	                 | ライブ更新サービスへのリンクを保管します。アダプターやアプリケーションが使用する構成がライブ更新サービスに保管されている場合があり、リンクはそれらの構成を検出するために使用されます。| 数百行。アダプターごとに、2 から 3 行が使用されます。アプリケーションごとに、4 から 6 行が使用されます。|
+| FARM_CONFIG	                 | サーバー・ファームが使用されている場合のファーム・ノードの構成を保管します。| 数十行。サーバー・ファームが使用されていない場合は空。|
+| GLOBAL_CONFIG	                 | 一部のグローバル構成データを保管します。| 1 行。|
+| PROJECT	                     | デプロイされたプロジェクトの名前を保管します。| 数十行。|
+| PROJECT_LOCK	                 | 内部クラスター同期タスク。| 数十行。|
+| TRANSACTIONS	                 | 内部クラスター同期表。現行のすべての管理アクションの状態を保管します。| 数十行。|
+| MFPADMIN_VERSION	             | 製品バージョン。| 1 行。|
 
 ### {{ site.data.keys.mf_server }} ライブ更新サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-live-update-service }
 以下の表に、ライブ更新サービス・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| リレーショナル・データベースの表名 | 説明 | 概算規模 |
+| リレーショナル・データベースの表名| 説明| 概算規模|
 |--------------------------------|-------------|--------------------|
-| CS_SCHEMAS	                 | プラットフォームに存在する、バージョン管理されたスキーマを保管します。	| スキーマごとに 1 行。 |
-| CS_CONFIGURATIONS	             | バージョン管理された各スキーマの構成のインスタンスを保管します。 | 構成ごとに 1 行。 |
-| CS_TAGS	                     | 各構成インスタンスの検索可能なフィールドと値を保管します。	| 構成内の検索可能な各フィールドの、各フィールド名と値の行。 |
-| CS_ATTACHMENTS	             | 各構成インスタンスの添付を保管します。 | 添付ごとに 1 行。 |
-| CS_VERSION	                 | 表またはインスタンスを作成した MFP のバージョンを保管します。 | MFP のバージョンが含まれた表内の単一行。 |
+| CS_SCHEMAS	                 | プラットフォームに存在する、バージョン管理されたスキーマを保管します。| スキーマごとに 1 行。|
+| CS_CONFIGURATIONS	             | バージョン管理された各スキーマの構成のインスタンスを保管します。| 構成ごとに 1 行。|
+| CS_TAGS	                     | 各構成インスタンスの検索可能なフィールドと値を保管します。| 構成内の検索可能な各フィールドの、各フィールド名と値の行。|
+| CS_ATTACHMENTS	             | 各構成インスタンスの添付を保管します。| 添付ごとに 1 行。|
+| CS_VERSION	                 | 表またはインスタンスを作成した MFP のバージョンを保管します。| MFP のバージョンが含まれた表内の単一行。|
 
 ### {{ site.data.keys.mf_server }} プッシュ・サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-push-service }
 以下の表に、プッシュ・サービス・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| リレーショナル・データベースの表名 | 説明 | 概算規模 |
+| リレーショナル・データベースの表名| 説明| 概算規模|
 |--------------------------------|-------------|--------------------|
-| PUSH_APPS	                     | プッシュ通知表。プッシュ・アプリケーションの詳細を保管します。 | アプリケーションごとに 1 行。 |
-| PUSH_ENV	                     | プッシュ通知表。プッシュ環境の詳細を保管します。 | 数十行。 |
-| PUSH_TAGS	                     | プッシュ通知表。定義されているタグの詳細を保管します。	     | 数十行。 |
-| PUSH_DEVICES	                 | プッシュ通知表。デバイスごとに 1 つのレコードを保管します。	         | デバイスごとに 1 行。 |
-| PUSH_SUBSCRIPTIONS	         | プッシュ通知表。タグ・サブスクリプションごとに 1 つのレコードを保管します。 | デバイス・サブスクリプションごとに 1 行。 |
-| PUSH_MESSAGES	                 | プッシュ通知表。プッシュ・メッセージの詳細を保管します。	 | 数十行。 |
-| PUSH_MESSAGE_SEQUENCE_TABLE	 | プッシュ通知表。生成されたシーケンス ID を保管します。	 | 1 行。 |
-| PUSH_VERSION	                 | 製品バージョン。	                                         | 1 行。 |
+| PUSH_APPS	                     | プッシュ通知表。プッシュ・アプリケーションの詳細を保管します。| アプリケーションごとに 1 行。|
+| PUSH_ENV	                     | プッシュ通知表。プッシュ環境の詳細を保管します。| 数十行。|
+| PUSH_TAGS	                     | プッシュ通知表。定義されているタグの詳細を保管します。| 数十行。|
+| PUSH_DEVICES	                 | プッシュ通知表。デバイスごとに 1 つのレコードを保管します。| デバイスごとに 1 行。|
+| PUSH_SUBSCRIPTIONS	         | プッシュ通知表。タグ・サブスクリプションごとに 1 つのレコードを保管します。| デバイス・サブスクリプションごとに 1 行。|
+| PUSH_MESSAGES	                 | プッシュ通知表。プッシュ・メッセージの詳細を保管します。| 数十行。|
+| PUSH_MESSAGE_SEQUENCE_TABLE| プッシュ通知表。生成されたシーケンス ID を保管します。| 1 行。|
+| PUSH_VERSION	                 | 製品バージョン。| 1 行。|
 
 データベースについて詳しくは、[データベースのセットアップ](../databases)を参照してください。
 
@@ -1484,14 +1499,14 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 {: #list-of-sample-configuration-files }
 適切なサンプル構成ファイルを選択します。以下のファイルが用意されています。
 
-| タスク                                                     | Derby                     | DB2                     | MySQL                      | Oracle                       |
+| タスク| Derby| DB2 | MySQL | Oracle |
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
-| データベース管理者資格情報を指定したデータベースの作成 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
-| {{ site.data.keys.mf_server }} を Liberty にインストールします。	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (MySQL に関する注を参照) | configure-liberty-oracle.xml |
-| シングル・サーバーの WebSphere Application Server フル・プロファイル上への {{ site.data.keys.mf_server }} のインストール |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (MySQL に関する注を参照) | configure-was-oracle.xml |
-| {{ site.data.keys.mf_server }} を WebSphere Application Server Network Deployment にインストールします。(構成ファイルに関する注を参照) | configure-wasnd-cluster-derby.xml、configure-wasnd-server-derby.xml、configure-wasnd-node-derby.xml、configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml、configure-wasnd-server-db2.xml、configure-wasnd-node-db2.xml、configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (MySQL に関する注を参照)、configure-wasnd-server-mysql.xml (MySQL に関する注を参照)、configure-wasnd-node-mysql.xml (MySQL に関する注を参照)、configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml、configure-wasnd-server-oracle.xml、configure-wasnd-node-oracle.xml、configure-wasnd-cell-oracle.xml |
-| {{ site.data.keys.mf_server }} を Apache Tomcat にインストールします。	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
-| {{ site.data.keys.mf_server }} を Liberty 集合にインストールします。	       | 関連なし              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+| データベース管理者資格情報を指定したデータベースの作成| create-database-derby.xml| create-database-db2.xml| create-database-mysql.xml| create-database-oracle.xml
+| {{ site.data.keys.mf_server }} を Liberty にインストールします。| configure-liberty-derby.xml| configure-liberty-db2.xml| configure-liberty-mysql.xml| (MySQL に関する注を参照)| configure-liberty-oracle.xml|
+| シングル・サーバーの WebSphere Application Server フル・プロファイル上への {{ site.data.keys.mf_server }} のインストール|	configure-was-derby.xml| configure-was-db2.xml| configure-was-mysql.xml (MySQL に関する注を参照)| configure-was-oracle.xml|
+| {{ site.data.keys.mf_server }} を WebSphere Application Server Network Deployment にインストールします。(構成ファイルに関する注を参照)| configure-wasnd-cluster-derby.xml、configure-wasnd-server-derby.xml、configure-wasnd-node-derby.xml、configure-wasnd-cell-derby.xml| configure-wasnd-cluster-db2.xml、configure-wasnd-server-db2.xml、configure-wasnd-node-db2.xml、configure-wasnd-cell-db2.xml| configure-wasnd-cluster-mysql.xml (MySQL に関する注を参照)、configure-wasnd-server-mysql.xml (MySQL に関する注を参照)、configure-wasnd-node-mysql.xml (MySQL に関する注を参照)、configure-wasnd-cell-mysql.xml| configure-wasnd-cluster-oracle.xml、configure-wasnd-server-oracle.xml、configure-wasnd-node-oracle.xml、configure-wasnd-cell-oracle.xml|
+| {{ site.data.keys.mf_server }} を Apache Tomcat にインストールします。| configure-tomcat-derby.xml| configure-tomcat-db2.xml| configure-tomcat-mysql.xml| configure-tomcat-oracle.xml|
+| {{ site.data.keys.mf_server }} を Liberty 集合にインストールします。| 関連なし| configure-libertycollective-db2.xml| configure-libertycollective-mysql.xml| configure-libertycollective-oracle.xml|
 
 **MySQL に関する注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、WebSphere Application Server Support Statement を参照してください。IBM サポートによるフルサポートの対象となる構成の利点を活用するために、WebSphere Application Server でサポートされる IBM DB2 などのデータベースの使用を検討してください。
 
@@ -1512,15 +1527,15 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 {: #step-1 }
 適切なサンプル構成ファイルを選択します。以下の XML ファイルが用意されています。後続のステップでは、**configure-file.xml** と記載しています。
 
-| タスク | アプリケーション・サーバー |
+| タスク| アプリケーション・サーバー|
 |------|--------------------|
-| WebSphere Application Server Liberty プロファイルで {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-liberty-analytics.xml |
-| Apache Tomcat で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-tomcat-analytics.xml |
-| WebSphere Application Server フル・プロファイルで {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-was-analytics.xml |
-| WebSphere Application Server Network Deployment (シングル・サーバー) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-server-analytics.xml |
-| WebSphere Application Server Network Deployment (セル) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cell-analytics.xml |
-| WebSphere Application Server Network Deployment (ノード) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-node.xml |
-| WebSphere Application Server Network Deployment (クラスター) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cluster-analytics.xml |
+| WebSphere Application Server Liberty プロファイルで {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-liberty-analytics.xml|
+| Apache Tomcat で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-tomcat-analytics.xml|
+| WebSphere Application Server フル・プロファイルで {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-was-analytics.xml|
+| WebSphere Application Server Network Deployment (シングル・サーバー) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-wasnd-server-analytics.xml|
+| WebSphere Application Server Network Deployment (セル) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-wasnd-cell-analytics.xml|
+| WebSphere Application Server Network Deployment (ノード) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-wasnd-node.xml|
+| WebSphere Application Server Network Deployment (クラスター) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする| configure-wasnd-cluster-analytics.xml|
 
 **WebSphere Application Server Network Deployment の構成ファイルに関する注:**  
 wasnd の構成ファイルには、**cluster**、**node**、**server**、または **cell** に設定できる有効範囲が含まれます。例えば、**configure-wasnd-cluster-analytics.xml** の場合、有効範囲は **cluster** です。これらの有効範囲タイプは、以下のようにデプロイメント・ターゲットを定義します。

@@ -23,8 +23,7 @@ für {{ site.data.keys.product }} Extension finden Sie unter [{{ site.data.keys.
 
 ### Webanwendungen
 {: #web-applications }
-#### Webanwendungen über die
-{{ site.data.keys.mf_cli }} registrieren (APAR PI65327)
+#### Webanwendungen über die {{ site.data.keys.mf_cli }} registrieren (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
 Alternativ zur Registrierung von Clientanwendungen in der {{ site.data.keys.mf_console }}
 können Sie die Anwendungen jetzt über die {{ site.data.keys.mf_cli }} (mfpdev) bei {{ site.data.keys.mf_server }} registrieren. Weitere Informationen finden Sie unter "Webanwendungen über die

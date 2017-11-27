@@ -5,11 +5,11 @@ relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
   - name: Android Studio プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
   - name: ライブ・アップデート・アダプターのダウンロード
-    URL: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
+    url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -89,8 +89,8 @@ downloads:
 {: #schema-and-segments }
 「ライブ更新設定」画面には、以下の 2 つのタブがあります。
 
-#### スキーマ
-{: #schema }
+#### スキーマとは
+{: #what-is-schema }
 スキーマは、フィーチャーおよびプロパティーが定義されている場所です。  
 
 * 「フィーチャー」を使用して、構成可能なアプリケーション・フィーチャーを定義し、そのデフォルト値を設定できます。  
@@ -170,8 +170,7 @@ downloads:
                     </li>
                 </ul>
 
-                <blockquote><b>注:
-</b><br/>
+                <blockquote><b>注:</b><br/>
                     <ul>
                         <li>フィーチャーまたはプロパティーがスキーマに追加されると、対応するフィーチャーまたはプロパティーがアプリケーションのすべてのセグメントに (デフォルト値で) 自動的に追加されます。</li>
                         <li>フィーチャーまたはプロパティーがスキーマから削除されると、対応するフィーチャーまたはプロパティーがアプリケーションのすべてのセグメントから自動的に削除されます。</li>
@@ -326,10 +325,10 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 
 パラメーターによって構成を取得するには、ライブ・アップデート API を使用して要求を送信します。
 
-#### Cordova
+#### Cordova リゾルバー
 {: cordova-resolver }
 ```javascript
-var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
+var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                  
 LiveUpdateManager.obtainConfiguration(input,function(configuration) {
         // do something with configration (JSON) object, for example:
         // console.log(configuration.properties.property-name);                                                                                                             // console.log(configuration.data.features.feature-name);                                                                                                        
@@ -470,17 +469,17 @@ public class ResolverAdapterData {
 
 | **属性** |  **値**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
-| *URL*           | /segment                                                                                          |
-| *メソッド*        | POST                                                                                              |               
-| *コンテンツ・タイプ*  | application/json                                                                                  |
-| *本文*          | &lt;セグメント解決のために必要なすべての情報を含む JSON オブジェクト&gt;                     |
+| *URL*           | /segment|
+| *メソッド*        | POST|               
+| *コンテンツ・タイプ*  | application/json|
+| *本文*          | &lt;JSON object containing all required information for segment resolving&gt;                     |
 
 **応答**
 
 |  **属性**   |  **値**                                |
 |:-------------------|:--------------------------------------------|
-| *コンテンツ・タイプ*     | text/plain                                  |                                                                          
-| *本文*             |  &lt;セグメント ID を記述するストリング&gt;   |
+| *コンテンツ・タイプ*     | text/plain|                                                                          
+| *本文*             |  &lt;string describing the segment ID&gt;   |
 
 
 ## 高度なトピック
@@ -536,7 +535,7 @@ done
 
 #### Cordova
 {: #cordova-caching }
-オプションの *useClientCache* ブール値フラグを使用したクライアント・サイド・キャッシュの制御:
+オプションの _useClientCache_ ブール値フラグを使用したクライアント・サイド・キャッシュの制御:
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };

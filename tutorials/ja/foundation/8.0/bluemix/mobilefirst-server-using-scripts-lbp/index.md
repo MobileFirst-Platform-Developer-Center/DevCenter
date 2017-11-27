@@ -53,11 +53,11 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 
 このアーカイブ・ファイルには、ファイル・レイアウトをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{ site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{ site.data.keys.mf_server }} Cloud Foundry アプリケーションを構成するためのファイル (**mfpf-server-libertyapp**) が含まれています。
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>クリックすると、アーカイブ・ファイルの内容について、詳細情報が表示されます</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>クリックすると、アーカイブ・ファイルの内容について、詳細情報が表示されます</b></a>
             </h4>
         </div>
 
@@ -121,7 +121,9 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 
 >**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
 
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+
+
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -129,7 +131,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
             </h4>
         </div>
 
-        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。空のテンプレート・ファイルや引数の説明は、<b>args</b> フォルダーにあります。また、対話式のスクリプト実行の後は <b>recorded-args</b> フォルダーにあります。以下のファイルがあります。<br/>
 
@@ -156,7 +158,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
             </h4>
         </div>
 
-        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
               <ol>
@@ -255,15 +257,15 @@ prepareappcenter.sh --name APP_NAME
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2-mf" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step-foundation-1">
+        <div class="panel-heading" role="tab" id="step-foundation-1-mf">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">構成ファイルの使用</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-1-mf" aria-expanded="false" aria-controls="collapse-step-foundation-1-mf">構成ファイルの使用</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。空のテンプレート・ファイルや引数の説明は、<b>args</b> フォルダーにあります。また、対話式のスクリプト実行の後は <b>recorded-args</b> フォルダーにあります。以下のファイルがあります。<br/>
 
@@ -286,11 +288,11 @@ prepareappcenter.sh --name APP_NAME
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">スクリプトの実行</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">スクリプトの実行</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
               <ol>
@@ -437,7 +439,7 @@ Bluemix 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Cen
 
     前のデプロイメントで使用した引数のコピーは `recorded-args/` ディレクトリーに保存されています。これらのプロパティーをデプロイメントに使用できます。
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-bluemix }

@@ -22,12 +22,9 @@ weight: 5
 
 ## Soporte a FDCC y USGCB
 {: #fdcc-and-usgcb-support }
-El gobierno federal de los Estados Unidos obliga a que los escritorios de las agencias federales que se ejecutan en plataformas Microsoft Windows adapten la Federal Desktop Core Configuration (FDCC) o la nueva configuración de seguridad United States Government Configuration Baseline (USGCB).
+El gobierno federal de los Estados Unidos obliga a que los escritorios de las agencias federales que se ejecutan en plataformas Microsoft Windows adapten la Federal Desktop Core Configuration (FDCC) o la nueva configuración de seguridad United States Government Configuration Baseline (USGCB). 
 
-
-IBM Worklight V5.0.6 se ha probado utilizando los valores de seguridad de USGCB y FDCC a través de un proceso de autocertificación.
-La realización de estas pruebas incluye un nivel razonable de verificación para asegurarse de que la instalación y las características principales funcionan en esta configuración.
-
+IBM Worklight V5.0.6 se ha probado utilizando los valores de seguridad de USGCB y FDCC a través de un proceso de autocertificación. La realización de estas pruebas incluye un nivel razonable de verificación para asegurarse de que la instalación y las características principales funcionan en esta configuración. 
 
 #### Referencias
 {: #references }
@@ -53,6 +50,8 @@ Si se realiza correctamente, el cliente utiliza un conjunto de cifrado aprobado 
 
 > **Nota:** Las instancias del módulo criptográfico que se utilizan en el cliente no están necesariamente validadas de acuerdo a FIPS 140-2.
 Consulte más abajo para conocer qué opciones hay para utilizar bibliotecas validadas FIPS 140-2 en dispositivos de cliente.
+
+
 
 Específicamente, el cliente y el servidor están utilizando el mismo conjunto de cifrado (SSL_RSA_WITH_AES_128_CBC_SHA, por ejemplo), pero el módulo criptográfico de cifrado de cliente tal vez no ejecutó el proceso de validación FIPS 140-2, mientras que el servidor está utilizando módulos certificado FIPS 140-2.
 
@@ -179,8 +178,7 @@ onFipsReady: function() {
 Después de establecer el valor de la propiedad **enableFIPS**, reconstruya la plataforma Android.
 
 
-**Nota: **Debe instalar el plugin Cordova FIPS antes es establecer el valor de la propiedad enableFIPS en true.
-De lo contrario, se registrará un mensaje de aviso que indicará que se ha establecido un valor para initOption, pero que no se ha encontrado la característica opcional.
+**Nota: **Debe instalar el plugin Cordova FIPS antes es establecer el valor de la propiedad enableFIPS en true. De lo contrario, se registrará un mensaje de aviso que indicará que se ha establecido un valor para initOption, pero que no se ha encontrado la característica opcional.
 Las características FIPS 140-2 y JSONStore son ambas opcionales en el sistema operativo Android.
 FIPS 140-2 afecta al cifrado de datos JSONStore únicamente si también se ha habilitado la característica opcional JSONStore.
 Si JSONStore no está habilitado, entonces FIPS 140-2 no afecta a JSONStore.

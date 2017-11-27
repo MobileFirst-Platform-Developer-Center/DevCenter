@@ -4,10 +4,10 @@ title: Android 애플리케이션에서 인증 확인 핸들러 구현
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
-다운로드:
-  - 이름: Android Studio 프로젝트 다운로드
+downloads:
+  - name: Android Studio 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

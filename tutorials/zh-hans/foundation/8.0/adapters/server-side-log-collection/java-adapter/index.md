@@ -30,7 +30,7 @@ static Logger logger = Logger.getLogger(JavaLoggerTestResource.class.getName());
 logger.warning("Logging warning message...");
 ```
 
-该消息将输出到应用程序服务器的 `trace.log` 文件中。如果服务器管理员正在从 {{ site.data.keys.mf_server }} 向 {{ site.data.keys.mf_analytics_server }} 转发日志，那么 `logger` 消息还将显示在 {{ site.data.keys.mf_analytics_console }} 的**基础架构 → 服务器日志搜索**视图中。
+该消息将输出到应用程序服务器的 `trace.log` 文件中。 如果服务器管理员正在从 {{ site.data.keys.mf_server }} 向 {{ site.data.keys.mf_analytics_server }} 转发日志，那么 `logger` 消息还将显示在 {{ site.data.keys.mf_analytics_console }} 的**基础架构 → 服务器日志搜索**视图中。
 
 ## 访问日志文件
 {: #accessing-the-log-files }

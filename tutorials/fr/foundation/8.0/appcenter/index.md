@@ -100,7 +100,7 @@ Dans Application Center, les applications ne comportent qu'un seul numéro de ve
 
 Application Center envoie le projet du client Windows 10 UWP pour installer l'application UWP. Vous pouvez ouvrir le projet dans Visual Studio et créer un fichier binaire (par exemple : **.appx**) for distribution. Application Center ne fournit pas de méthode prédéfinie pour distribuer le client mobile.
 
-Dans Application Center, les applications ne comportent qu'un seul numéro de version. Le numéro de version est utilisé pour distinguer la version la plus récente. Pour les applications Windows 10 UWP, le numéro de version se trouve dans le champ ***Version*** dans le fichier **Package.appxmanifest**. Ce numéro de version doit être au format suivant : a.b.c.d, où a, b, c, d sont des entiers non négatifs.
+Dans Application Center, les applications ne comportent qu'un seul numéro de version. Le numéro de version est utilisé pour distinguer la version la plus récente. Pour les applications Windows 10 UWP, le numéro de version se trouve dans la zone _**Version**_ du fichier **Package.appxmanifest**. Ce numéro de version doit être au format suivant : a.b.c.d, où a, b, c, d sont des entiers non négatifs.
 
 
 ## Architecture générale

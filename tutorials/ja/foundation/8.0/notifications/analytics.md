@@ -18,7 +18,7 @@ weight: 5
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
 ```
 
@@ -48,3 +48,4 @@ Analytics コンソールでプッシュ通知レポートを表示する方法�
 
 > プッシュ・サービスに関するこれらの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
 > **注:** {{ site.data.keys.product_full }} インストーラーは、これらのプロパティーを作成し、デフォルトにセットアップします。
+

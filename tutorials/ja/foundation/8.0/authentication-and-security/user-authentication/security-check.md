@@ -34,8 +34,8 @@ downloads:
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
 
-    @Override
-    protected AuthenticatedUser createUser() {
+       @Override
+   protected AuthenticatedUser createUser() {
         return null;
     }
 
@@ -73,11 +73,11 @@ protected Map<String, Object> createChallenge() {
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 return true;
         }
         else {
@@ -105,10 +105,10 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
                 return true;
@@ -170,10 +170,10 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
 

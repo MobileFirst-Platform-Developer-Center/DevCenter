@@ -55,8 +55,8 @@ FCM をセットアップするには、次のようにします。
 お客様の組織にインターネットとの間のトラフィックを制限するファイアウォールが存在する場合は、以下のステップを実行する必要があります。  
 
 * FCM クライアント・アプリケーションがメッセージを受信するために FCM との接続を許可するようにファイアウォールを構成します。
-* 開くポートは 5228、5229、および 5230 です。FCM は通常は 5228 のみを使用しますが、場合によっては 5229 および 5230 を使用することもあります。 
-* FCM は特定の IP を提供しないため、Google の ASN 15169 にリストされた IP ブロックに含まれるすべての IP アドレスへの発信接続をファイアウォールが受け入れられるようにする必要があります。 
+* 開くポートは 5228、5229、および 5230 です。FCM は通常は 5228 のみを使用しますが、場合によっては 5229 および 5230 を使用することもあります。
+* FCM は特定の IP を提供しないため、Google の ASN 15169 にリストされた IP ブロックに含まれるすべての IP アドレスへの発信接続をファイアウォールが受け入れられるようにする必要があります。
 * ファイアウォールが {{ site.data.keys.mf_server }} から android.googleapis.com への発信接続をポート 443 で受け入れるようにします。
 
 <img class="gifplayer" alt="GCM 資格情報の追加のイメージ" src="gcm-setup.png"/>
@@ -131,7 +131,7 @@ WNS をセットアップするには、次のようにします。
 1. {{ site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」→「セキュリティー」→「スコープ・エレメントのマッピング」**にナビゲートし、**「新規」**をクリックします。
 2. **「スコープ・エレメント」**フィールドに「push.mobileclient」と入力します。次に、**「追加」**をクリックします。
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
@@ -139,7 +139,7 @@ WNS をセットアップするには、次のようにします。
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
@@ -233,7 +233,7 @@ WNS をセットアップするには、次のようにします。
 2. セキュリティー検査を選択します。次に、**「追加」**をクリックします。
 
     <img class="gifplayer" alt="認証済み通知" src="authenticated-notifications.png"/>
-    
+
 ## タグの定義
 {: #defining-tags }
 {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「タグ」**で、**「新規」**をクリックします。  
@@ -256,7 +256,7 @@ WNS をセットアップするには、次のようにします。
 
 #### タグ通知
 {: #tag-notifications }
-タグ通知は、特定のタグにサブスクライブしているすべてのデバイスをターゲットとする通知メッセージです。タグはユーザーが関心のあるトピックを表し、選択した関心に従って通知を受けられる機能を提供します。 
+タグ通知は、特定のタグにサブスクライブしているすべてのデバイスをターゲットとする通知メッセージです。タグはユーザーが関心のあるトピックを表し、選択した関心に従って通知を受けられる機能を提供します。
 
 {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「タグ別のデバイス」**を選択し、**「通知テキスト」**を入力します。次に、**「送信」**をクリックします。
 
@@ -275,7 +275,7 @@ WNS をセットアップするには、次のようにします。
 REST API を使用する場合は、タグ通知、ブロードキャスト通知、および認証済み通知のすべての形式の通知を送信できます。
 
 通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
-URL の例を以下に示します。 
+URL の例を以下に示します。
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
@@ -283,21 +283,23 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 > すべてのプッシュ通知 REST API を確認するには、ユーザー資料の [REST API ランタイム・サービス](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)のトピックを参照してください。
 
+
+
 #### 通知ペイロード
 {: #notification-payload }
-要求には、以下のペイロード・プロパティーを含めることができます。 
+要求には、以下のペイロード・プロパティーを含めることができます。
 
 ペイロード・プロパティー| 定義
 --- | ---
-message | 送信されるアラート・メッセージ
-settings | 通知のさまざまな属性の設定。
-target | ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。ターゲットのうちの 1 つのみを設定できます。
-deviceIds | デバイス ID によってあらわされるデバイスの配列。これらの ID を持つデバイスが通知を受け取ります。これはユニキャスト通知です。
-notificationType | メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
-platforms | デバイス・プラットフォームの配列。これらのプラットフォームを実行しているデバイスが通知を受け取ります。サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
-tagNames | tagNames として指定されたタグの配列。これらのタグにサブスクライブされているデバイスが通知を受け取ります。タグ・ベース通知にはこのタイプのターゲットを使用します。
-userIds | 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。これはユニキャスト通知です。
-phoneNumber | デバイスを登録し、通知を受け取るために使用される電話番号。これはユニキャスト通知です。
+message| 送信されるアラート・メッセージ
+settings| 通知のさまざまな属性の設定。
+target| ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。ターゲットのうちの 1 つのみを設定できます。
+deviceIds| デバイス ID によってあらわされるデバイスの配列。これらの ID を持つデバイスが通知を受け取ります。これはユニキャスト通知です。
+notificationType| メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
+platforms| デバイス・プラットフォームの配列。これらのプラットフォームを実行しているデバイスが通知を受け取ります。サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
+tagNames| tagNames として指定されたタグの配列。これらのタグにサブスクライブされているデバイスが通知を受け取ります。タグ・ベース通知にはこのタイプのターゲットを使用します。
+userIds| 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。これはユニキャスト通知です。
+phoneNumber| デバイスを登録し、通知を受け取るために使用される電話番号。これはユニキャスト通知です。
 
 **プッシュ通知ペイロード JSON サンプル**
 
@@ -335,7 +337,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 
 ```json
 {
-    "message" : {
+  "message" : {
     "alert": "Hello World from an SMS message"
   },
   "notificationType":3,
@@ -351,13 +353,13 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 テスト目的では、以下で説明するように Postman が使用されます。
 
 1. [機密クライアントを構成します](../../authentication-and-security/confidential-clients/)。   
-    REST API 経由でプッシュ通知を送信する場合、スペースで区切られた `messages.write` と `push.application.<applicationId>` のスコープ・エレメントを使用します。
-    
+    REST API 経由でプッシュ通知を送信する場合、スペースで区切られたスコープ・エレメント `messages.write` と `push.application.<applicationId>` を使用します。
+
     <img class="gifplayer" alt="機密クライアントの構成" src="push-confidential-client.png"/>
 
 2. [アクセス・トークンを作成します](../../authentication-and-security/confidential-clients#obtaining-an-access-token)。  
-    
-    
+
+
 3. **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages** への **POST** 要求を行います。
     - リモート {{ site.data.keys.product_adj }} を使用している場合、`hostname` と `port` の値を実際の値で置き換えてください。
     - アプリケーション ID 値を実際の値で更新します。
@@ -365,7 +367,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 4. ヘッダーを設定します。
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - 「Bearer」の後に続く値を上記ステップ (1) で入手したアクセス・トークンの値で置き換えます。
-    
+
     ![許可ヘッダー](postman_authorization_header.png)
 
 5. 本体を設定します。
@@ -379,9 +381,9 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
         }
    }
    ```
-    
+
    ![許可ヘッダー](postman_json.png)
-    
+
 これで**「送信」**ボタンをクリックすると、デバイスに通知が到着します。
 
 ![サンプル・アプリケーションのイメージ](notifications-app.png)

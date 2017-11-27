@@ -160,6 +160,8 @@ Application Center は、サード・パーティーのアプリケーション�
 
 > **注:** 現在、Application Center は Google Play と Apple iTunes のみをサポートします。Windows Phone Store、および Windows Store はまだサポートされていません。
 
+
+
 アプリケーションの実行可能ファイルではなく、アプリケーションが保管されているサード・パーティー・アプリケーション・ストアへの URL を提供する必要があります。正しいアプリケーション・リンクを見つけやすいように、コンソールでは、サポートされているサード・パーティー・アプリケーション・ストアの Web サイトへの直接リンクを**「アプリケーションの追加」**ページで提供しています。
 
 Google play ストアのアドレスは [https://play.google.com/store/apps](https://play.google.com/store/apps) です。
@@ -185,13 +187,13 @@ Apple iTunes ストアのアドレスは [https://linkmaker.itunes.apple.com/](h
     * 検証が失敗した場合は、**「アプリケーションの追加」**ページにエラー・メッセージが表示されます。別のリンクで試すか、さもなければ現行リンクを作成する試みを取り消すことができます。 
     * 検証が成功した場合は、このアクションによってアプリケーション・プロパティーが表示されます。これで、次のステップに進む前に、アプリケーション・プロパティー内のアプリケーション記述を変更することができます
 
-    ![アプリケーション・プロパティー内の変更されたアプリケーション記述](ac_add_public_app_details.jpg)
+    ![アプリケーション・プロパティーで変更したアプリケーション記述](ac_add_public_app_details.jpg)
 
 4. **「完了 (Done)」**をクリックしてアプリケーション・リンクを作成します。
 
     このアクションにより、アプリケーションは Application Center モバイル・クライアントの対応するバージョンで使用可能になります。このアプリケーションが公開アプリケーション・ストアに保管され、かつバイナリー・アプリケーションとは異なることを示すために、アプリケーション・アイコンの上に小さいリンク・アイコンが表示されます。
 
-    ![Google play に保管されているアプリケーションへのリンク](ac_public_app_available.jpg)
+    ![Google Play に保管されたアプリケーションへのリンク](ac_public_app_available.jpg)
 
 ## アプリケーション・プロパティー
 {: #application-properties }
@@ -303,6 +305,9 @@ Apple iTunes ストアのアドレスは [https://linkmaker.itunes.apple.com/](h
 > これは、Android、iOS、および Windows Phone でのみサポートされており、Windows 10 Universal、Blackberry、および Windows 8 Universal では現在サポートされていません。
 
 
+
+
+
 {{ site.data.keys.mf_console }} と Application Center を組み合わせて、デプロイされたモバイル・アプリケーションを簡単にアップグレードできます。
 
 モバイル・デバイス上に Application Center のモバイル・クライアントをインストールする必要があります。HelloWorld アプリケーションはモバイル・デバイス上にインストールし、アプリケーションの実行時に {{ site.data.keys.mf_server }} に接続する必要があります。
@@ -314,7 +319,7 @@ HelloWorld バージョン 2.0 はリリースされており、バージョン 
 1. Application Center に HelloWorld 2.0 をデプロイします。[『モバイル・アプリケーションの追加』](#adding-a-mobile-application)を参照してください。
 2. 「アプリケーション詳細 (Application Details)」ページから、外部 URL の設定をコピーします。
 
-    ![アプリケーション詳細からの外部 URL のコピー](ac_copy_ext_url.jpg)
+    ![「アプリケーション詳細」からの外部 URL のコピー](ac_copy_ext_url.jpg)
 
 3. 外部 URL をクリップボードにコピーした場合、{{ site.data.keys.mf_console }} を開きます。
 4. HelloWorld バージョン 1.0 のアクセス・ルールを"「アクセス無効」"に変更します。
@@ -322,11 +327,11 @@ HelloWorld バージョン 2.0 はリリースされており、バージョン 
 
     クライアントの実行: モバイル・デバイスが {{ site.data.keys.mf_server }} に接続して HelloWorld バージョン 1.0 を実行しようとすると、デバイス・ユーザーは、アプリケーション・バージョンのアップグレードを要求されます。
 
-    ![リモート側での古いバージョンのアプリケーションの無効化](ac_remote_disable_app_cli.jpg)
+    ![リモート側で古いバージョンのアプリケーションを無効化](ac_remote_disable_app_cli.jpg)
 
 6. **「アップグレード (Upgrade)」**をクリックして、Application Center クライアントを開きます。ログイン詳細を正しく入力して、HelloWorld バージョン 2.0 の「詳細 (Details)」ページに直接アクセスします。
 
-    ![Application Center クライアントの HelloWorld 2.0 の詳細](ac_cli_app_details_upgrade.jpg)
+    ![Application Center クライアントでの HelloWorld 2.0 の詳細](ac_cli_app_details_upgrade.jpg)
 
 ## アプリケーション・ファイルのダウンロード 
 {: #downloading-an-application-file }
@@ -441,7 +446,7 @@ Application Center が LDAP リポジトリーに接続されている場合は�
 アプリケーションのすべてのユーザーを追加するには、**「アプリケーションからユーザーを追加 (Add users from application)」**をクリックし、該当するアプリケーションを選択します。  
 ユーザーまたはグループからアクセス権限を削除するには、その名前の右側にある×アイコンをクリックします。
 
-![アクセス・リストへのユーザーの追加または削除](ac_instal_access.jpg)
+![ユーザーのアクセス・リストへの追加またはアクセス・リストからの削除](ac_instal_access.jpg)
 
 ## デバイス管理
 {: #device-management }
@@ -463,6 +468,8 @@ Application Center モバイル・クライアントから Application Center �
 装置の名前。 このプロパティーは編集可能です。 
 
 > **注:** iOS の場合は、「設定」>「一般」>「情報」>「名前」のデバイス設定で、この名前を定義することができます。同じ名前が iTunes に表示されます。
+
+
 
 **「ユーザー名 (User Name)」**  
 当該デバイスに最初にログインしたユーザーの名前。 

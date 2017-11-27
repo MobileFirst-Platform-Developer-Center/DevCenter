@@ -59,6 +59,8 @@ WL.JSONStore.init(collections).then(function (collections) {
 **Sicherheit**, **Unterstützung für mehrere Benutzer**
 und **{{ site.data.keys.product_adj }}-Adapter integrieren**.
 
+
+
 ### Get
 {: #get }
 Mit `get` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `init` aufrufen, bevor Sie "get" aufrufen. Andernfalls ist das Ergebnis von `get` undefiniert. 
@@ -124,7 +126,7 @@ else {
   };
   WL.JSONStore.get(collectionName).find(query, options).then(function (res) {
     // Erfolg behandeln - results (Array der gefundenen Dokumente)
-  }).fail(function (errorObject) {
+}).fail(function (errorObject) {
     // Fehler behandeln
   });
 }
@@ -273,8 +275,8 @@ Definieren Sie für den Adapter die Prozeduren
 `addPerson`, `getPeople`, `pushPeople`, `removePerson` und `replacePerson`.
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;

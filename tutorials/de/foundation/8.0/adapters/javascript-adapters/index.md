@@ -19,9 +19,9 @@ sowie mobile Apps, die diese Prozeduren durch das Absetzen von Ajax-Anforderunge
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### Ordner 'adapter-resources' 
+### Ordner 'adapter-resources'
 {: #the-adapter-resources-folder }
- 
+
 Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Konfigurationsdatei beschreibt die Konnektivitätsoptionen und listet die Prozeduren auf, die für die Anwendung oder andere Adapter zugänglich gemacht werden. 
 
 ```xml
@@ -43,7 +43,7 @@ Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Ko
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -67,14 +67,14 @@ Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Ko
                             <li><code>name</code>: Dieses <i>obligatorische</i> Element gibt den Namen der Prozedur an. Dieser Name muss innerhalb des Adapters eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen.</li>
                             <li><code>audit</code>: Dieses <i>optionale</i> Element definiert, ob Aufrufe der Prozedur im Prüfprotokoll erfasst werden. Folgende Werte sind gültig:
                                 <ul>
-                                    <li><code>true</code>: Aufrufe der Prozedur werden im Prüfprotokoll erfasst.</li> 
+                                    <li><code>true</code>: Aufrufe der Prozedur werden im Prüfprotokoll erfasst.</li>
                                     <li><code>false</code>: Standardwert. Aufrufe der Prozedur werden nicht im Prüfprotokoll erfasst.</li>
                                 </ul>
                             </li>
-                            <li><code>scope</code>: Dieses <i>optionale</i> Element gibt den Sicherheitsbereich, der die Adapterressourcenprozedur schützt, an. Der Bereich kann eine Zeichenfolge mit null oder mehr Bereichselementen ("scope") sein, die jeweils durch ein Leerzeichen getrennt sind, oder auf null gesetzt werden, damit der Standardbereich angewendet wird. Ein Bereichselement kann ein Schlüsselwort sein, das einer Sicherheitsüberprüfung zugeordnet ist, oder der Name einer Sicherheitsüberprüfung. Der Standardbereich ist <code>RegisteredClient</code>, wobei es sich um ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort handelt. Nach Standardschutz ist ein Zugriffstoken für den Zugriff auf die Ressource erforderlich. <br/>
+                            <li><code>scope</code>: Dieses <i>optionale</i> Element gibt den Sicherheitsbereich an, der die Adapterressourcenprozedur schützt. Der Bereich kann eine Zeichenfolge mit null oder mehr Bereichselementen ("scope") sein, die jeweils durch ein Leerzeichen getrennt sind, oder auf null gesetzt werden, damit der Standardbereich angewendet wird. Ein Bereichselement kann ein Schlüsselwort sein, das einer Sicherheitsüberprüfung zugeordnet ist, oder der Name einer Sicherheitsüberprüfung. Der Standardbereich ist <code>RegisteredClient</code>, wobei es sich um ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort handelt. Nach Standardschutz ist ein Zugriffstoken für den Zugriff auf die Ressource erforderlich. <br/>
 								Weitere Informationen zum {{ site.data.keys.product_adj }}-OAuth-Ressourcenschutz und zum Konfigurieren des Ressourcenschutzes für JavaScript-Adapterressourcen finden Sie unter <a href="../../authentication-and-security/#protecting-adapter-resources">Adapterressourcen schützen</a>.<br/>
 								Wenn das Attribut <code>secured</code> den Wert <code>false</code> hat, wird das Attribut <code>scope</code> ignoriert. </li>
-                            <li><code>secured</code>: Dieses <i>optionale</i> Element definiert, ob die Adapterprozedur vom Sicherheitsframework der {{ site.data.keys.product_adj }} geschützt wird. Folgende Werte sind gültig:
+                            <li><code>secured</code>: Dieses <i>optionale</i> Element definiert, ob die Adapterprozedur vom {{ site.data.keys.product_adj }}-Sicherheitsframework geschützt wird. Folgende Werte sind gültig:
                                 <ul>
                                     <li><code>true</code>: Standardwert. Die Prozedur wird geschützt. Zum Aufrufen der Prozedur ist ein gültiges Zugriffstoken erforderlich.</li>
                                     <li><code>false</code>: Die Prozedur wird nicht geschützt. Zum Aufrufen der Prozedur ist kein Zugriffstoken erforderlich (siehe <a href="../../authentication-and-security/#unprotected-resources">Ungeschützte Ressourcen</a>). Wenn dieser Wert festgelegt ist, wird das Attribut <code>scope</code> ignoriert. </li>
@@ -102,6 +102,8 @@ und später zur Laufzeit weiter angepasst werden.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Hinweis:** Die Elemente für die Konfigurationseigenschaften müssen
 sich immer *unterhalb* der &lt;procedure&gt;-Elemente befinden. Im obigen Beispiel wurde eine Eigenschaft &lt;displayName&gt; mit einem Standardwert definiert, sodass sie später verwendet werden kann.
+
+
 
 Das Element &lt;property&gt; wird mit folgenden Attributen verwendet:
 
@@ -131,7 +133,7 @@ Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus.
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
-  
+
 * Konfigurationsdatei mit **push** übertragen
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
@@ -143,7 +145,7 @@ Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus.
   ```bash
   mfpdev adapter pull
   ```
-  
+
 * Konfigurationsdatei mit **push** übertragen
   ```bash
   mfpdev adapter push
@@ -169,7 +171,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 ### Ordner 'js'
 {: #the-js-folder }
- 
+
 Dieser Ordner enthält die JavaScript-Implementierungsdatei für alle Prozeduren, die in der Datei **adapter.xml** deklariert sind. Außerdem kann der Ordner XSL-Dateien mit einem Umwandlungsschema für abgerufene XML-Rohdaten enthalten. Von einem Adapter abgerufene Daten können als Rohdaten oder als vom Adapter vorverarbeitete Daten zurückgegeben werden. In beiden Fällen werden die Daten der Anwendung als **JSON-Objekt** präsentiert.
 
 ## Prozeduren von JavaScript-Adaptern
@@ -246,7 +248,7 @@ Benutzer-ID abzurufen:
 function getAuthUserId(){
    var securityContext = MFP.Server.getTokenIntrospectionData();
    var user = securityContext.getAuthenticatedUser();
- 
+
    return "User ID: " + user.getId;
 }
 ```

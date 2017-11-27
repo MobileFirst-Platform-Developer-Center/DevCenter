@@ -101,6 +101,8 @@ static void Main(string[] args) {
 
 > WCF REST サービスについて詳しくは、[方法 : 基本的な WCF Web HTTP サービスを作成する](https://msdn.microsoft.com/ja-jp/library/bb412178(v=vs.100).aspx を参照してください。
 
+
+
 ## メッセージ・インスペクターの定義
 {: #define-a-message-inspector}
 検証プロセスの詳細に進む前に、リソース (サービス・エンドポイント) を保護するために使用する**メッセージ・インスペクター**を作成し、定義する必要があります。
@@ -385,7 +387,7 @@ postProcess メソッドの主な目的は、{{ site.data.keys.product_adj }} �
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
 {
-  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
+  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true &  scope)
   {
     if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized) // We have a real problem since we already obtained a new token
     {

@@ -17,6 +17,8 @@ weight: 10
 
 > Cordova 웹 사이트 [애플리케이션 디버깅](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)에서 Cordova 디버깅 및 테스트에 대해 자세히 알아보십시오.
 
+
+
 #### 다음으로 이동:
 {: #jump-to }
 
@@ -33,8 +35,8 @@ weight: 10
 MBS를 사용하려면 **명령행** 창을 열고 다음 명령을 입력하십시오. 
 
 ```bash
-mfpdev app preview
-```
+    mfpdev app preview
+    ```
 
 애플리케이션이 여러 개의 플랫폼으로 구성된 경우 미리 볼 플랫폼을 다음과 같이 지정하십시오. 
 
@@ -43,6 +45,8 @@ mfpdev app preview -p <platform>
 ```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 미리보기 기능에는 여러 가지 알려진 제한사항이 있습니다. 미리보기 중에 애플리케이션이 예상대로 작동하지 않을 수 있습니다. 예를 들어 애플리케이션에서 기밀 클라이언트를 사용하는 보안 기능을 우회하여 인증 확인 핸들러가 트리거되지 않습니다.
+
+ 
 
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
@@ -55,6 +59,8 @@ mfpdev app preview -p <platform>
 ![MBS](simple.png)
 
 > [{{ site.data.keys.mf_cli }}를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) 학습서에서 {{ site.data.keys.mf_cli }}에 대해 자세히 알아보십시오.
+
+
 
 ## Ripple을 사용하는 디버깅
 {: #debugging-with-ripple }
@@ -77,12 +83,14 @@ Apache Ripple™은 모바일 웹 애플리케이션의 디버깅에 사용되�
 Ripple이 설치된 후에 Cordova 프로젝트 위치에서 터미널을 열고 다음을 입력하십시오. 
 
 ```bash
-ripple emulate
+ripple 에뮬레이트
 ```
 
 ![Ripple 에뮬레이터](Ripple2.png)
 
 > Apache Ripple™에 대한 자세한 정보는 [Apache Ripple 페이지](http://ripple.incubator.apache.org/) 또는 [npm ripple-emulator 페이지](https://www.npmjs.com/package/ripple-emulator)에 있습니다.
+
+
 
 ## iOS Remote Web Inspector를 사용하는 디버깅
 {: #debugging-with-ios-remote-web-inspector }

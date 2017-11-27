@@ -19,6 +19,8 @@ Application Center는 {{ site.data.keys.product_adj }} 앱 및 비{{ site.data.k
 
 > **참고:** 스토어 제출/iOS 앱의 유효성 검증을 위해 Test Flight 또는 iTunes Connect를 사용하여 생성된 아카이브/IPA 파일은 런타임 충돌/실패를 야기할 수 있으며, 자세한 사항은 [IBM MobileFirst Foundation 8.0에서 앱 스토어 제출을 위해 iOS 앱 준비](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 블로그를 읽어보십시오.
 
+
+
 다양한 컨텍스트에서 Application Center를 사용할 수 있습니다. 예: 
 
 * 조직 전체에서 엔터프라이즈 앱 스토어로서. 
@@ -60,11 +62,15 @@ Application Center는 IBM Installation Manager를 사용하는 {{ site.data.keys
 
     > 자세한 정보는 [설치 후 Application Center 구성](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation)에 대한 주제를 참조하십시오.
 
+
+
 5. Android, iOS, BlackBerry 6/7 및 Windows Phone 8에 대한 모바일 클라이언트를 준비하십시오. 
 
 모바일 클라이언트는 카탈로그를 찾아보고 애플리케이션을 설치하는 데 사용하는 모바일 애플리케이션입니다. 
 
 > **참고:** 프로덕션 설치의 경우 제공된 Ant 태스크를 실행하여 Application Center를 설치하는 것에 대해 고려하십시오. Application Center에 대한 업데이트에서 서버에 대한 업데이트를 분리할 수 있습니다.
+
+
 
 ## Cordova 기반 IBM AppCenter 클라이언트
 {: #cordova-based-ibm-appcenter-client }
@@ -108,6 +114,8 @@ cordova build ios
 
 > **참고:** 애플리케이션 UI 및 동작을 자유롭게 사용자 정의할 수 있지만, 이러한 변경사항은 IBM의 지원 계약에 포함되지 않습니다.
 
+
+
 #### Android
 {: #android }
 * Android Studio를 여십시오. 
@@ -117,6 +125,8 @@ cordova build ios
 시간이 다소 걸릴 수 있습니다. 이 작업이 완료되면 사용자 정의할 준비가 된 것입니다. 
 
 > **참고:** Gradle 버전 업그레이드의 경우 팝업 창에서 업데이트 옵션을 건너뛰도록 선택하십시오. 버전은 `grade-wrapper.properties`를 참조하십시오.
+
+
 
 #### iOS
 {: #ios }
@@ -131,6 +141,8 @@ cordova build ios
 
 > **참고:** Android 및 iOS AppCenter 클라이언트 빌드에 대해 Cordova 프레임워크를 사용 중인 경우 [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)를 참조하십시오.
 
+
+
 ### iPad 및 iPhone의 경우
 {: #for-ipad-and-iphone }
 1. 소스 코드에 제공된 클라이언트 애플리케이션을 컴파일하고 서명하십시오. 필수사항입니다. 
@@ -144,6 +156,8 @@ cordova build ios
 생성되는 원시 프로젝트(**iphone\native**에서)를 Xcode에서 수동으로 열거나 iPhone 폴더를 마우스 오른쪽 단추로 클릭한 후 **실행 도구 → Xcode 프로젝트**를 선택할 수 있습니다. 이 조치는 프로젝트를 생성하고 Xcode에서 프로젝트를 엽니다. 
 
 > **참고:** Android 및 iOS AppCenter 클라이언트 빌드에 대해 Cordova 프레임워크를 사용 중인 경우 [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)를 참조하십시오.
+
+
 
 ### Blackberry의 경우
 {: #for-blackberry }
@@ -165,11 +179,17 @@ Application Center는 회사 계정과 함께 제공되는 회사 인증서를 �
 
 > 회사 계정 및 등록 토큰에 대한 자세한 정보는 [Microsoft 개발자 웹 사이트 → Windows Phone용 회사 앱 배포](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) 페이지를 참조하십시오.
 
+
+
 > Windows Phone 모바일 클라이언트 애플리케이션에 서명하는 방법에 대한 자세한 정보는 [Microsoft 개발자 웹 사이트](http://dev.windows.com/en-us/develop)를 참조하십시오.
+
+
 
 <br/>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 부호 없는 `.xap` 파일을 직접 사용할 수 **없습니다**. 디바이스에 설치할 수 있으려면, 먼저 Symantec 또는 Microsoft에서 확보한 회사 인증서를 사용하여 서명해야 합니다.
+
+
 
 
 ### Windows 8.1 Pro용 Windows 스토어 앱

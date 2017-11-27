@@ -49,6 +49,8 @@ JNDI プロパティーを使用して、これらの変数を定義します。
 
 > **重要:** 実動では単位を「seconds」に設定しないようにしてください。経過時間が短いほどサーバーの負荷は大きくなります。秒で表される単位はテストと評価の目的でのみ実装されます。例えば、経過時間が 10 秒に設定されると、プッシュ・メッセージはほぼすぐに送信されます。
 
+
+
 設定できるすべてのプロパティーのリストについては、[Application Center のための JNDI プロパティー](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)を参照してください。
 
 ### Apache Tomcat サーバーの場合の例
@@ -81,6 +83,8 @@ WebSphere Application Server Liberty プロファイルの場合の JNDI 変数�
 
 > 重要: Google Cloud Messaging のない Application Center クライアント: Application Center は Google Cloud Messaging (GCM) API が使用可能であることを想定しています。この API は、中国など一部の地域ではデバイスで利用できない可能性があります。このような地域をサポートするために、GCM API に依存しない Application Center クライアントのバージョンをビルドすることができます。プッシュ通知フィーチャーは、そのバージョンの Application Center クライアントでは機能しません。詳しくは、[GCM API に依存しないモバイル・クライアントのバージョンのビルド](#no-gcm)を参照してください。
 
+
+
 1. 適切な Google アカウントを持っていない場合は、[Google アカウントの作成](https://mail.google.com/mail/signup)に移動し、Application Center クライアント用の Google アカウントを作成します。
 2. [Google API コンソール](https://code.google.com/apis/console/)で Google API を使用して、このアカウントを登録します。登録によって新しいデフォルト・プロジェクトが作成されます。このプロジェクトは名前変更することができます。この GCM プロジェクトに付ける名前は、Android アプリケーション・パッケージ名とは無関係です。プロジェクトが作成されると、GCM プロジェクト ID がプロジェクト URL の最後に追加されます。この末尾番号は、後で必要になることがあるので、プロジェクト ID として記録してください。
 3. GCM サービスをプロジェクト用に使用可能にします。Google API コンソールで、左側にある**「サービス (Services)」**タブをクリックし、サービスのリストにある "Google Cloud Messaging for Android" サービスを使用可能にします。
@@ -99,7 +103,7 @@ WebSphere Application Server Liberty プロファイルの場合の JNDI 変数�
 
    ```xml
    <Context docBase="AppCenterServices" path="/applicationcenter" reloadable="true" source="org.eclipse.jst.jee.server:AppCenterServices">
-        <Environment name="ibm.appcenter.gcm.signature.googleapikey" override="false" type="java.lang.String" 
+        <Environment name="ibm.appcenter.gcm.signature.googleapikey" override="false" type="java.lang.String"
         value="AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs"/>
    </Context>
    ```
@@ -145,11 +149,11 @@ Apple Push Notification Services (APNs) で iOS プロジェクトを正常に�
 
 表中の例は、Apache Tomcat サーバーの server.xml ファイル内で JNDI プロパティーがどのように定義されるかを示したものです。
 
-| JNDI プロパティー	| タイプと説明 | Apache Tomcat サーバーの場合の例  | 
+| JNDI プロパティー| タイプと説明| Apache Tomcat サーバーの場合の例 | 
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location | .p12 証明書への絶対パスを定義するストリング値。 | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | 証明書にアクセスするために必要なパスワードを定義するストリング値。  | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	認証証明書を生成するために使用されたプロビジョニング・プロファイルが開発証明書であったかどうかを定義するブール値 (true か false で識別される)。  | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.location| .p12 証明書への絶対パスを定義するストリング値。| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.password| 証明書にアクセスするために必要なパスワードを定義するストリング値。 | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	認証証明書を生成するために使用されたプロビジョニング・プロファイルが開発証明書であったかどうかを定義するブール値 (true か false で識別される)。 | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
 
 設定できるすべての JNDI プロパティーのリストについては、[Application Center のための JNDI プロパティー](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)を参照してください。
 
@@ -157,7 +161,7 @@ Apple Push Notification Services (APNs) で iOS プロジェクトを正常に�
 {: #no-gcm }
 クライアントの Android バージョンから Google Cloud Messaging (GCM) API への依存を取り除くことにより、一部の地域で制約に対応することができます。 クライアントのこのバージョンではプッシュ通知は機能しません。 
 
-Application Center は Google Cloud Messaging (GCM) API が使用可能であることを想定しています。 この API は、中国など一部の地域ではデバイスで利用できない可能性があります。 このような地域をサポートするために、GCM API に依存しない Application Center クライアントのバージョンをビルドすることができます。 プッシュ通知フィーチャーは、そのバージョンの Application Center クライアントでは機能しません。 
+Application Center は Google Cloud Messaging (GCM) API が使用可能であることを想定しています。 この API は、中国など一部の地域ではデバイスで利用できない可能性があります。このような地域をサポートするために、GCM API に依存しない Application Center クライアントのバージョンをビルドすることができます。プッシュ通知フィーチャーは、そのバージョンの Application Center クライアントでは機能しません。 
 
 1. **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** ファイルに `"gcmProjectId": "" ,` という行が含まれているかどうかを調べて、プッシュ通知が使用不可であることを確認します。 
 2. **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** ファイル内の 2 つの場所から、コメント `<!-- AppCenter Push configuration -->` とコメント `<!-- end of AppCenter Push configuration -->` の間にあるすべての行を削除します。

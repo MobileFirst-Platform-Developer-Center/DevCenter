@@ -46,9 +46,8 @@ nativen Windows-App scannt und APIs identifiziert, die in Version 8.0 weggefalle
 Das Unterstützungstool für die Migration modifiziert oder verschiebt keinen Entwicklercode und keine Kommentare Ihrer App. 
 
 1. Wählen Sie eine der folgenden Alternativen, um das Unterstützungstool für die Migration herunterzuladen: 
-    * Laden Sie die .tgz-Datei aus dem [JazzHub-Repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool) herunter.
-    * Laden Sie das {{ site.data.keys.mf_dev_kit }} über die {{ site.data.keys.mf_console }} herunter. Das Kit enthält die Datei mfpmigrate-cli.tgz
-mit dem Unterstützungstool für die Migration. 
+    * Laden Sie die .tgz-Datei aus dem [Git-Repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli) herunter.
+    * Laden Sie das {{ site.data.keys.mf_dev_kit }} über die {{ site.data.keys.mf_console }} herunter. Das Kit enthält die Datei mfpmigrate-cli.tgz mit dem Unterstützungstool für die Migration.
 2. Installieren Sie das Unterstützungstool für die Migration. 
     * Navigieren Sie zu dem Verzeichnis, in das Sie das Tool heruntergeladen haben. 
     * Installieren Sie das Tool mit npm. Geben Sie dazu den folgenden Befehl ein: 
@@ -56,14 +55,14 @@ mit dem Unterstützungstool für die Migration.
    ```bash
    npm install -g
    ```
-    
+
 3. Scannen Sie die mit der IBM MobileFirst Platform Foundation erstellte App. Geben Sie dazu
 den folgenden Befehl ein: 
 
    ```bash
    mfpmigrate scan --in Quellenverzeichnis --out Zielverzeichnis --type windows
    ```
-    
+
    **Quellenverzeichnis**  
 Aktuelle Position des Projekts
 
@@ -73,7 +72,7 @@ Verzeichnis, in dem der Bericht erstellt wird
    Wenn der Scanbefehl des Unterstützungstools für die Migration verwendet wird, identifiziert das Tool APIs in der vorhandenen, mit der
 IBM MobileFirst Platform Foundation erstellten App,
 die in Version 8.0 gelöscht oder geändert wurden oder nicht weiter unterstützt werden und speichert sie im angegebenen Zielverzeichnis. 
-    
+
 ## Windows-Projekt umstellen
 {: #migrating-a-windows-project }
 Wenn Sie ein mit der
@@ -105,7 +104,8 @@ Microsoft Visual C++ 2013 Runtime-Paket für Windows oder das Microsoft
 Visual C++ 2013 Runtime-Paket für Windows Phone als Referenz zu Ihrer App hinzufügen. Klicken Sie dazu
 in
 Visual Studio mit der rechten Maustaste auf die Referenzen Ihres nativen Projekts und führen Sie
-abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus:         
+abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus: 
+
         * Windows-Desktops und -Tablets: Klicken Sie mit der rechten Maustaste auf
 **Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows → OK** aus.
         * Windows Phone 8 Universal: Klicken Sie mit der rechten Maustaste auf
@@ -127,18 +127,18 @@ Version 8.0.0 verwendet.
 
    ```csharp
    WLResourceRequest request = new WLResourceRequest
-                            (new Uri(uriBuilder.ToString()), "GET", "accessRestricted"); 
-                            request.send(listener); 
+                            (new Uri(uriBuilder.ToString()), "GET", "accessRestricted");
+                            request.send(listener);
    ```
-    
+
    Das mit der neuen API aktualisierte Snippet würde wie folgt aussehen:
-    
+
    ```csharp
    WorklightResourceRequest request = newClient.ResourceRequest
                             (new Uri(uriBuilder.ToString(), UriKind.Relative), "GET", "accessRestricted");
                             WorklightResponse response = await request.Send();
    ```
-    
+
     * Alle Methoden, die asynchrone Operationen ausgeführt haben, verwendeten bisher ein Callback-Modell für Antwortlistener, das durch das Modell **await/async** ersetzt wurde.
 
 Jetzt können Sie mit dem Entwickeln Ihrer nativen Windows-Anwendung mit dem SDK der {{ site.data.keys.product_adj }} beginnen. Möglicherweise müssen Sie Ihren Code aktualisieren, sodass er die Änderungen der {{ site.data.keys.product_adj }}-API von Version 8.0.0 widerspiegelt.
@@ -156,30 +156,30 @@ gibt es eine Reihe von Änderungen am Windows-SDK, durch die Änderungen an Apps
 #### Nicht weiter verwendete Windows-C#-API-Klassen
 {: #deprecated-windows-c-api-classes }
 
-| Kategorie | Beschreibung | Empfohlene Aktion | 
+| Kategorie | Beschreibung | Empfohlene Aktion |
 |----------|-------------|--------------------|
-| `ChallengeHandler`  | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler`, `isCustomResponse()`  | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`.  | 
-| `ChallengeHandler.submitAdapterAuthentication ` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`.  | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLAuthorizationManager` | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`.  | 
-| `WLChallengeHandler` | Verwenden Sie `SecurityCheckChallengeHandler`.   | 
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLClient` | 	Verwenden Sie stattdessen `WorklightClient`.  | 
-| `WLErrorCode` | 	Nicht unterstützt | 
-| `WLFailResponse` | 	Verwenden Sie stattdessen `WorklightResponse`.  | 
-| `WLResponse` | Verwenden Sie stattdessen `WorklightResponse`.  | 
-| `WLProcedureInvocationData` | Verwenden Sie stattdessen `WorklightProcedureInvocationData`.  | 
-| `WLProcedureInvocationFailResponse` | 	Nicht unterstützt | 
-| `WLProcedureInvocationResult` | 	Nicht unterstützt | 
-| `WLRequestOptions` | 	Nicht unterstützt | 
-| `WLResourceRequest` | 	Verwenden Sie stattdessen `WorklightResourceRequest`.  | 
+| `ChallengeHandler` | | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler`, `isCustomResponse()` | | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
+| `ChallengeHandler.submitAdapterAuthentication` | | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLAuthorizationManager` | | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`. |
+| `WLChallengeHandler` | | Verwenden Sie `SecurityCheckChallengeHandler`. |
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | |	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLClient` | |	Verwenden Sie stattdessen `WorklightClient`. |
+| `WLErrorCode` | Nicht unterstützt | |
+| `WLFailResponse` | |	Verwenden Sie stattdessen `WorklightResponse`. |
+| `WLResponse` | | Verwenden Sie stattdessen `WorklightResponse`. |
+| `WLProcedureInvocationData` | | Verwenden Sie stattdessen `WorklightProcedureInvocationData`. |
+| `WLProcedureInvocationFailResponse` | Nicht unterstützt | |
+| `WLProcedureInvocationResult` | Nicht unterstützt | |
+| `WLRequestOptions` | Nicht unterstützt | |
+| `WLResourceRequest` | |	Verwenden Sie stattdessen `WorklightResourceRequest`. |
 
 #### Nicht weiter verwendete Windows-C#-API-Schnittstellen
 {: #deprecated-windows-c-api-interfaces }
 
-| Kategorie | Beschreibung | Empfohlene Aktion | 
+| Kategorie | Beschreibung | Empfohlene Aktion |
 |----------|-------------|--------------------|
-| `WLHttpResponseListener` | Nicht unterstützt | 
-| `WLResponseListener` | Die Antwort ist als ein `WorklightResponse`-Objekt verfügbar.  | 
-| `WLAuthorizationPersistencePolicy` | Nicht unterstützt | 
+| `WLHttpResponseListener` | Nicht unterstützt | |
+| `WLResponseListener` | Die Antwort ist als ein `WorklightResponse`-Objekt verfügbar. | |
+| `WLAuthorizationPersistencePolicy` | Nicht unterstützt | |

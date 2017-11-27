@@ -18,7 +18,9 @@ Die Protokollerfassung ist standardmäßig
 aktiviert. Sie speichert Protokolle im Client und kann programmgesteuert aktiviert oder inaktiviert werden. Protokolle werden mit einem expliziten Sendeaufruf oder automatisch an den Server gesendet. 
 
 > **Hinweis:** Die Aktivierung der Protokollerfassung auf einer Ebene mit großer Ausführlichkeit kann sich
-auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. Inaktivieren Sie die Protokollerfassung wie folgt: 
+auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. 
+
+Inaktivieren Sie die Protokollerfassung wie folgt: 
 
 ### Cordova
 {: #cordova }
@@ -36,33 +38,21 @@ ibmmfpfanalytics.logger.enable(false);
 {: #sending-captured-logs }
 Sie können Protokolle gemäß Ihrer Anwendungslogik an {{ site.data.keys.product_adj }} senden. Sie können auch das automatische Senden von Protokollen aktivieren. Wenn Protokolle nicht vor dem Erreichen ihrer maximalen Größe gesendet werden, wird die Protokolldatei zugunsten aktuellerer Protokolle bereinigt. 
 
-> **Hinweis:** Übernehmen Sie das folgende Muster für die Erfassung von Protokolldaten. Durch das Senden von Daten in einem Intervall stellen Sie sicher, dass Sie Ihre Protokolldaten in der
-{{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.#### Cordova-Apps
+> **Hinweis:** Übernehmen Sie das folgende Muster für die Erfassung von Protokolldaten. Durch das Senden von Daten in einem Intervall stellen Sie sicher, dass Sie Ihre Protokolldaten in der {{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.
+
+#### Cordova-Apps
 {: #cordova-apps }
-
-```javascript
-setInterval(function() {
-    WL.Logger.send();
-}, 60000);
-```
-
-#### Web-Apps
-{: #web-apps }
-
-```javascript
-setInterval(function() {
-   ibmmfpfanalytics.logger.send();
-}, 60000);
-```
 
 Mit folgenden Strategien können Sie sicherstellen, dass alle erfassten Protokolle gesendet werden: 
 
 * Rufen Sie die Methode `send` in einem bestimmten Zeitintervall auf. 
 * Rufen Sie die Methode `send` innerhalb von Callbacks zu Lebenszyklusereignissen auf. 
 * Erhöhen Sie den Wert für die maximale Größe des persistenten Protokollpuffers (in Bytes).
-
-#### Cordova-Apps
-{: #cordova-apps }
+```javascript
+setInterval(function() {
+WL.Logger.send();
+}, 60000);
+```
 
 ```javascript
 WL.Logger.config({ maxFileSize: 150000 });
@@ -70,6 +60,13 @@ WL.Logger.config({ maxFileSize: 150000 });
 
 #### Web-Apps
 {: #web-apps }
+
+```javascript
+setInterval(function() {
+ibmmfpfanalytics.logger.send();
+}, 60000);
+```
+
 Die maximale Dateigröße für die
 Web-API ist 5 MB und kann nicht geändert werden. 
 
@@ -78,7 +75,7 @@ Web-API ist 5 MB und kann nicht geändert werden.
 Das automatische Senden von Protokollen ist standardmäßig inaktiviert. Immer, wenn eine Ressourcenanforderung erfolgreich an den Server gesendet wird, werden auch die erfassten Protokolle gesendet, wobei zwischen den Sendevorgängen ein zeitlicher Abstand von mindestens 60 Sekunden liegen muss. Das automatische Senden von Protokollen kann vom Client aktiviert oder inaktiviert werden. Standardmäßig ist das automatische Senden von Protokollen inaktiviert. 
 
 #### Cordova-Apps
-{: #cordova-apps }
+{: #for-cordova-apps }
 Aktivierung: 
 
 ```javascript
@@ -92,7 +89,7 @@ WL.Logger.config({autoSendLogs: false});
 ```
 
 #### Web-Apps
-{: #web-apps }
+{: #for-web-apps }
 Aktivierung: 
 
 ```javascript
@@ -115,8 +112,8 @@ steuern.
 
 Wenn Sie beispielsweise für das Paket `myApp` nur Protokolle der Stufe ERROR erfassen möchten, gehen Sie wie folgt vor: 
 
-#### Cordova-Apps
-{: #cordova-apps }
+#### Cordova-Apps optimieren
+{: #fine-tuning-cordova-apps }
 1. Verwenden Sie eine `WL.Logger`-Instanz mit dem Paketnamen `myApp`. 
 
    ```javascript
@@ -136,9 +133,8 @@ Wenn Sie beispielsweise für das Paket `myApp` nur Protokolle der Stufe ERROR er
 3. **Optional:** Steuern Sie die Filter über Fernzugriff. Rufen Sie dazu ein Serverkonfigurationsprofil ab. 
 
 #### Web-Apps
-{: #web-apps }
-Bei Verwendung des Web-SDK kann die Stufe nicht vom
-Client festgelegt werden. Die gesamte Protokollierung wird an den Server gesendet, bis die Konfiguration durch Abrufen des Serverkonfigurationsprofils geändert wird. 
+{: #fine-tuning-web-apps }
+Bei Verwendung des Web-SDK kann die Stufe nicht vom Client festgelegt werden. Die gesamte Protokollierung wird an den Server gesendet, bis die Konfiguration durch Abrufen des Serverkonfigurationsprofils geändert wird.
 
 ## Serverkonfigurationsprofile abrufen
 {: #fetching-server-configuration-profiles }
@@ -152,15 +148,15 @@ prioritären Konfigurationswerte abruft, muss die Methode
 `updateConfigFromServer`
 von einem Abschnitt des Codes aufgerufen werden, der regulär ausgeführt wird, z. B. von den App-Lebenszyklus-Callbacks. 
 
-#### Cordova-Apps
-{: #cordova-apps }
+#### Serverkonfigurationsprofile für Cordova-Apps abrufen
+{: #fetching-server-configuration-profiles-cordova-apps }
 
 ```javascript
 WL.Logger.updateConfigFromServer();
 ```
 
-#### Web-Apps
-{: #web-apps }
+#### Serverkonfigurationsprofile für Web-Apps abrufen
+{: #fetching-server-configuration-profiles-web-apps }
 
 ```javascript
 ibmmfpfanalytics.logger.updateConfigFromServer();
@@ -170,8 +166,8 @@ ibmmfpfanalytics.logger.updateConfigFromServer();
 {: #logging-example }
 Die Ausgabe erfolgt in einem Browser in einer JavaScript-Konsole, in LogCat oder in der Xcode-Konsole. 
 
-### Cordova
-{: #cordova }
+### Protokollierungsbeispiel für Cordova
+{: #logging-example-cordova }
 
 ```javascript
 var MathUtils = function(){
@@ -184,8 +180,8 @@ var MathUtils = function(){
 }();
 ```
 
-### Web
-{: #web }
+### Protokollierungsbeispiel für Web
+{: #logging-example-web }
 Verwenden Sie für die Protokollierung in Webanwendungen das vorangegangene Beispiel und ersetzen Sie Folgendes: 
 
 ```javascript

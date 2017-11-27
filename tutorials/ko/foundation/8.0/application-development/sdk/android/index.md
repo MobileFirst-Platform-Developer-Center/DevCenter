@@ -99,7 +99,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
 {: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product_adj }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -157,7 +157,7 @@ repositories {
 >
 > 1. {{ site.data.keys.mf_console }}을 로드하십시오.   
 > 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.   
-> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.properties** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
+> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.properties** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오. 
 
 ### WLClient 인스턴스 작성
 {: #creating-a-wlclient-instance }
@@ -182,13 +182,13 @@ SDK 릴리스는 SDK의 [JCenter 저장소](https://bintray.com/bintray/jcenter/
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다. 
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성| 설명| 예제 값|
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
-| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다.  | /mfp/          |
-| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.            | en             |
+| wlServerProtocol| {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.| HTTP 또는 HTTPS|
+| wlServerHost| {{ site.data.keys.mf_server }}의 호스트 이름입니다.| 192.168.1.63|
+| wlServerPort| {{ site.data.keys.mf_server }}의 포트입니다.| 9080|
+| wlServerContext| {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. | /mfp/|
+| languagePreferences| 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다. | en|
 
 ## Javadoc 및 Android 서비스의 지원
 {: #support-for-javadoc-and-android-service }

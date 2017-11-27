@@ -34,7 +34,7 @@ downloads:
 
 ```javascript
 var Messages = {
-    headerText: "Default header",
+headerText: "Default header",
     actionsLabel: "Default action label",
     sampleText: "Default sample text",
 };
@@ -48,7 +48,7 @@ Messages `JSON` オブジェクトに保存されたストリングは、アプ�
 Messages.headerText
 ```
 
-**「class="translate"」を持つ HTML エレメントの ID として参照する場合:**
+**`class="translate"` を持つ HTML エレメントの ID として参照する場合:**
 
 ```html
 <h1 id="headerText" class="translate"></h1>
@@ -85,8 +85,8 @@ JavaScript を使用して、アプリケーションの複数言語の翻訳を
 1. デフォルトのアプリケーション・ストリングを `index.js` ファイルにセットアップします。
 
    ```javascript
-   var Messages = {
-        headerText: "Default header",
+var Messages = {
+headerText: "Default header",
         actionsLabel: "Default action label",
         sampleText: "Default sample text",
         englishLanguage: "English",
@@ -109,8 +109,8 @@ JavaScript を使用して、アプリケーションの複数言語の翻訳を
 3. GUI コンポーネントを新しいストリングで更新します。右から左に読む言語 (ヘブライ語やアラビア語など) 用にテキスト方向を設定するなど、追加のタスクを実行できます。エレメントは、更新されるたびに、アクティブな言語に従って異なるストリングで更新されます。
 
    ```javascript
-   function languageChanged(lang) {
-        if (typeof(lang)!="string") 
+function languageChanged(lang) {
+if (typeof(lang)!="string") 
             lang = $("#languages").val();
         
         switch (lang) {
@@ -191,3 +191,4 @@ navigator.globalization.getPreferredLanguage(
 サンプルの README.md ファイルの指示に従ってください。
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Android の LogCat は、アプリケーションの実行中に Android Studio の LogCat コンソールで調べることができます。
+

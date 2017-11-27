@@ -118,6 +118,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 
 > Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST-API-Laufzeitservices</a> in der Benutzerdokumentation.
 
+
+
 Informationen zum Senden einer Benachrichtigung enthält das Lernprogramm [Benachrichtigungen senden](../../sending-notifications). 
 
 <img alt="Beispielanwendung" src="sample-app.png" style="float:right"/>

@@ -12,7 +12,7 @@ weight:
 ## 概述
 {: #overview }
 
-Java 适配器能够使开发人员控制到后端系统的连接。因此，开发人员应负责确保有关性能和其他实施细节的最佳实践。
+Java 适配器能够使开发人员控制到后端系统的连接。 因此，开发人员应负责确保有关性能和其他实施细节的最佳实践。
 本教程中包含一个 Java 适配器示例，该适配器使用 REST 概念连接到 MySQL 后端，以对 `users` 表进行 CRUD（创建、读取、更新和删除）操作。
 
 **先决条件：**
@@ -30,7 +30,7 @@ Java 适配器能够使开发人员控制到后端系统的连接。因此，开
 ## 设置数据源
 {: #setting-up-the-data-source }
 
-为了将 {{ site.data.keys.mf_server }} 配置为能够连接到 MySQL 服务器，需要为适配器的 XML 文件配置**配置属性**。之后，可以通过 {{ site.data.keys.mf_console }} 对这些属性进行编辑。
+为了将 {{ site.data.keys.mf_server }} 配置为能够连接到 MySQL 服务器，需要为适配器的 XML 文件配置**配置属性**。 之后，可以通过 {{ site.data.keys.mf_console }} 对这些属性进行编辑。
 
 编辑 adater.xml 文件并添加以下属性：
 
@@ -53,6 +53,7 @@ Java 适配器能够使开发人员控制到后端系统的连接。因此，开
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注：**配置属性元素必须始终位于 `JAXRSApplicationClass` 元素*下*。  
 在此，我们将定义一些连接设置并为其提供缺省值，以便稍后可以在 AdapterApplication 类中使用这些设置。
+
 ## 在适配器资源类中实施 SQL
 {: #implementing-sql-in-the-adapter-resource-class }
 
@@ -71,7 +72,7 @@ Java 适配器能够使开发人员控制到后端系统的连接。因此，开
 ### 使用 DataSource
 {: #using-datasource }
 
-部署适配器后或从 {{ site.data.keys.mf_console }} 更改配置时，都会调用适配器的 `MFPJAXRSApplication` 的 `init` 方法。这是[装入连接属性](../#configuration-api)和创建 `DataSource` 的最佳选择。
+部署适配器后或从 {{ site.data.keys.mf_console }} 更改配置时，都会调用适配器的 `MFPJAXRSApplication` 的 `init` 方法。 这是[装入连接属性](../#configuration-api)和创建 `DataSource` 的最佳选择。
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -144,7 +145,7 @@ public Response createUser(@FormParam("userId") String userId,
 }
 ```
 
-由于此方法不具有任何 `@Path`，因此可作为资源的根 URL 进行访问。由于它使用 `@POST`，因此仅可通过 `HTTP POST` 进行访问。  
+由于此方法不具有任何 `@Path`，因此可作为资源的根 URL 进行访问。 由于它使用 `@POST`，因此仅可通过 `HTTP POST` 进行访问。  
 此方法具有一系列 `@FormParam` 自变量，这意味着可将其作为 `x-www-form-urlencoded` 参数在 HTTP 主体中发送。
 
 还可以使用 `@Consumes(MediaType.APPLICATION_JSON)` 在 HTTP 主体中将参数作为 JSON 对象进行传递，在此情况下，该方法需要一个 `JSONObject` 自变量，或一个具有与 JSON 属性名称匹配的属性的简单 Java 对象。
@@ -153,9 +154,10 @@ public Response createUser(@FormParam("userId") String userId,
 
 SQL 查询通过 `PreparedStatement` 方法构建。
 
-如果插入成功，那么会使用 `return Response.ok().build()` 方法将 `200 OK`发送回客户机。如果出现错误，那么将构建具有特定 HTTP 状态代码的其他 `Response` 对象。在此示例中，将发送 `409 Conflict` 错误代码。另外，还建议检查所有参数是否都发送（此处未显示）或任何其他数据验证。
+如果插入成功，那么会使用 `return Response.ok().build()` 方法将 `200 OK`发送回客户机。 如果出现错误，那么将构建具有特定 HTTP 状态代码的其他 `Response` 对象。 在此示例中，将发送 `409 Conflict` 错误代码。 另外，还建议检查所有参数是否都发送（此处未显示）或任何其他数据验证。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**确保关闭资源，如 prepared 语句和连接。
+
 ### 获取用户
 {: #get-user }
 

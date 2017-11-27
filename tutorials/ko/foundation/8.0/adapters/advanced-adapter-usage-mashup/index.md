@@ -13,7 +13,8 @@ weight: 8
 {: #overview }
 여러 유형 어댑터의 기본 사용법을 다루었고, 이제 하나의 처리된 결과를 생성하기 위해 다양한 어댑터를 사용하는 프로시저를 작성하도록 어댑터를 결합할 수 있음을 기억하는 것이 중요합니다. 여러 소스(서로 다른 HTTP 서버, SQL 등)를 결합할 수 있습니다. 
 
-이론적으로는 클라이언트 측에서 한 요청이 다른 요청에 종속된 여러 개의 요청을 연속으로 작성할 수 있습니다. 그러나 서버 측에서 이 논리를 작성하는 것이 더 빠르고 명확할 수 있습니다. 
+이론적으로는 클라이언트 측에서 한 요청이 다른 요청에 종속된 여러 개의 요청을 연속으로 작성할 수 있습니다.
+그러나 서버 측에서 이 논리를 작성하는 것이 더 빠르고 명확할 수 있습니다. 
 
 #### 다음으로 이동
 {: #jump-to}
@@ -28,8 +29,7 @@ weight: 8
 ### JavaScript 어댑터에서 JavaScript 어댑터 프로시저 호출
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-다른 JavaScript 어댑터에서 JavaScript 어댑터 프로시저를 호출할 때 `MFP.Server.invokeProcedure(invocationData)`
-API를 사용하십시오. 이 API를 사용하면 사용자의 어떤 JavaScript 어댑터에서도 프로시저를 호출할 수 있습니다. `MFP.Server.invokeProcedure(invocationData)`는 호출된 프로시저에서 검색된 결과 오브젝트를 리턴합니다. 
+다른 JavaScript 어댑터에서 JavaScript 어댑터 프로시저를 호출할 때 `MFP.Server.invokeProcedure(invocationData)` API를 사용하십시오. 이 API를 사용하면 사용자의 어떤 JavaScript 어댑터에서도 프로시저를 호출할 수 있습니다. `MFP.Server.invokeProcedure(invocationData)`는 호출된 프로시저에서 검색된 결과 오브젝트를 리턴합니다. 
 
 `invocationData` 함수 시그니처는 다음과 같습니다.  
 `MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
@@ -98,17 +98,17 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 각 매시업 유형에서 어댑터의 이름은 약간 다릅니다.   
 다음은 매시업 유형 및 해당 어댑터 이름의 목록 입니다. 
 
-| 시나리오                                         |      SQL 어댑터 이름        |  HTTP 어댑터 이름    |  
+| 시나리오                                         |      SQL 어댑터 이름         |  HTTP 어댑터 이름     |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** 어댑터 → **JavaScript** 어댑터  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** 어댑터 → **JavaScript** 어댑터        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** 어댑터 → **Java** 어댑터              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** 어댑터 → **JavaScript** 어댑터    | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java** 어댑터 → **JavaScript** 어댑터          | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java** 어댑터 → **Java** 어댑터                | SQLAdapterJava               | HTTPAdapterJava       |
 
 
 ### 매시업 샘플 플로우
 {: #mashup sample flow }
 
-**요청된 통화에 대해 백엔드 엔드포인트로 요청을 작성하고 해당 데이터를 검색하는 프로시저/어댑터 호출을 작성하십시오. **  
+**1. 요청된 통화에 대해 백엔드 엔드포인트로 요청을 작성하고 해당 데이터를 검색하는 프로시저/어댑터 호출을 작성하십시오. **  
 
 (HTTPAdapterJS 어댑터) XML:
 

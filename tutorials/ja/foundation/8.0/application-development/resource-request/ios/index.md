@@ -5,9 +5,9 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
   - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -56,7 +56,7 @@ Objective-C
 
 ```objc
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-    if (error == nil){
+if (error == nil){
         NSLog(@"%@", response.responseText);
     } else {
         NSLog(@"%@", error.description);
@@ -259,6 +259,7 @@ ResourceRequestSwift プロジェクトには、Swift で実装され、Java ア
 {: #note-about-ios-9 }
 
 > Xcode 7 を使用すると、デフォルトで [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) が使用可能になります。チュートリアルを実行するには、ATS を使用不可にしてください ([続きを読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error))。
+
 >   1. Xcode で、右クリックにより**「[プロジェクト]/info.plist ファイル」→「指定して開く」→「ソース・コード」**を選択します。
 >   2. 以下を貼り付けます。
 >

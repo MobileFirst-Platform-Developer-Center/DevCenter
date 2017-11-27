@@ -51,7 +51,7 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
 
 付与されたアクセス・トークンは、有効期限時刻が経過するまで有効になります。アクセス・トークンの有効期限時刻は、スコープ内のすべてのセキュリティー検査の有効期限時刻の中で最短の有効期限時刻に設定されます。ただし、最短の有効期限時刻までの期間が、アプリケーションの最大トークン有効期限期間よりも長い場合、トークンの有効期限時刻は現在時刻に最大有効期限期間を加算したものに設定されます。デフォルトのトークンの最大有効期間は 3,600 秒 (1 時間) ですが、`maxTokenExpiration` プロパティーの値を設定することで、期間を構成できます。『アクセス・トークンの最大有効期間の構成』を参照してください。
 
-<div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="configuration-explanation" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
@@ -85,7 +85,7 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
                     </ol>
                 </li>
             </ul>
-                
+
             <br/>
             <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>セクションを閉じる</b></a>
             </div>
@@ -93,11 +93,11 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
     </div>
 </div>
 
-<div class="panel-group accordion" id="response-access-token" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="response-access-token" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>アクセス・トークン応答構造</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>アクセス・トークン応答構造</b></a>
             </h4>
         </div>
 
@@ -162,6 +162,8 @@ Pragma: no-cache
 
 > セキュリティー検査について詳しくは、[セキュリティー検査の作成](creating-a-security-check/)チュートリアルを参照してください。また、チャレンジ・ハンドラーについては、[資格情報の検証](credentials-validation)チュートリアルを参照してください。
 
+
+
 ### スコープ
 {: #scopes }
 
@@ -198,6 +200,8 @@ scope = `access-restricted deletePrivilege`
 
 > スコープ・エレメントを空ストリングにマップするには、**「新しいスコープ・エレメント・マッピングの追加」**ポップアップ・メニューでセキュリティー検査を何も選択しないでください。
 
+
+
 <img class="gifplayer" alt="スコープ・マッピング" src="scope_mapping.png"/>
 
 必要な構成を指定してアプリケーションの構成 JSON ファイルを手動で編集し、変更を {{ site.data.keys.mf_server }} にプッシュして戻すこともできます。
@@ -207,14 +211,16 @@ scope = `access-restricted deletePrivilege`
 3. ファイルを編集して、`scopeElementMapping` プロパティーを定義します。このプロパティーには、データ・ペアを定義します。各ペアは、選択したスコープ・エレメントの名前と、そのエレメントのマップ先となるゼロ個以上のセキュリティー検査をスペースで区切ったストリングとで構成されます。例えば、次のとおりです。
 
     ```xml
-    "scopeElementMapping": {
-        "UserAuth": "UserAuthentication",
+"scopeElementMapping": {
+"UserAuth": "UserAuthentication",
         "SSOUserValidation": "LtpaBasedSSO CredentialsValidation"
     }
     ```
 4. コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
 > 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
+
+
 
 ## リソースの保護
 {: #protecting-resources }
@@ -244,11 +250,12 @@ OAuth モデルでは、保護リソースは、アクセス・トークンを�
 3.  `mandatoryScope` プロパティーを定義し、選択したスコープ・エレメントのスペース区切りリストが入ったスコープ・ストリングをプロパティー値に設定することで、ファイルを編集します。例えば、次のとおりです。
 
     ```xml
-   "mandatoryScope": "appAuthenticity PincodeValidation"
-   ```
+"mandatoryScope": "appAuthenticity PincodeValidation"```
 4.  コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
 > 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
+
+
 
 ### アダプター・リソースの保護
 {: #protecting-adapter-resources }
@@ -258,6 +265,8 @@ OAuth モデルでは、保護リソースは、アクセス・トークンを�
 デフォルトの {{ site.data.keys.product_adj }} スコープは `RegisteredClient` です。これは、リソースにアクセスするためにアクセス・トークンを必要とし、そのリソース要求が {{ site.data.keys.mf_server }} に登録されたアプリケーションから出されたものであることを検証します。この保護は、[リソース保護を無効](#disabling-resource-protection)にした場合を除き常に適用されます。そのため、リソースのスコープを設定しない場合でも、リソースは引き続き保護されます。
 
 > <b>注:</b> `RegisteredClient` は、予約済みの {{ site.data.keys.product_adj }} キーワードです。カスタム・スコープ・エレメントやセキュリティー検査をこの名前で定義することはしないでください。
+
+
 
 #### Java アダプター・リソースの保護
 {: #protecting-java-adapter-resources }
@@ -425,4 +434,3 @@ JavaScript アダプター・リソース (プロシージャー) の OAuth 保�
 {: #tutorials-to-follow-next }
 
 サイドバー・ナビゲーションにあるチュートリアルを順に追いながら、{{ site.data.keys.product_adj }} Foundation での認証について、引き続きお読みください。
-

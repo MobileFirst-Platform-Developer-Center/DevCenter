@@ -16,6 +16,7 @@ Java アダプターでは、バックエンド・システムへの接続を自
 **前提条件:** 最初に必ず、[Java アダプター](../)チュートリアルをお読みください。
 
 >**重要:** アダプター実装内で `javax.ws.rs.*` または `javax.servlet.*` からクラスへの静的参照を使用する場合、以下のいずれかのオプションを使用して必ず **RuntimeDelegate** を構成する必要があります。
+
 *	Liberty `jvm.options` で `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
 または
 *	システム・プロパティーまたは JVM カスタム・プロパティー `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
@@ -27,8 +28,8 @@ Java アダプターでは、バックエンド・システムへの接続を自
 
 ```java
 @Override
-protected void init() throws Exception {
-    JavaHTTPResource.init();
+    protected void init() throws Exception {
+        JavaHTTPResource.init();
     logger.info("Adapter initialized!");
 }
 ```
@@ -71,7 +72,7 @@ public static void init() {
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag)
     throws IOException, IllegalStateException, SAXException {
-  if(tag!=null && !tag.isEmpty()){
+  if(tag!=null &&  !tag.isEmpty()){
     execute(new HttpGet("/blog/atom/"+ tag +".xml"), response);
   }
   else{

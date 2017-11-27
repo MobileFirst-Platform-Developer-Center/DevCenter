@@ -39,7 +39,7 @@ WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCreden
     NSLog("Login Preemptive Failure: " + String(error))
   }
   else {
-NSLog("Login Preemptive Success")
+    NSLog("Login Preemptive Success")
   }
 }
 ```

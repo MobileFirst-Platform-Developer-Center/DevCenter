@@ -15,6 +15,8 @@ weight: 2
 
 > <b>注:</b> セキュリティー検査はアダプター内に実装されますが、{{ site.data.keys.product_adj }} セキュリティー・フレームワークとアダプター API はそれぞれ独立しており、混在することはできません。したがって、アダプター API (`AdpatersAPI` インターフェースなど) をセキュリティー検査コード内で使用したり、セキュリティー検査 API をアダプター・リソース・コード内で使用したりすることはできません。
 
+
+
 セキュリティー・フレームワークのアーキテクチャーは、モジュラー型の柔軟なアーキテクチャーです。したがって、セキュリティー検査の実装は、本質的に、特定のリソースやアプリケーションに依存しません。同じセキュリティー検査を再使用してさまざまなリソースを保護したり、各種許可フローでさまざまなセキュリティー検査の組み合わせを使用したりすることができます。柔軟性を高めるために、セキュリティー検査クラスは、{{ site.data.keys.mf_console }} からセキュリティー検査定義とランタイムのどちらでもアダプター・レベルでカスタマイズ可能な構成プロパティーを公開します。
 
 開発プロセスを促進および加速するために、{{ site.data.keys.product }} には、`SecurityCheck` インターフェースの基底抽象実装が用意されています。さらに、`SecurityCheckConfiguration` インターフェースの基底抽象実装が提供されるほか (`SecurityCheckConfigurationBase`)、提供される各基底セキュリティー検査クラスの補足的なサンプルのセキュリティー検査構成クラスも提供されます。開発ニーズに最も適合した基底セキュリティー検査実装 (および関連のサンプル構成) で始めて、必要に応じて実装を拡張および変更してください。
@@ -44,6 +46,8 @@ weight: 2
 
 > Java アダプターを作成する場合、デフォルトのテンプレートはアダプターが**リソース**を提供するものと想定します。セキュリティー検査とリソースを同じアダプター内にバンドルするか、別々のアダプターに分けるかは、開発者が選択できます。
 
+
+
 デフォルトの**リソース**実装を削除するには、**[AdapterName]Application.java** ファイルと **[AdapterName]Resource.java** ファイルを削除します。**adapter.xml** から `<JAXRSApplicationClass>` エレメントも削除してください。
 
 Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefinition` という XML エレメントを追加します。例えば、次のとおりです。
@@ -63,7 +67,7 @@ Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefin
 
 アダプターとセキュリティー検査定義を {{ site.data.keys.mf_server }} に正常にデプロイした後は、**{{ site.data.keys.mf_console }} →「アダプター」→「 [ご使用のアダプター] 」** から、セキュリティー検査とその構成情報を確認したり、ランタイム構成を変更したりすることもできます。
 
-* **「構成ファイル」**タブには、アダプター記述子のサーバー・コピーが表示されます。これにはカスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
+* **「構成ファイル」**タブには、アダプター記述子のサーバー・コピーが表示されます。これには、カスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
 * **「セキュリティー検査」**タブには、セキュリティー検査定義で公開したすべての構成プロパティーのリストが表示されます。プロパティーは、構成されている `displayName` 属性の値で参照されます。表示名が構成されていない場合は、name 属性の値で参照されます。定義でプロパティーの description 属性を設定した場合は、この説明も表示されます。各プロパティーで、`defaultValue` 属性に構成された値が、現行値として表示されます。
 この値を変更して、セキュリティー検査定義のデフォルト値をオーバーライドできます。また、セキュリティー検査定義の最初のデフォルト値をいつでも復元できます。 
 * {{ site.data.keys.mf_console }} の**「アプリケーション」**セクションからアプリケーション・バージョンを選択することもできます。
@@ -154,6 +158,8 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 
 > 実際の例については、CredentialsValidation セキュリティー検査チュートリアルの[セキュリティー検査の構成](../credentials-validation/security-check/#configuring-the-security-check)セクションを参照してください。
 
+
+
 ### {{ site.data.keys.mf_console }} - アダプター
 {: #mobilefirst-operations-console-adapter }
 {{ site.data.keys.mf_console }} →**「 [ご使用のアダプター] 」→「セキュリティー検査」タブ**で、**adapter.xml** ファイル内に定義されている任意のプロパティーの値を変更できます。  
@@ -168,8 +174,8 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 3. ファイルを編集します。`securityCheckDefinitions` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内で、properties オブジェクトを見つけるか、追加します。構成する必要がある使用可能な各構成プロパティーについて、properties オブジェクト内に構成プロパティー名と値のペアを追加します。例えば、次のとおりです。 
 
    ```xml
-   "securityCheckDefinitions": {
-        "UserAuthentication": {
+"securityCheckDefinitions": {
+"UserAuthentication": {
             "properties": {
 "maxAttempts": "4",
                 "failureExpirationSec: "90"
@@ -195,8 +201,8 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 3. ファイルを編集します。`securityCheckConfigurations` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内に、構成する必要がある使用可能な各構成プロパティーについて、構成プロパティーの名前と値のペアを追加します。例えば、次のとおりです。
 
    ```xml
-   "SecurityCheckConfigurations": {
-        "UserAuthentication": {
+"SecurityCheckConfigurations": {
+"UserAuthentication": {
             "properties": {
 "maxAttempts": "2",
                 "failureExpirationSec: "60"

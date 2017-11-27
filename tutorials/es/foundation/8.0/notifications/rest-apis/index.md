@@ -1,19 +1,24 @@
 ---
 layout: tutorial
-title: Push Service REST APIs 
+title: API REST del servicio push
 relevantTo: [ios,android,windows,cordova]
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## REST APIs
+## API REST
 {: #rest-apis }
-You can use the Push Service REST APIs to work with notifications.
+Las API REST del servicio push sirven para trabajar con notificaciones.
 
-* Use [Administration service REST API](../../api/rest/administration-service) for adapters and applications.
-* Use [Push service REST API](../../api/rest/push-service) to access Push functions from a REST API endpoint.
+
+* Utilice la [API REST del servicio de administración](../../api/rest/administration-service) para adaptadores y dispositivos.
+
+* Utilice la [API REST del servicio push](../../api/rest/push-service) para acceder a funciones push desde un punto final de API REST.
+
 
 ## Swagger
 {: #swagger }
-In the development environment provided by the [DevKit Installer](../../installation-configuration/development/mobilefirst) you can also access the Push REST APIs from a Swagger UI. To access it, load the following URL: [http://localhost:9080/doc/?url=/imfpush/v1/swagger.json](http://localhost:9080/doc/?url=/imfpush/v1/swagger.json).
+En el entorno de desarrollo que proporciona el [instalador DevKit](../../installation-configuration/development/mobilefirst) podrá acceder a las API REST de push desde una interfaz de usuario de Swagger.
+Para acceder a la misma, cargue el siguiente URL:
+[http://localhost:9080/doc/?url=/imfpush/v1/swagger.json](http://localhost:9080/doc/?url=/imfpush/v1/swagger.json).
 
 

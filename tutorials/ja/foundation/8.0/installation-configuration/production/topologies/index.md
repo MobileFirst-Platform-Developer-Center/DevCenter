@@ -123,6 +123,8 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 
 > 注: **mfp.admin.endpoint** プロパティーにより、コンソールは管理サービスの場所を探索できます。アスタリスク文字「\*」をワイルドカードとして使用して、管理サービスへの接続のためにコンソールが生成する URL が、コンソールへの着信 HTTP 要求と同じ値を使用するように指定することができます。例えば、`*://*:*/mfpadmin` は、コンソールと同じプロトコル、ホスト、およびポートを使用するが、**mfpadmin** をコンテキスト・ルートとして使用することを意味します。このプロパティーは、コンソール・アプリケーションに対して指定します。
 
+
+
 ### {{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} プッシュ・サービスおよび許可サーバーへ
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
 管理サービスはプッシュ・サービスと通信して、さまざまなプッシュ操作を要求します。 この通信は、OAuth プロトコルを使用して保護されます。両方のサービスが、機密クライアントとして登録されている必要があります。初期登録は、インストール時に行うことができます。このプロセスでは、両方のサービスが許可サーバーに接続する必要があります。この許可サーバーは、{{ site.data.keys.product }} ランタイムにすることができます。
@@ -135,6 +137,8 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 * **mfp.admin.authorization.client.secret** - OAuth ベースのトークンの取得に使用される秘密コード。
 
 > 注: 管理サービスの **mfp.push.authorization.client.id** プロパティーおよび **mfp.push.authorization.client.secret** プロパティーを使用して、管理サービスの開始時にプッシュ・サービスを機密クライアントとして自動的に登録することができます。プッシュ・サービスは同じ値で構成する必要があります。
+
+
 
 この通信を構成するための、プッシュ・サービスの JNDI プロパティーは次のとおりです。
 
@@ -166,7 +170,7 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
 サーバー・トポロジーごとの管理サービス、ライブ更新サービス、およびランタイムの制約とデプロイメント・モードについて説明します。
 
-[『{{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} ライブ更新サービスへ』](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)の説明にあるように、ライブ更新サービスは、常に管理サービスと共に同じアプリケーション・サーバー上にインストールされている必要があります。ライブ更新サービスのコンテキスト・ルートは `/<adminContextRoot>config` のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが **/mfpadmin** の場合、ライブ更新サービスのコンテキスト・ルートは **/mfpadminconfig** でなければなりません。
+[『{{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} ライブ更新サービスへ』](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)の説明にあるように、ライブ更新サービスは、常に管理サービスと共に同じアプリケーション・サーバー上にインストールされている必要があります。ライブ更新サービスのコンテキスト・ルートは、`/<adminContextRoot>config` のように定義する必要があります。例えば、管理サービスのコンテキスト・ルートが **/mfpadmin** の場合、ライブ更新サービスのコンテキスト・ルートは **/mfpadminconfig** でなければなりません。
 
 使用できるアプリケーション・サーバー・トポロジーは以下のとおりです。
 
@@ -219,14 +223,14 @@ WebSphere Application Server 完全プロファイル、WebSphere Application Se
 **スタンドアロンの WebSphere Application Server Liberty プロファイル・サーバー**  
 管理サービスとランタイムについて、以下のグローバル JNDI プロパティーが必要です。
 
-| JNDI プロパティー          | 値 |
+|             JNDI プロパティー |             値 |
 |--------------------------|--------|
-| mfp.topology.platform	   | Liberty |
-| mfp.topology.clustermode | Standalone |
-| mfp.admin.jmx.host       | WebSphere Application Server Liberty プロファイル・サーバーのホスト名。 |
-| mfp.admin.jmx.port       | REST コネクターのポート。 WebSphere Application Server Liberty プロファイル・サーバーの server.xml ファイル内の `<httpEndpoint>` エレメントで宣言された httpsPort 属性のポートです。このプロパティーにデフォルト値はありません。 |
-| mfp.admin.jmx.user       | WebSphere Application Server Liberty 管理者のユーザー名。WebSphere Application Server Liberty プロファイル・サーバーの server.xml ファイル内の `<administrator-role>` エレメントで定義された名前に一致する必要があります。 |
-| mfp.admin.jmx.pwd        | WebSphere Application Server Liberty 管理者ユーザーのパスワード。 |
+| mfp.topology.platform    | Liberty |
+| mfp.topology.clustermode | Standalone|
+| mfp.admin.jmx.host     | WebSphere Application Server Liberty プロファイル・サーバーのホスト名。|
+| mfp.admin.jmx.port       | REST コネクターのポート。WebSphere Application Server Liberty プロファイル・サーバーの server.xml ファイル内の `<httpEndpoint>` エレメントに宣言されている httpsPort 属性のポートです。このプロパティーにはデフォルト値がありません。 |
+| mfp.admin.jmx.user     | WebSphere Application Server Liberty 管理者のユーザー名。WebSphere Application Server Liberty プロファイル・サーバーの server.xml ファイル内の `<administrator-role>` エレメントに定義されている名前と一致しなければなりません。 |
+| mfp.admin.jmx.pwd        |             WebSphere Application Server Liberty 管理者ユーザーのパスワード。 |
 
 複数の管理コンポーネントをデプロイして、異なるランタイムを管理する別々の管理コンポーネントで同じ JVM を実行できるようにすることが可能です。
 
@@ -238,10 +242,10 @@ WebSphere Application Server 完全プロファイル、WebSphere Application Se
 **スタンドアロンの Apache Tomcat サーバー**
 管理サービスとランタイムについて、以下のローカル JNDI プロパティーが必要です。
 
-| JNDI プロパティー        |	値    |
+| JNDI プロパティー  |	            値 |
 |------------------------|------------|
-| mfp.topology.platform   | Tomcat     |
-| mfp.topology.clustermode | Standalone |
+| mfp.topology.platform    | Tomcat|
+| mfp.topology.clustermode | Standalone|
 
 Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) を定義する JVM プロパティーも必要です。詳しくは、[Apache Tomcat 用の JMX 接続の構成](../appserver/#apache-tomcat-prerequisites)を参照してください。
 
@@ -256,11 +260,11 @@ Apache Tomcat サーバーがファイアウォールの背後で実行されて
 **スタンドアロンの WebSphere Application Server**  
 管理サービスとランタイムについて、以下のローカル JNDI プロパティーが必要です。
 
-| JNDI プロパティー          | 値                 |
+|             JNDI プロパティー |             値 |
 |--------------------------| -----------------------|
-| mfp.topology.platform    | WAS                    |
-| mfp.topology.clustermode | Standalone             |
-| mfp.admin.jmx.connector  | JMX コネクター・タイプ。値には SOAP または RMI が可能です。 |
+| mfp.topology.platform    | WAS|
+| mfp.topology.clustermode | Standalone|
+| mfp.admin.jmx.connector| JMX コネクター・タイプ。値には SOAP または RMI が可能です。|
 
 複数の管理コンポーネントをデプロイして、異なるランタイムを管理する別々の管理コンポーネントで同じ JVM を実行できるようにすることが可能です。  
 複数の管理コンポーネントをデプロイする場合には、以下を指定する必要があります。
@@ -378,9 +382,9 @@ WebSphere Application Server 完全プロファイル、WebSphere Application Se
 **Apache Tomcat サーバー・ファーム**  
 管理サービスとランタイムについて、ファーム内の各サーバーで以下のグローバル JNDI プロパティーが必要です。
 
-| JNDI プロパティー          |	値 |
+|             JNDI プロパティー |	            値 |
 |--------------------------|-----------|
-| mfp.topology.platform	   | Tomcat    |
+| mfp.topology.platform    | Tomcat|
 | mfp.topology.clustermode | Farm      |
 
 Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) を定義する JVM プロパティーも必要です。詳しくは、[Apache Tomcat 用の JMX 接続の構成](../appserver/#apache-tomcat-prerequisites)を参照してください。
@@ -397,19 +401,19 @@ Java Management Extensions (JMX) リモート・メソッド呼び出し (RMI) �
 **WebSphere Application Server 完全プロファイルのサーバー・ファーム**  
 管理サービスとランタイムについて、ファーム内の各サーバーで以下のグローバル JNDI プロパティーが必要です。
 
-| JNDI プロパティー            | 値 |
+| JNDI プロパティー  |             値 |
 |----------------------------|--------|
-| mfp.topology.platform	WAS  | WAS    |
+| mfp.topology.platform	WAS| WAS|
 | mfp.topology.clustermode   | Farm   |
-| mfp.admin.jmx.connector    | SOAP   |
+| mfp.admin.jmx.connector| SOAP|
 
 管理サービスでサーバー・ファーム構成を管理するために、以下の JNDI プロパティーが必要です。
 
-| JNDI プロパティー    | 値 |
+| JNDI プロパティー  |             値 |
 |--------------------|--------|
-| mfp.admin.jmx.user | WebSphere Application Server のユーザー名。このユーザーは、WebSphere Application Server ユーザー・レジストリーで定義されていなければなりません。 |
-| mfp.admin.jmx.pwd	 | WebSphere Application Server ユーザーのパスワード。 |
-| mfp.admin.serverid | サーバー ID。必ず、ファーム内のサーバーごとに異なり、サーバー・ファーム構成ファイル内でこのサーバーに使用されたこのプロパティーの値と一致する必要があります。 |
+| mfp.admin.jmx.user | WebSphere Application Server のユーザー名。このユーザーは、WebSphere Application Server ユーザー・レジストリーで定義されていなければなりません。|
+| mfp.admin.jmx.pwd	| WebSphere Application Server ユーザーのパスワード。|
+| mfp.admin.serverid | サーバー ID。必ず、ファーム内のサーバーごとに異なり、サーバー・ファーム構成ファイル内でこのサーバーに使用されたこのプロパティーの値と一致する必要があります。|
 
 複数の管理コンポーネントをデプロイして、異なるランタイムを管理する別々の管理コンポーネントで同じ JVM を実行できるようにすることが可能です。
 
@@ -548,7 +552,7 @@ Liberty 集合トポロジーでは、{{ site.data.keys.mf_server }} 管理コ�
 
 同じ管理コンポーネントを使用している複数のコントローラー (レプリカ) が使用される場合、ランタイム用の以下の JNDI プロパティーが必要です。
 
-| JNDI プロパティー | 値 | 
+| JNDI プロパティー  |             値 | 
 |-----------------|--------|
 | mfp.admin.jmx.replica | 複数の異なるコントローラー・レプリカのエンドポイント・リスト (`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 構文を使用)。 | 
 
@@ -615,13 +619,13 @@ Liberty 集合トポロジーでは、{{ site.data.keys.mf_server }} 管理コ�
 
 管理サービスとランタイムについて、以下のローカル JNDI プロパティーが必要です。
 
-| JNDI プロパティー |	値 |
+| JNDI プロパティー  |	            値 |
 |-----------------|--------|
-| mfp.topology.platform	| WAS |
-| mfp.topology.clustermode | クラスター |
-| mfp.admin.jmx.connector |	デプロイメント・マネージャーと接続するための JMX コネクター・タイプ。値には SOAP または RMI が可能です。SOAP がデフォルトで、推奨値です。SOAP ポートが使用不可の場合は、RMI を使用する必要があります。 |
-| mfp.admin.jmx.dmgr.host |	デプロイメント・マネージャーのホスト名。 |
-| mfp.admin.jmx.dmgr.port |	mfp.admin.jmx.connector の値に応じて、デプロイメント・マネージャーで使用される RMI または SOAP のポート。 |
+| mfp.topology.platform	| WAS|
+| mfp.topology.clustermode | クラスター|
+| mfp.admin.jmx.connector|	デプロイメント・マネージャーと接続するための JMX コネクター・タイプ。値には SOAP または RMI が可能です。SOAP がデフォルトで、推奨値です。SOAP ポートが使用不可の場合は、RMI を使用する必要があります。|
+| mfp.admin.jmx.dmgr.host |	デプロイメント・マネージャーのホスト名。|
+| mfp.admin.jmx.dmgr.port |	mfp.admin.jmx.connector の値に応じて、デプロイメント・マネージャーで使用される RMI または SOAP のポート。|
 
 複数の管理コンポーネントをデプロイして、異なる各ランタイムを管理する別々の管理コンポーネントで同じサーバーまたはクラスターを実行できるようにすることが可能です。
 
@@ -651,11 +655,11 @@ Liberty 集合トポロジーでは、{{ site.data.keys.mf_server }} 管理コ�
 
 アプリケーション・サーバー・インフラストラクチャーの前面にリバース・プロキシーが使用される場合は、管理サービスの以下の JNDI プロパティーが定義されなければなりません。
 
-| JNDI プロパティー |	値 |
+| JNDI プロパティー  |	            値 |
 |-----------------|--------|
-| mfp.admin.proxy.protocol | リバース・プロキシーとの通信に使用するプロトコル。HTTP または HTTPS が可能です。 |
-| mfp.admin.proxy.host | リバース・プロキシーのホスト名。 |
-| mfp.admin.proxy.port | リバース・プロキシーのポート番号。 |
+| mfp.admin.proxy.protocol| リバース・プロキシーとの通信に使用するプロトコル。HTTP または HTTPS が可能です。|
+| mfp.admin.proxy.host| リバース・プロキシーのホスト名。|
+| mfp.admin.proxy.port| リバース・プロキシーのポート番号。|
 
 リバース・プロキシーの URL を参照する **mfp.admin.endpoint** プロパティーも、{{ site.data.keys.mf_console }} について必要です。
 

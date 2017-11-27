@@ -85,11 +85,11 @@ weight: 2
 
 此归档文件包含用于构建映像的文件（**dependencies** 和 **mfpf-libs**），用于构建和部署 {{ site.data.keys.mf_analytics }} Container 的文件 (**mfpf-analytics**) 以及用于配置 {{ site.data.keys.mf_server }} Container 的文件 (**mfpf-server**)。
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>单击以了解有关归档文件内容和可供使用的环境属性的更多信息</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>单击以了解有关归档文件内容和可供使用的环境属性的更多信息</b></a>
             </h4>
         </div>
 
@@ -124,7 +124,7 @@ weight: 2
                     <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-server-env" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -158,7 +158,7 @@ weight: 2
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration Services 在其中可用的上下文根。</td>
+                                            <td>{{ site.data.keys.mf_server }} AdministrationServices 在其中可用的上下文根。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
@@ -287,7 +287,7 @@ weight: 2
      * 名称可以为 4 到 30 个字符。 如果计划从命令行管理容器，那么您可能倾向于使用能够快速输入的简短名称空间。
      * 必须在 Bluemix 注册表中唯一。
 
-    要设置名称空间，请运行命令：`cf ic namespace set <new_name>`。  
+    要设置名称空间，请运行命令：`cf ic namespace set <new_name>`.  
     要获取已设置的名称空间，请运行命令：`cf ic namespace get`。
 
 > 要了解有关 IC 命令的更多信息，请使用 `ic help` 命令。
@@ -308,7 +308,7 @@ weight: 2
 
 >**注：**可以从本地{{ site.data.keys.mf_app_center }} 安装文件夹（`installer` 和 `tools` 文件夹）下载安装程序和 DB 工具。
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
             <h4 class="panel-title">
@@ -316,7 +316,7 @@ weight: 2
             </h4>
         </div>
 
-        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。 在以下文件中填充自变量值。<br/>
               <h4>initenv.properties</h4>
@@ -368,7 +368,7 @@ weight: 2
             </h4>
         </div>
 
-        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
                 <ol>
@@ -378,7 +378,7 @@ weight: 2
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-initenv">
                                     <h4 class="panel-title">
@@ -434,7 +434,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenterdbs" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
                                     <h4 class="panel-title">
@@ -487,7 +487,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
                                     <h4 class="panel-title">
@@ -527,7 +527,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
                                     <h4 class="panel-title">
@@ -612,7 +612,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcentergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
                                     <h4 class="panel-title">
@@ -708,15 +708,15 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 {: #mobilefirst-analytics }
 如果您要对 {{ site.data.keys.mf_server }} 使用分析，请从此处开始。
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts-analytics" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step1">
+        <div class="panel-heading" role="tab" id="step1-analytics">
             <h4 class="panel-title">
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">使用配置文件</a>
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。 在以下文件中填充自变量值。<br/>
             <b>注：</b>我们仅包含必需的自变量。 要了解有关其他自变量的信息，请参阅属性文件内的文档。
@@ -758,7 +758,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
                 <ol>
@@ -768,7 +768,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
@@ -826,7 +826,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         要查看 Bluemix 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
                         此列表包含映像名称、创建日期和标识。
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
@@ -867,7 +867,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
@@ -966,7 +966,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
@@ -1063,7 +1063,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -1071,7 +1071,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。 在以下文件中填充自变量值：<br/>
 
@@ -1126,7 +1126,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
 
@@ -1137,7 +1137,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-initenv" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
@@ -1191,7 +1191,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserverdbs" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
@@ -1258,7 +1258,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
@@ -1297,7 +1297,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-startserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
@@ -1382,7 +1382,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-startservergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
@@ -1410,7 +1410,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>路径的主机名。</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>路径的域名。</td>
                                             </tr>
                                             <tr>
@@ -1503,7 +1503,8 @@ IBM Containers 上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM 
 ### 应用 iFix 的步骤：
 
 1. 下载临时修订归档并将内容解压缩到现有安装文件夹，覆盖现有文件。
-2. 将备份配置文件复原到 **package_root/mfpf-analytics/usr**、**package_root/mfpf-server/usr** 和 **package_root/mfp-appcenter/usr** 文件夹，覆盖新安装的配置文件。
+2. 将备份配置文件复原到
+**package_root/mfpf-analytics/usr**、**package_root/mfpf-server/usr** 和 **package_root/mfp-appcenter/usr** 文件夹，覆盖新安装的配置文件。
 3. 在编辑器中编辑 **package_root/mfpf-server/usr/env/jvm.options** 文件并除去以下行（如果存在）：
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
@@ -1514,7 +1515,7 @@ IBM Containers 上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM 
 
     b. 运行 `startserver.sh` 脚本以将服务器映像作为独立容器运行，或运行 `startservergroup.sh` 以将服务器映像作为容器组运行。
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## 从 Bluemix 中除去容器
 {: #removing-a-container-from-bluemix }

@@ -93,7 +93,7 @@ IBM {{ site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 �
 4. **기본 알림 메시지** 필드에 사용자가 애플리케이션에 액세스하려고 할 때 표시할 사용자 정의 알림 메시지를 추가하십시오. 다음 샘플 메시지는 사용자에게 최신 버전으로 업그레이드하도록 지시합니다. 
 
    ```bash
-   This version is no longer supported. Please upgrade to the latest version.
+이 버전은 더 이상 지원되지 않습니다. Please upgrade to the latest version.
    ```
 
 5. **지원되는 로케일** 섹션에서 선택적으로 다른 언어로 된 알림 메시지를 제공할 수 있습니다. 
@@ -112,7 +112,7 @@ IBM {{ site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 �
 3. 사용자 정의 시작 메시지를 추가하십시오. 다음 샘플 메시지는 사용자에게 계획된 애플리케이션 유지보수 작업에 대한 정보를 제공합니다. 
 
    ```bash
-   The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
+   계획된 유지보수 작업으로 인해 토요일 오전 4시부터 오후 6시까지 서버를 사용할 수 없습니다.
    ```
 
 4. 지원되는 로케일 섹션에서 선택적으로 다른 언어로 된 알림 메시지를 제공할 수 있습니다. 
@@ -156,13 +156,13 @@ IBM {{ site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 �
 토큰 라이센싱을 사용하고 애플리케이션에 사용할 충분한 라이센스 토큰이 더 이상 없는 경우에는 모든 애플리케이션 버전의 애플리케이션 상태가 **Blocked**로 변경됩니다. 애플리케이션 버전의 상태를 더 이상 변경할 수 없습니다. {{ site.data.keys.mf_console }}에 다음 메시지가 표시됩니다. 
 
 ```bash
-The application got blocked because its license expired
+애플리케이션의 라이센스가 만료되어 해당 애플리케이션이 차단됨
 ```
 
 나중에 애플리케이션을 실행하는 데 충분한 토큰이 사용 가능해지거나 조직에서 추가 토큰을 구입하는 경우 다음 메시지가 {{ site.data.keys.mf_console }}에 표시됩니다. 
 
 ```bash
-The application got blocked because its license expired but a license is available now
+애플리케이션의 라이센스가 만료되어 해당 애플리케이션이 차단되었으나 현재 하나의 라이센스가 사용 가능합니다.
 ```
 
 표시 상태는 여전히 **Blocked**입니다. 상태 필드를 편집하여 메모리 또는 사용자 고유 레코드에서 수동으로 올바른 현재 상태를 복원해야 합니다. {{ site.data.keys.product }}은 충분하지 않은 라이센스 토큰으로 인해 차단된 애플리케이션의 {{ site.data.keys.mf_console }}에서 **Blocked** 상태의 표시를 관리하지 않습니다. 사용자가 {{ site.data.keys.mf_console }}을 통해 표시할 수 있는 실제 상태로 차단된 애플리케이션을 복원해야 합니다. 
@@ -187,14 +187,14 @@ The application got blocked because its license expired but a license is availab
 
 감사 로그에 액세스하려면 헤더 표시줄에서 사용자 이름을 클릭하고 **정보**를 선택한 다음 **추가 지원 정보**를 클릭한 후 **감사 로그 다운로드**를 클릭하십시오. 
 
-| 필드 이름  | 설명        |
+| 필드 이름 | 설명       |
 |------------|-------------|
-| Timestamp	 | 레코드가 작성된 날짜 및 시간입니다. |
-| Type	     | 조작의 유형입니다. 가능한 값은 아래의 조작 유형 목록을 참조하십시오. |
-| User	     | 로그인한 사용자의 **사용자 이름**입니다. |
-| Outcome	 | 조작의 결과입니다. 가능한 값은 SUCCESS, ERROR, PENDING입니다. |
-| ErrorCode	 | 결과가 ERROR인 경우 ErrorCode는 오류 내용을 표시합니다. |
-| Runtime	 | 조작과 연관된 {{ site.data.keys.product_adj }} 프로젝트의 이름입니다. |
+| 시간소인	 | 레코드가 작성된 날짜 및 시간입니다.|
+| 유형	     | 조작의 유형입니다. 가능한 값은 아래의 조작 유형 목록을 참조하십시오.|
+| 사용자    | 로그인한 사용자의 **사용자 이름**입니다.|
+| 결과    	 | 조작의 결과입니다. 가능한 값은 SUCCESS, ERROR, PENDING입니다.|
+| 오류 코드 | 결과가 ERROR인 경우 ErrorCode는 오류 내용을 표시합니다.|
+| 런타임  	 | 조작과 연관된 {{ site.data.keys.product_adj }} 프로젝트의 이름입니다.|
 
 다음 목록은 조작 유형의 가능한 값을 표시합니다. 
 

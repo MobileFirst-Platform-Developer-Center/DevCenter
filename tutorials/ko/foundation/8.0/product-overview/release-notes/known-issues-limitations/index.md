@@ -245,7 +245,7 @@ cordova-plugin-statusbar는 cordova-plugin-mfp와 함께 로드된 Cordova 애�
 
 ```objc
 (void)wlInitDidCompleteSuccessfully
-{ 
+{
 UIViewController* rootViewController = self.window.rootViewController; 
 // Create a Cordova View Controller 
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ; 

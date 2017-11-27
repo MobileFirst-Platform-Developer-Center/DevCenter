@@ -179,7 +179,7 @@ die Berechtigungsnachweise mit dem gespeicherten Attribut **pinCode** verglichen
 
 protected boolean validateCredentials(Map<String, Object> credentials) {
     PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-    if(credentials!=null && credentials.containsKey("pin")){
+    if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals(attributes.get("pinCode"))){
@@ -334,6 +334,8 @@ public String getTransactions(){
 > Weitere Informationen zu
 `securityContext` finden Sie im Abschnitt [Sicherheits-API](../../adapters/java-adapters/#security-api) des Lernprogramms
 für Java-Adapter.
+
+
 
 Fügen Sie den registrierten Benutzer zum Antwortobjekt hinzu. Fügen Sie dafür folgenden Code hinzu: 
 

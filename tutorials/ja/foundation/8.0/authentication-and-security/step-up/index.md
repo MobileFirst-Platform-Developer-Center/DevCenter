@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: ステップアップ認証
-breadcrumb_title: ステップアップ認証
+title: 認証のセットアップ
+breadcrumb_title: 認証のセットアップ
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
@@ -53,6 +53,8 @@ private transient StepUpUserLogin userLogin;
 ```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** 両方のセキュリティー検査の実装が、同じアダプター内にバンドルされている必要があります。
+
+
 
 この参照を解決するために、フレームワークは該当クラスのセキュリティー検査を検索し、その参照を従属セキュリティー検査に注入します。  
 同じクラスのセキュリティー検査が複数存在する場合、アノテーションにはオプションの `name` パラメーターが付きます。このパラメーターを使用して、参照する検査の固有の名前を指定できます。
@@ -130,11 +132,11 @@ public AuthenticatedUser getUser(){
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    //Get the correct PIN code from the database
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        //Get the correct PIN code from the database
     User user = userManager.getUser(userLogin.getUser().getId());
 
-    if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
+    if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
         if(pinCode.equals(user.getPinCode())){

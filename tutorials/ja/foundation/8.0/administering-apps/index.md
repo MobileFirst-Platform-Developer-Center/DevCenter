@@ -38,6 +38,8 @@ show_children: true
 
 > {{ site.data.keys.product_adj }} 管理ロールについて詳しくは、[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
+
+
 ## 管理ツール
 {: #administration-tools }
 {{ site.data.keys.mf_console }} が、{{ site.data.keys.product_adj }} アプリケーションを管理する唯一の手段であるというわけではありません。{{ site.data.keys.product }} も、管理操作をビルド・プロセスやデプロイメント・プロセスに取り込むための他のツールを用意しています。

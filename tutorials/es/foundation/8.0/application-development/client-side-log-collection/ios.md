@@ -1,18 +1,19 @@
 ---
 layout: tutorial
-title: Logging in iOS Applications
-breadcrumb_title: Logging in iOS
+title: Registro en aplicaciones iOS
+breadcrumb_title: Registro en iOS
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-This tutorial provides the required code snippets in order to add logging capabilities in iOS applications.
+Esta guía de aprendizaje proporciona fragmentos de código con el propósito de añadir funcionalidades de creación de registro en aplicaciones iOS.
 
-**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
+**Requisito previo:** Asegúrese de leer la [visión general de recopilación de registro del lado del cliente](../).
 
-> **Note:** Using `OCLogger` in Swift requires creating an `OCLogger` extension class (this class can be a separate Swift file, or an extension to your current Swift file):
+> **Nota:** La utilización de `OCLogger` en Swift precisa la creación de una clase de extensión `OCLogger` (esta clase puede ser un archivo Swift distinto, o una extensión de su archivo Swift actual):
+
 
 ```swift
 extension OCLogger {
@@ -78,15 +79,20 @@ extension OCLogger {
 }
 ```
 
-After including the extension class you may now use `OCLogger` in Swift.
+Después de incluir la clase de extensión podrá entonces utilizar `OCLogger` en Swift.
 
-## Enabling log capture
+
+## Habilitación de la captura de registro
 {: #enabling-log-capture }
-By default, log capture is enabled. Log capture saves logs to the client, and can be enabled or disabled programmatically. Logs are sent to the server with an explicit send call, or with auto log.
+De forma predeterminada, la captura de registro está habilitada.
+La captura de registro, que es posible habilitar e inhabilitar mediante programación, guarda registros en el cliente.
+Los registros se envían al servidor con una llamada de envío explícita, o mediante un registro automático.
 
-> **Note:** Enabling log capture at verbose levels can impact the consumption of the device CPU, file system space, and the size of the payload when the client sends logs over the network.
 
-To disable log capturing:
+> **Nota:** La habilitación de la captura del registro en niveles de detalle elevados puede afectar al consumo de la CPU del dispositivo, el espacio del sistema de archivos y el tamaño de la carga útil cuando el cliente envía registros a través de la red.
+
+
+Para inhabilitar la captura de registro:
 
 **Objective-C**
 
@@ -100,11 +106,16 @@ To disable log capturing:
 OCLogger.setCapture(false);
 ```
 
-## Sending captured logs
+## Envío de registros capturados
 {: #sending-captured-logs }
-Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+Envíe los registros a {{ site.data.keys.product_adj }} de acuerdo a la lógica de su aplicación.
+También es posible habilitar el registro automático para enviar registros.
+Si los registros no se envían antes de que alcancen el tamaño máximo, el archivo de registro se depura en favor de registros más recientes.
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data periodically ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
+
+> **Nota:** Adopte el siguiente patrón al recopilar datos de registro.
+El envío de datos de forma periódica garantiza que está viendo sus datos de registro en tiempo casi real en {{ site.data.keys.mf_analytics_console }}.
+
 
 **Objective-C**
 
@@ -126,11 +137,14 @@ var timer = NSTimer.scheduledTimerWithTimeInterval(60,
   repeats: true)
 ```
 
-To ensure that all captured logs are sent, consider one of the following strategies:
+Para asegurarse de que todos los registros capturados se envían, considere un de las siguientes estrategias:
 
-* Call the `send` method at a time interval.
-* Call the `send` method from within the app lifecycle event callbacks.
-* Increase the max file size of the persistent log buffer (in bytes):
+
+* Llamar al método `send` en un intervalo de tiempo. 
+* Llamar al método `send` desde las llamadas de retorno de suceso del ciclo de vida de la aplicación.
+
+* Incremente el tamaño máximo de archivo del almacenamiento intermedio de registro persistente (en bytes):
+
 
 **Objective-C**
 
@@ -145,19 +159,23 @@ To ensure that all captured logs are sent, consider one of the following strateg
 OCLogger.setMaxFileSize(150000);
 ```
 
-## Auto log sending
+## Envío de registro automático
 {: #auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client. By default auto log send is enabled.
+De forma predeterminada, el envío de registro automático está habilitado.
+Cada vez que se envía una solicitud de recurso satisfactoria al servidor, también se envían los registros capturados, con un intervalo mínimo de 60 segundos entre envíos.
+El envío de registro automático se puede habilitar o inhabilitar desde el cliente.
+De forma predeterminada, el envío de registro automático está habilitado.
+
 
 **Objective-C**
 
-To enable:
+Para habilitar:
 
 ```objc
 [OCLogger setAutoSendLogs:YES];
 ```
 
-To disable:
+Para inhabilitar:
 
 ```objc
 [OCLogger setAutoSendLogs:NO];
@@ -165,59 +183,71 @@ To disable:
 
 **Swift**
 
-To enable:
+Para habilitar:
 
 ```swift
 OCLogger.setAutoSendLogs(true);
 ```
 
-To disable:
+Para inhabilitar:
 
 ```swift
 OCLogger.setAutoSendLogs(false);
 ```
 
-## Fine-tuning with the Logger API
+## Ajuste fino con la API Logger
 {: #fine-tuning-with-the-logger-api }
-The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+El SDK de cliente de {{ site.data.keys.product_adj }} utiliza internamente la API Logger.
+De forma predeterminada, se capturan las entradas de registro que el SDK realiza.
+Para un ajuste fino en la recopilación del registro, utilice instancias de Logger con nombres de paquete.
+También puede controlar qué nivel de registro se captura mediante las analíticas utilizando filtros desde el lado del servidor.
+
 
 ### Objective-C
 {: #objective-c}
-As an example of capturing logs only where the level is `ERROR` for the `myApp` package name, follow these steps.
+A modo de ejemplo de captura de registros únicamente cuando el nivel es `ERROR` para el nombre de paquete `myApp`, siga estos pasos.
 
-1. Use a `logger` instance with the `myApp` package name.
+
+1. Utilice una instancia de `Logger` con el nombre de paquete `myApp`.
+
 
    ```objc
    OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];
    ```
 
-2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
+2. **Opcional:** Especifique un filtro para restringir la captura de registro y la salida de registro a únicamente el nivel y paquete especificados mediante programación.
+
 
    ```objc
    [OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **Opcional:** Controle los filtros de manera remota recuperando un perfil de configuración de servidor.
 
 ### Swift
 {: #swift }
-1. Using the extension as explained in the Overview, create a logger instance for  your package.
+1. Utilizando la extensión explicada en la Visión general, cree una instancia del registrador para su paquete.
+
 
    ```swift
    let logger : OCLogger = OCLogger.getInstanceWithPackage("MyTestLoggerPackage");
    ```
 
-2. **Optional:** Specify a logging level.
+2. **Opcional:** Especifique un nivel de registro.
 
    ```swift
    OCLogger.setLevel(OCLogger_DEBUG);
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **Opcional:** Controle los filtros de manera remota recuperando un perfil de configuración de servidor.
 
-## Fetching server configuration profiles
+## Recuperación de perfiles de configuración del servidor
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client, or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/). For the client to fetch the configuration from the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+Los niveles de registro cronológico se puede establecer por el cliente, o recuperando perfiles de configuración del servidor.
+Desde {{ site.data.keys.mf_analytics_console }}, se puede establecer de forma global un nivel de registro (todas las instancias de Logger) o para un paquete o paquetes específicos.
+Para obtener información sobre cómo configurar el filtro desde {{ site.data.keys.mf_analytics_console }}, consulte [Configuración de filtros de registro](../../../analytics/console/log-filters/).
+Para que el cliente recupere la configuración del servidor, se debe llamar al método `updateConfigFromServer` desde un lugar en el código que se ejecute de forma regular como, por ejemplo en las llamadas de retorno del ciclo de vida de la aplicación.
+
 
 **Objective-C**
 
@@ -231,9 +261,10 @@ Logging levels can be set by the client, or by retrieving configuration profiles
  OCLogger.updateConfigFromServer();
  ```
 
-## Logging example
+## Ejemplo de creación de registro
 {: #logging-example }
-Outputs to a browser JavaScript console, LogCat, or Xcode console.
+La salida se dirige a la consola JavaScript del navegador, LogCat o la consola Xcode.
+
 
 #### Objective-C
 {: #objective-c-example }

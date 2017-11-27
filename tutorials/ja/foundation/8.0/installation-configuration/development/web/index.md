@@ -32,7 +32,7 @@ Web アプリケーションの開発およびテストは、任意の Web ブ�
 -   {: #web-app-supported-browsers }
     Web アプリケーションは、以下のブラウザーのバージョンでサポートされています。バージョン番号は、それぞれのブラウザーで完全にサポートされる最初のバージョンを示します。
 
-    | ブラウザー            | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android ブラウザー|
+    | ブラウザー| Chrome| Safari<sup>*</sup>   | Internet Explorer| Firefox| Android ブラウザー|
     |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
     | **サポートされるバージョン** | {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
 
@@ -67,6 +67,8 @@ Web アプリケーションのリソースを処理するには、これらが 
    生成された .war ファイルは、**[MyWebApp] →「target」**フォルダーで入手できます。
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** Web リソースを更新するたびに `mvn clean install` を実行する必要があります。
+
+
 
 ### アプリケーション・サーバーへの Maven webapp の追加
 {: #adding-the-maven-webapp-to-the-application-server }

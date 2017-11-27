@@ -87,13 +87,15 @@ require(['mfp'], function(WL) {
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** Analytics サポートを追加する場合は、**ibmmfpfanalytics.js** ファイル参照を、**ibmmfpf.js** ファイル参照の**前に**配置します。
 
+
+
 ## {{ site.data.keys.product_adj }} Web SDK の初期化
 {: #initializing-the-mobilefirst-web-sdk }
 **コンテキスト・ルート**と**アプリケーション ID** の値を、Web アプリケーションのメインの JavaScript ファイル内に指定することによって、{{ site.data.keys.product }} Web SDK を初期化します。
 
 ```javascript
 var wlInitOptions = {
-    mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
+mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
 };
 

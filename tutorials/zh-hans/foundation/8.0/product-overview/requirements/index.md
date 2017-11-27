@@ -8,7 +8,7 @@ weight: 3
 {: #overview }
 {{ site.data.keys.product_full }} 的系统需求包括操作系统、SDK 和其他软件。
 
-{{ site.data.keys.product }} 具有大量系统需求，必须满足这些需求才能成功安装和配置该产品。系统需求包括以下项：
+{{ site.data.keys.product }} 具有大量系统需求，必须满足这些需求才能成功安装和配置该产品。 系统需求包括以下项：
 
 * 支持 {{ site.data.keys.product }} 的操作系统，包括移动设备操作系统
 * 受支持的软件开发包 (SDK)

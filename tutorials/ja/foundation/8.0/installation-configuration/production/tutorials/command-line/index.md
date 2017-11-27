@@ -78,7 +78,7 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
     このチュートリアルの目的で、**liberty\_install\_dir** が非管理者または非 root ユーザーがファイルを変更できないロケーションを指している場合、サーバーを含むそのディレクトリーを、特定の特権が必要とされないロケーションに移動してください。そうすることで、特定の特権がなくてもインストールの操作を行うことができます。
     * Liberty のインストール・ディレクトリーに移動します。
     * etc という名前のディレクトリーを作成します。管理者または root の特権が必要です。
-    * **etc** ディレクトリー内に、`WLP_USER_DIR=<どのユーザーでも書き込めるディレクトリーのパス>` というコンテンツを含む **server.env** ファイルを作成します。例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
+    * **etc** ディレクトリー内に、**server.env** ファイルを作成し、ファイル内に `WLP_USER_DIR=<path to a directory where any user can write>` というコンテンツを含めます。例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
 7.  チュートリアルのこの後のパートで {{ site.data.keys.mf_server }} の最初のノードのインストールに使用する Liberty サーバーを作成します。
     * コマンド・ラインを開始します。
     * **liberty\_install\_dir/bin** に移動し、**server create mfp1** と入力します。
@@ -91,6 +91,8 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 デフォルトのホーム・ページは [http://localhost:9080](http://localhost:9080) で表示できます。
 
 > **注:** 実動用には、ホスト・コンピューターの始動時に Liberty サーバーがサービスとして始動するようにする必要があります。Liberty サーバーをサービスとして始動させる手順は、このチュートリアルには含まれていません。
+
+
 
 ## {{ site.data.keys.mf_server }} のインストール
 {: #installing-mobilefirst-server }
@@ -169,6 +171,8 @@ Installation Manager V1.8.4 以降がインストールされていることを�
     
     > **注:** このステートメントにより、デフォルトの DB2 データベースで PUBLIC に付与されたデフォルトの特権が削除されることはありません。実動では、そのデータベース内の特権を、本製品の最小要件まで減らすことが必要になる場合もあります。DB2 セキュリティーおよびセキュリティーの実施例について詳しくは、[DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/) を参照してください。
 
+
+
 ## Ant タスクを使用した {{ site.data.keys.mf_server }} の Liberty へのデプロイ
 {: #deploying-mobilefirst-server-to-liberty-with-ant-tasks }
 Ant タスクを使用して、以下の操作を実行します。
@@ -219,6 +223,8 @@ Ant タスクを含む適切な XML ファイルを選択し、プロパティ�
 * 次のコマンドを実行して {{ site.data.keys.mf_server }} をインストールします。`mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install`
 
 > **注:** DB2 が存在せず、組み込みの Derby をデータベースとして使用してインストール済み環境をテストしたい場合は、**mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml** ファイルを使用してください。ただし、Derby データベースに複数の Liberty サーバーがアクセスすることはできないため、このチュートリアルの最後のステップ ({{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成) は実行できません。DB2 関連のプロパティー (**database.db2**, ...) を除くプロパティーを設定する必要があります。Derby を使用する場合は、プロパティー **database.derby.datadir** の値を、Derby データベースを作成できるディレクトリーに設定してください。また、プロパティー **database.derby.mfp.dbname** の値を **MFPDATA** に設定します。
+
+
 
 以下の操作が、Ant タスクにより実行されます。
 
@@ -288,7 +294,7 @@ FWLSE3000E: サーバー・エラーが検出されました。
 * **mfpadmin**、管理サービス
 * **mfpadminconfig**、ライブ更新サービス
 * **mfpconsole**、{{ site.data.keys.mf_console }}
-* **mobilefirs**t、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
+* **mobilefirst**、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
 * **imfpush**、プッシュ・サービス
 
 サーバー構成ツールはすべてのアプリケーションを同じサーバーにインストールします。アプリケーションを別のアプリケーション・サーバーに分離することもできますが、[トポロジーとネットワーク・フロー](../../topologies)に記載された特定の制約を受けることになります。  
@@ -350,7 +356,7 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
 インストールが完了した後、この手順を使用して、インストールされたコンポーネントをテストすることができます。
 
 1. コマンド **server start mfp1** を使用してサーバーを始動します。サーバーのバイナリー・ファイルは **liberty\_install\_dir/bin** にあります。
-2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルで定義されているエレメント `<httpEndpoint>` でポートを確認できます。ログイン画面が表示されます。
+2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルに定義されている `<httpEndpoint>` エレメントでポートを確認できます。ログイン画面が表示されます。
 
 ![コンソールのログイン画面](mfpconsole_signin.jpg)
 
@@ -399,8 +405,8 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
 3. [Ant タスクを使用した {{ site.data.keys.mf_server }} の Liberty へのデプロイ](#deploying-mobilefirst-server-to-liberty-with-ant-tasks)で使用した Ant ファイルをコピーして、プロパティー **appserver.was85liberty.serverInstance** の値を **mfp2** に変更します。Ant タスクはデータベースが存在することを検出し、表を作成しません (以下のログ抽出を参照)。次に、アプリケーションがサーバーにデプロイされます。  
 
    ```bash
-   [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
-   [configuredatabase] データベース MFPDATA が存在します。
+[configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
+[configuredatabase] データベース MFPDATA が存在します。
    [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' での MobileFirstAdmin データベース MFPDATA への接続が成功しました。
    [configuredatabase] MobileFirstAdmin データベース MFPDATA のバージョンを取得しています...
    [configuredatabase] 表 MFPADMIN_VERSION が存在し、その値をチェックしています...
@@ -436,6 +442,7 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
     Liberty との JMX 通信は、Liberty REST コネクター経由で、HTTPS プロトコルを使用して行われます。この通信を使用可能にするには、ファームの各サーバーが他のメンバーの SSL 証明書を認識できなければなりません。トラストストア内の HTTPS 証明書を交換する必要があります。IBM ユーティリティー (**java/bin** 内の IBM JRE ディストリビューションの一部である Keytool など) を使用して、トラストストアを構成します。鍵ストアおよびトラストストアのロケーションは、**server.xml** ファイルに定義されています。デフォルトで、Liberty プロファイルの鍵ストアは **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** にあります。**server.xml** ファイルで確認できるとおり、このデフォルトの鍵ストアのパスワードは **mobilefirst** です。
         
     > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。
+
     
     * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
     * 次のコマンドを使用して、サーバー mfp1 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`
@@ -449,8 +456,8 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。�
 1. 以下の 2 つのサーバーを始動します。
 
    ```bash
-    server start mfp1
-    server start mfp2
-    ```
+   server start mfp1
+   server start mfp2
+   ```
         
 2. コンソールにアクセスします。例えば、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)、または HTTPS では [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) です。左側のサイドバーに、**「サーバー・ファームのノード」**という名前の追加メニューが表示されます。**「サーバー・ファームのノード」**をクリックすると、各ノードの状況を表示できます。両方のノードが始動するまで、しばらく待たなければならない場合があります。

@@ -92,12 +92,12 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
     Liberty を管理者モードで Installation Manager を使用してインストールした場合、非管理者ユーザーまたは非 root ユーザーがファイルの変更を行えない場所にファイルが置かれています。このチュートリアルの目的で、サーバーを含む **usr** ディレクトリーを、特定の特権が必要とされない場所に移動してください。そうすることで、特定の特権がなくてもインストールの操作を行うことができます。
     * Liberty のインストール・ディレクトリーに移動します。
     * **etc** という名前のディレクトリーを作成します。管理者または root の特権が必要です。
-    * **etc** ディレクトリー内に、`WLP_USER_DIR=<どのユーザーでも書き込めるディレクトリーのパス>` というコンテンツを含む **server.env** ファイルを作成します。
+    * **etc** ディレクトリー内に、**server.env** ファイルを作成し、ファイル内に `WLP_USER_DIR=<path to a directory where any user can write> というコンテンツを含めます。`
     
     例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
 7. チュートリアルのこの後のパートで {{ site.data.keys.mf_server }} の最初のノードのインストールに使用する Liberty サーバーを作成します。
     * コマンド・ラインを開始します。
-    * l**iberty\_install\_dir/bin** に移動し、`server create mfp1` と入力します。
+    * **liberty\_install\_dir/bin** に移動し、`server create mfp1` と入力します。
     
     このコマンドにより、mfp1 という名前の Liberty サーバー・インスタンスが作成されます。その定義は、**liberty\_install\_dir/usr/servers/mfp1** または **WLP\_USER\_DIR/servers/mfp1** (ステップ 6 の説明に従ってディレクトリーを変更した場合) にあります。
     
@@ -105,6 +105,8 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 デフォルトのホーム・ページは http://localhost:9080 で表示できます。
 
 > **注:** 実動用には、ホスト・コンピューターの始動時に Liberty サーバーがサービスとして始動するようにする必要があります。Liberty サーバーをサービスとして始動させる手順は、このチュートリアルには含まれていません。
+
+
 
 ### {{ site.data.keys.mf_server }} のインストール
 {: #installing-mobilefirst-server }
@@ -120,6 +122,7 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
         [IBM サポート・ポータル](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)からダウンロード可能な最新のフィックスパックを適用することもできます。フィックスパック用のリポジトリーを入力するようにしてください。**fixpack_directory** フォルダーにフィックスパックを解凍した場合、リポジトリー・ファイルは **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** にあります。
     
         > **注:** Installation Manager のリポジトリー内に基本バージョンのリポジトリーが存在しないと、フィックスパックをインストールすることができません。対象のフィックスパックは差分インストーラーで、インストールを行うのに基本バージョンのリポジトリーを必要とします。
+
     * ファイルを選択し、**「OK」**をクリックします。
     * **「OK」**をクリックして、「設定」パネルを閉じます。
 
@@ -183,6 +186,8 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 別のユーザー名を定義した場合は、mfpuser を独自のユーザー名に置き換えます。  
 
 > **注:** このステートメントにより、デフォルトの DB2 データベースで PUBLIC に付与されたデフォルトの特権が削除されることはありません。実動では、そのデータベース内の特権を、本製品の最小要件まで減らすことが必要になる場合もあります。DB2 セキュリティーおよびセキュリティーの実施例について詳しくは、[DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/) を参照してください。
+
+
 
 ### サーバー構成ツールの実行
 {: #running-the-server-configuration-tool }
@@ -326,7 +331,7 @@ FWLSE3000E: サーバー・エラーが検出されました。
 * **mfpadmin**、管理サービス
 * **mfpadminconfig**、ライブ更新サービス
 * **mfpconsole**、{{ site.data.keys.mf_console }}
-* **mobilefirs**t、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
+* **mobilefirst**、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
 * **imfpush**、プッシュ・サービス
 
 サーバー構成ツールはすべてのアプリケーションを同じサーバーにインストールします。アプリケーションを別のアプリケーション・サーバーに分離することもできますが、[トポロジーとネットワーク・フロー](../../topologies)に記載された特定の制約を受けることになります。  
@@ -388,7 +393,7 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
 インストールが完了した後、この手順を使用して、インストールされたコンポーネントをテストすることができます。
 
 1. コマンド **server start mfp1** を使用してサーバーを始動します。サーバーのバイナリー・ファイルは **liberty\_install\_dir/bin** にあります。
-2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルで定義されているエレメント `<httpEndpoint>` でポートを確認できます。ログイン画面が表示されます。
+2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルに定義されている `<httpEndpoint>` エレメントでポートを確認できます。ログイン画面が表示されます。
 
 ![コンソールのログイン画面](mfpconsole_signin.jpg)
 
@@ -416,18 +421,18 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     * **server.xml** ファイルを編集します。置換は、
 
     ```xml
-      <httpEndpoint id="defaultHttpEndpoint"
-        httpPort="9080"
-        httpsPort="9443" />
-      ```
+    <httpEndpoint id="defaultHttpEndpoint"
+    httpPort="9080"
+    httpsPort="9443" />
+    ```
     
     これを以下のように置き換えます。
     
     ```xml
-      <httpEndpoint id="defaultHttpEndpoint"
-        httpPort="9081"
-        httpsPort="9444" />
-      ```
+    <httpEndpoint id="defaultHttpEndpoint"
+    httpPort="9081"
+    httpsPort="9444" />
+    ```
     
     この変更により、サーバー mfp2 の HTTP ポートおよび HTTPS ポートはサーバー mfp1 のポートと競合しなくなります。{{ site.data.keys.mf_server }} のインストールを実行する前に必ずポートを変更するようにしてください。 そうでない場合、インストールが完了した後にポートを変更するのであれば、JNDI プロパティー **mfp.admin.jmx.port** にもポートの変更を反映させなければなりません。
     
@@ -438,13 +443,14 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     > **注: **  
     > 
     > * サーバー mfp1 の環境 ID を使用する場合 (このチュートリアルでは推奨されていません)、サーバー mfp2 にも同じ環境 ID を使用する必要があります。
-    > * 一部のアプリケーションのコンテキスト・ルートを変更する場合、サーバー mfp2 にも同じコンテキスト・ルートを使用してください。ファームのサーバーは、対称でなければなりません。
+    > * 一部のアプリケーションのコンテキスト・ルートを変更する場合、サーバー mfp2 にも同じコンテキスト・ルートを使用してください。
+ファームのサーバーは、対称でなければなりません。
     > * デフォルト・ユーザー (admin/admin) を作成する場合、サーバー mfp2 でも同じユーザーを作成してください。
 
     Ant タスクはデータベースが存在することを検出し、表を作成しません (以下のログ抽出を参照)。次に、アプリケーションがサーバーにデプロイされます。 
     
     ```xml
-    [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
+[configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
     [configuredatabase] データベース MFPDATA が存在します。
     [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' での MobileFirstAdmin データベース MFPDATA への接続が成功しました。
     [configuredatabase] MobileFirstAdmin データベース MFPDATA のバージョンを取得しています...
@@ -465,9 +471,9 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     * 以下のコマンドで両方のサーバーを停止します。
     
         ```bash
-          server stop mfp1
-          server stop mfp2
-          ```
+        server stop mfp1
+        server stop mfp2
+        ```
     * サーバー mfp1 の LTPA 鍵をサーバー mfp2 にコピーします。
         **liberty\_install\_dir/usr/servers** または **WLP\_USER\_DIR/servers** から、オペレーティング・システムに応じて以下のコマンドを実行してください。 
         * UNIX の場合: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
@@ -478,6 +484,7 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     Liberty との JMX 通信は、Liberty REST コネクター経由で、HTTPS プロトコルを使用して行われます。この通信を使用可能にするには、ファームの各サーバーが他のメンバーの SSL 証明書を認識できなければなりません。トラストストア内の HTTPS 証明書を交換する必要があります。IBM ユーティリティー (**java/bin** 内の IBM JRE ディストリビューションの一部である Keytool など) を使用して、トラストストアを構成します。鍵ストアおよびトラストストアのロケーションは、**server.xml** ファイルに定義されています。デフォルトで、Liberty プロファイルの鍵ストアは **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** にあります。**server.xml** ファイルで確認できるとおり、このデフォルトの鍵ストアのパスワードは **mobilefirst** です。
     
     > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。
+
     * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
     * 次のコマンドを使用して、サーバー mfp1 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`
         * **WLP\_USER\_DIR/servers/mfp2/resources/security** で、次のコマンドを使用してサーバー mfp2 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`

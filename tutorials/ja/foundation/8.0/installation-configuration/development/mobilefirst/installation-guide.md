@@ -17,16 +17,16 @@ weight: 1
 このインストーラーでは、Java がインストールされていることが必要です。
 
 1. [Oracle の JRE をインストールします](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)。
-    
+
 2. JRE を指す `JAVA_HOME` 変数を追加します。
 
     *Mac および Linux:* **~/.bash_profile** を次のように編集します。
-    
+
     ```bash
     #### ORACLE JAVA
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home"
     ```
-    
+
     *Windows:*  
     [このガイドに従ってください](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)。
 
@@ -71,13 +71,13 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 
 2. アダプターの作成、ビルド、デプロイなど、一部の CLI コマンドには Maven が必要です。インストール手順については、次のセクションを参照してください。
 
-### インストール
-{: #installation }
+### {{ site.data.keys.mf_cli }} のインストール
+{: #installation-cli }
 ターミナルを開き、以下を実行します。`npm install -g mfpdev-cli`  
 
 *Mac および Linux:* `sudo` を使用してコマンドを実行する必要がある場合があります。  
 [NPM アクセス権の修正](https://docs.npmjs.com/getting-started/fixing-npm-permissions)に関する詳細をお読みください。
-    
+
 インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`mfpdev -v` または `mfpdev help`
 
 ![コンソール](mfpdev-cli.png)
@@ -88,12 +88,12 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 
 **前提条件:**  
 アダプターおよびセキュリティー検査を作成するには、その前に Apache Maven をセットアップする必要があります。  
-    
+
 1. [Apache Maven .zip をダウンロードします](https://maven.apache.org/download.cgi)。
 2. Maven フォルダーを指す `MVN_PATH` 変数を追加します。
-    
+
     *Mac および Linux:* **~/.bash_profile** を次のように編集します。
-    
+
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
@@ -107,4 +107,3 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 {: #usage }
 Apache Maven がインストールされたら、Maven コマンド・ライン・コマンド経由で、または {{ site.data.keys.mf_cli }} を使用して、アダプターを作成できます。  
 詳しくは、[アダプターのチュートリアル]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)を参照してください。
-

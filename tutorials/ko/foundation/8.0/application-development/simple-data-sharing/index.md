@@ -98,6 +98,8 @@ WL.Client.clearSharedToken({key: myName})
 
 > Cordova API에 대한 자세한 정보는 `WL.Client` API 참조의 [getSharedToken](../../api/client-side-api/javascript/client/), [setSharedToken](../../api/client-side-api/javascript/client/) 및 [clearSharedToken](../../api/client-side-api/javascript/client/) 함수를 참조하십시오.
 
+
+
 ### Objective-C
 {: #objective-c }
 ```objc
@@ -108,6 +110,8 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 
 > Objective-C API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](../../api/client-side-api/objc/client/) 클래스를 참조하십시오.
 
+
+
 ### Java
 {: #java }
 ```java
@@ -117,6 +121,8 @@ WLSimpleSharedData.clearSharedToken(myName);
 ```
 
 > Java API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](../../api/client-side-api/java/client/) 클래스를 참조하십시오.
+
+
 
 ## 제한사항 및 고려사항
 {: #limitations-and-considerations }

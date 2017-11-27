@@ -9,7 +9,7 @@ weight: 4
 ## 概述
 {: #overview }
 
-Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS 2.0 服务，可被轻松部署到 {{ site.data.keys.mf_server }} 实例，且具有对 {{ site.data.keys.mf_server }} API 和其他第三方 API 的访问权。
+Java 适配器基于 JAX-RS 2.0 规范。 换句话说，Java 适配器是 JAX-RS 2.0 服务，可被轻松部署到 {{ site.data.keys.mf_server }} 实例，且具有对 {{ site.data.keys.mf_server }} API 和其他第三方 API 的访问权。
 
 **先决条件：**请务必先阅读[创建 Java 和 JavaScript 适配器](../creating-adapters)教程。
 
@@ -31,7 +31,7 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 ### adapter-resources 文件夹  
 {: #the-adapter-resources-folder }
 
-**adapter-resources** 文件夹包含 XML 配置文件 (**adapter.xml**)。在此配置文件中，您为此适配器配置 JAX-RS 2.0 应用程序的类名。例如：`com.sample.JavaAdapterApplication`。
+**adapter-resources** 文件夹包含 XML 配置文件 (**adapter.xml**)。 在此配置文件中，您为此适配器配置 JAX-RS 2.0 应用程序的类名。 例如：`com.sample.JavaAdapterApplication`。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -44,18 +44,18 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 	<description>JavaAdapter</description>
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
-	
+
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+
+	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
-	
-	</mfp:adapter>
+</mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -66,14 +66,12 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>：<i>必填。</i> 适配器的名称。
-该名称在 {{ site.data.keys.mf_server }} 内必须是唯一的。
-它可以包含字母数据字符和下划线，且必须以字母开头。在定义和部署适配器之后，您无法修改其名称。</li>
-					<li><b>displayName</b>：<i>可选。</i> 显示在 {{ site.data.keys.mf_console }} 中的适配器名称。如果未指定此元素，那么将使用 name 属性的值来替代。</li>
-					<li><b>description</b>：<i>可选。</i> 适配器的其他信息。显示在 {{ site.data.keys.mf_console }} 中。</li>
-					<li><b>JAXRSApplicationClass</b>：<i>对于公开 /adapter 端点是必需的。</i> 定义该适配器的 JAX-RS 应用程序的类名。在此示例中，是 <b>com.sample.JavaAdapterApplication</b>。</li>
-					<li><b>securityCheckDefinition</b>：<i>可选。</i> 定义安全性检查对象。在<a href="../../authentication-and-security/creating-a-security-check">创建安全性检查</a>教程中了解有关安全性检查的更多信息。</li>
-					<li><b>property</b>：<i>可选。</i> 声明用户定义的属性。在下面的定制属性主题中了解更多信息。</li>
+                    <li><b>name</b>：<i>必填。</i> 适配器的名称。 该名称在 {{ site.data.keys.mf_server }} 内必须是唯一的。 它可以包含字母数据字符和下划线，且必须以字母开头。 在定义和部署适配器之后，您无法修改其名称。</li>
+					<li><b>displayName</b>：<i>可选。</i> 显示在 {{ site.data.keys.mf_console }} 中的适配器名称。 如果未指定此元素，那么将使用 name 属性的值来替代。</li>
+					<li><b>description</b>：<i>可选。</i> 适配器的其他信息。 显示在 {{ site.data.keys.mf_console }} 中。</li>
+					<li><b>JAXRSApplicationClass</b>：<i>对于公开 /adapter 端点是必需的。</i> 定义该适配器的 JAX-RS 应用程序的类名。 在此示例中，是 <b>com.sample.JavaAdapterApplication</b>。</li>
+					<li><b>securityCheckDefinition</b>：<i>可选。</i> 定义安全性检查对象。 在<a href="../../authentication-and-security/creating-a-security-check">创建安全性检查</a>教程中了解有关安全性检查的更多信息。</li>
+					<li><b>property</b>：<i>可选。</i> 声明用户定义的属性。 在下面的定制属性主题中了解更多信息。</li>
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>结束部分</b></a>。
@@ -85,10 +83,11 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 #### 定制属性
 {: #custom-properties }
 
-**adapter.xml** 文件也可包含用户定义的定制属性。可在 **{{ site.data.keys.mf_console }} → [您的适配器] → 配置选项卡**中覆盖在适配器创建期间开发人员指定给这些属性的值，无需重新部署适配器。可使用 [ConfigurationAPI 界面](#configuration-api)读取用户定义的属性，然后在运行时进一步定制。
+**adapter.xml** 文件也可包含用户定义的定制属性。 可在 **{{ site.data.keys.mf_console }} → [您的适配器] → 配置选项卡**中覆盖在适配器创建期间开发人员指定给这些属性的值，无需重新部署适配器。 可使用 [ConfigurationAPI 界面](#configuration-api)读取用户定义的属性，然后在运行时进一步定制。
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注：**配置属性元素必须位于 `JAXRSApplicationClass` 元素**下**。  
 在上面的示例中，我们定义了连接设置，并赋予它们缺省值，因此稍后可以在 AdapterApplication 类中使用这些设置。
+
 `<property>` 元素采用以下属性：
 
 - **name**：属性的名称，如配置类中所定义。
@@ -103,7 +102,7 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 {: #pull-and-push-configurations }
 
 可使用**配置文件选项卡**中的适配器配置文件来共享定制的适配器属性。  
-要执行此操作，请通过 Maven 或 {{ site.data.keys.mf_cli }} 使用下面描述的 `pull` 和 `push` 命令。对于要共享的属性，您需要*更改提供给属性的缺省值*。
+要执行此操作，请通过 Maven 或 {{ site.data.keys.mf_cli }} 使用下面描述的 `pull` 和 `push` 命令。 对于要共享的属性，您需要*更改提供给属性的缺省值*。
 
 从适配器 Maven 项目的根文件夹运行命令：
 
@@ -137,7 +136,7 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 **pull** 和 **push** 命令能够帮助创建各种 DevOps 流，根据您所处环境（DEV、QA、UAT 或 PRODUCTION），适配器中需要不同的值。
 
 **Maven**  
-注意上述部分，如何在缺省情况下指定 **config.json** 文件。创建不同名称的文件以寻址不同的目标。
+注意上述部分，如何在缺省情况下指定 **config.json** 文件。 创建不同名称的文件以寻址不同的目标。
 
 **{{ site.data.keys.mf_cli }}**  
 使用 **--configFile** 或 **-c** 标记指定与缺省配置文件不同的配置文件：
@@ -151,7 +150,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ### java 文件夹
 {: #the-java-folder }
 
-JAX-RS 2.0 服务的 Java 源放置在此文件夹中。JAX-RS 2.0 服务由应用程序类（其扩展 `com.ibm.mfp.adapter.api.MFPJAXRSApplication`）和资源类组成。
+JAX-RS 2.0 服务的 Java 源放置在此文件夹中。 JAX-RS 2.0 服务由应用程序类（其扩展 `com.ibm.mfp.adapter.api.MFPJAXRSApplication`）和资源类组成。
 
 JAX-RS 2.0 应用程序和资源类定义 Java 方法及其到 URL 的映射。  
 `com.sample.JavaAdapterApplication` 是 JAX-RS 2.0 应用程序类，`com.sample.JavaAdapterResource` 是包含在应用程序中的 JAX-RS 2.0 资源。
@@ -184,12 +183,12 @@ public class JavaAdapterApplication extends MFPJAXRSApplication{
 }
 ```
 
-`MFPJAXRSApplication` 类扫描软件包中的 JAX-RS 2.0 资源并自动创建一个列表。另外，只要部署了适配器（在其开始提供服务之前）且 {{ site.data.keys.product }} 运行时启动，{{ site.data.keys.mf_server }} 将会调用其 `init` 方法。
+`MFPJAXRSApplication` 类扫描软件包中的 JAX-RS 2.0 资源并自动创建一个列表。 另外，只要部署了适配器（在其开始提供服务之前）且 {{ site.data.keys.product }} 运行时启动，{{ site.data.keys.mf_server }} 将会调用其 `init` 方法。
 
 ## 实施 JAX-RS 2.0 资源
 {: #implementing-a-jax-rs-20-resource }
 
-JAX-RS 2.0 资源是映射到根 URL 的 POJO（普通旧 Java 对象），并且具有向此根 URL 及其子 URL 提供请求的 Java 方法。任何资源都可以有一组独立的 URL。
+JAX-RS 2.0 资源是映射到根 URL 的 POJO（普通旧 Java 对象），并且具有向此根 URL 及其子 URL 提供请求的 Java 方法。 任何资源都可以有一组独立的 URL。
 
 ```java
 package com.sample.adapter;
@@ -215,19 +214,19 @@ public class JavaAdapterResource {
 }
 ```
 
-* 类定义之前的 `@Path("/")` 确定该资源的根路径。如果有多个资源类，那么应该为每个资源设置不同的路径。  
+* 类定义之前的 `@Path("/")` 确定该资源的根路径。 如果有多个资源类，那么应该为每个资源设置不同的路径。  
 
 	例如，如果使用具有 `@Path("/users")` 的 `UserResource` 来管理博客用户，那么该资源可通过 `http(s)://host:port/ProjectName/adapters/AdapterName/users/` 访问。
 
-	同一适配器可能包含用于管理博客帖子的另一个资源 `PostResource`，其包含 `@Path("/posts")`。可通过 `http(s)://host:port/ProjectName/adapters/AdapterName/posts/` URL 来进行访问。  
+	同一适配器可能包含用于管理博客帖子的另一个资源 `PostResource`，其包含 `@Path("/posts")`。 可通过 `http(s)://host:port/ProjectName/adapters/AdapterName/posts/` URL 来进行访问。  
 
 	在上述示例中，因为其只有一个资源类，所以将其设置为 `@Path("/")`，以便可通过 `http(s)://host:port/Adapters/adapters/JavaAdapter/` 访问。  
 
-* 每一个方法前面都有一个或多个 JAX-RS 2.0 注释，例如类型为“HTTP 请求”（如 `@GET`、`@PUT`、`@POST`、`@DELETE` 或 `@HEAD`）的注释。此类注释定义如何访问该方法。  
+* 每一个方法前面都有一个或多个 JAX-RS 2.0 注释，例如类型为“HTTP 请求”（如 `@GET`、`@PUT`、`@POST`、`@DELETE` 或 `@HEAD`）的注释。 此类注释定义如何访问该方法。  
 
-* 另一个示例是 `@Path("/{username}")`，用于定义访问此过程的路径（除资源级路径外）。正如您所见，此路径可包含一个可变部分。之后将该变量用作方法的参数，如定义的 `@PathParam("username") String name` 那样。  
+* 另一个示例是 `@Path("/{username}")`，用于定义访问此过程的路径（除资源级路径外）。 正如您所见，此路径可包含一个可变部分。 之后将该变量用作方法的参数，如定义的 `@PathParam("username") String name` 那样。  
 
-> 您可以使用许多其他注释。请参阅此处的 **Annotation Types Summary**：
+> 您可以使用许多其他注释。 请参阅此处的 **Annotation Types Summary**：
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**要点：**如果在适配器实现中使用对 `javax.ws.rs.*` 或 `javax.servlet.*` 中的类的静态引用，那么应确保使用以下选项之一来配置 **RuntimeDelegate**：
@@ -236,10 +235,9 @@ public class JavaAdapterResource {
 
 
 ## HTTP 会话
-
 {: #http-session }
 
-{{ site.data.keys.mf_server }} 不依赖于 HTTP 会话，且每个请求都可到达不同的节点。不应依赖于 HTTP 会话来传输请求的数据。
+{{ site.data.keys.mf_server }} 不依赖于 HTTP 会话，且每个请求都可到达不同的节点。 不应依赖于 HTTP 会话来传输请求的数据。
 
 ## 服务器端 API
 {: #server-side-apis}
@@ -255,7 +253,7 @@ Java 适配器可以使用服务器端 Java API 执行与 {{ site.data.keys.mf_s
 
 ```java
 @Context
-ConfigurationAPI configurationAPI;
+	ConfigurationAPI configurationAPI;
 ```
 
 然后，您可以使用 `configurationAPI` 实例获取属性：

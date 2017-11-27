@@ -69,6 +69,8 @@ weight: 6
 
 > **重要:** トークン・ライセンスをサポートするインストールの一部として行ったトークン・ライセンスについての選択 (アクティブ化するかどうか) を変更することはできません。後でトークン・ライセンス・オプションの変更が必要になった場合、{{ site.data.keys.product }} をアンインストールしてから再インストールする必要があります。
 
+
+
 1. IBM Installation Manager を実行して {{ site.data.keys.product }} をインストールする際に、トークン・ライセンスをアクティブにします。
 
    #### グラフィック・モードでのインストール
@@ -96,9 +98,9 @@ weight: 6
 {: #connecting-mobilefirst-server-installed-on-apache-tomcat-to-the-rational-license-key-server }
 {{ site.data.keys.mf_server }} を Rational License Key Server に接続する前に、Rational Common Licensing ネイティブ・ライブラリーおよび Java ライブラリーを Apache Tomcat アプリケーション・サーバーにインストールする必要があります。
 
-* Rational License Key Server 8.1.4.8 以降がインストールおよび構成されている必要があります。ネットワークは、両方向通信ポート (**lmrgd** および **ibmratl**) を開くことによって {{ site.data.keys.mf_server }} との通信を許可する必要があります。 詳しくは、[Rational License Key Server ポータル](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295)および [How to serve a license key to client machines through a firewall ](http://www.ibm.com/support/docview.wss?uid=swg21257370)を参照してください。
+* Rational License Key Server 8.1.4.8 以降がインストールおよび構成されている必要があります。ネットワークは、両方向通信ポート (**lmrgd** および **ibmratl**) を開くことによって {{ site.data.keys.mf_server }} との通信を許可する必要があります。詳しくは、[Rational License Key Server ポータル](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295)および [How to serve a license key to client machines through a firewall ](http://www.ibm.com/support/docview.wss?uid=swg21257370)を参照してください。
 * {{ site.data.keys.product }} 用のライセンス・キーが生成されていることを確認してください。IBM Rational License Key Center を使用したライセンス・キーの生成および管理について詳しくは、[IBM サポート - ライセンス](http://www.ibm.com/software/rational/support/licensing/)および [IBM Rational License Key Center を使用したライセンス・キーの取得](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html)を参照してください。
-* [トークン・ライセンスのためのインストールの概要](#installation-overview-for-token-licensing)で説明されているように、 Apache Tomcat 上で {{ site.data.keys.mf_server }} がインストールされ、「Rational License Key Server でトークン・ライセンスをアクティブにする (Activate token licensing with the Rational License Key Server)」オプションを指定して構成されている必要があります。
+* [トークン・ライセンスのためのインストールの概要](#installation-overview-for-token-licensing)で説明されているように、Apache Tomcat 上で {{ site.data.keys.mf_server }} がインストールされ、「Rational License Key Server でトークン・ライセンスをアクティブにする (Activate token licensing with the Rational License Key Server)」オプションを指定して構成されている必要があります。
 
 ### Rational Common Licensing ライブラリーのインストール
 {: #installing-rational-common-licensing-libraries }
@@ -122,7 +124,7 @@ weight: 6
    CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
    ```
     
-   > **注:** 管理サービスが実行されているサーバーの構成フォルダーを移動する場合、**java.library.path** を更新して新しい絶対パスにする必要があります。
+   > **注:** 管理サービスが実行されているサーバーの構成フォルダーを移動する場合、**java.library.path** を更新して新しい絶対パスにする必要があります。 
 
 5. Rational License Key Server にアクセスするために {{ site.data.keys.mf_server }} を構成します。**${CATALINA_HOME}/conf/server.xml** ファイル内で、管理サービス・アプリケーションの `Context` エレメントを探し、以下の JNDI 構成行に追加します。
 
@@ -143,7 +145,7 @@ Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の�
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-liberty-profile-to-the-rational-license-key-server }
 {{ site.data.keys.mf_server }} を Rational License Key Server に接続する前に、Rational Common Licensing ネイティブ・ライブラリーおよび Java ライブラリーを Liberty プロファイルにインストールする必要があります。
 
-* Rational License Key Server 8.1.4.8 以降がインストールおよび構成されている必要があります。ネットワークは、両方向通信ポート (**lmrgd** および **ibmratl**) を開くことによって {{ site.data.keys.mf_server }} との通信を許可する必要があります。 詳しくは、[Rational License Key Server ポータル](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295)および [How to serve a license key to client machines through a firewall ](http://www.ibm.com/support/docview.wss?uid=swg21257370)を参照してください。
+* Rational License Key Server 8.1.4.8 以降がインストールおよび構成されている必要があります。ネットワークは、両方向通信ポート (**lmrgd** および **ibmratl**) を開くことによって {{ site.data.keys.mf_server }} との通信を許可する必要があります。詳しくは、[Rational License Key Server ポータル](https://www.ibm.com/support/entry/portal/product/rational/rational_license_key_server?productContext=-283469295)および [How to serve a license key to client machines through a firewall ](http://www.ibm.com/support/docview.wss?uid=swg21257370)を参照してください。
 * {{ site.data.keys.product }} 用のライセンス・キーが生成されていることを確認してください。IBM Rational License Key Center を使用したライセンス・キーの生成および管理について詳しくは、[IBM サポート - ライセンス](http://www.ibm.com/software/rational/support/licensing/)および [IBM Rational License Key Center を使用したライセンス・キーの取得](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/t_access_license_key_center.html)を参照してください。
 * [トークン・ライセンスのためのインストールの概要](#installation-overview-for-token-licensing)で説明されているように、Apache Tomcat 上で {{ site.data.keys.mf_server }} がインストールされ、「Rational License Key Server でトークン・ライセンスをアクティブにする (Activate token licensing with the Rational License Key Server)」オプションを指定して構成されている必要があります。
 
@@ -202,7 +204,7 @@ Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の�
    -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
    ```
     
-   > **注:** 管理サービスが実行されているサーバーの構成フォルダーを移動する場合、**java.library.path** を更新して新しい絶対パスにする必要があります。
+   > **注:** 管理サービスが実行されているサーバーの構成フォルダーを移動する場合、**java.library.path** を更新して新しい絶対パスにする必要があります。 
 
    **${wlp.user.dir}** ディレクトリーは通常は **liberty_install_dir/usr** 内にあり、servers ディレクトリーを含みます。ただし、ロケーションはカスタマイズすることができます。詳しくは、[Liberty プロファイル環境のカスタマイズ](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)を参照してください。
     
@@ -254,6 +256,7 @@ Liberty プロファイル・サーバー・ファームで {{ site.data.keys.mf
         * **「OK」**をクリックし、変更を保存します。この設定は、サーバーが再始動されると有効になります。
     
         > **注:** このライブラリーのネイティブ・ライブラリー・パスは、ステップ 3 で、サーバーの Java 仮想マシンの **ld.library.path** プロパティーに設定されます。
+
     * 共有ライブラリーを、{{ site.data.keys.mf_server }} 管理サービスを実行するすべてのサーバーと関連付けます。
     
         共有ライブラリーをサーバーに関連付けることによって、共有ライブラリーが複数のアプリケーションで使用できるようになります。{{ site.data.keys.mf_server }} 管理サービス用にのみ Rational Common Licensing クライアントが必要な場合、隔離されたクラス・ローダーを使用して共有ライブラリーを作成し、それを管理サービス・アプリケーションと関連付けることができます。
@@ -298,6 +301,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > **重要:** WebSphere Application Server Network Deployment と共にクラスターを使用する場合、クラスターは変化する可能性があります。管理サービスが実行されるサーバーがクラスターに新しく追加されたら、そのサーバーを構成する必要があります。
 
+
+
 ## トークン・ライセンス用にサポートされるプラットフォームの制限
 {: #limitations-of-supported-platforms-for-token-licensing }
 トークン・ライセンスが有効にされている {{ site.data.keys.mf_server }} をサポートするオペレーティング・システム、そのバージョン、およびハードウェア・アーキテクチャーのリストを示します。
@@ -308,11 +313,12 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 以下の表に、トークン・ライセンスが使用される {{ site.data.keys.mf_server }} をサポートするプラットフォームを示します。
 
-| オペレーティング・システム             | オペレーティング・システムのバージョン |	ハードウェア・アーキテクチャー |
+| オペレーティング・システム| オペレーティング・システムのバージョン|	ハードウェア・アーキテクチャー|
 |------------------------------|--------------------------|-----------------------|
-| AIX                          | 7.1                      |	POWER8 (64 ビットのみ) |
-| SUSE Linux Enterprise Server | 11	                      | x86-64 のみ           |
-| Windows Server               | 2012	                  | x86-64 のみ           |
+| AIX
+| 7.1|	POWER8 (64 ビットのみ)|
+| SUSE Linux Enterprise Server| 11	                      | x86-64 のみ|
+| Windows Server| 2012	                  | x86-64 のみ|
 
 トークン・ライセンスは 32 ビット Java ランタイム環境 (JRE) をサポートしません。アプリケーション・サーバーが 64 ビット JRE を使用していることを確認してください。
 
@@ -333,6 +339,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > **重要:** トークン・ライセンスが WebSphere Application Server Network Deployment またはクラスターにインストールされている場合は、各サーバーのログを確認する必要があります。
 
+
+
 以下は、トークン・ライセンスのインストールおよび構成後に発生する可能性のある例外のリストです。
 
 * [Rational Common Licensing のネイティブ・ライブラリーが見つからない](#rational-common-licensing-native-library-is-not-found)
@@ -347,6 +355,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #rational-common-licensing-native-library-is-not-found }
 
 > FWLSE3125E: Rational Common Licensing ネイティブ・ライブラリーが見つかりません。JVM プロパティー (java.library.path) が正しいパスで定義され、ネイティブ・ライブラリーが実行可能であることを確認してください。修正アクションを実行した後、{{ site.data.keys.mf_server }} を再始動してください。
+
+
 
 #### WebSphere Application Server フル・プロファイルの場合
 {: #for-websphere-application-server-full-profile }
@@ -378,6 +388,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > FWLSE3126E: Rational Common Licensing 共有ライブラリーが見つかりません。共有ライブラリーが構成されていることを確認してください。修正アクションを実行した後、{{ site.data.keys.mf_server }} を再始動してください。
 
+
+
 このエラーの考えられる原因は次のとおりです。
 
 * **rcl_ibmratl.jar** ファイルが、予期されたディレクトリーにない。
@@ -394,6 +406,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > FWLSE3127E: Rational License Key Server 接続が構成されていません。管理 JNDI プロパティー「mfp.admin.license.key.server.host」および「mfp.admin.license.key.server.port」が設定されていることを確認してください。修正アクションを実行した後、{{ site.data.keys.mf_server }} を再始動してください。
 
+
+
 このエラーの考えられる原因は次のとおりです。
 
 * Rational Common Licensing のネイティブ・ライブラリーと、**rcl_ibmratl.jar** ファイルを使用する共有ライブラリーは正しく構成されているが、JNDI プロパティー (**mfp.admin.license.key.server.host** および **mfp.admin.license.key.server.port**) の値が {{ site.data.keys.mf_server }} 管理サービス・アプリケーションに設定されていない。
@@ -404,6 +418,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #the-rational-license-key-server-is-not-accessible }
 
 > FWLSE3128E: Rational License Key Server "{port}@{IP address or hostname}" にアクセスできません。ライセンス・サーバーが稼働していて、{{ site.data.keys.mf_server }} にアクセス可能であることを確認してください。 このエラーがランタイム始動時に発生する場合は、修正アクションの後、{{ site.data.keys.mf_server }}  を再始動してください。
+
+
 
 このエラーの考えられる原因は次のとおりです。
 
@@ -420,10 +436,12 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 > Failed to initialize Rational Common Licensing (RCL) API because its native library could not be found or loaded com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Not found in java.library.path)
 
+
+
 このエラーの考えられる原因は次のとおりです。
 
 * 　Rational Common Licensing のネイティブ・ライブラリーが、**java.library.path** プロパティーに定義されたパスで見つからない。定義されたパスに、ネイティブ・ライブラリーが、予期された名前で存在していることを確認してください。
-* アプリケーション・サーバーの **java.library.path** プロパティーが設定されていない。Define a property with name **java.library.path** and set the path to the Rational Common Licensing native library as the value. 例えば、**/opt/IBM/RCL_Native_Library/** などです。
+* アプリケーション・サーバーの **java.library.path** プロパティーが設定されていない。**java.library.path** という名前のプロパティーを定義し、Rational Common Licensing のネイティブ・ライブラリーへのパスを値として設定します。例えば、**/opt/IBM/RCL_Native_Library/** などです。
 * アプリケーション・サーバーの Java ランタイム環境とネイティブ・ライブラリーの間で 32 ビットのオブジェクトと 64 ビットのオブジェクトが混用されている。例えば、32 ビットの Java ランタイム環境が 64 ビットのネイティブ・ライブラリーと共に使用されています。この混用はサポートされていません。
 
 ### 不十分なトークン・ライセンス
@@ -437,6 +455,8 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 {: #invalid-rcl_ibmratljar-file }
 
 > UTLS0002E: 共有ライブラリー RCL 共有ライブラリーに、有効な JAR ファイルに解決されないクラスパス項目が含まれています。このライブラリー JAR ファイルがあると思われる場所は {0}/rcl_ibmratl.jar です。
+
+
 
 **注:** WebSphere Application Server および WebSphere Application Server Network Deployment の場合のみ
 

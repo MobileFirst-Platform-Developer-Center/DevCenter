@@ -18,6 +18,8 @@ relevantTo: [ios,android,windows,javascript]
 
 > Cordova 및 고유 애플리케이션의 SDK 통합과 관련된 자세한 정보는 [{{ site.data.keys.product }} SDK 추가](../../application-development/sdk/) 카테고리의 학습서를 참조하십시오.
 
+
+
 #### 다음으로 이동
 {: #jump-to }
 * [전제조건](#prerequisites)
@@ -34,17 +36,17 @@ relevantTo: [ios,android,windows,javascript]
 {: #prerequisites }
 {{ site.data.keys.mf_cli }}는 [NPM 레지스트리](https://www.npmjs.com/)에서 NPM 패키지로 사용 가능합니다.   
 
-NPM 패키지를 설치하려면 개발 환경에 **node.js**가 설치되어 있는지 확인하십시오.   
+NPM 패키지를 설치하려면 개발 환경에 **node.js** 및 **npm**이 설치되어 있는지 확인하십시오.  
 [nodejs.org](https://nodejs.org)의 설치 지시사항에 따라 node.js를 설치하십시오. 
 
 node.js가 올바르게 설치되었는지 확인하려면 `node -v` 명령을 실행하십시오. 
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **참고:** 지원되는 최소 node.js 버전은 4.2.3입니다. 
+> **참고:** 지원되는 최소 **node.js** 버전은 **4.2.3**입니다. 또한 **node**와 **npm** 패키지가 빠르게 전개되므로 MobileFirst CLI가 최신 버전을 포함하여 사용 가능한 모든 버전의 **node** 및 **npm**에서 완벽하게 작동하지 않을 수도 있습니다. CLI가 제대로 작동하려면 **node**의 버전이 **6.11.1**이고 **npm**의 버전이 **3.10.10**인지 확인하십시오.
 
 ## {{ site.data.keys.mf_cli }} 설치
 {: #installing-the-mobilefirst-cli }
@@ -89,35 +91,35 @@ DESCRIPTION
 ## CLI 명령 목록
 {: #list-of-cli-commands }
 
-| 명령 접두부                                                | 명령 조치                               | 설명                                                             |
+| 명령 접두부| 명령 조치| 설명|
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
-| `mfpdev app`	                                                | register                                     | {{ site.data.keys.mf_server }}에 앱을 등록합니다.                           |
-|                                                               | config                                       | 앱에 사용할 백엔드 서버 및 런타임을 지정할 수 있습니다. 또한 Cordova 앱의 경우 여러 가지 추가 측면(예: 시스템 메시지의 기본 언어 및 체크섬 보안 검사 수행 여부)을 구성할 수 있습니다. 그 외 Cordova 앱에 대한 다른 구성 매개변수가 포함되어 있습니다.                                                                                                                                                |
-|                                                               | pull                                         | 서버에서 기존 앱 구성을 검색합니다.                |
-|                                                               | push                                         | 앱 구성을 서버로 전송합니다.                             |
-|                                                               | preview                                      | 대상 플랫폼 유형의 실제 디바이스가 없어도 Cordova 앱을 미리 볼 수 있습니다. {{ site.data.keys.mf_mbs }} 또는 웹 브라우저에서 미리보기가 가능합니다.                                                                               |
-|                                                               | webupdate                                    | www 디렉토리에 있는 애플리케이션 자원을 직접 업데이트 프로세스에 사용할 수 있는 .zip 파일로 패키지합니다.                                                                                                                                     |
-| mfpdev server	                                                | info                                         | {{ site.data.keys.mf_server }}에 대한 정보를 표시합니다.                      |
-|                                                               | add                                          | 환경에 새 서버 정의를 추가합니다.                        |
-|                                                               | edit                                         | 서버 정의를 편집할 수 있습니다.                                |
-|                                                               | remove                                       | 환경에서 서버 정의를 제거합니다.                      |
-|                                                               | console                                      | {{ site.data.keys.mf_console }}을 엽니다.                               |
-|                                                               | clean                                        | 앱을 등록 취소하고 {{ site.data.keys.mf_server }}에서 어댑터를 제거합니다.      |
-| mfpdev adapter                                                | create                                       | 어댑터를 작성합니다.                                                     |
-|                                                               | build                                        | 어댑터를 빌드합니다.                                                      |
-|                                                               | build all                                    | 현재 디렉토리와 해당 서브디렉토리에서 모든 어댑터를 찾고 빌드합니다. |
-|                                                               | deploy                                       | 어댑터를 {{ site.data.keys.mf_server }}에 배치합니다.                           |
-|                                                               | deploy all                                   | 현재 디렉토리와 해당 서브디렉토리에서 모든 어댑터를 찾고 {{ site.data.keys.mf_server }}에 배치합니다. |
-|                                                               | call                                         | {{ site.data.keys.mf_server }}에서 어댑터의 프로시저를 호출합니다.                 |
-|                                                               | pull                                         | 서버에서 기존 어댑터 구성을 검색합니다.                |
-|                                                               | push                                         | 어댑터 구성을 서버에 전송합니다.                             |
-| mfpdev                                                        | config                                       | mfpdev 명령행 인터페이스의 미리보기 브라우저 유형, 미리보기 제한시간 값 및 서버 제한시간 값에 대한 구성 환경 설정을 설정합니다.                                                                                                                   |
-|                                                               | info                                         | 운영 체제, 메모리 이용, 노드 버전 및 명령행 인터페이스 버전을 포함하여 환경에 대한 정보를 표시합니다. 현재 디렉토리가 Cordova 애플리케이션인 경우 Cordova cordova info 명령으로 제공되는 정보도 표시됩니다. |
-|                                                               | -v                                           | 현재 사용 중인 {{ site.data.keys.mf_cli }} 버전 번호를 표시합니다. |
-|                                                               | -d, --debug                                  | 디버그 모드: 디버그 출력을 생성합니다.                                      |
-|                                                               | -dd, --ddebug                                | 상세 디버그 모드: 상세 디버그 출력을 생성합니다.                      |
-|                                                               | -no-color                                    | 명령 출력에 색상을 사용하지 않습니다.                              |
-| mfpdev help                                                   | name of command                              | {{ site.data.keys.mf_cli }}(mfpdev) 명령에 대한 도움말을 표시합니다. 인수를 사용하여 각 명령 유형 또는 명령에 대한 자세한 도움말 텍스트를 표시합니다. 예: "mfpdev help server add" |
+| `mfpdev app`	                                                | register                                     | {{ site.data.keys.mf_server }}에 앱을 등록합니다.|
+|                                                               | config                                       | 앱에 사용할 백엔드 서버 및 런타임을 지정할 수 있습니다. 또한 Cordova 앱의 경우 여러 가지 추가 측면(예: 시스템 메시지의 기본 언어 및 체크섬 보안 검사 수행 여부)을 구성할 수 있습니다. 그 외 Cordova 앱에 대한 다른 구성 매개변수가 포함되어 있습니다.|
+|                                                               | pull                                         | 서버에서 기존 앱 구성을 검색합니다.|
+|                                                               | push                                         | 앱 구성을 서버로 전송합니다.|
+|                                                               | preview                                      | 대상 플랫폼 유형의 실제 디바이스가 없어도 Cordova 앱을 미리 볼 수 있습니다. {{ site.data.keys.mf_mbs }} 또는 웹 브라우저에서 미리보기가 가능합니다.|
+|                                                               | webupdate                                    | www 디렉토리에 있는 애플리케이션 자원을 직접 업데이트 프로세스에 사용할 수 있는 .zip 파일로 패키지합니다.|
+| mfpdev server	                                                | info                                         | {{ site.data.keys.mf_server }}에 대한 정보를 표시합니다.|
+|                                                               | add                                          | 환경에 새 서버 정의를 추가합니다.|
+|                                                               | edit                                         | 서버 정의를 편집할 수 있습니다.|
+|                                                               | remove                                       | 환경에서 서버 정의를 제거합니다.|
+|                                                               | console                                      | {{ site.data.keys.mf_console }}을 엽니다.|
+|                                                               | clean                                        | 앱을 등록 취소하고 {{ site.data.keys.mf_server }}에서 어댑터를 제거합니다.|
+| mfpdev adapter                                                | create                                       | 어댑터를 작성합니다.|
+|                                                               | build                                        | 어댑터를 빌드합니다.|
+|                                                               | build all                                    | 현재 디렉토리와 해당 서브디렉토리에서 모든 어댑터를 찾고 빌드합니다.|
+|                                                               | deploy                                       | 어댑터를 {{ site.data.keys.mf_server }}에 배치합니다.|
+|                                                               | deploy all                                   | 현재 디렉토리와 해당 서브디렉토리에서 모든 어댑터를 찾고 {{ site.data.keys.mf_server }}에 배치합니다.|
+|                                                               | call                                         | {{ site.data.keys.mf_server }}에서 어댑터의 프로시저를 호출합니다.|
+|                                                               | pull                                         | 서버에서 기존 어댑터 구성을 검색합니다.|
+|                                                               | push                                         | 어댑터 구성을 서버에 전송합니다.|
+| mfpdev                                                        | config                                       | mfpdev 명령행 인터페이스의 미리보기 브라우저 유형, 미리보기 제한시간 값 및 서버 제한시간 값에 대한 구성 환경 설정을 설정합니다.|
+|                                                               | info                                         | 운영 체제, 메모리 이용, 노드 버전 및 명령행 인터페이스 버전을 포함하여 환경에 대한 정보를 표시합니다. 현재 디렉토리가 Cordova 애플리케이션인 경우 Cordova cordova info 명령으로 제공되는 정보도 표시됩니다.|
+|                                                               | -v                                           | 현재 사용 중인 {{ site.data.keys.mf_cli }} 버전 번호를 표시합니다.|
+|                                                               | -d, --debug                                  | 디버그 모드: 디버그 출력을 생성합니다.|
+|                                                               | -dd, --ddebug                                | 상세 디버그 모드: 상세 디버그 출력을 생성합니다.|
+|                                                               | -no-color                                    | 명령 출력에 색상을 사용하지 않습니다.|
+| mfpdev help                                                   | name of command                              | {{ site.data.keys.mf_cli }}(mfpdev) 명령에 대한 도움말을 표시합니다. 인수를 사용하여 각 명령 유형 또는 명령에 대한 자세한 도움말 텍스트를 표시합니다. 예: "mfpdev help server add"|
 
 ## 대화식 모드 및 직접 모드
 {: #interactive-and-direct-modes }
@@ -145,7 +147,7 @@ Server profile 'mydevserver' added successfully.
 mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault
 ```
 
-직접 모드에서 명령에 대한 올바른 구문을 찾으려면 `mfpdev help <명령>`을 사용하십시오. 
+직접 모드에서 명령에 대한 올바른 구문을 찾으려면 `mfpdev help <command>`를 사용하십시오. 
 
 
 ## {{ site.data.keys.mf_server }} 인스턴스 관리
@@ -292,16 +294,19 @@ mfpdev app config
 * 애플리케이션이 등록되는 서버 주소 및 런타임
 
     > **예제 유스 케이스:** 특정 주소를 사용하는 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하지만 다른 서버 주소(예: DataPower 어플라이언스)에도 애플리케이션을 연결하려는 경우 다음을 수행하십시오.
+
     >
     > 1. `mfpdev app register`를 실행하여 예상 {{ site.data.keys.mf_server }} 주소에 애플리케이션을 등록하십시오. 
     > 2. `mfpdev app config`를 실행하고 DataPower 어플라이언스의 주소와 일치하도록 **서버** 특성 값을 변경하십시오. 또한 **직접 모드**에서 다음 명령을 실행할 수도 있습니다. `mfpdev app config server http(s)://server-ip-or-host:port`
 
-* 직접 업데이트 인증 기능에 사용할 공개 키 설정 
+
+
+* 직접 업데이트 인증 기능에 사용할 공개 키 설정
 * 애플리케이션 기본 언어 설정(기본값: 영어(en))
 * 웹 자원 체크섬 테스트의 사용 여부
 * 웹 자원 체크섬 테스트 중에 무시할 파일 확장자
 
-<div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="app-config" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="app-config-options">
             <h4 class="panel-title">
@@ -312,7 +317,7 @@ mfpdev app config
         <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
             <div class="panel-body">
                 <p>웹 자원 체크섬 설정의 경우 가능한 각 대상 플랫폼(Android, iOS, Windows 8, Windows Phone 8 및 Windows 10 UWP)에는 <b>mfpdev</b> 직접 모드에서 사용할 플랫폼 특정 키가 있습니다. 이러한 키는 플랫폼 이름을 나타내는 문자열로 시작합니다. 예를 들어 <code>windows10_security_test_web_resources_checksum</code>은 Windows10 UWP에 웹 자원 체크섬 테스트를 사용할지 여부를 지정하는 true 또는 false 설정입니다. </p>
-                
+
                 <table class="table table-striped">
                     <tr>
                         <td><b>설정</b></td>
@@ -363,7 +368,7 @@ mfpdev app config
                         <td>Windows Phone 8.1 Cordova 앱의 웹 자원 체크섬 테스트 중에 무시할 파일 확장자를 지정합니다. 확장자가 여러 개인 경우 쉼표로 구분하십시오. 예: jpg,gif,pdf</td>
                     </tr>
                 </table>
- 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>닫기 섹션</b></a>
             </div>
@@ -394,7 +399,7 @@ mfpdev app config
    ```
 
  3. 다음 명령을 실행하십시오. 
- 
+
     ```bash
     cordova prepare
     ```
@@ -418,6 +423,8 @@ mfpdev app config
 모바일 디바이스에서 앱을 재설치할 필요 없이 **www** 폴더 내에 있는 Cordova 앱의 웹 자원(예: .html, .css 및 .js 파일)을 업데이트할 수 있습니다. 이는 {{ site.data.keys.product }}에서 제공하는 직접 업데이트 기능을 사용하여 수행 가능합니다. 
 
 > 직접 업데이트의 작업 방식에 대한 세부사항은 [Cordova 애플리케이션에서 직접 업데이트 사용](../direct-update)을 참조하십시오.
+
+
 
 Cordova 애플리케이션에서 업데이트할 새 웹 자원 세트를 전송하려면 다음 명령을 실행하십시오. 
 

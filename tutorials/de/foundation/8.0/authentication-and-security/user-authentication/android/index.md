@@ -27,8 +27,7 @@ die bevorrechtigte Anmeldung und Abmeldung sowie das bevorrechtigte Abrufen eine
 In diesem Beispiel erwartet `UserLogin`, dass die Schlüsselwerte (*key:values*) `username` und `password` aufgerufen werden. Optional wird auch ein boolescher Schlüssel `rememberMe` akzeptiert, der
 die Sicherheitsüberprüfung auffordert, sich diesen Benutzer für einen längeren Zeitraum zu merken, In der Beispielanwendung wird dieser boolesche Wert in Form eines Kontrollkästchens im Anmeldeformular erfasst. 
 
-Das Argument `credentials` ist ein `JSONObject`,
-das `username`, `password` und `rememberMe` enthält:
+Das Argument `credentials` ist ein `JSONObject`, das `username`, `password` und `rememberMe` enthält:
 
 ```java
 submitChallengeAnswer(credentials);

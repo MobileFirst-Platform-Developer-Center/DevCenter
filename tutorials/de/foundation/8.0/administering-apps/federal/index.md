@@ -69,7 +69,9 @@ Client eine mit FIPS 140-2 konforme Cipher-Suite.
 
 > **Hinweis:** Die Verschlüsselungsmodulinstanzen, die der Client verwendet,
 müssen nicht notwendigerweise dem Standard FIPS 140-2 entsprechen. Welche Optionen es für die Verwendung von Bibliotheken mit FIPS-140-2-Zulassung auf
-Clientgeräten gibt, erfahren Sie weiter unten. Es kann sein, dass Client und Server dieselbe Cipher-Suite
+Clientgeräten gibt, erfahren Sie weiter unten. 
+
+Es kann sein, dass Client und Server dieselbe Cipher-Suite
 (z. B. SSL_RSA_WITH_AES_128_CBC_SHA) verwenden, das clientseitige Verschlüsselungsmodul aber nicht den Zulassungsprozess nach
 FIPS 140-2 durchlaufen hat, während der Server Module verwendet, die nach FIPS
 140-2 zertifiziert sind.
@@ -225,9 +227,7 @@ onFipsReady: function() {
 Wenn Sie den Wert der Eigenschaft **enableFIPS** definiert haben, müssen Sie einen
 neuen Build der Android-Umgebung erstellen. 
 
-**Hinweis:** Sie müssen das FIPS-Cordova-Plug-in installiert haben, bevor Sie die Eigenschaft
-enableFIPS auf true setzen.
-Andernfalls wird eine Warnung protokolliert, weil der Wert von initOptions gesetzt ist, das optionale Feature
+**Hinweis:** Sie müssen das FIPS-Cordova-Plug-in installiert haben, bevor Sie die Eigenschaft enableFIPS auf true setzen. Andernfalls wird eine Warnung protokolliert, weil der Wert von initOptions gesetzt ist, das optionale Feature
 jedoch nicht gefunden wurde. Beide Features, FIPS 140-2 und
 JSONStore, sind unter dem Android-Betriebssystem optional. FIPS 140-2 wird nur für die Verschlüsselung von JSONStore-Daten
 verwendet, wenn das optionale Feature JSONStore ebenfalls aktiviert ist.

@@ -12,13 +12,11 @@ weight: 0
 {: #before-you-begin }
 * 다음 데이터베이스 중 하나와 지원되는 Java 버전이 설치되었는지 확인하십시오. 또한 사용하는 컴퓨터에서 이러한 데이터베이스에 해당하는 JDBC 드라이버도 사용 가능해야 합니다. 
     * 지원되는 데이터베이스 목록의 DBMS(Database Management System):
-        * DB2
- 
+        * DB2 
         * MySQL
         * Oracle
 
-        **중요:** 제품에 필요한 테이블을 작성할 수 있는 데이터베이스와 해당 데이터베이스에 테이블을 작성할 수 있는 데이터베이스 사용자가 있어야 합니다.
-
+        **중요:** 제품에 필요한 테이블을 작성할 수 있는 데이터베이스와 해당 데이터베이스에 테이블을 작성할 수 있는 데이터베이스 사용자가 있어야 합니다. 
 
         이 학습서에서 테이블을 작성하는 단계는 DB2를 대상으로 합니다. DB2 설치 프로그램은 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm)에서 {{ site.data.keys.product }} eAssembly의 패키지로서 제공됩니다.   
         
@@ -46,8 +44,7 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 이상
 
 다른 운영 체제에서도 그래픽 모드에서 Installation Manager를 사용하여 설치를 실행할 수 있지만 Server Configuration Tool을 사용할 수 없습니다. Ant 태스크를 사용하여([명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../command-line) 참조) {{ site.data.keys.mf_server }}를 Liberty 프로파일에 배치해야 합니다. 
 
-**참고:** 데이터베이스 설치 및 설정에 대해서는 이 학습서에서 다루지 않습니다. 독립형 데이터베이스를 설치하지 않고 이 학습서를 실행하려는 경우 임베디드 Derby 데이터베이스를 사용할 수 있습니다. 단, 이 데이터베이스를 사용하는 경우에는 다음과 같은 제한사항이 적용됩니다.
-
+**참고:** 데이터베이스 설치 및 설정에 대해서는 이 학습서에서 다루지 않습니다. 독립형 데이터베이스를 설치하지 않고 이 학습서를 실행하려는 경우 임베디드 Derby 데이터베이스를 사용할 수 있습니다. 단, 이 데이터베이스를 사용하는 경우에는 다음과 같은 제한사항이 적용됩니다. 
 
 * 그래픽 모드로 Installation Manager를 실행할 수 있지만, 서버를 배치하기 위해서는 이 학습서의 명령행 절로 건너뛰어 Ant 태스크를 사용하여 설치해야 합니다.
 * 서버 팜을 구성할 수 없습니다. 임베디드 Derby 데이터베이스는 복수 서버에서의 액세스를 지원하지 않습니다. 서버 팜을 구성하려면 DB2, MySQL 또는 Oracle이 필요합니다. 
@@ -92,11 +89,10 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
     * 설치에 실패하는 경우 **로그 파일 보기**를 클릭하여 문제점을 해결하십시오. 
 6. 서버가 포함된 **usr** 디렉토리를 특정 권한이 필요하지 않은 위치로 이동시키십시오. 
 
-    관리자 모드에서 Installation Manager를 사용하여 Liberty를 설치하는 경우, 파일은 비관리자 또는 비루트 사용자가 파일을 수정할 수 없는 위치에 있습니다. 이 학습서에서는 서버가 포함된 **usr** 디렉토리를 특정 권한이 필요 없는 위치로 이동시키십시오. 이 방법을 통해 특정 권한 없이 설치 조작을 수행할 수 있습니다.
-
+    관리자 모드에서 Installation Manager를 사용하여 Liberty를 설치하는 경우, 파일은 비관리자 또는 비루트 사용자가 파일을 수정할 수 없는 위치에 있습니다. 이 학습서에서는 서버가 포함된 **usr** 디렉토리를 특정 권한이 필요 없는 위치로 이동시키십시오. 이 방법을 통해 특정 권한 없이 설치 조작을 수행할 수 있습니다. 
     * Liberty의 설치 디렉토리로 이동하십시오.
     * **etc**라는 이름의 디렉토리를 작성하십시오. 관리자 또는 루트 권한이 필요합니다. 
-    * **etc** 디렉토리에 다음 컨텐츠가 포함된 **server.env** 파일을 작성하십시오. `WLP_USER_DIR=<path to a directory where any user can write>` 
+    * **etc** 디렉토리에 다음 컨텐츠가 포함된 **server.env** 파일을 작성하십시오. `WLP_USER_DIR=<path to a directory where any user can write>`
     
     예를 들어, Windows에서는 다음과 같습니다. `WLP_USER_DIR=C:\LibertyServers\usr`
 7. 이 학습서의 다음 파트에서 {{ site.data.keys.mf_server }}의 첫 번째 노드를 설치하는 데 사용될 Liberty 서버를 작성하십시오.
@@ -109,6 +105,8 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 기본 홈 페이지는 http://localhost:9080에 있습니다. 
 
 > **참고:** 프로덕션의 경우, 호스트 컴퓨터가 시작될 때 Liberty 서버가 서비스로 시작되도록 해야 합니다. Liberty 서버가 서비스로 시작되도록 설정하는 것은 이 학습서에서 다루지 않습니다.
+
+
 
 ### {{ site.data.keys.mf_server }} 설치
 {: #installing-mobilefirst-server }
@@ -124,6 +122,7 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
         [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)에서 다운로드할 수 있는 최신 수정팩을 적용할 수도 있습니다. 수정팩에 대한 저장소를 입력하십시오. **fixpack_directory** 폴더에 수정팩의 압축을 풀면 저장소 파일은 **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**에 있습니다.
     
         > **참고:** Installation Manager의 저장소에 기본 버전의 저장소가 없으면 수정팩을 설치할 수 없습니다. 수정팩은 증분식 설치 프로그램이므로 설치하려면 기본 버전의 저장소가 있어야 합니다.
+
     * 이 파일을 선택하고 **확인**을 클릭하십시오.
     * **확인**을 클릭하여 환경 설정 패널을 닫으십시오.
 
@@ -160,7 +159,7 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 
 이 학습서에서는 모든 컴포넌트에 대한 테이블이 동일한 스키마 아래에 배치됩니다. Server Configuration Tool은 동일한 스키마에 테이블을 작성합니다. 유연성 향상을 위해 Ant 태스크 또는 수동 설치를 사용할 수도 있습니다.
 
-> **참고:** 이 태스크의 단계는 DB2를 대상으로 합니다. MySQL 또는 Oracle을 사용할 계획인 경우 [데이터베이스 요구사항](../../databases/#database-requirements)을 참조하십시오.
+> **참고:** 이 태스크의 단계는 DB2를 대상으로 합니다. MySQL 또는 Oracle을 사용할 계획인 경우 [데이터베이스 요구사항](../../databases/#database-requirements)을 참조하십시오. 
 
 1. DB2 서버를 실행 중인 컴퓨터에 로그온하십시오. DB2 사용자(예: **mfpuser**)가 존재한다고 가정합니다. 
 2. 이 DB2 사용자에게 페이지 크기가 32768 이상인 데이터베이스에 액세스하고 해당 데이터베이스에 내재적 스키마 및 테이블을 작성할 수 있는 권한이 있는지 확인하십시오. 
@@ -187,6 +186,8 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 다른 사용자 이름을 정의한 경우 mfpuser를 자신의 사용자 이름으로 대체하십시오.  
 
 > **참고:** 이 명령문은 기본 DB2 데이터베이스에서 PUBLIC에 부여된 기본 권한을 제거하지는 않습니다. 프로덕션의 경우, 해당 데이터베이스 내의 권한을 제품의 최소 요구사항까지 줄여야 할 수도 있습니다. DB2 보안 및 보안 사례에 대한 자세한 정보는 [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/)를 참조하십시오.
+
+
 
 ### Server Configuration Tool 실행
 {: #running-the-server-configuration-tool }
@@ -400,6 +401,8 @@ Liberty 프로파일 jvm.options 파일이 수정됩니다. 런타임이 관리 
 
     > **참고:** HTTP로 연결하는 경우, 로그인 ID 및 비밀번호는 네트워크에서 일반 텍스트로 전송됩니다. 보안 로그인의 경우, HTTPS를 사용하여 서버에 로그인하십시오. **server.xml** 파일에 있는 `<httpEndpoint>` 요소의 httpsPort 속성에서 Liberty 서버의 HTTPS 포트를 볼 수 있습니다. 기본적으로 값은 9443입니다.
 
+
+
 4. **Hello Admin → 로그아웃**을 사용하여 콘솔에서 로그아웃하십시오. 
 5. 웹 브라우저에 URL [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)을 입력하고 인증서를 승인하십시오. 기본적으로 Liberty 서버는 웹 브라우저에 인식되지 않는 기본 인증서를 생성하므로 인증서를 승인해야 합니다. Mozilla Firefox는 이 인증을 보안 예외로서 제공합니다. 
 6. **admin/admin**으로 다시 로그인하십시오. 웹 브라우저와 {{ site.data.keys.mf_server }} 간에 로그인 및 비밀번호가 암호화됩니다. 프로덕션의 경우, HTTP 포트를 닫아야 하는 경우도 있습니다.
@@ -437,13 +440,12 @@ Liberty 프로파일 jvm.options 파일이 수정됩니다. 런타임이 관리 
     
 3. Server Configuration Tool을 실행하십시오.
     *  **Hello MobileFirst 2** 구성을 작성하십시오. 
-    * [Server Configuration Tool 실행](#running-the-server-configuration-tool)에 설명된 것과 동일한 설치 프로시저를 수행하십시오. 단, 애플리케이션 서버로서 **mfp2**를 선택하십시오. 동일한 데이터베이스 및 동일한 스키마를 사용하십시오.
-
+    * [Server Configuration Tool 실행](#running-the-server-configuration-tool)에 설명된 것과 동일한 설치 프로시저를 수행하십시오. 단, 애플리케이션 서버로서 **mfp2**를 선택하십시오. 동일한 데이터베이스 및 동일한 스키마를 사용하십시오. 
 
     > **참고:**  
     > 
-    > * mfp1 서버에 환경 ID를 사용하는 경우(이 학습서에서는 권장되지 않음) mfp2 서버에 동일한 환경 ID를 사용해야 합니다.
-    > * 일부 애플리케이션의 컨텍스트 루트를 수정하는 경우 mfp2 서버에 동일한 컨텍스트 루트를 사용하십시오. 팜의 서버는 대칭이어야 합니다.
+    > * mfp1 서버에 대해 환경 ID를 사용하는 경우(학습서에서 권장하지 않음), mfp2 서버에 대해서도 동일한 환경 ID를 사용해야 합니다. 
+    > * 일부 애플리케이션에 대해 컨텍스트 루트를 수정하는 경우, mfp2 서버에 대해서도 동일한 컨텍스트 루트를 사용하십시오. 팜의 서버는 대칭이어야 합니다. 
     > * 기본 사용자(admin/admin)를 작성하는 경우 mfp2 서버에서 동일한 사용자를 작성하십시오. 
 
     Ant 태스크는 데이터베이스가 존재함을 발견하고 테이블을 작성하지 않습니다(다음 로그 추출 참조). 그런 다음 애플리케이션이 서버에 배치됩니다.
@@ -482,7 +484,9 @@ Liberty 프로파일 jvm.options 파일이 수정됩니다. 런타임이 관리 
 
     Liberty와의 JMX 통신은 HTTPS 프로토콜을 사용하여 Liberty REST 커넥터를 통해 수행됩니다. 이 통신을 사용하려면 팜의 각 서버가 다른 멤버의 SSL 인증을 인식할 수 있어야 합니다. 해당 신뢰 저장소에서 HTTPS 인증서를 교환해야 합니다. IBM 유틸리티(예: **java/bin**에 있는 IBM JRE 배포의 일부인 Keytool)를 사용하여 신뢰 저장소를 구성하십시오. 키 저장소 및 신뢰 저장소의 위치는 **server.xml** 파일에 정의됩니다. 기본적으로 Liberty 프로파일의 키 저장소는 **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**에 있습니다. 이 기본 키 저장소의 비밀번호는 **server.xml** 파일에서 보듯이 **mobilefirst**입니다. 
     
-    > **팁:** 이 비밀번호는 Keytool 유틸리티를 사용하여 변경할 수 있지만, Liberty 서버에서 해당 키 저장소를 읽을 수 있도록 server.xml 파일에서도 비밀번호를 변경해야 합니다. 이 학습서에서는 기본 비밀번호를 사용하십시오.    * **WLP\_USER\_DIR/servers/mfp1/resources/security**에서 `keytool -list -keystore key.jks`를 입력하십시오. 이 명령은 키 저장소의 인증서를 표시합니다. **default**라는 하나의 인증서만 있습니다. 키가 표시되기 전에 키 저장소의 비밀번호(mobilefirst) 입력을 요구하는 프롬프트가 표시됩니다. 이는 Keytool 유틸리티를 사용하는 다음의 모든 명령에 해당됩니다.
+    > **팁:** 이 비밀번호는 Keytool 유틸리티를 사용하여 변경할 수 있지만, Liberty 서버에서 해당 키 저장소를 읽을 수 있도록 server.xml 파일에서도 비밀번호를 변경해야 합니다. 이 학습서에서는 기본 비밀번호를 사용하십시오
+. 
+    * **WLP\_USER\_DIR/servers/mfp1/resources/security**에서 `keytool -list -keystore key.jks`를 입력하십시오. 이 명령은 키 저장소의 인증서를 표시합니다. **default**라는 하나의 인증서만 있습니다. 키가 표시되기 전에 키 저장소의 비밀번호(mobilefirst) 입력을 요구하는 프롬프트가 표시됩니다. 이는 Keytool 유틸리티를 사용하는 다음의 모든 명령에 해당됩니다.
     * 다음 명령을 사용하여 mfp1 서버의 기본 인증서를 내보내십시오. `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
         * **WLP\_USER\_DIR/servers/mfp2/resources/security**에서 다음 명령을 사용하여 mfp2 서버의 기본 인증서를 내보내십시오. `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
     * 동일한 디렉토리에서 다음 명령을 사용하여 mfp1 서버의 인증서를 가져오십시오. `keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`. mfp1 서버의 인증서를 mfp2 서버의 키 저장소로 가져옴으로써 mfp2 서버는 mfp1 서버로의 HTTPS 연결을 신뢰할 수 있습니다. 인증서를 신뢰하는지에 대한 확인을 요구합니다. 
