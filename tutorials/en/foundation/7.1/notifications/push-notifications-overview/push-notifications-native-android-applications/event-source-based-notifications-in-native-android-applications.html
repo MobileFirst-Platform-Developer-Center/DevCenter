@@ -234,7 +234,7 @@ client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCR
 WLClient client = WLClient.getInstance();
 boolean supported = client.getPush().isPushSupported();
 {% endhighlight %}</p>
-<p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
+<p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications. The call does not connect to the server and hence it returns the local state.</p>
 <p>{% highlight java  %}
 WLClient client = WLClient.getInstance();
 boolean isSubscribed = client.getPush().isSubscribed("myAndroid");
