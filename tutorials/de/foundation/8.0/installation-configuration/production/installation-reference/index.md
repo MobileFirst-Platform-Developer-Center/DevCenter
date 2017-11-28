@@ -969,8 +969,7 @@ unterstützt:
 |-------------|------------------|-------|
 | `<server>`  | Einzelserver| 0..1 |
 
-Das Element
-<server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
+Das Element <server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
 
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
@@ -1355,10 +1354,10 @@ Diese Datei muss denselben Basisnamen wie die entsprechende WAR-Datei haben, die
 
 Die Task ändert nicht die Konfiguration des Anwendungsservers, d. h.
 die Konfiguration der Webanwendungen, die Datenquellen, die JNDI-Umgebungseinträge und die Benutzer-Rollen-Zuordnungen.
-Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task
-<installApplicationCenter> ausgeführt wird. 
+Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task <installApplicationCenter> ausgeführt wird.
 
-> **Hinweis:** In
+> **Hinweis:** In WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
+
 WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
 
 
