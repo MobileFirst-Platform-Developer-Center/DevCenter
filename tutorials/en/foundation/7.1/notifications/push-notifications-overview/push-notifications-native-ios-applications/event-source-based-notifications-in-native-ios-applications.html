@@ -201,7 +201,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>Delegates receive a response object if one is required.</p>
 <h3>Additional client-side APIs</h3>
 <p><code>[[WLPush sharedInstance]isPushSupported]</code> – Returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.<br />
-<code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias.<br />
+<code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias. The call does not connect to the server and it returns the local state. <br />
 <br clear="all" /><br />
 When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.</p>
 <p>{% highlight objc  %}
