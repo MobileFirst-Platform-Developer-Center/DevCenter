@@ -92,7 +92,7 @@ For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 
 
 ## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
+Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear** file is found in the `<mf_server_install_dir>\analytics` folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
 
 1. Create a server by running the following command in your **./wlp/bin** folder.
 
@@ -106,8 +106,8 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Add the **analytics.ear** file to the **./usr/servers/<serverName>/apps** folder of your Liberty Server.
-4. Replace the contents of the `<featureManager>` tag of the **./usr/servers/<serverName>/server.xml** file with the following content:
+3. Add the **analytics.ear** file to the `./usr/servers/<serverName>/apps` folder of your Liberty Server.
+4. Replace the contents of the `<featureManager>` tag of the `./usr/servers/<serverName>/server.xml` file with the following content:
 
    ```xml
    <featureManager>
