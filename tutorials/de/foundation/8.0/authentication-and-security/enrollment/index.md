@@ -335,6 +335,8 @@ public String getTransactions(){
 `securityContext` finden Sie im Abschnitt [Sicherheits-API](../../adapters/java-adapters/#security-api) des Lernprogramms
 für Java-Adapter.
 
+
+
 Fügen Sie den registrierten Benutzer zum Antwortobjekt hinzu. Fügen Sie dafür folgenden Code hinzu: 
 
 ```java

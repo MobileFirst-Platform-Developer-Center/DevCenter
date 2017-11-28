@@ -61,7 +61,7 @@ Der Host-Server kann ein Server des Kunden oder der IBM Bluemix-Service IBM [Mob
 #### Befehlszeile
 {: #command-line-remote }
 Führen Sie in einem **Befehlszeilenfenster** mit installierter
-{{ site.data.keys.mf_cli }} die folgenden Schritte aus:  
+{{ site.data.keys.mf_cli }} die folgenden Schritte aus: 
 
 1. Fügen Sie eine ferne Serverdefinition hinzu: 
 
@@ -78,6 +78,8 @@ Führen Sie in einem **Befehlszeilenfenster** mit installierter
 2. Führen Sie den Befehl `mfpdev server console MyRemoteServer` aus.
 
 > Weitere Informationen zu den verschiedenen CLI-Befehlen enthält das Lernprogramm [{{ site.data.keys.product_adj }}-Artefakte über die CLI verwalten](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+
+
 
 ## Navigation in der Konsole
 {: #navigating-the-console }
@@ -115,7 +117,7 @@ und die Zugriffsrechte verwalten.
 Sie können mithilfe der Benutzer-ID oder des Anzeigenamens nach Geräten suchen. Die Benutzer-ID ist die Kennung, die bei der Anmeldung verwendet wurde.   
 Ein Anzeigename
 ist ein Name, der dem Gerät
-zur Unterscheidung von anderen Geräten mit derselben Benutzer-ID zugeordnet wurde.  
+zur Unterscheidung von anderen Geräten mit derselben Benutzer-ID zugeordnet wurde. 
 
 > Weitere Informationen finden Sie in der Benutzerdokumentation im Abschnitt zur Verwaltung des Gerätezugriffs. 
 
@@ -125,7 +127,7 @@ zur Unterscheidung von anderen Geräten mit derselben Benutzer-ID zugeordnet wur
 {: #applications }
 #### Anwendungen registrieren
 {: #registering-applications }
-Hier können Sie grundlegende Anwendungswerte angeben und Startercode herunterladen.  
+Hier können Sie grundlegende Anwendungswerte angeben und Startercode herunterladen. 
 
 ![Anzeige der Anwendungsregistrierung](register-applications.png)
 
@@ -206,7 +208,7 @@ Service zugreifen sollen. Diese Situation kann beispielsweise eintreten, wenn ei
 
 > Weitere Informationen finden Sie in der Benutzerdokumentation im Abschnitt zur Lizenzüberwachung. 
 
-![Anzeige der Clientprotokolle](license-tracking.png)
+![Lizenzüberwachungsanzeige](license-tracking.png)
 
 ### Downloads
 {: #downloads }
@@ -215,4 +217,3 @@ eine Momentaufnahme
 der verschiedenen Entwicklungsartefakte der {{ site.data.keys.product }} herunterladen. 
 
 ![Verfügbare Artefakte](downloads.png)
-

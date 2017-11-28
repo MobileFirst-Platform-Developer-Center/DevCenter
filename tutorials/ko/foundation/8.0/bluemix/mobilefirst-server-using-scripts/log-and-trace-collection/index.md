@@ -15,7 +15,7 @@ IBM Containers for Bluemix에서는 컨테이너 CPU, 메모리, 네트워크에
 
 ### 로깅 대체
 {: #logging-overrides }
-수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. 로그 레벨을 변경하기 위해 수동으로 코드 대체를 추가하는 작업은 이미지를 처음 준비할 때 수행되어야 합니다. 새 로깅 구성을 **package\_root/mfpf-[analytics|server]/usr/config** 폴더 및 **package_root/mfp-appcenter/usr/config** 폴더에 별도의 구성 스니펫으로 추가해야 하며 이 폴더는 Liberty 서버의 configDropins/overrides 폴더에 복사됩니다. 
+수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. 로그 레벨을 변경하기 위해 수동으로 코드 대체를 추가하는 작업은 이미지를 처음 준비할 때 수행되어야 합니다. 새 로깅 구성을 **package\_root/mfpf-[analytics|server]/usr/config** 폴더 및 **package_root/mfp-appcenter/usr/config** 폴더에 별도의 구성 스니펫으로 추가해야 하며 이는 Liberty 서버의 configDropins/overrides 폴더에 복사됩니다. 
 
 V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**, **startappcenter.sh**, **startappcentergroup.sh**)을 실행할 때 특정 명령행 인수를 사용하여 로그 레벨을 변경하기 위해 주어진 스크립트 파일을 사용해 코드를 삽입할 수 있습니다. 다음 선택적 명령행 인수를 적용할 수 있습니다. 
 

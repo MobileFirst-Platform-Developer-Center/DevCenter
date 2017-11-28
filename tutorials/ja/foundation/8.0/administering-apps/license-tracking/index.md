@@ -110,15 +110,11 @@ IBM {{ site.data.keys.mf_server }} をトークン・ライセンス用にイン
 
 > **重要:** サーバーは、アプリケーションを自動的に再アクティブ化しません。使用可能なトークンの数を増やした後は、アプリケーションを手動で再アクティブ化する必要があります。アプリケーションの使用不可化と使用可能化について詳しくは、[保護リソースへのアプリケーション・アクセスのリモート側での無効化](../using-console/#remotely-disabling-application-access-to-protected-resources)を参照してください。
 
-
-
 #### ライセンスの期限切れ
 {: #on-license-expiration }
 一定の時間が過ぎると、ライセンスの有効期限が切れ、再度チェックアウトする必要があります。すべてのアプリケーションについて使用可能なトークンが十分ない場合、サーバーはアプリケーションを非アクティブ化します。
 
 > **重要:** サーバーは、アプリケーションを自動的に再アクティブ化しません。使用可能なトークンの数を増やした後は、アプリケーションを手動で再アクティブ化する必要があります。アプリケーションの使用不可化と使用可能化について詳しくは、[保護リソースへのアプリケーション・アクセスのリモート側での無効化](../using-console/#remotely-disabling-application-access-to-protected-resources)を参照してください。
-
-
 
 #### サーバーのシャットダウン時
 {: #at-server-shutdown }
@@ -162,11 +158,7 @@ Foundation Extension の PVU ライセンスは、IBM WebSphere Application Serv
 
 > {{ site.data.keys.product_full }} Extension について詳しくは、[https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)を参照してください。
 
-
-
 > PVU ライセンス交付について詳しくは、[https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) を参照してください。
-
-
 
 ### SLMT タグ
 {: #slmt-tags }

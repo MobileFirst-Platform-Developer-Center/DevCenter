@@ -16,7 +16,6 @@ Java アダプターでは、バックエンド・システムへの接続を自
 **前提条件:** 最初に必ず、[Java アダプター](../)チュートリアルをお読みください。
 
 >**重要:** アダプター実装内で `javax.ws.rs.*` または `javax.servlet.*` からクラスへの静的参照を使用する場合、以下のいずれかのオプションを使用して必ず **RuntimeDelegate** を構成する必要があります。
-
 *	Liberty `jvm.options` で `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
 または
 *	システム・プロパティーまたは JVM カスタム・プロパティー `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します

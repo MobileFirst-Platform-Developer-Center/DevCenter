@@ -28,7 +28,7 @@ downloads:
 1. Xcode プロジェクトのルートにある既存の `podfile` に以下を追加します。
 
    ```xml
-    pod 'IBMMobileFirstPlatformFoundationJSONStore'
+   pod 'IBMMobileFirstPlatformFoundationJSONStore'
    ```
 
 2. **コマンド・ライン**・ウィンドウで、Xcode プロジェクトのルートにナビゲートし、コマンド `pod install` を実行します。このアクションにはしばらく時間がかかる場合があることに注意してください。
@@ -63,7 +63,7 @@ let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
 collection.setSearchField("name", withType: JSONStore_String)
 collection.setSearchField("age", withType: JSONStore_Integer)
 
-do  {
+do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
 } catch let error as NSError {
   // handle error
@@ -77,7 +77,6 @@ do  {
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
-
 ```
 
 これで、変数 `collection` を使用して、`people` コレクションに対して `add`、`find`、`replace` などの操作を実行できます。

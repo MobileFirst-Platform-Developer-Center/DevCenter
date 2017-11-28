@@ -49,8 +49,6 @@ JNDI プロパティーを使用して、これらの変数を定義します。
 
 > **重要:** 実動では単位を「seconds」に設定しないようにしてください。経過時間が短いほどサーバーの負荷は大きくなります。秒で表される単位はテストと評価の目的でのみ実装されます。例えば、経過時間が 10 秒に設定されると、プッシュ・メッセージはほぼすぐに送信されます。
 
-
-
 設定できるすべてのプロパティーのリストについては、[Application Center のための JNDI プロパティー](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)を参照してください。
 
 ### Apache Tomcat サーバーの場合の例
@@ -82,8 +80,6 @@ WebSphere Application Server Liberty プロファイルの場合の JNDI 変数�
 特定のアプリケーションについて Google Cloud Messaging (GCM) を使用可能にするには、GCM サービスを Google API 対応の開発者 Google アカウントに接続する必要があります。詳しくは、[GCM 入門](http://developer.android.com/google/gcm/gs.html)を参照してください。
 
 > 重要: Google Cloud Messaging のない Application Center クライアント: Application Center は Google Cloud Messaging (GCM) API が使用可能であることを想定しています。この API は、中国など一部の地域ではデバイスで利用できない可能性があります。このような地域をサポートするために、GCM API に依存しない Application Center クライアントのバージョンをビルドすることができます。プッシュ通知フィーチャーは、そのバージョンの Application Center クライアントでは機能しません。詳しくは、[GCM API に依存しないモバイル・クライアントのバージョンのビルド](#no-gcm)を参照してください。
-
-
 
 1. 適切な Google アカウントを持っていない場合は、[Google アカウントの作成](https://mail.google.com/mail/signup)に移動し、Application Center クライアント用の Google アカウントを作成します。
 2. [Google API コンソール](https://code.google.com/apis/console/)で Google API を使用して、このアカウントを登録します。登録によって新しいデフォルト・プロジェクトが作成されます。このプロジェクトは名前変更することができます。この GCM プロジェクトに付ける名前は、Android アプリケーション・パッケージ名とは無関係です。プロジェクトが作成されると、GCM プロジェクト ID がプロジェクト URL の最後に追加されます。この末尾番号は、後で必要になることがあるので、プロジェクト ID として記録してください。

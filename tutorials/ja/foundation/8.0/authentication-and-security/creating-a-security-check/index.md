@@ -15,8 +15,6 @@ weight: 2
 
 > <b>注:</b> セキュリティー検査はアダプター内に実装されますが、{{ site.data.keys.product_adj }} セキュリティー・フレームワークとアダプター API はそれぞれ独立しており、混在することはできません。したがって、アダプター API (`AdpatersAPI` インターフェースなど) をセキュリティー検査コード内で使用したり、セキュリティー検査 API をアダプター・リソース・コード内で使用したりすることはできません。
 
-
-
 セキュリティー・フレームワークのアーキテクチャーは、モジュラー型の柔軟なアーキテクチャーです。したがって、セキュリティー検査の実装は、本質的に、特定のリソースやアプリケーションに依存しません。同じセキュリティー検査を再使用してさまざまなリソースを保護したり、各種許可フローでさまざまなセキュリティー検査の組み合わせを使用したりすることができます。柔軟性を高めるために、セキュリティー検査クラスは、{{ site.data.keys.mf_console }} からセキュリティー検査定義とランタイムのどちらでもアダプター・レベルでカスタマイズ可能な構成プロパティーを公開します。
 
 開発プロセスを促進および加速するために、{{ site.data.keys.product }} には、`SecurityCheck` インターフェースの基底抽象実装が用意されています。さらに、`SecurityCheckConfiguration` インターフェースの基底抽象実装が提供されるほか (`SecurityCheckConfigurationBase`)、提供される各基底セキュリティー検査クラスの補足的なサンプルのセキュリティー検査構成クラスも提供されます。開発ニーズに最も適合した基底セキュリティー検査実装 (および関連のサンプル構成) で始めて、必要に応じて実装を拡張および変更してください。
@@ -45,8 +43,6 @@ weight: 2
 [Java アダプターまたは JavaScript アダプターを作成](../../adapters/creating-adapters/)するか、既存のアダプターを使用します。
 
 > Java アダプターを作成する場合、デフォルトのテンプレートはアダプターが**リソース**を提供するものと想定します。セキュリティー検査とリソースを同じアダプター内にバンドルするか、別々のアダプターに分けるかは、開発者が選択できます。
-
-
 
 デフォルトの**リソース**実装を削除するには、**[AdapterName]Application.java** ファイルと **[AdapterName]Resource.java** ファイルを削除します。**adapter.xml** から `<JAXRSApplicationClass>` エレメントも削除してください。
 
@@ -157,8 +153,6 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 ```
 
 > 実際の例については、CredentialsValidation セキュリティー検査チュートリアルの[セキュリティー検査の構成](../credentials-validation/security-check/#configuring-the-security-check)セクションを参照してください。
-
-
 
 ### {{ site.data.keys.mf_console }} - アダプター
 {: #mobilefirst-operations-console-adapter }

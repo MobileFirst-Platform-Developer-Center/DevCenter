@@ -103,7 +103,8 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 2. **./bin** フォルダーで次のコマンドを実行して、該当フィーチャーをインストールします。
 
    ```bash
-./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0```
+   ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
+   ```
 
 3. Liberty サーバーの **./usr/servers/<serverName>/apps** フォルダーに **analytics.ear** ファイルを追加します。
 4. **./usr/servers/<serverName>/server.xml** ファイルの `<featureManager>` タグのコンテンツを以下のコンテンツに置換します。
@@ -160,7 +161,8 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 7. {{ site.data.keys.mf_analytics_console }} に移動します。
 
    ```bash
-http://localhost:9080/analytics/console```
+   http://localhost:9080/analytics/console
+   ```
 
 WebSphere Application Server Liberty の管理について詳しくは、WebSphere Application Server 製品資料で[コマンド行からの Liberty の管理](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html)のトピックを参照してください。
 
@@ -207,7 +209,8 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
     * Tomcat サーバーを始動し、{{ site.data.keys.mf_analytics_console }}に移動します。
 
       ```xml
-http://localhost:8080/analytics/console```
+      http://localhost:8080/analytics/console
+      ```
 
     Tomcat サーバーの始動方法について詳しくは、Tomcat の公式サイトを参照してください。例えば、Tomcat 7.0 の場合、[「Apache Tomcat 7」](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html)です。
 
@@ -336,8 +339,6 @@ V8.0.0 へのアップグレード後初めて {{ site.data.keys.mf_analytics_co
 ![コンソールの「マイグレーション」ページ](migration_page.jpg)
 
 > **注:** ユーザーのデータの量に応じてこのプロセスには長い時間がかかる場合があります。マイグレーション中にプロセスを停止することはできません。
-
-
 
 このマイグレーションでは、単一ノード (RAM 32 GB、JVM への割り振り 16 GB、4 コア・プロセッサー) で 100 万個の文書をマイグレーションするのに約 3 分かかる可能性があります。マイグレーションされない文書は照会されないため、それらは {{ site.data.keys.mf_analytics_console }} でレンダリングされません。
 

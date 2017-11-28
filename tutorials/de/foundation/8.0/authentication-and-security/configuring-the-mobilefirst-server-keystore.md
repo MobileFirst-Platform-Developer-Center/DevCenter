@@ -47,19 +47,21 @@ die Identität Ihres
 Wenn Sie bereits eine passende Keystore-Datei haben, übergehen Sie den nächsten Schritt. 
 
    > **Hinweis:** Der Algorithmus für das Schlüsselpaar mit dem Alias muss vom Typ RSA sein. Nachfolgend ist erklärt, wie der
-Algorithmustyp bei Verwendung des Dienstprogramms **keytool** auf RSA gesetzt wird.    Sie können die Keystore-Datei mit einem Tool eines anderen Anbieters erstellen. Sie können beispielsweise eine JKS-Datei generieren, indem Sie den folgenden Befehl des Java-Dienstprogramms **keytool** ausführen. (Im Befehl steht `<Keystore-Name>` für den Namen Ihres Keystores und `<Alias>` für Ihren gewählten Alias.)
+Algorithmustyp bei Verwendung des Dienstprogramms **keytool** auf RSA gesetzt wird. 
 
-    
+   Sie können die Keystore-Datei mit einem Tool eines anderen Anbieters erstellen. Sie können beispielsweise eine JKS-Datei generieren, indem Sie den folgenden Befehl des Java-Dienstprogramms **keytool** ausführen. (Im Befehl steht `<Keystore-Name>` für den Namen Ihres Keystores und `<Alias>` für Ihren gewählten Alias.)
+
+
    ```bash
    keytool -keystore <Keystore-Name> -genkey -alias <Alias> -keylag RSA
    ```
-    
+
    Der folgende Beispielbefehl generiert eine JKS-Datei **my_company.keystore** mit dem Alias `my_alias`: 
-    
+
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
-    
+
    Das Dienstprogramm fordert Sie zur Eingabe verschiedener Eingabeparameter auf. Sie müssen unter anderem das Kennwort für Ihre Keystore-Datei und für den Alias angeben. 
 
    > **Hinweis:** Sie müssen die Option `-keyalg RSA` festlegen, damit der Algorithmus für die Schlüsselgenerierung auf den Typ RSA und nicht auf den Standardtyp DSA gesetzt wird. 
@@ -72,18 +74,25 @@ zum Keystore hinzu. Dafür können Sie dieselbe Methode wie beim Erstellen der K
 mit dem
 Alias für die MobileFirst-Server-Identität verwenden, nur dass Sie jetzt den Alias und das Kennwort für die SSL-Clientidentität angeben müssen. 
 
-2. Konfigurieren Sie {{ site.data.keys.mf_server }} wie folgt für die Verwendung
-Ihres Keystores:
-Wählen Sie in der Navigationsseitenleiste der {{ site.data.keys.mf_console }}
-**Laufzeiteinstellungen** aus. Wählen Sie dann das Register **Keystore** aus.
-Folgen Sie den Anweisungen auf dieser Registerkarte, um Ihren
+2. Konfigurieren Sie {{ site.data.keys.mf_server }} wie folgt für die Verwendung Ihres Keystores:
+   Führen Sie die unten stehenden Schritte aus, um {{ site.data.keys.mf_server }} für die Verwendung Ihres Keystores zu konfigurieren. 
+
+      * **Javascript-Adapter**
+        Wählen Sie in der Navigationsseitenleiste der {{ site.data.keys.mf_console }} **Laufzeiteinstellungen** aus. Wählen Sie dann die Registerkarte **Keystore** aus. Folgen Sie den Anweisungen auf dieser Registerkarte, um Ihren
 benutzerdefinierten MobileFirst-Server-Keystore zu konfigurieren.
 Unter anderem müssen Sie Ihre Keystore-Datei hochladen und folgende Angaben machen:
 Typ des Keystores, Ihr Keystore-Kennwort,
 Alias für Ihre
-MobileFirst-Server-Identität und Kennwort für den Alias.  
+MobileFirst-Server-Identität und Kennwort für den Alias. Bei erfolgreicher Konfiguration ändert sich der **Status** in *Benutzerdefiniert*. Andernfalls wird ein Fehler angezeigt und der Status *Standard* ändert sich nicht.
+        Der Alias für die SSL-Clientidentität (falls verwendet) und das zugehörige Kennwort werden in der Deskriptordatei des betreffenden Adapters in den Unterelementen `<sslCertificateAlias>` und `<sslCertificatePassword>` des Elements `<connectionPolicy>` konfiguriert (siehe [Element 'connectionPolicy' des HTTP-Adapters](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)).
 
-Bei erfolgreicher Konfiguration ändert sich der Status in
-"Benutzerdefiniert". Anderfalls wird ein Fehler angezeigt und der Status bleibt "Standard".
+      * **Java-Adapter**
+        Zum Konfigurieren der gegenseitigen SSL-Authentifizierung für einen Java-Adapter müssen Sie den Server-Keystore aktualisieren. Dies kann durch die folgenden Schritte geschehen: 
 
-Der Alias für die SSL-Clientidentität (falls verwendet) und das zugehörige Kennwort werden in der Deskriptordatei des betreffenden Adapters in den Unterelementen `<sslCertificateAlias>` und `<sslCertificatePassword>` des Elements `<connectionPolicy>` konfiguriert (siehe [Element 'connectionPolicy' des HTTP-Adapters](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)).
+        * Kopieren Sie die Keystore-Datei nach `<Serverinstallationsverzeichnis>/mfp-server/usr/servers/mfp/resources/security`.
+
+        * Bearbeiten Sie die Datei `server.xml` (`<Serverinstallationsverzeichnis>/mfp-server/usr/servers/mfp/server.xml`).
+
+        * Aktualisieren Sie die Keystore-Konfiguration mit dem richtigen Dateinamen, Kennwort und Typ (`<keyStore id=“defaultKeyStore” location=<Keystore-Name> password=<Keystore-Kennwort> type=<Keystore-Typ> />`). 
+
+Wenn Sie für die Implementierung den {{ site.data.keys.mf_bm_short}} Service in Bluemix verwenden, können Sie die Keystore-Datei vor der Implementierung des Servers unter **Erweiterte Einstellungen** hochladen. 

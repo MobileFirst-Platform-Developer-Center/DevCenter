@@ -21,6 +21,8 @@ erforderlich. Weitere Informationen finden Sie unten im Abschnitt "Application C
 
 > **Hinweis:** Wenn Sie beabsichtigen, über das Application Center Anwendungen auf iOS-Geräten zu installieren, müssen Sie den Application-Center-Server zuerst mit SSL konfigurieren.
 
+
+
 Eine Liste der installierten Dateien und Tools finden Sie unter
 [Verteilerweg von {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
@@ -105,6 +107,8 @@ auf 8 Zeichen für UNIX- und
 Linux-Systeme bzw. auf
 30 Zeichen für
 Windows.
+
+
 
 1. Erstellen Sie mit den entsprechenden Befehlen Ihres Betriebssystems einen Systembenutzernamen, z. B.
 **wluser**, in einer DB2-Admin-Gruppe wie z. B.
@@ -248,6 +252,7 @@ festgelegt werden muss, das Deployment-Manager-Profil aus.
 da der Deployment Manager in diesem Fall die Konfiguration des Servers überschreibt,
 unabhängig davon, ob Sie die Installation auf der Maschine ausführen, auf der der Deployment Manager ausgeführt wird, oder auf einer anderen Maschine.
 
+
 3. Wählen Sie den erforderlichen Geltungsbereich aus, in dem das Application Center installiert werden soll. In der folgenden Tabelle sind die verfügbaren Geltungsbereiche aufgelistet:
 
     | Bereich | Erläuterung |
@@ -268,6 +273,8 @@ Zelle installieren.
 > **Hinweis:** Da der JDBC-Treiber nur in der angegebenen Gruppe von Anwendungsservern
 installiert wird, funktioniert möglicherweise die Schaltfläche Verbindung testen in der Administrationskonsole von WebSphere Application Server
 nicht für die JDBC-Datenquellen.
+
+
 
 Wenn Sie einen Front-End-HTTP-Server verwenden, müssen Sie auch die öffentlich zugängliche URI konfigurieren.
 
@@ -401,15 +408,12 @@ Schritte 4 bis 7 aus.
 
 1. Kopieren Sie die Ant-Beispieldatei für Ihr DBMS. Die Dateien für die Erstellung einer Datenbank sind nach folgendem Muster benannt:
 
-
     ```bash
     create-appcenter-database-<DBMS>.xml
     ```
 
-2. Bearbeiten Sie die
-Ant-Datei. Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei. 
-3. Führen Sie die folgenden Befehle aus,
-um die Application-Center-Datenbank zu erstellen: 
+2. Bearbeiten Sie die Ant-Datei. Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei.
+3. Führen Sie die folgenden Befehle aus, um die Application-Center-Datenbank zu erstellen:
 
     ```bash
     ant -f create-appcenter-database-<DBMS>.xml databases
@@ -421,15 +425,12 @@ um die Application-Center-Datenbank zu erstellen:
 
 4. Kopieren Sie die Ant-Beispieldatei für Ihren Anwendungsserver und Ihr DBMS. Die Dateien zum Konfigurieren einer vorhandenen Datenbank sind nach folgendem Muster benannt:
 
-
     ```bash
     configure-appcenter-<App-Server>-<DBMS>.xml
     ```
 
-5. Bearbeiten Sie die
-Ant-Datei. Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei. 
-6. Führen Sie die folgenden Befehle aus,
-um die Datenbank zu konfigurieren: 
+5. Bearbeiten Sie die Ant-Datei. Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei.
+6. Führen Sie die folgenden Befehle aus, um die Datenbank zu konfigurieren:
 
     ```bash
     ant -f configure-appcenter-<App-Server>-<DBMS>.xml databases
@@ -437,10 +438,9 @@ um die Datenbank zu konfigurieren:
 
     Der Ant-Befehl ist in **MF-Server-Installationsverzeichnis/shortcuts** enthalten.
 
-7. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht. 
+7. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht.
 
-Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch
-"************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden. 
+Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch "************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden. 
 
 ### Application-Center-Konsole und -Services mit Ant-Tasks implementieren
 {: #deploying-the-application-center-console-and-services-with-ant-tasks }
@@ -496,12 +496,8 @@ zu implementieren:
     > * Application Center mit dem Ziel **uninstall** deinstallieren
     > * Application Center mit dem Ziel **minimal-update** aktualisieren, um ein Fixpack anzuwenden
 
-4. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht. Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch
-"************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden. 
-5. Überprüfen Sie bei einer Installation in WebSphere Application Server Liberty
-Profile oder Apache Tomcat, ob das Programm aapt von allen Benutzern ausgeführt werden kann.
-Gegebenenfalls müssen Sie die entsprechenden Benutzerrechte festlegen. Beispiel für UNIX/Linux-Systeme:
-
+4. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht. Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch "************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden.
+5. Überprüfen Sie bei einer Installation in WebSphere Application Server Liberty Profile oder Apache Tomcat, ob das Programm aapt von allen Benutzern ausgeführt werden kann. Gegebenenfalls müssen Sie die entsprechenden Benutzerrechte festlegen. Beispiel für UNIX/Linux-Systeme:
 
     ```bash
     chmod a+x MF-Server-Installationsverzeichnis/ApplicationCenter/tools/android-sdk/*/aapt*
@@ -523,6 +519,8 @@ manuell installieren, müssen Sie beachten, dass schrittweise Aktualisierungen
 des Application Center nicht unterstützt
 werden. Dies bedeutet, dass in derselben Datenbank nicht zwei verschiedene Versionen des
 Application Center (z. B. Version 5.0.6 und Version 6.0.0) verwendet werden können.
+
+
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-4 }
@@ -570,12 +568,7 @@ der DB2-Dokumentation und in der Dokumentation zu Ihrem Betriebssystem.
 > **Wichtiger Hinweis:** Sie können für den Benutzer auch einen anderen Namen oder ein anderes Kennwort angeben.
 Achten Sie jedoch darauf, dass Sie anschließend
 in der gesamten
-DB2-Datenbankkonfiguration die richtigen Angaben für Benutzername und Kennwort machen. In
-DB2 gilt eine Benutzernamen- und Kennwortlängenbegrenzung
-von 8 Zeichen für UNIX- und
-Linux-Systeme bzw. von
-30 Zeichen für
-Windows.
+DB2-Datenbankkonfiguration die richtigen Angaben für Benutzername und Kennwort machen. In DB2 gilt eine Benutzernamen- und Kennwortlängenbegrenzung von 8 Zeichen für UNIX- und Linux-Systeme bzw. von 30 Zeichen für Windows.
 
 2. Öffnen Sie wie folgt einen
 DB2-Befehlszeilenprozessor. Verwenden Sie dabei einen
@@ -772,9 +765,7 @@ ein anderes Kennwort definiert haben, ersetzen Sie diese Angaben dementsprechend
     * UNIX- und Linux-Systeme: 8 Zeichen
     * Windows: 30 Zeichen
 
-3. Fügen Sie diese Anweisung wie unter
-[Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben
-in die Datei server.xml ein. 
+3. Fügen Sie diese Anweisung wie unter [Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben in die Datei server.xml ein.
 
 ### Apache-Derby-Datenbank für das Application Center manuell konfigurieren
 {: #configuring-the-apache-derby-database-manually-for-application-center }
@@ -807,6 +798,8 @@ Linux-Systemen) aus.
    > **Hinweis:** Das Programm ij ist Teil von Apache Derby. Wenn Sie es noch nicht installiert haben, können Sie es von
 der Webseite [Apache
 Derby: Downloads](http://db.apache.org/derby/derby_downloads) herunterladen.
+
+
    Unterstützte Versionen von Apache Derby
 sind in den
 [Systemvoraussetzungen](../../../product-overview/requirements) angegeben.  
@@ -869,16 +862,14 @@ hinzu.
 3. Führen Sie die folgenden Schritte aus, um den JDBC-Provider einzurichten.
     * Klicken Sie in der WebSphere-Application-Server-Konsole auf **Ressourcen → JDBC → JDBC-Provider**.
     * Wählen Sie im Kombinationsfeld **Bereich** den entsprechenden Bereich aus. 
-    * Klicken Sie auf
-**Neu**.
+    * Klicken Sie auf **Neu**.
     * Setzen Sie den **Datenbanktyp** auf **Benutzerdefiniert**.
     * Setzen Sie **Name der Implementierungsklasse** auf **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**.
     * Setzen Sie **Name** auf **Worklight
 - Derby JDBC Provider**.
     * Setzen Sie **Beschreibung** auf **Derby
 JDBC provider for Worklight**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Setzen Sie den **Klassenpfad** auf die JAR-Datei in dem in Schritt 1 bestimmten
 Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch
 den Verweis auf die WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROOT}**.
@@ -887,17 +878,13 @@ den Verweis auf die WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROO
 4. Erstellen Sie die Datenquelle für die **Worklight**-Datenbank.
     * Klicken Sie in der WebSphere-Application-Server-Konsole auf **Ressourcen → JDBC → Datenquellen**.
     * Wählen Sie im Kombinationsfeld **Bereich** den entsprechenden Bereich aus. 
-    * Klicken Sie auf
-**Neu**.
+    * Klicken Sie auf **Neu**.
     * Setzen Sie **Name der Datenquelle** auf **Application-Center-Datenbank**.
     * Setzen Sie **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Wählen Sie den vorhandenen JDBC-Provider mit dem Namen **Worklight - Derby JDBC Provider** aus.
-    * Klicken Sie auf
-**Weiter**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Klicken Sie auf
 **Fertigstellen**.
     * Klicken Sie auf **Speichern**.
@@ -938,8 +925,7 @@ zum Verzeichnis **$TOMCAT\_HOME/lib** hinzu.
             url="jdbc:derby:DERBY_DATABASES_DIR/APPCNTR"/>
    ```
 
-3. Fügen Sie diese Anweisung wie unter
-[Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben in die Datei **server.xml** ein. 
+3. Fügen Sie diese Anweisung wie unter [Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben in die Datei **server.xml** ein.
 
 ### MySQL-Datenbank für das Application Center manuell konfigurieren
 {: #configuring-the-mysql-database-manually-for-application-center }
@@ -1006,6 +992,8 @@ DB2 oder
 eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
 einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
+
+
 1. Fügen Sie die JAR-Datei des MySQL JDBC-Treibers dem Verzeichnis **$LIBERTY_HOME/wlp/usr/shared/resources/mysql** hinzu.
 Wenn dieses Verzeichnis nicht existiert, erstellen Sie es. 
 2. Konfigurieren Sie die Datenquelle
@@ -1048,6 +1036,8 @@ Profile oder WebSphere Application Server Full Profile ist keine unterstützte K
 Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Es wird empfohlen, IBM DB2 oder eine andere
 von WebSphere Application Server unterstützte Datenbank zu verwenden, um die Vorteile einer Konfiguration mit vollständiger Unterstützung durch den
 IBM Support zu nutzen.
+
+
 
 1. Bestimmen Sie ein geeignetes Verzeichnis für die JAR-Datei des JDBC-Treibers
 im Installationsverzeichnis von WebSphere Application Server. 
@@ -1126,9 +1116,7 @@ im Apache-Tomcat-Server einzurichten und zu konfigurieren. Beenden Sie das MySQL
 
 1. Fügen Sie die Datei MySQL Connector/J JAR zum Verzeichnis
 **$TOMCAT_HOME/lib** hinzu. 
-2. Erstellen Sie eine XML-Anweisung, die die Datenquelle definiert. Sehen Sie sich dazu das folgende Codebeispiel an. Fügen Sie diese Anweisung wie unter
-[Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben
-in die Datei server.xml ein. 
+2. Erstellen Sie eine XML-Anweisung, die die Datenquelle definiert. Sehen Sie sich dazu das folgende Codebeispiel an. Fügen Sie diese Anweisung wie unter [Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben in die Datei server.xml ein.
 
 ```xml
 <Resource name="jdbc/AppCenterDS"
@@ -1258,6 +1246,8 @@ mobileFirstServer im Pfad durch den Namen Ihres Servers ersetzen.
 
     > **Hinweis:** Weitere Informationen zum Herstellen einer Verbindung vom Liberty-Server zur Oracle-Datenbank mithilfe eines Servicenamens oder einer URL finden Sie in der [Dokumentation zu WebSphere Application Server Liberty Core 8.5.5](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0) im Abschnitt **properties.oracle**.
 
+
+
 3. Sie können das Datenbankkennwort mit dem Programm securityUtility im Verzeichnis **Liberty-Installationsverzeichnis/bin** verschlüsseln.
 
 ##### Oracle für das Application Center manuell in WebSphere Application Server konfigurieren
@@ -1303,19 +1293,16 @@ Schritt 1 bestimmten Verzeichnis hinzu.
 4. Erstellen Sie eine Datenquelle für die Worklight-Datenbank:
     * Klicken Sie auf **Ressourcen → JDBC → Datenquellen**.
     * Wählen Sie im Kombinationsfeld **Bereich** den entsprechenden Bereich aus. 
-    * Klicken Sie auf
-**Neu**.
+    * Klicken Sie auf **Neu**.
     * Setzen Sie den **Datenquellennamen** auf **Oracle
 JDBC Driver DataSource**.
     * Setzen Sie
 **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Klicken Sie auf
 **Vorhandenen JDBC-Provider auswählen** und wählen Sie in der Liste
 **Oracle JDBC driver** aus.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Setzen Sie die **URL** auf den Wert **jdbc:oracle:thin:@oserver:1521:ORCL**.
 Hier steht **oserver** für den Hostnamen Ihres Oracle-Servers
 (z. B. **localhost**, wenn sich der Server auf derselben Maschine befindet).
@@ -1344,9 +1331,7 @@ Oracle-Datenbank aus, bevor Sie fortfahren.
 1. Fügen Sie die
 JAR-Datei des Oracle-JDBC-Treibers dem Verzeichnis
 **$TOMCAT_HOME/lib** hinzu.
-2. Erstellen Sie eine XML-Anweisung, die die Datenquelle definiert. Sehen Sie sich dazu das folgende Codebeispiel an. Fügen Sie diese Anweisung wie unter
-[Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben
-in die Datei server.xml ein. 
+2. Erstellen Sie eine XML-Anweisung, die die Datenquelle definiert. Sehen Sie sich dazu das folgende Codebeispiel an. Fügen Sie diese Anweisung wie unter [Apache Tomcat für das Application Center manuell konfigurieren](#configuring-apache-tomcat-for-application-center-manually) angegeben in die Datei server.xml ein.
 
 ```xml
 <Resource name="jdbc/AppCenterDS"
@@ -1372,6 +1357,7 @@ Application-Center-WAR-Dateien in einem Anwendungsserver hängt vom Typ des zu k
 Diese manuellen Anweisungen setzen voraus, dass Sie mit Ihrem Anwendungsserver vertraut sind. 
 
 > **Hinweis:** Die Installation des Application Center mit dem MobileFirst-Server-Installationsprogramm ist gegenüber der manuellen Installation die zuverlässigere Methode, die nach Möglichkeit verwendet werden sollte.
+
 Wenn Sie jedoch den manuellen Prozess vorziehen,
 führen Sie die folgenden Schritte aus, um Ihren Anwendungsserver für das Application Center zu konfigurieren.
 Sie müssen die Dateien
@@ -1738,6 +1724,8 @@ Application Center vorzuziehen. Verwenden Sie daher soweit möglich das Instalal
 Wenn Sie das manuelle Verfahren bevorzugen, implementieren Sie die Datei **appcentercenter.ear**
 aus dem Verzeichnis
 **Produktinstallationsverzeichnis/ApplicationCenter/console**.
+
+
 
 #### Liberty Profile für das Application Center manuell konfigurieren
 {: #configuring-the-liberty-profile-for-application-center-manually-1 }
@@ -2357,8 +2345,7 @@ In Clusterumgebungen müssen Sie alle Server im Cluster auf dieselbe Art und Wei
         * ibm.appcenter.ldap.cache.expiration.seconds = Verzögerung_in_Sekunden
     * Geben Sie die Verzögerungszeit in Sekunden ein, nach deren Ablauf der LDAP-Cache verfällt. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet.
 
-    Änderungen an den Benutzern und Gruppen auf dem LDAP-Server werden im Application Center nach einer mit **ibm.appcenter.ldap.cache.expiration.seconds** angegebenen Verzögerung sichtbar.
-Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie diese zeitliche Verzögerung nicht abwarten möchten, nachdem Sie Benutzer oder Gruppen geändert haben,
+    Änderungen an den Benutzern und Gruppen auf dem LDAP-Server werden im Application Center nach einer mit **ibm.appcenter.ldap.cache.expiration.seconds** angegebenen Verzögerung sichtbar. Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie diese zeitliche Verzögerung nicht abwarten möchten, nachdem Sie Benutzer oder Gruppen geändert haben,
 können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen:
 
     ```xml
@@ -2459,10 +2446,8 @@ ein.
    * Wenn Sie WAR-Dateien implementiert haben: **applicationcenter** und **appcenterconsole**
    * Wenn Sie eine EAR-Datei implementiert haben: **applicationcenter**
 
-   **Gruppennamen sind in LDAP eindeutig**  
-Dieser Beispielcode zeigt, wie
-die Gruppennamen **ldapGroupForAppcenteruser** und **ldapGroupForAppcenteradmin** verwendet werden,
-wenn sie existieren und in LDAP eindeutig sind.
+   **Eindeutige Gruppennamen in LDAP**  
+Dieser Beispielcode zeigt, wie die Gruppennamen **ldapGroupForAppcenteruser** und **ldapGroupForAppcenteradmin** verwendet werden, wenn sie existieren und in LDAP eindeutig sind.
 
    ```xml
    <application-bnd>
@@ -2475,14 +2460,8 @@ wenn sie existieren und in LDAP eindeutig sind.
    </application-bnd>
    ```
 
-   **Gruppennamen sind in LDAP nicht eindeutig**  
-Dieser Beispielcode zeigt, wie die Zuordnung codiert wird, wenn die Gruppennamen in LDAP nicht eindeutig sind. Die Gruppen müssen mit dem Attribut
-**access-id** angegeben werden. Das Attribut
-**access-id** muss auf den Realmnamen verweisen, der das LDAP-Realm angibt. In diesem Beispielcode
-lautet der Realmname **AppCenterLdap**.
-Der restliche Teil des Attributs
-**access-id** definiert eine LDAP-Gruppe mit
-dem Namen **ldapGroup** in der Weise, dass diese eindeutig festgelegt wird.
+   **Nicht eindeutige Gruppennamen in LDAP**  
+Dieser Beispielcode zeigt, wie die Zuordnung codiert wird, wenn die Gruppennamen in LDAP nicht eindeutig sind. Die Gruppen müssen mit dem Attribut **access-id** angegeben werden. Das Attribut **access-id** muss auf den Realmnamen verweisen, der das LDAP-Realm angibt. In diesem Beispielcode lautet der Realmname **AppCenterLdap**. Der restliche Teil des Attributs **access-id** definiert eine LDAP-Gruppe mit dem Namen **ldapGroup** in der Weise, dass diese eindeutig festgelegt wird.
 
    ```xml
    <application-bnd>
@@ -2496,8 +2475,7 @@ dem Namen **ldapGroup** in der Weise, dass diese eindeutig festgelegt wird.
    </application-bnd>
    ```
 
-   Verwenden Sie ggf. einen ähnlichen Code, um die Rolle
-**appcenteradmin** zuzuordnen.
+   Verwenden Sie ggf. einen ähnlichen Code, um die Rolle **appcenteradmin** zuzuordnen.
 
 ##### LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)
 {: #configuring-ldap-acl-management-liberty-profile }
@@ -3008,7 +2986,6 @@ den Endpunkt der Anwendungsressourcen über die JNDI-Umgebung.
 
 Befolgen Sie für IBM Worklight ab Version 6.0 diese Prozedur, wenn Sie das URI-Protokoll, den Hostnamen und den Port ändern müssen, die der Application-Center-Client zum Verwalten der Anwendungen auf Ihrem Gerät verwendet.
 
-
 Bearbeiten Sie die Datei
 **server.xml**. Damit JNDI-Einträge definiert werden können, muss das Element `<feature>` in der Datei **server.xml** korrekt definiert sein:
 
@@ -3049,9 +3026,7 @@ in der Datei
 <jndiEntry jndiName="ibm.appcenter.proxy.port"  value=" 443"/>
 ```
 
-Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die
-Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen.
-Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
+Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
 wie die Application-Center-Konsole verwenden, aber **appcenter** als Kontextstammverzeichnis. 
 
 #### Endpunkt von Anwendungsressourcen konfigurieren (Apache Tomcat)
@@ -3060,7 +3035,7 @@ Konfigurieren Sie für den Apache Tomcat-Server
 den Endpunkt der Anwendungsressourcen in der Datei
 **server.xml**.
 
-Befolgen Sie für IBM Worklight ab Version 6.0 diese Prozedur, wenn Sie das URI-Protokoll, den Hostnamen und den Port ändern müssen, die der Application-Center-Client zum Verwalten der Anwendungen auf Ihrem Gerät verwendet. 
+Befolgen Sie für IBM Worklight ab Version 6.0 diese Prozedur, wenn Sie das URI-Protokoll, den Hostnamen und den Port ändern müssen, die der Application-Center-Client zum Verwalten der Anwendungen auf Ihrem Gerät verwendet.
 
 Bearbeiten Sie die Datei
 **server.xml** im Verzeichnis
@@ -3076,7 +3051,7 @@ Für diese Angabe gilt Folgendes:
 
 * **JNDI-Eigenschaftsname** ist der Name der Eigenschaft, die Sie hinzufügen.
 * **Eigenschaftswert** ist der Wert der Eigenschaft, die Sie hinzufügen.
-* **Eigenschaftstyp** ist der Typ der Eigenschaft, die Sie hinzufügen. 
+* **Eigenschaftstyp** ist der Typ der Eigenschaft, die Sie hinzufügen.
 
 | Eigenschaft | Typ | Beschreibung |
 |----------|------|-------------|
@@ -3099,9 +3074,7 @@ Im Abschnitt `<context>` der Application-Center-Konsole können Sie Folgendes an
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
 ```
 
-Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die
-Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen.
-Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
+Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
 wie die Application-Center-Konsole verwenden, aber **appcenter** als Kontextstammverzeichnis. 
 
 Im Abschnitt `<context>` der Application-Center-Services können Sie Folgendes angeben: 

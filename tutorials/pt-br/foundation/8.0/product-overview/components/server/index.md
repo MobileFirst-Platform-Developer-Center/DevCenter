@@ -5,7 +5,7 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 O {{ site.data.keys.mf_server }}
 consiste em vários componentes. Uma visão geral da arquitetura do {{ site.data.keys.mf_server }} é fornecida para você entender as funções de cada componente.

@@ -277,4 +277,5 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 
 ### Cordova アプリケーションのデフォルトの動作の変更は推奨されない
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
-{{ site.data.keys.product_adj }}  Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。
+{{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。
+Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。

@@ -116,6 +116,7 @@ XML ファイルには、設定およびメタデータが含まれています�
                         </ul>
                     </li>
                     <li><b>proxy</b>: <i>オプション。</i> proxy エレメントでは、バックエンド・アプリケーションへのアクセス時に使用するプロキシー・サーバーの詳細を指定します。プロキシー詳細には、プロトコルのドメインおよびポートが含まれている必要があります。プロキシーが認証を必要とする場合は、<code>proxy</code> 内に、ネストされた <code>authentication</code> エレメントを追加します。このエレメントの構造は、アダプターの認証プロトコルを記述するために使用されるものと同じです。以下の例は、基本認証を必要とし、サーバー ID を使用するプロキシーを示しています。
+
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
@@ -203,7 +204,8 @@ XSL Transformation を適用するには、JavaScript 実装ファイルの次�
 
 ```js
 function getFeedFiltered() {
-var input = {
+
+  var input = {
       method : 'get',
       returnedContentType : 'xml',
       path : "feed.xml",

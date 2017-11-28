@@ -71,6 +71,8 @@ Visual Studio 프로젝트를 수동으로 V8.0으로 업그레이드할 수 있
 
         > **참고:** 앱이 애플리케이션 인증 또는 확장된 인증 기능을 사용하는 경우, Microsoft Visual C++ 2013 Runtime Package for Windows 또는 Microsoft Visual C++ 2013 Runtime Package for Windows Phone을 앱에 대한 참조로 추가해야 합니다. 이를 수행하려면 Visual Studio에서 고유 프로젝트의 참조를 마우스 오른쪽 단추로 클릭한 후 고유 API 앱에 추가한 환경에 따라 다음 선택사항 중 하나를 완료하십시오.
 
+
+
         * Windows 데스크탑 또는 태블릿의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows → 확인**을 마우스 오른쪽 단추로 클릭하십시오. 
         * Windows Phone 8 Universal의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → 확인**을 마우스 오른쪽 단추로 클릭하십시오. 
         * Windows 10 Universal Windows Platform(UWP)의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows Universal → 확인**을 마우스 오른쪽 단추로 클릭하십시오. 

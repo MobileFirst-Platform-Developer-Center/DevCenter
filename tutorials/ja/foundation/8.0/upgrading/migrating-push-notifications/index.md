@@ -221,8 +221,8 @@ alert(successResponse);
 8. (オプション) タグからアンサブスクライブします。
 
    ```javascript
-MFPPush.unsubscribe(tags, function(successResponse) {
-alert("Successfully unsubscribed");
+   MFPPush.unsubscribe(tags, function(successResponse) {
+		alert("Successfully unsubscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unsubscribe");
@@ -258,54 +258,54 @@ alert("Successfully unsubscribed");
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					},
-		function(failureResponse){
-			alert("Failed to initialize");
-		}
+        MFPPush.registerNotificationsCallback(notificationReceived);              					},
+        function(failureResponse){
+            alert("Failed to initialize");
+        }
    );
    ```
 
 2. 通知コールバック・メソッドを実装します。
 
    ```javascript
-var notificationReceived = function(message) {
-alert(JSON.stringify(message));
+   var notificationReceived = function(message) {
+        alert(JSON.stringify(message));
    };
    ```
 
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
-MFPPush.registerDevice(function(successResponse) {
-alert("Successfully registered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to register");
-	    }
+   MFPPush.registerDevice(function(successResponse) {
+        alert("Successfully registered");
+        },
+      function(failureResponse) {
+        alert("Failed to register");
+        }
    );
    ```
 
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```javascript
-MFPPush.unregisterDevice(function(successResponse) {
-alert("Successfully unregistered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to unregister");
-	    }
+   MFPPush.unregisterDevice(function(successResponse) {
+        alert("Successfully unregistered");
+        },
+      function(failureResponse) {
+        alert("Failed to unregister");
+        }
    );
    ```
 
 5. WL.Client.Push.isPushSupported() を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
-MFPPush.isPushSupported (function(successResponse) {
-alert(successResponse);
-	   },
-	   function(failureResponse) {
-	       alert("Failed to get the push suport status");
-	   }
+   MFPPush.isPushSupported (function(successResponse) {
+        alert(successResponse);
+        },
+      function(failureResponse) {
+        alert("Failed to get the push suport status");
+        }
    );
    ```
 
@@ -398,19 +398,19 @@ alert(successResponse);
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
    MFPPush.subscribe(tags, function(successResponse) {
-    	alert("Successfully subscribed");
-        },
-      function(failureResponse) {
-    	alert("Failed to subscribe");
-        }
+		alert("Successfully subscribed");
+	    },
+	  function(failureResponse) {
+		alert("Failed to subscribe");
+	    }
    );
    ```
 
 8. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```javascript
-MFPPush.unsubscribe(tags, function(successResponse) {
-alert("Successfully unsubscribed");
+   MFPPush.unsubscribe(tags, function(successResponse) {
+		alert("Successfully unsubscribed");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unsubscribe");
@@ -782,7 +782,6 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
-
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Failed to subscribe");
@@ -802,7 +801,6 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
-
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unsubscribe");
@@ -845,7 +843,8 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -875,7 +874,8 @@ if(error){
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
-[[MFPPush sharedInstance] isPushSupported]```
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -887,7 +887,8 @@ if(error){
 7. `didRegisterForRemoteNotificationsWithDeviceToken` で `sendDeviceToken()` を呼び出します。
 
    ```objc
-[[MFPPush sharedInstance] sendDeviceToken:deviceToken];```
+   [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
+   ```
 
 ##### サーバー
 {: #server-ios-1 }
@@ -920,7 +921,8 @@ if(error){
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -950,7 +952,8 @@ if(error){
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
-[[MFPPush sharedInstance] isPushSupported]```
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -983,9 +986,9 @@ if(error){
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -1017,7 +1020,8 @@ if(error){
 1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -1047,7 +1051,8 @@ if(error){
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
-[[MFPPush sharedInstance] isPushSupported]```
+   [[MFPPush sharedInstance] isPushSupported]
+   ```
 
 6. 以下の `WLClient.Push` API を削除します。
     * `registerEventSourceCallback()`
@@ -1076,7 +1081,8 @@ if(error){
 1. 以下のように、アプリケーションで MFPPush クライアント・インスタンスを初期化します。
 
    ```objc
-[[MFPPush sharedInstance] initialize];```
+   [[MFPPush sharedInstance] initialize];
+   ```
 
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
@@ -1120,10 +1126,10 @@ if(error){
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
-        }
+	       NSLog(@"Successfully unregistered");
+       }
    }];
    ```
 

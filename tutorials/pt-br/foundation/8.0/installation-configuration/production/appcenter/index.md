@@ -1018,7 +1018,7 @@ Além das modificações para os bancos de dados descritos em [Instalando manual
           <group name="appcentergroup"/>
         </security-role>
       </application-bnd>
-      <classloader delegation="parentLast">
+      <classloader delegation="parentLast">           
       </classloader>
    </application>
 
@@ -1190,7 +1190,7 @@ Para configurar o Apache Tomcat para o Application Center manualmente, você dev
       </Context>
 
       <!-- Declare o aplicativo IBM Application Center Services. -->
-   <Context path="/applicationcenter" docBase="applicationcenter">
+      <Context path="/applicationcenter" docBase="applicationcenter">
           <!-- O diretório com binários do programa 'aapt', a partir do pacote de ferramentas de plataforma do SDK Android. -->
           <Environment name="android.aapt.dir"
                        value="product_install_dir/ApplicationCenter/tools/android-sdk"
@@ -1287,7 +1287,7 @@ Além das modificações para os bancos de dados descritos em [Instalando manual
           <group name="appcentergroup"/>
         </security-role>
       </application-bnd>
-      <classloader delegation="parentLast">
+      <classloader delegation="parentLast">           
       </classloader>
    </application>
 
@@ -1306,7 +1306,7 @@ Além das modificações para os bancos de dados descritos em [Instalando manual
    </basicRegistry>
    ```
 
-   Os grupos e usuários definidos no elemento **basicRegistry** são logins de exemplo, que podem ser usados para testar o Application Center. Da mesma forma, os grupos que são definidos no elemento `<security-role name="appcenteradmin">` são exemplos. Para obter informações adicionais sobre como modificar esses grupos, consulte [Configurando as funções de segurança Java EE no perfil Liberty do WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
+   Os grupos e usuários definidos no elemento **basicRegistry** são logins de exemplo, que podem ser usados para testar o Application Center. Da mesma forma, os grupos que são definidos no `<security-role name="appcenteradmin">` são exemplos. Para obter informações adicionais sobre como modificar esses grupos, consulte [Configurando as funções de segurança Java EE no perfil Liberty do WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
 
 3. Se o banco de dados for Oracle, inclua o atributo **commonLibraryRef** no carregador de classes do aplicativo Application Center.
 
@@ -2229,7 +2229,7 @@ Para o servidor Apache Tomcat, configure o terminal dos recursos de aplicativo n
 Desde o IBM Worklight V6.0, siga esse procedimento quando precisar mudar o protocolo URI, nome do host e porta usados pelo cliente Application Center para gerenciar os aplicativos em seu dispositivo.
 
 Edite o arquivo **server.xml** no diretório conf da instalação do Apache Tomcat.  
-Inclua uma entrada para cada propriedade na seção `<context>` do aplicativo correspondente. Essa entrada deve ter a seguinte sintaxe:
+Inclua uma entrada para cada propriedade no `<context>` do aplicativo correspondente. Essa entrada deve ter a seguinte sintaxe:
 
 ```xml
 <Environment name="JNDI_property_name" value="property_value" type="property_type" override="false"/>
@@ -2254,7 +2254,7 @@ Para obter uma lista completa de propriedades JNDI que podem ser configuradas, c
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 Este exemplo mostra as configurações das propriedades no arquivo **server.xml** necessárias para configurar o terminal dos recursos de aplicativo.
 
-Na seção `<context>` do aplicativo de console Application Center:
+No elemento `<context>` do aplicativo de console Application Center:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2262,7 +2262,7 @@ Na seção `<context>` do aplicativo de console Application Center:
 
 É possível usar o caractere asterisco (\*) como curinga para especificar que os serviços REST do Application Center usam o mesmo valor que o console do Application Center. Por exemplo: `*://*:*/appcenter` significa usar o mesmo protocolo, host e porta que o console do Application Center, mas usar appcenter como a raiz de contexto.
 
-Na seção `<context>` do aplicativo de serviços Application Center:
+No elemento `<context>` do aplicativo de serviços Application Center:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>

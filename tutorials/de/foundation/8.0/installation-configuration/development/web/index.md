@@ -79,6 +79,8 @@ Die Webanwendungsressourcen müssen für ihre Bereitstellung in einer Maven-Weba
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Sie müssen `mvn clean install` jedes Mal ausführen, wenn Sie eine Webressource aktualisieren.
 
+
+
 ### Maven-Webanwendung zum Anwendungsserver hinzufügen
 {: #adding-the-maven-webapp-to-the-application-server }
 1. Bearbeiten Sie die Datei **server.xml** Ihres WebSphere-Anwendungsservers.  

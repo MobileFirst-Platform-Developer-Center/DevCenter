@@ -123,8 +123,6 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 
 > 注: **mfp.admin.endpoint** プロパティーにより、コンソールは管理サービスの場所を探索できます。アスタリスク文字「\*」をワイルドカードとして使用して、管理サービスへの接続のためにコンソールが生成する URL が、コンソールへの着信 HTTP 要求と同じ値を使用するように指定することができます。例えば、`*://*:*/mfpadmin` は、コンソールと同じプロトコル、ホスト、およびポートを使用するが、**mfpadmin** をコンテキスト・ルートとして使用することを意味します。このプロパティーは、コンソール・アプリケーションに対して指定します。
 
-
-
 ### {{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} プッシュ・サービスおよび許可サーバーへ
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
 管理サービスはプッシュ・サービスと通信して、さまざまなプッシュ操作を要求します。 この通信は、OAuth プロトコルを使用して保護されます。両方のサービスが、機密クライアントとして登録されている必要があります。初期登録は、インストール時に行うことができます。このプロセスでは、両方のサービスが許可サーバーに接続する必要があります。この許可サーバーは、{{ site.data.keys.product }} ランタイムにすることができます。
@@ -137,8 +135,6 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 * **mfp.admin.authorization.client.secret** - OAuth ベースのトークンの取得に使用される秘密コード。
 
 > 注: 管理サービスの **mfp.push.authorization.client.id** プロパティーおよび **mfp.push.authorization.client.secret** プロパティーを使用して、管理サービスの開始時にプッシュ・サービスを機密クライアントとして自動的に登録することができます。プッシュ・サービスは同じ値で構成する必要があります。
-
-
 
 この通信を構成するための、プッシュ・サービスの JNDI プロパティーは次のとおりです。
 

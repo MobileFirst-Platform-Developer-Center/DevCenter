@@ -120,6 +120,8 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
 
 >**Hinweis:** Sie können Installationsprogramme und Datenbanktools aus den lokalen Installationsordnern des {{ site.data.keys.mf_app_center }} (`installer` und `tools`) herunterladen.
 
+
+
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -183,7 +185,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
@@ -210,7 +212,7 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 prepareappcenter.sh --name APP_NAME
@@ -229,7 +231,7 @@ prepareappcenter.sh --name APP_NAME
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 ./startappcenter.sh --name APP_NAME
@@ -318,7 +320,7 @@ oder einem zugänglichen DB2-Datenbankserver zu konfigurieren. Die DB2-Option ko
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
@@ -345,7 +347,7 @@ und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. F�
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 prepareserver.sh --name APP_NAME
@@ -363,7 +365,7 @@ prepareserver.sh --name APP_NAME
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                        Sie können die Parameter auch in der Befehlszeile übergeben. 
+                        Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
 ./startserver.sh --name APP_NAME 
@@ -430,7 +432,7 @@ folgenden Ordnern:
 
 1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben.
 2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **Paketstammverzeichnis/mfpf-analytics/usr**, **Paketstammverzeichnis/mfpf-server-libertyapp/usr** und **Paketstammverzeichnis/mfp-appcenter-libertyapp/usr**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
-3. Bearbeiten Sie die Datei **Paketstammverzeichnis/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie: 
+3. Bearbeiten Sie die Datei **Paketstammverzeichnis/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie:
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
 ```
@@ -440,7 +442,7 @@ folgenden Ordnern:
 
     b. `./startserver.sh` zum Starten des aktualisierten Servers
 
-    Eine Kopie der für die vorherige Implementierung verwendeten Argumente wurde im Verzeichnis `recorded-args/` gespeichert. Sie können diese Eigenschaften für Ihre Implementierung verwenden. 
+    Eine Kopie der für die vorherige Implementierung verwendeten Argumente wurde im Verzeichnis `recorded-args/` gespeichert. Sie können diese Eigenschaften für Ihre Implementierung verwenden.
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 

@@ -24,6 +24,8 @@ PVU 许可定价结构反映可用于已安装产品的处理器类型和数量�
 
 > [阅读了解](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)有关 PVU 许可的更多信息。
 
+
+
 ### 令牌许可
 {: #token-licensing }
 与预先定义好的每个许可证支持的数量这种传统浮动环境相比，在令牌环境中，每个产品都采用预先定义好的每个许可证支持的令牌值。 许可证密钥有一个令牌池，许可证服务器可通过该池计算出检入和检出的令牌数。 当产品在许可证服务器中检入或检出许可证时，便会使用或者释放令牌。

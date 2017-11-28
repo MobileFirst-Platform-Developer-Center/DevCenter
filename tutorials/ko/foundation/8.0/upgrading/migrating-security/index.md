@@ -44,6 +44,7 @@ V7.1 샘플 애플리케이션을 V8.0으로 마이그레이션하려면 다음 
 
 > **참고:** 
 > *  다음은 샘플 `AccountAdapter` 자원 어댑터를 마이그레이션하기 위한 지시사항입니다. 구현되는 어댑터 기반 인증은 V8.0에서 더 이상 지원되지 않으므로 샘플 `PinCodeAdapter`를 마이그레이션할 필요가 없습니다. [핀 코드 어댑터 기반 인증 영역 대체](#replacing-the-pin-code-adapter-based-authentication-realm) 단계는 V7.1 핀 코드 어댑터를 유사한 보호를 제공하는 V8.0 보안 검사로 대체하는 방법에 대해 설명합니다.
+
 > *  어댑터를 V8.0으로 마이그레이션하는 방법에 대한 지시사항은 [V8.0 마이그레이션 쿡북](../migration-cookbook)을 참조하십시오. 
 
 V7.1 샘플의 `AccountAdpter` 메소드는 메소드의 보호 범위(`UserLoginRealm` 및 `PinCodeRealm`)를 정의하는 `@OAuthSecurity` 어노테이션으로 보호됩니다. V8.0에서도 동일한 어노테이션이 사용되지만, 범위 요소의 의미가 다릅니다. V7.1에서는 범위 요소가 **authenticationConfig.xml** 파일에 정의된 보안 영역을 참조합니다. V8.0에서는 범위 요소가 {{ site.data.keys.mf_server }}에 배치된 어댑터에 정의되어 있는 보안 검사에 맵핑됩니다. 범위 요소 이름을 포함한 자원 보호 코드가 변경되지 않도록 선택할 수 있습니다. 그러나 {{ site.data.keys.product }} V8.0에서는 "영역(realm)"이라는 용어가 더 이상 사용되지 않으므로, V8.0 애플리케이션의 범위 요소 이름이 `UserLogin` 및 `PinCode`로 변경되었습니다. 

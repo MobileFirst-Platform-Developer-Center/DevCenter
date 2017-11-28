@@ -276,7 +276,7 @@ weight: 1
                 <h3>{{ site.data.keys.product }}의 IBM Bluemix에서 작성된 애플리케이션 실행</h3>
                 <p>개발자는 {{ site.data.keys.product }}에서 실행되도록 IBM Bluemix 애플리케이션을 마이그레이션할 수 있습니다. 마이그레이션하여 {{ site.data.keys.product }} API에 맞도록 클라이언트 애플리케이션에 대한 구성을 변경해야 합니다.</p>
 
-                <h3>IBM Bluemix에 대한 서비스로서의 {{site.data.keys.product }}</h3>
+                <h3>IBM Bluemix에 대한 서비스로서의 {{ site.data.keys.product }}</h3>
                 <p>이제 엔터프라이즈 모바일 앱을 작성 및 실행하기 위해 IBM Bluemix에서 {{ site.data.keys.mf_bm_full }} 서비스를 사용할 수 있습니다. </p>
 
                 <h3>.wlapp 파일 없음</h3>
@@ -399,7 +399,7 @@ weight: 1
                 </ul>
 
                 <p>{{ site.data.keys.mf_analytics_console }}은 이제 로그인한 사용자의 보안 역할을 기반으로 다른 컨텐츠를 표시합니다. <br/>
-자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">역할 기반 액세스 제어</a>를 참조하십시오.</p>
+                자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">역할 기반 액세스 제어</a>를 참조하십시오. </p>
 
                 <p>{{ site.data.keys.mf_analytics_server }}는 Elasticsearch V1.7.5를 사용합니다.</p>
 

@@ -53,12 +53,11 @@ weight: 4
 2. ソリューションの **MainPage.xaml.cs** ファイルを選択し、以下のコード・スニペットを GetAccessToken() メソッドに貼り付けます。
 
    ```csharp
-try
-                   {
-
-                       IWorklightClient _newClient = WorklightClient.CreateInstance();
+   try
+      {
+          IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
+          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";

@@ -58,4 +58,6 @@ Wenn Sie auf **Expand Operations** klicken, sehen Sie für jede Methode die Impl
 > Warnung: Alle Daten, die Sie mithilfe der Option **Try it out!** senden, können bereits im Datastore enthaltene Daten beeinträchtigen. Wenn Sie nicht ausdrücklich versuchen, Daten an Ihre Produktionsumgebung
 zu senden, verwenden Sie für den `x-mfp-analytics-api-key` einen Testnamen.
 
+
+
 ![Swagger-Dokumente testen](test-swagger.png)

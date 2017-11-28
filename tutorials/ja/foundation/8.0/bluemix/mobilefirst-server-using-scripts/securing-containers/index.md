@@ -254,9 +254,10 @@ String allowedIP =null;
 
 2. カスタム TAI 実装を .jar ファイルにエクスポートして、該当する **env** フォルダー (**mfpf-server/usr/env または mfpf-analytics/usr/env**) に入れます。
 3. TAI インターセプターの詳細を含む XML 構成ファイルを作成し (ステップ 1 で提供された TAI 構成のコード例を参照)、.xml ファイルを該当するフォルダー (**mfpf-server/usr/config** または **mfpf-analytics/usr/config**) に追加します。.xml ファイルは次の例に似たものになります。**ヒント:** 実際の実装を反映するようにクラス名とプロパティーを更新してください。
-   ```xml
+
+  ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
-    <server description="new server">
+   <server description="new server">
         <featureManager>
             <feature>appSecurity-2.0</feature>
         </featureManager>
@@ -273,8 +274,9 @@ String allowedIP =null;
         <library id="MFPConsoleTAI">
             <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
         </library>
-   </server>
-   ```
+    </server>
+  ```
+
 4. [イメージをビルドしてコンテナーを実行します](../)。これで、構成された TAI セキュリティー・メカニズムを満たしている場合にのみ、{{ site.data.keys.mf_console }} および Analytics Console にアクセス可能になりました。
 
 ## コンテナーの LDAP 構成
@@ -320,14 +322,12 @@ LDAP リポジトリーにユーザーとグループを作成します。グル
    </ldapRegistry>
    ```
 
-    項目| 説明
+    項目 | 説明
     --- | ---
     `host` および `port` | ローカル LDAP サーバーのホスト名 (IP アドレス) およびポート番号。
     `baseDN` | 特定の組織に関するすべての詳細をキャプチャーする、LDAP 内のドメイン・ネーム (DN)。
     `bindDN="uid=admin,ou=system"	` | LDAP サーバーのバインディング詳細。例えば、Apache Directory Service の場合のデフォルト値は `uid=admin,ou=system` です。
-
     `bindPassword="secret"	`| LDAP サーバーのバインディング・パスワード。例えば、Apache Directory Service の場合のデフォルト値は `secret` です。
-
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 認証および許可でディレクトリー・サービス (Apache など) に照会する際に使用するカスタム・フィルター。
 
 2. `appSecurity-2.0` および `ldapRegistry-3.0` で以下のフィーチャーが有効になっていることを確認します。

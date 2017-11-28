@@ -15,8 +15,6 @@ weight: 1
 
 > {{ site.data.keys.product }} を評価するために必要なことは、Mobile Foundation Bluemix サービスを使用して Bluemix で {{ site.data.keys.mf_server }} のインスタンスをスピンすることだけです。手順については、[Mobile Foundation の使用](../../../bluemix/using-mobile-foundation/)のチュートリアルを参照してください。ローカル・インストールの場合は、{{ site.data.keys.mf_dev_kit_short }} のインストールを選択することもできます。
 
-
-
 #### ジャンプ先:
 {: #jump-to }
 
@@ -35,8 +33,6 @@ MobileFirst Foundation をワークステーションに迅速にセットアッ
 {{ site.data.keys.mf_dev_kit_short }} には、最小限の必要構成ですぐに開発できる環境が用意されています。キットは、{{ site.data.keys.mf_server }} および {{ site.data.keys.mf_console }}、MobileFirst Developer コマンド・ライン・インターフェース (CLI) のコンポーネントで構成されるほか、オプションで、ダウンロード用のクライアント SDK およびアダプター・ツールを用意しています。
 
 > **注:**インターネットにアクセスできないコンピューターで開発環境をセットアップする必要がある場合、オフラインでコンポーネントをインストールすることが可能です。「[How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment)」を参照してください。
-
-
 
 ### {{ site.data.keys.mf_dev_kit_short }}Installer
 {: #developer-kit-installer }
@@ -77,8 +73,6 @@ MobileFirst Foundation をワークステーションに迅速にセットアッ
 - DevOps スクリプトの生成。これにより、継続的統合ワークフローが実現され、開発サイクルが短縮されます。
 
 > [MobilFirst Operations Console の使用](../../../product-overview/components/console/)のチュートリアルで、{{ site.data.keys.mf_console }} が詳細に説明されています。
-
-
 
 ### {{ site.data.keys.product }} コマンド・ライン・インターフェース
 {: #mobilefirst-foundation-command-line-interface }

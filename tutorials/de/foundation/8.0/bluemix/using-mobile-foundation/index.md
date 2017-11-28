@@ -16,7 +16,8 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 
 1. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan unterstützt nicht die Verwendung externer Datenbanken und die Definition mehrerer Knoten. *Er ist nur für Entwicklung und Tests bestimmt*. Die Serverinstanz ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. In diesem Plan ist der {{ site.data.keys.mf_analytics_service }} Service standardmäßig enthalten. 
 
-    > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenban an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
+    > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenbank an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
+
 
 2. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
 
@@ -25,6 +26,8 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 4. **Professional 1 Application**: Dieser Plan stellt {{ site.data.keys.mf_server }} in Form einer skalierbaren Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan erfordert einen dashDB-Datenbankservice, der separat erstellt und abgerechnet wird. Der Plan ermöglicht Benutzern die Erstellung und Verwaltung einer einzelnen mobilen Anwendung. Eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
 
 > Auf der [Serviceseite von bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) finden Sie weitere Informationen zu den verfügbaren Plänen und ihrer Fakturierung.
+
+
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
@@ -128,6 +131,8 @@ Sie können Unterstützung für {{ site.data.keys.mf_analytics_service }} zu Ihr
 
 >Wenn Sie die Instanz des {{ site.data.keys.mf_bm_short }} Service für den Plan **Developer** erstellen oder erneut erstellen, wird die Instanz des {{ site.data.keys.mf_analytics_service }} Service standardmäßig hinzugefügt.
 
+
+
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
@@ -146,6 +151,8 @@ Wenn die Operation abgeschlossen ist, müssen Sie in Ihrem Browser die Seite der
 {: #switching-from-analytics-container-to-analytics-service}
 
 >**Hinweis**: Wenn Sie {{ site.data.keys.mf_analytics_service }} löschen, werden alle verfügbaren Analysedaten entfernt. In der neuen Instanz von {{ site.data.keys.mf_analytics_service }} werden diese Daten nicht mehr verfügbar sein.
+
+
 
 Der Benutzer kann den aktuellen Container löschen, indem er im Servicedashboard auf die Schaltfläche **Analytics löschen** klickt. Damit wird die Analytics-Instanz entfernt und die Schaltfläche **Analytics hinzufügen** aktiviert, auf die der Benutzer klicken kann, um eine neue Instanz des {{ site.data.keys.mf_analytics_service }} Service hinzuzufügen. 
 

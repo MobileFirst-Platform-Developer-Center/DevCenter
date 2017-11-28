@@ -161,6 +161,7 @@ JAX-RS 2.0 アプリケーション・クラスは、そのアプリケーショ
 
 ```java
 package com.sample.adapter;
+
 import java.util.logging.Logger;
 import com.ibm.mfp.adapter.api.MFPJAXRSApplication;
 
@@ -190,6 +191,7 @@ JAX-RS 2.0 リソースは、ルート URL にマップされる POJO (Plain Old
 
 ```java
 package com.sample.adapter;
+
 import java.util.logging.Logger;
 
 import javax.ws.rs.GET;
@@ -227,7 +229,6 @@ public class JavaAdapterResource {
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**重要:** アダプター実装内で `javax.ws.rs.*` または `javax.servlet.*` からクラスへの静的参照を使用する場合、以下のいずれかのオプションを使用して必ず **RuntimeDelegate** を構成する必要があります。
-
 *	Liberty `jvm.options` で `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
 または
 *	システム・プロパティーまたは JVM カスタム・プロパティー `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` を設定します
@@ -252,14 +253,14 @@ Java クラス内に、クラス・レベルで以下を追加します。
 
 ```java
 @Context
-	ConfigurationAPI configurationAPI;
-
-	```
+ConfigurationAPI configurationAPI;
+```
 
 その後、`configurationAPI` インスタンスを使用してプロパティーを取得できます。
 
 ```java
-configurationAPI.getPropertyValue ("DB_url");```
+configurationAPI.getPropertyValue("DB_url");
+```
 
 アダプター構成が {{ site.data.keys.mf_console }} から変更されると、JAX-RS アプリケーション・クラスが再ロードされ、その `init` メソッドが再び呼び出されます。
 
@@ -275,7 +276,8 @@ configurationAPI.getPropertyValue ("DB_url");```
 Java クラス内に、クラス・レベルで以下を追加します。
 
 ```java
-@Context AdaptersAPI adaptersAPI; 
+@Context
+AdaptersAPI adaptersAPI;
 ```
 
 [拡張アダプターの使用法とマッシュアップ](../advanced-adapter-usage-mashup)チュートリアルで使用例を参照できます。

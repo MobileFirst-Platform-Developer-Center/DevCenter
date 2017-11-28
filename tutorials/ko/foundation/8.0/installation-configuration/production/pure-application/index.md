@@ -184,6 +184,8 @@ V6.0.0 및 이전 버전의 경우, 동일한 버전의 서버, **.war** 파일,
 
 > **중요:** {{ site.data.keys.product }}(WAS ND) 패턴 템플리트는 토큰 라이센싱을 지원하지 않습니다. {{ site.data.keys.product }}(WAS ND) 패턴 템플리트에 기반하여 패턴을 배치할 때는 영구 라이센싱을 사용해야 합니다. 기타 모든 패턴 템플리트에서는 토큰 라이센싱을 지원합니다.
 
+
+
 IBM Rational License Key Server는 PureApplication  System의 외부에 있어야 합니다. {{ site.data.keys.system_pattern }}은 IBM Rational License Key Server에 대해 PureApplication System 공유 서비스를 지원하지 않습니다. 
 
 또한, 패턴 속성에 라이센스 키 서버 정보를 추가하려면 Rational License Key Server에 대한 다음 정보를 알아야 합니다. 
@@ -230,6 +232,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 
 
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -250,6 +253,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
     > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
     * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
@@ -276,6 +280,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
         > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
         
         **admin\_user**  
         3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
@@ -353,9 +358,11 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
     * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
     * 패턴을 저장하십시오.
-3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오.
+
 
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -376,6 +383,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
     > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
     * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
@@ -406,6 +414,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
         > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
         
         **admin\_user**  
         3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
@@ -483,9 +492,11 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
     * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
     * 패턴을 저장하십시오.
-3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오.
+
 
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -506,6 +517,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
     > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
     * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
@@ -532,6 +544,8 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         표시되는 필드에 다음과 같은 정보를 제공하십시오.
         
         > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
+
         **WebSphere 관리 사용자 이름**  
         WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 ID입니다. 기본값: virtuser.
 
@@ -621,9 +635,11 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
     * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
     * 패턴을 저장하십시오.
-3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오.
+
 
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -644,6 +660,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
     > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
     * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
@@ -674,6 +691,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
         표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
         > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
         
         **runtime_contextRoot_list**  
         여러 런타임이 존재하는 경우 {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 세미콜론(";")을 사용하여 각 런타임 컨텍스트 루트를 구분하십시오(예: **HelloMobileFirst;HelloWorld**).
@@ -764,9 +782,11 @@ System Monitoring for WebSphere Application Server 공유 서비스를 실행 �
         * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
     * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
     * 패턴을 저장하십시오.
-3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오.
+
 
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -800,6 +820,7 @@ System Monitoring for WebSphere Application Server 공유 서비스를 실행 �
 6. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
     > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+
     * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
     * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
@@ -829,6 +850,8 @@ System Monitoring for WebSphere Application Server 공유 서비스를 실행 �
         표시되는 필드에 다음과 같은 정보를 제공하십시오.
         
         > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
+
         **WebSphere 관리 사용자 이름**  
         WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 ID입니다. 기본값: virtuser.
 
@@ -918,6 +941,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
     * PureApplication System 대시보드에서 패턴을 클릭한 후 패턴 인스턴스에서 공유 서비스를 클릭하십시오. 
 
         > **중요:** 공유 서비스는 **패턴** 메뉴에 두 번 표시되므로, 반드시 패턴이 아니라 **패턴 인스턴스**에 있는 **공유 서비스**를 클릭하십시오.
+
     * **공유 서비스 인스턴스 ** 페이지에서 **System Monitoring for WebSphere Application Server**로 시작하는 이름을 찾으십시오. 해당 이름을 클릭하여 해당 항목을 펼치십시오.
     
         **System Monitoring for WebSphere Application Server**의 항목이 표시되지 않는 경우, System Monitoring for WebSphere Application Server 공유 서비스가 표시되지 않으므로 이 프로시저를 계속할 필요가 없습니다. 
@@ -987,6 +1011,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
 3. 선택사항: **MFP AppCenter Server** 노드에서 **MFP Server Application Center**를 구성하십시오. 
     
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * **MFP AppCenter Server** 노드에서 **MFP Server Application Center** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -1006,6 +1031,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
     표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
     > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     
     **admin\_user**  
     3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
@@ -1093,6 +1119,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
 3. 선택사항: **MFP AppCenter Server** 노드에서 **MFP Server Application Center**를 구성하십시오. 
 
     > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
     * **MFP AppCenter Server** 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
     * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
@@ -1115,6 +1142,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
         표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
         > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+
         
         **admin\_user**  
         3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
@@ -1361,6 +1389,7 @@ LDAP 저장소 구성이 사용되는 경우 {{ site.data.keys.product_adj }} �
         외부 데이터베이스 포트 번호입니다.
         
         > **참고:** {{ site.data.keys.product }}(WAS ND) 패턴 템플리트를 사용 중인 경우, 외부 데이터베이스 포트 번호에 **WAS용 열린 방화벽 포트** 속성을 추가로 구성해야 합니다.
+
     * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 **MFP Server Runtime Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
     * **USE\_EXTERNAL\_DATABASE**에서 다음 매개변수를 구성하십시오. 
 
@@ -1384,6 +1413,8 @@ WebSphere  Application Server Liberty 프로파일 및 전체 프로파일 둘 �
 LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 서버가 작동 중인지 확인한 후 LDAP 관리자에게 문의하여 필요한 구성 정보를 얻으십시오. 
 
 > **중요:** Analytics 컴포넌트에서 LDAP 저장소 구성이 사용되는 경우 {{ site.data.keys.mf_analytics }}의 기본 관리 사용자가 작성되지 않습니다. 대신 LDAP 저장소에 저장되는 관리 사용자 이름 및 비밀번호를 지정해야 합니다. 이러한 값은 Analytics 콘솔을 보호하는 데 필요합니다.
+
+
 
 1. 필요한 토폴로지로 패턴을 빌드하십시오. 자세한 정보는 다음 주제를 참조하십시오.
     * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
@@ -1409,6 +1440,7 @@ LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 
         * WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_analytics }}를 배치하는 경우 {{ site.data.keys.mf_analytics }} 노드에서 **Standalone server**를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. **구성 데이터 위치** 필드에 경로 **/opt/IBM/WebSphere/AppServer/Profiles**를 입력하고 프로파일 이름을 **AppSrv01**로 변경한 후 관리 사용자 이름 및 비밀번호를 지정하십시오. 기타 매개변수에는 기본값을 사용하십시오. 
     
         > **중요:** WebSphere Application Server 관리 사용자가 WebSphere Application Server 사용자 저장소에 작성됩니다. Analytics 서버용으로 LDAP가 구성되는 경우, 사용자 이름과 WebSphere Application Server 관리 사용자가 충돌하지 않도록 하십시오. 예를 들어, LDAP 서버에서 해당 구성을 통해 "user1"을 도입하는 경우, "user1"을 WebSphere Application Server 관리 사용자 이름으로 설정하지 마십시오.
+
     * 컴포넌트 목록에서 **스크립트**를 펼친 후 **MFP Server Prerequisite** 컴포넌트 및 MFP WAS SDK Level 컴포넌트를 캔버스 위의 {{ site.data.keys.mf_analytics }} 노드로 끌어서 놓으십시오. 
     * 컴포넌트 목록에서 **스크립트**를 펼친 후 **MFP Analytics** 컴포넌트를 캔버스 위의 {{ site.data.keys.mf_analytics }} 노드로 끌어서 놓으십시오. MFP Analytics 컴포넌트가 Liberty profile server 컴포넌트(또는 Standalone server 컴포넌트) 다음에 배치되도록 해야 합니다. 
     * 표시되는 필드에 다음과 같은 {{ site.data.keys.mf_analytics }} 정보를 제공하십시오. 
@@ -1416,6 +1448,7 @@ LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 
         LDAP 매개변수는 MFP Server Administration 매개변수와 정확히 동일합니다. 자세한 정보는 3의 "MFP Server Administration을 구성하십시오" 단계를 참조하십시오. 
         
         > **중요:** {{ site.data.keys.mf_analytics }}에서의 LDAP SSL 연결 구성의 경우, [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)의 4b 단계에서, {{ site.data.keys.mf_analytics }} 노드 내에 끌어서 놓은 {{ site.data.keys.product_adj }} LDAP Cert 컴포넌트를 Liberty profile server(또는 Stanalone server)와 MFP Analytics 스크립트 패키지의 사이로 이동시켜야 합니다.
+
         
    #### WAS_ROOT
     * {{ site.data.keys.mf_analytics }}를 WebSphere Application Server Liberty 프로파일에 설치하는 경우, Analytics용 Liberty 프로파일의 설치 디렉토리를 지정하십시오. 
@@ -1462,14 +1495,14 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
     Liberty 프로파일의 경우 기본값을 사용할 수 있습니다. 
 
    #### admin_user
-    * LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오. 
+    * LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오. 
     * LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다. 
 
    #### admin_password
-    * LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오. 
+    * LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오. 
     * LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다. 
     
-    선택사항: {{site.data.keys.mf_analytics_console }} 보호를 위해 LDAP 저장소를 사용 가능하게 설정하십시오. {{ site.data.keys.mf_analytics }}의 LDAP 매개변수는 {{ site.data.keys.mf_server }} 관리용 매개변수와 정확히 동일합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)에서 "MFP Server Administration을 구성하십시오"(3단계)를 참조하십시오. 
+    선택사항: {{ site.data.keys.mf_analytics_console }} 보호를 위해 LDAP 저장소를 사용 가능하게 설정하십시오. {{ site.data.keys.mf_analytics }}의 LDAP 매개변수는 {{ site.data.keys.mf_server }} 관리용 매개변수와 정확히 동일합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)에서 "MFP Server Administration을 구성하십시오"(3단계)를 참조하십시오. 
 
 3. {{ site.data.keys.mf_analytics }} 연결용으로 {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 
     * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 **MFP Server Runtime Deployment** 컴포넌트를 선택하십시오. 
@@ -1495,7 +1528,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
             
     다음 그림은 {{ site.data.keys.product }} WAS ND 패턴에 추가된 {{ site.data.keys.mf_analytics }} 노드의 예를 보여줍니다. 
 
-    {{ site.data.keys.product }} WAS ND 패턴에 추가된 ![{{ site.data.keys.mf_analytics }} 노드](pureapp_analytics_node.jpg)
+    ![{{ site.data.keys.product }} WAS ND 패턴에 추가된 {{ site.data.keys.mf_analytics }} 노드](pureapp_analytics_node.jpg)
 
 4. 패턴 배치를 구성하고 실행하십시오. 
 
@@ -1669,8 +1702,8 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 | HEAP\_MAX\_SIZE	| WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>생성되는 Analytics 데이터의 양에 따라 추가 데이터 처리를 위한 추가 메모리가 필요합니다. WebSphere Application Server 전체 프로파일의 최대 힙 크기를 증가시킬 수 있도록 이 값을 설정하십시오. {{ site.data.keys.mf_analytics }}의 코어 OS 컴포넌트에서 지정된 메모리 크기가 이 값보다 커야 합니다. HEAP_MIN_SIZE와 동일한 값을 설정하는 것이 좋습니다.<br/><br/>기본값: 4096(MB).| 
 | WAS\_admin\_user| WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자입니다. WebSphere Application Server Liberty 프로파일의 경우 기본값을 변경하지 않고 그대로 두십시오.| 
 | WAS\_admin\_password| WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자 비밀번호입니다. WebSphere Application Server Liberty 프로파일의 경우 기본값을 변경하지 않고 그대로 두십시오.| 
-| admin_user| 필수. {::nomarkdown}<ul><li>LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오. </li><li>LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다. </li></ul> |
-| admin_password| 필수. <ul><li>LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오. </li><li>LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다. </li></ul>{:/} | 
+| admin_user| 필수. {::nomarkdown}<ul><li>LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오. </li><li>LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다. </li></ul> |
+| admin_password| 필수. <ul><li>LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오. </li><li>LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다. </li></ul>{:/} | 
 | LDAP_TYPE| (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>    LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다. <br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오. <br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오. <br/><br/>기본값: None. | 
 | LDAP_IP| (LDAP 매개변수).     LDAP 서버 IP 주소입니다. | 
 | LDAP\_SSL\_PORT| (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다.| 

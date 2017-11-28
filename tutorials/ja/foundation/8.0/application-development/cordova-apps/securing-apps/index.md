@@ -36,8 +36,7 @@ Web リソースを暗号化した後に上にリストされているコマン�
     - Cordova パッケージのビルド時に `mfpwebencrypt` フラグを `cordova compile` コマンドまたは `cordova build` コマンドに追加することで、Cordova パッケージの Web リソースを暗号化することもできます。
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
     <br/>
-**www** フォルダー内のオペレーティング・システム情報が、暗号化コンテンツを含んだ **resources.zip** ファイルに置き換えられます。
-  
+**www** フォルダー内のオペレーティング・システム情報が、暗号化コンテンツを含んだ **resources.zip** ファイルに置き換えられます。  
     アプリケーションが Android オペレーティング・システム用であり、**resources.zip** ファイルが 1 MB より大きい場合、**resources.zip** ファイルは小さい 768 KB の .zip ファイルに分割され、各ファイルの名前は **resources.zip.nnn** になります。変数 nnn は、001 から 999 までの数字です。
 4. プラットフォーム固有のツールで提供されているエミュレーターによって、暗号化リソースを持つアプリケーションをテストします。例えば、Android の場合は Android Studio、iOS の場合は Xcode のエミュレーターを使用できます。
 
@@ -71,7 +70,8 @@ Cordova アプリケーションの Web リソース・チェックサム機能�
    例えば、次のとおりです。  
 
    ```bash
-mfpdev app config android_security_test_web_resources_checksum true```
+   mfpdev app config android_security_test_web_resources_checksum true
+   ```
 
    コマンドで **true** を **false** に置き換えることで、この機能を無効にすることができます。
 
@@ -86,7 +86,8 @@ mfpdev app config android_security_test_web_resources_checksum true```
    複数の拡張子は、間にスペースを入れず、コンマで区切る必要があります。例えば、次のとおりです。
 
    ```bash
-mfpdev app config android_security_ignore_file_extensions jpg,png,pdf```
+   mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
+   ```
 
 **重要:** このコマンドを実行すると、設定されている値が上書きされます。
 

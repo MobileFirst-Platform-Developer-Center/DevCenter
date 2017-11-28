@@ -101,8 +101,6 @@ initenv.sh スクリプトを再実行して Bluemix にログインし、失敗
 
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
-
-
 **解決方法**  
 手動でコンテナーを再始動します。それでも問題が解決されない場合は、データベース・サービスへの接続数が、データベース計画によってプロビジョンされた接続数を超えていないかどうか確認してください。超えている場合は、続行する前に、必要な調整を実行してください。
 

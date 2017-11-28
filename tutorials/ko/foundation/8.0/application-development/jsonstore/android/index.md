@@ -31,7 +31,7 @@ downloads:
 2. 기존 `dependencies` 섹션에 다음을 추가하십시오. 
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
 ## 기본 사용법

@@ -13,14 +13,15 @@ weight: 1
 
 {{ site.data.keys.mf_bm_short }} 服务提供了以下计划选项：
 
-1. **Developer**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序。此计划不支持使用外部数据库或定义多个节点*，并且仅限于开发和测试*。服务器实例支持您注册任意数量的移动应用程序用于开发和测试。在此计划中，缺省情况下会添加 {{ site.data.keys.mf_analytics_service }} 服务。
+1. **Developer**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序。 此计划不支持使用外部数据库或定义多个节点*，并且仅限于开发和测试*。 服务器实例支持您注册任意数量的移动应用程序用于开发和测试。 在此计划中，缺省情况下会添加 {{ site.data.keys.mf_analytics_service }} 服务。
 
     > **注：**“Developer”计划不提供持续性数据库，因此请务必备份配置，如[“故障诊断”部分中](#troubleshooting)所述。
-2. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。费用取决于环境的总规模。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
 
-3. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。它支持大型部署和高可用性。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。费用取决于环境的总规模。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
+2. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。 此计划要求您具有 **dashDB OLTP 服务**。 dashDB 服务单独创建和计费。 此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。 费用取决于环境的总规模。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
 
-4. **Professional 1 Application**：此计划在 Liberty for Java 运行时上的可扩展 Cloud Foundry 应用程序中提供 {{ site.data.keys.mf_server }}。此计划也需要 dashDB 数据库服务，此服务单独创建并计费。此计划允许用户构建和管理单个移动应用程序。单个移动应用程序可包含多种类型，例如，iOS、Android、Windows 和 Mobile Web。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
+3. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。 它支持大型部署和高可用性。 此计划要求您具有 **dashDB OLTP 服务**。 dashDB 服务单独创建和计费。 费用取决于环境的总规模。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
+
+4. **Professional 1 Application**：此计划在 Liberty for Java 运行时上的可扩展 Cloud Foundry 应用程序中提供 {{ site.data.keys.mf_server }}。 此计划也需要 dashDB 数据库服务，此服务单独创建并计费。 此计划允许用户构建和管理单个移动应用程序。 单个移动应用程序可包含多种类型，例如，iOS、Android、Windows 和 Mobile Web。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
 
 > [请参阅 Bluemix.net 上的服务页面](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)以获取有关可用计划及其计费方式的更多信息。
 
@@ -44,7 +45,7 @@ weight: 1
 
 1. 访问 [bluemix.net](http://bluemix.net)、登录，并单击**目录**。
 2. 搜索 **Mobile Foundation** 并单击生成的选项。
-3. *可选*。输入服务实例的定制名称，或者使用提供的缺省名称。
+3. *可选*。 输入服务实例的定制名称，或者使用提供的缺省名称。
 4. 选择期望的定价计划，然后单击**创建**。
 
     <img class="gifplayer" alt="创建 {{ site.data.keys.mf_bm_short }} 服务实例" src="service-creation.png"/>
@@ -76,7 +77,7 @@ weight: 1
     - 您可以保留服务器配置的基本级别，并单击**启动基本服务器**，或者
     - 在[“设置”选项卡](#advanced-server-configuration)中更新服务器配置，并单击**启动高级服务器**。
 
-    在此步骤中，会针对 {{ site.data.keys.mf_bm_short }} 服务生成 Cloud Foundry 应用程序，并初始化 MobileFirst Foundation 环境。此步骤可能需要 5 到 10 分钟才能完成。
+    在此步骤中，会针对 {{ site.data.keys.mf_bm_short }} 服务生成 Cloud Foundry 应用程序，并初始化 MobileFirst Foundation 环境。 此步骤可能需要 5 到 10 分钟才能完成。
 
 3. 实例就绪后，您可以[使用服务](#using-the-mobile-foundation-service)。
 
@@ -92,7 +93,7 @@ weight: 1
 单击**添加分析**以将 {{ site.data.keys.mf_analytics_service }} 支持添加到服务器实例中。
 在[添加分析支持](#adding-analytics-support)部分中了解更多信息。
 
-单击**启动控制台**以打开 {{ site.data.keys.mf_console }}。缺省用户名为“admin”，可通过单击“眼睛”图标来显示密码。
+单击**启动控制台**以打开 {{ site.data.keys.mf_console }}。 缺省用户名为“admin”，可通过单击“眼睛”图标来显示密码。
 
 ![{{ site.data.keys.mf_bm_short }} 设置图像](dashboard.png)
 
@@ -125,6 +126,7 @@ weight: 1
 您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics_service }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。 此操作会提供 {{ site.data.keys.mf_analytics_service }} 服务实例。
 
 >创建或重新创建 {{ site.data.keys.mf_bm_short }} 服务的 **Developer** 计划实例时，缺省情况下会添加 {{ site.data.keys.mf_analytics_service }} 服务实例。
+
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
@@ -135,19 +137,20 @@ weight: 1
 ##  除去 {{ site.data.keys.mf_analytics_service }} 支持
 {: #removing-analytics-support}
 
-您可以通过单击服务的“仪表板”页面上的**删除分析**来除去针对 {{ site.data.keys.mf_bm_short }} 服务实例的 {{ site.data.keys.mf_analytics_service }} 支持。此操作会删除 {{ site.data.keys.mf_analytics_service }} 服务实例。
+您可以通过单击服务的“仪表板”页面上的**删除分析**来除去针对 {{ site.data.keys.mf_bm_short }} 服务实例的 {{ site.data.keys.mf_analytics_service }} 支持。 此操作会删除 {{ site.data.keys.mf_analytics_service }} 服务实例。
 
 此操作完成后，请在浏览器中重新装入 {{ site.data.keys.mf_console }} 页面。
 
 ##  从使用 IBM Containers 部署的分析切换到分析服务
 {: #switching-from-analytics-container-to-analytics-service}
 
->**注**：删除 {{ site.data.keys.mf_analytics_service }} 将除去所有可用分析数据。此数据在新的 {{ site.data.keys.mf_analytics_service }} 实例中将不可用。
-用户可以通过单击服务仪表板中的**删除分析**按钮来删除当前容器。这将除去分析实例，并启用**添加分析**按钮，用户可单击此按钮以添加新的 {{ site.data.keys.mf_analytics_service }} 服务实例。
+>**注**：删除 {{ site.data.keys.mf_analytics_service }} 将除去所有可用分析数据。 此数据在新的 {{ site.data.keys.mf_analytics_service }} 实例中将不可用。
+
+用户可以通过单击服务仪表板中的**删除分析**按钮来删除当前容器。 这将除去分析实例，并启用**添加分析**按钮，用户可单击此按钮以添加新的 {{ site.data.keys.mf_analytics_service }} 服务实例。
 
 ## 应用 {{ site.data.keys.mf_server }} 修订
 {: #applying-mobilefirst-server-fixes }
-对 {{ site.data.keys.mf_bm }} 服务的更新会自动应用，无需人为干预，无需同意执行更新。档更新可用时，会在服务的“仪表板”页面中显示一个条幅，其中包含指示信息和操作按钮。
+对 {{ site.data.keys.mf_bm }} 服务的更新会自动应用，无需人为干预，无需同意执行更新。 档更新可用时，会在服务的“仪表板”页面中显示一个条幅，其中包含指示信息和操作按钮。
 
 ## 访问服务器日志
 {: #accessing-server-logs }
@@ -189,7 +192,7 @@ cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
 
 ## 故障诊断
 {: #troubleshooting }
-Developer 计划不提供持续性数据库，这有时可能会导致数据丢失。要在此类情况下快速开始使用，请确保遵循如下最佳实践：
+Developer 计划不提供持续性数据库，这有时可能会导致数据丢失。 要在此类情况下快速开始使用，请确保遵循如下最佳实践：
 
 * 每次执行以下任意服务器端操作时：
     * 部署适配器或者更新任何适配器配置或属性值

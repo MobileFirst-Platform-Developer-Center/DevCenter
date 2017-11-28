@@ -62,6 +62,8 @@ Gradle을 사용하여 {{ site.data.keys.product_adj }} SDK로 Android 애플리
 Android Studio 및 Android SDK가 올바르게 설정되었는지 확인하십시오. 시스템을 설정하는 방법에 대한 자세한 정보는 [Android Studio 개요](http://developer.android.com/tools/studio/index.html)를 참조하십시오. {{ site.data.keys.product }}로 업그레이드하려면 먼저 프로젝트가 Android Studio/Gradle 설정을 준수하고 오류 없이 컴파일되어야 합니다. 
 
 > **참고:** 이 태스크는 Android 프로젝트가 Android Studio로 작성되었고 [Android Studio를 사용하여 신규 또는 기존 애플리케이션에 {{ site.data.keys.product }} SDK 추가(7.1)](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)에서 설명하는 것처럼 {{ site.data.keys.product_adj }} SDK가 함께 추가되었다고 가정합니다.
+
+
 Android Studio 프로젝트가 이전 버전의 {{ site.data.keys.product_adj }} SDK를 추가하도록 설정된 경우, **build.gradle** 종속 항목 격납장치에서 **compile** 그룹을 제거하십시오. 예를 들어, 7.1에서 업그레이드하는 경우 다음 그룹을 제거하십시오. 
 
 ```xml
@@ -75,6 +77,8 @@ compile group: 'com.ibm.mobile.foundation',
 이제 로컬 또는 원격 SDK 파일을 사용하여 V8.0.0 SDK 및 구성을 추가할 수 있습니다. [Android 애플리케이션에 {{ site.data.keys.product_adj }} SDK 추가](../../../application-development/sdk/android)를 참조하십시오. 
 
 > 참고: 새 SDK를 가져온 후에는 수동으로 Javadoc 파일을 가져와야 합니다. [Android Studio Gradle 프로젝트에 Javadoc 등록](../../../application-development/sdk/android/additional-information)을 참조하십시오.
+
+
 
 이제 {{ site.data.keys.product_adj }} SDK를 사용하여 고유 Android 애플리케이션 개발을 시작할 수 있습니다. V8.0.0 API의 변경사항에 맞게 코드를 조정해야 할 수도 있습니다([Android 코드 업데이트](#updating-the-android-code) 참조). 
 

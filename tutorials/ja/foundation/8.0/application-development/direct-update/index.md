@@ -19,7 +19,7 @@ downloads:
 ダイレクト・アップデートは、Cordova iOS および Cordova Android のプラットフォームでサポートされます。
 
 **開発、テスト、実動でのダイレクト・アップデート**  
-開発とテストの目的で、開発者は通常、単にアーカイブを開発サーバーにアップロードすることにより、ダイレクト・アップデートを使用します。このプロセスは簡単に実装できる一方で、あまり安全ではありません。 のフェーズでは、組み込み {{ site.data.keys.product_adj }} 自己署名証明書から抽出された内部 RSA 鍵ペアが使用されます。
+開発とテストの目的で、開発者は通常、単にアーカイブを開発サーバーにアップロードすることにより、ダイレクト・アップデートを使用します。このプロセスは簡単に実装できる一方で、あまり安全ではありません。 このフェーズでは、組み込み {{ site.data.keys.product_adj }} 自己署名証明書から抽出された内部 RSA 鍵ペアが使用されます。
 
 ただし、実際の実動または実動前テストのフェーズの場合、アプリケーションをアプリケーション・ストアに公開する前に、セキュアなダイレクト・アップデートを実装することを強くお勧めします。セキュアなダイレクト・アップデートでは、実際の CA 署名サーバー証明書から抽出される RSA 鍵ペアが必要です。
 
@@ -56,8 +56,6 @@ downloads:
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **注:** ダイレクト・アップデートが実行された後、更新があるか再度チェックされるのは 60 分後です。
 
-
-
 ダイレクト・アップデート後、アプリケーションは、事前にパッケージされた Web リソースを使用しなくなります。代わりに、アプリケーションのサンドボックスからダウンロードされた Web リソースを使用します。デバイス上のアプリケーションのキャッシュが消去されると、パッケージされた元の Web リソースが再度使用されます。
 
 ![ダイレクト・アップデートがどのように機能するかを示した図](internal_function.jpg)
@@ -80,18 +78,21 @@ downloads:
 * .zip ファイルを作成し、コマンド `mfpdev app webupdate [server-name] [runtime-name]` を使用して別の {{ site.data.keys.mf_server }} にアップロードします。例えば、次のとおりです。
 
   ```bash
-mfpdev app webupdate myQAServer MyBankApps```
+  mfpdev app webupdate myQAServer MyBankApps
+  ```
 
 * コマンド `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]` を使用して、以前に生成した .zip ファイルをアップロードします。例えば、次のとおりです。
 
   ```bash
-mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip```
+  mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
+  ```
 
 * パッケージした Web リソースを {{ site.data.keys.mf_server }} に手動でアップロードします。
  1. それをアップロードせずに .zip ファイルを作成します。
 
     ```bash
-mfpdev app webupdate --build```
+    mfpdev app webupdate --build
+    ```
  2. {{ site.data.keys.mf_console }} をロードし、そのアプリケーション項目をクリックします。
  3. **「Web リソース・ファイルのアップロード (Upload Web Resources File)」**をクリックして、パッケージした Webリソースをアップロードします。
 
@@ -262,7 +263,8 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ダイレクト・アップデート・コンテキストを格納するグローバル変数を作成して、その後ダイレクト・アップデート・プロセスが失敗したときにそのダイレクト・アップデート・コンテキストを使用できるようにします。例えば、次のとおりです。
 
 ```javascript
-var savedDirectUpdateContext;```
+var savedDirectUpdateContext;
+```
 
 ダイレクト・アップデート・チャレンジ・ハンドラーを実装します。ダイレクト・アップデート・コンテキストをここに保存します。例えば、次のとおりです。
 
@@ -321,8 +323,6 @@ onStart: function(totalSize){
 差分ダイレクト・アップデートを使用して、アプリケーションは、その Web リソース全体ではなく、最後の更新以降に変更されたファイルのみをダウンロードできます。これは、ダウンロード時間の削減、帯域幅の節約、さらにユーザー・エクスペリエンス全体の向上につながります。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** **差分更新**が可能なのは、クライアント・アプリケーションの Web リソースが、サーバーに現在デプロイされているアプリケーションの 1 つ前のバージョンである場合に限られます。現在デプロイされているアプリケーションより複数バージョン前のクライアント・アプリケーション (クライアント・アプリケーションが更新された後、最低 2 回はアプリケーションがサーバーにデプロイされていることを意味します) は、**フル・アップデート**を受け取ります (Web リソース全体がダウンロードされ、更新されることを意味します)。
-
-
 
 ## セキュアなダイレクト・アップデート
 {: #secure-direct-update }

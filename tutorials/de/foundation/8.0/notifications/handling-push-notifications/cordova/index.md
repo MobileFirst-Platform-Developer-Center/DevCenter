@@ -22,6 +22,8 @@ Push-Benachrichtigungen in Cordova-Anwendungen gehandhabt werden.
 Jeder `MFPPush`-API-Aufruf kann in `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` eingeschlossen werden. Die bereitgestellte Beispielanwendung macht von dieser
 Ausweichlösung Gebrauch.
 
+
+
 Informationen zu Benachrichtigungen im Hintergrund und interaktiven Benachrichtigungen in iOS finden Sie in folgenden Abschnitten: 
 
 * [Benachrichtigungen im Hintergrund](../silent)
@@ -52,6 +54,8 @@ Fügen Sie mindestens eine der untersützten Plattformen (iOS, Android, Windows)
 > Wenn das {{ site.data.keys.product_adj }}-Cordova-SDK noch nicht im Projekt enthalten ist,
 folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }} zu Cordova-Anwendungen hinzufügen](../../../application-development/sdk/cordova).
 
+
+
 ### Push-Plug-in hinzufügen
 {: #adding-the-push-plug-in }
 1. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Cordova-Projekts.   
@@ -75,6 +79,8 @@ In Xcode müssen Sie Push-Benachrichtigungen für Ihre Anwendung in der Anzeige 
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Die für die Anwendung
 ausgewählte Bundle-ID (bundleId) muss mit der App-ID (AppId) übereinstimmen, die Sie zuvor auf der Apple-Developer-Site erstellt haben. Sehen Sie sich dazu das Lernprogramm [Übersicht über Push-Benachrichtigungen] an.
+
+
 
 ![Funktionalität in Xcode](push-capability.png)
 
