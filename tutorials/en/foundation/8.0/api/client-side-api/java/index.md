@@ -17,3 +17,6 @@ APIs for native Android applications.
 
 * **[Client-side push API](push)**  
     You can use Java push API to develop apps for the Android environment.
+
+* **[Client side JSONStore API](store)**  
+    You can use JSONStore API to work with the store for the Android environment.
