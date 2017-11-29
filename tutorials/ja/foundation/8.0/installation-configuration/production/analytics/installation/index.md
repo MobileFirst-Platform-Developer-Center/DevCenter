@@ -92,7 +92,7 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 
 ## {{ site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-{{ site.data.keys.mf_analytics }} EAR ファイルがあることを確認します。インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics.ear** ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
+{{ site.data.keys.mf_analytics }} EAR ファイルがあることを確認します。インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics.ear** ファイルは、`<mf_server_install_dir>\analytics` フォルダーにあります。WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
 
 1. **./wlp/bin** フォルダーで次のコマンドを実行して、サーバーを作成します。
 
@@ -106,8 +106,8 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Liberty サーバーの **./usr/servers/<serverName>/apps** フォルダーに **analytics.ear** ファイルを追加します。
-4. **./usr/servers/<serverName>/server.xml** ファイルの `<featureManager>` タグのコンテンツを以下のコンテンツに置換します。
+3. **analytics.ear** ファイルを、Liberty サーバーの `./usr/servers/<serverName>/apps` フォルダーに追加します。
+4. `./usr/servers/<serverName>/server.xml` ファイルの `<featureManager>` タグのコンテンツを以下のコンテンツに置換します。
 
    ```xml
    <featureManager>
