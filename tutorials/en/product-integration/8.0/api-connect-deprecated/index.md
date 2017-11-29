@@ -7,6 +7,7 @@ downloads:
   - name: Download Sample Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
 weight: 1
+published: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
