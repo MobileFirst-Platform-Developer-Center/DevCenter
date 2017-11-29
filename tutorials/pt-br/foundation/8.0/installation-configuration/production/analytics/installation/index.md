@@ -92,7 +92,7 @@ Por exemplo, se você configurar **shards** como 4 e **réplicas** como 2, poder
 
 ## Instalando o {{ site.data.keys.mf_analytics }} no WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }}. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). O arquivo **analytics.ear** está localizado na pasta **<mf_server_install_dir>\analytics**. Para obter informações adicionais sobre como fazer download e instalar o WebSphere Application Server Liberty, consulte o artigo [Sobre o WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) no IBM developerWorks.
+Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }}. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). O arquivo **analytics.ear** está localizado na pasta `<mf_server_install_dir>\analytics`. Para obter informações adicionais sobre como fazer download e instalar o WebSphere Application Server Liberty, consulte o artigo [Sobre o WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) no IBM developerWorks.
 
 1. Crie um servidor executando o comando a seguir em sua pasta **./wlp/bin**.
 
@@ -106,8 +106,8 @@ Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Inclua o arquivo **analytics.ear** na pasta **./usr/servers/<serverName>/apps** de seu Liberty Server.
-4. <featureManager>Substitua o conteúdo da tag `<featureManager>` do arquivo **./usr/servers/<serverName>/server.xml** pelo conteúdo a seguir:
+3. Inclua o arquivo **analytics.ear** na pasta `./usr/servers/<serverName>/apps` de seu Liberty Server.
+4. Substitua o conteúdo da tag `<featureManager>` do arquivo `./usr/servers/<serverName>/server.xml` pelo conteúdo a seguir:
 
    ```xml
    <featureManager>
