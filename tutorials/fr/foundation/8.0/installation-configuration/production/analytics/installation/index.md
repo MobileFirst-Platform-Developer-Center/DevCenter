@@ -94,7 +94,7 @@ Par exemple, si vous définissez 4 **fragments** et 2 **répliques**, passez à 
 
 ## Installation de {{ site.data.keys.mf_analytics }} sur WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Assurez-vous de disposer du fichier EAR de {{ site.data.keys.mf_analytics }}. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../appserver). Le fichier **analytics.ear** se trouve dans le dossier **<rép_install_serveur_mf>\analytics**. Pour plus d'informations sur le téléchargement et l'installation de WebSphere Application Server Liberty, voir l'article [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) sur le site IBM developerWorks.
+Assurez-vous de disposer du fichier EAR de {{ site.data.keys.mf_analytics }}. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../appserver). Le fichier **analytics.ear** se trouve dans le dossier `<mf_server_install_dir>\analytics`. Pour plus d'informations sur le téléchargement et l'installation de WebSphere Application Server Liberty, voir l'article [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) sur le site IBM developerWorks.
 
 1. Créez un serveur en exécutant la commande suivante dans votre dossier **./wlp/bin** :
 
@@ -108,8 +108,8 @@ Assurez-vous de disposer du fichier EAR de {{ site.data.keys.mf_analytics }}. Po
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Ajoutez le fichier **analytics.ear** dans le dossier **./usr/servers/<nom_serveur>/apps** de votre serveur Liberty.
-4. Remplacez le contenu de la balise `<featureManager>` du fichier **./usr/servers/<nom_serveur>/server.xml** par le contenu suivant :
+3. Ajoutez le fichier **analytics.ear** au dossier `./usr/servers/<serverName>/apps` de votre serveur Liberty.
+4. Remplacez le contenu de la balise `<featureManager>` du fichier `./usr/servers/<serverName>/server.xml` par le contenu suivant :
 
    ```xml
    <featureManager>

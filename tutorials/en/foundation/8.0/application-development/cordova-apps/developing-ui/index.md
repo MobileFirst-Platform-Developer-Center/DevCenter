@@ -9,21 +9,21 @@ weight: 1
 ## Overview
 {: #overview }
 Designing and implementing the UI of an application is an important part of the development process. {{ site.data.keys.product_adj }} Eclipse plugin along with Thym plugin assists with the development of cordova applications.
-Writing custom CSS style for each component from scratch can deliver a high level of customisation, but doing this also requires a large amount of resources.
+Writing custom CSS style for each component from scratch can deliver a high level of customization, but doing this also requires a large amount of resources.
 Sometimes it is better to use the existing JavaScript UI frameworks.
 This topic describes how to develop {{ site.data.keys.product_adj }} applications with two UI frameworks jQuery Mobile and a WYSIWYG editor provided in {{ site.data.keys.product_adj }} Studio’s Eclipse.
 
-To develop UI for cordova application using MobileFirst Eclipse plugin, do the following:
+To develop UI for Cordova application using MobileFirst Eclipse plugin, do the following:
 
 1. Download Eclipse.
-2. Install [Thym](http://marketplace.eclipse.org/content/eclipse-thym) plugin from the marketplace.
-3. Install [MobileFirst platform plugin](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio) from the marketplace.
+2. Install [Thym](http://marketplace.eclipse.org/content/eclipse-thym) plugin from the Eclipse marketplace.
+3. Install [MobileFirst platform plugin](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio) from the Eclipse marketplace.
 
 
 ## WYSIWYG Editor
 {: #wysiwyg-editor }
-A basic WYSIWYG editor is provided with the MobileFirst platform eclipse plugin for Mobile widgets for developer convenience.
-This editor provides the basic palette for the user to drag and drop a simple button or a text box and other HTML widgets. This is a Rapid Mobile Application Development tool that enables the user to develop a basic cordova application quickly.
+A WYSIWYG editor is provided with the MobileFirst Platform Eclipse plugin for HTML UI widgets for developer convenience.
+This editor provides the basic palette for the user to drag and drop UI widgets such as a button or a text box and other HTML widgets. This is a Rapid Mobile Application Development tool that enables the user to develop a Cordova application quickly.
 
 ![WYSIWYG Editor](wysiwyg-editor.png)
 
@@ -88,3 +88,4 @@ To add jQuery mobile to your application, do the following:
           	</body>
       </html>
     ```
+Once you add the references to jQuery Mobile in your HTML file, close and reopen the file in Eclipse. You will now see jQuery Mobile widgets in the Palette view which you can drag on drop on to your HTML canvas. 
