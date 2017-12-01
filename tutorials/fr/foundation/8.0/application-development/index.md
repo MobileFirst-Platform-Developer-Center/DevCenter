@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
 
-In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
+In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceRequest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
 
 You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
 
@@ -79,7 +79,7 @@ The server configuration for an app is tied to the combination of app ID, versio
 
 * Grab existing JSON configuration files from the server with the `mfpdev app pull` command, update the file, and upload the changed configuration with the `mfpdev app push` command.
 * Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../administering-apps/using-cli) and [Administering {{ site.data.keys.product_adj }} applications through Ant](../administering-apps/using-ant).
-* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
+* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/administration-service/).
 
 You can also use these methods to automate configuration of the {{ site.data.keys.mf_server }}.
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Live Update
-relevantTo: [ios,android]
+relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - name: Download Xcode project
@@ -16,7 +16,7 @@ downloads:
 {: #overview }
 User segmentation is the practice of dividing users into groups that reflect similarity among users in each group. A common example is [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), that is, dividing users on a geographical basis. The goal of segmenting users is to decide how to relate to them in each segment in order to maximize value.
 
-The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
+The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** and for Cordova applications) for consuming the configuration.
 
 #### Common Use Cases
 {: #common-use-cases }
@@ -89,8 +89,8 @@ You can also map the scope element to a security check in case you're using one 
 {: #schema-and-segments }
 Two tabs are available in the Live Update Settings screen:
 
-#### Schema
-{: #schema }
+#### What is Schema
+{: #what-is-schema }
 A schema is where features and properties are defined.  
 
 * Using "features" you can define configurable application features and set their default value.  
@@ -164,8 +164,8 @@ To add, click **New** and provide the requested values.
                             <li><i>id</i> - A unique segment identifier. String, Non-editable.</li>
                             <li><i>name</i> - A descriptive name of segment. String, Editable.</li>
                             <li><i>description</i> – A short description of segment. String, Editable.</li>
-                            <li><i>Features</i>  - A the list of features as defined in the schema, the user can set a static value to a feature which is detached from the schema default.</li>
-                            <li><i>Properties</i> - the list of properties as defined in the schema, the user can set a static value to a property which is detached from the schema default.</li>
+                            <li><i>Features</i>  - the list of features as defined in the schema, the user can set a static value to a feature which is different from the schema default.</li>
+                            <li><i>Properties</i> - the list of properties as defined in the schema, the user can set a static value to a property which is different from the schema default.</li>
                         </ul>
                     </li>
                 </ul>
@@ -249,7 +249,7 @@ cordova plugin add cordova-plugin-mfp-liveupdate
         transitive: true
    }   
    ```
-    
+
 ## Using the Live Update SDK
 {: #using-the-live-update-sdk }
 There are several approaches to using the Live Update SDK.
@@ -325,7 +325,7 @@ The Segment Resolver adapter defines a REST interface. The request to this adapt
 
 To obtain the configuration by parameters, use the Live Update API to send the request:
 
-#### Cordova
+#### Cordova Resolver
 {: cordova-resolver }
 ```javascript
 var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
