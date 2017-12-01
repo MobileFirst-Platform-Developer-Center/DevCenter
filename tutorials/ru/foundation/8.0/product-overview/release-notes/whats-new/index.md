@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 brings significant changes that modernize your {{ site.data.keys.product_adj }} application development, deployment, and management experience.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -77,7 +77,7 @@ weight: 1
         <div id="collapse-mobilefirst-apis" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-apis">
             <div class="panel-body">
                 <p>New features improve and extend the APIs that you can use to develop mobile applications. Use the latest APIs to take advantage of new, improved, or changed functions in {{ site.data.keys.product }}.</p>
-                
+
                 <h3>Updated JavaScript server-side API</h3>
                 <p>Back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.</p>
 
@@ -86,10 +86,10 @@ weight: 1
 
                 <h4>New Java server-side API for security</h4>
                 <p>The new security API package, <code>com.ibm.mfp.server.security.external</code>, and its contained packages, include the interfaces that are required for developing security checks and adapters that use the security-check context.</p>
-                
+
                 <h4>New Java server-side API for client registration data</h4>
                 <p>The new client registration-data API package, <code>com.ibm.mfp.server.registration.external</code>, and its contained packages, include an interface for providing access to persistent {{ site.data.keys.product_adj }} client registration data.</p>
-                
+
                 <h4>Application getJaxRsApplication()</h4>
                 <p>With this new API, you can return the JAX-RS application for the adapter.</p>
 
@@ -104,7 +104,7 @@ weight: 1
 
                 <h4>WLServerAPIProvider</h4>
                 <p>In V7.0.0 and V7.1.0, the Java API was accessible through the WLServerAPIProvider interface. For example: <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> and <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code></p>
-                
+
                 <p>These static interfaces are still supported, to allow adapters that were developed in previous versions of the product to compile and deploy. Old adapters that do not use push notifications or the previous security API continue to work with the new version. Adapters that do use push notifications or the previous security API break.</p>
 
                 <h3>JavaScript client-side APIs for web applications</h3>
@@ -118,14 +118,14 @@ weight: 1
                 <h3>New Java client-side APIs for Android</h3>
                 <h4>public void getDeviceDisplayName(final DeviceDisplayNameListener listener);</h4>
                 <p>With this new method, you can get the display name of a device from the {{ site.data.keys.mf_server }} registration data.</p>
-                
+
                 <h4>public void setDeviceDisplayName(String deviceDisplayName,final WLRequestListener listener);</h4>
                 <p>With this new method, you can set the display name of a device in the {{ site.data.keys.mf_server }} registration data.</p>
 
                 <h3>New Objective-C client-side APIs for iOS</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
                 <p>With this new method, you can get the display name of a device from the {{ site.data.keys.mf_server }} registration data.</p>
-                
+
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>With this new method, you can set the display name of a device in the {{ site.data.keys.mf_server }} registration data.</p>
 
@@ -134,10 +134,13 @@ weight: 1
 
                 <h3>Updated REST API for the runtime</h3>
                 <p>The REST API for the {{ site.data.keys.product_adj }} runtime now provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more. Most of the REST API endpoints are protected by OAuth. On a development server, you can view the Swagger doc for the runtime API at:  <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Multiple certificate pinning support</h3>
+                <p>Starting with iFix 8.0.0.0-IF201706240159, {{ site.data.keys.mf_bm_short }} supports pinning of multiple certificates. This allows users to have secure access to multiple hosts. Prior to this iFix, {{ site.data.keys.mf_bm_short }} supported pinning of a single certificate. {{ site.data.keys.mf_bm_short }} has introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates (purchased from a certificate authority) to the client application. A copy of all the certificates should be placed in your client application. During the SSL handshake, the {{ site.data.keys.product_full }} client SDK verifies that the public key of the server certificate matches the public key from one of the certificates that are stored in the app.</p>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-security">
             <h4 class="panel-title">
@@ -151,9 +154,9 @@ weight: 1
 
                 <h3>Security framework overhaul</h3>
                 <p>The {{ site.data.keys.product_adj }} security framework was redesigned and reimplemented to improve and simplify security development and administration tasks. The framework is now inherently based on the OAuth model, and the implementation is session-independent. See Overview of the {{ site.data.keys.product_adj }} security framework.</p>
-                
+
                 <p>On the server side, the multiple building blocks of the framework were replaced with security checks (implemented in adapters), allowing for simplified development with new APIs. Sample implementations and predefined security checks are provided. See Security checks. Security checks can be configured in the adapter descriptor, and customized by making runtime adapter or application configuration changes, without redeploying the adapter or disrupting the flow. The configurations can be done from the redesigned {{ site.data.keys.mf_console }} security interfaces. You can also edit the configuration files manually, or use the {{ site.data.keys.mf_cli }} or mfpadm tools.</p>
-                
+
                 <h3>Application-authenticity security check</h3>
                 <p>{{ site.data.keys.product_adj }} application-authenticity validation is now implemented as a predefined security check that replaces the previous "extended application authenticity checking". You can dynamically enable, disable, and configure application-authenticity validation by using either {{ site.data.keys.mf_console }} or mfpadm. A stand-alone {{ site.data.keys.product_adj }} application-authenticity Java tool (mfp-app-authenticity-tool.jar) is provided for generating an application-authenticity file.</p>
 
@@ -165,7 +168,7 @@ weight: 1
 
                 <h3>Cross-platform applications (Cordova apps), new and changed security features</h3>
                 <p>Additional security features are available to help protect your Cordova app. These features include the following:</p>
-                
+
                 <ul>
                     <li>Web resources encryption: Use this feature to encrypt the web resources in your Cordova package to help prevent someone from modifying the package.</li>
                     <li>Web resources checksum: Use this feature to run a checksum test that compares the current statistics of the web resources of the app with the baseline statistics that were established when it was first opened. This check helps to prevent someone from modifying the app after it is installed and opened.</li>
@@ -173,7 +176,7 @@ weight: 1
                     <li>Support for the Federal Information Processing Standard (FIPS) 140-2: Use this feature to ensure that data that is transferred is compliant with the FIPS 140-2 cryptography standard.</li>
                     <li>OpenSSL: To use OpenSSL data encryption and decryption with your Cordova app for the iOS platform, you can use the cordova-plugin-mfp-encrypt-utils Cordova plug-in.</li>
                 </ul>
-                
+
                 <h3>Device Single Sign-On</h3>
                 <p>Device single sign-on (SSO) is now supported by way of the new predefined <code>enableSSO</code> security-check application-descriptor configuration property.</p>
 
@@ -184,10 +187,10 @@ weight: 1
                     <li>If a client application accesses an unprotected resource, the application does not receive updates, even if an update is available on {{ site.data.keys.mf_server }}.</li>
                     <li>After it has been activated, Direct Update is enforced on every request for a protected resource.</li>
                 </ul>
-                
+
                 <h3>External-resources Protection</h3>
                 <p>The supported method and provided artifacts for protecting resources on external servers were modified:</p>
-                
+
                 <ul>
                     <li>A new, configurable {{ site.data.keys.product_adj }} Java Token Validator access-token validation module is provided for using the {{ site.data.keys.product_adj }} security framework to protect resources on any external Java server. The module is provided as a Java library (mfp-java-token-validator-8.0.0.jar), and replaces the use of the obsolete {{ site.data.keys.mf_server }} token-validation endpoint to create a custom Java validation module.</li>
                     <li>The {{ site.data.keys.product_adj }} OAuth Trust Association Interceptor (TAI) filter, for protecting Java resources on an external WebSphere  Application Server or WebSphere Application Server Liberty server, is now provided as a Java library (com.ibm.imf.oauth.common_8.0.0.jar). The library uses the new Java Token Validator validation module, and the configuration of the provided TAI changed.</li>
@@ -195,7 +198,7 @@ weight: 1
                     <li>The passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js framework, for protecting Java resources on an external Node.js server, was modified to support the new security framework.</li>
                     <li>You can also write your own custom filter and validation module, for any type of resource server, which uses the new introspection endpoint of the authorization server.</li>
                 </ul>
-                
+
                 <h3>Integration with WebSphere DataPower as an authorization server</h3>
                 <p>You can now select to use WebSphere DataPower  as the OAuth authorization server, instead of the default {{ site.data.keys.mf_server }} authorization server. You can configure DataPower to integrate with the {{ site.data.keys.product_adj }} security framework.</p>
 
@@ -204,7 +207,7 @@ weight: 1
 
                 <h3>Mobile-application management with {{ site.data.keys.mf_console }}</h3>
                 <p>Some changes were made to the support for tracking and managing mobile applications, users, and devices from {{ site.data.keys.mf_console }}. Blocking device or application access is applicable only to attempts to access protected resources.</p>
-                
+
                 <h3>{{ site.data.keys.mf_server }} keystore</h3>
                 <p>A single {{ site.data.keys.mf_server }} keystore is used for signing OAuth tokens and Direct Update packages, and for mutual HTTPS (SSL) authentication. You can dynamically configure this keystore by using either {{ site.data.keys.mf_console }} or mfpadm.</p>
 
@@ -213,7 +216,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="os-support">
             <h4 class="panel-title">
@@ -242,7 +245,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="deploy-manage-apps">
             <h4 class="panel-title">
@@ -250,24 +253,24 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>New {{ site.data.keys.product }} capabilities are introduced to help you deploy and manage your apps. You can now update your apps and adapters without restarting {{ site.data.keys.mf_server }}.</p>
 
                 <h3>Improved DevOps support</h3>
                 <p>{{ site.data.keys.mf_server }} has been significantly redesigned to better support your DevOps environment. {{ site.data.keys.mf_server }} is installed once into your application server environment, and no changes to the application server configuration are required when you upload an application or change the {{ site.data.keys.mf_server }} configuration.</p>
-                
+
                 <p>You do not need to restart {{ site.data.keys.mf_server }} when you update your apps or any adapters that your apps depend on. You can perform configuration operations, or upload a new version of an adapter or register a new application while the server is still handling traffic.</p>
 
                 <p>Configuration changes and development operations are protected by security roles.</p>
 
                 <p>You can upload development artifacts to the server in various ways to give you more operational flexibility:</p>
-                
+
                 <ul>
                     <li>{{ site.data.keys.mf_console }} is enhanced: In particular, you can now use it to register an application or a new version of an application, to manage app security parameters, and to deploy certificates, create push notification tags, and send push notifications. The console now also includes contextual help guides.</li>
                     <li>Command-line tool</li>
                 </ul>
-                
+
                 <p>Development artifacts that you upload to the server include adapters and their configuration, security configurations for your apps, push notification certificates, and log filters.</p>
 
                 <h3>Running applications that were created on IBM Bluemix on {{ site.data.keys.product }}</h3>
@@ -283,19 +286,19 @@ weight: 1
                     <li>You register an app in {{ site.data.keys.mf_server }} by deploying an application descriptor JSON file.</li>
                     <li>To update Cordova applications by using Direct Update, you upload an archive (.zip file) of the modified web resource to the server. The archive file no longer contains the web preview files or skins that were possible in previous versions of {{ site.data.keys.product }}. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.</li>
                 </ul>
-                
+
                 <p>To enable Direct Update of client Cordova apps that are installed on end-user devices, you must now deploy the modified web resources as an archive (.zip file) to the server. To enable secure Direct Update, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.</p>
 
                 <h3>Adapters</h3>
                 <h4>Adapters are Apache Maven projects.</h4>
                 <p>Adapters are now treated as Maven projects. You can create, build, and deploy adapters by using standard command-line Maven commands or using any IDE that supports Maven, such as Eclipse and IntelliJ.</p>
-    
+
                 <h4>Adapter configuration and deployment in DevOps environments</h4>
                 <ul>
                     <li>{{ site.data.keys.mf_server }} administrators can now use the {{ site.data.keys.mf_console }} to modify the behavior of an adapter that has been deployed. After reconfiguration, the changes take effect in the server immediately, without the need to redeploy the adapter, or restart the server.</li>
                     <li>You can now "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time, while {{ site.data.keys.mf_server }} is still serving traffic.</li>
                 </ul>
-                
+
                 <h4>Changes in the adapter descriptor file</h4>
                 <p>The <b>adapter.xml</b> descriptor file has changed slightly. For more information on the structure of the adapter descriptor file for adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Adapters tutorials</a>.</p>
 
@@ -304,10 +307,10 @@ weight: 1
 
                 <h4>Support for JavaScript adapters</h4>
                 <p>JavaScript adapters are supported with HTTP and SQL connectivity types, only.</p>
-                
+
                 <h4>Support for JAX-RS 2.0</h4>
                 <p>JAX-RS 2.0 introduces new server-side functionality: server-side asynchronous HTTP, filters and interceptors.  Adapters can now exploit these new features.</p>
-                
+
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
                 <p>{{ site.data.keys.product }} on IBM Containers released for V8.0.0 is available on the <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage site</a>. This version of {{ site.data.keys.product }} on IBM Containers is production ready and supports enterprise dashDB™ transactional database on IBM Bluemix.</p>
 
@@ -320,7 +323,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-server">
             <h4 class="panel-title">
@@ -335,7 +338,7 @@ weight: 1
                 <p>The new {{ site.data.keys.mf_server }} design introduces two new components, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.mf_server }} artifacts.</p>
 
                 <p>{{ site.data.keys.mf_server }} live update service is designed to help reduce the time and cost of incremental updates for your apps. It manages and stores the server-side configuration data of the apps and adapters. You can change or update various parts of your app with rebuilding or redeploying your app:</p>
-                
+
                 <ul>
                     <li>Dynamically change or update app behavior based on user segments that you define.</li>
                     <li>Dynamically change or update server-side business logic.</li>
@@ -353,9 +356,9 @@ weight: 1
                     <li>Installing a server farm</li>
                     <li>Tutorials about {{ site.data.keys.mf_server }} installation</li>
                 </ul>
-                    
+
                 <p>{{ site.data.keys.mf_server }} also supports Liberty collective. For more information about the server topology and various installation methods, see the following topics:</p>
-                
+
                 <ul>
                     <li>Liberty collective topology</li>
                     <li>Running the Server Configuration Tool</li>
@@ -365,7 +368,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-analytics">
             <h4 class="panel-title">
@@ -406,7 +409,7 @@ weight: 1
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-push">
             <h4 class="panel-title">
@@ -427,7 +430,7 @@ weight: 1
                     <li>Mobile client applications</li>
                     <li>Back-end server applications</li>
                 </ul>
-                
+
                 <h3>Security for push notification service</h3>
                 <p>{{ site.data.keys.product }} authorization server enforces the OAuth protocol to secure push notification service.</p>
 
@@ -449,7 +452,7 @@ weight: 1
                     <li>Using Push Message (POST) REST API, all forms of notifications can be sent: tag, broadcast, and authenticated.</li>
                     <li>Using REST API for the {{ site.data.keys.mf_server }} administration service, all forms of notifications can be sent: tag, broadcast, and authenticated.</li>
                 </ul>
-                
+
                 <h3>Sending SMS notifications</h3>
                 <p>You can configure the push service to send a short message service (SMS) notification to user devices.</p>
 
@@ -458,6 +461,19 @@ weight: 1
 
                 <h3>Push service model is supported on Windows Universal Platform apps</h3>
                 <p>You can now migrate native Windows Universal Platform (UWP) applications to use the push service model to send push notifications.</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-appcenter">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-appcenter" aria-expanded="true" aria-controls="collapse-mobilefirst-appcenter">What's new in {{ site.data.keys.mf_app_center }} </a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_app_center }} is now supported in Bluemix (based on containers) via BYOL scripts.</p>
             </div>
         </div>
     </div>
