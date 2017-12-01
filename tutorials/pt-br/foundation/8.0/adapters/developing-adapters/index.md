@@ -47,7 +47,7 @@ Follow the bellow instructions to either create a new adapter Maven project or i
     - Click on **Add Archetype** and provide the following details:
         - **Archetype Group Id**: `com.ibm.mfp`
         - **Archetype Artifact Id**: either `adapter-maven-archetype-java`, `adapter-maven-archetype-http` or `adapter-maven-archetype-sql`
-        - **Archetype Version**: `8.0.2016061011` (you can find the latest available version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation))
+        - **Archetype Version**: you can find the latest available version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp)
 
     ![Image showing how to create an adapter Maven project in Eclipse](create-an-archetype.png)
 
