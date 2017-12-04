@@ -158,7 +158,8 @@ var MFPSEARCH = {
     init: function() {
         this.client = new $.es.Client({
             protocol: 'https',
-            hosts: 'mfpsearch.mybluemix.net'
+            // hosts: 'mfpsearch.mybluemix.net'
+            hosts: '169.48.167.218:32330'
             // hosts: 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448'
         });
 
