@@ -157,11 +157,11 @@ var MFPSEARCH = {
     },
     init: function() {
         this.client = new $.es.Client({
-            //protocol: 'https',
-            protocol: 'http',
+            protocol: 'https',
             // hosts: 'mfpsearch.mybluemix.net'
-            hosts: '169.48.167.218',
-            port: '31418'
+            hosts: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
+            port: '29660'
+
             // hosts: 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448'
         });
 
