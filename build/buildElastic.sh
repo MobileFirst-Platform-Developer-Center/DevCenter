@@ -23,5 +23,5 @@ rm -f _site/*.log
 
 #curl -u $ELASTICCREDENTIALS -X DELETE "mfpsearch.mybluemix.net/dev_center"
 #curl -u $ELASTICCREDENTIALS -XPOST 'mfpsearch.mybluemix.net/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
-curl -u $ELASTICSVCCREDENTIALS -X DELETE "https://admin:DPEKZCXTYVUMWJQZ@portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660/dev_center" --verbose
+#curl -u $ELASTICSVCCREDENTIALS -X DELETE "https://admin:DPEKZCXTYVUMWJQZ@portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660/dev_center" --verbose
 curl -u $ELASTICSVCCREDENTIALS -XPOST 'https://admin:DPEKZCXTYVUMWJQZ@portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json" --verbose
