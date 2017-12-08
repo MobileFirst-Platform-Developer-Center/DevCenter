@@ -23,5 +23,5 @@ rm -f _site/*.log
 
 #curl -u $ELASTICCREDENTIALS -X DELETE "mfpsearch.mybluemix.net/dev_center"
 #curl -u $ELASTICCREDENTIALS -XPOST 'mfpsearch.mybluemix.net/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
-curl -u $ELASTICCREDENTIALS -X DELETE "169.48.167.218:32330/dev_center"
-curl -u $ELASTICCREDENTIALS -XPOST '169.48.167.218:32330/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
+curl -u $ELASTICCREDENTIALS -X DELETE "169.48.167.218:31418/dev_center"
+curl -u $ELASTICCREDENTIALS -XPOST '169.48.167.218:31418/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
