@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on Bluemix service
+title: Using the Mobile Foundation on IBM Cloud service
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
@@ -8,8 +8,8 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
-{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on IBM Cloud by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
+{{ site.data.keys.mf_bm_short }} is a IBM Cloud service that enables quick and easy stand-up of scalable Developer or Production environments of Mobile Foundation v8.0 on **Liberty for Java runtime**.
 
 The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
@@ -23,7 +23,7 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
 4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
+> [See the service details](https://console.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
 
 #### Jump to:
 {: #jump-to}
@@ -43,7 +43,7 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 {: #setting-up-the-mobile-foundation-service }
 To set up the available plans, first follow these steps:
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
+1. Go to [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
 2. Search for **Mobile Foundation** and click on the resulting tile option.
 3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
 4. Select the desired pricing plan, then click **Create**.
@@ -55,7 +55,7 @@ To set up the available plans, first follow these steps:
 
 Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }}.
   * You can instantly access and work with the {{ site.data.keys.mf_server }}.
-  * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the Bluemix console.
+  * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the IBM Cloud console.
 
   ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
@@ -159,7 +159,7 @@ To access server logs, follow the steps described below.
 **Scenario 1:**
 
 1. Set up your host machine.<br/>
-   To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.<br/>
+   To manage the IBM Cloud Cloud Foundry app, you need to install the Cloud Foundry CLI.<br/>
    Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases).
 2. Open the terminal and log in to your *Organization* and *Space* using `cf login`.
 3. Execute the following command in the CLI:
