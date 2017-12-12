@@ -33,18 +33,18 @@ If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/
 ### 2. Creating and registering an application
 {: #creating-and-registering-an-application }
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
- 
+
 1. Click the **New** button next to **Applications**
     * Select the **Web** platform
     * Enter **com.ibm.mfpstarterweb** as the **application identifier**
     * Click on **Register application**
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-web.png"/>
- 
+
 2. Click on the **Get Starter Code** tile and select to download the Web sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
- 
+
 ### 3. Editing application logic
 {: #editing-application-logic }
 1. Open the project in your code editor of choice.
@@ -57,12 +57,12 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
             function(accessToken) {
                 titleText.innerHTML = "Yay!";
                 statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-                
+
                 var resourceRequest = new WLResourceRequest(
                     "/adapters/javaAdapter/resource/greet/",
                     WLResourceRequest.GET
                 );
-                
+
                 resourceRequest.setQueryParameter("name", "world");
                 resourceRequest.send().then(
                     function(response) {
@@ -81,13 +81,13 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
             }
         );
    ```
-    
+
 ### 4. Deploy an adapter
 {: #deploy-an-adapter }
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
-        
+
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
@@ -99,7 +99,7 @@ Alternatively, click the **New** button next to **Adapters**.
    ```
 
 3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    
+
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 
@@ -110,16 +110,16 @@ Alternatively, click the **New** button next to **Adapters**.
 2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
 3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+    * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**. 
 
    For example:  
-    
+
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
    var port = 9081; // The local port number to use
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
-   
+
 4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>

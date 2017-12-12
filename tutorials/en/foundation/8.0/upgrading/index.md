@@ -37,7 +37,7 @@ weight: 12
 * Improved Push Notifications services enables targeted, subscription-based notifications sent from web console
 
 ### More Hybrid Cloud Deployment Options
-* One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on Bluemix Public
+* One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on IBM Cloud Public
 * Integrated with IBM DevOps Services and Urban Code for building your deployment pipelines
 
 ### Multi-channel API creation and management

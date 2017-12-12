@@ -33,7 +33,7 @@ If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/
 ### 2. Creating an application
 {: #2-creating-an-application }
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
- 
+
 1. Click the **New** button next to **Applications**
     * Select the **Android** platform
     * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
@@ -41,7 +41,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     * Click on **Register application**
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-android.png"/>
- 
+
 2. Click on the **Get Starter Code** tile and select to download the Android sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-android.png"/>
@@ -59,7 +59,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
   import java.net.URISyntaxException;
   import android.util.Log;
   ```
-    
+
 * Paste the following code snippet, replacing the call to `WLAuthorizationManager.getInstance().obtainAccessToken`:
 
   ```java
@@ -83,7 +83,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
                     }
 
                     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-                    
+
                     request.setQueryParameter("name","world");
                     request.send(new WLResponseListener() {
                         @Override
@@ -118,7 +118,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
-        
+
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
@@ -130,7 +130,7 @@ Alternatively, click the **New** button next to **Adapters**.
    ```
 
 3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    
+
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="sample app" style="float:right"/>
@@ -139,9 +139,9 @@ Alternatively, click the **New** button next to **Adapters**.
 
 1. In Android Studio, from the **Project** sidebar menu, select the **app → src → main →assets → mfpclient.properties** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+    * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**.
 
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myIBMCloudServer`.
 
 2. Click on the **Run App** button.  
 

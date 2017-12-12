@@ -18,19 +18,19 @@ tabs:
 
 ## Lab Highlights
 * Using Ionic v1 for hybrid development
-* Develop using the mfpdev CLI with Foundation on Bluemix Service
+* Develop using the mfpdev CLI with Foundation on IBM Cloud Service
 * Securing backend APIs with user authentication
 * Using Cloudant to store and retrieve work orders
 * Using Weather Company Data and APIs to get relevant weather alerts
 * Using Watson Speech to Text service to quickly fill out a form
 
 ## Setup and Quick Start
-This lab assumes that you are familiar at this point with developing hybrid mobile applications with Mobile Foundation and using Bluemix services. You will need a Bluemix account and an environment suitable for using Mobile Foundation. To get up and running quickly, please check out the [Quick Start Lab](https://github.com/MobileFirst-Platform-Developer-Center/UtilitiesDemoApp/blob/release80/labs/0.%20Quick%20Start.md) that will set up all the services and application for you with a simple script.
+This lab assumes that you are familiar at this point with developing hybrid mobile applications with Mobile Foundation and using IBM Cloud services. You will need a IBM Cloud account and an environment suitable for using Mobile Foundation. To get up and running quickly, please check out the [Quick Start Lab](https://github.com/MobileFirst-Platform-Developer-Center/UtilitiesDemoApp/blob/release80/labs/0.%20Quick%20Start.md) that will set up all the services and application for you with a simple script.
 
 ## Overview
 In this lab, we will be taking on the role of a Utilities Company that sends out field engineers to inspect and repair utility equipment, such as power lines or [backflow preventers](https://en.wikipedia.org/wiki/Backflow_prevention_device). We want to build a mobile application that will allow the field engineers to quickly find their next scheduled work item, warn them if there is inclement weather at the location, and allow them to easily fill in the report form using voice services. The application needs to work for both iOS and Android.
 
-We will be utilizing the Bluemix services:
+We will be utilizing the IBM Cloud services:
 
 * {{ site.data.keys.product }}
 * Cloudant - to store work items

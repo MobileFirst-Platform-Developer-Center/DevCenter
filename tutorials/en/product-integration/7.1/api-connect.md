@@ -169,7 +169,7 @@ Use API Desginer to see what we just created. **API Designer** is very useful us
 ```bash
 #At your project type:
 apic edit
-#login with your bluemix account
+#login with your IBM Cloud account
 ```
 
 ![Sample Execution](./api_edit.gif)

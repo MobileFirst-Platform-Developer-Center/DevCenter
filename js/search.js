@@ -159,8 +159,8 @@ var MFPSEARCH = {
         this.client = new $.es.Client({
             protocol: 'https',
             // hosts: 'mfpsearch.mybluemix.net'
-            hosts: 'admin:DPEKZCXTYVUMWJQZ@portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660',
-
+            //hosts: 'admin:DPEKZCXTYVUMWJQZ@portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660',
+            hosts:  'localhost:9200'
 
             // hosts: 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448'
         });
