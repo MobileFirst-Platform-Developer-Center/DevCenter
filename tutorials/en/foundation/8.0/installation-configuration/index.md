@@ -88,7 +88,7 @@ After completing the installation using either of the two methods above, further
 
 If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the following options:
 
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
+* [Using {{ site.data.keys.mf_server }} on IBM Cloud](../bluemix).
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
 
 ### Upgrading from earlier versions

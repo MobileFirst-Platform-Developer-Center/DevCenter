@@ -149,7 +149,7 @@ When you deploy your app to production, you can deploy your app to the following
 
 #### On the cloud
 {: #on-the-cloud }
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
+* [Using {{ site.data.keys.mf_server }} on IBM Cloud](../bluemix).
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](../installation-configuration/production/pure-application).
 
 ## Adapters

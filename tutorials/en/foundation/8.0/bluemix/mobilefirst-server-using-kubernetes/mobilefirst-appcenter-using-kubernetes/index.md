@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Appcenter on IBM Bluemix Kubernetes Cluster
+title: Setting Up MobileFirst Appcenter on IBM Cloud Kubernetes Cluster
 breadcrumb_title: Appcenter on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 1
@@ -8,11 +8,11 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} instance on IBM Bluemix. To achieve this you will go through the following steps:
+Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} instance on IBM Cloud. To achieve this you will go through the following steps:
 
 * Create a Kubernetes Cluster of type: Standard (paid cluster).
-* Setup your host computer with the required tools (Docker, Cloud Foundry CLI ( cf ), Bluemix CLI ( bx ), Container Service Plugin for Bluemix CLI ( bx cs ), Container Registry Plugin for Bluemix CLI ( bx cr ), Kubernetes CLI (kubectl)).
-* Build a {{ site.data.keys.mf_app_center }} Docker image and push it to the Bluemix repository.
+* Setup your host computer with the required tools (Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)).
+* Build a {{ site.data.keys.mf_app_center }} Docker image and push it to the IBM Cloud repository.
 * Finally, you will run the Docker image on a Kubernetes Cluster.
 
 >**Note:**  
@@ -22,44 +22,44 @@ Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} 
 
 #### Jump to:
 {: #jump-to }
-* [Register an account on Bluemix](#register-an-account-on-bluemix)
+* [Register an account on IBM Cloud](#register-an-account-on-ibmcloud)
 * [Set up your host machine](#set-up-your-host-machine)
-* [Create and setup a Kubernetes Cluster with IBM Bluemix Container Service](#setup-kube-cluster)
+* [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#setup-kube-cluster)
 * [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
 * [Prerequisites](#prerequisites)
 * [Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
-* [Removing the container from Bluemix](#removing-the-container-from-bluemix)
-* [Removing the Kubernetes deployments from Bluemix](#removing-kube-deployments)
-* [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [Removing the container from IBM Cloud](#removing-the-container-from-ibmcloud)
+* [Removing the Kubernetes deployments from IBM Cloud](#removing-kube-deployments)
+* [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibmcloud)
 
-## Register an account on Bluemix
-{: #register-an-account-on-bluemix }
-If you do not have an account yet, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
+## Register an account on IBM Cloud
+{: #register-an-account-on-ibmcloud }
+If you do not have an account yet, visit the [IBM Cloud website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
 
-### The Bluemix Dashboard
-{: #the-bluemix-dashboard }
-After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area receives the name *dev*. You can create multiple work areas/spaces if needed.
+### IBM Cloud Dashboard
+{: #the-ibmcloud-dashboard }
+After signing in to IBM Cloud, you are presented with the IBM Cloud Dashboard, which provides an overview of the active IBM Cloud **space**. By default, this work area receives the name *dev*. You can create multiple work areas/spaces if needed.
 
 ## Set up your host machine
 {: #set-up-your-host-machine }
 To manage containers and images, you need to install the following tools:
 * Docker
-* Bluemix CLI (bx)
-* Container Service Plugin for Bluemix CLI ( bx cs )
-* Container Registry Plugin for Bluemix CLI ( bx cr )
+* IBM Cloud CLI (bx)
+* Container Service Plugin for IBM Cloud CLI ( bx cs )
+* Container Registry Plugin for IBM Cloud CLI ( bx cr )
 * Kubernetes CLI (kubectl)
 
-Refer to the Bluemix documentation for [steps to setup the prerequisite CLIs](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
+Refer to the IBM Cloud documentation for [steps to setup the prerequisite CLIs](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
 
-## Create and setup a Kubernetes Cluster with IBM Bluemix Container Service
+## Create and setup a Kubernetes Cluster with IBM Cloud Container Service
 {: #setup-kube-cluster}
-Refer to the Bluemix documentation to [setup a Kubernetes Cluster on Bluemix](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
+Refer to the IBM Cloud documentation to [setup a Kubernetes Cluster on IBM Cloud](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
 
 >**Note:** Kubernetes Cluster Type: Standard (paid cluster) is required for deploying {{ site.data.keys.mf_bm_short }}.
 
 ## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
 {: #download-the-ibm-mfpf-container-8000-archive}
-To set up {{ site.data.keys.mf_app_center }} as a Kubernetes Cluster using Bluemix containers, you must first create an image that will later be pushed to Bluemix.<br/>
+To set up {{ site.data.keys.mf_app_center }} as a Kubernetes Cluster using IBM Cloud containers, you must first create an image that will later be pushed to IBM Cloud.<br/>
 Interim fixes for the MobileFirst Server on IBM Containers can be obtained from the [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
 Download the latest interim fix from Fix central. Kubernetes support is available from iFix **8.0.0.0-IF201708220656**.
 
@@ -77,13 +77,13 @@ The archive file contains the files for building an image (**dependencies** and 
             <div class="panel-body">
                 <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes folder</h4>
-                <p>Contains the customization files and scripts required to deploy to a Kubernetes Cluster with IBM Bluemix Container Service.</p>
+                <p>Contains the customization files and scripts required to deploy to a Kubernetes Cluster with IBM Cloud Container Service.</p>
 
                 <h4>Dockerfile-mfp-appcenter</h4>
 
                 <ul>
                     <li><b>Dockerfile-mfp-appcenter</b>: Text document that contains all the commands that are necessary to build the {{ site.data.keys.mf_app_center }} image.</li>
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts required to log into Bluemix, building a {{ site.data.keys.mf_app_center }} image and for pushing and running the image on Bluemix. You can choose to run the scripts interactively or by pre-configuring the configuration files, explained later. Other than the customizable args /*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
+                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts required to log into IBM Cloud, building a {{ site.data.keys.mf_app_center }} image and for pushing and running the image on IBM Cloud. You can choose to run the scripts interactively or by pre-configuring the configuration files, explained later. Other than the customizable args /*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
                     <li><b>usr-mfp-appcenter</b> folder:
                         <ul>
                             <li><b>bin</b> folder: Contains the script file (mfp-appcenter-init) that gets executed when the container starts. You can add your own custom code to be executed.</li>
@@ -195,18 +195,18 @@ When you run interactively, a copy of the arguments provided is saved in a direc
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_API_URL - </b>The geo or region where you want your deployment.<br>
+                    <li><b>IBM_CLOUD_API_URL - </b>The geo or region where you want your deployment.<br>
                       <blockquote>For example: <i>api.ng.bluemix.net</i> for US region or <i>api.eu-de.bluemix.net</i> for Germany or <i>api.au-syd.bluemix.net</i> for Sydney</blockquote>
                     </li>
-                    <li><b>BLUEMIX_ACCOUNT_ID - </b>Your account id, which is an alpha-numeric value such as <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Use the command <code>bx target</code> to get the Account id.</li>
-                    <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Your Bluemix password.</li>
-                    <li><b>BLUEMIX_ORG - </b>Your Bluemix organization name.</li>
-                    <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>Your account id, which is an alpha-numeric value such as <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Use the command <code>bx target</code> to get the Account id.</li>
+                    <li><b>IBM_CLOUD_USER - </b>Your IBM Cloud username (email).</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>Your IBM Cloud password.</li>
+                    <li><b>IBM_CLOUD_ORG - </b>Your IBM Cloud organization name.</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>Your IBM Cloud space (as explained previously).</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
                 The {{ site.data.keys.mf_app_center }} requires an external <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on cloud</i></a> instance.<br/>
-                <blockquote><b>Note:</b> You can also use your own DB2 database. The Bluemix Kubenetes Cluster should be configured to connect to the database.</blockquote>
+                <blockquote><b>Note:</b> You can also use your own DB2 database. The IBM Cloud Kubernetes Cluster should be configured to connect to the database.</blockquote>
                 After you have set up your DB2 instance, provide the required arguments:
                 <ul>
                     <li><b>DB_TYPE</b> - <i>dashDB</i> ( if you are using DB2 on Cloud ) or <i>DB2</i> if you are using your own DB2 database.</li>
@@ -248,7 +248,7 @@ When you run interactively, a copy of the arguments provided is saved in a direc
             <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to in a non-interactive mode:</p>
 
             <ol>
-                <li><b>initenv.sh – Logging in to Bluemix </b><br />
+                <li><b>initenv.sh – Logging in to IBM Cloud </b><br />
                     Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.mf_app_center }} on IBM Containers:
                     <b>Interactive Mode</b>
 {% highlight bash %}
@@ -270,7 +270,7 @@ When you run interactively, a copy of the arguments provided is saved in a direc
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
-                <li><b>initenv.sh(Optional) – Logging in to Bluemix </b><br />
+                <li><b>initenv.sh(Optional) – Logging in to IBM Cloud </b><br />
                       This step is required only if you need to create your containers in a different Organization and Space than where the DB2 service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -278,10 +278,10 @@ When you run interactively, a copy of the arguments provided is saved in a direc
 
                 </li>
                 <li><b>prepareappcenter.sh - Prepare a {{ site.data.keys.mf_app_center }} image</b><br />
-                    Run the <b>prepareappcenter.sh</b> script in order to build the {{ site.data.keys.mf_app_center }} image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>bx cr image-list</code><br/>
+                    Run the <b>prepareappcenter.sh</b> script in order to build the {{ site.data.keys.mf_app_center }} image and push it to your IBM Cloud repository. To view all available images in your IBM Cloud repository, run: <code>bx cr image-list</code><br/>
                     The list contains the image name, date of creation, and ID.<br/>
                     <b>Interactive Mode</b>{% highlight bash %}./prepareappcenter.sh{% endhighlight %}                    <b>Non-interactive Mode</b>{% highlight bash %}./prepareappcenter.sh args/prepareappcenter.properties{% endhighlight %}                </li>
-                <li>Deploy {{ site.data.keys.mf_app_center }} on Docker containers on a Kubernetes cluster using Bluemix Container Service.
+                <li>Deploy {{ site.data.keys.mf_app_center }} on Docker containers on a Kubernetes cluster using IBM Cloud Container Service.
                 <ol>
                   <li>Set your terminal context to your cluster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
                   To know your Cluster name, run the following command: <br/><code>bx cs clusters</code><br/>
@@ -346,40 +346,40 @@ Before you apply an interim fix, back up your existing configuration files. The 
 -->
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Removing the Container from Bluemix
-{: #removing-the-container-from-bluemix }
-When you remove a container from Bluemix, you must also remove the image name from the registry.  
-Run the following commands to remove a container from Bluemix:
+## Removing the Container from IBM Cloud
+{: #removing-the-container-from-ibmcloud }
+When you remove a container from IBM Cloud, you must also remove the image name from the registry.  
+Run the following commands to remove a container from IBM Cloud:
 
 1. `cf ic ps` (Lists the containers currently running)
 2. `cf ic stop container_id` (Stops the container)
 3. `cf ic rm container_id` (Removes the container)
 
-Run the following cf ic commands to remove an image name from the Bluemix registry:
+Run the following cf ic commands to remove an image name from the IBM Cloud registry:
 
 1. `cf ic images` (Lists the images in the registry)
 2. `cf ic rmi image_id` (Removes the image from the registry)
 
-## Removing the Kubernetes deployments from Bluemix
+## Removing the Kubernetes deployments from IBM Cloud
 {: #removing-kube-deployments}
 
-Run the following commands to remove your deployed instances from  Bluemix Kubernetes cluster:
+Run the following commands to remove your deployed instances from  IBM Cloud Kubernetes cluster:
 
 `kubectl delete -f mfp-deployment-appcenter.yaml` ( Removes all the kubernetes types defined in the yaml )
 
-Run the following commands to remove image name from the Bluemix registry:
+Run the following commands to remove image name from the IBM Cloud registry:
 ```bash
 bx cr image-list (Lists the images in the registry)
 bx cr image-rm image-name (Removes the image from the registry)
 ```
 
-## Removing the database service configuration from Bluemix
-{: #removing-the-database-service-configuration-from-bluemix }
+## Removing the database service configuration from IBM Cloud
+{: #removing-the-database-service-configuration-from-ibmcloud }
 If you ran the **prepareappcenterdbs.sh** script during the configuration of the {{ site.data.keys.mf_app_center }} image, the configurations and database tables required for {{ site.data.keys.mf_app_center }} are created. This script also creates the database schema for the container.
 
-To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
+To remove the database service configuration from IBM Cloud, perform the following procedure using IBM Cloud dashboard.
 
-1. From the Bluemix dashboard, select the DB2 on cloud service you have used. Choose the DB2 service name that you had provided as parameter while running the **prepareappcenterdbs.sh** script.
+1. From the IBM Cloud dashboard, select the DB2 on cloud service you have used. Choose the DB2 service name that you had provided as parameter while running the **prepareappcenterdbs.sh** script.
 2. Launch the DB2 console to work with the schemas and database objects of the selected DB2 service instance.
 3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareappcenterdbs.sh** script.
-4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.
+4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from IBM Cloud.

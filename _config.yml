@@ -1,5 +1,5 @@
 name: "IBM Mobile Foundation Developer Center"
-description: "Develop, test, manage, and secure your native and hybrid apps. Use the labs, blog posts, tutorials and videos to learn about Mobile Foundation on Bluemix or on-premise. Download product components and samples related to Mobile Foundation."
+description: "Develop, test, manage, and secure your native and hybrid apps. Use the labs, blog posts, tutorials and videos to learn about Mobile Foundation on IBM Cloud or on-premise. Download product components and samples related to Mobile Foundation."
 url: https://mobilefirstplatform.ibmcloud.com
 languages: ["de", "en", "es", "fr", "ja", "ko", "pt-br", "ru", "zh-hans", "it"]
 defaultLanguage: en
