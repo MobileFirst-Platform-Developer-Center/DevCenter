@@ -163,7 +163,7 @@ var MFPSEARCH = {
             hosts: [
                  'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660',
                  {
-                   host: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8',
+                   host: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
                    port: 29660
                  }
                ]
