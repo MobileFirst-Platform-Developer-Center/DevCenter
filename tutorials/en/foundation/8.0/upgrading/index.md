@@ -9,7 +9,7 @@ weight: 12
 
 > [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
 
-> Use this [Lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) to guide you through the v7.1 to v8.0 migration.
+> Use this [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) to guide you through the v7.1 to v8.0 migration.
 
 #### Jump to
 {: #jump-to }
