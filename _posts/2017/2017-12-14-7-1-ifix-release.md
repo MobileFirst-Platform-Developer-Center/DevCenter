@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform Foundation iFix 7.1.0.0-MFPF-IF201712130650 released
-date: 2017-12-13
+date: 2017-12-14
 version:
 - 7.1
 tags:
