@@ -94,6 +94,7 @@ var MFPSEARCH = {
         };
         this.from = 0;
         var mustArray = this.body.filter.bool.must;
+        //var mustArray = this.body.filter.must;
         var selectedVersions = $('#versions option:selected');
         if (selectedVersions.length > 0) {
             var versionsArray = [];
@@ -159,15 +160,22 @@ var MFPSEARCH = {
         this.client = new $.es.Client({
             //protocol: 'https',
             // hosts: 'mfpsearch.mybluemix.net'
-            //hosts: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com:29660'
             hosts: [
                  {
-                   host: 'admin:DPEKZCXTYVUMWJQZ@portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
+                   host: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
                    auth: 'admin:DPEKZCXTYVUMWJQZ',
                    protocol: 'https',
                    port: 29660
                  }
                ]
+              // hosts: [
+              //      {
+              //        host: 'localhost',
+                      //auth: 'admin:DPEKZCXTYVUMWJQZ',
+              //        protocol: 'http',
+              //        port: 9200,
+              //      }
+              //    ]
 
             // hosts: 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448'
         });
@@ -185,14 +193,15 @@ var MFPSEARCH = {
                         "fuzziness": "AUTO"
                     }
                 },
-                "highlight": {
-                    "fields": {
-                        "title": {},
-                        "content": {}
-                    }
-                }
+              //  "highlight": {
+              //      "fields": {
+              //          "title": {},
+              //          "content": {}
+              //      }
+              //  }
             };
-            this.updateFilters();
+            //this.updateFilters();
+            this.executeSearch();
         } else if (this.queryAuthorName !== null) {
             this.body = {
                 "query": {
