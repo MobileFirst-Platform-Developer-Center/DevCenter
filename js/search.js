@@ -160,22 +160,22 @@ var MFPSEARCH = {
         this.client = new $.es.Client({
             //protocol: 'https',
             // hosts: 'mfpsearch.mybluemix.net'
-            hosts: [
-                 {
-                   host: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
-                   auth: 'admin:DPEKZCXTYVUMWJQZ',
-                   protocol: 'https',
-                   port: 29660
-                 }
-               ]
-              // hosts: [
-              //      {
-              //        host: 'localhost',
+            //hosts: [
+            //     {
+            //       host: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
+            //       auth: 'admin:DPEKZCXTYVUMWJQZ',
+            //       protocol: 'https',
+            //       port: 29660
+            //     }
+            //   ]
+               hosts: [
+                    {
+                      host: '169.48.167.218',
                       //auth: 'admin:DPEKZCXTYVUMWJQZ',
-              //        protocol: 'http',
-              //        port: 9200,
-              //      }
-              //    ]
+                      protocol: 'http',
+                      port: 32081,
+                    }
+                  ]
 
             // hosts: 'bluemix-sandbox-dal-9-portal.0.dblayer.com:30448'
         });
@@ -193,15 +193,15 @@ var MFPSEARCH = {
                         "fuzziness": "AUTO"
                     }
                 },
-              //  "highlight": {
-              //      "fields": {
-              //          "title": {},
-              //          "content": {}
-              //      }
-              //  }
+                "highlight": {
+                    "fields": {
+                        "title": {},
+                        "content": {}
+                    }
+                }
             };
-            //this.updateFilters();
-            this.executeSearch();
+            this.updateFilters();
+            //this.executeSearch();
         } else if (this.queryAuthorName !== null) {
             this.body = {
                 "query": {
