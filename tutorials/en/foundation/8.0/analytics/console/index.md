@@ -33,6 +33,8 @@ In the **Infrastructure** panel you can review analytics data related to: sessio
 
 > Learn more in the [Analytics Workflows](../workflows/) tutorial.
 
+> **Note:** The client/server log **Search** and **Export** data functionality does not invoke an action on mouse click event when the date filter is modified, as observed in recent versions of Chrome browser. This behaviour is caused due to a problem with the Chrome browser and also due to a known limitation. This issue does not occur in other browsers and in Chrome browser versions prior to *v54.0.2840.71*. In the most recent versions of Chrome browser, users can work around this issue by setting the date required and then refresh the page before clicking on the Search/Export button or before hitting the Enter/Return key to perform the selected action.
+
 ## Analytics features
 
 ### App Analytics
