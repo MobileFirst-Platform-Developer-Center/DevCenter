@@ -1,0 +1,732 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://www.ibm.com/support/knowledgecenter/api/content/nl/en-us/SSHSCD_6.3.0/com.ibm.worklight.apiref.doc/ibmdita.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://www.ibm.com/support/knowledgecenter/api/content/nl/en-us/SSHSCD_6.3.0/com.ibm.worklight.apiref.doc/swg_info_common.css"/>
+    <title>Overview</title>
+
+    <meta name='DC.subject' content='SSHSCD'/>
+    <meta name="IBM.WTMSite" content="ESTKCS"/>
+    <meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS"/>
+    <script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>
+    <style>
+      ul {
+         line-height: 30px;
+      }
+
+      li a {
+         font-weight: bold;
+         color: #2e5cb8;
+      }
+    </style>
+</head>
+<body>
+
+<div role="main" class="related-links">
+    <ul class="ullinks">
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_adapter_configuration_get.html">Adapter Configuration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_adapter_configuration_put.html">Adapter Configuration (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_adapter_delete.html">Adapter (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_adapter_get.html">Adapter (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_adapter_post.html">Adapter (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_adapters_get.html">Adapters (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_authenticity_delete.html">Application Authenticity (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_authenticity_post.html">Application Authenticity (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_authenticity_validation_type_post.html">Application Authenticity Validation Type (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_configuration_get.html">Application Configuration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_configuration_put.html">Application Configuration (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_descriptor_get.html">Application Descriptor (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_environment_get.html">Application Environment (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_get.html">Application (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_license_configuration__post.html">Application License Configuration (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_license_configuration_get.html">Application License Configuration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_post.html">Application (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_version_delete.html">Application Version (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_application_version_get.html">Application Version (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_applications_get.html">Applications (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_audit_get.html">Audit (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_confidential_clients_get.html">Confidential Clients (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_confidential_clients_put.html">Confidential Clients (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_create_subscription_post.html">Create Subscription (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_create_tag_post.html">Create Tag (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_delete_tag_delete.html">Delete Tag (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_delete_apns_settings_delete.html">Delete APNs settings (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_delete_gcm_settings_delete.html">Delete GCM settings (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_delete_message_delete.html">Delete Message (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_delete_subscription_delete.html">Delete Subscription (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_delete_wns_settings_delete.html">Delete WNS settings (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_deploy_post.html">Deploy (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_deploy_web_resource_post.html">Deploy Web Resource (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_device_application_status_put.html">Device Application Status (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_device_delete.html">Device (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_device_status_put.html">Device Status (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_devices_get.html">Devices (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_diagnostic_service_get.html">Diagnostic Service (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_enable_or_disable_application_authenticity_post.html">Enable or Disable Application Authenticity (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_adapter_resources_get.html">Export adapter resources (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_adapters_get.html">Export adapters (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_application_environment_get.html">Export application environment (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_application_environment_resources_get.html">Export application environment resources (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_application_resources_get.html">Export application resources (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_applications_get.html">Export applications (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_resources_get.html">Export resources (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_export_runtime_resources_get.html">Export runtime resources (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_farm_topology_members_delete.html">Farm topology members (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_farm_topology_members_get.html">Farm topology members (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_get_apns_settings_get.html">Get APNs Settings (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_get_gcm_settings_get.html">Get GCM Settings (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_get_message_get.html">Get Message (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_get_wns_settings_get.html">Get WNS Settings (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_get_push_app_settings_get.html">Get Push App Settings (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_get_tags_get.html">Get Tags (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_global_configuration_get.html">Global Configuration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_keystore_delete.html">Keystore (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_keystore_get.html">Keystore (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_keystore_post.html">Keystore (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_license_configuration_delete.html">License configuration (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_push_device_registration_delete.html">Push Device Registration (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_push_device_registration_get.html">Push Device Registration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_push_device_subscription_get.html">Push Device Subscription (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_register_application_with_push_service_post.html">Register Application with Push Service (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_remove_subscription_delete.html">Remove Subscription (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_reset_application_authenticity_post.html">Reset Application Authenticity (POST)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_retrieve_device_registration_get.html">Retrieve Device Registration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_retrieve_subscription_to_push_service__get.html">Retrieve Subscription to Push Service (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_retrieve_tag_get.html">Retrieve Tag (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_retrieve_web_resource_get.html">Retrieve Web Resource (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtime_configuration_get.html">Runtime Configuration (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtime_configuration_put.html">Runtime configuration (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtime_delete.html">Runtime (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtime_get.html">Runtime (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtime_lock_delete.html">Runtime Lock (DELETE)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtime_lock_get.html">Runtime Lock (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_runtimes_get.html">Runtimes (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_send_bulk_messages_post.html">Send Bulk Messages (POST)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_send_message_post.html">Send Message (POST)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_transaction_get.html">Transaction (GET)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_transactions_get.html">Transactions (GET)</a>
+                </span>
+                <br />
+
+            </li>
+
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_update_apns_settings_put.html">Update APNs settings (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_update_device_registration_put.html">Update Device Registration (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_update_gcm_settings_put.html">Update GCM settings (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_update_tag_information_put.html">Update Tag Information (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+            <li class="link ulchildlink">
+                <span class="ulchildlinktext">
+                    <a href="r_restapi_update_wns_settings_put.html">Update WNS Settings (PUT)</a>
+                </span>
+                <br />
+
+            </li>
+    </ul>
+
+</div>
+</body>
+</html>

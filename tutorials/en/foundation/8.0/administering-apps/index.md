@@ -42,7 +42,7 @@ In this role, a user can perform all application administration operations.
 {: #administration-tools }
 {{ site.data.keys.mf_console }} is not the only way to administer {{ site.data.keys.product_adj }} applications. {{ site.data.keys.product }} also provides other tools to incorporate administration operations into your build and deployment process.
 
-A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/administration-service/).
+A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/admin-apis/).
 
 With this set of REST services, you can perform the same operations that you can do in {{ site.data.keys.mf_console }}. You can manage applications, adapters, and, for example, upload a new version of an application or disable an old version.
 
