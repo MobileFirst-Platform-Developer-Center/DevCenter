@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" flippy="dippy" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Deploy Web Resource (POST)" />
+<meta name="abstract" content="Deploys a web resource compressed file (.zip) for a specific application version." />
+<meta name="Description" content="Deploys a web resource compressed file (.zip) for a specific application version." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="Deploy-Web-Resource--POST-" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name='DC.subject' content='SSHSCD'/>
+<meta name="IBM.WTMSite" content="ESTKCS"/>
+<meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS"/>
+<script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>
+<style>
+  ul {
+     line-height: 30px;
+  }
+
+  li a {
+     font-weight: bold;
+     color: blue;
+  }
+</style>
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css" />
+<title>Deploy Web Resource (POST)</title>
+</head>
+<body id="Deploy-Web-Resource--POST-"><div role="main">
+
+<h1 class="title topictitle1" id="ariaid-title1"> Deploy Web Resource (POST) </h1>
+
+
+
+<div class="body refbody"><p class="shortdesc">Deploys a web resource compressed file (.zip) for a specific application version.</p>
+
+<section class="section"><h2 class="title sectiontitle">Roles</h2>
+
+<p class="p">Users in the following roles are authorized to perform this operation:</p>
+
+<ul class="ul">
+<li class="li"><span class="keyword parmname parmname">mfpadmin</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpdeployer</span></li>
+
+</ul>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle"> Method </h2>
+
+<p class="p"><code class="ph codeph">POST</code></p>
+
+</section>
+
+
+
+<section class="section"><h2 class="title sectiontitle">Path</h2>
+
+<p class="p">/management-apis/2.0/runtimes/<var class="keyword varname">runtime-name</var>/applications/<var class="keyword varname">application-name</var>/<var class="keyword varname">application-env</var>/<var class="keyword varname">application-version</var>/web</p>
+
+</section>
+
+
+<div class="example"><h2 class="title sectiontitle">Example</h2>
+
+<pre class="pre codeblock prettyprint"><code>https://www.example.com/mfpadmin/management-apis/2.0/runtimes/myruntime/applications/myapplication/android/1.0/web?async=false&amp;locale=de_DE</code></pre>
+</div>
+
+
+<section class="section"><h2 class="title sectiontitle">Path Parameters</h2>
+
+<dl class="dl parml">
+<dt class="dt pt dlterm">runtime-name</dt>
+
+<dd class="dd pd">The name of the runtime. This is the context root of the runtime web application, without the leading slash.</dd>
+
+<dt class="dt pt dlterm">application-name</dt>
+
+<dd class="dd pd">The name of the application.</dd>
+
+<dt class="dt pt dlterm">application-env</dt>
+
+<dd class="dd pd">The application environment.</dd>
+
+<dt class="dt pt dlterm">application-version</dt>
+
+<dd class="dd pd">The application version number.</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Query Parameters</h2>
+
+<p class="p">Query parameters are optional.</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">async</dt>
+
+<dd class="dd pd">Whether the transaction is processed synchronously or asynchronously. The allowed values are <code class="ph codeph">true</code> and <code class="ph codeph">false</code>. By default, transactions are processed synchronously.</dd>
+
+<dt class="dt pt dlterm">locale</dt>
+
+<dd class="dd pd">The locale used for error messages.</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Consumes</h2>
+
+<p class="p">
+multipart/form-data</p>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Produces</h2>
+
+<p class="p">
+application/json, application/xml, text/xml</p>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Response</h2>
+
+<p class="p">
+The metadata of the web resource.</p>
+
+</section>
+
+<div class="example"><h2 class="title sectiontitle">JSON Example</h2>
+<pre class="pre codeblock prettyprint"><code>{
+  "ok" : false,
+  "productVersion" : "8.0",
+  "transaction" : {
+    "appServerId" : "Tomcat",
+    "description" : {
+      "name" : "myname",
+      "type" : "mytype",
+    },
+    "errors" : [
+      {
+        "details" : "An internal error occured.",
+      },
+      ...
+    ],
+    "id" : 1,
+    "project" : {
+      "name" : "myproject",
+    },
+    "status" : "FAILURE",
+    "timeCreated" : "2014-04-13T00:18:36.979Z",
+    "timeUpdated" : "2014-04-14T00:18:36.979Z",
+    "type" : "UPLOAD_ARTIFACT",
+    "userName" : "demouser",
+  },
+}</code></pre></div>
+
+
+<div class="example"><h2 class="title sectiontitle">XML Example</h2>
+<pre class="pre codeblock prettyprint"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;set-appversion-webresources-result
+  ok="false"
+  productVersion="8.0"&gt;
+  &lt;transaction
+    appServerId="Tomcat"
+    id="1"
+    status="FAILURE"
+    timeCreated="2014-04-13T00:18:36.979Z"
+    timeUpdated="2014-04-14T00:18:36.979Z"
+    type="UPLOAD_ARTIFACT"
+    userName="demouser"&gt;
+    &lt;description
+      name="myname"
+      type="mytype"/&gt;
+    &lt;errors&gt;
+      &lt;error details="An internal error occured."/&gt;
+      ...
+    &lt;/errors&gt;
+    &lt;project name="myproject"/&gt;
+  &lt;/transaction&gt;
+&lt;/set-appversion-webresources-result&gt;
+</code></pre></div>
+
+
+<section class="section"><h2 class="title sectiontitle">Response Properties</h2>
+
+<p class="p">The response has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">ok</dt>
+
+<dd class="dd pd">Whether the transaction was successful.</dd>
+
+<dt class="dt pt dlterm">productVersion</dt>
+
+<dd class="dd pd">The exact product version.</dd>
+
+<dt class="dt pt dlterm">transaction</dt>
+
+<dd class="dd pd">The details of the transaction.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">transaction</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">appServerId</dt>
+
+<dd class="dd pd">The id of the web application server.</dd>
+
+<dt class="dt pt dlterm">description</dt>
+
+<dd class="dd pd">The details of the web resource.</dd>
+
+<dt class="dt pt dlterm">errors</dt>
+
+<dd class="dd pd">The errors occurred during the transaction.</dd>
+
+<dt class="dt pt dlterm">id</dt>
+
+<dd class="dd pd">The id of the transaction.</dd>
+
+<dt class="dt pt dlterm">project</dt>
+
+<dd class="dd pd">The current project.</dd>
+
+<dt class="dt pt dlterm">status</dt>
+
+<dd class="dd pd">The state of the transaction:
+<code class="ph codeph">PENDING</code>, <code class="ph codeph">PREPARING</code>, <code class="ph codeph">COMMITTING</code>, <code class="ph codeph">REJECTING</code>, <code class="ph codeph">SUCCESS</code>, <code class="ph codeph">FAILURE</code>, <code class="ph codeph">CANCELED</code>.
+Synchronous transactions can have the state <code class="ph codeph">SUCCESS</code> and <code class="ph codeph">FAILURE</code>.
+Asynchronous transactions can also have the other states.</dd>
+
+<dt class="dt pt dlterm">timeCreated</dt>
+
+<dd class="dd pd">The date in ISO 8601 format when the adapter was created.</dd>
+
+<dt class="dt pt dlterm">timeUpdated</dt>
+
+<dd class="dd pd">The date in ISO 8601 format when the adapter was updated.</dd>
+
+<dt class="dt pt dlterm">type</dt>
+
+<dd class="dd pd">The type of the transaction, here always <code class="ph codeph">UPLOAD_ARTIFACT</code>.</dd>
+
+<dt class="dt pt dlterm">userName</dt>
+
+<dd class="dd pd">The user that initiated the transaction.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">description</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">contentNames</dt>
+
+<dd class="dd pd">The optional names of the contained artifacts if multiple artifacts were deployed at once.</dd>
+
+<dt class="dt pt dlterm">filename</dt>
+
+<dd class="dd pd">The optional file name of the artifact.</dd>
+
+<dt class="dt pt dlterm">name</dt>
+
+<dd class="dd pd">The name of the artifact.</dd>
+
+<dt class="dt pt dlterm">type</dt>
+
+<dd class="dd pd">The type of the artifact.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">error</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">details</dt>
+
+<dd class="dd pd">The main error message.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">project</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">name</dt>
+
+<dd class="dd pd">The name of the project, which is the context root of the runtime.</dd>
+
+</dl>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Errors</h2>
+
+<span class="keyword msgnum">400</span>
+<pre class="pre msgblock">No deployable data is provided.</pre>
+
+<span class="keyword msgnum">403</span>
+<pre class="pre msgblock">The user is not authorized to call this service.</pre>
+
+<span class="keyword msgnum">404</span>
+<pre class="pre msgblock">The corresponding runtime version is not found or not running.</pre>
+
+<span class="keyword msgnum">500</span>
+<pre class="pre msgblock">An internal error occurred.</pre>
+
+</section>
+
+
+</div>
+</div></body>
+</html>
