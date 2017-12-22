@@ -1,12 +1,13 @@
 ---
-layout: tutorial
-title: API Connect
-downloads:
-  - name: Download MobileFirst APIC OAuthProvider
-    url: https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml
-  - name: Download Sample Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-weight: 1
+layout: redirect
+new_url: /tutorials/en/product-integration/8.0/apiconnect/
+#title: API Connect
+#downloads:
+#  - name: Download MobileFirst APIC OAuthProvider
+#    url: https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml
+#  - name: Download Sample Android Studio project
+#    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
+#weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
