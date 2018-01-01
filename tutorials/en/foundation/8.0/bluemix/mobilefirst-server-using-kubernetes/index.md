@@ -29,7 +29,6 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Prerequisites](#prerequisites)
 * [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on Kubernetes Cluster with IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
 * [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
-* [Removing the container from IBM Cloud](#removing-the-container-from-ibmcloud)
 * [Removing the Kubernetes deployments from IBM Cloud](#removing-kube-deployments)
 * [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibmcloud)
 
@@ -426,20 +425,6 @@ Before you apply an interim fix, back up your existing configuration files. The 
       <code>kubectl rolling-update NAME -f FILE</code>
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
-
-## Removing the Container from IBM Cloud
-{: #removing-the-container-from-ibmcloud }
-When you remove a container from IBM Cloud, you must also remove the image name from the registry.  
-Run the following commands to remove a container from IBM Cloud:
-
-1. `cf ic ps` (Lists the containers currently running)
-2. `cf ic stop container_id` (Stops the container)
-3. `cf ic rm container_id` (Removes the container)
-
-Run the following cf ic commands to remove an image name from the IBM Cloud registry:
-
-1. `cf ic images` (Lists the images in the registry)
-2. `cf ic rmi image_id` (Removes the image from the registry)
 
 ## Removing the Kubernetes deployments from IBM Cloud
 {: #removing-kube-deployments}
