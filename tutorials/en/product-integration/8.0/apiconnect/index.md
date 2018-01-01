@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: API Connect
+title: Protecting API resources using MobileFirst OAuth server
+breadcrumb_title: API Connect
 #downloads:
 #  - name: Download MobileFirst APIC OAuthProvider
 #    url: https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml
