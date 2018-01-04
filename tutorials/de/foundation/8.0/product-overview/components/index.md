@@ -13,7 +13,7 @@ Zur {{ site.data.keys.product_full }} gehören die folgenden Komponenten:
 Die folgende Abbildung zeigt die Komponenten
 der {{ site.data.keys.product }}:
 
-![Architektur der Lösung {{ site.data.keys.product }}](architecture.jpg)
+![Architektur der {{ site.data.keys.product }}](architecture.jpg)
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
@@ -79,7 +79,7 @@ die {{ site.data.keys.mf_console }} für die folgenden Aufgaben verwenden:
 * Generierung integrierter und vorkonfigurierter Akzeptanz- und Nutzungsberichte (Anzahl der Benutzer, die über Anwendungen auf den Server zugreifen, und Häufigkeit der
 Zugriffe)
 * Konfigurieren von Datenerfassungsregeln für anwendungsspezifische Ereignisse
-* [Informieren Sie sich über {{ site.data.keys.mf_console }}](console).
+* [Informieren Sie sich über die {{ site.data.keys.mf_console }}](console).
 
 ### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }

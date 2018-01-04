@@ -76,11 +76,11 @@ Cloudant は複数の認証形態をサポートします。認証に関する C
 function addEntry(entry){
 
     var input = {
-method : 'post',
+            method : 'post',
             returnedContentType : 'json',
             path : DATABASE_NAME + '/',
             body: {
-                contentType : 'application/json',        
+                contentType : 'application/json',
                 content : entry
             }
         };

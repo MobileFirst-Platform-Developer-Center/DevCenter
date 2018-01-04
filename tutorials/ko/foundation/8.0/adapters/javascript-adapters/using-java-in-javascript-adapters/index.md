@@ -11,8 +11,7 @@ weight: 3
 ## 개요
 {: #overview }
 
-JavaScript가 필요한 기능성을 구현하기에 충분하지 않을 때 또는 Java 클래스가 이미 있는 경우, JavaScript 어댑터를
-위한 확장으로 Java 코드를 사용할 수 있습니다. 
+JavaScript가 필요한 기능성을 구현하기에 충분하지 않을 때 또는 Java 클래스가 이미 있는 경우, JavaScript 어댑터를 위한 확장으로 Java 코드를 사용할 수 있습니다. 
 
 **전제조건:** [JavaScript 어댑터](../) 학습서를 먼저 읽으십시오. 
 
@@ -23,11 +22,13 @@ JavaScript가 필요한 기능성을 구현하기에 충분하지 않을 때 또
 
 기존 Java 라이브러리를 사용하려면 프로젝트에 종속성으로 JAR 파일을 추가하십시오. 종속성 추가 방법에 대한 자세한 정보는 [Java 및 JavaScript 어댑터 작성](../../creating-adapters/#dependencies) 학습서에서 종속성 섹션을 참조하십시오. 
 
-사용자 정의 Java 코드를 프로젝트에 추가하려면 어댑터 프로젝트에서 **src/main**
-폴더에 **java**로 이름 지정된 폴더를 추가하고 패키지를 해당 폴더 안에 넣으십시오. 이 학습서의 샘플은 `Calculator.java`로 이름 지정된 Java 클래스 파일과 `com.sample.customcode` 패키지를 파일을 사용합니다.    
+사용자 정의 Java 코드를 프로젝트에 추가하려면 어댑터 프로젝트에서 **src/main** 폴더에 **java**로 이름 지정된 폴더를 추가하고 패키지를 해당 폴더 안에 넣으십시오. 이 학습서의 샘플은 `Calculator.java`로 이름 지정된 Java 클래스 파일과 `com.sample.customcode` 패키지를 파일을 사용합니다.    
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:**
-패키지 이름은 `com`, `org` 또는 `net`로 시작해야 합니다. 메소드를 Java 클래스에 추가하십시오.   
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 패키지 이름은 `com`, `org` 또는 `net`로 시작해야 합니다.
+
+
+
+메소드를 Java 클래스에 추가하십시오.   
 (새 인스턴스를 요구하지 않는) 정적 메소드 및 인스턴스 메소드의 예는 다음과 같습니다.
 
 ```java

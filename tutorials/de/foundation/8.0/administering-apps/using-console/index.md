@@ -107,15 +107,11 @@ Anzeigenamen von Geräten mit der Methode `setDeviceDisplayName` der `MobileDevi
 com.ibm.mfp.server.registration.external.model festlegen (siehe
 [MobileDeviceData](../../api/client-side-api/objc/client/)).
 
-### Gerätezugriff in der
-{{ site.data.keys.mf_console }} verwalten
+### Gerätezugriff in der {{ site.data.keys.mf_console }} verwalten
 {: #managing-device-access-in-mobilefirst-operations-console }
-Wählen Sie für die Überwachung und Verwaltung
-des Gerätezugriffs auf Ihre Ressourcen im Dashboard der
-{{ site.data.keys.mf_console }} das Register Geräte aus. 
+Wählen Sie für die Überwachung und Verwaltung des Gerätezugriffs auf Ihre Ressourcen im Dashboard der {{ site.data.keys.mf_console }} das Register Geräte aus. 
 
-Suchen Sie nach einem Gerät, in dem Sie im Suchfeld
-die dem Gerät zugeordnete Benutzer-ID oder (sofern definiert) den Anzeigenamen des Geräts eingeben (siehe [Anzeigename von Geräten](#device-display-name)).
+Suchen Sie nach einem Gerät, in dem Sie im Suchfeld die dem Gerät zugeordnete Benutzer-ID oder (sofern definiert) den Anzeigenamen des Geräts eingeben (siehe [Anzeigename von Geräten](#device-display-name)).
 Sie können auch nach einem Teil der Benutzer-ID oder des Anzeigenamens des Geräts suchen. (Geben Sie mindestens drei Zeichen ein.) 
 
 Als Suchergebnis werden alle Geräte angezeigt, die mit der angegebenen Benutzer-ID oder dem
@@ -326,14 +322,14 @@ und wählen Sie **Produktinfo** aus. Klicken Sie auf **Zusätzliche Supportinfor
 **Prüfprotokoll herunterladen**.
 
 
-| Feldname | Beschreibung |
+| Feldname| Beschreibung |
 |------------|-------------|
-| Timestamp	 | Datum und Zeit der Erstellung des Eintrags |
-| Type	     | Typ der Operation (siehe folgende Liste der Operationstypen für gültige Werte) |
-| User	     | Benutzername (**username**) des angemeldeten Benutzers |
-| Outcome	 | Ergebnis der Operation (gültige Werte: SUCCESS, ERROR, PENDING) |
-| ErrorCode	 | Wenn das Ergebnis ERROR lautet, gibt ErrorCode den genauen Fehler an. |
-| Runtime	 | Name des mit der Operation verbundenen {{ site.data.keys.product_adj }}-Projekts |
+| Timestamp	 | Datum und Zeit der Erstellung des Eintrags|
+| Type	     | Typ der Operation (siehe folgende Liste der Operationstypen für gültige Werte)|
+| User	     | Benutzername (**username**) des angemeldeten Benutzers|
+| Outcome	 | Ergebnis der Operation (gültige Werte: SUCCESS, ERROR, PENDING)|
+| ErrorCode	 | Wenn das Ergebnis ERROR lautet, gibt ErrorCode den genauen Fehler an.|
+| Runtime	 | Name des mit der Operation verbundenen {{ site.data.keys.product_adj }}-Projekts|
 
 In der folgenden Liste finden Sie die gültigen Werte für
 den Operationstyp (im Feld Type).

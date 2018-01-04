@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-在此教程中，了解如何将 {{ site.data.keys.product_adj }} SDK 添加到新的或现有的使用 Apache Cordova、Ionic 或其他第三方工具创建的 Cordova 应用程序。您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序，以及查找有关在项目中更改的 {{ site.data.keys.product_adj }} 配置文件的信息。
+在此教程中，了解如何将 {{ site.data.keys.product_adj }} SDK 添加到新的或现有的使用 Apache Cordova、Ionic 或其他第三方工具创建的 Cordova 应用程序。 您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序，以及查找有关在项目中更改的 {{ site.data.keys.product_adj }} 配置文件的信息。
 
 {{ site.data.keys.product_adj }} Cordova SDK 作为一组 Cordova 插件提供，并且[在 NPM 上注册](https://www.npmjs.com/package/cordova-plugin-mfp)。  
 可用插件包括：
@@ -16,8 +16,8 @@ weight: 1
 * **cordova-plugin-mfp** - 核心 SDK 插件
 * **cordova-plugin-mfp-push** - 提供推送通知支持
 * **cordova-plugin-mfp-jsonstore** - 提供 JSONStore 支持
-* **cordova-plugin-mfp-fips** - *仅限 Android*。提供 FIPS 支持
-* **cordova-plugin-mfp-encrypt-utils** - *仅限 iOS*。提供加密和解密支持
+* **cordova-plugin-mfp-fips** - *仅限 Android*。 提供 FIPS 支持
+* **cordova-plugin-mfp-encrypt-utils** - *仅限 iOS*。 提供加密和解密支持
 
 #### 支持级别
 {: #support-levels }
@@ -35,13 +35,13 @@ MobileFirst 插件支持的 Cordova 平台版本包括：
 - [已生成 {{ site.data.keys.product_adj }} Cordova SDK 工件](#generated-mobilefirst-cordova-sdk-artifacts)
 - [接下来要学习的教程](#tutorials-to-follow-next)
 
-> **注：**使用 Xcode 8 的情况下在 iOS Simulator 中运行 iOS 应用程序时，**密钥链共享**功能是必需的。必须在构建 Xcode 项目之前手动启用此功能。
+> **注：**如果使用 Xcode 8，在 iOS 模拟器中运行 iOS 应用程序时，**密钥链共享**功能是必需的。在构建 Xcode 项目之前，必须手动启用此功能。
 
 ## Cordova SDK 组件
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
 {: #cordova-plugin-mfp }
-cordova-plugin-mfp 插件是针对 Cordova 的核心 {{ site.data.keys.product_adj }} 插件，且此插件是必需的。如果安装任何其他 {{ site.data.keys.product_adj }} 插件，并且 cordova-plugin-mfp 插件尚未安装，那么也将自动安装此插件。
+cordova-plugin-mfp 插件是针对 Cordova 的核心 {{ site.data.keys.product_adj }} 插件，且此插件是必需的。 如果安装任何其他 {{ site.data.keys.product_adj }} 插件，并且 cordova-plugin-mfp 插件尚未安装，那么也将自动安装此插件。
 
 > 以下 Cordova 插件将作为 cordova-plugin-mfp 的依赖项进行安装：
 >   
@@ -52,25 +52,27 @@ cordova-plugin-mfp 插件是针对 Cordova 的核心 {{ site.data.keys.product_a
 
 #### cordova-plugin-mfp-jsonstore
 {: #cordova-plugin-mfp-jsonstore }
-cordova-plugin-mfp-jsonstore 插件使您的应用程序能够使用 JSONstore。有关 JSONstore 的更多信息，请参阅 [JSONStore 教程](../../jsonstore/cordova/)。  
+cordova-plugin-mfp-jsonstore 插件使您的应用程序能够使用 JSONstore。 有关 JSONstore 的更多信息，请参阅 [JSONStore 教程](../../jsonstore/cordova/)。  
 
 #### cordova-plugin-mfp-push
 {: #cordova-plugin-mfp-push }
-cordova-plugin-mfp-push 插件提供必需的许可权，以对 Android 应用程序使用来自 {{ site.data.keys.mf_server }} 的推送通知。必需其他设置以使用推送通知。有关推送通知的更多信息，请参阅[推送通知教程](../../../notifications/)。
+cordova-plugin-mfp-push 插件提供必需的许可权，以对 Android 应用程序使用来自 {{ site.data.keys.mf_server }} 的推送通知。 必需其他设置以使用推送通知。 有关推送通知的更多信息，请参阅[推送通知教程](../../../notifications/)。
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-cordova-plugin-mfp-fips 插件为 Android 平台提供 FIPS 140-2 支持。有关更多信息，请参阅 [FIPS 140-2 支持](../../../administering-apps/federal/#fips-140-2-support)。
+cordova-plugin-mfp-fips 插件为 Android 平台提供 FIPS 140-2 支持。 有关更多信息，请参阅 [FIPS 140-2 支持](../../../administering-apps/federal/#fips-140-2-support)。
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。有关更多信息，请参阅[为 Cordova iOS 启用 OpenSSL](additional-information)。
+cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。 有关更多信息，请参阅[为 Cordova iOS 启用 OpenSSL](additional-information)。
 
 **先决条件：**
 
 - [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
 - {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
 - 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Cordova 开发环境](../../../installation-configuration/development/cordova)教程。
+- 对于 cordova-windows，必须安装与机器中已安装的 Visual Studio 和 .NET 版本兼容的 Visual C++ 版本。
+- 如果使用 Windows Phone SDK 8.0 和 Visual Studio Tools for Universal Windows Apps，请确保创建的 cordova-windows 应用程序具有所有必需的支持库。
 
 ## 添加 {{ site.data.keys.product }} Cordova SDK
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -83,7 +85,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 ### 添加 SDK
 {: #adding-the-sdk }
-考虑使用 {{ site.data.keys.product_adj }} Cordova **应用程序模板**创建项目。此模板会将必需的特定于 {{ site.data.keys.product_adj }} 的插件条目添加到 Cordova 项目的 **config.xml** 文件，并提供特定于 {{ site.data.keys.product_adj }} 并针对 {{ site.data.keys.product_adj }} 应用程序开发进行了调整的现成可用的 **index.js** 文件。
+考虑使用 {{ site.data.keys.product_adj }} Cordova **应用程序模板**创建项目。 此模板会将必需的特定于 {{ site.data.keys.product_adj }} 的插件条目添加到 Cordova 项目的 **config.xml** 文件，并提供特定于 {{ site.data.keys.product_adj }} 并针对 {{ site.data.keys.product_adj }} 应用程序开发进行了调整的现成可用的 **index.js** 文件。
 
 #### 新建应用程序
 {: #new-application }
@@ -102,7 +104,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 2. 将目录更改为 Cordova 项目的根目录：`cd hello`
 
-3. 使用 Cordova CLI 命令将一个或多个受支持的平台添加到 Cordova 项目：`cordova platform add ios|android|windows`。例如：
+3. 使用 Cordova CLI 命令将一个或多个受支持的平台添加到 Cordova 项目：`cordova platform add ios|android|windows`。 例如：
 
    ```bash
    cordova platform add ios
@@ -134,7 +136,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
    }
    ```
 
-在装入 {{ site.data.keys.product_adj }} 客户机 SDK 之后，{{ site.data.keys.product_adj }} API 方法将可用。然后将调用 `wlCommonInit` 函数。  
+在装入 {{ site.data.keys.product_adj }} 客户机 SDK 之后，{{ site.data.keys.product_adj }} API 方法将可用。 然后将调用 `wlCommonInit` 函数。  
 使用此函数调用各种 {{ site.data.keys.product_adj }} API 方法。
 
 ### 注册应用程序
@@ -159,7 +161,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 ### 使用 SDK
 {: #using-the-sdk }
-在装入 {{ site.data.keys.product_adj }} 客户机 SDK 之后，{{ site.data.keys.product_adj }} API 方法将可用。然后将调用 `wlCommonInit` 函数。  
+在装入 {{ site.data.keys.product_adj }} 客户机 SDK 之后，{{ site.data.keys.product_adj }} API 方法将可用。 然后将调用 `wlCommonInit` 函数。  
 使用此函数调用各种 {{ site.data.keys.product_adj }} API 方法。
 
 ## 更新 {{ site.data.keys.product_adj }} Cordova SDK
@@ -173,7 +175,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 ### config.xml
 {: #configxml }
 Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储在应用程序的根目录中。  
-将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目之后，Cordova 生成的 **config.xml** 文件会接收一组使用名称空间 `mfp:` 标识的新元素。添加的元素包含与 {{ site.data.keys.product_adj }} 功能和 {{ site.data.keys.mf_server }} 相关的信息。
+将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目之后，Cordova 生成的 **config.xml** 文件会接收一组使用名称空间 `mfp:` 标识的新元素。 添加的元素包含与 {{ site.data.keys.product_adj }} 功能和 {{ site.data.keys.mf_server }} 相关的信息。
 
 ### 添加到 **config.xml** 文件的 {{ site.data.keys.product_adj }} 设置示例
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}
@@ -203,7 +205,7 @@ Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储�
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">
@@ -221,32 +223,32 @@ Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储�
                     </tr>
                     <tr>
                         <td><b>widget</b></td>
-                        <td><a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml 文档</a>的根元素。此元素包含两个必需属性：<ul><li><b>id</b>：这是在创建 Cordova 项目时指定的应用程序包名称。如果在向 {{ site.data.keys.mf_server }} 注册应用程序之后手动更改了此值，那么必须重新注册应用程序。</li><li><b>xmlns:mfp</b>：{{ site.data.keys.product_adj }} 插件 XML 名称空间。</li></ul></td>
+                        <td><a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml 文档</a>的根元素。 此元素包含两个必需属性： <ul><li><b>id</b>：这是在创建 Cordova 项目时指定的应用程序包名称。 如果在向 {{ site.data.keys.mf_server }} 注册应用程序之后手动更改了此值，那么必须重新注册应用程序。</li><li><b>xmlns:mfp</b>：{{ site.data.keys.product_adj }} 插件 XML 名称空间。</li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:platformVersion</b></td>
-                        <td>必需。开发应用程序所用的产品版本。</td>
-                        <td>缺省情况下已设置。不得更改此值。</td>
+                        <td>必需。 开发应用程序所用的产品版本。</td>
+                        <td>缺省情况下已设置。 不得更改此值。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:directUpdateAuthenticityPublicKey</b></td>
-                        <td>可选。在启用“直接更新真实性”功能时，将在部署期间对直接更新包进行数字签名。在客户机下载包之后，将运行安全性检查以验证包真实性。此字符串值是公用密钥，将用于认证直接更新 .zip 文件。</td>
+                        <td>可选。 在启用“直接更新真实性”功能时，将在部署期间对直接更新包进行数字签名。 在客户机下载包之后，将运行安全性检查以验证包真实性。 此字符串值是公用密钥，将用于认证直接更新 .zip 文件。</td>
                         <td>使用 <code>mfpdev app config direct_update_authenticity_public_key key-value</code> 命令设置。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:languagePreferences</b></td>
-                        <td>可选。包含用于显示系统消息的语言环境的逗号分隔列表。</td>
+                        <td>可选。 包含用于显示系统消息的语言环境的逗号分隔列表。</td>
                         <td>使用 <code>mfpdev app config language_preferences key-value</code> 命令设置。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:clientCustomInit</b></td>
-                        <td>控制如何调用 <code>WL.Client.init</code> 方法。缺省情况下，将此值设置为 false，将在初始化 {{ site.data.keys.product_adj }} 插件之后自动调用 <code>WL.Client.init</code> 方法。针对客户机代码将此值设置为 <b>true</b>，以显式控制调用 <code>WL.Client.init</code> 的时间。</td>
-                        <td>手动编辑。您可以将 <b>enabled</b> 属性值设置为 <b>true</b> 或 <b>false</b>。</td>
+                        <td>控制如何调用 <code>WL.Client.init</code> 方法。 缺省情况下，将此值设置为 false，将在初始化 {{ site.data.keys.product_adj }} 插件之后自动调用 <code>WL.Client.init</code> 方法。 针对客户机代码将此值设置为 <b>true</b>，以显式控制调用 <code>WL.Client.init</code> 的时间。</td>
+                        <td>手动编辑。 您可以将 <b>enabled</b> 属性值设置为 <b>true</b> 或 <b>false</b>。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:server</b></td>
-                        <td>缺省远程服务器连接信息，客户机应用程序将使用此信息与 {{ site.data.keys.mf_server }} 进行通信。<ul><li><b>url：</b>url 值指定缺省情况下客户机将用于连接到服务器的 {{ site.data.keys.mf_server }} 协议、主机和端口值。</li><li><b>runtime：</b>运行时值指定应用程序注册到的 {{ site.data.keys.mf_server }} 运行时。有关 {{ site.data.keys.product_adj }} 运行时的更多信息，请参阅 {{ site.data.keys.mf_server }} 概述。</li></ul></td>
+                        <td>缺省远程服务器连接信息，客户机应用程序将使用此信息与 {{ site.data.keys.mf_server }} 进行通信。 <ul><li><b>url：</b>url 值指定缺省情况下客户机将用于连接到服务器的 {{ site.data.keys.mf_server }} 协议、主机和端口值。</li><li><b>runtime：</b>运行时值指定应用程序注册到的 {{ site.data.keys.mf_server }} 运行时。 有关 {{ site.data.keys.product_adj }} 运行时的更多信息，请参阅 {{ site.data.keys.mf_server }} 概述。</li></ul></td>
                         <td><ul><li>使用 <code>the mfpdev app config server</code> 命令设置服务器 url 值。</li><li>使用 <code>mfpdev app config runtime</code> 命令设置服务器运行时值。</li></ul></td>
                     </tr>
                     <tr>
@@ -267,7 +269,7 @@ Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储�
                     <tr>
                         <td><b>mfp:windows8</b></td>
                         <td>此元素包含针对 Windows 8.1 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。
-			<ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -284,22 +286,22 @@ Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储�
                     </tr>
                     <tr>
                         <td><b>mfp:appChecksum</b></td>
-                        <td>此值是应用程序 Web 资源的校验和。在运行 <code>mfpdev app webupdate</code> 时计算。</td>
-                        <td>不是用户可配置的。该校验和值在运行 <code>mfpdev app webupdate</code> 命令时更新。有关 <code>mfpdev app webupdate</code> 命令的更多详细信息，请在命令窗口中输入 <code>mfpdev help app webupdate</code>。</td>
+                        <td>此值是应用程序 Web 资源的校验和。 在运行 <code>mfpdev app webupdate</code> 时计算。</td>
+                        <td>不是用户可配置的。 该校验和值在运行 <code>mfpdev app webupdate</code> 命令时更新。 有关 <code>mfpdev app webupdate</code> 命令的更多详细信息，请在命令窗口中输入 <code>mfpdev help app webupdate</code>。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:sdkChecksum</b></td>
                         <td>此值是用于标识唯一 {{ site.data.keys.product_adj }} SDK 级别的 {{ site.data.keys.mf_console }} SDK 校验和。</td>
-                        <td>不是用户可配置的。缺省情况下，此值已设置。</td>
+                        <td>不是用户可配置的。 缺省情况下，此值已设置。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:security</b></td>
-                        <td>此元素包含特定于客户机应用程序平台的配置以确保 {{ site.data.keys.product_adj }} 安全性。包含<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
+                        <td>此元素包含特定于客户机应用程序平台的配置以确保 {{ site.data.keys.product_adj }} 安全性。 包含<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:testWebResourcesChecksum</b></td>
-                        <td>控制每次在移动设备上开始运行应用程序时，应用程序是否验证其 Web 资源的完整性。属性：<ul><li><b>enabled：</b>有效值为 <b>true</b> 和 <b>false</b>。如果将此属性设置为 <b>true</b>，那么应用程序将计算其 Web 资源的校验和，并且会将此校验和与初次运行应用程序时存储的值进行比较。</li><li><b>ignoreFileExtensions：</b>校验和计算可能需要几秒钟，这取决于 Web 资源的大小。要使其更加快速，可以提供要在计算中忽略的文件扩展名列表。当 <b>enabled</b> 属性值为 <b>false</b> 时，将忽略此值。</li></ul></td>
+                        <td>控制每次在移动设备上开始运行应用程序时，应用程序是否验证其 Web 资源的完整性。 属性： <ul><li><b>enabled：</b>有效值为 <b>true</b> 和 <b>false</b>。 如果将此属性设置为 <b>true</b>，那么应用程序将计算其 Web 资源的校验和，并且会将此校验和与初次运行应用程序时存储的值进行比较。</li><li><b>ignoreFileExtensions：</b>校验和计算可能需要几秒钟，这取决于 Web 资源的大小。 要使其更加快速，可以提供要在计算中忽略的文件扩展名列表。 当 <b>enabled</b> 属性值为 <b>false</b> 时，将忽略此值。</li></ul></td>
                         <td><ul><li>使用 <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> 命令设置 <b>enabled</b> 属性。</li><li>使用 <code>mfpdev app config android_security_ignore_file_extensions value</code> 命令设置 <b>ignoreFileExtensions</b> 属性。</li></ul></td>
                     </tr>
                 </table>

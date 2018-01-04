@@ -76,7 +76,7 @@ weight: 6
 	* 以下を `application` タグに追加します。
 
 	  ```xml
-	  <!-- GCM Receiver -->
+      <!-- GCM Receiver -->
       <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
@@ -137,16 +137,16 @@ weight: 6
 ### クライアント・サイド
 {: #client-side }
 
-| Java メソッド | 説明 |
+| Java メソッド| 説明|
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
-| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。 |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。 |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 |
+| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。|
+| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。|
+| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。|
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。|
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
 
 #### 初期化
 {: #initialization }
@@ -299,11 +299,11 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 2. 次に、以下の*必須* メソッドを追加する必要があります。
 
    ```java
-   @Override
-   public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
+@Override
+    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Handle push notification here
-   }
-   ```
+    }
+```
 
 3. このメソッド内で `MFPSimplePushNotification` を受け取り、目的の動作にあわせて通知を処理できます。
 

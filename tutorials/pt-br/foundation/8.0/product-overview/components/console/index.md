@@ -55,7 +55,7 @@ O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM
 
 #### Linha de Comandos
 {: #command-line-remote }
-Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instalado, 
+Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instalado,
 
 1. Inclua uma definição do servidor remoto:
 
@@ -63,8 +63,7 @@ Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instal
     Execute o comando: `mfpdev server add` e siga as instruções na tela.
 
     *Modo Direto*  
-    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por
-exemplo:
+    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por exemplo:
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
@@ -86,13 +85,13 @@ O Painel fornece uma visualização rápida dos projetos implementados.
 {: #actions-dropdown }
 A lista suspensa fornece acesso rápido a várias ações do console.
 
-![Imagem da lista suspensa Ações](actions-dropdown.png)
+![Imagem de ações suspensas](actions-dropdown.png)
 
 ### Configurações de tempo de execução
 {: #runtime-settings }
 Edite as propriedades de tempo de execução, as variáveis de segurança global, o keystore do servidor e os clientes confidenciais.
 
-![Imagem da tela Configurações de tempo de execução ](runtime-settings.png)
+![Imagem da tela Configurações de tempo de execução](runtime-settings.png)
 
 ### log de erro
 {: #error-log }
@@ -106,7 +105,7 @@ O log de erro mostra uma lista das operações de gerenciamento com falha que fo
 {: #devices }
 Os administradores podem procurar dispositivos que acessem o {{ site.data.keys.mf_server }} e podem gerenciar direitos de acesso.  
 Os dispositivos podem ser procurados usando qualquer ID do usuário ou usando um nome fácil. O ID do usuário é o identificador que foi usado para efetuar login.  
-Um nome fácil é um nome que é associado com o dispositivo para distingui-lo de outros dispositivos que compartilham o ID do usuário. 
+Um nome fácil é um nome que é associado com o dispositivo para distingui-lo de outros dispositivos que compartilham o ID do usuário.
 
 > Para obter mais informações, consulte o tópico sobre gerenciamento de acesso ao dispositivo na documentação do usuário.
 
@@ -116,9 +115,9 @@ Um nome fácil é um nome que é associado com o dispositivo para distingui-lo d
 {: #applications }
 #### Registrando Aplicativos
 {: #registering-applications }
-Forneça valores de aplicativo básicos e faça download do código de início. 
+Forneça valores de aplicativo básicos e faça download do código de início.
 
-![Imagem da tela de registro do aplicativo](register-applications.png)
+![Imagem da tela de registro de aplicativo](register-applications.png)
 
 #### Gerenciando aplicativos
 {: #managing-applications }
@@ -180,11 +179,10 @@ Ao rastrear o uso de dispositivos do cliente e determinar se os dispositivos est
 
 > Para obter mais informações, consulte o tópico sobre o rastreamento de licença na documentação do usuário.
 
-![Imagem da tela de logs do cliente](license-tracking.png)
+![Imagem da tela de rastreamento de licença](license-tracking.png)
 
 ### Downloads
 {: #downloads }
 Para situações em que a conectividade com a Internet não está disponível, é possível fazer download de uma captura instantânea dos vários artefatos de desenvolvimento do {{ site.data.keys.product }} a partir do Download Center no {{ site.data.keys.mf_console }}.
 
-![Imagem de artefatos disponíveis](downloads.png)
-
+![Imagem dos artefatos disponíveis](downloads.png)

@@ -21,9 +21,9 @@ You can also find detailed step-by-step instructions [in this workstation instal
 
 ### Server
 {: #server }
-You can use the {{ site.data.keys.mf_server }} either via the [Mobile Foundation Bluemix service](../../bluemix/using-mobile-foundation), or locally using the {{ site.data.keys.mf_dev_kit_full }} (used for local development purposes). The {{ site.data.keys.mf_server }} requires Java 7 or 8 to run.
+You can use the {{ site.data.keys.mf_server }} either via the [Mobile Foundation IBM Cloud service](../../bluemix/using-mobile-foundation), or locally using the {{ site.data.keys.mf_dev_kit_full }} (used for local development purposes). The {{ site.data.keys.mf_server }} requires Java 7 or 8 to run.
 
-If you intend on using the Mobile Foundation Bluemix service, an account on Bluemix.net is required.
+If you intend on using the Mobile Foundation IBM Cloud service, an account on bluemix.net is required.
 
 ### Application development
 {: #application-development }

@@ -86,11 +86,11 @@ Wenn Sie die {{ site.data.keys.product }} in IBM Containern einrichten möchten,
 
 Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependencies** und **mfpf-libs**), die Dateien für die Erstellung und Implementierung eines Containers mit {{ site.data.keys.mf_analytics }} (**mfpf-analytics**) und Dateien zum Konfigurieren eines MobileFirst-Server-Containers (**mfpf-server**).
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für mehr Informationen zum Inhalt der Archivdatei und zu den verfügbaren Umgebungseigenschaften hier klicken</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>Für mehr Informationen zum Inhalt der Archivdatei und zu den verfügbaren Umgebungseigenschaften hier klicken</b></a>
             </h4>
         </div>
 
@@ -124,7 +124,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                     <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-server-env" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -297,7 +297,7 @@ Führen Sie `cf ic login` aus.
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
 Wie bereits erläutert, können Sie die Scripts interaktiv oder unter Verwendung der Konfigurationsdateien ausführen. 
 
-* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprecvhende Konfigurationsdatei als Argument. 
+* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprechende Konfigurationsdatei als Argument. 
 * Interaktiv: Führen Sie die Scripts ohne Argumente aus. 
 
 **Hinweis:** Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich wenigstens mit den Argumenten, die angegeben werden müssen, zu beschäftigen. 
@@ -309,7 +309,9 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
 
 >**Hinweis:** Sie können Installationsprogramme und Datenbanktools aus den lokalen Installationsordnern des {{ site.data.keys.mf_app_center }} (`installer` und `tools`) herunterladen.
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+
+
+<div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
             <h4 class="panel-title">
@@ -317,7 +319,7 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
             </h4>
         </div>
 
-        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein.<br/>
               <h4>initenv.properties</h4>
@@ -367,7 +369,7 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
             </h4>
         </div>
 
-        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
@@ -376,7 +378,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-initenv">
                                     <h4 class="panel-title">
@@ -396,7 +398,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
                                                 <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD</td>
+                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
                                                 <td>Bluemix-Kennwort</td>
                                             </tr>
                                             <tr>
@@ -404,11 +406,11 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
                                                 <td>Bluemix-Organisationsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE</td>
+                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
                                                 <td>Bluemix-Bereichsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-a|--api] BLUEMIX_API_URL (optional)	</td>
+                                                <td>[-a|--api] BLUEMIX_API_URL (optional)</td>
                                                 <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                             </tr>
                                         </table>
@@ -425,13 +427,13 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                         </div>
                     </li>
                     <li><b>prepareappcenterdbs.sh - Erstellung der MobileFirst-Application-Center-Datenbank</b><br/>
-                    Das Script <b>prepareappcenterdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_app_center }} mit dem dashDB-Datenbankservice. Die Instanz des dashDB-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus: 
+                    Das Script <b>prepareappcenterdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_app_center }} mit dem dashDB-Datenbankservice zu konfigurieren. Die Instanz des dashDB-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus: 
 
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenterdbs" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
                                     <h4 class="panel-title">
@@ -469,7 +471,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
                     </li>
                     <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
-                    Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei <b>initenv.properties</b> mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus: </li>
+                    Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei <b>initenv.properties</b> mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus: </li>
 
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -485,7 +487,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
                                     <h4 class="panel-title">
@@ -525,7 +527,7 @@ prepareappcenter.sh --tag NAME_DES_SERVER-IMAGE registryUrl/namespace/imagename
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcenter" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
                                     <h4 class="panel-title">
@@ -549,43 +551,43 @@ prepareappcenter.sh --tag NAME_DES_SERVER-IMAGE registryUrl/namespace/imagename
                                                 <td>IP-Adresse, an die der MobileFirst-Application-Center-Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-si|--services] SERVICE_INSTANCES	</td>
+                                                <td>[-si|--services] SERVICE_INSTANCES (optional)</td>
                                                 <td>Jeweils durch ein Komma getrennte Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-h|--http] EXPOSE_HTTP </td>
+                                                <td>[-h|--http] EXPOSE_HTTP (optional)</td>
                                                 <td>Offenlegung des HTTP-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-s|--https] EXPOSE_HTTPS </td>
+                                                <td>[-s|--https] EXPOSE_HTTPS (optional)</td>
                                                 <td>Offenlegung des HTTPS-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-m|--memory] SERVER_MEM </td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)</td>
                                                 <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-se|--ssh] SSH_ENABLE </td>
+                                                <td>[-se|--ssh] SSH_ENABLE (optional)</td>
                                                 <td>Aktivierung von SSH für den Container. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-sk|--sshkey] SSH_KEY </td>
+                                                <td>[-sk|--sshkey] SSH_KEY (optional)</td>
                                                 <td>SSH-Schlüssel, der in den Container injiziert werden soll. (Geben Sie den Inhalt Ihrer Datei id_rsa.pub an.) </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)</td>
                                                 <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-ml|--maxlog] MAX_LOG_FILES </td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)</td>
                                                 <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)</td>
                                                 <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional:  [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)</td>
                                                 <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
 
@@ -610,7 +612,7 @@ startappcenter.sh --tag Image-Tagname --name Containername --ip Container-IP-Adr
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcentergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
                                     <h4 class="panel-title">
@@ -638,47 +640,47 @@ startappcenter.sh --tag Image-Tagname --name Containername --ip Container-IP-Adr
                                                 <td>Hostname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>Domänenname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-gm|--min] SERVERS_CONTAINER_GROUP_MIN </td>
+                                                <td>[-gm|--min] SERVERS_CONTAINER_GROUP_MIN (optional)</td>
                                                 <td>Mindestanzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-gx|--max] SERVER_CONTAINER_GROUP_MAX </td>
+                                                <td>[-gx|--max] SERVER_CONTAINER_GROUP_MAX (optional)</td>
                                                 <td>Maximale Anzahl Containerinstanzen. Der Standardwert ist 2.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED </td>
+                                                <td>[-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED (optional)</td>
                                                 <td>Gewünschte Anzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-a|--auto] ENABLE_AUTORECOVERY </td>
+                                                <td>[-a|--auto] ENABLE_AUTORECOVERY (optional)</td>
                                                 <td>Aktivieren der automatischen Wiederherstellungsoption für die Containerinstanzen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-si|--services] SERVICES </td>
+                                                <td>[-si|--services] SERVICES (optional)</td>
                                                 <td>Jeweils durch ein Komma getrennte Namen von Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)</td>
                                                 <td>Anzuwendende Tracespezifikation. Standardwert: </code>*=info</code>.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-ml|--maxlog] MAX_LOG_FILESC </td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILESC (optional)</td>
                                                 <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)</td>
                                                 <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-m|--memory] SERVER_MEM </td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)</td>
                                                 <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)</td>
                                                 <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
 
@@ -706,15 +708,15 @@ startappcentergroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 {: #mobilefirst-analytics }
 Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden möchten, beginnen Sie hier. 
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts-analytics" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step1">
+        <div class="panel-heading" role="tab" id="step1-analytics">
             <h4 class="panel-title">
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">Konfigurationsdateien verwenden</a>
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein.<br/>
             <b>Hinweis:</b> Hier sind nur die erforderlichen Argumente aufgeführt. Wenn Sie etwas zu den übrigen Argumenten erfahren möchten, sehen Sie sich die Dokumentation in den Eigenschaftendateien an.
@@ -756,7 +758,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
@@ -765,7 +767,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
@@ -785,7 +787,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
                                                 <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD</td>
+                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
                                                 <td>Bluemix-Kennwort</td>
                                             </tr>
                                             <tr>
@@ -793,11 +795,11 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
                                                 <td>Bluemix-Organisationsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE</td>
+                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
                                                 <td>Bluemix-Bereichsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-a|--api] BLUEMIX_API_URL (optional)	</td>
+                                                <td>[-a|--api] BLUEMIX_API_URL (optional)</td>
                                                 <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                             </tr>
                                         </table>
@@ -823,7 +825,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                         Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
                         Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
@@ -839,7 +841,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                                               <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
-                                              <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
+                                              <td>[-t|--tag] ANALYTICS_IMAGE_TAG</td>
                                               <td>Name, der für das angepasste Analytics-Image verwendet werden soll. Format: Bluemix-Registry-URL/privater_Namespace/Image-Name</td>
                                             </tr>      
                                         </table>
@@ -864,7 +866,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
@@ -892,56 +894,56 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>IP-Adresse, an die der Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
                                             </tr>
                                             <tr>
-                                                <td>[-h|--http] EXPOSE_HTTP (optional)	</td>
+                                                <td>[-h|--http] EXPOSE_HTTP (optional)</td>
                                                 <td>Offenlegung des HTTP-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--https] EXPOSE_HTTPS (optional)	</td>
+                                                <td>[-s|--https] EXPOSE_HTTPS (optional)</td>
                                                 <td>Offenlegung des HTTPS-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)</td>
                                                 <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-se|--ssh] SSH_ENABLE (optional)	</td>
+                                                <td>[-se|--ssh] SSH_ENABLE (optional)</td>
                                                 <td>Aktivierung von SSH für den Container. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-sk|--sshkey] SSH_KEY (optional)	</td>
+                                                <td>[-sk|--sshkey] SSH_KEY (optional)</td>
                                                 <td>SSH-Schlüssel, der in den Container injiziert werden soll. (Geben Sie den Inhalt Ihrer Datei id_rsa.pub an.) </td>
                                             </tr>
                                             <tr>
-                                                <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)</td>
                                                 <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)</td>
                                                 <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)</td>
                                                 <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)</td>
                                                 <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                             <tr>
-                                                <td>[-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME (optional)	</td>
+                                                <td>[-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME (optional)</td>
                                                 <td>Anhängen des Datenträgers für Analysedaten ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                             <tr>
-                                                <td>[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME (optional)	</td>
+                                                <td>[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME (optional)</td>
                                                 <td>Geben Sie den Namen des Datenträgers für Analysedaten an, der erstellt und angehängt werden soll. Der Standardname ist <b>mfpf_analytics_container_name</b>.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)	</td>
-                                                <td>Geben Sie die Position an, an der die Daten gespeichert werden sollen. Der Name des Standardordners ist <b>/analyticsData</b>. </td>
+                                                <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)</td>
+                                                <td>Geben Sie die Position an, an der die Daten gespeichert werden sollen. Der Name des Standardordners ist <b>/analyticsData</b>.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
-                                                <td>Geben Sie jeweils durch ein Komma getrennte Eigenschaften von {{ site.data.keys.mf_analytics }} als Schlüssel-Wert-Paare an. Hinweis: Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein. </td>
+                                                <td>[-e|--env] MFPF_PROPERTIES (optional)</td>
+                                                <td>Geben Sie jeweils durch ein Komma getrennte Eigenschaften von {{ site.data.keys.mf_analytics }} als Schlüssel-Wert-Paare an. Hinweis: Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
                                             </tr>
                                         </table>
 
@@ -962,7 +964,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
@@ -994,47 +996,47 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Domänenname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN (optional)	</td>
+                                                <td>[-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN (optional)</td>
                                                 <td>Mindestanzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX (optional)	</td>
+                                                <td>[-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX (optional)</td>
                                                 <td>Maximale Anzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED (optional)	</td>
+                                                <td>[-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED (optional)</td>
                                                 <td>Gewünschte Anzahl Containerinstanzen. Der Standardwert ist 2.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)</td>
                                                 <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)</td>
                                                 <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)</td>
                                                 <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                                <td>[-e|--env] MFPF_PROPERTIES (optional)</td>
                                                 <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
                                             </tr>
                                             <tr>
-                                                <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)</td>
                                                 <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)</td>
                                                 <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                             <tr>
-                                                <td>[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME (optional)	</td>
+                                                <td>[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME (optional)</td>
                                                 <td>Geben Sie den Namen des Datenträgers für Analysedaten an, der erstellt und angehängt werden soll. Der Standardwert ist <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b>.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)	</td>
+                                                <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)</td>
                                                 <td>Geben Sie das Verzeichnis an, in dem Analysedaten gespeichert werden sollen. Der Standardwert ist <b>/analyticsData</b>.</td>
                                             </tr>
                                         </table>
@@ -1059,7 +1061,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -1067,7 +1069,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein:<br/>
 
@@ -1122,7 +1124,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
 
@@ -1133,7 +1135,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-initenv" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
@@ -1153,7 +1155,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                                             <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
                                         </tr>
                                         <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD</td>
+                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
                                             <td>Bluemix-Kennwort</td>
                                         </tr>
                                         <tr>
@@ -1161,11 +1163,11 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                                             <td>Bluemix-Organisationsname</td>
                                         </tr>
                                         <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE</td>
+                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
                                             <td>Bluemix-Bereichsname</td>
                                         </tr>
                                         <tr>
-                                            <td>[-a|--api] BLUEMIX_API_URL (optional)	</td>
+                                            <td>[-a|--api] BLUEMIX_API_URL (optional)</td>
                                             <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                         </tr>
                                     </table>
@@ -1182,12 +1184,12 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                     </div>
                 </li>
                 <li><b>prepareserverdbs.sh - Erstellung der MobileFirst-Server-Datenbank</b><br />
-                    Das Script <b>prepareserverdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_server }} mit dem dashDB-Datenbankservice. Die Instanz des dashDB-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus:
+                    Das Script <b>prepareserverdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_server }} mit dem dashDB-Datenbankservice zu konfigurieren. Die Instanz des dashDB-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserverdbs" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
@@ -1240,21 +1242,21 @@ prepareserverdbs.sh --admindb MFPDashDBService
                     </div>
                 </li>
                 <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
                 </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
-                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. <br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
+                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
@@ -1292,7 +1294,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-startserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
@@ -1315,47 +1317,47 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                         <td>IP-Adresse, an die der MoibleFirst-Server-Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
                                     </tr>
                                     <tr>
-                                        <td>[-si|--services] SERVICE_INSTANCES (optional)	</td>
+                                        <td>[-si|--services] SERVICE_INSTANCES (optional)</td>
                                         <td>Jeweils durch ein Komma getrennte Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                     </tr>
                                     <tr>
-                                        <td>[-h|--http] EXPOSE_HTTP (optional)	</td>
+                                        <td>[-h|--http] EXPOSE_HTTP (optional)</td>
                                         <td>Offenlegung des HTTP-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                     </tr>
                                     <tr>
-                                        <td>[-s|--https] EXPOSE_HTTPS (optional)	</td>
+                                        <td>[-s|--https] EXPOSE_HTTPS (optional)</td>
                                         <td>Offenlegung des HTTPS-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                     </tr>
                                     <tr>
-                                        <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                        <td>[-m|--memory] SERVER_MEM (optional)</td>
                                         <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                     </tr>
                                     <tr>
-                                        <td>[-se|--ssh] SSH_ENABLE (optional)	</td>
+                                        <td>[-se|--ssh] SSH_ENABLE (optional)</td>
                                         <td>Aktivierung von SSH für den Container. Gültige Werte sind Y (Standard) und N. </td>
                                     </tr>
                                     <tr>
-                                        <td>[-sk|--sshkey] SSH_KEY (optional)	</td>
+                                        <td>[-sk|--sshkey] SSH_KEY (optional)</td>
                                         <td>SSH-Schlüssel, der in den Container injiziert werden soll. (Geben Sie den Inhalt Ihrer Datei id_rsa.pub an.) </td>
                                     </tr>
                                     <tr>
-                                        <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                        <td>[-tr|--trace] TRACE_SPEC (optional)</td>
                                         <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                     </tr>
                                     <tr>
-                                        <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                        <td>[-ml|--maxlog] MAX_LOG_FILES (optional)</td>
                                         <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                     </tr>
                                     <tr>
-                                        <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                        <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)</td>
                                         <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                     </tr>
                                     <tr>
-                                        <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                        <td>[-v|--volume] ENABLE_VOLUME (optional)</td>
                                         <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                     </tr>
                                     <tr>
-                                        <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                        <td>[-e|--env] MFPF_PROPERTIES (optional)</td>
                                         <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>. <b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
                                     </tr>
                                 </table>
@@ -1364,7 +1366,8 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% highlight bash %}
 startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adresse
 {% endhighlight %}
-<br/>
+
+                                <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Abschnitt schließen</b></a>
                             </div>
                         </div>
@@ -1376,7 +1379,7 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-startservergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
@@ -1404,54 +1407,54 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
                                                 <td>Hostname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>Domänenname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gm|--min] SERVERS_CONTAINER_GROUP_MIN (optional)	</td>
+                                                <td>[-gm|--min] SERVERS_CONTAINER_GROUP_MIN (optional)</td>
                                                 <td>Mindestanzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gx|--max] SERVER_CONTAINER_GROUP_MAX (optional)	</td>
+                                                <td>[-gx|--max] SERVER_CONTAINER_GROUP_MAX (optional)</td>
                                                 <td>Maximale Anzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED (optional)	</td>
+                                                <td>[-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED (optional)</td>
                                                 <td>Gewünschte Anzahl Containerinstanzen. Der Standardwert ist 2.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-a|--auto] ENABLE_AUTORECOVERY (optional)	</td>
+                                                <td>[-a|--auto] ENABLE_AUTORECOVERY (optional)</td>
                                                 <td>Aktivieren der automatischen Wiederherstellungsoption für die Containerinstanzen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
 
                                             <tr>
-                                                <td>[-si|--services] SERVICES (optional)	</td>
+                                                <td>[-si|--services] SERVICES (optional)</td>
                                                 <td>Jeweils durch ein Komma getrennte Namen von Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
-                                                <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)</td>
                                                 <td>Anzuwendende Tracespezifikation. Der Standarwert ist <code>*=info</code>. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)</td>
                                                 <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)</td>
                                                 <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                                <td>[-e|--env] MFPF_PROPERTIES (optional)</td>
                                                 <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel:
 <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
                                                 <b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen die Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)</td>
                                                 <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)</td>
                                                 <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                         </table>
@@ -1460,7 +1463,8 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
 {% highlight bash %}
 startservergroup.sh --tag Image-Name --name Containergruppenname --host Hostname_der_Containergruppe --domain Domänenname_der_Containergruppe
 {% endhighlight %}
-<br/>
+
+                                        <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Abschnitt schließen</b></a>
                                     </div>
                                 </div>
@@ -1476,7 +1480,9 @@ startservergroup.sh --tag Image-Name --name Containergruppenname --host Hostname
 > **Hinweis:** Container müssen nach jeder Konfigurationsänderung neu gestartet werden (`cf ic restart Container-ID`). Bei Containergruppen müssen Sie jede Containerinstanz innerhalb einer Gruppe
 neu starten.
 Wenn sich beispielsweise ein Stammzertifikat ändert, muss nach dem Hinzufügen des neuen Zertifikats jede Containerinstanz neu
-gestartet werden. Starten Sie die {{ site.data.keys.mf_console }} über die URL http://MF\_CONTAINER\_HOST/mfpconsole. (Der Start kann eine Weile dauern.)   
+gestartet werden. 
+
+Starten Sie die {{ site.data.keys.mf_console }} über die URL http://MF\_CONTAINER\_HOST/mfpconsole. (Der Start kann eine Weile dauern.)   
 Fügen Sie den fernen Server hinzu. Folgen Sie dfür den Anweisungen
 im Lernprogramm [{{ site.data.keys.mf_cli }} für die Verwaltung
 von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance). 
@@ -1495,15 +1501,15 @@ und den MobileFirst-Server-Container angegebenen Standardportnummern (9080 für 
 
 Vorläufige Fixes für {{ site.data.keys.mf_server }} in IBM Containern können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.  
 Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den folgenden Ordnern: 
-* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
-* {{ site.data.keys.mf_server }} (Liberty-Cloud-Foundry-Anwendung): **package_root/mfpf-server/usr**
-* {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter/usr**
+* {{ site.data.keys.mf_analytics }}: **Paketstammverzeichnis/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} (Liberty-Cloud-Foundry-Anwendung): **Paketstammverzeichnis/mfpf-server/usr**
+* {{ site.data.keys.mf_app_center_short }}: **Paketstammverzeichnis/mfp-appcenter/usr**
 
 ### Anwendung des iFix:
 
 1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben.
-2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **package_root/mfpf-analytics/usr**, **package_root/mfpf-server/usr** und **package_root/mfp-appcenter/usr**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
-3. Bearbeiten Sie die Datei **package_root/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie: 
+2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **Paketstammverzeichnis/mfpf-analytics/usr**, **Paketstammverzeichnis/mfpf-server/usr** und **Paketstammverzeichnis/mfp-appcenter/usr**. Dabei werden die neu installierten Konfigurationsdateien überschrieben.
+3. Bearbeiten Sie die Datei **Paketstammverzeichnis/mfpf-server/usr/env/jvm.options** in Ihrem Editor. Wenn die folgende Zeile vorhanden ist, entfernen Sie sie:
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
 ```
@@ -1513,7 +1519,7 @@ Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen
 
     b. Führen Sie das Script `startserver.sh` aus, um das Server-Image als eigenständigen Container auszuführen, oder das Script `startservergroup.sh`, um das Server-Image als Containergruppe auszuführen.
 
-<!--**Note:** When applying fixes for {{ site.data.keys.mfp-appcenter }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Container in Bluemix entfernen
 {: #removing-a-container-from-bluemix }

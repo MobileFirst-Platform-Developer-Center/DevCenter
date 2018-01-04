@@ -27,6 +27,8 @@ und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adapte
 > Weitere Informationen zur SDK-Integration in Cordova-Anwendungen und nativen Anwendungen enthalten die Lernprogramme
 der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](../../application-development/sdk/).
 
+
+
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Voraussetzungen](#prerequisites)
@@ -43,17 +45,18 @@ der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](../../applicati
 {: #prerequisites }
 Die {{ site.data.keys.mf_cli }} ist als NPM-Paket in der [NPM-Registry](https://www.npmjs.com/) verfügbar.  
 
-Stellen Sie sicher, dass in der Entwicklungsumgebung **Node.js** für die Instalation von NPM-Paketen installiert ist.   
+Stellen Sie sicher, dass in der Entwicklungsumgebung **Node.js** und **NPM** für die Instalation von NPM-Paketen installiert sind.   
 Folgen Sie für die Installation von Node.js den Anweisungen auf [nodejs.org](https://nodejs.org). 
 
 Führen Sie den Befehl `node -v` aus, um sich zu vergewissern, dass Node.js ordnungsgemäß installiert wurde.
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **Hinweis:** Die unterstützte Mindestversion von Node.js ist Version 4.2.3. 
+> **Hinweis:** Die unterstützte Mindestversion von **Node.js** ist Version **4.2.3**. Aufgrund der schnellen Entwicklung bei den **Node**- und
+**NPM**-Paketen besteht die Möglichkeit, dass die MobileFirst-CLI nicht mit allen verfügbaren Versionen von **Node** und **NPM**, einschließlich der jeweils neuesten Version, vollständig funktioniert. Stellen Sie für eine ordnungsgemäße Funktionsweise der CLI sicher, dass **Node** auf dem Stand von Version **6.11.1** und **NPM** auf dem Stand von Version **3.10.10** ist.
 
 ## {{ site.data.keys.mf_cli }} installieren
 {: #installing-the-mobilefirst-cli }
@@ -66,7 +69,7 @@ npm install -g mfpdev-cli
 Wenn Sie die CLI-ZIP-Datei über das Download-Center der {{ site.data.keys.mf_console }} heruntergeladen haben, verwenden Sie den folgenden Befehl: 
 
 ```bash
-npm install -g <Pfad_zu_mfpdev-cli.tgz>
+npm install -g <path-to-mfpdev-cli.tgz>
 ```
 
 - Sie können die CLI ohne die optionalen Abhängigkeiten installieren. Fügen Sie in dem Fall das Attribut
@@ -99,35 +102,35 @@ DESCRIPTION
 ## Liste der CLI-Befehle
 {: #list-of-cli-commands }
 
-| Befehlspräfix                                                | Befehlsaktion                               | Beschreibung                                                             |
+| Befehlspräfix | Befehlsaktion | Beschreibung |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
-| `mfpdev app`	                                                | register                                     | Registriert eine App bei {{ site.data.keys.mf_server }}                           |
-|                                                               | config                                       | Ermöglicht Ihnen, den Back-End-Server und die Laufzeit für Ihre App anzugeben. Für Cordova-Apps können Sie außerdem diverse zusätzliche Aspekte konfigurieren, z. B. die Standardsprache für Systemnachrichten oder die Überprüfung der Kontrollsumme. Für Cordova-Apps gibt es weitere Konfigurationsparameter.                                                                                                                                                |
-|                                                               | pull                                         | Ruft eine vorhandene App-Konfiguration vom Server ab                |
-|                                                               | push                                         | Sendet die Konfiguration einer App an den Server                              |
-|                                                               | preview                                      | Ermöglicht eine Voranzeige Ihrer Cordova-App ohne ein tatsächliches Gerät für den Zielplattformtyp. Sie können die Voranzeige im {{ site.data.keys.mf_mbs }} oder in Ihrem Web-Browser sehen.                                                                               |
-|                                                               | webupdate                                    | Packt die Anwendungsressourcen aus dem Verzeichnis www in einer ZIP-Datei zusammen, die für die direkte Aktualisierung verwendet werden kann                                                                                                                                     |
-| mfpdev server	                                                | info                                         | Zeigt Informationen zu {{ site.data.keys.mf_server }} an                      |
-|                                                               | add                                          | Fügt eine neue Serverdefinition zu Ihrer Umgebung hinzu                        |
-|                                                               | edit                                         | Ermöglicht die Bearbeitung einer Serverdefinition                                |
-|                                                               | remove                                       | Entfernt eine Serverdefinition aus Ihrer Umgebung                      |
-|                                                               | console                                      | Öffnet die {{ site.data.keys.mf_console }}                               |
-|                                                               | clean                                        | Hebt die Registrierung von Apps bei {{ site.data.keys.mf_server }} auf und entfernt Adapter aus dem Server      |
-| mfpdev adapter                                                | create                                       | Erstellt einen Adapter                                                     |
-|                                                               | build                                        | Erstellt einen Adapterbuild                                                       |
-|                                                               | build all                                    | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und erstellt einen Build für diese Adapter |
-|                                                               | deploy                                       | Implementiert einen Adapter in {{ site.data.keys.mf_server }}                           |
-|                                                               | deploy all                                   | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und implementiert sie in {{ site.data.keys.mf_server }} |
-|                                                               | call                                         | Ruft eine Adapterprozedur in {{ site.data.keys.mf_server }} auf                 |
-|                                                               | pull                                         | Ruft eine vorhandene Adapterkonfiguration vom Server ab                |
-|                                                               | push                                         | Sendet die Konfiguration eines Adapters an den Server                              |
-| mfpdev                                                        | config                                       | Legt Ihre Konfigurationsvorgaben für die Voranzeige fest (Browsertyp, Zeitlimit und Serverzeitlimit für die mfpdev-Befehlszeilenschnittstelle)                                                                                                                   |
-|                                                               | info                                         | Zeigt Informationen zu Ihrer Umgebung an, z. B. das Betriebssystem, die Speicherbelegung, die Knotenversion und die Version der Befehlszeilenschnittstelle. Wenn das aktuelle Verzeichnis eine Cordova-Anwendung ist, werden zusätzlich Informationen vom Cordova-Befehl cordova info angezeigt. |
-|                                                               | -v                                           | Zeigt die Nummer der derzeit verwendeten Version der {{ site.data.keys.mf_cli }} an |
-|                                                               | -d, --debug                                  | Debugmodus: Erzeugt Degubausgaben                                       |
-|                                                               | -dd, --ddebug                                | Ausführlicher Debugmodus: Erzeugt ausführliche Debugausgaben                       |
-|                                                               | -no-color                                    | Unterdrückt die Verwendung von Farben für die Befehlsausgabe                              |
-| mfpdev help                                                   | Befehlsname                              | Zeigt Hilfe für MobileFirst-CLI-Befehle (mfpdev-Befehle) an. Durch Angabe von Argumenten können konkrete Hilfetexte für einzelne Befehlstypen oder für einen Befehl angezeigt werden ("mfpdev help server add"). |
+| `mfpdev app`	                                                | register                                     | Registriert eine App bei {{ site.data.keys.mf_server }} |
+|                                                               | config | Ermöglicht Ihnen, den Back-End-Server und die Laufzeit für Ihre App anzugeben. Für Cordova-Apps können Sie außerdem diverse zusätzliche Aspekte konfigurieren, z. B. die Standardsprache für Systemnachrichten oder die Überprüfung der Kontrollsumme. Für Cordova-Apps gibt es weitere Konfigurationsparameter. |
+|                                                               | pull | Ruft eine vorhandene App-Konfiguration vom Server ab |
+|                                                               | push                                         | Sendet die Konfiguration einer App an den Server |
+|                                                               | preview | Ermöglicht eine Voranzeige Ihrer Cordova-App ohne ein tatsächliches Gerät für den Zielplattformtyp. Sie können die Voranzeige im {{ site.data.keys.mf_mbs }} oder in Ihrem Web-Browser sehen. |
+|                                                               | webupdate | Packt die Anwendungsressourcen aus dem Verzeichnis www in einer ZIP-Datei zusammen, die für die direkte Aktualisierung verwendet werden kann |
+| mfpdev server	                                                | info | Zeigt Informationen zu {{ site.data.keys.mf_server }} an |
+|                                                               | add | Fügt eine neue Serverdefinition zu Ihrer Umgebung hinzu |
+|                                                               | edit | Ermöglicht die Bearbeitung einer Serverdefinition |
+|                                                               | remove | Entfernt eine Serverdefinition aus Ihrer Umgebung |
+|                                                               | console                                      | Öffnet die {{ site.data.keys.mf_console }} |
+|                                                               | clean | Hebt die Registrierung von Apps bei {{ site.data.keys.mf_server }} auf und entfernt Adapter aus dem Server |
+| mfpdev adapter | create                                       | Erstellt einen Adapter |
+|                                                               | build                                        | Erstellt einen Adapterbuild |
+|                                                               | build all | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und erstellt einen Build für diese Adapter |
+|                                                               | deploy                                       | Implementiert einen Adapter in {{ site.data.keys.mf_server }} |
+|                                                               | deploy all | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und implementiert sie in {{ site.data.keys.mf_server }} |
+|                                                               | call | Ruft eine Adapterprozedur in {{ site.data.keys.mf_server }} auf |
+|                                                               | pull | Ruft eine vorhandene Adapterkonfiguration vom Server ab |
+|                                                               | push                                         | Sendet die Konfiguration eines Adapters an den Server |
+| mfpdev                                                        | config | Legt Ihre Konfigurationsvorgaben für die Voranzeige fest (Browsertyp, Zeitlimit und Serverzeitlimit für die mfpdev-Befehlszeilenschnittstelle) |
+|                                                               | info | Zeigt Informationen zu Ihrer Umgebung an, z. B. das Betriebssystem, die Speicherbelegung, die Knotenversion und die Version der Befehlszeilenschnittstelle. Wenn das aktuelle Verzeichnis eine Cordova-Anwendung ist, werden zusätzlich Informationen vom Cordova-Befehl cordova info angezeigt. |
+|                                                               | -v | Zeigt die Nummer der derzeit verwendeten Version der {{ site.data.keys.mf_cli }} an |
+|                                                               | -d, --debug | Debugmodus: Erzeugt Degubausgaben |
+|                                                               | -dd, --ddebug | Ausführlicher Debugmodus: Erzeugt ausführliche Debugausgaben |
+|                                                               | -no-color | Unterdrückt die Verwendung von Farben für die Befehlsausgabe |
+| mfpdev help | Befehlsname | Zeigt Hilfe für MobileFirst-CLI-Befehle (mfpdev-Befehle) an. Durch Angabe von Argumenten können konkrete Hilfetexte für einzelne Befehlstypen oder für einen Befehl angezeigt werden ("mfpdev help server add"). |
 
 ## Interaktiver Modus und Direktmodus
 {: #interactive-and-direct-modes }
@@ -282,8 +285,7 @@ Verwenden Sie die folgende Syntax, wenn Sie eine App bei einem anderen als dem S
 mfpdev app register <Server> <Laufzeit>
 ```
 
-Für Windows-Plattformen muss der Befehl mit dem Argument `-w <Plattform>` angegeben werden. Hier steht
-`<Plattform>` für eine Liste der zu registrierenden Windows-Plattformen. Die einzelnen Plattformen sind jeweils durch ein Komma getrennt. Gültige
+Für Windows-Plattformen muss der Befehl mit dem Argument `-w <Plattform>` angegeben werden. Hier steht `<Plattform>` für eine Liste der zu registrierenden Windows-Plattformen. Die einzelnen Plattformen sind jeweils durch ein Komma getrennt. Gültige
 Werte sind `windows`,`windows8` und `windowsphone8`.
 
 ```
@@ -310,17 +312,19 @@ Verfügbare Konfigurationen:
 Sie möchten eine Anwendung bei einem {{ site.data.keys.mf_server }} mit einer bestimmten Adresse registrieren. Die Anwendung soll aber auch in der Lage sein,
 eine Verbindung zu einer anderen Serveradresse herzustellen, z. B. zu einem
 DataPower-Gerät.
+
     >
     > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren. 
-    > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server**
-an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
+    > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server** an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
 
-* Festlegung des öffentlichen Schlüssels für die direkte Aktualisierung 
+
+
+* Festlegung des öffentlichen Schlüssels für die direkte Aktualisierung
 * Festlegung der Standardpsrache für die Anwendung. (Die Standardsprache ist Englisch (en).)
 * Festlegung, ob der Kontrollsummentest für Webressourcen aktiviert werden soll 
 * Angabe der Dateierweiterungen, die beim Kontrollsummentest für Webressource ignoriert werden sollen
 
-<div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="app-config" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="app-config-options">
             <h4 class="panel-title">
@@ -331,7 +335,7 @@ an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direkt
         <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
             <div class="panel-body">
                 <p>Bei den Einstellungen für die Kontrollsumme von Webressourcen gibt es bei Verwendung von <b>mfpdev</b> im Direktmodus für jede mögliche Zielplattform (Android, iOS, Windows 8, Windows Phone 8 und Windows 10 UWP) einen plattformspezifischen Schlüssel. Dieser Schlüssel beginnt mit einer Zeichenfolge, die den Plattformnamen repräsentiert. Die Einstellung <code>windows10_security_test_web_resources_checksum</code>, die auf "true" oder "false" gesetzt sein kann, gibt beispielsweise an, ob der Kontrollsummentest der Webressourcen für Windows10 UWP aktiviert werden soll.</p>
-                
+
                 <table class="table table-striped">
                     <tr>
                         <td><b>Einstellung</b></td>
@@ -382,7 +386,7 @@ an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direkt
                         <td>Gibt an, welche Dateierweiterungen beim Testen der Kontrollsumme von Webressourcen für Windows-8.1-Cordova-Apps ignoriert werden sollen. Geben Sie mehrere Erweiterungen jeweils durch ein Komma getrennt an. Beispiel: jpg,gif,pdf</td>
                     </tr>
                 </table>
- 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Abschnitt schließen</b></a>
             </div>
@@ -391,13 +395,13 @@ an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direkt
 </div>
 
 
-### Cordova-Anwendjung voranzeigen
+### Cordova-Anwendung voranzeigen
 {: #preview-a-cordova-application }
 Die Webressourcen einer Cordova-Anwendung können in einem Browser vorangezeigt werden. Das Voranzeigen einer Anwendung beschleunigt die Entwicklung, da keine Emulatoren und Simulatoren der nativen Plattform verwendet wreden müssen. 
 
 Vor Ausführung des Befehls "preview" müssen Sie das Projekt vorbereiten. Fügen Sie dazu die Variable `wlInitOptions` hinzu. Führen Sie die folgenden Schritte aus:
 
-1. Fügen Sie die Variable *wlInitOptions* zur Haupt-JavaScript-Datei hinzu. Bei einer Standard-Cordova-App ist das die Datei **index.js**. 
+1. Fügen Sie die Variable *wlInitOptions* zur Haupt-JavaScript-Datei hinzu. Bei einer Standard-Cordova-App ist das die Datei **index.js**.
 
    ```javascript
    var wlInitOptions = {
@@ -406,26 +410,25 @@ Vor Ausführung des Befehls "preview" müssen Sie das Projekt vorbereiten. Füge
    };
    ```
 
-2. Registrieren Sie die App mit folgendem Befehl erneut: 
+2. Registrieren Sie die App mit folgendem Befehl erneut:
 
    ```bash
    mfpdev app register
    ```
 
- 3. Führen Sie den folgenden Befehl aus: 
- 
+ 3. Führen Sie den folgenden Befehl aus:
+
     ```bash
     cordova prepare
     ```
 
- 4. Zeigen Sie eine Vorschau der Cordova-Anwendung an. Führen Sie dazu im Stammordner der Cordova-Anwendung den folgenden Befehl aus: 
+ 4. Zeigen Sie eine Vorschau der Cordova-Anwendung an. Führen Sie dazu im Stammordner der Cordova-Anwendung den folgenden Befehl aus:
 
     ```bash
     mfpdev app preview
     ```
 
-Sie werden aufgefordert, die Plattform für die Vorschau und die Art der Vorschau auszuwählen.
-Zur Auswahl stehen die beiden Optionen MBS und Browser.
+Sie werden aufgefordert, die Plattform für die Vorschau und die Art der Vorschau auszuwählen. Zur Auswahl stehen die beiden Optionen MBS und Browser.
 
 * MBS - {{ site.data.keys.mf_mbs }}. Bei Auswahl dieser Option wird ein mobiles Gerät in einem Browser simuliert. Gleichzeitig wird eine rudimentäre Cordova-API-Simulation für Karmera, Dateiupload, Geoortung und anderes bereitgestellt. Hinweis: Den Cordova-Browser können Sie nicht mit der Option MBS verwenden. 
 * Browser - Einfache Darstellung in einem Browser. Bei Auswahl dieser Option werden die Webressourcen der Cordova-Anwendung als normale Browser-Webseite dargestellt. 
@@ -439,6 +442,8 @@ für direkte Aktualisierung aktualisiert werden,
 ohne dass die App neu auf dem mobilen Gerät installiert werden muss. 
 
 > Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen](../direct-update).
+
+
 
 Wenn Sie neue Webressourcen für die Aktualisierung einer Cordova-Anwendung senden möchten, führen Sie folgenden Befehl aus: 
 

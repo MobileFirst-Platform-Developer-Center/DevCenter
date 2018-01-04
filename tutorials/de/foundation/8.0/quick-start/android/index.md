@@ -123,6 +123,8 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
 
    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind, folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
 
+
+
 2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den folgenden Befehl aus:
 
    ```bash

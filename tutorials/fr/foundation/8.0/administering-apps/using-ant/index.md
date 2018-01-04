@@ -27,8 +27,8 @@ Vous pouvez exécuter des opérations d'administration à l'aide d'{{ site.data.
 La tâche Ant **mfpadm**, le programme **mfpadm** et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que les suivantes :
 
 * Elimination d'erreurs d'opérateur dans des opérations répétitives, ou
-* exploitation en dehors des heures de travail normales de l'opérateur, ou
-* configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
+* Exploitation en dehors des heures de travail normales de l'opérateur, ou
+* Configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
 
 La tâche Ant **mfpadm** et le programme **mfpadm** sont plus simples à utiliser et fournissent une meilleure génération de rapports d'erreurs que les services REST. Comparée au programme mfpadm, la tâche Ant **mfpadm** présente l'avantage d'être non tributaire de la plateforme et plus facile à intégrer lorsque l'intégration à Ant est déjà disponible.
 
@@ -55,7 +55,7 @@ Pour utiliser la tâche Ant **mfpadm**, ajoutez cette commande d'initialisation 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/deployers/antlib.xml">
   <classpath>
-    <pathelement location="product_install_dir/MobileFirstServer/mfp-ant-deployer.jar"/>
+    <pathelement location="rép_install_produit/MobileFirstServer/mfp-ant-deployer.jar"/>
   </classpath>
 </taskdef>
 ```
@@ -65,7 +65,7 @@ Les autres commandes d'initialisation qui font référence au même fichier **mf
 ```xml
 <taskdef resource="com/ibm/mfp/ant/defaults.properties">
   <classpath>
-    <pathelement location="product_install_dir/MobileFirstServer/mfp-ant-deployer.jar"/>
+    <pathelement location="rép_install_produit/MobileFirstServer/mfp-ant-deployer.jar"/>
   </classpath>
 </taskdef>
 ```
@@ -162,7 +162,7 @@ Vous pouvez utiliser les éléments suivants dans des appels **mfpadm** :
 | delete-app	                | Supprime une application | 0..∞ | 
 | show-app-version              | Affiche des informations sur une version d'application | 0..∞ | 
 | delete-app-version            | Supprime une version d'une application | 0..∞ | 
-| Application	                        | Autres opérations sur une application | 0..∞ | 
+| app	                        | Autres opérations sur une application | 0..∞ | 
 | app-version	                | Autres opérations sur une version d'application | 0..∞ | 
 | list-devices	                | Répertorie les appareils | 0..∞ | 
 | remove-device	                | Retire un appareil | 0..∞ | 
@@ -977,7 +977,7 @@ La commande `set-appstatus` modifie le statut d'un appareil concernant une appli
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| Application	| Nom d'une application. | Oui | Non disponible | 
+| app	| Nom d'une application. | Oui | Non disponible | 
 | status | 	Nouveau statut. | Oui | Non disponible | 
 
 Les valeurs de statut possibles sont les suivantes :

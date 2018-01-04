@@ -55,7 +55,7 @@ ID は開発者によって割り当てられる固有の ID です。
 * `com.mydomain.mfp` というアセンブリー名を持つ Windows 10 Universal Windows Platform アプリケーション。
 * `com.mydomain.mfp` という割り当てられた ID を持つ Web アプリケーション。
 
-アプリケーションのターゲット・デプロイメント・プラットフォームは、アプリケーションがネイティブ・アプリケーションとして開発されたか Cordova アプリケーションとして開発されたかに依存しません。えば、次のアプリケーションは両方とも {{ site.data.keys.product }} の iOS アプリケーションとみなされます。
+アプリケーションのターゲット・デプロイメント・プラットフォームは、アプリケーションがネイティブ・アプリケーションとして開発されたか Cordova アプリケーションとして開発されたかに依存しません。例えば、次のアプリケーションは両方とも {{ site.data.keys.product }} の iOS アプリケーションとみなされます。
 
 * Xcode およびネイティブ・コードを使用して開発する iOS アプリケーション
 * Cordova クロスプラットフォーム開発テクノロジーを使用して開発する iOS アプリケーション
@@ -136,7 +136,7 @@ Operations Console は、{{ site.data.keys.mf_server }} 構成を表示および
 
 目的のトポロジーに {{ site.data.keys.mf_server }} をインストールして構成した後には、以下の方法のいずれかを使用して、{{ site.data.keys.mf_server }} およびそのアプリケーションの追加構成をすべて行えます。
 
-* {{ site.data.keys.mf_console }}
+*  {{ site.data.keys.mf_console }}
 * {{ site.data.keys.mf_server }} 管理サービス REST API
 * **mfpadm** コマンド・ライン・ツール
 

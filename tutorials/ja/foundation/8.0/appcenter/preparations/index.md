@@ -122,16 +122,16 @@ iOS および Android 用の Cordova プロジェクトを使用する代わり�
 
 **IBMAppCenter** プロジェクトをビルドします。MobileFirst プロジェクトには、**AppCenter** という名前のアプリケーションが 1 つだけ入っています。このアプリケーションを右クリックし、**「実行 (Run as)」→「すべての環境をビルド (Build All Environments)」**を選択します。
 
-#### Android
-{: #android }
+#### Android でのプロジェクトのインポートとビルド
+{: #importing-building-projects-android }
 MobileFirst Studio は、ネイティブの Android プロジェクトを **IBMAppCenter/apps/AppCenter/android/native** に生成します。ネイティブの Android 開発ツール (ADT) プロジェクトが android/native フォルダーに入っています。この ADT ツールを使用して、このプロジェクトをコンパイルし、それに署名することができます。このプロジェクトを使用するには Android SDK レベル 16 をインストールする必要があります。その結果生じる APK は 2.3 以降のすべての Android バージョンと互換性があります。このプロジェクトのビルド時にこれより高いレベルの Android SDK を選択すると、結果の APK は Android バージョン 2.3 と非互換になります。
 
 モバイル・クライアント・アプリケーションに影響する詳細な Android 情報については、[開発者向けの Android サイト](https://developer.android.com/index.html)を参照してください。
 
 アプリケーション更新に対してプッシュ通知を使用可能にしたい場合は、まず Application Center クライアント・プロパティーを構成する必要があります。[アプリケーション更新のためのプッシュ通知の構成](../push-notifications)を参照してください。
 
-#### iOS
-{: #ios }
+#### iOS でのプロジェクトのインポートとビルド
+{: #importing-building-projects-ios }
 MobileFirst Studio は、ネイティブの iOS プロジェクトを **IBMAppCenter/apps/AppCenter/iphone/native** に生成します。**IBMAppCenterAppCenterIphone.xcodeproj** ファイルが iphone/native フォルダーに入っています。このファイルは、Xcode を使用してコンパイルと署名を行う必要がある Xcode プロジェクトです。
 
 iOS モバイル・クライアント・アプリケーションに署名する方法についてさらに学ぶためには、[Apple 開発者サイト](https://developer.apple.com/)を参照してください。iOS アプリケーションに署名するためには、そのアプリケーションのバンドル ID を、ご使用のプロビジョニング・プロファイルと一緒に使用できるバンドル ID に変更する必要があります。値は Xcode プロジェクト設定で **com.your\_internet\_domain\_name.appcenter** と定義されています。ここで、**your\_internet\_domain\_name** は、ご自分のインターネット・ドメインの名前です。
@@ -190,20 +190,20 @@ Windows 10 Universal プロジェクトをビルドするには、以下のス�
 
 このファイルには、次の表に示されているプロパティーが含まれています。
 
-| プロパティー | 説明 |
+| プロパティー| 説明|
 |----------|-------------|
-| url | Application Center サーバーのハードコーディングされたアドレス。このプロパティーが設定されると、「ログイン」ビューのアドレス・フィールドは表示されません。  |
-| defaultPort | url プロパティーがヌルの場合は、このプロパティーが、電話の「ログイン」ビューの port フィールドを事前に埋めます。これがデフォルト値です。ユーザーはこのフィールドを編集することができます。  |
-| defaultContext | url プロパティーがヌルの場合は、このプロパティーが、電話の「ログイン」ビューの context フィールドを事前に埋めます。これがデフォルト値です。ユーザーはこのフィールドを編集することができます。  |
-| ssl | 「ログイン」ビューの SSL スイッチのデフォルト値。  |
-| allowDowngrade | このプロパティーは、古いバージョンのインストールが許可されているかどうかを示します。古いバージョンをインストールできるのは、オペレーティング・システムとバージョンがダウングレードを容認した場合だけです。 |
-| showPreviousVersions | このプロパティーは、デバイス・ユーザーがアプリケーションの全バージョンの詳細を表示できるか、それとも最新バージョンの詳細しか表示できないかを示します。  |
-| showInternalVersion | このプロパティーは、内部バージョンが表示されるかどうかを示します。 値が false ならば、商用バージョンが設定されていない場合にのみ内部バージョンが表示されます。  |
-| listItemRenderer | このプロパティーは次のいずれかの値を取ることができます。<br/>- **full**: (デフォルト値): アプリケーション・リストは、アプリケーション名、評価、および最新バージョンを示します。<br/>- **simple**: アプリケーション・リストはアプリケーション名のみを示します。 |
-| listAverageRating | このプロパティーは次のいずれかの値を取ることができます。<br/>-  **latestVersion**: アプリケーション・リストは、アプリケーションの最新バージョンの平均評価を示します。<br/>-  **allVersions**: アプリケーション・リストは、アプリケーションの全バージョンの平均評価を示します。 |
-| requestTimeout | このプロパティーは、Application Center サーバーへの要求のタイムアウト (ミリ秒) を示します。  |
-| gcmProjectId | Android プッシュ通知のために必要な Google API プロジェクト ID (project name = com.ibm.appcenter)。例えば、123456789012 など。 |
-| allowAppLinkReview | このプロパティーは、外部アプリケーション・ストアからのアプリケーションのローカル・レビューを Application Center に登録して参照できるかどうかを示します。 これらのローカル・レビューは外部アプリケーション・ストアでは不可視です。 これらのレビューは Application Center サーバーに保管されます。  |
+| url| Application Center サーバーのハードコーディングされたアドレス。このプロパティーが設定されると、「ログイン」ビューのアドレス・フィールドは表示されません。 |
+| defaultPort| url プロパティーがヌルの場合は、このプロパティーが、電話の「ログイン」ビューの port フィールドを事前に埋めます。これがデフォルト値です。ユーザーはこのフィールドを編集することができます。 |
+| defaultContext| url プロパティーがヌルの場合は、このプロパティーが、電話の「ログイン」ビューの context フィールドを事前に埋めます。これがデフォルト値です。ユーザーはこのフィールドを編集することができます。 |
+| ssl| 「ログイン」ビューの SSL スイッチのデフォルト値。 |
+| allowDowngrade| このプロパティーは、古いバージョンのインストールが許可されているかどうかを示します。古いバージョンをインストールできるのは、オペレーティング・システムとバージョンがダウングレードを容認した場合だけです。|
+| showPreviousVersions| このプロパティーは、デバイス・ユーザーがアプリケーションの全バージョンの詳細を表示できるか、それとも最新バージョンの詳細しか表示できないかを示します。 |
+| showInternalVersion| このプロパティーは、内部バージョンが表示されるかどうかを示します。 値が false ならば、商用バージョンが設定されていない場合にのみ内部バージョンが表示されます。 |
+| listItemRenderer| このプロパティーは次のいずれかの値を取ることができます。<br/>- **full**: (デフォルト値): アプリケーション・リストは、アプリケーション名、評価、および最新バージョンを示します。<br/>- **simple**: アプリケーション・リストはアプリケーション名のみを示します。|
+| listAverageRating| このプロパティーは次のいずれかの値を取ることができます。<br/>-  **latestVersion**: アプリケーション・リストは、アプリケーションの最新バージョンの平均評価を示します。<br/>-  **allVersions**: アプリケーション・リストは、アプリケーションの全バージョンの平均評価を示します。|
+| requestTimeout| このプロパティーは、Application Center サーバーへの要求のタイムアウト (ミリ秒) を示します。 |
+| gcmProjectId| Android プッシュ通知のために必要な Google API プロジェクト ID (project name = com.ibm.appcenter)。例えば、123456789012 など。|
+| allowAppLinkReview| このプロパティーは、外部アプリケーション・ストアからのアプリケーションのローカル・レビューを Application Center に登録して参照できるかどうかを示します。 これらのローカル・レビューは外部アプリケーション・ストアでは不可視です。 これらのレビューは Application Center サーバーに保管されます。 |
 
 ### その他のリソース 
 {: #other-resources }
@@ -231,7 +231,7 @@ Windows 10 Universal プロジェクトをビルドするには、以下のス�
 * **iOS:** Xcode プロジェクトの **Resources** ディレクトリー内の **Default-size.png** という名前のファイル。
 * 自動ログイン時の Cordova/MobileFirst Studio ベースのプロジェクトのスプラッシュ画面: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Windows Phone 用の MobileFirst Studio 環境フォルダーの **native** ディレクトリー内の **SplashScreenImage.png** という名前のファイルを編集します。
-* **Windows 10 Universal:** Visual Studio の **IBMAppCenterUWP/Assets** ディレクトリー内の **SplashScreen*.png** という名前のファイルを編集します。
+* **Windows 10 Universal:** Visual Studio の *IBMAppCenterUWP/Assets** ディレクトリー内の **SplashScreen*.png** という*名前のファイルを編集します。 
 
 #### アプリケーションのアイコン (ボタン、星印、および同様のオブジェクト)
 {: #icons }

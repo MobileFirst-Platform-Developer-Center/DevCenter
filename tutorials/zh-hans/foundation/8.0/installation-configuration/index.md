@@ -7,7 +7,7 @@ weight: 3
 ## 概述
 {: #overview }
 {{ site.data.keys.product_full }}
-提供开发工具和服务器端组件，可在本地进行安装或将其部署到云以用于测试或生产。查看适合于您的安装场景的安装主题。
+提供开发工具和服务器端组件，可在本地进行安装或将其部署到云以用于测试或生产。 查看适合于您的安装场景的安装主题。
 
 ### 安装开发环境
 {: #installing-a-development-environment }
@@ -23,20 +23,21 @@ weight: 3
 
 ### 本地安装测试或生产服务器
 {: #installing-a-test-or-production-server-on-premises }
-IBM 安装都基于 IBM Installation Manager。请首先单独安装 IBM Installation Manager V1.8.4 或更高版本，然后再安装 {{ site.data.keys.product }}。
+IBM 安装都基于 IBM Installation Manager。 请首先单独安装 IBM Installation Manager V1.8.4 或更高版本，然后再安装 {{ site.data.keys.product }}。
 
-> **要点：**确保您使用的是 IBM Installation Manager V1.8.4 或更高版本。更低版本的 Installation Manager 将无法安装 {{ site.data.keys.product }} {{ site.data.keys.product_version }}，因为该产品的安装后操作需要使用 Java 7，而更低版本的 Installation Manager 只随附了 Java 6。
+> **要点：**确保您使用的是 IBM Installation Manager V1.8.4 或更高版本。 更低版本的 Installation Manager 将无法安装 {{ site.data.keys.product }} {{ site.data.keys.product_version }}，因为该产品的安装后操作需要使用 Java 7，而更低版本的 Installation Manager 只随附了 Java 6。
+
 {{ site.data.keys.mf_server }} 安装程序会将部署 {{ site.data.keys.mf_server }} 组件和 {{ site.data.keys.mf_app_center_full }}（可选）到应用程序服务器所需的所有工具和库复制到您的计算机中。
 
-如果要安装测试或生产服务器，请开始阅读下面的**关于 {{ site.data.keys.mf_server }} 安装的教程**以执行简单安装，并了解有关 {{ site.data.keys.mf_server }} 安装的信息。有关为特定环境准备安装的更多信息，请参阅[为生产环境安装 {{ site.data.keys.mf_server }}](production)。
+如果要安装测试或生产服务器，请开始阅读下面的**关于 {{ site.data.keys.mf_server }} 安装的教程**以执行简单安装，并了解有关 {{ site.data.keys.mf_server }} 安装的信息。 有关为特定环境准备安装的更多信息，请参阅[为生产环境安装 {{ site.data.keys.mf_server }}](production)。
 
 **关于 {{ site.data.keys.mf_server }} 安装的教程**  
-通过通读有关如何在 WebSphere  Application Server Liberty Profile 上创建具有两个节点的功能性 {{ site.data.keys.mf_server }} 集群的指示信息，了解有关 {{ site.data.keys.mf_server }} 安装过程的信息。可以如下方式完成安装：
+通过通读有关如何在 WebSphere  Application Server Liberty Profile 上创建具有两个节点的功能性 {{ site.data.keys.mf_server }} 集群的指示信息，了解有关 {{ site.data.keys.mf_server }} 安装过程的信息。 可以如下方式完成安装：
 
 * [使用 IBM Installation Manager 图形方式](production/tutorials/graphical-mode)和 Server Configuration Tool。
 * [使用命令行工具](production/tutorials/command-line)。
 
-之后，您将拥有一个正常运行的 {{ site.data.keys.mf_server }}。但在使用此服务器之前，需对其进行配置，尤其要确保安全性。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }}](production/server-configuration)。
+之后，您将拥有一个正常运行的 {{ site.data.keys.mf_server }}。 但在使用此服务器之前，需对其进行配置，尤其要确保安全性。 有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }}](production/server-configuration)。
 
 **新增项**  
 

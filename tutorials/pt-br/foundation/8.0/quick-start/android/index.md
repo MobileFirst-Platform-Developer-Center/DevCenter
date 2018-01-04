@@ -156,7 +156,7 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 
 A resposta do adaptador será impressa na visualização LogCat do Android Studio.
 
-![Imagem do aplicativo que chamou um recurso do {{ site.data.keys.mf_server }}](success_response.png) com sucesso
+![Imagem de um aplicativo que chamou com sucesso um recurso do {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Etapas Seguintes
 {: #next-steps }

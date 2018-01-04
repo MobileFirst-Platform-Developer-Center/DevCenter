@@ -174,14 +174,14 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 });
 ```
 
-##### 変更後 (Cloudant Sync を使用):
-{: #after-with-cloudant-sync }
+##### 変更後 (Cloudant Sync を使用): Android:
+{: #after-with-cloudant-sync-android }
 ```java
 // Create DatastoreManager
-       File path = context.getDir("databasedir", Context.MODE_PRIVATE);
-       DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
+   File path = context.getDir("databasedir", Context.MODE_PRIVATE);
+   DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
 
-       // Create a Datastore
+   // Create a Datastore
        String name = "automobiledb";
        Datastore datastore = manager.openDatastore(name);
 ```
@@ -191,9 +191,9 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 リモート・ストアにデータを保存するために、データ・ストア名を指定します。
 
 #### iOS
-{: #ios }
-##### 変更前 (IMFData/CloudantToolkit を使用):
-{: #before-with-imfdata-cloudanttoolkit }
+{: #for-ios }
+##### 変更前 (IMFData/CloudantToolkit を使用): iOS:
+{: #before-with-imfdata-cloudanttoolkit-for-ios }
 
 **Objective-c**
 
@@ -229,8 +229,8 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 })
 ```
 
-##### 変更後 (Cloudant Sync を使用):
-{: #after-with-cloudant-sync }
+##### 変更後 (Cloudant Sync を使用): iOS:
+{: #after-with-cloudant-sync-for-ios }
 **Objective-c**
 
 ```objc
@@ -242,15 +242,15 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 ```
 
 #### Android
-{: #android }
-##### 変更前 (IMFData/CloudantToolkit を使用):
-{: #before-with-imfdata-cloudanttoolkit }
+{: #for-android }
+##### 変更前 (IMFData/CloudantToolkit を使用): Android:
+{: #before-with-imfdata-cloudanttoolkit-for-android }
 
 ```java
 ```
 
-##### 変更後 (Cloudant Sync を使用):
-{: #after-with-cloudant-sync }
+##### 変更後 (Cloudant Sync を使用): Android:
+{: #after-with-cloudant-sync-for-android }
 ```java
 ```
 
@@ -262,53 +262,53 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 {: #encrypting-data-on-ios-devices }
 1. CocoaPods を使用して暗号化機能を取得します。
    * Podfile を開き、以下の行を追加します。
-        
+
    ##### 変更前 (IMFData/CloudantToolkit を使用):
    {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
-   pod 'IMFDataLocal/SQLCipher'
-   ```
-        
-   ##### 変更後 (Cloudant Sync を使用):
-   {: after-with-cloudant-sync }
+pod 'IMFDataLocal/SQLCipher'
+```
+
+   ##### 変更後 (Cloudant Sync を使用): iOS デバイスのデータの暗号化:
+   {: after-with-cloudant-sync-encrypt-ios-devices }
    ```xml
    pod 'CDTDatastore/SQLCipher'
    ```        
-        
+
    詳しくは、[CDTDatastore の暗号化に関する資料](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md)を参照してください。
-    
+
    * 以下のコマンドを実行して、アプリケーションに依存関係を追加します。
 
      ```bash
      pod install
      ```
 
-2. Swift アプリケーション内で暗号化機能を使用するには、アプリケーションの関連ブリッジング・ヘッダーに以下の import を追加します。 
-    
-   ##### 変更前 (IMFData/CloudantToolkit を使用):
-   {: #before-with-imfdata-cloudanttoolkit}
+2. Swift アプリケーション内で暗号化機能を使用するには、アプリケーションの関連ブリッジング・ヘッダーに以下の import を追加します。
+
+   ##### 変更前 (IMFData/CloudantToolkit を使用): iOS デバイスのデータの暗号化:
+   {: #before-with-imfdata-cloudanttoolkit-encrypt-ios-devices}
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    #import <CloudantToolkit/CloudantToolkit.h>
    #import <IMFData/IMFData.h>
    ```
-    
-   ##### 変更後 (Cloudant Sync を使用):
-   {: #after-with-cloudant-sync }
+
+   ##### 変更後 (Cloudant Sync を使用): iOS デバイスのデータの暗号化 (Swift):
+   {: #after-with-cloudant-sync-encrypt-ios-swift }
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    ```
-        
+
 3. 暗号化を行うように鍵プロバイダーと共にローカル・ストアを初期化します。
 
    > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
 
-   ##### 変更前 (IMFData/CloudantToolkit を使用):
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### 変更前 (IMFData/CloudantToolkit を使用) : 暗号化のためのローカル・ストアの初期化:
+   {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
    **Objective-C**
-    
+
    ```objc
    //Get reference to data manager
    IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -321,9 +321,9 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    //Initialize local store
    CDTStore *localStore = [manager localStore: name withEncryptionKeyProvider: keyProvider error: &error];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    let manager = IMFDataManager.sharedInstance()
    let name = "automobiledb"
@@ -334,11 +334,11 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
         store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
    } catch let error as NSError {
         // Handle error
-   }
-   ```
-    
-   ##### 変更後 (Cloudant Sync を使用):
-   {: #after-with-cloudant-sync }
+}
+```
+
+   ##### 変更後 (Cloudant Sync を使用) : 暗号化のためのローカル・ストアの初期化:
+   {: #after-with-cloudant-sync-initialize-local-store }
    **Objective-C**
 
    ```objc
@@ -355,7 +355,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    ```
 
    **Swift**
-    
+
    ```swift
    // Get reference to datastore manager
    let datastoreManager:CDTDatastoreManager = existingDatastoreManager
@@ -370,13 +370,13 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
         // Handle error
    }
    ```
-    
+
 4. 暗号化されたローカル・ストアを使用してデータを複製する場合、CDTPullReplication メソッドおよび CDTPushReplication メソッドを鍵プロバイダーと共に初期化する必要があります。
 
-   ##### 変更前 (IMFData/CloudantToolkit を使用):   
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### 変更前 (IMFData/CloudantToolkit を使用) : 鍵プロバイダーとともに初期化:   
+   {: #before-with-imfdata-cloudanttoolkit-initialize-with-key-provider }
    **Objective-C**
-    
+
    ```objc
    //Get reference to data manager
    IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -391,9 +391,9 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    // push replication
    CDTPushReplication *push = [manager pushReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    //Get reference to data manager
    let manager = IMFDataManager.sharedInstance()
@@ -408,10 +408,10 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    // push replication
    let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
    ```
-    
-   ##### 変更後 (Cloudant Sync を使用):
-   {: #after-with-cloudant-sync }
-暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
+
+   ##### 変更後 (with Cloudant Sync) : 鍵プロバイダーとともに初期化:
+   {: #after-with-cloudant-sync-initialize-with-key-provider }
+   暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
 
 ### Android デバイスのデータの暗号化
 {: #encrypting-data-on-android-devices }
@@ -419,44 +419,44 @@ Android デバイス上のデータを暗号化するには、アプリケーシ
 
 1. build.gradle ファイル内で Cloudant Toolkit ライブラリーを依存関係として追加します。
 
-   ##### 変更前 (IMFData/CloudantToolkit を使用):
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### 変更前 (IMFData/CloudantToolkit を使用): Android デバイスのデータの暗号化:
+   {: #before-with-imfdata-cloudanttoolkit-encrypt-android-devices }
    ```xml
    repositories {
    mavenCentral()
    }
 
    dependencies {
-compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
+       compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
    }
    ```
-    
-   ##### 変更後 (Cloudant Sync を使用):
-   {: #after-with-cloudant-sync }
+
+   ##### 変更後 (Cloudant Sync を使用): Android デバイスのデータの暗号化:
+   {: #after-with-cloudant-sync-encrypt-android-devices }
     ```xml
-   repositories {
-   mavenLocal()
+    repositories {
+        mavenLocal()
         maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
         mavenCentral()
     }
 
     dependencies {
-compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'
-compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'0.13.2'
-compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
+        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'
+        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android', version:'0.13.2'
+        compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
     }
     ```
-    
+
 2. [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) の **.jar** および **.so** バイナリー・ファイルをダウンロードし、それらのファイルを、アプリケーション構造内の適切なフォルダー内でアプリケーションに組み込みます。
     * ライブラリーを追加します。共有ライブラリー・ファイルおよび SQLCipher アーカイブを、Android アプリケーション・ディレクトリーの **jniLibs** フォルダーに追加します。
     * 必要な ICU 圧縮ファイルをアプリケーションの assets フォルダーに追加します。
     * **sqlcipher.jar** をファイル依存関係として追加します。Android Studio のアプリケーション・フォルダーのメニューから、**「モジュール設定を開く」**の下の**「依存関係」**タブを選択します。
 3. 暗号化を行うように鍵プロバイダーと共にローカル・ストアを初期化します。
-    
+
    > **警告:** データベースを作成した後でパスワードを変更すると、既存のデータベースを暗号化解除できなくなるため、エラーが発生します。データベースが暗号化された後でパスワードを変更することはできません。パスワードを変更するには、データベースを削除する必要があります。
 
-   ##### 変更前 (IMFData/CloudantToolkit を使用):
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### 変更前 (IMFData/CloudantToolkit を使用) : ローカル・ストアの初期化 (Android):
+   {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }
    ```java
    // Get reference to DataManager
    DataManager manager = DataManager.getInstance();
@@ -480,9 +480,9 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
          }
    });
    ```
-    
-   ##### 変更後 (Cloudant Sync を使用):
-   {: #after-with-cloudant-sync }   
+
+   ##### 変更後 (Cloudant Sync を使用) : ローカル・ストアの初期化 (Android):
+   {: #after-with-cloudant-sync-initialize-local-store-android }   
    ```java
    // Load SQLCipher libs
    SQLiteDatabase.loadLibs(context);
@@ -500,8 +500,8 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
 
 4. 暗号化されたローカル・ストアを使用してデータを複製する場合、KeyProvider オブジェクトを `pullReplicationForStore()` メソッドまたは `pushReplicationForStore()` メソッドに渡す必要があります。
 
-   ##### 変更前 (IMFData/CloudantToolkit を使用):
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### 変更前 (IMFData/CloudantToolkit を使用): 鍵プロバイダーとともに初期化 (Android):
+   {: #before-with-imfdata-cloudanttoolkit-initialize-with-key-provider-android }
    ```java
    //Get reference to data manager
    DataManager manager = DataManager.getInstance();
@@ -517,16 +517,16 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
    Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
    ```
 
-   ##### 変更後 (Cloudant Sync を使用):
-   {: #after-with-cloudant-sync }
-暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
+   ##### 変更後 (Cloudant Sync を使用): 鍵プロバイダーとともに初期化 (Android)
+   {: #after-with-cloudant-sync-initialize-with-key-provider-android }
+   暗号化データベースで複製を行う場合に、暗号化されていないデータベースでの複製に変更を加える必要はありません。
 
 ## ユーザー・アクセス権の設定
 {: #setting-user-permissions }
 リモート・データベースに対するユーザー・アクセス権を設定できます。
 
-##### 変更前 (IMFData/CloudantToolkit を使用):
-{: #before-with-imfdata-cloudanttoolkit }
+##### 変更前 (IMFData/CloudantToolkit を使用): ユーザー・アクセス権の設定:
+{: #before-with-imfdata-cloudanttoolkit-setting-user-permissions }
 **Objective-C**
 
 ```objc
@@ -565,7 +565,7 @@ manager.setCurrentUserPermissions(DB_ACCESS_GROUP_MEMBERS, forStoreName: "automo
 Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, "automobiledb");
 
 permissionsTask.continueWith(new Continuation<Boolean, Object>() {
-@Override
+    @Override
     public Object then(Task<Boolean> task) throws Exception {
         if(task.isFaulted()){
             // Handle error
@@ -577,8 +577,8 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 });
 ```
 
-##### 変更後 (Cloudant Sync を使用):
-{: #after-with-cloudant-sync }
+##### 変更後 (Cloudant Sync を使用): ユーザー・アクセス権の設定:
+{: #after-with-cloudant-sync-setting-user-permissions }
 モバイル・デバイスからユーザー・アクセス権を設定することはできません。Cloudant ダッシュボードまたはサーバー・サイド・コードを使用してアクセス権を設定する必要があります。{{ site.data.keys.product_adj }} OAuth のトークンと Cloudant のセキュリティーとの統合方法のサンプルについては、[Bluelist サンプル](https://github.ibm.com/MFPSamples/BlueList-On-Premise)を参照してください。
 
 ## データのモデル化
@@ -597,8 +597,8 @@ Cloudant はデータを JSON ドキュメントとして保管します。ア�
 
 ### データの作成
 {: #creating-data }
-##### 変更前
-{: #before }
+
+_**変更前**_
 
 **Objective-C**
 
@@ -649,7 +649,7 @@ Store store = existingStore;
 Automobile automobile = new Automobile("Toyota", "Corolla", 2006);
 
 // Save automobile to store
-Task<Object> saveTask = store.save(automobile); 
+Task<Object> saveTask = store.save(automobile);
 saveTask.continueWith(new Continuation<Object, Void>() {
     @Override
     public Void then(Task<Object> task) throws Exception {
@@ -664,8 +664,8 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### 変更後
-{: #after }
+_**変更後**_
+
 ```objc
 // Use an existing store
 CDTDatastore *datastore = existingDatastore;
@@ -678,7 +678,7 @@ NSError *error = nil;
 CDTDocumentRevision *createdRevision = [datastore createDocumentFromRevision:revision error:&error];
 
 if (error) {
-// save was not successful, handler received an error
+        // save was not successful, handler received an error
 } else {
     // use the result
     NSLog(@"Revision: %@", createdRevision);
@@ -727,8 +727,8 @@ DocumentRevision savedRevision = datastore.createDocumentFromRevision(revision);
 
 ### データの読み取り
 {: #reading-data }
-##### 変更前
-{: #before }
+
+_**変更前**_
 
 **Objective-C**
 
@@ -739,7 +739,7 @@ NSString *automobileId = existingAutomobileId;
 // Fetch Autombile from Store
 [store fetchById:automobileId completionHandler:^(id object, NSError *error) {
     if (error) {
-// fetch was not successful, handler received an error
+        // fetch was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = object;
@@ -790,8 +790,8 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### 変更後
-{: #after }
+_**変更後**_
+
 **Objective-C**
 
 ```objc
@@ -804,7 +804,7 @@ NSError *error = nil;
 CDTDocumentRevision *fetchedRevision = [datastore getDocumentWithId:documentId error:&error];
 
 if (error) {
-// fetch was not successful, handler received an error
+        // fetch was not successful, handler received an error
 } else {
     // use the result
     NSLog(@"Revision: %@", fetchedRevision);
@@ -840,8 +840,8 @@ DocumentRevision fetchedRevision = datastore.getDocument(documentId);
 
 ### データの更新
 {: #updating-data }
-##### 変更前
-{: #before }
+
+_**変更前**_
 
 **Objective-C**
 
@@ -856,7 +856,7 @@ automobile.year = 2015;
 // Save Autombile to the store
 [store save:automobile completionHandler:^(id savedObject, NSError *error) {
     if (error) {
-// sasve was not successful, handler received an error
+        // sasve was not successful, handler received an error
     } else {
         // use the result
         Automobile *savedAutomobile = savedObject;
@@ -913,8 +913,8 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### 変更後
-{: #after }
+_**変更後**_
+
 **Objective-C**
 
 ```objc
@@ -977,8 +977,8 @@ DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 {: #deleting-data }
 オブジェクトを削除するには、削除するオブジェクトをストアに渡します。
 
-##### 変更前
-{: #before }
+_**変更前**_
+
 **Objective-C**
 
 ```objc
@@ -1038,8 +1038,8 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 });
 ```
 
-##### 変更後
-{: #after }
+_**変更後**_
+
 **Objective-C**
 
 ```objc
@@ -1094,10 +1094,10 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 
 1. データ型が含まれている索引を作成します。データ型が含まれた索引作成は、オブジェクト・マッパーがストアで設定されている場合に役立ちます。
 
-   ##### 変更前
-   {: #before }
+   _**変更前**_
+
    **Objective-C**
-    
+
    ```objc
    // Use an existing data store
    CDTStore *store = existingStore;
@@ -1114,9 +1114,9 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
        }
    }];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // A store that has been previously created.
    let store:CDTStore = existingStore
@@ -1133,9 +1133,9 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
         }
    }
    ```
-    
+
    **Java**
-    
+
    ```java
    // Use an existing data store
    Store store = existingStore;
@@ -1162,11 +1162,11 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
         }
    });
    ```
-    
-   ##### 変更後
-   {: #after }
+
+   _**変更後**_
+
    **Objective-C**
-    
+
    ```objc
    // A store that has been previously created.
    CDTDatastore *datastore = existingDatastore;
@@ -1176,9 +1176,9 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
         // Handle error
    }
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // A store that has been previously created.
    let datastore:CDTDatastore = existingDatastore
@@ -1189,9 +1189,9 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
         // Handle error
    }
    ```
-    
+
    **Java**
-    
+
    ```java
    // Use an existing store
    Datastore datastore = existingStore;
@@ -1208,11 +1208,11 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    // Create the index
    indexManager.ensureIndexed(indexFields, "automobile_index");
    ```
-    
+
 2. 索引を削除します。
 
-   ##### 変更前
-   {: #before }
+   _**変更前**_
+
    **Objective-C**
 
    ```objc
@@ -1271,8 +1271,8 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    });
    ```
 
-   ##### 変更後
-   {: #after }
+   _**変更後**_
+
    **Objective-C**
 
    ```objc
@@ -1302,7 +1302,7 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    ```
 
    **Java**
-   
+
    ```java
    // Use an existing store
    Datastore datastore = existingStore;
@@ -1321,10 +1321,10 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
 * Android: 詳しくは、[Cloudant Sync の照会に関する資料](https://github.com/cloudant/sync-android/blob/master/doc/query.md)を参照してください。
 * リモート・ストアでの照会操作については、[Cloudant 照会 API](https://docs.cloudant.com/cloudant_query.html) を参照してください。
 
-#### iOS
-{: #ios }
-##### 変更前 (IMFData/CloudantToolkit を使用):
-{: #before-with-imfdata-cloudanttoolkit }
+#### iOS (データの照会)
+{: #ios-querying-data }
+##### 変更前 (IMFData/CloudantToolkit を使用): iOS (データの照会):
+{: #before-with-imfdata-cloudanttoolkit-querying-data-ios }
 
 **Objective-C**
 
@@ -1362,8 +1362,8 @@ store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSEr
 })
 ```
 
-##### 変更後 (Cloudant Sync を使用):
-{: #after-with-cloudant-sync }
+##### 変更後 (Cloudant Sync を使用) (データの照会):
+{: #after-with-cloudant-sync-querying-data }
 **Objective-C**
 
 ```objc
@@ -1386,12 +1386,12 @@ if(results == nil){
 }
 ```
 
-#### Android
-{: #android }
+#### Android (データの照会)
+{: #android-querying-data }
 オブジェクトの照会を実行するには、データ・タイプに対して照会フィルターを使用して Cloudant 照会を作成します。Store オブジェクトに対して照会を実行します。
 
-##### 変更前 (IMFData/CloudantToolkit を使用):
-{: #before-with-imfdata-cloudanttoolkit }
+##### 変更前 (IMFData/CloudantToolkit を使用): Android (データの照会):
+{: #before-with-imfdata-cloudanttoolkit-querying-data-android }
 ```java
 // Use an existing store
 Store store = existingStore;
@@ -1440,8 +1440,8 @@ queryTask.continueWith(new Continuation<List, Object>() {
 });
 ```
 
-##### 変更後 (Cloudant Sync を使用):
-{: #after-with-cloudant-sync }
+##### 変更後 (Cloudant Sync を使用): Android (データの照会):
+{: #after-with-cloudant-sync-android-querying-data }
 ```java
 // Use an existing store
 Datastore datastore = existingStore;
@@ -1482,8 +1482,8 @@ QueryResult result = indexManager.find(selectorMap);
 
 ### プル複製の実行
 {: #running-pull-replication }
-##### 変更前
-{: #before }
+
+_**変更前**_
 
 **Objective-C**
 
@@ -1525,7 +1525,7 @@ do {
     
     // start replication
     try replicator.start()
-    
+
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
@@ -1562,8 +1562,8 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {
 });
 ```
 
-##### 変更後
-{: #after }
+_**変更後**_
+
 **Objective-C**
 
 ```objc
@@ -1657,8 +1657,8 @@ replicator.start();
 
 ### プッシュ複製の実行
 {: #running-push-replication }
-##### 変更前
-{: #before }
+
+_**変更前**_
 
 **Objective-C**
 
@@ -1736,8 +1736,8 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {
 });
 ```
 
-##### 変更後
-{: #after }
+_**変更後**_
+
 **Objective-C**
 
 ```objc
@@ -1787,7 +1787,7 @@ do {
     
     // start replication
     try replicator.start()
-    
+
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)

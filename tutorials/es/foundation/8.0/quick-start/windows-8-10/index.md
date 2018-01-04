@@ -57,11 +57,12 @@ El nombre de usuario y la contraseña son *admin/admin*.
 2. Seleccione el archivo **MainPage.xaml.cs** de la solución y pegue el siguiente fragmento de código en el método GetAccessToken():
 
    ```csharp
-   try
-      {
-          IWorklightClient _newClient = WorklightClient.CreateInstance();
+try
+                   {
+       
+                       IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -128,7 +129,7 @@ Si se utiliza una instancia remota de {{ site.data.keys.mf_server }}, [ejecute e
 La respuesta del adaptador se imprimirá entonces en la consola de salida de Visual Studio.
 
 
-![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }}](success_response.png)
+![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{  site.data.keys.mf_server }}](success_response.png)
 
 ## Siguientes pasos
 {: #next-steps }

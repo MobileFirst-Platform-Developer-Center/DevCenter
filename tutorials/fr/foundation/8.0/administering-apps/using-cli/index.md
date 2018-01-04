@@ -52,8 +52,8 @@ Vous pouvez exécuter des opérations d'administration à l'aide d'{{ site.data.
 La tâche Ant **mfpadm**, le programme mfpadm et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que celles présentées dans les cas d'utilisation suivants :
 
 * Elimination d'erreurs d'opérateur dans des opérations répétitives, ou
-* exploitation en dehors des heures de travail normales de l'opérateur, ou
-* configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
+* Exploitation en dehors des heures de travail normales de l'opérateur, ou
+* Configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
 
 Le programme **mfpadm** et la tâche Ant mfpadm sont plus faciles à utiliser et fournissent une meilleure génération de rapports d'erreurs que les services REST. Comparé à la tâche Ant mfpadm, le programme mfpadm présente l'avantage d'être plus facile à intégrer lorsque l'intégration à des commandes de système d'exploitation est déjà disponible. De plus, il convient davantage pour une utilisation interactive.
 
@@ -307,7 +307,7 @@ Cette commande est basée sur le service REST [Global Configuration (GET)](http:
 {: #the-show-user-config-command }
 La commande `show user-config` affiche la configuration utilisateur d'un module d'exécution.
 
-Syntaxe : `show user-config [--xml][runtime-name]`
+Syntaxe : `show user-config [--xml] [runtime-name]`
 
 Elle accepte les arguments suivants :
 
@@ -370,7 +370,7 @@ Cette commande est basée sur le service REST [Runtime configuration (PUT)](http
 {: #the-show-confidential-clients-command }
 La commande `show confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients).
 
-Syntaxe : `show confidential-clients [--xml][runtime-name]`
+Syntaxe : `show confidential-clients [--xml] [runtime-name]`
 
 Elle accepte les arguments suivants :
 
@@ -902,7 +902,7 @@ Syntaxe : `app version [runtime-name] app-name environment version set web-resou
 Elle accepte les arguments suivants après le verbe.
 
 | Argument | Description |
-| file | Nom du fichier d'entrée (il doit s'agit d'un fichier .zip). |
+| file | Nom du fichier d'entrée (il doit s'agir d'un fichier .zip). |
 
 **Exemple**
 
@@ -1034,7 +1034,7 @@ Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes c
 {: #the-list-devices-command }
 La commande `list devices` renvoie la liste des appareils ayant contacté les applications d'un environnement d'exécution.
 
-Syntaxe : `list devices [runtime-name][--query query]`
+Syntaxe : `list devices [runtime-name] [--query query]`
 
 Elle accepte les arguments suivants :
 
@@ -1245,7 +1245,7 @@ Cette commande est basée sur le service REST [Runtimes (GET)](http://www.ibm.co
 
 #### Commande `show runtime`
 {: #the-show-runtime-command }
-La commande `show runtime` affiche des informations sur un environnement d'exécution déployé spécifique.
+La commande `show runtime` affiche des informations dans un environnement d'exécution déployé spécifique.
 
 Syntaxe : `show runtime [runtime-name]`
 

@@ -57,7 +57,7 @@ Puede iniciar el Application Center con el navegador web e iniciar sesión si ti
 
 Inicie sesión en la consola de Application Center. Póngase en contacto con el administrador del sistema para obtener las credenciales para que pueda iniciar sesión en la consola de Application Center.
 
-![Inicio de sesión de la consola de Application Center](ac_startconsole.jpg)
+![Inicio de sesión en la consola de Application Center](ac_startconsole.jpg)
 
 > **Nota:** Sólo los usuarios con el rol de administrador pueden iniciar sesión en la consola de Application Center.
 
@@ -160,6 +160,8 @@ Las aplicaciones de almacenamientos de aplicaciones de terceros aparecen en el c
 
 > **Nota:** En este momento, Application Center sólo da soporte a Google Play y Apple iTunes. Windows Phone Store y Windows Store no están soportados aún.
 
+
+
 En lugar del archivo ejecutable de la aplicación, debe proporcionar un URL al almacén de aplicaciones de terceros donde se almacena la aplicación. Para buscar el enlace de aplicación correcto más fácilmente, la consola proporcionará enlaces directos en la página **Añadir una aplicación** a los sitios web del almacén de aplicaciones de terceros soportados.
 
 La dirección del almacén de Google play es [https://play.google.com/store/apps](https://play.google.com/store/apps).
@@ -185,13 +187,13 @@ La dirección del almacén de Apple iTunes es [https://linkmaker.itunes.apple.co
     * Si la validación no es correcta, se mostrará un mensaje de error en la página **Añadir una aplicación**. Puede probar otro enlace o cancelar el intento de crear el enlace actual.
     * Si la validación es correcta, esta acción mostrará las propiedades de aplicación. A continuación, puede modificar la descripción de aplicación en las propiedades de aplicación antes de moverse al paso siguiente.
 
-    ![Descripción de aplicación modificada en las propiedades de aplicación](ac_add_public_app_details.jpg)
+    ![Descripción de aplicación modificada en las propiedades de la aplicación](ac_add_public_app_details.jpg)
 
 4. Pulse **Listo** para crear el enlace de aplicación.
 
     Esta acción hace que la aplicación esté disponible en la versión correspondiente del cliente móvil de Application Center. Aparecerá un icono de enlace pequeño en el icono de la aplicación para mostrar que esta aplicación está almacenada en un almacén de aplicaciones público y que es distinta de una aplicación binaria.
 
-    ![Enlace a una aplicación almacenada en Google play](ac_public_app_available.jpg)
+    ![Enlace a una aplicación almacenada en Google Play](ac_public_app_available.jpg)
 
 ## Propiedades de la aplicación
 {: #application-properties }
@@ -293,6 +295,8 @@ Para editar las propiedades de una aplicación subida:
 
     > **Importante:** Si desea actualizar el archivo, debe pertenecer al mismo paquete y tener el mismo número de versión. Si alguna de estas propiedades no es la misma, debe volver a la lista de aplicaciones y añadir la nueva versión en primer lugar.
 
+
+
 4. Pulse **Aceptar** para guardar los cambios y volver a Aplicaciones disponibles o **Aplicar** para guardar y conservar los Detalles de la aplicación abiertos.
 
 ![Propiedades de la aplicación para su edición](ac_edit_app_props.jpg)
@@ -301,6 +305,9 @@ Para editar las propiedades de una aplicación subida:
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
 > Esto únicamente está soportado para Android, iOS y Windows Phone y actualmente no está soportado para Windows 10 Universal, Blackberry ni Windows 8 Universal.
+
+
+
 
 
 Puede actualizar de forma sencilla aplicaciones móviles desplegadas utilizando una combinación de {{ site.data.keys.mf_console }} y del Application Center.
@@ -314,7 +321,7 @@ Se ha publicado HelloWorld versión 2.0 y desea que los usuarios de la versión 
 1. Despliegue HelloWorld 2.0 en el Application Center. Consulte [Adición de una aplicación móvil](#adding-a-mobile-application).
 2. Desde la página Detalles de la aplicación, copie el valor del URL externo.
 
-    ![Copia del URL externo desde los Detalles de la aplicación](ac_copy_ext_url.jpg)
+    ![Copia del URL externo desde Detalles de aplicación](ac_copy_ext_url.jpg)
 
 3. Cuando el URL externo se copia en el portapapeles, abra la {{ site.data.keys.mf_console }}.
 4. Cambie la regla de acceso de HelloWorld versión 1.0 a "Acceso inhabilitado".
@@ -326,7 +333,7 @@ Se ha publicado HelloWorld versión 2.0 y desea que los usuarios de la versión 
 
 6. Pulse **Actualizar** para abrir el cliente de Application Center. Cuando los detalles de inicio de sesión estén rellenos correctamente, accederá a la página Detalles de HelloWorld versión 2.0 directamente.
 
-    ![Detalles de HelloWorld 2.0 en el cliente de Application Center](ac_cli_app_details_upgrade.jpg)
+    ![Detalles de HelloWorld 2.0 en el cliente de Application Center ](ac_cli_app_details_upgrade.jpg)
 
 ## Descarga de un archivo de aplicación
 {: #downloading-an-application-file }
@@ -373,7 +380,7 @@ Para gestionar los usuarios registrados, pulse el separador **Usuarios/Grupos** 
 * Miembros del grupo local
 * Miembros de una lista de control de acceso
 
-![Lista de usuarios registrados del Application Center](ac_reg_users.jpg)
+![Lista de usuarios registrados de Application Center](ac_reg_users.jpg)
 
 Si el Application Center está conectado a un repositorio LDAP, no podrá editar los nombres de visualización del usuario. Si el repositorio no es LDAP, puede cambiar el nombre de visualización de un usuario seleccionándolo y editándolo.
 
@@ -427,7 +434,7 @@ Puede editar el control de accesos:
 
 1. En Application Management en Aplicaciones disponibles, pulse el estado no restringido o restringido de Instalación de una aplicación.
 
-    ![Dónde pulsar en la modalidad no restringida o restringida](ac_app_access_state.jpg)
+    ![Donde pulsar en la modalidad restringida o no restringida](ac_app_access_state.jpg)
 
 2. Seleccione **Control de accesos habilitado** para habilitar el control de accesos.
 3. Añada usuarios o grupos a la lista de acceso.
@@ -441,7 +448,7 @@ Para registrar un usuario al mismo tiempo que añada el usuario a la lista de ac
 Para añadir todos los usuarios de una aplicación, pulse **Añadir usuarios desde la aplicación** y seleccione la aplicación apropiada.  
 Para eliminar el acceso de un usuario o un grupo, pulse el icono de cruz a la derecha del nombre.
 
-![Adición o eliminación de usuarios a la lista de acceso](ac_instal_access.jpg)
+![Adición o eliminación de usuarios en la lista de acceso](ac_instal_access.jpg)
 
 ## Gestión de dispositivos
 {: #device-management }
@@ -463,6 +470,8 @@ Seleccione **Propiedades** para ver las propiedades del dispositivo.
 El nombre del dispositivo. Puede editar esta propiedad.
 
 > **Nota:** en iOS, el usuario puede definir este nombre en la configuración del dispositivo en Configuración > General > Información > Nombre. Se mostrará el mismo nombre en iTunes.
+
+
 
 **Nombre de usuario**  
 El nombre del primer usuario que ha iniciado sesión en el dispositivo.

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Windows 8.1 Universal および Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
+title: Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
@@ -72,7 +72,7 @@ public async void login(JSONObject credentials)
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
 
-if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+if(accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
 {
   Debug.WriteLine("Auto login success");
 }
@@ -105,7 +105,7 @@ public override void HandleSuccess(JObject identity)
         localSettings.Values["useridentity"] = identity.GetValue("user");
 
     } catch (Exception e) {
-Debug.WriteLine(e.StackTrace);
+        Debug.WriteLine(e.StackTrace);
     }
 }
 ```

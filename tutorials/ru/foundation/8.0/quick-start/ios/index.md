@@ -170,7 +170,7 @@ weight: 2
 
 Ответ адаптера отображается в консоли Xcode.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }} ](success_response.png)
+![Приложение после успешного вызова ресурса из {{ site.data.keys.mf_server }} ](success_response.png)
 
 ## Дальнейшие действия
 {: #next-steps }

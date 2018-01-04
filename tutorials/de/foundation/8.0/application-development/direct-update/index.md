@@ -82,9 +82,11 @@ Die Webressourcen der Anwendung werden anfänglich in das Anwendungspaket aufgen
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Hinweis:** Nach einer direkten Aktualisierung findet die nächste Überprüfung nach 60 Minuten statt.
 
+
+
 Wenn eine direkte Aktualisierung durchgeführt wurde, verwendet die Anwendung nicht mehr die ursprünglich im Anwendungspaket enthaltenen Webressourcen. Sie verwendet stattdessen die aus der Anwendungs-Sandbox heruntergeladenen Webressourcen. Wenn der Anwendungscache auf dem Gerät gelöscht wird, werden wieder die Webressourcen aus dem ursprünglichen Paket verwendet. 
 
-![Diagramm zur Funktionsweise der direkten Aktualisierung](internal_function.jpg)
+![Funktionsweise der direkten Aktualisierung](internal_function.jpg)
 
 ### Versionssteuerung
 {: #versioning }
@@ -104,15 +106,13 @@ Entwicklerworkstation hochgeladen. Sie finden die gepackten Webressourcen im Ord
 
 Alternativen:
 
-* Erstellen Sie die ZIP-Datei und laden Sie sie auf einen anderen {{ site.data.keys.mf_server }} hoch. Führen Sie dazu den Befehl
-`mfpdev app webupdate [Servername][runtime-name]` aus. Beispiel: 
+* Erstellen Sie die ZIP-Datei und laden Sie sie auf einen anderen {{ site.data.keys.mf_server }} hoch. Führen Sie dazu den Befehl `mfpde app webupdate [Servername] [Laufzeitname]` aus. Beispiel: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* Laden Sie die zuvor generierte ZIP-Datei hoch.
-Führen Sie dazu den folgenden Befehl aus: `mfpdev app webupdate [Servername][runtime-name] --file [Pfad_zu_gepackten_Webressourcen]`. Beispiel: 
+* Laden Sie die zuvor generierte ZIP-Datei hoch. Führen Sie dazu den folgenden Befehl aus: `mfpdev app webupdate [Servername] [Laufzeitname] --file [Pfad_zu_gepackten_Webressourcen]`. Beispiel: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -127,7 +127,7 @@ Führen Sie dazu den folgenden Befehl aus: `mfpdev app webupdate [Servername][ru
  2. Laden Sie die {{ site.data.keys.mf_console }} und klicken Sie auf den Anwendungseintrag.
  3. Klicken Sie auf **Upload Web Resources File**, um die gepackten Webressourcen hochzuladen. 
 
-    ![Hochladen der ZIP-Datei für direkte Aktualisierung in der Konsole](upload-direct-update-package.png)
+    ![ZIP-Datei für direkte Aktualisierung in der Konsole hochladen](upload-direct-update-package.png)
 
 > Führen Sie den Befehl `mfpdev app webupdate` aus, um mehr zu erfahren. 
 
@@ -197,8 +197,8 @@ verwendet {{ site.data.keys.mf_server }} die Standardfortschrittsanzeige.
 an den Listener. Der angepasste Listener muss die folgenden Methoden implementieren:
 
 ```javascript
-var  directUpdateCustomListener  = { 
-    onStart : function ( totalSize ){ }, 
+var directUpdateCustomListener = {
+onStart : function ( totalSize ){ }, 
     onProgress : function ( status , totalSize , completedSize ){ }, 
     onFinish : function ( status ){ } 
 };
@@ -213,17 +213,17 @@ angibt.
 * Die Methode `onFinish` wird mit einem der abschließenden Statuscodes
 aufgerufen:      
 
-| Statuscode | Beschreibung |
+| Statuscode| Beschreibung |
 |-------------|-------------|
-| `SUCCESS` | Die direkte Aktualisierung wurde fehlerfrei abgeschlossen. |
-| `CANCELED` | Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde). |
-| `FAILURE_NETWORK_PROBLEM` | Es gab während der Aktualisierung ein Problem mit einer Netzverbindung. |
-| `FAILURE_DOWNLOADING` | Die Datei wurde nicht vollständig heruntergeladen. |
-| `FAILURE_NOT_ENOUGH_SPACE` | Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken. |
+| `SUCCESS` | Die direkte Aktualisierung wurde fehlerfrei abgeschlossen.|
+| `CANCELED` | Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde).|
+| `FAILURE_NETWORK_PROBLEM` | Es gab während der Aktualisierung ein Problem mit einer Netzverbindung.|
+| `FAILURE_DOWNLOADING` | Die Datei wurde nicht vollständig heruntergeladen.|
+| `FAILURE_NOT_ENOUGH_SPACE` | Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken.|
 | `FAILURE_UNZIPPING` | Beim Entpacken der Aktualisierungsdatei ist ein Problem aufgetreten. |
-| `FAILURE_ALREADY_IN_PROGRESS` | Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief. |
-| `FAILURE_INTEGRITY` | Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden. |
-| `FAILURE_UNKNOWN` | Unerwarteter interner Fehler |
+| `FAILURE_ALREADY_IN_PROGRESS` | Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief.|
+| `FAILURE_INTEGRITY` | Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden.|
+| `FAILURE_UNKNOWN` | Unerwarteter interner Fehler|
 
 Wenn Sie einen angepassten Listener für die direkte Aktualisierung implementieren, müssen Sie sicherstellen, dass
 nach Abschluss der direkten Aktualisierung
@@ -235,7 +235,7 @@ Das folgende Beispiel zeigt eine Implementierung eines angepassten Listeners fü
 
 ```javascript
 var directUpdateCustomListener = {
-  onStart: function(totalSize){
+onStart: function(totalSize){
     // Angepassten Fortschrittsdialog anzeigen
   },
   onProgress: function(status,totalSize,completedSize){
@@ -291,7 +291,7 @@ Beispielimplementierung von `directUpdateCustomListener`:
 
 ```javascript
 var directUpdateCustomListener = {
-  onStart: function(totalSize){
+onStart: function(totalSize){
   },
   onProgress: function(status,totalSize,completeSize){
   },
@@ -356,7 +356,7 @@ Erstellen Sie eine Funktion, die die direkte Aktualisierung über den Kontext f�
 
 ```javascript
 restartDirectUpdate = function () {
-  savedDirectUpdateContext.start(directUpdateCustomListener); // gespeicherten Kontext der direkten Aktualisierung für Neustart der direkten Aktualisierung verwenden
+savedDirectUpdateContext.start(directUpdateCustomListener); // gespeicherten Kontext der direkten Aktualisierung für Neustart der direkten Aktualisierung verwenden
 };
 ```
 
@@ -367,7 +367,7 @@ Fügen Sie in der Methode `onFinish` eine Statusprüfung hinzu. Wenn der Status 
 
 ```javascript
 var directUpdateCustomListener = {
-  onStart: function(totalSize){
+onStart: function(totalSize){
     alert('onStart: totalSize = ' + totalSize + 'Byte');
   },
   onProgress: function(status,totalSize,completeSize){
@@ -399,6 +399,8 @@ um eine Version hinter dem Stand der zurzeit auf dem Server implementierten Anwe
 derzeit implementierten anwendung zurück (was geschieht, wenn die Anwendung
 auf dem Server seit der letzten Aktualisierung der Clientanwendung mindestens zweimal implementiert wurde),
 wird eine **vollständige Aktualisierung** empfangen. (In dem Fall werden alle Webressourcen heruntergeladen und aktualisiert.)
+
+
 
 ## Sichere direkte Aktualisierung
 {: #secure-direct-update }

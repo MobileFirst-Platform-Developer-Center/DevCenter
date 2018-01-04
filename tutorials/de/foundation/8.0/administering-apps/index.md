@@ -45,6 +45,8 @@ Ein Benutzer mit dieser Rolle kann alle Anwendungsverwaltungsoperationen ausfüh
 > Weitere Informationen zu {{ site.data.keys.product_adj }}-Verwaltungsrollen finden Sie unter
 [Benutzerauthentifizierung
 für die MobileFirst-Server-Verwaltung konfigurieren](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+
+
 ## Verwaltungstools
 {: #administration-tools }
 Neben der {{ site.data.keys.mf_console }} gibt es weitere

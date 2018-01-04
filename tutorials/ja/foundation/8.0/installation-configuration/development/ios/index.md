@@ -20,7 +20,7 @@ weight: 3
 
 ### 登録
 {: #registration }
-1. iOS デベロッパとして登録します。
+1. iOS デベロッパーとして登録します。
  - 組織/チーム管理者が使用する [Apple ID を作成します](https://appleid.apple.com/account)。
  - Apple ID を使用して、[Apple Developer Member Center](https://developer.apple.com/) にサインインします。
 2. 「Member Center」>「Programs &amp; Add-ons」セクションで、組織の該当プログラムに登録します。

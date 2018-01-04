@@ -1,28 +1,41 @@
 ---
 layout: tutorial
-title: Adding custom splash screens and icons to Cordova apps
-breadcrumb_title: Adding images and icons
+title: Adición de iconos y pantallas iniciales personalizadas a aplicaciones Cordova
+breadcrumb_title: Adición de imágenes e iconos
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-If you used the **cordova-plugin-mfp** plug-in, and you did not use the {{ site.data.keys.product_adj }} template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by {{ site.data.keys.product_full }} with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
+Si utilizó el plugin **cordova-plugin-mfp** y no utilizó la plantilla de {{ site.data.keys.product_adj }} o añadió el plugin **cordova-plugin-splashscreen** de Cordova en su aplicación, puede sustituir las imágenes de iconos y pantallas de inicio que {{ site.data.keys.product_full }} proporciona con sus propias imágenes.
+Si ha utilizado la plantilla, puede sustituir las imágenes iniciales que utiliza la aplicación Cordova, puesto que son archivos que se visualizan.
 
-You must create a new folder to hold the splash images and icons, and modify the **config.xml** configuration file to point to them.
 
-1. Create a folder inside the root directory of your Cordova project. The folder can be in any level of nested subfolder when the parent folder is under the Cordova project root.
-2. Place your source splash image and icon images in this folder.
-3. Update the **config.xml** configuration file to point to your custom files.
+Debe crear una nueva carpeta para alojar las imágenes de inicio y los iconos, y modificar el archivo de configuración **config.xml** para que apunte a ellos.
+
+
+1. Cree una carpeta dentro del directorio raíz de su proyecto Cordova.
+La carpeta puede estar en cualquier nivel de subcarpeta anidado siempre que se encuentre bajo la raíz del proyecto Cordova.
+
+2. Coloque su imagen inicial e imágenes de icono propias en esta carpeta.
+
+3. Actualice el archivo de configuración **config.xml** para que apunte a sus archivos personalizados.
+
 
 ### Android
 {: #android }
-If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the {{ site.data.keys.product_adj }} template.
+Si tiene una aplicación Android, los requisitos para identificar las imágenes iniciales dependen de si la aplicación se creó con o sin la plantilla de {{ site.data.keys.product_adj }}.
 
-#### Splash screens
+
+#### Pantallas iniciales
 {: #splash-screens }
-If you did *not* use the {{ site.data.keys.product_adj }} template when you created your app, the splash images that are displayed are those that are retrieved from the {{ site.data.keys.product_adj }} images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+Si *no* utilizó la plantilla {{ site.data.keys.product_adj }} al crear la aplicación, las imágenes de inicio que se visualizan son aquellas que se recuperan desde la ubicación de imágenes de {{ site.data.keys.product_adj }}.
+Los nombres de archivo y las vías de acceso de archivo de destino deben permanecer exactamente igual que en el ejemplo cuando no utilice la plantilla.
+Cambie los nombres de archivo y las vías de acceso de origen (`src`) con las vías de acceso de los archivos que desea visualizar.
+Añada líneas similares a las del ejemplo siguiente entre las etiquetas
+`<platform name="android">` y `</platform>` en el archivo **config.xml**:
+ 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +45,11 @@ If you did *not* use the {{ site.data.keys.product_adj }} template when you crea
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-If you used the {{ site.data.keys.product_adj }} template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
+Si utilizó la plantilla de {{ site.data.keys.product_adj }} para crear su aplicación, debe actualizar las imágenes de bienvenida que Cordova utiliza.
+Cambie los nombres de archivo y las vías de acceso de origen (src) con las vías de acceso de los archivos que desea visualizar.
+
+Añada líneas similares a las del siguiente ejemplo entre las etiquetas <platform name="android"> y </platform> en el archivo config.xml:
+
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -45,9 +62,10 @@ If you used the {{ site.data.keys.product_adj }} template when you created your 
 <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
 ```
 
-#### Icons
+#### Iconos
 {: #icons }
-The file names of the icon files must be the same as the entries in the following example. The paths can be any path. The name of each image corresponds to its size.
+Los nombres de archivo de los archivos de icono deben ser los mismos que las entradas en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -60,11 +78,13 @@ The file names of the icon files must be the same as the entries in the followin
 
 ### iOS
 {: #ios }
-If you have an iOS app, add lines similar to the following example between the `<platform name="ios">` and `</platform>` tags:
+Si tiene una aplicación iOS, añada líneas similares a las del ejemplo siguiente entre las etiquetas
+`<platform name="ios">` y `</platform>`: 
     
-#### Splash screens
+#### Pantallas iniciales
 {: #splash-screens-ios }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -78,9 +98,11 @@ The paths and file names of the splash screen files must be the same as the name
 <splash height="1242" src="res/screen/ios/Default-736h-Landscape˜iphone.png" width="2208" />
 ```
 
-#### Icons
+#### Iconos
 {: #icons-ios}
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo.
+Las vías de acceso pueden ser cualesquiera.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -104,11 +126,12 @@ The file names of the icon files must be the same as the names in the following 
 
 ### Windows
 {: #windows }
-If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
+Si tiene una aplicación Windows, añada líneas similares a las del ejemplo siguiente entre las etiquetas `<platform name="windows">` y `</platform>`: 
 
-#### Splash screens
+#### Pantallas iniciales
 {: #splash-screens-windows }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -117,9 +140,11 @@ The paths and file names of the splash screen files must be the same as the name
 <splash src="res/screen/windows/Wide310x150Logo.scale-240.png" width="744" height="360"/>
 ```
 
-#### Icons
+#### Iconos
 {: #icons-windows }
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo.
+Las vías de acceso pueden ser cualesquiera.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

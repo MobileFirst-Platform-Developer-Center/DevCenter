@@ -121,13 +121,13 @@ var myObject = {
 照会は、検索フィールドまたは追加の検索フィールドを使用してドキュメントを検索するオブジェクトです。  
 これらの例では、name 検索フィールドは型 string であり、age 検索フィールドは型 integer であることを前提としています。
 
-**「carlos」と一致する「name」のドキュメントを検索**
+**`carlos` と一致する `name` のドキュメントを検索**
 
 ```javascript
 var query1 = {name: 'carlos'};
 ```
 
-**「carlos」と一致する「name」で、「99」と一致する「age」のドキュメントを検索**
+**`carlos` と一致する `name` で、`99` と一致する `age` のドキュメントを検索**
 
 ```javascript
 var query2 = {name: 'carlos', age: 99};
@@ -147,18 +147,18 @@ JSONStore は、{{ site.data.keys.product_adj }} プラグインを使用する 
 
 JSONStore は、LocalStorage、Indexed DB、Cordova Storage API、Cordova File API などのテクノロジーと似ています。以下の表は、JSONStore によって提供されるいくつかのフィーチャーが他のテクノロジーと比べてどうであるかを示しています。JSONStore フィーチャーは、iOS および Android のデバイスおよびシミュレーターのみで使用可能です。
 
-| 機能                                            | JSONStore      | LocalStorage | IndexedDB | Cordova ストレージ API | Cordova ファイル API |
+| 機能| JSONStore| LocalStorage| IndexedDB| Cordova ストレージ API| Cordova ファイル API|
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
 | Android サポート (Cordova &amp; ネイティブ・アプリケーション)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS サポート (Cordova & ネイティブ・アプリケーション)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal および Windows 10 UWP (Cordova アプリケーション)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| iOS サポート (Cordova & ネイティブ・アプリケーション)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal および Windows 10 UWP (Cordova アプリケーション)|	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
 | データ暗号化	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| 最大ストレージ	                                 |使用可能なスペース |    最大 5MB     |   最大 5MB 	 | 使用可能なスペース	   | 使用可能なスペース  |
-| 信頼性の高いストレージ (注を参照)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| ローカルでの変更のトラッキング	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| マルチユーザーのサポート                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 最大ストレージ	                                 |使用可能なスペース	   |    最大 5MB 	 |   最大 5MB 	 | 使用可能なスペース	   | 使用可能なスペース	   |
+| 信頼性の高いストレージ (注を参照)|	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| ローカルでの変更のトラッキング|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| マルチユーザーのサポート|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
 | 索引付け	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| ストレージのタイプ	                                 | JSON ドキュメント | 鍵と値のペア | JSON ドキュメント | リレーショナル (SQL) | ストリング     |
+| ストレージのタイプ| JSON ドキュメント| 鍵と値のペア| JSON ドキュメント| リレーショナル (SQL)| ストリング|
 
 **注:** 信頼性の高いストレージ は、以下のイベントのいずれかが発生しない限り、データが削除されないことを意味します。
 
@@ -267,7 +267,7 @@ promise やコールバックの代わりに、JSONStore `success` イベント�
 
 ```javascript
 var asyncOperation = function () {
-  // Assumes that you have jQuery defined via $ in the environment
+// Assumes that you have jQuery defined via $ in the environment
   var deferred = $.Deferred();
 
   setTimeout(function() {
@@ -291,7 +291,7 @@ asyncOperation.then(function (response) {
 
 ```javascript
 var asyncOperation = function (callback) {
-  setTimeout(function() {
+setTimeout(function() {
     callback('Hello');
   }, 1000);
 };
@@ -435,7 +435,7 @@ function getPeople () {
 ```javascript
 var adapter = 'people';
 var procedure = 'getPeople';
-
+ 
 var resource = new WLResourceRequest('/adapters' + '/' + adapter + '/' + procedure, WLResourceRequest.GET);
 resource.send()
 .then(function (responseFromAdapter) {
@@ -576,7 +576,7 @@ accessor.remove(doc, {markDirty: true})
 ```javascript
 var accessor = WL.JSONStore.get('people');
 
-accessor.getAllDirty()
+  accessor.getAllDirty()
 
 .then(function (dirtyDocs) {
   // ...

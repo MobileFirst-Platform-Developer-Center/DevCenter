@@ -64,16 +64,16 @@ downloads:
 ### クライアント・サイド
 {: #client-side }
 
-| C Sharp メソッド                                                                                                | 説明                                                             |
+| C Sharp メソッド                                                                                                | 説明                                                        |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`Initialize()`](#initialization)                                                                            | 提供されたコンテキストの MFPPush を初期化します。                               |
-| [`IsPushSupported()`](#is-push-supported)                                                                    | デバイスがプッシュ通知をサポートするかどうか。                             |
-| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | デバイスをプッシュ通知サービスに登録します。               |
-| [`GetTags()`](#get-tags)                                | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
-| [`Subscribe(String[] Tags)`](#subscribe)     | 指定されたタグにデバイスをサブスクライブします。                          |
-| [`GetSubscriptions()`](#get-subscriptions)              | デバイスが現在サブスクライブしているタグをすべて取得します。               |
-| [`Unsubscribe(String[] Tags)`](#unsubscribe) | 特定のタグからアンサブスクライブします。                                  |
-| [`UnregisterDevice()`](#unregister)                     | プッシュ通知サービスからデバイスを登録抹消します。              |
+| [`Initialize()`](#initialization)                                                                            | 提供されたコンテキストの MFPPush を初期化します。|
+| [`IsPushSupported()`](#is-push-supported)                                                                    | デバイスがプッシュ通知をサポートするかどうか。|
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | デバイスをプッシュ通知サービスに登録します。|
+| [`GetTags()`](#get-tags)                                | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
+| [`Subscribe(String[] Tags)`](#subscribe)     | 指定されたタグにデバイスをサブスクライブします。|
+| [`GetSubscriptions()`](#get-subscriptions)              | デバイスが現在サブスクライブしているタグをすべて取得します。|
+| [`Unsubscribe(String[] Tags)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
+| [`UnregisterDevice()`](#unregister)                     | プッシュ通知サービスからデバイスを登録抹消します。|
 
 #### 初期化
 {: #initialization }
@@ -106,7 +106,7 @@ if (isSupported ) {
 
 ```csharp
 JObject Options = new JObject();
-MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Options);         
+MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Options);
 if (Response.Success == true)
 {
     // Successfully registered
@@ -188,7 +188,7 @@ else
 プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```csharp
-MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();         
+MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();
 if (Response.Success == true)
 {
     // Successfully registered

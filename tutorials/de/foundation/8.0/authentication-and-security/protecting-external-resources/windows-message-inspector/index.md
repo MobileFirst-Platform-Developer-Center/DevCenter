@@ -105,6 +105,8 @@ static void Main(string[] args) {
 > Weitere Informationen zu WCF-REST-Services finden Sie
 unter [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).
 
+
+
 ## Message Inspector definieren
 {: #define-a-message-inspector}
 Bevor wir uns mit dem Validierungsprozess beschäftigen, müssen wir einen
@@ -203,12 +205,11 @@ private const string filterUserName = "USERNAME"; // Benutzername des vertraulic
 private const string filterPassword = "PASSWORD";  // Geheimer Schlüssel des vertraulichen Clients
 ```
 
-Als Nächstes werden wir unsere Methode `validateRequest` erstellen, die den Ausgangspunkt
-für den Validierungsprozess bildet, den wir in unserem Message Inspector implementieren werden. Im Anschluss werden wir
+Als Nächstes werden wir unsere Methode `validateRequest` erstellen, die den Ausgangspunkt für den Validierungsprozess bildet, den wir in unserem Message Inspector implementieren werden. Im Anschluss werden wir
 einen Aufruf dieser Methode in die zuvor erwähnte Methode `AfterReceiveRequest` einfügen: 
 
 ```csharp
-public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
+public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext){
   validateRequest(request);
   return null;
 }
@@ -431,7 +432,7 @@ Antwort des {{ site.data.keys.product_adj }}-Autorisierungsservers definiert ist
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
 {
-  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Sicherstellen, dass HttpStatusCode = 200 OK (bevor active==true und Bereich überprüft werden)
+  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
   {
     if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized) // Wir haben ein Problem, weil wir bereits ein neues Token angefordert haben.
     {

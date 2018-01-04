@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: iOS アプリケーション内の JSONStore
+title: iOS アプリケーションでの JSONStore
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
   - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
@@ -43,7 +43,7 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundationJSONStore    
+import IBMMobileFirstPlatformFoundationJSONStore
 ```
 
 ## 基本的な使用法
@@ -63,7 +63,7 @@ let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
 collection.setSearchField("name", withType: JSONStore_String)
 collection.setSearchField("age", withType: JSONStore_Integer)
 
-do  {
+do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
 } catch let error as NSError {
   // handle error
@@ -136,7 +136,7 @@ var replacement:Dictionary<String, AnyObject> = Dictionary()
 replacement["_id"] = 1
 replacement["json"] = document
 
-do {
+do  {
   try collection.replaceDocuments([replacement], andMarkDirty: true)
 } catch let error as NSError {
   // handle error
@@ -186,7 +186,7 @@ do  {
 * すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
 ```swift
-do {
+do  {
   try JSONStore.sharedInstance().destroyData()
 } catch let error as NSError {
   // handle error
@@ -251,8 +251,8 @@ do {
 アダプターを作成し、"**People**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;

@@ -22,15 +22,15 @@ weight: 4
 
 次の表に、2 つのモデル間の比較を示します。
 
-| ユーザー要件 | イベント・ソース・モデル | プッシュ・サービス・モデル | 
+| ユーザー要件| イベント・ソース・モデル| プッシュ・サービス・モデル|
 |------------------|--------------------|--------------------|
-| アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>イベント・ソース・アダプターを作成し、その中で EventSource を作成します。</li><li>プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。</li></ul>{:/} | プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。 | 
-| モバイル・クライアント・アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>WLClient を作成します。</li><li>{{ site.data.keys.mf_server }} に接続します。</li><li>プッシュ・クライアントのインスタンスを取得します。</li><li>イベント・ソースにサブスクライブします。</li></ul>{:/} | {::nomarkdown}<ul><li>プッシュ・クライアントのインスタンスを生成します。</li><li>プッシュ・クライアントを初期化します。</li><li>モバイル・デバイスを登録します。</li></ul>{:/} |
-| モバイル・クライアント・アプリケーションで特定のタグに基づいた通知を使用可能にするには | サポートされません。 | 対象のタグ (タグ名を使用) をサブスクライブします。 | 
-| モバイル・クライアント・アプリケーションで通知を受け取って処理するには | リスナー実装を登録します。 | リスナー実装を登録します。 |
-| プッシュ通知をモバイル・クライアント・アプリケーションに送信するには | {::nomarkdown}<ul><li>WL.Server API を内部的に呼び出してプッシュ通知を送信する、アダプター・プロシージャーを実装します。</li><li>WL サーバー API は、以下のように通知を送信する手段を提供します。<ul><li>ユーザー別</li><li>デバイス別</li><li><li>ブロードキャスト (すべてのデバイス)</li></ul></li><li>その後、バックエンド・サーバー・アプリケーションは、アダプター・プロシージャーを呼び出して、アプリケーション・ロジックの一部としてプッシュ通知をトリガーできます。</li></ul>{:/} | {::nomarkdown}<ul><li>バックエンド・サーバー・アプリケーションは、メッセージ REST API を直接呼び出すことができます。ただし、そのようなアプリケーションは、{{ site.data.keys.mf_server }} に機密クライアントとして登録し、有効な OAuth アクセス・トークンを取得し、それを REST API の許可ヘッダーで渡す必要があります。</li><li>REST API は、以下のように通知を送信するオプションを備えています。<ul><li>ユーザー別</li><li>デバイス別</li><li>プラットフォーム別</li><li>タグ別</li><li>ブロードキャスト (すべてのデバイス)</li></ul></li></ul>{:/} |
-| 定期的な期間 (ポーリング間隔) でプッシュ通知をトリガーするには |  イベント・ソース・アダプター内にプッシュ通知を送信する関数を実装し、これを createEventSource 関数呼び出しの一部として実装します。 | サポートされません。 |
-| フックを名前、URL、およびイベント・タイプで登録するには | プッシュ通知をサブスクライブまたはアンサブスクライブするデバイスのパスに、フックを実装します。 | サポートされません。 | 
+| アプリケーションでプッシュ通知を使用可能にするには| {::nomarkdown}<ul><li>イベント・ソース・アダプターを作成し、その中で EventSource を作成します。</li><li>プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。</li></ul>{:/} | プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。|
+| モバイル・クライアント・アプリケーションでプッシュ通知を使用可能にするには| {::nomarkdown}<ul><li>WLClient を作成します。</li><li>{{ site.data.keys.mf_server }} に接続します。</li><li>プッシュ・クライアントのインスタンスを取得します。</li><li>イベント・ソースにサブスクライブします。</li></ul>{:/} | {::nomarkdown}<ul><li>プッシュ・クライアントのインスタンスを生成します。</li><li>プッシュ・クライアントを初期化します。</li><li>モバイル・デバイスを登録します。</li></ul>{:/} |
+| モバイル・クライアント・アプリケーションで特定のタグに基づいた通知を使用可能にするには| サポートされません。| 対象のタグ (タグ名を使用) をサブスクライブします。|
+| モバイル・クライアント・アプリケーションで通知を受け取って処理するには| リスナー実装を登録します。| リスナー実装を登録します。|
+| プッシュ通知をモバイル・クライアント・アプリケーションに送信するには| {::nomarkdown}<ul><li>WL.Server API を内部的に呼び出してプッシュ通知を送信する、アダプター・プロシージャーを実装します。</li><li>WL サーバー API は、以下のように通知を送信する手段を提供します。<ul><li>ユーザー別</li><li>デバイス別</li><li><li>ブロードキャスト (すべてのデバイス)</li></ul></li><li>その後、バックエンド・サーバー・アプリケーションは、アダプター・プロシージャーを呼び出して、アプリケーション・ロジックの一部としてプッシュ通知をトリガーできます。</li></ul>{:/} | {::nomarkdown}<ul><li>バックエンド・サーバー・アプリケーションは、メッセージ REST API を直接呼び出すことができます。ただし、そのようなアプリケーションは、{{ site.data.keys.mf_server }} に機密クライアントとして登録し、有効な OAuth アクセス・トークンを取得し、それを REST API の許可ヘッダーで渡す必要があります。</li><li>REST API は、以下のように通知を送信するオプションを備えています。<ul><li>ユーザー別</li><li>デバイス別</li><li>プラットフォーム別</li><li>タグ別</li><li>ブロードキャスト (すべてのデバイス)</li></ul></li></ul>{:/} |
+| 定期的な期間 (ポーリング間隔) でプッシュ通知をトリガーするには|  イベント・ソース・アダプター内にプッシュ通知を送信する関数を実装し、これを createEventSource 関数呼び出しの一部として実装します。| サポートされません。|
+| フックを名前、URL、およびイベント・タイプで登録するには| プッシュ通知をサブスクライブまたはアンサブスクライブするデバイスのパスに、フックを実装します。| サポートされません。|
 
 ## マイグレーション・シナリオ
 {: #migration-scenarios }
@@ -38,8 +38,8 @@ weight: 4
 
 以前のバージョンの IBM MobileFirst Platform Foundation における既存のイベント・ソース・ベースのアプリケーションは、v8.0 の新しいプッシュ・サービス・モデルにマイグレーションする必要があります。
 
-#### ジャンプ先
-{: #jump-to }
+#### ジャンプ先のセクション
+{: #jump-to-section }
 * [ハイブリッド・アプリケーション](#hybrid-applications)
 * [ネイティブ Android アプリケーション](#native-android-applications)
 * [ネイティブ iOS アプリケーション](#native-ios-applications)
@@ -61,56 +61,56 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-   MFPPush.registerNotificationsCallback(notificationReceived); }, 
+   MFPPush.registerNotificationsCallback(notificationReceived); },
    function(failureResponse){alert("Failed to initialize");    
                               }  
    );
    ```
-    
+
 2. 通知コールバック・メソッドを実装します。
 
    ```javascript
-   var notificationReceived = function(message) {
-        alert(JSON.stringify(message)); 
+var notificationReceived = function(message) {
+alert(JSON.stringify(message));
    };
    ```
-    
+
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
-   MFPPush.registerDevice(function(successResponse) {
-		alert("Successfully registered");
+MFPPush.registerDevice(function(successResponse) {
+alert("Successfully registered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to register");
 	    }
    );
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
- 
+
    ```javascript
-   MFPPush.unregisterDevice(function(successResponse) {
-		alert("Successfully unregistered");
+MFPPush.unregisterDevice(function(successResponse) {
+alert("Successfully unregistered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unregister");
 	    }
    );
    ```
-    
+
 5. WL.Client.Push.isPushSupported() を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
-   MFPPush.isPushSupported (function(successResponse) {
-		alert(successResponse);
+MFPPush.isPushSupported (function(successResponse) {
+alert(successResponse);
 	   },
 	   function(failureResponse) {
 	       alert("Failed to get the push suport status");
 	   }
    );
    ```
-    
+
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WL.Client.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -147,57 +147,57 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		MFPPush.registerNotificationsCallback(notificationReceived);              					},
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
    );
    ```
-    
+
 2. 通知コールバック・メソッドを実装します。
 
    ```javascript
-   var notificationReceived = function(message) {
-        alert(JSON.stringify(message)); 
+var notificationReceived = function(message) {
+alert(JSON.stringify(message));
    };
    ```
 
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
-   MFPPush.registerDevice(function(successResponse) {
-		alert("Successfully registered");
+MFPPush.registerDevice(function(successResponse) {
+alert("Successfully registered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to register");
 	    }
    );
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```javascript
-   MFPPush.unregisterDevice(function(successResponse) {
-		alert("Successfully unregistered");
+MFPPush.unregisterDevice(function(successResponse) {
+alert("Successfully unregistered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unregister");
 	    }
    );
    ```
-    
+
 5. `WL.Client.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
-   MFPPush.isPushSupported (function(successResponse) {
-		alert(successResponse);
+MFPPush.isPushSupported (function(successResponse) {
+alert(successResponse);
 	   },
 	   function(failureResponse) {
 	       alert("Failed to get the push suport status");
 	   }
    );
    ```
-    
+
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WL.Client.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -229,7 +229,7 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 	    }
    );
    ```
-    
+
 ##### サーバー
 {: #server-hybrid-2 }
 アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
@@ -258,42 +258,42 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
-		function(failureResponse){
-			alert("Failed to initialize");
-		}
+        MFPPush.registerNotificationsCallback(notificationReceived);              					},
+        function(failureResponse){
+            alert("Failed to initialize");
+        }
    );
    ```
-    
+
 2. 通知コールバック・メソッドを実装します。
 
    ```javascript
    var notificationReceived = function(message) {
-        alert(JSON.stringify(message)); 
+        alert(JSON.stringify(message));
    };
    ```
-    
+
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
-		alert("Successfully registered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to register");
-	    }
+        alert("Successfully registered");
+        },
+      function(failureResponse) {
+        alert("Failed to register");
+        }
    );
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
-		alert("Successfully unregistered");
-	    },
-	  function(failureResponse) {
-		alert("Failed to unregister");
-	    }
+        alert("Successfully unregistered");
+        },
+      function(failureResponse) {
+        alert("Failed to unregister");
+        }
    );
    ```
 
@@ -301,11 +301,11 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
-		alert(successResponse);
-	   },
-	   function(failureResponse) {
-	       alert("Failed to get the push suport status");
-	   }
+        alert(successResponse);
+        },
+      function(failureResponse) {
+        alert("Failed to get the push suport status");
+        }
    );
    ```
 
@@ -335,7 +335,7 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		MFPPush.registerNotificationsCallback(notificationReceived);              					},
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
@@ -345,16 +345,16 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 2. 通知コールバック・メソッドを実装します。
 
    ```javascript
-   var notificationReceived = function(message) {
-        alert(JSON.stringify(message)); 
+var notificationReceived = function(message) {
+alert(JSON.stringify(message));
    };
    ```
 
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```javascript
-   MFPPush.registerDevice(function(successResponse) {
-		alert("Successfully registered");
+MFPPush.registerDevice(function(successResponse) {
+alert("Successfully registered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to register");
@@ -365,20 +365,20 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```javascript
-   MFPPush.unregisterDevice(function(successResponse) {
-		alert("Successfully unregistered");
+MFPPush.unregisterDevice(function(successResponse) {
+alert("Successfully unregistered");
 	    },
 	  function(failureResponse) {
 		alert("Failed to unregister");
 	    }
    );
    ```
-    
+
 5. `WL.Client.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```javascript
-   MFPPush.isPushSupported (function(successResponse) {
-		alert(successResponse);
+MFPPush.isPushSupported (function(successResponse) {
+alert(successResponse);
 	   },
 	   function(failureResponse) {
 	       alert("Failed to get the push suport status");
@@ -419,7 +419,7 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
    ```
 
 ##### サーバー
-{: #client-hybrid-4 }
+{: #server-hybrid-4 }
 アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。  
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
@@ -430,7 +430,7 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
     * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
-    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 ### ネイティブ Android アプリケーション
 {: #native-android-applications }
@@ -459,7 +459,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```java
@@ -475,7 +475,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```java
@@ -491,7 +491,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported();` を使用します。
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -518,7 +518,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
     * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
-    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
+    * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
 {: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
@@ -534,7 +534,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    MFPPush push = MFPPush.getInstance();
         push.initialize(_this);
    ```
-    
+
 2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
 
    ```java
@@ -558,9 +558,9 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 4. (オプション) 次のように、モバイル・デバイスをプッシュ通知サービスから登録抹消します。
-  
+
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -574,7 +574,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported();` を使用します。
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -602,9 +602,9 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 9. (オプション) 以下のように、タグからアンサブスクライブします。
- 
+
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
@@ -622,7 +622,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-   
+
 ##### サーバー
 {: #server-android-2 }
 アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
@@ -654,7 +654,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    MFPPush push = MFPPush.getInstance();
         push.initialize(_this);
    ```
-    
+
 2. インターフェース `MFPPushNotificationListener` を実装し、`onReceive()` を定義します。
 
    ```java
@@ -663,7 +663,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```java
@@ -679,7 +679,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```java
@@ -729,16 +729,16 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```
 
 2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
- 
+
    ```java
    @Override
    public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
-    
+
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -751,9 +751,9 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
- 
+
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -767,7 +767,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    });
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.isPushSupported()`; を使用します。
 6. 以下の `WLClient.Push` API を削除します。
     * `subscribeTag()`
@@ -845,32 +845,32 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
-    
+
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
-   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
-        if(error){
+[[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+if(error){
     	   NSLog(@"Failed to register");
         } else {
             NSLog(@"Successfullyregistered");
         }
    }];
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```objc
-   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
-        if(error){
+[MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+if(error){
 	       NSLog(@"Failed to unregister");
         } else {
 	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
@@ -889,7 +889,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```objc
    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
    ```
-    
+
 ##### サーバー
 {: #server-ios-1 }
 アダプターで以下の WL.Server API を削除します (使用されている場合)。
@@ -928,33 +928,33 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
-   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
-        if(error){
-    	   NSLog(@"Failed to register");
-        } else {
-            NSLog(@"Successfullyregistered");
+[[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+if(error){
+        	NSLog(@"Failed to register");
+        }else{
+        	NSLog(@"Successfullyregistered");
         }
    }];
    ```
-    
+
 4. (オプション) 次のように、モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```objc
-   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
-        if(error){
+[MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
-    
+
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -977,7 +977,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         }
    }];
    ```
-    
+
 9. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```objc
@@ -986,13 +986,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
-    
+
 ##### サーバー
 :{: #server-ios-2 }
 アダプターで `WL.Server` (使用されている場合) を削除します。
@@ -1022,32 +1022,32 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
-    
+
 2. `didReceiveRemoteNotification()` で通知処理を実装します。
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
-   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
-        if(error){
-    	   NSLog(@"Failed to register");
-        } else {
-            NSLog(@"Successfullyregistered");
+[[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+if(error){
+        	NSLog(@"Failed to register");
+        }else{
+        	NSLog(@"Successfullyregistered");
         }
    }];
    ```
-    
+
 4. (オプション) モバイル・デバイスをプッシュ通知サービスから登録抹消します。
 
    ```objc
-   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
-        if(error){
+[MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、以下を使用します。
 
    ```objc
@@ -1088,27 +1088,27 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 3. 次のように、モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```objc
-   [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
-        if(error){
-    	   NSLog(@"Failed to register");
-        } else {
-            NSLog(@"Successfullyregistered");
+[[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
+if(error){
+        	NSLog(@"Failed to register");
+        }else{
+        	NSLog(@"Successfullyregistered");
         }
    }];
    ```
-    
+
 4. (オプション) 次のように、モバイル・デバイスをプッシュ通知サービスから登録抹消します。
- 
+
    ```objc
-   [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
-        if(error){
+[MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
+if(error){
         	NSLog(@"Failed to unregister");
         }else{
         	NSLog(@"Successfully unregistered");
         }
    }];
    ```
-    
+
 5. `WLClient.Push.isPushSupported()` を削除し (使用されている場合)、`[[MFPPush sharedInstance] isPushSupported]` を使用します。
 6. サブスクライブ対象のイベント・ソースがないため、以下の `WLClient.Push` API を削除し、通知コールバックを登録します。
     * `registerEventSourceCallback()`
@@ -1119,20 +1119,20 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 7. `didRegisterForRemoteNotificationsWithDeviceToken` で `sendDeviceToken()` を呼び出します。
 8. 以下のように、タグにサブスクライブします。
- 
+
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
    [tags addObject:@"sample-tag1"];
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
-        }
+	       NSLog(@"Successfully unregistered");
+       }
    }];
    ```
-    
+
 9. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```objc
@@ -1183,12 +1183,12 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
-    
+
 2. モバイル・デバイスをプッシュ通知サービスに登録します。
 
    ```csharp
@@ -1257,12 +1257,12 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
-    
+
 2. モバイル・デバイスを IMFPUSH サービスに登録します。
 
    ```csharp
@@ -1313,7 +1313,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Debug.WriteLine("Failed to subscribe");
    }
    ```
-    
+
 7. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```csharp
@@ -1328,7 +1328,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Debug.WriteLine("Failed to unsubscribe");
    }
    ```
-    
+
 ##### サーバー
 {: #windows-server-2 }
 アダプターで以下の `WL.Server` API (使用されている場合) を削除します。
@@ -1359,7 +1359,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
@@ -1392,7 +1392,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Debug.WriteLine("Push Notifications Unregistered successfully");
    }
    ```
-    
+
 4. `WLClient.Push.isPushSupported()` (使用されている場合) を削除し、`push.IsPushSupported();` を使用します。
 5. 以下の `WLClient.Push` API を削除します。
     * `registerEventSourceCallback()`
@@ -1420,14 +1420,14 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    MFPPush push = MFPPush.GetInstance();
    push.Initialize();
    ```
-    
+
 2. インターフェース MFPPushNotificationListener を実装し、onReceive() を定義します。
 
    ```csharp
-   class Pushlistener : MFPPushNotificationListener
+class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
@@ -1482,7 +1482,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Debug.WriteLine("Failed to subscribe");
    }
    ```
-    
+
 8. (オプション) 以下のように、タグからアンサブスクライブします。
 
    ```csharp
@@ -1497,7 +1497,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
         Debug.WriteLine("Failed to unsubscribe");
    }
    ```
-    
+
 ##### サーバー
 {: #windows-server-4 }
 アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。
@@ -1535,25 +1535,25 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 {: #procedure }
 1. [下記の GitHub リポジトリー](http://github.com)からマイグレーション・ツールをダウンロードします。
 2. ツールをダウンロードしたら、**migration.properties** ファイルに以下の詳細を指定します。
-	
-    | 値                | 説明  | サンプル値 |
+
+    | 値| 説明| サンプル値|
     |----------------------|--------------|---------------|
-    | w.db.type		       | 対象とするデータベースのタイプ	           | pw.db.type = db2 可能な値は DB2、Oracle、MySql、Derby | 
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight データベースの URL  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin データベースの URL      | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight データベースのユーザー名 | pw.db.username=root |
-    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight データベースのパスワード | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin データベースのユーザー名     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin データベースのパスワード     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 データベースの URL						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 データベースのユーザー名						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 データベースのパスワード						| pw.db.passwordTarget=root |
-    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight データベースのスキーマ | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin データベースのスキーマ     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 Worklight データベースのスキーマ    | MFPDATA |
-    | ランタイム			   | MobileFirst Platform Foundation 7.1 のランタイム名		 | runtime=worklight |
-    | applicationId	       | MobileFirst Platform Foundation 7.1 に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。 | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | {{ site.data.keys.product }} 8.0に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。   | com.HybridTestApp,com.NativeiOSTestApp |
+    | w.db.type		       | 対象とするデータベースのタイプ| pw.db.type = db2 可能な値は DB2、Oracle、MySql、Derby|
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight データベースの URL| jdbc:mysql://localhost:3306/WRKLGHT|
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin データベースの URL| jdbc:mysql://localhost:3306/ADMIN|
+    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight データベースのユーザー名| pw.db.username=root|
+    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight データベースのパスワード| pw.db.password=root|
+    | pw.db.adminusername| MobileFirst Platform Foundation 7.1 Admin データベースのユーザー名| pw.db.adminusername=root|
+    | pw.db.adminpassword| MobileFirst Platform Foundation 7.1 Admin データベースのパスワード| pw.db.adminpassword=root|
+    | pw.db.urlTarget	   | MFP 8.0 データベースの URL| jdbc:mysql://localhost:3306/MFPDATA|
+    | pw.db.usernameTarget| MFP 8.0 データベースのユーザー名| pw.db.usernameTarget=root|
+    | pw.db.passwordTarget| MFP 8.0 データベースのパスワード| pw.db.passwordTarget=root|
+    | pw.db.schema| MobileFirst Platform Foundation 7.1 Worklight データベースのスキーマ| WRKLGT|
+    | pw.db.adminschema| MobileFirst Platform Foundation 7.1 Admin データベースのスキーマ| WLADMIN|
+    | pw.db.targetschema| {{ site.data.keys.product }} 8.0 Worklight データベースのスキーマ| MFPDATA|
+    | runtime			   | MobileFirst Platform Foundation 7.1 のランタイム名| runtime=worklight|
+    | applicationId	       | MobileFirst Platform Foundation 7.1 に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。| HybridTestApp,NativeiOSTestApp|
+    | targetApplicationId| {{ site.data.keys.product }} 8.0に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。| com.HybridTestApp,com.NativeiOSTestApp|
 
     * **applicationID** と **targetApplicationId** の両方の値が、正しい順序で指定されていることを確認します。マッピングは、1 対 1 (つまり n 対 n) の方式で行われます。すなわち、**applicationId** リスト内の最初のアプリケーションのデータが、**targetApplicationId** リスト内の最初のアプリケーションにマイグレーションされます。
 	* **targetApplicationId** リストには、アプリケーションの packageName/BundleId を指定します。つまり、MobileFirst Platform Foundation 7.1 の TestApp1 ならば、**targetApplicationId** は com.TestApp1 となります (TestApp1 の packageName/BundleId)。これは、MobileFirst Platform Foundation 7.1 では **applicationId** はアプリケーション名であるのに対し、{{ site.data.keys.mf_server }} 8.0 ではこれは、アプリケーションの環境に基づいた packageName/BundleId/packageIdentityName であるためです。
@@ -1563,6 +1563,5 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```bash
    java -jar pushDataMigration.jar path-to-migration.properties
    ```
-   
-   * ツールの .jar ファイルとこのプロパティー・ファイルが別々の場所に配置されている場合は、**path-to-migration.properties** を **migration.properties** のパスで置き換えます。そうでない場合は、コマンドからパスを削除します。
 
+   * ツールの .jar ファイルとこのプロパティー・ファイルが別々の場所に配置されている場合は、**path-to-migration.properties** を **migration.properties** のパスで置き換えます。そうでない場合は、コマンドからパスを削除します。

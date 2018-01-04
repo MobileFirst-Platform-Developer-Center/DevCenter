@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-本教程说明了开发人员开发和测试 iOS 应用程序所需执行的步骤。这些步骤包括注册 Apple Developer 和安装 Xcode。
+本教程说明了开发人员开发和测试 iOS 应用程序所需执行的步骤。 这些步骤包括注册 Apple Developer 和安装 Xcode。
 
 #### 支持级别
 {: #support-level }

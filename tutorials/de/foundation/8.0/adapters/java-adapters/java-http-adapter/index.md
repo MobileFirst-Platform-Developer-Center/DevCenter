@@ -16,7 +16,8 @@ Mit Java-Adaptern können Sie die Konnektivität zu einem Back-End-System steuer
 **Voraussetzung:** Arbeiten Sie zuerst das Lernprogramm [Java-Adapter](../) durch. 
 
 >**Wichtiger Hinweis:** Wenn Sie in Ihrer Adapterimplementierung statische Referenzen auf Klassen von `javax.ws.rs.*` oder `javax.servlet.*` verwenden, müssen Sie **RuntimeDelegate** mit einer der folgenden Optionen konfigurieren:
-*	Legen Sie `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in `jvm.options` in Liberty fest.
+
+*	Legen Sie in Liberty in der Datei `jvm.options` `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 ODER
 *	Legen Sie Sie die Systemeigenschaft oder angepasste JVM-Eigenschaft `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 
@@ -29,8 +30,8 @@ erforderlichen Initialisierung.
 
 ```java
 @Override
-protected void init() throws Exception {
-    JavaHTTPResource.init();
+    protected void init() throws Exception {
+        JavaHTTPResource.init();
     logger.info("Adapter initialized!");
 }
 ```
@@ -76,7 +77,7 @@ wie oben beschrieben von der Methode `init()` von `JavaHTTPApplication` aufgeruf
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag)
     throws IOException, IllegalStateException, SAXException {
-  if(tag!=null && !tag.isEmpty()){
+  if(tag!=null &&  !tag.isEmpty()){
     execute(new HttpGet("/blog/atom/"+ tag +".xml"), response);
   }
   else{

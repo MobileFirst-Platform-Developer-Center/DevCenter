@@ -116,8 +116,4 @@
     "name": "Webinars",
     "path": "/webinars",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
-},{
-    "name": "Tutorials",
-    "path": "/mobiletutorials",
-    "extraClasses": "hidden-xs hidden-sm hidden-md"
 }]

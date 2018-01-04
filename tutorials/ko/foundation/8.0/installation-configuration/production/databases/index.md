@@ -23,6 +23,7 @@ weight: 2
 하지만 각각 애플리케이션 서버에 자체 컨텍스트 루트를 가진 {{ site.data.keys.product }} 런타임의 여러 인스턴스를 설치하도록 결정하는 경우에는 모든 인스턴스에 자체 테이블 세트가 필요합니다. 이 경우 이들은 서로 다른 스키마에 있어야 합니다. 
 
 > **DB2에 대한 참고:** {{ site.data.keys.product_adj }} 라이센스 사용자는 DB2를 Foundation에 대한 지원 시스템으로 사용할 수 있습니다. 이를 위해서는 DB2 소프트웨어를 설치한 후 다음을 수행해야 합니다.
+
 > 
 > * [IBM Passport Advantage(PPA) 웹 사이트](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)에서 직접 용도가 제한된 활성화 이미지 다운로드
 > * **db2licm** 명령을 사용하여 용도가 제한된 활성화 라이센스 파일 **db2xxxx.lic** 적용
@@ -91,6 +92,8 @@ Ant 태스크 또는 Server Configuration Tool을 사용한 설치를 실행하�
 * [MySQL 데이터베이스 및 사용자 요구사항](#mysql-database-and-user-requirements)
 
 > 지원되는 데이터베이스 소프트웨어 버전의 최신 목록은 [시스템 요구사항](../../../product-overview/requirements/) 페이지를 참조하십시오.
+
+
 
 ### DB2 데이터베이스 및 사용자 요구사항
 {: #db2-database-and-user-requirements }

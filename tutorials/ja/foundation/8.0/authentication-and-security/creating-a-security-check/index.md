@@ -63,7 +63,7 @@ Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefin
 
 アダプターとセキュリティー検査定義を {{ site.data.keys.mf_server }} に正常にデプロイした後は、**{{ site.data.keys.mf_console }} →「アダプター」→「 [ご使用のアダプター] 」** から、セキュリティー検査とその構成情報を確認したり、ランタイム構成を変更したりすることもできます。
 
-* **「構成ファイル」**タブには、アダプター記述子のサーバー・コピーが表示されます。これにはカスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
+* **「構成ファイル」**タブには、アダプター記述子のサーバー・コピーが表示されます。これには、カスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
 * **「セキュリティー検査」**タブには、セキュリティー検査定義で公開したすべての構成プロパティーのリストが表示されます。プロパティーは、構成されている `displayName` 属性の値で参照されます。表示名が構成されていない場合は、name 属性の値で参照されます。定義でプロパティーの description 属性を設定した場合は、この説明も表示されます。各プロパティーで、`defaultValue` 属性に構成された値が、現行値として表示されます。
 この値を変更して、セキュリティー検査定義のデフォルト値をオーバーライドできます。また、セキュリティー検査定義の最初のデフォルト値をいつでも復元できます。 
 * {{ site.data.keys.mf_console }} の**「アプリケーション」**セクションからアプリケーション・バージョンを選択することもできます。
@@ -168,8 +168,8 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 3. ファイルを編集します。`securityCheckDefinitions` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内で、properties オブジェクトを見つけるか、追加します。構成する必要がある使用可能な各構成プロパティーについて、properties オブジェクト内に構成プロパティー名と値のペアを追加します。例えば、次のとおりです。 
 
    ```xml
-   "securityCheckDefinitions": {
-        "UserAuthentication": {
+"securityCheckDefinitions": {
+"UserAuthentication": {
             "properties": {
 "maxAttempts": "4",
                 "failureExpirationSec: "90"
@@ -195,8 +195,8 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 3. ファイルを編集します。`securityCheckConfigurations` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内に、構成する必要がある使用可能な各構成プロパティーについて、構成プロパティーの名前と値のペアを追加します。例えば、次のとおりです。
 
    ```xml
-   "SecurityCheckConfigurations": {
-        "UserAuthentication": {
+"SecurityCheckConfigurations": {
+"UserAuthentication": {
             "properties": {
 "maxAttempts": "2",
                 "failureExpirationSec: "60"

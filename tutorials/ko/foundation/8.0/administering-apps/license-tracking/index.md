@@ -48,8 +48,7 @@ weight: 6
 3. **애플리케이션 유형**과 **토큰 라이센스 유형**을 설정하십시오. 
 4. **저장**을 클릭하십시오. 
 
-mfpadm 프로그램에서 라이센스 유형을 설정하려면
-`mfpadm app <appname> set license-config <application-type> <token license type>`을 사용하십시오. 
+mfpadm 프로그램에서 라이센스 유형을 설정하려면 `mfpadm app <appname> set license-config <application-type> <token license type>`을 사용하십시오.
 
 다음 예제에서는 **my.test.application** 애플리케이션에 라이센스 정보 B2E/APPLICATION을 설정합니다. 
 
@@ -110,11 +109,15 @@ rm password.txt
 
 > **중요:** 서버는 애플리케이션을 자동으로 다시 활성화하지 않습니다. 사용 가능한 토큰 수를 늘린 후 애플리케이션을 수동으로 다시 활성화해야 합니다. 애플리케이션 사용 안함 설정과 사용 설정에 대한 자세한 정보는 [보호된 자원에 대한 애플리케이션 액세스를 사용 안함으로 원격 설정](../using-console/#remotely-disabling-application-access-to-protected-resources)을 참조하십시오.
 
+
+
 #### 라이센스 만료 시
 {: #on-license-expiration }
 특정 기간이 지난 후에는 라이센스가 만료되며 다시 체크아웃해야 합니다. 모든 애플리케이션에 사용할 수 있는 토큰이 부족한 경우 서버에서 애플리케이션을 비활성화합니다. 
 
 > **중요:** 서버는 애플리케이션을 자동으로 다시 활성화하지 않습니다. 사용 가능한 토큰 수를 보강한 후 애플리케이션을 수동으로 다시 활성화해야 합니다. 애플리케이션 사용 안함 설정과 사용 설정에 대한 자세한 정보는 [보호된 자원에 대한 애플리케이션 액세스를 사용 안함으로 원격 설정](../using-console/#remotely-disabling-application-access-to-protected-resources)을 참조하십시오.
+
+
 
 #### 서버 종료 시
 {: #at-server-shutdown }
@@ -134,11 +137,11 @@ rm password.txt
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 애플리케이션의 토큰 라이센스 유형에 따라 다음과 같은 기능이 사용됩니다. 
 
-| 토큰 라이센스 유형 | 기능 이름 | 
+| 토큰 라이센스 유형| 기능 이름| 
 |--------------------|--------------|
 | APPLICATION        | 	ibmmfpfa    | 
 | ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (기능 없음) | 
+| NON_PRODUCTION	| (기능 없음)| 
 
 ## IBM License Metric Tool과 통합
 {: #integration-with-ibm-license-metric-tool }
@@ -158,7 +161,11 @@ Foundation Extension의 PVU 라이센스는 IBM WebSphere Application Server Net
 
 > {{ site.data.keys.product_full }} Extension에 대한 자세한 정보는 [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN)의 내용을 참조하십시오.
 
+
+
 > PVU 라이센싱에 대한 자세한 정보는 [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)의 내용을 참조하십시오.
+
+
 
 ### SLMT 태그
 {: #slmt-tags }

@@ -49,6 +49,8 @@ iOS 및 최신 Android 운영 체제 버전은 개별 애플리케이션에서 �
 
 > **중요:** 프로덕션 환경에서는 단위를 초로 설정하지 마십시오. 경과 시간이 짧을수록 서버의 로드가 더 높아집니다. 초로 표시되는 단위는 테스트 및 평가 목적으로만 구현됩니다. 예를 들어, 경과 시간이 10초로 설정되면 푸시 메시지를 거의 즉시 보내게 됩니다.
 
+
+
 설정할 수 있는 전체 특성 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오. 
 
 ### Apache Tomcat 서버의 예         
@@ -80,6 +82,8 @@ WebSphere Application Server Liberty 프로파일에 맞게 JNDI 변수를 구�
 애플리케이션에 GCM(Google Cloud Messaging)을 사용하려면 Google API가 사용으로 설정된 개발자 Google 계정에 GCM 서비스를 연결해야 합니다. 세부사항은 [GCM 시작하기](http://developer.android.com/google/gcm/gs.html)를 참조하십시오. 
 
 > 중요: Google Cloud Messaging이 없는 Application Center의 경우 Application Center는 GCM(Google Cloud Messaging) API의 가용성과 관련이 있습니다. 이 API는 중국과 같은 일부 지역의 디바이스에서 사용 가능하지 않을 수도 있습니다. 이러한 지역을 지원하기 위해 GCM API에 종속되지 않은 Application Center 클라이언트 버전을 빌드할 수 있습니다. 푸시 알림 기능은 Application Center 클라이언트의 해당 버전에서 작동하지 않습니다. 세부사항은 [GCM API에 종속되지 않은 모바일 클라이언트 버전 빌드](#no-gcm)를 참조하십시오.
+
+
 
 1. 적절한 Google 계정이 없는 경우 [Google 계정 작성](https://mail.google.com/mail/signup)으로 이동하여 Application Center 클라이언트에 대해 하나를 작성하십시오. 
 2. [Google API 콘솔](https://code.google.com/apis/console/)에서 Google API를 사용하여 이 계정을 등록하십시오. 등록하면 이름을 바꿀 수 있는 새 기본 프로젝트가 작성됩니다. 이 GCM 프로젝트에 부여하는 이름은 사용자의 Android 애플리케이션 패키지 이름과 관련이 없습니다. 프로젝트가 작성될 때 GCM 프로젝트 ID가 프로젝트 URL의 끝에 추가됩니다. 나중에 참조하기 위해 이 후미 숫자를 프로젝트 ID로 기록해야 합니다. 
@@ -145,11 +149,11 @@ Apple 푸시 알림 서비스(APN)로 iOS 프로젝트를 구성하려면 사용
 
 표의 예는 Apache Tomcat 서버의 server.xml 파일에서 JNDI 특성이 정의되는 방식을 보여줍니다. 
 
-| JNDI 특성    	| 유형 및 설명         | Apache Tomcat 서버의 예          | 
+| JNDI 특성     | 유형 및 설명        | Apache Tomcat 서버의 예         | 
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location | .p12 인증서의 전체 경로를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | 인증서에 액세스하는 데 필요한 비밀번호를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	인증서를 생성하는 데 사용된 프로비저닝 프로파일이 개발 인증서인지 여부를 정의하는 부울 값(true 또는 false로 식별됨). | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.location| .p12 인증서의 전체 경로를 정의하는 문자열 값.| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.password| 인증서에 액세스하는 데 필요한 비밀번호를 정의하는 문자열 값.| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	인증서를 생성하는 데 사용된 프로비저닝 프로파일이 개발 인증서인지 여부를 정의하는 부울 값(true 또는 false로 식별됨).| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
 
 설정할 수 있는 JNDI 특성의 전체 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오. 
 

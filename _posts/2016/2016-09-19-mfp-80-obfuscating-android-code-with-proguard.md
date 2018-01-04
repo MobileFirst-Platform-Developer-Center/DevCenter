@@ -133,6 +133,9 @@ The final **proguard-project.txt** should look as below:
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+-keepclassmembers class * implements javax.net.ssl.SSLSocketFactory {
+   private  javax.net.ssl.SSLSocketFactory delegate;
+}
 
 # Remove debug logs in release build
 -assumenosideeffects class android.util.Log {

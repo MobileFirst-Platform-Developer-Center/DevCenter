@@ -98,11 +98,11 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 それぞれのタイプで、アダプターの名前がやや異なります。  
 マッシュアップ・タイプとそれに該当するアダプター名のリストは次のとおりです。
 
-| シナリオ                                         |      SQL アダプター名        |  HTTP アダプター名    |  
+| シナリオ|      SQL アダプター名|  HTTP アダプター名|  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** アダプター → **JavaScript** アダプター  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** アダプター → **JavaScript** アダプター        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** アダプター → **Java** アダプター              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** アダプター → **JavaScript** アダプター| SQLAdapterJS| HTTPAdapterJS|  
+| **Java** アダプター → **JavaScript** アダプター| SQLAdapterJava| HTTPAdapterJS|  
+| **Java** アダプター → **Java** アダプター| SQLAdapterJava| HTTPAdapterJava|
 
 
 ### マッシュアップのサンプル・フロー

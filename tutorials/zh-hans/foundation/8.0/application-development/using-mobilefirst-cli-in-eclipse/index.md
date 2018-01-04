@@ -8,9 +8,9 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-通过使用 Cordova CLI，可以创建和管理您的 Cordova 应用程序。还可以使用 [THyM](https://www.eclipse.org/thym/) 插件在 Eclipse IDE 中实现相同的结果。
+通过使用 Cordova CLI，可以创建和管理您的 Cordova 应用程序。 还可以使用 [THyM](https://www.eclipse.org/thym/) 插件在 Eclipse IDE 中实现相同的结果。
 
-THyM 支持在 Eclipse 中导入和管理 Cordova 项目。您可以创建新的 Cordova 项目，并且可以导入现有的 Cordova 项目。也可以通过此插件将 Cordova 插件安装到您的项目中。
+THyM 支持在 Eclipse 中导入和管理 Cordova 项目。 您可以创建新的 Cordova 项目，并且可以导入现有的 Cordova 项目。 也可以通过此插件将 Cordova 插件安装到您的项目中。
 
 在[官方 Web 站点](https://www.eclipse.org/thym/)中了解有关 THyM 的更多信息。
 
@@ -87,8 +87,7 @@ THyM 支持在 Eclipse 中导入和管理 Cordova 项目。您可以创建新的
 4. 确保在“项目：”部分中检查项目，然后单击**完成**
 	![“导入 Cordova 项目”的图像](Import_cordova.png)
 
-如果在没有任何平台的情况下导入项目，那么您将看到以下错误，请查看关于如何解决此错误的[添加平台](#adding-platforms)部分。
-![无平台错误图像](no-platforms-error.png)
+如果在没有任何平台的情况下导入项目，那么您将看到以下错误，请查看关于如何解决此错误的[添加平台](#adding-platforms)部分。![无平台错误图像](no-platforms-error.png)
 
 **注**：如果在导入之后需要其他平台，请参阅[添加平台](#adding-platforms)
 
@@ -125,14 +124,14 @@ THyM 支持在 Eclipse 中导入和管理 Cordova 项目。您可以创建新的
 {: #external-ides }
 如果要通过外部 IDE（Android Studio 或 Xcode）测试或部署到设备，可以通过上下文菜单来实现此。
 
-**注**：请确保将项目手动导入 Android Studio 中，以在从 Eclipse 启动之前设置 gradle 配置。否则，您可能会遇到不必要的步骤或错误。从 Android Studio 选择导入：**导入项目（Eclipse ADT Gradle 等）**，并浏览至您的项目，然后选择**平台**目录中的 **android** 目录。
+**注**：请确保将项目手动导入 Android Studio 中，以在从 Eclipse 启动之前设置 gradle 配置。  否则，您可能会遇到不必要的步骤或错误。  从 Android Studio 选择导入：**导入项目（Eclipse ADT Gradle 等）**，并浏览至您的项目，然后选择**平台**目录中的 **android** 目录。
 
 在 Eclipse Project Explorer 中，右键单击期望的平台（例如**平台**目录中的 **android** 或 **ios**）→ 悬停在上下文菜单中的**运行方式** → 选择相应的外部 IDE。
 
 ### 添加平台
 {: #adding-platforms }
 
-添加其他平台是一个简单的过程，THyM 插件不直观显示。您可以通过两个选项来完成同一任务，如下所述。
+添加其他平台是一个简单的过程，THyM 插件不直观显示。 您可以通过两个选项来完成同一任务，如下所述。
 
 1. 通过“属性”
 	1. 右键单击您的项目并从上下文菜单中选择**属性**。
@@ -149,7 +148,7 @@ THyM 支持在 Eclipse 中导入和管理 Cordova 项目。您可以创建新的
 
 ### 调试方式
 {: #debug-mode }
-启用调试方式将在浏览器中预览应用程序的同时在 Eclipse 控制台中显示调试级别日志。要启用调试方式，请执行以下操作：
+启用调试方式将在浏览器中预览应用程序的同时在 Eclipse 控制台中显示调试级别日志。  要启用调试方式，请执行以下操作：
 
 1. 打开 Eclipse 的首选项。
 2. 选择 **MobileFirst Studio 插件**以显示插件首选项页面。
@@ -157,7 +156,7 @@ THyM 支持在 Eclipse 中导入和管理 Cordova 项目。您可以创建新的
 
 ### 实时更新
 {: #live-update }
-在预览应用程序时，实时更新可用。您可以进行更新，保存更改，并在预览中观看它们自动更新。
+在预览应用程序时，实时更新可用。 您可以进行更新，保存更改，并在预览中观看它们自动更新。
 
 ### 将 {{ site.data.keys.mf_server }} 集成到 Eclipse 中
 {: #integrating-mobilefirst-server-into-eclipse }

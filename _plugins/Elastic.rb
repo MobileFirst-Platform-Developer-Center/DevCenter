@@ -73,6 +73,29 @@ Jekyll::Hooks.register :site, :post_write do |site|
         element['version'] = ['8.0']
       end
 
+      # insert language
+      if document.url.include? '/en/'
+        element['language'] = ['en']
+      elsif document.url.include? '/es/'
+        element['language'] = ['es']
+      elsif document.url.include? '/fr/'
+        element['language'] = ['fr']
+      elsif document.url.include? '/ko/'
+        element['language'] = ['ko']
+      elsif document.url.include? '/pt-br/'
+        element['language'] = ['pt']
+      elsif document.url.include? '/ru/'
+        element['language'] = ['ru']
+      elsif document.url.include? '/de/'
+        element['language'] = ['de']
+      elsif document.url.include? '/zh-hans/'
+        element['language'] = ['zh']
+      elsif document.url.include? '/ja/'
+        element['language'] = ['ja']
+      elsif document.url.include? '/it/'
+        element['language'] = ['it']  
+      end
+
       # create the index object
       index = {}
       index['index'] = {}

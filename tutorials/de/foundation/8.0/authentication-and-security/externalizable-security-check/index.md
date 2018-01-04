@@ -48,6 +48,8 @@ protected void initStateDurations(Map<String, Integer> durations) {
 im Abschnitt [Konfigurationsklasse](../credentials-validation/security-check/#configuration-class)
 des Lernprogramms "CredentialsValidationSecurityCheck implementieren".
 
+
+
 ## Methode authorize
 {: #the-authorize-method }
 Die Schnittstelle `SecurityCheck` definiert eine Methode mit der Bezeichnung `authorize`. Diese Methode ist für die Implementierung der wesentlichen Logik der

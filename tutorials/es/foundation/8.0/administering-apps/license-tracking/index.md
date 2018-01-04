@@ -70,7 +70,7 @@ Para establecer el tipo de licencia con {{ site.data.keys.mf_console }}
 3. Establezca el **Tipo de aplicación** y el **Tipo de licencia de señal**
 4. Pulse **Guardar**
 
-Para establecer el tipo de licencia con el programa mfpadm, utilice `mfpadm app <nombre_aplic> set license-config <tipo_aplicación> <tipo licencia señal>`
+Para establecer el tipo de licencia con el programa mfpadm, utilice `mfpadm app <appname> set license-config <application-type> <token license type>`
 
 En el siguiente ejemplo se establece la información de licencia B2E / APPLICATION a la aplicación denominada **my.test.application**
 
@@ -148,6 +148,8 @@ El servidor desactiva las aplicaciones si no hay disponbiles señales suficiente
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones.
 Después de incrementar el número de señales disponibles, debe reactivar las aplicaciones de forma manual.
 Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
+
+
 #### Al caducar la licencia
 {: #on-license-expiration }
 Después de cierto tiempo, la licencia caduca y se debe extraer de nuevo.
@@ -156,6 +158,8 @@ El servidor desactiva las aplicaciones si no hay disponbiles señales suficiente
 
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones.
 Después de aumentar el número de señales disponibles, debe volver a activar las aplicaciones manualmente. Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
+
+
 #### Al concluir el servidor
 {: #at-server-shutdown }
 Durante la conclusión de un servidor se incorporan las licencias de todas las aplicaciones desplegadas.
@@ -181,11 +185,11 @@ Para obtener más información, consulte [Instalación y configuración para la 
 Dependiendo del tipo de licencia de señal de una aplicación, se utilizan las siguientes características.
 
 
-| Tipo de licencia de señal | Nombre característica | 
+| Tipo de licencia de señal| Nombre característica| 
 |--------------------|--------------|
-| APPLICATION        | 	ibmmfpfa    | 
-| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (sin característica) | 
+| APPLICATION| 	ibmmfpfa| 
+| ADDITIONAL\_BRAND\_DEPLOYMENT|	ibmmfpabd| 
+| NON_PRODUCTION	| (sin característica)| 
 
 ## Integración con IBM License Metric Tool
 {: #integration-with-ibm-license-metric-tool }
@@ -215,7 +219,11 @@ IBM Installation Manager añade o actualiza el archivo SWID que License Metric T
 
 > Para obtener más información sobre {{ site.data.keys.product_full }} Extension, consulte [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
+
+
 > Para obtener más información sobre la gestión de licencias de PVU, consulte [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+
+
 
 ### Etiquetas SLMT
 {: #slmt-tags }
@@ -262,7 +270,7 @@ Cada aplicación se cuenta como una unidad, independientemente de si se trata de
 La métrica ADDRESSABLE_DEVICE tiene el siguiente subtipo:
 
 
-* Aplicación: `<nombre_aplicación>`, Categoría: `<tipo_aplicaión>`
+* Aplicación: `<applicationName>`, Categoría: `<application type>`
 
 El tipo de aplicación es **B2C**, **B2E** o **UNDEFINED**.
 Si desea definir el tipo de una aplicación, consulte [Establecimiento de la información de licencia de la aplicación](#setting-the-application-license-information).

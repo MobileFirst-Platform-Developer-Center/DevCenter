@@ -118,7 +118,7 @@ weight: 1
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova アプリケーション開発</a>についてもっとよく知る。</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
@@ -169,15 +169,15 @@ weight: 1
                         <h4>ステップ 3</h4>
                         <p>Cordova アプリケーションにアプリケーションのソース・コードが含まれています。次に、いくつかのコード・ブロックを追加または編集する必要があります。</p>
 
-                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="setupCordova" role="tablist">
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="setupCordova">
+                            <div class="panel-heading" role="tab" id="setupCordova-inner">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">クリックして手順を表示</a>
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova-inner">
                                 <div class="panel-body">
                                     <ol>
                                         <li><b>www/index.html</b> ファイルを更新します。
@@ -304,11 +304,11 @@ if (document.addEventListener) {
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web アプリケーション開発</a>についてもっとよく知る。</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-web" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">モバイル Web/デスクトップ・ブラウザー・アプリケーションのマイグレーション</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-web" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">モバイル Web/デスクトップ・ブラウザー・アプリケーションのマイグレーション</a>
                     </h4>
                 </div>
 
@@ -316,7 +316,7 @@ if (document.addEventListener) {
                     <div class="panel-body">
                         <h4>ステップ 1</h4>
                         <p>マイグレーション・アシスト・ツールを使用して API レポートを生成します。<br/>
-コマンド・ライン・ウィンドウを開き、次のような方法でマイグレーション・アシスト・ツールを使用します。<br/>
+                        コマンド・ライン・ウィンドウを開き、次のような方法でマイグレーション・アシスト・ツールを使用します。<br/>
                         これは、インターネットの接続状況によって、完了までに時間がかかることがあります。</p>
 
 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}
@@ -367,11 +367,11 @@ if (document.addEventListener) {
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">ネイティブ・アプリケーション開発</a>についてもっとよく知る。</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">ネイティブ・アプリケーションの SDK の更新</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">ネイティブ・アプリケーションの SDK の更新</a>
                     </h4>
                 </div>
 
@@ -413,7 +413,7 @@ if (document.addEventListener) {
                         </ul>
 
                         <br/>
-                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion1" role="tablist">
                            <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="removeiOSSDK">
                                  <h4 class="panel-title">
@@ -526,7 +526,7 @@ end{% endhighlight %}
                         <br/>
 
                         <b>Android</b><br/>
-                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion2" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
                                     <h4 class="panel-title">
@@ -603,7 +603,7 @@ transitive: true{% endhighlight %}</li>
                         <br/>
 
                         <b>Windows</b><br/>
-                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion3" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
                                     <h4 class="panel-title">
@@ -697,11 +697,11 @@ transitive: true{% endhighlight %}</li>
         <br/>
         <p>アダプターを Maven プロジェクトにマイグレーションする場合は、適合する新規 Maven プロジェクトを作成する、作成した Maven プロジェクトに既存のアダプターのソース・コードをコピーする  (一部変更を加える)、といった手順を踏みます。その後、Maven プロジェクトをビルドして、エラーがないか探します。</p>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration-maven" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="prereqs">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven のセットアップの前提条件</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven のセットアップの前提条件</a>
                     </h4>
                 </div>
 
@@ -740,7 +740,7 @@ export MVN_PATH="/usr/local/bin"
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">新規 Maven プロジェクトの作成</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">新規 Maven プロジェクトの作成</a>
                     </h4>
                 </div>
 
@@ -968,7 +968,7 @@ export MVN_PATH="/usr/local/bin"
 
         <blockquote><a href="../migrating-security/" target="_blank">認証およびセキュリティーのマイグレーション</a>に関するチュートリアルで、セキュリティーのマイグレーション方法を学ぶ。セキュリティー・フレームワークおよび許可の概念について詳しくは、<a href="../../authentication-and-security/" target="_blank">認証およびセキュリティーのチュートリアル</a>を参照してください。</blockquote>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
                     <h4 class="panel-title">

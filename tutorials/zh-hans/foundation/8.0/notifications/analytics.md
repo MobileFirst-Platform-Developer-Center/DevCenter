@@ -8,13 +8,13 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-要对推送通知设置分析支持，必须设置以下 JNDI 属性以初始化和配置**“分析”插件**。“分析”插件由推送通知服务提供。如果未设置分析支持，那么推送通知服务在缺省情况下会将事件记录到系统记录器中。
+要对推送通知设置分析支持，必须设置以下 JNDI 属性以初始化和配置**“分析”插件**。 “分析”插件由推送通知服务提供。 如果未设置分析支持，那么推送通知服务在缺省情况下会将事件记录到系统记录器中。
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.services.ext.analytics" value = "com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin"/>
 ```
 
-需要使用以下属性来配置和初始化“{{ site.data.keys.mf_analytics }}”插件。在提供的端点上，将使用用户名和密码来向“分析”服务认证。
+需要使用以下属性来配置和初始化“{{ site.data.keys.mf_analytics }}”插件。 在提供的端点上，将使用用户名和密码来向“分析”服务认证。
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
@@ -46,5 +46,5 @@ Push is meant to send two types of analytics events to the Analytics service. Th
 
 有关在分析控制台中查看推送通知报告的信息，请参阅[推送通知报告](../../analytics/console/push-notifications/)。
 
-> 有关推送服务的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
+> 有关推送服务的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }}推送服务的 JNDI 属性列表](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 > **注：**{{ site.data.keys.product_full }} 安装程序将创建这些属性并将其设置为缺省值。

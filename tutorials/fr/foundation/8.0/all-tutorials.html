@@ -16,7 +16,7 @@ offres {{ site.data.keys.product }} 8.0.<br/><br/>
 <div id="container">
     <div class="row">
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Zone de recherche intégrée" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="textbox" aria-label="Zone de recherche intégrée" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="Zone de recherche" type="text" class="form-control" placeholder="Rechercher..." name="q">
                 </div>
@@ -52,8 +52,8 @@ offres {{ site.data.keys.product }} 8.0.<br/><br/>
                         Mesure et engagement
                     </div>
                 </a>
-            </div>  
-        </div>          
+            </div>
+        </div>
     </div>
 </div>
 
@@ -62,7 +62,7 @@ offres {{ site.data.keys.product }} 8.0.<br/><br/>
 <div id="tutorials-list">
     <h2><a href="../product-overview/">Présentation du produit</a></h2>
     Découvrez l'offre {{ site.data.keys.product }}.
-    
+
     <ul>
         <li><a href="../product-overview/capabilities">Fonctions principales du produit</a></li>
         <li><a href="../product-overview/components">Composants du produit</a>
@@ -80,10 +80,10 @@ d'accessibilité pour {{
 site.data.keys.product_full }}</a></li>
         <li><a href="../product-overview/release-notes">Notes sur l'édition</a></li>
     </ul>
-    
+
     <h2><a href="../installation-configuration/">Installation et configuration</a></h2>
     Configurez votre environnement de développement ou de production pour utiliser {{ site.data.keys.product_full }}.
-    
+
     <ul>
         <li><a href="../installation-configuration/development">Configuration de
 l'environnement de développement</a>
@@ -123,12 +123,12 @@ de {{ site.data.keys.product_adj }}</a>
         </li>
         <li><a href="../installation-configuration/production/pure-application">Déploiement de {{ site.data.keys.mf_server }} sur IBM PureApplication System</a></li>
     </ul>
-    
+
     <h2><a href="../administering-apps/">Administration d'applications</a></h2>
     {{ site.data.keys.product_full }} permet d'administrer les applications {{
 site.data.keys.product_adj }} en développement ou en production de plusieurs
 façons.
-    
+
     <ul>
         <li><a href="../administering-apps/deployment">Déploiement d'applications sur des environnements de test et de production</a></li>
         <li><a href="../administering-apps/using-console/">Administration d'applications via la console {{ site.data.keys.mf_console }}</a></li>
@@ -136,13 +136,13 @@ façons.
         <li><a href="../administering-apps/using-cli/">Administration d'applications via la ligne de commande</a></li>
         <li><a href="../administering-apps/federal/">Prise en charge de normes fédérales dans {{ site.data.keys.product }}</a></li>
         <li><a href="../administering-apps/license-tracking/">Suivi des licences</a></li>
-    </ul> 
-    
+    </ul>
+
     <h2 id="upgrading_to_current_version"><a href="../upgrading/">Mise à niveau vers {{
 site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h2>
     Prenez connaissance des modifications à apporter au produit pour préparer
 et planifier la migration de vos applications {{ site.data.keys.product_adj }}.
-    
+
     <ul>
         <li><a href="../upgrading/migration-cookbook">Migration Cookbook</a></li>
         <li><a href="../upgrading/">Migrating from earlier releases</a>
@@ -161,12 +161,12 @@ et planifier la migration de vos applications {{ site.data.keys.product_adj }}.
             </ul>
         </li>
     </ul>
-    
+
     <hr id="start-here"/>
-    
+
     <h2><a href="../quick-start/">Démarrage rapide</a></h2>
     Découvrez {{ site.data.keys.product }}.
-    
+
     <ul>
         <li><a href="../quick-start/cordova/">Cordova - Démarrage rapide</a></li>
         <li><a href="../quick-start/ios/">iOS - Démarrage rapide</a></li>
@@ -175,7 +175,7 @@ et planifier la migration de vos applications {{ site.data.keys.product_adj }}.
         <li><a href="../quick-start/web/">Application Web - Démarrage rapide</a></li>
         <li><a href="../quick-start/xamarin/">Xamarin - Démarrage rapide</a></li>
     </ul>
-    
+
     <h2><a href="../application-development/sdk">Ajout du logiciel SDK de {{ site.data.keys.product_adj }}</a></h2>
     Ajoutez le logiciel SDK de {{ site.data.keys.product }} à votre application Cordova, iOS native, Android, Windows 8.1 Universal ou Windows 10 UWP.
 
@@ -187,7 +187,7 @@ et planifier la migration de vos applications {{ site.data.keys.product_adj }}.
         <li><a href="../application-development/sdk/web/">Adding the {{ site.data.keys.product }} SDK to Web applications</a></li>
         <li><a href="../application-development/sdk/xamarin/">Adding the {{ site.data.keys.product }} SDK to Xamarin applications</a></li>
     </ul>
-    
+
     <hr id="get-sdk-and-apis"/>
 
     <h2><a href="../application-development">Développement d'applications</a></h2>
@@ -244,9 +244,9 @@ site.data.keys.mf_cli }}, etc.
         <li><a href="../application-development/watchos/">Developing for Apple watchOS 2</a></li>
         <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
     </ul>
-    
+
     <h2><a href="../adapters/">Développement d'adaptateurs</a></h2>
-    Développez un code côté serveur à intégrer aux systèmes de back end d'entreprise et aux services cloud.  
+    Développez un code côté serveur à intégrer aux systèmes de back end d'entreprise et aux services cloud.
 
     <ul>
         <li><a href="../adapters/">Adapters overview</a></li>
@@ -280,7 +280,7 @@ site.data.keys.mf_cli }}, etc.
         <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
         <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
     </ul>
-    
+
     <hr id="implement-authentication-and-security"/>
 
     <h2><a href="../authentication-and-security/">Authentification et sécurité</a></h2>
@@ -333,7 +333,7 @@ site.data.keys.mf_cli }}, etc.
     <hr id="measure-and-engage"/>
 
     <h2><a href="../notifications">Notifications</a></h2>
-    Envoyez des notifications avec {{ site.data.keys.product_full }}.  
+    Envoyez des notifications avec {{ site.data.keys.product_full }}.
 
     <ul>
         <li><a href="../notifications/">Notifications Overview</a></li>
@@ -366,10 +366,10 @@ site.data.keys.mf_cli }}, etc.
         <li><a href="../notifications/analytics/">Setting Up Analytics Support for Push Notifications</a></li>
         <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
     </ul>
-    
+
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
     Surveillez les applications et les adaptateurs déployés, obtenez des informations
-sur l'utilisation des applications, détectez les erreurs, etc.  
+sur l'utilisation des applications, détectez les erreurs, etc.
 
     <ul>
         <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
@@ -388,9 +388,9 @@ sur l'utilisation des applications, détectez les erreurs, etc.
         </li>
         <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
     </ul>
-    
+
     <h2><a href="../bluemix">Foundation dans Bluemix</a></h2>
-    Déployez {{ site.data.keys.product }} dans le cloud à l'aide de Bluemix.  
+    Déployez {{ site.data.keys.product }} dans le cloud à l'aide de Bluemix.
 
     <ul>
         <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on Bluemix</a></li>
@@ -409,10 +409,10 @@ sur l'utilisation des applications, détectez les erreurs, etc.
             </ul>
         </li>
     </ul>
-    
+
     <h2><a href="../appcenter">Application Center</a></h2>
     Installez, configurez et utilisez IBM MobileFirst Foundation Application Center.
-    
+
     <ul>
         <li><a href="../appcenter/">Présentation d'Application Center</a></li>
         <li><a href="../appcenter/preparations">Préparatifs pour l'utilisation du client mobile</a></li>
@@ -423,19 +423,19 @@ sur l'utilisation des applications, détectez les erreurs, etc.
         <li><a href="../appcenter/logging-and-tracing">Configuration de la journalisation et du traçage pour Application Center sur le serveur d'applications</a></li>
         <li><a href="../appcenter/app-center-tutorial/">Distribution d'applications mobiles avec IBM Application Center</a></li>
     </ul>
-    
+
     <h2><a href="../troubleshooting/">Traitement des incidents courants</a></h2>
     Questions posées fréquemment et réponses.
-    
+
     <ul>
         <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
     </ul>
-    
+
     <h2><a href="../../../../en/product-integration/8.0">Intégration de produit</a></h2>
     Intégrez des applications {{ site.data.keys.product }} 8.0 à d'autres produits IBM.
-    
+
     <ul>
         <li><a href="../../../../en/product-integration/8.0">Liste des intégrations de produit disponibles</a></li>
     </ul>

@@ -85,7 +85,7 @@ Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)�
 
 ## {{ site.data.keys.product_adj }} SDK 開始フロー
 {: #mobilefirst-sdk-startup-flow }
-<div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="startup-flows" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">
             <h4 class="panel-title">
@@ -159,6 +159,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>セクションを閉じる</b></a>
             </div>
@@ -176,22 +177,8 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
             <div class="panel-body">
                 <p>{{ site.data.keys.product_adj }} フレームワークは iOS プラットフォームで初期化され、{{ site.data.keys.product_adj }} を使用する Cordova アプリケーションで WebView を表示します。</p>
 
-                <b>main.m</b>
-                <p><code>main.m</code> ファイルで、{{ site.data.keys.product_adj }} プラグインはデフォルトのメイン・アプリケーション <code>AppDelegate</code> を <code>MFPAppDelegate</code> に置き換えます。</p>
-
-{% highlight objc %}
-#import <UIKit/UIKit.h>
-int main(int argc, char *argv[]) {
- @autoreleasepool
-    {    
-        int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
-        return retVal;
-    }
-}
-{% endhighlight %}
-
-                <b>MFPAppDelegate.m</b>
-                <p><code>MFPAppDelegate.m</code> ファイルは plugins フォルダーにあります。これは、デフォルトの Cordova <code>AppDelegate.m</code> ファイルを置き換えて、ビュー・コントローラーが WebView をロードする前に {{ site.data.keys.product_adj }} フレームワークを初期化します。</p>
+                <b>AppDelegate.m</b>
+                <p><code>AppDelegate.m</code> ファイルは Classes フォルダーにあります。これは、ビュー・コントローラーが WebView をロードする前に {{ site.data.keys.product_adj }} フレームワークを初期化します。</p>
 
                 <p><code>didFinishLaunchingWithOptions</code> メソッドは、次のフレームワークを初期化します。</p>
 
@@ -199,7 +186,7 @@ int main(int argc, char *argv[]) {
 [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
 {% endhighlight %}
 
-                <p>初期化が成功すると、<code>wlInitWebFrameworkDidCompleteWithResult</code> は、{{ site.data.keys.product_adj }} フレームワークがロードされ、<code>wlInitDidCompleteSuccessfully</code> を呼び出し、データを受信するためのリスナーを作成したかどうかを確認します。<code>wlInitDidCompleteSuccessfully</code> は、デフォルトの <b>index.html</b> ページに接続する <code>cordovaViewController</code> を作成します。</p>
+                <p>初期化が成功すると、<code>wlInitWebFrameworkDidCompleteWithResult</code> は、{{ site.data.keys.product_adj }} フレームワークがロードされたことを検査し、デフォルトの <b>index.html</b> ページに接続する <code>MainViewController</code> を作成します。</p>
 
                 <p>iOS Cordova アプリケーションが Xcode でエラーなしでビルドされると、フィーチャーをネイティブ・プラットフォームと WebView に追加できるようになります。</p>
 
@@ -321,7 +308,7 @@ Cordova アプリケーションの Web リソースは、iOS シミュレータ
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **セキュリティー制限:** Web リソースはプレビュー可能ですが、そのシミュレーターですべての {{ site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。このケースでは、次のようになります。
 >
-> * セキュリティー検査はサーバー・サイドでは実行されず、セキュリティー・チャレンジは {{ site.data.keys.mf_mbs }} 内で実行されているクライアントに送信されません。
+> * セキュリティー検査はサーバー・サイドでは実行されず、セキュリティー・チャレンジは {{ site.data.keys.mf_mbs }} 内で実行されるクライアントに送信されません。
 > * 開発環境で {{ site.data.keys.mf_server }} を使用しない場合、許可スコープのリスト中にアダプターのスコープが含まれている機密クライアントを登録してください。機密クライアントは {{ site.data.keys.mf_console }} で「ランタイム/設定」メニューを使用して定義できます。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 >
 > **注:** 開発環境での {{ site.data.keys.mf_server }} には、無制限の許可スコープ (「*」) を持つ機密クライアント「test」が含まれています。デフォルトで、mfpdev app preview はこの機密クライアントを使用します。
@@ -362,26 +349,26 @@ Simple Browser プレビューでは、アプリケーションの Web リソー
     ◯ ios
 	```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** さまざまな CLI コマンドについて詳しくは、[『CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理』](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルを参照してください。
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** さまざまな CLI コマンドについて詳しくは、『CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理』(../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) チュートリアルを参照してください。
 
 ### ライブ・プレビュー
 {: #live-preview }
-ライブ・プレビューを使用して、応用コード (HTML、CSS、および JS) をリアルタイムで編集できるようになりました。   
+ライブ・プレビューを使用して、応用コード (HTML、CSS、および JS) をリアルタイムで編集できるようになりました。
 リソースに変更を加えた後、変更を保存すると、即時にブラウザーに変更が反映されます。
 
 ### ライブ再ロード
 {: #live-reload }
-物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、**cordova-plugin-livereload** プラグインを追加します。使用法については、[プラグイン GitHub のページを参照してください](https://github.com/omefire/cordova-plugin-livereload)。
+物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、「cordova-plugin-livereload」プラグインを追加します。使用法については、プラグイン GitHub のページ (https://github.com/omefire/cordova-plugin-livereload) を参照してください。
 
 ### エミュレーターまたは物理デバイス上でのアプリケーションの実行
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-アプリケーションをエミュレートするには、Cordova CLI コマンド `cordova emulate ios|android|windows` を実行します。例えば、次のとおりです。
+アプリケーションをエミュレートするには、Cordova CLI コマンド「cordova emulate ios|android|windows」を実行します。例えば、次のとおりです。
 
 ```bash
 cordova emulate ios
 ```
 
-開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド `cordova run ios|android|windows` を実行します。例えば、次のとおりです。
+開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド「cordova run ios|android|windows」を実行します。例えば、次のとおりです。
 
 ```bash
 cordova run ios
@@ -393,27 +380,27 @@ WebView リソースの編集は、JavaScript のオートコンプリートを�
 
 Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。JavaScript の編集を容易にするには、{{ site.data.keys.product_adj }} Cordova プロジェクトに {{ site.data.keys.product_adj }} API エレメントのオートコンプリートを可能にする定義ファイルを含めます。
 
-各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに `d.ts` 構成ファイルを提供します。`d.ts` ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内に配置されます。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、ファイルは次の場所に配置されます。**[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**
+各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに「d.ts」構成ファイルを提供します。「d.ts」ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは「[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts」です。
 
-`d.ts` 構成ファイルを使用すると、TypeScript をサポートしているすべての IDE ([TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、[Eclipse](https://github.com/palantir/eclipse-typescript) など) でオートコンプリートが使用できるようになります。
+「d.ts」構成ファイルを使用すると、TypeScript をサポートしているすべての IDE (TypeScript Playground (http://www.typescriptlang.org/Playground/)、Visual Studio Code (http://www.microsoft.com/visualstudio/eng)、WebStorm (http://www.jetbrains.com/webstorm/)、WebEssentials (http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、Eclipse (https://github.com/palantir/eclipse-typescript)) でオートコンプリートを使用できるようになります。
 
-WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、**[myapp]\www** フォルダーに配置されます。プロジェクトが cordova build コマンドでビルドされる場合、または cordova prepare コマンドが実行される場合、これらのリソースは、**[myapp]\platforms\ios\www** フォルダー、**[myapp]\platforms\android\assets\www** フォルダー、または **[myapp]\platforms\windows\www** フォルダー内の対応する **www** フォルダーにコピーされます。
+WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、「[myapp]\www」フォルダーにあります。プロジェクトを cordova build コマンドでビルドする場合、または cordova prepare コマンドを実行する場合、これらのリソースは、「[myapp]\platforms\ios\www」、「[myapp]\platforms\android\assets\www」、または「[myapp]\platforms\windows\www」の各フォルダー内の対応する 「www」フォルダーにコピーされます。
 
-前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。IDE エディターは関連する `d.ts` ファイルにリンクされるようになり、入力したとおりに {{ site.data.keys.product_adj }} API エレメントをオートコンプリートします。
+前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。IDE エディターは関連する「d.ts」ファイルにリンクされるようになり、入力したとおりに {{ site.data.keys.product_adj }} API エレメントをオートコンプリートします。
 
 ## Android 用の CrossWalk サポート
 {: #crosswalk-support-for-android }
-Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を [CrossWalk WebView](https://crosswalk-project.org/) に置換できます。  
+Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を「CrossWalk WebView」(https://crosswalk-project.org/) に置換できます。
 これを追加するには、以下のようにします。
 
-1. **コマンド・ライン**・ウィンドウから、次のコマンドを実行します。
+1. 「コマンド・ライン」ウィンドウから、次のコマンドを実行します。
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
-   このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。  
-表に出ないところで、{{ site.data.keys.product_adj }} Cordova SDK は、CrossWalk WebView を使用するように Android プロジェクト・アクティビティーを調整します。
+   このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。
+    表に出ないところで、{{ site.data.keys.product_adj }} Cordova SDK は、CrossWalk WebView を使用するように Android プロジェクト・アクティビティーを調整します。
 
 2. 次のコマンドを実行して、プロジェクトをビルドします。
 
@@ -421,21 +408,21 @@ Android プラットフォーム用の Cordova アプリケーションでは、
    cordova build
    ```
 
-## iOS 用の WKWebView のサポート
+## iOS 用の WKWebView サポート
 {: #wkwebview-support-for-ios }
-Cordova iOS アプリケーションで使用されているデフォルトの UIWebView を、[Apple の WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) に置換できます。  
-追加するには、コマンド・ライン・ウィンドウからコマンド `cordova plugin add cordova-plugin-wkwebview-engine` を実行します。
+Cordova iOS アプリケーションで使用されているデフォルトの UIWebView を、「Apple の WKWebView」(https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) に置換できます。
+追加するには、コマンド・ライン・ウィンドウからコマンド「cordova plugin add cordova-plugin-wkwebview-engine」を実行します。
 
-> 詳しくは、[Cordova WKWebView プラグイン](https://github.com/apache/cordova-plugin-wkwebview-engine)に関する説明を参照してください。
+> 「Cordova WKWebView プラグイン」に関する詳細 (https://github.com/apache/cordova-plugin-wkwebview-engine) を参照してください。
 
 ## 発展的なチュートリアル
 {: #further-reading }
 Cordova に関する詳細は以下を参照してください。
 
-- [Cordova の概説](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
-- [Cordova のベスト・プラクティス、テスト、デバッグ、考慮事項、および保守](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
-- [Cordova アプリケーション開発の概要](https://cordova.apache.org/#getstarted)
+- Cordova の概要 (https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- Cordova のベスト・プラクティス、テスト、デバッグ、考慮事項、および保守 (https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
+- Cordova アプリケーション開発の開始 (https://cordova.apache.org/#getstarted)
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-始めに [Cordova アプリケーションに MobileFirst SDK を追加](../../application-development/sdk/cordova)し、[すべてのチュートリアル](../../all-tutorials/)セクションで {{ site.data.keys.product_adj }} 提供のフィーチャーを検討します。
+始めに『Cordova アプリケーションに MobileFirst SDK を追加』(../../application-development/sdk/cordova) し、『すべてのチュートリアル』(../../all-tutorials/) セクションで {{ site.data.keys.product_adj }} 提供のフィーチャーを検討します。

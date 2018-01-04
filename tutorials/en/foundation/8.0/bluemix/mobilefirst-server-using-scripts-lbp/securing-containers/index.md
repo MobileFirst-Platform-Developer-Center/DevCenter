@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Securing MobilFirst server
+title: Securing MobileFirst server
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -70,7 +70,7 @@ To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf
 
 ### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the IBM Cloud  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Cloud containers.
 
 #### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
@@ -263,7 +263,7 @@ The configuration process includes the following steps:
 
 * Setup and configuration of an LDAP repository
 * Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on IBM Cloud for this step.)
 
 #### LDAP repository
 {: #ldap-repository }
@@ -311,11 +311,11 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
 
 #### Secure gateway
 {: #secure-gateway }
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on IBM Cloud and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+1. Log on to IBM Cloud and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
 2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+3. Go to the IBM Cloud dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
 4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
 5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
 6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
@@ -341,17 +341,17 @@ To configure a secure gateway connection to your LDAP server, you must create an
 ### Configuring apps to work with LDAP
 {: #configuring-apps-to-work-with-ldap }
 Configure MobileFirst mobile apps to work with an external LDAP registry.  
-The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
+The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on IBM Cloud for this step.)
 
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on IBM Cloud and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+1. Log on to IBM Cloud and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
 2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+3. Go to the IBM Cloud dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
 4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
 5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
 6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
 7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
 
 **Results**  
-The communication between the MobileFirst app on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
+The communication between the MobileFirst app on IBM Cloud with your local LDAP server is established. The authentication and authorization from the IBM Cloud app is validated against your local LDAP server.

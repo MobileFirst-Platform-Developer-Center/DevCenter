@@ -78,37 +78,37 @@ WebSphere Application Server の JNDI プロパティーは、環境変数とし
 {: #mobilefirst-server }
 以下の表は、{{ site.data.keys.mf_server }} で設定可能なプロパティーを示しています。
 
-| プロパティー                           | 説明                                           | デフォルト値 |
+| プロパティー| 説明| デフォルト値|
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | このプロパティーには、{{ site.data.keys.mf_analytics_console }} の URL を設定します。 例えば、http://hostname:port/analytics/console などです。このプロパティーを設定すると、{{ site.data.keys.mf_console }} で分析アイコンが有効になります。 | なし |
-| mfp.analytics.logs.forward         | このプロパティーが true に設定されると、{{ site.data.keys.mf_server }} で記録されたサーバー・ログが {{ site.data.keys.mf_analytics }} でキャプチャーされます。 | true |
-| mfp.analytics.url                  |必須。着信する分析データを受け取る、{{ site.data.keys.mf_analytics_server }} により公開される URL。例えば、http://hostname:port/analytics-service/rest/v2 などです。 | なし |
-| analyticsconsole/mfp.analytics.url |	オプション。Analytics REST サービスの絶対 URI。ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は、ローカル LAN の内側の内部 URI ではなく、外部 URI でなければなりません。 この値では、URI プロトコル、ホスト名、またはポートの場所に * を入れて、着信 URL の対応する部分を表すことができます。 *://*:*/analytics-service。プロトコル、ホスト名、およびポートは動的に決定されます。 |
-| mfp.analytics.username             | データのエントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名。 | なし |
-| mfp.analytics.password             | データのエントリー・ポイントが基本認証で保護されている場合に使用されるパスワード。 | なし |
+| mfp.analytics.console.url| このプロパティーには、{{ site.data.keys.mf_analytics_console }} の URL を設定します。 例えば、http://hostname:port/analytics/console などです。このプロパティーを設定すると、{{ site.data.keys.mf_console }} で分析アイコンが有効になります。| なし|
+| mfp.analytics.logs.forward| このプロパティーが true に設定されると、{{ site.data.keys.mf_server }} で記録されたサーバー・ログが {{ site.data.keys.mf_analytics }} でキャプチャーされます。| true|
+| mfp.analytics.url|必須。着信する分析データを受け取る、{{ site.data.keys.mf_analytics_server }} により公開される URL。例えば、http://hostname:port/analytics-service/rest/v2 などです。| なし|
+| analyticsconsole/mfp.analytics.url|	オプション。Analytics REST サービスの絶対 URI。ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は、ローカル LAN の内側の内部 URI ではなく、外部 URI でなければなりません。 この値では、URI プロトコル、ホスト名、またはポートの場所に * を入れて、着信 URL の対応する部分を表すことができます。*://*:*/analytics-service。プロトコル、ホスト名、およびポートは動的に決定されます。|
+| mfp.analytics.username| データのエントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名。| なし|
+| mfp.analytics.password| データのエントリー・ポイントが基本認証で保護されている場合に使用されるパスワード。| なし|
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
 以下の表は、{{ site.data.keys.mf_analytics_server }} で設定可能なプロパティーを示しています。
 
-| プロパティー                           | 説明                                           | デフォルト値 |
+| プロパティー| 説明| デフォルト値|
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Elasticsearch ノード・タイプを定義します。 有効値は master および data です。このプロパティーが設定されていない場合、ノードはマスター適格ノードとデータ・ノードとして動作します。 | 	なし |
-| analytics/shards | 索引当たりのシャードの数。この値は、クラスターで開始された最初のノードでしか設定できず、変更不可です。 | 1 |
-| analytics/replicas_per_shard | クラスターのシャードごとのレプリカの数。この値は、実行中のクラスターで動的に変更可能です。  | 0 |
-| analytics/masternodes | マスター適格ノードのホスト名とポートを含むコンマ区切りのストリング。 | なし |
-| analytics/clustername | クラスターの名前。同じサブセットで動作する複数のクラスターを設定する予定で、それらを一意的に識別する必要がある場合は、この値を設定します。 | worklight |
-| analytics/nodename | クラスター内のノードの名前。 | ランダムに生成されたストリング
-| analytics/datapath | ファイル・システムで分析データが保存されるパス。 | ./analyticsData |
-| analytics/settingspath | Elasticsearch 設定ファイルのパス。詳しくは、Elasticsearch を参照してください。 | なし |
-| analytics/transportport | ノード間の通信に使用されるポート。 | 9600 |
-| analytics/httpport | Elasticsearch への HTTP 通信に使用されるポート。 | 9500 |
-| analytics/http.enabled | Elasticsearch への HTTP 通信を使用可能または使用不可にします。 | false |
-| analytics/serviceProxyURL | 分析 UI WAR ファイルと分析サービス WAR ファイルをインストールして、アプリケーション・サーバーを分けることができます。 これを行う場合は、UI WAR ファイルの JavaScript ランタイムが、ブラウザーのクロスサイト・スクリプティング防御によってブロックされる可能性があることを考慮する必要があります。このブロックを迂回するために、UI WAR ファイルには、JavaScript ランタイムがオリジン・サーバーから REST API 応答を取得するための Java プロキシー・コードが含まれます。しかし、プロキシーは、REST API 要求を分析サービス WAR ファイルに転送するように構成されています。 WAR ファイルをインストールしてアプリケーション・サーバーを分けた場合に、このプロパティーを構成してください。 | なし |
-| analytics/bootstrap.mlockall | このプロパティーは、Elasticsearch メモリーがディスクにスワップされるのを防ぎます。 | true |
-| analytics/multicast | マルチキャスト・ノード・ディスカバリーを使用可能または使用不可にします。 | false |
-| analytics/warmupFrequencyInSeconds | ウォームアップ照会が実行される頻度。 ウォームアップ照会はバックグラウンドで実行され、照会結果をメモリーに入れさせるため、Web コンソールのパフォーマンスが向上します。 負の値が指定された場合、ウォームアップ照会は使用不可になります。 | 600 |
-| analytics/tenant | 主要な Elasticsearch 索引の名前。worklight |
+| analytics/nodetype| Elasticsearch ノード・タイプを定義します。 有効値は master および data です。このプロパティーが設定されていない場合、ノードはマスター適格ノードとデータ・ノードとして動作します。| 	なし|
+| analytics/shards| 索引当たりのシャードの数。この値は、クラスターで開始された最初のノードでしか設定できず、変更不可です。| 1|
+| analytics/replicas_per_shard| クラスターのシャードごとのレプリカの数。この値は、実行中のクラスターで動的に変更可能です。 | 0|
+| analytics/masternodes| マスター適格ノードのホスト名とポートを含むコンマ区切りのストリング。| なし|
+| analytics/clustername| クラスターの名前。同じサブセットで動作する複数のクラスターを設定する予定で、それらを一意的に識別する必要がある場合は、この値を設定します。| worklight|
+| analytics/nodename| クラスター内のノードの名前。| ランダムに生成されたストリング
+| analytics/datapath| ファイル・システムで分析データが保存されるパス。| ./analyticsData|
+| analytics/settingspath| Elasticsearch 設定ファイルのパス。詳しくは、Elasticsearch を参照してください。| なし|
+| analytics/transportport| ノード間の通信に使用されるポート。| 9600|
+| analytics/httpport| Elasticsearch への HTTP 通信に使用されるポート。| 9500|
+| analytics/http.enabled| Elasticsearch への HTTP 通信を使用可能または使用不可にします。| false|
+| analytics/serviceProxyURL| 分析 UI WAR ファイルと分析サービス WAR ファイルをインストールして、アプリケーション・サーバーを分けることができます。 これを行う場合は、UI WAR ファイルの JavaScript ランタイムが、ブラウザーのクロスサイト・スクリプティング防御によってブロックされる可能性があることを考慮する必要があります。このブロックを迂回するために、UI WAR ファイルには、JavaScript ランタイムがオリジン・サーバーから REST API 応答を取得するための Java プロキシー・コードが含まれます。しかし、プロキシーは、REST API 要求を分析サービス WAR ファイルに転送するように構成されています。 WAR ファイルをインストールしてアプリケーション・サーバーを分けた場合に、このプロパティーを構成してください。| なし|
+| analytics/bootstrap.mlockall| このプロパティーは、Elasticsearch メモリーがディスクにスワップされるのを防ぎます。| true|
+| analytics/multicast| マルチキャスト・ノード・ディスカバリーを使用可能または使用不可にします。| false|
+| analytics/warmupFrequencyInSeconds| ウォームアップ照会が実行される頻度。 ウォームアップ照会はバックグラウンドで実行され、照会結果をメモリーに入れさせるため、Web コンソールのパフォーマンスが向上します。 負の値が指定された場合、ウォームアップ照会は使用不可になります。| 600|
+| analytics/tenant| 主要な Elasticsearch 索引の名前。worklight|
 
 キーにピリオドが含まれない (例えば、**http.enabled** ではなく **httpport**) 場合はすべて、変数名に接頭部 **ANALYTICS_** が付いたシステム環境変数が設定を制御できます。 JNDI プロパティーとシステム環境変数の両方が設定されると、システム環境変数が優先されます。 例えば、JNDI プロパティー **analytics/httpport** とシステム環境変数 **ANALTYICS_httpport** の両方を設定した場合、 **ANALYTICS_httpport** の値が使用されます。
 
@@ -131,7 +131,23 @@ TTL は実際上、データ保存ポリシーの設定および保守方法で�
 * 1s = 1 秒
 * 1ms = 1 ミリ秒
 
-> 注: 以前のバージョンの {{ site.data.keys.mf_analytics_server }} からのマイグレーションを実行しており、以前に TTL JNDI プロパティーを構成したことがある場合は、[{{ site.data.keys.mf_analytics_server }}で使用されたサーバー・プロパティーのマイグレーション](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)を参照してください。
+サポートされる document-type は以下のとおりです。
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **注:** 以前のバージョンの {{ site.data.keys.mf_analytics_server }} からのマイグレーションを実行しており、かつ、以前に TTL JNDI プロパティーを構成したことがある場合は、[{{ site.data.keys.mf_analytics_server }}の以前のバージョンで使用されたサーバー・プロパティーのマイグレーション ](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)を参照してください。
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -196,14 +212,14 @@ Elasticsearch は {{ site.data.keys.mf_analytics_server }} に組み込まれて
 
 2. JNDI プロパティーに関するアプリケーション・サーバーの構成ファイルを編集 (またはシステム環境変数を使用) して、少なくとも以下のフラグを構成します。
 
-    | フラグ | 値 (例) | デフォルト | 注記 |
+    | フラグ| 値 (例)| デフォルト | 注記 |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	このノードが参加するクラスター。 |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	偶発的なクラスター参加を回避するには、false に設定します。 |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
-    | node.master | 	false | 	true | 	このノードがマスター・ノードになれないようにします。 |
-    | node.data|	false | 	true | 	このノードがデータを保管できないようにします。 |
-    | http.enabled | 	true	 | true | 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。 |
+    | cluster.name| 	worklight	 | worklight| 	このノードが参加するクラスター。|
+    | discovery.zen.ping.multicast.enabled| 	false| 	true| 	偶発的なクラスター参加を回避するには、false に設定します。|
+    | discovery.zen.ping.unicast.hosts| 	["9.8.7.6:9600"]| 	なし| 	既存クラスター内のマスター・ノードのリスト。マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。|
+    | node.master| 	false| 	true| 	このノードがマスター・ノードになれないようにします。|
+    | node.data|	false| 	true| 	このノードがデータを保管できないようにします。|
+    | http.enabled| 	true	 | true| 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。|
 
 3. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、**path.plugins** フラグを設定する必要があります。
 4. 必要に応じ、アプリケーション・サーバーを実行して WAR アプリケーションを開始します。
@@ -226,14 +242,14 @@ Elasticsearch は {{ site.data.keys.mf_analytics_server }} に組み込まれて
 2. ファイルを解凍します。
 3. **config/elasticsearch.yml** ファイルを編集し、少なくとも以下のフラグを構成します。
 
-    | フラグ | 値 (例) | デフォルト | 注記 |
+    | フラグ| 値 (例)| デフォルト | 注記 |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	このノードが参加するクラスター。 |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	偶発的なクラスター参加を回避するには、false に設定します。 |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
-    | node.master | 	false | 	true | 	このノードがマスター・ノードになれないようにします。 |
-    | node.data|	false | 	true | 	このノードがデータを保管できないようにします。 |
-    | http.enabled | 	true	 | true | 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。 |
+    | cluster.name| 	worklight	 | worklight| 	このノードが参加するクラスター。|
+    | discovery.zen.ping.multicast.enabled| 	false| 	true| 	偶発的なクラスター参加を回避するには、false に設定します。|
+    | discovery.zen.ping.unicast.hosts| 	["9.8.7.6:9600"]| 	なし| 	既存クラスター内のマスター・ノードのリスト。マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。|
+    | node.master| 	false| 	true| 	このノードがマスター・ノードになれないようにします。|
+    | node.data|	false| 	true| 	このノードがデータを保管できないようにします。|
+    | http.enabled| 	true	 | true| 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。|
 
 
 4. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、path.plugins フラグを設定する必要があります。

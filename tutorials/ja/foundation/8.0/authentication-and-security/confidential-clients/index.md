@@ -66,8 +66,8 @@ weight: 10
 **テストのために**、以下の説明に従って Postman を使用できます。  
 現実の状況では、任意のテクノロジーを使用して、バックエンド・ロジックに Postman を実装します。
 
-1.  **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token** への **POST** 要求を行います。  
-    例: `http://localhost:9080/mfp/api/az/v1/token`
+1.  **http(s)://[ipaddress-or-hostname]: [port]/[runtime]/api/az/v1/token** への **POST** 要求を行います。  
+    例えば、`http://localhost:9080/mfp/api/az/v1/token` です。
     - 開発環境では、{{ site.data.keys.mf_server }} は既存の `mfp` ランタイムを使用します。  
     - 実稼働環境では、ランタイム値をご使用のランタイム名で置き換えてください。
 

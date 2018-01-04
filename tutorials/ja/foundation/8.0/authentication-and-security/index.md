@@ -15,7 +15,8 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
 * 許可サーバーは、クライアント許可およびトークン生成を管理します。
 * リソース・サーバーは、許可サーバーを使用して、クライアントから提供されたアクセス・トークンを検証し、要求されたリソースの保護スコープに一致しているか確認します。
 
-セキュリティー・フレームワークは、OAuth プロトコルを実装する許可サーバーに基づいて構築され、クライアントがアクセス・トークンを取得するために対話する OAuth エンドポイントを公開します。セキュリティー・フレームワークは、許可サーバーと基礎となる OAuth プロトコルをベースとしたカスタム許可ロジックを実装するためのビルディング・ブロックを提供します。デフォルトでは、{{ site.data.keys.mf_server }} が**許可サーバー**としても機能します。しかし、IBM WebSphere DataPower アプライアンスを許可サーバーとして機能するように構成し、{{ site.data.keys.mf_server }} と対話するように構成することもできます。
+セキュリティー・フレームワークは、OAuth プロトコルを実装する許可サーバーに基づいて構築され、クライアントがアクセス・トークンを取得するために対話する OAuth エンドポイントを公開します。セキュリティー・フレームワークは、許可サーバーと基礎となる OAuth プロトコルをベースとしたカスタム許可ロジックを実装するためのビルディング・ブロックを提供します。
+デフォルトでは、{{ site.data.keys.mf_server }} が**許可サーバー**としても機能します。しかし、IBM WebSphere DataPower アプライアンスを許可サーバーとして機能するように構成し、{{ site.data.keys.mf_server }} と対話するように構成することもできます。
 
 クライアント・アプリケーションは、その後、これらのトークンを使用して**リソース・サーバー**上のリソースにアクセスできます。リソース・サーバーには、{{ site.data.keys.mf_server }} 自体または外部サーバーを使用できます。リソース・サーバーはトークンの妥当性をチェックし、要求されたリソースへのアクセスをクライアントに認可していいかを検査します。リソース・サーバーと許可サーバーを分離することで、{{ site.data.keys.mf_server }} の外部で稼働するリソースに対してセキュリティーを適用することが可能になります。
 
@@ -51,7 +52,7 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
 
 付与されたアクセス・トークンは、有効期限時刻が経過するまで有効になります。アクセス・トークンの有効期限時刻は、スコープ内のすべてのセキュリティー検査の有効期限時刻の中で最短の有効期限時刻に設定されます。ただし、最短の有効期限時刻までの期間が、アプリケーションの最大トークン有効期限期間よりも長い場合、トークンの有効期限時刻は現在時刻に最大有効期限期間を加算したものに設定されます。デフォルトのトークンの最大有効期間は 3,600 秒 (1 時間) ですが、`maxTokenExpiration` プロパティーの値を設定することで、期間を構成できます。『アクセス・トークンの最大有効期間の構成』を参照してください。
 
-<div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="configuration-explanation" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
@@ -85,7 +86,7 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
                     </ol>
                 </li>
             </ul>
-                
+
             <br/>
             <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>セクションを閉じる</b></a>
             </div>
@@ -93,11 +94,11 @@ OAuth プロトコルは、許可サーバーのロールと、リソースが�
     </div>
 </div>
 
-<div class="panel-group accordion" id="response-access-token" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="response-access-token" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>アクセス・トークン応答構造</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>アクセス・トークン応答構造</b></a>
             </h4>
         </div>
 
@@ -180,11 +181,13 @@ Pragma: no-cache
 #### スコープ・マッピング
 {: #scope-mapping }
 
-デフォルトで、**スコープ**内に記述する**スコープ・エレメント**は、**同じ名前を持つセキュリティー検査**にマップされます。例えば、`PinCodeAttempts` というセキュリティー検査を作成した場合、同じ名前のスコープ・エレメントをスコープ内に使用できます。
+デフォルトで、**スコープ**内に記述する**スコープ・エレメント**は、**同じ名前を持つセキュリティー検査**にマップされます。
+例えば、`PinCodeAttempts` というセキュリティー検査を作成した場合、同じ名前のスコープ・エレメントをスコープ内に使用できます。
 
 スコープ・マッピングは、スコープ・エレメントからセキュリティー検査へのマップを可能にします。クライアントがスコープ・エレメントを要求すると、この構成によって、適用されるセキュリティー検査が定義されます。例えば、スコープ・エレメント `access-restricted` を `PinCodeAttempts` セキュリティー検査にマップできます。
 
-どのアプリケーションがリソースにアクセスしようとしているかに応じてリソースを保護する方法を変える必要がある場合、スコープ・マッピングが便利です。同じスコープをゼロ個以上のセキュリティー検査のリストにマップすることもできます。
+どのアプリケーションがリソースにアクセスしようとしているかに応じてリソースを保護する方法を変える必要がある場合、スコープ・マッピングが便利です。
+同じスコープをゼロ個以上のセキュリティー検査のリストにマップすることもできます。
 
 例:
 scope = `access-restricted deletePrivilege`
@@ -207,8 +210,8 @@ scope = `access-restricted deletePrivilege`
 3. ファイルを編集して、`scopeElementMapping` プロパティーを定義します。このプロパティーには、データ・ペアを定義します。各ペアは、選択したスコープ・エレメントの名前と、そのエレメントのマップ先となるゼロ個以上のセキュリティー検査をスペースで区切ったストリングとで構成されます。例えば、次のとおりです。
 
     ```xml
-    "scopeElementMapping": {
-        "UserAuth": "UserAuthentication",
+"scopeElementMapping": {
+"UserAuth": "UserAuthentication",
         "SSOUserValidation": "LtpaBasedSSO CredentialsValidation"
     }
     ```
@@ -244,8 +247,8 @@ OAuth モデルでは、保護リソースは、アクセス・トークンを�
 3.  `mandatoryScope` プロパティーを定義し、選択したスコープ・エレメントのスペース区切りリストが入ったスコープ・ストリングをプロパティー値に設定することで、ファイルを編集します。例えば、次のとおりです。
 
     ```xml
-   "mandatoryScope": "appAuthenticity PincodeValidation"
-   ```
+    "mandatoryScope": "appAuthenticity PincodeValidation"
+    ```
 4.  コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
 > 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
@@ -325,6 +328,7 @@ Java リソース・メソッドまたはクラスの OAuth 保護を完全に�
 @OAuthSecurity(enabled = false)
 ```
 アノテーションの `enabled` エレメントのデフォルト値は `true` です。`enabled` エレメントが `false` に設定されている場合、`scope` エレメントは無視され、リソースまたはリソース・クラスは[保護されません](#unprotected-resources)。
+
 <b>注:</b> 無保護クラスのメソッドにスコープを割り当てた場合、リソースのアノテーションの `enabled` エレメントを `false` に設定しない限り、クラスのアノテーションに関係なくそのメソッドは保護されます。
 
 ##### 例
@@ -425,4 +429,3 @@ JavaScript アダプター・リソース (プロシージャー) の OAuth 保�
 {: #tutorials-to-follow-next }
 
 サイドバー・ナビゲーションにあるチュートリアルを順に追いながら、{{ site.data.keys.product_adj }} Foundation での認証について、引き続きお読みください。
-

@@ -12,6 +12,5 @@ print_pdf: false
 
 To get started, select your product release version from the following list:
 
-* [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview/)
+* [MobileFirst Quality Assurance as a IBM Cloud Service for MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview/)
 * [MobileFirst Quality Assurance 6.3 and 7.0](https://www-01.ibm.com/support/knowledgecenter/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/mqa630_welcome.html)
-

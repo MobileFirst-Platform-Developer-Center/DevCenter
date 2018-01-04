@@ -13,7 +13,7 @@ weight: 2
 #### 作为开发人员
 {: #as-a-developer }
 * 开发用于任何环境的应用程序，并且将其注册到 {{ site.data.keys.mf_server }}。
-* 查看所有已部署的应用程序和适配器概览。查看仪表板。
+* 查看所有已部署的应用程序和适配器概览。 查看仪表板。
 * 管理和配置已注册的应用程序，包括直接更新、远程禁用和用于应用程序真实性与用户认证的安全性参数。
 * 通过部署证书、创建通知标记和发送通知来设置推送通知。
 * 创建并部署适配器。
@@ -40,7 +40,7 @@ weight: 2
 {: #from-a-locally-installed-mobilefirst-server }
 #### 桌面浏览器
 {: #desktop-browser }
-从您选择的浏览器，装入 URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。用户名/密码为 *admin/admin*。
+从您选择的浏览器，装入 URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。 用户名/密码为 *admin/admin*。
 
 #### 命令行
 {: #command-line }
@@ -55,7 +55,7 @@ weight: 2
 
 #### 命令行
 {: #command-line-remote }
-从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}， 
+从**命令行**窗口中使用已安装的 {{ site.data.keys.mf_cli }}，
 
 1. 添加远程服务器定义：
 
@@ -63,7 +63,7 @@ weight: 2
     运行命令：`mfpdev server add` 并遵循屏幕上的指示信息进行操作。
 
     *直接方式*  
-    通过以下结构运行命令：`mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`。例如：
+    通过以下结构运行命令：`mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`。 例如：
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
@@ -72,13 +72,16 @@ weight: 2
 2. 运行命令：`mfpdev server console MyRemoteServer`。
 
 > 通过[使用 CLI 来管理 {{ site.data.keys.product_adj }} 工件](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)教程来了解有关各种 CLI 命令的更多信息。
+
+
+
 ## 浏览控制台
 {: #navigating-the-console }
 ### 仪表板
 {: #dashboard }
 “仪表板”提供了已部署的项目概览。
 
-![控制台仪表板图像](dashboard.png)
+![控制台仪表板的图像](dashboard.png)
 
 #### 操作下拉菜单
 {: #actions-dropdown }
@@ -90,39 +93,39 @@ weight: 2
 {: #runtime-settings }
 编辑运行时属性、全局安全性变量、服务器密钥库和保密客户机。
 
-![“运行时设置”屏幕图像](runtime-settings.png)
+![“运行时设置”屏幕的图像](runtime-settings.png)
 
 ### 错误日志
 {: #error-log }
-“错误日志”可显示当前运行时环境中从 {{ site.data.keys.mf_console }} 或从命令行启动的失败管理操作列表。使用此日志可查看失败对服务器产生的影响。
+“错误日志”可显示当前运行时环境中从 {{ site.data.keys.mf_console }} 或从命令行启动的失败管理操作列表。 使用此日志可查看失败对服务器产生的影响。
 
 > 有关更多信息，请参阅用户文档中有关针对运行时环境的操作的错误日志的主题。
 
-![错误日志屏幕图像](error-log.png)
+![错误日志屏幕的图像](error-log.png)
 
 ### 设备
 {: #devices }
 管理员可以搜索访问 {{ site.data.keys.mf_server }} 的设备，并管理访问权。  
-可使用用户标识或使用友好名称来搜索设备。用户标识是用于登录的标识。  
-友好名称是与设备关联的名称，用于将此设备与共享用户标识的其他设备加以区分。 
+可使用用户标识或使用友好名称来搜索设备。 用户标识是用于登录的标识。  
+友好名称是与设备关联的名称，用于将此设备与共享用户标识的其他设备加以区分。
 
 > 有关更多信息，请参阅用户文档中有关设备访问管理的主题。
 
-![设备管理屏幕图像](devices.png)
+![设备管理屏幕的图像](devices.png)
 
 ### 应用程序
 {: #applications }
 #### 注册应用程序
 {: #registering-applications }
-提供基本应用程序值和下载起动器代码。 
+提供基本应用程序值和下载起动器代码。
 
-![应用程序注册屏幕图像](register-applications.png)
+![应用程序注册屏幕的图像](register-applications.png)
 
 #### 管理应用程序
 {: #managing-applications }
 通过使用[直接更新](../../../application-development/direct-update/)、远程禁用、[应用程序真实性](../../../authentication-and-security/application-authenticity/)和[设置安全性参数](../../../authentication-and-security/)来管理和配置已注册的应用程序。
 
-![应用程序管理屏幕图像](application-management.png)
+![应用程序管理屏幕的图像](application-management.png)
 
 #### 认证和安全性
 {: #authentication-and-security }
@@ -130,19 +133,19 @@ weight: 2
 
 > [了解](../../../authentication-and-security/)有关 {{ site.data.keys.product_adj }} 安全性框架的更多信息。
 
-![应用程序安全配置屏幕图像](authentication-and-security.png)
+![应用程序安全配置屏幕的图像](authentication-and-security.png)
 
 #### 应用程序设置
 {: #application-settings }
 在控制台中配置应用程序的显示名称以及应用程序类型和许可。
 
-![应用程序设置屏幕图像](application-settings.png)
+![应用程序设置屏幕的图像](application-settings.png)
 
 #### 通知
 {: #notifications }
 设置[推送通知](../../../notifications/)和相关参数（例如，证书和 GCM 详细信息）、定义标记以及向设备发送通知。
 
-![推送通知设置屏幕图像](push-notifications.png)
+![推送通知设置屏幕的图像](push-notifications.png)
 
 ### 适配器
 {: #adapters }
@@ -166,23 +169,22 @@ weight: 2
 
 > 有关更多信息，请参阅用户文档中有关客户端日志捕获配置的主题。
 
-![客户机日志屏幕图像](client-logs.png)
+![客户端日志屏幕的图像](client-logs.png)
 
 ### 许可证跟踪
 {: #license-tracking }
 可从顶部“设置”按钮访问。
 
-许可条款因使用的 {{ site.data.keys.product }} 版本（Enterprise 或 Consumer）而异。缺省情况下，已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数以及已安装的应用程序数。此信息帮助确定 {{ site.data.keys.product }} 的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
+许可条款因使用的 {{ site.data.keys.product }} 版本（Enterprise 或 Consumer）而异。   缺省情况下，已启用了许可证跟踪，该功能会跟踪与许可策略相关的度量值，如活动客户机设备数以及已安装的应用程序数。 此信息帮助确定 {{ site.data.keys.product }} 的当前使用是否在许可证权利级别内，并可防止潜在的许可证违例。
 
-通过跟踪客户机设备的使用并确定设备是否处于活动状态，管理员可以停用不应再访问服务的设备。例如，如果某个员工已离开公司，那么可能会出现此情况。
+通过跟踪客户机设备的使用并确定设备是否处于活动状态，管理员可以停用不应再访问服务的设备。 例如，如果某个员工已离开公司，那么可能会出现此情况。
 
 > 有关更多信息，请参阅用户文档中有关许可证跟踪的主题。
 
-![客户机日志屏幕图像](license-tracking.png)
+![许可证跟踪屏幕的图像](license-tracking.png)
 
 ### 下载
 {: #downloads }
 对于因特网连接不可用的情况，可以从 {{ site.data.keys.mf_console }} 中的下载中心下载 {{ site.data.keys.product }} 的各种开发工件快照。
 
 ![可用工件图像](downloads.png)
-

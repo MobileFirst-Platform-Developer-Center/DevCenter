@@ -18,7 +18,7 @@ Server verwendet werden.
 
 Einfacher Client < - > Serverablauf mit LTPA:
 
-![Einfacher LTPA-basierter Client < - > Serverablauf](ltpa_simple_client_server.jpg)
+![Einfacher LTPA-basierter Client <-> Serverablauf](ltpa_simple_client_server.jpg)
 
 Nach der Anmeldung eines Benutzers beim Server
 generiert der Server ein LTPA-Token, bei dem es sich um einen verschlüsselten Hash-Wert mit
@@ -98,15 +98,9 @@ WebSphere Application Server
 weiter, der das LTPA-Token validiert und einen Aufrufprinzipal erstellt. Die {{ site.data.keys.product }} kann
 diesen Aufrufprinzipal nach Bedarf verwenden. 
 
-## {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung des
-LTPA-basierten
-SSO
+## {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung des LTPA-basierten SSO
 {: #the-mobilefirst-ltpa-based-sso-security-check }
-Die vordefinierte {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung des
-LTPA-basierten Single Sign-on
-(**LtpaBasedSSO**)
-ermöglicht die Integration des LTPA-Protokolls von WebSphere Application Server
-in die {{ site.data.keys.product }}. Mit dieser Sicherheitsüberprüfung
+Die vordefinierte {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung des LTPA-basierten Single Sign-on (**LtpaBasedSSO**) ermöglicht die Integration des LTPA-Protokolls von WebSphere Application Server in die {{ site.data.keys.product }}. Mit dieser Sicherheitsüberprüfung
 können eine LTPA-basierte Gateway-Topologie für Instanzen
 von {{ site.data.keys.mf_server }} integrieren (siehe vorherige Abschnitte) und
 über ein SSO-LTPA-Token Back-End-Services für die Benutzerauthentifizierung nutzen. 
@@ -131,6 +125,8 @@ Mit dieser Eigenschaft wird der Ablaufzeitraum für eine erfolgreiche Sicherheit
 {{ site.data.keys.mf_console }} für das Konfigurieren des Eigenschaftswerts
 erklärt. Sie können den Eigenschaftswert auch direkt in der **Anwendungsdeskriptordatei** festlegen. Ausführliche Informationen finden Sie unter
 "Eigenschaften für die Sicherheitsüberprüfung von Anwendungen konfigurieren".
+
+
 
 1. Öffnen Sie ein Fenster mit der {{ site.data.keys.mf_console }}.
 Wählen Sie in der **Navigationsseitenleiste** Ihre Anwendungsversion und dann das Register

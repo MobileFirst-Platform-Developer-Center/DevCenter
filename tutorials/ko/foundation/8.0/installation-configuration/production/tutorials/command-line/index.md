@@ -17,7 +17,7 @@ IBM  Installation Manager의 명령행 모드와 Ant 태스크를 사용하여 {
         * MySQL
         * Oracle
 
-        > **중요:** 제품에 필요한 테이블을 작성할 수 있는 데이터베이스와 해당 데이터베이스에 테이블을 작성할 수 있는 데이터베이스 사용자가 있어야 합니다.
+        > **중요:** 제품에 필요한 테이블을 작성할 수 있는 데이터베이스와 해당 데이터베이스에 테이블을 작성할 수 있는 데이터베이스 사용자가 있어야 합니다. 
 
         이 학습서에서 테이블을 작성하는 단계는 DB2를 대상으로 합니다. DB2 설치 프로그램은 IBM Passport Advantage에서 {{ site.data.keys.product }} eAssembly의 패키지로서 제공됩니다. 
 
@@ -92,6 +92,8 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 기본 홈 페이지는 [http://localhost:9080](http://localhost:9080)에 있습니다. 
 
 > **참고:** 프로덕션의 경우, 호스트 컴퓨터가 시작될 때 Liberty 서버가 서비스로 시작되도록 해야 합니다. Liberty 서버가 서비스로 시작되도록 설정하는 것은 이 학습서에서 다루지 않습니다.
+
+
 
 ## {{ site.data.keys.mf_server }} 설치
 {: #installing-mobilefirst-server }
@@ -170,6 +172,8 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
     
     > **참고:** 이 명령문은 기본 DB2 데이터베이스에서 PUBLIC에 부여된 기본 권한을 제거하지는 않습니다. 프로덕션의 경우, 해당 데이터베이스 내의 권한을 제품의 최소 요구사항까지 줄여야 할 수도 있습니다. DB2 보안 및 보안 사례에 대한 자세한 정보는 [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/)를 참조하십시오.
 
+
+
 ## Ant 태스크를 사용하여 Liberty에 {{ site.data.keys.mf_server }} 배치
 {: #deploying-mobilefirst-server-to-liberty-with-ant-tasks }
 Ant 태스크를 사용하여 다음 조작을 실행합니다. 
@@ -220,6 +224,8 @@ Ant 태스크가 포함된 적절한 XML 파일을 선택하여 특성을 구성
 * `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install`을 실행하여 {{ site.data.keys.mf_server }}를 설치하십시오. 
 
 > **참고:** DB2가 없는 상황에서 임베디드 Derby를 데이터베이스로 사용하여 설치를 테스트하려면 **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml** 파일을 사용하십시오. 단, 해당 Derby 데이터베이스에 복수의 Liberty 서버가 액세스할 수 없기 때문에 이 학습서의 마지막 단계({{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성)를 수행할 수 없습니다. DB2 관련 특성(**database.db2**, ...)을 제외한 특성을 설정해야 합니다. Derby의 경우, **database.derby.datadir** 특성의 값을 Derby 데이터베이스를 작성할 수 있는 디렉토리로 설정하십시오. 또한 **database.derby.mfp.dbname** 특성의 값을 **MFPDATA**로 설정하십시오.
+
+
 
 Ant 태스크에 의해 다음 조작이 실행됩니다. 
 
@@ -359,6 +365,8 @@ Liberty 프로파일 **jvm.options** 파일이 수정됩니다. 런타임이 관
 
     > **참고:** HTTP로 연결하는 경우, 로그인 ID 및 비밀번호는 네트워크에서 일반 텍스트로 전송됩니다. 보안 로그인의 경우, HTTPS를 사용하여 서버에 로그인하십시오. **server.xml** 파일에 있는 `<httpEndpoint>` 요소의 httpsPort 속성에서 Liberty 서버의 HTTPS 포트를 볼 수 있습니다. 기본적으로 값은 9443입니다.
 
+
+
 4. **Hello Admin → 로그아웃**을 사용하여 콘솔에서 로그아웃하십시오. 
 5. 웹 브라우저에 URL [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)을 입력하고 인증서를 승인하십시오. 기본적으로 Liberty 서버는 웹 브라우저에 인식되지 않는 기본 인증서를 생성하므로 인증서를 승인해야 합니다. Mozilla Firefox는 이 인증을 보안 예외로서 제공합니다. 
 6. **admin/admin**으로 다시 로그인하십시오. 웹 브라우저와 {{ site.data.keys.mf_server }} 간에 로그인 및 비밀번호가 암호화됩니다. 프로덕션의 경우, HTTP 포트를 닫아야 하는 경우도 있습니다.
@@ -436,7 +444,8 @@ Liberty 프로파일 **jvm.options** 파일이 수정됩니다. 런타임이 관
 
     Liberty와의 JMX 통신은 HTTPS 프로토콜을 사용하여 Liberty REST 커넥터를 통해 수행됩니다. 이 통신을 사용하려면 팜의 각 서버가 다른 멤버의 SSL 인증을 인식할 수 있어야 합니다. 해당 신뢰 저장소에서 HTTPS 인증서를 교환해야 합니다. IBM 유틸리티(예: **java/bin**에 있는 IBM JRE 배포의 일부인 Keytool)를 사용하여 신뢰 저장소를 구성하십시오. 키 저장소 및 신뢰 저장소의 위치는 **server.xml** 파일에 정의됩니다. 기본적으로 Liberty 프로파일의 키 저장소는 **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**에 있습니다. 이 기본 키 저장소의 비밀번호는 **server.xml** 파일에서 보듯이 **mobilefirst**입니다. 
         
-    > **팁:** 이 비밀번호는 Keytool 유틸리티를 사용하여 변경할 수 있지만, Liberty 서버에서 해당 키 저장소를 읽을 수 있도록 server.xml 파일에서도 비밀번호를 변경해야 합니다. 이 학습서에서는 기본 비밀번호를 사용하십시오.    
+    > **팁:** 이 비밀번호는 Keytool 유틸리티를 사용하여 변경할 수 있지만, Liberty 서버에서 해당 키 저장소를 읽을 수 있도록 server.xml 파일에서도 비밀번호를 변경해야 합니다. 이 학습서에서는 기본 비밀번호를 사용하십시오.
+    
     * **WLP\_USER\_DIR/servers/mfp1/resources/security**에서 `keytool -list -keystore key.jks`를 입력하십시오. 이 명령은 키 저장소의 인증서를 표시합니다. **default**라는 하나의 인증서만 있습니다. 키가 표시되기 전에 키 저장소의 비밀번호(mobilefirst) 입력을 요구하는 프롬프트가 표시됩니다. 이는 Keytool 유틸리티를 사용하는 다음의 모든 명령에 해당됩니다.
     * 다음 명령을 사용하여 mfp1 서버의 기본 인증서를 내보내십시오. `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
     * **WLP\_USER\_DIR/servers/mfp2/resources/security**에서 다음 명령을 사용하여 mfp2 서버의 기본 인증서를 내보내십시오. `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.

@@ -109,7 +109,7 @@ WL.JSONStore.get(collectionName)
 
 #### Replace - 既にコレクション内に保管されているドキュメントの変更
 
-```javascript
+```javascript 
 var collectionName = 'people';
 
 // Documents will be located with their '_id' field 
@@ -224,7 +224,7 @@ WL.JSONStore.closeAll()
 #### Security - ストアへのアクセスに使用されるパスワードの変更
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
-// The password should be user input.
+// The password should be user input. 
 // It is hard-coded in the example for brevity.
 var oldPassword = '123';
 var newPassword = '456';
@@ -801,7 +801,7 @@ if (addError != nil || removeError != nil) {
   // Return the store to the state before start transaction was called.
   [[JSONStore sharedInstance] rollbackTransactionAndReturnError:&error];
 } else {
-// Commit the transaction thus ensuring atomicity.
+  // Commit the transaction thus ensuring atomicity.
   [[JSONStore sharedInstance] commitTransactionAndReturnError:&error];
 }
 ```
