@@ -9,12 +9,12 @@ layout: default
             <h1 class="no-anchor">{{page.title}}</h1>
             <header class="page-header">
                 <h4 class="no-anchor">
-                    <span><a href="{{site.baseurl}}/search/?author={{ page.author.name | replace: ' ', '%20' }}">{{page.author.name }}</a></span>{% if page.additional_authors %},{% endif %}
+                    <span class="blogcontent"><a href="{{site.baseurl}}/search/?author={{ page.author.name | replace: ' ', '%20' }}">{{page.author.name }}</a></span>{% if page.additional_authors %},{% endif %}
                     {% for author in page.additional_authors %}
-                        <span><a href="{{site.baseurl}}/search/?author={{ author | replace: ' ', '%20' }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
+                        <span class="blogcontent"><a href="{{site.baseurl}}/search/?author={{ author | replace: ' ', '%20' }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
                     {% endfor %}
 
-                    <small>{{ page.date | date: '%B %d, %Y' }}</small>
+                    <small><span class="blogcontent">{{ page.date | date: '%B %d, %Y' }}</span></small>
                     <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
 
@@ -30,7 +30,7 @@ layout: default
 
                 {% endif %}
             </header>
-            {{content}}
+            <span class="blogcontent">{{content}}</span>
             <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
 
             <div id="social">
