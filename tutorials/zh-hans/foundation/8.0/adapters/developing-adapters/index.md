@@ -8,13 +8,14 @@ weight: 5
 ## 概述
 {: #overview }
 
-如先前[适配器教程](../)中所讨论，适配器是通过直接使用 Maven 或通过 {{ site.data.keys.mf_cli }} 创建的 Maven 项目。之后可在任何 IDE 中编辑适配器代码，以后使用 Maven 或 {{ site.data.keys.mf_cli }} 进行构建和部署。开发人员也可选择在支持的 IDE（如 Eclipse 或 IntelliJ）内创建、开发、构建和部署所有适配器。在本教程中，从 Eclipse IDE 创建和构建适配器。
+如先前[适配器教程](../)中所讨论，适配器是通过直接使用 Maven 或通过 {{ site.data.keys.mf_cli }} 创建的 Maven 项目。 之后可在任何 IDE 中编辑适配器代码，以后使用 Maven 或 {{ site.data.keys.mf_cli }} 进行构建和部署。 开发人员也可选择在支持的 IDE（如 Eclipse 或 IntelliJ）内创建、开发、构建和部署所有适配器。 在本教程中，从 Eclipse IDE 创建和构建适配器。
 
 > 有关如何使用 IntelliJ 的指示信息，请参阅[使用 IntelliJ 开发 MobileFirst Java 适配器]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)博客帖子。
+
 **先决条件：**
 
 * 先通过阅读[适配器教程](../)来熟悉适配器。
-* Eclipse 中的 Maven 集成。从 Eclipse Kepler (v4.3) 开始，Maven 支持内置于 Eclipse 中。如果您的 Eclipse 实例不支持 Maven，那么请遵循[ m2e 指示信息](http://www.eclipse.org/m2e/)以添加 Maven 支持。
+* Eclipse 中的 Maven 集成。 从 Eclipse Kepler (v4.3) 开始，Maven 支持内置于 Eclipse 中。 如果您的 Eclipse 实例不支持 Maven，那么请遵循[ m2e 指示信息](http://www.eclipse.org/m2e/)以添加 Maven 支持。
 
 #### 跳转至
 {: #jump-to }
@@ -34,12 +35,12 @@ weight: 5
 
 1. 要新建一个适配器 Maven 项目，选择：**文件 → 新建 → 其他... → Maven → Maven 项目**，然后单击**下一步**。
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](new-maven-project.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](new-maven-project.png)
 
 2. 提供项目名称和位置。  
     - 确保将创建简单项目的选项标记为**关闭**，然后单击**下一步**。
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](select-project-name-and-location.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](select-project-name-and-location.png)
 
 3. 选择或添加适配器 Archetype。
     - 如果[在本地安装了 archetype](../creating-adapters/#install-maven)，但它们并没有出现在 archetype 列表中，请选择**配置 → 添加本地目录 → 浏览到主目录中的 /.m2/repository/archetype-catalog.xml**。
@@ -48,19 +49,19 @@ weight: 5
         - **Archetype 工件标识**： `adapter-maven-archetype-java`、`adapter-maven-archetype-http` 或 `adapter-maven-archetype-sql`
         - **Archetype 版本**：您可以在 [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp) 中找到最新的可用版本
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](create-an-archetype.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](create-an-archetype.png)
 
 4. 指定 Maven 项目参数。  
     - 指定所需的**组标识**、**工件标识**、**版本**和**包**参数，然后单击**完成**。
 
-    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](project-parameters.png)
+    ![显示如何在 Eclipse 中创建适配器 Maven 项目的图像](project-parameters.png)
 
 ### 导入现有适配器 Maven 项目
 {: #importing-an-existing-adapter-maven-project }
 
 要导入适配器 Maven 项目，选择**文件 → 导入... → Maven → 现有 Maven 项目**。
 
-![图像显示如何将适配器 Maven 项目导入到 Eclipse](import-adapter-maven-project.png)
+![显示如何将适配器 Maven 项目导入 Eclipse 的图示](import-adapter-maven-project.png)
 
 ## 构建并部署适配器 Maven 项目
 {: #building-and-deploying-an-adapter-maven-project }
@@ -68,7 +69,8 @@ weight: 5
 可使用 Maven 命令行命令、{{ site.data.keys.mf_cli }} 或从 Eclipse 构建并部署适配器项目。  
 [了解如何构建并部署适配器](../creating-adapters/#build-and-deploy-adapters)。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**也可通过使用插件集成**命令行**窗口，创建一致的开发环境来增强 Eclipse，从而简化开发步骤。可从此窗口运行 Maven 或 {{ site.data.keys.mf_cli }} 命令。
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**也可通过使用插件集成**命令行**窗口，创建一致的开发环境来增强 Eclipse，从而简化开发步骤。 可从此窗口运行 Maven 或 {{ site.data.keys.mf_cli }} 命令。
+
 ### 构建适配器
 {: #building-an-adapter }
 

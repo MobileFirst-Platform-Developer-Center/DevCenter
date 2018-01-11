@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Cordova
+title: Manejo de notificaciones push en Cordova
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
@@ -9,99 +9,116 @@ downloads:
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Before iOS, Android and Windows Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
+Antes de que las aplicaciones iOS, Android y Windows Cordova reciban y visualicen notificaciones push, es necesario añadir el plugin Cordova **cordova-plugin-mfp-push** al proyecto Cordova.
+Una vez se haya configurado la aplicación, se pueden utilizar la API de notificaciones que {{ site.data.keys.product_adj }} proporciona con el propósito de registrar y anular el registro de dispositivos, suscribir y anular la suscripción de etiquetas y manejar aplicaciones.
+En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones Cordova.
 
-> **Note:** Authenticated notifications are currently **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
-For information about Silent or Interactive notifications in iOS, see:
+> **Nota:** Actualmente en Cordova **no se da soporte** a las notificaciones autenticadas debido a un defecto.
+Sin embargo se proporciona un método alternativo: cada llamada de API de `MFPPush` puede ser acomodada mediante `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`.
+La aplicación de ejemplo que se proporciona utiliza este método alternativo.
 
-* [Silent notifications](../silent)
-* [Interactive notifications](../interactive)
 
-**Prequisites:**
+Para obtener información sobre las notificaciones interactivas o silenciosas en iOS, consulte: 
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
-* Cordova CLI installed on the developer workstation
+* [Notificaciones silenciosas](../silent)
+* [Notificaciones interactivas](../interactive)
 
-#### Jump to
+**Requisitos previos:**
+
+* Asegúrese de haber leído las siguientes guías de aprendizaje:
+
+    * [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/#installing-a-development-environment)
+    * [Adición de {{ site.data.keys.product }} SDK a aplicaciones Cordova](../../../application-development/sdk/cordova)
+    * [Visión general de notificaciones push](../../)
+* {{ site.data.keys.mf_server }} para ejecutar localmente, o un remotamente ejecutando {{ site.data.keys.mf_server }} 
+* {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador
+* Interfaz de línea de mandatos (CLI) de Cordova instalada en la estación de trabajo del desarrollador
+
+#### Ir a 
 {: #jump-to }
-* [Notifications Configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [Configuración de notificaciones](#notifications-configuration)
+* [API de notificaciones](#notifications-api)
+* [Manejo de una notificación push](#handling-a-push-notification)
+* [Aplicación de ejemplo](#sample-application)
 
-## Notifications Configuration
+## Configuración de notificaciones
 {: #notifications-configuration }
-Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
+Cree un nuevo proyecto Cordova o utilice uno ya existente, y añada una o varias de las plataformas soportadas: iOS, Android, Windows.
 
-> If the {{ site.data.keys.product_adj }} Cordova SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova) tutorial.
+> Si {{ site.data.keys.product_adj }} Cordova SDK todavía no está presente en el proyecto, siga las instrucciones en la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para aplicaciones Cordova](../../../application-development/sdk/cordova).
 
-### Adding the Push plug-in
+
+### Añadir el plugin de push
 {: #adding-the-push-plug-in }
-1. From a **command-line** window, navigate to the root of the Cordova project.  
+1. Desde una ventana de **línea de mandatos**, vaya a la raíz del proyecto Cordova.
+  
 
-2. Add the push plug-in to by running the command:
+2. Añada el plugin ejecutando el mandato:
 
    ```bash
    cordova plugin add cordova-plugin-mfp-push
    ```
 
-3. Build the Cordova project by running the command:
+3. Compile el proyecto Cordova ejecutando el mandato:
 
    ```bash
    cordova build
    ```
 
-### iOS platform
+### Plataforma iOS
 {: #ios-platform }
-The iOS platform requires an additional step.  
-In Xcode, enable push notifications for your application in the **Capabilities** screen.
+La plataforma iOS precisa de un paso adicional.
+  
+En Xcode, habilite el envío de notificaciones para la aplicación en la pantalla **Funcionalidades**.
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
 
-![image of where is the capability in Xcode](push-capability.png)
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** el bundleId seleccionado para la aplicación debe coincidir con el AppID creado con anterioridad en el sitio de Apple Developer.
+Consulte la guía de aprendizaje [Visión general de notificaciones push].
 
-### Android platform
+
+
+![imagen de la funcionalidad en Xcode](push-capability.png)
+
+### Plataforma Android
 {: #android-platform }
-The Android platform requires an additional step.  
-In Android Studio, add the following `activity` to the `application` tag:
+La plataforma Android precisa de un paso adicional.
+  
+En Android Studio, añada la siguiente `actividad` a la etiqueta `application`: 
 
 ```xml
 <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
 ```
 
-## Notifications API
+## API de notificaciones
 {: #notifications-api }
-### Client-side
+### Lado del cliente
 {: #client-side }
 
-| Javascript Function | Description |
+| Función Javascript| Descripción |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance. | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications. | 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registers the device with the Push Notifications Service. | 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance. | 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Subscribes to a particular tag. | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Retrieves the tags device is currently subscribed to | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Unsubscribes from a particular tag. | 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Unregisters the device from the Push Notifications Service | 
+| [`MFPPush.initialize(success, failure)`](#initialization) | Inicializa la instancia MFPPush. | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. | 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registra el dispositivo con el servicio de notificaciones push. | 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | Recupera todas las etiquetas disponibles en una instancia de servicio de notificaciones push. | 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Suscribe a una etiqueta concreta. | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Recupera las etiquetas de servicio a las que actualmente está suscrito. | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Anula la suscripción a una etiqueta concreta. | 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push. | 
 
-### API implementation
+### Implementación de API
 {: #api-implementation }
-#### Initialization
+#### Inicialización
 {: #initialization }
-Initialize the **MFPPush** instance.
+Inicializa la instancia **MFPPush**.
 
-- Required for the client application to connect to MFPPush service with the right application context.  
-- The API method should be called first before using any other MFPPush APIs.
-- Registers the callback function to handle received push notifications.
+
+- Requerido para la aplicación de cliente para conectarse al servicio MFPPush con el contexto de aplicación correcto.   
+- Primero se debe llamar al método de la API antes de utilizar cualquier otra API MFPPush.
+
+- Registra la función de retorno de llamada para manejar las notificaciones push recibidas. 
 
 ```javascript
 MFPPush.initialize (
@@ -115,9 +132,9 @@ MFPPush.initialize (
 );
 ```
 
-#### Is push supported
+#### Está push soportado
 {: #is-push-supported }
-Check if the device supports push notifications.
+Comprueba si el dispositivo da soporte a las notificaciones push. 
 
 ```javascript
 MFPPush.isPushSupported (
@@ -130,9 +147,9 @@ MFPPush.isPushSupported (
 );
 ```
 
-#### Register device
+#### Registrar el dispositivo
 {: #register-device }
-Register the device to the push notifications service. If no options are required, options can be set to `null`.
+Registre el dispositivo para el servicio de notificaciones push. Si no se proporcionan opciones, se pueden establecer en `null`.
 
 
 ```javascript
@@ -148,9 +165,9 @@ MFPPush.registerDevice(
 );
 ```
 
-#### Get tags
+#### Obtener etiquetas
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+Recupere todas las etiquetas disponibles desde el servicio de notificaciones push. 
 
 ```javascript
 MFPPush.getTags (
@@ -163,9 +180,9 @@ MFPPush.getTags (
 );
 ```
 
-#### Subscribe
+#### Suscribir
 {: #subscribe }
-Subscribe to desired tags.
+Suscriba las etiquetas deseadas. 
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -181,9 +198,10 @@ MFPPush.subscribe(
 );
 ```
 
-#### Get subscriptions
+#### Obtener suscripciones
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+Recupere las etiquetas a las que el dispositivo está actualmente suscrito.
+
 
 ```javascript
 MFPPush.getSubscriptions (
@@ -196,9 +214,9 @@ MFPPush.getSubscriptions (
 );
 ```
 
-#### Unsubscribe
+#### Anular la suscripción
 {: #unsubscribe }
-Unsubscribe from tags.
+Anule la suscripción de etiquetas. 
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -214,9 +232,9 @@ MFPPush.unsubscribe(
 );
 ```
 
-#### Unregister
+#### Anular el registro
 {: #unregister }
-Unregister the device from push notification service instance.
+Anule el registro del dispositivo de una instancia de servicio de notificaciones push. 
 
 ```javascript
 MFPPush.unregisterDevice(
@@ -229,9 +247,10 @@ MFPPush.unregisterDevice(
 );
 ```
 
-## Handling a push notification
+## Manejar una notificación push
 {: #handling-a-push-notification }
-You can handle a received push notification by operating on its response object in the registered callback function.
+Las notificaciones push recibidas se pueden manejar trabajando con el objeto de respuesta en la función de retorno registrada.
+
 
 ```javascript
 var notificationReceived = function(message) {
@@ -239,13 +258,17 @@ var notificationReceived = function(message) {
 };
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="Imagen de la aplicación de ejemplo" src="notifications-app.png" style="float:right"/>
+## Aplicación de ejemplo
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
+[
+Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) el proyecto Cordova.
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
-### Sample usage
+**Nota:** Se necesita instalada la última versión de Google Play Services en el dispositivo Android para poder ejecutar el ejemplo.
+
+
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.
+

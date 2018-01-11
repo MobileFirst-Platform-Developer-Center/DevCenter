@@ -70,7 +70,7 @@ El servidor host puede ser un servidor del propio cliente, o el servicio IBM Blu
 #### Línea de mandatos
 {: #command-line-remote }
 Desde la ventana de **línea de mandatos**, con {{ site.data.keys.mf_cli }} instalado,
- 
+
 
 1. Añada una definición de servidor remoto:
 
@@ -89,6 +89,8 @@ Por ejemplo:
 2. Ejecute el mandato: `mfpdev server console MyRemoteServer`.
 
 > Obtenga más información sobre los mandatos de la interfaz de línea de mandatos en la guía de aprendizaje [Utilización de la interfaz de línea de mandatos para gestionar artefactos de {{ site.data.keys.product_adj }}](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+
+
 ## Navegación en la consola
 {: #navigating-the-console }
 ### Panel de control
@@ -110,7 +112,7 @@ El desplegable proporciona un acceso rápido a las distintas acciones de la cons
 Edite las propiedades de tiempo de ejecución, las variables de la seguridad global, el almacén de claves y los clientes confidenciales.
 
 
-![Imagen de la pantalla Valores de tiempo de ejecución](runtime-settings.png)
+![Imagen de la pantalla de Valores de entorno de ejecución ](runtime-settings.png)
 
 ### Registro de errores
 {: #error-log }
@@ -130,7 +132,7 @@ Se pueden buscar dispositivos utilizando el ID de usuario o un nombre descriptiv
 El ID de usuario es el identificador que se utilizó al iniciar una sesión.
   
 El nombre descriptivo es el que se asoció al dispositivo para distinguirlo de otros dispositivos que comparten el ID de usuario.
- 
+
 
 > Para obtener más información, consulte el tema sobre la gestión del acceso a dispositivos en la documentación de usuario.
 
@@ -140,7 +142,7 @@ El nombre descriptivo es el que se asoció al dispositivo para distinguirlo de o
 {: #applications }
 #### Registro de aplicaciones
 {: #registering-applications }
-Proporcione valores de aplicación básicos y descargue código de inicio.  
+Proporcione valores de aplicación básicos y descargue código de inicio. 
 
 ![Imagen de la pantalla de registro de aplicación](register-applications.png)
 
@@ -158,7 +160,7 @@ Configure los parámetros de seguridad de las aplicaciones como, por ejemplo, el
 > [Obtenga más información](../../../authentication-and-security/) sobre la infraestructura de seguridad de {{ site.data.keys.product_adj }}.
 
 
-![Imagen de la pantalla de configuración de seguridad de aplicación](authentication-and-security.png)
+![Imagen de la pantalla de configuración de la seguridad de aplicaciones](authentication-and-security.png)
 
 #### Valores de aplicación
 {: #application-settings }
@@ -218,11 +220,10 @@ Esta situación puede darse, por ejemplo, si un empleado ha dejado la empresa.
 > Para obtener más información, consulte el tema sobre el seguimiento de licencia en la documentación de usuario.
 
 
-![Imagen de pantalla de registros de cliente](license-tracking.png)
+![Imagen de la pantalla de seguimiento de licencia](license-tracking.png)
 
-### Descargas  
+### Descargas 
 {: #downloads }
 Para situaciones donde la conectividad de Internet no está disponible, puede descargar una instantánea de distintos artefactos de desarrollo de {{ site.data.keys.product }} desde el centro de descargas en {{ site.data.keys.mf_console }}.
 
 ![Imagen de los artefactos disponibles](downloads.png)
-

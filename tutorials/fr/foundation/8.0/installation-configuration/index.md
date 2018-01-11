@@ -24,7 +24,7 @@ Si vous développez le côté client ou le côté serveur d'applications mobiles
 {: #installing-a-test-or-production-server-on-premises }
 Les installations IBM reposent sur un produit IBM qui s'appelle IBM Installation Manager. Installez IBM Installation Manager version 1.8.4 ou ultérieure séparément avant d'installer {{ site.data.keys.product }}.
 
-> **Important :** assurez-vous d'utiliser IBM Installation Manager version 1.8.4 ou ultérieure. Les versions plus anciennes d'Installation Manager ne peuvent pas installer {{ site.data.keys.product }} {{ site.data.keys.product_version }} car elles sont fournies avec Java 6 et les opérations de post-installation du produit requièrent Java 7.
+> **Important :** assurez-vous d'utiliser IBM Installation Manager version 1.8.4 ou ultérieure. Les anciennes versions d'Installation Manager ne peuvent pas installer {{ site.data.keys.product }} {{ site.data.keys.product_version }} car les opérations de post-installation du produit nécessitent Java 7. Les anciennes version d'Installation Manager sont livrées avec Java 6.
 
 Le programme d'installation de {{ site.data.keys.mf_server }} copie sur votre ordinateur tous les outils et toutes les bibliothèques qui sont requis pour le déploiement des composants {{ site.data.keys.mf_server }} et en option, d'{{ site.data.keys.mf_app_center_full }} sur votre serveur d'applications.
 

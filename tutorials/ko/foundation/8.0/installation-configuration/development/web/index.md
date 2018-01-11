@@ -32,7 +32,7 @@ weight: 6
 -   {: #web-app-supported-browsers }
     다음 브라우저 버전용 웹 애플리케이션이 지원됩니다. 버전 번호는 각 브라우저의 완전히 지원되는 버전 중 가장 빠른 버전을 나타냅니다. 
 
-    | 브라우저               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android 브라우저   |
+    | 브라우저| Chrome| Safari<sup>*</sup>   | Internet Explorer| Firefox| Android 브라우저|
     |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
     | **지원되는 버전** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
 
@@ -68,6 +68,8 @@ weight: 6
 생성된 .war 파일은 **[MyWebApp] → target** 폴더에 있습니다. 
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 웹 자원을 업데이트할 때마다 `mvn clean install`을 실행해야 합니다.
+
+
 
 ### 애플리케이션 서버에 Maven webapp 추가
 {: #adding-the-maven-webapp-to-the-application-server }

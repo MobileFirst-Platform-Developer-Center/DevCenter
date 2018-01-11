@@ -63,7 +63,7 @@ function addTwoIntegers(a,b){
 
 ```javascript
 function subtractTwoIntegers(a,b){
-    var calcInstance = new com.sample.customcode.Calculator();
+    var calcInstance = new com.sample.customcode.Calculator();   
     return {
         result : calcInstance.subtractTwoIntegers(a,b)
     };

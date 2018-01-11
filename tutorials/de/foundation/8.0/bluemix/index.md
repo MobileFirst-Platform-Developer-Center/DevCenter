@@ -14,6 +14,8 @@ IBM Bluemix ist eine Implementierung der IBM Open Cloud Architecture, die Cloud 
 
 > Weitere Informationen zur Bluemix-Architektur und zu Bluemix-Konzepten finden Sie auf der [Bluemix-Website](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview).
 
+
+
 ### Funktionsweise
 {: #how-does-it-work }
 Kurz zusammengefasst gibt es je nach Lizenzberechtigung zwei Möglichkeiten, die {{ site.data.keys.product }} in Bluemix auszuführen. 
@@ -27,6 +29,12 @@ einer WebSphere-Liberty-Installation**, in der eine **MobileFirst-Server-Instanz
 Wenn Sie {{ site.data.keys.product}} on Bluemix in einer Liberty-for-Java-Laufzeit ausführen möchten,
 verwenden Sie die folgenden Komponenten: eine **Cloudfoundry-App**, die eine
 **WebSphere-Liberty-Installation** enthält, in der eine **MobileFirst-Server-Instanz** implementiert ist. 
+
+### Kubernetes-Cluster in Bluemix
+Kubernetes ist ein Orchestrierungstool für die Planung von App-Containern in einem Cluster von Rechenmaschinen. Mit Kubernetes können Entwickler die Leistungsfähigkeit und Flexibilität von Containern nutzen, um rasch hoch verfügbare Anwendungen zu entwickeln.
+Für die Erstellung und Verwaltung Ihrer Kubernetes-Cluster können Sie die CLI des Service IBM Container für Bluemix oder die Kubernetes-CLI nutzen. 
+
+[Informieren Sie sich über Kubernetes-Cluster in Bluemix](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials). 
 
 ### IBM Container
 {: #ibm-containers }
@@ -42,8 +50,11 @@ Die Liberty-for-Java-Laufzeit basiert auf dem Buildpack liberty-for-java. Dieses
 
 [Informieren Sie sich über Liberty for Java](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html).
 
+
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
+
+* Mobile-Foundation-Instanz in Bluemix mit [IBM Scripts](mobilefirst-server-using-kubernetes/) und einem Kubernetes-Cluster erstellen
 * MobileFirst-Server-Instanz mit dem [Service {{ site.data.keys.mf_bm }}](using-mobile-foundation/) erstellen
 * MobileFirst-Server-Instanz in Bluemix mit [IBM Scripts](mobilefirst-server-using-scripts/) und IBM Containern erstellen
-* MobileFirst-Server-Instanz in Bluemix mit [IBM Scripts](mobilefirst-server-using-scripts-lbp/) und dem Liberty-Buildpack erstellen
+* MobileFirst-Server-Instanz in Bluemix mit [IBM Scripts](mobilefirst-server-using-scripts-lbp/) und Liberty erstellen

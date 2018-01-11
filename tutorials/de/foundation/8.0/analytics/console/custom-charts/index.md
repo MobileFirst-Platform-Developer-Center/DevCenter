@@ -183,6 +183,8 @@ Die Protokolle enthalten außerdem Kontextinformationen zum Gerät, z. B. zur Um
 
 > **Hinweis:** Sie müssen kundenspezifische Ereignisse protokollieren, um kundenspezifische Diagramme mit Daten zu füllen. Informationen zum Senden kundenspezifischer Ereignisse von der Client-App finden Sie unter [Kundenspezifische Daten erfassen](../../analytics-api/#custom-events).
 
+
+
 1. Die Daten von Client-Apps werden eingetragen, wenn Sie erfasste Protokolle an den Server senden (siehe
 [Erfasste Protokolle senden](../../analytics-api/#sending-analytics-data)).
 2. Klicken Sie in der {{ site.data.keys.mf_analytics_console }} auf das Register **Kundenspezifische Diagramme** und

@@ -1,0 +1,57 @@
+<footer class="hidden-xs no-print" style="height: 75px">
+    <div class="footerItem" style="width: 38%">
+      <span class="footerHeading">Social</span><br/>
+      <a href="https://www.facebook.com/IBMMobileFirst" target="_blank">Facebook</a> <b style="color: white">|</b>
+      <a href="https://twitter.com/ibmmobile" target="_blank">Twitter</a> <b style="color: white">|</b>
+      <a href="https://www.youtube.com/channel/UCh_xLgh2_kENFxAeN8hhkHw/playlists" target="_blank">YouTube</a> <b style="color: white">|</b>
+    </div>
+
+
+
+</footer>
+
+<footer class="visible-xs no-print" style="line-height: 1.7em;height:135px">
+    <div class="footerItem" style="width: 38%">
+      <span class="footerHeading">Social</span><br/>
+      <a href="https://www.facebook.com/IBMMobileFirst" target="_blank">Facebook</a><br/>
+      <a href="https://twitter.com/ibmmobile" target="_blank">Twitter</a><br/>
+      <a href="https://www.youtube.com/channel/UCh_xLgh2_kENFxAeN8hhkHw/playlists" target="_blank">YouTube</a><br/>
+    </div>
+
+
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/bootstrap/js/bootstrap.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script type="text/javascript" src="{{site.baseurl}}/lib/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="{{site.baseurl}}/lib/clipboardjs/clipboard.min.js"></script>
+<script type="text/javascript" src='{{site.baseurl}}/js/snippet.js'></script>
+<script type="text/javascript" src='{{site.baseurl}}/lib/jquery.timeago.js'></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/jsrender/jsrender.min.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/imagesloaded.pkgd.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/anchorjs/anchor.min.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/gifplayer/jquery.gifplayer.js"></script>
+<script type="text/javascript" src="{{site.baseurl}}/lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+<script src='{{site.baseurl}}/js/main.js' type="text/javascript"></script>
+
+{% if page.custom_js %}
+  {% for js_file in page.custom_js %}
+    <script src='{{site.baseurl}}/{{ js_file }}' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}
+{% if layout.custom_js %}
+  {% for js_file in layout.custom_js %}
+    <script src='{{site.baseurl}}/{{ js_file }}' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}

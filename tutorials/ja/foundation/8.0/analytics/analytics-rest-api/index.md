@@ -31,19 +31,19 @@ Analytics REST API を使用する場合は、以下のようにします。
 `https://example.com:9080/analytics-service/v3/applogs`
 
 
-REST API メソッド | エンドポイント | 説明
+REST API メソッド| エンドポイント| 説明
 --- | --- | ---
-アプリケーション・ログ (POST) | /v3/applogs | 新規アプリケーション・ログを作成します。
-アプリケーション・セッション (POST) | /v3/appsession | アプリケーション・セッションを作成するか、同じ appSessionID を使用してレポートを作成する場合は既存のセッションを更新します。
-一括 (POST) | /v3/bulk | 一括でイベントのレポートを作成します。
-カスタム・グラフ (GET)| /v3/customchart | すべてのカスタム・グラフ定義をエクスポートします。
-カスタム・グラフ (POST) | /v3/customchart/import | カスタム・グラフのリストをインポートします。
-カスタム・データ (POST) | /v3/customdata | 新規カスタム・データを作成します。
-デバイス (POST) | /v3/device | デバイスを作成または更新します。
-データのエクスポート (GET) | /v3/export | データを指定されたデータ・フォーマットにエクスポートします。
-ネットワーク・トランザクション (POST) | /v3/networktransaction |  新規ネットワーク・トランザクションを作成します。
-サーバー・ログ (POST) | /v3/serverlog | 新規サーバー・ログを作成します。
-ユーザー (POST) | /v3/user | 新規ユーザーを作成します。
+アプリケーション・ログ (POST)| /v3/applogs| 新規アプリケーション・ログを作成します。 
+アプリケーション・セッション (POST)| /v3/appsession| アプリケーション・セッションを作成するか、同じ appSessionID を使用してレポートを作成する場合は既存のセッションを更新します。 
+一括 (POST)| /v3/bulk| 一括でイベントのレポートを作成します。 
+カスタム・グラフ (GET)| /v3/customchart| すべてのカスタム・グラフ定義をエクスポートします。 
+カスタム・グラフ (POST)| /v3/customchart/import| カスタム・グラフのリストをインポートします。 
+カスタム・データ (POST)| /v3/customdata| 新規カスタム・データを作成します。 
+デバイス (POST)| /v3/device| デバイスを作成または更新します。 
+データのエクスポート (GET)| /v3/export| データを指定されたデータ・フォーマットにエクスポートします。 
+ネットワーク・トランザクション (POST)| /v3/networktransaction|  新規ネットワーク・トランザクションを作成します。 
+サーバー・ログ (POST)| /v3/serverlog| 新規サーバー・ログを作成します。 
+ユーザー (POST)| /v3/user| 新規ユーザーを作成します。 
 
 ## Swagger Docs 上の「Try it out」
 {: #try-it-out-on-swagger-docs }

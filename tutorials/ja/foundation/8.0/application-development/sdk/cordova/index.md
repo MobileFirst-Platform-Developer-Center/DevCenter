@@ -24,8 +24,8 @@ weight: 1
 MobileFirst プラグインでサポートされる Cordova プラットフォームのバージョンは次のとおりです。
 
 * cordova-ios: **>= 4.1.1 と < 5.0**
-* cordova-android: **>= 5.1.1 と < 6.0**
-* cordova-windows: **>= 4.3.2 と < 5.0**
+* cordova-android: **>= 6.1.2 と < 7.0**
+* cordova-windows: **>= 4.3.2 と < 6.0**
 
 #### ジャンプ先:
 {: #jump-to }
@@ -71,6 +71,8 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 - [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 - {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
 - [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Cordova 開発環境のセットアップ](../../../installation-configuration/development/cordova)の両チュートリアルを読む。
+- cordova-windows の場合、マシンにインストールされている Visual Studio と .NET のバージョンと互換性のある Visual C++ のバージョンがインストールされている必要があります。
+- Universal Windows アプリケーションの Windows Phone SDK 8.0 および Visual Studio Tools の場合、作成された cordova-windows アプリケーションが必要なすべてのサポート・ライブラリーを持つようにしてください。
 
 ## {{ site.data.keys.product }} Cordova SDK の追加
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -87,8 +89,8 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 #### 新規アプリケーション
 {: #new-application }
-1. 次のコマンドで Cordova プロジェクトを作成します。`cordova create projectName applicationId --template cordova-template-mfp`  
-例えば、次のとおりです。
+1. 次のコマンドで Cordova プロジェクトを作成します。`cordova create projectName applicationId applicationName --template cordova-template-mfp`  
+   例えば、次のとおりです。
 
    ```bash
    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
@@ -98,7 +100,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
      - 「HelloWorld」は、アプリケーションの名前です。
      - --template を指定すると、{{ site.data.keys.product_adj }} 固有の追加によってアプリケーションが変更されます。
 
-    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{ site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。)
+    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{ site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。) 
 
 2. `cd hello` コマンドで、ディレクトリーを Cordova プロジェクトのルートに変更します。
 
@@ -144,8 +146,8 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 2. 次のコマンドで、{{ site.data.keys.mf_server }} にアプリケーションを登録します。
 
    ```bash
-    mfpdev app register
-    ```
+   mfpdev app register
+   ```
     - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
 `mfpdev app register` CLI コマンドは、まず最初に {{ site.data.keys.mf_server }} に接続してアプリケーションを登録した後、{{ site.data.keys.mf_server }} を識別するメタデータを使用して、Cordova プロジェクトのルートにある **config.xml** ファイルを更新します。
@@ -190,7 +192,7 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
     <mfp:windows>
         <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
        <mfp:windows10>
-          <mfp:sdkChecksum>...</mfp:sdkChecksum>          
+          <mfp:sdkChecksum>...</mfp:sdkChecksum>
           <mfp:security>
              <mfp:testWebResourcesChecksum/>
           </mfp:security>
@@ -203,7 +205,7 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">

@@ -24,8 +24,8 @@ weight: 1
 MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음과 같습니다. 
 
 * cordova-ios: **>= 4.1.1 및 < 5.0**
-* cordova-android: **>= 5.1.1 및 < 6.0**
-* cordova-windows: **>= 4.3.2 및 < 5.0**
+* cordova-android: **>= 6.1.2 및 < 7.0**
+* cordova-windows: **>= 4.3.2 및 < 6.0**
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -36,6 +36,8 @@ MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음�
 - [다음 학습서](#tutorials-to-follow-next)
 
 > **참고:** Xcode 8을 사용하는 경우 iOS 시뮬레이터에서 iOS 앱을 실행 중이면 **키 체인 공유** 기능은 필수입니다. 이 기능을 수동으로 사용하도록 설정한 후에 Xcode 프로젝트를 빌드해야 합니다.
+
+
 
 ## Cordova SDK 컴포넌트
 {: #cordova-sdk-components }
@@ -71,6 +73,8 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 - 개발자 워크스테이션에 [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다. 
 - {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다. 
 - [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [Cordova 개발 환경 설정](../../../installation-configuration/development/cordova) 학습서를 읽으십시오. 
+- cordova-windows의 경우 시스템에 설치된 Visual Studio 및 .NET 버전과 호환되는 C++ 버전을 설치해야 합니다.
+- Windows Phone SDK 8.0 및 Visual Studio Tools for Universal Windows Apps의 경우 작성된 cordova-windows 애플리케이션에 필요한 지원 라이브러리가 모두 있는지 확인하십시오.
 
 ## {{ site.data.keys.product }} Cordova SDK 추가
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -81,14 +85,15 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
 > **참고:** 기존 Cordova 애플리케이션에 SDK를 추가하는 경우 플러그인이 `MainActivity.java` 파일(Android) 및 `Main.m` 파일(iOS)을 겹쳐씁니다.
 
+
+
 ### SDK 추가
 {: #adding-the-sdk }
 {{ site.data.keys.product_adj }} Cordova **애플리케이션 템플리트**를 사용하여 프로젝트를 작성할 것을 고려하십시오. 해당 템플리트는 필수 {{ site.data.keys.product_adj }} 특정 플러그인 항목을 Cordova 프로젝트의 **config.xml** 파일에 추가하고 {{ site.data.keys.product_adj }} 애플리케이션 개발에 대해 조정되었으며 바로 사용 가능한 {{ site.data.keys.product_adj }} 특정 **index.js** 파일을 제공합니다. 
 
 #### 새 애플리케이션
 {: #new-application }
-1. 다음과 같이 Cordova 프로젝트를 작성하십시오. `cordova create projectName applicationId --template cordova-template-mfp`
-     
+1. 다음과 같이 Cordova 프로젝트를 작성하십시오. `cordova create projectName applicationId applicationName --template cordova-template-mfp`  
 예: 
 
    ```bash
@@ -101,6 +106,8 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
     > 템플리트된 **index.js**를 통해 추가 {{ site.data.keys.product_adj }} 기능(예: [다국어 애플리케이션 변환](../../translation) 및 초기화 옵션)을 사용할 수 있습니다(자세한 정보는 사용자 문서 참조).
 
+
+
 2. Cordova 프로젝트의 루트인 `cd hello`로 디렉토리를 변경하십시오. 
 
 3. Cordova CLI 명령 `cordova platform add ios|android|windows`를 사용하여 Cordova 프로젝트에 하나 이상의 지원되는 플랫폼을 추가하십시오. 예: 
@@ -110,6 +117,8 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
    ```
 
    > **참고:** 애플리케이션이 {{ site.data.keys.product_adj }} 템플리트를 사용하여 구성되었으므로 3단계에서 플랫폼이 추가된 것과 같이 {{ site.data.keys.product_adj }} 핵심 Cordova 플러그인이 자동으로 추가됩니다.
+
+
 
 4. `cordova prepare command`를 실행하여 애플리케이션 자원을 준비하십시오. 
 
@@ -204,7 +213,7 @@ Cordova 구성 파일은 애플리케이션 메타데이터를 포함하고 앱�
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">

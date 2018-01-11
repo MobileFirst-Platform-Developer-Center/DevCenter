@@ -66,7 +66,7 @@ Xcode で、**「Capabilities」**画面を使用してアプリケーション�
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** アプリケーションに対して選択する bundleId は、先に Apple Developer サイトで作成した AppId に一致しなければなりません。[プッシュ通知の概要] チュートリアルを参照してください。
 
-![Xcode 内の「Capabilities」の場所を示すイメージ](push-capability.png)
+![機能がある Xcode 内の場所を示すイメージ](push-capability.png)
 
 ### Android プラットフォーム
 {: #android-platform }
@@ -82,16 +82,16 @@ Android Studio では、以下の `activity` を `application` タグに追加�
 ### クライアント・サイド
 {: #client-side }
 
-| Javascript 関数 | 説明 |
+| Javascript 関数| 説明|
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。 | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 | 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。 | 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。 | 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。 | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。 | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 | 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 | 
+| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。| 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。| 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。| 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。| 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。| 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。| 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。| 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。| 
 
 ### API 実装
 {: #api-implementation }

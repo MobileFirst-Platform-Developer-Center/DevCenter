@@ -20,7 +20,7 @@ verwenden, um die Daten zu verschlüsseln. Das hier beschriebene Verfahren ermö
 Wenn Sie andere Cordova-Entwicklungstools verwenden, werden einige Ihrer Schritte anders sein. Anweisungen finden Sie in der Dokumentation
 zum verwendeten Cordova-Tool. 
 * Die {{ site.data.keys.mf_cli }} muss installiert sein.
-* Das { site.data.keys.product_adj }}-Cordova-Plug-in muss installiert sein. 
+* Das {{ site.data.keys.product_adj }}-Cordova-Plug-in muss installiert sein.
 
 Diese Schritte führen Sie am besten aus, nachdem Sie die Entwicklung Ihrer App abgeschlossen haben, wenn die App bereit für die Implementierung ist. Wenn Sie einen der folgenden Befehle
 nach der Verschlüsselung der Webressourcen ausführen, wird der verschlüsselte Inhalt entschlüsselt. 
@@ -48,7 +48,7 @@ verschlüsseln.
 `cordova build` beim Erstellen Ihrer Pakete mit dem Flag `mfpwebencrypt` verwenden.
 
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
-    <br/>
+<br/>
 Die Betriebssysteminformationen im Ordner **www** werden durch eine Datei **resources.zip** mit dem verschlüsselten Inhalt ersetzt.  
 Wenn Ihre App für das
 Android-Betriebssystem bestimmt und die Datei **resources.zip** größer als 1 MB ist, wird die
@@ -78,8 +78,8 @@ Aktualisierung kompatibel.
 * Die Cordova-Entwicklungstools müssen installiert sein. In diesem Beispiel wird die Apache-Cordova-Befehlszeilenschnittstelle verwendet.
 Wenn Sie andere Cordova-Entwicklungstools verwenden, werden einige Ihrer Schritte anders sein. Anweisungen finden Sie in der Dokumentation
 zum verwendeten Cordova-Tool. 
-* Die {{ site.data.keys.mf_cli }} muss installiert sein. 
-* Das { site.data.keys.product_adj }}-Plug-in muss installiert sein. 
+* Die {{ site.data.keys.mf_cli }} muss installiert sein.
+* Das {{ site.data.keys.product_adj }}-Plug-in muss installiert sein.
 * Sie müssen die gewüschnte Plattform zu Ihrem Cordova-Projekt hinzufügen, bevor Sie das Kontrollsummenfeature für Webressourcen
 mit dem Befehl `cordova platform add [android|ios|windows|browser]` für das jeweilige Bettriebssystem aktivieren. 
 
@@ -94,33 +94,30 @@ vor, um das Kontrollsummenfeature für Webressourcen für eine Cordova-App zu ak
    ```
 
    Beispiel:   
-    
+
    ```bash
    mfpdev app config android_security_test_web_resources_checksum true
    ```
 
-   Sie können das Feature inaktivieren, indem Sie
-in dem Befehl **true** durch
-**false** ersetzen.
+   Sie können das Feature inaktivieren, indem Sie in dem Befehl **true** durch **false** ersetzen. 
 
-   
    > **Tipp:** Wenn Sie Informationen zum Befehl
 `mfpdev app config` anzeigen möchten, geben Sie
 `mfpdev help app config` ein.
-    
+
 3. Geben Sie den folgenden Befehl ein, um die Dateitypen zu identifizieren, die während des Kontrollsummentests ignoriert werden sollen:
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ Dateierweiterung1,Dateierweiterung2 ]
    ```
-    
+
    Mehrere Erweiterungen
 müssen ohne Leerzeichen und jeweils durch ein Komma getrennt angegeben werden. Beispiel: 
-    
+
    ```bash
    mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
    ```
-    
+
 **Wichtiger Hinweis:** Bei Asuführung dieses Befehls werden festgelegte Werte außer Kraft gesetzt. 
 
 Je mehr Dateien der Kontrollsummentest für Webressourcen scannen muss, desto länger dauert es, bis die App geöffnet wird. Sie können die Erweiterung für einen Dateityp angeben, der übergangen werden soll,

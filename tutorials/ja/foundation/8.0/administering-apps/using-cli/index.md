@@ -9,6 +9,31 @@ weight: 4
 {: #overview }
 **mfpadm** プログラムを通じて {{ site.data.keys.product_adj }} アプリケーションを管理することができます。
 
+>**8.0.0.0-MFPF-IF201701250919** より後の {{ site.data.keys.product_full }} SDK バージョンでは、アプリ認証性サポートが更新されています。これは、`dynamic` と `static` の検証を切り替えて、さらにこれをリセットする `mfpadm` コマンドです。
+>
+{{ site.data.keys.product_full }} インストール・ディレクトリー `/MobilefirstPlatformServer/shortcuts` にナビゲートして、`mfpadm` コマンドを実行します。
+>
+1. 検証タイプを切り替えるには、次のように入力します。
+```bash
+	mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
+```  
+*TYPE* の値には `static` または `dynamic` を指定できます。
+>
+Android の場合の例: 以下では、検証 TYPE を `dynamic` に設定します。
+```bash
+  mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp test android 1.0 set authenticity-validation dynamic
+```
+>
+2. アプリの指紋をクリアする以下のコマンドを使用してデータをリセットするには、次のように入力します。
+```bash
+  mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
+```
+例 :
+>
+```bash
+  mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp sample.com.pincodeandroid android 1.0 reset authenticity
+```
+
 #### ジャンプ先
 {: #jump-to }
 
@@ -71,18 +96,18 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 **mfpadm** プログラムには、以下のオプションがあります。
 
-| オプション	| タイプ | 説明 | 必要 | デフォルト | 
+| オプション| タイプ| 説明| 必須| デフォルト |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | 管理サービスの {{ site.data.keys.product_adj }} Web アプリケーションのベース URL | はい | | 
-| --secure	 | ブール値 | セキュリティー・リスクをともなう操作を回避するかどうか | いいえ | true | 
-| --user	 | 名前 | {{ site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい |  | 	 
-| --passwordfile | ファイル | ユーザーのパスワードを含むファイル | いいえ | 
-| --timeout	     | 数値  | REST サービス・アクセス全体のタイムアウト (秒単位) | いいえ | 	 
-| --connect-timeout | 数値 | ネットワーク接続確立のタイムアウト (秒単位) | いいえ |
-| --socket-timeout  | 数値 | ネットワーク接続の損失検出のタイムアウト (秒単位) | いいえ | 
-| --connection-request-timeout | 数値	接続要求プールからのエントリー取得のタイムアウト (秒単位) | いいえ |
-| --lock-timeout | 数値 | ロック取得のタイムアウト (秒単位) | いいえ | 2 | 
-| --verbose	     | 詳細出力 | いいえ	| |  
+| --url| 	 | URL| 管理サービスの {{ site.data.keys.product_adj }} Web アプリケーションのベース URL| はい| |
+| --secure	 | ブール値| セキュリティー・リスクをともなう操作を回避するかどうか| いいえ| true|
+| --user	 | 名前| {{ site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名| はい|  | 	 
+| --passwordfile| ファイル| ユーザーのパスワードを含むファイル| いいえ|
+| --timeout	     | 数値| REST サービス・アクセス全体のタイムアウト (秒単位)| いいえ| 	 
+| --connect-timeout| 数値| ネットワーク接続確立のタイムアウト (秒単位)| いいえ|
+| --socket-timeout| 数値| ネットワーク接続の損失検出のタイムアウト (秒単位)| いいえ|
+| --connection-request-timeout| 数値	接続要求プールからのエントリー取得のタイムアウト (秒単位)| いいえ|
+| --lock-timeout| 数値| ロック取得のタイムアウト (秒単位)| いいえ| 2|
+| --verbose	     | 詳細出力| いいえ| |  
 
 **url**  
 URL には、HTTPS プロトコルを使用することを推奨します。例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
@@ -106,51 +131,51 @@ URL には、HTTPS プロトコルを使用することを推奨します。例�
 
 mfpadm 呼び出しは、1 つのコマンドを含みます。以下のコマンドがサポートされています。
 
-| コマンド                           | 説明 | 
+| コマンド| 説明|
 |-----------------------------------|-------------|
-| show info	| ユーザーと構成の情報を表示します。 | 
-| show global-config | グローバル構成情報を表示します。 | 
-| show diagnostics | 診断情報を表示します。 | 
-| show versions	| バージョン情報を表示します。 | 
-| unlock | 汎用ロックをリリースします | 
-| list runtimes [--in-database] | ランタイムをリストします。 | 
-| show runtime [runtime-name] | ランタイムに関する情報を表示します。 | 
-| delete runtime [runtime-name] condition | ランタイムを削除します。 | 
-| show user-config [runtime-name] | ランタイムのユーザー構成を表示します。 | 
-| set user-config [runtime-name] file | ランタイムのユーザー構成を指定します。 | 
-| set user-config [runtime-name] property = value | ランタイムのユーザー構成のプロパティーを指定します。 | 
-| show confidential-clients [runtime-name] | ランタイムの機密クライアントの構成を表示します。 | 
-| set confidential-clients [runtime-name] file | ランタイムの機密クライアントの構成を指定します。 | 
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | ランタイムの機密クライアントの構成のルールを指定します。 | 
-| list adapters [runtime-name] | アダプターをリストします。 | 
-| deploy adapter [runtime-name] property = value | アダプターをデプロイします。| 
-| show adapter [runtime-name] adapter-name | アダプターに関する情報を表示します。| 
-| delete adapter [runtime-name] adapter-name | アダプターを削除します。| 
-| adapter [runtime-name] adapter-name get binary [> tofile]	| アダプターのバイナリー・データを取得します。| 
-| list apps [runtime-name] | アプリケーションをリストします。| 
-| deploy app [runtime-name] file | アプリケーションをデプロイします。| 
-| show app [runtime-name] app-name | アプリケーションに関する情報を表示します。| 
-| delete app [runtime-name] app-name | アプリケーションを削除します。 | 
-| show app version [runtime-name] app-name environment version | アプリケーション・バージョンに関する情報を表示します。 |
-| delete app version [runtime-name] app-name environment version | アプリケーションのバージョンを削除します。 |
-| app [runtime-name] app-name show license-config | アプリケーションのトークン・ライセンス構成を表示します。 |
-| app [runtime-name] app-name set license-config app-type license-type | アプリケーションのトークン・ライセンス構成を指定します。 |
-| app [runtime-name] app-name delete license-config | アプリケーションのトークン・ライセンス構成を削除します。 | 
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| アプリケーション・バージョンの記述子を取得します。 | 
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | アプリケーション・バージョンの Web リソースを取得します。 | 
-| app version [runtime-name] app-name environment version set web-resources file | アプリケーション・バージョンの Web リソースを指定します。 | 
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | アプリケーション・バージョンの認証データを取得します。 | 
-| app version [runtime-name] app-name environment version set authenticity-data [file] | アプリケーション・バージョンの認証データを指定します。 | 
-| app version [runtime-name] app-name environment version delete authenticity-data | アプリケーション・バージョンの認証データを削除します。 | 
-| app version [runtime-name] app-name environment version show user-config | アプリケーション・バージョンのユーザー構成を表示します。 | 
-| app version [runtime-name] app-name environment version set user-config file | アプリケーション・バージョンのユーザー構成を指定します。 | 
-| app version [runtime-name] app-name environment version set user-config property = value | アプリケーション・バージョンのユーザー構成内のプロパティーを指定します。 |
-| list devices [runtime-name][--query query] | デバイスをリストします。 |
-| remove device [runtime-name] id | デバイスを削除します。 |
-| device [runtime-name] id set status new-status | デバイスの状況を変更します。 |
-| device [runtime-name] id set appstatus app-name new-status | アプリケーションのデバイスの状況を変更します。 |
-| list farm-members [runtime-name] | サーバー・ファームのメンバーであるサーバーをリストします。 |
-| remove farm-member [runtime-name] server-id | ファーム・メンバーのリストからサーバーを削除します。 |
+| show info	| ユーザーと構成の情報を表示します。|
+| show global-config| グローバル構成情報を表示します。|
+| show diagnostics| 診断情報を表示します。|
+| show versions	| バージョン情報を表示します。|
+| unlock| 汎用ロックをリリースします|
+| list runtimes [--in-database]| ランタイムをリストします。|
+| show runtime [runtime-name]| ランタイムに関する情報を表示します。|
+| delete runtime [runtime-name] condition| ランタイムを削除します。|
+| show user-config [runtime-name]| ランタイムのユーザー構成を表示します。|
+| set user-config [runtime-name] file| ランタイムのユーザー構成を指定します。|
+| set user-config [runtime-name] property = value| ランタイムのユーザー構成のプロパティーを指定します。|
+| show confidential-clients [runtime-name]| ランタイムの機密クライアントの構成を表示します。|
+| set confidential-clients [runtime-name] file| ランタイムの機密クライアントの構成を指定します。|
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope| ランタイムの機密クライアントの構成のルールを指定します。|
+| list adapters [runtime-name]| アダプターをリストします。|
+| deploy adapter [runtime-name] property = value| アダプターをデプロイします。|
+| show adapter [runtime-name] adapter-name| アダプターに関する情報を表示します。|
+| delete adapter [runtime-name] adapter-name| アダプターを削除します。|
+| adapter [runtime-name] adapter-name get binary [> tofile]| アダプターのバイナリー・データを取得します。|
+| list apps [runtime-name]| アプリケーションをリストします。|
+| deploy app [runtime-name] file| アプリケーションをデプロイします。|
+| show app [runtime-name] app-name| アプリケーションに関する情報を表示します。|
+| delete app [runtime-name] app-name| アプリケーションを削除します。|
+| show app version [runtime-name] app-name environment version| アプリケーション・バージョンに関する情報を表示します。|
+| delete app version [runtime-name] app-name environment version| アプリケーションのバージョンを削除します。|
+| app [runtime-name] app-name show license-config| アプリケーションのトークン・ライセンス構成を表示します。|
+| app [runtime-name] app-name set license-config app-type license-type| アプリケーションのトークン・ライセンス構成を指定します。|
+| app [runtime-name] app-name delete license-config| アプリケーションのトークン・ライセンス構成を削除します。|
+| app version [runtime-name] app-name environment version get descriptor [> tofile]| アプリケーション・バージョンの記述子を取得します。|
+| app version [runtime-name] app-name environment version get web-resources [> tofile]| アプリケーション・バージョンの Web リソースを取得します。|
+| app version [runtime-name] app-name environment version set web-resources file| アプリケーション・バージョンの Web リソースを指定します。|
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile]| アプリケーション・バージョンの認証データを取得します。|
+| app version [runtime-name] app-name environment version set authenticity-data [file]| アプリケーション・バージョンの認証データを指定します。|
+| app version [runtime-name] app-name environment version delete authenticity-data| アプリケーション・バージョンの認証データを削除します。|
+| app version [runtime-name] app-name environment version show user-config| アプリケーション・バージョンのユーザー構成を表示します。|
+| app version [runtime-name] app-name environment version set user-config file| アプリケーション・バージョンのユーザー構成を指定します。|
+| app version [runtime-name] app-name environment version set user-config property = value| アプリケーション・バージョンのユーザー構成内のプロパティーを指定します。|
+| list devices [runtime-name][--query query] | デバイスをリストします。|
+| remove device [runtime-name] id| デバイスを削除します。|
+| device [runtime-name] id set status new-status| デバイスの状況を変更します。|
+| device [runtime-name] id set appstatus app-name new-status| アプリケーションのデバイスの状況を変更します。|
+| list farm-members [runtime-name]| サーバー・ファームのメンバーであるサーバーをリストします。|
+| remove farm-member [runtime-name] server-id| ファーム・メンバーのリストからサーバーを削除します。|
 
 #### 対話モード
 {: #interactive-mode }
@@ -204,18 +229,18 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 
 これらの値を構成ファイルに保管するには、以下のコマンドを使用します。
 
-| コマンド | コメント |
-|---------|---------| 
-| mfpadm [--configfile=file] config url URL | | 
-| mfpadm [--configfile=file] config secure boolean | | 
-| mfpadm [--configfile=file] config user name | | 
-| mfpadm [--configfile=file] config password | パスワードのプロンプトを出します。 | 
-| mfpadm [--configfile=file] config timeout seconds | | 
-| mfpadm [--configfile=file] config connect-timeout seconds | | 
-| mfpadm [--configfile=file] config socket-timeout seconds | | 
-| mfpadm [--configfile=file] config connection-request-timeout seconds | | 
-| mfpadm [--configfile=file] config lock-timeout seconds | | 
-| mfpadm [--configfile=file] config runtime runtime-name | | 
+| コマンド| コメント|
+|---------|---------|
+| mfpadm [--configfile=file] config url URL| |
+| mfpadm [--configfile=file] config secure boolean| |
+| mfpadm [--configfile=file] config user name| |
+| mfpadm [--configfile=file] config password| パスワードのプロンプトを出します。|
+| mfpadm [--configfile=file] config timeout seconds| |
+| mfpadm [--configfile=file] config connect-timeout seconds| |
+| mfpadm [--configfile=file] config socket-timeout seconds| |
+| mfpadm [--configfile=file] config connection-request-timeout seconds| |
+| mfpadm [--configfile=file] config lock-timeout seconds| |
+| mfpadm [--configfile=file] config runtime runtime-name| |
 
 構成ファイルに保管されている値をリストするには、次のコマンドを使用します: `mfpadm [--configfile=file] config`
 
@@ -232,10 +257,10 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 {: #generic-options }
 通常の一般オプションもあります。
 
-| オプション	| 説明 | 
+| オプション| 説明|
 |-----------|-------------|
-| --help	| 使い方のヘルプを表示します | 
-| --version	| バージョンを表示します | 
+| --help	| 使い方のヘルプを表示します|
+| --version	| バージョンを表示します|
 
 #### XML 形式
 {: #xml-format }
@@ -265,9 +290,9 @@ mfpadm プログラムより生成される通常の出力は、現行のロケ�
 
 以下のオプションを取ります。
 
-| 引数 | 説明 |
+| 引数| 説明|
 |----------|-------------|
-| --xml    | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**  
 
@@ -282,19 +307,19 @@ show global-config
 {: #the-show-user-config-command }
 `show user-config` コマンドは、ランタイムのユーザー構成を表示します。
 
-構文: `show user-config [--xml][runtime-name]`
+構文: `show user-config [--xml] [runtime-name]`
 
 以下の引数を取ります。
 
-| 引数 | 説明 |
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 |
+| runtime-name| ランタイムの名前。|
 
 `show user-config` コマンドは、動詞の後に以下のオプションを取ります。
 
-| 引数 | 説明 | 必要 | デフォルト | 
+| 引数| 説明| 必須| デフォルト |
 |----------|-------------|----------|---------|
-| --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 | 
+| --xml| JSON 形式の代わりに XML 形式で出力を生成します。| いいえ| 標準出力|
 
 **例**  
 
@@ -313,20 +338,20 @@ show user-config mfp
 
 以下の引数を取ります。
 
-| 属性 | 説明 | 
+| 属性| 説明|
 |-----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| file | 新しい構成を含む JSON または XML ファイルの名前。 | 
+| runtime-name| ランタイムの名前。|
+| file | 新しい構成を含む JSON または XML ファイルの名前。|
 
 単一プロパティーの場合の構文: `set user-config [runtime-name] property = value`
 
 `set user-config` コマンドは以下の引数を取ります 
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
-| value | プロパティーの値。 | 
+| runtime-name| ランタイムの名前。|
+| property| JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。|
+| value| プロパティーの値。|
 
 **例**  
 
@@ -345,19 +370,19 @@ set user-config mfp timeout = 240
 {: #the-show-confidential-clients-command }
 `show confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を表示します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
-構文: `show confidential-clients [--xml][runtime-name]`
+構文: `show confidential-clients [--xml] [runtime-name]`
 
 以下の引数を取ります。
 
-| 属性 | 説明 |
+| 属性| 説明|
 |-----------|-------------|
-| runtime-name | ランタイムの名前。 |
+| runtime-name| ランタイムの名前。|
 
 `show confidential-clients` コマンドは、動詞の後に以下のオプションを取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
+| 引数| 説明| 必須| デフォルト |
 |----------|-------------|----------|---------|
-| --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 |
+| --xml| JSON 形式の代わりに XML 形式で出力を生成します。| いいえ| 標準出力|
 
 **例**
 
@@ -376,10 +401,10 @@ show confidential-clients --xml mfp
 
 以下の引数を取ります。
 
-| 属性 | 説明 | 
+| 属性| 説明|
 |-----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| file   新しい構成を含む JSON または XML ファイルの名前。 | 
+| runtime-name| ランタイムの名前。|
+| file | 新しい構成を含む JSON または XML ファイルの名前。|
 
 **例**
 
@@ -398,13 +423,13 @@ set confidential-clients mfp clients.xml
 
 以下の引数を取ります。
 
-| 属性	| 説明 |
+| 属性| 説明|
 |-----------|-------------|
-| runtime | ランタイムの名前。 | 
-| id | ルールの ID。 | 
-| displayName | ルールの表示名。 | 
-| secret | ルールのシークレット。 | 
-| allowedScope | ルールの適用範囲。スペースで区切られたトークンのリスト。複数のトークンのリストを渡すには、二重引用符を使用します。 | 
+| runtime| ランタイムの名前。|
+| id| ルールの ID。|
+| displayName| ルールの表示名。|
+| secret| ルールのシークレット。|
+| allowedScope| ルールの適用範囲。スペースで区切られたトークンのリスト。複数のトークンのリストを渡すには、二重引用符を使用します。|
 
 **例**
 
@@ -426,15 +451,15 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 |
+| runtime-name| ランタイムの名前。|
 
 `list adapters` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**  
 
@@ -453,10 +478,10 @@ list adapters mfp
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 |
-| file | バイナリー・アダプター・ファイル (.adapter) |
+| runtime-name| ランタイムの名前。|
+| file | バイナリー・アダプター・ファイル (.adapter)|
 
 **例**
 
@@ -475,16 +500,16 @@ deploy adapter mfp MyAdapter.adapter
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 |
-| adapter-name | アダプターの名前 |
+| runtime-name| ランタイムの名前。|
+| adapter-name| アダプターの名前|
 
 `show adapter` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 |
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -503,10 +528,10 @@ show adapter mfp MyAdapter
 
 以下の引数を取ります。
 
-| 引数 | 説明 |
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| adapter-name | アダプターの名前。 | 
+| runtime-name| ランタイムの名前。|
+| adapter-name| アダプターの名前。|
 
 **例**
 
@@ -521,10 +546,10 @@ delete adapter mfp MyAdapter
 {: #the-adapter-command-prefix }
 `adapter` コマンド接頭部では、動詞の前に以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| adapter-name | アダプターの名前。 | 
+| runtime-name| ランタイムの名前。|
+| adapter-name| アダプターの名前。|
 
 <br/>
 #### `adapter get binary` コマンド
@@ -535,9 +560,9 @@ delete adapter mfp MyAdapter
 
 動詞の後に、以下のオプションを取ります。
 
-| オプション | 説明 | 必要 | デフォルト | 
+| オプション| 説明| 必須| デフォルト |
 |--------|-------------|----------|---------|
-| > tofile | 出力ファイルの名前。 | いいえ | 標準出力 |
+| > tofile| 出力ファイルの名前。| いいえ| 標準出力|
 
 **例**
 
@@ -556,9 +581,9 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 動詞の後に、以下のオプションを取ります。
 
-| オプション | 説明 |
+| オプション| 説明|
 |--------|-------------|
-| --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | 
+| --xml| JSON 形式の代わりに XML 形式で出力を生成します。|
 
 **例**
 
@@ -577,18 +602,18 @@ adapter mfp MyAdapter show user-config
 
 動詞の後に、以下の引数を取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| file | 新しい構成を含む JSON または XML ファイルの名前。|
 
 単一プロパティーの場合の構文: `adapter [runtime-name] adapter-name set user-config property = value`
 
 動詞の後に、以下の引数を取ります。
 
-| オプション | 説明 |
+| オプション| 説明|
 |--------|-------------|
-| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 | 
-| value | プロパティーの値。 | 
+| property| JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。|
+| value| プロパティーの値。|
 
 **例**
 
@@ -614,15 +639,15 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 |
+| runtime-name| ランタイムの名前。|
 
 `list apps` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 |
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -640,10 +665,10 @@ list apps mfp
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 |
-| file | アプリケーション記述子、JSON ファイル。 |
+| runtime-name| ランタイムの名前。|
+| file | アプリケーション記述子、JSON ファイル。|
 
 **例**
 
@@ -661,16 +686,16 @@ deploy app mfp MyApp/application-descriptor.json
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| app-name | アプリケーションの名前。 | 
+| runtime-name| ランタイムの名前。|
+| app-name| アプリケーションの名前。|
 
 `show app` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 |
+| オプション| 説明|
 |--------|-------------|
-| --xml	 | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml	 | 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -688,10 +713,10 @@ show app mfp MyApp
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| app-name | アプリケーションの名前 | 
+| runtime-name| ランタイムの名前。|
+| app-name| アプリケーションの名前|
 
 **例**
 
@@ -709,18 +734,18 @@ delete app mfp MyApp
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| app-name | アプリケーションの名前。 | 
-| environment | モバイル・プラットフォーム。 | 
-| version | アプリケーションのバージョン。 | 
+| runtime-name| ランタイムの名前。|
+| app-name| アプリケーションの名前。|
+| environment| モバイル・プラットフォーム。|
+| version| アプリケーションのバージョン。|
 
 `show app version` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 | ---------|-------------|
-| -- xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| -- xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -738,12 +763,12 @@ show app version mfp MyApp iPhone 1.1
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| app-name | アプリケーションの名前。 | 
-| environment | モバイル・プラットフォーム。 | 
-| version | アプリケーションのバージョン。 | 
+| runtime-name| ランタイムの名前。|
+| app-name| アプリケーションの名前。|
+| environment| モバイル・プラットフォーム。|
+| version| アプリケーションのバージョン。|
 
 **例**
 
@@ -757,10 +782,10 @@ delete app version mfp MyApp iPhone 1.1
 {: #the-app-command-prefix }
 `app` コマンド接頭部では、動詞の前に以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| app-name | アプリケーションの名前。 | 
+| runtime-name| ランタイムの名前。|
+| app-name| アプリケーションの名前。|
 
 #### `app show license-config` コマンド
 {: #the-app-show-license-config-command }
@@ -770,9 +795,9 @@ delete app version mfp MyApp iPhone 1.1
 
 オブジェクトの後に以下のオプションを取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -790,10 +815,10 @@ app mfp MyApp show license-config
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| appType | アプリケーションのタイプ: B2C または B2E | 
-| licenseType | アプリケーションのタイプ: APPLICATION または ADDITIONAL_BRAND_DEPLOYMENT または NON_PRODUCTION | 
+| appType| アプリケーションのタイプ: B2C または B2E|
+| licenseType| アプリケーションのタイプ: APPLICATION または ADDITIONAL_BRAND_DEPLOYMENT または NON_PRODUCTION|
 
 **例**
 
@@ -821,12 +846,12 @@ app mfp MyApp iPhone 1.1 delete license-config
 {: #the-app-version-command-prefix }
 `app version` コマンド接頭部では、動詞の前に以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| app-name | アプリケーションの名前。 | 
-| environment | モバイル・プラットフォーム | 
-| version | アプリケーションのバージョン | 
+| runtime-name| ランタイムの名前。|
+| app-name| アプリケーションの名前。|
+| environment| モバイル・プラットフォーム|
+| version| アプリケーションのバージョン|
 
 #### `app version get descriptor` コマンド
 {: #the-app-version-get-descriptor-command }
@@ -836,9 +861,9 @@ app mfp MyApp iPhone 1.1 delete license-config
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 必要 | デフォルト | 
+| 引数| 説明| 必須| デフォルト |
 |----------|-------------|----------|---------|
-| > tofile | 出力ファイルの名前。 | いいえ | 標準出力 | 
+| > tofile | 出力ファイルの名前。| いいえ| 標準出力|
 
 **例**
 
@@ -856,9 +881,9 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 必要 | デフォルト | 
+| 引数| 説明| 必須| デフォルト |
 |----------|-------------|----------|---------|
-| > tofile | 出力ファイルの名前。 | いいえ | 標準出力 | 
+| > tofile| 出力ファイルの名前。| いいえ| 標準出力|
 
 **例**
 
@@ -877,7 +902,7 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 動詞の後に、以下の引数を取ります。
 
 | 引数 | 説明 |
-| file | 入力ファイルの名前 (.zip ファイルでなければなりません)。| 
+| file | 入力ファイルの名前 (.zip ファイルでなければなりません)。|
 
 **例**
 
@@ -895,8 +920,8 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
-| > tofile | 出力ファイルの名前。| いいえ | 標準出力 | 
+| 引数 | 説明 | 必須 | デフォルト |
+| > tofile | 出力ファイルの名前。| いいえ | 標準出力 |
 
 **例**
 
@@ -914,9 +939,9 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| file | 入力ファイルの名前。以下のいずれかです。<ul><li>.authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx)</li></ul>| 
+| file | 入力ファイルの名前。以下のいずれかです。<ul><li>.authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx)</li></ul>|
 
 **例**
 
@@ -956,9 +981,9 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data
 
 動詞の後に、以下のオプションを取ります。
 
-| 引数 | 説明 | 必要 | デフォルト | 
+| 引数| 説明| 必須| デフォルト |
 |----------|-------------|----------|---------|
-| [--xml] | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 | 
+| [--xml]| JSON 形式の代わりに XML 形式で出力を生成します。| いいえ| 標準出力|
 
 **例**
 
@@ -976,18 +1001,18 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| file | 新しい構成を含む JSON または XML ファイルの名前。 | 
+| file | 新しい構成を含む JSON または XML ファイルの名前。|
 
 単一プロパティーの場合の構文: `app version [runtime-name] app-name environment version set user-config property = value`
 
 `app version set user-config` コマンドは、動詞の後に以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 | 
-| value | プロパティーの値。 | 
+| property| JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。|
+| value| プロパティーの値。|
 
 **例**
 
@@ -1009,20 +1034,20 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 {: #the-list-devices-command }
 `list devices` コマンドは、ランタイムのアプリケーションと接触のあるデバイスのリストを返します。
 
-構文: `list devices [runtime-name][--query query]`
+構文: `list devices [runtime-name] [--query query]`
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| query | 検索対象の分かりやすい名前またはユーザー ID。このパラメーターには、検索対象のストリングを指定します。このストリングが含まれる (大/小文字を区別しないマッチングによって)、分かりやすい名前またはユーザー ID を持つすべてのデバイスが返されます。 | 
+| runtime-name| ランタイムの名前。|
+| query| 検索対象の分かりやすい名前またはユーザー ID。このパラメーターには、検索対象のストリングを指定します。このストリングが含まれる (大/小文字を区別しないマッチングによって)、分かりやすい名前またはユーザー ID を持つすべてのデバイスが返されます。|
 
 `list devices` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -1044,10 +1069,10 @@ list-devices mfp --query=john
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| id | 固有のデバイス ID。 | 
+| runtime-name| ランタイムの名前。|
+| id| 固有のデバイス ID。|
 
 **例**
 
@@ -1061,10 +1086,10 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 {: #the-device-command-prefix }
 `device` コマンド接頭部では、動詞の前に以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| id | 固有のデバイス ID。 | 
+| runtime-name| ランタイムの名前。|
+| id| 固有のデバイス ID。|
 
 #### `device set status` コマンド
 {: #the-device-set-status-command }
@@ -1074,9 +1099,9 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| new-status | 新しい状況。 | 
+| new-status| 新しい状況。|
 
 この状況の値は、以下のいずれかになります。
 
@@ -1102,10 +1127,10 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| app-name | アプリケーションの名前。 | 
-| new-status | 新しい状況。 | 
+| app-name| アプリケーションの名前。|
+| new-status| 新しい状況。|
 
 この状況の値は、以下のいずれかになります。
 
@@ -1133,9 +1158,9 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -1155,9 +1180,9 @@ show info
 
 オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -1173,9 +1198,9 @@ show versions
 
 オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -1201,10 +1226,10 @@ unlock
 
 以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --in-database	| MBeans 経由の代わりにデータベースを検索するかどうか。 | 
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --in-database	| MBeans 経由の代わりにデータベースを検索するかどうか。|
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -1226,15 +1251,15 @@ list runtimes --in-database
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
+| runtime-name| ランタイムの名前。|
 
 `show runtime` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 このコマンドは、[Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST サービスに基づいています。
 
@@ -1252,10 +1277,10 @@ show runtime mfp
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| condition | 削除する条件。empty または always のいずれかです。**注意:** always オプションは危険です。 |
+| runtime-name| ランタイムの名前。|
+| condition| 削除する条件。empty または always のいずれかです。**注意:** always オプションは危険です。|
 
 **例**
 
@@ -1273,15 +1298,15 @@ delete runtime mfp empty
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
+| runtime-name| ランタイムの名前。|
 
 `list farm-members` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
+| --xml| 表形式の出力の代わりに、XML 出力を生成します。|
 
 **例**
 
@@ -1299,16 +1324,16 @@ list farm-members mfp
 
 以下の引数を取ります。
 
-| 引数 | 説明 | 
+| 引数| 説明|
 |----------|-------------|
-| runtime-name | ランタイムの名前。 | 
-| server-id | サーバーの ID。 | 
+| runtime-name| ランタイムの名前。|
+| server-id| サーバーの ID。|
 
 `remove farm-member` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
-| オプション | 説明 | 
+| オプション| 説明|
 |--------|-------------|
-| --force | ファーム・メンバーが使用可能の場合、または接続されている場合でも、ファーム・メンバーの削除を強制します。 | 
+| --force| ファーム・メンバーが使用可能の場合、または接続されている場合でも、ファーム・メンバーの削除を強制します。|
 
 **例**
 

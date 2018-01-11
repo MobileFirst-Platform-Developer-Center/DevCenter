@@ -34,6 +34,8 @@ Es gibt die folgenden Protokollierungsstufen (von der größten bis zur geringst
 
 > **Hinweis:** Bei Verwendung von FATAL wird ein App-Absturz erfasst. Es wird empfohlen, diees Schlüsselwort nicht zu verwenden, um eine Verzerrung der App-Absturzdaten zu vermeiden.
 
+
+
 Die Client-SDKs sind standardmäßig mit der Ausführlichkeitsebene FATAL konfiguriert. Es werden also kaum oder gar
 keine unformatierten Debugprotokolle ausgegeben oder erfasst. Sie können die Ausführlichkeit programmgestützt angepasst werden oder durch das Festlegen eines Konfiguationsprofils in der
 {{ site.data.keys.mf_analytics_console }}, das von Ihrer App explizit abgerufen werden muss. 
@@ -80,8 +82,7 @@ WL.Logger.config({ level: 'DEBUG' });
 
 #### JavaScript (Web)
 {: #javascript-web }
-Bei Verwendung des Web-SDK kann die Standardstufe
-"trace" nicht vom Client geändert werden. 
+Bei Verwendung des Web-SDK kann die Standardstufe "trace" nicht vom Client geändert werden.
 
 ## Absturzerfassung
 {: #crash-capture }

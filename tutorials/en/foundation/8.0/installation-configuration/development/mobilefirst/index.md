@@ -9,11 +9,11 @@ weight: 1
 {: #overview }
 {{ site.data.keys.product_full }} is made up of several components: the client SDKs, adapter archetypes, security checks, and authentication tools.
 
-These components are available from online repositories and can be installed using package managers. These online repositories provide the latest release of each component. The same component is also available to download from the {{ site.data.keys.mf_dev_kit }} for local use. Note that the version that is available from the {{ site.data.keys.mf_dev_kit_short }} represents the version that was available at the time the specific {{ site.data.keys.mf_dev_kit_short }} build was released, and that downloading a new {{ site.data.keys.mf_dev_kit_short }} build will be required in order to use the latest. 
+These components are available from online repositories and can be installed using package managers. These online repositories provide the latest release of each component. The same component is also available to download from the {{ site.data.keys.mf_dev_kit }} for local use. Note that the version that is available from the {{ site.data.keys.mf_dev_kit_short }} represents the version that was available at the time the specific {{ site.data.keys.mf_dev_kit_short }} build was released, and that downloading a new {{ site.data.keys.mf_dev_kit_short }} build will be required in order to use the latest.
 
 Continue reading to learn more about the components of {{ site.data.keys.product }}.
 
-> To evalute {{ site.data.keys.product }} all that is needed is to spin an instance of {{ site.data.keys.mf_server }} on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the {{ site.data.keys.mf_dev_kit_short }} for a local installation.
+> To evalute {{ site.data.keys.product }} all that is needed is to spin an instance of {{ site.data.keys.mf_server }} on IBM Cloud using the Mobile Foundation IBM Cloud service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the {{ site.data.keys.mf_dev_kit_short }} for a local installation.
 
 #### Jump to:
 {: #jump-to }
@@ -63,7 +63,7 @@ The {{ site.data.keys.mf_console }} exposes the following functionalities.
 A developer can:
 
 - Register and deploy applications and adapters
-- Optionally download native/Cordova application and adapter starter code templates 
+- Optionally download native/Cordova application and adapter starter code templates
 - Configure an application's authentication and security properties
 - Manage applications:
     - Application Authenticity
@@ -102,7 +102,7 @@ You can use the {{ site.data.keys.mf_cli }} to develop and manage applications, 
 * Cordova applications require NodeJS and the Cordova CLI. Read more about [setting up the Cordova development environment](../cordova).
 
     You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
-    
+
 * Native applications require either Xcode, Android Studio or Visual Studio. Read more about [setting up the iOS/Android/Windows development environment](../).
 
 ### Adapters
@@ -112,4 +112,3 @@ Adapters require Apache Maven to be installed. Refer to the [Adapters](../../../
 ## Tutorials to follow next
 {: #tutorials-to-follow-next }
 Visit the [All Tutorials](../../../all-tutorials/) page and select a tutorials category to follow next.
-

@@ -8,22 +8,22 @@ tabs:
     path: /labs/administrators/7.1/linux/
   - name: Windows
     path: /labs/administrators/7.1/windows/
-  - name: IBM Bluemix
+  - name: IBM Cloud
     path: /labs/administrators/7.1/bluemix/
 ---
 <h2 class="no-anchor">Overview</h2>
-<p>Follow the instructions below to learn how to install MobileFirst Platform Server on IBM Bluemix.</p>
+<p>Follow the instructions below to learn how to install MobileFirst Platform Server on IBM Cloud.</p>
 
-<p>For this purpose, the MobileFirst Platform Server will be setup in a Docker container image, and pushed to an IBM Container on Bluemix, including MobileFirst Platfrom Operational Analytics. An Ubuntu 14.04 image will be used to perform the installation steps.</p>
+<p>For this purpose, the MobileFirst Platform Server will be setup in a Docker container image, and pushed to an IBM Container on IBM Cloud, including MobileFirst Platfrom Operational Analytics. An Ubuntu 14.04 image will be used to perform the installation steps.</p>
 
 <h4 class="no-anchor">Pre-requisites:</h4>
-<p>Follow the <a href="{{site.baseurl}}/labs/developers/7.1/setup/">7.1 Labs required setup</a> to install Ubuntu, install the MobileFirst CLI and register at Bluemix</p>
+<p>Follow the <a href="{{site.baseurl}}/labs/developers/7.1/setup/">7.1 Labs required setup</a> to install Ubuntu, install the MobileFirst CLI and register at IBM Cloud</p>
 
 <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title no-anchor">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Setup prerequisites for MobileFirst Platform installation on Bluemix</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Setup prerequisites for MobileFirst Platform installation on IBM Cloud</a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -32,8 +32,8 @@ tabs:
                 <br>
                 <b>Time to complete:</b> 25 minutes
                 <br>
-                Lab files: 
-                
+                Lab files:
+
                 <ul>
                     <li>
 {% highlight bash %}
@@ -58,12 +58,12 @@ sudo pip install requests[security]
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Install MobileFirst Platform Analytics container on Bluemix</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Install MobileFirst Platform Analytics container on IBM Cloud</a>
             </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
-                <b>Description:</b> Setup and configure MobileFirst Platform analytics image in docker container and push it to Bluemix.<br>
+                <b>Description:</b> Setup and configure MobileFirst Platform analytics image in docker container and push it to IBM Cloud.<br>
                 Docker machine environment setup: <code>eval "$(docker-machine env default)"</code>
                 <br>
                 <b>Time to complete:</b> 45 minutes
@@ -80,12 +80,12 @@ sudo pip install requests[security]
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingThree">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Install MobileFirst Platform Server 7.1 on Bluemix</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Install MobileFirst Platform Server 7.1 on IBM Cloud</a>
             </h4>
         </div>
         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-body">
-                <b>Description:</b> Setup and configure MobileFirst Platform Server image in docker container with test runtime environment and push it to Bluemix.
+                <b>Description:</b> Setup and configure MobileFirst Platform Server image in docker container with test runtime environment and push it to IBM Cloud.
                 <br>
                 Docker machine environment setup: <code>eval "$(docker-machine env default)"</code>
                 <br>
@@ -102,7 +102,7 @@ sudo pip install requests[security]
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingFour">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Verify MobileFirst Platform 7.1 installation on Bluemix</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Verify MobileFirst Platform 7.1 installation on IBM Cloud</a>
             </h4>
         </div>
         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">

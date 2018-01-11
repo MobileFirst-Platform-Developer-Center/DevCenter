@@ -5,13 +5,14 @@ exclude:
   - Gemfile.lock
   - README.md
   - pdf
-  - tutorials/ko
-  - tutorials/fr
-  - tutorials/ja
-  - tutorials/pt-br
-  - tutorials/es
-  - tutorials/de
-  - tutorials/zh-hans
-  - tutorials/ru
+#  - tutorials/ko
+#  - tutorials/fr
+#  - tutorials/ja
+#  - tutorials/pt-br
+#  - tutorials/es
+#  - tutorials/de
+#  - tutorials/zh-hans
+#  - tutorials/ru
+#  - tutorials/it
 source_url: https://github.com/MobileFirst-Platform-Developer-Center/DevCenter
 last_modified: true

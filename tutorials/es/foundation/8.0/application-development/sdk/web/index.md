@@ -1,59 +1,68 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Web Applications
+title: Adición de MobileFirst Foundation SDK a aplicaciones Web
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-You can develop mobile or Desktop {{ site.data.keys.product_adj }} web applications by using your preferred development environment and tools.  
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} web SDK to your web applicaiton, as well as how to register the web application with the {{ site.data.keys.mf_server }}
+Desarrolle aplicaciones web de {{ site.data.keys.product_adj }} de escritorio o móviles mediante sus herramientas y entornos de desarrollo preferidos.
+  
+En esta guía de aprendizaje, aprenderá a añadir {{ site.data.keys.product_adj }} Web SDK a su aplicación web, así como registrar la aplicación web con {{ site.data.keys.mf_server }}
 
-The {{ site.data.keys.product_adj }} web SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
-The SDK includes the following files:
+{{ site.data.keys.product_adj }} Web SDK se proporciona como un conjunto de archivos JavaScript. El SDK [está disponible en NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).   
+El SDK incluye los siguientes archivos:
 
-- **ibmmfpf.js** - The core of the SDK.
-- **ibmmfpfanalytics.js** - Provides support for {{ site.data.keys.mf_analytics }}.
 
-#### Jump to
+- **ibmmfpf.js** - El núcleo del SDK.
+- **ibmmfpfanalytics.js** - Proporciona soporte para {{ site.data.keys.mf_analytics }}.
+
+
+#### Ir a 
 {: #jump-to }
-- [Prerequisites](#prerequisites)
-- [Adding the {{ site.data.keys.product_adj }} web SDK](#adding-the-mobilefirst-web-sdk)
-- [Initializing the {{ site.data.keys.product_adj }} web SDK](#initializing-the-mobilefirst-web-sdk)
-- [Registering the web application](#registering-the-web-application)
-- [Updating the {{ site.data.keys.product_adj }} web SDK](#updating-the-mobilefirst-web-sdk)
-- [Same Origin Policy](#same-origin-policy)
-- [Secure Origins Policy](#secure-origins-policy)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Requisitos previos](#prerequisites)
+- [Adición de {{ site.data.keys.product_adj }} Web SDK](#adding-the-mobilefirst-web-sdk)
+- [Inicialización de {{ site.data.keys.product_adj }} Web SDK](#initializing-the-mobilefirst-web-sdk)
+- [Registro de la aplicación web](#registering-the-web-application)
+- [Actualización de {{ site.data.keys.product_adj }} Web SDK](#updating-the-mobilefirst-web-sdk)
+- [Política de mismo origen](#same-origin-policy)
+- [Política de orígenes seguros](#secure-origins-policy)
+- [Guías de aprendizaje con las que continuar](#tutorials-to-follow-next)
 
-## Prerequisites
+## Requisitos previos
 {: #prerequisites }
--   See the [supported web browsers](../../../installation-configuration/development/web/#web-app-supported-browsers) prerequisite for setting up the web development environment.
+-   Consulte el requisito previo de [navegadores web soportados](../../../installation-configuration/development/web/#web-app-supported-browsers) para configurar el entorno de desarrollo web.
 
--   To run NPM commands, you must install [Node.js](https://nodejs.org).
 
-## Adding the {{ site.data.keys.product_adj }} web SDK
+-   Para ejecutar mandatos NPM, debe instalar [Node.js](https://nodejs.org).
+
+## Adición de {{ site.data.keys.product_adj }} Web SDK
 {: #adding-the-mobilefirst-web-sdk }
-To add the SDK to new or existing web applications, first download it to your workstation and then add it to your web application.
+Para añadir el SDK a aplicaciones web nuevas o existentes, descárguelo primero en su estación de trabajo y, a continuación, añádalo a su aplicación web.
 
-### Downloading the SDK
+
+### Descarga del SDK 
 {: #downloading-the-sdk }
-1. From a **command-line** window, navigate to your web application's root folder.
-2. Run the command: `npm install ibm-mfp-web-sdk`.
+1. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz de su aplicación web.
 
-This command creates the following directory structure:
+2. Ejecute el mandato: `npm install ibm-mfp-web-sdk`.
 
-![SDK folder contents](sdk-folder.png)
+Este mandato crea la siguiente estructura de directorios:
 
-### Adding the SDK
+![Contenido de la carpeta SDK](sdk-folder.png)
+
+### Adición del SDK
 {: #adding-the-sdk }
-To add the {{ site.data.keys.product }} Web SDK, reference it in a standard fashion in the web application.  
-The SDK also [supports AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition), so that you can use Module Loaders such as [RequireJS](http://requirejs.org/) to load the SDK.
+Para añadir {{ site.data.keys.product }} Web SDK, haga referencia al mismo de forma estándar en la aplicación web.
+  
+El SDK también [da soporte a AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition), de forma que es posible utilizar cargadores de módulos como, por ejemplo, [RequireJS](http://requirejs.org/) para cargar el SDK.
 
-#### Standard
-Reference the **ibmmfpf.js** file in the `HEAD` element.  
+
+#### Estándar
+Haga referencia al archivo **ibmmfpf.js** en el elemento `HEAD`.
+  
 
 ```html
 <head>
@@ -63,7 +72,7 @@ Reference the **ibmmfpf.js** file in the `HEAD` element.
 </head>
 ```
 
-#### Using RequireJS
+#### Utilización de RequireJS
 
 **HTML**  
 
@@ -85,11 +94,13 @@ require(['mfp'], function(WL) {
 });
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support, place the **ibmmfpfanalytics.js** file reference **before** the **ibmmfpf.js** file reference.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Si está añadiendo el soporte para las analíticas, coloque la referencia al archivo **ibmmfpfanalytics.js** **antes** de la referencia al archivo **ibmmfpf.js**.
 
-## Initializing the {{ site.data.keys.product_adj }} web SDK
+
+## Inicialización de {{ site.data.keys.product_adj }} Web SDK
 {: #initializing-the-mobilefirst-web-sdk }
-Initialize the {{ site.data.keys.product }} web SDK by specifying the **context root** and **application ID** values in the main JavaScript file of your web application:
+Inicialización de {{ site.data.keys.product }} Web SDK especificando los valores de **raíz de contexto** y el **ID de aplicación** en el archivo JavaScript principal de su aplicación web:
+
 
 ```javascript
 var wlInitOptions = {
@@ -103,68 +114,88 @@ WL.Client.init(wlInitOptions).then (
 });
 ```
 
-- **mfpContextRoot:** The context root used by the {{ site.data.keys.mf_server }}.
-- **applicationId:** The application package name, as defined when you [register the application](#registering-the-web-application).
+- **mfpContextRoot:** Raíz de contexto que {{ site.data.keys.mf_server }} utilizará.
 
-### Registering the web application
+- **applicationId:** Nombre del paquete de la aplicación, tal como la definió al [registrar la aplicación](#registering-the-web-application).
+
+### Registro de la aplicación web
 {: #registering-the-web-application }
-You can register applications either from the {{ site.data.keys.mf_console }} or from the {{ site.data.keys.mf_cli }}.
+Las aplicaciones se pueden registrar desde {{ site.data.keys.mf_console }} o desde {{ site.data.keys.mf_cli }}.
 
-#### From {{ site.data.keys.mf_console }}
+
+#### Desde {{ site.data.keys.mf_console }}
 {: #from-mobilefirst-operations-console }
-1. Open your favorite browser and load the {{ site.data.keys.mf_console }} by entering the `http://localhost:9080/mfpconsole/` URL.
-2. Click the **New** button next to **Applications** to create a new application.
-3. Select **Web** as the platform, and provide a name and identifier.
-4. Click **Register application**.
+1. Abra su navegador preferido y cargue {{ site.data.keys.mf_console }} especificando el URL `http://localhost:9080/mfpconsole/`.
 
-![Adding the Web platform](add-web-platform.png)
+2. Pulse el botón **Nuevo** junto a **Aplicaciones** para crear una nueva aplicación.
 
-#### From {{ site.data.keys.mf_cli }}
+3. Seleccione **Web** como plataforma y proporcione un nombre y un identificador.
+
+4. Pulse **Registrar aplicación**.
+
+![Adición de la plataforma web](add-web-platform.png)
+
+#### Desde {{ site.data.keys.mf_cli }}
 {: #from-mobilefirst-cli }
-From a **command-line** window, navigate to the root folder of the web application and run the command: `mfpdev app register`.
+Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz de la aplicación web y ejecute el mandato: `mfpdev app register`.
 
-## Updating the {{ site.data.keys.product_adj }} web SDK
+## Actualización de {{ site.data.keys.product_adj }} Web SDK
 {: #updating-the-mobilefirst-web-sdk }
-SDK releases can be found in the SDK [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
-To update the {{ site.data.keys.product_adj }} web SDK with the latest release:
+Los releases de SDK se pueden encontrar en el [repositorio NPM ](https://www.npmjs.com/package/ibm-mfp-web-sdk) de SDK.
+  
+Para actualizar {{ site.data.keys.product_adj }} Web SDK con el último release:
 
-1. Navigate to the root folder of the web application.
-2. Run the command: `npm update ibm-mfp-web-sdk`.
 
-## Same-origin policy
+1. Vaya a la carpeta raíz de la aplicación web.
+2. Ejecute el mandato: `npm update ibm-mfp-web-sdk`.
+
+## Política del mismo origen
 {: #same-origin-policy }
-If web resources are hosted on a different server machine than the one that {{ site.data.keys.mf_server }} is installed on, a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation is triggered. The same-origin-policy security model is designed to protect against potential security threats from unverified sources. According to this policy, a browser allows web resources (such as scripts) to interact only with resources that stem from the same origin (which is defined as a combination of URI scheme, host name, and port number). For more information about the same-origin policy, see The [Web Origin Concept](https://tools.ietf.org/html/rfc6454) specification, and specifically [3. Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3).
+Si los recursos web están alojados en una máquina de servidor diferente de la máquina en la que {{ site.data.keys.mf_server }} está instalado, se desencadena un incumplimiento de [política del mismo origen](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
+El modelo de seguridad de política del mismo origen se ha diseñado para protegerse con relación a posibles amenazas de seguridad desde orígenes no verificados.
+De acuerdo a esta política, un navegador permite a recursos web (como, por ejemplo, scripts) interactuar solo con los recursos provenientes del mismo origen (que se define como una combinación de esquema de URI, un nombre de host y un número de puerto).
+Para obtener más información sobre la política del mismo origen, consulte la especificación del [Concepto de origen web](https://tools.ietf.org/html/rfc6454), y específicamente los [3. Principios de la política del mismo origen](https://tools.ietf.org/html/rfc6454#section-3).
 
-Web apps that use the {{ site.data.keys.product_adj }} web SDK must be handled in a supporting topology. For example, use a reverse proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+Las aplicaciones web que utilizan {{ site.data.keys.product_adj }} Web SDK deben trabajar en una topología de soporte.
+Por ejemplo, utilizando un proxy inverso para redirigir de forma interna las solicitudes al servidor apropiado manteniendo el mismo origen individual.
 
-### Alternatives
+
+### Alternativas
 {: #alternatives }
-You can meet the policy requirements by using either of the following methods:
+Puede satisfacer los requisitos de política utilizando cualquiera de los siguientes métodos:
 
-- Serving the web application resources, for example, from the same WebSphere Application Server Liberty profile application server that is used in the {{ site.data.keys.mf_dev_kit_full }}.
-- Using Node.js as a reverse proxy to redirect application requests to the {{ site.data.keys.mf_server }}.
 
-> Learn more in [Setting up the Web development environmnt](../../../installation-configuration/development/web) tutorial
+- Sirviendo recursos de aplicación web, por ejemplo, desde el mismo servidor de aplicaciones de perfil WebSphere Application Server Liberty que se utiliza en {{ site.data.keys.mf_dev_kit_full }}.
 
-## Secure-origins policy
-{: secure-origins-policy }
-When you use Chrome during development, the browser might not allow an application to load if it uses both HTTP and a host that **is not** `localhost`. The cause is the secure-origins policy that is implemented and used by default in this browser.
+- Utilizando Node.js como un proxy inverso para redirigir solicitudes de aplicación de {{ site.data.keys.mf_server }}.
 
-To overcome this, you can start the Chrome browser with the following flag:
+
+> Obtenga más información en la guía de aprendizaje [Configuración del entorno de desarrollo web](../../../installation-configuration/development/web)
+
+## Política de orígenes seguros
+{: #secure-origins-policy }
+Al utilizar Chrome durante el desarrollo, el navegador podría no permitir que una aplicación se cargase utilizando HTTP y un host que **no fuese** `localhost`.
+La razón se encuentra en que la política de orígenes seguros está implementada y utilizada de forma predeterminada en este navegador.
+
+
+Para solucionar esto, inicie el navegador Chrome con el siguiente distintivo:
+
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
+- Sustituya "test-to-new-user-profile/myprofile" con la ubicación de una carpeta que actuará como un nuevo perfil de usuario de Chrome para que el distintivo funcione.
 
-Read more about Secure Origins [in this Chormium developer document](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
 
-## Tutorials to follow next
+Para obtener más información sobre los orígenes seguros, consulte [este documento para desarrolladores de Chormium](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
+
+## Guías de aprendizaje con las que continuar 
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} web SDK now integrated, you can now:
+Con {{ site.data.keys.product_adj }} Web SDK ahora integrado, podrá:
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review [All Tutorials](../../../all-tutorials)
+
+- Revisar las guías de aprendizaje de [Utilización de {{ site.data.keys.product }} SDK](../)
+- Revisar las guías de aprendizaje de [Desarrollo de adaptadores](../../../adapters/)
+- Revisar las guías de aprendizaje de [Autenticación y seguridad](../../../authentication-and-security/)
+- Revisar [Todas las guías de aprendizaje](../../../all-tutorials)

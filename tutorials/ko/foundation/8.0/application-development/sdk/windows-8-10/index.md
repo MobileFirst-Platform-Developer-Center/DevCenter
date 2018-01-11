@@ -23,7 +23,7 @@ weight: 4
 #### 다음으로 이동:
 {: #jump-to }
 - [{{ site.data.keys.product_adj }} 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
-- [수동으로 {{ site.data.keys.product_adj }} 고유 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk) 
+- [수동으로 {{ site.data.keys.product_adj }} 고유 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk)
 - [{{ site.data.keys.product_adj }} 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
 - [생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
 - [다음 학습서](#tutorials-to-follow-next)
@@ -65,7 +65,7 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 
 {{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
 
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">
@@ -121,7 +121,7 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 >
 > 1. {{ site.data.keys.mf_console }}을 로드하십시오.   
 > 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.   
-> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.resw** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
+> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.resw** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오. 
 
 ## {{ site.data.keys.product_adj }} 고유 SDK 업데이트
 {: #updating-the-mobilefirst-native-sdk }

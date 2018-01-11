@@ -99,6 +99,8 @@ Descargue el ejemplo de adaptador **Java** de ejemplo "Hello World".
 
 
    > Si Maven y {{ site.data.keys.mf_cli }} no están instalados, siga las instrucciones de **Definir su entorno de desarrollo** en la pantalla.
+
+
 2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Maven del adaptador y ejecute el mandato:
 
 

@@ -116,7 +116,7 @@ CloudantClient cloudantClient = new CloudantClient(cloudantAccount,cloudantKey,c
 db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
-Wenn Sie [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) und JAX-RS 2.0 (Java API for RESTful Web Services) verwenden, können Sie in Cloudant ein neues Dokument erstellen, indem Sie eine JSON-Darstellung des Dokuments in der HTTP-Anforderung senden.
+Wenn Sie [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) und JAX-RS 2.0 (Java-API für REST-konforme Web-Services) verwenden, können Sie in Cloudant ein neues Dokument erstellen, indem Sie eine JSON-Darstellung des Dokuments in der HTTP-Anforderung senden.
 
 ```java
 @POST

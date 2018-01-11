@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on Bluemix service
+title: Using the Mobile Foundation on IBM Cloud service
 breadcrumb_title: Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
@@ -8,22 +8,22 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
-{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on IBM Cloud by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
+{{ site.data.keys.mf_bm_short }} is a IBM Cloud service that enables quick and easy stand-up of scalable Developer or Production environments of Mobile Foundation v8.0 on **Liberty for Java runtime**.
 
 The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
-1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile applications for development and testing. In this plan the {{ site.data.keys.mf_analytics_service }} service is added by default.
 
     > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
 
-2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
-4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
+> [See the service details](https://console.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
 
 #### Jump to:
 {: #jump-to}
@@ -32,6 +32,8 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
+* [Removing Analytics support](#removing-analytics-support)
+* [Switching from Analytics deployed with IBM Containers to Analytics service](#switching-from-analytics-container-to-analytics-service)
 * [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
@@ -41,7 +43,7 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 {: #setting-up-the-mobile-foundation-service }
 To set up the available plans, first follow these steps:
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
+1. Go to [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
 2. Search for **Mobile Foundation** and click on the resulting tile option.
 3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
 4. Select the desired pricing plan, then click **Create**.
@@ -50,15 +52,12 @@ To set up the available plans, first follow these steps:
 
 ### Setting up the *developer* plan
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.keys.mf_server }}.
+  * You can instantly access and work with the {{ site.data.keys.mf_server }}.
+  * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the IBM Cloud console.
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
-
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+  ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
 ### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
@@ -86,13 +85,12 @@ To set up the available plans, first follow these steps:
 
 ## Using the {{ site.data.keys.mf_bm_short }} service
 {: #using-the-mobile-foundation-service }
-> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
 
 With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
 
 ![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
 
-Click on **Add Analytics** to add {{ site.data.keys.mf_analytics }} support to your server instance.
+Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
 Learn more in the [Adding Analytics support](#adding-analytics-support) section.
 
 Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
@@ -117,22 +115,38 @@ Through the **Settings** tab, you can further customize the server instance with
 * JNDI configuration
 * User registry
 * TrustStore
-* {{ site.data.keys.mf_analytics }} configuration
+* {{ site.data.keys.mf_analytics_service }} configuration
 * DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
 * VPN
 
 ![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
 
-## Adding {{ site.data.keys.mf_analytics_short }} support
+## Adding {{ site.data.keys.mf_analytics_service }} support
 {: #adding-analytics-support }
-You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
+You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
-* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+>When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
 
-Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.  
+<!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
+* When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
 
-> Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
+
+> Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
+
+##  Removing {{ site.data.keys.mf_analytics_service }} support
+{: #removing-analytics-support}
+
+You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
+
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+
+##  Switching from Analytics deployed with IBM Containers to Analytics service
+{: #switching-from-analytics-container-to-analytics-service}
+
+>**Note**: Deleting {{ site.data.keys.mf_analytics_service }} will remove all available analytics data. This data will not be available in the new {{ site.data.keys.mf_analytics_service }} instance.
+
+User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 
 ## Applying {{ site.data.keys.mf_server }} fixes
 {: #applying-mobilefirst-server-fixes }
@@ -140,9 +154,29 @@ Updates to the {{ site.data.keys.mf_bm }} services are applied automatically wit
 
 ## Accessing server logs
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+To access server logs, follow the steps described below.
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+**Scenario 1:**
+
+1. Set up your host machine.<br/>
+   To manage the IBM Cloud Cloud Foundry app, you need to install the Cloud Foundry CLI.<br/>
+   Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases).
+2. Open the terminal and log in to your *Organization* and *Space* using `cf login`.
+3. Execute the following command in the CLI:
+```bash
+  cf ssh <mfp_Appname> -c "/bin/cat logs/messages.log" > messages.log
+```
+4. Only if trace is enabled, execute the following command:
+```bash
+cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
+ ```
+
+**Scenario 2:**      
+
+* To access server logs, open the sidebar navigation and click on **Apps → Dashboard → Cloud Foundry Apps**.
+* Select your App and click on **Logs → View in Kibana**.
+* Select and copy the logs messages.
+
 
 #### Tracing
 {: #tracing }
@@ -150,7 +184,7 @@ To enable tracing, in order to view DEBUG-level messages in the **trace.log** fi
 
 1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
 2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+3. Input the following trace statement: `com.ibm.mfp.*=all` and click **Submit trace**.
 
 The **trace.log** file is now available in the above specified location.
 
@@ -163,7 +197,7 @@ The Developer plan does not offer a persistent database, which could cause at ti
 * Every time you make any of the following server-side actions:
     * Deploy an adapter or update any adapter configuration or property value
     * Perform any security configuration such scope-mapping and alike
-    
+
     Run the following from the command-line to download your configuration to a .zip file:
 
   ```bash

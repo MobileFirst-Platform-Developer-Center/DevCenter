@@ -1,24 +1,161 @@
 ---
 layout: default
 indexed: false
-title: MobileFirst Foundation Blog
+title: Blog
 ---
-<section class="container blogIndex" role="main">
-    <h2 class="no-anchor">{{ site.data.keys.product }} Blog</h2>
-    <blockquote>Contribute a blog post! see <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">our contribution guidelines</a>.</blockquote>
-    <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/Announcement/">product announcements</a>.</blockquote>
-    <section id="blogPostsList" class="container">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{{site.baseurl}}/css/bulma-blog.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+
+        .twoColumns {
+            -webkit-columns: 2 200px;
+             -moz-columns: 2 200px;
+             columns: 2 200px;
+         }
+
+        .postItem {
+           margin-bottom: 10px;
+        }
+           .inline{
+             display: inline-block;
+             min-width: 268px;
+           }
+
+           .postTitle {
+              margin-bottom: 0;
+              color: #337ab7;
+              font-family: 'Montserrat', sans-serif;
+              font-weight: bold;
+
+           }
+           .postsubTitle {
+              margin-bottom: 0;
+              color: #e5eaee;
+              font-family: 'Montserrat', sans-serif;
+              font-weight: bold;
+
+           }
+              a {
+                 color: #337ab7;
+                 text-decoration: none;
+              }
+
+           .postDate {
+               font-family: 'Montserrat', sans-serif;
+               font-size: 80%;
+               padding: 0;
+               margin: 0;
+               font-weight: bold;
+           }
+
+           .postExcerpt {
+             font-family: 'Montserrat', sans-serif;
+             font-size: 85%;
+           }
+    </style>
+</head>
+
+
+    <section class="hero is-dark">
+        <div class="hero-body">
+            <p class="title"><span class="postTitle">Mobile Foundation Blog</span>
+            </p>
+            <p class="subtitle"><span class="postsubTitle">
+                    <span class="icon has-text-info"><i class="fa fa-info-circle"></i></span> Contribute a blog post! See <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md"><span class="postsubTitle">our contribution guidelines</span></a>.</span>
+                    <p class="postsubTitle">Read <a href="{{ site.baseurl }}/blog/tag/Announcement/"><span class="content is-link">product announcements</span></a>.</p>
+                    <p class="postsubTitle">Read <a href="{{ site.baseurl }}/blog/tag/iFix/"><span class="content is-link">iFix availability announcements</span></a>.</p>
+            </p>
+            </div>
+    </section>
+
+<!-- <section class="container blogPostsList" role="main"> -->
+ <div class="container is-fluid">
+  <!--<h2 class="title">Mobile Foundation Blog</h2>
+  <p>Posts provide additional technical know-how that is required when working with Mobile Foundation offerings.<br/> Posts are broadly based on development, product features, and announcements.</p>
+  <br/>
+  <blockquote><span class="icon has-text-info"><i class="fa fa-info-circle"></i></span> Contribute a blog post! see <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">our contribution guidelines</a>.</blockquote>
+  <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/Announcement/">product announcements</a>.</blockquote>
+  <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/iFix/">iFix availability announcements</a>.</blockquote>
+  -->
+  <br/>
+  <h3 class="title is-4 is-info"><span class="postTitle">Posts on product features</span></h3>
+  <div class="columns is-multiline">
+    {% for post in paginator.posts %}
+        {% for tag in post.tags %}
+            {% if tag == 'iFix' %}
+                {% assign found_ifix = true %}
+                {% break %}
+            {% endif %}
+        {% endfor%}
+        {% if found_ifix != true %}
+        <div class="column is-4">
+         <!-- START ARTICLE -->
+         <div class="card article">
+          <!-- <div class="card-image">
+              <figure class="image is-1by1">
+                <img src="{{ site.baseurl }}/assets/labs/comrade-app.png" alt="Placeholder image">
+              </figure>
+          </div>-->
+           <div class="card-content">
+             <div class="media">
+               <div class="media-content">
+                 <p class="title is-5 article-title"><span class="postTitle">{{post.title}}</span></p>
+                 <p><span class="postDate">{{ post.author.name}}</span></p>
+                 <p><span class="postDate">{{post.date | date: '%B %d, %Y'}}</span></p>
+                 <br/>
+                 <p class="content is-12">
+                   <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span>
+                 </p>
+                 <a class="button is-info is-outlined" href="{{site.baseurl}}{{post.url}}">Read</a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+         <!-- END ARTICLE -->
+         <br/>
+        {% endif %}
+        {% assign found_ifix = false %}
+    {% endfor %}
+</div>
+
+
+
+   <!-- END ARTICLE FEED -->
+   <nav>
+        <ul class="pagination">
+            <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
+                <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
+            </li>
+            <li {% if paginator.next_page == null %}class="disabled"{% endif %}>
+                <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+<hr>
+<br/>
+
+
+    <h3 class="title is-4"><span class="postTitle">Browse all the blog posts</span></h3>
+     <!--<section id="blogPostsList" class="container"> -->
+
         <div class="twoColumns">
-        {% for post in paginator.posts %}
+            {% for post in paginator.posts %}
             <div class="postItem inline">
                 <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
                 <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
                 <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</p>
-            </div>
-        {% endfor %}
+              </div>
+            {% endfor %}
         </div>
+        <br/>
         <!-- Pagination links -->
-        <nav>
+       <nav>
             <ul class="pagination">
                 <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
                     <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
@@ -28,19 +165,22 @@ title: MobileFirst Foundation Blog
                 </li>
             </ul>
         </nav>
-    </section>
 
-    <hr>
-    <section>
-        <h3 class="no-anchor">More blogs to follow</h3>
-        <ul class="moreBlogs">
-            <li><b><a href="http://ibmmobiletipsntricks.com/" target="_blank">IBM Mobile Tips 'n' Tricks</a></b></li>
-            <li><b><a href="http://www.tricedesigns.com/tag/mobilefirst/" target="_blank">tricedesigns</a></b></li>
-            <li><b><a href="https://www.raymondcamden.com/tags/mobilefirst/" target="_blank">Raymond Camden’s blog</a></b></li>
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b></li>
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">IBM Mobile Development</a></b></li>
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklight/?lang=en" target="_blank">IBM Worklight’s previous blog</a></b></li>
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklightsmobileplayground/?lang=en" target="_blank">IBM Worklight Mobile Playground’s previous blog</a></b></li>
-        </ul>
-    </section>
-</section>
+  <!-- </section> -->
+
+<br/>
+
+   <!-- <hr>
+        <section class="hero is-white">
+            <h3 class="title is-4">More blogs to follow</h3>
+            <ul class="moreBlogs">
+                <li><b><a href="http://ibmmobiletipsntricks.com/" target="_blank">IBM Mobile Tips 'n' Tricks</a></b></li>
+                <li><b><a href="http://www.tricedesigns.com/tag/mobilefirst/" target="_blank">tricedesigns</a></b></li>
+                <li><b><a href="https://www.raymondcamden.com/tags/mobilefirst/" target="_blank">Raymond Camden’s blog</a></b></li>
+                <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b></li>
+                <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">IBM Mobile Development</a></b></li>
+                <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklight/?lang=en" target="_blank">IBM Worklight’s previous blog</a></b></li>
+                <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklightsmobileplayground/?lang=en" target="_blank">IBM Worklight Mobile Playground’s previous blog</a></b></li>
+            </ul>
+        </section>-->
+   <!-- </section> -->

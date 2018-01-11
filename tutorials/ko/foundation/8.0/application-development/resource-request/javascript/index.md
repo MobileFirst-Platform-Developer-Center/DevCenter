@@ -8,9 +8,9 @@ downloads:
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
   - 이름: Cordova 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - 이름: 어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-가중치: 3
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요

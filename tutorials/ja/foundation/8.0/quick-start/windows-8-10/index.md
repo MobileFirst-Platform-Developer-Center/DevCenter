@@ -119,7 +119,7 @@ weight: 4
 
 その場合、アダプター応答が Visual Studio の出力コンソールに出力されます。
 
-![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
+![ {{ site.data.keys.mf_server }} からリソースを正常に呼び出したアプリケーションのイメージ](success_response.png)
 
 ## 次の手順
 {: #next-steps }

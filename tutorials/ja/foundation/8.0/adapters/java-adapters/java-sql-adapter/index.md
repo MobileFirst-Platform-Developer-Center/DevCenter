@@ -63,7 +63,7 @@ adater.xml ファイルを編集して、以下のプロパティーを追加し
 
 ```java
 @Path("/")
-  public class JavaSQLResource {
+public class JavaSQLResource {
 }
 ```
 

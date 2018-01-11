@@ -107,7 +107,7 @@ Xcode에서 BTS 도구를 사용하려면 다음 작업을 수행하십시오.
 유효성 검증 유형을 전환하려면 [**mfpadm** CLI](../../administering-apps/using-cli/)를 사용하여 다음 명령을 실행하십시오. 
 
 ```bash
-app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
 ```
 `TYPE`은 `dynamic` 또는 `static`이 될 수 있습니다.
 

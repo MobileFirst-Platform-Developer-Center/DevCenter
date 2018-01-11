@@ -1,5 +1,7 @@
 .blogpost {
     h1 {
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
         font-size: 200%;
     }
     h2 {
@@ -20,6 +22,9 @@
       margin: 30px auto 30px auto;
       display: block;
   }
+  .blogcontent{
+    font-family: 'Montserrat', sans-serif;
+  }
 }
 
 #blogPostsList {
@@ -32,38 +37,38 @@
 		-moz-columns: 2 200px;
 		columns: 2 200px;
 	}
-   
+
    .postItem {
       margin-bottom: 10px;
-      
+
       &.inline{
         display: inline-block;
         min-width: 268px;
       }
-      
+
       .postTitle {
          margin-bottom: 0;
-         font-size: 120%;
-         
+         font-size: 110%;
+
          a {
             color: #337ab7;
             text-decoration: none;
-            
+
             &:hover {
                text-decoration: underline;
             }
          }
       }
-      
+
       .postDate {
       	font-size: 80%;
       	padding: 0;
       	margin: 0;
       	font-weight: bold;
       }
-      
+
       .postExcerpt {
-        font-size: 95%;
+        font-size: 85%;
       }
    }
 }

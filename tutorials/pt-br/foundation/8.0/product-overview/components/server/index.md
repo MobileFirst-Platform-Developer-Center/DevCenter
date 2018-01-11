@@ -23,7 +23,7 @@ Uma versão simplificada do {{ site.data.keys.mf_server }}, que vem pré-configu
 {: #mobilefirst-server-components }
 A arquitetura dos componentes do {{ site.data.keys.mf_server }} é ilustrada como a seguir:
 
-![Componentes que formam o {{ site.data.keys.mf_server }}](server_components.jpg)
+![Componentes que compõem o {{ site.data.keys.mf_server }}](server_components.jpg)
 
 ### Componentes principais do {{ site.data.keys.mf_server }}
 {: #core-components-of-mobilefirst-server }

@@ -8,13 +8,13 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-{{ site.data.keys.product_full }} SDK 包含通过 [Maven Central](http://search.maven.org/) 可用并且可添加到 Android Studio 项目的依赖关系集合。依赖关系与核心函数和其他函数对应：
+{{ site.data.keys.product_full }} SDK 包含通过 [Maven Central](http://search.maven.org/) 可用并且可添加到 Android Studio 项目的依赖关系集合。 依赖关系与核心函数和其他函数对应：
 
 * **IBMMobileFirstPlatformFoundation** - 实现客户机到服务器连接，并处理认证和安全方面、资源请求及其他必需的核心函数。
-* **IBMMobileFirstPlatformFoundationJSONStore** - 包含 JSONStore 框架。有关更多信息，请查看[针对 Andoid 的 JSONStore 教程](../../jsonstore/android/)。
-* **IBMMobileFirstPlatformFoundationPush** - 包含“推送通知”框架。有关更多信息，请查看[通知教程](../../../notifications/)。
+* **IBMMobileFirstPlatformFoundationJSONStore** - 包含 JSONStore 框架。 有关更多信息，请查看[针对 Andoid 的 JSONStore 教程](../../jsonstore/android/)。
+* **IBMMobileFirstPlatformFoundationPush** - 包含“推送通知”框架。 有关更多信息，请查看[通知教程](../../../notifications/)。
 
-在此教程中，了解如何使用 Gradle 将 {{ site.data.keys.product_adj }} 本机 SDK 添加到新的或现有的 Android 应用程序。您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序，查找有关添加到项目的 {{ site.data.keys.product_adj }} 配置文件的信息。
+在此教程中，了解如何使用 Gradle 将 {{ site.data.keys.product_adj }} 本机 SDK 添加到新的或现有的 Android 应用程序。 您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序，查找有关添加到项目的 {{ site.data.keys.product_adj }} 配置文件的信息。
 
 **先决条件：**
 
@@ -68,10 +68,10 @@ weight: 3
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
-   name: 'ibmmobilefirstplatformfoundation',
-   version: '8.0.+',
-   ext: 'aar',
-   transitive: true
+        name: 'ibmmobilefirstplatformfoundation',
+        version: '8.0.+',
+        ext: 'aar',
+        transitive: true
    ```
 
    或者在单行上：
@@ -80,13 +80,13 @@ weight: 3
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
-5. 在 **Android → 应用程序 → 清单**中，打开 `AndroidManifest.xml` 文件。在 **application** 元素上方添加以下许可权：
+5. 在 **Android → 应用程序 → 清单**中，打开 `AndroidManifest.xml` 文件。 在 **application** 元素上方添加以下许可权：
 
    ```xml
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. 将 {{ site.data.keys.product_adj }} UI 活动添加到现有 **activity** 元素旁：
 
    ```xml
@@ -98,8 +98,8 @@ weight: 3
 ### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: #manually-adding-the-mobilefirst-native-sdk }
 您还可以手动添加 {{ site.data.keys.product_adj }} SDK：
-  
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -109,13 +109,15 @@ weight: 3
 
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
-                <p>要手动添加 {{ site.data.keys.product_adj }} SDK，请先通过 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡下载 SDK .zip 文件。在完成上面的步骤之后，也遵循下面的信息。</p>
-            
+                <p>要手动添加 {{ site.data.keys.product_adj }} SDK，请先通过 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡下载 SDK .zip 文件。 在完成上面的步骤之后，也遵循下面的信息。</p>
+
                 <ul>
                     <li>解压缩下载的 .zip 文件并将相关的 aar 文件放置到 <b>app\libs</b> 文件夹中。</li>
                     <li>将以下内容添加到 <b>dependencies</b> 结尾：
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>将以下内容添加到 <b>repositories</b> 结尾：
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>结束部分</b></a>
             </div>
@@ -155,7 +157,7 @@ repositories {
 >
 > 1. 装入 {{ site.data.keys.mf_console }}。  
 > 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
-> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.properties** 文件。遵循屏幕上的指示信息将此文件添加到您的项目。
+> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.properties** 文件。遵循屏幕上指示信息将此文件添加到您的项目。
 
 ### 创建 WLClient 实例
 {: #creating-a-wlclient-instance }
@@ -165,7 +167,7 @@ repositories {
 WLClient.createInstance(this);
 ```
 
-**注：**在整个应用程序生命周期中只应创建一次 `WLClient` 实例。建议使用 Android 应用程序类来创建。
+**注：**在整个应用程序生命周期中只应创建一次 `WLClient` 实例。 建议使用 Android 应用程序类来创建。
 
 ## 更新 {{ site.data.keys.product_adj }} 本机 SDK
 {: #updating-the-mobilefirst-native-sdk }
@@ -186,9 +188,8 @@ WLClient.createInstance(this);
 {{ site.data.keys.mf_server }}
 的通信协议。             | http 或 https  |
 | wlServerHost        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。
-                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }} 上的应用程序的上下文根路径。 | /mfp/          |
+| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 
 ## 对 Javadoc 和 Android 服务的支持

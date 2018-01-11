@@ -76,7 +76,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
    }
    ```
 
-4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu: 
+4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu:
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -86,7 +86,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
    transitive: true
    ```
 
-   Oder in einer einzelnen Zeile: 
+   Oder in einer einzelnen Zeile:
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
@@ -98,7 +98,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. Fügen Sie die {{ site.data.keys.product_adj }}-Benutzerschnittstellenaktivität neben dem vorhandenen Element **activity** hinzu: 
 
    ```xml
@@ -110,8 +110,8 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 ### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
 {: #manually-adding-the-mobilefirst-native-sdk }
 Sie können das SDK der {{ site.data.keys.product_adj }} auch manuell hinzufügen: 
-  
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -122,12 +122,14 @@ Sie können das SDK der {{ site.data.keys.product_adj }} auch manuell hinzufüge
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>Wenn Sie das {{ site.data.keys.product_adj }}-SDK manuell hinzufügen möchten, müssen Sie zunächst über das Download-Center der {{ site.data.keys.mf_console }} die SDK-ZIP-Datei auf der Registerkarte <b>SDKs</b> herunterladen. Wenn Sie die obigen Schritte ausgeführt haben, gehen Sie wie nachfolgend beschrieben vor. </p>
-            
+
                 <ul>
                     <li>Entpacken Sie die heruntergeladene ZIP-Datei und stellen Sie die relevanten aar-Dateien in den Ordner <b>app\libs</b>.</li>
                     <li>Fügen Sie am Ende von <b>dependencies</b> Folgendes hinzu:
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>Fügen Sie am Ende von <b>repositories</b> Folgendes hinzu:
@@ -139,8 +141,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Abschnitt schließen</b></a>
             </div>
@@ -159,8 +161,7 @@ repositories {
     ```bash
     mfpdev app register
     ```
-    - Wenn ein ferner Server verwendet wird,
-fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
+    - Wenn ein ferner Server verwendet wird, fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu.
 
 Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung zu
 {{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren.
@@ -173,7 +174,7 @@ Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:
 >
 > 1. Laden Sie die {{ site.data.keys.mf_console }}.  
 > 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
-> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.properties** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.properties** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen. 
 
 ### WLClient-Instanz erstellen
 {: #creating-a-wlclient-instance }
@@ -202,13 +203,13 @@ Diese Datei befindet sich im Ordner **./app/src/main/assets/** des Android-Studi
 enthält die clientseitigen Eigenschaften für die Registrierung Ihrer
 Android-App bei {{ site.data.keys.mf_server }}. 
 
-| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
+| Eigenschaft | Beschreibung | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
-| wlServerHost        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
-| wlServerPort        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
-| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
+| wlServerProtocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
+| wlServerHost | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
+| wlServerPort | Port von {{ site.data.keys.mf_server }} | 9080 |
+| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
 
 ## Unterstützung für Javadoc und den Android-Service
 {: #support-for-javadoc-and-android-service }

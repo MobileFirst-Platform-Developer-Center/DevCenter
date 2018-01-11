@@ -85,11 +85,11 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{ site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{ site.data.keys.mf_server }} コンテナーを構成するためのファイル (**mfpf-server**) が含まれています。
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
             </h4>
         </div>
 
@@ -124,7 +124,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-server-env" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -287,12 +287,12 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
      * 4 文字から 30 文字までの長さにすることができます。コマンド・ラインからコンテナーを管理する予定の場合は、素早く入力できる短い名前空間を使用することをお勧めします。
      * Bluemix レジストリー内で固有でなければなりません。
 
-    名前空間を設定するには、次のコマンドを実行します。`cf ic namespace set <new_name>`  
+    名前空間を設定するには、次のコマンドを実行します。`cf ic namespace set <new_name>`。  
     設定した名前空間を取得するには、次のコマンドを実行します。`cf ic namespace get`。
 
 > IC コマンドについて詳しく知るには、`ic help` コマンドを使用します。
 
-## IBM Containers 上での {{ site.data.keys.product_adj }} Server と Analytics Server のセットアップ
+## IBM Containers 上での {{ site.data.keys.product_adj }} Server、Analytics Server、および {{ site.data.keys.mf_app_center_short }} のセットアップ
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
 前述のとおり、スクリプトは、対話式に実行することも、構成ファイルを使用して実行することもできます。
 
@@ -301,19 +301,423 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 **注:** スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、少なくとも、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
 
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+{{ site.data.keys.mf_app_center }} を使用する場合は、ここから開始します。
+
+>**注:** インストーラーと DB ツールは、オンプレミスの {{ site.data.keys.mf_app_center }} インストール・フォルダー (`installer` フォルダーと `tools` フォルダー) からダウンロードできます。
+
+<div class="panel-group accordion" id="scripts" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step1">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1appcenter" aria-expanded="false" aria-controls="collapseStep1appcenter">構成ファイルの使用</a>
+            </h4>
+        </div>
+
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
+              <h4>initenv.properties</h4>
+              <ul>
+                  <li><b>BLUEMIX_USER - </b>ご使用の Bluemix ユーザー名 (E メール)。</li>
+                  <li><b>BLUEMIX_PASSWORD - </b>ご使用の Bluemix パスワード。</li>
+                  <li><b>BLUEMIX_ORG - </b>ご使用の Bluemix 組織名。</li>
+                  <li><b>BLUEMIX_SPACE - </b>ご使用の Bluemix スペース (前述のとおり)。</li>
+              </ul>
+              <h4>prepareappcenterdbs.properties</h4>
+              {{ site.data.keys.mf_app_center }} には、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional データベース・インスタンス</a> (Enterprise Transactional 2.8.500 または Enterprise Transactional 12.128.1400) が必要です。
+              <blockquote><p><b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは即時に行われない場合があります。サービスのデプロイメントの前に、販売チームから問い合わせを受けることがあります。</p></blockquote>
+
+              dashDB インスタンスのセットアップが完了したら、以下の必須引数を指定します。
+              <ul>
+                  <li><b>APPCENTER_DB_SRV_NAME - </b>Application Center データを保管するための dashDB サービス・インスタンス名。</li>
+                  <li><b>APPCENTER_SCHEMA_NAME - </b>Application Center データを保管するために使用されるデータベース・スキーマ名。</li>
+                  <blockquote><b>注:</b> dashDB サービス・インスタンスを複数のユーザーが共有している場合は、必ず固有のスキーマ名を指定してください。</blockquote>
+
+              </ul>
+              <h4>prepareappcenter.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b>当該イメージのタグ。<em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
+              </ul>
+              <h4>startappcenter.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em> で指定するものと同じ。</li>
+                  <li><b>SERVER_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
+                  <li><b>SERVER_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。</li>
+                  <blockquote>IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code>
+                  IP アドレスは、特定の Bluemix スペース内の複数のコンテナーで再使用できます。
+                  既に割り当て済みの IP がある場合、<code>cf ic ip list</code> を実行できます。</blockquote>
+              </ul>
+              <h4>startappcentergroup.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em> で指定するものと同じ。</li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>ご使用の Bluemix コンテナー・グループの名前。</li>
+                  <li><b>SERVER_CONTAINER_GROUP_HOST - </b>ホスト名。</li>
+                  <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。デフォルトは <code>mybluemix.net</code> です。</li>
+              </ul>    
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="appcenterstep2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep2appcenter" aria-expanded="false" aria-controls="collapseStep2appcenter">スクリプトの実行</a>
+            </h4>
+        </div>
+
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
+                <ol>
+                    <li><b>initenv.sh – Bluemix へのログイン</b><br />
+次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-initenv">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
+                                </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-initenv">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>コマンド・ライン引数</b></td>
+                                                <td><b>説明</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-u|--user] BLUEMIX_USER</td>
+                                                <td>Bluemix ユーザー ID または E メール・アドレス</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
+                                                <td>Bluemix パスワード</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-o|--org] BLUEMIX_ORG	</td>
+                                                <td>Bluemix 組織名</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
+                                                <td>Bluemix スペース名</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション。[-a|--api] BLUEMIX_API_URL	</td>
+                                                <td>Bluemix API エンドポイント。(デフォルトでは https://api.ng.bluemix.net)</td>
+                                            </tr>
+                                        </table>
+
+                                        <p>例えば、次のとおりです。</p>
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>セクションを閉じる</b></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} データベースの準備</b><br/>
+                    <b>prepareappcenterdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{ site.data.keys.mf_app_center }} を構成します。手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。
+                    次のコマンドを実行します。
+
+{% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenterdbs" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
+                                    <h4 class="panel-title">
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
+                                </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-prepareappcenterdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenterdbs">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                              <td><b>コマンド・ライン引数</b></td>
+                                              <td><b>説明</b></td>
+                                            </tr>
+                                            <tr>
+                                              <td>[-db | --acdb ] APPCENTER_DB_SRV_NAME	</td>
+                                              <td>Bluemix dashDB サービス (Bluemix サービス・プラン「Enterprise Transactional」を使用)。</td>
+                                            </tr>    
+                                            <tr>
+                                              <td>オプション: [-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
+                                              <td>Application Center サービスのデータベース・スキーマ名。デフォルトは <i>APPCNTR</i> です。</td>
+                                            </tr>    
+                                        </table>
+
+                                        <p>例えば、次のとおりです。</p>
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb AppCenterDashDBService
+{% endhighlight %}
+
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>セクションを閉じる</b></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                    </li>
+                    <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
+                    このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で <b>initenv.properties</b> を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。</li>
+
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+
+                    <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} イメージの準備</b><br />
+                    {{ site.data.keys.mf_app_center }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。Bluemix リポジトリー内で使用可能なすべてのイメージを表示するには、<code>cf ic images</code> を実行します。
+                    リストには、イメージ名、作成日、および ID が表示されます。
+
+                        次のコマンドを実行します。
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenter" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
+                                </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-prepareappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenter">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>コマンド・ライン引数</b></td>
+                                                <td><b>説明</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
+                                                <td>カスタマイズされた MobileFirst Application Center イメージに使用する名前。フォーマット: <em>registryUrl/namespace/imagename</em></td>
+                                            </tr>
+                                        </table>
+
+                                        <p>例えば、次のとおりです。</p>
+{% highlight bash %}
+prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>セクションを閉じる</b></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                    <li><b>startappcenter.sh - IBM コンテナーでのイメージの実行</b><br/>
+                    IBM コンテナーで {{ site.data.keys.mf_app_center }} イメージを実行するために使用される <b>startappcenter.sh</b> スクリプト。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。
+
+                        次のコマンドを実行します。
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcenter" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
+                                </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-startappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcenter">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>コマンド・ライン引数</b></td>
+                                                <td><b>説明</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>{{ site.data.keys.mf_app_center }} イメージの名前。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-i|--ip] SERVER_IP	</td>
+                                                <td>{{ site.data.keys.mf_app_center }} コンテナーのバインド先の IP アドレス。(使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-si|--services] SERVICE_INSTANCES	</td>
+                                                <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-h|--http] EXPOSE_HTTP </td>
+                                                <td>HTTP ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-s|--https] EXPOSE_HTTPS </td>
+                                                <td>HTTPS ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-m|--memory] SERVER_MEM </td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-se|--ssh] SSH_ENABLE </td>
+                                                <td>コンテナーに対して SSH を有効にします。許容値は、Y (デフォルト) または N です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-sk|--sshkey] SSH_KEY </td>
+                                                <td>コンテナーに注入される SSH 鍵。(id_rsa.pub ファイルの内容を指定します。)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>適用されるトレース仕様。デフォルト: <code>*=info</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-ml|--maxlog] MAX_LOG_FILES </td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション:  [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <p>例えば、次のとおりです。</p>
+{% highlight bash %}
+startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_address
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>セクションを閉じる</b></a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                    <li><b>startappcentergroup.sh - IBM コンテナー・グループでのイメージの実行</b><br/>
+                    <b>startappcentergroup.sh</b> スクリプトを使用して、{{ site.data.keys.mf_app_center }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
+
+                        次のコマンドを実行します。
+{% highlight bash %}
+./startappcentergroup.sh args/startappcentergroup.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcentergroup" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
+                                </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-startappcentergroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcentergroup">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>コマンド・ライン引数</b></td>
+                                                <td><b>説明</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>Bluemix レジストリー内の {{ site.data.keys.mf_app_center }} コンテナー・イメージの名前。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
+                                                <td>{{ site.data.keys.mf_app_center }} コンテナー・グループの名前。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
+                                                <td>ルートのホスト名。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
+                                                <td>ルートのドメイン名。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-gm|--min] SERVERS_CONTAINER_GROUP_MIN </td>
+                                                <td>コンテナー・インスタンスの最小数。デフォルト値は 1 です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-gx|--max] SERVER_CONTAINER_GROUP_MAX </td>
+                                                <td>コンテナー・インスタンスの最大数。デフォルト値は 2 です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED </td>
+                                                <td>コンテナー・インスタンスの希望数。デフォルト値は 1 です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-a|--auto] ENABLE_AUTORECOVERY </td>
+                                                <td>コンテナー・インスタンスの自動リカバリー・オプションを使用可能にします。許容値は、Y または N (デフォルト) です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-si|--services] SERVICES </td>
+                                                <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス名。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>適用されるトレース仕様。デフォルトは </code>*=info</code> です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-ml|--maxlog] MAX_LOG_FILESC </td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション: [-m|--memory] SERVER_MEM </td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                            </tr>
+                                            <tr>
+                                                <td>オプション:  [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <p>例えば、次のとおりです。</p>
+{% highlight bash %}
+startappcentergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>セクションを閉じる</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 ### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_server }} で分析を使用する場合は、ここから開始します。
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts-analytics" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step1">
+        <div class="panel-heading" role="tab" id="step1-analytics">
             <h4 class="panel-title">
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">構成ファイルの使用</a>
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
             <b>注:</b> ここには、必要な引数値のみを含めています。その他の引数については、プロパティー・ファイル内の資料を参照してください。
@@ -333,9 +737,9 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                   <li><b>ANALYTICS_IMAGE_TAG - </b><em>prepareserver.sh</em> で指定するものと同じ。</li>
                   <li><b>ANALYTICS_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
                   <li><b>ANALYTICS_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。<br/>
-                  IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
-                  IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
-                  既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
+                    IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
+                    IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
+                    既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
               </ul>
               <h4>startanalyticsgroup.properties</h4>
               <ul>
@@ -355,7 +759,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
@@ -365,7 +769,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
@@ -423,7 +827,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         Bluemix リポジトリー内にあるすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                         リストには、イメージ名、作成日、および ID が表示されます。
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
@@ -464,7 +868,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
@@ -563,7 +967,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
@@ -660,7 +1064,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -668,7 +1072,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
 
@@ -723,7 +1127,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
 
@@ -734,7 +1138,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-initenv" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
@@ -788,7 +1192,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserverdbs" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
@@ -855,7 +1259,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
@@ -894,7 +1298,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-startserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
@@ -979,7 +1383,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-startservergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
@@ -1007,7 +1411,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>ルートのホスト名。</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>ルートのドメイン名。</td>
                                             </tr>
                                             <tr>
@@ -1087,15 +1491,31 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 {: #port-number-limitation }
 現在、IBM Containers には、パブリック・ドメインに使用可能なポート番号に関して制約があります。そのため、{{ site.data.keys.mf_analytics }} コンテナーと {{ site.data.keys.mf_server }} コンテナーに指定されたデフォルトのポート番号 (HTTP の場合は 9080、HTTPS の場合は 9443) を変更することはできません。コンテナー・グループ内のコンテナーは、HTTP ポート 9080 を使用する必要があります。コンテナー・グループでは、複数のポート番号および  HTTPS 要求の使用はサポートされません。
 
+
 ## {{ site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
+
 IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
-暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは、**package_root/mfpf-analytics/usr** フォルダーおよび **package_root/mfpf-server/usr** フォルダー内にあります。
+暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは次のフォルダー内にあります。
+* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} Liberty Cloud Foundry アプリケーション: **package_root/mfpf-server/usr**
+* {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter/usr**
+
+### iFix を適用するためのステップ:
 
 1. 暫定修正アーカイブをダウンロードし、その内容を既存のインストール・フォルダーに解凍して、既存のファイルを上書きします。
-2. バックアップした構成ファイルを **/mfpf-analytics/usr** フォルダーおよび **/mfpf-server/usr** フォルダーにリストアし、新規にインストールされた構成ファイルを上書きします。
+2. バックアップした構成ファイルを **package_root/mfpf-analytics/usr**、**package_root/mfpf-server/usr**、および **package_root/mfp-appcenter/usr** の各フォルダーにリストアし、新規にインストールされた構成ファイルを上書きします。
+3. エディターで **package_root/mfpf-server/usr/env/jvm.options** ファイルを編集して、次の行が存在する場合は削除します。
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
+```
+    これで、更新したサーバーをビルドおよびデプロイできるようになりました。
 
-これで、新規の実動レベルのコンテナーをビルドおよびデプロイできるようになりました。
+    a. `prepareserver.sh` スクリプトを実行してサーバー・イメージを再ビルドし、それを IBM コンテナー・サービスにプッシュします。
+
+    b. `startserver.sh` スクリプトを実行してサーバー・イメージをスタンドアロン・コンテナーとして実行するか、`startservergroup.sh` を実行してサーバー・イメージをコンテナー・グループとして実行します。
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix からのコンテナーの削除
 {: #removing-a-container-from-bluemix }
@@ -1121,3 +1541,5 @@ Bluemix からデータベース・サービス構成を削除するには、Blu
 2. 選択した dashDB サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、dashDB コンソールを「起動」します。
 3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
 4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。Bluemix からデータベース構成が削除されます。
+
+同様に、{{ site.data.keys.mf_app_center }} の構成中に **prepareappcenterdbs.sh** を実行した場合、上のステップに従って、Bluemix でデータベース・サービス構成を削除します。

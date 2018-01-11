@@ -11,10 +11,7 @@ Wenn Sie Ihre App mit den Tools der {{ site.data.keys.product_full }}
 entwickeln, müssen Sie diverse Komponenten und Elemente entwickeln oder konfigurieren. Wenn Sie über diese Komponenten und Elemente
 informiert sind, geht die Entwicklung Ihrer App reibungslos und schneller voran. 
 
-Sie werden sich aber nicht nur mit diesen Konzepten vertraut machen, sondern erhalten auch Informationen zu den
-{{ site.data.keys.product_adj }}-APIs für native, Cordova- und Webanwendungen wie JSONStore und WLResourceRequest.
-Zudem werden Sie das Debuggen von Anwendungen, die Verwendung der direkten Aktualisierung für Webressourcen, die Liveaktualisierung zum Erstellen von Benutzersegmenten
-und die Bearbeitung von Apps, Adaptern und anderen Artefakten über die {{ site.data.keys.mf_cli }} erlernen.
+Sie werden sich aber nicht nur mit diesen Konzepten vertraut machen, sondern erhalten auch Informationen zu den {{ site.data.keys.product_adj }}-APIs für native, Cordova- und Webanwendungen wie JSONStore und WLResourceRequest. Zudem werden Sie das Debuggen von Anwendungen, die Verwendung der direkten Aktualisierung für Webressourcen, die Liveaktualisierung zum Erstellen von Benutzersegmenten und die Bearbeitung von Apps, Adaptern und anderen Artefakten über die {{ site.data.keys.mf_cli }} erlernen.
 
 Navigieren Sie in der Seitenleiste zum betreffenden Abschnitt oder
 lesen Sie hier weiter,
@@ -40,8 +37,9 @@ anhand folgender Elemente identifiziert:
 * Versionsnummer
 * Zielimplementierungsplattform
 
-> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für
-Webanwendungen nicht zutreffend. Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
+> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für Webanwendungen nicht zutreffend. 
+
+Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
 implementiert werden und nur die ihnen zugewiesenen Ressourcen nutzen. Unterschiedliche Komponenten der
 {{ site.data.keys.product }} verwenden verschiedene Kombinationen dieser
 Kennungen auf unterschiedliche Art. 
@@ -79,6 +77,8 @@ werden in der
 
 > **Hinweis:** Die Funktion **Keychain Sharing** ist obligatorisch, wenn Sie Xcode 8 verwenden und iOS-Apps im iOS-Simulator ausführen. Sie müssen diese Funktion manuell aktivieren, bevor Sie das Xcode-Projekt erstellen.
 
+
+
 ### Anwendungskonfiguration
 {: #application-configuration }
 Wie bereits erwähnt, wird eine Anwendung sowohl auf der Clientseite als auch auf der Serverseite konfiguriert.   
@@ -95,7 +95,9 @@ erforderlich sind.
 Die Serverkonfiguration für die App umfasst Informationen wie den App-Managementstatus, Webressourcen für
 die direkte Aktualisierung, konfigurierte Sicherheitsbereiche und die Protokollkonfiguration. 
 
-> In den Lernprogrammen zum [Hinzufügen der SDKs der {{ site.data.keys.product }}](sdk) erfahren Sie, wie das {{ site.data.keys.product_adj }}-Client-SDK hinzugefügt wird.
+> In den Lernprogrammen zum [Hinzufügen der SDKs der {{ site.data.keys.product }}](sdk) erfahren Sie, wie die {{ site.data.keys.product_adj }}-Client-SDKs hinzugefügt werden.
+
+
 
 Die Clientkonfiguration muss definiert werden, bevor Sie
 den Anwendungsbuild erstellen. Die Konfigurationseigenschaften in der Client-App müssen zu den Eigenschaften passen, die in
@@ -124,7 +126,9 @@ Konfiguration Ihres {{ site.data.keys.mf_server }} automatisieren.
 
 > **Beachten Sie Folgendes:** Sie können die Serverkonfiguration sogar modifizieren, während der
 {{ site.data.keys.mf_server }} aktiv ist und Datenverkehr von Apps empfängt. Sie müssen den Server nicht stoppen,
-um die Serverkonfiguration für eine App zu ändern. Auf einem Produktionsserver entspricht
+um die Serverkonfiguration für eine App zu ändern. 
+
+Auf einem Produktionsserver entspricht
 die App-Version üblicherweise der in einem App Store veröffentlichten Version einer Anwendung. Einige Serverkonfigurationselemente wie die Konfiguration der
 App-Authentizität, sind für die im Store veröffentlichte App eindeutig. 
 
@@ -149,7 +153,9 @@ bis hin zur Implementierung in der Produktion und zur Wartung.
 
 > Wenn Sie Ihre App entwickeln, steht Ihnen ein vorkonfigurierter Server
 zur Verfügung. Informationen zur Verwendung von {{ site.data.keys.mf_server }} für die Entwicklung Ihrer App
-finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development). {{ site.data.keys.mf_server }} umfasst die folgenden Komponenten, die
+finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development). 
+
+{{ site.data.keys.mf_server }} umfasst die folgenden Komponenten, die
 alle auch im
 {{ site.data.keys.mf_server }} enthalten sind.
 In einfachen Fällen werden alle Komponenten in demselben Anwendungsserver ausgeführt.

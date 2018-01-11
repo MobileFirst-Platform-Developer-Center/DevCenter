@@ -92,7 +92,7 @@ Por exemplo, se você configurar **shards** como 4 e **réplicas** como 2, poder
 
 ## Instalando o {{ site.data.keys.mf_analytics }} no WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }}. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). O ****arquivo analytics.ear está localizado na pasta **<mf_server_install_dir>\analytics**. Para obter informações adicionais sobre como fazer download e instalar o WebSphere Application Server Liberty, consulte o artigo [Sobre o WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) no IBM developerWorks.
+Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }}. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). O arquivo **analytics.ear** está localizado na pasta `<mf_server_install_dir>\analytics`. Para obter informações adicionais sobre como fazer download e instalar o WebSphere Application Server Liberty, consulte o artigo [Sobre o WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) no IBM developerWorks.
 
 1. Crie um servidor executando o comando a seguir em sua pasta **./wlp/bin**.
 
@@ -106,8 +106,8 @@ Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Inclua o arquivo **analytics.ear** na pasta **./usr/servers/<serverName>/apps** de seu Liberty Server.
-4. Substitua os conteúdos da tag `<featureManager>` do arquivo **./usr/servers/<serverName>/server.xml** pelo seguinte conteúdo:
+3. Inclua o arquivo **analytics.ear** na pasta `./usr/servers/<serverName>/apps` de seu Liberty Server.
+4. Substitua o conteúdo da tag `<featureManager>` do arquivo `./usr/servers/<serverName>/server.xml` pelo conteúdo a seguir:
 
    ```xml
    <featureManager>
@@ -174,7 +174,7 @@ Certifique-se de que já tenha os arquivos  {{ site.data.keys.mf_analytics }} WA
 2. Remova o comentário da seção a seguir no arquivo **conf/server.xml**, que está presente, mas comentado, em um archive Tomcat recém-transferido por download.
 
    ```xml
-   <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
+   <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
 3. Declare os dois arquivos war no arquivo **conf/server.xml** e defina o registro do usuário.
@@ -224,7 +224,7 @@ As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics
 
 2. Selecione o aplicativo **MobileFirst Analytics** da lista **Aplicativos corporativos**.
 
-    ![Instalar aplicativos corporativos WebSphere](install_webphere_ent_app.jpg)
+    ![Instale os aplicativos WebSphere Enterprise](install_webphere_ent_app.jpg)
 
 3. Clique em **Carregamento de Classes e Detecção de Atualização**.
 
@@ -232,11 +232,11 @@ As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics
 
 4. Configure a ordem de carregamento de classe como **pai por último**.
 
-    ![Mudar a ordem do carregamento de classes](install_websphere_app_class_load_order.jpg)
+    ![Mude a ordem de carregamento de classes](install_websphere_app_class_load_order.jpg)
 
 5. Clique em **Mapeamento de função de segurança para usuário/grupo** para mapear o usuário administrativo.
 
-    ![Ordem de carregamento de classes War](install_websphere_sec_role.jpg)
+    ![Ordem de carregamento de classes do War](install_websphere_sec_role.jpg)
 
 6. Clique em **Gerenciar Módulos**.
 
@@ -244,7 +244,7 @@ As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics
 
 7. Selecione o módulo **analytics** e mude a ordem do carregador de classes para **pai por último**.
 
-    ![Módulos do Analytics no WebSphere](install_websphere_module_class_load_order.jpg)
+    ![Módulo do Analytics no WebSphere](install_websphere_module_class_load_order.jpg)
 
 8. Ative a **Segurança administrativa** e a **segurança do aplicativo** no console de administração do WebSphere Application Server:
     * Efetue login no console administrativo do WebSphere Application Server.
@@ -266,9 +266,9 @@ Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos est
 
     > Nota: os seguintes caracteres especiais devem estar escapados quando forem usados nos valores dos scripts XML Ant:
     >
-    > * O símbolo de dólar ($) deve ser escrito como $$, , a menos que você deseje referenciar explicitamente uma variável Ant por meio da sintaxe ${variable}, conforme descrito na seção [Propriedades](http://ant.apache.org/manual/properties.html) do Manual do Apache Ant.
+    > * O símbolo de dólar ($) deve ser escrito como $$, , a não ser que você explicitamente deseje referenciar uma variável Ant por meio a sintaxe ${variável}, conforme descrito na seção [Propriedades](http://ant.apache.org/manual/properties.html) do Manual do Apache Ant.
     > * O caractere e comercial (&) deve ser escrito como &amp;, a menos que você deseje referenciar explicitamente uma entidade XML.
-    > * Aspas duplas (") devem ser escritas como &quot;, exceto quando estiverem dentro de uma sequência que esteja entre aspas simples.
+    > * Aspas duplas (") devem ser escritas como &quot;, exceto quando estiverem dentro de uma sequência que estiver dentro de aspas simples.
 
 2. Se você instalar um cluster de nós em vários servidores:
     * Você deve remover o comentário da propriedade **wl.analytics.masters.list** e configurar o seu valor para a lista de nome do host e da porta de transporte dos nós mestres. Por exemplo: `node1.mycompany.com:96000,node2.mycompany.com:96000`
@@ -305,7 +305,7 @@ A tabela a seguir mostra o mapeamento entre os tipos de eventos antigos e novos.
 | AnalyticsConfiguration    | AnalyticsConfiguration |
 | CustomCharts	            | CustomChart            |
 | CustomData	            | CustomData             |
-| Dispositivos	                | Dispositivo                 |
+| Devices	                | Dispositivo                 |
 | MfpAppLogs                | AppLog                 |
 | MfpAppPushAction          | AppPushAction          |
 | MfpAppSession	            | AppSession             |
@@ -313,7 +313,7 @@ A tabela a seguir mostra o mapeamento entre os tipos de eventos antigos e novos.
 | ServerNetworkTransactions | NetworkTransaction     |
 | ServerPushNotifications   | PushNotification       |
 | ServerPushSubscriptions   | PushSubscription       |
-| usuários	                    | User                   |
+| Users	                    | User                   |
 | inboundRequestURL	        | resourceURL            |
 | mfpAppName	            | appName                |
 | mfpAppVersion	            | appVersion             |
@@ -336,7 +336,7 @@ A imagem a seguir mostra um alerta de amostra da página **Visão geral** da se�
 
 A imagem a seguir mostra a página **Migração** quando você tiver documentos que devem ser migrados:
 
-![Página Migração no console](migration_page.jpg)
+![Página de migração no console](migration_page.jpg)
 
 > **Nota:** Esse processo pode levar um longo tempo, dependendo da quantidade de dados que você possui, e ele não pode ser interrompido durante a migração.
 

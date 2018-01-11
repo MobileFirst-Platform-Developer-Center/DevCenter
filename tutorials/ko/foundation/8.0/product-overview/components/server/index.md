@@ -21,7 +21,7 @@ weight: 1
 {: #mobilefirst-server-components }
 {{ site.data.keys.mf_server }} 컴포넌트의 아키텍처는 다음과 같이 설명됩니다. 
 
-![{{ site.data.keys.mf_server }}를 구성하는 컴포넌트](server_components.jpg) 
+![{{ site.data.keys.mf_server }}](server_components.jpg)
 
 ### {{ site.data.keys.mf_server }}의 코어 컴포넌트
 {: #core-components-of-mobilefirst-server }
@@ -43,7 +43,7 @@ weight: 1
 
 푸시 서비스에는 데이터베이스가 필요합니다. 푸시 서비스의 테이블은 런타임, 관리 서비스 및 라이브 업데이트 서비스의 테이블과 교차 지점이 없습니다. 따라서 동일한 데이터베이스 또는 스키마에 설치될 수 있습니다. 
 
-{{ site.data.keys.mf_analytics }} 서비스 및 {{ site.data.keys.mf_analytics_console }}은 모바일 앱 사용에 대한 모니터링 및 분석 정보를 제공합니다. 모바일 앱은 로거 SDK를 사용하여 더 많은 통찰을 제공할 수 있습니다. {{site.data.keys.mf_analytics }} 서비스에는 데이터베이스가 필요하지 않습니다. Elasticsearch를 사용하여 디스크에 로컬 형식으로 데이터를 저장합니다. 데이터는 Analytics 서비스의 클러스터 멤버 사이에서 복제될 수 있는 샤드 형식으로 구조화됩니다.
+{{ site.data.keys.mf_analytics }} 서비스 및 {{ site.data.keys.mf_analytics_console }}은 모바일 앱 사용에 대한 모니터링 및 분석 정보를 제공합니다. 모바일 앱은 로거 SDK를 사용하여 더 많은 통찰을 제공할 수 있습니다. {{ site.data.keys.mf_analytics }} 서비스에는 데이터베이스가 필요하지 않습니다. Elasticsearch를 사용하여 디스크에 로컬 형식으로 데이터를 저장합니다. 데이터는 Analytics 서비스의 클러스터 멤버 사이에서 복제될 수 있는 샤드 형식으로 구조화됩니다.
 
 네트워크 플로우에 대한 자세한 정보 및 이러한 컴포넌트에 대한 토폴로지 제한조건에 대해서는 [토폴로지 및 네트워크 플로우](../../../installation-configuration/production/server-configuration)를 참조하십시오.
 

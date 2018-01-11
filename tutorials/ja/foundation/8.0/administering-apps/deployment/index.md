@@ -33,7 +33,7 @@ weight: 1
         
     詳しくは、[HTTP アダプターでの SSL の使用 (Using SSL in HTTP adapters)](../../adapters/javascript-adapters/js-http-adapter/using-ssl/) を参照してください。自己署名証明書の使用について詳しくは、[自己署名証明書の使用によるアダプターとバックエンド・サーバーの間の SSL の構成](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)を参照してください。
 
-    > **注:** アプリケーション・サーバーが WebSphere  Application Server Liberty の場合、証明書は Liberty のトラストストアにも格納する必要があります。
+    > **注:** アプリケーション・サーバーが WebSphere  Application Server Liberty の場合、証明書は Liberty のトラストストアにも格納する必要があります。  
 
 3. アダプターのサーバー・サイド構成を確認してください。
 4. `mfpadm deploy adapter` および `mfpadm adapter set user-config` コマンドを使用して、アダプターおよびその構成をアップロードします。
@@ -140,7 +140,7 @@ weight: 1
 2. アプリケーションのインストール可能な成果物を配布する予定の場合は、アプリケーションのバージョンをインクリメントします。
 3. アプリケーションを、ビルドする前にターゲット・サーバー用に構成します。
 
-    ターゲット・サーバーの URL とランタイム名を、クライアントのプロパティー・ファイルで定義します。{{ site.data.keys.mf_cli }} を使用してターゲット・サーバーを変更することもできます。実行中のサーバーにアプリ ケーションを登録せずにターゲット・サーバー用にアプリケーションを構成するには、`mfpdev app config server <server URL>` および `mfpdev app config runtime <runtime_name>` を使用することができます。あるいは、`mfpdev app register` コマンドを実行して、実行中のサーバーにアプリケーションを登録することもできます。サーバーの公開 URL を使用してください。この URL は、{{ site.data.keys.mf_server }} に接続するためにモバイル・アプリケーションによって使用されます。
+    ターゲット・サーバーの URL とランタイム名を、クライアントのプロパティー・ファイルで定義します。{{ site.data.keys.mf_cli }} を使用してターゲット・サーバーを変更することもできます。実行中のサーバーにアプリケーションを登録せずにターゲット・サーバー用にアプリケーションを構成するには、`mfpdev app config server <server URL>` コマンドおよび `mfpdev app config runtime <runtime_name>` コマンドを使用できます。あるいは、`mfpdev app register` コマンドを実行して、実行中のサーバーにアプリケーションを登録することもできます。サーバーの公開 URL を使用してください。この URL は、{{ site.data.keys.mf_server }} に接続するためにモバイル・アプリケーションによって使用されます。
     
     例えば、デフォルトの名前 mfp を持つランタイムを使用して、アプリケーションをターゲット・サーバー mfp.mycompany.com 用に構成するには、
     `mfpdev app config server https://mfp.mycompany.com` および `mfpdev app config runtime mfp` を実行します。
@@ -284,8 +284,7 @@ appID-platform-version-artifacts.zip
     例えば、次のように、curl のようなツールで、そのような URL を使用できます。`curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`
     
     <br/>
-
-サーバ―構成に応じて URL の次のエレメントを変更します。
+    サーバ―構成に応じて URL の次のエレメントを変更します。
      * **9080** は、開発中は {{ site.data.keys.mf_server }} のデフォルトの HTTP ポートです。
      * **mfpadmin** は、管理サービスのデフォルトのコンテキスト・ルートです。 
 

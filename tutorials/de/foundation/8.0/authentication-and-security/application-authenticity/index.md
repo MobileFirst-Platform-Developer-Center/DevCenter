@@ -85,7 +85,7 @@ auf **Neu**.
 
 3. Legen Sie eine neue Zeit in Sekunden fest. 
 
-![Eigenschaft expirationSec in der Konsole konfigurieren](configuring_expirationSec.png)
+![Eigenschaft 'expirationSec' in der Konsole konfigurieren](configuring_expirationSec.png)
 
 ## Build Time Secret (BTS)
 {: #bts }
@@ -128,7 +128,7 @@ Um solchen potenziellen Problemen vorzubeugen, ist der **statische** Validierung
 Verwenden Sie [**mfpadm** in der CLI](../../administering-apps/using-cli/), um den Validierungstyp zu wechseln:
 
 ```bash
-app version [LAUFZEITNAME] APP-NAME UMGEBUNG VERSION set authenticity-validation TYP
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [LAUFZEIT] [APP-NAME] [UMGEBUNG] [VERSION] set authenticity-validation TYP
 ```
 `TYP` kann den Wert `dynamic` oder `static` haben.
 
@@ -146,7 +146,7 @@ iOS, `apk`-Dateien für Android und `appx`-Dateien für Windows 8.1 Universal un
    Beispiel: 
 
    ```bash
-   java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
+   java -jar /Users/Ihr_Benutzername/Desktop/mfp-app-authenticity.jar /Users/Ihr_Benutzername/Desktop/MyBankApp.ipa
    ```
 
    Dieser Befehl generiert neben der Datei `MyBankApp.ipa` eine Datei `MyBankApp.authenticity_data`. 

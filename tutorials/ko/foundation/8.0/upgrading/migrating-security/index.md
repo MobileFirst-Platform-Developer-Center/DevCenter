@@ -44,6 +44,7 @@ V7.1 샘플 애플리케이션을 V8.0으로 마이그레이션하려면 다음 
 
 > **참고:** 
 > *  다음은 샘플 `AccountAdapter` 자원 어댑터를 마이그레이션하기 위한 지시사항입니다. 구현되는 어댑터 기반 인증은 V8.0에서 더 이상 지원되지 않으므로 샘플 `PinCodeAdapter`를 마이그레이션할 필요가 없습니다. [핀 코드 어댑터 기반 인증 영역 대체](#replacing-the-pin-code-adapter-based-authentication-realm) 단계는 V7.1 핀 코드 어댑터를 유사한 보호를 제공하는 V8.0 보안 검사로 대체하는 방법에 대해 설명합니다.
+
 > *  어댑터를 V8.0으로 마이그레이션하는 방법에 대한 지시사항은 [V8.0 마이그레이션 쿡북](../migration-cookbook)을 참조하십시오. 
 
 V7.1 샘플의 `AccountAdpter` 메소드는 메소드의 보호 범위(`UserLoginRealm` 및 `PinCodeRealm`)를 정의하는 `@OAuthSecurity` 어노테이션으로 보호됩니다. V8.0에서도 동일한 어노테이션이 사용되지만, 범위 요소의 의미가 다릅니다. V7.1에서는 범위 요소가 **authenticationConfig.xml** 파일에 정의된 보안 영역을 참조합니다. V8.0에서는 범위 요소가 {{ site.data.keys.mf_server }}에 배치된 어댑터에 정의되어 있는 보안 검사에 맵핑됩니다. 범위 요소 이름을 포함한 자원 보호 코드가 변경되지 않도록 선택할 수 있습니다. 그러나 {{ site.data.keys.product }} V8.0에서는 "영역(realm)"이라는 용어가 더 이상 사용되지 않으므로, V8.0 애플리케이션의 범위 요소 이름이 `UserLogin` 및 `PinCode`로 변경되었습니다. 
@@ -80,8 +81,8 @@ String userName = securityContext.getAuthenticatedUser().getDisplayName();
 
 다음으로, 클라이언트 애플리케이션을 마이그레이션하십시오. 자세한 클라이언트 애플리케이션 마이그레이션 지시사항은 [V8.0 마이그레이션 쿡북](../migration-cookbook)을 참조하십시오. 이 학습서에서는 보안 코드 마이그레이션에 대해 중점적으로 다룹니다. 이 단계에서는 인증 확인 핸들러 코드를 가져오는 행 주위에 주석을 추가하도록 애플리케이션의 기본 HTML 파일인 **index.html**을 편집하여 인증 확인 핸들러 코드를 제외시키십시오. 
 
-```html
-      <!--  
+```html 
+<!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
  -->
@@ -159,13 +160,14 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
     protected boolean validateCredentials(Map<String, Object> credentials) {
-        if (credentials!=null && credentials.containsKey("username") &&
+        if (credentials!=null &&  credentials.containsKey("username") &&
+
 		credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
 
             // the authentication logic, copied from the V7.1 login module
-            if (!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if (!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
 
@@ -213,7 +215,7 @@ V7.1 샘플 애플리케이션의 `PinCodeRealm` 영역은 V8.0에서 더 이상
 *  `createChallenge` 구현은 `UserLogin` 보안 검사와 유사합니다. `PinCode` 보안 검사에는 인증 확인의 일부로 클라이언트로 전송할 특수 정보가 없습니다. 그러므로 오류 발생 시 표시할 오류 메시지를 인증 확인 오브젝트에 추가하기만 하면 됩니다. 
 
    ```java
-    @Override
+@Override
     protected Map<String, Object> createChallenge() {
         Map challenge = new HashMap();
         challenge.put("errorMsg",errorMsg);
@@ -224,21 +226,21 @@ V7.1 샘플 애플리케이션의 `PinCodeRealm` 영역은 V8.0에서 더 이상
 *  `validateCredentials` 메소드는 핀 코드를 유효성 검증합니다. 다음 예에서는 유효성 검증 코드가 한 행으로 구성되어 있지만, V7.1 인증 어댑터의 유효성 검증 코드를 이 `validateCredentials` 메소드로 복사할 수도 있습니다. 
 
    ```java
-@Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if (credentials!=null && credentials.containsKey("pin")){
-        String pinCode = credentials.get("pin").toString();
-        if (pinCode.equals("1234")) {
-            return true;
-        } else {
-            errorMsg = "Pin code is not valid.";
+   @Override
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+       if (credentials!=null && credentials.containsKey("pin")){
+           String pinCode = credentials.get("pin").toString();
+           if (pinCode.equals("1234")) {
+               return true;
+           } else {
+               errorMsg = "Pin code is not valid.";
            }
        } else {
-        errorMsg = "Pin code was not provided";
-    }
-    return false;
-}
-```
+           errorMsg = "Pin code was not provided";
+       }
+       return false;
+   }
+   ```
 
 V7.1 인증 영역을 보안 검사로 마이그레이션했으면 어댑터를 빌드하고 {{ site.data.keys.mf_server }}로 배치하십시오. 자세한 정보는 [어댑터 빌드 및 배치](../../adapters/creating-adapters/#build-and-deploy-adapters)를 참조하십시오. 
 
@@ -249,8 +251,8 @@ V7.1 인증 영역을 보안 검사로 마이그레이션했으면 어댑터를 
 
 [클라이언트 애플리케이션을 마이그레이션](#migrating-the-client-application)할 때 애플리케이션의 기본 HTML 파일인 **index.html**에서 관련 행을 주석 처리하여 인증 확인 핸들러 코드를 제외시켰습니다. 이제 이러한 행 주위에 추가한 주석을 제거하여 애플리케이션의 인증 확인 핸들러를 다시 추가하십시오. 
 
-```html
-      <script src="js/UserLoginChallengeHandler.js"></script>
+```html 
+    <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
 
@@ -262,7 +264,8 @@ V7.1 인증 영역을 보안 검사로 마이그레이션했으면 어댑터를 
 
    ```javascript
 var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
-```
+
+    ```
    
    `WL.Client.createSecurityCheckChallengeHandler`는 {{ site.data.keys.product_adj }} 보안 검사에서 보낸 인증 확인을 처리하는 인증 확인 핸들러를 작성합니다. V8.0에서는 또한 써드파티 게이트웨이에서 보낸 인증 확인을 처리하는 `WL.Client.createGatewayChallengeHandler` 메소드도 도입했는데, V8.0에서는 이를 게이트웨이 인증 확인 핸들러라고 합니다. V7.1 애플리케이션을 V8.0으로 마이그레이션할 경우 `WL.Client` `createWLChallengeHandler` 또는 `createChallengeHandler` 메소드에 대한 호출을 예상 인증 확인 소스와 일치하는 V8.0 `WL.Client` 인증 확인 핸들러 작성 메소드로 대체하십시오. 예를 들어 사용자의 자원이 사용자 정의 로그인 양식을 클라이언트로 보내는 DataPower 리버스 프록시의 보호를 받는 경우, `createGatewayChallengeHandler`를 사용하여 게이트웨이 인증 확인을 처리하는 게이트웨이 인증 확인 핸들러를 작성하십시오. 
 
@@ -273,8 +276,8 @@ var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('U
 *  `submitLoginForm` 메소드에 대한 호출을 V8.0 `submitChallengeAnswer` 인증 확인 핸들러 메소드에 대한 호출로 대체하십시오: 
 
    ```javascript
-userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
-```
+   userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
+   ```
    
 이러한 변경사항을 적용한 후 인증 확인 핸들러의 전체 코드는 다음과 같습니다. 
    
@@ -332,7 +335,8 @@ function createUserLoginChallengeHandler() {
 *  [애플리케이션 인증](#application-authenticity)
 *  [LTPA 영역](#ltpa-realm)
 *  [디바이스 프로비저닝](#device-provisioning)
-*  [교차 사이트 요청 위조 방지(anti-XSRF) 영역](#anti-cross-site-request-forgery-anti-xsrf-realm)
+*  [교차 사이트 요청 위조 방지(anti-XSRF) 영역
+](#anti-cross-site-request-forgery-anti-xsrf-realm)
 *  [직접 업데이트 영역](#direct-update-realm)
 *  [원격 사용 안함 영역](#remote-disable-realm)
 *  [사용자 정의 인증자 및 로그인 모듈](#custom-authenticators-and-login-modules)

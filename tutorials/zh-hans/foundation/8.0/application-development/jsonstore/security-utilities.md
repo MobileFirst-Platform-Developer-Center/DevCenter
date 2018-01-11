@@ -7,26 +7,22 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
-{{ site.data.keys.product_full }} 客户机端 API 提供一些安全实用程序来帮助保护用户数据。如果要保护 JSON 对象，那么诸如 JSONStore 之类的功能很有效。
-但是，不建议在 JSONStore 集合中存储二元 BLOB。
+{{ site.data.keys.product_full }} 客户机端 API 提供一些安全实用程序来帮助保护用户数据。 如果要保护 JSON 对象，那么诸如 JSONStore 之类的功能很有效。 但是，不建议在 JSONStore 集合中存储二元 BLOB。
 
-应改为在文件系统上存储二元数据，并将文件路径和其他元数据存储在 JSONStore 集合内。如果要保护图像之类的文件，可以将其编码为 base64 字符串、对其加密，并将输出写入磁盘。要解密数据时，可以在 JSONStore 集合中查找元数据、从磁盘中读取加密数据，并使用存储的元数据来解密数据。此元数据可包括密钥、加密盐 (Salt)、初始化向量 (IV)、文件类型、到文件的路径等。
+应改为在文件系统上存储二元数据，并将文件路径和其他元数据存储在 JSONStore 集合内。 如果要保护图像之类的文件，可以将其编码为 base64 字符串、对其加密，并将输出写入磁盘。 要解密数据时，可以在 JSONStore 集合中查找元数据、从磁盘中读取加密数据，并使用存储的元数据来解密数据。 此元数据可包括密钥、加密盐 (Salt)、初始化向量 (IV)、文件类型、到文件的路径等。
 
 在较高的级别上，SecurityUtils API 可提供以下 API：
 
 * 密钥生成 - 此密钥生成功能使用 Password Based
-Key Derivation Function V2 (PBKDF2) 来为加密 API 生成强大的 256 位密钥，而不是直接将密钥传递给加密函数。它以一个参数来表示迭代次数。
-此数字越大，攻击者暴力破解密钥所需时间越长。请使用不低于 10,000 的值。加密盐 (Salt) 必须唯一，它有助于确保攻击者难以使用现有散列信息来攻击密码。请使用 32 字节的长度。
-* 加密 - 使用高级加密标准 (AES) 来对输入加密。API 采用密钥生成 API 所生成的密钥。它在内部生成一个安全 IV，用于为第一个块密码添加随机化。文本经过加密。
-如果要加密图像或其他二进制格式，请使用这些 API 将二进制转换为 base64 文本。此加密功能会返回具有以下组成部分的对象：
+Key Derivation Function V2 (PBKDF2) 来为加密 API 生成强大的 256 位密钥，而不是直接将密钥传递给加密函数。 它以一个参数来表示迭代次数。 此数字越大，攻击者暴力破解密钥所需时间越长。 请使用不低于 10,000 的值。 加密盐 (Salt) 必须唯一，它有助于确保攻击者难以使用现有散列信息来攻击密码。 请使用 32 字节的长度。
+* 加密 - 使用高级加密标准 (AES) 来对输入加密。 API 采用密钥生成 API 所生成的密钥。 它在内部生成一个安全 IV，用于为第一个块密码添加随机化。 文本经过加密。 如果要加密图像或其他二进制格式，请使用这些 API 将二进制转换为 base64 文本。 此加密功能会返回具有以下组成部分的对象：
     * ct（密文，也称为加密文本）
     * IV
     * v（版本，允许 API 升级，并且仍与先前版本兼容）
 * 解密 - 从加密 API 中提取输出作为输入，并将密码或加密文本解密为纯文本。
-* 远程随机字符串 - 通过联系 {{ site.data.keys.mf_server }} 上的随机生成器获取一个随机十六进制字符串。缺省值为 20 字节，但可以将此数字改为最高 64 字节。
-* 本地随机字符串 - 通过本地生成来获取随机十六进制字符串，不同于需要网络访问的远程随机字符串 API。缺省值为 32 字节，没有最大值。
-操作时间与字节数成比例。
-* 编码 base64 - 提取字符串并应用 base64 编码。采用 base64 编码就其算法本质而言，意味着数据大小增加至原始大小的约 1.37 倍。
+* 远程随机字符串 - 通过联系 {{ site.data.keys.mf_server }} 上的随机生成器获取一个随机十六进制字符串。 缺省值为 20 字节，但可以将此数字改为最高 64 字节。
+* 本地随机字符串 - 通过本地生成来获取随机十六进制字符串，不同于需要网络访问的远程随机字符串 API。 缺省值为 32 字节，没有最大值。 操作时间与字节数成比例。
+* 编码 base64 - 提取字符串并应用 base64 编码。 采用 base64 编码就其算法本质而言，意味着数据大小增加至原始大小的约 1.37 倍。
 * 解码 base64 - 提取 base64 编码的字符串，并应用 base64 解码。
 
 ## 设置
@@ -63,6 +59,7 @@ int iterations = 10000;
 
 // Populated with an error if one occurs.
 NSError *error = nil;
+
 // Call that generates the key.
 NSString* key = [WLSecurityUtils generateKeyWithPassword:password
                                  andSalt:salt
@@ -138,6 +135,7 @@ byte[] base64Encoded = Base64.encode(text.getBytes("UTF-8"), Base64.DEFAULT);
 String encodedText = new String(base64Encoded, "UTF-8");
 
 byte[] base64Decoded = Base64.decode(text.getBytes("UTF-8"), Base64.DEFAULT);
+
 // Decoded text will be the same as the original text.
 String decodedText = new String(base64Decoded, "UTF-8");
 ```
@@ -188,8 +186,9 @@ WL.SecurityUtils.keygen({
 .then(function (res) {
 
   // Update the key variable.
-key = res;
-// Encrypt text.
+  key = res;
+
+  // Encrypt text.
   return WL.SecurityUtils.encrypt({
     key: key,
     text: 'My secret text'
@@ -202,7 +201,7 @@ key = res;
   res.key = key;
 
   // Decrypt.
-return WL.SecurityUtils.decrypt(res);
+  return WL.SecurityUtils.decrypt(res);
 })
 
 .then(function (res) {

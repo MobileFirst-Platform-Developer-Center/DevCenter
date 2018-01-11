@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: UserAuthenticationSecurityCheck 클래스 구현
-breadcrumb_title: 보안 검사
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
-다운로드:
-  - 이름: 보안 검사 다운로드
+downloads:
+  - name: 보안 검사 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -48,7 +48,8 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
     protected Map<String, Object> createChallenge() {
         return null;
     }
-}
+
+    }
 ```
 
 ## 인증 확인 작성
@@ -105,11 +106,11 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-            String username = credentials.get("username").toString();
-            String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-                userId = username;
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
+            userId = username;
                 displayName = username;
                 return true;
             }
@@ -127,8 +128,8 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 2. 그런 다음 `createUser` 메소드를 대체하여 `AuthenticatedUser`의 새 인스턴스를 리턴하십시오. 
 
    ```java
-   @Override
-   protected AuthenticatedUser createUser() {
+@Override
+    protected AuthenticatedUser createUser() {
         return new AuthenticatedUser(userId, displayName, this.getName());
    }
    ```
@@ -170,11 +171,11 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-            String username = credentials.get("username").toString();
-            String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-                userId = username;
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
+            userId = username;
                 displayName = username;
 
                 //Optional RememberMe
@@ -206,7 +207,7 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
 ## 보안 검사 구성
 {: #configuring-the-security-check }
-**adapter.xml** 파일에서 `<securityCheckDefinition>` 요소를 추가하십시오. 
+**adapter.xml** 파일에서 `<securityCheckDefinition>` 요소를 추가하십시오.
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">

@@ -8,11 +8,27 @@ weight: 3
 {: #overview }
 {{ site.data.keys.product_full }} provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
 
-### Installing a development environment
+### Setting up a development environment
 {: #installing-a-development-environment }
-If you develop the client-side or the server-side of mobile apps, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
+If you develop the client-side or the server-side of mobile applications, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
 
-* [Set-up the MobileFirst development environment](development/mobilefirst/)
+**Using the {{ site.data.keys.mf_dev_kit }}**
+{: #using-the-dev-kit }
+
+The {{ site.data.keys.mf_dev_kit }} includes everything required to run and debug mobile applications on a personal workstation. To develop an application using the {{ site.data.keys.mf_dev_kit }}, follow the [Setting up the MobileFirst development environment](development/mobilefirst) tutorial.
+
+**Using the {{ site.data.keys.mf_bm }}**
+{: #using-mf-bluemix }
+
+The {{ site.data.keys.mf_bm }} service provides functionality similar to the {{ site.data.keys.mf_dev_kit }}, however the service runs on IBM Cloud.
+
+**Setting up the development environment for {{ site.data.keys.product }} applications**
+{: #setting-dev-env-mf-apps }
+
+{{ site.data.keys.product }} provides vast flexibility regarding the platforms and tools that can be used to develop {{ site.data.keys.product }} applications. However, some basic setup is required to enable the chosen tools to interact with {{ site.data.keys.product }}.  
+
+Select from the following links to set up the development environment corresponding to the development approach that the application will use:
+
 * [Set-up the Cordova development environment](development/cordova)
 * [Set-up the iOS development environment](development/ios)
 * [Set-up the Android development environment](development/android)
@@ -20,38 +36,61 @@ If you develop the client-side or the server-side of mobile apps, use either the
 * [Set-up the Xamarin development environment](development/xamarin)
 * [Set-up the Web development environment](development/web)
 
-### Installing a test or production server on-premises
+### Setting up a test or production server on-premises
 {: #installing-a-test-or-production-server-on-premises }
-IBM installations are based on an IBM product called IBM Installation Manager. Install IBM Installation Manager V1.8.4 or later separately before you install {{ site.data.keys.product }}.
+
+The first part of installing the {{ site.data.keys.product }} Server uses an IBM product called IBM Installation Manager. IBM Installation Manager v1.8.4 or later must be installed before installing the {{ site.data.keys.product }} Server components.
 
 > **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
-The {{ site.data.keys.mf_server }} installer copies onto your computer all the tools and libraries that are required for deploying {{ site.data.keys.mf_server }} components and optionally the {{ site.data.keys.mf_app_center_full }} to your application server.
+The {{ site.data.keys.mf_server }} installation wizard uses IBM Installation Manager to place all of the server components onto the server.  Tools and libraries are also installed that are required to deploy the {{ site.data.keys.product }} Server components to the application server.  As a best practice do not install all of the components on the same application server instance, except in the case of a development server. The deployment tools allow for selection of the components to install.  Please see the [Topologies and Network flows](production/topologies) for points to consider before installing the server.
 
-If you install a test or production server, start with **Tutorials about {{ site.data.keys.mf_server }} installation** below for a simple installation and to learn about the installation of {{ site.data.keys.mf_server }}. For more information about preparing an installation for your specific environment, see [Installing {{ site.data.keys.mf_server }} for a production environment](production).
+Please read below for information on preparing and installing {{ site.data.keys.mf_server }} and optional services on your specific environment. For a simple set up, please read [Setting up a test or production environment](production) tutorial.
 
-**Tutorials about {{ site.data.keys.mf_server }} installation**  
-Learn about the {{ site.data.keys.mf_server }} installation process by walking through the instructions to create a functional {{ site.data.keys.mf_server }}, cluster with two nodes on WebSphere  Application Server Liberty profile. The installation can be done in two ways:
+* [Verifying prerequisites](production/#prerequisites)
+* [{{ site.data.keys.mf_server }} components overview](production/topologies)
+* Factors to consider, before loading tools and libraries to deploy MobileFirst Server components, and Application Centre optionally
+  * Token license
+  * MobileFirst Foundation Application Centre
+  * Administrator versus user mode
+* Distribution structure of MobileFirst Server after file loading
+* Loading files by
+  * using IBM Installation Manager Install wizard
+  * running IBM Installation Manager in command line
+  * using XML response files - silent installation
+* [Configuring backend databases for MobileFirst Foundation Server components](production/databases)
+* [Installing MobileFirst Server to an application server](production/appserver)
+* [Configuring MobileFirst Server](production/server-configuration)
+* [Installing MobileFirst Analytics Server](production/analytics/installation)
+* [Installing Application Center](production/appcenter)
+* [Deploying MobileFirst Server on IBM PureApplication System](production/pure-application)
 
-* [By using the graphical mode of IBM  Installation Manager](production/tutorials/graphical-mode) and the Server Configuration Tool.
-* [By using the command line tool](production/tutorials/command-line).
+### Setting up a test or production environment
+{: #setting-up-test-or-production-server}
 
-Afterwards you'll have a working {{ site.data.keys.mf_server }}. However, you need to configure it, in particular for security, before you use the server. For more information, see [Configuring {{ site.data.keys.mf_server }}](production/server-configuration).
+Learn about the {{ site.data.keys.mf_server }} installation process by going through the instructions to create a functional {{ site.data.keys.mf_server }} cluster with two nodes on WebSphere Application Server Liberty profile. The installation can be completed by using the graphical tools (GUI) or via the command line.
 
-**Additions**  
+* [GUI mode installation with IBM Installation Manager and the Server Configuration Tool ](production/tutorials/graphical-mode).
+* [Command line Installation with command line tool](production/tutorials/command-line).
 
-* To add {{ site.data.keys.mf_analytics_server }} to your installation, see the [{{ site.data.keys.mf_analytics_server }} installation guide](production/analytics/installation/).  
-* To install {{ site.data.keys.mf_app_center }}, see [Installing and configuring the Application Center](production/appcenter).
+After completing the installation using either of the two methods above, further [configuration](production/server-configuration) may be required to complete the setup depending on the requirements.
 
-### Deploying {{ site.data.keys.mf_server }} to the cloud
-{: #deploying-mobilefirst-server-to-the-cloud }
+### Setting up optional features on your test or production environment
+{: #setting-up-optional-features-test-or-production-server}
+
+{{ site.data.keys.product }} includes optional components that may be used to augment your test or production environment.  Please see the following tutorials for more information:
+
+* [Installing and Configuring the {{ site.data.keys.mf_analytics_server }}](production/analytics/installation/)
+* [Installing and Configuring the {{ site.data.keys.mf_app_center }}](production/appcenter)
+
+### Deploying a {{ site.data.keys.mf_server }} test or production environment on the cloud
+{: #deploying-mobilefirst-server-test-or-production-on-the-cloud }
+
 If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the following options:
 
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
+* [Using {{ site.data.keys.mf_server }} on IBM Cloud](../bluemix).
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
 
 ### Upgrading from earlier versions
 {: #upgrading-from-earlier-versions }
 For information about upgrading existing installations and applications to a newer version, see [Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
-
-

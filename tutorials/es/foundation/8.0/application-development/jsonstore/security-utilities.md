@@ -1,31 +1,62 @@
 ---
 layout: tutorial
-title: JSONStore Security Utilities
-breadcrumb_title: Security utilities
+title: Programas de utilidad de seguridad de JSONStore
+breadcrumb_title: Programas de utilidad de seguridad
 relevantTo: [ios,android,cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
-The {{ site.data.keys.product_full }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+## Visión general
+La API del lado del cliente de {{ site.data.keys.product_full }} proporciona algunos programas de utilidad de seguridad para proteger los datos del usuario.
+Las características como JSONStore son de gran utilidad si desea proteger objetos JSON.
+Sin embargo, no se recomienda almacenar blobs binarios en una recopilación de JSONStore.
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
 
-At a high level, the SecurityUtils API provides the following APIs:
+En su lugar, almacene los datos binarios en el sistema de archivos, y almacene las vías de acceso de archivos y otros metadatos dentro de una recopilación JSONStore.
+Si desea proteger los archivos como, por ejemplo, imágenes, puede codificarlas como series base64, cifrarlas, y grabar la salida en el disco.
+Cuando llegue el momento de descifrar los datos, podrá buscar en los metadatos en una recopilación JSONStore, leer los datos cifrados del disco, y descifrarlos mediante los metadatos almacenados.
+Estos metadatos pueden incluir la clave, la sal, el vector de inicialización (IV), el tipo de archivo o la vía de acceso al archivo, entre otros.
 
-* Key generation - Instead of passing a password directly to the encryption function, this key generation function uses Password Based Key Derivation Function v2 (PBKDF2) to generate a strong 256-bit key for the encryption API. It takes a parameter for the number of iterations. The higher the number, the more time it takes an attacker to brute force your key. Use a value of at least 10,000. The salt must be unique and it helps ensure that attackers have a harder time using existing hash information to attack your password. Use a length of 32 bytes.
-* Encryption - Input is encrypted by using the Advanced Encryption Standard (AES). The API takes a key that is generated with the key generation API. Internally, it generates a secure IV, which is used to add randomization to the first block cipher. Text is encrypted. If you want to encrypt an image or other binary format, turn your binary into base64 text by using these APIs. This encryption function returns an object with the following parts:
-    * ct (cipher text, which is also called the encrypted text)
-    * IV
-    * v (version, which allows the API to evolve while still being compatible with an earlier version)
-* Decryption - Takes the output from the encryption API as input, and decrypts the cipher or encrypted text into plain text.
-* Remote random string - Gets a random hex string by contacting a random generator on the {{ site.data.keys.mf_server }}. The default value is 20 bytes, but you can change the number up to 64 bytes.
-* Local random string - Gets a random hex string by generating one locally, unlike the remote random string API, which requires network access. The default value is 32 bytes and there is not a maximum value. The operation time is proportional to the number of bytes.
-* Encode base64 - Takes a string and applies base64 encoding. Incurring a base64 encoding by the nature of the algorithm means that the size of the data is increased by approximately 1.37 times the original size.
-* Decode base64 - Takes a base64 encoded string and applies base64 decoding.
 
-## Setup
-Ensure that you import the following files to use the JSONStore security utilities APIs.
+A un alto nivel, las SecurityUtils API proporciona las siguientes API:
+
+
+* Generación de claves - En lugar de pasar directamente una contraseña a la función de cifrado, esta función de generación de claves utiliza PBKDF2 (Password Based Key Derivation Function v2) para generar una clave de 256 bits para la API de cifrado.
+Toma un parámetro para el número de iteraciones.
+Cuanto mayor sea el número, más tiempo necesitará un atacante para averiguar su clave mediante fuerza bruta.
+Utilice un valor de al menos 10.000.
+La sal, que debe ser única, hace que para los atacantes sea más difícil utilizar información de hash para atacar la contraseña.
+Utilice una longitud de 32 bytes.
+
+* Cifrado - La entrada se cifra utilizando AES (Advanced Encryption Standard).
+La API toma una clave que se genera con la API de generación de claves.
+Internamente, genera un vector de inicialización (VI) seguro, que se utiliza para añadir aleatorización al primer cifrado de bloque.
+Se cifra el texto.
+Si desea cifrar una imagen u otro formato binario, convierta su código binario en texto base64 utilizando estas API.
+Esta función de cifrado devuelve un objeto con las siguientes partes:
+
+    * ct (texto cifrado, también denominado texto encriptado)
+    * IV (vector de inicialización) 
+    * v (versión, que permite que la API evolucione mientras es todavía compatible con una versión anterior)
+
+* Descifrado - Toma la salida de la API de cifrado como entrada y descifra el texto cifrado o encriptado en texto sin formato.
+
+* Serie aleatoria remota - Obtiene una serie hexadecimal aleatoria al ponerse en contacto con un generador aleatorio en {{ site.data.keys.mf_server }}.
+El valor predeterminado es de 20 bytes, pero este valor se puede incrementar hasta los 64 bytes.
+
+* Serie aleatoria local - Obtiene una serie hexadecimal aleatoria generando una de forma local, a diferencia de la API de la serie aleatoria remota que precisa de acceso de red.
+El valor predeterminado es de 32 bytes y no hay un valor máximo.
+El tiempo de la operación es proporcional al número de bytes.
+
+* Codificación base64 - Toma una serie y aplica la codificación base64.
+La utilización de la codificación base64 supone por la naturaleza del algoritmo que el tamaño de los datos se incrementa en aproximadamente 1.37 veces su tamaño original.
+
+* Decodificar base64 - Toma una serie codificada en base64 y aplica la descodificación base64.
+
+
+## Configurar
+Asegúrese de importar los siguientes archivos para utilizar las API de los programas de utilidad de seguridad JSONStore.
+
 
 ### iOS
 
@@ -40,11 +71,12 @@ import com.worklight.wlclient.api.SecurityUtils
 ```
 
 ### JavaScript
-No setup is required.
+No es necesaria configuración alguna.
 
-## Examples
+
+## Ejemplos
 ### iOS
-#### Encryption and decryption
+#### Crifrado y descifrado
 
 ```objc
 // User provided password, hardcoded only for simplicity.
@@ -77,7 +109,7 @@ NSString* decryptedString = [WLSecurityUtils decryptWithKey:key
                                              error:&error];
 ```
 
-#### Encode and decode base64
+#### Codificación y descodificación base64
 
 ```objc
 // Input string.
@@ -91,7 +123,7 @@ NSString* encodedString = [WLSecurityUtils base64StringFromData:originalStringDa
 NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64DataFromString:encodedString] encoding:NSUTF8StringEncoding];
 ```
 
-#### Get remote random
+#### Obtener serie aleatoria remota
 
 ```objc
 [WLSecurityUtils getRandomStringFromServerWithBytes:32 
@@ -106,7 +138,7 @@ NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64
 ```
 
 ### Android
-#### Encryption and decryption
+#### Crifrado y descifrado
 
 ```java
 String password = "HelloPassword";
@@ -123,7 +155,7 @@ JSONObject encryptedObject = SecurityUtils.encrypt(key, originalText);
 String decipheredText = SecurityUtils.decrypt(key, encryptedObject);
 ```
 
-#### Encode and decode base64
+#### Codificación y descodificación base64
 
 ```java
 import android.util.Base64;
@@ -139,7 +171,7 @@ byte[] base64Decoded = Base64.decode(text.getBytes("UTF-8"), Base64.DEFAULT);
 String decodedText = new String(base64Decoded, "UTF-8");
 ```
 
-#### Get remote random
+#### Obtener serie aleatoria remota
 
 ```java
 Context context; // This is the current Activity's context.
@@ -161,7 +193,7 @@ WLRequestListener listener = new WLRequestListener(){
 SecurityUtils.getRandomStringFromServer(byteLength, context, listener);
 ```
 
-#### Get local random
+#### Obtener serie aleatoria remota
 
 ```java
 int byteLength = 32;
@@ -169,7 +201,7 @@ String randomString = SecurityUtils.getRandomString(byteLength);
 ```
 
 ### JavaScript
-#### Encryption and decryption
+#### Crifrado y descifrado
 
 ```javascript
 // Keep the key in a variable so that it can be passed to the encrypt and decrypt API.
@@ -216,7 +248,7 @@ WL.SecurityUtils.keygen({
 });
 ```
 
-#### Encode and decode base64
+#### Codificación y descodificación base64
 
 ```javascript
 WL.SecurityUtils.base64Encode('Hello World!')
@@ -231,7 +263,7 @@ WL.SecurityUtils.base64Encode('Hello World!')
 });
 ```
 
-#### Get remote random
+#### Obtener serie aleatoria remota
 
 ```javascript
 WL.SecurityUtils.remoteRandomString(32)
@@ -243,7 +275,7 @@ WL.SecurityUtils.remoteRandomString(32)
 });
 ```
 
-#### Get local random
+#### Obtener serie aleatoria remota
 
 ```javascript
 WL.SecurityUtils.localRandomString(32)

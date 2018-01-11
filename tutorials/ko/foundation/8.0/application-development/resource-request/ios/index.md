@@ -6,9 +6,9 @@ relevantTo: [ios]
 downloads:
   - 이름: Xcode 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - 이름: 어댑터 Maven 프로젝트 다운로드
+  - 이름: Adapter Maven 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-가중치: 4
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -259,6 +259,7 @@ iOS 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-P
 {: #note-about-ios-9 }
 
 > Xcode 7은 [ATS(Application Transport Security)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)를 기본적으로 사용합니다. 학습서를 완료하려면 ATS를 사용 안함으로 설정하십시오([자세히 보기](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+
 >   1. Xcode에서 **[프로젝트]/info.plist 파일 → 다른 이름으로 열기 → 소스 코드**를 마우스 오른쪽 단추로 클릭하십시오. 
 >   2. 다음을 붙여넣으십시오. 
 >

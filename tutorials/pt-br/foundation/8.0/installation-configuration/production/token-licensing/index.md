@@ -74,7 +74,7 @@ Se você pretende usar o licenciamento de token com o {{ site.data.keys.product 
    #### Instalação no modo de gráfico
    Se você instalar o produto no modo de gráfico, selecione **Ativar licenciamento de token com o Rational License Key Server** no painel **Configurações Gerais** durante a instalação.
     
-   ![Ativando o licenciamento de token no IBM installation manager](licensing_with_tokens_activate.jpg)
+   ![Ativando o licenciamento de token no IBM Installation Manager](licensing_with_tokens_activate.jpg)
     
    #### Instalação no modo de linha de comando
    Se você instalar no modo silencioso, configure o valor como **true** para o parâmetro **user.licensed.by.tokens** no arquivo de resposta.  
@@ -157,7 +157,7 @@ Deve-se instalar as bibliotecas nativas e Java do Rational Common Licensing no p
    > **Nota:** Certifique-se de que a Java virtual machine (JVM) do servidor de aplicativos tenha privilégios de leitura e execução na biblioteca nativa. No Windows, aparece a seguinte exceção no log do servidor de aplicativos, se a JVM do servidor de aplicativos não tiver os direitos executáveis na biblioteca nativa copiada.
     
    ```bash
-   com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (O acesso é negado).
+   com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
    ```
    * Copie o arquivo **rcl_ibmratl.jar** para **${shared.resource.dir}/rcllib**. O arquivo **rcl_ibmratl.jar** é uma biblioteca Java do Rational Common Licensing que pode ser localizada no diretório **product_install_dir/MobileFirstServer/tokenLibs**.
 
@@ -165,8 +165,8 @@ Deve-se instalar as bibliotecas nativas e Java do Rational Common Licensing no p
    * Declare uma biblioteca compartilhada que usa o arquivo **rcl_ibmratl.jar** no arquivo **${server.config.dir}/server.xml**.
 
    ```xml
-   <!-- Declare a shared Library for the RCL client. -->
-   <!- This library can be loaded only once because it uses native code. -->
+   <!-- Declare uma biblioteca compartilhada para o cliente RCL. -->
+   <!- Essa biblioteca pode ser carregada apenas uma vez, pois ela usa código nativo. -->
    <library id="RCLLibrary">
        <fileset dir="${shared.resource.dir}/rcllib" includes="rcl_ibmratl.jar"/>
    </library>
@@ -176,8 +176,8 @@ Deve-se instalar as bibliotecas nativas e Java do Rational Common Licensing no p
    ```xml
    <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
       [...]
-      <!- Declare the shared library as an attribute commonLibraryRef to 
-          the class loader of the application. -->
+      <!- Declare a biblioteca compartilhada como um atributo commonLibraryRef
+          para o carregador de classes do aplicativo. -->
       <classloader delegation="parentLast" commonLibraryRef="RCLLibrary">
       </classloader>
    </application>
@@ -215,7 +215,8 @@ Deve-se instalar as bibliotecas nativas e Java do Rational Common Licensing no p
    <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
    ```
    * **rlks_hostname** é o nome do host do Rational License Key Server.
-   * **rlks_port** é a porta do Rational License Key Server. Por padrão, o valor é 27000.
+   * **rlks_port** é a porta do Rational License Key Server. Por padrão,
+o valor é 27000.
 
    Para obter mais informações sobre as propriedades JNDI, consulte [Propriedades JNDI para serviços de administração: licenciamento](../server-configuration/#jndi-properties-for-administration-service-licensing).
 
@@ -425,7 +426,8 @@ Certifique-se de que a porta do daemon de gerenciador de licença (lmgrd) e a po
 As possíveis causas para esse erro podem ser:
 
 * A biblioteca nativa do Rational Common Licensing não foi localizada no caminho definido para a propriedade **java.library.path**. Verifique se a biblioteca nativa existe no caminho definido com o nome esperado.
-* A propriedade **java.library.path** não está configurada para o servidor de aplicativos. Defina uma propriedade com o nome **java.library.path** e configure o caminho para a biblioteca nativa do Rational Common Licensing como o valor. Por exemplo, **/opt/IBM/RCL_Native_Library/**.
+* A propriedade **java.library.path** não está configurada
+para o servidor de aplicativos. Defina uma propriedade com o nome **java.library.path** e configure o caminho para a biblioteca nativa do Rational Common Licensing como o valor. Por exemplo, **/opt/IBM/RCL_Native_Library/**.
 * Há uma combinação de objetos de 32 bits e de 64 bits entre o Java Runtime Environment do servidor de aplicativos e a biblioteca nativa. Por exemplo, um Java Runtime Environment de 32 bits é usado com uma biblioteca nativa de 64 bits. Essa combinação não é suportada.
 
 ### Licenças de token insuficientes

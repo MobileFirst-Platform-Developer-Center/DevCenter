@@ -103,8 +103,8 @@ iOS アプリケーションでは、FIPS 140-2 は iOS FIPS ライブラリー�
 var wlInitOptions = {
   ...
   // # Enable FIPS 140-2 for data-in-motion (network) and data-at-rest (JSONStore) on Android.
-//   Requires the FIPS 140-2 optional feature to be enabled also.
-// enableFIPS : false
+  //   Requires the FIPS 140-2 optional feature to be enabled also.
+  // enableFIPS : false
   ...
 };
 ```
@@ -116,13 +116,13 @@ document.addEventListener('WL/FIPS/READY',
     this.onFipsReady, false);
 
 onFipsReady: function() {
-// FIPS SDK is loaded and ready
+  // FIPS SDK is loaded and ready
 }
 ```
 
 **enableFIPS** プロパティーの値を設定した後、Android プラットフォームを再ビルドします。
 
-**注:* * enableFIPS プロパティーを true に設定する前に、FIPS Cordova プラグインをインストールする必要があります。これを怠ると、initOption 値は設定されているがオプション・フィーチャーが見つからなかったという警告メッセージがログに記録されます。FIPS 140-2 フィーチャーと JSONStore フィーチャーは、Android オペレーティング・システムでは両方ともオプションです。FIPS 140-2 は、JSONStore オプション・フィーチャーも同時に有効になっている場合にのみ、JSONStore データ暗号化に作用します。JSONStore が有効になっていなければ、FIPS 140-2 は JSONStore に作用しません。iOS では、JSONStore FIPS 140-2 (保存データ) および HTTPS 暗号化 (移動中のデータ) はどちらも iOS で処理されるため、FIPS 140-2 オプション・フィーチャーは不要です。Android では、JSONStore FIPS 140-2 または HTTPS 暗号化を使用する場合は、FIPS 140-2 オプション・フィーチャーを使用可能にする必要があります。
+**注:** enableFIPS プロパティーの値を true に設定する前に、FIPS Cordova プラグインをインストールする必要があります。これを怠ると、initOption 値は設定されているがオプション・フィーチャーが見つからなかったという警告メッセージがログに記録されます。FIPS 140-2 フィーチャーと JSONStore フィーチャーは、Android オペレーティング・システムでは両方ともオプションです。FIPS 140-2 は、JSONStore オプション・フィーチャーも同時に有効になっている場合にのみ、JSONStore データ暗号化に作用します。JSONStore が有効になっていなければ、FIPS 140-2 は JSONStore に作用しません。iOS では、JSONStore FIPS 140-2 (保存データ) および HTTPS 暗号化 (移動中のデータ) はどちらも iOS で処理されるため、FIPS 140-2 オプション・フィーチャーは不要です。Android では、JSONStore FIPS 140-2 または HTTPS 暗号化を使用する場合は、FIPS 140-2 オプション・フィーチャーを使用可能にする必要があります。
 
 ```bash
 [WARN] FIPSHttp feature not found, but initOptions enables it on startup

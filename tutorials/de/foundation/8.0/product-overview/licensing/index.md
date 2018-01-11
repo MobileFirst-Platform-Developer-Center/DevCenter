@@ -40,7 +40,9 @@ abhängig von der jedem Prozessorkern zugeordneten Anzahl von Value-Units lizenz
 Nehmen wir beispielsweise an, einem Prozessortyp A sind 80 Value-Units pro Kern zugeordnet und einem Prozessortyp B 100 Value-Units pro Kern. Wenn Sie eine Produktlizenz für die Ausführung von zwei Prozessoren vom Typ A benötigen, müssen Sie eine
 Berechtigung für 160 Value-Units pro Kern anfordern. Wird das Produkt auf zwei Prozessoren vom Typ B ausgeführt, sind Berechtigungen für 200 Value-Units pro Kern erforderlich. 
 
-> [Weitere Informationen zur PVU-Lizenzierung](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)
+> [Hier finden Sie weitere Informationen zur PVU-Lizenzierung](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+
+
 
 ### Tokenlizenzierung
 {: #token-licensing }

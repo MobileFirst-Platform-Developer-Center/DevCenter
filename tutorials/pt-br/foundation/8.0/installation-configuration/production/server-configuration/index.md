@@ -71,7 +71,7 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
         * Oracle JRE 1.7.0_75 ou mais recente
         * Oracle JRE 1.8.0_31 ou mais recente
 2. Se você usar um IBM Java SDK, edite o arquivo **server.xml**.
-    * Inclua a seguinte linha: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
+    * Inclua a linha a seguir: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
     * Inclua o atributo `sslProtocol="SSL_TLSv2"` em todos os elementos `<ssl>` existentes.
 
 ### WebSphere Application Server Full Profile
@@ -121,13 +121,13 @@ Você deve mapear as funções para os conjuntos de usuários correspondentes. A
 | Configurar as definições de tempo de execução.| Sim           | Sim         | No          | No         |
 
 #### Gerenciamento de Aplicativos
-{: #mobilefirst-server-management }
+{: #application-management }
 
 |                                     | Administrador | Implementador    | Operador    | Monitorar    |
 |-------------------------------------|---------------|-------------|-------------|------------|
 | Função de segurança Java EE.              | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
 | Fazer upload do novo aplicativo do {{ site.data.keys.product_adj }}. | Sim           | Sim         | No          | No         |
-| Remover o aplicativo {{ site.data.keys.product_adj }}.	  | Sim           | Sim         | No          | No         |
+| Remover aplicativo {{ site.data.keys.product_adj }}.	  | Sim           | Sim         | No          | No         |
 | Fazer upload de novo adaptador.     | Sim           | Sim         | No          | No         |
 | Remover adaptador.         | Sim           | Sim         | No          | No         |
 | Ligar ou desligar o teste de autenticidade do aplicativo para um aplicativo. | Sim | Sim | No | No    |
@@ -180,12 +180,12 @@ Defina os conceitos básicos da configuração de usuário no console do WebSphe
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 No perfil Liberty do WebSphere Application Server, configure as funções de **mfpadmin**, **mfpdeployer**, **mfpmonitor** e **mfpoperator** no arquivo de configuração **server.xml** do servidor.
 
-Para configurar as funções de segurança, você deve editar o arquivo **server.xml**. No elemento `<application-bnd>` de cada elemento `<application>`, crie elementos `<security-role>`. Cada elemento `<security-role>` é destinado a cada uma das funções: **mfpadmin**, mfpdeployer, mfpmonitor e mfpoperator. Mapeie as funções para o nome do grupo de usuários apropriado, neste exemplo: **mfpadmingroup**, **mfpdeployergroup**,
-**mfpmonitorgroup** ou **mfpoperatorgroup**. Esses grupos são definidos por meio do elemento `<basicRegistry>`. É possível customizar esse elemento ou substituí-lo totalmente por um elemento `<ldapRegistry>` ou um elemento `<safRegistry>`.
+Para configurar as funções de segurança, você deve editar o arquivo **server.xml**. No elemento `<application-bnd>` de cada elemento `<application>`, crie elementos `<security-role>`. Cada elemento `<security-role>` destina-se a cada função: **mfpadmin**, mfpdeployer, mfpmonitor e mfpoperator. Mapeie as funções para o nome do grupo de usuários apropriado, neste exemplo: **mfpadmingroup**, **mfpdeployergroup**,
+**mfpmonitorgroup** ou **mfpoperatorgroup**. Esses grupos são definidos por meio do elemento `<basicRegistry>`. É possível customizar esse elemento ou substituí-lo completamente por um elemento `<ldapRegistry>` ou por um elemento `<safRegistry>`.
 
 Em seguida, para manter tempos bons de resposta com um grande número de aplicativos instalados, por exemplo com 80 aplicativos, você deve configurar um conjunto de conexões para o banco de dados de administração.
 
-1. Edite o arquivo **server.xml**. Por Por exemplo:
+1. Edite o arquivo **server.xml**. Por exemplo:
 
    ```xml
    <security-role name="mfpadmin">
@@ -295,7 +295,7 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
        * Para o serviço de push, deve-se definir a raiz de contexto como **/imfpush**. Caso contrário, os dispositivos do cliente não poderão se conectar a ela, já que a raiz de contexto está codificada permanentemente no SDK.
        * Para o aplicativo de Serviço de Administração do {{ site.data.keys.product_adj }} e o tempo de execução do {{ site.data.keys.mf_console }} e do {{ site.data.keys.product_adj }}, é possível definir a raiz de contexto que desejar. No entanto, por padrão, ela é **/mfpadmin** para o Serviço de Administração do {{ site.data.keys.product_adj }}, **/mfpconsole** para o {{ site.data.keys.mf_console }} e **/mfp** para o tempo de execução do {{ site.data.keys.product_adj }}.
 
-      Por Por exemplo:
+      Por exemplo:
 
       ```xml
       <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
@@ -314,11 +314,11 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
       </Context>
       ```
 
-        * O prefixo do caminho de contexto não é necessário porque as entradas JNDI são definidas dentro do elemento `<Context>` de um aplicativo.
+        * O prefixo do caminho de contexto não é necessário porque as entradas JNDI estão definidas dentro do elemento `<Context>` de um aplicativo.
         * `override="false"` é obrigatório.
         * O atribuo `type` é sempre `java.lang.String`, a menos que seja especificado de modo diferente para a propriedade.
 
-      Por Por exemplo:
+      Por exemplo:
 
       ```xml
       <Context docBase="app_context_root" path="/app_context_root">
@@ -330,11 +330,11 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
 
   Em **mfp_install_dir/MobileFirstServer/configuration-samples**, edite o arquivo XML de configuração para as tarefas Ant, e declare os valores para as propriedades JNDI usando o elemento da propriedade dentro das seguintes tags:
 
-  * `<installmobilefirstadmin>`, para administração do {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_console }} e serviços de atualização em tempo real. Para obter informações adicionais, consulte [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
-  * `<installmobilefirstruntime>`, para propriedades de configuração de tempo de execução do {{ site.data.keys.product_adj }}. Para obter informações adicionais, consulte [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+  * `<installmobilefirstadmin>`, para {{site.data.keys.mf_server }} administração, {{site.data.keys.mf_console }}e serviços de atualização em tempo real. Para obter informações adicionais, consulte [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
+  * `<installmobilefirstruntime>`, para  {{ site.data.keys.product_adj }} propriedades de configuração de tempo de execução do. Para obter informações adicionais, consulte [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
   * `<installmobilefirstpush>`, para configuração do serviço de push. Para obter informações adicionais, consulte [Tarefas Ant para instalação do serviço de push do {{ site.data.keys.mf_server }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
-  Por Por exemplo:
+  Por exemplo:
 
   ```xml
   <installmobilefirstadmin ..>
@@ -353,13 +353,13 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description) | Restrictions |
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector  | Optional	           | O tipo de conector Java Management Extensions (JMX).<br/>Os valores possíveis são `SOAP` e `RMI`. O valor padrão é SOAP. | Somente WebSphere Application Server. |
-| mfp.admin.jmx.host       | Optional	           | nome do host para a conexão JMX REST. | perfil do Liberty apenas. |
-| mfp.admin.jmx.port	   | Optional	           | Porta para a conexão JMX REST. | perfil do Liberty apenas. |
-| mfp.admin.jmx.user       | Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | nome do usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: o nome do usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: o nome do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: o nome do usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: O nome do usuário do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.pwd	| Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | Senha de usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: a senha de usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: a senha de usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: a senha de usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do servidor do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: a senha do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
-| mfp.admin.rmi.registryPort | Optional | porta do registro RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
-| mfp.admin.rmi.serverPort | Optional | porta do servidor RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
+| mfp.admin.jmx.connector  | Opcional	           | O tipo de conector Java Management Extensions (JMX).<br/>Os valores possíveis são `SOAP` e `RMI`. O valor padrão é SOAP. | Somente WebSphere Application Server. |
+| mfp.admin.jmx.host       | Opcional	           | nome do host para a conexão JMX REST. | perfil do Liberty apenas. |
+| mfp.admin.jmx.port	   | Opcional	           | Porta para a conexão JMX REST. | perfil do Liberty apenas. |
+| mfp.admin.jmx.user       | Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | nome do usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: o nome do usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: o nome do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: o nome do usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: o nome de usuário do administrador do controlador definido em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
+| mfp.admin.jmx.pwd	| Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | Senha de usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: a senha de usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: a senha de usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: a senha de usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do servidor do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: a senha do administrador do controlador definida em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
+| mfp.admin.rmi.registryPort | Opcional | porta do registro RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
+| mfp.admin.rmi.serverPort | Opcional | porta do servidor RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
 | mfp.admin.jmx.dmgr.host | Obrigatório | nome do host do gerenciador de implementação. | Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.dmgr.port | Obrigatório | porta SOAP ou RMI do gerenciador de implementação. | Somente WebSphere Application Server Network Deployment. |
 
@@ -368,28 +368,28 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.actions.prepareTimeout | Optional | Tempo limite em segundos para transferir dados do serviço de administração para o tempo de execução durante uma transação de implementação. Se o tempo de execução não pode ser alcançado dentro deste tempo, um erro será levantado e a transação de implementação termina.<br/><br/>Valor padrão : 1800000 ms (30 min) |
-| mfp.admin.actions.commitRejectTimeout | Optional | tempo limite em milissegundos, quando um tempo de execução é contatado, para confirmar ou rejeitar a transação de implementação. Se o tempo de execução não pode ser alcançado dentro deste tempo, um erro será levantado e a transação de implementação termina.<br/><br/>Valor padrão : 120000 ms (2 min) |
-| mfp.admin.lockTimeoutInMillis | Optional |tempo limite em milissegundos para obter o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Portanto, uma transação deve esperar até que uma transação anterior esteja concluído. Esse tempo limite é o tempo máximo durante o qual uma transação aguarda.<br/><br/>Valor padrão : 1200000 ms (20 min) |
-| mfp.admin.maxLockTimeInMillis | Optional | O tempo máximo durante o qual um processo pode levar o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Se o servidor de aplicativos falha enquanto um bloqueio é executada, ela pode ocorrer em raras situações em que o bloqueio não é liberado no próximo reinício do servidor de aplicativos. Neste caso, o bloqueio é liberado automaticamente após o tempo de bloqueio máximo para que o servidor não esteja bloqueado indefinidamente. Defina um tempo que seja maior do que uma transação normal.<br/><br/>Valor padrão: 1800000 (30 min) |
+| mfp.admin.actions.prepareTimeout | Opcional | Tempo limite em segundos para transferir dados do serviço de administração para o tempo de execução durante uma transação de implementação. Se o tempo de execução não pode ser alcançado dentro deste tempo, um erro será levantado e a transação de implementação termina.<br/><br/>Valor padrão : 1800000 ms (30 min) |
+| mfp.admin.actions.commitRejectTimeout | Opcional | tempo limite em milissegundos, quando um tempo de execução é contatado, para confirmar ou rejeitar a transação de implementação. Se o tempo de execução não pode ser alcançado dentro deste tempo, um erro será levantado e a transação de implementação termina.<br/><br/>Valor padrão : 120000 ms (2 min) |
+| mfp.admin.lockTimeoutInMillis | Opcional |tempo limite em milissegundos para obter o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Portanto, uma transação deve esperar até que uma transação anterior esteja concluído. Esse tempo limite é o tempo máximo durante o qual uma transação aguarda.<br/><br/>Valor padrão : 1200000 ms (20 min) |
+| mfp.admin.maxLockTimeInMillis | Opcional | O tempo máximo durante o qual um processo pode levar o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Se o servidor de aplicativos falha enquanto um bloqueio é executada, ela pode ocorrer em raras situações em que o bloqueio não é liberado no próximo reinício do servidor de aplicativos. Neste caso, o bloqueio é liberado automaticamente após o tempo de bloqueio máximo para que o servidor não esteja bloqueado indefinidamente. Defina um tempo que seja maior do que uma transação normal.<br/><br/>Valor padrão: 1800000 (30 min) |
 
 #### Propriedades JNDI para serviço de administração: criação de log
 {: #jndi-properties-for-administration-service-logging }
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.logging.formatjson | Optional | Configure essa propriedade como true para ativar a formatação elegante (espaço em branco extra) de objetos JSON em respostas e mensagens de log. A configuração dessa propriedade é útil quando você depure o servidor. Valor padrão: falso. |
-| mfp.admin.logging.tosystemerror | Optional | Especifica se todas as mensagens de criação de log também são direcionadas para System.Error. A configuração dessa propriedade é útil quando você depure o servidor. |
+| mfp.admin.logging.formatjson | Opcional | Configure essa propriedade como true para ativar a formatação elegante (espaço em branco extra) de objetos JSON em respostas e mensagens de log. A configuração dessa propriedade é útil quando você depure o servidor. Valor padrão: falso. |
+| mfp.admin.logging.tosystemerror | Opcional | Especifica se todas as mensagens de criação de log também são direcionadas para System.Error. A configuração dessa propriedade é útil quando você depure o servidor. |
 
 #### Propriedades JNDI para serviço de administração: proxies
 {: #jndi-properties-for-administration-service-proxies }
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.proxy.port | Optional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o endereço do host. Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Geralmente, essa propriedade é a porta do proxy, por exemplo, 443. É necessário apenas se o protocolo dos URIs externo e interno for diferente. |
-| mfp.admin.proxy.protocol | Optional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o protocolo (HTTP ou HTTPS). Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Normalmente, essa propriedade é configurada para o protocolo do proxy. Por exemplo, wl.net. Esta propriedade será necessária apenas se o protocolo dos URIs externo e interno for diferente. |
-| mfp.admin.proxy.scheme | Optional | Essa propriedade é apenas um nome alternativo para mfp.admin.proxy.protocol. |
-| mfp.admin.proxy.host | Optional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o endereço do host. Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Normalmente, essa propriedade é o endereço do proxy. |
+| mfp.admin.proxy.port | Opcional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o endereço do host. Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Geralmente, essa propriedade é a porta do proxy, por exemplo, 443. É necessário apenas se o protocolo dos URIs externo e interno for diferente. |
+| mfp.admin.proxy.protocol | Opcional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o protocolo (HTTP ou HTTPS). Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Normalmente, essa propriedade é configurada para o protocolo do proxy. Por exemplo, wl.net. Esta propriedade será necessária apenas se o protocolo dos URIs externo e interno for diferente. |
+| mfp.admin.proxy.scheme | Opcional | Essa propriedade é apenas um nome alternativo para mfp.admin.proxy.protocol. |
+| mfp.admin.proxy.host | Opcional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o endereço do host. Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Normalmente, essa propriedade é o endereço do proxy. |
 
 #### Propriedades JNDI para serviço de administração: topologias
 {: #jndi-properties-for-administration-service-topologies }
@@ -400,25 +400,25 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 | mfp.admin.environmentid | Opcional. | O identificador de ambiente para o registro dos MBeans. Use esse identificador quando diferentes instâncias do {{ site.data.keys.mf_server }} estiverem instaladas no mesmo servidor de aplicativos. O identificador determina qual serviço de administração, qual console e quais tempos de execução pertencem à mesma instalação. O serviço de administração gerencia somente os tempos de execução que têm o mesmo identificador de ambiente. |
 | mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional. | Server farm: o identificador do servidor. Deve ser diferente para cada servidor na fazenda.<br/><br/> Liberty Collective: o valor deve ser controller. |
 | mfp.admin.hsts | Opcional. | Defina como true para ativar HTTP Estrita Transport Security de acordo com a RFC 6797. |
-| mfp.topology.platform | Optional | Tipo de servidor. Valores válidos:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Se você não configurar o valor, o aplicativo tenta adivinhar o tipo de servidor. |
-| mfp.topology.clustermode | Optional | Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/}O valor padrão é Standalone. |
-| mfp.admin.farm.heartbeat | Optional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.missed.heartbeats.timeout | Optional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.reinitialize | Optional | Um valor booleano (true ou false) para registrar novamente ou reinicializar o membro do farm. |
-| mfp.swagger.ui.url | Optional | Esta propriedade define a URL da interface com o usuário do Swagger a ser exibida no console de administração. |
+| mfp.topology.platform | Opcional | Tipo de servidor. Valores válidos:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Se você não configurar o valor, o aplicativo tentará adivinhar o tipo de servidor. |
+| mfp.topology.clustermode | Opcional | Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{ O valor padrão é Standalone. |
+| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.reinitialize | Opcional | Um valor booleano (true ou false) para registrar novamente ou reinicializar o membro do farm. |
+| Mfp.server.swagger.ui.url | Opcional | Esta propriedade define a URL da interface com o usuário do Swagger a ser exibida no console de administração. |
 
 #### Propriedades JNDI para serviço de administração: banco de dados relacional
 {: #jndi-properties-for-administration-service-relational-database }
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.db.jndi.name | Optional | O nome JNDI do banco de dados. Este parâmetro é o mecanismo normal para especificar o banco de dados. O valor padrão é **java:comp/env/jdbc/mfpAdminDS**. |
+| mfp.admin.db.jndi.name | Opcional | O nome JNDI do banco de dados. Este parâmetro é o mecanismo normal para especificar o banco de dados. O valor padrão é **java:comp/env/jdbc/mfpAdminDS**. |
 | mfp.admin.db.openjpa.ConnectionDriverName | Opcional/Condicionalmente obrigatório | O nome completo da classe do driver de conexão com o banco de dados. Obrigatório somente quando a origem de dados especificada pela propriedade **mfp.admin.db.jndi.name** não estiver definida na configuração do servidor de aplicativos. |
 | mfp.admin.db.openjpa.ConnectionURL | Opcional/Condicionalmente obrigatório | A URL da conexão com o banco de dados. Obrigatório somente quando a origem de dados especificada pela propriedade **mfp.admin.db.jndi.name** não estiver definida na configuração do servidor de aplicativos. |
 | mfp.admin.db.openjpa.ConnectionUserName | Opcional/Condicionalmente obrigatório | O nome de usuário da conexão com o banco de dados. Obrigatório somente quando a origem de dados especificada pela propriedade **mfp.admin.db.jndi.name** não estiver definida na configuração do servidor de aplicativos. |
 | mfp.admin.db.openjpa.ConnectionPassword | Opcional/Condicionalmente obrigatório | A senha para a conexão com o banco de dados. Obrigatório somente quando a origem de dados especificada pela propriedade **mfp.admin.db.jndi.name** não estiver definida na configuração do servidor de aplicativos. |
-| mfp.admin.db.openjpa.Log | Optional | Esta propriedade é transmitida para o OpenJPA e permite a criação de JPA. Para obter mais informações, consulte [o Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html). |
-| mfp.admin.db.type | Optional | Esta propriedade define o tipo de banco de dados. O valor padrão é inferido a partir da URL de conexão. |
+| mfp.admin.db.openjpa.Log | Opcional | Esta propriedade é transmitida para o OpenJPA e permite a criação de JPA. Para obter mais informações, consulte [o Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html). |
+| mfp.admin.db.type | Opcional | Esta propriedade define o tipo de banco de dados. O valor padrão é inferido a partir da URL de conexão. |
 
 #### Propriedades JNDI para serviço de administração: licenciamento
 {: #jndi-properties-for-administration-service-licensing }
@@ -433,8 +433,8 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.jndi.configuration | Optional | O nome da configuração JNDI se as propriedades JNDI (exceto esta) tiverem que ser lidas de um arquivo de propriedade injetado no arquivo WAR. Se você não configurar essa propriedade, propriedades JNDI não serão lidas de um arquivo de propriedade. |
-| mfp.jndi.file | Optional | O nome do arquivo contendo a configuração JNDI se as propriedades JNDI (exceto esta) tiverem que ser lidas de um arquivo instalado no servidor da web. Se você não configurar essa propriedade, propriedades JNDI não serão lidas de um arquivo de propriedade. |
+| mfp.jndi.configuration | Opcional | O nome da configuração JNDI se as propriedades JNDI (exceto esta) tiverem que ser lidas de um arquivo de propriedade injetado no arquivo WAR. Se você não configurar essa propriedade, propriedades JNDI não serão lidas de um arquivo de propriedade. |
+| mfp.jndi.file | Opcional | O nome do arquivo contendo a configuração JNDI se as propriedades JNDI (exceto esta) tiverem que ser lidas de um arquivo instalado no servidor da web. Se você não configurar essa propriedade, propriedades JNDI não serão lidas de um arquivo de propriedade. |
 
 O serviço de administração usa um serviço de atualização em tempo real como recurso auxiliar para armazenar várias configurações. Use essas propriedades para configurar como atingir o serviço de atualização em tempo real.
 
@@ -444,9 +444,11 @@ O serviço de administração usa um serviço de atualização em tempo real com
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | Opcional A URL do serviço de atualização em tempo real. A URL padrão é derivada da URL do serviço de administração, incluindo configuração na raiz de contexto do serviço de administração. |
-| mfp.config.service.user | Obrigatório | O nome do usuário que é usado para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, o nome do usuário deve ser o mesmo para todos os membros do farm. |
-| mfp.config.service.password | Obrigatório | A senha que é usada para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, a senha deve ser a mesma para todos os membros do farm. |
-| mfp.config.service.schema | Optional | O nome do esquema usado pelo serviço de atualização em tempo real. |
+| mfp.config.service.user | Obrigatório | O nome do usuário que é usado para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, o nome do usuário deve ser o mesmo
+para todos os membros do farm. |
+| mfp.config.service.password | Obrigatório | A senha que é usada para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, a senha deve ser a mesma para todos
+os membros do farm. |
+| mfp.config.service.schema | Opcional | O nome do esquema usado pelo serviço de atualização em tempo real. |
 
 O serviço de administração usa um serviço de push como recurso auxiliar para armazenar várias configurações de push. Use essas propriedades para configurar como atingir o serviço de push. Como o serviço de push é protegido pelo modelo de segurança OAuth, deve-se configurar várias propriedades para permitir clientes confidenciais em OAuth.
 
@@ -455,12 +457,12 @@ O serviço de administração usa um serviço de push como recurso auxiliar para
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.push.url | Optional | A URL do serviço de push. Se a propriedade não estiver especificada, o serviço de push será considerado desativado. Se a propriedade não estiver configurada adequadamente, o serviço de administração não poderá contatar o serviço de push e a administração de serviços de push no {{ site.data.keys.mf_console }} não funcionará. |
-| mfp.admin.authorization.server.url | Optional | A URL do servidor de autorizações OAuth usada pelo serviço de push. A URL padrão é derivada da URL do serviço de administração mudando a raiz de contexto para a raiz de contexto do primeiro tempo de execução instalado. Se você instalar vários tempos de execução, é melhor configurar a propriedade. Se a propriedade não estiver configurada adequadamente, o serviço de administração não poderá contatar o serviço de push e a administração de serviços de push no {{ site.data.keys.mf_console }} não funcionará. |
+| mfp.admin.push.url | Opcional | A URL do serviço de push. Se a propriedade não estiver especificada, o serviço de push será considerado desativado. Se a propriedade não estiver configurada adequadamente, o serviço de administração não poderá contatar o serviço de push e a administração de serviços de push no {{ site.data.keys.mf_console }} não funcionará. |
+| mfp.admin.authorization.server.url | Opcional | A URL do servidor de autorizações OAuth usada pelo serviço de push. A URL padrão é derivada da URL do serviço de administração mudando a raiz de contexto para a raiz de contexto do primeiro tempo de execução instalado. Se você instalar vários tempos de execução, é melhor configurar a propriedade. Se a propriedade não estiver configurada adequadamente, o serviço de administração não poderá contatar o serviço de push e a administração de serviços de push no {{ site.data.keys.mf_console }} não funcionará. |
 | mfp.push.authorization.client.id | Opcional/Condicionalmente obrigatório | O identificador o cliente confidencial que manipula autorização OAuth para o serviço de push. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
 | mfp.push.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de push. Obrigatório somente se a propriedade **mfp.admin.push.url** for especificada |
 | mfp.admin.authorization.client.id | Opcional/Condicionalmente obrigatório | O identificador do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
-| mfp.push.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
+| mfp.admin.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
 
 ### Propriedades da JNDI para o {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -468,11 +470,11 @@ As seguintes propriedades podem ser configuradas no aplicativo da web (mfp-admin
 
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.endpoint | Optional | Permite que o {{ site.data.keys.mf_console }} localize o serviço REST de administração do {{ site.data.keys.mf_server }}. Especifique o endereço externo e a raiz de contexto do aplicativo da web **mfp-admin-service.war**. Em um cenário com um firewall ou um proxy reverso seguro, esse URI deve ser o URI externo e não o URI interno na LAN local. Por exemplo, https://wl.net:443/mfpadmin. |
-| mfp.admin.global.logout | Optional | Limpa o cache de autenticação do usuário do WebSphere durante o logout do console. Esta propriedade é útil somente para o WebSphere Application Server V7. O valor padrão é falso. |
-| mfp.admin.hsts | Optional | Configure essa propriedade como true para ativar o HTTP [Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security) de acordo com o RFC 6797. Para obter informações adicionais, consulte a página W3C Strict Transport Security. O valor padrão é falso. |
-| mfp.admin.ui.cors | Optional | O valor-padrão é true. Para obter informações adicionais, consulte a [página W3C Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/). |
-| mfp.admin.ui.cors.strictssl | Optional | Configure como false para permitir situações do CORS em que o {{ site.data.keys.mf_console }} é protegido com SSL (protocolo HTTPS) enquanto o serviço de administração do {{ site.data.keys.mf_server }} não é, ou o contrário. Essa propriedade só entra em vigor se a propriedade **mfp.admin.ui.cors** estiver ativada. |
+| mfp.admin.endpoint | Opcional | Permite que o {{ site.data.keys.mf_console }} localize o serviço REST de administração do {{ site.data.keys.mf_server }}. Especifique o endereço externo e a raiz de contexto do aplicativo da web **mfp-admin-service.war**. Em um cenário com um firewall ou um proxy reverso seguro, esse URI deve ser o URI externo e não o URI interno na LAN local. Por exemplo, https://wl.net:443/mfpadmin. |
+| mfp.admin.global.logout | Opcional | Limpa o cache de autenticação do usuário do WebSphere durante o logout do console. Esta propriedade é útil somente para o WebSphere Application Server V7. O valor padrão é falso. |
+| mfp.admin.hsts | Opcional | Configure essa propriedade como true para ativar o HTTP [Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security) de acordo com o RFC 6797. Para obter informações adicionais, consulte a página W3C Strict Transport Security. O valor padrão é falso. |
+| mfp.admin.ui.cors | Opcional | O valor-padrão é true. Para obter informações adicionais, consulte a [página W3C Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/). |
+| mfp.admin.ui.cors.strictssl | Opcional | Configure como false para permitir situações do CORS em que o {{ site.data.keys.mf_console }} é protegido com SSL (protocolo HTTPS) enquanto o serviço de administração do {{ site.data.keys.mf_server }} não é, ou o contrário. Essa propriedade só entra em vigor se a propriedade **mfp.admin.ui.cors** estiver ativada. |
 
 ### Lista de propriedades JNDI para serviço de atualização em tempo real do {{ site.data.keys.mf_server }}
 {: #list-of-jndi-properties-for-mobilefirst-server-live-update-service }
@@ -480,7 +482,7 @@ Quando você configura o serviço de atualização em tempo real do {{ site.data
 
 | Propriedade | Opcional ou obrigatório | Descrição (Description) |
 |----------|-----------------------|-------------|
-| mfp.db.relational.queryTimeout | Optional | Tempo limite para executar uma consulta em RDBMS, em segundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição).<br/><br/>Caso nenhum valor esteja configurado, um valor padrão será usado. Para obter informações adicionais, consulte [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int)). |
+| mfp.db.relational.queryTimeout | Opcional | Tempo limite para executar uma consulta em RDBMS, em segundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição).<br/><br/>Caso nenhum valor esteja configurado, um valor padrão será usado. Para obter informações adicionais, consulte [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int)). |
 
 Para saber como configurar essas propriedades, consulte [Configurando propriedades JNDI para aplicativos da web do {{ site.data.keys.mf_server }}](#setting-up-jndi-properties-for-mobilefirst-server-web-applications).
 
@@ -494,13 +496,13 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 | mfp.admin.jmx.dmgr.host | Obrigatório. O nome do host do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.dmgr.port | Obrigatório. A porta RMI ou SOAP do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.host | Somente Liberty. O nome do host da conexão REST JMX. Para Liberty Collective, use o nome do host do controlador. |
-| mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: o nome do usuário do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| Mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: o nome de usuário do administrador do controlador definido em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
+| Mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador do controlador definida em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
 | mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional.<br/><br/>Server farm: o identificador do servidor. Deve ser diferente para cada servidor na fazenda.<br/><br/>Liberty Collective: o identificador do membro. O identificador deve ser diferente para cada membro no Collective. O controlador de valor não pode ser usado, pois está reservado para o controlador coletivo. |
 | mfp.topology.platform | Opcional. O tipo de servidor. Os valores válidos são:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Se você não configurar o valor, o aplicativo tenta adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional. Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos:<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>O valor padrão é Standalone. |
-| mfp.admin.jmx.replica | Opcional. Somente para Liberty Collective.<br/><br/>Configure essa propriedade somente quando os componentes de administração que gerenciam esse tempo de execução forem implementados em controladores (réplicas) diferentes do Liberty.<br/><br/>Lista de terminais de diferentes réplicas do controlador com a seguinte sintaxe: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+| mfp.admin.jmx.replica | Opcional. Somente para Liberty Collective.<br/><br/>Configure essa propriedade somente quando os componentes de administração que gerenciam esse tempo de execução forem implementados em controladores (réplicas) diferentes do Liberty.<br/><br/>Lista de endpoints das diferentes réplicas do controlador com a sintaxe a seguir: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 | mfp.analytics.console.url | Opcional. A URL que é exportada pelo IBM {{ site.data.keys.mf_analytics }} que se vincula ao console do Analytics. Configure essa propriedade se desejar acessar o console do Analytics a partir de {{ site.data.keys.mf_console }}. Por exemplo, `http://<hostname>:<port>/analytics/console` |
 | mfp.analytics.password | A senha que será usada se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics }} for protegido com autenticação básica. |
 | mfp.analytics.url | A URL que é exposta pelo IBM {{ site.data.keys.mf_analytics }} que recebe dados de análise de dados de entrada. Por exemplo, `http://<hostname>:<port>/analytics-service/rest` |
@@ -521,50 +523,50 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 
 | Propriedade | Opcional ou obrigatório | Descrição (Description) |
 |----------|-----------------------|-------------|
-| mfp.push.db.type | Optional | O tipo do banco de dados. Valores possíveis: DB, CLOUDANT. Padrão: DB |
-| mfp.push.db.queue.connections | Optional | Número de encadeamentos no conjunto de encadeamentos que executa a operação do banco de dados. Padrão:  3 |
-| mfp.push.db.cloudant.url | Optional | A URL da conta do Cloudant. Quando essa propriedade for definida, o banco de dados Cloudant será direcionado para essa URL. |
-| mfp.push.db.cloudant.dbName | Optional | O nome do banco de dados na conta do Cloudant. Ele deve começar com uma letra minúscula e consistir somente em letras minúsculas, em dígitos e nos caracteres _, $ e -. Padrão: mfp\_push\_db |
-| mfp.push.db.cloudant.username | Optional | O nome do usuário da conta do Cloudant usado para armazenar o banco de dados. Quando essa propriedade não for definida, um banco de dados relacional será usado. |
-| mfp.push.db.cloudant.password | Optional | A senha da conta do Cloudant usada para armazenar o banco de dados. Essa propriedade deve ser configurada quando mfp.db.cloudant.username estiver configurado. |
-| mfp.push.db.cloudant.doc.version | Optional | A versão do documento do Cloudant. |
-| mfp.push.db.cloudant.socketTimeout | Optional	| Um tempo limite para detectar a perda de uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.connectionTimeout | Optional	| Um tempo limite para estabelecer uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.maxConnections | Optional | O máximo de conexões do conector do Cloudant. Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.ssl.authentication | Optional | Um valor booleano (true ou false) que especifica se a validação de cadeia de certificados SSL e verificação de nome de host estão ativadas para conexões HTTPS para o banco de dados Cloudant. Padrão: verdadeiro |
-| mfp.push.db.cloudant.ssl.configuration | Optional	| (Somente perfil completo do WAS) Para conexões HTTPS com o banco de dados Cloudant: o nome de uma configuração SSL na configuração do WebSphere Application Server, a ser usado quando nenhuma configuração for especificada para o host e para a porta. |
-| mfp.push.db.cloudant.proxyHost | Optional	| Host do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.proxyPort | Optional	| Porta do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.services.ext.security | Optional	| O plug-in de extensão de segurança. |
-| mfp.push.security.endpoint | Optional	| A URL de terminal para o servidor de autorizações. |
-| mfp.push.security.user | Optional	| O nome do usuário para acessar o servidor de autorizações. |
-| mfp.push.security.password | Optional	| A senha para acessar o servidor de autorizações. |
-| mfp.push.services.ext.analytics | Optional | O plug-in de extensão de análise de dados. |
-| mfp.push.analytics.endpoint | Optional | A URL de terminal para o servidor de análise de dados. |
-| mfp.push.analytics.user | Optional | O nome do usuário para acessar o servidor de análise de dados. |
-| mfp.push.analytics.password | Optional | A senha para acessar o servidor de análise de dados. |
-| mfp.push.analytics.events.notificationDispatch | Optional	| O evento analítico quando a notificação está prestes a ser despachada. Default: true |
-| mfp.push.internalQueue.maxLength | Optional | O comprimento da fila que retém tarefas de notificação antes do despacho. Padrão: 200000 |
-| mfp.push.gcm.proxy.enabled | Optional	| Mostra se o Google GCM deve ser acessado por meio de um proxy. Padrão: falso |
-| mfp.push.gcm.proxy.protocol | Optional | Pode ser http ou https. |
-| mfp.push.gcm.proxy.host | Optional | Host do proxy GCM. Valor negativo significa porta padrão. |
-| mfp.push.gcm.proxy.port | Optional | Porta do proxy GCM. Padrão: -1 |
-| mfp.push.gcm.proxy.user | Optional | Nome do usuário do proxy, se o proxy requerer autenticação. Nome do usuário vazio significa sem autenticação. |
-| mfp.push.gcm.proxy.password | Optional | Senha do proxy, se o proxy requerer autenticação. |
-| mfp.push.gcm.connections | Optional | Máximo de conexões do GCM de push. Padrão : 10 |
-| mfp.push.apns.proxy.enabled | Optional | Mostra se APNs devem ser acessadas por meio de um proxy. Padrão: falso |
-| mfp.push.apns.proxy.type | Optional | Tipo de proxy APNs. |
-| mfp.push.apns.proxy.host | Optional | Host do proxy APNs. |
-| mfp.push.apns.proxy.port | Optional | Porta do proxy APNs. Padrão: -1 |
-| mfp.push.apns.proxy.user | Optional | Nome do usuário do proxy, se o proxy requerer autenticação. Nome do usuário vazio significa sem autenticação. |
-| mfp.push.apns.proxy.password | Optional | Senha do proxy, se o proxy requerer autenticação. |
-| mfp.push.apns.connections | Optional | Máximo de conexões push APNs. Padrão: 3 |
-| mfp.push.apns.connectionIdleTimeout | Optional | Tempo limite de conexão inativa APNs. Padrão : 0 |
+| mfp.push.db.type | Opcional | O tipo do banco de dados. Valores possíveis: DB, CLOUDANT. Padrão: DB |
+| mfp.push.db.queue.connections | Opcional | Número de encadeamentos no conjunto de encadeamentos que executa a operação do banco de dados. Padrão:  3 |
+| mfp.push.db.cloudant.url | Opcional | A URL da conta do Cloudant. Quando essa propriedade for definida, o banco de dados Cloudant será direcionado para essa URL. |
+| mfp.push.db.cloudant.dbName | Opcional | O nome do banco de dados na conta do Cloudant. Ele deve começar com uma letra minúscula e consistir somente em letras minúsculas, em dígitos e nos caracteres _, $ e -. Padrão: mfp\_push\_db |
+| mfp.push.db.cloudant.username | Opcional | O nome do usuário da conta do Cloudant usado para armazenar o banco de dados. Quando essa propriedade não for definida, um banco de dados relacional será usado. |
+| mfp.push.db.cloudant.password | Opcional | A senha da conta do Cloudant usada para armazenar o banco de dados. Essa propriedade deve ser configurada quando mfp.db.cloudant.username estiver configurado. |
+| mfp.push.db.cloudant.doc.version | Opcional | A versão do documento do Cloudant. |
+| mfp.push.db.cloudant.socketTimeout | Opcional	| Um tempo limite para detectar a perda de uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.connectionTimeout | Opcional	| Um tempo limite para estabelecer uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.maxConnections | Opcional | O máximo de conexões do conector do Cloudant. Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.ssl.authentication | Opcional | Um valor booleano (true ou false) que especifica se a validação de cadeia de certificados SSL e verificação de nome de host estão ativadas para conexões HTTPS para o banco de dados Cloudant. Padrão: verdadeiro |
+| mfp.push.db.cloudant.ssl.configuration | Opcional	| (Somente perfil completo do WAS) Para conexões HTTPS com o banco de dados Cloudant: o nome de uma configuração SSL na configuração do WebSphere Application Server, a ser usado quando nenhuma configuração for especificada para o host e para a porta. |
+| mfp.push.db.cloudant.proxyHost | Opcional	| Host do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.proxyPort | Opcional	| Porta do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.services.ext.security | Opcional	| O plug-in de extensão de segurança. |
+| mfp.push.security.endpoint | Opcional	| A URL de terminal para o servidor de autorizações. |
+| mfp.push.security.user | Opcional	| O nome do usuário para acessar o servidor de autorizações. |
+| mfp.push.security.password | Opcional	| A senha para acessar o servidor de autorizações. |
+| mfp.push.services.ext.analytics | Opcional | O plug-in de extensão de análise de dados. |
+| mfp.push.analytics.endpoint | Opcional | A URL de terminal para o servidor de análise de dados. |
+| mfp.push.analytics.user | Opcional | O nome do usuário para acessar o servidor de análise de dados. |
+| mfp.push.analytics.password | Opcional | A senha para acessar o servidor de análise de dados. |
+| mfp.push.analytics.events.notificationDispatch | Opcional	| O evento analítico quando a notificação está prestes a ser despachada. Default: true |
+| mfp.push.internalQueue.maxLength | Opcional | O comprimento da fila que retém tarefas de notificação antes do despacho. Padrão: 200000 |
+| mfp.push.gcm.proxy.enabled | Opcional	| Mostra se o Google GCM deve ser acessado por meio de um proxy. Padrão: falso |
+| mfp.push.gcm.proxy.protocol | Opcional | Pode ser http ou https. |
+| mfp.push.gcm.proxy.host | Opcional | Host do proxy GCM. Valor negativo significa porta padrão. |
+| mfp.push.gcm.proxy.port | Opcional | Porta do proxy GCM. Padrão: -1 |
+| mfp.push.gcm.proxy.user | Opcional | Nome do usuário do proxy, se o proxy requerer autenticação. Nome do usuário vazio significa sem autenticação. |
+| mfp.push.gcm.proxy.password | Opcional | Senha do proxy, se o proxy requerer autenticação. |
+| mfp.push.gcm.connections | Opcional | Máximo de conexões do GCM de push. Padrão : 10 |
+| mfp.push.apns.proxy.enabled | Opcional | Mostra se APNs devem ser acessadas por meio de um proxy. Padrão: falso |
+| mfp.push.apns.proxy.type | Opcional | Tipo de proxy APNs. |
+| mfp.push.apns.proxy.host | Opcional | Host do proxy APNs. |
+| mfp.push.apns.proxy.port | Opcional | Porta do proxy APNs. Padrão: -1 |
+| mfp.push.apns.proxy.user | Opcional | Nome do usuário do proxy, se o proxy requerer autenticação. Nome do usuário vazio significa sem autenticação. |
+| mfp.push.apns.proxy.password | Opcional | Senha do proxy, se o proxy requerer autenticação. |
+| mfp.push.apns.connections | Opcional | Máximo de conexões push APNs. Padrão:  3 |
+| mfp.push.apns.connectionIdleTimeout | Opcional | Tempo limite de conexão inativa APNs. Padrão : 0 |
 
 
 {% comment %}
 <!-- START NON-TRANSLATABLE -->
-The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
+The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |
@@ -636,7 +638,7 @@ Ao implementar um aplicativo que tem pelo menos 40 MB com o IBM {{ site.data.key
 A seguinte saída do sistema é um exemplo do código de erro de log de transações cheio.
 
 ```bash
-Erro de SQL DB2: SQLCODE=-964, SQLSTATE=57011
+Erro de DB2 SQL: SQLCODE=-964, SQLSTATE=57011
 ```
 
 O conteúdo de cada aplicativo é armazenado no banco de dados de administração do {{ site.data.keys.product_adj }} .
@@ -661,7 +663,7 @@ Nesse caso, o aplicativo terá de capturar a exceção e executar novamente a tr
 
 #### Configuração de perfil Liberty do WebSphere Application Server
 {: #websphere-application-server-liberty-profile-configuration }
-Deve-se editar o arquivo **server.xml** e incluir a propriedade **enableSeamlessFailover** para o elemento **properties.db2.jcc** das origens de dados do {{ site.data.keys.product_adj }} e do Application Center. Por Por exemplo:
+Deve-se editar o arquivo **server.xml** e incluir a propriedade **enableSeamlessFailover** para o elemento **properties.db2.jcc** das origens de dados do {{ site.data.keys.product_adj }} e do Application Center. Por exemplo:
 
 ```xml
 <dataSource jndiName="jdbc/WorklightAdminDS" transactional="false">
@@ -700,15 +702,15 @@ O banco de dados MySQL fecha suas conexões após um período de não atividade 
 Quando um aplicativo tenta conectar ao banco de dados após o fechamento da conexão por MySQL, a seguinte exceção é gerada:
 
 ```xml
-com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: nenhuma operação é permitida após o fechamento da instrução.
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.
 ```
 
-Edite os arquivos **server.xml** e **context.xml**, e para cada elemento `<Resource>`, inclua as seguintes propriedades:
+Edite os arquivos **server.xml** e **context.xml** e, para cada elemento `<Resource>`, inclua as propriedades a seguir:
 
 * **testOnBorrow="true"**
 * **validationQuery="select 1"**
 
-Por Por exemplo:
+Por exemplo:
 
 ```xml
 <Resource name="jdbc/AppCenterDS"

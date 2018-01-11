@@ -45,6 +45,7 @@ und das Application Center mit der Stufe **FINEST** (die funktional der Stufe **
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -52,7 +53,7 @@ com.worklight.*=all
 Für diese Angabe gilt Folgendes: 
 
 * **com.ibm.puremeap.*** bezieht sich auf das Application Center.
-* **com.ibm.worklight.*** und **com.worklight.*** beziehen sich auf andere {{ site.data.keys.product_adj }}-Komponenten.
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** und **com.worklight.*** beziehen sich auf andere {{ site.data.keys.product_adj }}-Komponenten.
 
 Die Traces werden an eine Datei mit dem Namen **trace.log** und nicht an
 **SystemOut.log** oder **SystemErr.log** gesendet.
@@ -70,7 +71,7 @@ server.xml eine Zeile hinzu, um die Protokollierung für die {{ site.data.keys.p
 und das Application Center mit der Stufe FINEST (die funktional der Stufe ALL entspricht) zu aktivieren. Beispiel: 
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 In diesem Beispiel sind
@@ -97,6 +98,7 @@ Bearbeiten Sie die Datei
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
@@ -114,8 +116,8 @@ Die folgenden JNDI-Eigenschaften gelten für die Webanwendung
 für die Application-Center-Services
 (**applicationcenter.war**).
 
-| Eigenschaftseinstellungen | Einstellung | Beschreibung | 
+| Eigenschaftseinstellungen| Einstellung| Beschreibung| 
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn Sie die JSON-Ausgabe für eine bessere Lesbarkeit der Protokolldateien mit Leerzeichen formatieren möchten.  | 
-| ibm.appcenter.logging.tosystemerror | true | Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn alle Protokollnachrichten zu Systemfehlern in Protokolldateien ausgegeben werden sollen. Mit dieser Eigenschaft können Sie die Protokollierung global aktivieren.  | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE | Bei Verwendung dieser Einstellung werden alle generierten SQL-Anweisungen in den Protokolldateien ausgegeben. | 
+| ibm.appcenter.logging.formatjson| true| Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn Sie die JSON-Ausgabe für eine bessere Lesbarkeit der Protokolldateien mit Leerzeichen formatieren möchten. | 
+| ibm.appcenter.logging.tosystemerror| true| Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn alle Protokollnachrichten zu Systemfehlern in Protokolldateien ausgegeben werden sollen. Mit dieser Eigenschaft können Sie die Protokollierung global aktivieren. | 
+| ibm.appcenter.openjpa.Log| DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE| Bei Verwendung dieser Einstellung werden alle generierten SQL-Anweisungen in den Protokolldateien ausgegeben.| 

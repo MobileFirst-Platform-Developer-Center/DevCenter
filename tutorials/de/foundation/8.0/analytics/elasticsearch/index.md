@@ -34,6 +34,8 @@ im [{{ site.data.keys.mf_analytics_server }} Konfigurationshandbuch](../../insta
 unter [Cluster-Management und
 Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch).
 
+
+
 ### Elasticsearch-Eigenschaften
 {: #elasticsearch properties }
 
@@ -81,3 +83,4 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch macht viele weitere REST-Endpunkte zugänglich. Weitere Informationen finden Sie in der
 [Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+

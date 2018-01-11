@@ -53,11 +53,10 @@ der JAX-RS-2.0-Anwendung für diesen Adapter definieren, z. B. `com.sample.JavaA
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
-	
-	</mfp:adapter>
+</mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -96,7 +95,6 @@ sich **unter** dem Element `JAXRSApplicationClass` befinden.
 Im obigen Beispiel wurden die Verbindungseinstellungen definiert und Standardwerte für die Einstellungen festgelegt, sodass sie später in der Klasse AdapterApplication verwendet werden können.
 
 Das Element `<property>` wird mit folgenden Attributen verwendet:
-
 
 - **name**: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist
 - **defaultValue**: Setzt den in der Konfigurationsklasse definierten Wert außer Kraft
@@ -256,7 +254,8 @@ eine Annotation für HTTP-Anforderungen wie `@GET`, `@PUT`, `@POST`, `@DELETE` o
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 >**Wichtiger Hinweis:** Wenn Sie in Ihrer Adapterimplementierung statische Referenzen auf Klassen von `javax.ws.rs.*` oder `javax.servlet.*` verwenden, müssen Sie **RuntimeDelegate** mit einer der folgenden Optionen konfigurieren:
-*	Legen Sie `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in `jvm.options` in Liberty fest.
+
+*	Legen Sie in Liberty in der Datei `jvm.options` `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 ODER
 *	Legen Sie Sie die Systemeigenschaft oder angepasste JVM-Eigenschaft `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` fest.
 
@@ -287,8 +286,9 @@ Fügen Sie in Ihrer Java-Klasse Folgendes auf Klassenebene hinzu:
 
 ```java
 @Context
-ConfigurationAPI configurationAPI;
-```
+	ConfigurationAPI configurationAPI;
+
+	```
 
 Verwenden Sie dann die `configurationAPI`-Instanz zum Abrufen der Eigenschaften: 
 

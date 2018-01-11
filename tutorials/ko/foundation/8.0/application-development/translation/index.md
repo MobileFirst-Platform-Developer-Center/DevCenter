@@ -48,7 +48,7 @@ var Messages = {
 Messages.headerText
 ```
 
-**클래스가 "translate"인 HTML 요소의 ID로:**
+**`class="translate"`가 있는 HTML 요소의 ID로:**
 
 ```html
 <h1 id="headerText" class="translate"></h1>
@@ -191,3 +191,4 @@ Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFir
 샘플의 README.md 파일에 있는 지시사항을 따르십시오. 
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** 애플리케이션이 실행되는 동안 Android Studio의 LogCat 콘솔에서 Android LogCat을 검사할 수 있습니다.
+

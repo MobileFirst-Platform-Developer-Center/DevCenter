@@ -72,8 +72,8 @@ protected Map<String, Object> createChallenge() {
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("pin")){
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals("1234")){
@@ -131,8 +131,8 @@ public PinCodeConfig(Properties properties) {
     }
 
     //Check that the PIN code is numeric. Triggers warning.
-                try {
-int i = Integer.parseInt(pinCode);
+    try {
+        int i = Integer.parseInt(pinCode);
     }
     catch(NumberFormatException nfe) {
         addMessage(warnings,"pinCode","PIN code contains non-numeric characters");
@@ -144,8 +144,8 @@ int i = Integer.parseInt(pinCode);
 
 ```java
 @Override
-public SecurityCheckConfiguration createConfiguration(Properties properties) {
-    return new PinCodeConfig(properties);
+  public SecurityCheckConfiguration createConfiguration(Properties properties) {
+      return new PinCodeConfig(properties);
 }
 @Override
 protected PinCodeConfig getConfiguration() {
@@ -159,8 +159,8 @@ protected PinCodeConfig getConfiguration() {
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
         if(pinCode.equals(getConfiguration().pinCode)){

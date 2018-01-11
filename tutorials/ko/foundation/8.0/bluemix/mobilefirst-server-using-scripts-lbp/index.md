@@ -53,11 +53,11 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
 
 아카이브 파일에는 파일 레이아웃을 빌드하는 데 필요한 파일(**dependencies**, **mfpf-libs**), {{ site.data.keys.mf_analytics }} Container를 빌드하고 배치하는 데 필요한 파일(**mfpf-analytics**), {{ site.data.keys.mf_server }} Cloud Foundry 앱을 구성하는 데 필요한 파일(**mfpf-server-libertyapp**)이 들어 있습니다. 
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>클릭하면 아카이브 파일 컨텐츠에 대해 자세히 볼 수 있습니다.</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>클릭하면 아카이브 파일 컨텐츠에 대해 자세히 볼 수 있습니다.</b></a>
             </h4>
         </div>
 
@@ -103,7 +103,7 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
 </div>
 
 
-## {{ site.data.keys.mf_server }} 설정
+## {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_app_center }} 설정
 {: #setting-up-the-mobilefirst-server }
 스크립트를 대화식으로 또는 구성 파일을 사용하여 실행할 수 있습니다.
 스크립트를 대화식으로 한 번 실행하여 시작하는 것이 좋습니다. 그러면 인수도 기록됩니다(**recorded-args**). 나중에 args 파일을 사용하여 비대화식 모드에서 스크립트를 실행할 수 있습니다. 
@@ -115,17 +115,158 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
 
 스크립트를 대화식으로 실행할 경우 구성을 건너뛸 수 있지만 적어도 제공해야 하는 인수에 대해 읽고 이해해야 합니다. 
 
-### {{ site.data.keys.mf_server }}
-{: #mobilefirst-server }
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+
+>**참고:** 설치 프로그램과 DB 도구는 사내 구축형 {{ site.data.keys.mf_app_center }} 설치 폴더(`installer` 및 `tools` folders)에서 다운로드할 수 있습니다.
+
+
+
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">구성 파일 사용</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-1" aria-expanded="false" aria-controls="collapse-step-appcenter-1">구성 파일 사용</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+            <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. <b>args</b> 폴더에서 비어 있는 템플리트 파일과 인수에 대한 설명을 찾거나 <b>recorded-args</b> 폴더에 대화식 스크립트 실행한 후에 게시할 수 있습니다. 파일은 다음과 같습니다. <br/>
+
+              <h4>initenv.properties</h4>
+              이 파일에는 환경 초기화를 실행하는 데 사용되는 특성이 포함되어 있습니다.
+              <h4>prepareappcenterdbs.properties</h4>
+              {{ site.data.keys.mf_app_center }}에는 외부 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 데이터베이스 인스턴스</a>(OLTP 또는 트랜잭션으로 표시된 모든 플랜)가 필요합니다. <br/>
+              <b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 "종량과금제"로 표시된 플랜의 경우 즉각적입니다. <i>Enterprise for Transactions High Availability 2.8.500(종량과금제)</i>과 같은 적절한 플랜 중 하나를 선택하십시오. <br/><br/>
+               dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오. 
+
+              <h4>prepareappcenter.properties</h4>
+              이 파일은 prepareappcenter.sh 스크립트에 사용됩니다. 이 파일은 {{ site.data.keys.mf_app_center_short }} 파일 레이아웃을 준비하여 Bluemix에 Cloud Foundry 앱으로 푸시합니다.
+              <h4>startappcenter.properties</h4>
+              이 파일은 서버의 런타임 속성과 시작을 구성합니다. 최소한 1024MB(<b>SERVER_MEM=1024</b>)와 고가용성을 위해 3개의 노드(<b>INSTANCES=3</b>)를 사용해야 합니다. 
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-appcenter-2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-appcenter-2" aria-expanded="false" aria-controls="collapse-step-appcenter-2">스크립트 실행</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-appcenter-2" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+              <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
+              <ol>
+                  <li><b>initenv.sh – Bluemix에 로그인</b><br />
+                      <b>initenv.sh</b> 스크립트를 실행하여 Bluemix에 로그인하십시오. dashDB 서비스가 바인드되는 조직과 공간에 대해 다음을 실행하십시오.
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        명령행에 매개변수를 전달할 수도 있습니다. 
+
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+
+                        지원되는 모든 매개변수와 해당 문서에 대해 자세히 알아보려면 도움말 옵션을 실행하십시오. 
+
+{% highlight bash %}
+./initenv.sh --help
+{% endhighlight %}
+                  </li>
+                  <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} 데이터베이스 준비</b><br />
+                  <b>prepareappcenterdbs.sh</b> 스크립트는 dashDB 데이터베이스 서비스 또는 액세스 가능한 DB2 데이터베이스 서버를 사용해 {{ site.data.keys.mf_app_center }}를 구성하는 데 사용됩니다. DB2 옵션은 특히 DB2 서버가 설치된 datacentre에서 Bluemix Local을 실행 중인 경우 사용 가능합니다. dashDB 서비스를 사용하는 경우 1단계에서 로그인한 조직과 공간에서 dashDB 서비스의 서비스 인스턴스를 사용할 수 있어야 합니다. 다음을 실행하십시오.
+{% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        명령행에 매개변수를 전달할 수도 있습니다. 
+
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
+{% endhighlight %}
+
+                        지원되는 모든 매개변수와 해당 문서에 대해 자세히 알아보려면 도움말 옵션을 실행하십시오. 
+
+{% highlight bash %}
+./prepareappcenterdbs.sh --help
+{% endhighlight %}
+
+                  </li>
+                  <li><b>initenv.sh(선택사항) – Bluemix에 로그인</b><br />
+                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직과 공간 이외의 조직과 공간에서 서버를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 initenv.properties를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+                 </li>
+                  <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 준비</b><br />
+                    {{ site.data.keys.mf_app_center }}를 빌드하여 Bluemix에 Cloud Foundry 애플리케이션으로 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. 로그인한 조직과 공간에서 모든 Cloud Foundry 애플리케이션과 해당 URL을 보려면 <code>cf apps</code>를 실행하십시오.
+<br/>
+
+
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        명령행에 매개변수를 전달할 수도 있습니다. 
+
+{% highlight bash %}
+prepareappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        지원되는 모든 매개변수와 해당 문서에 대해 자세히 알아보려면 도움말 옵션을 실행하십시오. 
+
+{% highlight bash %}
+./prepareappcenter.sh --help
+{% endhighlight %}                  
+
+                  </li>
+                  <li><b>startappcenter.sh - {{ site.data.keys.mf_app_center }} 시작</b><br />
+                  <b>startappcenter.sh</b> 스크립트는 Liberty for Java Cloud Foundry 애플리케이션에서 {{ site.data.keys.mf_app_center }}를 시작하는 데 사용됩니다. 다음을 실행하십시오. <p/>
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        명령행에 매개변수를 전달할 수도 있습니다. 
+
+{% highlight bash %}
+./startappcenter.sh --name APP_NAME
+{% endhighlight %}
+
+                        지원되는 모든 매개변수와 해당 문서에 대해 자세히 알아보려면 도움말 옵션을 실행하십시오. 
+
+{% highlight bash %}
+./startappcenter.sh --help
+{% endhighlight %}   
+
+                  </li>
+              </ol>
+            </div>
+        </div>
+    </div>
+</div>
+{{ site.data.keys.mf_app_center }} 콘솔을 실행하려면 URL `http://APP_HOST.mybluemix.net/appcenterconsole`을 로드하십시오. 실행하는 데 몇 분 정도 걸릴 수 있습니다.    
+
+IBM Bluemix에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모바일 앱을 Application Center로 업로드할 수 있습니다. 
+
+
+### {{ site.data.keys.mf_server }}
+{: #mobilefirst-server }
+<div class="panel-group accordion" id="scripts2-mf" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step-foundation-1-mf">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-1-mf" aria-expanded="false" aria-controls="collapse-step-foundation-1-mf">구성 파일 사용</a>
+            </h4>
+        </div>
+
+        <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. <b>args</b> 폴더에서 비어 있는 템플리트 파일과 인수에 대한 설명을 찾거나 <b>recorded-args</b> 폴더에 대화식 스크립트 실행한 후에 게시할 수 있습니다. 파일은 다음과 같습니다. <br/>
 
@@ -148,11 +289,11 @@ Java에서 Liberty의 {{ site.data.keys.product }}을 설정하려면 나중에 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">스크립트 실행</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2-mf" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">스크립트 실행</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
               <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
               <ol>
@@ -276,14 +417,32 @@ Analytics Server를 설정했으며 이를 이 {{ site.data.keys.mf_server }}에
 
 ## {{ site.data.keys.mf_server }} 수정사항 적용
 {: #applying-mobilefirst-server-fixes }
+
 [IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 {{ site.data.keys.mf_server }}on Bluemix에 대한 임시 수정사항을 얻을 수 있습니다.   
-임시 수정사항을 적용하기 전에 기존 구성 파일을 백업하십시오. 구성 파일은
-**package_root/mfpf-server-libertyapp/usr** 폴더에 있습니다. 
+임시 수정사항을 적용하기 전에 기존 구성 파일을 백업하십시오. 구성 파일은 다음 폴더에 있습니다. 
+* {{ site.data.keys.mf_analytics }}:  **package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} Liberty Cloud Foundry 애플리케이션: **package_root/mfpf-server-libertyapp/usr**
+* {{ site.data.keys.mf_app_center_short }}:  **package_root/mfp-appcenter-libertyapp/usr**
+
+### iFix 적용 단계:
 
 1. 임시 수정사항 아카이브를 다운로드하고 기존 설치 폴더에 컨텐츠의 압축을 풀어 기존 파일을 겹쳐쓰십시오. 
-2. 백업한 구성 파일을 **/mfpf-server-libertyapp/usr** 폴더에 복원하여 새로 설치된 구성 파일을 겹쳐쓰십시오. 
+2. 백업한 구성 파일을 **package_root/mfpf-analytics/usr**, **package_root/mfpf-server-libertyapp/usr** 및 **package_root/mfp-appcenter-libertyapp/usr** 폴더에 복원하여 새로 설치된 구성 파일을 겹쳐쓰십시오. 
+3. 편집기에서 **package_root/mfpf-server/usr/env/jvm.options** 파일을 편집하고 다음 행이 있는 경우 제거하십시오. 
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar
+```
+    이제 업데이트된 서버를 빌드하고 배치할 수 있습니다.
 
-이제 업데이트된 서버를 빌드하고 배치할 수 있습니다. 
+동일한 인수 세트를 사용해 다음 스크립트를 다시 실행하십시오.
+
+    a. 업데이트된 아티팩트를 Bluemix로 업로드하려면 `./prepareserver.sh`를 실행하십시오. 
+
+    b. 업데이트된 서버를 시작하려면 `./startserver.sh`를 실행하십시오. 
+
+    이전 배치에서 사용한 인수 사본은 `recorded-args/` 디렉토리에 저장되었습니다. 배치에 이러한 특성을 사용할 수 있습니다. 
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix에서 데이터베이스 서비스 구성 제거
 {: #removing-the-database-service-configuration-from-bluemix }
@@ -295,3 +454,5 @@ Bluemix에서 데이터베이스 서비스 구성을 제거하려면 Bluemix 대
 2. dashDB 콘솔을 실행하여 선택한 dashDB 서비스 인스턴스의 스키마와 데이터베이스 오브젝트에 대한 작업을 수행하십시오. 
 3. IBM {{ site.data.keys.mf_server }} 구성과 관련된 스키마를 선택하십시오. 스키마 이름은 **prepareserverdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 이름입니다. 
 4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. Bluemix에서 데이터베이스 구성이 제거됩니다. 
+
+마찬가지로, {{ site.data.keys.mf_app_center }} 구성 중에 **prepareappcenterdbs.sh**를 실행한 경우에도 위 단계에 따라 Bluemix에서 데이터베이스 서비스 구성을 제거하십시오. 

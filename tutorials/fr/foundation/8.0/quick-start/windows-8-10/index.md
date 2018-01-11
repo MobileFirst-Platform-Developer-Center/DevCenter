@@ -54,10 +54,10 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 
    ```csharp
    try
-      {
+                   {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -119,7 +119,7 @@ Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et dépl
 
 La réponse de l'adaptateur est ensuite envoyée dans la console de sortie de Visual Studio.
 
-![Image de l'application ayant appelé une ressource à partir du serveur {{ site.data.keys.mf_server }}](success_response.png)
+![Image de l'application ayant appelé avec succès une ressource de {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Etapes suivantes
 {: #next-steps }

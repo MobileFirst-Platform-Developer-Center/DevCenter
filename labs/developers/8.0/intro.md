@@ -27,7 +27,7 @@ Read an overview of the available labs, and jump to lab from the tab bar above.
 In this lab you will be:
 
 * Using Ionic v1 for hybrid development
-* Develop using the mfpdev CLI with Foundation on Bluemix Service
+* Develop using the mfpdev CLI with Foundation on IBM Cloud Service
 * Securing backend APIs with user authentication
 * Implementing MessageHub for latency to process requests on a large scale
 * Caching with DashDB to lessen the load on the CRM
@@ -45,7 +45,7 @@ In this lab you will be:
 In this lab you will be:
 
 * Using Ionic v1 for hybrid development
-* Develop using the mfpdev CLI with Foundation on Bluemix Service
+* Develop using the mfpdev CLI with Foundation on IBM Cloud Service
 * Securing backend APIs with user authentication
 * Using Cloudant to store and retrieve work orders
 * Using Weather Company Data and APIs to get relevant weather alerts
@@ -76,8 +76,8 @@ In this lab you will be:
 * Using Mobile Operational Analytics
 * Performing a security scan of application binary
 * Doing a bug reporting and checking user sentiment analysis
-* Moving Node.js app to Bluemix using Cloud Foundry Node runtime
-* Creating {{ site.data.keys.product }} instance on Bluemix
+* Moving Node.js app to IBM Cloud using Cloud Foundry Node runtime
+* Creating {{ site.data.keys.product }} instance on IBM Cloud
 * Preparing mobile application for distribution
 
 ---

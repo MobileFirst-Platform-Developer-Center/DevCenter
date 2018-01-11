@@ -170,7 +170,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 
 La réponse de l'adaptateur s'affiche alors dans la console Xcode.
 
-![Image de l'application ayant appelé une ressource à partir du serveur {{ site.data.keys.mf_server }} ](success_response.png)
+![Image de l'application ayant appelé avec succès une ressource de {{ site.data.keys.mf_server }} ](success_response.png)
 
 ## Etapes suivantes
 {: #next-steps }

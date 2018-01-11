@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 {{ site.data.keys.product_full }} ツール・セットを使用してアプリケーションを開発する際、さまざまなコンポーネントおよびエレメントを開発したり構成したりする必要があります。アプリケーションの開発時に必要になるコンポーネントおよびエレメントについて理解すると、開発を円滑に進める上で役立ちます。
 
-これらの概念に精通することに加え、JSONStore および WLResourceReuest など、ネイティブ、Cordova、および Web のアプリケーション用の {{ site.data.keys.product_adj }} 提供の API についても学習します。また、アプリケーションのデバッグ、ダイレクト・アップデートを使用した Web リソースの更新、ライブ・アップデートを使用した userbase のセグメント化の方法を学習し、{{ site.data.keys.mf_cli }} を使用したアプリケーション、アダプター、およびその他の成果物の処理方法も学習します。
+これらの概念に精通することに加え、JSONStore や WLResourceRequest など、ネイティブ、Cordova、および Web のアプリケーション用の {{ site.data.keys.product_adj }} 提供の API についても学習します。また、アプリケーションのデバッグ、ダイレクト・アップデートを使用した Web リソースの更新、ライブ・アップデートを使用した userbase のセグメント化の方法を学習し、{{ site.data.keys.mf_cli }} を使用したアプリケーション、アダプター、およびその他の成果物の処理方法も学習します。
 
 これらのさまざまな {{ site.data.keys.product_adj }} コンポーネントについて詳細を学習するには、サイドバー・ナビゲーションから関連トピックにナビゲートすることも、このまま読み続けることもできます。
 
@@ -55,7 +55,7 @@ ID は開発者によって割り当てられる固有の ID です。
 * `com.mydomain.mfp` というアセンブリー名を持つ Windows 10 Universal Windows Platform アプリケーション。
 * `com.mydomain.mfp` という割り当てられた ID を持つ Web アプリケーション。
 
-アプリケーションのターゲット・デプロイメント・プラットフォームは、アプリケーションがネイティブ・アプリケーションとして開発されたか Cordova アプリケーションとして開発されたかに依存しません。えば、次のアプリケーションは両方とも {{ site.data.keys.product }} の iOS アプリケーションとみなされます。
+アプリケーションのターゲット・デプロイメント・プラットフォームは、アプリケーションがネイティブ・アプリケーションとして開発されたか Cordova アプリケーションとして開発されたかに依存しません。例えば、次のアプリケーションは両方とも {{ site.data.keys.product }} の iOS アプリケーションとみなされます。
 
 * Xcode およびネイティブ・コードを使用して開発する iOS アプリケーション
 * Cordova クロスプラットフォーム開発テクノロジーを使用して開発する iOS アプリケーション
@@ -136,7 +136,7 @@ Operations Console は、{{ site.data.keys.mf_server }} 構成を表示および
 
 目的のトポロジーに {{ site.data.keys.mf_server }} をインストールして構成した後には、以下の方法のいずれかを使用して、{{ site.data.keys.mf_server }} およびそのアプリケーションの追加構成をすべて行えます。
 
-* {{ site.data.keys.mf_console }}
+*  {{ site.data.keys.mf_console }}
 * {{ site.data.keys.mf_server }} 管理サービス REST API
 * **mfpadm** コマンド・ライン・ツール
 

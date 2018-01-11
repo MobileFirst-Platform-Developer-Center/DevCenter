@@ -122,9 +122,9 @@ Alternatively, click the **New** button next to **Adapters**.
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Testing the application
 {: #5-testing-the-application }
-1. In Xamarin Studio, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
+1. In Xamarin Studio, select the `mfpclient.properties` file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+    * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**.
 
 2. Press the **Play** button.
 

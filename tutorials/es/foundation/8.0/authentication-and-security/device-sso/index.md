@@ -1,34 +1,34 @@
 ---
 layout: tutorial
-title: Configuring Device Single Sign-On (SSO)
-breadcrumb_title: Device SSO
+title: Configuración de inicio de sesión único de dispositivo (SSO)
+breadcrumb_title: Dispositivo SSO
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-{{ site.data.keys.product_full }} offers a Single Sign-On (SSO) feature which enables sharing the state of any custom security check between multiple applications on the same device. For example, by using Device SSO, users can successfully sign on to one application on their device and also be authenticated on other applications on the same device that uses the same implementation.
+{{ site.data.keys.product_full }} ofrece una característica de inicio de sesión único que habilita la compartición del estado de  cualquier comprobación de seguridad personalizada entre varias aplicaciones en el mismo dispositivo.Por ejemplo, al utilizar el inicio de sesión único de dispositivo, los usuarios pueden iniciar sesión correctamente en una aplicación en su dispositivo y también autenticarse en otras aplicaciones del mismo dispositivo que utilizan la misma implementación. 
 
-**Prerequisite**: Make sure to read the [Authentication and Security](../) tutorials.
+**Requisitos previos**: Asegúrese de leer los tutoriales [Autenticación y seguridad](../).
 
-## Configuring SSO
+## Configuración del inicio de sesión único
 {: #configuring-sso }
-In the {{ site.data.keys.mf_console }}:
+En {{ site.data.keys.mf_console }}:
 
-1. Navigate to **[your application] → Security tab →  Security-Check Configurations** section.
-2. Click the **New** button to create a new security check configuration, or the **Edit** icon if a security check configuration already exists.
-3. In the **Configure Security-Check Properties** dialog, set the **Enable Device SSO** setting to **true** and press `OK`.
+1. Navegue a **[su aplicación] → Separador de seguridad →  Sección Configuraciones de comprobación de seguridad**.
+2. Pulse el botón **Nuevo** para crear una comprobación de seguridad nueva, o el icono **Editar** si ya existe una configuración de comprobación de seguridad.
+3. En el diálogo **Configurar propiedades de comprobación de seguridad**, establezca el valor **Habilitar inicio de sesión único de dispositivo** en **verdadero** y pulse `Aceptar`.
 
-Repeat these steps for each of the applications you want the enable Device SSO for.
+Repita estos pasos para cada una de las aplicaciones para las que desea habilitar el inicio de sesión único de dispositivo.
 
-<img class="gifplayer" alt="Configuring Device SSO in the {{ site.data.keys.mf_console }}" src="enable-device-sso.png"/>
+<img class="gifplayer" alt="Configuración de inicio de sesión único de dispositivo en{{ site.data.keys.mf_console }}" src="enable-device-sso.png"/>
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+También puede editar el archivo JSON de configuración de la aplicación de forma manual con la configuración necesaria y enviar los cambios a {{ site.data.keys.mf_server }}.
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **[project-folder]\mobilefirst** folder.
-3. Edit the file to enable device SSO for your selected custom security check: device SSO is enabled by setting the `enableSSO` property of a custom security check to `true`. The property configuration is contained within a security-check object that is nested in a `securityCheckConfigurations` object. Locate these objects in your application descriptor file, or create them if they are missing. For example:
+1. Desde una **ventana de línea de mandatos**, navegue a la carpeta de raíz de proyecto y ejecute `mfpdev app pull`.
+2. Abra el archivo de configuración ubicado en la carpeta **[project-folder]\mobilefirst**.
+3. Edite el archivo para habilitar el inicio de sesión único de dispositivo de la comprobación de seguridad personalizada que ha seleccionado: inicio de sesión único de dispositivo se habilita estableciendo la propiedad `enableSSO` de una comprobación de seguridad personalizada en `true`. La configuración de propiedad se contiene en el objeto de comprobación de seguridad que se anida en un objeto de `securityCheckConfigurations`. Ubique estos objetos en el archivo descriptor de la aplicación o créelos si no los encuentra. Por ejemplo: 
 
    ```xml
    "securityCheckConfigurations": {
@@ -40,19 +40,18 @@ You can also manually edit the application's configuration JSON file with the re
    }
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. Despliegue el archivo JSON de configuración actualizando ejecutando el mandato: `mfpdev app push`.
 
-## Using Device SSO with a Pre-Existing Sample
+## Utilización de un inicio de sesión único de dispositivo con un ejemplo preexistente
 {: #using-device-sso-with-a-pre-existing-sample }
-Read the  [Credential Validation](../credentials-validation/) tutorial because its sample is used to configure Device SSO.  
-For this demonstration, the Cordova sample application is used, however you can do the same also with the iOS, Android, and Windows sample applications.
+Lea el tutorial [Validación de credenciales](../credentials-validation/) ya que el ejemplo se utiliza para configurar el inicio de sesión único de dispositivo.   
+Para esta demostración, se utiliza la aplicación de ejemplo de Cordova, aunque también puede hacerlo con las aplicaciones de ejemplo de iOS, Android y Windows.
 
-1. Follow the [sample usage instructions](../credentials-validation/javascript/#sample-usage).
-2. Repeat the steps with a different sample name and application identifier.
-3. Run both applications on the same device. Notice how in each application you are prompted for the pincode ("1234").
-4. In the {{ site.data.keys.mf_console }}, set `Enable Device SSO` to `true` for each of the applications, as instructed above.
-5. Quit both applications and try again. In the first application you open, you are prompted to enter the pincode once by tapping the **Get Balance** button. After you open the second application and tap the **Get Balance** button, you do not need to enter the pincode again to get the balance.
-`
-Note that the `PinCodeAttempts` security check has a 60-second expiration token. Therefore, after one more attempt after 60 seconds, the second application requires a pincode.
+1. Siga las [instrucciones de uso de ejemplo](../credentials-validation/javascript/#sample-usage).
+2. Repita los pasos con un nombre de ejemplo y un identificador de aplicación diferentes.
+3. Ejecute las dos aplicaciones en el mismo dispositivo. Tenga en cuenta que en cada aplicación se le solicitará el código PIN ("1234"). 
+4. En {{ site.data.keys.mf_console }}, establezca `Enable Device SSO` en `true` para cada una  de las aplicaciones, tal y como se ha indicado anteriormente.
+5. Salga de las aplicaciones y vuelva a intentarlo. En la primera aplicación que abra, se le solicitará que introduzca el código PIN pulsando el botón **Obtener saldo**. Cuando haya abierto la segunda aplicación y haya pulsado el botón **Obtener saldo**, no será necesario volver a introducir el código PIN para obtener el saldo.
+Tenga en cuenta que la comprobación de seguridad `PinCodeAttempts` tiene una señal de vencimiento de 60 segundos. Por lo tanto, después de más de un intento pasados 60 segundos, la segunda aplicación le pedirá el código PIN.
 
-![pincode cordova sample application](pincode-attempts-cordova.png)
+![código PIN de aplicación de ejemplo de cordova](pincode-attempts-cordova.png)

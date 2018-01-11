@@ -1,23 +1,23 @@
 ---
 layout: tutorial
 title: 인증 설정
-breadcrumb_title: 인증 설정
+breadcrumb_title: 인증 설정n
 relevantTo: [android,ios,windows,javascript]
 weight: 5
-다운로드:
-  - 이름: Cordova 프로젝트 다운로드
+downloads:
+  - name: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - 이름: iOS Swift 프로젝트 다운로드
+  - name: iOS Swift 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - 이름: Android 프로젝트 다운로드
+  - name: Android 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - 이름: Win8 프로젝트 다운로드
+  - name: Win8 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - 이름: Win10 프로젝트 다운로드
+  - name: Win10 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - 이름: 웹 프로젝트 다운로드
+  - name: 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - 이름: SecurityCheck Maven 프로젝트 다운로드
+  - name: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -52,7 +52,9 @@ weight: 5
 private transient StepUpUserLogin userLogin;
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 두 보안 검사 구현 모두 동일한 어댑터 내부에 번들되어야 합니다. 이 참조를 해결하기 위해 프레임워크는 적절한 클래스를 갖는 보안 검사를 검색하고 종속적 보안 검사로 참조를 삽입합니다.   
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 두 보안 검사 구현 모두 동일한 어댑터 내부에 번들되어야 합니다. 
+
+이 참조를 해결하기 위해 프레임워크는 적절한 클래스를 갖는 보안 검사를 검색하고 종속적 보안 검사로 참조를 삽입합니다.   
 동일한 클래스의 보안 검사가 둘 이상 있을 경우 어노테이션은 선호하는 검사의 고유 이름을 지정하는 데 사용할 수 있는 선택적인 `name` 매개변수를 가집니다. 
 
 ## 상태 머신

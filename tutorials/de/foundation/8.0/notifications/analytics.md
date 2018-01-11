@@ -21,9 +21,9 @@ Die folgenden Eigenschaften sind erforderlich, um das
 MobileFirst-Analytics-Plug-in zu konfigurieren und zu initialisieren. Die Authentifizierung gegenäber dem Analytics-Service am angegebenen Endpunkt erfolgt mit Benutzernamen und Kennwort. 
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<MFP-Server:Port>/analytics-service/rest/data"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<Benutzername>"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<Kennwort>"/>
 ```
 
 <!--
@@ -52,8 +52,7 @@ Wenn Sie das Senden des Ereignisses inaktivieren möchten, setzen Sie die Eigens
 Informationen zum Anzeigen der Berichte zu Push-Benachrichtigungen in der Analytics Console finden Sie
 unter [Berichte zu Push-Benachrichtigungen](../../analytics/console/push-notifications/).
 
-> Weitere Informationen zu den JNDI-Eigenschaften für den Push-Service finden Sie in der
-[Liste der
-JNDI-Eigenschaften für den Push-Service von {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
-> **Hinweis:** Das Installationsprogramm für die {{ site.data.keys.product_full }} erstellt diese
+> Weitere Informationen zu den JNDI-Eigenschaften für den Push-Service finden Sie in der [Liste der JNDI-Eigenschaften für den Push-Service von {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+  **Hinweis:** Das Installationsprogramm für die {{ site.data.keys.product_full }} erstellt diese
 Eigenschaften und setzt sie auf die Standardwerte. 
+

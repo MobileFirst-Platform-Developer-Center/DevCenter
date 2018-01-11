@@ -85,11 +85,11 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 
 아카이브 파일에는 이미지를 빌드하는 데 필요한 파일(**dependencies**, **mfpf-libs**), {{ site.data.keys.mf_analytics }} Container를 빌드하고 배치하는 데 필요한 파일(**mfpf-analytics**), {{ site.data.keys.mf_server }} Container를 구성하는 데 필요한 파일(**mfpf-server**)이 들어 있습니다. 
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>클릭하면 사용할 아카이브 파일 컨텐츠와 사용 가능한 환경 특성에 대해 자세히 볼 수 있습니다.</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false"><b>클릭하면 사용할 아카이브 파일 컨텐츠와 사용 가능한 환경 특성에 대해 자세히 볼 수 있습니다.</b></a>
             </h4>
         </div>
 
@@ -124,7 +124,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
                     <li><b>env</b> 폴더: 서버 초기화에 사용되는 환경 특성(server.env)과 사용자 정의 JVM 옵션(jvm.options)이 들어 있습니다. </li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-server-env" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -279,8 +279,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
       * 조직(둘 이상의 조직이 있는 경우)
       * 공간(둘 이상의 공간이 있는 경우)
 
-2. IBM Containers 명령을 실행하려면 먼저 IBM Container 클라우드 서비스에 로그인해야 합니다.
-  
+2. IBM Containers 명령을 실행하려면 먼저 IBM Container 클라우드 서비스에 로그인해야 합니다.   
 `cf ic login`을 실행하십시오. 
 
 3. 컨테이너 레지스트리의 `namespace`가 설정되었는지 확인하십시오. `namespace`는 Bluemix 레지스트리에서 개인용 저장소를 식별하는 고유 이름입니다. 네임스페이스는 조직에 한 번 지정되며 변경될 수 없습니다. 다음 규칙에 따라 네임스페이스를 선택하십시오. 
@@ -293,7 +292,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 
 > IC 명령에 대해 자세히 알아보려면 `ic help` 명령을 사용하십시오. 
 
-## IBM Containers에서 {{ site.data.keys.product_adj }} 및 Analytics Server 설정
+## IBM Containers에서 {{ site.data.keys.product_adj }}, Analytics Servers 및 {{ site.data.keys.mf_app_center_short }} 설정
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
 위에서 설명한 대로 스크립트를 대화식으로 또는 구성 파일을 사용하여 실행할 수 있습니다. 
 
@@ -302,19 +301,425 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 
 **참고:** 스크립트를 대화식으로 실행할 경우 구성을 건너뛸 수 있지만 적어도 제공해야 하는 인수에 대해 읽고 이해해야 합니다. 
 
+
+### {{ site.data.keys.mf_app_center }}
+{: #mobilefirst-appcenter }
+{{ site.data.keys.mf_app_center }}를 사용하려면 여기서 시작하십시오. 
+
+>**참고:** 설치 프로그램과 DB 도구는 사내 구축형 {{ site.data.keys.mf_app_center }} 설치 폴더(`installer` 및 `tools` folders)에서 다운로드할 수 있습니다.
+
+
+
+<div class="panel-group accordion" id="scripts" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="step1">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1appcenter" aria-expanded="false" aria-controls="collapseStep1appcenter">구성 파일 사용</a>
+            </h4>
+        </div>
+
+        <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+            <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오. <br/>
+              <h4>initenv.properties</h4>
+              <ul>
+                  <li><b>BLUEMIX_USER - </b>Bluemix 사용자 이름(이메일)입니다.</li>
+                  <li><b>BLUEMIX_PASSWORD - </b>Bluemix 비밀번호입니다.</li>
+                  <li><b>BLUEMIX_ORG - </b>Bluemix 조직 이름입니다.</li>
+                  <li><b>BLUEMIX_SPACE - </b>Bluemix 공간(앞서 설명함)입니다.</li>
+              </ul>
+              <h4>prepareappcenterdbs.properties</h4>
+              {{ site.data.keys.mf_app_center }}에는 외부 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional 데이터베이스 인스턴스</a>(Enterprise Transactional 2.8.500 또는 Enterprise Transactional 12.128.1400)가 필요합니다.
+              <blockquote><p><b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 즉각적이지 않을 수 있습니다. 서비스 배치 전에 영업 팀에서 연락을 드릴 수 있습니다. </p></blockquote>
+
+              dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
+                <ul>
+                  <li><b>APPCENTER_DB_SRV_NAME - </b>Application Center 데이터를 저장하는 데 사용할 dashDB 서비스 인스턴스 이름입니다. </li>
+                  <li><b>APPCENTER_SCHEMA_NAME - </b>Application Center 데이터를 저장하는 데 사용할 데이터베이스 스키마 이름입니다. </li>
+                  <blockquote><b>참고:</b> 여러 사용자가 dashDB 서비스 인스턴스를 공유 중인 경우 고유한 스키마 이름을 제공해야 합니다. </blockquote>
+
+              </ul>
+              <h4>prepareappcenter.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b>이미지에 대한 태그입니다. <em>registry-url/namespace/your-tag</em> 양식이어야 합니다.</li>
+              </ul>
+              <h4>startappcenter.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em>의 경우와 동일합니다. </li>
+                  <li><b>SERVER_CONTAINER_NAME - </b>Bluemix Container의 이름입니다. </li>
+                  <li><b>SERVER_IP - </b>Bluemix Container를 바인드할 IP 주소입니다. </li>
+                  <blockquote>IP 주소를 지정하려면 <code>cf ic ip request</code>를 실행하십시오.
+                   제공된 Bluemix 공간의 여러 컨테이너에서 IP 주소를 재사용할 수 있습니다.
+                   IP 주소를 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다. </blockquote>
+              </ul>
+              <h4>startappcentergroup.properties</h4>
+              <ul>
+                  <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em>의 경우와 동일합니다. </li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Bluemix Container 그룹의 이름입니다. </li>
+                  <li><b>SERVER_CONTAINER_GROUP_HOST - </b>호스트 이름입니다.</li>
+                  <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>도메인 이름입니다. 기본값은 <code>mybluemix.net</code>입니다.</li>
+              </ul>    
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="appcenterstep2">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep2appcenter" aria-expanded="false" aria-controls="collapseStep2appcenter">스크립트 실행</a>
+            </h4>
+        </div>
+
+        <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
+            <div class="panel-body">
+                <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
+                <ol>
+                    <li><b>initenv.sh – Bluemix에 로그인</b><br />
+                    IBM Containers에서 {{ site.data.keys.product }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-initenv">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>클릭하면 명령행 인수의 목록이 표시됩니다.</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-initenv">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>명령행 인수</b></td>
+                                                <td><b>설명</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-u|--user] BLUEMIX_USER</td>
+                                                <td>Bluemix 사용자 ID 또는 이메일 주소</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
+                                                <td>Bluemix 비밀번호</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-o|--org] BLUEMIX_ORG	</td>
+                                                <td>Bluemix 조직 이름</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
+                                                <td>Bluemix 공간 이름</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항. [-a|--api] BLUEMIX_API_URL	</td>
+                                                <td>Bluemix API 엔드포인트(기본값은 https://api.ng.bluemix.net)</td>
+                                            </tr>
+                                        </table>
+
+                                        <p>예:</p>
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>섹션 닫기</b></a>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} 데이터베이스 준비</b><br/>
+                    <b>prepareappcenterdbs.sh</b> 스크립트는 dashDB 데이터베이스 서비스를 사용해 {{ site.data.keys.mf_app_center }}를 구성하는 데 사용됩니다. 1단계에서 로그인한 조직과 공간에서 dashDB 서비스의 서비스 인스턴스를 사용할 수 있어야 합니다.
+                    다음을 실행하십시오. 
+
+{% highlight bash %}
+./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenterdbs" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
+                                    <h4 class="panel-title">
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>클릭하면 명령행 인수의 목록이 표시됩니다.</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-prepareappcenterdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenterdbs">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                              <td><b>명령행 인수</b></td>
+                                              <td><b>설명</b></td>
+                                            </tr>
+                                            <tr>
+                                              <td>[-db | --acdb ] APPCENTER_DB_SRV_NAME	</td>
+                                              <td>Bluemix dashDB 서비스(Enterprise Transactional의 Bluemix 서비스 플랜 포함)</td>
+                                            </tr>    
+                                            <tr>
+                                              <td>선택사항: [-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
+                                              <td>Application Center 서비스의 데이터베이스 스키마 이름입니다. 기본값은 <i>APPCNTR</i>입니다. </td>
+                                            </tr>    
+                                        </table>
+
+                                        <p>예:</p>
+{% highlight bash %}
+prepareappcenterdbs.sh --acdb AppCenterDashDBService
+{% endhighlight %}
+
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>섹션 닫기</b></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                    </li>
+                    <li><b>initenv.sh(선택사항) – Bluemix에 로그인</b><br />
+                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직과 공간 이외의 조직과 공간에서 컨테이너를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너를 작성하고 시작해야 하는 새 조직과 공간으로 <b>initenv.properties</b>를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오. </li>
+
+{% highlight bash %}
+./initenv.sh args/initenv.properties
+{% endhighlight %}
+
+
+                    <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 이미지 준비</b><br />
+                    {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 Bluemix 저장소로 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. Bluemix 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.
+                    목록은 이미지 이름, 작성 날짜, ID를 포함합니다. 
+
+                        다음을 실행하십시오.
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-prepareappcenter" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>클릭하면 명령행 인수의 목록이 표시됩니다.</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-prepareappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenter">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>명령행 인수</b></td>
+                                                <td><b>설명</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
+                                                <td>사용자 정의된 MobileFirst Application Center 이미지에 사용할 이름입니다. 형식: <em>registryUrl/namespace/imagename</em></td>
+                                            </tr>
+                                        </table>
+
+                                        <p>예:</p>
+{% highlight bash %}
+prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>섹션 닫기</b></a>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                    <li><b>startappcenter.sh - IBM Container에서 이미지 실행</b><br/>
+                    <b>startappcenter.sh</b> 스크립트는 IBM Container에서 {{ site.data.keys.mf_app_center }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_IP</b> 특성에서 구성한 공용 IP에 이미지를 바인드합니다. 
+
+                        다음을 실행하십시오.
+{% highlight bash %}
+./startappcenter.sh args/startappcenter.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcenter" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>클릭하면 명령행 인수의 목록이 표시됩니다.</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-startappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcenter">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>명령행 인수</b></td>
+                                                <td><b>설명</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>{{ site.data.keys.mf_app_center }} 이미지의 이름입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-i|--ip] SERVER_IP	</td>
+                                                <td>{{ site.data.keys.mf_app_center }} 컨테이너를 바인드할 IP 주소입니다. (사용 가능한 공용 IP를 제공하거나 <code>cf ic ip request</code> 명령을 사용하여 IP 주소를 요청할 수 있습니다.)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-si|--services] SERVICE_INSTANCES	</td>
+                                                <td>컨테이너에 바인드하려는 쉼표로 구분된 Bluemix 서비스 인스턴스입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-h|--http] EXPOSE_HTTP </td>
+                                                <td>HTTP 포트를 공개합니다. 허용되는 값은 Y(기본값) 또는 N입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-s|--https] EXPOSE_HTTPS </td>
+                                                <td>HTTPS 포트를 공개합니다. 허용되는 값은 Y(기본값) 또는 N입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-m|--memory] SERVER_MEM </td>
+                                                <td>컨테이너에 메모리 크기 한계(MB)를 지정합니다. 허용되는 값은 1024MB(기본값)와 2048MB입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-se|--ssh] SSH_ENABLE </td>
+                                                <td>컨테이너에 SSH를 사용합니다. 허용되는 값은 Y(기본값) 또는 N입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-sk|--sshkey] SSH_KEY </td>
+                                                <td>컨테이너에 삽입할 SSH 키입니다. (id_rsa.pub 파일의 컨텐츠를 제공하십시오.)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>적용할 추적 스펙입니다. 기본값: <code>*=info</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-ml|--maxlog] MAX_LOG_FILES </td>
+                                                <td>로그 파일을 겹쳐쓰기 전에 유지보수할 최대 로그 파일 수입니다. 기본값은 5개 파일입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>최대 로그 파일 크기입니다. 기본 크기는 20MB입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>컨테이너 로그의 마운팅 볼륨을 사용합니다. 허용되는 값은 Y 또는 N(기본값)입니다.</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <p>예:</p>
+{% highlight bash %}
+startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_address
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>섹션 닫기</b></a>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                    <li><b>startappcentergroup.sh - IBM Container 그룹에서 이미지 실행</b><br/>
+                    <b>startappcentergroup.sh</b> 스크립트는 IBM Container 그룹에서 {{ site.data.keys.mf_app_center }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_CONTAINER_GROUP_HOST</b> 특성에서 구성한 호스트 이름에 이미지를 바인드합니다. 
+
+                        다음을 실행하십시오.
+{% highlight bash %}
+./startappcentergroup.sh args/startappcentergroup.properties
+{% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology-appcenter-startappcentergroup" role="tablist">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>클릭하면 명령행 인수의 목록이 표시됩니다.</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-appcenter-startappcentergroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcentergroup">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>명령행 인수</b></td>
+                                                <td><b>설명</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>Bluemix 레지스트리에 있는 {{ site.data.keys.mf_app_center }} 컨테이너 이미지의 이름입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
+                                                <td>{{ site.data.keys.mf_app_center }} 컨테이너 그룹의 이름입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
+                                                <td>경로의 호스트 이름입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
+                                                <td>경로의 도메인 이름입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-gm|--min] SERVERS_CONTAINER_GROUP_MIN </td>
+                                                <td>최소 컨테이너 인스턴스 수입니다. 기본값은 1입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-gx|--max] SERVER_CONTAINER_GROUP_MAX </td>
+                                                <td>최대 컨테이너 인스턴스 수입니다. 기본값은 2입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED </td>
+                                                <td>원하는 컨테이너 인스턴스 수입니다. 기본값은 1입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-a|--auto] ENABLE_AUTORECOVERY </td>
+                                                <td>컨테이너 인스턴스의 자동 복구 옵션을 사용합니다. 허용되는 값은 Y 또는 N(기본값)입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-si|--services] SERVICES </td>
+                                                <td>컨테이너에 바인드하려는 쉼표로 구분된 Bluemix 서비스 인스턴스 이름입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>적용할 추적 스펙입니다. 기본값은 </code>*=info</code>입니다. </td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-ml|--maxlog] MAX_LOG_FILESC </td>
+                                                <td>로그 파일을 겹쳐쓰기 전에 유지보수할 최대 로그 파일 수입니다. 기본값은 5개 파일입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>최대 로그 파일 크기입니다. 기본 크기는 20MB입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-m|--memory] SERVER_MEM </td>
+                                                <td>컨테이너에 메모리 크기 한계(MB)를 지정합니다. 허용되는 값은 1024MB(기본값)와 2048MB입니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>선택사항: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>컨테이너 로그의 마운팅 볼륨을 사용합니다. 허용되는 값은 Y 또는 N(기본값)입니다.</td>
+                                            </tr>
+
+                                        </table>
+
+                                        <p>예:</p>
+{% highlight bash %}
+startappcentergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
+{% endhighlight %}
+
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>Close section</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 ### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_server }}에서 분석을 사용하려면 여기에서 시작하십시오. 
 
-<div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts-analytics" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="step1">
+        <div class="panel-heading" role="tab" id="step1-analytics">
             <h4 class="panel-title">
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">구성 파일 사용</a>
             </h4>
         </div>
 
-        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오. <br/>
             <b>참고:</b> 필수 인수만 포함합니다. 추가 인수에 대해 자세히 알아보려면 특성 파일에 있는 문서를 참조하십시오.
@@ -356,7 +761,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
             </h4>
         </div>
 
-        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
                 <ol>
@@ -365,7 +770,8 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 B
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+
+                        <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
@@ -423,7 +829,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         Bluemix 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오. <br/>
                         목록은 이미지 이름, 작성 날짜, ID를 포함합니다. 
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
@@ -464,7 +870,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-analytics-startanalytics" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
@@ -562,7 +968,8 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+
+                        <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
@@ -659,7 +1066,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
-<div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
@@ -667,7 +1074,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다.  다음 파일의 인수 값을 채우십시오. <br/>
 
@@ -722,7 +1129,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다. </p>
 
@@ -733,7 +1140,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-initenv" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
@@ -787,7 +1194,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserverdbs" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
@@ -854,7 +1261,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-prepareserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
@@ -879,7 +1286,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
-<br/>
+
+                                  <br/>
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>섹션 닫기</b></a>
                                   </div>
                           </div>
@@ -892,7 +1300,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <div class="panel-group accordion" id="terminology-startserver" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
@@ -964,7 +1372,8 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% highlight bash %}
 startserver.sh --tag image_tag_name --name container_name --ip container_ip_address
 {% endhighlight %}
-<br/>
+
+                                <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>섹션 닫기</b></a>
                                   </div>
                         </div>
@@ -976,7 +1385,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
 
-                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="terminology-startservergroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
@@ -1059,7 +1468,8 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 {% highlight bash %}
 startservergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
-<br/>
+
+                                        <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>섹션 닫기</b></a>
                                   </div>
                                 </div>
@@ -1074,6 +1484,8 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 
 > **참고:** 구성이 변경된 후에는 컨테이너를 다시 시작해야 합니다(`cf ic restart containerId`). 컨테이너 그룹의 경우 그룹 내의 각 컨테이너 인스턴스를 다시 시작해야 합니다. 예를 들어, 루트 인증서가 변경되면 새 인증서가 추가된 후 각 컨테이너 인스턴스를 다시 시작해야 합니다.
 
+
+
 http://MF\_CONTAINER\_HOST/mfpconsole URL을 로드하여 {{ site.data.keys.mf_console }}을 실행하십시오. 실행하는 데 시간이 걸릴 수 있습니다.   
 [{{ site.data.keys.mf_cli }}를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 학습서의 지시사항을 수행하여 원격 서버를 추가하십시오.   
 
@@ -1083,15 +1495,31 @@ IBM Bluemix에서 {{ site.data.keys.mf_server }}가 실행되면 애플리케이
 {: #port-number-limitation }
 현재 공용 도메인에 사용할 수 있는 포트 번호에 IBM Containers 제한사항이 있습니다. 따라서 {{ site.data.keys.mf_analytics }} 컨테이너와 {{ site.data.keys.mf_server }} 컨테이너에 지정된 기본 포트 번호(HTTP의 경우 9080, HTTPS의 경우 9443)를 변경할 수 없습니다. 컨테이너 그룹의 컨테이너에서는 HTTP 포트 9080을 사용해야 합니다. 컨테이너 그룹은 다중 포트 번호 또는 HTTPS 요청의 사용을 지원하지 않습니다. 
 
+
 ## {{ site.data.keys.mf_server }} 수정사항 적용
 {: #applying-mobilefirst-server-fixes }
+
 [IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 IBM Containers의 {{ site.data.keys.mf_server }}에 대한 임시 수정사항을 얻을 수 있습니다.   
-임시 수정사항을 적용하기 전에 기존 구성 파일을 백업하십시오. 구성 파일은 **package_root/mfpf-analytics/usr** 폴더와 **package_root/mfpf-server/usr** 폴더에 있습니다. 
+임시 수정사항을 적용하기 전에 기존 구성 파일을 백업하십시오. 구성 파일은 다음 폴더에 있습니다. 
+* {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
+* {{ site.data.keys.mf_server }} Liberty Cloud Foundry 애플리케이션: **package_root/mfpf-server/usr**
+* {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter/usr**
+
+### iFix 적용 단계:
 
 1. 임시 수정사항 아카이브를 다운로드하고 기존 설치 폴더에 컨텐츠의 압축을 풀어 기존 파일을 겹쳐쓰십시오. 
-2. 백업한 구성 파일을 **/mfpf-analytics/usr** 폴더와 **/mfpf-server/usr** 폴더에 복원하여 새로 설치된 구성 파일을 겹쳐쓰십시오. 
+2. 백업한 구성 파일을 **package_root/mfpf-analytics/usr**, **package_root/mfpf-server/usr** 및 **package_root/mfp-appcenter/usr** 폴더에 복원하여 새로 설치된 구성 파일을 겹쳐쓰십시오. 
+3. 편집기에서 **package_root/mfpf-server/usr/env/jvm.options** 파일을 편집하고 다음 행이 있는 경우 제거하십시오. 
+```
+-javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
+```
+    이제 업데이트된 서버를 빌드하고 배치할 수 있습니다.
 
-이제 새 프로덕션 레벨 컨테이너를 빌드하고 배치할 수 있습니다. 
+    a. 서버 이미지를 다시 빌드한 후 IBM Containers 서비스로 푸시하려면 `prepareserver.sh` 스크립트를 실행하십시오. 
+
+    b. 서버 이미지를 독립형 컨테이너로 실행하려면 `startserver.sh` 스크립트를 실행하고, 서버 이미지를 컨테이너 그룹으로 실행하려면 `startservergroup.sh`를 실행하십시오. 
+
+<!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
 ## Bluemix에서 컨테이너 제거
 {: #removing-a-container-from-bluemix }
@@ -1117,3 +1545,5 @@ Bluemix에서 데이터베이스 서비스 구성을 제거하려면 Bluemix 대
 2. dashDB 콘솔을 실행하여 선택한 dashDB 서비스 인스턴스의 스키마와 데이터베이스 오브젝트에 대한 작업을 수행하십시오. 
 3. IBM {{ site.data.keys.mf_server }} 구성과 관련된 스키마를 선택하십시오. 스키마 이름은 **prepareserverdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 이름입니다. 
 4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. Bluemix에서 데이터베이스 구성이 제거됩니다. 
+
+마찬가지로, {{ site.data.keys.mf_app_center }} 구성 중에 **prepareappcenterdbs.sh**를 실행한 경우에도 위 단계에 따라 Bluemix에서 데이터베이스 서비스 구성을 제거하십시오. 

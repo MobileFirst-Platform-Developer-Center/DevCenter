@@ -36,7 +36,9 @@ Installation Manager를 사용하여 Application Center를 설치하기로 선�
     * 제품을 업그레이드할 때마다(예를 들어, 임시 수정사항을 설치하기 위해) Application Center가 먼저 업그레이드됩니다. Application Center의 업그레이드에는 데이터베이스 및 애플리케이션 서버에 대한 조작이 포함됩니다. Application Center의 업그레이드에 실패하면 Installation Manager가 업그레이드를 완료하지 못하며, 따라서 기타 {{ site.data.keys.mf_server }} 컴포넌트도 업그레이드하지 못합니다. 프로덕션 설치의 경우, Installation Manager를 사용하여 Application Center를 배치하지 마십시오. Installation Manager에 의해 {{ site.data.keys.mf_server }}가 설치된 후 Ant 태스크를 사용하여 Application Center를 별도로 설치하십시오. Application Center에 대한 자세한 정보는 [Application Center 설치 및 구성](../../../appcenter)을 참조하십시오. 
 
 > **중요:** {{ site.data.keys.mf_server }} 설치 프로그램은 사용하는 디스크에 {{ site.data.keys.mf_server }} 2진 파일 및 도구만 설치합니다. {{ site.data.keys.mf_server }} 애플리케이션을 애플리케이션 서버에 배치하지는 않습니다. Installation Manager를 사용하여 설치를 실행한 후, 데이터베이스를 설정하고 {{ site.data.keys.mf_server }} 애플리케이션을 애플리케이션 서버에 배치해야 합니다.   
-> 이와 마찬가지로, 기존 설치를 업데이트하기 위해 Installation Manager를 실행하는 경우 Installation Manager는 디스크에 있는 파일만 업데이트합니다. 애플리케이션 서버에 배치된 애플리케이션을 업데이트하려면 추가 조치를 수행해야 합니다.
+> 이와 마찬가지로, 기존 설치를 업데이트하기 위해 Installation Manager를 실행하는 경우 디스크의 파일만 업데이트합니다. 애플리케이션 서버에 배치된 애플리케이션을 업데이트하려면 추가 조치를 수행해야 합니다.
+
+
 
 #### 다음으로 이동
 {: #jump-to }
@@ -199,7 +201,8 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
     > **중요:**  
     > 
     > * 애플리케이션 서버에 Application Center를 설치하지 않는 설치의 경우, **install-no-appcenter.xml**이라는 파일을 사용하십시오.
-    > * Application Center를 설치하는 설치의 경우, 사용하는 애플리케이션 서버 및 데이터베이스에 따라 다음 표에서 샘플 응답 파일을 선택하십시오.
+
+    > * Application Center를 설치하는 설치의 경우, 애플리케이션 서버 및 데이터베이스에 따라 다음 표에서 샘플 응답 파일을 선택하십시오.
 
    #### Application Center를 설치하는 **Silent\_Install\_Sample_Files.zip** 파일의 샘플 설치 응답 파일
     
@@ -263,6 +266,8 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
     
     > **참고:** MySQL과 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 조합은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2를 사용하거나 WebSphere Application Server에서 지원하는 다른 DBMS를 사용하여 IBM 지원 센터에서 완전하게 지원하는 구성의 이점을 활용할 수 있습니다.
 
+
+
     설치 제거하는 경우, 처음에 특정 패키지 그룹에 설치한 {{ site.data.keys.mf_server }} 또는 Worklight Server의 버전에 따른 샘플 파일을 사용하십시오. 
     
     * {{ site.data.keys.mf_server }}에서는 패키지 그룹 {{ site.data.keys.mf_server }}를 사용합니다. 
@@ -313,14 +318,15 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 4. <server> 요소의 저장소 목록을 조정하십시오. 이 단계에 대한 자세한 정보는 [저장소](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)에 있는 IBM Installation Manager 문서를 참조하십시오. 
 
     `<profile>` 요소에서 각 키/값 쌍의 값을 조정하십시오.  
-    `<install>` 요소의 `<offering>` 요소에서 설치하려는 릴리스와 일치하도록 버전 속성을 설정하거나, 저장소에 있는 최신 버전을 설치하려는 경우, 버전 속성을 제거하십시오.
+    `<offering>` 요소(`<install>` 요소에 있음)에서 설치하려는 릴리스와 일치하도록 버전 속성을 설정하거나, 저장소에 있는 최신 버전을 설치하려는 경우, 버전 속성을 제거하십시오.
 5. 다음 명령을 입력하십시오. `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     여기서:
     * `<InstallationManagerPath>`는 IBM Installation Manager의 설치 디렉토리입니다. 
-    * `<responseFile>`은 1단계에서 선택하고 업데이트한 파일의 이름입니다. 
+    * `<responseFile>`은 1단계에서 선택하고 업데이트한 파일의 이름입니다.
 
 > 자세한 정보는 [응답 파일을 사용하여 패키지 자동 설치](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)에 있는 IBM Installation Manager 문서를 참조하십시오.
+
     
 
 ### 다른 머신에 기록된 응답 파일로 작업
@@ -630,59 +636,59 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 #### Analytics 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **analytics.ear** 및 **analytics-*.war** | {{ site.data.keys.mf_analytics }}를 설치하기 위한 EAR 및 WAR 파일. |
-| **configuration-samples** | Ant 태스크를 사용하여 {{ site.data.keys.mf_analytics }}를 설치하기 위한 샘플 Ant 파일을 포함합니다. |
+| **analytics.ear** 및 **analytics-*.war** | {{ site.data.keys.mf_analytics }}를 설치하기 위한 EAR 및 WAR 파일.|
+| **configuration-samples** | Ant 태스크를 사용하여 {{ site.data.keys.mf_analytics }}를 설치하기 위한 샘플 Ant 파일을 포함합니다.|
 
 #### ApplicationCenter 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **configuration-samples** | Application Center를 설치하기 위한 샘플 Ant 파일을 포함합니다. Ant 태스크는 데이터베이스 테이블을 작성하고 애플리케이션 서버에 WAR 파일을 배치합니다. | 
-| **console** | Application Center를 설치하기 위한 EAR 및 WAR 파일을 포함합니다. 이 EAR 파일은 IBM  PureApplication  System에 고유하게 사용됩니다. | 
-| **databases** | Application Center용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다.  |
-| **installer** | Application Center 클라이언트를 작성하기 위한 자원을 포함합니다.  | 
-| **tools** | Application Center의 도구.  | 
+| **configuration-samples** | Application Center를 설치하기 위한 샘플 Ant 파일을 포함합니다. Ant 태스크는 데이터베이스 테이블을 작성하고 애플리케이션 서버에 WAR 파일을 배치합니다.| 
+| **console** | Application Center를 설치하기 위한 EAR 및 WAR 파일을 포함합니다. 이 EAR 파일은 IBM  PureApplication  System에 고유하게 사용됩니다.| 
+| **databases** | Application Center용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다. |
+| **installer** | Application Center 클라이언트를 작성하기 위한 자원을 포함합니다. | 
+| **tools** | Application Center의 도구. | 
 
 #### {{ site.data.keys.mf_server }} 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **mfp-ant-deployer.jar** | {{ site.data.keys.mf_server }} Ant 태스크 세트.  |
-| **mfp-*.war** | {{ site.data.keys.mf_server }} 컴포넌트의 WAR 파일.  |
-| **configuration-samples** | Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 설치하기 위한 샘플 Ant 파일을 포함합니다. | 
-| **ConfigurationTool** | Server Configuration Tool의 2진 파일을 포함합니다. 이 도구는 **mfp_server_install_dir/shortcuts**에서 실행됩니다. |
-| **databases** | {{ site.data.keys.mf_server }} 컴포넌트({{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 구성 서비스 및 {{ site.data.keys.product_adj }} 런타임)용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다. | 
-| **external-server-libraries** |  다른 도구(인증 도구 및 OAuth 보안 도구 등)에 의해 사용되는 JAR 파일을 포함합니다. |
+| **mfp-ant-deployer.jar** | {{ site.data.keys.mf_server }} Ant 태스크 세트. |
+| **mfp-*.war** | {{ site.data.keys.mf_server }} 컴포넌트의 WAR 파일. |
+| **configuration-samples** | Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 설치하기 위한 샘플 Ant 파일을 포함합니다.| 
+| **ConfigurationTool** | Server Configuration Tool의 2진 파일을 포함합니다. 이 도구는 **mfp_server_install_dir/shortcuts**에서 실행됩니다.|
+| **databases** | {{ site.data.keys.mf_server }} 컴포넌트({{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 구성 서비스 및 {{ site.data.keys.product_adj }} 런타임)용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다.| 
+| **external-server-libraries** |  다른 도구(인증 도구 및 OAuth 보안 도구 등)에 의해 사용되는 JAR 파일을 포함합니다.|
 
 #### PushService 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **mfp-push-service.war** | {{ site.data.keys.mf_server }} 푸시 서비스를 설치하기 위한 WAR 파일. |
-| **databases** | {{ site.data.keys.mf_server }} 푸시 서비스용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다. | 
+| **mfp-push-service.war** | {{ site.data.keys.mf_server }} 푸시 서비스를 설치하기 위한 WAR 파일.|
+| **databases** | {{ site.data.keys.mf_server }} 푸시 서비스용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다.| 
 
 #### License 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **Text** | {{ site.data.keys.product }}에 대한 라이센스를 포함합니다. | 
+| **Text** | {{ site.data.keys.product }}에 대한 라이센스를 포함합니다.| 
 
 #### {{ site.data.keys.mf_server }} 설치 디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **shortcuts** | {{ site.data.keys.mf_server }}와 함께 제공되는 Apache Ant용 실행기 스크립트, Server Configuration Tool 및 mfpadmin 명령. | 
+| **shortcuts** | {{ site.data.keys.mf_server }}와 함께 제공되는 Apache Ant용 실행기 스크립트, Server Configuration Tool 및 mfpadmin 명령.| 
 
 #### tools 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| 항목 | 설명 |
+| 항목| 설명          |
 |------|-------------|
-| **tools/apache-ant-version-number** | Server Configuration Tool에 의해 사용되는 Apache Ant의 2진 설치. 이는 Ant 태스크를 실행하는 데도 사용될 수 있습니다. | 
+| **tools/apache-ant-version-number** | Server Configuration Tool에 의해 사용되는 Apache Ant의 2진 설치. 이는 Ant 태스크를 실행하는 데도 사용될 수 있습니다.| 

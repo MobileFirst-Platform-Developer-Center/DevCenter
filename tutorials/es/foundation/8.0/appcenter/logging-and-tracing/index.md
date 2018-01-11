@@ -34,6 +34,7 @@ es importante poder ver los mensajes de registro. Para imprimir los mensajes de 
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -41,7 +42,9 @@ com.worklight.*=all
 Donde:
 
 * **com.ibm.puremeap.*** es para Application Center.
-* **com.ibm.worklight.*** y **com.worklight.*** son para otros componentes de {{ site.data.keys.product_adj }}.
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** y
+**com.worklight.*** son para otros componentes de {{ site.data.keys.product_adj }}.
+
 
 Los rastreos se envían a un archivo denominado **trace.log**, no a **SystemOut.log** o a **SystemErr.log**.
 
@@ -54,7 +57,7 @@ Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante
 Para habilitar el registro para {{ site.data.keys.product }}, incluido Application Center, con el nivel FINEST (equivalente a ALL), añada una línea al archivo server.xml. Por ejemplo:
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 En este ejemplo, varias entradas de un paquete y su nivel de registro están separados por dos puntos (:).
@@ -73,6 +76,7 @@ Para habilitar el registro para {{ site.data.keys.product }}, incluido Applicati
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
@@ -85,8 +89,8 @@ En todas las plataformas soportadas, puede utilizar propiedades de Java Naming a
 
 Las siguientes propiedades de JNDI son aplicables para la aplicación web para servicios de Application Center (**applicationcenter.war**).
 
-| Valores de la propiedad | Valor | Descripción | 
+| Valores de la propiedad| Valor| Descripción| 
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para formatear la salida JSON con espacios en blanco, para una lectura más sencilla en archivos de registro. | 
-| ibm.appcenter.logging.tosystemerror | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para imprimir todos los mensajes de registro del error de sistema en archivos de registro. Utilice la propiedad para activar el registro de forma global. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Este valor imprime todas las sentencias SQL generadas en los archivos de registro. | 
+| ibm.appcenter.logging.formatjson| true| De manera predeterminada, esta propiedad se establece en false. Establézcala en true para formatear la salida JSON con espacios en blanco, para una lectura más sencilla en archivos de registro.| 
+| ibm.appcenter.logging.tosystemerror| true| De manera predeterminada, esta propiedad se establece en false. Establézcala en true para imprimir todos los mensajes de registro del error de sistema en archivos de registro. Utilice la propiedad para activar el registro de forma global.| 
+| ibm.appcenter.openjpa.Log| DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE| Este valor imprime todas las sentencias SQL generadas en los archivos de registro.| 

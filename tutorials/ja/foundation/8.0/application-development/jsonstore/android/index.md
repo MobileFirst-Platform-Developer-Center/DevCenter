@@ -6,9 +6,9 @@ relevantTo: [android]
 weight: 3
 downloads:
   - name: Android Studio プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
   - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
@@ -31,7 +31,7 @@ downloads:
 2. 既存の `dependencies` セクションに以下を追加します。
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
 ## 基本的な使用法
@@ -258,8 +258,8 @@ try {
 アダプターを作成し、"**JSONStoreAdapter**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;
@@ -292,7 +292,7 @@ function replacePerson(data) {
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
-  @Override
+@Override
   public void onFailure(final WLFailResponse response) {
     // handle failure
 }
@@ -338,7 +338,7 @@ JSONStore でドキュメントが「ダーティー」とマーキングされ�
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
-  @Override
+@Override
   public void onFailure(final WLFailResponse response) {
     // handle failure
 }

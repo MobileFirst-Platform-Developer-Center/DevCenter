@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-要开始 [Cordova (PhoneGap) 开发](https://cordova.apache.org/)，最基本的步骤是安装 Cordova CLI。Cordova CLI 是一款可用于创建 Cordova 应用程序的工具。可使用各种第三方框架和工具（如 Ionic、AngularJS 和 jQuery Mobile 等）来进一步提升这些应用程序的性能。
+要开始 [Cordova (PhoneGap) 开发](https://cordova.apache.org/)，最基本的步骤是安装 Cordova CLI。 Cordova CLI 是一款可用于创建 Cordova 应用程序的工具。 可使用各种第三方框架和工具（如 Ionic、AngularJS 和 jQuery Mobile 等）来进一步提升这些应用程序的性能。 
 对于 Cordova 应用程序，可以使用您首选的代码编辑器（如 Atom.io、Visual Studio Code、Eclipse、IntelliJ 等）来实施应用程序和适配器。
 
 **先决条件：**设置 Cordova 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product_adj }} 开发环境](../mobilefirst/)教程。

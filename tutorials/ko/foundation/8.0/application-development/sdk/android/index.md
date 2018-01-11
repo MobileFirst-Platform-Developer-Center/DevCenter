@@ -86,7 +86,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. 기존 **활동** 요소 옆에 {{ site.data.keys.product_adj }} UI 활동을 추가하십시오. 
 
    ```xml
@@ -98,8 +98,8 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
 ### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
 {: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product_adj }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
-  
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -110,12 +110,14 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>{{ site.data.keys.product_adj }} SDK를 수동으로 추가하려면 먼저 <b>{{ site.data.keys.mf_console }} → 다운로드 센터 → SDK</b> 탭에서 SDK .zip 파일을 다운로드하십시오. 위 단계를 완료한 후에 아래 단계도 수행하십시오. </p>
-            
+
                 <ul>
                     <li>다운로드된 .zip 파일을 추출하고 관련 aar 파일을 <b>app\libs</b> 폴더에 저장하십시오. </li>
                     <li>다음을 <b>종속 항목</b> 클로저에 추가하십시오.
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>다음을 <b>저장소</b> 클로저에 추가하십시오.
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>닫기 섹션</b></a>
             </div>
@@ -155,7 +157,7 @@ repositories {
 >
 > 1. {{ site.data.keys.mf_console }}을 로드하십시오.   
 > 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.   
-> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.properties** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
+> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.properties** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오. 
 
 ### WLClient 인스턴스 작성
 {: #creating-a-wlclient-instance }
@@ -180,13 +182,13 @@ SDK 릴리스는 SDK의 [JCenter 저장소](https://bintray.com/bintray/jcenter/
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다. 
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성| 설명| 예제 값|
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
-| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다.  | /mfp/          |
-| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.            | en             |
+| wlServerProtocol| {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.| HTTP 또는 HTTPS|
+| wlServerHost| {{ site.data.keys.mf_server }}의 호스트 이름입니다.| 192.168.1.63|
+| wlServerPort| {{ site.data.keys.mf_server }}의 포트입니다.| 9080|
+| wlServerContext| {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. | /mfp/|
+| languagePreferences| 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다. | en|
 
 ## Javadoc 및 Android 서비스의 지원
 {: #support-for-javadoc-and-android-service }

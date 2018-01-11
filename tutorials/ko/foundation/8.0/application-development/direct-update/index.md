@@ -4,7 +4,7 @@ title: Cordova 애플리케이션에서 직접 업데이트 사용
 breadcrumb_title: 직접 업데이트
 relevantTo: [cordova]
 weight: 8
-download:
+downloads:
   - 이름: Cordova 프로젝트 다운로드
     URL: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
@@ -58,9 +58,11 @@ download:
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **참고:** 직접 업데이트를 수행하면 60분 후에 다시 확인됩니다.
 
+
+
 직접 업데이트를 수행한 후에는 애플리케이션에서 미리 패키지된 웹 자원을 더 이상 사용하지 않습니다. 대신 애플리케이션의 샌드박스에서 다운로드된 웹 자원을 사용합니다. 디바이스에서 애플리케이션의 캐시가 지워지면 원래 패키지된 자원이 다시 사용됩니다. 
 
-![직접 업데이트 작업 방식의 다이어그램](internal_function.jpg)
+![직접 업데이트의 작업 방식에 대한 다이어그램](internal_function.jpg)
 
 ### 버전화
 {: #versioning }
@@ -77,13 +79,13 @@ download:
 
 대체:
 
-* .zip 파일을 빌드하고 다른 {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name][runtime-name]`에 업로드하십시오. 예: 
+* .zip 파일을 빌드하고 다른 {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`에 업로드하십시오. 예: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* 이전에 생성된 .zip 파일 `mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]`을 업로드하십시오. 예: 
+* 이전에 생성된 .zip 파일(`mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`)을 업로드하십시오. 예: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -93,8 +95,8 @@ download:
  1. 업로드하지 않고 .zip 파일을 빌드하십시오. 
 
     ```bash
-    mfpdev app webupdate --build
-    ```
+mfpdev app webupdate --build
+```
  2. {{ site.data.keys.mf_console }}을 로드하고 애플리케이션 항목을 클릭하십시오. 
  3. **웹 자원 파일 업로드**를 클릭하고 패키지된 웹 자원을 업로드하십시오. 
 
@@ -127,7 +129,7 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 이 함수는 기본 직접 업데이트 디자인(직접 업데이트를 사용할 수 있는 경우 표시되는 기본 메시지 대화 상자 및 직접 업데이트 프로세스가 시작되면 표시되는 기본 진행상태 화면)을 제공합니다. 사용자 정의 직접 업데이트 사용자 인터페이스 동작을 구현하거나 이 함수를 대체하고 고유 로직을 구현하여 직접 업데이트 대화 상자를 사용자 정의할 수 있습니다. 
 
 <img alt="사용자 정의 직접 업데이트 대화 상자의 이미지" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
-아래 예제 코드에서 `handleDirectUpdate` 함수는 직접 업데이트 대화 상자에서 사용자 정의 메시지를 구현합니다. Cordova 프로젝트의 **www/js/index.js** 파일에 이 코드를 추가하십시오.   
+아래 예제 코드에서 `handleDirectUpdate` 함수는 직접 업데이트 대화 상자에서 사용자 정의 메시지를 구현합니다. Cordova 프로젝트의 **www/js/index.js** 파일에 이 코드 추가  
 사용자 정의 직접 업데이트 UI의 추가 예제:
 
 - 써드파티 JavaScript 프레임워크(예: Dojo 또는 jQuery Mobile, Ionic 등)를 사용하여 작성되는 대화 상자
@@ -136,7 +138,7 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 - 기타
 
 ```javascript
-wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
+wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
     navigator.notification.confirm(  // Creates a dialog.
         'Custom dialog body text',
         // Handle dialog buttons.
@@ -156,7 +158,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 * 리스너 함수(예: `directUpdateContext.start(directUpdateCustomListener)`가 제공되면 프로세스가 리스너에 라이프사이클 이벤트를 전송하는 동안 직접 업데이트 프로세스가 백그라운드에서 실행됩니다. 사용자 정의 리스너는 다음 메소드를 구현해야 합니다. 
 
 ```javascript
-var  directUpdateCustomListener  = { 
+var  directUpdateCustomListener  = {
     onStart : function ( totalSize ){ }, 
     onProgress : function ( status , totalSize , completedSize ){ }, 
     onFinish : function ( status ){ } 
@@ -169,17 +171,17 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다. 
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다. 
 
-| 상태 코드 | 설명 |
+| 상태 코드| 설명|
 |-------------|-------------|
-| `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
-| `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
-| `FAILURE_NETWORK_PROBLEM` | 업데이트 중에 네트워크 연결에 문제점이 발생했습니다. |
-| `FAILURE_DOWNLOADING` | 파일이 완전히 다운로드되지 않았습니다. |
-| `FAILURE_NOT_ENOUGH_SPACE` | 디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다. |
-| `FAILURE_UNZIPPING` | 업데이트 파일을 언팩하는 중에 문제점이 발생했습니다. |
-| `FAILURE_ALREADY_IN_PROGRESS` | 직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다. |
-| `FAILURE_INTEGRITY` | 업데이트 파일의 신뢰성을 확인할 수 없습니다. |
-| `FAILURE_UNKNOWN` | 예기치 않은 내부 오류가 발생했습니다. |
+| `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다.|
+| `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서).|
+| `FAILURE_NETWORK_PROBLEM` | 업데이트 중에 네트워크 연결에 문제점이 발생했습니다.|
+| `FAILURE_DOWNLOADING` | 파일이 완전히 다운로드되지 않았습니다.|
+| `FAILURE_NOT_ENOUGH_SPACE` | 디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다.|
+| `FAILURE_UNZIPPING` | 업데이트 파일을 언팩하는 중에 문제점이 발생했습니다.|
+| `FAILURE_ALREADY_IN_PROGRESS` | 직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다.|
+| `FAILURE_INTEGRITY` | 업데이트 파일의 신뢰성을 확인할 수 없습니다.|
+| `FAILURE_UNKNOWN` | 예기치 않은 내부 오류가 발생했습니다.|
 
 사용자 정의 직접 업데이트 리스너를 구현하는 경우 직접 업데이트 프로세스가 완료되고 `onFinish()` 메소드가 호출되었을 때 앱이 다시 로드되는지 확인해야 합니다. 또한 직접 업데이트 프로세스가 올바르게 완료되지 못하면 `wl_directUpdateChalengeHandler.submitFailure()`를 호출해야 합니다. 
 
@@ -325,6 +327,8 @@ var directUpdateCustomListener = {
 델타 직접 업데이트를 사용하면 애플리케이션이 애플리케이션의 전체 웹 자원 대신 마지막 업데이트 이후에 변경된 파일만 다운로드할 수 있습니다. 이는 다운로드 시간을 줄이고 대역폭을 유지하며 전반적인 사용자 경험을 개선합니다. 
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** **델타 업데이트**는 클라이언트 애플리케이션의 웹 자원이 서버에 현재 배치된 애플리케이션보다 한 버전 이전인 경우에만 수행할 수 있습니다. 현재 배치된 애플리케이션 버전보다 여러 버전 이전인 클라이언트 애플리케이션(즉 클라이언트 애플리케이션이 업데이트된 이후에 애플리케이션이 두 번 이상 서버에 배치됨)은 **전체 업데이트**(즉 전체 웹 자원이 다운로드되고 업데이트됨)를 수신합니다.
+
+
 
 ## 보안 직접 업데이트
 {: #secure-direct-update }
