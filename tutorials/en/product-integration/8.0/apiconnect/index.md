@@ -32,8 +32,8 @@ Currently, the security integration of MobileFirst and API Connect is supported 
 {: #prerequisites}
 * API Connect service on IBM Cloud.
 * Mobile Foundation service on IBM Cloud.
-* [Download](https://github.com/dselvara/mfp-apic) the `MFPOAuthLoginApplication` sample and `MFPOAuthProvider` template yaml files.
-* [Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the `SecurityCheck` adapter sample.
+* [Download](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstAPIConnectIntegration) the `MFPOAuthLoginApplication` sample and `MFPOAuthProvider` template yaml files.
+* [Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters) the `SecurityCheck` adapter sample.
 
 ## Define Confidential Client in MobileFirst Operations Console
 {: #define-cc}
