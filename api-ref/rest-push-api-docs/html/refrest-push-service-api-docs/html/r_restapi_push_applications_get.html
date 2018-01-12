@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" flippy="dippy" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2018" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2018" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Push Applications (GET)" />
+<meta name="abstract" content="Retrieves all the applications." />
+<meta name="Description" content="Retrieves all the applications." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="Push-Applications--GET-" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css" />
+<title>Push Applications (GET)</title>
+</head>
+<body id="Push-Applications--GET-"><div role="main">
+
+<h1 class="title topictitle1" id="ariaid-title1"> Push Applications (GET) </h1>
+
+
+
+<div class="body refbody"><p class="shortdesc">Retrieves all the applications.</p>
+
+<section class="section"><h2 class="title sectiontitle"> Method </h2>
+
+<p class="p"><code class="ph codeph">GET</code></p>
+
+</section>
+
+
+
+<section class="section"><h2 class="title sectiontitle">Path</h2>
+
+<p class="p">/apps/</p>
+
+</section>
+
+
+<div class="example"><h2 class="title sectiontitle">Example</h2>
+
+<pre class="pre codeblock prettyprint"><code>https://example.com:443/imfpush/v1/apps/?expand=true&amp;filter=platform==A&amp;offset=0&amp;size=10</code></pre>
+</div>
+
+
+<section class="section"><h2 class="title sectiontitle">Query Parameters</h2>
+
+<p class="p">Query parameters are optional.</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">expand</dt>
+
+<dd class="dd pd">Retrieves detailed information about applications.</dd>
+
+<dt class="dt pt dlterm">filter</dt>
+
+<dd class="dd pd">Search criteria filter. Refer to the filter section for detailed syntax.</dd>
+
+<dt class="dt pt dlterm">offset</dt>
+
+<dd class="dd pd">Pagination offset that is normally used along with the size.</dd>
+
+<dt class="dt pt dlterm">size</dt>
+
+<dd class="dd pd">Pagination size that is normally used along with the offset to retrieve a subset.</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Header Parameters</h2>
+
+<p class="p">Some header parameters are optional.</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">Accept-Language</dt>
+
+<dd class="dd pd">(Optional) The preferred language to use for error messages. Default:en-US</dd>
+
+<dt class="dt pt dlterm">Authorization</dt>
+
+<dd class="dd pd">The token with the scope "apps.read" and "push.application.*" obtained using the confidential client in the format Bearer <em class="ph i">token</em>.. This parameter has to be mandatorily set.</dd>
+
+<dt class="dt pt dlterm">Content-Type</dt>
+
+<dd class="dd pd">Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Produces</h2>
+
+<p class="p">
+application/json</p>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Response</h2>
+
+<p class="p">
+The details of all the applications.</p>
+
+</section>
+
+<div class="example"><h2 class="title sectiontitle">JSON Example</h2>
+<pre class="pre codeblock prettyprint"><code>{
+  "applications" : [
+    {
+      "applicationId" : "testApp",
+    },
+    ...
+  ],
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10",
+  },
+}</code></pre></div>
+
+
+<section class="section"><h2 class="title sectiontitle">Response Properties</h2>
+
+<p class="p">The response has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">applications</dt>
+
+<dd class="dd pd">The array of applications.</dd>
+
+<dt class="dt pt dlterm">pageInfo</dt>
+
+<dd class="dd pd">The pagination information</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">applications</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">applicationId</dt>
+
+<dd class="dd pd">The applicationId.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">pageInfo</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">count</dt>
+
+<dd class="dd pd">The number of applications that are retrieved</dd>
+
+<dt class="dt pt dlterm">next</dt>
+
+<dd class="dd pd">A hyperlink to the next page</dd>
+
+<dt class="dt pt dlterm">previous</dt>
+
+<dd class="dd pd">A hyperlink to the previous page</dd>
+
+<dt class="dt pt dlterm">totalCount</dt>
+
+<dd class="dd pd">The total number of applications present for the given search criteria</dd>
+
+</dl>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Errors</h2>
+
+<span class="keyword msgnum">401</span>
+<pre class="pre msgblock">Unauthorized - The caller is either not authenticated or not authorized to make this request.</pre>
+
+<span class="keyword msgnum">406</span>
+<pre class="pre msgblock">Unsupported Accept type - The content type specified in Accept header is not application/json.</pre>
+
+<span class="keyword msgnum">500</span>
+<pre class="pre msgblock">An internal error occurred.</pre>
+
+</section>
+
+
+</div>
+</div></body>
+</html>
