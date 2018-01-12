@@ -57,7 +57,7 @@ Caused by: [SOAPException: faultCode=SOAP-ENV:ServerException; msg=The Soap RPC 
 	at com.ibm.ws.management.connector.soap.SOAPConnectorClient.invoke(SOAPConnectorClient.java:490)
 	... 56 more
 
-	```
+```
 
 ### Root cause and workaround
 
