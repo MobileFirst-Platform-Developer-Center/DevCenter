@@ -15,4 +15,4 @@ This REST API endpoint is protected by OAuth which requires the clients to be co
 
 ## API Reference
 {: #api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../api-ref/rest-push-api-docs/html/refrest-push-service-api-docs/html/overview.html"></iframe>
+<iframe frameBorder="1" border="1" width="100%" height="500px" src="../../../../../../../../api-ref/rest-push-api-docs/html/refrest-push-service-api-docs/html/overview.html"></iframe>

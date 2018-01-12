@@ -13,4 +13,4 @@ The REST service API for adapters and applications for each runtime is in **/man
 
 ## API Reference
 {: #api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../api-ref/rest-admin-api-docs/html/refrest-admin-service-api-docs/html/overview.html"></iframe>
+<iframe frameBorder="1" border="1" width="100%" height="500px" src="../../../../../../../../api-ref/rest-admin-api-docs/html/refrest-admin-service-api-docs/html/overview.html"></iframe>
