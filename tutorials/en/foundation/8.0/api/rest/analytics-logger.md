@@ -8,6 +8,6 @@ weight: 4
 ## Overview
 {: #overview }
 The {{ site.data.keys.mf_analytics }} public REST API is documented in Swagger.  
-To view and interact with Swagger, deploy the **analytics-service.war** (in the devcenter is it pre-deployed) file and load the following address in your browser: `http://hostname:port/analytics-service`.
+To view and interact with Swagger, deploy the **analytics-service.war** (in the devcenter it is pre-deployed) file and go to the following url using your browser: `http://hostname:port/analytics-service`.
 
 > **Note:** Replace the _**hostname**_ and _**port**_ with your server hostname and port values.

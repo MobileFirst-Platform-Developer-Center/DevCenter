@@ -11,7 +11,7 @@ Select an interface:
 * **[REST API for the MobileFirst Server administration service](admin-apis)**  
     The REST API provides several services to administer runtime adapters, applications, devices, audit, transactions, security, and push notifications.
 
-* **[REST API for the MobileFirst Server push service](push-service)**  
+* **[REST API for the MobileFirst Server push service](push-apis)**  
     The REST API for Push in the MobileFirst runtime environment enables back-end server applications that were deployed outside of the MobileFirst Server to access Push functions from a REST API endpoint.
 
 * **[REST API for the MobileFirst runtime](runtime)**  

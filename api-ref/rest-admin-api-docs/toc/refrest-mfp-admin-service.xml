@@ -81,7 +81,7 @@
 
             <topic label="Enable or Disable Application Authenticity (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_enable_or_disable_application_authenticity_post.html"/>
 
-            <topic label="Export adapter resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_adapter_resources_get.html.html"/>
+            <topic label="Export adapter resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_adapter_resources_get.html"/>
 
             <topic label="Export adapters (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_adapters_get.html"/>
 
