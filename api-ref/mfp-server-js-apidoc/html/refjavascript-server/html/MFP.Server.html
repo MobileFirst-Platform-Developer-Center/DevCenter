@@ -664,7 +664,7 @@ The returned object has the following structure:
           "status":"ACTIVE",
           "displayName":null
       },
-  "scope":"",
+  "scope":"RegisteredClient",
   "isSuccessful":true,
   "mfp-user":null,
   "active":true,
@@ -824,7 +824,7 @@ The returned object has the following structure:
 					</div>
 					<div class="detailedDescription">
 						Calls an HTTP service.
-The function can be used only inside a procedure declared within an HTTP adapter. It calls a back-end HTTP service and converts the results to JSON.
+The method can be used only inside a procedure declared within an HTTP adapter. It calls a back-end HTTP service and converts the results to JSON.
 						<!--  -->
 						<!--  --> 
 					</div>
@@ -842,15 +842,15 @@ The function can be used only inside a procedure declared within an HTTP adapter
 								<span class="parameters">options</span>
 								
 								 
-								 - The invokeHttp function accepts the following JSON block of parameters:<br />
+								 - The invokeHttp method accepts the following JSON block of parameters:<br />
            <table border="1">
 			  <tr>
 			    <th><b>Property</b></th>
 			    <th><b>Description</b></th>
 			  </tr>
 			  <tr>
-			    <td>function</td>
-			    <td>Mandatory. Defines the HTTP function. Valid values are <code>get, post, put, </code>and <code>delete</code>.</td>
+			    <td>method</td>
+			    <td>Mandatory. Defines the HTTP method. Valid values are <code>get, post, put, </code>and <code>delete</code>.</td>
 			  </tr>
 			   <tr>
 			    <td>returnedContentType</td>
@@ -933,7 +933,7 @@ The function can be used only inside a procedure declared within an HTTP adapter
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd>The function returns the response of the HTTP service, after the
+								<dd>The method returns the response of the HTTP service, after the
         following processing:<br>
 		   <ol>
         <li> If the service returns HTML, the MobileFirst Server converts the
