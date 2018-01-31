@@ -71,7 +71,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       ```
       bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
-      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage (part number CNQM3EN),
+      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
       `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `bx pr`.
 
