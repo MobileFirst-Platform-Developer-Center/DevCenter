@@ -42,6 +42,8 @@ For example, adding the following entry in the `jvm.options` will enable tracing
 ```
 -Dcom.ibm.ws.logging.trace.specification=com.ibm.mfp.*=all=enabled
 ```
+ You can also set this entry using JNDI configuration. For more informatiion see [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server).
+
 
 ## Collecting *kubectl* logs
 {: #collect-kubectl-logs}

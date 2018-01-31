@@ -71,7 +71,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       ```
       bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
-      *archive_name* of {{ site.data.keys.product }} would typically be `ibm-mobilefirst-foundation-icp.tar-xxxx.gz` (*xxxx* is the build identifier),
+      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
       `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `bx pr`.
 
@@ -124,7 +124,7 @@ Before you install and configure {{ site.data.keys.mf_app_center }}, you should 
 
   Prior to the installation, follow the steps below:
 
-  * Create a secret with `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` and provide the secret name in the field *keystores.keystores_secret_name*.
+  * Create a secret with `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` and provide the secret name in the field *keystores.keystoresSecretName*.
 
   * Keep the files `keystore.jks` and its password in a file named `keystore-password.txt` and `truststore.jks` and its password in a file named `truststore-password.jks`.
 
@@ -134,7 +134,9 @@ Before you install and configure {{ site.data.keys.mf_app_center }}, you should 
     ```
     >**Note:** The names of the files should be the same as mentioned i.e, `keystore.jks`, `keystore-password.txt`, `truststore.jks` and `truststore-password.txt`.
 
-  * Provide the name of the secret in *keystores_secret_name* and override the default keystores by setting *keystores.override_default_keystores* to **true**.
+  * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
+
+  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 Follow the steps below to install and configure IBM {{ site.data.keys.mf_app_center }} from {{ site.data.keys.prod_icp }} management console.
 
