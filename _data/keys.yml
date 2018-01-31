@@ -210,3 +210,6 @@ prod_was_liberty_full:          "IBM WebSphere Application Server Liberty"
 # WebSphere Application Server Network Deployment [WAS ND profile]
 prod_was_nd:                    "WebSphere Application Server Network Deployment"       # DITA: was_nd
 prod_was_nd_full:               "IBM WebSphere Application Server Network Deployment"
+
+#IBM Cloud Private (ICP)
+prod_icp:                       "IBM Cloud Private"
