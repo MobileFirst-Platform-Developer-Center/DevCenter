@@ -107,10 +107,10 @@ Alternatively, click the **New** button next to **Adapters**.
 ### 5. Testing the application
 {: #testing-the-application }
 1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
-2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
+2. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**. 
+    * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**.
+    * If using a Kubernetes cluster on IBM Cloud Private and if the deployment is of type **NodePort**, the value of the port would typically be the **NodePort** exposed by the service in Kubernetes cluster.
 
    For example:  
 
@@ -119,7 +119,7 @@ Alternatively, click the **New** button next to **Adapters**.
    var port = 9081; // The local port number to use
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
-
+3. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
 4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>
