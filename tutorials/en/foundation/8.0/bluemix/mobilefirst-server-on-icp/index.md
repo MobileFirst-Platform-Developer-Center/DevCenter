@@ -108,6 +108,7 @@ Before you install and configure {{ site.data.keys.mf_server }}, you should have
 
   * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
 
+  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
 
 ### Environment variables for {{ site.data.keys.mf_analytics }}
 {: #env-mf-analytics }

@@ -136,6 +136,8 @@ Before you install and configure {{ site.data.keys.mf_app_center }}, you should 
 
   * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
 
+  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+
 Follow the steps below to install and configure IBM {{ site.data.keys.mf_app_center }} from {{ site.data.keys.prod_icp }} management console.
 
 1. Go to **Catalog** in management console.
