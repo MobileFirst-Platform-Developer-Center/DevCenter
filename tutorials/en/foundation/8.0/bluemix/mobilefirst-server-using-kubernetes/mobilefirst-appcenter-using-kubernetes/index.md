@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Appcenter on IBM Cloud Kubernetes Cluster
-breadcrumb_title: Appcenter on Kubernetes Cluster
+title: Setting up MobileFirst Application Center on IBM Cloud Kubernetes Cluster
+breadcrumb_title: Application Center on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
@@ -280,7 +280,15 @@ When you run interactively, a copy of the arguments provided is saved in a direc
                 <li><b>prepareappcenter.sh - Prepare a {{ site.data.keys.mf_app_center }} image</b><br />
                     Run the <b>prepareappcenter.sh</b> script in order to build the {{ site.data.keys.mf_app_center }} image and push it to your IBM Cloud repository. To view all available images in your IBM Cloud repository, run: <code>bx cr image-list</code><br/>
                     The list contains the image name, date of creation, and ID.<br/>
-                    <b>Interactive Mode</b>{% highlight bash %}./prepareappcenter.sh{% endhighlight %}                    <b>Non-interactive Mode</b>{% highlight bash %}./prepareappcenter.sh args/prepareappcenter.properties{% endhighlight %}                </li>
+                    <b>Interactive Mode</b>
+{% highlight bash %}
+./prepareappcenter.sh
+{% endhighlight %}
+                    <b>Non-interactive Mode</b>
+{% highlight bash %}
+./prepareappcenter.sh args/prepareappcenter.properties
+{% endhighlight %}
+                </li>
                 <li>Deploy {{ site.data.keys.mf_app_center }} on Docker containers on a Kubernetes cluster using IBM Cloud Container Service.
                 <ol>
                   <li>Set your terminal context to your cluster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>

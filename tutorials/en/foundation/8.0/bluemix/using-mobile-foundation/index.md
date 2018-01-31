@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on IBM Cloud service
-breadcrumb_title: Mobile Foundation service
+title: Using Mobile Foundation service on IBM Cloud
+breadcrumb_title: Setting up Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

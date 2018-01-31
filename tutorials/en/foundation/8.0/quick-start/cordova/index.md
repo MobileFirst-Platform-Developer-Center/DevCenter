@@ -113,6 +113,7 @@ Alternatively, click the **New** button next to **Adapters**.
 3. In the Cordova project, select the **config.xml** file and edit the  `<mfp:server ... url=" "/>` value with the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
     * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**.
+    * If using a Kubernetes cluster on IBM Cloud Private and if the deployment is of type **NodePort**, the value of the port would typically be the **NodePort** exposed by the service in Kubernetes cluster.
 
     Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myIBMCloudServer`.
 
