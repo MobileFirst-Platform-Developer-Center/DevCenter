@@ -8,7 +8,9 @@ tags:
 version:
 - 8.0
 author:
-  name: Neeti Sukhtankar
+  name: Anil Daswani
+additional_authors :
+  - Neeti Sukhtankar  
 ---
 We are excited to announce that IBM Mobile Foundation v8.0 is now available for deployment on IBM Cloud Private. This empowers clients to leverage Mobile Foundation enterprise capabilities to build next-generation cognitive and engaging apps, and rapidly innovate by standardizing on a modern and scalable Cloud platform. Read more about IBM Cloud Private [here](https://www.ibm.com/blogs/cloud-computing/2017/10/what-is-ibm-cloud-private/).
 
