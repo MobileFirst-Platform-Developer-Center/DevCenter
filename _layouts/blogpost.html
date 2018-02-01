@@ -29,20 +29,21 @@ layout: default
                   {% endfor %}
 
                 {% endif %}
-            </header>
-            <span class="blogcontent">{{content}}</span>
-            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
+              </header>
+                <div id="social">
+                    <ul class="share-buttons">
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&ptitle={{ page.title | replace: ' ', '%20' }}" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
+                        <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text={{ page.title | replace: ' ', '%20' }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Tweet"><img alt="share on twitter" src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
+                        <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on Google+"><img alt="share on google+"  src="{{site.baseurl}}/assets/blog/share-buttons/google+.png"></a></li>
+                        <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | replace: ' ', '%20' }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
+                        <li><a href="mailto:replace@me.com?subject=&body=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Email"><img alt="share via email" src="{{site.baseurl}}/assets/blog/share-buttons/email.png"></a></li>
+                    </ul>
+                </div>
 
-            <div id="social">
-                <b>Share this post:</b>
-                <ul class="share-buttons">
-                    <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}&ptitle={{ page.title | replace: ' ', '%20' }}" title="Share on Facebook" target="_blank"><img alt="share on facebook"  src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
-                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text={{ page.title | replace: ' ', '%20' }}&url={{ site.url }}{{ page.url }}" target="_blank" title="Tweet"><img alt="share on twitter" src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
-                    <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Share on Google+"><img alt="share on google+"  src="{{site.baseurl}}/assets/blog/share-buttons/google+.png"></a></li>
-                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | replace: ' ', '%20' }}" target="_blank" title="Share on LinkedIn"><img alt="share on linkedin" src="{{site.baseurl}}/assets/blog/share-buttons/linkedin.png"></a></li>
-                    <li><a href="mailto:replace@me.com?subject=&body=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Email"><img alt="share via email" src="{{site.baseurl}}/assets/blog/share-buttons/email.png"></a></li>
-                </ul>
-            </div>
+            <span class="blogcontent">{{content}}</span>
+            <!--<div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>-->
+            <div id="timestamp"><em>Last modified on {{ page.date | date: '%B %d, %Y' }}</em></div>
+
 
             {% include disqus.html %}
         </div>
