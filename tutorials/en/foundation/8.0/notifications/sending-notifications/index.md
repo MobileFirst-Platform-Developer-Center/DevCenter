@@ -66,7 +66,7 @@ If your organization has a firewall that restricts the traffic to or from the In
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
-1. [Generate a push notification certificate for development or production](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
+1. Generate a push notification certificate for development or production. For detailed steps, refer the `For iOS` section [here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1). 
 2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
 
 #### Notes
