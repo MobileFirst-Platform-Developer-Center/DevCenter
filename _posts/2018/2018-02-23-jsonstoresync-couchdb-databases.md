@@ -75,7 +75,10 @@ A JSONStore collection can be initialized with a Sync Policy using the `JSONStor
 
 * Download the [JSONStoreSync adapter]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/JSONStoreCloudantSync.adapter) and deploy it in your MobileFirst server.
 * Configure the credentials to the backend Cloudant database.
-  ![Configure Cloudant]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/configure-cloudant.png)
+
+|---------------------------|-------------------------|
+|![Configure Cloudant]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/configure-cloudant.png)    |   ![Cloudant credentials]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/CloudantCreds.jpg)|
+
 
 ### Few points to consider before using this feature
 {: #take-note}
@@ -95,7 +98,7 @@ This performs a downstream sync if the calling collection has a sync policy set 
 
 **Usage:**
 
-_**Java**_
+_**Android**_
   ```
    WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
    ```
