@@ -448,7 +448,7 @@ bx cr image-rm image-name (Removes the image from the registry)
 ```
 
 ## Removing the database service configuration from IBM Cloud
-{: #removing-the-database-service-configuration-from-IBM Cloud }
+{: #removing-the-database-service-configuration-from-ibmcloud }
 If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the container.
 
 To remove the database service configuration from IBM Cloud, perform the following procedure using IBM Cloud dashboard.
