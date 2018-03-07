@@ -17,7 +17,7 @@ IBM API Connect is a cloud-based API Management solution that allows you to desi
 1.	Protect API Connect endpoints with the MobileFirst Server as the authorization server.
 2.	Proxy MobileFirst client non-resource requests and responses through API Connect to the MobileFirst Server located behind the DMZ.
 
-![](Protecting-APIC-using-MFP-image1.png)
+![API Connect deployment](Protecting-APIC-using-MFP-image1.png)
 
 The Introspection endpoint of MobileFirst server (MFP) can validate and extract data from a MobileFirst OAuth token. The MobileFirst token introspection API provided with the MobileFirst OAuth Provider template can be used to protect API endpoints deployed to API Connect.
 
@@ -50,7 +50,7 @@ Follow the steps below to define the Confidential Client in MobileFirst Operatio
 
 > **Note:** Please make a note of the confidential-client-password, which will be used later in the MobileFirst token introspection API configuration.
 
-![](Protecting-APIC-using-MFP-image2.png)
+![Runtime Settings](Protecting-APIC-using-MFP-image2.png)
 
 
 ## Import the MFPOAuth REST API template in API Connect
@@ -60,7 +60,7 @@ In the API Designer, create `MFPOAuth` REST API by importing the Swagger templat
 After completing the import, you will see different configuration options are displayed and the **Design** tab selected. Navigate to the **Assemble** tab.
 In the assembly flow, you will see the components as shown in the image below:
 
-![](Protecting-APIC-using-MFP-image3.png)
+![Assembly Flow](Protecting-APIC-using-MFP-image3.png)
 
 ### Configure the MFPOAuth REST API template
 {: #configure-restapi-template}
@@ -94,7 +94,7 @@ In the API Designer, create `MFPProxy` REST API by importing the Swagger templat
 
 After completing the import, you will see different configuration options are displayed and the **Design** tab selected. Navigate to the **Assemble** tab.
 
-![](Protecting-APIC-using-MFP-image4.png)
+![MFP Proxy](Protecting-APIC-using-MFP-image4.png)
 
 You will see the following components in the assembly flow for the MobileFirst OAuth Provider API:
 * MobileFirst Configuration
@@ -138,7 +138,7 @@ From the API Connect Designer **APIs** tab:
 4.	In the **Base Path** section, verify that the field has the value */invokebackend*.
 5.	Go to the **Paths** section and create a path by clicking the **Add Path** icon.
 6.	In the **Path** field provide */details* (GET method is created by default).
-    ![](Protecting-APIC-using-MFP-image5.png)
+    ![InvokeBackend](Protecting-APIC-using-MFP-image5.png)
 
 7.	Go to the **Assemble** tab and click the **invoke policy** component that appears in the **Assemble** pane.
 8.	In the properties sheet pane, populate the **URL** field with the back-end resource URL to be protected with MobileFirst. The other values are optional. [Learn more](https://apim-services.mybluemix.net/banka/v1/branches).
@@ -151,7 +151,7 @@ Protect the newly created `InvokeBackend` API by defining a **Security Definitio
 
 1.  In the newly created `InvokeBackend` API, choose **Security Definition** from the design list, click the button to add a definition of the type **OAuth**.
 
-	![](Protecting-APIC-using-MFP-image6.png)
+	![Security definitions](Protecting-APIC-using-MFP-image6.png)
 
 2.	Set the values:
 	   - **Flow:** Choose *Implicit*.
@@ -164,7 +164,7 @@ Protect the newly created `InvokeBackend` API by defining a **Security Definitio
 5.	In the **Security** section, uncheck **Use API security definitions** and check the newly created **MobileFirst OAuth Security Definition** from the list.
 6.	Click **Save**.
 
-	![](Protecting-APIC-using-MFP-image7.png)
+	![Security configuration](Protecting-APIC-using-MFP-image7.png)
 
 
 ### Add the APIs to product and publish it
@@ -179,13 +179,13 @@ In the API Connect Designer **Products** tab, carry out the following steps:
 3.	Click **Create product** to create the API. The **Design** tab of the Product will be displayed.
 4.	Go to the **APIs** section click **Add**.
 
-	  ![](Protecting-APIC-using-MFP-image8.png)
+	  ![Create APIs](Protecting-APIC-using-MFP-image8.png)
 5.	Add all the three newly created APIs `MFPOAuth`, `MFPProxy`, and `InvokeBackend` to this Product.
 6.	**Save** the Product.  
-7.	Stage the Product. See [Staging a Product](www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html).
-	  ![](Protecting-APIC-using-MFP-image9.png)
+7.	Stage the Product. See [Staging a Product](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/task_deploy_product_offline.html).
+	  ![Stage the Product](Protecting-APIC-using-MFP-image9.png)
 8.	To publish the Product, go to the **Catalog** Dashboard and choose *Bank* product to publish. See [Publishing a Product](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/com.ibm.apic.apionprem.doc/publishing_a_product.html).
-	  ![](Protecting-APIC-using-MFP-image10.png)
+	  ![Publishing a Product](Protecting-APIC-using-MFP-image10.png)
 
 
 ### Set up `MFPOAuthLoginApplication` sample
@@ -227,12 +227,12 @@ The actual client Id is obtained from the APIC developer portal after registerin
 
   Register the `MFPOAuthLoginApplication` sample with MFP server.
 
-  ![](Protecting-APIC-using-MFP-image11.png)
+  ![Register application](Protecting-APIC-using-MFP-image11.png)
 
 
   Map the scope *accessRestricted* to *UserLogin* securitycheck in the **Scope-Elements Mapping** section of the deployed application in the MobileFirst Foundation console.
 
-  ![](Protecting-APIC-using-MFP-image12.png)
+  ![Map the scope](Protecting-APIC-using-MFP-image12.png)
 
 #### 5.	Deploy adapters
 
@@ -247,7 +247,7 @@ Now execute `MFPOAuthLoginApplication`. Log in using *john/john* as the username
 2.	**Invoke API** invokes `InvokeBackend` API deployed to API Connect. This resource is also protected by *accessRestricted* scope.
 3.	The token obtained for one of the above invoke calls is used for the other as well and both are authorized by MobileFirst server.
 
-![](Protecting-APIC-using-MFP-image13.png)
+![Execute the application](Protecting-APIC-using-MFP-image13.png)
 
 
 ## Summary

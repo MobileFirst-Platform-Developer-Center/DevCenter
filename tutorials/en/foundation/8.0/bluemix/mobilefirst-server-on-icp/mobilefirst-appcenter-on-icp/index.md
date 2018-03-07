@@ -105,7 +105,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | appCenterDB2Password | DB2 password for the database provided |  |
 |  | appCenterDB2Schema | {{ site.data.keys.mf_app_center_short }} DB2 schema to be created  |  |
 |  | appCenterDB2ConnectionIsSSL | DB2 connection type | Specify if your database connection has to be **http** or **https**. Default value is **false** (http). Make sure that the DB2 port is also configured for the same connection mode. |
-| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
+| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](../#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
 | resources | limits.cpu | Maximum amount of CPU allowed | Default is **1000m**<br/>See [here](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) for more information. |
 |  | limits.memory | Maximum amount of memory allowed | Default is **1024Mi**<br/>See [here](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) for more information. |
 | resources.requests | requests.cpu | Describes the minimum amount of CPU required. If not specified, this defaults to *limits* (if specified) or otherwise implementation-defined value. | Default is **1000m**. |
@@ -117,7 +117,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 Before you install and configure {{ site.data.keys.mf_app_center }}, you should have the following:
 
 * [**Mandatory**] a DB2 database configured and ready to use.
-  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
+  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](../#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
 
 * [**Optional**] a secret with your keystore and truststore.
   You can provide your own keystore and truststore to the deployment by creating a secret with your own keystore and truststore.
