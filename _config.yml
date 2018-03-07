@@ -24,7 +24,7 @@ print_pdf: false
 kramdown:
   input: GFM
   hard_wrap: false
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
