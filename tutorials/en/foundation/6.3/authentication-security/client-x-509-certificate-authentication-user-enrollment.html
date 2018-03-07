@@ -53,7 +53,7 @@ In this module, you learn how to enable and configure the User Certificate Authe
 <li>How to use the embedded PKI that is provided by MobileFirst Platform</li>
 <p>
 For production environments, this feature makes it easy to integrate with your existing PKI.</p>
-<li>You can use either the PKI Bridge Java<sup>TM</sup>interface or built in MobileFirst Platform adapters to delegate certificate management functions down to an external PKI system</li>
+<li>You can use either the PKI Bridge Java<sup>TM</sup>interface or built-in MobileFirst Platform adapters to delegate certificate management functions down to an external PKI system</li>
 <p></p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>You must have a general understanding of MobileFirst Platform user realms and adapters.<br />
@@ -61,7 +61,7 @@ For production environments, this feature makes it easy to integrate with your e
 It is assumed that you follow these instructions by using an application that currently supports form-based authentication.</p>
 <ul>
 <li>The form-based authentication module uses non-validating login modules. These login modules are not recommended for production environments</li>
-<li> Use other user authentication realms, like WASLTPA in production.
+<li> Use other user authentication realms like WASLTPA in production.
 </li>
 </ul>
 <h2 id="understanding">X.509 certificate and certificate authorities (CAs)</h2>
@@ -73,7 +73,7 @@ The user enrollment process relies on a dependent user realm to help it establis
 <br />
 MobileFirst then provisions the device with the X.509 client certificate for use in subsequent connections to the server.<br />
 <br />
-The first time a user connects to the MobileFirst Platform server, the user must authenticate through the dependent realm to initiate the enrollment process. After a user is enrolled into the User Certificate Authentication realm, subsequent connections to the server occur through the two way SSL/TLS handshake, where the client certificate is presented as the SSL client entity.<br />
+The first time a user connects to the MobileFirst Platform server, the user must authenticate through the dependent realm to initiate the enrollment process. After a user is enrolled in the User Certificate Authentication realm, subsequent connections to the server occur through the two way SSL/TLS handshake, where the client certificate is presented as the SSL client entity.<br />
 <br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/UserEnrollFlow.png"/><br />
 <br />
@@ -140,7 +140,7 @@ private_key        = $dir/root_ca_key.pem
 serial             = $dir/serial
 RANDFILE           = $dir/.rand
 policy             = $dir/policy_match</pre>
-<p>Using a terminal, create the folder structure and requirements for the root CA</p>
+<p>Using a terminal create the folder structure and requirements for the root CA</p>
 <p>Create a root CA certificate directory structure</p>
 <pre>mkdir rootca
 mkdir rootca/certs rootca/crl rootca/newcerts
@@ -170,7 +170,7 @@ MKDIR rootca\newcerts</pre>
 <pre>openssl rand -hex -out rootca\serial 8</pre>
 <p>Create index for root CA</p>
 <pre>COPY NUL rootca\index.txt</pre>
-<p>Using a terminal, generate an RSA key pair and then self sign a root CA certificate. The password must remain secure, even for a test environment. For the following example, the password is <code>passRoot</code>.</p>
+<p>Using a terminal generate an RSA key pair and then self sign a root CA certificate. The password must remain secure, even for a test environment. For the following example, the password is <code>passRoot</code>.</p>
 <pre>export ROOT_CA_SUBJECT="Development Root CA"</pre>
 <p>Create the RSA key pair.<br />
 The parameter, 2048, represents the key length.</p>
@@ -202,7 +202,7 @@ RANDFILE       = $dir/.rand
 policy         = policy_match
 email_in_dn    = false</pre>
 <p>
-Using the terminal, create the folder structure and requirements for the signing CA. Run these commands from the base directory.</p>
+Using the terminal create the folder structure and requirements for the signing CA. Run these commands from the base directory.</p>
 <p>Create a signing CA certificate directory structure</p>
 <pre>
 mkdir signingca
@@ -232,7 +232,7 @@ MKDIR signingca\newcerts</pre>
 <pre>openssl rand -hex -out signingca\serial 8</pre>
 <p>Create index for signing CA</p>
 <pre>COPY NUL signingca\index.txt</pre>
-<p>Using the terminal, generate an RSA key pair, and then sign a signing CA CSR with the root CA. For this example, the password is <code>passSigning</code>. Run these commands from the base directory.</p>
+<p>Using the terminal generate an RSA key pair, and then sign a signing CA CSR with the root CA. For this example, the password is <code>passSigning</code>. Run these commands from the base directory.</p>
 <pre>export SIGNING_CA_SUBJECT="Development Signing CA"
 
 openssl genrsa -des3 -out signingca/signing_ca_key.pem -passout pass:passSigning 2048
@@ -250,7 +250,7 @@ openssl ca -in signing_ca.csr -out signingca\signing_ca.crt -keyfile rootca\root
 basicConstraints        = CA:TRUE
 subjectKeyIdentifier    = hash
 authorityKeyIdentifier  = keyid:always;issuer:always</pre>
-<p>using the terminal, generate an RSA key pair and sign the new certificate with the signing CA. This certificate is your server identity certificate. The example uses <span sytle="font-family:'Courier New'">passServer as the password. Run these commands from the base directory.</p>
+<p>using the terminal generate an RSA key pair and sign the new certificate with the signing CA. This certificate is your server identity certificate. The example uses <span sytle="font-family:'Courier New'">passServer as the password. Run these commands from the base directory.</p>
 <p>Use the full hostname of your MobileFirst Platform server. SSL will break if the full hostname is not provided, or if an IP address is used as the hostname.</p>
 <pre>export SERVER_FULL_HOSTNAME=dev.yourcompany.com
 mkdir server</pre>
@@ -268,7 +268,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <p>Sign the CSR with the signing CA</p>
 <pre>REM openssl ca -in server\server.csr -out server\server.crt -keyfile signingca\signing_ca_key.pem -cert signingca\signing_ca.crt -config openssl.cnf -name signign_authority_ca_config -extensions server_identity -md sha512 -days 365 -passin pass:passSigning</pre>
 <h3 id="serverCertChain">Create certificate chain for the server certificate</h3>
-<p>Using the terminal, send a full certificate chain all the way up to the trust anchor (root CA) for iOS and Android environments. You can concatenate the certificate files to the trust anchor (root CA).</p>
+<p>Using the terminal send a full certificate chain all the way up to the trust anchor (root CA) for iOS and Android environments. You can concatenate the certificate files to the trust anchor (root CA).</p>
 <p>Create a chain for the signing CA</p>
 <pre>cat signingca/signing_ca.crt rootca/root_ca.crt > signing_ca_chain.crt</pre>
 <p>Create a chain for the server certificate</p>
@@ -293,7 +293,7 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
    <feature>appSecurity-2.0</feature>
 </featureManager>
 {% endhighlight %}</p>
-<p>Liberty requires setting up the keystore and truststore to establish trust for the generated client certificates. Click <a href="http://pic.dhe.ibm.com/infocenter/wasinfo/v8r5/index.jsp?topic=/com.i bm.websphere.wlp.nd.doc/ae/rwlp_ssl.html">here</a> for more information.</p>
+<p>Liberty requires setting up the keystore and truststore to establish the trust for the generated client certificates. Click <a href="http://pic.dhe.ibm.com/infocenter/wasinfo/v8r5/index.jsp?topic=/com.i bm.websphere.wlp.nd.doc/ae/rwlp_ssl.html">here</a> for more information.</p>
 <ul>
 <li>Set up your server's keystore to use the <code>.p12</code> file that was generated earlier (<code>server.p12</code>).</li>
 <li>Set up your truststore to use the <code>.p12</code> file that was generated earlier (<code>signing_ca.p12</code>).</li>
@@ -394,7 +394,7 @@ Build and deploy your application and adapters to the MobileFirst Platform serve
 <li>Run as > Build All Environments</li>
 </ul>
 </li>
-<li>Run the application on the specified environments.</li>
+<li>Run the application in the specified environments.</li>
 </ol>
 <h2 id="sampleApplication">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/UserCertificateAuthenticationProject.zip">Click to download</a> the Studio project.</p>

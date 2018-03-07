@@ -1,7 +1,7 @@
 ## Working with the developer center
 This document is an overview for experienced users of the technologies used to develop, build and run the DevCenter.  For more detailed instructions, please read the Onboarding Guide in our Github Wiki.
 
-This website is power by several technologies: 
+This website is power by several technologies:
 
 * Bootstrap for a responsive layout
 * Jekyll and Liquid templating to compile and transform the source files into static HTML files
@@ -13,7 +13,7 @@ This website is power by several technologies:
 * Elasticsearch as the search platform
 * Git for storing everything
 * Travis CI to automate building and publishing (IBM internal)
-* Bluemix as the hosting service (IBM internal)
+* IBM Cloud as the hosting service (IBM internal)
 
 If you'd like to contribute to this site as outlined in our [contribution guidelines](contribution.md), you can follow these steps to work locally and preview your work before submitting your pull request.
 
@@ -21,7 +21,7 @@ If you'd like to contribute to this site as outlined in our [contribution guidel
 2. Set up Jekyll and test locally.
 
   Jekyll is software that takes the Developer Center source files and compiles them into the static HTML files that you see when visiting the site. Follow the below to set up Jekyll locally in order test your changes.
-  
+
   * Windows users can [follow this guide](https://jekyllrb.com/docs/windows/) by the Jekyll community.
   * Linux (Ubuntu) users, run these commands:
 
@@ -95,4 +95,3 @@ It is good from time to time to update Jekyll with fixes. From the repository di
 The `--incremental` option mentioned above is experimental and so it may sometimes fail. Meaning, you make a change, Jekyll rebuilds the site but you do not see your change. Clearing the cache and re-building tends to help.
 
 The command to use is: `bundle exec jekyll clean`
-

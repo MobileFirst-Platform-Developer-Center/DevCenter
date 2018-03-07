@@ -41,10 +41,10 @@ prod_server_data_dir_win:       "My Documents\\IBM MobileFirst Platform Server D
 prod_server_data_dir_name_unix: ".mobilefirst_platform_server"
 prod_server_data_dir_unix:      "${HOME}/.mobilefirst_platform_server"
 
-## MF on Bluemix service
+## MF on IBM Cloud service
 mf_bm_short:                    "Mobile Foundation"
-mf_bm:                          "Mobile Foundation on Bluemix"                          # [DITA: mfpf_bm_short: "Mobile Foundation for Bluemix"]
-mf_bm_full:                     "IBM Mobile Foundation on Bluemix"                      # [DITA: mfpf_bm_long: "IBM Mobile Foundation for Bluemix"]
+mf_bm:                          "Mobile Foundation on IBM Cloud"                          # [DITA: mfpf_bm_short: "Mobile Foundation for IBM Cloud"]
+mf_bm_full:                     "IBM Mobile Foundation on IBM Cloud"                      # [DITA: mfpf_bm_long: "IBM Mobile Foundation for IBM Cloud"]
 
 ######################################################################
 ## Current product version ##
@@ -75,7 +75,7 @@ product_version_full:           "V8.0.0,0"
 # Maven adapter version
 prod_maven_adapter_version:     "8.0.2016061011"
 
-# MF on Bluemix service containers package
+# MF on IBM® Cloud service containers package
 mf_bm_pkg_name:                 "ibm-mfpf-container-8.0.0.0"
 mf_bm_v71_pkg_name:             "ibm-mfpf-container-7.1.0.0"
 # MF system-pattern file
@@ -210,3 +210,6 @@ prod_was_liberty_full:          "IBM WebSphere Application Server Liberty"
 # WebSphere Application Server Network Deployment [WAS ND profile]
 prod_was_nd:                    "WebSphere Application Server Network Deployment"       # DITA: was_nd
 prod_was_nd_full:               "IBM WebSphere Application Server Network Deployment"
+
+#IBM Cloud Private (ICP)
+prod_icp:                       "IBM Cloud Private"

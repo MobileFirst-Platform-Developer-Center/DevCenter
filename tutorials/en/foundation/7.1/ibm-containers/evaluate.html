@@ -1,37 +1,39 @@
 ---
-layout: tutorial
-title: Evaluate IBM MobileFirst Platform Foundation on IBM Containers
-breadcrumb_title: Evaluate
-relevantTo: [ios,android,windows8,windows10,hybrid]
+layout: redirect
+new_url:  /404/
+#layout: tutorial
+#title: Evaluate IBM MobileFirst Platform Foundation on IBM Containers
+#breadcrumb_title: Evaluate
+#relevantTo: [ios,android,windows8,windows10,hybrid]
 ---
 <br/>
-<blockquote><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> This tutorial is not relevant any more as the <b>ibm-mobilefirst-starter</b> image has been discontinued and the use of this image has reached end of support. Read the <a href="https://www.ibm.com/blogs/bluemix/2016/07/retiring-mobilefirst-starter-docker-image-bluemix-public-registry/">announcement blog</a>.<br/><p></p><p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Consider using {{ site.data.keys.product_full }} v8.0, by using the new <b>Mobile Foundation</b> Bluemix service. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation">Learn more about to the Mobile Foundation service</a>.</p></blockquote>
+<blockquote><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> This tutorial is not relevant any more as the <b>ibm-mobilefirst-starter</b> image has been discontinued and the use of this image has reached end of support. Read the <a href="https://www.ibm.com/blogs/bluemix/2016/07/retiring-mobilefirst-starter-docker-image-bluemix-public-registry/">announcement blog</a>.<br/><p></p><p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Consider using {{ site.data.keys.product_full }} v8.0, by using the new <b>Mobile Foundation</b> IBM Cloud service. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation">Learn more about to the Mobile Foundation service</a>.</p></blockquote>
 
 
 <h2>Overview</h2>
-<p>This tutorial goes through the steps that you must follow to evaluate running IBM MobileFirst Platform Foundation on IBM Containers: You register an account at the Bluemix website, you create an IBM Container that contains a preconfigured, self-contained, MobileFirst Platform Foundation "Getting Started" image, you set up this image, and finally you download a sample mobile application and run it with the MobileFirst Server instance that runs inside the Container service on Bluemix.</p>
+<p>This tutorial goes through the steps that you must follow to evaluate running IBM MobileFirst Platform Foundation on IBM Containers: You register an account at the IBM Cloud website, you create an IBM Container that contains a preconfigured, self-contained, MobileFirst Platform Foundation "Getting Started" image, you set up this image, and finally you download a sample mobile application and run it with the MobileFirst Server instance that runs inside the Container service on IBM Cloud.</p>
 
 <p><strong>Prerequisite:</strong> First make sure that you read the <a href="../">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
 
 <b>Topics</b>
 <ul>
-    <li><a href="#registerAccount">Registering an account on Bluemix</a></li>
+    <li><a href="#registerAccount">Registering an account on IBM Cloud</a></li>
     <li><a href="#createContainer">Creating an IBM Container</a></li>
     <li><a href="#fobOverview">IBM MobileFirst Platform Foundation on IBM Containers Overview page</a></li>
 </ul>
 
-<h2 id="registerAccount">Registering an account on Bluemix</h2>
-<p>If you do not have an account yet, visit the <a href="http://www.bluemix.net">Bluemix website</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong> button. You must first fill out a registration form before you can move to the next step.</p>
+<h2 id="registerAccount">Registering an account on IBM Cloud</h2>
+<p>If you do not have an account yet, visit the <a href="http://www.bluemix.net">IBM Cloud website</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong> button. You must first fill out a registration form before you can move to the next step.</p>
 
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/bluemix-sign-up.png" /></p>
 
-<p>After signing in to Bluemix, you are presented with the Bluemix Dashboard which provides an overview of the active Bluemix <strong>space</strong>. This is a work area which by default receives the name "dev". You can create multiple work areas/spaces if needed.</p>
+<p>After signing in to IBM Cloud, you are presented with the IBM Cloud Dashboard which provides an overview of the active IBM Cloud <strong>space</strong>. This is a work area which by default receives the name "dev". You can create multiple work areas/spaces if needed.</p>
 
-<p>The next step is to add an <strong>IBM Container</strong> in the Bluemix space.</p>
+<p>The next step is to add an <strong>IBM Container</strong> in the IBM Cloud space.</p>
 
 <h2 id="createContainer">Creating an IBM Container</h2>
 <ol>
-    <li>In the Bluemix Dashboard, click <strong>Start Containers</strong>.
+    <li>In the IBM Cloud Dashboard, click <strong>Start Containers</strong>.
         <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/bluemix-create-container.png"  /></li>
 
     <li>In the screen that display, select the <strong>IBM MobileFirst Platform Foundation Getting Started</strong> image.
@@ -58,7 +60,7 @@ After you have registered, the Overview page displays.</p>
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/containerpage.png"  /></a>
 
 <h2 id="fobOverview">IBM MobileFirst Platform Foundation on IBM Containers Overview page</h2>
-<p>Use one of the sample applications to reach the final step of the evaluation: connecting an app to a MobileFirst Server instance that runs on top of Bluemix.</p>
+<p>Use one of the sample applications to reach the final step of the evaluation: connecting an app to a MobileFirst Server instance that runs on top of IBM Cloud.</p>
 
 <p>The landing page also provides links to various documentation resources.</p>
 
