@@ -11,6 +11,7 @@ author:
   name: Sreelatha Sankaranarayanan
 additional_authors :
   - Nagashree Bhat
+  - Soumya Y Shanthimohan
 ---
 Documentation updates for the lower versions of MobileFirst Platform Foundation are compiled in this post. The updates here augment and in some cases replace or correct the information for the respective version documentation in the knowledge center.
 
@@ -34,3 +35,16 @@ The developer can remove the unnecessary permissions, before building or generat
 
 The requirement to set the **GET_ACCOUNTS** permission is to be decided by the developer as this varies from one application project to another. If a project needs
 to use Push, then it needs to have the necessary permissions.
+
+
+## IBM Worklight Foundation v6.2.0 and v6.1.0 documentation updates
+
+### DOC APAR PI63575
+>Refer to the [knowledge center documentation](https://www.ibm.com/support/knowledgecenter/en/SSZH4A_6.2.0/com.ibm.worklight.deploy.doc/admin/r_push_notification_settings.html) for this version.
+
+The push JNDI property "push.apns.connectionIdleTimeout" is available on IBM Worklight Foundation V6.2.0 and V6.1.0 too.
+
+```Property name: push.apns.connectionIdleTimeout , Property description: APNs Idle Connection Timeout. Default : 0```
+
+The "push.apns.connectionIdleTimeout"  is an optional JNDI property.
+
