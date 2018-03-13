@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+
+<meta name="dcterms.rights" content="© Copyright IBM Corporation 2017">
+
+
+
+<meta name="description" content="Retrieves the user configuration of a specific adapter.">
+
+<meta name="geo.country" content="ZZ">
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css">
+<title>Adapter Configuration (GET)</title>
+</head>
+<body id="Adapter-Configuration--GET-"><main role="main"><article role="article" aria-labelledby="d46e9">
+<h1 class="topictitle1" id="d46e9"> Adapter Configuration (GET) </h1>
+
+
+
+<div class="body refbody"><p class="shortdesc">Retrieves the user configuration of a specific adapter.</p>
+
+<section class="section" role="region" aria-labelledby="d46e19"><h2 class="sectiontitle" id="d46e19">Roles</h2>
+
+<p>Users in the following roles are authorized to perform this operation:</p>
+
+<ul>
+<li><span class="keyword parmname parmname">mfpadmin</span></li>
+
+<li><span class="keyword parmname parmname">mfpdeployer</span></li>
+
+<li><span class="keyword parmname parmname">mfpmonitor</span></li>
+
+<li><span class="keyword parmname parmname">mfpoperator</span></li>
+
+</ul>
+
+</section>
+
+
+<section class="section" role="region" aria-labelledby="d46e47"><h2 class="sectiontitle" id="d46e47"> Method </h2>
+
+<p><code class="ph codeph">GET</code></p>
+
+</section>
+
+
+
+<section class="section" role="region" aria-labelledby="d46e57"><h2 class="sectiontitle" id="d46e57">Path</h2>
+
+<p>/management-apis/2.0/runtimes/<var class="keyword varname">runtime-name</var>/adapters/<var class="keyword varname">adapter-name</var>/config</p>
+
+</section>
+
+
+<div class="example"><h2 class="sectiontitle" id="d46e72">Example</h2>
+
+<pre class="codeblock prettyprint"><code>https://www.example.com/mfpadmin/management-apis/2.0/runtimes/myruntime/adapters/myadapter/config?flattened=false&amp;locale=de_DE&amp;mode=defaults</code></pre>
+</div>
+
+
+<section class="section" role="region" aria-labelledby="d46e81"><h2 class="sectiontitle" id="d46e81">Path Parameters</h2>
+
+<dl class="parml">
+<dt class="pt dlterm">runtime-name</dt>
+
+<dd class="pd">The name of the runtime. This is the context root of the runtime web application, without the leading slash.</dd>
+
+<dt class="pt dlterm">adapter-name</dt>
+
+<dd class="pd">The name of the adapter.</dd>
+
+</dl>
+</section>
+
+
+<section class="section" role="region" aria-labelledby="d46e104"><h2 class="sectiontitle" id="d46e104">Query Parameters</h2>
+
+<p>Query parameters are optional.</p>
+<dl class="parml">
+<dt class="pt dlterm">flattened</dt>
+
+<dd class="pd">If the parameter is set to <code class="ph codeph">true</code> (default value), the configuration is a flat list of properties. If the parameter is set to <code class="ph codeph">false</code>, the configuration is a hierarchy of objects.</dd>
+
+<dt class="pt dlterm">locale</dt>
+
+<dd class="pd">The locale used for error messages.</dd>
+
+<dt class="pt dlterm">mode</dt>
+
+<dd class="pd">If no mode is specified, the transaction returns the current user configuration. If the mode <code class="ph codeph">defaults</code> is specified, the transaction returns the default configuration.</dd>
+
+</dl>
+</section>
+
+
+<section class="section" role="region" aria-labelledby="d46e144"><h2 class="sectiontitle" id="d46e144">Produces</h2>
+
+<p>
+application/json, application/xml, text/xml</p>
+
+</section>
+
+
+<section class="section" role="region" aria-labelledby="d46e153"><h2 class="sectiontitle" id="d46e153">Response</h2>
+
+<p>
+The user configuration of the specified adapter.</p>
+
+</section>
+
+<div class="example"><h2 class="sectiontitle" id="d46e161">JSON Example</h2>
+<pre class="codeblock prettyprint"><code>{
+  "adapter" : "myAdapter",
+  "connectivity" : {
+    "http" : {
+      "connectionTimeoutInMilliseconds" : 30000,
+      "cookiePolicy" : "BEST_MATCH",
+      "dtdvalidationEnabled" : false,
+      "maxConcurrentConnectionsPerNode" : 49,
+      "maxRedirects" : 11,
+      "port" : 444,
+      "protocol" : "http",
+      "socketTimeoutInMilliseconds" : 30002,
+    },
+  },
+  "properties" : {
+    "database" : "test-db",
+  },
+}</code></pre></div>
+
+
+<div class="example"><h2 class="sectiontitle" id="d46e168">XML Example</h2>
+<pre class="codeblock prettyprint"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;adapterconfig adapter="myAdapter"&gt;
+  &lt;connectivity&gt;
+    &lt;http
+      connectionTimeoutInMilliseconds="30000"
+      cookiePolicy="BEST_MATCH"
+      dtdvalidationEnabled="false"
+      maxConcurrentConnectionsPerNode="49"
+      maxRedirects="11"
+      port="444"
+      protocol="http"
+      socketTimeoutInMilliseconds="30002"/&gt;
+  &lt;/connectivity&gt;
+  &lt;properties database="test-db"/&gt;
+&lt;/adapterconfig&gt;
+</code></pre></div>
+
+
+<section class="section" role="region" aria-labelledby="d46e176"><h2 class="sectiontitle" id="d46e176">Response Properties</h2>
+
+<p>The response has the following properties:</p>
+<dl class="parml">
+<dt class="pt dlterm">adapter</dt>
+
+<dd class="pd">The name of the adapter.</dd>
+
+<dt class="pt dlterm">connectivity</dt>
+
+<dd class="pd">The connectivity details</dd>
+
+<dt class="pt dlterm">properties</dt>
+
+<dd class="pd">The properties of the adapter, mainly for Java adapters</dd>
+
+</dl>
+
+<p>The <var class="keyword varname">connectivity</var> has the following properties:</p>
+<dl class="parml">
+<dt class="pt dlterm">http</dt>
+
+<dd class="pd">The HTTP connection details</dd>
+
+</dl>
+
+<p>The <var class="keyword varname">httpdetails</var> has the following properties:</p>
+<dl class="parml">
+<dt class="pt dlterm">connectionTimeoutInMilliseconds</dt>
+
+<dd class="pd">The connection timeout value in  milliseconds</dd>
+
+<dt class="pt dlterm">cookiePolicy</dt>
+
+<dd class="pd">The cookie policy to be used</dd>
+
+<dt class="pt dlterm">dtdvalidationEnabled</dt>
+
+<dd class="pd">Whether DTD validation is enabled for syntax and structure of the XML DTD</dd>
+
+<dt class="pt dlterm">maxConcurrentConnectionsPerNode</dt>
+
+<dd class="pd">The maximum number of concurrent connections allowed per node</dd>
+
+<dt class="pt dlterm">maxRedirects</dt>
+
+<dd class="pd">The maximum number of redirections allowed</dd>
+
+<dt class="pt dlterm">port</dt>
+
+<dd class="pd">The port used for the connection</dd>
+
+<dt class="pt dlterm">protocol</dt>
+
+<dd class="pd">The HTTP protocol used for connection</dd>
+
+<dt class="pt dlterm">socketTimeoutInMilliseconds</dt>
+
+<dd class="pd">The timeout value for socket</dd>
+
+</dl>
+
+<p>The <var class="keyword varname">properties</var> has the following properties:</p>
+<dl class="parml">
+<dt class="pt dlterm">database</dt>
+
+<dd class="pd">The name of the datbase to connect to.</dd>
+
+</dl>
+
+</section>
+
+
+<section class="section" role="region" aria-labelledby="d46e305"><h2 class="sectiontitle" id="d46e305">Errors</h2>
+
+<span class="keyword msgnum">403</span>
+<pre class="pre msgblock">The user is not authorized to call this service.</pre>
+
+<span class="keyword msgnum">404</span>
+<pre class="pre msgblock">The corresponding runtime or the adapter is not found.</pre>
+
+<span class="keyword msgnum">500</span>
+<pre class="pre msgblock">An internal error occurred.</pre>
+
+</section>
+
+
+</div>
+</article></main></body></html>

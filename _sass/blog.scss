@@ -1,5 +1,7 @@
 .blogpost {
     h1 {
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
         font-size: 200%;
     }
     h2 {
@@ -19,6 +21,9 @@
       max-width: 100%;
       margin: 30px auto 30px auto;
       display: block;
+  }
+  .blogcontent{
+    font-family: 'Montserrat', sans-serif;
   }
 }
 

@@ -51,7 +51,7 @@ From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
 #### Desktop Browser
 {: #desktop-browser-remote }
 From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
+The host server can be either a customer-owned server, or the IBM Cloud service, IBM [Mobile Foundation](../../../bluemix/).
 
 #### Command-line
 {: #command-line-remote }
