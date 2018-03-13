@@ -75,10 +75,10 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 
 ### Manually adding the {{ site.data.keys.product_adj }} Native SDK
-{: manually-adding-the-mobilefirst-native-sdk }
+{: #manually-adding-the-mobilefirst-native-sdk }
 You can also manually add the {{ site.data.keys.product }} SDK:
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
@@ -105,7 +105,6 @@ You can also manually add the {{ site.data.keys.product }} SDK:
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
-                                    <li>Localizations.bundle</li>
                                 </ul>
                                 Performing this step will automatically add these frameworks to <b>Linked Frameworks and Libraries</b>.
                             </li>
@@ -114,6 +113,7 @@ You can also manually add the {{ site.data.keys.product }} SDK:
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
+                                    <li>Localizations.bundle</li>
                                 </ul>
                             </li>
                             <blockquote><b>Note:</b> These steps copy the relevant {{ site.data.keys.product }} frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
@@ -191,7 +191,7 @@ import IBMMobileFirstPlatformFoundation
 > Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following:
-> 
+>
 ```xml
 >      <key>NSAppTransportSecurity</key>
 >      <dict>
@@ -237,16 +237,16 @@ pod update
 SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
 
 ## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
 
 | Property            | Description                                                         | Example values |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
+| protocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
+| host        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| port        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
 | wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 

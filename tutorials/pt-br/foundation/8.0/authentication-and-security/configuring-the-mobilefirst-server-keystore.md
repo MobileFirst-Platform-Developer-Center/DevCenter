@@ -26,25 +26,39 @@ For production-level security, during the move from development to production th
    > **Note:** The type of the alias key-pair algorithm must be RSA. The following instructions explain how to set the algorithm type to RSA when using the **keytool** utility.
 
    You can use a third-party tool to create the keystore file. For example, you can generate a JKS keystore file by running the Java **keytool** utility with the following command (where `<keystore name>` is the name of your keystore and `<alias name>` is your selected alias):
-    
+
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
    ```
-    
+
    The following sample command generates a **my_company.keystore** JKS file with a `my_alias` alias:
-    
+
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
-    
+
    The utility prompts you to provide different input parameters, including the passwords for your keystore file and alias.
 
    > **Note:** You must set the `-keyalg RSA` option to set the type of the generated key algorithm to RSA instead of the default DSA.
 
    To use the keystore for mutual SSL authentication between an adapter and a back-end server, also add a {{ site.data.keys.product }} SSL-client identity alias to the keystore. You can do this by using the same method that you used to create the keystore file with the {{ site.data.keys.mf_server }} identity alias, but provide instead the alias and password for the SSL-client identity.
 
-2. Configure {{ site.data.keys.mf_server }} to use your keystore: in the {{ site.data.keys.mf_console }} navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined {{ site.data.keys.mf_server }} keystore. The steps include uploading your keystore file, indicating its type, and providing your keystore password, the name of your {{ site.data.keys.mf_server }} identity alias, and the alias password. 
+2. Configure {{ site.data.keys.mf_server }} to use your keystore:
+   Follow the steps below to configure {{ site.data.keys.mf_server }} to use your keystore:
 
-When configured successfully, the Status changes to "User Defined". Otherwise, an error is displayed and the status remains "Default".
+      * **Javascript adapter**
+        In the {{ site.data.keys.mf_console }} navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined {{ site.data.keys.mf_server }} keystore. The steps include uploading your keystore file, indicating its type and providing your keystore password, the name of your {{ site.data.keys.mf_server }} identity alias, and the alias password.
+        When configured successfully, the **Status** changes to *User Defined*, else an error is displayed and the status remains *Default*.
+        The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
 
-The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
+      * **Java adapter**
+        To configure mutual SSL authentication for Java adapter the server's keystore needs to be updated. This can be done by following the steps below:
+
+        * Copy the keystore file to `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security`
+
+        * Edit `server.xml` file `<ServerInstallation>/mfp-server/usr/servers/mfp/server.xml`.
+
+        * Update the keysore configuration with the right file name, password and type
+        `<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
+
+If you are deploying using {{ site.data.keys.mf_bm_short}} service on Bluemix, you can upload the keystore file under **Advanced settings** before deploying the server.

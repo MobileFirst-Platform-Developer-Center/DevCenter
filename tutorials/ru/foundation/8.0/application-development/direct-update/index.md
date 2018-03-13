@@ -75,13 +75,13 @@ The `mfpdev app webupdate` command packages the updated web resources to a .zip 
 
 Alternatives:
 
-* Build the .zip file and upload it to a different {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
+* Build the .zip file and upload it to a different {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`. For example:
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
+* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example:
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -154,10 +154,10 @@ This method supports the following types of invocation:
 * When a listener function such as `directUpdateContext.start(directUpdateCustomListener)` is supplied, the Direct Update process runs in the background while the process sends lifecycle events to the listener. The custom listener must implement the following methods:
 
 ```javascript
-var  directUpdateCustomListener  = { 
-    onStart : function ( totalSize ){ }, 
-    onProgress : function ( status , totalSize , completedSize ){ }, 
-    onFinish : function ( status ){ } 
+var  directUpdateCustomListener  = {
+    onStart : function ( totalSize ){ },
+    onProgress : function ( status , totalSize , completedSize ){ },
+    onFinish : function ( status ){ }
 };
 ```
 
@@ -218,7 +218,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 ### Scenario: Running UI-less direct updates
-{: scenario-running-ui-less-direct-updates }
+{: #scenario-running-ui-less-direct-updates }
 {{ site.data.keys.product_full }} supports UI-less direct update when the application is in the foreground.
 
 To run UI-less direct updates, implement `directUpdateCustomListener`. Provide empty function implementations to the `onStart` and `onProgress` methods. Empty implementations cause the direct update process to run in the background.
@@ -325,7 +325,7 @@ Delta Direct Updates enables an application to download only the files that were
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
 
 ## Secure Direct Update
-{: secure-direct-update }
+{: #secure-direct-update }
 Disabled by default, Secure Direct Update prevents a 3rd-party attacker from altering the web resources that are transmitted from the {{ site.data.keys.mf_server }} (or from a Content Delivery Network (CDN)) to the client application.
 
 **To enable Direct Update authenticity:**  

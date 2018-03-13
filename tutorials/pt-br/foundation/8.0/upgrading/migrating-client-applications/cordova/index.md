@@ -24,7 +24,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 
 | Feature | Cordova app with IBM<br/>{{ site.data.keys.product }} v8.0 |	Cordova app with IBM<br/>MobileFirst Platform Foundation v7.1 | MobileFirst hybrid app with IBM<br/>MobileFirst Platform Foundation V7.1 |
 |---------|-------|---------|-------|------|
-| **IDE Eclipse Studio** | | | | |	 	 	 
+| **IDE Eclipse Studio** | | | |  	 	 
 | Eclipse plug-in and integration | Yes | Unsupported | Yes (Proprietary) |
 | Application Components | Yes (Cordova)<br/><br/>Note: Create your own Cordova plug-ins to manage application components in your organization. | Yes (Cordova)<br/><br/>Note: Create your own Cordova plug-ins to manage application components in your organization. | Yes (Proprietary) |
 | Project Templates | Yes (Cordova)<br/><br/>Note: Use the Apache Cordova `cordova create --template` command. | Yes (Cordova)<br/><br/>Note: Use `mfp cordova create --template` or the Apache Cordova command `cordova create --copy-from` | Yes (Proprietary) |
@@ -40,7 +40,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 | {{ site.data.keys.product_adj }} Security Framework | Yes | Yes | Yes |
 | Application Authenticity | Yes | Yes | Yes |
 | Certificate pinning | Yes | No | Yes |
-| JSONStore | Yes. | Use the cordova-plugin-mfp-jsonstore plug-in. | Yes | Yes |
+| JSONStore | Yes. | Use the cordova-plugin-mfp-jsonstore plug-in. | Yes |
 | FIPS 140-2 | Yes. Use the cordova-plugin-mfp-fips plug-in.<br/><br/>Restriction: FIPS is supported for Android and iOS. FIPS is not supported for Windows. | No | Yes |
 | Encryption of web resources that are associated with the application within the application binary file | Yes |	No | Yes |
 | Verification of the integrity of web resources by using a checksum each time the app starts running | Yes | Unsupported | Yes |
@@ -48,7 +48,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 | Simple data sharing | No | Yes | Yes |
 | Single sign-on | Yes<br/><br/>Note: Device single sign-on (SSO) is now supported by way of the new predefined enableSSO security-check application-descriptor configuration property | Yes | Yes |
 | {{ site.data.keys.product_adj }} application skins | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design. | Yes |
-| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. | Yes (Proprietary) |
+| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. |
 | Push Notifications | Yes. Use the cordova-plugin-mfp-push plug-in.<br/><br/>Restriction: You can map predefined {{ site.data.keys.product_adj }} security checks only to the push.mobileclient scope. Custom security checks are not supported because JavaScript challenge handlers are not called. | Yes<br/><br/>Note: For Android, you must add the cordova-plugin-mfp-push plug in. You don't need this plug in for iOS because the push client-side support for iOS is included in the core mfp plugin. | Yes |
 | Cordova plug-ins management | Yes | Yes | No |
 | MESSAGES (i18n) | Yes | Yes | Yes |
@@ -63,8 +63,8 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
 You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst Platform Foundation version 6.2 or later to Cordova apps that are supported by {{ site.data.keys.product }} v8.0.
 
-#### Jump to
-{: #jump-to }
+#### Jump to section
+{: #jump-to-section }
 * [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
 * [Completing migration of a {{ site.data.keys.product_adj }} hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
 * [Completing migration of a {{ site.data.keys.product_adj }} Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
@@ -89,7 +89,7 @@ Cross-platform apps that were created with earlier versions of IBM MobileFirst P
 The migration assistance tool does not modify or move any developer code or comments of your app. You must continue the migration process with either [Completing migration of a MobileFirst hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app) or [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app) after you run this tool.
 
 <!--1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
+    * Download the .tgz file from the [Git repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli).
     * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
     * Download the tool by using the instructions that are provided. -->
 1. Install the migration assistance tool.
@@ -103,7 +103,7 @@ The migration assistance tool does not modify or move any developer code or comm
 2. Scan and copy the IBM MobileFirst Platform Foundation app by entering the following command:
 
    ```bash
-   mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
+   mfpmigrate client --in source_directory --out destination_directory --projectName new-project-directory
    ```
 
    * **source_directory**  
@@ -449,21 +449,21 @@ Then in their **index.html** file or anywhere inside their app they can reuse th
 
 ### Settings page
 {: #settings-page }
-The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl).
+The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?cp=SSHS8R_8.0.0#setServerUrl).
 
 ### Minification
 {: #minification }
 MobileFirst Studio 7.1 provided an OOTB method of reducing the size of your JavaScript code by removing all unnecessary characters before compilation. This removed functionality can be replaced by adding Cordova hooks to your project.
 
-Many hooks are available for minifying your Javascript and css files and can be placed in the config.xml at the before_prepare event.
+Many hooks are available for minifying your JavaScript and CSS files. These hooks can be placed in the `before_prepare` event in the app's **config.xml** file.
 
 Here are some recommended hooks:
 
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-These hooks can be defined in either a plug-in file or in the app's config.xml file, using the `<hook>` elements.  
-In this example, using the before_prepare hook event, a script is run for minifying before cordova prepare copies the files to each platform's www/ folder:
+These hooks can be defined either in a plug-in file or in the app's **config.xml** file, by using the `<hook>` element.  
+In this example, the `before_prepare` hook event is used to run a script that minifies the code before Cordova prepares to copy the files to each platform's **www/** folder:
 
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />

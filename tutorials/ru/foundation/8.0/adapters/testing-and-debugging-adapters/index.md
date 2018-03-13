@@ -74,18 +74,17 @@ For testing purposes, set **Allowed Scopes** as `**`.
   ![Image of setting a confidential client](confidential_client.png)
 {% endcomment %}
 
-1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+1.  Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
-* `grant_type` : `client_credentials`
-* `scope` : Use the scope protecting the resource.  
-If you don't use a scope to protect your resource, use an empty string.
+    - `grant_type` - Set the value to `client_credentials`.
+    - `scope` - Set the value to the protecting scope of your resource. If your resource is not assigned a protecting scope, omit this parameter to apply the default scope (`RegisteredClient`). For more information, see [Scopes](../../authentication-and-security/#scopes).
 
+    ![Image of Postman Body configuration](Body_configuration.png)
 
-  ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
-> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
+2.  Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
+    > For more information about confidential clients, see [Confidential Clients](../../authentication-and-security/confidential-clients).
 
-  ![Image of Postman Authorization configuration](Authorization_configuration.png)
+    ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
 
 The result is a JSON object with a temporary valid access token:
@@ -123,8 +122,8 @@ To access Swagger:
 
 <img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### Test Token
-{: #test-token }
+#### Adding a test token
+{: #adding-a-test-token }
 
 To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 

@@ -86,7 +86,7 @@ Create an Android Studio project or use an existing one.
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. Add the {{ site.data.keys.product_adj }} UI activity next to the existing **activity** element:
 
    ```xml
@@ -98,8 +98,8 @@ Create an Android Studio project or use an existing one.
 ### Manually adding the {{ site.data.keys.product_adj }} Native SDK
 {: #manually-adding-the-mobilefirst-native-sdk }
 You can also manually add the {{ site.data.keys.product_adj }} SDK:
-  
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -110,12 +110,14 @@ You can also manually add the {{ site.data.keys.product_adj }} SDK:
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
                 <p>To manually add the {{ site.data.keys.product_adj }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab. After completing the above steps, follow the below as well.</p>
-            
+
                 <ul>
                     <li>Extract the downloaded .zip file and place the relevant aar files to the <b>app\libs</b> folder.</li>
                     <li>Add the following to the <b>dependencies</b> closure:
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>Add the following to the <b>repositories</b> closure:
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Close section</b></a>
             </div>
