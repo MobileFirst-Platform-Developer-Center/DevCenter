@@ -109,7 +109,7 @@ La configuración del lado del servidor de una aplicación suele llevarse a cabo
 Para obtener información sobre la utilización de mfpadm, consulte [Administración de aplicaciones de {{ site.data.keys.product_adj }} a través de la línea de mandatos](../administering-apps/using-cli) y [Administración de aplicaciones de {{ site.data.keys.product_adj }} a través de Ant](../administering-apps/using-ant).
 
 * Utilice la API REST del servicio de administración de {{ site.data.keys.product_adj }}.
-Para obtener información sobre la API REST, consulte [API REST para el servicio de administración de {{ site.data.keys.mf_server }}](../api/rest/administration-service/).
+Para obtener información sobre la API REST, consulte [API REST para el servicio de administración de {{ site.data.keys.mf_server }}](../api/rest/admin-apis/).
 
 También puede utilizar estos métodos para automatizar la configuración de {{ site.data.keys.mf_server }}.
 
@@ -215,9 +215,11 @@ Cuando despliegue su aplicación en el entorno de producción, podrá hacerlo en
 #### Localmente
 {: #on-premises }
 > Para obtener información sobre cómo instalar y configurar {{ site.data.keys.mf_server }} en un entorno local, consulte [Instalación de IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+
+
 #### En la nube
 {: #on-the-cloud }
-* [Utilización de {{ site.data.keys.mf_server }} en IBM Bluemix](../bluemix).
+* [Utilización de {{ site.data.keys.mf_server }} en IBM Cloud](../bluemix).
 * [Utilización de {{ site.data.keys.mf_server }} en IBM PureApplication](../installation-configuration/production/pure-application).
 
 ## Adaptadores

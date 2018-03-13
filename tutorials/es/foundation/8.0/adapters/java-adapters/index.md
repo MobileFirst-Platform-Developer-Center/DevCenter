@@ -107,6 +107,8 @@ Las propiedades definidas por el usuario se pueden leer con la [interfaz Configu
 Los elementos de propiedades de configuración se deben ubicar **bajo** el elemento `JAXRSApplicationClass`.
   
 En el ejemplo anterior hemos definido los valores de conexión y les hemos otorgado valores predeterminados, de forma que se puedan utilizar más tarde en la clase AdapterApplication.
+
+
 El elemento `<property>` toma los siguientes atributos:
 
 

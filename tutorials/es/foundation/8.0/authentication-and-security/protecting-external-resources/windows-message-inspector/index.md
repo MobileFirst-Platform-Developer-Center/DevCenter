@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Inspector de mensajes Windows .NET
-breadcrumb_title: Inspector de mensajes Windows .NET
+breadcrumb_title: Windows .NET Message Inspector
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Descargar ejemplo
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -100,7 +100,6 @@ static void Main(string[] args) {
 ```
 
 > Para obtener más información acerca de los servicios REST WCF, consulte [Crear un servicio HTTP web WCF](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
-
 
 ## Definir un inspector de mensaje
 {: #define-a-message-inspector}
@@ -381,7 +380,7 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 ```
 
 El propósito principal del método postProcess es examinar la respuesta que hemos recibido del servidor de autorización de {{ site.data.keys.product_adj }}, pero antes de extraer y comprobar la respuesta, debemos **asegurarnos de que el estado de respuesta es 200 (aceptado)**. Si el estado de respuesta es **409 (conflicto)** deberíamos reenviar la respuesta a la aplicación cliente o, de lo contrario, lanzar una excepción.  
-Si el estado de respuesta es 200 (aceptado), debemos inicializar la clase `AzResponse`, que es una clase definida para representar la respuesta del servidor de autorización de {{ site.data.keys.product_adj }} con la respuesta actual.A continuación, comprobamos que la **respuesta está activa** y que incluye el **ámbito correcto**:
+Si el estado de respuesta es 200 (aceptado), debemos inicializar la clase `AzResponse`, que es una clase definida para representar la respuesta del servidor de autorización de {{ site.data.keys.product_adj }} con la respuesta actual. A continuación, comprobamos que la **respuesta está activa** y que incluye el **ámbito correcto**:
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)

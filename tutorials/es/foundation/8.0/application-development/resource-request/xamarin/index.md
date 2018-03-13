@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Solicitud de recursos desde aplicaciones Xamarin
+title: Solicitud de recursos de aplicaciones Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 downloads:
@@ -154,6 +154,8 @@ En caso de una respuesta anómala, el objeto de respuesta también contiene una 
 ## Para obtener más información
 {: #for-more-information }
 > Para obtener más información sobre WLResourceRequest, consulte la documentación de usuario.
+
+
 
 <img alt="Imagen de la aplicación de ejemplo" src="resource-request-success-xamarin.png" style="float:right"/>
 

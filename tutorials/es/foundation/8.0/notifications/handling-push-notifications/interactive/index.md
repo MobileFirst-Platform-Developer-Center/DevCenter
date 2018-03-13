@@ -8,22 +8,15 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-En las notificaciones interactivas, cuando una notificación llega, los usuarios pueden tomar acciones con relación a la misma sin abrir la aplicación.
-Cuando llega una notificación interactiva, el dispositivo muestra los botones de la acción junto con el mensaje de notificación.
+En las notificaciones interactivas, cuando una notificación llega, los usuarios pueden tomar acciones con relación a la misma sin abrir la aplicación. Cuando llega una notificación interactiva, el dispositivo muestra los botones de la acción junto con el mensaje de notificación.
 
-
-Las notificaciones interactivas están soportadas en dispositivos en iOS versión 8 y posterior.
-Si se envía una notificación interactiva a un dispositivo iOS con una versión anterior a la versión 8, las acciones de la notificación no se visualizarán.
-
+Las notificaciones interactivas están soportadas en dispositivos en iOS versión 8 y posterior. Si se envía una notificación interactiva a un dispositivo iOS con una versión anterior a la versión 8, las acciones de la notificación no se visualizarán.
 
 ## Enviar notificaciones push interactivas
 {: #sending-interactive-push-notification }
-La notificación se debe preparar antes de enviarla.
-Para obtener más información, consulte [Envío de notificaciones push](../../sending-notifications).
+La notificación se debe preparar antes de enviarla. Para obtener más información, consulte [Envío de notificaciones push](../../sending-notifications).
 
-
-Establezca una serie para indicar la categoría de la notificación con el objeto de notificación, bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados iOS**. Basándose en el valor de la categoría, se visualizan los botones de acción de la notificación.
-Por ejemplo:
+Establezca una serie para indicar la categoría de la notificación con el objeto de notificación, bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados iOS**. Basándose en el valor de la categoría, se visualizan los botones de acción de la notificación. Por ejemplo:
 
 ![Establecer categorías para notificaciones interactivas de iOS en {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
 
@@ -32,7 +25,6 @@ Por ejemplo:
 Para recibir notificaciones interactivas, siga estos pasos:
 
 1. En la sección JavaScript main, defina las categorías registradas para la notificación interactiva y pásela a la llamada de registro de dispositivo `MFPPush.registerDevice`.
-
 
    ```javascript
    var options = {
@@ -82,7 +74,7 @@ Para recibir notificaciones interactivas, siga estos pasos:
    }
    ```
 
-2. Pase el objeto `options` mientras registra el dispositivo para las notificaciones push. 
+2. Pase el objeto `options` mientras registra el dispositivo para las notificaciones push.
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
@@ -95,12 +87,8 @@ Para recibir notificaciones interactivas, siga estos pasos:
 {: #handling-interactive-push-notifications-in-native-ios-applications }
 Siga estos pasos para recibir notificaciones interactivas:
 
-
-1. Habilite la funcionalidad de la aplicación para realizar tareas de fondo al recibir las notificaciones remotas.
-Este paso es necesario si algunas de las acciones están habilitadas para procesos de fondo.
-
+1. Habilite la funcionalidad de la aplicación para realizar tareas de fondo al recibir las notificaciones remotas. Este paso es necesario si algunas de las acciones están habilitadas para procesos de fondo.
 2. Defina categorías registradas para las notificaciones interactivas y páselas como opciones a `MFPPush.registerDevice`.
-
 
    ```swift
    //define categories for Interactive Push

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalación y configuración de IBM MobileFirst Foundation Application Center
-breadcrumb_title: Instalación de Application Center
+breadcrumb_title: Installing Application Center
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,8 +18,6 @@ Opcionalmente, puede crear la base de datos de su elección antes de instalar {{
 Una vez que haya instalado Application Center en el servidor de aplicaciones web de su elección, tiene una configuración adicional que realizar. Para obtener más información, consulte Configuración de Application Center tras la instalación que aparece a continuación. Si elige una configuración manual en el instalador, consulte la documentación del servidor de su elección.
 
 > **Nota:** Si va a realizar la instalación de aplicaciones en dispositivos iOS a través de Application Center, debe configurar en primer lugar el servidor de Application Center con SSL.
-
-
 
 Para obtener una lista de archivos y herramientas instalados, consulte [Estructura de distribución de {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
@@ -74,7 +72,6 @@ Cuando cree manualmente la base de datos, puede sustituir el nombre de la base d
 
 > **Importante:** Puede poner un nombre distinto a su base de datos y usuario, o establecer una contraseña distinta, pero asegúrese de que especifica el nombre de base de datos adecuado, el nombre de usuario y la contraseña correctamente en la configuración de la base de datos de DB2. DB2 tiene un límite de nombre de base de datos de 8 caracteres en todas las plataformas, y tiene un límite de longitud de nombre de usuario y de contraseña de 8 caracteres para sistemas UNIX y Linux, y de 30 caracteres para Windows.
 
-
 1. Cree un usuario del sistema, por ejemplo, con el nombre **wluser** en un grupo de administración de DB2 como por ejemplo **DB2USERS**, utilizando los mandatos adecuados para su sistema operativo. Otórguele una contraseña, por ejemplo, **wluser**. Si desea que varias instancias de IBM {{ site.data.keys.mf_server }} se conecten a la misma base de datos, utilice un nombre de usuario distinto para cada conexión. Cada usuario de base de datos tiene un esquema predeterminado independiente. Para obtener más información acerca de los usuarios de base de datos, consulte la documentación de DB2 y la documentación para su sistema operativo.
 
 2. Abra un procesador de línea de mandatos de DB2, con un usuario que tenga permisos **SYSADM** o **SYSCTRL**:
@@ -126,7 +123,7 @@ El instalador puede crear la base de datos, excepto para el tipo de base de dato
     * Utilización de **Oracle Database Control**:
         * Conéctese como **SYSDBA**.
         * Vaya a la página **Usuarios**: pulse **Servidor**, luego **Usuarios** en la sección **Seguridad**.
-        * Cree un usuario, por ejemplo, denominado **APPCENTER**. Si desea que varias instancias de IBM {{ site.data.keys.mf_server }} se conecten a la misma base de datos de finalidad general que ha creado en el paso 1, utilice un nombre de usuario distinto para cada conexión. Cada usuario de base de datos tiene un esquema predeterminado independiente. 
+        * Cree un usuario, por ejemplo, denominado **APPCENTER**. Si desea que varias instancias de IBM {{ site.data.keys.mf_server }} se conecten a la misma base de datos de finalidad general que ha creado en el paso 1, utilice un nombre de usuario distinto para cada conexión. Cada usuario de base de datos tiene un esquema predeterminado independiente.
         * Asigne los atributos siguientes:
             * Perfil: **DEFAULT**
             * Autenticación: **password**
@@ -155,7 +152,6 @@ Para instalar Application Center en una granja de servidores de WebSphere Applic
 2. En el panel de instalador en el que especifique el directorio de instalación de WebSphere Application Server, seleccione el perfil de gestor de despliegue.
 
     > **Atención:** No seleccione un perfil de servidor de aplicaciones y a continuación un único servidor gestionado: hacerlo hace que el gestor de despliegue sobrescriba la configuración del servidor independientemente de si se instala en la máquina en la que el gestor de despliegue se está ejecutando o en una máquina distinta.
-
 3. Seleccione el ámbito necesario dependiendo de dónde desee que se instale Application Center. En la tabla siguiente se listan los ámbitos disponibles:
 
     | Ámbito	 | Explicación |
@@ -170,7 +166,6 @@ Para instalar Application Center en una granja de servidores de WebSphere Applic
 La instalación no tiene ningún efecto fuera de la granja de servidores en el ámbito especificado. Los proveedores de JDBC y los orígenes de datos JDBC están definidos con el ámbito especificado. Las entidades que tienen un ámbito de toda la célula (las aplicaciones y, para DB2, el alias de autenticación) tienen un sufijo en su nombre que los hace exclusivos. Por lo tanto, puede instalar Application Center en distintas configuraciones o incluso en versiones distintas de Application Center, en clústeres distintos de la misma célula.
 
 > **Nota:** Puesto que el controlador de JDBC sólo está instalado en el conjunto especificado de servidores de aplicaciones, es posible que no funcione el botón Probar conexión para los orígenes de datos de JDBC en la consola de administración de WebSphere Application Server del gestor de despliegue.
-
 
 Si utiliza un servidor HTTP frontal, también debe configurar el URL público.
 
@@ -339,8 +334,6 @@ Es necesaria una reconfiguración para que {{ site.data.keys.mf_server }} utilic
 En servidores de aplicaciones que no sean Apache Tomcat, puede desplegar Application Center desde dos archivos WAR o un archivo EAR.
 
 > **Restricción:** Si instala Application Center con IBM Installation Manager como parte de la instalación de {{ site.data.keys.mf_server }} o manualmente, recuerde que las "actualizaciones continuas" de Application Center no están soportadas. Es decir, no se pueden instalar dos versiones de Application Center (por ejemplo, V5.0.6 y V6.0.0) que operan en la misma base de datos.
-
-
 
 #### Ir a
 {: #jump-to-4 }
@@ -548,8 +541,6 @@ Configure la base de datos de Apache Derby para Application Center creando el es
 
    > **Nota:** El programa ij forma parte de Apache Derby. Si todavía no lo ha instalado, puede descargarlo de [Apache Derby: Descargas](http://db.apache.org/derby/derby_downloads).
 
-
-
    Para ver las versiones soportadas de Apache Derby, consulte [Requisitos del sistema](../../../product-overview/requirements).  
    El script muestra el número de versión de ij.
 
@@ -701,7 +692,6 @@ Si desea establecer y configurar manualmente la base de datos de MySQL para Appl
 
 > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Puede utilizar IBM DB2 u otra base de datos soportada por WebSphere Application Server para que se beneficie de una configuración que está totalmente soportada por IBM Support.
 
-
 1. Añada el archivo JAR del controlador de MySQL JDBC en **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**. Si dicho directorio no existe, créelo.
 2. Configure el origen de datos en el archivo **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** (**worklightServer** se puede sustituir en esta vía de acceso por el nombre del servidor) de la siguiente manera:
 
@@ -729,7 +719,6 @@ Si desea establecer y configurar manualmente la base de datos de MySQL para Appl
 Si desea establecer y configurar manualmente la base de datos de MySQL para Application Center con WebSphere Application Server, utilice el procedimiento centro de aplicaciones. Complete el procedimiento de configuración de la base de datos de MySQL antes de continuar.
 
 > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Le sugerimos que utilice IBM DB2 u otra base de datos soportada por WebSphere Application Server para beneficiarse de una configuración que está totalmente soportada por IBM Support.
-
 
 1. Determine un directorio adecuado para el archivo JAR del controlador de JDBC en el directorio de instalación de WebSphere Application Server.
     * Para un servidor autónomo, puede utilizar un directorio como por ejemplo **WAS\_INSTALL\_DIR/optionalLibraries/IBM/Worklight/mysql**.
@@ -901,8 +890,6 @@ Puede establecer y configurar la base de datos de Oracle manualmente para Applic
 
     > **Nota:** Para obtener más información sobre cómo conectar el servidor de Liberty a la base de datos de Oracle con un nombre de servicio, o con un URL, consulte la [documentación de WebSphere Application Server Liberty Core 8.5.5](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0), sección **properties.oracle**.
 
-
-
 3. Puede cifrar la contraseña de base de datos con el programa securityUtility en **liberty\_install\_dir/bin**.
 
 ##### Configuración de WebSphere Application Server for Oracle manualmente para Application Center
@@ -984,8 +971,6 @@ El procedimiento para desplegar manualmente los archivos WAR de Application Cent
 Estas instrucciones manuales presuponen que está familiarizado con el servidor de aplicaciones.
 
 > **Nota:** El uso del instalador de {{ site.data.keys.mf_server }} para instalar Application Center es más fiable que instalarlo manualmente, y debería utilizarse siempre que fuera posible.
-
-
 
 Si prefiere utilizar el proceso manual, siga estos pasos para configurar el servidor de aplicaciones para Application Center. Debe desplegar los archivos appcenterconsole.war y applicationcenter.war en su Application Center. Los archivos se encuentran en **product\_install\_dir/ApplicationCenter/console**.
 
@@ -1286,8 +1271,6 @@ El procedimiento para desplegar el archivo EAR de Application Center manualmente
 
 > **Consejo:** Es más fiable instalar Application Center a través del instalador de {{ site.data.keys.mf_server }} en lugar de manualmente. Por lo tanto, siempre que sea posible, utilice el instalador de {{ site.data.keys.mf_server }}. Si, sin embargo, prefiere el procedimiento manual, despliegue el archivo **appcentercenter.ear**, que puede encontrar en el directorio **product\_install\_dir/ApplicationCenter/console**.
 
-
-
 #### Configuración del perfil de Liberty para Application Center manualmente
 {: #configuring-the-liberty-profile-for-application-center-manually-1 }
 Una vez que despliegue el archivo EAR de Application Center, para configurar el perfil de Liberty de WebSphere Application Server manualmente para Application Center, debe modificar el archivo server.xml.
@@ -1528,7 +1511,7 @@ Defina los aspectos básicos de la configuración de usuario en la consola de We
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 Configure los roles de seguridad de Java™ EE del Application Center y el origen de datos del archivo **server.xml**.
 
-Para configurar los roles de seguridad, debe editar el archivo **server.xml**. En el elemento `<application-bnd>` de cada elemento `<application>`, cree dos elementos `<security-role>`. Un elemento `<security-role>` es para el rol **appcenteruser** y el otro es para el rol **appcenteradmin**. Correlacione los roles con el nombre de grupo de usuarios apropiado **appcenterusergroup** o **appcenteradmingroup**. Estos grupos se definen mediante el elemento `<basicRegistry>`. Puede personalizar este elemento o sustituirlo por completo por un elemento `<ldapRegistry>` o un elemento `<safRegistry>`.
+Para configurar los roles de seguridad, debe editar el archivo **server.xml**. En el elemento `<application-bnd>` de cada elemento de `<application>`, cree dos elementos `<security-role>`. Un elemento `<security-role>` es para el rol **appcenteruser** y el otro es para el rol **appcenteradmin**. Correlacione los roles con el nombre de grupo de usuarios apropiado **appcenterusergroup** o **appcenteradmingroup**. Estos grupos se definen mediante el elemento `<basicRegistry>`. Puede personalizar este elemento o sustituirlo por completo por un elemento `<ldapRegistry>` o un elemento `<safRegistry>`.
 
 A continuación, para mantener buenos tiempos de respuesta con un gran número de aplicaciones instaladas, por ejemplo con 80 aplicaciones, debe configurar una agrupación de conexiones para la base de datos de Application Center.
 
@@ -1545,7 +1528,7 @@ A continuación, para mantener buenos tiempos de respuesta con un gran número d
 
    Debe incluir este ejemplo en la siguiente ubicación:  
 
-   * Si ha desplegado archivos WAR, en el elemento `<application-bnd>` de cada elemento `<application>`: las aplicaciones **appcenterconsole** y **applicationcenter**.
+   * Si ha desplegado archivos WAR, en el elemento `<application-bnd>` de cada elemento de `<application>`: las aplicaciones **appcenterconsole** y **applicationcenter**.
    * Si ha desplegado un archivo EAR, en el elemento `<application-bnd>` de la aplicación **applicationcenter**.
 
    Sustituya los elementos `<security-role>` que se han creado durante la instalación para fines de prueba.
@@ -1677,7 +1660,7 @@ Puede configurar LDAP basándose sólo en la configuración de repositorio feder
 
 ##### Configuración de la gestión ACL de LDAP para WebSphere Application Server V8.x
 {: #configuring-ldap-acl-management-for-websphere-application-server-v8x }
-Para configurar ACL con LDAP, defina tres propiedades: **uid**, **sn** y **cn**. Estas propiedades permiten el nombre de inicio de sesión y el nombre completo de los usuarios y el nombre de grupos de usuarios que se identificarán en el Application Center. A continuación, habilite la gestión ACL con VMM. Puede configurar LDAP basándose sólo en la configuración de repositorio federado. 
+Para configurar ACL con LDAP, defina tres propiedades: **uid**, **sn** y **cn**. Estas propiedades permiten el nombre de inicio de sesión y el nombre completo de los usuarios y el nombre de grupos de usuarios que se identificarán en el Application Center. A continuación, habilite la gestión ACL con VMM. Puede configurar LDAP basándose sólo en la configuración de repositorio federado.
 
 1. Inicie sesión en la consola de WebSphere Application Server.
 2. Seleccione **Seguridad → Seguridad global**.
@@ -2192,7 +2175,7 @@ Para obtener una lista completa de propiedades JNDI, consulte [Propiedades JNDI 
 8. En la sección **Propiedades de módulo web**, seleccione **Entradas de entorno para módulos web**.
 9. Para **ibm.appcenter.services.endpoint**, asigne el URI completo de los servicios REST de Application Center (el URI del archivo **applicationcenter.war**).
     * En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.
-    * Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center. 
+    * Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center.
 
     Por ejemplo: `*://*:*/appcenter` significa utilizar el mismo protocolo, host y puerto que la consola de Application Center, pero utilizar appcenter como raíz de contexto.
 10. Pulse **Aceptar** y guarde la configuración.
@@ -2210,7 +2193,7 @@ Para obtener una lista completa de propiedades JNDI, consulte [Propiedades JNDI 
     * Para **ibm.appcenter.proxy.protocol**, asigne el protocolo externo.
 6. Para **ibm.appcenter.services.endpoint**, asigne el URI completo de los servicios REST de Application Center (el URI del archivo **applicationcenter.war**).
     * En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.
-    * Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center. 
+    * Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center.
 
     Por ejemplo: `*://*:*/appcenter` significa utilizar el mismo protocolo, host y puerto que la consola de Application Center, pero utilizar appcenter como raíz de contexto.
 7. Pulse Aceptar y guarde la configuración.
@@ -2240,7 +2223,7 @@ Donde:
 
 | Propiedad | Descripción |
 |----------|-------------|
-| ibm.appcenter.services.endpoint | El URI de los servicios REST de Application Center. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.|
+| ibm.appcenter.services.endpoint | El URI de los servicios REST de Application Center. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local. |
 | ibm.appcenter.proxy.protocol	El protocolo del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
 | ibm.appcenter.proxy.host | El nombre de host del URI de recursos de aplicaciones. |
 | ibm.appcenter.proxy.port | El puerto del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
@@ -2281,7 +2264,7 @@ Donde:
 
 | Propiedad | Tipo | Descripción |
 |----------|------|-------------|
-| ibm.appcenter.services.endpoint | java.lang.String | El URI de los servicios REST de Application Center (applicationcenter.war). En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.|
+| ibm.appcenter.services.endpoint | java.lang.String | El URI de los servicios REST de Application Center (applicationcenter.war). En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local. |
 | ibm.appcenter.proxy.protocol | java.lang.String | El protocolo del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
 | ibm.appcenter.proxy.host | java.lang.String | El nombre de host del URI de recursos de aplicaciones. |
 | ibm.appcenter.proxy.port | java.lang.Integer | El puerto del URI de recursos de aplicaciones. This property is optional. Sólo es necesaria si los protocolos del URI externo e interno son distintos. |
@@ -2470,12 +2453,12 @@ Puede configurar algunas propiedades JNDI para Application Center.
 | ibm.appcenter.ldap.group.uniquemember | Especifica los miembros de un grupo al utilizar LDAP sin Virtual Member Manager (VMM). Esta propiedad es la inversa de ibm.appcenter.ldap.user.groupmembership. Consulte [Configuración de la gestión ACL de LDAP (perfil de Liberty)](#configuring-ldap-acl-management-liberty-profile) y [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
 | ibm.appcenter.ldap.referral | Especifica si las referencias están soportadas por la API de JNDI. Si no se especifica ningún valor, la API de JNDI no manejará referencias de LDAP. Estos son los valores posibles:{::nomarkdown}<ul><li>ignore: Ignora las referencias que se encuentran en el servidor de LDAP.</li><li>follow: Sigue automáticamente cualquier referencia encontrada en el servidor LDAP.</li><li>throw: Provoca una excepción para cada referencia encontrada en el servidor LDAP.</li></ul>{:/} |
 | ibm.appcenter.ldap.security.binddn | El nombre distinguido del usuario permitido para buscar el directorio LDAP. Utilice esta propiedad sólo si es necesario el enlace de seguridad. |
-| ibm.appcenter.ldap.security.bindpwd | La contraseña del usuario permitida para buscar el directorio LDAP. Utilice esta propiedad sólo si es necesario el enlace de seguridad. <br><br>La contraseña puede estar codificada con el perfil Liberty de securityUtility tool. Ejecute la herramienta y, a continuación, establezca el valor de esta propiedad en la contraseña codificada generada por la herramienta.<br><br>Edite el archivo server.xml del perfil de Liberty para comprobar si el cargador de clases está habilitado para subir el archivo JAR que descodifica la contraseña. <br><br>Consulte [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
+| ibm.appcenter.ldap.security.bindpwd | La contraseña del usuario permitida para buscar el directorio LDAP. Utilice esta propiedad sólo si es necesario el enlace de seguridad.<br><br>La contraseña puede estar codificada con el perfil Liberty de securityUtility tool. Ejecute la herramienta y, a continuación, establezca el valor de esta propiedad en la contraseña codificada generada por la herramienta.<br><br>Edite el archivo server.xml del perfil de Liberty para comprobar si el cargador de clases está habilitado para subir el archivo JAR que descodifica la contraseña.<br><br>Consulte [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
 | ibm.appcenter.ldap.security.sasl | Especifica el mecanismo de autenticación de seguridad cuando se necesita el mecanismo de autenticación SASL externo de LDAP para enlazar al servidor LDAP. El valor depende del servidor LDAP y se establece normalmente en EXTERNAL. Cuando se establece esta propiedad, es necesario que se conecte la autenticación de seguridad con LDAP sin Virtual Member Manager (VMM). Consulte [Configuración de la gestión ACL de LDAP (perfil de Liberty)](#configuring-ldap-acl-management-liberty-profile) y [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
 | ibm.appcenter.ldap.user.base | La base de búsqueda para encontrar usuarios cuando se utiliza LDAP sin Virtual Member Manager (VMM). Consulte [Configuración de la gestión ACL de LDAP (perfil de Liberty)](#configuring-ldap-acl-management-liberty-profile) y [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
 | ibm.appcenter.ldap.user.displayName | El atributo display name, como por ejemplo el nombre real del usuario, cuando utiliza LDAP sin Virtual Member Manager (VMM). Consulte [Configuración de la gestión ACL de LDAP (perfil de Liberty)](#configuring-ldap-acl-management-liberty-profile) y [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
-| ibm.appcenter.ldap.displayName.filter | Filtro de búsqueda de usuarios LDAP para el atributo de ibm.appcenter.ldap.user.displayName. Utilice %v como marcador para la visualización del atributo name. <br><br>Esta propiedad sólo es necesaria cuando los usuarios y los grupos de LDAP están definidos en el mismo subárbol; es decir, cuando las propiedades ibm.appcenter.ldap.user.base e ibm.appcenter.ldap.group.base tienen el mismo valor. |
-| ibm.appcenter.ldap.user.filter | Filtro de búsqueda de usuarios de LDAP para el atributo de ibm.appcenter.ldap.user.loginName. Utilice **%v** como marcador para el atributo login name. <br><br>Esta propiedad sólo es necesaria cuando los usuarios y los grupos de LDAP están definidos en el mismo subárbol; es decir, cuando las propiedades ibm.appcenter.ldap.user.base e ibm.appcenter.ldap.group.base tienen el mismo valor. |
+| ibm.appcenter.ldap.displayName.filter | Filtro de búsqueda de usuarios LDAP para el atributo de ibm.appcenter.ldap.user.displayName. Utilice %v como marcador para la visualización del atributo name.<br><br>Esta propiedad sólo es necesaria cuando los usuarios y los grupos de LDAP están definidos en el mismo subárbol; es decir, cuando las propiedades ibm.appcenter.ldap.user.base e ibm.appcenter.ldap.group.base tienen el mismo valor. |
+| ibm.appcenter.ldap.user.filter | Filtro de búsqueda de usuarios de LDAP para el atributo de ibm.appcenter.ldap.user.loginName. Utilice **%v** como marcador para el atributo login name.<br><br>Esta propiedad sólo es necesaria cuando los usuarios y los grupos de LDAP están definidos en el mismo subárbol; es decir, cuando las propiedades ibm.appcenter.ldap.user.base e ibm.appcenter.ldap.group.base tienen el mismo valor. |
 | ibm.appcenter.ldap.user.groupmembership | Especifica los grupos de un miembro cuando se utiliza LDAP sin Virtual Member Manager (VMM). Esta propiedad es la inversa de ibm.appcenter.ldap.group.uniquemember. Esta propiedad es opcional, pero si se especifica, el acceso de LDAP es más rápido. Consulte [Configuración de la gestión ACL de LDAP (perfil de Liberty)](#configuring-ldap-acl-management-liberty-profile) y [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
 | ibm.appcenter.ldap.user.loginName | El atributo login name cuando se utiliza LDAP sin Virtual Member Manager (VMM). Consulte [Configuración de la gestión ACL de LDAP (perfil de Liberty)](#configuring-ldap-acl-management-liberty-profile) y [Configuración de la gestión ACL de LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). |
 | ibm.appcenter.ldap.vmm.active | Establezca esta propiedad en true para especificar que LDAP se realiza a través de Virtual Member Manager (VMM), o en false para lo contrario. Consulte [Configuración de la gestión ACL de LDAP para WebSphere Application Server V8.x](#configuring-ldap-acl-management-for-websphere-application-server-v8x). |
@@ -2490,7 +2473,7 @@ Puede configurar algunas propiedades JNDI para Application Center.
 | ibm.appcenter.proxy.scheme | Esta propiedad es tan sólo un nombre alternativo para ibm.appcenter.proxy.protocol. |
 | ibm.appcenter.push.schedule.period.amount | Especifica la planificación de tiempo al enviar notificaciones push de actualizaciones de aplicaciones. Cuando las aplicaciones se cambien frecuentemente en el servidor, establezca esta propiedad para enviar lotes de notificaciones. Por ejemplo, envíe todas las notificaciones que han tenido lugar dentro de la hora anterior, en lugar de enviar cada notificación individual. |
 | ibm.appcenter.push.schedule.period.unit | Especifica la unidad para la planificación de tiempo al enviar notificaciones push de actualizaciones de aplicaciones. |
-| ibm.appcenter.services.endpoint | Permite a la consola de Application Center ubicar los servicios REST de Application Center. Especifique la dirección externa y la raíz de contexto de la aplicación web applicationcenter.war. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.Por ejemplo, https://appcntr.net:443/applicationcenter. Consulte [Definición del punto final de los recursos de aplicaciones](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.services.endpoint | Permite a la consola de Application Center ubicar los servicios REST de Application Center. Especifique la dirección externa y la raíz de contexto de la aplicación web applicationcenter.war. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local. Por ejemplo, https://appcntr.net:443/applicationcenter. Consulte [Definición del punto final de los recursos de aplicaciones](#defining-the-endpoint-of-the-application-resources). |
 | ibm.appcenter.services.iconCacheMaxAge | Especifica el número de segundos durante los que los iconos almacenados en memoria caché siguen siendo válidos para la consola y el cliente de Application Center. Los iconos de aplicaciones raramente cambian, por lo que se almacenan en la memoria caché. Especifique valores mayores de 600 (10 min) para reducir la cantidad de transferencia de datos para los iconos. |
 | mfp.jndi.configuration | Opcional. Si la configuración de JNDI se inyecta en los archivos WAR o se proporciona como una biblioteca compartida, el valor de esta propiedad será el nombre de la configuración JNDI. También puede especificar este valor como una propiedad del sistema. |
 | mfp.jndi.file | Opcional. Si la configuración JNDI se almacena como un archivo externo, el valor de esta propiedad será la vía de acceso de un archivo que describe la configuración JNDI. También puede especificar este valor como una propiedad del sistema. |

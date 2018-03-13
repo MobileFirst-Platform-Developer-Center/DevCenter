@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Utilización de Java en adaptadores JavaScript
+title: Utilización de Java en adaptadores JavaScritp
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -21,7 +21,7 @@ Cuando JavaScript no es suficiente para implementar la funcionalidad necesaria, 
 
 ![UsingJavainJS](UsingJavainJS.png)
 
-Para utilizar una biblioteca Java existente, añada el archivo JAR como una dependencia para el proyecto.  Para obtener más información sobre cómo añadir una dependencia, consulte la sección de Depencias en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](../../creating-adapters/#dependencies).
+Para utilizar una biblioteca Java existente, añada el archivo JAR como una dependencia para el proyecto.  Para obtener más información sobre cómo añadir una dependencia, consulte la sección de Dependencias en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](../../creating-adapters/#dependencies).
 
 
 Para añadir código Java personalizado al proyecto, añada una carpeta denominada **java** a la carpeta **src/main** en su proyecto de adaptador y coloque en ella su paquete. En el ejemplo de esta guía de aprendizaje se utiliza un paquete `com.sample.customcode` y un archivo de clase Java denominado `Calculator.java`.    

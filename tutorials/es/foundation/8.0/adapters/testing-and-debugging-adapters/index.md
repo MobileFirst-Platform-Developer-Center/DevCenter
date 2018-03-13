@@ -146,6 +146,8 @@ Expanda la operación del punto final, especifique los parámetros necesarios (s
 
 Para generar la documentación Swagger para los adaptadores Java, utilice las anotaciones proporcionadas con Swagger en su implementación de Java.   
 > Para obtener más información sobre las anotaciones de Swagger, consulte la [Documentación de Swagger](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
+
+
 ```java
 @ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
 @ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
@@ -186,6 +188,7 @@ Abra una ventana de **línea de mandatos** y ejecute:
 mfpdev adapter call adapterName/path
 ```
 Por ejemplo:
+
 ```bash
 mfpdev adapter call SampleAdapter/users/World
 
@@ -204,6 +207,7 @@ Abra una ventana de **línea de mandatos** y ejecute:
 mfpdev adapter call adapterName/procedureName
 ```
 Por ejemplo:
+
 ```bash
 mfpdev adapter call SampleAdapter/getFeed
 

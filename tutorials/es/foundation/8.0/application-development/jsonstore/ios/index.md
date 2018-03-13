@@ -86,6 +86,7 @@ Es necesario llamar a `openCollections` antes de llamar a `getCollectionWithName
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
+
 ```
 
 La variable `collection` se puede utilizar ahora para realizar operaciones en la recopilación `people` como, por ejemplo, `add`, `find` y `replace`.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalación de MobileFirst Server para un entorno de producción
-breadcrumb_title: Entorno de producción
+title: Instalación de MobileFirst Server para un entorno de producción 
+breadcrumb_title: Production Environment
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -45,7 +45,6 @@ Para obtener más información sobre las versiones de servidores de aplicaciones
 
 **IBM Installation Manager V1.8.4 o posterior**  
 Installation Manager se utiliza para ejecutar el instalador de {{ site.data.keys.mf_server }}. Debe instalar Installation Manager V1.8.4 o posterior. Las versiones anteriores de Installation Manager no están disponibles para instalar {{ site.data.keys.product_full }} {{ site.data.keys.product_version }} porque las operaciones posteriores a la instalación del producto requieren Java 7. Las versiones anteriores de Installation Manager se suministran con Java 6.
-
 
 Descargue el instalador de IBM Installation Manager V1.8.4 o posterior de [Enlaces de descarga de Installation Manager y Packaging Utility](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 

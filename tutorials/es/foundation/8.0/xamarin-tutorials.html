@@ -9,7 +9,7 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Desarrolle aplicaciones Xamarin siguiendo las guías de aprendizaje que se indican a continuación: configure su entorno de desarrollo, pruebe el producto y añada valor integrando con las ofertas de {{ site.data.keys.product }} 8.0. <br/><br/>
+Desarrolle aplicaciones Xamarin siguiendo las guías de aprendizaje que se indican a continuación: configure su entorno de desarrollo, pruebe el producto y añada valor integrando con las ofertas de {{ site.data.keys.product }} 8.0.<br/><br/>
 
 <div id="container">
     <div class="row">
@@ -101,9 +101,9 @@ Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}</a>
 
     <h2><a href="../application-development">Desarrollo de aplicaciones</a></h2>
     Aprenda a utilizar las API de {{ site.data.keys.product_adj }}: Direct Update, JSONStore, WLResourceRequest, traducción del lado del cliente, depuración de aplicaciones, la interfaz de línea de mandatos (CLI) de desarrollador, etc.
+
     <ul>
-        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Utilización de {{ site.data.keys.mf_cli }} para gestionar los artefactos de {{ site.data.keys.product_adj }}</a>
-</li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Utilización de {{ site.data.keys.mf_cli }} para gestionar los artefactos de {{ site.data.keys.product_adj }}</a></li>
         <li><a href="../application-development/resource-request/xamarin/">Solicitud de recursos desde aplicaciones Xamarin</a></li>
         <li><a href="../application-development/jsonstore/">JSONStore</a>
            <ul>
@@ -115,7 +115,8 @@ Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}</a>
         </li>
         <li><a href="../application-development/live-update/">Live Update</a></li>
         <li><a href="../application-development/simple-data-sharing/">Compartición de datos simple</a></li>
-        <li>Recopilación de registro del lado del cliente<ul>
+        <li>Recopilación de registro del lado del cliente
+            <ul>
                 <li><a href="../application-development/client-side-log-collection/">Visión general de la recopilación de registro del lado del cliente</a></li>
                 <li><a href="../application-development/client-side-log-collection/ios/">Recopilación del registro en aplicaciones iOS</a></li>
                 <li><a href="../application-development/client-side-log-collection/android/">Recopilación del registro en aplicaciones Android</a></li>
@@ -162,7 +163,9 @@ Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}</a>
     <hr id="implement-authentication-and-security"/>
 
     <h2><a href="../authentication-and-security">Autenticación y seguridad</a></h2>
-    Adición de varias capas de protección a las aplicaciones. <ul>
+    Adición de varias capas de protección a las aplicaciones.
+
+    <ul>
         <li><a href="../authentication-and-security/">Conceptos de autorización</a></li>
         <li><a href="../authentication-and-security/creating-a-security-check/">Creación de una comprobación de seguridad</a>
             <ul>
@@ -229,23 +232,31 @@ Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}</a>
     </ul>
 
 
-    <h2><a href="../bluemix">Foundation en Bluemix</a></h2>
-    Despliegue MobileFirst Foundation en la nube mediante Bluemix.
+    <h2><a href="../bluemix">Foundation en IBM Cloud</a></h2>
+    Despliegue MobileFirst Foundation en la nube mediante IBM Cloud.
 
     <ul>
-        <li><a href="../bluemix/">Introducción a {{ site.data.keys.product_full }} en Bluemix</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Creación de una instancia de {{ site.data.keys.mf_server }} mediante el servicio Mobile Foundation Bluemix</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configuración de {{ site.data.keys.mf_server }} en IBM Containers mediante scripts en IBM Container Service</a>
+        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Recopilación de rastreo y registro</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protección de contenedores</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolución de problemas</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>-->
+        <li><a href="../bluemix/">Introducción a {{ site.data.keys.product_full }} en IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Creación de una instancia de {{ site.data.keys.mf_server }} mediante el servicio IBM Cloud Mobile Foundation</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">Configuración de MobileFirst Server en el clúster Kubernetes de IBM Cloud</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">Configuración de MobileFirst Appcenter en el clúster Kubernetes de IBM Cloud</a>
+            </li>
             </ul>
         </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configuración de {{ site.data.keys.mf_server }} en Bluemix mediante scripts en Liberty para Java</a>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Configuración de {{ site.data.keys.mf_server }} en IBM Cloud mediante scripts en Liberty para Java</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protección de contenedores</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolución de problemas</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">Protección de contenedores</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">Resolución de problemas</a></li>
             </ul>
         </li>
     </ul>

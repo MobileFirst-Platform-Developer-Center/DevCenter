@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalación de MobileFirst Server en un servidor de aplicaciones
-breadcrumb_title: Instalación de MobileFirst Server
+title: Instalación de MobileFirst Server a un servidor de aplicaciones 
+breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -328,8 +328,8 @@ Antes de ejecutar la Herramienta de configuración del servidor, asegúrese de q
                                     <li>Seleccione el perfil de WebSphere Application Server donde desea instalar {{ site.data.keys.mf_server }}. Si instala en WebSphere Application Server Network Deployment, seleccione el perfil del gestor de despliegue. En el perfil de gestor de despliegue, puede seleccionar un ámbito (<b>Servidor</b> o <b>Clúster</b>). Si selecciona <b>Clúster</b>, debe especificar el clúster:
                                         <ul>
                                             <li>Donde está instalado el tiempo de ejecución.</li>
-                                            <li>Donde está instalado el servicio de administración, {{ site.data.keys.mf_console }} y el servicio de Live Update. </li>
-                                            <li>Donde está instalado el servicio de envío por push. </li>
+                                            <li>Donde está instalado el servicio de administración, {{ site.data.keys.mf_console }} y el servicio de Live Update.</li>
+                                            <li>Donde está instalado el servicio de envío por push.</li>
                                         </ul>
                                     </li>
                                     <li>Escriba un ID de inicio de sesión y una contraseña del administrador. El usuario administrador debe tener un rol de administrador.</li>
@@ -406,8 +406,8 @@ Puede encontrar los archivos de configuración de ejemplo para instalar {{ site.
 
 También puede crear una configuración con la Herramienta de configuración del servidor y exportar los archivos Ant utilizando **Archivo → Exportar configuración como archivos Ant...**. Los archivos Ant de ejemplo tienen las mismas limitaciones que la Herramienta de configuración del servidor:
 
-* Todos los componentes ({{ site.data.keys.mf_console }}, servicio de administración de {{ site.data.keys.mf_server }}, servicio de Live Update de {{ site.data.keys.mf_server }}, los artefactos de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }}) se encuentran en el mismo servidor de aplicaciones. Sin embargo, en WebSphere Application Server Network Deployment, cuando instala en un clúster, puede especificar un clúster distinto para los servicios de administración y de Live Update, y para el tiempo de ejecución. 
-* Si el servicio de envío por push de {{ site.data.keys.mf_server }} está instalado, también estará instalado en el mismo servidor. Sin embargo, en WebSphere Application Server Network Deployment cuando instala en un clúster, puede especificar un clúster distinto para el servicio de envío por push. 
+* Todos los componentes ({{ site.data.keys.mf_console }}, servicio de administración de {{ site.data.keys.mf_server }}, servicio de Live Update de {{ site.data.keys.mf_server }}, los artefactos de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }}) se encuentran en el mismo servidor de aplicaciones. Sin embargo, en WebSphere Application Server Network Deployment, cuando instala en un clúster, puede especificar un clúster distinto para los servicios de administración y de Live Update, y para el tiempo de ejecución.
+* Si el servicio de envío por push de {{ site.data.keys.mf_server }} está instalado, también estará instalado en el mismo servidor. Sin embargo, en WebSphere Application Server Network Deployment cuando instala en un clúster, puede especificar un clúster distinto para el servicio de envío por push.
 * Todos los componentes utilizan el mismo sistema de base de datos y usuario. Para DB2, todos los componentes también utilizan el mismo esquema.
 * La Herramienta de configuración del servidor instala los componentes para un único servidor. Para una instalación en varios servidores, debe configurarse una granja una vez que se ejecute la herramienta. La configuración de granja de servidores no está soportada en WebSphere Application Server Network Deployment.
 
@@ -648,8 +648,6 @@ Las siguientes entradas JNDI globales son necesarias para configurar la comunica
 Estas entradas JNDI globales se establecen con esta sintaxis y no tienen como prefijos una raíz de contexto. Por ejemplo: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
 > **Nota:** Para proteger contra una conversión automática de los valores JNDI, para que 075 no se convierta a 61 o que 31,500 no se convierta en 31,5, utilice esta sintaxis '"075"' al definir el valor.
-
-
 
 Para obtener más información sobre las propiedades JNDI para el servicio de administración, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
@@ -994,8 +992,6 @@ Estas entradas JNDI globales se establecen con esta sintaxis y no tienen como pr
 
 > **Nota:** Para proteger contra una conversión automática de los valores JNDI, para que 075 no se convierta a 61 o que 31,500 no se convierta en 31,5, utilice esta sintaxis '"075"' al definir el valor.
 
-
-
 * Para obtener más información sobre las propiedades JNDI para el servicio de administración, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 * Para obtener más información sobre las propiedades JNDI para el tiempo de ejecución, consulte [Lista de propiedades JNDI para el tiempo de ejecución de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
@@ -1137,7 +1133,8 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
         <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
             <div class="panel-body">
                 <p>La consola está empaquetada como una aplicación WAR para desplegarse en el controlador colectivo de Liberty. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b> del controlador colectivo de Liberty.
-                <br/><br/>Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalación manual en WebSphere Application Server Liberty</a> para ver los detalles de configuración que son comunes a todos los servicios.<br/><br/>
+                <br/><br/>Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalación manual en WebSphere Application Server Liberty</a> para ver los detalles de configuración que son comunes a todos los servicios.
+                <br/><br/>
                 El archivo WAR de la consola se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. Puede definir la raíz de contexto como desee. Sin embargo, normalmente es <b>/mfpconsole</b>.</p>
 
                 <h3>Propiedades JNDI obligatorias</h3>
@@ -1369,7 +1366,8 @@ Opcionalmente, es posible que desee activar el dominio de memoria si los usuario
 
         <div id="collapse-live-update-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-tomcat">
             <div class="panel-body">
-                <p>El servicio de Live Update está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
+                <p>El servicio de Live Update está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
+                <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-apache-tomcat">Instalación manual en Apache Tomcat</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR del servicio de Live Update se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. La raíz de contexto del servicio de Live Update debe definirse de esta forma: <b>/the-adminContextRoot/config</b>. Por ejemplo, si la raíz de contexto del servicio de administración es <b>/mfpadmin</b>, la raíz de contexto del servicio de Live Update debe ser <b>/mfpadminconfig</b>.</p>
@@ -1428,7 +1426,8 @@ Opcionalmente, es posible que desee activar el dominio de memoria si los usuario
 
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
-                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
+                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
+                <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-apache-tomcat">Instalación manual en Apache Tomcat</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR de tiempo de ejecución se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. Puede definir la raíz de contexto como desee. Sin embargo, es <b>/mfp</b> de forma predeterminada.</p>
@@ -1524,7 +1523,9 @@ Asegúrese de que cumpla los requisitos tal como se describe en <a href="#websph
 #### Restricciones de topología
 {: #topology-constraints-nd }
 <b>En un WebSphere Application Server autónomo</b>  
-El servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }} deben estar instalados en el mismo servidor de aplicaciones. La raíz de contexto del servicio de Live Update debe estar definida como <b>the-adminContextRootConfig</b>. La raíz de contexto del servicio de envío por push debe ser <b>imfpush</b>. Para obtener más información acerca de las restricciones, consulte [Restricciones en los componentes de {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).<b>En WebSphere Application Server Network Deployment</b>  
+El servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }} deben estar instalados en el mismo servidor de aplicaciones. La raíz de contexto del servicio de Live Update debe estar definida como <b>the-adminContextRootConfig</b>. La raíz de contexto del servicio de envío por push debe ser <b>imfpush</b>. Para obtener más información acerca de las restricciones, consulte [Restricciones en los componentes de {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+
+<b>En WebSphere Application Server Network Deployment</b>  
 El gestor de despliegue debe estar en ejecución mientras {{ site.data.keys.mf_server }} se encuentra en ejecución. El gestor de despliegue se utiliza para la comunicación JMX entre el tiempo de ejecución y el servicio de administración. El servicio de administración y el servicio de Live Update deben estar instalados en el mismo servidor de aplicaciones. El tiempo de ejecución puede estar instalado en distintos servidores que el servicio de administración, pero debe estar en la misma célula.
 
 #### Valores del servidor de aplicaciones
@@ -1645,7 +1646,8 @@ Para establecer la delegación del cargador de clases a último padre una vez qu
 
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
-                <p>El servicio de Live Update está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
+                <p>El servicio de Live Update está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
+                <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalación manual en WebSphere Application Server y WebSphere Application Server Network Deployment</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR del servicio de Live Update se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. La raíz de contexto del servicio de Live Update debe definirse de esta forma: <b>/the-adminContextRoot/config</b>. Por ejemplo, si la raíz de contexto del servicio de administración es <b>/mfpadmin</b>, la raíz de contexto del servicio de Live Update debe ser <b>/mfpadminconfig</b>.</p>
@@ -1707,7 +1709,8 @@ Para establecer la delegación del cargador de clases a último padre una vez qu
 
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
-                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>. <br/><br/>
+                <p>El tiempo de ejecución está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación en el archivo <b>server.xml</b>.
+                <br/><br/>
                 Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalación manual en WebSphere Application Server y WebSphere Application Server Network Deployment</a> para ver los detalles de configuración que son comunes a todos los servicios.
                 <br/><br/>
                 El archivo WAR de tiempo de ejecución se encuentra en <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. Puede definir la raíz de contexto como desee. Sin embargo, es <b>/mfp</b> de forma predeterminada.</p>
@@ -1761,8 +1764,7 @@ Para establecer la delegación del cargador de clases a último padre una vez qu
 
         <div id="collapse-push-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration-nd">
             <div class="panel-body">
-                <p>El servicio de envío por push está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación. Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalación manual en WebSphere Application Server y WebSphere Application Server Network Deployment</a> para ver los detalles de configuración que son comunes a todos los servicios.
-                    
+                <p>El servicio de envío por push está empaquetado como una aplicación WAR para que la despliegue en el servidor de aplicaciones. Necesita realizar algunas configuraciones específicas para esta aplicación. Antes de continuar, consulte <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalación manual en WebSphere Application Server y WebSphere Application Server Network Deployment</a> para ver los detalles de configuración que son comunes a todos los servicios.    
                 <br/><br/>
                 El archivo WAR del servicio de envío por push se encuentra en <b>mfp_install_dir/PushService/mfp-push-service.war</b>. Debe definir la raíz de contexto como <b>/imfpush</b>. De lo contrario, los dispositivos cliente no se podrán conectar a la misma, ya que la raíz de contexto está codificada en el SDK.</p>
 
@@ -1934,7 +1936,7 @@ Cuando planifique una granja de servidores con tareas Ant, cree en primer lugar 
                                 <blockquote><b>Importante:</b> {{ site.data.keys.product }} sólo da soporte a granjas de servidores homogéneas. Una granja de servidores es homogénea cuando conecta el mismo tipo de servidores de aplicaciones. Intentar asociar distintos tipos de servidores de aplicaciones puede dar lugar a un comportamiento impredecible en el tiempo de ejecución. Por ejemplo, una granja de servidores con una mezcla de servidores de Apache Tomcat y servidores de perfil completo de WebSphere Application Server es una configuración no válida.</blockquote>
                             </li>
                             <li>Configure tantos servidores autónomos como el número de miembros que desee en la granja de servidores.
-                                <br/><br/>
+                            <br/><br/>
                             Cada uno de estos servidores autónomos debe comunicarse con la misma base de datos. Debe asegurarse de que cualquier puerto que utilice cualquiera de estos servidores no lo utilice también otro servidor configurado en el mismo host. Esta restricción se aplica a los puertos utilizados por los protocolos HTTP, HTTPS, REST, SOAP y RMI.
                             <br/><br/>
                             Cada uno de estos servidores debe tener el servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }} y uno o varios tiempos de ejecución de {{ site.data.keys.product_adj }} desplegados.
@@ -2041,13 +2043,13 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
             <div class="panel-body">
                 <ol>
                     <li>Elija el tipo de servidor de aplicaciones que se utilizará para configurar los miembros de la granja de servidores. {{ site.data.keys.product }} da soporte a los siguientes servidores de aplicaciones en granjas de servidores:
-                                <ul>
+                        <ul>
                             <li>Perfil completo de WebSphere Application Server<br/>
                             <b>Nota:</b> En una topología de granja de servidores, no puede utilizar el conector RMI JMX. En esta topología, sólo se da soporte al conector SOAP mediante {{ site.data.keys.product }}.</li>
                             <li>Perfil de Liberty de WebSphere Application Server</li>
                             <li>Apache Tomcat</li>
                         </ul>
-                                Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../product-overview/requirements">Requisitos del sistema</a>.
+                        Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../product-overview/requirements">Requisitos del sistema</a>.
 
                         <blockquote><b>Importante:</b> {{ site.data.keys.product }} sólo da soporte a granjas de servidores homogéneas. Una granja de servidores es homogénea cuando conecta el mismo tipo de servidores de aplicaciones. Intentar asociar distintos tipos de servidores de aplicaciones puede dar lugar a un comportamiento impredecible en el tiempo de ejecución. Por ejemplo, una granja de servidores con una mezcla de servidores de Apache Tomcat y servidores de perfil completo de WebSphere Application Server es una configuración no válida.</blockquote>
                     </li>
@@ -2065,7 +2067,7 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
                         Para obtener más información acerca de las bases de datos, consulte <a href="../databases">Configuración de bases de datos</a>.
                     </li>
                     <li>Configure tantos servidores autónomos como el número de miembros que desee en la granja de servidores.
-                                <ul>
+                        <ul>
                             <li>Cada uno de estos servidores autónomos debe comunicarse con la misma base de datos. Debe asegurarse de que cualquier puerto que utilice cualquiera de estos servidores no lo utilice también otro servidor configurado en el mismo host. Esta restricción se aplica a los puertos utilizados por los protocolos HTTP, HTTPS, REST, SOAP y RMI.</li>
                             <li>Cada uno de estos servidores debe tener el servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }} y uno o varios tiempos de ejecución de {{ site.data.keys.product_adj }} desplegados.</li>
                             <li>Cuando cada uno de estos servidores esté funcionando correctamente en una topología autónoma, puede transformarlos en miembros de una granja de servidores.</li>

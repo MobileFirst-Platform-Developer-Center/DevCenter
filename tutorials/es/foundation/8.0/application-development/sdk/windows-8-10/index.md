@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adición de MobileFirst Foundation SDK a aplicaciones Windows 8.1 Universal o Windows 10 UWP
+title: Adición del SDK de MobileFirst Foundation a aplicaciones Windows 8.1 Universal o Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4

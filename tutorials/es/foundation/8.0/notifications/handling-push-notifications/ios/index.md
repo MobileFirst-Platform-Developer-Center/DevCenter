@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Manjeo de notificaciones push en iOS
+title: Manejo de las notificaciones push en iOS
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
@@ -11,11 +11,9 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-La API de notificaciones que {{ site.data.keys.product_adj }} proporciona sirve para registrar y anular el registro de dispositivos y suscribir y anular la suscripción a etiquetas.
-En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones iOS utilizando Swift.
+La API de notificaciones que {{ site.data.keys.product_adj }} proporciona sirve para registrar y anular el registro de dispositivos y suscribir y anular la suscripción a etiquetas. En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones iOS utilizando Swift.
 
-
-Para obtener información sobre las notificaciones interactivas o silenciosas, consulte: 
+Para obtener información sobre las notificaciones interactivas o silenciosas, consulte:
 
 * [Notificaciones silenciosas](../silent)
 * [Notificaciones interactivas](../interactive)
@@ -23,7 +21,6 @@ Para obtener información sobre las notificaciones interactivas o silenciosas, c
 **Requisitos previos: **
 
 * Asegúrese de haber leído las siguientes guías de aprendizaje:
-
 	* [Visión general de notificaciones push](../../)
     * [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/#installing-a-development-environment)
     * [Adición de {{ site.data.keys.product }} SDK a aplicaciones iOS](../../../application-development/sdk/ios)
@@ -31,7 +28,7 @@ Para obtener información sobre las notificaciones interactivas o silenciosas, c
 * {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador
 
 
-### Ir a: 
+### Ir a:
 {: #jump-to }
 * [Configuración de notificaciones](#notifications-configuration)
 * [API de notificaciones](#notifications-api)
@@ -44,11 +41,9 @@ Cree un nuevo proyecto Xcode o utilice uno existente.
 Si {{ site.data.keys.product_adj }} Native iOS SDK todavía no está presente en el proyecto, siga las instrucciones en la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para aplicaciones iOS](../../../application-development/sdk/ios).
 
 
-
 ### Añadir el SDK de push
 {: #adding-the-push-sdk }
 1. Abra el **podfile** existente del proyecto y añada las siguientes líneas:
-
 
    ```xml
    use_frameworks!
@@ -77,56 +72,46 @@ Si {{ site.data.keys.product_adj }} Native iOS SDK todavía no está presente en
    ```
     - Sustituya **Xcode-project-target** con el nombre de su destino de proyecto Xcode.
 
-
 2. Guarde y cierre el **podfile**.
 3. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto.
-
 4. Ejecute el mandato `pod install`
 5. Abra proyecto utilizando el archivo **.xcworkspace**.
-
 
 ## API de notificaciones
 {: #notifications-api }
 ### Instancia de MFPPush
 {: #mfppush-instance }
-Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.
-Esto se puede realizar utilizando una `var` en un controlador de vista, por ejemplo, `var push = MFPPush.sharedInstance();` y, a continuación, llamando a `push.methodName()` a través del controlador de vista.
-
+Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.  Esto se puede realizar utilizando una `var` en un controlador de vista, por ejemplo, `var push = MFPPush.sharedInstance();` y, a continuación, llamando a `push.methodName()` a través del controlador de vista.
 
 Otra posibilidad es llamar a `MFPPush.sharedInstance().methodName()` para cada instancia en la que necesita acceder a los métodos de API de push.
-
 
 ### Manejadores de desafíos
 {: #challenge-handlers }
 Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación de seguridad**, debe asegurarse de que existen **manejadores de desafíos** coincidentes registrados antes de utilizar las API de push.
 
-
 > Aprenda más sobre los manejadores de desafíos en la guía de aprendizaje de [validación de credenciales](../../../authentication-and-security/credentials-validation/ios).
-
 
 ### Lado del cliente
 {: #client-side }
 
-| Métodos Swift | Descripción |
+| Métodos Swift | Descripción  |
 |---------------|--------------|
 | [`initialize()`](#initialization) | Inicia MFPPush con el contexto proporcionado. |
 | [`isPushSupported()`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registra el dispositivo con el servicio de notificaciones push. |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registra el dispositivo con el servicio de notificaciones push.|
 | [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Envía la señal de dispositivo al servidor |
 | [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
 | [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Suscribe el dispositivo para las etiquetas especificadas. |
 | [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
 | [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Anula la suscripción de una o varias etiquetas. |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push. |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push.              |
 
 #### Inicialización
 {: #initialization }
 La inicialización es necesaria para que la aplicación de cliente se conecte al servicio MFPPush.
 
-
 * Primero se debe llamar al método `initialize` antes de utilizar cualquier otra API MFPPush.
-
-* Registra la función de retorno de llamada para manejar las notificaciones push recibidas. 
+* Registra la función de retorno de llamada para manejar las notificaciones push recibidas.
 
 ```swift
 MFPPush.sharedInstance().initialize();
@@ -134,7 +119,7 @@ MFPPush.sharedInstance().initialize();
 
 #### Está push soportado
 {: #is-push-supported }
-Comprueba si el dispositivo da soporte a las notificaciones push. 
+Comprueba si el dispositivo da soporte a las notificaciones push.
 
 ```swift
 let isPushSupported: Bool = MFPPush.sharedInstance().isPushSupported()
@@ -148,7 +133,7 @@ if isPushSupported {
 
 #### Registrar el dispositivo y enviar una señal de dispositivo
 {: #register-device--send-device-token }
-Registre el dispositivo para el servicio de notificaciones push. 
+Registre el dispositivo para el servicio de notificaciones push.
 
 ```swift
 MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in
@@ -171,10 +156,9 @@ MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 
 > **Nota:** Habitualmente la llamada se realiza en **AppDelegate** en el método `didRegisterForRemoteNotificationsWithDeviceToken`.
 
-
 #### Obtener etiquetas
 {: #get-tags }
-Recupere todas las etiquetas disponibles desde el servicio de notificaciones push. 
+Recupere todas las etiquetas disponibles desde el servicio de notificaciones push.
 
 ```swift
 MFPPush.sharedInstance().getTags { (response, error) -> Void in
@@ -199,7 +183,7 @@ MFPPush.sharedInstance().getTags { (response, error) -> Void in
 
 #### Suscribir
 {: #subscribe }
-Suscriba las etiquetas deseadas. 
+Suscriba las etiquetas deseadas.
 
 ```swift
 var tagsArray: [String] = ["Tag 1", "Tag 2"]
@@ -219,7 +203,6 @@ MFPPush.sharedInstance().subscribe(self.tagsArray) { (response, error)  -> Void 
 #### Obtener suscripciones
 {: #get-subscriptions }
 Recupere las etiquetas a las que el dispositivo está actualmente suscrito.
-
 
 ```swift
 MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
@@ -244,7 +227,7 @@ MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
 
 #### Anular la suscripción
 {: #unsubscribe }
-Anule la suscripción de etiquetas. 
+Anule la suscripción de etiquetas.
 
 ```swift
 var tags: [String] = {"Tag 1", "Tag 2"};
@@ -263,7 +246,7 @@ MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Voi
 
 #### Anular el registro
 {: #unregister }
-Anule el registro del dispositivo de una instancia de servicio de notificaciones push. 
+Anule el registro del dispositivo de una instancia de servicio de notificaciones push.
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
@@ -282,12 +265,9 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 ## Manejar una notificación push
 {: #handling-a-push-notification }
 
-La infraestructura iOS nativa maneja directamente las notificaciones push.
-Dependiendo del ciclo de vida de su aplicación, la infraestructura iOS llamará a distintos métodos.
-
+La infraestructura iOS nativa maneja directamente las notificaciones push. Dependiendo del ciclo de vida de su aplicación, la infraestructura iOS llamará a distintos métodos.
 
 Por ejemplo si se recibe una notificación simple mientras se ejecuta la aplicación, se desencadenará el `didReceiveRemoteNotification` de **AppDelegate**:
-
 
 ```swift
 func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
@@ -309,8 +289,6 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 {: #sample-application }
 [Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) el proyecto Xcode.
 
-
 ### Uso de ejemplo
 {: #sample-usage }
 Siga el archivo README.md de ejemplo para obtener instrucciones.
-

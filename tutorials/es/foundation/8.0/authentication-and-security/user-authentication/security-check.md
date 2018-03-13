@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementación de la clase UserAuthenticationSecurityCheck
-breadcrumb_title: Comprobación de seguridad
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -67,7 +67,7 @@ protected Map<String, Object> createChallenge() {
 
 ## Validación de las credenciales de usuario
 {: #validating-the-user-credentials }
-Cuando el cliente envía una respuesta al desafío, la respuesta se pasa a `validateCredentials` como `Map`. Utilice este método para implementar la lógica.El método devuelve el valor `true` si las credenciales son válidas.
+Cuando el cliente envía una respuesta al desafío, la respuesta se pasa a `validateCredentials` como `Map`. Utilice este método para implementar la lógica. El método devuelve el valor `true` si las credenciales son válidas.
 
 En este ejemplo, las credenciales se consideran "válidas" cuando `username` y `password` son lo mismo:
 
@@ -145,7 +145,7 @@ Puede utilizar `this.getName()` para obtener el nombre de la comprobación de se
 AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
 ```
 
-Este constructor añade el atributo `Map` de los atributos personalizados para almacenarlo con la representación del usuario. La correlación puede utilizarse para almacenar información adicional como, por ejemplo, una foto de perfil, un sitio web, etc. Se puede acceder a esta información en el lado del cliente (manejador de usuarios) y en el recurso (mediante los datos de introspección). 
+Este constructor añade el atributo `Map` de los atributos personalizados para almacenarlo con la representación del usuario. La correlación puede utilizarse para almacenar información adicional como, por ejemplo, una foto de perfil, un sitio web, etc. Se puede acceder a esta información en el lado del cliente (manejador de usuarios) y en el recurso (mediante los datos de introspección).
 
 > **Nota:**
 > Los atributos `Map` deben contener solo objetos de tipos/clases empaquetados en la biblioteca Java (por ejemplo `String`, `int`, `Map`, etc), y **no** clases personalizadas.

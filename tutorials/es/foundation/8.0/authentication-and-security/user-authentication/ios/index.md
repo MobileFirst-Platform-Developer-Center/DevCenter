@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementación del manejador de usuarios en aplicaciones iOS
+title: Implementación del manejador de desafíos en aplicaciones iOS
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
@@ -21,7 +21,7 @@ La guía de aprendizaje del manejador de desafíos muestra características adic
 
 ## Inicio de sesión
 {: #login }
-En este ejemplo, `UserLogin` espera los *valores clave* llamados `username` y `password`. De forma opcional, también acepta una clave booleana `rememberMe`, que le pide a la comprobación de seguridad que recuerde el usuario durante más tiempo.En la aplicación de ejemplo, lo recopila un valor booleano del recuadro de selección en el formulario de inicio de sesión. 
+En este ejemplo, `UserLogin` espera los *valores clave* llamados `username` y `password`. De forma opcional, también acepta una clave booleana `rememberMe`, que le pide a la comprobación de seguridad que recuerde el usuario durante más tiempo. En la aplicación de ejemplo, lo recopila un valor booleano del recuadro de selección en el formulario de inicio de sesión.
 
 El argumento `credentials` es `JSONObject` que contiene los valores `username`, `password`, and `rememberMe`:
 
@@ -29,7 +29,7 @@ El argumento `credentials` es `JSONObject` que contiene los valores `username`, 
 self.submitChallengeAnswer(credentials);
 ```
 
-Es posible que desee iniciar sesión en un usuario sin recibir desafíos. Por ejemplo, puede mostrar una pantalla de inicio de sesión como la primera pantalla de la aplicación, una pantalla de inicio de sesión después de cerrar sesión, o un error de inicio de sesión.Dichos escenarios se denominan **inicios de sesión preferentes**.
+Es posible que desee iniciar sesión en un usuario sin recibir desafíos. Por ejemplo, puede mostrar una pantalla de inicio de sesión como la primera pantalla de la aplicación, una pantalla de inicio de sesión después de cerrar sesión, o un error de inicio de sesión. Dichos escenarios se denominan **inicios de sesión preferentes**.
 
 No puede llamar la API `submitChallengeAnswer` si no hay desafíos a los que responder. Para estos escenarios, el SDK de {{ site.data.keys.product }} incluye la API `login`:
 
@@ -46,7 +46,7 @@ WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCreden
 
 Si las credenciales no son correctas, la comprobación de seguridad devuelve un **desafío**.
 
-Es responsabilidad del desarrollador saber cuando utilizar `login`, en lugar de `submitChallengeAnswer`, en función de las necesidades de la aplicación. Una forma de conseguirlo es definiendo un distintivo booleano, por ejemplo `isChallenged`, y establecerlo en `true` cuando se alcance `handleChallenge`, o establecerlo en `false` en los otros casos (error, éxito, inicialización, etc). 
+Es responsabilidad del desarrollador saber cuando utilizar `login`, en lugar de `submitChallengeAnswer`, en función de las necesidades de la aplicación. Una forma de conseguirlo es definiendo un distintivo booleano, por ejemplo `isChallenged`, y establecerlo en `true` cuando se alcance `handleChallenge`, o establecerlo en `false` en los otros casos (error, éxito, inicialización, etc).
 
 Cuando el usuario pulsa el botón **Iniciar sesión**, puede elegir dinámicamente qué API desea utilizar:
 
@@ -82,7 +82,7 @@ WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (toke
 > **Nota:**
 > La API `WLAuthorizationManager` `obtainAccessTokenForScope()` tiene su propio manejador de terminación; **también** se llama a los métodos `handleSuccess` o `handleFailure` del manejador de desafíos relevante.
 
-Si el cliente ya ha iniciado sesión o está en estado *recordado*, la API da como resultado "éxito". Si el cliente no ha iniciado sesión, la comprobación de seguridad devuelve un desafío. 
+Si el cliente ya ha iniciado sesión o está en estado *recordado*, la API da como resultado "éxito". Si el cliente no ha iniciado sesión, la comprobación de seguridad devuelve un desafío.
 
 La API `obtainAccessTokenForScope` incluye un **ámbito**. El ámbito puede ser el nombre de su **comprobación de seguridad**.
 
@@ -141,7 +141,7 @@ Los ejemplos utilizan la misma comprobación de seguridad `UserLogin` del adapta
 ### Uso de ejemplo
 {: #sample-usage }
 Siga el archivo README.md del ejemplo para obtener instrucciones.  
-El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john". 
+El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john".
 
 ![aplicación de ejemplo](sample-application.png)
 

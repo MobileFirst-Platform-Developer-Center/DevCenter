@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementación del manejador de desafíos en las aplicaciones de Windows 8.1 Universal y Windows 10 UWP
+title: Implementación del manejador de desafíos en aplicaciones Windows 8.1 Universal y Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
@@ -25,7 +25,7 @@ La guía de aprendizaje del manejador de desafíos muestra algunas característi
 
 ## Inicio de sesión
 {: #login }
-En este ejemplo, `UserLoginSecurityCheck` espera los *valores clave* llamados `username` y `password`. De forma opcional, también acepta una clave booleana `rememberMe`, que le pide a la comprobación de seguridad que recuerde el usuario durante más tiempo.En la aplicación de ejemplo, lo recopila un valor booleano del recuadro de selección en el formulario de inicio de sesión.
+En este ejemplo, `UserLoginSecurityCheck` espera los *valores clave* llamados `username` y `password`. De forma opcional, también acepta una clave booleana `rememberMe`, que le pide a la comprobación de seguridad que recuerde el usuario durante más tiempo. En la aplicación de ejemplo, lo recopila un valor booleano del recuadro de selección en el formulario de inicio de sesión.
 
 El argumento `credentials` es `JSONObject` que contiene los valores `username`, `password`, and `rememberMe`:
 
@@ -36,7 +36,7 @@ public override void SubmitChallengeAnswer(object answer)
 }
 ```
 
-Es posible que desea iniciar sesión en un usuario sin recibir desafíos. Por ejemplo, puede mostrar una pantalla de inicio de sesión como la primera pantalla de la aplicación, una pantalla de inicio de sesión después de cerrar sesión, o un error de inicio de sesión.Dichos escenarios se denominan **inicios de sesión preferentes**.
+Es posible que desea iniciar sesión en un usuario sin recibir desafíos. Por ejemplo, puede mostrar una pantalla de inicio de sesión como la primera pantalla de la aplicación, una pantalla de inicio de sesión después de cerrar sesión, o un error de inicio de sesión. Dichos escenarios se denominan **inicios de sesión preferentes**.
 
 No puede llamar la API `challengeAnswer` si no hay desafíos a los que responder. Para estos escenarios, el SDK de {{ site.data.keys.product }} incluye la API `Login`:
 
@@ -148,6 +148,7 @@ Los ejemplos utilizan la misma comprobación de seguridad `UserLoginSecurityChec
 
 ### Uso de ejemplo
 {: #sample-usage }
-Siga el archivo README.md del ejemplo para obtener instrucciones.El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john".
+Siga el archivo README.md del ejemplo para obtener instrucciones.
+El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john".
 
 ![aplicación de ejemplo](RememberMe.png)

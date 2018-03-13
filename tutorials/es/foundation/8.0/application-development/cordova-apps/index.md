@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Desarrollo de MobileFirst Foundation en aplicaciones Cordova
-breadcrumb_title: Desarrollo de aplicaciones Cordova
+breadcrumb_title: Cordova application development
 relevantTo: [cordova]
 weight: 4
 ---
@@ -74,6 +74,9 @@ Plugins de ejemplo:
 >**Nota:** La modificación del comportamiento predeterminado de una aplicación Cordova (por ejemplo, modificando el comportamiento del botón de ir hacia atrás) cuando {{ site.data.keys.product_adj }} Cordova SDK se añade al proyecto, puede hacer que Google Play Store la rechace cuando la envíe.
 
 Póngase en contacto con el soporte de Google para conocer otras anomalías al enviar una aplicación a Google Play Store.
+
+
+
 ### Infraestructuras de terceros
 {: #3rd-party-frameworks }
 El desarrollo de aplicaciones de Cordova se puede mejorar aún más utilizando infraestructuras como, por ejemplo, [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/) o [Backbone](http://backbonejs.org/) entre muchas otras.

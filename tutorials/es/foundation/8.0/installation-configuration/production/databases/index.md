@@ -23,10 +23,8 @@ Cada componente necesita un conjunto de tablas. Las tablas pueden crearse manual
 Sin embargo, si decide instalar varias instancias de tiempo de ejecución de {{ site.data.keys.product }}, cada una con su propia raíz de contexto en el servidor de aplicaciones, cada instancia necesitará su propio conjunto de tablas. En este caso, deben estar en distintos esquemas.
 
 > **Nota sobre DB2:** Los licenciatarios de {{ site.data.keys.product_adj }} están autorizados a utilizar DB2 como un sistema de soporte para Foundation. Para beneficiarse de esto, debe, después de instalar el software de DB2:
-
 > 
 > * Descargar la imagen de activación de uso restringido directamente desde el [sitio web de IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
-
 > * Aplicar el archivo de licencia de activación de uso restringido **db2xxxx.lic** utilizando el mandato **db2licm**
 >
 > Obtenga más información en el [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
@@ -298,7 +296,7 @@ Los scripts para crear las tablas son los siguientes:
 
 El ejemplo siguiente crea las tablas para todas las aplicaciones para el mismo usuario y base de datos. Se da por supuesto que se ha creado una base de datos y un usuario como en [Requisitos para las bases de datos para MySQL](#database-requirements).
 
-El procedimiento siguiente crea las tablas para todas las aplicaciones para el mismo usuario (mfpuser) y base de datos (MFPDATA). Se da por supuesto que ya se ha creado una base de datos y un usuario. 
+El procedimiento siguiente crea las tablas para todas las aplicaciones para el mismo usuario (mfpuser) y base de datos (MFPDATA). Se da por supuesto que ya se ha creado una base de datos y un usuario.
 
 1. Ejecute un cliente de línea de mandatos de MySQL con la opción: `-u mfpuser`.
 2. Especifique los mandatos siguientes:
@@ -348,7 +346,7 @@ No está pensada para utilizarse para producción como en una instalación prede
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
 Utilice la Herramienta de configuración del servidor que se proporciona con la instalación de {{ site.data.keys.mf_server }} para crear las tablas de base de datos Oracle.
 
-En el panel Selección de base de datos de la Herramienta de configuración del servidor, seleccione la opción **Oracle Standard o Enterprise Editions, 11g o 12c**. En los siguientes tres paneles, especifique las credenciales de base de datos. 
+En el panel Selección de base de datos de la Herramienta de configuración del servidor, seleccione la opción **Oracle Standard o Enterprise Editions, 11g o 12c**. En los siguientes tres paneles, especifique las credenciales de base de datos.
 
 Cuando especifique el nombre de usuario de Oracle en el panel **Valores adicionales de la base de datos**, debe estar en mayúsculas. Si tiene un usuario de base de datos Oracle (FOO), pero especifica un nombre de usuario con minúsculas (foo), la Herramienta de configuración del servidor lo considerará como otro usuario. A diferencia de otras herramientas para la base de datos Oracle, la Herramienta de configuración del servidor protege el nombre de usuario con relación a la conversión automática a mayúsculas.
 
