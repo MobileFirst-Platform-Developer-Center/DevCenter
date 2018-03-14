@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Utilización de MobileFirst CLI para gestionar artefactos de MobileFirst
-breadcrumb_title: Utilización de MobileFirst CLI
+title: Utilización de la CLI de MobileFirst para gestionar artefactos de MobileFirst
+breadcrumb_title: Using the MobileFirst CLI
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
@@ -155,6 +155,8 @@ Server profile 'mydevserver' added successfully.
 ```
 El mismo mandato en la modalidad directa sería
 
+
+
 ```bash
 mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault
 ```
@@ -192,7 +194,7 @@ mfpdev server add
 
 Siga las solicitudes interactivas para proporcionar un nombre al servidor, el URL de servidor y las credenciales de usuario y contraseña.
   
-Por ejemplo, para añadir una instancia de {{ site.data.keys.mf_server }} que se ejecuta en un servicio de Mobile Foundation Bluemix debería añadir lo siguiente:
+Por ejemplo, para añadir una instancia de {{ site.data.keys.mf_server }} que se ejecuta en un servicio de IBM Cloud de Mobile Foundation debería añadir lo siguiente:
 
 
 ```bash

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Solicitudes de recurso en aplicaciones de cliente
-breadcrumb_title: Solicitudes de recurso
+title: Solicitudes de recursos en aplicaciones cliente
+breadcrumb_title: Resource Requests
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5

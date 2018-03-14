@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Utilización de SSL en adaptadores JavaScript HTTP
-breadcrumb_title: Utilización de SSL
+title: Utilización de SSL en adaptadores JavaScript HTPT
+breadcrumb_title: Using SSL
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
@@ -9,6 +9,8 @@ weight: 1
 <br/>
 El protocolo SSL se puede utilizar en un adaptador HTTP con autenticación simple o mutua para conectarse a los servicios de fondo.   
 SSL proporciona seguridad a nivel de transporte, que es independiente de la autenticación básica. La autenticación básica se puede realizar sobre HTTP o HTTPS.
+
+
 
 1. Establezca el protocolo del URL del adaptador HTTP en <b>https</b> en el archivo adapter.xml. 
 2. Almacene certificados SSL en el almacén de claves de {{ site.data.keys.mf_server }}.  [Consulte configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementación de Direct Update seguro
-breadcrumb_title: Direct Update seguro
+breadcrumb_title: Secure Direct Update
 relevantTo: [cordova]
 weight: 2
 ---

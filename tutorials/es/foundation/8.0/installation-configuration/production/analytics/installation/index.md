@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guía de instalación de MobileFirst Analytics Server
-breadcrumb_title: Guía de instalación
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -220,7 +220,7 @@ Para obtener más información sobre los pasos de instalación iniciales para ad
 
 Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analytics en WebSphere Application Server. Si está instalando los archivos WAR individuales en WebSphere Application Server, siga sólo los pasos del 2 al 7 en el archivo WAR de **analytics-service** una vez que haya desplegado los archivos WAR. El orden de carga de clases no se debe modificar en el archivo WAR de analytics-ui.
 
-1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie. Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
+1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie . Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
 
 2. Seleccione la aplicación **MobileFirst Analytics** desde la lista **Enterprise Applications**.
 

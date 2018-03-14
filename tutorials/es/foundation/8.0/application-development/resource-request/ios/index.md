@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Solicitud de recursos desde aplicaciones de iOS
+title: Solicitud de recursos de aplicaciones iOS
 breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
@@ -267,6 +267,8 @@ Utilice los objetos `response` y `error` para obtener datos recuperados por el a
 ## Para obtener más información
 {: #for-more-information }
 > Para obtener más información sobre WLResourceRequest, [consulte la Referencia de API](../../../api/client-side-api/objc/client/).
+
+
 
 <img alt="Imagen de la aplicación de ejemplo" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## Aplicación de ejemplo

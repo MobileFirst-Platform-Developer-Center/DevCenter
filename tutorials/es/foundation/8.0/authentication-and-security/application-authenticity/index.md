@@ -8,7 +8,7 @@ weight: 9
 ## Visión general
 {: #overview }
 
-Para asegurar la aplicación de manera apropiada, habilite la [comprobación de seguridad](../#security-checks) de autenticidad de aplicación de {{ site.data.keys.product_adj }} predefinida (`appAuthenticity`). Cuando esté habilitada, la verificación valida la autenticidad de la aplicación antes de proporcionarle un servicio. Las aplicaciones en un entorno de producción deberían tener esta característica habilitada. 
+Para asegurar la aplicación de manera apropiada, habilite la [comprobación de seguridad](../#security-checks) de autenticidad de aplicación de {{ site.data.keys.product_adj }} predefinida (`appAuthenticity`). Cuando esté habilitada, la verificación valida la autenticidad de la aplicación antes de proporcionarle un servicio. Las aplicaciones en un entorno de producción deberían tener esta característica habilitada.
 
 Para habilitar la autenticidad de aplicación, puede seguir las instrucciones que se muestran en pantalla en **{{ site.data.keys.mf_console }}** → **[su-applicación]** → **Authenticidad**, o revisar la información siguiente.
 
@@ -61,7 +61,7 @@ Puede configurar la comprobación de seguridad de autenticidad de aplicación pr
 
 - `expirationSec`: Tiene como valor predeterminado 3600 segundos / 1 hora. Defina la duración hasta que la señal de autenticidad caduca.
 
-Después de que se haya completado la verificación de autenticidad, no se vuelve a producir hasta que se caduca la señal en función del valor definido. 
+Después de que se haya completado la verificación de autenticidad, no se vuelve a producir hasta que se caduca la señal en función del valor definido.
 
 #### Para configurar la propiedad `expirationSec`:
 {: #to-configure-the-expirationsec property }
@@ -95,12 +95,12 @@ El algoritmo de la autenticidad de aplicación utiliza los datos y metadatos de 
 
 Es posible restablecer esta huella y proporcionar nuevos datos al algoritmo. Esto puede resultar de utilidad durante el desarrollo (por ejemplo, después de modificar la aplicación en Xcode). Para restablecer la huella, utilice el mandato **restablecer** en la CLI [**mfpadm**](../../administering-apps/using-cli/).
 
-Después de restablecer la huella, la comprobación de seguridad appAuthenticity continua trabajando como lo hacía al principio (esto será completamente transparente para el usuario). 
+Después de restablecer la huella, la comprobación de seguridad appAuthenticity continua trabajando como lo hacía al principio (esto será completamente transparente para el usuario).
 
 ### Tipo de validación
 {: #validation }
 
-De forma predeterminada, cuando la autenticidad de aplicación está habilitada, utiliza el algoritmo de validación **dinámico**. La validación de autenticidad de aplicación dinámica utiliza características específicas de plataformas móviles para determinar la autenticidad de la aplicación. En consecuencia, puede quedar afectado si se introducen cambios no retrocompatibles en el sistema operativo móvil, lo que impide que las aplicaciones auténticas se conecten al servidor. 
+De forma predeterminada, cuando la autenticidad de aplicación está habilitada, utiliza el algoritmo de validación **dinámico**. La validación de autenticidad de aplicación dinámica utiliza características específicas de plataformas móviles para determinar la autenticidad de la aplicación. En consecuencia, puede quedar afectado si se introducen cambios no retrocompatibles en el sistema operativo móvil, lo que impide que las aplicaciones auténticas se conecten al servidor.
 
 Para mitigar estos problemas conocido, está disponible el algoritmo de validación **estático**. Este tipo de validación es menos sensitiva a las modificaciones específicas de OS.
 
