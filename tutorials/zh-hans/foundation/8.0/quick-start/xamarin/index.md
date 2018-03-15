@@ -21,7 +21,7 @@ weight: 6
 #### 先决条件：
 {: #prerequisites }
 * Xamarin Studio
-* *可选*。单机{{ site.data.keys.mf_server }}（[下载]({{site.baseurl}}/downloads)）
+* *可选*。 单机{{ site.data.keys.mf_server }}（[下载]({{site.baseurl}}/downloads)）
 
 ### 1. 启动 {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
@@ -30,7 +30,7 @@ weight: 6
 
 ### 2. 创建应用程序
 {: #2-creating-an-application }
-在浏览器窗口中，通过加载以下 URL 打开 {{ site.data.keys.mf_console }}：`http://your-server-host:server-port/mfpconsole`。如果是本地运行，请使用：[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。用户名/密码为 *admin/admin*。
+在浏览器窗口中，通过加载以下 URL 打开 {{ site.data.keys.mf_console }}：`http://your-server-host:server-port/mfpconsole`。 如果是本地运行，请使用：[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。 用户名/密码为 *admin/admin*。
 
 1. 单击**应用程序**旁的**新建**按钮
     * 选择 **Android** 平台
@@ -72,19 +72,19 @@ weight: 6
            {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null &&  accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -102,18 +102,20 @@ weight: 6
 ### 4. 部署适配器
 {: #4-deploy-an-adapter }
 下载 [此准备好的 .adapter 工件](../javaAdapter.adapter)，然后在 {{ site.data.keys.mf_console }} 中使用 **操作 → 部署适配器** 操作进行部署。
-或者，单击 **适配器** 旁边的 **新建** 按钮。
 
-1. 选择 **操作 → 下载样本** 选项。下载“Hello World”**Java** 适配器样本。
+或者，单击 **适配器** 旁边的 **新建** 按钮。  
+
+1. 选择 **操作 → 下载样本** 选项。 下载“Hello World”**Java** 适配器样本。
 
    > 如果未安装 Maven 和 {{ site.data.keys.mf_cli }}，请遵循屏幕上的 **设置开发环境** 指示信息。
+
 2. 从 **命令行** 窗口中，导航至适配器的 Maven 项目根文件夹并运行以下命令：
 
    ```bash
    mfpdev adapter build
    ```
 
-3. 构建完成后，在 {{ site.data.keys.mf_console }} 中通过 **操作 → 部署适配器** 操作进行部署。适配器可在 **[adapter]/target** 文件夹中找到。
+3. 构建完成后，在 {{ site.data.keys.mf_console }} 中通过 **操作 → 部署适配器** 操作进行部署。 适配器可在 **[adapter]/target** 文件夹中找到。
 
    <img class="gifplayer" alt="部署适配器" src="create-an-adapter.png"/>
 
@@ -122,7 +124,8 @@ weight: 6
 {: #5-testing-the-application }
 1. 在 Xamarin Studio 中，选择 `mfpclient.properties` 文件并使用 {{ site.data.keys.mf_server }} 的正确值来编辑 **protocol**、**host** 和 **port** 属性。
     * 如果使用本地 {{ site.data.keys.mf_server }}，这些值通常是 **http**、**localhost** 和 **9080**。
-    * 如果使用远程 {{ site.data.keys.mf_server }}（在 Bluemix 中），这些值通常是 **https**、**您的服务器地址** 和 **443**。
+    * 如果使用远程 {{ site.data.keys.mf_server }}（在 IBM Cloud 中），这些值通常是 **https**、**您的服务器地址** 和 **443**。
+    * 如果要在 IBM Cloud Private 上使用 Kubernetes 集群并且如果部署的类型为 **NodePort**，那么端口的值通常为 Kubernetes 集群中服务公开的 **NodePort**。
 2. 按 **播放** 按钮。
 
 <br clear="all"/>
@@ -131,7 +134,10 @@ weight: 6
 * 单击 **Ping MobileFirst 服务器** 按钮将显示 **已连接到 MobileFirst 服务器**。
 * 如果应用程序能够连接到 {{ site.data.keys.mf_server }}，那么将使用部署的 Java 适配器进行资源请求调用。
 
-然后，适配器响应将列显在 Xamarin Studio 控制台中。![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](console-output.png)
+然后，适配器响应将列显在 Xamarin Studio 控制台中。
+
+![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](console-output.png)
+
 ## 下一步
 {: #next-steps }
 要详细了解有关在应用程序中使用适配器，如何集成附加服务（如推送通知），使用 {{ site.data.keys.product_adj }} 安全框架及其他内容，请：

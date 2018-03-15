@@ -5,11 +5,11 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: 下载 PreemptiveLogin 项目
+  - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80
-  - name: 下载 RememberMe 项目
+  - name: Download RememberMe project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80
-  - name: 下载 SecurityCheck Maven 项目
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -69,6 +69,8 @@ public void login(JSONObject credentials){
 
 > **注：**
 >`WLAuthorizationManager` `login()` API 具有自己的 `onSuccess` 和 `onFailure` 方法，同时**也**会调用相关验证问题处理程序的 `handleSuccess` 或 `handleFailure` 方法。
+
+
 
 ## 获取访问令牌
 {: #obtaining-an-access-token }

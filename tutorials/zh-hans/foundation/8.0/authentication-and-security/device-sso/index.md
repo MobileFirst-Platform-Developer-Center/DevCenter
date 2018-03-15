@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 配置设备单点登录 (SSO)
-breadcrumb_title: 设备 SSO
+breadcrumb_title: Device SSO
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---

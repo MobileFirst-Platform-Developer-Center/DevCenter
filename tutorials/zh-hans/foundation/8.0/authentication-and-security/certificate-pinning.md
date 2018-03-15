@@ -55,6 +55,8 @@ WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
 多个证书：
 
+
+
 语法：
 pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
 示例：

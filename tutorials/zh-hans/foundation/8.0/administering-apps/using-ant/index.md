@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 通过 Ant 管理应用程序
-breadcrumb_title: 使用 Ant 管理
+breadcrumb_title: Administrating using Ant
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
