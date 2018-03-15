@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 管理警报
-breadcrumb_title: 警报
+breadcrumb_title: Alerts
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

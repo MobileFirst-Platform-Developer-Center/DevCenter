@@ -5,9 +5,9 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: 下载 Windows 8.1 Universal 项目
+  - name: Download Windows 8.1 Universal Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: 下载 Windows 10 UWP 项目
+  - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -110,8 +110,8 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Opt
 if (Response.Success == true)
 {
     // Successfully registered
-} else {
-    // Registration failed with error
+     } else {
+         // Registration failed with error
 }
 ```
 
@@ -192,8 +192,8 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice()
 if (Response.Success == true)
 {
     // Successfully registered
-} else {
-    // Registration failed with error
+     } else {
+         // Registration failed with error
 }
 ```
 

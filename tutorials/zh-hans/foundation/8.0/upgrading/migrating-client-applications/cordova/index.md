@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 迁移现有的 Cordova 和混合应用程序
-breadcrumb_title: Cordova 和混合
+breadcrumb_title: Cordova and hybrid
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -114,7 +114,7 @@ weight: 1
    项目新内容所在的文件夹的可选名称。
    此文件夹位于 *destination_directory* 文件夹中，包含 Cordova 应用程序的所有信息。如果未指定此选项，那么缺省名称为 `app_name-app_id-version`。
    <br/>
-   与 client 命令一起使用时，迁移辅助工具会完成以下操作：  
+      与 client 命令一起使用时，迁移辅助工具会完成以下操作：  
         * 识别现有 IBM MobileFirst Platform Foundation 应用程序中在 V8.0 中已移除、不推荐使用或更改的 API。
         * 根据初始应用程序的结构创建 Cordova 结构。
         * 视情况复制或添加以下项：

@@ -49,7 +49,7 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 或更高版本
 * 您可以图形方式运行 Installation Manager，但要部署服务器，需要跳过本教程中使用 Ant 任务进行安装的命令行部分。
 * 不能配置服务器场。 嵌入式 Derby 数据库不支持从多个服务器进行访问。 要配置服务器场，需要 DB2、MySQL 或 Oracle。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 
 * [安装 IBM Installation Manager](#installing-ibm-installation-manager)
@@ -117,7 +117,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 
         如果将 {{ site.data.keys.mf_server }} 的 {{ site.data.keys.product }} V8.0 .zip 文件解压缩到 **mfp\_installer\_directory** 文件夹中，那么存储库文件位于 **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**。
 
-        您还可能想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。 确保输入修订包的存储库。 如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** 中找到存储库文件。
+        您可能还想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。 确保输入修订包的存储库。 如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** 中找到存储库文件。
     
         > **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。 修订包是累积安装程序，需要安装基本版本的存储库。
     * 选择该文件，然后单击**确定**。
@@ -198,7 +198,8 @@ Server Configuration Tool 不会部署以下 {{ site.data.keys.product_adj }} �
 {{ site.data.keys.mf_analytics }}
 由于内存需求较高，因此通常与 {{ site.data.keys.mf_server }} 部署在不同的服务器集上。 {{ site.data.keys.mf_analytics }} 可手动安装或通过 Ant 任务来安装。 如果已安装，可以在 Server Configuration Tool 中输入其 URL、用户名和密码来将数据发送到其中。 然后，Server Configuration Tool 会将 {{ site.data.keys.product_adj }} 应用配置为向 {{ site.data.keys.mf_analytics }} 发送数据。 
 
-#### Application Center
+#### Application
+Center
 {: #application-center }
 此应用程序可用于在内部向使用移动应用程序的员工分发这些应用程序，或者用于测试。 它独立于 {{ site.data.keys.mf_server }}，并且无需与 {{ site.data.keys.mf_server }} 一起安装。
     
@@ -316,8 +317,8 @@ QUIT
 
     此设置避免了破坏某些 Liberty 版本上的运行时组件和管理服务的启动顺序的超时问题。 在服务器日志文件中，缺少此语句可能导致出现以下错误：
     
-    > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out 
-FWLSE3000E: A server error was detected. 
+    > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out
+FWLSE3000E: A server error was detected.
     > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
 
 #### 应用程序声明
@@ -483,7 +484,7 @@ Liberty Profile jvm.options 文件已修改。 定义了一个属性 (com.ibm.ws
     * 使用以下命令导出服务器 mfp1 的缺省证书：`keytool -exportcert
 -keystore key.jks -alias default -file mfp1.cert`。
         * 在 **WLP\_USER\_DIR/servers/mfp2/resources/security** 中，使用以下命令导出服务器 mfp2 的缺省证书：`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`。
-    * 在同一个目录中，使用以下命令导入服务器 mfp1 的证书：`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。 服务器 mfp1 的证书会导入服务器 mfp2 的米密钥库，以使服务器 mfp2 能够信任到服务器 mfp1 的 HTTPS 连接。 系统会要求您确认您信任此证书。
+    * 在同一个目录中，使用以下命令导入服务器 mfp1 的证书：`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。 服务器 mfp1 的证书会导入服务器 mfp2 的密钥库，以使服务器 mfp2 能够信任到服务器 mfp1 的 HTTPS 连接。 系统会要求您确认您信任此证书。
     * 在 **WLP_USER_DIR/servers/mfp1/resources/security** 中，使用以下命令导入服务器 mfp2 的证书：`keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`。 执行此步骤后，即可在两台服务器之间建立 HTTPS 连接。
 
 ## 测试场，并在 {{ site.data.keys.mf_console }} 中查看更改

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 配置日志过滤器
-breadcrumb_title: 日志过滤器
+breadcrumb_title: Log Filters
 relevantTo: [ios,android,javascript]
 weight: 2
 ---

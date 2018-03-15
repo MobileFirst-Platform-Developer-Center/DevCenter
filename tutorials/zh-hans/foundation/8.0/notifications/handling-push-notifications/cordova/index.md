@@ -4,7 +4,7 @@ title: 在 Cordova 中处理推送通知
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 4
 ---

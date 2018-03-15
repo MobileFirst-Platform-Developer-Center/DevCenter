@@ -67,7 +67,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
     在后续步骤中，解压缩安装程序的目录称为 **liberty\_repository\_dir**。 其中包含 **repository.config** 文件或 **diskTag.inf** 等文件。
 
 3. 确定要安装 Liberty 概要文件的目录。 在后续步骤中此目录称为 liberty_install_dir。
-4. 启动命令行，并转至 **installation\_manager\_install\_dir/tools/eclipse/**。
+4. 启动命令行，并转至 **installation\manager\ install\dir/tools/eclipse/**。
 5. 如果查看后接受此许可协议，即可安装 Liberty。
     
     输入命令：**imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
@@ -107,7 +107,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 2. 将下载的 {{ site.data.keys.mf_server }} 安装程序的压缩文件解压到文件夹中。
 
     在后续步骤中，解压缩安装程序的目录称为 **mfp\_repository\_dir**。 其中包含 **MobileFirst\_Platform\_Server/disk1** 文件夹。
-3. 启动命令行，并转至 **installation\_manager\_install\_dir/tools/eclipse/**。
+3. 启动命令行，并转至 **installation\manager\ install\dir/tools/eclipse/**。
 4. 如果在步骤 1 中查看许可协议后表示接受，即可安装 {{ site.data.keys.mf_server }}。
 
     输入命令：`imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense`

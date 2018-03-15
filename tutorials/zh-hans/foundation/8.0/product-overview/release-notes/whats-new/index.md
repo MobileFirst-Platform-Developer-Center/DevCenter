@@ -274,11 +274,11 @@ Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product 
 
                 <p>您上载到服务器的开发工件包含适配器及其配置、应用程序的安全配置、推送通知证书和日志过滤器。</p>
 
-                <h3>在 {{ site.data.keys.product }} 上运行在 IBM Bluemix 上创建的应用程序</h3>
-                <p>开发人员可以迁移 IBM Bluemix 应用程序以在 {{ site.data.keys.product }} 上运行。 迁移需要对您的客户机应用程序进行配置更改以与 {{ site.data.keys.product }} API 匹配。</p>
+                <h3>在 {{ site.data.keys.product }} 上运行在 IBM Cloud 上创建的应用程序</h3>
+                <p>开发人员可以迁移 IBM Cloud 应用程序以在 {{ site.data.keys.product }} 上运行。迁移需要对您的客户机应用程序进行配置更改以与 {{ site.data.keys.product }} API 匹配。</p>
 
-                <h3>{{ site.data.keys.product }} 在 IBM Bluemix 上用作服务</h3>
-                <p>您现在可以在 IBM Bluemix 上使用 {{ site.data.keys.mf_bm_full }} 服务来创建和运行企业移动应用程序。</p>
+                <h3>{{ site.data.keys.product }} 在 IBM Cloud 上用作服务</h3>
+                <p>您现在可以在 IBM Cloud 上使用 {{ site.data.keys.mf_bm_full }} 服务来创建和运行企业移动应用程序。</p>
 
                 <h3>无 .wlapp 文件</h3>
                 <p>在先前版本中，通过上载 <b>.wlapp</b> 文件将应用程序部署到 {{ site.data.keys.mf_server }} 中。 该文件包含用于描述应用程序以及（如果是混合应用程序）所需 Web 资源的数据。 在 V8.0.0 中，不再使用 <b>.wlapp</b> 文件：</p>
@@ -313,7 +313,7 @@ Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product 
                 <p>JAX-RS 2.0 引入了新的服务器端功能：服务器端异步 HTTP、过滤器和拦截器。  适配器现在可以利用这些新功能。</p>
 
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
-                <p><a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage 站点</a>站点上提供了针对 V8.0.0 发布的 {{ site.data.keys.product }} on IBM Containers。 此版本的 {{ site.data.keys.product }} on IBM Containers 可随时用于生产环境中，并支持 IBM Bluemix 上的企业 dashDB™ 事务数据库。</p>
+                <p><a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage 站点</a>站点上提供了针对 V8.0.0 发布的 {{ site.data.keys.product }} on IBM Containers。 此版本的 {{ site.data.keys.product }} on IBM Containers 可随时用于生产环境中，并支持 IBM Cloud 上的企业 dashDB™ 事务数据库。</p>
 
                 <p><b>注：</b>请参阅“部署 {{ site.data.keys.product }} on IBM Containers 的先决条件”。</p>
 
@@ -474,7 +474,7 @@ Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product 
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>在 Bluemix（基于容器）中现在可通过 BYOL 脚本支持 {{ site.data.keys.mf_app_center }}。</p>
+                <p>在 IBM Cloud（基于容器）中现在可通过 BYOL 脚本支持 {{ site.data.keys.mf_app_center }}。</p>
             </div>
         </div>
     </div>

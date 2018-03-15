@@ -293,7 +293,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用
 | `WL.Client.transmitEvent(event, immediate)`、`WL.Client.purgeEventTransmissionBuffer()`、`WL.Client.setEventTransmissionPolicy(policy)` | 为接收这些事件的通知创建定制适配器。 |
 | `WL.Device.getContext()`、`WL.Device.startAcquisition(policy, triggers, onFailure)`、`WL.Device.stopAcquisition()`、`WL.Device.Wifi`、`WL.Device.Geo.Profiles`、`WL.Geo` | 使用本机 API 或第三方 Cordova 插件进行地理定位。 |
 | `WL.Client.makeRequest (url, options)` | 创建提供同一功能的定制适配器。 |
-| `WLDevice.getID(options)` | 使用提供此功能的 Cordova 插件。 **注：**供您参考，来自 **cordova-plugin-device** 插件的 `device.uuid` 提供此功能。|
+| `WLDevice.getID(options)` | 使用提供此功能的 Cordova 插件。 **注：**供您参考，来自 **cordova-plugin-device** 插件的 `device.uuid` 提供此功能。 |
 | `WL.Device.getFriendlyName()` | 使用 `WL.Client.getDeviceDisplayName` |
 | `WL.Device.setFriendlyName()` | 使用 `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | 使用提供此功能的 Cordova 插件。 **注：**供您参考：**cordova-plugin-network-information** 插件提供此功能。 |
