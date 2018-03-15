@@ -8,29 +8,7 @@ print_pdf: false
 indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="{{site.baseurl}}/css/bulma-min.css" type="text/css" rel="stylesheet">-->
-    <style>
-    .list-group > .list-group-item:first-child {
-      border-radius: 4px 4px 0 0;
-    }
-    .list-group > .list-group-item:last-child {
-      border-radius: 0 0 4px 4px;
-    }
-
-    .list-group > .list-group-item.is-primary {
-      background-color: hsl(171, 100%, 41%);
-      color: #fff;
-     }
-    .list-group > .list-group-item.is-info {
-      background-color: hsl(217, 71%, 53%);
-      color: #fff;
-    }
-    </style>
-</head>
-<br/>
+<br>
 以下のチュートリアルに従って、アプリケーションを開発します。それには、開発環境のセットアップ、製品の体験、および {{ site.data.keys.product }} 8.0 オファリングと統合することによる価値の追加が含まれます。<br/><br/>
 
 <div id="container">
@@ -38,7 +16,7 @@ indexed: false
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
             <form style="margin: 0 0 10px 15px" role="textbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
-                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象..." name="q"/>
+                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象..." name="q">
                 </div>
             </form>
             <div class="col-md-3">
@@ -80,625 +58,371 @@ indexed: false
 <hr />
 
 <div id="tutorials-list">
-    <div class="content">
     <h2><a href="../product-overview/">製品の概要</a></h2>
-    <h4><i>    {{ site.data.keys.product }} オファリングについて説明します。
+    {{ site.data.keys.product }} オファリングについて説明します。
 
-    </i></h4>
-
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../product-overview/capabilities">主な機能</a>
-        <a class="panel-block list-group-item" href="../product-overview/components">製品コンポーネント&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../product-overview/components/server">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_server }}</a>
-        <a class="panel-block list-group-item" href="../product-overview/components/console">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_console }}</a>
-        <a class="panel-block list-group-item" href="../product-overview/requirements">システム要件</a>
-        <a class="panel-block list-group-item" href="../product-overview/licensing">{{ site.data.keys.mf_server }} のライセンス</a>
-        <a class="panel-block list-group-item" href="../product-overview/features-matrix">フィーチャーおよびプラットフォームのマトリックス</a>
-        <a class="panel-block list-group-item" href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー・フィーチャー</a>
-        <a class="panel-block list-group-item" href="../product-overview/release-notes">リリース・ノート</a>
-
-    </div>
-  </div>
-  <!--  <ul>
-        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
-        <li><a href="../product-overview/components">Product Components</a>
+    <ul>
+        <li><a href="../product-overview/capabilities">主な機能</a></li>
+        <li><a href="../product-overview/components">製品のコンポーネント</a>
             <ul>
                 <li><a href="../product-overview/components/server">{{ site.data.keys.mf_server }}</a></li>
                 <li><a href="../product-overview/components/console">{{ site.data.keys.mf_console }}</a></li>
             </ul>
         </li>
-        <li><a href="../product-overview/requirements">System Requirements</a></li>
-        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
-        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
-        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
-        <li><a href="../product-overview/release-notes">Release Notes</a></li>
-    </ul>-->
-    <div class="content">
+        <li><a href="../product-overview/requirements">システム要件</a></li>
+        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }} のライセンス</a></li>
+        <li><a href="../product-overview/features-matrix">機能とプラットフォームのマトリックス</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー機能</a></li>
+        <li><a href="../product-overview/release-notes">リリース・ノート</a></li>
+    </ul>
+
     <h2><a href="../installation-configuration/">インストールおよび構成</a></h2>
-    <h4><i>    {{ site.data.keys.product_full }} で作業するための開発環境または実稼働環境をセットアップします。
+    {{ site.data.keys.product_full }} で作業するための開発環境または実稼働環境をセットアップします。
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../installation-configuration/development">開発環境のセットアップ&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.product_adj }} 環境&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/installation-guide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インストール・ガイド</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eclipse での {{ site.data.keys.mf_server }} の使用</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova 環境</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS 環境</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android 環境</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows 8.1 Universal 環境および Windows 10 UWP 環境</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/web/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web 環境</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production">実稼働環境のセットアップ&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/tutorials/graphical-mode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/tutorials/command-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コマンド・ラインからの {{ site.data.keys.mf_server }} のインストール</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/installation-manager">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBM Installation Manager の実行</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/databases">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;データベースのセットアップ</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/topologies">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トポロジーおよびネットワーク・フロー</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/appserver">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_server }} のインストール</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/server-configuration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_server }} の構成</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/token-licensing">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ライセンス・トークンのためのインストールおよび構成</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/analytics">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_analytics_server }} のインストールおよび構成</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/appcenter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application Center のインストールおよび構成</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/installation-reference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;インストールに関する参情報照
-</a>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/pure-application">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBM PureApplication System への {{ site.data.keys.mf_server }} のデプロイ</a>
-    </div>
-  </div>
-  <!--  <ul>
-        <li><a href="../installation-configuration/development">Setting up the development environment</a>
-            <ul>
-                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} environment</a>
-                    <ul>
-                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">Installation Guide</a></li>
-                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">Using {{ site.data.keys.mf_server }} in Eclipse</a></li>
-                    </ul>
-                </li>
-                <li><a href="../installation-configuration/development/cordova/">Cordova environment</a></li>
-                <li><a href="../installation-configuration/development/ios/">iOS environment</a></li>
-                <li><a href="../installation-configuration/development/android/">Android environment</a></li>
-                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal and Windows 10 UWP environments</a></li>
-                <li><a href="../installation-configuration/development/web/">Web environment</a></li>
-            </ul>
-        </li>
-        <li><a href="../installation-configuration/production">Setting up the production environment</a>
-            <ul>
-                <li>Production installation tutorials
-                    <ul>
-                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">Installing {{ site.data.keys.mf_server }} in graphical mode</a></li>
-                        <li><a href="../installation-configuration/production/tutorials/command-line">Installing {{ site.data.keys.mf_server }} From Command Line</a></li>
-                    </ul>
-                </li>
-                <li><a href="../installation-configuration/production/installation-manager">Running the IBM Installation Manager</a></li>
-                <li><a href="../installation-configuration/production/databases">Setting Up Databases</a></li>
-                <li><a href="../installation-configuration/production/topologies">Topologies and Network flows</a></li>
-                <li><a href="../installation-configuration/production/appserver">Installing the {{ site.data.keys.mf_server }}</a></li>
-                <li><a href="../installation-configuration/production/server-configuration">Configuring the {{ site.data.keys.mf_server }}</a></li>
-                <li><a href="../installation-configuration/production/token-licensing">Installing and configuring for token licensing</a></li>
-                <li><a href="../installation-configuration/production/">Installing and configuring the {{ site.data.keys.mf_analytics_server }}</a></li>
-                <li><a href="../installation-configuration/production/appcenter">Installing and configuring the Application Center</a></li>
-                <li><a href="../installation-configuration/production/installation-reference">Installation Reference</a></li>
-            </ul>
-        </li>
-        <li><a href="../installation-configuration/production/pure-application">Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</a></li>
-    </ul>-->
-    <div class="content">
-    <h2><a href="../administering-apps/">アプリケーションの管理</a></h2>
-    <h4><i>{{ site.data.keys.product_full }} では、開発や実稼働で {{ site.data.keys.product_adj }} アプリケーションを管理するいくつかの方法を提供します。</i></h4>
-
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../administering-apps/deployment">テスト環境および実稼働環境へのアプリケーションのデプロイ</a>
-        <a class="panel-block list-group-item" href="../administering-apps/using-console/">{{ site.data.keys.mf_console }} を使用したアプリケーションの管理</a>
-        <a class="panel-block list-group-item" href="../administering-apps/using-ant/">Ant を使用したアプリケーションの管理</a>
-        <a class="panel-block list-group-item" href="../administering-apps/using-cli/">コマンド・ラインを使用したアプリケーションの管理</a>
-        <a class="panel-block list-group-item" href="../administering-apps/federal/">{{ site.data.keys.product }} における連邦規格サポート</a>
-        <a class="panel-block list-group-item" href="../administering-apps/license-tracking/">ライセンス・トラッキング</a>
-    </div>
-  </div>
-<!--    <ul>
-        <li><a href="../administering-apps/deployment">Deploying applications to test and production environments</a></li>
-        <li><a href="../administering-apps/using-console/">Administrating applications through the {{ site.data.keys.mf_console }}</a></li>
-        <li><a href="../administering-apps/using-ant/">Administrating applications through Ant</a></li>
-        <li><a href="../administering-apps/using-cli/">Administrating applications through the Command-line</a></li>
-        <li><a href="../administering-apps/federal/">Federal standards support in {{ site.data.keys.product }}</a></li>
-        <li><a href="../administering-apps/license-tracking/">License tracking</a></li>
-    </ul>-->
-    <div class="content">
-    <h2 id="upgrading_to_current_version"><a href="../upgrading/">{{ site.data.keys.product_full }} {{ site.data.keys.product_version }} へのアップグレード</a></h2>
-    <h4><i>    {{ site.data.keys.product_adj }} アプリケーションのマイグレーションを準備および計画するために、製品の変更について説明します。
-
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../upgrading/">以前のリリースからのマイグレーション&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../upgrading/migration-cookbook">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;マイグレーション・クックブック</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;クライアント・アプリケーションのマイグレーション&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既存の Cordova アプリケーションとハイブリッド・アプリケーションのマイグレーション</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既存のネイティブ iOS アプリケーションのマイグレーション</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既存のネイティブ Android アプリケーションのマイグレーション</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既存のネイティブ Windows アプリケーションのマイグレーション</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-security">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;認証およびセキュリティーの概念のマイグレーション</a> <a class="panel-block list-group-item" href="../upgrading/migrating-adapters">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既存のアダプターのマイグレーション</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-push-notifications">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プッシュ通知のマイグレーション</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-data">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cloudant にモバイル・データを保管するアプリケーションのマイグレーション</a>
-
-
-    </div>
-  </div>
-  <!--
     <ul>
-        <li><a href="../upgrading/migration-cookbook">Migration Cookbook</a></li>
-        <li><a href="../upgrading/">Migrating from earlier releases</a>
+        <li><a href="../installation-configuration/development">開発環境のセットアップ</a>
             <ul>
-                <li><a href="../upgrading/migrating-client-applications">Migrating client application</a>
+                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 環境</a>
                     <ul>
-                        <li><a href="../upgrading/migrating-client-applications/cordova">Migrating existing Cordova and Hybrid applications</a></li>
-                        <li><a href="../upgrading/migrating-client-applications/ios">Migrating existing native iOS applications</a></li>
-                        <li><a href="../upgrading/migrating-client-applications/android">Migrating existing native Android applications</a></li>
-                        <li><a href="../upgrading/migrating-client-applications/windows">Migrating existing native Windows applications</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">インストール・ガイド</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">Eclipse での {{ site.data.keys.mf_server }} の使用</a></li>
                     </ul>
                 </li>
-                <li><a href="../upgrading/migrating-adapters">Migrating existing adapters to work under {{ site.data.keys.mf_server }} v8.0</a></li>
-                <li><a href="../upgrading/migrating-push-notifications">Migrating push notifications</a></li>
-                <li><a href="../upgrading/migrating-data">Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK</a></li>
+                <li><a href="../installation-configuration/development/cordova/">Cordova 環境</a></li>
+                <li><a href="../installation-configuration/development/ios/">iOS 環境</a></li>
+                <li><a href="../installation-configuration/development/android/">Android 環境</a></li>
+                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal 環境および Windows 10 UWP 環境</a></li>
+                <li><a href="../installation-configuration/development/web/">Web 環境</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production">実稼働環境のセットアップ</a>
+            <ul>
+                <li>実稼働へのインストールのチュートリアル
+                    <ul>
+                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a></li>
+                        <li><a href="../installation-configuration/production/tutorials/command-line">コマンド・ラインからの {{ site.data.keys.mf_server }} のインストール</a></li>
+                    </ul>
+                </li>
+                <li><a href="../installation-configuration/production/installation-manager">IBM Installation Manager の実行</a></li>
+                <li><a href="../installation-configuration/production/databases">データベースのセットアップ</a></li>
+                <li><a href="../installation-configuration/production/topologies">トポロジーおよびネットワーク・フロー</a></li>
+                <li><a href="../installation-configuration/production/appserver">{{ site.data.keys.mf_server }} のインストール</a></li>
+                <li><a href="../installation-configuration/production/server-configuration">{{ site.data.keys.mf_server }} の構成</a></li>
+                <li><a href="../installation-configuration/production/token-licensing">トークン・ライセンスのためのインストールおよび構成</a></li>
+                <li><a href="../installation-configuration/production/">{{ site.data.keys.mf_analytics_server }} のインストールおよび構成</a></li>
+                <li><a href="../installation-configuration/production/appcenter">Application Center のインストールおよび構成</a></li>
+                <li><a href="../installation-configuration/production/installation-reference">インストールの参照情報</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production/pure-application">IBM PureApplication System への {{ site.data.keys.mf_server }} のデプロイ</a></li>
+    </ul>
+
+    <h2><a href="../administering-apps/">アプリケーションの管理</a></h2>
+    {{ site.data.keys.product_full }} では、開発や実稼働で {{ site.data.keys.product_adj }} アプリケーションを管理するいくつかの方法を提供します。
+
+    <ul>
+        <li><a href="../administering-apps/deployment">テスト環境および実稼働環境へのアプリケーションのデプロイ</a></li>
+        <li><a href="../administering-apps/using-console/">{{ site.data.keys.mf_console }} を使用したアプリケーションの管理</a></li>
+        <li><a href="../administering-apps/using-ant/">Ant を使用したアプリケーションの管理</a></li>
+        <li><a href="../administering-apps/using-cli/">コマンド・ラインを使用したアプリケーションの管理</a></li>
+        <li><a href="../administering-apps/federal/">{{ site.data.keys.product }} での連邦標準サポート</a></li>
+        <li><a href="../administering-apps/license-tracking/">ライセンス・トラッキング</a></li>
+    </ul>
+
+    <h2 id="upgrading_to_current_version"><a href="../upgrading/">{{ site.data.keys.product_full }} {{ site.data.keys.product_version }} へのアップグレード</a></h2>
+    {{ site.data.keys.product_adj }} アプリケーションのマイグレーションを準備および計画するために、製品の変更について説明します。
+
+    <ul>
+        <li><a href="../upgrading/migration-cookbook">マイグレーションのクックブック</a></li>
+        <li><a href="../upgrading/">以前のリリースからのマイグレーション</a>
+            <ul>
+                <li><a href="../upgrading/migrating-client-applications">クライアント・アプリケーションのマイグレーション</a>
+                    <ul>
+                        <li><a href="../upgrading/migrating-client-applications/cordova">既存の Cordova アプリケーションおよびハイブリッド・アプリケーションのマイグレーション</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/ios">既存のネイティブ iOS アプリケーションのマイグレーション</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/android">既存のネイティブ Android アプリケーションのマイグレーション</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/windows">既存のネイティブ Windows アプリケーションのマイグレーション</a></li>
+                    </ul>
+                </li>
+                <li><a href="../upgrading/migrating-adapters">{{ site.data.keys.mf_server }} V8.0 で動作するようにするための既存のアダプターのマイグレーション</a></li>
+                <li><a href="../upgrading/migrating-push-notifications">プッシュ通知のマイグレーション</a></li>
+                <li><a href="../upgrading/migrating-data">IMFData または Cloudant SDK を使用して Cloudant にモバイル・データを保管するアプリケーションのマイグレーション</a></li>
             </ul>
         </li>
     </ul>
-  -->
-    <hr id="start-here"/>
-    <div class="content">
-    <h2><a href="../quick-start/">クイック・スタート</a></h2>
-    <h4><i>{{ site.data.keys.product }} を素早く開始します。</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../quick-start/cordova/">Cordova でのクイック・スタート</a>
-        <a class="panel-block list-group-item" href="../quick-start/ios/">iOS でのクイック・スタート</a>
-        <a class="panel-block list-group-item" href="../quick-start/android/">Android でのクイック・スタート</a>
-        <a class="panel-block list-group-item" href="../quick-start/windows-8-10/">Windows 8.1 Universal および Windows 10 UWP でのクイック・スタート</a>
-        <a class="panel-block list-group-item" href="../quick-start/web/">Web アプリケーションでのクイック・スタート</a>
-        <a class="panel-block list-group-item" href="../quick-start/xamarin/">Xamarin でのクイック・スタート</a>
-    </div>
-  </div>
-  <!--  <ul>
-        <li><a href="../quick-start/cordova/">Quick Start with Cordova</a></li>
-        <li><a href="../quick-start/ios/">Quick Start with iOS</a></li>
-        <li><a href="../quick-start/android/">Quick Start with Android</a></li>
-        <li><a href="../quick-start/windows-8-10/">Quick Start with Windows 8.1 Universal and Windows 10 UWP</a></li>
-        <li><a href="../quick-start/web/">Quick Start with Web app</a></li>
-        <li><a href="../quick-start/xamarin/">Quick Start with Xamarin</a></li>
-    </ul>-->
-    <div class="content">
-    <h2><a href="../api/">API リファレンス</a></h2>
-    <h4><i>使用可能な API について説明します。</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../api/client-side-api/">MobileFirst クライアント・サイド API</a> <a class="panel-block list-group-item" href="../api/server-side-api/">MobileFirst サーバー・サイド API</a>
-        <a class="panel-block list-group-item" href="../api/java-token-validator/">MobileFirst Java Token Validator API</a>
-        <a class="panel-block list-group-item" href="../api/rest/admin-apis/">MobileFirst Server 管理サービス用の REST API</a>
-        <a class="panel-block list-group-item" href="../api/rest/push-apis/">MobileFirst Server プッシュ・サービス用の REST API</a>
-        <a class="panel-block list-group-item" href="../api/rest/runtime/">MobileFirst ランタイム用の REST API</a>
-        <a class="panel-block list-group-item" href="../api/rest/analytics-logger/">MobileFirst Analytics およびロガー用の REST API</a>
-    </div>
-  </div>
-  <!--  <ul>
-        <li><a href="../api/client-side-api/">MobileFirst client-side API</a></li>
-        <li><a href="../api/server-side-api/">MobileFirst server-side API</a></li>
-        <li><a href="../api/java-token-validator/">MobileFirst Java Token Validator API</a></li>
-        <li><a href="../api/rest/admin-apis/">REST API for the MobileFirst Server administration service</a></li>
-        <li><a href="../api/rest/push-apis/">REST API for the MobileFirst Server push service</a></li>
-        <li><a href="../api/rest/runtime/">REST API for the MobileFirst runtime</a></li>
-        <li><a href="../api/rest/analytics-logger/">REST API for MobileFirst Analytics and Logger</a></li>
-    </ul>-->
-    <div class="content">
-    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK の追加</a></h2>
-    <h4><i>    {{ site.data.keys.product }} SDK を Cordova、またはネイティブ iOS、Android、Windows 8.1 Universal、Windows 10 UWP のアプリケーションに追加します。
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../application-development/sdk/cordova/">Cordova アプリケーションへの {{ site.data.keys.product }} SDK の追加</a> <a class="panel-block list-group-item" href="../application-development/sdk/ios/">iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加</a>
-        <a class="panel-block list-group-item" href="../application-development/sdk/android/">Android アプリケーションへの {{ site.data.keys.product }} SDK の追加</a>
-        <a class="panel-block list-group-item" href="../application-development/sdk/windows-8-10/">Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションへの {{ site.data.keys.product }} SDK の追加</a>
-        <a class="panel-block list-group-item" href="../application-development/sdk/web/">Web アプリケーションへの {{ site.data.keys.product }} SDK の追加</a> <a class="panel-block list-group-item" href="../application-development/sdk/xamarin/">Xamarin アプリケーションへの {{ site.data.keys.product }} SDK の追加</a>
-    </div>
-  </div>
-  <!--  <ul>
-        <li><a href="../application-development/sdk/cordova/">Adding the {{ site.data.keys.product }} SDK to Cordova applications</a></li>
-        <li><a href="../application-development/sdk/ios/">Adding the {{ site.data.keys.product }} SDK to iOS applications</a></li>
-        <li><a href="../application-development/sdk/android/">Adding the {{ site.data.keys.product }} SDK to Android applications</a></li>
-        <li><a href="../application-development/sdk/windows-8-10/">Adding the {{ site.data.keys.product }} SDK to Windows 8.1 Universal and Windows 10 UWP applications</a></li>
-        <li><a href="../application-development/sdk/web/">Adding the {{ site.data.keys.product }} SDK to Web applications</a></li>
-        <li><a href="../application-development/sdk/xamarin/">Adding the {{ site.data.keys.product }} SDK to Xamarin applications</a></li>
-    </ul> -->
-    <div class="content">
+    <hr id="start-here"/>
+
+    <h2><a href="../quick-start/">クイック・スタート</a></h2>
+    {{ site.data.keys.product }} の感触をつかみます。
+
+    <ul>
+        <li><a href="../quick-start/cordova/">Cordova でのクイック・スタート</a></li>
+        <li><a href="../quick-start/ios/">iOS でのクイック・スタート</a></li>
+        <li><a href="../quick-start/android/">Android でのクイック・スタート</a></li>
+        <li><a href="../quick-start/windows-8-10/">Windows 8.1 Universal および Windows 10 UWP でのクイック・スタート</a></li>
+        <li><a href="../quick-start/web/">Web アプリケーションでのクイック・スタート</a></li>
+        <li><a href="../quick-start/xamarin/">Xamarin でのクイック・スタート</a></li>
+    </ul>
+
+    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK の追加</a></h2>
+    {{ site.data.keys.product }} SDK を Cordova、またはネイティブ iOS、Android、Windows 8.1 Universal、Windows 10 UWP のアプリケーションに追加します。
+
+    <ul>
+        <li><a href="../application-development/sdk/cordova/">{{ site.data.keys.product }} SDK の Cordova アプリケーションへの追加</a></li>
+        <li><a href="../application-development/sdk/ios/">{{ site.data.keys.product }} SDK の iOS アプリケーションへの追加</a></li>
+        <li><a href="../application-development/sdk/android/">{{ site.data.keys.product }} SDK の Android アプリケーションへの追加</a></li>
+        <li><a href="../application-development/sdk/windows-8-10/">{{ site.data.keys.product }} SDK の Windows 8.1 Universal および Windows 10 UWP アプリケーションへの追加</a></li>
+        <li><a href="../application-development/sdk/web/">{{ site.data.keys.product }} SDK の Web アプリケーションへの追加</a></li>
+        <li><a href="../application-development/sdk/xamarin/">{{ site.data.keys.product }} SDK の Xamarin アプリケーションへの追加</a></li>
+    </ul>
+
     <hr id="get-sdk-and-apis"/>
 
     <h2><a href="../application-development">アプリケーションの開発</a></h2>
-    <h4><i>    以下の {{ site.data.keys.product_adj }} の API の使用について説明します。ダイレクト・アップデート、JSONStore、WLResourceRequest、クライアント・サイド・トランスレーション、アプリケーションのデバッグ、{{ site.data.keys.mf_cli }}、その他
+    以下の {{ site.data.keys.product_adj }} の API の使用について説明します。ダイレクト・アップデート、JSONStore、WLResourceRequest、クライアント・サイド・トランスレーション、アプリケーションのデバッグ、{{ site.data.keys.mf_cli }}、その他
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../application-development/cordova-apps/">Cordova アプリケーションでの {{ site.data.keys.product }} SDK 開発&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../application-development/cordova-apps/adding-images-and-icons/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加</a>
-        <a class="panel-block list-group-item" href="../application-development/cordova-apps/securing-apps/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova アプリケーションの保護</a>
-        <a class="panel-block list-group-item" href="../application-development/cordova-apps/developing-ui/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova アプリケーションの UI の開発</a>
-        <a class="panel-block list-group-item" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理</a>
-        <a class="panel-block list-group-item" href="../application-development/using-mobilefirst-cli-in-eclipse/">Eclipse での {{ site.data.keys.mf_cli }} の使用</a>
-
-        <a class="panel-block list-group-item" href="../application-development/resource-request/">クライアント・アプリケーションからのリソース要求&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../application-development/resource-request/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript (Cordova、Web) アプリケーションからのリソース要求</a> <a class="panel-block list-group-item" href="../application-development/resource-request/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションからのリソース要求</a> <a class="panel-block list-group-item" href="../application-development/resource-request/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションからのリソース要求</a>
-        <a class="panel-block list-group-item" href="../application-development/resource-request/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows 8.1 Universal アプリケーションまたは Windows 10 UWP アプリケーションからのリソース要求</a> <a class="panel-block list-group-item" href="../application-development/resource-request/xamarin/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xamarin アプリケーションからのリソース要求</a>
-
-        <a class="panel-block list-group-item" href="../application-development/jsonstore/">JSONStore&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../application-development/jsonstore/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova アプリケーションでの JSONStore</a> <a class="panel-block list-group-item" href="../application-development/jsonstore/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションでの JSONStore</a> <a class="panel-block list-group-item" href="../application-development/jsonstore/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションでの JSONStore</a> <a class="panel-block list-group-item" href="../application-development/jsonstore/security-utilities/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セキュリティー・ユーティリティー</a>
-        <a class="panel-block list-group-item" href="../application-development/jsonstore/code-examples/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コード・サンプル</a>
-
-        <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/">クライアント・サイドのログ収集&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript (Cordova、Web) アプリケーションでのログ収集</a> <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションでのログ収集</a> <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションでのログ収集</a>
-
-        <a class="panel-block list-group-item" href="../application-development/direct-update/">Cordova アプリケーションでのダイレクト・アップデートの使用&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../application-development/direct-update/cdn-support/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDN からのダイレクト・アップデート要求の処理</a> <a class="panel-block list-group-item" href="../application-development/direct-update/secure-direct-update/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セキュアなダイレクト・アップデートの実装</a>
-        <a class="panel-block list-group-item" href="../application-development/translation/">JavaScript (Cordova、Web) アプリケーションのマルチリンガル・トランスレーション</a>
-        <a class="panel-block list-group-item" href="../application-development/debugging-applications/">JavaScript (Cordova、Web) アプリケーションのデバッグ</a>
-        <a class="panel-block list-group-item" href="../application-development/live-update/">ライブ・アップデート</a>
-        <a class="panel-block list-group-item" href="../application-development/watchos/">Apple watchOS 2 の開発</a>
-        <a class="panel-block list-group-item" href="../application-development/simple-data-sharing/">単純データ共有</a>
-    </div>
-  </div>
-  <!--  <ul>
-        <li><a href="../application-development/cordova-apps/">{{ site.data.keys.product }} SDK development in Cordova applications</a>
+    <ul>
+        <li><a href="../application-development/cordova-apps/">Cordova アプリケーション内の {{ site.data.keys.product }} SDK 開発</a>
             <ul>
-                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
-                <li><a href="../application-development/cordova-apps/securing-apps">Securing Cordova Applications</a></li>
+                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加</a></li>
+                <li><a href="../application-development/cordova-apps/securing-apps">Cordova アプリケーションの保護</a></li>
             </ul>
         </li>
-        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts</a></li>
-        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Using the {{ site.data.keys.mf_cli }} in Eclipse</a></li>
-        <li>Resource Request from client applications
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Eclipse での {{ site.data.keys.mf_cli }} の使用</a></li>
+        <li>クライアント・アプリケーションからのリソース要求
             <ul>
-                <li><a href="../application-development/resource-request/javascript/">Resource request from JavaScript (Cordova, Web) applications</a></li>
-                <li><a href="../application-development/resource-request/ios/">Resource request from iOS applications</a></li>
-                <li><a href="../application-development/resource-request/android/">Resource request from Android applications</a></li>
-                <li><a href="../application-development/resource-request/windows/">Resource request from Windows 8.1 Universal or Windows 10 UWP applications</a></li>
-                <li><a href="../application-development/resource-request/xamarin/">Resource request from Xamarin applications</a></li>
+                <li><a href="../application-development/resource-request/javascript/">JavaScript (Cordova、Web) アプリケーションからのリソース要求</a></li>
+                <li><a href="../application-development/resource-request/ios/">iOS アプリケーションからのリソース要求</a></li>
+                <li><a href="../application-development/resource-request/android/">Android アプリケーションからのリソース要求</a></li>
+                <li><a href="../application-development/resource-request/windows/">Windows 8.1 Universal または Windows 10 UWP アプリケーションからのリソース要求</a></li>
+                <li><a href="../application-development/resource-request/xamarin/">Xamarin アプリケーションからのリソース要求</a></li>
             </ul>
         </li>
         <li>JSONStore
             <ul>
-                <li><a href="../application-development/jsonstore/">JSONStore Overview</a></li>
-                <li><a href="../application-development/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
-            	<li><a href="../application-development/jsonstore/ios/">JSONStore in iOS applications</a></li>
-            	<li><a href="../application-development/jsonstore/android/">JSONStore in Android applications</a></li>
-                <li><a href="../application-development/jsonstore/security-utilities/">Security utilities</a></li>
-                <li><a href="../application-development/jsonstore/code-examples/">Code examples</a></li>
+                <li><a href="../application-development/jsonstore/">JSONStore の概要</a></li>
+                <li><a href="../application-development/jsonstore/cordova/">Cordova アプリケーションでの JSONStore</a></li>
+            	<li><a href="../application-development/jsonstore/ios/">iOS アプリケーションでの JSONStore</a></li>
+            	<li><a href="../application-development/jsonstore/android/">Android アプリケーションでの JSONStore</a></li>
+                <li><a href="../application-development/jsonstore/security-utilities/">セキュリティー・ユーティリティー</a></li>
+                <li><a href="../application-development/jsonstore/code-examples/">コード例</a></li>
             </ul>
         </li>
-        <li>Client-side log collection
+        <li>クライアント・サイドのログ収集
             <ul>
-                <li><a href="../application-development/client-side-log-collection/">Overview of client-side log collection</a></li>
-                <li><a href="../application-development/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
-            	<li><a href="../application-development/client-side-log-collection/ios/">Log collection in iOS applications</a></li>
-            	<li><a href="../application-development/client-side-log-collection/android/">Log collection in Android applications</a></li>
+                <li><a href="../application-development/client-side-log-collection/">クライアント・サイドのログ収集の概要</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">JavaScript (Cordova、Web) アプリケーションでのログ収集</a></li>
+            	<li><a href="../application-development/client-side-log-collection/ios/">iOS アプリケーションでのログ収集</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Android アプリケーションでのログ収集</a></li>
             </ul>
         </li>
-        <li><a href="../application-development/direct-update/">Using Direct Update in Cordova Applications</a>
+        <li><a href="../application-development/direct-update/">Cordova アプリケーションでのダイレクト・アップデートの使用</a>
             <ul>
-                <li><a href="../application-development/direct-update/cdn-support">Serving Direct Update requests from a CDN</a></li>
-                <li><a href="../application-development/direct-update/secure-direct-update">Implementing Secure Direct Update</a></li>
+                <li><a href="../application-development/direct-update/cdn-support">CDN からのダイレクト・アップデート要求の処理</a></li>
+                <li><a href="../application-development/direct-update/secure-direct-update">セキュアなダイレクト・アップデートの実装</a></li>
             </ul>
         </li>
-        <li><a href="../application-development/translation/">Multilingual translation of JavaScript (Cordova, Web) applications</a></li>
-        <li><a href="../application-development/debugging-applications/">Debugging JavaScript (Cordova, Web) applications</a></li>
-        <li><a href="../application-development/live-update/">Live Update</a></li>
-        <li><a href="../application-development/watchos/">Developing for Apple watchOS 2</a></li>
-        <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
-    </ul>-->
-    <div class="content">
-    <h2><a href="../adapters/">アダプターの開発</a></h2>
-    <h4><i>    エンタープライズ・バックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
+        <li><a href="../application-development/translation/">JavaScript (Cordova、Web) アプリケーションのマルチリンガル・トランスレーション</a></li>
+        <li><a href="../application-development/debugging-applications/">JavaScript (Cordova、Web) アプリケーションのデバッグ</a></li>
+        <li><a href="../application-development/live-update/">ライブ・アップデート</a></li>
+        <li><a href="../application-development/watchos/">Apple watchOS 2 の開発</a></li>
+        <li><a href="../application-development/simple-data-sharing/">単純データ共有</a></li>
+    </ul>
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../adapters/creating-adapters/">Java アダプターおよび JavaScript アダプターの作成</a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/">JavaScript アダプター&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript HTTP アダプター&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/using-ssl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript HTTP アダプターでの SSL の使用</a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript SQL アダプター</a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript アダプターでの Java の使用</a>
-        <a class="panel-block list-group-item" href="../adapters/java-adapters/">Java アダプター&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/java-adapters/java-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java HTTP アダプター</a>
-        <a class="panel-block list-group-item" href="../adapters/java-adapters/java-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java SQL アダプター</a>
-        <a class="panel-block list-group-item" href="../adapters/developing-adapters/">Eclipse でのアダプターの開発</a>
-        <a class="panel-block list-group-item" href="../adapters/testing-and-debugging-adapters/">アダプターのテストおよびデバッグ</a>
-        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/">サーバー・サイドのログ収集&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/java-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java アダプターでのログ収集</a> <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/javascript-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript アダプターでのログ収集</a>
-        <a class="panel-block list-group-item" href="../adapters/advanced-adapter-usage-mashup/">アダプターの高度な使用法とマッシュアップ</a>
-        <a class="panel-block list-group-item" href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a> <a class="panel-block list-group-item" href="../adapters/openwhisk-adapter/">Cloud Functions アダプター</a>
-        <a class="panel-block list-group-item" href="../adapters/cognitive-adapter/">Watson サービス用のアダプター</a>
-        <a class="panel-block list-group-item" href="../adapters/microservice-adapter/">アダプターの自動生成</a>
-      </div>
-    </div>
-  <!--  <ul>
-        <li><a href="../adapters/">Adapters overview</a></li>
-        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
+    <h2><a href="../adapters/">アダプターの開発</a></h2>
+    エンタープライズ・バックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
+
+    <ul>
+        <li><a href="../adapters/">アダプターの概要</a></li>
+        <li><a href="../adapters/creating-adapters/">Java アダプターおよび JavaScript アダプターの作成</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript アダプター</a>
             <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP アダプター</a>
                     <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP アダプターでの SSL の使用</a></li>
                     </ul>
                 </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL アダプター</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript アダプターでの Java の使用</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/java-adapters/">Java Adapters</a>
+        <li><a href="../adapters/java-adapters/">Java アダプター</a>
             <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP アダプター</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL アダプター</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/developing-adapters/">Developing Adapters in Eclipse</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
+        <li><a href="../adapters/developing-adapters/">Eclipse でのアダプターの開発</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">アダプターのテストおよびデバッグ</a></li>
+        <li>サーバー・サイドのログ収集
             <ul>
-                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
+                <li><a href="../adapters/server-side-log-collection/">サーバー・サイドのログ収集の概要</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java アダプターでのログ収集</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript アダプターでのログ収集</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
-        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
-        <li><a href="../adapters/openwhisk-adapter/">Cloud Functions adapter</a></li>
-        <li><a href="../adapters/cognitive-adapter/">Adapters for Watson services</a></li>
-        <li><a href="../adapters/microservice-adapter/">Adapter auto-generation</a></li>
-
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">アダプターの高度な使用方法とマッシュアップ</a></li>
+        <li><a href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a></li>
     </ul>
--->
-    <div class="content">
+
     <hr id="implement-authentication-and-security"/>
 
     <h2><a href="../authentication-and-security/">認証およびセキュリティー</a></h2>
-    <h4><i>    さまざまな保護のレイヤーをアプリケーションに追加します。
+    さまざまな保護のレイヤーをアプリケーションに追加します。
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/">セキュリティー検査の作成&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/contract/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セキュリティー検査の契約</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/security-check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セキュリティー検査の実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript (Cordova、Web) アプリケーションでのチャレンジ・ハンドラーの実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションでのチャレンジ・ハンドラーの実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションでのチャレンジ・ハンドラーの実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装</a> <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/security-check/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;セキュリティー検査の実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript (Cordova、Web) アプリケーションでのチャレンジ・ハンドラーの実装</a> <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションでのチャレンジ・ハンドラーの実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションでのチャレンジ・ハンドラーの実装</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装</a> <a class="panel-block list-group-item" href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/step-up/">ステップアップ認証</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/enrollment/">登録</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/ltpa-security-check/">LTPA セキュリティー検査</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/confidential-clients/">機密クライアント</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/">外部リソースの保護&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/tai">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トラスト・アソシエーション・インターセプター</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/jtv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java トークン検証</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/node-js">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node.js 検証</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/windows-message-inspector">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows .NET Message Inspector</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/application-authenticity/">アプリケーション認証性</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/device-sso/">デバイス・シングル・サインオンの構成</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/certificate-pinning/">証明書ピン留め</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 鍵ストアの構成</a>
-      </div>
-    </div>
-  <!--  <ul>
-        <li><a href="../authentication-and-security/">Authorization concepts</a></li>
-        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
+    <ul>
+        <li><a href="../authentication-and-security/">許可の概念</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">セキュリティー検査の作成</a>
             <ul>
-                <li><a href="../authentication-and-security/creating-a-security-check/contract">The Security Check Contract</a></li>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">セキュリティー検査コントラクト</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/javascript/">Implementing the challenge handler in JavaScript (Cordova, Web) applications</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/ios/">Implementing the challenge handler in iOS applications</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/android/">Implementing the challenge handler in Android applications</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">セキュリティー検査の実装</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">JavaScript (Cordova、Web) アプリケーションでのチャレンジ・ハンドラーの実装</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/ios/">iOS アプリケーションでのチャレンジ・ハンドラーの実装</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/android/">Android アプリケーションでの Challenge handler の実装</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Windows 8.1 Universal および Windows 10 UWP アプリケーションでの Challenge handler の実装</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/user-authentication/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/user-authentication/javascript/">Implementing the challenge handler in JavaScript (Cordova, Web) applications</a></li>
-                <li><a href="../authentication-and-security/user-authentication/ios/">Implementing the challenge handler in iOS applications</a></li>
-                <li><a href="../authentication-and-security/user-authentication/android/">Implementing the challenge handler in Android applications</a></li>
-                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">セキュリティー検査の実装</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">JavaScript (Cordova、Web) アプリケーションでの Challenge handler の実装</a></li>
+                <li><a href="../authentication-and-security/user-authentication/ios/">iOS アプリケーションでの Challenge handler の実装</a></li>
+                <li><a href="../authentication-and-security/user-authentication/android/">Android アプリケーションでの Challenge handler の実装</a></li>
+                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Windows 8.1 Universal および Windows 10 UWP アプリケーションでの Challenge handler の実装</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
-        <li><a href="../authentication-and-security/step-up/">Step Up Authentication</a></li>
-        <li><a href="../authentication-and-security/enrollment/">Enrollment</a></li>
-        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA Security Check</a></li>
-        <li><a href="../authentication-and-security/confidential-clients/">Confidential Clients</a></li>
-        <li><a href="../authentication-and-security/protecting-external-resources/">Protecting External Resources</a>
+        <li><a href="../authentication-and-security/step-up/">ステップアップ認証</a></li>
+        <li><a href="../authentication-and-security/enrollment/">登録</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA セキュリティー検査</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">機密クライアント</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">外部リソースの保護</a>
             <ul>
-                <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java Token Validation</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js Validation</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET Message Inspector</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">トラスト・アソシエーション・インターセプター</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java トークンの検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js の検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET メッセージ・インスペクター</a></li>
             </ul>
         </li>
-        <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
-        <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
-        <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
-        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the {{ site.data.keys.mf_server }} Keystore</a></li>
-    </ul>-->
-    <div class="content">
+        <li><a href="../authentication-and-security/application-authenticity/">アプリケーション認証性</a></li>
+        <li><a href="../authentication-and-security/device-sso/">デバイスのシングル・サインオンの構成</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">証明書ピン留め</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 鍵ストアの構成</a></li>
+    </ul>
+
     <hr id="measure-and-engage"/>
 
     <h2><a href="../notifications">通知</a></h2>
-    <h4><i>    {{ site.data.keys.product_full }} を使用して通知を送信します。
+    {{ site.data.keys.product_full }} を使用して通知を送信します。
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../notifications/sending-notifications/">通知の送信</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/">プッシュ通知の処理&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/cordova">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova アプリケーションでのプッシュ通知の処理</a> <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/ios">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションでのプッシュ通知の処理</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/interactive">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;対話式通知</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/silent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;サイレント通知</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/android">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションでのプッシュ通知の処理</a> <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/windows">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows アプリケーションでのプッシュ通知の処理</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/">SMS 通知の処理&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova アプリケーションでの SMS 通知の処理</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android アプリケーションでの SMS 通知の処理</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS アプリケーションでの SMS 通知の処理</a>
-        <a class="panel-block list-group-item" href="../notifications/analytics/">プッシュ通知に対する Analytics サポートのセットアップ</a>
-        <a class="panel-block list-group-item" href="../notifications/rest-apis/">プッシュ・サービス REST API </a>
-      </div>
-    </div>
-<!--    <ul>
-        <li><a href="../notifications/">Notifications Overview</a></li>
-        <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
-        <li><a href="../notifications/handling-push-notifications/">Handling push notifications</a>
+    <ul>
+        <li><a href="../notifications/">通知の概要</a></li>
+        <li><a href="../notifications/sending-notifications/">通知の送信</a></li>
+        <li><a href="../notifications/handling-push-notifications/">プッシュ通知の処理</a>
             <ul>
-                <li><a href="../notifications/handling-push-notifications/cordova/">Handling Push Notifications in Cordova applications</a>
+                <li><a href="../notifications/handling-push-notifications/cordova/">Cordova アプリケーションでのプッシュ通知の処理</a>
                     <ul>
-                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
-                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
+                        <li><a href="../notifications/handling-push-notifications/interactive">対話式通知</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">サイレント通知</a></li>
                     </ul>
                 </li>
-                <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a>
+                <li><a href="../notifications/handling-push-notifications/ios/">iOS アプリケーションでのプッシュ通知の処理</a>
                     <ul>
-                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
-                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
+                        <li><a href="../notifications/handling-push-notifications/interactive">対話式通知</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">サイレント通知</a></li>
                     </ul>
                 </li>
-                <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
-                <li><a href="../notifications/handling-push-notifications/windows/">Handling Push Notifications in Windows applications</a></li>
+                <li><a href="../notifications/handling-push-notifications/android/">Android アプリケーションでのプッシュ通知の処理</a></li>
+                <li><a href="../notifications/handling-push-notifications/windows/">Windows アプリケーションでのプッシュ通知の処理</a></li>
             </ul>
         </li>
-        <li><a href="../notifications/handling-sms-notifications/">Handling SMS notifications</a>
+        <li><a href="../notifications/handling-sms-notifications/">SMS 通知の処理</a>
             <ul>
-                <li><a href="../notifications/handling-sms-notifications/cordova/">Handling SMS Notifications in Cordova applications</a></li>
-                <li><a href="../notifications/handling-sms-notifications/android/">Handling SMS Notifications in Android applications</a></li>
-                <li><a href="../notifications/handling-sms-notifications/ios/">Handling SMS Notifications in iOS applications</a></li>
+                <li><a href="../notifications/handling-sms-notifications/cordova/">Cordova アプリケーションでの SMS 通知の処理</a></li>
+                <li><a href="../notifications/handling-sms-notifications/android/">Android アプリケーションでの SMS 通知の処理</a></li>
+                <li><a href="../notifications/handling-sms-notifications/ios/">iOS アプリケーションでの SMS 通知の処理</a></li>
             </ul>
         </li>
-        <li><a href="../notifications/analytics/">Setting Up Analytics Support for Push Notifications</a></li>
-        <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
-    </ul>-->
-    <div class="content">
+        <li><a href="../notifications/analytics/">プッシュ通知のための Analytics サポートのセットアップ</a></li>
+        <li><a href="../notifications/rest-apis/">プッシュ・サービス REST API</a></li>
+    </ul>
+
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-    <h4><i>    デプロイされたアプリケーションとアダプターのモニター、アプリケーションの使用状況の洞察、発生したエラーの検出、その他を行います。
+    デプロイされたアプリケーションとアダプターのモニター、アプリケーションの使用状況の洞察、発生したエラーの検出、その他を行います。
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../analytics">{{ site.data.keys.mf_analytics_full }} の概要</a>
-        <a class="panel-block list-group-item" href="../analytics/analytics-api/">クライアント・アプリケーションでの Analytics API の使用</a> <a class="panel-block list-group-item" href="../analytics/analytics-rest-api/">Analytics REST API の使用</a>
-        <a class="panel-block list-group-item" href="../analytics/elasticsearch/">Elasticsearch</a>
-        <a class="panel-block list-group-item" href="../analytics/console/">オペレーション・コンソールおよび Analytics コンソール&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../analytics/console/alerts/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;アラートの管理</a>
-        <a class="panel-block list-group-item" href="../analytics/console/log-filters/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ログ・フィルターの構成</a>
-        <a class="panel-block list-group-item" href="../analytics/console/custom-charts/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;カスタム・グラフの作成</a>
-        <a class="panel-block list-group-item" href="../analytics/console/scenario-loader/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;シナリオ・ローダー</a>
-        <a class="panel-block list-group-item" href="../analytics/console/push-notifications/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;プッシュ通知</a>
-        <a class="panel-block list-group-item" href="../analytics/console/analytics-data-purge">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;データの保存と消去</a>
-        <a class="panel-block list-group-item" href="../analytics/workflows/">Analytics ワークフロー</a>
-      </div>
-    </div>
-  <!--  <ul>
-        <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
-        <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
-        <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
+    <ul>
+        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} の概要</a></li>
+        <li><a href="../analytics/analytics-api/">クライアント・アプリケーションでの Analytics API の使用</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Analytics REST API の使用</a></li>
         <li><a href="../analytics/elasticsearch/">Elasticsearch</a></li>
-        <li><a href="../analytics/console/">Operations and Analytics Consoles</a>
+        <li><a href="../analytics/console/">Operations Console および Analytics コンソール</a>
            <ul>
-             <li><a href="../analytics/console/alerts/">Managing Alerts</a></li>
-             <li><a href="../analytics/console/log-filters/">Configuring Log Filters</a></li>
-             <li><a href="../analytics/console/custom-charts/">Creating Custom Charts</a></li>
-             <li><a href="../analytics/console/scenario-loader/">Scenario Loader</a></li>
-             <li><a href="../analytics/console/scenario-loader/">Push Notifications</a></li>
-             <li><a href="../analytics/console/analytics-data-purge">Data Retention and Purging</a></li>
+             <li><a href="../analytics/console/alerts/">アラートの管理</a></li>
+             <li><a href="../analytics/console/log-filters/">ログ・フィルターの構成</a></li>
+             <li><a href="../analytics/console/custom-charts/">カスタム・グラフの作成</a></li>
+             <li><a href="../analytics/console/scenario-loader/">シナリオ・ローダー</a></li>
+             <li><a href="../analytics/console/scenario-loader/">プッシュ通知</a></li>
+             <li><a href="../analytics/console/analytics-data-purge">データの保存と消去</a></li>
           </ul>
         </li>
-        <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
-    </ul> -->
-    <div class="content">
-    <h2><a href="../bluemix">IBM Cloud での Mobile Foundation</a></h2>
-    <h4><i>IBM Cloud を使用して {{ site.data.keys.product }} をクラウドにデプロイします。</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../bluemix/using-mobile-foundation/"> Mobile Foundation IBM Cloud サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-kubernetes/">IBM Cloud Kubernetes クラスターでの MobileFirst Server のセットアップ&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBM Cloud Kubernetes クラスターでの MobileFirst Application Center のセットアップ</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/">IBM Cloud Private での MobileFirst Server のセットアップ&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/mobilefirst-appcenter-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBM Cloud Private での MobileFirst Application Center のセットアップ</a> <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/logging-tracing-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IBM Cloud Private でのロギングとトレース</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/">Liberty for Java のスクリプトを使用した、IBM Cloud 上の {{ site.data.keys.mf_server }} のセットアップ&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コンテナーの保護</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;トラブルシューティング</a>
-      </div>
-    </div>
-        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
-            <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
-            </ul>
-        </li>-->
-    <!--  <ul>
-        <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">Setting Up MobileFirst Server on IBM Cloud Kubernetes Cluster</a>
-            <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">Setting Up MobileFirst Appcenter on IBM Cloud Kubernetes Cluster</a></li>
-            </ul>
-        </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Setting Up the {{ site.data.keys.mf_server }} on IBM Cloud using scripts on Liberty for Java</a>
-            <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">Securing containers</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">Troubleshooting</a></li>
-            </ul>
-        </li>
-    </ul> -->
-    <div class="content">
-    <h2><a href="../appcenter">Application Center</a></h2>
-    <h4><i>    IBM MoblieFirst Foundation Application Center をインストールおよび構成し、使用します。
+        <li><a href="../analytics/workflows/">Analytics ワークフロー</a></li>
+    </ul>
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../appcenter/preparations">モバイル・クライアントを使用するための準備</a>
-        <a class="panel-block list-group-item" href="../appcenter/push-notifications">アプリケーション更新のプッシュ通知</a>
-        <a class="panel-block list-group-item" href="../appcenter/appcenter-console">Application Center コンソール</a>
-        <a class="panel-block list-group-item" href="../appcenter/command-line">アプリケーションをアップロードまたは削除するためのコマンド・ライン・ツール</a>
-        <a class="panel-block list-group-item" href="../appcenter/mobile-client">モバイル・クライアント</a>
-        <a class="panel-block list-group-item" href="../appcenter/logging-and-tracing">アプリケーション・サーバーでの Application Center のロギングとトレースの設定</a>
-        <a class="panel-block list-group-item" href="../appcenter/app-center-tutorial/">Application Center を使用したモバイル・アプリケーションの配布のチュートリアル</a>
-      </div>
-    </div>
-  <!--  <ul>
-        <li><a href="../appcenter/">Application Center Overview</a></li>
-        <li><a href="../appcenter/preparations">Preparations for using the mobile client</a></li>
-        <li><a href="../appcenter/push-notifications">Push notifications of application updates</a></li>
-        <li><a href="../appcenter/appcenter-console">The Application Center console</a></li>
-        <li><a href="../appcenter/command-line">Command-line tool for uploading or deleting an application</a></li>
-        <li><a href="../appcenter/mobile-client">The mobile client</a></li>
-        <li><a href="../appcenter/logging-and-tracing">Setting logging and tracing for Application Center on the application server</a></li>
-        <li><a href="../appcenter/app-center-tutorial/">Distributing mobile applications with Application Center tutorial</a></li>
-    </ul>-->
-    <div class="content">
+    <h2><a href="../bluemix">Bluemix 上 の Foundation</a></h2>
+    Bluemix を使用して、{{ site.data.keys.product }} をクラウドにデプロイします。
+
+    <ul>
+        <li><a href="../bluemix/">Bluemix 上の {{ site.data.keys.product_full }} の概要</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container サービスのスクリプトを使用した、IBM Containers 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">ログとトレースの収集</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Liberty for Java のスクリプトを使用した、Bluemix 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../appcenter">Application Center</a></h2>
+    IBM MoblieFirst Foundation Application Center をインストールおよび構成し、使用します。
+
+    <ul>
+        <li><a href="../appcenter/">Application Center の概要</a></li>
+        <li><a href="../appcenter/preparations">モバイル・クライアントを使用するための準備</a></li>
+        <li><a href="../appcenter/push-notifications">アプリケーション更新のプッシュ通知</a></li>
+        <li><a href="../appcenter/appcenter-console">Application Center コンソール</a></li>
+        <li><a href="../appcenter/command-line">アプリケーションをアップロードまたは削除するためのコマンド・ライン・ツール</a></li>
+        <li><a href="../appcenter/mobile-client">モバイル・クライアント</a></li>
+        <li><a href="../appcenter/logging-and-tracing">アプリケーション・サーバーでの Application Center のロギングとトレースの設定</a></li>
+        <li><a href="../appcenter/app-center-tutorial/">Application Center を使用したモバイル・アプリケーション配布のチュートリアル</a></li>
+    </ul>
+
     <h2><a href="../troubleshooting/">共通問題のトラブルシューティング</a></h2>
-    <h4><i>よくあるご質問と、それに対する回答です。</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../troubleshooting/notifications">プッシュ通知</a>
-        <a class="panel-block list-group-item" href="../troubleshooting/jsonstore">JSONStore</a>
-        <a class="panel-block list-group-item" href="../troubleshooting/analytics">Analytics</a>
-      </div>
-    </div>
-<!--    <ul>
+    よくある質問と、それに対する回答です。
+
+    <ul>
         <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
-    </ul>-->
+    </ul>
 
-    <div class="content">
-    <h2><a href="../../../product-integration/8.0">製品の統合</a></h2>
-    <h4><i>    {{ site.data.keys.product }} 8.0 アプリケーションの他の IBM 製品との統合
+    <h2><a href="../../../../en/product-integration/8.0">製品の統合</a></h2>
+    {{ site.data.keys.product }} 8.0 アプリケーションの他の IBM 製品との統合
 
-    </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../../../product-integration/8.0">使用可能な製品統合のリスト</a>
-      </div>
-    </div>
-<!--    <ul>
-        <li><a href="../../../product-integration/8.0">List of available product integrations</a></li>
-    </ul>-->
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">使用可能な製品統合のリスト</a></li>
+    </ul>
     <br/>
 </div>
