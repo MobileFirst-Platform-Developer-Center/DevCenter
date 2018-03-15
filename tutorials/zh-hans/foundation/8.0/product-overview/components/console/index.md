@@ -51,7 +51,7 @@ weight: 2
 #### 桌面浏览器
 {: #desktop-browser-remote }
 从您选择的浏览器，装入 URL `http://the-server-host:server-port-number/mfpconsole`。  
-主机服务器可以是客户拥有的服务器、IBM Bluemix 服务或 IBM [Mobile Foundation](../../../bluemix/)。
+主机服务器可以是客户拥有的服务器、IBM Cloud 服务或 IBM [Mobile Foundation](../../../bluemix/)。
 
 #### 命令行
 {: #command-line-remote }
@@ -72,8 +72,6 @@ weight: 2
 2. 运行命令：`mfpdev server console MyRemoteServer`。
 
 > 通过[使用 CLI 来管理 {{ site.data.keys.product_adj }} 工件](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)教程来了解有关各种 CLI 命令的更多信息。
-
-
 
 ## 浏览控制台
 {: #navigating-the-console }
