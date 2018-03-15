@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 通过 MobileFirst Operations Console 管理应用程序
-breadcrumb_title: 使用控制台管理
+breadcrumb_title: Administrating using the console
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
