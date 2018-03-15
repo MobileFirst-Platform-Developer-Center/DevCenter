@@ -2156,7 +2156,8 @@ Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信�
                                 </ul>
                                 在 <b>server.xml</b> 文件中定义了密钥库和信任库的位置。 请参阅 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 配置属性</a>中的 <b>keyStoreRef</b> 和 <b>trustStoreRef</b> 属性。 缺省情况下，Liberty Profile 的密钥库位于 <b>${server.config.dir}/resources/security/key.jks</b> 中。 如果信任库引用缺失或者未在 <b>server.xml</b> 文件中进行定义，那么将使用 <b>keyStoreRef</b> 所指定的密钥库。 服务器将使用缺省密钥库，并且会在服务器首次运行时创建该文件。 在这种情况下，将创建缺省证书，其有效期为 365 天。 对于生产环境，您可能要考虑使用自己的证书（如果需要，包括中间证书）或者更改已生成证书的到期日期。
 
-                                <blockquote>注：如果您要确认信任库的位置，那么可以将以下声明添加到 server.xml 文件来实现这一点：% highlight xml %}
+                                <blockquote>注：如果您要确认信任库的位置，那么可以将以下声明添加到 server.xml 文件来实现这一点：
+{% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
                                 </blockquote>
