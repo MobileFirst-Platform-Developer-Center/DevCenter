@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript (Cordova、Web) アプリケーションのデバッグ
-breadcrumb_title: アプリケーションのデバッグ        
+breadcrumb_title: Debugging applications        
 relevantTo: [javascript]
 weight: 10
 ---
@@ -10,10 +10,10 @@ weight: 10
 {: #overview }
 デバッグは、応用コードおよびアプリケーション・ユーザー・インターフェースにおける欠陥の原因究明からなるプロセスです。
 
-* JavaScript (Cordova、Web) アプリケーションは、HTML、JavaScript、および CSS などの Web ベースのリソースからなります。Cordova アプリケーションには、(Java、Objective-C、Swift、C# などで書かれた) オプションのネイティブ・コードを含めることもできます。
+* JavaScript (Cordova、Web) アプリケーションは、HTML、JavaScript、および CSS などの Web ベースのリソースからなります。 Cordova アプリケーションには、(Java、Objective-C、Swift、C# などで書かれた) オプションのネイティブ・コードを含めることもできます。
 * プラットフォーム SDK で提供される標準のツール (XCode、Android、Microsoft Visual Studio など) を使用して、ネイティブ・コードをデバッグすることができます。
 
-このチュートリアルでは、エミュレーター、シミュレーター、物理デバイス、または Web ブラウザーを介してローカルで実行されている JavaScript ベースのアプリケーションをデバッグするためのさまざまなアプローチを説明します。 
+このチュートリアルでは、エミュレーター、シミュレーター、物理デバイス、または Web ブラウザーを介してローカルで実行されている JavaScript ベースのアプリケーションをデバッグするためのさまざまなアプローチを説明します。
 
 > Cordova のデバッグおよびテストについて詳しくは、Cordova Web サイト [アプリケーションのデバッグ](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)を参照してください。
 
@@ -42,7 +42,7 @@ mfpdev app preview
 mfpdev app preview -p <platform>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** プレビュー・フィーチャーにはいくつかの既知の制限があります。アプリケーションは、プレビュー中は予想どおりに動作しない場合があります。例えば、機密クライアントを使用してセキュリティー・フィーチャーを迂回します。したがって、チャレンジ・ハンドラーはトリガーされません。 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** プレビュー・フィーチャーにはいくつかの既知の制限があります。 アプリケーションは、プレビュー中は予想どおりに動作しない場合があります。 例えば、機密クライアントを使用してセキュリティー・フィーチャーを迂回します。したがって、チャレンジ・ハンドラーはトリガーされません。 
 
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
@@ -59,7 +59,7 @@ mfpdev app preview -p <platform>
 ## Ripple によるデバッグ
 {: #debugging-with-ripple }
 Apache Ripple™ は、モバイル Web アプリケーションをデバッグするための、Web ベースのモバイル環境シミュレーターです。  
-Ripple を使用すると、ご使用のブラウザーで Cordova アプリケーションを実行して、さまざまな Cordova フィーチャーをシュミレートできます。例えば、ご使用のコンピューターからローカルでピクチャーを選択できるようにすることで、カメラ  API をシュミレートできます。  
+Ripple を使用すると、ご使用のブラウザーで Cordova アプリケーションを実行して、さまざまな Cordova フィーチャーをシュミレートできます。 例えば、ご使用のコンピューターからローカルでピクチャーを選択できるようにすることで、カメラ  API をシュミレートできます。  
 
 ### Ripple のインストール
 {: #installing-ripple }
@@ -86,7 +86,7 @@ ripple emulate
 
 ## iOS Remote Web Inspector によるデバッグ
 {: #debugging-with-ios-remote-web-inspector }
-iOS 6 以降、Apple は iOS デバイス上で Web アプリケーションをデバッグするためのリモート [Web インスペクター](https://developer.apple.com/safari/tools/)を導入しました。デバッグを行うためには、ご使用のデバイス (または iOS シミュレーター) で**「プライベートブラウズ」**オプションがオフになっていることを確認してください。  
+iOS 6 以降、Apple は iOS デバイス上で Web アプリケーションをデバッグするためのリモート [Web インスペクター](https://developer.apple.com/safari/tools/)を導入しました。 デバッグを行うためには、ご使用のデバイス (または iOS シミュレーター) で**「プライベートブラウズ」**オプションがオフになっていることを確認してください。  
 
 1. デバイス上の Web インスペクターを有効にするには、**「設定」>「Safari」>「詳細」>「Web インスペクター」**をタップします。
 2. デバッグを開始するには、iOS デバイスを Mac に接続するか、シミュレーターを開始します。
@@ -98,7 +98,7 @@ iOS 6 以降、Apple は iOS デバイス上で Web アプリケーションを�
 ## Chrome Remote Web Inspector によるデバッグ
 {: #debugging-with-chrome-remote-web-inspector }
 Google Chrome を使用すると、Android デバイスまたは Android エミュレーター上の Web アプリケーションをリモート側から検査することができます。  
-このアクションを実行するには、Android 4.4 以降、Chrome 32 以降が必要です。さらに、`AndroidManifest.xml` ファイルで、`targetSdkVersion = 19` 以上にする必要があります。また、`project.properties` ファイルで、`target = 19` 以上にする必要があります。
+このアクションを実行するには、Android 4.4 以降、Chrome 32 以降が必要です。 さらに、`AndroidManifest.xml` ファイルで、`targetSdkVersion = 19` 以上にする必要があります。 また、`project.properties` ファイルで、`target = 19` 以上にする必要があります。
 
 1. Android Emulator または接続されたデバイスで、アプリケーションを開始します。
 2. Chrome で、アドレス・バーに URL `chrome://inspect` を入力します。

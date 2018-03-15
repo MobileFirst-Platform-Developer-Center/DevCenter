@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: ワークステーション・インストール・ガイド
-breadcrumb_title: インストール・ガイド
+breadcrumb_title: Installation guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -64,12 +64,12 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) は、{{ site.data.keys.mf_server }} でのアプリケーションの登録、{{ site.data.keys.mf_server }} に対するアプリケーションのプル/プッシュ、Java アダプターおよび JavaScript アダプターの作成、複数のローカル・サーバーおよびリモート・サーバーの管理、ダイレクト・アップデートを使用したライブ・アプリケーションの更新などを可能にするコマンド・ライン・インターフェースです。
 
 **前提条件:**  
-1. NodeJS は、{{ site.data.keys.mf_cli }} をインストールするための要件です。  
- [NodeJS v4.4.3 LTS](https://nodejs.org/en/) をダウンロードしてインストールします。
+1. NodeJS と NPM は、{{ site.data.keys.mf_cli }} をインストールするための要件です。  
+[NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) と NPM v3.10.10 をダウンロードしてインストールします。
 
  インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`node -v`
 
-2. アダプターの作成、ビルド、デプロイなど、一部の CLI コマンドには Maven が必要です。インストール手順については、次のセクションを参照してください。
+2. アダプターの作成、ビルド、デプロイなど、一部の CLI コマンドには Maven が必要です。 インストール手順については、次のセクションを参照してください。
 
 ### {{ site.data.keys.mf_cli }} のインストール
 {: #installation-cli }
@@ -101,7 +101,7 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 
     *Windows:*  
     [このガイドに従ってください](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/)。
-以下を実行してインストールを検証します。`mvn -v`
+`mvn -v` を実行してインストールを検証します。
 
 ### 使用法
 {: #usage }

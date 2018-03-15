@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このチュートリアルでは、Apache Cordova、Ionic、またはその他のサード・パーティー・ツールを使用して作成された新規または既存の Cordova アプリケーションに {{ site.data.keys.product_adj }} SDK を追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
+このチュートリアルでは、Apache Cordova、Ionic、またはその他のサード・パーティー・ツールを使用して作成された新規または既存の Cordova アプリケーションに {{ site.data.keys.product_adj }} SDK を追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
 {{ site.data.keys.product_adj }} Cordova SDK は、Cordova プラグインのセットとして提供されており、[NPM に登録されています](https://www.npmjs.com/package/cordova-plugin-mfp)。  
 入手可能なプラグインは次のとおりです。
@@ -16,8 +16,8 @@ weight: 1
 * **cordova-plugin-mfp** - コアの SDKプラグイン
 * **cordova-plugin-mfp-push** - プッシュ通知サポートを提供します
 * **cordova-plugin-mfp-jsonstore** - JSONStore サポートを提供します
-* **cordova-plugin-mfp-fips** - *Android のみ*。FIPS サポートを提供します
-* **cordova-plugin-mfp-encrypt-utils** - *iOS のみ*。暗号化および暗号化解除がサポートされるようにします
+* **cordova-plugin-mfp-fips** - *Android のみ*。 FIPS サポートを提供します
+* **cordova-plugin-mfp-encrypt-utils** - *iOS のみ*。 暗号化および暗号化解除がサポートされるようにします
 
 #### サポート・レベル
 {: #support-levels }
@@ -41,7 +41,7 @@ MobileFirst プラグインでサポートされる Cordova プラットフォ�
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
 {: #cordova-plugin-mfp }
-cordova-plugin-mfp プラグインは、Cordova 用のコア {{ site.data.keys.product_adj }} プラグインであり、必須です。他の {{ site.data.keys.product_adj }} プラグインのいずれかをインストールすると、cordova-plugin-mfp プラグインも自動的にインストールされます (まだインストールされていない場合)。
+cordova-plugin-mfp プラグインは、Cordova 用のコア {{ site.data.keys.product_adj }} プラグインであり、必須です。 他の {{ site.data.keys.product_adj }} プラグインのいずれかをインストールすると、cordova-plugin-mfp プラグインも自動的にインストールされます (まだインストールされていない場合)。
 
 > 次の Cordova プラグインは、cordova-plugin-mfp の依存関係としてインストールされます。
 >   
@@ -52,19 +52,19 @@ cordova-plugin-mfp プラグインは、Cordova 用のコア {{ site.data.keys.p
 
 #### cordova-plugin-mfp-jsonstore
 {: #cordova-plugin-mfp-jsonstore }
-cordova-plugin-mfp-jsonstore プラグインを使用すると、アプリケーションで JSONstore を使用できるようになります。JSONstore について詳しくは、[JSONStore に関するチュートリアル](../../jsonstore/cordova/)を参照してください。  
+cordova-plugin-mfp-jsonstore プラグインを使用すると、アプリケーションで JSONstore を使用できるようになります。 JSONstore について詳しくは、[JSONStore に関するチュートリアル](../../jsonstore/cordova/)を参照してください。  
 
 #### cordova-plugin-mfp-push
 {: #cordova-plugin-mfp-push }
-cordova-plugin-mfp-push プラグインは、Android アプリケーション用の {{ site.data.keys.mf_server }} からプッシュ通知を使用するために必要な許可を提供します。 プッシュ通知を使用するための追加セットアップが必要です。プッシュ通知について詳しくは、[プッシュ通知に関するチュートリアル](../../../notifications/)を参照してください。
+cordova-plugin-mfp-push プラグインは、Android アプリケーション用の {{ site.data.keys.mf_server }} からプッシュ通知を使用するために必要な許可を提供します。 プッシュ通知を使用するための追加セットアップが必要です。 プッシュ通知について詳しくは、[プッシュ通知に関するチュートリアル](../../../notifications/)を参照してください。
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-cordova-plugin-mfp-fips  プラグインは、Android プラットフォームの FIPS 140-2 をサポートします。詳しくは、[FIPS 140-2 サポートを参照してください](../../../administering-apps/federal/#fips-140-2-support)。
+cordova-plugin-mfp-fips  プラグインは、Android プラットフォームの FIPS 140-2 をサポートします。 詳しくは、[FIPS 140-2 サポートを参照してください](../../../administering-apps/federal/#fips-140-2-support)。
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォームを使用する Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。詳しくは、[Cordova iOS での OpenSSL の有効化](additional-information)を参照してください。
+cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォームを使用する Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。 詳しくは、[Cordova iOS での OpenSSL の有効化](additional-information)を参照してください。
 
 **前提条件:**
 
@@ -85,7 +85,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 ### SDK の追加
 {: #adding-the-sdk }
-{{ site.data.keys.product_adj }} Cordova **アプリケーション・テンプレート**を使用することによってプロジェクトを作成することを検討します。テンプレートを使用すると、{{ site.data.keys.product_adj }} 固有の必須プラグイン・エントリーが Cordova プロジェクトの **config.xml** ファイルに追加され、{{ site.data.keys.product_adj }} 固有の、使用準備の整った **index.js** ファイル ({{ site.data.keys.product_adj }} アプリケーション開発用に調整されている) が提供されます。
+{{ site.data.keys.product_adj }} Cordova **アプリケーション・テンプレート**を使用することによってプロジェクトを作成することを検討します。 テンプレートを使用すると、{{ site.data.keys.product_adj }} 固有の必須プラグイン・エントリーが Cordova プロジェクトの **config.xml** ファイルに追加され、{{ site.data.keys.product_adj }} 固有の、使用準備の整った **index.js** ファイル ({{ site.data.keys.product_adj }} アプリケーション開発用に調整されている) が提供されます。
 
 #### 新規アプリケーション
 {: #new-application }
@@ -100,7 +100,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
      - 「HelloWorld」は、アプリケーションの名前です。
      - --template を指定すると、{{ site.data.keys.product_adj }} 固有の追加によってアプリケーションが変更されます。
 
-    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{ site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。) 
+    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{ site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。)
 
 2. `cd hello` コマンドで、ディレクトリーを Cordova プロジェクトのルートに変更します。
 
@@ -136,7 +136,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
    }
    ```
 
-{{ site.data.keys.product_adj }} API メソッドは、{{ site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。これで `wlCommonInit` 関数が呼び出されます。  
+{{ site.data.keys.product_adj }} API メソッドは、{{ site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。 これで `wlCommonInit` 関数が呼び出されます。  
 この関数を使用して、各種 {{ site.data.keys.product_adj }} API メソッドを呼び出します。
 
 ### アプリケーションの登録
@@ -161,7 +161,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 ### SDK の使用
 {: #using-the-sdk }
-{{ site.data.keys.product_adj }} API メソッドは、{{ site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。これで `wlCommonInit` 関数が呼び出されます。  
+{{ site.data.keys.product_adj }} API メソッドは、{{ site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。 これで `wlCommonInit` 関数が呼び出されます。  
 この関数を使用して、各種 {{ site.data.keys.product_adj }} API メソッドを呼び出します。
 
 ## {{ site.data.keys.product_adj }} Cordova SDK の更新
@@ -175,7 +175,7 @@ SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/
 ### config.xml
 {: #configxml }
 Cordova 構成ファイルは、アプリケーション・メタデータを含む必須の XML ファイルであり、アプリケーションのルート・ディレクトリーに保管されています。  
-{{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されると、Cordova が生成した **config.xml** ファイルは、名前空間 `mfp:` で識別された新規エレメントのセットを受け取ります。追加されるエレメントには、{{ site.data.keys.product_adj }} の各種フィーチャーおよび {{ site.data.keys.mf_server }} に関連した情報が含まれています。
+{{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されると、Cordova が生成した **config.xml** ファイルは、名前空間 `mfp:` で識別された新規エレメントのセットを受け取ります。 追加されるエレメントには、{{ site.data.keys.product_adj }} の各種フィーチャーおよび {{ site.data.keys.mf_server }} に関連した情報が含まれています。
 
 ### **config.xml** ファイルに追加される {{ site.data.keys.product_adj }} 設定の例
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}
@@ -223,32 +223,32 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
                     </tr>
                     <tr>
                         <td><b>widget</b></td>
-                        <td><a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml 文書のルート・エレメント</a>。 このエレメントには 2 つの必須属性が含まれています。<ul><li><b>id</b>: これは Cordova プロジェクト作成時に指定されたアプリケーション・パッケージ名です。アプリケーションが {{ site.data.keys.mf_server }} に登録された後にこの値が手動で変更された場合、アプリケーションの再登録が必要です。</li><li><b>xmlns:mfp</b>: {{ site.data.keys.product_adj }} プラグインの XML 名前空間。</li></ul></td>
+                        <td><a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml 文書のルート・エレメント</a>。 このエレメントには 2 つの必須属性が含まれています。 <ul><li><b>id</b>: これは Cordova プロジェクト作成時に指定されたアプリケーション・パッケージ名です。 アプリケーションが {{ site.data.keys.mf_server }} に登録された後にこの値が手動で変更された場合、アプリケーションの再登録が必要です。</li><li><b>xmlns:mfp</b>: {{ site.data.keys.product_adj }} プラグインの XML 名前空間。</li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:platformVersion</b></td>
-                        <td>必須。アプリケーションが開発された製品バージョン。</td>
-                        <td>デフォルトで設定されます。変更してはなりません。</td>
+                        <td>必須。 アプリケーションが開発された製品バージョン。</td>
+                        <td>デフォルトで設定されます。 変更してはなりません。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:directUpdateAuthenticityPublicKey</b></td>
-                        <td>オプション。ダイレクト・アップデート認証性機能を有効にした場合、デプロイメント時にダイレクト・アップデート・パッケージがデジタル署名されます。クライアントがパッケージをダウンロードした後、パッケージの認証性を検証するためにセキュリティー検査が実行されます。このストリング値は、ダイレクト・アップデート .zip ファイルの認証に使用される公開鍵です。</td>
+                        <td>オプション。 ダイレクト・アップデート認証性機能を有効にした場合、デプロイメント時にダイレクト・アップデート・パッケージがデジタル署名されます。 クライアントがパッケージをダウンロードした後、パッケージの認証性を検証するためにセキュリティー検査が実行されます。 このストリング値は、ダイレクト・アップデート .zip ファイルの認証に使用される公開鍵です。</td>
                         <td><code>mfpdev app config direct_update_authenticity_public_key key-value</code> コマンドで設定されます。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:languagePreferences</b></td>
-                        <td>オプション。システム・メッセージの表示に使用されるロケールのコンマ区切りリストを含みます。</td>
+                        <td>オプション。 システム・メッセージの表示に使用されるロケールのコンマ区切りリストを含みます。</td>
                         <td><code>mfpdev app config language_preferences key-value</code> コマンドで設定されます。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:clientCustomInit</b></td>
-                        <td><code>WL.Client.init</code> メソッドがどのように呼び出されるのかを制御します。デフォルトでは、この値は false に設定され、<code>WL.Client.init</code> メソッドは {{ site.data.keys.product_adj }} プラグインが初期化された後に自動的に呼び出されます。<code>WL.Client.init</code> が呼び出されるタイミングをクライアント・コードで明示的に制御するには、この値を <b>true</b> に設定します。</td>
-                        <td>手動で編集されます。<b>enabled</b> 属性に設定できる値は <b>true</b> または <b>false</b> です。</td>
+                        <td><code>WL.Client.init</code> メソッドがどのように呼び出されるのかを制御します。 デフォルトでは、この値は false に設定され、<code>WL.Client.init</code> メソッドは {{ site.data.keys.product_adj }} プラグインが初期化された後に自動的に呼び出されます。 <code>WL.Client.init</code> が呼び出されるタイミングをクライアント・コードで明示的に制御するには、この値を <b>true</b> に設定します。</td>
+                        <td>手動で編集されます。 <b>enabled</b> 属性に設定できる値は <b>true</b> または <b>false</b> です。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:server</b></td>
-                        <td>クライアント・アプリケーションが {{ site.data.keys.mf_server }} との通信に使用する、デフォルトのリモート・サーバー接続情報。<ul><li><b>url:</b> url 値は、クライアントがサーバーに接続するためにデフォルトで使用する、{{ site.data.keys.mf_server }} プロトコル、ホスト、およびポートの値を指定します。</li><li><b>runtime:</b> runtime 値は、アプリケーションが登録された {{ site.data.keys.mf_server }} ランタイムを指定します。{{ site.data.keys.product_adj }} ランタイムについて詳しくは、{{ site.data.keys.mf_server }} 概要を参照してください。</li></ul></td>
+                        <td>クライアント・アプリケーションが {{ site.data.keys.mf_server }} との通信に使用する、デフォルトのリモート・サーバー接続情報。 <ul><li><b>url:</b> url 値は、クライアントがサーバーに接続するためにデフォルトで使用する、{{ site.data.keys.mf_server }} プロトコル、ホスト、およびポートの値を指定します。</li><li><b>runtime:</b> runtime 値は、アプリケーションが登録された {{ site.data.keys.mf_server }} ランタイムを指定します。 {{ site.data.keys.product_adj }} ランタイムについて詳しくは、{{ site.data.keys.mf_server }} 概要を参照してください。</li></ul></td>
                         <td><ul><li>サーバー url 値は <code>mfpdev app config server</code> コマンドで設定されます。</li><li>サーバー runtime 値は <code>mfpdev app config runtime</code> コマンドで設定されます。</li></ul></td>
                     </tr>
                     <tr>
@@ -286,22 +286,22 @@ Cordova 構成ファイルは、アプリケーション・メタデータを含
                     </tr>
                     <tr>
                         <td><b>mfp:appChecksum</b></td>
-                        <td>この値は、アプリケーション Web リソースのチェックサムです。<code>mfpdev app webupdate</code> が実行されるときに計算されます。</td>
-                        <td>ユーザーによる構成はできません。チェックサム値は <code>mfpdev app webupdate</code> コマンドが実行されると更新されます。<code>mfpdev app webupdate</code> コマンドについて詳しくは、コマンド・ウィンドウで <code>mfpdev help app webupdate</code> と入力してください。</td>
+                        <td>この値は、アプリケーション Web リソースのチェックサムです。 <code>mfpdev app webupdate</code> が実行されるときに計算されます。</td>
+                        <td>ユーザーによる構成はできません。 チェックサム値は <code>mfpdev app webupdate</code> コマンドが実行されると更新されます。 <code>mfpdev app webupdate</code> コマンドについて詳しくは、コマンド・ウィンドウで <code>mfpdev help app webupdate</code> と入力してください。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:sdkChecksum</b></td>
                         <td>この値は、{{ site.data.keys.mf_console }} SDK チェックサムであり、固有の {{ site.data.keys.product_adj }} SDK レベルを識別するために使用されます。</td>
-                        <td>ユーザーによる構成はできません。この値はデフォルトで設定されます。</td>
+                        <td>ユーザーによる構成はできません。 この値はデフォルトで設定されます。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:security</b></td>
-                        <td>このエレメントには、{{ site.data.keys.product_adj }} セキュリティーについての、クライアント・アプリケーションのプラットフォーム固有構成が含まれます。次を含む<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
+                        <td>このエレメントには、{{ site.data.keys.product_adj }} セキュリティーについての、クライアント・アプリケーションのプラットフォーム固有構成が含まれます。 次を含む<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:testWebResourcesChecksum</b></td>
-                        <td>アプリケーションがモバイル・デバイス上で実行を開始するたびにその Web リソースの保全性を検証するかどうかを制御します。属性: <ul><li><b>enabled:</b> 有効な値は <b>true</b> および <b>false</b> です。この属性が <b>true</b> に設定されている場合、アプリケーションは Web リソースのチェックサムを計算し、アプリケーションが最初に実行されたときに保存しておいた値とこのチェックサムを比較します。</li><li><b>ignoreFileExtensions:</b> チェックサム計算には、Web リソースのサイズによって、数秒かかる場合があります。この時間を短縮するには、この計算において無視するファイル拡張子のリストを指定します。この値は、<b>enabled</b> 属性が <b>false</b> の場合は無視されます。</li></ul></td>
+                        <td>アプリケーションがモバイル・デバイス上で実行を開始するたびにその Web リソースの保全性を検証するかどうかを制御します。 属性: <ul><li><b>enabled:</b> 有効な値は <b>true</b> および <b>false</b> です。 この属性が <b>true</b> に設定されている場合、アプリケーションは Web リソースのチェックサムを計算し、アプリケーションが最初に実行されたときに保存しておいた値とこのチェックサムを比較します。</li><li><b>ignoreFileExtensions:</b> チェックサム計算には、Web リソースのサイズによって、数秒かかる場合があります。 この時間を短縮するには、この計算において無視するファイル拡張子のリストを指定します。 この値は、<b>enabled</b> 属性が <b>false</b> の場合は無視されます。</li></ul></td>
                         <td><ul><li><b>enabled</b> enabled 属性は <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> コマンドで設定されます。</li><li><b>ignoreFileExtensions</b> 属性は <code>mfpdev app config android_security_ignore_file_extensions value</code> コマンドで設定されます。</li></ul></td>
                     </tr>
                 </table>

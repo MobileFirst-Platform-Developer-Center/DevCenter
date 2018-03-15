@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: データの保存と消去
-breadcrumb_title: データの保存と消去
+breadcrumb_title: Data Retention and Purging
 relevantTo: [ios,android,javascript]
 weight: 6
 ---
@@ -9,7 +9,7 @@ weight: 6
 ## 概説
 {: #overview }
 
-{{ site.data.keys.mf_analytics }} データはサーバーに保管され、データが消去されるまでレポート作成に使用できます。どのイベント・タイプ・データを保存し、どのイベント・タイプ・データを消去するかを制御できます。データは、ある一定の間隔で消去することも手動で消去することも可能です。
+{{ site.data.keys.mf_analytics }} データはサーバーに保管され、データが消去されるまでレポート作成に使用できます。 どのイベント・タイプ・データを保存し、どのイベント・タイプ・データを消去するかを制御できます。 データは、ある一定の間隔で消去することも手動で消去することも可能です。
 
 ## Analytics コンソールからのデータ保存の構成
 {: #configuring-data-retention-from-the-analytics-console }
