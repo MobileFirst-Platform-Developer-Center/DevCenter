@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Windows .NET メッセージ・インスペクター
-breadcrumb_title: Windows .NET メッセージ・インスペクター
+breadcrumb_title: Windows .NET Message Inspector
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: サンプルのダウンロード
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -64,7 +64,7 @@ public interface IGetBalanceService
 }
 ```
 
-これでサービスの準備ができたので、ホスト・アプリケーションによってこのサービスが使用される方法を構成できます。これは、App.config ファイル内で以下のように行います。
+これでサービスの準備ができたので、ホスト・アプリケーションによってこのサービスが使用される方法を構成できます。 これは、App.config ファイル内で以下のように行います。
 
 ```xml
 <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
@@ -104,7 +104,7 @@ static void Main(string[] args) {
 ## メッセージ・インスペクターの定義
 {: #define-a-message-inspector}
 検証プロセスの詳細に進む前に、リソース (サービス・エンドポイント) を保護するために使用する**メッセージ・インスペクター**を作成し、定義する必要があります。
-メッセージ・インスペクターは、メッセージの受信後または送信前にメッセージを検査および変更するために、サービス内で使用できる拡張性オブジェクトです。サービス・メッセージ・インスペクターは、`IDispatchMessageInspector` インターフェースを実装する必要があります。
+メッセージ・インスペクターは、メッセージの受信後または送信前にメッセージを検査および変更するために、サービス内で使用できる拡張性オブジェクトです。 サービス・メッセージ・インスペクターは、`IDispatchMessageInspector` インターフェースを実装する必要があります。
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector
@@ -125,7 +125,7 @@ public class MyInspector : IDispatchMessageInspector {
 }
 ```
 
-メッセージ・インスペクターを作成したら、特定のエンドポイントを保護するようにそれを定義する必要があります。これは、behavior を使用して行います。**behavior** は、デフォルト構成を変更するか、拡張 (メッセージ・インスペクターなど) を追加することで、サービス・モデル・ランタイムの振る舞いを変更するクラスです。
+メッセージ・インスペクターを作成したら、特定のエンドポイントを保護するようにそれを定義する必要があります。 これは、behavior を使用して行います。 **behavior** は、デフォルト構成を変更するか、拡張 (メッセージ・インスペクターなど) を追加することで、サービス・モデル・ランタイムの振る舞いを変更するクラスです。
 これは、2 つのクラスを使用して行います。1 つは、アプリケーション・エンドポイントを保護するメッセージ・インスペクターを構成するクラスで、もう 1 つは、この behavior クラス・インスタンスと型を返すクラスです。
 
 ```csharp
@@ -175,7 +175,7 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 ## メッセージ・インスペクターの実装
 {: #message-inspector-implementation}
 
-まず、メッセージ・インスペクター内にクラス・メンバーとしていくつかの定数を定義します。それらは、{{ site.data.keys.mf_server }} URL、機密クライアントの資格情報、およびサービスを保護するために使用する `scope` です。また、{{ site.data.keys.product_adj }} 許可サーバーから受け取ったトークンを保持するための静的変数を定義することもできます。そうすることで、すべてのユーザーがそれを使用できます。
+まず、メッセージ・インスペクター内にクラス・メンバーとしていくつかの定数を定義します。それらは、{{ site.data.keys.mf_server }} URL、機密クライアントの資格情報、およびサービスを保護するために使用する `scope` です。 また、{{ site.data.keys.product_adj }} 許可サーバーから受け取ったトークンを保持するための静的変数を定義することもできます。そうすることで、すべてのユーザーがそれを使用できます。
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -185,7 +185,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-次に、`validateRequest` メソッドを作成します。これが、メッセージ・インスペクター内に実装する検証プロセスの開始ポイントとなります。その後、このメソッドへの呼び出しを、前述した `AfterReceiveRequest` メソッド内に追加します。
+次に、`validateRequest` メソッドを作成します。これが、メッセージ・インスペクター内に実装する検証プロセスの開始ポイントとなります。 その後、このメソッドへの呼び出しを、前述した `AfterReceiveRequest` メソッド内に追加します。
 
 ```csharp
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -269,7 +269,7 @@ private string getClientTokenFromHeader(Message request)
 }
 ```
 
-`returnErrorResponse` は、httpStatusCode と WebHeaderCollection を受け取り、応答を作成してから、それをクライアント・アプリケーションに返信するヘルパー・メソッドです。応答をクライアント・アプリケーションに送信すると、要求は完了します。
+`returnErrorResponse` は、httpStatusCode と WebHeaderCollection を受け取り、応答を作成してから、それをクライアント・アプリケーションに返信するヘルパー・メソッドです。 応答をクライアント・アプリケーションに送信すると、要求は完了します。
 
 ```csharp
 private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
@@ -306,8 +306,8 @@ private string getIntrospectionToken()
   postParameters.Add("grant_type", "client_credentials");
   postParameters.Add("scope", "authorization.introspect");
 
-              try {
-HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
+  try {
+    HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
     Stream dataStream = resp.GetResponseStream();
     StreamReader reader = new StreamReader(dataStream);
     strResponse = reader.ReadToEnd();
@@ -324,7 +324,7 @@ HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Cre
 ```
 
 `sendRequest` メソッドは、{{ site.data.keys.product_adj }} 許可サーバーへの要求の送信を担当するヘルパー・メソッドです。  
-`getIntrospectionToken` は要求をトークン・エンドポイントに送信するためにこれを使用し、`introspectClientRequest` メソッドはイントロスペクション・エンドポイントに要求を送信するためにこれを使用します。このメソッドが返す `HttpWebResponse` を `getIntrospectionToken` メソッド内で使用して、そこから access_token を抽出したり、抽出したそのトークンをメッセージ・インスペクター・トークンとして保管したりします。`introspectClientRequest` メソッド内では、単純に MFP 許可サーバー応答を返すために使用されます。
+`getIntrospectionToken` は要求をトークン・エンドポイントに送信するためにこれを使用し、`introspectClientRequest` メソッドはイントロスペクション・エンドポイントに要求を送信するためにこれを使用します。 このメソッドが返す `HttpWebResponse` を `getIntrospectionToken` メソッド内で使用して、そこから access_token を抽出したり、抽出したそのトークンをメッセージ・インスペクター・トークンとして保管したりします。 `introspectClientRequest` メソッド内では、単純に MFP 許可サーバー応答を返すために使用されます。
 
 ```csharp
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -352,7 +352,7 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 
 ## クライアント・トークンが付いた要求のイントロスペクション・エンドポイントへの送信
 {: #send-request-to-introspection-endpoint-with-client-token }
-これで、{{ site.data.keys.product_adj }} 許可サーバーによって認証されたので、**クライアント・トークンのコンテンツを有効にする**ことができます。そこで、要求を**イントロスペクション・エンドポイント**に送信します。その際、前のステップ (`filterIntrospectionToken`) で受け取ったトークンを要求ヘッダーに追加するとともに、クライアント・トークンを要求のポスト・データに追加します。  
+これで、{{ site.data.keys.product_adj }} 許可サーバーによって認証されたので、**クライアント・トークンのコンテンツを有効にする**ことができます。 そこで、要求を**イントロスペクション・エンドポイント**に送信します。その際、前のステップ (`filterIntrospectionToken`) で受け取ったトークンを要求ヘッダーに追加するとともに、クライアント・トークンを要求のポスト・データに追加します。  
 次に、{{ site.data.keys.product_adj }} 許可サーバーからの応答を `postProcess` メソッド内で検査します。
 
 ```csharp
@@ -369,7 +369,7 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 ## ポストプロセス検証
 {: #post-process-validation }
 `postProcess` メソッドに進む前に、応答ステータスが **401 (Unauthorized)** でないことを確認する必要があります。  
-この時点での 401 (Unauthorized) 応答ステータスは、メッセージ・インスペクター・トークン (`filterIntrospectionToken`) の有効期限が切れたことを示しています。応答ステータスが 401 (Unauthorized) である場合、`getIntrospectionToken` を呼び出してメッセージ・インスペクター用の新しいトークンを取得し、新しいトークンを使用して再度 `introspectClientRequest` を呼び出します。
+この時点での 401 (Unauthorized) 応答ステータスは、メッセージ・インスペクター・トークン (`filterIntrospectionToken`) の有効期限が切れたことを示しています。 応答ステータスが 401 (Unauthorized) である場合、`getIntrospectionToken` を呼び出してメッセージ・インスペクター用の新しいトークンを取得し、新しいトークンを使用して再度 `introspectClientRequest` を呼び出します。
 
 ```csharp
 if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -379,8 +379,8 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-postProcess メソッドの主な目的は、{{ site.data.keys.product_adj }} 許可サーバーから受け取った応答を調べることですが、応答を抽出してチェックする前に、**応答ステータスが 200 (OK) であることを確認**しなければなりません。応答ステータスが **409 (Conflict)** の場合は、この応答をクライアント・アプリケーションに転送する必要があり、それ以外の場合には例外をスローする必要があります。  
-応答ステータスが 200 (OK) であれば、現在の応答で `AzResponse` クラス ({{ site.data.keys.product_adj }} 許可サーバーの応答を表すために定義されるクラス) を初期設定します。その後、**応答がアクティブ**であること、さらに、応答に正しい**スコープ**が組み込まれていることを確認します。
+postProcess メソッドの主な目的は、{{ site.data.keys.product_adj }} 許可サーバーから受け取った応答を調べることですが、応答を抽出してチェックする前に、**応答ステータスが 200 (OK) であることを確認**しなければなりません。 応答ステータスが **409 (Conflict)** の場合は、この応答をクライアント・アプリケーションに転送する必要があり、それ以外の場合には例外をスローする必要があります。  
+応答ステータスが 200 (OK) であれば、現在の応答で `AzResponse` クラス ({{ site.data.keys.product_adj }} 許可サーバーの応答を表すために定義されるクラス) を初期設定します。 その後、**応答がアクティブ**であること、さらに、応答に正しい**スコープ**が組み込まれていることを確認します。
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
@@ -401,7 +401,7 @@ private void postProcess(HttpWebResponse introspectionResponse)
     }
   }
   else
-  {
+  {                
     AzResponse azResp = new AzResponse(introspectionResponse); // Casting the response to an object
     WebHeaderCollection webHeaderCollection = new WebHeaderCollection();
 

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: トラスト・アソシエーション・インターセプター
-breadcrumb_title: トラスト・アソシエーション・インターセプター
+breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: サンプルのダウンロード
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -26,7 +26,7 @@ Java ライブラリーは、JAR ファイル (**com.ibm.mfp.oauth.tai-8.0.0.jar
 
 ## サーバーのセットアップ
 {: #server-setup }
-1. セキュリティー・ツールの .zip を **{{ site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」**タブからダウンロードします。そこに、`mfp-oauth-tai.zip` アーカイブが含まれています。この zip を解凍します。
+1. セキュリティー・ツールの .zip を **{{ site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」**タブからダウンロードします。 そこに、`mfp-oauth-tai.zip` アーカイブが含まれています。 この zip を解凍します。
 2. `com.ibm.mfp.oauth.tai.jar` ファイルを WebSphere Application Server インスタンスの **usr/extension/lib** 内に追加します。
 3. `OAuthTai.mf` ファイルを WebSphere Application Server インスタンスの **usr/extension/lib/features** 内に追加します。
 
@@ -85,7 +85,7 @@ servlet-2.x を使用する場合は、セキュリティー・ロールを web.
 </application>
 ```
 
-* OAuthTAI を構成します。ここで、URL を保護対象として設定します。
+* OAuthTAI を構成します。 ここで、URL を保護対象として設定します。
 
   ```xml
   <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
@@ -94,20 +94,20 @@ servlet-2.x を使用する場合は、セキュリティー・ロールを web.
   ```
     - **authorizationURL**: {{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`) または外部 AZ サーバー (IBM DataPower など) のいずれかです。
 
-    - **clientID**: リソース・サーバーは、登録済みの機密クライアントでなければなりません。機密クライアントを登録する方法については、[機密クライアント](../../confidential-clients/)のチュートリアルを参照してください。トークンを検証できるようにするために、*機密クライアントには*、許可されるスコープとして `authorization.introspect` が*必須* です。
+    - **clientID**: リソース・サーバーは、登録済みの機密クライアントでなければなりません。 機密クライアントを登録する方法については、[機密クライアント](../../confidential-clients/)のチュートリアルを参照してください。 トークンを検証できるようにするために、*機密クライアントには*、許可されるスコープとして `authorization.introspect` が*必須* です。
 
-    - **clientSecret**: リソース・サーバーは、登録済みの機密クライアントでなければなりません。機密クライアントを登録する方法については、[機密クライアント](../../confidential-clients/)のチュートリアルを参照してください。
+    - **clientSecret**: リソース・サーバーは、登録済みの機密クライアントでなければなりません。 機密クライアントを登録する方法については、[機密クライアント](../../confidential-clients/)のチュートリアルを参照してください。
     - **cacheSize (オプション)**: TAI は、Java-Token-Validator キャッシュを使用して、トークンおよびイントロスペクション・データの値をキャッシュに入れることで、短い時間内であれば、クライアントから要求内で渡されるトークンを再度イントロスペクトせずに済むようにします。
 
         デフォルト・サイズは 50,000 個分のトークンです。  
 
         すべての要求でトークンがイントロスペクトされることを保証する必要がある場合、キャッシュの値を 0 に設定してください。  
 
-    - **scope**: リソース・サーバーは 1 つ以上のスコープを基準にして認証します。スコープは、セキュリティー検査にすることも、セキュリティー検査にマップされるスコープ・エレメントにすることもできます。
+    - **scope**: リソース・サーバーは 1 つ以上のスコープを基準にして認証します。 スコープは、セキュリティー検査にすることも、セキュリティー検査にマップされるスコープ・エレメントにすることもできます。
 
 ## TAI から入手するトークン・イントロスペクション・データの使用
 {: #using-the-token-introspection-data-from-the-tai }
-TAI によってインターセプトされ、検証されたトークン情報にリソースからアクセスできます。トークンに関して検出できるデータのリストについては、[API リファレンス](../../../api/java-token-validator)を参照してください。このデータを取得するには、[WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html) を使用します。
+TAI によってインターセプトされ、検証されたトークン情報にリソースからアクセスできます。 トークンに関して検出できるデータのリストについては、[API リファレンス](../../../api/java-token-validator)を参照してください。 このデータを取得するには、[WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html) を使用します。
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();

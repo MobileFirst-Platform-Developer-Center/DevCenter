@@ -1,18 +1,18 @@
 ---
 layout: tutorial
 title: CredentialsValidationSecurityCheck クラスの実装
-breadcrumb_title: セキュリティー検査
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: セキュリティー検査のダウンロード
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-この抽象クラスは、`ExternalizableSecurityCheck` を継承し、その大部分のメソッドを実装して、簡単に使用できるようにします。`validateCredentials` と `createChallenge` の 2 つのメソッドは必須です。  
-`CredentialsValidationSecurityCheck` クラスは、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
+この抽象クラスは、`ExternalizableSecurityCheck` を継承し、その大部分のメソッドを実装して、簡単に使用できるようにします。 `validateCredentials` と `createChallenge` の 2 つのメソッドは必須です。  
+`CredentialsValidationSecurityCheck` クラスは、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。 設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
 
 このチュートリアルでは、ハードコーディングされた PIN コードでリソースを保護する例を使用します。また、ユーザーには 3 回まで試行が許されます (この回数を過ぎると、クライアント・アプリケーション・インスタンスは 60 秒間ブロックされます)。
 
@@ -47,7 +47,7 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 
 ## チャレンジの作成
 {: #creating-the-challenge }
-セキュリティー検査がトリガーされると、セキュリティー検査はクライアントにチャレンジを送信します。`null` を返すと空のチャレンジが作成されます。場合によっては、それで十分なこともあります。  
+セキュリティー検査がトリガーされると、セキュリティー検査はクライアントにチャレンジを送信します。 `null` を返すと空のチャレンジが作成されます。場合によっては、それで十分なこともあります。  
 オプションで、チャレンジと一緒にデータを返すこともできます。例えば、表示するエラー・メッセージや、クライアントが使用できるその他のデータなどです。
 
 例えば、`PinCodeAttempts` は、事前定義エラー・メッセージと残りの試行回数を送信します。
@@ -68,12 +68,12 @@ protected Map<String, Object> createChallenge() {
 
 ## ユーザー資格情報の検証
 {: #validating-the-user-credentials }
-クライアントがチャレンジの応答を送信すると、応答は `Map` として `validateCredentials` に渡されます。このメソッドに必要なロジックを実装し、資格情報が有効な場合には `true` を返す必要があります。
+クライアントがチャレンジの応答を送信すると、応答は `Map` として `validateCredentials` に渡されます。 このメソッドに必要なロジックを実装し、資格情報が有効な場合には `true` を返す必要があります。
 
 ```java
 @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null &&  credentials.containsKey("pin")){
+    if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals("1234")){
@@ -98,7 +98,7 @@ protected Map<String, Object> createChallenge() {
 {: #configuration-class }
 adapter.xml ファイルと {{ site.data.keys.mf_console }} を使用して、有効な PIN コードを構成することもできます。
 
-`CredentialsValidationSecurityCheckConfig` を継承する新規 Java クラスを作成します。デフォルト構成を継承するために、親のセキュリティー検査クラスに一致するクラスを継承する必要があります。
+`CredentialsValidationSecurityCheckConfig` を継承する新規 Java クラスを作成します。 デフォルト構成を継承するために、親のセキュリティー検査クラスに一致するクラスを継承する必要があります。
 
 ```java
 public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
@@ -113,7 +113,7 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-このクラスの必須メソッドは、`Properties` インスタンスを処理できるコンストラクターのみです。adapter.xml ファイルから特定のプロパティーを取得するには、`get[Type]Property` メソッドを使用します。値が見つからない場合は、3 番目のパラメーターでデフォルト値 (`1234`) を定義します。
+このクラスの必須メソッドは、`Properties` インスタンスを処理できるコンストラクターのみです。 adapter.xml ファイルから特定のプロパティーを取得するには、`get[Type]Property` メソッドを使用します。 値が見つからない場合は、3 番目のパラメーターでデフォルト値 (`1234`) を定義します。
 
 以下のように、`addMessage` メソッドを使用して、このコンストラクターにエラー処理を追加することもできます。
 
@@ -145,7 +145,7 @@ public PinCodeConfig(Properties properties) {
 ```java
 @Override
   public SecurityCheckConfiguration createConfiguration(Properties properties) {
-      return new PinCodeConfig(properties);
+    return new PinCodeConfig(properties);
 }
 @Override
 protected PinCodeConfig getConfiguration() {
@@ -160,7 +160,7 @@ protected PinCodeConfig getConfiguration() {
 ```java
 @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
+    if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
         if(pinCode.equals(getConfiguration().pinCode)){
@@ -194,9 +194,9 @@ adapter.xml 内に、`<securityCheckDefinition>` エレメントを追加しま�
 </securityCheckDefinition>
 ```
 
-`name` 属性は、セキュリティー検査の名前にしてください。`class` パラメーターは、先に作成したクラスに設定します。
+`name` 属性は、セキュリティー検査の名前にしてください。 `class` パラメーターは、先に作成したクラスに設定します。
 
-`securityCheckDefinition` には、ゼロ個以上の `property` エレメントを含めることができます。`pinCode` プロパティーは、`PinCodeConfig` 構成クラスで定義したプロパティーです。その他のプロパティーは、`CredentialsValidationSecurityCheckConfig` 構成クラスから継承されたものです。
+`securityCheckDefinition` には、ゼロ個以上の `property` エレメントを含めることができます。 `pinCode` プロパティーは、`PinCodeConfig` 構成クラスで定義したプロパティーです。 その他のプロパティーは、`CredentialsValidationSecurityCheckConfig` 構成クラスから継承されたものです。
 
 デフォルトでは、これらのプロパティーを adapter.xml ファイル内に指定しないと、`CredentialsValidationSecurityCheckConfig` によって設定されたデフォルト値を受け取ります。
 
@@ -216,7 +216,7 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 - `successStateExpirationSec`: ログイン成功が保持される期間 (秒数)。
 - `blockedStateExpirationSec`: `maxAttempts` に達した後でクライアントがブロックされる期間 (秒数)。
 
-`blockedStateExpirationSec` のデフォルト値は `0` に設定される点に注意してください。すなわち、クライアントが無効な資格情報を送信した場合、「0 秒経過後」に再試行できます。これは、デフォルトでは「試行」機能が無効になることを意味します。
+`blockedStateExpirationSec` のデフォルト値は `0` に設定される点に注意してください。すなわち、クライアントが無効な資格情報を送信した場合、「0 秒経過後」に再試行できます。 これは、デフォルトでは「試行」機能が無効になることを意味します。
 
 
 ## サンプルのセキュリティー検査

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java アダプターおよび JavaScript アダプターの作成
-breadcrumb_title: アダプターの作成
+breadcrumb_title: Creating Adapters
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
@@ -9,7 +9,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-アダプターを作成するには、Maven コマンドまたは {{ site.data.keys.mf_cli }} を使用できます (Maven がインストールされ、構成されているかどうかによって異なります)。その後、任意の IDE (Eclipse や IntelliJ など) を使用して、アダプター・コードを編集し、ビルドすることができます。このチュートリアルでは、Maven および {{ site.data.keys.mf_cli }} を使用して **Java アダプターまたは JavaScript アダプター**を作成、ビルド、およびデプロイする方法について説明します。Eclipse IDE または IntelliJ IDE を使用してアダプターの作成およびビルドを行う方法については、[Eclipse でのアダプターの開発](../developing-adapters)チュートリアルを参照してください。
+アダプターを作成するには、Maven コマンドまたは {{ site.data.keys.mf_cli }} を使用できます (Maven がインストールされ、構成されているかどうかによって異なります)。 その後、任意の IDE (Eclipse や IntelliJ など) を使用して、アダプター・コードを編集し、ビルドすることができます。 このチュートリアルでは、Maven および {{ site.data.keys.mf_cli }} を使用して **Java アダプターまたは JavaScript アダプター**を作成、ビルド、およびデプロイする方法について説明します。 Eclipse IDE または IntelliJ IDE を使用してアダプターの作成およびビルドを行う方法については、[Eclipse でのアダプターの開発](../developing-adapters)チュートリアルを参照してください。
 
 **前提条件:** 最初に必ず、[アダプターの概説](../)をお読みください。
 
@@ -31,7 +31,7 @@ weight: 2
 
 ## Maven のインストール
 {: #install-maven }
-アダプターを作成するには、まず Maven をダウンロードしてインストールする必要があります。[Apache Maven Web サイト](https://maven.apache.org/)に移動し、Maven のダウンロードおよびインストール方法の手順に従ってください。
+アダプターを作成するには、まず Maven をダウンロードしてインストールする必要があります。 [Apache Maven Web サイト](https://maven.apache.org/)に移動し、Maven のダウンロードおよびインストール方法の手順に従ってください。
 
 ## {{ site.data.keys.mf_cli }}を使用したアダプターの作成
 {: #creating-adapters-using-mobilefirst-cli }
@@ -54,7 +54,7 @@ Maven アダプター・プロジェクトを作成するには、`mfpdev adapte
    mfpdev adapter create
    ```
 
-2. アダプター名を入力してください。以下に例を示します。 
+2. アダプター名を入力してください。 以下に例を示します。
 
    ```bash
    ? Enter Adapter Name: SampleAdapter
@@ -72,13 +72,13 @@ Maven アダプター・プロジェクトを作成するには、`mfpdev adapte
   * JavaScript SQL アダプターを作成するには、`SQL` を選択します。  
   * Java アダプターを作成するには、`Java` を選択します。
 
-4. アダプター・パッケージを入力します (このオプションは Java アダプターの場合にのみ有効です)。以下に例を示します。
+4. アダプター・パッケージを入力します (このオプションは Java アダプターの場合にのみ有効です)。 以下に例を示します。
 
    ```bash
    ? Enter Package: com.mypackage
    ```
 
-5. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。以下に例を示します。
+5. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。 以下に例を示します。
 
    ```bash
    ? Enter Group ID: com.mycompany
@@ -97,7 +97,7 @@ mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name>
 
 「adapter-maven-archetype」は、{{ site.data.keys.product }} 提供のアーキタイプで、[Maven アーキタイプ・ツールキット](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)に基づいていて、Maven でアダプター Maven プロジェクトを作成するために使用されます。
 
-Maven アダプター・プロジェクトを作成するには、`archetype:generate` Mavenコマンドを使用します。このコマンドを実行すると、Maven は、アダプター Maven プロジェクトを生成するために必要なファイルをダウンロードします (または前に説明したローカル・リポジトリーを使用します)。
+Maven アダプター・プロジェクトを作成するには、`archetype:generate` Mavenコマンドを使用します。 このコマンドを実行すると、Maven は、アダプター Maven プロジェクトを生成するために必要なファイルをダウンロードします (または前に説明したローカル・リポジトリーを使用します)。
 
 コマンドを対話式で実行するか直接実行するかを選択することができます。
 
@@ -119,25 +119,25 @@ Maven アダプター・プロジェクトを作成するには、`archetype:gen
      * JavaScript HTTP アダプターを作成するには、`adapter-maven-archetype-http` を使用します。
      * JavaScript SQL アダプターを作成するには、`adapter-maven-archetype-sql` を使用します。  
 
-3. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。以下に例を示します。
+3. ビルドする Maven プロジェクトの[グループ ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html) を入力します。 以下に例を示します。
 
    ```bash
    Define value for property 'groupId': : com.mycompany
    ```
 
-4. Maven プロジェクトの成果物 ID を入力します。**この ID は、後でアダプター名としても使用されます**。以下に例を示します。
+4. Maven プロジェクトの成果物 ID を入力します。**この ID は、後でアダプター名としても使用されます**。 以下に例を示します。
 
    ```bash
    Define value for property 'artifactId': : SampleAdapter
    ```
 
-5. Maven プロジェクトのバージョンを入力します (デフォルトは `1.0-SNAPSHOT` です)。以下に例を示します。
+5. Maven プロジェクトのバージョンを入力します (デフォルトは `1.0-SNAPSHOT` です)。 以下に例を示します。
 
    ```bash
    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
    ```
 
-6. アダプターのパッケージ名を入力します (デフォルトは `groupId` です)。以下に例を示します。
+6. アダプターのパッケージ名を入力します (デフォルトは `groupId` です)。 以下に例を示します。
 
    ```bash
    Define value for property 'package':  com.mycompany: : com.mypackage
@@ -217,8 +217,8 @@ mfpdev adapter build all
    ```
    
    * **localhost:9080** を、{{ site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
-   * **オプション**。**mfpfUser** および **mfpfPassword** のデフォルト値を、管理ユーザー名およびパスワードで置き換えます。
-   * **オプション**。**mfpfRuntime** のデフォルト値をランタイム名で置き換えます。
+   * **オプション**。 **mfpfUser** および **mfpfPassword** のデフォルト値を、管理ユーザー名およびパスワードで置き換えます。
+   * **オプション**。 **mfpfRuntime** のデフォルト値をランタイム名で置き換えます。
 2. プロジェクトのルート・フォルダーから deploy コマンドを実行します。
  * **{{ site.data.keys.mf_cli }} を使用する場合**:
 
@@ -294,7 +294,7 @@ mfpdev adapter deploy all
 ## 単一の Maven プロジェクトへのアダプターのグループ化
 {: #grouping-adapters-in-a-single-maven-project }
 
-プロジェクト内に複数のアダプターがある場合、それらを単一の Maven プロジェクトの下に配置できます。アダプターをグループ化すると、すべてビルドしたり、すべてデプロイしたり、依存関係を共有したりできるという利点が得られます。アダプターが単一の Maven プロジェクトにグループ化されていない場合でも、`mfpdev adapter build all` CLI コマンドおよび `mfpdev adapter deploy all` CLI コマンドを使用して、すべてのアダプターのビルドやデプロイを行うこともできます。
+プロジェクト内に複数のアダプターがある場合、それらを単一の Maven プロジェクトの下に配置できます。 アダプターをグループ化すると、すべてビルドしたり、すべてデプロイしたり、依存関係を共有したりできるという利点が得られます。 アダプターが単一の Maven プロジェクトにグループ化されていない場合でも、`mfpdev adapter build all` CLI コマンドおよび `mfpdev adapter deploy all` CLI コマンドを使用して、すべてのアダプターのビルドやデプロイを行うこともできます。
 
 アダプターをグループ化するには、以下のことを行う必要があります。
 
@@ -342,9 +342,9 @@ mfpdev adapter deploy all
   2. **`artifactId`** エレメント (ルート・フォルダーの名前) を追加します。
   3. 各アダプターの **`module`** エレメントを追加します。
   4. **`build`** エレメントを追加します。
-  5. **オプション**。**localhost:9080** を特定の {{ site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
-  6. **オプション**。**`mfpfUser`** および **`mfpfPassword`** のデフォルト値を、管理ユーザー名およびパスワードで置き換えます。
-  7. **オプション**。**`mfpfRuntime`** のデフォルト値をランタイム名で置き換えます。
+  5. **オプション**。 **localhost:9080** を特定の {{ site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
+  6. **オプション**。 **`mfpfUser`** および **`mfpfPassword`** のデフォルト値を、管理ユーザー名およびパスワードで置き換えます。
+  7. **オプション**。 **`mfpfRuntime`** のデフォルト値をランタイム名で置き換えます。
 
 4. すべてのアダプターを[ビルドまたはデプロイ](#build-and-deploy-adapters)するには、ルートの「GroupAdapters」プロジェクトから Maven コマンドを実行します。
 
@@ -352,7 +352,7 @@ mfpdev adapter deploy all
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
 1. 任意のブラウザーを開き、アドレス `http://<IP>:<PORT>/mfpconsole/` を使用して {{ site.data.keys.mf_console }} をロードします。  
-2. 「アダプター」の横にある「新規」ボタンをクリックします。アダプターを作成するには以下の 2 つのオプションがあります。
+2. 「アダプター」の横にある「新規」ボタンをクリックします。 アダプターを作成するには以下の 2 つのオプションがあります。
  * 前に説明したように、Maven または {{ site.data.keys.mf_cli }} を使用する。
  * テンプレート・アダプター・プロジェクトをダウンロードする (ステップ 2)。
 3. Maven または {{ site.data.keys.mf_cli }} を使用してアダプターをビルドします。
@@ -363,7 +363,7 @@ mfpdev adapter deploy all
     ![コンソールを使用したアダプターの作成](Create_adapter_console.png)
 
 5. アダプターが正常にデプロイされたら、以下のタブが含まれた詳細ページが表示されます。
- * 「構成」 - アダプター XML ファイルで定義されたプロパティー。ここで、構成を変更できます。再度デプロイする必要はありません。
+ * 「構成」 - アダプター XML ファイルで定義されたプロパティー。 ここで、構成を変更できます。再度デプロイする必要はありません。
  * 「リソース」 - アダプター・リソースのリスト。
  * 「構成ファイル」 - DevOps 環境で使用するためのアダプター構成データ。
 
@@ -401,9 +401,9 @@ Maven 中央リポジトリーにオンラインでアクセスできない場�
 
 1. [ダウンロード・ページにアクセス]({{site.baseurl}}/downloads/)し、{{ site.data.keys.mf_dev_kit_full }} インストーラーをダウンロードします。
 2. {{ site.data.keys.mf_server }} を始動し、ブラウザーで、URL: `http://<your-server-host:server-port>/mfpconsole` から {{ site.data.keys.mf_console }} をロードします。
-3. **「ダウンロード・センター」**をクリックします。**「ツール」→「アダプターのアーキタイプ」**の**「ダウンロード」**をクリックします。**mfp-maven-central-artifacts-adapter.zip** アーカイブがダウンロードされます。
+3. **「ダウンロード・センター」**をクリックします。 **「ツール」→「アダプターのアーキタイプ」**の**「ダウンロード」**をクリックします。 **mfp-maven-central-artifacts-adapter.zip** アーカイブがダウンロードされます。
 4. **install.sh** スクリプト (Linux および Mac の場合) または **install.bat** スクリプト (Windows の場合) を実行して、アダプター・アーキタイプおよびセキュリティー検査を内部 Maven リポジトリーに追加します。
-5. adapter-maven-api には、以下の JAR ファイルが必要です。これらが、開発者のローカル **.m2** フォルダーまたは組織の Maven リポジトリーのいずれかに配置されていることを確認してください。これらは、中央リポジトリーからダウンロードできます。
+5. adapter-maven-api には、以下の JAR ファイルが必要です。 これらが、開発者のローカル **.m2** フォルダーまたは組織の Maven リポジトリーのいずれかに配置されていることを確認してください。 これらは、中央リポジトリーからダウンロードできます。
     * javax.ws.rs:javax.ws.rs-api:2.0
     * javax:javaee-web-api:6.0
     * org.apache.httpcomponents:httpclient:4.3.4
