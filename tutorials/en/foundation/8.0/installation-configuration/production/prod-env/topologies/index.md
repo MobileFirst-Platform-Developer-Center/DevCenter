@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Topologies and Network flows
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -335,7 +335,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.port
         </td>
         <td>
-            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
+            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -348,7 +348,7 @@ The following global JNDI properties are required in each server of the farm for
         </td>
         <td>
             The user name of the WebSphere Application Server Liberty administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
-            
+
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -548,9 +548,9 @@ The following global JNDI properties are required for the runtimes:
 
 The following JNDI property is required for the runtime when several controllers (replicas) using the same administration components are used:
 
-| JNDI properties | Values | 
+| JNDI properties | Values |
 |-----------------|--------|
-| mfp.admin.jmx.replica | Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 
 When several administration components are deployed in the controller, each runtime must have the same value for the local **mfp.admin.environmentid** JNDI property as the value that is defined for the administration service that manages the runtime.
 
