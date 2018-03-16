@@ -31,10 +31,10 @@ To be considered part of the same {{ site.data.keys.product_adj }} application f
 * Specify the same value for the application family in the application descriptor.
 	* For iOS applications, this requirement is synonymous to the access group entitlements value.
 	* For Android applications, this requirement is synonymous to the **sharedUserId** value in the **AndroidManifest.xml** file.
-		
+
     > **Note:** For Android, the name must be in the **x.y** format.
 
-* Applications must be signed by the same signing identity. This requirement means that only applications from the same organization can use this feature.	
+* Applications must be signed by the same signing identity. This requirement means that only applications from the same organization can use this feature.
     * For iOS applications, this requirement means the same Application ID prefix, provisioning profile, and signing identity is used to sign the application.
 	* For Android applications, this requirement means the same signing certificate and key.
 
@@ -62,11 +62,11 @@ Open your application in Xcode/Android Studio and:
 4. Save and sign applications. Ensure that all applications in this group are signed by the same iOS certificate and provisioning profiles.
 5. Repeat the steps for all applications that you want to make part of the same application family.
 
-You can now use the native Simple Data Sharing APIs to share simple strings among the group of applications in the same family. 
+You can now use the native Simple Data Sharing APIs to share simple strings among the group of applications in the same family.
 
 ### Android
 {: #android }
-1. Enable the Simple Data Sharing option by specifying the application family name as the **android:sharedUserId** element in the manifest tag of your **AndroidManifest.xml** file. For example: 
+1. Enable the Simple Data Sharing option by specifying the application family name as the **android:sharedUserId** element in the manifest tag of your **AndroidManifest.xml** file. For example:
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -74,7 +74,7 @@ You can now use the native Simple Data Sharing APIs to share simple strings amon
         android:versionName="1.0"
         android:sharedUserId="com.myGroup1">
    ```
-    
+
 2. Ensure that applications that are part of the same family are signed by the same signing credentials.
 3. Uninstall any earlier versions of the applications that did not specify a **sharedUserId** or that used a different **sharedUserId**.
 4. Install the application on the device.
@@ -96,7 +96,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> For more information about the Cordova APIs, see the [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken), [setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken), and [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) functions in the API reference.
+> For more information about the Cordova APIs, see the [getSharedToken](../../api/client-side-api/javascript/client/), [setSharedToken](../../api/client-side-api/javascript/client/), and [clearSharedToken](../../api/client-side-api/javascript/client/) functions in the `WL.Client` API reference.
 
 ### Objective-C
 {: #objective-c }
@@ -106,7 +106,7 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 [WLSimpleDataSharing clearSharedToken: myName];
 ```
 
-> For more information about the Objective-C APIs, see the [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) class in the API reference.
+> For more information about the Objective-C APIs, see the [WLSimpleDataSharing](../../api/client-side-api/objc/client/) class in the API reference.
 
 ### Java
 {: #java }
@@ -116,7 +116,7 @@ String token = WLSimpleSharedData.getSharedToken(myName);
 WLSimpleSharedData.clearSharedToken(myName);
 ```
 
-> For more information about the Java APIs, see Class [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html) in the API reference.
+> For more information about the Java APIs, see Class [WLSimpleDataSharing](../../api/client-side-api/java/client/) in the API reference.
 
 ## Limitations and considerations
 {: #limitations-and-considerations }

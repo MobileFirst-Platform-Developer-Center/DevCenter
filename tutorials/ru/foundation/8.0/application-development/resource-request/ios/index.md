@@ -198,6 +198,40 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` allows you to set an arbitrary dictionary in the body.
 - `sendWithData` allows you to set an arbitrary `NSData` in the body.
 
+### Callback queue for completionHandler and delegate
+In order to avoid blocking the UI while receiving responses, a private callback queue can be specified to execute completionHandler block or delegate for `sendWithCompletionHandler` and `sendWithDelegate` set of APIs.
+
+#### Objective-C
+
+```objc
+//creating callback queue
+dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL);
+
+//Sending the request with callback queue
+[request sendWithCompletionHandler:completionQueue completionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+#### Swift
+
+```swift
+//creating callback queue
+var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
+
+//Sending the request with callback queue
+request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
+  if (error == nil){
+      NSLog(@"%@", response.responseText);
+  } else {
+      NSLog(@"%@", error.description);
+  }
+}
+```
+
 ## The response
 {: #the response }
 The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
@@ -206,7 +240,7 @@ Use the `response` and `error` objects to get the data that is retrieved from th
 
 ## For more information
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html).
+> For more information about WLResourceRequest, [refer to the API Reference](../../../api/client-side-api/objc/client/).
 
 <img alt="Image of the sample application" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## Sample application

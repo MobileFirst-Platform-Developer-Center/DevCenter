@@ -112,6 +112,8 @@ The following table shows the properties that can be set in the {{ site.data.key
 
 In all cases where the key does not contain a period (like **httpport** but not **http.enabled**), the setting can be controlled by system environment variables where the variable name is prefixed with **ANALYTICS_**. When both the JNDI property and the system environment variable are set, the system environment variable takes precedence. For example, if you have both the **analytics/httpport** JNDI property and the **ANALTYICS_httpport** system environment variable set, the value for **ANALYTICS_httpport** is used.
 
+> **Important**: Currently, MobileFirst Analytics v8.0 does not support multi-tenancy. Events from MobileFirst Server are by default sent to a single tenant architecture.
+
 #### Document Time to Live (TTL)
 {: #document-time-to-live-ttl }
 TTL is effectively how you can establish and maintain a data retention policy. Your decisions have dramatic consequences on your system resource needs. The long you keep data, the more RAM, disk, and scaling is likely needed.
@@ -131,7 +133,23 @@ These values can be set by using basic time units as follows.
 * 1s = 1 second
 * 1ms = 1 millisecond
 
-> Note: If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+List of supported document-types are as follows:
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **Note:** If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -180,7 +198,7 @@ The underlying Elasticsearch data store expects nodes to be homogenous, so do no
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
 Learn how to add a {{ site.data.keys.mf_analytics_server }} to the cluster.
 
-Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, use the Elasticsearch setup to define cluster behavior. Do not, for example, create a WebSphere Application Server Liberty farm or use other application server setups.
 
 In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
 

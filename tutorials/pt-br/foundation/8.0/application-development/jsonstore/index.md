@@ -151,7 +151,7 @@ JSONStore is similar to technologies such as LocalStorage, Indexed DB, Cordova S
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
 | Android Support (Cordova &amp; Native Applications)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
 | iOS Support (Cordova & Native Applications)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal anND Windows 10 UWP          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| Windows 8.1 Universal and Windows 10 UWP (Cordova Applications)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
 | Data encryption	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
 | Maximum Storage	                                 |Available Space |    ~5MB     |   ~5MB 	 | Available Space	   | Available Space  |
 | Reliable Storage (See note)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
