@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuring MobileFirst Server
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
