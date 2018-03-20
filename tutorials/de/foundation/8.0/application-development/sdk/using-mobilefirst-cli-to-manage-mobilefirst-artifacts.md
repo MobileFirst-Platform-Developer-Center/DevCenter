@@ -436,7 +436,7 @@ Die Webressourcen einer Cordova-App wie HTML-, CSS- und JS-Dateien im Ordner **w
 für direkte Aktualisierung aktualisiert werden,
 ohne dass die App neu auf dem mobilen Gerät installiert werden muss. 
 > Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/direct-update).
-> Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen](../direct-update).
+
 
 
 
