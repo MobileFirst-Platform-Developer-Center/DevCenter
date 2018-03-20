@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst Server für eine Produktionsumgebung installieren
-breadcrumb_title: Produktionsumgebung
+title: Installing MobileFirst Server for a Production Environment
+breadcrumb_title: Production Environment
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -14,7 +14,7 @@ Weitere Informationen zur Konfiguration von
 finden Sie unter
 [{{ site.data.keys.mf_server }} konfigurieren](server-configuration).
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Jump to
 {: #jump-to }
 
 * [Voraussetzungen](#prerequisites)
@@ -41,8 +41,8 @@ Sie während des Installationsprozesses den JDBC-Treiber für die Datenbank. Die
 {{ site.data.keys.mf_server }} bereitgestellt. Stellen Sie sicher, dass der JDBC-Treiber vorhanden ist.
 
 * Verwenden Sie für DB2 Version 4.0 des DB2-JDBC-Treibers (db2jcc4.jar).
-* Verwenden Sie für MySQL den Connector/J-JDBC-Treiber.
-* Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber.
+* For MySQL, use the Connector/J JDBC driver.
+* For Oracle, use the Oracle thin JDBC driver.
 
 **Java-Anwendungsserver**  
 Für die Ausführung der MobileFirst-Server-Anwendungen wird ein Java-Anwendungsserver benötigt. Sie können einen der folgenden Anwendungsserver verwenden:
@@ -67,17 +67,14 @@ zu installieren, da für den Installationsabschluss für das Produkt
 Java 7 erforderlich ist. Die älteren Versionen des Installation
 Manager arbeiten mit Java 6.
 
-Laden Sie das Installationsprogramm für
-IBM Installation
-Manager ab Version 1.8.4
-über die [Installation Manager and Packaging Utility Download
-Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142).
+Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 
 **Installation-Manager-Repository für {{ site.data.keys.mf_server }}**  
 Sie können das Repository über [IBM
 Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) aus der eAssembly für
 die {{ site.data.keys.product }}
-herunterladen. Das Paket hat den Namen **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+herunterladen.
+Das Paket hat den Namen **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
 Vielleicht möchten Sie ja auch das neueste Fixpack anwenden, das vom
 [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation) heruntergeladen werden kann. Das Fixpack kann nicht ohne das Repository der Basisversion in den Repositorys von Installation Manager installiert werden.

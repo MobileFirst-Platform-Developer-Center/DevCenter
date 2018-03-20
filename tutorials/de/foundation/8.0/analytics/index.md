@@ -48,6 +48,8 @@ Die Analytics-Client-API erfasst Daten zu einer Vielzahl von Ereignissen
 und sendet die Daten an {{ site.data.keys.mf_analytics_server }}.
 > Weitere Informationen enthält das Lernprogramm [Analytics-Cliententwicklung](analytics-api).
 
+
+
 ### Logger-API
 {: #the-logger-api }
 

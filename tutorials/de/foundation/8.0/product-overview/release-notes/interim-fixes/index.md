@@ -1,12 +1,14 @@
 ---
 layout: tutorial
-title: Neuerungen bei vorläufigen Fixes
+title: Neuerungen in vorläufigen Fixes
 breadcrumb_title: Interim iFixes
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Mit vorläufigen Fixes werden Patches und Aktualisierungen bereitgestellt, um Probleme zu lösen und die {{ site.data.keys.product_full }} hinsichtlich neuer Releases von Betriebssystemen für mobile Geräte auf dem neuesten Stand zu halten. Vorläufige Fixes sind kumulativ. Wenn Sie den neusten vorläufigen Fix für Version 8.0 herunterladen, erhalten Sie gleichzeitig die Korrekturen aus allen früheren vorläufigen Fixes. 
+Mit vorläufigen Fixes werden Patches und Aktualisierungen bereitgestellt, um Probleme zu lösen und die {{ site.data.keys.product_full }} hinsichtlich neuer Releases von Betriebssystemen für mobile Geräte auf dem neuesten Stand zu halten. 
+
+Vorläufige Fixes sind kumulativ. Wenn Sie den neusten vorläufigen Fix für Version 8.0 herunterladen, erhalten Sie gleichzeitig die Korrekturen aus allen früheren vorläufigen Fixes. 
 
 Laden Sie den neuesten vorläufigen Fix herunter und installieren Sie ihn. Sie erhalten damit alle in den folgenden Abschnitten beschriebenen Korrekturen. Wenn Sie frühere Fixes installieren, erhalten Sie möglicherweise nicht alle der hier beschriebenen Korrekturen. 
 

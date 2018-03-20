@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in einem Anwendungsserver installieren
-breadcrumb_title: MobileFirst Server installieren
+breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,7 @@ erstellt und einsatzbereit sind. Weitere Informationen finden Sie unter
 
 Die Servertopologie für die Installation der Komponenten muss ebenfalls definiert werden (siehe [Topologien und Netzabläufe](../topologies)). 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Voraussetzungen für den Anwendungsserver](#application-server-prerequisites)
@@ -67,8 +67,7 @@ RMI verwendet. Lesen Sie dazu weiter unten den Abschnitt **JMX-Verbindung für A
 -Dcom.sun.management.jmxremote.authenticate=false
 -Dcom.sun.management.jmxremote.ssl=false
 {% endhighlight %}
-
-                <p><b>Hinweis:</b> 8686 ist ein Standardwert. Der Wert für diesen Port kann geändert werden, wenn der Port auf dem Computer nicht verfügbar ist.</p>
+                                    <p><b>Hinweis:</b> 8686 ist ein Standardwert. Der Wert für diesen Port kann geändert werden, wenn der Port auf dem Computer nicht verfügbar ist.</p>
 
                 <ul>
                     <li>Die Datei <b>setenv.bat</b> wird verwendet, wenn Sie für den Start von Apache Tomcat <b>Tomcat-Installationsverzeichnis/bin/startup.bat</b> oder <b>Tomcat-Installationsverzeichnis/bin/catalina.bat</b> verwenden.</li>
@@ -461,15 +460,11 @@ Konfigurationsdatei aufbewahrt haben,
 können Sie beim Anwenden eines Fixpacks oder eines vorläufigen Fix die Konfigurationsdatei wiederverwenden. 
 
 1. Starten Sie das Server Configuration Tool.
-                        
     * Nutzen Sie unter Linux den Direktaufruf
 **Applications
 → IBM MobileFirst Platform Server → Server Configuration
 Tool**. 
-    * Klicken Sie unter Windows auf
-**Start → Programme → IBM
-MobileFirst Platform Server → Server Configuration
-Tool**.
+    * Klicken Sie unter Windows auf **Start → Programme → IBM MobileFirst Platform Server → Server Configuration Tool**.
     * Öffnen Sie unter macOS eine Shell-Konsole. Navigieren Sie zu **MFP-Server-Installationsverzeichnis/shortcuts** und geben Sie
 **./configuration-tool.sh** ein.
     * **MFP-Server-Installationsverzeichnis** ist das Verzeichnis, in dem Sie
@@ -529,7 +524,9 @@ mit WebSphere Application Server Network Deployment und DB2 als Datenquelle inst
 Dabei werden die in den Eigenschaften der Ant-Datei angegebenen Parameter verwendet. 
 
 <br/>
-Erstellen Sie nach der Installation eine Kopie der Ant-Datei, die Sie später für die Anwendung eines Fixpacks nutzen können. ### Fixpack mit Ant-Dateien anwenden
+Erstellen Sie nach der Installation eine Kopie der Ant-Datei, die Sie später für die Anwendung eines Fixpacks nutzen können. 
+
+### Fixpack mit Ant-Dateien anwenden
 {: #applying-a-fix-pack-by-using-the-ant-files }
 
 #### Aktualisierung mit der Ant-Beispieldatei
@@ -592,7 +589,7 @@ definieren. Verwenden Sie dafür das Element `<property>` der drei genannten Tas
 * [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
 * [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
-Beispiel:
+Beispiel: 
 
 ```xml
 <installmobilefirstadmin ..>
@@ -612,7 +609,7 @@ Liberty-Administrator für die JMX-Kommunikation.
 Wenn Sie keinen neuen Benutzer erstellen, sondern einen vorhandenen Benutzer
 verwenden möchten, können Sie wie folgt vorgehen: 
 
-1. Geben Sie im Element `<jmx>` einen Benutzer und ein Kennwort an und setzen Sie das Attribut **createLibertyAdmin** auf den Wert "false". Beispiel:
+1. Geben Sie im Element `<jmx>` einen Benutzer und ein Kennwort an und setzen Sie das Attribut **createLibertyAdmin** auf den Wert "false". Beispiel: 
 
    ```xml
    <installmobilefirstadmin ...>
@@ -620,7 +617,7 @@ verwenden möchten, können Sie wie folgt vorgehen:
        ...
    ```
 
-2. Geben Sie im Element `<configuration>` einen Benutzer und ein Kennwort an und setzen Sie das Attribut **createConfigAdminUser** auf den Wert "false". Beispiel:
+2. Geben Sie im Element `<configuration>` einen Benutzer und ein Kennwort an und setzen Sie das Attribut **createConfigAdminUser** auf den Wert "false". Beispiel: 
 
    ```xml
     <installmobilefirstadmin ...>
@@ -970,7 +967,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 {% endhighlight %}
 
                 <p>Die Eigenschaft mfp.admin.endpoint hat normalerweise den Wert <b>*://*:*/Kontextstammverzeichnis_des_Verwaltungsservice</b>.<br/>
-                Weitere Informationen zu den JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
+                Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Sicherheitsrollen</h3>
                 <p>Deklarieren Sie die folgenden Rollen im Element <b>application-bnd</b> der Anwendung:</p>
@@ -1335,7 +1332,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 {% endhighlight %}
 
                 <p>Die Eigenschaft mfp.admin.endpoint hat normalerweise den Wert <b>*://*:*/Kontextstammverzeichnis_des_Verwaltungsservice</b>.<br/>
-                Weitere Informationen zu den JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
+                Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Sicherheitsrollen</h3>
                 <p>Deklarieren Sie die folgenden Rollen im Element <b>application-bnd</b> der Anwendung:</p>
@@ -1505,7 +1502,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                 Die WAR-Datei für den Verwaltungsservice ist <b>MFP-Installationsverzeichnis/MobileFirstServer/mfp-admin-service.war</b>. Das Kontextstammverzeichnis können Sie ganz nach Wunsch festlegen. Normalerweise wird der Name <b>/mfpadmin</b> verwendet.</p>
 
                 <h3>Obligatorische JNDI-Eigenschaften</h3>
-                <p>Die JNDI-Eigenschaften werden im Element <code>Environment</code> des Anwendungskontexts definiert. Beispiel:</p>
+                <p>Die JNDI-Eigenschaften werden im Element <code>Environment</code> des Anwendungskontexts definiert. Beispiel: </p>
 
 {% highlight xml %}
 <Environment name="mfp.admin.push.url" value="http://localhost:8080/imfpush" type="java.lang.String" override="false"/>
@@ -1533,7 +1530,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                 <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
 
                 <h3>Datenquelle</h3>
-                <p>Die Datenquelle (jdbc/mfpAdminDS) wird im Element **Context** als Ressource deklariert. Beispiel:</p>
+                <p>Die Datenquelle (jdbc/mfpAdminDS) wird im Element **Context** als Ressource deklariert. Beispiel: </p>
 
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
@@ -1626,7 +1623,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                 Die WAR-Datei für die Laufzeit ist <b>MFP-Installationsverzeichnis/MobileFirstServer/mfp-server.war</b>. Das Kontextstammverzeichnis können Sie ganz nach Wunsch festlegen. Das Standardkontextstammverzeichnis ist <b>/mfp</b>.</p>
 
                 <h3>Obligatorische JNDI-Eigenschaften</h3>
-                <p>Sie müssen die Eigenschaft <b>mfp.authorization.server</b> definieren. Beispiel:</p>
+                <p>Sie müssen die Eigenschaft <b>mfp.authorization.server</b> definieren. Beispiel: </p>
 
 {% highlight xml %}
 <Environment name="mfp.authorization.server" value="embedded" type="java.lang.String" override="false"/>
@@ -1716,7 +1713,9 @@ Vergewissern Sie sich, dass die unter <a href="#websphere-application-server-and
 #### Topologieeinschränkungen
 {: #topology-constraints-nd }
 <b>Eigenständiger WebSphere Application Server</b>  
-Der MobileFirst-Server-Verwaltungsservice und -Liveaktualisierungsservice sowie die MobileFirst-Laufzeit müssen in einem Anwendungsserver installiert werden. Das Kontextstammverzeichnis des Liveaktualisierungsservice wird wie folgt definiert: "<b>Kontextstammverzeichnis_des_Verwaltungsservice</b>config". Das Kontextstammverzeichnis des Push-Service muss <b>imfpush</b> sein. Weitere Informationen zu den Einschränkungen finden Sie unter [Einschränkungen für die MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+Der MobileFirst-Server-Verwaltungsservice und -Liveaktualisierungsservice sowie die MobileFirst-Laufzeit müssen in einem Anwendungsserver installiert werden. Das Kontextstammverzeichnis des Liveaktualisierungsservice wird wie folgt definiert: "<b>Kontextstammverzeichnis_des_Verwaltungsservice</b>config". Das Kontextstammverzeichnis des Push-Service muss <b>imfpush</b> sein. Weitere Informationen zu den Einschränkungen finden Sie unter
+[Einschränkungen für die
+MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
 <b>WebSphere Application Server Network Deployment</b>  
 Der Deployment Manager muss aktiv sein, wenn {{ site.data.keys.mf_server }} ausgeführt
@@ -2385,7 +2384,9 @@ dass sie Member einer Server-Farm werden.
                                     <li>Weitere Informationen zu Keytool finden Sie in der Dokumentation zu IBM SDK Java Technology Edition im Abschnitt <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a>.</li>
                                     <li>Weitere Informationen zu iKeyman finden Sie in der Dokumentation zu IBM SDK Java Technology Edition im Abschnitt <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>.</li>
                                 </ul>
-                                Die Keystore- und Truststore-Position ist in der Datei <b>server.xml</b> definiert. Lesen Sie die Beschreibung der Attribute <b>keyStoreRef</b> und <b>trustStoreRef</b> unter <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL-Konfigurationsattribute</a>. Standardmäßig befindet sich der Liberty-Profile-Keystore unter <b>${server.config.dir}/resources/security/key.jks</b>. Wenn der Truststore-Verweis in der Datei <b>server.xml</b> fehlt oder nicht definiert ist, wird der mit <b>keyStoreRef</b> angegebene Keystore verwendet. Der Server verwendet den Standard-Keystore. Die Datei wird erstellt, wenn der Server zum ersten Mal ausgeführt wird. In dem Fall wird ein Standardzertifikat mit einem Gültigkeitszeitraum von 365 Tagen erstellt. Für die Produktion sollten Sie die Verwendung eines eigenen Zertifikats (ggf. einschließlich der Zwischenzertifikate) in Betracht ziehen oder das Verfallsdatum des generierten Zertifikats ändern.<blockquote>Hinweis: Wenn Sie die Position des Truststore bestätigen möchten, fügen Sie die folgende Deklaration zur Datei server.xml hinzu:
+                                Die Keystore- und Truststore-Position ist in der Datei <b>server.xml</b> definiert. Lesen Sie die Beschreibung der Attribute <b>keyStoreRef</b> und <b>trustStoreRef</b> unter <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL-Konfigurationsattribute</a>. Standardmäßig befindet sich der Liberty-Profile-Keystore unter <b>${server.config.dir}/resources/security/key.jks</b>. Wenn der Truststore-Verweis in der Datei <b>server.xml</b> fehlt oder nicht definiert ist, wird der mit <b>keyStoreRef</b> angegebene Keystore verwendet. Der Server verwendet den Standard-Keystore. Die Datei wird erstellt, wenn der Server zum ersten Mal ausgeführt wird. In dem Fall wird ein Standardzertifikat mit einem Gültigkeitszeitraum von 365 Tagen erstellt. Für die Produktion sollten Sie die Verwendung eines eigenen Zertifikats (ggf. einschließlich der Zwischenzertifikate) in Betracht ziehen oder das Verfallsdatum des generierten Zertifikats ändern.
+
+                                <blockquote>Hinweis: Wenn Sie die Position des Truststore bestätigen möchten, fügen Sie die folgende Deklaration zur Datei server.xml hinzu:
 {% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
@@ -2480,3 +2481,4 @@ die folgenden JNDI-Eigenschaften definieren:
 <br/>
 Weitere Informationen zu JNDI-Eigenschaften finden Sie in der
 [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+

@@ -5,7 +5,7 @@ breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: Beispiel herunterladen
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

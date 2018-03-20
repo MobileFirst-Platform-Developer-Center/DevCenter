@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: UserAuthenticationSecurityCheck
-breadcrumb_title: Benutzerauthentifizierung
+breadcrumb_title: User Authentication
 relevantTo: [android,ios,windows,javascript]
 show_children: true
 show_disqus: false

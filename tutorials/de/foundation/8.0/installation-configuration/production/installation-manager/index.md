@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: IBM Installation Manager
+title: IBM Installation Manager ausführen
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -90,7 +90,7 @@ Manager ausgeführt haben, müssen Sie die Datenbanken einrichten und
 die MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver implementieren.   
 > Wenn Sie für eine vorhandene Installation ein Update mit dem Installation Manager durchführen, werden auch nur die Dateien auf der Platte aktualisiert. Für die Aktualisierung der in Ihren Anwendungsservern implementierten Anwendungen sind weitere Schritte erforderlich.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [Administratormodus und Benutzermodus im Vergleich](#administrator-versus-user-mode)
 * [Installation mit dem Installationsassistenten von IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
@@ -173,8 +173,7 @@ sich das Repository der Basisversion unter den Installation-Manager-Repositorys 
 **OK**, um
 das Fenster
 **Benutzervorgaben** zu schließen.
-3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf
-**Weiter**.
+3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf **Weiter**.
 4. Wählen Sie die Paketgruppe für die Produktinstallation aus. 
 
     {{ site.data.keys.product }} Version 8.0
@@ -194,8 +193,7 @@ Wenn Sie das Produkt in einer neuen Paketgruppe installieren möchten und auf Ih
 ist, wählen Sie die Option
 Neue Paketgruppe erstellen aus. 
     
-5. Klicken Sie auf
-**Weiter**.
+5. Klicken Sie auf **Weiter**.
 6. Entscheiden Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing**,
 ob die Tokenlizenzierung aktiviert werden soll. 
 
@@ -731,9 +729,7 @@ Normalerweise 50000.</td>
     <tr>
       <td>user.database.db2.appcenter.password</td>
       <td>${user.database.selection2} == db2</td>
-      <td>Optional in einer bestimmten Art und Weise verschlüsseltes Kennwort für den Zugriff auf
-die DB2-Datenbank für das Application Center
-</td>
+      <td>Optional in einer bestimmten Art und Weise verschlüsseltes Kennwort für den Zugriff auf die DB2-Datenbank für das Application Center</td>
       <td>Ein Kennwort, das nicht leer ist</td>
     </tr>
     <tr>

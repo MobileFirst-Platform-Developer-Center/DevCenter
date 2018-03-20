@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: SMS-Benachrichtigungen in Clientanwendungen
-breadcrumb_title: SMS-Benachrichtigungen
+title: Handhabung von SMS-Benachrichtigungen in Clientanwendungen
+breadcrumb_title: Handling SMS Notifications
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true

@@ -29,15 +29,15 @@ Advantage als Paket in der eAssembly für die
 
 * JDBC-Treiber für Ihre Datenbank
     * Verwenden Sie für DB2 den DB2-JDBC-Treibertyp 4.
-    * Verwenden Sie für MySQL den Connector/J-JDBC-Treiber. 
-    * Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber. 
+    * Verwenden Sie für MySQL den Connector/J-JDBC-Treiber.
+    * Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber.
 * Java ab Version 7
 
 * Laden Sie das Installationsprogramm für
 IBM Installation
 Manager ab Version 1.8.4
 über die [Installation Manager and Packaging Utility Download
-Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142). 
+Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 * Sie benötigen außerdem das Installationsrepository für {{ site.data.keys.mf_server }} und das
 Installationsprogramm für WebSphere Application Server Liberty Core
 ab Version 8.5.5.3. Laden Sie diese Pakete mit der eAssembly für die {{ site.data.keys.product }} über
@@ -329,8 +329,7 @@ von dem die DB2-Instanz Daten erwartet. Standardmäßig ist die Portnummer
 **50000**.
     * Setzen Sie **database.db2.driver.dir** auf das Verzeichnis mit Ihrem
 DB2-Treiber (**db2jcc4.jar** und **db2jcc\_license\_cu.jar**).
-In einer DB2-Standarddistribution befinden sich diese Dateien
-unter **DB2-Installationsverzeichnis/java**.
+In einer DB2-Standarddistribution befinden sich diese Dateien unter **DB2-Installationsverzeichnis/java**.
     * Setzen Sie **database.db2.mfp.dbname** auf **MFPDATA** (den Datenbanknamen, den
 Sie beim Durcharbeiten des Abschnitts "Datenbank erstellen" erstellt haben). 
     * Setzen Sie **database.db2.mfp.schema** auf **MFPDATA** (das
@@ -394,7 +393,7 @@ Operationen aus:
     * Für den Verwaltungsservice und den Liveaktualisierungsservice vom Ant-Ziel
 `admdatabases`
     * Für die Laufzeitkomponente vom Ant-Ziel `rtmdatabases` 
-    * Für den Push-Service vom Ant-Ziel `pushdatabases` 
+    * Für den Push-Service vom Ant-Ziel `pushdatabases`
 2. Die WAR-Dateien der verschiedenen Komponenten werden im Liberty-Server implementiert. Die Details der Operationen sehen Sie im Protokoll unter den Zielen
 `adminstall`, `rtminstall` und
 `pushinstall`. 
@@ -469,7 +468,14 @@ jdbc-40 und jdbc-41 hinzufügen, kommt es zu einem Problem. Fügen Sie dagegen z
 3. Das Element **tcpOptions** (**tcpOptions soReuseAddr="true"**) wird zur Serverkonfiguration hinzugefügt, um die sofortige Neubindung eines Ports ohne aktiven Listener zu ermöglichen und den Serverdurchsatz zu verbessern.
 4. Ein Keystore mit der ID **defaultKeyStore** wird erstellt, sofern er noch nicht vorhanden ist.
 
-    Der Keystore soll die Verwendung des HTTPS-Ports für die JMX-Kommunikation zwischen dem Verwaltungsservice (mfp-admin-service.war) und der Laufzeitkomponente (mfp-server.war) ermöglichen. Die beiden Anwendungen kommunizieren über JMX. Bei Verwendung von Liberty Profile wird restConnector für die Kommunikation zwischen den Anwendungen innerhalb eines Servers und zwischen den Servern einer Liberty-Farm verwendet, was die Verwendung von HTTPS erfordert. Für den standardmäßig erstellten Keystore erstellt Liberty Profile ein Zertifikat mit einem Gültigkeitszeitraum von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.    
+    Der Keystore soll die Verwendung des
+HTTPS-Ports für die JMX-Kommunikation zwischen dem Verwaltungsservice
+(mfp-admin-service.war) und der Laufzeitkomponente
+(mfp-server.war) ermöglichen. Die beiden Anwendungen kommunizieren über
+JMX. Bei Verwendung von Liberty Profile wird restConnector für die Kommunikation zwischen den Anwendungen innerhalb eines Servers
+und zwischen den Servern einer Liberty-Farm verwendet, was die Verwendung von
+HTTPS erfordert. Für den standardmäßig erstellten Keystore erstellt Liberty Profile ein Zertifikat mit einem Gültigkeitszeitraum
+von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.    
 
     Für die Aktivierung von JMX wird in der Basisregistry ein Benutzer mit Administratorrolle (MfpRESTUser) erstellt. Der Name und das Kennwort des Benutzers werden als JNDI-Eigenschaften (mfp.admin.jmx.user und mfp.admin.jmx.pwd) angegeben und von der Laufzeitkomponente sowie dem Verwaltungsservice für die Ausführung von JMX-Abfragen verwendet. Mit einigen der globalen JMX-Eigenschaften wird der Clustermodus (eigenständiger Server oder Farm) definiert. Das Server Configuration Tool setzt die Eigenschaft mfp.topology.clustermode des Liberty-Servers auf Standalone. In einem späteren Abschnitt dieses Lernprogramms wird diese Eigenschaft für die Erstelllung einer Farm auf Cluster gesetzt.
 5. Benutzer werden erstellt (auch zutreffend für Apache Tomcat und WebSphere Application Server).
@@ -477,8 +483,10 @@ jdbc-40 und jdbc-41 hinzufügen, kommt es zu einem Problem. Fügen Sie dagegen z
     * Obligatorische Benutzer: Das Server Configuration Tool erstellt außerdem einen Benutzer configUser_mfpadmin mit generiertem Zufallskennwort, den der Verwaltungsservice verwendet, um Kontakt zum lolaken Liveaktualisierungsservice aufzunehmen. Für den Liberty-Server wird der Benutzer MfpRESTUser erstellt. Wenn Ihr Anwendungsserver nicht für die Verwendung einer Basisregistry konfiguriert ist (sondern beispielsweise für eine LDAP-Registry), kann das Server Configuration Tool nicht den Namen eines vorhandenen Benutzers abfragen. In dem Fall müssen Sie Ant-Tasks verwenden.
 6. Das Element **webContainer** wird modifiziert.
 
-    Die angepasste Web-Containereigenschaft `deferServletLoad` wird auf "false" gesetzt. Die Laufzeitkomponente und der Verwaltungsservice müssen gestartet werden, wenn der Server gestartet wird. Diese Komponenten können so die JMX-Beans registrieren und die Synchronisation starten, die es der Laufzeitkomponente ermöglicht, alle Anwendungen und Adapter herunterzuladen, für die sie Services bereitstellen muss.
-7. Das Standardsteuerprogramm wird so angepasst, dass für `coreThreads` und `maxThreads` hohe Werte festgelegt werden, wenn Sie Liberty bis Version 8.5.5.5 verwenden. Ab Liberty Version 8.5.5.6 wird das Standardsteuerprogramm automatisch optimiert.
+    Die angepasste Web-Containereigenschaft `deferServletLoad` wird auf "false" gesetzt. Die Laufzeitkomponente und der Verwaltungsservice müssen gestartet werden, wenn der Server gestartet wird.
+Diese Komponenten können so die JMX-Beans registrieren und die Synchronisation starten, die es der Laufzeitkomponente ermöglicht, alle Anwendungen und Adapter herunterzuladen, für die sie Services
+bereitstellen muss. 7. Das Standardsteuerprogramm wird so angepasst, dass für `coreThreads` und `maxThreads` hohe Werte festgelegt werden, wenn Sie
+Liberty bis Version 8.5.5.5 verwenden. Ab Liberty Version 8.5.5.6 wird das Standardsteuerprogramm automatisch optimiert.
 
     Durch diese Einstellung werden Probleme durch Zeitlimitüberschreitungen
 vermieden, die

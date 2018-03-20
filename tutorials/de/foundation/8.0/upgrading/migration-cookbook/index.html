@@ -101,8 +101,8 @@ Implementierung und Konfiguation von Sicherheit und Authentifizierung und zu vie
         <p>Vor Beginn der Migration benötigen Sie eine aktive MobileFirst-Server-Instanz und das Unterstützungstool für die Migration. </p>
 
         <h3>{{ site.data.keys.mf_server }}</h3>
-        <p>Sie können einen {{ site.data.keys.mf_server }} in <a href="https://bluemix.net">IBM Bluemix</a> einrichten.
-Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile-Foundation-Bluemix-Service</a>. Alternativ können Sie
+        <p>Sie können einen {{ site.data.keys.mf_server }} in <a href="https://bluemix.net">IBM Cloud</a> einrichten.
+Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">IBM Cloud-Service 'Mobile Foundation'</a>. Alternativ können Sie
 das <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> verwenden,
 jum einen lokal ausgeführten Server einzurichten. </p>
 
@@ -226,7 +226,7 @@ der Datei hinzu.
 
 {% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
                                                     </li>
-						    <li>Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist. <br />
+						    <li>Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist.<br />
 							<code>&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;</code>
 							<br />
 							Sie können Ihre eigene
@@ -1137,8 +1137,7 @@ externer Ressourcen oder Apps verwendet werden können. Dies ist mit dem Konzept
                             </tr>
 
                             <tr>
-                                <td><b>Definition
-</b></td>
+                                <td><b>Definition</b></td>
                                 <td>Definition in der Datei <b>authenticationConfig.xml</b> mit einem Namen, einem oder mehreren Sicherheitstests und mindestens einem Sicherheitstestsfür die Definition der Benutzer-ID (<code>UserID</code>).
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">

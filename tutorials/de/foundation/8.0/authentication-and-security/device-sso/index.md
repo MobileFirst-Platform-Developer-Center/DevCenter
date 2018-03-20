@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Geräte-SSO konfigurieren
-breadcrumb_title: Geräte-SSO
+title: Geräte-Single-Sign-on konfigurieren
+breadcrumb_title: Device SSO
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---

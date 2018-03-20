@@ -1,23 +1,23 @@
 ---
 layout: tutorial
 title: Authentifizierung einrichten
-breadcrumb_title: Authentifizierung einrichten
+breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - name: iOS-Swift-Projekt herunterladen
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - name: Android-Projekt herunterladen
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - name: Windows-8-Projekt herunterladen
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - name: Windows-10-Projekt herunterladen
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - name: Webprojekt herunterladen
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -44,6 +44,8 @@ Auf der Serverseite gehören zum Setup das Konfigurieren des erforderlichen Anbi
 {: #google-cloud-messaging--firebase-cloud-messaging }
 > **Hinweis:** Google [kündigte kürzlich](https://firebase.google.com/support/faq/#gcm-fcm) einen Wechsel von GCM zu FCM an. Die folgenden Anweisungen wurden entsprechend aktualisiert. Beachten Sie auch, das bestehende GCM-Konfigurationen weiterhin funktionieren. Dies gilt jedoch nicht für neue GCM-Konfigurationen. Verwenden Sie stattdessen FCM.
 
+
+
 Android-Geräte verwenden den Service Firebase Cloud Messaging (FCM) für Push-Benachrichtigungen.   
 Gehen Sie wie folgt vor, um FCM zu konfigurieren:
 
@@ -81,7 +83,7 @@ von {{ site.data.keys.mf_server }} zu android.googleapis.com akzeptiert.
 iOS-Geräte verwenden den Apple Push Notification Service (APNS) für Push-Benachrichtigungen.   
 Gehen Sie wie folgt vor, um APNS zu konfigurieren:
 
-1. [Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
+1. Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion. Eine ausführliche Beschreibung der Schritte finden Sie [hier](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1) im Abschnitt `For iOS`. 
 2. Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Push-Einstellungen**
 den Zertifikattyp aus und geben Sie die Zertifikatdatei und das Kennwort an. Klicken Sie dann auf **Speichern**.
 
@@ -98,6 +100,8 @@ den Zertifikattyp aus und geben Sie die Zertifikatdatei und das Kennwort an. Kli
 * Verwenden Sie in der Entwicklungsphase die Sandbox-Zertifikatdatei apns-certificate-sandbox.p12. 
 * Verwenden Sie in der Produktionsphase die Produktionszertifikatdatei apns-certificate-production.p12. 
     * Das APNS-Produktionszertifikat kann erst getestet werden, wenn die Anwendung, die das Zertifikat verwendet, erfolgreich an den Apple App Store übergeben wurde.
+
+**Hinweis:** MobileFirst bietet keine Unterstützung für universelle Zertifikate. 
 
 > Sie können den APNS auch
 mit der [REST-API
@@ -335,14 +339,19 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
 | Eigenschaften der Nutzdaten | Definition |
-| --- | --- |
+
+--- | ---
 | message | Die zu sendende Alertnachricht |
 | settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
+
 | target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. |
+
 | deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. |
 | notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). | 
 | platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). |
+
 | tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. |
+
 | userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. |
 | phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. |
 

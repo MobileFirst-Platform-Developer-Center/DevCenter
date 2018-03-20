@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Adapter für kognitive Watson-Services
-breadcrumb_title: Adapter für Watson-Services
+title: Adapter für koginitive Watson-Services
+breadcrumb_title: Adapters for Watson services
 relevantTo: [ios,android,cordova]
 weight: 11
 ---
@@ -9,9 +9,9 @@ weight: 11
 ## Übersicht
 {: #overview }
 
-Mit Watson für Bluemix erhalten Sie Zugang zum derzeit breitesten Spektrum verfügbarer kognitiver Technologien für die schnelle und sichere Erstellung intelligenter Anwendungen. Die Analyse von Bildern und Videos zum besseren Verständnis von Stimmungen sowie das Extrahieren von Schlüsselwörtern und Entitäten aus Texten sind nur einige der Möglichkeiten, die Ihnen Watson-Services eröffnen. 
+Mit Watson für IBM Cloud erhalten Sie Zugang zum derzeit breitesten Spektrum verfügbarer kognitiver Technologien für die schnelle und sichere Erstellung intelligenter Anwendungen. Die Analyse von Bildern und Videos zum besseren Verständnis von Stimmungen sowie das Extrahieren von Schlüsselwörtern und Entitäten aus Texten sind nur einige der Möglichkeiten, die Ihnen Watson-Services eröffnen. 
 
-In Fragen der kognitiven Datenverarbeitung hat Watson weit mehr zu bieten. Das Verstehen der natürlichen Sprache und die visuelle Erkennung führen ausgehend von unstrukturierten Daten zu Einsichten, die ein Neudenken von Prozessen und eine Transformation von Industrien ermöglichen. [Hier](https://www.ibm.com/watson/developercloud/) erfahren Sie mehr über kognitive Watson-Services für Bluemix. 
+In Fragen der kognitiven Datenverarbeitung hat Watson weit mehr zu bieten. Das Verstehen der natürlichen Sprache und die visuelle Erkennung führen ausgehend von unstrukturierten Daten zu Einsichten, die ein Neudenken von Prozessen und eine Transformation von Industrien ermöglichen. [Hier](https://www.ibm.com/watson/developercloud/) erfahren Sie mehr über kognitive Watson-Services für IBM Cloud. 
 
 Mit MobileFirst-Foundation-Adaptern wird die notwendige serverseitige Logik ausgeführt. Adapter werden zudem verwendet, um Informationen für Clientanwendungen und Cloud-Services von Back-End-Systemen abzurufen. Die {{ site.data.keys.product }} stellt jetzt Adapter für einige der kognitiven Watson-Services bereit. 
 
