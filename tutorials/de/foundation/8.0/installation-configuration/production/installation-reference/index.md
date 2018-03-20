@@ -115,9 +115,7 @@ Das Element `<db2>` wird mit folgenden Attributen verwendet:
 | instance | Name der DB2-Instanz | Nein | Hängt vom Server ab |
 | schema | Schemaname | Nein | Hängt vom Benutzer ab |
 
-Weitere Informationen
-zu DB2-Benutzeraccounts finden Sie im Artikel
-[DB2-Sicherheitsmodell - Übersicht](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).   
+Weitere Informationen zu DB2-Benutzeraccounts finden Sie im Artikel [DB2-Sicherheitsmodell - Übersicht](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).   
 Das Element `<db2>` unterstützt die folgenden Elemente:
 
 | Element | Beschreibung | Anzahl |
@@ -154,9 +152,7 @@ Das Element `<mysql>` wird mit folgenden Attributen verwendet:
 | user	    | Benutzername für den Datenbankzugriff | Ja | Keiner |
 | password	| Kennwort für den Datenbankzugriff | Nein | Interaktiv abgefragt |
 
-Weitere Informationen zu MySQL-Benutzerkonten
-finden Sie im Artikel
-[MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
+Weitere Informationen zu MySQL-Benutzerkonten finden Sie im Artikel [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
 Das Element `<mysql>` unterstützt die folgenden Elemente:
 
 | Element | Beschreibung | Anzahl |
@@ -971,8 +967,7 @@ unterstützt:
 |-------------|------------------|-------|
 | `<server>`  | Einzelserver| 0..1 |
 
-Das Element
-<server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
+Das Element <server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
 
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
@@ -1126,7 +1121,7 @@ Weitere Informationen zu diesem Attribut finden Sie unter
 
 ### Vorgehensweise für die Angabe einer Apache-Derby-Datenbank
 {: #to-specify-an-apache-derby-database }
-Das Element `<derby>` wird mit folgenden Attributen verwendet:
+Das Element `<derby>` wird mit folgenden Attributen verwendet: 
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|--------------------------------------------|----------|---------|
@@ -1153,7 +1148,7 @@ Wenn die Datei **mfp-ant-deployer.jar** im Installationsverzeichnis der {{ site.
 
 ### Vorgehensweise für die Angabe einer DB2-Datenbank
 {: #to-specify-a-db2-database }
-Das Element `<db2>` wird mit folgenden Attributen verwendet:
+Das Element `<db2>` wird mit folgenden Attributen verwendet: 
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|--------------------------------------------|----------|---------|
@@ -1356,10 +1351,10 @@ Diese Datei muss denselben Basisnamen wie die entsprechende WAR-Datei haben, die
 
 Die Task ändert nicht die Konfiguration des Anwendungsservers, d. h.
 die Konfiguration der Webanwendungen, die Datenquellen, die JNDI-Umgebungseinträge und die Benutzer-Rollen-Zuordnungen.
-Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task
-<installApplicationCenter> ausgeführt wird. 
+Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task <installApplicationCenter> ausgeführt wird.
 
-> **Hinweis:** In
+> **Hinweis:** In WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
+
 WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
 
 
@@ -1636,7 +1631,7 @@ Das Element
 
 Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren. 
 
-Das Element `<property>` wird mit folgenden Attributen verwendet:
+Das Element `<property>` wird mit folgenden Attributen verwendet: 
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|

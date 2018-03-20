@@ -391,7 +391,8 @@ nicht definieren, berechnet die Ant-Task die Datenendpunkte für alle Member des
     Den Ant-Befehl finden Sie unter **MF-Server-Installationsverzeichnis/shortcuts**. Auf dem Server wird ein Knoten mit {{ site.data.keys.mf_analytics }}
 vom Standardmastertyp und mit dem Standarddatentyp installiert. Bei Verwendung von WebSphere Application Server Network Deployment
  erfolgt die Installation in jedem Member eines Clusters.
-4. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht. Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch "************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden.
+4. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht. Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch
+"************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden. 
 
     **Hinweis:** Wenn Sie zu einem Cluster mit {{ site.data.keys.mf_analytics }} einen Knoten
 hinzufügen, müssen Sie die JNDI-Eigenschaft analytics/masternodes aktualisieren. Die Eigenschaft muss die Ports aller Masterknoten im Cluster

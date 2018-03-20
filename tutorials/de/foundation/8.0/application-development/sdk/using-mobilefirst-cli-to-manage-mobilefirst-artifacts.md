@@ -25,9 +25,9 @@ In diesem Lernprogramm erfahren Sie, wie die Befehlszeilenschnittstelle (`mfpdev
 und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adaptern verwendet wird. 
 
 > Weitere Informationen zur SDK-Integration in Cordova-Anwendungen und nativen Anwendungen enthalten die Lernprogramme
-der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen](../../application-development/sdk/).
+der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/sdk/).
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [Voraussetzungen](#prerequisites)
 * [{{ site.data.keys.mf_cli }} installieren](#installing-the-mobilefirst-cli)
@@ -428,14 +428,14 @@ Sie werden aufgefordert, die Plattform für die Vorschau und die Art der Vorscha
 * MBS - {{ site.data.keys.mf_mbs }}. Bei Auswahl dieser Option wird ein mobiles Gerät in einem Browser simuliert. Gleichzeitig wird eine rudimentäre Cordova-API-Simulation für Karmera, Dateiupload, Geoortung und anderes bereitgestellt. Hinweis: Den Cordova-Browser können Sie nicht mit der Option MBS verwenden. 
 * Browser - Einfache Darstellung in einem Browser. Bei Auswahl dieser Option werden die Webressourcen der Cordova-Anwendung als normale Browser-Webseite dargestellt. 
 
-> Weitere Einzelheiten zu den Vorschauoptionen enthält das Lernprogramm zur [Cordova-Entwicklung](../cordova-apps).
+> Weitere Einzelheiten zu den Vorschauoptionen enthält das Lernprogramm zur [Cordova-Entwicklung]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/cordova-apps).
 
 ### Direkte Aktualisierung von Webressourcen
 {: #update-web-resources-for-direct-update }
 Die Webressourcen einer Cordova-App wie HTML-, CSS- und JS-Dateien im Ordner **www** können mithilfe des MobileFirst-Foundation-Features
 für direkte Aktualisierung aktualisiert werden,
 ohne dass die App neu auf dem mobilen Gerät installiert werden muss. 
-
+> Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/direct-update).
 > Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen](../direct-update).
 
 
@@ -500,7 +500,7 @@ Diese Wiederverwendung bereits erstellter Konfigurationen ermöglicht eine rasch
 {: #managing-and-testing-adapters }
 Adapter können mit dem Befehl `mfpdev adapter` verwaltet werden.
 
-> Weitere Informationen zu Adaptern enthalten die Lernpgoramme der Kategorie [Adapter](../../adapters/). 
+> Weitere Informationen zu Adaptern enthalten die Lernpgoramme der Kategorie [Adapter]({{site.baseurl}}/tutorials/de/foundation/8.0/adapters/).
 
 
 ### Adapter erstellen
@@ -548,7 +548,7 @@ mfpdev adapter call
 Sie werden aufgefordert, den Adapter, die Prozedur und die zu verwendenden Parameter anzugeben. Die Befehlsausgabe ist die Antwort der Adapterprozedur. 
 
 > Weitere Informationen enthält das Lernprogramm
-[Adapter testen und debuggen](../../adapters/testing-and-debugging-adapters/). 
+[Adapter testen und debuggen]({{site.baseurl}}/tutorials/de/foundation/8.0/adapters/testing-and-debugging-adapters/).
 
 ## Hilfreiche Befehle
 {: #helpful-commands }
