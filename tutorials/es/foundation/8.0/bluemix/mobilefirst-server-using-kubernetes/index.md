@@ -1,66 +1,65 @@
 ---
 layout: tutorial
-title: Configuración de MobileFirst Server en IBM Bluemix Kubernetes Cluster
-breadcrumb_title: Kubernetes Cluster en IBM Cluster
+title: Configuración de MobileFirst Server en IBM Cloud Kubernetes Cluster
+breadcrumb_title: Mobile Foundation on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }}, así como una instancia de {{ site.data.keys.mf_analytics }} en IBM Bluemix. Para llevarlo a cabo, realice los pasos siguientes:
+Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }}, así como una instancia de {{ site.data.keys.mf_analytics }} en IBM Cloud. Para llevarlo a cabo, realice los pasos siguientes:
 
-* Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago). 
-* Configure el sistema host con las herramientas necesarias (Docker, Cloud Foundry CLI ( cf ), Bluemix CLI ( bx ), Container Service Plugin for Bluemix CLI ( bx cs ), Container Registry Plugin for Bluemix CLI ( bx cr ), Kubernetes CLI (kubectl).
-* Cree una imagen de {{ site.data.keys.mf_server }} Docker y haga push para el repositorio de Bluemix.
+* Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago).
+* Configure el sistema host con las herramientas necesarias [Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)].
+* Cree una imagen Docker de {{ site.data.keys.mf_server }} y envíela por push al repositorio de IBM Cloud.
 * Finalmente, ejecutará la imagen de Docker en Kubernetes Cluster.
 
 >**Nota:**  
 >
 * Actualmente el sistema operativo Windows no está soportado para ejecutar estos scripts.  
-* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers. 
+* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers.
 
 #### Ir a:
 {: #jump-to }
-* [Registrar una cuenta en Bluemix](#register-an-account-on-bluemix)
+* [Registrar una cuenta en IBM Cloud](#register-an-account-on-ibmcloud)
 * [Configurar la máquina host](#set-up-your-host-machine)
-* [Crear y configurar Kubernetes Cluster con IBM Bluemix Container Service](#setup-kube-cluster)
+* [Crear y configurar Kubernetes Cluster con IBM Cloud Container Service](#setup-kube-cluster)
 * [Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}](#download-the-ibm-mfpf-container-8000-archive)
 * [Requisitos previos](#prerequisites)
 * [Configuración de {{ site.data.keys.product_adj }} y Analytics Servers en Kubernetes Cluster con IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
 * [Aplicar arreglos de {{ site.data.keys.mf_server }}](#applying-mobilefirst-server-fixes)
-* [Eliminar el contenedor de Bluemix](#removing-the-container-from-bluemix)
-* [Eliminar despliegues de Kubernetes desde Bluemix](#removing-kube-deployments)
-* [Eliminar la configuración del servicio de base de datos desde Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [Eliminar los despliegues de Kubernetes de IBM Cloud](#removing-kube-deployments)
+* [Eliminar la configuración del servicio de base de datos de IBM Cloud](#removing-the-database-service-configuration-from-ibmcloud)
 
-## Registrar una cuenta en Bluemix
-{: #register-an-account-on-bluemix }
-Si todavía no tiene una cuenta, vaya al [sitio web de Bluemix](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
+## Registrar una cuenta en IBM Cloud
+{: #register-an-account-on-ibmcloud }
+Si todavía no tiene una cuenta, vaya al [sitio web de IBM Cloud](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
 
-### El panel de control de Bluemix 
-{: #the-bluemix-dashboard }
-Después de iniciar sesión en Bluemix, se le presentará el panel de control de Bluemix, que proporciona una visión general del **espacio** activo de Bluemix. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
+### Panel de control de IBM Cloud
+{: #the-ibmcloud-dashboard }
+Después de iniciar sesión en IBM Cloud, se le presentará el panel de control de IBM Cloud, que proporciona una visión general del **espacio** activo de IBM Cloud. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
 
 ## Configurar la máquina host
 {: #set-up-your-host-machine }
 Para gestionar los contenedores y las imágenes, debe instalar las herramientas siguientes:
 * Docker
-* Bluemix CLI (bx)
-* Container Service Plugin for Bluemix CLI ( bx cs )
-* Container Registry Plugin for Bluemix CLI ( bx cr )
+* IBM Cloud CLI (bx)
+* Container Service Plugin for IBM Cloud CLI ( bx cs )
+* Container Registry Plugin for IBM Cloud CLI ( bx cr )
 * Kubernetes CLI (kubectl)
 
-Consulte la documentación de Bluemix para obtener información acerca de los [pasos para configurar CLI de requisito previo](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
+Consulte la documentación de IBM Cloud para obtener información acerca de los [pasos para configurar CLI de requisito previo](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
 
-## Crear y configurar Kubernetes Cluster con IBM Bluemix Container Service
+## Crear y configurar Kubernetes Cluster con IBM Cloud Container Service
 {: #setup-kube-cluster}
-Consulte la documentación de Bluemix para [configurar Kubernetes Cluster en Bluemix](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
+Consulte la documentación de IBM Cloud para [configurar Kubernetes Cluster en IBM Cloud](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
 
 >**Nota:** Tipo de Kubernetes Cluster: Se requiere Estándar (clúster de pago) para desplegar {{ site.data.keys.mf_bm_short }}.
 
 ## Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}
 {: #download-the-ibm-mfpf-container-8000-archive}
-Para configurar {{ site.data.keys.mf_bm_short }} como Kubernetes Cluster utilizando contenedores de Bluemix, en primer lugar, debe crear una imagen que posteriormente se enviará mediante push a Bluemix.<br/>
+Para configurar {{ site.data.keys.mf_bm_short }} como Kubernetes Cluster utilizando contenedores de IBM Cloud, en primer lugar, debe crear una imagen que posteriormente se enviará mediante push a IBM Cloud.<br/>
 Se pueden obtener los arreglos internos para MobileFirst Server en IBM Containers en [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
 Descargue el arreglo temporal más reciente desde Fix central. El soporte de Kubernetes está disponible en iFix **8.0.0.0-IF201707051849**.
 
@@ -78,17 +77,17 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
             <div class="panel-body">
                 <img src="zip.png" alt="Imagen que muestra la estructura del sistema de archivos del archivo comprimido" style="float:right;width:570px"/>
                 <h4>carpeta bmx-kubernetes</h4>
-                <p>Contiene los archivos de personalización y los scripts necesarios para desplegar Kubernetes Cluster con IBM Bluemix Container Service.</p>
+                <p>Contiene los archivos de personalización y los scripts necesarios para desplegar Kubernetes Cluster con IBM Cloud Container Service.</p>
 
                 <h4>Dockerfile-mfpf-analytics y Dockerfile-mfpf-server</h4>
 
                 <ul>
                     <li><b>Dockerfile-mfpf-server</b>: Documento de texto que contiene todos los mandatos necesarios para crear la imagen de {{ site.data.keys.mf_server }}.</li>
                     <li><b>Dockerfile-mfpf-analytics</b>: Documento de texto que contiene todos los mandatos necesarios para crear la imagen de {{ site.data.keys.mf_analytics }}.</li>
-                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene los scripts necesarios para iniciar sesión en Bluemix, crear una imagen de {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} para hacer push en Bluemix y ejecutar la imagen en Bluemix. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración, como se describe más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
+                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene los scripts necesarios para iniciar sesión en IBM Cloud, crear una imagen de {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} para enviarla por push y ejecutar la imagen en IBM Cloud. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración, como se describe más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
                     <li>Carpetas <b>usr-mfpf-server</b> y <b>usr-mfpf-analytics</b>:
                         <ul>
-                            <li>Carpeta <b>bin</b>: contiene el archivo de script (mfp-init) que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo. </li>
+                            <li>Carpeta <b>bin</b>: contiene el archivo de script (mfp-init) que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo.</li>
                             <li>Carpeta <b>config</b>: Contiene los fragmentos de configuración del servidor (almacén de claves, propiedades del servidor, registro de usuarios) que utilizan {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
                             <li><b>keystore.xml</b> - la configuración del repositorio de los certificados de seguridad que se utilizan para el cifrado SSL. Debe hacerse referencia a los archivos listados en la carpeta ./usr/security.</li>
                             <li><b>ltpa.xml</b> - el archivo de configuración que define la clave LTPA y su contraseña.</li>
@@ -178,7 +177,7 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
 
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Cerrar sección</b></a>
-            </div>
+                                </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -215,7 +214,7 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
 
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Cerrar sección</b></a>
-            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -229,7 +228,7 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
     </div>
 </div>
 
-## Requisitos previos 
+## Requisitos previos
 {: #prerequisites }
 
 Debe tener conocimientos para trabajar con Kubernetes. Consulte los [documentos de Kubernetes](https://kubernetes.io/docs/concepts/), para obtener más información.
@@ -240,7 +239,7 @@ Debe tener conocimientos para trabajar con Kubernetes. Consulte los [documentos 
 Como se ha descrito anteriormente, puede optar por ejecutar los scripts de forma interactiva o utilizar los archivos de configuración:
 
 * **Utilización de los archivos de configuración** - Ejecute los scripts y pase el archivo de configuración respectivo como un argumento.
-* **Interactivamente** - Ejecute los scripts sin argumentos. 
+* **Interactivamente** - Ejecute los scripts sin argumentos.
 
 >**Nota:** Si opta por ejecutar los scripts de forma interactiva, puede omitir la configuración, pero se le recomienda que lea y comprenda los argumentos que deberá proporcionar.
 
@@ -256,22 +255,22 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes:<br/>
+                La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes:<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_API_URL - </b>Zona geográfica o región en que desea realizar el despliegue.<br>
+                    <li><b>IBM_CLOUD_API_URL - </b>Zona geográfica o región en que desea realizar el despliegue.<br>
                       <blockquote>Por ejemplo: <i>api.ng.bluemix.net</i> para la región de EE.UU. o <i>api.eu-de.bluemix.net</i> para Alemania o <i>api.au-syd.bluemix.net</i> para Sydney</blockquote>
                     </li>
-                    <li><b>BLUEMIX_ACCOUNT_ID - </b>Su ID de cuenta, que es un valor alfanumérico, como as <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Utilice el mandato <code>bx target</code> para obtener el ID de cuenta.</li>
-                    <li><b>BLUEMIX_USER - </b>Su nombre de usuario de Bluemix (correo electrónico).</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Su contraseña de Bluemix.</li>
-                    <li><b>BLUEMIX_ORG - </b>El nombre de su organización de Bluemix.</li>
-                    <li><b>BLUEMIX_SPACE - </b>Su espacio Bluemix (como se ha descrito anteriormente).</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>Su ID de cuenta, que es un valor alfanumérico, como <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Utilice el mandato <code>bx target</code> para obtener el ID de cuenta.</li>
+                    <li><b>IBM_CLOUD_USER - </b>Su nombre de usuario de IBM Cloud (correo electrónico).</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>Su contraseña de IBM Cloud.</li>
+                    <li><b>IBM_CLOUD_ORG - </b>El nombre de su organización de IBM Cloud.</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>Su espacio IBM Cloud (como se ha descrito anteriormente).</li>
                 </ul><br/>
                 <h4>prepareserverdbs.properties</h4>
                 El servicio de {{ site.data.keys.mf_bm_short }} requiere una instancia de <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 en Cloud</i></a>.<br/>
-                <blockquote><b>Nota:</b> También puede utilizar su propia base de datos DB2. Bluemix Kubenetes Cluster se debe configurar para su conexión con la base de datos.</blockquote>
+                <blockquote><b>Nota:</b> También puede utilizar su propia base de datos DB2. IBM Cloud Kubernetes Cluster se debe configurar para su conexión con la base de datos.</blockquote>
                 Después de configurar la instancia de DB2, proporcione los argumentos necesarios:
                 <ul>
                     <li><b>DB_TYPE</b> - <i>dashDB</i> ( si utiliza DB2 on Cloud ) o <i>DB2</i> si utiliza su propia base de datos DB2.</li>
@@ -318,7 +317,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
             <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
 
             <ol>
-                <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
+                <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
                     Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_bm_short }} en IBM Containers:
                     <b>Modo interactivo</b>
 {% highlight bash %}
@@ -340,14 +339,15 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
                 </li>
-                <li><b>initenv.sh (Opcional) – Inicio de sesión en Bluemix </b><br />
+                <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
                       Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de DB2. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                  </li>
+
+                </li>
                 <li><b>prepareserver.sh - Preparar una imagen de {{ site.data.keys.mf_server }}</b><br />
-                    Ejecute el script <b>prepareserver.sh</b> para crear la imagen de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analytics }} y enviarlas mediante push al repositorio de Bluemix. Para ver todas las imágenes disponibles en el repositorio de Bluemix, ejecute: <code>bx cr image-list</code><br/>
+                    Ejecute el script <b>prepareserver.sh</b> para crear las imágenes de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analytics }} y enviarlas mediante push al repositorio de IBM Cloud. Para ver todas las imágenes disponibles en el repositorio de IBM Cloud, ejecute: <code>bx cr image-list</code><br/>
                     La lista contiene el nombre, la fecha de creación y el ID de la imagen.<br/>
                     <b>Modo interactivo</b>
 {% highlight bash %}
@@ -358,7 +358,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
                 </li>
-                <li>Despliegue {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} en contenedores Docker en Kubernetes Cluster utilizando Bluemix Container Service.
+                <li>Despliegue {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} en contenedores Docker en Kubernetes Cluster utilizando IBM Cloud Container Service.
                 <ol>
                   <li>Establezca el contexto del terminal en su clúster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
                   Para averiguar el nombre del clúster, ejecute el mandato siguiente: <br/><code>bx cs clusters</code><br/>
@@ -406,7 +406,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
     </div>
 </div>
 
-Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Bluemix, puede iniciar el desarrollo de su aplicación. Revise las {{ site.data.keys.product }} [guías de aprendizaje](../../all-tutorials).
+Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Cloud, puede iniciar el desarrollo de su aplicación. Revise las {{ site.data.keys.product }} [guías de aprendizaje](../../all-tutorials).
 
 
 ## Aplicar arreglos de {{ site.data.keys.mf_server }}
@@ -420,7 +420,7 @@ Antes de aplicar un arreglo temporal, realice una copia de seguridad de los arch
 ### Pasos para aplicar iFix:
 
 1. Descargue el archivo de arreglo temporal y extraiga el contenido en la carpeta de instalación existente, sobrescribiendo los archivos existentes.
-2. Restaure los archivos de configuración de copia de seguridad en las carpetas **package_root/bmx-kubernetes/usr-mfpf-server** y **package_root/bmx-kubernetes/usr-mfpf-analytics**, sobrescribiendo los archivos de configuración instalados recientemente. 
+2. Restaure los archivos de configuración de copia de seguridad en las carpetas **package_root/bmx-kubernetes/usr-mfpf-server** y **package_root/bmx-kubernetes/usr-mfpf-analytics**, sobrescribiendo los archivos de configuración instalados recientemente.
 3. Edite el archivo **package_root/bmx-kubernetes/usr-mfpf-server/env/jvm.options** en su editor y elimine la siguiente línea, si existe:
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
@@ -434,40 +434,26 @@ Antes de aplicar un arreglo temporal, realice una copia de seguridad de los arch
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Eliminar el contenedor de Bluemix
-{: #removing-the-container-from-bluemix }
-Cuando elimina un contenedor de Bluemix, también debe eliminar el nombre de imagen del registro.  
-Ejecute los mandatos siguientes para eliminar un contenedor desde Bluemix:
-
-1. `cf ic ps` (Lista los contenedores que se están ejecutando) 
-2. `cf ic stop container_id` (Detiene el contenedor)
-3. `cf ic rm container_id` (Elimina el contenedor)
-
-Ejecute los siguientes mandatos cf ic para eliminar un nombre de imagen del registro de Bluemix:
-
-1. `cf ic images` (Lista las imágenes del registro)
-2. `cf ic rmi image_id` (Elimina la imagen del registro)
-
-## Eliminar los despliegues de Kubernetes de Bluemix
+## Eliminar los despliegues de Kubernetes de IBM Cloud
 {: #removing-kube-deployments}
 
-Ejecute los mandatos siguientes para eliminar las instancias desplegadas de Bluemix Kubernetes Cluster:
+Ejecute los mandatos siguientes para eliminar las instancias desplegadas de IBM Cloud Kubernetes Cluster:
 
 `kubectl delete -f mfpf-deployment-all.yaml` (Elimina todos los tipos de kubernetes definidos en el archivo yaml)
 
-Ejecute los siguientes mandatos para eliminar el nombre de imagen del registro de Bluemix:
+Ejecute los siguientes mandatos para eliminar el nombre de imagen del registro de IBM Cloud:
 ```bash
 bx cr image-list (Lista las imágenes del registro)
 bx cr image-rm image-name (Elimina la imagen del registro)
 ```
 
-## Eliminar la configuración del servicio de base de datos de Bluemix
-{: #removing-the-database-service-configuration-from-bluemix }
+## Eliminar la configuración del servicio de base de datos de IBM Cloud
+{: #removing-the-database-service-configuration-from-ibmcloud }
 Si ha ejecutado el script **prepareserverdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_server }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_server }}. Este script también crea el esquema de base de datos para el contenedor.
 
-Para eliminar la configuración del servicio de base de datos desde Bluemix, realice el siguiente procedimiento utilizando el panel de control de Bluemix. 
+Para eliminar la configuración del servicio de base de datos desde IBM Cloud, realice el siguiente procedimiento utilizando el panel de control de IBM Cloud.
 
-1. En el panel de control de Bluemix, seleccione el servicio DB2 on Cloud que ha utilizado. Seleccione el nombre del servicio DB2 on Cloud que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
+1. En el panel de control de IBM Cloud, seleccione el servicio DB2 on Cloud que ha utilizado. Seleccione el nombre del servicio DB2 on Cloud que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
 2. Inicie la consola de DB2 para trabajar con los esquemas y los objetos de base de datos de la instancia de servicio DB2 seleccionada.
-3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**. 
-4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de Bluemix.
+3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**.
+4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de IBM Cloud.
