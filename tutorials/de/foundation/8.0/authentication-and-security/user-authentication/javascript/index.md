@@ -5,15 +5,15 @@ breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
 downloads:
-  - name: Cordova-Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80
-  - name: Webprojekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80
-  - name: Cordova-Projekt RememberMe herunterladen
+  - name: Download RememberMe Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80
-  - name: Webprojekt RememberMe herunterladen
+  - name: Download RememberMe Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWeb/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -76,7 +76,9 @@ if (isChallenged){
 >Die `WLAuthorizationManager`-API `login()` hat ihre eigenen
 Methoden `onSuccess` und `onFailure`. Die Methode `handleSuccess` oder `handleFailure` des
 betreffenden Abfrage-Handlers
-wird **ebenfalls** aufgerufen. ## Zugriffstoken anfordern
+wird **ebenfalls** aufgerufen. 
+
+## Zugriffstoken anfordern
 {: #obtaining-an-access-token }
 Da diese Sicherheitsüberprüfung die Funktion **RememberMe** (in Form des booleschen Schlüssels
 `rememberMe`) unterstützt, sollte sinnvollerweise überprüft werden,
@@ -99,7 +101,9 @@ WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheck
 > Die `WLAuthorizationManager`-API `obtainAccessToken()` hat ihre eigenen
 Methoden `onSuccess` und `onFailure`. Die Methode `handleSuccess` oder `handleFailure` des
 betreffenden Abfrage-Handlers
-wird **ebenfalls** aufgerufen. Wenn der Client bereits angemeldet ist oder erinnert wird (Zustand *remembered*), löst die API einen Erfolg aus. Wenn der Client nicht angemeldet ist, sendet die Sicherheitsüberprüfung eine Abfrage zurück. 
+wird **ebenfalls** aufgerufen. 
+
+Wenn der Client bereits angemeldet ist oder erinnert wird (Zustand *remembered*), löst die API einen Erfolg aus. Wenn der Client nicht angemeldet ist, sendet die Sicherheitsüberprüfung eine Abfrage zurück. 
 
 Die API `obtainAccessToken` nimmt einen Gültigkeitsbereich (**scope**) auf. Der Bereich kann den Namen Ihrer
 **Sicherheitsüberprüfung** haben.

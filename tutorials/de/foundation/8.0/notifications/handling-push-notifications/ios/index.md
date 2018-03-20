@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigungen in iOS
+title: Handhabung von Push-Benachrichtigungen in iOS
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: Xcode-Projekt herunterladen
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -145,7 +145,7 @@ if isPushSupported {
 
 #### Gerät registrieren und Gerätetoken senden
 {: #register-device--send-device-token }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```swift
 MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in

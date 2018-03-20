@@ -17,7 +17,7 @@ Interaktive Benachrichtigungen werden auf Geräten mit iOS ab Version 8 unterst�
 Bereiten Sie die Benachrichtigung vor und senden Sie sie. Weitere Informationen finden Sie unter [Push-Benachrichtigungen senden](../../sending-notifications).
 
 Unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste
-iOS-Einstellungen** können Sie eine Zeichenfolge festlegen, um die Kategorie der Benachrichtigung mit dem Benachrichtigungsobjekt anzugeben. Die Aktionsschaltflächen für die Benachrichtigung werden ausgehend vom Kategoriewert angezeigt. Beispiel: 
+iOS-Einstellungen** können Sie eine Zeichenfolge festlegen, um die Kategorie der Benachrichtigung mit dem Benachrichtigungsobjekt anzugeben. Die Aktionsschaltflächen für die Benachrichtigung werden ausgehend vom Kategoriewert angezeigt. Beispiel:
 
 ![Kategorien für interaktive iOS-Benachrichtigungen in der {{ site.data.keys.mf_console }} festlegen](categories-for-interactive-notifications.png)
 

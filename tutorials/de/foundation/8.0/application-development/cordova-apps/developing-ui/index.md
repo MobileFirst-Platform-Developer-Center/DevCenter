@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Benutzerschnittstelle für Cordova-Anwendungen entwickeln
-breadcrumb_title: Benutzerschnittstelle entwickeln
+breadcrumb_title: Developing UI
 relevantTo: [cordova]
 weight: 1
 ---
@@ -14,14 +14,14 @@ Manchmal ist es besser, die vorhandenen JavaScript-UI-Frameworks zu verwenden. I
 Gehen Sie wie folgt vor, um die Benutzerschnittstelle von Cordova-Anwendungen mit dem MobileFirst-Eclipse-Plug-in zu entwickeln:
 
 1. Laden Sie Eclipse herunter.
-2. Installieren Sie das [THyM](http://marketplace.eclipse.org/content/eclipse-thym)-Plug-in vom Marketplace.
-3. Installieren Sie das [MobileFirst-Platform-Plug-in](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio) vom Marketplace.
+2. Installieren Sie das [THyM](http://marketplace.eclipse.org/content/eclipse-thym)-Plug-in vom Eclipse Marketplace.
+3. Installieren Sie das [MobileFirst-Platform-Plug-in](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio) vom Eclipse Marketplace.
 
 
 ## WYSIWYG-Editor
 {: #wysiwyg-editor }
-Mit dem MobileFirst-Platform-Eclipse-Plug-in für mobile Widgets wird zur Unterstützung von Entwicklern ein WYSIWYG-Basiseditor bereitgestellt.
-Dieser Editor bietet eine grundlegende Palette für den Benutzer an, von der mit der Maus eine einfache Schaltfläche, ein Textfeld oder andere HTML-Widgets gezogen und abgelegt werden können. Mit diesem Tool für die schnelle Entwicklung mobiler Anwendungen kann der Benutzer rasch eine Cordova-Basisanwendung entwickeln. 
+Mit dem MobileFirst-Platform-Eclipse-Plug-in für HTML-UI-Widgets wird zur Unterstützung von Entwicklern ein WYSIWYG-Eeditor bereitgestellt.
+Dieser Editor bietet eine grundlegende Palette für den Benutzer an, von der mit der Maus UI-Widgets wie eine Schaltfläche, ein Textfeld oder andere HTML-Widgets gezogen und abgelegt werden können. Mit diesem Tool für die schnelle Entwicklung mobiler Anwendungen kann der Benutzer rasch eine Cordova-Anwendung entwickeln. 
 
 ![WYSIWYG-Editor](wysiwyg-editor.png)
 
@@ -86,3 +86,4 @@ Gehen Sie wie folgt vor, um jQuery Mobile zu Ihrer Anwendung hinzuzufügen:
           	</body>
       </html>
     ```
+Wenn Sie die Referenzen zu jQuery Mobile in Ihrer HTML-Datei hinzugefügt haben, schließen Sie die Datei und öffnen Sie sie erneut in Eclipse. Jetzt sehen Sie in der Palettenansicht jQuery-Mobile-Widgets, die Sie mit der Maus in Ihren HTML-Erstellungsbereich ziehen und dort ablegen können.

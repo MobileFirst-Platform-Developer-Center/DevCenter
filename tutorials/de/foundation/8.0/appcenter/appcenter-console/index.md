@@ -2,7 +2,7 @@
 layout: tutorial
 title: Application-Center-Konsole
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -190,7 +190,7 @@ Windows-Entwicklerdokumentation zu Paketen und zur Anwendungsimplementierung im 
    ### Windows 10 Universal
    {: windows-10-universal}
    Die Anwendungsdateierweiterung ist **.appx**.
-   
+
 
 
 4. Klicken Sie auf **Weiter**, um auf die Eigenschaften zuzugreifen und die Anwendungsdefinition zu vervollständigen.

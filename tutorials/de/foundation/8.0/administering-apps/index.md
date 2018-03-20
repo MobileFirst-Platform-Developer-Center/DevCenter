@@ -54,7 +54,7 @@ Möglichkeiten, MobileFirst-Anwendungen zu verwalten. Die {{ site.data.keys.prod
 auch Tools für die Aufnahme von Verwaltungsoperationen in Ihren Build- und Implementierungsprozess bereit.
 
 Zusätzlich stehen REST-Services für die Ausführung von Verwaltungsoperationen zur Verfügung.
-Die Referenzdokumentation zur API dieser Services finden Sie in [REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/administration-service/). 
+Die Referenzdokumentation zur API dieser Services finden Sie unter [REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/admin-apis/). 
 
 Mit diesen REST-Services können Sie dieselben Operationen wie in der
 {{ site.data.keys.mf_console }} ausführen.

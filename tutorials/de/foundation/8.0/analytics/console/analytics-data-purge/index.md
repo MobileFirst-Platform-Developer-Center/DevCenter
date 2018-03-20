@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Datenaufbewahrung und -bereinigung
-breadcrumb_title: Datenaufbewahrung und -bereinigung
+breadcrumb_title: Data Retention and Purging
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

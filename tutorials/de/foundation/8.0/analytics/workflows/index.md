@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Abläufe in Analytics
-breadcrumb_title: Abläufe
+breadcrumb_title: Workflows
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

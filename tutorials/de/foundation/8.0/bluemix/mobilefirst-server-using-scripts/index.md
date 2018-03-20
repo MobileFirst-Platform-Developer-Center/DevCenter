@@ -1,18 +1,20 @@
 ---
-layout: tutorial
-title: MobileFirst Server für IBM Bluemix mit Scripts für IBM Container einrichten
-breadcrumb_title: IBM Containers
-relevantTo: [ios,android,windows,javascript]
-weight: 2
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
+#breadcrumb_title: IBM Containers
+#relevantTo: [ios,android,windows,javascript]
+#weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und eine Instanz von {{ site.data.keys.mf_analytics }} für IBM Bluemix zu konfigurieren. Gehen Sie dazu die folgenden Schritte durch: 
+Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und eine Instanz von {{ site.data.keys.mf_analytics }} für IBM Cloud zu konfigurieren. Gehen Sie dazu die folgenden Schritte durch: 
 
 * Statten Sie Ihren Host-Computer mit den erforderlichen Tools aus (Cloud-Foundry-CLI, Docker und Plug-in "IBM Containers Extension" (cf ic)). 
-* Richten Sie Ihr Bluemix-Konto ein.
-* Erstellen Sie ein MobileFirst-Server-Image und stellen Sie es per Push-Operation in das Bluemix-Repository. 
+* Richten Sie Ihr IBM Cloud-Konto ein.
+* Erstellen Sie ein MobileFirst-Server-Image und stellen Sie es per Push-Operation in das IBM Cloud-Repository. 
 
 Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in IBM Containern ausführen und Ihre Anwendung registrieren sowie Ihre Adapter implementieren. 
 
@@ -23,23 +25,22 @@ Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in I
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Konto in Bluemix registrieren](#register-an-account-at-bluemix)
+* [Konto in IBM Cloud registrieren](#register-an-account-at-bluemix)
 * [Hostmaschine einrichten](#set-up-your-host-machine)
 * [Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen](#download-the-ibm-mfpf-container-8000-archive)
 * [Voraussetzungen](#prerequisites)
 * [{{ site.data.keys.product_adj }} Server und Analytics Server in IBM Containern einrichten](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 * [Fixes für {{ site.data.keys.mf_server }} anwenden](#applying-mobilefirst-server-fixes)
-* [Container in Bluemix entfernen](#removing-a-container-from-bluemix)
-* [Datenbankservicekonfiguration aus Bluemix entfernen](#removing-the-database-service-configuration-from-bluemix)
+* [Container in IBM Cloud entfernen](#removing-a-container-from-bluemix)
+* [Datenbankservicekonfiguration aus IBM Cloud entfernen](#removing-the-database-service-configuration-from-bluemix)
 
-## Konto in Bluemix registrieren
+## Konto in IBM Cloud registrieren
 {: #register-an-account-at-bluemix }
-Falls Sie noch kein Konto haben, öffnen Sie die [Bluemix-Website](https://bluemix.net) und klicken Sie auf **Kostenloses
-Konto erstellen** oder auf **Anmeldung**. Sie müssen das Registrierungsformular ausfüllen, bevor Sie mit dem nächsten Schritt fortfahren können. 
+Falls Sie noch kein Konto haben, öffnen Sie die [IBM Cloud-Website](https://bluemix.net) und klicken Sie auf **Kostenloses Konto erstellen** oder auf **Anmeldung**. Sie müssen das Registrierungsformular ausfüllen, bevor Sie mit dem nächsten Schritt fortfahren können. 
 
-### Bluemix-Dashboard
+### IBM Cloud-Dashboard
 {: #the-bluemix-dashboard }
-Nachdem Sie sich bei Bluemix angemeldet haben, wird das Bluemix-Dashboard angezeigt, das Ihnen einen Überblick über den aktiven Bluemix-Bereich gibt. Standardmäßig hat dieser Arbeitsbereich den Namen "dev". Bei Bedarf können Sie mehrere Arbeitsbereiche erstellen. 
+Nachdem Sie sich bei IBM Cloud angemeldet haben, wird das IBM Cloud-Dashboard angezeigt, das Ihnen einen Überblick über den aktiven IBM Cloud-Bereich gibt. Standardmäßig hat dieser Arbeitsbereich den Namen "dev". Bei Bedarf können Sie mehrere Arbeitsbereiche erstellen. 
 
 ## Hostmaschine einrichten
 {: #set-up-your-host-machine }
@@ -81,8 +82,10 @@ Unter macOS gibt es zwei Optionen für die Ausführung von Docker-Befehlen:
 
 ## Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen
 {: #download-the-ibm-mfpf-container-8000-archive}
-Wenn Sie die {{ site.data.keys.product }} in IBM Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in Bluemix übertragen wird.   
+Wenn Sie die {{ site.data.keys.product }} in IBM Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in IBM Cloud übertragen wird.   
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Folgen Sie den Anweisungen auf dieser Seite</a>, um das Archiv mit {{ site.data.keys.mf_server }} für IBM Container (ZIP-Datei) herunterzuladen (suchen Sie nach *CNBL0EN*).
+
+
 
 Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependencies** und **mfpf-libs**), die Dateien für die Erstellung und Implementierung eines Containers mit {{ site.data.keys.mf_analytics }} (**mfpf-analytics**) und Dateien zum Konfigurieren eines MobileFirst-Server-Containers (**mfpf-server**).
 
@@ -107,7 +110,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
 
                 <ul>
                     <li><b>Dockerfile</b>: Textdokument mit allen Befehlen, die für das Erstellen eines Image erforderlich sind. </li>
-                    <li>Ordner <b>scripts</b>: Dieser Ordner enthält den Ordner <b>args</b> mit einer Reihe von Konfigurationsdateien. Er enthält außerdem die Scripts für die Anmeldung bei Blumix, die Erstellung eines Image für {{ site.data.keys.mf_server }} bzw. {{ site.data.keys.mf_analytics }} und die Push-Übertragung und Ausführung des Image in Bluemix. Sie können diese Scripts interaktiv ausführen oder die Konfigurationsdateien wie nachfolgend erläutert für die Ausführung der Scripts vorkonfigurieren. Anders als bei den anpassbaren Dateien args/*.properties dürfen Sie in diesem Ordner keine Elemente modifizieren. Verwenden Sie das Befehlszeilenargument <code>-h</code> oder <code>--help</code>, um einen Hilfetext zur Scriptsyntax abzurufen (z. B. <code>Scriptname.sh --help</code>).</li>
+                    <li>Ordner <b>scripts</b>: Dieser Ordner enthält den Ordner <b>args</b> mit einer Reihe von Konfigurationsdateien. Er enthält außerdem die Scripts für die Anmeldung bei IBM Cloud, die Erstellung eines Image für {{ site.data.keys.mf_server }} bzw. {{ site.data.keys.mf_analytics }} und die Push-Übertragung und Ausführung des Image in IBM Cloud. Sie können diese Scripts interaktiv ausführen oder die Konfigurationsdateien wie nachfolgend erläutert für die Ausführung der Scripts vorkonfigurieren. Anders als bei den anpassbaren Dateien args/*.properties dürfen Sie in diesem Ordner keine Elemente modifizieren. Verwenden Sie das Befehlszeilenargument <code>-h</code> oder <code>--help</code>, um einen Hilfetext zur Scriptsyntax abzurufen (z. B. <code>Scriptname.sh --help</code>).</li>
                     <li>Ordner <b>usr</b>:
                         <ul>
                             <li>Ordner <b>bin</b>: Enthält die Scriptdatei, die beim Start des Containers ausgeführt wird. Sie können eigenen Code hinzufügen, der ausgeführt werden soll.</li>
@@ -269,11 +272,11 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
 {: #prerequisites }
 Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Befehle des Service "IBM Containers" ausführen. 
 
-1. Melden Sie sich bei der IBM Bluemix-Umgebung an.   
+1. Melden Sie sich bei der IBM Cloud-Umgebung an.   
 
     Führen Sie `cf login` aus.  
     Machen Sie die folgenden Angaben, wenn Sie dazu aufgefordert werden: 
-      * Bluemix-API-Endpunkt
+      * IBM Cloud-API-Endpunkt
       * E-Mail-Adresse
       * Kennwort
       * Organisation, falls es mehrere gibt
@@ -283,10 +286,10 @@ Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Bef
   
 Führen Sie `cf ic login` aus.
 
-3. Stellen Sie sicher, dass der `namespace` für die Container-Registry definiert ist. Der `namespace` gibt einen eindeutigen Namen für Ihr privates Repository in der Bluemix-Registry an. Der Namespace wird einer Organisation einmal zugeordnet und kann nicht geändert werden. Beachten Sie bei der Auswahl des Namespace die folgenden Regeln: 
+3. Stellen Sie sicher, dass der `namespace` für die Container-Registry definiert ist. Der `namespace` gibt einen eindeutigen Namen für Ihr privates Repository in der IBM Cloud-Registry an. Der Namespace wird einer Organisation einmal zugeordnet und kann nicht geändert werden. Beachten Sie bei der Auswahl des Namespace die folgenden Regeln: 
      * Der Name darf nur aus Kleinbuchstaben, Zahlen und Unterstreichungszeichen bestehen. 
      * Der Name kann 4 bis 30 Zeichen umfassen. Wenn Sie Container über die Befehlszeile verwalten möchten, sollten Sie dem Namensbereich einen kurzen Namen zuordnen, der schnell eingegeben werden kann.
-     * Innerhalb der Bluemix-Registry muss der Name eindeutig sein. 
+     * Innerhalb der IBM Cloud-Registry muss der Name eindeutig sein. 
 
     Führen Sie zum Definieren eines Namespace den Befehl `cf ic namespace set <neuer_Name>` aus.  
     Wenn Sie einen bereits definierten Namespace abrufen möchten, führen Sie den Befehl `cf ic namespace get` aus.
@@ -324,10 +327,10 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein.<br/>
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Ihr Bluemix-Benutzername (E-Mail-Adresse) </li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Ihr Bluemix-Kennwort</li>
-                  <li><b>BLUEMIX_ORG - </b>Ihr Bluemix-Organisationsname</li>
-                  <li><b>BLUEMIX_SPACE - </b>Ihr Bluemix-Bereich (wie oben erläutert)</li>
+                  <li><b>IBM_CLOUD_USER - </b>Ihr IBM Cloud-Benutzername (E-Mail-Adresse) </li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>Ihr IBM Cloud-Kennwort</li>
+                  <li><b>IBM_CLOUD_ORG - </b>Ihr IBM Cloud-Organisationsname</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>Ihr IBM Cloud-Bereich (wie oben erläutert)</li>
               </ul>
               <h4>prepareappcenterdbs.properties</h4>
               Das {{ site.data.keys.mf_app_center }} erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">Instanz der dashDB-Enterprise-Transactional-Datenbank</a> (Enterprise Transactional 2.8.500 oder Enterprise Transactional 12.128.1400).
@@ -347,14 +350,15 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
               <h4>startappcenter.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>Wie in <em>prepareappcenter.sh</em></li>
-                  <li><b>SERVER_CONTAINER_NAME - </b>Name für Ihren Bluemix-Container</li>
-                  <li><b>SERVER_IP - </b>IP-Adresse, an die der Bluemix-Container gebunden werden soll</li>
-                  <blockquote>                    Führen Sie zum Zuweisen einer IP-Adresse <code>cf ic ip request</code> aus. IP-Adressen können in mehreren Containern eines gegebenen Bluemix-Bereichs wiederverwendet werden. Wenn Sie bereits eine IP-Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</blockquote>
+                  <li><b>SERVER_CONTAINER_NAME - </b>Name für Ihren IBM Cloud-Container</li>
+                  <li><b>SERVER_IP - </b>IP-Adresse, an die der IBM Cloud-Container gebunden werden soll</li>
+                  <blockquote>                    Führen Sie zum Zuweisen einer IP-Adresse <code>cf ic ip request</code> aus. IP-Adressen können in mehreren Containern eines gegebenen IBM Cloud-Bereichs wiederverwendet werden.
+                  Wenn Sie bereits eine IP-Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</blockquote>
               </ul>
               <h4>startappcentergroup.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>Wie in <em>prepareappcenter.sh</em></li>
-                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Name für Ihre Bluemix-Containergruppe</li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Name für Ihre IBM Cloud-Containergruppe</li>
                   <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Ihr Hostname</li>
                   <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Ihr Domänenname. Der Standardwert ist <code>mybluemix.net</code>.</li>
               </ul>    
@@ -373,7 +377,7 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
             <div class="panel-body">
                 <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
-                    <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
+                    <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
 Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -394,30 +398,30 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
                                                 <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>IBM Cloud-Benutzer-ID oder E-Mail-Adresse</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix-Kennwort</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>IBM Cloud-Kennwort</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix-Organisationsname</td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>IBM Cloud-Organisationsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix-Bereichsname</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>IBM Cloud-Bereichsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-a|--api] BLUEMIX_API_URL (optional)</td>
-                                                <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
+                                                <td>[-a|--api] IBM_CLOUD_API_URL (optional)</td>
+                                                <td>IBM Cloud-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                             </tr>
                                         </table>
 
                                         <p>Beispiel: </p>
 {% highlight bash %}
-initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organsiationsname --space Bluemix-Bereichsname
+initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>Abschnitt schließen</b></a>
@@ -450,7 +454,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                                             </tr>
                                             <tr>
                                               <td>[-db | --acdb ] NAME_DES_APPLICATION-CENTER-DATENBANKSERVERS</td>
-                                              <td>Bluemix-dashDB-Service (mit dem Bluemix-Serviceplan Enterprise Transactional)</td>
+                                              <td>IBM Cloud-dashDB-Service (mit dem IBM Cloud-Serviceplan Enterprise Transactional)</td>
                                             </tr>    
                                             <tr>
                                               <td>Optional: [-ds | --acds ] NAME-DES-APPLICATION-CENTER-SCHEMAS</td>
@@ -470,7 +474,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                       </div>
 
                     </li>
-                    <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
+                    <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
                     Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei <b>initenv.properties</b> mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus: </li>
 
 {% highlight bash %}
@@ -479,10 +483,10 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - Erstellung eines MobileFirst-Application-Center-Image</b><br />
-                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein MobileFirst-Application-Center-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu stellen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.
+                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein MobileFirst-Application-Center-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu stellen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
 
-                        Führen Sie Folgendes aus:
+Führen Sie Folgendes aus:
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
@@ -522,7 +526,7 @@ prepareappcenter.sh --tag NAME_DES_SERVER-IMAGE registryUrl/namespace/imagename
                     <li><b>startappcenter.sh - Ausführung des Image in einem IBM Container</b><br/>
                     Mit dem Script <b>startappcenter.sh</b> wird das MobileFirst-Application-Center-Image in einem IBM Container ausgeführt. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>SERVER_IP</b> konfiguriert haben. 
 
-                        Führen Sie Folgendes aus:
+Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -552,7 +556,7 @@ prepareappcenter.sh --tag NAME_DES_SERVER-IMAGE registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>[-si|--services] SERVICE_INSTANCES (optional)</td>
-                                                <td>Jeweils durch ein Komma getrennte Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
+                                                <td>Jeweils durch ein Komma getrennte IBM Cloud-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
                                                 <td>[-h|--http] EXPOSE_HTTP (optional)</td>
@@ -607,7 +611,7 @@ startappcenter.sh --tag Image-Tagname --name Containername --ip Container-IP-Adr
                     <li><b>startappcentergroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br/>
                     Das Script <b>startappcentergroup.sh</b> wird verwendet, um das MobileFirst-Application-Center-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>SERVER_CONTAINER_GROUP_HOST</b> konfiguriert haben. 
 
-                        Führen Sie Folgendes aus:
+Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
@@ -629,7 +633,7 @@ startappcenter.sh --tag Image-Tagname --name Containername --ip Container-IP-Adr
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Name des MobileFirst-Application-Center-Container-Image in der Bluemix-Registry</td>
+                                                <td>Name des MobileFirst-Application-Center-Container-Image in der IBM Cloud-Registry</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -661,7 +665,7 @@ startappcenter.sh --tag Image-Tagname --name Containername --ip Container-IP-Adr
                                             </tr>
                                             <tr>
                                                 <td>[-si|--services] SERVICES (optional)</td>
-                                                <td>Jeweils durch ein Komma getrennte Namen von Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
+                                                <td>Jeweils durch ein Komma getrennte Namen von IBM Cloud-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
                                                 <td>[-tr|--trace] TRACE_SPEC (optional)</td>
@@ -722,10 +726,10 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
             <b>Hinweis:</b> Hier sind nur die erforderlichen Argumente aufgeführt. Wenn Sie etwas zu den übrigen Argumenten erfahren möchten, sehen Sie sich die Dokumentation in den Eigenschaftendateien an.
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Ihr Bluemix-Benutzername (E-Mail-Adresse) </li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Ihr Bluemix-Kennwort</li>
-                  <li><b>BLUEMIX_ORG - </b>Ihr Bluemix-Organisationsname</li>
-                  <li><b>BLUEMIX_SPACE - </b>Ihr Bluemix-Bereich (wie oben erläutert)</li>
+                  <li><b>IBM_CLOUD_USER - </b>Ihr IBM Cloud-Benutzername (E-Mail-Adresse) </li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>Ihr IBM Cloud-Kennwort</li>
+                  <li><b>IBM_CLOUD_ORG - </b>Ihr IBM Cloud-Organisationsname</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>Ihr IBM Cloud-Bereich (wie oben erläutert)</li>
               </ul>
               <h4>prepareanalytics.properties</h4>
               <ul>
@@ -734,8 +738,8 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
               <h4>startanalytics.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
-                  <li><b>ANALYTICS_CONTAINER_NAME - </b>Name für Ihren Bluemix-Container</li>
-                  <li><b>ANALYTICS_IP - </b>IP-Adresse, an die der Bluemix-Container gebunden werden soll<br/>
+                  <li><b>ANALYTICS_CONTAINER_NAME - </b>Name für Ihren IBM Cloud-Container</li>
+                  <li><b>ANALYTICS_IP - </b>IP-Adresse, an die der IBM Cloud-Container gebunden werden soll<br/>
                   Führen Sie zum Zuweisen einer IP-Adresse <code>cf ic ip request</code> aus.<br/>
                   IP-Adressen können in mehreren Containern eines Bereichs wiederverwendet werden. <br/>
                   Wenn Sie bereits eine Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</li>
@@ -743,7 +747,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
               <h4>startanalyticsgroup.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>Name für Ihre Bluemix-Containergruppe</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>Name für Ihre IBM Cloud-Containergruppe</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>Ihr Hostname</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>Ihr Domänenname. Der Standardwert ist <code>mybluemix.net</code>.</li>
               </ul>
@@ -762,8 +766,8 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
             <div class="panel-body">
                 <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
-                    <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
-                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_analytics }} in IBM Containern zu erstellen:
+                    <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
+Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_analytics }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -783,30 +787,30 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
                                                 <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>IBM Cloud-Benutzer-ID oder E-Mail-Adresse</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix-Kennwort</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>IBM Cloud-Kennwort</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix-Organisationsname</td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>IBM Cloud-Organisationsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix-Bereichsname</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>IBM Cloud-Bereichsname</td>
                                             </tr>
                                             <tr>
-                                                <td>[-a|--api] BLUEMIX_API_URL (optional)</td>
-                                                <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
+                                                <td>[-a|--api] IBM_CLOUD_API_URL (optional)</td>
+                                                <td>IBM Cloud-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                             </tr>
                                         </table>
 
                                         <p>Beispiel: </p>
 {% highlight bash %}
-initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organsiationsname --space Bluemix-Bereichsname
+initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Abschnitt schließen</b></a>
@@ -816,14 +820,14 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                         </div>
                     </li>
                     <li><b>prepareanalytics.sh - Erstellung eines MobileFirst-Analytics-Image</b><br />
-                        Führen Sie das Script <b>prepareanalytics.sh</b> aus, um ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. 
+                        Führen Sie das Script <b>prepareanalytics.sh</b> aus, um ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. 
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
-                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
+                        Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
+                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
@@ -841,8 +845,8 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                                               <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
-                                              <td>[-t|--tag] ANALYTICS_IMAGE_TAG</td>
-                                              <td>Name, der für das angepasste Analytics-Image verwendet werden soll. Format: Bluemix-Registry-URL/privater_Namespace/Image-Name</td>
+                                              <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
+                                              <td>Name, der für das angepasste Analytics-Image verwendet werden soll. Format: IBM_Cloud-Registry-URL/privater_Namespace/Image-Name</td>
                                             </tr>      
                                         </table>
 
@@ -861,7 +865,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                     <li><b>startanalytics.sh - Ausführung des Image in einem IBM Container</b><br />
                     Das Script <b>startanalytics.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>ANALYTICS_IP</b> konfiguriert haben. </li>
 
-                    Führen Sie Folgendes aus:
+Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
@@ -883,7 +887,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>Name des Analytics-Container-Image, das in die Registry des Service "IBM Containers" geladen wurde. Format: Bluemix-Registry/Privater_Namespace/Image-Name:Tag</td>
+                                                <td>Name des Analytics-Container-Image, das in die Registry des Service "IBM Containers" geladen wurde. Format: IBM_Cloud-Registry/privater_Namespace/Image-Name:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
@@ -960,7 +964,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                     <li><b>startanalyticsgroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
                     Das Script <b>startanalyticsgroup.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>ANALYTICS_CONTAINER_GROUP_HOST</b> konfiguriert haben. 
 
-                        Führen Sie Folgendes aus:
+Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
@@ -981,7 +985,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>Name des Analytics-Container-Image, das in die Registry des Service "IBM Containers" geladen wurde. Format: Bluemix-Registry/Privater_Namespace/Image-Name:Tag</td>
+                                                <td>Name des Analytics-Container-Image, das in die Registry des Service "IBM Containers" geladen wurde. Format: IBM_Cloud-Registry/privater_Namespace/Image-Name:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
@@ -1075,10 +1079,10 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_USER - </b>Ihr Bluemix-Benutzername (E-Mail-Adresse) </li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Ihr Bluemix-Kennwort</li>
-                    <li><b>BLUEMIX_ORG - </b>Ihr Bluemix-Organisationsname</li>
-                    <li><b>BLUEMIX_SPACE - </b>Ihr Bluemix-Bereich (wie oben erläutert)</li>
+                    <li><b>IBM_CLOUD_USER - </b>Ihr IBM Cloud-Benutzername (E-Mail-Adresse) </li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>Ihr IBM Cloud-Kennwort</li>
+                    <li><b>IBM_CLOUD_ORG - </b>Ihr IBM Cloud-Organisationsname</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>Ihr IBM Cloud-Bereich (wie oben erläutert)</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
                 Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">Instanz der <i>dashDB-Enterprise-Transactional-Datenbank</i></a> (<i>Enterprise Transactional 2.8.500</i> oder <i>Enterprise Transactional 12.128.1400</i>).<br/>
@@ -1098,8 +1102,8 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                 <h4>startserver.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
-                    <li><b>SERVER_CONTAINER_NAME - </b>Name für Ihren Bluemix-Container</li>
-                    <li><b>SERVER_IP - </b>IP-Adresse, an die der Bluemix-Container gebunden werden soll<br/>
+                    <li><b>SERVER_CONTAINER_NAME - </b>Name für Ihren IBM Cloud-Container</li>
+                    <li><b>SERVER_IP - </b>IP-Adresse, an die der IBM Cloud-Container gebunden werden soll<br/>
                     Führen Sie zum Zuweisen einer IP-Adresse <code>cf ic ip request</code> aus.<br/>
                     IP-Adressen können in mehreren Containern eines Bereichs wiederverwendet werden. <br/>
                     Wenn Sie bereits eine Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</li>
@@ -1108,7 +1112,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                 <h4>startservergroup.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
-                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Name für Ihre Bluemix-Containergruppe</li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Name für Ihre IBM Cloud-Containergruppe</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Ihr Hostname</li>
                     <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Ihr Domänenname. Der Standardwert ist <code>mybluemix.net</code>.</li>
                     <li><b>MFPF_PROPERTIES - </b>Jeweils durch ein Komma (<b>ohne Leerzeichen</b>) getrennte JNDI-Eigenschaften von {{ site.data.keys.mf_server }}. Die für Analysen relevanten Eigenschaften werden wie folgt definiert: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
@@ -1129,8 +1133,8 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
             <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
 
             <ol>
-                <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
-                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
+                <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
+Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1151,30 +1155,30 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                                             <td><b>Beschreibung</b></td>
                                         </tr>
                                         <tr>
-                                            <td>[-u|--user] BLUEMIX_USER</td>
-                                            <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
+                                            <td>[-u|--user] IBM_CLOUD_USER</td>
+                                            <td>IBM Cloud-Benutzer-ID oder E-Mail-Adresse</td>
                                         </tr>
                                         <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                            <td>Bluemix-Kennwort</td>
+                                            <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                            <td>IBM Cloud-Kennwort</td>
                                         </tr>
                                         <tr>
-                                            <td>[-o|--org] BLUEMIX_ORG	</td>
-                                            <td>Bluemix-Organisationsname</td>
+                                            <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                            <td>IBM Cloud-Organisationsname</td>
                                         </tr>
                                         <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                            <td>Bluemix-Bereichsname</td>
+                                            <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                            <td>IBM Cloud-Bereichsname</td>
                                         </tr>
                                         <tr>
-                                            <td>[-a|--api] BLUEMIX_API_URL (optional)</td>
-                                            <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
+                                            <td>[-a|--api] IBM_CLOUD_API_URL (optional)</td>
+                                            <td>IBM Cloud-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                         </tr>
                                     </table>
 
                                     <p>Beispiel: </p>
 {% highlight bash %}
-initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-Organisationsname --space Bluemix-Bereichsname
+initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Abschnitt schließen</b></a>
@@ -1206,7 +1210,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                                         </tr>
                                         <tr>
                                             <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
-                                            <td>Bluemix-dashDB™-Service (mit dem Bluemix-Serviceplan Enterprise Transactional)</td>
+                                            <td>IBM Cloud-dashDB-Service (mit dem IBM Cloud-Serviceplan Enterprise Transactional)</td>
                                         </tr>
                                         <tr>
                                             <td>[-as |--adminschema ] ADMIN_SCHEMA_NAME (optional)	</td>
@@ -1214,7 +1218,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                                         </tr>
                                         <tr>
                                             <td>[-rd |--runtimedb ] RUNTIME_DB_SRV_NAME (optional)	</td>
-                                            <td>Name der Bluemix-Datenbankserviceinstanz für das Speichern der Laufzeitdaten. Standardmäßig der Service, der für die Verwaltungsdaten angegeben wird.</td>
+                                            <td>Name der IBM Cloud-Datenbankserviceinstanz für das Speichern der Laufzeitdaten. Standardmäßig der Service, der für die Verwaltungsdaten angegeben wird.</td>
                                         </tr>
                                         <tr>
                                             <td>[-p |--push ] ENABLE_PUSH (optional)	</td>
@@ -1222,7 +1226,7 @@ initenv.sh --user Bluemix-Benutzer-ID --password Bluemix-Kennwort --org Bluemix-
                                         </tr>
                                         <tr>
                                             <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
-                                            <td>Name der Bluemix-Datenbankserviceinstanz für das Speichern der Push-Daten. Standardmäßig der Service, der für die Laufzeitdaten angegeben wird.</td>
+                                            <td>Name der IBM Cloud-Datenbankserviceinstanz für das Speichern der Push-Daten. Standardmäßig der Service, der für die Laufzeitdaten angegeben wird.</td>
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
@@ -1241,7 +1245,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                         </div>
                     </div>
                 </li>
-                <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
+                <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
                       Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -1249,7 +1253,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
 
 {% highlight bash %}
@@ -1318,7 +1322,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>[-si|--services] SERVICE_INSTANCES (optional)</td>
-                                        <td>Jeweils durch ein Komma getrennte Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
+                                        <td>Jeweils durch ein Komma getrennte IBM Cloud-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                     </tr>
                                     <tr>
                                         <td>[-h|--http] EXPOSE_HTTP (optional)</td>
@@ -1374,7 +1378,7 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
                     </div>
                 <li><b>startservergroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
                     Das Script <b>startservergroup.sh</b> wird verwendet, um das MobileFirst-Server-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>SERVER_CONTAINER_GROUP_HOST</b> konfiguriert haben. </li>
-                    Führen Sie Folgendes aus:
+Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
@@ -1396,7 +1400,7 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Name des MobileFirst-Server-Container-Image in der Bluemix-Registry</td>
+                                                <td>Name des MobileFirst-Server-Container-Image in der IBM Cloud-Registry</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -1429,7 +1433,7 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
 
                                             <tr>
                                                 <td>[-si|--services] SERVICES (optional)</td>
-                                                <td>Jeweils durch ein Komma getrennte Namen von Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
+                                                <td>Jeweils durch ein Komma getrennte Namen von IBM Cloud-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
                                                 <td>[-tr|--trace] TRACE_SPEC (optional)</td>
@@ -1487,7 +1491,7 @@ Fügen Sie den fernen Server hinzu. Folgen Sie dfür den Anweisungen
 im Lernprogramm [{{ site.data.keys.mf_cli }} für die Verwaltung
 von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance). 
 
-{{ site.data.keys.mf_server }} wird jetzt in IBM Bluemix ausgeführt, sodass Sie mit der Anwendungsentwicklung beginnen können. Gehen Sie die {{ site.data.keys.product }} [Lernprogramme](../../all-tutorials) durch.
+{{ site.data.keys.mf_server }} wird jetzt in IBM Cloud ausgeführt, sodass Sie mit der Anwendungsentwicklung beginnen können. Gehen Sie die {{ site.data.keys.product }} [Lernprogramme](../../all-tutorials) durch.
 
 #### Portnummernbeschränkung
 {: #port-number-limitation }
@@ -1513,7 +1517,7 @@ Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
 ```
-    Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren.
+    Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren. 
 
     a. Führen Sie das Script `prepareserver.sh` aus, um das Server-Image neu zu erstellen und per Push-Operation zum Service "IBM Containers" zu übertragen.
 
@@ -1521,30 +1525,30 @@ Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Container in Bluemix entfernen
+## Container in IBM Cloud entfernen
 {: #removing-a-container-from-bluemix }
-Wenn Sie in Bluemix einen Container entfernen, müssen Sie auch den Image-Namen aus der Registry entfernen.   
-Führen Sie die folgenden Befehle aus, um einen Container in Bluemix zu entfernen: 
+Wenn Sie in IBM Cloud einen Container entfernen, müssen Sie auch den Image-Namen aus der Registry entfernen.   
+Führen Sie die folgenden Befehle aus, um einen Container in IBM Cloud zu entfernen: 
 
 1. `cf ic ps` (Listet die zurzeit aktiven Container auf) 
 2. `cf ic stop container_id` (Stoppt den Container)
 3. `cf ic rm container_id` (Entfernt den Container)
 
-Führen Sie die folgenden cf ic-Befehle aus, um einen Image-Namen aus der Bluemix-Registry zu entfernen: 
+Führen Sie die folgenden cf ic-Befehle aus, um einen Image-Namen aus der IBM Cloud-Registry zu entfernen: 
 
 1. `cf ic images` (Listet die Images in der Registry auf)
 2. `cf ic rmi image_id` (Entfernt ein Image aus der Registry)
 
-## Datenbankservicekonfiguration aus Bluemix entfernen
+## Datenbankservicekonfiguration aus IBM Cloud entfernen
 {: #removing-the-database-service-configuration-from-bluemix }
 Wenn Sie während der Konfiguration des MobileFirst-Server-Image das Script **prepareserverdbs.sh** ausgeführt haben,
 werden die für {{ site.data.keys.mf_server }} erforderlichen Konfigurationen und Datenbanktabellen erstellt. Das Script erstellt auch das Datenbankschema für den Container. 
 
-Sie können die Datenbankservicekonfiguration im Bluemix-Dashboard wie folgt entfernen.
+Sie können die Datenbankservicekonfiguration im IBM Cloud-Dashboard wie folgt entfernen.
 
-1. Wählen Sie im Bluemix-Dashboard den dashDB-Service aus, den Sie verwendet haben. Wählen Sie den dashDB-Servicenamen aus, den Sie für die Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
+1. Wählen Sie im IBM Cloud-Dashboard den dashDB-Service aus, den Sie verwendet haben. Wählen Sie den dashDB-Servicenamen aus, den Sie für die Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
 2. Starten Sie die dashDB-Konsole, um mit den Schemata und Datenbankobjekten der ausgewählten dashDB-Serviceinstanz arbeiten zu können. 
 3. Wählen Sie Schemata für die Konfiguration von IBM {{ site.data.keys.mf_server }} aus. Die Schemanamen sind die, die Sie bei Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
-4. Untersuchen Sie die Schemanamen und die zugehörigen Objekte gründlich, bevor Sie die einzelnen Schemata löschen. Die Datenbankkonfigurationen wurden aus Bluemix entfernt.
+4. Untersuchen Sie die Schemanamen und die zugehörigen Objekte gründlich, bevor Sie die einzelnen Schemata löschen. Die Datenbankkonfigurationen wurden aus IBM Cloud entfernt.
 
-Wenn Sie während des Konfigurierens des {{ site.data.keys.mf_app_center }} das Script **prepareappcenterdbs.sh** ausführen, folgen Sie den oben beschriebenen Schritten, um die Datenbankservicekonfiguration aus Bluemix zu entfernen. 
+Wenn Sie während des Konfigurierens des {{ site.data.keys.mf_app_center }} das Script **prepareappcenterdbs.sh** ausführen, folgen Sie den oben beschriebenen Schritten, um die Datenbankservicekonfiguration aus IBM Cloud zu entfernen. 

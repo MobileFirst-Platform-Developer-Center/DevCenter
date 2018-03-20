@@ -7,6 +7,8 @@ weight: 1
 <br/>
 In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen für eine zeitgemäße Entwicklung, Implementierung und Verwaltung Ihrer {{ site.data.keys.product_adj }}-Anwendungen.
 
+
+
 <div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
@@ -273,11 +275,11 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <p>Zu den Entwicklungsartefakten, die Sie auf den Server hochladen, gehören Adapter und ihre Konfiguration, Sicherheitskonfigurationen für Ihre Apps, Zertifikate für Push-Benachrichtigungen und Protokollfilter.</p>
 
-                <h3>In IBM Bluemix erstellte Anwendungen in der {{ site.data.keys.product }} ausführen</h3>
-                <p>Entwickler können IBM Bluemix-Anwendungen für die Ausführung in der {{ site.data.keys.product }} umstellen. Dafür muss Ihre Clientanwendung geändert und an die APIs der {{ site.data.keys.product }} angeglichen werden.</p>
+                <h3>In IBM Cloud erstellte Anwendungen in der {{ site.data.keys.product }} ausführen</h3>
+                <p>Entwickler können IBM Cloud-Anwendungen für die Ausführung in der {{ site.data.keys.product }} umstellen. Dafür muss Ihre Clientanwendung geändert und an die APIs der {{ site.data.keys.product }} angeglichen werden.</p>
 
-                <h3>{{ site.data.keys.product }} als Service in IBM Bluemix</h3>
-                <p>Sie können jetzt den Service {{ site.data.keys.mf_bm_full }}  in IBM Bluemix verwenden, um Ihre mobilen Unternehmens-Apps zu erstellen und auszuführen.</p>
+                <h3>{{ site.data.keys.product }} als Service in IBM Cloud</h3>
+                <p>Sie können jetzt den Service {{ site.data.keys.mf_bm_full }}  in IBM Cloud verwenden, um Ihre mobilen Unternehmens-Apps zu erstellen und auszuführen.</p>
 
                 <h3>Keine .wlapp-Dateien</h3>
                 <p>In den Vorgängerversionen wurden Anwendungen implementiert, indem eine <b>.wlapp</b>-Datei auf den {{ site.data.keys.mf_server }} hochgeladen wurde. Die Datei enthielt beschreibende Daten für die Anwendung und im Falle von Hybridanwendungen auch die erforderlichen Webressourcen. In Version 8.0.0 verwenden Sie keine <b>.wlapp</b>-Datei. Stattdessen gehen Sie wie folgt vor:</p>
@@ -312,7 +314,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                 <p>JAX-RS 2.0 stellt neue serverseitige Funktionen bereit, zu denen asynchrones serverseitiges HTTP, Filter und Abfangprozesse gehören. Adapter können diese Features jetzt nutzen.</p>
 
                 <h3>{{ site.data.keys.product }} für IBM Container</h3>
-                <p>Die mit Version 8.0 freigegebene {{ site.data.keys.product }} für IBM Container ist auf der Website <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a> verfügbar. Diese Version der {{ site.data.keys.product }} für IBM Container ist bereit für den Produktionseinsatz und unterstützt den dashDB™-Plan "Enterprise Transactional" von IBM Bluemix.</p>
+                <p>Die mit Version 8.0 freigegebene {{ site.data.keys.product }} für IBM Container ist auf der Website <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a> verfügbar. Diese Version der {{ site.data.keys.product }} für IBM Container ist bereit für den Produktionseinsatz und unterstützt den dashDB™-Plan "Enterprise Transactional" von IBM Cloud.</p>
 
                 <p><b>Hinweis:</b> Informieren Sie sich über die Voraussetzungen für die Implementierung der {{ site.data.keys.product }} in IBM Containern.</p>
 
@@ -473,7 +475,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>Das {{ site.data.keys.mf_app_center }} wird jetzt über BYOL-Scripts in Bluemix (auf der Basis von Containern) unterstützt. </p>
+                <p>Das {{ site.data.keys.mf_app_center }} wird jetzt über BYOL-Scripts in IBM Cloud(auf der Basis von Containern) unterstützt. </p>
             </div>
         </div>
     </div>

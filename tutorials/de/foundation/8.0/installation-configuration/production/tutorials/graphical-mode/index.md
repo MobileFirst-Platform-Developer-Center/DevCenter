@@ -29,8 +29,8 @@ Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) als 
         
 * JDBC-Treiber für Ihre Datenbank:
     * Verwenden Sie für DB2 den DB2-JDBC-Treibertyp 4.
-    * Verwenden Sie für MySQL den Connector/J-JDBC-Treiber. 
-    * Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber. 
+    * Verwenden Sie für MySQL den Connector/J-JDBC-Treiber.
+    * Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber.
 
 * Java ab Version 7
 
@@ -38,7 +38,7 @@ Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) als 
 IBM Installation
 Manager ab Version 1.8.4
 über die [Installation Manager and Packaging Utility Download
-Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142). 
+Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 * Sie benötigen außerdem das Installationsrepository für {{ site.data.keys.mf_server }} und das
 Installationsprogramm für WebSphere Application Server Liberty Core
 ab Version 8.5.5.3. Laden Sie diese Pakete mit der eAssembly für die {{ site.data.keys.product }} über
@@ -74,7 +74,7 @@ mit Ant-Tasks auszuführen.
 * Sie können keine Server-Farm konfigurieren. Die eingebettete Derby-Datenbank unterstützt keinen Zugriff von mehreren Servern. Zum Konfigurieren einer Server-Farm benötigen Sie
 DB2, MySQL oder Oracle.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [IBM Installation Manager installieren](#installing-ibm-installation-manager)
@@ -207,7 +207,8 @@ das Fenster
 
 3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf **Weiter**.
 4. Wählen Sie die Option **Neue Paketgruppe erstellen** aus, um das Produkt in dieser neuen Paketgruppe zu installieren.
-5. Klicken Sie auf **Weiter**.
+5. Klicken Sie auf
+**Weiter**.
 6. Wählen Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing** die Option **Do not activate token licensing** mit der Option **Rational License Key Server** aus. 
 
 In diesem Lernprogramm wird davon ausgegangen, dass keine Tokenlizenzierung erforderlich ist. Daher finden Sie hier keine Schritte, um
@@ -403,7 +404,7 @@ Operationen ausgeführt:
     * Für den Verwaltungsservice und den Liveaktualisierungsservice vom Ant-Ziel
 **admdatabases**
     * Für die Laufzeit vom Ant-Ziel **rtmdatabases** 
-    * Für den Push-Service vom Ant-Ziel pushdatabases 
+    * Für den Push-Service vom Ant-Ziel pushdatabases
 2. Die WAR-Dateien der verschiedenen Komponenten werden im Liberty-Server implementiert. Die Details der Operationen sehen Sie im Protokoll unter den Zielen
 **adminstall**, **rtminstall** und
 **pushinstall**. 
@@ -485,7 +486,7 @@ HTTPS-Ports für die JMX-Kommunikation zwischen dem Verwaltungsservice
 JMX. Bei Verwendung von Liberty Profile wird restConnector für die Kommunikation zwischen den Anwendungen innerhalb eines Servers
 und zwischen den Servern einer Liberty-Farm verwendet, was die Verwendung von
 HTTPS erfordert. Für den standardmäßig erstellten Keystore erstellt Liberty Profile ein Zertifikat mit einem Gültigkeitszeitraum
-von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.     
+von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.    
 
     Für die Aktivierung von JMX wird in der Basisregistry ein Benutzer mit Administratorrolle (MfpRESTUser) erstellt. Der Name und das Kennwort des Benutzers werden als JNDI-Eigenschaften (mfp.admin.jmx.user und mfp.admin.jmx.pwd) angegeben und von der Laufzeitkomponente sowie dem Verwaltungsservice für die Ausführung von JMX-Abfragen verwendet. Mit einigen der globalen JMX-Eigenschaften wird der Clustermodus (eigenständiger Server oder Farm) definiert. Das Server Configuration Tool setzt die Eigenschaft mfp.topology.clustermode des Liberty-Servers auf Standalone. In einem späteren Abschnitt dieses Lernprogramms wird diese Eigenschaft für die Erstelllung einer Farm auf Cluster gesetzt.
 5. Benutzer werden erstellt (auch zutreffend für Apache Tomcat und WebSphere Application Server).
@@ -496,8 +497,7 @@ von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgese
     Die angepasste Web-Containereigenschaft `deferServletLoad` wird auf "false" gesetzt. Die Laufzeitkomponente und der Verwaltungsservice müssen gestartet werden, wenn der Server gestartet wird.
 Diese Komponenten können so die JMX-Beans registrieren und die Synchronisation starten, die es der Laufzeitkomponente ermöglicht, alle Anwendungen und Adapter herunterzuladen, für die sie Services
 bereitstellen muss. 7. Das Standardsteuerprogramm wird so angepasst, dass für `coreThreads` und `maxThreads` hohe Werte festgelegt werden, wenn Sie
-Liberty bis Version 8.5.5.5 verwenden. Ab
-Liberty Version 8.5.5.6 wird das Standardsteuerprogramm automatisch optimiert. 
+Liberty bis Version 8.5.5.5 verwenden. Ab Liberty Version 8.5.5.6 wird das Standardsteuerprogramm automatisch optimiert.
 
     Durch diese Einstellung werden Probleme durch Zeitlimitüberschreitungen
 vermieden, die

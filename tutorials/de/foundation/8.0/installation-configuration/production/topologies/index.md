@@ -10,7 +10,7 @@ In dieser Übersicht finden Sie ausführliche Informationen zu den möglichen To
 Die Komponenten werden entsprechend der von Ihnen verwendeten Servertopologie implementiert. Im Abschnitt zu den Netzabläufen erfahren Sie, wie die Komponenten untereinander und mit den Endbenutzergeräten
 kommunizieren. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Netzabläufe zwischen den MobileFirst-Server-Komponenten](#network-flows-between-the-mobilefirst-server-components)
@@ -459,7 +459,7 @@ Verwaltungsservice und der Liveaktualisierungsservice) und die Laufzeiten in jed
 ![Topologie einer Server-Farm](server_farm_topology.jpg)
 
 Diese Topologie unterstützt nur die symmetrische Implementierung. Die Laufzeiten und Verwaltungskomponenten müssen in jedem Server der Farm
-implementiert werden. Die Implementierung dieser Topologie hat folgende Merkmale: 
+implementiert werden. Die Implementierung dieser Topologie hat folgende Merkmale:
 
 * Verwaltungskomponenten können implementiert werden.
 Jede Instanz der {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice. 
@@ -524,6 +524,8 @@ mfp.admin.jmx.host</td>
 Poer des REST-Connectors, der mit dem Wert des
 Attributs httpsPort übereinstimmen muss, das im Element <code>httpEndpoint</code>
 der Datei <b>server.xml</b> des Servers mit WebSphere Application Server Liberty Profile deklariert ist.
+ 
+
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
 {% endhighlight %}
@@ -539,7 +541,8 @@ WebSphere-Application-Server-Liberty-Administrators,
 der
 im Element <code>administrator-role</code> der Datei
 <b>server.xml</b> des Servers mit WebSphere Application Server Liberty Profile
-definiert ist.             
+definiert ist. 
+            
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -636,7 +639,7 @@ in einem Verbundmember. Diese Topologie unterstützt nur die asymmetrische Imple
 
 ![Topologie für einen Liberty-Verbund](liberty_collective_topology.jpg)
 
-Die Implementierung dieser Topologie hat folgende Merkmale: 
+Die Implementierung dieser Topologie hat folgende Merkmale:
 
 * Verwaltungskomponenten können in einem Controller oder in mehreren Controllern des Verbunds implementiert werden.
 Jede Instanz der * * {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice. 
@@ -686,7 +689,9 @@ Werte</th>
         <td>mfp.admin.jmx.port</td>
         <td>Port des REST-Connectors, der mit dem Wert des
 Attributs <b>httpsPort</b> übereinstimmen muss, das im Element <code>httpEndpoint</code> der Datei server.xml
-des Liberty-Controllers deklariert ist. {% highlight xml %}
+des Liberty-Controllers deklariert ist. 
+
+{% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
         </td>
@@ -696,6 +701,8 @@ des Liberty-Controllers deklariert ist. {% highlight xml %}
         <td>Benutzername des Controlleradministrators, der im Element
 <code>administrator-role</code> der Datei
 <b>server.xml</b> des Liberty-Controllers definiert ist
+
+
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
@@ -744,7 +751,9 @@ Der Wert <code>controller</code> kann nicht verwendet werden, weil er für den V
         <td>mfp.admin.jmx.port</td>
         <td>Port des REST-Connectors, der mit dem Wert des
 Attributs <b>httpsPort</b> übereinstimmen muss, das im Element <code>httpEndpoint</code> der Datei server.xml
-des Liberty-Controllers deklariert ist. {% highlight xml %}
+des Liberty-Controllers deklariert ist. 
+
+{% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
         </td>
@@ -754,6 +763,8 @@ des Liberty-Controllers deklariert ist. {% highlight xml %}
         <td>Benutzername des Controlleradministrators, der im Element
 <code>administrator-role</code> der Datei
 <b>server.xml</b> des Liberty-Controllers definiert ist
+
+
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
@@ -787,11 +798,11 @@ und die von diesen Komponenten verwalteten Laufzeiten in einem anderen Cluster i
 
 #### Symmetrische Implementierung innerhalb eines Servers oder Clusters
 {: #symmetric-deployment-in-the-same-server-or-cluster }
-Das folgende Diagramm zeigt eine symmetrische Implementierung, bei der die Laufzeiten und Verwaltungskomponenten in demselben Server oder Cluster implementiert sind. 
+Das folgende Diagramm zeigt eine symmetrische Implementierung, bei der die Laufzeiten und Verwaltungskomponenten in demselben Server oder Cluster implementiert sind.
 
 ![WAS-ND-Topologie](was_nd_topology_1.jpg)
 
-Die Implementierung dieser Topologie hat folgende Merkmale: 
+Die Implementierung dieser Topologie hat folgende Merkmale:
 
 * Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden. Jede Instanz der * {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice.
 * Laufzeiten können in demselben Server oder Cluster implementiert werden wie die Verwaltungskomponenten, die die Laufzeiten verwalten.
@@ -802,12 +813,11 @@ Die Implementierung dieser Topologie hat folgende Merkmale:
 
 #### Asymmetrische Implementierung mit Laufzeiten und Verwaltungsservices in verschiedenen Servern oder Clustern
 {: #asymmetric-deployment-with-runtimes-and-administration-services-in-different-server-or-cluster }
-Das folgende Diagramm zeigt
-eine Topologie, bei der die Laufzeiten in einem anderen Server oder Cluster als die Verwaltungsservices implementiert sind. 
+Das folgende Diagramm zeigt eine Topologie, bei der die Laufzeiten in einem anderen Server oder Cluster als die Verwaltungsservices implementiert sind.
 
 ![WAS-ND-Topologie](was_nd_topology_2.jpg)
 
-Die Implementierung dieser Topologie hat folgende Merkmale: 
+Die Implementierung dieser Topologie hat folgende Merkmale:
 
 * Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden. Jede Instanz der * {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice.
 * Laufzeiten können in anderen Servern oder Clustern der Zelle implementiert werden. 
@@ -833,7 +843,7 @@ die in Cluster 1 und Cluster 2 implementierten Laufzeiten.
 
 ![WAS-ND-Topologie](was_nd_topology_3.jpg)
 
-Die Implementierung dieser Topologie hat folgende Merkmale: 
+Die Implementierung dieser Topologie hat folgende Merkmale:
 
 * Verwaltungskomponenten können in einem Server oder in mehreren Servern der Zelle implementiert werden. Jede Instanz der {{ site.data.keys.mf_console }} kommuniziert mit einem Verwaltungsservice und einem Liveaktualisierungsservice. 
 * Laufzeiten können in einem Server oder in mehreren Servern der Zelle implementiert werden.
