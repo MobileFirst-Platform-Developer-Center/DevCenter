@@ -43,13 +43,14 @@ custom_js:
                 {% include show-children.html children=page.children %}
             {% endif %}
             <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
+            {% include disqus.html %}
 
-          
         </article>
         <div class="col-lg-2">
 
         </div>
     </div>
+
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Setting Up Databases
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -23,7 +23,7 @@ Each component needs a set of tables. The tables can be created manually by runn
 However, if you decide to install multiple instances of {{ site.data.keys.product }} runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
 
 > **Note about DB2:** {{ site.data.keys.product_adj }} licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
-> 
+>
 > * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
 > * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
 >
@@ -184,9 +184,9 @@ The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect
    ```
 
     Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which {{ site.data.keys.product_adj }} runs.
-    
+
     The user must be able to connect to the MySQL server from the hosts that run the Java application server with the {{ site.data.keys.mf_server }} applications installed.
-    
+
 ## Create the database tables manually
 {: #create-the-database-tables-manually }
 The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them manually.
