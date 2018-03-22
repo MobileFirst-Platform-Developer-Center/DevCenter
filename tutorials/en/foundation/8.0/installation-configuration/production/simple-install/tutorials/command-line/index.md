@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server From Command Line tutorial
+title: Installing MobileFirst Server from command line
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,7 +12,7 @@ Use the command line mode of IBM  Installation Manager and Ant tasks to install 
 {: #before-you-begin }
 * Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
     * Database Management System (DBMS) from the list of supported database:
-        * DB2 
+        * DB2
         * MySQL
         * Oracle
 
@@ -34,7 +34,7 @@ Use the command line mode of IBM  Installation Manager and Ant tasks to install 
 
 **WebSphere Application Server Liberty profile**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 or later
-    
+
 #### Jumpt to
 {: #jump-to }
 * [Installing IBM Installation Manager](#installing-ibm-installation-manager)
@@ -55,7 +55,7 @@ You must install Installation Manager V1.8.4 or later. The older versions of Ins
 3. If you accept the license agreement after the review, install Installation Manager.  
     * Run **installc.exe** to install Installation Manager as administrator. Root is needed on Linux or UNIX. On Windows, the administrator privilege is needed. In this mode, the information about the installed packages is placed in a shared location on the disk and any user that is allowed to run Installation Manager can update the applications. The executable file name ends with "c" (**installc**) for a command line installation without a graphical user interface. To install Installation Manager, enter **installc.exe -acceptLicence**.
     * Run **userinstc.exe** to install Installation Manager in user mode. No specific privilege is needed. However, in this mode, the information about the installed packages are placed in the user's home directory. Only that user can update the applications that are installed with Installation Manager. The executable ends with "c" (**userinstc**) for a command line installation without a graphical user interface. To install Installation Manager, enter **userinstc.exe -acceptLicence**.
-    
+
 ## Installing WebSphere Application Server Liberty Core
 {: #installing-websphere-application-server-liberty-core }
 The installer for WebSphere Application Server Liberty Core is provided as part of the package for {{ site.data.keys.product }}. In this task, Liberty profile is installed and a server instance is created so that you can install {{ site.data.keys.mf_server }} on it.
@@ -68,7 +68,7 @@ The installer for WebSphere Application Server Liberty Core is provided as part 
 3. Decide a directory where Liberty profile is to be installed. It is referred as liberty_install_dir in the next steps.
 4. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
 5. If you accept the license agreement after the review, install Liberty.
-    
+
     Enter the command: **imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
 
     This command installs Liberty in the **liberty\_install\_dir** directory. The **-acceptLicense** option means that you accept the license terms for the product.
@@ -82,9 +82,9 @@ The installer for WebSphere Application Server Liberty Core is provided as part 
 7.  Create a Liberty server that will be used to install the first node of {{ site.data.keys.mf_server }} at the later part of the tutorial.
     * Start a command line.
     * Go to **liberty\_install\_dir/bin**, and enter **server create mfp1**.
-    
+
     This command creates a Liberty server instance named **mfp1**. You can see its definition at **liberty\_install\_dir/usr/servers/mfp1** or **WLP\_USER\_DIR/servers/mfp1** (if you modify the directory as described in step 6).
-    
+
 After the server is created, you can start this server with `server start mfp1` from **liberty\_install\_dir/bin/**.  
 To stop the server, enter the command: `server stop mfp1` from **liberty\_install\_dir/bin/**.
 
@@ -98,7 +98,7 @@ Make sure that Installation Manager V1.8.4 or later is installed. The installati
 
 Run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} on your disk before you create the databases and deploy {{ site.data.keys.mf_server }} to Liberty profile. During the installation of {{ site.data.keys.mf_server }} with Installation Manager, an option is proposed to you to install {{ site.data.keys.mf_app_center }}. Application Center is a different component of the product. For this tutorial, it is not required to be installed with {{ site.data.keys.mf_server }}.
 
-You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure {{ site.data.keys.mf_server }} for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational  License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing. 
+You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure {{ site.data.keys.mf_server }} for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational  License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing.
 
 In this tutorial, you specify the properties as the parameters through the **imcl** command line. This specification can also be done by using a response file.
 
@@ -154,7 +154,7 @@ In this tutorial, the tables for all the components are placed under the same sc
         * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
         * On Linux or UNIX systems, go to **~/sqllib/bin** (or **db2\_install\_dir/bin** if sqllib is not created in the administrator's home directory) and enter `./db2`.
     * Enter the following SQL statements to create a database that is called **MFPDATA**:
-    
+
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
         CONNECT TO MFPDATA
@@ -166,7 +166,7 @@ In this tutorial, the tables for all the components are placed under the same sc
         ```
 
     If you defined a different user name, replace **mfpuser** with your own user name.
-    
+
     > **Note:** The statement does not remove the default privileges granted to PUBLIC in a default DB2 database. For production, you might need to reduce the privileges in that database to the minimum requirement for the product. For more information about DB2 security and an example of the security practices, see [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
 
 ## Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks
@@ -180,11 +180,11 @@ The following {{ site.data.keys.product_adj }} applications are not deployed by 
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool then configures the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}. 
+{{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool then configures the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}.
 
 #### Application Center
 {: #application-center }
-This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}. 
+This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}.
 
 Pick the appropriate XML file that contains the Ant tasks and configure the properties.
 
@@ -257,7 +257,7 @@ The **server.xml** file and some application server setting are modified during 
 1. The Liberty features are added.
 
     The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
-    
+
 2. `host='*'` is added in the `httpEndPoint` declaration.
 
     This setting is to allow the connection to the server from all network interfaces. In production, you might want to restrict the host value of the HTTP endpoint.
@@ -276,9 +276,9 @@ The **server.xml** file and some application server setting are modified during 
 7. The default executor is customized to set large values to `coreThreads` and `maxThreads` if you use Liberty V8.5.5.5 or earlier. The default executor is automatically tuned by Liberty as of V8.5.5.6.
 
     This setting avoids timeout issues that break the startup sequence of the runtime component and administration service on some Liberty versions. The absence of this statement can be the cause of these errors in the server log file:
-    
-    > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out 
-FWLSE3000E: A server error was detected. 
+
+    > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out
+FWLSE3000E: A server error was detected.
     > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
 
 #### Declaration of applications
@@ -385,15 +385,15 @@ When you create a farm, you also need to configure an HTTP server to send querie
         httpPort="9080"
         httpsPort="9443" />
       ```
-        
+
       With:
-        
+
       ```xml
       <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9081"
         httpsPort="9444" />
       ```
-        
+
       The HTTP and HTTPS ports of the server mfp2 do not conflict with the ports of the server mfp1 with this change. Make sure to modify the ports before you run the installation of {{ site.data.keys.mf_server }}. Otherwise, if you modify the port after the installation is made, you also need to reflect the change of the port in the JNDI property: **mfp.admin.jmx.port**.
 
 3. Copy the Ant file that you used in [Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks](#deploying-mobilefirst-server-to-liberty-with-ant-tasks), and change the value of the property **appserver.was85liberty.serverInstance** to **mfp2**. The Ant tasks detect that the databases exist and do not create the tables (see the following log extract). Then, the applications are deployed to the server.
@@ -417,26 +417,26 @@ When you create a farm, you also need to configure an HTTP server to send querie
     * Open a tab in the same web browser and enter the URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). The console is served by server mfp2.
     * Log in with admin/admin. If the installation is done correctly, you can see the same welcome page in both tabs after login.
     * Return to first browser tab and click **Hello, admin → Download Audit Log**. You are logged out of the console and see the login screen again. This logout behavior is an issue. The problem happens because when you log on to server mfp2, a Lightweight Third Party Authentication (LTPA) token is created and stored in your browser as a cookie. However, this LTPA token is not recognized by server mfp1. Switching between servers is likely to happen in a production environment when you have an HTTP load balancer in front of the cluster. To resolve this issue, you must ensure that both servers (mfp1 and mfp2) generate the LTPA tokens with the same secret keys. Copy the LTPA keys from server mfp1 to server mfp2.
-    
+
         * Stop both servers with these commands:
-        
+
           ```bash
           server stop mfp1
           server stop mfp2
           ```
-        
+
         * Copy the LTPA keys of server mfp1 to server mfp2.
-            From **liberty\_install\_dir/usr/servers** or **WLP\_USER\_DIR/servers**, run the following command depending on your operating system. 
+            From **liberty\_install\_dir/usr/servers** or **WLP\_USER\_DIR/servers**, run the following command depending on your operating system.
             * On UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
             * On Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * Restart the servers. Switch from one browser tab to another other does not require you to relogin. In a Liberty server farm, all servers must have the same LTPA keys.
-    
+
 5. Enable the JMX communication between the Liberty servers.
 
     The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
-        
+
     > **Tip:** You can change it with the Keytool utility, but you must also change the password in the server.xml file so that Liberty server can read that keystore. In this tutorial, use the default password.
-    
+
     * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
     * Export the default certificate of server mfp1 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
     * In **WLP\_USER\_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
@@ -452,5 +452,5 @@ When you create a farm, you also need to configure an HTTP server to send querie
    server start mfp1
    server start mfp2
    ```
-        
+
 2. Access the console. For example, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), or [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in HTTPS. In the left sidebar, an extra menu that is labeled as **Server Farm Nodes** appears. If you click **Server Farm Nodes**, you can the status of each node. You might need to wait a bit for both nodes to be started.
