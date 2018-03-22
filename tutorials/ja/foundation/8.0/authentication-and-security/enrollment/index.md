@@ -1,25 +1,25 @@
 ---
 layout: tutorial
 title: 登録
-breadcrumb_title: 登録
+breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: iOS Swift プロジェクトのダウンロード
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: Android プロジェクトのダウンロード
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: Web プロジェクトのダウンロード
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: SecurityCheck Maven プロジェクトのダウンロード
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このサンプルは、カスタムの登録プロセスとステップアップ許可を例示します。この一回限りの登録プロセスの間に、ユーザーはユーザー名とパスワードを入力し、PIN コードを定義する必要があります。  
+このサンプルは、カスタムの登録プロセスとステップアップ許可を例示します。 この一回限りの登録プロセスの間に、ユーザーはユーザー名とパスワードを入力し、PIN コードを定義する必要があります。  
 
 **前提条件:** [ExternalizableSecurityCheck](../externalizable-security-check/) および[ステップアップ](../step-up/)のチュートリアルをお読みください。
 
@@ -34,14 +34,14 @@ downloads:
 {: #application-flow }
 * アプリケーションが初めて開始されると (登録の前)、アプリケーションは、**「公開データの照会 (Get public data)」**と**「登録 (Enroll)」**の 2 つのボタンがある UI を表示します。
 * ユーザーが**「登録 (Enroll)」**ボタンをタップして登録を開始すると、ログイン・フォームのプロンプトが出され、その後、PIN コードを設定するように要求されます。
-* ユーザーが正常に登録されると、UI には、**「公開データの照会 (Get public data)」**、**「残高照会 (Get balance)」**、**「取引照会 (Get transactions)」**、および**「ログアウト」**の 4 つのボタンが表示されます。ユーザーは、PIN コードを入力しなくとも 4 つすべてのボタンを利用できます。
-* アプリケーションが 2 回目に起動されたとき (登録の後)、UI には引き続き 4 つすべてのボタンが含まれています。ただし、ユーザーが**「取引照会 (Get transactions)」**ボタンをクリックすると、ユーザーは PIN コードの入力を要求されます。
+* ユーザーが正常に登録されると、UI には、**「公開データの照会 (Get public data)」**、**「残高照会 (Get balance)」**、**「取引照会 (Get transactions)」**、および**「ログアウト」**の 4 つのボタンが表示されます。 ユーザーは、PIN コードを入力しなくとも 4 つすべてのボタンを利用できます。
+* アプリケーションが 2 回目に起動されたとき (登録の後)、UI には引き続き 4 つすべてのボタンが含まれています。 ただし、ユーザーが**「取引照会 (Get transactions)」**ボタンをクリックすると、ユーザーは PIN コードの入力を要求されます。
 
 PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユーザー名とパスワードを使用して認証を受け、PIN コードを再設定するように要求されます。
 
 ## 永続属性へのデータの保管
 {: #storing-data-in-persistent-attributes }
-保護データを `PersistentAttributes` オブジェクトに保存するように選択できます。このオブジェクトは、登録済みクライアントのカスタム属性用のコンテナーです。オブジェクトにはセキュリティー検査クラスまたはアダプター・リソース・クラスのいずれかからアクセスできます。
+保護データを `PersistentAttributes` オブジェクトに保存するように選択できます。このオブジェクトは、登録済みクライアントのカスタム属性用のコンテナーです。 オブジェクトにはセキュリティー検査クラスまたはアダプター・リソース・クラスのいずれかからアクセスできます。
 
 提供されるサンプル・アプリケーションでは、`PersistentAttributes` オブジェクトをアダプター・リソース・クラスで使用して、PIN コードを保管しています。
 
@@ -51,7 +51,7 @@ PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユー�
   @POST
   @OAuthSecurity(scope = "setPinCode")
   @Path("/setPinCode/{pinCode}")
-
+  
   public Response setPinCode(@PathParam("pinCode") String pinCode){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		clientData.getProtectedAttributes().put("pinCode", pinCode);
@@ -68,7 +68,7 @@ PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユー�
   @DELETE
   @OAuthSecurity(scope = "unenroll")
   @Path("/unenroll")
-
+  
   public Response unenroll(){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		if (clientData.getProtectedAttributes().get("pinCode") != null){
@@ -85,7 +85,7 @@ PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユー�
 
 ### EnrollmentUserLogin
 {: #enrollmentuserlogin }
-`EnrollmentUserLogin` セキュリティー検査は、**setPinCode** リソースを保護して、認証済みユーザーのみが PIN コードを設定できるようにします。このセキュリティー検査は、すぐに期限切れになるように作られており、「初回に起動」された期間中のみ有効であるように意図されています。このセキュリティー検査は、追加の `isLoggedIn` メソッドと `getRegisteredUser` メソッドがある点を除けば、[UserAuthenticationSecurityCheck の実装](../user-authentication/security-check)のチュートリアルで説明している `UserLogin` セキュリティー検査と同じものです。  
+`EnrollmentUserLogin` セキュリティー検査は、**setPinCode** リソースを保護して、認証済みユーザーのみが PIN コードを設定できるようにします。 このセキュリティー検査は、すぐに期限切れになるように作られており、「初回に起動」された期間中のみ有効であるように意図されています。 このセキュリティー検査は、追加の `isLoggedIn` メソッドと `getRegisteredUser` メソッドがある点を除けば、[UserAuthenticationSecurityCheck の実装](../user-authentication/security-check)のチュートリアルで説明している `UserLogin` セキュリティー検査と同じものです。  
 `isLoggedIn` メソッドは、セキュリティー検査の状態が SUCCESS と等しい場合には `true` を返し、それ以外の場合には `false` を返します。  
 `getRegisteredUser` メソッドは、認証済みユーザーを返します。
 
@@ -104,14 +104,14 @@ public AuthenticatedUser getRegisteredUser() {
 {: #enrollmentpincode }
 `EnrollmentPinCode` セキュリティー検査は、**「取引照会 (Get transactions)」**リソースを保護します。いくつかの違いを除いて、[CredentialsValidationSecurityCheck の実装](../credentials-validation/security-check)のチュートリアルで説明している `PinCodeAttempts` セキュリティー検査に似ています。
 
-このチュートリアルの例の場合、`EnrollmentPinCode` は、`EnrollmentUserLogin` に**依存**しています。`EnrollmentUserLogin` へのログインが成功した後でのみ、ユーザーは PIN コードの入力を求められます。
+このチュートリアルの例の場合、`EnrollmentPinCode` は、`EnrollmentUserLogin` に**依存**しています。 `EnrollmentUserLogin` へのログインが成功した後でのみ、ユーザーは PIN コードの入力を求められます。
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-アプリケーションが**始めて**開始され、ユーザーが正常に登録されると、ユーザーは、設定した PIN コードを入力しなくとも**「取引照会 (Get transactions)」**リソースにアクセスできなければなりません。その目的のために、`authorize` メソッドは `EnrollmentUserLogin.isLoggedIn` メソッドを使用して、ユーザーがログイン状態であるかどうかをチェックします。これは、`EnrollmentUserLogin` の有効期限が切れていない限り、ユーザーは**「取引照会 (Get transactions)」**にアクセスできることを意味します。
+アプリケーションが**始めて**開始され、ユーザーが正常に登録されると、ユーザーは、設定した PIN コードを入力しなくとも**「取引照会 (Get transactions)」**リソースにアクセスできなければなりません。 その目的のために、`authorize` メソッドは `EnrollmentUserLogin.isLoggedIn` メソッドを使用して、ユーザーがログイン状態であるかどうかをチェックします。 これは、`EnrollmentUserLogin` の有効期限が切れていない限り、ユーザーは**「取引照会 (Get transactions)」**にアクセスできることを意味します。
 
 ```java
 @Override

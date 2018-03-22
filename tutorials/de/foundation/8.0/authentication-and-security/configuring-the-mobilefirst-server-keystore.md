@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst-Server-Keystore konfigurieren
-breadcrumb_title: Server-Keystore konfigurieren
+title: Keystore für MobileFirst Server konfigurieren
+breadcrumb_title: Configuring the Server Keystore
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -95,4 +95,4 @@ MobileFirst-Server-Identität und Kennwort für den Alias. Bei erfolgreicher Kon
 
         * Aktualisieren Sie die Keystore-Konfiguration mit dem richtigen Dateinamen, Kennwort und Typ (`<keyStore id=“defaultKeyStore” location=<Keystore-Name> password=<Keystore-Kennwort> type=<Keystore-Typ> />`). 
 
-Wenn Sie für die Implementierung den {{ site.data.keys.mf_bm_short}} Service in Bluemix verwenden, können Sie die Keystore-Datei vor der Implementierung des Servers unter **Erweiterte Einstellungen** hochladen. 
+Wenn Sie für die Implementierung den {{ site.data.keys.mf_bm_short}} Service in IBM Cloud verwenden, können Sie die Keystore-Datei vor der Implementierung des Servers unter **Erweiterte Einstellungen** hochladen. 

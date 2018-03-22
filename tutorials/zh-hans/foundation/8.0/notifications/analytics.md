@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 对推送通知设置分析支持
-breadcrumb_title: 设置分析支持
+title: 为推送通知设置分析支持
+breadcrumb_title: Setting Up Analytics Support
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---

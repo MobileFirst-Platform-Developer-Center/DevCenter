@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 应用程序更新的推送通知
-breadcrumb_title: 推送通知
+breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -107,7 +107,7 @@ Application Server Liberty Profile
 
    JNDI 属性必须按照您的应用程序服务器需求进行定义。  
    请参阅 [Application Center 的 JNDI 属性](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)，以获取可设置的完整属性列表。
-    
+
 **要点：**
 
 * 如果您将 GCM 用于先前版本的 Android，那么您可能需要将自己的设备与现有 Google 帐户配对，GCM 才能有效工作。 请参阅 [GCM 服务](http://developer.android.com/google/gcm/gcm.html)：“它使用 Google 服务的现有连接。 对于低于 3.0 版本的设备，这需要用户在其移动设备上设置其 Google 帐户。 在运行 Android 4.0.4 或更高版本的设备上无需 Google 帐户。”
@@ -138,7 +138,7 @@ feedback.push.apple.com:2196
 2. 如果您要直接从 XCode 启动 Application Center 以在设备上对其进行测试或调试，请在“XCode 组织器”窗口中转至“供应概要文件”部分并在您的移动设备上安装此概要文件。
 
 3. 创建由 Application Center 用于保护与 APN 服务器之间的通信的签名证书。 此服务器将使用该证书来签署发送至 APN 服务器的每一条推送请求。 此签名证书是从您的供应概要文件生成的。
-    
+
 * 打开“Keychain Access”实用程序，然后单击左侧窗格中的**我的证书**类别。
 * 查找您要安装的证书并显示其内容。 您会看到证书和专用密钥；针对 Application Center，证书行包含 Application Center 应用程序捆绑软件 **com.ibm.imf.AppCenter**。
 * 选择**文件 → 导出项**以选中该证书和密钥，并将其导出为个人信息交换 (.p12) 文件。 此 .p12 文件包含在使用安全握手协议与 APN 服务器进行通信时所需的专用密钥。
@@ -146,11 +146,11 @@ feedback.push.apple.com:2196
 
 下表中的示例显示了在 Apache Tomcat 服务器的 server.xml 文件中如何定义 JNDI 属性。
 
-| JNDI 属性	| 类型和描述 | Apache Tomcat 服务器的示例 | 
+| JNDI 属性	| 类型和描述 | Apache Tomcat 服务器的示例 |
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | 用于定义 .p12 证书的完整路径的字符串值。 | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | 用于定义访问证书所需的密码的字符串值。 | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	用于定义可生成认证证书的供应概要文件是否为开发证书的布尔值（标识为 true 或 false）。 | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.password | 用于定义访问证书所需的密码的字符串值。 | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	用于定义可生成认证证书的供应概要文件是否为开发证书的布尔值（标识为 true 或 false）。 | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 
 请参阅 [Application Center 的 JNDI 属性](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)，以获取可设置的完整 JNDI 属性列表。
 

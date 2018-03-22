@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Installation und Konfiguration für die Tokenlizenzierung
-breadcrumb_title: Tokenlizenzierung
+title: Installation und Konfiguration für Tokenlizenzierung
+breadcrumb_title: Token licensing
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -11,7 +11,7 @@ Wenn Sie die Tokenlizenzierung für {{ site.data.keys.mf_server }} verwenden mö
 
 In den folgenden Artikeln finden Sie eine Installationsübersicht. Außerdem erfahren Sie, wie die Bibliothek von Rational Common Licensing manuell installiert und der Anwendungsserver konfiguriert wird. Darüber hinaus gibt es eine Beschreibung der Plattformeinschränkungen für die Tokenlizenzierung.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Verwendung der Tokenlizenzierung planen](#planning-for-the-use-of-token-licensing)

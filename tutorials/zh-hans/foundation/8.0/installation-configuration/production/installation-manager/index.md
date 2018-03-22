@@ -37,9 +37,9 @@ Application Center 是 {{ site.data.keys.product }} 的组件。 利用 Applicat
     * 每次升级产品时（例如，要安装临时修订），都首先会升级 Application Center。 升级 Application Center 包括在数据库和应用程序服务器上进行操作。 如果 Application Center 升级失败，那么将阻止 Installation Manager 完成升级，并阻止您升级其他 {{ site.data.keys.mf_server }} 组件。 对于生产安装，请不要使用 Installation Manager 部署 Application Center。 在 Installation Manager 安装 {{ site.data.keys.mf_server }} 后，请单独使用 Ant 任务来安装 Application Center。 有关 Application Center 的更多信息，请参阅[安装和配置 Application Center](../../../appcenter)。
 
 > **要点：**{{ site.data.keys.mf_server }} 安装程序仅将 {{ site.data.keys.mf_server }} 二进制文件和工具安装在磁盘上。 它不会将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。 使用 Installation Manager 运行安装后，必须设置数据库并将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。  
->类似地，运行 Installation Manager 以更新现有安装时，将仅更新磁盘上的文件。需执行更多操作以更新部署到应用程序服务器的应用程序。
+> 类似地，运行 Installation Manager 以更新现有安装时，将仅更新磁盘上的文件。需执行更多操作以更新部署到应用程序服务器的应用程序。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 * [管理员与用户方式](#administrator-versus-user-mode)
 * [使用 IBM Installation Manager 安装向导进行安装](#installing-by-using-ibm-installation-manager-install-wizard)
@@ -85,7 +85,7 @@ Manager 文档中的 [Installing as an administrator, nonadministrator, or group
 
         如果将 {{ site.data.keys.mf_server }} 的 {{ site.data.keys.product }} V8.0 .zip 文件解压缩到 **mfp\_installer\_directory** 文件夹中，那么存储库文件位于 **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**。
 
-        您还可能想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。 确保输入修订包的存储库。 如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf** 中找到存储库文件。
+        您可能还想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。 确保输入修订包的存储库。 如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf** 中找到存储库文件。
 
         **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。 修订包是累积安装程序，需要安装基本版本的存储库。
     * 选择该文件，然后单击**确定**。
@@ -131,10 +131,10 @@ Manager 文档中的 [Installing as an administrator, nonadministrator, or group
 1. 查看 {{ site.data.keys.mf_server }} 的许可协议。 可以在从 Passport Advantage 下载安装库时查看许可文件。
 2. 将下载的 {{ site.data.keys.mf_server }} 存储库的压缩文件解压缩至某个文件夹中。
 
-    您可以从 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上的 {{ site.data.keys.product }} eAssembly 下载存储库。 包名称为 **IBM MobileFirst Platform Server 的 Installation Manager 存储库的 IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip 文件**。
+    可以从 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上的 {{ site.data.keys.product }} eAssembly 中下载该存储库。 包名称为 **IBM MobileFirst Platform Server 的 Installation Manager 存储库 IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip 文件**。
 
     在后续步骤中，解压缩安装程序的目录称为 **mfp\_repository\_dir**。 其中包含 **MobileFirst\_Platform\_Server/disk1** 文件夹。
-3. 启动命令行，并转至 **installation\_manager\_install\_dir/tools/eclipse/**。
+3. 启动命令行，并转至 **installation\manager\ install\dir/tools/eclipse/**。
 
     如果在步骤 1 中查看许可协议后表示接受，即可安装 {{ site.data.keys.mf_server }}。
     * 对于未强制令牌许可的安装（如果您不具备定义令牌使用许可的合同），请输入以下命令：
@@ -264,7 +264,7 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
         </tr>
     </table>
     
-    > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。
+    > **注：**与 WebSphere Application Server Liberty Profile 或 WebSphere Application Server Full Profile 结合使用的 MySQL 不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。
 
     对于卸载，使用的样本文件取决于在特定软件包组中最初安装的 {{ site.data.keys.mf_server }} 或 Worklight Server 的版本：
     
@@ -307,7 +307,7 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
         </tr>
     </table>
 
-2. 更改样本文件的文件访问权限，尽可能提高其限制性。 步骤 4 将会要求您提供一些密码。 如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 read 权限。 您可以使用命令，如以下示例：
+2. 更改样本文件的文件访问权限，尽可能提高其限制性。 步骤 4 将会要求您提供一些密码。 如果要防止同一台电脑上的其他用户获取这些密码，必须除去其他用户对文件的读许可权。 您可以使用命令，如以下示例：
     * 在 UNIX 上：`chmod 600 <target-file.xml>`
     * 在 Windows 上：`cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. 同样，如果服务器是 WebSphere Application Server Liberty Profile 或 Apache Tomcat 服务器，并且打算只通过您的用户帐户启动该服务器，那么还必须除去除您之外的其他用户对以下文件“读”许可权：

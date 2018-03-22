@@ -142,7 +142,7 @@ The database is used to store the technical data that is used by the various {{ 
 * {{ site.data.keys.product_adj }} runtime
 
 In this tutorial, the tables for all the components are placed under the same schema.  
-**Note:** The steps in this task are for DB2. If you plan to use MySQL or Oracle, see [Database requirements](../../databases/#database-requirements).
+**Note:** The steps in this task are for DB2. If you plan to use MySQL or Oracle, see [Database requirements](../../../prod-env/databases/#database-requirements).
 
 1. Log on to the computer that is running the DB2 server. It is assumed that a DB2 user, for example named as **mfpuser**, exists.
 2. Verify that this DB2 user has the access to a database with a page size 32768 or more, and is allowed to create implicit schemas and tables in that database.
@@ -248,7 +248,7 @@ In the Server Configuration Tool, only one database user is needed. This user is
 
 #### Database tables creation
 {: #database-tables-creation }
-For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp\_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
+For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp\_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../../prod-env/databases/#create-the-database-tables-manually).
 
 The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
 
@@ -256,7 +256,7 @@ The **server.xml** file and some application server setting are modified during 
 {: #modification-of-the-application-server-settings-specific-to-liberty }
 1. The Liberty features are added.
 
-    The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
+    The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime](../../../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
 
 2. `host='*'` is added in the `httpEndPoint` declaration.
 
@@ -291,7 +291,7 @@ The following applications are installed:
 * **mobilefirs**t, {{ site.data.keys.product_adj }} runtime component
 * **imfpush**, the push service
 
-The Server Configuration Tool installs all the applications on the same server. You can separate the applications in different application servers, but under certain constraints that are documented in [Topologies and network flows](../../topologies).  
+The Server Configuration Tool installs all the applications on the same server. You can separate the applications in different application servers, but under certain constraints that are documented in [Topologies and network flows](../../../prod-env/topologies).  
 For an installation on different servers, you cannot use the Server Configuration Tool. Use Ant tasks or install the product manually.
 
 #### Administration service
@@ -300,7 +300,7 @@ The administration service is the service for managing {{ site.data.keys.product
 
 The class loader is set with delegation parent last for Liberty profile and WebSphere Application Server, and for all {{ site.data.keys.product_adj }} applications. This setting is to avoid conflicts between the classes packaged in the {{ site.data.keys.product_adj }} applications and the classes of the application server. Forgetting to set the class loader delegation to parent last is a frequent source of error in manual installation. For Apache Tomcat, this declaration is not needed.
 
-In Liberty profile, a common library is added to the application for decrypting passwords that are passed as JNDI properties. The Server Configuration Tool defines two mandatory JNDI properties for the administration service: **mfp.config.service.user** and **mfp.config.service.password**. They are used by the administration service to connect to the live update service with its REST API. More JNDI properties can be defined to tune the application or adapt it to your installation particularities. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+In Liberty profile, a common library is added to the application for decrypting passwords that are passed as JNDI properties. The Server Configuration Tool defines two mandatory JNDI properties for the administration service: **mfp.config.service.user** and **mfp.config.service.password**. They are used by the administration service to connect to the live update service with its REST API. More JNDI properties can be defined to tune the application or adapt it to your installation particularities. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 The Server Configuration Tool also defines the JNDI properties (the URL and the OAuth parameters to register the confidential clients) for the communication with the push service.  
 The data source to the database that contains the tables for the administration service is declared, as well as a library for its JDBC driver.
@@ -311,7 +311,7 @@ The live update service stores information about the runtime and application con
 
 The class loader is set with delegation parent last as discussed in the administration service section.
 
-The live update service has one security role, **admin_config**. A user must be mapped to that role. Its password and login must be provided to the administration service with the JNDI property: **mfp.config.service.user** and **mfp.config.service.password**. For information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.mf_server }} live update service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
+The live update service has one security role, **admin_config**. A user must be mapped to that role. Its password and login must be provided to the administration service with the JNDI property: **mfp.config.service.user** and **mfp.config.service.password**. For information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.mf_server }} live update service](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
 
 It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_config\_server/jdbc/ConfigDS**. In this tutorial, it is defined as **mfpadminconfig/jdbc/ConfigDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the live update service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
 
@@ -319,7 +319,7 @@ It also needs a data source with JNDI name on Liberty profile. The convention is
 {: #mobilefirst-operations-console }
 {{ site.data.keys.mf_console }} is declared with the same security roles as the administration service. The users that are mapped to the security roles of {{ site.data.keys.mf_console }} must also be mapped to the same security role of the administration service. Indeed, {{ site.data.keys.mf_console }} runs queries to the administration service on the behalf of the console user.
 
-The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is `*://*:*/mfpadmin`. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is `*://*:*/mfpadmin`. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 The class loader is set with delegation parent last as discussed in the administration service section.
 

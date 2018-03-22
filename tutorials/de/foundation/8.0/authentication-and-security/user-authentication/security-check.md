@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Klasse UserAuthenticationSecurityCheck implementieren
-breadcrumb_title: Sicherheitsüberprüfung
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Sicherheitsüberprüfungen herunterladen
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -243,6 +243,8 @@ Fügen Sie in der Datei **adapter.xml** ein Element `<securityCheckDefinition>` 
 ```
 Wie bereits angegeben übernimmt `UserAuthenticationSecurityCheck` alle `CredentialsValidationSecurityCheck`-Eigenschaften
 (`blockedStateExpirationSec`, `successStateExpirationSec` usw.).
+
+
 
 Zusätzlich können Sie eine Eigenschaft `rememberMeDurationSec` konfigurieren. 
 

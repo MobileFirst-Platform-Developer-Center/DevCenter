@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Validador de señal Java
-breadcrumb_title: Validador de señal Java
+title: Validador de elementos Java
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Descargar ejemplo
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -49,16 +49,15 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 
 > La biblioteca expone una API que encapsula y simplifica la interacción con el punto final de introspección del servidor de autorización. Para obtener una referencia de API detallada, [consulte la {{ site.data.keys.product_adj }} referencia de API del validador de señal Java](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
-
 ## Validación de credenciales
 {: #validating-the-credentials }
-El método API `validate` ofrece al servidor de autorización la validación de la cabecera de autorización: 
+El método API `validate` ofrece al servidor de autorización la validación de la cabecera de autorización:
 
 ```java
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: El contenido de la cabecera HTTP `Authorization`, que es la señal de acceso.Por ejemplo, puede obtenerse a partir de `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
+- `authorizationHeader`: El contenido de la cabecera HTTP `Authorization`, que es la señal de acceso. Por ejemplo, puede obtenerse a partir de `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
 - `expectedScope`: El ámbito para validar la señal, por ejemplo `accessRestricted`.
 
 Puede consultar el objeto `TokenValidationResult` resultante para un error o para los datos de introspección válidos:

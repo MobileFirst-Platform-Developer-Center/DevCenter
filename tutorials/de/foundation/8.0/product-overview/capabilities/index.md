@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Hauptfunktionen des Produkts
+title: Wichtigste Leistungsmerkmale des Produkts
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

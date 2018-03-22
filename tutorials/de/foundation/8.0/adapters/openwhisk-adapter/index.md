@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cloud-Functions-Adapter
-breadcrumb_title: Cloud-Functions-Adapter
+breadcrumb_title: Cloud Functions adapter
 relevantTo: [ios,android,cordova]
 weight: 10
 ---
@@ -11,7 +11,7 @@ weight: 10
 
 > OpenWhisk hat jetzt die Bezeichnung Cloud Functions.
 
-IBM Cloud Functions ist eine FaaS-Plattform (Function-as-a-Service), die die Ausführung von Code in einer serverlosen und skalierbaren Umgebung ermöglicht. Eines der Einsatzgebiete der Cloud-Functions-Plattform ist die Entwicklung und Ausführung von serverlosem Back-End-Code für mobile Geräte. [Hier](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south) erfahren Sie mehr über die Cloud-Functions-Plattform für Bluemix.
+IBM Cloud Functions ist eine FaaS-Plattform (Function-as-a-Service), die die Ausführung von Code in einer serverlosen und skalierbaren Umgebung ermöglicht. Eines der Einsatzgebiete der Cloud-Functions-Plattform ist die Entwicklung und Ausführung von serverlosem Back-End-Code für mobile Geräte. [Hier](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south) erfahren Sie mehr über die Cloud-Functions-Plattform für IBM Cloud. 
 
 Mit MobileFirst-Foundation-Adaptern wird die notwendige serverseitige Logik ausgeführt. Adapter werden zudem verwendet, um Informationen für Clientanwendungen und Cloud-Services von Back-End-Systemen abzurufen. Die {{ site.data.keys.product }} stellt jetzt einen Adapter für Cloud Functions bereit. 
 

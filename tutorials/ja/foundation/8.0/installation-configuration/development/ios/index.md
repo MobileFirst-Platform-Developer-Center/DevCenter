@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このチュートリアルでは、iOS アプリケーションを開発およびテストするために開発者が従う必要のあるステップを説明します。これらのステップには、Apple Developer での登録や Xcode のインストールなどがあります。
+このチュートリアルでは、iOS アプリケーションを開発およびテストするために開発者が従う必要のあるステップを説明します。 これらのステップには、Apple Developer での登録や Xcode のインストールなどがあります。
 
 #### サポート・レベル
 {: #support-level }
@@ -46,7 +46,7 @@ Xcode は、以下を行うために使用する IDE です。
 
 #### iOS シミュレーター
 {: #ios-simulator }
-Xcode では、アプリケーションをテストするための iOS シミュレーターが用意されています。すべての使用可能なオプションの詳細な説明については、Apple Developers Web サイトで[『About Simulator』の文書トピック](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)を参照してください。
+Xcode では、アプリケーションをテストするための iOS シミュレーターが用意されています。 すべての使用可能なオプションの詳細な説明については、Apple Developers Web サイトで[『About Simulator』の文書トピック](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)を参照してください。
 
 ## 次のステップ
 {: #whats-next }

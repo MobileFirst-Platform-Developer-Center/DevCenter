@@ -238,6 +238,8 @@ scope = `access-restricted deletePrivilege`
 <br/>
 在 {{ site.data.keys.mf_console }} 中，从导航侧边栏的**应用程序**部分选择应用程序，然后选择**安全性**选项卡。 在**必需的应用程序作用域**下，选择**添加到作用域**。
 
+
+
 <img class="gifplayer" alt="必需的应用程序作用域" src="mandatory-application-scope.png"/>
 
 您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
@@ -328,6 +330,8 @@ public class WebSphereResources {
 @OAuthSecurity(enabled = false)
 ```
 注释的 `enabled` 元素的缺省值为 `true`。 如果将 `enabled` 元素设置为 `false`，那么会忽略 `scope` 元素，因此资源或资源类将[不受保护](#unprotected-resources)。
+
+
 
 <b>注：</b>在向不受保护的类的方法分配作用域后，该方法将受到保护，而不论类注释是何内容；除非您将资源注释的 `enabled` 元素设置为 `false`。
 

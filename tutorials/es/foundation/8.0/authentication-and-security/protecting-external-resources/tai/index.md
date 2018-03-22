@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Interceptor de asociación de confianza
-breadcrumb_title: Interceptor de asociación de confianza
+title: Interceptor de asociaciones de confianza
+breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: Descargar ejemplo
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -96,7 +96,7 @@ Si está utilizando servlet-2.x, debe definir el rol de seguridad del archivo we
 
     - **clientID**: El servidor de recurso debe ser un cliente confidencial registrado. Para saber cómo registrar un cliente confidencial, lea la guía de aprendizaje [Clientes confidenciales](../../confidential-clients/). *El cliente confidencial **DEBE** tener el ámbito permito `authorization.introspect` para poder validar las señales.
 
-    - **clientSecret**: El servidor de recurso debe ser un cliente confidencial registrado. Para saber cómo registrar un cliente confidencial, lea la guía de aprendizaje [Clientes confidenciales](../../confidential-clients/). 
+    - **clientSecret**: El servidor de recurso debe ser un cliente confidencial registrado. Para saber cómo registrar un cliente confidencial, lea la guía de aprendizaje [Clientes confidenciales](../../confidential-clients/).
     - **cacheSize (opcional)**: El interceptor de asociación de confianza (TAI) utiliza la memoria caché del validador de señal Java para copiar en caché las señales y los datos de introspección en forma de valores, para que no sea necesario volver a hacer una introspección de la señal de la solicitud del cliente en un intervalo de tiempo breve.
 
         El tamaño predeterminado es de 50,000 señales.  
@@ -107,7 +107,7 @@ Si está utilizando servlet-2.x, debe definir el rol de seguridad del archivo we
 
 ## Utilización de los datos de introspección de la señal del interceptor de asociación de confianza (TAI)
 {: #using-the-token-introspection-data-from-the-tai }
-En su recurso, es posible que desee acceder a la información de la señal interceptada y validada por el TAI.Encontrará la lista de los datos encontrados en la señal [de la referencia de API](../../../api/java-token-validator). Para obtenerlos, utilice la [API WSSubject](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
+En su recurso, es posible que desee acceder a la información de la señal interceptada y validada por el TAI. Encontrará la lista de los datos encontrados en la señal [de la referencia de API](../../../api/java-token-validator). Para obtenerlos, utilice la [API WSSubject](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Solicitud de recursos desde aplicaciones Android
+title: Solicitud de recursos de aplicaciones Android
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
@@ -152,6 +152,8 @@ Utilice los objetos `WLResponse response` y `WLFailResponse response` para obten
 ## Para obtener más información
 {: #for-more-information }
 > Para obtener más información sobre WLResourceRequest, [consulte la Referencia de API](../../../api/client-side-api/java/client/).
+
+
 
 <img alt="Imagen de la aplicación de ejemplo" src="resource-request-success-android.png" style="float:right"/>
 ## Aplicación de ejemplo

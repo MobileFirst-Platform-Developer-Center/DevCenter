@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Solicitud de recursos desde aplicaciones Windows
+title: Solicitud de recursos de aplicaciones Windows
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
@@ -150,6 +150,8 @@ En caso de una respuesta anómala, el objeto de respuesta también contiene una 
 ## Para obtener más información
 {: #for-more-information }
 > Para obtener más información sobre WLResourceRequest, [consulte la API de referencia](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf
+
+
 
 <img alt="Imagen de la aplicación de ejemplo" src="resource-request-success-win8-10.png" style="float:right"/>
 ## Aplicación de ejemplo

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Registro en aplicaciones Android
-breadcrumb_title: Registro en Android
+breadcrumb_title: Logging in Android
 relevantTo: [android]
 weight: 3
 ---

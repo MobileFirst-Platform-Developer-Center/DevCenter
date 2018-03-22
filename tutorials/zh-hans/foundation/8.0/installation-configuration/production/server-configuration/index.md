@@ -8,7 +8,7 @@ weight: 5
 {: #overview }
 考虑您的备份和恢复策略，优化您的 {{ site.data.keys.mf_server }} Server 配置并应用访问限制和安全选项。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 
 * [{{ site.data.keys.mf_server }} 生产服务器的端点](#endpoints-of-the-mobilefirst-server-production-server)
@@ -652,7 +652,8 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 每个应用程序的内容都存储在 {{ site.data.keys.product_adj }} 管理数据库中。
 
-活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。 单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB 的日志空间。
+活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。 单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**)
+* 4096 KB 的日志空间。
 
 `DB2 GET DATABASE CONFIGURATION` 命令包含有关日志文件大小的信息，以及主要和辅助日志文件的数量。
 
@@ -784,7 +785,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
     * 修改**过期超时**属性的值。 该值必须小于 MySQL **wait_timeout** 系统变量，以便在 MySQL 关闭连接之前清除这些连接。
     * 单击**确定**。
 
-> **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
+> **注：**与 WebSphere Application Server Liberty Profile 或 WebSphere Application Server Full Profile 结合使用的 MySQL 不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
 
 ## 配置日志记录和监控机制
 {: #configuring-logging-and-monitoring-mechanisms }
@@ -838,9 +839,9 @@ Application Center 日志以 **com.ibm.puremeap** 开头。
 {: #configuring-multiple-runtimes }
 您可以为 {{ site.data.keys.mf_server }} 配置多个运行时，从而在 {{ site.data.keys.mf_console }} 中针对不同应用程序“类型”创造视觉差异。
 
-> **注释：**Mobile Foundation Bluemix 服务创建的 Mobile Foundation 服务器实例不支持多个运行时。 然而，在 Bluemix 服务中，您必须创建多个服务实例。
+> **注释：**Mobile Foundation IBM Cloud 服务创建的 Mobile Foundation 服务器实例不支持多个运行时。然而，在 IBM Cloud 服务中，您必须创建多个服务实例。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to-1 }
 * [在 WebSphere Liberty Profile 中配置多个运行时](#configuring-multiple-runtimes-in-websphere-liberty-profile)
 * [注册应用程序并将适配器部署到不同的运行时](#registering-applications-and-deploying-adapters-to-different-runtimes)

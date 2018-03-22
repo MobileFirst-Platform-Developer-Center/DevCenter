@@ -111,6 +111,8 @@ mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [AP
 ```
 `TYPE` 可以是 `dynamic` 或 `static`。
 
+
+
 ### 支持 SDK V8.0.0.0-MFPF-IF201701250919 或更早版本
 {: #legacy }
 **2017 年 2 月或更高版本**中发布的客户机 SDK 仅支持动态和静态验证类型。 对于 SDK V**8.0.0.0-MFPF-IF201701250919 或更早版本**，请使用旧应用程序真实性工具：

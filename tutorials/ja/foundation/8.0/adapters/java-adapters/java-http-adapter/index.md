@@ -1,17 +1,17 @@
 ---
 layout: tutorial
 title: Java HTTP アダプター
-breadcrumb_title: HTTP アダプター
+breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: アダプター Maven プロジェクトのダウンロード
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
 
-Java アダプターでは、バックエンド・システムへの接続を自由に制御できます。したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。このチュートリアルでは、Java `HttpClient` を使用して RSS フィードに接続する Java アダプターの例を取り上げます。
+Java アダプターでは、バックエンド・システムへの接続を自由に制御できます。 したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。 このチュートリアルでは、Java `HttpClient` を使用して RSS フィードに接続する Java アダプターの例を取り上げます。
 
 **前提条件:** 最初に必ず、[Java アダプター](../)チュートリアルをお読みください。
 
@@ -28,7 +28,7 @@ Java アダプターでは、バックエンド・システムへの接続を自
 ```java
 @Override
     protected void init() throws Exception {
-        JavaHTTPResource.init();
+    JavaHTTPResource.init();
     logger.info("Adapter initialized!");
 }
 ```
@@ -61,7 +61,7 @@ public static void init() {
 }
 ```
 
-リソースに対する要求を出すたびに `JavaHTTPResource` の新規インスタンスが作成されるため、パフォーマンスに影響する可能性があるオブジェクトを再利用することが重要です。この例では、HTTP クライアントを `static` オブジェクトにし、それを静的 `init()` メソッドで初期化します。このメソッドは、前述のように、`JavaHTTPApplication` の `init()` によって呼び出されます。
+リソースに対する要求を出すたびに `JavaHTTPResource` の新規インスタンスが作成されるため、パフォーマンスに影響する可能性があるオブジェクトを再利用することが重要です。 この例では、HTTP クライアントを `static` オブジェクトにし、それを静的 `init()` メソッドで初期化します。このメソッドは、前述のように、`JavaHTTPApplication` の `init()` によって呼び出されます。
 
 ### プロシージャー・リソース
 {: #procedure-resource }
@@ -84,10 +84,10 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 このサンプル・アダプターは、バックエンド・サービスからの RSS フィードの取得を可能にするリソース URL を 1 つだけ公開します。
 
 * `@GET` は、このプロシージャーが `HTTP GET` 要求のみに応答することを示します。
-* `@Produces("application/json")` は、送り返す応答のコンテンツ・タイプを指定します。クライアント・サイドで処理しやすいように、応答を `JSON` オブジェクトとして送信することにします。
-* `@Context HttpServletResponse response` を使用して、応答出力ストリームに書き込みます。これにより、単純なストリングを返す場合より細分性を高めることができます。
-* `@QueryParam("tag")` ストリング・タグにより、プロシージャーがパラメーターを受け取ることができます。`QueryParam` を選択することは、照会 (`/JavaHTTP/?tag=MobileFirst_Platform`) でパラメーターを渡すことを意味します。その他のオプションとしては、`@PathParam`、 `@HeaderParam`、`@CookieParam`、`@FormParam` などがあります。
-* `throws IOException, ...` は、例外をすべてクライアントに転送することを表します。`HTTP 500` エラーとして受信される潜在的な例外をクライアント・コードで処理する必要があります。別の解決策として (多くの場合は実動コードで使用されますが)、サーバーの Java コードで例外を処理し、クライアントに何を送信するかを具体的なエラーに基づいて決定するという方法があります。
+* `@Produces("application/json")` は、送り返す応答のコンテンツ・タイプを指定します。 クライアント・サイドで処理しやすいように、応答を `JSON` オブジェクトとして送信することにします。
+* `@Context HttpServletResponse response` を使用して、応答出力ストリームに書き込みます。 これにより、単純なストリングを返す場合より細分性を高めることができます。
+* `@QueryParam("tag")` ストリング・タグにより、プロシージャーがパラメーターを受け取ることができます。 `QueryParam` を選択することは、照会 (`/JavaHTTP/?tag=MobileFirst_Platform`) でパラメーターを渡すことを意味します。 その他のオプションとしては、`@PathParam`、 `@HeaderParam`、`@CookieParam`、`@FormParam` などがあります。
+* `throws IOException, ...` は、例外をすべてクライアントに転送することを表します。 `HTTP 500` エラーとして受信される潜在的な例外をクライアント・コードで処理する必要があります。 別の解決策として (多くの場合は実動コードで使用されますが)、サーバーの Java コードで例外を処理し、クライアントに何を送信するかを具体的なエラーに基づいて決定するという方法があります。
 * `execute(new HttpGet("/feed.xml"), response)`。 バックエンド・サービスに対する実際の HTTP 要求は、後で定義される別のメソッドで処理されます。
 
 `tag` パラメーターを渡すかどうかによって、`execute` がビルドするパス、および取得する RSS ファイルが異なります。
@@ -116,10 +116,10 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
 }
 ```
 
-* `HttpResponse RSSResponse = client.execute(host, req)`。統計 HTTP クライアントを使用して HTTP 要求を実行し、応答を保管します。
-* `ServletOutputStream os = resultResponse.getOutputStream()`。応答をクライアントに書き込む出力ストリームです。
-* `resultResponse.addHeader("Content-Type", "application/json")`。前に述べたように、応答を JSON として送信することを選択します。
-* `String json = XML.toJson(RSSResponse.getEntity().getContent())`。`org.apache.wink.json4j.utils.XML` を使用して、XML RSS を JSON ストリングに変換します。
+* `HttpResponse RSSResponse = client.execute(host, req)`。 統計 HTTP クライアントを使用して HTTP 要求を実行し、応答を保管します。
+* `ServletOutputStream os = resultResponse.getOutputStream()`。 応答をクライアントに書き込む出力ストリームです。
+* `resultResponse.addHeader("Content-Type", "application/json")`。 前に述べたように、応答を JSON として送信することを選択します。
+* `String json = XML.toJson(RSSResponse.getEntity().getContent())`。 `org.apache.wink.json4j.utils.XML` を使用して、XML RSS を JSON ストリングに変換します。
 * `os.write(json.getBytes(Charset.forName("UTF-8")))` で、結果の JSON ストリングを出力ストリームに書き込みます。
 
 その後、出力ストリームが`フラッシュ`されて`閉じられます`。

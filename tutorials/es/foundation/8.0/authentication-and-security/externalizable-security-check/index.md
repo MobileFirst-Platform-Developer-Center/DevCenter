@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementación de ExternalizableSecurityCheck
+title: Implementación del ExternalizableSecurityCheck
 breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
 weight: 5
@@ -8,14 +8,14 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-La clase abstracta `ExternalizableSecurityCheck` implementa la interfaz `SecurityCheck` y maneja dos aspectos importantes de la funcionalidad de comprobación de seguridad: externalización y gestión de estado. 
+La clase abstracta `ExternalizableSecurityCheck` implementa la interfaz `SecurityCheck` y maneja dos aspectos importantes de la funcionalidad de comprobación de seguridad: externalización y gestión de estado.
 
 * Externalización - esta clase implementa la interfaz `Externalizable`, para que no tengan que implementarse las clases derivadas.
-* Gestión de estado - esta clase predefine un estado `STATE_EXPIRED`, lo que significa que la comprobación de seguridad ha caducado y el estado no se conserva.Las clases derivadas necesitan definir otros estados que la comprobación de seguridad soporta. 
+* Gestión de estado - esta clase predefine un estado `STATE_EXPIRED`, lo que significa que la comprobación de seguridad ha caducado y el estado no se conserva. Las clases derivadas necesitan definir otros estados que la comprobación de seguridad soporta.
 
 Es necesario que las subclases implementen tres métodos: `initStateDurations`, `authorize`, e `introspect`.
 
-Este tutorial describe cómo implementar la clase y muestra cómo gestionar estados. 
+Este tutorial describe cómo implementar la clase y muestra cómo gestionar estados.
 
 **Requisitos previos:** Asegúrese de leer los tutoriales [Conceptos de autorización](../) y [Creación de una comprobación de seguridad](../creating-a-security-check).
 
@@ -29,7 +29,7 @@ Este tutorial describe cómo implementar la clase y muestra cómo gestionar esta
 
 ## El método initStateDurations
 {: #the-initstatedurations-method }
-El `ExternalizableSecurityCheck` define un método abstracto llamado `initStateDurations`. Las subclases deben implementar este método proporcionando los nombres y duraciones para todos los estados soportados por la comprobación de seguridad.Los valores de duración normalmente provienen de la configuración de comprobación de seguridad.
+El `ExternalizableSecurityCheck` define un método abstracto llamado `initStateDurations`. Las subclases deben implementar este método proporcionando los nombres y duraciones para todos los estados soportados por la comprobación de seguridad. Los valores de duración normalmente provienen de la configuración de comprobación de seguridad.
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -41,10 +41,9 @@ protected void initStateDurations(Map<String, Integer> durations) {
 
 > Para obtener más información acerca de la configuración de comprobación de seguridad, consulte la [sección de clase de configuración](../credentials-validation/security-check/#configuration-class) en el tutorial de implementación de CredentialsValidationSecurityCheck.
 
-
 ## El método authorize
 {: #the-authorize-method }
-La interfaz `SecurityCheck` define un método denominado `authorize`. Este método es el responsable de implementar la lógica principal de la comprobación de seguridad, de gestionar estados y enviar una respuesta al cliente (acierto, desafío o error). 
+La interfaz `SecurityCheck` define un método denominado `authorize`. Este método es el responsable de implementar la lógica principal de la comprobación de seguridad, de gestionar estados y enviar una respuesta al cliente (acierto, desafío o error).
 
 Utilice los métodos de ayudante siguientes para gestionar estados:
 
@@ -55,6 +54,7 @@ protected void setState(String name)
 public String getState()
 ```
 El siguiente ejemplo verifica si el usuario ha iniciado sesión o devuelve acierto o error en consecuencia:
+
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
     if (loggedIn){
@@ -94,7 +94,7 @@ El método `AuthorizationResponse.addChallenge` añade un desafío al objeto de 
 ## El método introspect
 {: #the-introspect-method }
 La interfaz `SecurityCheck` define un método llamado `introspect`. Este método debe asegurar que la comprobación de seguridad está en el estado que concede el ámbito solicitado. Si se concede el ámbito, la comprobación de seguridad debe informar al parámetro de resultado sobre el ámbito concedido, el vencimiento, y los datos de introspección. Si no se ha concedido el ámbito, la verificación de seguridad no hace nada.  
-Es posible que el método cambie el estado de la comprobación de seguridad y del registro de registro de cliente. 
+Es posible que el método cambie el estado de la comprobación de seguridad y del registro de registro de cliente.
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {

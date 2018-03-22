@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: La consola de Application Center
+title: La consola del Application Center
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -13,7 +13,7 @@ La consola de Application Center es una aplicación web para gestionar el reposi
 
 Utilice la consola de Application Center para:
 
-* Subir aplicaciones que se escriben para estos sistemas operativos: Android, iOS, Windows 8 (sólo paquetes de Windows Store), Windows Phone 8 o Windows 10 Universal. 
+* Subir aplicaciones que se escriben para estos sistemas operativos: Android, iOS, Windows 8 (sólo paquetes de Windows Store), Windows Phone 8 o Windows 10 Universal.
 * Gestionar varias versiones distintas de aplicaciones móviles.
 * Revisar los comentarios de los probadores de aplicaciones móviles.
 * Definir los usuarios que tienen derechos para listar e instalar una aplicación en los dispositivos móviles.
@@ -128,7 +128,7 @@ Para añadir una aplicación para hacerla disponible para su instalación en dis
 
    ### iOS
    {: #ios }
-   La extensión del nombre del archivo de aplicación es **.ipa** para las aplicaciones iOS normales. 
+   La extensión del nombre del archivo de aplicación es **.ipa** para las aplicaciones iOS normales.
 
    ### Windows Phone 8
    {: #windows-phone-8 }
@@ -136,14 +136,14 @@ Para añadir una aplicación para hacerla disponible para su instalación en dis
 
    ### Windows 8
    {: #windows-8 }
-     La aplicación se proporciona como un paquete de Windows Store; la extensión de archivo es **.appx**. 
+   La aplicación se proporciona como un paquete de Windows Store; la extensión de archivo es **.appx**.
 
    Los paquetes .appx de Windows Store pueden depender de uno o varios paquetes de aplicaciones de biblioteca de componentes de Windows, que también se conocen como paquetes de "infraestructura". Las aplicaciones híbridas de MobileFirst para Windows 8 dependen del paquete de infraestructura de Microsoft.WinJS. Al utilizar Microsoft Visual Studio para generar el paquete de aplicaciones, los paquetes de dependencias también se generarán y se empaquetarán como archivos .appx independientes. Para instalar satisfactoriamente tales aplicaciones utilizando el cliente móvil, debe subir el paquete .appx de la aplicación y cualquier otro paquete de dependencias en el servidor de Application Center. Al subir un paquete de dependencias, aparecerá como inactivo en la consola del Application Center. Se espera este comportamiento, por lo que el paquete de infraestructura no aparece como una aplicación instalable en el cliente. A continuación, cuando un usuario instala una aplicación, el cliente móvil comprueba si la dependencia ya está instalada en el dispositivo. Si el paquete de dependencias no está instalado, el cliente recupera automáticamente el paquete de dependencias desde el servidor de Application Center y lo instala en el dispositivo. Para obtener más información sobre las dependencias, consulte [Dependencias](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) en la documentación del desarrollador de Windows sobre los paquetes y el despliegue de aplicaciones.
 
    ### Windows 10 universal
    {: windows-10-universal}
    La extensión del nombre del archivo de aplicación es **.appx**.
-   
+
 
 
 4. Pulse **Siguiente** para acceder a las propiedades para completar la definición de la aplicación.
@@ -159,8 +159,6 @@ Application Center da soporte a la adición en las aplicaciones del catálogo qu
 Las aplicaciones de almacenamientos de aplicaciones de terceros aparecen en el catálogo de Application Center como cualquier otra aplicación, pero se dirigirá a los usuarios al almacén de aplicaciones públicas correspondientes para instalar la aplicación. Añada una aplicación desde un almacén de aplicaciones públicas de la consola, en el mismo lugar en el que ha añadido una aplicación creada dentro de su propia empresa. Consulte [Adición de una aplicación móvil](#adding-a-mobile-application).
 
 > **Nota:** En este momento, Application Center sólo da soporte a Google Play y Apple iTunes. Windows Phone Store y Windows Store no están soportados aún.
-
-
 
 En lugar del archivo ejecutable de la aplicación, debe proporcionar un URL al almacén de aplicaciones de terceros donde se almacena la aplicación. Para buscar el enlace de aplicación correcto más fácilmente, la consola proporcionará enlaces directos en la página **Añadir una aplicación** a los sitios web del almacén de aplicaciones de terceros soportados.
 
@@ -295,8 +293,6 @@ Para editar las propiedades de una aplicación subida:
 
     > **Importante:** Si desea actualizar el archivo, debe pertenecer al mismo paquete y tener el mismo número de versión. Si alguna de estas propiedades no es la misma, debe volver a la lista de aplicaciones y añadir la nueva versión en primer lugar.
 
-
-
 4. Pulse **Aceptar** para guardar los cambios y volver a Aplicaciones disponibles o **Aplicar** para guardar y conservar los Detalles de la aplicación abiertos.
 
 ![Propiedades de la aplicación para su edición](ac_edit_app_props.jpg)
@@ -305,9 +301,6 @@ Para editar las propiedades de una aplicación subida:
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
 > Esto únicamente está soportado para Android, iOS y Windows Phone y actualmente no está soportado para Windows 10 Universal, Blackberry ni Windows 8 Universal.
-
-
-
 
 
 Puede actualizar de forma sencilla aplicaciones móviles desplegadas utilizando una combinación de {{ site.data.keys.mf_console }} y del Application Center.
@@ -470,8 +463,6 @@ Seleccione **Propiedades** para ver las propiedades del dispositivo.
 El nombre del dispositivo. Puede editar esta propiedad.
 
 > **Nota:** en iOS, el usuario puede definir este nombre en la configuración del dispositivo en Configuración > General > Información > Nombre. Se mostrará el mismo nombre en iTunes.
-
-
 
 **Nombre de usuario**  
 El nombre del primer usuario que ha iniciado sesión en el dispositivo.

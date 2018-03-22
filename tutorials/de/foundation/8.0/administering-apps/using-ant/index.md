@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Anwendungen mit Ant verwalten
-breadcrumb_title: Verwaltung mit Ant
+breadcrumb_title: Administrating using Ant
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -124,18 +124,18 @@ aufgerufen:
 Die Ant-Task **mfpadm** wird mit folgenden Attributen
 verwendet: 
 
-| Attribut| Beschreibung | Erforderlich| Standardwert| 
+| Attribut | Beschreibung | Erforderlich | Standardwert | 
 |----------------|-------------|----------|---------|
 | url	         | Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices| Ja | |
-| secure	     | Angabe, ob Operationen mit Sicherheitsrisiko vermieden werden sollen| Nein| true|
-| user	         | Benutzername für den Zugriff auf die {{ site.data.keys.product_adj }}-Verwaltungsservices| Ja| |
+| secure	     | Angabe, ob Operationen mit Sicherheitsrisiko vermieden werden sollen| Nein | true |
+| user	         | Benutzername für den Zugriff auf die {{ site.data.keys.product_adj }}-Verwaltungsservices| Ja | |
 | password	     | Kennwort für den Benutzer | Kennwort oder Datei ist erforderlich. | |
 | passwordfile |	Datei, die das Kennwort für den Benutzer enthält | Datei oder Kennwort ist erforderlich. | |	 
-| timeout	     | Zeitlimit für den Zugriff auf den gesamten REST-Service in Sekunden | Nein| |
-| connectTimeout|	Zeitlimit für das Herstellen einer Netzverbindung in Sekunden| Nein| |	 
-| socketTimeout|	Zeitlimit für das Erkennen des Verlusts einer Netzverbindung in Sekunden| Nein| |
-| connectionRequestTimeout|	Zeitlimit (in Sekunden) für das Abrufen eines Eintrags aus einem Pool für Verbindungsanforderungen| Nein| |
-| lockTimeout|	Zeitlimit für das Anfordern einer Sperre| Nein| |
+| timeout	     | Zeitlimit für den Zugriff auf den gesamten REST-Service in Sekunden | Nein | |
+| connectTimeout|	Zeitlimit für das Herstellen einer Netzverbindung in Sekunden| Nein | |	 
+| socketTimeout|	Zeitlimit für das Erkennen des Verlusts einer Netzverbindung in Sekunden| Nein | |
+| connectionRequestTimeout|	Zeitlimit (in Sekunden) für das Abrufen eines Eintrags aus einem Pool für Verbindungsanforderungen| Nein | |
+| lockTimeout|	Zeitlimit für das Anfordern einer Sperre| Nein | |
 
 **url**<br/>
 In der Basis-URL wird bevorzugt das Protokoll HTTPS verwendet. Wenn Sie beispielsweise die Standardports und -kontextstammelemente nutzen, verwenden Sie die
@@ -253,10 +253,10 @@ einbeziehen.
 {: #the-show-global-config-command }
 Der Befehl `show-global-config` zeigt die globale Konfiguration an. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output	     | Name der Ausgabedatei | |	Nein | Nicht verfügbar|
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar|
+| output	     | Name der Ausgabedatei | |	Nein | Nicht verfügbar |
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -271,12 +271,12 @@ Dieser Befehl basiert auf dem REST-Service [Global Configuration (GET)](http://w
 {: #the-show-user-config-command }
 Der Befehl `show-user-config` außerhalb der Elemente `<adapter>` und `<app-version>` zeigt die Benutzerkonfiguration einer Laufzeit an. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name der Laufzeit| Ja|	Nicht verfügbar|
-| format	     | Gibt das Ausgabeformat an (json oder xml) | Ja| Nicht verfügbar| 
-| output	     | Name der Datei, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
-| outputproperty| Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar|
+| runtime	     | Name der Laufzeit | Ja |	Nicht verfügbar |
+| format	     | Gibt das Ausgabeformat an (json oder xml) | Ja | Nicht verfügbar | 
+| output	     | Name der Datei, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
+| outputproperty| Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -292,18 +292,18 @@ auf dem REST-Service [Runtime Configuration (GET)](http://www.ibm.com/support/kn
 {: #the-set-user-config-command }
 Der Befehl `set-user-config` außerhalb der Elemente `<adapter>` und `<app-version>` gibt die Benutzerkonfiguration einer Laufzeit an. Er wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime        | Name der Laufzeit| Ja| Nicht verfügbar| 
-| file	         | Name der JSON- oder XML-Datei mit der neuen Konfiguration| Ja| Nicht verfügbar| 
+| runtime        | Name der Laufzeit | Ja | Nicht verfügbar | 
+| file	         | Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja | Nicht verfügbar | 
 
 Der Befehl `set-user-config` wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name der Laufzeit| Ja| Nicht verfügbar| 
-| property	     | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja| Nicht verfügbar| 
-| value	         | Wert der Eigenschaft| Ja| Nicht verfügbar|
+| runtime	     | Name der Laufzeit | Ja | Nicht verfügbar | 
+| property	     | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja | Nicht verfügbar | 
+| value	         | Wert der Eigenschaft | Ja | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -325,12 +325,12 @@ Der Befehl `show-confidential-clients` zeigt die Konfiguration der vertraulichen
 zu vertraulichen Clients finden Sie unter
 [Vertrauliche Clients](../../authentication-and-security/confidential-clients). Dieser Befehl wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime        | Name der Laufzeit| Ja| Nicht verfügbar| 
-| format| Gibt das Ausgabeformat an (json oder xml) | Ja| Nicht verfügbar| 
-| output| Name der Datei, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
-| outputproperty| Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
+| runtime        | Name der Laufzeit | Ja | Nicht verfügbar | 
+| format| Gibt das Ausgabeformat an (json oder xml) | Ja | Nicht verfügbar | 
+| output| Name der Datei, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
+| outputproperty | Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -349,10 +349,10 @@ die auf eine Laufzeit zugreifen können. Weitere Informationen
 zu vertraulichen Clients finden Sie unter
 [Vertrauliche Clients](../../authentication-and-security/confidential-clients). Dieser Befehl wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime        | Name der Laufzeit| Ja| Nicht verfügbar| 
-| file	         | Name der JSON- oder XML-Datei mit der neuen Konfiguration| Ja| Nicht verfügbar| 
+| runtime        | Name der Laufzeit | Ja | Nicht verfügbar | 
+| file	         | Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -371,13 +371,13 @@ die Konfiguration der vertraulichen Clients an, die auf eine Laufzeit zugreifen 
 zu vertraulichen Clients finden Sie unter
 [Vertrauliche Clients](../../authentication-and-security/confidential-clients). Dieser Befehl wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime        | Name der Laufzeit| Ja| Nicht verfügbar| 
-| id             | Kennung der Regel| Ja| Nicht verfügbar| 
-| displayName    | Anzeigename der Regel| Ja| Nicht verfügbar| 
-| secret         | Geheimer Schlüssel der Regel| Ja| Nicht verfügbar| 
-| allowedScope   | Liste mit durch Leerzeichen getrennten Token als Bereich für die Regel. | Ja| Nicht verfügbar| 
+| runtime        | Name der Laufzeit | Ja | Nicht verfügbar | 
+| id             | Kennung der Regel | Ja | Nicht verfügbar | 
+| displayName    | Anzeigename der Regel | Ja | Nicht verfügbar | 
+| secret         | Geheimer Schlüssel der Regel | Ja | Nicht verfügbar | 
+| allowedScope   | Liste mit durch Leerzeichen getrennten Token als Bereich für die Regel | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -398,11 +398,11 @@ einbeziehen.
 Der Befehl `list-adapters` gibt eine Liste der für eine gegebene
 Laufzeit implementierten Adapter zurück. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime        | Name der Laufzeit| 	Ja| Nicht verfügbar| 
-| output	     | Name der Ausgabedatei| 	Nein| Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime        | Name der Laufzeit | 	Ja | Nicht verfügbar | 
+| output	     | Name der Ausgabedatei | 	Nein | Nicht verfügbar | 
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -418,10 +418,10 @@ auf dem REST-Service [Adapters (GET)](http://www.ibm.com/support/knowledgecenter
 {: #the-deploy-adapter-command }
 Mit dem Befehl `deploy-adapter` wird ein Adapter in einer Laufzeit implementiert. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name der Laufzeit| Ja| Nicht verfügbar| 
-| file           | Binäre Adapterdatei (.adapter) | Ja| Nicht verfügbar|
+| runtime	     | Name der Laufzeit | Ja | Nicht verfügbar | 
+| file           | Binäre Adapterdatei (.adapter) | Ja | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -437,12 +437,12 @@ auf dem REST-Service [Adapter (POST)](http://www.ibm.com/support/knowledgecenter
 {: #the-show-adapter-command }
 Der Befehl `show-adapter` zeigt Details zu einem Adapter an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name eines Adapters| Ja| Nicht verfügbar| 
-| output| Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name    | Name eines Adapters | Ja | Nicht verfügbar | 
+| output | Name der Ausgabedatei | Nein | Nicht verfügbar | 
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -458,10 +458,10 @@ auf dem REST-Service [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/
 {: #the-delete-adapter-command }
 Mit dem Befehl `delete-adapter` wird ein Adapter aus einer Laufzeit entfernt (deimplementiert). Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name    | Name eines Adapters| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name    | Name eines Adapters | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -478,10 +478,10 @@ auf dem REST-Service [Adapter (DELETE)](http://www.ibm.com/support/knowledgecent
 Die Befehlsgruppe `adapter` wird mit folgenden
 Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name eines Adapters| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name    | Name eines Adapters | Ja | Nicht verfügbar | 
 
 Der Befehl
 `adapter` unterstützt die folgenden Elemente.
@@ -518,11 +518,11 @@ auf dem REST-Service [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/
 {: #the-show-user-config-command-1 }
 Der Befehl `show-user-config` innerhalb eines `<adapter>`-Elements zeigt die Benutzerkonfiguration des Adapters an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| format	     | Gibt das Ausgabeformat an (json oder xml) | Ja| Nicht verfügbar| 
-| output	     | Name der Datei, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
-| outputproperty| Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar|
+| format	     | Gibt das Ausgabeformat an (json oder xml) | Ja | Nicht verfügbar | 
+| output	     | Name der Datei, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
+| outputproperty | Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -540,16 +540,16 @@ auf dem REST-Service [Adapter Configuration (GET)](http://www.ibm.com/support/kn
 {: #the-set-user-config-command-1 }
 Der Befehl `set-user-config` innerhalb eines `<adapter>`-Elements gibt die Benutzerkonfiguration des Adapters an. Er wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| file | Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja| Nicht verfügbar| 
+| file | Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja | Nicht verfügbar | 
 
 Der Befehl wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| property | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja| Nicht verfügbar| 
-| value | Wert der Eigenschaft| Ja| Nicht verfügbar| 
+| property | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja | Nicht verfügbar | 
+| value | Wert der Eigenschaft | Ja | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -577,11 +577,11 @@ einbeziehen.
 {: #the-list-apps-command }
 Der Befehl `list-apps` gibt eine Liste der in einer Laufzeit implementierten Apps zurück. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja | Nicht verfügbar | 
-| output| Name der Ausgabedatei | | Nein | Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| output | Name der Ausgabedatei | Nein | Nicht verfügbar | 
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -597,10 +597,10 @@ auf dem REST-Service [Applications (GET)](http://www.ibm.com/support/knowledgece
 {: #the-deploy-app-command }
 Mit dem Befehl `deploy-app` wird eine App-Version in einer Laufzeit implementiert. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| file | Anwendungsdeskriptor (eine JSON-Datei)| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| file | Anwendungsdeskriptor (eine JSON-Datei) | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -616,12 +616,12 @@ auf dem REST-Service [Application (POST)](http://www.ibm.com/support/knowledgece
 {: #the-show-app-command }
 Der Befehl `show-app` gibt eine Liste der in einer Laufzeit implementierten App-Versionen zurück. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name einer App| Ja| Nicht verfügbar| 
-| output| Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name    | Name einer App | Ja | Nicht verfügbar | 
+| output | Name der Ausgabedatei | Nein | Nicht verfügbar | 
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -638,10 +638,10 @@ auf dem REST-Service [Application (GET)](http://www.ibm.com/support/knowledgecen
 Mit dem Befehl `delete-app` wird eine App mit allen Versionen und für alle Umgebungen, in denen sie implementiert ist,
 aus einer Laufzeit entfernt (deimplementiert). Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name einer App| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name    | Name einer App | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -657,12 +657,12 @@ auf dem REST-Service [Application Version (DELETE)](http://www.ibm.com/support/k
 {: #the-show-app-version-command }
 Mit dem Befehl `show-app-version` werden Details zu einer App-Version in einer Laufzeit angezeigt. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name der App| Ja| Nicht verfügbar| 
-| environment | Mobile Plattform| Ja| Nicht verfügbar| 
-| version | Nummer der App-Version| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name | Name der App | Ja | Nicht verfügbar | 
+| environment | Mobile Plattform | Ja | Nicht verfügbar | 
+| version | Nummer der App-Version | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -678,12 +678,12 @@ auf dem REST-Service [Application Version (GET)](http://www.ibm.com/support/know
 {: #the-delete-app-version-command }
 Mit dem Befehl `delete-app-version` wird eine App-Version aus einer Laufzeit entfernt (deimplementiert). Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name der App| Ja| Nicht verfügbar| 
-| environment | Mobile Plattform| Ja| Nicht verfügbar| 
-| version | Nummer der App-Version| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name | Name der App | Ja | Nicht verfügbar | 
+| environment | Mobile Plattform | Ja | Nicht verfügbar | 
+| version | Nummer der App-Version | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -700,16 +700,16 @@ auf dem REST-Service [Application Version (DELETE)](http://www.ibm.com/support/k
 Die Befehlsgruppe `app` wird mit folgenden
 Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name der App| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name | Name der App | Ja | Nicht verfügbar | 
 
 Die Befehlsgruppe
 app unterstützt die folgenden Elemente.
 
 
-| Element| Beschreibung | Anzahl| 
+| Element| Beschreibung | Anzahl | 
 |---------|-------------|-------|
 | show-license-config| Zeigt die Tokenlizenzkonfiguration an| 0..| 
 | set-license-config| Gibt die Tokenlizenzkonfiguration an| 0..| 
@@ -720,10 +720,10 @@ app unterstützt die folgenden Elemente.
 {: #the-show-license-config-command }
 Der Befehl `show-license-config` zeigt die Tokenlizenzkonfiguration für eine App an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output|	Name einer Datei, in der die Ausgabe gespeichert werden soll| Ja| Nicht verfügbar|
-| outputproperty| 	Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll| Ja | Nicht verfügbar|
+| output |	Name einer Datei, in der die Ausgabe gespeichert werden soll | Ja | Nicht verfügbar |
+| outputproperty | 	Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll | Ja | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -741,10 +741,10 @@ auf dem REST-Service [Application License Configuration (GET)](http://www.ibm.co
 {: #the-set-license-config-command }
 Der Befehl `set-license-config` gibt die Tokenlizenzkonfiguration für eine App an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| appType | Typ einer App (B2C oder B2E)| Ja| Nicht verfügbar| 
-| licenseType | Typ für eine Anwendung (APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT oder NON_PRODUCTION) | Ja| Nicht verfügbar| 
+| appType | Typ einer App (B2C oder B2E) | Ja | Nicht verfügbar | 
+| licenseType | Typ für eine Anwendung (APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT oder NON_PRODUCTION) | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -779,17 +779,17 @@ auf dem REST-Service [License Configuration (DELETE)](http://www.ibm.com/support
 Die Befehlsgruppe `app-version` wird mit folgenden
 Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| name | Name einer App| Ja| Nicht verfügbar| 
-| environment | Mobile Plattform| Ja| Nicht verfügbar| 
-| version | Version der App | Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| name    | Name einer App | Ja | Nicht verfügbar | 
+| environment | Mobile Plattform | Ja | Nicht verfügbar | 
+| version | Version der App | Ja | Nicht verfügbar | 
 
 Die Befehlsgruppe `app-version` unterstützt die folgenden
 Elemente: 
 
-| Element| Beschreibung | Anzahl| 
+| Element| Beschreibung | Anzahl | 
 |---------|-------------|-------|
 | get-descriptor| Ruft den Deskriptor ab| 0..| 
 | get-web-resources| Ruft die Webressourcen ab| 0..| 
@@ -805,10 +805,10 @@ Elemente:
 {: #the-get-descriptor-command }
 Der Befehl `get-descriptor` innerhalb eines Elements `<app-version>` gibt den Anwendungsdeskriptor für eine App-Version zurück. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output| Name einer Datei, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
-| outputproperty| Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
+| output | Name einer Datei, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
+| outputproperty | Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -845,9 +845,9 @@ Dieser Befehl basiert auf dem REST-Service [Retrieve Web Resource (GET)](http://
 {: #the-set-web-resources-command }
 Der Befehl `set-web-resources` innerhalb eines Elements `<app-version>` gibt die Webressourcen für eine App-Version an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| file | Name der Eingabedatei (muss eine .zip-Datei sein) | Ja|Nicht verfügbar|
+| file | Name der Eingabedatei (muss eine .zip-Datei sein) | Ja |Nicht verfügbar |
 
 **Beispiel**  
 
@@ -865,10 +865,10 @@ auf dem REST-Service [Deploy a Web Resource (POST)](http://www.ibm.com/support/k
 {: #the-get-authenticity-data-command }
 Der Befehl `get-authenticity-data` innerhalb eines Elements `<app-version>` gibt die Authentizitätsdaten für eine App-Version zurück. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output| 	Name einer Datei, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
-| outputproperty| Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll| Nein| Nicht verfügbar| 
+| output | 	Name einer Datei, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
+| outputproperty | Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll | Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -886,9 +886,9 @@ auf dem REST-Service [Export Runtime Resources (GET)](http://www.ibm.com/support
 {: #the-set-authenticity-data-command }
 Der Befehl `set-authenticity-data` innerhalb eines Elements `<app-version>` gibt die Authentizitätsdaten für eine App-Version an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| file | Name der Eingabedatei <ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |  Ja| Nicht verfügbar| 
+| file | Name der Eingabedatei <ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |  Ja | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -934,11 +934,11 @@ auf dem REST-Service [Application Authenticity (DELETE)](http://www.ibm.com/supp
 {: #the-show-user-config-command-2 }
 Der Befehl `show-user-config` innerhalb eines Elements `<app-version>` zeigt die Benutzerkonfiguration für eine App-Version an. Der Befehl wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| format| Gibt das Ausgabeformat an (json oder xml) | Ja| Nicht verfügbar| 
-| output| Name der Ausgabedatei | Nein | Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| format | Gibt das Ausgabeformat an (json oder xml) | Ja | Nicht verfügbar | 
+| output | Name der Ausgabedatei | Nein | Nicht verfügbar | 
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -962,16 +962,16 @@ auf dem REST-Service [Application Configuration (GET)](http://www.ibm.com/suppor
 {: #the-set-user-config-command-2 }
 Der Befehl `set-user-config` innerhalb eines `<app-version>`-Elements gibt die Benutzerkonfiguration für eine App-Version an. Er wird mit folgenden Attributen verwendet.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| file | Name der JSON- oder XML-Datei mit der neuen Konfiguration| Ja| Nicht verfügbar| 
+| file | Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja | Nicht verfügbar | 
 
 Der Befehl `set-user-config` wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| property | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja| Nicht verfügbar| 
-| value	| Wert der Eigenschaft| Ja| Nicht verfügbar| 
+| property | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja | Nicht verfügbar | 
+| value	| Wert der Eigenschaft | Ja | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -997,12 +997,12 @@ einbeziehen.
 Der Befehl `list-devices` gibt
 die Liste der Geräte zurück, die Kontakt mit den Apps einer Laufzeit hatten. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
 | query	 | Ein Anzeigename oder eine Benutzer-ID, nach dem bzw. der gesucht werden soll. Dieser Parameter gibt die zu suchende Zeichenfolge an. Zurückgegeben werden alle Geräte, deren Anzeigename oder Benutzer-ID diese | Zeichenfolge enthält (wobei die Groß-/Kleinschreibung nicht unterschieden wird). | Nein | Nicht verfügbar | 
-| output| 	Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| output | 	Name der Ausgabedatei | Nein | Nicht verfügbar | 
+| outputproperty | 	Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -1023,10 +1023,10 @@ auf dem REST-Service [Devices (GET)](http://www.ibm.com/support/knowledgecenter/
 Mit dem Befehl `remove-device` wird
 der Datensatz eines Gerätes gelöscht, das Kontakt zu den Apps einer Laufzeit hatte. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| id | Eindeutige Gerätekennung| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| id | Eindeutige Gerätekennung | Ja | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1043,16 +1043,16 @@ auf dem REST-Service [Device (DELETE)](http://www.ibm.com/support/knowledgecente
 Die Befehlsgruppe `device` wird mit folgenden
 Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| id | Eindeutige Gerätekennung| Ja| Nicht verfügbar| 
+| runtime | Name der Laufzeit | Ja | Nicht verfügbar | 
+| id | Eindeutige Gerätekennung | Ja | Nicht verfügbar | 
 
 Der Befehl
 `device` unterstützt die folgenden Elemente.
 
 
-| Element| Beschreibung |       Anzahl|
+| Element| Beschreibung |       Anzahl |
 |----------------|-------------|-------------|
 | set-status| Ändert den Status| 0..∞| 
 | set-appstatus| Ändert den Status einer App| 0..∞| 
@@ -1063,9 +1063,9 @@ Der Befehl
 Mit dem Befehl `set-status` wird
 der Status eines Geräts im Geltungsbereich einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| status| Neuer Status| Ja| Nicht verfügbar| 
+| status| Neuer Status| Ja | Nicht verfügbar | 
 
 Folgende Statuswerte sind möglich:
 
@@ -1091,10 +1091,10 @@ auf dem REST-Service [Device Status (PUT)](http://www.ibm.com/support/knowledgec
 {: #the-set-appstatus-command }
 Mit dem Befehl `set-appstatus` wird der Status eines Geräts hinsichtlich einer App in einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| app	| Name einer App| Ja| Nicht verfügbar| 
-| status| 	Neuer Status| Ja| Nicht verfügbar| 
+| app	| Name einer App| Ja | Nicht verfügbar | 
+| status| 	Neuer Status| Ja | Nicht verfügbar | 
 
 Folgende Statuswerte sind möglich:
 
@@ -1125,10 +1125,10 @@ zu den MobileFirst-Verwaltungsservices an, die ohne Zugriff auf eine Laufzeit od
 Mit diesem Befehl
 können Sie testen, ob die MobileFirst-Verwaltungsservices überhaupt ausgeführt werden. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output| 	Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| output| 	Name der Ausgabedatei| Nein | Nicht verfügbar | 
+| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1147,10 +1147,10 @@ Der Befehl `show-versions` zeigt die MobileFirst-Versionen verschiedener Kompone
 
 Der Befehl wird mit folgenden Attributen verwendet: 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output| 	Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| output| 	Name der Ausgabedatei| Nein | Nicht verfügbar | 
+| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1165,10 +1165,10 @@ Der Befehl `show-diagnostics` zeigt den Status diverser Komponenten an, die für
 {{ site.data.keys.product_adj }}-Verwaltungsservice erforderlich sind, z. B.
 die Verfügbarkeit der Datenbank und von Zusatzservices. Er wird mit folgenden Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| output| 	Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| output| 	Name der Ausgabedatei| Nein | Nicht verfügbar | 
+| outputproperty| 	Name der Ant-Eigenschaft für die Ausgabe| Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1195,11 +1195,11 @@ nicht möglich sind. Verwenden Sie in solchen Fällen den Befehl unlock, um die 
 Der Befehl `list-runtimes` gibt eine
 Liste der implementierten Laufzeiten zurück. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| output| Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime | Name der Laufzeit| Ja | Nicht verfügbar | 
+| output| Name der Ausgabedatei| Nein | Nicht verfügbar | 
+| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -1220,11 +1220,11 @@ auf dem REST-Service [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter
 Der Befehl `show-runtime`
 zeigt Informationen zu einer gegebenen implementierten Laufzeit an. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| output| Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime | Name der Laufzeit| Ja | Nicht verfügbar | 
+| output| Name der Ausgabedatei| Nein | Nicht verfügbar | 
+| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein | Nicht verfügbar | 
 
 **Beispiel**
 
@@ -1243,10 +1243,10 @@ Laufzeit, einschließlich der zugehörigen Apps und Adapter, aus der Datenbank g
 Eine Laufzeit kann nur gelöscht werden, wenn
 die zugehörige Webanwendung gestoppt ist. Der Befehl wird mit folgenden Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime |  Name der Laufzeit| Ja| Nicht verfügbar|
-| condition | Bedingung für das Löschen (empty oder always). **Achtung:** Die Verwendung der Option always ist gefährlich. | Nein| Nicht verfügbar|
+| runtime |  Name der Laufzeit| Ja | Nicht verfügbar |
+| condition | Bedingung für das Löschen (empty oder always). **Achtung:** Die Verwendung der Option always ist gefährlich. | Nein | Nicht verfügbar |
 
 **Beispiel**
 
@@ -1263,11 +1263,11 @@ auf dem REST-Service [Runtime (DELETE)](http://www.ibm.com/support/knowledgecent
 Der Befehl `list-farm-members` gibt eine Liste der Farmmemberserver
 zurück, auf denen eine gegebene Laufzeit implementiert ist. Er wird mit folgenden Attributen verwendet:
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| output| Name der Ausgabedatei| Nein| Nicht verfügbar| 
-| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein| Nicht verfügbar| 
+| runtime | Name der Laufzeit| Ja | Nicht verfügbar | 
+| output| Name der Ausgabedatei| Nein | Nicht verfügbar | 
+| outputproperty| Name der Ant-Eigenschaft für die Ausgabe| Nein | Nicht verfügbar | 
 
 **Beispiel**
 
@@ -1286,11 +1286,11 @@ Der Befehl `remove-farm-member` entfernt einen Server aus der Liste der Farmmemb
 gegebene Laufzeit implementiert ist. Verwenden Sie diesen Befehl, wenn der Server nicht mehr verfügbar ist oder die Verbindung zum Server
 unterbrochen wurde. Der Befehl wird mit folgenden Attributen verwendet. 
 
-| Attribut| Beschreibung |	Erforderlich| Standardwert|
+| Attribut | Beschreibung |	Erforderlich | Standardwert |
 |----------------|-------------|-------------|---------|
-| runtime | Name der Laufzeit| Ja| Nicht verfügbar| 
-| serverId| Kennung des Servers| Ja| Nicht verfügbar| 
-| force| Das Farmmember wird auch dann entfernt, wenn es verfügbar und verbunden ist. | Nein| false| 
+| runtime | Name der Laufzeit| Ja | Nicht verfügbar | 
+| serverId| Kennung des Servers| Ja | Nicht verfügbar | 
+| force| Das Farmmember wird auch dann entfernt, wenn es verfügbar und verbunden ist. | Nein | false| 
 
 **Beispiel**
 

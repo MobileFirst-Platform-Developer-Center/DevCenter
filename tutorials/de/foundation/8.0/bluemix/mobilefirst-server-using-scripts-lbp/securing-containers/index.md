@@ -78,8 +78,7 @@ auf
 
 ### Verbindung zum Back-End schützen
 {: #securing-a-connection-to-the-back-end }
-Wenn Sie eine sichere Verbindung zwischen Ihrem Container und einem Back-End-System vor Ort benötigen, können Sie den Service Bluemix Secure Gateway verwenden. Die Konfigurationsdetails sind im folgenden Artikel
-angegeben: Connecting securely from IBM MobileFirst Platform Foundation on Bluemix to on-premises systems. 
+Wenn Sie eine sichere Verbindung zwischen Ihrem Container und einem Back-End-System vor Ort benötigen, können Sie den Cloud-Service IBM Secure Gateway verwenden. Die Konfigurationsdetails sind im folgenden Artikel angegeben: Connecting Securely to On-Premise Backends from MobileFirst on IBM Cloud containers.
 
 #### Kennwörter für in {{ site.data.keys.mf_server }} konfigurierte Benutzerrollen verschlüsseln
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
@@ -275,7 +274,7 @@ Der Konfigurationsprozess umfasst die folgenden Schritte:
 
 * LDAP-Repository einrichten und konfigurieren
 * Registry-Datei (registry.xml) ändern
-* Geschütztes Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in Bluemix.) 
+* Geschütztes Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in IBM Cloud.)
 
 #### LDAP-Repository
 {: #ldap-repository }
@@ -323,16 +322,15 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
 
 #### Geschütztes Gateway
 {: #secure-gateway }
-Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in Bluemix eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern.
-Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
+Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
 
-1. Melden Sie sich bei Bluemix an und wählen Sie **Katalog, Kategorie > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Service hinzufügen" eine App aus und klicken Sie auf **Erstellen**. Der Service ist jetzt an Ihre App gebunden. 
-3. Öffnen Sie das Bluemix-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Gateway hinzufügen**.
-4. Benennen Sie das Gateway und klicken Sie auf **Ziele hinzufügen**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein. 
+1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
+4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
 5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
 6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
-7. Notieren Sie die Werte für **Ziel-ID** und **Cloud-Host: Port**. Öffnen Sie die Datei registry.xml und ersetzen Sie die vorhandenen Werte durch die gerade notierten Werte. Das folgende Beispiel zeigt ein aktualisiertes Code-Snippet aus der Datei registry.xml:
+7. Notieren Sie die Werte für **Destination ID** und **Cloud Host : Port**. Öffnen Sie die Datei registry.xml und ersetzen Sie die vorhandenen Werte durch die gerade notierten Werte. Das folgende Beispiel zeigt ein aktualisiertes Code-Snippet aus der Datei registry.xml:
 
 
 ```xml
@@ -355,18 +353,17 @@ Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen
 ### Apps für LDAP konfigurieren
 {: #configuring-apps-to-work-with-ldap }
 Konfigurieren Sie mobile MobileFirst-Apps für die Verwendung mit einer externen LDAP-Registry.   
-Zum Konfigurationsprozess gehört der Schritt, ein sicheres Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container zu konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in Bluemix.) 
+Zum Konfigurationsprozess gehört der Schritt, ein sicheres Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container zu konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in IBM Cloud.)
 
-Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in Bluemix eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern.
-Für diesen Schritt benötigen Sie den Namen und die Portnummer Ihres lokalen LDAP-Hosts. 
+Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diesen Schritt benötigen Sie den Namen und die Portnummer Ihres lokalen LDAP-Hosts. 
 
-1. Melden Sie sich bei Bluemix an und wählen Sie **Katalog, Kategorie > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Service hinzufügen" eine App aus und klicken Sie auf **Erstellen**. Der Service ist jetzt an Ihre App gebunden. 
-3. Öffnen Sie das Bluemix-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Gateway hinzufügen**.
-4. Benennen Sie das Gateway und klicken Sie auf **Ziele hinzufügen**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein. 
+1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
+4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
 5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
 6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
-7. Notieren Sie die Werte für **Ziel-ID** und **Cloud-Host: Port**. Geben Sie diese Werte für das LDAP-Anmeldemodul an. 
+7. Notieren Sie die Werte für **Destination ID** und **Cloud Host : Port**. Geben Sie diese Werte für das LDAP-Anmeldemodul an. 
 
 **Ergebnisse**  
-Die MobileFirst-App in Bluemix kann jetzt mit Ihrem lokalen LDAP-Server kommunizieren. Die Authentifizierung und Autorisierung der Bluemix-App wird anhand Ihres lokalen LDAP-Servers validiert. 
+Die MobileFirst-App in IBM Cloud kann jetzt mit Ihrem lokalen LDAP-Server kommunizieren. Die Authentifizierung und Autorisierung der IBM Cloud-App wird anhand Ihres lokalen LDAP-Servers validiert. 

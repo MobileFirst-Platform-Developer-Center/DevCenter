@@ -9,7 +9,7 @@ weight: 3
 此处提供的信息详细介绍 {{ site.data.keys.mf_server }} 组件可能的服务器拓扑以及可用的网络流。  
 以下组件根据您使用的服务器拓扑进行部署。 网络流为您说明了组件之间以及组件与最终用户设备之间的通信方式。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 
 * [{{ site.data.keys.mf_server }} 组件间的网络流](#network-flows-between-the-mobilefirst-server-components)

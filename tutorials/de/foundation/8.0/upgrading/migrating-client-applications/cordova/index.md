@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Vorhandene Cordova- und Hybridanwendungen umstellen
-breadcrumb_title: Cordova- und Hybridanwendungen
+breadcrumb_title: Cordova and hybrid
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -94,10 +94,9 @@ Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für
 
 * Sie benötigen eine mit der IBM MobileFirst Platform Foundation
 erstellte Hybrid- oder Cordova-Anwendung, die Sie mit dem Befehl `mfp cordova create` erstellt haben. 
-* Sie benötigen Internetzugriff. 
-* Node.js ab Version 4.0.0 muss installiert sein. 
-* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
-für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
+* Sie benötigen Internetzugriff.
+* Node.js ab Version 4.0.0 muss installiert sein.
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
 unter [The
 Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
 * Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
@@ -151,7 +150,7 @@ Ordners **new-project-directory**. Wenn der Ordner nicht angegeben ist, wird er 
    Dieser Ordner begindet sich innerhalb des Ordners *destination_directory* und enthält alle Informationen für Ihre
 Cordova-App. Wenn diese Option nicht angegeben ist, wird der Standardname `App-Name-App-ID-Version` verwendet.
    <br/>
-Wenn der Befehl "client" des Unterstützungstools für die Migration ausgeführt wird, führt das Tool die folgenden
+   Wenn der Befehl "client" des Unterstützungstools für die Migration ausgeführt wird, führt das Tool die folgenden
 Schritte aus:
   
         * Es identifiziert APIs in der vorhandenen, mit der
@@ -232,7 +231,9 @@ den folgenden CSS-Code hinzu:
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **Hinweis:** Die Datei **worklight.css** setzt das Attribut "body" auf "relative". Wenn sich dies auf den Stil Ihrer App auswirkt, deklarieren Sie einen anderen Wert für die Position in Ihrem eigenen CSS-Code. Beispiel: 
+      > **Hinweis:** Die Datei **worklight.css** setzt das Attribut "body" auf "relative". Wenn sich dies auf den Stil Ihrer App auswirkt, deklarieren Sie einen anderen Wert für die Position in Ihrem eigenen CSS-Code. Beispiel:
+
+      
 
       ```css
       body {

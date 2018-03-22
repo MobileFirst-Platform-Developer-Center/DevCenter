@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Ejemplos de código de JSONStore
-breadcrumb_title: Ejemplos de código
+title: Ejemplos de código JSONStore
+breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
@@ -434,6 +434,7 @@ WL.JSONStore.get(collectionName)
 WL.JSONStore.startTransaction()
 
 .then(function () {
+
   // Handle startTransaction success.
   // You can call every JSONStore API method except:
   // init, destroy, removeCollection, and closeAll.
@@ -444,8 +445,7 @@ WL.JSONStore.startTransaction()
 })
 
 .then(function () {
-
-  var docs = [{_id: 1, json: {name: 'carlos'}}];
+    var docs = [{_id: 1, json: {name: 'carlos'}}];
 
   return WL.JSONStore.get(collectionName).remove(docs);
 })

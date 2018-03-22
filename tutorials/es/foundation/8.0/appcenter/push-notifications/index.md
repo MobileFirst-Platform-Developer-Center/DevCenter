@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Notificaciones push de actualizaciones de aplicaciones
-breadcrumb_title: Notificaciones push
+title: Notificaciones push de las actualizaciones de aplicaciones
+breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -49,8 +49,6 @@ Utilice las propiedades JNDI para definir estas variables.
 
 > **Importante:** En producción, evite establecer la unidad en segundos. Cuanto más corto sea el tiempo transcurrido, mayor será la carga en el servidor. La unidad expresada en segundos sólo se implementa para fines de prueba y evaluación. Por ejemplo, cuando el tiempo transcurrido se establece en 10 segundos, los mensajes push se enviarán casi inmediatamente.
 
-
-
 Consulte [Propiedades JNDI para Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) para obtener una lista completa de propiedades que puede establecer.
 
 ### Ejemplo para servidor Apache Tomcat
@@ -83,8 +81,6 @@ Para habilitar Google Cloud Messaging (GCM) para una aplicación, debe adjuntar 
 
 > Importante: El cliente de Application Center sin Google Cloud Messaging: El Application Center se basa en la disponibilidad de la API de Google Cloud Messaging (GCM). Es posible que esta API no esté disponible en dispositivos de algunos territorios, como por ejemplo China. Para dar soporte a estos territorios, puede crear una versión del cliente de Application Center que no dependa de la API de GCM. La característica de notificaciones push no funciona en dicha versión del cliente de Application Center. Consulte [Creación de una versión del cliente móvil que no dependa de la API de GCM](#no-gcm) para obtener más detalles.
 
-
-
 1. Si no tiene la cuenta de Google apropiada, vaya a [Crear una cuenta de Google](https://mail.google.com/mail/signup) y cree una para el cliente de Application Center.
 2. Registre esta cuenta mediante la API de Google en la [Consola de la API de Google](https://code.google.com/apis/console/). El registro crea un nuevo proyecto predeterminado que puede renombrar. El nombre que dé a este proyecto de GCM no está relacionado con el nombre del paquete de aplicaciones de Android. Cuando se cree el proyecto, se añadirá un ID de proyecto de GCM al final del URL del proyecto. Debería registrar este número de que se añade al final como su ID de proyecto para su referencia futura.
 3. Habilite el servicio de GCM para el proyecto; en la consola de la API de Google, pulse el separador **Servicios** de la izquierda y habilite el servicio "Google Cloud Messaging for Android" en la lista de servicios.
@@ -109,8 +105,8 @@ Para habilitar Google Cloud Messaging (GCM) para una aplicación, debe adjuntar 
    ```
 
    La propiedad JNDI debe estar definida de acuerdo con los requisitos del servidor de aplicaciones.  
-Consulte [Propiedades JNDI para Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) para obtener una lista completa de propiedades que puede establecer.
-    
+   Consulte [Propiedades JNDI para Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) para obtener una lista completa de propiedades que puede establecer.
+
 **Importante:**
 
 * Si utiliza GCM con versiones anteriores de Android, puede que necesite alinear el dispositivo con una cuenta de Google existente para que GCM funcione efectivamente. Consulte [Servicio de GCM](http://developer.android.com/google/gcm/gcm.html): "Utiliza una conexión existente para servicios de Google. Para dispositivos anteriores a 3.0, esto requiere que los usuarios configuren su cuenta de Google en sus dispositivos móviles. Una cuenta de Google no es un requisito en dispositivos que ejecutan Android 4.0.4 o superior".
@@ -141,7 +137,7 @@ Donde x es un entero.
 2. Si desea probar o depurar el Application Center en un dispositivo iniciándolo directamente desde XCode, en la ventana "Xcode Organizer", vaya a la sección "Provisioning Profiles" e instale el perfil en el dispositivo móvil.
 
 3. Cree un certificado de firma que utilicen los servicios de Application Center para proteger la comunicación con el servidor de APNs. Este servidor utilizará el certificado para firmar cada solicitud push en el servidor de APNs. Este certificado de firma se creará desde el perfil de suministro.
-    
+
 * Abra el programa de utilidad "Keychain Access" y pulse la categoría **Mis certificados** del panel izquierdo.
 * Busque el certificado que desee instalar y revele su contenido. Verá un certificado y una clave privada; para el Application Center, la línea del certificado contiene el paquete de aplicaciones de Application Center **com.ibm.imf.AppCenter**.
 * Seleccione **Archivo → Exportar elementos** para seleccionar el certificado y la clave y exportarlos como un archivo de Personal Information Exchange (.p12). Este archivo .p12 contiene la clave privada necesaria cuando el protocolo de conformidad de conexión seguro está implicado en la comunicación con el servidor de APNs.
@@ -149,11 +145,11 @@ Donde x es un entero.
 
 Los ejemplos de la tabla muestran cómo están definidas las propiedades JNDI en el archivo server.xml del servidor de Apache Tomcat.
 
-| Propiedad JNDI| Tipo y descripción| Ejemplo para servidor Apache Tomcat| 
+| Propiedad JNDI	| Tipo y descripción | Ejemplo para servidor Apache Tomcat |
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location| Un valor de serie que define la vía de acceso completa al certificado .p12.| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password| Un valor de serie que define la contraseña necesaria para acceder al certificado.| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	Un valor booleano (identificado como true o false) que define si el perfil de suministro utilizado para generar el certificado de autenticación era un certificado de desarrollo.| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.location | Un valor de serie que define la vía de acceso completa al certificado .p12. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.password | Un valor de serie que define la contraseña necesaria para acceder al certificado. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	Un valor booleano (identificado como true o false) que define si el perfil de suministro utilizado para generar el certificado de autenticación era un certificado de desarrollo. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 
 Consulte [Propiedades JNDI para Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) para obtener una lista completa de propiedades JNDI que puede establecer.
 
@@ -161,7 +157,7 @@ Consulte [Propiedades JNDI para Application Center](../../installation-configura
 {: #no-gcm }
 Puede eliminar la dependencia en la API de Google Cloud Messaging (GCM) desde la versión Android del cliente para cumplir con las restricciones en algunos territorios. Las notificaciones push no funcionan en esta versión del cliente.
 
-Application Center se basa en la disponibilidad de la API de Google Cloud Messaging (GCM). Es posible que esta API no esté disponible en dispositivos de algunos territorios, como por ejemplo China. Para dar soporte a estos territorios, puede crear una versión del cliente de Application Center que no dependa de la API de GCM. La característica de notificaciones push no funciona en dicha versión del cliente de Application Center. 
+Application Center se basa en la disponibilidad de la API de Google Cloud Messaging (GCM). Es posible que esta API no esté disponible en dispositivos de algunos territorios, como por ejemplo China. Para dar soporte a estos territorios, puede crear una versión del cliente de Application Center que no dependa de la API de GCM. La característica de notificaciones push no funciona en dicha versión del cliente de Application Center.
 
 1. Compruebe que las notificaciones push estén inhabilitadas comprobando que el archivo **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** contenga esta línea: `"gcmProjectId": "" ,`.
 2. Elimine de dos lugares del archivo **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** todas las líneas ubicadas entre estos comentarios: `<!-- AppCenter Push configuration -->` y `<!-- end of AppCenter Push configuration -->`.

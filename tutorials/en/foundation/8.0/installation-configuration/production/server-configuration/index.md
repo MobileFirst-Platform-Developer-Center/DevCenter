@@ -286,7 +286,7 @@ Set the JNDI environment entries in one of the following ways:
 
       The context root (in the previous example: **app\_context\_root**) connects between the JNDI entry and a specific {{ site.data.keys.product_adj }} application. If multiple {{ site.data.keys.product_adj }} applications exist on the same server, you can define specific JNDI entries for each application by using the context path prefix.
 
-      > **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../appserver/#global-jndi-entries).
+      > **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../prod-env/appserver/#global-jndi-entries).
 
       For all other JNDI properties, the names must be prefixed with the context root of the application:
 
@@ -401,8 +401,8 @@ The following properties can be set on the administration service web applicatio
 | mfp.admin.hsts | Optional. | Set to true to enable HTTP Strict Transport Security according to RFC 6797. |
 | mfp.topology.platform | Optional | Server type. Valid values:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}If you do not set the value, the application tries to guess the server type. |
 | mfp.topology.clustermode | Optional | In addition to the server type, specify here the server topology. Valid values: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/}The default value is Standalone. |
-| mfp.admin.farm.heartbeat | Optional | This property enables you to set in minutes the heartbeat rate that is used in server farm topologies. The default value is 2 minutes.<br/><br/>In a server farm, all members must use the same heartbeat rate. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.missed.heartbeats.timeout | Optional | This property enables you to set the number of missed heartbeats of a farm member before the status of the farm member is considered to be failed or down. The default value is 2.<br/><br/>In a server farm all members must use the same missed heartbeat value. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.heartbeat | Optional | This property enables you to set in minutes the heartbeat rate that is used in server farm topologies. The default value is 2 minutes.<br/><br/>In a server farm, all members must use the same heartbeat rate. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.missed.heartbeats.timeout | Optional | This property enables you to set the number of missed heartbeats of a farm member before the status of the farm member is considered to be failed or down. The default value is 2.<br/><br/>In a server farm all members must use the same missed heartbeat value. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.reinitialize | Optional | A Boolean value (true or false) for re-registering or re-initializing the farm member. |
 | mfp.server.swagger.ui.url | Optional | This property defines the URL of the Swagger user interface to be displayed in the administration console. |
 
@@ -865,7 +865,7 @@ You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creatin
     > **Note:**
     >
     > * Make sure the `dataSource` is pointing to a different database schema.
-    > * Make sure you have created [another database instance](../databases) for the new runtime.
+    > * Make sure you have created [another database instance](../prod-env/databases) for the new runtime.
     > * In the development environment, add `createDatabase="create"` in the `properties.derby.embedded` child-element.
 
 5. Restart the application server.

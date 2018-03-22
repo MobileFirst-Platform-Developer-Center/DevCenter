@@ -10,7 +10,7 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general 
 {: #overview }
-Cloudant es una base de datos no SQL que se basa en CouchDB, que está disponible como un producto independiente así como un DBaaS (Database-as-a-Service) en IBM Bluemix y `cloudant.com`.
+Cloudant es una base de datos no SQL que se basa en CouchDB, que está disponible como un producto independiente así como un DBaaS (Database-as-a-Service) en IBM Cloud y `cloudant.com`.
 
 Tal como se describe en la documentación de Cloudant:
 > Los documentos son objetos JSON.
@@ -20,6 +20,8 @@ Todos los documentos deben tener dos campos: un campo `_id` exclusivo y un campo
 El campo `_id` lo crea el usuario o lo genera Cloudant de forma automática como un UUID.
 El campo `_rev` es un número de revisión y es esencial para el protocolo de réplica de Cloudant.
 Además de estos dos campos obligatorios, los documentos pueden poseer cualquier otro contenido expresado en formato JSON.
+
+
 
 La API de Cloudant se documenta en el sitio de [Documentación de IBM Cloudant](https://docs.cloudant.com/index.html).
 
@@ -131,6 +133,8 @@ db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
 Utilizando de los [POJO (Plain Old Java Objects)](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) y la API Java estándar para servicios web RESTful (JAX-RS 2.0), puede crear un nuevo documento en Cloudant enviando una representación JSON del documento en la solicitud HTTP.
+
+
 
 ```java
 @POST

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Kundenspezifische Diagramme erstellen
-breadcrumb_title: Kundenspezifische Diagramme
+breadcrumb_title: Custom Charts
 relevantTo: [ios,android,javascript]
 weight: 3
 ---

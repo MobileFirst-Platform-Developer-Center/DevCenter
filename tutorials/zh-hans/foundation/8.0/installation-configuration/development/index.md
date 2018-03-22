@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 设置开发环境
-breadcrumb_title: 开发环境
+breadcrumb_title: Development Environment
 show_children: true
 weight: 1
 ---
@@ -21,9 +21,9 @@ weight: 1
 
 ### 服务器
 {: #server }
-您可以通过 [Mobile Foundation Bluemix 服务](../../bluemix/using-mobile-foundation) 或在本地通过 {{ site.data.keys.mf_dev_kit_full }}（用于本地开发目的）来使用 {{ site.data.keys.mf_server }}。 {{ site.data.keys.mf_server }} 要求运行 Java 7 或 8。
+您可以通过 [Mobile Foundation IBM Cloud 服务](../../bluemix/using-mobile-foundation)或在本地通过 {{ site.data.keys.mf_dev_kit_full }}（用于本地开发目的）来使用 {{ site.data.keys.mf_server }}。{{ site.data.keys.mf_server }} 要求运行 Java 7 或 8。
 
-如果您计划使用 Mobile Foundation Bluemix 服务，那么需要使用 Bluemix.net 帐户。
+如果您计划使用 Mobile Foundation IBM Cloud 服务，那么需要使用 bluemix.net 帐户。
 
 ### 应用程序开发
 {: #application-development }

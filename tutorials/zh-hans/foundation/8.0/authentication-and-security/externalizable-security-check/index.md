@@ -55,6 +55,8 @@ public String getState()
 ```
 以下示例仅检查用户是否登录，并相应地返回成功或失败：
 
+
+
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
     if (loggedIn){

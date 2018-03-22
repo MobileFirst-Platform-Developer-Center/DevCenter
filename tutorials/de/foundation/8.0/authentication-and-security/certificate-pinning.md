@@ -78,6 +78,8 @@ WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
 Mehrere Zertifikate:
 
+
+
 Syntax:
 pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
 Beispiel: 

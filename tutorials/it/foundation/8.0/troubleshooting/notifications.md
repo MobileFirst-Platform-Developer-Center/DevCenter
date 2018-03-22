@@ -83,6 +83,15 @@ Find information to help resolve issues that you might encounter when you use th
   </div>
 </div>
 
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h4>SSLHandshakeExceptions when sending Push notifications to APNS</h4></div>
+  <div class="panel-body">
+  <p>For example:</p> <blockquote>ApnsConnection | com.ibm.mfp.push.server.notification.apns.Apns.Connectionlmpl sendMessage Failed to send message Message (Id=1;  Token=xxxx; Payload={"payload":{"\nid\":\"44b7f47\",\"tag\":\"Push.ALL\"}", "aps":{"alert":{"action-loc-key":null,"body":"TEST"}}})... trying again after delay javax.net.ssl.SSLHandshakeException:Received fatal alert: handshake_failure</blockquote>
+<p>The issue is noticed only when IBM JDK 1.8 JVMs are used. The solution is to upgrade IBM JDK 1.8 to version 8.0.3.11 or above.</p>
+  </div>
+</div>
+
 <div class="panel panel-default">
   <div class="panel-heading"><h4>The Push service is shown as Inactive in the {{ site.data.keys.mf_console }}</h4></div>
   <div class="panel-body">

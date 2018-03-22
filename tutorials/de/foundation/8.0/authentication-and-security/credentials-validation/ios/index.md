@@ -5,9 +5,9 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
 downloads:
-  - name: Xcode-Projekt herunterladen
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -94,8 +94,7 @@ self.submitChallengeAnswer(["pin": pinTextField.text!])
 
 ## Abfrage abbrechen
 {: #cancelling-the-challenge }
-Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., wenn auf
-eine Schaltfläche **Cancel** geklickt wird. 
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie auf die Schaltfläche **Cancel** klicken.
 
 Rufen Sie zu diesem Zweck Folgendes auf: 
 

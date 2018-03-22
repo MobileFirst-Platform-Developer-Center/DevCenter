@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server 安装指南
-breadcrumb_title: 安装指南
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -93,7 +93,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 WebSphere Application Server Liberty 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear** 文件位于 `<mf_server_install_dir>\analytics` 文件夹中。有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
+确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear** 文件位于 `<mf_server_install_dir>\analytics` 文件夹中。 有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
 
 1. 在 **./wlp/bin** 文件夹中运行以下命令以创建服务器。
 
@@ -169,7 +169,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 Tomcat 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-tomcat }
-确保您已具有 {{ site.data.keys.mf_analytics }} WAR 文件。有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。**analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。有关如何下载和安装 Tomcat 的更多信息，请参阅 [Apache Tomcat](http://tomcat.apache.org/)。确保下载的版本支持 Java 7 或更高版本。有关哪一个版本的 Tomcat 支持 Java 7 的更多信息，请参阅 [Apache Tomcat 版本](http://tomcat.apache.org/whichversion.html)。
+确保您已具有 {{ site.data.keys.mf_analytics }} WAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。 有关如何下载和安装 Tomcat 的更多信息，请参阅 [Apache Tomcat](http://tomcat.apache.org/)。 确保下载的版本支持 Java 7 或更高版本。 有关哪一个版本的 Tomcat 支持 Java 7 的更多信息，请参阅 [Apache Tomcat 版本](http://tomcat.apache.org/whichversion.html)。
 
 1. 将 **analytics-service.war** 和 **analytics-ui.war** 文件添加到 Tomcat **webapps** 文件夹中。
 2. 取消注释 **conf/server.xml** 文件中的以下节（此节存在于新下载的 Tomcat 归档中，但已被注释掉）。
@@ -186,7 +186,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
    <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
    ```
 
-   **MemoryRealm** 将识别 **conf/tomcat-users.xml** 文件中定义的用户。有关其他选项的更多信息，请参阅 [Apache Tomcat 域配置方法](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html)。
+   **MemoryRealm** 将识别 **conf/tomcat-users.xml** 文件中定义的用户。 有关其他选项的更多信息，请参阅 [Apache Tomcat 域配置方法](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html)。
 
 4. 将以下节添加到 **conf/tomcat-users.xml** 文件中以配置 **MemoryRealm**。
     * 添加安全角色。
@@ -213,15 +213,15 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
       http://localhost:8080/analytics/console
       ```
 
-    有关如何启动 Tomcat Server 的更多信息，请访问 Tomcat 官网。例如，如果是 Tomcat 7.0，请访问 [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html)。
+    有关如何启动 Tomcat Server 的更多信息，请访问 Tomcat 官网。 例如，如果是 Tomcat 7.0，请访问 [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html)。
 
 ## 在 WebSphere Application Server 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-有关用于获取安装工件（JAR 和 EAR 文件）的初始安装步骤的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。**analytics.ear**、**analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。
+有关用于获取安装工件（JAR 和 EAR 文件）的初始安装步骤的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear**、**analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。
 
-以下步骤描述了如何在 WebSphere Application Server 上安装和运行分析 EAR 文件。如果要在 WebSphere Application Server 上安装个别 WAR 文件，只需在部署两个 WAR 文件后对 **analytics-service** WAR 文件执行步骤 2 至 7 即可。不能在 analytics-ui WAR 文件中更改类装入顺序。
+以下步骤描述了如何在 WebSphere Application Server 上安装和运行分析 EAR 文件。 如果要在 WebSphere Application Server 上安装个别 WAR 文件，只需在部署两个 WAR 文件后对 **analytics-service** WAR 文件执行步骤 2 至 7 即可。 不能在 analytics-ui WAR 文件中更改类装入顺序。
 
-1. 将 EAR 文件部署到应用程序服务器，但不启动。. 有关如何在 WebSphere Application Server 上安装 EAR 文件的更多信息，请参阅 WebSphere Application Server 产品文档中的[使用控制台安装企业应用程序文件](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html)主题。
+1. 将 EAR 文件部署到应用程序服务器，但不启动。 . 有关如何在 WebSphere Application Server 上安装 EAR 文件的更多信息，请参阅 WebSphere Application Server 产品文档中的[使用控制台安装企业应用程序文件](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html)主题。
 
 2. 从**企业应用程序**列表中选择 **MobileFirst Analytics** 应用程序。
 
@@ -249,7 +249,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 8. 在 WebSphere Application Server 管理控制台中启用**管理安全性**和**应用程序安全性**：
     * 登录到 WebSphere Application Server 管理控制台。
-    * 在**安全性 > 全局安全性**菜单中，确保同时选中**启用管理安全性**和**启用应用程序安全性**。注：仅在启用**管理安全性**后才可选择应用程序安全性。
+    * 在**安全性 > 全局安全性**菜单中，确保同时选中**启用管理安全性**和**启用应用程序安全性**。 注：仅在启用**管理安全性**后才可选择应用程序安全性。
     * 单击**确定**并保存更改。
 9. 启动 {{ site.data.keys.mf_analytics }} 应用程序，并在浏览器中转至以下链接：`http://<hostname>:<port>/analytics/console`。
 

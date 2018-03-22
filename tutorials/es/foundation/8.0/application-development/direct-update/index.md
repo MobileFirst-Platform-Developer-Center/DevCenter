@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Utilización de Direct Update en aplicaciones Cordova
+title: Uso de Direct Update en aplicaciones Cordova
 breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 8

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server Installationshandbuch
-breadcrumb_title: Installationshandbuch
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,7 @@ eingebettete Elasticsearch-Bibliothek als Data-Store und für die Clusterverwalt
 Platten-E/A erforderlich. Aus dem Grund müssen für ein Produktionssystem einige Voraussetzungen erfüllt sein. Generell ist es sehr wahrscheinlich, dass Sie nicht genug Haupt- und Plattenspeicher haben (oder feststellen, dass die Platten-E/A Ihr Leistungsengpass ist), bevor
 die CPU zum Problem wird. In einer Clusterumgebung benötigen Sie benachbarte Knoten, die schnell und zuverlässig sind. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Systemvoraussetzungen](#system-requirements)

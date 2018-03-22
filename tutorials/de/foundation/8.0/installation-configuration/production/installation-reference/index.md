@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Referenzinformationen zur Installation
+title: Referenzinformationen zur Installations
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -81,7 +81,7 @@ Für jeden Datenbanktyp können Sie ein Element `<property>` verwenden, um eine 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |-----------|----------------------------|----------|---------|
 | name | Name der Eigenschaft | Ja | Keiner |
-| value	| Wert der Eigenschaft | Ja | Keiner |   
+| value	     | Wert der Eigenschaft | Ja | Keiner |   
 
 #### Apache Derby
 {: #apache-derby }
@@ -157,9 +157,9 @@ Das Element `<mysql>` unterstützt die folgenden Elemente:
 
 | Element | Beschreibung | Anzahl |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | JDBC-Verbindungseigenschaft | 0..∞ |
+| `<property>` | JDBC-Verbindungseigenschaft | 0..∞  |
 | `<dba>`      | Berechtigungsnachweise des Datenbankadministrators | 0..1 |
-| `<client>`   | Host, der auf die Datenbank zugreifen kann | 0..∞ |
+| `<client>`   | Host, der auf die Datenbank zugreifen kann | 0..∞  |
 
 Informationen zu den verfügbaren Eigenschaften finden Sie unter [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).  
 Das innere Element `<dba>` gibt die Berechtigungsnachweise des Datenbankadministrators an. Dieses Element wird mit folgenden Attributen verwendet:
@@ -191,8 +191,6 @@ Alternativ können Sie das Element `<mysql>` mit folgenden Attributen verwenden:
 
 > `Hinweis:` Wenn Sie die Datenbank mit den alternativen Attributen angeben, muss es die Datenbank und den Benutzeraccount bereits geben und der Benutzer muss Zugriff auf die Datenbank haben. In diesem Fall versucht die Task **configuredatabase** weder, die Datenbank oder den Benutzer zu erstellen, noch versucht sie, dem Benutzer Zugriff zu erteilen. Die Task **configuredatabase** stellt nur sicher, dass die Datenbank die erforderlichen Tabellen für die aktuelle Version von {{ site.data.keys.mf_server }} enthält. Sie müssen kein inneres Element `<dba>` oder `<client>` angeben.
 
-
-
 #### Oracle
 {: #oracle }
 Das Element `<oracle>` wird mit folgenden Attributen verwendet:
@@ -216,7 +214,7 @@ Oracle-Benutzeraccounts finden Sie im Artikel
 [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).  
 Das Element `<oracle>` unterstützt die folgenden Elemente:
 
-| Element | Beschreibung | Anzahl|
+| Element | Beschreibung | Anzahl |
 |--------------|--------------------------------------------------|-------|
 | `<property>` | JDBC-Verbindungseigenschaft | 0..∞  |
 | `<dba>`      | Berechtigungsnachweise des Datenbankadministrators | 0..1 |
@@ -239,7 +237,7 @@ Mit der Ant-Task können Sie keine Tabellenzuordnungsdetails, z. B. den Tabellen
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |-----------|----------------------------------------|----------|-----------------------|
 | url | Datenbankverbindungs-URL | Ja | Keiner |
-| user	    | Benutzername für den Datenbankzugriff. | Ja | Keiner |
+| user	    | Benutzername für den Datenbankzugriff | Ja | Keiner |
 | password	| Kennwort für den Datenbankzugriff | Nein | Interaktiv abgefragt |
 
 > **Hinweis:** Wenn Sie die Datenbank mit den alternativen Attributen angeben, muss es die Datenbank und den Benutzeraccount bereits geben und der Benutzer muss Zugriff auf die Datenbank haben. In diesem Fall versucht die Task weder, die Datenbank oder den Benutzer zu erstellen, noch versucht Sie, dem Benutzer Zugriff zu erteilen. Die Task **configuredatabase** stellt nur sicher, dass die Datenbank die erforderlichen Tabellen für die aktuelle Version von {{ site.data.keys.mf_server }} enthält. Sie müssen kein inneres Element `<dba>` angeben.
@@ -382,8 +380,8 @@ Das Element `<property>` gibt eine Implementierungseigenschaft an, die im Anwend
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
-| name| Name der Eigenschaft | Ja | Keiner |
-| value	     | Wert der Eigenschaft|	Ja | Keiner |
+| name       | Name der Eigenschaft | Ja | Keiner |
+| value	     | Wert der Eigenschaft |	Ja | Keiner |
 
 Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren oder den Standardwert der JNDI-Eigenschaften überschreiben, die von den WAR-Dateien für den Verwaltungsservice und die {{ site.data.keys.mf_console }} bereitgestellt werden. 
 
@@ -451,8 +449,8 @@ Das Element `<property>` gibt eine Implementierungseigenschaft an, die im Anwend
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
-| name| Name der Eigenschaft | Ja | Keiner |
-| value	     | Wert der Eigenschaft|	Ja | Keiner |
+| name       | Name der Eigenschaft | Ja | Keiner |
+| value	     | Wert der Eigenschaft |	Ja | Keiner |
 
 Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren oder den Standardwert der JNDI-Eigenschaften überschreiben, die von den WAR-Dateien für den Verwaltungsservice und die {{ site.data.keys.mf_console }} bereitgestellt werden. Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
@@ -556,11 +554,11 @@ Das Element `<database>` unterstützt die folgenden Elemente. Weitere Informatio
 
 | Element | Beschreibung | Anzahl |
 |--------------------|----------------------------------------------------------------- |-------|
-| <db2>	             | Parameter für DB2-Datenbanken| 0..1|
-| <derby>	         | Parameter für Apache-Derby-Datenbanken| 0..1|
-| <mysql>	         | Parameter für MySQL-Datenbanken| 0..1|
-| <oracle>	         | Parameter für Oracle-Datenbanken| 0..1|
-| <cloudant>	     | Parameter für Cloudant-Datenbanken| 0..1|
+| <db2>	             | Parameter für DB2-Datenbanken| 0..1 |
+| <derby>	         | Parameter für Apache-Derby-Datenbanken| 0..1 |
+| <mysql>	         | Parameter für MySQL-Datenbanken| 0..1 |
+| <oracle>	         | Parameter für Oracle-Datenbanken| 0..1 |
+| <cloudant>	     | Parameter für Cloudant-Datenbanken| 0..1 |
 | <driverclasspath>	 | Parameter für den JDBC-Treiberklassenpfad (nur relationale DBMS)| 0..1 |
 
 > **Hinweis:** Die Attribute des Elements `<cloudant>`
@@ -692,7 +690,7 @@ Das Element `<property>` gibt eine Implementierungseigenschaft an, die im Anwend
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
 | name       | Name der Eigenschaft |	Ja | Keiner |
-| value	     | Wert der Eigenschaft|	Ja | Keiner |
+| value	     | Wert der Eigenschaft |	Ja | Keiner |
 
 Mit diesem Element können Sie Ihre
 eigenen JNDI-Eigenschaften definieren oder den Standardwert der JNDI-Eigenschaften überschreiben, die
@@ -806,11 +804,11 @@ Das Element `<database>` unterstützt die folgenden Elemente. Weitere Informatio
 
 | Element | Beschreibung | Anzahl |
 |----------------------|-------------------------------------------|-------|
-| `<db2>`	           | Parameter für DB2-Datenbanken| 0..1|
-| `<derby>`	           | Parameter für Apache-Derby-Datenbanken| 0..1|
-| `<mysql>`	           | Parameter für MySQL-Datenbanken| 0..1|
-| `<oracle>`           | Parameter für Oracle-Datenbanken| 0..1|
-| `<cloudant>`	       | Parameter für Cloudant-Datenbanken| 0..1|
+| `<db2>`	           | Parameter für DB2-Datenbanken| 0..1 |
+| `<derby>`	           | Parameter für Apache-Derby-Datenbanken| 0..1 |
+| `<mysql>`	           | Parameter für MySQL-Datenbanken| 0..1 |
+| `<oracle>`           | Parameter für Oracle-Datenbanken| 0..1 |
+| `<cloudant>`	       | Parameter für Cloudant-Datenbanken| 0..1 |
 | `<driverclasspath>`  | Parameter für den JDBC-Treiberklassenpfad (nur relationale DBMS)| 0..1|
 
 > **Hinweis:** Die Attribute des Elements `<cloudant>`
@@ -942,7 +940,7 @@ für eines der folgenden Elemente:
 
 | Element | Beschreibung | Anzahl |
 |--------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` oder `<was>`  | Parameter für WebSphere Application Server. | 0..1|
+| `<websphereapplicationserver>` oder `<was>`  | Parameter für WebSphere Application Server. | 0..1 |
 | `<tomcat>`                                 | Parameter für Apache Tomcat| 0..1 |
 
 Das Element `<websphereapplicationserver>` (oder in seiner Kurzform `<was>`) gibt eine WebSphere-Application-Server-Instanz an. WebSphere Application Server Full Profile
@@ -1001,10 +999,10 @@ unterstützt:
 
 | Element | Beschreibung | Anzahl |
 |-------------|-----------------------------------------------|-------|
-| `<cell>`    |	Gesamte Zelle| 0..1|
-| `<cluster>` |	Alle Server eines Clusters|	0..1|
-| `<node>`    |	Alle Server eines Knotens, Cluster ausgeschlossen| 0..1|
-| `<server>`  |	Einzelserver| 0..1|
+| `<cell>`    |	Gesamte Zelle| 0..1 |
+| `<cluster>` |	Alle Server eines Clusters|	0..1 |
+| `<node>`    |	Alle Server eines Knotens, Cluster ausgeschlossen| 0..1 |
+| `<server>`  |	Einzelserver| 0..1 |
 
 Das Element `<cell>` hat keine Attribute. 
 
@@ -1127,12 +1125,11 @@ Das Element `<derby>` wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|--------------------------------------------|----------|---------|
-| database	 | Datenbankname| Nein |	Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
+| database	 | Datenbankname| Nein |	Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR |
 | datadir	 | Verzeichnis mit den Datenbanken |	Ja | Keiner |
-| schema|	Schemaname |	Nein | Je nach Art des Schemas MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH oder APPCENTER|
+| schema|	Schemaname |	Nein | Je nach Art des Schemas MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH oder APPCENTER |
 
 Das Element `<derby>` unterstützt das folgende Element:
-
 
 | Element | Beschreibung | Anzahl |
 |---------------|-------------------------------|-------|
@@ -1157,7 +1154,7 @@ Das Element `<db2>` wird mit folgenden Attributen verwendet:
 |------------|--------------------------------------------|----------|---------|
 | database | Datenbankname | Nein | Nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
 | server| Hostname des Datenbankservers | Ja | Keiner |
-| port| Port des Datenbankservers | | Nein | 50000|
+| port| Port des Datenbankservers | Nein | 50000|
 | user| Benutzername für den Datenbankzugriff | Dieser Benutzer benötigt keine erweiterten Zugriffsrechte für die Datenbanken. Wenn Sie Einschränkungen für die Datenbank implementieren, können Sie einen Benutzer mit den eingeschränkten Zugriffsrechten definieren, die unter "Datenbankbenutzer und Berechtigungen" aufgelistet sind.| Ja | Ja | Keiner
 |
 | password| Kennwort für den Datenbankzugriff| Nein | Interaktiv abgefragt |
@@ -1192,7 +1189,7 @@ Das Element `<mysql>` wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|--------------------------------------------|----------|---------|
-| database	 | Datenbankname| Nein | Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
+| database	 | Datenbankname| Nein | Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR |
 | server	 | Hostname des Datenbankservers | Ja | Keiner |
 | port	     | Port des Datenbankservers | Nein | 3306 |
 | user	     | Benutzername für den Datenbankzugriff. Dieser Benutzer benötigt keine erweiterten Zugriffsrechte für die Datenbanken. Wenn Sie Einschränkungen für die Datenbank implementieren, können Sie einen Benutzer mit den eingeschränkten Zugriffsrechten definieren, die unter "Datenbankbenutzer und Berechtigungen" aufgelistet sind.| Ja | Ja | Keiner |
@@ -1217,7 +1214,7 @@ Das Element `<mysql>` unterstützt das folgende Element:
 
 | Element | Beschreibung | Anzahl |
 |---------------|-------------------------------|-------|
-| `<property>`  | Datenquelleneigenschaft oder JDBC-Verbindungseigenschaft| 0.. |
+| `<property>`  | Datenquelleneigenschaft oder JDBC-Verbindungseigenschaft | 0.. |
 
 Die verfügbaren Eigenschaften sind in der Dokumentation
 unter [Driver/Datasource Class Names, URL
@@ -1301,7 +1298,7 @@ Das Element `<property>`, das in `<derby>`-, `<db2>`-, ` <mysql>`- und `<oracle>
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|--------------------------------------------|----------|---------|
-| name | Name der Eigenschaft | Ja | Keiner |
+| name       | Name der Eigenschaft | Ja | Keiner |
 | type	     | Java-Typ der Eigenschaftswerte, gewöhnlich java.lang.String/Integer/Boolean| Nein | java.lang.String|
 | value	     | Wert der Eigenschaft| Ja |  Keiner |
 
@@ -1638,8 +1635,8 @@ Das Element `<property>` wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
-| name | Name der Eigenschaft | Ja | Keiner |
-| value	     | Wert der Eigenschaft|	Ja | Keiner |
+| name       | Name der Eigenschaft | Ja | Keiner |
+| value	     | Wert der Eigenschaft |	Ja | Keiner |
 
 ### Benutzer und Sicherheitsrolle angeben
 {: #to-specify-a-user-and-a-security-role-1 }
@@ -1788,7 +1785,7 @@ Dieses Element wird mit folgenden Attributen verwendet:
 
 | Attribut | Beschreibung | Erforderlich | Standardwert |
 |------------|----------------------------|----------|---------|
-| name | Name der Eigenschaft | Ja | Keiner |
+| name       | Name der Eigenschaft | Ja | Keiner |
 | value	     | Wert der Eigenschaft |	Ja | Keiner |
 
 ## Interne Laufzeitdatenbanken

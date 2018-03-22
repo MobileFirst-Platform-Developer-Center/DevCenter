@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 在应用程序服务器上为 Application Center 设置日志记录和跟踪
-breadcrumb_title: 设置日志记录和跟踪
+breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -85,8 +85,8 @@ com.worklight.level = ALL
 
 以下 JNDI 属性适用于 Application Center 服务 (**applicationcenter.war**) 的 Web 应用程序。
 
-| 属性设置 | 设置 | 描述 | 
+| 属性设置 | 设置 | 描述 |
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | 缺省情况下，此属性设置为 false。 将其设置为 true，可使用空格对 JSON 输出进行格式化，以便更容易在日志文件中阅读。 | 
-| ibm.appcenter.logging.tosystemerror | true | 缺省情况下，此属性设置为 false。 将其设置为 true，可将系统错误的所有日志消息打印到日志文件中。 使用此属性可全局开启日志记录。 | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | 此设置将所有生成的 SQL 语句打印在日志文件中。 | 
+| ibm.appcenter.logging.formatjson | true | 缺省情况下，此属性设置为 false。 将其设置为 true，可使用空格对 JSON 输出进行格式化，以便更容易在日志文件中阅读。 |
+| ibm.appcenter.logging.tosystemerror | true | 缺省情况下，此属性设置为 false。 将其设置为 true，可将系统错误的所有日志消息打印到日志文件中。 使用此属性可全局开启日志记录。 |
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | 此设置将所有生成的 SQL 语句打印在日志文件中。 |

@@ -312,6 +312,8 @@ Wählen Sie in der **Navigationsseitenleiste** der {{ site.data.keys.mf_console 
 **Sicherheit** aus. Wählen Sie unter
 **Obligatorischer Anwendungsbereich** die Option **Zum Bereich hinzufügen** aus.
 
+
+
 <img class="gifplayer" alt="Obligatorischer Anwendungsbereich" src="mandatory-application-scope.png"/>
 
 Sie können auch die JSON-Konfigurationsdatei der Anwendung manuell bearbeiten und die erforderliche Konfiguration definieren.
@@ -419,6 +421,8 @@ das Element `enabled` auf den Wert `false`:
 Der Standardwert des
 Annotationselements `enabled` ist
 `true`. Wenn das Element `enabled` auf `false` gesetzt ist, wird das Element `scope` ignoriert und die Ressource oder Ressourcenklasse [nicht geschützt](#unprotected-resources).
+
+
 
 <b>Hinweis:</b> Wenn Sie einer Methode einer ungeschützten Klasse einen Bereich zuweisen,
 wird dieser Methode ungeachtet der Klassenannotation geschützt, solange Sie das Element

@@ -56,7 +56,7 @@ Führen Sie in einem **Befehlszeilenfenster** mit installierter
 #### Desktop-Browser
 {: #desktop-browser-remote }
 Laden Sie in einem Browser Ihrer Wahl die URL `http://Serverhost:Serverport/mfpconsole`.  
-Der Host-Server kann ein Server des Kunden oder der IBM Bluemix-Service IBM [Mobile Foundation](../../../bluemix/) sein.
+Der Host-Server kann ein Server des Kunden oder der IBM Cloud-Service "IBM [Mobile Foundation](../../../bluemix/)" sein.
 
 #### Befehlszeile
 {: #command-line-remote }
