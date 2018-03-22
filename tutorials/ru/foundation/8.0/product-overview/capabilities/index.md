@@ -23,14 +23,6 @@ The {{ site.data.keys.product }} SDKs support the following platforms:
 * Windows Universal 8.1 and Windows 10 UWP
 * Web apps
 
-> **Supported browsers for web apps:**
-> 
-> |      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android Browser |
-> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
-> | Supported Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
-
-* Private browsing mode will work only with Single Page Applications. Other applications may have unexpected behavior.
-
 ### Back-end connections
 {: #back-end-connections }
 Some mobile applications run strictly offline with no connection to a back-end system, but most mobile applications connect to existing enterprise services to provide the critical user-related functions. For example, customers can use a mobile application to shop anywhere, at any time, independent of the operating hours of the store. Their orders must still be processed by using the existing e-commerce platform of the store. To integrate a mobile application with enterprise services, you must use middleware such as a mobile gateway. {{ site.data.keys.product }} can act as this middleware solution and make communication with back-end services easier.

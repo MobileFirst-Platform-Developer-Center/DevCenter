@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Installing and Configuring the MobileFirst Analytics Server	
+title: Installing and Configuring the MobileFirst Analytics Server
 breadcrumb_title: Installing MobileFirst Analytics Server
-weight: 7
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

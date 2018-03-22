@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on IBM Cloud
-title: IBM MobileFirst Foundation on IBM Cloud
+breadcrumb_title: Mobile Foundation on IBM Cloud
+title: IBM Mobile Foundation on IBM Cloud
 relevantTo: [ios,android,windows,javascript]
 weight: 10
 ---
@@ -54,7 +54,7 @@ The Liberty for Java runtime is powered by the liberty-for-java buildpack. The l
 ## Tutorials to follow next
 {: #tutorials-to-follow-next }
 
-* Create a {{ site.data.keys.mf_bm_short }} instance on IBM Cloud [using IBM provided scripts](mobilefirst-server-using-kubernetes/) using Kubernetes Cluster.
-* Create a {{ site.data.keys.mf_server }} instance [using the {{ site.data.keys.mf_bm }} service](using-mobile-foundation/).
+* Create a {{ site.data.keys.mf_bm_short }} instance on Kubernetes Cluster in IBM Cloud [using IBM provided scripts](mobilefirst-server-using-kubernetes/).
+* Create a {{ site.data.keys.mf_server }} instance using the tutorial [Setting up {{ site.data.keys.mf_bm }} service](using-mobile-foundation/).
 <!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
-* Create a {{ site.data.keys.mf_server }} instance on IBM Cloud [using IBM provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty
+* Create a {{ site.data.keys.mf_server }} instance using Liberty for Java on IBM Cloud [using IBM provided scripts](mobilefirst-server-using-scripts-lbp/).

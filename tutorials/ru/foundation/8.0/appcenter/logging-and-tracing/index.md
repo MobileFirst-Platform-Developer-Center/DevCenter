@@ -32,6 +32,7 @@ When you try to diagnose problems in the Application Center (or other components
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -39,7 +40,7 @@ com.worklight.*=all
 Where:
 
 * **com.ibm.puremeap.*** is for Application Center.
-* **com.ibm.worklight.*** and **com.worklight.*** are for other {{ site.data.keys.product_adj }} components.
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** and **com.worklight.*** are for other {{ site.data.keys.product_adj }} components.
 
 The traces are sent to a file called **trace.log**, not to **SystemOut.log** or to **SystemErr.log**.
 
@@ -52,7 +53,7 @@ When you try to diagnose problems in the Application Center, it is important to 
 To enable logging for {{ site.data.keys.product }}, including Application Center, with level FINEST(equivalent to ALL), add a line to the server.xml file. For example:
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 In this example, multiple entries of a package and its logging level are separated by a colon (:).
@@ -71,6 +72,7 @@ To enable logging for {{ site.data.keys.product }}, including Application Center
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```

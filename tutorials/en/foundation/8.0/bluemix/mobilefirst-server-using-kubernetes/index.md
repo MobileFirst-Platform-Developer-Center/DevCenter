@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Server on IBM Cloud Kubernetes Cluster
-breadcrumb_title: Foundation on Kubernetes Cluster
+title: Setting up MobileFirst Server on IBM Cloud Kubernetes Cluster
+breadcrumb_title: Mobile Foundation on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -349,7 +349,15 @@ When you run interactively, a copy of the arguments provided is saved in a direc
                 <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }} image</b><br />
                     Run the <b>prepareserver.sh</b> script in order to build the {{ site.data.keys.mf_server }} and  {{ site.data.keys.mf_analytics }} images and push it to your IBM Cloud repository. To view all available images in your IBM Cloud repository, run: <code>bx cr image-list</code><br/>
                     The list contains the image name, date of creation, and ID.<br/>
-                    <b>Interactive Mode</b>{% highlight bash %}./prepareserver.sh{% endhighlight %}                    <b>Non-interactive Mode</b>{% highlight bash %}./prepareserver.sh args/prepareserver.properties{% endhighlight %}                </li>
+                    <b>Interactive Mode</b>
+{% highlight bash %}
+./prepareserver.sh
+{% endhighlight %}
+                    <b>Non-interactive Mode</b>
+{% highlight bash %}
+./prepareserver.sh args/prepareserver.properties
+{% endhighlight %}
+                </li>
                 <li>Deploy {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} on Docker containers on a Kubernetes cluster using IBM Cloud Container Service.
                 <ol>
                   <li>Set your terminal context to your cluster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
@@ -440,7 +448,7 @@ bx cr image-rm image-name (Removes the image from the registry)
 ```
 
 ## Removing the database service configuration from IBM Cloud
-{: #removing-the-database-service-configuration-from-IBM Cloud }
+{: #removing-the-database-service-configuration-from-ibmcloud }
 If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the container.
 
 To remove the database service configuration from IBM Cloud, perform the following procedure using IBM Cloud dashboard.

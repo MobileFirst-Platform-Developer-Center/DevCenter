@@ -16,7 +16,7 @@ languageNames:
   zh-hans: Chinese
 source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
-paginate: 20
+paginate: 40
 paginate_path: "/blog/:num/"
 markdown: kramdown
 generate_redirects: false
@@ -24,7 +24,7 @@ print_pdf: false
 kramdown:
   input: GFM
   hard_wrap: false
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
