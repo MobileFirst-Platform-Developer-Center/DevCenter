@@ -24,14 +24,14 @@ IBM Installation Manager installs the IBM MobileFirst Platform Server files and 
 ## Setting up databases
 {: #databases }
 
-Set up the database to be used by MobileFirst Server components. Follow this [tutorial to set up the database](../databases).
+Set up the database to be used by MobileFirst Server components. Follow this [tutorial to set up the database](databases).
 
 ## Topologies and network flows
 {: #topologies }
 
-Topics about possible server topologies for MobileFirst Server components and the network flows. Follow this [tutorial to learn about the possible server topologies and network flows](../topologies).
+Topics about possible server topologies for MobileFirst Server components and the network flows. Follow this [tutorial to learn about the possible server topologies and network flows](topologies).
 
 ## Installing MobileFirst Server to an application server
 {: #install-to-appserver }
 
-The installation of the components can be done by using Ant Tasks, the Server Configuration Tool, or manually. Find out the prerequisite and the details about the installation process so that you can install the components on the application server successfully. Follow this [tutorial to learn how the MobileFirst components can be installed on application server](../appserver).
+The installation of the components can be done by using Ant Tasks, the Server Configuration Tool, or manually. Find out the prerequisite and the details about the installation process so that you can install the components on the application server successfully. Follow this [tutorial to learn how the MobileFirst components can be installed on application server](appserver).

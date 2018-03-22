@@ -138,7 +138,7 @@ The `<driverclasspath>` element must contain the JAR files for the DB2 JDBC driv
 * Download DB2 JDBC drivers from the [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) page
 * Or fetch the **db2jcc4.jar** file and its associated **db2jcc_license_*.jar** files from the **DB2_INSTALL_DIR/java** directory on the DB2 server.
 
-You cannot specify details of table allocations, such as the table space, by using the Ant task. To control the table space, you must use the manual instructions in section [DB2 database and user requirements](../databases/#db2-database-and-user-requirements).
+You cannot specify details of table allocations, such as the table space, by using the Ant task. To control the table space, you must use the manual instructions in section [DB2 database and user requirements](../prod-env/databases/#db2-database-and-user-requirements).
 
 #### MySQL
 {: #mysql }
@@ -225,7 +225,7 @@ The inner element `<dba>` specifies the database administrator credentials. This
 
 The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-You cannot specify details of table allocation, such as the table space, by using the Ant task. To control the table space, you can create the user account manually and assign it a default table space before you run the Ant task. To control other details, you must use the manual instructions in section [Oracle database and user requirements](../databases/#oracle-database-and-user-requirements).
+You cannot specify details of table allocation, such as the table space, by using the Ant task. To control the table space, you can create the user account manually and assign it a default table space before you run the Ant task. To control other details, you must use the manual instructions in section [Oracle database and user requirements](../prod-env/databases/#oracle-database-and-user-requirements).
 
 | Attribute | Description                            | Required | Default               |
 |-----------|----------------------------------------|----------|-----------------------|
@@ -1472,12 +1472,12 @@ The following table provides a list of push service database tables, their descr
 | PUSH_MESSAGE_SEQUENCE_TABLE	 | Push notification table; stores the generated sequence ID.	 | One row. |
 | PUSH_VERSION	                 | The product version.	                                         | One row. |
 
-For more information about setting up the databases, see [Setting up databases](../databases).
+For more information about setting up the databases, see [Setting up databases](../prod-env/databases).
 
 ## Sample configuration files
 {{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_server }}.
 
-The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
+The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../prod-env/appserver/#installing-with-ant-tasks).
 
 ### List of sample configuration files
 {: #list-of-sample-configuration-files }
