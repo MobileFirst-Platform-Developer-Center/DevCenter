@@ -16,9 +16,9 @@ MobileFirst JSONStore already allows you to write code to be able to pull and pu
 
 Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). 
 
-> **Note:** This feature is available in Android environment only. Support for iOS and Cordova will be available shortly.
-
-> **Note:** The use of this feature can be extended to any CouchDB instance.
+> **Note:** <br/>
+  This feature is available in Android environment only. Support for iOS and Cordova will be available shortly.<br/>
+> The use of this feature can be extended to any CouchDB instance.
 
 ## Setting up the synchronization between JSONStore and Cloudant
 {: #setup-sync}
