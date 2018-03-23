@@ -1,15 +1,17 @@
 ---
-layout: tutorial
-title: 日志和跟踪收集
-relevantTo: [ios,android,windows,javascript]
-weight: 1
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Log and trace collection
+#relevantTo: [ios,android,windows,javascript]
+#weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-IBM Containers for Bluemix 围绕着容器 CPU、内存和网络提供一些内置日志记录和监控功能。 您可以选择更改 {{ site.data.keys.product_adj }} 容器的日志级别。
+IBM Containers for IBM Cloud 围绕着容器 CPU、内存和网络提供一些内置日志记录和监控功能。您可以选择更改 {{ site.data.keys.product_adj }} 容器的日志级别。
 
-缺省情况下，已启用为 {{ site.data.keys.mf_server }}、{{ site.data.keys.mf_analytics }} 和 {{ site.data.keys.mf_app_center }} 容器创建日志文件的选项（使用级别 `*=info`）。 您可通过手动添加代码覆盖或使用给定的脚本文件插入代码，对日志级别进行更改。 可通过 Kibana 可视化工具从 Bluemix logmet 控制台查看容器日志和服务器或运行时日志。 可通过 Grafana（开放式源代码度量仪表板和图形编辑器）从 Bluemix logmet 控制台进行监控。
+缺省情况下，已启用为 {{ site.data.keys.mf_server }}、{{ site.data.keys.mf_analytics }} 和 {{ site.data.keys.mf_app_center }} 容器创建日志文件的选项（使用级别 `*=info`）。 您可通过手动添加代码覆盖或使用给定的脚本文件插入代码，对日志级别进行更改。 可通过 Kibana 可视化工具从 IBM Cloud logmet 控制台查看容器日志和服务器或运行时日志。可通过 Grafana（开放式源代码度量仪表板和图形编辑器）从 IBM Cloud logmet 控制台进行监控。
 
 在使用 Secure Shell (SSH) 密钥创建 {{ site.data.keys.product_adj }} 容器并绑定到公共 IP 地址时，可使用适合的专用密钥以安全地查看容器实例的日志。
 
@@ -41,7 +43,7 @@ IBM Containers for Bluemix 围绕着容器 CPU、内存和网络提供一些内�
 
 您可以通过遵循访问日志文件中的步骤登录到容器并访问日志文件。
 
-要持久存储日志文件，甚至在容器不再存在后仍然保留日志文件，请启用卷。 （缺省情况下，未启用卷。） 启用卷也可允许您使用 logmet 界面（例如，https://logmet.ng.bluemix.net/kibana）查看 Bluemix 的日志。
+要持久存储日志文件，甚至在容器不再存在后仍然保留日志文件，请启用卷。 （缺省情况下，未启用卷。） 启用卷也可允许您使用 logmet 界面（例如，https://logmet.ng.bluemix.net/kibana）查看 IBM Cloud 的日志。
 
 **启用卷**
 卷支持容器持久存储日志文件。 缺省情况下，针对 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analyics }} 容器日志未启用卷。
@@ -53,11 +55,11 @@ IBM Containers for Bluemix 围绕着容器 CPU、内存和网络提供一些内�
 
 ## 访问日志文件
 {: #accessing-log-files }
-针对每个容器实例都会创建日志。 您可以通过 `cf ic` 命令或者使用 Bluemix logmet 控制台，使用 IBM Container 云服务 REST API 来访问日志文件。
+针对每个容器实例都会创建日志。 您可以通过 `cf ic` 命令或者使用 IBM Cloud logmet 控制台，使用 IBM Container 云服务 REST API 来访问日志文件。
 
 ### IBM Container 云服务 REST API
 {: #ibm-container-cloud-service-rest-api }
-对于任何容器实例，可使用 [Bluemix logmet 服务](https://logmet.ng.bluemix.net/kibana/)查看 **docker.log** 和 **/var/log/rsyslog/syslog**。 可使用相同的 Kibana 仪表板查看日志活动。
+对于任何容器实例，都可使用 [IBM Cloud logmet 服务](https://logmet.ng.bluemix.net/kibana/)查看 **docker.log** 和 **/var/log/rsyslog/syslog**。 可使用相同的 Kibana 仪表板查看日志活动。
 
 IBM Containers CLI 命令 (`cf ic exec`) 可用于获取正在运行的容器实例的访问权。 此外，您可以通过 Secure Shell (SSH) 获取容器日志文件。
 

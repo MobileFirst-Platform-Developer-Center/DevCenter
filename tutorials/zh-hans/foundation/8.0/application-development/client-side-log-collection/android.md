@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 登录 Android 应用程序
-breadcrumb_title: 登录 Android
+title: Android 应用程序中的日志记录
+breadcrumb_title: Logging in Android
 relevantTo: [android]
 weight: 3
 ---

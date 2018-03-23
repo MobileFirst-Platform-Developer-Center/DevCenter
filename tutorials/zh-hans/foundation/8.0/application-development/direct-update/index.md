@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 在 Cordova 应用程序中使用直接更新
-breadcrumb_title: 直接更新
+breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 8
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

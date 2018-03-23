@@ -79,7 +79,7 @@ weight: 5
 
 * 使用 `mfpdev app pull` 命令从服务器抓取现有 JSON 配置文件，更新文件，并使用 `mfpdev app push` 命令上载更改的配置。
 * 使用 **mfpadm** 程序或 Ant 任务。 有关使用 mfpadm 的信息，请参阅[通过命令行管理 {{ site.data.keys.product_adj }} 应用程序](../administering-apps/using-cli)和[通过 Ant 管理 {{ site.data.keys.product_adj }} 应用程序](../administering-apps/using-ant)。
-* 使用 {{ site.data.keys.product_adj }} 管理服务的 REST API。 有关 REST API 的信息，请参阅 [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/administration-service/)。
+* 使用 {{ site.data.keys.product_adj }} 管理服务的 REST API。 有关 REST API 的信息，请参阅 [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/admin-apis/)。
 
 您还可以使用这些方法来自动配置 {{ site.data.keys.mf_server }}。
 
@@ -149,7 +149,7 @@ weight: 5
 
 #### 在云上
 {: #on-the-cloud }
-* [在 IBM Bluemix 上使用 {{ site.data.keys.mf_server }}](../bluemix)。
+* [在 IBM Cloud 上使用 {{ site.data.keys.mf_server }}](../bluemix)。
 * [在 IBM PureApplication 上使用 {{ site.data.keys.mf_server }}](../installation-configuration/production/pure-application)。
 
 ## 适配器

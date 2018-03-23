@@ -3,14 +3,14 @@ layout: tutorial
 title: 与 Cloudant 集成
 relevantTo: [javascript]
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-Cloudant 是基于 CouchDB 的非关系型数据库，其作为独立产品和数据库即服务 (DBaaS) 提供在 IBM Bluemix 和 `cloudant.com` 上。
+Cloudant 是基于 CouchDB 的非关系型数据库，其作为独立产品和数据库即服务 (DBaaS) 在 IBM Cloud 和 `cloudant.com` 上提供。
 
 如 Cloudant 文档中所述：
 > 文档是 JSON 对象。 文档是数据容器，是 Cloudant 数据库的基础。  
