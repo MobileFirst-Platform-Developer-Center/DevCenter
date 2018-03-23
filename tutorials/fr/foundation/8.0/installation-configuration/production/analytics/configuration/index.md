@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guide de configuration de MobileFirst Analytics Server
-breadcrumb_title: Guide de configuration
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -84,7 +84,7 @@ Le tableau ci-dessous répertorie les propriétés que vous pouvez définir sur 
 | mfp.analytics.console.url          | Associez cette propriété à l'adresse URL de {{ site.data.keys.mf_analytics_console }}. Exemple : http://nomhôte:port/analytics/console. La définition de cette propriété active l'icône d'analyse dans {{ site.data.keys.mf_console }}. | Aucune |
 | mfp.analytics.logs.forward         | Si cette propriété a pour valeur true, les journaux serveur qui sont enregistrés sur {{ site.data.keys.mf_server }} sont capturés dans {{ site.data.keys.mf_analytics }}. | true |
 | mfp.analytics.url                  |Requise. Adresse URL exposée par {{ site.data.keys.mf_analytics_server }} et qui reçoit les données d'analyse entrantes. Exemple : http://nomhôte:port/analytics-service/rest/v2. | Aucune |
-| analyticsconsole/mfp.analytics.url |	Facultative. URI complet des services REST d'analyse. Dans un scénario qui présente un pare-feu ou un proxy inverse sécurisé, il doit s'agir de l'URI externe et non de l'URI interne dans le réseau local. Cette valeur peut contenir * à la place du protocole d'URI, du nom d'hôte et du port afin de désigner la partie correspondante provenant de l'adresse URL entrante.	*://*:*/analytics-service, avec le protocole, le nom d'hôte et le port déterminés dynamiquement. |
+| analyticsconsole/mfp.analytics.url |	Facultatif. URI complet des services REST d'analyse. Dans un scénario qui présente un pare-feu ou un proxy inverse sécurisé, il doit s'agir de l'URI externe et non de l'URI interne dans le réseau local. Cette valeur peut contenir * à la place du protocole d'URI, du nom d'hôte et du port afin de désigner la partie correspondante provenant de l'adresse URL entrante.	*://*:*/analytics-service, avec le protocole, le nom d'hôte et le port déterminés dynamiquement. |
 | mfp.analytics.username             | Nom d'utilisateur indiqué si le point d'entrée de données est protégé par l'authentification de base. | Aucune |
 | mfp.analytics.password             | Mot de passe utilisé si le point d'entrée de données est protégé par l'authentification de base. | Aucune |
 
@@ -112,6 +112,8 @@ Le tableau ci-dessous répertorie les propriétés que vous pouvez définir sur 
 | analytics/tenant | Nom de l'index Elasticsearch principal.	worklight |
 
 Dans tous les cas où la clé ne contient pas de point (par exemple **httpport** et non **http.enabled**), le paramètre peut être contrôlé par des variables d'environnement système où le nom de la variable est préfixé avec **ANALYTICS_**. Lorsque la propriété JNDI et la variable d'environnement système sont définies toutes les deux, la variable d'environnement système est prioritaire. Par exemple, si la propriété JNDI **analytics/httpport** et la variable d'environnement système **ANALTYICS_httpport** sont définies toutes les deux, la valeur de **ANALYTICS_httpport** est utilisée.
+
+> **Important** : Actuellement, MobileFirst Analytics version 8.0 ne prend pas en charge le partage de services. Les événements de MobileFirst Server sont envoyés par défaut à une architecture à service exclusif. 
 
 #### Durée de vie des documents
 {: #document-time-to-live-ttl }

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Administration d'applications via la console MobileFirst Operations Console
-breadcrumb_title: Administration à l'aide de la console
+title: Administration d'applications via MobileFirst Operations Console
+breadcrumb_title: Administrating using the console
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

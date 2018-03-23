@@ -8,9 +8,9 @@ weight: 2
 {: #overview }
 Les composants {{ site.data.keys.mf_server_full }} suivants doivent stocker des données techniques dans une base de données :
 
-* Le service d'administration de {{ site.data.keys.mf_server }}
-* Le service Live Update de {{ site.data.keys.mf_server }}
-* Le service push de {{ site.data.keys.mf_server }}
+* Service d'administration de {{ site.data.keys.mf_server }}
+* Service Live Update de {{ site.data.keys.mf_server }}
+* Service push de {{ site.data.keys.mf_server }}
 * L'environnement d'exécution de {{ site.data.keys.product }}
 
 > **Remarque :** si plusieurs instances d'exécution sont installées avec une racine de contexte différente, chaque instance requiert son propre ensemble de tables.
@@ -102,7 +102,7 @@ La taille de page de la base de données doit être d'au moins 32768. La procéd
 
 1. Créez un utilisateur système, par exemple **utilisateurmfp**, dans un groupe d'administration DB2 tel que **DB2USERS**, à l'aide des commandes appropriées à votre système d'exploitation. Associez-lui un mot de passe, par exemple **utilisateurmfp**.
 2. Ouvrez un processeur de ligne de commande DB2 en tant qu'utilisateur disposant des droits **SYSADM** ou **SYSCTRL**.
-    * Sur les systèmes Windows, cliquez sur **Démarrer → IBM DB2 → Command Line Processor**.
+    * Sous Windows, cliquez sur **Démarrer → IBM DB2 → Interpréteur de commandes**.
     * Sur les systèmes Linux et UNIX, accédez à **~/sqllib/bin** et entrez `./db2`.
 3. Pour créer la base de données de {{ site.data.keys.mf_server }}, entrez des instructions SQL similaires à l'exemple ci-dessous.
 

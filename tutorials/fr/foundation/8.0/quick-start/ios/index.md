@@ -22,7 +22,7 @@ Cette démonstration présente un processus complet :
 #### Prérequis :
 {: #prerequisites }
 * Xcode
-* *Facultatif* - {{ site.data.keys.mf_cli }} ([téléchargement]({{site.baseurl}}/downloads))
+* *Facultatif* - {{ site.data.keys.mf_cli }}  ([téléchargement]({{site.baseurl}}/downloads))
 * *Facultatif* - Serveur {{ site.data.keys.mf_server }} autonome ([téléchargement]({{site.baseurl}}/downloads))
 
 ### 1. Démarrage du serveur {{ site.data.keys.mf_server }}
@@ -33,25 +33,25 @@ Si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-con
 ### 2. Création d'une application
 {: #2-creating-an-application }
 Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console }} en entrant l'URL `http://your-server-host:server-port/mfpconsole`. Dans le cas d'une exécution locale, entrez l'URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Le nom d'utilisateur et le mot de passe sont *admin/admin*.
- 
+
 1. Cliquez sur le bouton **Nouveau** en regard de l'option **Applications**
     * Sélectionnez la plateforme **iOS**
     * Entrez **com.ibm.mfpstarteriosobjectivec** ou **com.ibm.mfpstarteriosswift** en tant qu'**identificateur d'application** (en fonction de la structure d'applications téléchargée à l'étape suivante)
     * Entrez **1.0** dans la zone **Version**
     * Cliquez sur **Enregistrer l'application**
-    
+
     <img class="gifplayer" alt="Enregistrement d'une application" src="register-an-application-ios.png"/>
- 
+
 2. Cliquez sur le titre **Obtenir le code de démarrage** puis indiquez que vous souhaitez télécharger l'application exemple iOS Objective-C ou iOS Swift.
 
     <img class="gifplayer" alt="Téléchargement d'une application exemple" src="download-starter-code-ios.png"/>
-    
+
 ### 3. Edition d'une logique d'application
 {: #3-editing-application-logic }
 1. Ouvrez le projet Xcode en cliquant deux fois sur le fichier **.xcworkspace**.
 
 2. Sélectionnez le fichier **[racine-projet]/ViewController.m/swift** et collez le fragment de code suivant, en remplaçant la fonction `getAccessToken()` existante :
- 
+
    Dans Objective-C :
 
    ```objc
@@ -59,7 +59,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
    _testServerButton.enabled = NO;
    NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
    _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
-    
+
    NSLog(@"Testing Server Connection");
    [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@"" withCompletionHandler:^(AccessToken *token, NSError *error) {
         if (error != nil) {
@@ -70,10 +70,10 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
             _titleLabel.text = @"Yay!";
             _connectionStatusLabel.text = [NSString stringWithFormat:@"Connected to {{ site.data.keys.mf_server }}\n%@", serverURL];
             NSLog(@"Received the following access token value: %@", token.value);
-            
+
             NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/resource/greet/"];
             WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-            
+
             [request setQueryParameterValue:@"world" forName:@"name"];
             [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
                 if (error != nil){
@@ -90,19 +90,19 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
     }];
 }
    ```
-    
+
    Dans Swift :
-    
+
    ```swift
    @IBAction func getAccessToken(sender: AnyObject) {
         self.testServerButton.enabled = false
-        
+
         let serverURL = WLClient.sharedInstance().serverUrl()
-        
+
         connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
         print("Testing Server Connection")
         WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
-            
+
             if (error != nil) {
                 self.titleLabel.text = "Bummer..."
                 self.connectionStatusLabel.text = "Failed to connect to {{ site.data.keys.mf_server }}\n\(serverURL)"
@@ -111,10 +111,10 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
                 self.titleLabel.text = "Yay!"
                 self.connectionStatusLabel.text = "Connected to {{ site.data.keys.mf_server }}\n\(serverURL)"
                 print("Recieved the following access token value: " + token.value)
-                
+
                 let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
                 let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-                
+
                 request.setQueryParameterValue("world", forName: "name")
                 request.sendWithCompletionHandler { (response, error) -> Void in
                     if (error != nil){
@@ -125,7 +125,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
                     }
                 }
             }
-            
+
             self.testServerButton.enabled = true
         }
    }
@@ -136,7 +136,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
 
 Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
-        
+
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
    > Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
@@ -147,7 +147,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
    mfpdev adapter build
    ```
 
-3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**. 
+3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
 
     <img class="gifplayer" alt="Déploiement d'un adaptateur" src="create-an-adapter.png"/>   
 
@@ -156,10 +156,11 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 {: #5-testing-the-application }
 1. Dans Xcode, sélectionnez le fichier **mfpclient.plist** puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
-    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**.
-     
-    Par ailleurs, si vous avez installé l'interface {{ site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{ site.data.keys.mf_server }} distant est utilisé,  [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myBluemixServer`.
+    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
+    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes. 
 
+    Par ailleurs, si vous avez installé l'interface {{ site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{ site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myIBMCloudServer`.
+    
 2. Appuyez sur le bouton **Play**.
 
 <br clear="all"/>

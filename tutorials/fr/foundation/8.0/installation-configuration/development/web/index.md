@@ -20,7 +20,7 @@ Vous pouvez satisfaire les exigences dictées par la règle en appliquant l'une 
 - En traitant les ressources d'application Web depuis le serveur d'applications WebSphere de profil complet ou Liberty qui héberge {{ site.data.keys.mf_server }}.
 - En utilisant Node.js comme proxy pour rediriger les demandes d'application vers {{ site.data.keys.mf_server }}.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 - [Prérequis](#prerequisites)
 - [Utilisation du profil Liberty de WebSphere pour traiter les ressources d'application Web ](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
