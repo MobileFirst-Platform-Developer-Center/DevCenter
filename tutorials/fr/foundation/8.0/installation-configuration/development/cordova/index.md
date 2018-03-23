@@ -15,7 +15,7 @@ Avec des applications Cordova, vous pouvez utiliser l'éditeur de code de votre 
 
 ## Installation de l'interface de ligne de commande Cordova
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} prend en charge l'[interface de ligne de commande Cordova 6.x](https://www.npmjs.com/package/cordova) d'Apache.  
+{{ site.data.keys.product }} prend en charge l'[interface de ligne de commande Cordova 6.x](https://www.npmjs.com/package/cordova) ou version ultérieure d'Apache.  
 Pour procéder à l'installation :
 
 1. Téléchargez et installez [NodeJS](https://nodejs.org/en/).

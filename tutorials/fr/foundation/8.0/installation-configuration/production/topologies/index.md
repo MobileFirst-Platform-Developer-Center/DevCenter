@@ -9,7 +9,7 @@ weight: 3
 Les informations présentées ci-après décrivent les topologies de serveur possibles pour les composants {{ site.data.keys.mf_server }}, ainsi que les flots réseau disponibles.  
 Les composants sont déployés en fonction de la topologie de serveur que vous utilisez. Les flots réseau vous expliquent comment les composants communiquent entre eux et avec les appareils des utilisateurs finaux.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 
 * [Flots réseau entre les composants {{ site.data.keys.mf_server }}](#network-flows-between-the-mobilefirst-server-components)

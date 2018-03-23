@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administration d'applications via un terminal
-breadcrumb_title: Administration à l'aide d'un terminal
+breadcrumb_title: Administrating using terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -24,7 +24,7 @@ Exemple pour android : Ici nous définissons le type de validation sur `dynamic`
   mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp test android 1.0 set authenticity-validation dynamic
 ```
 >
-2.Pour réinitialiser les données à l'aide de la commande ci-desous, qui efface l'empreinte digitale de l'application :
+2.Pour réinitialiser les données à l'aide de la commande ci-dessous, qui efface l'empreinte digitale de l'application :
 ```bash
   mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
 ```

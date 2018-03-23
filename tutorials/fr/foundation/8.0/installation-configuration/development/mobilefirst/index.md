@@ -9,11 +9,11 @@ weight: 1
 {: #overview }
 {{ site.data.keys.product_full }} est constitué de plusieurs composants : les logiciels SDK de client, les archétypes d'adaptateur, les contrôles de sécurité et les outils d'authentification.
 
-Ces composants sont disponibles depuis des référentiels en ligne et peuvent être installés à l'aide de gestionnaires de package. Ces référentiels en ligne fournissent l'édition la plus récente de chaque composant. Un même composant peut également être téléchargé depuis {{ site.data.keys.mf_dev_kit }} pour une utilisation locale. Notez que la version disponible depuis {{ site.data.keys.mf_dev_kit_short }} est la version qui était disponible au moment de la publication de la génération de {{ site.data.keys.mf_dev_kit_short }}, et que vous devrez télécharger une nouvelle génération de {{ site.data.keys.mf_dev_kit_short }} pour pouvoir utiliser la version la plus récente. 
+Ces composants sont disponibles depuis des référentiels en ligne et peuvent être installés à l'aide de gestionnaires de package. Ces référentiels en ligne fournissent l'édition la plus récente de chaque composant. Un même composant peut également être téléchargé depuis {{ site.data.keys.mf_dev_kit }} pour une utilisation locale. Notez que la version disponible depuis {{ site.data.keys.mf_dev_kit_short }} est la version qui était disponible au moment de la publication de la génération de {{ site.data.keys.mf_dev_kit_short }}, et que vous devrez télécharger une nouvelle génération de {{ site.data.keys.mf_dev_kit_short }} pour pouvoir utiliser la version la plus récente.
 
 Lisez cette rubrique pour en savoir plus sur les composants de {{ site.data.keys.product }}.
 
-> Pour évaluer {{ site.data.keys.product }}, il suffit de démarrer une instance de {{ site.data.keys.mf_server }} dans Bluemix à l'aide du service Mobile Foundation Bluemix. Voir le tutoriel [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) pour des instructions. Vous pouvez aussi choisir d'installer {{ site.data.keys.mf_dev_kit_short }} pour une installation locale.
+> Pour évaluer {{ site.data.keys.product }}, il suffit de démarrer une instance de {{ site.data.keys.mf_server }} dans IBM Cloud à l'aide du service IBM Cloud Mobile Foundation. Voir le tutoriel [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) pour des instructions. Vous pouvez aussi choisir d'installer {{ site.data.keys.mf_dev_kit_short }} pour une installation locale.
 
 #### Aller à :
 {: #jump-to }
@@ -63,7 +63,7 @@ L'extension de fichier `.sh` est valable pour Mac et Linux et l'extension de fic
 Un développeur peut :
 
 - Enregistrer et déployer des applications et des adaptateurs
-- Télécharger des modèles de code de démarrage d'adaptateur et d'application native/Cordova, s'il le souhaite 
+- Télécharger des modèles de code de démarrage d'adaptateur et d'application native/Cordova, s'il le souhaite
 - Configurer les propriétés de sécurité et d'authentification d'une application
 - Gérer les applications :
     - Authenticité de l'application
@@ -102,7 +102,7 @@ Vous pouvez utiliser {{ site.data.keys.mf_cli }} en plus de {{ site.data.keys.mf
 * Les applications Cordova requièrent NodeJS et l'interface de ligne de commande Cordova. Pour en savoir plus, voir [Configuration de l'environnement de développement Cordova](../cordova).
 
     Vous pouvez utiliser l'éditeur de code de votre choix, par exemple Atom.io, Visual Studio Code, Eclipse, IntelliJ ou d'autres, afin d'implémenter des applications et des adaptateurs.  
-    
+
 * Les applications natives requièrent Xcode, Android Studio ou Visual Studio. Pour en savoir plus, voir [Configuration de l'environnement de développement - iOS/Android/Windows](../).
 
 ### Adaptateurs
@@ -112,4 +112,3 @@ Les adaptateurs requièrent l'installation d'Apache Maven. Voir la catégorie [A
 ## Tutoriels à suivre ensuite
 {: #tutorials-to-follow-next }
 Visitez la page [Tous les tutoriels](../../../all-tutorials/) et sélectionnez une catégorie de tutoriels à suivre ensuite.
-

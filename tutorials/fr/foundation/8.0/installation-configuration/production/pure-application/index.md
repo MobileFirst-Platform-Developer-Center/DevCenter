@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Déploiement de MobileFirst Server sur IBM PureApplication System
-breadcrumb_title: Installation de Pure Application System
+breadcrumb_title: Installing Pure Application System
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -11,7 +11,7 @@ weight: 10
 
 {{ site.data.keys.product }}, utilisé conjointement avec IBM PureApplication System et IBM PureApplication Service on SoftLayer, offre un environnement simple et intuitif aux développeurs et aux administrateurs pour développer des applications mobiles, les tester et les déployer sur le cloud. Cette version d'{{ site.data.keys.mf_system_pattern_full }} fournit la prise en charge des artefacts et de l'environnement d'exécution de {{ site.data.keys.product }} pour les technologies PureApplication Virtual System Pattern qui sont incluses dans les versions les plus récentes d'IBM PureApplication System et d'IBM PureApplication Service on SoftLayer. Le canevas de système virtuel classique était pris en charge dans les versions précédentes d'IBM PureApplication System.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 * [Installation de {{ site.data.keys.mf_system_pattern }}](#installing-mobilefirst-system-pattern)
 * [Exigences en matière d'octroi de licence de jeton pour {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern)
@@ -36,7 +36,7 @@ weight: 10
 * Des modèles prédéfinis vous permettent de générer facilement des canevas pour les topologies de déploiement de {{ site.data.keys.mf_server }} les plus classiques. Exemples de topologies :  
     * Profil Liberty d'IBM WebSphere Application Server à noeud unique
     * Profil Liberty d'IBM WebSphere Application Server à plusieurs noeuds
-    * Profil complet d'IBM WebSphere Application Server à noeud unique
+    * Noeud unique de profil complet d'IBM WebSphere Application Server
     * Profil complet d'IBM WebSphere Application Server à plusieurs noeuds
     * Clusters de serveurs WebSphere Application Server Network Deployment
     * Topologies de déploiement d'{{ site.data.keys.mf_app_center }}, telles que :
@@ -189,7 +189,7 @@ De plus, vous devez connaître les informations suivantes concernant votre syst�
 
 * Nom de système hôte qualifié complet ou adresse IP de votre système Rational License Key Server
 * Port de démon de gestionnaire de licence (**lmgrd**)
-* Port de démon de fournisseur (**ibmratl**)
+* Port (**ibmratl**) de démon de fournisseur
 
 Si un pare-feu existe entre Rational License Key Server et PureApplication System, assurez-vous que les ports de démon sont ouverts dans votre pare-feu.
 Le déploiement de {{ site.data.keys.system_pattern }} échoue si le serveur de clé de licence ne peut pas être contacté ou si le nombre de jetons de licence disponibles est insuffisant.
@@ -1522,7 +1522,7 @@ Si vous prévoyez d'utiliser un référentiel LDAP pour protéger Analytics Cons
 {{ site.data.keys.mf_system_pattern }} comporte des modèles prédéfinis vous permettant de générer des canevas pour la plupart des topologies de déploiement classiques.  
 Les modèles disponibles sont les suivants :
 
-#### Accéder à
+#### Aller à
 {: #jump-to-1 }
 * [Modèle {{ site.data.keys.product }} (noeud unique Liberty)](#mobilefirst-foundation-liberty-single-node-template)
 * [Modèle {{ site.data.keys.product }} (parc de serveurs Liberty)](#mobilefirst-foundation-liberty-server-farm-template)
@@ -1638,7 +1638,7 @@ Le modèle {{ site.data.keys.mf_app_center }} (noeud unique WAS) est composé de
 {{ site.data.keys.mf_system_pattern }} fournit des packages de script qui constituent des blocs de construction permettant de composer diverses topologies de canevas.  
 Les sections ci-après répertorient et décrivent les paramètres pour chacun des packages de script.
 
-#### Accéder à
+#### Aller à
 {: #jump-to-2 }
 * [MFP Administration DB](#mfp-administration-db)
 * [MFP Analytics](#mfp-analytics)
