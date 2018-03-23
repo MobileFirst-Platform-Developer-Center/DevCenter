@@ -1,18 +1,18 @@
 ---
 layout: tutorial
-title: IBM Bluemix Kubernetes クラスター上の MobileFirst Appcenter をセットアップする
-breadcrumb_title: Kubernetes クラスター上の Appcenter
+title: IBM Cloud Kubernetes クラスター上の MobileFirst Application Center のセットアップ
+breadcrumb_title: Application Center on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-下記の指示に従って、{{ site.data.keys.mf_app_center }} インスタンスを IBM Bluemix 上で構成します。これは、次のような手順で行います。
+下記の指示に従って、{{ site.data.keys.mf_app_center }} インスタンスを IBM Cloud 上で構成します。 これは、次のような手順で行います。
 
 * タイプ: 標準 (有料クラスター) の Kubernetes クラスターを作成します。
-* 以下の必要なツールを使用して、ホスト・コンピューターをセットアップします。Docker、Cloud Foundry CLI ( cf )、Bluemix CLI ( bx )、Container Service Plugin for Bluemix CLI ( bx cs )、Container Registry Plugin for Bluemix CLI ( bx cr )、Kubernetes CLI (kubectl) 
-* {{ site.data.keys.mf_app_center }} Docker イメージをビルドし、それを Bluemix リポジトリーにプッシュします。
+* 以下の必要なツールを使用して、ホスト・コンピューターをセットアップします。Docker、Cloud Foundry CLI ( cf )、IBM Cloud CLI ( bx )、Container Service Plugin for IBM Cloud CLI ( bx cs )、Container Registry Plugin for IBM Cloud CLI ( bx cr )、Kubernetes CLI (kubectl)
+* {{ site.data.keys.mf_app_center }} Docker イメージをビルドし、それを IBM Cloud リポジトリーにプッシュします。
 * 最後に、Kubernetes クラスター上で Docker イメージを実行します。
 
 >**注:**  
@@ -22,46 +22,46 @@ weight: 1
 
 #### ジャンプ先:
 {: #jump-to }
-* [Bluemix でアカウントを登録する](#register-an-account-on-bluemix)
+* [IBM Cloud でアカウントを登録する](#register-an-account-on-ibmcloud)
 * [ホスト・マシンをセットアップする](#set-up-your-host-machine)
-* [IBM Bluemix Container Service を使用して Kubernetes クラスターを作成およびセットアップする](#setup-kube-cluster)
+* [IBM Cloud Container Service を使用して Kubernetes クラスターを作成およびセットアップする](#setup-kube-cluster)
 * [{{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the-ibm-mfpf-container-8000-archive)
 * [前提条件](#prerequisites)
 * [IBM Containers を使用して Kubernetes クラスター上の {{ site.data.keys.mf_app_center }} をセットアップする](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
-* [Bluemix からのコンテナーの削除](#removing-the-container-from-bluemix)
-* [Bluemix からの Kubernetes デプロイメントの削除](#removing-kube-deployments)
-* [Bluemix からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-bluemix)
+* [IBM Cloud からのコンテナーの削除](#removing-the-container-from-ibmcloud)
+* [IBM Cloud からの Kubernetes デプロイメントの削除](#removing-kube-deployments)
+* [IBM Cloud からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-ibmcloud)
 
-## Bluemix でアカウントを登録する
-{: #register-an-account-on-bluemix }
-まだアカウントをお持ちでない場合は、[Bluemix Web サイト](https://bluemix.net)にアクセスし、**「無料で開始」**、または**「登録」**をクリックします。次のステップに進むため、登録フォームに記入する必要があります。
+## IBM Cloud でアカウントを登録する
+{: #register-an-account-on-ibmcloud }
+まだアカウントをお持ちでない場合は、[IBM Cloud Web サイト](https://bluemix.net)にアクセスし、**「無料で開始」**、または**「登録」**をクリックします。 次のステップに進むため、登録フォームに記入する必要があります。
 
-### Bluemix ダッシュボード
-{: #the-bluemix-dashboard }
-Bluemix にサインインすると Bluemix ダッシュボードが表示され、アクティブな Bluemix **スペース**の概略が示されます。デフォルトでは、この作業領域の名前は「*dev*」です。必要に応じて、複数の作業領域/スペースを作成できます。
+### IBM Cloud ダッシュボード
+{: #the-ibmcloud-dashboard }
+IBM Cloud にサインインすると IBM Cloud ダッシュボードが表示され、アクティブな IBM Cloud **スペース**の概略が示されます。 デフォルトでは、この作業領域の名前は「*dev*」です。 必要に応じて、複数の作業領域/スペースを作成できます。
 
 ## ホスト・マシンをセットアップする
 {: #set-up-your-host-machine }
 コンテナーとイメージを管理するには、以下のツールをインストールする必要があります。
 * Docker
-* Bluemix CLI (bx)
-* Container Service Plugin for Bluemix CLI ( bx cs )
-* Container Registry Plugin for Bluemix CLI ( bx cr )
+* IBM Cloud CLI (bx)
+* Container Service Plugin for IBM Cloud CLI ( bx cs )
+* Container Registry Plugin for IBM Cloud CLI ( bx cr )
 * Kubernetes CLI (kubectl)
 
-[前提条件の CLI をセットアップする手順](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)については、Bluemix 資料を参照してください。
+[前提条件の CLI をセットアップする手順](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)については、IBM Cloud 資料を参照してください。
 
-## IBM Bluemix Container Service を使用して Kubernetes クラスターを作成およびセットアップする
+## IBM Cloud Container Service を使用して Kubernetes クラスターを作成およびセットアップする
 {: #setup-kube-cluster}
-[Bluemix 上の Kubernetes クラスターをセットアップする](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)には、Bluemix の資料を参照してください。
+[IBM Cloud 上の Kubernetes クラスターをセットアップする](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)には、IBM Cloud の資料を参照してください。
 
 >**注:** {{ site.data.keys.mf_bm_short }} のデプロイには、Kubernetes クラスター・タイプ: 標準 (有料クラスター) が必要です。
 
 ## {{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
 {: #download-the-ibm-mfpf-container-8000-archive}
-Bluemix Container を使用して、{{ site.data.keys.mf_app_center }} を Kubernetes クラスターとしてセットアップするには、まず、後で Bluemix にプッシュするイメージを作成する必要があります。<br/>
+IBM Cloud Container を使用して、{{ site.data.keys.mf_app_center }} を Kubernetes クラスターとしてセットアップするには、まず、後で IBM Cloud にプッシュするイメージを作成する必要があります。<br/>
 IBM Containers 上の MobileFirst Server 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。<br/>
-Fix Central から、最新の暫定修正をダウンロードします。Kubernetes サポートは、iFix **8.0.0.0-IF201708220656** 以降で使用可能です。
+Fix Central から、最新の暫定修正をダウンロードします。 Kubernetes サポートは、iFix **8.0.0.0-IF201708220656** 以降で使用可能です。
 
 このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、Kubernetes 上で {{ site.data.keys.mf_app_center }} をビルドしてデプロイするためのファイル (bmx-kubernetes) が含まれています。
 
@@ -77,25 +77,25 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
             <div class="panel-body">
                 <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes フォルダー</h4>
-                <p>IBM Bluemix Container Service を使用して Kubernetes クラスターにデプロイするために必要な、カスタマイズ・ファイルとスクリプトが含まれています。</p>
+                <p>IBM Cloud Container Service を使用して Kubernetes クラスターにデプロイするために必要な、カスタマイズ・ファイルとスクリプトが含まれています。</p>
 
                 <h4>Dockerfile-mfp-appcenter</h4>
 
                 <ul>
                     <li><b>Dockerfile-mfp-appcenter</b>: {{ site.data.keys.mf_app_center }} イメージをビルドするのに必要なコマンドがすべて含まれているテキスト文書です。</li>
-                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン、{{ site.data.keys.mf_app_center }} イメージのビルド、およびイメージのプッシュと Bluemix での実行に必要なスクリプトも含まれます。スクリプトは、対話式に実行することも、後述のように、構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
+                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。 また、IBM Cloud へのログイン、{{ site.data.keys.mf_app_center }} イメージのビルド、およびイメージのプッシュと IBM Cloud での実行に必要なスクリプトも含まれます。 スクリプトは、対話式に実行することも、後述のように、構成ファイルを事前に設定することで実行することもできます。 カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。 スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
                     <li><b>usr-mfp-appcenter</b> フォルダー:
                         <ul>
-                            <li><b>bin</b> フォルダー: コンテナーの始動時に実行されるスクリプト・ファイル (mfp-appcenter-init) が入っています。実行する独自のカスタム・コードを追加できます。</li>
+                            <li><b>bin</b> フォルダー: コンテナーの始動時に実行されるスクリプト・ファイル (mfp-appcenter-init) が入っています。 実行する独自のカスタム・コードを追加できます。</li>
                             <li><b>config</b> フォルダー: {{ site.data.keys.mf_app_center }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>
-                            <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
+                            <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。 リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
                             <li><b>ltpa.xml</b> - LTPA 鍵とそのパスワードを定義する構成ファイル。</li>
                             <li><b>appcentersqldb.xml</b> - DB2 データベースまたは dashDB データベースに接続するための JDBC データ・ソース定義。</li>
-                            <li><b>registry.xml</b> - ユーザー・レジストリー構成。basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
+                            <li><b>registry.xml</b> - ユーザー・レジストリー構成。 basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。 basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
                             <li><b>tracespec.xml</b> - デバッグ・レベルだけでなく、ロギング・レベルを有効にするトレース仕様。</li>
                         </ul>
                     </li>
-                    <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。このフォルダー内のファイルは、コンテナーの <b>JAVA_HOME/jre/lib/security/</b> フォルダーにコピーされます。</li>
+                    <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。 このフォルダー内のファイルは、コンテナーの <b>JAVA_HOME/jre/lib/security/</b> フォルダーにコピーされます。</li>
                     <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
 
@@ -119,12 +119,12 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPPORT</td>
                                             <td>9080*</td>
-                                            <td>クライアント HTTP 要求に使用されるポート。このポートを無効にする場合は、-1 を使用します。</td>
+                                            <td>クライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>SSL (HTTPS) で保護されたクライアント HTTP 要求に使用されるポート。このポートを無効にする場合は、-1 を使用します。</td>
+                                            <td>SSL (HTTPS) で保護されたクライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_ROOT	</td>
@@ -167,7 +167,7 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 ## 前提条件
 {: #prerequisites }
 
-この手順を実行するには、操作者に、Kubernetes の実用的知識が必要です。詳しくは、[Kubernetes 資料](https://kubernetes.io/docs/concepts/)を参照してください。
+この手順を実行するには、操作者に、Kubernetes の実用的知識が必要です。 詳しくは、[Kubernetes 資料](https://kubernetes.io/docs/concepts/)を参照してください。
 
 
 ## IBM Containers を使用して Kubernetes クラスター上の {{ site.data.keys.mf_app_center }} をセットアップする
@@ -179,7 +179,7 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 
 >**注:** スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
 
-対話式に実行する場合、指定された引数のコピーがディレクトリー: `./recorded-args/` に保存されます。このため、初めて対話モードを使用したあと、その後のデプロイメントの参照としてプロパティー・ファイルを再使用できます。
+対話式に実行する場合、指定された引数のコピーがディレクトリー: `./recorded-args/` に保存されます。 このため、初めて対話モードを使用したあと、その後のデプロイメントの参照としてプロパティー・ファイルを再使用できます。
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
@@ -191,22 +191,22 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
+                <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。 以下のファイルに引数値を入力します。<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_API_URL - </b>デプロイメントを行う地理的な場所や地域。<br>
+                    <li><b>IBM_CLOUD_API_URL - </b>デプロイメントを行う地理的な場所や地域。<br>
                       <blockquote>例: <i>api.ng.bluemix.net</i> は米国地域用、<i>api.eu-de.bluemix.net</i> はドイツ用、<i>api.au-syd.bluemix.net</i> はシドニー用。</blockquote>
                     </li>
-                    <li><b>BLUEMIX_ACCOUNT_ID - </b>ご使用のアカウント ID。これは、英数字で、例えば <i>a1b1b111d11e1a11d1fa1cc999999999</i> などです。<br>	コマンド <code>bx target</code> を使用してアカウント ID を取得します。</li>
-                    <li><b>BLUEMIX_USER - </b>ご使用の Bluemix ユーザー名 (E メール)。</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>ご使用の Bluemix パスワード。</li>
-                    <li><b>BLUEMIX_ORG - </b>ご使用の Bluemix 組織名。</li>
-                    <li><b>BLUEMIX_SPACE - </b>ご使用の Bluemix スペース (前述のとおり)。</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>ご使用のアカウント ID。これは、英数字で、例えば <i>a1b1b111d11e1a11d1fa1cc999999999</i> などです。<br>	コマンド <code>bx target</code> を使用してアカウント ID を取得します。</li>
+                    <li><b>IBM_CLOUD_USER - </b>ご使用の IBM Cloud ユーザー名 (E メール)。</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>ご使用の IBM Cloud パスワード。</li>
+                    <li><b>IBM_CLOUD_ORG - </b>ご使用の IBM Cloud 組織名。</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>ご使用の IBM Cloud スペース (前述のとおり)。</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
                 {{ site.data.keys.mf_app_center }} では、外部の <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on cloud</i></a> インスタンスが必要です。<br/>
-                <blockquote><b>注:</b> 独自の DB2 データベースを使用することもできます。Bluemix Kubenetes クラスターは、データベースに接続するように構成する必要があります。</blockquote>
+                <blockquote><b>注:</b> 独自の DB2 データベースを使用することもできます。 IBM Cloud Kubernetes クラスターは、データベースに接続するように構成する必要があります。</blockquote>
                 DB2 インスタンスのセットアップが完了したら、必要な引数を入力します。
                 <ul>
                     <li><b>DB_TYPE</b> - <i>dashDB</i> (DB2 on Cloud を使用している場合) または <i>DB2</i> (独自の DB2 データベースを使用している場合)。</li>
@@ -222,12 +222,12 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
                       <ul><li><b>APPCENTER_DB_SRV_NAME</b> - appcenter データを保管するための dashDB サービス・インスタンス名。</li>
                       </ul>
                     </li>
-                    <li><b>APPCENTER_SCHEMA_NAME</b> - appcenter データ用のスキーマ名。デフォルトは <i>APPCNTR</i> です。</li>
+                    <li><b>APPCENTER_SCHEMA_NAME</b> - appcenter データ用のスキーマ名。 デフォルトは <i>APPCNTR</i> です。</li>
                     <blockquote><b>注:</b> DB2 データベース・サービス・インスタンスが多数のユーザーや複数の {{ site.data.keys.mf_app_center }} デプロイメントによって共有されている場合は、必ず固有のスキーマ名を指定してください。</blockquote>
                 </ul><br/>
                 <h4>prepareappcenter.properties</h4>
                 <ul>
-                  <li><b>SERVER_IMAGE_TAG</b> - 当該イメージのタグ。<em>registry-url/namespace/image:tag</em> の形式でなければなりません。</li>
+                  <li><b>SERVER_IMAGE_TAG</b> - 当該イメージのタグ。 <em>registry-url/namespace/image:tag</em> の形式でなければなりません。</li>
                   <blockquote>例: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>Docker レジストリーの名前空間をまだ作成していない場合は、次のいずれかのコマンドを使用してレジストリーの名前空間を作成します。<br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
@@ -245,10 +245,10 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。非対話モードでの実行を選択した場合は、コマンド・ライン引数のリストも使用可能です。</p>
+            <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 非対話モードでの実行を選択した場合は、コマンド・ライン引数のリストも使用可能です。</p>
 
             <ol>
-                <li><b>initenv.sh – Bluemix へのログイン</b><br />
+                <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
                     <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_app_center }} をビルドおよび実行する環境を作成します。
                     <b>対話モード</b>
 {% highlight bash %}
@@ -260,7 +260,7 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 {% endhighlight %}
                 </li>
                 <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} データベースの準備</b><br />
-                    <b>prepareappcenterdbs.sh</b> スクリプトを使用して、DB2 データベース・サービスが含まれた {{ site.data.keys.mf_app_center }} を構成します。DB2 サービスのサービス・インスタンスは、手順 1 でログインした組織およびスペースで使用可能でなければなりません。以下を実行します。
+                    <b>prepareappcenterdbs.sh</b> スクリプトを使用して、DB2 データベース・サービスが含まれた {{ site.data.keys.mf_app_center }} を構成します。 DB2 サービスのサービス・インスタンスは、手順 1 でログインした組織およびスペースで使用可能でなければなりません。以下を実行します。
                     <b>対話モード</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
@@ -270,15 +270,15 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
-                <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
-                      このステップは、DB2 サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
+                <li><b>initenv.sh(Optional) – IBM Cloud へのログイン</b><br />
+                      このステップは、DB2 サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。 この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-</li>
+                </li>
                 <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} イメージの準備</b><br />
-                    {{ site.data.keys.mf_app_center }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>bx cr image-list</code><br/>
+                    {{ site.data.keys.mf_app_center }} イメージをビルドし、これを IBM Cloud リポジトリーにプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。 IBM Cloud リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>bx cr image-list</code><br/>
                     リストには、イメージ名、作成日、および ID が表示されます。<br/>
                     <b>対話モード</b>
 {% highlight bash %}
@@ -289,18 +289,18 @@ Fix Central から、最新の暫定修正をダウンロードします。Kuber
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
                 </li>
-                <li>Bluemix Container Service を使用して、{{ site.data.keys.mf_app_center }} を Kubernetes クラスター上の Docker コンテナーにデプロイします。
+                <li>IBM Cloud Container Service を使用して、{{ site.data.keys.mf_app_center }} を Kubernetes クラスター上の Docker コンテナーにデプロイします。
                 <ol>
                   <li>ターミナル・コンテキストをクラスターに設定します。<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  クラスター名を知るには、次のコマンドを実行します。<br/><code>bx cs clusters</code><br/>
+                  クラスター名を知るには、次のコマンドを実行します。 <br/><code>bx cs clusters</code><br/>
                   この出力に、環境変数を設定するコマンドとして構成ファイルへのパスが表示されます。例えば次のとおりです。<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
                   <em>my-cluster</em> をご使用のクラスター名に置き換えて上記のコマンドをコピーして貼り付けて、ターミナルに環境変数を設定し、<b>Enter</b> を押します。
                   </li>
                   <li><b>入口ドメイン</b>を取得するには、次のコマンドを実行します。<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
-                   入口ドメインをメモします。TLS を構成する必要がある場合は、<b>入口秘密</b>をメモします。</li>
-                  <li>Kubernetes デプロイメントを作成します。<br/>yaml ファイル <b>args/mfp-deployment-appcenter.yaml</b> を編集して、詳細を設定します。<em>kubectl</em> コマンドを実行する前に、すべての変数をその値に置き換える必要があります。<br/>
+                   入口ドメインをメモします。 TLS を構成する必要がある場合は、<b>入口秘密</b>をメモします。</li>
+                  <li>Kubernetes デプロイメントを作成します。<br/>yaml ファイル <b>args/mfp-deployment-appcenter.yaml</b> を編集して、詳細を設定します。 <em>kubectl</em> コマンドを実行する前に、すべての変数をその値に置き換える必要があります。<br/>
                   <b>./args/mfp-deployment-appcenter.yaml</b> には次のデプロイメントが含まれています。
                   <ul>
                     <li>1024 MB のメモリーと 1Core CPU で、1 個のインスタンス (レプリカ) で構成される {{ site.data.keys.mf_app_center }} の Kubernetes デプロイメント。</li>
@@ -354,40 +354,40 @@ Before you apply an interim fix, back up your existing configuration files. The 
 -->
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Bluemix からのコンテナーの削除
-{: #removing-the-container-from-bluemix }
-Bluemix からコンテナーを削除する場合、レジストリーからイメージ名も削除する必要があります。  
-次のコマンドを実行して、Bluemix からコンテナーを削除します。
+## IBM Cloud からのコンテナーの削除
+{: #removing-the-container-from-ibmcloud }
+IBM Cloud からコンテナーを削除する場合、レジストリーからイメージ名も削除する必要があります。  
+次のコマンドを実行して、IBM Cloud からコンテナーを削除します。
 
 1. `cf ic ps` (現在実行中のコンテナーをリストします)
 2. `cf ic stop container_id` (コンテナーを停止します)
 3. `cf ic rm container_id` (コンテナーを削除します)
 
-以下の cf ic コマンドを実行して、Bluemix レジストリーからイメージ名を削除します。
+以下の cf ic コマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 
 1. `cf ic images` (レジストリー内のイメージをリストします)
 2. `cf ic rmi image_id` (レジストリーからイメージを削除します)
 
-## Bluemix からの Kubernetes デプロイメントの削除
+## IBM Cloud からの Kubernetes デプロイメントの削除
 {: #removing-kube-deployments}
 
-次のコマンドを実行して、デプロイされたインスタンスを Bluemix Kubernetes クラスターから削除します。
+次のコマンドを実行して、デプロイされたインスタンスを IBM Cloud Kubernetes クラスターから削除します。
 
 `kubectl delete -f mfp-deployment-appcenter.yaml` (yaml で定義されたすべての Kubernetes タイプを削除します)
 
-以下のコマンドを実行して、Bluemix レジストリーからイメージ名を削除します。
+以下のコマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 ```bash
 bx cr image-list (レジストリー内のイメージをリストします)
 bx cr image-rm image-name (レジストリーからイメージを削除します)
 ```
 
-## Bluemix からのデータベース・サービス構成の削除
-{: #removing-the-database-service-configuration-from-bluemix }
-{{ site.data.keys.mf_app_center }} イメージの構成時に **prepareappcenterdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_app_center }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
+## IBM Cloud からのデータベース・サービス構成の削除
+{: #removing-the-database-service-configuration-from-ibmcloud }
+{{ site.data.keys.mf_app_center }} イメージの構成時に **prepareappcenterdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_app_center }} に必要な構成およびデータベース・テーブルが作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
-Bluemix からデータベース・サービス構成を削除するには、Bluemix ダッシュボードを使用して、以下の手順を実行します。
+IBM Cloud からデータベース・サービス構成を削除するには、IBM Cloud ダッシュボードを使用して、以下の手順を実行します。
 
-1. Bluemix ダッシュボードから、使用した DB2 on Cloud サービスを選択します。**prepareappcenterdbs.sh** スクリプトの実行時にパラメーターとして指定した DB2 サービス名を選択します。
+1. IBM Cloud ダッシュボードから、使用した DB2 on Cloud サービスを選択します。 **prepareappcenterdbs.sh** スクリプトの実行時にパラメーターとして指定した DB2 サービス名を選択します。
 2. 選択した DB2 サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、DB2 コンソールを「起動」します。
-3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareappcenterdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
-4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。Bluemix からデータベース構成が削除されます。
+3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。 スキーマ名は、**prepareappcenterdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
+4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。 IBM Cloud からデータベース構成が削除されます。
