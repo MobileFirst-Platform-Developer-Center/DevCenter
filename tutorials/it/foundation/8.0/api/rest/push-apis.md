@@ -1,10 +1,8 @@
 ---
-layout: redirect
-#layout: tutorial
-#title: REST API for the MobileFirst Server push service
-#breadcrumb_title: Push service
-#weight: 3
-new_url: /tutorials/en/foundation/8.0/api/rest/push-apis/
+layout: tutorial
+title: REST API for the MobileFirst Server push service
+breadcrumb_title: Push service
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -15,4 +13,6 @@ The Push service on the {{ site.data.keys.mf_server }} is exposed over a REST AP
 
 This REST API endpoint is protected by OAuth which requires the clients to be confidential clients and also possess the required access scopes in their OAuth access tokens that is passed by a designated HTTP header.
 
-> [Click to view](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) the REST API reference for the Push service.
+## API Reference
+{: #api-reference }
+<iframe frameBorder="1" border="1" width="100%" height="500px" src="../../../../../../../../api-ref/rest-push-api-docs/html/refrest-push-service-api-docs/html/overview.html"></iframe>
