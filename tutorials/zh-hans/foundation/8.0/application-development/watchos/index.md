@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 针对 Apple watchOS 开发
-breadcrumb_title: watchOS 2 和 watchOS 3
+breadcrumb_title: watchOS 2, watchOS 3
 relevantTo: [ios]
 weight: 13
 ---

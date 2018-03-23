@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 使用 MobileFirst CLI 管理 MobileFirst 工件
-breadcrumb_title: 使用 MobileFirst CLI
+breadcrumb_title: Using the MobileFirst CLI
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
@@ -44,7 +44,7 @@ node -v
 v6.11.1
 ```
 
-> **注：****node.js** 的最低受支持版本为 **4.2.3**。另外，**node** 和 **npm** 包发展很快，MobileFirst CLI 可能无法在所有版本的 **node** 和 **npm**（包括最新版本）上都能完全发挥作用。要使 CLI 能够正常运行，请确保 **node** 的版本为 **6.11.1**，**npm** 的版本为 **3.10.10**。
+> **注：****node.js** 的最低受支持版本为 **4.2.3**。 另外，**node** 和 **npm** 包发展很快，MobileFirst CLI 可能无法在所有版本的 **node** 和 **npm**（包括最新版本）上都能完全发挥作用。 要使 CLI 能够正常运行，请确保 **node** 的版本为 **6.11.1**，**npm** 的版本为 **3.10.10**。
 
 ## 安装 {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
@@ -171,7 +171,7 @@ mfpdev server add
 ```
 
 遵循交互式提示，提供服务器的名称、服务器 URL 以及用户/密码凭证。  
-例如，要添加正在 Mobile Foundation Bluemix 服务上运行的 {{ site.data.keys.mf_server }}，可执行以下操作：
+例如，要添加正在 Mobile Foundation IBM Cloud 服务上运行的 {{ site.data.keys.mf_server }}，可执行以下操作：
 
 ```bash
 $ mfpdev server add
@@ -294,7 +294,7 @@ mfpdev app config
     > **示例用例：**要向具有特定地址的 {{ site.data.keys.mf_server }} 注册应用程序，但还让应用程序连接到不同的服务器地址，例如 DataPower 设备：
     >
     > 1. 运行 `mfpdev app register` 以在期望的 {{ site.data.keys.mf_server }} 地址中注册应用程序。
-    > 2. 运行 `mfpdev app config` 并更改 **server** 属性值以与 DataPower 设备的地址匹配。您还可以在**直接方式**下运行此命令：`mfpdev app config server http(s)://server-ip-or-host:port`。
+    > 2. 运行 `mfpdev app config` 并更改 **server** 属性值以与 DataPower 设备的地址匹配。 您还可以在**直接方式**下运行此命令：`mfpdev app config server http(s)://server-ip-or-host:port`。
 
 * 为“直接更新”真实性功能设置公用密钥
 * 设置应用程序缺省语言（缺省值为英语 (en)）

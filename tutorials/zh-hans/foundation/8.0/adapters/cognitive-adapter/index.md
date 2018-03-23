@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 针对 Watson 认知服务的适配器
-breadcrumb_title: 针对 Watson 服务的适配器
+breadcrumb_title: Adapters for Watson services
 relevantTo: [ios,android,cordova]
 weight: 11
 ---
@@ -9,9 +9,9 @@ weight: 11
 ## 概述
 {: #overview }
 
-Watson on Bluemix 使您能够访问现今可用的最广泛范围的认知技术，以便快速安全地构建智慧的应用程序。 分析图和视频以了解情绪以及从文本中抽取关键字和实体是 Watson 服务启用的部分功能。
+Watson on IBM Cloud 使您能够访问现今可用的最广泛范围的认知技术，以便快速安全地构建智慧的应用程序。分析图和视频以了解情绪以及从文本中抽取关键字和实体是 Watson 服务启用的部分功能。
 
-Watson 在认知计算方面提供更多功能。 自然语言理解、视觉识别和发现可揭示非结构化数据中的洞察，能够改革运营和实现行业转型。 在[此处](https://www.ibm.com/watson/developercloud/)了解有关 Bluemix 上 Watson 认知服务的更多信息。
+Watson 在认知计算方面提供更多功能。 自然语言理解、视觉识别和发现可揭示非结构化数据中的洞察，能够改革运营和实现行业转型。 在[此处](https://www.ibm.com/watson/developercloud/)了解有关 IBM Cloud 上 Watson 认知服务的更多信息。
 
 {{ site.data.keys.product }} 适配器用于执行任何必要的服务器端逻辑，并从后端系统检索信息并将信息传输到客户机应用程序和云服务。 {{ site.data.keys.product }} 现在为一些 Watson 认知服务提供适配器。
 
