@@ -41,6 +41,9 @@ APIs for native Android applications.
 * **[Client-side push API](java/push)**  
     You can use Java push API to develop apps for the Android environment.
 
+* **[Client side JSONStore API](java/store)**  
+    You can use JSONStore API to work with the store for the Android environment.
+
 ### C Sharp
 {: #c-sharp }
 APIs for native Windows 10 UWP and Windows 8 Universal applications.
