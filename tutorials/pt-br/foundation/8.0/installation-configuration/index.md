@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Instalação e Configuração
+title: Instalação e configuração
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -8,11 +8,27 @@ weight: 3
 {: #overview }
 O {{ site.data.keys.product_full }} fornece ferramentas de desenvolvimento e componentes do lado do servidor que podem ser instalados no local ou implementados em nuvem para uso de teste ou produção. Revise os tópicos de instalação apropriados para seu cenário de instalação.
 
-### Instalando um ambiente de desenvolvimento
+### Configurando um Ambiente de Desenvolvimento
 {: #installing-a-development-environment }
-Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use o serviço [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) para iniciar.
+Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use os serviços [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) para começar.
 
-* [Configurar o ambiente de desenvolvimento do MobileFirst](development/mobilefirst/)
+**Usando o {{ site.data.keys.mf_dev_kit }}**
+{: #using-the-dev-kit }
+
+O {{ site.data.keys.mf_dev_kit }} inclui tudo o que é necessário para executar e depurar aplicativos móveis em uma estação de trabalho pessoal. Para desenvolver um aplicativo usando o {{ site.data.keys.mf_dev_kit }}, siga as instruções do tutorial [Configurando o ambiente de desenvolvimento do MobileFirst](development/mobilefirst).
+
+**Usando o {{ site.data.keys.mf_bm }}**
+{: #using-mf-bluemix }
+
+O serviço {{ site.data.keys.mf_bm }} fornece uma funcionalidade semelhante à do {{ site.data.keys.mf_dev_kit }}, no entanto, o serviço é executado no IBM Cloud.
+
+**Configurando o ambiente de desenvolvimento para aplicativos {{ site.data.keys.product }}**
+{: #setting-dev-env-mf-apps }
+
+O {{ site.data.keys.product }} fornece uma grande flexibilidade a respeito das plataformas e ferramentas que podem ser usadas para desenvolver aplicativos {{ site.data.keys.product }}. No entanto, algumas configurações básicas são necessárias para permitir que as ferramentas escolhidas interajam com o {{ site.data.keys.product }}.  
+
+Selecione a partir dos seguintes links para configurar o ambiente de desenvolvimento correspondente à abordagem de desenvolvimento que será usada pelo aplicativo:
+
 * [Configurar o ambiente de desenvolvimento do Cordova](development/cordova)
 * [Configurar o ambiente de desenvolvimento do iOS](development/ios)
 * [Configurar o ambiente de desenvolvimento do Android](development/android)
@@ -20,42 +36,62 @@ Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móv
 * [Configurar o ambiente de desenvolvimento do Xamarin](development/xamarin)
 * [Configurar o ambiente de desenvolvimento da Web](development/web)
 
-### Instalando um servidor de teste ou de produção no local
+### Configurando localmente um servidor de teste ou de produção
 {: #installing-a-test-or-production-server-on-premises }
-As instalações da IBM são baseadas em um produto IBM chamado IBM Installation Manager. Instale o IBM Installation Manager V1.8.4 ou mais recente separadamente antes de instalar o {{ site.data.keys.product }}.
+
+A primeira parte da instalação do servidor {{ site.data.keys.product }} usa um produto IBM chamado IBM Installation Manager. O IBM Installation Manager v1.8.4 ou posterior deve ser instalado antes da instalação dos componentes do servidor {{ site.data.keys.product }}.
 
 > **Importante:** Certifique-se de usar o IBM Installation Manager V1.8.4 ou mais recente. As versões mais antigas do Installation Manager não são capazes de instalar o {{ site.data.keys.product }} {{ site.data.keys.product_version }}, porque as operações de pós-instalação do produto requerem o Java 7. As versões mais antigas do Installation Manager vêm com o Java 6.
 
-O instalador do {{ site.data.keys.mf_server }} copia no seu computador todas as ferramentas e bibliotecas necessárias para a implementação de componentes do
-{{ site.data.keys.mf_server }} e, opcionalmente, {{ site.data.keys.mf_app_center_full }} em seu servidor de aplicativos.
+O assistente de instalação do {{ site.data.keys.mf_server }} usa o IBM Installation Manager para inserir todos os componentes do servidor no servidor.  As ferramentas e bibliotecas necessárias para implementar os componentes do servidor {{ site.data.keys.product }} para o uso do servidor de aplicativos também são instaladas.  Como uma melhor prática, não instale todos os componetes na mesma instância do servidor de aplicativos, exceto em casos de um servidor de desenvolvimento. As ferramentas de implementação permitem a seleção dos componentes a serem instalados.  Consulte os [Fluxos de redes e topologias](production/topologies) para conferir pontos a serem considerados antes de instalar o servidor.
 
-Se você instalar um servidor de teste ou de produção, comece com **Tutoriais sobre a instalação do {{ site.data.keys.mf_server }}** abaixo para uma instalação simples e para saber sobre a instalação do {{ site.data.keys.mf_server }}. Para obter informações adicionais sobre como preparar uma instalação para seu ambiente específico, consulte [Instalando o {{ site.data.keys.mf_server }} para um ambiente de produção](production).
+Leia abaixo para obter informações sobre como preparar e instalar o {{site.data.keys.mf_server }} e serviços opcionais em seu ambiente específico. Para uma configuração simples, leia o tutorial [Configurando um ambiente de teste ou produção](production).
 
-**Tutoriais sobre a instalação do {{ site.data.keys.mf_server }}**  
-Saiba sobre o processo de instalação do {{ site.data.keys.mf_server }} lendo as instruções para criar um {{ site.data.keys.mf_server }} funcional, um cluster com dois nós no perfil Liberty do WebSphere Application Server. A instalação pode ser feita de duas maneiras:
+* [Verificando Pré-requisitos](production/#prerequisites)
+* [Visão geral dos componentes dos {{ site.data.keys.mf_server }}](production/topologies)
+* Fatores a serem considerados antes de carregar ferramentas e bibliotecas para implementar componentes do servidor MobileFirst e, opcionalmente, do Centro de Aplicativos
+  * Licença de Token
+  * Centro de Aplicativos do MobileFirst Foundation
+  * Modo de administrador versus modo de usuário
+* Estrutura de distribuição do servidor MobileFirst após o carregamento de arquivos
+* Carregando arquivos
+  * usando o assistente de instalação do IBM Installation Manager
+  * executando o IBM Installation Manager na linha de comandos
+  * usando arquivos de reposta XML - instalação silenciosa
+* [Configurando bancos de dados de backend para componetes do servidor MobileFirst Foundation](production/databases)
+* [Instalando o servidor MobileFirst em um servidor de aplicativos](production/appserver)
+* [Configurando o servidor MobileFirst](production/server-configuration)
+* [Instalando o servidor MobileFirst Analytics](production/analytics/installation)
+* [Instalando o Application Center](production/appcenter)
+* [Implementando o servidor MobileFirst no IBM PureApplication System](production/pure-application)
 
-* [Usando o modo gráfico do IBM Installation Manager](production/tutorials/graphical-mode) e o Server Configuration Tool.
-* [Usando a ferramenta de linha de comandos](production/tutorials/command-line).
+### Configurando um ambiente de teste ou de produção
+{: #setting-up-test-or-production-server}
 
-Posteriormente, você terá um {{ site.data.keys.mf_server }} em funcionamento. Entretanto, é necessário configurá-lo, principalmente para segurança, antes de usar o servidor. Para obter informações adicionais, consulte
-[Configurando {{ site.data.keys.mf_server }}](production/server-configuration).
+Saiba mais sobre o processo de instalação do {{ site.data.keys.mf_server }} analisando as instruções para a criação de um cluster {{ site.data.keys.mf_server }} funcional com dois nós no perfil do WebSphere Application Server Liberty. A instalação pode ser concluída usando as ferramentas gráficas (GUI) ou através da linha de comandos.
 
-**Adições
-**  
+* [Instalação do modo GUI com o IBM Installation Manager e o Server Configuration Tool](production/tutorials/graphical-mode).
+* [Instalação da linha de comandos com a ferramenta de linha de comandos](production/tutorials/command-line).
 
-* Para incluir o {{ site.data.keys.mf_analytics_server }} em sua instalação, consulte o [guia de instalação do {{ site.data.keys.mf_analytics_server }}](production/analytics/installation/).  
-* Para instalar o {{ site.data.keys.mf_app_center }}, consulte [Instalando e configurando o Application Center](production/appcenter).
+Após concluir a instalação usando um dos dois métodos acima, [configurações](production/server-configuration) adicionais podem ser necessárias para concluir a configuração, dependendo dos requisitos.
 
-### Implementando {{ site.data.keys.mf_server }} na nuvem
-{: #deploying-mobilefirst-server-to-the-cloud }
+### Configurando recursos opcionais em seu ambiente de teste ou de produção
+{: #setting-up-optional-features-test-or-production-server}
+
+O {{ site.data.keys.product }} inclui componentes opcionais que podem ser usados para aumentar seu ambiente de teste ou de produção.  Consulte os seguintes tutoriais para obter mais informações:
+
+* [Instalando e configurando o {{ site.data.keys.mf_analytics_server }}](production/analytics/installation/)
+* [Instalando e configurando o {{ site.data.keys.mf_app_center }}](production/appcenter)
+
+### Implementando um ambiente de teste ou de produção do {{ site.data.keys.mf_server }} na nuvem.
+{: #deploying-mobilefirst-server-test-or-production-on-the-cloud }
+
 Se você planeja implementar o {{ site.data.keys.mf_server }} na nuvem, consulte as seguintes opções:
 
-* [Usando o {{ site.data.keys.mf_server }} no IBM Bluemix](../bluemix).
+* [Usando o {{ site.data.keys.mf_server }} no IBM Cloud](../bluemix).
 * [Usando o {{ site.data.keys.mf_server }} no IBM PureApplication](production/pure-application).
 
 ### Atualizando a Partir de Versões Anteriores
 {: #upgrading-from-earlier-versions }
 Para obter mais informações sobre como fazer upgrade de instalações e aplicativos existentes para uma versão mais nova, consulte
 [Fazer upgrade para o {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
-
-

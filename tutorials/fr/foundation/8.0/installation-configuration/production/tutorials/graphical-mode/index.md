@@ -49,7 +49,7 @@ Sur d'autres systèmes d'exploitation, vous pouvez tout de même exécuter l'ins
 * Vous pouvez exécuter Installation Manager en mode graphique, mais pour déployer le serveur, vous devez passer à la section de ce tutoriel qui concerne la ligne de commande pour effectuer l'installation à l'aide de tâches Ant.
 * Vous ne pouvez pas configurer un parc de serveurs. La base de données Derby imbriquée ne prend pas en charge l'accès depuis plusieurs serveurs. Pour configurer un parc de serveurs, vous avez besoin de DB2, de MySQL ou d'Oracle.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 
 * [Installation d'IBM Installation Manager](#installing-ibm-installation-manager)

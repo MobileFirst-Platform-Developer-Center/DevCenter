@@ -8,7 +8,7 @@ weight: 9
 {: #overview }
 Informations de référence sur les tâches Ant et les exemples de fichier de configuration pour l'installation d'{{ site.data.keys.mf_server_full }}, d'{{ site.data.keys.mf_app_center_full }} et d'{{ site.data.keys.mf_analytics_full }}.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 * [Référence de la tâche Ant configuredatabase](#ant-configuredatabase-task-reference)
 * [Tâches Ant pour l'installation de {{ site.data.keys.mf_console }}, des artefacts de {{ site.data.keys.mf_server }} et des services d'administration et Live Update de {{ site.data.keys.mf_server }}](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
@@ -1251,8 +1251,7 @@ Les attributs et les éléments internes de ces éléments sont décrits dans le
 {: #to-specify-a-connection-to-the-services-database }
 L'élément `<database>` collecte les paramètres permettant de spécifier une déclaration de source de données dans un serveur d'applications pour accéder à la base de données des services.
 
-Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. 
-Vous spécifiez l'élément `<database>` en procédant comme pour la tâche  Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
+Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche  Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
 
 L'élément `<database>` possède les attributs suivants :
 

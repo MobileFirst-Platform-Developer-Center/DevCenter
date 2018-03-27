@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Tutorial Instalando o MobileFirst Server a partir da linha de comandos
+title: Tutorial de instalação do servidor MobileFirst a partir da linha de comandos
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -333,7 +333,8 @@ O Server Configuration Tool posiciona uma propriedade JNDI, **mfp.admin.endpoint
 
 O carregador de classes é configurado para a última delegação de pai, conforme discutido na seção de serviço de administração.
 
-#### {{ site.data.keys.product_adj }} Tempo de execução 
+#### Tempo de execução
+{{ site.data.keys.product_adj }}
 {: #mobilefirst-runtime }
 Esse aplicativo não é protegido por uma função de segurança. Não é necessário efetuar login com um usuário conhecido pelo servidor Liberty para acessar esse aplicativo. As solicitações de dispositivos móveis são roteadas para o tempo de execução. Elas são autenticadas por outros mecanismos específicos para o produto (como OAuth) e para a configuração dos aplicativos  {{ site.data.keys.product_adj }}.
 
@@ -416,7 +417,7 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
    [configuredatabase] Obtendo a versão do banco de dados MobileFirstAdmin MFPDATA...
    [configuredatabase] Tabela MFPADMIN_VERSION existe, verificando seu valor...
    [configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
-   [configuredatabase] Configurando o banco de dados MobileFirstAdmin MFPDATA...
+    [configuredatabase] Configurando o banco de dados MobileFirstAdmin MFPDATA...
    [configuredatabase] O banco de dados está na versão mais recente (8.0.0), não é necessário fazer upgrade.
    [configuredatabase] Configuração do banco de dados MobileFirstAdmin MFPDATA feita com sucesso.
    ```

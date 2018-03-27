@@ -4,11 +4,11 @@ title: 来自 Windows 应用程序的资源请求
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
-  - name: 下载本机 Windows 8 项目
+  - name: Download Native Windows 8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
-  - name: 下载本机 Windows 10 项目
+  - name: Download Native Windows 10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---

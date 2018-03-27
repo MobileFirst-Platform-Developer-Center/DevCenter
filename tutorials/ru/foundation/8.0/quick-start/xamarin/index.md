@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для Xamarin
+title: Сквозная демонстрация для Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
@@ -123,8 +123,8 @@ weight: 6
 {: #5-testing-the-application }
 1. В Xamarin Studio выберите файл `mfpclient.properties` и укажите значения свойств **protocol**, **host** и **port** с учетом параметров {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
-
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 2. Нажмите кнопку **Воспроизвести**.
 
 <br clear="all"/>

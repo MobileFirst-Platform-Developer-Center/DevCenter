@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: JavaScript SQL 适配器
-breadcrumb_title: SQL 适配器
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---

@@ -3,7 +3,7 @@ layout: tutorial
 title: 在 JavaScript 适配器中使用 Java
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---

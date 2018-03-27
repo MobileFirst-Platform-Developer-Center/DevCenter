@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalando o MobileFirst Server para um ambiente de produção
-breadcrumb_title: ambiente de produção
+title: Instalando o servidor MobileFirst em um ambiente de produção
+breadcrumb_title: Production Environment
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

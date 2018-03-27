@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guide d'installation de MobileFirst Analytics Server
-breadcrumb_title: Guide d'installation
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -250,7 +250,7 @@ WebSphere Application Server.
     ![Module Analytics dans WebSphere](install_websphere_module_class_load_order.jpg)
 
 8. Activez la **sécurité administrative** et la **sécurité des applications** dans la console d'administration WebSphere Application Server :
-    * Connectez-vous à la console d'administration WebSphere Application Server.
+    * Connectez-vous à la console d'administration de WebSphere Application Server.
     * Dans le menu **Sécurité > Sécurité globale**, vérifiez que les options **Activer la sécurité administrative** et **Activer la sécurité des applications** sont sélectionnées. Remarque : la sécurité des applications ne peut être sélectionnée que si la **sécurité administrative** est activée.
     * Cliquez sur **OK** et sauvegardez les modifications.
 9. Démarrez l'application {{ site.data.keys.mf_analytics }} et entrez l'adresse suivante dans le navigateur : `http://<hostname>:<port>/analytics/console`.

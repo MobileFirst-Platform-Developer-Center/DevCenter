@@ -5,9 +5,9 @@ breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -255,7 +255,7 @@ WL.JSONStore.init(collections, options).then(function () {
 
 ### 适配器实现
 {: #adapter-implementation }
-创建一个适配器并将其命名为“**People**”。  
+创建一个适配器并将其命名为“**JSONStoreAdapter**”。  
 将其过程定义为 `addPerson`、`getPeople`、`pushPeople`、`removePerson` 和 `replacePerson`。
 
 ```javascript
@@ -287,45 +287,23 @@ function replacePerson(data) {
 }
 ```
 
-#### 初始化链接到 {{ site.data.keys.product_adj }} 适配器的集合
-{: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
-```javascript
-var collections = {
-  people : {
-    searchFields : {name: 'string', age: 'integer'},
-    adapter : {
-      name: 'People',
-      add: 'addPerson',
-      remove: 'removePerson',
-      replace: 'replacePerson',
-      load: {
-        procedure: 'getPeople',
-        params: [],
-        key: 'peopleList'
-      }     
-    }   
-  }
-}
 
-var options = {};
-WL.JSONStore.init(collections, options).then(function () {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
-```
-
-#### 从适配器装入数据
+#### 从 {{ site.data.keys.product_adj }} 适配器装入数据
 {: #load-data-from-an-adapter }
-在调用 `load` 时，JSONStore 使用预先传递到 `init` 的一些有关适配器的元数据（**名称**和**过程**），从而确定要从适配器获取的数据，并最终进行存储。
+要从适配器装入数据，请使用 `WLResourceRequest`。
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
+try {
+     var resource = new WLResourceRequest("adapters/JSONStoreAdapter/getPeople", WLResourceRequest.GET);
+     resource.send()
+     .then(function (responseFromAdapter) {
+          var data = responseFromAdapter.responseJSON.peopleList;
+     },function(err){
+      	//handle failure
+     });
+} catch (e) {
+    alert("Failed to load data from adapter " + e.Messages);
+}
 ```
 
 #### 获取所需推送（脏文档）
@@ -337,7 +315,7 @@ var collectionName = 'people';
 WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments) {
     // handle success
 }).fail(function (error) {
-    // handle failure
+  // handle failure
 });
 ```
 
@@ -354,19 +332,34 @@ WL.JSONStore.get(collectionName).getAllDirty()
 });
 ```
 
-#### 推送
+#### 推送更改
 {: #push }
-`push` 将更改的文档发送到正确的适配器程序（例如，通过本地添加的文档调用 `addPerson`）。 此机制基于与更改的文档相关联的最新操作以及传递到 `init` 的适配器元数据。
+要将更改推送到适配器，请调用 `getAllDirty` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。在发送数据并且收到成功响应后，确保调用 `markClean`。
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).push().then(function (response) {
-    // handle success
-    // response is an empty array if all documents reached the server
-    // response is an array of error responses if some documents failed to reach the server
-}).fail(function (error) {
-    // handle failure
-});
+try {
+     var collectionName = "people";
+     var dirtyDocs;
+
+     WL.JSONStore.get(collectionName)
+     .getAllDirty()
+     .then(function (arrayOfDirtyDocuments) {
+        dirtyDocs = arrayOfDirtyDocuments;
+
+        var resource = new WLResourceRequest("adapters/JSONStoreAdapter/pushPeople", WLResourceRequest.POST);
+        resource.setQueryParameter('params', [dirtyDocs]);
+        return resource.send();
+     }).then(function (responseFromAdapter) {
+        return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
+}).then(function (res) {
+	  // handle success
+}).fail(function (errorObject) {
+       // Handle failure.
+     });
+
+} catch (e) {
+    alert("Failed To Push Documents to Adapter");
+}
 ```
 
 ### 增强

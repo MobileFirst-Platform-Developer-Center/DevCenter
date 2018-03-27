@@ -8,7 +8,7 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-이 데모의 목적은 엔드-투-엔드 플로우를 경험해보는 것입니다. 
+이 데모의 목적은 엔드-투-엔드 플로우를 경험해보는 것입니다.
 
 1. {{ site.data.keys.product_adj }} Xamarin 클라이언트 SDK와 함께 번들된 샘플 애플리케이션이 {{ site.data.keys.mf_console }}에 등록됩니다.
 2. 새 어댑터 또는 제공된 어댑터가 {{ site.data.keys.mf_console }}에 배치됩니다.  
@@ -18,7 +18,7 @@ weight: 6
 
 * {{ site.data.keys.mf_server }} ping을 실행함.
 
-#### 전제조건: 
+#### 전제조건:
 {: #prerequisites }
 * Xamarin Studio
 * *선택사항*. 독립형 {{ site.data.keys.mf_server }} ([다운로드]({{site.baseurl}}/downloads))
@@ -26,7 +26,7 @@ weight: 6
 ### 1. {{ site.data.keys.mf_server }} 시작
 {: #1-starting-the-mobilefirst-server }
 [Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
-[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)를 사용하는 경우, 서버의 폴더로 이동해서 Mac 및 Linux의 경우 `./run.sh` 또는 Windows의 경우 `run.cmd` 명령을 실행하십시오. 
+[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)를 사용하는 경우, 서버의 폴더로 이동해서 Mac 및 Linux의 경우 `./run.sh` 또는 Windows의 경우 `run.cmd` 명령을 실행하십시오.
 
 ### 2. 애플리케이션 작성
 {: #2-creating-an-application }
@@ -72,19 +72,19 @@ weight: 6
            {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null &&  accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -103,7 +103,7 @@ weight: 6
 {: #4-deploy-an-adapter }
 [준비된 이 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오.
 
-그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.
+그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.  
 
 1. **조치 → 샘플 다운로드** 옵션을 선택하십시오. "Hello World" **Java** 어댑터 샘플을 다운로드하십시오.
 
@@ -124,7 +124,8 @@ weight: 6
 {: #5-testing-the-application }
 1. Xamarin Studio에서 `mfpclient.properties` 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 대한 올바른 값으로 편집하십시오.
     * 로컬 {{ site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
-    * 원격{{ site.data.keys.mf_server }}를 사용 중인 경우(Bluemix에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
+    * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(IBM Cloud에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
+    * IBM Cloud Private에서 Kubernetes 클러스터를 사용 중이고 배치 유형이 **NodePort**이면, 포트 값이 일반적으로 Kubernetes 클러스터의 서비스에서 공개하는 **NodePort**입니다.
 
 2. **재생** 단추를 누르십시오.
 
