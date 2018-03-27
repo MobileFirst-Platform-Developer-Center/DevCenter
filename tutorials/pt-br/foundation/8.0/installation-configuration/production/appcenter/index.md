@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalando e configurando o IBM MobileFirst Foundation Application Center	
-breadcrumb_title: Instalando o Application Center	
+title: Instalando e configurando o IBM MobileFirst Foundation Application Center
+breadcrumb_title: Installing Application Center
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -576,7 +576,8 @@ Configure a origem de dados no arquivo $LIBERTY_HOME/usr/servers/worklightServer
 
 ##### Configurando o WebSphere Application Server para Derby manualmente para Application Center
 {: #configuring-websphere-application-server-for-derby-manually-for-application-center }
-É possível instalar e configurar seu banco de dados Apache Derby manualmente para Application Center com o WebSphere Application Server. Conclua o procedimento de configuração do banco de dados Apache Derby antes de continuar.
+É possível instalar e configurar seu banco de dados Apache Derby manualmente para Application Center com o WebSphere Application Server. Conclua o procedimento de configuração do banco de dados Apache Derby antes de
+continuar.
 
 1. Determine um diretório adequado para o arquivo JAR do driver JDBC no diretório de instalação do WebSphere Application Server. Se esse diretório não existir, crie-o.
     * Para um servidor independente, é possível usar um diretório, como **was\_install\_dir/optionalLibraries/IBM/Worklight/derby**.

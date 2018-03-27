@@ -130,7 +130,8 @@ Como alternativa, clique no botão **Novo** ao lado de **Adaptadores**.
 {: #5-testing-the-application }
 1. No Xamarin Studio, selecione o arquivo `mfpclient.properties` e edite as propriedades **protocol**, **host** e **port** com os valores corretos para o seu {{ site.data.keys.mf_server }}.
     * Se usar um {{ site.data.keys.mf_server }} local, os valores normalmente são **http**, **localhost** e **9080**.
-    * Se usar um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente são **https**, **your-server-address** e **443**.
+    * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
+    * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.
 
 2. Pressione o botão **Reproduzir**.
 

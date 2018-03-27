@@ -2,11 +2,11 @@
 layout: tutorial
 title: IBM MobileFirst Foundation 8.0
 breadcrumb_title: 8.0
-use_dropdown: verdadeiro
-print_pdf: falso
+use_dropdown: true
+print_pdf: false
 weight: 0
 show_disqus: false
-show_breadcrumb: verdadeiro
+show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>

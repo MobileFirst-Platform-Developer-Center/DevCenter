@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Implementando o MobileFirst Server no IBM PureApplication System
-breadcrumb_title: Instalando o Pure Application System
+title: Implementando o servidor MobileFirst no IBM PureApplication System
+breadcrumb_title: Installing Pure Application System
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->

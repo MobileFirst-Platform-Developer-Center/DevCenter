@@ -203,7 +203,7 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
     > **Importante:**  
     > 
     > * Para uma instalação que não instale o Application Center em um servidor de aplicativos, use o arquivo denominado **install-no-appcenter.xml**.
-    > * para uma instalação que instale o Application Center, selecione o arquivo de amostra de resposta a partir da tabela a seguir, dependendo do seu servidor e do seu banco de dados de aplicativo. 
+    > * para uma instalação que instale o Application Center, selecione o arquivo de amostra de resposta a partir da tabela a seguir, dependendo do seu servidor e do seu banco de dados de aplicativo.
 
    #### Arquivos de resposta de instalação de amostra no arquivo **Silent\_Install\_Sample_Files.zip** para instalar o Application Center
     

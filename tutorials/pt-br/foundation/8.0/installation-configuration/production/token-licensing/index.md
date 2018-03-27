@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalando e configurando para licenciamento de token
-breadcrumb_title: Licenciamento de token
+title: Instalando e configurando para licenciamento do token
+breadcrumb_title: Token licensing
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -273,13 +273,15 @@ Deve-se configurar uma biblioteca compartilhada para as bibliotecas do Rational 
             2. Na seção **Propriedades adicionais**, clique em **Referências de biblioteca compartilhada**.
             3. Clique em **Incluir (Add)**.
             4. Na página Configurações de referência de biblioteca, selecione a referência de biblioteca apropriada. O nome identifica o arquivo da biblioteca compartilhada que o aplicativo utiliza. Por exemplo, Biblioteca compartilhada RCL.
-            5. Clique em **Aplicar** e, em seguida, salve as mudanças.
+            5. Clique em **Aplicar** e, em seguida, salve as
+mudanças.
 2. Configure as entradas de ambiente para o aplicativo da web do serviço de administração do {{ site.data.keys.mf_server }}.
     * No console administrativo do WebSphere Application Server, clique em **Aplicativos → Tipos de aplicativos → Aplicativos corporativos WebSphere** e selecione o aplicativo do serviço de administração: **MobileFirst_Administration_Service**.
     * Na seção **Propriedades do módulo da web**, clique em **Entradas de ambiente para módulos da web**.
     * Insira os valores para **mfp.admin.license.key.server.host** e **mfp.admin.license.key.server.port**.
         * **mfp.admin.license.key.server.host** é o nome do host do Rational License Key Server.
-        * **mfp.admin.license.key.server.port** é a porta do Rational License Key Server. Por padrão, o valor é 27000.
+        * **mfp.admin.license.key.server.port** é a porta do Rational License Key Server. Por padrão,
+o valor é 27000.
     * Clique em **OK** e salve as alterações.
 3. Configure o acesso à biblioteca do Rational Common Licensing pela JVM do servidor de aplicativos.
     * No console administrativo do WebSphere Application Server, clique em **Servidores → Tipos de servidores → WebSphere Application Servers** e selecione seu servidor.

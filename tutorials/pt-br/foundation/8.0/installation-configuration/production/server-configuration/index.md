@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Configurando o MobileFirst Server
+title: Configurando o servidor MobileFirst
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -84,7 +84,8 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
 3. Para cada configuração de SSL listada, modifique a configuração para ativar o TLS V1.2.
     * Selecione uma configuração SSL e, em seguida, em **Propriedades adicionais**, clique em configurações de **Qualidade de proteções (QoP)**.
     * Na lista **Protocolo**, selecione **SSL_TLSv2**.
-    * Clique em **Aplicar** e, em seguida, salve as mudanças.
+    * Clique em **Aplicar** e, em seguida, salve as
+mudanças.
 
 ## Configurando a autenticação do usuário para o {{ site.data.keys.mf_server }} administration
 {: #configuring-user-authentication-for-mobilefirst-server-administration }
@@ -825,7 +826,7 @@ Para diagnosticar problemas de login e autenticação, ative o pacote **com.ibm.
 {: #configuring-multiple-runtimes }
 É possível configurar o {{ site.data.keys.mf_server }} com vários tempos de execução, criando uma diferenciação visual entre "tipos" de aplicativos no {{ site.data.keys.mf_console }}.
 
-> **Nota:** Vários tempos de execução não são suportados em uma instância do servidor Mobile Foundation criada pelo serviço Mobile Foundation Bluemix. No serviço Bluemix, deve-se criar então várias instâncias de serviço.
+> **Nota:** diversos tempos de execução não são suportados em uma instância do servidor Mobile Foundation criada pelo serviço Mobile Foundation IBM Cloud. Por isso, é necessário criar diversas instâncias de serviço no serviço IBM Cloud.
 
 #### Ir para
 {: #jump-to-1 }

@@ -19,7 +19,8 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 
 <br/>
-Este glossário fornece termos e definições para o software e os produtos do {{ site.data.keys.product }}.
+Este glossário fornece termos e definições para software e produtos
+{{ site.data.keys.product }}.
 
 As referências cruzadas a seguir são utilizadas neste glossário:
 
