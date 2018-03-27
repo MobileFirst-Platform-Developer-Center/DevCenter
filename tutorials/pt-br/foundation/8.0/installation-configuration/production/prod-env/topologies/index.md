@@ -63,15 +63,15 @@ As propriedades JNDI que são usadas para comunicação entre o tempo de execuç
 #### Serviço de Administração do {{ site.data.keys.mf_server }}
 {: #mobilefirst-server-administration-service }
 
-* [Propriedades JNDI para serviços de administração: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [Propriedades JNDI para serviços de administração: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [Propriedades JNDI para serviços de administração: topologias](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [Propriedades JNDI para serviços de administração: JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [Propriedades JNDI para serviços de administração: proxies](../../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [Propriedades JNDI para serviços de administração: topologias](../../server-configuration/#jndi-properties-for-administration-service-topologies)
 
 #### Tempo de execução
 {{ site.data.keys.product }}
 {: #mobilefirst-foundation-runtime }
 
-* [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 ### Serviço de administração do {{ site.data.keys.mf_server }} para tempo de execução do
 {{ site.data.keys.product }} em outros servidores
@@ -84,7 +84,7 @@ Para um cluster do WebSphere Application Server independente, do perfil Liberty 
 
 ### Serviço de administração do {{ site.data.keys.mf_server }} e tempo de execução do MobileFirst para o gerenciador de implementação no WebSphere Application Server Network Deployment
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-No WebSphere Application Server Network Deployment, o tempo de execução e o serviço de administração obtêm os MBeans JMX que são usados no tempo de execução do [{{ site.data.keys.product }} para o serviço de administração do {{ site.data.keys.mf_server }}](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) e no serviço de administração do [{{ site.data.keys.mf_server }} para o tempo de execução do {{ site.data.keys.product }} em outros servidores](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) comunicando-se com o gerenciador de implementação. As propriedades JNDI correspondentes são **mfp.admin.jmx.dmgr.*** em [Propriedades JNDI para serviços de administração: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
+No WebSphere Application Server Network Deployment, o tempo de execução e o serviço de administração obtêm os MBeans JMX que são usados no tempo de execução do [{{ site.data.keys.product }} para o serviço de administração do {{ site.data.keys.mf_server }}](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) e no serviço de administração do [{{ site.data.keys.mf_server }} para o tempo de execução do {{ site.data.keys.product }} em outros servidores](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) comunicando-se com o gerenciador de implementação. As propriedades JNDI correspondentes são **mfp.admin.jmx.dmgr.*** em [Propriedades JNDI para serviços de administração: JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx).
 
 O gerenciador de implementação deve estar em execução para permitir as operações que requerem comunicação do JMX entre o tempo de execução e o serviço de administração. Essas operações podem ser a inicialização de um tempo de execução ou a notificação de uma modificação executada por meio de serviço de administração.
 
@@ -121,13 +121,13 @@ As propriedades JNDI para configurar essa comunicação entre os dois serviços 
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* E as propriedades em [Propriedades JNDI para serviços de administração: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies).
+* E as propriedades em [Propriedades JNDI para serviços de administração: proxies](../../server-configuration/#jndi-properties-for-administration-service-proxies).
 
 ### {{ site.data.keys.mf_console }} para serviço de administração do {{ site.data.keys.mf_server }}
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
 {{ site.data.keys.mf_console }} é uma interface com o usuário da web e age como front-end para o serviço de administração. Ele se comunica com serviços REST do serviço de administração por meio de HTTP ou HTTPS. Os usuários que têm permissão para usar o console também devem ter permissão para usar o serviço de administração. Cada usuário que é mapeado para uma certa função de segurança do console também deve ser mapeado para a mesma função de segurança do serviço. Com essa configuração, as solicitações do console podem então ser aceitas pelo serviço.
 
-As propriedades JNDI para configurar essa comunicação estão em [Propriedades JNDI para o {{ site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
+As propriedades JNDI para configurar essa comunicação estão em [Propriedades JNDI para o {{ site.data.keys.mf_console }}](../../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
 
 > Nota: a propriedade **mfp.admin.endpoint** permite que o console localize o serviço de administração. É possível usar o caractere asterisco "\*" como um curinga para especificar que a URL, gerada pelo console para entrar em contato com os serviços de administração, usa o mesmo valor que a solicitação de HTTP recebida no console. Por exemplo: `*://*:*/mfpadmin` significa usar o mesmo protocolo, host e porta que o console, mas usar **mfpadmin** como raiz de contexto. Essa propriedade é especificada para o aplicativo do console.
 
@@ -157,11 +157,11 @@ O serviço de push gera tráfego de saída para o serviço de notificação exte
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-Para obter informações adicionais, consulte [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+Para obter informações adicionais, consulte [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### Dispositivos móveis para o tempo de execução do {{ site.data.keys.product }}
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-Os dispositivos móveis contatam o tempo de execução. A segurança dessa comunicação é determinada pela configuração do aplicativo e dos adaptadores solicitados. Para obter informações adicionais, consulte [Estrutura de segurança do {{ site.data.keys.product_adj }}](../../../authentication-and-security).
+Os dispositivos móveis contatam o tempo de execução. A segurança dessa comunicação é determinada pela configuração do aplicativo e dos adaptadores solicitados. Para obter informações adicionais, consulte [Estrutura de segurança do {{ site.data.keys.product_adj }}](../../../../authentication-and-security).
 
 ## Restrições nos componentes do {{ site.data.keys.mf_server }} e {{ site.data.keys.mf_analytics }}
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
@@ -222,7 +222,7 @@ Com uma JVM, somente a implementação simétrica é possível com as seguintes 
 
 #### Configuração de propriedades da JNDI
 {: #configuration-of-jndi-properties }
-Algumas propriedades JNDI são necessárias para permitir a comunicação de Java Management Extensions (JMX) entre o serviço de administração e o tempo de execução, e para definir o serviço de administração que gerencia um tempo de execução. Para obter detalhes sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Algumas propriedades JNDI são necessárias para permitir a comunicação de Java Management Extensions (JMX) entre o serviço de administração e o tempo de execução, e para definir o serviço de administração que gerencia um tempo de execução. Para obter detalhes sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **Servidor de perfil Liberty do WebSphere Application Server independente**  
 As propriedades JNDI globais são necessárias para serviços de administração e tempos de execução.
@@ -300,7 +300,7 @@ Essa topologia suporta somente a implementação simétrica. Os tempos de execu�
 
 #### Configuração de propriedades da JNDI
 {: #configuration-of-jndi-properties-1 }
-Algumas propriedades da JNDI são requeridas para ativar a comunicação de JMX entre o serviço de administração e o tempo de execução do mesmo servidor e para definir o serviço de administração que gerencia um tempo de execução. Para sua comodidade, as tabelas a seguir listam essas propriedades. Para obter instruções sobre como instalar um server farm, consulte [Instalando um server farm](../appserver/#installing-a-server-farm). Para obter informações adicionais sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Algumas propriedades da JNDI são requeridas para ativar a comunicação de JMX entre o serviço de administração e o tempo de execução do mesmo servidor e para definir o serviço de administração que gerencia um tempo de execução. Para sua comodidade, as tabelas a seguir listam essas propriedades. Para obter instruções sobre como instalar um server farm, consulte [Instalando um server farm](../appserver/#installing-a-server-farm). Para obter informações adicionais sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **Server farm de perfil Liberty do WebSphere Application Server**  
 As propriedades JNDI globais a seguir são necessárias em cada servidor do farm para os serviços de administração e tempos de execução.
@@ -446,7 +446,7 @@ A implementação dessa topologia tem as seguintes características:
 
 #### Configuração de propriedades da JNDI
 {: #configuration-of-jndi-properties-2 }
-As tabelas a seguir listam as propriedades JNDI que são necessárias para ativar a comunicação JMX entre o serviço de administração e o tempo de execução e para definir o serviço de administração que gerencia um tempo de execução. Para obter informações adicionais sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Para obter instruções sobre como instalar um Liberty Collective manualmente, consulte [Instalação manual no WebSphere Application Server Liberty Collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+As tabelas a seguir listam as propriedades JNDI que são necessárias para ativar a comunicação JMX entre o serviço de administração e o tempo de execução e para definir o serviço de administração que gerencia um tempo de execução. Para obter informações adicionais sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Para obter instruções sobre como instalar um Liberty Collective manualmente, consulte [Instalação manual no WebSphere Application Server Liberty Collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 As propriedades JNDI globais a seguir são necessárias para os serviços de administração:
 
@@ -620,7 +620,7 @@ A implementação dessa topologia tem as seguintes características:
 
 #### Configuração de propriedades da JNDI
 {: #configuration-of-jndi-properties-3 }
-Algumas propriedades da JNDI são requeridas para ativar a comunicação de JMX entre o serviço de administração  e o tempo de execução e para definir o serviço de administração que gerencia um tempo de execução. Para obter detalhes sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Algumas propriedades da JNDI são requeridas para ativar a comunicação de JMX entre o serviço de administração  e o tempo de execução e para definir o serviço de administração que gerencia um tempo de execução. Para obter detalhes sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 As seguintes propriedades locais da JNDI são requeridas para os serviços de administração e para os tempos de execução:
 
@@ -680,7 +680,7 @@ Para obter informações adicionais sobre as propriedades JNDI que são necessá
 
 As restrições, conforme descrito em [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) se aplicam. Cada tempo de execução (com sua raiz de contexto) deve ter suas próprias tabelas de banco de dados.
 
-> Para obter instruções, consulte [Configurando vários tempos de execução](../server-configuration/#configuring-multiple-runtimes).
+> Para obter instruções, consulte [Configurando vários tempos de execução](../../server-configuration/#configuring-multiple-runtimes).
 
 ## Várias instâncias do {{ site.data.keys.mf_server }} no mesmo servidor ou célula do WebSphere Application Server
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }
