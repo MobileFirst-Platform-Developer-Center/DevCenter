@@ -303,7 +303,7 @@ Antes de executar o Server Configuration Tool, certifique-se de que os seguintes
                             <li>Para uma instalação no WebSphere Application Server Liberty:
                                 <ul>
                                     <li>Insira o diretório de instalação do Liberty e o nome do servidor no qual deseja instalar o {{ site.data.keys.mf_server }}.</li>
-                                    <li>É possível criar um usuário padrão para efetuar login no console. Esse usuário é criado no registro Básico do Liberty. Para uma instalação de produção, talvez você queira limpar a opção <b>Criar um Usuário Padrão</b> e configurar o acesso de usuário após a instalação. Para obter informações adicionais, consulte <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
+                                    <li>É possível criar um usuário padrão para efetuar login no console. Esse usuário é criado no registro Básico do Liberty. Para uma instalação de produção, talvez você queira limpar a opção <b>Criar um Usuário Padrão</b> e configurar o acesso de usuário após a instalação. Para obter informações adicionais, consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Selecione o tipo de implementação: <b>Implementação Independente</b> (padrão), <b>Implementação de Server Farm</b> ou <b>Implementação de Liberty Collective</b>.</li>
                                 </ul>
 
@@ -340,7 +340,7 @@ Antes de executar o Server Configuration Tool, certifique-se de que os seguintes
                                                 <ul>
                                                     <li>Mapeando um usuário para a função de segurança <b>configadmin</b> do serviço de atualização em tempo real.</li>
                                                     <li>Incluindo o ID e a senha de login desse usuário nas propriedades JNDI (<b>mfp.config.service.user</b> e <b>mfp.config.service.password</b>) do serviço de administração.</li>
-                                                    <li>Mapear um ou mais usuários para as funções de segurança do serviço de administração e {{ site.data.keys.mf_console }}. Consulte <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
+                                                    <li>Mapear um ou mais usuários para as funções de segurança do serviço de administração e {{ site.data.keys.mf_console }}. Consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -351,7 +351,7 @@ Antes de executar o Server Configuration Tool, certifique-se de que os seguintes
                                 <ul>
                                     <li>Insira o diretório de instalação do Apache Tomcat.</li>
                                     <li>Insira a porta usada para a comunicação JMX com RMI. Por padrão, o valor é 8686. O Server Configuration Tool modifica o arquivo <b>tomcat_install_dir/bin/setenv.bat</b> ou <b>tomcat_install_dir/bin/setenv.sh</b> para abrir essa porta. Se desejar abrir a porta manualmente, ou se você já tiver algum código que abre a porta no <b>setenv.bat</b> ou <b>setenv.sh</b>, não use a ferramenta. Instale com as tarefas Ant. Uma opção para abrir a porta RMI manualmente é fornecida para uma instalação com tarefas Ant.</li>
-                                    <li>Crie um usuário padrão para efetuar login no console. Esse usuário também é criado no arquivo de configuração <b>tomcat-users.xml</b>. Para uma instalação de produção, talvez você queira limpar a opção Criar uma opção de usuário padrão e configurar o acesso de usuário após a instalação. Para obter informações adicionais, consulte <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
+                                    <li>Crie um usuário padrão para efetuar login no console. Esse usuário também é criado no arquivo de configuração <b>tomcat-users.xml</b>. Para uma instalação de produção, talvez você queira limpar a opção Criar uma opção de usuário padrão e configurar o acesso de usuário após a instalação. Para obter informações adicionais, consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -466,7 +466,7 @@ As seções a seguir fornecem os detalhes sobre como é possível modificar os a
 As tarefas Ant **installmobilefirstadmin**, **installmobilefirstruntime** e **installmobilefirstpush** declaram os valores para as propriedades JNDI necessárias para os componentes funcionarem. Essas propriedades JNDI são usadas para definir a comunicação JMX e também os links para outros componentes (como serviço de atualização em tempo real, serviço de push, o serviço de análise de dados ou serviço de autorização). Entretanto, também é possível definir valores para outras propriedades JNDI. Use o elemento `<property>` que existe para essas três tarefas. Para obter uma lista de propriedades JNDI, consulte:
 
 * [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
 * [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 Por exemplo:
