@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuring MobileFirst Server
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -821,7 +821,7 @@ To diagnose login and authentication issues, enable the package **com.ibm.mfp.se
 {: #configuring-multiple-runtimes }
 You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creating a visual differentiation between application "types" in the {{ site.data.keys.mf_console }}.
 
-> **Note:** multiple runtimes are not supported in a Mobile Foundation server instance created by the Mobile Foundation Bluemix service. In the Bluemix service, you must create multiple service instances instead.
+> **Note:** multiple runtimes are not supported in a Mobile Foundation server instance created by the Mobile Foundation IBM Cloud service. In the IBM Cloud service, you must create multiple service instances instead.
 
 #### Jump to
 {: #jump-to-1 }
