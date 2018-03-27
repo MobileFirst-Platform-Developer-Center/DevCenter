@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Tutorial Instalando o MobileFirst Server no modo gráfico
+title: Tutorial de instalação do servidor MobileFirst em modo gráfico
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->

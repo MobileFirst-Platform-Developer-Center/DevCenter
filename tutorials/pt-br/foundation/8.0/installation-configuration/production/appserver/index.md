@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalando o MobileFirst Server em um servidor de aplicativos
-breadcrumb_title: Instalando o MobileFirst Server
+title: Instalando o servidor MobileFirst em um servidor de aplicativos
+breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

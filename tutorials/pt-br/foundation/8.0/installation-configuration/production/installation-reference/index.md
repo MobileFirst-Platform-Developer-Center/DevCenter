@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Referência de Instalação
+title: Referência de instalação
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->

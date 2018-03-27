@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Notas sobre a liberação
+title: Notas sobre o Release
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
