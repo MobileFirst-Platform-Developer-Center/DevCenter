@@ -32,7 +32,7 @@ Para obter uma lista de arquivos e ferramentas instalados, consulte [Estrutura d
 ## Instalando o Application Center com o IBM Installation Manager
 {: #installing-application-center-with-ibm-installation-manager }
 Com o IBM Installation Manager, é possível instalar o Application Center, criar seu banco de dados e implementá-lo em um Application Server.  
-Antes de iniciar, verifique se o usuário que executa o IBM Installation Manager tem os privilégios que estão descritos em [Pré-requisitos do sistema de arquivos](../appserver/#file-system-prerequisites).
+Antes de iniciar, verifique se o usuário que executa o IBM Installation Manager tem os privilégios que estão descritos em [Pré-requisitos do sistema de arquivos](../prod-env/appserver/#file-system-prerequisites).
 
 Para instalar o IBM Application Center com o IBM Installation Manager, conclua as seguintes etapas.
 

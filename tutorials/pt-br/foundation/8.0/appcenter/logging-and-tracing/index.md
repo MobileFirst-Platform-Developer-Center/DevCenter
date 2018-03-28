@@ -3,7 +3,7 @@ layout: tutorial
 title: Setting logging and tracing for Application Center on the application server
 breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -85,8 +85,8 @@ On all supported platforms, you can use Java™ Naming and Directory Interface (
 
 The following JNDI properties are applicable to the web application for Application Center services (**applicationcenter.war**).
 
-| Property settings | Setting | Description | 
+| Property settings | Setting | Description |
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | By default, this property is set to false. Set it to true to format JSON output with blank spaces, for easier reading in log files. | 
-| ibm.appcenter.logging.tosystemerror | true | By default, this property is set to false. Set it to true to print all log messages to system error in log files. Use the property to turn on logging globally. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | This setting prints all the generated SQL statements to the log files. | 
+| ibm.appcenter.logging.formatjson | true | By default, this property is set to false. Set it to true to format JSON output with blank spaces, for easier reading in log files. |
+| ibm.appcenter.logging.tosystemerror | true | By default, this property is set to false. Set it to true to print all log messages to system error in log files. Use the property to turn on logging globally. |
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | This setting prints all the generated SQL statements to the log files. |
