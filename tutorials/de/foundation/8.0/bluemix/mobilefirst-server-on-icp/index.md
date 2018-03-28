@@ -44,7 +44,7 @@ Für den Zugruff auf den IBM Cloud-Private-Cluster über die CLI sollten Sie den
 
 ## Passport-Advantage-Archiv mit der IBM Mobile Foundation herunterladen
 {: #download-the-ibm-mfpf-ppa-archive}
-Das Passport-Advantage-Archiv mit dem {{ site.data.keys.product_full }} ist [hier]() verfügbar. Das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} enthält die Docker-Images und Helm-Charts für die folgenden Komponenten der {{ site.data.keys.product }}: 
+Das Passport-Advantage-Archiv mit dem {{ site.data.keys.product_full }} ist [hier](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) verfügbar. Das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} enthält die Docker-Images und Helm-Charts für die folgenden Komponenten der {{ site.data.keys.product }}: 
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
