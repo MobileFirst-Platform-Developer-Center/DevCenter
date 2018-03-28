@@ -273,11 +273,11 @@ weight: 1
 
                 <p>Development artifacts that you upload to the server include adapters and their configuration, security configurations for your apps, push notification certificates, and log filters.</p>
 
-                <h3>Running applications that were created on IBM Bluemix on {{ site.data.keys.product }}</h3>
-                <p>Developers can migrate IBM Bluemix applications to run on {{ site.data.keys.product }}. Migration requires that you make configuration changes to your client application to match {{ site.data.keys.product }} APIs.</p>
+                <h3>Running applications that were created on IBM Cloud on {{ site.data.keys.product }}</h3>
+                <p>Developers can migrate IBM Cloud applications to run on {{ site.data.keys.product }}. Migration requires that you make configuration changes to your client application to match {{ site.data.keys.product }} APIs.</p>
 
-                <h3>{{ site.data.keys.product }} as a service on IBM Bluemix</h3>
-                <p>You can now use the {{ site.data.keys.mf_bm_full }}  service on IBM Bluemix to create and run your enterprise mobile apps.</p>
+                <h3>{{ site.data.keys.product }} as a service on IBM Cloud</h3>
+                <p>You can now use the {{ site.data.keys.mf_bm_full }}  service on IBM Cloud to create and run your enterprise mobile apps.</p>
 
                 <h3>No .wlapp files</h3>
                 <p>In previous versions, applications were deployed to {{ site.data.keys.mf_server }} by uploading a <b>.wlapp</b> file. The file contained data that described the application and, in the case of hybrid applications, the required web resources also. In V8.0.0, instead of the <b>.wlapp</b> file:</p>
@@ -312,7 +312,7 @@ weight: 1
                 <p>JAX-RS 2.0 introduces new server-side functionality: server-side asynchronous HTTP, filters and interceptors.  Adapters can now exploit these new features.</p>
 
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
-                <p>{{ site.data.keys.product }} on IBM Containers released for V8.0.0 is available on the <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage site</a>. This version of {{ site.data.keys.product }} on IBM Containers is production ready and supports enterprise dashDB™ transactional database on IBM Bluemix.</p>
+                <p>{{ site.data.keys.product }} on IBM Containers released for V8.0.0 is available on the <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage site</a>. This version of {{ site.data.keys.product }} on IBM Containers is production ready and supports enterprise dashDB™ transactional database on IBM Cloud.</p>
 
                 <p><b>Note:</b> See the prerequisites for deploying {{ site.data.keys.product }} on IBM Containers.</p>
 
@@ -473,7 +473,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_app_center }} is now supported in Bluemix (based on containers) via BYOL scripts.</p>
+                <p>{{ site.data.keys.mf_app_center }} is now supported in IBM Cloud (based on containers) via BYOL scripts.</p>
             </div>
         </div>
     </div>
