@@ -3,7 +3,7 @@ layout: tutorial
 title: Command-line tool for uploading or deleting an application
 breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

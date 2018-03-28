@@ -171,7 +171,7 @@ mfpdev server add
 ```
 
 Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.  
-For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation Bluemix service you would do the following:
+For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation IBM Cloud service you would do the following:
 
 ```bash
 $ mfpdev server add
