@@ -1,33 +1,33 @@
 ---
 layout: tutorial
-title: Service Mobile Foundation on Bluemix verwenden
-breadcrumb_title: Mobile Foundation Service
+title: Mobile Foundation Service in IBM Cloud verwenden
+breadcrumb_title: Setting up Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-In diesem Lernprogramm finden Sie schrittweise Anleitungen für das Einrichten einer MobileFirst-Server-Instanz in Bluemix unter Verwendung des Service {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}** Service).   
-Der {{ site.data.keys.mf_bm_short }} Service ist ein Bluemix-Service für eine schnelle automatische Installation skalierbarer Entwicklungs- und Produktionsumgebungen
-mit MobileFirst Foundation Version 8.0 einer **Liberty-for-Java-Laufzeit**.
+In diesem Lernprogramm finden Sie schrittweise Anleitungen für das Einrichten einer MobileFirst-Server-Instanz in IBM Cloud unter Verwendung des Service {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}** Service).   
+Der {{ site.data.keys.mf_bm_short }} Service ist ein IBM Cloud-Service für eine schnelle automatische Installation skalierbarer Entwicklungs- und Produktionsumgebungen mit Mobile Foundation Version 8.0 einer **Liberty-for-Java-Laufzeit**.
 
 Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen an: 
 
-1. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan unterstützt nicht die Verwendung externer Datenbanken und die Definition mehrerer Knoten. *Er ist nur für Entwicklung und Tests bestimmt*. Die Serverinstanz ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. In diesem Plan ist der {{ site.data.keys.mf_analytics_service }} Service standardmäßig enthalten. 
+1. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-Anwendung in einer Liberty-for-Java-Laufzeit bereit. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht in diesem Plan enthalten. Der Plan unterstützt nicht die Verwendung externer Datenbanken. Er ist für Entwicklung und Tests bestimmt. Die Mobile-Foundation-Server-Instanz des Plans *Developer* ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. Die Anzahl verbundener Geräte ist allerdings auf 10 beschränkt. Als Teil dieses Plans wird auch eine Instanz des {{ site.data.keys.mf_analytics_service }} Service bereitgestellt. Wenn Sie mit Ihrer Nutzung die kostenlosen Mobile-Analytics-Berechtigungen überschreiten, werden Gebühren gemäß dem Mobile-Analytics-Basisplan erhoben. 
 
     > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenbank an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
 
-2. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
+2. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für diesen Plan ist eine Serviceinstanz von **Db2 on Cloud** erforderlich. Die Serviceinstanz von Db2 on Cloud wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
 
-3. **Professional Per Capacity:** Dieser Plan ermöglicht Benutzern, in der Produktion beliebig viele mobile Anwendungen zu erstellen, zu testen und auszuführen. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Der Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
+3. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen zu erstellen, zu testen und auszuführen. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für diesen Plan ist eine Serviceinstanz von Db2 on Cloud erforderlich, die separat erstellt und in Rechnung gestellt wird. Mit diesem Plan wird ein Mobile Foundation Server in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten. Optional können Sie eine Mobile-Analytics-Serviceinstanz hinzufügen. Der Mobile-Analytics-Service wird separat in Rechnung gestellt.
 
-4. **Professional 1 Application**: Dieser Plan stellt {{ site.data.keys.mf_server }} in Form einer skalierbaren Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan erfordert einen dashDB-Datenbankservice, der separat erstellt und abgerechnet wird. Der Plan ermöglicht Benutzern die Erstellung und Verwaltung einer einzelnen mobilen Anwendung. Eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
+4. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, eine mobile Anwendung mit einem verhersehbaren Preis zu erstellen und zu verwalten. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Diese eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. Mit diesem Plan wird ein Mobile Foundation Server als Cloud-Foundry-Anwendung in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten. Für diesen Plan ist zudem eine Serviceinstanz von Db2 on Cloud erforderlich, die separat erstellt und in Rechnung gestellt wird. Bei Bedarf können Sie eine Instanz des {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. Der Mobile-Analytics-Service wird separat in Rechnung gestellt.
 
-> Auf der [Serviceseite von bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) finden Sie weitere Informationen zu den verfügbaren Plänen und ihrer Fakturierung.
+5. **Professional Per Capacity:** Dieser Plan ermöglicht Benutzern, in der Produktion beliebig viele mobile Anwendungen zu erstellen, zu testen und auszuführen. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Der Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für den Plan ist eine Serviceinstanz von **Db2 on Cloud** erforderlich. Die Serviceinstanz von Db2 on Cloud wird separat erstellt und in Rechnung gestellt. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
+>_Der Plan **Professional Per Capacity** wird nicht weiter unterstützt._
 
-
+> Die [Servicedetails](https://console.bluemix.net/catalog/services/mobile-foundation/) enthalten weitere Informationen zu den verfügbaren Plänen und ihrer Fakturierung.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
@@ -47,7 +47,7 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 {: #setting-up-the-mobile-foundation-service }
 Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne einzurichten: 
 
-1. Laden Sie [bluemix.net](http://bluemix.net), melden Sie sich an und klicken Sie auf **Katalog**.
+1. Rufen Sie [bluemix.net](http://bluemix.net) auf, melden Sie sich an und klicken Sie auf **Katalog**.
 2. Suchen Sie nach **Mobile Foundation** und klicken Sie auf die zugehörige Kacheloption. 
 3. Geben Sie einen angepassten Namen für die Serviceinstanz ein oder übernehmen Sie den vorgegebenen Standardnamen (*optional*). 
 4. Wählen Sie den gewünschten Preistarif aus und klicken Sie auf **Erstellen**.
@@ -59,7 +59,7 @@ Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne ein
 
 Wenn Sie den {{ site.data.keys.mf_bm_short }} Service erstellen, wird der {{ site.data.keys.mf_server }} erstellt.
   * Sie haben umgehend Zugriff auf den {{ site.data.keys.mf_server }} und können mit Ihrer Arbeit beginnen.
-  * Wenn Sie über die CLI auf den {{ site.data.keys.mf_server }} zugreifen möchten, benötigen Sie Berechtigungsnachweise, die verfügbar sind, wenn Sie in der Bluemix-Konsole links im Navigationsfenster auf **Serviceberechtigungsnachweise** klicken. 
+  * Wenn Sie über die CLI auf den {{ site.data.keys.mf_server }} zugreifen möchten, benötigen Sie Berechtigungsnachweise, die verfügbar sind, wenn Sie in der IBM Cloud-Konsole links im Navigationsfenster auf **Serviceberechtigungsnachweise** klicken. 
 
   ![{{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
@@ -167,8 +167,8 @@ Führen Sie für den Zugriff auf Serverprotokolle die folgenden Schritte aus.
 **Szenario 1:**
 
 1. Richten Sie Ihre Hostmaschine ein. <br/>
-Für die Verwaltung der Bluemix-Cloud-Foundry-App müssen Sie die Cloud-Foundry-CLI installieren.<br/>
-Installieren Sie die [Cloud-Foundry-CLI](https://github.com/cloudfoundry/cli/releases).
+   Für die Verwaltung der IBM Cloud-Cloud-Foundry-App müssen Sie die Cloud-Foundry-CLI installieren.<br/>
+   Installieren Sie die [Cloud-Foundry-CLI](https://github.com/cloudfoundry/cli/releases).
 2. Öffnen Sie das Terminal und melden Sie sich mit `cf login` für Ihre *Organisation* und Ihren *Bereich* an.
 3. Führen Sie auf der Befehlszeilenschnittstelle den folgenden Befehl aus:
 ```bash

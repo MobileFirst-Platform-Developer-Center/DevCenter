@@ -5,9 +5,9 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
-  - name: 下载 Xcode 项目
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

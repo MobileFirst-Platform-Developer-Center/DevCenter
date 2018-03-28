@@ -12,6 +12,8 @@ show_breadcrumb: true
 <br>
 Die {{ site.data.keys.product_full }} vereinfacht die Erstellung, Verwaltung und Aktualisierung Ihrer mobilen Anwendung radikal mit einer Reihe vorintegrierter, umfassender Services für mobile Anwendungen.
 
+
+
 Entwickler können Ihre Anwendung mit dem Front-End-Framework und den Tools Ihrer Wahl erstellen und mit dem
 Software Development Kit (SDK) der {{ site.data.keys.product }}, das für ein breites Spektrum unterstützter mobiler Plattformen verfügbar ist,
 ohne großen Aufwand Funktionen für Push, Authentifizierung und Offlinesynchronisation

@@ -46,9 +46,9 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 
 ## Manejo de un desafío
 {: #handling-the-challenge }
-El requisito mínimo del protocolo `SecurityCheckChallengeHandler` es implementar el método `handleChallenge` que le solicite al usuario las credenciales.El método `handleChallenge` recibe el desafío `JSON` como `Dictionary`.
+El requisito mínimo del protocolo `SecurityCheckChallengeHandler` es implementar el método `handleChallenge` que le solicite al usuario las credenciales. El método `handleChallenge` recibe el desafío `JSON` como `Dictionary`.
 
-En este ejemplo, una alerta le solicita al usuario que introduzca el código PIN: 
+En este ejemplo, una alerta le solicita al usuario que introduzca el código PIN:
 
 ```swift
 override func handleChallenge(challenge: [NSObject : AnyObject]!) {
@@ -82,7 +82,7 @@ self.submitChallengeAnswer(["pin": pinTextField.text!])
 {: #cancelling-the-challenge }
 En algunos casos, como cuando se pulsa el botón **Cancelar** en la IU, desea indicarle a la infraestructura que descarte este desafío por completo.
 
-Para ello, llame: 
+Para ello, llame:
 
 ```swift
 self.cancel()
@@ -90,7 +90,8 @@ self.cancel()
 
 ## Manejo de errores
 {: #handling-failures }
-Es posible que en algunos escenarios se produzca un error (por ejemplo, el número de intentos máximos alcanzado). Para manejar esta situación, implemente el método `handleFailure` de `SecurityCheckChallengeHandler`.La estructura de `Dictionary` pasada como parámetro depende de la naturaleza del error.
+Es posible que en algunos escenarios se produzca un error (por ejemplo, el número de intentos máximos alcanzado). Para manejar esta situación, implemente el método `handleFailure` de `SecurityCheckChallengeHandler`.
+La estructura de `Dictionary` pasada como parámetro depende de la naturaleza del error.
 
 ```swift
 override func handleFailure(failure: [NSObject : AnyObject]!) {
@@ -111,7 +112,7 @@ En general, la infraestructura procesa los logros de forma automática para perm
 
 De forma opcional, también puede elegir realizar otras tareas antes de que la infraestructura cierre el flujo de manejador de desafíos, implementando el método `handleSuccess(success: [NSObject : AnyObject]!)` de `SecurityCheckChallengeHandler` . Una vez más, el contenido y la estructura de `success` `Dictionary` depende de lo que envíe la comprobación de seguridad.
 
-En la aplicación de ejemplo `PinCodeAttemptsSwift`, `handleSuccess` no se implementa porque no hay datos adicionales. 
+En la aplicación de ejemplo `PinCodeAttemptsSwift`, `handleSuccess` no se implementa porque no hay datos adicionales.
 
 ## Registro del manejador de desafíos
 {: #registering-the-challenge-handler }
@@ -135,7 +136,7 @@ En este ejemplo, en una línea:
 WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
 ```
 
-**Nota:** Solo debería registrar el manejador de registros una vez en todo el ciclo de vida de aplicación. Se recomienda utilizar la clase de iOS AppDelegate para hacerlo. 
+**Nota:** Solo debería registrar el manejador de registros una vez en todo el ciclo de vida de aplicación. Se recomienda utilizar la clase de iOS AppDelegate para hacerlo.
 
 ## Aplicación de ejemplo
 {: #sample-application }

@@ -4,11 +4,11 @@ title: 来自 JavaScript（Cordova 或 Web）应用程序的资源请求
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
-  - name: 下载 Web 项目
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---

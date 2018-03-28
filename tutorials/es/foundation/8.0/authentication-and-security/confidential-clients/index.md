@@ -10,11 +10,11 @@ weight: 10
 Las aplicaciones móviles puede utilizar los SDK de cliente de {{ site.data.keys.product_adj }} para realizar una solicitud de acceso a los recursos protegidos.  
 También lo pueden hacer otras entidades que no sean aplicaciones móviles. Dichas entidades se consideran **Clientes confidenciales**.
 
-Los clientes confidenciales son clientes capaces de mantener la confidencialidad de las credenciales de autenticación. Puede utilizar el servidor de autorización de {{ site.data.keys.product_adj }} para garantizar el acceso de clientes confidencial a recursos protegidos, de acuerdo con la especificación OAuth.Esta característica le permite acceder a los recursos de clientes no móviles como, por ejemplo, las aplicaciones de pruebas de rendimiento y cualquier otro tipo de fondo que necesite una solicitud a un recurso protegido o utilice una de las **API REST** de {{ site.data.keys.product }} como, por ejemplo, la API REST para las **notificaciones push**.
+Los clientes confidenciales son clientes capaces de mantener la confidencialidad de las credenciales de autenticación. Puede utilizar el servidor de autorización de {{ site.data.keys.product_adj }} para garantizar el acceso de clientes confidencial a recursos protegidos, de acuerdo con la especificación OAuth. Esta característica le permite acceder a los recursos de clientes no móviles como, por ejemplo, las aplicaciones de pruebas de rendimiento y cualquier otro tipo de fondo que necesite una solicitud a un recurso protegido o utilice una de las **API REST** de {{ site.data.keys.product }} como, por ejemplo, la API REST para las **notificaciones push**.
 
 Empiece con registrar un cliente confidencial con {{ site.data.keys.mf_server }}. Como parte del registro, proporcione las credenciales del cliente confidencial, que consisten en un ID y un secreto. Además, defina el ámbito permitido del cliente, que determina los ámbitos que se pueden conceder al cliente. Cuando un cliente confidencial registrado solicita una señal de acceso del servidor de autorización, el servidor autentica el cliente utilizando las credenciales registradas y verifica que el ámbito solicitado coincide con el ámbito permitido del cliente.
 
-Los clientes confidenciales registrados pueden obtener una señal para utilizarla en todas las solicitudes en {{ site.data.keys.mf_server }}. Este flujo se basa en el [flujo de credenciales de cliente ](https://tools.ietf.org/html/rfc6749#section-1.3.4) de la especificación OAuth. Tenga en cuenta que la señal de acceso para un cliente confidencial es válida durante una hora.Si utiliza un cliente confidencial para una tarea que dura más de una hora, renueve la señal cada hora enviando una solicitud de señal nueva. 
+Los clientes confidenciales registrados pueden obtener una señal para utilizarla en todas las solicitudes en {{ site.data.keys.mf_server }}. Este flujo se basa en el [flujo de credenciales de cliente ](https://tools.ietf.org/html/rfc6749#section-1.3.4) de la especificación OAuth. Tenga en cuenta que la señal de acceso para un cliente confidencial es válida durante una hora. Si utiliza un cliente confidencial para una tarea que dura más de una hora, renueve la señal cada hora enviando una solicitud de señal nueva.
 
 ## Registro del cliente confidencial
 {: #registering-the-confidential-client }
@@ -23,10 +23,11 @@ Debe proporcionar la información siguiente:
 
 - **Nombre de visualización**: Se utiliza un nombre de visualización opcional para hacer referencia al cliente confidencial. El nombre de visualización predeterminado es el valor del parámetro de ID. Por ejemplo: **Servidor de nodo de fondo**.
 - **ID**: Un identificador único para el cliente confidencial (puede considerarse como "nombre de usuario").
-El ID solo puede contener caracteres ASCII. 
-- **Secreto**: Una contraseña privada que permite autorizar el acceso del cliente confidencial (puede considerarse una clave de API).El secreto solo puede contener caracteres ASCII.
-- **Ámbito permitido**: Al cliente confidencial que utiliza esta combinación de ID y secreto se le concede de forma automática el ámbito que se define aquí.Para obtener más información acerca de los ámbitos, consulte [Ámbitos](../#scopes).
-    - Un elemento de un ámbito permitido puede incluir el carácter comodín asterisco especial (`*`), que representa cualquier secuencia de cero o más caracteres. Por ejemplo, si el elemento de ámbito es `send*`, el cliente confidencial puede acceder a los ámbitos que contiene cualquier elemento de ámbito que empieza con "send" como, por ejemplo, "sendMessage". El comodín asterisco puede colocarse en cualquier posición en el elemento de ámbito, y también puede aparecer más de una vez.  
+  El ID solo puede contener caracteres ASCII.
+- **Secreto**: Una contraseña privada que permite autorizar el acceso del cliente confidencial (puede considerarse una clave de API).
+  El secreto solo puede contener caracteres ASCII.
+- **Ámbito permitido**: Al cliente confidencial que utiliza esta combinación de ID y secreto se le concede de forma automática el ámbito que se define aquí. Para obtener más información acerca de los ámbitos, consulte [Ámbitos](../#scopes).
+    - Un elemento de un ámbito permitido puede incluir el carácter comodín asterisco especial (`*`), que representa cualquier secuencia de cero o más caracteres. Por ejemplo, si el elemento de ámbito es `send*`, el cliente confidencial puede acceder a los ámbitos que contiene cualquier elemento de ámbito que empieza con "send" como, por ejemplo, "sendMessage". El comodín asterisco puede colocarse en cualquier posición en el elemento de ámbito, y también puede aparecer más de una vez. 
     - Un parámetro de ámbito permitido que consiste en un único carácter asterisco (*) indica que el cliente confidencial puede conceder una señal para cualquier ámbito.
 
 **Ejemplos de ámbitos:**
@@ -34,7 +35,7 @@ El ID solo puede contener caracteres ASCII.
 - [Protección de recursos externos](../protecting-external-resources) utiliza el ámbito `authorization.introspect`.
 - [El envío de una notificación push](../../notifications/sending-notifications) mediante la API REST utiliza los elementos de ámbito separados por espacios `messages.write` y `push.application.<applicationId>`.
 - Un elemento de ámbito personalizado puede proteger a los adaptadores, como por ejemplo `accessRestricted`.
-- El ámbito `*` es un ámbito general que concede acceso a cualquier ámbito solicitado. 
+- El ámbito `*` es un ámbito general que concede acceso a cualquier ámbito solicitado.
 
 <img class="gifplayer" alt="Configuración de un cliente confidencial" src="push-confidential-client.png"/>
 
@@ -63,10 +64,9 @@ El servicio de push de {{ site.data.keys.product }} utiliza el cliente `push` de
 Se puede obtener una señal del {{ site.data.keys.mf_server }} **punto final de señal**.  
 
 **Para realizar pruebas**, puede utilizar Postman tal y como se describe a continuación.  
-En una situación real, implemento Postman en la lógica de fondo con la tecnología que desee. 
+En una situación real, implemento Postman en la lógica de fondo con la tecnología que desee.
 
-1.  Realice una solicitud de **POST** a **http(s)://[ipaddress-or-hostname]: [port]/[runtime]/api/az/v1/token**.
-  
+1.  Realice una solicitud de **POST** a **http(s)://[ipaddress-or-hostname]: [port]/[runtime]/api/az/v1/token**.  
     Por ejemplo: `http://localhost:9080/mfp/api/az/v1/token`
     - En un entorno de desarrollo, {{ site.data.keys.mf_server }} utiliza un tiempo de ejecución `mfp` preexistente.  
     - En un entorno de producción, sustituya el valor de tiempo de ejecución con el nombre de tiempo de ejecución.

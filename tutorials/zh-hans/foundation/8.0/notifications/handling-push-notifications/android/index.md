@@ -4,7 +4,7 @@ title: 在 Android 中处理推送通知
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
@@ -187,8 +187,8 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
     @Override
     public void onFailure(MFPPushException e) {
         // Registration failed with error
-    }
-});
+     }
+ });
 ```
 
 #### 获取标记
@@ -301,7 +301,7 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
    ```java
    @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
-        // Handle push notification here
+        // Handle push notification here      
    }
    ```
 

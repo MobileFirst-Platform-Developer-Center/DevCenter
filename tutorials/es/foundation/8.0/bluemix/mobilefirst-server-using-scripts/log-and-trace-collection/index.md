@@ -1,15 +1,17 @@
 ---
-layout: tutorial
-title: Recopilación de registros y rastreo
-relevantTo: [ios,android,windows,javascript]
-weight: 1
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Log and trace collection
+#relevantTo: [ios,android,windows,javascript]
+#weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-IBM Containers para Bluemix incluye funciones de registro y supervisión relacionadas con la CPU, la memoria y las redes. Opcionalmente, puede cambiar los niveles de registro para sus contenedores de {{ site.data.keys.product_adj }}.
+IBM Containers para IBM Cloud incluye funciones de registro y supervisión relacionadas con la CPU, la memoria y las redes. Opcionalmente, puede cambiar los niveles de registro para sus contenedores de {{ site.data.keys.product_adj }}.
 
-La opción para crear archivos de registro para contenedores de {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} y {{ site.data.keys.mf_app_center }} está habilitada de forma predeterminada (utilizando el nivel (`*=info`). Puede cambiar los niveles de registro añadiendo una alteración manual de código o inyectando código mediante un archivo de script determinado. Los registros de contenedor, servidor y tiempo de ejecución se pueden visualizar desde una consola logmet de Bluemix mediante la herramienta de visualización Kibana. La supervisión se puede llevar a cabo desde una consola logmet de Bluemix mediante Grafana, un panel de control de métricas de código abierto y un editor de gráficos.
+La opción para crear archivos de registro para contenedores de {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} y {{ site.data.keys.mf_app_center }} está habilitada de forma predeterminada (utilizando el nivel (`*=info`). Puede cambiar los niveles de registro añadiendo una alteración manual de código o inyectando código mediante un archivo de script determinado. Los registros de contenedor, servidor y tiempo de ejecución se pueden visualizar desde una consola logmet de IBM Cloud mediante la herramienta de visualización Kibana. La supervisión se puede llevar a cabo desde una consola logmet de IBM Cloud mediante Grafana, un panel de control de métricas de código abierto y un editor de gráficos.
 
 Cuando crea se crea su contenedor {{ site.data.keys.product_adj }} con una clave SSH (Secure Shell) y se enlaza a una dirección IP pública, puede utilizar una clave privada adecuada para ver de forma segura los registros de la instancia del contenedor.
 
@@ -41,7 +43,7 @@ Los archivos de registro se generan para las actividades del servidor de {{ site
 
 Puede iniciar sesión en el contenedor siguiendo los siguientes pasos que se describen en la sección Acceso a los archivos de registro y, a continuación, podrá acceder a los archivos de registro.
 
-Para que persistan los archivos, incluso después de que deje de existir un contenedor, habilite un volumen. (De forma predeterminada, el volumen no está habilitado). Si habilita un volumen también puede ver los registros desde Bluemix utilizando la interfaz logmet, tal como: //logmet.ng.bluemix.net/kibana.
+Para que persistan los archivos, incluso después de que deje de existir un contenedor, habilite un volumen. (De forma predeterminada, el volumen no está habilitado). Si habilita un volumen también puede ver los registros desde IBM Cloud utilizando la interfaz logmet, tal como: //logmet.ng.bluemix.net/kibana.
 
 **Habilitación de un volumen**
 Un volumen permite que la persistencia de archivos de registro en contenedores. El volumen para los registros de contenedor de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analyics }} no está habilitado de forma predeterminada.
@@ -53,11 +55,11 @@ Se puede acceder a los registros emitiendo una solicitud SSH para el contenedor.
 
 ## Acceso a archivos de registro
 {: #accessing-log-files }
-Los registros se crean para cada instancia de contenedor. Puede acceder a los archivos de registros utilizando la API REST de IBM Container Cloud Service, mediante los mandatos `cf ic` o mediante la consola logmet de Bluemix.
+Los registros se crean para cada instancia de contenedor. Puede acceder a los archivos de registros utilizando la API REST de IBM Container Cloud Service, mediante los mandatos `cf ic` o mediante la consola logmet de IBM Cloud.
 
 ### API REST de IBM Container Cloud Service
 {: #ibm-container-cloud-service-rest-api }
-Para cualquier instancia de contenedor, se puede visualizar **docker.log** y **/var/log/rsyslog/syslog** mediante el [servicio logmet de Bluemix](https://logmet.ng.bluemix.net/kibana/). Las actividades del registro se pueden visualizar utilizando el panel de control Kibana similar.
+Para cualquier instancia de contenedor, se puede visualizar **docker.log** y **/var/log/rsyslog/syslog** mediante el [servicio logmet de IBM Cloud](https://logmet.ng.bluemix.net/kibana/). Las actividades del registro se pueden visualizar utilizando el panel de control Kibana similar.
 
 Se pueden utilizar los mandatos de IBM Containers (`cf ic exec`) para acceder a las instancias de contenedor en ejecución. De forma alternativa, puede obtener los archivos de registro de contenedor mediante SSH (Secure Shell).
 

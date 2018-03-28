@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 在客户机应用程序中处理 SMS 通知
-breadcrumb_title: 处理 SMS 通知
+breadcrumb_title: Handling SMS Notifications
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true

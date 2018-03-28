@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 登录 JavaScript (Cordova, Web) 应用程序
-breadcrumb_title: 登录 JavaScript
+title: JavaScript（Cordova 或 Web）应用程序中的日志记录
+breadcrumb_title: Logging in JavaScript
 relevantTo: [javascript]
 weight: 1
 ---

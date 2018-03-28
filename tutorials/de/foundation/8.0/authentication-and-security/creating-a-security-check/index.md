@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Sicherheitsüberprüfung erstellen
-breadcrumb_title: Sicherheitsüberprüfung erstellen
+breadcrumb_title: Creating a security check
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
@@ -111,7 +111,7 @@ zugänglich gemacht haben. Auf die Eigenschaften wird mit dem Wert des konfiguri
 name verwiesen. Falls Sie in der Definition das Attribut description der Eigenschaft
 festgelegt haben, wird die Beschreibung ebenfalls angezeigt. Für jede Eigenschaft wird der Wert, der mit dem Attribut
 `defaultValue` konfiguriert wurde, als aktueller Wert angezeigt. Sie können den Wert ändern, um den Standardwert aus Ihrer Sicherheitsprüfungsdefinition
-außer Kraft zu setzen. Sie können auch jederzeit die ursprünglichen Standardwerte aus Ihrer Sicherheitsprüfungsdefinition wiederherstellen.  
+außer Kraft zu setzen. Sie können auch jederzeit die ursprünglichen Standardwerte aus Ihrer Sicherheitsprüfungsdefinition wiederherstellen. 
 * Sie können auch in der {{ site.data.keys.mf_console }} im Abschnitt **Anwendungen** eine Anwendungsversion auswählen. 
 
 ## Sicherheitsüberprüfungen implementieren
@@ -198,6 +198,8 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 <br/>
 Diese Eigenschaften können auf verschiedenen Ebenen konfiguriert werden:
 
+
+
 ### adapter.xml
 {: #adapterxml }
 In der Datei **adapter.xml** des Java-Adapters können Sie innerhalb von `<securityCheckDefinition>` ein `<property>`-Element oder mehrere solche Elemente hinzufügen.   
@@ -241,7 +243,7 @@ und führen Sie den Befehl `mfpdev adapter pull` aus.
 3. Bearbeiten Sie die Datei und suchen Sie nach dem Objekt `securityCheckDefinitions`. Finden oder erstellen Sie in diesem Objekt
 ein Objekt, das den Namen Ihrer ausgewählten Sicherheitsüberprüfung hat. Suchen Sie in dem Sicherheitsprüfungsobjekt
 ein Eigenschaftenobjekt ("properties"). Fügen Sie ggf. ein solches Objekt hinzu. Fügen Sie für jede verfügbare Konfigurationseigenschaft, die Sie definieren wollen,
-zum Objekt properties ein Paar aus Name und Wert der Konfigurationseigenschaft hinzu. Beispiel:  
+zum Objekt properties ein Paar aus Name und Wert der Konfigurationseigenschaft hinzu. Beispiel: 
 
    ```xml
    "securityCheckDefinitions": {
@@ -253,7 +255,7 @@ zum Objekt properties ein Paar aus Name und Wert der Konfigurationseigenschaft h
         }
    }
    ```
-   
+
 4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev adapter push` aus.
 
 ### {{ site.data.keys.mf_console }} - Anwendung
@@ -286,7 +288,7 @@ für jede verfügbare Konfigurationseigenschaft, die Sie konfigurieren möchten,
         }
    }
    ```
-   
+
 4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
 
 ## Vordefinierte Sicherheitsüberprüfungen

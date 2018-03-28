@@ -55,7 +55,7 @@ suivante : `mfpdev server console`.
 #### Navigateur de bureau
 {: #desktop-browser-remote }
 A partir du navigateur de votre choix, chargez l'URL `http://the-server-host:server-port-number/mfpconsole`.  
-Le serveur hôte peut être soit un serveur appartenant à un client, soit le service IBM Bluemix, IBM [Mobile Foundation](../../../bluemix/).
+Le serveur hôte peut être soit un serveur appartenant à un client, soit le service IBM Cloud, IBM [Mobile Foundation](../../../bluemix/).
 
 #### Ligne de commande
 {: #command-line-remote }

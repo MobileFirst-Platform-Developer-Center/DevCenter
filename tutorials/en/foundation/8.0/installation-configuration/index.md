@@ -43,12 +43,12 @@ The first part of installing the {{ site.data.keys.product }} Server uses an IBM
 
 > **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
-The {{ site.data.keys.mf_server }} installation wizard uses IBM Installation Manager to place all of the server components onto the server.  Tools and libraries are also installed that are required to deploy the {{ site.data.keys.product }} Server components to the application server.  As a best practice do not install all of the components on the same application server instance, except in the case of a development server. The deployment tools allow for selection of the components to install.  Please see the [Topologies and Network flows](production/topologies) for points to consider before installing the server.
+The {{ site.data.keys.mf_server }} installation wizard uses IBM Installation Manager to place all of the server components onto the server.  Tools and libraries are also installed that are required to deploy the {{ site.data.keys.product }} Server components to the application server.  As a best practice do not install all of the components on the same application server instance, except in the case of a development server. The deployment tools allow for selection of the components to install.  Please see the [Topologies and Network flows](production/prod-env/topologies) for points to consider before installing the server.
 
 Please read below for information on preparing and installing {{ site.data.keys.mf_server }} and optional services on your specific environment. For a simple set up, please read [Setting up a test or production environment](production) tutorial.
 
-* [Verifying prerequisites](production/#prerequisites)
-* [{{ site.data.keys.mf_server }} components overview](production/topologies)
+* [Verifying prerequisites](production/prod-env/prereqs)
+* [{{ site.data.keys.mf_server }} components overview](production/prod-env/topologies)
 * Factors to consider, before loading tools and libraries to deploy MobileFirst Server components, and Application Centre optionally
   * Token license
   * MobileFirst Foundation Application Centre
@@ -58,8 +58,8 @@ Please read below for information on preparing and installing {{ site.data.keys.
   * using IBM Installation Manager Install wizard
   * running IBM Installation Manager in command line
   * using XML response files - silent installation
-* [Configuring backend databases for MobileFirst Foundation Server components](production/databases)
-* [Installing MobileFirst Server to an application server](production/appserver)
+* [Configuring backend databases for MobileFirst Foundation Server components](production/prod-env/databases)
+* [Installing MobileFirst Server to an application server](production/prod-env/appserver)
 * [Configuring MobileFirst Server](production/server-configuration)
 * [Installing MobileFirst Analytics Server](production/analytics/installation)
 * [Installing Application Center](production/appcenter)
@@ -70,8 +70,8 @@ Please read below for information on preparing and installing {{ site.data.keys.
 
 Learn about the {{ site.data.keys.mf_server }} installation process by going through the instructions to create a functional {{ site.data.keys.mf_server }} cluster with two nodes on WebSphere Application Server Liberty profile. The installation can be completed by using the graphical tools (GUI) or via the command line.
 
-* [GUI mode installation with IBM Installation Manager and the Server Configuration Tool ](production/tutorials/graphical-mode).
-* [Command line Installation with command line tool](production/tutorials/command-line).
+* [GUI mode installation with IBM Installation Manager and the Server Configuration Tool ](production/simple-install/tutorials/graphical-mode).
+* [Command line Installation with command line tool](production/simple-install/tutorials/command-line).
 
 After completing the installation using either of the two methods above, further [configuration](production/server-configuration) may be required to complete the setup depending on the requirements.
 

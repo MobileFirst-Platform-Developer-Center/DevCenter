@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: JavaScript（Cordova 或 Web）应用程序的多语言翻译
-breadcrumb_title: 多语言翻译
+title: JavaScript（Cordova 或 Web）应用程序的多语种翻译
+breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

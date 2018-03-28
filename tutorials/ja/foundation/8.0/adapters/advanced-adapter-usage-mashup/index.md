@@ -1,17 +1,17 @@
 ---
 layout: tutorial
 title: 拡張アダプターの使用法とマッシュアップ
-breadcrumb_title: アダプターのマッシュアップ
+breadcrumb_title: Adapter Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-さまざまなタイプのアダプターの基本的な使用法について説明してきましたが、これらのアダプターを組み合わせると、異なるアダプターを使用して 1 つの処理結果を生成するプロシージャーを作成できることを覚えておくことは重要です。複数のソース (異なる HTTP サーバー、SQL など) を組み合わせることができます。
+さまざまなタイプのアダプターの基本的な使用法について説明してきましたが、これらのアダプターを組み合わせると、異なるアダプターを使用して 1 つの処理結果を生成するプロシージャーを作成できることを覚えておくことは重要です。 複数のソース (異なる HTTP サーバー、SQL など) を組み合わせることができます。
 
 理論上は、クライアント・サイドから複数の要求を連続的に行うことができ、一方が他方に依存した状態になります。
 ただし、サーバー・サイドにこのロジックを作成することで、速度が向上し、よりクリーンになる可能性があります。
@@ -29,7 +29,7 @@ weight: 8
 ### JavaScript アダプターからの JavaScript アダプター・プロシージャーの呼び出し
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-JavaScript アダプター・プロシージャーを別の JavaScript アダプターから呼び出す場合、`MFP.Server.invokeProcedure(invocationData)` API を使用します。この API を使用することにより、どの JavaScript アダプター上のプロシージャーも呼び出すことができます。`MFP.Server.invokeProcedure(invocationData)` は、呼び出されたプロシージャーから取得した結果オブジェクトを返します。
+JavaScript アダプター・プロシージャーを別の JavaScript アダプターから呼び出す場合、`MFP.Server.invokeProcedure(invocationData)` API を使用します。 この API を使用することにより、どの JavaScript アダプター上のプロシージャーも呼び出すことができます。 `MFP.Server.invokeProcedure(invocationData)` は、呼び出されたプロシージャーから取得した結果オブジェクトを返します。
 
 `invocationData` 関数シグニチャーは次のとおりです。  
 `MFP.Server.invokeProcedure({adapter: [アダプター名], procedure: [プロシージャー名], parameters: [コンマ区切りのパラメーター]})`
@@ -84,7 +84,7 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 
 * SQL アダプター:
   * 通貨のリストを通貨データベース表から取り出します。
-  * 結果には通貨のリストが含まれています。各通貨には、ID、シンボル、および名前があります。例: {3, EUR, Euro}
+  * 結果には通貨のリストが含まれています。 各通貨には、ID、シンボル、および名前があります。 例: {3, EUR, Euro}
   * このアダプターには、2 つのパラメーター (更新済みの為替レートを取得するための基本通貨とターゲット通貨) を渡す HTTP アダプターを呼び出すプロシージャーも含まれています。
 * HTTP アダプター:
   * Fixer.io サービスに接続します。
@@ -98,11 +98,11 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 それぞれのタイプで、アダプターの名前がやや異なります。  
 マッシュアップ・タイプとそれに該当するアダプター名のリストは次のとおりです。
 
-| シナリオ|      SQL アダプター名|  HTTP アダプター名|  
+| シナリオ                                         |      SQL アダプター名        |  HTTP アダプター名    |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** アダプター → **JavaScript** アダプター| SQLAdapterJS| HTTPAdapterJS|  
-| **Java** アダプター → **JavaScript** アダプター| SQLAdapterJava| HTTPAdapterJS|  
-| **Java** アダプター → **Java** アダプター| SQLAdapterJava| HTTPAdapterJava|
+| **JavaScript** アダプター → **JavaScript** アダプター  | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java** アダプター → **JavaScript** アダプター        | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java** アダプター → **Java** アダプター              | SQLAdapterJava               | HTTPAdapterJava       |
 
 
 ### マッシュアップのサンプル・フロー

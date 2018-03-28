@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adaptador JavaScript SQL
-breadcrumb_title: Adaptador SQL
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -15,7 +15,7 @@ weight: 2
 Un adaptador SQL se diseña con el propósito de comunicarse con un origen de datos SQL. Utilice consultas SQL simples o procedimientos almacenados.
 
 
-Para conectarse a una base de datos, el código JavaScript necesita un controlador de conector JDBC para el tipo de base de datos específico. El controlador del conector JDBC se debe descargar de forma independiente para el tipo de base de datos específico y añadirlo como una dependencia en su proyecto. Para obtener más información sobre cómo añadir una dependencia, consulte la sección de Depencias en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](../../creating-adapters/#dependencies).
+Para conectarse a una base de datos, el código JavaScript necesita un controlador de conector JDBC para el tipo de base de datos específico. El controlador del conector JDBC se debe descargar de forma independiente para el tipo de base de datos específico y añadirlo como una dependencia en su proyecto. Para obtener más información sobre cómo añadir una dependencia, consulte la sección de Dependencias en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](../../creating-adapters/#dependencies).
 
 
 En esta guía de aprendizaje y en el ejemplo que lo acompaña, aprenderá a utilizar un adaptador para conectarse a una base de datos MySQL. 

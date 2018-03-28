@@ -4,9 +4,9 @@ title: 来自 Xamarin 应用程序的资源请求
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 downloads:
-  - name: 下载 Xamarin 项目
+  - name: Download Xamarin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---

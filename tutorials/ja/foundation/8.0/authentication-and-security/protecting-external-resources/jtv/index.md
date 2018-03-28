@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Java トークン・バリデーター
-breadcrumb_title: Java トークン・バリデーター
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: サンプルのダウンロード
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -43,11 +43,11 @@ Java ライブラリーは、JAR ファイル (**mfp-java-token-validator-8.0.0.
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: 許可サーバーの URI。通常は、{{ site.data.keys.mf_server }} です。例えば、**http://localhost:9080/mfp/api** です。
+- `authorizationURI`: 許可サーバーの URI。通常は、{{ site.data.keys.mf_server }} です。 例えば、**http://localhost:9080/mfp/api** です。
 - `clientId`: {{ site.data.keys.mf_console }} で構成した機密クライアント ID。
 - `clientSecret`: {{ site.data.keys.mf_console }} で構成した機密クライアント秘密鍵。
 
-> このライブラリーは、許可サーバーのイントロスペクション・エンドポイントとの対話をカプセル化および簡素化する API を公開します。詳細な API リファレンスについては、[{{ site.data.keys.product_adj }} Java トークン・バリデーター API リファレンス](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)を参照してください。
+> このライブラリーは、許可サーバーのイントロスペクション・エンドポイントとの対話をカプセル化および簡素化する API を公開します。 詳細な API リファレンスについては、[{{ site.data.keys.product_adj }} Java トークン・バリデーター API リファレンス](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)を参照してください。
 
 ## 資格情報の検証
 {: #validating-the-credentials }
@@ -57,7 +57,7 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: `Authorization` HTTP ヘッダーのコンテンツ、すなわち、アクセス・トークンです。例えば、`HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`) から取得されます。
+- `authorizationHeader`: `Authorization` HTTP ヘッダーのコンテンツ、すなわち、アクセス・トークンです。 例えば、`HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`) から取得されます。
 - `expectedScope`: トークンを検証するための基準となるスコープ。例えば、`accessRestricted` です。
 
 結果の `TokenValidationResult` オブジェクトを照会して、エラーまたは有効なイントロスペクション・データを確認できます。
@@ -89,9 +89,9 @@ String username = introspectionData.getUsername();
 
 ## キャッシュ
 {: #cache }
-`TokenValidationManager` クラスには、トークンおよびイントロスペクション・データをキャッシュに入れる内部キャッシュが付いてきます。キャッシュの目的は、同じヘッダーを使用して要求が発行された場合に、許可サーバーに対して行われるトークンの*イントロスペクション* の量を減らすことです。
+`TokenValidationManager` クラスには、トークンおよびイントロスペクション・データをキャッシュに入れる内部キャッシュが付いてきます。 キャッシュの目的は、同じヘッダーを使用して要求が発行された場合に、許可サーバーに対して行われるトークンの*イントロスペクション* の量を減らすことです。
 
-デフォルトのキャッシュ・サイズは **50000 項目**です。この容量に達すると、一番古いトークンから削除されます。  
+デフォルトのキャッシュ・サイズは **50000 項目**です。 この容量に達すると、一番古いトークンから削除されます。  
 
 `TokenValidationManager` のコンストラクターは、保管する `cacheSize` (イントロスペクション・データ項目の数) も受け入れます。
 

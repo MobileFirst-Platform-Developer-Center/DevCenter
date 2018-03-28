@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Problèmes et limitations connus
+title: Limitations et problèmes connus
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

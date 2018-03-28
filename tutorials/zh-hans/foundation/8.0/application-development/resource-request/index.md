@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 客户机应用程序中的资源请求
-breadcrumb_title: 资源请求
+breadcrumb_title: Resource Requests
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 在 Android 中处理 SMS 通知
-breadcrumb_title: 在 Android 中处理 SMS
+breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 10
 downloads:
-  - name: 下载 Android 项目
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -62,8 +62,8 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
     @Override
     public void onFailure(MFPPushException e) {
         // Registration failed with error
-    }
-}, optionObject);
+     }
+ }, optionObject);
 ```
 
 * **optionObject**：一个 `JSONObject`，其包含注册设备所用的电话号码。 例如：

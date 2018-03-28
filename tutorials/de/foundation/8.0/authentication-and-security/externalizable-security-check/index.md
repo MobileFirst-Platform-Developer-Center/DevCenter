@@ -66,6 +66,8 @@ public String getState()
 ```
 Im folgenden Beipiel wird einfach überprüft, ob der Benutzer angemeldet ist, und entsprechend ein Erfolg (success) oder ein Fehler (failure) zurückgegeben:
 
+
+
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
     if (loggedIn){

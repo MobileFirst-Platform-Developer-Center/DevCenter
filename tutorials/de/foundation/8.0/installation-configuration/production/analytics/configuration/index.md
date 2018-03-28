@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server Konfigurationshandbuch
-breadcrumb_title: Konfigurationshandbuch
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -11,7 +11,7 @@ weight: 2
 muss konfiguriert werden. Einige der Konfigurationsparameter gelten für einen Einzelknoten und andere Parameter gelten für den gesamten Cluster.
 Welcher Parameter wofür gilt, ist jeweils angegeben. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Konfigurationseigenschaften](#configuration-properties)
@@ -148,6 +148,8 @@ Vorrang. Wenn Sie beispielsweise
 die JNDI-Eigenschaft **analytics/httpport** und die Systemumgebungsvariable
 **ANALTYICS_httpport** definiert haben, wird der Wert für
 **ANALYTICS_httpport** verwendet. 
+
+> **Wichtiger Hinweis**: Zurzeit bietet MobileFirst Analytics Version 8.0 keine Unterstützung für mehrere Nutzer. Ereignisse von MobileFirst Server werden standardmäßig an eine Einzelnutzerarchitektur gesendet. 
 
 #### Dokumentlebensdauer
 {: #document-time-to-live-ttl }

@@ -22,8 +22,8 @@ weight: 4
 #### 前提条件:
 {: #prerequisites }
 * 構成済み Visual Studio 2013/5
-* *オプション*。{{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
-* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 {{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
@@ -32,7 +32,7 @@ weight: 4
 
 ### 2. アプリケーションの作成
 {: #2-creating-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。 ユーザー名/パスワードは *admin/admin* です。
 
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * **Windows** プラットフォームを選択します。
@@ -106,10 +106,11 @@ weight: 4
 {: 5-testing-the-application }
 1. Visual Studio で、**mfpclient.resw** ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
-    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{ site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
-
+    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。 リモート {{ site.data.keys.mf_server }} が使用されている場合は、[コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myIBMCloudServer` を実行します。
+    
 2. **「アプリケーションの実行 (Run App)」**ボタンを押します。
 
 ### 結果

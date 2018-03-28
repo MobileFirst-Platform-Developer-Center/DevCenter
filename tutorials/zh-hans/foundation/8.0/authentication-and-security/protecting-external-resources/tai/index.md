@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 信任关联拦截器
-breadcrumb_title: 信任关联拦截器
+breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: 下载样本
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

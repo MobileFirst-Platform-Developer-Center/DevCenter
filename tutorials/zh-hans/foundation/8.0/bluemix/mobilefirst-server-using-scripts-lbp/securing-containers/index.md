@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 保护 MobileFirst 服务器
+title: 保护 MobileFirst Server
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -70,8 +70,7 @@ IBM MobileFirst Foundation 实例安全配置应包含加密密码，启用应�
 
 ### 保护后端连接的安全
 {: #securing-a-connection-to-the-back-end }
-如果在容器和本地后端系统之间需要安全连接，可以使用 Bluemix Secure
-Gateway 服务。 本文中提供配置详细信息：安全地从 IBM Bluemix 容器上的 MobileFirst 连接到本地后端。
+如果在容器和本地后端系统之间需要安全连接，可以使用 IBM Cloud Secure Gateway 服务。“Connecting Securely to On-Premise Backends from MobileFirst on IBM Cloud containers”一文中提供了配置详细信息。
 
 #### 对 {{ site.data.keys.mf_server }} 中配置的用户角色的密码进行加密
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
@@ -264,7 +263,7 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 
 * 设置和配置 LDAP 存储库
 * 更改注册表文件 (registry.xml)
-* 配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 Bluemix 上。）
+* 配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 IBM Cloud 上。）
 
 #### LDAP 存储库
 {: #ldap-repository }
@@ -313,11 +312,11 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 
 #### 安全网关
 {: #secure-gateway }
-要配置到 LDAP 服务器的安全网关连接，必须在 Bluemix 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。 您需要本地 LDAP 主机名和端口号才能完成此任务。
+要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此任务。
 
-1. 登录到 Bluemix 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
+1. 登录到 IBM Cloud 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
 2. 在“添加服务”下，选择应用程序，然后单击**创建**。 这样就将服务绑定到了应用程序。
-3. 转至应用程序的 Bluemix 仪表板，单击**安全网关**服务实例，然后单击**添加网关**。
+3. 转至应用程序的 IBM Cloud 仪表板，单击**安全网关**服务实例，然后单击**添加网关**。
 4. 命名网关并单击**添加目标**，然后输入本地 LDAP 服务器的名称、IP 地址和端口。
 5. 按照提示完成连接。 要查看已初始化的目标，请导航至 LDAP 网关服务的“目标”屏幕。
 6. 要获取您所需的主机和端口信息，请单击 LDAP 网关服务实例（位于“安全网关”仪表板上）上的“信息”图标。 显示的详细信息是本地 LDAP 服务器的别名。
@@ -343,17 +342,17 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 ### 配置应用程序以使用 LDAP
 {: #configuring-apps-to-work-with-ldap }
 配置 MobileFirst 移动应用程序以使用外部 LDAP 注册表。  
-配置流程包含以下步骤：配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 Bluemix 上。）
+配置流程包含以下步骤：配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 IBM Cloud 上。）
 
-要配置到 LDAP 服务器的安全网关连接，必须在 Bluemix 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。 您需要本地 LDAP 主机名和端口号才能完成此步骤。
+要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此步骤。
 
-1. 登录到 Bluemix 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
+1. 登录到 IBM Cloud 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
 2. 在“添加服务”下，选择应用程序，然后单击**创建**。 这样就将服务绑定到了应用程序。
-3. 转至应用程序的 Bluemix 仪表板，单击**安全网关**服务实例，然后单击**添加网关**。
+3. 转至应用程序的 IBM Cloud 仪表板，单击**安全网关**服务实例，然后单击**添加网关**。
 4. 命名网关并单击**添加目标**，然后输入本地 LDAP 服务器的名称、IP 地址和端口。
 5. 按照提示完成连接。 要查看已初始化的目标，请导航至 LDAP 网关服务的“目标”屏幕。
 6. 要获取您所需的主机和端口信息，请单击 LDAP 网关服务实例（位于“安全网关”仪表板上）上的“信息”图标。 显示的详细信息是本地 LDAP 服务器的别名。
 7. 捕获**目标标识**和**云主机：端口**值。 针对 LDAP 登录模块提供这些值。
 
 **结果**  
-这样将在 Bluemix 上的 MobileFirst 应用程序与本地 LDAP 服务器之间建立通信。 通过本地 LDAP 服务器验证 Bluemix 应用程序的认证和授权。
+这样将在 IBM Cloud 上的 MobileFirst 应用程序与本地 LDAP 服务器之间建立通信。通过本地 LDAP 服务器验证 IBM Cloud 应用程序的认证和授权。

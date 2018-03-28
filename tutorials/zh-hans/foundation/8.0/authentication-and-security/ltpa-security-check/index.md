@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 基于 LTPA 的单点登录 (SSO) 安全性检查
-breadcrumb_title: LTPA 安全性检查
+breadcrumb_title: LTPA Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---

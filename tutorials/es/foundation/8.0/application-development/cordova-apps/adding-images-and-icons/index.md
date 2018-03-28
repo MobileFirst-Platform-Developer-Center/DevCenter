@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Adición de iconos y pantallas iniciales personalizadas a aplicaciones Cordova
-breadcrumb_title: Adición de imágenes e iconos
+title: Adición de iconos y pantallas iniciales personalizados a aplicaciones Cordova
+breadcrumb_title: Adding images and icons
 relevantTo: [cordova]
 weight: 1
 ---

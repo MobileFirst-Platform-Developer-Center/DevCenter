@@ -1,19 +1,19 @@
 ---
 layout: tutorial
 title: 注册
-breadcrumb_title: 注册
+breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: 下载 iOS Swift 项目
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: 下载 Android 项目
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: 下载 Web 项目
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: 下载 SecurityCheck Maven 项目
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -259,6 +259,8 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 <br/>
 `IsEnrolled` 安全性检查**取决于** `EnrollmentUserLogin`：
+
+
 
 ```java
 @SecurityCheckReference

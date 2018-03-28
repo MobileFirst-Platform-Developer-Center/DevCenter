@@ -5,9 +5,9 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -33,6 +33,13 @@ downloads:
 ```
 compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+3. 将以下内容添加到 build.gradle 文件的“DefaultConfig”部分。
+```
+  ndk {
+        abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+      }
+ ```     
+ > **注**：我们将添加 abiFilters 以确保具有 JSONStore 的应用程序将在上述指定的任何体系结构中运行。由于 JSONStore 依赖于仅支持这些体系结构的第三方库，因此需要此项。
 
 ## 基本用法
 {: #basic-usage }

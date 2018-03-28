@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Node.js 验证器
-breadcrumb_title: Node.js 验证器
+title: Node.js 验证程序
+breadcrumb_title: Node.js validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: 下载样本
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

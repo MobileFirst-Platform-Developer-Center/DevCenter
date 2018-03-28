@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Guía de configuración de MobileFirst Analytics Server
-breadcrumb_title: Guía de configuración
+title: Guía de configuración de MobileFirst Analytics Server 
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -80,12 +80,12 @@ La tabla siguiente muestra las propiedades que se pueden establecer en {{ site.d
 
 | Propiedad                           | Descripción                                           | Valor predeterminado |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | Establezca esta propiedad en el URL de {{ site.data.keys.mf_analytics_console }}. Por ejemplo, http://hostname:port/analytics/console. El establecimiento de esta propiedad permite el icono de análisis de {{ site.data.keys.mf_console }}. | None |
+| mfp.analytics.console.url          | Establezca esta propiedad en el URL de {{ site.data.keys.mf_analytics_console }}. Por ejemplo, http://hostname:port/analytics/console. El establecimiento de esta propiedad permite el icono de análisis de {{ site.data.keys.mf_console }}. | Ninguno |
 | mfp.analytics.logs.forward         | Si esta propiedad se establece en true, los registros del servidor que estén registrados en {{ site.data.keys.mf_server }} se capturarán en {{ site.data.keys.mf_analytics }}. | true |
-| mfp.analytics.url                  |Necesario. El URL que expone {{ site.data.keys.mf_analytics_server }} que recibe datos analíticos de entrada. Por ejemplo, http://hostname:port/analytics-service/rest/v2. | None |
-| analyticsconsole/mfp.analytics.url |	Opcional. URI completo de los servicios REST de análisis. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo, no el URI interno dentro de la LAN local. Este valor puede contener * en los lugares del protocolo de URI, el nombre de host o el puerto, para denotar la parte correspondiente desde el URL de entrada. *://*:*/analytics-service, con el protocolo, el nombre de host y el puerto dinámicamente determinados |
+| mfp.analytics.url                  |Necesario. El URL que expone {{ site.data.keys.mf_analytics_server }} que recibe datos analíticos de entrada. Por ejemplo, http://hostname:port/analytics-service/rest/v2. | Ninguno |
+| analyticsconsole/mfp.analytics.url |	Opcional. URI completo de los servicios REST de análisis. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo, no el URI interno dentro de la LAN local. Este valor puede contener * en los lugares del protocolo de URI, el nombre de host o el puerto, para denotar la parte correspondiente desde el URL de entrada.	*://*:*/analytics-service, con el protocolo, el nombre de host y el puerto dinámicamente determinados |
 | mfp.analytics.username             | El nombre de usuario que se utiliza si el punto de entrada de datos está protegido con autenticación básica. | None |
-| mfp.analytics.password             | La contraseña que se utiliza si el punto de entrada de datos está protegido con autenticación básica. | None |
+| mfp.analytics.password             | La contraseña que se utiliza si el punto de entrada de datos está protegido con autenticación básica. | Ninguno |
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
@@ -93,24 +93,26 @@ La tabla siguiente muestra las propiedades que se pueden establecer en {{ site.d
 
 | Propiedad                           | Descripción                                           | Valor predeterminado |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Define el tipo de nodo de Elasticsearch. Los valores válidos son maestro y datos. Si no se establece esta propiedad, el nodo actuará como un nodo elegible por el maestro y un nodo de datos. | 	None |
+| analytics/nodetype | Define el tipo de nodo de Elasticsearch. Los valores válidos son maestro y datos. Si no se establece esta propiedad, el nodo actuará como un nodo elegible por el maestro y un nodo de datos. | 	Ninguno |
 | analytics/shards | El número de fragmentos por índice. Este valor lo puede establecer únicamente el primer nodo que se inicia en el clúster y no se puede modificar. | 1 |
 | analytics/replicas_per_shard | El número de réplicas para cada fragmento del clúster. Este valor se puede cambiar dinámicamente en un clúster en ejecución. | 0 |
-| analytics/masternodes | Una serie delimitada por comas que contiene el nombre de host y los puertos de los nodos elegibles por el maestro. | None |
+| analytics/masternodes | Una serie delimitada por comas que contiene el nombre de host y los puertos de los nodos elegibles por el maestro. | Ninguno |
 | analytics/clustername | Nombre del clúster. Establezca este valor si va a tener varios clústeres que funcionan en el mismo subconjunto y necesita identificarlos de forma exclusiva. | worklight |
 | analytics/nodename | Nombre de un nodo del clúster. | Un serie generada de forma aleatoria
 | analytics/datapath | La vía de acceso en la que se guardan los datos analíticos en el sistema de archivos. | ./analyticsData |
-| analytics/settingspath | La vía de acceso a un archivo de valores de Elasticsearch. Para obtener más información, consulte Elasticsearch. | None |
+| analytics/settingspath | La vía de acceso a un archivo de valores de Elasticsearch. Para obtener más información, consulte Elasticsearch. | Ninguno |
 | analytics/transportport | El puerto que se utiliza para la comunicación de nodo a nodo. | 9600 |
 | analytics/httpport | El puerto que se utiliza para la comunicación de HTTP con Elasticsearch. | 9500 |
 | analytics/http.enabled | Habilita o inhabilita la comunicación de HTTP con Elasticsearch. | false |
-| analytics/serviceProxyURL | El archivo WAR de la IU de análisis y el archivo WAR del servicio de análisis se pueden instalar en servidores de aplicaciones independientes. Si decide hacerlo, debe comprender que el tiempo de ejecución de JavaScript en el archivo WAR de la IU lo puede bloquear la prevención de creación de scripts entre sitios en el navegador. Para omitir este bloqueo, el archivo WAR de la IU incluye código de proxy de Java para que el tiempo de ejecución de JavaScript recupere respuestas de la API REST del servidor de origen. Pero el proxy está configurado para reenviar solicitudes de la API REST al archivo WAR del servicio de análisis. Configure esta propiedad si ha instalado los archivos WAR en servidores de aplicaciones independientes. | None |
+| analytics/serviceProxyURL | El archivo WAR de la IU de análisis y el archivo WAR del servicio de análisis se pueden instalar en servidores de aplicaciones independientes. Si decide hacerlo, debe comprender que el tiempo de ejecución de JavaScript en el archivo WAR de la IU lo puede bloquear la prevención de creación de scripts entre sitios en el navegador. Para omitir este bloqueo, el archivo WAR de la IU incluye código de proxy de Java para que el tiempo de ejecución de JavaScript recupere respuestas de la API REST del servidor de origen. Pero el proxy está configurado para reenviar solicitudes de la API REST al archivo WAR del servicio de análisis. Configure esta propiedad si ha instalado los archivos WAR en servidores de aplicaciones independientes. | Ninguno |
 | analytics/bootstrap.mlockall | Esta propiedad impide que cualquier memoria de Elasticsearch se transfiera al disco. | true |
 | analytics/multicast | Habilita o inhabilita el descubrimiento del nodo de multidifusión. | false |
 | analytics/warmupFrequencyInSeconds | La frecuencia con la que se ejecutan las consultas de preparación. Las consultas de preparación se ejecutan en segundo plano para forzar los resultados de consulta en la memoria, lo que mejora el rendimiento de la consola web. Los valores negativos inhabilitan las consultas de preparación. | 600 |
-| analytics/tenant | Nombre del índice principal de Elasticsearch. worklight |
+| analytics/tenant | Nombre del índice principal de Elasticsearch.	worklight |
 
 En todos los casos en los que la clave no contiene un punto (como **httpport** pero no **http.enabled**), el valor puede controlarse mediante variables de entorno del sistema donde el nombre de la variable tiene como prefijo **ANALYTICS_**. Cuando se establece la propiedad JNDI y la variable de entorno de sistema, la variable de entorno de sistema tiene prioridad. Por ejemplo, si tiene la propiedad JNDI **analytics/httpport** y la variable de entorno de sistema **ANALTYICS_httpport** establecidas, se utilizará el valor para **ANALYTICS_httpport**.
+
+> **Importante**: Actualmente, MobileFirst Analytics v8.0 no soporta la multitenencia. Los eventos desde MobileFirst Server se envían por defecto a arquitecturas de un solo tenant.
 
 #### Documento TTL (Time to Live)
 {: #document-time-to-live-ttl }
@@ -148,8 +150,6 @@ La lista de tipos de documentos soportados es la siguiente:
 
 
 > **Nota:** Si va a migrar desde las versiones anteriores de {{ site.data.keys.mf_analytics_server }} y ha configurado previamente cualquier propiedad TTL JNDI, consulte [Migración de propiedades del servidor utilizadas por versiones anteriores de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
-
-
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -218,7 +218,7 @@ En las siguientes instrucciones de ejemplo, no configure el nodo para que sea un
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	El clúster al que pretende que se añada este nodo. |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Establézcalo en false para evitar uniones de clúster accidentales. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	Lista de los nodos maestros en el clúster existente. Cambie el puerto predeterminado de 9600 si ha especificado un valor de puerto de transporte en los nodos maestros. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Ninguno | 	Lista de los nodos maestros en el clúster existente. Cambie el puerto predeterminado de 9600 si ha especificado un valor de puerto de transporte en los nodos maestros. |
     | node.master | 	false | 	true | 	No permita que este nodo sea un maestro. |
     | node.data|	false | 	true | 	No permita que este nodo almacene datos. |
     | http.enabled | 	true	 | true | 	Abra el puerto HTTP 9200 no protegido para la API REST de Elasticsearch. |
@@ -248,7 +248,7 @@ En las siguientes instrucciones de ejemplo, no configure el nodo para que sea un
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	El clúster al que pretende que se añada este nodo. |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Establézcalo en false para evitar uniones de clúster accidentales. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	Lista de los nodos maestros en el clúster existente. Cambie el puerto predeterminado de 9600 si ha especificado un valor de puerto de transporte en los nodos maestros. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Ninguno | 	Lista de los nodos maestros en el clúster existente. Cambie el puerto predeterminado de 9600 si ha especificado un valor de puerto de transporte en los nodos maestros. |
     | node.master | 	false | 	true | 	No permita que este nodo sea un maestro. |
     | node.data|	false | 	true | 	No permita que este nodo almacene datos. |
     | http.enabled | 	true	 | true | 	Abra el puerto HTTP 9200 no protegido para la API REST de Elasticsearch. |

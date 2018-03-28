@@ -40,6 +40,8 @@ weight: 3
 {: #google-cloud-messaging--firebase-cloud-messaging }
 > **注：**Google [最近宣布](https://firebase.google.com/support/faq/#gcm-fcm)已从 GCM 转变为 FCM。 同时，也相应地更新了下列指示信息。 另请注意，现行的 GCM 配置将继续有效，但不能使用新的 GCM 配置，而必须改为使用 FCM。
 
+
+
 Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。  
 要设置 FCM：
 
@@ -66,7 +68,7 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。  
 要设置 APNS：
 
-1. [为开发或生产环境生成推送通知证书](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv)。
+1. 为开发或生产环境生成推送通知证书。有关详细步骤，请参阅[此处](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)`针对 iOS` 部分。 
 2. 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 推送设置**中，选择证书类型并提供证书的文件和密码。 然后，单击**保存**。
 
 #### 注
@@ -82,6 +84,8 @@ iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。
 * 在开发阶段，使用 apns-certificate-sandbox.p12 沙箱证书文件。
 * 在生产阶段，使用 apns-certificate-production.p12 生产证书文件。
     * 只有在将利用 APNS 生产证书的应用程序成功提交到 Apple 应用商店后才能测试该证书。
+
+**注：**MobileFirst 不支持 Universal 证书。
 
 > 您还可以使用 [{{ site.data.keys.product_adj }} 推送服务 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) 或 [{{ site.data.keys.product_adj }} 管理服务 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc) 来设置 APNS
 
@@ -304,7 +308,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。 这是单点�
 ```json
 {
     "message" : {
-    "alert" : "Test message",
+            "alert" : "Test message",
   },
   "settings" : {
     "apns" : {

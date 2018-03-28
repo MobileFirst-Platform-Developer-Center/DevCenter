@@ -1,8 +1,10 @@
 ---
-layout: tutorial
-title: Protección de contenedores
-relevantTo: [ios,android,windows,javascript]
-weight: 2
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Securing containers
+#relevantTo: [ios,android,windows,javascript]
+#weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -20,7 +22,7 @@ Los siguientes son varios métodos que puede seguir para proteger IBM Container 
 {: #configuring-app-transport-security-ats }
 La configuración de ATS no afecta a las aplicaciones que se conectan desde otros sistemas operativos móviles, no de iOS. Otros sistemas operativos móviles no obligan a los servidores a comunicarse en el nivel de seguridad de ATS pero pueden continuar comunicándose con servidores configurados para ATS. Antes de configurar el contenedor, tenga preparados los certificados generados. Los pasos siguientes presuponen que el archivo de almacén de claves **ssl_cert.p12** tiene el certificado personal y que **ca.crt** es el certificado de firma.
 
-1. Copie el archivo **ssl_cert.p12** en la carpeta **mfpf-server/usr/security/** o **mfp-appcenter/user/security/** del centro de aplicaciones 
+1. Copie el archivo **ssl_cert.p12** en la carpeta **mfpf-server/usr/security/** o **mfp-appcenter/user/security/** del centro de aplicaciones
 
 2. Modifique el archivo **mfpf-server/usr/config/keystore.xml** y el archivo **appcenter/usr/config/keystore.xml** (para appcenter) o el archivo similar a la configuración siguiente:
 
@@ -64,33 +66,33 @@ Solo para fines de desarrollo, puede inhabilitar ATS añadiendo la siguiente pro
 ### Configure SSL para {{ site.data.keys.mf_app_center }} Console
 {: #configure-ssl-for-application-center-console }
 
-Puede proteger el acceso a {{ site.data.keys.mf_app_center }} Console habilitando HTTPS (HTTP over SSL) en el servidor de {{ site.data.keys.mf_app_center }}. Para habilitar HTTPS en el servidor de {{ site.data.keys.mf_app_center }}, cree el almacén de claves que contenga el certificado y colóquelo en la carpeta `usr/security`. A continuación, actualice el archivo `usr/config/keystore.xml` para que utilice el almacén de claves configurado. 
+Puede proteger el acceso a {{ site.data.keys.mf_app_center }} Console habilitando HTTPS (HTTP over SSL) en el servidor de {{ site.data.keys.mf_app_center }}. Para habilitar HTTPS en el servidor de {{ site.data.keys.mf_app_center }}, cree el almacén de claves que contenga el certificado y colóquelo en la carpeta `usr/security`. A continuación, actualice el archivo `usr/config/keystore.xml` para que utilice el almacén de claves configurado.
 
-### Protección de una conexión con el sistema de fondo 
+### Protección de una conexión con el sistema de fondo
 {: #securing-a-connection-to-the-back-end }
-Si necesita una conexión segura entre su contenedor y un sistema de fondo local, puede utilizar el servicio Bluemix Secure Gateway. Se proporcionan detalles acerca de la configuración en la publicación de blog [Conexión segura con sistemas de fondo locales desde Mobile Foundation en contenedores IBM Bluemix](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/).
+Si necesita una conexión segura entre su contenedor y un sistema de fondo local, puede utilizar el servicio IBM Cloud Secure Gateway. Se proporcionan detalles acerca de la configuración en la publicación de blog [Conexión segura con sistemas de fondo locales desde Mobile Foundation en contenedores IBM Cloud](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/).
 
 ## Configuración de la seguridad para {{ site.data.keys.product_full }} en IBM Containers
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
 Su configuración de seguridad de la instancia de {{ site.data.keys.product }} en IBM Containers debe incluir el cifrado de contraseñas, la habilitación de la comprobación de autenticidad de aplicaciones y la protección del acceso a las consolas.
 
-### Cifrado de contraseñas 
+### Cifrado de contraseñas
 {: #encrypting-passwords }
 Almacene las contraseñas de los usuarios de {{ site.data.keys.mf_server }} con un formato cifrado. Puede utilizar el mandato securityUtility, disponible en el perfil de Liberty, para codificar las contraseñas con el cifrado XOR o AES. A continuación, se pueden copiar las contraseñas cifradas en el archivo /usr/env/server.env. Para obtener las instrucciones, consulte la sección Cifrado de contraseñas para roles de usuarios configurados en {{ site.data.keys.mf_server }}.
 
-### Validación de la autenticidad de aplicaciones 
+### Validación de la autenticidad de aplicaciones
 {: #application-authenticity-validation }
 Para que las aplicaciones móviles no autorizadas no puedan acceder a {{ site.data.keys.mf_server }}, [habilite la comprobación de seguridad de autenticidad de aplicaciones](../../../authentication-and-security/application-authenticity).
 
 ### Configurar SSL para {{ site.data.keys.mf_console }} y para {{ site.data.keys.mf_analytics_console }}
 {: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
 Puede proteger el acceso a {{ site.data.keys.mf_console }} y {{ site.data.keys.mf_analytics_console }} habilitando HTTPS (HTTP over SSL) en {{ site.data.keys.mf_server }}.  
-Para habilitar HTTPS en {{ site.data.keys.mf_server }}, cree el almacén de claves que contenga el certificado y colóquelo en la carpeta **usr/security**. A continuación, actualice el archivo **usr/config/keystore.xml** para que utilice el almacén de claves configurado. 
+Para habilitar HTTPS en {{ site.data.keys.mf_server }}, cree el almacén de claves que contenga el certificado y colóquelo en la carpeta **usr/security**. A continuación, actualice el archivo **usr/config/keystore.xml** para que utilice el almacén de claves configurado.
 
 <!-- Duplicate section
 ### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the IBM Cloud  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Cloud containers.
 -->
 
 #### Cifrado de contraseñas para roles de usuarios configurados en {{ site.data.keys.mf_server }}
@@ -109,7 +111,7 @@ Las contraseñas se configuran en los archivos **server.env** de las carpetas **
 </server>
 ```
 
-#### Protección de la comunicación del contenedor utilizando una dirección IP privada 
+#### Protección de la comunicación del contenedor utilizando una dirección IP privada
 {: securing-container-communication-using-a-private-ip-address }
 Para proteger la comunicación entre el contenedor de {{ site.data.keys.mf_server }} y el contenedor de {{ site.data.keys.mf_analytics }}, debe incluir la dirección IP privada del contenedor {{ site.data.keys.mf_analytics }} en el archivo `mfpfProperties.xml` file.
 
@@ -253,7 +255,7 @@ Consulte también: [Desarrollo de un TAI personalizado para el perfil de Liberty
    ```
 
 2. Exporte la implementación de TAI personalizada en un archivo .jar y colóquela en la carpeta **env** aplicable (**mfpf-server/usr/env o mfpf-analytics/usr/env**).
-3.  Cree un archivo XML de configuración que contenga los detalles del interceptor TAI (consulte el código de configuración de TAI de ejemplo que se ha proporcionado en el paso 1) y, a continuación, añada su archivo .xml a la carpeta aplicable (**mfpf-server/usr/config** o **mfpf-analytics/usr/config**). Su archivo .xml deberá ser similar al ejemplo siguiente. **Sugerencia:** Asegúrese de que actualiza el nombre de clase y las propiedades de modo que reflejen su implementación.
+3. Cree un archivo XML de configuración que contenga los detalles del interceptor TAI (consulte el código de configuración de TAI de ejemplo que se ha proporcionado en el paso 1) y, a continuación, añada su archivo .xml a la carpeta aplicable (**mfpf-server/usr/config** o **mfpf-analytics/usr/config**). Su archivo .xml deberá ser similar al ejemplo siguiente. **Sugerencia:** Asegúrese de que actualiza el nombre de clase y las propiedades de modo que reflejen su implementación.
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -295,13 +297,13 @@ El proceso de configuración incluye los pasos siguientes:
 
 * Configurar un repositorio LDAP
 * Realizar cambios en el archivo de registro (registry.xml)
-* Configurar una pasarela segura para conectar un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en Bluemix).
+* Configurar una pasarela segura para conectar un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en IBM Cloud).
 
 #### Repositorio LDAP
 {: #ldap-repository }
 Cree usuarios y grupos en el repositorio LDAP. En el caso de los grupos, la autorización se aplica en función de si los usuarios son miembros del grupo.
 
-#### Archivo de registro 
+#### Archivo de registro
 {: #registry-file }
 1. Abra el archivo **registry.xml** y busque el elemento `basicRegistry`. Sustituya el elemento `basicRegistry` por código que sea similar al siguiente fragmento de código:
 
@@ -341,13 +343,13 @@ Cree usuarios y grupos en el repositorio LDAP. En el caso de los grupos, la auto
 
     Para obtener información detallada acerca de cómo configurar diferentes repositorios de servidor LDAP, consulte [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
 
-#### Pasarela segura 
+#### Pasarela segura
 {: #secure-gateway }
-Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en Bluemix y, a continuación, obtener la información de IP para el registro. Para realizar esta tarea necesita el nombre de host LDAP y el número de puerto.
+Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en IBM Cloud y, a continuación, obtener la información de IP para el registro LDAP. Para realizar esta tarea necesita el nombre de host LDAP y el número de puerto.
 
-1. Inicie sesión en Bluemix y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
+1. Inicie sesión en IBM Cloud y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
 2. En Añadir servicio, seleccione una aplicación y pulse **Crear**. Ahora el servicio está enlazado a su aplicación.
-3. Vaya al panel de control de Bluemix para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
+3. Vaya al panel de control de IBM Cloud para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
 4. Asigne un nombre a la pasarela, pulse **Añadir destinos** y añada el nombre, la dirección IP y el puerto de su servidor LDAP local.
 5. Siga las indicaciones para completar la conexión. Para ver el destino inicializado, vaya a la pantalla Destino del servicio de pasarela LDAP.
 6. Para obtener información sobre el host y el puerto que necesita, pulse el icono Información en la instancia de servicio de la pasarela LDAP (situado en el panel de control de Secure Gateway). Los detalles que se muestran son un alias de su servidor LDAP local.
@@ -373,17 +375,17 @@ Para configurar una conexión de pasarela segura con su servidor LDAP, debe crea
 ### Configuración de aplicaciones para que funcionen con LDAP
 {: #configuring-apps-to-work-with-ldap }
 Configure las aplicaciones móviles {{ site.data.keys.product_adj }} para que funcionen con un registro LDAP externo.  
-El proceso de configuración incluye el paso siguiente: Configurar una pasarela segura para la conexión con un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en Bluemix).
+El proceso de configuración incluye el paso siguiente: Configurar una pasarela segura para la conexión con un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en IBM Cloud).
 
-Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en Bluemix y, a continuación, obtener la información de IP para el registro. Para realizar este paso necesita el nombre de host LDAP y el número de puerto.
+Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en IBM Cloud y, a continuación, obtener la información de IP para el registro LDAP. Para realizar este paso necesita el nombre de host LDAP y el número de puerto.
 
-1. Inicie sesión en Bluemix y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
+1. Inicie sesión en IBM Cloud y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
 2. En Añadir servicio, seleccione una aplicación y pulse **Crear**. Ahora el servicio está enlazado a su aplicación.
-3. Vaya al panel de control de Bluemix para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
+3. Vaya al panel de control de IBM Cloud para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
 4. Asigne un nombre a la pasarela, pulse **Añadir destinos** y añada el nombre, la dirección IP y el puerto de su servidor LDAP local.
 5. Siga las indicaciones para completar la conexión. Para ver el destino inicializado, vaya a la pantalla Destino del servicio de pasarela LDAP.
 6. Para obtener información sobre el host y el puerto que necesita, pulse el icono Información en la instancia de servicio de la pasarela LDAP (situado en el panel de control de Secure Gateway). Los detalles que se muestran son un alias de su servidor LDAP local.
 7. Capture los valores de **ID de destino** y de **Host de nube: Puerto**. Proporcione estos valores para el módulo de inicio de sesión de LDAP.
 
 **Resultados**  
-Se ha establecido la comunicación entre la aplicación {{ site.data.keys.product_adj }} en Bluemix con su servidor LDAP local. Se ha validado la autenticación y la autenticación de la aplicación Bluemix en su servidor LDAP local.
+Se ha establecido la comunicación entre la aplicación {{ site.data.keys.product_adj }} en IBM Cloud con su servidor LDAP local. Se ha validado la autenticación y la autenticación de la aplicación IBM Cloud en su servidor LDAP local.

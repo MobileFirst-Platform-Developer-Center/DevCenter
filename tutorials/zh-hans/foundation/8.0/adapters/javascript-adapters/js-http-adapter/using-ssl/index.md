@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 在 JavaScript HTTP 适配器中使用 SSL
-breadcrumb_title: 使用 SSL
+breadcrumb_title: Using SSL
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigungen in Android
+title: Handhabung von Push-Benachrichtigungen in Android
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Android-Studio-Projekt herunterladen
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
@@ -199,8 +199,8 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
     @Override
     public void onFailure(MFPPushException e) {
         // Registrierung mit Fehler fehlgeschlagen
-    }
-});
+     }
+ });
 ```
 
 #### Tags abrufen

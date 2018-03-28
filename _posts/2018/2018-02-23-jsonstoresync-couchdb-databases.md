@@ -14,9 +14,11 @@ additional_authors :
 ---
 MobileFirst JSONStore already allows you to write code to be able to pull and push data from/to an external data source, [see here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/#working-with-external-data).
 
-Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management).
+Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). 
 
-> **Note:** The use of this feature can be extended to any CouchDB instance.
+> **Note:** <br/>
+  This feature is available in Android environment only. Support for iOS and Cordova will be available shortly.<br/>
+> The use of this feature can be extended to any CouchDB instance.
 
 ## Setting up the synchronization between JSONStore and Cloudant
 {: #setup-sync}
@@ -41,10 +43,6 @@ A JSONStore collection can be initialized with a Sync Policy using the `JSONStor
     initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
     ```
 
-    _**Cordova**_
-    ```
-    options.syncPolicy = WL.JSONStore.syncOptions.SYNC_DOWNSTREAM;
-    ```
 
 2.  `SYNC_UPSTREAM`<br/>
     Use this policy when you want to push local data to a Cloudant database. For example, uploading of sales data captured offline to a Cloudant database. When a collection is defined with the `SYNC_UPSTREAM` policy, any new records added to the collection creates a new record in Cloudant. Similarly, any document modified in the collection on the device will modify the document on Cloudant and documents deleted in the collection will also be deleted from the Cloudant database.
@@ -56,12 +54,6 @@ A JSONStore collection can be initialized with a Sync Policy using the `JSONStor
     initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
     ```
 
-    _**Cordova:**_
-    ```
-    options.syncPolicy = WL.JSONStore.syncOptions.SYNC_UPSTREAM;
-    ```
-
-
 
 3.  `SYNC_NONE`<br/>
     This is the default policy. Choose this policy for synchronization to not take place.
@@ -69,6 +61,18 @@ A JSONStore collection can be initialized with a Sync Policy using the `JSONStor
 
 > **Important:** The Sync Policy is attributed to a JSONStore Collection. Once a collection is initialized with a particular Sync Policy, it should not be changed. Modifying the Sync Policy can lead to undesirable results.
 
+  
+`syncAdapterPath`<br/>
+
+This is the adapter name that is deployed.
+
+
+**Usage:**
+
+_**Android**_
+  ```
+   initOptions.syncAdapterPath = "JSONStoreCloudantSync"; //Here "JSONStoreCloudantSync" is the name of the adapter.
+   ```
 
 ### Deploying the sync adapter
 {: #deploy-syncadapter}
@@ -102,8 +106,4 @@ _**Android**_
   ```
    WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
    ```
-
-_**Cordova**_
-  ```  
-  WL.JSONStore.get(collectionName).sync();   
-  ```
+  

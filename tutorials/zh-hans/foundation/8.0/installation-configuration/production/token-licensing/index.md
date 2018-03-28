@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 安装并配置令牌许可
-breadcrumb_title: 令牌许可
+breadcrumb_title: Token licensing
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->

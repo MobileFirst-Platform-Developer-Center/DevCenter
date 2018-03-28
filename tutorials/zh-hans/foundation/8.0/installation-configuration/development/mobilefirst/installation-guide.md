@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 工作站安装指南
-breadcrumb_title: 安装指南
+breadcrumb_title: Installation guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -64,8 +64,8 @@ weight: 1
 [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) 是一个命令行界面，可用于在 {{ site.data.keys.mf_server }} 中注册应用程序、在 {{ site.data.keys.mf_server }} 中提取/推送应用程序、创建 Java 和 JavaScript 适配器、管理多个本地和远程服务器，以及使用“直接更新”更新实时应用程序等。
 
 **先决条件：**  
-1. 要安装 {{ site.data.keys.mf_cli }}，需要 NodeJS。  
- 下载并安装 [NodeJS V4.4.3 LTS](https://nodejs.org/en/)。
+1. 要安装 {{ site.data.keys.mf_cli }}，需要 NodeJS 和 NPM。  
+下载并安装 [NodeJS V6.11.1](https://nodejs.org/download/release/v6.11.1/) 和 NPM V3.10.10。
 
  要验证安装，请打开命令行窗口并执行以下命令：`node -v`。
 

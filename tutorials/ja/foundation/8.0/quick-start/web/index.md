@@ -22,8 +22,8 @@ weight: 5
 #### 前提条件:
 {: #prerequisites }
 * 最新 Web ブラウザー
-* *オプション*。{{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
-* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 {{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #starting-the-mobilefirst-server }
@@ -32,19 +32,19 @@ weight: 5
 
 ### 2. アプリケーションの作成および登録
 {: #creating-and-registering-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
- 
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。 ユーザー名/パスワードは *admin/admin* です。
+
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * **Web** プラットフォームを選択します。
     * **com.ibm.mfpstarterweb** を**アプリケーション ID** として入力します。
     * **「アプリケーションの登録」**をクリックします。
 
     <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-web.png"/>
- 
+
 2. **「スターター・コードの取得」**タイルをクリックして、Web サンプル・アプリケーションをダウンロードすることを選択します。
 
     <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-web.png"/>
- 
+
 ### 3. アプリケーション・ロジックの編集
 {: #editing-application-logic }
 1. お好きなコード・エディターでプロジェクトを開きます。
@@ -57,12 +57,12 @@ weight: 5
             function(accessToken) {
                 titleText.innerHTML = "Yay!";
                 statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-                
+
                 var resourceRequest = new WLResourceRequest(
                     "/adapters/javaAdapter/resource/greet/",
                     WLResourceRequest.GET
                 );
-                
+
                 resourceRequest.setQueryParameter("name", "world");
                 resourceRequest.send().then(
                     function(response) {
@@ -81,16 +81,16 @@ weight: 5
             }
         );
    ```
-    
+
 ### 4. アダプターのデプロイ
 {: #deploy-an-adapter }
 [この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{ site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
 あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
-        
-1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-   > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。  
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。 「Hello World」**Java** アダプターのサンプルをダウンロードします。
+
+   > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
 
 2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
@@ -98,8 +98,8 @@ weight: 5
    mfpdev adapter build
    ```
 
-3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。
-    
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。 アダプターは、**[adapter]/target** フォルダー内にあります。
+
     <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>   
 
 
@@ -107,25 +107,25 @@ weight: 5
 ### 5. アプリケーションのテスト
 {: #testing-the-application }
 1. **コマンド・ライン**・ウィンドウから **[project root] → node-server** フォルダーにナビゲートします。
-2. コマンド `npm start` を実行して、必要な Node.js 構成をインストールして Node.js サーバーを始動します。
-3. **[project root] → node-server → server.js** ファイルを開き、**host** 変数および **port** 変数をご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
+2. **[project root] → node-server → server.js** ファイルを開き、**host** 変数および **port** 変数をご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。 
+    * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
    以下に例を示します。  
-    
+
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
    var port = 9081; // The local port number to use
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
-   
+3. コマンド `npm start` を実行して、必要な Node.js 構成をインストールして Node.js サーバーを始動します。
 4. ブラウザーで次の URL にアクセスします。 [http://localhost:9081/home](http://localhost:9081/home)
 
 <br>
 #### Secure Origins ポリシー
 {: #secure-origins-policy }
-開発時に Chrome を使用している場合、このブラウザーでは、HTTP と「localhost」**ではない**ホストの両方を使用しているときにアプリケーションをロードすることができません。これは、このブラウザーでデフォルトで実装および使用されている Secure Origins ポリシーのためです。
+開発時に Chrome を使用している場合、このブラウザーでは、HTTP と「localhost」**ではない**ホストの両方を使用しているときにアプリケーションをロードすることができません。 これは、このブラウザーでデフォルトで実装および使用されている Secure Origins ポリシーのためです。
 
 これを打開するために、Chrome ブラウザーを以下のフラグを付けて開始できます。
 

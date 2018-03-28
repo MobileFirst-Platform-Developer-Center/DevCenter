@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Java-Token-Validator
-breadcrumb_title: Java-Token-Validator
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Beispiel herunterladen
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

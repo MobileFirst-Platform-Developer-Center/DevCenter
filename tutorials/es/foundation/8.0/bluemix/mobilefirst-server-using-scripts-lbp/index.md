@@ -1,54 +1,54 @@
 ---
 layout: tutorial
-title: Configurar MobileFirst Server en Bluemix con scripts para Liberty for Java
-breadcrumb_title: Liberty for Java
+title: Configuración de MobileFirst Server en IBM Cloud con scripts para Liberty for Java
+breadcrumb_title: Mobile Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }} en un tiempo de ejecución de Liberty for Java en Bluemix. (Las instancias de {{ site.data.keys.mf_analytics }} solo se pueden ejecutar en contenedores IBM). Para llevarlo a cabo, realice los pasos siguientes:
+Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }} en un tiempo de ejecución de Liberty for Java en IBM Cloud. <!--({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.)--> Para llevarlo a cabo, realice los pasos siguientes:
 
 * Configure su sistema host con las herramientas necesarias (Cloud Foundry CLI)
-* Configure su cuenta de Bluemix
-* Cree un {{ site.data.keys.mf_server }} y envíelo mediante push a Bluemix como una aplicación Cloud Foundry.
+* Configure su cuenta de IBM Cloud
+* Cree un {{ site.data.keys.mf_server }} y envíelo mediante push a IBM Cloud como una aplicación Cloud Foundry.
 
-Finalmente, registrará sus aplicaciones móviles y también desplegará sus adaptadores. 
+Finalmente, registrará sus aplicaciones móviles y también desplegará sus adaptadores.
 
 **Notas:**  
 
 * Actualmente el sistema operativo Windows no está soportado para ejecutar estos scripts.  
-* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en Bluemix.
+* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Cloud.
 
 #### Ir a:
 {: #jump-to }
 
-* [Registrar una cuenta en Bluemix](#register-an-account-at-bluemix)
+* [Registrar una cuenta en IBM Cloud](#register-an-account-at-ibmcloud)
 * [Configurar la máquina host](#set-up-your-host-machine)
 * [Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}](#download-the-ibm-mfpf-container-8000-archive)
 * [Añadir información de Analytics Server](#adding-analytics-server-configuration-to-mobilefirst-server)
 * [Aplicar arreglos de {{ site.data.keys.mf_server }}](#applying-mobilefirst-server-fixes)
-* [Eliminar la configuración del servicio de base de datos desde Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [Eliminar la configuración del servicio de base de datos de IBM Cloud](#removing-the-database-service-configuration-from-ibmcloud)
 
-## Registrar una cuenta en Bluemix
-{: #register-an-account-at-bluemix }
-Si todavía no tiene una cuenta, vaya al [sitio web de Bluemix](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
+## Registrar una cuenta en IBM Cloud
+{: #register-an-account-at-ibmcloud }
+Si todavía no tiene una cuenta, vaya al [sitio web de IBM Cloud](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
 
-### El panel de control de Bluemix 
-{: #the-bluemix-dashboard }
-Después de iniciar sesión en Bluemix, se le presentará el panel de control de Bluemix, que proporciona una visión general del **espacio** activo de Bluemix. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
+### Panel de control de IBM Cloud
+{: #the-ibmcloud-dashboard }
+Después de iniciar sesión en IBM Cloud, se le presentará el panel de control de IBM Cloud, que proporciona una visión general del **espacio** activo de IBM Cloud. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
 
 ## Configurar la máquina host
 {: #set-up-your-host-machine }
-Para gestionar la aplicación Bluemix Cloud Foundry, debe instalar Cloud Foundry CLI.  
+Para gestionar la app IBM Cloud Cloud Foundry, debe instalar Cloud Foundry CLI.  
 Puede ejecutar los scripts utilizando Terminal.app de macOS o un shell bash de Linux.
 
 Instale [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 
 ## Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}
 {: #download-the-ibm-mfpf-container-8000-archive}
-Para configurar {{ site.data.keys.product }} en Liberty para Java, en primer lugar, cree un diseño de archivo que se enviará mediante push a Bluemix.  
+Para configurar {{ site.data.keys.product }} en Liberty para Java, en primer lugar, cree un diseño de archivo que se enviará mediante push a IBM Cloud.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Siga las instrucciones de esta página</a> para descargar el archivo de {{ site.data.keys.mf_server }} 8.0 for IBM Containers (archivo .zip, busque: *CNBL0EN*).
 
 El archivo comprimido contiene los archivos para crear un diseño de archivo (**dependencies** y **mfpf-libs**), los archivos para compilar y desplegar {{ site.data.keys.mf_analytics }} Container (**mfpf-analytics**) y los archivos para configurar una aplicación {{ site.data.keys.mf_server }} Cloud Foundry (**mfpf-server-libertyapp**).
@@ -74,7 +74,7 @@ El archivo comprimido contiene los archivos para crear un diseño de archivo (**
 
                 <ul>
 
-                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene scripts que se pueden ejecutar para iniciar sesión en Bluemix, crear una aplicación {{ site.data.keys.product }} para hacer push en BLuemix y ejecutar el servidor en Bluemix. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración como se describe detalladamente más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
+                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene scripts que se pueden ejecutar para iniciar sesión en IBM Cloud, crear una aplicación {{ site.data.keys.product }} para enviarla por push a IBM Cloud y ejecutar el servidor en IBM Cloud. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración como se describe detalladamente más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
                     <li>carpeta <b>usr</b>:
                         <ul>
                             <li>Carpeta <b>config</b>: Contiene los fragmentos de configuración del servidor (almacén de claves, propiedades del servidor, registro de usuarios) que utiliza {{ site.data.keys.mf_server }}.</li>
@@ -119,6 +119,7 @@ Si opta por ejecutar los scripts de forma interactiva, puede omitir el paso de c
 {: #mobilefirst-appcenter }
 
 >**Nota:** Puede descargar los instaladores y las herramientas de base de datos desde las carpetas de instalación de {{ site.data.keys.mf_app_center }} locales (las carpetas `installer` y `tools`).
+
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
@@ -129,17 +130,17 @@ Si opta por ejecutar los scripts de forma interactiva, puede omitir el paso de c
 
         <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Los siguientes son los archivos: <br/>
+            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Los siguientes son los archivos:<br/>
 
               <h4>initenv.properties</h4>
               Este archivo contiene propiedades que se utilizan para inicializar el entorno.
               <h4>prepareappcenterdbs.properties</h4>
-              {{ site.data.keys.mf_app_center }} requiere una <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">instancia de base de datos de dashDB Enterprise Transactional</a> (Cualquier plan marcado como OLTP o Transactional).<br/>
+              {{ site.data.keys.mf_app_center }} requiere una <a href="https://console.bluemix.net/catalog/services/dashdb/" target="\_blank">instancia de base de datos de dashDB Enterprise Transactional</a> (Cualquier plan marcado como OLTP o Transactional).<br/>
               <b>Nota:</b> El despliegue de los planes dashDB Enterprise Transactional es inmediato para los planes marcados como "pago por uso". Asegúrese de que selecciona uno de los planes adecuados, como <i>Enterprise for Transactions High Availability 2.8.500 (Pago por uso)</i> <br/><br/>
               Después de configurar la instancia de dashDB, proporcione los argumentos necesarios.
 
               <h4>prepareappcenter.properties</h4>
-              Este archivo se utiliza para el script prepareappcenter.sh. Esto prepara el diseño de archivos de {{ site.data.keys.mf_app_center_short }} y lo transfiere mediante push a Bluemix como una aplicación Cloud Foundry.
+              Este archivo se utiliza para el script prepareappcenter.sh. Esto prepara el diseño de archivos de {{ site.data.keys.mf_app_center_short }} y lo transfiere mediante push a IBM Cloud como una aplicación Cloud Foundry.
               <h4>startappcenter.properties</h4>
               Este archivo configura los atributos de tiempo de ejecución del servidor y lo inicia. Se recomienda utilizar un mínimo de 1024 MB (<b>SERVER_MEM=1024</b>) y 3 nodos para alta disponibilidad (<b>INSTANCES=3</b>)
 
@@ -158,64 +159,64 @@ Si opta por ejecutar los scripts de forma interactiva, puede omitir el paso de c
             <div class="panel-body">
               <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
               <ol>
-                  <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
-                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en Bluemix. Ejecútelo para la organización y espacio, cuando el servicio dashDB esté enlazado:
+                  <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
+                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en IBM Cloud. Ejecútelo para la organización y espacio, cuando el servicio dashDB esté enlazado:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_Cloud_user_ID --password IBM_Cloud_password --org IBM_Cloud_organization_name --space IBM_Cloud_space_name
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenterdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_app_center }} </b><br />
-                  El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta Bluemix local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                  El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta IBM Cloud local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
 prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./prepareappcenterdbs.sh --help
 {% endhighlight %}
 
                   </li>
-                  <li><b>initenv.sh (Opcional) – Inicio de sesión en Bluemix </b><br />
+                  <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
                       Este paso solo es necesario si necesita crear su servidor en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenter.sh - Prepare {{ site.data.keys.mf_app_center }}</b><br />
-                    Ejecute el script <b>prepareappcenter.sh</b> para crear un {{ site.data.keys.mf_app_center }} y enviarlo mediante push a Bluemix como una aplicación Cloud Foundry. Para ver todas las aplicaciones de Cloud Foundry y sus URL de la organización y espacio de inicio de sesión, ejecute: <code>cf apps</code><br/>
+                    Ejecute el script <b>prepareappcenter.sh</b> para crear un {{ site.data.keys.mf_app_center }} y enviarlo mediante push a IBM Cloud como una aplicación Cloud Foundry. Para ver todas las aplicaciones de Cloud Foundry y sus URL de la organización y espacio de inicio de sesión, ejecute: <code>cf apps</code><br/>
 
 
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
 prepareappcenter.sh --name APP_NAME
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./prepareappcenter.sh --help
@@ -228,13 +229,13 @@ prepareappcenter.sh --name APP_NAME
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
 ./startappcenter.sh --name APP_NAME
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./startappcenter.sh --help
@@ -248,7 +249,7 @@ prepareappcenter.sh --name APP_NAME
 </div>
 Inicie la consola de {{ site.data.keys.mf_app_center }} cargando el URL siguiente: `http://APP_HOST.mybluemix.net/appcenterconsole` (puede tardar unos minutos).   
 
-Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose IBM Bluemix, puede subir sus aplicaciones móviles al centro de aplicaciones.
+Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose en IBM Cloud, puede subir sus aplicaciones móviles al centro de aplicaciones.
 
 
 ### {{ site.data.keys.mf_server }}
@@ -263,7 +264,7 @@ Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose IBM Bluemix, puede s
 
         <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Los siguientes son los archivos: <br/>
+            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Los siguientes son los archivos:<br/>
 
               <h4>initenv.properties</h4>
               Este archivo contiene propiedades que se utilizan para inicializar el entorno.
@@ -273,7 +274,7 @@ Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose IBM Bluemix, puede s
               Después de configurar la instancia de dashDB, proporcione los argumentos necesarios.
 
               <h4>prepareserver.properties</h4>
-              Este archivo se utiliza para el script prepareserver.sh. Esto prepara el diseño de archivos y lo transfiere mediante push a Bluemix como una aplicación Cloud Foundry.
+              Este archivo se utiliza para el script prepareserver.sh. Esto prepara el diseño de archivos y lo transfiere mediante push a IBM Cloud como una aplicación Cloud Foundry.
               <h4>startserver.properties</h4>
               Este archivo configura los atributos de tiempo de ejecución del servidor y lo inicia. Se recomienda utilizar un mínimo de 1024 MB (<b>SERVER_MEM=1024</b>) y 3 nodos para alta disponibilidad (<b>INSTANCES=3</b>)
 
@@ -292,64 +293,64 @@ Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose IBM Bluemix, puede s
             <div class="panel-body">
               <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
               <ol>
-                  <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
-                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en Bluemix. Ejecútelo para la organización y espacio, cuando el servicio dashDB esté enlazado:
+                  <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
+                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en IBM Cloud. Ejecútelo para la organización y espacio, cuando el servicio dashDB esté enlazado:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_Cloud_user_ID --password IBM_Cloud_password --org IBM_Cloud_organization_name --space IBM_Cloud_space_name
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
                   </li>
                   <li><b>prepareserverdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_server }}</b><br />
-                  El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta Bluemix local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                  El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta IBM Cloud local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
 
                   </li>
-                  <li><b>initenv.sh (Opcional) – Inicio de sesión en Bluemix </b><br />
+                  <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
                       Este paso solo es necesario si necesita crear su servidor en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
                   <li><b>prepareserver.sh - Preparar {{ site.data.keys.mf_server }}</b><br />
-                    Ejecute el script <b>prepareserver.sh</b> para crear un {{ site.data.keys.mf_server }} y enviarlo mediante push a Bluemix como una aplicación Cloud Foundry. Para ver todas las aplicaciones de Cloud Foundry y sus URL de la organización y espacio de inicio de sesión, ejecute: <code>cf apps</code><br/>
+                    Ejecute el script <b>prepareserver.sh</b> para crear un {{ site.data.keys.mf_server }} y enviarlo mediante push a IBM Cloud como una aplicación Cloud Foundry. Para ver todas las aplicaciones de Cloud Foundry y sus URL de la organización y espacio de inicio de sesión, ejecute: <code>cf apps</code><br/>
 
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
 prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./prepareserver.sh --help
@@ -362,13 +363,13 @@ prepareserver.sh --name APP_NAME
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                        También puede pasar los parámetros en la línea de mandatos 
+                        También puede pasar los parámetros en la línea de mandatos
 
 {% highlight bash %}
 ./startserver.sh --name APP_NAME
 {% endhighlight %}
 
-                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help 
+                        Para obtener información acerca de todos los parámetros soportados y su documentación, ejecute la opción help
 
 {% highlight bash %}
 ./startserver.sh --help
@@ -383,11 +384,11 @@ prepareserver.sh --name APP_NAME
 
 
 Inicie {{ site.data.keys.mf_console }} cargando el URL siguiente: `http://APP_HOST.mybluemix.net/mfpconsole` (puede tardar unos minutos).  
-Añada el servidor remoto siguiendo las instrucciones de la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance).   
+Añada el servidor remoto siguiendo las instrucciones de la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance).  
 
-Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Bluemix, puede iniciar el desarrollo de su aplicación.
+Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Cloud, puede iniciar el desarrollo de su aplicación.
 
-#### Aplicación de cambios 
+#### Aplicación de cambios
 {: #applying-changes }
 Es posible que necesite aplicar cambios en el diseño del servidor después de desplegar el servidor una vez, por ejemplo, si desea actualizar el URL de Analytics en **/usr/config/mfpfproperties.xml**. Realice los cambios y, a continuación, vuelva a ejecutar los scripts siguientes con el mismo conjunto de argumentos.
 
@@ -414,7 +415,7 @@ Si ha configurado un servidor de Analytics y desea conectarlo a este {{ site.dat
 ## Aplicar arreglos de {{ site.data.keys.mf_server }}
 {: #applying-mobilefirst-server-fixes }
 
-Los arreglos temporales para {{ site.data.keys.mf_server }} en Bluemix se pueden obtener en [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
+Los arreglos temporales para {{ site.data.keys.mf_server }} en IBM Cloud se pueden obtener en [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
 Antes de aplicar un arreglo temporal, realice una copia de seguridad de los archivos de configuración existentes. Los archivos de configuración se encuentran en las carpetas siguientes:
 * {{ site.data.keys.mf_analytics }}:  **package_root/mfpf-analytics/usr**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry Application: **package_root/mfpf-server-libertyapp/usr**
@@ -430,23 +431,23 @@ Antes de aplicar un arreglo temporal, realice una copia de seguridad de los arch
 ```
     Ahora puede compilar y desplegar el servidor actualizado. Vuelva a ejecutar los scripts siguientes con el mismo conjunto de argumentos.
 
-    a. `./prepareserver.sh` para subir los artefactos actualizados a Bluemix.
+    a. `./prepareserver.sh` para subir los artefactos actualizados a IBM Cloud.
 
-    b. `./startserver.sh` para iniciar el servidor actualizado 
+    b. `./startserver.sh` para iniciar el servidor actualizado
 
-    Se habrá guardado una copia de los argumentos utilizados en su despliegue anterior en el directorio `recorded-args/`. Puede utilizar estas propiedades para su despliegue. 
+    Se habrá guardado una copia de los argumentos utilizados en su despliegue anterior en el directorio `recorded-args/`. Puede utilizar estas propiedades para su despliegue.
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Eliminar la configuración del servicio de base de datos de Bluemix
-{: #removing-the-database-service-configuration-from-bluemix }
+## Eliminar la configuración del servicio de base de datos de IBM Cloud
+{: #removing-the-database-service-configuration-from-ibmcloud }
 Si ha ejecutado el script **prepareserverdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_server }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_server }}. Este script también crea el esquema de base de datos para {{ site.data.keys.mf_server }}.
 
-Para eliminar la configuración del servicio de base de datos desde Bluemix, realice el siguiente procedimiento utilizando el panel de control de Bluemix. 
+Para eliminar la configuración del servicio de base de datos desde IBM Cloud, realice el siguiente procedimiento utilizando el panel de control de IBM Cloud.
 
-1. En el panel de control de Bluemix, seleccione el servicio dashDB que ha utilizado. Seleccione el nombre del servicio dashDB que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
+1. En el panel de control de IBM Cloud, seleccione el servicio dashDB que ha utilizado. Seleccione el nombre del servicio dashDB que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
 2. Inicie la consola de dashDB para trabajar con los esquemas y los objetos de base de datos de la instancia de servicio dashDB seleccionada.
-3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**. 
-4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de Bluemix.
+3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**.
+4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de IBM Cloud.
 
-Del mismo modo, si ha ejecutado **prepareappcenterdbs.sh** durante la configuración de {{ site.data.keys.mf_app_center }}, siga los pasos anteriores para eliminar la configuración del servicio de base de datos en Bluemix.
+Del mismo modo, si ha ejecutado **prepareappcenterdbs.sh** durante la configuración de {{ site.data.keys.mf_app_center }}, siga los pasos anteriores para eliminar la configuración del servicio de base de datos en IBM Cloud.

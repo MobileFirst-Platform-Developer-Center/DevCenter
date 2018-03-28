@@ -50,6 +50,6 @@ Windows 10 UWP requiert :
 - Windows OS 8.1 ou version ultérieure
 - Visual Studio 2015
 
-## Etapes suivantes
+## Que faire ensuite ?
 {: #whats-next }
 Maintenant que les environnements de développement {{ site.data.keys.product }} et Windows sont configurés, vous pouvez passer à la catégorie [Démarrage rapide](../../../quick-start/windows-8-10/) pour commencer à vous servir de {{ site.data.keys.product }} ou [Tous les tutoriels](../../../all-tutorials) pour en savoir plus sur certains aspects du développement {{ site.data.keys.product }}.

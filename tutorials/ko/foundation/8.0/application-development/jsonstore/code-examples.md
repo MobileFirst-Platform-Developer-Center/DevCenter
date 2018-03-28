@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore 코드 예제
-breadcrumb_title: 코드 예제
+breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---

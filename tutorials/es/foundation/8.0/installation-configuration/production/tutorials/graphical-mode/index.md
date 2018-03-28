@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Guía de aprendizaje para la instalación de MobileFirst Server en modalidad gráfica
+title: Tutorial de instalación de MobileFirst Server en modo gráfico
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,15 +12,14 @@ Utilice la modalidad gráfica de IBM Installation Manager y la Herramienta de co
 {: #before-you-begin }
 * Asegúrese de que están instaladas una de las siguientes bases de datos y versión de Java soportada. También necesita que el controlador JDBC correspondiente para la base de datos esté disponible en su sistema:
     * Sistema de gestión de bases de datos (DBMS) de la lista de bases de datos soportadas:
-        * DB2
+        * DB2 
         * MySQL
         * Oracle
 
         **Importante:** Debe tener una base de datos donde pueda crear las tablas necesarias para el producto y un usuario de base de datos que pueda crear tablas en esa base de datos.
 
-
         En la guía de aprendizaje, los pasos para crear las tablas son para DB2. Puede encontrar el instalador de DB2 como paquete de {{ site.data.keys.product }} eAssembly [en IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm).  
-
+        
 * Controlador JDBC para su base de datos:
     * Para DB2, utilice el tipo de controlador JDBC de DB2 4.
     * Para MySQL, utilice el controlador JDBC de Connector/J.
@@ -36,7 +35,7 @@ Archivo .zip de {{ site.data.keys.product }} V8.0 del repositorio de Installatio
 
 **Perfil de Liberty de WebSphere Application Server**  
 IBM WebSphere Application Server: Liberty Core V8.5.5.3 o posterior
-
+    
 Puede ejecutar la instalación en modalidad gráfica si está en uno de los siguientes sistemas operativos:
 
 * Windows x86 o x86-64
@@ -66,7 +65,6 @@ En otros sistemas operativos, todavía puede instalar en modalidad gráfica con 
 {: #installing-ibm-installation-manager }
 Debe instalar Installation Manager V1.8.4 o posterior. Las versiones anteriores de Installation Manager no están disponibles para instalar {{ site.data.keys.product }} V8.0 porque las operaciones posteriores a la instalación del producto requieren Java 7. Las versiones anteriores de Installation Manager se suministran con Java 6.
 
-
 1. Extraiga el archivo de IBM Installation Manager descargado. Puede encontrar el instalador en [Enlaces de descarga de Installation Manager y Packaging Utility](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 2. Instale Installation Manager:
     * Ejecute **install.exe** para instalar Installation Manager como administrador. Se necesita el usuario root en Linux o UNIX. En Windows, se necesita el privilegio de administrador. En esta modalidad, la información sobre los paquetes instalados se coloca en una ubicación compartida en el disco y cualquier usuario con permisos para ejecutar Installation Manager puede actualizar las aplicaciones.
@@ -92,23 +90,21 @@ El instalador de WebSphere Application Server Liberty Core se proporciona como p
 6. Mueva el directorio **usr** que contiene los servidores a una ubicación que no necesite privilegios específicos.
 
     Si instala Liberty con Installation Manager en la modalidad de administrador, los archivos se encuentran en una ubicación donde los usuarios no administrativos o no root no pueden modificar los archivos. Para el alcance de esta guía de aprendizaje, mueva el directorio **usr** que contiene los servidores a una ubicación que no necesite privilegios específicos. De este modo, las operaciones de instalación se pueden llevar a cabo sin privilegios específicos.
-
     * Vaya al directorio de instalación de Liberty.
     * Cree un directorio llamado **etc**. Necesita privilegios raíz o de administrador.
     * En el directorio **etc**, cree un archivo **server.env** con el siguiente contenido: `WLP_USER_DIR=<path to a directory where any user can write>`
-
+    
     Por ejemplo, en Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Cree un servidor Liberty que se utilizará para instalar el primer nodo de {{ site.data.keys.mf_server }} al final de la guía de aprendizaje.
     * Inicie una línea de mandatos.
     * Vaya a **liberty\_install\_dir/bin** e introduzca `server create mfp1`.
-
+    
     Este mandato crea una instancia de servidor Liberty llamado mfp1. Puede ver su definición en **liberty\_install\_dir/usr/servers/mfp1** o **WLP\_USER\_DIR/servers/mfp1** (si modifica el directorio como se describe en el paso 6).
-
+    
 Después de crear el servidor, puede iniciarlo con `server start mfp1` desde **liberty\_install\_dir/bin/**. Para detener el servidor, introduzca el mandato: `server stop mfp1` desde **liberty\_install\_dir/bin/**.  
 La página de inicio predeterminada se puede ver en http://localhost:9080.
 
 > **Nota:** Para producción, debe asegurarse de que el servidor Liberty está iniciado como servicio cuando se inicia el sistema principal. Hacer que el servidor Liberty se inicie como servicio no es parte de esta guía de aprendizaje.
-
 
 ### Instalación de {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
@@ -122,9 +118,8 @@ Ejecute Installation Manager para instalar los archivos binarios de {{ site.data
         Si descomprime el archivo .zip de {{ site.data.keys.product }} V8.0 para {{ site.data.keys.mf_server }} en la carpeta **mfp\_installer\_directory**, el archivo de repositorio se podrá encontrar en **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         También es posible que desee aplicar el fixpack más reciente que se puede descargar desde [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Asegúrese de escribir el repositorio para el fixpack. Si descomprime el fixpack en la carpeta **fixpack_directory**, el archivo de repositorio se encontrará en **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
-
+    
         > **Nota:** No puede instalar el fixpack sin el repositorio de la versión base en los repositorios de Installation Manager. Los fixpacks son instaladores incrementales y necesitan el repositorio de la versión base que va a instalarse.
-
     * Seleccione el archivo y pulse **Aceptar**.
     * Pulse **Aceptar** para cerrar el panel Preferencias.
 
@@ -151,7 +146,7 @@ También puede encontrar algunos atajos para la Herramienta de configuración de
 
 ### Creación de una base de datos
 {: #creating-a-database }
-Esta tarea es para asegurarse de que existe una base de datos en su DBMS, y que un usuario está autorizado a utilizar la base de datos, crear tablas en ella y utilizarlas.   
+Esta tarea es para asegurarse de que existe una base de datos en su DBMS, y que un usuario está autorizado a utilizar la base de datos, crear tablas en ella y utilizarlas.  
 La base de datos se utiliza para almacenar los datos técnicos utilizados por los diversos componentes {{ site.data.keys.product_adj }}:
 
 * Servicio de administración de {{ site.data.keys.mf_server }}
@@ -166,8 +161,7 @@ En esta guía de aprendizaje, las tablas de todos los componentes están colocad
 1. Inicie sesión en el sistema que está ejecutando el servidor DB2. Se presupone que existe un usuario de DB2, por ejemplo, **mfpuser**.
 2. Verifique que este usuario de DB2 tiene acceso a una base de datos con un tamaño de página de 32768 o más, y tiene permiso para crear esquemas y tablas implícitas en la base de datos.
 
-    De forma predeterminada, este usuario es un usuario declarado en el sistema operativo del sistema que ejecuta DB2. Es decir, un usuario con un inicio de sesión para ese sistema. Si dicho usuario existe, la acción del paso 3 no es necesaria.
-Al final de la guía de aprendizaje, la Herramienta de configuración del servidor crea todas las tablas necesarias para el producto en un esquema en esa base de datos.
+    De forma predeterminada, este usuario es un usuario declarado en el sistema operativo del sistema que ejecuta DB2. Es decir, un usuario con un inicio de sesión para ese sistema. Si dicho usuario existe, la acción del paso 3 no es necesaria. Al final de la guía de aprendizaje, la Herramienta de configuración del servidor crea todas las tablas necesarias para el producto en un esquema en esa base de datos.
 
 3. Cree una base de datos con el tamaño de página correcto para esta instalación si no tiene una.
     * Abra una sesión con un usuario que tenga permisos `SYSADM` o `SYSCTRL`. Por ejemplo, utilice el usuario **db2inst1** que es el usuario administrativo predeterminado que crea el instalador de DB2.
@@ -175,7 +169,7 @@ Al final de la guía de aprendizaje, la Herramienta de configuración del servid
         * En sistemas Windows, pulse **Inicio → IBM DB2 → Procesador de línea de mandatos**.
         * En sistemas Linux o UNIX, vaya a **~/sqllib/bin** (o **db2\_install\_dir/bin** si **sqllib** no está creado en el directorio de inicio del administrador) y especifique `./db2`.
         * Especifique las siguientes sentencias SQL para crear una base de datos denominada **MFPDATA**:
-
+        
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
         CONNECT TO MFPDATA
@@ -185,12 +179,10 @@ Al final de la guía de aprendizaje, la Herramienta de configuración del servid
         DISCONNECT MFPDATA
         QUIT
         ```
-
+        
 Si ha definido un nombre de usuario diferente, sustituya mfpuser con su propio nombre de usuario.  
 
 > **Nota:** La sentencia no elimina los privilegios predeterminados concedidos a PUBLIC en una base de datos predeterminada de DB2. Para producción, es posible que tenga que reducir los privilegios en esta base de datos a los requisitos mínimos para el producto. Para obtener más información sobre la seguridad DB2 y un ejemplo de las prácticas de seguridad, consulte [Seguridad DB2, Parte 8: Doce procedimientos recomendados de seguridad DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
-
-
 
 ### Ejecución de la Herramienta de configuración del servidor
 {: #running-the-server-configuration-tool }
@@ -203,22 +195,22 @@ La Herramienta de configuración del servidor no despliega las siguientes aplica
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-Normalmente, {{ site.data.keys.mf_analytics }} se despliega en una granja de servidores diferente que {{ site.data.keys.mf_server }} debido a su alta necesidad de memoria. {{ site.data.keys.mf_analytics }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configurará las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics }}.
+Normalmente, {{ site.data.keys.mf_analytics }} se despliega en una granja de servidores diferente que {{ site.data.keys.mf_server }} debido a su alta necesidad de memoria. {{ site.data.keys.mf_analytics }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configurará las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics }}. 
 
 #### Application Center
 {: #application-center }
 Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamente a los empleados que utilizan las aplicaciones o para pruebas. Es independiente de {{ site.data.keys.mf_server }} y no es necesario instalarla con {{ site.data.keys.mf_server }}.
-
+    
 1. Inicie la Herramienta de configuración del servidor.
     * En Linux, desde los **atajos de aplicación Aplicaciones → {{ site.data.keys.mf_server }} → Herramienta de configuración del servidor**.
     * En Windows, pulse **Inicio → Programas → IBM MobileFirst Platform Server → Herramienta de configuración del servidor**.
     * En macOS, abra una consola de shell. Vaya a **mfp_server\_install\_dir/shortcuts y escriba ./configuration-tool.sh**.
-
+    
     El directorio mfp_server_install_dir es donde ha instalado {{ site.data.keys.mf_server }}.
 2. Seleccione **Archivo → Nueva configuración** para crear una Configuración de {{ site.data.keys.mf_server }}.
 3. Asigne el nombre "Hello MobileFirst" a la configuración y pulse **Aceptar**.
 4. Deje las entradas predeterminadas de los Detalles de configuración como están y pulse **Siguiente**.
-
+    
     En esta guía de aprendizaje, no se utiliza el ID de entorno. Es una característica para el escenario de despliegue avanzado.  
     Un ejemplo de dicho escenario sería instalar varias instancias de {{ site.data.keys.mf_server }} y servicios de administración en el mismo servidor de aplicaciones o celda de WebSphere Application Server.
 5. Mantenga la raíz de contexto predeterminada del servicio de administración y del componente de tiempo de ejecución.
@@ -231,11 +223,11 @@ Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamen
     * Pulse **Siguiente**.
 
     Si no se puede alcanzar el servidor DB2 con las credenciales especificadas, la Herramienta de configuración del servidor inhabilita el botón **Siguiente** y muestra un error. El botón **Siguiente** también se inhabilita si el controlador JDBC no contiene las clases esperadas. Si todo es correcto, el botón **Siguiente** está habilitado.
-
+    
 9. En el panel **Valores adicionales de DB2**, complete los detalles:
     * Especifique **mfpuser** como nombre de usuario y contraseña de DB2. Utilice su propio nombre de usuario DB2 si no es **mfpuser**.
     * Especifique **MFPDATA** como nombre de la base de datos.
-    * Deje **MFPDATA** como esquema en que se crearán las tablas. Pulse **Siguiente**.De forma predeterminada, la Herramienta de configuración del servidor propone el valor **MFPDATA**.
+    * Deje **MFPDATA** como esquema en que se crearán las tablas. Pulse **Siguiente**. De forma predeterminada, la Herramienta de configuración del servidor propone el valor **MFPDATA**.
 10. No especifique ningún valor en el panel **Solicitud de creación de base de datos** y pulse **Siguiente**.
 
     Este panel se utiliza cuando la base de datos introducida en el panel previo no existe en el servidor de DB2. En ese caso, puede especificar el nombre de usuario y la contraseña del administrador de DB2. La Herramienta de configuración del servidor abre una sesión SSH en el servidor de DB2 y ejecuta los mandatos como se describe en [Creación de una base de datos](#creating-a-database) para crear la base de datos con los valores predeterminados y el tamaño de página correcto.
@@ -244,7 +236,7 @@ Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamen
     * Escriba el directorio de instalación de WebSphere Application Server Liberty.
     * Seleccione el servidor en el que va a instalar el producto en el campo de nombre de servidor. Seleccione el servidor **mfp1** creado en el paso 7 de [Instalación de WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core).
     * Deje la opción **Crear un usuario** seleccionada con su valor predeterminado.
-
+    
     Esta opción crea un usuario en el registro básico del servidor Liberty para que pueda asignarlo a {{ site.data.keys.mf_console }} o al servicio de administración. Para una instalación de producción, no utilice esta opción y configure los roles de seguridad de las aplicaciones después de la instalación tal como se describe en Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}.
     * Seleccione la opción Despliegue de granja de servidores como tipo de despliegue.
     * Pulse **Siguiente**.
@@ -303,7 +295,7 @@ El archivo **server.xml** y algunos valores de servidor de aplicaciones se modif
 1. Se han añadido las características de Liberty.
 
     Las características se han añadido para cada aplicación y se pueden duplicar. Por ejemplo, la característica JDBC se utiliza para el servicio de administración y los componentes de tiempo de ejecución. Esta duplicación permite la eliminación de característica de una aplicación cuando se desinstala, sin dañar las otras aplicaciones. Por ejemplo, si decide en algún momento desinstalar el servicio de envío por push de un servidor e instalarlo en otro servidor. Sin embargo, no son posibles todas las topologías. El servicio de administración, el servicio de Live Update y el componente de tiempo de ejecución deben estar en el mismo servidor de aplicaciones con perfil de Liberty. Para obtener más información, consulte [Restricciones en el servicio de administración de {{ site.data.keys.mf_server }}, el servicio Live Update de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }}](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). La duplicación de características no crea problemas a menos que las características que añada entren en conflicto. Añadir las características jdbc-40 y jdbc-41 causará un problema, pero añadir dos veces la misma característica no.
-
+    
 2. Se añade `host='*'` en la declaración de `httpEndPoint`.
 
     Este valor es para permitir la conexión con el servidor desde todas las interfaces de red. En producción, es posible que desee restringir el valor de host del punto final HTTP.
@@ -322,7 +314,7 @@ El archivo **server.xml** y algunos valores de servidor de aplicaciones se modif
 7. El ejecutor predeterminado está personalizado para establecer valores grandes en `coreThreads` y `maxThreads` si utiliza Liberty V8.5.5.5 o anterior. Liberty ajusta de forma automática el ejecutor predeterminado a partir de V8.5.5.6.
 
     Este valor evita problemas de tiempo de espera que interrumpen la secuencia de inicio del componente de tiempo de ejecución y el servicio de administración en algunas versiones de Liberty. La ausencia de esta sentencia puede ser la causa de estos errores en el archivo de registro del servidor:
-
+    
     > No se ha podido obtener la conexión JMX para acceder a un MBean. Es posible que ocurra un error de configuración JMX: Tiempo de espera de lectura excedido FWLSE3000E: Se ha detectado un error de servidor.
     > FWLSE3012E: Error de configuración JMX. No se han podido obtener MBeans. Motivo: "Tiempo de espera de lectura excedido".
 
@@ -403,8 +395,6 @@ Una vez finalizada la instalación, puede utilizar este procedimiento para proba
 
     > **Nota:** Si se conecta con HTTP, el ID de inicio de sesión y la contraseña se envían como texto simple en la red. Para un inicio de sesión seguro, utilice HTTPS para iniciar sesión en el servidor. Puede ver el puerto HTTPS del servidor Liberty en el atributo httpsPort del elemento `<httpEndpoint>` del archivo **server.xml**. De forma predeterminada, el valor es 9443.
 
-
-
 4. Cierre la sesión de la consola con **Hola, administrador → Finalizar sesión**.
 5. Especifique el siguiente URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) en el navegador web y acepte el certificado. De forma predeterminada, el servidor Liberty genera un certificado predeterminado que no es conocido por su navegador web, debe aceptar el certificado. Mozilla Firefox presenta esta certificación como excepción de seguridad.
 6. Vuelva a iniciar sesión con **admin/admin**. El inicio de sesión y la contraseña se encriptan entre su navegador web y {{ site.data.keys.mf_server }}. En producción, es posible que desee cerrar el puerto HTTP.
@@ -429,29 +419,29 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
     httpPort="9080"
     httpsPort="9443" />
     ```
-
+    
     por:
-
+    
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
     httpPort="9081"
     httpsPort="9444" />
     ```
-
+    
     Los puertos HTTP y HTTPS del servidor mfp2 no entran en conflicto con los puertos del servidor mfp1 con este cambio. Asegúrese de modificar los puertos antes de ejecutar la instalación de {{ site.data.keys.mf_server }}. De lo contrario, si modifica los puertos después de realizar la instalación, también deberá reflejar el cambio del puerto en la propiedad JNDI: **mfp.admin.jmx.port**.
-
+    
 3. Ejecute la Herramienta de configuración del servidor.
     *  Cree una configuración **Hello MobileFirst 2**.
     * Realice el mismo procedimiento de instalación como se describe en [Ejecución de la Herramienta de configuración del servidor](#running-the-server-configuration-tool) pero seleccione **mfp2** como servidor de aplicaciones. Utilice la misma base de datos y el mismo esquema.
 
     > **Nota:**  
-    >
+    > 
     > * Si utiliza un ID de entorno para el servidor mfp1 (no sugerido en esta guía de aprendizaje), debe utilizarse el mismo ID de entorno para el servidor mfp2.
     > * Si modifica la raíz de contexto para algunas aplicaciones, utilice la misma raíz de contexto para el servidor mfp2. Los servidores de una granja de servidores deben ser simétricos.
     > * Si crea un usuario predeterminado (admin/admin), cree el mismo usuario en el servidor mfp2.
 
     Las tareas Ant detectan que existen las bases de datos y no las crean (consulte el siguiente extracto de registro). A continuación, se despliegan las aplicaciones en el servidor.
-
+    
     ```xml
     [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
     [configuredatabase] Database MFPDATA exists.
@@ -463,7 +453,7 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
     [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
     [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
     ```
-
+    
 4. Probar los dos servidores con conexión HTTP.
     * Abra un navegador web.
     * Especifique el siguiente URL: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). El servidor mfp1 sirve a la consola.
@@ -472,21 +462,20 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
     * Inicie sesión con admin/admin. Si se ha realizado correctamente la instalación, puede ver la misma página de bienvenida en ambos separadores después de iniciar sesión.
     * Vuelva al primer separador del navegador y pulse **Hola, administrador → Descargar registro de auditoría**. Se cierra la sesión de la consola y ve la pantalla de inicio de sesión de nuevo. Este comportamiento de cierre de sesión es un problema. El problema ocurre porque cuando inicia sesión en el servidor mfp2, se crea una señal de Lightweight Third Party Authentication (LTPA) y se almacena en su navegador como cookie. Sin embargo, el servidor mfp1 no reconoce esta señal LTPA. Es posible que se produzca una conmutación entre servidores en un entorno de producción cuando tiene un equilibrador de carga HTTP delante de un clúster. Para resolver este problema, debe asegurarse de que ambos servidores (mfp1 y mfp2) generan las señales de LTPA con las mismas claves secretas. Copie las claves de LTPA del servidor mfp1 en el servidor mfp2.
     * Detenga ambos servidores con estos mandatos:
-
+    
         ```bash
         server stop mfp1
         server stop mfp2
         ```
     * Copie las claves de LTPA del servidor mfp1 en el servidor mfp2.
-
-Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecute el siguiente mandato dependiendo de su sistema operativo.
+        Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecute el siguiente mandato dependiendo de su sistema operativo. 
         * En UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * En Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
     * Reinicie los servidores. Conmutar de un separador del navegador a otro no requiere que vuelva a iniciar sesión. En una granja de servidores Liberty, todos los servidores deben tener las mismas claves LTPA.
 5. Habilite la comunicación JMX entre los servidores Liberty.
 
     La comunicación JMX con Liberty se realiza mediante el conector REST de Liberty en el protocolo HTTPS. Para habilitar esta comunicación, cada servidor de la granja de servidores debe ser capaz de reconocer el certificado SSL de los otros miembros. Debe intercambiar los certificados HTTPS en sus almacenes de confianza. Utilice los programas de utilidad de IBM como Keytool, que es parte de la distribución de JRE de IBM en **java/bin** para configurar el almacén de confianza. Las ubicaciones del almacén de claves y del almacén de confianza están definidas en el archivo **server.xml**. De forma predeterminada, el almacén de claves del perfil de Liberty se encuentra en **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. La contraseña de este almacén de claves predeterminado, como se puede ver en el archivo **server.xml**, es **mobilefirst**.
-
+    
     > **Sugerencia:** Puede cambiarla con el programa de utilidad keytool Keytool, pero también debe cambiar la contraseña en el archivo server.xml para que el servidor Liberty pueda leer este almacén de claves. En esta guía de aprendizaje, utilice la contraseña predeterminada.
     * En **WLP\_USER\_DIR/servers/mfp1/resources/security**, especifique `keytool -list -keystore key.jks`. El mandato muestra los certificados en el almacén de claves. Solo hay uno llamado **default**. Se le solicitará la contraseña del almacén de claves (mobilefirst) antes de poder ver las claves. Este es el caso de todos los mandatos siguientes con el programa de utilidad Keytool.
     * Exporte el certificado predeterminado del servidor mfp1 con el mandato: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
@@ -503,5 +492,7 @@ Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecut
     server start mfp1
     server start mfp2
     ```
-
+    
 2. Acceda a la consola. Por ejemplo, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), o [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) en HTTPS. En la barra lateral izquierda, aparecerá un menú adicional etiquetado como **Nodos de granja de servidores**. Si pulsa en **Nodos de granja de servidores**, puede ver el estado de cada nodo. Es posible que tenga que esperar un poco para que se inicien los nodos.
+    
+    

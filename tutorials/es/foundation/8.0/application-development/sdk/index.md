@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adición de MobileFirst SDK
+title: Adición del SDK de MobileFirst
 weight: 1
 show_children: true
 ---

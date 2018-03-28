@@ -1,28 +1,28 @@
 ---
 layout: tutorial
 title: Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가
-breadcrumb_title: 이미지 및 아이콘 추가
+breadcrumb_title: Adding images and icons
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-**cordova-plugin-mfp** 플러그인을 사용했지만 {{ site.data.keys.product_adj }} 템플리트를 사용하지 않았거나 앱에 Cordova **cordova-plugin-splashscreen** 플러그인을 추가하지 않은 경우 {{ site.data.keys.product_full }}에서 제공하는 아이콘 및 스플래시 화면에 대한 이미지를 고유 이미지로 바꿀 수 있습니다. 템플리트를 사용한 경우 표시되는 파일인 Cordova 앱에서 사용하는 스플래시 이미지를 바꿀 수 있습니다. 
+**cordova-plugin-mfp** 플러그인을 사용했지만 {{ site.data.keys.product_adj }} 템플리트를 사용하지 않았거나 앱에 Cordova **cordova-plugin-splashscreen** 플러그인을 추가하지 않은 경우 {{ site.data.keys.product_full }}에서 제공하는 아이콘 및 스플래시 화면에 대한 이미지를 고유 이미지로 바꿀 수 있습니다. 템플리트를 사용한 경우 표시되는 파일인 Cordova 앱에서 사용하는 스플래시 이미지를 바꿀 수 있습니다.
 
-스플래시 이미지 및 아이콘을 저장할 새 폴더를 작성하고 **config.xml** 구성 파일이 해당 항목을 가리키도록 수정해야 합니다. 
+스플래시 이미지 및 아이콘을 저장할 새 폴더를 작성하고 **config.xml** 구성 파일이 해당 항목을 가리키도록 수정해야 합니다.
 
-1. Cordova 프로젝트의 루트 디렉토리 내에 폴더를 작성하십시오. 상위 폴더가 Cordova 프로젝트 루트 아래에 있는 경우 이 폴더는 임의의 중첩 서브폴더 레벨에 있을 수 있습니다. 
-2. 소스 스플래시 이미지와 아이콘 이미지를 이 폴더에 저장하십시오. 
-3. 사용자 정의 파일을 가리키도록 **config.xml** 구성 파일을 업데이트하십시오. 
+1. Cordova 프로젝트의 루트 디렉토리 내에 폴더를 작성하십시오. 상위 폴더가 Cordova 프로젝트 루트 아래에 있는 경우 이 폴더는 임의의 중첩 서브폴더 레벨에 있을 수 있습니다.
+2. 소스 스플래시 이미지와 아이콘 이미지를 이 폴더에 저장하십시오.
+3. 사용자 정의 파일을 가리키도록 **config.xml** 구성 파일을 업데이트하십시오.
 
 ### Android
 {: #android }
-Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 요구사항은 앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용했는지 여부에 따라 다릅니다. 
+Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 요구사항은 앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용했는지 여부에 따라 다릅니다.
 
 #### 스플래시 화면
 {: #splash-screens }
-앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용하지 *않은* 경우 표시되는 스플래시 이미지는 {{ site.data.keys.product_adj }} 이미지 위치에서 검색되는 스플래시 이미지입니다. 템플리트를 사용하지 않은 경우 대상 파일 경로 및 파일 이름은 예제와 동일하게 유지되어야 합니다. 소스 경로 및 파일 이름(`src`)을 표시하려는 파일의 경로로 변경하십시오. **config.xml** 파일에서 `<platform name="android">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오.
+앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용하지 *않은* 경우 표시되는 스플래시 이미지는 {{ site.data.keys.product_adj }} 이미지 위치에서 검색되는 스플래시 이미지입니다. 템플리트를 사용하지 않은 경우 대상 파일 경로 및 파일 이름은 예제와 동일하게 유지되어야 합니다. 소스 경로 및 파일 이름(`src`)을 표시하려는 파일의 경로로 변경하십시오. **config.xml** 파일에서 `<platform name="android">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오. 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +32,7 @@ Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 �
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-앱 작성 시 {{ site.data.keys.product_adj }} 템플리트를 사용한 경우 Cordova에서 사용하는 스플래시 이미지를 업데이트해야 합니다. 소스 경로 맟 파일 이름(src)을 표시하려는 파일의 경로로 변경하십시오. config.xml 파일에서 <platform name="android"> 및 </platform> 태그 사이에 다음 예제와 유사한 행을 추가하십시오. 
+앱 작성 시 {{ site.data.keys.product_adj }} 템플리트를 사용한 경우 Cordova에서 사용하는 스플래시 이미지를 업데이트해야 합니다. 소스 경로 맟 파일 이름(src)을 표시하려는 파일의 경로로 변경하십시오. config.xml 파일에서 <platform name="android"> 및 </platform> 태그 사이에 다음 예제와 유사한 행을 추가하십시오.
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -47,7 +47,7 @@ Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 �
 
 #### 아이콘
 {: #icons }
-아이콘 파일의 파일 이름이 다음 예제의 항목과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다. 
+아이콘 파일의 파일 이름이 다음 예제의 항목과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다.
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -64,7 +64,7 @@ iOS 앱이 있는 경우 `<platform name="ios">` 및 `</platform>` 태그 사이
     
 #### 스플래시 화면
 {: #splash-screens-ios }
-스플래시 화면 파일의 경로와 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 각 이미지의 이름은 크기에 해당합니다. 
+스플래시 화면 파일의 경로와 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 각 이미지의 이름은 크기에 해당합니다.
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -80,7 +80,7 @@ iOS 앱이 있는 경우 `<platform name="ios">` 및 `</platform>` 태그 사이
 
 #### 아이콘
 {: #icons-ios}
-아이콘 파일의 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다. 
+아이콘 파일의 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다.
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -108,7 +108,7 @@ Windows 앱이 있는 경우 `<platform name="windows">` 및 `</platform>` 태�
 
 #### 스플래시 화면
 {: #splash-screens-windows }
-스플래시 화면 파일의 경로와 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 각 이미지의 이름은 크기에 해당합니다. 
+스플래시 화면 파일의 경로와 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 각 이미지의 이름은 크기에 해당합니다.
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -119,7 +119,7 @@ Windows 앱이 있는 경우 `<platform name="windows">` 및 `</platform>` 태�
 
 #### 아이콘
 {: #icons-windows }
-아이콘 파일의 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다. 
+아이콘 파일의 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다.
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

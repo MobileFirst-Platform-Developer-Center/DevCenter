@@ -132,6 +132,8 @@ mfpadm --url=  --user=  --passwordfile= --secure=false app version [LAUFZEIT] [A
 ```
 `TYP` kann den Wert `dynamic` oder `static` haben.
 
+
+
 ### Unterstützung für SDKs bis Version 8.0.0.0-MFPF-IF201701250919
 {: #legacy }
 Die dynamische und statische Validierung werden nur von Client-SDKs unterstützt, die **ab Februar 2017** herausgegeben wurden. Verwenden Sie

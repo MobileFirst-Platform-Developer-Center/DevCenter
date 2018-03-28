@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adición de MobileFirst Foundation SDK a aplicaciones Xamarin
+title: Adición del SDK de MobileFirst Foundation a aplicaciones Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
@@ -89,7 +89,7 @@ Siga las instrucciones en la pantalla para añadir el archivo al proyecto.
 #### mfpclient.plist
 {: #complete-setup-mfpclientplist }
 1. Pulse con el botón derecho del ratón sobre el proyecto Xamarin iOS y seleccione **Añadir archivos...**. Navegue hasta encontrar `mfpclient.plist` para añadirlo a la raíz del proyecto.
-Elija **Copiar archivo a proyecto** si así se le solicita.  
+Elija **Copiar archivo a proyecto** si así se le solicita. 
 2. Pulse con el botón derecho sobre el archivo `mfpclient.plist` y seleccione **Acción de compilación**. Elija **Contenido**.
 
 #### mfpclient.properties

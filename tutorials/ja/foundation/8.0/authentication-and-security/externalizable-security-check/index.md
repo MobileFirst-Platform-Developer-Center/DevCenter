@@ -11,7 +11,7 @@ weight: 5
 抽象 `ExternalizableSecurityCheck` クラスは、`SecurityCheck` インターフェースを実装し、セキュリティー検査機能の 2 つの重要な側面、すなわち外部化と状態管理を処理します。
 
 * 外部化 - このクラスは、`Externalizable` インターフェースを実装して、派生クラスがこのインターフェースを実装する必要がなくなるようにします。
-* 状態管理 - このクラスは、`STATE_EXPIRED` 状態を事前定義します。これは、セキュリティー検査を期限切れにし、その状態が保持されないようにすることを意味します。派生クラスは、それぞれのセキュリティー検査によってサポートされるその他の状態を定義する必要があります。
+* 状態管理 - このクラスは、`STATE_EXPIRED` 状態を事前定義します。これは、セキュリティー検査を期限切れにし、その状態が保持されないようにすることを意味します。 派生クラスは、それぞれのセキュリティー検査によってサポートされるその他の状態を定義する必要があります。
 
 サブクラスでは、3 つのメソッドを実装する必要があります。それらは、`initStateDurations`、`authorize`、および `introspect` です。
 
@@ -29,7 +29,7 @@ weight: 5
 
 ## initStateDurations メソッド
 {: #the-initstatedurations-method }
-`ExternalizableSecurityCheck` によって、`initStateDurations` という抽象メソッドが定義されます。サブクラスは、それぞれのセキュリティー検査でサポートされるすべての状態について、名前と期間を指定することで、このメソッドを実装する必要があります。期間の値は、通常、セキュリティー検査構成から取得されます。
+`ExternalizableSecurityCheck` によって、`initStateDurations` という抽象メソッドが定義されます。 サブクラスは、それぞれのセキュリティー検査でサポートされるすべての状態について、名前と期間を指定することで、このメソッドを実装する必要があります。 期間の値は、通常、セキュリティー検査構成から取得されます。
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -43,7 +43,7 @@ protected void initStateDurations(Map<String, Integer> durations) {
 
 ## authorize メソッド
 {: #the-authorize-method }
-`SecurityCheck` インターフェースによって、`authorize` というメソッドが定義されます。このメソッドが、セキュリティー検査のメイン・ロジックの実装、状態の管理、およびクライアントへの応答の送信 (成功、チャレンジ、または失敗) の責任を負います。
+`SecurityCheck` インターフェースによって、`authorize` というメソッドが定義されます。 このメソッドが、セキュリティー検査のメイン・ロジックの実装、状態の管理、およびクライアントへの応答の送信 (成功、チャレンジ、または失敗) の責任を負います。
 
 状態の管理には、以下のヘルパー・メソッドを使用します。
 
@@ -69,7 +69,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-`AuthorizationResponse.addSuccess` メソッドは、成功のスコープとその有効期限を応答オブジェクトに追加します。これは以下を必要とします。
+`AuthorizationResponse.addSuccess` メソッドは、成功のスコープとその有効期限を応答オブジェクトに追加します。 これは以下を必要とします。
 
 * セキュリティー検査によって認可されたスコープ。
 * 認可されたスコープの有効期限。  
@@ -81,19 +81,19 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
    
 * セキュリティー検査の名前。
 
-`AuthorizationResponse.addFailure` メソッドは、失敗を応答オブジェクトに追加します。これは以下を必要とします。
+`AuthorizationResponse.addFailure` メソッドは、失敗を応答オブジェクトに追加します。 これは以下を必要とします。
 
 * セキュリティー検査の名前。
 * 失敗 `Map` オブジェクト。
 
-`AuthorizationResponse.addChallenge` メソッドは、チャレンジを応答オブジェクトに追加します。これは以下を必要とします。
+`AuthorizationResponse.addChallenge` メソッドは、チャレンジを応答オブジェクトに追加します。 これは以下を必要とします。
 
 * セキュリティー検査の名前。
 * チャレンジ `Map` オブジェクト。
 
 ## introspect メソッド
 {: #the-introspect-method }
-`SecurityCheck` インターフェースによって、`introspect` というメソッドが定義されます。このメソッドにより、セキュリティー検査の状態が、要求されたスコープを認可しているかどうかが検査されます。スコープが認可されている場合、セキュリティー検査は、認可されるスコープ、その有効期限、およびカスタムのイントロスペクション・データを結果のパラメーターに報告しなければなりません。スコープが認可されていない場合、セキュリティー検査は何も行いません。  
+`SecurityCheck` インターフェースによって、`introspect` というメソッドが定義されます。 このメソッドにより、セキュリティー検査の状態が、要求されたスコープを認可しているかどうかが検査されます。 スコープが認可されている場合、セキュリティー検査は、認可されるスコープ、その有効期限、およびカスタムのイントロスペクション・データを結果のパラメーターに報告しなければなりません。 スコープが認可されていない場合、セキュリティー検査は何も行いません。  
 このメソッドによって、セキュリティー検査の状態またはクライアント登録レコード、あるいはその両方が変更されることがあります。
 
 ```java

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Inscripción
-breadcrumb_title: Inscripción
+breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
@@ -19,7 +19,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Este ejemplo muestra un proceso de inscripción personalizado y una autorización de paso ascendente. Durante el proceso de inscripción de una única vez, se le pide al usuario que introduzca su nombre de usuario y contraseña y que defina el código PIN.   
+Este ejemplo muestra un proceso de inscripción personalizado y una autorización de paso ascendente. Durante el proceso de inscripción de una única vez, se le pide al usuario que introduzca su nombre de usuario y contraseña y que defina el código PIN.  
 
 **Requisitos previos:** Asegúrese de leer los tutoriales [ExternalizableSecurityCheck](../externalizable-security-check/) y [Paso ascendente](../step-up/).
 
@@ -35,9 +35,9 @@ Este ejemplo muestra un proceso de inscripción personalizado y una autorizació
 * Cuando se inicia la aplicación por primera vez (antes de realizar la inscripción), muestra la IU con dos botones: **Obtener datos públicos** e **Inscribirse**.
 * Cuando el usuario pulsa el botón **Inscribirse** para iniciar la inscripción, visualiza un formulario de inicio de sesión y se le solicita que establezca un código PIN.
 * Cuando el usuario se haya inscrito correctamente, la IU incluirá cuatro botones: **Obtener datos públicos**, **Obtener saldo**, **Obtener transacciones**, y **Cerrar sesión**. El usuario puede acceder a los cuatro botones sin tener que escribir el código PIN.
-* Cuando se inicia la aplicación una segunda vez (después de haber realizado la inscripción), todavía se muestran los cuatro botones en la IU. Sin embargo, cuando el usuario hace clic en el botón **Obtener transacciones***, se le solicita que introduzca el código PIN. 
+* Cuando se inicia la aplicación una segunda vez (después de haber realizado la inscripción), todavía se muestran los cuatro botones en la IU. Sin embargo, cuando el usuario hace clic en el botón **Obtener transacciones***, se le solicita que introduzca el código PIN.
 
-Si el usuario comete tres fallos al introducir el código PIN, se le solicita que vuelva a autenticarse con un nombre de usuario y una contraseña y que restablezca el código PIN. 
+Si el usuario comete tres fallos al introducir el código PIN, se le solicita que vuelva a autenticarse con un nombre de usuario y una contraseña y que restablezca el código PIN.
 
 ## Almacenamiento de datos en atributos persistentes
 {: #storing-data-in-persistent-attributes }
@@ -175,7 +175,7 @@ La comprobación de seguridad `IsEnrolled` protege:
 
 * El recurso **getBalance** para que solo los usuarios inscritos puedan utilizar el saldo.
 * El recurso **transacciones** de manera que solo los usuarios inscritos pueden obtener las transacciones.
-* El recurso **cancelar inscripción** por lo que solo es posible suprimir el **pinCode** si se ha definido antes. 
+* El recurso **cancelar inscripción** por lo que solo es posible suprimir el **pinCode** si se ha definido antes.
 
 #### Creación de la comprobación de seguridad
 {: #creating-the-security-check }
@@ -259,6 +259,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 <br/>
 La comprobación de seguridad `IsEnrolled` **depende de** `EnrollmentUserLogin`:
+
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
@@ -301,7 +302,6 @@ public String getTransactions(){
 ```
     
 > Para obtener más información acerca de `securityContext`, consulte la sección [API Seguridad](../../adapters/java-adapters/#security-api) en el tutorial de adaptador Java.
-
 
 Añada el usuario registrado al objeto de respuesta de la forma siguiente:
 

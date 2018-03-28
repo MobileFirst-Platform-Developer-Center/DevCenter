@@ -4,9 +4,9 @@ title: 来自 Android 应用程序的资源请求
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---

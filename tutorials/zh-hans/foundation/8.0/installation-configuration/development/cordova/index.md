@@ -15,7 +15,7 @@ weight: 2
 
 ## 安装 Cordova CLI
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} 支持 Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova)。  
+{{ site.data.keys.product }} 支持 Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 或更高版本。  
 要进行安装：
 
 1. 下载并安装 [NodeJS](https://nodejs.org/en/)。

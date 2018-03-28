@@ -160,7 +160,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ### The js folder
 {: #the-js-folder }
 
-This folder contains all the JavaScript implementation file of the procedures that are declared in the **adapter.xml** file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
+This folder contains the JavaScript implementation file of all the procedures that are declared in the **adapter.xml** file and there can be only one JavaScript file in a JavaScript adapter. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
 
 ## JavaScript adapter procedures
 {: #javascript-adapter-procedures }

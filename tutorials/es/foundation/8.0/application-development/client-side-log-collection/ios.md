@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Registro en aplicaciones iOS
-breadcrumb_title: Registro en iOS
+breadcrumb_title: Logging in iOS
 relevantTo: [ios]
 weight: 2
 ---

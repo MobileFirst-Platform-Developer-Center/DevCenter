@@ -9,11 +9,11 @@ weight: 1
 {: #overview }
 {{ site.data.keys.product_full }} 由以下组件组成：客户机 SDK、适配器原型、安全性检查和认证工具。
 
-可以从在线存储库中获取这些组件，并可以使用软件包管理器来安装这些组件。 这些在线存储库提供了各个组件的最新发行版。 也可以从 {{ site.data.keys.mf_dev_kit }} 下载相同的组件以在本地使用。 请注意，{{ site.data.keys.mf_dev_kit_short }} 提供的版本表示发布特定 {{ site.data.keys.mf_dev_kit_short }} 构件时提供的版本；要使用最新版本，需要下载新的 {{ site.data.keys.mf_dev_kit_short }} 构件。 
+可以从在线存储库中获取这些组件，并可以使用软件包管理器来安装这些组件。 这些在线存储库提供了各个组件的最新发行版。 也可以从 {{ site.data.keys.mf_dev_kit }} 下载相同的组件以在本地使用。 请注意，{{ site.data.keys.mf_dev_kit_short }} 提供的版本表示发布特定 {{ site.data.keys.mf_dev_kit_short }} 构件时提供的版本；要使用最新版本，需要下载新的 {{ site.data.keys.mf_dev_kit_short }} 构件。
 
 继续阅读以了解有关 {{ site.data.keys.product }} 组件的更多信息。
 
-> 要评估 {{ site.data.keys.product }}，只需使用 Mobile Foundation Bluemix 服务在 Bluemix 上扩展 {{ site.data.keys.mf_server }} 实例即可。 请参阅[使用 Mobile Foundation](../../../bluemix/using-mobile-foundation/) 教程，以获取相关指示信息。 也可以选择安装 {{ site.data.keys.mf_dev_kit_short }} 作为本地安装。
+> 要评估 {{ site.data.keys.product }}，只需使用 Mobile Foundation IBM Cloud 服务在 IBM Cloud 上扩展 {{ site.data.keys.mf_server }} 实例即可。请参阅[使用 Mobile Foundation](../../../bluemix/using-mobile-foundation/) 教程，以获取相关指示信息。 也可以选择安装 {{ site.data.keys.mf_dev_kit_short }} 作为本地安装。
 
 #### 跳至：
 {: #jump-to }
@@ -63,7 +63,7 @@ WebSphere Liberty Profile 应用程序服务器上提供并预先部署了 {{ si
 开发人员可以：
 
 - 注册和部署应用程序及适配器
-- 选择性地下载本机/Cordova 应用程序和适配器起动器代码模板 
+- 选择性地下载本机/Cordova 应用程序和适配器起动器代码模板
 - 配置应用程序的认证和安全性属性
 - 管理应用程序：
     - 应用程序真实性
@@ -102,7 +102,7 @@ WebSphere Liberty Profile 应用程序服务器上提供并预先部署了 {{ si
 * Cordova 应用程序需要 NodeJS 和 Cordova CLI。 请阅读有关[设置 Cordova 开发环境](../cordova)的更多信息。
 
     您可以使用自己首选的代码编辑器（如 Atom.io、Visual Studio Code、Eclipse、IntelliJ 等）来实施应用程序和适配器。  
-    
+
 * 本机应用程序需要 Xcode、Android Studio 或 Visual Studio。 请阅读有关[设置 iOS/Android/Windows 开发环境](../)的更多信息。
 
 ### 适配器
@@ -112,4 +112,3 @@ WebSphere Liberty Profile 应用程序服务器上提供并预先部署了 {{ si
 ## 后续教程
 {: #tutorials-to-follow-next }
 请访问[全部教程](../../../all-tutorials/)页面，并选择接下来要学习的教程类别。
-

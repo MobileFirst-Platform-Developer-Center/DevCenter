@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 迁移认证和安全性概念
-breadcrumb_title: 迁移认证概念
+breadcrumb_title: Migrating authentication concepts
 downloads:
-  - name: 下载迁移样本
+  - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
