@@ -44,7 +44,7 @@ Para acceder a {{ site.data.keys.prod_icp }} Cluster mediante CLI, debe configur
 
 ## Descargar el archivo Passport Advantage de IBM Mobile Foundation
 {: #download-the-ibm-mfpf-ppa-archive}
-El archivo Passport Advantage (PPA) de {{ site.data.keys.product_full }} está disponible [aquí](). El archivo PPA de {{ site.data.keys.product }} contendrá las imágenes docker y los gráficos Helm de los componentes siguientes de {{ site.data.keys.product }}:
+El archivo Passport Advantage (PPA) de {{ site.data.keys.product_full }} está disponible [aquí](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). El archivo PPA de {{ site.data.keys.product }} contendrá las imágenes docker y los gráficos Helm de los componentes siguientes de {{ site.data.keys.product }}:
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center

@@ -44,7 +44,7 @@ weight: 3
 
 ## 下载 IBM Mobile Foundation Passport Advantage 归档
 {: #download-the-ibm-mfpf-ppa-archive}
-[此处]()提供 {{ site.data.keys.product_full }} 的 Passport Advantage (PPA) 归档。{{ site.data.keys.product }} 的 PPA 归档将包含以下 {{ site.data.keys.product }} 组件的 Docker 映像和 Helm Chart：
+[此处](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)提供 {{ site.data.keys.product_full }} 的 Passport Advantage (PPA) 归档。{{ site.data.keys.product }} 的 PPA 归档将包含以下 {{ site.data.keys.product }} 组件的 Docker 映像和 Helm Chart：
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
