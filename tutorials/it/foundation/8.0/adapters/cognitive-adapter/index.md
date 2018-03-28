@@ -9,9 +9,9 @@ weight: 11
 ## Overview
 {: #overview }
 
-Watson on Bluemix, provides you with access to the widest range of cognitive technologies available today to quickly and securely build smart applications. Analyzing images and video to understand sentiment, extracting keywords and entities from text are some of the capabilities enabled by Watson services.
+Watson on IBM Cloud, provides you with access to the widest range of cognitive technologies available today to quickly and securely build smart applications. Analyzing images and video to understand sentiment, extracting keywords and entities from text are some of the capabilities enabled by Watson services.
 
-Watson offers much more when it comes to cognitive computing. Natural Language Understanding, Visual Recognition, and Discovery reveal insights from unstructured data capable of reinventing operations and transforming industries. Learn more about Watson cognitive services on Bluemix [here](https://www.ibm.com/watson/developercloud/).
+Watson offers much more when it comes to cognitive computing. Natural Language Understanding, Visual Recognition, and Discovery reveal insights from unstructured data capable of reinventing operations and transforming industries. Learn more about Watson cognitive services on IBM Cloud [here](https://www.ibm.com/watson/developercloud/).
 
 {{ site.data.keys.product }} adapters are used perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. {{ site.data.keys.product }} now provides adapters for some of the Watson cognitive services.
 

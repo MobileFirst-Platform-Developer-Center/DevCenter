@@ -288,7 +288,7 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
 
       A raiz de contexto (no exemplo anterior: **app\_context\_root**) se conecta entre a entrada JNDI e um aplicativo do {{ site.data.keys.product_adj }} específico. Se diversos aplicativos do {{ site.data.keys.product_adj }} existirem no mesmo servidor, será possível definir entradas JNDI específicas para cada aplicativo usando um prefixo do caminho do contexto.
 
-      > **Nota:** Algumas propriedades são definidas globalmente no WebSphere Application Server Liberty, sem prefixar o nome da propriedade pela raiz de contexto. Para obter uma lista dessas propriedades, consulte [Entradas JNDI globais](../appserver/#global-jndi-entries).
+      > **Nota:** Algumas propriedades são definidas globalmente no WebSphere Application Server Liberty, sem prefixar o nome da propriedade pela raiz de contexto. Para obter uma lista dessas propriedades, consulte [Entradas JNDI globais](../prod-env/appserver/#global-jndi-entries).
 
       Para todas as outras propriedades JNDI, os nomes devem ser prefixados com a raiz de contexto do aplicativo:
 
@@ -403,8 +403,8 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 | mfp.admin.hsts | Opcional. | Defina como true para ativar HTTP Estrita Transport Security de acordo com a RFC 6797. |
 | mfp.topology.platform | Opcional | Tipo de servidor. Valores válidos:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Se você não configurar o valor, o aplicativo tentará adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional | Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{ O valor padrão é Standalone. |
-| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.reinitialize | Opcional | Um valor booleano (true ou false) para registrar novamente ou reinicializar o membro do farm. |
 | Mfp.server.swagger.ui.url | Opcional | Esta propriedade define a URL da interface com o usuário do Swagger a ser exibida no console de administração. |
 
@@ -870,7 +870,7 @@ Para diagnosticar problemas de login e autenticação, ative o pacote **com.ibm.
     > **Nota:**
     >
     > * Certifique-se de que o `dataSource` esteja apontando para um esquema do banco de dados diferente.
-    > * Certifique-se de que tenha criado [outra instância de banco de dados](../databases) para o novo tempo de execução.
+    > * Certifique-se de que tenha criado [outra instância de banco de dados](../prod-env/databases) para o novo tempo de execução.
     > * No ambiente de desenvolvimento, inclua `createDatabase="create"` no elemento-filho `properties.derby.embedded`.
 
 5. Reinicie o servidor de aplicativos.

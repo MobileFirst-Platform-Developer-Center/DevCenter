@@ -36,7 +36,7 @@ A lista de plataformas que suportam o licenciamento de token está em [Limitaç�
 
 #### Topologias suportadas:
 {: #supported-topologies }
-As topologias suportadas pelo licenciamento de token estão listadas em [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product_adj }}](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+As topologias suportadas pelo licenciamento de token estão listadas em [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product_adj }}](../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
 
 ### Requisito de rede
 {: #network-requirement }
@@ -84,7 +84,7 @@ Se você pretende usar o licenciamento de token com o {{ site.data.keys.product 
    imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
    ```
     
-2. Implemente o {{ site.data.keys.mf_server }} em um servidor de aplicativos após a instalação do produto ser concluída. Para obter informações adicionais, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../appserver).
+2. Implemente o {{ site.data.keys.mf_server }} em um servidor de aplicativos após a instalação do produto ser concluída. Para obter informações adicionais, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../prod-env/appserver).
 
 3. Configure o {{ site.data.keys.mf_server }} para licenciamento de token. As etapas dependem do servidor de aplicativos.
 
@@ -137,7 +137,7 @@ Para obter mais informações sobre as propriedades JNDI, consulte [Propriedades
 
 ### Instalando na server farm do Apache Tomcat
 {: #installing-on-apache-tomcat-server-farm }
-Para configurar a conexão do {{ site.data.keys.mf_server }} no server farm Apache Tomcat, deve-se seguir todas as etapas que estão descritas em [Instalando bibliotecas do Rational Common Licensing](#installing-rational-common-licensing-libraries) para cada nó de seu server farm em que o serviço de administração do {{ site.data.keys.mf_server }} está em execução. Para obter informações adicionais sobre o server farm, consulte [Topologia do server farm](../topologies/#server-farm-topology) e [Instalando um server farm](../appserver/#installing-a-server-farm).
+Para configurar a conexão do {{ site.data.keys.mf_server }} no server farm Apache Tomcat, deve-se seguir todas as etapas que estão descritas em [Instalando bibliotecas do Rational Common Licensing](#installing-rational-common-licensing-libraries) para cada nó de seu server farm em que o serviço de administração do {{ site.data.keys.mf_server }} está em execução. Para obter informações adicionais sobre o server farm, consulte [Topologia do server farm](../prod-env/topologies/#server-farm-topology) e [Instalando um server farm](../prod-env/appserver/#installing-a-server-farm).
 
 ## Conectando o {{ site.data.keys.mf_server }} instalado no perfil Liberty do WebSphere Application Server ao Rational License Key Server
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-liberty-profile-to-the-rational-license-key-server }
@@ -222,7 +222,7 @@ o valor é 27000.
 
 ### Instalando na server farm do perfil Liberty
 {: #installing-on-liberty-profile-server-farm }
-Para configurar a conexão do {{ site.data.keys.mf_server }} no server farm do perfil Liberty, deve-se seguir todas as etapas descritas em [Instalando bibliotecas do Rational Common Licensing](#installing-rational-common-licensing-libraries) para cada nó de seu server farm em que o serviço de administração do {{ site.data.keys.mf_server }} está em execução. Para obter informações adicionais sobre o server farm, consulte [Topologia do server farm](../topologies/#server-farm-topology) e [Instalando um server farm](../appserver/#installing-a-server-farm).
+Para configurar a conexão do {{ site.data.keys.mf_server }} no server farm do perfil Liberty, deve-se seguir todas as etapas descritas em [Instalando bibliotecas do Rational Common Licensing](#installing-rational-common-licensing-libraries) para cada nó de seu server farm em que o serviço de administração do {{ site.data.keys.mf_server }} está em execução. Para obter informações adicionais sobre o server farm, consulte [Topologia do server farm](../prod-env/topologies/#server-farm-topology) e [Instalando um server farm](../prod-env/appserver/#installing-a-server-farm).
 
 ## Conectando o {{ site.data.keys.mf_server }} instalado no WebSphere Application Server ao Rational License Key Server
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-to-the-rational-license-key-server }

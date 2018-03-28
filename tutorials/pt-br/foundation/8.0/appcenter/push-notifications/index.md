@@ -3,7 +3,7 @@ layout: tutorial
 title: Push notifications of application updates
 breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -99,14 +99,14 @@ To enable Google Cloud Messaging (GCM) for an application, you must attach the G
 
    ```xml
    <Context docBase="AppCenterServices" path="/applicationcenter" reloadable="true" source="org.eclipse.jst.jee.server:AppCenterServices">
-        <Environment name="ibm.appcenter.gcm.signature.googleapikey" override="false" type="java.lang.String" 
+        <Environment name="ibm.appcenter.gcm.signature.googleapikey" override="false" type="java.lang.String"
         value="AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs"/>
    </Context>
    ```
 
    The JNDI property must be defined in accordance with your application server requirements.  
    See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
-    
+
 **Important:**
 
 * If you use GCM with earlier versions of Android, you might need to pair your device with an existing Google account for GCM to work effectively. See [GCM service](http://developer.android.com/google/gcm/gcm.html): "It uses an existing connection for Google services. For pre-3.0 devices, this requires users to set up their Google account on their mobile devices. A Google account is not a requirement on devices running Android 4.0.4 or higher."
@@ -137,7 +137,7 @@ Where x is an integer.
 2. If you want to test or debug the Application Center on a device by launching it directly from XCode, in the "Xcode Organizer" window, go to the "Provisioning Profiles" section and install the profile on your mobile device.
 
 3. Create a signature certificate used by the Application Center services to secure communication with the APNs server. This server will use the certificate for purposes of signing each and every push request to the APNs server. This signature certificate is produced from your provisioning profile.
-    
+
 * Open the "Keychain Access" utility and click the **My Certificates** category in the left pane.
 * Find the certificate you want to install and disclose its contents. You see both a certificate and a private key; for the Application Center, the certificate line contains the Application Center application bundle **com.ibm.imf.AppCenter**.
 * Select **File → Export Items** to select both the certificate and the key and export them as a Personal Information Exchange (.p12) file. This .p12 file contains the private key required when the secure handshaking protocol is involved to communicate with the APNs server.
@@ -145,11 +145,11 @@ Where x is an integer.
 
 The examples in the table show how the JNDI properties are defined in the server.xml file of the Apache Tomcat server.
 
-| JNDI Property	| Type and description | Example for Apache Tomcat server | 
+| JNDI Property	| Type and description | Example for Apache Tomcat server |
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | A string value that defines the full path to the .p12 certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | A string value that defines the password needed to access the certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	A boolean value (identified as true or false) that defines whether or not the provisioning profile used to generate the authentication certificate was a development certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.password | A string value that defines the password needed to access the certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	A boolean value (identified as true or false) that defines whether or not the provisioning profile used to generate the authentication certificate was a development certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 
 See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of JNDI properties that you can set.
 
