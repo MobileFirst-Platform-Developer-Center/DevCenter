@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurando o ambiente de desenvolvimento do Android
-breadcrumb_title: android
+breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---

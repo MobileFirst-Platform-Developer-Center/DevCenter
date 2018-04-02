@@ -4,16 +4,16 @@ title: Cordova でのプッシュ通知の処理
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-iOS、Android、および Windows の Cordova アプリケーションでプッシュ通知を受け取り、プッシュ通知を表示できるようにするには、**cordova-plugin-mfp-push** Cordova プラグインを Cordova プロジェクトに追加する必要があります。アプリケーションが構成されると、{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブ、および通知の処理を実行できます。このチュートリアルでは、Cordova アプリケーションでプッシュ通知を処理する方法について学習します。
+iOS、Android、および Windows の Cordova アプリケーションでプッシュ通知を受け取り、プッシュ通知を表示できるようにするには、**cordova-plugin-mfp-push** Cordova プラグインを Cordova プロジェクトに追加する必要があります。 アプリケーションが構成されると、{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブ、および通知の処理を実行できます。 このチュートリアルでは、Cordova アプリケーションでプッシュ通知を処理する方法について学習します。
 
-> **注:** ある問題のために、認証済み通知は、現在 Cordova アプリケーションでは**サポートされていません**。しかし、予備手段が用意されており、各 `MFPPush` API 呼び出しを `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` でラップできます。提供されるサンプル・アプリケーションはこの予備手段を使用しています。
+> **注:** ある問題のために、認証済み通知は、現在 Cordova アプリケーションでは**サポートされていません**。 しかし、予備手段が用意されており、各 `MFPPush` API 呼び出しを `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` でラップできます。 提供されるサンプル・アプリケーションはこの予備手段を使用しています。
 
 iOS でのサイレント通知または対話式通知については、以下を参照してください。
 
@@ -50,20 +50,21 @@ iOS でのサイレント通知または対話式通知については、以下�
 2. 以下のコマンドを実行して、プッシュ・プラグインを追加します。
 
    ```bash
-cordova plugin add cordova-plugin-mfp-push```
+   cordova plugin add cordova-plugin-mfp-push
+   ```
 
 3. 以下のコマンドを実行して、Cordova プロジェクトをビルドします。
 
    ```bash
-cordova build
-```
+   cordova build
+   ```
 
 ### iOS プラットフォーム
 {: #ios-platform }
 iOS プラットフォームでは追加のステップが必要です。  
 Xcode で、**「Capabilities」**画面を使用してアプリケーションのプッシュ通知を有効にします。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** アプリケーションに対して選択する bundleId は、先に Apple Developer サイトで作成した AppId に一致しなければなりません。[プッシュ通知の概要] チュートリアルを参照してください。
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** アプリケーションに対して選択する bundleId は、先に Apple Developer サイトで作成した AppId に一致しなければなりません。 [プッシュ通知の概要] チュートリアルを参照してください。
 
 ![機能がある Xcode 内の場所を示すイメージ](push-capability.png)
 
@@ -73,8 +74,7 @@ Android プラットフォームでは追加のステップが必要です。
 Android Studio では、以下の `activity` を `application` タグに追加します。
 
 ```xml
-<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
-           android:theme="@android:style/Theme.NoDisplay"/>
+<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
 ```
 
 ## 通知 API
@@ -82,16 +82,16 @@ Android Studio では、以下の `activity` を `application` タグに追加�
 ### クライアント・サイド
 {: #client-side }
 
-| Javascript 関数| 説明|
+| Javascript 関数 | 説明 |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。|
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。|
-| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。|
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。|
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。|
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
+| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。 | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 | 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。 | 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。 | 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。 | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。 | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 | 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 | 
 
 ### API 実装
 {: #api-implementation }
@@ -132,7 +132,7 @@ MFPPush.isPushSupported (
 
 #### デバイスの登録
 {: #register-device }
-デバイスをプッシュ通知サービスに登録します。必要なオプションがない場合、オプションは `null` に設定できます。
+デバイスをプッシュ通知サービスに登録します。 必要なオプションがない場合、オプションは `null` に設定できます。
 
 
 ```javascript

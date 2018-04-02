@@ -73,7 +73,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
     	    android:protectionLevel="signature" />
       ```
       
-	* Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
+	* Add the following to the `application` tag:
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -104,6 +104,9 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
+      
+      <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
+           android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
 
 	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
@@ -133,6 +136,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 
 ### Client-side
 {: #client-side }
+
 | Java Methods | Description |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |

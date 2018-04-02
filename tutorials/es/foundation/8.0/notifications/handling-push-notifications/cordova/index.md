@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Manejo de notificaciones push en Cordova
+title: Manejo de las notificaciones push en Cordova
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
@@ -11,17 +11,11 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Antes de que las aplicaciones iOS, Android y Windows Cordova reciban y visualicen notificaciones push, es necesario añadir el plugin Cordova **cordova-plugin-mfp-push** al proyecto Cordova.
-Una vez se haya configurado la aplicación, se pueden utilizar la API de notificaciones que {{ site.data.keys.product_adj }} proporciona con el propósito de registrar y anular el registro de dispositivos, suscribir y anular la suscripción de etiquetas y manejar aplicaciones.
-En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones Cordova.
+Antes de que las aplicaciones iOS, Android y Windows Cordova reciban y visualicen notificaciones push, es necesario añadir el plugin Cordova **cordova-plugin-mfp-push** al proyecto Cordova. Una vez se haya configurado la aplicación, se pueden utilizar la API de notificaciones que {{ site.data.keys.product_adj }} proporciona con el propósito de registrar y anular el registro de dispositivos, suscribir y anular la suscripción de etiquetas y manejar aplicaciones. En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones Cordova.
 
+> **Nota:** Actualmente en Cordova **no se da soporte** a las notificaciones autenticadas debido a un defecto. Sin embargo se proporciona un método alternativo: cada llamada de API de `MFPPush` puede ser acomodada mediante `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. La aplicación de ejemplo que se proporciona utiliza este método alternativo.
 
-> **Nota:** Actualmente en Cordova **no se da soporte** a las notificaciones autenticadas debido a un defecto.
-Sin embargo se proporciona un método alternativo: cada llamada de API de `MFPPush` puede ser acomodada mediante `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`.
-La aplicación de ejemplo que se proporciona utiliza este método alternativo.
-
-
-Para obtener información sobre las notificaciones interactivas o silenciosas en iOS, consulte: 
+Para obtener información sobre las notificaciones interactivas o silenciosas en iOS, consulte:
 
 * [Notificaciones silenciosas](../silent)
 * [Notificaciones interactivas](../interactive)
@@ -29,15 +23,14 @@ Para obtener información sobre las notificaciones interactivas o silenciosas en
 **Requisitos previos:**
 
 * Asegúrese de haber leído las siguientes guías de aprendizaje:
-
     * [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/#installing-a-development-environment)
     * [Adición de {{ site.data.keys.product }} SDK a aplicaciones Cordova](../../../application-development/sdk/cordova)
     * [Visión general de notificaciones push](../../)
-* {{ site.data.keys.mf_server }} para ejecutar localmente, o un remotamente ejecutando {{ site.data.keys.mf_server }} 
+* {{ site.data.keys.mf_server }} para ejecutar localmente, o un remotamente ejecutando {{ site.data.keys.mf_server }}
 * {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador
 * Interfaz de línea de mandatos (CLI) de Cordova instalada en la estación de trabajo del desarrollador
 
-#### Ir a 
+#### Ir a
 {: #jump-to }
 * [Configuración de notificaciones](#notifications-configuration)
 * [API de notificaciones](#notifications-api)
@@ -50,11 +43,9 @@ Cree un nuevo proyecto Cordova o utilice uno ya existente, y añada una o varias
 
 > Si {{ site.data.keys.product_adj }} Cordova SDK todavía no está presente en el proyecto, siga las instrucciones en la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para aplicaciones Cordova](../../../application-development/sdk/cordova).
 
-
 ### Añadir el plugin de push
 {: #adding-the-push-plug-in }
-1. Desde una ventana de **línea de mandatos**, vaya a la raíz del proyecto Cordova.
-  
+1. Desde una ventana de **línea de mandatos**, vaya a la raíz del proyecto Cordova.  
 
 2. Añada el plugin ejecutando el mandato:
 
@@ -70,23 +61,17 @@ Cree un nuevo proyecto Cordova o utilice uno ya existente, y añada una o varias
 
 ### Plataforma iOS
 {: #ios-platform }
-La plataforma iOS precisa de un paso adicional.
-  
+La plataforma iOS precisa de un paso adicional.  
 En Xcode, habilite el envío de notificaciones para la aplicación en la pantalla **Funcionalidades**.
 
-
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** el bundleId seleccionado para la aplicación debe coincidir con el AppID creado con anterioridad en el sitio de Apple Developer.
-Consulte la guía de aprendizaje [Visión general de notificaciones push].
-
-
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** el bundleId seleccionado para la aplicación debe coincidir con el AppID creado con anterioridad en el sitio de Apple Developer. Consulte la guía de aprendizaje [Visión general de notificaciones push].
 
 ![imagen de la funcionalidad en Xcode](push-capability.png)
 
 ### Plataforma Android
 {: #android-platform }
-La plataforma Android precisa de un paso adicional.
-  
-En Android Studio, añada la siguiente `actividad` a la etiqueta `application`: 
+La plataforma Android precisa de un paso adicional.  
+En Android Studio, añada la siguiente `actividad` a la etiqueta `application`:
 
 ```xml
 <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
@@ -97,7 +82,7 @@ En Android Studio, añada la siguiente `actividad` a la etiqueta `application`:
 ### Lado del cliente
 {: #client-side }
 
-| Función Javascript| Descripción |
+| Función Javascript | Descripción |
 | --- | --- |
 | [`MFPPush.initialize(success, failure)`](#initialization) | Inicializa la instancia MFPPush. | 
 | [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. | 
@@ -114,11 +99,9 @@ En Android Studio, añada la siguiente `actividad` a la etiqueta `application`:
 {: #initialization }
 Inicializa la instancia **MFPPush**.
 
-
-- Requerido para la aplicación de cliente para conectarse al servicio MFPPush con el contexto de aplicación correcto.   
+- Requerido para la aplicación de cliente para conectarse al servicio MFPPush con el contexto de aplicación correcto.  
 - Primero se debe llamar al método de la API antes de utilizar cualquier otra API MFPPush.
-
-- Registra la función de retorno de llamada para manejar las notificaciones push recibidas. 
+- Registra la función de retorno de llamada para manejar las notificaciones push recibidas.
 
 ```javascript
 MFPPush.initialize (
@@ -134,7 +117,7 @@ MFPPush.initialize (
 
 #### Está push soportado
 {: #is-push-supported }
-Comprueba si el dispositivo da soporte a las notificaciones push. 
+Comprueba si el dispositivo da soporte a las notificaciones push.
 
 ```javascript
 MFPPush.isPushSupported (
@@ -167,7 +150,7 @@ MFPPush.registerDevice(
 
 #### Obtener etiquetas
 {: #get-tags }
-Recupere todas las etiquetas disponibles desde el servicio de notificaciones push. 
+Recupere todas las etiquetas disponibles desde el servicio de notificaciones push.
 
 ```javascript
 MFPPush.getTags (
@@ -182,7 +165,7 @@ MFPPush.getTags (
 
 #### Suscribir
 {: #subscribe }
-Suscriba las etiquetas deseadas. 
+Suscriba las etiquetas deseadas.
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -202,7 +185,6 @@ MFPPush.subscribe(
 {: #get-subscriptions }
 Recupere las etiquetas a las que el dispositivo está actualmente suscrito.
 
-
 ```javascript
 MFPPush.getSubscriptions (
     function(subscriptions) {
@@ -216,7 +198,7 @@ MFPPush.getSubscriptions (
 
 #### Anular la suscripción
 {: #unsubscribe }
-Anule la suscripción de etiquetas. 
+Anule la suscripción de etiquetas.
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -234,7 +216,7 @@ MFPPush.unsubscribe(
 
 #### Anular el registro
 {: #unregister }
-Anule el registro del dispositivo de una instancia de servicio de notificaciones push. 
+Anule el registro del dispositivo de una instancia de servicio de notificaciones push.
 
 ```javascript
 MFPPush.unregisterDevice(
@@ -251,7 +233,6 @@ MFPPush.unregisterDevice(
 {: #handling-a-push-notification }
 Las notificaciones push recibidas se pueden manejar trabajando con el objeto de respuesta en la función de retorno registrada.
 
-
 ```javascript
 var notificationReceived = function(message) {
     alert(JSON.stringify(message));
@@ -264,11 +245,8 @@ var notificationReceived = function(message) {
 [
 Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) el proyecto Cordova.
 
-
 **Nota:** Se necesita instalada la última versión de Google Play Services en el dispositivo Android para poder ejecutar el ejemplo.
-
 
 ### Uso de ejemplo
 {: #sample-usage }
 Siga el archivo README.md de ejemplo para obtener instrucciones.
-

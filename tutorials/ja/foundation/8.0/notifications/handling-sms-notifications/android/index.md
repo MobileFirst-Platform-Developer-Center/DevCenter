@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Android での SMS 通知の処理
-breadcrumb_title: Android での SMS の処理
+breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 10
 downloads:
-  - name: Android プロジェクトのダウンロード
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -66,7 +66,7 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
 }, optionObject);
 ```
 
-* **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `JSONObject` です。例えば、次のとおりです。
+* **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `JSONObject` です。 例えば、次のとおりです。
 
 ```java
 JSONObject optionObject = new JSONObject();
@@ -102,7 +102,7 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
 ## SMS サブスクライブ・サーブレットの使用
 {: #using-an-sms-subscribe-servlet }
-登録済みデバイスに通知を送信するときは REST API が使用されます。すべての形式の通知 (タグ通知、ブロードキャスト通知、および認証済み通知) を送信できます。
+登録済みデバイスに通知を送信するときは REST API が使用されます。 すべての形式の通知 (タグ通知、ブロードキャスト通知、および認証済み通知) を送信できます。
 
 通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
 URL の例を以下に示します。 
@@ -112,8 +112,6 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > すべてのプッシュ通知 REST API を確認するには、ユーザー資料の <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API ランタイム・サービス</a>のトピックを参照してください。
-
-
 
 通知を送信するには、[通知の送信](../../sending-notifications)チュートリアルを参照してください。
 

@@ -112,6 +112,8 @@ The following table shows the properties that can be set in the {{ site.data.key
 
 In all cases where the key does not contain a period (like **httpport** but not **http.enabled**), the setting can be controlled by system environment variables where the variable name is prefixed with **ANALYTICS_**. When both the JNDI property and the system environment variable are set, the system environment variable takes precedence. For example, if you have both the **analytics/httpport** JNDI property and the **ANALTYICS_httpport** system environment variable set, the value for **ANALYTICS_httpport** is used.
 
+> **Important**: Currently, MobileFirst Analytics v8.0 does not support multi-tenancy. Events from MobileFirst Server are by default sent to a single tenant architecture.
+
 #### Document Time to Live (TTL)
 {: #document-time-to-live-ttl }
 TTL is effectively how you can establish and maintain a data retention policy. Your decisions have dramatic consequences on your system resource needs. The long you keep data, the more RAM, disk, and scaling is likely needed.

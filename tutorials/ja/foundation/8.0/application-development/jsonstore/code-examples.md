@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore コード・サンプル
-breadcrumb_title: コード・サンプル
+breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
@@ -12,6 +12,7 @@ weight: 6
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
+
 // Object that defines all the collections.
 var collections = {
 
@@ -48,7 +49,7 @@ WL.JSONStore.init(collections, options)
   var addOptions = {
 
     // Mark data as dirty (true = yes, false = no), default true.
-  markDirty: true
+    markDirty: true
   };
 
   // Get an accessor to the people collection and add data.
@@ -68,6 +69,7 @@ WL.JSONStore.init(collections, options)
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
+
 // Find all documents that match the queries.
 var queryPart1 = WL.JSONStore.QueryPart()
                    .equal('name', 'carlos')
@@ -101,7 +103,7 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -109,6 +111,7 @@ WL.JSONStore.get(collectionName)
 
 ```javascript 
 var collectionName = 'people';
+
 // Documents will be located with their '_id' field 
 // and replaced with the data in the 'json' field.
 var docs = [{_id: 1, json: {name: 'carlitos', age: 99}}];
@@ -119,7 +122,7 @@ var options = {
   markDirty: true
   };
 
-  WL.JSONStore.get(collectionName)
+WL.JSONStore.get(collectionName)
 
 .replace(docs, options)
 
@@ -128,7 +131,7 @@ var options = {
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -136,6 +139,7 @@ var options = {
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
+
 // Remove all documents that match the queries.
 var queries = [{_id: 1}];
 
@@ -148,7 +152,7 @@ var options = {
   markDirty: true
   };
 
-  WL.JSONStore.get(collectionName)
+WL.JSONStore.get(collectionName)
 
 .remove(queries, options)
 
@@ -157,7 +161,7 @@ var options = {
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -165,6 +169,7 @@ var options = {
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
+
 // Count all documents that match the query.
 // The default query is '{}' which will 
 // count every document in the collection.
@@ -184,7 +189,7 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -192,6 +197,7 @@ WL.JSONStore.get(collectionName)
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
+
 .then(function () {
   // Handle success.
 })
@@ -205,6 +211,7 @@ WL.JSONStore.destroy()
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
+
 .then(function () {
   // Handle success.
 })
@@ -256,7 +263,7 @@ var collectionName = 'people';
 var dirtyDocs;
  
 WL.JSONStore.get(collectionName)
-
+ 
 .getAllDirty()
  
 .then(function (arrayOfDirtyDocuments) {
@@ -279,7 +286,7 @@ WL.JSONStore.get(collectionName)
   // and decide whether or not to mark documents as clean.
   return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
 })
-
+ 
 .then(function () {
   // Handle markClean success.
 })
@@ -293,42 +300,43 @@ WL.JSONStore.get(collectionName)
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
+ 
 var adapter = 'adapter-name';
 var procedure = 'procedure-name-2';
-
+ 
 var resource = new WLResourceRequest("adapters/" + adapter + "/" + procedure, WLResourceRequest.GET);
-
+ 
 resource.send()
-
+ 
 .then(function (responseFromAdapter) {
   // Handle invokeProcedure success.
-
+ 
   // The following example assumes that the adapter returns an arrayOfData,
   // (which is not returned by default),
   // as part of the invocationResult object,
   // with the data that you want to add to the collection.
   var data = responseFromAdapter.responseJSON
-
+ 
   // Example:
   // data = [{id: 1, ssn: '111-22-3333', name: 'carlos'}];
-
+ 
   var changeOptions = {
-
+ 
     // The following example assumes that 'id' and 'ssn' are search fields,
     // default will use all search fields
     // and are part of the data that is received.
     replaceCriteria : ['id', 'ssn'],
-
+ 
     // Data that does not exist in the Collection will be added, default false.
     addNew : true,
-
+ 
     // Mark data as dirty (true = yes, false = no), default false.
     markDirty : false
   };
-
+ 
   return WL.JSONStore.get(collectionName).change(data, changeOptions);
 })
-
+ 
 .then(function () {
   // Handle change success.
 })
@@ -363,6 +371,7 @@ WL.JSONStore.get(collectionName)
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
+
 WL.JSONStore.get(collectionName)
 
 .countAllDirty()
@@ -380,6 +389,7 @@ WL.JSONStore.get(collectionName)
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
+
 WL.JSONStore.get(collectionName)
 
 .removeCollection()
@@ -400,6 +410,7 @@ WL.JSONStore.get(collectionName)
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
+
 WL.JSONStore.get(collectionName)
 
 .clear()
@@ -420,6 +431,7 @@ WL.JSONStore.get(collectionName)
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
+
 .then(function () {
   // Handle startTransaction success.
   // You can call every JSONStore API method except:
@@ -563,11 +575,11 @@ JSONStoreQueryOptions* options = [JSONStoreQueryOptions new];
 [options setOffset:@0]; // Skip 0 documents, default no offset.
 
 // Search fields to return, default: ['_id', 'json'].
-  [options filterSearchField:@"_id"];
+[options filterSearchField:@"_id"];
 [options filterSearchField:@"json"];
 
 // How to sort the returned values, default no sort.
-  [options sortBySearchFieldAscending:@"name"];
+[options sortBySearchFieldAscending:@"name"];
 [options sortBySearchFieldDescending:@"age"];
 
 // Find all documents that match the query part.
@@ -1110,7 +1122,7 @@ try {
 
   peopleCollection.markDocumentsClean(allDirtyDocuments);
 }  catch (JSONStoreException ex) {
-          // Handle failure for any of the previous JSONStore operations
+  // Handle failure for any of the previous JSONStore operations
   throw ex;
 }
 ```

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Workstation Installationshandbuch
-breadcrumb_title: Installationshandbuch
+title: Installationshandbuch für Workstations
+breadcrumb_title: Installation guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -70,9 +70,8 @@ Java- und JavaScript-Adapter erstellen, mehrere lokale und ferne Server verwalte
 ein Update für Liveanwendungen mittels direkter Aktualisierung durchführen und viele weitere Schritte ausführen können. 
 
 **Voraussetzungen:**  
-1. Node.js ist eine Voraussetzung für die Installation der {{ site.data.keys.mf_cli }}.
-   
-Sie müssen [Node.js V4.4.3 LTS](https://nodejs.org/en/) herunterladen und installieren.
+1. Node.js und NPM sind Voraussetzungen für die Installation der {{ site.data.keys.mf_cli }}.  
+ Sie müssen [NodeJS Version 6.11.1](https://nodejs.org/download/release/v6.11.1/) und NPM Version 3.10.10 herunterladen und installieren.
 
  Überprüfen Sie die Installation. Öffnen Sie ein Befehlszeilenfenster und führen Sie den Befehl `node -v` aus.
 
@@ -110,6 +109,8 @@ Vor dem Erstellen von Adaptern und Sicherheitsüberprüfungen müssen Sie Apache
 
     *Windows:*  
     [Folgen Sie dieser Anleitung](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/). Überprüfen Sie die Installation, indem Sie `mvn -v` ausführen.
+
+
 
 ### Verwendung
 {: #usage }

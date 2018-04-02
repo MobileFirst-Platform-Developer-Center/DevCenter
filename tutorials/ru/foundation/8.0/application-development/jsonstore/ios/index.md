@@ -359,7 +359,7 @@ do {
 ## Sample application
 {: #sample-application }
 The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+Also available is a JavaScript adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) the Native iOS project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  

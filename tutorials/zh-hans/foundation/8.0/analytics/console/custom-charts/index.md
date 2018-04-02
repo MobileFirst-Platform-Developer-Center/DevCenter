@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 创建定制图表
-breadcrumb_title: 定制图表
+breadcrumb_title: Custom Charts
 relevantTo: [ios,android,javascript]
 weight: 3
 ---

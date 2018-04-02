@@ -3,24 +3,24 @@ layout: tutorial
 title: Cloudant との統合
 relevantTo: [javascript]
 downloads:
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-Cloudant は、CouchDB をベースとした NoSQL データベースであり、IBM Bluemix および `cloudant.com` で、スタンドアロン製品としても Database-as-a-Service (DBaaS) としても入手できます。
+Cloudant は、CouchDB をベースとした NoSQL データベースであり、IBM Cloud および `cloudant.com` で、スタンドアロン製品としても Database-as-a-Service (DBaaS) としても入手できます。
 
 Cloudant 資料で説明されているように:
-> ドキュメントは JSON オブジェクトです。ドキュメントはお客様のデータの入れ物であり、Cloudant データベースの基礎となるものです。  
-すべてのドキュメントには 2 つのフィールド (固有の `_id` フィールドと `_rev` フィールド) が含まれていなければなりません。`_id` フィールドは、お客様によって作成されるか、または Cloudant によって UUID として自動的に生成されます。`_rev` フィールドは改訂番号であり、Cloudant レプリケーション・プロトコルに必須のフィールドです。この 2 つの必須フィールドのほかに、ドキュメントは JSON で表されるその他の任意のコンテンツを含むことができます。
+> ドキュメントは JSON オブジェクトです。 ドキュメントはお客様のデータの入れ物であり、Cloudant データベースの基礎となるものです。  
+すべてのドキュメントには 2 つのフィールド (固有の `_id` フィールドと `_rev` フィールド) が含まれていなければなりません。 `_id` フィールドは、お客様によって作成されるか、または Cloudant によって UUID として自動的に生成されます。 `_rev` フィールドは改訂番号であり、Cloudant レプリケーション・プロトコルに必須のフィールドです。 この 2 つの必須フィールドのほかに、ドキュメントは JSON で表されるその他の任意のコンテンツを含むことができます。
 
 Cloudant API の資料は [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) サイトに掲載されています。
 
-アダプターを使用すれば、リモート Cloudant データベースと通信できます。このチュートリアルでいくつかの例を示します。
+アダプターを使用すれば、リモート Cloudant データベースと通信できます。 このチュートリアルでいくつかの例を示します。
 
-このチュートリアルは、お客様がアダプターに精通していることを前提としています。[JavaScript HTTP アダプター](../javascript-adapters/js-http-adapter)または [Java アダプター](../java-adapters)を参照してください。
+このチュートリアルは、お客様がアダプターに精通していることを前提としています。 [JavaScript HTTP アダプター](../javascript-adapters/js-http-adapter)または [Java アダプター](../java-adapters)を参照してください。
 
 ### ジャンプ先
 {: #jump-to}
@@ -37,9 +37,9 @@ HTTP アダプターを使用すれば、`invokeHttp` メソッドによって C
 
 ### 認証
 {: #authentication }
-Cloudant は複数の認証形態をサポートします。認証に関する Cloudant 資料を参照してください ([https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html))。JavaScript HTTP アダプターでは、**Basic Authentication** を使用できます。
+Cloudant は複数の認証形態をサポートします。 認証に関する Cloudant 資料を参照してください ([https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html))。 JavaScript HTTP アダプターでは、**Basic Authentication** を使用できます。
 
-アダプター XML ファイルで、Cloudant インスタンスの `domain`、`port` を指定し、タイプ `basic` の `authentication` エレメントを追加してください。フレームワークはそれらの資格情報を使用して `Authorization: Basic` HTTP ヘッダーを生成します。
+アダプター XML ファイルで、Cloudant インスタンスの `domain`、`port` を指定し、タイプ `basic` の `authentication` エレメントを追加してください。 フレームワークはそれらの資格情報を使用して `Authorization: Basic` HTTP ヘッダーを生成します。
 
 **注:** Cloudant では、実際のユーザー名とパスワードの代わりに使用する固有の API キーを生成できます。
 
@@ -74,12 +74,13 @@ Cloudant は複数の認証形態をサポートします。認証に関する C
 
 ```js
 function addEntry(entry){
-var input = {
-method : 'post',
+
+    var input = {
+            method : 'post',
             returnedContentType : 'json',
             path : DATABASE_NAME + '/',
             body: {
-                contentType : 'application/json',        
+                contentType : 'application/json',
                 content : entry
             }
         };
@@ -93,7 +94,7 @@ method : 'post',
 }
 ```
 
-同じ考え方をすべての Cloudant 関数に応用できます。ドキュメントに関する Cloudant 資料を参照してください ([https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html))。
+同じ考え方をすべての Cloudant 関数に応用できます。 ドキュメントに関する Cloudant 資料を参照してください ([https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html))。
 
 ## Java アダプター
 {: #java-adapters }

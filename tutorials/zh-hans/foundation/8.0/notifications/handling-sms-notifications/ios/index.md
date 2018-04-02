@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: 在 iOS 中处理 SMS 通知
-breadcrumb_title: 在 iOS 中处理 SMS
+breadcrumb_title: Handling SMS in iOS
 relevantTo: [ios]
 downloads:
-  - name: 下载 Xcode 项目
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---

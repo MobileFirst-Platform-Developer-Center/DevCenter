@@ -5,16 +5,16 @@ breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 downloads:
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
 {: #prerequisites }
 * [JSONStore 親チュートリアル](../)を読む。
-* {{ site.data.keys.product_adj }} Cordova SDK が プロジェクトに追加されていることを確認する。[『Cordova アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/cordova/)チュートリアルに従ってください。 
+* {{ site.data.keys.product_adj }} Cordova SDK が プロジェクトに追加されていることを確認する。 [『Cordova アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/cordova/)チュートリアルに従ってください。 
 
 #### ジャンプ先:
 {: #jump-to}
@@ -38,14 +38,13 @@ Cordova アプリケーションに JSONStore プラグインを追加するに�
 {: #initialize }
 1 つ以上の JSONStore コレクションを開始するには `init` を使用します。  
 
-コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
+コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。 永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
 ```javascript
 var collections = {
-
-  people : {
+    people : {
         searchFields : {name: 'string', age: 'integer'}
-  }
+    }
 };
 
 WL.JSONStore.init(collections).then(function (collections) {
@@ -56,8 +55,6 @@ WL.JSONStore.init(collections).then(function (collections) {
 ```
 
 > 初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』**、**『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
-
-
 
 ### 取得
 {: #get }
@@ -88,7 +85,7 @@ WL.JSONStore.get(collectionName).add(data, options).then(function () {
 
 ### 検索
 {: #find }
-* 照会を使用してコレクション内のドキュメントを見つけるには、`find` を使用します。   
+* 照会を使用してコレクション内のドキュメントを見つけるには、`find` を使用します。  
 * コレクション内のすべてのドキュメントを取り出すには、`findAll` を使用します。  
 * ドキュメントの固有 ID で検索するには、`findById` を使用します。  
 
@@ -123,7 +120,7 @@ else {
   };
   WL.JSONStore.get(collectionName).find(query, options).then(function (res) {
     // handle success - results (array of documents found)
-}).fail(function (errorObject) {
+  }).fail(function (errorObject) {
     // handle failure
   });
 }
@@ -135,7 +132,7 @@ else {
 
 ```javascript
 var document = {
-_id: 1, json: {name: 'chevy', age: 23}
+  _id: 1, json: {name: 'chevy', age: 23}
 };
 var collectionName = 'people';
 var options = {};
@@ -202,17 +199,16 @@ WL.JSONStore.destroy().then(function () {
 
 ### セキュリティー
 {: #security }
-パスワードを `init` 関数に渡すことにより、ストア内のすべてのコレクションを保護することができます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
+パスワードを `init` 関数に渡すことにより、ストア内のすべてのコレクションを保護することができます。 パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
 データ暗号化は、Android、iOS、Windows 8.1 Universal および Windows 10 UWP の各環境でのみ使用可能です。  
 一部のセキュリティー・メタデータは、*キーチェーン* (iOS)、*共有設定* (Android) または*資格情報保管ボックス* (Windows 8.1) に保管されます。  
-ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
+ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。 すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
 
-`closeAll` を使用して、`init` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`init` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。`changePassword` を使用して、パスワードを変更します。
+`closeAll` を使用して、`init` を再度呼び出すまですべてのコレクションへのアクセスをロックします。 `init` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。 `changePassword` を使用して、パスワードを変更します。
 
 ```javascript
 var collections = {
-
   people: {
     searchFields: {name: 'string'}
   }
@@ -227,18 +223,17 @@ WL.JSONStore.init(collections, options).then(function () {
 
 #### 暗号化
 {: #encryption }
-*iOS のみ*。デフォルトでは、{{ site.data.keys.product_adj }} Cordova SDK for iOS は、iOS 提供の API に暗号化を依存しています。これを OpenSSL に置換したい場合は、以下のようにします。
+*iOS のみ*。 デフォルトでは、{{ site.data.keys.product_adj }} Cordova SDK for iOS は、iOS 提供の API に暗号化を依存しています。 これを OpenSSL に置換したい場合は、以下のようにします。
 
 1. cordova-plugin-mfp-encrypt-utils プラグイン `cordova plugin add cordova-plugin-mfp-encrypt-utils` を追加します。
 2. アプリケーション・ロジックで、`WL.SecurityUtils.enableNativeEncryption(false)` を使用して OpenSSL オプションを有効にします。
 
 ### 複数ユーザー・サポート
 {: #multiple-user-support }
-単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`init` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 **jsonstore** が使用されます。
+単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`init` 関数はオプション・オブジェクトとユーザー名を受け取ります。 ユーザー名が指定されていない場合、デフォルトのユーザー名 **jsonstore** が使用されます。
 
 ```javascript
 var collections = {
-
   people: {
     searchFields: {name: 'string'}
   }
@@ -260,12 +255,12 @@ WL.JSONStore.init(collections, options).then(function () {
 
 ### アダプターの実装
 {: #adapter-implementation }
-アダプターを作成し、"**People**" という名前を付けます。  
+アダプターを作成し、"**JSONStoreAdapter**" という名前を付けます。  
 このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
 function getPeople () {
-var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;
@@ -292,58 +287,35 @@ function replacePerson(data) {
 }
 ```
 
-#### {{ site.data.keys.product_adj }} アダプターにリンクされているコレクションの初期化
-{: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
-```javascript
-var collections = {
 
-  people : {
-    searchFields : {name: 'string', age: 'integer'},
-    adapter : {
-      name: 'People',
-      add: 'addPerson',
-      remove: 'removePerson',
-      replace: 'replacePerson',
-      load: {
-        procedure: 'getPeople',
-        params: [],
-        key: 'peopleList'
-      }     
-    }   
-  }
-}
-
-var options = {};
-WL.JSONStore.init(collections, options).then(function () {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
-```
-
-#### データをアダプターからロード
+#### データを {{ site.data.keys.product_adj }} アダプターからロード
 {: #load-data-from-an-adapter }
-`load` が呼び出されると、JSONStore では、前に `init` に渡したアダプターに関するメタデータ (**name** および **procedure**) を使用して、アダプターから取得するデータが決定され、最終的にそのデータが保管されます。
+データをアダプターからロードするには、`WLResourceRequest` を使用します。
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
+try {
+     var resource = new WLResourceRequest("adapters/JSONStoreAdapter/getPeople", WLResourceRequest.GET);
+     resource.send()
+     .then(function (responseFromAdapter) {
+          var data = responseFromAdapter.responseJSON.peopleList;
+     },function(err){
+      	//handle failure
+     });
+} catch (e) {
+    alert("Failed to load data from adapter " + e.Messages);
+}
 ```
 
 #### プッシュが必要な対象 (ダーティーなドキュメント) の取得
 {: #get-push-required-dirty-documents }
-`getPushRequired` を呼び出すと、*「ダーティーなドキュメント」*と呼ばれる配列が返されます。これは、バックエンド・システムには存在しないローカル変更が含まれるドキュメントです。これらのドキュメントは、`push` が呼び出されたときに、アダプターに送信されます。
+`getPushRequired` を呼び出すと、*「ダーティーなドキュメント」*と呼ばれる配列が返されます。これは、バックエンド・システムには存在しないローカル変更が含まれるドキュメントです。 これらのドキュメントは、`push` が呼び出されたときに、アダプターに送信されます。
 
 ```javascript
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments) {
     // handle success
 }).fail(function (error) {
-    // handle failure
+  // handle failure
 });
 ```
 
@@ -360,25 +332,40 @@ WL.JSONStore.get(collectionName).getAllDirty()
 });
 ```
 
-#### プッシュ
+#### 変更のプッシュ
 {: #push }
-`push` は、変更されたドキュメントを正しいアダプター・プロシージャーに送信します (例えば、ローカルで追加されたドキュメントの場合は `addPerson` が呼び出されます)。このメカニズムは、変更されたドキュメント、および `init` に渡されるアダプター・メタデータに関連する、最後のオペレーションに基づきます。
+変更をアダプターにプッシュするには、`getAllDirty` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。データが送信され、成功応答を受信した後、`markClean` を呼び出す必要があります。
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).push().then(function (response) {
-    // handle success
-    // response is an empty array if all documents reached the server
-    // response is an array of error responses if some documents failed to reach the server
-}).fail(function (error) {
-    // handle failure
-});
+try {
+     var collectionName = "people";
+     var dirtyDocs;
+
+     WL.JSONStore.get(collectionName)
+     .getAllDirty()
+     .then(function (arrayOfDirtyDocuments) {
+        dirtyDocs = arrayOfDirtyDocuments;
+
+        var resource = new WLResourceRequest("adapters/JSONStoreAdapter/pushPeople", WLResourceRequest.POST);
+        resource.setQueryParameter('params', [dirtyDocs]);
+        return resource.send();
+     }).then(function (responseFromAdapter) {
+        return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
+     }).then(function (res) {
+	  //handle success
+     }).fail(function (errorObject) {
+       // Handle failure.
+     });
+
+} catch (e) {
+    alert("Failed To Push Documents to Adapter");
+}
 ```
 
 ### 拡張
 {: #enhance }
 コア API をニーズに合うように拡張するには、`enhance` を使用します。それには、関数をコレクションのプロトタイプに追加します。
-この例 (下記のコード・スニペット) は、`enhance` を使用して、`keyvalue` コレクションで動作する関数 `getValue` を追加する方法を示しています。この関数は、唯一のパラメーターとして `key` (ストリング) を受け取り、単一の結果を返します。
+この例 (下記のコード・スニペット) は、`enhance` を使用して、`keyvalue` コレクションで動作する関数 `getValue` を追加する方法を示しています。 この関数は、唯一のパラメーターとして `key` (ストリング) を受け取り、単一の結果を返します。
 
 ```javascript
 var collectionName = 'keyvalue';

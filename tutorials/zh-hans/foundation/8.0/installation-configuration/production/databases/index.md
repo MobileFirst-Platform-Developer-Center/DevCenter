@@ -13,8 +13,7 @@ weight: 2
 * {{ site.data.keys.mf_server }} 推送服务
 * {{ site.data.keys.product }} 运行时
 
-> **注：**如果使用不同的上下文根来安装多个运行时实例，那么每一个实例均需要其自身的一组表。
-> 数据库可以是关系数据库（例如，IBM DB2、Oracle 或 MySQL）。
+> **注：**如果使用不同的上下文根来安装多个运行时实例，那么每一个实例均需要其自身的一组表。> 数据库可以是关系数据库（例如，IBM DB2、Oracle 或 MySQL）。
 
 #### 关系数据库（DB2、Oracle 或 MySQL）
 {: #relational-databases-db2-oracle-or-mysql }
@@ -29,7 +28,7 @@ weight: 2
 >
 > 从 [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html) 中获取更多信息
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 
 * [数据库用户和权限](#database-users-and-privileges)
@@ -296,7 +295,7 @@ DISCONNECT;
 
 以下示例为同一用户和数据库的所有应用程序创建了表。 假定已如[MySQL 的数据库需求](#database-requirements)中所述创建了数据库和用户。
 
-以下过程为同一用户 (mfpuser) 和数据库 (MFPDATA) 的所有应用程序创建了表。 它假定已创建数据库和用户。
+以下过程为同一用户 (mfpuser) 和数据库 (MFPDATA) 的所有应用程序创建了表。 假定已创建数据库和用户。
 
 1. 使用以下选项运行 MySQL 命令行客户机：`-u mfpuser`。
 2. 输入以下命令：
@@ -346,7 +345,7 @@ CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
 使用 {{ site.data.keys.mf_server }} 安装随附的 Server Configuration Tool 创建 Oracle 数据库表。
 
-在 Server Configuration Tool 的数据库选择面板中，选择 **Oracle Standard 或 Enterprise Editions 11g 或 12c** 选项。 在下面的三个窗格中，输入数据库凭证。
+在 Server Configuration Tool 的数据库选择面板中，选择 **Oracle Standard 或 Enterprise Editions 11g 或 12c** 选项。 在后续三个窗格中，输入数据库凭证。
 
 在**数据库附加设置**面板中输入 Oracle 用户名时，必须采用大写形式。 如果您使用 Oracle 数据库用户 (FOO)，但以小写形式 (foo) 输入用户名，那么 Server Configuration Tool 会将其视为另一位用户。 与 Oracle 数据库的其他工具不同，Server Configuration Tool 会对用户名进行保护，以防止自动转换为大写。
 

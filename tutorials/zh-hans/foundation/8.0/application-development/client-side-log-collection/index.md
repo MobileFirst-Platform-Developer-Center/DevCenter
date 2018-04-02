@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 客户端日志收集
-breadcrumb_title: 客户端日志收集
+breadcrumb_title: Client-side log collection
 relevantTo: [ios,android,javascript]
 weight: 7
 ---

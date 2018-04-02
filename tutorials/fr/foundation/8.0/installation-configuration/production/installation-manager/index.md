@@ -39,7 +39,7 @@ Toutefois, dans le cadre d'une installation pour un environnement de production,
 > **Important : **Le programme d'installation de {{ site.data.keys.mf_server }} installe uniquement les fichiers binaires et les outils de {{ site.data.keys.mf_server }} sur votre disque. Il ne déploie pas les applications {{ site.data.keys.mf_server }} sur votre serveur d'applications. Après avoir exécuté l'installation à l'aide d'Installation Manager, vous devez configurer les bases de données et déployer les applications {{ site.data.keys.mf_server }} sur votre serveur d'applications.  
 > De même, lorsque vous exécutez Installation Manager pour mettre à jour une installation existante, seuls les fichiers présents sur votre disque sont mis à jour. Vous devez effectuer d'autres actions pour mettre à jour les applications qui sont déployées sur vos serveurs d'applications.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 * [Mode administrateur et mode utilisateur](#administrator-versus-user-mode)
 * [Installation à l'aide de l'assistant d'installation d'IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)

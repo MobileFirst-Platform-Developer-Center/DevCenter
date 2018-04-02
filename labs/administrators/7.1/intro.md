@@ -8,12 +8,12 @@ tabs:
     path: /labs/administrators/7.1/linux/
   - name: Windows
     path: /labs/administrators/7.1/windows/
-  - name: IBM Bluemix
+  - name: IBM Cloud
     path: /labs/administrators/7.1/bluemix/
 ---
 ## Introduction
 This 1-day lab for administrators consist of three short sessions.  
-During each session you will learn how to setup MobileFirst Platform 7.1 in a different environment: Linux, Windows and IBM Bluemix.
+During each session you will learn how to setup MobileFirst Platform 7.1 in a different environment: Linux, Windows and IBM Cloud.
 
 Pick your environment from the tabbar above to begin.
 

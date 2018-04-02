@@ -38,7 +38,7 @@ der DB2-Software folgende Schritte aus:
 >
 > Weitere Informatinen finden Sie im [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html).
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Datenbankbenutzer und Berechtigungen](#database-users-and-privileges)
@@ -135,7 +135,7 @@ von den Ant-Tasks für die Erstellung der Tabellen verwendet werden.
 2. Öffnen Sie wie folgt einen
 DB2-Befehlszeilenprozessor. Verwenden Sie dabei einen
 Benutzer mit der Berechtigung **SYSADM** oder **SYSCTRL**. 
-    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**. 
+    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**.
     * Navigieren Sie auf Linux- oder UNIX-Systemen zu **~/sqllib/bin** und geben Sie `./db2` ein.
 3. Geben Sie für die Erstellung der MobileFirst-Server-Datenbank SQL-Anweisungen ähnlich denen im folgenden Beispiel ein. 
 

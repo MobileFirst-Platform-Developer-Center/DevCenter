@@ -5,9 +5,9 @@ breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -270,7 +270,7 @@ Sie können diese Ziele mit `WLResourceRequest` erreichen oder mit `jQuery.aja
 
 ### Adapterimplementierung
 {: #adapter-implementation }
-Erstellen Sie einen Adapter mit dem Namen **People**.  
+Erstellen Sie einen Adapter mit dem Namen **JSONStoreAdapter**.   
 Definieren Sie für den Adapter die Prozeduren
 `addPerson`, `getPeople`, `pushPeople`, `removePerson` und `replacePerson`.
 
@@ -303,46 +303,23 @@ function replacePerson(data) {
 }
 ```
 
-#### Eine mit einem {{ site.data.keys.product_adj }}-Adapter verlinkte Sammlung initialisieren
-{: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
-```javascript
-var collections = {
-  people : {
-    searchFields : {name: 'string', age: 'integer'},
-    adapter : {
-      name: 'People',
-      add: 'addPerson',
-      remove: 'removePerson',
-      replace: 'replacePerson',
-      load: {
-        procedure: 'getPeople',
-        params: [],
-        key: 'peopleList'
-      }     
-    }   
-  }
-}
 
-var options = {};
-WL.JSONStore.init(collections, options).then(function () {
-    // Erfolg behandeln
-}).fail(function (error) {
-    // Feler behandeln
-});
-```
-
-#### Daten von einem Adapter laden
+#### Daten von einem {{ site.data.keys.product_adj }}-Adapter laden
 {: #load-data-from-an-adapter }
-Wenn `load` aufgerufen wird, verwendet JSONStore einige Adapter-Metadaten (**name** und **procedure**),
-die Sie zuvor an `init` übergeben haben, um zu bestimmen, welche Daten vom Adapter abgerufen und dann gespeichert werden sollen. 
+Verwenden Sie `WLResourceRequest`, um Daten von einem Adapter zu laden. 
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
-    // Erfolg behandeln
-}).fail(function (error) {
-    // Feler behandeln
-});
+try {
+      var resource = new WLResourceRequest("adapters/JSONStoreAdapter/getPeople", WLResourceRequest.GET);
+     resource.send()
+     .then(function (responseFromAdapter) {
+var data = responseFromAdapter.responseJSON.peopleList;
+     },function(err){
+      	//handle failure
+     });
+} catch (e) {
+    alert("Failed to load data from adapter " + e.Messages);
+}
 ```
 
 #### getPushRequired (vorläufige Dokumente)
@@ -374,21 +351,39 @@ WL.JSONStore.get(collectionName).getAllDirty()
 });
 ```
 
-#### Push
+#### Änderungen mit Push übertragen
 {: #push }
-Mit `push` werden Dokumente, die geändert wurden, an die richtige Adapterprozedur
-gesendet (d. h. `addPerson` wird mit einem lokal hinzugefügten Dokument aufgerufen). Dieser Mechanismus basiert auf der letzten Operation im Zusammenhang mit dem geänderten Dokument, und
-die Adaptermetadaten werden an `init` übergeben.
+Wenn Sie Änderungen mit Push an einen Adapter senden möchten, rufen Sie `getAllDirty` auf, um eine Liste der Dokumente mit Modifikationen abzurufen. Verwnden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätung des erfolgreichen Sendens müssen Sie `markClean` aufrufen.
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).push().then(function (response) {
-    // Erfolg behandeln
-    // Die Antwort ist ein leeres Array, wenn alle Dokumente den Server erreicht haben.
-    // Die Antwort ist ein Array mit Fehlerantworten, wenn einige Dokumente den Server nicht erreicht haben.
-}).fail(function (error) {
-    // Feler behandeln
-});
+try {
+      var collectionName = "people";
+     var dirtyDocs;
+
+     WL.JSONStore.get(collectionName)
+ 
+.getAllDirty()
+ 
+.then(function (arrayOfDirtyDocuments) {
+  dirtyDocs = arrayOfDirtyDocuments;
+ 
+  var resource = new WLResourceRequest("adapters/JSONStoreAdapter/pushPeople", WLResourceRequest.POST);
+        resource.setQueryParameter('params', [dirtyDocs]);
+        return resource.send();
+     }).then(function (responseFromAdapter) {
+return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
+})
+ 
+.then(function (res) {
+
+  // Erfolg behandeln
+}).fail(function (errorObject) {
+    // Fehler behandeln
+     });
+
+} catch (e) {
+    alert("Failed To Push Documents to Adapter");
+}
 ```
 
 ### Enhance

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Referência de Instalação
+title: Referência de instalação
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -139,7 +139,7 @@ O elemento `<driverclasspath>` deve conter os arquivos JAR para o driver JDBC do
 * Faça download dos drivers JDBC DB2 da página [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866)
 * Ou busque o arquivo **db2jcc4.jar** e seus arquivos **db2jcc_license_*.jar** associados a partir do diretório **DB2_INSTALL_DIR/java** no servidor DB2.
 
-Não é possível especificar detalhes de alocações de tabela, como o espaço de tabela, usando a tarefa Ant. Para controlar o espaço de tabela, deve-se usar as instruções do manual na seção [Requisitos do banco de dados DB2 e do usuário](../databases/#db2-database-and-user-requirements).
+Não é possível especificar detalhes de alocações de tabela, como o espaço de tabela, usando a tarefa Ant. Para controlar o espaço de tabela, deve-se usar as instruções do manual na seção [Requisitos do banco de dados DB2 e do usuário](../prod-env/databases/#db2-database-and-user-requirements).
 
 #### MySQL
 {: #mysql }
@@ -227,7 +227,7 @@ O elemento interno `<dba>` especifica as credenciais do administrador de base de
 
 O elemento `<driverclasspath>` deve conter um arquivo JAR do driver JDBC Oracle. É possível fazer download de drivers JDBC Oracle do [JDBC, SQLJ, Oracle JPublisher e Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-Não é possível especificar detalhes de alocação de tabela, como o espaço de tabela, usando a tarefa Ant. Para controlar o espaço de tabela, é possível criar a conta do usuário manualmente e designar a ela um espaço de tabela padrão antes da execução da tarefa Ant. Para controlar outros detalhes, deve-se usar as instruções do manual na seção [Requisitos do banco de dados Oracle e do usuário](../databases/#oracle-database-and-user-requirements).
+Não é possível especificar detalhes de alocação de tabela, como o espaço de tabela, usando a tarefa Ant. Para controlar o espaço de tabela, é possível criar a conta do usuário manualmente e designar a ela um espaço de tabela padrão antes da execução da tarefa Ant. Para controlar outros detalhes, deve-se usar as instruções do manual na seção [Requisitos do banco de dados Oracle e do usuário](../prod-env/databases/#oracle-database-and-user-requirements).
 
 | Atributo | Descrição (Description)                            | Necessário | Padrão               |
 |-----------|----------------------------------------|----------|-----------------------|
@@ -1486,12 +1486,12 @@ A tabela a seguir fornece uma lista de tabelas de banco de dados de serviço de 
 | PUSH_MESSAGE_SEQUENCE_TABLE	 | Tabela de notificação push; armazena o ID de sequência gerado.	 | Uma linha. |
 | PUSH_VERSION	                 | A versão do produto.	                                         | Uma linha. |
 
-Para obter informações adicionais sobre como configurar os bancos de dados, consulte [Configurando bancos de dados](../databases).
+Para obter informações adicionais sobre como configurar os bancos de dados, consulte [Configurando bancos de dados](../prod-env/databases).
 
 ## Arquivos de configuração de amostra
 {{ site.data.keys.product }} inclui inúmeros arquivos de amostra de configuração para ajudá-lo a começar a usar as tarefas Ant para instalar o {{ site.data.keys.mf_server }}.
 
-A maneira mais fácil de começar a usar essas tarefas Ant é trabalhando com os arquivos de configuração de amostra fornecidos no diretório **MobileFirstServer/configuration-samples/** da distribuição do {{ site.data.keys.mf_server }}. Para obter informações adicionais sobre como instalar o {{ site.data.keys.mf_server }} com tarefas Ant, consulte [Instalando com tarefas Ant](../appserver/#installing-with-ant-tasks).
+A maneira mais fácil de começar a usar essas tarefas Ant é trabalhando com os arquivos de configuração de amostra fornecidos no diretório **MobileFirstServer/configuration-samples/** da distribuição do {{ site.data.keys.mf_server }}. Para obter informações adicionais sobre como instalar o {{ site.data.keys.mf_server }} com tarefas Ant, consulte [Instalando com tarefas Ant](../prod-env/appserver/#installing-with-ant-tasks).
 
 ### Lista de arquivos de configuração de amostra
 {: #list-of-sample-configuration-files }

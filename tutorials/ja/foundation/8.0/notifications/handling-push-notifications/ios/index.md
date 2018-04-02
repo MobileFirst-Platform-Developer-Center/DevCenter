@@ -5,13 +5,13 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: Xcode プロジェクトのダウンロード
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
+{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。 このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
 
 サイレント通知または対話式通知については、以下を参照してください。
 
@@ -46,8 +46,9 @@ downloads:
 1. プロジェクトの既存の **podfile** を開き、以下の行を追加します。
 
    ```xml
-use_frameworks!
-platform :ios, 8.0
+   use_frameworks!
+
+   platform :ios, 8.0
    target "Xcode-project-target" do
         pod 'IBMMobileFirstPlatformFoundation'
         pod 'IBMMobileFirstPlatformFoundationPush'
@@ -80,7 +81,7 @@ platform :ios, 8.0
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、ビュー・コントローラー内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、ビュー・コントローラー内で一貫して `push.methodName()` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、ビュー・コントローラー内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、ビュー・コントローラー内で一貫して `push.methodName()` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.sharedInstance().methodName()` を呼び出すこともできます。
 
@@ -90,22 +91,20 @@ platform :ios, 8.0
 
 > チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/ios)チュートリアルを参照してください。
 
-
-
 ### クライアント・サイド
 {: #client-side }
 
-| Swift メソッド| 説明|
+| Swift メソッド | 説明  |
 |---------------|--------------|
-| [`initialize()`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。|
-| [`isPushSupported()`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
+| [`initialize()`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
+| [`isPushSupported()`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
 | [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | デバイスをプッシュ通知サービスに登録します。|
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | デバイス・トークンをサーバーに送信します。|
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。|
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | デバイスが現在サブスクライブしているタグをすべて取得します。|
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | デバイス・トークンをサーバーに送信します。 |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | デバイスが現在サブスクライブしているタグをすべて取得します。 |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。              |
 
 #### 初期化
 {: #initialization }
@@ -266,7 +265,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 ## プッシュ通知の処理
 {: #handling-a-push-notification }
 
-プッシュ通知は、ネイティブ iOS フレームワークによって直接的に処理されます。アプリケーション・ライフサイクルに応じて、いろいろなメソッドが iOS フレームワークによって呼び出されます。
+プッシュ通知は、ネイティブ iOS フレームワークによって直接的に処理されます。 アプリケーション・ライフサイクルに応じて、いろいろなメソッドが iOS フレームワークによって呼び出されます。
 
 例えば、アプリケーションの実行中に単純な通知を受け取った場合は、**AppDelegate** の `didReceiveRemoteNotification` がトリガーされます。
 

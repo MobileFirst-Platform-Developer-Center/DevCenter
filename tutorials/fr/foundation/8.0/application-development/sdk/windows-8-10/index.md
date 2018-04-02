@@ -23,7 +23,7 @@ In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Nati
 #### Jump to:
 {: #jump-to }
 - [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk) 
+- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk)
 - [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
@@ -65,7 +65,7 @@ NuGet is the package manager for the Microsoft development platform, including .
 
 You can also manually add the {{ site.data.keys.product }} SDK:
 
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">

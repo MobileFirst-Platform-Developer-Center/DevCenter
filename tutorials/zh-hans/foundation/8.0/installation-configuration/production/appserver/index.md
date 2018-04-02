@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 将 MobileFirst Server 安装到应用程序服务器
-breadcrumb_title: 安装 MobileFirst Server
+title: 将 MobileFirst Server 安装到应用程序服务器中
+breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -13,7 +13,7 @@ weight: 4
 
 还必须定义用于安装组件的服务器拓扑。 请参阅[拓扑和网络流](../topologies)。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 
 * [应用程序服务器必备软件](#application-server-prerequisites)
@@ -67,7 +67,8 @@ weight: 4
 
                 <p>如果您通过其他命令启动 Apache Tomcat，那么可能不会使用此文件。 如果安装了 Apache Tomcat Windows Service Installer，那么服务启动程序不会使用 <b>setenv.bat</b>。</p>
 
-                <blockquote><b>要点：</b>缺省情况下，此配置不安全。 要保护配置，您必须手动完成以下过程的步骤 2 和 3。</blockquote>
+                <blockquote><b>要点：</b>缺省情况下，此配置不安全。 要保护配置，您必须手动完成以下过程的
+步骤 2 和 3。</blockquote>
 
                 <p>手动配置 Apache Tomcat：</p>
 
@@ -100,7 +101,9 @@ weight: 4
 
                     <b>注：</b>可以更改端口 8686。</li>
                     <li>
-                        <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。 请参阅 <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX 远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
+                        <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。 请参阅
+<a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX
+远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
 
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">
@@ -1880,7 +1883,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                 <ul>
                                     <li>WebSphere Application Server Full Profile<br/>
                                     <b>注：</b>在场拓扑中，不能使用 RMI JMX 接口。 在此拓扑中，{{ site.data.keys.product }} 仅支持 SOAP 接口。</li>
-                                    <li>WebSphere Application Server Liberty Profile</li>
+                                    <li>WebSphere  Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
@@ -1933,12 +1936,13 @@ Profile 服务器的场是无效的配置。</blockquote>
                             <li>选择要用于配置服务器场成员的应用程序服务器的类型。 {{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：
                                 <ul>
                                     <li>WebSphere Application Server Full Profile。 <b>注：</b>在场拓扑中，不能使用 RMI JMX 接口。 在此拓扑中，{{ site.data.keys.product }} 仅支持 SOAP 接口。</li>
-                                    <li>WebSphere Application Server Liberty Profile</li>
+                                    <li>WebSphere  Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
 
-                                <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
+                                <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
+Profile 服务器的场是无效的配置。</blockquote>
                             </li>
                             <li>设置与希望包含在场中的成员数一样多的独立服务器。
                             <br/><br/>
@@ -2051,7 +2055,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                         <ul>
                             <li>WebSphere Application Server Full Profile<br/>
                             <b>注：</b>在场拓扑中，不能使用 RMI JMX 接口。 在此拓扑中，{{ site.data.keys.product }} 仅支持 SOAP 接口。</li>
-                            <li>WebSphere Application Server Liberty Profile</li>
+                            <li>WebSphere  Application Server Liberty Profile</li>
                             <li>Apache Tomcat</li>
                         </ul>
                         要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。

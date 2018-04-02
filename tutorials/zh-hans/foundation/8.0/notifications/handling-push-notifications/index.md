@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 在客户机应用程序中处理推送通知
-breadcrumb_title: 处理推送通知
+breadcrumb_title: Handling Push Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 4
 show_children: true

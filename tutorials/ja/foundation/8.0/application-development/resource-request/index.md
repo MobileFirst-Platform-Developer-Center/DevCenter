@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: クライアント・アプリケーションでのリソース要求
-breadcrumb_title: リソース要求
+breadcrumb_title: Resource Requests
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5

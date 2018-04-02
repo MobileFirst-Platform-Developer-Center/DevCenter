@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: iOS での SMS 通知の処理
-breadcrumb_title: iOS での SMS の処理
+breadcrumb_title: Handling SMS in iOS
 relevantTo: [ios]
 downloads:
-  - name: Xcode プロジェクトのダウンロード
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---
@@ -56,12 +56,12 @@ MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void 
      if error == nil {
          // Successfully registered
     } else {
-        // Registration failed with error
+         // Registration failed with error
     }
-})
+ })
 ```
 
-* **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `jsonOptions` です。例えば、次のとおりです。
+* **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `jsonOptions` です。 例えば、次のとおりです。
 
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
@@ -94,7 +94,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 
 ## SMS サブスクライブ・サーブレットの使用
 {: #using-an-sms-subscribe-servlet }
-登録済みデバイスに通知を送信するときは REST API が使用されます。すべての形式の通知 (タグ通知、ブロードキャスト通知、および認証済み通知) を送信できます。
+登録済みデバイスに通知を送信するときは REST API が使用されます。 すべての形式の通知 (タグ通知、ブロードキャスト通知、および認証済み通知) を送信できます。
 
 通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
 URL の例を以下に示します。
@@ -104,8 +104,6 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > すべてのプッシュ通知 REST API を確認するには、ユーザー資料の <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API ランタイム・サービス</a>のトピックを参照してください。
-
-
 
 通知を送信するには、[通知の送信](../../sending-notifications)チュートリアルを参照してください。
 

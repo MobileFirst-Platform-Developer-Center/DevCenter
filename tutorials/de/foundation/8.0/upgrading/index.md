@@ -9,6 +9,8 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es neue Konzepte für die 
 
 > [Nutzen Sie für einen schnellen Einstieg in den Migrationsprozess das Migrations-Cookbook](migration-cookbook). 
 
+> Unter [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) finden Sie einen Leitfaden für die Durchführung der Migration von Version 7.1 auf Version 8.0. 
+
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Warum auf {{ site.data.keys.product_full }} 8.0 umstellen?](#why-migrate-to-ibm-mobilefirst-foundation-80)
@@ -37,7 +39,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es neue Konzepte für die 
 * Verbesserte Push-Benachrichtigungsservices, die das Senden gezielter, abonnementgestützter Benachrichtigungen von der Webkonsole aus ermöglichen
 
 ### Mehr Optionen für die Hybrid-Cloud-Implementierung
-* Bereitstellung von MobileFirst-Foundation-Entwicklungsumgebungen und -Testumgebungen sowie von voll skalierbaren MobileFirst-Foundation-Produktionsumgebungen in Bluemix Public per Mausklick
+* Bereitstellung von MobileFirst-Foundation-Entwicklungsumgebungen und -Testumgebungen sowie von voll skalierbaren MobileFirst-Foundation-Produktionsumgebungen in IBM Cloud Public per Mausklick
 * Integration von IBM DevOps Services und UrbanCode für die Erstellung Ihrer Implementierungspipelines
 
 ### Mehrkanal-API-Erstellung und -Management
@@ -47,6 +49,8 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es neue Konzepte für die 
 ## Änderungen beim Entwicklungs- und Implementierungsprozess
 {: #changes-in-the-development-and-deployment-process }
 > Wenn Sie schnell praktische Entwicklungserfahrungen mit {{ site.data.keys.product }} Version 8.0.0 sammeln möchten, sehen Sie sich die [Lernprogramme für den Schnelleinstieg](../quick-start) an.
+
+
 
 In dieser Produktversion erstellen Sie keine Projekt-WAR-Datei mehr, die in dem Anwendungsserver installiert werden muss, in dem {{ site.data.keys.mf_server }} ausgeführt wird, bevor die Apps hochgeladen werden können. Stattdessen wird {{ site.data.keys.mf_server }} einmalig installiert, und Sie laden dann die serverseitige **Konfiguration** für Ihre Apps, für Ressourcensicherheit oder für den Push-Service auf den Server hoch. Sie können die Konfiguration Ihrer Apps in der {{ site.data.keys.mf_console }} modifizieren. Sie können auch ein Befehlszeilentool oder die Server-REST-API verwenden, um eine neue **Konfigurationsdatei** für Ihre Apps hochzuladen. 
 
@@ -121,7 +125,9 @@ Der Push-Service wird durch das OAuth-Sicherheitsmodell geschützt. Sie müssen 
 
 ### Datenmigrationstool für Push-Benachrichtigungen
 {: #push-notifications-data-migration-tool }
-Es steht ein Datenmigrationstool für Push-Benachrichtigungen zur Verfügung. Das Migrationstool vereinfacht die Umstellung von Push-Daten von MobileFirst Platform Foundation 7.1 (Geräte, Benutzerabonnements, Berechtigungsnachweise und Tags) auf {{ site.data.keys.product }} 8.0.
+Es steht ein Datenmigrationstool für Push-Benachrichtigungen zur Verfügung. Das Migrationstool vereinfacht
+die Umstellung von Push-Daten von MobileFirst Platform Foundation 7.1 (Geräte, Benutzerabonnements,
+Berechtigungsnachweise und Tags) auf {{ site.data.keys.product }} 8.0.
 
 > [Informieren Sie sich über das Migrationstool](migrating-push-notifications/#migration-tool).
 

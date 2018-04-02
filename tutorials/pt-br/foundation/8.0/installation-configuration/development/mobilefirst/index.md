@@ -9,11 +9,11 @@ weight: 1
 {: #overview }
 {{ site.data.keys.product_full }} O é composto de vários componentes: os SDKs do cliente, archetypes do adaptador, verificações de segurança e ferramentas de autenticação.
 
-Esses componentes estão disponíveis nos repositórios on-line e podem ser instalados usando gerenciadores de pacotes. Esses repositórios on-line fornecem a liberação mais recente de cada componente. O mesmo componente também está disponível para download no {{ site.data.keys.mf_dev_kit }} para uso local. Observe que a versão que está disponível no {{ site.data.keys.mf_dev_kit_short }} representa a versão que estava disponível no momento em que a construção específica do {{ site.data.keys.mf_dev_kit_short }} foi liberada e que o download de uma nova construção do {{ site.data.keys.mf_dev_kit_short }} será necessário para usar a mais recente. 
+Esses componentes estão disponíveis nos repositórios on-line e podem ser instalados usando gerenciadores de pacotes. Esses repositórios on-line fornecem a liberação mais recente de cada componente. O mesmo componente também está disponível para download no {{ site.data.keys.mf_dev_kit }} para uso local. Observe que a versão que está disponível no {{ site.data.keys.mf_dev_kit_short }} representa a versão que estava disponível no momento em que a construção específica do {{ site.data.keys.mf_dev_kit_short }} foi liberada e que o download de uma nova construção do {{ site.data.keys.mf_dev_kit_short }} será necessário para usar a mais recente.
 
 Continue lendo para saber mais sobre os componentes do {{ site.data.keys.product }}.
 
-> Para avaliar o {{ site.data.keys.product }}, tudo o que é necessário é girar uma instância do {{ site.data.keys.mf_server }} no Bluemix usando o serviço Mobile Foundation Bluemix. Consulte o tutorial [Usando o Mobile Foundation](../../../bluemix/using-mobile-foundation/) para obter instruções. Também é possível optar por instalar o {{ site.data.keys.mf_dev_kit_short }} para uma instalação local.
+> Para avaliar o {{ site.data.keys.product }}, é necessário girar uma instância do {{ site.data.keys.mf_server }} no IBM Cloud usando o serviço Mobile Foundation IBM Cloud. Consulte o tutorial [Usando o Mobile Foundation](../../../bluemix/using-mobile-foundation/) para obter instruções. Também é possível optar por instalar o {{ site.data.keys.mf_dev_kit_short }} para uma instalação local.
 
 #### Ir para:
 {: #jump-to }
@@ -63,7 +63,7 @@ O {{ site.data.keys.mf_console }} expõe as seguintes funcionalidades.
 Um desenvolvedor pode:
 
 - Registrar e implementar aplicativos e adaptadores
-- Opcionalmente, fazer download de modelos de código de início de aplicativos e adaptadores nativos/Cordova 
+- Opcionalmente, fazer download de modelos de código de início de aplicativos e adaptadores nativos/Cordova
 - Configurar a autenticação e propriedades de segurança de um aplicativo
 - Gerenciar aplicativos:
     - Autenticidade do Aplicativo
@@ -102,7 +102,7 @@ O {{ site.data.keys.product }} fornece SDKs do cliente para aplicativos Cordova 
 * Os aplicativos Cordova requerem NodeJS e a CLI Cordova. Leia mais sobre [Configurando o ambiente de desenvolvimento de Cordova](../cordova).
 
     É possível usar o editor de código preferencial, como Atom.io, Visual Studio Code, Eclipse, IntelliJ e outros, para implementar aplicativos e adaptadores.  
-    
+
 * Os aplicativos nativos requerem o Xcode, Android Studio ou Visual Studio. Leia mais sobre [Configurando o ambiente de desenvolvimento do iOS/Android/Windows](../).
 
 ### Adaptadores
@@ -112,4 +112,3 @@ Os adaptadores requerem que o Apache Maven esteja instalado. Consulte a categori
 ## Próximos tutoriais a serem seguidos
 {: #tutorials-to-follow-next }
 Visite a página [Todos os tutoriais](../../../all-tutorials/) e selecione uma categoria de próximos tutoriais a serem seguidos.
-

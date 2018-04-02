@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 迁移现有适配器以在 MobileFirst Server V8.0.0 下工作
-breadcrumb_title: 迁移现有适配器
+breadcrumb_title: Migrating existing adapters
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

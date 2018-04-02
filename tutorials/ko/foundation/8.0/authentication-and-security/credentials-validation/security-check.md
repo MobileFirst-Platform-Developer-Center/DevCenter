@@ -1,22 +1,22 @@
 ---
 layout: tutorial
 title: CredentialsValidationSecurityCheck 클래스 구현
-breadcrumb_title: 보안 검사
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: 보안 검사 다운로드
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-이 abstract 클래스는 `ExternalizableSecurityCheck`를 확장하고 사용법을 단순화하기 위해 메소드 대부분을 구현합니다. 두 개의 메소드 `validateCredentials` 및 `createChallenge`는 필수입니다.   
-`CredentialsValidationSecurityCheck` 클래스는 자원에 대한 액세스를 허용하기 위해 임의의 신임 정보를 유효성 검증하기 위한 단순 플로우를 위한 것입니다. 지정된 시도 횟수 후에 액세스를 차단하는 기존 제공 기능도 제공됩니다. 
+이 abstract 클래스는 `ExternalizableSecurityCheck`를 확장하고 사용법을 단순화하기 위해 메소드 대부분을 구현합니다. 두 개의 메소드 `validateCredentials` 및 `createChallenge`는 필수입니다.  
+`CredentialsValidationSecurityCheck` 클래스는 자원에 대한 액세스를 허용하기 위해 임의의 신임 정보를 유효성 검증하기 위한 단순 플로우를 위한 것입니다. 지정된 시도 횟수 후에 액세스를 차단하는 기존 제공 기능도 제공됩니다.
 
-이 학습서는 자원을 보호하기 위해 하드 코딩된 PIN 코드의 예를 사용하고, 사용자에게 3번의 시도 횟수를 제공합니다(이 시도 횟수 뒤에는 클라이언트 애플리케이션 인스턴스가 60초 동안 차단됩니다). 
+이 학습서는 자원을 보호하기 위해 하드 코딩된 PIN 코드의 예를 사용하고, 사용자에게 3번의 시도 횟수를 제공합니다(이 시도 횟수 뒤에는 클라이언트 애플리케이션 인스턴스가 60초 동안 차단됩니다).
 
-**전제조건:** [권한 부여 개념](../../) 및 [보안 검사 작성](../../creating-a-security-check) 학습서를 읽으십시오.  
+**전제조건:** [권한 부여 개념](../../) 및 [보안 검사 작성](../../creating-a-security-check) 학습서를 읽으십시오.
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -28,7 +28,7 @@ downloads:
 
 ## 보안 검사 작성
 {: #creating-the-security-check }
-[Java 어댑터를 작성](../../../adapters/creating-adapters)하고 `CredentialsValidationSecurityCheck`를 확장하는 `PinCodeAttempts`라는 Java 클래스를 추가하십시오. 
+[Java 어댑터를 작성](../../../adapters/creating-adapters)하고 `CredentialsValidationSecurityCheck`를 확장하는 `PinCodeAttempts`라는 Java 클래스를 추가하십시오.
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -47,7 +47,7 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 
 ## 인증 확인 작성
 {: #creating-the-challenge }
-보안 검사가 트리거되면 인증 확인을 클라이언트에 전송합니다. `null`을 리턴하면 빈 인증 확인이 작성되며 이는 일부 경우에 충분할 수도 있습니다.   
+보안 검사가 트리거되면 인증 확인을 클라이언트에 전송합니다. `null`을 리턴하면 빈 인증 확인이 작성되며 이는 일부 경우에 충분할 수도 있습니다.  
 선택적으로 표시할 오류 메시지 또는 클라이언트에서 사용할 수 있는 기타 다른 데이터와 같은 데이터와 함께 인증 확인을 리턴할 수 있습니다.
 
 예를 들어 `PinCodeAttempts`는 사전 정의된 오류 메시지와 남아 있는 시도 횟수를 전송합니다.
@@ -62,13 +62,13 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-> `errorMsg`의 구현이 샘플 애플리케이션에 포함됩니다. 
+> `errorMsg`의 구현이 샘플 애플리케이션에 포함됩니다.
 
-`getRemainingAttempts()`는 `CredentialsValidationSecurityCheck`에서 상속됩니다. 
+`getRemainingAttempts()`는 `CredentialsValidationSecurityCheck`에서 상속됩니다.
 
 ## 사용자 신임 정보 유효성 검증
 {: #validating-the-user-credentials }
-클라이언트가 인증 확인에서 응답을 보낼 때, 응답은 `Map`으로 `validateCredentials`에 전달됩니다. 이 메소드는 사용자의 로직을 구현하고 신임 정보가 유효하면 `true`를 리턴해야 합니다. 
+클라이언트가 인증 확인에서 응답을 보낼 때, 응답은 `Map`으로 `validateCredentials`에 전달됩니다. 이 메소드는 사용자의 로직을 구현하고 신임 정보가 유효하면 `true`를 리턴해야 합니다.
 
 ```java
 @Override
@@ -96,7 +96,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### Configuration 클래스
 {: #configuration-class }
-또한 adapter.xml 파일 및 {{ site.data.keys.mf_console }}을 사용하여 유효한 PIN 코드를 구성할 수 있습니다. 
+또한 adapter.xml 파일 및 {{ site.data.keys.mf_console }}을 사용하여 유효한 PIN 코드를 구성할 수 있습니다.
 
 `CredentialsValidationSecurityCheckConfig`를 확장하는 새로운 Java 클래스를 작성하십시오. 기본 구성을 상속하려면 상위 보안 검사 클래스와 일치하는 클래스를 확장하는 것이 중요합니다.
 
@@ -113,13 +113,13 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-이 클래스의 유일한 필수 메소드는 `Properties` 인스턴스를 핸들할 수 있는 생성자입니다. adapter.xml 파일에서 특정 특성을 검색하려면 `get[Type]Property` 메소드를 사용하십시오. 값이 발견되지 않으면, 세 번째 매개변수가 기본값(`1234`)을 정의합니다. 
+이 클래스의 유일한 필수 메소드는 `Properties` 인스턴스를 핸들할 수 있는 생성자입니다. adapter.xml 파일에서 특정 특성을 검색하려면 `get[Type]Property` 메소드를 사용하십시오. 값이 발견되지 않으면, 세 번째 매개변수가 기본값(`1234`)을 정의합니다.
 
 또한 `addMessage` 메소드를 사용하여 오류 핸들링을 이 생성자에 추가할 수 있습니다.
 
 ```java
 public PinCodeConfig(Properties properties) {
-        //Make sure to load the parent properties
+    //Make sure to load the parent properties
     super(properties);
 
     //Load the pinCode property
@@ -155,7 +155,7 @@ protected PinCodeConfig getConfiguration() {
 
 이제 기본 PIN 코드를 검색하기 위해 `getConfiguration().pinCode` 메소드를 사용할 수 있습니다.  
 
-하드코딩된 값 대신 구성에서 PIN 코드를 사용하기 위해 `validateCredentials` 메소드를 수정할 수 있습니다. 
+하드코딩된 값 대신 구성에서 PIN 코드를 사용하기 위해 `validateCredentials` 메소드를 수정할 수 있습니다.
 
 ```java
 @Override
@@ -194,12 +194,12 @@ adapter.xml에서 `<securityCheckDefinition>` 요소를 추가하십시오.
 </securityCheckDefinition>
 ```
 
-`name` 속성은 보안 검사의 이름이어야 합니다.  `class` 매개변수를 이전에 작성한 클래스로 설정하십시오. 
+`name` 속성은 보안 검사의 이름이어야 합니다. `class` 매개변수를 이전에 작성한 클래스로 설정하십시오.
 
 `securityCheckDefinition`는 0개 이상의 `property` 요소를 포함할 수 있습니다. `pinCode` 특성은 `PinCodeConfig` 구성 클래스에 정의된 것입니다. 다른 특성은 `CredentialsValidationSecurityCheckConfig` 구성 클래스에서
-상속됩니다. 
+상속됩니다.
 
-기본적으로 adapter.xml 파일에서 이러한 특성을 지정하지 않은 경우 `CredentialsValidationSecurityCheckConfig`에서 설정된 기본값을 수신합니다. 
+기본적으로 adapter.xml 파일에서 이러한 특성을 지정하지 않은 경우 `CredentialsValidationSecurityCheckConfig`에서 설정된 기본값을 수신합니다.
 
 ```java
 public CredentialsValidationSecurityCheckConfig(Properties properties) {
@@ -213,15 +213,15 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 `CredentialsValidationSecurityCheckConfig` 클래스는 다음 특성을 정의합니다.
 
 - `maxAttempts`: *실패*에 도달하기 전에 허용되는 시도 횟수입니다.
-- `attemptingStateExpirationSec`: 클라이언트가 올바른 신임 정보를 제공해야 하고 시도를 계수하는 간격(초)입니다. 
-- `successStateExpirationSec`: 성공적인 로그인이 보유하는 간격(초)입니다. 
-- `blockedStateExpirationSec`: `maxAttempts`에 도달한 후 클라이언트가 차단되는 간격(초)입니다. 
+- `attemptingStateExpirationSec`: 클라이언트가 올바른 신임 정보를 제공해야 하고 시도를 계수하는 간격(초)입니다.
+- `successStateExpirationSec`: 성공적인 로그인이 보유하는 간격(초)입니다.
+- `blockedStateExpirationSec`: `maxAttempts`에 도달한 후 클라이언트가 차단되는 간격(초)입니다.
 
-`blockedStateExpirationSec`의 기본값이 `0`으로 설정되어 있음을 참고하십시오. 클라이언트가 올바르지 않은 신임 정보를 전송하면 "0초 후"에 다시 시도할 수 있습니다. 이는 기본적으로 "시도 횟수" 기능이 사용 안함으로 설정되어 있음을 의미합니다. 
+`blockedStateExpirationSec`의 기본값이 `0`으로 설정되어 있음을 참고하십시오. 클라이언트가 올바르지 않은 신임 정보를 전송하면 "0초 후"에 다시 시도할 수 있습니다. 이는 기본적으로 "시도 횟수" 기능이 사용 안함으로 설정되어 있음을 의미합니다.
 
 
 ## 샘플 보안 검사
 {: #sample-security-check }
-보안 검사 Maven 프로젝트를 [다운로드](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)하십시오.  
+보안 검사 Maven 프로젝트를 [다운로드](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)하십시오.
 
 Maven 프로젝트는 CredentialsValidationSecurityCheck의 구현을 포함합니다.

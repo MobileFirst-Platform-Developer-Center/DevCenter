@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuration de l'environnement de développement
-breadcrumb_title: Environnement de développement
+breadcrumb_title: Development Environment
 show_children: true
 weight: 1
 ---
@@ -18,7 +18,7 @@ Vous trouverez également des instructions détaillées
 [dans ce guide d'installation pour le poste de
 travail](mobilefirst/installation-guide/).
 
-#### Accéder à :
+#### Aller à :
 
 * [Serveur](#server)
 * [Développement d'applications](#application-development)
@@ -28,14 +28,10 @@ la plateforme](#platform-specific-instructions)
 
 ### Serveur
 {: #server }
-Vous pouvez utiliser {{ site.data.keys.mf_server }} via le
-[service Mobile Foundation
-Bluemix](../../bluemix/using-mobile-foundation) ou localement avec {{ site.data.keys.mf_dev_kit_full }} (pour un
-développement local seulement). {{ site.data.keys.mf_server }} requiert
+Vous pouvez utiliser {{ site.data.keys.mf_server }} via le [service IBM Cloud Mobile Foundation](../../bluemix/using-mobile-foundation) ou localement avec {{ site.data.keys.mf_dev_kit_full }} (pour un développement local seulement). {{ site.data.keys.mf_server }} requiert
 l'exécution de Java 7 ou 8.
 
-Si vous prévoyez d'utiliser le service Mobile Foundation
-Bluemix, un compte Bluemix.net est requis.
+Si vous envisagez d'utiliser le service IBM Cloud Mobile Foundation, un compte bluemix.net est requis. 
 
 ### Développement d'applications
 {: #application-development }

@@ -118,8 +118,7 @@ mfpadm finden Sie unter
 [{{ site.data.keys.product_adj }}-Anwendungen
 über die Befehlszeile verwalten](../administering-apps/using-cli) und
 [{{ site.data.keys.product_adj }}-Anwendungen mit Ant verwalten](../administering-apps/using-ant). 
-* Verwenden Sie die REST-API des {{ site.data.keys.product_adj }}-Verwaltungsservice. Weitere Informationen zu der REST-API finden Sie unter
-[REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/administration-service/).
+* Verwenden Sie die REST-API des {{ site.data.keys.product_adj }}-Verwaltungsservice. Weitere Informationen zu der REST-API finden Sie unter [REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/admin-apis/).
 
 Mit diesen Methoden können Sie auch die
 Konfiguration Ihres {{ site.data.keys.mf_server }} automatisieren. 
@@ -235,9 +234,11 @@ implementieren:
 von {{ site.data.keys.mf_server }} in Ihrer lokalen Umgebung
 finden Sie unter
 [IBM {{ site.data.keys.mf_server }} installieren](../installation-configuration/production/appserver).
+
+
 #### In der Cloud
 {: #on-the-cloud }
-* [{{ site.data.keys.mf_server }} in IBM Bluemix](../bluemix)
+* [{{ site.data.keys.mf_server }} in IBM Cloud](../bluemix)
 * [{{ site.data.keys.mf_server }} in IBM PureApplication](../installation-configuration/production/pure-application)
 
 ## Adapter

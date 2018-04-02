@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation et configuration pour l'octroi de licence de jeton
-breadcrumb_title: Octroi de licence de jeton
+breadcrumb_title: Token licensing
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -11,7 +11,7 @@ Si vous prévoyez d'utiliser l'octroi de licence de jeton pour {{ site.data.keys
 
 Les rubriques ci-après décrivent la présentation de l'installation, l'installation manuelle de la bibliothèque Rational Common Licensing, la configuration du serveur d'applications et les limitations propres aux plateformes pour l'octroi de licence de jeton.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 
 * [Planification pour l'utilisation de l'octroi de licence de jeton](#planning-for-the-use-of-token-licensing)

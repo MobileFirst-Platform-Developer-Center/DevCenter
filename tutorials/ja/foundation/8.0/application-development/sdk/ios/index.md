@@ -12,11 +12,11 @@ MobileFirst Foundation SDK は、[CocoaPods](http://guides.cocoapods.org) を通
 これらの pod は、次のようなコア機能およびその他の機能に対応しています。
 
 * **IBMMobileFirstPlatformFoundation** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
-* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore のフレームワークを含んでいます。詳しくは、[iOS 用 JSONStore に関するチュートリアル](../../jsonstore/ios/)を参照してください。
-* **IBMMobileFirstPlatformFoundationPush** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
+* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore のフレームワークを含んでいます。 詳しくは、[iOS 用 JSONStore に関するチュートリアル](../../jsonstore/ios/)を参照してください。
+* **IBMMobileFirstPlatformFoundationPush** - プッシュ通知のフレームワークを含んでいます。 詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 * **IBMMobileFirstPlatformFoundationWatchOS** - Apple WatchOSのサポートを含んでいます。
 
-このチュートリアルでは、CocoaPods を使用して MobileFirst ネイティブ SDK を新規または既存の iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
+このチュートリアルでは、CocoaPods を使用して MobileFirst ネイティブ SDK を新規または既存の iOS アプリケーションに追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
 
 **前提条件:**
 
@@ -53,8 +53,8 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
     - [CocoaPods](http://guides.cocoapods.org) が既に開発環境にインストールされている場合は、ステップ 2 に進みます。
     - CocoaPods がインストールされていない場合は、次のようにしてインストールしてください。  
         - **コマンド・ライン**・ウィンドウを開き、Xcode プロジェクトのルートに移動します。
-        - `sudo gem install cocoapods` コマンドに続けて `pod setup` コマンドを実行します。**注:** これらのコマンドは、完了するのに数分かかることがあります。
-2. 次のコマンドを実行します。`pod init`。これは `Podfile` を作成します。
+        - `sudo gem install cocoapods` コマンドに続けて `pod setup` コマンドを実行します。 **注:** これらのコマンドは、完了するのに数分かかることがあります。
+2. 次のコマンドを実行します。`pod init`。 これは `Podfile` を作成します。
 3. 好みのコード・エディターを使用して、この `Podfile` を開きます。
     - このファイルのコンテンツをコメントにして取り除くか、削除します。
     - 以下の行を追加し、変更を保存します。
@@ -69,12 +69,10 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
       ```
       - **Xcode-project-target** を、Xcode プロジェクトのターゲットの名前に置き換えます。
 
-4. コマンド・ライン・ウィンドウに戻り、`pod install` コマンドに続けて、`pod update` コマンドを実行します。これらのコマンドは、{{ site.data.keys.product }} ネイティブ SDK ファイルの追加、**mfpclient.plist** ファイルの追加、および Pod プロジェクトの生成を行います。  
+4. コマンド・ライン・ウィンドウに戻り、`pod install` コマンドに続けて、`pod update` コマンドを実行します。 これらのコマンドは、{{ site.data.keys.product }} ネイティブ SDK ファイルの追加、**mfpclient.plist** ファイルの追加、および Pod プロジェクトの生成を行います。  
     **注:** コマンドは、完了するのに数分かかることがあります。
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。`[ProjectName].xcodeproj` ファイルは使用**しないでください**。CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
-
-
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。 `[ProjectName].xcodeproj` ファイルは使用**しないでください**。 CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
 
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: #manually-adding-the-mobilefirst-native-sdk }
@@ -118,7 +116,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                                     <li>Localizations.bundle</li>
                                 </ul>
                             </li>
-                            <blockquote><b>注:</b> これらのステップでは、関連する {{ site.data.keys.product }} フレームワークをプロジェクトにコピーし、「ビルド・フェーズ (Build Phases)」タブの「バイナリーをライブラリーとリンク (Link Binary with Libraries)」リスト内でこれらのファイルをリンクします。これらのファイルを元のロケーションにリンクする (前の説明のように「必要な場合は項目をコピー (Copy items if needed)」オプションを選択しない) には、以下に説明されているように「フレームワーク検索パス (Framework Search Paths)」を設定する必要があります。</blockquote>
+                            <blockquote><b>注:</b> これらのステップでは、関連する {{ site.data.keys.product }} フレームワークをプロジェクトにコピーし、「ビルド・フェーズ (Build Phases)」タブの「バイナリーをライブラリーとリンク (Link Binary with Libraries)」リスト内でこれらのファイルをリンクします。 これらのファイルを元のロケーションにリンクする (前の説明のように「必要な場合は項目をコピー (Copy items if needed)」オプションを選択しない) には、以下に説明されているように「フレームワーク検索パス (Framework Search Paths)」を設定する必要があります。</blockquote>
                         </ul>
                     </li>
                     <li>ステップ 1 で追加されたフレームワークは、<b>「ビルド・フェーズ (Build Phases)」</b>タブの<b>「バイナリーをライブラリーとリンク (Link Binary with Libraries)」</b>セクションに自動的に追加されます。</li>
@@ -130,13 +128,13 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                         </ul>
                     </li>
                     <li><b>「ビルド設定 (Build Settings)」</b>タブの<b>「デプロイメント (Deployment)」</b>セクションで、<b>「iOS デプロイメント・ターゲット (iOS Deployment Target)」</b>フィールドに 8.0 以上の値を選択します。</li>
-                    <li><i>オプション:</i> Xcode 7 以降、デフォルトでビットコードが設定されるようになりました。制限事項および要件については、『<a href="additional-information/#working-with-bitcode-in-ios-apps">iOS アプリケーションでのビットコードの処理 (Working with bitcode in iOS apps)</a>』を参照してください。ビットコードを無効にするには、以下のようにします。
+                    <li><i>オプション:</i> Xcode 7 以降、デフォルトでビットコードが設定されるようになりました。 制限事項および要件については、『<a href="additional-information/#working-with-bitcode-in-ios-apps">iOS アプリケーションでのビットコードの処理 (Working with bitcode in iOS apps)</a>』を参照してください。 ビットコードを無効にするには、以下のようにします。
                         <ul>
                             <li><b>「ビルド・オプション (Build Options)」</b>セクションを開きます。</li>
                             <li><b>「ビットコードを有効にする (Enable Bitcode)」</b>を 「<b>いいえ</b>」に設定します。</li>
                         </ul>
                     </li>
-                    <li>Xcode 7 以降、TLS の適用が必須になりました。『<a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">iOS アプリケーションでの TLS セキュア接続の適用</a>』を参照してください。</li>
+                    <li>Xcode 7 以降、TLS の適用が必須になりました。 『<a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">iOS アプリケーションでの TLS セキュア接続の適用</a>』を参照してください。</li>
                 </ul>
 
                 <br/>
@@ -157,7 +155,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
     ```
     - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
-    アプリケーションのバンドル ID を指定するよう求められます。**重要**: バンドル ID **は大/小文字が区別**されます。  
+    アプリケーションのバンドル ID を指定するよう求められます。 **重要**: バンドル ID **は大/小文字が区別**されます。  
 
 `mfpdev app register` CLI コマンドは、まず最初に {{ site.data.keys.mf_server }} に接続してアプリケーションを登録した後、Xcode プロジェクトのルートに **mfpclient.plist** ファイルを生成し、これに {{ site.data.keys.mf_server }} を識別するメタデータを追加します。  
 
@@ -165,7 +163,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
 >
 > 1. {{ site.data.keys.mf_console }} をロードします。
 > 2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。  
-> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.plist** ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
+> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.plist** ファイルをコピーまたはダウンロードします。 画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
 ### セットアップ・プロセスの完了
 {: #completing-the-setup-process }
@@ -184,12 +182,13 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundation```
+import IBMMobileFirstPlatformFoundation
+```
 
 <br>
 #### iOS 9 以上に関する注:
 {: #note-about-ios-9-and-above }
-> Xcode 7 以降、[アプリケーション・トランスポート・セキュリティー (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) がデフォルトで有効になっています。開発中にアプリケーションを実行する場合、ATS ([詳しく読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)) を無効にすることができます。
+> Xcode 7 以降、[アプリケーション・トランスポート・セキュリティー (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) がデフォルトで有効になっています。 開発中にアプリケーションを実行する場合、ATS ([詳しく読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)) を無効にすることができます。
 >   1. Xcode で、右クリックにより**「[プロジェクト]/info.plist ファイル」→「指定して開く」→「ソース・コード」**を選択します。
 >   2. 以下を貼り付けます。
 >
@@ -203,8 +202,7 @@ import IBMMobileFirstPlatformFoundation```
 
 ## Apple watchOS のサポートの追加
 {: #adding-support-for-apple-watchos}
-Apple watchOS 2 以降用に開発している場合、Podfile には、メイン・アプリケーションおよび watchOS 拡張に対応したセクションが含まれている必要があります。
-watchOS 2 の場合の次の例を参照してください。
+Apple watchOS 2 以降用に開発している場合、Podfile には、メイン・アプリケーションおよび watchOS 拡張に対応したセクションが含まれている必要があります。 watchOS 2 の場合の次の例を参照してください。
 
 ```xml
 # Replace with the name of your watchOS application
@@ -243,13 +241,13 @@ SDK のリリースは、SDK の [CocoaPods リポジトリー](https://cocoapod
 {: #mfpclientplist }
 プロジェクトのルートに配置されているこのファイルは、{{ site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-| プロパティー| 説明| 値の例|
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol| {{ site.data.keys.mf_server }} との通信プロトコル。| http または https|
-| host| {{ site.data.keys.mf_server }} のホスト名。| 192.168.1.63|
-| port| {{ site.data.keys.mf_server }} のポート。| 9080|
-| wlServerContext| {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。| /mfp/|
-| languagePreferences| クライアントの SDK システム・メッセージのデフォルト言語を設定します。| en|
+| protocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| host        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
 ## ビットコードと TLS 1.2
 {: #bitcode-and-tls-12 }

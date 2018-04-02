@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 其他信息
-breadcrumb_title: 其他信息
+breadcrumb_title: additional information
 relevantTo: [ios]
 weight: 1
 ---

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Componentes do produto
+title: Componentes do Produto
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 准备使用移动式客户机
-breadcrumb_title: 准备
+breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

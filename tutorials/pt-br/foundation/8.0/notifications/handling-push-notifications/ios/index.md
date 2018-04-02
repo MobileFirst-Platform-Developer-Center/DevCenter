@@ -93,17 +93,18 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 
 ### Client-side
 {: #client-side }
-| Swift Methods                                                                                                | Description                                                             |
-|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | Sends the device token to the server                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+
+| Swift Methods | Description  |
+|---------------|--------------|
+| [`initialize()`](#initialization) | Initializes MFPPush for supplied context. |
+| [`isPushSupported()`](#is-push-supported) | Does the device support push notifications. |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registers the device with the Push Notifications Service.|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Sends the device token to the server |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Subscribes the device to the specified tag(s). |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Retrieves all tags the device is currently subscribed to. |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Unregisters the device from the Push Notifications Service              |
 
 #### Initialization
 {: #initialization }
@@ -135,16 +136,19 @@ if isPushSupported {
 Register the device to the push notifications service.
 
 ```swift
-MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in
     if error == nil {
-        // Successfully registered
+        self.enableButtons()
+        self.showAlert("Registered successfully")
+        print(response?.description ?? "")
     } else {
-        // Registration failed with error
+        self.showAlert("Registrations failed.  Error \(error?.localizedDescription)")
+        print(error?.localizedDescription ?? "")
     }
-})
+}
 ```
 
-`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.
+<!--`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.-->
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
@@ -157,19 +161,23 @@ MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 Retrieve all the available tags from the push notification service.
 
 ```swift
-MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().getTags { (response, error) -> Void in
     if error == nil {
         print("The response is: \(response)")
-        print("The response text is \(response.responseText)")
-        if response.availableTags().isEmpty == true {
-            // Successfully retrieved tags as list of strings
+        print("The response text is \(response?.responseText)")
+        if response?.availableTags().isEmpty == true {
+            self.tagsArray = []
+            self.showAlert("There are no available tags")
         } else {
-            // Successfully retrieved response from server but there where no available tags
+            self.tagsArray = response!.availableTags() as! [String]
+            self.showAlert(String(describing: self.tagsArray))
+            print("Tags response: \(response)")
         }
     } else {
-        // Failed to receive tags with error
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
@@ -178,15 +186,17 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
 Subscribe to desired tags.
 
 ```swift
-var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
+var tagsArray: [String] = ["Tag 1", "Tag 2"]
 
-MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().subscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Subscribed successfully
+        self.showAlert("Subscribed successfully")
+        print("Subscribed successfully response: \(response)")
     } else {
-        // Failed to subscribe with error
+        self.showAlert("Failed to subscribe")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
@@ -195,13 +205,23 @@ MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response
 Retrieve tags the device is currently subscribed to.
 
 ```swift
-MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Successfully received subscriptions as list of strings
-    } else {
-        // Failed to retrieve subscriptions with error
-    }
-})
+MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
+   if error == nil {
+       var tags = [String]()
+       let json = (response?.responseJSON)! as [AnyHashable: Any]
+       let subscriptions = json["subscriptions"] as? [[String: AnyObject]]
+       for tag in subscriptions! {
+           if let tagName = tag["tagName"] as? String {
+               print("tagName: \(tagName)")
+               tags.append(tagName)
+           }
+       }
+       self.showAlert(String(describing: tags))
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 
@@ -213,13 +233,15 @@ Unsubscribe from tags.
 var tags: [String] = {"Tag 1", "Tag 2"};
 
 // Unsubscribe from tags
-MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Unsubscribed successfully
+        self.showAlert("Unsubscribed successfully")
+        print(String(describing: response?.description))
     } else {
-        // Failed to unsubscribe
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 #### Unregister
@@ -227,14 +249,17 @@ MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResp
 Unregister the device from push notification service instance.
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Unregistered successfully
-    } else {
-        self.showAlert("Error \(error.description)")
-        // Failed to unregister with error
-    }
-})
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Disable buttons
+       self.disableButtons()
+       self.showAlert("Unregistered successfully")
+       print("Subscribed successfully response: \(response)")
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 ## Handling a push notification
@@ -245,15 +270,14 @@ Push notifications are handled by the native iOS framework directly. Depending o
 For example if a simple notification is received while the application is running, **AppDelegate**'s `didReceiveRemoteNotification` will be triggered:
 
 ```swift
-func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
     print("Received Notification in didReceiveRemoteNotification \(userInfo)")
-
     // display the alert body
-    if let notification = userInfo["aps"] as? NSDictionary,
+      if let notification = userInfo["aps"] as? NSDictionary,
         let alert = notification["alert"] as? NSDictionary,
         let body = alert["body"] as? String {
-            showAlert(body)
-    }
+          showAlert(body)
+        }
 }
 ```
 

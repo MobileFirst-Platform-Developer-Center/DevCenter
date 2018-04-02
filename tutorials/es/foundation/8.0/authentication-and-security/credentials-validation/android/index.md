@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementación de manejador de desafíos en aplicaciones Android
+title: Implementación del manejador de desafíos en aplicaciones Android
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
@@ -56,7 +56,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-En este ejemplo de `handleChallenge`, una alerta le solicita al usuario que introduzca el código PIN: 
+En este ejemplo de `handleChallenge`, una alerta le solicita al usuario que introduzca el código PIN:
 
 ```java
 @Override
@@ -150,7 +150,7 @@ WLClient client = WLClient.createInstance(this);
 client.registerChallengeHandler(pinCodeChallengeHandler);
 ```
 
-**Nota:** Solo debería crear una instancia de `WLClient` y registrar el manejador de desafíos una vez en todo el ciclo de vida de aplicación. Se recomienda utilizar la clase de la aplicación Android para hacerlo. 
+**Nota:** Solo debería crear una instancia de `WLClient` y registrar el manejador de desafíos una vez en todo el ciclo de vida de aplicación. Se recomienda utilizar la clase de la aplicación Android para hacerlo.
 
 ## Aplicación de ejemplo
 {: #sample-application }

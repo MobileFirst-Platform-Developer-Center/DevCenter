@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Manejo de notificaciones push en Android
+title: Manejo de las notificaciones push en Android
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
@@ -11,22 +11,18 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Antes que las aplicaciones Android puedan manejar las notificaciones push que reciban, es necesario configurar el soporte para Google Play Services.
-Una vez se haya configurado la aplicación, se puede utilizar la API de notificaciones que {{ site.data.keys.product_adj }} proporciona con el propósito de registrar y anular el registro de dispositivos y suscribir y anular la suscripción a etiquetas.
-En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones Android.
-
+Antes que las aplicaciones Android puedan manejar las notificaciones push que reciban, es necesario configurar el soporte para Google Play Services. Una vez se haya configurado la aplicación, se puede utilizar la API de notificaciones que {{ site.data.keys.product_adj }} proporciona con el propósito de registrar y anular el registro de dispositivos y suscribir y anular la suscripción a etiquetas. En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones en aplicaciones Android.
 
 **Requisitos previos: **
 
 * Asegúrese de haber leído las siguientes guías de aprendizaje:
-
     * [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/#installing-a-development-environment)
     * [Adición de {{ site.data.keys.product }} SDK a aplicaciones Android](../../../application-development/sdk/android)
     * [Visión general de notificaciones push](../../)
 * {{ site.data.keys.mf_server }} para ejecutar localmente, o un remotamente ejecutando {{ site.data.keys.mf_server }}.
 * {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador
 
-#### Ir a: 
+#### Ir a:
 {: #jump-to }
 * [Configuración de notificaciones](#notifications-configuration)
 * [API de notificaciones](#notifications-api)
@@ -35,10 +31,8 @@ En esta guía de aprendizaje, aprenderá a manejar el envío de notificaciones e
 
 ## Configuración de notificaciones
 {: #notifications-configuration }
-Cree un nuevo proyecto de Android Studio o utilice uno que ya exista.
-  
+Cree un nuevo proyecto de Android Studio o utilice uno que ya exista.  
 Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está presente en el proyecto, siga las instrucciones en la guía de aprendizaje [Adición de {{ site.data.keys.product }} SDK para aplicaciones Android](../../../application-development/sdk/android).
-
 
 ### Configurar el proyecto
 {: #project-setup }
@@ -48,7 +42,6 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
    com.google.android.gms:play-services-gcm:9.0.2
    ```
    - **Nota:** hay un [defecto de Google conocido](https://code.google.com/p/android/issues/detail?id=212879) que impide el uso de la última versión de Play Services (actualmente la versión 9.2.0). Utilice una versión inferior.
-
 
    Y:
 
@@ -67,9 +60,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
    ```
 
 2. En **Android → app → manifiestos**, abra el archivo `AndroidManifest.xml`.
-
 	* Añada los siguientes permisos en la parte superior de la etiqueta `manifest`:
-
 
 	  ```xml
 	  <!-- Permissions -->
@@ -83,7 +74,6 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
       ```
       
 	* Añada lo siguiente a la etiqueta `application`:
-
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -121,9 +111,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
 
 	  > **Nota:** Asegúrese de sustituir `your.application.package.name` con el nombre de paquete real de su aplicación.
 
-
     * Añada el siguiente `intent-filter` a la actividad de la aplicación.
-
       
       ```xml
       <intent-filter>
@@ -136,18 +124,15 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
 {: #notifications-api }
 ### Instancia de MFPPush
 {: #mfppush-instance }
-Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.
-Esto se puede realizar creando un campo de nivel de clase como, por ejemplo, `private MFPPush push = MFPPush.getInstance();` y a continuación, llamando a `push.<api-call>` a través de la clase. 
+Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.  Esto se puede realizar creando un campo de nivel de clase como, por ejemplo, `private MFPPush push = MFPPush.getInstance();` y a continuación, llamando a `push.<api-call>` a través de la clase.
 
-De forma alternativa puede llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push. 
+De forma alternativa puede llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push.
 
 ### Manejadores de desafíos
 {: #challenge-handlers }
 Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación de seguridad**, debe asegurarse de que existen **manejadores de desafíos** coincidentes registrados antes de utilizar las API de push.
 
-
 > Aprenda más sobre los manejadores de desafíos en la guía de aprendizaje de [validación de credenciales](../../../authentication-and-security/credentials-validation/android).
-
 
 ### Lado del cliente
 {: #client-side }
@@ -165,11 +150,10 @@ Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación
 
 #### Inicialización
 {: #initialization }
-Requerido para la aplicación de cliente para conectarse al servicio MFPPush con el contexto de aplicación correcto. 
+Requerido para la aplicación de cliente para conectarse al servicio MFPPush con el contexto de aplicación correcto.
 
 * Primero se debe llamar al método de la API antes de utilizar cualquier otra API MFPPush.
-
-* Registra la función de retorno de llamada para manejar las notificaciones push recibidas. 
+* Registra la función de retorno de llamada para manejar las notificaciones push recibidas.
 
 ```java
 MFPPush.getInstance().initialize(this);
@@ -177,7 +161,7 @@ MFPPush.getInstance().initialize(this);
 
 #### Está push soportado
 {: #is-push-supported }
-Comprueba si el dispositivo da soporte a las notificaciones push. 
+Comprueba si el dispositivo da soporte a las notificaciones push.
 
 ```java
 Boolean isSupported = MFPPush.getInstance().isPushSupported();
@@ -191,7 +175,7 @@ if (isSupported ) {
 
 #### Registrar el dispositivo
 {: #register-device }
-Registre el dispositivo para el servicio de notificaciones push. 
+Registre el dispositivo para el servicio de notificaciones push.
 
 ```java
 MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
@@ -209,7 +193,7 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
 
 #### Obtener etiquetas
 {: #get-tags }
-Recupere todas las etiquetas disponibles desde el servicio de notificaciones push. 
+Recupere todas las etiquetas disponibles desde el servicio de notificaciones push.
 
 ```java
 MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
@@ -227,7 +211,7 @@ MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
 
 #### Suscribir
 {: #subscribe }
-Suscriba las etiquetas deseadas. 
+Suscriba las etiquetas deseadas.
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -249,7 +233,6 @@ MFPPush.getInstance().subscribe(tags, new MFPPushResponseListener<String[]>() {
 {: #get-subscriptions }
 Recupere las etiquetas a las que el dispositivo está actualmente suscrito.
 
-
 ```java
 MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>() {
     @Override
@@ -266,7 +249,7 @@ MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>
 
 #### Anular la suscripción
 {: #unsubscribe }
-Anule la suscripción de etiquetas. 
+Anule la suscripción de etiquetas.
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -286,7 +269,7 @@ MFPPush.getInstance().unsubscribe(tags, new MFPPushResponseListener<String[]>() 
 
 #### Anular el registro
 {: #unregister }
-Anule el registro del dispositivo de una instancia de servicio de notificaciones push. 
+Anule el registro del dispositivo de una instancia de servicio de notificaciones push.
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -305,18 +288,15 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
 ## Manejar una notificación push
 {: #handling-a-push-notification }
-Con el propósito de manejar una notificación push será necesario configurar un `MFPPushNotificationListener`.
-Esto se puede conseguir implementando uno de los métodos siguientes.
+Con el propósito de manejar una notificación push será necesario configurar un `MFPPushNotificationListener`.  Esto se puede conseguir implementando uno de los métodos siguientes.
 
 ### Primera opción
 {: #option-one }
-En la actividad en que desea manejar las notificaciones push. 
+En la actividad en que desea manejar las notificaciones push.
 
-1. Añada `implements MFPPushNofiticationListener` a la declaración de la clase. 
+1. Añada `implements MFPPushNofiticationListener` a la declaración de la clase.
 2. Establezca la clase para ser el escucha llamando a `MFPPush.getInstance().listen(this)` en el método `onCreate`.
-
 2. Necesitará añadir el siguiente método *required*:
-
 
    ```java
    @Override
@@ -327,11 +307,9 @@ En la actividad en que desea manejar las notificaciones push.
 
 3. En este método recibirá `MFPSimplePushNotification` y podrá manejar la notificación para el comportamiento deseado.
 
-
 ### Segunda opción
 {: #option-two }
 Cree un escucha llamando a `listen(new MFPPushNofiticationListener())` en una instancia de `MFPPush` tal como se indica a continuación:
-
 
 ```java
 MFPPush.getInstance().listen(new MFPPushNotificationListener() {
@@ -349,8 +327,6 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 [
 Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) el proyecto de Android Studio.
 
-
 ### Uso de ejemplo
 {: #sample-usage }
 Siga el archivo README.md de ejemplo para obtener instrucciones.
-

@@ -42,7 +42,7 @@ show_children: true
 {: #administration-tools }
 {{ site.data.keys.mf_console }} 并非管理 {{ site.data.keys.product_adj }} 应用程序的唯一方式。 {{ site.data.keys.product }} 还提供了其他工具，可用于将管理操作合并到构建和部署过程。
 
-有一套 REST 服务可用于执行管理操作。 要获取这些服务的 API 参考文档，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 REST API](../api/rest/administration-service/)。
+有一套 REST 服务可用于执行管理操作。 要获取这些服务的 API 参考文档，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 REST API](../api/rest/admin-apis/)。
 
 使用这套 REST 服务，可以执行与在 {{ site.data.keys.mf_console }} 中相同的操作。 可以管理应用程序和适配器，以及上载应用程序的新版本或禁用旧版本，等等。
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: IBM MobileFirst Foundation Application Center	installieren und konfigurieren
-breadcrumb_title: Application Center	installieren
+title: IBM MobileFirst Foundation Application Center installieren und konfigurieren
+breadcrumb_title: Installing Application Center
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -26,7 +26,7 @@ erforderlich. Weitere Informationen finden Sie unten im Abschnitt "Application C
 Eine Liste der installierten Dateien und Tools finden Sie unter
 [Verteilerweg von {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Application Center mit IBM Installation Manager installieren](#installing-application-center-with-ibm-installation-manager)
@@ -52,7 +52,7 @@ mit Standardeinstellungen erstellen.
 [IBM Installation Manager ausführen](../installation-manager) aus.
 3. Beantworten Sie die Frage **IBM Application Center installieren?** mit **Ja**.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-1 }
 * [Optionale Datenbankerstellung](#optional-creation-of-databases)
 * [Application Center in WebSphere Application Server Network Deployment installieren](#installing-application-center-in-websphere-application-server-network-deployment)
@@ -70,7 +70,7 @@ Installationsprogramms für {{ site.data.keys.mf_server }} erstellt werden.
 
 In den folgenden Abschnitten sind die Prozeduren zum Erstellen der Datenbank für die unterstützten Datenbankmanagementsysteme beschrieben.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-2 }
 
 * [DB2-Datenbank für das Application Center erstellen](#creating-the-db2-database-for-application-center)
@@ -369,7 +369,7 @@ Wie Sie diese Anmeldungen modifizieren können, erfahren Sie unter
 Nachfolgend sind die Ant-Tasks beschrieben, die Sie zum Installieren des
 Application Center verwenden.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-3 }
 
 * [Datenbank für das Application Center mit Ant-Tasks erstellen und konfigurieren](#creating-and-configuring-the-database-for-application-center-with-ant-tasks)
@@ -440,7 +440,7 @@ Schritte 4 bis 7 aus.
 
 7. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht.
 
-Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch "************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden. 
+Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch "************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden.
 
 ### Application-Center-Konsole und -Services mit Ant-Tasks implementieren
 {: #deploying-the-application-center-console-and-services-with-ant-tasks }
@@ -478,8 +478,7 @@ sind nach folgendem Muster benannt:
     configure-appcenter-<App-Server>-<DBMS>.xml
     ```
 
-2. Bearbeiten Sie die
-Ant-Datei. Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei. 
+2. Bearbeiten Sie die Ant-Datei. Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei.
 3. Führen Sie den folgenden Befehl aus, um die
 Application-Center-Konsole und Application-Center-Services in einem Anwendungsserver
 zu implementieren: 
@@ -522,7 +521,7 @@ Application Center (z. B. Version 5.0.6 und Version 6.0.0) verwendet werden kön
 
 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-4 }
 
 * [DB2-Datenbank für das Application Center manuell konfigurieren](#configuring-the-db2-database-manually-for-application-center)
@@ -544,7 +543,7 @@ für die Verwendung dieser Datenbankkonfiguration.
 3. Führen Sie das anwendungsserverspezifische Setup entsprechend der
 folgenden Liste aus.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-5 }
 
 * [DB2-Datenbank für das Application Center manuell einrichten](#setting-up-your-db2-database-manually-for-application-center)
@@ -573,7 +572,7 @@ DB2-Datenbankkonfiguration die richtigen Angaben für Benutzername und Kennwort 
 2. Öffnen Sie wie folgt einen
 DB2-Befehlszeilenprozessor. Verwenden Sie dabei einen
 Benutzer mit der Berechtigung **SYSADM** oder **SYSCTRL**. 
-    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**. 
+    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**.
     * Navigieren Sie auf Linux- oder UNIX-Systemen zu **~/sqllib/bin** und geben Sie `./db2` ein.
 
 3. Geben Sie die folgenden Datenbankmanager- und SQL-Anweisungen ein, um die Datenbank mit dem Namen **APPCNTR** zu erstellen: 
@@ -672,10 +671,12 @@ von der Seite [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?
 Using IBM JCC Driver**.
     * Setzen Sie den **Implementierungstyp** auf **Datenquelle des Verbindungspools**.
     * Setzen Sie die Option **Name** auf **DB2 Using IBM JCC Driver**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Setzen Sie den Klassenpfad auf die JAR-Dateien in dem in Schritt 1 bestimmten Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch den Verweis auf die WebSphere-Application-Server-Variable `${USER_INSTALL_ROOT}`.
     * Geben Sie keinen **Pfad der nativen Bibliothek** an.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Klicken Sie auf
 **Fertigstellen**.
     * Der JDBC-Provider wird erstellt.
@@ -690,13 +691,15 @@ Application-Center-Datenbank:
     * Geben Sie
 **Application-Center-Datenbank** als **Name der Datenquelle** an.
     * Setzen Sie **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Geben Sie Eigenschaften für die Datenquelle ein. Beispiel: 
         * **Treibertyp**: 4
         * **Datenbankname**: APPCNTR
         * **Servername**: localhost
         * **Portnummer**: 50000 (Standard)
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Erstellen Sie JAAS-J2C-Authentifizierungsdaten, wobei Sie für die Containerverbindung
 den DB2-Benutzernamen und das DB2-Kennwort als Eigenschaften angeben. Falls erforderlich, rufen Sie erneut
 den Assistenten für die Datenquellenerstellung auf. Wiederholen Sie dazu die Schritte
@@ -775,7 +778,7 @@ der Apache Derby-Datenbank erstellen Sie die Datenbank und Datenbanktabellen und
 1. Erstellen Sie die Datenbank und die darin enthaltenen Tabellen. Dieser Schritt ist unter [Apache-Derby-Datenbank für das Application Center manuell einrichten](#setting-up-your-apache-derby-database-manually-for-application-center) beschrieben.
 2. Konfigurieren Sie den Anwendungsserver für die Verwendung dieser Datenbankkonfiguration. Fahren Sie mit einem der folgenden Abschnitte fort.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-6 }
 
 * [Apache-Derby-Datenbank für das Application Center manuell einrichten](#setting-up-your-apache-derby-database-manually-for-application-center)
@@ -869,7 +872,8 @@ hinzu.
 - Derby JDBC Provider**.
     * Setzen Sie **Beschreibung** auf **Derby
 JDBC provider for Worklight**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Setzen Sie den **Klassenpfad** auf die JAR-Datei in dem in Schritt 1 bestimmten
 Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch
 den Verweis auf die WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROOT}**.
@@ -881,10 +885,13 @@ den Verweis auf die WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROO
     * Klicken Sie auf **Neu**.
     * Setzen Sie **Name der Datenquelle** auf **Application-Center-Datenbank**.
     * Setzen Sie **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Wählen Sie den vorhandenen JDBC-Provider mit dem Namen **Worklight - Derby JDBC Provider** aus.
-    * Klicken Sie auf **Weiter**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Klicken Sie auf
 **Fertigstellen**.
     * Klicken Sie auf **Speichern**.
@@ -939,7 +946,7 @@ für die Verwendung dieser Datenbankkonfiguration.
 3. Führen Sie das anwendungsserverspezifische Setup entsprechend der
 folgenden Liste aus.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-7 }
 
 * [MySQL-Datenbank für das Application Center manuell einrichten](#setting-up-your-mysql-database-manually-for-application-center)
@@ -986,8 +993,7 @@ WebSphere Application Server Liberty Profile einzurichten und zu konfigurieren. 
 
 > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM
 DB2 oder
 eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
@@ -1032,8 +1038,7 @@ WebSphere Application Server einzurichten und zu konfigurieren. Beenden Sie das 
 
 > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Es wird empfohlen, IBM DB2 oder eine andere
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Es wird empfohlen, IBM DB2 oder eine andere
 von WebSphere Application Server unterstützte Datenbank zu verwenden, um die Vorteile einer Konfiguration mit vollständiger Unterstützung durch den
 IBM Support zu nutzen.
 
@@ -1143,7 +1148,7 @@ für die Verwendung dieser Datenbankkonfiguration.
 3. Führen Sie das anwendungsserverspezifische Setup entsprechend der
 folgenden Liste aus.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-8 }
 
 * [Oracle-Datenbank für das Application Center manuell einrichten](#setting-up-your-oracle-database-manually-for-application-center)
@@ -1284,9 +1289,11 @@ Schritt 1 bestimmten Verzeichnis hinzu.
         | Providertyp | Oracle-JDBC-Treiber |
         | Implementierungstyp | Datenquelle des Verbindungspools |
         | Name | Oracle-JDBC-Treiber |
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Setzen Sie den **Klassenpfad** der Datenbank auf die JAR-Datei in dem in Schritt 1 bestimmten Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch die WebSphere-Application-Server-Variablenreferenz **${USER_INSTALL_ROOT}**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
 
     Der JDBC-Provider wird erstellt.
 
@@ -1298,11 +1305,13 @@ Schritt 1 bestimmten Verzeichnis hinzu.
 JDBC Driver DataSource**.
     * Setzen Sie
 **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Klicken Sie auf
 **Vorhandenen JDBC-Provider auswählen** und wählen Sie in der Liste
 **Oracle JDBC driver** aus.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
     * Setzen Sie die **URL** auf den Wert **jdbc:oracle:thin:@oserver:1521:ORCL**.
 Hier steht **oserver** für den Hostnamen Ihres Oracle-Servers
 (z. B. **localhost**, wenn sich der Server auf derselben Maschine befindet).
@@ -1312,8 +1321,7 @@ Hier steht **oserver** für den Hostnamen Ihres Oracle-Servers
     * Setzen Sie **oracleLogPackageName** auf **oracle.jdbc.driver**.
     * Geben Sie Folgendes an: **user = APPCENTER**.
     * Geben Sie Folgendes an: **password = APPCENTER-Kennwort**.
-    * Klicken Sie auf
-**OK** und speichern Sie die Änderungen. 
+    * Klicken Sie auf **OK** und speichern Sie die Änderungen.
     * Wählen Sie unter **Ressourcen → JDBC → Datenquellen** die neue Datenquelle aus. 
     * Klicken Sie auf
 **Eigenschaften für WebSphere-Datenquelle**.
@@ -1364,7 +1372,7 @@ Sie müssen die Dateien
 appcenterconsole.war und applicationcenter.war im Application Center implementieren.
 Die Dateien befinden sich im Ordner **Produktinstallationsverzeichnis/ApplicationCenter/console**.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-9 }
 
 * [Liberty Profile für das Application Center manuell konfigurieren](#configuring-the-liberty-profile-for-application-center-manually)
@@ -1941,7 +1949,7 @@ WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROOT}** ersetzt.
 Wenn Sie das Application Center in dem dafür vorgesehenen Webanwendungsserver installiert haben, sind zusätzliche Konfigurationsschritte
 erforderlich. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-10 }
 * [Benutzerauthentifizierung für das Application Center konfigurieren](#configuring-user-authentication-for-application-center)
 * [Benutzer mit LDAP verwalten](#managing-users-with-ldap)
@@ -1989,7 +1997,7 @@ finden Sie unter
 [Vorbereitungen
 für die Verwendung des mobilen Clients](../../../appcenter/preparations/).
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-11 }
 * [Java-EE-Sicherheitsrollen in WebSphere Application Server Full Profile konfigurieren](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)
 * [Java-EE-Sicherheitsrollen in WebSphere Application Server Liberty Profile konfigurieren](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)
@@ -2154,7 +2162,7 @@ in den Releases vor
 IBM Worklight Version 6.0 dokumentierten Methoden
 für die Verwendung der LDAP-Authentifizierung konfigurieren.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-12 }
 * [LDAP mit WebSphere Application Server Version 8.x](#ldap-with-websphere-application-server-v8x)
 * [LDAP mit Liberty Profile](#ldap-with-liberty-profile)
@@ -2919,7 +2927,7 @@ dem Application Center herstellen können.| https|
 mit dem Application Center herstellen können.| appcntr.net|
 | ibm.appcenter.proxy.port| Diese Eigenschaft gibt den Port an, der erforderlich ist, damit externe Anwendungen eine Verbindung mit dem Application Center herstellen können.| 443|
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-13 }
 * [Endpunkt von Anwendungsressourcen konfigurieren (Full Profile)](#configuring-the-endpoint-of-application-resources-full-profile)
 * [Endpunkt von Anwendungsressourcen konfigurieren (Liberty Profile)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
@@ -3121,7 +3129,7 @@ in Bezug auf dieses selbst signierte Zertifikat zu ermöglichen. Dieses Verfahre
 geeignet sein. Ausführliche Informationen finden Sie unten im Abschnitt
 [Selbst signierte Zertifikate einer Zertifizierungsstelle in einer Application-Center-Testumgebung verwalten und installieren](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment). 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-14 }
 * [SSL für WebSphere Application Server Full Profile konfigurieren](#configuring-ssl-for-websphere-application-server-full-profile)
 * [SSL für Liberty Profile konfigurieren](#configuring-ssl-for-liberty-profile)
@@ -3376,7 +3384,7 @@ bevor Sie die Anwendungslinks zu Google Play verwenden können.
 Das Stammzertifikat von Apple iTunes muss in den WebSphere-Truststore importiert werden,
 bevor Sie die Anwendungslinks zu iTunes verwenden können.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-15 }
 * [WebSphere Application
 Server für die Unterstützung von Anwendungen in

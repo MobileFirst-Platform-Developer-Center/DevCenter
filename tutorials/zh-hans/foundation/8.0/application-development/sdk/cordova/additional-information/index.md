@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 其他信息
-breadcrumb_title: 其他信息
+breadcrumb_title: Additional information
 relevantTo: [cordova]
 weight: 1
 ---

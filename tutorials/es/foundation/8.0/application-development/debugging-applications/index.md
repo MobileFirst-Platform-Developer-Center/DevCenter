@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Depuración de aplicaciones JavaScript (Cordova, Web)
-breadcrumb_title: Depuración de aplicaciones        
+breadcrumb_title: Debugging applications        
 relevantTo: [javascript]
 weight: 10
 ---

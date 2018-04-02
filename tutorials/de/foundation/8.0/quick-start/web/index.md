@@ -35,18 +35,18 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
 ### 2. Anwendung erstellen und registrieren
 {: #creating-and-registering-an-application }
 Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
- 
+
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**. 
     * Wählen Sie die **Web**-Plattform aus. 
     * Geben Sie als **Anwendungs-ID** den Wert **com.ibm.mfpstarterweb** ein. 
     * Klicken Sie auf **Anwendung registrieren**. 
 
     <img class="gifplayer" alt="Anwendung registrieren" src="register-an-application-web.png"/>
- 
+
 2. Klicken Sie auf die Kachel **Startercode abrufen** und wählen Sie die Webbeispielanwendung zum Download aus. 
 
     <img class="gifplayer" alt="Beispielanwendung herunterladen" src="download-starter-code-web.png"/>
- 
+
 ### 3. Anwendungslogik bearbeiten
 {: #editing-application-logic }
 1. Öffnen Sie das Projekt in einem Editor Ihrer Wahl. 
@@ -83,14 +83,14 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
             }
         );
    ```
-    
+
 ### 4. Adapter implementieren
 {: #deploy-an-adapter }
 Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie
 es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. 
 
 Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.   
-        
+
 1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter. 
 
    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
@@ -108,7 +108,7 @@ folgenden Befehl aus:
 3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die
 {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner
 **[adapter]/target**. 
-    
+
     <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>   
 
 
@@ -116,19 +116,19 @@ folgenden Befehl aus:
 ### 5. Awendung testen
 {: #testing-the-application }
 1. Navigieren Sie in einem **Befehlszeilenfenster** zum Ordner **[Projektstammverzeichnis] → node-server**.
-2. Führen Sie den Befehl `npm start` aus, um die erforderliche Node.js-Konfiguration zu installieren und den Node.js-Server zu starten.
-3. Öffnen Sie die Datei **[Projektstammverzeichnis] → node-server → server.js** und bearbeiten Sie die Variablen **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.
+2. Öffnen Sie die Datei **[Projektstammverzeichnis] → node-server → server.js** und bearbeiten Sie die Variablen **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.
     * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
-    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für Bluemix) verwenden, lauten die Werte in der Regel **https**, **your-server-address** und **443**. 
+    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für IBM Cloud) verwenden, lauten die Werte in der Regel **https**, **Ihre_Serveradresse** und **443**.
+    * Wenn Sie einen Kubernetes-Cluster in IBM Cloud Private verwenden und der Implementierungstyp **NodePort** ist, ist der Portwert in der Regel der **NodePort**, der vom Service im Kubernetes-Cluster zugänglich gemacht wird.
 
    Beispiel:  
-    
+
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // Adresse von Mobile Foundation Server
    var port = 9081; // zu verwendende lokale Portnummer
    var mfpURL = host + ':443'; // Portnummer von Mobile Foundation Server
    ```
-   
+3. Führen Sie den Befehl `npm start` aus, um die erforderliche Node.js-Konfiguration zu installieren und den Node.js-Server zu starten.
 4. Rufen Sie in Ihrem Browser die URL [http://localhost:9081/home](http://localhost:9081/home) auf.
 
 <br>

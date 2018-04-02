@@ -3,7 +3,7 @@ layout: tutorial
 title: JavaScript アダプターでの Java の使用
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: アダプター Maven プロジェクトのダウンロード
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
@@ -20,20 +20,19 @@ weight: 3
 
 ![UsingJavainJS](UsingJavainJS.png)
 
-既存の Java ライブラリーを使用するには、JAR ファイルを依存関係としてプロジェクトに追加します。依存関係の追加方法について詳しくは、[Java アダプターおよび JavaScript アダプターの作成](../../creating-adapters/#dependencies)チュートリアルの『依存関係』セクションを参照してください。
+既存の Java ライブラリーを使用するには、JAR ファイルを依存関係としてプロジェクトに追加します。 依存関係の追加方法について詳しくは、[Java アダプターおよび JavaScript アダプターの作成](../../creating-adapters/#dependencies)チュートリアルの『依存関係』セクションを参照してください。
 
-カスタム Java コードをプロジェクトに追加するには、アダプター・プロジェクトの **src/main** フォルダーに **java** という名前のフォルダーを追加して、そこにパッケージを置きます。このチュートリアルのサンプルでは、`com.sample.customcode` パッケージと Java クラス・ファイル名 `Calculator.java` を使用します。   
+カスタム Java コードをプロジェクトに追加するには、アダプター・プロジェクトの **src/main** フォルダーに **java** という名前のフォルダーを追加して、そこにパッケージを置きます。 このチュートリアルのサンプルでは、`com.sample.customcode` パッケージと Java クラス・ファイル名 `Calculator.java` を使用します。   
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** パッケージ名の先頭は `com`、`org`、または `net` でなければなりません。
-
-
 
 Java クラスにメソッドを追加します。  
 静的メソッドの例 (新規インスタンスを必要としません) とインスタンス・メソッドの例を以下に示します。
 
 ```java
 public class Calculator {
-// Add two integers.
+
+  // Add two integers.
   public static int addTwoIntegers(int first, int second){
     return first + second;
   }
@@ -45,7 +44,7 @@ public class Calculator {
 }
 ```
 
-## アダプターからのカスタム Java クラスの呼び出し 
+## アダプターからのカスタム Java クラスの呼び出し
 {: #invoking-custom-java-classes-from-the-adapter }
 
 カスタム Java コードを作成して必要な JAR ファイルを追加すると、そのファイルを JavaScript コードから呼び出すことができます。
@@ -55,8 +54,8 @@ public class Calculator {
 ```javascript
 function addTwoIntegers(a,b){
     return {
-        		result: com.sample.customcode.Calculator.addTwoIntegers(a,b)
-};
+        result: com.sample.customcode.Calculator.addTwoIntegers(a,b)
+    };
 }
 ```
   

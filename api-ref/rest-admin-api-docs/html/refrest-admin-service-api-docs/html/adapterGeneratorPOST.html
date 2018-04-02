@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" flippy="dippy" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta charset="UTF-8">
+
+  <meta name="dcterms.rights" content="© Copyright IBM Corporation 2017">
+
+
+
+  <meta name="description" content="Retrieves the user configuration of a specific adapter.">
+  <link rel="stylesheet" type="text/css"
+        href="https://www.ibm.com/support/knowledgecenter/api/content/nl/en-us/SSHSCD_6.3.0/com.ibm.worklight.apiref.doc/ibmdita.css"/>
+  <link rel="stylesheet" type="text/css"
+        href="https://www.ibm.com/support/knowledgecenter/api/content/nl/en-us/SSHSCD_6.3.0/com.ibm.worklight.apiref.doc/swg_info_common.css"/>
+  <title>Overview</title>
+
+  <meta name='DC.subject' content='SSHSCD'/>
+  <meta name="IBM.WTMSite" content="ESTKCS"/>
+  <meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS"/>
+  <script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>
+  <style>
+    ul {
+       line-height: 30px;
+    }
+
+    li a {
+       font-weight: bold;
+       color: black;
+    }
+  </style>
+<meta name="copyright" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Adapter configuration (PUT)" />
+<meta name="abstract" content="Sets the user configuration of a specific adapter." />
+<meta name="Description" content="Sets the user configuration of a specific adapter." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="Adapter-configuration--PUT-" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css" />
+<title>Adapter Generator (POST)</title>
+</head>
+<body id="Adapter-generator--POST-"><div role="main">
+<h1 class="title topictitle1" id="ariaid-title1"> Adapter Generator (POST) </h1>
+
+<div role="main">
+    <div class="body refbody">
+
+        <div class="section"><h2 class="title sectiontitle">Description</h2>
+
+            <p class="p">Generates an adapter from an OpenAPI (a.k.a. Swagger) specification of a microservice.</p>
+        </div>
+
+
+        <section class="section"><h2 class="title sectiontitle">Roles</h2>
+
+        <p class="p">Users in the following roles are authorized to perform this operation:</p>
+
+        <ul class="ul">
+        <li class="li"><span class="keyword parmname parmname">mfpadmin</span></li>
+
+        <li class="li"><span class="keyword parmname parmname">mfpdeployer</span></li>
+
+        </ul>
+
+        </section>
+
+
+
+
+        <div class="section"><h2 class="title sectiontitle">Method</h2>
+
+            <p class="p"><code class="ph codeph">POST</code></p></div>
+
+        <div class="section"><h2 class="title sectiontitle">Path</h2>
+
+            <p class="p">
+                <var class="keyword varname">mfpadaptergenerator/adapterapi/generate</var>
+            </p>
+
+        </div>
+        <!--<div class="example"><h2 class="title sectiontitle">Example</h2>-->
+        <!--<pre class="pre codeblock prettyprint"><code>https://www.myserver.com/worklightadmin/otu/1.0/ffabc301/runtimes/myruntime/downloads/adapters/myadapter?locale=de_DE</code></pre>-->
+        <!--</div>-->
+
+            <div class="section"><h2 class="title sectiontitle">Form parameters</h2>
+
+                    <dl class="dl parml">
+                        <dt class="dt pt dlterm">pBody</dt>
+                        <dd class="dd pd">OpenAPI specification file (.json/.yaml).</dd>
+                    </dl>
+
+                    <dl class="dl parml">
+                        <dt class="dt pt dlterm">includesrc</dt>
+                        <dd class="dd pd"><b>Optional</b>. If source code is required, this parameter should be set to true.</dd>
+                    </dl>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="section">
+            <h2 class="title sectiontitle">Consumes</h2>
+
+                <pre class="pre msgblock">multipart/form-data</pre>
+        </div>
+
+        <div class="section">
+            <h2 class="title sectiontitle">Produces</h2>
+
+                <pre class="pre msgblock">application/octet-stream</pre>
+
+        </div>
+        <div class="example"><h2 class="sectiontitle">Example</h2>
+
+        <pre class="codeblock prettyprint"><code>http://www.example.com/mfpadaptergenerator/adapterapi/generate</code></pre>
+        </div>
+
+        <div class="section"><h2 class="title sectiontitle">Responses</h2>
+
+                <p class="p">Downloads an Adapter File/Adapter Source Code</p>
+
+        </div>
+
+        <div class="section"><h2 class="title sectiontitle">Errors</h2>
+
+                <span class="keyword msgnum">403</span>
+                <pre class="pre msgblock"><code>Unauthorized Access</code></pre>
+
+                <span class="keyword msgnum">412</span>
+                <pre class="pre msgblock"><code>Precondition Failed</code></pre>
+
+                <span class="keyword msgnum">500</span>
+                <pre class="pre msgblock"><code>An internal error occurred</code></pre>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

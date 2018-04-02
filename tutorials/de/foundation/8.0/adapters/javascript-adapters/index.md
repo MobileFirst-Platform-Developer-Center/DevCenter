@@ -172,7 +172,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ### Ordner 'js'
 {: #the-js-folder }
 
-Dieser Ordner enthält die JavaScript-Implementierungsdatei für alle Prozeduren, die in der Datei **adapter.xml** deklariert sind. Außerdem kann der Ordner XSL-Dateien mit einem Umwandlungsschema für abgerufene XML-Rohdaten enthalten. Von einem Adapter abgerufene Daten können als Rohdaten oder als vom Adapter vorverarbeitete Daten zurückgegeben werden. In beiden Fällen werden die Daten der Anwendung als **JSON-Objekt** präsentiert.
+Dieser Ordner enthält die JavaScript-Implementierungsdatei für alle Prozeduren, die in der Datei **adapter.xml** deklariert sind. In einem JavaScript-Adapter kann es nur eine JavaScript-Datei geben. Außerdem kann der Ordner XSL-Dateien mit einem Umwandlungsschema für abgerufene XML-Rohdaten enthalten. Von einem Adapter abgerufene Daten können als Rohdaten oder als vom Adapter vorverarbeitete Daten zurückgegeben werden. In beiden Fällen werden die Daten der Anwendung als **JSON-Objekt** präsentiert.
 
 ## Prozeduren von JavaScript-Adaptern
 {: #javascript-adapter-procedures }

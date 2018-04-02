@@ -1,8 +1,10 @@
 ---
-layout: tutorial
-title: REST API for the MobileFirst Server push service
-breadcrumb_title: Push service
-weight: 3
+layout: redirect
+#layout: tutorial
+#title: REST API for the MobileFirst Server push service
+#breadcrumb_title: Push service
+#weight: 3
+new_url: /tutorials/en/foundation/8.0/api/rest/push-apis/
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

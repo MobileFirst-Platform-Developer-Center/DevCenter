@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation de MobileFirst Server pour un environnement de production
-breadcrumb_title: Environnement de production
+breadcrumb_title: Production Environment
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -10,7 +10,7 @@ weight: 2
 Cette section contient des informations détaillées destinées à vous aider à planifier et préparer une installation pour votre propre environnement.  
 Pour plus d'informations sur la configuration de {{ site.data.keys.mf_server }}, voir [Configuration de {{ site.data.keys.mf_server }}](server-configuration).
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 
 * [Prérequis](#prerequisites)

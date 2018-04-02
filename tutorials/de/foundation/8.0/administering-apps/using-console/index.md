@@ -1,7 +1,8 @@
 ---
 layout: tutorial
 title: Anwendungen in der MobileFirst Operations Console verwalten
-breadcrumb_title: Verwaltung in der Konsole
+
+breadcrumb_title: Administrating using the console
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -218,7 +219,9 @@ geschützte Ressource oder ein Zugriffstoken anfordert. Die Nachricht wird nur e
 Verwaltungsnachrichten
 entsprechend den Regions- und Formatvorgaben des Betriebssystems
 und nicht gemäß den konfigurierten Vorgaben für die Anzeigesprache des Browsers oder Betriebssystems angezeigt
-(siehe [Einschränkungen für IE- und Edge-Webanwendungen](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge)). Folgen Sie der beschriebenen Konfigurationsprozedur für die Anzeige der in der
+(siehe [Einschränkungen für IE- und Edge-Webanwendungen](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge)). 
+
+Folgen Sie der beschriebenen Konfigurationsprozedur für die Anzeige der in der
 Konsole definierten Anwendungsverwaltungsnachrichten in mehreren Sprachen. Die Nachrichten werden
 ausgehend von der Ländereinstellung des Gerätes gesendet und müssen den Standards entsprechen, die das Betriebssystem für mobile Geräte für die Angabe länderspezifischer Angaben anwendet. 
 

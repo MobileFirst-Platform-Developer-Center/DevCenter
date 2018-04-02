@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 从 CDN 处理直接更新请求
-breadcrumb_title: CDN 支持
+title: 为来自 CDN 的“直接更新”请求提供服务
+breadcrumb_title: CDN Support
 relevantTo: [cordova]
 weight: 1
 ---

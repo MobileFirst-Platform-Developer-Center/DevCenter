@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementación del manejador de desafíos en las aplicaciones Windows 8.1 Universal y Windows 10 UWP
+title: Implementación del manejador de desafíos en aplicaciones Windows 8.1 Universal y Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
@@ -58,7 +58,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-En este ejemplo de `HandleChallenge`, una alerta le solicita al usuario que introduzca el código PIN: 
+En este ejemplo de `HandleChallenge`, una alerta le solicita al usuario que introduzca el código PIN:
 
 ```csharp
 public override void HandleChallenge(Object challenge)
@@ -102,7 +102,7 @@ Si las credenciales son incorrectas, puede esperar que la infraestructura llame 
 
 ## Envío de la respuesta de comprobación
 {: #submitting-the-challenges-answer }
-Cuando haya recopilado las credenciales de la IU, utilice los métodos `ShouldSubmitChallengeAnswer()` y `GetChallengeAnswer()` de `SecurityCheckChallengeHandler` para enviar una respuesta a la comprobación de seguridad. `ShouldSubmitChallengeAnswer()` devuelve un valor booleano que indica si la respuesta de verificación de identidad debería enviarse a la comprobación de seguridad.En este ejemplo, `PinCodeAttempts` espera una propiedad denominada `pin` que contiene el código PIN enviado:
+Cuando haya recopilado las credenciales de la IU, utilice los métodos `ShouldSubmitChallengeAnswer()` y `GetChallengeAnswer()` de `SecurityCheckChallengeHandler` para enviar una respuesta a la comprobación de seguridad. `ShouldSubmitChallengeAnswer()` devuelve un valor booleano que indica si la respuesta de verificación de identidad debería enviarse a la comprobación de seguridad. En este ejemplo, `PinCodeAttempts` espera una propiedad denominada `pin` que contiene el código PIN enviado:
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()

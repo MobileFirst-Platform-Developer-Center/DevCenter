@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Analytics-REST-API verwenden
-breadcrumb_title: Analytics-REST-API
+breadcrumb_title: Analytics REST API
 relevantTo: [ios,android,cordova]
 weight: 2
 ---

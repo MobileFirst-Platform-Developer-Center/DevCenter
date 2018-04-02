@@ -2,7 +2,7 @@
 layout: tutorial
 title: Application Center 控制台
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -145,7 +145,7 @@ Application Server Full Profile
    ### Windows 10 Universal
    {: windows-10-universal}
    应用程序文件扩展名为 **.appx**。
-   
+
 
 
 4. 单击**下一步**以访问属性来完成应用程序的定义。

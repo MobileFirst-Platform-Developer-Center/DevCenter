@@ -5,7 +5,7 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: 下载 Xcode 项目
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

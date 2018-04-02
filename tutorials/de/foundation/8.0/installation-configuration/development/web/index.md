@@ -27,7 +27,7 @@ Sie können eine der folgenden Methoden anwenden, um den Richtlinienanforderunge
 über einen Anwendungsserver (WebSphere Full/Liberty Profile) bereit, der auch {{ site.data.keys.mf_server }} bereitstellt. 
 - Verwenden Sie Node.js als Proxy, um Anwendungsanforderungen an {{ site.data.keys.mf_server }} weiterzuleiten.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 - [Voraussetzungen](#prerequisites)
 - [Webanwendungsressourcen mit WebSphere Liberty Profile bereitstellen](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
@@ -158,5 +158,5 @@ muss das Web-SDK der {{ site.data.keys.product }} zu den Webanwendungen hinzugef
 
 * Informieren Sie sich darüber, wie das [SDK der {{ site.data.keys.product }}
 zu Webanwendungen hinzugefügt wird](../../../application-development/sdk/web/).
-* Informationen zur Anwendungsentwicklung enthalten die Lernprogramme unter [SDK der {{ site.data.keys.product }} verwenden](../../../application-development/). 
-* Informationen zur Adapterentwicklung findne Sie in der Kategorie [Adapter](../../../adapters/). 
+* Informationen zur Anwendungsentwicklung enthalten die Lernprogramme unter [SDK der {{ site.data.keys.product }} verwenden](../../../application-development/).
+* Informationen zur Adapterentwicklung findne Sie in der Kategorie [Adapter](../../../adapters/).

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Node.js バリデーター
-breadcrumb_title: Node.js バリデーター
+breadcrumb_title: Node.js validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: サンプルのダウンロード
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -61,7 +61,7 @@ npm install passport-mfp-token-validation@8.0.X
  * `authServerUrl`: `localhost:9080` を実際の {{ site.data.keys.mf_server }} IP アドレスとポート番号に置き換えてください。
  * `confClientID`、`confClientPass`: 機密クライアント ID とパスワードを {{ site.data.keys.mf_console }} で定義したものに置き換えてください。
  * `analytics`: Analytics 項目はオプションです。Analytics のイベントを {{ site.data.keys.product }} のログに記録する場合にのみ必要です。  
-`localhost:9080`、`username`、および `password` を Analytics Server の IP アドレス、ポート番号、ユーザー名、およびパスワードに置き換えてください。
+ `localhost:9080`、`username`、および `password` を Analytics Server の IP アドレス、ポート番号、ユーザー名、およびパスワードに置き換えてください。
 
 * `passport.authenticate` を呼び出して、要求を認証します。
 

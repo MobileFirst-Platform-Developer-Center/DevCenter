@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Windows .NET 消息检验器
-breadcrumb_title: Windows .NET 消息检验器
+breadcrumb_title: Windows .NET Message Inspector
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: 下载样本
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -77,6 +77,8 @@ public interface IGetBalanceService
 </service>
 ```
 最后，我们应通过托管程序 `Main` 方法运行：
+
+
 
 ```csharp
 static void Main(string[] args) {

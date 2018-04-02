@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Anwendungen in einem Terminal verwalten
-breadcrumb_title: Verwaltung in einem Terminal
+title: Anwendungen mit einem Terminal verwalten
+breadcrumb_title: Administrating using terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -116,11 +116,11 @@ Das Programm **mfpadm** wird mit folgenden Optionen verwendet:
 | --url| 	 | URL| Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices| Ja | |
 | --secure	 | Boolescher Wert| Angabe, ob Operationen mit Sicherheitsrisiko vermieden werden sollen| Nein | true |
 | --user	 | Name | Benutzername für den Zugriff auf die MobileFirst-Verwaltungsservices| Ja |  | 	 
-| --passwordfile | Datei | Datei mit dem Kennwort für den Benutzer | Nein | |
-| --timeout	     | Zahl | Zeitlimit für den Zugriff auf den gesamten REST-Service in Sekunden | Nein | | 	 
-| --connect-timeout| Zahl| Zeitlimit für das Herstellen einer Netzverbindung in Sekunden| Nein | |
-| --socket-timeout| Zahl| Zeitlimit für das Erkennen des Verlusts einer Netzverbindung in Sekunden| Nein | |
-| --connection-request-timeout| Zahl | Zeitlimit (in Sekunden) für das Abrufen eines Eintrags aus einem Pool für Verbindungsanforderungen| Nein | |
+| --passwordfile | Datei | Datei mit dem Kennwort für den Benutzer | Nein |
+| --timeout	     | Zahl | Zeitlimit für den Zugriff auf den gesamten REST-Service in Sekunden | Nein | 	 
+| --connect-timeout| Zahl| Zeitlimit für das Herstellen einer Netzverbindung in Sekunden| Nein |
+| --socket-timeout| Zahl| Zeitlimit für das Erkennen des Verlusts einer Netzverbindung in Sekunden| Nein |
+| --connection-request-timeout| Zahl | Zeitlimit (in Sekunden) für das Abrufen eines Eintrags aus einem Pool für Verbindungsanforderungen| Nein |
 | --lock-timeout| Zahl| Zeitlimit für das Anfordern einer Sperre in Sekunden| Nein | 2 |
 | --verbose	   | | Ausführliche Ausgabe| Nein | |  
 
@@ -370,7 +370,8 @@ Der Befehl `show user-config` zeigt die Benutzerkonfiguration für eine Laufzeit
 
 Syntax: `show user-config [--xml] [Laufzeitname]`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -380,7 +381,7 @@ Der Befehl `show user-config` kann mit folgenden Optionen nach dem Verb angegebe
 
 | Argument | Beschreibung | Erforderlich | Standardwert |
 |----------|-------------|----------|---------|
-| --xml | Erzeugt Ausgabe nicht im JSON-Format, sondern im XML-Format | Nein | Standardausgabe |
+| --xml | Erzeugt Ausgaben nicht im JSON-Format, sondern im XML-Format | Nein | Standardausgabe |
 
 **Beispiel**  
 
@@ -397,7 +398,8 @@ Der Befehl `set user-config` gibt die Benutzerkonfiguration für eine Laufzeit o
 
 Syntax für die gesamte Konfiguration: `set user-config [Laufzeitname] Datei`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Attribut | Beschreibung |
 |-----------|-------------|
@@ -412,7 +414,7 @@ Der Befehl `set user-config` wird mit folgenden Argumenten verwendet:
 |----------|-------------|
 | Laufzeitname | Name der Laufzeit |
 | Eigenschaft | Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
-| Wert | Wert der Eigenschaft|
+| Wert | Wert der Eigenschaft |
 
 **Beispiele**  
 
@@ -442,16 +444,16 @@ wird mit folgenden Argumenten verwendet:
 
 | Attribut | Beschreibung |
 |-----------|-------------|
-| Laufzeitname| Name der Laufzeit|
+| Laufzeitname | Name der Laufzeit |
 
 Der Befehl `show
 confidential-clients` kann mit folgenden Optionen nach dem
 Verb
 angegeben werden.
 
-| Argument| Beschreibung | Erforderlich | Standardwert |
+| Argument | Beschreibung | Erforderlich | Standardwert |
 |----------|-------------|----------|---------|
-| --xml | Erzeugt Ausgabe nicht im JSON-Format, sondern im XML-Format | Nein | Standardausgabe |
+| --xml | Erzeugt Ausgaben nicht im JSON-Format, sondern im XML-Format | Nein | Standardausgabe |
 
 **Beispiel**
 
@@ -470,15 +472,15 @@ confidential-clients` gibt die Konfigration der vertraulichen Clients an, die au
 zu vertraulichen Clients finden Sie unter
 [Vertrauliche Clients](../../authentication-and-security/confidential-clients). 
 
-Syntax: `set confidential-clients [runtime-name] file`
+Syntax: `set confidential-clients [Laufzeitname] Datei`
 
 Der Befehl
 wird mit folgenden Argumenten verwendet:
 
 | Attribut | Beschreibung |
 |-----------|-------------|
-| runtime-name | Name der Laufzeit |
-| file | Name der JSON- oder XML-Datei mit der neuen Konfiguration |
+| Laufzeitname | Name der Laufzeit |
+| Datei | Name der JSON- oder XML-Datei mit der neuen Konfiguration |
 
 **Beispiel**
 
@@ -534,18 +536,18 @@ Syntax: `list adapters [Laufzeitname]`
 Der Befehl
 wird mit folgenden Argumenten verwendet:
 
-| Argument| Beschreibung |
+| Argument | Beschreibung |
 |----------|-------------|
-| Laufzeitname| Name der Laufzeit|
+| Laufzeitname | Name der Laufzeit |
 
 Der Befehl `list
 adapters` kann mit folgenden Optionen nach dem
 Objekt
 angegeben werden.
 
-| Option| Beschreibung |
+| Option | Beschreibung |
 |--------|-------------|
-| --xml| Erzeugt anstelle der Tabellenausgabe eine XML-Ausgabe |
+| --xml | Erzeugt anstelle der Tabellenausgabe eine XML-Ausgabe |
 
 **Beispiel**  
 
@@ -567,10 +569,10 @@ Syntax: `deploy adapter [Laufzeit] Datei`
 Der Befehl
 wird mit folgenden Argumenten verwendet:
 
-| Argument| Beschreibung |
+| Argument | Beschreibung |
 |----------|-------------|
-| Laufzeitname| Name der Laufzeit|
-| file | Binäre Adapterdatei (.adapter) |
+| Laufzeitname | Name der Laufzeit |
+| Datei | Binäre Adapterdatei (.adapter) |
 
 **Beispiel**
 
@@ -589,22 +591,21 @@ adapter` zeigt Details zu einem Adapter an.
 
 Syntax: `show adapter [Laufzeitname] Adaptername`
 
-Der Befehl
-wird mit folgenden Argumenten verwendet.
+Der Befehl wird mit folgenden Argumenten verwendet.
 
-| Argument| Beschreibung |
+| Argument | Beschreibung |
 |----------|-------------|
-| Laufzeitname| Name der Laufzeit|
-| Adaptername| Name eines Adapters|
+| Laufzeitname | Name der Laufzeit |
+| Adaptername | Name eines Adapters |
 
 Der Befehl `show
 adapter` kann mit folgenden Optionen nach dem
 Objekt
 angegeben werden.
 
-| Option| Beschreibung |
+| Option | Beschreibung |
 |--------|-------------|
-| --xml| Erzeugt anstelle der Tabellenausgabe eine XML-Ausgabe |
+| --xml | Erzeugt anstelle der Tabellenausgabe eine XML-Ausgabe |
 
 **Beispiel**
 
@@ -626,10 +627,10 @@ Syntax: `delete adapter [Laufzeitname] Adaptername`
 Der Befehl
 wird mit folgenden Argumenten verwendet:
 
-| Argument| Beschreibung |
+| Argument | Beschreibung |
 |----------|-------------|
-| Laufzeitname| Name der Laufzeit|
-| Adaptername| Name eines Adapters|
+| Laufzeitname | Name der Laufzeit |
+| Adaptername | Name eines Adapters |
 
 **Beispiel**
 
@@ -646,10 +647,10 @@ auf dem REST-Service [Adapter (DELETE)](http://www.ibm.com/support/knowledgecent
 Das Befehlspräfix `adapter` wird vor dem Verb mit folgenden Argumenten
 angegeben.
 
-| Argument| Beschreibung |
+| Argument | Beschreibung |
 |----------|-------------|
-| Laufzeitname| Name der Laufzeit|
-| Adaptername| Name eines Adapters|
+| Laufzeitname | Name der Laufzeit |
+| Adaptername | Name eines Adapters |
 
 <br/>
 #### Befehl `adapter get binary`
@@ -660,7 +661,7 @@ Syntax: `adapter [Laufzeitname] Adaptername get binary [> Zieldatei]`
 
 Nach dem Verb können die folgenden Optionen angegeben werden.
 
-| Option| Beschreibung | Erforderlich | Standardwert |
+| Option | Beschreibung | Erforderlich | Standardwert |
 |--------|-------------|----------|---------|
 | > Zieldatei | Name der Ausgabedatei | Nein | Standardausgabe |
 
@@ -670,8 +671,7 @@ Nach dem Verb können die folgenden Optionen angegeben werden.
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-Dieser Befehl basiert
-auf dem REST-Service [Export Runtime Resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc). 
+Dieser Befehl basiert auf dem REST-Service [Export Runtime Resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc). 
 
 <br/>
 #### Befehl `adapter show user-config`
@@ -683,9 +683,9 @@ Syntax: `adapter [Laufzeitname] Adaptername show user-config [--xml]`
 
 Nach dem Verb können die folgenden Optionen angegeben werden.
 
-| Option| Beschreibung |
+| Option | Beschreibung |
 |--------|-------------|
-| --xml| Erzeugt Ausgabe nicht im JSON-Format, sondern im XML-Format|
+| --xml | Erzeugt Ausgaben nicht im JSON-Format, sondern im XML-Format |
 
 **Beispiel**
 
@@ -742,7 +742,8 @@ Der Befehl `list apps` gibt eine Liste der in einer Laufzeit implementierten App
 
 Syntax: `list apps [Laufzeitname]`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -768,7 +769,8 @@ Mit dem Befehl `deploy app` wird eine App-Version in einer Laufzeit implementier
 
 Syntax: `deploy app [Laufzeit] Datei`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -789,7 +791,8 @@ Der Befehl `show app` zeigt Einzelheiten einer App in einer Laufzeit an, insbeso
 
 Syntax: `show app [Laufzeitname] App-Name`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -816,7 +819,8 @@ Mit dem Befehl `delete app` wird eine App aus einer Laufzeit, d. h. allen Umgebu
 
 Syntax: `delete app [Laufzeitname] App-Name`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -837,7 +841,8 @@ Mit dem Befehl `show app version` werden Details zu einer App-Version in einer L
 
 Syntax: `show app version [Laufzeitname] App-Name Umgebung Version`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -866,7 +871,8 @@ Mit dem Befehl `delete app version` wird eine App-Version aus einer Laufzeit ent
 
 Syntax: `delete app version [Laufzeitname] App-Name Umgebung Version`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1090,7 +1096,7 @@ Nach dem Verb können die folgenden Optionen angegeben werden.
 
 | Argument | Beschreibung | Erforderlich | Standardwert |
 |----------|-------------|----------|---------|
-| [--xml] | Erzeugt Ausgabe nicht im JSON-Format, sondern im XML-Format | Nein | Standardausgabe |
+| [--xml] | Erzeugt Ausgaben nicht im JSON-Format, sondern im XML-Format | Nein | Standardausgabe |
 
 **Beispiel**
 
@@ -1143,7 +1149,8 @@ Der Befehl `list devices` gibt die Liste der Geräte zurück, die Kontakt mit de
 
 Syntax: `list devices [Laufzeitname] [--query Abfrage]`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1174,7 +1181,8 @@ Mit dem Befehl `remove device` wird der Datensatz eines Gerätes gelöscht, das 
 
 Syntax: `remove device [Laufzeitname] ID`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1204,7 +1212,8 @@ Mit dem Befehl `device set status` wird der Status eines Geräts im Geltungsbere
 
 Syntax: `device [Laufzeitname] ID set status neuer_Status`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1232,7 +1241,8 @@ Mit dem Befehl `device set appstatus` wird der Status eines Geräts hinsichtlich
 
 Syntax: `device [Laufzeitname] ID set appstatus App-Name neuer_Status`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1356,7 +1366,8 @@ Der Befehl `show runtime` zeigt Informationen zu einer gegebenen implementierten
 
 Syntax: `show runtime [Laufzeitname]`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1382,7 +1393,8 @@ Mit dem Befehl `delete runtime` wird eine Laufzeit, einschließlich der zugehör
 
 Syntax: `delete runtime [Laufzeitname] Bedingung`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|
@@ -1403,7 +1415,8 @@ Der Befehl `list farm-members` gibt eine Liste der Farmmemberserver zurück, auf
 
 Syntax: `list farm-members [Laufzeitname]`
 
-Der Befehl wird mit folgenden Argumenten verwendet:
+Der Befehl
+wird mit folgenden Argumenten verwendet:
 
 | Argument | Beschreibung |
 |----------|-------------|

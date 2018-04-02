@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalando o MobileFirst Server para um ambiente de produção
-breadcrumb_title: ambiente de produção
+title: Instalando o servidor MobileFirst em um ambiente de produção
+breadcrumb_title: Production Environment
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -64,6 +64,6 @@ Para Liberty, também é possível usar IBM WebSphere SDK Java Technology Editio
 {: #whats-next }
 
 * [Executando o IBM Installation Manager](installation-manager)
-* [Configurando Bancos de Dados](databases)
-* [Topologias e fluxos de rede](topologies)
-* [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](appserver)
+* [Configurando Bancos de Dados](prod-env/databases)
+* [Topologias e fluxos de rede](prod-env/topologies)
+* [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](prod-env/appserver)

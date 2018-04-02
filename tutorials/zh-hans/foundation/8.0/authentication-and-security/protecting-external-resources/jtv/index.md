@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Java 令牌验证器
-breadcrumb_title: Java 令牌验证器
+title: Java 令牌验证程序
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: 下载样本
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

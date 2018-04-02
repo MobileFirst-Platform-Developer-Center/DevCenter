@@ -47,6 +47,8 @@ Benachrichtigungsanforderungen pro Mediator. Sie können auch Serverprptokolle d
 
 
 
+> **Hinweis:** Die Client-/Serverprotokolldatenfunktionen **Suchen** und **Exportieren** rufen kein Aktionsereignis bei einem Mausklick auf, wenn der Datumsfilter modifiziert wurde. Dies wurde in jüngeren Versionen des Chrome-Browsers beobachtet. Dieses Verhalten ist auf ein Problem mit dem Chrome-Browser und auf eine bekannte Einschränkung zurückzuführen. Das Problem tritt in anderen Browsern und im Chrome-Browser in älteren Versionen als *Version 54.0.2840.71* nicht auf. In den neueren Versionen des Chrome-Browsers können Benutzer das Problem umgehen, indem Sie das erforderliche Datum festlegen und dann vor dem Klicken auf die Schaltfläche "Suchen" / "Exportieren" die Seitenanzeige aktualisieren. Sie können auch die Eingabetaste drücken, um die gewählte Aktion auszuführen. 
+
 ## Analytics-Features
 
 ### App-Analyse

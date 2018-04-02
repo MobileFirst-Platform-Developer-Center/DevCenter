@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 创建安全性检查
-breadcrumb_title: 创建安全性检查
+breadcrumb_title: Creating a security check
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
@@ -40,7 +40,7 @@ weight: 2
 ## 定义安全性检查
 {: #defining-a-security-check }
 
-[创建 Java 或 JavaScript 适配器](../../adapters/creating-adapters/)或者使用现有项。
+[创建 Java 或 JavaScript 适配器](../../adapters/creating-adapters/)或使用现有项。
 
 > 创建 Java 适配器时，缺省模板会假定适配器将提供**资源**。 开发人员可选择将安全性检查和资源捆绑到同一适配器中，或将其分散到不同的适配器中。
 
@@ -65,7 +65,7 @@ weight: 2
 
 * 在**配置文件**选项卡中，您可以查看适配器描述符的服务器副本，包括可定义定制安全性检查及其可配置属性的 `<securityCheckDefinition>` 元素。 您还可以[拉取适配器配置](../../adapters/java-adapters/#custom-properties)，并将其推送到不同的服务器。
 * 在**安全性检查**选项卡中，您可以查看安全性检查定义中公开的所有配置属性的列表。 这些属性将由其配置的 `displayName` 属性的值引用，或者在未配置显示名称时，由 name 属性的值引用。 如果您在定义中设置了属性的描述属性，那么也会显示此描述。 
-对于每个属性，`defaultValue` 属性中配置的值都会显示为当前值。 您可以更改该值，以覆盖安全性检查定义中的缺省值。 您还可以在任何时候复原安全性检查定义中的原始缺省值。 
+对于每个属性，`defaultValue` 属性中配置的值都会显示为当前值。 您可以更改该值，以覆盖安全性检查定义中的缺省值。 您还可以在任何时候复原安全性检查定义中的原始缺省值。
 * 您也可以从 {{ site.data.keys.mf_console }} 的**应用程序**部分选择某个应用程序版本。
 
 ## 实施安全性检查
@@ -135,6 +135,8 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 <br/>
 可以在几个级别上配置这些属性：
 
+
+
 ### adapter.xml
 {: #adapterxml }
 在 Java 适配器的 **adapter.xml** 文件中，可在 `<securityCheckDefinition>` 内添加一个或多个 `<property>` 元素。  
@@ -165,7 +167,7 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 
 1. 从**命令行窗口**导航至项目的根文件夹，然后运行 `mfpdev adapter pull`。
 2. 打开位于 **project-folder\mobilefirst** 文件夹中的配置文件。
-3. 编辑此文件并查找 `securityCheckDefinitions` 对象。 在此对象中，查找或创建命名为所选安全性检查的对象。 在安全性检查对象内，查找或添加属性对象。 对于要配置的每个可用配置属性，请在属性对象内添加一对配置属性名称和值。 例如： 
+3. 编辑此文件并查找 `securityCheckDefinitions` 对象。 在此对象中，查找或创建命名为所选安全性检查的对象。 在安全性检查对象内，查找或添加属性对象。 对于要配置的每个可用配置属性，请在属性对象内添加一对配置属性名称和值。 例如：
 
    ```xml
    "securityCheckDefinitions": {
@@ -177,7 +179,7 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
         }
    }
    ```
-   
+
 4. 运行以下命令来部署更新的配置 JSON 文件：`mfpdev adapter push`。
 
 ### {{ site.data.keys.mf_console }} - 应用程序
@@ -204,7 +206,7 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
         }
    }
    ```
-   
+
 4. 运行以下命令来部署更新的配置 JSON 文件：`mfpdev app push`。
 
 ## 预定义的安全性检查

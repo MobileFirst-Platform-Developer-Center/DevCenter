@@ -1,33 +1,32 @@
 ---
 layout: tutorial
-title: Bluemix サービス上での Mobile Foundation の使用
-breadcrumb_title: Mobile Foundation サービス
+title: IBM Cloud 上での Mobile Foundation サービスの使用
+breadcrumb_title: Setting up Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このチュートリアルでは、{{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) サービスを使用して Bluemix 上で {{ site.data.keys.mf_server }} インスタンスをセットアップするための手順を段階的に説明します。  
-{{ site.data.keys.mf_bm_short }} は、 **Liberty for Java ランタイム** 上で MobileFirst Foundation v8.0 のスケーラブルな開発者環境または実稼働環境を素早く容易に稼働できるようにする、Bluemix サービスの 1 つです。
+このチュートリアルでは、{{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) サービスを使用して IBM Cloud 上で {{ site.data.keys.mf_server }} インスタンスをセットアップするための手順を段階的に説明します。  
+{{ site.data.keys.mf_bm_short }} は、 **Liberty for Java ランタイム** 上で Mobile Foundation v8.0 のスケーラブルな開発者環境または実稼働環境を素早く容易に稼働できるようにする、IBM Cloud サービスの 1 つです。
 
 {{ site.data.keys.mf_bm_short }} サービスには、以下のプラン・オプションがあります。
 
-1. **開発者**: このプランでは、{{ site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。このプランでは、外部データベースの使用はサポートされず、複数のノードも定義されません。このプランは*開発およびテストのみに制限されます*。サーバー・インスタンスを使用して、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。このプランでは、デフォルトで、{{ site.data.keys.mf_analytics_service }} サービスが追加されます。
+1. **開発者**: このプランでは、{{ site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。 Liberty for Java の料金は別に請求され、このプランには含まれていません。このプランでは外部データベースの使用がサポートされておらず、開発とテストに制限されています。{{ site.data.keys.mf_bm_short }} サーバーの*開発者プラン* のインスタンスでは、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。ただし、接続デバイスの数は 1 日当たり 10 台に制限されます。このプランには、{{site.data.keys.mf_analytics_service }} サービス・インスタンスも含まれています。使用量が Mobile Analytics の無料層エンタイトルメントを超過する場合には、Mobile Analytics の基本プランに従って料金が適用されます。
 
     > **注:** 「開発者」プランでは、永続的なデータベースは提供されません。したがって、[トラブルシューティング・セクション](#troubleshooting)にある説明のとおりに、必ず構成をバックアップしてください。
 
+2. **開発者商用**: このプランでは {{ site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。 このプランでは、**DB2 on Cloud** サービス・インスタンスが必要です。DB2 on Cloud サービス・インスタンスは、別途作成および請求されます。このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。 料金は、ご使用の環境の合計サイズによって異なります。 オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
 
+3. **デバイスごとの商用 (Professional Per Device)**: このプランでは、ユーザーは実動モバイル・アプリケーションを作成、テスト、および実行できます。1 日に接続されたクライアント・デバイスの数に基づいて請求されます。このプランは、大規模なデプロイメントと高可用性をサポートします。このプランでは、別途作成および請求される IBM DB2 on Cloud サービス・インスタンスが必要です。このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Liberty for Java 上でプロビジョンされます。Liberty for Java の料金は別途請求され、このプランの一部には含まれません。オプションで、Mobile Analytics サービス・インスタンスを追加できます。Mobile Analytics サービスは別途請求されます。
 
-2. **開発者商用**: このプランでは {{ site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。このプランでは、**dashDB OLTPサービス** の準備が整っている必要があります。dashDB サービスは別に作成され請求されます。このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。料金は、ご使用の環境の合計サイズによって異なります。オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
+4. **1 つの商用アプリケーション**: このプランでは、モバイル・アプリケーションのユーザーまたはデバイスの数に関係なく、ユーザーは予測可能な料金で単一のモバイル・アプリケーションを作成および管理できます。単一のモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーにすることができます。このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Cloud Foundry アプリケーションとして Liberty for Java 上の拡張が容易な環境にプロビジョンされます。Liberty for Java の料金は別途請求され、このプランの一部には含まれません。このプランでも、別途作成および請求される IBM DB2 on Cloud サービス・インスタンスが必要です。オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービス・インスタンスを追加できます。 Mobile Analytics サービスは別途請求されます。
 
-3. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。大規模のデプロイメントと高可用性がサポートされます。このプランでは、**dashDB OLTPサービス** の準備が整っている必要があります。dashDB サービスは別に作成され請求されます。料金は、ご使用の環境の合計サイズによって異なります。オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
+5. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。 大規模のデプロイメントと高可用性がサポートされます。 このプランでは、**DB2 on Cloud** サービス・インスタンスが必要です。DB2 on Cloud サービス・インスタンスは、別途作成および請求されます。料金は、ご使用の環境の合計サイズによって異なります。 オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
+>_**容量ごとの商用**プランは、現在非推奨になりました。_
 
-4. **1 つの商用アプリケーション**: このプランでは、{{ site.data.keys.mf_server }} が Liberty for Java ランタイム上のスケーラブルな Cloud Foundry アプリケーションにプロビジョンされます。また、このプランには、別に作成され請求される dashDB データベース・サービスも必要です。このプランでは、1 つのモバイル・アプリケーションの作成と管理を行うことができます。この 1 つのモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーで構成できます。 オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
-
-> 選択可能なプランとそれぞれの請求について詳しくは、[Bluemix.net のサービス・ページを参照してください](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)。
-
-
+> 使用可能なプランとそれぞれの請求について詳しくは、[サービスの詳細](https://console.bluemix.net/catalog/services/mobile-foundation/)を参照してください。
 
 #### ジャンプ先:
 {: #jump-to}
@@ -47,9 +46,9 @@ weight: 1
 {: #setting-up-the-mobile-foundation-service }
 使用可能なプランをセットアップするには、まず最初に以下のステップに従います。
 
-1. [bluemix.net](http://bluemix.net) をロードし、ログインして、**「カタログ」**をクリックします。
+1. [bluemix.net](http://bluemix.net) にアクセスし、ログインして**「カタログ」**をクリックします。
 2. **「Mobile Foundation」**を検索し、表示されたタイル・オプションをクリックします。
-3. *オプション*。サービス・インスタンスに付けるカスタム名を入力するか、またはデフォルトで示された名前を使用します。
+3. *オプション*。 サービス・インスタンスに付けるカスタム名を入力するか、またはデフォルトで示された名前を使用します。
 4. 目的の価格設定プランを選択し、**「作成」**をクリックします。
 
     <img class="gifplayer" alt="{{ site.data.keys.mf_bm_short }} サービス・インスタンスの作成" src="service-creation.png"/>
@@ -59,7 +58,7 @@ weight: 1
 
 {{ site.data.keys.mf_bm_short }} サービスを作成すると、{{ site.data.keys.mf_server }} が作成されます。
   * {{ site.data.keys.mf_server }} に即座にアクセスして操作することができます。
-  * CLI を使用して {{ site.data.keys.mf_server }} にアクセスするには資格情報が必要です。これは、Bluemix コンソールの左側のナビゲーション・パネルにある**「サービス資格情報」**をクリックすると表示されます。
+  * CLI を使用して {{ site.data.keys.mf_server }} にアクセスするには資格情報が必要です。これは、IBM Cloud コンソールの左側のナビゲーション・パネルにある**「サービス資格情報」**をクリックすると表示されます。
 
   ![{{ site.data.keys.mf_bm_short }} のイメージ](overview-page-new.png)
 
@@ -68,8 +67,6 @@ weight: 1
 1. これらのプランには、外部[dashDB トランザクション・データベース・インスタンス](https://console.ng.bluemix.net/catalog/services/dashdb/)が必要です。
 
     > [dashDB データベース・インスタンスのセットアップ]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/)についてもっとよく知る
-
-
 
     既存の dashDB サービス・インスタンス (DashDB Enterprise Transactional 2.8.500 または Enterprise Transactional 12.128.1400) がある場合は、**「既存のサービスの使用」**オプションを選択して、次のように資格情報を入力します。
 
@@ -83,7 +80,7 @@ weight: 1
     - サーバー構成については、基本レベルをそのまま保持して **「基本サーバーの始動」**をクリックするか、または
     - [「設定」タブ](#advanced-server-configuration)でサーバー構成を更新して、**「拡張サーバーの始動」**をクリックします。
 
-    このステップの間に、{{ site.data.keys.mf_bm_short }} サービス用として Cloud Foundry アプリケーションが生成され、MobileFirst Foundation 環境が初期化されます。このステップは 5 分から 10 分かかることがあります。
+    このステップの間に、{{ site.data.keys.mf_bm_short }} サービス用として Cloud Foundry アプリケーションが生成され、MobileFirst Foundation 環境が初期化されます。 このステップは 5 分から 10 分かかることがあります。
 
 3. インスタンスの準備ができれば、[サービスを使用](#using-the-mobile-foundation-service)できます。
 
@@ -99,7 +96,7 @@ weight: 1
 **「Analytics の追加」**をクリックして、サーバー・インスタンスに {{ site.data.keys.mf_analytics_service }} サポートを追加します。
 『[分析サポートの追加](#adding-analytics-support)』セクションで詳しく学びます。
 
-**「コンソールの起動」**をクリックして {{ site.data.keys.mf_console }} を開きます。デフォルトのユーザー名は「admin」で、「目」アイコンをクリックすることでパスワードを明らかにすることができます。
+**「コンソールの起動」**をクリックして {{ site.data.keys.mf_console }} を開きます。 デフォルトのユーザー名は「admin」で、「目」アイコンをクリックすることでパスワードを明らかにすることができます。
 
 ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](dashboard.png)
 
@@ -129,11 +126,9 @@ weight: 1
 
 ## {{ site.data.keys.mf_analytics_service }} サポートの追加
 {: #adding-analytics-support }
-サービスの「ダッシュボード」ページから**「Analytics の追加」**をクリックすることで、{{ site.data.keys.mf_analytics_service }} サポートを {{ site.data.keys.mf_bm_short }} サービス・インスタンスに追加できます。このアクションにより、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスがプロビジョンされます。
+サービスの「ダッシュボード」ページから**「Analytics の追加」**をクリックすることで、{{ site.data.keys.mf_analytics_service }} サポートを {{ site.data.keys.mf_bm_short }} サービス・インスタンスに追加できます。 このアクションにより、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスがプロビジョンされます。
 
 >{{ site.data.keys.mf_bm_short }} サービスの**開発者**プラン・インスタンスを作成または再作成すると、デフォルトで、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスが追加されます。
-
-
 
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
@@ -145,22 +140,20 @@ weight: 1
 ##  {{ site.data.keys.mf_analytics_service }} サポートの削除
 {: #removing-analytics-support}
 
-サービスの「ダッシュボード」ページから**「Analytics の削除」**をクリックすると、{{ site.data.keys.mf_bm_short }} サービス・インスタンスの {{ site.data.keys.mf_analytics_service }} サポートを削除できます。このアクションにより、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスが削除されます。
+サービスの「ダッシュボード」ページから**「Analytics の削除」**をクリックすると、{{ site.data.keys.mf_bm_short }} サービス・インスタンスの {{ site.data.keys.mf_analytics_service }} サポートを削除できます。 このアクションにより、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスが削除されます。
 
 操作が完了したら、ブラウザー上で {{ site.data.keys.mf_console }} ページを再ロードします。
 
 ##  IBM Containers にデプロイされた Analytics から Analytics サービスへの切り替え
 {: #switching-from-analytics-container-to-analytics-service}
 
->**注:** {{ site.data.keys.mf_analytics_service }} を削除すると、使用可能なすべての Analytics データが削除されます。このデータは、新しい {{ site.data.keys.mf_analytics_service }} インスタンスでは使用できません。
+>**注:** {{ site.data.keys.mf_analytics_service }} を削除すると、使用可能なすべての Analytics データが削除されます。 このデータは、新しい {{ site.data.keys.mf_analytics_service }} インスタンスでは使用できません。
 
-
-
-ユーザーはサービス・ダッシュボードから**「Analytics の削除」**ボタンをクリックして、現在のコンテナーを削除できます。これにより Analytics インスタンスが削除され、**「Analytics の追加」**ボタンが使用可能になり、ユーザーはこれをクリックして新しい {{ site.data.keys.mf_analytics_service }} サービス・インスタンスを追加できます。
+ユーザーはサービス・ダッシュボードから**「Analytics の削除」**ボタンをクリックして、現在のコンテナーを削除できます。 これにより Analytics インスタンスが削除され、**「Analytics の追加」**ボタンが使用可能になり、ユーザーはこれをクリックして新しい {{ site.data.keys.mf_analytics_service }} サービス・インスタンスを追加できます。
 
 ## {{ site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
-{{ site.data.keys.mf_bm }} サービスの更新は、人的介入を必要とせず自動的に適用されます。ただし、更新を実行するための同意だけはユーザーが行います。更新が使用可能になると、指示とアクション・ボタンが含まれたバナーが、サービスの「ダッシュボード」ページに表示されます。
+{{ site.data.keys.mf_bm }} サービスの更新は、人的介入を必要とせず自動的に適用されます。ただし、更新を実行するための同意だけはユーザーが行います。 更新が使用可能になると、指示とアクション・ボタンが含まれたバナーが、サービスの「ダッシュボード」ページに表示されます。
 
 ## サーバー・ログへのアクセス
 {: #accessing-server-logs }
@@ -169,8 +162,8 @@ weight: 1
 **シナリオ 1:**
 
 1. ホスト・マシンをセットアップします。<br/>
-Bluemix Cloud Foundry アプリケーションを管理するには、Cloud Foundry CLI をインストールする必要があります。<br/>
-[Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases) をインストールします。
+   IBM Cloud Cloud Foundry アプリケーションを管理するには、Cloud Foundry CLI をインストールする必要があります。<br/>
+   [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases) をインストールします。
 2. 端末を開き、*組織*および*スペース*に `cf login` を使用してログインします。
 3. CLI で次のコマンドを実行します。
 ```bash
@@ -202,7 +195,7 @@ cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
 
 ## トラブルシューティング
 {: #troubleshooting }
-開発者プランでは永続的なデータベースが提供されず、これがデータ喪失につながる可能性があります。このような場合に素早く正常動作に戻せるように、以下のベスト・プラクティスに従ってください。
+開発者プランでは永続的なデータベースが提供されず、これがデータ喪失につながる可能性があります。 このような場合に素早く正常動作に戻せるように、以下のベスト・プラクティスに従ってください。
 
 * 次のようなサーバー・サイド・アクションを行うたび:
     * アダプターのデプロイや、アダプターの何らかの構成またはプロパティー値の更新

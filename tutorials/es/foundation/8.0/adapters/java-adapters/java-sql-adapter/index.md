@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adaptador Java SQL
-breadcrumb_title: Adaptador SQL
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -60,6 +60,8 @@ Edite el archivo adater.xml y añada las siguientes propiedades:
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Nota:** Los elementos de propiedades de configuración se deben ubicar siempre *debajo* del elemento `JAXRSApplicationClass`.
   
 Aquí se definen los valores de conexión y se les proporciona un valor predeterminado, de forma que se puedan utilizar más tarde en la clase AdapterApplication.
+
+
 ## Implementación de SQL en la clase de Recurso del adaptador
 {: #implementing-sql-in-the-adapter-resource-class }
 

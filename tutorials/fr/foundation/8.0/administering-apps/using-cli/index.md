@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administration d'applications via un terminal
-breadcrumb_title: Administration à l'aide d'un terminal
+breadcrumb_title: Administrating using terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -24,7 +24,7 @@ Exemple pour android : Ici nous définissons le type de validation sur `dynamic`
   mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp test android 1.0 set authenticity-validation dynamic
 ```
 >
-2.Pour réinitialiser les données à l'aide de la commande ci-desous, qui efface l'empreinte digitale de l'application :
+2.Pour réinitialiser les données à l'aide de la commande ci-dessous, qui efface l'empreinte digitale de l'application :
 ```bash
   mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
 ```
@@ -52,8 +52,8 @@ Vous pouvez exécuter des opérations d'administration à l'aide d'{{ site.data.
 La tâche Ant **mfpadm**, le programme mfpadm et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que celles présentées dans les cas d'utilisation suivants :
 
 * Elimination d'erreurs d'opérateur dans des opérations répétitives, ou
-* exploitation en dehors des heures de travail normales de l'opérateur, ou
-* configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
+* Exploitation en dehors des heures de travail normales de l'opérateur, ou
+* Configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
 
 Le programme **mfpadm** et la tâche Ant mfpadm sont plus faciles à utiliser et fournissent une meilleure génération de rapports d'erreurs que les services REST. Comparé à la tâche Ant mfpadm, le programme mfpadm présente l'avantage d'être plus facile à intégrer lorsque l'intégration à des commandes de système d'exploitation est déjà disponible. De plus, il convient davantage pour une utilisation interactive.
 
@@ -1245,7 +1245,7 @@ Cette commande est basée sur le service REST [Runtimes (GET)](http://www.ibm.co
 
 #### Commande `show runtime`
 {: #the-show-runtime-command }
-La commande `show runtime` affiche des informations sur un environnement d'exécution déployé spécifique.
+La commande `show runtime` affiche des informations dans un environnement d'exécution déployé spécifique.
 
 Syntaxe : `show runtime [runtime-name]`
 

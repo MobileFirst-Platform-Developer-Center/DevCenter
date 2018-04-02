@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Vorhandene Adapter auf MobileFirst Server Version 8.0.0 umstellen
-breadcrumb_title: Vorhandene Adapter migrieren
+breadcrumb_title: Migrating existing adapters
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

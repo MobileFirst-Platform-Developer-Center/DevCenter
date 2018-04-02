@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Cordova 애플리케이션용 UI 개발
-breadcrumb_title: UI 개발
+title: Cordova 애플리케이션의 UI 개발
+breadcrumb_title: Developing UI
 relevantTo: [cordova]
 weight: 1
 ---
@@ -16,14 +16,14 @@ weight: 1
 MobileFirst Eclipse 플러그인을 사용하여 Cordova 애플리케이션의 UI를 개발하려면 다음을 수행하십시오.
 
 1. Eclipse를 다운로드하십시오.
-2. 마켓플레이스에서 [Thym](http://marketplace.eclipse.org/content/eclipse-thym) 플러그인을 설치하십시오.
-3. 마켓플레이스에서 [MobileFirst 플랫폼 플러그인](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio)을 설치하십시오.
+2. Eclipse 마켓플레이스에서 [Thym](http://marketplace.eclipse.org/content/eclipse-thym) 플러그인을 설치하십시오.
+3. Eclipse 마켓플레이스에서 [MobileFirst 플랫폼 플러그인](http://marketplace.eclipse.org/content/ibm-mobilefirst-foundation-studio)을 설치하십시오.
 
 
 ## WYSIWYG 편집기
 {: #wysiwyg-editor }
-기본 WYSIWYG 편집기는 개발자의 편의를 위해 Mobile 위젯용 MobileFirst 플랫폼 Eclipse 플러그인과 함께 제공됩니다.
-이 편집기에서는 사용자가 단순한 단추 또는 텍스트 상자와 기타 HTML 위젯을 끌어서 놓을 수 있는 기본 팔레트를 제공합니다. 이 도구는 사용자가 기본 Cordova 애플리케이션을 신속하게 개발하는 데 사용할 수 있는 Rapid Mobile Application Development 도구입니다.
+WYSIWYG 편집기는 개발자의 편의를 위해 HTML UI 위젯용 MobileFirst 플랫폼 Eclipse 플러그인과 함께 제공됩니다.
+이 편집기에서는 단추 또는 텍스트 상자와 같은 UI 위젯과 기타 HTML 위젯을 끌어서 놓을 수 있는 기본 팔레트를 제공합니다. 이 도구는 사용자가 Cordova 애플리케이션을 신속하게 개발하는 데 사용할 수 있는 Rapid Mobile Application Development 도구입니다.
 
 ![WYSIWYG 편집기](wysiwyg-editor.png)
 
@@ -88,3 +88,4 @@ jQuery는 신속한 웹 개발을 위해 HTML 문서 플로우, 이벤트 핸들
           	</body>
       </html>
     ```
+HTML 파일에서 jQuery Mobile에 대한 참조를 추가한 후에는 Eclipse에서 파일을 닫고 다시 여십시오. 그러면 HTML 캔버스에 끌어서 놓을 수 있는 팔레트 보기에 jQuery Mobile 위젯이 표시됩니다.

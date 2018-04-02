@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Recopilación de registro del lado del cliente
-breadcrumb_title: Recopilación de registro del lado del cliente
+title: Recopilación del registro del lado del cliente
+breadcrumb_title: Client-side log collection
 relevantTo: [ios,android,javascript]
 weight: 7
 ---

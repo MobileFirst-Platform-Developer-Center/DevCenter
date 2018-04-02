@@ -25,7 +25,7 @@ IDE (Eclipse、IntelliJ、または類似のもの) を使用して、Java ア�
 ## アダプターのテスト
 {: #testing-adapters }
 
-アダプターは REST インターフェースを介して使用可能です。つまり、リソースの URL が分かっていれば、Postman などの HTTP ツールを使用して要求をテストし、適宜 `URL` パラメーター、`path` パラメーター、`body` パラメーター、または `headers` を渡すことができるということです。
+アダプターは REST インターフェースを介して使用可能です。 つまり、リソースの URL が分かっていれば、Postman などの HTTP ツールを使用して要求をテストし、適宜 `URL` パラメーター、`path` パラメーター、`body` パラメーター、または `headers` を渡すことができるということです。
 
 アダプター・リソースへのアクセスに使用する URL の構造は次のとおりです。
 
@@ -36,12 +36,12 @@ IDE (Eclipse、IntelliJ、または類似のもの) を使用して、Java ア�
 {: #passing-parameters }
 
 * Java アダプターを使用しているときは、アダプターをどのように構成したかに応じて、パラメーターを URL、本文、フォームなどで渡すことができます。
-* JavaScript アダプターを使用しているときは、パラメーターは `params=["param1", "param2"]` として渡します。つまり、JavaScript プロシージャーは、**順に並べられた、名前のない値の配列**でなければならない `params` というただ 1 つのパラメーターしか受け取りません。このパラメーターは、`Content-Type: application/x-www-form-urlencoded` を使用して、URL (`GET`) または body (`POST`) のいずれかに置くことができます。
+* JavaScript アダプターを使用しているときは、パラメーターは `params=["param1", "param2"]` として渡します。 つまり、JavaScript プロシージャーは、**順に並べられた、名前のない値の配列**でなければならない `params` というただ 1 つのパラメーターしか受け取りません。 このパラメーターは、`Content-Type: application/x-www-form-urlencoded` を使用して、URL (`GET`) または body (`POST`) のいずれかに置くことができます。
 
 ### セキュリティーの取り扱い
 {: #handling-security }
 
-{{ site.data.keys.product }} のセキュリティー・フレームワークでは、アダプター・リソースに明示的にスコープが割り当てられていない場合でも、そのリソース用のアクセス・トークンが必要です。そのため、セキュリティーを明示的に使用不可にした場合を除き、エンドポイントは常に保護されます。
+{{ site.data.keys.product }} のセキュリティー・フレームワークでは、アダプター・リソースに明示的にスコープが割り当てられていない場合でも、そのリソース用のアクセス・トークンが必要です。 そのため、セキュリティーを明示的に使用不可にした場合を除き、エンドポイントは常に保護されます。
 
 Java アダプターでセキュリティーを使用不可にするには、`OAuthSecurity` アノテーションをメソッド/クラスに付加します。
 
@@ -77,14 +77,12 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 1.  `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを指定して、`http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を行うには、HTTP クライアント (Postman) を使用します。
 
     - `grant_type` - 値を `client_credentials` に設定します。
-    - `scope` - 値をリソースの保護スコープに設定します。リソースに保護スコープが割り当てられていない場合は、このパラメーターを省略して、デフォルトのスコープ (`RegisteredClient`) を適用します。詳しくは、[スコープ](../../authentication-and-security/#scopes)を参照してください。
+    - `scope` - 値をリソースの保護スコープに設定します。 リソースに保護スコープが割り当てられていない場合は、このパラメーターを省略して、デフォルトのスコープ (`RegisteredClient`) を適用します。 詳しくは、[スコープ](../../authentication-and-security/#scopes)を参照してください。
 
     ![Postman の本文構成のイメージ](Body_configuration.png)
 
 2.  `Basic authentication` を使用し、機密クライアント ID (「test」) と秘密鍵 (「test」) を指定して、`authorization header` を追加します。
     > 機密クライアントについて詳しくは、[機密クライアント](../../authentication-and-security/confidential-clients)を参照してください。
-
-
 
     ![Postman の許可構成のイメージ](Authorization_configuration.png)
 
@@ -103,7 +101,7 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 #### 要求の送信
 {: #sending-request }
 
-アダプター・エンドポイントに対する以後の要求では、`Authorization` という名前の HTTP ヘッダーと、前に受け取った値 (Bearer で始まる) を追加します。セキュリティー・フレームワークは、リソースを保護しているセキュリティー・チャレンジをスキップします。
+アダプター・エンドポイントに対する以後の要求では、`Authorization` という名前の HTTP ヘッダーと、前に受け取った値 (Bearer で始まる) を追加します。 セキュリティー・フレームワークは、リソースを保護しているセキュリティー・チャレンジをスキップします。
 
   ![テスト・トークンとともに Postman を使用したアダプター要求](Adapter-response.png)
 
@@ -129,11 +127,9 @@ Swagger にアクセスするには、次のようにします。
 
 要求にテスト・トークンを追加して、リソースを保護しているセキュリティー・チャレンジをセキュリティー・フレームワークがスキップできるようにするには、エンドポイントの操作部の右隅にある**「オン/オフ・スイッチ」**ボタンをクリックします。
 
-Swagger UI に対して認可するスコープを選択するように求められます (テスト目的の場合、すべて選択することができます)。初めて Swagger UI を使用する場合は、機密クライアント ID と秘密鍵を指定してログインするように要求されることがあります。その場合は、**「許可されるスコープ」**に `*` を指定した新規機密クライアントを作成する必要があります。
+Swagger UI に対して認可するスコープを選択するように求められます (テスト目的の場合、すべて選択することができます)。 初めて Swagger UI を使用する場合は、機密クライアント ID と秘密鍵を指定してログインするように要求されることがあります。 その場合は、**「許可されるスコープ」**に `*` を指定した新規機密クライアントを作成する必要があります。
 
 > 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
-
-
 
 <br/><br/>
 
@@ -179,7 +175,7 @@ public Map<String, String> enterInfo(
 {: #using-mobilefirst-cli }
 
 アダプターの機能をテストするために、`mfpdev adapter call` コマンドを使用して、コマンド・ラインから Java アダプターまたは JavaScript アダプターを呼び出します。
-コマンドを対話式で実行するか直接実行するかを選択することができます。以下は、直接モードを使用した例です。
+コマンドを対話式で実行するか直接実行するかを選択することができます。 以下は、直接モードを使用した例です。
 
 #### Java アダプター
 {: #java-adapters-adapters-cli }
@@ -189,7 +185,7 @@ public Map<String, String> enterInfo(
 ```bash
 mfpdev adapter call adapterName/path
 ```
-例えば、以下のようにします。
+以下に例を示します。
 
 ```bash
 mfpdev adapter call SampleAdapter/users/World
@@ -207,7 +203,7 @@ Hello World
 ```bash
 mfpdev adapter call adapterName/procedureName
 ```
-例えば、以下のようにします。
+以下に例を示します。
 
 ```bash
 mfpdev adapter call SampleAdapter/getFeed
@@ -253,9 +249,8 @@ Hello World
 
     ![{{ site.data.keys.mf_server }} デバッグ・パラメーターを設定する方法を示すイメージ](setting-debug-parameters.png)
 
-4. **「ウィンドウ」→「ビューの表示」→「デバッグ」**をクリックして、*デバッグ・モード* を入力します。これで、標準 Java アプリケーションの場合と同様に、Java コードを正常にデバッグすることができます。アダプターのコードを実行して設定されたブレークポイントがヒットするようにするには、アダプターに対して要求を発行する必要があります。[アダプターのテスト・セクション](#testing-adapters)に記載されたアダプター・リソースの呼び出し方法の説明に従うことで、これを実行できます。
+4. **「ウィンドウ」→「ビューの表示」→「デバッグ」**をクリックして、*デバッグ・モード* を入力します。 これで、標準 Java アプリケーションの場合と同様に、Java コードを正常にデバッグすることができます。 アダプターのコードを実行して設定されたブレークポイントがヒットするようにするには、アダプターに対して要求を発行する必要があります。 [アダプターのテスト・セクション](#testing-adapters)に記載されたアダプター・リソースの呼び出し方法の説明に従うことで、これを実行できます。
 
     ![デバッグ中のアダプターを示すイメージ](debugging.png)
 
 > IntelliJ を使用した Java アダプターのデバッグ方法の手順については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
-

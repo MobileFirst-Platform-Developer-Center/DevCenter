@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guide d'installation du poste de travail
-breadcrumb_title: Guide d'installation
+breadcrumb_title: Installation guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -66,8 +66,8 @@ console`
 [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) est une interface de ligne de commande qui vous permet d'enregistrer des applications sur {{ site.data.keys.mf_server }}, d'extraire et d'envoyer des applications depuis/vers {{ site.data.keys.mf_server }}, de créer des adaptateurs Java et JavaScript, de gérer plusieurs serveurs locaux et distants, de mettre à jour des applications opérationnelles à l'aide de Direct Update, etc.
 
 **Prérequis :**  
-1. NodeJS doit être installé avant {{ site.data.keys.mf_cli }}.  
- Téléchargez et installez [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+1. NodeJS et NPM doivent être installés avant {{ site.data.keys.mf_cli }}.  
+ Téléchargez et installez [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) et NPM v3.10.10.
 
  Pour vérifier l'installation, ouvrez une fenêtre de ligne de commande et exécutez `node -v`.
 

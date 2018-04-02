@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adaptador JavaScript HTTP
-breadcrumb_title: Adaptador HTTP
+breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -94,7 +94,8 @@ Para obtener más información sobre estos valores, consulte la página de <a hr
                     <li><b>protocol</b>: <i>Opcional.</i> Protocolo URL a utilizar. Los siguientes valores son válidos: <b>http</b> (predeterminado), <b>https</b>.</li>
                     <li><b>domain</b>: <i>Obligatorio.</i> Dirección del host.</li>
                     <li><b>port</b>: <i>Opcional.</i> Dirección del puerto. Si no se especifica un puerto, se utiliza el puerto HTTP/S predeterminado (80/443)</li>
-                    <li><b>sslCertificateAlias</b>: Opcional para la autenticación SSL simple y la autenticación HTTP normal. Obligatorio para la autenticación SSL mutua. El alias de la clave SSL privada del adaptador, que el gestor de claves del adaptador HTTP utiliza para acceder al certificado SSL en el almacén de claves. Para obtener más información sobre el proceso de configuración del almacén de claves, consulte la guía de aprendizaje <a href="using-ssl">Utilización de SSL en adaptadores HTTP</a>. </li>
+                    <li><b>sslCertificateAlias</b>: Opcional para la autenticación SSL simple y la autenticación HTTP normal. Obligatorio para la autenticación SSL mutua. El alias de la clave SSL privada del adaptador, que el gestor de claves del adaptador HTTP utiliza para acceder al certificado SSL en el almacén de claves. Para obtener más información sobre el proceso de configuración del almacén de claves, consulte la guía de aprendizaje <a href="using-ssl">Utilización de SSL en adaptadores HTTP</a>.
+</li>
                     <li><b>sslCertificatePassword</b>: Opcional para la autenticación SSL simple y la autenticación HTTP normal. Obligatorio para la autenticación SSL mutua. La contraseña de la clave SSL privada del adaptador, que el gestor de claves del adaptador HTTP utiliza para acceder al certificado SSL en el almacén de claves. Para obtener más información sobre el proceso de configuración del almacén de claves, consulte la guía de aprendizaje <a href="using-ssl">Utilización de SSL en adaptadores HTTP</a>.
 </li>
                     <li><b>authentication</b>: <i>Opcional.</i> Configuración de autenticación del adaptador HTTP. El adaptador HTTP puede utilizar uno de los dos protocolos de autenticación. Defina el elemento <b>authentication</b>< tal como se indica:
@@ -127,6 +128,8 @@ Por ejemplo:
                         </ul>
                     </li>
                     <li><b>proxy</b>: <i>Opcional.</i> El elemento proxy especifica los detalles del servidor de proxy que utilizar al acceder a la aplicación de fondo. Los detalles del proxy deben incluir el puerto y el dominio del protocolo. Si el proxy precisa de autenticación, añada un elemento <code>authentication</code> anidado dentro de <code>proxy</code>. Este elemento tiene la misma estructura que el que se utiliza para describir el protocolo de autenticación del adaptador. En el ejemplo siguiente se muestra un proxy que requiere autenticación básica y utiliza una identidad de servidor.
+
+
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>

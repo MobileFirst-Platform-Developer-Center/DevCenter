@@ -51,7 +51,7 @@ A partir de uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli 
 #### Navegador da área de trabalho
 {: #desktop-browser-remote }
 No seu navegador de opção, carregue a URL `http://the-server-host:server-port-number/mfpconsole`.  
-O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM Bluemix, IBM [Mobile Foundation](../../../bluemix/).
+O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM Cloud, IBM [Mobile Foundation](../../../bluemix/).
 
 #### Linha de Comandos
 {: #command-line-remote }
@@ -63,7 +63,8 @@ Em uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli }} instal
     Execute o comando: `mfpdev server add` e siga as instruções na tela.
 
     *Modo Direto*  
-    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por exemplo:
+    Execute o comando com a estrutura a seguir: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. Por
+exemplo:
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin

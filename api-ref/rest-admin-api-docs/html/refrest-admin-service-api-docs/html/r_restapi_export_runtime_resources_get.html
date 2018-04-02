@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" flippy="dippy" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Export runtime resources (GET)" />
+<meta name="abstract" content="Retrieves a compressed file that contains all or selected runtime-specific resources." />
+<meta name="Description" content="Retrieves a compressed file that contains all or selected runtime-specific resources." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="Export-runtime-resources--GET-" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name='DC.subject' content='SSHSCD'/>
+<meta name="IBM.WTMSite" content="ESTKCS"/>
+<meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS"/>
+<script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>
+<style>
+  ul {
+     line-height: 30px;
+  }
+
+  li a {
+     font-weight: bold;
+     color: blue;
+  }
+</style>
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css" />
+<title>Export runtime resources (GET)</title>
+</head>
+<body id="Export-runtime-resources--GET-"><div role="main">
+
+<h1 class="title topictitle1" id="ariaid-title1"> Export runtime resources (GET) </h1>
+
+
+
+<div class="body refbody"><p class="shortdesc">Retrieves a compressed file that contains all or selected runtime-specific resources.</p>
+
+<section class="section"><h2 class="title sectiontitle">Description</h2>
+
+<p class="p">This method supports range requests to deliver only a range of the bytes of the binary file.
+Clients can use this feature to resume a download after an interruption.</p>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Roles</h2>
+
+<p class="p">Users in the following roles are authorized to perform this operation:</p>
+
+<ul class="ul">
+<li class="li"><span class="keyword parmname parmname">mfpadmin</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpdeployer</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpmonitor</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpoperator</span></li>
+
+</ul>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle"> Method </h2>
+
+<p class="p"><code class="ph codeph">GET</code></p>
+
+</section>
+
+
+
+<section class="section"><h2 class="title sectiontitle">Path</h2>
+
+<p class="p">/management-apis/2.0/runtimes/<var class="keyword varname">runtime-name</var>/export/all</p>
+
+</section>
+
+
+<div class="example"><h2 class="title sectiontitle">Example</h2>
+
+<pre class="pre codeblock prettyprint"><code>https://www.example.com/mfpadmin/management-apis/2.0/runtimes/myruntime/export/all?include=RUNTIME_KEYSTORE&amp;locale=de_DE</code></pre>
+</div>
+
+
+<section class="section"><h2 class="title sectiontitle">Path Parameters</h2>
+
+<dl class="dl parml">
+<dt class="dt pt dlterm">runtime-name</dt>
+
+<dd class="dd pd">The name of the runtime. This is the context root of the runtime web application, without the leading slash.</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Query Parameters</h2>
+
+<p class="p">Query parameters are optional.</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">include</dt>
+
+<dd class="dd pd">Optional query parameter to get selected resources.</dd>
+
+<dt class="dt pt dlterm">locale</dt>
+
+<dd class="dd pd">The locale used for error messages.</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Produces</h2>
+
+<p class="p">
+application/octet-stream</p>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Response</h2>
+
+<p class="p">
+The compressed file containing all or selected runtime-specific resources.</p>
+
+</section>
+
+<section class="section"><h2 class="title sectiontitle">Errors</h2>
+
+<span class="keyword msgnum">400</span>
+<pre class="pre msgblock">The request is invalid.</pre>
+
+<span class="keyword msgnum">403</span>
+<pre class="pre msgblock">The user is not authorized to call this service.</pre>
+
+<span class="keyword msgnum">404</span>
+<pre class="pre msgblock">One or more of the corresponding binary files were not found.</pre>
+
+<span class="keyword msgnum">416</span>
+<pre class="pre msgblock">The requested range of bytes is not valid.</pre>
+
+<span class="keyword msgnum">500</span>
+<pre class="pre msgblock">An internal error occurred.</pre>
+
+</section>
+
+
+</div>
+</div></body>
+</html>
