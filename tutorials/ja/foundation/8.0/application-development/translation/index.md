@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: JavaScript (Cordova、Web) アプリケーションのマルチリンガル・トランスレーション
-breadcrumb_title: マルチリンガル・トランスレーション
+breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -34,7 +34,7 @@ downloads:
 
 ```javascript
 var Messages = {
-headerText: "Default header",
+    headerText: "Default header",
     actionsLabel: "Default action label",
     sampleText: "Default sample text",
 };
@@ -56,7 +56,7 @@ Messages.headerText
 
 ## システム・メッセージの翻訳
 {: #translating-system-messages }
-「インターネット接続が使用できません」や「ユーザー名またはパスワードが無効です」など、アプリケーションが表示するシステム・メッセージも翻訳することができます。システム・メッセージは `WL.ClientMessages` オブジェクト内に保管されます。
+「インターネット接続が使用できません」や「ユーザー名またはパスワードが無効です」など、アプリケーションが表示するシステム・メッセージも翻訳することができます。 システム・メッセージは `WL.ClientMessages` オブジェクト内に保管されます。
 
 **注:** 一部のコードはアプリケーションの初期化が正常に完了して初めて実行されるため、システム・メッセージはグローバル JavaScript レベルでオーバーライドしてください。
 
@@ -85,8 +85,8 @@ JavaScript を使用して、アプリケーションの複数言語の翻訳を
 1. デフォルトのアプリケーション・ストリングを `index.js` ファイルにセットアップします。
 
    ```javascript
-var Messages = {
-headerText: "Default header",
+   var Messages = {
+        headerText: "Default header",
         actionsLabel: "Default action label",
         sampleText: "Default sample text",
         englishLanguage: "English",
@@ -106,11 +106,11 @@ headerText: "Default header",
    }
    ```
 
-3. GUI コンポーネントを新しいストリングで更新します。右から左に読む言語 (ヘブライ語やアラビア語など) 用にテキスト方向を設定するなど、追加のタスクを実行できます。エレメントは、更新されるたびに、アクティブな言語に従って異なるストリングで更新されます。
+3. GUI コンポーネントを新しいストリングで更新します。 右から左に読む言語 (ヘブライ語やアラビア語など) 用にテキスト方向を設定するなど、追加のタスクを実行できます。 エレメントは、更新されるたびに、アクティブな言語に従って異なるストリングで更新されます。
 
    ```javascript
-function languageChanged(lang) {
-if (typeof(lang)!="string") 
+   function languageChanged(lang) {
+        if (typeof(lang)!="string") 
             lang = $("#languages").val();
         
         switch (lang) {
@@ -191,4 +191,3 @@ navigator.globalization.getPreferredLanguage(
 サンプルの README.md ファイルの指示に従ってください。
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Android の LogCat は、アプリケーションの実行中に Android Studio の LogCat コンソールで調べることができます。
-

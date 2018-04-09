@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 在 IBM PureApplication System 上部署 MobileFirst Server
-breadcrumb_title: 安装 PureApplication System
+breadcrumb_title: Installing Pure Application System
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -790,7 +790,7 @@ ND)**。 如果名称因其长度而只有部分可见，那么通过查看**更
     * 在 DmgrNode 节点中，单击 **MFP Server 管理**组件。 该组件的属性将显示在画布旁边。
     * 在 **NUMBER\_OF\_CLUSTERMEMBERS** 字段中，为 {{ site.data.keys.product_adj }} 管理组件指定您希望在 WebSphere Application Server Network Deployment 集群中包含的应用程序服务器节点的数量。
     * 在 DmgrNode 节点中，单击 **MFP Server 运行时部署**组件。 该组件的属性将显示在画布旁边。
-    * 在 **NUMBER\_OF\_CLUSTERMEMBERS** 字段中，为 {{ site.data.keys.product }} 运行时环境指定您希望 WebSphere Application Server Network Deployment 集群中包含的应用程序服务器节点的数量。
+    * 在 **NUMBER\_OF\_CLUSTERMEMBERS** 字段中，为 {{ site.data.keys.product }} 运行时环境指定您希望在 WebSphere Application Server Network Deployment 集群中包含的应用程序服务器节点的数量。
     * 在 CustomNode 节点中，单击**基本缩放策略**组件。
     * 根据您在每个组件的 **NUMBER\_OF\_CLUSTERMEMBERS** 字段中输入的应用程序服务器节点总数来调整**实例数**值。
     **实例数**的最小值是 {{ site.data.keys.product_adj }} 管理组件和 {{ site.data.keys.product }} 运行时环境的服务器节点总数。

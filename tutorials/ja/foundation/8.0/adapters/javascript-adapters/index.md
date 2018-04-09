@@ -9,7 +9,7 @@ weight: 3
 ## 概説
 {: #overview }
 
-JavaScript アダプターは、HTTP および SQL のバックエンドに接続するためのテンプレートを提供します。このアダプターは、プロシージャーと呼ばれるサービスのセットを提供します。モバイル・アプリケーションで AJAX 要求を発行することで、これらのプロシージャーを呼び出すことができます。
+JavaScript アダプターは、HTTP および SQL のバックエンドに接続するためのテンプレートを提供します。 このアダプターは、プロシージャーと呼ばれるサービスのセットを提供します。モバイル・アプリケーションで AJAX 要求を発行することで、これらのプロシージャーを呼び出すことができます。
 
 **前提条件:** 最初に必ず、 [Java アダプターおよび JavaScript アダプターの作成](../creating-adapters)チュートリアルをお読みください。
 
@@ -21,7 +21,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 ### adapter-resources フォルダー
 {: #the-adapter-resources-folder }
 
-**adapter-resources** フォルダーには、XML 構成ファイルが含まれています。この構成ファイルでは、接続オプションが記述され、アプリケーションまたは他のアダプターに公開されるプロシージャーがリストされています。
+**adapter-resources** フォルダーには、XML 構成ファイルが含まれています。 この構成ファイルでは、接続オプションが記述され、アプリケーションまたは他のアダプターに公開されるプロシージャーがリストされています。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -53,36 +53,36 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><code>name</code>: <i>必須。</i> アダプターの名前。この名前は {{ site.data.keys.mf_server }} 内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 アダプターを定義してデプロイした後に、その名前を変更することはできません。</li>
-					<li><b>&lt;displayName&gt;</b>: <i>オプション。</i> {{ site.data.keys.mf_console }} に表示されるアダプターの名前。このエレメントが指定されない場合は、代わりに name 属性の値が使用されます。</li>
-					<li><b>&lt;description&gt;</b>: <i>オプション。</i> アダプターに関する追加情報。{{ site.data.keys.mf_console }} に表示されます。</li>
-					<li><b>&lt;connectivity&gt;</b>: <i>必須。</i> アダプターがバックエンド・アプリケーションに接続するときのメカニズムを定義します。これには、&lt;connectionPolicy&gt; サブエレメントが含まれています。
+                    <li><code>name</code>: <i>必須。</i> アダプターの名前。 この名前は {{ site.data.keys.mf_server }} 内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 アダプターを定義してデプロイした後に、その名前を変更することはできません。</li>
+					<li><b>&lt;displayName&gt;</b>: <i>オプション。</i> {{ site.data.keys.mf_console }} に表示されるアダプターの名前。 このエレメントが指定されない場合は、代わりに name 属性の値が使用されます。</li>
+					<li><b>&lt;description&gt;</b>: <i>オプション。</i> アダプターに関する追加情報。 {{ site.data.keys.mf_console }} に表示されます。</li>
+					<li><b>&lt;connectivity&gt;</b>: <i>必須。</i> アダプターがバックエンド・アプリケーションに接続するときのメカニズムを定義します。 これには、&lt;connectionPolicy&gt; サブエレメントが含まれています。
                         <ul>
-                            <li><b>&lt;connectionPolicy&gt;</b>: <i>必須</i>。接続プロパティーを定義します。このサブエレメントの構造は、バックエンド・アプリケーションの統合テクノロジーによって異なります。&lt;connectionPolicy&gt; について詳しくは、<a href="js-http-adapter">HTTP アダプターの &lt;connectionPolicy&gt; エレメント</a>および <a href="js-sql-adapter">SQL アダプターの &lt;connectionPolicy&gt; エレメント</a>を参照してください。</li>
+                            <li><b>&lt;connectionPolicy&gt;</b>: <i>必須</i>。 接続プロパティーを定義します。 このサブエレメントの構造は、バックエンド・アプリケーションの統合テクノロジーによって異なります。 &lt;connectionPolicy&gt; について詳しくは、<a href="js-http-adapter">HTTP アダプターの &lt;connectionPolicy&gt; エレメント</a>および <a href="js-sql-adapter">SQL アダプターの &lt;connectionPolicy&gt; エレメント</a>を参照してください。</li>
                         </ul>
                     </li>
                     <li><b>&lt;procedure&gt;</b>: <i>必須。</i> バックエンド・アプリケーションによって公開されるサービスにアクセスするためのプロセスを定義します。
                         <ul>
-                            <li><code>name</code>: <i>必須。</i> プロシージャーの名前。この名前はアダプター内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 </li>
+                            <li><code>name</code>: <i>必須。</i> プロシージャーの名前。 この名前はアダプター内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。</li>
                             <li><code>audit</code>: <i>オプション。</i> プロシージャーへの呼び出しを監査ログに記録するかどうかを定義します。 以下の値が有効です。
                                 <ul>
-                                    <li><code>true</code>: プロシージャーへの呼び出しが監査ログに記録されます。 </li>
-                                    <li><code>false</code>: デフォルト。プロシージャーへの呼び出しは監査ログに記録されません。</li>
+                                    <li><code>true</code>: プロシージャーへの呼び出しが監査ログに記録されます。</li>
+                                    <li><code>false</code>: デフォルト。 プロシージャーへの呼び出しは監査ログに記録されません。</li>
                                 </ul>
                             </li>
-                            <li><code>scope</code>: <i>オプション。</i> アダプター・リソース・プロシージャーを保護するセキュリティー・スコープ。スコープは、スペースで区切った 1 つ以上のスコープ・エレメントからなるストリングにすることも、ヌルにしてデフォルトのスコープを適用することもできます。スコープ・エレメントは、セキュリティー検査にマップされたキーワード、または、セキュリティー検査の名前です。デフォルトのスコープは <code>RegisteredClient</code> で、これは予約済みの {{ site.data.keys.product_adj }} キーワードです。デフォルトの保護では、リソースにアクセスするためにアクセス・トークンが必要です。<br/>
+                            <li><code>scope</code>: <i>オプション。</i> アダプター・リソース・プロシージャーを保護するセキュリティー・スコープ。 スコープは、スペースで区切った 1 つ以上のスコープ・エレメントからなるストリングにすることも、ヌルにしてデフォルトのスコープを適用することもできます。 スコープ・エレメントは、セキュリティー検査にマップされたキーワード、または、セキュリティー検査の名前です。 デフォルトのスコープは <code>RegisteredClient</code> で、これは予約済みの {{ site.data.keys.product_adj }} キーワードです。 デフォルトの保護では、リソースにアクセスするためにアクセス・トークンが必要です。<br/>
 								{{ site.data.keys.product_adj }} OAuth リソース保護と、JavaScript アダプター・リソースのリソース保護を構成する方法について詳しくは、<a href="../../authentication-and-security/#protecting-adapter-resources">アダプター・リソースの保護</a>を参照してください。<br/>
 								<code>secured</code> 属性の値が <code>false</code> の場合、<code>scope</code> 属性は無視されます。</li>
-                            <li><code>secured</code>: <i>オプション。</i> アダプター・プロシージャーが {{ site.data.keys.product_adj }} セキュリティー・フレームワークによって保護されるかどうかを定義します。以下の値が有効です。
+                            <li><code>secured</code>: <i>オプション。</i> アダプター・プロシージャーが {{ site.data.keys.product_adj }} セキュリティー・フレームワークによって保護されるかどうかを定義します。 以下の値が有効です。
                                 <ul>
-                                    <li><code>true</code>: デフォルト。プロシージャーは保護されます。プロシージャーの呼び出しには、有効なアクセス・トークンが必要です。</li>
-                                    <li><code>false</code>: プロシージャーは保護されません。プロシージャーの呼び出しにアクセス・トークンは不要です。<a href="../../authentication-and-security/#unprotected-resources"> 保護されていないリソース (Unprotected resources)</a> を参照してください。この値が設定されている場合、<code>scope</code> 属性は無視されます。</li>
+                                    <li><code>true</code>: デフォルト。 プロシージャーは保護されます。 プロシージャーの呼び出しには、有効なアクセス・トークンが必要です。</li>
+                                    <li><code>false</code>: プロシージャーは保護されません。 プロシージャーの呼び出しにアクセス・トークンは不要です。 <a href="../../authentication-and-security/#unprotected-resources"> 保護されていないリソース (Unprotected resources)</a> を参照してください。 この値が設定されている場合、<code>scope</code> 属性は無視されます。</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>&lt;securityCheckDefinition&gt;</b>: <i>オプション。</i> セキュリティー検査オブジェクトを定義します。<a href="../../authentication-and-security/creating-a-security-check">セキュリティー検査の作成</a>チュートリアルで、セキュリティー検査についての詳細を参照してください。</li>
-        			<li><code>property</code>: <i>オプション。</i> ユーザー定義プロパティーを宣言します。このチュートリアルの<a href="#custom-properties">『カスタム・プロパティー』</a>セクションで詳細を参照してください。</li>
+                    <li><b>&lt;securityCheckDefinition&gt;</b>: <i>オプション。</i> セキュリティー検査オブジェクトを定義します。 <a href="../../authentication-and-security/creating-a-security-check">セキュリティー検査の作成</a>チュートリアルで、セキュリティー検査についての詳細を参照してください。</li>
+        			<li><code>property</code>: <i>オプション。</i> ユーザー定義プロパティーを宣言します。 このチュートリアルの<a href="#custom-properties">『カスタム・プロパティー』</a>セクションで詳細を参照してください。</li>
                 </ul>
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>セクションを閉じる</b></a>
@@ -94,15 +94,13 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 #### カスタム・プロパティー
 {: #custom-properties }
 
-**adapter.xml** ファイルには、ユーザー定義のカスタム・プロパティーを含めることもできます。開発者がアダプターの作成中にそれらのプロパティーに割り当てた値は、アダプターを再デプロイせずに、**{{ site.data.keys.mf_console }} → 「[ご使用のアダプター]」→「構成」タブ**でオーバーライドすることができます。ユーザー定義プロパティーは、[getPropertyValue API](#getpropertyvalue) を使用して読み取り、実行時にさらにカスタマイズできます。
+**adapter.xml** ファイルには、ユーザー定義のカスタム・プロパティーを含めることもできます。 開発者がアダプターの作成中にそれらのプロパティーに割り当てた値は、アダプターを再デプロイせずに、**{{ site.data.keys.mf_console }} → 「[ご使用のアダプター]」→「構成」タブ**でオーバーライドすることができます。 ユーザー定義プロパティーは、[getPropertyValue API](#getpropertyvalue) を使用して読み取り、実行時にさらにカスタマイズできます。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず &lt;procedure&gt; エレメントの*下に* 配置する必要があります。上の例では、デフォルト値を使用して &lt;displayName&gt; プロパティーを定義し、このプロパティーを後で使用できるようにしてあります。
-
-
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず &lt;procedure&gt; エレメントの*下に* 配置する必要があります。 上の例では、デフォルト値を使用して &lt;displayName&gt; プロパティーを定義し、このプロパティーを後で使用できるようにしてあります。
 
 &lt;property&gt; エレメントには以下の属性があります。
 
-- `name`: 構成クラスで定義されている、プロパティーの名前。 
+- `name`: 構成クラスで定義されている、プロパティーの名前。
 - `defaultValue`: 構成クラスで定義されたデフォルト値をオーバーライドします。
 - `displayName`: *オプション*。コンソールに表示される分かりやすい名前。
 - `description`: *オプション*。コンソールに表示される説明。
@@ -113,8 +111,8 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 #### 構成のプルとプッシュ
 {: #pull-and-push-configurations }
 
-カスタマイズしたアダプター・プロパティーは、**「構成ファイル」タブ**に表示されるアダプター構成ファイルを使用して共有できます。   
-共有するためには、Maven または {{ site.data.keys.mf_cli }} を使用して、以下で説明する `pull` コマンドと `push` コマンドを使用します。共有するプロパティーについては、*そのプロパティーに対して指定されたデフォルト値を変更する* 必要があります。
+カスタマイズしたアダプター・プロパティーは、**「構成ファイル」タブ**に表示されるアダプター構成ファイルを使用して共有できます。  
+共有するためには、Maven または {{ site.data.keys.mf_cli }} を使用して、以下で説明する `pull` コマンドと `push` コマンドを使用します。 共有するプロパティーについては、*そのプロパティーに対して指定されたデフォルト値を変更する* 必要があります。
 
 アダプター Maven プロジェクトのルート・フォルダーから以下のコマンドを実行します。
 
@@ -148,7 +146,7 @@ JavaScript アダプターは、HTTP および SQL のバックエンドに接�
 **pull** コマンドと **push** コマンドは、使用している環境 (DEV、QA、UAT、PRODUCTION) に応じてアダプターで異なる値が必要となる各種の DevOps フローを作成する場合に役立ちます。
 
 **Maven**  
-上記の説明で、デフォルトでの **config.json** ファイルの指定方法を確認してください。異なるターゲットを処理するには、異なる名前のファイルを作成します。
+上記の説明で、デフォルトでの **config.json** ファイルの指定方法を確認してください。 異なるターゲットを処理するには、異なる名前のファイルを作成します。
 
 **{{ site.data.keys.mf_cli }}**  
 デフォルトとは異なる構成ファイルを指定するには、**--configFile** フラグまたは **-c** フラグを使用します。
@@ -162,7 +160,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ### js フォルダー
 {: #the-js-folder }
 
-このフォルダーには、**adapter.xml** ファイルで宣言されているプロシージャーのすべての JavaScript 実装ファイルが含まれています。また、取得した生の XML データの変換スキームを含む、ゼロまたは 1 つ以上の XSL ファイルも含まれています。アダプターによって取得したデータは、生データとして返すことも、アダプター自体で前処理することもできます。いずれの場合も、**JSON オブジェクト**としてアプリケーションに提示されます。
+このフォルダーには、**adapter.xml** ファイルで宣言されているすべてのプロシージャーの JavaScript 実装ファイルが含まれており、JavaScript アダプターには 1 つの JavaScript ファイルしか存在できません。また、取得した生の XML データの変換スキームを含む、ゼロまたは 1 つ以上の XSL ファイルも含まれています。 アダプターによって取得したデータは、生データとして返すことも、アダプター自体で前処理することもできます。 いずれの場合も、**JSON オブジェクト**としてアプリケーションに提示されます。
 
 ## JavaScript アダプター・プロシージャー
 {: #javascript-adapter-procedures }
@@ -174,23 +172,23 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 
 **adapter.xml** ファイルで宣言される各プロシージャーに対応する関数を JavaScript ファイルで指定する必要があります。
 
-サービスを呼び出す前または後に、サーバー・サイド JavaScript を使用してデータを処理することができます。簡単な XSLT コードを使用して、取得したデータにさらにフィルタリングを適用することができます。  
-JavaScript アダプター・プロシージャーは、JavaScript で実装されます。しかし、アダプターはサーバー・サイド・エンティティーであるため、[アダプター・コードで Java を使用する](../javascript-adapters/using-java-in-javascript-adapters)ことが可能です。
+サービスを呼び出す前または後に、サーバー・サイド JavaScript を使用してデータを処理することができます。 簡単な XSLT コードを使用して、取得したデータにさらにフィルタリングを適用することができます。  
+JavaScript アダプター・プロシージャーは、JavaScript で実装されます。 しかし、アダプターはサーバー・サイド・エンティティーであるため、[アダプター・コードで Java を使用する](../javascript-adapters/using-java-in-javascript-adapters)ことが可能です。
 
 ### グローバル変数の使用
 {: #using-global-variables }
 
-{{ site.data.keys.mf_server }} は HTTP セッションに依存しないため、各要求が異なるノードに到達する可能性があります。データをある要求から次の要求に保持するためには、グローバル変数に依存しないようにする必要があります。
+{{ site.data.keys.mf_server }} は HTTP セッションに依存しないため、各要求が異なるノードに到達する可能性があります。 データをある要求から次の要求に保持するためには、グローバル変数に依存しないようにする必要があります。
 
 ### アダプター応答しきい値
 {: #adapter-response-threshold }
 
-アダプター応答は {{ site.data.keys.mf_server }} メモリーにストリングとして保管されるため、アダプター呼び出しは、大容量データを返すようには設計されていません。したがって、使用可能メモリー量を超えるデータの場合、メモリー不足例外が発生してアダプター呼び出しが失敗することがあります。そういった失敗を防止するため、しきい値を構成して、それを超えると {{ site.data.keys.mf_server }} が HTTP 応答を gzip して返すようにします。HTTP プロトコルには、gzip 圧縮をサポートするための標準ヘッダーがあります。クライアント・アプリケーションでも HTTP の gzip コンテンツをサポートできる必要があります。
+アダプター応答は {{ site.data.keys.mf_server }} メモリーにストリングとして保管されるため、アダプター呼び出しは、大容量データを返すようには設計されていません。 したがって、使用可能メモリー量を超えるデータの場合、メモリー不足例外が発生してアダプター呼び出しが失敗することがあります。 そういった失敗を防止するため、しきい値を構成して、それを超えると {{ site.data.keys.mf_server }} が HTTP 応答を gzip して返すようにします。 HTTP プロトコルには、gzip 圧縮をサポートするための標準ヘッダーがあります。 クライアント・アプリケーションでも HTTP の gzip コンテンツをサポートできる必要があります。
 
 #### サーバー・サイド
 {: #server-side }
 
-{{ site.data.keys.mf_console }} で、**「ランタイム」>「設定」>「アダプター応答の GZIP 圧縮しきい値」**の下で、適切なしきい値を設定します。デフォルト値は 20 KB です。  
+{{ site.data.keys.mf_console }} で、**「ランタイム」>「設定」>「アダプター応答の GZIP 圧縮しきい値」**の下で、適切なしきい値を設定します。 デフォルト値は 20 KB です。  
 **注:** {{ site.data.keys.mf_console }} で変更を保存すると、変更はすぐにランタイムで有効になります。
 
 #### クライアント・サイド
@@ -210,7 +208,8 @@ JavaScript アダプターは、サーバー・サイド API を使用して、{
 `MFP.Server.getPropertyValue(propertyName)` API を使用して、**adapter.xml** または {{ site.data.keys.mf_console }} で定義されているプロパティーを取得します。
 
 ```js
-MFP.Server.getPropertyValue("name");```
+MFP.Server.getPropertyValue("name");
+```
 
 ### getTokenIntrospectionData
 {: #gettokenintrospectiondata }
@@ -272,7 +271,7 @@ var userAgent = request.getHeader("User-Agent");
 ### ロギング
 {: #logging }
 
-JavaScript API は、MFP.Logger クラスによってロギング機能を提供します。これには、4 つの標準ロギング・レベルに対応した 4 つの関数が含まれています。  
+JavaScript API は、MFP.Logger クラスによってロギング機能を提供します。 これには、4 つの標準ロギング・レベルに対応した 4 つの関数が含まれています。  
 詳細については、[サーバー・サイドのログ収集](../server-side-log-collection)チュートリアルを参照してください。
 
 ## JavaScript アダプターの例

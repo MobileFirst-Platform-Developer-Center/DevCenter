@@ -99,7 +99,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 
 * Appelez la méthode **ObtainToken** dans un constructeur de classe ou en cliquant sur un bouton.
 
-### 4. Déployez un adaptateur
+### 4. Déploiement d'un adaptateur
 {: #4-deploy-an-adapter }
 Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions →  Déployer un adaptateur**.
 
@@ -124,12 +124,12 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 {: #5-testing-the-application }
 1. Dans Xamarin Studio, sélectionnez le fichier 'mfpclient.properties', puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes pour votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
-    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**.
-
+    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
+    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes.
 2. Appuyez sur le bouton **Play**.
 
 <br clear="all"/>
-### Résulats
+### Résultats
 {: #results }
 * Si vous cliquez sur le bouton **Ping MobileFirst Server**, la mention **Connected to MobileFirst Server** s'affiche.
 * Si l'application a pu se connecter au serveur {{ site.data.keys.mf_server }}, un appel de demande de ressource utilisant l'adaptateur Java déployé aura lieu.

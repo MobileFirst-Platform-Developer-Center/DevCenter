@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adaptadores JavaScript
+title: Adaptadores de JavaScript
 show_children: true
 relevantTo: [ios,android,windows,javascript]
 weight: 3
@@ -218,8 +218,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ### Carpeta js 
 {: #the-js-folder }
 
-Esta carpeta contiene todos los archivos de implementación JavaScript de los procedimientos que se declaran en el archivo **adapter.xml**.
-También puede contener ninguno, uno o varios archivos XSL, con un esquema de transformación para datos XML recuperados sin procesar.
+Esta carpeta contiene el archivo de implementación JavaScript de todos los procedimientos que se declaran en el archivo **adapter.xml** y sólo puede haber un archivo JavaScript en un adaptador JavaScript. También puede contener ninguno, uno o varios archivos XSL, con un esquema de transformación para datos XML recuperados sin procesar.
 Los datos que un adaptador recupera se pueden devolver sin procesar o procesados de forma previa por el propio adaptador.
 En ambos casos, se presenta a la aplicación como un **objeto JSON**.
 

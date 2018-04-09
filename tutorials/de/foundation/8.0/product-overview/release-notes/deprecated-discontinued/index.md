@@ -1,13 +1,14 @@
 ---
 layout: tutorial
 title: Veraltete und weggefallene Features und APIs
+
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Überprüfen Sie gründlich, wie sich Features und API-Elemente, die entfernt wurden,
-auf Ihre
-{{ site.data.keys.product_full }}-Umgebung auswirken. #### Fahren Sie mit folgenden Abschnitten fort: 
+Überprüfen Sie gründlich, wie sich Features und API-Elemente, die entfernt wurden, auf Ihre {{ site.data.keys.product_full }}-Umgebung auswirken.
+
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [In Version 8.0 weggefallene und nicht mehr enthaltene Features](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [Änderungen an der serverseitigen API](#server-side-api-changes)
@@ -57,7 +58,7 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
     </tr>
     <tr>
         <td><p>Adapter mit konfigurierter Sitzungsabhängigkeit: In Version 7.1.0 konnten Sie {{ site.data.keys.mf_server }} für den sitzungsunabhängigen Modus (Standardeinstellung) oder den sitzungsabhängigen Modus konfigurieren. Ab Version 8.0 wird der sitzungsabhängige Modus nicht mehr unterstützt. Der Server ist grundsätzlich unabhängig von HTTP-Sitzungen. Eine spezielle Konfiguration dafür ist nicht erforderlich.</p></td>
-        <td><p>Weggefallen.</p></td>
+        <td><p>Weggefallen</p></td>
     </tr>
     <tr>
         <td><p>Der Attribut-Store in IBM WebSphere eXtreme Scale wird in Version 8.0 nicht unterstützt.</p></td>
@@ -89,7 +90,7 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
     </tr>
     <tr>
         <td>Push-Benachrichtigungsunterstüzung für USSD ist in Version 8.0 nicht verfügbar.</td>
-        <td>Weggefallen.</td>
+        <td>Weggefallen</td>
     </tr>
     <tr>
         <td>Ereignisbasierte Push-Benachrichtigungen werden in Version 8.0 nicht unterstützt.</td>
@@ -423,7 +424,7 @@ Die folgenden APIs werden in Version 8.0 nicht weiter unterstützt.
 | `BaseProvisioningChallengeHandler` | Kein Ersatz. Die Bereitstellung für Geräte erfolgt jetzt automatisch über das Sicherheitsframework. |
 | `ChallengeHandler` | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Verwenden Sie `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler.isCustomResponse()` | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`.|
+| `ChallengeHandler.isCustomResponse()` | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 
 ### Windows-C#-APIs

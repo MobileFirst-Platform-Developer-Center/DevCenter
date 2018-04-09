@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Préparatifs pour l'utilisation du client mobile
-breadcrumb_title: Préparatifs
+breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation

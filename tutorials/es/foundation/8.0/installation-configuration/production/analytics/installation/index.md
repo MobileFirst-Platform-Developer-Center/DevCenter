@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guía de instalación de MobileFirst Analytics Server
-breadcrumb_title: Guía de instalación
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -92,7 +92,7 @@ Por ejemplo, si establece **fragmentos** en 4 y **réplicas** en 2, podrá escal
 
 ## Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). El archivo **analytics.ear** se encuentra en la carpeta **<dir_instalación_servidor_mf>\analytics**. Para obtener más información sobre cómo descargar e instalar WebSphere Application Server Liberty, consulte el artículo [Acerca de WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) en IBM developerWorks .
+Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). El archivo **analytics.ear** se encuentra en la carpeta `<mf_server_install_dir>\analytics`. Para obtener más información sobre cómo descargar e instalar WebSphere Application Server Liberty, consulte el artículo [Acerca de WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) en IBM developerWorks .
 
 1. Cree un servidor ejecutando el siguiente mandato en su carpeta **./wlp/bin**.
 
@@ -106,8 +106,8 @@ Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. 
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Añada el archivo **analytics.ear** a la carpeta **./usr/servers/<serverName>/apps** del servidor de Liberty.
-4. Sustituya el contenido de la etiqueta `<featureManager>` del archivo **./usr/servers/<serverName>/server.xml** por el contenido siguiente:
+3. Añada el archivo **analytics.ear** a la carpeta `./usr/servers/<serverName>/apps` del servidor de Liberty.
+4. Sustituya el contenido de la etiqueta `<featureManager>` del archivo `./usr/servers/<serverName>/server.xml` por el contenido siguiente:
 
    ```xml
    <featureManager>
@@ -151,8 +151,6 @@ Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. 
    ```
 
    > Para obtener más información sobre cómo configurar otros tipos de registro de usuarios, como por ejemplo LDAP, consulte el tema [Configuración de un registro de usuarios para Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) en la documentación del producto WebSphere Application Server.
-
-
 
 6. Inicie el servidor de Liberty ejecutando el siguiente mandato dentro de su carpeta **bin**
 
@@ -222,7 +220,7 @@ Para obtener más información sobre los pasos de instalación iniciales para ad
 
 Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analytics en WebSphere Application Server. Si está instalando los archivos WAR individuales en WebSphere Application Server, siga sólo los pasos del 2 al 7 en el archivo WAR de **analytics-service** una vez que haya desplegado los archivos WAR. El orden de carga de clases no se debe modificar en el archivo WAR de analytics-ui.
 
-1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie. Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
+1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie . Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
 
 2. Seleccione la aplicación **MobileFirst Analytics** desde la lista **Enterprise Applications**.
 
@@ -269,7 +267,6 @@ Debe ejecutar la tarea Ant en el sistema donde está instalado el servidor de ap
     > Nota: Los siguientes caracteres especiales deben escaparse cuando se utilizan en los valores de los scripts Ant XML:
     >
     > * El signo de dólar ($) se debe escribir como $$, a no ser que desee explícitamente hacer referencia a una variable Ant a través de la sintaxis ${variable}, tal como se describe en la sección [Propiedades](http://ant.apache.org/manual/properties.html) de Apache Ant Manual.
-
     > * El carácter ampersand (&) se debe escribir como &amp;, a no ser que desee explícitamente hacer referencia a una entidad XML.
     > * Las comillas dobles (") se deben escribir como &quot;, excepto cuando estén dentro de una serie que esté entre comillas simples.
 

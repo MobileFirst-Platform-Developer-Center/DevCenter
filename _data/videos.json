@@ -1,20 +1,20 @@
 [{
-"caption": "Bluemix Mobile Foundation - IBM MobileFirst Foundation v8 Overview Introduction Part 1",
+"caption": "IBM Cloud Mobile Foundation - IBM MobileFirst Foundation v8 Overview Introduction Part 1",
 "url": "//www.youtube.com/watch?v=w_yUXMS7A_M",
 "thumbnail": "//i3.ytimg.com/vi/w_yUXMS7A_M/maxresdefault.jpg",
-"tags": ["Development", "Bluemix", "Mobile Foundation"],
+"tags": ["Development", "IBM Cloud", "Mobile Foundation"],
 "version": ["8.0"]
 },{
-"caption": "Bluemix Mobile Foundation - IBM MobileFirst Foundation v8 Overview Introduction Part 2",
+"caption": "IBM Cloud Mobile Foundation - IBM MobileFirst Foundation v8 Overview Introduction Part 2",
 "url": "//www.youtube.com/watch?v=ZHwi0IBWvls",
 "thumbnail": "//i3.ytimg.com/vi/ZHwi0IBWvls/maxresdefault.jpg",
-"tags": ["Development", "Bluemix", "Mobile Foundation"],
+"tags": ["Development", "IBM Cloud", "Mobile Foundation"],
 "version": ["8.0"]
 },{
-"caption": "Creating custom chart on IBM Bluemix Mobile Foundation Analytics Console",
+"caption": "Creating custom chart on IBM IBM Cloud Mobile Foundation Analytics Console",
 "url": "//www.youtube.com/watch?v=LW4uoUjLV4w&list=PL_WA4QhE4LNY1xbMqBl3lPLvAEyyI0vtI",
 "thumbnail": "//i3.ytimg.com/vi/LW4uoUjLV4w/maxresdefault.jpg",
-"tags": ["Development", "Bluemix", "Mobile Foundation", "Mobile Analytics"],
+"tags": ["Development", "IBM Cloud", "Mobile Foundation", "Mobile Analytics"],
 "version": ["8.0"]
 },{
 "caption": "IBM MobileFirst Foundation 8.0 Overview Demo - Community Health App",
@@ -59,7 +59,7 @@
 "tags": ["Development","Live Update"],
 "version": ["8.0"]
 },{
-"caption": "Integrating your Xamarin apps with Mobile Foundation service on Bluemix",
+"caption": "Integrating your Xamarin apps with Mobile Foundation service on IBM Cloud",
 "url": "//www.youtube.com/watch?v=kw9k2d59FYQ",
 "thumbnail": "//img.youtube.com/vi/kw9k2d59FYQ/hqdefault.jpg",
 "tags": ["Development","Xamarin"],
@@ -86,19 +86,19 @@
     "caption": "Getting Started with Ionic and MobileFirst Platform Foundation 8.0",
     "url": "//www.youtube.com/watch?v=DlxZYxXszIw",
     "thumbnail": "//img.youtube.com/vi/DlxZYxXszIw/hqdefault.jpg",
-    "tags": ["Bluemix", "Ionic", "Integration", "CLI", "Development"],
+    "tags": ["IBM Cloud", "Ionic", "Integration", "CLI", "Development"],
     "version": ["8.0"]
 },{
-    "caption": "Getting Started With the MobileFirst Platform Development CLI 8.0 on Bluemix and the Development Kit",
+    "caption": "Getting Started With the MobileFirst Platform Development CLI 8.0 on IBM Cloud and the Development Kit",
     "url": "//www.youtube.com/watch?v=rYQMC0uIbQA",
     "thumbnail": "//img.youtube.com/vi/rYQMC0uIbQA/hqdefault.jpg",
-    "tags": ["Bluemix", "CLI", "Development"],
+    "tags": ["IBM Cloud", "CLI", "Development"],
     "version": ["8.0"]
 }, {
     "caption": "IBM MobileFirst Platform Foundation 7.1 End-to-End Demo",
     "url": "//www.youtube.com/watch?v=lMR0jYP758k",
     "thumbnail": "//img.youtube.com/vi/lMR0jYP758k/hqdefault.jpg",
-    "tags": ["Integration", "Security", "Development", "Bluemix", "Testing"]
+    "tags": ["Integration", "Security", "Development", "IBM Cloud", "Testing"]
     ,
     "version": ["7.1"]
 }, {
@@ -112,24 +112,24 @@
     "caption": "MobileFirst Services Starter with a StrongLoop based mobile backend",
     "url": "//www.youtube.com/watch?v=wGdVL2Yyf-I",
     "thumbnail": "//img.youtube.com/vi/wGdVL2Yyf-I/hqdefault.jpg",
-    "tags": ["Bluemix", "MobileServices"],
+    "tags": ["IBM Cloud", "MobileServices"],
     "version": ["7.1"]
 }, {
-    "caption": "IBM MobileFirst Platform on Bluemix Docker containers",
+    "caption": "IBM MobileFirst Platform on IBM Cloud Docker containers",
     "url": "//www.youtube.com/watch?v=w2r8RmQyCMA",
     "thumbnail": "//img.youtube.com/vi/w2r8RmQyCMA/hqdefault.jpg",
-    "tags": ["Bluemix", "Docker"],
+    "tags": ["IBM Cloud", "Docker"],
     "version": ["7.1"]
 }, {
     "caption": "Mobile Client Access Service",
     "url": "//www.youtube.com/watch?v=vgGJLY8oxmc",
     "thumbnail": "//img.youtube.com/vi/vgGJLY8oxmc/hqdefault.jpg",
-    "tags": ["Bluemix", "MobileServices"]
+    "tags": ["IBM Cloud", "MobileServices"]
 }, {
     "caption": "MobileFirst 7.x Push Notifications Service",
     "url": "//www.youtube.com/watch?v=REs-JSqlIUI",
     "thumbnail": "//img.youtube.com/vi/REs-JSqlIUI/hqdefault.jpg",
-    "tags": ["Bluemix", "MobileServices"],
+    "tags": ["IBM Cloud", "MobileServices"],
     "version": ["7.0","7.1"]
 }, {
     "caption": "Streamline integration with backend systems using MobileFirst 7.x",

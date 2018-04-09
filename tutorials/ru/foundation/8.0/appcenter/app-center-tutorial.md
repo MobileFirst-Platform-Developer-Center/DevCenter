@@ -1,10 +1,12 @@
 ---
 layout: tutorial
 title: Distributing mobile applications with IBM Application Center
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
 {{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Demostración de principio a fin en Xamarin
+title: Demostración Xamarin de principio a fin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
@@ -8,18 +8,17 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## Información general
 {: #overview }
-El propósito de esta demostración es presentar un flujo de principio a fin: 
+El propósito de esta demostración es presentar un flujo de principio a fin:
 
 1. Se registra con {{ site.data.keys.mf_console }} una aplicación de ejemplo que se empaqueta con el SDK de cliente Xamarin de {{ site.data.keys.product_adj }}.
-
-2. Se desplegará un adaptador nuevo o uno que se proporcione en {{ site.data.keys.mf_console }}.   
-3. Se cambiará la lógica de la aplicación para realizar una solicitud de recurso. 
+2. Se desplegará un adaptador nuevo o uno que se proporcione en {{ site.data.keys.mf_console }}.  
+3. Se cambiará la lógica de la aplicación para realizar una solicitud de recurso.
 
 **Resultado final**:
 
 * Ping satisfactorio a {{ site.data.keys.mf_server }}.
 
-#### Requisitos previos: 
+#### Requisitos previos:
 {: #prerequisites }
 * Xamarin Studio
 * *Opcional*. {{ site.data.keys.mf_server }} autónomo ([descargar]({{site.baseurl}}/downloads))
@@ -29,18 +28,14 @@ El propósito de esta demostración es presentar un flujo de principio a fin:
 Asegúrese de haber [creado una instancia de Mobile Foundation](../../bluemix/using-mobile-foundation), o  
 Si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), vaya hasta la carpeta del servidor y ejecute el mandato `./run.sh` en Mac y Linux o `run.cmd` en Windows.
 
-
 ### 2. Creación de una aplicación
 {: #2-creating-an-application }
 En una ventana de navegador, abra {{ site.data.keys.mf_console }} cargando el URL:
-`http://su-host-servidor:su-puerto-servidor/mfpconsole`.
-Si lo está ejecutando de forma local, utilice [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
-El nombre de usuario y la contraseña son *admin/admin*.
+`http://su-host-servidor:su-puerto-servidor/mfpconsole`. Si lo está ejecutando de forma local, utilice [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). El nombre de usuario y la contraseña son *admin/admin*.
 
 1. Pulse el botón **Nuevo** junto a **Aplicaciones**
-    * Seleccione la plataforma **Android** 
+    * Seleccione la plataforma **Android**
     * Especifique **com.ibm.mfpstarterxamarin** como el **identificador de aplicación** (dependiendo del armazón de la aplicación lo descargará en el siguiente paso)
-
     * Especifique **1.0** como valore de **versión**
     * Pulse **Registrar aplicación**
 
@@ -48,11 +43,9 @@ El nombre de usuario y la contraseña son *admin/admin*.
 
 ### 3. Edición de la lógica de la aplicación
 {: #3-editing-application-logic }
-* Cree un proyecto Xamarin. 
+* Cree un proyecto Xamarin.
 * Añada el SDK de Xamarin tal como se menciona en la guía de aprendizaje [Adición del SDK](../../application-development/sdk/xamarin/).
-
 * Añada una propiedad del tipo `IWorklightClient` en cualquier archivo de clase tal como se indica a continuación.
-
 
    ```csharp
    /// <summary>
@@ -63,13 +56,11 @@ El nombre de usuario y la contraseña son *admin/admin*.
    ```
 * Si está desarrollando para iOS, pegue el siguiente código dentro del método **FinishedLaunching** del archivo **AppDelegate.cs**:
 
-
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
   >Sustituya `<ClassName>` con el nombre de su clase.
 * Si está desarrollando para Android, incluya la siguiente línea de código dentro del método **OnCreate** del archivo **MainActivity.cs**:
-
 
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
@@ -77,25 +68,24 @@ El nombre de usuario y la contraseña son *admin/admin*.
   >Sustituya `<ClassName>` con el nombre de su clase.
 * Defina un método para obtener la señal de acceso y realizar una solicitud de recurso al servidor MFP tal como se indica a continuación.
 
-
     ```csharp
     public async void ObtainToken()
            {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null &&  accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -114,7 +104,7 @@ El nombre de usuario y la contraseña son *admin/admin*.
 {: #4-deploy-an-adapter }
 Descargue [esta artefacto .adapter preparado](../javaAdapter.adapter) y despliéguelo desde {{ site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
 
-Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
+Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.  
 
 1. Seleccione la opción **Acciones → Descargar ejemplo**. Descargue el ejemplo de adaptador **Java** "Hello World".
 
@@ -135,7 +125,9 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 {: #5-testing-the-application }
 1. En Xamarin Studio, seleccione el archivo `mfpclient.properties` y edite las propiedades **protocol**, **host** y **port** con los valores correctos para su instancia de {{ site.data.keys.mf_server }}.
     * Si está utilizando una instancia de {{ site.data.keys.mf_server }} local, los valores habituales son **http**, **localhost** y **9080**.
-    * Si está utilizando una instancia de {{ site.data.keys.mf_server }} remota (en Bluemix), los valores habituales son **https**, **dirección-su-servidor** y **443**.
+    * Si está utilizando una instancia de {{ site.data.keys.mf_server }} remota (en IBM Cloud), los valores habituales son **https**, **dirección-su-servidor** y **443**.
+
+* Si está utilizando un clúster Kubernetes en IBM Cloud Private y si el despliegue es de tipo **NodePort**, el valor del puerto será en general **NodePort** expuesto por el servicio en el clúster Kubernetes.
 
 2. Pulse el botón **Reproducir**.
 
@@ -146,6 +138,7 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 * Si la aplicación se pudo conectar a {{ site.data.keys.mf_server }}, tendrá lugar una llamada de solicitud de recurso con el adaptador Java desplegado.
 
 La respuesta del adaptador se imprime entonces en la consola de Xamarin Studio.
+
 ![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Siguientes pasos

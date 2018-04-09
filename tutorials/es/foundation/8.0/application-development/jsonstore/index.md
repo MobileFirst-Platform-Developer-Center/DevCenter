@@ -203,8 +203,8 @@ La característica JSONStore solo está disponible en simuladores y dispositivos
 
 | Característica                                     | JSONStore      | LocalStorage | IndexedDB | Cordova storage API | Cordova file API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Soporte Android (aplicaciones nativas y Cordova)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Soporte iOS (aplicaciones nativas y Cordova)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Soporte Android (aplicaciones nativas y Cordova)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	    |
+| Soporte iOS (aplicaciones nativas y Cordova)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	    |
 | Windows 8.1 Universal y Windows 10 UWP (aplicaciones Cordova)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
 | Cifrado de datos                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
 | Máximo almacenamiento                                 |Espacio disponible |    ~5MB     |   ~5MB 	 | Espacio disponible | Espacio disponible |
@@ -554,7 +554,7 @@ Este origen son las API de JSONStore que se pueden utilizar para añadir datos J
 No tienen que venir de una forma exclusiva desde un origen externo que precisa comunicación de red.
 
 
-Todos los siguientes ejemplos de código están escritos en un pseudocódigo similar a JavaScript.
+Todos los siguientes ejemplos de código están escritos en un pseudocódigo similar a JavaScript. 
 
 **Nota:** Utilice adaptadores para la capa de transporte.
 Algunas de las ventajas de utilizar adaptadores son conversión XML a JSON, seguridad, filtrado, desacoplamiento de código del lado del cliente y de código del lado del servidor.

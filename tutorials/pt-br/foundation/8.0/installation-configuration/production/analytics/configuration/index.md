@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Guia de Configuração do MobileFirst Analytics Server
-breadcrumb_title: Guia de Configuração
+title: Guia de configuração do servidor MobileFirst Analytics
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -111,6 +111,8 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 | analytics/tenant | Nome do índice Elasticsearch principal.	Worklight |
 
 Em todos os casos em que a chave não contém um ponto (como **httpport** mas não **http.enabled**), a configuração pode ser controlada por variáveis de ambiente do sistema, onde o nome da variável é prefixado com **ANALYTICS_**. Quando a propriedade JNDI e a variável de ambiente do sistema são configuradas, a variável de ambiente do sistema toma precedência. Por exemplo, se você tiver a propriedade JNDI **analytics/httpport** e a variável de ambiente do sistema **ANALTYICS_httpport** configuradas, o valor para **ANALYTICS_httpport** será usado.
+
+> **Importante**: atualmente, o MobileFirst Analytics v8.0 não suporta a ocupação variada. Por padrão, os eventos do servidor MobileFirst são enviados para uma única arquitetura de locatário.
 
 #### Tempo de vida (TTL) do documento
 {: #document-time-to-live-ttl }

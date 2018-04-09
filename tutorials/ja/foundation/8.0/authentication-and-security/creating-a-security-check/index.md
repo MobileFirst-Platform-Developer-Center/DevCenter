@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: セキュリティー検査の作成
-breadcrumb_title: セキュリティー検査の作成
+breadcrumb_title: Creating a security check
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
@@ -9,17 +9,15 @@ weight: 2
 ## 概説
 {: #overview }
 
-セキュリティー検査は、{{ site.data.keys.product_adj }} セキュリティー・フレームワークの基本的なサーバー・サイド・ビルディング・ブロックから構成されます。セキュリティー検査は、クライアント資格情報を取得して検証するなど、特定の許可ロジックを実装するサーバー・サイド・エンティティーです。ゼロ個以上のセキュリティー検査にマップされるスコープをリソースに割り当てることで、リソースを保護します。セキュリティー・フレームワークにより、保護スコープのすべてのセキュリティー検査に合格したクライアントのみにリソースに対するアクセス権限が付与されるようになります。セキュリティー検査を使用して、{{ site.data.keys.mf_server }} 上にホストされているリソースと外部リソース・サーバー上のリソースの両方に対するアクセスを許可できます。
+セキュリティー検査は、{{ site.data.keys.product_adj }} セキュリティー・フレームワークの基本的なサーバー・サイド・ビルディング・ブロックから構成されます。 セキュリティー検査は、クライアント資格情報を取得して検証するなど、特定の許可ロジックを実装するサーバー・サイド・エンティティーです。 ゼロ個以上のセキュリティー検査にマップされるスコープをリソースに割り当てることで、リソースを保護します。 セキュリティー・フレームワークにより、保護スコープのすべてのセキュリティー検査に合格したクライアントのみにリソースに対するアクセス権限が付与されるようになります。 セキュリティー検査を使用して、{{ site.data.keys.mf_server }} 上にホストされているリソースと外部リソース・サーバー上のリソースの両方に対するアクセスを許可できます。
 
 アダプターは、*リソース*・アダプター (クライアントに送信するリソースおよびコンテンツを提供するアダプター)、*SecurityCheck* アダプター、または**その両方**にすることができます。
 
-> <b>注:</b> セキュリティー検査はアダプター内に実装されますが、{{ site.data.keys.product_adj }} セキュリティー・フレームワークとアダプター API はそれぞれ独立しており、混在することはできません。したがって、アダプター API (`AdpatersAPI` インターフェースなど) をセキュリティー検査コード内で使用したり、セキュリティー検査 API をアダプター・リソース・コード内で使用したりすることはできません。
+> <b>注:</b> セキュリティー検査はアダプター内に実装されますが、{{ site.data.keys.product_adj }} セキュリティー・フレームワークとアダプター API はそれぞれ独立しており、混在することはできません。 したがって、アダプター API (`AdpatersAPI` インターフェースなど) をセキュリティー検査コード内で使用したり、セキュリティー検査 API をアダプター・リソース・コード内で使用したりすることはできません。
 
+セキュリティー・フレームワークのアーキテクチャーは、モジュラー型の柔軟なアーキテクチャーです。したがって、セキュリティー検査の実装は、本質的に、特定のリソースやアプリケーションに依存しません。 同じセキュリティー検査を再使用してさまざまなリソースを保護したり、各種許可フローでさまざまなセキュリティー検査の組み合わせを使用したりすることができます。 柔軟性を高めるために、セキュリティー検査クラスは、{{ site.data.keys.mf_console }} からセキュリティー検査定義とランタイムのどちらでもアダプター・レベルでカスタマイズ可能な構成プロパティーを公開します。
 
-
-セキュリティー・フレームワークのアーキテクチャーは、モジュラー型の柔軟なアーキテクチャーです。したがって、セキュリティー検査の実装は、本質的に、特定のリソースやアプリケーションに依存しません。同じセキュリティー検査を再使用してさまざまなリソースを保護したり、各種許可フローでさまざまなセキュリティー検査の組み合わせを使用したりすることができます。柔軟性を高めるために、セキュリティー検査クラスは、{{ site.data.keys.mf_console }} からセキュリティー検査定義とランタイムのどちらでもアダプター・レベルでカスタマイズ可能な構成プロパティーを公開します。
-
-開発プロセスを促進および加速するために、{{ site.data.keys.product }} には、`SecurityCheck` インターフェースの基底抽象実装が用意されています。さらに、`SecurityCheckConfiguration` インターフェースの基底抽象実装が提供されるほか (`SecurityCheckConfigurationBase`)、提供される各基底セキュリティー検査クラスの補足的なサンプルのセキュリティー検査構成クラスも提供されます。開発ニーズに最も適合した基底セキュリティー検査実装 (および関連のサンプル構成) で始めて、必要に応じて実装を拡張および変更してください。
+開発プロセスを促進および加速するために、{{ site.data.keys.product }} には、`SecurityCheck` インターフェースの基底抽象実装が用意されています。 さらに、`SecurityCheckConfiguration` インターフェースの基底抽象実装が提供されるほか (`SecurityCheckConfigurationBase`)、提供される各基底セキュリティー検査クラスの補足的なサンプルのセキュリティー検査構成クラスも提供されます。 開発ニーズに最も適合した基底セキュリティー検査実装 (および関連のサンプル構成) で始めて、必要に応じて実装を拡張および変更してください。
 
 > [セキュリティー検査コントラクト](contract)について詳細を参照してください。
 
@@ -29,7 +27,7 @@ weight: 2
 * [アダプターの作成](../../adapters/creating-adapters)方法について理解している必要があります。
 
 **使用法:**  
-下記で説明しているセキュリティー検査の基底クラスは、{{ site.data.keys.product_adj }} `com.ibm.mfp.security.checks.base` Java Maven ライブラリーの一部として入手できます。これらのクラスは [Maven 中央リポジトリー](http://search.maven.org/#search|ga|1|a%3A%22mfp-security-checks-base%22)からアダプターを作成するときにダウンロードされます。オフラインで開発を行っている場合は、**{{ site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」タブ→「セキュリティー検査」**からダウンロードできます。
+下記で説明しているセキュリティー検査の基底クラスは、{{ site.data.keys.product_adj }} `com.ibm.mfp.security.checks.base` Java Maven ライブラリーの一部として入手できます。これらのクラスは [Maven 中央リポジトリー](http://search.maven.org/#search|ga|1|a%3A%22mfp-security-checks-base%22)からアダプターを作成するときにダウンロードされます。 オフラインで開発を行っている場合は、**{{ site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」タブ→「セキュリティー検査」**からダウンロードできます。
 
 #### ジャンプ先:
 {: #jump-to }
@@ -44,13 +42,11 @@ weight: 2
 
 [Java アダプターまたは JavaScript アダプターを作成](../../adapters/creating-adapters/)するか、既存のアダプターを使用します。
 
-> Java アダプターを作成する場合、デフォルトのテンプレートはアダプターが**リソース**を提供するものと想定します。セキュリティー検査とリソースを同じアダプター内にバンドルするか、別々のアダプターに分けるかは、開発者が選択できます。
+> Java アダプターを作成する場合、デフォルトのテンプレートはアダプターが**リソース**を提供するものと想定します。 セキュリティー検査とリソースを同じアダプター内にバンドルするか、別々のアダプターに分けるかは、開発者が選択できます。
 
+デフォルトの**リソース**実装を削除するには、**[AdapterName]Application.java** ファイルと **[AdapterName]Resource.java** ファイルを削除します。 **adapter.xml** から `<JAXRSApplicationClass>` エレメントも削除してください。
 
-
-デフォルトの**リソース**実装を削除するには、**[AdapterName]Application.java** ファイルと **[AdapterName]Resource.java** ファイルを削除します。**adapter.xml** から `<JAXRSApplicationClass>` エレメントも削除してください。
-
-Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefinition` という XML エレメントを追加します。例えば、次のとおりです。
+Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefinition` という XML エレメントを追加します。 例えば、次のとおりです。
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -61,21 +57,21 @@ Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefin
 ```
 
 * `name` 属性は、セキュリティー検査の名前です。
-* `class` 属性は、セキュリティー検査の実装 Java クラスを指定します。このクラスを作成する必要があります。
+* `class` 属性は、セキュリティー検査の実装 Java クラスを指定します。 このクラスを作成する必要があります。
 * セキュリティー検査は、`property` エレメントのリストを使用して[さらに詳細に構成](#security-check-configuration)できます。
 * カスタム・プロパティーの定義方法については、[セキュリティー検査の構成](#security-check-configuration)を参照してください。
 
 アダプターとセキュリティー検査定義を {{ site.data.keys.mf_server }} に正常にデプロイした後は、**{{ site.data.keys.mf_console }} →「アダプター」→「 [ご使用のアダプター] 」** から、セキュリティー検査とその構成情報を確認したり、ランタイム構成を変更したりすることもできます。
 
-* **「構成ファイル」**タブには、アダプター記述子のサーバー・コピーが表示されます。これには、カスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
-* **「セキュリティー検査」**タブには、セキュリティー検査定義で公開したすべての構成プロパティーのリストが表示されます。プロパティーは、構成されている `displayName` 属性の値で参照されます。表示名が構成されていない場合は、name 属性の値で参照されます。定義でプロパティーの description 属性を設定した場合は、この説明も表示されます。各プロパティーで、`defaultValue` 属性に構成された値が、現行値として表示されます。
-この値を変更して、セキュリティー検査定義のデフォルト値をオーバーライドできます。また、セキュリティー検査定義の最初のデフォルト値をいつでも復元できます。 
+* **「構成ファイル」**タブには、アダプター記述子のサーバー・コピーが表示されます。これには、カスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。 また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
+* **「セキュリティー検査」**タブには、セキュリティー検査定義で公開したすべての構成プロパティーのリストが表示されます。 プロパティーは、構成されている `displayName` 属性の値で参照されます。表示名が構成されていない場合は、name 属性の値で参照されます。 定義でプロパティーの description 属性を設定した場合は、この説明も表示されます。
+各プロパティーで、`defaultValue` 属性に構成された値が、現行値として表示されます。 この値を変更して、セキュリティー検査定義のデフォルト値をオーバーライドできます。 また、セキュリティー検査定義の最初のデフォルト値をいつでも復元できます。
 * {{ site.data.keys.mf_console }} の**「アプリケーション」**セクションからアプリケーション・バージョンを選択することもできます。
 
 ## セキュリティー検査の実装
 {: #security-check-implementation }
 
-セキュリティー検査の **Java クラス**を作成します。実装では、以下に示す、提供される基底クラスのいずれかを継承する必要があります。選択する親クラスによって、カスタマイズと単純さの間のバランスが決まります。
+セキュリティー検査の **Java クラス**を作成します。 実装では、以下に示す、提供される基底クラスのいずれかを継承する必要があります。 選択する親クラスによって、カスタマイズと単純さの間のバランスが決まります。
 
 ### セキュリティー検査
 {: #security-check }
@@ -93,22 +89,22 @@ JSON としての外部化、非アクティブ・タイムアウト、有効期
 
 ### CredentialsValidationSecurityCheck
 {: #credentialsvalidationsecurityCheck }
-このクラスは、`ExternalizableSecurityCheck` を継承し、その大部分のメソッドを実装して、簡単に使用できるようにします。`validateCredentials` と `createChallenge` の 2 つのメソッドを実装する必要があります。この実装では、特定間隔の間に限られた数のログイン試行が許可されます。その後、構成された期間、セキュリティー検査がブロックされます。 ログインが成功した場合、セキュリティー検査の状態は、構成された期間、成功のままになり、その間、ユーザーは要求されたリソースにアクセスすることができます。
+このクラスは、`ExternalizableSecurityCheck` を継承し、その大部分のメソッドを実装して、簡単に使用できるようにします。 `validateCredentials` と `createChallenge` の 2 つのメソッドを実装する必要があります。 この実装では、特定間隔の間に限られた数のログイン試行が許可されます。その後、構成された期間、セキュリティー検査がブロックされます。 ログインが成功した場合、セキュリティー検査の状態は、構成された期間、成功のままになり、その間、ユーザーは要求されたリソースにアクセスすることができます。
 
-`CredentialsValidationSecurityCheck` クラスは、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
+`CredentialsValidationSecurityCheck` クラスは、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。 設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
 
 > [CredentialsValidationSecurityCheck](../credentials-validation/) チュートリアルで詳細を参照してください。
 
 ### UserAuthenticationSecurityCheck
 {: #userauthenticationsecuritycheck}
-このクラスは、`CredentialsValidationSecurityCheck` を継承し、したがってそのすべての機能を継承します。このクラスはそこに、現行ログイン・ユーザーを識別するのに使用できる `AuthenticatedUser` ユーザー ID オブジェクトを作成する実装を追加します。「ユーザーを記憶する (Remember Me)」ログイン動作をオプションで有効にする組み込み機能も提供されます。`createUser`、`validateCredentials`、および `createChallenge` の 3 つのメソッドを実装する必要があります。
+このクラスは、`CredentialsValidationSecurityCheck` を継承し、したがってそのすべての機能を継承します。 このクラスはそこに、現行ログイン・ユーザーを識別するのに使用できる `AuthenticatedUser` ユーザー ID オブジェクトを作成する実装を追加します。 「ユーザーを記憶する (Remember Me)」ログイン動作をオプションで有効にする組み込み機能も提供されます。 `createUser`、`validateCredentials`、および `createChallenge` の 3 つのメソッドを実装する必要があります。
 
 > [UserAuthentication セキュリティー検査](../user-authentication/)チュートリアルで詳細を参照してください。
 
 ## セキュリティー検査の構成
 {: #security-check-configuration }
 
-各セキュリティー検査実装クラスは、そのセキュリティー検査で使用可能なプロパティーを定義する `SecurityCheckConfiguration` クラスを使用できます。各基本 `SecurityCheck` クラスには、対応する `SecurityCheckConfiguration` クラスが付属しています。基本 `SecurityCheckConfiguration` クラスのいずれかを継承する実装を独自に作成し、それをカスタム・セキュリティー検査に使用できます。
+各セキュリティー検査実装クラスは、そのセキュリティー検査で使用可能なプロパティーを定義する `SecurityCheckConfiguration` クラスを使用できます。 各基本 `SecurityCheck` クラスには、対応する `SecurityCheckConfiguration` クラスが付属しています。 基本 `SecurityCheckConfiguration` クラスのいずれかを継承する実装を独自に作成し、それをカスタム・セキュリティー検査に使用できます。
 
 例えば、`UserAuthenticationSecurityCheck` の `createConfiguration` メソッドは、`UserAuthenticationSecurityCheckConfig` のインスタンスを返します。
 
@@ -158,8 +154,6 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 
 > 実際の例については、CredentialsValidation セキュリティー検査チュートリアルの[セキュリティー検査の構成](../credentials-validation/security-check/#configuring-the-security-check)セクションを参照してください。
 
-
-
 ### {{ site.data.keys.mf_console }} - アダプター
 {: #mobilefirst-operations-console-adapter }
 {{ site.data.keys.mf_console }} →**「 [ご使用のアダプター] 」→「セキュリティー検査」タブ**で、**adapter.xml** ファイル内に定義されている任意のプロパティーの値を変更できます。  
@@ -171,19 +165,19 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 
 1. **コマンド・ライン・ウィンドウ**から、プロジェクトのルート・フォルダーにナビゲートし、`mfpdev adapter pull` を実行します。
 2. **project-folder\mobilefirst** フォルダーにある構成ファイルを開きます。
-3. ファイルを編集します。`securityCheckDefinitions` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内で、properties オブジェクトを見つけるか、追加します。構成する必要がある使用可能な各構成プロパティーについて、properties オブジェクト内に構成プロパティー名と値のペアを追加します。例えば、次のとおりです。 
+3. ファイルを編集します。`securityCheckDefinitions` オブジェクトを見つけてください。 このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。 セキュリティー検査オブジェクト内で、properties オブジェクトを見つけるか、追加します。 構成する必要がある使用可能な各構成プロパティーについて、properties オブジェクト内に構成プロパティー名と値のペアを追加します。 例えば、次のとおりです。
 
    ```xml
-"securityCheckDefinitions": {
-"UserAuthentication": {
+   "securityCheckDefinitions": {
+        "UserAuthentication": {
             "properties": {
-"maxAttempts": "4",
+                "maxAttempts": "4",
                 "failureExpirationSec: "90"
             }
         }
    }
    ```
-   
+
 4. コマンド `mfpdev adapter push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
 ### {{ site.data.keys.mf_console }} - アプリケーション
@@ -198,19 +192,19 @@ Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefi
 
 1. **コマンド・ライン・ウィンドウ**から、プロジェクトのルート・フォルダーにナビゲートし、`mfpdev app pull` を実行します。
 2. **project-folder\mobilefirst** フォルダーにある構成ファイルを開きます。
-3. ファイルを編集します。`securityCheckConfigurations` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内に、構成する必要がある使用可能な各構成プロパティーについて、構成プロパティーの名前と値のペアを追加します。例えば、次のとおりです。
+3. ファイルを編集します。`securityCheckConfigurations` オブジェクトを見つけてください。 このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。 セキュリティー検査オブジェクト内に、構成する必要がある使用可能な各構成プロパティーについて、構成プロパティーの名前と値のペアを追加します。 例えば、次のとおりです。
 
    ```xml
-"SecurityCheckConfigurations": {
-"UserAuthentication": {
+   "SecurityCheckConfigurations": {
+        "UserAuthentication": {
             "properties": {
-"maxAttempts": "2",
+                "maxAttempts": "2",
                 "failureExpirationSec: "60"
             }
         }
    }
    ```
-   
+
 4. コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
 ## 事前定義セキュリティー検査

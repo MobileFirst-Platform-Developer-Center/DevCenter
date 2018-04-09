@@ -5,9 +5,9 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
 downloads:
-  - name: Xcode プロジェクトのダウンロード
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80
-  - name: SecurityCheck Maven プロジェクトのダウンロード
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -19,7 +19,7 @@ downloads:
 ```json
 {
   "challenges": {
-"SomeSecurityCheck1":null,
+    "SomeSecurityCheck1":null,
     "SomeSecurityCheck2":{
       "some property": "some value"
     }
@@ -34,7 +34,7 @@ downloads:
 {: #creating-the-challenge-handler }
 チャレンジ・ハンドラーは、{{ site.data.keys.mf_server }} によって送信されるチャレンジを処理するクラスです。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
 
-この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
+この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。 このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
 
 `SecurityCheckChallengeHandler` を継承する Swift クラスを作成します。
 
@@ -46,7 +46,7 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 
 ## チャレンジの処理
 {: #handling-the-challenge }
-`SecurityCheckChallengeHandler` プロトコルが求める最小要件は、`handleChallenge` メソッドを実装することです。このメソッドは、ユーザーに対して資格情報を求めるプロンプトを出します。`handleChallenge` メソッドは、チャレンジ `JSON` を `Dictionary` として受け取ります。
+`SecurityCheckChallengeHandler` プロトコルが求める最小要件は、`handleChallenge` メソッドを実装することです。このメソッドは、ユーザーに対して資格情報を求めるプロンプトを出します。 `handleChallenge` メソッドは、チャレンジ `JSON` を `Dictionary` として受け取ります。
 
 この例では、PIN コードの入力をユーザーに要求するアラートが出されます。
 
@@ -72,7 +72,7 @@ override func handleChallenge(challenge: [NSObject : AnyObject]!) {
 
 ## チャレンジ応答の送信
 {: #submitting-the-challenges-answer }
-UI から資格情報が収集された後は、`WLChallengeHandler` の `submitChallengeAnswer(answer: [NSObject : AnyObject]!)` メソッドを使用して、セキュリティー検査に応答を返信します。この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
+UI から資格情報が収集された後は、`WLChallengeHandler` の `submitChallengeAnswer(answer: [NSObject : AnyObject]!)` メソッドを使用して、セキュリティー検査に応答を返信します。 この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
 
 ```swift
 self.submitChallengeAnswer(["pin": pinTextField.text!])
@@ -90,7 +90,7 @@ self.cancel()
 
 ## 失敗の処理
 {: #handling-failures }
-一部のシナリオでは、失敗がトリガーされる可能性があります (例えば、最大試行回数に達したときなど)。これらを処理するには、`SecurityCheckChallengeHandler` の `handleFailure` メソッドを実装します。
+一部のシナリオでは、失敗がトリガーされる可能性があります (例えば、最大試行回数に達したときなど)。 これらを処理するには、`SecurityCheckChallengeHandler` の `handleFailure` メソッドを実装します。
 パラメーターとして渡される `Dictionary` の構造は、失敗の性質に大きく依存します。
 
 ```swift
@@ -110,7 +110,7 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 {: #handling-successes }
 一般的に、成功の場合は、アプリケーションの残りの処理を続行できるように、フレームワークによって自動的に処理されます。
 
-オプションで、`SecurityCheckChallengeHandler` の `handleSuccess(success: [NSObject : AnyObject]!)` メソッドを実装すると、フレームワークがチャレンジ・ハンドラー・フローを閉じる前に、何かの処理を行うようにできます。この場合も、`success` `Dictionary` のコンテンツおよび構造は、セキュリティー検査が送信する内容に依存します。
+オプションで、`SecurityCheckChallengeHandler` の `handleSuccess(success: [NSObject : AnyObject]!)` メソッドを実装すると、フレームワークがチャレンジ・ハンドラー・フローを閉じる前に、何かの処理を行うようにできます。 この場合も、`success` `Dictionary` のコンテンツおよび構造は、セキュリティー検査が送信する内容に依存します。
 
 `PinCodeAttemptsSwift` サンプル・アプリケーションの場合、success に追加のデータは含まれないため、`handleSuccess` は実装されていません。
 
@@ -136,7 +136,7 @@ WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
 WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
 ```
 
-**注:** チャレンジ・ハンドラーの登録は、アプリケーション・ライフサイクル全体の中で 1 回のみ実行します。iOS AppDelegate クラスを使用してこれを行うことをお勧めします。
+**注:** チャレンジ・ハンドラーの登録は、アプリケーション・ライフサイクル全体の中で 1 回のみ実行します。 iOS AppDelegate クラスを使用してこれを行うことをお勧めします。
 
 ## サンプル・アプリケーション
 {: #sample-application }

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Externe Ressourcen mit MobileFirst Server authentifizieren
-breadcrumb_title: Schutz externer Ressourcen
+title: MobileFirst Server für die Authentifizierung externer Ressourcen verwenden
+breadcrumb_title: Protecting External Resources
 relevantTo: [android,ios,windows,javascript]
 weight: 12
 show_children: true

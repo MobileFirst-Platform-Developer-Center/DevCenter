@@ -2,7 +2,7 @@
 layout: tutorial
 title: Console Application Center
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -143,7 +143,7 @@ Pour ajouter une application afin de la rendre disponible pour l'installation su
    ### Windows 10 universal
    {: windows-10-universal}
    L'extension du nom de fichier de l'application est **.appx**.
-   
+
 
 
 4. Cliquez sur **Next** pour accéder aux propriétés afin de configurer la définition de l'application.

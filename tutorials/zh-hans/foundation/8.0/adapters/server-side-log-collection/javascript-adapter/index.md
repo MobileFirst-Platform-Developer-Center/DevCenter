@@ -18,18 +18,18 @@ relevantTo: [ios,android,windows,javascript]
 MFP.Logger.debug("This is a debug message from a JavaScript adapter");
 ```
 
-从最低到最高详细度的其他日志记录级别为：ERROR、WARN、INFO、LOG 和 DEBUG。 
+从最低到最高详细度的其他日志记录级别为：ERROR、WARN、INFO、LOG 和 DEBUG。
 
 ## 访问日志文件
 {: #accessing-the-log-files }
 
-* 在 {{ site.data.keys.mf_server }} 的预安装中，根据底层应用程序服务器提供该文件。 
+* 在 {{ site.data.keys.mf_server }} 的预安装中，根据底层应用程序服务器提供该文件。
     * [IBM WebSphere Application Server 完整概要文件](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
     * [IBM WebSphere Application Server Liberty 概要文件](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * 要获取以下各项中云部署中的日志：
     * IBM Containers 或 Liberty Build Pack，请参阅 [IBM Containers 日志和跟踪集合](../../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/)教程。
-    * Mobile Foundation Bluemix 服务，请参阅[使用 Mobile Foundation](../../../bluemix/using-mobile-foundation) 教程中的[访问服务器日志](../../../bluemix/using-mobile-foundation/#accessing-server-logs)部分。
+    * Mobile Foundation IBM Cloud 服务，请参阅[使用 Mobile Foundation](../../../bluemix/using-mobile-foundation) 教程中的[访问服务器日志](../../../bluemix/using-mobile-foundation/#accessing-server-logs)部分。
 
 ## 将日志转发到分析服务器
 {: #forwarding-logs-to-the-analytics-server }
@@ -41,4 +41,3 @@ MFP.Logger.debug("This is a debug message from a JavaScript adapter");
 3. 在**分析 → 更多程序包**部分，指定 **MFP.Logger**，以将 JavaScript 适配器日志转发至 {{ site.data.keys.mf_server }}。
 
 ![从控制台进行日志过滤](javascript-filter.png)
-

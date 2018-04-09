@@ -12,11 +12,11 @@ Die {{ site.data.keys.product_full }} setzt sich aus mehreren Komponenten zusamm
 Diese Komponenten sind in Onlinerepositorys verfügbar und können mit Paketmanagern installiert werden. Die Onlinerepositorys
 stellen jeweils das neueste Release einer Komponente bereit. Die gleichen Komponenten können mit dem {{ site.data.keys.mf_dev_kit }} für die lokale Nutzung heruntergeladen werden. Im {{ site.data.keys.mf_dev_kit_short }} ist die Version enthalten,
 die zum Zeitpunkt der Erstellung des jeweiligen Developer-Kit-Builds verfügbar war.
-Wenn Sie die neueste Version verwenden möchten, müssen Sie einen neuen Developer-Kit-Build herunterladen. 
+Wenn Sie die neueste Version verwenden möchten, müssen Sie einen neuen Developer-Kit-Build herunterladen.
 
 Informieren Sie sich nun tiefergehend über die Komponenten der {{ site.data.keys.product }}.
 
-> Um die {{ site.data.keys.product }} zu bewerten, müssen Sie nur mit dem Mobile-Foundation-Bluemix-Service eine Instanz von {{ site.data.keys.mf_server }} in Bluemix aktivieren. Anweisungen enthält das Lernpgoramm [Mobile Foundation verwenden](../../../bluemix/using-mobile-foundation/). Für eine lokale Installation können Sie auch das {{ site.data.keys.mf_dev_kit_short }} installieren.
+> Um die {{ site.data.keys.product }} zu bewerten, müssen Sie nur mit dem IBM Cloud-Service "Mobile Foundation" eine Instanz von {{ site.data.keys.mf_server }} in IBM Cloud aktivieren. Anweisungen enthält das Lernpgoramm [Mobile Foundation verwenden](../../../bluemix/using-mobile-foundation/). Für eine lokale Installation können Sie auch das {{ site.data.keys.mf_dev_kit_short }} installieren.
 
 #### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
@@ -72,7 +72,7 @@ Für Mac und Linux lautet die Dateierweiterung `.sh` und für Windows lautet sie
 Die {{ site.data.keys.mf_console }} ermöglicht Entwicklern die Ausführung folgender Funktionen:
 
 - Anwendungen und Adapter registrieren und implementieren
-- Startercodeschablonen für native Anwendungen bzw. Cordova-Anwendungen herunterladen (optional) 
+- Startercodeschablonen für native Anwendungen bzw. Cordova-Anwendungen herunterladen (optional)
 - Authentifizierungs- und Sicherheitseigenschaften einer Anwendung konfigurieren
 - Anwendungen verwalten:
     - Anwendungsauthentizität
@@ -117,7 +117,7 @@ wechseln Sie zur Lernprogrammkategorie zum [Hinzufügen des SDK der {{ site.data
 
     Für die Implementierung von Anwendungen und Adaptern können Sie Ihren bevorzugten Codeeditor nutzen, z. B.
 Atom.io, Visual Studio Code, Eclipse, IntelliJ und andere.  
-    
+
 * Für native Anwendungen ist Xcode, Android Studio oder Visual Studio erforderlich. Informieren Sie sich anhand des Abschnitts [iOS/Android/Windows-Entwicklungsumgebung einrichten](../).
 
 ### Adapter
@@ -127,4 +127,3 @@ Für Adapter müssen Sie Apache Maven installieren. In der Kategorie [Adapter](.
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
 Öffnen Sie die Seite [Alle Lernprogramme](../../../all-tutorials/) und wählen Sie eine Lernprogrammkategorie aus.
-

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: セキュアなダイレクト・アップデートの実装
-breadcrumb_title: セキュアなダイレクト・アップデート
+breadcrumb_title: Secure Direct Update
 relevantTo: [cordova]
 weight: 2
 ---
@@ -10,11 +10,11 @@ weight: 2
 {: #overview }
 セキュアなダイレクト・アップデートが機能するためには、ユーザー定義の鍵ストア・ファイルが {{ site.data.keys.mf_server }} にデプロイされている必要があり、マッチングする公開鍵のコピーが、デプロイされたクライアント・アプリケーションに組み込まれている必要があります。
 
-このトピックでは、新規クライアント・アプリケーションとアップグレードされた既存のクライアント・アプリケーションに公開鍵をバインドする方法を説明します。{{ site.data.keys.mf_server }} で鍵ストアを構成する方法について詳しくは、[『{{ site.data.keys.mf_server }}鍵ストアの構成』](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
+このトピックでは、新規クライアント・アプリケーションとアップグレードされた既存のクライアント・アプリケーションに公開鍵をバインドする方法を説明します。 {{ site.data.keys.mf_server }} で鍵ストアを構成する方法について詳しくは、[『{{ site.data.keys.mf_server }}鍵ストアの構成』](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)を参照してください。
 
 サーバーは、開発フェーズのセキュアなダイレクト・アップデートをテストするために使用できる組み込み鍵ストアを提供します。
 
-**注:** 公開鍵をクライアント・アプリケーションにバインドして再ビルドした後、それを {{ site.data.keys.mf_server }} に再度アップロードする必要はありません。ただし、以前にアプリケーションを公開鍵なしでマーケットに公開している場合は、リパブリッシュする必要があります。
+**注:** 公開鍵をクライアント・アプリケーションにバインドして再ビルドした後、それを {{ site.data.keys.mf_server }} に再度アップロードする必要はありません。 ただし、以前にアプリケーションを公開鍵なしでマーケットに公開している場合は、リパブリッシュする必要があります。
 
 開発目的の場合、以下のデフォルトのダミー公開鍵は、{{ site.data.keys.mf_server }} で提供されます。
 
@@ -40,13 +40,13 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 
 ## 鍵ストアの生成およびデプロイ
 {: #generating-and-deploying-the-keystore }
-証明書を生成して鍵ストアから公開鍵を抽出するために、複数のツールを利用できます。以下の例では、JDK 鍵ツール・ユーティリティーと OpenSSL を使用した手順を説明します。
+証明書を生成して鍵ストアから公開鍵を抽出するために、複数のツールを利用できます。 以下の例では、JDK 鍵ツール・ユーティリティーと OpenSSL を使用した手順を説明します。
 
 1. {{ site.data.keys.mf_server }} にデプロイされる鍵ストア・ファイルから公開鍵を抽出します。  
    注: 公開鍵は Base64 でエンコードされる必要があります。
     
    例えば、エイリアス名が `mfp-server` で、鍵ストア・ファイルが **keystore.jks** であるとします。  
-証明書を生成するには、次のコマンドを実行します。
+   証明書を生成するには、次のコマンドを実行します。
     
    ```bash
    keytool -export -alias mfp-server -file certfile.cert
@@ -54,10 +54,11 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
    ```
     
    証明書ファイルが生成されます。  
-次のコマンドを実行して公開鍵を抽出します。
+   次のコマンドを実行して公開鍵を抽出します。
     
    ```bash
-openssl x509 -inform der -in certfile.cert -pubkey -noout```
+   openssl x509 -inform der -in certfile.cert -pubkey -noout
+   ```
     
    **注:** 鍵ツール単独で公開鍵を Base64 形式で抽出することはできません。
     

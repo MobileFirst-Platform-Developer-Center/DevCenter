@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server Installationshandbuch
-breadcrumb_title: Installationshandbuch
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,7 @@ eingebettete Elasticsearch-Bibliothek als Data-Store und für die Clusterverwalt
 Platten-E/A erforderlich. Aus dem Grund müssen für ein Produktionssystem einige Voraussetzungen erfüllt sein. Generell ist es sehr wahrscheinlich, dass Sie nicht genug Haupt- und Plattenspeicher haben (oder feststellen, dass die Platten-E/A Ihr Leistungsengpass ist), bevor
 die CPU zum Problem wird. In einer Clusterumgebung benötigen Sie benachbarte Knoten, die schnell und zuverlässig sind. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Systemvoraussetzungen](#system-requirements)
@@ -130,7 +130,7 @@ Wenn Sie **shards** beispielsweise auf 4 und **replicas** auf 2 setzen, können 
 ## MobileFirst Analytics in WebSphere Application Server Liberty installieren
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
 Stellen Sie sicher, dass die EAR-Datei für {{ site.data.keys.mf_analytics }} vorhanden ist. Weitere Informationen zu den Installationsartefakten
-finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Datei **analytics.ear** befindet sich im Ordner **<MF-Server-Installationsverzeichnis>\analytics**. Weitere Informationen zum Herunterladen und Installieren von
+finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Datei **analytics.ear** befindet sich im Ornder `<MF-Server-Installationsverzeichnis>\analytics`. Weitere Informationen zum Herunterladen und Installieren von
 WebSphere Application Server Liberty finden Sie
 im Artikel [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) auf
 IBM developerWorks.
@@ -149,9 +149,8 @@ den folgenden Befehl aus:
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Fügen Sie die Datei **analytics.ear** zum Ordner
-**./usr/servers/<Servername>/apps** Ihres Liberty-Servers hinzu. 
-4. Ersetzen Sie den Inhalt des Tags `<featureManager>` durch die Datei **./usr/servers/<Servername>/server.xml** mit folgendem Inhalt:
+3. Fügen Sie die Datei **analytics.ear** zum Ordner `./usr/servers/<Servername>/apps` Ihres Liberty-Servers hinzu.
+4. Ersetzen Sie den Inhalt des Tags `<featureManager>` durch die Datei `./usr/servers/<Servername>/server.xml` mit folgendem Inhalt:
 
    ```xml
    <featureManager>
@@ -230,14 +229,16 @@ unterstützt. Welche Tomcat-Version Java 7 unterstützt erfahren Sie unter
 [Apache Tomcat
 Versions](http://tomcat.apache.org/whichversion.html).
 
-1. Fügen Sie die Dateien **analytics-service.war** und **analytics-ui.war** zum Tomcat-Ordner **webapps** hinzu.
-2. Entfernen Sie in der Datei **conf/server.xml** das Kommentarzeichen vor dem folgenden Abschnitt, der in einem neu heruntergeladenen Tomcat-Archiv vorhanden, aber auf Kommentar gesetzt ist.
+1. Fügen Sie die Dateien **analytics-service.war** und **analytics-ui.war** zum Tomcat-Ordner **webapps**
+hinzu. 
+2. Entfernen Sie in der Datei **conf/server.xml** das Kommentarzeichen vor dem folgenden Abschnitt, der in einem neu heruntergeladenen Tomcat-Archiv vorhanden, aber auf
+Kommentar gesetzt ist. 
 
    ```xml
    <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
-3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry.
+3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry. 
 
    ```xml
    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
@@ -245,10 +246,14 @@ Versions](http://tomcat.apache.org/whichversion.html).
    <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
    ```
 
-   Das **MemoryRealm** erkennt die in der Datei **conf/tomcat-users.xml** definierten Benutzer. Weitere Informationen zu anderen Möglichkeiten finden Sie unter [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+   Das **MemoryRealm** erkennt die in der Datei
+**conf/tomcat-users.xml** definierten Benutzer. Weitere Informationen zu anderen Möglichkeiten finden Sie unter
+[Apache Tomcat Realm
+Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
-4. Fügen Sie die folgenden Abschnitte zur Datei **conf/tomcat-users.xml** hinzu, um ein **MemoryRealm** zu konfigurieren.
-    * Fügen Sie die Sicherheitsrollen hinzu.
+4. Fügen Sie die folgenden Abschnitte zur Datei **conf/tomcat-users.xml** hinzu, um ein
+**MemoryRealm** zu konfigurieren.
+    * Fügen Sie die Sicherheitsrollen hinzu. 
 
       ```xml
       <role rolename="analytics_administrator"/>
@@ -257,7 +262,7 @@ Versions](http://tomcat.apache.org/whichversion.html).
       <role rolename="analytics_developer"/>
       <role rolename="analytics_business"/>
       ```
-    * Fügen Sie ein paar Benutzer mit den gewünschten Rollen hinzu.
+    * Fügen Sie ein paar Benutzer mit den gewünschten Rollen hinzu. 
 
       ```xml
       <user name="admin" password="admin" roles="analytics_administrator"/>
@@ -272,7 +277,9 @@ Versions](http://tomcat.apache.org/whichversion.html).
       http://localhost:8080/analytics/console
       ```
 
-    Weitere Informationen zum Starten des Tomcat-Servers finden Sie auf der offiziellen Tomcat-Site, z. B. unter [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html) für Tomcat 7.0.
+    Weitere Informationen zum Starten des Tomcat-Servers finden Sie auf der offiziellen Tomcat-Site,
+z. B. unter [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html) für Tomcat
+7.0.
 
 ## {{ site.data.keys.mf_analytics }} in WebSphere Application Server installieren
 {: #installing-mobilefirst-analytics-on-websphere-application-server }

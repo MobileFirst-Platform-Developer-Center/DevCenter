@@ -1,44 +1,46 @@
 ---
-layout: tutorial
-title: Configuración de MobileFirst Server en IBM Bluemix mediante scripts para IBM Containers
-breadcrumb_title: IBM Containers
-relevantTo: [ios,android,windows,javascript]
-weight: 2
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
+#breadcrumb_title: IBM Containers
+#relevantTo: [ios,android,windows,javascript]
+#weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }}, así como una instancia de {{ site.data.keys.mf_analytics }} en IBM Bluemix. Para llevarlo a cabo, realice los pasos siguientes:
+Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }}, así como una instancia de {{ site.data.keys.mf_analytics }} en IBM Cloud. Para llevarlo a cabo, realice los pasos siguientes:
 
 * Configure su sistema host con las herramientas necesarias (Cloud Foundry CLI, Docker y el plugin de IBM Containers Extension (cf ic)
-* Configure su cuenta de Bluemix
-* Cree un {{ site.data.keys.mf_server }} y envíelo mediante push al repositorio de Bluemix.
+* Configure su cuenta de IBM Cloud
+* Cree una imagen de {{ site.data.keys.mf_server }} y envíela por push al repositorio de IBM Cloud.
 
 Finalmente, ejecute la imagen en IBM Containers como un contenedor individual o como un grupo de contenedores, registre sus aplicaciones y también despliegue sus adaptadores.
 
 **Notas:**  
 
 * Actualmente el sistema operativo Windows no está soportado para ejecutar estos scripts.  
-* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers. 
+* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers.
 
 #### Ir a:
 {: #jump-to }
-* [Registrar una cuenta en Bluemix](#register-an-account-at-bluemix)
+* [Registrar una cuenta en IBM Cloud](#register-an-account-at-bluemix)
 * [Configurar la máquina host](#set-up-your-host-machine)
 * [Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}](#download-the-ibm-mfpf-container-8000-archive)
 * [Requisitos previos](#prerequisites)
 * [Configuración de {{ site.data.keys.product_adj }} y Analytics Servers en IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 * [Aplicar arreglos de {{ site.data.keys.mf_server }}](#applying-mobilefirst-server-fixes)
-* [Eliminar un contenedor desde Bluemix](#removing-a-container-from-bluemix)
-* [Eliminar la configuración del servicio de base de datos desde Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [Eliminar un contenedor de IBM Cloud](#removing-a-container-from-bluemix)
+* [Eliminar la configuración del servicio de base de datos de IBM Cloud](#removing-the-database-service-configuration-from-bluemix)
 
-## Registrar una cuenta en Bluemix
+## Registrar una cuenta en IBM Cloud
 {: #register-an-account-at-bluemix }
-Si todavía no tiene una cuenta, vaya al [sitio web de Bluemix](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
+Si todavía no tiene una cuenta, vaya al [sitio web de IBM Cloud](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
 
-### El panel de control de Bluemix 
+### Panel de control de IBM Cloud
 {: #the-bluemix-dashboard }
-Después de iniciar sesión en Bluemix, se le presentará el panel de control de Bluemix, que proporciona una visión general del **espacio** activo de Bluemix. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
+Después de iniciar sesión en IBM Cloud, se le presentará el panel de control de IBM Cloud, que proporciona una visión general del **espacio** activo de IBM Cloud. De forma predeterminada, esta área de trabajo recibe el nombre de "dev". Puede crear varios espacios o áreas de trabajo, si es necesario.
 
 ## Configurar la máquina host
 {: #set-up-your-host-machine }
@@ -48,20 +50,20 @@ Para gestionar los contenedores y las imágenes, debe instalar las herramientas 
 {: #docker }
 Vaya a [Documentación de Docker](https://docs.docker.com/) en el menú de la izquierda y seleccione **Instalar → Motor de Docker**, seleccione su tipo de sistema operativo y siga las instrucciones para instalar Docker Toolbox.
 
-**Nota:** IBM no da soporte a Kitematic de Docker. 
+**Nota:** IBM no da soporte a Kitematic de Docker.
 
-En macOS, hay dos opciones disponibles para ejecutar los mandatos de Docker: 
+En macOS, hay dos opciones disponibles para ejecutar los mandatos de Docker:
 
 * En Terminal.app de macOS: no es necesario ningún paso adicional. Solo puede trabajar desde el mismo.
-* En Docker Quickstart Terminal: siga los pasos siguientes. 
+* En Docker Quickstart Terminal: siga los pasos siguientes.
 
-* Ejecute el mandato: 
+* Ejecute el mandato:
 
   ```bash
   docker-machine env default
   ```
 
-* Establezca el resultado como las variables de entorno, por ejemplo: 
+* Establezca el resultado como las variables de entorno, por ejemplo:
 
   ```bash
   $ docker-machine env default
@@ -71,7 +73,7 @@ En macOS, hay dos opciones disponibles para ejecutar los mandatos de Docker:
   export DOCKER_MACHINE_NAME="default"
   ```
 
-> Para obtener más información, consulte la documentación de Docker. 
+> Para obtener más información, consulte la documentación de Docker.
 
 ### Plugin de Cloud Foundry y plugin de IBM Containers
 {: #cloud-foundry-plug-in-and-ibm-containers-plug-in}
@@ -80,7 +82,7 @@ En macOS, hay dos opciones disponibles para ejecutar los mandatos de Docker:
 
 ## Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}
 {: #download-the-ibm-mfpf-container-8000-archive}
-Para configurar {{ site.data.keys.product }} en IBM Containers, en primer lugar, cree una imagen que posteriormente se enviará mediante push a Bluemix.  
+Para configurar {{ site.data.keys.product }} en IBM Containers, en primer lugar, cree una imagen que posteriormente se enviará mediante push a IBM Cloud.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Siga las instrucciones de esta página</a> para descargar el archivo de {{ site.data.keys.mf_server }} for IBM Containers (archivo .zip, busque: *CNBL0EN*).
 
 El archivo comprimido contiene los archivos para crear una imagen (**dependencies** y **mfpf-libs**), los archivos para compilar y desplegar un contenedor de {{ site.data.keys.mf_analytics }} (**mfpf-analytics**) y los archivos para configurar un contenedor de {{ site.data.keys.mf_server }} (**mfpf-server**).
@@ -106,10 +108,10 @@ El archivo comprimido contiene los archivos para crear una imagen (**dependencie
 
                 <ul>
                     <li><b>Dockerfile</b>: Documento de texto que contiene todos los mandatos necesarios para crear una imagen.</li>
-                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene scripts que se pueden ejecutar para iniciar sesión en Bluemix, crear una imagen de {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} para hacer push en Bluemix y ejecutar la imagen en Bluemix. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración como se describe detalladamente más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
+                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene scripts que se pueden ejecutar para iniciar sesión en IBM Cloud, crear una imagen de {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} para enviarla por push y ejecutar la imagen en IBM Cloud. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración como se describe detalladamente más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
                     <li>carpeta <b>usr</b>:
                         <ul>
-                            <li>Carpeta <b>bin</b>: contiene el archivo de script que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo. </li>
+                            <li>Carpeta <b>bin</b>: contiene el archivo de script que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo.</li>
                             <li>Carpeta <b>config</b>: Contiene los fragmentos de configuración del servidor (almacén de claves, propiedades del servidor, registro de usuarios) que utilizan {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
                             <li><b>keystore.xml</b> - la configuración del repositorio de los certificados de seguridad que se utilizan para el cifrado SSL. Debe hacerse referencia a los archivos listados en la carpeta ./usr/security.</li>
                             <li><b>mfpfproperties.xml</b> - propiedades de configuración para {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }}. Consulte las propiedades soportadas en estos temas de la documentación:
@@ -121,8 +123,7 @@ El archivo comprimido contiene los archivos para crear una imagen (**dependencie
                             <li><b>registry.xml</b> - configuración del registro de usuarios. La configuración de basicRegistry (de forma predeterminada, se proporciona una configuración de registro de usuarios básico basado en XML). Se pueden configurar los nombres de usuarios y las contraseñas para basicRegistry o puede configurar ldapRegistry.</li>
                         </ul>
                     </li>
-                    <li>Carpeta <b>env</b>: Contiene las propiedades del entorno que se utilizan para la inicialización del servidor (server.env) y las opciones de JVM personalizadas (jvm.options).
-                    </li>
+                    <li>Carpeta <b>env</b>: Contiene las propiedades del entorno que se utilizan para la inicialización del servidor (server.env) y las opciones de JVM personalizadas (jvm.options).</li>
 
                     <br/>
                     <div class="panel-group accordion" id="terminology-server-env" role="tablist">
@@ -199,18 +200,18 @@ El archivo comprimido contiene los archivos para crear una imagen (**dependencie
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
                                             <td>admin</td>
-                                            <td>El nombre de usuario del rol de administrador para las operaciones de {{ site.data.keys.mf_server }}. </td>
+                                            <td>El nombre de usuario del rol de administrador para las operaciones de {{ site.data.keys.mf_server }}.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_PASSWORD	</td>
                                             <td>admin</td>
-                                            <td>La contraseña del rol de administrador para las operaciones de {{ site.data.keys.mf_server }}. </td>
+                                            <td>La contraseña del rol de administrador para las operaciones de {{ site.data.keys.mf_server }}.</td>
                                         </tr>
                                     </table>
 
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Cerrar sección</b></a>
-            </div>
+                                </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
@@ -247,7 +248,7 @@ El archivo comprimido contiene los archivos para crear una imagen (**dependencie
 
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Cerrar sección</b></a>
-            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,15 +267,15 @@ El archivo comprimido contiene los archivos para crear una imagen (**dependencie
     </div>
 </div>
 
-## Requisitos previos 
+## Requisitos previos
 {: #prerequisites }
 Los pasos siguientes son obligatorios, ya que ejecutará mandatos de IBM durante la sección siguiente.
 
-1. Inicie sesión en el entorno de IBM Bluemix.  
+1. Inicie sesión en el entorno de IBM Cloud.  
 
     Ejecute: `cf login`.  
     Cuando se le solicite, especifique la información siguiente:
-      * Punto final de Bluemix API
+      * Punto final de API de IBM Cloud
       * Correo electrónico
       * Contraseña
       * Organización, si tiene más de una
@@ -283,10 +284,10 @@ Los pasos siguientes son obligatorios, ya que ejecutará mandatos de IBM durante
 2. Para ejecutar mandatos de IBM Containers, en primer lugar, debe iniciar sesión en IBM Container Cloud Service.  
 Ejecute: `cf ic login`.
 
-3. Asegúrese de que esté establecido el registro del contenedor de `namespace`. El valor de `namespace` es un nombre exclusivo que identifica su repositorio privado en el registro de Bluemix. El espacio de nombre se asigna una vez para la organización y no se puede cambiar. Seleccione un espacio de nombres siguiente estas reglas:
-     * Solo puede contener letras en minúsculas, números o caracteres de subrayado. 
+3. Asegúrese de que esté establecido el registro del contenedor de `namespace`. El valor de `namespace` es un nombre exclusivo que identifica su repositorio privado en el registro de IBM Cloud. El espacio de nombre se asigna una vez para la organización y no se puede cambiar. Seleccione un espacio de nombres siguiente estas reglas:
+     * Solo puede contener letras en minúsculas, números o caracteres de subrayado.
      * Puede tener entre 4 - 30 caracteres. Si tiene previsto gestionar los contenedores desde la línea de mandatos, es posible que prefiera que el espacio de nombres sea corto para poder escribirlo rápidamente.
-     * Debe ser exclusivo en el registro de Bluemix.
+     * Debe ser exclusivo en el registro de IBM Cloud.
 
     Para establecer un espacio de nombres, ejecute el mandato: `cf ic namespace set <new_name>`.  
     Para obtener el espacio de nombres que ha ejecutado, ejecute el mandato: `cf ic namespace get`.
@@ -308,6 +309,7 @@ Como se ha descrito anteriormente, puede optar por ejecutar los scripts de forma
 Si tiene previsto utilizar {{ site.data.keys.mf_app_center }}, comience aquí.
 
 >**Nota:** Puede descargar los instaladores y las herramientas de base de datos desde las carpetas de instalación de {{ site.data.keys.mf_app_center }} locales (las carpetas `installer` y `tools`).
+
 <div class="panel-group accordion" id="scripts" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
@@ -321,10 +323,10 @@ Si tiene previsto utilizar {{ site.data.keys.mf_app_center }}, comience aquí.
             La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes.<br/>
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Su nombre de usuario de Bluemix (correo electrónico).</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Su contraseña de Bluemix.</li>
-                  <li><b>BLUEMIX_ORG - </b>El nombre de su organización de Bluemix.</li>
-                  <li><b>BLUEMIX_SPACE - </b>Su espacio Bluemix (como se ha descrito anteriormente).</li>
+                  <li><b>IBM_CLOUD_USER - </b>Su nombre de usuario de IBM Cloud (correo electrónico).</li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>Su contraseña de IBM Cloud.</li>
+                  <li><b>IBM_CLOUD_ORG - </b>El nombre de su organización de IBM Cloud.</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>Su espacio IBM Cloud (como se ha descrito anteriormente).</li>
               </ul>
               <h4>prepareappcenterdbs.properties</h4>
               {{ site.data.keys.mf_app_center }} requiere una <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">instancia de base de datos dashDB Enterprise Transactional</a> (Enterprise Transactional 2.8.500 o Enterprise Transactional 12.128.1400).
@@ -344,16 +346,16 @@ Si tiene previsto utilizar {{ site.data.keys.mf_app_center }}, comience aquí.
               <h4>startappcenter.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>Igual que en <em>prepareappcenter.sh</em>.</li>
-                  <li><b>SERVER_CONTAINER_NAME - </b>Un nombre para el contenedor Bluemix.</li>
-                  <li><b>SERVER_IP - </b>Una dirección IP a la que se puede enlazar el contenedor de Bluemix.</li>
+                  <li><b>SERVER_CONTAINER_NAME - </b>Un nombre para el contenedor IBM Cloud.</li>
+                  <li><b>SERVER_IP - </b>Una dirección IP a la que se puede enlazar el contenedor de IBM Cloud.</li>
                   <blockquote>Para asignar una dirección IP, ejecute: <code>cf ic ip request</code>.
-                  Las direcciones IP se pueden reutilizar en varios contenedores de un espacio Bluemix concreto.
+                  Las direcciones IP se pueden reutilizar en varios contenedores de un espacio IBM Cloud concreto.
                   Si ya tiene asignada una IP, puede ejecutar: <code>cf ic ip list</code>.</blockquote>
               </ul>
               <h4>startappcentergroup.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>Igual que en <em>prepareappcenter.sh</em>.</li>
-                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Un nombre para el grupo de contenedores de Bluemix.</li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Un nombre para el grupo de contenedores de IBM Cloud.</li>
                   <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Su nombre de host.</li>
                   <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>El nombre del dominio. El valor predeterminado es: <code>mybluemix.net</code>.</li>
               </ul>    
@@ -372,7 +374,7 @@ Si tiene previsto utilizar {{ site.data.keys.mf_app_center }}, comience aquí.
             <div class="panel-body">
                 <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
                 <ol>
-                    <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
+                    <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
                     Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.product }} en IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -394,41 +396,41 @@ Si tiene previsto utilizar {{ site.data.keys.mf_app_center }}, comience aquí.
                                                 <td><b>Descripción</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>ID de usuario o dirección de correo electrónico de Bluemix</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>ID de usuario o dirección de correo electrónico de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Contraseña de Bluemix</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>Contraseña de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Nombre de la organización de Bluemix </td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>Nombre de organización de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Nombre del espacio de Bluemix</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>Nombre de espacio de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional. [-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Punto final de Bluemix API. (El valor predeterminado es: https://api.ng.bluemix.net)</td>
+                                                <td>Opcional. [-a|--api] IBM_CLOUD_API_URL	</td>
+                                                <td>Punto final de API de IBM Cloud. (El valor predeterminado es: https://api.ng.bluemix.net)</td>
                                             </tr>
                                         </table>
 
                                         <p>Por ejemplo:</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>Cerrar sección</b></a>
-            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li><b>prepareappcenterdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_app_center }} </b><br/>
-                  El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos dashDB. La instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1.
-                    Ejecute lo siguiente: 
+                    El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos dashDB. La instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1.
+                    Ejecute lo siguiente:
 
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
@@ -451,7 +453,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>
                                             <tr>
                                               <td>[-db | --acdb ] APPCENTER_DB_SRV_NAME	</td>
-                                              <td>Servicio dashDB de Bluemix (con el plan de servicio Bluemix Enterprise Transactional).</td>
+                                              <td>Servicio dashDB de IBM Cloud (con el plan de servicio IBM Cloud Enterprise Transactional).</td>
                                             </tr>    
                                             <tr>
                                               <td>Opcional: [-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
@@ -465,13 +467,13 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 {% endhighlight %}
 
                                       <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>Cerrar sección</b></a>
-            </div>
+                                  </div>
                               </div>
                           </div>
                       </div>
 
                     </li>
-                    <li><b>initenv.sh (Opcional) – Inicio de sesión en Bluemix </b><br />
+                    <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
                     Este paso solo es necesario si necesita crear sus contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice <b>initenv.properties</b> con la nueva organización y espacio en que se han de crear y también iniciar los contenedores y vuelva a ejecutar el script <b>initenv.sh</b>:</li>
 
 {% highlight bash %}
@@ -480,8 +482,8 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - Prepare una imagen de {{ site.data.keys.mf_app_center }}</b><br />
-                    Ejecute el script <b>prepareappcenter.sh</b> para crear una imagen de {{ site.data.keys.mf_app_center }} y enviarla mediante push al repositorio de Bluemix. Para ver todas las imágenes disponibles del repositorio de Bluemix, ejecute: <code>cf ic images</code>
-                    La lista contiene el nombre, la fecha de creación y el ID de la imagen. 
+                    Ejecute el script <b>prepareappcenter.sh</b> para crear una imagen de {{ site.data.keys.mf_app_center }} y enviarla mediante push al repositorio de IBM Cloud. Para ver todas las imágenes disponibles del repositorio de IBM Cloud, ejecute: <code>cf ic images</code>
+                    La lista contiene el nombre, la fecha de creación y el ID de la imagen.
 
                         Ejecute:
 {% highlight bash %}
@@ -515,7 +517,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>Cerrar sección</b></a>
-            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>   
@@ -553,7 +555,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>Opcional: [-si|--services] SERVICE_INSTANCES	</td>
-                                                <td>Las instancias de servicio de Bluemix, separadas por comas, que desea enlazar con el contenedor.</td>
+                                                <td>Las instancias de servicio de IBM Cloud, separadas por comas, que desea enlazar con el contenedor.</td>
                                             </tr>
                                             <tr>
                                                 <td>Opcional: [-h|--http] EXPOSE_HTTP </td>
@@ -564,7 +566,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                                 <td>Exponer el puerto HTTPS. Los valores aceptados son Y (valor predeterminado) o N.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-m|--memory] SERVER_MEM </td>
+                                                <td>Optional: [-m|--memory] SERVER_MEM </td>
                                                 <td>Asigne un límite de tamaño de memoria al contenedor en megabytes (MB). Los valores aceptados son 1024 MB (valor predeterminado) y 2048 MB.</td>
                                             </tr>
                                             <tr>
@@ -573,10 +575,10 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>Opcional: [-sk|--sshkey] SSH_KEY </td>
-                                                <td>La clave SSH que se inyectará en el contenedor. (Proporcione el contenido de su archivo id_rsa.pub). </td>
+                                                <td>La clave SSH que se inyectará en el contenedor. (Proporcione el contenido de su archivo id_rsa.pub).</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>Optional: [-tr|--trace] TRACE_SPEC </td>
                                                 <td>La especificación de rastreo que se ha de aplicar. Valor predeterminado: <code>*=info</code></td>
                                             </tr>
                                             <tr>
@@ -584,11 +586,11 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                                 <td>El número máximo de archivos de registro que se ha de mantener antes de que se sobrescriban. El valor predeterminado es de 5 archivos.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>Optional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
                                                 <td>El tamaño máximo de un archivo de registro. El tamaño predeterminado es de 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>Opcional:  [-v|--volume] ENABLE_VOLUME </td>
                                                 <td>Habilitar el montaje de volúmenes para los registros del contenedor. Los valores aceptados son Y o N (valor predeterminado).</td>
                                             </tr>
 
@@ -600,7 +602,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>Cerrar sección</b></a>
-            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>   
@@ -630,7 +632,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>El nombre de la imagen del contenedor de {{ site.data.keys.mf_app_center }} en el registro de Bluemix. </td>
+                                                <td>El nombre de la imagen del contenedor de {{ site.data.keys.mf_app_center }} en el registro de IBM Cloud.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -638,11 +640,11 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
-                                                <td>El nombre de host de la ruta. </td>
+                                                <td>El nombre de host de la ruta.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
-                                                <td>El nombre de dominio de la ruta. </td>
+                                                <td>El nombre de dominio de la ruta.</td>
                                             </tr>
                                             <tr>
                                                 <td>Opcional: [-gm|--min] SERVERS_CONTAINER_GROUP_MIN </td>
@@ -661,27 +663,27 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                                 <td>Habilitar la recuperación automática para las instancias de contenedor. Los valores aceptados son Y o N (valor predeterminado).</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-si|--services] SERVICES </td>
-                                                <td>Los nombres de las instancias de servicio de Bluemix, separados por comas, que desea enlazar con el contenedor.</td>
+                                                <td>Optional: [-si|--services] SERVICES </td>
+                                                <td>Los nombres de las instancias de servicio de IBM Cloud, separados por comas, que desea enlazar con el contenedor.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-tr|--trace] TRACE_SPEC </td>
+                                                <td>Optional: [-tr|--trace] TRACE_SPEC </td>
                                                 <td>La especificación de rastreo que se ha de aplicar. Valor predeterminado </code>*=info</code>.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-ml|--maxlog] MAX_LOG_FILESC </td>
+                                                <td>Optional: [-ml|--maxlog] MAX_LOG_FILESC </td>
                                                 <td>El número máximo de archivos de registro que se ha de mantener antes de que se sobrescriban. El valor predeterminado es de 5 archivos.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
+                                                <td>Optional: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
                                                 <td>El tamaño máximo de un archivo de registro. El tamaño predeterminado es de 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-m|--memory] SERVER_MEM </td>
+                                                <td>Optional: [-m|--memory] SERVER_MEM </td>
                                                 <td>Asigne un límite de tamaño de memoria al contenedor en megabytes (MB). Los valores aceptados son 1024 MB (valor predeterminado) y 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional: [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>Optional: [-v|--volume] ENABLE_VOLUME </td>
                                                 <td>Habilitar el montaje de volúmenes para los registros del contenedor. Los valores aceptados son Y o N (valor predeterminado).</td>
                                             </tr>
 
@@ -723,10 +725,10 @@ Si tiene previsto utilizar Analytics con {{ site.data.keys.mf_server }}, comienc
             <b>Nota:</b> Solo se incluyen los argumentos necesarios. Para obtener más información acerca de los argumentos adicionales, consulte la documentación contenida en los archivos de propiedades.
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Su nombre de usuario de Bluemix (correo electrónico).</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Su contraseña de Bluemix.</li>
-                  <li><b>BLUEMIX_ORG - </b>El nombre de su organización de Bluemix.</li>
-                  <li><b>BLUEMIX_SPACE - </b>Su espacio Bluemix (como se ha descrito anteriormente).</li>
+                  <li><b>IBM_CLOUD_USER - </b>Su nombre de usuario de IBM Cloud (correo electrónico).</li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>Su contraseña de IBM Cloud.</li>
+                  <li><b>IBM_CLOUD_ORG - </b>El nombre de su organización de IBM Cloud.</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>Su espacio IBM Cloud (como se ha descrito anteriormente).</li>
               </ul>
               <h4>prepareanalytics.properties</h4>
               <ul>
@@ -735,8 +737,8 @@ Si tiene previsto utilizar Analytics con {{ site.data.keys.mf_server }}, comienc
               <h4>startanalytics.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b>Igual que en <em>prepareserver.sh</em>.</li>
-                  <li><b>ANALYTICS_CONTAINER_NAME - </b>Un nombre para el contenedor Bluemix.</li>
-                  <li><b>ANALYTICS_IP - </b>Una dirección IP a la que se puede enlazar el contenedor de Bluemix.<br/>
+                  <li><b>ANALYTICS_CONTAINER_NAME - </b>Un nombre para el contenedor IBM Cloud.</li>
+                  <li><b>ANALYTICS_IP - </b>Una dirección IP a la que se puede enlazar el contenedor de IBM Cloud.<br/>
                   Para asignar una dirección IP, ejecute: <code>cf ic ip request</code>.<br/>
                   Las direcciones IP se pueden reutilizar en varios contenedores de un espacio.<br/>
                   Si ya tiene asignada una, puede ejecutar: <code>cf ic ip list</code>.</li>
@@ -744,7 +746,7 @@ Si tiene previsto utilizar Analytics con {{ site.data.keys.mf_server }}, comienc
               <h4>startanalyticsgroup.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b>Igual que en <em>prepareserver.sh</em>.</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>Un nombre para el grupo de contenedores de Bluemix.</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>Un nombre para el grupo de contenedores de IBM Cloud.</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>Su nombre de host.</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>El nombre del dominio. El valor predeterminado es: <code>mybluemix.net</code>.</li>
               </ul>
@@ -763,8 +765,8 @@ Si tiene previsto utilizar Analytics con {{ site.data.keys.mf_server }}, comienc
             <div class="panel-body">
                 <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
                 <ol>
-                    <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
-Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_analytics }} en IBM Containers:
+                    <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
+                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_analytics }} en IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -785,46 +787,46 @@ Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecut
                                                 <td><b>Descripción</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>ID de usuario o dirección de correo electrónico de Bluemix</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>ID de usuario o dirección de correo electrónico de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Contraseña de Bluemix</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>Contraseña de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Nombre de la organización de Bluemix </td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>Nombre de organización de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Nombre del espacio de Bluemix</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>Nombre de espacio de IBM Cloud</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional. [-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Punto final de Bluemix API. (El valor predeterminado es: https://api.ng.bluemix.net)</td>
+                                                <td>Opcional. [-a|--api] IBM_CLOUD_API_URL	</td>
+                                                <td>Punto final de API de IBM Cloud. (El valor predeterminado es: https://api.ng.bluemix.net)</td>
                                             </tr>
                                         </table>
 
                                         <p>Por ejemplo:</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Cerrar sección</b></a>
-            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li><b>prepareanalytics.sh - Prepare una imagen de {{ site.data.keys.mf_analytics }}</b><br />
-                        Ejecute el script <b>prepareanalytics.sh</b> para crear una imagen de {{ site.data.keys.mf_analytics }} y enviarla mediante push al repositorio de Bluemix: 
+                        Ejecute el script <b>prepareanalytics.sh</b> para crear una imagen de {{ site.data.keys.mf_analytics }} y enviarla mediante push al repositorio de IBM Cloud:
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        Para ver todas las imágenes disponibles en el repositorio de Bluemix, ejecute: <code>cf ic images</code><br/>
+                        Para ver todas las imágenes disponibles en el repositorio de IBM Cloud, ejecute: <code>cf ic images</code><br/>
                         La lista contiene el nombre, la fecha de creación y el ID de la imagen.
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
@@ -844,7 +846,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>
                                             <tr>
                                               <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                              <td>El nombre que se utilizará para la imagen personalizada de Analytics. Formato: Bluemix registry URL/private namespace/image name</td>
+                                              <td>El nombre que se utilizará para la imagen personalizada de Analytics. Formato: IBM Cloud registry URL/private namespace/image name</td>
                                             </tr>      
                                         </table>
 
@@ -854,7 +856,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 {% endhighlight %}
 
                                       <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Cerrar sección</b></a>
-            </div>
+                                  </div>
                               </div>
                           </div>
                       </div>
@@ -885,7 +887,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>El nombre de la imagen del contenedor de Analytics que se ha cargado en el registro de IBM Containers. Formato: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>El nombre de la imagen del contenedor de Analytics que se ha cargado en el registro de IBM Containers. Formato: IBMCloudRegistry/PrivateNamespace/ImageName:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
@@ -912,8 +914,8 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Habilitar SSH para el contenedor. Los valores aceptados son Y (valor predeterminado) o N.</td>
                                             </tr>
                                             <tr>
-                                                <td>Opcional. [-xk|--sshkey] SSH_KEY	</td>
-                                                <td>La clave SSH que se inyectará en el contenedor. (Proporcione el contenido de su archivo id_rsa.pub). </td>
+                                                <td>Opcional. [-sk|--sshkey] SSH_KEY	</td>
+                                                <td>La clave SSH que se inyectará en el contenedor. (Proporcione el contenido de su archivo id_rsa.pub).</td>
                                             </tr>
                                             <tr>
                                                 <td>Opcional. [-tr|--trace] TRACE_SPEC	</td>
@@ -955,7 +957,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                         {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Cerrar sección</b></a>
-            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>   
@@ -984,7 +986,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>El nombre de la imagen del contenedor de Analytics que se ha cargado en el registro de IBM Containers. Formato: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>El nombre de la imagen del contenedor de Analytics que se ha cargado en el registro de IBM Containers. Formato: IBMCloudRegistry/PrivateNamespace/ImageName:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
@@ -992,11 +994,11 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] ANALYTICS_CONTAINER_GROUP_HOST	</td>
-                                                <td>El nombre de host de la ruta. </td>
+                                                <td>El nombre de host de la ruta.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gs|--domain] ANALYTICS_CONTAINER_GROUP_DOMAIN	</td>
-                                                <td>El nombre de dominio de la ruta. </td>
+                                                <td>El nombre de dominio de la ruta.</td>
                                             </tr>
                                             <tr>
                                                 <td>Opcional. [-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN</td>
@@ -1074,14 +1076,14 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes:<br/>
+                La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes:<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_USER - </b>Su nombre de usuario de Bluemix (correo electrónico).</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Su contraseña de Bluemix.</li>
-                    <li><b>BLUEMIX_ORG - </b>El nombre de su organización de Bluemix.</li>
-                    <li><b>BLUEMIX_SPACE - </b>Su espacio Bluemix (como se ha descrito anteriormente).</li>
+                    <li><b>IBM_CLOUD_USER - </b>Su nombre de usuario de IBM Cloud (correo electrónico).</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>Su contraseña de IBM Cloud.</li>
+                    <li><b>IBM_CLOUD_ORG - </b>El nombre de su organización de IBM Cloud.</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>Su espacio IBM Cloud (como se ha descrito anteriormente).</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
                 El servicio de {{ site.data.keys.mf_bm_short }} requiere una instancia de <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>base de datos de dashDB Enterprise Transactional</i></a> (<i>Enterprise Transactional 2.8.500</i> o <i>Enterprise Transactional 12.128.1400</i>).<br/>
@@ -1101,17 +1103,17 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                 <h4>startserver.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b>Igual que en <em>prepareserver.sh</em>.</li>
-                    <li><b>SERVER_CONTAINER_NAME - </b>Un nombre para el contenedor Bluemix.</li>
-                    <li><b>SERVER_IP - </b>Una dirección IP a la que se puede enlazar el contenedor de Bluemix.<br/>
-                  Para asignar una dirección IP, ejecute: <code>cf ic ip request</code>.<br/>
-                  Las direcciones IP se pueden reutilizar en varios contenedores de un espacio.<br/>
-                  Si ya tiene asignada una, puede ejecutar: <code>cf ic ip list</code>.</li>
+                    <li><b>SERVER_CONTAINER_NAME - </b>Un nombre para el contenedor IBM Cloud.</li>
+                    <li><b>SERVER_IP - </b>Una dirección IP a la que se puede enlazar el contenedor de IBM Cloud.<br/>
+                    Para asignar una dirección IP, ejecute: <code>cf ic ip request</code>.<br/>
+                    Las direcciones IP se pueden reutilizar en varios contenedores de un espacio.<br/>
+                    Si ya tiene asignada una, puede ejecutar: <code>cf ic ip list</code>.</li>
                     <li><b>MFPF_PROPERTIES - Propiedades JNDI de </b>{{ site.data.keys.mf_server }} separadas por comas (<b>sin espacios</b>). Las propiedades relacionadas con Analytics se definen de este modo: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b>Igual que en <em>prepareserver.sh</em>.</li>
-                    <li><b>SERVER_CONTAINER_GROUP_NAME- </b>Un nombre para el grupo de contenedores de Bluemix.</li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Un nombre para el grupo de contenedores de IBM Cloud.</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Su nombre de host.</li>
                     <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>El nombre del dominio. El valor predeterminado es: <code>mybluemix.net</code>.</li>
                     <li><b>MFPF_PROPERTIES - Propiedades JNDI de </b>{{ site.data.keys.mf_server }} separadas por comas (<b>sin espacios</b>). Las propiedades relacionadas con Analytics se definen de este modo: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
@@ -1132,7 +1134,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
 
             <ol>
-                <li><b>initenv.sh – Inicio de sesión en Bluemix </b><br />
+                <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
                     Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.product }} en IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -1143,7 +1145,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Pulse para obtener una lista de argumentos de línea de mandatos</b></a>
-                                    </h4>
+                                </h4>
                             </div>
 
                             <div id="collapse-script-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-initenv">
@@ -1154,30 +1156,30 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                             <td><b>Descripción</b></td>
                                         </tr>
                                         <tr>
-                                            <td>[-u|--user] BLUEMIX_USER</td>
-                                            <td>ID de usuario o dirección de correo electrónico de Bluemix</td>
+                                            <td>[-u|--user] IBM_CLOUD_USER</td>
+                                            <td>ID de usuario o dirección de correo electrónico de IBM Cloud</td>
                                         </tr>
                                         <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                            <td>Contraseña de Bluemix</td>
+                                            <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                            <td>Contraseña de IBM Cloud</td>
                                         </tr>
                                         <tr>
-                                            <td>[-o|--org] BLUEMIX_ORG	</td>
-                                            <td>Nombre de la organización de Bluemix </td>
+                                            <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                            <td>Nombre de organización de IBM Cloud</td>
                                         </tr>
                                         <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                            <td>Nombre del espacio de Bluemix</td>
+                                            <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                            <td>Nombre de espacio de IBM Cloud</td>
                                         </tr>
                                         <tr>
-                                            <td>Opcional. [-a|--api] BLUEMIX_API_URL	</td>
-                                            <td>Punto final de Bluemix API. (El valor predeterminado es: https://api.ng.bluemix.net)</td>
+                                            <td>Opcional. [-a|--api] IBM_CLOUD_API_URL	</td>
+                                            <td>Punto final de API de IBM Cloud. (El valor predeterminado es: https://api.ng.bluemix.net)</td>
                                         </tr>
                                     </table>
 
                                     <p>Por ejemplo:</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Cerrar sección</b></a>
@@ -1197,7 +1199,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-script-prepareserverdbs"><b>Pulse para obtener una lista de argumentos de línea de mandatos</b></a>
-                                    </h4>
+                                </h4>
                             </div>
 
                             <div id="collapse-script-prepareserverdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserverdbs">
@@ -1209,7 +1211,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
-                                            <td>Servicio dashDB de Bluemix dashDB (con el plan de servicio Bluemix Enterprise Transactional).</td>
+                                            <td>Servicio dashDB de IBM Cloud (con el plan de servicio IBM Cloud Enterprise Transactional).</td>
                                         </tr>
                                         <tr>
                                             <td>Opcional. [-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>
@@ -1217,7 +1219,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>Opcional. [-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
-                                            <td>El nombre de la instancia de servicio de base de datos Bluemix para almacenar datos de tiempo de ejecución. El valor predeterminado es el mismo servicio que el proporcionado para los datos de administración.</td>
+                                            <td>El nombre de la instancia de servicio de base de datos IBM Cloud para almacenar datos de tiempo de ejecución. El valor predeterminado es el mismo servicio que el proporcionado para los datos de administración.</td>
                                         </tr>
                                         <tr>
                                             <td>Opcional. [-p |--push ] ENABLE_PUSH	</td>
@@ -1225,11 +1227,11 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
-                                            <td>El nombre de la instancia de servicio de base de datos Bluemix para almacenar datos de push. El valor predeterminado es el mismo servicio que el proporcionado para los datos de tiempo de ejecución.</td>
+                                            <td>El nombre de la instancia de servicio de base de datos IBM Cloud para almacenar datos de push. El valor predeterminado es el mismo servicio que el proporcionado para los datos de tiempo de ejecución.</td>
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
-                                            <td>Nombre de esquema de base de datos para el servicio push. El valor predeterminado es el nombre de esquema de tiempo de ejecución. </td>
+                                            <td>Nombre de esquema de base de datos para el servicio push. El valor predeterminado es el nombre de esquema de tiempo de ejecución.</td>
                                         </tr>
                                     </table>
 
@@ -1244,7 +1246,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                         </div>
                     </div>
                 </li>
-                <li><b>initenv.sh (Opcional) – Inicio de sesión en Bluemix </b><br />
+                <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
                       Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -1252,7 +1254,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - Preparar una imagen de {{ site.data.keys.mf_server }}</b><br />
-                    Ejecute el script <b>prepareserver.sh</b> para crear una imagen de {{ site.data.keys.mf_server }} y enviarla mediante push al repositorio de Bluemix. Para ver todas las imágenes disponibles en el repositorio de Bluemix, ejecute: <code>cf ic images</code><br/>
+                    Ejecute el script <b>prepareserver.sh</b> para crear una imagen de {{ site.data.keys.mf_server }} y enviarla mediante push al repositorio de IBM Cloud. Para ver todas las imágenes disponibles en el repositorio de IBM Cloud, ejecute: <code>cf ic images</code><br/>
                     La lista contiene el nombre, la fecha de creación y el ID de la imagen.<br/>
 
 {% highlight bash %}
@@ -1264,7 +1266,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Pulse para obtener una lista de argumentos de línea de mandatos</b></a>
-                                    </h4>
+                                </h4>
                             </div>
 
                             <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserver">
@@ -1293,7 +1295,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     </div>  
                 </li>
                 <li><b>startserver.sh - Ejecutar la imagen en un IBM Container</b><br />
-                    El script <b>startserver.sh</b> se utiliza para ejecutar la imagen de {{ site.data.keys.mf_server }} en un IBM Container. También enlaza la imagen con la IP pública que ha configurado en la propiedad <b>SERVER_IP</b>.Ejecute:</li>
+                    El script <b>startserver.sh</b> se utiliza para ejecutar la imagen de {{ site.data.keys.mf_server }} en un IBM Container. También enlaza la imagen con la IP pública que ha configurado en la propiedad <b>SERVER_IP</b>. Ejecute:</li>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -1303,7 +1305,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Pulse para obtener una lista de argumentos de línea de mandatos</b></a>
-                                    </h4>
+                                </h4>
                             </div>
                             <div id="collapse-script-startserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startserver">
                             <div class="panel-body">
@@ -1322,7 +1324,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>Opcional. [-si|--services] SERVICE_INSTANCES	</td>
-                                        <td>Las instancias de servicio de Bluemix, separadas por comas, que desea enlazar con el contenedor.</td>
+                                        <td>Las instancias de servicio de IBM Cloud, separadas por comas, que desea enlazar con el contenedor.</td>
                                     </tr>
                                     <tr>
                                         <td>Opcional. [-h|--http] EXPOSE_HTTP	</td>
@@ -1341,8 +1343,8 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                         <td>Habilitar SSH para el contenedor. Los valores aceptados son Y (valor predeterminado) o N.</td>
                                     </tr>
                                     <tr>
-                                        <td>Opcional. [-xk|--sshkey] SSH_KEY	</td>
-                                        <td>La clave SSH que se inyectará en el contenedor. (Proporcione el contenido de su archivo id_rsa.pub). </td>
+                                        <td>Opcional. [-sk|--sshkey] SSH_KEY	</td>
+                                        <td>La clave SSH que se inyectará en el contenedor. (Proporcione el contenido de su archivo id_rsa.pub).</td>
                                     </tr>
                                     <tr>
                                         <td>Opcional. [-tr|--trace] TRACE_SPEC	</td>
@@ -1400,7 +1402,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>El nombre de la imagen del contenedor de {{ site.data.keys.mf_server }} en el registro de Bluemix. </td>
+                                                <td>El nombre de la imagen del contenedor de {{ site.data.keys.mf_server }} en el registro de IBM Cloud.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -1408,11 +1410,11 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
-                                                <td>El nombre de host de la ruta. </td>
+                                                <td>El nombre de host de la ruta.</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
-                                                <td>El nombre de dominio de la ruta. </td>
+                                                <td>El nombre de dominio de la ruta.</td>
                                             </tr>
                                             <tr>
                                                 <td>Opcional. [-gm|--min] SERVERS_CONTAINER_GROUP_MIN	</td>
@@ -1433,7 +1435,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 
                                             <tr>
                                                 <td>Opcional. [-si|--services] SERVICES	</td>
-                                                <td>Los nombres de las instancias de servicio de Bluemix, separados por comas, que desea enlazar con el contenedor.</td>
+                                                <td>Los nombres de las instancias de servicio de IBM Cloud, separados por comas, que desea enlazar con el contenedor.</td>
                                             </tr>
                                             <tr>
                                                 <td>Opcional. [-tr|--trace] TRACE_SPEC	</td>
@@ -1483,11 +1485,11 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 > **Nota:** Se deben reiniciar los contenedores después de realizar cualquier cambio de configuración (`cf ic restart containerId`). En el caso de los grupos de contenedores, debe reiniciar cada instancia de contenedor incluida en el grupo. Por ejemplo, si cambia un certificado raíz, se debe reiniciar cada instancia después de añadir el nuevo certificado.
 
 Inicie {{ site.data.keys.mf_console }} cargando el URL siguiente: http://MF\_CONTAINER\_HOST/mfpconsole (puede tardar algunos minutos).  
-Añada el servidor remoto siguiendo las instrucciones de la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance).   
+Añada el servidor remoto siguiendo las instrucciones de la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance).  
 
-Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Bluemix, puede iniciar el desarrollo de su aplicación. Revise las {{ site.data.keys.product }} [guías de aprendizaje](../../all-tutorials).
+Ahora, con {{ site.data.keys.mf_server }} ejecutándose en IBM Cloud, puede iniciar el desarrollo de su aplicación. Revise las {{ site.data.keys.product }} [guías de aprendizaje](../../all-tutorials).
 
-#### Limitación de números de puertos 
+#### Limitación de números de puertos
 {: #port-number-limitation }
 En IBM Containers existe actualmente una limitación de los números de puertos disponibles para el dominio público. Por lo tanto, los números de puertos predeterminados proporcionados para el contenedor de {{ site.data.keys.mf_analytics }} y el contenedor de {{ site.data.keys.mf_server }} (9080 para HTTP y 9443 para HTTPS) no se pueden alterar. Los contenedores de un grupo de contenedores deben utilizar el puerto HTTP 9080. Los grupos de contenedores no admiten el uso de varios números de puertos o solicitudes HTTPS.
 
@@ -1517,29 +1519,29 @@ Antes de aplicar un arreglo temporal, realice una copia de seguridad de los arch
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Eliminar un contenedor de Bluemix
+## Eliminar un contenedor de IBM Cloud
 {: #removing-a-container-from-bluemix }
-Cuando elimina un contenedor de Bluemix, también debe eliminar el nombre de imagen del registro.  
-Ejecute los mandatos siguientes para eliminar un contenedor desde Bluemix:
+Cuando elimina un contenedor de IBM Cloud, también debe eliminar el nombre de imagen del registro.  
+Ejecute los mandatos siguientes para eliminar un contenedor desde IBM Cloud:
 
-1. `cf ic ps` (Lista los contenedores que se están ejecutando) 
+1. `cf ic ps` (Lista los contenedores que se están ejecutando)
 2. `cf ic stop container_id` (Detiene el contenedor)
 3. `cf ic rm container_id` (Elimina el contenedor)
 
-Ejecute los siguientes mandatos cf ic para eliminar un nombre de imagen del registro de Bluemix:
+Ejecute los siguientes mandatos cf ic para eliminar un nombre de imagen del registro de IBM Cloud:
 
 1. `cf ic images` (Lista las imágenes del registro)
 2. `cf ic rmi image_id` (Elimina la imagen del registro)
 
-## Eliminar la configuración del servicio de base de datos de Bluemix
+## Eliminar la configuración del servicio de base de datos de IBM Cloud
 {: #removing-the-database-service-configuration-from-bluemix }
 Si ha ejecutado el script **prepareserverdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_server }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_server }}. Este script también crea el esquema de base de datos para el contenedor.
 
-Para eliminar la configuración del servicio de base de datos desde Bluemix, realice el siguiente procedimiento utilizando el panel de control de Bluemix. 
+Para eliminar la configuración del servicio de base de datos desde IBM Cloud, realice el siguiente procedimiento utilizando el panel de control de IBM Cloud.
 
-1. En el panel de control de Bluemix, seleccione el servicio dashDB que ha utilizado. Seleccione el nombre del servicio dashDB que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
+1. En el panel de control de IBM Cloud, seleccione el servicio dashDB que ha utilizado. Seleccione el nombre del servicio dashDB que ha proporcionado como un parámetro cuando ejecutaba el script **prepareserverdbs.sh**.
 2. Inicie la consola de dashDB para trabajar con los esquemas y los objetos de base de datos de la instancia de servicio dashDB seleccionada.
-3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**. 
-4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de Bluemix.
+3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareserverdbs.sh**.
+4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de IBM Cloud.
 
-Del mismo modo, si ha ejecutado **prepareappcenterdbs.sh** durante la configuración de {{ site.data.keys.mf_app_center }}, siga los pasos anteriores para eliminar la configuración del servicio de base de datos en Bluemix.
+Del mismo modo, si ha ejecutado **prepareappcenterdbs.sh** durante la configuración de {{ site.data.keys.mf_app_center }}, siga los pasos anteriores para eliminar la configuración del servicio de base de datos en IBM Cloud.

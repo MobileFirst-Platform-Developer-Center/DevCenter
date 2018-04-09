@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Protección de MobileFirst
+title: Protección del servidor de MobileFirst
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -31,7 +31,7 @@ La configuración de ATS no afecta a las aplicaciones que se conectan desde otro
    </server>
    ```
     - **ssl-1.0** se añade como una característica al gestor de características para permitir que el servidor trabaje con la comunicación SSL.
-    - **sslProtocol="TLSv1.2"** se añade en la etiqueta ssl para indicar que el servidor solo se comunica en el protocolo TLS (Transport Layer Security) versión 1.2. Se puede añadir más de un protocolo. Por ejemplo, si se añade **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"**, se asegura de que el servidor se pueda comunicar en TLS V1, V1.1 y V1.2. (Se requiere TLS V1.2 para las aplicaciones iOS 9).
+    - **sslProtocol="TLSv1.2"** se añade a la etiqueta ssl para indicar que el servidor solo se comunica en el protocolo TLS (Transport Layer Security) versión 1.2. Se puede añadir más de un protocolo. Por ejemplo, si se añade **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"**, se asegura de que el servidor se pueda comunicar en TLS V1, V1.1 y V1.2. (Se requiere TLS V1.2 para las aplicaciones iOS 9).
     - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** se añade a la etiqueta ssl para que el servidor fuerce que la comunicación solo utilice dicho cifrado.
     - La etiqueta **keyStore** indica al servidor que utilice los nuevos certificados creados según los requisitos anteriores.
 
@@ -59,18 +59,18 @@ Solo para fines de desarrollo, puede inhabilitar ATS añadiendo la siguiente pro
 {: #security-configuration-for-ibm-mobilefirst-foundation }
 Su configuración de seguridad de la instancia de IBM MobileFirst Foundation debe incluir el cifrado de contraseñas, la habilitación de la comprobación de autenticidad de aplicaciones y la protección del acceso a las consolas.
 
-### Cifrado de contraseñas 
+### Cifrado de contraseñas
 {: #encrypting-passwords }
 Almacene las contraseñas de los usuarios de {{ site.data.keys.mf_server }} con un formato cifrado. Puede utilizar el mandato securityUtility, disponible en el perfil de Liberty, para codificar las contraseñas con el cifrado XOR o AES. A continuación, se pueden copiar las contraseñas cifradas en el archivo /usr/env/server.env. Para obtener las instrucciones, consulte la sección Cifrado de contraseñas para roles de usuarios configurados en {{ site.data.keys.mf_server }}.
 
-### Validación de la autenticidad de aplicaciones 
+### Validación de la autenticidad de aplicaciones
 {: #application-authenticity-validation }
 Para que las aplicaciones móviles no autorizadas no puedan acceder a {{ site.data.keys.mf_server }}, [habilite la comprobación de seguridad de autenticidad de aplicaciones](../../../authentication-and-security/application-authenticity).
 
 
-### Protección de una conexión con el sistema de fondo 
+### Protección de una conexión con el sistema de fondo
 {: #securing-a-connection-to-the-back-end }
-Si necesita una conexión segura entre su contenedor y un sistema de fondo local, puede utilizar el servicio Bluemix Secure Gateway. Puede encontrar los detalles de la configuración en este artículo: Conexión segura con sistemas de fondo locales desde contenedores MobileFirst on IBM Bluemix.
+Si necesita una conexión segura entre su contenedor y un sistema de fondo local, puede utilizar el servicio IBM Cloud Secure Gateway. Puede encontrar los detalles de la configuración en este artículo: Conexión segura con sistemas de fondo locales desde MobileFirst en contenedores de IBM Cloud.
 
 #### Cifrado de contraseñas para roles de usuarios configurados en {{ site.data.keys.mf_server }}
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
@@ -164,7 +164,7 @@ Consulte también: [Desarrollo de un TAI personalizado para el perfil de Liberty
         return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
     }
 
-    private static boolean checkIPMatch(String ipAddress, String pattern) {
+    private static boolean checkIPMatch(String ipAddress, String pattern) {   
 	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 		      return true;
 
@@ -263,13 +263,13 @@ El proceso de configuración incluye los pasos siguientes:
 
 * Configurar un repositorio LDAP
 * Realizar cambios en el archivo de registro (registry.xml)
-* Configurar una pasarela segura para conectar un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en Bluemix).
+* Configurar una pasarela segura para conectar un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en IBM Cloud).
 
 #### Repositorio LDAP
 {: #ldap-repository }
 Cree usuarios y grupos en el repositorio LDAP. En el caso de los grupos, la autorización se aplica en función de si los usuarios son miembros del grupo.
 
-#### Archivo de registro 
+#### Archivo de registro
 {: #registry-file }
 1. Abra el archivo **registry.xml** y busque el elemento `basicRegistry`. Sustituya el elemento `basicRegistry` por código que sea similar al siguiente fragmento de código:
 
@@ -309,13 +309,13 @@ Cree usuarios y grupos en el repositorio LDAP. En el caso de los grupos, la auto
 
    Para obtener información detallada acerca de cómo configurar diferentes repositorios de servidor LDAP, consulte [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
 
-#### Pasarela segura 
+#### Pasarela segura
 {: #secure-gateway }
-Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en Bluemix y, a continuación, obtener la información de IP para el registro. Para realizar esta tarea necesita el nombre de host LDAP y el número de puerto.
+Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en IBM Cloud y, a continuación, obtener la información de IP para el registro LDAP. Para realizar esta tarea necesita el nombre de host LDAP y el número de puerto.
 
-1. Inicie sesión en Bluemix y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
+1. Inicie sesión en IBM Cloud y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
 2. En Añadir servicio, seleccione una aplicación y pulse **Crear**. Ahora el servicio está enlazado a su aplicación.
-3. Vaya al panel de control de Bluemix para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
+3. Vaya al panel de control de IBM Cloud para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
 4. Asigne un nombre a la pasarela, pulse **Añadir destinos** y añada el nombre, la dirección IP y el puerto de su servidor LDAP local.
 5. Siga las indicaciones para completar la conexión. Para ver el destino inicializado, vaya a la pantalla Destino del servicio de pasarela LDAP.
 6. Para obtener información sobre el host y el puerto que necesita, pulse el icono Información en la instancia de servicio de la pasarela LDAP (situado en el panel de control de Secure Gateway). Los detalles que se muestran son un alias de su servidor LDAP local.
@@ -341,17 +341,17 @@ Para configurar una conexión de pasarela segura con su servidor LDAP, debe crea
 ### Configuración de aplicaciones para que funcionen con LDAP
 {: #configuring-apps-to-work-with-ldap }
 Configure las aplicaciones móviles MobileFirst para que funcionen con un registro LDAP externo.  
-El proceso de configuración incluye el paso siguiente: Configurar una pasarela segura para la conexión con un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en Bluemix).
+El proceso de configuración incluye el paso siguiente: Configurar una pasarela segura para la conexión con un repositorio LDAP local y el contenedor. (Para realizar este paso necesita una aplicación existente en IBM Cloud).
 
-Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en Bluemix y, a continuación, obtener la información de IP para el registro. Para realizar este paso necesita el nombre de host LDAP y el número de puerto.
+Para configurar una conexión de pasarela segura con su servidor LDAP, debe crear una instancia del servicio Secure Gateway en IBM Cloud y, a continuación, obtener la información de IP para el registro LDAP. Para realizar este paso necesita el nombre de host LDAP y el número de puerto.
 
-1. Inicie sesión en Bluemix y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
+1. Inicie sesión en IBM Cloud y vaya a **Catálogo, Categoría > Integración** y, a continuación, pulse **Secure Gateway**.
 2. En Añadir servicio, seleccione una aplicación y pulse **Crear**. Ahora el servicio está enlazado a su aplicación.
-3. Vaya al panel de control de Bluemix para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
+3. Vaya al panel de control de IBM Cloud para la aplicación, pulse la instancia de servicio de **Secure Gateway** y, a continuación, pulse **Añadir pasarela**.
 4. Asigne un nombre a la pasarela, pulse **Añadir destinos** y añada el nombre, la dirección IP y el puerto de su servidor LDAP local.
 5. Siga las indicaciones para completar la conexión. Para ver el destino inicializado, vaya a la pantalla Destino del servicio de pasarela LDAP.
 6. Para obtener información sobre el host y el puerto que necesita, pulse el icono Información en la instancia de servicio de la pasarela LDAP (situado en el panel de control de Secure Gateway). Los detalles que se muestran son un alias de su servidor LDAP local.
 7. Capture los valores de **ID de destino** y de **Host de nube: Puerto**. Proporcione estos valores para el módulo de inicio de sesión de LDAP.
 
 **Resultados**  
-Se ha establecido la comunicación entre la aplicación MobileFirst en Bluemix con su servidor LDAP local. Se ha validado la autenticación y la autenticación de la aplicación Bluemix en su servidor LDAP local.
+Se ha establecido la comunicación entre la aplicación MobileFirst en IBM Cloud con su servidor LDAP local. Se ha validado la autenticación y la autenticación de la aplicación IBM Cloud en su servidor LDAP local.

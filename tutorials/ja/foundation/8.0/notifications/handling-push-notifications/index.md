@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: クライアント・アプリケーションでのプッシュ通知の処理
-breadcrumb_title: プッシュ通知の処理
+breadcrumb_title: Handling Push Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 4
 show_children: true

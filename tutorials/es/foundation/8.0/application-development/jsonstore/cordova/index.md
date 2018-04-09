@@ -292,7 +292,7 @@ Puede lograr estos objetivos utilizando `WLResourceRequest` o `jQuery.ajax` si n
 
 ### Implementación de adaptador
 {: #adapter-implementation }
-Cree un adaptador con el nombre "**People**".
+Cree un adaptador con el nombre "**JSONStoreAdapter**".
   
 Defina sus procedimientos `addPerson`, `getPeople`, `pushPeople`, `removePerson` y `replacePerson`.
 
@@ -325,46 +325,24 @@ function replacePerson(data) {
 }
 ```
 
-#### Inicializar una recopilación enlazada a un adaptador de {{ site.data.keys.product_adj }}
-{: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
-```javascript
-var collections = {
-  people : {
-    searchFields : {name: 'string', age: 'integer'},
-    adapter : {
-      name: 'People',
-      add: 'addPerson',
-      remove: 'removePerson',
-      replace: 'replacePerson',
-      load: {
-        procedure: 'getPeople',
-        params: [],
-        key: 'peopleList'
-      }     
-    }   
-  }
-}
 
-var options = {};
-WL.JSONStore.init(collections, options).then(function () {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
-```
-
-#### Cargar datos desde un adaptador
+#### Cargar datos desde el adaptador de {{ site.data.keys.product_adj }} 
 {: #load-data-from-an-adapter }
-Cuando se llama a `load`, JSONStore utiliza metadatos sobre el adaptador (**name** y **procedure**), que pasó con anterioridad a `init`, para determinar qué datos obtener de los adaptadores y, en caso que sea necesario, guardarlos.
-
+Para cargar datos desde un adaptador utilice `WLResourceRequest`.
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
+try {
+      var resource = new WLResourceRequest("adapters/JSONStoreAdapter/getPeople", WLResourceRequest.GET);
+     resource.send()
+     .then(function (responseFromAdapter) {
+
+  var data = responseFromAdapter.responseJSON.peopleList;
+     },function(err){
+      	//handle failure
+     });
+} catch (e) {
+    alert("Failed to load data from adapter " + e.Messages);
+}
 ```
 
 #### Obtener push necesario (documentos sucios)
@@ -398,21 +376,42 @@ WL.JSONStore.get(collectionName).getAllDirty()
 });
 ```
 
-#### Push
+#### Hacer push a los cambios
 {: #push }
-`push` envía los documentos cambiados al procedimiento de adaptador correcto (por ejemplo, se llama a `addPerson` cuando un documento se añadió de forma local).
-Este mecanismo se basa en la última operación asociada con el documento que cambió y los metadatos de adaptador que se pasaron a `init`.
+Para hacer push a los cambios para un adaptador, llame a `getAllDirty` para obtener una lista de documentos con modificaciones y, a continuación, utilizar `WLResourceRequest`.
+Después de enviar los datos y recibir una respuesta satisfactoria asegúrese de llamar a `markClean`.
 
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).push().then(function (response) {
-    // handle success
-    // response is an empty array if all documents reached the server
-    // response is an array of error responses if some documents failed to reach the server
-}).fail(function (error) {
-    // handle failure
+try {
+      var collectionName = "people";
+     var dirtyDocs;
+
+     WL.JSONStore.get(collectionName)
+ 
+.getAllDirty()
+ 
+.then(function (arrayOfDirtyDocuments) {
+  dirtyDocs = arrayOfDirtyDocuments;
+ 
+  var resource = new WLResourceRequest("adapters/JSONStoreAdapter/pushPeople", WLResourceRequest.POST);
+        resource.setQueryParameter('params', [dirtyDocs]);
+        return resource.send();
+     }).then(function (responseFromAdapter) {
+
+  return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
+})
+ 
+.then(function (res) {
+
+  // handle success
+}).fail(function (errorObject) {
+    // Handle failure.
 });
+
+} catch (e) {
+    alert("Failed To Push Documents to Adapter");
+}
 ```
 
 ### Enhance

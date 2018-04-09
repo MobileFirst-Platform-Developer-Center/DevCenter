@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для веб-приложения
-breadcrumb_title: Веб-приложение
+title: Сквозная демонстрация для веб-приложения
+breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 5
 ---
@@ -33,18 +33,18 @@ weight: 5
 ### 2. Создание и регистрация приложения
 {: #creating-and-registering-an-application }
 В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. В локальном режиме введите следующий адрес: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Идентификационные данные пользователя: *admin/admin*.
- 
+
 1. Нажмите кнопку **Создать** рядом с разделом **Приложения**
     * Выберите платформу **Веб-приложение**
     * Введите **com.ibm.mfpstarterweb** в качестве **идентификатора приложения**
     * Нажмите кнопку **Зарегистрировать приложение**
 
     <img class="gifplayer" alt="Регистрация приложения" src="register-an-application-web.png"/>
- 
+
 2. Щелкните на плитке **Получить начальный код** и выберите загрузку примера веб-приложения.
 
     <img class="gifplayer" alt="Загрузка примера приложения" src="download-starter-code-web.png"/>
- 
+
 ### 3. Изменение логики приложения
 {: #editing-application-logic }
 1. Откройте проект в предпочитаемом редакторе исходного кода.
@@ -57,12 +57,12 @@ weight: 5
         function(accessToken) {
                 titleText.innerHTML = "Yay!";
             statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-                
+
                 var resourceRequest = new WLResourceRequest(
                 "/adapters/javaAdapter/resource/greet/",
                 WLResourceRequest.GET
             );
-                
+
                 resourceRequest.setQueryParameter("name", "world");
             resourceRequest.send().then(
                 function(response) {
@@ -81,13 +81,13 @@ weight: 5
         }
         );
    ```
-    
+
 ### 4. Развертывание адаптера
 {: #deploy-an-adapter }
 Загрузите [этот подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
-        
+
 1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** "Hello World".
 
    > Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
@@ -99,7 +99,7 @@ weight: 5
    ```
 
 3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
-    
+
     <img class="gifplayer" alt="Развертывание адаптера" src="create-an-adapter.png"/>   
 
 
@@ -107,19 +107,19 @@ weight: 5
 ### 5. Тестирование приложения
 {: #testing-the-application }
 1. В окне **Командная строка** перейдите в папку **[корневой каталог проекта] → node-server**.
-2. Выполните команду `npm start`, чтобы установить конфигурацию Node.js и запустить сервер Node.js.
-3. Откройте файл **[коревой каталог проекта] → node-server → server.js** и укажите значения свойств **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
+2. Откройте файл **[коревой каталог проекта] → node-server → server.js** и укажите значения свойств **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**. 
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 
    Пример:  
-    
+
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // Адрес сервера Mobile Foundation
    var port = 9081; // Локальный порт
    var mfpURL = host + ':443'; // Порт сервера Mobile Foundation
    ```
-   
+3. Выполните команду `npm start`, чтобы установить конфигурацию Node.js и запустить сервер Node.js.
 4. В браузере откройте следующий URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>

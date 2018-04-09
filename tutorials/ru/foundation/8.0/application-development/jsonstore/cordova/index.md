@@ -255,7 +255,7 @@ You can achieve these goals by using`WLResourceRequest` or `jQuery.ajax` if yo
 
 ### Adapter Implementation
 {: #adapter-implementation }
-Create an adapter and name it "**People**".  
+Create an adapter and name it "**JSONStoreAdapter**".  
 Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
@@ -287,45 +287,23 @@ function replacePerson(data) {
 }
 ```
 
-#### Initialize a collection linked to a {{ site.data.keys.product_adj }} adapter
-{: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
-```javascript
-var collections = {
-  people : {
-    searchFields : {name: 'string', age: 'integer'},
-    adapter : {
-      name: 'People',
-      add: 'addPerson',
-      remove: 'removePerson',
-      replace: 'replacePerson',
-      load: {
-        procedure: 'getPeople',
-        params: [],
-        key: 'peopleList'
-      }     
-    }   
-  }
-}
 
-var options = {};
-WL.JSONStore.init(collections, options).then(function () {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
-```
-
-#### Load data from an Adapter
+#### Load data from {{ site.data.keys.product_adj }}  Adapter
 {: #load-data-from-an-adapter }
-When `load` is called, JSONStore uses some metadata about the adapter (**name** and **procedure**), which you previously passed to `init`, to determine what data to get from the adapter and eventually store it.
+To load data from an adapter use `WLResourceRequest`.
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
-    // handle success
-}).fail(function (error) {
-    // handle failure
-});
+try {
+     var resource = new WLResourceRequest("adapters/JSONStoreAdapter/getPeople", WLResourceRequest.GET);
+     resource.send()
+     .then(function (responseFromAdapter) {
+          var data = responseFromAdapter.responseJSON.peopleList;
+     },function(err){
+      	//handle failure
+     });
+} catch (e) {
+    alert("Failed to load data from adapter " + e.Messages);
+}
 ```
 
 #### Get Push Required (Dirty Documents)
@@ -337,7 +315,7 @@ var collectionName = 'people';
 WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments) {
     // handle success
 }).fail(function (error) {
-    // handle failure
+  // handle failure
 });
 ```
 
@@ -354,19 +332,34 @@ WL.JSONStore.get(collectionName).getAllDirty()
 });
 ```
 
-#### Push
+#### Push changes
 {: #push }
-`push` sends the documents that changed to the correct adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
+To push changes to an adapter, call the `getAllDirty` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markClean`.
 
 ```javascript
-var collectionName = 'people';
-WL.JSONStore.get(collectionName).push().then(function (response) {
-    // handle success
-    // response is an empty array if all documents reached the server
-    // response is an array of error responses if some documents failed to reach the server
-}).fail(function (error) {
-    // handle failure
-});
+try {
+     var collectionName = "people";
+     var dirtyDocs;
+
+     WL.JSONStore.get(collectionName)
+     .getAllDirty()
+     .then(function (arrayOfDirtyDocuments) {
+        dirtyDocs = arrayOfDirtyDocuments;
+
+        var resource = new WLResourceRequest("adapters/JSONStoreAdapter/pushPeople", WLResourceRequest.POST);
+        resource.setQueryParameter('params', [dirtyDocs]);
+        return resource.send();
+     }).then(function (responseFromAdapter) {
+        return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
+     }).then(function (res) {
+	  //handle success     
+     }).fail(function (errorObject) {
+       // Handle failure.
+     });
+
+} catch (e) {
+    alert("Failed To Push Documents to Adapter");
+}
 ```
 
 ### Enhance

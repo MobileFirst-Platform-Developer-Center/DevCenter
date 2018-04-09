@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Validador de Node.js
-breadcrumb_title: Validador de Node.js
+breadcrumb_title: Node.js validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: Descargar ejemplo
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -61,7 +61,7 @@ npm install passport-mfp-token-validation@8.0.X
  * `authServerUrl`: Sustituya `localhost:9080` con la dirección IP y el número de puerto de {{ site.data.keys.mf_server }}.
  * `confClientID`, `confClientPass`: Sustituya el ID de cliente y la contraseña confidenciales por los que ha definido en {{ site.data.keys.mf_console }}.
  * `analytics`: El elemento de análisis es opcional, y solo es necesario si desea registrarse en sucesos analíticos en {{ site.data.keys.product }}.  
-Reemplace `localhost:9080`, `username`, and `password` con la dirección IP del servidor de análisis, el número de puerto, el nombre de usuario y la contraseña.
+ Reemplace `localhost:9080`, `username`, and `password` con la dirección IP del servidor de análisis, el número de puerto, el nombre de usuario y la contraseña.
 
 * Autentique las solicitudes llamando a `passport.authenticate`:
 

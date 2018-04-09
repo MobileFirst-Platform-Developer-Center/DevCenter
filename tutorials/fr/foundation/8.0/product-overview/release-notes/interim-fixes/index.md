@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Nouveautés en matière de correctifs temporaires
-breadcrumb_title: Correctifs temporaires
+title: Nouveautés des correctifs temporaires 
+breadcrumb_title: Interim iFixes
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -61,8 +61,7 @@ Les modifications suivantes ont été apportées afin d'améliorer la facilité 
 {: #adapters }
 #### Commandes `mfpdev push` et `pull` ajoutées pour les configurations d'adaptateur Java et JavaScript
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-Vous pouvez utiliser l'interface de ligne de
-commande {{ site.data.keys.mf_cli }}
+Vous pouvez utiliser {{ site.data.keys.mf_cli }}
 pour insérer des
 configurations d'adaptateur Java et JavaScript sur le serveur {{ site.data.keys.mf_server }} et extraire des configurations d'adaptateur du serveur {{ site.data.keys.mf_server }}.
 

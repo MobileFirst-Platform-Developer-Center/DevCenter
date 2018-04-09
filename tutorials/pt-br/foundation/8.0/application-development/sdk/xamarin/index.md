@@ -61,7 +61,7 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 ### Completing the setup process
 {: #completing-the-setup-process }
 #### mfpclient.plist
-{: #mfpclientplist }
+{: #complete-setup-mfpclientplist }
 1. Right-click the Xamarin iOS project and select **Add files..**. Browse and find the `mfpclient.plist` to the root of the project. Choose **Copy file to project** if prompted.
 2. Right-click the `mfpclient.plist` file and select **Build action**.Choose **Content**.
 
@@ -104,9 +104,9 @@ This file defines the client-side properties used for registering your iOS app o
 
 | Property            | Description                                                         | Example values |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
+| protocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
+| host        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| port        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
 | wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
 

@@ -153,6 +153,8 @@ Para cada segmento de mercado se debería decidir:
 Una vez los parámetros estén decididos, se podrán añadir características y propiedades de esquema.
   
 Para añadir, pulse **Nuevo** y proporcione los valores solicitados.
+
+
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="schema">

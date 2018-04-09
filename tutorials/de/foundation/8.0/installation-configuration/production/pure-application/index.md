@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in IBM PureApplication System implementieren
-breadcrumb_title: Pure Application System installieren
+breadcrumb_title: Installing Pure Application System
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -31,7 +31,7 @@ und IBM
 PureApplication Service on SoftLayer. In früheren Versionen von IBM
 PureApplication System wurden klassische Muster für virtuelle Systeme unterstützt. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [{{ site.data.keys.mf_system_pattern }} installieren](#installing-mobilefirst-system-pattern)
 * [Voraussetzungen für die Tokenlizenzierung für {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern)
@@ -342,18 +342,10 @@ Informationen** ansehen.
     * Wählen Sie in der Liste **Add-ons hinzufügen** den Eintrag **Default AIX Add Disk** aus. Die Komponente wird als unterste Komponente des Knotens "MobileFirst-Platform-Datenbank" hinzugefügt.
     * Wählen Sie die Komponente **Default AIX Add Disk** aus und geben Sie die folgenden Attribute an:
         * **DISK_SIZE_GB:** Speicherkapazität (in GB), die für den Datenbankserver hinzugefügt werden soll. Beispielwert: **10**.
-        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**. 
-        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount
-point for instance owner** der Komponente
-"Database Server" des Knotens
-"MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
-        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
-    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente
-**Default Add
-Disk** aus und klicken Sie auf das Papierkorbsymbol,
-um sie zu löschen. 
+        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**.
+        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount point for instance owner** der Komponente "Database Server" des Knotens "MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
+        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
+    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente **Default Add Disk** aus und klicken Sie auf das Papierkorbsymbol, um sie zu löschen.
     * Speichern Sie das Muster.
 3. Optional: Konfigurieren Sie die MobileFirst-Server-Verwaltung. Sie können diesen Schritt auslassen, wenn Sie die Berechtigungsnachweise des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} später in Schritt 9 beim Konfigurieren der Musterimplementierung angeben möchten. Gehen Sie wie folgt vor, wenn Sie die Berechtigungsnachweise jetzt angeben möchten:
 
@@ -405,10 +397,7 @@ müssen alle anderen Zielpfade
 `/opt/tmp/deploy/*` lauten.
     * Klicken Sie auf dem Knoten "MobileFirst Platform Server" auf die Komponente **MFP
 Server Application** oder **MFP Server Adapter**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
-    * Klicken Sie für das Feld **Zusätzliche
-Datei** auf
-die
-Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen. 
+    * Klicken Sie für das Feld **Zusätzliche Datei** auf die Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen.
     * Geben Sie im Feld **Zielpfad**
 den vollständigen Pfad für das Speichern des Artefakts
 (einschließlich des Dateinamens) an, z. B.
@@ -421,29 +410,19 @@ möchten, entfernen Sie die Komponente
 "MFP Server Application Adapter Deployment", indem Sie auf die Schaltfläche
 X klicken. 
 
-6. Optional: Fügen Sie weitere Anwendungs- oder Adapterartefakte zur Implementierung hinzu. 
+6. Optional: Fügen Sie weitere Anwendungs- oder Adapterartefakte zur Implementierung hinzu.
     * Blenden Sie in der Symbolleiste für **Assets** die Anzeige für **Softwarekomponenten** ein. Ziehen Sie dann mit der Maus eine Komponente **Additional File** auf den Knoten "MobileFirst Platform Server" im Erstellungsbereich. Benennen Sie die Komponente
 in **{{ site.data.keys.product_adj }} App\_X** oder **{{ site.data.keys.product_adj }} Adatper\_X** um. (Hier steht
 das
 **X** für eine eindeutige Zahl zur Unterscheidung.) 
-    * Bewegen Sie den Cursor auf die neu hinzugefügte App- oder Adapterkomponente.
-Klicken Sie dann auf die Schaltfläche
-**Nach oben** bzw. **Nach unten**, um die Position in der Reihenfolge der Knotenkomponenten
-anzupassen. Stellen Sie sicher, dass sich die Komponente hinter der Komponente "MFP Runtime Deployment", aber vor der
-Komponente "MFP Server Application Adapter Deployment" befindet. 
-    * Klicken Sie auf die neu hinzugefügte Anwendungs- oder Adapterkomponente. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt. Laden Sie das Anwendungs-
-oder Adapterartefakt hoch und geben Sie den Zielpfad an. Beziehen Sie sich dabei auf die Teilschritte von Schritt 6. 
-    * Wiederholen Sie Schritt 7, um weitere Anwendungen und Adapter zur Implementierung hinzuzufügen. 
+    * Bewegen Sie den Cursor auf die neu hinzugefügte App- oder Adapterkomponente. Klicken Sie dann auf die Schaltfläche **Nach oben** bzw. **Nach unten**, um die Position in der Reihenfolge der Knotenkomponenten anzupassen. Stellen Sie sicher, dass sich die Komponente hinter der Komponente "MFP Runtime Deployment", aber vor der Komponente "MFP Server Application Adapter Deployment" befindet.
+    * Klicken Sie auf die neu hinzugefügte Anwendungs- oder Adapterkomponente. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt. Laden Sie das Anwendungs- oder Adapterartefakt hoch und geben Sie den Zielpfad an. Beziehen Sie sich dabei auf die Teilschritte von Schritt 6.
+    * Wiederholen Sie Schritt 7, um weitere Anwendungen und Adapter zur Implementierung hinzuzufügen.
 
 7. Optional: Konfigurieren Sie die Anwendungs- und Adapterimplementierung in {{ site.data.keys.mf_server }}. Sie können diesen Schritt auslassen, wenn Sie die Berechtigungsnachweise des Benutzers mit Implementierungsberechtigung später in Schritt 9 beim Konfigurieren der Musterimplementierung angeben möchten. Falls Sie in Schritt 3 die Berechtigungsnachweise für den Standardbenutzer mit Administratorberechtigung angegeben haben, können Sie jetzt den Implementierer angeben, dessen Berechtigungsnachweise an die des Benutzers mit Administratorberechtigung angeglichen werden müssen.
     * Wählen Sie auf dem Knoten "MobileFirst Platform Server" die Komponente **MFP Server Application Adapter Deployment** aus. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
-    * Suchen Sie die Parameter **deployer_user** und **deployer_password**
-und klicken Sie daneben jeweils
-auf die Schaltfläche Löschen, um die Parametereinstellungen auf Musterebene
-zu löschen. 
-    * Geben Sie in den Feldern
-**deployer\_user** und **deployer\_password**
-den Benutzernamen und das Kennwort an. 
+    * Suchen Sie die Parameter **deployer_user** und **deployer_password** und klicken Sie daneben jeweils auf die Schaltfläche Löschen, um die Parametereinstellungen auf Musterebene zu löschen.
+    * Geben Sie in den Feldern **deployer\_user** und **deployer\_password** den Benutzernamen und das Kennwort an.
 
 8. Konfigurieren und starten Sie wie folgt die Musterimplementierung:
     * Klicken Sie im Dashboard von IBM PureApplication System auf **Muster → Muster für virtuelle Systeme**.
@@ -454,7 +433,8 @@ den Benutzernamen und das Kennwort an.
 
         Machen Sie in den bereitgestellten Feldern die folgenden Angaben:
 
-        > **Hinweis:** Ändern Sie die Standardwerte der Parameter auf Musterebene nach Bedarf, auch wenn ein externer LDAP-Server konfiguriert ist. Wenn Sie für die Verwaltungssicherheit einen LDAP-Server konfigurieren, müssen Sie zusätzliche LDAP-Informationen
+        > **Hinweis:** Ändern Sie die Standardwerte der Parameter auf Musterebene nach Bedarf, auch wenn ein externer
+LDAP-Server konfiguriert ist. Wenn Sie für die Verwaltungssicherheit einen LDAP-Server konfigurieren, müssen Sie zusätzliche LDAP-Informationen
 angeben (siehe
 [{{ site.data.keys.product_adj }}-Verwaltungssicherheit mit einer externen LDAP-Registry konfigurieren](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)).
         
@@ -603,10 +583,7 @@ müssen alle anderen Zielpfade
 `/opt/tmp/deploy/*` lauten.
     * Klicken Sie auf dem Knoten "MobileFirst Platform Server" auf die Komponente **MFP
 Server Application** oder **MFP Server Adapter**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
-    * Klicken Sie für das Feld **Zusätzliche
-Datei** auf
-die
-Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen. 
+    * Klicken Sie für das Feld **Zusätzliche Datei** auf die Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen.
     * Geben Sie im Feld **Zielpfad**
 den vollständigen Pfad für das Speichern des Artefakts
 (einschließlich des Dateinamens) an, z. B.
@@ -738,18 +715,10 @@ Informationen** ansehen.
     * Wählen Sie in der Liste **Add-ons hinzufügen** den Eintrag **Default AIX Add Disk** aus. Die Komponente wird als unterste Komponente des Knotens "MobileFirst-Platform-Datenbank" hinzugefügt.
     * Wählen Sie die Komponente **Default AIX Add Disk** aus und geben Sie die folgenden Attribute an:
         * **DISK_SIZE_GB:** Speicherkapazität (in GB), die für den Datenbankserver hinzugefügt werden soll. Beispielwert: **10**.
-        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**. 
-        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount
-point for instance owner** der Komponente
-"Database Server" des Knotens
-"MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
-        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
-    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente
-**Default Add
-Disk** aus und klicken Sie auf das Papierkorbsymbol,
-um sie zu löschen. 
+        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**.
+        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount point for instance owner** der Komponente "Database Server" des Knotens "MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
+        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
+    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente **Default Add Disk** aus und klicken Sie auf das Papierkorbsymbol, um sie zu löschen.
     * Speichern Sie das Muster.
 3. Optional: Konfigurieren Sie die MobileFirst-Server-Verwaltung. Sie können diesen Schritt auslassen, wenn Sie die Berechtigungsnachweise des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} später in Schritt 9 beim Konfigurieren der Musterimplementierung angeben möchten. Gehen Sie wie folgt vor, wenn Sie die Berechtigungsnachweise jetzt angeben möchten:
 
@@ -801,10 +770,7 @@ müssen alle anderen Zielpfade
 `/opt/tmp/deploy/*` lauten.
     * Klicken Sie auf dem Knoten "MobileFirst Platform Server" auf die Komponente **MFP
 Server Application** oder **MFP Server Adapter**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
-    * Klicken Sie für das Feld **Zusätzliche
-Datei** auf
-die
-Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen. 
+    * Klicken Sie für das Feld **Zusätzliche Datei** auf die Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen.
     * Geben Sie im Feld **Zielpfad**
 den vollständigen Pfad für das Speichern des Artefakts
 (einschließlich des Dateinamens) an, z. B.
@@ -945,18 +911,10 @@ Informationen** ansehen.
     * Wählen Sie in der Liste **Add-ons hinzufügen** den Eintrag **Default AIX Add Disk** aus. Die Komponente wird als unterste Komponente des Knotens "MobileFirst-Platform-Datenbank" hinzugefügt.
     * Wählen Sie die Komponente **Default AIX Add Disk** aus und geben Sie die folgenden Attribute an:
         * **DISK_SIZE_GB:** Speicherkapazität (in GB), die für den Datenbankserver hinzugefügt werden soll. Beispielwert: **10**.
-        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**. 
-        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount
-point for instance owner** der Komponente
-"Database Server" des Knotens
-"MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
-        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
-    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente
-**Default Add
-Disk** aus und klicken Sie auf das Papierkorbsymbol,
-um sie zu löschen. 
+        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**.
+        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount point for instance owner** der Komponente "Database Server" des Knotens "MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
+        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
+    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente **Default Add Disk** aus und klicken Sie auf das Papierkorbsymbol, um sie zu löschen.
     * Speichern Sie das Muster.
 3. Optional: Konfigurieren Sie die MobileFirst-Server-Verwaltung. Sie können diesen Schritt auslassen, wenn Sie die Berechtigungsnachweise des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} später in Schritt 9 beim Konfigurieren der Musterimplementierung angeben möchten. Gehen Sie wie folgt vor, wenn Sie die Berechtigungsnachweise jetzt angeben möchten:
 
@@ -1008,10 +966,7 @@ müssen alle anderen Zielpfade
 `/opt/tmp/deploy/*` lauten.
     * Klicken Sie auf dem Knoten "MobileFirst Platform Server" auf die Komponente **MFP
 Server Application** oder **MFP Server Adapter**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
-    * Klicken Sie für das Feld **Zusätzliche
-Datei** auf
-die
-Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen. 
+    * Klicken Sie für das Feld **Zusätzliche Datei** auf die Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen.
     * Geben Sie im Feld **Zielpfad**
 den vollständigen Pfad für das Speichern des Artefakts
 (einschließlich des Dateinamens) an, z. B.
@@ -1167,18 +1122,10 @@ Informationen** ansehen.
     * Wählen Sie in der Liste **Add-ons hinzufügen** den Eintrag **Default AIX Add Disk** aus. Die Komponente wird als unterste Komponente des Knotens "MobileFirst-Platform-Datenbank" hinzugefügt.
     * Wählen Sie die Komponente **Default AIX Add Disk** aus und geben Sie die folgenden Attribute an:
         * **DISK_SIZE_GB:** Speicherkapazität (in GB), die für den Datenbankserver hinzugefügt werden soll. Beispielwert: **10**.
-        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**. 
-        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount
-point for instance owner** der Komponente
-"Database Server" des Knotens
-"MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
-        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
-    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente
-**Default Add
-Disk** aus und klicken Sie auf das Papierkorbsymbol,
-um sie zu löschen. 
+        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**.
+        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount point for instance owner** der Komponente "Database Server" des Knotens "MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
+        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
+    * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente **Default Add Disk** aus und klicken Sie auf das Papierkorbsymbol, um sie zu löschen.
     * Speichern Sie das Muster.
 3. Optional: Konfigurieren Sie die MobileFirst-Server-Verwaltung. Sie können diesen Schritt auslassen, wenn Sie die Berechtigungsnachweise des Benutzers mit Administratorberechtigung für {{ site.data.keys.mf_server }} später in Schritt 9 beim Konfigurieren der Musterimplementierung angeben möchten. Gehen Sie wie folgt vor, wenn Sie die Berechtigungsnachweise jetzt angeben möchten:
 
@@ -1261,10 +1208,7 @@ müssen alle anderen Zielpfade
 `/opt/tmp/deploy/*` lauten.
     * Klicken Sie auf dem Knoten "MobileFirst Platform Server" auf die Komponente **MFP
 Server Application** oder **MFP Server Adapter**. Neben dem Erstellungsbereich werden die Eigenschaften der ausgewählten Komponente angezeigt.
-    * Klicken Sie für das Feld **Zusätzliche
-Datei** auf
-die
-Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen. 
+    * Klicken Sie für das Feld **Zusätzliche Datei** auf die Schaltfläche **Durchsuchen**, um das Anwendungs- oder Adapterartefakt zu finden und hochzuladen.
     * Geben Sie im Feld **Zielpfad**
 den vollständigen Pfad für das Speichern des Artefakts
 (einschließlich des Dateinamens) an, z. B.
@@ -1564,14 +1508,9 @@ Informationen** ansehen.
     * Wählen Sie in der Liste **Add-ons hinzufügen** den Eintrag **Default AIX Add Disk** aus. Die Komponente wird als unterste Komponente des Knotens "MobileFirst-Platform-Datenbank" hinzugefügt.
     * Wählen Sie die Komponente **Default AIX Add Disk** aus und geben Sie die folgenden Attribute an:
         * **DISK_SIZE_GB:** Speicherkapazität (in GB), die für den Datenbankserver hinzugefügt werden soll. Beispielwert: **10**.
-        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**. 
-        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount
-point for instance owner** der Komponente
-"Database Server" des Knotens
-"MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
-        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
+        * **FILESYSTEM_TYPE:** Unterstütztes Dateisystem in AIX. Standardwert: **jfs2**.
+        * **MOUNT_POINT:** Gleichen Sie dieses Attribut an das Attribut **Mount point for instance owner** der Komponente "Database Server" des Knotens "MobileFirst Platform DB" an. Beispielwert: **/dbinst**.
+        * **VOLUME_GROUP:** Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
     * Wählen Sie auf dem Knoten "MFP AppCenter DB" die Komponente
 **Default Add
 Disk** aus und klicken Sie auf das Papierkorbsymbol,
@@ -1719,9 +1658,7 @@ point for instance owner** der Komponente
 Beispielwert: /dbinst.
 
         **VOLUME\_GROUP**  
-Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
+Beispielwert: **group1**. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
     * Wählen Sie auf dem Knoten **MFP AppCenter DB** die Komponente
 **Default Add
 Disk** aus und klicken Sie auf das Papierkorbsymbol,
@@ -1866,9 +1803,7 @@ point for instance owner** der Komponente
 Beispielwert: `/dbinst`.
         
         **VOLUME\_GROUP**  
-Beispielwert: `group1`. Fragen Sie Ihren Administrator für IBM
-PureApplication System
-nach dem richtigen Wert. 
+Beispielwert: `group1`. Fragen Sie Ihren Administrator für IBM PureApplication System nach dem richtigen Wert.
     * Wählen Sie auf dem Knoten "MobileFirst-Platform-Datenbank" die Komponente
 Default Add
 Disk aus und klicken Sie auf das Papierkorbsymbol,
@@ -2355,7 +2290,7 @@ gespeichert.
 In {{ site.data.keys.mf_system_pattern }} gibt es vordefinierte Schablonen, die Sie verwenden können, um Muster für die typischen Implementierungstopologien zu erstellen.  
 Die nachstehend genannten Schablonen sind verfügbar. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-1 }
 * [Schablone '{{ site.data.keys.product }} (Liberty Single Node)'](#mobilefirst-foundation-liberty-single-node-template)
 * [Schablone '{{ site.data.keys.product }} (Liberty Server Farm)'](#mobilefirst-foundation-liberty-server-farm-template)
@@ -2468,7 +2403,7 @@ Die Schablone "{{ site.data.keys.mf_app_center }} (WAS Single Node)" setzt sich 
 {{ site.data.keys.mf_system_pattern }} stellt Scriptpakete bereit. Diese Scriptpakete sind logische Bausteine für die Erstellung verschiedener Mustertopologien.  
 In den folgenden Abschnitten sind die Parameter für die einzelnen Scriptpakete aufgelistet und beschrieben. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-2 }
 * [MFP Administration DB](#mfp-administration-db)
 * [MFP Analytics](#mfp-analytics)

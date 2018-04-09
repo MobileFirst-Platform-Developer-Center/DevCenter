@@ -2,7 +2,7 @@
 layout: tutorial
 title: 移动式客户机
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

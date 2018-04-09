@@ -4,14 +4,14 @@ title: Android でのプッシュ通知の処理
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Android Studio プロジェクトのダウンロード
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-受け取ったプッシュ通知を Android アプリケーションが処理できるようにするためには、Google Play Services のサポートを構成する必要があります。アプリケーションが構成されると、{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Android アプリケーションでプッシュ通知を処理する方法について学習します。
+受け取ったプッシュ通知を Android アプリケーションが処理できるようにするためには、Google Play Services のサポートを構成する必要があります。 アプリケーションが構成されると、{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。 このチュートリアルでは、Android アプリケーションでプッシュ通知を処理する方法について学習します。
 
 **前提条件**
 
@@ -41,7 +41,7 @@ weight: 6
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **注:** [Google の既知の問題](https://code.google.com/p/android/issues/detail?id=212879)のために、Play Services の最新バージョン (現行は 9.2.0) は使用できません。下位バージョンを使用してください。
+   - **注:** [Google の既知の問題](https://code.google.com/p/android/issues/detail?id=212879)のために、Play Services の最新バージョン (現行は 9.2.0) は使用できません。 下位バージョンを使用してください。
 
    以下も追加します。
 
@@ -104,7 +104,7 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-
+      
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -124,7 +124,7 @@ weight: 6
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();` など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();` など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.getInstance().<api_call>` を呼び出すこともできます。
 
@@ -134,21 +134,19 @@ weight: 6
 
 > チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/android)チュートリアルを参照してください。
 
-
-
 ### クライアント・サイド
 {: #client-side }
 
-| Java メソッド| 説明|
+| Java メソッド | 説明 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。|
-| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。|
-| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。|
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。|
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
+| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
+| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。 |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。 |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 |
 
 #### 初期化
 {: #initialization }
@@ -290,7 +288,7 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
 ## プッシュ通知の処理
 {: #handling-a-push-notification }
-プッシュ通知を処理するためには、`MFPPushNotificationListener` をセットアップする必要があります。これは、以下のいずれかのメソッドを実装することで実現できます。
+プッシュ通知を処理するためには、`MFPPushNotificationListener` をセットアップする必要があります。  これは、以下のいずれかのメソッドを実装することで実現できます。
 
 ### オプション 1
 {: #option-one }
@@ -301,11 +299,11 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 2. 次に、以下の*必須* メソッドを追加する必要があります。
 
    ```java
-@Override
+   @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Handle push notification here
     }
-```
+   ```
 
 3. このメソッド内で `MFPSimplePushNotification` を受け取り、目的の動作にあわせて通知を処理できます。
 

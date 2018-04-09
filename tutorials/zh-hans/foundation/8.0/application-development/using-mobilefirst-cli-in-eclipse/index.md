@@ -2,7 +2,7 @@
 layout: tutorial
 title: 在 Eclipse 中使用 MobileFirst CLI
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse 插件
+breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

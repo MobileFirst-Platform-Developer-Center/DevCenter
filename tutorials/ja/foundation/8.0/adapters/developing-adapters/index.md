@@ -8,16 +8,14 @@ weight: 5
 ## 概説
 {: #overview }
 
-前の[アダプター・チュートリアル](../)で説明したように、アダプターは、Maven を直接使用するか、{{ site.data.keys.mf_cli }} を使用して作成する Maven プロジェクトです。作成後、アダプター・コードを任意の IDE で編集でき、後で Maven または {{ site.data.keys.mf_cli }} を使用してビルドおよびデプロイすることができます。開発者は、サポートされる IDE (Eclipse や IntelliJ など) の内部で作成、開発、ビルド、デプロイのすべてを行うようにすることも選択できます。このチュートリアルでは、アダプターを Eclipse IDE から作成してビルドします。
+前の[アダプター・チュートリアル](../)で説明したように、アダプターは、Maven を直接使用するか、{{ site.data.keys.mf_cli }} を使用して作成する Maven プロジェクトです。 作成後、アダプター・コードを任意の IDE で編集でき、後で Maven または {{ site.data.keys.mf_cli }} を使用してビルドおよびデプロイすることができます。 開発者は、サポートされる IDE (Eclipse や IntelliJ など) の内部で作成、開発、ビルド、デプロイのすべてを行うようにすることも選択できます。 このチュートリアルでは、アダプターを Eclipse IDE から作成してビルドします。
 
 > IntelliJ の使用方法の説明については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
-
-
 
 **前提条件:**
 
 * 最初に[アダプター・チュートリアル](../)を読み、アダプターについての知識を得てください。
-* Eclipse への Maven の組み込み。Eclipse Kepler (v4.3) からは、Maven サポートが Eclipse に組み込まれています。ご使用の Eclipse インスタンスで Maven がサポートされていない場合は、[m2e の説明に従って](http://www.eclipse.org/m2e/) Maven サポートを追加してください。
+* Eclipse への Maven の組み込み。 Eclipse Kepler (v4.3) からは、Maven サポートが Eclipse に組み込まれています。 ご使用の Eclipse インスタンスで Maven がサポートされていない場合は、[m2e の説明に従って](http://www.eclipse.org/m2e/) Maven サポートを追加してください。
 
 #### ジャンプ先
 {: #jump-to }
@@ -71,9 +69,7 @@ weight: 5
 アダプター・プロジェクトのビルドとデプロイは、Maven コマンド・ライン・コマンド、{{ site.data.keys.mf_cli }}、または Eclipse を使用して行うことができます。  
 [アダプターのビルドとデプロイの方法について説明します。](../creating-adapters/#build-and-deploy-adapters).
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Eclipse を拡張してデプロイメント・ステップを容易にすることもできます。それには、プラグインを使用して**コマンド・ライン**・ウィンドウを統合し、一貫性のある開発環境を作成します。このウィンドウから、Maven コマンドまたは {{ site.data.keys.mf_cli }} コマンドを実行できます。
-
-
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Eclipse を拡張してデプロイメント・ステップを容易にすることもできます。それには、プラグインを使用して**コマンド・ライン**・ウィンドウを統合し、一貫性のある開発環境を作成します。 このウィンドウから、Maven コマンドまたは {{ site.data.keys.mf_cli }} コマンドを実行できます。
 
 ### アダプターのビルド
 {: #building-an-adapter }

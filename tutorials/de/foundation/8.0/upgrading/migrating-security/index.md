@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Authentifizierungs- und Sicherheitskonzepte umstellen
-breadcrumb_title: Authentifizierungskonzepte umstellen
+breadcrumb_title: Migrating authentication concepts
 downloads:
-  - name: Migrationsbeispiel herunterladen
+  - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
@@ -105,6 +105,8 @@ AdapterSecurityContext securityContext;
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
 Wenn Sie den Adaptercode bearbeitet haben, können Sie den Adapter erstellen und mit Maven oder der {{ site.data.keys.mf_cli }} im Server implementieren. Weitere Informationen finden Sie unter [Adapter erstellen und implementieren](../../adapters/creating-adapters/#build-and-deploy-adapters).
+
+
 ### Clientanwendung umstellen
 {: #migrating-the-client-application }
 

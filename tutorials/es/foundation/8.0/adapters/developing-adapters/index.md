@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Desarrollo de adaptadores en Eclipse
+title: Desarrollo de adaptadores en Eclipes
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---

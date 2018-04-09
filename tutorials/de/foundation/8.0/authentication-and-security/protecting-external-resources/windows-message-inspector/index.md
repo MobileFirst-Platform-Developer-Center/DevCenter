@@ -5,7 +5,7 @@ breadcrumb_title: Windows .NET Message Inspector
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Beispiel herunterladen
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -80,6 +80,8 @@ Unser Service ist bereit, sodass wir jetzt in der Datei App.config konfigurieren
 </service>
 ```
 Zum Schluss sollten wir den Service mit der Methode `Main` des Bereitstellungsprogramms ausführen:
+
+
 
 ```csharp
 static void Main(string[] args) {

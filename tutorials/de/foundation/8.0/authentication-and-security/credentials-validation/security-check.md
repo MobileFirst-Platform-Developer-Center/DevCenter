@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Klasse CredentialsValidationSecurityCheck implementieren
-breadcrumb_title: Sicherheitsüberprüfung
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Sicherheitsüberprüfungen herunterladen
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -47,7 +47,8 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
     protected Map<String, Object> createChallenge() {
         return null;
     }
-}
+
+    }
 ```
 
 ## Abfrage erstellen
@@ -79,7 +80,7 @@ Wenn der Client die Antwort auf die Abfrage sendet, wird die Antwort als Zuordnu
 
 ```java
 @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
@@ -168,7 +169,7 @@ Sie können die Methode `validateCredentials` so ändern, dass anstelle des fest
 
 ```java
 @Override
-    protected boolean validateCredentials(Map<String, Object> credentials) {
+   protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
@@ -222,6 +223,8 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 }
 ```
 Die Klasse `CredentialsValidationSecurityCheckConfig` definiert die folgenden Eigenschaften:
+
+
 
 - `maxAttempts`: Zulässige Anzahl von Versuchen, bis ein Fehler (*failure*) eintritt
 - `attemptingStateExpirationSec`: Intervall (in Sekunden), in dem der Client gültige Berechtigungsnachweise angeben muss. Die Versuche werden gezählt. 

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Node.js-Validator
-breadcrumb_title: Node.js-Validator
+breadcrumb_title: Node.js validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: Beispiel herunterladen
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

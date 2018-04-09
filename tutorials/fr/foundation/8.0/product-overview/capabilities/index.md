@@ -1,12 +1,12 @@
 ---
 layout: tutorial
-title: Fonctions principales du produit
+title: Fonctions principales du produit 
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Avec {{ site.data.keys.product_full }}, vous pouvez utiliser des fonctions telles que développement, test, connexions en arrière-plan, notifications push, mode hors ligne, mise à jour, sécurité, analyse, surveillance et publication d'application.
+Avec {{ site.data.keys.product_full }}, vous pouvez utiliser des fonctions telles que le développement, les tests, les connexions en arrière-plan, les notifications push, le mode hors ligne, les mises à jour, la sécurité, analyse, la surveillance et la publication d'application.
 
 ### Développement
 {: #deployment }
@@ -30,7 +30,7 @@ Certaines applications mobiles s'exécutent uniquement hors ligne, sans connexio
 
 ### Notifications push
 {: #push-notifications }
-Les notifications push permettent aux applications d'entreprise d'envoyer des informations à des appareils mobiles, même lorsque l'application n'est pas utilisée. {{ site.data.keys.product }} inclut une infrastructure de notification unifiée qui fournit un mécanisme cohérent pour les notifications push. Cette infrastructure de notification unifiée permet d'envoyer des notifications push sans connaître les détails de chaque appareil ou plateforme ciblé car chaque plateforme mobile applique un mécanisme différent pour les notifications push.
+Les notifications push permettent aux applications d'entreprise d'envoyer des informations à des appareils mobiles, même lorsque l'application n'est pas utilisée. {{ site.data.keys.product }} inclut une infrastructure de notification unifiée qui fournit un mécanisme cohérent pour les notifications push. Cette infrastructure de notification unifiée permet d'envoyer des notifications push sans connaître les détails de chaque appareil ou plateforme ciblée car chaque plateforme mobile applique un mécanisme différent pour les notifications push.
 
 ### Mode hors ligne
 {: #offline-mode }

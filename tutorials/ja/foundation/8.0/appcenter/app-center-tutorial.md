@@ -1,14 +1,15 @@
 ---
 layout: tutorial
 title: IBM Application Center を使用したモバイル・アプリケーションの配布
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{ site.data.keys.mf_app_center_full }} は、公開アプリケーション・ストアに似た**モバイル・アプリケーションのリポジトリー **ですが、組織やチームのニーズに焦点を置いています。これは専用アプリケーション・ストアです。
+{{ site.data.keys.mf_app_center_full }} は、公開アプリケーション・ストアに似た**モバイル・アプリケーションのリポジトリー **ですが、組織やチームのニーズに焦点を置いています。 これは専用アプリケーション・ストアです。
 
 Application Center を使用すると、簡単にモバイル・アプリケーションを共有できます。
 
@@ -19,9 +20,7 @@ Application Center は、{{ site.data.keys.product_adj }} アプリケーショ�
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)をご覧ください。
 
-
-
-Application Center はさまざまな状況で使用できます。例えば、以下があります。 
+Application Center はさまざまな状況で使用できます。 例えば、以下があります。
 
 * 組織全体の企業アプリケーション・ストアとして。
 * 開発中、チーム内にアプリケーションを配布するため。
@@ -46,19 +45,19 @@ Application Center は、IBM Installation Manager によって {{ site.data.keys
 * アプリケーション・サーバー: Tomcat、または WebSphere Application Server フル・プロファイルまたは Liberty プロファイル
 * データベース: DB2、Oracle、または MySQL
 
-データベースをインストールしていない場合は、インストール・プロセスで Apache Derby データベースをインストールすることもできます。ただし、Derby データベースの使用は実動シナリオでは推奨されません。
+データベースをインストールしていない場合は、インストール・プロセスで Apache Derby データベースをインストールすることもできます。 ただし、Derby データベースの使用は実動シナリオでは推奨されません。
 
 1. IBM Installation Manager に従って、データベースおよびアプリケーション・サーバーを選択して Application Center をインストールします。
 
     > 詳しくは、トピック[『{{ site.data.keys.mf_server }} のインストール』](../../installation-configuration)を参照してください。
 
-    iOS 7.1 は https プロトコルのみをサポートしているため、iOS 7.1 以降を実行するデバイス用のアプリケーションを配布することを計画している場合は、Application Center サーバーを SSL (少なくとも TLS v.1) で保護する必要があります。自己署名証明書は推奨されませんが、自己署名 CA 証明書がデバイスに配布されている場合は、テストの目的で使用できます。
+    iOS 7.1 は https プロトコルのみをサポートしているため、iOS 7.1 以降を実行するデバイス用のアプリケーションを配布することを計画している場合は、Application Center サーバーを SSL (少なくとも TLS v.1) で保護する必要があります。 自己署名証明書は推奨されませんが、自己署名 CA 証明書がデバイスに配布されている場合は、テストの目的で使用できます。
 
 2. Application Center が IBM Installation Manager を使用してインストールされた後に、コンソール `http://localhost:9080/appcenterconsole` を開きます。
 
 3. ユーザー/パスワードの組み合わせ demo/demo を使用してログインします。
 
-4. この時点で、ユーザー認証を構成できます。例えば、LDAP リポジトリーに接続できます。
+4. この時点で、ユーザー認証を構成できます。 例えば、LDAP リポジトリーに接続できます。
 
     > 詳しくは、トピック[『インストール後の Application Center の構成』](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation)を参照してください。
 
@@ -73,7 +72,7 @@ Application Center は、IBM Installation Manager によって {{ site.data.keys
 Cordova ベースの AppCenter クライアント・プロジェクトは、**install_dir/ApplicationCenter/installer/CordovaAppCenterClient** の `install` ディレクトリーにあります。
 
 このプロジェクトは、Cordova フレームワークのみに基づいており、{{ site.data.keys.product }} クライアント/サーバー API にまったく依存していません。  
-これは標準 Cordova アプリケーションであるため、{{ site.data.keys.mf_studio }} にも依存していません。このアプリケーションは、UI には Dojo を使用します。
+これは標準 Cordova アプリケーションであるため、{{ site.data.keys.mf_studio }} にも依存していません。 このアプリケーションは、UI には Dojo を使用します。
 
 以下の手順に従って開始してください。
 
@@ -110,19 +109,15 @@ cordova build ios
 
 > **注:** アプリケーションの UI および動作を自由にカスタマイズできる一方、このような変更は IBM によるサポート契約の対象外です。
 
-
-
 #### Android
 {: #android }
 * Android Studio を開きます。
 * **「Import project (Eclipse ADT, Gradle, etc.)」**を選択します。
 * **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android** から android フォルダーを選択します。
 
-これには時間がかかる場合があります。これが行われた後、カスタマイズする準備が整います。
+これには時間がかかる場合があります。 これが行われた後、カスタマイズする準備が整います。
 
-> **注:** ポップアップ・ウィンドウに表示される Gradle バージョンのアップグレードのための更新オプションはスキップすることを選択してください。このバージョンについては、`grade-wrapper.properties` を参照してください。
-
-
+> **注:** ポップアップ・ウィンドウに表示される Gradle バージョンのアップグレードのための更新オプションはスキップすることを選択してください。 このバージョンについては、`grade-wrapper.properties` を参照してください。
 
 #### iOS
 {: #ios }
@@ -137,26 +132,22 @@ cordova build ios
 
 > **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
 
-
-
 ### iPad および iPhone の場合
 {: #for-ipad-and-iphone }
-1. ソース・コードで提供されているクライアント・アプリケーションをコンパイルし、それに署名します。これは必須です。
+1. ソース・コードで提供されているクライアント・アプリケーションをコンパイルし、それに署名します。 これは必須です。
 
 2. MobileFirst Studio で、**install\_dir/ApplicationCenter/installer** にある IBMAppCenter プロジェクトを開きます。
 
 3. **「実行 (Run As)」→「MobileFirst Development Server 上で実行 (Run on MobileFirst Development Server)」**を使用して、プロジェクトをビルドします。
 
 4. Xcode を使用して、Apple iOS 企業プロファイルを使用してアプリケーションをビルドし、それに署名します。  
-結果のネイティブ・プロジェクト (**iphone\native** 内にあります) を Xcode で手動で開くか、iPhone フォルダーを右クリックして**「実行 (Run As)」→「Xcode プロジェクト (Xcode project)」**を選択します。このアクションにより、プロジェクトが生成され、Xcode で開きます。
+結果のネイティブ・プロジェクト (**iphone\native** 内にあります) を Xcode で手動で開くか、iPhone フォルダーを右クリックして**「実行 (Run As)」→「Xcode プロジェクト (Xcode project)」**を選択します。 このアクションにより、プロジェクトが生成され、Xcode で開きます。
 
 > **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
 
-
-
 ### Blackberry の場合
 {: #for-blackberry }
-* BlackBerry バージョンをビルドするには、BlackBerry Eclipse IDE (または BlackBerry Java プラグインがインストールされた Eclipse) と BlackBerry SDK 6.0 が必要です。BlackBerry SDK 6.0 でコンパイルすると、アプリケーションは BlackBerry OS 7 上でも実行されます。
+* BlackBerry バージョンをビルドするには、BlackBerry Eclipse IDE (または BlackBerry Java プラグインがインストールされた Eclipse) と BlackBerry SDK 6.0 が必要です。 BlackBerry SDK 6.0 でコンパイルすると、アプリケーションは BlackBerry OS 7 上でも実行されます。
 
 BlackBerry プロジェクトは、**install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6** 内にあります。
 
@@ -173,23 +164,17 @@ Application Center は、企業アカウントに付随する企業証明書を�
 
 > 企業アカウントおよび登録トークンについて詳しくは、[Microsoft Developer Web サイト→「Windows Phone 用の自社アプリの配布」](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) ページを参照してください。
 
-
-
 > Windows Phone モバイル・クライアント・アプリケーションの署名方法について詳しくは、[Microsoft Developer Web サイト](http://dev.windows.com/en-us/develop)を参照してください。
-
-
 
 <br/>
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:**  未署名の `.xap` ファイルを直接使用することは**できません**。デバイスにこのファイルをインストールする前に、事前に、Symantec または Microsoft から取得した企業証明書を使用してファイルに署名する必要があります。
-
-
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:**  未署名の `.xap` ファイルを直接使用することは**できません**。 デバイスにこのファイルをインストールする前に、事前に、Symantec または Microsoft から取得した企業証明書を使用してファイルに署名する必要があります。
 
 ### Windows Store Apps for Windows 8.1 Pro の場合
 {: #for-windows-store-apps-for-windows-81-pro }
-* **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイルには、Application Center クライアントの実行可能ファイルが含まれています。このファイルをクライアント・コンピューターに配布し、unzip します。これには、実行可能プログラムが含まれています。
+* **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイルには、Application Center クライアントの実行可能ファイルが含まれています。 このファイルをクライアント・コンピューターに配布し、unzip します。 これには、実行可能プログラムが含まれています。
 
-* Microsoft Windows Store を使用せずに、Windows Store アプリ (タイプ `appx` のファイル) をインストールすることは、アプリケーションの<em>サイドローディング</em> と呼ばれます。アプリケーションをサイドローディングするには、[アプリケーションのサイドローディングの準備 (Prepare to Sideload Apps)](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx) の前提条件に従う必要があります。
+* Microsoft Windows Store を使用せずに、Windows Store アプリ (タイプ `appx` のファイル) をインストールすることは、アプリケーションの<em>サイドローディング</em> と呼ばれます。 アプリケーションをサイドローディングするには、[アプリケーションのサイドローディングの準備 (Prepare to Sideload Apps)](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx) の前提条件に従う必要があります。
 
 ## Application Center コンソールでのアプリケーションの管理
 {: #managing-applications-in-the-application-center-console }
@@ -221,7 +206,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 
 * **「次へ」**をクリックします。
 
-    「アプリケーション詳細」ビューで、新規アプリケーションについての情報を確認し、説明などの情報をさらに入力できます。カタログ内のすべてのアプリケーションについて、後でこのビューに戻ることができます。
+    「アプリケーション詳細」ビューで、新規アプリケーションについての情報を確認し、説明などの情報をさらに入力できます。 カタログ内のすべてのアプリケーションについて、後でこのビューに戻ることができます。
 
     ![「アプリケーション詳細」画面のイメージ]({{ site.baseurl }}/assets/backup/appDetails1.png)
 
@@ -237,15 +222,15 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 {: #restricting-access-to-a-group-of-users }
 ユーザーのグループにアクセス権限を制限するには、以下のようにします。
 
-1. カタログ・ビューで、アプリケーション名の隣の**無制限リンク**をクリックします。「アクセス制御のインストール (Installation Access Control)」ページが開きます。
-2. **「アクセス制御使用可能 (Access control enabled)」**を選択します。これで、アプリケーションをインストールすることが許可されているユーザーまたはグループのリストを入力できます。
+1. カタログ・ビューで、アプリケーション名の隣の**無制限リンク**をクリックします。 「アクセス制御のインストール (Installation Access Control)」ページが開きます。
+2. **「アクセス制御使用可能 (Access control enabled)」**を選択します。 これで、アプリケーションをインストールすることが許可されているユーザーまたはグループのリストを入力できます。
 3. LDAP を構成済みの場合は、LDAP リポジトリーに定義されているユーザーおよびグループを追加します。
 
 Google Play や Apple App Store などの公開アプリケーション・ストアのアプリケーションの URL を入力して、それらを追加することもできます。
 
 ## Application Center モバイル・クライアント
 {: #the-application-center-mobile-client }
-Application Center モバイル・クライアントは、デバイス上のアプリケーションを管理するためのモバイル・アプリケーションです。このモバイル・クライアントを使用して、以下を行うことができます。
+Application Center モバイル・クライアントは、デバイス上のアプリケーションを管理するためのモバイル・アプリケーションです。 このモバイル・クライアントを使用して、以下を行うことができます。
 
 * カタログ内のすべてのアプリケーション (アクセス権限を持っているもの) のリスト作成。
 * お気に入りのアプリケーションのリスト作成。
@@ -262,11 +247,11 @@ Application Center モバイル・クライアント・アプリケーション�
 4. 「アプリケーション詳細」ページで、**「インストーラー」**を選択して、このアプリケーションがモバイル・クライアントであることを指定します。
 5. **「終了」**をクリックして、Application Center アプリケーションをカタログに追加します。
 
-Windows 8.1 Pro 向けの Application Center クライアントは、カタログに追加する必要がありません。このクライアントは、**install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイル内に含まれている正規の Windows `.exe` プログラムです。クライアント・コンピューターにコピーするだけで済みます。
+Windows 8.1 Pro 向けの Application Center クライアントは、カタログに追加する必要がありません。 このクライアントは、**install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイル内に含まれている正規の Windows `.exe` プログラムです。 クライアント・コンピューターにコピーするだけで済みます。
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-Windows Phone 8 の場合、Application Center コンソールで、企業アカウントを使用して受け取った登録トークンもインストールする必要があります。 この結果、ユーザーがデバイスを登録できるようになります。Application Center の「設定」ページを使用します。このページは、歯車のアイコンを使用して開くことができます。
+Windows Phone 8 の場合、Application Center コンソールで、企業アカウントを使用して受け取った登録トークンもインストールする必要があります。 この結果、ユーザーがデバイスを登録できるようになります。 Application Center の「設定」ページを使用します。このページは、歯車のアイコンを使用して開くことができます。
 
 ![Windows Phone 8 アプリケーション登録のイメージ]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
@@ -276,8 +261,8 @@ Windows Phone 8 の場合、Application Center コンソールで、企業アカ
 2. 次の URL を入力します。`http://hostname:9080/appcenterconsole/installers.html`
 3. ユーザー名とパスワードを入力します。
 4. **「トークン」**をクリックすると、登録トークンのリストが開きます。
-5. リスト内でその企業を選択します。企業アカウントの詳細が表示されます。
-6. **「企業アカウントの追加 (Add Company Account)」**をクリックします。デバイスが登録されます。
+5. リスト内でその企業を選択します。 企業アカウントの詳細が表示されます。
+6. **「企業アカウントの追加 (Add Company Account)」**をクリックします。 デバイスが登録されます。
 
 ### モバイル・デバイスへのモバイル・クライアントのインストール
 {: #installing-the-mobile-client-on-the-mobile-device }
@@ -305,14 +290,14 @@ Windows Phone 8 の場合、Application Center コンソールで、企業アカ
 ### Application Center モバイル・クライアント・ビュー
 {: #application-center-mobile-client-views }
 * **「カタログ」**ビューには、使用可能なアプリケーションのリストが表示されます。
-* アプリケーションを選択すると、アプリケーション上で**「詳細」**ビューが開きます。「詳細」ビューからはアプリケーションをインストールできます。「詳細」ビューで星形のアイコンを使用して、アプリケーションにお気に入りのマークを付けることもできます。
+* アプリケーションを選択すると、アプリケーション上で**「詳細」**ビューが開きます。 「詳細」ビューからはアプリケーションをインストールできます。 「詳細」ビューで星形のアイコンを使用して、アプリケーションにお気に入りのマークを付けることもできます。
 
     ![カタログ詳細]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
 
-* **「お気に入り」**ビューには、お気に入りのアプリケーションがリストされます。このリストは、特定のユーザーのすべてのデバイス上で使用できます。
-* **「更新」**ビューには、使用可能なすべての更新がリストされます。「更新」ビューで、「詳細」ビューにナビゲートできます。より新しいアプリケーション・バージョンを選択することも、使用可能な最新のバージョンを取得することも可能です。Application Center がプッシュ通知を送信するように構成されている場合は、プッシュ通知メッセージによって更新についての通知を受け取る場合があります。
+* **「お気に入り」**ビューには、お気に入りのアプリケーションがリストされます。 このリストは、特定のユーザーのすべてのデバイス上で使用できます。
+* **「更新」**ビューには、使用可能なすべての更新がリストされます。 「更新」ビューで、「詳細」ビューにナビゲートできます。 より新しいアプリケーション・バージョンを選択することも、使用可能な最新のバージョンを取得することも可能です。 Application Center がプッシュ通知を送信するように構成されている場合は、プッシュ通知メッセージによって更新についての通知を受け取る場合があります。
 
-モバイル・クライアントからこのアプリケーションを評価し、レビューを送信できます。レビューは、コンソール上でもモバイル・デバイス上でも閲覧できます。
+モバイル・クライアントからこのアプリケーションを評価し、レビューを送信できます。 レビューは、コンソール上でもモバイル・デバイス上でも閲覧できます。
 
 ![レビュー]({{ site.baseurl }}/assets/backup/reviewss.png)
 

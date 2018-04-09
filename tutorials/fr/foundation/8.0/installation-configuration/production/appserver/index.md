@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation de MobileFirst Server sur un serveur d'applications
-breadcrumb_title: Installation de MobileFirst Server
+breadcrumb_title: Installing MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -862,7 +862,7 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
             <div class="panel-body">
                 <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services.</p>
 
-                <p>Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
+                <p>Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne peuvent pas se connecter à ce service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
 
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service push. L'exemple suivant est une déclaration de <b>mfp.push.analytics.user</b> selon laquelle le service push est installé avec la racine de contexte <b>/imfpush</b> :</p>
@@ -1203,7 +1203,7 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <br/><br/>
                 Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> de chaque membre de cluster de collectivité Liberty. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty-collective">Installation manuelle dans la collectivité WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services.    
                 <br/><br/>
-                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
+                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne peuvent pas se connecter à ce service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
 
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service push. L'exemple suivant est une déclaration de <b>mfp.push.analytics.user</b> selon laquelle le service push est installé avec la racine de contexte <b>/imfpush</b> :</p>
@@ -1451,7 +1451,7 @@ Si vous le souhaitez, vous pouvez activer le domaine de mémoire (MemoryRealm) s
             <div class="panel-body">
                 <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application. Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services.    
                 <br/><br/>
-                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
+                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne peuvent pas se connecter à ce service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
 
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Vous devez définir les propriétés suivantes :</p>
@@ -1512,7 +1512,7 @@ Le gestionnaire de déploiement doit s'exécuter lorsque {{ site.data.keys.mf_se
 {: #application-server-settings-nd }
 La sécurité administrative et la sécurité des applications doivent être activées. Vous pouvez activer la sécurité des applications dans la console d'administration WebSphere Application Server :
 
-1. Connectez-vous à la console d'administration WebSphere Application Server.
+1. Connectez-vous à la console d'administration de WebSphere Application Server.
 2. Sélectionnez **Sécurité → Sécurité globale**. Assurez-vous que l'option Activer la sécurité administrative est sélectionnée.
 3. Ensuite, assurez-vous que l'option **Activer la sécurité des applications** est sélectionnée. La sécurité des applications ne peut être activée que si la sécurité administrative est activée.
 4. Cliquez sur **OK**.
@@ -1522,7 +1522,7 @@ Pour plus d'informations, voir [Activation de la sécurité](http://www.ibm.com/
 
 Les règles de chargeur de classe du serveur doivent prendre en charge la valeur d'attribut delegation parentLast (parent en dernier). Les fichiers WAR de {{ site.data.keys.mf_server }} doivent être installés en mode de chargeur de classe "parent en dernier". Prenez connaissance de la règle de chargeur de classe du serveur :
 
-1. Connectez-vous à la console d'administration WebSphere Application Server.
+1. Connectez-vous à la console d'administration de WebSphere Application Server.
 2. Sélectionnez **Serveurs → Types de serveurs → Serveurs d'applications WebSphere** et cliquez sur le serveur qui est utilisé pour {{ site.data.keys.product }}.
 3. Si la règle de chargeur de classe est **Plusieurs**, ne faites rien.
 4. Si la règle de chargeur de classe est **Un seul** et si le mode de chargement des classes a pour valeur **Classes chargées en premier avec un chargeur de classe local (dernier parent)**, ne faites rien.
@@ -1746,7 +1746,7 @@ Pour définir la valeur de l'attribut delegation parentLast (parent en dernier) 
             <div class="panel-body">
                 <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les services.    
                 <br/><br/>
-                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
+                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les appareils client ne peuvent pas se connecter à ce service car la racine de contexte est codée en dur dans le logiciel SDK.</p>
 
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Vous pouvez définir des propriétés JNDI depuis la console d'administration WebSphere Application Server. Sélectionnez <b>Applications → Types d'application → Applications d'entreprise WebSphere → nom_application → Entrées d'environnement pour les modules Web</b> et définissez les entrées.</p>
@@ -1861,8 +1861,7 @@ Lorsque vous planifiez un parc de serveurs avec l'outil de configuration de serv
                                 </ul>
                                 Pour prendre connaissance des versions des serveurs d'applications prises en charge, voir <a href="../../../product-overview/requirements">Configuration système requise</a>.
 
-                                <blockquote><b>Important :</b>
-{{ site.data.keys.product }} ne prend en charge que des parcs de serveurs homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur d'applications. Si vous tentez d'associer des types différents de serveur d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere Application Server (profil complet) constitue une configuration non valide.</blockquote>
+                                <blockquote><b>Important :</b> {{ site.data.keys.product }} ne prend en charge que des parcs de serveurs homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur d'applications. Si vous tentez d'associer des types différents de serveur d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere Application Server (profil complet) constitue une configuration non valide.</blockquote>
                             </li>
                             <li>Configurez autant de serveurs autonomes que vous voulez de membres dans le parc de serveurs.
                                 <ul>
@@ -1959,7 +1958,7 @@ Lorsque vous planifiez un parc de serveurs à l'aide de tâches Ant, créez d'ab
                         <ul>
                             <li>Choisissez le fichier Ant qui correspond à votre serveur d'applications et à votre base de données dans le répertoire <b>rép\_install\_mfp/MobileFirstServer/configuration-samples</b> afin de déployer le service d'administration, le service Live Update et l'environnement d'exécution sur les serveurs.
                             <br/><br/>
-                            Par exemple, sélectionnez le fichier <b>configure-liberty-db2.xml</b> pour un déploiement sur le srveur Liberty avec la base de données DB2. Effectuez autant de copies de ce fichier que vous voulez de membres dans le parc de serveurs.
+                            Par exemple, sélectionnez le fichier <b>configure-liberty-db2.xml</b> pour un déploiement sur le serveur Liberty avec la base de données DB2. Effectuez autant de copies de ce fichier que vous voulez de membres dans le parc de serveurs.
                             <br/><br/>
                             <b>Remarque :</b> Conservez ces fichiers après la configuration, car ils peuvent être réutilisés pour la mise à niveau des composants {{ site.data.keys.mf_server }} déjà déployés ou pour les désinstaller sur chaque membre du parc de serveurs.</li>
                             <li>Editez chaque copie du fichier Ant, entrez les propriétés de base de données indiquées à l'étape 2, et entrez également les autres propriétés requises pour le serveur d'applications.

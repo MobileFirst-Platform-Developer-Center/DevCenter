@@ -64,8 +64,8 @@ You can access the [{{ site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/
 The [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the {{ site.data.keys.mf_server }}, pull/push application from/to the {{ site.data.keys.mf_server }}, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
 
 **Prerequisite:**  
-1. NodeJS is a requirement before you can install the {{ site.data.keys.mf_cli }}.  
- Download and install [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+1. NodeJS and NPM are requirements before you can install the {{ site.data.keys.mf_cli }}.  
+ Download and install [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) and NPM v3.10.10.
 
  To Verify the installation, open a command-line window and execute: `node -v`.
 

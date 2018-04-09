@@ -2,7 +2,7 @@
 layout: tutorial
 title: Client mobile
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 安装和配置 IBM MobileFirst Foundation Application Center	
-breadcrumb_title: 安装 Application Center	
+title: 安装和配置 IBM MobileFirst Foundation Application Center
+breadcrumb_title: Installing Application Center
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -119,7 +119,7 @@ weight: 8
     * 使用全局数据库名称 **ORCL\_your\_domain** 和系统标识 (SID) **ORCL**。
     * 在步骤**数据库内容**的**定制脚本**选项卡上，请勿运行 SQL 脚本，因为您必须首先创建用户帐户。
     * 在步骤**初始化参数**的**字符集**选项卡上，选择**使用 Unicode (AL32UTF8) 字符集和 UTF8 - Unicode 3.0 UTF-8 国家字符集**。
-    * 在接受缺省值的情况下完成此过程。
+    * 完成此过程（接受缺省值）。
 2. 通过使用 **Oracle Database Control** 或 **Oracle SQLPlus** 命令行解释器来创建数据库用户。
     * 使用 **Oracle Database Control**：
         * 以 **SYSDBA** 身份连接。
@@ -205,7 +205,7 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 
 有关如何修改这些登录的更多信息，请参阅[在 WebSphere Application Server Full Profile 上配置 Java EE 安全角色](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)。
 
-#### WebSphere Application Server Liberty Profile
+#### WebSphere  Application Server Liberty Profile
 {: #websphere-application-server-liberty-profile }
 * 在 basicRegistry 中创建密码为 demo 的登录 demo。
 * 在 basicRegistry 中创建密码为 admin 的登录 appcenteradmin。
@@ -289,7 +289,7 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 {: #deploying-the-application-center-console-and-services-with-ant-tasks }
 通过使用 Ant 任务，不仅可将 Application Center 控制台和服务部署到应用程序服务器中，还可配置 Application Center 所使用的数据源、属性和数据库驱动程序。
 
-开始之前：
+在开始之前，
 
 * 完成[使用 Ant 任务为 Application Center 创建和配置数据库](#creating-and-configuring-the-database-for-application-center-with-ant-tasks)中的过程。
 * 您必须在安装了应用程序服务器的计算机上运行 Ant 任务，或运行针对 WebSphere Application Server Network Deployment 的 Network Deployment Manager。 如果您希望从没有安装 {{ site.data.keys.mf_server }} 的计算机上启动 Ant 任务，那么必须将以下文件和目录复制到该计算机上：
@@ -595,8 +595,10 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
     * 单击**新建**。
     * 将**数据库类型**设置为**用户定义**。
     * 将**类实现名**设置为 **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**。
-    * 将**名称**设置为 **Worklight - Derby JDBC 提供程序**。
-    * 将**描述**设置为 **Worklight 的 Derby JDBC 提供程序**。
+    * 将**名称**设置为 **Worklight
+- Derby JDBC 提供程序**。
+    * 将**描述**设置为 **Worklight 的 Derby
+JDBC 提供程序**。
     * 单击**下一步**。
     * 将**类路径**设置为步骤 1 中确定的目录中的 JAR 文件，并将 **was\_install\_dir/profiles/profile-name** 替换为 WebSphere Application Server 变量引用 **${USER\_INSTALL\_ROOT}**。
     * 单击**完成**。
@@ -604,10 +606,12 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
     * 在 WebSphere Application Server 控制台中，单击**资源 → JDBC → 数据源**。
     * 从**作用域**组合框中，选择相应的作用域。
     * 单击**新建**。
-    * 将**数据源名称**设置为 **Application Center 数据库**。
+    * 将**数据源名称**设置为 **Application
+Center 数据库**。
     * 将 **JNDI** 名称设置为 **jdbc/AppCenterDS**。
     * 单击**下一步**。
-    * 选择名为 **Worklight - Derby JDBC 提供程序**的现有 JDBC 提供程序。
+    * 选择名为 **Worklight
+- Derby JDBC 提供程序**的现有 JDBC 提供程序。
     * 单击**下一步**。
     * 单击**下一步**。
     * 单击**完成**。
@@ -619,7 +623,8 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
     * 单击**确定**。
     * 单击**保存**。
     * 在该页面的顶部，单击 **Application Center 数据库**。
-    * 在**其他属性**下，单击 **WebSphere Application Server 数据源属性**。
+    * 在**其他属性**下，单击 **WebSphere
+Application Server 数据源属性**。
     * 选择**非事务数据源**。
     * 单击**确定**。
     * 单击**保存**。
@@ -1482,7 +1487,7 @@ Application Center 定义了两个 Java™ Platform，Enterprise Edition (Java E
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile }
 通过将 Application Center Java™ EE 角色映射到两个 Web 应用程序的一组用户来配置安全性。
 
-可在 WebSphere Application Server 控制台中定义用户配置的基本内容。 通常，通过以下地址访问该控制台：`https://localhost:9043/ibm/console/`。
+可在 WebSphere Application Server 控制台中定义用户配置的基础。 通常，通过以下地址访问该控制台：`https://localhost:9043/ibm/console/`。
 
 1. 选择**安全性 → 全局安全性**。
 2. 选择**安全性配置向导**来配置用户。  
@@ -2469,7 +2474,7 @@ SSL 可在网络上以安全通道传输数据。 您必须从 SSL 认证中心�
 | ibm.appcenter.ldap.vmm.adminpwd | 通过虚拟成员管理器 (VMM) 完成 LDAP 时的密码。 请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。 |
 | ibm.appcenter.ldap.vmm.adminuser | 通过虚拟成员管理器 (VMM) 完成 LDAP 时的用户。 请参阅[为 WebSphere Application Server V8.x 配置 LDAP ACL 管理](#configuring-ldap-acl-management-for-websphere-application-server-v8x)。 |
 | ibm.appcenter.logging.formatjson | 该属性仅在 ibm.appcenter.logging.tosystemerror 设置为 true 时生效。 如果启用该属性，将对定向到 System.Error 的日志记录消息中的 JSON 响应进行格式化。 调试服务器时设置该属性十分有用。 |
-| ibm.appcenter.logging.tosystemerror | 指定是否所有的日志记录消息都定向到 System.Error。 调试服务器时设置该属性十分有用。 |
+| ibm.appcenter.logging.tosystemerror | 指定是否所有的日志记录消息都指向 System.Error。 调试服务器时设置该属性十分有用。 |
 | ibm.appcenter.openjpa.Log | 此属性传递到 OpenJPA，并启用 JPA 日志记录。 有关更多详细信息，请参阅 [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)。 |
 | ibm.appcenter.proxy.host | 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定主机的地址。 设置该属性以允许防火墙外部的用户访问 Application Center 服务器。 通常该属性是代理的地址。 请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。 |
 | ibm.appcenter.proxy.port | 如果 Application Center 服务器位于防火墙或逆向代理后面，该属性指定主机的地址。 设置该属性以允许防火墙外部的用户访问 Application Center 服务器。 通常此属性是代理的端口，例如 443。 仅在外部 URI 协议和内部 URI 协议不同的情况下才需要该属性。 请参阅[定义应用程序资源的端点](#defining-the-endpoint-of-the-application-resources)。 |

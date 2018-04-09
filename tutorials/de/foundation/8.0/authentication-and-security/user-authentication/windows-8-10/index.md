@@ -1,19 +1,19 @@
 ---
 layout: tutorial
-title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und in Windows-10-UWP-Anwendungen implementieren
+title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und Windows-10-UWP-Anwendungen implementieren
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Windows-8-Projekt RememberMe herunterladen
+  - name: Download RememberMe Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Windows-10-Projekt RememberMe herunterladen
+  - name: Download RememberMe Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
-  - name: Windows-8-Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Windows-10-Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

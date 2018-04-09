@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigung über Anwendungsaktualisierungen
-breadcrumb_title: Push-Benachrichtigungen
+title: Push-Benachrichtigungen für Anwendungsaktualisierungen
+breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -160,7 +160,7 @@ Schlüssel beispielsweise für einen Apache-Tomcat-Server als eine JNDI-Eigensch
 
    Die JNDI-Eigenschaft muss in Übereinstimmung mit Ihren Anwendungsserveranforderungen definiert werden.  
 Unter [JNDI-Eigenschaften für das Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) sind alle Eigenschaften aufgeführt, die Sie festlegen können.
-    
+
 **Wichtiger Hinweis:**
 
 * Wenn Sie GCM mit früheren Android-Versionen verwenden,
@@ -210,7 +210,7 @@ wird dann automatisch in Ihrem Keystore und in Ihrem Xcode-Projekt installiert.
 von Xcode aus im Fenster "Xcode-Organizer" starten, navigieren Sie zum Abschnitt "Provisioning Profiles" und installieren Sie das Profil auf Ihrem mobilen Gerät.
 
 3. Erstellen Sie ein Signaturzertifikat, das die Application-Center-Services verwenden, um die Kommunikation mit dem APN-Server zu schützen.Dieser Server verwendet das Zertifikat, um jede an den APN-Server gerichtete Push-Anforderung zu signieren. Dieses Signaturzertifikat wird aus Ihrem Bereitstellungsprofil generiert.
-    
+
 * Öffnen Sie das Dienstprogramm Keychain Access und klicken Sie im linken Bereich auf **My
 Certificates**.
 * Suchen Sie das Zertifikat, das Sie installieren möchten, und legen Sie den Inhalt des Zertifikats offen.Sie sehen sowohl ein Zertifikat als auch einen privaten Schlüssel. Für das Application Center
@@ -225,11 +225,11 @@ aus einem Produktionsprofil ein Produktionszertifikat generiert. Die Webanwendun
 
 Die Beispiele in der Tabelle zeigen, wie die JNDI-Eigenschaften in der Datei server.xml von Apache Tomcat Server definiert sind.
 
-| JNDI-Eigenschaft | Typ und Beschreibung| Beispiel für Apache-Tomcat-Server| 
+| JNDI-Eigenschaft | Typ und Beschreibung| Beispiel für Apache-Tomcat-Server|
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location| Zeichenfolgewert, der den vollständigen Pfad zum .p12-Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password| Zeichenfolgewert, der das Kennwort für den Zugriff auf das Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	Boolescher Wert (true oder false), der definiert, ob das zum Generieren des Authentifizierungszertifikats verwendete Bereitstellungsprofil ein Entwicklungsprofil ist| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.password| Zeichenfolgewert, der das Kennwort für den Zugriff auf das Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	Boolescher Wert (true oder false), der definiert, ob das zum Generieren des Authentifizierungszertifikats verwendete Bereitstellungsprofil ein Entwicklungsprofil ist| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 
 Unter [JNDI-Eigenschaften für das Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) sind alle JNDI-Eigenschaften aufgeführt, die Sie festlegen können.
 

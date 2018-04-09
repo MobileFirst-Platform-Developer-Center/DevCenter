@@ -1,8 +1,9 @@
 ---
 layout: tutorial
 title: Distribution d'applications mobiles avec IBM Application Center
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->

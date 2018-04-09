@@ -4,11 +4,11 @@ title: JavaScript (Cordova、Web) アプリケーションからのリソース�
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
-  - name: Web プロジェクトのダウンロード
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
-  - name: Cordova プロジェクトのダウンロード
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
@@ -28,7 +28,7 @@ REST API は、すべてのアダプターおよび外部リソースで機能�
 {: #wlresourcerequest }
 `WLResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
- `WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+`WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
 使用可能なメソッドは、`WLResourceRequest.GET`、`WLResourceRequest.POST`、`WLResourceRequest.PUT`、および `WLResourceRequest.DELETE` です。
 
 ```javascript
@@ -39,7 +39,7 @@ var resourceRequest = new WLResourceRequest(
 ```
 
 * **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
-* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。 `path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。 これには、使用した `@PathParam` も含まれます。
 * プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
 * **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
 
@@ -68,7 +68,7 @@ resourceRequest.setQueryParameter("param2", "value2");
 
 #### JavaScript アダプター
 {: #javascript-adapters-setquery}
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 > **注:** `params` 値は、配列の*ストリング表現*でなければなりません。
 
@@ -88,7 +88,7 @@ resourceRequest.setHeader("Header-Name","value");
 
 ### sendFormParameters(json)
 {: #sendformparamtersjson }
-URL エンコード形式のパラメーターを送信するには、代わりに `sendFormParameters(json)`メソッドを使用します。このメソッドは、JSON を URL エンコードのストリングに変換し、`content-type` を `application/x-www-form-urlencoded` に設定して、それを HTTP 本体として設定します。
+URL エンコード形式のパラメーターを送信するには、代わりに `sendFormParameters(json)`メソッドを使用します。 このメソッドは、JSON を URL エンコードのストリングに変換し、`content-type` を `application/x-www-form-urlencoded` に設定して、それを HTTP 本体として設定します。
 
 ```js
 var formParams = {"param1": "value1", "param2": "value2"};
@@ -97,7 +97,7 @@ resourceRequest.sendFormParameters(formParams);
 
 #### JavaScript アダプター
 {: #javascript-adapters-sendform }
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```js
 var formParams = {"params":"['value1', 'value2']"};
@@ -110,7 +110,7 @@ var formParams = {"params":"['value1', 'value2']"};
 
 ## 応答
 {: #the-response }
-`onSuccess` と `onFailure` の両方のコールバックは、`response` オブジェクトを受け取ります。`response` オブジェクトには応答データが含まれており、そのプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText`、`responseJSON`(応答が JSON の場合は JSON オブジェクト)、および `status` (応答の HTTP 状況) です。
+`onSuccess` と `onFailure` の両方のコールバックは、`response` オブジェクトを受け取ります。 `response` オブジェクトには応答データが含まれており、そのプロパティーを使用して必要な情報を取得することができます。 よく使用されるプロパティーは、`responseText`、`responseJSON`(応答が JSON の場合は JSON オブジェクト)、および `status` (応答の HTTP 状況) です。
 
 要求が失敗した場合、`response` オブジェクトには `errorMsg` プロパティーも含まれます。  
 Java アダプターを使用しているか、JavaScript アダプターを使用しているかに応じて、応答には、`responseHeaders`、`responseTime`、`statusCode`、`statusReason`、`totalTime` などの他のプロパティーが含まれる場合があります。
@@ -143,8 +143,8 @@ Java アダプターを使用しているか、JavaScript アダプターを使�
 例えば、次のとおりです。
 
 ```js
-      onSuccess: function(response) {
-resultText = "Successfully called the resource: " + response.responseText;
+onSuccess: function(response) {
+    resultText = "Successfully called the resource: " + response.responseText;
 },
 
 onFailure: function(response) {

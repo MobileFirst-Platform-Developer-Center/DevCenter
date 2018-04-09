@@ -1,13 +1,13 @@
 ---
 layout: tutorial
 title: Déploiement d'applications sur des environnements de test et de production
-breadcrumb_title: Déploiement d'applications sur des environnements
+breadcrumb_title: Deploying apps to environments
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Lorsque vous avez terminé un cycle de développement de votre application, déployez-le sur un environnement de test, puis sur un environnement de production.
+Lorsque vous avez terminé un cycle de développement de votre application, déployez-le dans un environnement de test, puis sur un environnement de production.
 
 ### Accéder à
 {: #jump-to }
@@ -15,13 +15,13 @@ Lorsque vous avez terminé un cycle de développement de votre application, dép
 * [Déploiement ou mise à jour d'un adaptateur dans un environnement de production](#deploying-or-updating-an-adapter-to-a-production-environment)
 * [Configuration de SSL entre des adaptateurs et des serveurs de back end à l'aide de certificats auto-signés](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)
 * [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment)
-* [Enregistrement d'une application sur un environnement de production](#registering-an-application-to-a-production-environment)
+* [Enregistrement d'une application dans un environnement de production](#registering-an-application-to-a-production-environment)
 * [Transfert d'artefacts côté serveur vers un serveur de test ou de production](#transferring-server-side-artifacts-to-a-test-or-production-server)
 * [Mise à jour d'applications {{ site.data.keys.product_adj }} en production](#updating-mobilefirst-apps-in-production)
 
 ## Déploiement ou mise à jour d'un adaptateur dans un environnement de production
 {: #deploying-or-updating-an-adapter-to-a-production-environment }
-Les adaptateurs contiennent le code côté serveur des applications qui sont déployées et gérées par {{ site.data.keys.product }}. Consultez cette liste de contrôle avant de déployer ou de mettre à jour un adaptateur sur un environnement de production. Pour plus d'informations sur la création et la génération d'adaptateurs, voir [Développement du côté serveur d'une application {{ site.data.keys.product_adj }}](../../adapters).
+Les adaptateurs contiennent le code côté serveur des applications qui sont déployées et gérées par {{ site.data.keys.product }}. Consultez cette liste de contrôle avant de déployer ou de mettre à jour un adaptateur dans un environnement de production. Pour plus d'informations sur la création et la génération d'adaptateurs, voir [Développement du côté serveur d'une application {{ site.data.keys.product_adj }}](../../adapters).
 
 Les adaptateurs peuvent être envoyés par téléchargement, mis à jour ou configurés alors qu'un serveur de production est en cours d'exécution. Une fois que tous les noeuds d'un parc de serveurs ont reçu le nouvel adaptateur ou la nouvelle configuration, toutes les demandes entrantes sur l'adaptateur utilisent les nouveaux paramètres.
 
@@ -171,7 +171,7 @@ Pour plus d'informations, voir [Configuration du magasin de clés {{ site.data.k
     * Pour plus d'informations, voir [Activation du contrôle de sécurité de l'authenticité de l'application](../../authentication-and-security/application-authenticity).
     * Pour plus d'informations sur l'enregistrement d'une application sur un serveur de production, voir [Enregistrement d'une application sur un serveur de production](#registering-an-application-to-a-production-environment).
 
-## Enregistrement d'une application sur un environnement de production
+## Enregistrement d'une application dans un environnement de production
 {: #registering-an-application-to-a-production-environment }
 Lorsque vous enregistrez une application sur un serveur de production, vous envoyé par téléchargement son descripteur, vous définissez son type de licence et, le cas échéant, vous activez son authenticité.
 
@@ -350,7 +350,6 @@ L'API d'exportation extrait les artefacts sélectionnés pour un environnement d
 > * Le fichier d'exportation inclut les données d'authenticité d'application. Ces données sont propres à la génération d'une application mobile. Celle-ci comporte l'URL du serveur et le nom de son environnement d'exécution. Par conséquent, si vous souhaitez utiliser un autre serveur ou environnement d'exécution, vous devez régénérer l'application. Si vous transférez uniquement les fichiers d'application exportés, cela ne fonctionnera pas.
 > * Certains artefacts peuvent varier d'un serveur à un autre. Les données d'identification push varient selon que vous travaillez dans un environnement de développement ou de production.
 > * La configuration de contexte d'exécution d'application (contenant l'état actif/désactivé et les profils de journal) peut être transférée dans certains cas, mais pas toujours.
-
 > * Le transfert de ressources Web peut être inutile dans certains cas, par exemple, si vous régénérez l'application afin d'utiliser un nouveau serveur.
 
 * Pour exporter toutes les ressources, ou un sous-ensemble de ressources sélectionné, pour un adaptateur ou pour tous les adaptateurs, utilisez l'API [Export adapter resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) ou [Export adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc).
@@ -388,7 +387,7 @@ Si vous possédez le rôle d'administrateur **mfpadmin** et le rôle de déploye
 > 
 > * Le fichier d'exportation inclut les données d'authenticité d'application. Ces données sont propres à la génération d'une application mobile. Celle-ci comporte l'URL du serveur et le nom de son environnement d'exécution. Par conséquent, si vous souhaitez utiliser un autre serveur ou environnement d'exécution, vous devez régénérer l'application. Si vous transférez uniquement les fichiers d'application exportés, cela ne fonctionnera pas.
 > * Certains artefacts peuvent varier d'un serveur à un autre. Les données d'identification push varient selon que vous travaillez dans un environnement de développement ou de production.
-> * La configuration de contexte d'exécution d'application (contenant l'état actif/désactivé et les profils de journal) peut être transférée dans certains cas, mais pas toujours. 
+> * La configuration de contexte d'exécution d'application (contenant l'état actif/désactivé et les profils de journal) peut être transférée dans certains cas, mais pas toujours.
 > * Le transfert de ressources Web peut être inutile dans certains cas, par exemple, si vous régénérez l'application afin d'utiliser un nouveau serveur.
 
 Vous pouvez également transférer des descripteurs d'application à l'aide de l'API REST ou de l'outil mfpadm. Pour plus d'informations, voir [Transfert d'une configuration d'application à l'aide du service d'administration](#transferring-an-application-configuration-with-the-administration-service).

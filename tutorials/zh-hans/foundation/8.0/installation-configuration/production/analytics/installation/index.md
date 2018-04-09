@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server 安装指南
-breadcrumb_title: 安装指南
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -93,7 +93,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 WebSphere Application Server Liberty 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。 有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
+确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear** 文件位于 `<mf_server_install_dir>\analytics` 文件夹中。 有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
 
 1. 在 **./wlp/bin** 文件夹中运行以下命令以创建服务器。
 
@@ -107,8 +107,8 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. 将 **analytics.ear** 文件添加到 Liberty Server 的 **./usr/servers/<serverName>/apps** 文件夹中。
-4. 将 **./usr/servers/<serverName>/server.xml** 文件的 `<featureManager>` 标记中的内容替换为以下内容：
+3. 将 **analytics.ear** 文件添加到 Liberty Server 的 `./usr/servers/<serverName>/apps` 文件夹中。
+4. 将 `./usr/servers/<serverName>/server.xml` 文件的 `<featureManager>` 标记中的内容替换为以下内容：
 
    ```xml
    <featureManager>

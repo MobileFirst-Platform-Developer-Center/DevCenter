@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 用于上载或删除应用程序的命令行工具
-breadcrumb_title: 上载或删除应用程序
+breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

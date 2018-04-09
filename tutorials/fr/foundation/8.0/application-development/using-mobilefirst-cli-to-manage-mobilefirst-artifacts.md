@@ -34,17 +34,17 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 {: #prerequisites }
 The {{ site.data.keys.mf_cli }} is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
 
-Ensure **node.js** is installed in the development environment in order to install NPM packages.  
+Ensure **node.js** and **npm** is installed in the development environment in order to install NPM packages.  
 Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
 
 To confirm that node.js is properly installed, run the command `node -v`.
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **Note:** Minimum supported node.js version is 4.2.3
+> **Note:** Minimum supported **node.js** version is **4.2.3**. Also, with the fast evolving **node** and **npm** packages, the MobileFirst CLI might not be fully functional with all the available versions of **node** and **npm** including the latest versions. Ensure that **node** is on version **6.11.1** and **npm** version is **3.10.10**, for proper functioning of the CLI.
 
 ## Installing the {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
@@ -171,7 +171,7 @@ mfpdev server add
 ```
 
 Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.  
-For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation Bluemix service you would do the following:
+For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation IBM Cloud service you would do the following:
 
 ```bash
 $ mfpdev server add
@@ -185,7 +185,7 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'MyBluemixServer' added successfully. 
+Server profile 'MyBluemixServer' added successfully.
 ```
 
 - Replace the "fully qualified URL of this server" with your own.
@@ -291,17 +291,17 @@ Available configurations are:
 
 * The server address and runtime the application will be registered to
 
-    > **Example use case:** in order to register an application to a {{ site.data.keys.mf_server }} with a certain address, but also have the application connect to a different server address, for example a DataPower appliance: 
+    > **Example use case:** in order to register an application to a {{ site.data.keys.mf_server }} with a certain address, but also have the application connect to a different server address, for example a DataPower appliance:
     >
     > 1. Run `mfpdev app register` to register the application in the expected {{ site.data.keys.mf_server }} address.
     > 2. Run `mfpdev app config` and change the **server** property's value to match the address of the DataPower appliance. You can also run the command in **direct mode**: `mfpdev app config server http(s)://server-ip-or-host:port`.
 
-* Setting a public key for the Direct Update authenticity feature 
+* Setting a public key for the Direct Update authenticity feature
 * Setting application default language (default is English (en))
 * Whether or not to enable the web resources checksum test
 * What file extensions to ignore during the web resources checksum test
 
-<div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="app-config" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="app-config-options">
             <h4 class="panel-title">
@@ -312,7 +312,7 @@ Available configurations are:
         <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
             <div class="panel-body">
                 <p>For the web resources checksum settings, each possible target platform (Android, iOS, Windows 8, Windows Phone 8, and Windows 10 UWP) has a platform-specific key for use in <b>mfpdev</b> direct mode. These keys begin with a string that represents the platform name. For example, <code>windows10_security_test_web_resources_checksum</code> is a true or false setting that specifies whether to enable the web resources checksum test for Windows10 UWP.</p>
-                
+
                 <table class="table table-striped">
                     <tr>
                         <td><b>Setting</b></td>
@@ -363,7 +363,7 @@ Available configurations are:
                         <td>Specifies what file extensions to ignore during web resources checksum testing for Windows Phone 8.1 Cordova apps. Separate multiple extensions with commas. For example: jpg,gif,pdf</td>
                     </tr>
                 </table>
- 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>Close section</b></a>
             </div>
@@ -394,7 +394,7 @@ Before running the preview command, you must prepare the project by adding the `
    ```
 
  3. Run the following command:
- 
+
     ```bash
     cordova prepare
     ```

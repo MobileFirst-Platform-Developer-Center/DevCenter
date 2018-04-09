@@ -31,7 +31,7 @@ Apps that were created with earlier versions of IBM MobileFirst Platform Foundat
 The migration assistance tool does not modify or move any developer code or comments of your app.
 
 1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
+    * Download the .tgz file from the [Git repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli).
     * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
 2. Install the migration assistance tool.
     * Change to the directory where you downloaded the tool.
@@ -40,13 +40,13 @@ The migration assistance tool does not modify or move any developer code or comm
    ```bash
    npm install -g
    ```
-    
+
 3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
 
    ```bash
    mfpmigrate scan --in source_directory --out destination_directory --type windows
    ```
-    
+
    **source_directory**  
    The current location of the project.
 
@@ -54,7 +54,7 @@ The migration assistance tool does not modify or move any developer code or comm
    The directory where the report is created.
 
    When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
-    
+
 ## Migrating a Windows project
 {: #migrating-a-windows-project }
 To work with existing native Windows project that was created with IBM MobileFirst™ Platform Foundation V6.2.0 or later, you must modify the project.
@@ -70,7 +70,7 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
         * worklight-windows8
 
         > **Note:** If your app uses the application authenticity or extended authenticity feature, you must add either Microsoft Visual C++ 2013 Runtime Package for Windows or Microsoft Visual C++ 2013 Runtime Package for Windows Phone as a reference to your app. To so do, in Visual Studio, right-click on the references of your native project and complete one of the following choices depending on which environment you added to your native API app:
-        
+
         * For Windows desktops and tablets: Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows → OK**.
         * For Windows Phone 8 Universal: Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → OK**.
         * For Windows 10 Universal Windows Platform (UWP): Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows Universal → OK**.
@@ -82,18 +82,18 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
 
    ```csharp
    WLResourceRequest request = new WLResourceRequest
-                            (new Uri(uriBuilder.ToString()), "GET", "accessRestricted"); 
-                            request.send(listener); 
+                            (new Uri(uriBuilder.ToString()), "GET", "accessRestricted");
+                            request.send(listener);
    ```
-    
+
    The snippet updated with the new API would be:
-    
+
    ```csharp
    WorklightResourceRequest request = newClient.ResourceRequest
                             (new Uri(uriBuilder.ToString(), UriKind.Relative), "GET", "accessRestricted");
                             WorklightResponse response = await request.Send();
    ```
-    
+
     * All methods that performed asynchronous operations previously used a Response listener call back model. These have been replaced by the **await/async** model.
 
 You can now start developing your native Windows application with the {{ site.data.keys.product_adj }} SDK. You might need to update your code to reflect the changes for {{ site.data.keys.product_adj }} V8.0.0 API.
@@ -108,29 +108,31 @@ Replace the client-side APIs that are discontinued or not in V8.0.
 
 #### Deprecated Windows C# API Classes
 {: #deprecated-windows-c-api-classes }
-| Category | Description | Recommended action | 
+
+| Category | Description | Recommended action |
 |----------|-------------|--------------------|
 | `ChallengeHandler`  | For custom gateway challenges, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenges, use `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler`, `isCustomResponse()`  | Use `GatewayChallengeHandler.canHandleResponse().` | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler`. | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` For custom gateway challenge handlers, use `GatewayChallengeHandler.Shouldcancel()`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager` instead. | 
-| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`.  | 
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	Use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLClient` | 	Use `WorklightClient` instead. | 
-| `WLErrorCode` | 	Not supported. | 
-| `WLFailResponse` | 	Use `WorklightResponse` instead. | 
-| `WLResponse` | Use `WorklightResponse` instead. | 
-| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData` instead. | 
-| `WLProcedureInvocationFailResponse` | 	Not supported. | 
-| `WLProcedureInvocationResult` | 	Not supported. | 
-| `WLRequestOptions` | 	Not supported. | 
-| `WLResourceRequest` | 	Use `WorklightResourceRequest` instead. | 
+| `ChallengeHandler`, `isCustomResponse()`  | Use `GatewayChallengeHandler.canHandleResponse().` |
+| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` For custom gateway challenge handlers, use `GatewayChallengeHandler.Shouldcancel()`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager` instead. |
+| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`.  |
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	Use `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLClient` | 	Use `WorklightClient` instead. |
+| `WLErrorCode` | 	Not supported. |
+| `WLFailResponse` | 	Use `WorklightResponse` instead. |
+| `WLResponse` | Use `WorklightResponse` instead. |
+| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData` instead. |
+| `WLProcedureInvocationFailResponse` | 	Not supported. |
+| `WLProcedureInvocationResult` | 	Not supported. |
+| `WLRequestOptions` | 	Not supported. |
+| `WLResourceRequest` | 	Use `WorklightResourceRequest` instead. |
 
 #### Deprecated Windows C# API Interfaces
 {: #deprecated-windows-c-api-interfaces }
-| Category | Description | Recommended action | 
+
+| Category | Description | Recommended action |
 |----------|-------------|--------------------|
-| `WLHttpResponseListener` | Not supported. | 
-| `WLResponseListener` | The response will be available as a `WorklightResponse` object | 
-| `WLAuthorizationPersistencePolicy` | Not supported. | 
+| `WLHttpResponseListener` | Not supported. |
+| `WLResponseListener` | The response will be available as a `WorklightResponse` object |
+| `WLAuthorizationPersistencePolicy` | Not supported. |

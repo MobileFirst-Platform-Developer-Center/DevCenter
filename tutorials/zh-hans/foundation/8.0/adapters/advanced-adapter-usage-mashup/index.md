@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: 高级适配器用法和聚合
-breadcrumb_title: 适配器聚合
+breadcrumb_title: Adapter Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---

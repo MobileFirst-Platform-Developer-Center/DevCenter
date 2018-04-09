@@ -15,14 +15,14 @@ die das native {{ site.data.keys.product_adj }}-SDK verwenden.
 
 Zudem können Sie Adapter in lokalen oder fernen MobileFirst-Server-Instanzen erstellen, registrieren und verwalten und
 Projekte über die Befehlszeile, über REST-Services oder über die
-{{ site.data.keys.mf_console }} verwalten.
+{{ site.data.keys.mf_console }} verwalten. 
 
 Die **mfpdev**-Befehle können im interaktiven Modus oder im Direktmodus ausgeführt werden. Im interaktiven Modus geben Sie den Befehl ohne Optionen ein und werden dann aufgefordert, Antworten einzugeben. Im Direktmodus geben Sie den vollständigen Befehl mit Optionen ein. Es gibt keine Eingabeaufforderung. Die Eingabeaufforderungen sind, soweit anwendbar, vom Kontext der Zielplattform für die App abhängig, der an dem Verzeichnis erkennbar ist, in dem Sie den Befehl ausführen. Über die Taste mit dem Aufwärts- oder dem Abwärtspfeil
 auf Ihrer Tastatur können Sie durch die Auswahloptionen navigieren. Wenn die gewünschte Auswahl hervorgehoben und mit vorangestelltem Zeichen
-">" angezeigt wird, drücken Sie die Eingabetaste.
+">" angezeigt wird, drücken Sie die Eingabetaste. 
 
 In diesem Lernprogramm erfahren Sie, wie die Befehlszeilenschnittstelle (`mfpdev`) installiert
-und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adaptern verwendet wird.
+und für die Verwaltung von MobileFirst-Server-Instanzen, Anwendungen und Adaptern verwendet wird. 
 
 > Weitere Informationen zur SDK-Integration in Cordova-Anwendungen und nativen Anwendungen enthalten die Lernprogramme
 der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/sdk/).
@@ -44,7 +44,7 @@ der Kategorie [SDK der {{ site.data.keys.product }} hinzufügen]({{site.baseurl}
 Die {{ site.data.keys.mf_cli }} ist als NPM-Paket in der [NPM-Registry](https://www.npmjs.com/) verfügbar.  
 
 Stellen Sie sicher, dass in der Entwicklungsumgebung **Node.js** für die Instalation von NPM-Paketen installiert ist.   
-Folgen Sie für die Installation von Node.js den Anweisungen auf [nodejs.org](https://nodejs.org).
+Folgen Sie für die Installation von Node.js den Anweisungen auf [nodejs.org](https://nodejs.org). 
 
 Führen Sie den Befehl `node -v` aus, um sich zu vergewissern, dass Node.js ordnungsgemäß installiert wurde.
 
@@ -53,26 +53,26 @@ node -v
 v4.2.3
 ```
 
-> **Hinweis:** Die unterstützte Mindestversion von Node.js ist Version 4.2.3.
+> **Hinweis:** Die unterstützte Mindestversion von Node.js ist Version 4.2.3. 
 
 ## {{ site.data.keys.mf_cli }} installieren
 {: #installing-the-mobilefirst-cli }
-Führen Sie für die Installation der Befehlszeilenschnittstelle den folgenden Befehl aus:
+Führen Sie für die Installation der Befehlszeilenschnittstelle den folgenden Befehl aus: 
 
 ```bash
 npm install -g mfpdev-cli
 ```
 
-Wenn Sie die CLI-ZIP-Datei über das Download-Center der {{ site.data.keys.mf_console }} heruntergeladen haben, verwenden Sie den folgenden Befehl:
+Wenn Sie die CLI-ZIP-Datei über das Download-Center der {{ site.data.keys.mf_console }} heruntergeladen haben, verwenden Sie den folgenden Befehl: 
 
 ```bash
 npm install -g <path-to-mfpdev-cli.tgz>
 ```
 
 - Sie können die CLI ohne die optionalen Abhängigkeiten installieren. Fügen Sie in dem Fall das Attribut
-`--no-optional` hinzu (`npm install -g --no-optional Pfad_zu_mfpdev-cli.tgz`).
+`--no-optional` hinzu (`npm install -g --no-optional Pfad_zu_mfpdev-cli.tgz`). 
 
-Führen Sie zur Überprüfung der Installation den Befehl `mfpdev` ohne Argumente aus. Der Befehl gibt den folgenden Hilfetext aus:
+Führen Sie zur Überprüfung der Installation den Befehl `mfpdev` ohne Argumente aus. Der Befehl gibt den folgenden Hilfetext aus: 
 
 ```shell
 NAME
@@ -131,11 +131,11 @@ DESCRIPTION
 
 ## Interaktiver Modus und Direktmodus
 {: #interactive-and-direct-modes }
-Alle Befehle können im **interaktiven Modus** oder im **Direktmodus** ausgeführt werden. Im interaktiven Modus werden Sie zur Eingabe der erforderlichen Parameter aufgefordert und es werden einige Standardwerte verwendet. Im Direktmodus müssen die Parameter zusammen mit dem auszuführenden Befehl angegeben werden.
+Alle Befehle können im **interaktiven Modus** oder im **Direktmodus** ausgeführt werden. Im interaktiven Modus werden Sie zur Eingabe der erforderlichen Parameter aufgefordert und es werden einige Standardwerte verwendet. Im Direktmodus müssen die Parameter zusammen mit dem auszuführenden Befehl angegeben werden. 
 
 Beispiel:
 
-`mfpdev server add` im interaktiven Modus:
+`mfpdev server add` im interaktiven Modus: 
 
 ```bash
 ? Enter the name of the new server definition: mydevserver
@@ -161,29 +161,29 @@ Die korrekte Syntax für einen Befehl im Direktmodus können Sie mit dem Befehl 
 ## MobileFirst-Server-Instanzen verwalten
 {: #managing-mobilefirst-server-instances }
 Mit dem Befehl `mfpdev server <option>` können Sie die verwendeten Instanzen von
-{{ site.data.keys.mf_server }} verwalten. Mindestens eine Serverinstanz muss als Standardinstanz aufgelistet sein. Der Standardserver wird immer verwendet, wenn kein anderer Server angegeben ist.
+{{ site.data.keys.mf_server }} verwalten. Mindestens eine Serverinstanz muss als Standardinstanz aufgelistet sein. Der Standardserver wird immer verwendet, wenn kein anderer Server angegeben ist. 
 
 ### Serverinstanzen auflisten
 {: #list-server-instances }
-Führen Sie den folgenden Befehl aus, um die zur Verfügung stehenden MobileFirst-Server-Instanzen aufzulisten:
+Führen Sie den folgenden Befehl aus, um die zur Verfügung stehenden MobileFirst-Server-Instanzen aufzulisten: 
 
 ```bash
 mfpdev server info
 ```
 
-Standardmäßig wird automatisch ein lokales Serverprofil erstellt und von der CLI als Standard verwendet.
+Standardmäßig wird automatisch ein lokales Serverprofil erstellt und von der CLI als Standard verwendet. 
 
 ### Neue Serverinstanz hinzufügen
 {: #add-a-new-server-instance }
 Wenn Sie eine weitere lokale oder ferne MobileFirst-Server-Instanz verwenden,
-können Sie sie zur Liste der verfügbaren Instanzen hinzufügen. Verwenden Sie dazu den folgenden Befehl:
+können Sie sie zur Liste der verfügbaren Instanzen hinzufügen. Verwenden Sie dazu den folgenden Befehl: 
 
 ```bash
 mfpdev server add
 ```
 
 Folgen Sie den Eingabeaufforderungen, um den Servernamen, die Server-URL und die Berechtigungsnachweise (Benutzer und Kennwort) anzugeben.   
-Wenn Sie beispielsweise einen {{ site.data.keys.mf_server }} hinzufügen möchten, der in einem Mobile-Foundation-Bluemix-Service ausgeführt wird, verwenden Sie den folgenden Befehl:
+Wenn Sie beispielsweise einen {{ site.data.keys.mf_server }} hinzufügen möchten, der in einem Mobile-Foundation-Bluemix-Service ausgeführt wird, verwenden Sie den folgenden Befehl: 
 
 ```bash
 $ mfpdev server add
@@ -197,21 +197,21 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'MyBluemixServer' added successfully.
+Server profile 'MyBluemixServer' added successfully. 
 ```
 
-- Ersetzen Sie die vollständig qualifizierte URL des Servers ("fully qualified URL of this server") durch Ihre eigene.
+- Ersetzen Sie die vollständig qualifizierte URL des Servers ("fully qualified URL of this server") durch Ihre eigene. 
 
 ### Serverinstanzen bearbeiten
 {: #edit-server-instances }
 Wenn Sie die Details einer registrierten Serverinstanz bearbeiten möchten, führen Sie den folgenden Befehl aus. Folgen Sie den interaktiven Eingabeaufforderungen
-und wählen Sie den zu bearbeitenden Server aus. Geben Sie dann die zu aktualisierenden Informationen an.
+und wählen Sie den zu bearbeitenden Server aus. Geben Sie dann die zu aktualisierenden Informationen an. 
 
 ```bash
 mfpdev server edit
 ```
 
-Verwenden Sie folgenden Befehl, um einen Server als Standardserver festzulegen:
+Verwenden Sie folgenden Befehl, um einen Server als Standardserver festzulegen: 
 
 ```bash
 mfpdev server edit <Servername> --setdefault
@@ -219,23 +219,23 @@ mfpdev server edit <Servername> --setdefault
 
 ### Serverinstanzen entfernen
 {: #remove-server-instances }
-Wenn Sie eine Serverinstanz aus der Liste registrierter Server entfernen möchten, führen Sie den folgenden Befehl aus:
+Wenn Sie eine Serverinstanz aus der Liste registrierter Server entfernen möchten, führen Sie den folgenden Befehl aus: 
 
 ```bash
 mfpdev server remove
 ```
 
-Wählen Sie den Server in der interaktiven Liste aus.
+Wählen Sie den Server in der interaktiven Liste aus. 
 
 ### {{ site.data.keys.mf_console }} öffnen
 {: #open-mobilefirst-operations-console }
-Wenn Sie die Konsole des registrierten Standardservers öffnen möchten, führen Sie den folgenden Befehl aus:
+Wenn Sie die Konsole des registrierten Standardservers öffnen möchten, führen Sie den folgenden Befehl aus: 
 
 ```bash
 mfpdev server console
 ```
 
-Wenn Sie die Konsole eines anderen Servers öffnen möchten, geben Sie den Servernamen als Befehlsparameter an:
+Wenn Sie die Konsole eines anderen Servers öffnen möchten, geben Sie den Servernamen als Befehlsparameter an: 
 
 ```bash
 mfpdev server console <Servername>
@@ -243,30 +243,30 @@ mfpdev server console <Servername>
 
 ### Apps und Adapter von einem Server entfernen
 {: #remove-apps-and-adapters-from-a-server }
-Wenn Sie alle bei einem Server registrierten Apps und Adapter entfernen möchten, führen Sie den folgenden Befehl aus:
+Wenn Sie alle bei einem Server registrierten Apps und Adapter entfernen möchten, führen Sie den folgenden Befehl aus: 
 
 ```bash
 mfpdev server clean
 ```
 
 Wählen Sie an der interaktiven Eingabeaufforderung den zu bereinigenden Server aus.   
-Die Serverinstanz wird in einen bereinigten Zustand (d. h. einen Server ohne implementierte Apps oder Adapter) versetzt.
+Die Serverinstanz wird in einen bereinigten Zustand (d. h. einen Server ohne implementierte Apps oder Adapter) versetzt. 
 
 ## Anwendungen verwalten
 {: #managing-applications }
-Mit dem Befehl `mfpdev app` können Anwendungen, die mit dem MobileFirst-Platform-SDK erstellt wurden, verwaltet werden.
+Mit dem Befehl `mfpdev app` können Anwendungen, die mit dem MobileFirst-Platform-SDK erstellt wurden, verwaltet werden. 
 
 ### Anwendung in einer Serverinstanz registrieren
 {: #register-an-application-in-a-server-instance }
 Eine Anwendung muss bei einem {{ site.data.keys.mf_server }} registriert sein, um ausgeführt werden zu können.   
-Führen Sie im Stammordner eines App-Projekts den folgenden Befehl aus, um die App zu registrieren:
+Führen Sie im Stammordner eines App-Projekts den folgenden Befehl aus, um die App zu registrieren: 
 
 ```bash
 mfpdev app register
 ```
 
 Dieser Befehl kann im Standardverzeichnis einer Cordova-, Android-, iOS- oder Windows-Anwendung ausgeführt werden.   
-Er verwendet für die folgenden Schritte den Standardserver und die Standardlaufzeit:
+Er verwendet für die folgenden Schritte den Standardserver und die Standardlaufzeit: 
 
 * Registrierung einer Anwendung bei einem Server
 * Generierung einer Standarddatei mit Clienteigenschaften für die Anwendung
@@ -274,9 +274,9 @@ Er verwendet für die folgenden Schritte den Standardserver und die Standardlauf
 
 Bei einer Cordova-Anwendung aktualisiert dieser Befehl die Datei config.xml.   
 Bei einer iOS-Anwendung aktualisiert dieser Befehl die Datei mfpclient.plist.   
-Bei einer Android- oder Windows-Anwendung aktualisiert dieser Befehl die Datei mfpclient.properties.
+Bei einer Android- oder Windows-Anwendung aktualisiert dieser Befehl die Datei mfpclient.properties. 
 
-Verwenden Sie die folgende Syntax, wenn Sie eine App bei einem anderen als dem Standardserver und einer vom Standard abweichenden Laufzeit registrieren möchten:
+Verwenden Sie die folgende Syntax, wenn Sie eine App bei einem anderen als dem Standardserver und einer vom Standard abweichenden Laufzeit registrieren möchten: 
 
 ```
 mfpdev app register <Server> <Laufzeit>
@@ -292,7 +292,7 @@ mfpdev app register -w windows8
 ### Anwendung konfigurieren
 {: #configure-an-application }
 Wenn eine Anwendung registriert wird, werden serverbezogene Attribute zur Konfigurationsdatei der Anwendung hinzugefügt.   
-Sie können die Werte dieser Attribute mit folgendem Befehl ändern:
+Sie können die Werte dieser Attribute mit folgendem Befehl ändern: 
 
 ```bash
 mfpdev app config
@@ -301,7 +301,7 @@ mfpdev app config
 Dieser Befehl zeigt eine interaktive Liste mit Attributen an, die geändert werden können, und fordert Sie zur Eingabe neuer Werte für die Attribute auf.   
 Welche Attribute angezeigt werden, hängt von der jeweiligen Plattform ab (iOS, Android, Windows).
 
-Verfügbare Konfigurationen:
+Verfügbare Konfigurationen: 
 
 * Angabe von Serveradresse und Laufzeit für die zu registrierende Anwendung
 
@@ -310,13 +310,13 @@ Sie möchten eine Anwendung bei einem {{ site.data.keys.mf_server }} mit einer b
 eine Verbindung zu einer anderen Serveradresse herzustellen, z. B. zu einem
 DataPower-Gerät.
     >
-    > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren.
+    > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren. 
     > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server**
 an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
 
 * Festlegung des öffentlichen Schlüssels für die direkte Aktualisierung
 * Festlegung der Standardpsrache für die Anwendung. (Die Standardsprache ist Englisch (en).)
-* Festlegung, ob der Kontrollsummentest für Webressourcen aktiviert werden soll
+* Festlegung, ob der Kontrollsummentest für Webressourcen aktiviert werden soll 
 * Angabe der Dateierweiterungen, die beim Kontrollsummentest für Webressource ignoriert werden sollen
 
 <div class="panel-group accordion" id="app-config" role="tablist">
@@ -392,7 +392,7 @@ an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direkt
 
 ### Cordova-Anwendung voranzeigen
 {: #preview-a-cordova-application }
-Die Webressourcen einer Cordova-Anwendung können in einem Browser vorangezeigt werden. Das Voranzeigen einer Anwendung beschleunigt die Entwicklung, da keine Emulatoren und Simulatoren der nativen Plattform verwendet wreden müssen.
+Die Webressourcen einer Cordova-Anwendung können in einem Browser vorangezeigt werden. Das Voranzeigen einer Anwendung beschleunigt die Entwicklung, da keine Emulatoren und Simulatoren der nativen Plattform verwendet wreden müssen. 
 
 Vor Ausführung des Befehls "preview" müssen Sie das Projekt vorbereiten. Fügen Sie dazu die Variable `wlInitOptions` hinzu. Führen Sie die folgenden Schritte aus:
 
@@ -425,8 +425,8 @@ Vor Ausführung des Befehls "preview" müssen Sie das Projekt vorbereiten. Füge
 
 Sie werden aufgefordert, die Plattform für die Vorschau und die Art der Vorschau auszuwählen. Zur Auswahl stehen die beiden Optionen MBS und Browser.
 
-* MBS - {{ site.data.keys.mf_mbs }}. Bei Auswahl dieser Option wird ein mobiles Gerät in einem Browser simuliert. Gleichzeitig wird eine rudimentäre Cordova-API-Simulation für Karmera, Dateiupload, Geoortung und anderes bereitgestellt. Hinweis: Den Cordova-Browser können Sie nicht mit der Option MBS verwenden.
-* Browser - Einfache Darstellung in einem Browser. Bei Auswahl dieser Option werden die Webressourcen der Cordova-Anwendung als normale Browser-Webseite dargestellt.
+* MBS - {{ site.data.keys.mf_mbs }}. Bei Auswahl dieser Option wird ein mobiles Gerät in einem Browser simuliert. Gleichzeitig wird eine rudimentäre Cordova-API-Simulation für Karmera, Dateiupload, Geoortung und anderes bereitgestellt. Hinweis: Den Cordova-Browser können Sie nicht mit der Option MBS verwenden. 
+* Browser - Einfache Darstellung in einem Browser. Bei Auswahl dieser Option werden die Webressourcen der Cordova-Anwendung als normale Browser-Webseite dargestellt. 
 
 > Weitere Einzelheiten zu den Vorschauoptionen enthält das Lernprogramm zur [Cordova-Entwicklung]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/cordova-apps).
 
@@ -434,33 +434,33 @@ Sie werden aufgefordert, die Plattform für die Vorschau und die Art der Vorscha
 {: #update-web-resources-for-direct-update }
 Die Webressourcen einer Cordova-App wie HTML-, CSS- und JS-Dateien im Ordner **www** können mithilfe des MobileFirst-Foundation-Features
 für direkte Aktualisierung aktualisiert werden,
-ohne dass die App neu auf dem mobilen Gerät installiert werden muss.
-
+ohne dass die App neu auf dem mobilen Gerät installiert werden muss. 
 > Weitere Einzelheiten zur Funktionsweise der direkten Aktualisierung enthält das Lernprogramm [Direkte Aktualisierung in Cordova-Anwendungen]({{site.baseurl}}/tutorials/de/foundation/8.0/application-development/direct-update).
 
 
 
-Wenn Sie neue Webressourcen für die Aktualisierung einer Cordova-Anwendung senden möchten, führen Sie folgenden Befehl aus:
+
+Wenn Sie neue Webressourcen für die Aktualisierung einer Cordova-Anwendung senden möchten, führen Sie folgenden Befehl aus: 
 
 ```bash
 mfpdev app webupdate
 ```
 
-Dieser Befehl packt die aktualisierten Webressourcen zu einer ZIP-Datei und lädt diese Datei auf den registrierten Standard-MobileFirst-Server hoch. Sie finden die gepackten Webressourcen im Ordner **[Stammorder_des_Cordova-Projekts]/mobilefirst/**.
+Dieser Befehl packt die aktualisierten Webressourcen zu einer ZIP-Datei und lädt diese Datei auf den registrierten Standard-MobileFirst-Server hoch. Sie finden die gepackten Webressourcen im Ordner **[Stammorder_des_Cordova-Projekts]/mobilefirst/**. 
 
-Wenn Sie die Webressourcen an eine andere Serverinstanz senden möchten, geben Sie mit dem Befehl den Servernamen und die Laufzeit an:
+Wenn Sie die Webressourcen an eine andere Serverinstanz senden möchten, geben Sie mit dem Befehl den Servernamen und die Laufzeit an: 
 
 ```bash
 mfpdev app webupdate <Servername> <Laufzeit>
 ```
 
-Mit dem Parameter --build können Sie die ZIP-Datei mit den gepackten Webressourcen generieren, ohne die Datei auf einen Server hochzuladen:
+Mit dem Parameter --build können Sie die ZIP-Datei mit den gepackten Webressourcen generieren, ohne die Datei auf einen Server hochzuladen: 
 
 ```bash
 mfpdev app webupdate --build
 ```
 
-Wenn Sie ein erstelltes Paket hochladen möchten, verwenden Sie den Parameter --file:
+Wenn Sie ein erstelltes Paket hochladen möchten, verwenden Sie den Parameter --file: 
 
 ```bash
 mfpdev app webupdate --file mobilefirst/com.ibm.test-android-1.0.0.zip
@@ -477,14 +477,14 @@ mfpdev app webupdate --encrypt
 Wenn eine {{ site.data.keys.product_adj }}-Anwendung bei einem
 {{ site.data.keys.mf_server }} registriert ist, kann ein Teil der Anwendungskonfiguration
 in der MobileFirst-Server-Konsole geändert werden. Die so geänderte Konfiguration kann dann mittels Pull vom Server
-zur Anendung übertragen werden. Verwenden Sie dazu den folgenden Befehl:
+zur Anendung übertragen werden. Verwenden Sie dazu den folgenden Befehl: 
 
 ```bash
 mfpdev app pull
 ```
 
 Es ist auch möglich, die Anwendungskonfiguration lokal zu ändern, und die Änderungen per Push mit folgendem Befehl zum
-{{ site.data.keys.mf_server }} zu übertragen:
+{{ site.data.keys.mf_server }} zu übertragen: 
 
 ```bash
 mfpdev app push
@@ -494,7 +494,7 @@ mfpdev app push
 und diese Änderung dann mihilfe einer Pull-Operation zum Server übertragen. Verwenden Sie dazu den obigen Befehl. Die heruntergeladene ZIP-Datei wird im Projektordner
 **[Stammverzeichnis]/mobilefirst** gespeichert und kann später mit dem Befehl
 `mfpdev app push` auf einen anderen {{ site.data.keys.mf_server }} hochgeladen werden.
-Diese Wiederverwendung bereits erstellter Konfigurationen ermöglicht eine rasche Konfiguration und Einrichtung.
+Diese Wiederverwendung bereits erstellter Konfigurationen ermöglicht eine rasche Konfiguration und Einrichtung. 
 
 ## Adapter verwalten und testen
 {: #managing-and-testing-adapters }
@@ -505,33 +505,33 @@ Adapter können mit dem Befehl `mfpdev adapter` verwaltet werden.
 
 ### Adapter erstellen
 {: #create-an-adapter }
-Verwenden Sie den folgenden Befehl, um einen neuen Adapter zu erstellen:
+Verwenden Sie den folgenden Befehl, um einen neuen Adapter zu erstellen: 
 
 ```bash
 mfpdev adapter create
 ```
 
-Folgen Sie den Eingabeaufforderungen uind geben Sie den Namen, den Typ und die Gruppen-ID des Adapters an.
+Folgen Sie den Eingabeaufforderungen uind geben Sie den Namen, den Typ und die Gruppen-ID des Adapters an. 
 
 ### Adapterbuild erstellen
 {: #build-an-adpater }
-Führen Sie im Stammordner des Adapters den folgenden Befehl aus, um einen Adapterbuild zu erstellen:
+Führen Sie im Stammordner des Adapters den folgenden Befehl aus, um einen Adapterbuild zu erstellen: 
 
 ```bash
 mfpdev adapter build
 ```
 
-Mit diesem Befehl wird im Ordner **<Adaptername>/target** eine Datei .adapter erstellt.
+Mit diesem Befehl wird im Ordner **<Adaptername>/target** eine Datei .adapter erstellt. 
 
 ### Adapter implementieren
 {: #deploy-an-adapter}
-Mit dem folgenden Befehl wird der Adapter im Standardserver implementiert:
+Mit dem folgenden Befehl wird der Adapter im Standardserver implementiert: 
 
 ```bash
 mfpdev adapter deploy
 ```
 
-Verwenden Sie für die Implementierung auf einem anderen Server den folgenden Befehl:
+Verwenden Sie für die Implementierung auf einem anderen Server den folgenden Befehl: 
 
 ```bash
 mfpdev adapter deploy <Servername>
@@ -539,38 +539,38 @@ mfpdev adapter deploy <Servername>
 
 ### Adapter in der Befehlszeile aufrufen
 {: #call-an-adapter-from-the-command-line }
-Ein implementierter Adapter kann in der Befehlszeile aufgerufen werden, um sein Verhalten zu testen. Verwenden Sie dazu den folgenden Befehl:
+Ein implementierter Adapter kann in der Befehlszeile aufgerufen werden, um sein Verhalten zu testen. Verwenden Sie dazu den folgenden Befehl: 
 
 ```bash
 mfpdev adapter call
 ```
 
-Sie werden aufgefordert, den Adapter, die Prozedur und die zu verwendenden Parameter anzugeben. Die Befehlsausgabe ist die Antwort der Adapterprozedur.
+Sie werden aufgefordert, den Adapter, die Prozedur und die zu verwendenden Parameter anzugeben. Die Befehlsausgabe ist die Antwort der Adapterprozedur. 
 
 > Weitere Informationen enthält das Lernprogramm
 [Adapter testen und debuggen]({{site.baseurl}}/tutorials/de/foundation/8.0/adapters/testing-and-debugging-adapters/).
 
 ## Hilfreiche Befehle
 {: #helpful-commands }
-Verwenden Sie den folgenden Befehl, um für die CLI (mfpdev) Vorgaben wie den Standardbrowser und den Standardvorschaumodus festzulegen:
+Verwenden Sie den folgenden Befehl, um für die CLI (mfpdev) Vorgaben wie den Standardbrowser und den Standardvorschaumodus festzulegen: 
 
 ```bash
 mfpdev config
 ```
 
-Wenn Sie die Hilfetexte für alle mfpdev-Befehle sehen möchten, verwenden Sie den folgenden Befehl:
+Wenn Sie die Hilfetexte für alle mfpdev-Befehle sehen möchten, verwenden Sie den folgenden Befehl: 
 
 ```bash
 mfpdev help
 ```
 
-Mit dem folgenden Befehl wird eine Liste mit Informationen zu Ihrer Umgebung generiert:
+Mit dem folgenden Befehl wird eine Liste mit Informationen zu Ihrer Umgebung generiert: 
 
 ```bash
 mfpdev info
 ```
 
-Mit folgendem Befehl können Sie die Version der CLI (mfpdev) ausgeben:
+Mit folgendem Befehl können Sie die Version der CLI (mfpdev) ausgeben: 
 
 ```bash
 mfpdev -v
@@ -578,13 +578,13 @@ mfpdev -v
 
 ## Befehlszeilenschnittstelle aktualisieren und deinstallieren
 {: #update-and-uninstall-the-command-line-interface }
-Führen Sie den folgenden Befehl aus, um die Befehlszeilenschnittstelle zu aktualisieren:
+Führen Sie den folgenden Befehl aus, um die Befehlszeilenschnittstelle zu aktualisieren: 
 
 ```bash
 npm update -g mfpdev-cli
 ```
 
-Führen Sie den folgenden Befehl aus, um die Befehlszeilenschnittstelle zu deinstallieren:
+Führen Sie den folgenden Befehl aus, um die Befehlszeilenschnittstelle zu deinstallieren: 
 
 ```bash
 npm uninstall -g mfpdev-cli

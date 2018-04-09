@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: クライアント・アプリケーションでの SMS 通知の処理
-breadcrumb_title: SMS 通知の処理
+breadcrumb_title: Handling SMS Notifications
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true

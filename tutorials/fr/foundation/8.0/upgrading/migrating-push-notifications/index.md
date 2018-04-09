@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Migrating push notifications from event source-based notifications
-breadcrumb_title: Migrating push notifications 
+breadcrumb_title: Migrating push notifications
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -22,15 +22,15 @@ For example, in the event source-based model, if you were to segment your mobile
 
 The table below provides you with a comparison between the two models.
 
-| User requirement | Event source model | Push service model | 
+| User requirement | Event source model | Push service model |
 |------------------|--------------------|--------------------|
-| To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. | 
+| To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. |
 | To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the {{ site.data.keys.mf_server }}</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
-| To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. | 
+| To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. |
 | To receive and handle notifications in your mobile client applications | Register a listener implementation. | Register a listener implementation. |
 | To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the {{ site.data.keys.mf_server }} and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
 | To trigger push notifications as regular time periods (polling intervals) |  Implement the function to send push notifications within the event-source adapter and this as part of the createEventSource function call. | Not supported. |
-| To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. | 
+| To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. |
 
 ## Migration Scenarios
 {: #migration-scenarios }
@@ -38,8 +38,8 @@ Starting from {{ site.data.keys.product }} v8.0, the event source-based model wi
 
 Existing event source-based applications on earlier versions of IBM MobileFirst Platform Foundation need to be migrated to v8.0, to the new push service model.
 
-#### Jump to
-{: #jump-to }
+#### Jump to section
+{: #jump-to-section }
 * [Hybrid applications](#hybrid-applications)
 * [Native Android applications](#native-android-applications)
 * [Native iOS applications](#native-ios-applications)
@@ -61,20 +61,20 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-   MFPPush.registerNotificationsCallback(notificationReceived); }, 
+   MFPPush.registerNotificationsCallback(notificationReceived); },
    function(failureResponse){alert("Failed to initialize");    
                               }  
    );
    ```
-    
+
 2. Implement the notification callback method.
 
    ```javascript
    var notificationReceived = function(message) {
-        alert(JSON.stringify(message)); 
+        alert(JSON.stringify(message));
    };
    ```
-    
+
 3. Register the mobile device with the push notification service.
 
    ```javascript
@@ -86,9 +86,9 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
 	    }
    );
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service.
- 
+
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
 		alert("Successfully unregistered");
@@ -98,7 +98,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
 	    }
    );
    ```
-    
+
 5. Remove WL.Client.Push.isPushSupported() (if used) and use.
 
    ```javascript
@@ -110,7 +110,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
 	   }
    );
    ```
-    
+
 6. Remove the following `WL.Client.Push` APIs, since there will be no event source to subscribe to and register notification callbacks.
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -147,13 +147,13 @@ This maps to tags which segments the users/devices based on topic of interest. T
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		MFPPush.registerNotificationsCallback(notificationReceived);              					},
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
    );
    ```
-    
+
 2. Implement the notification callback method.
 
    ```javascript
@@ -173,7 +173,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
 	    }
    );
    ```
-    
+
 4. (Optional) Unregister the mobile device from the push notification service.
 
    ```javascript
@@ -185,7 +185,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
 	    }
    );
    ```
-    
+
 5. Remove `WL.Client.Push.isPushSupported()` (if used) and use.
 
    ```javascript
@@ -197,7 +197,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
 	    }
    );
    ```
-    
+
 6. Remove the following `WL.Client.Push` APIs since there will be no event source to subscribe to and register notification callbacks.
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -229,7 +229,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
 	    }
    );
    ```
-    
+
 ##### Server
 {: #server-hybrid-2 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
@@ -258,13 +258,13 @@ Complete the following steps for every application that was using the same event
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-        MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+        MFPPush.registerNotificationsCallback(notificationReceived);              					},
         function(failureResponse){
             alert("Failed to initialize");
         }
    );
    ```
-    
+
 2. Implement the notification callback method.
 
    ```javascript
@@ -272,7 +272,7 @@ Complete the following steps for every application that was using the same event
         alert(JSON.stringify(message));
    };
    ```
-    
+
 3. Register the mobile device with the push notification service.
 
    ```javascript
@@ -284,7 +284,7 @@ Complete the following steps for every application that was using the same event
         }
    );
    ```
-    
+
 4. (Optional) Unregister the mobile device from the push notification service.
 
    ```javascript
@@ -335,7 +335,7 @@ Complete the following steps for every application that was using the same event
 
    ```javascript
    MFPPush.initialize(function(successResponse){
-		MFPPush.registerNotificationsCallback(notificationReceived);              					}, 
+		MFPPush.registerNotificationsCallback(notificationReceived);              					},
 		function(failureResponse){
 			alert("Failed to initialize");
 		}
@@ -373,7 +373,7 @@ Complete the following steps for every application that was using the same event
 	    }
    );
    ```
-    
+
 5. Remove `WL.Client.Push.isPushSupported()` (if used) and use:
 
    ```javascript
@@ -419,7 +419,7 @@ Complete the following steps for every application that was using the same event
    ```
 
 ##### Server
-{: #client-hybrid-4 }
+{: #server-hybrid-4 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.  
 Complete the following steps for every application that was using the same event source:
 
@@ -430,7 +430,7 @@ Complete the following steps for every application that was using the same event
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
     * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 ### Native Android applications
 {: #native-android-applications }
@@ -459,7 +459,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. Register the mobile device with the push notification service.
 
    ```java
@@ -475,7 +475,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
         }
    });
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service.
 
    ```java
@@ -491,7 +491,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
         }
    });
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
 6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
     * `registerEventSourceCallback()`
@@ -518,7 +518,7 @@ Complete the following steps for every application that was using the same event
 3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
 4. You can use either of the following methods to send notifications:
     * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
 
 #### Scenario 2: Existing applications using multiple event sources in their application
 {: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
@@ -534,7 +534,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
-    
+
 2. Implement the interface MFPPushNotificationListener and define onReceive().
 
    ```java
@@ -558,9 +558,9 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    });
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service:
-  
+
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){   
        @Override
@@ -574,7 +574,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    });
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
 6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
     * `registerEventSourceCallback()`
@@ -602,9 +602,9 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    });
    ```
-    
+
 9. (Optional) Unsubscribe from tags:
- 
+
    ```java
    String[] tags = new String[2];
    tags[0] ="sample-tag1";
@@ -622,7 +622,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    });
    ```
-   
+
 ##### Server
 {: #server-android-2 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
@@ -654,7 +654,7 @@ Complete the following steps for every application that was using the same event
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
-    
+
 2. Implement the interface `MFPPushNotificationListener` and define `onReceive()`.
 
    ```java
@@ -663,7 +663,7 @@ Complete the following steps for every application that was using the same event
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. Register the mobile device with push notification service.
 
    ```java
@@ -679,7 +679,7 @@ Complete the following steps for every application that was using the same event
         }
    });
    ```
-    
+
 4. (Optional) Un-register the mobile device from push notification service.
 
    ```java
@@ -729,16 +729,16 @@ Complete the following steps for every application that was using the same event
    ```
 
 2. Implement the interface MFPPushNotificationListener and define onReceive().
- 
+
    ```java
    @Override
    public void onReceive(MFPSimplePushNotification message) {
         Log.i("Push Notifications", message.getAlert());
    }
    ```
-    
+
 3. Register the mobile device with the push notification service.
-    
+
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -751,9 +751,9 @@ Complete the following steps for every application that was using the same event
         }
    });
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service.
- 
+
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
         @Override
@@ -767,7 +767,7 @@ Complete the following steps for every application that was using the same event
         }
    });
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported()`;
 6. Remove the following `WLClient.Push` API's:
     * `subscribeTag()`
@@ -845,7 +845,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
-    
+
 2. Implement the notification processing in the `didReceiveRemoteNotification()`.
 3. Register the mobile device with the push notification service.
 
@@ -858,7 +858,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
         }
    }];
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service.
 
    ```objc
@@ -870,7 +870,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
         }
    }];
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
 
    ```objc
@@ -889,7 +889,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    ```objc
    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
    ```
-    
+
 ##### Server
 {: #server-ios-1 }
 Remove the following WL.Server API's (if used) in your adapter:
@@ -936,7 +936,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    }];
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service:
 
    ```objc
@@ -948,13 +948,13 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    }];
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
-    
+
 6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
     * `registerEventSourceCallback()`
     * `subscribe()`
@@ -977,7 +977,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    }];
    ```
-    
+
 9. (Optional) Unsubscribe from tags:
 
    ```objc
@@ -992,7 +992,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         }
    }];
    ```
-    
+
 ##### Server
 :{: #server-ios-2 }
 Remove `WL.Server` (if used) in your adapter.
@@ -1022,7 +1022,7 @@ Complete the following steps for every application that was using the same event
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
-    
+
 2. Implement the notification processing in the `didReceiveRemoteNotification()`.
 3. Register the mobile device with the push notification service:
 
@@ -1035,7 +1035,7 @@ Complete the following steps for every application that was using the same event
         }
    }];
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service.
 
    ```objc
@@ -1047,7 +1047,7 @@ Complete the following steps for every application that was using the same event
         }
    }];
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
 
    ```objc
@@ -1096,9 +1096,9 @@ Complete the following steps for every application that was using the same event
         }
    }];
    ```
-    
+
 4. (Optional) Un-register the mobile device from the push notification service:
- 
+
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
@@ -1108,7 +1108,7 @@ Complete the following steps for every application that was using the same event
         }
    }];
    ```
-    
+
 5. Remove `WLClient.Push.isPushSupported()` (if used) and use `[[MFPPush sharedInstance] isPushSupported]`.
 6. Remove the following `WLClient.Push` API's since there will be no Event source to subscribe to and register notification callbacks:
     * `registerEventSourceCallback()`
@@ -1119,7 +1119,7 @@ Complete the following steps for every application that was using the same event
 
 7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
 8. Subscribe to tags:
- 
+
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
    [tags addObject:@"sample-tag1"];
@@ -1132,7 +1132,7 @@ Complete the following steps for every application that was using the same event
        }
    }];
    ```
-    
+
 9. (Optional) Unsubscribe from tags:
 
    ```objc
@@ -1183,12 +1183,12 @@ To migrate this in v8.0, convert this model to Unicast notification.
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
-    
+
 2. Register the mobile device with the push notification service.
 
    ```csharp
@@ -1196,7 +1196,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    if (Response.Success == true)
    {
         Debug.WriteLine("Push Notifications Registered successfully");
-   } 
+   }
    else
    {
         Debug.WriteLine("Push Notifications Failed to register");
@@ -1257,12 +1257,12 @@ This maps to tags which segments the users/devices based on topic of interest. T
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
    ```
-    
+
 2. Register the mobile device with the IMFPUSH service.
 
    ```csharp
@@ -1270,7 +1270,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    if (Response.Success == true)
    {
         Debug.WriteLine("Push Notifications Registered successfully");
-   } 
+   }
    else
    {
         Debug.WriteLine("Push Notifications Failed to register");
@@ -1313,7 +1313,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         Debug.WriteLine("Failed to subscribe");
    }
    ```
-    
+
 7. (Optional) Unsubscribe from tags:
 
    ```csharp
@@ -1328,7 +1328,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
         Debug.WriteLine("Failed to unsubscribe");
    }
    ```
-    
+
 ##### Server
 {: #windows-server-2 }
 Remove the following `WL.Server` APIs (if used) in your adapter:
@@ -1359,7 +1359,7 @@ Complete the following steps for every application that was using the same event
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
@@ -1372,7 +1372,7 @@ Complete the following steps for every application that was using the same event
    if (Response.Success == true)
    {
         Debug.WriteLine("Push Notifications Registered successfully");
-   } 
+   }
    else
    {
         Debug.WriteLine("Push Notifications Failed to register");
@@ -1392,7 +1392,7 @@ Complete the following steps for every application that was using the same event
         Debug.WriteLine("Push Notifications Unregistered successfully");
    }
    ```
-    
+
 4. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.IsPushSupported();`.
 5. Remove the following `WLClient.Push` APIs:
     * `registerEventSourceCallback()`
@@ -1420,14 +1420,14 @@ Complete the following steps for every application that was using the same event
    MFPPush push = MFPPush.GetInstance();
    push.Initialize();
    ```
-    
+
 2. Implement the interface MFPPushNotificationListener and define onReceive().
 
    ```csharp
    class Pushlistener : MFPPushNotificationListener
    {
         public void onReceive(String properties, String payload)
-        { 
+        {
                 Debug.WriteLine("Push Notifications\n properties:" + properties + "\n payload:" + payload);
         }
    }
@@ -1440,7 +1440,7 @@ Complete the following steps for every application that was using the same event
    if (Response.Success == true)
    {
         Debug.WriteLine("Push Notifications Registered successfully");
-   } 
+   }
    else
    {
         Debug.WriteLine("Push Notifications Failed to register");
@@ -1482,7 +1482,7 @@ Complete the following steps for every application that was using the same event
         Debug.WriteLine("Failed to subscribe");
    }
    ```
-    
+
 8. (Optional) Unsubscribe from tags:
 
    ```csharp
@@ -1497,7 +1497,7 @@ Complete the following steps for every application that was using the same event
         Debug.WriteLine("Failed to unsubscribe");
    }
    ```
-    
+
 ##### Server
 {: #windows-server-4 }
 Remove `WL.Server.sendMessage()` (if used) in your adapter.
@@ -1533,12 +1533,12 @@ The following information is important to know before you use the migration tool
 
 #### Procedure
 {: #procedure }
-1. Download the migration tool from [its following GitHub repository](http://github.com).
+1. Download the migration tool from [its following GitHub repository](https://github.com/mfpdev/push-migration-tool).
 2. After downloading the tool, provide the following details in the **migration.properties** file:
-	
+
     | Value                | Description  | Sample Values |
     |----------------------|--------------|---------------|
-    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
+    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby |
     | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB url  | jdbc:mysql://localhost:3306/WRKLGHT |
     | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB url      | jdbc:mysql://localhost:3306/ADMIN |
     | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB username | pw.db.username=root |
@@ -1561,8 +1561,9 @@ The following information is important to know before you use the migration tool
 2. Run the tool by using the following command:
 
    ```bash
-   java -jar pushDataMigration.jar path-to-migration.properties
+   java -jar mfp-push-data-migration.jar path-to-migration.properties
    ```
-   
-   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
 
+   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+   
+    *Keep lib folder containing required libraries at the same location as tool .jar file.
