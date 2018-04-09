@@ -17,7 +17,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **April 5th, 
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
 
 ### Support for Cordova v8 and Cordova Android v7
-Starting from this iFix (*8.0.0.0-MFPF-IF201804051553*),MobileFirst Cordova plugins for Cordova v8 and Cordova Android v7 is supported. For details on supported versions for individual platforms, refer to [Adding the MobileFirst Foundation SDK to Cordova Applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/).
+Starting from this iFix (*8.0.0.0-MFPF-IF201804051553*),MobileFirst Cordova plugins for Cordova v8 and Cordova Android v7 is supported. For details on supported versions for individual platforms, refer to [Adding the MobileFirst Foundation SDK to Cordova Applications](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/#support-levels).
 
 ### APARs Fixed
 
