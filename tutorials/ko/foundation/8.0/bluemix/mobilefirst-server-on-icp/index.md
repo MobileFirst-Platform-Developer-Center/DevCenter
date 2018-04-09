@@ -44,7 +44,7 @@ CLI를 사용하여 {{ site.data.keys.prod_icp }} 클러스터에 액세스하�
 
 ## IBM Mobile Foundation Passport Advantage 아카이브 다운로드
 {: #download-the-ibm-mfpf-ppa-archive}
-{{ site.data.keys.product_full }}의 Passport Advantage(PPA) 아카이브는 [여기]()에서 사용할 수 있습니다. {{ site.data.keys.product }}의 PPA 아카이브에는 다음 {{ site.data.keys.product }} 컴포넌트의 Docker 이미지 및 Helm Charts가 포함됩니다.
+{{ site.data.keys.product_full }}의 Passport Advantage(PPA) 아카이브는 [여기](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)에서 사용할 수 있습니다. {{ site.data.keys.product }}의 PPA 아카이브에는 다음 {{ site.data.keys.product }} 컴포넌트의 Docker 이미지 및 Helm Charts가 포함됩니다.
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
