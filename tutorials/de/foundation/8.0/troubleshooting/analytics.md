@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Troubleshooting Analytics
+title: Fehlerbehebung für Analytics
 breadcrumb_title: Analytics
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Find information to help resolve issues that you might encounter when you use the {{ site.data.keys.mf_analytics }}.
+Hier finden Sie Informationen, die Ihnen bei der Lösung von Problemen helfen, die bei Verwendung von {{site.data.keys.mf_analytics }} auftreten können.
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>There is no data in the analytics console</h4></div>
+  <div class="panel-heading"><h4>Es sind keine Daten in der Analysekonsole vorhanden.</h4></div>
   <div class="panel-body">
-  <p>Check the following possibilities.</p>
+  <p>Prüfen Sie die folgenden Möglichkeiten:</p>
   <ul>
-    <li>Verify that your apps are set to point to the {{ site.data.keys.mf_server }}, which forwards the logs to the {{ site.data.keys.mf_analytics_server }}. Ensure that the following values are set in the <code>mfpclient.plist</code> (iOS),  <code>mfpclient.properties</code> (Android), or <code>config.xml</code> (Cordova) files.
+    <li>Stellen Sie sicher, dass Ihre Apps so eingestellt sind, dass sie auf den {{site.data.keys.mf_server }} zeigen, der die Protokolle an den {{site.data.keys.mf_analytics_server }} weiterleitet. Stellen Sie sicher, dass die folgenden Werte in den Dateien <code>mfpclient.plist</code> (iOS), <code>mfpclient.properties</code> (Android) oder <code>config.xml</code> (Cordova) definiert sind.
 
 {% highlight xml %}
-protocol = http or https
-host = the IP address of your {{ site.data.keys.mf_server }}
-port = the HTTP port that is set in the server.xml file for reporting analytics
-wlServerContext = by default "/mfp/"
+protocol = http oder https
+host = IP-Adresse Ihres {{ site.data.keys.mf_server }}
+port = in der Datei the server.xml für Analyseberichte festgelegter HTTP-Port
+wlServerContext = standardmäßig "/mfp/"
 {% endhighlight %}</li>
 
-    <li>Ensure that your {{ site.data.keys.mf_server }} is pointing to your {{ site.data.keys.mf_analytics_server }}.
+    <li>Stellen Sie sicher, dass Ihr {{site.data.keys.mf_server }} auf den {{site.data.keys.mf_analytics_server }} zeigt.
 
 {% highlight xml %}
 /analytics-service
 /analytics
 {% endhighlight %}</li>
 
-    <li>Check that you are calling the send method.
+    <li>Vergewissern Sie sich, dass die Methode send aufgerufen wird.
         <ul>
             <li>iOS:
                 <ul>
@@ -49,24 +49,24 @@ wlServerContext = by default "/mfp/"
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Why is there crash data in the Crash Overview table, but nothing in the Crash Summary table?</h4></div>
+  <div class="panel-heading"><h4>Warum gibt es Absturzdaten in der Tabelle "Absturzübersicht", aber keine Daten in der Tabelle "Absturzzusammenfassung"?</h4></div>
   <div class="panel-body">
-    <p>The crash logs must be sent to the server once the app is again running. Verify that your apps are sending logs after a crash. To be safe, send logs on app start-up to ensure that any previously unsent information is reported.</p>
+    <p>Die Absturzprotokolle müssen an den Server gesendet werden, sobald die App erneut ausgeführt wird. Stellen Sie sicher, dass Ihre Apps nach einem Absturz Protokolle senden. Senden Sie die Protokolle zur Sicherheit beim App-Start, um sicherzustellen, dass alle zuvor nicht gesendeten Informationen gemeldet werden.</p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Why is there no data in the Server Usage Flow graph or the Network Request graph?</h4></div>
+  <div class="panel-heading"><h4>Warum enthält das Ablaufdiagramm zur Servernutzung oder das Diagramm der Netzanforderungen keine Daten?</h4></div>
   <div class="panel-body">
-    <p>Configure your apps to collect analytics on the Network device event.</p>
+    <p>Konfigurieren Sie Ihre Apps für die Erfasssung von Analysedaten bei Gerätenetzereignissen ("Network"). </p>
 
 {% highlight javascript %}
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 {% endhighlight %}
 
     <ul>
-        <li>For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.</li>
-        <li>To enable the capture of network analytic data in iOS, add the following code in your Application Delegate <code>application:didFinishLaunchingWithOptions</code> method.<br/>
+        <li>Folgen Sie für plattformübergreifende Apps, die Cordova verwenden, den Anweisungen für iOS oder Android, da die Konfiguration mit der für native Apps übereinstimmt.</li>
+        <li>Wenn Sie die Erfassung von Analysedaten unter iOS ermöglichen wollen, fügen Sie den folgenden Code zur Methode <code>application:didFinishLaunchingWithOptions</code> Ihres Anwendungsdelegaten hinzu.<br/>
 
         <b>Objective-C</b>
 
@@ -82,7 +82,7 @@ WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK)
 {% endhighlight %}</li>
 
-        <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
+        <li>Wenn Sie die Erfassung von Analysedaten unter Android ermöglichen wollen, fügen Sie den folgenden Code zur Methode <code>onCreate</code> Ihrer Application-Unterklasse hinzu.<br/>
 
         <b>Java</b>
 {% highlight java %}
@@ -94,13 +94,13 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Why is there no data for app sessions?</h4></div>
+  <div class="panel-heading"><h4>Warum sind keine Daten zu App-Sitzungen vorhanden?</h4></div>
   <div class="panel-body">
-    <p>Configure your apps to collect analytics using the Lifecycle device event listener.</p>
+    <p>Konfigurieren Sie Ihre Apps für die Erfasssung von Analysedaten mit dem Listener für Gerätelebenszyklusereignisse ("Lifecycle"). </p>
 
     <ul>
-        <li>For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.</li>
-        <li>To enable the capture of network analytic data in iOS, add the following code in your Application Delegate <code>application:didFinishLaunchingWithOptions</code> method.<br/><br/>
+        <li>Folgen Sie für plattformübergreifende Apps, die Cordova verwenden, den Anweisungen für iOS oder Android, da die Konfiguration mit der für native Apps übereinstimmt.</li>
+        <li>Wenn Sie die Erfassung von Analysedaten unter iOS ermöglichen wollen, fügen Sie den folgenden Code zur Methode <code>application:didFinishLaunchingWithOptions</code> Ihres Anwendungsdelegaten hinzu.<br/><br/>
 
         <b>Objective-C</b>
 
@@ -116,7 +116,7 @@ WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
 {% endhighlight %}</li>
 
-        <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
+        <li>Wenn Sie die Erfassung von Analysedaten unter Android ermöglichen wollen, fügen Sie den folgenden Code zur Methode <code>onCreate</code> Ihrer Application-Unterklasse hinzu.<br/>
 
         <b>Java</b>
 
@@ -129,26 +129,26 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Analytics console becomes non-responsive when multiple users are accessing the console.</h4></div>
+  <div class="panel-heading"><h4>Die Analytics Console reagiert nicht mehr, wenn mehrere Benutzer auf die Konsole zugreifen.</h4></div>
   <div class="panel-body">
   <br>
-    <p>If {{ site.data.keys.product }} Analytics is deployed on WebSphere Liberty versions <b>prior to 8.5.5.6</b> and if multiple users are accessing the console, the console freezes or stops responding to any further user requests.
+    <p>Wenn {{ site.data.keys.product }} Analytics in Vorversionen von WebSphere Liberty Version <b>8.5.5.6</b> implementiert ist und mehrere Benutzer auf die Konsole zugreifen, wird die Konsole blockiert bzw. reagiert die Konsole nicht mehr auf Benutzeranforderungen.
 </p>
 
     <ul>
-        <li>This situation occurs because WebSphere Liberty runs out of <code>Executor</code> threads to service the requests. This leads to a dead lock situation.</li>
+        <li>Zu dieser Situation kommt es, weil WebSphere Liberty keine <code>Executor</code>-Threads mehr für die Reaktion auf Anforderungen zur Verfügung stehen. Das führt zu einer Sperrsituation. </li>
 
-        <li>The default number of <a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">Liberty core threads</a> is the number of hardware threads.
+        <li>Die Standardanzahl von <a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">Liberty-Kernthreads</a> ist die Anzahl der Hardware-Threads.
 </li>
-        <li>To resolve this issue, configure the number of threads in the Liberty executor threads parameter to a value greater than the default.
+        <li>Lösen Sie dieses Problem, indem Sie die Anzahl der Threads mit dem Parameter für Liberty-Executor-Threads auf einen über dem Standardwert liegenden Wert setzen.
 <br/>
-Add the following configuration to Liberty's <code>server.xml</code>:
+Fügen Sie die folgende Konfiguration zur Liberty-Datei <code>server.xml</code> hinzu:
 <br/>
 
 {% highlight xml %}
 <executor name="LargeThreadPool" id="default" coreThreads="80" maxThreads="80" keepAlive="60s" stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS" />
 {% endhighlight %}</li>
-<li>These <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_tun.html" target="_blank">tuning settings</a> are generally not required in case of Websphere Liberty 8.5.5.6.</li>
+<li>In WebSphere Liberty 8.5.5.6 sind diese <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_tun.html" target="_blank">Optimierungseinstellungen</a> in der Regel nicht erforderlich. </li>
     </ul>
   </div>
 </div>
