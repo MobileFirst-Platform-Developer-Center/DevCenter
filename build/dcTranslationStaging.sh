@@ -32,58 +32,92 @@ DC_COMMON_ROOT_TRANS_DIR_NO_TRANS_FILES="index.md"
 DC_COMMON_TRANS_DIR_NO_TRANS_FILES="advanced-samples/ api/"
 
 # Development Center translation-project (MFEPGAB) Charge-to-ID (C2ID) files
-MFEPGABD001="index.md"
-MFEPGABD002="all-tutorials.html"
-MFEPGABD003="product-overview/"
-MFEPGABD004="installation-configuration/"
-MFEPGABD005="quick-start/"
-MFEPGABD006="application-development/"
-MFEPGABD007="adapters/"
-MFEPGABD008="authentication-and-security/"
-MFEPGABD009="notifications/"
-MFEPGABD010="analytics/"
-MFEPGABD011="bluemix/"
-MFEPGABD012="administering-apps/"
-MFEPGABD013="upgrading/"
-MFEPGABD014="appcenter/"
+#MFEPGABD001="index.md"
+#MFEPGABD002="all-tutorials.html"
+#MFEPGABD003="product-overview/"
+#MFEPGABD004="installation-configuration/"
+#MFEPGABD005="quick-start/"
+#MFEPGABD006="application-development/"
+#MFEPGABD007="adapters/"
+#MFEPGABD008="authentication-and-security/"
+#MFEPGABD009="notifications/"
+#MFEPGABD010="analytics/"
+#MFEPGABD011="bluemix/"
+#MFEPGABD012="administering-apps/"
+#MFEPGABD013="upgrading/"
+#MFEPGABD014="appcenter/"
 #MFEPGABD015="advanced-samples/" # This C2ID was cancelled. The English version is copied to all locales via $DC_COMMON_TRANS_DIR_NO_TRANS_FILES.
-MFEPGABD016="admin-tutorials.html"
-MFEPGABD017="cordova-tutorials.html"
-MFEPGABD018="ios-tutorials.html"
-MFEPGABD019="android-tutorials.html"
-MFEPGABD020="windows-8-10-tutorials.html"
-MFEPGABD021="web-tutorials.html"
-MFEPGABD022="server-side-tutorials.md"
-MFEPGABD023="xamarin-tutorials.html"
+#MFEPGABD016="admin-tutorials.html"
+#MFEPGABD017="cordova-tutorials.html"
+#MFEPGABD018="ios-tutorials.html"
+#MFEPGABD019="android-tutorials.html"
+#MFEPGABD020="windows-8-10-tutorials.html"
+#MFEPGABD021="web-tutorials.html"
+#MFEPGABD022="server-side-tutorials.md"
+#MFEPGABD023="xamarin-tutorials.html"
+
+MFP18ABD001="index.md"
+MFP18ABD002="all-tutorials.html"
+MFP18ABD003="product-overview/"
+MFP18ABD004="installation-configuration/"
+MFP18ABD005="quick-start/"
+MFP18ABD006="application-development/"
+MFP18ABD007="adapters/"
+MFP18ABD008="authentication-and-security/"
+MFP18ABD009="notifications/"
+MFP18ABD010="analytics/"
+MFP18ABD011="bluemix/"
+MFP18ABD012="administering-apps/"
+MFP18ABD013="upgrading/"
+MFP18ABD014="appcenter/"
+#MFP18ABD015="advanced-samples/" # This C2ID was cancelled. The English version is copied to all locales via $DC_COMMON_TRANS_DIR_NO_TRANS_FILES.
+MFP18ABD016="admin-tutorials.html"
+MFP18ABD017="cordova-tutorials.html"
+MFP18ABD018="ios-tutorials.html"
+MFP18ABD019="android-tutorials.html"
+MFP18ABD020="windows-8-10-tutorials.html"
+MFP18ABD021="web-tutorials.html"
+MFP18ABD022="server-side-tutorials.md"
+MFP18ABD023="xamarin-tutorials.html"
+MFP18ABD024="troubleshooting/"
+
 
 # No-translation TSC files, to be replaced with the latest English version (in addition to the $DC_COMMON_TRANS_DIR_NO_TRANS_FILES files).
 # See the TSC commitments, see https://ibm.ent.box.com/folder/17013519134.
 # Brazilian Portuguese (BPO / pt-BR)
 # [commitment: ${MFEPGABD001} ${MFEPGABD002} ${MFEPGABD003} ${MFEPGABD004} ${MFEPGABD005}]
-DC_BPO_NO_TRANS="${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD013} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}"
+#DC_BPO_NO_TRANS="${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD013} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}"
+DC_BPO_NO_TRANS="${MFP18ABD006} ${MFP18ABD007} ${MFP18ABD008} ${MFP18ABD009} ${MFP18ABD010} ${MFP18ABD011} ${MFP18ABD012} ${MFP18ABD013} ${MFP18ABD014} ${MFP18ABD024}"
 # Simplified Chinese (CHS / zh-Hans)
 # [commitment All]
 DC_CHS_NO_TRANS=""
 # French (FRE / fr)
 # [commitment: ${MFEPGABD001} ${MFEPGABD003} ${MFEPGABD004} ${MFEPGABD005} ${MFEPGABD012} ${MFEPGABD014} ]
-DC_FRE_NO_TRANS="${MFEPGABD002} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD013} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}"
+#DC_FRE_NO_TRANS="${MFEPGABD002} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD013} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}"
+DC_FRE_NO_TRANS="${MFP18ABD006} ${MFP18ABD007} ${MFP18ABD008} ${MFP18ABD009} ${MFP18ABD010} ${MFP18ABD011} ${MFP18ABD013}"
 # German (GER / de)
 # [commitment: ${MFEPGABD001} ${MFEPGABD002} ${MFEPGABD003} ${MFEPGABD005} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD013} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}]
 # (Originally committed to All, but then decommitted ${MFEPGABD004} and ${MFEPGABD006})
-DC_GER_NO_TRANS="${MFEPGABD004} ${MFEPGABD006}"
+#DC_GER_NO_TRANS="${MFEPGABD004} ${MFEPGABD006}"
+DC_GER_NO_TRANS=""
+# Italian (ITA / it)
+# [commitment: ${MFP18ABD001}]
+DC_ITA_NO_TRANS="${MFP18ABD002} ${MFP18ABD003} ${MFP18ABD004} ${MFP18ABD005} ${MFP18ABD006} ${MFP18ABD007} ${MFP18ABD008} ${MFP18ABD009} ${MFP18ABD010} ${MFP18ABD011} ${MFP18ABD012} ${MFP18ABD013} ${MFP18ABD014} ${MFP18ABD016} ${MFP18ABD017} ${MFP18ABD018} ${MFP18ABD019} ${MFP18ABD020} ${MFP18ABD021} ${MFP18ABD022} ${MFP18ABD023} ${MFP18ABD024}"
 # Japanese (JPN / ja)
 # [commitment All]
 DC_JPN_NO_TRANS=""
 # Korean (KOR / ko)
 # [commitment: ${MFEPGABD001} ${MFEPGABD002} ${MFEPGABD003} ${MFEPGABD004} ${MFEPGABD005} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD013} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023} ]
-DC_KOR_NO_TRANS="${MFEPGABD009} ${MFEPGABD010}"
+#DC_KOR_NO_TRANS="${MFEPGABD009} ${MFEPGABD010}"
+DC_KOR_NO_TRANS=""
 # Russian (RUS / ru)
 # [commitment:  ${MFEPGABD013}]
-DC_RUS_NO_TRANS="${MFEPGABD001} ${MFEPGABD002} ${MFEPGABD003} ${MFEPGABD004} ${MFEPGABD005} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}"
+#DC_RUS_NO_TRANS="${MFEPGABD001} ${MFEPGABD002} ${MFEPGABD003} ${MFEPGABD004} ${MFEPGABD005} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD020} ${MFEPGABD021} ${MFEPGABD022} ${MFEPGABD023}"
+DC_RUS_NO_TRANS="${MFP18ABD003} ${MFP18ABD004} ${MFP18ABD006} ${MFP18ABD007} ${MFP18ABD008} ${MFP18ABD009} ${MFP18ABD010} ${MFP18ABD011} ${MFP18ABD012} ${MFP18ABD013} ${MFP18ABD014} ${MFP18ABD016} ${MFP18ABD017} ${MFP18ABD018} ${MFP18ABD019} ${MFP18ABD020} ${MFP18ABD021} ${MFP18ABD022} ${MFP18ABD023} ${MFP18ABD024}"
 # Spanish (SPA / es)
 # [commitment: ${MFEPGABD001} ${MFEPGABD003} ${MFEPGABD005} ${MFEPGABD020} ${MFEPGABD022}]
-DC_SPA_NO_TRANS="${MFEPGABD002} ${MFEPGABD004} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD013} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD021} ${MFEPGABD023}"
-
+#DC_SPA_NO_TRANS="${MFEPGABD002} ${MFEPGABD004} ${MFEPGABD006} ${MFEPGABD007} ${MFEPGABD008} ${MFEPGABD009} ${MFEPGABD010} ${MFEPGABD011} ${MFEPGABD012} ${MFEPGABD013} ${MFEPGABD014} ${MFEPGABD016} ${MFEPGABD017} ${MFEPGABD018} ${MFEPGABD019} ${MFEPGABD021} ${MFEPGABD023}"
+DC_SPA_NO_TRANS="${MFP18ABD013} ${MFP18ABD024}"
 # qecho: Utility function for suppressing messages in quiet mode (-q).
 # USAGE: qecho [-q] [echo() options] "MESSAGE"
 # -q - When set, the function does nothing. Otherwise, the function echos MESSAGE.
@@ -129,7 +163,7 @@ EXAMPLES
                          update the no-translation files. You have the option to commit before the update.
 - $FUNCNAME merge --commit update -q - Merge from the master branch and commit the merge changes, and then
                          update the no-translation files. Suppress information messages.
-- $FUNCNAME merge --commit - Merge from the master branch and commit the merge changes 
+- $FUNCNAME merge --commit - Merge from the master branch and commit the merge changes
 - $FUNCNAME update -v - Update the no-translation files without merging from the master branch. Display extra information.
 "
 
@@ -172,7 +206,7 @@ EXAMPLES
 		esac
 		shift
 	done
-	
+
 	# Get options
     while :
     do
@@ -250,7 +284,7 @@ EXAMPLES
 			qecho $quiet "Merging from the ${DC_GIT_REPO} master branch into local branch ${git_head} (merge options: $merge_commit $commit_edit) ..."
 			if [ "--no-commit" == "$merge_commit" ]; then # Merge without an automatic commit
 				git merge $quiet $verbose $merge_commit FETCH_HEAD
-				
+
 				qecho $quiet "**TODO** Verify and commit the merge changes, or abort the merge (\`git merge --abort\`)."
 
 				if [[ "" == "$quiet" ]]; then
@@ -275,7 +309,7 @@ EXAMPLES
 			fi
 		fi
 	fi
-	
+
 	# Update no-translation files from the English sources
 	if [ 1 -eq $is_no_trans_up ]; then
 		qecho $quiet "Updating no-translation files from the English sources ..."
@@ -318,4 +352,3 @@ EXAMPLES
 
 # Execute the main script function
 dcTranslationStaging $@
-
