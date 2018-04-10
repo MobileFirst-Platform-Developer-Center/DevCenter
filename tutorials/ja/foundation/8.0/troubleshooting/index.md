@@ -10,6 +10,6 @@ weight: 15
 
 #### ジャンプ先
 {: #jump-to }
-* [プッシュ通知]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
-* [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
-* [Analytics]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [プッシュ通知]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/notifications)
+* [JSONStore]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/jsonstore)
+* [Analytics]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/analytics)

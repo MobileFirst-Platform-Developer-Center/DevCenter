@@ -10,6 +10,6 @@ weight: 15
 
 #### 跳至
 {: #jump-to }
-* [推送通知]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
-* [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
-* [分析]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [推送通知]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/notifications)
+* [JSONStore]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/jsonstore)
+* [分析]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/analytics)

@@ -10,6 +10,6 @@ Hier finden Sie Antworten auf häufig gestellte Fragen zu Problemen, die bei Ver
 
 #### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
-* [Push-Benachrichtigungen]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
-* [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
-* [Analytics]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [Push-Benachrichtigungen]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/notifications)
+* [JSONStore]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/jsonstore)
+* [Analytics]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/analytics)
