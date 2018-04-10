@@ -250,13 +250,21 @@ The following steps describe how to install and run the Analytics EAR file on We
     * Log in to the WebSphere Application Server administration console.
     * In the **Security > Global Security** menu, ensure that **Enable administrative security** and **Enable application security** are both selected. Note: Application security can be selected only after **Administrative security** is enabled.
     * Click **OK** and save changes.
-9. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
+
+9. To enable the analytics service to be accessed via Swagger documentation, complete the following steps:
+    * Click **Servers > Server Types > WebSphere application servers** and choose the server on which Analytics service is deployed, from the list of servers.
+    * Under **Server Infrastructure**, click **Java** and then navigate to  **process management > Process definition > Java virtual machine > Custom  properties**.
+      - Set the following custom property<br/>
+        **Property Name:** *com.ibm.ws.classloader.strict*<br/>
+        **Value:** *true*
+
+10. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
 
 ## Installing {{ site.data.keys.mf_analytics }} with Ant tasks
 {: #installing-mobilefirst-analytics-with-ant-tasks }
 Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../prod-env/appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
 
-You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
+You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
 
 > Note: The **mf_server_install_dir** placeholder is the directory where you installed {{ site.data.keys.mf_server }}.
 
