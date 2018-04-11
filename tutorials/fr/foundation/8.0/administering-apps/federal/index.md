@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Prise en charge de normes fédérales dans MobileFirst Foundation
-breadcrumb_title: Prise en charge de normes fédérales
+breadcrumb_title: Federal standards support
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

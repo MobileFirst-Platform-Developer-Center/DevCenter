@@ -273,11 +273,11 @@ weight: 1
 
                 <p>Les artefacts de développement que vous téléchargez sur le serveur comprennent des adaptateurs et leur configuration, des configurations de sécurité pour vos applications, des certificats de notification push et des filtres de journal.</p>
 
-                <h3>Exécution d'applications créées sur IBM Bluemix on {{ site.data.keys.product }}</h3>
-                <p>Les développeurs peuvent faire migrer des applications IBM Bluemix pour qu'elles s'exécutent sur {{ site.data.keys.product }}. La migration exige que vous modifiiez la configuration de votre application client pour qu'elle soit compatible avec les API {{ site.data.keys.product }}.</p>
+                <h3>Exécution d'applications créées dans IBM Cloud sur {{ site.data.keys.product }}</h3>
+                <p>Les développeurs peuvent faire migrer des applications IBM Cloud pour qu'elles s'exécutent sur {{ site.data.keys.product }}. La migration exige que vous modifiiez la configuration de votre application client pour qu'elle soit compatible avec les API {{ site.data.keys.product }}.</p>
 
-                <h3>Utilisation de {{ site.data.keys.product }} en tant que service sur IBM Bluemix</h3>
-                <p>Vous pouvez désormais utiliser le service {{ site.data.keys.mf_bm_full }} sur IBM Bluemix pour créer et exécuter vos applications mobiles d'entreprise.</p>
+                <h3>Utilisation de {{ site.data.keys.product }} en tant que service sur IBM Cloud</h3>
+                <p>Vous pouvez désormais utiliser le service {{ site.data.keys.mf_bm_full }} sur IBM Cloud pour créer et exécuter vos applications mobiles d'entreprise.</p>
 
                 <h3>Absence des fichiers .wlapp</h3>
                 <p>Dans les versions précédentes, des applications ont été déployées sur {{ site.data.keys.mf_server }} en téléchargeant un fichier <b>.wlapp</b>. Ce fichier contenait des données qui décrivaient l'application et, dans le cas d'applications hybrides, les ressources Web nécessaires également. Dans la version V8.0.0, à la place du fichier <b>.wlapp</b> :</p>
@@ -312,7 +312,7 @@ weight: 1
                 <p>JAX-RS 2.0 introduit une nouvelle fonctionnalité côté serveur : des filtres et des intercepteurs HTTP asynchrones côté serveur.  Les adaptateurs peuvent désormais exploiter ces nouvelles fonctions.</p>
 
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
-                <p>{{ site.data.keys.product }} on IBM Containers publié pour la version V8.0.0 est disponible sur le <a href="http://www-01.ibm.com/software/passportadvantage/">site IBM Passport Advantage</a>. Cette version de {{ site.data.keys.product }} on IBM Containers est prêt pour la production et prend en charge la base de données transactionnelle dashDB™ d'entreprise sur IBM Bluemix.</p>
+                <p>{{ site.data.keys.product }} on IBM Containers publié pour la version V8.0.0 est disponible sur le <a href="http://www-01.ibm.com/software/passportadvantage/">site IBM Passport Advantage</a>. Cette version de {{ site.data.keys.product }} on IBM Containers est prête pour la production et prend en charge la base de données transactionnelle dashDB™ d'entreprise sur IBM Cloud.</p>
 
                 <p><b>Remarque :</b> Voir la rubrique Prérequis au déploiement de {{ site.data.keys.product }} on IBM Containers.</p>
 
@@ -473,7 +473,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_app_center }} est désormais pris en charge dans Bluemix (sur la base des conteneurs) à l'aide des scripts BYOL.</p>
+                <p>{{ site.data.keys.mf_app_center }} est désormais pris en charge dans IBM Cloud (sur la base des conteneurs) via les scripts BYOL.</p>
             </div>
         </div>
     </div>

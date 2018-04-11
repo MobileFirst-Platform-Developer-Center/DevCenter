@@ -21,7 +21,7 @@ weight: 6
 #### 前提条件:
 {: #prerequisites }
 * Xamarin Studio
-* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
@@ -30,7 +30,7 @@ weight: 6
 
 ### 2. アプリケーションの作成
 {: #2-creating-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。 ユーザー名/パスワードは *admin/admin* です。
 
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * **Android** プラットフォームを選択します。
@@ -75,16 +75,16 @@ weight: 6
 
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null &&  accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -103,9 +103,9 @@ weight: 6
 {: #4-deploy-an-adapter }
 [この準備された .adapter 成果物](../javaAdapter.adapter) をダウンロードし、それを {{ site.data.keys.mf_console }} から **「アクション」 → 「アダプターのデプロイ」** アクションを使用してデプロイします。
 
-あるいは、**「アダプター」** の隣の **「新規」** ボタンをクリックします。
+あるいは、**「アダプター」** の隣の **「新規」** ボタンをクリックします。  
 
-1. **「アクション」 → 「サンプルのダウンロード」** オプションを選択します。「Hello World」 **Java** アダプターのサンプルをダウンロードします。
+1. **「アクション」 → 「サンプルのダウンロード」** オプションを選択します。 「Hello World」 **Java** アダプターのサンプルをダウンロードします。
 
    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の **「開発環境をセットアップします」** の説明に従います。
 
@@ -115,7 +115,7 @@ weight: 6
    mfpdev adapter build
    ```
 
-3. ビルドが終了したら、それを {{ site.data.keys.mf_console }} から **「アクション」 → 「アダプターのデプロイ」** アクションを使用してデプロイします。アダプターは、**[アダプター]/target** フォルダー内にあります。
+3. ビルドが終了したら、それを {{ site.data.keys.mf_console }} から **「アクション」 → 「アダプターのデプロイ」** アクションを使用してデプロイします。 アダプターは、**[アダプター]/target** フォルダー内にあります。
 
    <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>
 
@@ -124,7 +124,8 @@ weight: 6
 {: #5-testing-the-application }
 1. Xamarin Studio で、`mfpclient.properties` ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
 2. **「再生」** ボタンを押します。
 

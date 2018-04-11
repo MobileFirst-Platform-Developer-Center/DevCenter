@@ -40,7 +40,7 @@ The security check base classes that are described below are available are part 
 ## Defining security checks
 {: #defining-a-security-check }
 
-[Create a Java or JavaScript adapter](../../adapters/creating-adapters/) or use an exiting one.
+[Create a Java or JavaScript adapter](../../adapters/creating-adapters/) or use an existing one.
 
 > When creating a Java adapter, the default template assumes that the adapter will serve **resources**. It is the developer's choice to bundle security checks and resources in the same adapter, or to separate them into distinct adapters.
 
@@ -64,8 +64,8 @@ In the Java adapter's **adapter.xml** file, add an XML element called `securityC
 After you successfully deploy an adapter with a security-check definition to the {{ site.data.keys.mf_server }}, you can also see your security check and its configuration information, and make runtime configuration changes, from **{{ site.data.keys.mf_console }} → Adapters → [your adapter]**:
 
 * In the **Configuration Files** tab you can see the server copy of your adapter descriptor, including the `<securityCheckDefinition>` element that defines your custom security check and its configurable properties. You can also [pull the adapter configuration](../../adapters/java-adapters/#custom-properties) and push it to different servers.
-* In the **Security Checks** tab you can see a list of all the configuration properties that you exposed in the security-check definition. The properties are referenced by the value of their configured `displayName` attribute, or by the value of the name attribute when no display name is configured. If you set the property's description attribute in the definition, this description is also displayed. 
-For each property, the value that is configured in the `defaultValue` attribute is shown as the current value. You can change the value to override the default value from your security-check definition. You can also restore, at any time, the original default values from your security-check definition. 
+* In the **Security Checks** tab you can see a list of all the configuration properties that you exposed in the security-check definition. The properties are referenced by the value of their configured `displayName` attribute, or by the value of the name attribute when no display name is configured. If you set the property's description attribute in the definition, this description is also displayed.
+For each property, the value that is configured in the `defaultValue` attribute is shown as the current value. You can change the value to override the default value from your security-check definition. You can also restore, at any time, the original default values from your security-check definition.
 * You can also select an application version from the **Applications** section of the {{ site.data.keys.mf_console }}.
 
 ## Implementing security checks
@@ -165,7 +165,7 @@ You can also manually edit the adapter's configuration JSON file with the requir
 
 1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev adapter pull`.
 2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
-3. Edit the file and look for the `securityCheckDefinitions` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, find or add a properties object. For each available configuration property that you want to configure, add within the properties object a pair of configuration-property name and value. For example: 
+3. Edit the file and look for the `securityCheckDefinitions` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, find or add a properties object. For each available configuration property that you want to configure, add within the properties object a pair of configuration-property name and value. For example:
 
    ```xml
    "securityCheckDefinitions": {
@@ -177,7 +177,7 @@ You can also manually edit the adapter's configuration JSON file with the requir
         }
    }
    ```
-   
+
 4. Deploy the updated configuration JSON file by running the command: `mfpdev adapter push`.
 
 ### {{ site.data.keys.mf_console }} - Application
@@ -204,7 +204,7 @@ You can also manually edit the adapter's configuration JSON file with the requir
         }
    }
    ```
-   
+
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 ## Predefined security checks

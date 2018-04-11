@@ -55,7 +55,7 @@ Avec ce rôle, un utilisateur peut effectuer toutes les opérations d'administra
 d'administrer des applications {{ site.data.keys.product_adj }}. {{ site.data.keys.product }}
 met également à disposition d'autres outils permettant d'incorporer des opérations d'administration à votre processus de génération et de déploiement.
 
-Un ensemble de services REST est disponible pour l'exécution d'opérations d'administration. Pour obtenir la documentation de référence API de ces services, voir [API REST pour le service d'administration de {{ site.data.keys.mf_server }}](../api/rest/administration-service/).
+Un ensemble de services REST est disponible pour l'exécution d'opérations d'administration. Pour obtenir la documentation de référence API de ces services, voir [API REST pour le service d'administration de {{ site.data.keys.mf_server }}](../api/rest/admin-apis/).
 
 Avec cet ensemble de services REST, vous pouvez effectuer les mêmes opérations que dans {{ site.data.keys.mf_console }}. Vous pouvez gérer des applications, des adaptateurs et, par exemple, télécharger une nouvelle version d'une application ou désactiver une ancienne version.
 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adición de MobileFirst Foundation SDK a aplicaciones iOS
+title: Adición del SDK de MobileFirst Foundation a aplicaciones iOS
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-MobileFirst Foundation SDK está formado por un conjunto de pods disponibles a través de [CocoaPods](http://guides.cocoapods.org) que se pueden añadir a su proyecto Xcode.
+El SDK de MobileFirst Foundation está formado por un conjunto de pods disponibles a través de [CocoaPods](http://guides.cocoapods.org) que se pueden añadir a su proyecto Xcode.
   
 Los pods corresponden a funciones principales y a otras funciones:
 

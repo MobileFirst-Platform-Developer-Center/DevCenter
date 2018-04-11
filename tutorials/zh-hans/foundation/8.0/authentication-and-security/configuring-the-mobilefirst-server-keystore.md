@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 配置 MobileFirst Server 密钥存储库
-breadcrumb_title: 配置服务器密钥存储库
+title: 配置 MobileFirst Server 密钥库
+breadcrumb_title: Configuring the Server Keystore
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -59,4 +59,4 @@ weight: 14
 
         * 使用正确的文件名、密码和类型更新密钥库配置：`<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
 
-如果要在 Bluemix 上使用 {{ site.data.keys.mf_bm_short}} 服务进行部署，可以在部署服务器之前在**高级设置**下上传密钥库文件。
+如果要在 IBM Cloud 上使用 {{ site.data.keys.mf_bm_short}} 服务进行部署，可以在部署服务器之前在**高级设置**下上传密钥库文件。

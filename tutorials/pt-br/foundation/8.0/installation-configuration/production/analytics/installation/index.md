@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Guia de Instalação do MobileFirst Analytics Server
-breadcrumb_title: Guia de Instalação
+title: Guia de instalação do servidor MobileFirst Analytics
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -92,7 +92,7 @@ Por exemplo, se você configurar **shards** como 4 e **réplicas** como 2, poder
 
 ## Instalando o {{ site.data.keys.mf_analytics }} no WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }}. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). O arquivo **analytics.ear** está localizado na pasta `<mf_server_install_dir>\analytics`. Para obter informações adicionais sobre como fazer download e instalar o WebSphere Application Server Liberty, consulte o artigo [Sobre o WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) no IBM developerWorks.
+Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }}. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../prod-env/appserver). O arquivo **analytics.ear** está localizado na pasta `<mf_server_install_dir>\analytics`. Para obter informações adicionais sobre como fazer download e instalar o WebSphere Application Server Liberty, consulte o artigo [Sobre o WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) no IBM developerWorks.
 
 1. Crie um servidor executando o comando a seguir em sua pasta **./wlp/bin**.
 
@@ -168,7 +168,7 @@ Para obter informações adicionais sobre como administrar o WebSphere Applicati
 
 ## Instalando o {{ site.data.keys.mf_analytics }} no Tomcat
 {: #installing-mobilefirst-analytics-on-tomcat }
-Certifique-se de que já tenha os arquivos  {{ site.data.keys.mf_analytics }} WAR do. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). Os arquivos **analytics-ui.war** e **analytics-service.war** estão localizados na pasta **<mf_server_install_dir>\analytics**. Para obter mais informações sobre como fazer o download e instalar o Tomcat, consulte [Apache Tomcat](http://tomcat.apache.org/). Assegure-se de fazer download da versão que suporte Java 7 ou superior. Para obter mais informações sobre qual versão do Tomcat suporta Java 7, consulte [Versões do Apache Tomcat](http://tomcat.apache.org/whichversion.html).
+Certifique-se de que já tenha os arquivos  {{ site.data.keys.mf_analytics }} WAR do. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../prod-env/appserver). Os arquivos **analytics-ui.war** e **analytics-service.war** estão localizados na pasta **<mf_server_install_dir>\analytics**. Para obter mais informações sobre como fazer o download e instalar o Tomcat, consulte [Apache Tomcat](http://tomcat.apache.org/). Assegure-se de fazer download da versão que suporte Java 7 ou superior. Para obter mais informações sobre qual versão do Tomcat suporta Java 7, consulte [Versões do Apache Tomcat](http://tomcat.apache.org/whichversion.html).
 
 1. Inclua os arquivos **analytics-service.war** e **analytics-ui.war** na pasta **webapps** do Tomcat.
 2. Remova o comentário da seção a seguir no arquivo **conf/server.xml**, que está presente, mas comentado, em um archive Tomcat recém-transferido por download.
@@ -216,7 +216,7 @@ Certifique-se de que já tenha os arquivos  {{ site.data.keys.mf_analytics }} WA
 
 ## Instalando o {{ site.data.keys.mf_analytics }} no WebSphere Application Server
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-Para obter informações adicionais sobre as etapas iniciais de instalação para adquirir os artefatos de instalação (arquivos JAR e EAR), consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). Os arquivos **analytics.ear**, **analytics-ui.war** e **analytics-service.war** estão localizados na pasta **<mf_server_install_dir>\analytics**.
+Para obter informações adicionais sobre as etapas iniciais de instalação para adquirir os artefatos de instalação (arquivos JAR e EAR), consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../prod-env/appserver). Os arquivos **analytics.ear**, **analytics-ui.war** e **analytics-service.war** estão localizados na pasta **<mf_server_install_dir>\analytics**.
 
 As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics no WebSphere Application Server. Se estiver instalando os arquivos WAR individuais no WebSphere Application Server, siga apenas as etapas de 2 a 7 no arquivo WAR **analytics-service** depois de implementar ambos os arquivos WAR. A ordem de carregamento de classes não deve ser alterada no arquivo WAR analytics-ui.
 
@@ -254,7 +254,7 @@ As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics
 
 ## Instalando o {{ site.data.keys.mf_analytics }} com tarefas Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-Certifique-se de que tenha os arquivos WAR e de configuração necessários: **analytics-ui.war** e **analytics-service.war**. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../appserver). Os arquivos **analytics-ui.war** e **analytics-service.war** estão localizados em **MobileFirst_Platform_Server\analytics**.
+Certifique-se de que tenha os arquivos WAR e de configuração necessários: **analytics-ui.war** e **analytics-service.war**. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../prod-env/appserver). Os arquivos **analytics-ui.war** e **analytics-service.war** estão localizados em **MobileFirst_Platform_Server\analytics**.
 
 Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Se desejar iniciar a tarefa Ant a partir de um computador no qual o {{ site.data.keys.mf_server }} não está instalado, será preciso copiar o arquivo **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** para esse computador.
 

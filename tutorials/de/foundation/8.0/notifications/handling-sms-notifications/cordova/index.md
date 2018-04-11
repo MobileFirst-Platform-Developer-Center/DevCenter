@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: SMS-Benachrichtigungen in Cordova
-breadcrumb_title: SMS in Cordova
+title: Handhabung von SMS-Benachrichtigungen in Cordova
+breadcrumb_title: Handling SMS in Cordova
 relevantTo: [cordova]
 weight: 8
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsCordova/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -36,7 +36,7 @@ Wenn ein Gerät für SMS-Benachrichtigungen registriert wird, wird eine Telefonn
 
 #### Gerät registrieren
 {: #register-device }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
 
 ```javascript
 MFPPush.registerNotificationsCallback(notificationReceived);

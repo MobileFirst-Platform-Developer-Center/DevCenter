@@ -1,23 +1,23 @@
 ---
 layout: tutorial
-title: 增强认证
-breadcrumb_title: 增强认证
+title: 设置认证
+breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - name: 下载 iOS Swift 项目
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - name: 下载 Android 项目
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - name: 下载 Win8 项目
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - name: 下载 Win10 项目
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - name: 下载 Web 项目
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - name: 下载 SecurityCheck Maven 项目
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

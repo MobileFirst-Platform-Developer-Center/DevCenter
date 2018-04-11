@@ -141,28 +141,44 @@ application/json, application/xml, text/xml</p>
 </section>
 
 <div class="example"><h2 class="title sectiontitle">JSON Example</h2>
+  <h3 class="title sectiontitle">Android</h3>
 <pre class="pre codeblock prettyprint"><code>{
   "applicationKey" : {
-    "bundleId" : "com.example",
-    "clientPlatform" : "B2C",
-    "version" : "com.package.id",
+    "packageName" : "com.example.android",
+    "clientPlatform" : "android",
+    "version" : "com.package.id"
   },
-  "displayName" : "Display Name",
+  "displayName" : "android_sample",
   "mandatoryScope" : "appAuthenticity",
-  "scopeTokenMapping" : {
-    "get-enroll-state" : "",
-    "set-enroll-state" : "usernamePassword",
+   "securityCheckConfigurations" : {
+    "appAuthenticity" : {
+      "expirationSec" : "1200"
+    }
   },
+   "scopeElementMapping": {
+   "UserNamePassword":  "LtpaBasedSSO appAuthenticity"
+  }
+}</code></pre>
+<h3 class="title sectiontitle">iOS</h3>
+<pre class="pre codeblock prettyprint"><code>{
+  "applicationKey" : {
+    "bundleId" : "com.example.ios",
+    "clientPlatform" : "ios",
+    "version" : "com.package.id"
+  },
+  "displayName" : "ios_sample",
+  "mandatoryScope" : "appAuthenticity",
   "securityCheckConfigurations" : {
     "appAuthenticity" : {
-      "expirationSec" : "1200",
-    },
+      "expirationSec" : "1200"
+    }
   },
-  "usernamePassword" : {
-    "inactivityTimeoutSec" : 30,
-    "maxAttempts" : 3,
-  },
-}</code></pre></div>
+  "scopeElementMapping": {
+  "UserNamePassword":  "LtpaBasedSSO appAuthenticity"
+  }
+}</code></pre>
+
+</div>
 
 
 <section class="section"><h2 class="title sectiontitle">Payload Properties</h2>
@@ -180,17 +196,13 @@ The payload has the following properties:<dl class="dl parml">
 
 <dd class="dd pd">scope</dd>
 
-<dt class="dt pt dlterm">scopeTokenMapping</dt>
+<dt class="dt pt dlterm">scopeElementMapping</dt>
 
-<dd class="dd pd">scope token mapping</dd>
+<dd class="dd pd">scope element mapping</dd>
 
 <dt class="dt pt dlterm">securityCheckConfigurations</dt>
 
 <dd class="dd pd">security check configuration</dd>
-
-<dt class="dt pt dlterm">usernamePassword</dt>
-
-<dd class="dd pd">username password</dd>
 
 </dl>
 
@@ -210,18 +222,6 @@ The payload has the following properties:<dl class="dl parml">
 
 </dl>
 
-<p class="p">The <var class="keyword varname">scopeTokenMapping</var> has the following properties:</p>
-<dl class="dl parml">
-<dt class="dt pt dlterm">get-enroll-state</dt>
-
-<dd class="dd pd">get enroll state</dd>
-
-<dt class="dt pt dlterm">set-enroll-state</dt>
-
-<dd class="dd pd">set-enroll-state</dd>
-
-</dl>
-
 <p class="p">The <var class="keyword varname">securityCheckConfigurations</var> has the following properties:</p>
 <dl class="dl parml">
 <dt class="dt pt dlterm">appAuthenticity</dt>
@@ -238,18 +238,6 @@ The payload has the following properties:<dl class="dl parml">
 
 </dl>
 
-<p class="p">The <var class="keyword varname">usernamePassword</var> has the following properties:</p>
-<dl class="dl parml">
-<dt class="dt pt dlterm">inactivityTimeoutSec</dt>
-
-<dd class="dd pd">inactive time out</dd>
-
-<dt class="dt pt dlterm">maxAttempts</dt>
-
-<dd class="dd pd">maximum attemts</dd>
-
-</dl>
-
 </section>
 
 
@@ -259,34 +247,6 @@ The payload has the following properties:<dl class="dl parml">
 The metadata of the deployable.</p>
 
 </section>
-
-<div class="example"><h2 class="title sectiontitle">JSON Example</h2>
-<pre class="pre codeblock prettyprint"><code>{
-  "ok" : false,
-  "productVersion" : "8.0",
-  "transaction" : {
-    "appServerId" : "Tomcat",
-    "description" : {
-      "name" : "myname",
-      "type" : "mytype",
-    },
-    "errors" : [
-      {
-        "details" : "An internal error occured.",
-      },
-      ...
-    ],
-    "id" : 1,
-    "project" : {
-      "name" : "myproject",
-    },
-    "status" : "FAILURE",
-    "timeCreated" : "2014-04-13T00:18:36.979Z",
-    "timeUpdated" : "2014-04-14T00:18:36.979Z",
-    "type" : "UPLOAD_ARTIFACT",
-    "userName" : "demouser",
-  },
-}</code></pre></div>
 
 
 <div class="example"><h2 class="title sectiontitle">XML Example</h2>

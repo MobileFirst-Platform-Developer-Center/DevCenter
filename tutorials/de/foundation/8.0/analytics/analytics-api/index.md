@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Analytics-API in Clientanwendungen verwenden
-breadcrumb_title: Analytics-API
+breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

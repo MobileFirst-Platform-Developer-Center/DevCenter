@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigungen in Cordova
+title: Handhabung von Push-Benachrichtigungen in Cordova
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 4
 ---

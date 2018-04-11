@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 在 Cordova 中处理 SMS 通知
-breadcrumb_title: 在 Cordova 中处理 SMS
+breadcrumb_title: Handling SMS in Cordova
 relevantTo: [cordova]
 weight: 8
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsCordova/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

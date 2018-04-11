@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementación de la clase CredentialsValidationSecurityCheck
-breadcrumb_title: Comprobación de seguridad
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -47,7 +47,7 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 
 ## Creación del desafío
 {: #creating-the-challenge }
-Cuando se activa la comprobación de seguridad, envía un desafío al cliente. La devolución de `null` crea un desafío vacío que puede ser insuficiente en algunos casos.   
+Cuando se activa la comprobación de seguridad, envía un desafío al cliente. La devolución de `null` crea un desafío vacío que puede ser insuficiente en algunos casos.  
 De forma opcional, puede devolver datos con el desafío, por ejemplo un mensaje de error para mostrar u otros datos que el cliente pueda utilizar.
 
 Por ejemplo, `PinCodeAttempts` envía un mensaje de error predefinido y el número de intentos restantes.
@@ -113,7 +113,7 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-El único método requerido en esta clase es un constructor que pueda manejar la instancia `Properties`. Utilice el método `get[Type]Property` para recuperar una propiedad específica del archivo adapter.xml.Si no se encuentra ningún valor, el tercer parámetro define un valor predeterminado (`1234`).
+El único método requerido en esta clase es un constructor que pueda manejar la instancia `Properties`. Utilice el método `get[Type]Property` para recuperar una propiedad específica del archivo adapter.xml. Si no se encuentra ningún valor, el tercer parámetro define un valor predeterminado (`1234`).
 
 También puede añadir el manejo de errores en este constructor utilizando el método `addMessage`:
 
@@ -155,7 +155,7 @@ protected PinCodeConfig getConfiguration() {
 
 Ahora puede utilizar el método `getConfiguration().pinCode` para recuperar el código PIN predeterminado.  
 
-Puede modificar el método `validateCredentials` para utilizar el código PIN de la configuración en lugar del valor no modificado. 
+Puede modificar el método `validateCredentials` para utilizar el código PIN de la configuración en lugar del valor no modificado.
 
 ```java
 @Override
@@ -210,12 +210,13 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 }
 ```
 La clase `CredentialsValidationSecurityCheckConfig` define las propiedades siguientes:
+
 - `maxAttempts`: Los intentos están permitidos antes de obtener un *error*.
 - `attemptingStateExpirationSec`: Intervalo en segundos durante el cual el cliente debe proporcionar credenciales válidas, y los intentos se cuentan.
-- `successStateExpirationSec`: Intervalo en segundos durante el cual se mantiene el inicio de sesión correcto. 
+- `successStateExpirationSec`: Intervalo en segundos durante el cual se mantiene el inicio de sesión correcto.
 - `blockedStateExpirationSec`: Intervalo en segundos durante el cual se bloquea el cliente después de alcanzar `maxAttempts`.
 
-Tenga en cuenta que el valor predeterminado para `blockedStateExpirationSec` se establece en `0`: si el cliente envía credenciales inválidas, puede volverse a intentar "0 segundos después". Esto significa que la función "intentos" queda inhabilitada de forma predeterminada. 
+Tenga en cuenta que el valor predeterminado para `blockedStateExpirationSec` se establece en `0`: si el cliente envía credenciales inválidas, puede volverse a intentar "0 segundos después". Esto significa que la función "intentos" queda inhabilitada de forma predeterminada.
 
 
 ## Comprobación de seguridad de ejemplo

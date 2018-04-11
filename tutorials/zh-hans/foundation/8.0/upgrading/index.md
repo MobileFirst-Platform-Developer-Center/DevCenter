@@ -9,6 +9,8 @@ weight: 12
 
 > [查看迁移手册](migration-cookbook)以快速开始迁移过程。
 
+> 使用此[实验室]({{site.baseurl}}/labs/developers/8.0/advancedwallet/)指导您进行 V7.1 到 V8.0 迁移。
+
 #### 跳至：
 {: #jump-to }
 * [为何要迁移至 {{ site.data.keys.product_full }} 8.0](#why-migrate-to-ibm-mobilefirst-foundation-80)
@@ -37,7 +39,7 @@ weight: 12
 * 改善了推送通知服务，支持通过 Web 控制台有针对性发送基于预订的通知
 
 ### 更多混合云部署选项
-* Bluemix Public 上 MobileFirst Foundation 开发、测试和完全可扩展生产环境实现单击式配置
+* IBM Cloud Public 上 MobileFirst Foundation 开发、测试和完全可扩展生产环境实现单击式配置
 * 与 IBM DevOps Services 和 Urban Code 集成，构建部署管道
 
 ### 多渠道 API 创建和管理
@@ -47,6 +49,8 @@ weight: 12
 ## 开发和部署过程中的更改
 {: #changes-in-the-development-and-deployment-process }
 > 有关使用 {{ site.data.keys.product }} V8.0.0 执行开发过程的速成实际经验，可查看[快速入门教程](../quick-start)。
+
+
 
 在此版本的产品中，不再创建需要安装在运行 {{ site.data.keys.mf_server }} 的应用程序服务器中的项目 WAR 文件即可上载您的应用程序。 而是安装一次 {{ site.data.keys.mf_server }}，然后将应用程序、资源安全性或推送服务的服务器端**配置**上载到服务器。 您可以使用 {{ site.data.keys.mf_console }} 修改应用程序的配置。 也可以使用命令行工具或服务器 REST API 上载应用程序的新**配置文件**。
 

@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Java HTTP 适配器
-breadcrumb_title: HTTP 适配器
+breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -22,7 +22,7 @@ Cette démonstration présente un processus complet :
 #### Prérequis :
 {: #prerequisites }
 * Un navigateur Web récent
-* *Facultatif* - {{ site.data.keys.mf_cli }} ([téléchargement]({{site.baseurl}}/downloads))
+* *Facultatif* - {{ site.data.keys.mf_cli }}  ([téléchargement]({{site.baseurl}}/downloads))
 * *Facultatif* - Serveur {{ site.data.keys.mf_server }} autonome ([téléchargement]({{site.baseurl}}/downloads))
 
 ### 1. Démarrage du serveur {{ site.data.keys.mf_server }}
@@ -33,18 +33,18 @@ Si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-con
 ### 2. Création et enregistrement d'une application
 {: #creating-and-registering-an-application }
 Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console }} en entrant l'URL `http://your-server-host:server-port/mfpconsole`. Dans le cas d'une exécution locale, entrez l'URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Le nom d'utilisateur et le mot de passe sont *admin/admin*.
- 
+
 1. Cliquez sur le bouton **Nouveau** en regard de l'option **Applications**
     * Sélectionnez la plateforme **Web**
     * Entrez **com.ibm.mfpstarterweb** en tant qu'**identificateur d'application**
     * Cliquez sur **Enregistrer l'application**
 
     <img class="gifplayer" alt="Enregistrement d'une application" src="register-an-application-web.png"/>
- 
+
 2. Cliquez sur le titre **Obtenir le code de démarrage** puis indiquez que vous souhaitez télécharger l'application exemple Web.
 
     <img class="gifplayer" alt="Téléchargement de l'application exemple" src="download-starter-code-web.png"/>
- 
+
 ### 3. Edition d'une logique d'application
 {: #editing-application-logic }
 1. Ouvrez le projet dans l'éditeur de code de votre choix.
@@ -54,40 +54,40 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
         .then(
-            function(accessToken) {
+        function(accessToken) {
                 titleText.innerHTML = "Yay!";
-                statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-                
+            statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
+
                 var resourceRequest = new WLResourceRequest(
-                    "/adapters/javaAdapter/resource/greet/",
-                    WLResourceRequest.GET
-                );
-                
+                "/adapters/javaAdapter/resource/greet/",
+                WLResourceRequest.GET
+            );
+
                 resourceRequest.setQueryParameter("name", "world");
-                resourceRequest.send().then(
-                    function(response) {
+            resourceRequest.send().then(
+                function(response) {
                         // Will display "Hello world" in an alert dialog.
                         alert("Success: " + response.responseText);
-                    },
-                    function(response) {
+                },
+                function(response) {
                         alert("Failure: " + JSON.stringify(response));
-                    }
+                }
                 );
             },
 
             function(error) {
                 titleText.innerHTML = "Bummer...";
-                statusText.innerHTML = "Failed to connect to {{ site.data.keys.mf_server }}";
-            }
+            statusText.innerHTML = "Failed to connect to {{ site.data.keys.mf_server }}";
+        }
         );
    ```
-    
+
 ### 4. Déploiement d'un adaptateur
 {: #deploy-an-adapter }
 Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
 
 Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
-        
+
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
    > Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
@@ -99,7 +99,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
    ```
 
 3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
-    
+
     <img class="gifplayer" alt="Déploiement d'un adaptateur" src="create-an-adapter.png"/>   
 
 
@@ -107,19 +107,19 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 ### 5. Test de l'application
 {: #testing-the-application }
 1. A partir d'une fenêtre de ligne de commande****, accédez au dossier **[racine projet] → node-server**.
-2. Exécutez la commande `npm start` pour installer la configuration Node.js requise et démarrer le serveur Node.js.
-3. Ouvrez le fichier **[racine projet] → node-server → server.js** puis modifiez les variables **host** et **port** en les remplaçant par les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
+2. Ouvrez le fichier **[racine projet] → node-server → server.js** puis modifiez les variables **host** et **port** en les remplaçant par les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
-    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**. 
+    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
+    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes. 
 
    Exemple :  
-    
+
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
    var port = 9081; // The local port number to use
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
-   
+3. Exécutez la commande `npm start` pour installer la configuration Node.js requise et démarrer le serveur Node.js.
 4. A partir de votre navigateur, accédez à l'URL [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>

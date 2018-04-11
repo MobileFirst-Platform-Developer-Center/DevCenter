@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 实现 UserAuthenticationSecurityCheck 类
-breadcrumb_title: 安全性检查
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: 下载安全性检查
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -217,6 +217,8 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 </securityCheckDefinition>
 ```
 如前所述，`UserAuthenticationSecurityCheck` 继承所有 `CredentialsValidationSecurityCheck` 属性，例如，`blockedStateExpirationSec` 和 `successStateExpirationSec` 等。
+
+
 
 此外，您还可以配置 `rememberMeDurationSec` 属性。
 

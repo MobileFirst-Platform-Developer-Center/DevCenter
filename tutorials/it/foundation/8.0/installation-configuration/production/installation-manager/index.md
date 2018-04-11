@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Running the IBM Installation Manager
-weight: 1
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -94,12 +94,12 @@ The decisions in the following two panes in the installation wizard are mandator
     {{ site.data.keys.product }} V8.0 is a replacement for the previous releases that have a different installation name:
     * Worklight for V5.0.6
     * IBM Worklight for V6.0 to V6.3
-    
+
     If one of these older versions of the product is installed on your computer, Installation Manager offers you an option Use an Existing Package Group at the start of the installation process. This option uninstalls your older version of the product, and reuse your older installation options to upgrade {{ site.data.keys.mf_app_center_full }} if it was installed.
-    
+
     For a separate installation, select the Create a New Package group option so that you can install the new version alongside with the older one.  
     If no other version of the product is installed on your computer, choose the Create a new package group option to install the product in a new package group.
-    
+
 5. Click **Next**.
 6. Decide whether to activate token licensing in the **Activate token licensing** section of the **General settings** panel.
 
@@ -141,28 +141,28 @@ You can also find some shortcuts for the Server Configuration Tool, Ant, and mfp
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * For an installation with token licensing enforcement, enter the command:
-    
+
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
-    
+
         The value of **user.licensed.by.tokens** property is set to **true**. You must configure {{ site.data.keys.mf_server }} for [token licensing](../token-licensing).
-        
+
         The following properties are set to install {{ site.data.keys.mf_server }} without Application Center:
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
-        
+
         This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
-        
+
         Set the value of the user.use.ios.edition property to false to install {{ site.data.keys.product }}.
-        
+
 5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
 
     Add the version of the interim fix by replacing **com.ibm.mobilefirst.foundation.server** with **com.ibm.mobilefirst.foundation.server_version**. **version** has the form **8.0.0.0-buildNumber**. For example, if you install the interim fix **8.0.0.0-IF20160103101**5, enter the command: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
-    
+
     For more information about the imcl command, see [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
-    
+
 An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
 
 You can find the resources in the following folders:
@@ -198,12 +198,12 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
 1. Pick the appropriate sample response file from the compressed file. The Silent_Install_Sample_Files.zip file contains one subdirectory per release.
 
     > **Important:**  
-    > 
+    >
     > * For an installation that does not install Application Center on an application server, use the file named **install-no-appcenter.xml**.
     > * For an installation that installs Application Center, pick the sample response file from the following table, depending on your application server and database.
 
    #### Sample installation response files in the **Silent\_Install\_Sample_Files.zip** file to install the Application Center
-    
+
     <table>
         <tr>
       <td></td>
@@ -261,11 +261,11 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
             <td>install-tomcat-oracle.xml</td>
         </tr>
     </table>
-    
+
     > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM DB2 or another DBMS that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
 
     For uninstallation, use a sample file that depends on the version of {{ site.data.keys.mf_server }} or Worklight Server that you initially installed in the particular package group:
-    
+
     * {{ site.data.keys.mf_server }} uses the package group {{ site.data.keys.mf_server }}.
     * Worklight Server V6.x, or later, uses the package group IBM Worklight.
     * Worklight Server V5.x uses the package group Worklight.
@@ -322,7 +322,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
     * `<responseFile>` is the name of the file that is selected and updated in step 1.
 
 > For more information, see the IBM Installation Manager documentation at [Installing a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
-    
+
 
 ### Working with a response file recorded on a different machine
 {: #working-with-a-response-file-recorded-on-a-different-machine }
@@ -642,11 +642,11 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 
 | Item | Description |
 |------|-------------|
-| **configuration-samples** | Contains the sample Ant files to install Application Center. The Ant tasks create the database table and deploy WAR files to an application server. | 
-| **console** | Contains the EAR and WAR files to install Application Center. The EAR file is uniquely for IBM  PureApplication  System. | 
+| **configuration-samples** | Contains the sample Ant files to install Application Center. The Ant tasks create the database table and deploy WAR files to an application server. |
+| **console** | Contains the EAR and WAR files to install Application Center. The EAR file is uniquely for IBM  PureApplication  System. |
 | **databases** | Contains the SQL scripts to be used for the manual creation of tables for Application Center. |
-| **installer** | Contains the resources to create the Application Center client. | 
-| **tools** | The tools of Application Center. | 
+| **installer** | Contains the resources to create the Application Center client. |
+| **tools** | The tools of Application Center. |
 
 #### Files and subdirectories in the {{ site.data.keys.mf_server }} subdirectory
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
@@ -655,9 +655,9 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 |------|-------------|
 | **mfp-ant-deployer.jar** | A set of {{ site.data.keys.mf_server }} Ant tasks. |
 | **mfp-*.war** | The WAR files of the {{ site.data.keys.mf_server }} components. |
-| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_server }} components with Ant tasks. | 
+| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_server }} components with Ant tasks. |
 | **ConfigurationTool** | Contains the binary files of the Server Configuration Tool. The tool is launched from **mfp_server_install_dir/shortcuts**. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, and {{ site.data.keys.product_adj }} runtime). | 
+| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, and {{ site.data.keys.product_adj }} runtime). |
 | **external-server-libraries** |  Contains the JAR files that are used by different tools (such as the authenticity tool and the OAuth security tool). |
 
 #### Files and subdirectories in the PushService subdirectory
@@ -666,25 +666,25 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 | Item | Description |
 |------|-------------|
 | **mfp-push-service.war** | The WAR file to install {{ site.data.keys.mf_server }} push service. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} push service. | 
+| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} push service. |
 
 #### Files and subdirectories in the License subdirectory
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
 | Item | Description |
 |------|-------------|
-| **Text** | Contains the license for {{ site.data.keys.product }}. | 
+| **Text** | Contains the license for {{ site.data.keys.product }}. |
 
 #### Files and subdirectories in the {{ site.data.keys.mf_server }} installation directory
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | Item | Description |
 |------|-------------|
-| **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with {{ site.data.keys.mf_server }}. | 
+| **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with {{ site.data.keys.mf_server }}. |
 
 #### Files and subdirectories in the tools subdirectory
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
 | Item | Description |
 |------|-------------|
-| **tools/apache-ant-version-number** | A binary installation of Apache Ant that is used by the Server Configuration Tool. It can also be used to run the Ant tasks. | 
+| **tools/apache-ant-version-number** | A binary installation of Apache Ant that is used by the Server Configuration Tool. It can also be used to run the Ant tasks. |

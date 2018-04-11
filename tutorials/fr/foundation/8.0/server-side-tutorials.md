@@ -19,8 +19,8 @@ Le développement côté serveur fournit les outils et les fonctionnalités néc
 
 ## Authentification et sécurité
 {: authentication-and-security }
-* [Authentication and security](../authentication-and-security/)
+* [Authentification et sécurité](../authentication-and-security/)
 
 ## Développement d'adaptateurs
 {: #adapters-development }
-* [Adapters development](../adapters/)
+* [Développement d'adaptateurs](../adapters/)

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 调试 JavaScript（Cordova、Web）应用程序
-breadcrumb_title: 调试应用程序        
+title: 调试 JavaScript（Cordova 或 Web）应用程序
+breadcrumb_title: Debugging applications        
 relevantTo: [javascript]
 weight: 10
 ---

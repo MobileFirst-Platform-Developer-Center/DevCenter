@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Utilización de MobileFirst CLI en Eclipse
+title: Utilización de la CLI de MobileFirst en Eclipse
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: Plugin Eclipse de MobileFirst
+breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

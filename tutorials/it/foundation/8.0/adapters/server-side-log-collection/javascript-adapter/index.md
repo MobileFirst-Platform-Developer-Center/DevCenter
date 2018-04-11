@@ -18,18 +18,18 @@ The message below outputs to the `trace.log` file of the application server. If 
 MFP.Logger.debug("This is a debug message from a JavaScript adapter");
 ```
 
-Additional logging levels, from least to most verbose: ERROR, WARN, INFO, LOG and DEBUG. 
+Additional logging levels, from least to most verbose: ERROR, WARN, INFO, LOG and DEBUG.
 
 ## Accessing the log files
 {: #accessing-the-log-files }
 
-* In an on-prem installation of the {{ site.data.keys.mf_server }}, the file is available depending on the underlying application server. 
+* In an on-prem installation of the {{ site.data.keys.mf_server }}, the file is available depending on the underlying application server.
     * [IBM WebSphere Application Server Full Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
     * [IBM WebSphere Application Server Liberty Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * To get to the logs in a cloud deployment in:
     * IBM Containers or Liberty Build Pack, see the [IBM Containers log and trace collection](../../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/) tutorial.
-    * Mobile Foundation Bluemix service, see [Accessing server logs](../../../bluemix/using-mobile-foundation/#accessing-server-logs) section in the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation) tutorial.
+    * Mobile Foundation IBM Cloud service, see [Accessing server logs](../../../bluemix/using-mobile-foundation/#accessing-server-logs) section in the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation) tutorial.
 
 ## Forwarding Logs to the Analytics server
 {: #forwarding-logs-to-the-analytics-server }
@@ -41,4 +41,3 @@ Logs can also be forwarded to the Analytics console.
 3. In the **Analytics → Additional packages** section, specify **MFP.Logger** to forward JavaScript Adapter logs to the {{ site.data.keys.mf_server }}.
 
 ![Log filtering from the console](javascript-filter.png)
-

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Befehlszeilentool für das Hochladen oder Löschen einer Anwendung
-breadcrumb_title: App hochladen oder löschen
+title: Befehlszeilentool zum Hochladen oder Löschen einer Anwendung
+breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht

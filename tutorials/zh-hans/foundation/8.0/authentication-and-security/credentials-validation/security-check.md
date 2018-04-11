@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 实现 CredentialsValidationSecurityCheck 类
-breadcrumb_title: 安全性检查
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: 下载安全性检查
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -210,6 +210,8 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 }
 ```
 `CredentialsValidationSecurityCheckConfig` 类可定义以下属性：
+
+
 
 - `maxAttempts`：在达到 *failure* 之前允许的尝试次数。
 - `attemptingStateExpirationSec`：客户机必须提供有效凭证并统计尝试次数的时间间隔（秒）。

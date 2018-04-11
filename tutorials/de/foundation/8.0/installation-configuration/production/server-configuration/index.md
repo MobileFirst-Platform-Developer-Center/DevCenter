@@ -10,7 +10,7 @@ Nachfolgend finden Sie Informationen zur Sicherungs- und Wiederherstellungsricht
 der
 MobileFirst-Server-Konfiguration und zum Anwenden von Zugriffsbeschränkungen und Sicherheitsoptionen.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Endpunkte
@@ -254,7 +254,7 @@ sollten Sie einen Verbindungspool für die Verwaltungsdatenbank konfigurieren,
 um bei einer großen Anzahl von installierten Anwendungen (z. B. 80 Anwendungen) gute Antwortzeiten zu erzielen.
 
 1. Bearbeiten Sie die Datei
-**server.xml**. Beispiel: 
+**server.xml**. Beispiel:
 
    ```xml
    <security-role name="mfpadmin">
@@ -374,7 +374,9 @@ Sie bestimmte JNDI-Einträge für jede Anwendung mit dem Kontextpfadpräfix defi
 
       Die Namen aller anderen JNDI-Eigenschaften müssen mit dem Konstextstammverzeichis der Anwendung als Präfix versehen sein.
 
-       * Das Kontextstammverzeichnis für den Liveaktualisierungsservice muss **/[Kontextstammverzeichnis_des_Verwaltungsservice]config** lauten. Wenn das Kontextstammverzeichnis des Verwaltungsservice beispielsweise **/mfpadmin** ist, muss der Liveaktualisierungsservice das Kontextstammverzeichnis **/mfpadminconfig** haben.
+       * Das Kontextstammverzeichnis für den Liveaktualisierungsservice muss **/[Kontextstammverzeichnis_des_Verwaltungsservice]config** lauten. Wenn das Kontextstammverzeichnis des Verwaltungsservice beispielsweise
+**/mfpadmin** ist, muss der Liveaktualisierungsservice das Kontextstammverzeichnis
+**/mfpadminconfig** haben.
        * Für den Push-Service müssen Sie **/imfpush** als Kontextstammverzeichnis festlegen. Andernfalls können die Clientgeräte keine Verbindung zu dem Service herstellen, denn das Kontextstammverzeichnis ist im SDK fest codiert.
        * Für den {{ site.data.keys.product_adj }}-Verwaltungsservice, die {{ site.data.keys.mf_console }} und die {{ site.data.keys.product_adj }}-Laufzeit können Sie das Kontextstammverzeichnis ganz nach Wunsch definieren. Die Standardwerte lauten **/mfpadmin** für den {{ site.data.keys.product_adj }}-Verwaltungsservice, **/mfpconsole** für die {{ site.data.keys.mf_console }} und **/mfp** für die {{ site.data.keys.product_adj }}-Laufzeit.
 
@@ -403,7 +405,7 @@ Sie bestimmte JNDI-Einträge für jede Anwendung mit dem Kontextpfadpräfix defi
         * Das Attribut `type` hat immer den Wert `java.lang.String`,
 sofern für die Eigenschaft nichts anderes angegeben ist. 
 
-      Beispiel: 
+      Beispiel:
 
       ```xml
       <Context docBase="app_context_root" path="/app_context_root">
@@ -428,7 +430,7 @@ Liveaktualisierungsservice](../installation-reference/#ant-tasks-for-installatio
   * `<installmobilefirstpush>` für die Konfiguration des Push-Service. Weitere Informationen finden Sie unter
 [Ant-Tasks für die Installation des MobileFirst-Server-Push-Service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
-  Beispiel: 
+  Beispiel:
 
   ```xml
   <installmobilefirstadmin ..>
@@ -486,7 +488,7 @@ mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden:
 |--------------------------|-----------------------|--------------|
 | mfp.admin.proxy.port| Optional | Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft der Port des Proxys angegeben, z. B. 443. Die Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
 | mfp.admin.proxy.protocol| Optional | Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft das Protokoll an (HTTP oder HTTPS). Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird diese Eigenschaft auf das Protokoll des Proxys gesetzt, z. B. wl.net. Diese Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
-| mfp.admin.proxy.scheme| Optional| Diese Eigenschaft ist lediglich ein alternativer Name für mfp.admin.proxy.protocol.|
+| mfp.admin.proxy.scheme| Optional | Diese Eigenschaft ist lediglich ein alternativer Name für mfp.admin.proxy.protocol.|
 | mfp.admin.proxy.host| Optional | Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft die Adresse des Proxys angegeben. |
 
 #### JNDI-Eigenschaften für den Verwaltungsservice: Topologien
@@ -607,7 +609,7 @@ verfügbar sind:
 | mfp.admin.jmx.pwd | WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung (optional)<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
 | mfp.admin.serverid | Obligatorisch für Server-Farmen und einen Liberty-Verbund, ansonsten optional<br/><br/>Server-Farm: Die Serverkennung. Die ID muss für jeden Server in der Farm eindeutig sein.<br/><br/>Liberty-Verbund: die Memberkennung. Jedes Member des Verbunds muss eine andere Kennung haben. Der Wert controller kann nicht verwendet werden, weil er für den Verbundcontroller reserviert ist. |
 | mfp.topology.platform | Optional. Der Servertyp. Gültige Werte: <ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Wenn Sie den Wert nicht definieren, versucht die Anwendung, den Servertyp zu raten. |
-| mfp.topology.clustermode | Zusätzlich zum Servertyp geben Sie mit dieser optionalen Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
+| mfp.topology.clustermode | Optional Zusätzlich zum Servertyp geben Sie mit dieser Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
 | mfp.admin.jmx.replica | Nur für einen Liberty-Verbund (optional).<br/><br/>Legen Sie diese Eigenschaft nur fest, wenn die Verwaltungskomponenten, mit denen diese Laufzeit verwaltet wird, in verschiedenen Liberty-Controllern (d. h. Replikaten) implementiert sind.<br/><br/>Syntax der Endpunktliste mit den verschiedenen Controllerreplikaten: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 | mfp.analytics.console.url | Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für die Verbindung zur Analytics Console (optional). Wenn Sie von der {{ site.data.keys.mf_console }} auf die Analytics Console zugreifen möchten, definieren Sie diese Eigenschaft. Beispiel: `http://<Hostname>:<Port>/analytics/console` |
 | mfp.analytics.password | Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
@@ -763,7 +765,7 @@ Möglicherweise müssen Sie den
 DB2-Protokollspeicherbereich ausgehend von der größten implementierten MobileFirst-Anwendung vergrößern.
 
 Erhöhen Sie mit dem Befehl `DB2 update db cfg` den Wert des Parameters
-**LOGSECOND**.Speicherbereich wird nicht bei Aktivierung der Datenbank, sondern bei Bedarf zugeordnet.
+**LOGSECOND**. Speicherbereich wird nicht bei Aktivierung der Datenbank, sondern bei Bedarf zugeordnet.
 
 ### Nahtloses Failover mit DB2 HADR für MobileFirst-Server- und Application-Center-Datenquellen konfigurieren
 {: #configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources }
@@ -789,7 +791,7 @@ dieses Features müssen Sie die JDBC-Eigenschaft
 {: #websphere-application-server-liberty-profile-configuration }
 Sie müssen die Datei **server.xml** bearbeiten und die Eigenschaft
 **enableSeamlessFailover** zum Element
-**properties.db2.jcc** der {{ site.data.keys.product_adj }}- und Application-Center-Datenquellen hinzufügen. Beispiel: 
+**properties.db2.jcc** der {{ site.data.keys.product_adj }}- und Application-Center-Datenquellen hinzufügen. Beispiel:
 
 ```xml
 <dataSource jndiName="jdbc/WorklightAdminDS" transactional="false">
@@ -851,7 +853,7 @@ Bearbeiten Sie die Dateien **server.xml** und **context.xml** und fügen Sie fü
 * **testOnBorrow="true"**
 * **validationQuery="select 1"**
 
-Beispiel: 
+Beispiel:
 
 ```xml
 <Resource name="jdbc/AppCenterDS"
@@ -879,8 +881,7 @@ zum Element **connectionManager** finden Sie unter
 
 > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder
 eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
 einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
@@ -943,8 +944,7 @@ bevor sie von MySQL geschlossen werden.
 
 > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder
 eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
 einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
@@ -1034,11 +1034,9 @@ das Paket
 {: #configuring-multiple-runtimes }
 Sie können {{ site.data.keys.mf_server }} mit mehreren Laufzeiten konfigurieren und in der {{ site.data.keys.mf_console }} eine visuelle Abgrenzung der Anwendungstypen erstellen. 
 
-> **Hinweis:** Eine Mobile-Foundation-Server-Instanz, die mit dem Mobile-Foundation-Bluemix-Service erstellt wurde, bietet keine Unterstützung für mehrere Laufzeiten. Im Bluemix-Service müssen Sie stattdessen mehrere Serviceinstanzen erstellen.
+> **Hinweis:** Eine Mobile-Foundation-Server-Instanz, die mit dem IBM Cloud-Service "Mobile Foundation" erstellt wurde, bietet keine Unterstützung für mehrere Laufzeiten. Im IBM Cloud-Service müssen Sie stattdessen mehrere Serviceinstanzen erstellen.
 
-
-
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to-1 }
 * [Mehrere Laufzeiten in WebSphere Liberty Profile konfigurieren](#configuring-multiple-runtimes-in-websphere-liberty-profile)
 * [In verschiedenen Laufzeiten Anwendungen registrieren und Adapter implementieren](#registering-applications-and-deploying-adapters-to-different-runtimes)

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Autenticación de paso ascendente
-breadcrumb_title: Autenticación de paso ascendente
+title: Autenticación incremental
+breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
@@ -25,8 +25,8 @@ downloads:
 {: #overview }
 Los recursos pueden protegerse por varias comprobaciones de seguridad. En este caso, {{ site.data.keys.mf_server }} envía a la aplicación todos los desafíos relevantes simultáneamente.  
 
-Una comprobación de seguridad también puede depender de otra comprobación de seguridad. Por lo tanto, es importante poder controlar cuando se envían los desafíos.   
-Por ejemplo, esta guía de aprendizaje describe una aplicación que tiene dos recursos protegidos por un nombre de usuario y una contraseña, en la que el segundo recurso también requiere un código PIN adicional. 
+Una comprobación de seguridad también puede depender de otra comprobación de seguridad. Por lo tanto, es importante poder controlar cuando se envían los desafíos.  
+Por ejemplo, esta guía de aprendizaje describe una aplicación que tiene dos recursos protegidos por un nombre de usuario y una contraseña, en la que el segundo recurso también requiere un código PIN adicional.
 
 **Requisitos previos:** Lea las guías de aprendizaje [CredentialsValidationSecurityCheck](../credentials-validation) y [UserAuthenticationSecurityCheck](../user-authentication) antes de continuar.
 
@@ -54,15 +54,14 @@ private transient StepUpUserLogin userLogin;
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Las dos implementaciones de comprobación de seguridad deben estar empaquetadas en el mismo adaptador.
 
-
-Para resolver esta referencia, la infraestructura busca una comprobación de seguridad con la clase apropiada, y la añade a la referencia correspondiente en la comprobación de seguridad dependiente.   
+Para resolver esta referencia, la infraestructura busca una comprobación de seguridad con la clase apropiada, y la añade a la referencia correspondiente en la comprobación de seguridad dependiente.  
 Si hay más de una comprobación de seguridad de la misma clase, la anotación tiene un parámetro `name` opcional, que puede utilizar para especificar el nombre exclusivo de la comprobación a la que se hace referencia.
 
 ## Máquina de estados
 {: #state-machine }
-Todas las clases que amplían `CredentialsValidationSecurityCheck` (que incluye `StepUpPinCode` y `StepUpUserLogin`) heredan una máquina de estados simple. En cualquier momento, la comprobación de seguridad puede ser uno de los estados siguientes: 
+Todas las clases que amplían `CredentialsValidationSecurityCheck` (que incluye `StepUpPinCode` y `StepUpUserLogin`) heredan una máquina de estados simple. En cualquier momento, la comprobación de seguridad puede ser uno de los estados siguientes:
 
-- `STATE_ATTEMPTING`: Se ha enviado un desafío y la comprobación de seguridad espera la respuesta del cliente.El recuento del intento se mantiene durante este estado. 
+- `STATE_ATTEMPTING`: Se ha enviado un desafío y la comprobación de seguridad espera la respuesta del cliente. El recuento del intento se mantiene durante este estado.
 - `STATE_SUCCESS`: Las credenciales se han validado correctamente.
 - `STATE_BLOCKED`: Se ha alcanzado el número máximo de intentos y la verificación está en estado de bloqueo.
 
@@ -95,7 +94,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 Esta implementación comprueba el estado actual de la referencia `StepUpUserLogin`:
 
-* Si el estado es `STATE_SUCCESS` (el usuario ha iniciado sesión), el flujo normal de la comprobación de seguridad continua. 
+* Si el estado es `STATE_SUCCESS` (el usuario ha iniciado sesión), el flujo normal de la comprobación de seguridad continua.
 * Si el estado de `StepUpUserLogin` es otro diferente, no se realiza ninguna acción: no se envía ningún desafío y el resultado no es ni éxito ni error.
 
 Si damos por hecho que el recurso lo protegen **** `StepUpPinCode` y `StepUpUserLogin`, el flujo se asegura de que el usuario ha iniciado sesión antes de que se le solicite una segunda credencial (código PIN). El cliente nunca recibe ambos desafíos al mismo tiempo, aunque las dos comprobaciones de seguridad estén activas.
@@ -152,7 +151,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ## Manejadores de desafíos
 {: #challenge-handlers }
-En el lado del cliente, no hay API especiales para manejar varios pasos. En su lugar, cada manejador de desafíos manejar su propio desafío.En este ejemplo, debe registrar dos manejadores de desafíos distintos: uno para manejar desafíos desde `StepUpUserLogin` y otro para manejarlos desde `StepUpPincode`.
+En el lado del cliente, no hay API especiales para manejar varios pasos. En su lugar, cada manejador de desafíos manejar su propio desafío. En este ejemplo, debe registrar dos manejadores de desafíos distintos: uno para manejar desafíos desde `StepUpUserLogin` y otro para manejarlos desde `StepUpPincode`.
 
 <img alt="Aplicación de ejemplo de paso ascendente" src="sample_application.png" style="float:right"/>
 ## Aplicaciones de ejemplo

@@ -1,12 +1,14 @@
 ---
 layout: tutorial
-title: Funktionen der IBM MobileFirst Foundation zur behindertengerechten Bedienung
-breadcrumb_title: Funktionen zur behindertengerechten Bedienung
+title: Eingabehilfefunktionen der IBM MobileFirst Foundation
+breadcrumb_title: Accessibility features
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
 Funktionen zur behindertengerechten Bedienung unterstützen Benutzer mit eingeschränkter Bewegungsfähigkeit oder einer Sehbehinderung bei der erfolgreichen Nutzung von IT-Inhalten.
+
+
 
 ### Funktionen zur behindertengerechten Bedienung
 {: #accessibility-features }

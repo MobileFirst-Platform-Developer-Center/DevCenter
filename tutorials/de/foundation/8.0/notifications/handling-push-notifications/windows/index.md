@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigungen in Windows 8.1 Universal und Windows 10 UWP
+title: Handhabung von Push-Benachrichtigungen in Windows 8.1 Universal und Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Universelles Windows-8.1-Projekt herunterladen
+  - name: Download Windows 8.1 Universal Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Windows-10-UWP-Projekt herunterladen
+  - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

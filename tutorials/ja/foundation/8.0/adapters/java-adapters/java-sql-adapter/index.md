@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Java SQL アダプター
-breadcrumb_title: SQL アダプター
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: アダプター Maven プロジェクトのダウンロード
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
@@ -12,7 +12,7 @@ weight:
 ## 概説
 {: #overview }
 
-Java アダプターは、バックエンド・システムへの接続に対する制御権を開発者に与えます。したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。
+Java アダプターは、バックエンド・システムへの接続に対する制御権を開発者に与えます。 したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。
 このチュートリアルでは、MySQL バックエンドに接続し、REST 概念を使用して `users` テーブルに対する CRUD (作成、読み取り、更新、削除) 操作を行う Java アダプターの例を取り上げます。
 
 **前提条件:**
@@ -30,7 +30,7 @@ Java アダプターは、バックエンド・システムへの接続に対す
 ## データ・ソースのセットアップ
 {: #setting-up-the-data-source }
 
-MySQL サーバーに接続できるように {{ site.data.keys.mf_server }} を構成するには、**構成プロパティー**を使用してアダプターの XML ファイルを構成する必要があります。これらのプロパティーは、後で {{ site.data.keys.mf_console }} で編集できます。
+MySQL サーバーに接続できるように {{ site.data.keys.mf_server }} を構成するには、**構成プロパティー**を使用してアダプターの XML ファイルを構成する必要があります。 これらのプロパティーは、後で {{ site.data.keys.mf_console }} で編集できます。
 
 adater.xml ファイルを編集して、以下のプロパティーを追加します。
 
@@ -63,7 +63,7 @@ adater.xml ファイルを編集して、以下のプロパティーを追加し
 
 ```java
 @Path("/")
-public class JavaSQLResource {
+  public class JavaSQLResource {
 }
 ```
 
@@ -72,7 +72,7 @@ public class JavaSQLResource {
 ### DataSource の使用
 {: #using-datasource }
 
-アダプターをデプロイするとき、または {{ site.data.keys.mf_console }}から構成を変更するたびに、アダプターの `MFPJAXRSApplication` の `init` メソッドが呼び出されます。これは、[接続プロパティーをロード](../#configuration-api)して `DataSource` を作成するのに適しています。
+アダプターをデプロイするとき、または {{ site.data.keys.mf_console }}から構成を変更するたびに、アダプターの `MFPJAXRSApplication` の `init` メソッドが呼び出されます。 これは、[接続プロパティーをロード](../#configuration-api)して `DataSource` を作成するのに適しています。
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -141,11 +141,11 @@ public Response createUser(@FormParam("userId") String userId,
         //Close resources in all cases
         insertUser.close();
         con.close();
-    }
+    }  
 }
 ```
 
-このメソッドでは `@Path` が指定されていないため、リソースのルート URL としてアクセスできます。これは、`@POST` を使用するため、`HTTP POST` 経由でのみアクセス可能になります。  
+このメソッドでは `@Path` が指定されていないため、リソースのルート URL としてアクセスできます。 これは、`@POST` を使用するため、`HTTP POST` 経由でのみアクセス可能になります。  
 このメソッドには一連の `@FormParam` 引数があります。これは、これらの引数を HTTP 本体で `x-www-form-urlencoded` パラメーターとして送信できることを意味します。
 
 また、`@Consumes(MediaType.APPLICATION_JSON)` を使用して、HTTP 本体でパラメーターを JSON オブジェクトとして渡すこともできます。この場合、メソッドには、`JSONObject` 引数か、JSON プロパティー名と一致するプロパティーが指定された単純 Java オブジェクトが必要です。
@@ -154,7 +154,7 @@ public Response createUser(@FormParam("userId") String userId,
 
 SQL 照会は `PreparedStatement` メソッドによってビルドされます。
 
-挿入が成功した場合は、`return Response.ok().build()` メソッドを使用して、クライアントに `200 OK` を返します。エラーが発生した場合は、特定の HTTP 状況コードを持つ別の `Response` オブジェクトをビルドすることができます。この例では、`409 Conflict` エラー・コードが送られます。すべてのパラメーターが送信されているかどうかや (ここでは示されていません)、その他のデータ検証についても確認することをお勧めします。
+挿入が成功した場合は、`return Response.ok().build()` メソッドを使用して、クライアントに `200 OK` を返します。 エラーが発生した場合は、特定の HTTP 状況コードを持つ別の `Response` オブジェクトをビルドすることができます。 この例では、`409 Conflict` エラー・コードが送られます。 すべてのパラメーターが送信されているかどうかや (ここでは示されていません)、その他のデータ検証についても確認することをお勧めします。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** リソース (作成されたステートメントや接続など) を必ず閉じてください。
 

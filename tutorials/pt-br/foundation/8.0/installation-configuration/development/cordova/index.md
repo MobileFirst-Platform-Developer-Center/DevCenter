@@ -15,7 +15,7 @@ Com aplicativos do Cordova, é possível usar seu editor de código preferencial
 
 ## Instalando o Cordova CLI
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} Suportar Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova).  
+O {{ site.data.keys.product }} suporta o Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) ou superior.  
 Para instalar:
 
 1. Faça download e instale o [NodeJS](https://nodejs.org/en/).

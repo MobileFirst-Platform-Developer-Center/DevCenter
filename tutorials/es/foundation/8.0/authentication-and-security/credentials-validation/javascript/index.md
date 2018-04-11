@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementación del manejador de desafíos en aplicaciones de JavaScript (Cordova, Web)
+title: Implementación del manejador de desafíos en aplicaciones JavaScript (Cordova, Web)
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
@@ -49,7 +49,7 @@ PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCode
 {: #handling-the-challenge }
 El requisito mínimo del protocolo `createSecurityCheckChallengeHandler` es implementar el método `handleChallenge()` que es el responsable de solicitar al usuario las credenciales. El método `handleChallenge` recibe el desafío como un objeto `JSON`.
 
-En este ejemplo, una alerta le solicita al usuario que introduzca el código PIN: 
+En este ejemplo, una alerta le solicita al usuario que introduzca el código PIN:
 
 ```javascript
 PinCodeChallengeHandler.handleChallenge = function(challenge) {
@@ -88,7 +88,7 @@ PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
 ## Cancelación del desafío
 {: #cancelling-the-challenge }
 En algunos casos, como cuando se pulsa el botón **Cancelar** en la IU, desea indicarle a la infraestructura que descarte este desafío por completo.  
-Para ello, llame: 
+Para ello, llame:
 
 ```javascript
 PinCodeChallengeHandler.cancel();
@@ -97,7 +97,7 @@ PinCodeChallengeHandler.cancel();
 ## Manejo de errores
 {: #handling-failures }
 Es posible que en algunos escenarios se produzca un error (por ejemplo, el número de intentos máximos alcanzado). Para manejar esta situación, implemente el `handleFailure()` de `createSecurityCheckChallengeHandler`.  
-La estructura del objeto JSON pasada como parámetro depende de la naturaleza del error. 
+La estructura del objeto JSON pasada como parámetro depende de la naturaleza del error.
 
 ```javascript
 PinCodeChallengeHandler.handleFailure = function(error) {
@@ -117,7 +117,7 @@ En general, la infraestructura procesa los logros de forma automática para perm
 
 De forma opcional, también puede elegir realizar otras tareas antes de que la infraestructura cierre el flujo del manejador de desafíos, implementando el `handleSuccess()` de `createSecurityCheckChallengeHandler`. Una vez más, el contenido y estructura del objeto JSON `success` depende de lo que envíe la comprobación de seguridad.
 
-En la aplicación de ejemplo `PinCodeAttemptsCordova`, el valor éxito no contiene datos adicionales. 
+En la aplicación de ejemplo `PinCodeAttemptsCordova`, el valor éxito no contiene datos adicionales.
 
 ## Registro del manejador de desafíos
 {: #registering-the-challenge-handler }
@@ -130,7 +130,7 @@ someChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("the-securi
 
 ## Aplicaciones de ejemplo
 {: #sample-applications }
-Los proyectos **PinCodeWeb** y **PinCodeCordova** utilizan `WLResourceRequest` para obtener un saldo de banco.   
+Los proyectos **PinCodeWeb** y **PinCodeCordova** utilizan `WLResourceRequest` para obtener un saldo de banco.  
 El método está protegido con un código PIN y un máximo de 3 intentos.
 
 [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80) el proyecto web.  

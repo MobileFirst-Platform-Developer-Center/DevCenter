@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guia de Instalação da Estação de Trabalho
-breadcrumb_title: Guia de Instalação
+breadcrumb_title: Installation guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -64,8 +64,8 @@ Abra uma janela de linha de comandos e navegue para o local da pasta extraída.
 O [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) é uma interface da linha de comandos que permite registrar aplicativos no {{ site.data.keys.mf_server }}, aplicativo pull/push de/para o {{ site.data.keys.mf_server }}, criar adaptadores Java e JavaScript, gerenciar vários servidores locais e remotos, atualizar aplicativos em tempo real usando o Direct Update etc
 
 **Pré-requisito: **  
-1. NodeJS é um requisito antes da instalação do {{ site.data.keys.mf_cli }}.  
- Faça download e instale o [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+1. O NodeJS e o NPM são necessários antes de ser possível realizar a instalação do {{ site.data.keys.mf_cli }}.  
+ Faça o download e instale o [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) e o NPM v3.10.10.
 
  Para verificar a instalação, abra uma janela de linha de comandos e execute: `node -v`.
 

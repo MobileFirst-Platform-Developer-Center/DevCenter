@@ -23,8 +23,8 @@ weight: 1
 {: #prerequisites }
 * Xcode for iOS、Android Studio for Android または Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
 * Cordova CLI 6.x.
-* *オプション*。{{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
-* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 {{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
@@ -33,8 +33,8 @@ weight: 1
 
 ### 2. アプリケーションの作成および登録
 {: #2-creating-and-registering-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
- 
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。 ユーザー名/パスワードは *admin/admin* です。
+
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * プラットフォーム **Android, iOS, Windows** を選択します。
     * **com.ibm.mfpstartercordova** を**アプリケーション ID** として入力します。
@@ -42,11 +42,11 @@ weight: 1
     * **「アプリケーションの登録」**をクリックします。
 
     <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-cordova.png"/>
- 
+
 2. **「スターター・コードの取得」**タイルをクリックして、Cordova サンプル・アプリケーションをダウンロードすることを選択します。
 
     <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-cordova.png"/>
- 
+
 ### 3. アプリケーション・ロジックの編集
 {: #3-editing-application-logic }
 1. お好きなコード・エディターで Cordova プロジェクトを開きます。
@@ -59,12 +59,12 @@ WLAuthorizationManager.obtainAccessToken()
         function(accessToken) {
             titleText.innerHTML = "Yay!";
             statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-            
+
             var resourceRequest = new WLResourceRequest(
                 "/adapters/javaAdapter/resource/greet/",
                 WLResourceRequest.GET
             );
-            
+
             resourceRequest.setQueryParameter("name", "world");
             resourceRequest.send().then(
                 function(response) {
@@ -83,16 +83,16 @@ WLAuthorizationManager.obtainAccessToken()
         }
     );
 ```
-    
+
 ### 4. アダプターのデプロイ
 {: #4-deploy-an-adapter }
 [この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{ site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
 あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
-        
-1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。  
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。 「Hello World」**Java** アダプターのサンプルをダウンロードします。
+
+    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
 
 2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
@@ -100,8 +100,8 @@ WLAuthorizationManager.obtainAccessToken()
     mfpdev adapter build
     ```
 
-3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。
-    
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。 アダプターは、**[adapter]/target** フォルダー内にあります。
+
     <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>   
 
 
@@ -112,10 +112,11 @@ WLAuthorizationManager.obtainAccessToken()
 2. コマンド `cordova platform add ios|android|windows` を実行してプラットフォームを追加します。
 3. Cordova プロジェクトで、**config.xml** ファイルを選択し、**protocol**、**host**、および **port** の各プロパティーを含む `<mfp:server ... url=" "/>` 値を、ご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
-    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{ site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
-	
+    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。 リモート {{ site.data.keys.mf_server }} が使用されている場合は、[コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myIBMCloudServer` を実行します。
+
 デバイスが接続されている場合は、アプリケーションがデバイスにインストールされ、起動されます。  
 接続されていない場合は、シミュレーターまたはエミュレーターが使用されます。
 

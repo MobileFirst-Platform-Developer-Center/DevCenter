@@ -33,25 +33,25 @@ If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/
 ### 2. Creating an application
 {: #2-creating-an-application }
 In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
- 
+
 1. Click the **New** button next to **Applications**
     * Select the **iOS** platform
     * Enter **com.ibm.mfpstarteriosobjectivec** or **com.ibm.mfpstarteriosswift** as the **application identifier** (depending on the application scaffold you will download in the next step)
     * Enter **1.0** as the **version** value
     * Click on **Register application**
-    
+
     <img class="gifplayer" alt="Register an application" src="register-an-application-ios.png"/>
- 
+
 2. Click on the **Get Starter Code** tile and select to download the iOS Objective-C or iOS Swift sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-ios.png"/>
-    
+
 ### 3. Editing application logic
 {: #3-editing-application-logic }
 1. Open the Xcode project by double-clicking the **.xcworkspace** file.
 
 2. Select the **[project-root]/ViewController.m/swift** file and paste the following code snippet, replacing the existing `getAccessToken()` function:
- 
+
    In Objective-C:
 
    ```objc
@@ -59,7 +59,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
    _testServerButton.enabled = NO;
    NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
    _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
-    
+
    NSLog(@"Testing Server Connection");
    [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@"" withCompletionHandler:^(AccessToken *token, NSError *error) {
         if (error != nil) {
@@ -70,10 +70,10 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
             _titleLabel.text = @"Yay!";
             _connectionStatusLabel.text = [NSString stringWithFormat:@"Connected to {{ site.data.keys.mf_server }}\n%@", serverURL];
             NSLog(@"Received the following access token value: %@", token.value);
-            
+
             NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/resource/greet/"];
             WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-            
+
             [request setQueryParameterValue:@"world" forName:@"name"];
             [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
                 if (error != nil){
@@ -90,19 +90,19 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     }];
 }
    ```
-    
+
    In Swift:
-    
+
    ```swift
    @IBAction func getAccessToken(sender: AnyObject) {
         self.testServerButton.enabled = false
-        
+
         let serverURL = WLClient.sharedInstance().serverUrl()
-        
+
         connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
         print("Testing Server Connection")
         WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
-            
+
             if (error != nil) {
                 self.titleLabel.text = "Bummer..."
                 self.connectionStatusLabel.text = "Failed to connect to {{ site.data.keys.mf_server }}\n\(serverURL)"
@@ -111,10 +111,10 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
                 self.titleLabel.text = "Yay!"
                 self.connectionStatusLabel.text = "Connected to {{ site.data.keys.mf_server }}\n\(serverURL)"
                 print("Recieved the following access token value: " + token.value)
-                
+
                 let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
                 let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-                
+
                 request.setQueryParameterValue("world", forName: "name")
                 request.sendWithCompletionHandler { (response, error) -> Void in
                     if (error != nil){
@@ -125,7 +125,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
                     }
                 }
             }
-            
+
             self.testServerButton.enabled = true
         }
    }
@@ -136,7 +136,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
-        
+
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
@@ -147,7 +147,7 @@ Alternatively, click the **New** button next to **Adapters**.
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder. 
+3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
 
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
@@ -156,10 +156,11 @@ Alternatively, click the **New** button next to **Adapters**.
 {: #5-testing-the-application }
 1. In Xcode, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
-     
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**.
+    * If using a Kubernetes cluster on IBM Cloud Private and if the deployment is of type **NodePort**, the value of the port would typically be the **NodePort** exposed by the service in Kubernetes cluster.
 
+    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myIBMCloudServer`.
+    
 2. Press the **Play** button.
 
 <br clear="all"/>

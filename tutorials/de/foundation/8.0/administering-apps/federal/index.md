@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Unterstützung gesetzlicher Standards in der MobileFirst Foundation
-breadcrumb_title: Unterstützung gesetzlicher Standards
+breadcrumb_title: Federal standards support
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

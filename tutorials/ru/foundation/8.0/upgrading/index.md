@@ -9,6 +9,8 @@ weight: 12
 
 > [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
 
+> Use this [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) to guide you through the v7.1 to v8.0 migration.
+
 #### Jump to
 {: #jump-to }
 * [Why migrate to {{ site.data.keys.product_full }} 8.0](#why-migrate-to-ibm-mobilefirst-foundation-80)
@@ -37,7 +39,7 @@ weight: 12
 * Improved Push Notifications services enables targeted, subscription-based notifications sent from web console
 
 ### More Hybrid Cloud Deployment Options
-* One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on Bluemix Public
+* One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on IBM Cloud Public
 * Integrated with IBM DevOps Services and Urban Code for building your deployment pipelines
 
 ### Multi-channel API creation and management
@@ -135,5 +137,5 @@ Find out how to use the Server Configuration Tool to upgrade {{ site.data.keys.m
 
 To apply an interim fix or fix pack on {{ site.data.keys.mf_server }}, choose one of the following topics based on your initial installation method:
 
-* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Applying a fix pack by using the Ant files](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Applying a fix pack by using the Ant files](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-ant-files)

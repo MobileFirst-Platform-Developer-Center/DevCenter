@@ -5,11 +5,11 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
 downloads:
-  - name: PreemptiveLogin プロジェクトのダウンロード
+  - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80
-  - name: RememberMe プロジェクトのダウンロード
+  - name: Download RememberMe project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeSwift/tree/release80
-  - name: SecurityCheck Maven プロジェクトのダウンロード
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -21,7 +21,7 @@ downloads:
 
 ## ログイン
 {: #login }
-この例では、`UserLogin` は `username` と `password` という *key:value* を必要とします。オプションで、ブール型の `rememberMe` キーも受け入れます。これは、このユーザーを長期間記憶しておくようにセキュリティー検査に指示するためのものです。サンプル・アプリケーションの場合、この情報はログイン・フォームのチェック・ボックスからブール値を使用して収集されます。
+この例では、`UserLogin` は `username` と `password` という *key:value* を必要とします。 オプションで、ブール型の `rememberMe` キーも受け入れます。これは、このユーザーを長期間記憶しておくようにセキュリティー検査に指示するためのものです。サンプル・アプリケーションの場合、この情報はログイン・フォームのチェック・ボックスからブール値を使用して収集されます。
 
 `credentials` 引数は、`username`、`password`、および `rememberMe` を含んでいる `JSONObject` です。
 
@@ -29,9 +29,9 @@ downloads:
 self.submitChallengeAnswer(credentials);
 ```
 
-チャレンジを何も受け取っていない場合でもユーザーのログインを可能にする必要がある場合があります。例えば、アプリケーションの最初の画面としてログイン画面を表示したり、ログアウト後やログイン失敗後にログイン画面を表示したりできます。このようなシナリオを**プリエンプティブ・ログイン**と呼びます。
+チャレンジを何も受け取っていない場合でもユーザーのログインを可能にする必要がある場合があります。 例えば、アプリケーションの最初の画面としてログイン画面を表示したり、ログアウト後やログイン失敗後にログイン画面を表示したりできます。 このようなシナリオを**プリエンプティブ・ログイン**と呼びます。
 
-応答すべきチャレンジがない場合、`submitChallengeAnswer` API を呼び出すことはできません。そのようなシナリオ用に、{{ site.data.keys.product }} SDK には `login` API が組み込まれています。
+応答すべきチャレンジがない場合、`submitChallengeAnswer` API を呼び出すことはできません。 そのようなシナリオ用に、{{ site.data.keys.product }} SDK には `login` API が組み込まれています。
 
 ```swift
 WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
@@ -46,7 +46,7 @@ WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCreden
 
 資格情報に問題がある場合、セキュリティー検査は**チャレンジ**を返信します。
 
-アプリケーションのニーズに応じて、どのような場合に `submitChallengeAnswer` でなく `login` を使用するかを判断することは開発者の責任です。これを実現する方法の 1 つとして、ブール値のフラグ (例えば、`isChallenged`) を定義し、`handleChallenge` に到達したときにフラグを `true` に設定し、それ以外のケース (失敗、成功、初期設定時など) では `false` に設定する方法があります。
+アプリケーションのニーズに応じて、どのような場合に `submitChallengeAnswer` でなく `login` を使用するかを判断することは開発者の責任です。 これを実現する方法の 1 つとして、ブール値のフラグ (例えば、`isChallenged`) を定義し、`handleChallenge` に到達したときにフラグを `true` に設定し、それ以外のケース (失敗、成功、初期設定時など) では `false` に設定する方法があります。
 
 ユーザーが**「ログイン」**ボタンをクリックした時点で、使用すべき API が動的に選択されます。
 
@@ -82,16 +82,16 @@ WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (toke
 > **注:**
 > `WLAuthorizationManager` `obtainAccessTokenForScope()` API には、独自の完了ハンドラーがあり、関連するチャレンジ・ハンドラーの `handleSuccess` または `handleFailure` **も**呼び出されます。
 
-クライアントが既にログインしているか、*記憶されている* 状態である場合、API は成功をトリガーします。クライアントがログインしていない場合、セキュリティー検査はチャレンジを返信します。
+クライアントが既にログインしているか、*記憶されている* 状態である場合、API は成功をトリガーします。 クライアントがログインしていない場合、セキュリティー検査はチャレンジを返信します。
 
-`obtainAccessTokenForScope` API は、**スコープ**を受け入れます。スコープは、**セキュリティー検査**の名前にできます。
+`obtainAccessTokenForScope` API は、**スコープ**を受け入れます。 スコープは、**セキュリティー検査**の名前にできます。
 
 > **スコープ**について詳しくは、[許可の概念](../../)チュートリアルを参照してください。
 
 ## 認証済みユーザーの取得
 {: #retrieving-the-authenticated-user }
 チャレンジ・ハンドラー `handleSuccess` メソッドは、ディクショナリー `success` をパラメーターとして受け取ります。
-セキュリティー検査が `AuthenticatedUser` を設定した場合、このオブジェクトにはユーザーのプロパティーが含まれます。現行ユーザーを保存するには、`handleSuccess` を使用できます。
+セキュリティー検査が `AuthenticatedUser` を設定した場合、このオブジェクトにはユーザーのプロパティーが含まれます。 現行ユーザーを保存するには、`handleSuccess` を使用できます。
 
 ```swift
 override func handleSuccess(success: [NSObject : AnyObject]!) {
@@ -130,7 +130,7 @@ WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) 
 このチュートリアルには、以下の 2 つのサンプルが関連付けられています。
 
 - **PreemptiveLoginSwift**: プリエンプティブ `login` API を使用して、常にログイン画面から開始するアプリケーション。
-- **RememberMeSwift**: *「ユーザーを記憶する (Remember Me)」*チェック・ボックスがあるアプリケーション。ユーザーは、次にアプリケーションを開くとき、ログイン画面をバイパスできます。
+- **RememberMeSwift**: *「ユーザーを記憶する (Remember Me)」*チェック・ボックスがあるアプリケーション。 ユーザーは、次にアプリケーションを開くとき、ログイン画面をバイパスできます。
 
 両方のサンプルが、**SecurityCheckAdapters** アダプター Maven プロジェクトに含まれる同じ `UserLogin` セキュリティー検査を使用します。
 

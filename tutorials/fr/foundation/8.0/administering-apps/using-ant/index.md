@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administration d'applications via Ant
-breadcrumb_title: Administration à l'aide de Ant
+breadcrumb_title: Administrating using Ant
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

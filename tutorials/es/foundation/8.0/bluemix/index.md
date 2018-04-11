@@ -1,55 +1,60 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on Bluemix
-title: IBM MobileFirst Foundation on Bluemix
+breadcrumb_title: Mobile Foundation on IBM Cloud
+title: IBM Mobile Foundation en IBM Cloud
 relevantTo: [ios,android,windows,javascript]
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/><br/>
+> **Nota:** *IBM Bluemix ahora es IBM Cloud. Para obtener más información, consulte [aquí](https://www.ibm.com/blogs/bluemix/2017/10/bluemix-is-now-ibm-cloud/).*
+
 ## Visión general
 {: #overview }
-{{ site.data.keys.product_full }} se puede alojar en Bluemix. La siguiente es información básica acerca de Bluemix.
+{{ site.data.keys.product_full }} se puede alojar en IBM Cloud. La siguiente es información básica acerca de IBM Cloud.
 
-IBM Bluemix es una implementación de IBM Open Cloud Architecture. Utiliza Cloud Foundry para permitir que los desarrolladores creen, desplieguen y gestionen rápidamente sus aplicaciones en la nube, mientras utilizan un creciente ecosistema de servicios y de infraestructuras de tiempo de ejecución disponibles.
+IBM Cloud es una implementación de IBM Open Cloud Architecture. Utiliza Cloud Foundry para permitir que los desarrolladores creen, desplieguen y gestionen rápidamente sus aplicaciones en la nube, mientras utilizan un creciente ecosistema de servicios y de infraestructuras de tiempo de ejecución disponibles.
 
-> Obtenga más información acerca de la arquitectura de Bluemix y los conceptos de Bluemix [en el sitio web de Bluemix](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview).
+> Obtenga más información sobre la arquitectura de IBM Cloud y los conceptos de IBM Cloud [aquí](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview).
 
 ### ¿Cómo funciona?
 {: #how-does-it-work }
-En breves palabras, hay dos modos de ejecutar {{ site.data.keys.product }} en Bluemix, en función del tipo de titularidad de licencia.
+En breves palabras, hay dos modos de ejecutar {{ site.data.keys.product }} en IBM Cloud, en función del tipo de titularidad de licencia.
 
-* Suscripción de Bluemix o licencia PayGo: Servicio {{ site.data.keys.mf_bm_full }}
-* Licencia On Prem: Utilice scripts proporcionados por IBM para configurar una instancia de {{ site.data.keys.product_full }} en IBM Containers o en el tiempo de ejecución de Liberty for Java.
+> **Nota:** *El servicio IBM Containers está ahora en desuso, por lo tanto, Mobile Foundation no está admitido en IBM Containers. [Más información](https://www.ibm.com/blogs/bluemix/2017/07/deprecation-single-scalable-group-container-service-bluemix-public/).*
 
-Para ejecutar {{ site.data.keys.product }} en Bluemix IBM Containers, varios componentes deben interactuar entre sí: el primer componente es una **imagen** que contiene una **distribución de Linux con una instalación de WebSphere Liberty**, con una instancia de **{{ site.data.keys.mf_server }}** desplegada. A continuación, la imagen se almacena en un **IBM Container** y **Bluemix** gestiona IBM Container. 
+* Suscripción de IBM Cloud o licencia PayGo: Servicio {{ site.data.keys.mf_bm_full }}
+* Licencia On Prem: Utilice scripts proporcionados por IBM para configurar una instancia de {{ site.data.keys.product_full }} en clústeres de Kubernetes o en el tiempo de ejecución de Liberty for Java.
 
-Para ejecutar {{ site.data.keys.product}} en un tiempo de ejecución de Bluemix Liberty for Java, se utilizan los componentes siguientes: una **aplicación Cloudfoundry** que contiene una **instalación de WebSphere Liberty**, con una **instancia de {{ site.data.keys.mf_server }}** desplegada. 
+<!--To run {{ site.data.keys.product }} on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.-->
 
-### Kubernetes Cluster en Bluemix
+Para ejecutar {{ site.data.keys.product}} en un tiempo de ejecución de IBM Cloud Liberty for Java, se utilizan los componentes siguientes: una **aplicación Cloudfoundry** que contiene una **instalación de WebSphere Liberty**, con una **instancia de {{ site.data.keys.mf_server }}** desplegada.
+
+### Kubernetes Cluster en IBM Cloud
 Kubernetes es una herramienta de orquestación para planificar los contenedores de aplicación en un clúster de máquinas de sistemas. Con Kubernetes, los desarrolladores pueden desarrollar rápidamente aplicaciones de alta disponibilidad utilizando la potencia y la flexibilidad de los contenedores.
-Puede utilizar IBM Bluemix Container Service CLI o Kubernetes CLI para crear y gestionar los clústeres de Kubernetes.
+Puede utilizar Kubernetes CLI para crear y gestionar los clústeres de Kubernetes.
 
-[Obtenga más información acerca de Kubernetes Cluster en Bluemix](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
+[Obtenga más información acerca de Kubernetes Cluster en IBM Cloud](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
 
-### IBM Containers
+<!--### IBM Containers
 {: #ibm-containers }
-Los contenedores de IBM Container son objetos que se utilizan para ejecutar imágenes en un entorno de nube alojado. Los contenedores de IBM Container contienen todo lo que necesita una aplicación para ejecutarse.
+IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
 
-La infraestructura de IBM Container incluye un registro privado para sus imágenes, de modo que pueda cargar, almacenar y recuperar las imágenes. Puede hacer que estas imágenes estén disponibles para que las gestione Bluemix. En este caso, se utiliza una interfaz de línea de mandatos para gestionar los contenedores de Bluemix. Puede obtener más información en las siguientes guías de aprendizaje.
+IBM Container infrastructure includes a private registry for your images, so that you can upload, store, and retrieve them. You can make those images available for Bluemix to manage them. A command line interface is then used to manage your containers on Bluemix - More on this in the following tutorials.
 
-[Obtenga más información acerca de IBM Containers](https://www.ng.bluemix.net/docs/containers/container_index.html).
+[Learn more about IBM Containers](https://www.ng.bluemix.net/docs/containers/container_index.html).-->
 
 ### Tiempo de ejecución de Liberty for Java
 {: #liberty-for-java-runtime }
-El tiempo de ejecución de Liberty for Java está basado en el paquete de compilación de liberty-for-java. El paquete de compilación liberty-for-java proporciona un entorno de tiempo de ejecución completo para ejecutar aplicaciones sobre el perfil de WebSphere Liberty. Se utiliza una interfaz de línea de mandatos para gestionar las aplicaciones en Bluemix.
+El tiempo de ejecución de Liberty for Java está basado en el paquete de compilación de liberty-for-java. El paquete de compilación liberty-for-java proporciona un entorno de tiempo de ejecución completo para ejecutar aplicaciones sobre el perfil de WebSphere Liberty. Se utiliza una interfaz de línea de mandatos para gestionar las aplicaciones en IBM Cloud.
 
-[Obtenga más información acerca de Liberty for Java](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html).
+[Obtenga más información acerca de Liberty for Java](https://console.bluemix.net/docs/runtimes/liberty/index.html).
 
 
 ## Guías de aprendizaje que se han de seguir a continuación
 {: #tutorials-to-follow-next }
 
-* Crear una instancia de {{ site.data.keys.mf_bm_short }} en Bluemix [mediante scripts proporcionados por IBM](mobilefirst-server-using-kubernetes/) utilizando Kubernetes Cluster.
-* Crear una instancia de {{ site.data.keys.mf_server }} [utilizando el servicio de {{ site.data.keys.mf_bm }}](using-mobile-foundation/).
-* Crear una instancia de {{ site.data.keys.mf_server }} en Bluemix [mediante scripts proporcionados por IBM](mobilefirst-server-using-scripts/) utilizando IBM Containers.
-* Crear una instancia de {{ site.data.keys.mf_server }} en Bluemix [mediante scripts proporcionados por IBM](mobilefirst-server-using-scripts-lbp/) utilizando Liberty
+* Crear una instancia de {{ site.data.keys.mf_bm_short }} en Kubernetes Cluster en IBM Cloud [mediante scripts proporcionados por IBM](mobilefirst-server-using-kubernetes/).
+* Crear una instancia de {{ site.data.keys.mf_server }} utilizando la guía de aprendizaje [Configuración del servicio de {{ site.data.keys.mf_bm }}](using-mobile-foundation/).
+<!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
+* Crear una instancia de {{ site.data.keys.mf_server }} mediante Liberty for Java en IBM Cloud [mediante scripts proporcionados por IBM](mobilefirst-server-using-scripts-lbp/).

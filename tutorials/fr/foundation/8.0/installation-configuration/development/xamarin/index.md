@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuration de l'environnement de développement Xamarin
-environment breadcrumb_title: Xamarin
+breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 3
 ---
@@ -20,6 +20,6 @@ Vous pouvez télécharger Xamarin Studio depuis la page des [téléchargements d
 
 ![Xamarin Studio](xamarin-studio.png)
 
-## Etapes suivantes
+## Que faire ensuite ?
 {: #whats-next }
 Maintenant que les environnements de développement {{ site.data.keys.product_full }} et Xamarin sont configurés, vous pouvez passer à la catégorie [Démarrage rapide](../../../quick-start/xamarin/) pour commencer à vous servir de {{ site.data.keys.product }} ou [Tous les tutoriels](../../../all-tutorials) pour en savoir plus sur certains aspects du développement {{ site.data.keys.product }}.

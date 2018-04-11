@@ -12,7 +12,7 @@ La infraestructura de seguridad de {{ site.data.keys.product_adj }} se basa en e
 
 El protocolo OAuth separa los roles del servidor de autorización y el servidor de recursos en el que se aloja el recurso.
 
-* El servidor de autorización gestiona la autorización de cliente y la generación del ámbito. 
+* El servidor de autorización gestiona la autorización de cliente y la generación del ámbito.
 * El servidor de recursos utiliza el servidor de autorización para validar la señal de acceso que proporciona el cliente y para asegurar que coincide con el ámbito de protección del recurso solicitado.
 
 La infraestructura de seguridad se genera en torno al servidor de autorización que implementa el protocolo OAuth y expone los puntos finales de OAuth con los que el cliente interactúa para obtener señales de acceso. La infraestructura de seguridad proporciona los bloques de creación para implementar una lógica de autorización personalizada además del servidor de autorización y del protocolo OAuth subyacente.
@@ -20,7 +20,7 @@ De forma predeterminada, {{ site.data.keys.mf_server }} también funciona con el
 
 La aplicación cliente puede utilizar estas señales para acceder a recursos en un **servidor de recursos** que puede ser o {{ site.data.keys.mf_server }} o un servidor externo. El servidor de recursos verifica la validez de la señal para asegurarse de que se le puede otorgar acceso al recurso solicitado al cliente. La separación entre el servidor de recurso y el servidor de autorización le permite imponer seguridad en los recursos que se están ejecutando fuera de {{ site.data.keys.mf_server }}.
 
-Los desarrolladores de aplicación protegen acceso a los recursos definiendo el ámbito necesario para cada recurso protegido e implementando **comprobaciones de seguridad** y **manejadores de desafíos**. La infraestructura de seguridad de lado del servidor y la API del lado del cliente manejan el intercambio del mensaje OAuth y la interacción con el servidor de autorización de manera transparente, y de esta forma permiten a los desarrolladores centrarse solo en la lógica de autorización. 
+Los desarrolladores de aplicación protegen acceso a los recursos definiendo el ámbito necesario para cada recurso protegido e implementando **comprobaciones de seguridad** y **manejadores de desafíos**. La infraestructura de seguridad de lado del servidor y la API del lado del cliente manejan el intercambio del mensaje OAuth y la interacción con el servidor de autorización de manera transparente, y de esta forma permiten a los desarrolladores centrarse solo en la lógica de autorización.
 
 #### Ir a:
 {: #jump-to }
@@ -36,7 +36,7 @@ Los desarrolladores de aplicación protegen acceso a los recursos definiendo el 
 ### Señales de acceso
 {: #access-tokens }
 
-Una señal de acceso de {{ site.data.keys.product_adj }} es una entidad firmada de forma digital que describe los permisos de autorización de un cliente. Después de otorgarse la solicitud de autorización del cliente para un ámbito específico, y de la autenticación del cliente, el punto final de la señal del servidor de autorización envía al cliente una respuesta HTTP que contiene la señal de acceso solicitada. 
+Una señal de acceso de {{ site.data.keys.product_adj }} es una entidad firmada de forma digital que describe los permisos de autorización de un cliente. Después de otorgarse la solicitud de autorización del cliente para un ámbito específico, y de la autenticación del cliente, el punto final de la señal del servidor de autorización envía al cliente una respuesta HTTP que contiene la señal de acceso solicitada.
 
 #### Estructura
 {: #structure }
@@ -50,7 +50,7 @@ La señal de acceso de {{ site.data.keys.product_adj }} contiene la información
 #### Vencimiento de la señal
 {: #token-expiration }
 
-La señal de acceso garantizada continua siendo válida hasta que transcurre la hora de caducidad. La hora de caducidad de la señal de acceso se establece en el tiempo más corto de todas las horas de caducidad posibles de las comprobaciones de seguridad en el ámbito. Pero si el período hasta la hora de caducidad más breve es más largo que el período de vencimiento de señal máximo de la aplicación, la hora de caducidad de la señal se establece en el tiempo actual más el período de vencimiento máximo.El período de vencimiento de señal máximo predeterminado (duración de validación) es 3,600 segundos (1 hora), pero puede configurarse estableciendo el valor de la propiedad `maxTokenExpiration`. Consulte Configuración del período de vencimiento de señal de acceso máximo. 
+La señal de acceso garantizada continua siendo válida hasta que transcurre la hora de caducidad. La hora de caducidad de la señal de acceso se establece en el tiempo más corto de todas las horas de caducidad posibles de las comprobaciones de seguridad en el ámbito. Pero si el período hasta la hora de caducidad más breve es más largo que el período de vencimiento de señal máximo de la aplicación, la hora de caducidad de la señal se establece en el tiempo actual más el período de vencimiento máximo. El período de vencimiento de señal máximo predeterminado (duración de validación) es 3,600 segundos (1 hora), pero puede configurarse estableciendo el valor de la propiedad `maxTokenExpiration`. Consulte Configuración del período de vencimiento de señal de acceso máximo.
 
 <div class="panel-group accordion" id="configuration-explanation" role="tablist">
     <div class="panel panel-default">
@@ -123,13 +123,13 @@ Pragma: no-cache
 <ul>
     <li><b>token_type</b>: el tipo de señal siempre es <i>"Bearer"</i>, de a cuerdo con la especificación <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage</a>.</li>
     <li><b>expires_in</b>: la hora de caducidad de la señal de acceso en segundos.</li>
-    <li><b>access_token</b>: la señal de acceso generada (las señales de acceso reales son más largas que las que se muestran en el ejemplo). </li>
+    <li><b>access_token</b>: la señal de acceso generada (las señales de acceso reales son más largas que las que se muestran en el ejemplo).</li>
     <li><b>scope</b>: el ámbito solicitado.</li>
 </ul>
 
 <p>La información <b>expires_in</b> y <b>scope</b> también se encuentra en la misma señal (<b>access_token</b>).</p>
 
-<blockquote><b>Nota:</b> La estructura de una respuesta de señal de acceso válida es relevante si utiliza la clase de nivel bajo <code>WLAuthorizationManager</code> y gestiona la interacción OAuth entre el cliente y la autorización y los servidores de recurso usted mismo, o si utiliza un cliente confidencial.Si utiliza la clase de nivel alto <code>WLResourceRequest</code> que encapsula el flujo OAuth para acceder a recursos protegidos, la infraestructura de seguridad maneja el proceso de las respuestas de señal de acceso en su lugar.<a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">Consulte las API de seguridad de cliente</a> y los <a href="confidential-clients">Clientes confidenciales</a>.</blockquote>
+<blockquote><b>Nota:</b> La estructura de una respuesta de señal de acceso válida es relevante si utiliza la clase de nivel bajo <code>WLAuthorizationManager</code> y gestiona la interacción OAuth entre el cliente y la autorización y los servidores de recurso usted mismo, o si utiliza un cliente confidencial. Si utiliza la clase de nivel alto <code>WLResourceRequest</code> que encapsula el flujo OAuth para acceder a recursos protegidos, la infraestructura de seguridad maneja el proceso de las respuestas de señal de acceso en su lugar. <a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">Consulte las API de seguridad de cliente</a> y los <a href="confidential-clients">Clientes confidenciales</a>.</blockquote>
 
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Cerrar sección</b></a>
@@ -141,7 +141,7 @@ Pragma: no-cache
 ### Comprobaciones de seguridad
 {: #security-checks }
 
-Una comprobación de seguridad es una entidad de lado del servidor que implementa la lógica de seguridad para proteger los recursos de aplicación de lado de servidor. Un ejemplo simple de una comprobación de seguridad es una comprobación de seguridad de inicio de sesión de usuario que recibe las credenciales de un usuario y verifica las credenciales en relación con un registro de usuario. Otro ejemplo es la comprobación de seguridad de autenticidad de aplicación de {{ site.data.keys.product_adj }} que valida la autenticidad de la aplicación móvil y la protege frente a los intentos de acceso a los recursos de aplicación.También puede utilizarse la misma comprobación de seguridad para proteger varios recursos.
+Una comprobación de seguridad es una entidad de lado del servidor que implementa la lógica de seguridad para proteger los recursos de aplicación de lado de servidor. Un ejemplo simple de una comprobación de seguridad es una comprobación de seguridad de inicio de sesión de usuario que recibe las credenciales de un usuario y verifica las credenciales en relación con un registro de usuario. Otro ejemplo es la comprobación de seguridad de autenticidad de aplicación de {{ site.data.keys.product_adj }} que valida la autenticidad de la aplicación móvil y la protege frente a los intentos de acceso a los recursos de aplicación. También puede utilizarse la misma comprobación de seguridad para proteger varios recursos.
 
 Una comprobación de seguridad normalmente emite desafíos de seguridad que requieren que el cliente responda de forma específica para pasar la comprobación. Este reconocimiento se produce como parte del flujo de adquisición de señal de acceso de OAuth. El cliente utiliza los **manejadores de desafíos** para manejar los desafíos de las comprobaciones de seguridad.
 
@@ -156,20 +156,19 @@ Están disponibles las siguientes comprobaciones de seguridad predefinidas:
 
 ### Manejadores de desafíos
 {: #challenge-handlers }
-Al intentar acceder a los recursos protegidos, el cliente puede encontrarse con un desafío. Un desafío es una pregunta, una prueba de seguridad o una solicitud del servidor para asegurar que el cliente tiene permiso para acceder al recurso. Más frecuentemente, el desafío es una solicitud de credenciales como, por ejemplo, un nombre de usuario y una contraseña. 
+Al intentar acceder a los recursos protegidos, el cliente puede encontrarse con un desafío. Un desafío es una pregunta, una prueba de seguridad o una solicitud del servidor para asegurar que el cliente tiene permiso para acceder al recurso. Más frecuentemente, el desafío es una solicitud de credenciales como, por ejemplo, un nombre de usuario y una contraseña.
 
 Un manejar de desafíos es una entidad del lado del cliente que implementa la lógica de seguridad del lado del cliente y la interacción de usuario relacionada.
-**Importante**: Una vez recibido el desafío, no puede ignorarse. Debe responder o cancelarlo. Ignorar un desafío puede provocar comportamientos inesperados. 
+**Importante**: Una vez recibido el desafío, no puede ignorarse. Debe responder o cancelarlo. Ignorar un desafío puede provocar comportamientos inesperados.
 
 > Obtenga más información acerca de las comprobaciones de seguridad en la guía de aprendizaje [Creación de una comprobación de seguridad](creating-a-security-check/) y de los manejadores de seguridad en la guía de aprendizaje [Validación de credenciales](credentials-validation).
 
-
-### Ámbitos 
+### Ámbitos
 {: #scopes }
 
 Puede proteger recursos, como los adaptadores, de acceso no autorizado asignando un **ámbito** al recurso.
 
-Un ámbito se define como una cadena de uno o más elementos de ámbito separados por espacios ("scopeElement1 scopeElement2 ..."), o como un valor nulo para aplicar el ámbito predeterminado (`RegisteredClient`). La infraestructura de seguridad de {{ site.data.keys.product_adj }} requiere una señal de acceso para cualquier recurso de adaptador, incluso si el recurso no se ha asignado a un ámbito, a menos que inhabilite la protección del recurso.Consulte [Protección de recursos de adaptador](#protecting-adapter-resources ).
+Un ámbito se define como una cadena de uno o más elementos de ámbito separados por espacios ("scopeElement1 scopeElement2 ..."), o como un valor nulo para aplicar el ámbito predeterminado (`RegisteredClient`). La infraestructura de seguridad de {{ site.data.keys.product_adj }} requiere una señal de acceso para cualquier recurso de adaptador, incluso si el recurso no se ha asignado a un ámbito, a menos que inhabilite la protección del recurso. Consulte [Protección de recursos de adaptador](#protecting-adapter-resources ).
 
 #### Elementos de ámbito
 {: #scope-elements }
@@ -185,7 +184,7 @@ Un elemento de ámbito puede ser cualquiera de los siguientes:
 De forma predeterminada, los **elementos de ámbito** que escribe en el **ámbito** se correlacionan con una **comprobación de seguridad con el mismo nombre**.
 Por ejemplo, si escribe una comprobación de seguridad denominada `PinCodeAttempts`, puede utilizar un elemento de ámbito con el mismo nombre en su ámbito.
 
-La correlación de ámbitos permite correlacionar elementos de ámbitos con comprobaciones de seguridad. Cuando el cliente pide un elemento de ámbito, esta configuración define qué comprobaciones de seguridad deberían aplicarse.Por ejemplo, puede correlacionar el elemento de ámbito `access-restricted` con la comprobación de seguridad `PinCodeAttempts`.
+La correlación de ámbitos permite correlacionar elementos de ámbitos con comprobaciones de seguridad. Cuando el cliente pide un elemento de ámbito, esta configuración define qué comprobaciones de seguridad deberían aplicarse.   Por ejemplo, puede correlacionar el elemento de ámbito `access-restricted` con la comprobación de seguridad `PinCodeAttempts`.
 
 La correlación de ámbitos es útil si desea proteger un recurso de una manera diferente en función de la aplicación a la que intenta acceder.
 También puede correlacionar un ámbito a una lista de comprobaciones de seguridad.
@@ -220,8 +219,6 @@ También puede editar el archivo JSON de configuración de la aplicación de for
 
 > También puede enviar configuraciones actualizadas a servidores remotos. Revise la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
-
-
 ## Protección de recursos
 {: #protecting-resources }
 
@@ -232,7 +229,7 @@ Puede proteger los recursos de varias maneras:
 ### Ámbito de aplicación obligatorio
 {: #mandatory-application-scope }
 
-A nivel de aplicación, puede definir un ámbito que se aplicará a todos los recursos utilizados en la aplicación.La infraestructura de seguridad ejecuta estas comprobaciones(si existen) además de las comprobaciones de seguridad del ámbito de recurso solicitado.
+A nivel de aplicación, puede definir un ámbito que se aplicará a todos los recursos utilizados en la aplicación. La infraestructura de seguridad ejecuta estas comprobaciones(si existen) además de las comprobaciones de seguridad del ámbito de recurso solicitado.
 
 **Nota:**
 * El ámbito de aplicación obligatorio no se aplica al acceder a [un recurso desprotegido](#unprotected-resources).
@@ -240,6 +237,7 @@ A nivel de aplicación, puede definir un ámbito que se aplicará a todos los re
 
 <br/>
 En {{ site.data.keys.mf_console }}, seleccione la aplicación de la sección **Aplicaciones** de la barra lateral de navegación, y luego seleccione el separador **Seguridad**. En **Ámbito de aplicación obligatorio**, seleccione **Añadir a ámbito**.
+
 <img class="gifplayer" alt="Ámbito de aplicación obligatorio" src="mandatory-application-scope.png"/>
 
 También puede editar el archivo JSON de configuración de la aplicación de forma manual con la configuración necesaria y enviar los cambios a {{ site.data.keys.mf_server }}.
@@ -255,17 +253,14 @@ También puede editar el archivo JSON de configuración de la aplicación de for
 
 > También puede enviar configuraciones actualizadas a servidores remotos. Revise la guía de aprendizaje [Utilización de {{ site.data.keys.mf_cli }} para gestionar artefactos de {{ site.data.keys.product_adj }}](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
-
-
 ### Protección de recursos de adaptador
 {: #protecting-adapter-resources }
 
 En el adaptador puede especificar el ámbito de protección para el método Java o un procedimiento de recurso de JavaScript, o para toda una clase de recursos Java, tal y como se indica en las siguientes secciones [Java](#protecting-java-adapter-resources) y [JavaScript](#protecting-javascript-adapter-resources). Un ámbito se define como una cadena de uno o más elementos de ámbito separados por espacios ("scopeElement1 scopeElement2 ..."), o como valor nulo para aplicar el ámbito predeterminado ([Ámbitos](#scopes)).
 
-El ámbito de {{ site.data.keys.product_adj }} predeterminado es `RegisteredClient`, que requiere una señal de acceso para acceder al recurso y verifica que la solicitud de recurso es de una aplicación registrada con {{ site.data.keys.mf_server }}. Esta protección siempre se aplica, a menos que [inhabilite la protección de recurso](#disabling-resource-protection). Por lo tanto, incluso si no establece un ámbito para el recurso, este sigue protegido. 
+El ámbito de {{ site.data.keys.product_adj }} predeterminado es `RegisteredClient`, que requiere una señal de acceso para acceder al recurso y verifica que la solicitud de recurso es de una aplicación registrada con {{ site.data.keys.mf_server }}. Esta protección siempre se aplica, a menos que [inhabilite la protección de recurso](#disabling-resource-protection). Por lo tanto, incluso si no establece un ámbito para el recurso, este sigue protegido.
 
 > <b>Nota:</b> `RegisteredClient` se reserva a la palabra clave de {{ site.data.keys.product_adj }}. No defina elementos de ámbito de persona personalizados o comprobaciones de seguridad con este nombre.
-
 
 #### Protección de recursos de adaptador Java
 {: #protecting-java-adapter-resources }
@@ -379,12 +374,12 @@ El código siguiente inhabilita la protección de recurso para un procedimiento 
 ### Recursos desprotegidos
 {: #unprotected-resources }
 
-Un recurso desprotegido es un recurso que no requiere una señal de acceso. La infraestructura de seguridad de {{ site.data.keys.product_adj }} no gestiona el acceso a recursos desprotegidos y no valida o comprueba la identidad de los clientes que acceden a estos recursos.Por lo tanto, no se da soporte a las funciones como Direct Update, bloqueo del acceso a un dispositivo o la inhabilitación remota de una aplicación en los recursos desprotegidos.
+Un recurso desprotegido es un recurso que no requiere una señal de acceso. La infraestructura de seguridad de {{ site.data.keys.product_adj }} no gestiona el acceso a recursos desprotegidos y no valida o comprueba la identidad de los clientes que acceden a estos recursos. Por lo tanto, no se da soporte a las funciones como Direct Update, bloqueo del acceso a un dispositivo o la inhabilitación remota de una aplicación en los recursos desprotegidos.
 
 ### Protección de recursos externos
 {: #protecting-external-resources }
 
-Para proteger recursos externos, añada un filtro de recursos con un módulo de validación de una señal de acceso a un servidor de recurso externo.El módulo de validación de señal utiliza el punto final de introspección del servidor de autorización de la infraestructura de seguridad para validar el acceso a la señal de acceso de {{ site.data.keys.product_adj }} antes de garantizar al cliente OAuth acceso a los recursos. Puede utilizar la [{{ site.data.keys.product_adj }} API REST para que el {{ site.data.keys.product_adj }} tiempo de ejecución](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) cree su propio módulo de validación de señal de acceso para un servidor externo. De forma alternativa, utilice alguna de las ampliaciones de {{ site.data.keys.product_adj }} para proteger recursos Java externos, tal y como se indica en la guía de aprendizaje [protección de recursos externos](protecting-external-resources).
+Para proteger recursos externos, añada un filtro de recursos con un módulo de validación de una señal de acceso a un servidor de recurso externo. El módulo de validación de señal utiliza el punto final de introspección del servidor de autorización de la infraestructura de seguridad para validar el acceso a la señal de acceso de {{ site.data.keys.product_adj }} antes de garantizar al cliente OAuth acceso a los recursos. Puede utilizar la [{{ site.data.keys.product_adj }} API REST para que el {{ site.data.keys.product_adj }} tiempo de ejecución](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) cree su propio módulo de validación de señal de acceso para un servidor externo. De forma alternativa, utilice alguna de las ampliaciones de {{ site.data.keys.product_adj }} para proteger recursos Java externos, tal y como se indica en la guía de aprendizaje [protección de recursos externos](protecting-external-resources).
 
 ## Flujo de autorización
 {: #authorization-flow }
@@ -399,24 +394,21 @@ El flujo de autorización tiene dos fases:
 
 En esta fase, el cliente se somete a **comprobación de seguridad** para recibir una señal de acceso.
 
-Antes de solicitar una señal de acceso, el cliente se registra con {{ site.data.keys.mf_server }}. Como parte del registro, proporciona una clave pública que se utilizará para autenticar su identidad. Esta fase se produce una vez en el tiempo de vida de una instancia de aplicación móvil. Si la comprobación de seguridad de la autenticidad de aplicación está habilitada, la autenticidad de la aplicación se valida durante el registro. 
+Antes de solicitar una señal de acceso, el cliente se registra con {{ site.data.keys.mf_server }}. Como parte del registro, proporciona una clave pública que se utilizará para autenticar su identidad. Esta fase se produce una vez en el tiempo de vida de una instancia de aplicación móvil. Si la comprobación de seguridad de la autenticidad de aplicación está habilitada, la autenticidad de la aplicación se valida durante el registro.
 
 ![Obtener señal](auth-flow-1.jpg)
 
 1.  La aplicación cliente envía una solicitud para obtener una señal de acceso para un ámbito especificado.
 
-    > El cliente solicita una señal de acceso con un ámbito determinado. El ámbito solicitado debería correlacionarse con la misma comprobación de seguridad como ámbito del recurso protegido al que el cliente quiere acceder y, de forma opcional, también puede correlacionarse con comprobaciones de seguridad adicionales.Si el cliente no tiene conocimiento previo acerca del ámbito del recurso protegido, primero puede solicitar una señal de acceso con un ámbito vacío e intentar acceder al recurso con la señal obtenida. El cliente recibirá una respuesta con un error 403 (Prohibido) y el ámbito necesario del recurso solicitado.
-
+    > El cliente solicita una señal de acceso con un ámbito determinado. El ámbito solicitado debería correlacionarse con la misma comprobación de seguridad como ámbito del recurso protegido al que el cliente quiere acceder y, de forma opcional, también puede correlacionarse con comprobaciones de seguridad adicionales. Si el cliente no tiene conocimiento previo acerca del ámbito del recurso protegido, primero puede solicitar una señal de acceso con un ámbito vacío e intentar acceder al recurso con la señal obtenida. El cliente recibirá una respuesta con un error 403 (Prohibido) y el ámbito necesario del recurso solicitado.
 
 2.  La aplicación de cliente se somete a comprobaciones de seguridad en función del ámbito solicitado.
 
     > {{ site.data.keys.mf_server }} ejecuta comprobaciones de seguridad a las que se correlaciona el ámbito de la solicitud del cliente. El servidor de autorización otorga o rechaza la solicitud del cliente en función de los resultados de estas comprobaciones. Si se define un ámbito de aplicación obligatorio, las comprobaciones de seguridad del ámbito se ejecutan además de las comprobaciones del ámbito solicitado.
 
-
 3.  Cuando el proceso de solicitud finaliza correctamente, la aplicación cliente reenvía la solicitud al servidor de autorización.
 
     > Si la autorización se realiza correctamente, el cliente se redirige al punto final de la señal del servidor de autorización, en el que se autentica utilizando la clave pública proporcionada como parte del registro del cliente. Si la autenticación es correcta, el servidor de autorización emite al cliente una señal de acceso firmada digitalmente que encapsula el ID del cliente, el ámbito solicitado y la hora de caducidad de la señal.
-
 
 4.  La aplicación de cliente recibe la señal de acceso.
 

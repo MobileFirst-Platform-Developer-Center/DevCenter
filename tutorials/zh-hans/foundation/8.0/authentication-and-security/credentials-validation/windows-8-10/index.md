@@ -5,11 +5,11 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: 下载 Win8 项目
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: 下载 Win10 项目
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: 下载 SecurityCheck Maven 项目
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

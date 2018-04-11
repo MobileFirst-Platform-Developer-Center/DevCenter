@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Principais recursos do produto
+title: Recursos principais do produto
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 Com o {{ site.data.keys.product_full }}, é possível usar recursos, como desenvolvimento, teste, conexões de backend, notificações push, modo offline, atualização, segurança, análise de dados, monitoramento e publicação de aplicativo.
 

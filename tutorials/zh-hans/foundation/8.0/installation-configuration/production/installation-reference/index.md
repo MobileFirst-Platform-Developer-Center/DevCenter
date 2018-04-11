@@ -8,7 +8,7 @@ weight: 9
 {: #overview }
 有关用于安装 {{ site.data.keys.mf_server_full }}、{{ site.data.keys.mf_app_center_full }} 和 {{ site.data.keys.mf_analytics_full }} 的 Ant 任务和配置样本文件的参考信息。
 
-#### 跳转至
+#### 跳至：
 {: #jump-to }
 * [Ant configuredatabase 任务参考](#ant-configuredatabase-task-reference)
 * [用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)

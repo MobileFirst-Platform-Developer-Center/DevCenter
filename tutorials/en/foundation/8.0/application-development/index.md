@@ -104,7 +104,7 @@ You need to use {{ site.data.keys.mf_server }} throughout your app's lifecycle f
 
 > A preconfigured server is available for you to use when you develop your app. For information about the {{ site.data.keys.mf_server }} to use when you develop your app, see [Setting up the {{ site.data.keys.product_adj }} Development Environment](../installation-configuration/development).
 
-{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/topologies).
+{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/prod-env/topologies).
 
 ### {{ site.data.keys.product_adj }} and the {{ site.data.keys.mf_server }} administration service
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
@@ -145,7 +145,7 @@ When you deploy your app to production, you can deploy your app to the following
 
 #### On-premises
 {: #on-premises }
-> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/prod-env/appserver).
 
 #### On the cloud
 {: #on-the-cloud }

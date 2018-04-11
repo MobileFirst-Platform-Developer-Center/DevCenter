@@ -1,19 +1,19 @@
 ---
 layout: tutorial
 title: Registrierung
-breadcrumb_title: Registrierung
+breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: iOS-Swift-Projekt herunterladen
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: Android-Projekt herunterladen
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: Webprojekt herunterladen
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -289,6 +289,8 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 <br/>
 Die Sicherheitsüberprüfung `IsEnrolled` ist **abhängig** von `EnrollmentUserLogin`:
+
+
 
 ```java
 @SecurityCheckReference

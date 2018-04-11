@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 登录 iOS 应用程序
-breadcrumb_title: 登录 iOS
+title: iOS 应用程序中的日志记录
+breadcrumb_title: Logging in iOS
 relevantTo: [ios]
 weight: 2
 ---

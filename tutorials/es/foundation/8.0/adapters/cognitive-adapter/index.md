@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Adaptadores para los servicios cognitivos de Watson
-breadcrumb_title: Adaptadores para los servicios Watson
+title: Adaptadores para servicios cognitivos de Watson
+breadcrumb_title: Adapters for Watson services
 relevantTo: [ios,android,cordova]
 weight: 11
 ---
@@ -9,13 +9,13 @@ weight: 11
 ## Visión general 
 {: #overview }
 
-Watson en Bluemix, proporciona acceso a la más amplia gama de tecnologías cognitivas disponible actualmente para crear aplicaciones inteligentes de forma rápida y segura.
+Watson en IBM Cloud, proporciona acceso a la más amplia gama de tecnologías cognitivas disponible actualmente para crear aplicaciones inteligentes de forma rápida y segura.
 El análisis de imágenes y vídeo para entender sentimientos o la extracción de palabras claves y entidades de texto son algunas de las funcionalidades que ofrecen los servicios Watson.
 
 
 Watson ofrece mucho más en lo que ser refiere a la informática cognitiva.
 Natural Language Understanding, Visual Recognition y Discovery ofrecen un entendimiento de los datos no estructurados ofreciendo la posibilidad de reinventar operaciones y transformando sectores verticales.
-Obtenga [aquí](https://www.ibm.com/watson/developercloud/) más información sobre los servicios cognitivos de Watson en Bluemix.
+Obtenga [aquí](https://www.ibm.com/watson/developercloud/) más información sobre los servicios cognitivos de Watson en IBM Cloud.
 
 
 Los adaptadores de {{ site.data.keys.product }} se utilizan para realizar toda la lógica necesaria del lado del servidor y para transferir y recuperar información desde sistemas de fondo para los servicios de nube y las aplicaciones de cliente.

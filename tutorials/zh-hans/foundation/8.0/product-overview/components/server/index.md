@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst Server
+title: MobileFirst
+Server
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

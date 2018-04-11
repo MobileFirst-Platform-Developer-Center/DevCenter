@@ -1,19 +1,19 @@
 ---
 layout: tutorial
-title: 在 IBM Bluemix Kubernetes Cluster 上设置 MobileFirst Appcenter
-breadcrumb_title: Kubernetes Cluster 上的 Appcenter
+title: 在 IBM Cloud Kubernetes 集群上设置 MobileFirst Application Center
+breadcrumb_title: Application Center on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-遵循以下指示信息在 IBM Bluemix 上配置 {{ site.data.keys.mf_app_center }} 实例。为此您需要完成以下步骤：
+遵循以下指示信息，在 IBM Cloud 上配置 {{ site.data.keys.mf_app_center }} 实例。为此您需要完成以下步骤：
 
-* 创建以下类型的 Kubernetes Cluster：Standard（已付费集群）。
-* 使用所需的工具（Docker、Cloud Foundry CLI (cf)、Bluemix CLI (bx)、Container Service Plugin for Bluemix CLI (bx cs)、Container Registry Plugin for Bluemix CLI (bx cr) 或 Kubernetes CLI (kubectl)）来设置主计算机。
-* 构建 {{ site.data.keys.mf_app_center }} Docker 映像并将其推送到 Bluemix 存储库。
-* 最后，在 Kubernetes Cluster 上运行 Docker 映像。
+* 创建以下类型的 Kubernetes 集群：Standard（已付费集群）。
+* 使用所需的工具（Docker、Cloud Foundry CLI (cf)、IBM Cloud CLI (bx)、Container Service Plugin for IBM Cloud CLI (bx cs)、Container Registry Plugin for IBM Cloud CLI (bx cr) 和 Kubernetes CLI (kubectl)）来设置主计算机。
+* 构建 {{ site.data.keys.mf_app_center }} Docker 映像并将其推送到 IBM Cloud 存储库。
+* 最后，在 Kubernetes 集群上运行 Docker 映像。
 
 >**注：**  
 >
@@ -22,44 +22,44 @@ weight: 1
 
 #### 跳转至：
 {: #jump-to }
-* [在 Bluemix 上注册帐户](#register-an-account-on-bluemix)
+* [在 IBM Cloud 上注册帐户](#register-an-account-on-ibmcloud)
 * [设置主机](#set-up-your-host-machine)
-* [使用 IBM Bluemix Container Service 创建并设置 Kubernetes Cluster](#setup-kube-cluster)
+* [使用 IBM Cloud Container Service 创建并设置 Kubernetes 集群](#setup-kube-cluster)
 * [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the-ibm-mfpf-container-8000-archive)
 * [先决条件](#prerequisites)
-* [使用 IBM Containers 在 Kubernetes Cluster 上设置 {{ site.data.keys.mf_app_center }}](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
-* [从 Bluemix 中除去容器](#removing-the-container-from-bluemix)
-* [从 Bluemix 中除去 Kubernetes 部署](#removing-kube-deployments)
-* [从 Bluemix 中除去数据库服务配置](#removing-the-database-service-configuration-from-bluemix)
+* [使用 IBM Containers 在 Kubernetes 集群上设置 {{ site.data.keys.mf_app_center }}](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
+* [从 IBM Cloud 中除去容器](#removing-the-container-from-ibmcloud)
+* [从 IBM Cloud 中除去 Kubernetes 部署](#removing-kube-deployments)
+* [从 IBM Cloud 中除去数据库服务配置](#removing-the-database-service-configuration-from-ibmcloud)
 
-## 在 Bluemix 上注册帐户
-{: #register-an-account-on-bluemix }
-如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
+## 在 IBM Cloud 上注册帐户
+{: #register-an-account-on-ibmcloud }
+如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
 
-### Bluemix 仪表板
-{: #the-bluemix-dashboard }
-在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。缺省情况下，此工作区名为 *dev*。如果需要，您可以创建多个工作区/空间。
+### IBM Cloud 仪表板
+{: #the-ibmcloud-dashboard }
+在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。缺省情况下，此工作区名为 *dev*。 如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
 要管理容器和映像，您需要安装以下工具：
 * Docker
-* Bluemix CLI (bx)
-* Container Service Plugin for Bluemix CLI (bx cs)
-* Container Registry Plugin for Bluemix CLI (bx cr)
+* IBM Cloud CLI (bx)
+* Container Service Plugin for IBM Cloud CLI (bx cs)
+* Container Registry Plugin for IBM Cloud CLI (bx cr)
 * Kubernetes CLI (kubectl)
 
-请参阅 Bluemix 文档以了解[设置必备 CLI 的步骤](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)。
+请参阅 IBM Cloud 文档以了解[设置必备 CLI 的步骤](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)。
 
-## 使用 IBM Bluemix Container Service 创建并设置 Kubernetes Cluster
+## 使用 IBM Cloud Container Service 创建并设置 Kubernetes 集群
 {: #setup-kube-cluster}
-请参阅 Bluemix 文档以[在 Bluemix 上设置 Kubernetes Cluster](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)。
+请参阅 IBM Cloud 文档以[在 IBM Cloud 上设置 Kubernetes 集群](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)。
 
->**注：**部署 {{ site.data.keys.mf_bm_short }} 需要 Kubernetes Cluster 类型：Standard（已付费集群）。
+>**注：**部署 {{ site.data.keys.mf_bm_short }} 需要 Kubernetes 集群类型：Standard（已付费集群）。
 
 ## 下载 {{ site.data.keys.mf_bm_pkg_name }} 归档
 {: #download-the-ibm-mfpf-container-8000-archive}
-要使用 Bluemix 容器将 {{ site.data.keys.mf_app_center }} 设置为 Kubernetes Cluster，必须首先创建一个映像，稍后将其推送至 Bluemix。<br/>
+要使用 IBM Cloud 容器将 {{ site.data.keys.mf_app_center }} 设置为 Kubernetes 集群，必须首先创建一个映像，稍后将其推送至 IBM Cloud。<br/>
 IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。<br/>
 从 Fix central 下载最新临时修订。 从 iFix **8.0.0.0-IF201708220656** 起，提供 Kubernetes 支持。
 
@@ -77,21 +77,21 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
             <div class="panel-body">
                 <img src="zip.png" alt="显示归档文件的文件系统结构的图像" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes 文件夹</h4>
-                <p>包含使用 IBM Bluemix Container Service 部署到 Kubernetes Cluster 所需的定制文件和脚本。</p>
+                <p>包含使用 IBM Cloud Container Service 部署到 Kubernetes 集群所需的定制文件和脚本。</p>
 
                 <h4>Dockerfile-mfp-appcenter</h4>
 
                 <ul>
                     <li><b>Dockerfile-mfp-appcenter</b>：包含构建 {{ site.data.keys.mf_app_center }} 映像所需的所有命令的文本文档。</li>
-                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。它还包含登录 Bluemix、构建 {{ site.data.keys.mf_app_center }} 映像和在 Bluemix 上推送与运行此映像时所需的脚本。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含登录 IBM Cloud 时所需的脚本，可构建 {{ site.data.keys.mf_app_center }} 映像，以及用于在 IBM Cloud 上推送与运行此映像。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
                     <li><b>usr-mfp-appcenter</b> 文件夹：
                         <ul>
-                            <li><b>bin</b> 文件夹：包含将在容器启动时执行的脚本文件 (mfp-appcenter-init)。您可以添加自己的定制代码以执行这些代码。</li>
+                            <li><b>bin</b> 文件夹：包含将在容器启动时执行的脚本文件 (mfp-appcenter-init)。 您可以添加自己的定制代码以执行这些代码。</li>
                             <li><b>config</b> 文件夹：包含 {{ site.data.keys.mf_app_center }} 所使用的服务器配置片段（密钥库、服务器属性、用户注册表）。</li>
-                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。必须在 ./usr/security 文件夹中引用列出的文件。</li>
+                            <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。 必须在 ./usr/security 文件夹中引用列出的文件。</li>
                             <li><b>ltpa.xml</b> - 定义 LTPA 密钥及其密码的配置文件。</li>
                             <li><b>appcentersqldb.xml</b> - 用于连接到 DB2 或 dashDB 数据库的 JDBC 数据源定义。</li>
-                            <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
+                            <li><b>registry.xml</b> - 用户注册表配置。 basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。 可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                             <li><b>tracespec.xml</b> - 用于启用调试和记录级别的跟踪规范。</li>
                         </ul>
                     </li>
@@ -124,7 +124,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>通过 SSL (HTTPS) 保护的客户机 HTTP 请求所使用的端口。使用 -1 来禁用此端口。</td>
+                                            <td>通过 SSL (HTTPS) 保护的客户机 HTTP 请求所使用的端口。 使用 -1 来禁用此端口。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_ROOT	</td>
@@ -170,7 +170,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 您需要具备 Kubernetes 的应用知识。 请参阅 [Kubernetes 文档](https://kubernetes.io/docs/concepts/)，以了解更多信息。
 
 
-## 使用 IBM Containers 在 Kubernetes Cluster 上设置 {{ site.data.keys.mf_app_center }}
+## 使用 IBM Containers 在 Kubernetes 集群上设置 {{ site.data.keys.mf_app_center }}
 {: #setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers }
 如上文所述，您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：
 
@@ -195,18 +195,18 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_API_URL - </b>要执行部署的地理位置或区域。<br>
+                    <li><b>IBM_CLOUD_API_URL - </b>要执行部署的地理位置或区域。<br>
                       <blockquote>例如：<i>api.ng.bluemix.net</i> 表示美国，<i>api.eu-de.bluemix.net</i> 表示德国，<i>api.au-syd.bluemix.net</i> 表示悉尼</blockquote>
                     </li>
-                    <li><b>BLUEMIX_ACCOUNT_ID - </b>您的帐户标识，该标识为字母数字值，例如，<i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	使用 <code>bx target</code> 命令可获取帐户标识。</li>
-                    <li><b>BLUEMIX_USER - </b>Bluemix 用户名（电子邮件）。</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Bluemix 密码。</li>
-                    <li><b>BLUEMIX_ORG - </b>Bluemix 组织名称。</li>
-                    <li><b>BLUEMIX_SPACE - </b>Bluemix 空间（如上文所述）。</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>您的帐户标识，该标识为字母数字值，例如，<i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	使用 <code>bx target</code> 命令可获取帐户标识。</li>
+                    <li><b>IBM_CLOUD_USER - </b>IBM Cloud 用户名（电子邮件）。</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>IBM Cloud 密码。</li>
+                    <li><b>IBM_CLOUD_ORG - </b>IBM Cloud 组织名称。</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>IBM Cloud 空间（如上文所述）。</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
                 {{ site.data.keys.mf_app_center }} 需要外部 <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on cloud</i></a> 实例。<br/>
-                <blockquote><b>注：</b>您还可以使用自己的 DB2 数据库。 Bluemix Kubenetes Cluster 应配置为连接到此数据库。</blockquote>
+                <blockquote><b>注：</b>您还可以使用自己的 DB2 数据库。 IBM Cloud Kubernetes 集群应配置为连接到此数据库。</blockquote>
                 在设置 DB2 实例后，请提供所需自变量：
                 <ul>
                     <li><b>DB_TYPE</b> - <i>dashDB</i>（使用 DB2 on Cloud 时）或 <i>DB2</i>（使用自己的 DB2 数据库时）。</li>
@@ -222,7 +222,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                       <ul><li><b>APPCENTER_DB_SRV_NAME</b> - 用于存储 appcenter 数据的 dashDB 服务实例名称。</li>
                       </ul>
                     </li>
-                    <li><b>APPCENTER_SCHEMA_NAME</b> - appcenter 数据的模式名称。缺省名称为 <i>APPCNTR</i>。</li>
+                    <li><b>APPCENTER_SCHEMA_NAME</b> - appcenter 数据的模式名称。 缺省名称为 <i>APPCNTR</i>。</li>
                     <blockquote><b>注：</b>如果许多用户或多个 {{ site.data.keys.mf_app_center }} 部署共享 DB2 数据库服务实例，请确保提供唯一的模式名称。</blockquote>
                 </ul><br/>
                 <h4>prepareappcenter.properties</h4>
@@ -245,10 +245,10 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <p>以下指示信息演示了如何使用配置文件来运行脚本。如果选择以非交互方式来运行，那么还提供了命令行自变量的列表：</p>
+            <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择以非交互方式来运行，那么还提供了命令行自变量的列表：</p>
 
             <ol>
-                <li><b>initenv.sh - 登录 Bluemix </b><br />
+                <li><b>initenv.sh - 登录 IBM Cloud</b><br />
                     运行 <b>initenv.sh</b> 脚本以创建环境，用于在 IBM Containers 上构建和运行 {{ site.data.keys.mf_app_center }}：
                     <b>交互方式</b>
 {% highlight bash %}
@@ -260,7 +260,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 {% endhighlight %}
                 </li>
                 <li><b>prepareappcenterdbs.sh - 准备 {{ site.data.keys.mf_app_center }} 数据库</b><br />
-                    <b>prepareappcenterdbs.sh</b> 脚本用于通过 DB2 数据库服务配置 {{ site.data.keys.mf_app_center }}。在步骤 1 中登录到的组织和空间内提供了 DB2 服务的服务实例。请运行：
+                    <b>prepareappcenterdbs.sh</b> 脚本用于通过 DB2 数据库服务配置 {{ site.data.keys.mf_app_center }}。 在步骤 1 中登录到的组织和空间内提供了 DB2 服务的服务实例。请运行：
                     <b>交互方式</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
@@ -270,7 +270,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
-                <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
+                <li><b>initenv.sh（可选）- 登录 IBM Cloud</b><br />
                       仅当在除提供 DB2 服务实例的组织和空间以外的其他组织和空间内需要创建容器时，才需要执行此步骤。 如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -278,7 +278,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
                 </li>
                 <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }} 映像</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像并将其推送到 Bluemix 存储库。要查看 Bluemix 存储库中的所有可用映像，请运行：<code>bx cr image-list</code><br/>
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行：<code>bx cr image-list</code><br/>
                     此列表包含映像名称、创建日期和标识。<br/>
                     <b>交互方式</b>
 {% highlight bash %}
@@ -289,7 +289,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
                 </li>
-                <li>使用 Bluemix Container Service 在 Kubernetes Cluster 的 Docker 容器上部署 {{ site.data.keys.mf_app_center }}。
+                <li>使用 IBM Cloud Container Service 在 Kubernetes 集群的 Docker 容器上部署 {{ site.data.keys.mf_app_center }}。
                 <ol>
                   <li>将终端上下文设置为您的集群<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
                   要了解集群名称，请运行以下命令： <br/><code>bx cs clusters</code><br/>
@@ -300,7 +300,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                   <li>要获取<b>入口域</b>，请运行以下命令：<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
                    记下“入口域”。 如果需要配置 TLS，请记下<b>入口密钥</b>。</li>
-                  <li>创建 Kubernetes 部署<br/>编辑 yaml 文件 <b>args/mfp-deployment-appcenter.yaml</b>，并填写详细信息。在执行 <em>kubectl</em> 命令之前，所有变量都必须替换为各自的值。<br/>
+                  <li>创建 Kubernetes 部署<br/>编辑 yaml 文件 <b>args/mfp-deployment-appcenter.yaml</b>，并填写详细信息。 在执行 <em>kubectl</em> 命令之前，所有变量都必须替换为各自的值。<br/>
                   <b>./args/mfp-deployment-appcenter.yaml</b> 包含以下部署：
                   <ul>
                     <li>{{ site.data.keys.mf_app_center }} 的 kubernetes 部署，包含 1 个实例（副本），内存为 1024MB 且具有单核 CPU。</li>
@@ -354,40 +354,40 @@ Before you apply an interim fix, back up your existing configuration files. The 
 -->
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## 从 Bluemix 中除去容器
-{: #removing-the-container-from-bluemix }
-从 Bluemix 中除去容器时，还必须从注册表中除去映像名称。  
-运行以下命令以从 Bluemix 中除去容器：
+## 从 IBM Cloud 中除去容器
+{: #removing-the-container-from-ibmcloud }
+从 IBM Cloud 中除去容器时，还必须从注册表中除去映像名称。  
+运行以下命令以从 IBM Cloud 中除去容器：
 
 1. `cf ic ps`（列举当前正在运行的容器）
 2. `cf ic stop container_id`（停止该容器）
 3. `cf ic rm container_id`（除去该容器）
 
-运行以下 cf ic 命令，从 Bluemix 注册表中除去映像名称：
+运行以下 cf ic 命令，从 IBM Cloud 注册表中除去映像名称：
 
 1. `cf ic images`（列举注册表中的映像）
 2. `cf ic rmi image_id`（从注册表中除去映像）
 
-## 从 Bluemix 中除去 Kubernetes 部署
+## 从 IBM Cloud 中除去 Kubernetes 部署
 {: #removing-kube-deployments}
 
-运行以下命令以从 Bluemix Kubernetes Cluster 中除去已部署的实例：
+运行以下命令以从 IBM Cloud Kubernetes 集群中除去已部署的实例：
 
 `kubectl delete -f mfp-deployment-appcenter.yaml`（除去 yaml 中定义的所有 kubernetes 类型）
 
-运行以下命令以从 Bluemix 注册表中除去映像名称：
+运行以下命令以从 IBM Cloud 注册表中除去映像名称：
 ```bash
 bx cr image-list（列举注册表中的映像）
 bx cr image-rm image-name（从注册表中除去映像）
 ```
 
-## 从 Bluemix 中除去数据库服务配置
-{: #removing-the-database-service-configuration-from-bluemix }
-如果在配置 {{ site.data.keys.mf_app_center }} 映像期间运行了 **prepareappcenterdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_app_center }} 所需的配置和数据库表。此脚本还会针对容器创建数据库模式。
+## 从 IBM Cloud 中除去数据库服务配置
+{: #removing-the-database-service-configuration-from-ibmcloud }
+如果在配置 {{ site.data.keys.mf_app_center }} 映像期间运行了 **prepareappcenterdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_app_center }} 所需的配置和数据库表。 此脚本还会针对容器创建数据库模式。
 
-要从 Bluemix 中除去数据库服务配置，请使用 Bluemix 仪表板执行以下过程。
+要从 IBM Cloud 中除去数据库服务配置，请使用 IBM Cloud 仪表板执行以下过程。
 
-1. 从 Bluemix 仪表板，选择使用的 DB2 on cloud 服务。 选择在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
+1. 从 IBM Cloud 仪表板，选择使用的 DB2 on cloud 服务。选择在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
 2. 启动 DB2 控制台以使用选中的 DB2 服务实例的模式和数据库对象。
-3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。模式名称是在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的名称。
-4. 在仔细检查每个模式名称以及其下的对象后，删除模式。这将从 Bluemix 中除去数据库配置。
+3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的名称。
+4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 IBM Cloud 中除去数据库配置。

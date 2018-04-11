@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 针对 Cordova 应用程序添加定制启动屏幕和图标
-breadcrumb_title: 添加图像和图标
+title: 将定制启动屏幕和图标添加到 Cordova 应用程序
+breadcrumb_title: Adding images and icons
 relevantTo: [cordova]
 weight: 1
 ---

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adición de MobileFirst Foundation SDK a aplicaciones Web
+title: Adición del SDK de MobileFirst Foundation a aplicaciones web
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6

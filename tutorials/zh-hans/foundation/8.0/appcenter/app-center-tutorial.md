@@ -1,8 +1,9 @@
 ---
 layout: tutorial
-title: 通过 IBM Application Center 分发移动应用程序
+title: 使用 IBM Application Center 分发移动应用程序
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->

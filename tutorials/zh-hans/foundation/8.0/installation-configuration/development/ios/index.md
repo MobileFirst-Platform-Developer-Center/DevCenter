@@ -46,7 +46,7 @@ Xcode 是一款具有下列用途的 IDE：
 
 #### iOS 模拟器
 {: #ios-simulator }
-Xcode 提供了一款用于测试应用程序的 iOS 模拟器。有关所有可用选项的详细说明，请参阅 Apple Developers Web 站点中的[“关于模拟器”文档主题](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)。
+Xcode 提供了一款用于测试应用程序的 iOS 模拟器。 有关所有可用选项的详细说明，请参阅 Apple Developers Web 站点中的[“关于模拟器”文档主题](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)。
 
 ## 后续操作
 {: #whats-next }

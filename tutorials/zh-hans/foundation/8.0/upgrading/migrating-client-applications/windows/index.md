@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 迁移现有 Windows 应用程序
+title: 迁移现有的 Windows 应用程序
 breadcrumb_title: Windows
 weight: 4
 ---
@@ -24,7 +24,7 @@ weight: 4
 * 您必须具有现有 IBM MobileFirst Platform Foundation 本机 Windows 应用程序。
 * 您必须具有因特网访问权。
 * 您必须已安装 node.js V4.0.0 或更高版本。
-* 查看并了解迁移过程的限制。 有关更多信息，请参阅[从先前发行版迁移应用程序](../)。
+* 查看并了解迁移过程的限制。 有关更多信息，请参阅[从较早发行版迁移应用程序](../)。
 
 对于使用 IBM MobileFirst Platform Foundation 的先前版本创建的应用程序，在未进行一些更改的情况下在 V8.0 中不受支持。 迁移辅助工具通过扫描现有本机 Windows 应用程序中的源文件，识别 V8.0 中不推荐使用、不再支持或修改的 API，从而简化此过程。
 
@@ -32,7 +32,7 @@ weight: 4
 
 1. 通过使用以下其中一种方法下载迁移辅助工具：
     * 从 [Git 存储库](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli)下载 .tgz 文件。
-    * 从 {{ site.data.keys.mf_console }} 下载{{ site.data.keys.mf_dev_kit }}，其中包含名为 mfpmigrate-cli.tgz 的迁移辅助工具文件。
+    * 从 {{ site.data.keys.mf_console }} 下载 {{ site.data.keys.mf_dev_kit }}，其中包含名为 mfpmigrate-cli.tgz 的迁移辅助工具文件。
 2. 安装迁移辅助工具。
     * 切换到下载工具的目录。
     * 通过输入以下命令，使用 NPM 安装该工具：

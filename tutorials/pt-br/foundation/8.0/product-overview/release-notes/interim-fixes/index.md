@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: O que há de novo em correções temporárias
-breadcrumb_title: iFixes temporárias
+title: O que há de novo nas correções temporárias
+breadcrumb_title: Interim iFixes
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
