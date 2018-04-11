@@ -10,6 +10,6 @@ Vous trouverez ici les réponses aux questions fréquemment posées sur les prob
 
 #### Accédez à
 {: #jump-to }
-* [Notifications push]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
-* [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
-* [Analytics]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [Notifications push]({{ site.baseurl }}/tutorials/fr/foundation/8.0/troubleshooting/notifications)
+* [JSONStore]({{ site.baseurl }}/tutorials/fr/foundation/8.0/troubleshooting/jsonstore)
+* [Analytics]({{ site.baseurl }}/tutorials/fr/foundation/8.0/troubleshooting/analytics)
