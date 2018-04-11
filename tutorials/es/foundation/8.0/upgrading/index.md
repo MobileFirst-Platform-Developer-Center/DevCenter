@@ -137,5 +137,5 @@ Find out how to use the Server Configuration Tool to upgrade {{ site.data.keys.m
 
 To apply an interim fix or fix pack on {{ site.data.keys.mf_server }}, choose one of the following topics based on your initial installation method:
 
-* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Applying a fix pack by using the Ant files](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Applying a fix pack by using the Ant files](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
