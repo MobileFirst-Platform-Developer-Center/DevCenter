@@ -1,6 +1,6 @@
 ---
-title: MobileFirstPlatform cordova plugin compatibility issues and resolutions with third-party plugins
-date: 2018-04-12
+title: MobileFirstPlatform cordova plugin compatibility issues with third-party plugins and their resolutions
+date: 2018-04-09
 version:
 - 8.0
 tags:
