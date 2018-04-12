@@ -168,9 +168,9 @@ EXAMPLES
 "
 
 	# TSC IDs
-	local -a dc_tsc_ids=( BPO CHS FRE GER JPN KOR RUS SPA )
+	local -a dc_tsc_ids=( BPO CHS FRE GER ITA JPN KOR RUS SPA )
 	# GitHub TSC local directory names (= locale IDs in all lower case)
-	local -a dc_tsc_dir_names=( pt-br zh-hans fr de ja ko ru es )
+	local -a dc_tsc_dir_names=( pt-br zh-hans fr de it ja ko ru es )
 	# TSCs counter
 	local dc_tscs_ctr=${#dc_tsc_ids[@]}
 
@@ -330,7 +330,7 @@ EXAMPLES
 
 			# Update root locale-directory non-translation files
 			qecho $quiet "Updating ${tsc_root_dir} root-directory files from ${DC_EN_SRC_ROOT_DIR} ..."
-			cp ${verbose} ${DC_EN_SRC_ROOT_DIR}/${DC_COMMON_ROOT_TRANS_DIR_NO_TRANS_FILES} ${tsc_root_dir}
+			#cp ${verbose} ${DC_EN_SRC_ROOT_DIR}/${DC_COMMON_ROOT_TRANS_DIR_NO_TRANS_FILES} ${tsc_root_dir}
 
 			# Update $DC_COMMON_TRANS_DIR locale-directory non-translation files
 			qecho $quiet "Updating ${tsc_trans_dir} no-translation files from ${DC_EN_SRC_TRANS_DIR} ..."
