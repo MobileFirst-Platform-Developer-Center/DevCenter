@@ -17,7 +17,8 @@ Often the MobileFirstPlatform (MFP) Cordova plugin (*cordova-plugin-mfp*) is use
 But in case of third-party plugins, there is a possibility of incompatibility leading to some MFP functionalities not working, some third-party plugin functionalitites not working or both. Below are a few suggestions that can be followed to resolve such conflicts when MFP Cordova plugin is used in combination with various third-party plugins.
 
 > **Note:** The suggestions below do not guarantee to solve incompatibility between all third-party plugins with MFP. These are only commonly observed patterns in third-party plugins that cause issues when used along with the MFP plugin and their possible resolutions.
-Most of these issues have been observed in iOS platform. Hence the below sugestions are for iOS only. These can be extended to android, if needed.
+>
+Most of these issues have been observed in iOS platform. Hence the suggestions below are for iOS only. These can be extended to Android, if needed.
 
 ## Scenario 1: Third-party plugins replacing *AppDelegate.m*(in iOS) or having their own *AppDelegate.m*
 The MFP cordova plugin replaces the application's AppDelegate.m(this file controls most operations that happen during app launch) to include MFP capabilities to the application. If another plugin also replaces the *AppDelegate.m* or has its own AppDelegate file, then the MFP code gets overwritten. 
