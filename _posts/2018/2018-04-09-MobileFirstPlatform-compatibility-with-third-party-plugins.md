@@ -1,3 +1,16 @@
+---
+title: MobileFirstPlatform cordova plugin compatibility issues and resolutions with third-party plugins
+date: 2018-04-12
+version:
+- 8.0
+tags:
+- MobileFirst_Foundation
+- Cordova
+author:
+  name: Srutha Keerthi
+  
+---
+
 
 ## Overview
 Often the MFP cordova plugin (cordova-plugin-mfp) is used in combination with other native cordova plugins (like cordova-plugin-camera, cordova-plugin-splashscreen etc) or with other third-party cordova plugins. The MFP cordova plugin works seamlessly with native cordova plugins as the MFP plugin is built to ensure that there are no compatibility issues. 
