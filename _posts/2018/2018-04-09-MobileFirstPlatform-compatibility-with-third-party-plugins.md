@@ -18,7 +18,7 @@ But in case of third-party plugins, there is a possibility of incompatibility le
 
 > **Note:** The suggestions below do not guarantee to solve incompatibility between all third-party plugins with MFP. These are only commonly observed patterns in third-party plugins that cause issues when used along with the MFP plugin and their possible resolutions.
 >
-Most of these issues have been observed in iOS platform. Hence the suggestions below are for iOS only. These can be extended to Android, if needed.
+>Most of these issues have been observed in iOS platform. Hence the suggestions below are for iOS only. These can be extended to Android, if needed.
 
 ## Scenario 1: Third-party plugins replacing *AppDelegate.m*(in iOS) or having their own *AppDelegate.m*
 The MFP cordova plugin replaces the application's AppDelegate.m(this file controls most operations that happen during app launch) to include MFP capabilities to the application. If another plugin also replaces the *AppDelegate.m* or has its own AppDelegate file, then the MFP code gets overwritten. 
@@ -28,7 +28,7 @@ The solution to this is to merge the code between both these files accordingly. 
 MFP *AppDelegate.m* contains :
 
 ```
--(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
+(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
 {
     //MFP related code
 }
@@ -37,7 +37,7 @@ MFP *AppDelegate.m* contains :
 Third-party *AppDelegate.m* contains : 
 
 ```
--(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
+(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
 {
  	//Third party plugin related code  
 }
@@ -47,7 +47,7 @@ Third-party *AppDelegate.m* contains :
 The final *AppDelegate.m* must have the below :
 
 ```
--(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
+(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
 {
     //MFP related code
     //Third party plugin related code
@@ -57,7 +57,7 @@ The final *AppDelegate.m* must have the below :
 > **Note:** Based on what the code does, the third-party code may need to execute before MFP code. It is up to the developer to ensure the right sequence of code execution.
 
 
-## Scenario 2: Third-party plugins replacing AppDelegate.m(in ios) or having their own AppDelegate.m but both these AppDelegates cannot be merged
+## Scenario 2: Third-party plugins replacing *AppDelegate.m* (in iOS) or having their own *AppDelegate.m* but both these AppDelegates cannot be merged
 
 
 It might be possible that due to various dependencies, the *AppDelegate.m* files of plugins cannot be merged into a single file.
