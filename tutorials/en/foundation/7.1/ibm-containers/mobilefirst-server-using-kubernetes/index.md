@@ -5,6 +5,7 @@ breadcrumb_title: Foundation on Kubernetes Cluster
 show_disqus: false
 relevantTo: [ios,android,windows,javascript]
 weight: 1
+sitemap: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
