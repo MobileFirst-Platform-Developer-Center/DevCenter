@@ -429,31 +429,31 @@ table th {
 .postTitle {
   margin-bottom: 0;
   color: #00d1b2;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
 }
 .postTitleNew {
   margin-bottom: 0;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
 }
 .postsubTitle {
   margin-bottom: 0;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 95%;
 }
 .postsubTitleicon {
   margin-bottom: 0;
   color: #209cee;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 95%;
 }
 .postsubTitleBlack {
   margin-bottom: 0;
   color: #000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 95%;
 }
 /*.postsubTitle.a {
@@ -463,7 +463,7 @@ table th {
 .postsubTitleNew {
   margin-bottom: 0;
   color: #209cee;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 95%;
   font-weight: bold;
 }
@@ -472,13 +472,13 @@ table th {
   text-decoration: none;
 }*/
 .postDate {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 80%;
   padding: 0;
   margin: 0;
 }
 .postExcerpt {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 85%;
   color: whitesmoke;
 }
@@ -490,7 +490,7 @@ table th {
 }
 .title {
   color: #81daf5;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Lato', sans-serif;
   font-size: 2rem;
   font-weight: 600;
   line-height: 1.125;
