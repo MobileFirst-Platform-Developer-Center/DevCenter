@@ -8970,6 +8970,7 @@ label.panel-block:hover {
 
 .hero.is-dark {
   background-color: #363636;
+  background-image: url(../assets/front-page/carousel-background.png);
   color: whitesmoke;
 }
 
