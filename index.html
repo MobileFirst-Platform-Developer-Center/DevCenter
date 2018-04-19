@@ -6,6 +6,7 @@ indexed: false
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="{{site.baseurl}}/css/bulma-min.css" type="text/css" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <style>
 
     .col-md-4{
@@ -19,15 +20,16 @@ indexed: false
     }
     .postTitle {
        margin-bottom: 0;
-       color: #41D6C3;
-       font-family: HelvNeuRomanForIBM;
+       color: #28536f;
+       font-family: Lato;
        font-weight: bold;
+       font-size: 2rem;
 
     }
     .postsubTitle {
        margin-bottom: 0;
        color: #e5eaee;
-       font-family: HelvNeuRomanForIBM;
+       font-family: Lato;
        font-weight: bold;
 
     }
@@ -37,7 +39,7 @@ indexed: false
        }
 
     .postDate {
-        font-family: HelvNeuRomanForIBM;
+        font-family: Lato;
         font-size: 80%;
         padding: 0;
         margin: 0;
@@ -45,12 +47,12 @@ indexed: false
     }
 
     .postExcerpt {
-      font-family: HelvNeuRomanForIBM;
+      font-family: Lato;
       font-size: 85%;
     }
     .title {
       color: #81daf5;
-    	font-family: HelvNeuRomanForIBM;
+    	font-family: Lato;
       font-size: 2rem;
       font-weight: 600;
       line-height: 1.125;
@@ -59,7 +61,7 @@ indexed: false
     .postTitleNew {
       margin-bottom: 0;
       color: #fff;
-      font-family: HelvNeuRomanForIBM;
+      font-family: Lato;
       font-weight: bold;
     }
     .tile {
@@ -76,8 +78,8 @@ indexed: false
     border-radius: 5px; /* 5px rounded corners */
     padding:10px;
     margin-top: 10px;
-    width: 400px;
-    height: 300px;
+    width: 1150px;
+    height: 265px;
     background-color: : #000066;
     }
 
@@ -197,36 +199,14 @@ indexed: false
 
 
                     <div class="hidden-xs col-md-5 carousel-caption">
-                      {% for post in site.posts limit:1 %}
-                      <div class="card">
-                      <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
 
-                      <div class="card-body">
-                        <div class="card-header">
-                          <h3 class="no-anchor"><p class="card-title">&nbsp;&nbsp;&nbsp;Latest in Mobile Foundation Blog</p></h3>
-                        </div>
-                        <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
-                        <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
-                        <p class="card-title"><span class="postTitle">{{post.title}}</span></p>
-                        <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
-
-                        <p class="card-text">
-                          <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span></h4>
-
-                        </p>
-                      </div>
-                      <br/>
-                      <div class="card-footer">
-                        <a class="custombtn btn-lg btn-primary" href="{{site.baseurl}}{{post.url}}" role="button"><span class="postsubTitleBlack">&nbsp;Read</span></a>
-                      </div>
-                    </div>
-                    {% endfor %}
-
+                      <img src="{{site.baseurl}}/assets/carousel/banner1.png" alt="bluemix" /><br/>
                     </div>
 
               </div>
          </div>
       </div>
+
    </div>
 
    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -239,11 +219,53 @@ indexed: false
    </a>
 </div>
 
-
-
-
-
 <div id="index_sections">
+  <!-- Blog -->
+  <div id="index_benefits" class="container" role="complementary">
+
+     <div class="row hidden-xs hidden-sm hidden-md">
+      <!-- <h1 class="no-anchor">Latest in Mobile Foundation Blog</h1>-->
+      <!--  <div class="col-md-6">
+           <img class="foundation_diamond" src="{{site.baseurl}}/assets/front-page/foundation_logo.svg" alt="Foundation diamond icon"/>
+        </div>-->
+
+        <div class="col-md-6 hidden-sm hidden-xs hidden-md">
+
+           <div class="benefits">
+             {% for post in site.posts limit:1 %}
+             <div class="card">
+             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
+
+             <div class="card-body">
+               <div class="card-header">
+                 <div class="alert alert-info">
+                   <p class="card-title"><span class="postTitle">{{post.title}}</span></p>
+                 </div>
+               </div>
+               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
+               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
+
+               <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
+
+               <p class="card-text">
+                 <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span></h4>
+
+               </p>
+             </div>
+
+             <div class="card-footer">
+               <a class="custombtn btn-lg btn-primary" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>
+             </div>
+           </div>
+           {% endfor %}
+           </div>
+        </div>
+
+
+     </div>
+  </div>
+  <hr class="hidden-sm hidden-xs hidden-md"/>
+
    <!-- Overview -->
    <div id="index_overview" class="container" role="complementary">
       <h1 class="no-anchor">Overview</h1>
