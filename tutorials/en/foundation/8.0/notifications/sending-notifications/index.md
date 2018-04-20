@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
+In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the FCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
 Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
 
 **Prerequisite**: Make sure to read the [Notifications overview](../) tutorial.
@@ -15,7 +15,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 #### Jump to
 {: #jump-to }
 * [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS Notification Service](#sms-notification-service)
@@ -34,11 +34,11 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 Enabling notifications support involves several configuration steps in both {{ site.data.keys.mf_server }} and the client application.  
 Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
 
-On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
+On the server-side, required set-up includes: configuring the needed vendor (APNS, FCM or WNS) and mapping the "push.mobileclient" scope.
 
-### Google Cloud Messaging / Firebase Cloud Messaging
-{: #google-cloud-messaging--firebase-cloud-messaging }
-> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
+### Firebase Cloud Messaging
+{: #firebase-cloud-messaging }
+> **Note:** Google has [deprecated GCM](https://developers.google.com/cloud-messaging/faq) and has integrated Cloud Messaging with Firebase. If you are using a GCM project, ensure that you [migrate the GCM client apps on Android to FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm) .
 
 Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
 To setup FCM:
@@ -396,7 +396,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tag
 
 ### Android
 {: #android }
-* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
+* Notification sound, how long a notification can be stored in the FCM storage, custom payload and more.
 * If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
 
 ### iOS
