@@ -2,7 +2,7 @@
 layout: tutorial
 title: The Application Center console
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -143,7 +143,7 @@ To add an application to make it available for installation on mobile devices:
    ### Windows 10 universal
    {: windows-10-universal}
    The application file name extension is **.appx**.
-   
+
 
 
 4. Click **Next** to access the properties to complete the definition of the application.

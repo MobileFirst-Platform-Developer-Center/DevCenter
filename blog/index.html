@@ -4,9 +4,8 @@ indexed: false
 title: Blog
 ---
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="{{site.baseurl}}/css/bulma-blog.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <style>
 
         .twoColumns {
@@ -25,15 +24,22 @@ title: Blog
 
            .postTitle {
               margin-bottom: 0;
+              color: #ffffff;
+              font-family: 'Lato', sans-serif;
+              font-weight: bold;
+
+           }
+           .postTitle1 {
+              margin-bottom: 0;
               color: #337ab7;
-              font-family: 'Montserrat', sans-serif;
+              font-family: 'Lato', sans-serif;
               font-weight: bold;
 
            }
            .postsubTitle {
               margin-bottom: 0;
               color: #e5eaee;
-              font-family: 'Montserrat', sans-serif;
+              font-family: 'Lato', sans-serif;
               font-weight: bold;
 
            }
@@ -43,7 +49,7 @@ title: Blog
               }
 
            .postDate {
-               font-family: 'Montserrat', sans-serif;
+               font-family: 'Lato', sans-serif;
                font-size: 80%;
                padding: 0;
                margin: 0;
@@ -51,7 +57,7 @@ title: Blog
            }
 
            .postExcerpt {
-             font-family: 'Montserrat', sans-serif;
+             font-family: 'Lato', sans-serif;
              font-size: 85%;
            }
     </style>
@@ -60,13 +66,16 @@ title: Blog
 
     <section class="hero is-dark">
         <div class="hero-body">
-            <p class="title"><span class="postTitle">Mobile Foundation Blog</span>
-            </p>
-            <p class="subtitle"><span class="postsubTitle">
+            <p class="title"><span class="postTitle">MOBILE FOUNDATION BLOG</span></p>
+              <span class="postsubTitle">INSIGHTS FROM MOBILE FOUNDATION DEVELOPERS</span><br/>
+              <span class="contribute-links"><a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">contribution guidelines</a> | <a href="{{ site.baseurl }}/blog/tag/iFix/">iFix announcements</a></span>
+
+
+            <!--<p class="subtitle"><span class="postsubTitle">
                     <span class="icon has-text-info"><i class="fa fa-info-circle"></i></span> Contribute a blog post! See <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md"><span class="postsubTitle">our contribution guidelines</span></a>.</span>
                     <p class="postsubTitle">Read <a href="{{ site.baseurl }}/blog/tag/Announcement/"><span class="content is-link">product announcements</span></a>.</p>
                     <p class="postsubTitle">Read <a href="{{ site.baseurl }}/blog/tag/iFix/"><span class="content is-link">iFix availability announcements</span></a>.</p>
-            </p>
+            </p>-->
             </div>
     </section>
 
@@ -80,7 +89,27 @@ title: Blog
   <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/iFix/">iFix availability announcements</a>.</blockquote>
   -->
   <br/>
-  <h3 class="title is-4 is-info"><span class="postTitle">Posts on product features</span></h3>
+<!--  <div class="jumbotron">
+    {% assign found = false %}
+
+{% for post in paginator.posts %}
+{% if found == false %}
+  <h3 class="title is-4 is-info">{{post.title}}</h3>
+  <p><span class="postDate">{{ post.author.name}}</span></p>
+  <p><span class="postDate">{{post.date | date: '%B %d, %Y'}}</span></p>
+  <br/>
+  <p class="content is-12">
+    <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 50}}</span>
+  </p>
+  {% assign found = true %}
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Read</a></p>
+  {% endif %}
+  {% endfor %}
+
+</div>-->
+  <br/>
+
+  <!--<h3 class="title is-4 is-info"><span class="postTitle1">Posts on product features</span></h3>-->
   <div class="columns is-multiline">
     {% for post in paginator.posts %}
         {% for tag in post.tags %}
@@ -92,21 +121,21 @@ title: Blog
         {% if found_ifix != true %}
         <div class="column is-4">
          <!-- START ARTICLE -->
-         <div class="card article">
-          <!-- <div class="card-image">
-              <figure class="image is-1by1">
-                <img src="{{ site.baseurl }}/assets/labs/comrade-app.png" alt="Placeholder image">
+         <div class="card article" style="height: 24rem;">
+           <!--<div class="card-image img-fluid">
+              <figure class="image">
+                <img src="{{ site.baseurl }}/assets/front-page/carousel-background.png" alt="Placeholder image">
               </figure>
           </div>-->
            <div class="card-content">
              <div class="media">
                <div class="media-content">
-                 <p class="title is-5 article-title"><span class="postTitle">{{post.title}}</span></p>
-                 <p><span class="postDate">{{ post.author.name}}</span></p>
-                 <p><span class="postDate">{{post.date | date: '%B %d, %Y'}}</span></p>
+                 <p class="title is-5 article-title"><span class="postTitle1">{{post.title}}</span></p>
+                 <p><span class="postDate"><span class="glyphicon glyphicon-pencil"></span>&nbsp;{{ post.author.name}} | <span class="glyphicon glyphicon-calendar"></span>&nbsp;{{post.date | date: '%B %d, %Y'}}</span></p>
+                 <!--<p><span class="postDate">{{post.date | date: '%B %d, %Y'}}</span></p>-->
                  <br/>
                  <p class="content is-12">
-                   <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span>
+                   <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 50}}</span>
                  </p>
                  <a class="button is-info is-outlined" href="{{site.baseurl}}{{post.url}}">Read</a>
                </div>
@@ -137,11 +166,12 @@ title: Blog
 
 
 
-<hr>
+
+<hr/>
 <br/>
 
 
-    <h3 class="title is-4"><span class="postTitle">Browse all the blog posts</span></h3>
+    <h3 class="title is-4"><span class="postTitle1">Browse all the blog posts</span></h3>
      <!--<section id="blogPostsList" class="container"> -->
 
         <div class="twoColumns">
