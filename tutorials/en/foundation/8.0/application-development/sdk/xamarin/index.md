@@ -7,20 +7,21 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-{: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are packaged inside .nupkg which can be downloaded through [ Nuget repository ](https://www.nuget.org/) and which you can add to your Xamarin project. However the existing versions of the MobileFirst SDK for Xamarin that are already published on the [Xamarin Component Store](http://components.xamarin.com/) will continue to be available.
+{: #overview 
+The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are packaged inside a NuGet package that can be added to your Xamarin project from [ Nuget Package Manager  ](https://www.nuget.org/packages?q=mobilefirst) .
 
-The pods correspond to core functions and other functions:
+The packages correspond to core functions and other functions:
 
-* **IBM.MobileFirstPlatformFoundation** - Contains MobileFirst client sdk libraries which implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions along with jsonstore framework .
+* **IBM.MobileFirstPlatformFoundation** - Contains MobileFirst client sdk libraries which implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions along with JSONStore framework .
  
 * **IBM.MobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
 
-In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using .nupkg to a new or existing Xamarin Android or iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using NuGet Package Manager to a new or existing Xamarin.Android or Xamarin.iOS application . You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
 
 **Prerequisites:**
 
-- Visual Studio installed on the developer workstation.  
+- Visual Studio 2017 installed on the developer workstation for macOS .
+- Visual Studio 2015 or Visual Studio 2017 community Version installed on the developer workstation for Windows OS . Make sure that you are not using Express edition of Visual Studio .If so it is recommended to update to a Community edition .  
 - A local or remote instance of {{ site.data.keys.mf_server }} is running.
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
 
@@ -45,7 +46,9 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 {: #adding-the-sdk }
 1. The {{ site.data.keys.product_adj }} Native SDK is provided via Nuget Gallery/Repoitory .
 2. To import MobileFirst packages, use the NuGet package manager. NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users. Right click on the Packages directory -> Add packages -> In the search option, search for “IBM MobileFirst Platform”. Choose IBM.MobileFirstPlatformFoundation .
+![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package1.png)
 3. Click Add packages . This action installs the Mobile Foundation Native SDK and its dependencies. 
+![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package2.png)
 
 
 ### Registering the application
