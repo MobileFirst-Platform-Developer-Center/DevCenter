@@ -8,7 +8,7 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview 
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are packaged inside a NuGet package that can be added to your Xamarin project from [ Nuget Package Manager  ](https://www.nuget.org/packages?q=mobilefirst) .
+The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are packaged inside a NuGet package that can be added to your Xamarin project from [Nuget Package Manager](https://www.nuget.org/packages?q=mobilefirst) .
 
 The packages correspond to core functions and other functions:
 
@@ -44,10 +44,10 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 
 ### Adding the SDK
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product_adj }} Native SDK is provided via Nuget Gallery/Repoitory .
-2. To import MobileFirst packages, use the NuGet package manager. NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users. Right click on the Packages directory -> Add packages -> In the search option, search for “IBM MobileFirst Platform”. Choose IBM.MobileFirstPlatformFoundation .
+1. The {{ site.data.keys.product_adj }} Native SDK is provided via Nuget Gallery/Repository .
+2. To import MobileFirst packages, use the NuGet package manager. NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users. Right click on the Packages directory, select Add packages and in the search option, search for *IBM MobileFirst Platform*. Choose **IBM.MobileFirstPlatformFoundation**.
 ![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package1.png)
-3. Click Add packages . This action installs the Mobile Foundation Native SDK and its dependencies. 
+3. Click Add packages. This action installs the Mobile Foundation Native SDK and its dependencies. 
 ![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package2.png)
 
 
