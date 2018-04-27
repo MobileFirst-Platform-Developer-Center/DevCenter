@@ -183,7 +183,7 @@ The entire process is described in the following video:
 
 <div class="sizer">
  <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/0YaabJmZekE"></iframe>
+    <iframe src="https://www.youtube.com/embed/2mu8qPFmPjE"></iframe>
   </div>
 </div>
 <br/>
