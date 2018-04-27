@@ -56,7 +56,7 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 1. Load the {{ site.data.keys.mf_console }}.
 2. Click the New button next to Applications to register a new application and follow the on-screen instructions.
 3. Android and iOS applications have to be registered separately. This ensures both the Android application and iOS application can connect successfully to the server. The registration details for Android and iOS applications can be found in the `AndroidManifest.xml` and `Info.plist` respectively.
-3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the mfpclient.plist and mfpclient.properties file. Follow the onscreen instructions to add the file to your project.
+3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the `mfpclient.plist` and `mfpclient.properties` file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
 {: #completing-the-setup-process }
@@ -94,7 +94,7 @@ using Worklight.Xamarin.Android;
 
 ## Updating the {{ site.data.keys.product_adj }} Native SDK
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Nuget Gallery .
+To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Nuget Gallery.
 
 ## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
 {: #generated-mobilefirst-native-sdk-artifacts }
