@@ -3,7 +3,9 @@ title: 'Database Connectivity issues on IBM MobileFoundation because of a securi
 date: 2017-06-08
 tags:
 - MobileFirst_Foundation
+- Mobile_Foundation_Service
 - Bluemix
+- IBM_Cloud
 - dashDB
 version:
 - 8.0
@@ -17,7 +19,7 @@ The **dashDB for Transactions** service is rolling out a security update, which 
 
 ## Symptoms:
 
-If your **Mobile Foundation**, on Bluemix, setup has been working all along, and if you all of a sudden start seeing the errors as described below, then the possible reason could be that the **dashDB for Transactions** service has been updated with the security update.
+If your **Mobile Foundation**, on IBM Cloud, setup has been working all along, and if you all of a sudden start seeing the errors as described below, then the possible reason could be that the **dashDB for Transactions** service has been updated with the security update.
 
 Look for the following symptoms:   
 
@@ -38,11 +40,11 @@ Look for the following symptoms:
 
 ## Update your Mobile Foundation instances:
 
-### If you are using Mobile Foundation Bluemix service instances  
+### If you are using Mobile Foundation service on IBM Cloud instances  
 
-If you are using [Mobile Foundation service] (https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/), then follow these steps to update the service instance:  
+If you are using [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation), then follow these steps to update the service instance:  
 
-1. Navigate to the Bluemix console on your browser, and login to the Organization and Space where you have created the Mobile Foundation Service.
+1. Navigate to the IBM Cloud console on your browser, and login to the Organization and Space where you have created the Mobile Foundation Service.
 2. Click the **Mobile Foundation service** from the **Services** section, as shown in the image:      
   ![bluemix-homepage]({{site.baseurl}}/assets/blog/2017-06-08-mobile-foundation-dashdb-connectivity-issue/MobileFoundationService.png)  
 3. You should see an *Info Notification* indicating an update. Click on *Recreate* button to get the latest changes on your Mobile Foundation instance.  
@@ -51,7 +53,7 @@ If you are using [Mobile Foundation service] (https://new-console.ng.bluemix.net
 
 ### If you have created Mobile Foundation instance on Bluemix using IBM-provided scripts  
 
-If you have deployed Mobile Foundation on Bluemix using IBM-provided scripts that come with your on-Prem License entitlement, you have to apply the latest Mobile Foundation iFix. You can download the latest  from  [Fix Central](https://www-945.ibm.com/support/fixcentral)  
+If you have deployed Mobile Foundation on IBM Cloud using IBM-provided scripts that come with your on-Prem License entitlement, you have to apply the latest Mobile Foundation iFix. You can download the latest  from  [Fix Central](https://www-945.ibm.com/support/fixcentral)  
 
 >**Note:** Downloading the iFix requires entitlement.  
 

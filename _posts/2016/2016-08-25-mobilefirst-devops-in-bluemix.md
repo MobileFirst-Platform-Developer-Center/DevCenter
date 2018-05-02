@@ -3,6 +3,7 @@ title: Build and Deploy MobileFirst Foundation 8.0 adapters using Bluemix DevOps
 date: 2016-08-25
 tags:
 - MobileFirst_Foundation
+- Mobile_Foundation_Service
 - Bluemix
 - DevOps
 version: 8.0
@@ -18,7 +19,7 @@ In this blog post we will show how we can build and deploy an IBM MobileFirst Fo
 ![Bluemix Delivery Pipeline service]({{site.baseurl}}/assets/blog/2016-08-25-mobilefirst-devops-in-bluemix/devops.png)
 
 ### Prerequisites
-For this exercise you will need a Bluemix account and a MobileFirst Foundation server v8.0 that can be reached from the Internet. You could use the new Bluemix Mobile Foundation Tile to create this server. Regarding the adapter code we will leverage the sample code that is available with the MobileFirst Foundation documentation.
+For this exercise you will need a Bluemix account and a MobileFirst Foundation server v8.0 that can be reached from the Internet. You could use the new Bluemix [Mobile Foundation Tile](https://console.bluemix.net/catalog/services/mobile-foundation) to create this server. Regarding the adapter code we will leverage the sample code that is available with the MobileFirst Foundation documentation.
 
 ### Create your Git repository in Bluemix
 Login into IBM Bluemix DevOps Services: [https://hub.jazz.net](https://hub.jazz.net)
