@@ -1,8 +1,10 @@
 ---
-title: 'Beacon Support in IBM MobileFirst Foundation Bluemix Service'
+title: 'Beacon Support in IBM MobileFirst Foundation service on IBM Cloud '
 date: 2017-05-09
 tags:
 - MobileFirst_Foundation
+- Mobile_Foundation_Service
+- IBM_Cloud
 - Bluemix
 - Beacons
 version:
@@ -31,21 +33,21 @@ In IBM MobileFirst Foundation 8.0, the beacon capability can be made available t
 The following topics are covered for extending beacon support in MFP 8.0
 
 1.	Backend service for beacon data store.
-2.	Create Mobile Foundation service on Bluemix.
+2.	Create [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) instance on IBM Cloud.
 3.	Beacon Adapter
 4.	Connecting adapter to beacon data store.
 5.	Client side API
 
 ### Backend service for beacon data store
 
-Any database can be chosen by the customer for enabling beacon data persistence. This blog demonstrates IBM Cloudant NoSQL service on Bluemix as the beacon database. When the user opens the app, in the background it connects to MobileFirst server and makes the adapter calls to retrieve the beacon data and makes it available in the mobile device.
+Any database can be chosen by the customer for enabling beacon data persistence. This blog demonstrates IBM Cloudant NoSQL service on IBM Cloud as the beacon database. When the user opens the app, in the background it connects to MobileFirst server and makes the adapter calls to retrieve the beacon data and makes it available in the mobile device.
 
-The following section explains how to create the Cloudant service in Bluemix, and the documents for beacons, triggers and associations. 
+The following section explains how to create the Cloudant service in IBM Cloud, and the documents for beacons, triggers and associations.
 The example demonstrates beacon placement inside branches of a bank.
 
- Log-in to [Bluemix](https://console.bluemix.net).
+ Log-in to [IBM Cloud](https://console.bluemix.net).
 
-#### Create Cloudant service on Bluemix
+#### Create Cloudant service on IBM Cloud
 
 Beacon definitions are stored in DB in the following format, of which *_id* field is auto populated by Cloudant service.
 
@@ -194,7 +196,7 @@ A sample new document looks as below which has an *_id* field.
 - Change uuid, major & minor numbers and triggerName to suit your needs
 - Click on **Create document**
 
-### Create IBM Mobile Foundation service on Bluemix
+### Create IBM Mobile Foundation service on IBM Cloud
 
 - Click on **Catalog**
 - Search for and select **Mobile Foundation**
@@ -242,7 +244,7 @@ Note:
 
 To provide the beacon support, the MobileFirst adapter must be created with the basic beacons, triggers and associations data model as POJOs. The adapter connects to the beacon database that has been chosen. The adapter exposes a REST endpoint which retrieves beacon data on request from the client.
 
-IBM MobileFirst Foundation service on Bluemix provides a sample beacon adapter which can be deployed for getting quick beacon support, which uses IBM Cloudant service on Bluemix as the backend for storing beacon data. Download the sample beacon adapter at [Beacon Adapter](https://github.com/mfpdev/mobilefirst-beacons-adapter).
+IBM MobileFirst Foundation service on IBM Cloud provides a sample beacon adapter which can be deployed for getting quick beacon support, which uses IBM Cloudant service on IBM Cloud as the backend for storing beacon data. Download the sample beacon adapter at [Beacon Adapter](https://github.com/mfpdev/mobilefirst-beacons-adapter).
 
 The following section gives a brief on the beacon adapter internals.
 
@@ -330,7 +332,7 @@ $ cd mobilefirst-beacons-adapter
 ### Edit adapter configuration to connect to Cloundant.
 - Open pom.xml and change values for `mfpfUrl`, `mfpUser` and `mfpPassword`.
 - Open `src/main/adapter-resources/adapter.xml` and specify correct values for account, key & password
-- Open Bluemix console and go the list of all services
+- Open IBM Cloud console and go the list of all services
 - Click on *Cloudant NoSQL DB- service*
 - Click on **Service Credentials** tab and click on **View Credentials**
 - Copy value for *username* from above to property name account in adapter.xml under defaultValue

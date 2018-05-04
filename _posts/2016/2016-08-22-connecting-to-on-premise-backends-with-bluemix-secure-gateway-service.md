@@ -4,6 +4,7 @@ date: 2016-08-22
 tags:
 - Bluemix
 - Mobile_Foundation
+- Mobile_Foundation_Service
 - MobileFirst_Foundation
 - Secure_Gateway
 version:
@@ -14,7 +15,7 @@ author:
 ## Introduction
 You can setup MobileFirst Foundation on Bluemix in two ways:
 
-1.	[Using the Mobile Foundation service on Bluemix](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)
+1.	[Using the Mobile Foundation service on Bluemix](https://console.bluemix.net/catalog/services/mobile-foundation)
 2.	[Using IBM-provided scripts downloaded from IBM passport advantage using your on-premise License entitlement](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)
 
 When you build enterprise mobile apps, you often want to integrate your apps with existing systems of record. If you are building your mobile app on Bluemix, using the MobileFirst Foundation Service running on a Liberty for Java runtime, and you want to leverage data stored in your on-premise data center, you can use the Secure Gateway service to establish a secure connection between the two. The Secure Gateway service provides secure connectivity, and establishes a tunnel between your Bluemix organization, and the remote location that you want to connect to.
@@ -82,7 +83,7 @@ For the Secure Gateway service on Bluemix to talk to your on-premise network, a 
 ## Configuring Mobile Foundation service and MobileFirst Adapter
 For this blog post, we will use Mobile Foundation service on Bluemix to configure the MobileFirst server. The [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix helps to provision the IBM MobileFirst server on a Liberty runtime as a Cloudfoundry application. The Mobile foundation service allows you to take any MobileFirst project developed on a local environment and run it on IBM Bluemix.
 
-- Create an instance of the [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/) from the Bluemix console.
+- Create an instance of the [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) from the Bluemix console.
 
 - From the Mobile Foundation service console, [create the MobileFirst](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/) server.
 
