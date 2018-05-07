@@ -13,7 +13,7 @@ additional_authors :
   - Shubha S
 ---
 
->>If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to know about compatibility issues between cordova-windows and the MobileFirst JSONStore plugin. .
+>>If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to know about compatibility issues between cordova-windows and the MobileFirst JSONStore plugin.
 
 Lately, we are seeing a few issues with the more recent versions of the Cordova for Windows platform. This post is to give you a run down of the issues seen with different versions of cordova-windows and how to overcome them. Below is a list of compatibility issues and their solutions. 
 
