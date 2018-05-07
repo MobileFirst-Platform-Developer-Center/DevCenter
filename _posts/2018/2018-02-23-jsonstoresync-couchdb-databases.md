@@ -8,11 +8,11 @@ tags:
 version:
 - 8.0
 author:
-  name: Srutha K Kotla
+  name: Srutha Keerthi K
 additional_authors :
   - Srihari Kulkarni  
 ---
-MobileFirst JSONStore already allows you to write code to be able to pull and push data from/to an external data source, [see here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/#working-with-external-data).
+<a href="https://console.bluemix.net/catalog/services/mobile-foundation">MobileFirst</a> JSONStore already allows you to write code to be able to pull and push data from/to an external data source, [see here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/#working-with-external-data).
 
 Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). 
 
