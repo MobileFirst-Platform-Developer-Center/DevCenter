@@ -11,7 +11,9 @@ version:
 author:
   name: Sandhya Suman
 ---
-Starting with [iFix 8.0.0.0-IF20170125-0919]({{site.baseurl}}/blog/2017/02/01/8-0-ifix-release/) for MobileFirst Foundation(<a href="https://console.bluemix.net/catalog/services/mobile-foundation">MFP</a>) 8.0, we now support Swift 3.0 for iOS application development.
+
+Starting with [iFix 8.0.0.0-IF20170125-0919]({{site.baseurl}}/blog/2017/02/01/8-0-ifix-release/) for MobileFirst Foundation 8.0, we now support Swift 3.0 for iOS application development.
+If you are an on-premise 7.1 or 8.0 customer or Mobile Foundation Service [https://console.bluemix.net/catalog/services/mobile-foundation] customer, then read further to learn about  Mobile Foundation support for Swift 3.0 .
 
 To update the SDK:
 
