@@ -20,7 +20,7 @@ Android Oreo has introduced a variety of new [features and capabilities](http://
 
 ### What does it mean for MobileFirst apps?
 
-If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service(https://console.bluemix.net/catalog/services/mobile-foundation/) customer, then read further to learn about  Mobile Foundation support for Android Oreo .
+If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/) customer, then read further to learn about  Mobile Foundation support for Android Oreo .
 
 In general, both native and hybrid/Cordova apps built with IBM MobileFirst v7.1 and 8.0 work well with Android Oreo.
 
