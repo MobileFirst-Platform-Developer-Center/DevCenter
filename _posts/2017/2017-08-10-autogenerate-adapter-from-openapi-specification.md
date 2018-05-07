@@ -1,5 +1,5 @@
 ---
-title: 'Auto Generate Adapters for Microservices and backend systems from its OpenAPI Specification'
+title: 'Auto Generate Mobile Foundation Adapters for Microservices and backend systems from its OpenAPI Specification'
 date: 2017-08-10
 tags:
 - MobileFirst_Foundation
@@ -14,7 +14,7 @@ additional_authors:
 
 ## Auto-generation of Adapters
 
-As a developer creating applications, you can significantly optimize the time you spend on backend coding by auto-generating adapters for your back-systems and microservices. Use the auto-generation of adapters feature in IBM Mobile Foundation to generate a MobileFirst Platform adapter from the OpenAPI specification of the microservices/back-end systems. By using this feature, you can now focus on the application logic instead of creating the Mobile Foundation adapter, which connects the application to the desired back-end service.
+As a developer creating applications, you can significantly optimize the time you spend on backend coding by auto-generating adapters for your back-systems and microservices. Use the auto-generation of adapters feature in IBM Mobile Foundation 8.0 on-prem to generate a MobileFirst Platform adapter from the OpenAPI specification of the microservices/back-end systems. By using this feature, you can now focus on the application logic instead of creating the Mobile Foundation adapter, which connects the application to the desired back-end service. The adapter generated can be deployed to  [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/) on IBM Cloud to be used in the mobile applications.
 
 ### Overview of Adapters
 
@@ -216,4 +216,6 @@ All the REST endpoints in the OpenAPI specification should have **Consumes** and
 #### Mismatch in specification on request and response contents
 
 Many of the OpenAPI specifications are not usually updated with the changes in the backend REST API. This can result in the adapter call failures due to the content mismatch. Make sure that the request and response contents in the specification matches with what is defined by the backend REST API
+
+
 
