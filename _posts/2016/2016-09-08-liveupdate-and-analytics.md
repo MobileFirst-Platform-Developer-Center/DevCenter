@@ -19,7 +19,8 @@ Let’s say you are a marketing director of a global retailer, and you have an a
 
 You want to test out your idea while the Pokemon trend is still hot – you don’t want to spend ages developing your idea, only to discover that it’s not all that. You want to get early feedback from real users, and you want to release the new feature to a small group at first, so that if the feature is a flop, you don’t risk huge exposure.  Also, you know that there are many possible ways to design the game – what if you could play around with different options till you figure out what design your users will like most?
 
-Enter the new MobileFirst Foundation Live Update feature. With Live Update, you can make different aspects of your app configurable, so that you can turn features on or off, remotely, or dynamically change the values of variables, directly from the MobileFirst Operations Console. And, you can create groups of users (target audiences), so that you can deliver different configurations to different audiences.
+if you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer , then read further to learn about the Live Update feature.
+With Live Update, you can make different aspects of your app configurable, so that you can turn features on or off, remotely, or dynamically change the values of variables, directly from the MobileFirst Operations Console. And, you can create groups of users (target audiences), so that you can deliver different configurations to different audiences.
 
 This makes it possible to release a minimal viable version of your new AR coupon game feature to a small group of users first, and get feedback from them. And you can make parameters of your game configurable, such as the distance that the user needs to be near an AR coupon to be able to collect it, so that you can tweak the game to make it more fun for your users.
 

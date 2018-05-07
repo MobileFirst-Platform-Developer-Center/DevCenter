@@ -13,7 +13,7 @@ author:
 ---
 
 ## Integrating Weather Company Data with Mobile Foundation
-Connecting Bluemix services is a simple way to greatly extend the functions of an application. One way to do this is by using a Mobile Foundation adapter. Adapters can connect many services together, letting the developer focus on security and efficiency by simplifying the way an app accesses the cloud.
+Connecting Bluemix services is a simple way to greatly extend the functions of an application. If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to use Mobile Foundation adapter to integrate and use Weather Company data.  Adapters can connect many services together, letting the developer focus on security and efficiency by simplifying the way an app accesses the cloud.
 
 ## Contents
 1. [Benefits](#benefits)
@@ -101,7 +101,7 @@ public class ZipCode {
     .
     .
     .
-    
+
     /**
      * Cloudant IDs
      */
@@ -173,7 +173,7 @@ Next we need to read them. We are already reading the Cloudant variables in **Ut
 ```java
 public String weatherUsername;
 public String weatherPassword;
-    
+
 protected void init() throws Exception {
 	logger.info("Adapter initialized!");
     weatherUsername = configurationAPI.getPropertyValue("weatherUsername");
@@ -309,7 +309,7 @@ for (int i = 0; i < zipCodes.length; i++) {
 
         latitude = dbZip.getLatitude();
         longitude = dbZip.getLongitude();
-	} 
+	}
 }
 ```
 
@@ -319,20 +319,20 @@ We need to wrap our Cloudant search in a try-catch in case the document is missi
 catch(NoDocumentException e){
     // Get the coordintes from the weather service
     JSONObject latLong = geocode(zipCodes[i]);
-	
+
     // Add the zip code to Cloudant
     ZipCode newZip = new ZipCode();
     newZip.setZip(zipCodes[i]);
     newZip.setLatitude(latLong.get("latitude").toString());
     newZip.setLongitude(latLong.get("longitude").toString());
-	
+
     Response cloudantRes = addZipCode(newZip);
-	
+
     // Check for errors when adding the zip
     if (cloudantRes.getStatus() == 201) {
         latitude = newZip.getLatitude();
         longitude = newZip.getLongitude();
-	
+
     } else {
         // Assume zip is invalid
         continue;

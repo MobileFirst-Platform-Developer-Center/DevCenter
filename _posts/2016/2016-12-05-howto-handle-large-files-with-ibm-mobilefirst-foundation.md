@@ -13,7 +13,7 @@ author:
 ---
 ## Overview
 As a mobile app developer you may be required to transfer very large files from a remote server to your app or from your app to the server.
-Those can be media files such as video or audio files, large documents, or other forms of binary data. 
+Those can be media files such as video or audio files, large documents, or other forms of binary data.
 
 Here are some of the considerations when handling transfers of large files:
 * File transfer should be streamed and sent in chunks. At no time the entire file should be loaded into memory in order to avoid excessive memory consumption and overflow.
@@ -23,6 +23,7 @@ Here are some of the considerations when handling transfers of large files:
 * App could intentionally or unintentionally moved to the background. File transfer could be designed to continue and complete in such case.
 * App could be designed to show progress during file transfer, or allow the user to cancel the operation.
 
+If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to work with large files.
 The IBM MobileFirst Foundation main client API used to communicate with the Foundation server is: `WLResourceRequest`.
 It is designed to provide a simple API encapsulating the handling of MobileFirst security, for transferring small to medium JSON or Text content from or to the IBM MobileFirst Foundation server. It is not designed to comply with the large files transfer considerations discussed above. Behind the scenes the `WLResourceRequest` API request and response content is loaded entirely into memory.  
 
@@ -32,7 +33,6 @@ This sample shows how a mobile application developer can download or upload larg
 The other considerations for transferring of large files are tied to the mobile operating system APIs and guidelines, and to the application specific requirements. They should be handled by the application developer.
 
 The approach shown in this sample is for the client application to obtain an IBM MobileFirst Foundation OAuth token and perform the file transfers using native Http request with the MobileFirst  security authorization header. This approach allows the developer full control over the file transfer process and can be applied to all native client platforms supported by IBM MobileFirst Foundation.
- 
+
 ## GitHub Repository
 [https://github.com/mfpdev/handling-large-files-sample](https://github.com/mfpdev/handling-large-files-sample)
-
