@@ -10,7 +10,9 @@ author:
   name: Srutha Keerthi K
 ---
 
-Often the MobileFirstPlatform (<a href="https://console.bluemix.net/catalog/services/mobile-foundation">MFP</a>) Cordova plugin (*cordova-plugin-mfp*) is used in combination with other native Cordova plugins (like *cordova-plugin-camera*, *cordova-plugin-splashscreen* etc.) or with other third-party Cordova plugins. The MFP Cordova plugin works seamlessly with native Cordova plugins as the MFP plugin is built to ensure that there are no compatibility issues.
+>>If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to know about compatibility issues between cordova-plugin-mfp and other third-party plugins.
+
+Often the MobileFirstPlatform (MFP) Cordova plugin (*cordova-plugin-mfp*) is used in combination with other native Cordova plugins (like *cordova-plugin-camera*, *cordova-plugin-splashscreen* etc.) or with other third-party Cordova plugins. The MFP Cordova plugin works seamlessly with native Cordova plugins as the MFP plugin is built to ensure that there are no compatibility issues. 
 
 But in case of third-party plugins, there is a possibility of incompatibility leading to some MFP functionalities not working, some third-party plugin functionalitites not working or both. Below are a few suggestions that can be followed to resolve such conflicts when MFP Cordova plugin is used in combination with various third-party plugins.
 
