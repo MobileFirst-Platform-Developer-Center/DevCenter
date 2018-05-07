@@ -219,6 +219,7 @@ Many of the OpenAPI specifications are not usually updated with the changes in t
 
 ### Resources 
 [Setting up the MobileFirst development environment](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/)
+
 [IBM Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/)
 
 

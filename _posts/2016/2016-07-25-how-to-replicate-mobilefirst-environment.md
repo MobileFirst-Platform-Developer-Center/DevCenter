@@ -21,7 +21,7 @@ In this article we explain how to replicate an existing Mobile Foundation server
 * [Using direct REST end points](#using-direct-rest-end-points)
 
 ## Using Mobile Foundation Operations Console
-Through Mobile Foundation Opeations Console, only two types of artifacts can be exported. Currently Mobile Foundation Operations Console support, export at application version level and at adapter level.
+Through Mobile Foundation Operations Console, only two types of artifacts can be exported. Currently Mobile Foundation Operations Console support, export at application version level and at adapter level.
 
 ![export-application]({{site.baseurl}}/assets/blog/2016-07-25-how-to-replicate-mobilefirst-environment/export_application.jpg "Export application version")
 <p style="text-align: right;">Export Application Version</p>

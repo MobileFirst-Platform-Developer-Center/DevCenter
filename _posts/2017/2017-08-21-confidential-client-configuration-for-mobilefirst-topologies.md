@@ -82,6 +82,7 @@ For Mobile Foundation on-prem, you can configure Mobile Foundation administratio
 ### Prerequisite 
 
 [IBM Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/)
+
 [IBM Mobile Foundation On-prem](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/)
 
 
