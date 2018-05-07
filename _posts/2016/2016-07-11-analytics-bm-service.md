@@ -12,7 +12,7 @@ author:
 ---
 > **Note:** Updated for changes after Mobile Analytics service went GA.
 
-IBM MobileFirst Foundation 8.0 capabilities are now available on Bluemix as a service called [Mobile Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/). Mobile Foundation service provides you with all the capabilities that you need to build secure mobile apps using any technology of your choice for all the popular mobile OSs.
+IBM MobileFirst Foundation 8.0 capabilities are now available on Bluemix as a service called [Mobile Foundation](https://console.bluemix.net/catalog/services/mobile-foundation). Mobile Foundation service provides you with all the capabilities that you need to build secure mobile apps using any technology of your choice for all the popular mobile OSs.
 
 A new Bluemix service was launched in April, and became GA recently called [Mobile Analytics](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/30/mobile-analytics-for-bluemix-service/). Mobile Analytics provides the developer valuable insights into the runtime of the app. It also provides you with app analytics, such as  how many devices have connected, what is the OS breakdown, crash reports  etc. etc. My personal favourite - client side developer logs. This is how I get to know if the code is falling in catch blocks where "you should never be here!". That too when its running on a user's phone! We know all too well the app performs at its best when running on the developers phone ;-)
 

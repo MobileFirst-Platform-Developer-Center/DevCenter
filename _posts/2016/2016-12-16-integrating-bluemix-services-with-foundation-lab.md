@@ -12,7 +12,7 @@ author:
 ---
 
 ## Integrating Bluemix Services with Foundation Lab
-Connecting Bluemix services with MobileFirst Foundation on Bluemix is now easier than ever.  
+Connecting Bluemix services with MobileFirst Foundation on Bluemix is now easier than ever. If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to use Bluemix services with Mobile Foundation.
 We have created a lab that guides developers through the process of setting up Foundation on Bluemix, instantiating Bluemix Services, and integrating it with an iOS Ionic v1 Application.
 
 ![Phone screens]({{site.baseurl}}/assets/blog/2016-12-16-integrating-bluemix-services-with-foundation-lab/screenstory.png)

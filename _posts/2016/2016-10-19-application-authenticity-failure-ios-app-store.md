@@ -12,7 +12,7 @@ author:
   name: Idan Adar
 ---
 
-This blog post details a possible scenario, whereby the Application Authenticity validation rejects an iOS application that was installed from the Apple App Store, despite the application's authentic identity. This post is applicable to IBM MobileFirst Platform Foundation V7.0, V7.1, and V8.0.
+If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Application Authenticity failures in applications downloaded from the Apple App Store. This blog post details a possible scenario, whereby the Application Authenticity validation rejects an iOS application that was installed from the Apple App Store, despite the application's authentic identity. This post is applicable to IBM MobileFirst Platform Foundation V7.0, V7.1, and V8.0.
 
 Related APARs:
 

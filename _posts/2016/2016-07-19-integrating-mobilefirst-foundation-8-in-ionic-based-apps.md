@@ -13,7 +13,7 @@ author:
 ---
 Ionic SDK is a framework built on AngularJS and Apache Cordova that helps you rapidly build hybrid mobile apps using web technologies such as HTML, CSS, and Javascript.
 
-In this blog post I will walk you through how to create, build, and deploy Ionic v1 apps implemented with MobileFirst Foundation.  
+In this blog post I will walk you through how to create, build, and deploy Ionic v1 apps implemented with MobileFirst Foundation.  If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to integrate Ionic v1 based apps.
 Coming soon: walkthrough for Ionic v2.
 
 ## Prerequisites
@@ -97,13 +97,13 @@ Open the **js/app.js** file.
 
 The module is named **starter**.
 
-```javascript 
+```javascript
 angular.module('starter', ['ionic'])
 ```
 
 The **ng-app** directive in the **index.html** file tells angular which code to run on the page.
 
-```html 
+```html
 <body ng-app="starter">
 ```
 
