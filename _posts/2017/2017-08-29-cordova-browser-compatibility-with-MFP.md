@@ -10,9 +10,9 @@ author:
   name: Srutha Keerthi K
 ---
 
-The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
+The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to know more about using MFP with other cordova platforms <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/cordova/">here</a>.
 
-The usage is very similar to using MobileFirst Platform (<a href = "https://console.bluemix.net/catalog/services/mobile-foundation">MFP</a>) with any of the other platforms. A simple sample to test this new feature is below.
+The usage is very similar to using MobileFirst Platform (MFP) with any of the other platforms. A simple sample to test this new feature is below.
 
 Create a cordova application using the following command:
 ```bash
