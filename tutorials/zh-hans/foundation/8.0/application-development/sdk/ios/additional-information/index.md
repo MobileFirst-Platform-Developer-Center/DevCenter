@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 其他信息
-breadcrumb_title: 其他信息
+breadcrumb_title: additional information
 relevantTo: [ios]
 weight: 1
 ---
@@ -15,11 +15,11 @@ weight: 1
 
 ### 在 iOS 应用程序中实施 TLS 安全连接
 {: #enforcing-tls-secure-connections-in-ios-apps }
-从 iOS 9 开始，必须在所有应用程序中实施传输层安全性 (TLS) 协议 V1.2。出于开发目的，您可以禁用此协议并忽略 iOS 9 需求。
+从 iOS 9 开始，必须在所有应用程序中实施传输层安全性 (TLS) 协议 V1.2。 出于开发目的，您可以禁用此协议并忽略 iOS 9 需求。
 
-Apple 应用程序传输安全性 (ATS) 是 iOS 9 的新功能部件，对应用程序和服务器之间的连接实施最佳实践。缺省情况下，此功能部件实施可提高安全性的一些连接需求。这些包括客户机端 HTTPS 请求以及服务器端证书和连接密码，它们通过使用转发密码遵守传输层安全性 (TLS) V1.2。
+Apple 应用程序传输安全性 (ATS) 是 iOS 9 的新功能部件，对应用程序和服务器之间的连接实施最佳实践。 缺省情况下，此功能部件实施可提高安全性的一些连接需求。 这些包括客户机端 HTTPS 请求以及服务器端证书和连接密码，它们通过使用转发密码遵守传输层安全性 (TLS) V1.2。
 
-出于**开发目的**，您可以通过在应用程序的 info.plist 文件中指定异常来覆盖缺省行为，如“应用程序传输安全性技术说明”中所述。但是，在**全生产**环境中，所有 iOS 应用程序都必须实施 TLS 安全连接以确保正常工作。
+出于**开发目的**，您可以通过在应用程序的 info.plist 文件中指定异常来覆盖缺省行为，如“应用程序传输安全性技术说明”中所述。 但是，在**全生产**环境中，所有 iOS 应用程序都必须实施 TLS 安全连接以确保正常工作。
 
 要启用非 TLS 连接，以下异常必须显示在 **project-name\Resources** 文件夹的 **project-name-info.plist** 文件中：
 
@@ -29,7 +29,7 @@ Apple 应用程序传输安全性 (ATS) 是 iOS 9 的新功能部件，对应用
         <key>yourserver.com</key>
     
             <dict>
-<!--Include to allow subdomains-->
+            <!--Include to allow subdomains-->
             <key>NSIncludesSubdomains</key>
             <true/>
 
@@ -55,18 +55,18 @@ Apple 应用程序传输安全性 (ATS) 是 iOS 9 的新功能部件，对应用
    
    在 `httpEndpoint` 定义内的 **server.xml** 中的服务器上定义 SSL 端口号。
     
-3. 配置为 TLS 1.2 协议启用的服务器。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 以启用 TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
-4. 对密码和证书进行设置，因为它们适用于您的设置。有关更多信息，请参阅[应用程序传输安全性技术说明](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/)、[对 WebSphere Application Server Network Deployment 使用安全套接字层 (SSL) 进行安全通信](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en)以及[对 Liberty Profile 启用 SSL 通信](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)。
+3. 配置为 TLS 1.2 协议启用的服务器。 有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 以启用 TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
+4. 对密码和证书进行设置，因为它们适用于您的设置。 有关更多信息，请参阅[应用程序传输安全性技术说明](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/)、[对 WebSphere Application Server Network Deployment 使用安全套接字层 (SSL) 进行安全通信](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en)以及[对 Liberty Profile 启用 SSL 通信](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)。
 
 ### 为 iOS 启用 OpenSSL
 {: #enabling-openssl-for-ios }
-{{ site.data.keys.product_adj }} iOS SDK 将本机 iOS API 用于密码术。您可以配置 {{ site.data.keys.product_full }}，以在 iOS 应用程序中使用 OpenSSL 密码术库。
+{{ site.data.keys.product_adj }} iOS SDK 将本机 iOS API 用于密码术。 您可以配置 {{ site.data.keys.product_full }}，以在 iOS 应用程序中使用 OpenSSL 密码术库。
 
 以下 API 提供了加密/解密：`WLSecurityUtils.encryptText()` 和 `WLSecurityUtils.decryptWithKey()`。
 
 #### 选项 1：本机加密和解密
 {: #option-1-native-encryption-and-decryption }
-缺省情况下，不使用 OpenSSL 提供本机加密和解密。这相当于以显式方式设置加密或解密行为，如下所示：
+缺省情况下，不使用 OpenSSL 提供本机加密和解密。 这相当于以显式方式设置加密或解密行为，如下所示：
 
 ```xml
 WLSecurityUtils enableOSNativeEncryption:YES
@@ -74,7 +74,7 @@ WLSecurityUtils enableOSNativeEncryption:YES
 
 #### 选项 2：启用 OpenSSL
 {: #option-2-enabling-openssl }
-缺省情况下，OpenSSL 已禁用。要将其启用，请如下所示执行操作：
+缺省情况下，OpenSSL 已禁用。 要将其启用，请如下所示执行操作：
 
 1. 安装 OpenSSL 框架：
     * 使用 CocoaPods：使用 CocoaPods 来安装 `IBMMobileFirstPlatformFoundationOpenSSLUtils` pod。
@@ -98,7 +98,7 @@ WLSecurityUtils enableOSNativeEncryption:YES
 #### 迁移到本机加密
 {: #migrating-to-native-encryption }
 1. 确保选择缺省本机加密/解密选项（请参阅选项 1）。
-2. 迁移高速缓存的数据：如果 {{ site.data.keys.product_full }} 的先前安装使用 OpenSSL 将加密数据保存到设备，那么必须安装 OpenSSL 框架，如选项 2 中所述。应用程序首次尝试解密数据时，它将回退到 OpenSSL，然后使用本机加密对其进行加密。如果未安装 OpenSSL 框架，那么会抛出错误。通过此方式，数据将自动迁移到本机加密，从而允许后续发行版在没有 OpenSSL 框架的情况下工作。
+2. 迁移高速缓存的数据：如果 {{ site.data.keys.product_full }} 的先前安装使用 OpenSSL 将加密数据保存到设备，那么必须安装 OpenSSL 框架，如选项 2 中所述。应用程序首次尝试解密数据时，它将回退到 OpenSSL，然后使用本机加密对其进行加密。 如果未安装 OpenSSL 框架，那么会抛出错误。 通过此方式，数据将自动迁移到本机加密，从而允许后续发行版在没有 OpenSSL 框架的情况下工作。
 
 #### 继续使用 OpenSSL
 {: #continuing-with-openssl }

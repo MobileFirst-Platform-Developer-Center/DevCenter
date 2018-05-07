@@ -254,7 +254,7 @@ Additional client-side API methods:
 
 <ul>
     <li><code>WL.Client.Push.isPushSupported()</code> – returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.</li>
-    <li><code>WL.Client.Push.isSubscribed(alias)</code> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
+    <li><code>WL.Client.Push.isSubscribed(alias)</code> – returns whether the currently logged-in user is subscribed to a specified event source alias. The call does not connect to the server, it returns the local state.</li>
 </ul>
 
 When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:

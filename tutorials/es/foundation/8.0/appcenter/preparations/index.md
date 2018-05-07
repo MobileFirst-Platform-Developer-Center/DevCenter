@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: Preparaciones para utilizar el cliente móvil
-breadcrumb_title: Preparaciones
+title: Preparación para el uso del cliente móvil
+breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-La aplicación Appcenter Installer se utiliza para instalar aplicaciones en dispositivos móviles. Puede generar esta aplicación utilizando los proyectos de Cordova, Visual Studio y MobileFirst Studio que se proporcionan, o utilizando directamente una versión preconfigurada del proyecto de MobileFirst Studio para Android, iOS o Windows 8 Universal. 
+La aplicación Appcenter Installer se utiliza para instalar aplicaciones en dispositivos móviles. Puede generar esta aplicación utilizando los proyectos de Cordova, Visual Studio y MobileFirst Studio que se proporcionan, o utilizando directamente una versión preconfigurada del proyecto de MobileFirst Studio para Android, iOS o Windows 8 Universal.
 
 #### Ir a
 {: #jump-to }
@@ -122,16 +122,16 @@ Debe importar el proyecto **IBMAppCenter** en {{ site.data.keys.mf_studio }} y, 
 
 Cree el proyecto **IBMAppCenter**. El proyecto MobileFirst contiene una única aplicación denominada **AppCenter**. Pulse con el botón derecho del ratón la aplicación y seleccione **Ejecutar como → Crear todos los entornos**.
 
-#### Android
-{: #android }
+#### Importación y creación de un proyecto en Android
+{: #importing-building-projects-android }
 MobileFirst Studio genera un proyecto nativo de Android en **IBMAppCenter/apps/AppCenter/android/native**. Hay un proyecto nativo de las herramientas de desarrollo de Android (ADT) en la carpeta android/native. Puede compilar y firmar este proyecto mediante las herramientas de ADT. Este proyecto requiere que se instale Android SDK nivel 16, por lo que el APK resultante es compatible con todas las versiones de Android 2.3 y posteriores. Si selecciona un nivel superior del Android SDK al crear el proyecto, el APK resultante no será compatible con Android versión 2.3.
 
 Consulte el [Sitio Android para desarrolladores](https://developer.android.com/index.html) para obtener información de Android más específica que afecte a la aplicación del cliente móvil.
 
 Si desea habilitar las notificaciones push para actualizaciones de aplicaciones, debe configurar en primer lugar las propiedades del cliente de Application Center. Consulte [Configuración de notificaciones push para las actualizaciones de aplicaciones para obtener más información](../push-notifications).
 
-#### iOS
-{: #ios }
+#### Importación y creación de un proyecto en iOS
+{: #importing-building-projects-ios }
 MobileFirst Studio genera un proyecto nativo de iOS en **IBMAppCenter/apps/AppCenter/iphone/native**. El archivo **IBMAppCenterAppCenterIphone.xcodeproj** se encuentra en la carpeta iphone/native. Este archivo es el proyecto de Xcode que debe compilar y firmar con Xcode.
 
 Consulte [El sitio de desarrolladores de Apple](https://developer.apple.com/) para obtener más información sobre cómo firmar la aplicación del cliente móvil de iOS. Para firmar una aplicación iOS, debe cambiar el Identificador de paquete de la aplicación a un identificador de paquete que se pueda utilizar con el perfil de suministro que utilice. El valor está definido en la configuración del proyecto de Xcode como **com.your\_internet\_domain\_name.appcenter**, donde **your\_internet\_domain\_name** es el nombre del dominio de Internet.
@@ -165,8 +165,7 @@ Para distribuir el cliente móvil a los usuarios de Application Center, puede ge
 ####  Cliente Microsoft Windows 10 Universal (Nativo) IBM AppCenter
 {: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
 
-El cliente Windows 10 Universal IBM AppCenter nativo sirve para instalar aplicaciones Windows 10 Universal en teléfonos Windows 10.
-Utilice **IBMApplicationCenterWindowsStore** para instalar aplicaciones Windows 10 en el escritorio de Windows. 
+El cliente Windows 10 Universal IBM AppCenter nativo sirve para instalar aplicaciones Windows 10 Universal en teléfonos Windows 10. Utilice **IBMApplicationCenterWindowsStore** para instalar aplicaciones Windows 10 en el escritorio de Windows.
 
 #### Microsoft Windows 10 Universal: Creación del proyecto
 {: #microsoft-windows-10-universal-building-the-project}
@@ -176,11 +175,9 @@ Debe crear el proyecto del cliente en Microsoft Visual Studio 2015 para poder di
 >La compilación del proyecto es un requisito previo antes de poder distribuirlo a sus usuarios.
 
 Siga estos pasos para compilar el proyecto de Windows 10 Universal:
-
 1.  Abra el archivo de proyecto de Visual Studio denominado **IBMAppCenterUWP\IBMAppCenterUWP.csproj** en Visual Studio 2015.
 + Realice una creación completa de la aplicación.
 + Genere el archivo **.appx** siguiente el siguiente paso:
-
   * Pulse con el botón derecho sobre el proyecto y seleccione **Tienda → Crear paquetes de aplicación**.
 
 ## Personalización de características (para expertos): Android, iOS, Windows Phone)
@@ -195,15 +192,15 @@ Este archivo contiene las propiedades que se muestran en la tabla siguiente.
 
 | Propiedad | Descripción |
 |----------|-------------|
-| url | La dirección codificada del servidor de Application Center. Si se establece esta propiedad, no se mostrarán los campos de direcciones de la vista Inicio de sesión.  |
-| defaultPort | Si la propiedad url es null, esta propiedad prerrellena el campo port de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo.  |
-| defaultContext | Si la propiedad url es null, esta propiedad prerrellena el campo context de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo.  |
+| url | La dirección codificada del servidor de Application Center. Si se establece esta propiedad, no se mostrarán los campos de direcciones de la vista Inicio de sesión. |
+| defaultPort | Si la propiedad url es null, esta propiedad prerrellena el campo port de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
+| defaultContext | Si la propiedad url es null, esta propiedad prerrellena el campo context de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
 | ssl | El valor predeterminado del conmutador de SSL de la vista Inicio de sesión. |
 | allowDowngrade | Esta propiedad indica si la instalación de versiones anteriores está autorizada o no; sólo se puede instalar una versión anterior si el sistema operativo y la versión permiten la degradación. |
 | showPreviousVersions | Esta propiedad indica si el usuario del dispositivo puede mostrar los detalles de todas las versiones de las aplicaciones o sólo los detalles de la versión más reciente. |
 | showInternalVersion | Esta propiedad indica si la versión interna se muestra o no. Si el valor es false, la versión interna sólo se mostrará si no se ha establecido ninguna versión comercial. |
-| listItemRenderer | Esta propiedad puede tener uno de estos valores:<br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente. <br/>- **simple**: la aplicación lista sólo el nombre de aplicación.  |
-| listAverageRating | Esta propiedad puede tener uno de estos valores:<br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación. <br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación.  |
+| listItemRenderer | Esta propiedad puede tener uno de estos valores: <br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente.<br/>- **simple**: la aplicación lista sólo el nombre de aplicación. |
+| listAverageRating | Esta propiedad puede tener uno de estos valores: <br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación.<br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación. |
 | requestTimeout | Esta propiedad indica el tiempo de espera en milisegundos para solicitudes en el servidor de Application Center. |
 | gcmProjectId | El ID de proyecto de la API de Google (nombre de proyecto = com.ibm.appcenter), necesario para las notificaciones push de Android; por ejemplo, 123456789012. |
 | allowAppLinkReview | Esta propiedad indica si las opiniones locales de aplicaciones desde almacenes de aplicaciones externos se pueden registrar y examinar en el Application Center. Estas opiniones locales no serán visibles en el almacén de aplicaciones externo. Estas opiniones se almacenarán en el servidor de Application Center. |
@@ -225,7 +222,7 @@ Otros recursos disponibles son iconos de aplicaciones, nombre de aplicación, im
 * **Android:** Edite la propiedad **app_name** en el archivo **res/values/strings.xml** del proyecto de Android Studio.
 * **iOS:** Edite la clave **CFBundleDisplayName** en el archivo **IBMAppCenterAppCenterIphone-Info.plist** del proyecto de Xcode.
 * **Windows Phone:** Edite el atributo **Título** de la entrada de App en el archivo **Properties/WMAppManifest.xml** de Visual Studio.
-* **Windows 10 Universal:** Edite el atributo **Title** de la entrada App en el archivo **IBMAppCenterUWP/Package.appxmanifest** de Visual Studio. 
+* **Windows 10 Universal:** Edite el atributo **Title** de la entrada App en el archivo **IBMAppCenterUWP/Package.appxmanifest** de Visual Studio.
 
 
 #### Imágenes de la pantalla inicial
@@ -250,6 +247,6 @@ Despliegue las distintas versiones de la aplicación cliente en Application Cent
 
 El cliente móvil de Windows 8 no está pensado para desplegarse en Application Center para su posterior distribución. Puede elegir distribuir el cliente móvil de Windows 8 proporcionando a los usuarios el archivo ejecutable .exe del cliente y los archivos .dll de la biblioteca de enlaces dinámicos directamente empaquetados en un archivado, o creando un instalador ejecutable para el cliente móvil de Windows 8.
 
-Las versiones de Android, iOS, Windows Phone y Windows 10 Universal (Phone) del cliente móvil deben estar desplegadas en el Application Center. Para ello, debe cargar los archivos del paquete de aplicaciones de Android (.apk), los archivos de la aplicación de iOS (.ipa), los archivos de la aplicación de Windows Phone (.xap), los archivos de Windows 10 Universal (.appx) o los archivos del archivador del directorio web (.zip) en el Application Center. 
+Las versiones de Android, iOS, Windows Phone y Windows 10 Universal (Phone) del cliente móvil deben estar desplegadas en el Application Center. Para ello, debe cargar los archivos del paquete de aplicaciones de Android (.apk), los archivos de la aplicación de iOS (.ipa), los archivos de la aplicación de Windows Phone (.xap), los archivos de Windows 10 Universal (.appx) o los archivos del archivador del directorio web (.zip) en el Application Center.
 
 Siga los pasos descritos en [Cómo añadir aplicaciones móviles](../appcenter-console/#adding-a-mobile-application) para añadir la aplicación del cliente móvil para Android, iOS, Windows Phone y Windows 10 Universal. Asegúrese de seleccionar la propiedad de aplicación del Instalador para indicar que la aplicación es un instalador. La selección de esta propiedad permite a los usuarios de dispositivos móviles instalar la aplicación del cliente móvil fácilmente a través de Internet. Para instalar el cliente móvil, consulte la tarea relacionada que se corresponde con la versión de la aplicación del cliente móvil determinada por el sistema operativo.

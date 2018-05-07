@@ -1,35 +1,44 @@
 ---
 layout: tutorial
-title: Logging in Android Applications
+title: Registro en aplicaciones Android
 breadcrumb_title: Logging in Android
 relevantTo: [android]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-This tutorial provides the required code snippets in order to add logging capabilities in Android applications.
+Esta guía de aprendizaje proporciona fragmentos de código con el propósito de añadir funcionalidades de creación de registro en aplicaciones Android.
 
-**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
+**Requisito previo:** Asegúrese de leer la [visión general de recopilación de registro del lado del cliente](../).
 
-## Enabling log capture
+## Habilitación de la captura de registro
 {: #enabling-log-capture }
-By default, log capture is enabled. Log capture saves logs to the client and can be enabled or disabled programmatically. Logs are sent to the server with an explicit send call, or with auto log
+De forma predeterminada, la captura de registro está habilitada.
+La captura de registro, que es posible habilitar e inhabilitar mediante programación, guarda registros en el cliente.
+Los registros se envían al servidor con una llamada de envío explícita, o mediante un registro automático.
 
-> **Note:** Enabling log capture at verbose levels can impact the consumption of the device CPU, file system space, and the size of the payload when the client sends logs over the network.
 
-To disable log capturing:
+> **Nota:** La habilitación de la captura del registro en niveles de detalle elevados puede afectar al consumo de la CPU del dispositivo, el espacio del sistema de archivos y el tamaño de la carga útil cuando el cliente envía registros a través de la red.
+
+
+Para inhabilitar la captura de registro:
 
 ```java
 Logger.setCapture(false);
 ```
 
-## Sending captured logs
+## Envío de registros capturados
 {: #sending-captured-logs }
-Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+Envíe los registros a {{ site.data.keys.product_adj }} de acuerdo a la lógica de su aplicación.
+También es posible habilitar el registro automático para enviar registros.
+Si los registros no se envían antes de que alcancen el tamaño máximo, el archivo de registro se depura en favor de registros más recientes.
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data on an interval ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
+
+> **Nota:** Adopte el siguiente patrón al recopilar datos de registro.
+El envío de datos en un intervalo de tiempo garantiza que está viendo sus datos de registro en tiempo casi real en {{ site.data.keys.mf_analytics_console }}.
+
 
 ```java
 Timer timer = new Timer();
@@ -41,45 +50,57 @@ timer.schedule(new TimerTask() {
 }, 0, 60000);
 ```
 
-To ensure that all captured logs are sent, consider one of the following strategies:
+Para asegurarse de que todos los registros capturados se envían, considere un de las siguientes estrategias:
 
-* Call the `send` method at a time interval.
-* Call the `send` method from within the app lifecycle event callbacks.
-* Increase the max file size of the persistent log buffer (in bytes):
+
+* Llamar al método `send` en un intervalo de tiempo. 
+* Llamar al método `send` desde las llamadas de retorno de suceso del ciclo de vida de la aplicación.
+
+* Incremente el tamaño máximo de archivo del almacenamiento intermedio de registro persistente (en bytes):
+
 
 ```java
 Logger.setMaxFileSize(150000);
 ```
 
-## Auto log sending
+## Envío de registro automático
 {: auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client.
+De forma predeterminada, el envío de registro automático está habilitado.
+Cada vez que se envía una solicitud de recurso satisfactoria al servidor, también se envían los registros capturados, con un intervalo mínimo de 60 segundos entre envíos.
+El envío de registro automático se puede habilitar o inhabilitar desde el cliente.
 
-To enable:
+Para habilitar:
 
 ```java
 Logger.setAutoSendLogs(true);
 ```
 
-To disable:
+Para inhabilitar:
 
 ```java
 Logger.setAutoSendLogs(false);
 ```
 
-## Fine-tuning with the Logger API
+## Ajuste fino con la API Logger
 {: #fine-tuning-with-the-logger-api }
-The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+El SDK de cliente de {{ site.data.keys.product_adj }} utiliza internamente la API Logger.
+De forma predeterminada, se capturan las entradas de registro que el SDK realiza.
+Para un ajuste fino en la recopilación del registro, utilice instancias de Logger con nombres de paquete.
+También puede controlar qué nivel de registro se captura mediante las analíticas utilizando filtros desde el lado del servidor.
 
-As an example to capture logs only where the level is ERROR for the `myApp` package name, follow these steps.
 
-1. Use a `logger` instance with the `myApp` package name.
+A modo de ejemplo para capturar solo registros cuando el nivel sea ERROR para el nombre de paquete `myApp`, siga estos pasos.
+
+
+1. Utilice una instancia de `Logger` con el nombre de paquete `myApp`.
+
 
    ```java
    Logger logger = Logger.getInstance("MyApp");
    ```
 
-2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
+2. **Opcional:** Especifique un filtro para restringir la captura de registro y la salida de registro a únicamente el nivel y paquete especificados mediante programación.
+
 
    ```java
    HashMap<String, LEVEL> filters = new HashMap<>();
@@ -87,23 +108,28 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
    Logger.setFilters(filters);
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **Opcional:** Controle los filtros de manera remota recuperando un perfil de configuración de servidor.
 
-## Fetching server configuration profiles
+## Recuperación de perfiles de configuración del servidor
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages.
+Los niveles de registro se pueden establecer por el cliente o recuperando perfiles de configuración del servidor.
+Desde {{ site.data.keys.mf_analytics_console }}, se puede establecer de forma global un nivel de registro (todas las instancias de Logger) o para un paquete o paquetes específicos.
 
-> For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/).
 
-For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+> Para obtener información sobre cómo configurar el filtro desde {{ site.data.keys.mf_analytics_console }}, consulte [Configuración de filtros de registro](../../../analytics/console/log-filters/).
+
+
+Para que el cliente recupere las modificaciones de configuración establecidas en el servidor, se debe llamar al método `updateConfigFromServer` desde un lugar en el código que se ejecute de forma regular como, por ejemplo en las llamadas de retorno del ciclo de vida de la aplicación.
+
 
 ```java
 Logger.updateConfigFromServer();
 ```
 
-## Logging example
+## Ejemplo de creación de registro
 {: #logging-example }
-Outputs to a browser JavaScript console, LogCat, or Xcode console.
+La salida se dirige a la consola JavaScript del navegador, LogCat o la consola Xcode.
+
 
 ```java
 import com.worklight.common.Logger;

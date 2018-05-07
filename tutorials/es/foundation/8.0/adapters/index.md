@@ -1,92 +1,138 @@
 ---
 layout: tutorial
-title: Developing Adapters
+title: Desarrollo de adaptadores
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general 
 {: #overview }
-Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript.  
-Adapters are used perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. 
+Los adaptadores son proyectos Maven que contienen código del lado del servidor implementado en Java o JavaScript.
+  
+Los adaptadores se utilizan para realizar toda la lógica necesaria del lado del servidor y para transferir y recuperar información desde sistemas de fondo para los servicios de nube y las aplicaciones de cliente.
+ 
 
-Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](advanced-adapter-usage-mashup)" possible.
+Cada adaptador tiene su proprio recinto de pruebas aislado, que funciona independientemente de otros recintos ni se ve interrumpido por estos otros recintos.
+Dicho esto, sigue siendo posible que los adaptadores se comuniquen entre sí llamando a API hace posible un "[mashup de adaptadores](advanced-adapter-usage-mashup)".
 
-It is possible to include third-party libraries that are required by the adapter code by defining them as Maven dependencies in the adapter's **pom.xml** file. For more information, see the [Dependencies](creating-adapters/#dependencies) section in the [Creating Java and JavaScript Adapters](creating-adapters) tutorial.
 
-Adapters also support DevOps needs:
+Es posible incluir bibliotecas de terceros que el código del adaptador precise definiéndolas como dependencias Maven en el archivo **pom.xml** del adaptador.
+Para obtener más información, consulte la sección [Dependencias](creating-adapters/#dependencies) en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](creating-adapters).
 
-* You can "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time. This capability lends great flexibility to the server-side development process.
-* An adapter can have user-defined properties that can be configured by administration personnel, without redeploying the adapter. This feature lets you customize adapter behavior for different environments, for example development, testing, and production.
 
-Continue reading for an overview of Java and JavaScript adapters. Then follow the tutorials in the sidebar navigation to learn how to: create, build, update, develop, test and deploy Java and JavaScript adapters, learn how to use IDEs for adapters development, collect server-side logs, as well as more advanced topics such as adapters mashup and Cloudant integration.
+Los adaptadores también dan soporte a las necesidades de DevOps:
+
+
+* Se pueden desplegar adaptadores de "despliegue en caliente", esto es, desplegarlos, retirarlos del despliegue y volverlos a desplegar en tiempo de ejecución.
+Esta capacidad ofrece una gran flexibilidad para procesos de desarrollo del lado del servidor.
+
+* Un adaptador puede tener propiedades definidas por el usuario y se puede configurar mediante personal de administración, sin volver a desplegar el adaptador.
+Esta característica permite personalizar el comportamiento del adaptador para distintos entornos, por ejemplo, de desarrollo, pruebas y producción.
+
+
+Continúe leyendo para obtener una visión general de los adaptadores Java y JavaScript.
+A continuación, siga las guías de aprendizaje en la navegación lateral para aprender a : crear, compilar, actualizar, desarrollar, probar y desplegar adaptadores Java y JavaScript, aprender a utilizar los entornos de desarrollo integrado (IDE) para el desarrollo de adaptadores, recopilar registros del lado del servidor, así como temas más avanzados como, por ejemplo, los relacionados con la integración de Cloudant y mashup de adaptadores.
+
 
 ![adapter_overview](adapter_overview_top.jpg)
 
-### Benefits of using adapters
+### Ventajas del uso de adaptadores
 {: #benefits-of-using-adapters }
 
-#### Universality
+#### Universalidad
 {: #universality }
 
-* Adapters support multiple integration technologies and back-end information systems.
+* Los adaptadores dan soporte a varias tecnologías de integración y a sistemas de información de fondo.
 
-#### Read-only and transactional capabilities
+
+#### Funcionalidades transaccionales y de solo lectura
 {: #read-only-and-transactional-capabilities }
 
-* Adapters support read-only and transactional access modes to back-end systems.
+* Los adaptadores dan soporte a modalidades de acceso transaccional y de solo lectura para los sistemas de fondo.
 
-#### Fast development
+
+#### Desarrollo rápido
 {: #fast-development }
 
-* Adapters use simple XML syntax and are easily configured with JavaScript API or Java API.
+* Los adaptadores utilizan una sintaxis XML simple y se configuran con facilidad con API de Java o API de JavaScript.
 
-#### Security
+
+#### Seguridad
 {: #security }
 
-* Adapters use flexible authentication facilities to create connections with back-end systems.
-* Adapters offer control over the identity of the connected user.
+* Los adaptadores utilizan recursos de autenticación flexibles para crear conexiones con sistemas de fondo.
 
-#### Transparency
+* Los adaptadores proporcionan control sobre la identidad del usuario conectado.
+
+
+#### Transparencia
 {: #transparency }
 
-* Data that is retrieved from back-end applications is exposed in a uniform manner, regardless of the adapter type.  
+* Los datos que se recuperan de las aplicaciones de fondo se exponen de forma uniforme, independientemente del tipo de adaptador.
+  
 
-### Benefits specific to Java adapters
+### Ventajas específicas de los adaptadores Java 
 {: #benefits-specific-to-java-adapters }
 
-* Ability to fully control the URL structure, the content types, the request and response headers, content and encoding
-* Ability to test the adapter by using a 3rd-party tool such as Postman
-* Easy and fast deployment to a running {{ site.data.keys.mf_server }} instance with no compromise on performance and no downtime
-* Security integration with the {{ site.data.keys.product }} security model with no additional customization, by using simple annotations in the source code
+* Posibilidad de un control completo de la estructura de los URL, los tipos de contenido, las cabeceras de solicitud y respuesta, el contenido y la codificación
 
-## JavaScript adapters
+* Posibilidad para probar el adaptador utilizando una herramienta de un tercero como, por ejemplo, Postman
+* Desarrollo fácil y rápido para ejecutar una instancia de {{ site.data.keys.mf_server }} sin comprometer el rendimiento y sin periodos de inactividad
+* Integración de seguridad con el modelo de seguridad de {{ site.data.keys.product }} sin que sea necesaria una personalización adicional, mediante la utilización de anotaciones simples en el código fuente
+
+
+## Adaptadores de JavaScript
 {: #javascript-adapters }
 
-JavaScript adapters provide templates for communicating with HTTP and SQL back-ends. These templates contain a set of services called procedures. Mobile apps can call these procedures by issuing AJAX requests. The procedure retrieves information from the back-end application and return data to the application. Using a REST interface, you can benefit from the [OAuth 2.0-based security framework](../authentication-and-security) provided by {{ site.data.keys.product }}.
+Los adaptadores de JavaScript proporcionan plantillas para la comunicación con sistemas de fondo SQL y HTTP.
+Estas plantillas contienen un conjunto de servicios denominados procedimientos.
+Las aplicaciones pueden llamar a estos procedimientos mediante solicitudes AJAX.
+El procedimiento recupera información de la aplicación de fondo y devuelve los datos a la aplicación.
+Mediante la utilización de una interfaz REST, podrá aprovechar de la [Infraestructura de seguridad basada en OAuth 2.0](../authentication-and-security) que {{ site.data.keys.product }} proporciona.
 
-* If the format of the data is JSON then the {{ site.data.keys.mf_server }} keeps the data intact. Otherwise the {{ site.data.keys.mf_server }} automatically converts it to JSON.  
-* Alternatively you can provide XSL transformation to convert the data to JSON. In this case, the returned content type from the back-end must be XML. Then, you can use an XSLT to filter the data based on requirements.
-* With an HTTP adapter, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
-* With an SQL adapter, you can communicate with any SQL data source. You can use plain SQL queries or stored procedures.
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
-> * Learn more about [JavaScript adapters](javascript-adapters)
+* Si el formato de los datos es JSON, {{ site.data.keys.mf_server }} no altera los datos.
+De lo contrario, {{ site.data.keys.mf_server }} los convierte de forma automática a JSON.
+  
+* Como alternativa puede proporcionar una transformación XSL para convertir los datos a JSON.
+En este caso, el tipo de contenido devuelto del sistema de fondo debe ser XML.
+A continuación, se podrá utilizar XSLT para filtrar los datos en base a sus requisitos.
+
+* Con un adaptador HTTP, puede enviar solicitudes GET o POST HTTP y recuperar datos del cuerpo y la cabecera de la respuesta.
+Los adaptadores HTTP funcionan con servicios basados en SOAP y RESTful, y pueden leer orígenes HTTP estructurados como, por ejemplo, canales de información RSS.
+
+* Con un adaptador SQL, podrá comunicarse con cualquier origen de datos SQL.
+Utilice consultas SQL simples o procedimientos almacenados.
+
+
+> * Aprenda a crear adaptadores en la guía de aprendizaje [Creación de adaptadores](creating-adapters).
+
+> * Obtenga más información sobre los [Adaptadores JavaScript](javascript-adapters)
 
 ![javascript_adapters](javascript_adapters.png)
 
-## Java adapters
+## Adaptadores Java
 {: #java-adapters }
 
-Java adapters are based on the [JAX-RS 2.0 specification](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html) and are thus written in Java, and expose a full REST API to the client. In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
+Los adaptadores Java se basan en la [Especificación JAX-RS 2.0](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html) y, por lo tanto, están escritos en Java exponiendo al cliente una API REST completa.
+En los adaptadores Java, es el desarrollador el quien define el contenido devuelto y su formato, así como la estructura de URL de cada recurso.
+La única excepción es cuando el cliente envía la solicitud soportando GZip, entonces la codificación del contenido devuelto del adaptador Java se comprime mediante GZip.
+Todas las operaciones del contenido devuelto las realiza y las posee el desarrollador.
 
-The diagram below depicts how a mobile device can access any Java adapter from its REST endpoint. The REST interface is protected by the {{ site.data.keys.product }} OAuth security filter, meaning that the client needs to obtain an access token to access the adapter resources. Each of the resources of the adapter has its own URL, so it is possible to protect {{ site.data.keys.product }} endpoints using any firewall. The REST interface invokes the Java code (JAX-RS service) to handle incoming requests. The Java code can perform operations on the server by using the Java {{ site.data.keys.mf_server }} API. In addition, the Java code can connect to the enterprise system to fetch data, update data, or perform any other operation that the enterprise system exposes.
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
-> * Learn more about [Java adapters](java-adapters)
+El diagrama siguiente muestra cómo un dispositivo móvil pueden acceder a un adaptador Java desde su punto final REST.
+El filtro de seguridad OAuth de {{ site.data.keys.product }} protege la interfaz REST, lo que significa que el cliente necesita obtener una señal de acceso para acceder a los recursos del adaptador.
+Cada uno de los recursos del adaptador tiene su propio URL, de forma que es posible proteger los puntos finales de {{ site.data.keys.product }} utilizando un cortafuegos.
+La interfaz REST invoca al código JAVA (servicio JAX-RS) para manejar las solicitudes entrantes.
+El código Java puede realizar operaciones en el servidor mediante la API de {{ site.data.keys.mf_server }} Java. Además, el código Java puede conectarse al sistema empresarial para recuperar datos, actualizar datos o realizar cualquier otra operación que exponga el sistema empresarial.
+
+
+> * Aprenda a crear adaptadores en la guía de aprendizaje [Creación de adaptadores](creating-adapters).
+
+> * Obtenga más información sobre los [Adaptadores Java](java-adapters)
 
 ![java-adapter](java_adapter.jpg)
 
-## Tutorials to follow next
+## Guías de aprendizaje con las que continuar 
 {: #tutorials-to-follow-next }

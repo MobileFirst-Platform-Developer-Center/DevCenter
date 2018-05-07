@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using Java in JavaScript Adapters
+title: Utilización de Java en adaptadores JavaScritp
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -8,26 +8,29 @@ downloads:
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general 
 {: #overview }
 
-When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.
+Cuando JavaScript no es suficiente para implementar la funcionalidad necesaria, o si una clase Java ya existe, puede utilizar código Java como una extensión para el adaptador JavaScript. 
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**Requisito previo:** Asegúrese de leer primero la guía de aprendizaje [Adaptadores JavaScript](../).
 
-## Adding custom Java classes 
+
+## Adición de clases Java personalizadas 
 {: #adding-custom-java-classes }
 
 ![UsingJavainJS](UsingJavainJS.png)
 
-To use an existing Java library, add the JAR file as a dependency to your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
+Para utilizar una biblioteca Java existente, añada el archivo JAR como una dependencia para el proyecto.  Para obtener más información sobre cómo añadir una dependencia, consulte la sección de Dependencias en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](../../creating-adapters/#dependencies).
 
-To add custom Java code to your project, add a folder named **java** to the **src/main** folder in your adapter project and put your package in it. The sample in this tutorial uses a `com.sample.customcode` package and a Java class file named `Calculator.java`.   
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The package name must start with either `com`, `org`, or `net`.
+Para añadir código Java personalizado al proyecto, añada una carpeta denominada **java** a la carpeta **src/main** en su proyecto de adaptador y coloque en ella su paquete. En el ejemplo de esta guía de aprendizaje se utiliza un paquete `com.sample.customcode` y un archivo de clase Java denominado `Calculator.java`.    
 
-Add methods to your Java class.  
-Here are an examples of a static method (that does not require a new instance) and an instance method:
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** El nombre del paquete debe empezar con `com`, `org` o `net`.
+
+
+Adición de métodos a su clase de Java.   
+A continuación se muestran ejemplos de un método estático (que no precisa una nueva instancia) y un método de instancia: 
 
 ```java
 public class Calculator {
@@ -44,12 +47,12 @@ public class Calculator {
 }
 ```
 
-## Invoking custom Java classes from the adapter
+## Invocación de clases Java personalizadas desde el adaptador 
 {: #invoking-custom-java-classes-from-the-adapter }
 
-After your custom Java code is created and any required JAR files are added, you can call it from the JavaScript code:
+Después de haber creado su código Java personalizado y de haber añadido todos los archivos JAR necesarios, puede llamarlo desde el código JavaScript: 
 
-* Invoke the static Java method as shown, and use the full class name to reference it directly:
+* Invoque al método Java estático tal como se muestra a continuación, y utilice el nombre de clase completo para hacer directamente referencia al mismo:  
 
 ```javascript
 function addTwoIntegers(a,b){
@@ -59,7 +62,7 @@ function addTwoIntegers(a,b){
 }
 ```
   
-* To use the instance method, create a class instance and invoke the instance method from it:
+* Para utilizar el método de instancia, crea una instancia de la clase e invoque al método de la instancia desde la misma: 
 
 ```javascript
 function subtractTwoIntegers(a,b){
@@ -70,15 +73,19 @@ function subtractTwoIntegers(a,b){
 }
 ```
 
-## Sample adapter
+## Adaptador de ejemplo
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) el proyecto Maven.
 
-### Sample usage
+
+### Uso de ejemplo 
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Utilice Maven, {{ site.data.keys.mf_cli }} o el IDE de su elección para [compilar y desplegar el adaptador JavaScriptHTTP](../../creating-adapters/).
 
-When testing, the adapter expects an array with numbers to add or subtract, for example: `[1,2]`.
+* Para probar o depurar un adaptador, consulte la guía de aprendizaje [Pruebas y depuración de adaptadores](../../testing-and-debugging-adapters).
+
+
+Al realizar pruebas, el adaptador espera una matriz con valores numéricos para añadir o sustraer, por ejemplo:
+`[1,2]`.

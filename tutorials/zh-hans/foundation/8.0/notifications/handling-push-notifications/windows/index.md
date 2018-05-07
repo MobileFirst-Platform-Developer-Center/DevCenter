@@ -5,15 +5,15 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: 下载 Windows 8.1 Universal 项目
+  - name: Download Windows 8.1 Universal Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: 下载 Windows 10 UWP 项目
+  - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在使用 C# 的本机 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中处理推送通知。
+可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。 在本教程中，您将学会如何在使用 C# 的本机 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中处理推送通知。
 
 **先决条件：**
 
@@ -43,7 +43,7 @@ downloads:
 
 ## 必备的 WNS 配置
 {: pre-requisite-wns-configuration }
-1. 确保应用程序具备 Toast 通知功能。可在 Package.appxmanifest 中启用此功能。
+1. 确保应用程序具备 Toast 通知功能。 可在 Package.appxmanifest 中启用此功能。
 2. 确保使用向 WNS 注册的值来更新 `Package Identity Name` 和 `Publisher`。
 3. （可选）删除 TemporaryKey.pfx 文件。
 
@@ -51,7 +51,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要创建一个变量（例如，`private MFPPush PushClient = MFPPush.GetInstance();`），然后在该类中调用 `PushClient.methodName()`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。  为此，需要创建一个变量（例如，`private MFPPush PushClient = MFPPush.GetInstance();`），然后在该类中调用 `PushClient.methodName()`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.GetInstance().methodName()`。
 
@@ -60,6 +60,7 @@ downloads:
 如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/ios)教程中了解有关验证问题处理程序的更多信息。
+
 ### 客户端
 {: #client-side }
 
@@ -109,8 +110,8 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Opt
 if (Response.Success == true)
 {
     // Successfully registered
-} else {
-    // Registration failed with error
+     } else {
+         // Registration failed with error
 }
 ```
 
@@ -191,14 +192,14 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice()
 if (Response.Success == true)
 {
     // Successfully registered
-} else {
-    // Registration failed with error
+     } else {
+         // Registration failed with error
 }
 ```
 
 ## 处理推送通知
 {: #handling-a-push-notification }
-要处理推送通知，需要设置 `MFPPushNotificationListener`。可实现以下方法来执行此操作。
+要处理推送通知，需要设置 `MFPPushNotificationListener`。  可实现以下方法来执行此操作。
 
 1. 使用 MFPPushNotificationListener 类型的接口创建类
 

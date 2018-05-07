@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" flippy="dippy" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Audit (GET)" />
+<meta name="abstract" content="Returns Audit Information." />
+<meta name="Description" content="Returns Audit Information." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="Audit--GET-" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name='DC.subject' content='SSHSCD'/>
+<meta name="IBM.WTMSite" content="ESTKCS"/>
+<meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS"/>
+<script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>
+<style>
+  ul {
+     line-height: 30px;
+  }
+
+  li a {
+     font-weight: bold;
+     color: blue;
+  }
+</style>
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css" />
+<title>Audit (GET)</title>
+</head>
+<body id="Audit--GET-"><div role="main">
+
+<h1 class="title topictitle1" id="ariaid-title1"> Audit (GET) </h1>
+
+
+
+<div class="body refbody"><p class="shortdesc">Returns Audit Information.</p>
+
+<section class="section"><h2 class="title sectiontitle">Roles</h2>
+
+<p class="p">Users in the following roles are authorized to perform this operation:</p>
+
+<ul class="ul">
+<li class="li"><span class="keyword parmname parmname">mfpadmin</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpdeployer</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpmonitor</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpoperator</span></li>
+
+</ul>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle"> Method </h2>
+
+<p class="p"><code class="ph codeph">GET</code></p>
+
+</section>
+
+
+
+<section class="section"><h2 class="title sectiontitle">Path</h2>
+
+<p class="p">/management-apis/2.0/audit</p>
+
+</section>
+
+
+<div class="example"><h2 class="title sectiontitle">Example</h2>
+
+<pre class="pre codeblock prettyprint"><code>https://www.example.com/mfpadmin/management-apis/2.0/audit?fromDate=2017-03-01&amp;toDate=2017-03-10</code></pre>
+</div>
+
+
+<section class="section"><h2 class="title sectiontitle">Query Parameters</h2>
+
+<p class="p">Query parameters are optional.</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">fromDate</dt>
+
+<dd class="dd pd">Specify from which date audit log is required</dd>
+
+<dt class="dt pt dlterm">toDate</dt>
+
+<dd class="dd pd">Specify till which date audit log is required</dd>
+
+</dl>
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Produces</h2>
+
+<p class="p">
+application/zip</p>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Errors</h2>
+
+<span class="keyword msgnum">400</span>
+<pre class="pre msgblock">Invalid payload.</pre>
+
+<span class="keyword msgnum">500</span>
+<pre class="pre msgblock">An internal error occurred.</pre>
+
+</section>
+
+
+</div>
+</div></body>
+</html>

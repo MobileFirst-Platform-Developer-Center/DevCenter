@@ -14,7 +14,7 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Zone de recherche intégrée" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="search" aria-label="Zone de recherche intégrée" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="Zone de recherche" type="text" class="form-control" placeholder="Rechercher..." name="q">
                 </div>
@@ -68,7 +68,9 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
         <li><a href="../product-overview/requirements">Configuration requise</a></li>
         <li><a href="../product-overview/licensing">Octroi de licence dans {{ site.data.keys.mf_server }}</a></li>
         <li><a href="../product-overview/features-matrix">Matrice de fonctions et plateformes</a></li>
-        <li><a href="../product-overview/accessibility">Fonctions d'accessibilité pour {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/accessibility">Fonctions
+d'accessibilité pour {{
+site.data.keys.product_full }}</a></li>
         <li><a href="../product-overview/release-notes">Notes sur l'édition</a></li>
     </ul>
 
@@ -93,7 +95,7 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
     Ajoutez le logiciel SDK de {{ site.data.keys.product }} à votre application Cordova, iOS native, Android, Windows 8.1 Universal ou Windows 10 UWP.
 
     <ul>
-        <li><a href="../application-development/sdk/ios/">Adding the {{ site.data.keys.product }} SDK to iOS applications</a></li>
+        <li><a href="../application-development/sdk/ios/">Ajout du logiciel SDK de {{ site.data.keys.product }} à des applications iOS</a></li>
     </ul>
 
     <hr id="get-sdk-and-apis"/>
@@ -102,54 +104,54 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
     Apprenez à utiliser les API de {{ site.data.keys.product_adj }} : JSONStore, WLResourceRequest, Developer CLI
 
     <ul>
-        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts</a></li>
-        <li><a href="../application-development/resource-request/ios/">Resource request from iOS applications</a></li>
-    	<li><a href="../application-development/jsonstore/ios/">JSONStore in iOS applications</a></li>
-        <li>Client-side log collection
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Utilisation de l'interface de ligne de commande {{ site.data.keys.mf_cli }} pour la gestion des artefacts {{ site.data.keys.product_adj }}</a></li>
+        <li><a href="../application-development/resource-request/ios/">Demande de ressource provenant d'applications iOS</a></li>
+    	<li><a href="../application-development/jsonstore/ios/">JSONStore  dans les applications iOS</a></li>
+        <li>Collecte de journaux côté client
             <ul>
-                <li><a href="../application-development/client-side-log-collection/">Overview of client-side log collection</a></li>
-            	<li><a href="../application-development/client-side-log-collection/ios/">Log collection in iOS applications</a></li>
+                <li><a href="../application-development/client-side-log-collection/">Présentation de la collecte de journaux côté client</a></li>
+            	<li><a href="../application-development/client-side-log-collection/ios/">Collecte de journaux dans les applications iOS</a></li>
             </ul>
         </li>
         <li><a href="../application-development/live-update/">Live Update</a></li>
-        <li><a href="../application-development/watchos/">Developing for Apple watchOS 2</a></li>
-        <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
+        <li><a href="../application-development/watchos/">Développement pour Apple watchOS 2</a></li>
+        <li><a href="../application-development/simple-data-sharing/">Partage de données simples</a></li>
     </ul>
 
     <h2><a href="../adapters/">Développement d'adaptateurs</a></h2>
     Développez un code côté serveur à intégrer aux systèmes de back end d'entreprise et aux services cloud.
 
     <ul>
-        <li><a href="../adapters/">Adapters overview</a></li>
-        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
+        <li><a href="../adapters/">Présentation des adaptateurs</a></li>
+        <li><a href="../adapters/creating-adapters/">Création d'adaptateurs Java et JavaScript</a></li>
+        <li><a href="../adapters/javascript-adapters/">Adaptateurs JavaScript</a>
             <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">Adaptateur HTTP JavaScript</a>
                     <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Utilisation de SSL dans les adaptateurs HTTP JavaScript</a></li>
                     </ul>
                 </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">Adaptateur SQL JavaScript</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Utilisation de Java dans les adaptateurs JavaScript</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/java-adapters/">Java Adapters</a>
+        <li><a href="../adapters/java-adapters/">Adaptateurs Java</a>
             <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Adaptateur HTTP Java</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Adaptateur SQL Java</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
+        <li><a href="../adapters/developing-adapters/">Développement d'adaptateurs dans les environnements de développement intégrés</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">Test et débogage d'adaptateurs</a></li>
+        <li>Collecte de journaux côté serveur
             <ul>
-                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
+                <li><a href="../adapters/server-side-log-collection/">Présentation de la collecte de journaux côté serveur</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Collecte de journaux dans les adaptateurs Java</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Collecte de journaux dans les adaptateurs JavaScript</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
-        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">Utilisation avancée d'adaptateur et application composite</a></li>
+        <li><a href="../adapters/cloudant/">Intégration avec Cloudant à l'aide d'un adaptateur</a></li>
     </ul>
 
     <hr id="implement-authentication-and-security"/>
@@ -158,41 +160,41 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
     Ajoutez diverses couches de protection à vos applications.
 
     <ul>
-        <li><a href="../authentication-and-security/">Authorization concepts</a></li>
-        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
+        <li><a href="../authentication-and-security/">Concepts d'autorisation</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">Création d'un contrôle de sécurité</a>
             <ul>
-                <li><a href="../authentication-and-security/creating-a-security-check/contract">The Security Check Contract</a></li>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">Contrat du contrôle de sécurité</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/ios/">Implementing the challenge handler in iOS applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implémentation du contrôle de sécurité</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/ios/">Implémentation du gestionnaire de demandes d'authentification dans des applications iOS</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/user-authentication/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/user-authentication/ios/">Implementing the challenge handler in iOS applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">Implémentation du contrôle de sécurité</a></li>
+                <li><a href="../authentication-and-security/user-authentication/ios/">Implémentation du gestionnaire de demandes d'authentification dans des applications iOS</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
-        <li><a href="../authentication-and-security/step-up/">Step Up Authentication</a></li>
-        <li><a href="../authentication-and-security/enrollment/">Enrollment</a></li>
-        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA Security Check</a></li>
-        <li><a href="../authentication-and-security/confidential-clients/">Confidential Clients</a></li>
-        <li><a href="../authentication-and-security/protecting-external-resources/">Protecting External Resources</a>
+        <li><a href="../authentication-and-security/step-up/">Authentification à un niveau supérieur</a></li>
+        <li><a href="../authentication-and-security/enrollment/">Inscription</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">Contrôle de sécurité LTPA</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">Clients confidentiels</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">Protection des ressources externes</a>
             <ul>
-                <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java Token Validation</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js Validation</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET Message Inspector</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">Intercepteur de relations de confiance</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Validation de jeton Java</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Validation Node.js</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Inspecteur de messages Windows .NET</a></li>
             </ul>
         </li>
-        <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
-        <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
-        <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
-        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the {{ site.data.keys.mf_server }} Keystore</a></li>
+        <li><a href="../authentication-and-security/application-authenticity/">Authenticité de l'application</a></li>
+        <li><a href="../authentication-and-security/device-sso/">Configuration de la connexion unique des appareils</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">Epinglage de certificat</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuration du magasin de clés de {{ site.data.keys.mf_server }}</a></li>
     </ul>
 
     <hr id="measure-and-engage"/>
@@ -201,17 +203,17 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
     Envoyez des notifications avec {{ site.data.keys.product_full }}.
 
     <ul>
-        <li><a href="../notifications/">Notifications Overview</a></li>
-        <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
-        <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a>
+        <li><a href="../notifications/">Présentation des notifications</a></li>
+        <li><a href="../notifications/sending-notifications/">Envoi de notifications</a></li>
+        <li><a href="../notifications/handling-push-notifications/ios/">Traitement des notifications Push dans les applications iOS</a>
             <ul>
-                <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
-                <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
+                <li><a href="../notifications/handling-push-notifications/interactive">Notifications interactives</a></li>
+                <li><a href="../notifications/handling-push-notifications/silent">Notifications silencieuses</a></li>
             </ul>
         </li>
-        <li><a href="../notifications/handling-sms-notifications/ios/">Handling SMS Notifications in iOS applications</a></li>
-        <li><a href="../notifications/analytics/">Setting Up Analytics Support for Push Notifications</a></li>
-        <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
+        <li><a href="../notifications/handling-sms-notifications/ios/">Traitement des notifications SMS dans les applications iOS</a></li>
+        <li><a href="../notifications/analytics/">Configuration de la prise en charge d'Analytics pour les notifications push</a></li>
+        <li><a href="../notifications/rest-apis/">API REST du service Push</a></li>
     </ul>
 
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
@@ -219,35 +221,42 @@ Développez vos applications iOS en suivant les tutoriels ci-après : configurez
 l'utilisation des applications, détectez les erreurs, etc.
 
     <ul>
-        <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
-        <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
-        <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
-        <li><a href="../analytics/console/custom-charts/">Creating Custom Charts</a></li>
-        <li><a href="../analytics/console/alerts/">Managing Alerts</a></li>
-        <li><a href="../analytics/console/log-filters/">Configuring Log Filters</a></li>
-        <li><a href="../analytics/console/scenario-loader/">Scenario Loader</a></li>
-        <li><a href="../analytics/console/push-notifications/">Push Notifications</a></li>
-        <li><a href="../analytics/console/analytics-data-purge/">Data Retention and Purging</a></li>
-        <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
+        <li><a href="../analytics">Introduction à {{ site.data.keys.mf_analytics_full }}</a></li>
+        <li><a href="../analytics/analytics-api/">Utilisation de l'API Analytics dans les applications client</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Utilisation de l'API REST Analytics</a></li>
+        <li><a href="../analytics/console/custom-charts/">Création de graphiques personnalisés</a></li>
+        <li><a href="../analytics/console/alerts/">Gestion des alertes</a></li>
+        <li><a href="../analytics/console/log-filters/">Configuration des filtres de journal</a></li>
+        <li><a href="../analytics/console/scenario-loader/">Chargeur de scénario</a></li>
+        <li><a href="../analytics/console/push-notifications/">Notifications push</a></li>
+        <li><a href="../analytics/console/analytics-data-purge/">Conservation et purge de données</a></li>
+        <li><a href="../analytics/workflows/">Flux de travaux d'analyse</a></li>
     </ul>
 
-    <h2><a href="../bluemix">Foundation dans Bluemix</a></h2>
-    Déployez {{ site.data.keys.product }} dans le cloud à l'aide de Bluemix.
+    <h2><a href="../bluemix">Foundation on IBM Cloud</a></h2>
+    Déployez {{ site.data.keys.product }} sur le cloud à l'aide d'IBM Cloud.
 
     <ul>
-        <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on Bluemix</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation Bluemix service</a></li>
+        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
         <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
                 <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
                 <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
                 <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
             </ul>
-        </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on Bluemix using Scripts on Liberty for Java</a>
+        </li>-->
+        <li><a href="../bluemix/">Introduction à {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Création d'une instance {{ site.data.keys.mf_server }} à l'aide du service Mobile Foundation IBM</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">Configuration de MobileFirst Server sur un cluster  Kubernetes IBM Cloud</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">Configuration de MobileFirst Appcenter sur un cluster Kubernetes IBM Cloud</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Configuration de {{ site.data.keys.mf_server }}  sur IBM Cloud à l'aide de scripts sur Liberty for Java</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">Sécurisation des conteneurs</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">Traitement des incidents</a></li>
             </ul>
         </li>
     </ul>
@@ -256,7 +265,7 @@ l'utilisation des applications, détectez les erreurs, etc.
     Questions posées fréquemment et réponses.
 
     <ul>
-        <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
+        <li><a href="../troubleshooting/notifications">Notifications push</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
     </ul>

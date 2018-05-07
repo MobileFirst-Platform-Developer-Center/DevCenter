@@ -7,7 +7,7 @@ weight: 1
 <br/>
 O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que modernizam sua experiência de desenvolvimento, implementação e gerenciamento de aplicativos no {{ site.data.keys.product_adj }}.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -77,7 +77,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
         <div id="collapse-mobilefirst-apis" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-apis">
             <div class="panel-body">
                 <p>Os novos recursos melhoram e estendem as APIs que podem ser usadas para desenvolver aplicativos móveis. Use as APIs mais recentes para aproveitar as vantagens de funções novas, melhoradas ou alteradas no {{ site.data.keys.product }}.</p>
-                
+
                 <h3>API do lado do servidor de JavaScript atualizada</h3>
                 <p>Funções de chamada de backend são suportadas apenas para tipos de adaptadores suportados. Atualmente, somente adaptadores HTTP e SQL são suportados, portanto, invocadores de backend <code>WL.Server.invokeHttp</code> e <code>WL.Server.invokeSQL</code> são suportados, também.</p>
 
@@ -86,10 +86,10 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h4>Nova API Java do lado do servidor para segurança</h4>
                 <p>O novo pacote de API de segurança, <code>com.ibm.mfp.server.security.external</code>, e seus pacotes contidos incluem as interfaces necessárias para desenvolver verificações de segurança e adaptadores que usam o contexto de verificação de segurança.</p>
-                
+
                 <h4>Nova API Java do lado do servidor para dados de registro do cliente</h4>
                 <p>O novo pacote de API de dados de registro do cliente, <code>com.ibm.mfp.server.registration.external</code>, e seus pacotes contidos incluem uma interface para fornecer acesso a dados persistentes de registro do cliente do {{ site.data.keys.product_adj }}.</p>
-                
+
                 <h4>Application getJaxRsApplication()</h4>
                 <p>Com esta nova API, é possível retornar o aplicativo JAX-RS para o adaptador.</p>
 
@@ -104,7 +104,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h4>WLServerAPIProvider</h4>
                 <p>Na V7.0.0 e V7.1.0, a API Java estava acessível por meio da interface WLServerAPIProvider. Por exemplo: <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> e <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code></p>
-                
+
                 <p>Essas interfaces estáticas ainda são suportadas para permitir que os adaptadores que foram desenvolvidos em versões anteriores do produto compilem e implementem. Adaptadores antigos que não usam notificações push ou a API de segurança anterior continuam a funcionar com a nova versão. Os adaptadores que usam notificações push ou a API de segurança anterior não funcionam.</p>
 
                 <h3>APIs do lado do cliente JavaScript para aplicativos da web</h3>
@@ -118,14 +118,14 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                 <h3>Novas APIs Java do lado do cliente para Android</h3>
                 <h4>public void getDeviceDisplayName(final DeviceDisplayNameListener listener);</h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo a partir dos dados de registro do {{ site.data.keys.mf_server }}.</p>
-                
+
                 <h4>public void setDeviceDisplayName(String deviceDisplayName,final WLRequestListener listener);</h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo nos dados de registro do {{ site.data.keys.mf_server }}.</p>
 
                 <h3>Novas APIs do lado do cliente Objective-C para iOS</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo a partir dos dados de registro do {{ site.data.keys.mf_server }}.</p>
-                
+
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo nos dados de registro do {{ site.data.keys.mf_server }}.</p>
 
@@ -134,10 +134,13 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>API REST atualizada para o tempo de execução</h3>
                 <p>A API REST para o tempo de execução do {{ site.data.keys.product_adj }} agora fornece vários serviços para clientes móveis e clientes confidenciais para chamar adaptadores, obter tokens de acesso, obter conteúdo de Atualização direta e mais. A maioria dos terminais de API REST é protegida por OAuth. Em um servidor de desenvolvimento, é possível visualizar o doc do Swagger para a API de tempo de execução em: <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Suporte de fixação de certificado múltiplo</h3>
+                <p>Iniciando com iFix 8.0.0.0-IF201706240159, o {{ site.data.keys.mf_bm_short }} suporta a fixação de vários certificados. Isso permite que usuários tenham acesso seguro a diversos hosts. Antes desta iFix, o {{ site.data.keys.mf_bm_short }} suportava fixação de um único certificado. O {{ site.data.keys.mf_bm_short }} introduziu uma nova API, que permite conexão com vários hosts, permitindo que o usuário fixe chaves públicas de vários certificados X509 (adquiridas com uma autoridade de certificação) para o aplicativo cliente. Uma cópia de todos os certificados deve ser colocada em seu aplicativo cliente. Durante o handshake SSL, o cliente SDK do {{ site.data.keys.product_full }} verifica se a chave pública do certificado do servidor corresponde à chave pública de um dos certificados armazenados no aplicativo.</p>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-security">
             <h4 class="panel-title">
@@ -151,9 +154,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>Revisão de estrutura de segurança</h3>
                 <p>A estrutura de segurança do {{ site.data.keys.product_adj }} foi projetada e implementada novamente para melhorar e simplificar as tarefas de administração e desenvolvimento de segurança. A estrutura agora é baseada inerentemente no modelo OAuth e a implementação é independente de sessão. Consulte Visão geral da estrutura de segurança do {{ site.data.keys.product_adj }}.</p>
-                
+
                 <p>No lado do servidor, os diversos blocos de construção da estrutura foram substituídos por verificações de segurança (implementado em adaptadores), permitindo o desenvolvimento simplificado com novas APIs. As implementações de amostra e as verificações de segurança predefinidas são fornecidas. Veja Verificações de segurança. As verificações de segurança podem ser configuradas no descritor de adaptador e customizadas fazendo mudanças de configuração de adaptador de tempo de execução ou aplicativo, sem reimplementar o adaptador ou interromper o fluxo. As configurações podem ser feitas a partir das interfaces de segurança do {{ site.data.keys.mf_console }} projetadas novamente. Também é possível editar os arquivos de configuração manualmente ou usar as ferramentas {{ site.data.keys.mf_cli }} ou mfpadm.</p>
-                
+
                 <h3>Verificação de segurança de autenticidade do aplicativo</h3>
                 <p>Agora a validação de autenticidade do aplicativo {{ site.data.keys.product_adj }} é implementada como uma verificação de segurança predefinida que substitui a "verificação da autenticidade do aplicativo estendida". É possível ativar, desativar e configurar dinamicamente a validação de autenticidade do aplicativo usando {{ site.data.keys.mf_console }} ou mfpadm. Uma ferramenta Java de autenticidade do aplicativo {{ site.data.keys.product_adj }} independente (mfp-app-authenticity-tool.jar) é fornecida para gerar um arquivo de autenticidade do aplicativo.</p>
 
@@ -165,7 +168,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>Aplicativos de plataforma cruzada (aplicativos Cordova), recursos de segurança novos e mudados</h3>
                 <p>Recursos de segurança adicionais estão disponíveis para ajudar a proteger seu aplicativo Cordova. Esses recursos incluem o seguinte:</p>
-                
+
                 <ul>
                     <li>Criptografia de recursos da web: Use este recurso para criptografar os recursos da web em seu pacote Cordova para ajudar a evitar que alguém modifique o pacote.</li>
                     <li>Soma de verificação de recursos da web: Use este recurso para executar um teste de soma de verificação que compare as atuais estatísticas de recursos da web do aplicativo com as estatísticas de linha de base que foram estabelecidas quando ele foi aberto pela primeira vez. Essa verificação ajuda a evitar que alguém modifique o aplicativo após ele ser instalado e aberto.</li>
@@ -173,7 +176,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>Suporte para Federal Information Processing Standard (FIPS) 140-2: Use este recurso para assegurar que os dados que são transferidos estejam em conformidade com o padrão de criptografia FIPS 140-2.</li>
                     <li>OpenSSL: para usar a criptografia e decriptografia de dados OpenSSL com seu aplicativo Cordova para a plataforma iOS, é possível usar o plug-in do Cordova cordova-plugin-mfp-encrypt-utils.</li>
                 </ul>
-                
+
                 <h3>Conexão única do dispositivo</h3>
                 <p>Agora a conexão única (SSO) do dispositivo é suportado por meio da nova propriedade de configuração do descritor de aplicativo de verificação de segurança <code>enableSSO</code> predefinida.</p>
 
@@ -184,10 +187,10 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>Se um aplicativo cliente acessar um recurso desprotegido, o aplicativo não receberá atualizações, mesmo se uma atualização estiver disponível no {{ site.data.keys.mf_server }}.</li>
                     <li>Após ser ativado, o Direct Update será forçado em cada solicitação para um recurso protegido.</li>
                 </ul>
-                
+
                 <h3>Proteção de recursos externos</h3>
                 <p>O método suportado e os artefatos fornecidos para proteger recursos em servidores externos foram modificados:</p>
-                
+
                 <ul>
                     <li>Um novo módulo de token de acesso {{ site.data.keys.product_adj }} Java Token Validator configurável é fornecido para usar a estrutura de segurança do {{ site.data.keys.product_adj }} para proteger recursos em qualquer servidor Java externo. O módulo é fornecido como uma biblioteca Java (mfp-java-token-validador-8.0.0.jar) e substitui o uso do terminal de validação do token do {{ site.data.keys.mf_server }} obsoleto para criar um módulo de validação Java customizado.</li>
                     <li>O filtro {{ site.data.keys.product_adj }} OAuth Trust Association Interceptor (TAI), para proteger recursos Java em um servidor WebSphere Application Server ou WebSphere Application Server Liberty, agora é fornecido como uma biblioteca Java (com.ibm.imf.oauth.common_8.0.0.jar). A biblioteca usa o novo módulo de validação Java Token Validador e a configuração do TAI fornecida mudada.</li>
@@ -195,7 +198,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>A estrutura passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js, para proteger recursos Java em um servidor Node.js externo, foi modificada para suportar a nova estrutura de segurança.</li>
                     <li>Também é possível gravar seu próprio filtro customizado e módulo de validação, para qualquer tipo de servidor de recurso, que use o novo terminal de introspecção do servidor de autorização.</li>
                 </ul>
-                
+
                 <h3>Integração com o WebSphere DataPower como um servidor de autorizações</h3>
                 <p>Agora é possível optar por usar o WebSphere DataPower como o servidor de autorizações OAuth, em vez do servidor de autorizações padrão do {{ site.data.keys.mf_server }}. É possível configurar o DataPower para integração com a estrutura de segurança do {{ site.data.keys.product_adj }}.</p>
 
@@ -204,7 +207,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>Gerenciamento de aplicativo móvel com o {{ site.data.keys.mf_console }}</h3>
                 <p>Algumas mudanças foram feitas no suporte para rastreamento e gerenciamento de aplicativos móveis, usuários e dispositivos do {{ site.data.keys.mf_console }}. O bloqueio de acesso ao dispositivo ou ao aplicativo é aplicável somente a tentativas de acessar recursos protegidos.</p>
-                
+
                 <h3>Armazenamento de chaves do {{ site.data.keys.mf_server }}</h3>
                 <p>Um único keystore do {{ site.data.keys.mf_server }} é usado para assinar tokens OAuth e pacotes de Atualização Direta e para autenticação mútua HTTPS (SSL). É possível configurar dinamicamente esse keystore usando {{ site.data.keys.mf_console }} ou mfpadm.</p>
 
@@ -213,7 +216,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="os-support">
             <h4 class="panel-title">
@@ -242,7 +245,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="deploy-manage-apps">
             <h4 class="panel-title">
@@ -250,31 +253,31 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>Novos recursos do {{ site.data.keys.product }} foram introduzidos para ajudá-lo a implementar e gerenciar seus aplicativos. Agora é possível atualizar seus aplicativos e adaptadores sem reiniciar o {{ site.data.keys.mf_server }}.</p>
 
                 <h3>Suporte melhorado ao DevOps</h3>
                 <p>O {{ site.data.keys.mf_server }} foi projetado novamente de forma significativa para melhor suportar seu ambiente DevOps. O {{ site.data.keys.mf_server }} é instalado uma vez em seu ambiente de servidor de aplicativos e nenhuma mudança na configuração do servidor de aplicativos é necessária ao fazer upload de um aplicativo ou mudar a configuração do {{ site.data.keys.mf_server }}.</p>
-                
+
                 <p>Não é necessário reiniciar o {{ site.data.keys.mf_server }} ao atualizar seus aplicativos ou quaisquer adaptadores de que seus aplicativos dependem. É possível executar operações de configuração, ou fazer upload de uma nova versão de um adaptador ou registrar um novo aplicativo enquanto o servidor ainda estiver manipulando o tráfego.</p>
 
                 <p>Mudanças na configuração e operações de desenvolvimento são protegidas pelas funções de segurança.</p>
 
                 <p>É possível fazer upload de artefatos de desenvolvimento para os servidores de várias maneiras para oferecer mais flexibilidade operacional:</p>
-                
+
                 <ul>
                     <li>{{ site.data.keys.mf_console }} foi aprimorado: em particular, agora é possível usá-lo para registrar um aplicativo ou uma nova versão de um aplicativo, para gerenciar parâmetros de segurança do aplicativo e para implementar certificados, criar tags de notificação push e enviar notificações push. Agora o console inclui guias de ajuda contextual.</li>
                     <li>Ferramenta de linha de comandos</li>
                 </ul>
-                
+
                 <p>Artefatos de desenvolvimento dos quais você faz upload para o servidor incluem adaptadores e sua configuração, configurações de segurança para seus aplicativos, certificados de notificação push e filtros de log.</p>
 
-                <h3>Executando aplicativos que foram criados no IBM Bluemix no {{ site.data.keys.product }}</h3>
-                <p>Os desenvolvedores podem migrar aplicativos IBM Bluemix para executar no {{ site.data.keys.product }}. A migração requer que você faça mudanças na configuração para seu aplicativo cliente para corresponder às APIs do {{ site.data.keys.product }}.</p>
+                <h3>Executando aplicativos criados no IBM Cloud no {{ site.data.keys.product }}</h3>
+                <p>Desenvolvedores podem migrar aplicativos do IBM Cloud para serem executados no {{ site.data.keys.product }}. A migração requer que você faça mudanças na configuração para seu aplicativo cliente para corresponder às APIs do {{ site.data.keys.product }}.</p>
 
-                <h3>{{ site.data.keys.product }} como serviço no IBM Bluemix</h3>
-                <p>Agora é possível usar o serviço {{ site.data.keys.mf_bm_full }} no IBM Bluemix para criar e executar seus aplicativos móveis corporativos.</p>
+                <h3>{{ site.data.keys.product }} como um serviço no IBM Cloud</h3>
+                <p>Agora, é possível usar o serviço {{ site.data.keys.mf_bm_full }} no IBM Cloud para criar e executar seus aplicativos móveis corporativos. </p>
 
                 <h3>Nenhum arquivo .wlapp</h3>
                 <p>Em versões anteriores, aplicativos eram implementados no {{ site.data.keys.mf_server }} fazendo upload de um arquivo <b>.wlapp</b>. O arquivo continha dados que descreviam o aplicativo e, no caso de aplicativos híbridos, os recursos da web que também eram necessários. Na V8.0.0, em vez do arquivo <b>.wlapp</b>:</p>
@@ -283,19 +286,19 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>Você registra um aplicativo no {{ site.data.keys.mf_server }} implementando um arquivo JSON do descritor de aplicativo.</li>
                     <li>Para atualizar aplicativos Cordova usando Direct Update, você faz upload de um archive (arquivo .zip) do recurso da web modificado para o servidor. O archive não contém mais os arquivos de visualização da web ou aparências que eram possíveis em versões anteriores do {{ site.data.keys.product }}. Eles foram descontinuados. O archive contém somente os recursos da web que são enviados para os clientes, bem como somas de verificação para validações do Direct Update.</li>
                 </ul>
-                
+
                 <p>Para ativar a Atualização Direta de aplicativos Cordova do cliente que estão instalados em dispositivos do usuário final, deve-se agora implementar os recursos da web modificados como um archive (arquivo .zip) no servidor. Para ativar a Atualização Direta segura, um arquivo keystore definido pelo usuário deve ser implementado no {{ site.data.keys.mf_server }} e uma cópia da chave pública correspondente deve ser incluída no aplicativo cliente implementado.</p>
 
                 <h3>Adaptadores</h3>
                 <h4>Adaptadores são projetos do Apache Maven.</h4>
                 <p>Adaptadores agora são tratados como projetos do Maven. É possível criar, construir e implementar adaptadores usando comandos Maven da linha de comandos padrão ou usando qualquer IDE que suporte Maven, como Eclipse e IntelliJ.</p>
-    
+
                 <h4>Configuração e implementação do adaptador em ambientes de DevOps</h4>
                 <ul>
                     <li>Administradores do {{ site.data.keys.mf_server }} agora podem usar o {{ site.data.keys.mf_console }} para modificar o comportamento de um adaptador que foi implementado. Após a reconfiguração, as mudanças entram em vigor no servidor imediatamente, sem a necessidade de reimplementar o adaptador ou reiniciar o servidor.</li>
                     <li>Agora é possível efetuar "hot deploy" dos adaptadores, o que significa implementar, remover implementação e reimplementá-los no tempo de execução, enquanto o {{ site.data.keys.mf_server }} ainda está atendendo o tráfego.</li>
                 </ul>
-                
+
                 <h4>Mudanças no arquivo descritor do adaptador</h4>
                 <p>O arquivo descritor <b>adapter.xml</b> mudou ligeiramente. Para obter mais informações sobre a estrutura do arquivo descritor do adaptador para adaptadores, consulte os <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">tutoriais de Adaptadores</a>.</p>
 
@@ -304,12 +307,12 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h4>Suporte para adaptadores JavaScript</h4>
                 <p>JavaScript adapters are supported with HTTP and SQL connectivity types, only.</p>
-                
+
                 <h4>Suporte para JAX-RS 2.0</h4>
                 <p>JAX-RS 2.0 apresenta uma nova funcionalidade do lado do servidor: filtros e interceptores HTTP assíncronos do lado do servidor.  Os adaptadores agora podem explorar esses novos recursos.</p>
-                
+
                 <h3>{{ site.data.keys.product }} no IBM Containers</h3>
-                <p>O {{ site.data.keys.product }} no IBM Containers liberado para a V8.0.0 está disponível no <a href="http://www-01.ibm.com/software/passportadvantage/">site do IBM Passport Advantage</a>. Essa versão do {{ site.data.keys.product }} no IBM Containers está pronta para a produção e suporta o banco de dados transacional dashDB™ corporativo no IBM Bluemix.</p>
+                <p>O {{ site.data.keys.product }} no IBM Containers liberado para a V8.0.0 está disponível no <a href="http://www-01.ibm.com/software/passportadvantage/">site do IBM Passport Advantage</a>. Essa versão do {{ site.data.keys.product }} no IBM Containers está pronta para produção e suporta o banco de dados transacional e corporativo dashDB™ no IBM Cloud. </p>
 
                 <p><b>Nota:</b> consulte os pré-requisitos para implementar o {{ site.data.keys.product }} no IBM Containers.</p>
 
@@ -320,7 +323,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-server">
             <h4 class="panel-title">
@@ -334,8 +337,8 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <p>O novo design do {{ site.data.keys.mf_server }} apresenta dois novos componentes, o serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e os artefatos do {{ site.data.keys.mf_server }}.</p>
 
-                <p> {{ site.data.keys.mf_server }} O serviço de atualização em tempo real do é projetado para ajudar a reduzir o tempo e o custo de atualizações incrementais de seus aplicativos. Ele gerencia e armazena os dados de configuração do lado do servidor dos aplicativos e adaptadores. É possível mudar ou atualizar várias partes do seu aplicativo reconstruindo ou reimplementando seu aplicativo:</p>
-                
+                <p>{{ site.data.keys.mf_server }} O serviço de atualização em tempo real do é projetado para ajudar a reduzir o tempo e o custo de atualizações incrementais de seus aplicativos. Ele gerencia e armazena os dados de configuração do lado do servidor dos aplicativos e adaptadores. É possível mudar ou atualizar várias partes do seu aplicativo reconstruindo ou reimplementando seu aplicativo:</p>
+
                 <ul>
                     <li>Mude ou atualize dinamicamente o comportamento do aplicativo com base nos segmentos de usuário definidos por você.</li>
                     <li>Mude ou atualize dinamicamente a lógica de negócios no lado do servidor.</li>
@@ -353,9 +356,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>Instalando um server farm</li>
                     <li>Tutoriais sobre a instalação do {{ site.data.keys.mf_server }}</li>
                 </ul>
-                    
+
                 <p>O {{ site.data.keys.mf_server }} também suporta o Liberty Collective. Para obter mais informações sobre a topologia do servidor e vários métodos de instalação, consulte os tópicos a seguir:</p>
-                
+
                 <ul>
                     <li>Topologia do Liberty Collective</li>
                     <li>Executando o Server Configuration Tool</li>
@@ -365,7 +368,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-analytics">
             <h4 class="panel-title">
@@ -406,7 +409,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-push">
             <h4 class="panel-title">
@@ -427,7 +430,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>Aplicativos clientes móveis</li>
                     <li>Aplicativos de servidor de backend</li>
                 </ul>
-                
+
                 <h3>Segurança para serviço de notificação push</h3>
                 <p>O servidor de autorizações {{ site.data.keys.product }} força o protocolo OAuth a proteger o serviço de notificação push.</p>
 
@@ -449,7 +452,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                     <li>Usando a API de REST Mensagem push (POST), todas as formas de notificações podem ser enviadas: tag, transmissão e autenticada.</li>
                     <li>Usando API de REST para o serviço de administração do {{ site.data.keys.mf_server }}, todas as formas de notificações podem ser enviadas: tag, transmissão e autenticada.</li>
                 </ul>
-                
+
                 <h3>Enviando notificações SMS</h3>
                 <p>É possível configurar o serviço de push para enviar uma notificação por Serviço de Mensagens Curtas (SMS) para dispositivos do usuário.</p>
 
@@ -458,6 +461,19 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>O modelo de serviço de push é suportado em aplicativos Windows Universal Platform</h3>
                 <p>Agora é possível migrar aplicativos nativos Windows Universal Platform (UWP) para usar o modelo de serviço de push para enviar notificações push.</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-appcenter">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-appcenter" aria-expanded="true" aria-controls="collapse-mobilefirst-appcenter">O que há de novo no {{ site.data.keys.mf_app_center }} </a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
+            <div class="panel-body">
+                <p>Agora, o {{ site.data.keys.mf_app_center }} é suportado no IBM Cloud (baseado em contêineres) através de scripts BYOL. </p>
             </div>
         </div>
     </div>

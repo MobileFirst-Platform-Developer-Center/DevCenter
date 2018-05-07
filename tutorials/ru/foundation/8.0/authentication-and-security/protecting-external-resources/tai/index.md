@@ -107,8 +107,7 @@ If you are using servlet-2.x , you need to define the security role in your web.
 
 ## Using the Token Introspection Data From the TAI
 {: #using-the-token-introspection-data-from-the-tai }
-From your resource, you may want to access the token information that was intercepted and validated by the TAI. You can find the list of data found on the token in this user documentation topic: https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html
-To obtain this data, use the [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
+From your resource, you may want to access the token information that was intercepted and validated by the TAI. You can find the list of data found on the token [in the API Reference](../../../api/java-token-validator). To obtain this data, use the [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();

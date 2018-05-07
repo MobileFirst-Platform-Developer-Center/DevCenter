@@ -63,6 +63,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 
 ### Client-side
 {: #client-side }
+
 | C Sharp Methods                                                                                                | Description                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |

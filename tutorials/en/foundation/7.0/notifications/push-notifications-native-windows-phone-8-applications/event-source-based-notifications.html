@@ -130,7 +130,7 @@ push.unsubscribe("myPush", myUnsubListener);
 <code>onFailure</code> – Called when unsubscription fails.</p>
 </ul>
 <h3>Additional client-side API methods</h3>
-<p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
+<p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications. The call does not connect to the server, it returns the local state.</p>
 <p>{% highlight csharp  %}
 WLClient.getInstance().getPush().isSubscribed("myPush");
 {% endhighlight %}

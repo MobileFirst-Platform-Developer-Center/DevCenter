@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Operations Console 和 Analytics Console
+title: 操作和分析控制台
 breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
 weight: 4
@@ -32,6 +32,8 @@ weight: 4
 在**基础结构**面板中，您可以查看与以下项相关的分析数据：会话处理时间、平均请求大小、服务器请求、网络请求、适配器响应时间、过程响应时间、大小和适配器使用情况以及推送通知数据（如通知请求和依据介体）。您也可以在服务器日志中搜索。
 
 > 在[分析工作流程](../workflows/)教程中了解更多信息。
+
+> **注：**在修改日期过滤器后，客户机/服务器日志**搜索**和**导出**数据功能不会对鼠标单击事件调用操作（在最新版本的 Chrome 浏览器中观察到）。将因 Chrome 浏览器问题和已知限制而导致此行为。在其他浏览器以及 *v54.0.2840.71* 之前版本的 Chrome 浏览器中不会发生此问题。在最新版本的 Chrome 浏览器中，用户可以通过设置所需的日期并在单击“搜索/导出”按钮之前刷新页面来解决此问题，或者可以点击 Enter/Return 键来执行所选操作。
 
 ## 分析功能
 
@@ -112,15 +114,17 @@ weight: 4
 {{ site.data.keys.mf_analytics_console_short }} 中的内容受到预定义的安全角色的限制。  
 {{ site.data.keys.mf_analytics_console_short }} 基于登录用户的安全角色显示不同的内容。下表显示了安全角色及其对 {{ site.data.keys.mf_analytics_console_short }} 的访问权。
 
-| 角色           | 角色名称                | 查看访问权                                                     | 编辑访问权  |
+| 角色| 角色名称| 查看访问权| 编辑访问权|
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| 管理员  | analytics_administrator  | 全部。	                                                     | 全部。     |
-| 基础结构 | analytics_infrastructure	| 全部。	                                                     | 全部。     |
-| 开发人员      | analytics_developer	    | 除“管理”页面外的全部。		             | 全部。     |
-| 支持        | analytics_support        | 除“管理”页面外的全部。		             | 全部。     |
-| 业务       | analytics_business       | 除“管理”和“基础结构”页面外的全部。 | 全部。     |
+| 管理员| analytics_administrator| 全部。| 全部。|
+| 基础结构| analytics_infrastructure| 全部。| 全部。|
+| 开发人员| analytics_developer| 除“管理”页面外的全部。| 全部。|
+| 支持| analytics_support| 除“管理”页面外的全部。| 全部。|
+| 业务| analytics_business| 除“管理”和“基础结构”页面外的全部。| 全部。|
 
 > 有关设置角色的信息，请参阅[为 {{ site.data.keys.mf_server }} 管理配置用户认证](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)。
+
+
 ## 相关博客帖子
 * [有关检测定制分析的更多信息]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [有关检测 Webhook 的更多信息]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

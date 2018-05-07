@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: JavaScript SQL アダプター
-breadcrumb_title: SQL アダプター
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: アダプター Maven プロジェクトのダウンロード
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
@@ -12,9 +12,9 @@ weight: 2
 ## 概説
 {: #overview }
 
-SQL アダプターは、任意の SQL データ・ソースと通信するように設計されています。プレーン SQL 照会またはストアード・プロシージャーを使用できます。
+SQL アダプターは、任意の SQL データ・ソースと通信するように設計されています。 プレーン SQL 照会またはストアード・プロシージャーを使用できます。
 
-データベースに接続するには、JavaScript コードで、特定のデータベース・タイプの JDBC コネクター・ドライバーが必要です。特定のデータベース・タイプに対応する JDBC コネクター・ドライバーを別個にダウンロードして、プロジェクトで依存関係としてそのドライバーを追加する必要があります。依存関係の追加方法について詳しくは、[Java アダプターおよび JavaScript アダプターの作成](../../creating-adapters/#dependencies)チュートリアルの『依存関係』セクションを参照してください。
+データベースに接続するには、JavaScript コードで、特定のデータベース・タイプの JDBC コネクター・ドライバーが必要です。 特定のデータベース・タイプに対応する JDBC コネクター・ドライバーを別個にダウンロードして、プロジェクトで依存関係としてそのドライバーを追加する必要があります。 依存関係の追加方法について詳しくは、[Java アダプターおよび JavaScript アダプターの作成](../../creating-adapters/#dependencies)チュートリアルの『依存関係』セクションを参照してください。
 
 このチュートリアルおよび付属のサンプルでは、アダプターを使用して MySQL データベースに接続する方法について学習します。
 
@@ -54,7 +54,7 @@ XML ファイルには、設定およびメタデータが含まれています�
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -66,7 +66,7 @@ XML ファイルには、設定およびメタデータが含まれています�
             <div class="panel-body">
                 <ul>
                     <li><b>xsi:type</b>: <i>必須。</i> この属性の値は sql:SQLConnectionPolicy に設定される必要があります。</li>
-                    <li><b>dataSourceDefinition</b>: <i>オプション。</i> データ・ソースへの接続に必要なパラメーターを含みます。アダプターは、各要求で接続を作成します。以下に例を示します。
+                    <li><b>dataSourceDefinition</b>: <i>オプション。</i> データ・ソースへの接続に必要なパラメーターを含みます。 アダプターは、各要求で接続を作成します。 以下に例を示します。
 
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -79,8 +79,8 @@ XML ファイルには、設定およびメタデータが含まれています�
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>オプション。</i> アプリケーション・サーバーで提供されているデータ・ソースの JNDI 名を使用して、データ・ソースに接続します。アダプターは、JNDI 名に関連付けられたサーバー接続プールから接続を受け取ります。アプリケーション・サーバーには、データ・ソースを構成する方法が用意されています。詳しくは、アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストールを参照してください。以下に例を示します。
-                    
+                    <li><b>dataSourceJNDIName</b>: <i>オプション。</i> アプリケーション・サーバーで提供されているデータ・ソースの JNDI 名を使用して、データ・ソースに接続します。 アダプターは、JNDI 名に関連付けられたサーバー接続プールから接続を受け取ります。 アプリケーション・サーバーには、データ・ソースを構成する方法が用意されています。 詳しくは、アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストールを参照してください。 以下に例を示します。
+
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
@@ -96,7 +96,7 @@ XML ファイルには、設定およびメタデータが含まれています�
 `connectionPolicy` を構成して、アダプター XML ファイル内でプロシージャーを宣言します。
 
 ```js
-<procedure name="getAccountTransactions1"/>
+<procedure name = "getAccountTransactions1" />
 ```
 
 ## JavaScript 実装
@@ -111,7 +111,7 @@ SQL ステートメントを実行するには以下の 2 つの方法があり�
 ### SQL ステートメント照会
 {: #sql-statement-query }
 
-1. SQL 照会を変数に割り当てます。これは、常に関数のスコープの外部で行う必要があります。
+1. SQL 照会を変数に割り当てます。 これは、常に関数のスコープの外部で行う必要があります。
 2. 必要に応じて、パラメーターを追加します。
 3. `MFP.Server.invokeSQLStatement` メソッドを使用して、作成した照会を呼び出します。
 4. 結果をアプリケーションまたは別のプロシージャーに返します。
@@ -139,7 +139,7 @@ SQL ステートメントを実行するには以下の 2 つの方法があり�
 ### SQL ストアード・プロシージャー
 {: #sql-stored-procedure }
 
-SQL ストアード・プロシージャーを実行するには、`MFP.Server.invokeSQLStoredProcedure` メソッドを使用します。SQL ストアード・プロシージャーの名前を呼び出しパラメーターとして指定します。
+SQL ストアード・プロシージャーを実行するには、`MFP.Server.invokeSQLStoredProcedure` メソッドを使用します。 SQL ストアード・プロシージャーの名前を呼び出しパラメーターとして指定します。
 
 ```javascript
 // ストアード SQL プロシージャーを呼び出し、呼び出し結果を返します。
@@ -154,7 +154,7 @@ function getAccountTransactions2(accountId){
 
 ### 複数のパラメーターの使用
 {: #using-multiple-parameters }
- 
+
 SQL 照会で単一または複数のパラメーターを使用する場合には、関数で変数を受け入れ、変数を `invokeSQLStatement` または `invokeSQLStoredProcedure` のパラメーターに**配列**で渡してください。
 
 ```javascript
@@ -199,7 +199,7 @@ function getAccountTransactions1(fromAccount, toAccount){
 }
 ```
 * ` isSuccessful` プロパティーは、呼び出しが正常に終了したかどうかを定義します。
-* `resultSet` は、返されたレコードの配列です。 
+* `resultSet` は、返されたレコードの配列です。
  * クライアント・サイドの `resultSet` オブジェクトにアクセスする場合: `result.invocationResult.resultSet`
  * サーバー・サイドの `resultSet` オブジェクトにアクセスする場合: `result.ResultSet`
 

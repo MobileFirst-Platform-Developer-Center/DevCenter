@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore コード・サンプル
-breadcrumb_title: コード・サンプル
+breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
@@ -49,7 +49,7 @@ WL.JSONStore.init(collections, options)
   var addOptions = {
 
     // Mark data as dirty (true = yes, false = no), default true.
-  markDirty: true
+    markDirty: true
   };
 
   // Get an accessor to the people collection and add data.
@@ -103,13 +103,13 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
 #### Replace - 既にコレクション内に保管されているドキュメントの変更
 
-```javascript
+```javascript 
 var collectionName = 'people';
 
 // Documents will be located with their '_id' field 
@@ -122,7 +122,7 @@ var options = {
   markDirty: true
   };
 
-  WL.JSONStore.get(collectionName)
+WL.JSONStore.get(collectionName)
 
 .replace(docs, options)
 
@@ -131,7 +131,7 @@ var options = {
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -152,7 +152,7 @@ var options = {
   markDirty: true
   };
 
-  WL.JSONStore.get(collectionName)
+WL.JSONStore.get(collectionName)
 
 .remove(queries, options)
 
@@ -161,7 +161,7 @@ var options = {
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -189,7 +189,7 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -224,7 +224,7 @@ WL.JSONStore.closeAll()
 #### Security - ストアへのアクセスに使用されるパスワードの変更
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
-// The password should be user input.
+// The password should be user input. 
 // It is hard-coded in the example for brevity.
 var oldPassword = '123';
 var newPassword = '456';
@@ -263,7 +263,7 @@ var collectionName = 'people';
 var dirtyDocs;
  
 WL.JSONStore.get(collectionName)
-
+ 
 .getAllDirty()
  
 .then(function (arrayOfDirtyDocuments) {
@@ -286,7 +286,7 @@ WL.JSONStore.get(collectionName)
   // and decide whether or not to mark documents as clean.
   return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
 })
-
+ 
 .then(function () {
   // Handle markClean success.
 })
@@ -300,43 +300,43 @@ WL.JSONStore.get(collectionName)
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
-
+ 
 var adapter = 'adapter-name';
 var procedure = 'procedure-name-2';
-
+ 
 var resource = new WLResourceRequest("adapters/" + adapter + "/" + procedure, WLResourceRequest.GET);
-
+ 
 resource.send()
-
+ 
 .then(function (responseFromAdapter) {
   // Handle invokeProcedure success.
-
+ 
   // The following example assumes that the adapter returns an arrayOfData,
   // (which is not returned by default),
   // as part of the invocationResult object,
   // with the data that you want to add to the collection.
   var data = responseFromAdapter.responseJSON
-
+ 
   // Example:
   // data = [{id: 1, ssn: '111-22-3333', name: 'carlos'}];
-
+ 
   var changeOptions = {
-
+ 
     // The following example assumes that 'id' and 'ssn' are search fields,
     // default will use all search fields
     // and are part of the data that is received.
     replaceCriteria : ['id', 'ssn'],
-
+ 
     // Data that does not exist in the Collection will be added, default false.
     addNew : true,
-
+ 
     // Mark data as dirty (true = yes, false = no), default false.
     markDirty : false
   };
-
+ 
   return WL.JSONStore.get(collectionName).change(data, changeOptions);
 })
-
+ 
 .then(function () {
   // Handle change success.
 })
@@ -575,11 +575,11 @@ JSONStoreQueryOptions* options = [JSONStoreQueryOptions new];
 [options setOffset:@0]; // Skip 0 documents, default no offset.
 
 // Search fields to return, default: ['_id', 'json'].
-  [options filterSearchField:@"_id"];
+[options filterSearchField:@"_id"];
 [options filterSearchField:@"json"];
 
 // How to sort the returned values, default no sort.
-  [options sortBySearchFieldAscending:@"name"];
+[options sortBySearchFieldAscending:@"name"];
 [options sortBySearchFieldDescending:@"age"];
 
 // Find all documents that match the query part.
@@ -801,7 +801,7 @@ if (addError != nil || removeError != nil) {
   // Return the store to the state before start transaction was called.
   [[JSONStore sharedInstance] rollbackTransactionAndReturnError:&error];
 } else {
-// Commit the transaction thus ensuring atomicity.
+  // Commit the transaction thus ensuring atomicity.
   [[JSONStore sharedInstance] commitTransactionAndReturnError:&error];
 }
 ```
@@ -1122,7 +1122,7 @@ try {
 
   peopleCollection.markDocumentsClean(allDirtyDocuments);
 }  catch (JSONStoreException ex) {
-          // Handle failure for any of the previous JSONStore operations
+  // Handle failure for any of the previous JSONStore operations
   throw ex;
 }
 ```

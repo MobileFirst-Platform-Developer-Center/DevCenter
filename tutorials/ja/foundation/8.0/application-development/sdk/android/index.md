@@ -8,13 +8,13 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{ site.data.keys.product_full }} SDK は、[Maven Central](http://search.maven.org/) を通じて入手可能な依存関係の集合で構成されます。この SDK は、Android Studio プロジェクトに追加できます。これらの依存関係は、次のようなコア機能およびその他の機能に対応しています。
+{{ site.data.keys.product_full }} SDK は、[Maven Central](http://search.maven.org/) を通じて入手可能な依存関係の集合で構成されます。この SDK は、Android Studio プロジェクトに追加できます。 これらの依存関係は、次のようなコア機能およびその他の機能に対応しています。
 
 * **IBMMobileFirstPlatformFoundation** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
-* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore のフレームワークを含んでいます。詳しくは、[Android 用 JSONStore に関するチュートリアル](../../jsonstore/android/)を参照してください。
-* **IBMMobileFirstPlatformFoundationPush** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
+* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore のフレームワークを含んでいます。 詳しくは、[Android 用 JSONStore に関するチュートリアル](../../jsonstore/android/)を参照してください。
+* **IBMMobileFirstPlatformFoundationPush** - プッシュ通知のフレームワークを含んでいます。 詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 
-このチュートリアルでは、Gradle を使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Android アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクトに追加する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
+このチュートリアルでは、Gradle を使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Android アプリケーションに追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクトに追加する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
 **前提条件:**
 
@@ -80,13 +80,13 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
-5. **「Android」→「app」→「manifests」**で、`AndroidManifest.xml` ファイルを開きます。次のアクセス権を、**application** エレメントの上に追加します。
+5. **「Android」→「app」→「manifests」**で、`AndroidManifest.xml` ファイルを開きます。 次のアクセス権を、**application** エレメントの上に追加します。
 
    ```xml
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
-   
+
 6. 既存の **activity** エレメントの後に、次の {{ site.data.keys.product_adj }} UI アクティビティーを追加します。
 
    ```xml
@@ -98,8 +98,8 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: #manually-adding-the-mobilefirst-native-sdk }
 次のように、{{ site.data.keys.product_adj }} SDK を手動で追加することもできます。
-  
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
@@ -109,13 +109,15 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
 
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
-                <p>{{ site.data.keys.product_adj }} SDK を手動で追加するには、まず最初に<b>「{{ site.data.keys.mf_console }}」→「ダウンロード・センター」→「SDK」</b>タブで SDK の .zip ファイルをダウンロードします。上記の手順を完了した後、以下の手順にも従います。</p>
-            
+                <p>{{ site.data.keys.product_adj }} SDK を手動で追加するには、まず最初に<b>「{{ site.data.keys.mf_console }}」→「ダウンロード・センター」→「SDK」</b>タブで SDK の .zip ファイルをダウンロードします。 上記の手順を完了した後、以下の手順にも従います。</p>
+
                 <ul>
                     <li>ダウンロードした .zip ファイルを解凍し、関連する aar ファイルを <b>app\libs</b> フォルダーに入れます。</li>
                     <li>次の行を <b>dependencies</b> クロージャーに追加します。
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
+compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
+compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
                     <li>次の行を <b>repositories</b> クロージャーに追加します。
@@ -127,8 +129,8 @@ repositories {
 }
 {% endhighlight %}
                     </li>
-                </ul> 
-            
+                </ul>
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>セクションを閉じる</b></a>
             </div>
@@ -155,7 +157,7 @@ repositories {
 >
 > 1. {{ site.data.keys.mf_console }} をロードします。  
 > 2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。  
-> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.properties** ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
+> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.properties** ファイルをコピーまたはダウンロードします。 画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
 ### WLClient インスタンスの作成
 {: #creating-a-wlclient-instance }
@@ -165,7 +167,7 @@ repositories {
 WLClient.createInstance(this);
 ```
 
-**注:** `WLClient` インスタンスの作成は、アプリケーションのライフサイクル全体で一度だけ行います。このインスタンスの作成には、Android の Application クラスを使用することを推奨します。
+**注:** `WLClient` インスタンスの作成は、アプリケーションのライフサイクル全体で一度だけ行います。 このインスタンスの作成には、Android の Application クラスを使用することを推奨します。
 
 ## {{ site.data.keys.product_adj }} ネイティブ SDK の更新
 {: #updating-the-mobilefirst-native-sdk }

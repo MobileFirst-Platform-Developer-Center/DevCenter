@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Configurando o ambiente de desenvolvimento
-breadcrumb_title: ambiente de desenvolvimento
+title: Configurando o Ambiente de Desenvolvimento
+breadcrumb_title: Development Environment
 show_children: true
 weight: 1
 ---
@@ -21,9 +21,9 @@ Também é possível localizar instruções detalhadas passo a passo [nesse guia
 
 ### Servidor
 {: #server }
-É possível usar o {{ site.data.keys.mf_server }} por meio do [serviço Mobile Foundation Bluemix](../../bluemix/using-mobile-foundation), ou localmente usando o {{ site.data.keys.mf_dev_kit_full }} (usado para propósitos de desenvolvimento local). O {{ site.data.keys.mf_server }} requer o Java 7 ou 8 para ser executado.
+É possível usar o {{ site.data.keys.mf_server }} através do [serviço Mobile Foundation IBM Cloud](../../bluemix/using-mobile-foundation) ou localmente, usando o {{ site.data.keys.mf_dev_kit_full }} (usado para propósitos de desenvolvimento local). O {{ site.data.keys.mf_server }} requer o Java 7 ou 8 para ser executado.
 
-Se você pretende usar o serviço Mobile Foundation Bluemix, será necessária uma conta no Bluemix.net.
+Se você pretende usar o serviço Mobile Foundation IBM Cloud, é necessário possuir uma conta em bluemix.net.
 
 ### Desenvolvimento de aplicativos
 {: #application-development }

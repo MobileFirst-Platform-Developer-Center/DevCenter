@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Prise en charge de normes fédérales dans MobileFirst Foundation
-breadcrumb_title: Prise en charge de normes fédérales
+breadcrumb_title: Federal standards support
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -22,7 +22,7 @@ weight: 5
 {: #fdcc-and-usgcb-support }
 Le gouvernement fédéral des États-Unis stipule que les bureaux d'agence fédérale qui s'exécutent sur des plateformes Microsoft Windows doivent adopter la spécification FDCC (Federal Desktop Core Configuration) ou les paramètres de sécurité plus récents USGCB (United States Government Configuration Baseline).
 
-IBM  Worklight V5.0.6 a été testé à l'aide des paramètres de sécurité USGCB et FDCC via un processus d'auto-certification. Ce processus prévoit un niveau raisonnable de tests visant à s'assurer que l'installation et les fonctions de base fonctionnent sur cette configuration.
+IBM Worklight V5.0.6 a été testé à l'aide des paramètres de sécurité USGCB et FDCC via un processus d'auto-certification. Ce processus prévoit un niveau raisonnable de tests visant à s'assurer que l'installation et les fonctions de base fonctionnent sur cette configuration.
 
 #### Références
 {: #references }
@@ -30,9 +30,7 @@ Pour plus d'informations, voir [USGCB](http://usgcb.nist.gov/).
 
 ## Prise en charge de la norme FIPS 140-2
 {: #fips-140-2-support }
-Les normes FIPS (Federal Information Processing Standards) sont
-des instructions publiées par le NIST (National Institute of Standards and Technology)
-des Etats-Unis pour les systèmes informatiques du gouvernement fédéral. La publication FIPS 140-2 est une norme de sécurité utilisée pour accréditer des modules cryptographiques. {{ site.data.keys.product }} fournit la prise en charge de la norme FIPS 140-2 pour les applications Android et iOS Cordova.
+Les normes FIPS (Federal Information Processing Standards) sont des instructions publiées par le NIST (National Institute of Standards and Technology) des Etats-Unis pour les systèmes informatiques du gouvernement fédéral. La publication FIPS 140-2 est une norme de sécurité utilisée pour accréditer des modules cryptographiques. {{ site.data.keys.product }} fournit la prise en charge de la norme FIPS 140-2 pour les applications Android et iOS Cordova.
 
 ### Norme FIPS 140-2 sur le serveur {{ site.data.keys.mf_server }} et communications SSL avec le serveur {{ site.data.keys.mf_server }}
 {: #fips-140-2-on-the-mobilefirst-server-and-ssl-communications-with-the-mobilefirst-server }
@@ -54,12 +52,9 @@ Les appareils Android utilisent par défaut des bibliothèques validées par une
 
 **Remarque :** Certaines restrictions doivent être prises en compte :
 
-* Le mode validé FIPS 140-2 ne s'applique qu'à la protection (chiffrement) des données locales qui sont stockées par la fonction JSONStore et à la
-protection des communications HTTPS entre le
-client {{ site.data.keys.product_adj }} et le serveur {{ site.data.keys.mf_server }}.
+* Le mode validé FIPS 140-2 ne s'applique qu'à la protection (chiffrement) des données locales qui sont stockées par la fonction JSONStore et à la protection des communications HTTPS entre le client {{ site.data.keys.product_adj }} et le serveur {{ site.data.keys.mf_server }}.
 * Cette fonction n'est prise en charge que sur les plateformes iOS et Android.
-    * Sous Android, cette fonction n'est prise en charge que sur des appareils ou des simulateurs utilisant l'architecture x86 ou armeabi. Elle n'est pas prise en charge sous Android avec une architecture armv5 ou armv6. C'est parce que la bibliothèque OpenSSL utilisée n'a pas obtenu la validation FIPS
-140-2 pour armv5 ou armv6 sous Android. La norme FIPS 140-2 n'est pas encore prise en charge dans l'architecture 64 bits, même si la bibliothèque {{ site.data.keys.product_adj }} prend en charge l'architecture 64 bits. La norme FIPS 140-2 peut être exécutée sur des appareils 64 bits s'il n'existe que des bibliothèques NDK natives 32 bits dans le projet.
+    * Sous Android, cette fonction n'est prise en charge que sur des appareils ou des simulateurs utilisant l'architecture x86 ou armeabi. Elle n'est pas prise en charge sous Android avec une architecture armv5 ou armv6. C'est parce que la bibliothèque OpenSSL utilisée n'a pas obtenu la validation FIPS 140-2 pour armv5 ou armv6 sous Android. La norme FIPS 140-2 n'est pas encore prise en charge dans l'architecture 64 bits, même si la bibliothèque {{ site.data.keys.product_adj }} prend en charge l'architecture 64 bits. La norme FIPS 140-2 peut être exécutée sur des appareils 64 bits s'il n'existe que des bibliothèques NDK natives 32 bits dans le projet.
     * Sous iOS, elle est prise en charge dans les architectures i386, x86_64, armv7, armv7s et arm64.
 * Cette fonction n'est opérationnelle qu'avec des applications hybrides (non natives).
 * Pour l'iOS natif, FIPS est activé à travers les bibliothèques FIPS iOS et est activé par défaut. Aucune action n'est nécessaire pour activer FIPS 140-2.
@@ -127,7 +122,7 @@ onFipsReady: function() {
 
 Après avoir défini la valeur de la propriété **enableFIPS**, régénérez la plateforme Android.
 
-**Remarque : **Vous devez installer le plug-in FIPS Cordova avant d'affecter la valeur true à la propriété enableFIPS. Sinon, un message d'avertissement est consigné pour indiquer que la valeur initOption est définie, mais que la fonction facultative est introuvable. Les fonctions FIPS 140-2 et JSONStore sont facultatives sur le système d'exploitation Android. La norme FIPS 140-2 affecte le chiffrement de données JSONStore uniquement si la fonction facultative JSONStore est également activée. Si la fonction JSONStore n'est pas activée, elle n'est pas affectée par la norme FIPS 140-2. Sous iOS, la fonction facultative FIPS 140-2 n'est pas requise pour le chiffrement JSONStore FIPS 140-2 (données inactives) ou HTTPS (données dynamiques) car ces deux mécanismes sont gérés par iOS. Sous Android, vous devez activer la fonction facultative FIPS 140-2 si vous souhaitez utiliser le chiffrement JSONStore FIPS 140-2 ou HTTPS.
+**Remarque : **Vous devez installer le plug-in FIPS Cordova avant d'affecter la valeur true à la propriété enableFIP. Sinon, un message d'avertissement est consigné pour indiquer que la valeur initOption est définie, mais que la fonction facultative est introuvable. Les fonctions FIPS 140-2 et JSONStore sont facultatives sur le système d'exploitation Android. La norme FIPS 140-2 affecte le chiffrement de données JSONStore uniquement si la fonction facultative JSONStore est également activée. Si la fonction JSONStore n'est pas activée, elle n'est pas affectée par la norme FIPS 140-2. Sous iOS, la fonction facultative FIPS 140-2 n'est pas requise pour le chiffrement JSONStore FIPS 140-2 (données inactives) ou HTTPS (données dynamiques) car ces deux mécanismes sont gérés par iOS. Sous Android, vous devez activer la fonction facultative FIPS 140-2 si vous souhaitez utiliser le chiffrement JSONStore FIPS 140-2 ou HTTPS.
 
 ```bash
 [WARN] FIPSHttp feature not found, but initOptions enables it on startup

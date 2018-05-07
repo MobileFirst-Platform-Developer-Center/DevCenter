@@ -1,22 +1,28 @@
 ---
 layout: tutorial
-title: Implementing Secure Direct Update
+title: Implementación de Direct Update seguro
 breadcrumb_title: Secure Direct Update
 relevantTo: [cordova]
 weight: 2
 ---
 
-## Overview
+## Visión general
 {: #overview }
-For secure Direct Update to work, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.
+Para que Direct Update funcione, se debe desplegar un archivo de almacén de claves definido por el usuario en {{ site.data.keys.mf_server }}. Además, es necesario incluir una copia de la clave pública correspondiente en la aplicación de cliente desplegada.
 
-This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in {{ site.data.keys.mf_server }}, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
-The server provides a built-in keystore that can be used for testing secure Direct Update for development phases.
+En este tema se describe cómo vincular una clave pública a nuevas aplicaciones de cliente y a aplicaciones de cliente existentes que se hayan actualizado.
+Para obtener más información sobre cómo configurar el almacén de claves en {{ site.data.keys.mf_server }}, consulte [Configuración del almacén de claves de {{ site.data.keys.mf_server }}](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
-**Note:** After you bind the public key to the client application and rebuild it, you do not need to upload it again to the {{ site.data.keys.mf_server }}. However, if you previously published the application to the market, without the public key, you must republish it.
+El servidor incorpora un almacén de claves que sirve para probar Direct Update de forma segura en las fases de desarrollo.
 
-For development purposes, the following default, dummy public key is provided with {{ site.data.keys.mf_server }}:
+
+**Nota: **
+Después de vincular la clave pública con la aplicación de cliente y de recompilarla, no necesita subirla de nuevo a {{ site.data.keys.mf_server }}. Sin embargo, si con anterioridad publicó la aplicación en el mercado, sin la clave pública, necesitará publicarla de nuevo.
+
+
+A efectos de desarrollo, se proporciona con {{ site.data.keys.mf_server }} la siguiente clave pública de pruebas predeterminada:
+
 
 ```xml
 -----BEGIN PUBLIC KEY-----
@@ -36,38 +42,45 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 -----END PUBLIC KEY-----
 ```
 
-> Important: Do not use the public key for production purposes.
+> Importante: No utilice la clave pública a efectos de producción.
 
-## Generating and deploying the keystore
+## Generación y despliegue del almacén de claves
 {: #generating-and-deploying-the-keystore }
-There are many tools available for generating certificates and extracting public keys from a keystore. The following example demonstrates the procedures with the JDK keytool utility and openSSL.
+Hay muchas herramientas disponibles para generar certificados y extraer las claves públicas de un almacén de claves.
+En el siguiente ejemplo se muestran los procedimientos con el programa de utilidad keytool del JDK y openSSL.
 
-1. Extract the public key from the keystore file that is deployed in the {{ site.data.keys.mf_server }}.  
-   Note: The public key must be Base64 encoded.
+1. Extraiga la clave pública del archivo de almacén de claves que se ha desplegado en {{ site.data.keys.mf_server }}.    
+   Nota: La clave pública debe estar codificada en Base64.
+
     
-   For example, assume that the alias name is `mfp-server` and the keystore file is **keystore.jks**.  
-   To generate a certificate, issue the following command:
+   Por ejemplo, supongamos que el nombre de alias es `mfp-server` y que el archivo del almacén de claves es **keystore.jks**.  
+ Para generar un certificado, emita el siguiente mandato:
     
    ```bash
    keytool -export -alias mfp-server -file certfile.cert
    -keystore keystore.jks -storepass keypassword
    ```
     
-   A certificate file is generated.  
-   Issue the following command to extract the public key:
+   Se genera un archivo de certificado.
+  
+ Emita el siguiente mandato para extraer la clave pública:
     
    ```bash
    openssl x509 -inform der -in certfile.cert -pubkey -noout
    ```
     
-   **Note:** Keytool alone cannot extract public keys in Base64 format.
+   **Nota:** Con únicamente la herramienta de claves no es posible extraer claves públicas en formato Base64.
     
-2. Perform one of the following procedures:
-    * Copy the resulting text, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers into the mfpclient property file of the application, immediately after `wlSecureDirectUpdatePublicKey`.
-    * From the command prompt, issue the following command: `mfpdev app config direct_update_authenticity_public_key <public_key>`
-    
-    For `<public_key>`, paste the text that results from Step 1, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers.
+2. Siga uno de los siguientes procedimientos:
 
-3. Run the cordova build command to save the public key in the application.
+    * Copie el texto resultante, sin los marcadores `BEGIN PUBLIC KEY` y `END PUBLIC KEY` en el archivo de propiedades mfpclient de la aplicación, inmediatamente después de `wlSecureDirectUpdatePublicKey`.
+    * Desde el indicador de mandatos, emita el siguiente mandato:
+`mfpdev app config direct_update_authenticity_public_key <public_key>`
+    
+    Para `<public_key>`, pegue el texto que se obtiene del Paso 1, sin los marcadores `BEGIN PUBLIC KEY` y `END PUBLIC KEY`.
+
+
+3. Ejecute el mandato cordova build para guardar la clave pública en la aplicación.
+
 
 

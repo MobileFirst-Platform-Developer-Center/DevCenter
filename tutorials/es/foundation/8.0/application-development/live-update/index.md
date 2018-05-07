@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Live Update
-relevantTo: [ios,android]
+relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - name: Download Xcode project
@@ -12,23 +12,32 @@ downloads:
     url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-User segmentation is the practice of dividing users into groups that reflect similarity among users in each group. A common example is [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), that is, dividing users on a geographical basis. The goal of segmenting users is to decide how to relate to them in each segment in order to maximize value.
+La segmentación de usuarios es la práctica de dividir los usuarios en grupos que reflejen su parecido respecto a otros usuarios en cada grupo.
+Un ejemplo habitual sería una [segmentación geográfica](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), esto es, la división de los usuarios en base a ubicación geográfica.
+El objetivo de la segmentación de usuarios es relacionarlos entre sí en cada segmento con el propósito de maximizar valores.
 
-The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
 
-#### Common Use Cases
+La característica Live Update en {{ site.data.keys.product }} proporciona una forma simple de definir y ofrecer distintas configuraciones para cada segmento de usuarios de una aplicación.
+Incluye un componente en {{ site.data.keys.mf_console }} para definir la estructura de la configuración así como los valores de la configuración para cada segmento.
+También se proporciona un SDK de cliente (disponible para Android e iOS **nativas** y Cordova) para consumir la configuración.
+
+
+#### Casos de uso comunes
 {: #common-use-cases }
-Live Update supports defining and consuming segment-based configurations, making it easy to make segment-based customizations to the application. Common use cases can be:
+Live Update da soporte a la definición y utilización de configuraciones basadas en segmentos, haciendo más fácil realizar personalizaciones basadas en segmentos para la aplicación.
+Los casos de uso comunes pueden ser:
 
-* Release trains and feature flipping
-* A/B testing
-* Context-based customization of the application (e.g. geographic segmentation)
 
-#### Demonstration
+* Trenes de releases y cambios de características
+* Realización de pruebas A/B 
+* Personalización basada en el contexto de la aplicación (por ejemplo, segmentación geográfica)
+
+#### Demostración
 {: #demonstration }
-The following video provides a demonstration of the Live Update feature.
+En el siguiente vídeo se proporciona una demostración de la característica Live Update.
+
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
@@ -36,112 +45,141 @@ The following video provides a demonstration of the Live Update feature.
     </div>
 </div>
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Live Update Architecture](#live-update-architecture)
-* [Adding Live Update to {{ site.data.keys.mf_server }}](#adding-live-update-to-mobilefirst-server)
-* [Configuring Application Security](#configuring-application-security)
-* [Schema and Segments](#schema-and-segments)
-* [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
-* [Using the Live Update SDK](#using-the-live-update-sdk)
-* [Advanced Topics](#advanced-topics)
-* [Sample Application](#sample-application)
+* [Arquitectura de Live Update](#live-update-architecture)
+* [Adición de Live Update a {{ site.data.keys.mf_server }}](#adding-live-update-to-mobilefirst-server)
+* [Configuración de la seguridad de las aplicaciones](#configuring-application-security)
+* [Esquema y segmentos](#schema-and-segments)
+* [Adición de Live Update SDK a aplicaciones](#adding-live-update-sdk-to-applications)
+* [Utilización de Live Update SDK](#using-the-live-update-sdk)
+* [Temas avanzados](#advanced-topics)
+* [Aplicación de ejemplo](#sample-application)
 
 
-## Live Update Architecture
+## Arquitectura de Live Update
 {: #live-update-architecture }
-The following system components function together in order to provide the Live Update functionality.
+Los siguientes componentes de sistema funcionan de forma conjunta con el propósito de proporcionar la funcionalidad de Live Update.
 
-![Architecture overview](architecture_overview.png)
 
-* **Live Update adapter:** an adapter which provides:
- - Application schema and segments management
- - Serving configurations to applications
-* **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context.
-* **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the {{ site.data.keys.mf_server }}.
-* **{{ site.data.keys.mf_console }}:** used for configuring the Live Update adapter and settings.
-* **Configuration Service:** *Internal*. Provides configuration management services for the Live Update adapter.
+![Visión general de la arquitectura](architecture_overview.png)
 
-## Adding Live Update to {{ site.data.keys.mf_server }}
+* **Adaptador de Live Update:** adaptador que proporciona:
+
+ - Gestión de segmentos y esquema de aplicación
+ - Aprovisionamiento de configuraciones a las aplicaciones
+* **Adaptador resolvedor de segmentos: ** *Opcional*.
+Se trata de un adaptador que implementan los desarrolladores.
+El adaptador recibe un contexto de aplicación (como por ejemplo, un contexto de usuario y dispositivo, así como parámetros personalizados) y devuelve el ID de un segmento que corresponde al contexto.
+
+* **SDK del lado de cliente:** Live Update SDK sirve para recuperar y acceder a elementos de configuración como, por ejemplo, las propiedades y características desde {{ site.data.keys.mf_server }}.
+* **{{ site.data.keys.mf_console }}:** Se utiliza para configurar los valores y el adaptador de Live Update.
+
+* **Servicio de configuración:** *Interno*. Proporciona servicios de gestión de configuración para el adaptador de Live Update.
+
+
+## Adición de Live Update a {{ site.data.keys.mf_server }}
 {: #adding-live-update-to-mobilefirst-server }
-By default, Live Update Settings in the {{ site.data.keys.mf_console }} is hidden. To enable, the provided Live Update adapter needs to be deployed.  
+De forma predeterminada, los valores de Live Update en {{ site.data.keys.mf_console }} no se visualizan.
+Para ello, es necesario desplegar el adaptador de Live Update.
+  
 
-1. Open the {{ site.data.keys.mf_console }}. From the sidebar navigation click on **Download Center → Tools** tab.
-2. Download and deploy the Live Update adapter.
+1. Abra {{ site.data.keys.mf_console }}. Desde la navegación lateral, pulse el separador **Centro de descargas → Herramientas**.
 
-Once deployed, the **Live Update Settings** screen is then revealed for each registered application.
+2. Descargue y despliegue el adaptador Live Update.
 
-<img class="gifplayer" alt="Deploy live update" src="deploy-live-update.png"/>
 
-## Configuring Application Security
+Una vez desplegado, aparecerá la pantalla **Valores de Live Update** para cada aplicación registrada.
+
+
+<img class="gifplayer" alt="Desplegar Live Update" src="deploy-live-update.png"/>
+
+## Configuración de la seguridad de las aplicaciones
 {: #configuring-application-security }
-In order to allow integration with Live Update, a scope element is required. Without it, the adapter will reject requests from client applications.  
+Con el propósito de permitir la integración con Live Update, se necesita un elemento de ámbito.
+Sin este elemento, el adaptador rechazará las solicitudes de las aplicaciones de cliente.
+  
 
-Load the {{ site.data.keys.mf_console }} and click on **[your application] → Security tab → Scope-Elements Mapping**. Click **New** and enter the scope element **configuration-user-login**. Then, click **Add**.
+Cargue {{ site.data.keys.mf_console }} y pulse **[su aplicación] → separador Seguridad → Correlaciones de elementos de ámbito**. Pulse **Nuevo** y especifique el elemento de ámbito **configuration-user-login**.
+A continuación, pulse **Añadir**.
 
-You can also map the scope element to a security check in case you're using one in your application.
+También puede correlacionar el elemento de ámbito con una comprobación de seguridad en el caso de que utilice una en su aplicación.
 
-> [Learn more about the {{ site.data.keys.product_adj }} security framework](../../authentication-and-security/)
 
-<img class="gifplayer" alt="Add a scope mapping" src="scope-mapping.png"/>
+> [Aprenda más sobre la infraestructura de seguridad de {{ site.data.keys.product_adj }}](../../authentication-and-security/)
 
-## Schema and Segments
+<img class="gifplayer" alt="Añadir una correlación de ámbito" src="scope-mapping.png"/>
+
+## Esquema y segmentos
 {: #schema-and-segments }
-Two tabs are available in the Live Update Settings screen:
+En la pantalla de Valores de Live Update hay disponibles dos separadores:
 
-#### Schema
-{: #schema }
-A schema is where features and properties are defined.  
 
-* Using "features" you can define configurable application features and set their default value.  
-* Using "properties" you can define configurable application properties and set their default value.
+#### Qué es un esquema
+{: #what-is-schema }
+Un esquema es el elemento donde se definen sus propiedades y características.
+  
 
-#### Segments
+* Mediante las "características" se definen características de aplicación configurables y se establecen sus valores predeterminados.
+  
+* Mediante las "propiedades" se definen propiedades de aplicación configurables y se establecen sus valores predeterminados.
+
+
+#### Segmentos
 {: #segments }
-Segments define unique application behaviors by customizing the default features and properties defined by the schema.
+Los segmentos definen comportamientos de aplicación únicos al personalizar las características y las propiedades predeterminadas que el esquema define.
 
-### Adding Schema and Segments
+
+### Adición de esquema y segmentos
 {: #adding-schema-and-segments }
-Before adding a schema and segments for an applicaiton, the developer or product management team need to reach a decision about several aspects:
+Antes de añadir un esquema y segmentos para una aplicación, el equipo de gestión del producto o los desarrolladores necesitan decidir sobre los distintos aspectos:
 
-* The set of **features** to utilize Live Update for as well as their default state
-* The set of configurable string **properties** and their default value
-* The market segments for the application
 
-For each market segment it should be decided:
+* El conjunto de **características** que utilizar con Live Update así como su estado predeterminado.
 
-* What is the state of every feature, and how this state can change during the application lifetime
-* What is the value of every property, and how this value can change during the application lifetime
+* El conjunto de series **properties** configurables y sus valores predeterminados
+
+* Los segmentos de mercado para la aplicación
+
+Para cada segmento de mercado se debería decidir:
+
+
+* El estado de cada característica, y de cómo este estado puede cambiar durante el tiempo de vida de la aplicación.
+
+* El estado de cada propiedad, y de cómo esta propiedad puede cambiar durante el tiempo de vida de la aplicación.
+
 
 <br/>
-Once the parameters are decided upon, Schema features &amp; properties and Segments can be added.  
-To add, click **New** and provide the requested values.
+Una vez los parámetros estén decididos, se podrán añadir características y propiedades de esquema.
+  
+Para añadir, pulse **Nuevo** y proporcione los valores solicitados.
+
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="schema">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSchema" aria-expanded="false" aria-controls="collapseSchema">Click to review schema terminology</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSchema" aria-expanded="false" aria-controls="collapseSchema">Pulse para revisar la terminología del esquema</a>
             </h4>
         </div>
 
         <div id="collapseSchema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema">
             <div class="panel-body">
                 <ul>
-                    <li><b>Feature:</b> A feature determines if some part of the application functionality is enabled or disabled. When defining a feature in the schema of an application the following elements should be provided:
+                    <li><b>Característica:</b> Una característica determina si alguna parte de la funcionalidad de la aplicación se habilita o inhabilita. Al definir una característica en el esquema de una aplicación se deben proporcionar los siguientes elementos:
                         <ul>
-                            <li><i>id</i> – A unique feature identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of the feature. String, Editable.</li>
-                            <li><i>description</i> – A short description of the feature. String, Editable.</li>
-                            <li><i>defaultValue</i> – The default value of the feature that will be served unless it was overridden inside the segment (see Segment below). Boolean, Editable.</li>
+                            <li><i>id</i> – Identificador de característica exclusivo. Serie no editable. </li>
+                            <li><i>name</i> - Nombre descriptivo de la característica. Serie editable. </li>
+                            <li><i>description</i> - Descripción breve de la característica. Serie editable. </li>
+                            <li><i>defaultValue</i> – Valor predeterminado de la característica que se ofrecerá mientras no sea modificado dentro del segmento (consulte segmento más abajo). Booleano editable. </li>
                         </ul>
                     </li>
-                    <li><b>Property:</b> A property is a key:value entity that can be used to customize applications. When defining a property in the schema of an application the following elements should be provided:
-                        <ul>
-                            <li><i>id</i> – A unique property identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of a property. String, Editable.</li>
-                            <li><i>description</i> – A short description of the property. String, Editable.</li>
-                            <li><i>defaultValue</i> - The default value of the property that will be served unless it was overridden inside the segment (see Segment below). String, Editable.</li>
+                    <li><b>Propiedad:</b> Una propiedad es una entidad clave:valor que se puede utilizar para personalizar aplicaciones. Al definir una propiedad en el esquema de una aplicación se deben proporcionar los siguientes elementos:
+                       <ul>
+                            <li><i>id</i> – Identificador de propiedad exclusivo. Serie no editable. </li>
+                            <li><i>name</i> - Nombre descriptivo de una propiedad. Serie editable. </li>
+                            <li><i>description</i> - Descripción breve de la propiedad. Serie editable. </li>
+                            <li><i>defaultValue</i> – Valor predeterminado de la propiedad que se ofrecerá mientras no sea modificado dentro del segmento (consulte segmento más abajo). Serie editable. </li>
                         </ul>
                     </li>
                 </ul>
@@ -152,28 +190,28 @@ To add, click **New** and provide the requested values.
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="segment">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSegment" aria-expanded="false" aria-controls="collapseSegment">Click to review segment terminology</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSegment" aria-expanded="false" aria-controls="collapseSegment">Pulse para revisar la terminología de segmento</a>
             </h4>
         </div>
 
         <div id="collapseSegment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="segment">
             <div class="panel-body">
                 <ul>
-                    <li><b>Segment:</b> A segment is an entity that corresponds to a market segment. It contains the features and properties that were defined in the schema and potentially overriding values. When defining a Segment the  following elements should be provided:
+                    <li><b>Segmento:</b> Un segmento es una entidad que corresponde a un segmento del mercado. Contiene características y propiedades que se definieron en el esquema y que potencialmente pueden modificar valores. Al definir un segmento se deben proporcionar los siguientes elementos:
                         <ul>
-                            <li><i>id</i> - A unique segment identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of segment. String, Editable.</li>
-                            <li><i>description</i> – A short description of segment. String, Editable.</li>
-                            <li><i>Features</i>  - the list of features as defined in the schema, the user can set a static value to a feature which is different from the schema default.</li>
-                            <li><i>Properties</i> - the list of properties as defined in the schema, the user can set a static value to a property which is different from the schema default.</li>
+                            <li><i>id</i> - Identificador de segmento exclusivo. Serie no editable. </li>
+                            <li><i>name</i> - Nombre descriptivo de un segmento. Serie editable. </li>
+                            <li><i>description</i> - Descripción breve del segmento. Serie editable. </li>
+                            <li><i>Característica</i>  - En la lista de características tal como se definen en el esquema, el usuario puede establecer un valor estático para una característica que difiera del valor predeterminado del esquema. </li>
+                            <li><i>Propiedades</i> - En la lista de propiedades tal como se definen en el esquema, el usuario puede establecer un valor estático para una propiedad que difiera del valor predeterminado del esquema. </li>
                         </ul>
                     </li>
                 </ul>
 
-                <blockquote><b>Note:</b><br/>
+                <blockquote><b>Nota:</b><br/>
                     <ul>
-                        <li>When a feature or property is added to a schema, a corresponding feature or property is automatically added to all segments of an application (with the default value)</li>
-                        <li>When a feature or property is removed from a schema, the corresponding feature or property is automatically removed from all the segments of an application.</li>
+                        <li>Cuando una característica o propiedad se añade a un esquema, la correspondiente propiedad o característica se añade de forma automática a todos los segmentos de una aplicación (con el valor predeterminado)</li>
+                        <li>Cuando una característica o propiedad se elimina de un esquema, la correspondiente característica o propiedad se elimina de forma automática de todos los segmentos de una aplicación. </li>
                     </ul>
                 </blockquote>
             </div>
@@ -181,42 +219,47 @@ To add, click **New** and provide the requested values.
     </div>
 </div>
 
-#### Define Schema features and properties with default values
+#### Definición de propiedades y características de esquema con los valores predeterminados
 {: #define-schema-features-and-properties-with-default-values }
-<img class="gifplayer" alt="Add schema feature and property" src="add-feature-property.png"/>
+<img class="gifplayer" alt="Añadir propiedad y característica de esquema" src="add-feature-property.png"/>
 
-#### Define segments that correspond to market segments
+#### Definición de segmentos que corresponden a segmentos de mercado
 {: #define-degments-that-correspond-to-market-segments }
-<img class="gifplayer" alt="Add a segment" src="add-segment.png"/>
+<img class="gifplayer" alt="Añadir un segmento" src="add-segment.png"/>
 
-#### Override default values of features and properties
+#### Modificación de los valores predeterminados de características y propiedades
 {: #override-default-values-of-features-and-properties }
-Enable a feature and change its default state.
-<img class="gifplayer" alt="Enable a feature" src="feature-enabling.png"/>
+Habilite una característica y cambie su estado predeterminado.
 
-Override the default value of a property.
-<img class="gifplayer" alt="Override a property" src="property-override.png"/>
+<img class="gifplayer" alt="Habilitar una característica" src="feature-enabling.png"/>
 
-## Adding Live Update SDK to applications
+Modifique el valor predeterminado de una propiedad. 
+<img class="gifplayer" alt="Modificar una propiedad" src="property-override.png"/>
+
+## Adición de Live Update SDK a las aplicaciones
 {: #adding-live-update-sdk-to-applications}
-The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the {{ site.data.keys.mf_console }}.
+Live Update SDK proporciona a los desarrolladores una API para consultar propiedades y características de configuración de tiempo de ejecución de consulta que con anterioridad estaban definidas en la pantalla de Valores de Live Update de la aplicación registrada en {{ site.data.keys.mf_console }}.
 
-* [Cordova plugin documentation](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
-* [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
-* [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
 
-### Adding the Cordova plugin
+* [Documentación del plugin de Cordova](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
+* [Documentación de iOS Swift SDK ](https://github.com/mfpdev/mfp-live-update-ios-sdk)
+* [Documentación de Android SDK ](https://github.com/mfpdev/mfp-live-update-android-sdk)
+
+### Adición del plugin de Cordova
 {: #adding-the-cordova-plugin }
-In your Cordova application folder run:
+En la carpeta de la aplicación de Cordova ejecute:
+
 
 ```bash
 cordova plugin add cordova-plugin-mfp-liveupdate
 ```
 
-### Adding the iOS SDK
+### Adición de iOS SDK
 {: #adding-the-ios-sdk }
-1. Edit your application's podfile by adding the `IBMMobileFirstPlatformFoundationLiveUpdate` pod.  
- For example:
+1. Edite el podfile de la aplicación añadiendo el pod `IBMMobileFirstPlatformFoundationLiveUpdate`.
+  
+Por ejemplo:
+
 
    ```xml
    use_frameworks!
@@ -227,12 +270,14 @@ cordova plugin add cordova-plugin-mfp-liveupdate
    end
    ```
 
-2. From a **command-line** window, nagivate to the Xcode project's root folder and run the commmand: `pod install`.
+2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Xcode y ejecute el mandato:
+`pod install`.
 
-### Adding the Android SDK
+### Adición de Android SDK
 {: #adding-the-android-sdk }
-1. In Android Studio, select **Android → Gradle Scripts**, then select the **build.gradle (Module: app)** file.
-2. Add `ibmmobilefirstplatformfoundationliveupdate` inside `dependencies`:
+1. En Android Studio, seleccione **Android → Scripts de Gradle** y, a continuación, seleccione el archivo **build.gradle (Módulo: app)**.
+
+2. Añada `ibmmobilefirstplatformfoundationliveupdate` dentro de `dependencies`:
 
    ```xml
    dependencies {
@@ -250,14 +295,16 @@ cordova plugin add cordova-plugin-mfp-liveupdate
    }   
    ```
 
-## Using the Live Update SDK
+## Utilización de Live Update SDK
 {: #using-the-live-update-sdk }
-There are several approaches to using the Live Update SDK.
+Existen varias maneras de utilizar Live Update SDK.
 
-### Pre-determined Segment
+### Segmentos predeterminados
 {: #pre-determined-segment }
-Implement logic to retrieve a configuration for a relevant segment.  
-Replace "segment-name", "property-name" and "feature-name" with your own.
+Lógica de implementación para recuperar una configuración de un segmento concreto.
+  
+Sustituya "segment-name", "property-name" y "feature-name" con sus propios valores.
+
 
 #### Cordova
 {: #cordova }
@@ -308,24 +355,33 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 });
 ```
 
-With the Live Update configuration retrieved, the applicative logic and the application flow can be based on the state of features and properties. For example, if today is a national holiday, introduce a new marketing promotion in the application.
+Con la configuración de Live Update recuperada, la lógica de la aplicación y el flujo de la aplicación se basará en el estado de las características y propiedades.
+Por ejemplo, si hoy es una fiesta nacional, se presentará una nueva promoción de marketing en la aplicación.
 
-### Segment Resolver adapter
+
+### Adaptador resolvedor de segmentos
 {: #segment-resolver-adapter }
-In the [Live Update Architecture](#live-update-architecture) topic, a "segment resolver" adapter was mentioned.  
-The purpose of this adapter is to provide custom business logic for retrieving a segment based on the application/device/user context and applicative custom parameters.
+En el tema [Arquitectura de Live Update](#live-update-architecture), se mencionó un adaptador "resolvedor de segmentos".
+  
+El propósito de este adaptador es proporcionar una lógica empresarial personalizada para recuperar un segmento base al contexto de usuario/aplicación/dispositivo y los parámetros personalizados del aplicativo.
 
-To use a Segment Resolver adapter:
 
-1. [Create a new Java adapter](../../adapters/creating-adapters/).
-2. Define the adapter as the Segment Resolver adpater in **Adapters → Live Update adapter → segmentResolverAdapterName**.
-3. When development is done remember [to build and deploy it as well](../../adapters/creating-adapters/).
+Para utilizar un adaptador resolvedor de segmentos:
 
-The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends it back to the application.
 
-To obtain the configuration by parameters, use the Live Update API to send the request:
+1. [Cree un nuevo adaptador Java](../../adapters/creating-adapters/).
+2. Defina el adaptador como un adaptador resolvedor de segmentos en **Adaptadores → Adaptador de Live Update → segmentResolverAdapterName**.
+3. Cuando se haya completado el desarrollo, recuerde también [compilarlo y desplegarlo](../../adapters/creating-adapters/).
 
-#### Cordova
+
+El adaptador resolvedor de segmentos define una interfaz REST.
+La solicitud a este adaptador contiene en su cuerpo toda la información necesaria para decidir el segmento al que pertenece el usuario final y lo envía de vuelta a la aplicación.
+
+
+Si desea obtener la configuración mediante parámetros, utilice la API Live Update para enviar la solicitud:
+
+
+#### Resolvedor de Cordova
 {: cordova-resolver }
 ```javascript
 var input = { params : { 'paramKey': 'paramValue'} ,useClientCache : true };                                                                                                    
@@ -374,14 +430,19 @@ LiveUpdateManager.getInstance().obtainConfiguration(params , new ConfigurationLi
 });
 ```
 
-#### Adapter implementation
+#### Implementación de adaptador
 {: #adapter-implementation }
-The arguments that are provided by the application using the Live Update client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter. This is done automatically by the Live Update adapter without any developer action needed.
+Los argumentos que la aplicación proporciona mediante el SDK de cliente de Live Update se pasan entonces al adaptador de Live Update y desde allí al adaptador resolvedor de segmentos.
+Esto lo realiza de forma automática el adaptador de Live Update sin que se necesite acción alguna por parte del desarrollador.
 
-Update your newly created Segment Resolver adapter's implementation to handle these arguments to return the relevant segment.  
-The below is sample code you can use.
 
-**Note:** Make sure to add the Gson dependency in your adapter's `pom.xml`:
+Actualice la implementación del adaptador resolvedor de segmentos recién creado para manejar estos argumentos para devolver el segmento relevante.
+  
+A continuación se muestra el código de ejemplo que puede utilizar.
+
+
+**Nota:** Asegúrese de añadir la dependencia Gson en su `pom.xml` del adaptador:
+
 
 ```xml
 <dependency>
@@ -463,54 +524,56 @@ public class ResolverAdapterData {
 }
 ```
 
-#### REST interface of the Segment Resolver adapter
+#### Interfaz REST del adaptador resolvedor de segmentos
 {: #rest-interface-of-the-segment-resolver-adapter }
-**Request**
+**Solicitud**
 
-| **Attribute** |  **Value**                                                                                     |  
+| **Atributo** |  **Valor**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
 | *URL*           | /segment                                                                                          |
-| *Method*        | POST                                                                                              |               
-| *Content-type*  | application/json                                                                                  |
-| *Body*          | &lt;JSON object containing all required information for segment resolving&gt;                     |
+| *Método*        | POST                                                                                              |               
+| *Tipo de contenido*  | application/json                                                                                  |
+| *Cuerpo*          | &lt;objeto JSON con toda la información necesaria para la resolución de segmentos&gt;                     |
 
-**Response**
+**Respuesta**
 
-|  **Attribute**   |  **Value**                                |
+|  **Atributo** |  **Valor**                                                                                     |
 |:-------------------|:--------------------------------------------|
-| *Content-type*     | text/plain                                  |                                                                          
-| *Body*             |  &lt;string describing the segment ID&gt;   |
+| *Tipo de contenido*  | text/plain                                  |                                                                          
+| *Cuerpo*          |  &lt;serie que describe el ID de segmento&gt;   |
 
 
-## Advanced Topics
+## Temas avanzados
 {: #advanced-topics }
-### Import/Export
+### Importación/Exportación
 {: #importexport }
-Once a schmea and segments have been defined, the system administrator can export and import them to other server instances.
+Una vez se hayan definido esquemas y segmentos, el administrador del sistema puede exportarlos e importarlos a otras instancias de servidor.
 
-#### Export schema
+
+#### Exportación de esquema
 {: #export-schema }
 ```bash
 curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > schema.txt
 ```
 
-#### Import schema
+#### Importación de esquema
 {: #import-schema }
 ```bash
 curl -X PUT -d @schema.txt --user admin:admin -H "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema
 ```
 
-* Replace "admin:admin" with your own (default is "admin")
-* Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
+* Sustituya "admin:admin" con su propio valor (el valor predeterminado es "admin")
+* Sustituya "localhost" y el número de puerto con el suyo propio si es necesario
+* Sustituya el identificador de aplicación "com.sample.HelloLiveUpdate" con el de su propia aplicación.
 
-#### Export segment(s)
+
+#### Exportación de segmentos
 {: #export-segments }
 ```bash
 curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment?embedObjects=true > segments.txt
 ```
 
-#### Import segment(s)
+#### Importación de segmentos
 {: #import-segments }
 ```bash
 #!/bin/bash
@@ -524,18 +587,23 @@ do
 done
 ```
 
-* Replace "admin:admin" with your own (default is "admin")
-* Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
+* Sustituya "admin:admin" con su propio valor (el valor predeterminado es "admin")
+* Sustituya "localhost" y el número de puerto con el suyo propio si es necesario
+* Sustituya el identificador de aplicación "com.sample.HelloLiveUpdate" con el de su propia aplicación.
 
-### Caching
+
+### Colocación en caché
 {: #caching }
-Caching is enabled by default in order to avoid network latency. This means that updates may not take place immediately.  
-Caching can be disabled if more frequent updates are required.
+De forma predeterminada está habilitada la colocación en caché para evitar la latencia de red.
+Esto significa que es posible que las actualizaciones no se realicen de forma inmediata.
+  
+La colocación en caché se puede inhabilitar si se necesitan actualizaciones más frecuentes.
+
 
 #### Cordova
 {: #cordova-caching }
-controlling client side cache by using an optional _useClientCache_ boolean flag:
+Controle la caché del lado del cliente mediante la utilización del distintivo booleano _useClientCache_ opcional:
+
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };
@@ -582,28 +650,38 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 });
 ```
 
-### Cache expiration
+### Caducidad de caché
 {: #cache-expiration }
-The `expirationPeriod` value that is defined in **Adapters → Live Update adapter** dictates the length of time until the caching expires.
+El valor `expirationPeriod` que se define en **Adaptadores → Adaptador de Live Update** determina la longitud hasta que la colocación en caché caduca.
 
-<img alt="Image of the sample application" src="live-update-app.png" style="margin-left: 10px;float:right"/>
 
-## Sample application
+<img alt="Imagen de aplicación de ejemplo" src="live-update-app.png" style="margin-left: 10px;float:right"/>
+
+## Aplicación de ejemplo
 {: #sample-application }
-In the sample application you select a country flag and using Live Update the app then outputs text in language that corresponds to the selected country. If enabling the map feature and providing the map, a map of the corresponding country will be displayed.
+En la aplicación de ejemplo seleccione una bandera de un país y, a continuación, con la ayuda de Live Update la aplicación a continuación genera texto de salida en el idioma que corresponde al país seleccionado.
+Si se habilita la característica de mapa y se proporciona un mapa, se visualizará el correspondiente país.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) the Xcode project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) the Android Studio project.
 
-### Sample usage
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) el proyecto de Xcode.
+  
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) el proyecto de Android Studio.
+
+
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.
 
-#### Changing Live Update Settings
+#### Cómo cambiar los valores de Live Update
 {: #changing-live-update-settings }
-Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
+Cada segmento obtiene el valor predeterminado del esquema.
+Cambie cada uno de ellos según el idioma.
+Por ejemplo, para el francés, añada: **helloText** - **Bonjour le monde**.
 
-In **{{ site.data.keys.mf_console }} → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
 
-* Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
-* To see the map while using the app, you need to enable to `includeMap` feature.
+En **{{ site.data.keys.mf_console }} → [su aplicación] → Valores de Live Update → separador Segmentos**, pulse en el enlace **Propiedades** que le corresponde, por ejemplo para **FR**.
+
+* Pulse el icono **Editar** y proporcione un enlace a una imagen que se representa por ejemplo para el mapa geográfico de Francia.
+
+* Para ver el mapa mientras se utiliza la aplicación, necesita habilitar la característica `includeMap`.
+

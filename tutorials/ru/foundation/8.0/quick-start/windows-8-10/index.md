@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для Windows 8.1 Universal и Windows 10 UWP
+title: Сквозная демонстрация для Windows 8.1 Universal и Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
@@ -54,10 +54,10 @@ weight: 4
 
    ```csharp
    try
-      {
+                   {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -106,10 +106,11 @@ weight: 4
 {: 5-testing-the-application }
 1. В Visual Studio выберите файл **mfpclient.resw** и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 
-    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myBluemixServer`.
-
+    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myIBMCloudServer`.
+    
 2. Нажмите кнопку **Запустить приложение**.
 
 ### Результаты
@@ -119,7 +120,7 @@ weight: 4
 
 Ответ адаптера отображается в консоли вывода Visual Studio.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }}](success_response.png)
+![Приложение после успешного вызова ресурса из {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Дальнейшие действия
 {: #next-steps }

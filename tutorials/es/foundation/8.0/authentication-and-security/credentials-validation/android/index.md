@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Android applications
+title: Implementación del manejador de desafíos en aplicaciones Android
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
@@ -11,10 +11,10 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+Al intentar acceder al recurso protegido, el servidor (la comprobación de seguridad) devuelve al cliente una lista que contiene uno o más **desafíos** que debe gestionar el cliente.  
+Esta lista se recibe como un objeto `JSON`, listando el nombre de la comprobación de seguridad con un `JSON` opcional de datos adicionales:
 
 ```json
 {
@@ -27,16 +27,16 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client must then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+A continuación, el cliente debe registrar un **manejador de desafíos** para cada comprobación de seguridad.  
+El manejador de desafíos define el comportamiento del lado de cliente que es específico de la comprobación de seguridad.
 
-## Creating the challenge handler
+## Creación del manejador de desafíos
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+Un manejador de desafíos es una clase que maneja desafíos enviados por {{ site.data.keys.mf_server }} como, por ejemplo, la visualización de una pantalla de inicio de sesión, la recopilación de credenciales y la devolución a la comprobación de seguridad.
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`) and an optional `errorMsg`.
+En este ejemplo, la comprobación de seguridad es `PinCodeAttempts` que se definió en [Implementación de CredentialsValidationSecurityCheck](../security-check). El desafío que ha enviado la comprobación de seguridad contiene el número de intentos restantes para iniciar sesión (`remainingAttempts`) y un `errorMsg` opcional.
 
-Create a Java class that extends `SecurityCheckChallengeHandler`:
+Cree una clase Java que amplíe `SecurityCheckChallengeHandler`:
 
 ```java
 public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
@@ -44,11 +44,11 @@ public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
 }
 ```
 
-## Handling the challenge
+## Manejo de un desafío
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement a constructor and a `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSONObject`.
+El requisito mínimo del protocolo `SecurityCheckChallengeHandler` es implementar un constructor y un método `handleChallenge` que le solicite al usuario las credenciales. El método `handleChallenge` recibe el desafío como un `JSONObject`.
 
-Add a constructor method:
+Añadir un método constructor:
 
 ```java
 public PinCodeChallengeHandler(String securityCheck) {
@@ -56,7 +56,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `handleChallenge` example, an alert prompts the user to enter the PIN code:
+En este ejemplo de `handleChallenge`, una alerta le solicita al usuario que introduzca el código PIN:
 
 ```java
 @Override
@@ -80,28 +80,28 @@ public void handleChallenge(JSONObject jsonObject) {
 
 ```
 
-> The implementation of `alertMsg` is included in the sample application.
+> La implementación de `alertMsg` se incluye en la aplicación de muestra.
 
-If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
+Si las credenciales son incorrectas, puede esperar que la infraestructura llame a `handleChallenge` de nuevo.
 
-## Submitting the challenge's answer
+## Envío de la respuesta de comprobación
 {: #submitting-the-challenges-answer }
-Once the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Cuando se hayan recopilado las credenciales de la IU, utilice el método `submitChallengeAnswer(respuesta JSONObject)` de `SecurityCheckChallengeHandler` para devolver una respuesta a la comprobación de seguridad. En este ejemplo, `PinCodeAttempts` espera una propiedad denominada `pin` que contiene el código PIN enviado:
 
 ```java
 submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
 ```
 
-## Cancelling the challenge
+## Cancelación del desafío
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+En algunos casos, como cuando se pulsa el botón **Cancelar** en la IU, desea indicarle a la infraestructura que descarte este desafío por completo.
 
-To achieve this, use the `SecurityCheckChallengeHandler`'s `cancel()` method.
+Para ello, utilice el método `cancel()` de `SecurityCheckChallengeHandler`.
 
-## Handling failures
+## Manejo de errores
 {: #handling-failures }
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `SecurityCheckChallengeHandler`'s `handleFailure` method.  
-The structure of the `JSONObject` passed as a parameter greatly depends on the nature of the failure.
+Es posible que en algunos escenarios se produzca un error (por ejemplo, el número de intentos máximos alcanzado). Para manejar esta situación, implemente el método `handleFailure` de `SecurityCheckChallengeHandler`.  
+La estructura de `JSONObject` pasada como parámetro depende en gran parte de la naturaleza del error.
 
 ```java
 @Override
@@ -123,45 +123,45 @@ public void handleFailure(JSONObject jsonObject) {
 }
 ```
 
-> The implementation of `alertError` is included in the sample application.
+> La implementación de `alertError` se incluye en la aplicación de muestra.
 
-## Handling successes
+## Manejador de logros
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
+En general, la infraestructura procesa los logros de forma automática para permitir que el resto de la aplicación continúe.
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing the `SecurityCheckChallengeHandler`'s `handleSuccess` method. Here again, the content and structure of the `JSONObject` passed as a parameter depends on what the security check sends.
+De forma opcional, también puede elegir realizar otras tareas antes de que la infraestructura cierre el flujo de manejador de desafíos, implementando el método `handleSuccess` de `SecurityCheckChallengeHandler`. Una vez más, el contenido y la estructura de `JSONObject` pasados como parámetro dependen de lo que envíe la comprobación de seguridad.
 
-In the `PinCodeAttempts` sample application, the `JSONObject` does not contain any additional data and so `handleSuccess` is not implemented.
+En la aplicación de muestra `PinCodeAttempts`, `JSONObject` no contiene datos adicionales y, por lo tanto, no se implementa `handleSuccess`.
 
-## Registering the challenge handler
+## Registro del manejador de desafíos
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+Para que el manejador de desafíos escuche los desafíos adecuados, debe pedirle a la infraestructura que se asocie con el manejador de desafíos con un nombre de comprobación de seguridad específico.
 
-To do so, initialize the challenge handler with the security check as follows:
+Para ello, inicialice el manejador de desafíos con la comprobación de seguridad de la siguiente manera:
 
 ```java
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts", this);
 ```
 
-You must then **register** the challenge handler instance:
+A continuación, debe **registrar** la instancia del manejador de desafíos:
 
 ```java
 WLClient client = WLClient.createInstance(this);
 client.registerChallengeHandler(pinCodeChallengeHandler);
 ```
 
-**Note:** Creating a `WLClient` instance and registering the challenge handler should happen only once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
+**Nota:** Solo debería crear una instancia de `WLClient` y registrar el manejador de desafíos una vez en todo el ciclo de vida de aplicación. Se recomienda utilizar la clase de la aplicación Android para hacerlo.
 
-## Sample application
+## Aplicación de ejemplo
 {: #sample-application }
-The sample **PinCodeAndroid** is an Android application that uses `WLResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+El ejemplo **PinCodeAndroid** es una aplicación Android que utiliza `WLResourceRequest` para obtener un saldo de banco.  
+El método está protegido con un código PIN y un máximo de 3 intentos.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android project.
+[Haga clic para descarga](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) el proyecto Maven SecurityAdapters.  
+[Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) el proyecto Android.
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md del ejemplo para obtener instrucciones.
 
-![Sample application](sample-application-android.png)
+![Aplicación de ejemplo](sample-application-android.png)

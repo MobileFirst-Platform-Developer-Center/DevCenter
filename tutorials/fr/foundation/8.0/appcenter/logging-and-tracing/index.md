@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Configuration de la journalisation et du traçage pour Application Center sur le serveur d'applications
-breadcrumb_title: Configuration de la journalisation et du traçage
+breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -32,6 +32,7 @@ Lorsque vous essayez de diagnostiquer des problèmes dans Application Center (ou
 
 ```xml
 com.ibm.puremeap.*=all
+com.ibm.mfp.*=all
 com.ibm.worklight.*=all
 com.worklight.*=all
 ```
@@ -39,7 +40,7 @@ com.worklight.*=all
 Où :
 
 * **com.ibm.puremeap.*** est pour Application Center.
-* **com.ibm.worklight.*** et **com.worklight.*** sont pour les autres composants {{ site.data.keys.product_adj }}.
+* **com.ibm.mfp.**\*, **com.ibm.worklight.*** et **com.worklight.*** sont pour les autres composants {{ site.data.keys.product_adj }}.
 
 Les traces sont envoyées vers un fichier appelé **trace.log**, et non vers **SystemOut.log** ou **SystemErr.log**.
 
@@ -52,7 +53,7 @@ Lorsque vous tentez de diagnostiquer des problèmes dans Application Center, il 
 Pour activer la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau FINEST (équivalent à ALL), ajoutez une ligne au fichier server.xml. Par exemple :
 
 ```xml
-<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
+<logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
 Dans cet exemple, les entrées d'un module et son niveau de journalisation sont séparées par le signe deux-points (:).
@@ -71,6 +72,7 @@ Pour activer la journalisation de {{ site.data.keys.product }}, y compris Applic
 
 ```xml
 com.ibm.puremeap.level = ALL
+com.ibm.mfp.level = ALL
 com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
@@ -83,8 +85,8 @@ Sur toutes les plateformes prises en charge, vous pouvez utiliser les propriét�
 
 Les propriétés JNDI suivantes sont applicables à l'application Web pour les services Application Center (**applicationcenter.war**).
 
-| Paramètres des propriétés | Paramètre | Description | 
+| Paramètres des propriétés | Paramètre | Description |
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour formater la sortie JSON avec des espaces, pour faciliter la lecture dans les fichiers journaux. | 
-| ibm.appcenter.logging.tosystemerror | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour imprimer tous les messages de journalisation dans les fichiers journaux d'erreurs système. Utilisez la propriété pour activer la journalisation globale. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Ce paramètre imprime toutes les instructions SQL générées dans les fichiers journaux. | 
+| ibm.appcenter.logging.formatjson | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour formater la sortie JSON avec des espaces, pour faciliter la lecture dans les fichiers journaux. |
+| ibm.appcenter.logging.tosystemerror | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour imprimer tous les messages de journalisation dans les fichiers journaux d'erreurs système. Utilisez la propriété pour activer la journalisation globale. |
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Ce paramètre imprime toutes les instructions SQL générées dans les fichiers journaux. |

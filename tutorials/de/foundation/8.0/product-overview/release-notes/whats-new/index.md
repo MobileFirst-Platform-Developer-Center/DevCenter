@@ -7,7 +7,9 @@ weight: 1
 <br/>
 In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen für eine zeitgemäße Entwicklung, Implementierung und Verwaltung Ihrer {{ site.data.keys.product_adj }}-Anwendungen.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+
+
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -77,7 +79,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
         <div id="collapse-mobilefirst-apis" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-apis">
             <div class="panel-body">
                 <p>Die APIs, die Sie für die Entwicklung mobiler Anwendungen nutzen können, wurden mit neuen Features verbessert und erweitert. Nutzen Sie die neuesten APIs, um von neuen, verbesserten oder geänderten Funktionen der {{ site.data.keys.product }} profitieren zu können.</p>
-                
+
                 <h3>Aktualisierte serverseitige JavaScript-API</h3>
                 <p>Back-End-Aufruffunktionen werden nur für bestimmte Adaptertypen unterstützt. Zurzeit sind dies HTTP- und SQL-Adapter. Die Back-End-Aufrufer <code>WL.Server.invokeHttp</code> und <code>WL.Server.invokeSQL</code> werden somit auch unterstützt.</p>
 
@@ -86,10 +88,10 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h4>Neue serverseitige Java-API für Sicherheit</h4>
                 <p>Das neue Sicherheits-API-Paket <code>com.ibm.mfp.server.security.external</code> und die darin enthaltenen Pakete beinhalten die Schnittstellen, die benötigt werden, um Sicherheitsüberprüfungen und Adapter zu entwickeln, die den Kontext der Sicherheitsüberprüfung verwenden.</p>
-                
+
                 <h4>Neue serverseitige Java-API für Clientregistrierungsdaten</h4>
                 <p>Das neue API-Paket für Clientregistrierungsdaten <code>com.ibm.mfp.server.registration.external</code> und die darin enthaltenen Pakete beinhalten eine Schnittstelle für den Zugriff auf persistente {{ site.data.keys.product_adj }}-Clientregistrierungsdaten.</p>
-                
+
                 <h4>Application getJaxRsApplication()</h4>
                 <p>Mit dieser neuen API können Sie die JAX-RS-Anwendung für den Adapter zurückgeben.</p>
 
@@ -104,7 +106,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h4>WLServerAPIProvider</h4>
                 <p>In den Versionen 7.0.0 und 7.1.0 wurde über die Schnittstelle WLServerAPIProvider auf die Java-API zugegriffen, z. B. mit <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> und <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code>.</p>
-                
+
                 <p>Diese statischen Schnittstellen werden weiter unterstützt, damit in Vorgängerversionen des Produkts entwickelte Adapter kompiliert und implementiert werden können. Alte Adapter, die weder Push-Benachrichtigungen noch die bisherige Sicherheits-API verwenden, funktionieren in der neuen Version weiter. Adapter, die Push-Benachrichtigungen oder die Sicherheits-API verwenden, funktionieren nicht mehr.</p>
 
                 <h3>Clientseitige <tm trademark="JavaScript" tmtype="tm">JavaScript</tm>-APIs für Webanwendungen</h3>
@@ -118,14 +120,14 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                 <h3>Neue clientseitige Java-APIs für Android</h3>
                 <h4>public void getDeviceDisplayName(final DeviceDisplayNameListener listener);</h4>
                 <p>Mit dieser neuen Methode können Sie aus den Registrierungsdaten von {{ site.data.keys.mf_server }} den Anzeigenamen eines Geräts abrufen.</p>
-                
+
                 <h4>public void setDeviceDisplayName(String deviceDisplayName,final WLRequestListener listener);</h4>
                 <p>Mit dieser neuen Methode können Sie den Anzeigenamen eines Geräts in den Registrierungsdaten von {{ site.data.keys.mf_server }} festlegen.</p>
 
                 <h3>Neue clientseitige Objective-C-APIs für iOS</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
                 <p>Mit dieser neuen Methode können Sie aus den Registrierungsdaten von {{ site.data.keys.mf_server }} den Anzeigenamen eines Geräts abrufen.</p>
-                
+
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>Mit dieser neuen Methode können Sie den Anzeigenamen eines Geräts in den Registrierungsdaten von {{ site.data.keys.mf_server }} festlegen.</p>
 
@@ -134,10 +136,13 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Aktualisierte REST-API für die Laufzeit</h3>
                 <p>Die REST-API für die {{ site.data.keys.product_adj }}-Laufzeit stellt jetzt diverse Services bereit, mit denen mobile und vertrauliche Clients Adapter aufrufen, Zugriffstoken anfordern, Inhalte der direkten Aktualisierung abrufen können und vieles mehr. Die meisten REST-API-Endpunkte werden mit OAuth geschützt. Auf einem Entwicklungsserver können Sie das Swagger-Dokument zur Laufzeit-API unter <code>http(s)://Server-IP-Adresse:Server-Port/Kontextstammverzeichnis/doc</code> anzeigen.</p>
+
+                <h3>Unterstützung für mehrfaches Certificate Pinning</h3>
+                <p>Ab iFix 8.0.0.0-IF201706240159 unterstützt die {{ site.data.keys.mf_bm_short }} das Certificate Pinning für mehrere Zertifikate, um Benutzern den sicheren Zugriff auf mehrere Hosts zu ermöglichen. Bis zu diesem iFix hat die {{ site.data.keys.mf_bm_short }} das Certificate Pinning nur für ein Zertifikat unterstützt. In der {{ site.data.keys.mf_bm_short }} gibt es eine neue API, die dem Benutzer das Herstellen von Verbindungen zu mehreren Hosts ermöglicht, indem er die öffentlichen Schlüssel von mehreren X509-Zertifikaten (die er bei einer Zertifizierungsstelle gekauft hat) in der Clientanwendung verankert. Eine Kopie aller Zertifikate sollten Sie in Ihre Clientanwendung aufnehmen. Beim SSL-Handshake überprüft das Client-SDK der {{ site.data.keys.product_full }}, ob der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel eines der in der App gespeicherten Zertifikate übereinstimmt. </p>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-security">
             <h4 class="panel-title">
@@ -151,9 +156,9 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Modernisierung des Sicherheitsframeworks</h3>
                 <p>Das {{ site.data.keys.product_adj }}-Sicherheitsframework wurde neu gestaltet und reimplementiert, um die Aufgaben der Sicherheitsentwicklung und -verwaltung zu verbessern und zu vereinfachen. Das Framework basiert jetzt ausschließlich auf dem OAuth-Modell. Die Implementierung ist sitzungsunabhängig (siehe "Übersicht über das {{ site.data.keys.product_adj }}-Sicherheitsframework").</p>
-                
+
                 <p>Auf der Serverseite wurden die verschiedenen Komponenten des Frameworks durch (in Adaptern implementierte) Sicherheitsüberprüfungen ersetzt, wodurch die Entwicklung mit neuen APIs vereinfacht wird. Beispielimplementierungen und vordefinierte Sicherheitsüberprüfungen werden zur Verfügung gestellt (siehe "Sicherheitsüberprüfungen"). Sicherheitsüberprüfungen können im Adapterdeskriptor konfiguriert und durch Änderungen an der Adapter- oder Anwendungskonfiguration zur Laufzeit angepasst werden, ohne dass der Adapter neu implementiert werden muss oder der Verarbeitungsablauf unterbrochen wird. Die Konfigurationsschritte können mithilfe der überarbeiteten Sicherheitsschnittstellen der {{ site.data.keys.mf_console }} ausgeführt werden. Sie können die Konfigurationsdateien auch manuell bearbeiten oder die {{ site.data.keys.mf_cli }} bzw. die mfpadm-Tools verwenden.</p>
-                
+
                 <h3>Sicherheitsüberprüfung für die Anwendungsauthentizität</h3>
                 <p>Die Validierung der {{ site.data.keys.product_adj }}-Anwendungsauthentizität ist jetzt als vordefinierte Sicherheitsprüfung implementiert, die die bisherige Überprüfung der erweiterten Anwendungsauthentizität ersetzt. Sie können die Validierung der Anwendungsauthentizität in der {{ site.data.keys.mf_console }} oder mit mfpadm dynamisch aktivieren, inaktivieren und konfigurieren. Zum Generieren einer Anwendungsauthentizitätsdatei wird ein eigenständiges Java-Tool für die {{ site.data.keys.product_adj }}-Anwendungsauthentizität (mfp-app-authenticity-tool.jar) bereitgestellt.</p>
 
@@ -165,7 +170,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Neue und geänderte Sicherheitsfunktionen für plattformübergreifende Anwendungen (Cordova-Apps)</h3>
                 <p>Es stehen zusätzliche Sicherheitsfeatures zum Schutz Ihrer Cordova-App zur Verfügung. Zu diesen Features gehören unter anderem:</p>
-                
+
                 <ul>
                     <li>Verschlüsselung von Webressourcen: Verwenden Sie dieses Feature, um Webressourcen in Ihrem Cordova-Paket zu verschlüsseln, sodass niemand das Paket modifizieren kann.</li>
                     <li>Kontrollsumme für Webressourcen: Verwenden Sie dieses Feature, um einen Kontrollsummentest durchzuführen, der die aktuellen statistischen Daten der App-Webressourcen mit den statistischen Referenzdaten vergleicht, die beim ersten Öffnen der App erstellt wurden. Durch diese Überprüfung können Sie verhinerdern, dass die App nach der Installation und dem Öffnen modifiziert wird.</li>
@@ -173,7 +178,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Unterstützung für FIPS 140-2 (Federal Information Processing Standard): Verwenden Sie dieses Feature, um sicherzustellen, dass übertragene Daten mit dem Verschlüsselungsstandard FIPS 140-2 entsprechen.</li>
                     <li>OpenSSL: Wenn Sie OpenSSL für die Ver- und Entschlüsselung von Daten Ihrer Cordova-App für die iOS-Plattform verwenden möchten, können Sie das Cordova-Plug-in cordova-plugin-mfp-encrypt-utils nutzen.</li>
                 </ul>
-                
+
                 <h3>Geräte-Single-Sign-on</h3>
                 <p>Das Geräte-Single-Sign-on wird jetzt über die neue Konfigurationseigenschaft <code>enableSSO</code> für die Sicherheitsüberprüfung im Anwendungsdeskriptor unterstützt.</p>
 
@@ -184,10 +189,10 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Wenn eine Clientanwendung auf eine ungeschützte Ressource zugreift, empfängt sie keine Aktualisierungen, auch wenn in {{ site.data.keys.mf_server }} Aktualisierungen verfügbar sind.</li>
                     <li>Die direkte Aktualisierung wird nach ihrer Aktivierung bei jeder Anforderung einer geschützten Ressource durchgesetzt.</li>
                 </ul>
-                
+
                 <h3>Schutz externer Ressourcen</h3>
                 <p>Die unterstützte Methode und die bereitgestellten Artefakte für den Schutz von Ressourcen auf externen Servern wurden modifiziert.</p>
-                
+
                 <ul>
                     <li>Eine neues Validierungsmodul für Zugriffstoken (der {{ site.data.keys.product_adj }}-Java-Token-Validator) wird bereitgestellt, sodass das {{ site.data.keys.product_adj }}-Sicherheitsframework für den Schutz von Ressourcen auf jedem externen Java-Server eingesetzt werden kann. Das Modul wird als Java-Bibliothek (mfp-java-token-validator-8.0.0.jar) bereitgestellt und ersetzt den veralteten MobileFirst-Server-Endpunkt für Tokenvalidierung bei der Erstellung eines angepassten Java-Validierungsmoduls.</li>
                     <li>Der {{ site.data.keys.product_adj }}-OAuth-TAI-Filter für den Schutz von Java-Ressourcen auf einem externen Server mit WebSphere Application Server oder  WebSphere Application Server Liberty wird jetzt als Java-Bibliothek (com.ibm.imf.oauth.common_8.0.0.jar) bereitgestellt. Die Bibliothek verwendet das neue Validierungsmodul (den neuen Java-Token-Validator). Die Konfiguration des bereitgestellten TAI ist auch eine andere.</li>
@@ -195,7 +200,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Das {{ site.data.keys.product_adj }}-Node.js-Framework passport-mfp-token-validation für den Schutz von Java-Ressourcen auf einem externen Node.js-Server wurde so modifiziert, dass es das neue Sicherheitsframework unterstützt.</li>
                     <li>Sie können auch einen eingenen Filter und ein eigenes Validierungsmodul für Ressourcenserver schreiben, der bzw. das den neuen Introspektionsendpunkt des Autorisierungsservers nutzt.</li>
                 </ul>
-                
+
                 <h3>Integration von WebSphere DataPower als Autorisierungsserver</h3>
                 <p>Sie können jetzt anstelle des Standardautorisierungsservers ({{ site.data.keys.mf_server }}) WebSphere DataPower als OAuth-Autorisierungsserver auswählen. Sie können DataPower für die Integration in das {{ site.data.keys.product_adj }}-Sicherheitsframework konfigurieren.</p>
 
@@ -204,7 +209,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Verwaltung mobiler Anwendungen in der {{ site.data.keys.mf_console }}</h3>
                 <p>Es wurden einige Änderungen vorgenommen, um Unterstützung für die Verfolgung und Verwaltung von mobilen Anwendungen, Benutzern und Geräten über die {{ site.data.keys.mf_console }} zu ermöglichen. Ein Gerät oder der Anwendungszugriff kann nur blockiert werden, wenn versucht wird, auf geschützte Ressourcen zuzugreifen.</p>
-                
+
                 <h3>MobileFirst-Server-Keystore</h3>
                 <p>Zum Signieren von OAuth-Token und von Paketen für die direkte Aktualisierung sowie für die gegenseitige HTTPS-Authentifizierung (SSL) wird ein einzelner MobileFirst-Server-Keystore verwendet. Sie können diesen Keystore in der {{ site.data.keys.mf_console }} oder mit mfpadm dynamisch konfigurieren.</p>
 
@@ -213,7 +218,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="os-support">
             <h4 class="panel-title">
@@ -242,7 +247,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="deploy-manage-apps">
             <h4 class="panel-title">
@@ -250,31 +255,31 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>In die {{ site.data.keys.product }} wurden neue Leistungsmerkmale integriert, die Sie bei der Implementierung und Verwaltung Ihrer Apps unterstützen sollen. Sie können Ihre Apps und Adapter jetzt aktualisieren, ohne {{ site.data.keys.mf_server }} neu zu starten.</p>
 
                 <h3>Verbesserte DevOps-Unterstützung</h3>
                 <p>{{ site.data.keys.mf_server }} wurde grundlegend überarbeitet, um Ihre DevOps-Umgebung besser unterstützen zu können. {{ site.data.keys.mf_server }} wird einmal in Ihrer Anwendungsserverumgebung installiert, und wenn Sie eine Anwendung hochladen oder die Konfiguration von {{ site.data.keys.mf_server }} ändern, muss die Konfiguration des Anwendungsservers nicht geändert werden.</p>
-                
+
                 <p>Sie müssen {{ site.data.keys.mf_server }} nicht neu starten, wenn Sie Ihre Apps oder Adapter, von denen Ihre Apps abhängig sind, aktualisieren. Sie können Konfigurationsaufgaben ausführen oder eine neue Version eines Adapters hochladen oder eine neue Anwendung registrieren, während sich der Server weiter um den Datenverkehr kümmert.</p>
 
                 <p>Konfigurationsänderungen und die Entwicklung sind Bereiche, die mit Sicherheitsrollen geschützt sind.</p>
 
                 <p>Für das Hochladen von Entwicklungsartefakten auf den Server gibt es verschiedene Möglichkeiten, die Ihnen mehr Flexibilität beim Arbeiten ermöglichen sollen.</p>
-                
+
                 <ul>
                     <li>Die {{ site.data.keys.mf_console }} wurde erweitert. Jetzt können Sie in der Konsole eine Anwendung oder eine neue Version einer Anwendung registrieren, App-Sicherheitsparameter verwalten, Zertifikate implementieren, Tags für Push-Benachrichtigungen erstellen und Push-Benachrichtigungen senden. Außerdem bietet die Konsole jetzt eine Kontexthilfe an.</li>
                     <li>Befehlszeilentool</li>
                 </ul>
-                
+
                 <p>Zu den Entwicklungsartefakten, die Sie auf den Server hochladen, gehören Adapter und ihre Konfiguration, Sicherheitskonfigurationen für Ihre Apps, Zertifikate für Push-Benachrichtigungen und Protokollfilter.</p>
 
-                <h3>In IBM Bluemix erstellte Anwendungen in der {{ site.data.keys.product }} ausführen</h3>
-                <p>Entwickler können IBM Bluemix-Anwendungen für die Ausführung in der {{ site.data.keys.product }} umstellen. Dafür muss Ihre Clientanwendung geändert und an die APIs der {{ site.data.keys.product }} angeglichen werden.</p>
+                <h3>In IBM Cloud erstellte Anwendungen in der {{ site.data.keys.product }} ausführen</h3>
+                <p>Entwickler können IBM Cloud-Anwendungen für die Ausführung in der {{ site.data.keys.product }} umstellen. Dafür muss Ihre Clientanwendung geändert und an die APIs der {{ site.data.keys.product }} angeglichen werden.</p>
 
-                <h3>{{ site.data.keys.product }} als Service in IBM Bluemix</h3>
-                <p>Sie können jetzt den Service {{ site.data.keys.mf_bm_full }}  in IBM Bluemix verwenden, um Ihre mobilen Unternehmens-Apps zu erstellen und auszuführen.</p>
+                <h3>{{ site.data.keys.product }} als Service in IBM Cloud</h3>
+                <p>Sie können jetzt den Service {{ site.data.keys.mf_bm_full }}  in IBM Cloud verwenden, um Ihre mobilen Unternehmens-Apps zu erstellen und auszuführen.</p>
 
                 <h3>Keine .wlapp-Dateien</h3>
                 <p>In den Vorgängerversionen wurden Anwendungen implementiert, indem eine <b>.wlapp</b>-Datei auf den {{ site.data.keys.mf_server }} hochgeladen wurde. Die Datei enthielt beschreibende Daten für die Anwendung und im Falle von Hybridanwendungen auch die erforderlichen Webressourcen. In Version 8.0.0 verwenden Sie keine <b>.wlapp</b>-Datei. Stattdessen gehen Sie wie folgt vor:</p>
@@ -283,19 +288,19 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Sie registrieren eine App bei {{ site.data.keys.mf_server }}, indem Sie eine JSON-Anwendungsdeskriptordatei implementieren.</li>
                     <li>Für die direkte Aktualisierung einer Cordova-Anewndung laden Sie eine Archivdatei (ZIP-Datei) mit den modifizierten Webressourcen auf den Server hoch. Die Archivdatei enthält nicht mehr die Webvorschaudateien oder Oberflächen, wie es in den Vorgängerversionen der {{ site.data.keys.product }} möglich war. Das Archiv enthält jetzt nur noch die Webressourcen, die an die Clients gesendet werden, sowie Kontrollsummen für die Validierung der direkten Aktualisierung.</li>
                 </ul>
-                
+
                 <p>Wenn Sie für Cordova-Client-Apps, die auf Endbenutzergeräten installiert sind, die direkte Aktualisierung aktivieren möchten, müssen Sie die modifizierten Webressourcen jetzt als Archiv (.zip-Datei) im Server implementieren. Für eine sichere direkte Aktualisierung muss eine benutzerdefinierte Keystore-Datei in {{ site.data.keys.mf_server }} implementiert werden. Außerdem muss in die implementierte Clientanwendung eine Kopie des passenden öffentlichen Schlüssels aufgenommen werden.</p>
 
                 <h3>Adapter</h3>
                 <h4>Adapter sind Apache-Maven-Projekte.</h4>
                 <p>Adapter werden jetzt als Maven-Projekte behandelt. Sie können Adapter mit Standardbefehlen der Maven-Befehlszeile erstellen und implementieren oder mit einer IDE, die Maven unterstützt, z. B. mit Eclipse oder IntelliJ.</p>
-    
+
                 <h4>Adapterkonfiguration und -entwicklung in DevOps-Umgebungen</h4>
                 <ul>
                     <li>MobileFirst-Server-Administratoren können jetzt in der {{ site.data.keys.mf_console }} das Verhalten eines implementierten Adapters modifizieren. Nach einer Rekonfiguration werden die Änderungen sofort im Server wirksam, ohne dass der Adapter neu implementiert oder der Server neu gestartet werden muss.</li>
                     <li>Sie können Adapter jetzt bei laufendem Betrieb implementieren. Es ist also möglich, Adapter in der Laufzeit zu implementieren, zu deimplementieren und erneut zu implementieren, während {{ site.data.keys.mf_server }} weiter Datenverkehrsservices bereitstellt.</li>
                 </ul>
-                
+
                 <h4>Änderungen in der Adapterdeskriptordatei</h4>
                 <p>Die Deskriptordatei <b>adapter.xml</b> hat sich geringfügig geändert. Weitere Informationen zur Struktur der Deskriptordatei für Adapter enthalten die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Adapterlernprogramme</a>.</p>
 
@@ -304,12 +309,12 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h4>Unterstützung für JavaScript-Adapter</h4>
                 <p>Es werden nur JavaScript-Adapter mit dem Anschlusstyp HTTP oder SQL unterstützt.</p>
-                
+
                 <h4>Unterstützung für JAX-RS 2.0</h4>
                 <p>JAX-RS 2.0 stellt neue serverseitige Funktionen bereit, zu denen asynchrones serverseitiges HTTP, Filter und Abfangprozesse gehören. Adapter können diese Features jetzt nutzen.</p>
-                
+
                 <h3>{{ site.data.keys.product }} für IBM Container</h3>
-                <p>Die mit Version 8.0 freigegebene {{ site.data.keys.product }} für IBM Container ist auf der Website <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a> verfügbar. Diese Version der {{ site.data.keys.product }} für IBM Container ist bereit für den Produktionseinsatz und unterstützt den dashDB™-Plan "Enterprise Transactional" von IBM Bluemix.</p>
+                <p>Die mit Version 8.0 freigegebene {{ site.data.keys.product }} für IBM Container ist auf der Website <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a> verfügbar. Diese Version der {{ site.data.keys.product }} für IBM Container ist bereit für den Produktionseinsatz und unterstützt den dashDB™-Plan "Enterprise Transactional" von IBM Cloud.</p>
 
                 <p><b>Hinweis:</b> Informieren Sie sich über die Voraussetzungen für die Implementierung der {{ site.data.keys.product }} in IBM Containern.</p>
 
@@ -320,7 +325,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-server">
             <h4 class="panel-title">
@@ -335,7 +340,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                 <p>Mit dem neuen Design von {{ site.data.keys.mf_server }} gibt es zwei neue MobileFirst-Server-Komponenten, den Liveaktualisierungsservice und die MobileFirst-Server-Artefakte.</p>
 
                 <p>Der Liveaktualisierungsservice von {{ site.data.keys.mf_server }} soll Ihnen helfen, bei den schrittweisen Aktualisierungen für Ihre Apps Zeit und Kosten zu sparen. Mit dem Service werden die serverseitigen Konfigurationsdaten von Apps und Adaptern verwaltet und gespeichert. Sie können verschiedene Abschnitte Ihrer Anwendung ändern oder aktualisieren, ohne dass Sie einen neuen App-Build erstellen oder die App reimplementieren müssen.</p>
-                
+
                 <ul>
                     <li>Sie können das App-Verhalten ausgehend von Benutzersegmenten, die Sie festlegen, dynamisch ändern oder aktualisieren.</li>
                     <li>Sie können die serverseitige Geschäftslogik dynamisch ändern oder aktualisieren.</li>
@@ -353,9 +358,9 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Server-Farm installieren</li>
                     <li>Lernprogramme zur Installation von {{ site.data.keys.mf_server }}</li>
                 </ul>
-                    
+
                 <p>{{ site.data.keys.mf_server }} unterstützt auch einen Liberty-Verbund. Weitere Informationen zur Servertopologie und zu den verschiedenen Installationsmethoden finden Sie in den folgenden Artikeln:</p>
-                
+
                 <ul>
                     <li>Topologie eines Liberty-Verbunds</li>
                     <li>Server Configuration Tool ausführen</li>
@@ -365,7 +370,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-analytics">
             <h4 class="panel-title">
@@ -406,7 +411,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-push">
             <h4 class="panel-title">
@@ -427,7 +432,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Mobile Clientanwendungen</li>
                     <li>Back-End-Serveranwendungen</li>
                 </ul>
-                
+
                 <h3>Sicherheit für den Push-Benachrichtigungsservice</h3>
                 <p>Der Autorisierungsserver der {{ site.data.keys.product }} setzt das OAuth-Protokoll zum Schutz des Push-Benachrichtigungsservice durch.</p>
 
@@ -449,7 +454,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                     <li>Mit der REST-API Push Message (POST) können alle Arten von Benachrichtigungen gesendet werden: tagbasierte Benachrichtigungen, Broadcastbenachrichtigungen und authentifizierte Benachrichtigungen.</li>
                     <li>Mit der REST-API für den MobileFirst-Server-Verwaltungsservice können alle Arten von Benachrichtigungen gesendet werden: tagbasierte Benachrichtigungen, Broadcastbenachrichtigungen und authentifizierte Benachrichtigungen.</li>
                 </ul>
-                
+
                 <h3>SMS-Benachrichtigungen senden</h3>
                 <p>Sie können den Push-Service für das Senden einer SMS-Benachrichtigung an Benutzergeräte konfigurieren.</p>
 
@@ -458,6 +463,19 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Unterstützung des Push-Servicemodells durch Windows-UWP-Apps</h3>
                 <p>Sie können jetzt native Windows-UWP-Anwendungen (universelle Windows-Plattform) auf die Verwendung des Push-Servicemodells für das Senden von Push-Benachrichtigungen umstellen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-appcenter">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-appcenter" aria-expanded="true" aria-controls="collapse-mobilefirst-appcenter">Neuerungen bei {{ site.data.keys.mf_app_center }} </a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
+            <div class="panel-body">
+                <p>Das {{ site.data.keys.mf_app_center }} wird jetzt über BYOL-Scripts in IBM Cloud(auf der Basis von Containern) unterstützt. </p>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 layout: tutorial
 title: The mobile client
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -20,6 +20,8 @@ Your system administrator must give you a user name and password before you can 
 * [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
 * [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
 * [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [Installing Windows 10 UWP client on Windows 10 device](#installing-windows-10-uwp-client-on-windows-10-device)
+* [Installing a Windows 10 UWP application and adding review comments](#installing-a-windows-10-uwp-application-and-adding-review-comments)
 * [The Login view](#the-login-view)
 * [Views in the Application Center client](#views-in-the-application-center-client)
 * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
@@ -58,7 +60,7 @@ You can install the mobile client, or any signed application marked with the ins
     Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties](../appcenter-console/#application-properties).
 
     ![List of available mobile client applications to install](ac_instal_client_and1.jpg)
-    
+
 5. Select an item in the list to display the application details. Typically, these details include the application name and its version number.
 
     ![Application details](ac_app_details.jpg)
@@ -69,7 +71,7 @@ You can install the mobile client, or any signed application marked with the ins
 8. Select the Application Center client installer. You can see the access granted to the application when you choose to install it.
 
     ![Installation of the mobile client in Android](ac_instal_client_and_rights.jpg)
-    
+
 9. Select **Install** to install the mobile client.
 10. When the application is installed, select **Open** to open the mobile client or **Done** to close the Downloads application.
 
@@ -122,16 +124,16 @@ Installing the mobile client on an iOS device is similar to installing it on And
 
     * Tap the SSL-Certificate tab and select the certificate.
     * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
-    
+
     Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties](../appcenter-console/#application-properties).
-    
+
 5. Tap the **Installers** tab and select an item in the list to display the application details.
 6. Tap **Install** to download the mobile client.
 7. Enter your credentials to authorize the downloader transaction.
 8. To authorize the download, tap **Install**.
 
     ![Confirm app to be installed](ac_instal_client_ios_conf.jpg)
-    
+
 9. Enter your credentials to authorize the installation.
 10. Close the browser.
 
@@ -179,16 +181,16 @@ Before you can install apps published by your company, you must add the company 
 3. Enter your credentials to authorize access to the server. On the lower part of the screen, a toolbar contains an **Installers** tab and a **Tokens** tab.
 
     ![Preparing to install tokens and applications on a Windows Phone device](ac_wp8_toolbar_inst_app.jpg)
-    
+
 4. Tap **Tokens** and select an application enrollment token in the list of available tokens to display the token details.
 
     ![Application Enrollment Token details on a Windows Phone device](ac_wp8_aet_details.jpg)
-    
+
 5. Tap **Add** to download the application enrollment token.
 6. Tap **Add** to add the company account.
 
     ![Adding a company account in Windows 8 Universal device](ac_wp8_add_co_account.jpg)
-    
+
     Windows Phone 8 does not provide any feedback about adding the company account.
 
 7. Tap the Back icon to return to the details of application enrollment tokens.
@@ -196,16 +198,62 @@ Before you can install apps published by your company, you must add the company 
 9. Tap **Install** to download the selected application.
 
     ![The application selected to download on a Windows Phone device](ac_wp8_app_details.jpg)
-    
+
 10. Tap **Install** to install the application.
 
     ![Installing the downloaded application on a Windows Phone device](ac_wp8_app_install.jpg)
-    
+
     Windows 8 Universal does not provide any feedback about installing the application.
 
 > **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later. See Installing an application on a Windows Phone device for the possible error messages.
 
 When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
+
+## Installing Windows 10 UWP client on Windows 10 device
+{: #installing-windows-10-uwp-client-on-windows-10-device }
+
+You can install the mobile client, or any signed application marked with the installer flag, on Windows 10 by entering the access URL in your browser, entering your credentials, and completing the required steps.
+
+1. Start the browser on your mobile device.
+
+2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`. Where `hostname` is the address of the server and `portnumber` is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+
+    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html?os=Windows`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page *installers.html* does not work on your mobile device, you can use *inst.html*. This page is provided in English only and is not translated into other languages.
+
+3.  Enter your credentials to authorize access to the server.
+
+    ![Enter credentials to access the server](ac_wp10_enter_credentials.png)
+
+4.  Select an item in the list of available applications to display the application details.
+
+    ![Select an application to view its details](ac_wp10_apps_list.png)
+
+5.  Tap **Install** to download and install the mobile client.
+
+    ![Select Install to install the application](ac_wp10_app_install.png)
+
+
+> **Note:** To list the Windows 10 UWP apps you need to pass the query string `os=Windows`
+
+## Installing a Windows 10 UWP application and adding review comments
+{:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
+
+1. Login to the Application Center.
+
+    ![Login to the Application Center](ac_wp10_login.png)
+
+2. Select the application to be installed from the list of available applications in the catalog.
+
+    ![Select an application from the catalog](ac_wp10_catalog_applisting.png)
+
+3. Tap **Install** to download and install the application.
+
+    ![Select Install to install the application](ac_wp10_app_details_installapp.png)
+
+4. Review the application by providing a rating and adding the review comments.
+
+    ![Add review comments](ac_wp10_add_review.png)
+
 
 ## The Login view
 {: #the-login-view }
@@ -363,11 +411,11 @@ From the **Details** view, you can install an application version on your iOS mo
 2. Tap **Install** to confirm download and installation of the application version or **Cancel** to cancel the installation.
 
     ![Canceling application installation on your iOS device](ac_app_inst_cancel_ios.jpg)
-    
+
     Depending on the action that is taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
 
     Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, iOS 6 (deprecated) or earlier gives an error message.
-    
+
 Unlike the Android client, after the installation is finished, the **Install** button in the **Details** view does not change its label to **Uninstall**. In iOS, no **Uninstall** button is available. It is only possible to uninstall applications through the home screen.
 
 Some versions of iOS 7 might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
@@ -406,7 +454,7 @@ The **Details** view of the selected application displays information about the 
 2. Tap **Install** to confirm installation of the application or **Cancel** to cancel the installation. The application is marked as a favorite app.
 
     ![Confirming or canceling installation of a company application on a Windows Phone device](ac_confirm_instal_app_wp.jpg)
-    
+
 > **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later.
 
 The possible error messages are:
@@ -428,7 +476,7 @@ The possible error messages are:
 Depending on the action that you take, the application is installed or not.
 
 > **Tip:** The install process will not work if the PFX certificate used to code sign the application package (.xap) file of the application that you want to install has expired. Windows Phone operating system returns an error with **HRESULT 0x81030110**. When you renew your PFX certificate, you must code sign again with this new certificate all the deployed applications that you have in your Application Center catalog.
-> 
+>
 When you renew your PFX code-signing certificate, you must also renew the enrollment token and deploy it on the Application Center console. Devices must also be re-enrolled to the company account with this new token. Users of devices enrolled with an expired token cannot install any applications.
 
 In Windows Phone 8.1, if the Application Center client is not code signed (for example, when you debug it in Visual Studio), you cannot install any application by using this unsigned client. In this case, the Windows Phone operating system returns an error with **HRESULT 0x800703F0**. Before installing applications in Windows Phone 8.1, you must code sign the application package (.xap) file of the client.
@@ -469,6 +517,7 @@ The following steps describe how to perform the installation of a Windows Store 
 
 3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
 
+
 ## Installing applications through public app stores
 {: #installing-applications-through-public-app-stores }
 You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
@@ -482,10 +531,10 @@ Links to Android applications stored in Google play and to iOS applications stor
 
     **Android**
     ![Accessing an application in Google play from the mobile client on the device](ac_and_link_app.jpg)
-    
+
     **iOS**
     ![Accessing an application in Apple iTunes from the mobile client on the device](ac_ios_link_app.jpg)
-    
+
 3. Follow the usual procedure of the public app store to install the application.
 
 ## Removing an installed application
@@ -511,7 +560,7 @@ You can show the details of the selected version of an application by following 
     * A tablet; see step 4.
 2. **Windows Phone, Android, iOS only**: Show details of a specific application version on a Windows Phone, Android, or iOS phone.
     * Tap **Select a version** to navigate to the version list view.
-    ![Specific version of an application selected in the list of versions on a Windows Phone, Android, or iOS phone](ac_version_select.jpg) 
+    ![Specific version of an application selected in the list of versions on a Windows Phone, Android, or iOS phone](ac_version_select.jpg)
     * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
 3. Windows only: Show details of a specific Windows Store application version on a Windows device. If more than one version is available for the Windows Store application, then you can select which version that you want to install.
     * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
@@ -558,7 +607,7 @@ If you want to disable automatic upgrade, you must set this property to false an
 3. Tap **Open** to start the updated application.
 
     ![Starting the updated application](ac_client_autoupgrade_start_app.jpg)
-    
+
 You must log in to the updated version of the application to run it.
 
 ![Logging in to the new version of the client application](ac_client_autoupgrade_login_new_version.jpg)

@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Push Notifications
+title: 푸시 알림
 breadcrumb_title: Push Notifications
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-Once {{ site.data.keys.mf_analytics }} support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
+푸시 알림에 대해 {{ site.data.keys.mf_analytics }} 지원이 설정되면([Analytics 지원 설정](../../../notifications/analytics/) 참조) 푸시 사용에 대한 보고서를 작성할 수 있습니다.
 
-## Push reports
+## 푸시 보고서
 {: #push-reports }
 
-Push Notifications reports become available after {{ site.data.keys.mf_analytics_short }} support is configured, and Push events are sent to the {{ site.data.keys.mf_analytics_short }} service.
+푸시 알림 보고서는 {{ site.data.keys.mf_analytics_short }} 지원이 구성된 후 사용할 수 있게 되며, 푸시 이벤트가 {{ site.data.keys.mf_analytics_short }} 서비스에 전송됩니다.
 
-1. In the {{ site.data.keys.mf_analytics_console }}, choose the **Infrastructure** section from the navigation bar.
-2. Choose the **Push Notifications** tab.
+1. {{ site.data.keys.mf_analytics_console }}의 탐색줄에서 **인프라** 섹션을 선택하십시오.
+2. **푸시 알림** 탭을 선택하십시오.
 
-Two reports types are displayed:
+두 가지 보고서 유형이 표시됩니다.
 
-**Notification Requests**  
-The number of requests is displayed according to the requested period, applications, and versions, broken down by date.
+**알림 요청**  
+요청 수가 요청된 기간, 애플리케이션 및 버전에 따라 날짜별로 구분되어 표시됩니다.
 
-**Notification by Mediator**  
-The number of requests is broken down by app platform, for the requested period, applications, and versions.
+**중개자에 의한 알림**  
+요청 수가 요청된 기간, 애플리케이션 및 버전에 대해 표시되며 앱 플랫폼별로 구분됩니다.
 
-![Push Notification reports](pushNotifications.png)
+![푸시 알림 보고서](pushNotifications.png)

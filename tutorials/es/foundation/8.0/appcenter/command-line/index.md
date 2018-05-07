@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Herramienta de línea de mandatos para cargar o suprimir una aplicación
-breadcrumb_title: Carga o supresión de una aplicación
+breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general

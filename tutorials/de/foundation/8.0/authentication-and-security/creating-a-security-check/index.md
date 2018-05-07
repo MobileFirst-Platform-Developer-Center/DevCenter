@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Sicherheitsüberprüfung erstellen
-breadcrumb_title: Sicherheitsüberprüfung erstellen
+breadcrumb_title: Creating a security check
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
@@ -27,6 +27,8 @@ Dennoch sind das {{ site.data.keys.product_adj }}-Sicherheitsframework und die A
 und können nicht gemischt werden. Sie können daher
 keine Adapter-API wie die Schnittstelle `AdpatersAPI` im Code Ihrer Sicherheitsüberprüfung
 und keine APIs für Sicherheitsüberprüfungen im Quellcode von Adaptern verwenden.
+
+
 
 Die Architektur des Sicherheitsframeworks ist modular und
 flexibel, und die Implementierung der Sicherheitsüberprüfung ist grundsätzlich nicht von einer bestimmten Ressource oder Anwendung abhängig. Sie können eine
@@ -77,12 +79,12 @@ auf der Registerkarte "Tools"  unter **Sicherheitsüberprüfungen** herunterlade
 > Wenn ein Java-Adapter mit der Standardschablone erstellt wird, wird davon ausgegangen, dass der Adapter **Ressourcen** bereitstellen soll. Der Entwickler kann beschließen,
 Sicherheitsüberprüfungen und Ressourcen in das Adapterpaket oder in speziell dafür vorgesehene Adapter aufzunehmen.
 
-Wenn Sie die Standardimplementierung für **Ressourcen** entfernen möchten,
-löschen Sie die Dateien **[Adaptername]Application.java** und **[Adaptername]Resource.java**. Entfernen Sie
-außerdem das Element `<JAXRSApplicationClass>` aus der Datei **adapter.xml**. 
 
-Fügen Sie zur Datei **adapter.xml** des Java-Adapters ein XML-Element mit der Bezeichnung
-`securityCheckDefinition` hinzu. Beispiel: 
+
+Wenn Sie die Standardimplementierung für **Ressourcen** entfernen möchten,
+löschen Sie die Dateien **[Adaptername]Application.java** und **[Adaptername]Resource.java**. Entfernen Sie außerdem das Element `<JAXRSApplicationClass>` aus der Datei **adapter.xml**. 
+
+Fügen Sie zur Datei **adapter.xml** des Java-Adapters ein XML-Element mit der Bezeichnung `securityCheckDefinition` hinzu. Beispiel: 
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -101,9 +103,7 @@ Wenn Sie einen Adapter mit einer Sicherheitsprüfungsdefinition erfolgreich in
 {{ site.data.keys.mf_server }} implementiert haben, können Sie Ihre Sicherheitsüberprüfung und die zugehörigen Konfigurationsdaten
 auch in der {{ site.data.keys.mf_console }} unter **Adapter → [Ihr Adapter]** anzeigen und dort Laufzeitkonfigurationsänderungen vornehmen: 
 
-* Auf der Registerkarte **Konfigurationsdateien** sehen Sie die Serverkopie
-Ihres Adapterdeskriptors mit dem Element
-`<securityCheckDefinition>`, das Ihre Sicherheitsüberprüfung und deren konfigurierbare Eigenschaften definiert. Sie können die [Adapterkonfiguration auch per Pull-Operation übertragen](../../adapters/java-adapters/#custom-properties) und per Push-Operation
+* Auf der Registerkarte **Konfigurationsdateien** sehen Sie die Serverkopie Ihres Adapterdeskriptors mit dem Element `<securityCheckDefinition>`, das Ihre Sicherheitsüberprüfung und deren konfigurierbare Eigenschaften definiert. Sie können die [Adapterkonfiguration auch per Pull-Operation übertragen](../../adapters/java-adapters/#custom-properties) und per Push-Operation
 an verschiedene Server senden. 
 * Auf der Registerkarte **Sicherheitsüberprüfungen** können Sie eine Liste aller Konfigurationseigenschaften sehen, die Sie in der Sicherheitsüberprüfung
 zugänglich gemacht haben. Auf die Eigenschaften wird mit dem Wert des konfigurierten Attributs
@@ -111,7 +111,7 @@ zugänglich gemacht haben. Auf die Eigenschaften wird mit dem Wert des konfiguri
 name verwiesen. Falls Sie in der Definition das Attribut description der Eigenschaft
 festgelegt haben, wird die Beschreibung ebenfalls angezeigt. Für jede Eigenschaft wird der Wert, der mit dem Attribut
 `defaultValue` konfiguriert wurde, als aktueller Wert angezeigt. Sie können den Wert ändern, um den Standardwert aus Ihrer Sicherheitsprüfungsdefinition
-außer Kraft zu setzen. Sie können auch jederzeit die ursprünglichen Standardwerte aus Ihrer Sicherheitsprüfungsdefinition wiederherstellen.  
+außer Kraft zu setzen. Sie können auch jederzeit die ursprünglichen Standardwerte aus Ihrer Sicherheitsprüfungsdefinition wiederherstellen. 
 * Sie können auch in der {{ site.data.keys.mf_console }} im Abschnitt **Anwendungen** eine Anwendungsversion auswählen. 
 
 ## Sicherheitsüberprüfungen implementieren
@@ -198,12 +198,12 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 <br/>
 Diese Eigenschaften können auf verschiedenen Ebenen konfiguriert werden:
 
+
+
 ### adapter.xml
 {: #adapterxml }
-In der Datei **adapter.xml** des Java-Adapters können Sie innerhalb von
-`<securityCheckDefinition>` ein `<property>`-Element oder mehrere solche Elemente hinzufügen.   
+In der Datei **adapter.xml** des Java-Adapters können Sie innerhalb von `<securityCheckDefinition>` ein `<property>`-Element oder mehrere solche Elemente hinzufügen.   
 Das Element `<property>` wird mit folgenden Attributen verwendet:
-
 
 - **name**: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist
 - **defaultValue**: Setzt den in der Konfigurationsklasse definierten Wert außer Kraft
@@ -221,6 +221,8 @@ Beispiel:
 > Ein Praxisbeispiel finden Sie
 im Abschnitt [Sicherheitsüberprüfung konfigurieren](../credentials-validation/security-check/#configuring-the-security-check)
 des Lernprogramms "CredentialsValidationSecurityCheck".
+
+
 
 ### {{ site.data.keys.mf_console }} - Adapter
 {: #mobilefirst-operations-console-adapter }
@@ -241,7 +243,7 @@ und führen Sie den Befehl `mfpdev adapter pull` aus.
 3. Bearbeiten Sie die Datei und suchen Sie nach dem Objekt `securityCheckDefinitions`. Finden oder erstellen Sie in diesem Objekt
 ein Objekt, das den Namen Ihrer ausgewählten Sicherheitsüberprüfung hat. Suchen Sie in dem Sicherheitsprüfungsobjekt
 ein Eigenschaftenobjekt ("properties"). Fügen Sie ggf. ein solches Objekt hinzu. Fügen Sie für jede verfügbare Konfigurationseigenschaft, die Sie definieren wollen,
-zum Objekt properties ein Paar aus Name und Wert der Konfigurationseigenschaft hinzu. Beispiel:  
+zum Objekt properties ein Paar aus Name und Wert der Konfigurationseigenschaft hinzu. Beispiel: 
 
    ```xml
    "securityCheckDefinitions": {
@@ -253,7 +255,7 @@ zum Objekt properties ein Paar aus Name und Wert der Konfigurationseigenschaft h
         }
    }
    ```
-   
+
 4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev adapter push` aus.
 
 ### {{ site.data.keys.mf_console }} - Anwendung
@@ -286,7 +288,7 @@ für jede verfügbare Konfigurationseigenschaft, die Sie konfigurieren möchten,
         }
    }
    ```
-   
+
 4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
 
 ## Vordefinierte Sicherheitsüberprüfungen

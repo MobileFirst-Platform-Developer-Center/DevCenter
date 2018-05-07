@@ -27,15 +27,9 @@ sowie in plattformübergreifenden Cordova-MobileFirst-Anwendungen unterstützt.
 {: #certificate-pinning-process }
 Beim Certificate Pinning
 wird einem Host sein erwarteter öffentlicher Schlüssel zugeordnet.
-Da Sie im Besitz des serverseitigen und clientseitigen Codes sind, können Sie Ihren Clientcode so konfigurieren, dass er nur ein bestimmtes
-Zertifikat für Ihren Domänennamen akzeptiert und nicht irgendein Zertifikat, das mit einem Stammzertifikat einer anerkannten Zertifizierungsstelle
-korrespondiert und vom Betriebssystem oder Browser erkannt wurde. 
+Da Sie im Besitz des serverseitigen und clientseitigen Codes sind, können Sie Ihren Clientcode so konfigurieren, dass er nur ein bestimmtes Zertifikat für Ihren Domänennamen akzeptiert und nicht irgendein Zertifikat, das mit einem Stammzertifikat einer anerkannten Zertifizierungsstelle korrespondiert und vom Betriebssystem oder Browser erkannt wurde. Eine Kopie des Zertifikats wird in Ihre Clientanwendung aufgenommen. Beim SSL-Handshake (d. h. bei der ersten Anforderung an den Server) überprüft das {{ site.data.keys.product_adj }}-Client-SDK, ob der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel des in der App gespeicherten Zertifikats übereinstimmt. 
 
-Eine Kopie des Zertifikats wird in die Anwendung gestellt und während des SSL-Handshakes
-(d. h. der ersten Anforderung an den Server) verwendet. Das
-{{ site.data.keys.product_adj }}-Client-SDK verifiziert,
-dass der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel des in der App gespeicherten Zertifikats
-übereinstimmt. 
+Sie können auch mehrere Zertifikate mit Ihrer Clientanwendung verknüpfen. Eine Kopie aller Zertifikate sollten Sie in Ihre Clientanwendung aufnehmen. Beim SSL-Handshake (d. h. bei der ersten Anforderung an den Server) überprüft das {{ site.data.keys.product_adj }}-Client-SDK, ob der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel eines der in der App gespeicherten Zertifikate übereinstimmt. 
 
 #### Wichtiger Hinweis
 {: #important }
@@ -71,33 +65,75 @@ SSL/TLS und von Zertifikaten.
 
 ## Certificate-Pinning-API
 {: #certificate-pinning-api }
-Das Certificate Pinning
-ist eine API-Methode mit einem Parameter `certificateFilename`, d. h. dem Namen der Zertifikatdatei. 
+Das Certificate Pinning ist eine überladene API-Methode, bei der es eine Methode mit einem Parameter `certificateFilename` gibt, d. h. mit dem Namen der Zertifikatdatei, und eine zweite Metode mit einem Parameter `certificateFilenames`, der ein Array mit Zertifikatdateinamen angibt. 
 
 ### Android
 {: #android }
+Einzelnes Zertifikat:
+Syntax:
+pinTrustedCertificatePublicKeyFromFile(String certificateFilename);
+Beispiel: 
 ```java
 WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
+Mehrere Zertifikate:
 
-Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 
 
-* Die Datei ist nicht vorhanden. 
+
+Syntax:
+pinTrustedCertificatePublicKeyFromFile(String[] certificateFilename);
+Beispiel: 
+```java
+String[] certificates={"myCertificate.cer","myCertificate1.cer"};
+WLClient.getInstance().pinTrustedCertificatePublicKey(certificates);
+```
+Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: * Die Datei ist nicht vorhanden. 
 * Die Datei hat das falsche Format. 
+
 
 ### iOS
 {: #ios }
-**Objective-C:**
+Syntax beim Certificate Pinning für ein einzelnes Zertifikat:
+pinTrustedCertificatePublicKeyFromFile:(NSString*) certificateFilename;
 
+Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 
+* Die Datei ist nicht vorhanden. 
+* Die Datei hat das falsche Format. 
+
+Syntax beim Certificate Pinning für mehrere Zertifikate:
+pinTrustedCertificatePublicKeyFromFiles:(NSArray*) certificateFilenames;
+
+Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 
+* Keine der Zertifikatdateien ist vorhanden. 
+* Keine der Zertifikatdateien hat das richtige Format. 
+
+**Objective-C:**
+Beispiel:
+Einzelnes Zertifikat: 
 ```objc
 [[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
 
 ```
+Mehrere Zertifikate:
+Beispiel:
+```objc
+NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“Cert3",nil];
+[[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFiles:arrayOfCerts];
+```
 
 **Swift:**
 
+Einzelnes Zertifikat:
+Beispiel:
+
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+```
+Mehrere Zertifikate:
+Beispiel:
+```swift
+let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
+WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
 ```
 
 Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 
@@ -107,9 +143,17 @@ Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus:
 
 ### Cordova
 {: #cordova }
-```javascript
-WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure);
 
+Certificate Pinning für ein einzelnes Zertifikat: 
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess, onFailure);
+```
+
+Certificate Pinning für mehrere Zertifikate: 
+
+```javascript
+WL.Client.pinTrustedCertificatePublicKey(['Cert1.cer','Cert2.cer','Cert3.cer']).then(onSuccess, onFailure);
 ```
 
 Die Certificate-Pinning-Methode gibt eine Zusicherung zurück: 

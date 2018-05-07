@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Securing MobilFirst server
+title: Securing MobileFirst server
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -19,7 +19,7 @@ Below are several methods you can follow in order to secure your {{ site.data.ke
 ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your server, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
 
 1. Copy the **ssl_cert.p12** file to the **mfpf-server-libertyapp/usr/security/** folder.
-2. Modify the **mfpf-server-libertyapp/usr/config/keystore.xml** file similar to the following example configuration:
+2. Modify the **mfpf-server-libertyapp/usr/config/keystore.xml** and **appcenter/usr/config/keystore.xml** (for appcenter) file similar to the following example configuration:
 
    ```xml
    <server>
@@ -65,12 +65,12 @@ Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted for
 
 ### Application-authenticity validation
 {: #application-authenticity-validation }
-To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
+To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, [enable the application-authenticity security check](../../../authentication-and-security/application-authenticity).
 
 
 ### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+If you need a secure connection between your container and an on-premise back-end system, you can use the IBM Cloud  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Cloud containers.
 
 #### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
@@ -88,7 +88,7 @@ Passwords are configured in the **server.env** files in the **package_root/mfpf-
 </server>
 ```
 
-#### Restricting access to the consoles running on containers	
+#### Restricting access to the consoles running on containers
 {: #restricting-access-to-the-consoles-running-on-containers }
 You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles.
 
@@ -111,9 +111,9 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-    	
-       String allowedIP =null; 
-       
+
+       String allowedIP =null;
+
        public MFPConsoleTAI() {
           super();
        }
@@ -125,14 +125,14 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
     public boolean isTargetInterceptor(HttpServletRequest req)
                   throws WebTrustAssociationException {
       //Add logic to determine whether to intercept this request
-	   
+
 	   boolean interceptMFPConsoleRequest = false;
 	   String requestURI = req.getRequestURI();
-	   
+
 	   if(requestURI.contains("mfpconsole")) {
 		   interceptMFPConsoleRequest = true;
 	   }
-		   
+
 	   return interceptMFPConsoleRequest;
     }
 
@@ -140,37 +140,37 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#negotiateValidateandEstablishTrust
      * (javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
      */
-       
+
     public TAIResult negotiateValidateandEstablishTrust(HttpServletRequest request,
                     HttpServletResponse resp) throws WebTrustAssociationFailedException {
         // Add logic to authenticate a request and return a TAI result.
         String tai_user = "MFPConsoleCheck";
-        
+
         if(allowedIP != null) {
-        	
+
         	String ipAddress = request.getHeader("X-FORWARDED-FOR");  
-        	if (ipAddress == null) { 
+        	if (ipAddress == null) {
         	  ipAddress = request.getRemoteAddr();  
         	}
-        	
+
         	if(checkIPMatch(ipAddress, allowedIP)) {
         		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         	}
         	else {
         		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
         	}
-        		
+
         }
         return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
     }
-       
+
     private static boolean checkIPMatch(String ipAddress, String pattern) {   
 	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 		      return true;
 
 	   String[] mask = pattern.split("\\.");
 	   String[] ip_address = ipAddress.split("\\.");
-	   
+
 	   for (int i = 0; i < mask.length; i++)
 	   {
 		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -184,10 +184,10 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#initialize(java.util.Properties)
      */
-        
+
     public int initialize(Properties properties)
                     throws WebTrustAssociationFailedException {
-    	
+
     	if(properties != null) {
     		if(properties.containsKey("allowedIPs")) {
     			allowedIP = properties.getProperty("allowedIPs");
@@ -199,7 +199,7 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#getVersion()
      */
-    
+
     public String getVersion() {
         return "1.0";
     }
@@ -214,34 +214,34 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#cleanup()
      */
-    
+
     public void cleanup()
         {}
    }
    ```
-    
+
 2. Export the custom TAI Implementation into a .jar file and place it in the applicable **env** folder (**mfpf-server-libertyapp/usr/env**).
 3. Create an XML configuration file that contains the details of the TAI interceptor (see the TAI configuration example code provided in step 1) and then add your .xml file to the applicable folder (**mfpf-server-libertyapp/usr/config**). Your .xml file should resemble the following example. **Tip:** Be sure to update the class name and properties to reflect your implementation.
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
         <server description="new server">
-        <featureManager> 
-            <feature>appSecurity-2.0</feature> 
-        </featureManager> 
+        <featureManager>
+            <feature>appSecurity-2.0</feature>
+        </featureManager>
 
-        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
             <interceptors id="MFPConsoleTAI" enabled="true"  
-                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
-                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI"> 
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
+                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
                 <properties allowedIPs="9.182.149.*"/>
-            </interceptors> 
-        </trustAssociation> 
+            </interceptors>
+        </trustAssociation>
 
-        <library id="MFPConsoleTAI"> 
-            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/> 
-        </library> 
+        <library id="MFPConsoleTAI">
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+        </library>
    </server>
    ```
 
@@ -263,7 +263,7 @@ The configuration process includes the following steps:
 
 * Setup and configuration of an LDAP repository
 * Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on IBM Cloud for this step.)
 
 #### LDAP repository
 {: #ldap-repository }
@@ -274,7 +274,7 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
 1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
 
    ```xml
-   <ldapRegistry 
+   <ldapRegistry
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -289,7 +289,7 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
+
     Entry | Description
     --- | ---
     `host` and `port` | Host name (IP address) and port number of your local LDAP server.
@@ -297,7 +297,7 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
     `bindDN="uid=admin,ou=system"	` | Binding details of the LDAP server. For example, the default values for an Apache Directory Service would be `uid=admin,ou=system`.
     `bindPassword="secret"	` | Binding password for the LDAP server. For example, the default value for an Apache Directory Service is `secret`.
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | The custom filters that are used for querying the directory service (such as Apache) during authentication and authorization.
-        
+
 2. Ensure that the following features are enabled for `appSecurity-2.0` and `ldapRegistry-3.0`:
 
    ```xml
@@ -306,23 +306,23 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
    For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
-    
+
 #### Secure gateway
 {: #secure-gateway }
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on IBM Cloud and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+1. Log on to IBM Cloud and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
 2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+3. Go to the IBM Cloud dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
 4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
 5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
 6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
 7. Capture the **Destination ID** and **Cloud Host : Port** values. Go to the registry.xml file and add these values, replacing any existing values. See the following example of an updated code snippet in the registry.xml file:
 
 ```xml
-<ldapRegistry 
+<ldapRegistry
     id="ldap"
     host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
     baseDN="dc=worklight,dc=com"
@@ -341,17 +341,17 @@ To configure a secure gateway connection to your LDAP server, you must create an
 ### Configuring apps to work with LDAP
 {: #configuring-apps-to-work-with-ldap }
 Configure MobileFirst mobile apps to work with an external LDAP registry.  
-The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
+The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on IBM Cloud for this step.)
 
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on IBM Cloud and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+1. Log on to IBM Cloud and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
 2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+3. Go to the IBM Cloud dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
 4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
 5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
 6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
 7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
 
 **Results**  
-The communication between the MobileFirst app on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
+The communication between the MobileFirst app on IBM Cloud with your local LDAP server is established. The authentication and authorization from the IBM Cloud app is validated against your local LDAP server.

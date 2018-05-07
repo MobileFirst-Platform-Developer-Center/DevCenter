@@ -1,56 +1,55 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: Resolución de problemas
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Resolving problems with {{ site.data.keys.product_full }} on Liberty for Java runtime	
+### Resolución de problemas con {{ site.data.keys.product_full }} en el tiempo de ejecución de Liberty for Java
 {: resolving-problems-with-ibm-mobilefirst-foundation-on-liberty-for-java-runtime }
-When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on Liberty for Java runtime, be sure to gather this key information before contacting IBM Support.
+Cuando no pueda solucionar un problema que ha surgido cuando trabajaba con IBM MobileFirst Foundation en el tiempo de ejecución de Liberty for Java, asegúrese de recopilar esta información clave antes de contactar a IBM Support.
 
-To help expedite the troubleshooting process, gather the following information:
+Para agilizar el proceso de resolución de problemas, recopile la información siguiente:
 
-* The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
-* The Liberty for Java runtime size selected. For example, 2GB.
-* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.500.
-* The mfpconsole route
-* Versions of cloud foundry: `cf -v` 
-* The information returned from running the following Cloud Foundry CLI commands from the organization and space where your MobileFirst  Foundation server is deployed:
+* La versión de IBM MobileFirst Foundation que utiliza (debe ser V8.0.0 o superior) y cualquier arreglo temporal que se haya aplicado.
+* El tamaño del tiempo de ejecución de Liberty for Java seleccionado. Por ejemplo, 2GB.
+* El tipo de plan de base de datos IBM Cloud dashDB. Por ejemplo, Enterprise Transactional 2.8.500.
+* La ruta mfpconsole
+* Versiones de Cloud Foundry: `cf -v`
+* La información devuelta por los siguientes mandatos de Cloud Foundry CLI ejecutados desde la organización y espacio en que se ha desplegado su servidor de MobileFirst Foundation:
  - `cf app APP_NAME`
 
-### Unable to create the mfpfsqldb.xml file
+### No se ha podido crear el archivo mfpfsqldb.xml
 {: #unable-to-create-the-mfpfsqldbxml-file }
-An error occurs at the end of running the **prepareserverdbs.sh** script:
+Se produce un error al final de la ejecución del script **prepareserverdbs.sh**:
 
-> Error : unable to create mfpfsqldb.xml
+> Error: No se puede crear mfpfsqldb.xml
 
-**How to resolve**  
-The problem might be an intermittent database connectivity issue. Try to run the script again.
+**Cómo se resuelve**  
+Es posible que se trate de un problema intermitente de conexión de base de datos. Intente ejecutar de nuevo el script.
 
-### Script fails and returns message about tokens	
+### El script falla y devuelve un mensaje relacionado con las señales	
 {: #script-fails-and-returns-message-about-tokens }
-Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
+Un script no se ejecuta correctamente y devuelve un mensaje similar a: Renovando las señales o Ha fallado la renovación de la señal.
 
-**Explanation**  
-The Bluemix session might have timed-out. The user must be logged in to Bluemix before running the scripts.
+**Descripción**  
+Es posible que se haya superado el tiempo de espera de la sesión IBM Cloud. El usuario debe haber iniciado sesión en IBM Cloud antes de ejecutar los scripts.
 
-**How to resolve**
-Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
+**Cómo se resuelve**
+Vuelva a ejecutar el script initenv.sh para iniciar sesión en IBM Cloud y, a continuación, vuelva a ejecutar el script que ha fallado.
 
-### Administration DB, Live Update and Push Service show up as inactive	
+### La base de datos de administración, Live Update y Push Service se muestran como inactivos
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the MobileFirst Foundation Operations Console even though the **prepareserver.sh** script completed successfully.
+La base de datos de administración, Live Update y Push Service se muestran como inactivos o no figura listado ningún tiempo de ejecución en MobileFirst Foundation Operations Console, a pesar de que el script **prepareserver.sh** se ha completado correctamente.
 
-**Explanation**  
-It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
+**Descripción**  
+Es posible que no se haya podido establecer una conexión con el servicio de base de datos o que se haya producido un problema de formato en el archivo server.env cuando se han añadido valores adicionales durante el despliegue .
 
-If additional values were added to the server.env file without new line characters, the properties would not resolve. You can validate this potential problem by checking the log files for errors caused by unresolved properties that look similar to this error:
+Si se han añadido valores adicionales al archivo server.env sin caracteres de nueva línea, las propiedades no se resuelven. Puede validar este problema potencial comprobando si hay errores en los archivos de registro debido a propiedades no resueltas similares a este error:
 
-> FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
+> FWLSE0320E: No se ha podido comprobar si los servicios de administración están preparados. Causa: [project Sample] java.net.MalformedURLException: Host anómalo: "${env.IP_ADDRESS}"
 
-**How to resolve**  
-Manually restart the Liberty app. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
+**Cómo se resuelve**  
+Reinicie manualmente la aplicación Liberty. Si el problema persiste, compruebe si el número de conexiones con el servicio de base de datos supera el número de conexiones suministrado por su plan de base de datos. Si es así, realice los ajustes necesarios antes de continuar.
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
-
+Si el problema es debido a propiedades no resueltas, asegúrese de que su editor añade el carácter de salto de línea (LF) para marcar el fin de una línea, cuando edite cualquier archivo suministrado. Por ejemplo, la aplicación TextEdit en macOS puede utilizar el carácter CR para marcar el final de la línea, en lugar de LF, lo que puede ser la causa del problema.

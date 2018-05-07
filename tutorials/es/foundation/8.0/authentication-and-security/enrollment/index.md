@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Enrollment
+title: Inscripción
 breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 7
@@ -17,35 +17,35 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
+Este ejemplo muestra un proceso de inscripción personalizado y una autorización de paso ascendente. Durante el proceso de inscripción de una única vez, se le pide al usuario que introduzca su nombre de usuario y contraseña y que defina el código PIN.  
 
-**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
+**Requisitos previos:** Asegúrese de leer los tutoriales [ExternalizableSecurityCheck](../externalizable-security-check/) y [Paso ascendente](../step-up/).
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Application Flow](#application-flow)
-* [Storing Data in Persistent Attributes](#storing-data-in-persistent-attributes)
-* [Security Checks](#security-checks)
-* [Sample Applications](#sample-applications)
+* [Flujo de aplicación](#application-flow)
+* [Almacenamiento de datos en atributos persistentes](#storing-data-in-persistent-attributes)
+* [Comprobaciones de seguridad](#security-checks)
+* [Aplicaciones de ejemplo](#sample-applications)
 
-## Application Flow
+## Flujo de aplicación
 {: #application-flow }
-* When the application starts for the first time (before enrollment), it shows the UI with two buttons: **Get public data** and **Enroll**.
-* When the user taps on the **Enroll** button to start enrollment, he is prompted with a log-in form and is then requested to set a PIN code.
-* After the user has enrolled successfully, the UI includes four buttons: **Get public data**, **Get balance**, **Get transactions**, and **Logout**. The user can access all four buttons without entering the PIN code.
-* When the application is launched for a second time (after enrollment), the UI still includes all four buttons. However, when the user clicks the **Get transactions*** button, he is required to enter the PIN code.
+* Cuando se inicia la aplicación por primera vez (antes de realizar la inscripción), muestra la IU con dos botones: **Obtener datos públicos** e **Inscribirse**.
+* Cuando el usuario pulsa el botón **Inscribirse** para iniciar la inscripción, visualiza un formulario de inicio de sesión y se le solicita que establezca un código PIN.
+* Cuando el usuario se haya inscrito correctamente, la IU incluirá cuatro botones: **Obtener datos públicos**, **Obtener saldo**, **Obtener transacciones**, y **Cerrar sesión**. El usuario puede acceder a los cuatro botones sin tener que escribir el código PIN.
+* Cuando se inicia la aplicación una segunda vez (después de haber realizado la inscripción), todavía se muestran los cuatro botones en la IU. Sin embargo, cuando el usuario hace clic en el botón **Obtener transacciones***, se le solicita que introduzca el código PIN.
 
-After three failing attempts at entering the PIN code, the user is prompted to authenticate again with a user name and password, and to reset a PIN code.
+Si el usuario comete tres fallos al introducir el código PIN, se le solicita que vuelva a autenticarse con un nombre de usuario y una contraseña y que restablezca el código PIN.
 
-## Storing Data in Persistent Attributes
+## Almacenamiento de datos en atributos persistentes
 {: #storing-data-in-persistent-attributes }
-You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
+Puede guardar los datos protegidos en el objeto `PersistentAttributes`, que es un contenedor para los atributos personalizados de un cliente registrado. Se puede acceder al objeto desde una clase de comprobación de seguridad o desde una clase de recurso de adaptador.
 
-In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
+En la aplicación de ejemplo proporcionada, el objeto `PersistentAttributes` se utiliza en la clase de recurso de adaptador para almacenar el código PIN:
 
-* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* El recurso **setPinCode** añade el atributo **pinCode** y llama el método `AdapterSecurityContext.storeClientRegistrationData()` para que almacene los cambios.
 
   ```java
   @POST
@@ -60,9 +60,9 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
   
-  Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
+  `users` tiene una llave denominada `EnrollmentUserLogin` que contiene el objeto `AuthenticatedUser`.
 
-* The **unenroll** resource deletes the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* El recurso **Cancelar inscripción** suprime el atributo **pinCode** y llama el método `AdapterSecurityContext.storeClientRegistrationData()` para que almacene los cambios.
 
   ```java
   @DELETE
@@ -79,15 +79,15 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
 
-## Security Checks
+## Comprobaciones de seguridad
 {: #security-checks }
-The Enrollment sample contains three security checks:
+El ejemplo de inscripción contiene tres comprobaciones de seguridad:
 
 ### EnrollmentUserLogin
 {: #enrollmentuserlogin }
-The `EnrollmentUserLogin` security check protects the **setPinCode** resource so that only authenticated users can set a PIN code. This security check is meant to expire quickly and to hold only for the duration of the "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial? except for the extra `isLoggedIn` and `getRegisteredUser` methods.  
-The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
-The `getRegisteredUser` method returns the authenticated user.
+La comprobación de seguridad `EnrollmentUserLogin` protege el recurso **setPinCode** para que solo los usuarios autenticados puedan definir un código PIN. Esta verificación de seguridad se ha creado para caducar rápido y para mantenerse solo durante la "primera experiencia". Es idéntico a la comprobación de seguridad `UserLogin` descrita en el tutorial [Implementación de UserAuthenticationSecurityCheck](../user-authentication/security-check) excepto por los métodos `isLoggedIn` y `getRegisteredUser` adicionales.  
+El método `isLoggedIn` devuelve `true` si el estado de la verificación de seguridad es igual al valor ÉXITO y `false` si es lo contrario.  
+El método `getRegisteredUser` devuelve el usuario autenticado.
 
 ```java
 public boolean isLoggedIn(){
@@ -102,16 +102,16 @@ public AuthenticatedUser getRegisteredUser() {
 
 ### EnrollmentPinCode
 {: #enrollmentpincode }
-The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
+La comprobación de seguridad `EnrollmentPinCode` protege el recurso **Obtener transacciones** y es similar a la comprobación de seguridad `PinCodeAttempts` descrita en el tutorial [Implementación de CredentialsValidationSecurityCheck](../credentials-validation/security-check), salvo por algunas modificaciones.
 
-In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
+En el ejemplo de este tutorial, `EnrollmentPinCode` **depende de ** `EnrollmentUserLogin`. Cuando haya iniciado sesión correctamente en `EnrollmentUserLogin`, solo se le solicita al usuario que introduzca un código PIN.
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
+Cuando se inicie la aplicación **por primera vez** y el usuario se haya inscrito correctamente, deberá poder acceder al recurso **Obtener transacciones** sin tener que indicar el código PIN que ha establecido. Para este propósito, el método `authorize` utiliza el método `EnrollmentUserLogin.isLoggedIn` para verificar si el usuario ha iniciado sesión. Esto significa que si siempre y cuando `EnrollmentUserLogin` no haya caducado, el usuario puede acceder a **Obtener transacciones**.
 
 ```java
 @Override
@@ -124,7 +124,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
+Si el usuario comete tres fallos al introducir el código PIN, el tutorial está diseñado para que el atributo **pinCode** se suprima antes de solicitar al usuario que se autentique, utilizando el nombre de usuario y la contraseña y restableciendo el código PIN.
 
 ```java
 @Override
@@ -143,7 +143,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
+El método `validateCredentials` es el mismo que en la comprobación de seguridad `PinCodeAttempts`, pero en este caso las credenciales se comparan con el atributo **pinCode**.
 
 ```java
 @Override
@@ -171,15 +171,15 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### IsEnrolled
 {: #isenrolled }
-The `IsEnrolled` security check protects:
+La comprobación de seguridad `IsEnrolled` protege:
 
-* The **getBalance** resource so that only enrolled users can see the balance.
-* The **transactions** resource so that only enrolled users can get the transactions.
-* The **unenroll** resource so that deleting the **pinCode** is possible only if it has been set before.
+* El recurso **getBalance** para que solo los usuarios inscritos puedan utilizar el saldo.
+* El recurso **transacciones** de manera que solo los usuarios inscritos pueden obtener las transacciones.
+* El recurso **cancelar inscripción** por lo que solo es posible suprimir el **pinCode** si se ha definido antes.
 
-#### Creating the Security Check
+#### Creación de la comprobación de seguridad
 {: #creating-the-security-check }
-[Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Cree un adaptador Java](../../adapters/creating-adapters/) y añada una clase Java denominada `IsEnrolled` que amplíe `ExternalizableSecurityCheck`.
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -191,9 +191,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 }
 ```
 
-#### The IsEnrolledConfig Configuration Class
+#### La clase de configuración IsEnrolledConfig
 {: #the-isenrolledconfig-configuration-class }
-Create an `IsEnrolledConfig` configuration class that extends `ExternalizableSecurityCheckConfig`:
+Cree una clase de configuración `IsEnrolledConfig` que amplíe `ExternalizableSecurityCheckConfig`:
 
 ```java
 public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
@@ -207,7 +207,7 @@ public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
 }
 ```
 
-Add the `createConfiguration` method to the `IsEnrolled` class:
+Añada el método `createConfiguration` en la clase `IsEnrolled`:
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -217,9 +217,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
     }
 }
 ```
-#### The initStateDurations Method
+#### El método initStateDurations
 {: #the-initstatedurations-method }
-Set the duration for the SUCCESS state to `successStateExpirationSec`:
+Establezca la duración para el estado ÉXITO en `successStateExpirationSec`:
 
 ```java
 @Override
@@ -228,9 +228,9 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-#### The authorize Method
+#### El método authorize
 {: #the-authorize-method }
-The code sample simply checks whether the user is enrolled and returns success or failure accordingly:
+El ejemplo de código verifica si el usuario está inscrito y devuelve un error o un acierto en consecuencia:
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -247,25 +247,25 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-* In case the `pinCode` attribute exists:
+* En caso de que exista el atributo `pinCode`:
 
- * Set the state to SUCCESS by using the `setState` method.
- * Add success to the response object by using the `addSuccess` method.
+ * Establezca el estado en ÉXITO utilizando el método `setState`.
+ * Añada el valor éxito en el objeto de respuesta utilizando el método `addSuccess`.
 
-* In case the `pinCode` attribute doesn't exist:
+* En caso de que el atributo `pinCode` no exista:
 
- * Set the state to EXPIRED by using the `setState` method.
- * Add failure to the response object by using the `addFailure` method.
+ * Establezca el estado CADUCADO utilizando el método `setState`.
+ * Añada el valor error en el objeto de respuesta utilizando el método `addFailure`.
 
 <br/>
-The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
+La comprobación de seguridad `IsEnrolled` **depende de** `EnrollmentUserLogin`:
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-Set the active user by adding the following code:
+Establezca el usuario activo añadiendo el código siguiente:
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -287,7 +287,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
    
-Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
+A continuación, el recurso `transacciones` obtiene el objeto actual `AuthenticatedUser` para presentar el nombre de visualización:
 
 ```java
 @GET
@@ -301,9 +301,9 @@ public String getTransactions(){
 }
 ```
     
-> For more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
+> Para obtener más información acerca de `securityContext`, consulte la sección [API Seguridad](../../adapters/java-adapters/#security-api) en el tutorial de adaptador Java.
 
-Add the registered user to the response object by adding the following:
+Añada el usuario registrado al objeto de respuesta de la forma siguiente:
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -325,26 +325,26 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
     
-In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
+En el código de ejemplo, el método `handleSuccess` del manejador de desafíos `IsEnrolled` utiliza el objeto de usuario para presentar el nombre de visualización.
 
-<img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="Aplicación de ejemplo de inscripción" src="sample_application.png" style="float:right"/>
+## Aplicaciones de ejemplo
 {: #sample-applications }
 
-### Security check
+### Comprobación de seguridad
 {: #security-check }
-The `EnrollmentUserLogin`, `EnrollmentPinCode`, and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+Las comprobaciones de seguridad `EnrollmentUserLogin`, `EnrollmentPinCode`, e `IsEnrolled` están disponibles en el proyecto SecurityChecks del proyecto Maven de inscripción.
+[Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) el proyecto Maven de comprobaciones de seguridad.
 
-### Applications
+### Aplicaciones
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Cordova, and Web.
+Las aplicaciones de ejemplo están disponibles para iOS (Swift), Android, Cordova y Web.
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
+* [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) el proyecto Cordova.
+* [Haga clic para descargar](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) el proyecto iOS Swift.
+* [Haga clic para descargar ](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) el proyecto Android.
+* [Haga clic para descargar ](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) el proyecto de aplicación Web.
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md del ejemplo para obtener instrucciones.

@@ -1,79 +1,133 @@
 ---
 layout: tutorial
-title: Application Authenticity
+title: Autenticidad de aplicación
 relevantTo: [android,ios,windows,javascript]
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-By issuing an HTTP request, an application can access corporate HTTP services (APIs) that {{ site.data.keys.mf_server }} provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a {{ site.data.keys.mf_server }} instance is the authentic one.
 
-To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
+Para asegurar la aplicación de manera apropiada, habilite la [comprobación de seguridad](../#security-checks) de autenticidad de aplicación de {{ site.data.keys.product_adj }} predefinida (`appAuthenticity`). Cuando esté habilitada, la verificación valida la autenticidad de la aplicación antes de proporcionarle un servicio. Las aplicaciones en un entorno de producción deberían tener esta característica habilitada.
 
-#### Availability
+Para habilitar la autenticidad de aplicación, puede seguir las instrucciones que se muestran en pantalla en **{{ site.data.keys.mf_console }}** → **[su-applicación]** → **Authenticidad**, o revisar la información siguiente.
+
+#### Disponibilidad
 {: #availability }
-* Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
+* La autenticidad de aplicación está disponible en todas las plataformas soportadas (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) en las aplicaciones nativas y en Cordova.
 
-#### Limitations
+#### Limitaciones
 {: #limitations }
-* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authenticity, disable Bitcode in the Xcode project properties.
+* La autenticidad de aplicación no da soporte a **Bitcode** en iOS. Por lo tanto, antes de utilizar la autenticidad de aplicación, inhabilite Bitcode en las propiedades de proyecto de Xcode.
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-- [Application Authenticity flow](#application-authenticity-flow)
-- [Enabling Application Authenticity](#enabling-application-authenticity)
-- [Configuring Application Authenticity](#configuring-application-authenticity)
+- [Flujo de la autenticidad de aplicación](#application-authenticity-flow)
+- [Habilitación de la autenticidad de aplicación](#enabling-application-authenticity)
+- [Configuración de la autenticidad de aplicación](#configuring-application-authenticity)
+- [BTS (Build Time Secret)](#bts)
+- [Resolución de problemas](#troubleshooting)
+  - [Restablecer](#reset)
+  - [Tipos de validación](#validation)
+  - [Soporte para las versiones SDK 8.0.0.0-MFPF-IF201701250919 o anteriores](#legacy)
 
-## Application Authenticity Flow
+## Flujo de la autenticidad de aplicación
 {: #application-authenticity-flow }
-By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. The authenticity challenge does not occur again.
+La comprobación de seguridad de autenticidad de aplicación se ejecuta durante el registro de la aplicación en {{ site.data.keys.mf_server }}, que la primera vez produce una instancia de los intentos de la aplicación de conectarse al servidor. De forma predeterminada, la verificación de autenticidad no se ejecuta de nuevo.
 
-See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
+Consulte [Configuración de la autenticidad de aplicación](#configuring-application-authenticity) para conocer más sobre como personalizar este comportamiento.
 
-## Enabling Application Authenticity
+## Habilitación de la autenticidad de aplicación
 {: #enabling-application-authenticity }
-For application authenticity to be enabled in your Cordova or native application, the application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+Para que la autenticidad de aplicación se habilite en su aplicación:
 
-1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
-2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+1. Abra {{ site.data.keys.mf_console }} en su navegador favorito.
+2. Seleccione la aplicación de la barra lateral de navegación y pulse el elemento de menú **Autenticidad**.
+3. Conmute el botón **Activado/desactivado** en el recuadro **Estado**.
 
-   For example:
+![Habilitación de la autenticidad de aplicación](enable_application_authenticity.png)
+
+### Inhabilitación de la autenticidad de aplicación
+{: #disabling-application-authenticity }
+Es posible que algunas modificaciones en la aplicación durante el desarrollo causen fallos en la validación de la autenticidad. Por consiguiente, se recomienda inhabilitar la autenticidad de aplicación durante el proceso de desarrollo. Las aplicaciones en un entorno de producción deberían tener esta característica habilitada.
+
+Para inhabilitar la autenticidad de aplicación, vuelva a conmutar el botón **Activado/desactivado** en el recuadro **Estado**.
+
+## Configuración de la autenticidad de aplicación
+{: #configuring-application-authenticity }
+De forma predeterminada, la autenticidad de aplicación se comprueba solo durante el registro del cliente. Sin embargo, igual que con cualquier otra comprobación de seguridad, puede decidir si desea proteger la aplicación o los recursos con la comprobación de seguridad `appAuthenticity` en la consola, siguiendo las instrucciones de [Protección de recursos](../#protecting-resources).
+
+Puede configurar la comprobación de seguridad de autenticidad de aplicación predefinida con las propiedades siguientes:
+
+- `expirationSec`: Tiene como valor predeterminado 3600 segundos / 1 hora. Defina la duración hasta que la señal de autenticidad caduca.
+
+Después de que se haya completado la verificación de autenticidad, no se vuelve a producir hasta que se caduca la señal en función del valor definido.
+
+#### Para configurar la propiedad `expirationSec`:
+{: #to-configure-the-expirationsec property }
+1. Cargue {{ site.data.keys.mf_console }}, navegue a **[su aplicación]** → **Seguridad** → **Configuraciones de comprobación de seguridad**, y pulse **Nueva**.
+
+2. Busque el elemento de ámbito `appAuthenticity`.
+
+3. Defina un nuevo valor en segundos.
+
+![Configuración de la propiedad expirationSec en la consola](configuring_expirationSec.png)
+
+## BTS (Build Time Secret)
+{: #bts }
+BTS (Build Time Secret) es una **herramienta opcional para mejorar la validación de autenticidad** solo para las aplicaciones de iOS. La herramienta inyecta la aplicación con un secreto determinado en el momento de la compilación, que se utiliza más adelante en el proceso de validación de autenticidad.
+
+La herramienta BTS puede descargarse en el **{{ site.data.keys.mf_console }}** → **Centro de descargas**.
+
+Para utilizar la herramienta BTS en Xcode:
+1. En el separador **Fases de compilación** pulse el botón **+** y cree una nueva **Fase de script de ejecución**.
+2. Copie la vía de acceso de la herramienta BTS y péguela en la nueva "Fase de script de ejecución" que ha creado.
+3. Arrastre la fase de script de ejecución sobre la fase **Compilar fuentes**.
+
+La herramienta debería utilizarse al construir una versión de producción de la aplicación.
+
+## Resolución de problemas
+{: #troubleshooting }
+
+### Restablecer
+{: #reset }
+El algoritmo de la autenticidad de aplicación utiliza los datos y metadatos de aplicación para la validación. El primer dispositivo en conectarse al servidor después de habilitar la autenticación de aplicación, proporciona una "huella" de la aplicación, que contiene parte de los datos.
+
+Es posible restablecer esta huella y proporcionar nuevos datos al algoritmo. Esto puede resultar de utilidad durante el desarrollo (por ejemplo, después de modificar la aplicación en Xcode). Para restablecer la huella, utilice el mandato **restablecer** en la CLI [**mfpadm**](../../administering-apps/using-cli/).
+
+Después de restablecer la huella, la comprobación de seguridad appAuthenticity continua trabajando como lo hacía al principio (esto será completamente transparente para el usuario).
+
+### Tipo de validación
+{: #validation }
+
+De forma predeterminada, cuando la autenticidad de aplicación está habilitada, utiliza el algoritmo de validación **dinámico**. La validación de autenticidad de aplicación dinámica utiliza características específicas de plataformas móviles para determinar la autenticidad de la aplicación. En consecuencia, puede quedar afectado si se introducen cambios no retrocompatibles en el sistema operativo móvil, lo que impide que las aplicaciones auténticas se conecten al servidor.
+
+Para mitigar estos problemas conocido, está disponible el algoritmo de validación **estático**. Este tipo de validación es menos sensitiva a las modificaciones específicas de OS.
+
+Para conmutar entre tipos de validación, utilice la CLI [**mfpadm**](../../administering-apps/using-cli/):
+
+```bash
+mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
+```
+`TYPE` puede ser `dinámica` o `estática`.
+
+### Soporte para las versiones SDK 8.0.0.0-MFPF-IF201701250919 o anteriores
+{: #legacy }
+Solo los clientes SDK publicados en **febrero de 2017 o posterior** dan soporte a los tipos de validación dinámica o estática. Para las versiones de SDK **8.0.0.0-MFPF-IF201701250919 o anteriores**, utilice la herramienta de autenticación de aplicación existente:
+
+El archivo binario de aplicación debe estar firmado utilizando la herramienta mfp-app-autenticity. Los archivos binarios elegibles son: `ipa` para iOS, `apk` para Android, y `appx` para Windows 8.1 Universal y Windows 10 UWP.
+
+1. Descargue la herramienta mpf-app-authenticity en el **{{ site.data.keys.mf_console }} → Centro de descargas**.
+2. Abra una ventana **Línea de mandatos** y ejecute el mandato: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+
+   Por ejemplo:
 
    ```bash
    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
    ```
 
-   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
-
-3. Open the {{ site.data.keys.mf_console }} in your favorite browser.
-4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
-5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
-
-When the `.authenticity_data` file is uploaded, application authenticity is enabled.
-
-![Enable Application Authenticity](enable_application_authenticity.png)
-
-### Disabling Application Authenticity
-{: #disabling-application-authenticity }
-To disable application authenticity, click the **Delete Authenticity File** button.
-
-## Configuring Application Authenticity
-{: #configuring-application-authenticity }
-By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
-
-You can configure the predefined application-authenticity security check with the following property:
-
-- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
-
-After an authenticity check has completed, it does not occur again until the token has expired based on the set value.
-
-#### To configure the `expirationSec` property:
-{: #to-configure-the-expirationsec property }
-1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security-Check Configurations**, and click on **New**.
-
-2. Search for the `appAuthenticity` scope element.
-
-3. Set a new value in seconds.
-
-![Configuring the expirationSec property in the console](configuring_expirationSec.png)
+   Este mandato genera un archivo `.authenticity_data` llamado `MyBankApp.authenticity_data`, junto al archivo `MyBankApp.ipa`.
+3. Cargue el archivo `.authenticity_data` utilizando la CLI [**mfpadm**](../../administering-apps/using-cli/):
+  ```bash
+  app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-data FILE
+  ```

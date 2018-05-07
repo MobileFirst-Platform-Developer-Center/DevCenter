@@ -22,7 +22,7 @@ Cette démonstration présente un processus complet :
 #### Prérequis :
 {: #prerequisites }
 * Android Studio
-* *Facultatif* - {{ site.data.keys.mf_cli }} ([téléchargement]({{site.baseurl}}/downloads))
+* *Facultatif* - {{ site.data.keys.mf_cli }}  ([téléchargement]({{site.baseurl}}/downloads))
 * *Facultatif* - Serveur {{ site.data.keys.mf_server }} autonome ([téléchargement]({{site.baseurl}}/downloads))
 
 ### 1. Démarrage du serveur {{ site.data.keys.mf_server }}
@@ -33,7 +33,7 @@ Si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-con
 ### 2. Création d'une application
 {: #2-creating-an-application }
 Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console }} en entrant l'URL `http://your-server-host:server-port/mfpconsole`. Dans le cas d'une exécution locale, entrez l'URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Le nom d'utilisateur et le mot de passe sont *admin/admin*.
- 
+
 1. Cliquez sur le bouton **Nouveau** en regard de l'option **Applications**
     * Sélectionnez la plateforme **Android**
     * Entrez **com.ibm.mfpstarterandroid** en tant qu'**identificateur d'application**
@@ -41,7 +41,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
     * Cliquez sur **Enregistrer l'application**
 
     <img class="gifplayer" alt="Enregistrement d'une application" src="register-an-application-android.png"/>
- 
+
 2. Cliquez sur le titre **Obtenir le code de démarrage** puis indiquez que vous souhaitez télécharger l'application exemple Android.
 
     <img class="gifplayer" alt="Téléchargement d'application exemple" src="download-starter-code-android.png"/>
@@ -59,7 +59,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
   import java.net.URISyntaxException;
   import android.util.Log;
   ```
-    
+
 * Collez le fragment de code suivant, en remplaçant l'appel `WLAuthorizationManager.getInstance().obtainAccessToken` :
 
   ```java
@@ -83,7 +83,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
                     }
 
                     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-                    
+
                     request.setQueryParameter("name","world");
                     request.send(new WLResponseListener() {
                         @Override
@@ -118,7 +118,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
 
 Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
-        
+
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
    > Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
@@ -130,7 +130,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
    ```
 
 3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
-    
+
     <img class="gifplayer" alt="Déploiement d'un adaptateur" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="application exemple" style="float:right"/>
@@ -139,9 +139,10 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 
 1. Dans Android Studio, à partir du menu latéral **Project**, sélectionnez le fichier **app → src → main →assets → mfpclient.properties** puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
-    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**.
+    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
+    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes. 
 
-    Par ailleurs, si vous avez installé l'interface {{ site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{ site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myBluemixServer`.
+    Par ailleurs, si vous avez installé l'interface {{ site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{ site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myIBMCloudServer`.
 
 2. Cliquez sur le bouton **Run App**.  
 
@@ -153,7 +154,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 
 La réponse s'affiche ensuite dans la vue LogCat d'Android Studio.
 
-![Image de l'application ayant appelé une ressource à partir du serveur {{ site.data.keys.mf_server }}](success_response.png)
+![Image de l'application ayant appelé avec succès une ressource de {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Etapes suivantes
 {: #next-steps }

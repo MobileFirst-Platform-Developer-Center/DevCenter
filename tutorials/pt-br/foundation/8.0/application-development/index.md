@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
 
-In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
+In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceRequest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
 
 You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
 
@@ -79,7 +79,7 @@ The server configuration for an app is tied to the combination of app ID, versio
 
 * Grab existing JSON configuration files from the server with the `mfpdev app pull` command, update the file, and upload the changed configuration with the `mfpdev app push` command.
 * Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../administering-apps/using-cli) and [Administering {{ site.data.keys.product_adj }} applications through Ant](../administering-apps/using-ant).
-* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
+* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/admin-apis/).
 
 You can also use these methods to automate configuration of the {{ site.data.keys.mf_server }}.
 
@@ -104,7 +104,7 @@ You need to use {{ site.data.keys.mf_server }} throughout your app's lifecycle f
 
 > A preconfigured server is available for you to use when you develop your app. For information about the {{ site.data.keys.mf_server }} to use when you develop your app, see [Setting up the {{ site.data.keys.product_adj }} Development Environment](../installation-configuration/development).
 
-{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/topologies).
+{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/prod-env/topologies).
 
 ### {{ site.data.keys.product_adj }} and the {{ site.data.keys.mf_server }} administration service
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
@@ -145,11 +145,11 @@ When you deploy your app to production, you can deploy your app to the following
 
 #### On-premises
 {: #on-premises }
-> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/prod-env/appserver).
 
 #### On the cloud
 {: #on-the-cloud }
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
+* [Using {{ site.data.keys.mf_server }} on IBM Cloud](../bluemix).
 * [Using {{ site.data.keys.mf_server }} on IBM PureApplication](../installation-configuration/production/pure-application).
 
 ## Adapters

@@ -1,107 +1,109 @@
 ---
 layout: tutorial
-title: Sending Notifications
+title: 알림 전송
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
-Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
+푸시 또는 SMS 알림을 iOS, Android 또는 Windows 디바이스에 전송하려면 먼저 GCM 세부사항(Android의 경우), APNS 인증서(iOS의 경우) 또는 WNS 신임 정보(Windows 8.1 Universal/Windows 10 UWP의 경우)를 사용하여 {{ site.data.keys.mf_server }}를 구성해야 합니다.
+그런 다음 알림은 모든 디바이스(브로드캐스트), 특정 태그에 등록된 디바이스, 단일 디바이스 ID 또는 사용자 ID에 전송되거나 iOS 디바이스, Android 디바이스 또는 Windows 디바이스에만 전송되거나 인증된 사용자를 기반으로 전송될 수 있습니다.
 
-**Prerequisite**: Make sure to read the [Notifications overview](../) tutorial.
+**전제조건**: [알림 개요](../) 학습서를 읽으십시오.
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+* [알림 설정](#setting-up-notifications)
+    * [Google Cloud Messaging/Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
-    * [SMS Notification Service](#sms-notification-service)
-    * [Scope mapping](#scope-mapping)
-    * [Authenticated Notifications](#authenticated-notifications)
-* [Defining Tags](#defining-tags)
-* [Sending Notifications](#sending-notifications)    
+    * [SMS 알림 서비스](#sms-notification-service)
+    * [범위 맵핑](#scope-mapping)
+    * [인증된 알림](#authenticated-notifications)
+* [태그 정의](#defining-tags)
+* [알림 전송](#sending-notifications)    
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
-    * [REST APIs](#rest-apis)
-    * [Customizing Notifications](#customizing-notifications)
-* [Proxy Support](#proxy-support)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+    * [REST API](#rest-apis)
+    * [알림 사용자 정의](#customizing-notifications)
+* [프록시 지원](#proxy-support)
+* [다음 학습서](#tutorials-to-follow-next)
 
-## Setting up Notifications
+## 알림 설정
 {: #setting-up-notifications }
-Enabling notifications support involves several configuration steps in both {{ site.data.keys.mf_server }} and the client application.  
-Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
+알림 지원을 사용으로 설정하는 데는 {{ site.data.keys.mf_server }}와 클라이언트 애플리케이션 모두에서의 몇몇 구성 단계가 포함됩니다.  
+서버 측 설정을 위해 계속 읽거나 [클라이언트 측 설정](#tutorials-to-follow-next)으로 이동하십시오.
 
-On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
+서버 측에서 필요한 설정에는 필요한 벤더(APNS, GCM 또는 WNS) 구성 및 "push.mobileclient" 범위 맵핑이 포함됩니다.
 
-### Google Cloud Messaging / Firebase Cloud Messaging
+### Google Cloud Messaging/Firebase Cloud Messaging
 {: #google-cloud-messaging--firebase-cloud-messaging }
-> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
+> **참고:** Google은 GCM에서 FCM으로 전환한다고 [최근에 발표했습니다](https://firebase.google.com/support/faq/#gcm-fcm). 이에 따라 아래의 지시사항이 업데이트되었습니다. 또한 현재 사용 중인 기존 GCM 구성은 계속 작동하지만 새 GCM 구성은 작동하지 않으므로 FCM을 대신 사용해야 합니다.
 
-Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
-To setup FCM:
+Android 디바이스는 푸시 알림을 위해 FCM(Firebase Cloud Messaging) 서비스를 사용합니다.  
+FCM을 설정하려면 다음을 수행하십시오.
 
-1. Visit the [Firebase Console](https://console.firebase.google.com/?pli=1).
-2. Create a new project and provide a project name.
-3. Click on the Settings "cog wheel" icon and select **Project settings**.
-4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID** and click **Save**.
+1. [Firebase 콘솔](https://console.firebase.google.com/?pli=1)을 방문하십시오.
+2. 새 프로젝트를 작성하고 프로젝트 이름을 제공하십시오.
+3. 설정 "톱니바퀴" 아이콘을 클릭한 후 **프로젝트 설정**을 선택하십시오.
+4. **클라우드 메시징** 탭을 클릭하여 **서버 API 키** 및 **발신인 ID**를 생성한 후 **저장**을 클릭하십시오.
 
-> You can also setup FCM using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
+> [{{ site.data.keys.product_adj }} 푸시 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) 또는 [{{ site.data.keys.product_adj }} 관리 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)를 사용하여 FCM을 설정할 수도 있습니다.
 
-#### Notes
+#### 참고
 {: #notes }
-If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
+조직에서 인터넷을 통한 트래픽을 제한하는 방화벽을 사용하는 경우에는 다음과 같은 단계를 수행해야 합니다.  
 
-* Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
-* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
-* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
-* Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to android.googleapis.com on port 443.
+* FCM 클라이언트 앱이 메시지를 수신하기 위해 FCM과의 연결을 허용하도록 방화벽을 구성하십시오.
+* 5228, 5229 및 5230 포트를 열어야 합니다. FCM은 일반적으로 5228을 사용하지만 5229 및 5230을 사용하는 경우도 있습니다.
+* FCM은 특정 IP를 제공하지 않으므로 방화벽이 Google ASN 15169에 나열된 IP 블록에 포함된 모든 IP 주소에 대한 발신 연결을 승인하도록 허용해야 합니다.
+* 포트 443에서 방화벽이 {{ site.data.keys.mf_server }}에서 android.googleapis.com으로의 발신 연결을 허용하는지 확인하십시오.
 
-<img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
+<img class="gifplayer" alt="GCM 신임 정보를 추가하는 이미지" src="gcm-setup.png"/>
 
 ### Apple Push Notifications Service
 {: #apple-push-notifications-service }
-iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
-To setup APNS:
+iOS 디바이스는 푸시 알림을 위해 APNS(Apple Push Notification Service)를 사용합니다.  
+APNS를 설정하려면 다음을 수행하십시오.
 
-1. [Generate a push notification certificate for development or production](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
-2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
+1. 개발 또는 프로덕션용 푸시 알림 인증서를 생성하십시오. 세부 단계를 보려면 `iOS` 섹션인 [여기](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)를 참조하십시오.  
+2. {{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 푸시 설정**에서 인증서 유형을 선택한 후 인증서의 파일 및 비밀번호를 제공하십시오. 그런 다음 **저장**을 클릭하십시오.
 
-#### Notes
+#### 참고
 {: #notes-apns }
-* For push notifications to be sent, the following servers must be accessible from a {{ site.data.keys.mf_server }} instance:  
-    * Sandbox servers:  
+* 푸시 알림을 전송하려면 {{ site.data.keys.mf_server }} 인스턴스에서 다음과 같은 서버에 액세스할 수 있어야 합니다.  
+    * 샌드박스 서버:  
         * gateway.sandbox.push.apple.com:2195
         * feedback.sandbox.push.apple.com:2196
-    * Production servers:  
+    * 프로덕션 서버:  
         * gateway.push.apple.com:2195
         * Feedback.push.apple.com:2196
         * 1-courier.push.apple.com 5223
-* During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
-* During the production phase, use the apns-certificate-production.p12 production certificate file.
-    * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
+* 개발 단계(Phase) 수행 중에는 apns-certificate-sandbox.p12 샌드박스 인증 파일을 사용하십시오.
+* 프로덕션 단계(Phase) 수행 중에는 apns-certificate-production.p12 프로덕션 인증 파일을 사용하십시오.
+    * APNS 프로덕션 인증서는 이 인증서를 활용하는 애플리케이션이 Apple App Store에 제출된 경우에만 테스트할 수 있습니다.
 
-> You can also setup APNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
+**참고:** MobileFirst는 Universal 인증서를 지원하지 않습니다. 
 
-<img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
+> [{{ site.data.keys.product_adj }} 푸시 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) 또는 [{{ site.data.keys.product_adj }} 관리 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)를 사용하여 APNS를 설정할 수도 있습니다.
+
+<img class="gifplayer" alt="APNS 신임 정보를 추가하는 이미지" src="apns-setup.png"/>
 
 ### Windows Push Notifications Service
 {: #windows-push-notifications-service }
-Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
-To setup WNS:
+Windows 디바이스는 푸시 알림을 위해 WNS(Windows Push Notifications Service)를 사용합니다.  
+WNS를 설정하려면 다음을 수행하십시오.
 
-1. Follow the [instructions provided by Microsoft](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) to generate the **Package Security Identifier (SID)** and **Client secret** values.
-2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, add these values and click **Save**.
+1. [Microsoft에서 제공한 지시사항](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx)을 따라 **패키지 보안 ID(SID)** 및 **클라이언트 본인확인정보** 값을 생성하십시오.
+2. {{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 푸시 설정**에서 이 값을 추가한 후 **저장**을 클릭하십시오.
 
-> You can also setup WNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
+> [{{ site.data.keys.product_adj }} 푸시 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) 또는 [{{ site.data.keys.product_adj }} 관리 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)를 사용하여 WNS를 설정할 수도 있습니다.
 
-<img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
+<img class="gifplayer" alt="WNS 신임 정보를 추가하는 이미지" src="wns-setup.png"/>
 
-### SMS Notification Service
+### SMS 알림 서비스
 {: #sms-notification-service }
-The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the {{ site.data.keys.mf_server }} with the SMS gateway configuration
+SMS 알림을 전송하는 데 필요한 SMS 게이트웨이를 설정하기 위해 다음 JSON이 사용됩니다. [`smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html)를 사용하여 SMS 게이트웨이 구성으로 {{ site.data.keys.mf_server }}를 업데이트하십시오.
 
 ```json
 {
@@ -122,184 +124,184 @@ The following JSON is used to setup the SMS gateway for sending SMS notification
 }
 ```
 
-> Find more SMS-related REST APIs [in the Push Service API Reference](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)
+> [푸시 서비스 API 참조서에서](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) 추가 SMS 관련 REST API를 찾으십시오.
 
-### Scope mapping
+### 범위 맵핑
 {: #scope-mapping }
-Map the **push.mobileclient** scope element to the application.
+**push.mobileclient** 범위 요소를 애플리케이션에 맵핑하십시오.
 
-1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New**.
-2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
+1. {{ site.data.keys.mf_console }}을 로드하고 **[사용자의 애플리케이션] → 보안 → 범위-요소 맵핑**으로 이동한 후 **새로 작성**을 클릭하십시오.
+2. **범위 요소** 필드에 "push.mobileclient"라고 쓰십시오. 그런 다음 **추가**를 클릭하십시오.
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
-                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Click for a list additional available scopes</b></a>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>클릭하면 추가적으로 사용 가능한 범위의 목록이 표시됩니다. </b></a>
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
-                            <td><b>Scope</b></td>
-                            <td><b>Description</b></td>
+                            <td><b>범위</b></td>
+                            <td><b>설명</b></td>
                         </tr>
                         <tr>
                             <td>apps.read	</td>
-                            <td>Permission to read application resource.</td>
+                            <td>애플리케이션 자원을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>apps.write	</td>
-                            <td>Permission to create, update, delete application resource.</td>
+                            <td>애플리케이션 자원을 작성, 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>gcmConf.read	</td>
-                            <td>Permission to read GCM configuration settings (API Key and SenderId).</td>
+                            <td>GCM 구성 설정(API 키 및 발신인 ID)을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>gcmConf.write	</td>
-                            <td>Permission to update, delete GCM configuration settings.</td>
+                            <td>GCM 구성 설정을 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>apnsConf.read	</td>
-                            <td>Permission to read APNs configuration settings.</td>
+                            <td>APN 구성 설정을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>apnsConf.write	</td>
-                            <td>Permission to update, delete APNs configuration settings.</td>
+                            <td>APN 구성 설정을 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>devices.read	</td>
-                            <td>Permission to read device.</td>
+                            <td>디바이스를 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>devices.write	</td>
-                            <td>Permission to create, update delete device.</td>
+                            <td>디바이스를 작성, 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>subscriptions.read	</td>
-                            <td>Permission to read subscriptions.</td>
+                            <td>등록을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>subscriptions.write	</td>
-                            <td>Permission to create, update, delete subscriptions.</td>
+                            <td>등록을 작성, 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>messages.write	</td>
-                            <td>Permission to send push notifications.</td>
+                            <td>푸시 알림을 전송할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>webhooks.read	</td>
-                            <td>Permission to read event-notifications.</td>
+                            <td>이벤트 알림을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>webhooks.write	</td>
-                            <td>Permission to send event-notifications.</td>
+                            <td>이벤트 알림을 전송할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>smsConf.read	</td>
-                            <td>Permission to read SMS configuration settings.</td>
+                            <td>SMS 구성 설정을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>smsConf.write	</td>
-                            <td>Permission to update, delete SMS configuration settings.</td>
+                            <td>SMS 구성 설정을 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>wnsConf.read	</td>
-                            <td>Permission to read WNS configuration settings.</td>
+                            <td>WNS 구성 설정을 읽을 수 있는 권한입니다.</td>
                         </tr>
                         <tr>
                             <td>wnsConf.write	</td>
-                            <td>Permission to update, delete WNS configuration settings.</td>
+                            <td>WNS 구성 설정을 업데이트 및 삭제할 수 있는 권한입니다.</td>
                         </tr>
                     </table>
-                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Close section</b></a>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>섹션 닫기</b></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
+    <img class="gifplayer" alt="범위 맵핑" src="scope-mapping.png"/>
 
-### Authenticated Notifications
+### 인증된 알림
 {: #authenticated-notifications }
-Authenticated notifications are notifications that are sent to one or more `userIds`.  
+인증된 알림은 하나 이상의 `사용자 ID`에 전송되는 알림입니다.  
 
-Map the **push.mobileclient** scope element to the security check used for the application.  
+**push.mobileclient** 범위 요소를 애플리케이션에 사용되는 보안 검사에 맵핑하십시오.  
 
-1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New** or edit an existing scope mapping entry.
-2. Select a security check. Then, click **Add**.
+1. {{ site.data.keys.mf_console }}을 로드하고 **[사용자의 애플리케이션] → 보안 → 범위-요소 맵핑**으로 이동한 후 **새로 작성**을 클릭하거나 기존 범위 맵핑 항목을 편집하십시오.
+2. 보안 검사를 선택하십시오. 그런 다음 **추가**를 클릭하십시오.
 
-    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
-    
-## Defining Tags
+    <img class="gifplayer" alt="인증된 알림" src="authenticated-notifications.png"/>
+
+## 태그 정의
 {: #defining-tags }
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags**, click **New**.  
-Provide the appropriate `Tag Name` and `Description` and click **Save**.
+{{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 태그**에서 **새로 작성**을 클릭하십시오.  
+적절한 `태그 이름` 및 `설명`을 제공한 후 **저장**을 클릭하십시오.
 
-<img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
+<img class="gifplayer" alt="태그 추가" src="adding-tags.png"/>
 
-Subscriptions tie together a device registration and a tag. When a device is unregistered from a tag, all associated subscriptions are automatically unsubscribed from the device itself. In a scenario where there are multiple users of a device, subscriptions should be implemented in mobile applications based on user log-in criteria. For example, the subscribe call is made after a user successfully logs in to an application and the unsubscribe call is made explicitly as part of the logout action handling.
+등록은 디바이스 등록과 태그를 함께 결합합니다. 디바이스가 태그에서 등록 취소되면 연관된 모든 등록이 디바이스 자체에서 자동으로 등록 취소됩니다. 한 디바이스의 사용자가 여럿 있는 시나리오에서는 사용자 로그인 기준을 기반으로 모바일 애플리케이션에서 등록을 구현해야 합니다. 예를 들어, 사용자가 애플리케이션에 성공적으로 로그인하고 나면 등록 호출이 수행되고 등록 취소 호출은 로그아웃 조치 처리의 일부로 명시적으로 수행됩니다.
 
-## Sending Notifications
+## 알림 전송
 {: #sending-notifications }
-Push notifications can be sent either from the {{ site.data.keys.mf_console }} or via REST APIs.
+푸시 알림은 {{ site.data.keys.mf_console }}에서 또는 REST API를 통해 전송될 수 있습니다.
 
-* With the {{ site.data.keys.mf_console }}, two types of notifications can be sent: tag and broadcast.
-* With the REST APIs, all forms of notifications can be sent: tag, broadcast and authenticated.
+* {{ site.data.keys.mf_console }}을 사용하는 경우 두 가지 유형의 알림(태그 및 브로드캐스트)을 전송할 수 있습니다.
+* REST API를 사용하는 경우 모든 양식의 알림(태그, 브로드캐스트 및 인증됨)을 전송할 수 있습니다.
 
 ### {{ site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-Notifications can be sent to a single Device ID, a single or several User IDs, only iOS devices or only Android devices, or to devices subscribed to tags.
+알림은 단일 디바이스 ID나 단일 또는 여러 사용자 ID에 전송되거나 iOS 디바이스 또는 Android 디바이스에만 전송되거나 태그에 등록된 디바이스에 전송될 수 있습니다.
 
-#### Tag notifications
+#### 태그 알림
 {: #tag-notifications }
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
+태그 알림은 특정 태그에 등록된 모든 디바이스를 대상으로 하는 알림 메시지입니다. 태그는 사용자의 관심 주제를 나타내며 선택된 관심사에 따라 알림을 수신할 수 있는 기능을 제공합니다.
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
+{{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 알림 전송 탭**의 **받는 사람** 탭에서 **태그별 디바이스**를 선택한 후 **알림 텍스트**를 제공하십시오. 그런 다음 **전송**을 클릭하십시오.
 
-<img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
+<img class="gifplayer" alt="태그별 전송" src="sending-by-tag.png"/>
 
-#### Broadcast notifications
+#### 브로드캐스트 알림
 {: #breadcast-notifications }
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
+브로드캐스트 알림은 등록된 모든 디바이스를 대상으로 하는 태그 푸시 알림의 한 양식입니다. 브로드캐스트 알림은 예약된 `Push.all` 태그(모든 디바이스에 대해 자동 작성됨)에 등록하여 푸시 사용 {{ site.data.keys.product_adj }} 애플리케이션에 대해 기본적으로 사용으로 설정됩니다. `Push.all` 태그는 프로그래밍 방식으로 등록 취소할 수 있습니다.
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
+{{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 알림 전송 탭**의 **받는 사람** 탭에서 **모두**를 선택한 후 **알림 텍스트**를 제공하십시오. 그런 다음 **전송**을 클릭하십시오.
 
-![send-to-all](sending-to-all.png)
+![모두에게 전송](sending-to-all.png)
 
-### REST APIs
+### REST API
 {: #rest-apis }
-When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
+REST API를 사용하여 알림을 전송하는 경우 모든 양식의 알림(태그 &amp; 브로드캐스트 알림 및 인증된 알림)을 전송할 수 있습니다.
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+알림을 전송하기 위해 REST 엔드포인트에 대한 POST를 사용하여 요청이 작성됩니다. `imfpush/v1/apps/<application-identifier>/messages`.  
+예제 URL:
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
-> To review all Push Notifications REST APIs, see the [REST API Runtime Services topic](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) in the user documentation.
+> 모든 푸시 알림 REST API를 검토하려면 사용자 문서에서 [REST API 런타임 서비스 주제](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)를 참조하십시오.
 
-#### Notification payload
+#### 알림 페이로드
 {: #notification-payload }
-The request can contain the following payload properties: 
+요청은 다음과 같은 페이로드 특성을 포함할 수 있습니다.
 
-Payload Properties| Definition
+페이로드 특성| 정의
 --- | ---
-message | The alert message to be sent
-settings | The settings are the different attributes of the notification.
-target | Set of targets can be consumer Ids, devices, platforms, or tags. Only one of the targets can be set.
-deviceIds | An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification.
-notificationType | Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)
-platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
-tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
-userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
-phoneNumber | The phone number used for registering the device and receiving notifications. This is a unicast notification.
+message | 전송할 경보 메시지입니다.
+settings | 설정은 알림의 다양한 속성입니다.
+target | 대상 세트는 이용자 ID, 디바이스, 플랫폼 또는 태그일 수 있습니다. 대상 중 하나만 설정할 수 있습니다.
+deviceIds | 디바이스 ID로 표시되는 디바이스의 배열입니다. 이러한 ID를 가진 디바이스가 알림을 수신합니다. 이는 유니캐스트 알림입니다.
+notificationType | 메시지를 전송하는 데 사용되는 채널(푸시/SMS)을 표시하는 정수 값입니다. 허용되는 값은 1(푸시만), 2(SMS만) 및 3(푸시 및 SMS)입니다 .
+platforms | 디바이스 플랫폼의 배열입니다. 이러한 플랫폼에서 실행 중인 디바이스가 알림을 수신합니다. 지원되는 값은 A(Apple/iOS), G(Google/Android) 및 M(Microsoft/Windows)입니다.
+tagNames | tagNames로 지정되는 태그의 배열입니다. 이러한 태그에 등록된 디바이스가 알림을 수신합니다. 태그 기반 알림의 경우 이 유형의 대상을 사용하십시오.
+userIds | 알림을 전송할 사용자 ID로 표시되는 사용자의 배열입니다. 이는 유니캐스트 알림입니다.
+phoneNumber | 디바이스 등록 및 알림 수신에 사용되는 전화번호입니다. 이는 유니캐스트 알림입니다.
 
-**Push Notifications Payload JSON Example**
+**푸시 알림 페이로드 JSON의 예**
 
 ```json
 {
@@ -331,7 +333,7 @@ phoneNumber | The phone number used for registering the device and receiving not
 }
 ```
 
-**SMS Notification Payload JSON Example**
+**SMS 알림 페이로드 JSON의 예**
 
 ```json
 {
@@ -345,32 +347,32 @@ phoneNumber | The phone number used for registering the device and receiving not
 }
 ```
 
-#### Sending the notification
+#### 알림 전송
 {: #sending-the-notification }
-The notification can be sent using different tools.  
-For testing purposes, Postman is used as described below:
+다양한 도구를 사용하여 알림을 전송할 수 있습니다.  
+테스트용으로 Postman이 아래에 설명된 대로 사용됩니다.
 
-1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
-    Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
-    
-    <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
+1. [기밀 클라이언트를 구성하십시오](../../authentication-and-security/confidential-clients/).   
+    REST API를 통한 푸시 알림 전송에서는 공백으로 구분된 범위 요소 `messages.write` 및 `push.application.<applicationId>를 사용합니다. `
 
-2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
-    
-    
-3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
-    - If using a remote {{ site.data.keys.product_adj }}, replace the `hostname` and `port` values with your own.
-    - Update the application identifier value with your own.
+    <img class="gifplayer" alt="기밀 클라이언트 구성" src="push-confidential-client.png"/>
 
-4. Set a Header:
-    - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
-    - Replace the value after "Bearer" with the value of your access token from step (1) above.
-    
-    ![authorization header](postman_authorization_header.png)
+2. [액세스 토큰을 작성하십시오](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
 
-5. Set a Body:
-    - Update its properties as described in [Notification payload](#notification-payload) above.
-    - For example, by adding the **target** property with the **userIds** attribute, you can send a notification to specific registered users.
+
+3. **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**에 대한 **POST** 요청을 작성하십시오.
+    - 원격 {{ site.data.keys.product_adj }}를 사용하는 경우 `hostname` 및 `port` 값을 사용자 고유의 값으로 대체하십시오.
+    - 애플리케이션 ID 값을 사용자 고유의 값으로 업데이트하십시오.
+
+4. 헤더를 설정하십시오.
+    - **권한 부여**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
+    - "Bearer" 뒤의 값을 위의 (1)단계의 액세스 토큰 값으로 대체하십시오.
+
+    ![권한 부여 헤더](postman_authorization_header.png)
+
+5. 본문을 설정하십시오.
+    - 위의 [알림 페이로드](#notification-payload)에 설명된 대로 해당 특성을 업데이트하십시오.
+    - 예를 들어, **userIds** 속성을 가진 **target** 특성을 추가하여 특정 등록된 사용자에게 알림을 전송할 수 있습니다.
 
    ```json
    {
@@ -379,45 +381,45 @@ For testing purposes, Postman is used as described below:
         }
    }
    ```
-    
-   ![authorization header](postman_json.png)
-    
-After clicking on the **Send** button, the device should have now received a notification:
 
-![Image of the sample application](notifications-app.png)
+   ![권한 부여 헤더](postman_json.png)
 
-### Customizing Notifications
+**전송** 단추를 클릭하면 다음과 같이 디바이스에 알림이 수신됩니다.
+
+![샘플 애플리케이션의 이미지](notifications-app.png)
+
+### 알림 사용자 정의
 {: #customizing-notifications }
-Before sending the notification message, you can also customize the following notification attributes.  
+알림 메시지를 전송하기 전에 다음과 같은 알림 속성을 사용자 정의할 수도 있습니다.  
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags → Send Notifications tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
+{{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 태그 → 알림 전송 탭**에서 **iOS/Android 사용자 정의 설정** 섹션을 펼쳐 알림 속성을 변경하십시오.
 
 ### Android
 {: #android }
-* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
-* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
+* 알림 사운드, GCM 스토리지에 알림을 저장할 수 있는 기간, 사용자 정의 페이로드 등
+* 알림 제목을 변경하려면 Android 프로젝트의 **strings.xml** 파일에 `push_notification_tile`을 추가하십시오.
 
 ### iOS
 {: #ios }
-* Notification sound, custom payload, action key title, notification type and badge number.
+* 알림 사운드, 사용자 정의 페이로드, 조치 키 제목, 알림 유형 및 배지 번호
 
-![customizing push notifications](customizing-push-notifications.png)
+![푸시 알림 사용자 정의](customizing-push-notifications.png)
 
-## Proxy Support
+## 프록시 지원
 {: #proxy-support }
-You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+프록시 설정을 사용하여 알림을 Android 및 iOS 디바이스에 전송하는 데 사용할 선택적 프록시를 설정할 수 있습니다. **push.apns.proxy.** 및 **push.gcm.proxy.** 구성 특성을 사용하여 프록시를 설정할 수 있습니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 특성 목록](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)을 참조하십시오.
 
-## Tutorials to follow next
+## 다음 학습서
 {: #tutorials-to-follow-next }
-With the server-side now set-up, setup the client-side and handle received notifications.
+이제 서버 측이 설정되었으니 클라이언트 측을 설정하고 수신된 알림을 처리하십시오.
 
-* Handling push notifications
-    * [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
-    * [Handling push notifications in iOS applications](../handling-push-notifications/ios)
-    * [Handling push notifications in Android applications](../handling-push-notifications/android)
-    * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
+* 푸시 알림 처리
+    * [Cordova 애플리케이션에서 푸시 알림 처리](../handling-push-notifications/cordova)
+    * [iOS 애플리케이션에서 푸시 알림 처리](../handling-push-notifications/ios)
+    * [Android 애플리케이션에서 푸시 알림 처리](../handling-push-notifications/android)
+    * [Windows 애플리케이션에서 푸시 알림 처리](../handling-push-notifications/windows)
 
-* Handling SMS notifications
-    * [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
-    * [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
-    * [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
+* SMS 알림 처리
+    * [Cordova 애플리케이션에서 SMS 알림 처리](../handling-sms-notifications/cordova)
+    * [iOS 애플리케이션에서 SMS 알림 처리](../handling-sms-notifications/ios)
+    * [Android 애플리케이션에서 SMS 알림 처리](../handling-sms-notifications/android)

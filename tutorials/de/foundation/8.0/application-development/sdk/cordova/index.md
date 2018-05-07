@@ -28,8 +28,8 @@ Folgende Plug-ins sind verfügbar:
 Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterstützt: 
 
 * cordova-ios: **>= 4.1.1 und < 5.0**
-* cordova-android: **>= 5.1.1 und < 6.0**
-* cordova-windows: **>= 4.3.2 und < 5.0**
+* cordova-android: **>= 6.1.2 und < 7.0**
+* cordova-windows: **>= 4.3.2 und < 6.0**
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -40,6 +40,8 @@ Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterst�
 - [Nächste Lernprogramme](#tutorials-to-follow-next)
 
 > **Hinweis:** Die Funktion **Keychain Sharing** ist obligatorisch, wenn Sie Xcode 8 verwenden und iOS-Apps im iOS-Simulator ausführen. Sie müssen diese Funktion manuell aktivieren, bevor Sie das Xcode-Projekt erstellen.
+
+
 
 ## Cordova-SDK-Komponenten
 {: #cordova-sdk-components }
@@ -83,6 +85,8 @@ iOS-Plattform bereit. Weitere Informationen finden Sie unter [OpenSSL für Cordo
 - [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) und die {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert. 
 - Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
 - Sie haben die Lernprogramme [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst) und [Cordova-Entwicklungsumgebung einrichten](../../../installation-configuration/development/cordova) durchgearbeitet. 
+- Für Cordova für Windows muss eine Version von Visual C++ installiert sein, die mit den auf der Maschine installierten Versionen von Visual Studio und .NET kompatibel ist. 
+- Im Falle von Windows Phone SDK 8.0 und Visual-Studio-Tools für universelle Windows-Apps müssen Sie sicherstellen, dass erstellte Cordova-Windows-Anwendungen über alle erforderlichen unterstützenden Bibliotheken verfügen. 
 
 ## {{ site.data.keys.product }}-Cordova-SDK hinzufügen
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -98,6 +102,8 @@ navigieren Sie in einem **Befehlszeilenfenster** zum Serverordner und führen Si
 > **Hinweis:** Wenn Sie das SDK zu einer vorhandenen Cordova-Anwendung hinzufügen, überschreibt das Plug-in die Datei
 `MainActivity.java` für Android und die Datei `Main.m` für iOS.
 
+
+
 ### SDK hinzufügen
 {: #adding-the-sdk }
 Sie können das Projekt mit der {{ site.data.keys.product_adj }}-Cordova-**Anwendungsschablone** erstellen. Die Schablone fügt die erforderlichen
@@ -107,7 +113,7 @@ die für die {{ site.data.keys.product_adj }}-Anwendungsentwicklung konzipiert i
 
 #### Neue Anwendung
 {: #new-application }
-1. Erstellen Sie mit folgendem Befehl ein Cordova-Projekt: `cordova create projectName applicationId --template cordova-template-mfp`.
+1. Erstellen Sie mit folgendem Befehl ein Cordova-Projekt: `cordova create projectName applicationId applicationName --template cordova-template-mfp`.
      
 Beispiel: 
 
@@ -121,6 +127,8 @@ Beispiel:
 
     > Mit der von der Schablone bereitgestellten Datei **index.js** können Sie zusätzliche {{ site.data.keys.product_adj }}-Features verwenden, z. B. die [Anwendungsübersetzung in mehrere Sprachen](../../translation) und Initialisierungsoptionen. (Weitere Informationen finden Sie in der Benutzerdokumentation.)
 
+
+
 2. Navigieren Sie mit `cd hello` zum Stammverzeichnis des Cordova-Projekts.
 
 3. Fügen Sie mindestens eine unterstützte Plattform zum Cordova-Projekt hinzu. Verwenden Sie dazu den CLI-Befehl `cordova platform add ios|android|windows`. Beispiel: 
@@ -130,6 +138,8 @@ Beispiel:
    ```
 
    > **Hinweis:** Da die Anwendung mit der {{ site.data.keys.product_adj }}-Schablone konfiguriert wurde, wird das zentrale {{ site.data.keys.product_adj }}-Cordova-Plug-in in Schritt 3 automatisch hinzugefügt, wenn die Plattform hinzugefügt wird.
+
+
 
 4. Erstellen Sie die Anwendungsressourcen mit dem Befehl `cordova prepare command`:
 
@@ -168,8 +178,7 @@ Mit dieser Funktion können Sie die verschiedenen {{ site.data.keys.product_adj 
    ```bash
    mfpdev app register
    ```
-    - Wenn ein ferner Server verwendet wird,
-fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
+    - Wenn ein ferner Server verwendet wird, fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu.
 
 Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung
 zu {{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren. Anschließend wird die Datei
@@ -238,7 +247,7 @@ die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten 
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">

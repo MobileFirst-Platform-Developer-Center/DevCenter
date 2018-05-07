@@ -51,11 +51,11 @@ From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
 #### Desktop Browser
 {: #desktop-browser-remote }
 From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
+The host server can be either a customer-owned server, or the IBM Cloud service, IBM [Mobile Foundation](../../../bluemix/).
 
 #### Command-line
 {: #command-line-remote }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
+From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed,
 
 1. Add a remote server definition:
 
@@ -105,7 +105,7 @@ The Error log shows a list of the failed management operations that were initiat
 {: #devices }
 Administrators can search for devices that access the {{ site.data.keys.mf_server }} and can manage access rights.  
 Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
+A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID.
 
 > For more information, see the topic about device access management in the user documentation.
 
@@ -115,7 +115,7 @@ A friendly name is a name that is associated with the device to distinguish it f
 {: #applications }
 #### Registering applications
 {: #registering-applications }
-Provide basic application values and download Starter Code. 
+Provide basic application values and download Starter Code.
 
 ![Image of application registration screen](register-applications.png)
 
@@ -127,7 +127,7 @@ Manage and configure registered applications by use of [Direct Update](../../../
 
 #### Authentication and Security
 {: #authentication-and-security }
-Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
+Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes, and configure security-check options.
 
 > [Learn more](../../../authentication-and-security/) about the {{ site.data.keys.product_adj }} security framework.
 
@@ -179,11 +179,10 @@ By tracking the usage of client devices and determining whether the devices are 
 
 > For more information, see the topic about license tracking in the user documentation.
 
-![Image of client logs screen](license-tracking.png)
+![Image of license tracking screen](license-tracking.png)
 
 ### Downloads
 {: #downloads }
 For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of {{ site.data.keys.product }} from the Download Center in the {{ site.data.keys.mf_console }}.
 
 ![Image of available artifacts](downloads.png)
-

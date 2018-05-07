@@ -5,13 +5,13 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: Xcode プロジェクトのダウンロード
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
+{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。 このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
 
 サイレント通知または対話式通知については、以下を参照してください。
 
@@ -81,7 +81,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、ビュー・コントローラー内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、ビュー・コントローラー内で一貫して `push.methodName()` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、ビュー・コントローラー内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、ビュー・コントローラー内で一貫して `push.methodName()` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.sharedInstance().methodName()` を呼び出すこともできます。
 
@@ -265,7 +265,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 ## プッシュ通知の処理
 {: #handling-a-push-notification }
 
-プッシュ通知は、ネイティブ iOS フレームワークによって直接的に処理されます。アプリケーション・ライフサイクルに応じて、いろいろなメソッドが iOS フレームワークによって呼び出されます。
+プッシュ通知は、ネイティブ iOS フレームワークによって直接的に処理されます。 アプリケーション・ライフサイクルに応じて、いろいろなメソッドが iOS フレームワークによって呼び出されます。
 
 例えば、アプリケーションの実行中に単純な通知を受け取った場合は、**AppDelegate** の `didReceiveRemoteNotification` がトリガーされます。
 

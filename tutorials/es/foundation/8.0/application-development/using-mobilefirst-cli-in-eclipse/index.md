@@ -1,169 +1,199 @@
 ---
 layout: tutorial
-title: Using the MobileFirst CLI in Eclipse
+title: Utilización de la CLI de MobileFirst en Eclipse
 relevantTo: [ios,android,windows,cordova]
 breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
+Mediante la interfaz de línea de mandatos (CLI) de Cordova puede crear y gestionar aplicaciones de Cordova.
+También puede lograr lo mismo en el entorno de desarrollo integrado (IDE) Eclipse mediante el plugin [THyM](https://www.eclipse.org/thym/).
 
-THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
 
-Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
+THyM proporciona soporte para la importación y gestión de proyectos Cordova en Eclipse.
+Puede crear nuevos proyectos de Cordova, así como importar proyectos Cordova existentes.
+También es posible instalar plugins de Cordova en su proyecto a través de este plugin.
 
-The {{ site.data.keys.mf_studio }} plug-in for Eclipse exposes the various {{ site.data.keys.product_adj }} commands in the Eclipse IDE.
-Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
 
-This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
+Obtenga más información acerca de THyM en su [sitio web oficial](https://www.eclipse.org/thym/).
 
-**Prerequisites:**
+El plugin de {{ site.data.keys.mf_studio }} para Eclipse expone varios mandatos de {{ site.data.keys.product_adj }} en el IDE de Eclipse.
+En concreto, proporciona los siguientes mandatos:
+Abrir consola de servidor, Vista previa de aplicación, Registrar aplicación, Cifrar aplicación, Hacer pull a aplicación, Hacer push a aplicación, Actualizar aplicación.
 
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
 
-#### Jump to:
+Esta guía de aprendizaje recorre el proceso de instalación de los plugins de Eclipse de THyM y MobileFirst.
+
+
+**Requisitos previos:**
+
+* {{ site.data.keys.mf_server }} para ejecutar localemente o {{ site.data.keys.mf_server }} ejecutándose de forma remota.
+
+* {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador
+
+
+#### Ir a:
 {: #jump-to }
-* [Installing the {{ site.data.keys.mf_studio }} plug-in](#installing-the-mobilefirst-studio-plug-in)
-* [Installing the THyM plug-in](#installing-the-thym-plug-in)
-* [Creating a Cordova project](#creating-a-cordova-project)
-* [Importing an existing Cordova project](#importing-an-existing-cordova-project)
-* [Adding the {{ site.data.keys.product_adj }} SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
-* [{{ site.data.keys.product_adj }} Commands](#mobilefirst-commands)
-* [Tips and Tricks](#tips-and-tricks)
+* [Instalación del plugin {{ site.data.keys.mf_studio }}](#installing-the-mobilefirst-studio-plug-in)
+* [Instalación del plugin THyM](#installing-the-thym-plug-in)
+* [Creación de un proyecto de Cordova](#creating-a-cordova-project)
+* [Importación de un proyecto Cordova existente](#importing-an-existing-cordova-project)
+* [Adición de {{ site.data.keys.product_adj }} SDK a proyectos Cordova](#adding-the-mobilefirst-sdk-to-cordova-project)
+* [Mandatos de {{ site.data.keys.product_adj }}](#mobilefirst-commands)
+* [Sugerencias y consejos](#tips-and-tricks)
 
 
-## Installing the {{ site.data.keys.mf_studio }} plug-in
+## Instalación del plugin {{ site.data.keys.mf_studio }}
+
 {: #installing-the-mobilefirst-studio-plug-in}
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "{{ site.data.keys.product_adj }}" then click "Go"
-3. Click "Install"
+1. Dentro de Eclipse, pulse **Ayuda → Eclipse Marketplace...**
+2. En el campo de búsqueda busque "{{ site.data.keys.product_adj }}" y, a continuación, pulse "Ir"
+3. Pulse "Instalar"
 
-	![Image of {{ site.data.keys.mf_studio }} installation](mff_install.png)
+	![Imagen de la instalación de {{ site.data.keys.mf_studio }} ](mff_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. Complete el proceso de instalación
+5. Reinicie Eclipse para que la instalación se haga efectiva.
 
 
-## Installing the THyM plug-in
+## Instalación del plugin THyM
 {: #installing-the-thym-plug-in }
-**Note:** To run THyM you must be running Eclipse Mars or later
+**Nota:** Para ejecutar THyM debe ejecutar Eclipse Mars o posterior
 
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "thym" then click "Go"
-3. Click "Install" for Eclipse Thym
+1. Dentro de Eclipse, pulse **Ayuda → Eclipse Marketplace...**
+2. En el campo de búsqueda busque "thym" y, a continuación, pulse "Ir"
+3. Pulse "Instalar" para ThyM. 
 
-	![Image of THyM installation](Thym_install.png)
+	![Imagen de la instalación de THyM](Thym_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. Complete el proceso de instalación
+5. Reinicie Eclipse para que la instalación se haga efectiva.
 
-## Creating a Cordova project
+## Creación de un proyecto de Cordova
 {: #creating-a-cordova-project }
-In this section we will discuss how to create a new Cordova project using THyM.
+En esta sección crearemos un nuevo proyecto de Cordova utilizando THyM.
 
-1. While in Eclipse click **File → New → Other...**
-2. Narrow options by searching for "Cordova" and select **Hybrid Mobile (Cordova) Application Project** in the **Mobile** directory and click **Next**
+1. Dentro de Eclipse, pulse **Archivo → Nuevo → Otro...**
+2. Reduzca las opciones buscando "Cordova" y seleccione **Proyecto de aplicación móvil híbrida (Cordova)** en el directorio **Móvil** y pulse **Siguiente**
 
-	![Image of new Cordova wizard](New_cordova_wizard.png)
 
-3. Name the project, and click **Next**
+	![Imagen del nuevo asistente de Cordova](New_cordova_wizard.png)
 
-	![Image of new Cordova naming](New_cordova_naming.png)
+3. Dé un nombre al proyecto y pulse **Siguiente**
 
-4. Add the desired platform for your project and click **Finish**
+	![Imagen de asignación de un nuevo nombre en Cordova ](New_cordova_naming.png)
 
-**Note**: If you need additional platforms after creation see [Adding platforms](#adding-platforms)
+4. Añada la plataforma deseada para su proyecto y pulse **Finalizar**
 
-## Importing an existing Cordova project
+**Nota**: Si necesita más plataformas después de crear esta, consulte [Adición de plataformas](#adding-platforms)
+
+## Importación de un proyecto Cordova existente
 {: #importing-an-existing-cordova-project }
-In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
+En esta sección trataremos de cómo importar un proyecto de Cordova existente que ya se creó mediante la interfaz de línea de mandatos (CLI) de Cordova.
 
-1. While in Eclipse click **File → Import...**
-2. Select **Import Cordova Project** in the **Mobile** directory and click **Next >**
-3. Click **Browse...** and select the root directory of the existing Cordova project.
-4. Ensure the project is checked in the "Projects:" sections and click **Finish**
-	![Image of importing Cordova project](Import_cordova.png)
 
-If you import a project without any platforms you will see the following error, please see the [adding platforms](#adding-platforms) section on how to resolve this error.
-![No platforms error image](no-platforms-error.png)
+1. Dentro de Eclipse, pulse **Archivo → Importar...**
+2. Seleccione **Importar proyecto de Cordova** en el directorio **Móvil** y pulse **Siguiente>**
 
-**Note**: If you need to additional platforms after an import see [adding platforms](#adding-platforms)
+3. Pulse **Examinar...** y seleccione el directorio raíz de un proyecto Cordova existente.
 
-## Adding the {{ site.data.keys.product_adj }} SDK to Cordova project
+4. Asegúrese de que el proyecto está seleccionado en las secciones "Proyectos:" y pulse **Finalizar**
+	![Imagen de importación de un proyecto de Cordova](Import_cordova.png)
+
+Si importa un proyecto sin ninguna plataforma verá el siguiente error, consulte la sección de [adición de plataformas](#adding-platforms) para resolver este error.
+![Imagen del error por la ausencia de plataformas](no-platforms-error.png)
+
+**Nota**: Si necesita plataformas adicionales después de realizar una importación consulte [adición de plataformas](#adding-platforms)
+
+## Adición de {{ site.data.keys.product_adj }} SDK a un proyecto Cordova
 {: #adding-the-mobilefirst-sdk-to-cordova-project }
-Once you have [installed THyM](#installing-the-thym-plug-in) and the [{{ site.data.keys.mf_cli }} plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the {{ site.data.keys.product_adj }} SDK via Cordova plugin.
+Una vez haya [instalado THyM](#installing-the-thym-plug-in) y el plugin [{{ site.data.keys.mf_cli }} ](#installing-the-mobilefirst-studio-plug-in) en Eclipse y haya [creado un proyecto de Cordova](#creating-a-cordova-project) o [importado un proyecto de Cordova](#importing-an-existing-cordova-project) podrá seguir los pasos que hay a continuación para instalar {{ site.data.keys.product_adj }} SDK a través del plugin de Cordova.
 
-1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
-2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
 
-	![Image of new Cordova plugin install](New_installing_cordova_plugin.png)
+1. En el Explorador de proyectos pulse con el botón derecho del ratón sobre el directorio **plugins** y seleccione **Instalar plugin de Cordova**
 
-## {{ site.data.keys.product_adj }} Commands
+2. En el separador Registro del recuadro de diálogo que se presenta, busque **mfp**, seleccione **cordova-plugin-mfp** y pulse **Finalizar**
+
+	![Imagen de la instalación del nuevo plugin de Cordova](New_installing_cordova_plugin.png)
+
+## Mandatos de {{ site.data.keys.product_adj }}
 {: #mobilefirst-commands }
-To access {{ site.data.keys.product }} shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.
+Para acceder a los atajos de {{ site.data.keys.product }}, pulse con el botón derecho del ratón sobre el directorio del proyecto raíz y vaya a **IBM MobileFirst Foundation**.
 
-Here you will be able to select from the following commands:
+Aquí podrá seleccionar alguno de los siguientes mandatos:
 
-| Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
+
+| Opción de menú | Acción | Interfaz de línea de mandatos de MobileFirst equivalente|
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Open Server Console | When the server definition exists, opens the console so you can view the actions of the specified server.                                    | mfpdev server console                         |
-| Preview App         | Opens the app in the browser preview mode.                                                                                                   | Opens the app in the browser preview mode.    |
-| Register App        | Registers the app with the server that is specified in your server definitions.                                                              | mfpdev app register                           |
-| Encrypt App         | Runs the web resource encryption tool on your app.                                                                                           | mfpdev app webencrypt                         |
-| Pull App            | Retrieves the existing app configuration from the server that is specified in the server definition.                                         | mfpdev app pull                               |
-| Push App            | Sends the app configuration of your current app to the server that is specified in the build definition so you can reuse it for another app. | mfpdev app push                               |
-| Updated App         | Packages the contents of the www folder in a .zip file, and replaces the version on the server with the package.                             | mfpdev app webupdate                          |
+| Abrir consola del servidor | Cuando existe la definición de servidor, abre la consola de forma que se pueden ver las distintas acciones en el servidor especificado. | mfpdev server console                         |
+| Vista previa de aplicación | Abre la aplicación en la modalidad de vista previa del navegador. | Abre la aplicación en la modalidad de vista previa del navegador. |
+| Registrar aplicación | Registra la aplicación con el servidor especificado en sus definiciones de servidor. | mfpdev app register                           |
+| Cifrar aplicación | Ejecuta la herramienta de cifrado de recursos web en su aplicación. | mfpdev app webencrypt                         |
+| Hacer pull a aplicación | Recupera la configuración de la aplicación existente desde el servidor especificado en la definición de servidor. | mfpdev app pull                               |
+| Hacer push a aplicación | Envía la configuración de su aplicación actual al servidor que se especifica en la definición de compilación de forma que pueda reutilizarla en otra aplicación. | mfpdev app push                               |
+| Actualizar aplicación | Empaqueta el contenido de la carpeta www en un archivo .zip y sustituye la versión en el servidor con la del paquete. | mfpdev app webupdate                          |
 
 
-## Tips and Tricks
+## Sugerencias y consejos
 {: #tips-and-tricks }
-<img src="runAsContextMenu.png" alt="context-menu in Eclipse to open in External IDEs" style="float:right;width:35%;margin-left: 10px"/>
-### External IDE's
+<img src="runAsContextMenu.png" alt="menú contextual en Eclipse para abrir en IDE externos" style="float:right;width:35%;margin-left: 10px"/>
+### Entornos de desarrollo integrado (IDE) externos
 {: #external-ides }
-If you would like to test or deploy to a device via an External IDE (Android Studio or Xcode) this can be accomplished via the the context menu.
+Si desea probar o desplegar en un dispositivo a través de un IDE externo (Android Studio o Xcode) puede hacerlo a través del menú contextual. 
 
-**Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
+**Nota**:  Asegúrese de importar de forma manual su proyecto en Android Studio para configurar gradle antes del lanzamiento desde Eclipse.
+De lo contrario podrían darse errores o pasos no necesarios.
+Desde Android Studio seleccione **Importar proyecto (Eclipse ADT Gradle, etc.)** y vaya a su proyecto y seleccione el directorio **android** dentro del directorio **platforms**.
 
-In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
 
-### Adding platforms
+En el explorador de proyectos de Eclipse pulse con el botón derecho del ratón sobre la plataforma que desee (por ejemplo, **android** o **ios** en el directorio **platforms**) → pase el ratón sobre **Ejecutar como** en el menú contextual → seleccione el IDE externo apropiado.
+
+
+### Adición de plataformas
 {: #adding-platforms }
 
-Adding additional platforms is a simple process that the THyM plugin does not make intuitive. You have two options to accomplish the same task, and they are as follows.
+La adición de plataformas adicionales es un proceso simple que el plugin THyM no hace más intuitivo. Tiene dos opciones para realizar la misma tarea, que son las siguientes. 
 
-1. Via Properties
-	1. Right click your project and select **properties** from the context menu.
-	1. In the presented dialog select **Hybrid Mobile Engine** from the left hand menu.
-	1. In this pane you will be able to select or download the desired platforms.
+1. A través de las propiedades
+	1. Pulse con el botón derecho del ratón y seleccione **properties** desde el menú contextual. 
+	1. En el diálogo que aparece, seleccione **Motor móvil híbrido** en el menú del lado izquierdo. 
+	1. En este panel podrá seleccionar o descargar las plataformas deseadas. 
 
-1. Via Terminal
-	1. Right click your project and hover over **Show In** and select **Terminal** from the context menu.
-	1. This should add a tab to next to the console in Eclipse
-	1. Here you will be able to manually add platforms using the Cordova CLI commands
-		*  `cordova platform ls` will list the installed and available platforms
-		*  `cordova platform add <platform>`  where *<platform>* equals your desired platform, will add the specified platform to the project.
-		*  For more information on Cordova platform specific commands see <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command documentation</a>.
+1. A través del terminal
+	1. Pulse con el botón derecho del ratón sobre su proyecto y pase el ratón sobre **Mostrar en** y seleccione **Terminal** en el menú contextual. 
+	1. Esto debería añadir un separador junto a la consola en Eclipse
+	1. Aquí podrá añadir manualmente plataformas mediante los mandatos de la interfaz de línea de mandatos (CLI) de Cordova
+		*  `cordova platform ls` listará las plataformas disponibles e instaladas
+		*  `cordova platform add <platform>`, donde *<platform>* es la plataforma que desea, añadirá una plataforma al proyecto. 
+		*  Para obtener más información sobre mandatos específicos de la plataforma Cordova, consulte <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Documentación de mandatos de la plataforma Cordova</a>.
 
-### Debug mode
+### Modalidad de depuración
 {: #debug-mode }
-Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
+La habilitación de la modalidad de depuración mostrará registros de nivel de depuración en la consola de Eclipse, a la vez que permitirá una visualización previa de la aplicación en un navegador.
+Para habilitar la modalidad de depuración, hago lo siguiente:
 
-1. Open Eclipse's Preferences.
-2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
-3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
 
-### Live update
+1. Abra las preferencias de Eclipse.
+
+2. Seleccione los **Plugins de MobileFirst Studio** para mostrar la página de preferencias de plugins.
+
+3. Asegúrese de que el recuadro de selección **Habilitar modalidad de depuración** está seleccionado y, a continuación, pulse **Aplicar → Aceptar**
+
+
+### Live Update
 {: #live-update }
-While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
+Mientra realiza una vista de una aplicación Live Update está disponible.
+Puede realizar actualizaciones, guardar sus cambios y verlos renovados de forma automática en la vista previa.
 
-### Integrating {{ site.data.keys.mf_server }} into Eclipse
+
+### Integración de {{ site.data.keys.mf_server }} en Eclipse
 {: #integrating-mobilefirst-server-into-eclipse }
-Using the {{ site.data.keys.mf_dev_kit }}, You can couple together the above with [running the {{ site.data.keys.mf_server }} in Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) to create a more integrated development environment.
+{{ site.data.keys.mf_dev_kit }}, permite acoplar lo anterior [ejecutando {{ site.data.keys.mf_server }} en Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) para crear un entorno de desarrollo más integrado.
 
-### Demo Video
+
+### Vídeo de demostración
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">

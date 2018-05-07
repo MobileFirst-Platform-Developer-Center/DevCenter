@@ -1,8 +1,9 @@
 ---
 layout: tutorial
 title: Distribución de aplicaciones móviles con IBM Application Center
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -177,7 +178,7 @@ Application Center sólo gestiona aplicaciones de empresa firmadas con el certif
 
 ## Gestión de aplicaciones en la consola de Application Center
 {: #managing-applications-in-the-application-center-console }
-![Image of application management in app center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Imagen de gestión de aplicación en Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
 
 Utilice la consola del Application Center para gestionar aplicaciones en el catálogo de las formas siguientes:
 
@@ -190,7 +191,7 @@ Utilice la consola del Application Center para gestionar aplicaciones en el cat�
 
 ### Adición de aplicaciones nuevas al almacén
 {: #adding-new-applications-to-the-store }
-![Image of adding apps to the app center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![Imagen de adición de aplicaciones a Application Center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 Para añadir aplicaciones nuevas al Almacén:
 
@@ -207,13 +208,14 @@ Para añadir aplicaciones nuevas al Almacén:
 
     En las vistas de Detalles de la aplicación, puede consultar la información sobre la aplicación nueva y especificar más información, como por ejemplo la descripción. Puede volver a esta vista más tarde para todas las aplicaciones del catálogo.
 
-    ![Image of application details screen]({{ site.baseurl }}/assets/backup/appDetails1.png)
+    ![Imagen de pantalla de detalles de aplicación]({{ site.baseurl }}/assets/backup/appDetails1.png)
 
 * Pulse **Listo** para finalizar la tarea.
 
 La aplicación nueva se añadirá al almacén.
 
-![Image of access control in app center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![Imagen de control de acceso en Application Center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+
 
 De forma predeterminada, una aplicación puede instalarla cualquier usuario autorizado del almacén.
 
@@ -252,7 +254,7 @@ El cliente de Application Center para Windows 8.1 Pro no necesita añadirse al c
 {: #windows-phone-8 }
 En Windows Phone 8, también debe instalar la señal de inscripción que ha recibido con la cuenta de su empresa en la consola de Application Center, para que los usuarios puedan inscribirse a sus dispositivos. Utilice la página Configuración del Application Center, que puede abrir mediante el icono de engranaje.
 
-![Image of Windows Phone 8 app enrollment]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Imagen de inscripción de aplicación de Windows Phone 8 ]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
 Para poder instalar el cliente móvil, debe inscribir el dispositivo con la empresa instalando la señal de inscripción:
 
@@ -265,7 +267,7 @@ Para poder instalar el cliente móvil, debe inscribir el dispositivo con la empr
 
 ### Instalación del cliente móvil en el dispositivo móvil
 {: #installing-the-mobile-client-on-the-mobile-device }
-Para instalar el cliente móvil en el dispositivo móvil: ![Image of application installer app]({{ site.baseurl }}/assets/backup/installers_smaller.png)
+Para instalar el cliente móvil en el dispositivo móvil: ![Imagen del instalador de aplicaciones]({{ site.baseurl }}/assets/backup/installers_smaller.png)
 
 1. Abra el navegador web en el dispositivo.
 2. Escriba el URL: `http://hostname:9080/appcenterconsole/installers.html`
@@ -283,21 +285,21 @@ Para iniciar sesión en el cliente móvil:
 3. En el campo **Puerto del servidor**, escriba el número de puerto si no es el predeterminado (`9080`).
 4. En el campo **Contexto de aplicación**, escriba el contexto: `applicationcenter`.
 
-![Login screen]({{ site.baseurl }}/assets/backup/login.png)
+![Pantalla de inicio de sesión]({{ site.baseurl }}/assets/backup/login.png)
 
 ### Vistas del cliente móvil de Application Center
 {: #application-center-mobile-client-views }
 * La vista **Catálogo** muestra la lista de aplicaciones disponibles.
 * La selección de una aplicación abre la vista **Detalles** en la aplicación. Puede instalar aplicaciones desde la vista Detalles. También puede marcar aplicaciones como favoritas utilizando el icono de estrella de la Vista de detalles.
 
-    ![Catalog details]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
+    ![Detalles de catálogo]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
 
 * La vista **Favoritos** lista las aplicaciones favoritas. Esta lista está disponible en todos los dispositivos de un usuario concreto.
 * La vista **Actualizaciones** lista todas las actualizaciones disponibles. En la vista Actualizaciones, puede navegar a la vista Detalles. Puede seleccionar una versión más reciente de la aplicación o tomar la versión más reciente disponible. Si Application Center está configurado para enviar notificaciones push, es posible que se le notifique sobre las actualizaciones mediante mensajes de notificaciones push.
 
 Desde el cliente móvil, puede valorar la aplicación y enviar una opinión. Las opiniones se visualizarán en la consola o en el dispositivo móvil.
 
-![Reviews]({{ site.baseurl }}/assets/backup/reviewss.png)
+![Revisiones]({{ site.baseurl }}/assets/backup/reviewss.png)
 
 ## Herramientas de línea de mandatos de Application Center
 {: #application-center-command-line-tools }

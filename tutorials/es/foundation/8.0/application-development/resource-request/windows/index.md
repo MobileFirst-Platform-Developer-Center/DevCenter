@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from Windows applications
+title: Solicitud de recursos de aplicaciones Windows
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
@@ -13,81 +13,98 @@ downloads:
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-{{ site.data.keys.mf_console }} applications can access resources using the `WorklightResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+Las aplicaciones {{ site.data.keys.mf_console }} pueden acceder a los recursos utilizando la API REST `WorklightResourceRequest`.
+  
+La API REST funciona con todos los adaptadores y recursos externos.
 
-**Prerequisites**:
+**Requisitos previos**:
 
-- Ensure you have added the {{ site.data.keys.product }} SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../application-development/sdk/windows-8-10).
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- Asegúrese de haber añadido {{ site.data.keys.product }} SDK a su aplicación nativa [Windows 8.1 Universal o Windows 10 UWP](../../../application-development/sdk/windows-8-10).
+- Aprenda a [crear adaptadores](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WorklightResourceRequest` class handles resource requests to adapters or external resources.
+La clase `WorklightResourceRequest` maneja solicitudes de recursos para recursos externos o adaptadores.
 
-Create a `WorklightResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `GET`, `POST`, `PUT` and `DELETE`.
+
+Cree un objeto `WorklightResourceRequest` y especifique la vía de acceso al recurso y el método HTTP.
+  
+Los métodos disponibles son: `GET`, `POST`, `PUT` y `DELETE`.
+
 
 ```cs
 URI adapterPath = new URI("/adapters/JavaAdapter/users",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
-* **scope**: Optional, if you know which scope is protecting the resource - specifying this scope could make the request more efficient.
+* Para **adaptadores JavaScript**, utilice `/adapters/{AdapterName}/{procedureName}`
+* Para **adaptadores Java**, utilice `/adapters/{AdapterName}/{path}`.  La `vía de acceso` depende de la forma en que haya definido sus anotaciones `@Path` en su código Java.
+También debería incluir todos los `@PathParam` que utilice.
 
-## Sending the request
+* Para acceder a recursos fuera del proyecto, utilice el URL completo según los requisitos del servidor externo.
+
+* **timeout**: Opcional, tiempo de espera de la solicitud en milisegundos. 
+* **scope**: Opcional, ámbito que está protegiendo el recurso. Si especifica este ámbito, podría hacer que la solicitud fuese más eficiente.
+
+
+## Envío de la solicitud
 {: #sending-the-request }
-Request the resource by using the `.send()` method.
+Solicite el recurso mediante el método `.send()`.
+
 
 ```cs
 WorklightResponse response = await request.send();
 ```
 
-Use the `WorklightResponse response` object to get the data that is retrieved from the adapter.
+Utilice el objeto `WorklightResponse response` para obtener los datos que se recuperan desde el adaptador.
 
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `ResponseText`, `ResponseJSON` (if the response is in JSON) , `Success` (if the invoke was successful or failure) and `HTTPStatus` (the HTTP status of the response).
 
-## Parameters
+El objeto `response` contiene los datos de respuesta. Utilice todos sus métodos y propiedades para recuperar la información necesaria.
+Las propiedades habitualmente utilizadas son `ResponseText`, `ResponseJSON` (si la respuesta está en JSON), `Success` (si la invocación fue satisfactoria o anómala) y `HTTPStatus` (el estado HTTP de la respuesta).
+
+
+## Parámetros
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+Antes de enviar su solicitud, podría desea añadir parámetros según sea necesario.
 
-### Path parameters
+
+### Parámetros de vía de acceso
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WorklightResourceRequest` object:
+Tal como se ha explicado anteriormente, los parámetros de **vía de acceso** (`/path/value1/value2`) se establecen durante la creación del objeto `WorklightResourceRequest`:
+
 
 ```cs
 Uri adapterPath = new Uri("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.createInstance(adapterPath,"GET");
 ```
 
-### Query parameters
+### Parámetros de consulta
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `SetQueryParameter` method for each parameter:
+Para enviar parámetros de **consulta** (`/path?param1=value1...`) utilice el método `SetQueryParameter` para cada parámetro:
+
 
 ```cs
 request.SetQueryParameter("param1","value1");
 request.SetQueryParameter("param2","value2");
 ```
 
-#### JavaScript adapters
+#### Adaptadores JavaScript
 {: #javascript-adapters-query }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+Los adaptadores JavaScript utilizan parámetros sin nombre ordenados.
+Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+
 
 ```cs
 request.SetQueryParameter("params","['value1', 'value2']");
 ```
 
-This should be used with `GET`.
+Esto se debería utilizar con `GET`.
 
-### Form parameters
+### Parámetros de formulario
 {: #form-parameters }
-To send form parameters in the body, use `.Send(Dictionary<string, string> formParameters)` instead of `.Send()`:  
+Para enviar parámetros de formulario en el cuerpo, utilice `.Send(Dictionary<string, string> formParameters)` en lugar de `.Send()`:  
 
 ```cs
 Dictionary<string,string> formParams = new Dictionary<string,string>();
@@ -95,49 +112,61 @@ formParams.Add("height", height.getText().toString());
 request.Send(formParams);
 ```   
 
-#### JavaScript adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+#### Adaptadores JavaScript
+Los adaptadores JavaScript utilizan parámetros sin nombre ordenados.
+Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+
 
 ```cs
 formParams.Add("params","['value1', 'value2']");
 ```
 
-This should be used with `POST`.
+Esto se debería utilizar con `POST`.
 
-### Header parameters
+### Parámetros de cabecera
 {: #header-parameters }
-To send a parameter as an HTTP header use `.SetHeader()` API:
+Para enviar un parámetro como una cabecera HTTP utilice la API `.SetHeader()`:
+
 
 ```cs
 request.SetHeader(KeyValuePair<string,string> header);
 ```
 
-### Other custom body parameters
+### Otros parámetros de cuerpo personalizados
 {: #other-custom-body-parameters }
-- `.Send(requestBody)` allows you to set an arbitrary String in the body.
-- `.Send(JObject json)` allows you to set an arbitrary dictionary in the body.
-- `.Send(byte[] data)` allows you to set an arbitrary byte array in the body.
+- `.Send(requestBody)` permite establecer una serie arbitraria en el cuerpo. 
+- `.Send(JObject json)` permite establecer un diccionario arbitrario en el cuerpo. 
+- `.Send(byte[] data)` permite establecer un matriz de bytes arbitraria en el cuerpo. 
 
-## The response
+## La respuesta
 {: #the-response }
-The `WorklightResponse` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `ResponseText` (String), `ResponseJSON` (JSONObject) (if the response is in JSON) and `success` (boolean) (success status of the response).
+El objeto `WorklightResponse` contiene los datos de respuesta. Utilice todos sus métodos y propiedades para recuperar la información necesaria.
+Las propiedades utilizadas habitualmente son `ResponseText` (String), `ResponseJSON` (JSONObject) (si la respuesta está en JSON) y `success` (boolean) (estado de éxito de la respuesta).
 
-In case of request failure, the response object also contains a `error` property.
 
-## For more information
+En caso de una respuesta anómala, el objeto de respuesta también contiene una propiedad `error`.
+
+
+## Para obtener más información
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf
+> Para obtener más información sobre WLResourceRequest, [consulte la API de referencia](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf
 
-<img alt="Image of the sample application" src="resource-request-success-win8-10.png" style="float:right"/>
-## Sample application
+
+
+<img alt="Imagen de la aplicación de ejemplo" src="resource-request-success-win8-10.png" style="float:right"/>
+## Aplicación de ejemplo
 {: #sample-application }
-The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+Los proyectos ResourceRequestWin8 y ResourceRequestWin10 contienen una aplicación nativa Windows 8 Universal/Windows 10 UWP que toma una solicitud de recurso mediante un adaptador Java.
+  
+El proyecto Maven de adaptador contiene el adaptador Java utilizado durante la llamada de solicitud de recurso.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80) the Windows 8.1 Universal project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80) the Windows 10 UWP project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
-### Sample usage
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80) el proyecto de Windows 8.1 Universal.
+  
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80) el proyecto de Windows 10 UWP.
+  
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) el proyecto Maven del adaptador.  
+
+### Uso de ejemplo
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Siga el archivo README.md de ejemplo para obtener instrucciones.

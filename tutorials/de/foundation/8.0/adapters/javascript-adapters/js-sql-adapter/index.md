@@ -58,7 +58,7 @@ Deklarieren Sie in der Datei **adapter.xml** die folgenden Parameter:
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -84,7 +84,7 @@ Deklarieren Sie in der Datei **adapter.xml** die folgenden Parameter:
 {% endhighlight %}</li>
 
                     <li><b>dataSourceJNDIName</b>: Sie können Sie für die Verbindung zur Datenquelle den JNDI-Namen einer vom Anwendungsserver verwendeten Datenquelle verwenden (<i>optional</i>). Der Adapter entnimmt die Verbindung aus dem Serververbindungspool, der dem JNDI-Namen zugeordnet ist. Anwendungsserver bieten eine Möglichkeit, Datenquellen zu konfigurieren. Weitere Informationen finden Sie unter "{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren". Beispiel:
-                    
+
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
@@ -158,7 +158,7 @@ function getAccountTransactions2(accountId){
 
 ### Mehrere Parameter verwenden
 {: #using-multiple-parameters }
- 
+
 Wenn Sie in einer SQL-Abfrage einen oder mehrere Parameter verwenden, müssen die Variablen in der Funktion akzeptiert und als **Array**
 an den Parameter `invokeSQLStatement` oder `invokeSQLStoredProcedure` übergeben werden. 
 

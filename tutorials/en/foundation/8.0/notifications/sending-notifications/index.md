@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
+In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the FCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
 Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
 
 **Prerequisite**: Make sure to read the [Notifications overview](../) tutorial.
@@ -15,7 +15,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 #### Jump to
 {: #jump-to }
 * [Setting-up Notifications](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS Notification Service](#sms-notification-service)
@@ -34,11 +34,11 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 Enabling notifications support involves several configuration steps in both {{ site.data.keys.mf_server }} and the client application.  
 Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
 
-On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
+On the server-side, required set-up includes: configuring the needed vendor (APNS, FCM or WNS) and mapping the "push.mobileclient" scope.
 
-### Google Cloud Messaging / Firebase Cloud Messaging
-{: #google-cloud-messaging--firebase-cloud-messaging }
-> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
+### Firebase Cloud Messaging
+{: #firebase-cloud-messaging }
+> **Note:** Google has [deprecated GCM](https://developers.google.com/cloud-messaging/faq) and has integrated Cloud Messaging with Firebase. If you are using a GCM project, ensure that you [migrate the GCM client apps on Android to FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm) .
 
 Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
 To setup FCM:
@@ -55,8 +55,8 @@ To setup FCM:
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
 
 * Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
-* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
-* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
+* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230.
+* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169.
 * Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to android.googleapis.com on port 443.
 
 <img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
@@ -66,7 +66,7 @@ If your organization has a firewall that restricts the traffic to or from the In
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
-1. [Generate a push notification certificate for development or production](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
+1. Generate a push notification certificate for development or production. For detailed steps, refer the `For iOS` section [here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1). 
 2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
 
 #### Notes
@@ -82,6 +82,8 @@ To setup APNS:
 * During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
+
+**Note:** MobileFirst does not support Universal certificates.
 
 > You can also setup APNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
 
@@ -131,7 +133,7 @@ Map the **push.mobileclient** scope element to the application.
 1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
@@ -139,7 +141,7 @@ Map the **push.mobileclient** scope element to the application.
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
@@ -233,7 +235,7 @@ Map the **push.mobileclient** scope element to the security check used for the a
 2. Select a security check. Then, click **Add**.
 
     <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
-    
+
 ## Defining Tags
 {: #defining-tags }
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags**, click **New**.  
@@ -256,7 +258,7 @@ Notifications can be sent to a single Device ID, a single or several User IDs, o
 
 #### Tag notifications
 {: #tag-notifications }
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
 
 In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
@@ -275,7 +277,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Sen
 When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
 To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+Example URL:
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
@@ -285,7 +287,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 #### Notification payload
 {: #notification-payload }
-The request can contain the following payload properties: 
+The request can contain the following payload properties:
 
 Payload Properties| Definition
 --- | ---
@@ -352,12 +354,12 @@ For testing purposes, Postman is used as described below:
 
 1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
     Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
-    
+
     <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
 
 2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
-    
-    
+
+
 3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
     - If using a remote {{ site.data.keys.product_adj }}, replace the `hostname` and `port` values with your own.
     - Update the application identifier value with your own.
@@ -365,7 +367,7 @@ For testing purposes, Postman is used as described below:
 4. Set a Header:
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - Replace the value after "Bearer" with the value of your access token from step (1) above.
-    
+
     ![authorization header](postman_authorization_header.png)
 
 5. Set a Body:
@@ -379,9 +381,9 @@ For testing purposes, Postman is used as described below:
         }
    }
    ```
-    
+
    ![authorization header](postman_json.png)
-    
+
 After clicking on the **Send** button, the device should have now received a notification:
 
 ![Image of the sample application](notifications-app.png)
@@ -394,7 +396,7 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tag
 
 ### Android
 {: #android }
-* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
+* Notification sound, how long a notification can be stored in the FCM storage, custom payload and more.
 * If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
 
 ### iOS
