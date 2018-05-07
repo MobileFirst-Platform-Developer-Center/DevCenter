@@ -138,5 +138,8 @@ curl -X POST -u admin:admin -F file=@/testuser/export_applications_adf_ios_2.zip
 
 ## Reference
 [IBM Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/)
+
 [IBM Mobile Foundation On-prem](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/)
+
 [MobileFirst REST API Overview](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
+
