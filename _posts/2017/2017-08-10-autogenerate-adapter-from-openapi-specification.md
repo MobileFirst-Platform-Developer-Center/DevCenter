@@ -217,9 +217,5 @@ All the REST endpoints in the OpenAPI specification should have **Consumes** and
 
 Many of the OpenAPI specifications are not usually updated with the changes in the backend REST API. This can result in the adapter call failures due to the content mismatch. Make sure that the request and response contents in the specification matches with what is defined by the backend REST API
 
-### Resources 
-[Setting up the MobileFirst development environment](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/)
-
-[IBM Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/)
 
 

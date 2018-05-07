@@ -12,7 +12,7 @@ author:
     name: Shinoj Zacharias
 ---
 
-Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the Mobile Foundation authorization server to grant confidential clients access to protected resources in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the Mobile Foundation REST APIs, such as the REST API for **push notifications**. Confidential clients are available with [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/) and IBM MobileFoundation 8.0 on-premise installation.
+Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the Mobile Foundation authorization server to grant confidential clients access to protected resources in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the Mobile Foundation REST APIs, such as the REST API for **push notifications**. Confidential clients are available with [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/) and [IBM MobileFoundation 8.0 on-premise](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/)installation.
 
 ### Configure Confidential Clients
 
@@ -79,11 +79,6 @@ All these errors and exception indicate that the JNDI properties that are mentio
 
 For Mobile Foundation on-prem, you can configure Mobile Foundation administration security to enable connecting to an external LDAP repository. When the LDAP repository configuration is enabled, you must add the confidential client ids to LDAP registry. If the confidential clients are not registered with LDAP, then either you will not see the confidential clients registered with Mobile Foundation server or you will get the same error that was shown in the image above. Confidential client ids should be unique and that unique client id should be added to the LDAP registery.
 
-### Prerequisite 
-
-[IBM Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/)
-
-[IBM Mobile Foundation On-prem](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/)
 
 
 
