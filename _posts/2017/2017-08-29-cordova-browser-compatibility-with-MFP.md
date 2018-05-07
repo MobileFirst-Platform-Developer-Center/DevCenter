@@ -7,12 +7,12 @@ tags:
 - MobileFirst_Foundation
 - cordova
 author:
-  name: Srutha K Kotta
+  name: Srutha Keerthi K
 ---
 
 The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
 
-The usage is very similar to using MobileFirst Platform (MFP) with any of the other platforms. A simple sample to test this new feature is below.
+The usage is very similar to using MobileFirst Platform (<a href = "https://console.bluemix.net/catalog/services/mobile-foundation">MFP</a>) with any of the other platforms. A simple sample to test this new feature is below.
 
 Create a cordova application using the following command:
 ```bash
