@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Securing containers
 #relevantTo: [ios,android,windows,javascript]

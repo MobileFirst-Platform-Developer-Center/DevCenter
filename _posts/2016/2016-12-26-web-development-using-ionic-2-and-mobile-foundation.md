@@ -4,6 +4,7 @@ date: 2016-12-26
 tags:
 - MobileFirst_Foundation
 - Mobile_Foundation
+- Mobile_Foundation_Service
 - Ionic
 - Bluemix
 - Web
@@ -18,7 +19,7 @@ We all know that **IBM MobileFirst Foundation** can be used to develop pure web 
 ## Prerequisites:  
 While in general it is well known how to setup all of required components separately, i would highly recommend to read following materials:
 
-* [Using Mobile Foundation on Bluemix Service]({{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/)
+* [Using Mobile Foundation on Bluemix Service](https://console.bluemix.net/catalog/services/mobile-foundation)
 
 * [Setting up the Web development environment]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/)
 
