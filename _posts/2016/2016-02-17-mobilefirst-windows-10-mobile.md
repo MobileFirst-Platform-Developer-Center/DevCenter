@@ -10,6 +10,9 @@ version:
 author:
   name: Srihari Kulkarni
 ---
+
+>>If you are an on-premise 7.1 or 8.0 customer or Mobile Foundation Service [link to service] customer, then read further to learn about MFP support to Windows 10 mobile.
+
 <br/>
 Late last year, [Microsoft released two mobiles](http://www.theverge.com/2015/11/9/9700462/microsoft-lumia-950-launch-release-date) - the Lumia 950 and Lumia 950 XL phones that came pre-loaded with Windows 10 Mobile. These mobiles came with Windows 10 Build 10.0.10586. 
 
