@@ -11,10 +11,11 @@ author:
   name: Srihari Kulkarni
 ---
 
->>If you are an on-premise 7.1 or 8.0 customer or Mobile Foundation Service [link to service] customer, then read further to learn about MFP support to Windows 10 mobile.
 
-<br/>
-Late last year, [Microsoft released two mobiles](http://www.theverge.com/2015/11/9/9700462/microsoft-lumia-950-launch-release-date) - the Lumia 950 and Lumia 950 XL phones that came pre-loaded with Windows 10 Mobile. These mobiles came with Windows 10 Build 10.0.10586. 
+Late last year, [Microsoft released two mobiles](http://www.theverge.com/2015/11/9/9700462/microsoft-lumia-950-launch-release-date) - the Lumia 950 and Lumia 950 XL phones that came pre-loaded with Windows 10 Mobile. These mobiles came with Windows 10 Build 10.0.10586.
+
+>If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for Windows 10 mobile.
+
 
 Recently, we validated our existing versions of IBM MobileFirst against Windows 10 Mobile. Our validation was done on a Lumia 535 device running the Windows 10 build 10.0.10586.63. As usual, we run through the whole gamut of IBM MobileFirst functionality on the new operating system and are happy to announce support for Windows 10 Mobile on IBM MobileFirst 6.3, 7.0 and 7.1. 
 
