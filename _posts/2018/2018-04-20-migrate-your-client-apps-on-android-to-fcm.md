@@ -1,6 +1,6 @@
 ---
 title: 'Migrate your client Apps on Android to FCM'
-date: 2018-04-20 // date of the blog post publication
+date: 2018-04-20
 tags:
 - MobileFirst_Foundation
 - Push_Notifications
