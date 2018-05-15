@@ -1,102 +1,102 @@
 ---
 layout: tutorial
-title: Troubleshooting Push Notifications
+title: Fehlerbehebung bei Push-Benachrichtigungen
 breadcrumb_title: Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Find information to help resolve issues that you might encounter when you use the {{ site.data.keys.product }} Push service.
+Hier finden Sie Informationen, die Ihnen bei der Lösung von Problemen helfen, die bei Verwendung des Push-Service der {{ site.data.keys.product }} auftreten können.
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>How does the Push service treats various “failed to deliver” notification situations?</h4></div>
+  <div class="panel-heading"><h4>Wie verhält sich der Push-Service in verschiedenen Situationen mit fehlgeschlagener Zustellung von Benachrichtigungen?</h4></div>
   <div class="panel-body">
     <b>GCM</b><br/>
     <ul>
-        <li>If the response from the GCM is "internal server error" or "GCM service is unavialable" then an attempt is made to resend the notification. The frequncy of attempts is determined based on the value of the "Retry-After".</li>
-        <li>GCM is not reachable - an error is printed in the <b>trace.log</b> file and the message sending will not be  re-sent.</li>
-        <li>GCM is reachable but failures were received
+        <li>Wenn die Antwort von GCM "Internal Server Error" oder "GCM Service is unavialable" lautet, wird versucht, die Benachrichtigung erneut zu senden. Die Häufigkeit der Sendungswiederholungen richtet sich nach dem Wert von "Retry-After".</li>
+        <li>Wenn GCM nicht erreichbar ist, wird ein Fehler in der Datei <b>trace.log</b> ausgegeben und das Senden der Nachricht nicht wiederholt. </li>
+        <li>Wenn GCM erreichbar ist, aber Fehler festgestellt wurden:
             <ul>
-                <li>Not registered / invalid id / mismatch id / registration missing - likely to have been caused by an invalid usage of the device ID or registration of the app in GCM. The davice ID is deleted from the database in order to avoid stale data in the database. A notification is not resent.</li>
-                <li>The message is too big - the message sending is not retryed and a log is recorded in the <b>trace.log</b> file.</li>
-                <li>Error code 401 - likley due to authentication error, the message sending is not retryed and a log is recorded in the <b>trace.log</b> file.</li>
-                <li>Error codes 400 or 403 - the message sending is not retryed and a log is recorded in the <b>trace.log</b> file.</li>
+                <li>Not registered / Invalid ID / Mismatch ID / Registration missing: Diese Fehler gehen wahrscheinlich auf eine ungültige Nutzung der Geräte-ID oder eine ungültige Registrierung der App in GCM zurück. Die Geräte-ID wird aus der Datenbank gelöscht, um veraltete Daten in der Datenbank zu vermeiden. Die Benachrichtigung wird nicht erneut gesendet.</li>
+                <li>The message is too big: Das Senden der Nachricht wird nicht erneut versucht und in der Datei <b>trace.log</b> wird ein Protokoll erfasst. </li>
+                <li>Error Code 401: Dieser Fehler ist wahrscheinlich auf einen Authentifizierungsfehler zurückzuführen. Das Senden der Nachricht wird nicht erneut versucht. In der Datei <b>trace.log</b> wird ein Protokoll erfasst. </li>
+                <li>Error Code 400 / Error Code 403: Das Senden der Nachricht wird nicht erneut versucht und in der Datei <b>trace.log</b> wird ein Protokoll erfasst. </li>
             </ul>
         </li>
     </ul>
     <b>APNS</b><br/>
-    <p>For APNS, a retry attempt is made if the APNS connection is closed. There will be three attempts to establish a connection with APNS. For other cases no retry attempt is made.</p>
+    <p>Wenn die APNS-Verbindung geschlossen ist, wird ein Wiederholungsversuch unternommen. Es wird dreimal versucht, eine Verbindung zum APNS herzustellen. In anderen Fällen wird kein Wiederholungsversuch unternommen. </p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>I get errors related to "apns-environment" in Xcode</h4></div>
+  <div class="panel-heading"><h4>Fehler mit Bezug zu "apns-environment" in Xcode werden gemeldet</h4></div>
   <div class="panel-body">
-    <p>Verify the provisioning profile used to sign the application has the Push capability enabled. This can be verified in the App ID's settings page in the Apple Developer Portal.</p>
+    <p>Vergewissern Sie sich, dass im Bereitstellungsprofil, das zum Signieren der Anwendung verwendet wird, die Push-Funktionalität aktiviert ist. Sie können dies im Apple Developer Portal auf der Seite mit den Einstellungen für die App-ID überprüfen. </p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>There are Java socket exceptions in the logs when dispatching an APNS notifications and the notification never reaches the device</h4></div>
+  <div class="panel-heading"><h4>Java-Socket-Ausnahmen in den Protokollen, wenn APNS-Benachrichtigungen gesendet werden und das Gerät nie erreichen</h4></div>
   <div class="panel-body">
-    <p>APNS requires persistent socket connections between the {{ site.data.keys.mf_server }} and the APNS service. The Push service  assumes there is an open socket and tries to send the notification out. Many times though, a customer's firewall may be configured to close unused sockets (push might not be frequently used). Such abrupt socket closures cannot be found by either end point – because normal Socket closures happen with either end point sending the signal and the other acknowledging. When the Push service dispatch is attempted over a closed socket, the logs will show socket exceptions.</p>
+    <p>Der APNS erfordert persistente Socket-Verbindungen zwischen dem {{ site.data.keys.mf_server }} und dem APNS. Der Push-Service setzt voraus, dass es ein offenes Socket gibt, und versucht, die Benachrichtigung zu senden. In vielen Fällen kann die Firewall eines Kunden jedoch so konfiguriert werden, dass nicht verwendete Sockets geschlossen werden (weil der Push-Service möglicherweise nicht häufig genutzt wird). Solche abrupten Socket-Schließungen können von keinem der Endpunkte gefunden werden, da bei normalen Socket-Schließungen der eine Endpunkt das Signal sendet und der andere Endpunkt das Signal bestätigt. Wenn das Senden mittels Push-Service über ein geschlossenes Socket versucht wird, sehen Sie Socket-Ausnahmen in den Protokollen. </p>
     
-    <p>To avoid, either ensure a firewall rules do not close APNS sockets, or use the <code>push.apns.connectionIdleTimeout</code> <a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">JNDI property of the Push service</a>. By configuring this property, the server will gracefully close the socket used for APNS push notifications within a given timeout (less than the firewall timeout for sockets). This way, a customer can close sockets before it is abruptly shut down by the firewall.</p>
+    <p>Sie können dieses Problem vermeiden, indem Sie sicherstellen, dass keine APNS-Sockets von Firewallregeln geschlossen werden, oder indem Sie die <a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">JNDI-Eigenschaft <code>push.apns.connectionIdleTimeout</code> des Push-Service</a> verwenden. Wenn Sie diese Eigenschaft konfigurieren, schließt der Server das für APNS-Push-Benachrichtigungen verwendete Socket ordnungsgemäß innerhalb eines bestimmten Zeitlimits (das kürzer als das Firewallzeitlimit für Sockets ist). Auf diese Weise kann ein Kunde Sockets schließen, bevor sie von der Firewall abrupt abgeschaltet werden. </p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>There are SOCKS-related errors when sending a push notification to iOS devices</h4></div>
+  <div class="panel-heading"><h4>SOCKS-bezogene Fehler beim Senden einer Push-Benachrichtigung an iOS-Geräte</h4></div>
   <div class="panel-body">
-    <p>For example: <blockquote>java.net.SocketException: Malformed reply from SOCKS serverat java.net.SocksSocketImpl.readSocksReply(SocksSocketImpl.java</blockquote>
+    <p>Beispiel: <blockquote>java.net.SocketException: Malformed reply from SOCKS server at java.net.SocksSocketImpl.readSocksReply(SocksSocketImpl.java</blockquote>
     
-    APNS notifications are sent over TCP sockets. This brings in the restriction that the proxy used for APNS notifications should support TCP sockets. A normal HTTP proxy (which works for GCM) does not suffice here. For this reason, the only proxy supported in case of APNS notifications is a SOCKS proxy. SOCKS protocol version 4 or 5 is supported. The exception is thrown when JNDI properties are configured to direct APNS notifications via a SOCKS proxy, but the proxy is either not configured, offline / not available, or blocks traffic. A customer should verify their SOCKS proxy is available and working.</p>
+    APNS-Benachrichtigungen werden über TCP-Sockets gesendet. Dies führt zu der Einschränkung, dass der für APNS-Benachrichtigungen verwendete Proxy TCP-Sockets unterstützen muss. Ein normaler HTTP-Proxy (der für GCM funktioniert) reicht hier nicht aus. Aus diesem Grund ist der einzige für APNS-Benachrichtigungen unterstützte Proxy ein SOCKS-Proxy. Version 4 oder 5 des SOCKS-Protokolls wird unterstützt. Die Ausnahme wird ausgelöst, wenn JNDI-Eigenschaften für die Übertragung von APNS-Benachrichtigungen über einen SOCKS-Proxy konfiguriert sind, der Proxy selbst jedoch nicht konfiguriert oder offline bzw. nicht verfügbar ist oder den Datenverkehr blockiert. Ein Kunde muss prüfen, ob sein SOCKS-Proxy verfügbar ist und funktioniert. </p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>A notification was sent, but never reached the device</h4></div>
+  <div class="panel-heading"><h4>Eine gesendete Benachrichtigung erreicht nie das Gerät</h4></div>
   <div class="panel-body">
-    <p>Notifications can be instantaneous or may be delayed. The delay might be a few seconds to a few minutes. There are various reasons that can be accounted for:</p>
+    <p>Benachrichtigungen können sofort oder verzögert gesendet werden. Die Verzögerung kann einige Sekunden bis ein paar Minuten betragen. Es gibt verschiedene Aspekte, die zu berücksichtigen sind: </p>
     <ul>
-        <li>{{ site.data.keys.mf_server }} has no control over the notification once it has reached the mediator service.</li>
-        <li>The device’s network or online status (device on /off) needs to be accounted for.</li>
-        <li>Check if firewalls or proxies are used and if used, that they are not configured to block the communication to the mediator (and back).</li>
-        <li>Do not selectively whitelist IPs in your firewall for the GCM/APNS/WNS mediators instead of using the actual mediators URLs. This can lead to issues, as the mediator URL may resolve to any IP. Customers should allow access to the URL and not the IP. Note that ensuring mediator connectivity by telnetting to the mediator URL does not always provide the complete picture. Specifically for iOS, this only proves outbound connectivity. The actual sending is done over TCP sockets which telnet does not guarantee. by allowing only specific IP address the following may occur, for example For GCM: <blockquote>Caused by: java.net.UnknownHostException:android.googleapis.com:android.googleapis.com: Name or service not known.</blockquote></li>
+        <li>{{ site.data.keys.mf_server }} hat keine Kontrolle über die Benachrichtigung, sobald diese den Mediatorservice erreicht hat.</li>
+        <li>Der Netz- oder Onlinestatus des Geräts (Gerät ein- oder ausgeschaltet) muss berücksichtigt werden.</li>
+        <li>Es muss geprüft werden, ob Firewalls oder Proxys verwendet werden. Ist das der Fall, dürfen diese nicht so konfiguriert sein, dass sie die Kommunikation mit dem Mediator blockieren.</li>
+        <li>In der Firewall dürfen für die GCM/APNS/WNS-Mediatoren keine ausgewählten IP-Adressen in Whitelists aufgenommen werden, anstatt die tatsächlichen Mediatoren-URLs zu verwenden. Dies kann zu Problemen führen, weil eine Mediator-URL in eine beliebige IP-Adresse aufgelöst werden kann. Kunden sollten den Zugriff auf die URL und nicht auf die IP-Adresse zulassen. Es ist zu beachten, dass bei Sicherstellung der Konnektivität mittels telnet-Übertragung an die Mediator-URL nicht alle Aspekte abgedeckt sind. Insbesondere unter iOS ist dies nur ein Beweis für eine funktionierende abgehende Verbindung. Der eigentliche Sendevorgang erfolgt über TCP-Sockets, die telnet nicht garantieren kann. Wenn nur bestimmte IP-Adressen zugelassen werden, kann bei Verwendung von GCM beispielsweise folgender Fehler auftreten: <blockquote>Caused by: java.net.UnknownHostException:android.googleapis.com:android.googleapis.com: Name or service not known.</blockquote></li>
     </ul>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>In iOS, some notifications arrive to the device but some don’t</h4></div>
+  <div class="panel-heading"><h4>Unter iOS erreichen nicht alle Benachrichtigungen das Gerät</h4></div>
   <div class="panel-body">
-    <p>Apple's QoS defines what is called <b>coalescing notifications</b>. What this means is that the APNS server will only maintain 1 notification in their server if it cannot be immediately delivered to a device (identified via a token). For example, if 5 notifications are dispatched one after the other. If the device is on a shaky network, then if the first one was delivered and the second one is stored by APNS server temporarily. By then the 3rd notification has been dispatched and reaches APNS server. Now, the earlier (undelivered) 2nd notification is discarded and the 3rd (and latest one) is stored. To the end user this manifests as missing notifications.</p>
+    <p>Apple definiert in seinen Richtlinien für Servicequalität so genannte kombinierte Benachrichtigungen (<b>coalescing notifications</b>). Dies bedeutet, dass der APNS-Server nur eine Benachrichtigung aufbewahrt, wenn eine sofortige Zustellung an ein (über ein Token identifiziertes) Gerät nicht möglich ist. Beispiel: Es gibt fünf Benachrichtigungen, die nacheinander gesendet werden. Wenn sich das Gerät in einem unzuverlässigen Netz befindet, sodass nur die erste Benachrichtigung zugestellt werden kann, wird die zweite vom APNS-Server vorübergehend gespeichert. In der Zwischenzeit wurde die dritte Benachrichtigung gesendet und hat den APNS-Server erreicht. Jetzt wird die frühere (noch nicht versendete) zweite Benachrichtigung gelöscht und die dritte (zuletzt eingegangene) Benachrichtigung gespeichert. Für den Endbenutzer bedeutet dies, das Benachrichtigungen fehlen. </p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>In Android, notifications are available only if the app is running and in the foreground</h4></div>
+  <div class="panel-heading"><h4>Unter Android sind Benachrichtigungen nur verfügbar, wenn die App aktiv ist und im Vordergrund angezeigt wird</h4></div>
   <div class="panel-body">
-    <p>... If the application is not running, or when the application is in the background, tapping on the notification in the notification shade does not launch the application. This may be because the  <b>app_name</b> field in the <b>strings.xml</b> file was changed to a custom name. This causes a mismatch in the application name and the intent action defined in the <b>AndroidManifest.xml</b> file.  If a different name for the application is required, the <b>app_label</b> field should be used instead, or use custom definitions in the <b>strings.xml</b> file.</p>
+    <p>... Wenn die Anwendung nicht oder im Hintergrund ausgeführt wird, wird die Anwendung nicht durch das Antippen der Benachrichtigung im Benachrichtigungsbereich gestartet. Dies kann daran liegen, dass der Wert des Feldes <b>app_name</b> in der Datei <b>strings.xml</b> in einen angepassten Namen geändert wurde. Dies hat eine Diskrepanz beim Anwendungsnamen und bei der in der Datei <b>AndroidManifest.xml </b> definierten beabsichtigten Aktion zur Folge. Falls ein anderer Name für die Anwendung erforderlich ist, sollte stattdessen das Feld <b>app_label</b> verwendet werden. Sie können auch angepasste Definitionen in der Datei <b>strings.xml</b> verwenden. </p>
   </div>
 </div>
 
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>SSLHandshakeExceptions when sending Push notifications to APNS</h4></div>
+  <div class="panel-heading"><h4>SSLHandshakeExceptions beim Senden von Push-Benachrichtigungen an den APNS</h4></div>
   <div class="panel-body">
-  <p>For example:</p> <blockquote>ApnsConnection | com.ibm.mfp.push.server.notification.apns.Apns.Connectionlmpl sendMessage Failed to send message Message (Id=1;  Token=xxxx; Payload={"payload":{"\nid\":\"44b7f47\",\"tag\":\"Push.ALL\"}", "aps":{"alert":{"action-loc-key":null,"body":"TEST"}}})... trying again after delay javax.net.ssl.SSLHandshakeException:Received fatal alert: handshake_failure</blockquote>
-<p>The issue is noticed only when IBM JDK 1.8 JVMs are used. The solution is to upgrade IBM JDK 1.8 to version 8.0.3.11 or above.</p>
+  <p>Beispiel: </p> <blockquote>ApnsConnection | com.ibm.mfp.push.server.notification.apns.Apns.Connectionlmpl sendMessage Failed to send message Message (Id=1;  Token=xxxx; Payload={"payload":{"\nid\":\"44b7f47\",\"tag\":\"Push.ALL\"}", "aps":{"alert":{"action-loc-key":null,"body":"TEST"}}})... trying again after delay javax.net.ssl.SSLHandshakeException:Received fatal alert: handshake_failure</blockquote>
+<p>Das Problem zeigt sich nur, wenn JVMs mit IBM JDK 1.8 verwendet werden. Die Lösung besteht in einem Upgrade von IBM JDK 1.8 auf Version 8.0.3.11 oder eine aktuellere Version. </p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>The Push service is shown as Inactive in the {{ site.data.keys.mf_console }}</h4></div>
+  <div class="panel-heading"><h4>Push-Service wird in der {{ site.data.keys.mf_console }} als inaktiv angezeigt</h4></div>
   <div class="panel-body">
-    <p>The Push service is shown as Inactive despite its .war file deployed and the <code>mfp.admin.push.url</code>,  <code>mfp.push.authorization.server.url</code>, and <code>secret</code> properties are correctly configured in the <b>server.xml</b> file.</p>
-    <p>Verify that the server's JNDI properties are set correctly for the MFP Admin service. It should contain the following as an example:</p>
+    <p>Der Push-Service wird als inaktiv angezeigt, obwohl sie zugehörige WAR-Datei implementiert ist und die Eigenschaften <code>mfp.admin.push.url</code>, <code>mfp.push.authorization.server.url</code> und <code>secret</code> ordnungsgemäß in der Datei <b>server.xml</b> konfiguriert sind.</p>
+    <p>Stellen Sie sicher, dass die JNDI-Eigenschaften des Servers für den MFP-Verwaltungsservice ordnungsgemäß festgelegt sind. Es sollte beispielsweise Folgendes definiert sein: </p>
 
 {% highlight xml %}
 <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value='"http://localhost:9080/imfpush"'/>

@@ -61,4 +61,4 @@ For production-level security, during the move from development to production th
         * Update the keysore configuration with the right file name, password and type
         `<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
 
-If you are deploying using {{ site.data.keys.mf_bm_short}} service on Bluemix, you can upload the keystore file under **Advanced settings** before deploying the server.
+If you are deploying using {{ site.data.keys.mf_bm_short}} service on IBM Cloud, you can upload the keystore file under **Advanced settings** before deploying the server.

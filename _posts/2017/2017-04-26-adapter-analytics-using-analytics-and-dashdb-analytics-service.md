@@ -1,8 +1,10 @@
 ---
-title: 'Building charts for Adapter analytics using IBM Bluemix Mobile Analytics service and IBM Mobile Foundation Service'
+title: 'Building charts for Adapter analytics using IBM Cloud Mobile Analytics service and IBM Mobile Foundation Service'
 date: 2017-04-26
 tags:
 - MobileFirst_Foundation
+- Mobile_Foundation_Service
+- IBM_Cloud
 - Bluemix
 - Analytics
 version:
@@ -13,12 +15,12 @@ author:
 
 # Overview
 
-IBM Mobile Foundation Service can be configured to connect to IBM® Mobile Analytics for Bluemix® service to pump the analytics events and logs. Currently the Mobile Analytics service doesn’t support out-of-the-box Mobile Foundation Service specific features like custom charts and adapter analytics.  However, there is an approach where you can exploit the ’Db2 Warehouse export’ option of the Mobile Analytics service and achieve the building and viewing of Custom charts or analytics for Mobile Foundation Adapters.
+[IBM Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) can be configured to connect to IBM® Mobile Analytics for IBM Cloud service to pump the analytics events and logs. Currently the Mobile Analytics service doesn’t support out-of-the-box Mobile Foundation Service specific features like custom charts and adapter analytics.  However, there is an approach where you can exploit the ’Db2 Warehouse export’ option of the Mobile Analytics service and achieve the building and viewing of Custom charts or analytics for Mobile Foundation Adapters.
 
-This blog details this approach of building adapter analytics using Mobile Analytics service and Mobile Foundation leveraging the Db2 Warehouse on Cloud service capabilities for charting. You can use the Mobile Foundation server installed on your on-premises environment or quickly configure a Foundation server on Bluemix using the IBM Mobile Foundation service. We will use the Mobile Foundation service on Bluemix in this blog.
+This blog details this approach of building adapter analytics using Mobile Analytics service and Mobile Foundation leveraging the Db2 Warehouse on Cloud service capabilities for charting. You can use the Mobile Foundation server installed on your on-premises environment or quickly configure a Foundation server on IBM Cloud using the IBM Mobile Foundation service. We will use the Mobile Foundation service on IBM Cloud in this blog.
 
 ### Prerequisite:
-Log in to IBM Bluemix and create a Mobile Foundation service.
+Log in to IBM Cloud and create a Mobile Foundation service.
 
 ## Create BMS Analytics service in IBM Bluemix and configure Mobile Foundation service instance with it.
 [See Details](https://mobilefirstplatform.ibmcloud.com/blog/2016/07/11/analytics-bm-service/)

@@ -1,15 +1,18 @@
 ---
-layout: tutorial
-title: Log and trace collection
-relevantTo: [ios,android,windows,javascript]
-weight: 1
+layout: redirect
+new_url: /404/
+sitemap: false
+#layout: tutorial
+#title: Log and trace collection
+#relevantTo: [ios,android,windows,javascript]
+#weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
+IBM Containers for IBM Cloud provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
 
-The option to create log files for the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} and {{ site.data.keys.mf_app_center }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
+The option to create log files for the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} and {{ site.data.keys.mf_app_center }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a IBM Cloud logmet console by means of the Kibana visualization tool. Monitoring can be done from a IBM Cloud logmet console by means of Grafana, an open source metrics dashboard and graph editor.
 
 When your {{ site.data.keys.product_adj }} container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
 
@@ -41,7 +44,7 @@ Log files are generated for {{ site.data.keys.mf_app_center }} Server and Libert
 
 You can log in to the container by following the steps in Accessing log files and access the log files.
 
-To persist log files, even after a container no longer exists, enable a volume. (Volume is not enabled by default.) Having volume enabled can also allow you to view the logs from Bluemix using the logmet interface (such as https://logmet.ng.bluemix.net/kibana).
+To persist log files, even after a container no longer exists, enable a volume. (Volume is not enabled by default.) Having volume enabled can also allow you to view the logs from IBM Cloud using the logmet interface (such as https://logmet.ng.bluemix.net/kibana).
 
 **Enabling volume**
 Volume allows for containers to persist log files. The volume for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analyics }} container logs is not enabled by default.
@@ -53,11 +56,11 @@ The logs can be accessed by issuing an SSH request to the container.
 
 ## Accessing log files
 {: #accessing-log-files }
-Logs are created for each container instance. You can access log files using the IBM Container Cloud Service REST API, by using `cf ic` commands, or by using the Bluemix logmet console.
+Logs are created for each container instance. You can access log files using the IBM Container Cloud Service REST API, by using `cf ic` commands, or by using the IBM Cloud logmet console.
 
 ### IBM Container Cloud Service REST API
 {: #ibm-container-cloud-service-rest-api }
-For any container instance, the **docker.log** and **/var/log/rsyslog/syslog** can be viewed using the [Bluemix logmet service](https://logmet.ng.bluemix.net/kibana/). The log activities can be seen using the Kibana dashboard of the same.
+For any container instance, the **docker.log** and **/var/log/rsyslog/syslog** can be viewed using the [IBM Cloud logmet service](https://logmet.ng.bluemix.net/kibana/). The log activities can be seen using the Kibana dashboard of the same.
 
 IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running container instances. Alternatively, you can obtain container log files through Secure Shell (SSH).
 
