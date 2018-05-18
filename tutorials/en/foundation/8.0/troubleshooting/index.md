@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Troubleshooting
-weight: 16
+weight: 15
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
