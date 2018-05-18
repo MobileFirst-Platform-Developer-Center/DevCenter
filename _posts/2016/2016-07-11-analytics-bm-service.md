@@ -126,9 +126,10 @@ Once you start using applications connected to the {{ site.data.keys.product }} 
     
    <blockquote>
     [ERROR   ] CWPKI0022E: SSL HANDSHAKE FAILURE:  A signer with SubjectDN CN=*.ng.bluemix.net, O=International Business Machines Corporation, L=Armonk, ST=New York, C=US was sent from the target host.  The signer might need to be added to local trust store /Users/john_gerken/MobileFirst-8.0.0.0/mfp-server/usr/servers/mfp/resources/security/key.jks, located in SSL configuration alias defaultSSLConfig.  The extended error message from the SSL handshake exception is: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-    </blockquote>
+   </blockquote>
 
-    <p>this indicates that the {{ site.data.keys.prod_ic }} root or intermediate certificate needs to be added to the [{{ site.data.keys.product }} Server's keystore](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). To add the two certificates, do the following:</p>
+
+<p>this indicates that the {{ site.data.keys.prod_ic }} root or intermediate certificate needs to be added to the [{{ site.data.keys.product }} Server's keystore](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). To add the two certificates, do the following:</p>
 
  <ol>
       <li>Retrieve the intermediate and root certificates from {{ site.data.keys.prod_ic }} using the browser of your choice.  Before proceeding you should have two files on your filesystem: DigiCertSHA2SecureServerCA.crt and DigiCertGlobalRootCA.crt.</li>
