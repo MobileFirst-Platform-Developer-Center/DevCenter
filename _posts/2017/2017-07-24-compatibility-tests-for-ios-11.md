@@ -15,6 +15,8 @@ additional_authors:
 
 Please refer our latest [blog]({{site.baseurl}}/blog/2017/09/18/mfp-support-for-ios11/) for the latest news on iOS11 compatibility with MobileFirst . 
 
+If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about  Mobile Foundation support for iOS 11 .
+
 Apple announced iOS 11 during their annual WWDC2017 conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 11 [in this news bulletin](https://developer.apple.com/ios/).
 
 ![iOS11]({{site.baseurl}}/assets/blog/2017-07-24-compatibility-tests-for-ios-11/ios11_beta.png)

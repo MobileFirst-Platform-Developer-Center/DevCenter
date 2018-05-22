@@ -84,11 +84,11 @@ Understanding the following JSONStore characteristics can help resolve some of t
 * Transactions are not supported in Android 2.3.x for Cordova applications.
 * When you use JSONStore on a 64-bit device, you might see the following error: `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`
 * This error means that you have 64-bit native libraries in your Android project, and JSONStore does not currently work when you use these libraries. To confirm, go to **src/main/libs** or **src/main/jniLibs** under your Android project, and check whether you have the x86_64 or arm64-v8a folders. If you do, delete these folders, and JSONStore can work again.
-* In some cases (or environments), the flow enters ```wlCommonInit()```  before JSONStore plugin is initialized. This causes JSONStore related API calls to fail. The `cordova-plugin-mfp` bootstrap calls ```WL.Client.init``` automatically which triggers the ```wlCommonInit``` function when it is completed. This initialization process is different for the JSONStore plugin. The JSONStore plugin does not have a way to _halt_ the ```WL.Client.init``` call. Across different environments, it may happen that the flow enters ```wlCommonInit()``` before `mfpjsonjslloaded` completes.
-To ensure the ordering of `mfpjsonjsloaded` and `mfpjsloaded` events, the developer has the option of calling ```WL.CLient.init```
+* In some cases (or environments), the flow enters `wlCommonInit()`  before JSONStore plugin is initialized. This causes JSONStore related API calls to fail. The `cordova-plugin-mfp` bootstrap calls `WL.Client.init` automatically which triggers the `wlCommonInit` function when it is completed. This initialization process is different for the JSONStore plugin. The JSONStore plugin does not have a way to _halt_ the `WL.Client.init` call. Across different environments, it may happen that the flow enters `wlCommonInit()` before `mfpjsonjslloaded` completes.
+To ensure the ordering of `mfpjsonjsloaded` and `mfpjsloaded` events, the developer has the option of calling `WL.CLient.init`
 manually. This will remove the need for having platform specific code.
 
-  Follow the steps below to configure calling of ```WL.CLient.init``` manually:                             
+  Follow the steps below to configure calling of `WL.CLient.init` manually:                             
 
   1. In `config.xml`, change the `clientCustomInit` property to **true**.
 
@@ -97,7 +97,7 @@ manually. This will remove the need for having platform specific code.
       ```javascript
       document.addEventListener('mfpjsonjsloaded', initWL, false);
       ```           
-    * leave the ```WL.JSONStore.init``` call in ```wlCommonInit()```                    
+    * leave the `WL.JSONStore.init` call in `wlCommonInit()`                    
 
     * add the following function:  
     ```javascript                                         
@@ -109,7 +109,7 @@ function initWL(){
 ```                                                                       
 
   This will wait for the `mfpjsonjsloaded` event (outside of `wlCommonInit`),
-this will ensure that the script has been loaded and will subsequently call ```WL.Client.init``` which will trigger ```wlCommonInit```, this will then call ```WL.JSONStore.init```.
+this will ensure that the script has been loaded and will subsequently call `WL.Client.init` which will trigger `wlCommonInit`, this will then call `WL.JSONStore.init`.
 
 ## Store internals
 {: #store-internals }

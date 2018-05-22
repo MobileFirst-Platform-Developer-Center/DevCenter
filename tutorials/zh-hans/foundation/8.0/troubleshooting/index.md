@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: 故障诊断
 weight: 15
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Find answers for frequantly asked questions about problems you may encounter while using {{ site.data.keys.product }} 8.0.
+请查找在使用 {{ site.data.keys.product }} 8.0 时可能遇到的问题的常见问题及解答。
 
-#### Jump to
+#### 跳至
 {: #jump-to }
-* [Push Notifications]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
-* [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
-* [Analytics]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [推送通知]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/notifications)
+* [JSONStore]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/jsonstore)
+* [分析]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/analytics)

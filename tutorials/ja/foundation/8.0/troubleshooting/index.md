@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: トラブルシューティング
 weight: 15
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Find answers for frequantly asked questions about problems you may encounter while using {{ site.data.keys.product }} 8.0.
+以下に、{{ site.data.keys.product }} 8.0 の使用時に発生する可能性がある問題に関するよくある質問の回答を記載しています。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Push Notifications]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
-* [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
-* [Analytics]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [プッシュ通知]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/notifications)
+* [JSONStore]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/jsonstore)
+* [Analytics]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/analytics)
