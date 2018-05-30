@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2018-05-28
+date: 2018-05-18
 version:
 - 7.1
 tags:
