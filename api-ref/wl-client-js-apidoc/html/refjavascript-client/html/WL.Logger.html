@@ -4,12 +4,12 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
-		
+
 		 <!-- Set the page titles as in old javascript doclet  -->
-		
+
 		    <title>JavaScript client-side API JavaScript Reference: Class WL.Logger</title>
-		
-		
+
+
 		<!-- Link to the template CSS -->
 		<link rel="stylesheet" type="text/css" href="ibm.css" title="Style" />
 		<link rel="stylesheet" type="text/css" href="github.css" title="Style" />
@@ -19,11 +19,11 @@
 	<script src="js/rainbow.min.js"></script>
   <script src="js/language/javascript.js"></script>
   <script src="js/language/generic.js"></script>
-	
-	
-	<!-- ============================== header ================================= -->	
+
+
+	<!-- ============================== header ================================= -->
 	<!-- Add a navigation bar in each class -->
-	
+
 	<div role="navigation" title ="TOP_Navigation" aria-label ="Top Navigation Bar"/>
 	<div class="topBar">
 	<div class="skip"><a href="#skip-navbar_top" title="Skip navigation links">Skip navigation links</a></div>
@@ -34,90 +34,90 @@
 <!-- ============================== class title ============================ -->
 <div class="content" role="main"/>
 			<h2 class="classTitle">
-				
-				
+
+
 				Class WL.Logger
-				
+
 			</h2>
-	
+
 
    <!-- ============ CLASS INHERITANCE BEGIN ========== -->
 
    <!-- INHERITANCE graph  -->
    <pre>WL.Logger</pre>
-  
-   <!-- ============ CLASS INHERITANCE END ========== -->
-	
-		<hr/>
-	   
 
-		
+   <!-- ============ CLASS INHERITANCE END ========== -->
+
+		<hr/>
+
+
+
 <!-- ============================== class summary ========================== -->
 				<!-- Proofread tag  -->
-				
-		
+
+
 		<!--	<p class="description"> -->
-				
+
 				<!-- Module tag  -->
-				
+
 				<!-- ilog.undocumented.jsFile tag  -->
-								
-				
-					
-				
-				
-				
-				
-				
+
+
+
+
+
+
+
+
 					<dl class="detailList">
 						<dt class="heading">Description:</dt>
 							<dd><p>Module that wraps various loggers in order to provide a unified interface for logging that works in every environment.</p>
 
-<p>In most environments, <code>console.debug</code>, <code>console.log</code>, <code>console.info</code>, 
-<code>console.warn</code> and <code>console.error</code> are wrapped. The Android environment uses a cordova 
+<p>In most environments, <code>console.debug</code>, <code>console.log</code>, <code>console.info</code>,
+<code>console.warn</code> and <code>console.error</code> are wrapped. The Android environment uses a cordova
 plugin that calls the native Android logger, log messages are shown in logcat with the appropriate colors.
 In Xcode, output is shown in the Xcode console.</p>
 
-<p>Provides various features such as:</p> 
+<p>Provides various features such as:</p>
 
-<ul><li>Package names.</li> 
+<ul><li>Package names.</li>
 <li>Filtering by log level, package names using black or white lists.
 <li>Log instances.</li>
 <li>Multiple argument support.</li>
-<li>Callback for doing work after a log message has been sent to the console.</li> 
+<li>Callback for doing work after a log message has been sent to the console.</li>
 <li>And others.</li>
 </ul></dd>
 					</dl>
-				
-				
+
+
 				<!--  -->
-				
-					
-					
-					
+
+
+
+
 					<!-- iterating-properties tag  -->
-					
+
 					<!-- index-resolution tag  -->
-					
+
 					<!-- available tag  -->
-					
-					<!-- opl-type tag  -->				
-					
-					
+
+					<!-- opl-type tag  -->
+
+
 					<!-- Add support to global functions links -->
-					
-					
+
+
 					<!-- @example generated Examples out of the description -->
-					
+
 						<dl class="detailList">
 						<dt class="heading">Example:</dt>
-										
+
 							<dd></dd>
 							<dd><pre class="code"><code class="example" data-language="javascript">//The logger can be configured inside initOption.js, but doing so is discouraged.  An example configuration:
 // ...
 //logger : {enabled: true, level: 'debug', stringify: true, pretty: false,
 //      tag: {level: false, pkg: true}},
-// ... 
+// ...
 
 //Make sure the MyNamespace variable exists.
 var MyNamespace = MyNamespace || {};
@@ -137,12 +137,12 @@ MyNamespace.MyModule = (function () {
   logger.warn('warn', undefined);
   logger.error('error', new Error('oh no'));
   logger.fatal('fatal', 'another message');
- 
+
 
 }());
 
 //Alternatively, you can use the "static" version.
-//You probably want to use variables instead of duplicating 
+//You probably want to use variables instead of duplicating
 //the package name and other good programming practices.
 //This is the recommended approach if you don't have modules.
 WL.Logger.ctx({pkg: 'wl.whatever'}).trace('trace', 'another message');
@@ -162,27 +162,27 @@ WL.Logger.info('info', 1, 2, 3);
 WL.Logger.warn('warn', undefined);
 WL.Logger.error('error', new Error('oh no'));
 WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
-						
+
 						</dl>
-					
-					
-					<!-- @note generated notes out of the description -->	
-					
-						
+
+
+					<!-- @note generated notes out of the description -->
+
+
 	<!--		</p> -->
 			<hr />
-<!-- ============================== constructor summary ==================== -->			
-		  
+<!-- ============================== constructor summary ==================== -->
+
 		  <!-- ilog.undocumented.constructor tag  -->
-		  
-			
+
+
 <!-- ============================== properties summary ===================== -->
-			
+
 
 <!-- ============================== methods summary ======================== -->
-			
-				
-				
+
+
+
 				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class WL.Logger.">
 					 <!-- Customize global functions page  -->
 					<caption>Method Summary</caption>
@@ -193,7 +193,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 						</tr>
 					</thead>
 					<tbody>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -204,7 +204,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Configures the logger globally.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -215,7 +215,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Creates an instance of a logger with its own context (also called status or state).</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -226,7 +226,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Updates the state (also called context or status) of the logger.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -237,7 +237,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -248,7 +248,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -259,7 +259,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -270,7 +270,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -281,7 +281,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -292,7 +292,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Attach additional metadata to the next logger instance call.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -303,7 +303,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description"></div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -314,7 +314,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description"></div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -325,7 +325,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Send any logs collected up to this point to the IBM Worklight server.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -336,7 +336,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description"></div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -347,7 +347,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Shows the status (current configuration) of the logger.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -358,7 +358,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -369,7 +369,7 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Retrieves and applies any matching configuration profile from the IBM Worklight Server.</div>
 							</td>
 						</tr>
-					
+
 						<tr>
 							<!-- available tag  -->
 							<td class="attributes">&nbsp;</td>
@@ -380,200 +380,208 @@ WL.Logger.fatal('fatal', 'another message');</code></pre></dd>
 								<div class="description">Prints arguments to the console.</div>
 							</td>
 						</tr>
-					
+
 					</tbody>
 				</table>
-				
-				
-				
-			
+
+
+
+
 <!-- ============================== events summary ======================== -->
-			
-<!-- ============================== constructor details ==================== -->		
-			
+
+<!-- ============================== constructor details ==================== -->
+
 			 <!-- ilog.undocumented.constructor tag  -->
-			
-			
-<!-- ============================== Properties details ========================== -->		
-			
-<!-- ============================== method details ========================= -->		
-			
+
+
+<!-- ============================== Properties details ========================== -->
+
+<!-- ============================== method details ========================= -->
+
 				 <!-- Customize global functions page  -->
 					<div class='sectionTitle'>Method Detail</div>
-				
+
 					<a name="config"> </a>
-					
+
 					<div class="method">
 						config
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{this}</span>
 					<b>config</b>(options)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Configures the logger globally.  This means every logger instance created using WL.Logger.create, all uses of the global
 WL.Logger functions and any native API calls to the MobileFirst logger API are affected.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								<span class="light fixedFont">{object}</span>  
+								<span class="light fixedFont">{object}</span>
 								<span class="parameters">options</span>
 								<i>Optional</i>
-								 
+
 								 - Defines the logger's behavior.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.stringify</span>
 								<i>Optional</i>
-								 
+
 								 - Turns arguments to strings and concatenates them (<code>true</code>) or leaves arguments as an array (<code>false</code>). Default is true.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.pretty</span>
 								<i>Optional</i>
-								 
+
 								 - Turn JSON into a human readable format. Default is false.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.stacktrace</span>
 								<i>Optional</i>
-								 
+
 								 - Enable/disable printing the stacktrace from an error message. Default is false.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{function}</span>  
+								<span class="light fixedFont">{function}</span>
 								<span class="parameters">options.callback</span>
 								<i>Optional</i>
-								 
+
 								 - Called after a log message is sent to the console with the following parameters:<br />
 		<ul>
 			<li><code>message (string or array)</code> The log message. String if <code>stringify</code> is true, array otherwise.</li>
 			<li><code>level (string)</code> Log level.</code>
 			<li><code>package (string)</code> Package that is associated with the log or empty string.</li>
 		</ul>
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{string}</span>  
+								<span class="light fixedFont">{string}</span>
 								<span class="parameters">options.pkg</span>
 								<i>Optional</i>
-								 
+
 								 - Associates log messages with a package. By default does not associate (includes an empty string).
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{object}</span>  
+								<span class="light fixedFont">{object}</span>
 								<span class="parameters">options.tag</span>
 								<i>Optional</i>
-								 
+
 								 - Contains keys: <code>level</code> and <code>tag</code>.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.tag.level</span>
 								<i>Optional</i>
-								 
+
 								 - Appends log <code>level</code> tag to the string log message (true) or does nothing (false). Default is false.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.tag.pkg</span>
 								<i>Optional</i>
-								 
+
 								 - Appends <code>package name</code> string message (true) or does nothing (false). Default is false.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{string[]}</span>  
+								<span class="light fixedFont">{string[]}</span>
 								<span class="parameters">options.whitelist</span>
 								<i>Optional</i>
-								 
+
 								 - List of packages from which to log messages. By default logs all messages (empty array).  DEPRECATED since V6.2; use filters instead.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{string[]}</span>  
+								<span class="light fixedFont">{string[]}</span>
 								<span class="parameters">options.blacklist</span>
 								<i>Optional</i>
-								 
+
 								 - List of packages to ignore log messages from. By default does not ignore any packages (empty array).  DEPRECATED since V6.2; use filters instead.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{object}</span>  
+								<span class="light fixedFont">{object}</span>
 								<span class="parameters">options.filters</span>
 								<i>Optional</i>
-								 
+
 								 - Object with key/value pairs like {'package': 'LEVEL'} for packages to log.  This is treated as a whitelist; only log
     calls for instances matching pkg will be logged.  Default is to log all messages (empty object).  Explicitly pass an empty object or null (not undefined) to remove filters.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.capture</span>
 								<i>Optional</i>
-								 
+
 								 - Turn log capture on or off.  This is meaningful in hybrid environments only.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{integer}</span>  
+								<span class="light fixedFont">{integer}</span>
 								<span class="parameters">options.maxFileSize</span>
 								<i>Optional</i>
-								 
+
 								 - Maximum amount of data (in bytes) to store in the file when capture is on.  This is meaningful in hybrid environments only.  Default is true.
-								
+
 							</dd>
-							
+
 							<dd>
-								<span class="light fixedFont">{boolean}</span>  
+								<span class="light fixedFont">{boolean}</span>
 								<span class="parameters">options.autoSendLogs</span>
 								<i>Optional</i>
-								 
+
 								 - Turn Auto Send Logs on or off. Auto logging occurs after each successful resource request, if no logging has occurred for 60 seconds.
-								
+
 							</dd>
-							
+              <dd>
+								<span class="light fixedFont">{boolean}</span>
+								<span class="parameters">options.showLogsInConsole</span>
+								<i>Optional</i>
+
+								 - Turns displaying of logs in console on or off. This is meaningful in hybrid environments only
+
+							</dd>
+
 							<dd>
-								<span class="light fixedFont">{string[]|string|number}</span>  
+								<span class="light fixedFont">{string[]|string|number}</span>
 								<span class="parameters">options.level</span>
 								<i>Optional</i>
-								 
+
 								 - A list of one or more of the following items:<br />
 		<ul>
 			<li>An array of the log levels to show.  In JavaScript, only log calls at the listed levels are shown.  In native code in a hybrid app, log output at and above the most verbose of the levels listed in the array are shown.</li>
@@ -581,118 +589,118 @@ WL.Logger functions and any native API calls to the MobileFirst logger API are a
 			<li>The Numeric Priority Level at which to set the logger.  Output will be printed for log API calls at and above the configured level.</li>
 		</ul>
 		Default: Show all logs at all levels (empty array).
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-						
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd><span class="light fixedFont">{this}</span> Returns the current instance.</dd>
-							
+
 							</dl>
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.config()
 
 Merge the passed object parameter with the current configuration, which can be retrieved using WL.Logger.status()</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="create"> </a>
-					
+
 					<div class="method">
 						create
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{<a href="LogInstance.html">LogInstance</a>}</span>
 					<b>create</b>(options)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Creates an instance of a logger with its own context (also called status or state).
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								<span class="light fixedFont">{Object}</span>  
+								<span class="light fixedFont">{Object}</span>
 								<span class="parameters">options</span>
 								<i>Optional</i>
-								 
+
 								 - See arguments defined for <code>WL.Logger.config</code> for information about the object that can be passed.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-						
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="LogInstance.html">LogInstance</a>}</span> Has the following methods from <code>WL.Logger</code>: <code>.trace</code>, <code>.debug</code>, <code>.log</code>, 
+
+								<dd><span class="light fixedFont">{<a href="LogInstance.html">LogInstance</a>}</span> Has the following methods from <code>WL.Logger</code>: <code>.trace</code>, <code>.debug</code>, <code>.log</code>,
 <code>.info</code>, <code>.warn</code>, <code>.error</code>, and <code>.fatal</code>.</dd>
-							
+
 							</dl>
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">var logger = WL.Logger.create({pkg: 'mypackage'});
 
@@ -716,80 +724,80 @@ logger.error('Hello world');
 
 logger.fatal('Hello world');
 //[mypackage] Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="ctx"> </a>
-					
+
 					<div class="method">
 						ctx
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{this}</span>
 					<b>ctx</b>(options)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Updates the state (also called context or status) of the logger.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								<span class="light fixedFont">{object}</span>  
+								<span class="light fixedFont">{object}</span>
 								<span class="parameters">options</span>
 								<i>Optional</i>
-								 
+
 								 - See arguments defined for <code>WL.Logger.config</code> for information about the object that can be passed.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-						
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd><span class="light fixedFont">{this}</span> Returns the current instance.</dd>
-							
+
 							</dl>
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.debug('Hello world'); //No context passed
 //Hello world
@@ -799,474 +807,474 @@ WL.Logger.ctx({pkg: 'hello'}).debug('Hello world'); //Package name context passe
 
 Caution: filters, maxFileSize, capture, and level returned from this call may not accurately reflect the current behavior
    in hybrid applications if the native codebase has modified these settings in the native application layer.</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="debug"> </a>
-					
+
 					<div class="method">
 						debug
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>debug</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>500</code> and a level of <code>DEBUG</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.debug('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="error"> </a>
-					
+
 					<div class="method">
 						error
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>error</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>100</code> and a level of <code>ERROR</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.error('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="fatal"> </a>
-					
+
 					<div class="method">
 						fatal
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>fatal</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>50</code> and a level of <code>FATAL</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.fatal('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="info"> </a>
-					
+
 					<div class="method">
 						info
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>info</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>300</code> and a level of <code>INFO</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.info('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="log"> </a>
-					
+
 					<div class="method">
 						log
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>log</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>400</code> and a level of <code>LOG</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.log('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="metadata"> </a>
-					
+
 					<div class="method">
 						metadata
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>metadata</b>(options)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Attach additional metadata to the next logger instance call.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								<span class="light fixedFont">{Object}</span>  
+								<span class="light fixedFont">{Object}</span>
 								<span class="parameters">options</span>
 								<i>Optional</i>
-								 
+
 								 - an object to attach to the next logger instance call
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.metadata(
     {
         userRealName : 'Robert Paulson'
     }
 );</code></pre></dd>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.metadata( { hi : 'world' } ).info('hello');</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="off"> </a>
-					
+
 					<div class="method">
 						off
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{this}</span>
 					<b>off</b>()
-					
+
 					</div>
 					<div class="detailedDescription">
-						
+
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
-						
-						
+
+
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd><span class="light fixedFont">{this}</span> Returns the current instance.</dd>
-							
+
 							</dl>
-										
-									
-						
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Deprecated:</dt>
 							<dd>
@@ -1274,73 +1282,73 @@ Caution: filters, maxFileSize, capture, and level returned from this call may no
 	Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
 							</dd>
 							</dl>
-						
-						
-						
-						
-						
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="on"> </a>
-					
+
 					<div class="method">
 						on
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{this}</span>
 					<b>on</b>(options)
-					
+
 					</div>
 					<div class="detailedDescription">
-						
+
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">options</span>
-								
-								
+
+
 							</dd>
-							
+
 							</dl>
-						
-						
-						
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd><span class="light fixedFont">{this}</span> Returns the current instance.</dd>
-							
+
 							</dl>
-										
-									
-						
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Deprecated:</dt>
 							<dd>
@@ -1348,128 +1356,128 @@ Caution: filters, maxFileSize, capture, and level returned from this call may no
 	Use WL.Logger.config with {'level': 'FATAL'} to reduce verbosity.
 							</dd>
 							</dl>
-						
-						
-						
-						
-						
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="send"> </a>
-					
+
 					<div class="method">
 						send
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{Promise}</span>
 					<b>send</b>()
-					
+
 					</div>
 					<div class="detailedDescription">
 						Send any logs collected up to this point to the IBM Worklight server.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
-						
-						
+
+
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd><span class="light fixedFont">{Promise}</span> Resolved with success status, rejected with an error message.</dd>
-							
+
 							</dl>
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="setNativeOptions"> </a>
-					
+
 					<div class="method">
 						setNativeOptions
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>setNativeOptions</b>(options)
-					
+
 					</div>
 					<div class="detailedDescription">
-						
+
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								<span class="light fixedFont">{Object}</span>  
+								<span class="light fixedFont">{Object}</span>
 								<span class="parameters">options</span>
 								<i>Optional</i>
-								 
+
 								 - an object that optionally contains any of the following key/value pairs:
 
 <ul>
     <li>maxFileSize: integer (minimum allowed is 10000 (in bytes))</li>
     <li>level: String (any of the following values: 'trace', debug', 'log', 'info', 'warn', 'error', 'fatal')</li>
     <li>capture: boolean</li>
-    
+
 </ul>
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
+
+
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Deprecated:</dt>
 							<dd>
@@ -1478,24 +1486,24 @@ Caution: filters, maxFileSize, capture, and level returned from this call may no
 Sets options in native application layer (iOS and Android only)
 							</dd>
 							</dl>
-						
-						
-						
-						
-						
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.setNativeOptions(
     {
@@ -1505,65 +1513,65 @@ Sets options in native application layer (iOS and Android only)
         filters : { jsonstore : 'debug' }  // establish whitelist filters at native
     }
 );</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="status"> </a>
-					
+
 					<div class="method">
 						status
 					</div>
-					
+
 					<div class="fixedFont">
-					
+
 					<span class="light">{Promise}</span>
 					<b>status</b>()
-					
+
 					</div>
 					<div class="detailedDescription">
 						Shows the status (current configuration) of the logger.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
-						
-						
+
+
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd><span class="light fixedFont">{Promise}</span> Resolved with current status, rejected with an error message.</dd>
-							
+
 							</dl>
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.status()
 
@@ -1575,96 +1583,96 @@ Sets options in native application layer (iOS and Android only)
 .fail(function (errMsg) {
   //errMsg = error message
 });</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="trace"> </a>
-					
+
 					<div class="method">
 						trace
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>trace</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>600</code> and a level of <code>TRACE</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.trace('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="updateConfigFromServer"> </a>
-					
+
 					<div class="method">
 						updateConfigFromServer
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>updateConfigFromServer</b>()
-					
+
 					</div>
 					<div class="detailedDescription">
 						Retrieves and applies any matching configuration profile from the IBM Worklight Server.
@@ -1676,121 +1684,121 @@ matching configuration profile exists.
 This API call is only applicable in Android and IOS environments.  It is a safe, but no-op,
 call in other environments.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
-						
-						
+
+
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
-							
+
 								<dd>promise</dd>
-							
+
 							</dl>
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
+
+						<!-- @note generates notes out of the description -->
+
+
 					<hr />
-				
+
 					<a name="warn"> </a>
-					
+
 					<div class="method">
 						warn
 					</div>
-					
+
 					<div class="fixedFont">
-					
-					
+
+
 					<b>warn</b>(message)
-					
+
 					</div>
 					<div class="detailedDescription">
 						Prints arguments to the console. Has a priority of <code>200</code> and a level of <code>WARN</code>.
 						<!--  -->
-						<!--  --> 
+						<!--  -->
 					</div>
-					
+
 					<!-- proofread tag  -->
-					
-					
-					
+
+
+
 							<dl class="detailList">
 							<dt class="heading">Parameters:</dt>
 							<!-- Format parameters output -->
-							
+
 							<dd>
-								 
+
 								<span class="parameters">message</span>
-								
-								 
+
+
 								 - One or more messages of any data type.
-								
+
 							</dd>
-							
+
 							</dl>
-						
-						
-										
-									
-						
-						
-						
-						
-						
+
+
+
+
+
+
+
+
+
 						<!-- undocumented javascript file -->
 						<!--  -->
-						
-						
+
+
 
 						<!-- available tag  -->
-						
-						
-						<!-- @example generated Examples out of description	the description -->	
-						
+
+
+						<!-- @example generated Examples out of description	the description -->
+
 							<dl class="detailList">
 							<dt class="heading">Example:</dt>
-											
+
 								<dd></dd>
 								<dd><pre class="code"><code class="example" data-language="javascript">WL.Logger.warn('Hello world');
 //Hello world</code></pre></dd>
-							
+
 							</dl>
-						
-						
-						<!-- @note generates notes out of the description -->	
-						
-						
-					
-				
-			
-			
-<!-- ============================== event details ========================= -->		
-			
-			
-		
-		<!-- ============================== footer ================================= -->	
+
+
+						<!-- @note generates notes out of the description -->
+
+
+
+
+
+
+<!-- ============================== event details ========================= -->
+
+
+
+		<!-- ============================== footer ================================= -->
 		<hr />
 		<div role="contentinfo" title ="contentinfo_title" aria-label ="Contains footer note"/>
 		<div class="fineprint" style="clear:both">
