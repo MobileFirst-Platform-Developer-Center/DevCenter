@@ -186,9 +186,9 @@ cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
 {: #tracing }
 To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
 
-1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
-2. Click the **Trace** action option.
-3. Input the following trace statement: `com.ibm.mfp.*=all` and click **Submit trace**.
+1. In **Runtime → SSH**, select your service instance from the combobox (instance IDs start with **0**).
+2. Go to each instance in the console and open the file `/home/vcap/app/wlp/usr/servers/mfp/configDropins/overrides/tracespec.xml` using the vi editor.
+3. Update the following trace statement: `traceSpecification="=info:com.ibm.mfp.*=all"` and save the file.
 
 The **trace.log** file is now available in the above specified location.
 
