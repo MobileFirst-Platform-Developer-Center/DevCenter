@@ -204,6 +204,7 @@ prod_was:                       "WebSphere Application Server"                  
 prod_was_full:                  "IBM WebSphere Application Server"                      # "IBM $prod_was"
 
 # WebSphere Application Server Liberty [WAS Liberty profile]
+prod_was_liberty_short:               "Liberty"
 prod_was_liberty:               "WebSphere Application Server Liberty"                  # DITA: was_liberty
 prod_was_liberty_full:          "IBM WebSphere Application Server Liberty"
 
@@ -213,3 +214,6 @@ prod_was_nd_full:               "IBM WebSphere Application Server Network Deploy
 
 #IBM Cloud Private (ICP)
 prod_icp:                       "IBM Cloud Private"
+
+#IBM Cloud Public (formerly Bluemix)
+prod_ic:                        "IBM Cloud"

@@ -31,6 +31,7 @@ As the SMS vendor, the sample uses [Twilio](https://www.twilio.com/).  Twilio pr
 ```
 
 This blog post assumes that you have basic knowledge about *IBM MobileFirst Foundation 8.0* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
+If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to work with the sample.
 
 ## Running the sample
 To run this sample, review the instructions in the [sample's repository.](https://github.com/mfpdev/sms-one-time-password-sample)
