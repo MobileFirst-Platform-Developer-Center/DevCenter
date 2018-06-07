@@ -16,10 +16,10 @@ MobileFirst JSONStore already allows you to write code to be able to pull and pu
 
 Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). 
 
-If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to learn about the JSONStore <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/">here</a>.
+If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to learn about the JSONStore <a href="https://www.ibm.com/support/knowledgecenter/en/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_jsonstore_overview.html">here</a>.
 
 > **Note:** <br/>
-  This feature is available in Android and cordova-android environments only. Support for iOS and cordova-ios will be available shortly.<br/>
+  This feature is available in Android environment only. Support for iOS and Cordova will be available shortly.<br/>
 > The use of this feature can be extended to any CouchDB instance.
 
 ## Setting up the synchronization between JSONStore and Cloudant
@@ -45,13 +45,6 @@ A JSONStore collection can be initialized with a Sync Policy using the `JSONStor
     initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
     ```
 
-    _**Cordova:**_
-    ```
-    collections[collectionName].sync = {
-      syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
-    }
-    ```
-
 
 2.  `SYNC_UPSTREAM`<br/>
     Use this policy when you want to push local data to a Cloudant database. For example, uploading of sales data captured offline to a Cloudant database. When a collection is defined with the `SYNC_UPSTREAM` policy, any new records added to the collection creates a new record in Cloudant. Similarly, any document modified in the collection on the device will modify the document on Cloudant and documents deleted in the collection will also be deleted from the Cloudant database.
@@ -61,13 +54,6 @@ A JSONStore collection can be initialized with a Sync Policy using the `JSONStor
     _**Android:**_
     ```
     initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
-    ```
-
-    _**Cordova:**_
-    ```
-    collections[collectionName].sync = {
-      syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
-    }
     ```
 
 
@@ -89,19 +75,12 @@ _**Android**_
   ```
    initOptions.syncAdapterPath = "JSONStoreCloudantSync"; //Here "JSONStoreCloudantSync" is the name of the adapter.
    ```
- _**Cordova:**_
-    ```
-    collections[collectionName].sync = {
-      syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM,//This could be the sync option of your choice : SYNC_DOWNSTREAM, SYNC_UPSTREAM or SYNC_NONE
-      syncAdapterPath:'JSONStoreCloudantSync'
-    }
-    ```
 
 ### Deploying the sync adapter
 {: #deploy-syncadapter}
 
-* Download the [JSONStoreSync adapter]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/JSONStoreCloudantSync.adapter) and deploy it in your MobileFirst server.
-* Configure the credentials to the backend Cloudant database.
+* Download the JSONStoreSync adapter from <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">here</a>, configure cloudant credentials in path 'src/main/adapter-resources/adapter.xml' and deploy it in your MobileFirst server.
+* Configure the credentials to the backend Cloudant database also through the mfpconsole like below :
 
 |---------------------------|-------------------------|
 |![Configure Cloudant]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/configure-cloudant.png)    |   ![Cloudant credentials]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/CloudantCreds.jpg)|
@@ -110,7 +89,7 @@ _**Android**_
 ### Few points to consider before using this feature
 {: #take-note}
 
-This feature is available for the Android native environment and the cordova-android environment only.  
+At the time of publishing this post, this feature is available for the Android native environment.  
 
 The name of the JSONStore collection and CouchDB database name must be the same.
 Carefully refer to your CouchDB's database naming syntax before naming your JSONStore collection.
@@ -130,7 +109,3 @@ _**Android**_
    WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
    ```
   
-_**Cordova:**_
-    ```
-    WL.JSONStore.get(collectionName).sync();
-    ```
