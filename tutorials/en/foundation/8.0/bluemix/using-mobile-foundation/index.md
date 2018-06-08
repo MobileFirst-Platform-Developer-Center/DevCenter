@@ -119,6 +119,18 @@ Through the **Settings** tab, you can further customize the server instance with
 * JNDI configuration
 * User registry
 * TrustStore
+
+  *Creating the TrustStore Certificate for Mobile Foundation Service:*
+
+  * Take *cacerts* from the latest fix pack Java 8 JDK of IBM Java or Oracle Java.
+
+  * Import the additional certificate into the TrustStore using the following command:
+    ```
+    keytool -import -file firstCA.cert -alias firstCA -keystore truststore.jks
+    ```
+
+  >**Note** : You can choose to create your own TrustStore, but the default certificate needs to made available for Mobile Foundation Service to function properly
+
 * {{ site.data.keys.mf_analytics_service }} configuration
 * DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
 * VPN
