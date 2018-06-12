@@ -102,6 +102,170 @@ The file names of the icon files must be the same as the names in the following 
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
 
+Starting from MFP cordova plugin version 8.0.2017102406, a change has been made to the AppDelegate.m and this has been resulting in a flicker of a black screen while loading a cordova ios application with the cordova-plugin-mfp installed. If any user does not wish to see this splashscreen, then they may add a new ViewController and make some changes to the AppDelegate.m load to avoid the black splashscreen. The step by step process to this is as below :
+
+1. In your XCode project, right click on 'Classes' folder and select 'New file' option.
+2. Select 'Cocoa Touch Class' template. Click on 'Next'.
+3. Leave the default values (Class name will be 'ViewController'). Click on 'Next'.
+4. Click on 'Create'. Files 'ViewController.m' and 'ViewController.h' are added to the 'Classes' folder.
+5. Again right click on the 'Classes' folder and select 'New file' option.
+6. Select 'Storyboard' template. Clieck on 'Next', save it with the name 'ViewController' and click on 'Create'.
+7. Open 'ViewController.storyboard' and add a new 'ViewController' object. And add the attributes 'Class' in 'Custom Class' tab as 'ViewController'. In the 'Identity' tab set 'Storyboard ID' and 'Restoration ID' as 'ViewController'.
+8. Modify your 'AppDelegate.m' to the below file : 
+
+```
+/*
+ Licensed Materials - Property of IBM
+ 
+ (C) Copyright 2017 IBM Corp.
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ */
+/*
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ */
+#import "AppDelegate.h"
+#import <IBMMobileFirstPlatformFoundationHybrid/IBMMobileFirstPlatformFoundationHybrid.h>
+#import <IBMMobileFirstPlatformFoundation/WLAnalytics.h>
+#import "MainViewController.h"
+#import "ViewController.h"
+@implementation AppDelegate
+NSString* const MFP_INITIALIAZATION = @"WLInitSuccess";
+NSString* const OPEN_URL_COMPLETED = @"OpenURLCompleted";
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
+{
+    if (NSClassFromString(@"CDVSplashScreen") == nil) {
+        [[WL sharedInstance] showSplashScreen];
+    }
+    // By default splash screen will be automatically hidden once Worklight JavaScript framework is complete.
+    // To override this behaviour set autoHideSplash property in initOptions.js to false and use WL.App.hideSplashScreen() API.
+   
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+   // UIViewController* rootViewController = self.window.rootViewController;
+    
+    ViewController *loginController = [[UIStoryboard storyboardWithName:@"ViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"]; //or the homeController
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:loginController];
+    self.window.rootViewController = navController;
+    
+    [self.window makeKeyAndVisible];
+    
+     [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
+//    __block __weak id observer =  [[NSNotificationCenter defaultCenter]addObserverForName:MFP_INITIALIAZATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+//        self.viewController = [[MainViewController alloc] init];
+//        self.viewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+//        [super application:application didFinishLaunchingWithOptions:launchOptions];
+//        [[NSNotificationCenter defaultCenter] removeObserver:observer name:MFP_INITIALIAZATION object:nil];
+//    }];
+    return YES;
+}
+-(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
+{
+    if ([result statusCode] == WLWebFrameworkInitResultSuccess) {
+        [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
+        [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
+        [self wlInitDidCompleteSuccessfully];
+        //[[NSNotificationCenter defaultCenter] postNotificationName:MFP_INITIALIAZATION object:nil];
+    } else {
+        [self wlInitDidFailWithResult:result];
+    }
+}
+-(void)wlInitDidCompleteSuccessfully
+{
+    UIViewController* rootViewController = self.window.rootViewController;
+    
+    // Create a Cordova View Controller
+    CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
+    
+    cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+    
+    // Adjust the Cordova view controller view frame to match its parent view bounds
+    cordovaViewController.view.frame = rootViewController.view.bounds;
+    
+    // Display the Cordova view
+    [rootViewController addChildViewController:cordovaViewController];
+    [rootViewController.view addSubview:cordovaViewController.view];
+}
+-(void)wlInitDidFailWithResult:(WLWebFrameworkInitResult *)result
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                        message:[result message]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    //wi 116840 - Adding a post notification on mfp_intialization after openurl is executed and an observer notification is received.
+    //This is to handle warm-start correctly
+    __block __weak id observer = [[NSNotificationCenter defaultCenter]addObserverForName:OPEN_URL_COMPLETED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MFP_INITIALIAZATION object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:observer name:OPEN_URL_COMPLETED object:nil];
+    }];
+    
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+//wi 116840 - The below changes is to fix cold-start in handleopenurl. Only after the MFP_INITIALIZATION observer is returned, the handleopenurl plugin is called.
+//This ensures that cold-start behaviour does not face any issues.
+// After this, an observer for open_url_completed is initiated. This ensures that in "applicationWillEnterForeground", the action to post notification is completed after openurl is executed.
+- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+{
+    if (!url) {
+        return NO;
+    }
+    __block __weak id observer = [[NSNotificationCenter defaultCenter]addObserverForName:MFP_INITIALIAZATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+        [[NSNotificationCenter defaultCenter] removeObserver:observer name:MFP_INITIALIAZATION object:nil];
+    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_URL_COMPLETED object:nil];
+    return YES;
+}
+@end
+
+
+```
+9 . Build and run the application. Now instead of the black splashscreen, a white screen will appear and this can be customized in 'ViewController.storyboard' .
+
+>Note: These changes are bound to be lost if the ios platform is removed and added. Hence please ensure that these changes are made as and when needed.
+
 ### Windows
 {: #windows }
 If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
