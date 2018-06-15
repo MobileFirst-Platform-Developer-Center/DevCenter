@@ -133,9 +133,9 @@ SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/
 
 ## 同一生成元ポリシー
 {: #same-origin-policy }
-{{ site.data.keys.mf_server }} がインストールされているサーバー・マシンとは異なるサーバー・マシンで Web リソースがホストされていると、[同一生成元ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反がトリガーされます。「同一生成元ポリシー」セキュリティー・モデルは、未検証のソースによる潜在的なセキュリティー脅威から保護することを目的としています。このポリシーに従って、ブラウザーは、Web リソース (スクリプトなど) が、同じ生成元 (URI スキーム、ホスト名、およびポート番号の組み合わせとして定義される) から生じているリソースのみと対話するようにします。 同一生成元ポリシーについて詳しくは、[The Web Origin Concept](https://tools.ietf.org/html/rfc6454) の仕様、特に [3. Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3) を参照してください。
+{{ site.data.keys.mf_server }} がインストールされているサーバー・マシンとは異なるサーバー・マシンで Web リソースがホストされていると、[同一生成元ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反がトリガーされます。 「同一生成元ポリシー」セキュリティー・モデルは、未検証のソースによる潜在的なセキュリティー脅威から保護することを目的としています。 このポリシーに従って、ブラウザーは、Web リソース (スクリプトなど) が、同じ生成元 (URI スキーム、ホスト名、およびポート番号の組み合わせとして定義される) から生じているリソースのみと対話するようにします。 同一生成元ポリシーについて詳しくは、[The Web Origin Concept](https://tools.ietf.org/html/rfc6454) の仕様、特に [3. Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3) を参照してください。
 
-{{ site.data.keys.product_adj }} Web SDK を使用した Web アプリケーションは、サポートするトポロジー内で処理される必要があります。例えば、同じ単一の生成元を維持しながら、要求を適切なサーバーに内部的にリダイレクトするには、リバース・プロキシーを使用します。
+{{ site.data.keys.product_adj }} Web SDK を使用した Web アプリケーションは、サポートするトポロジー内で処理される必要があります。 例えば、同じ単一の生成元を維持しながら、要求を適切なサーバーに内部的にリダイレクトするには、リバース・プロキシーを使用します。
 
 ### 代替方法
 {: #alternatives }
@@ -148,7 +148,7 @@ SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/
 
 ## セキュア・オリジン・ポリシー
 {: #secure-origins-policy }
-開発中に Chrome を使用すると、`localhost` では**ない**ホストと HTTP の両方を使用するアプリケーションのロードを、この ブラウザーが許可しない場合があります。原因は、このブラウザーに実装され、デフォルトで使用される、セキュア・オリジン・ポリシーです。
+開発中に Chrome を使用すると、`localhost` では**ない**ホストと HTTP の両方を使用するアプリケーションのロードを、この ブラウザーが許可しない場合があります。 原因は、このブラウザーに実装され、デフォルトで使用される、セキュア・オリジン・ポリシーです。
 
 これに対処するため、次のフラグを付けて Chrome ブラウザーを開始することができます。
 

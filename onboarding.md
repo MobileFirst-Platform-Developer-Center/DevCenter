@@ -1,5 +1,7 @@
 ## Working with the developer center
-This website is power by several technologies: 
+This document is an overview for experienced users of the technologies used to develop, build and run the DevCenter.  For more detailed instructions, please read the Onboarding Guide in our Github Wiki.
+
+This website is power by several technologies:
 
 * Bootstrap for a responsive layout
 * Jekyll and Liquid templating to compile and transform the source files into static HTML files
@@ -11,7 +13,7 @@ This website is power by several technologies:
 * Elasticsearch as the search platform
 * Git for storing everything
 * Travis CI to automate building and publishing (IBM internal)
-* Bluemix as the hosting service (IBM internal)
+* IBM Cloud as the hosting service (IBM internal)
 
 If you'd like to contribute to this site as outlined in our [contribution guidelines](contribution.md), you can follow these steps to work locally and preview your work before submitting your pull request.
 
@@ -19,7 +21,7 @@ If you'd like to contribute to this site as outlined in our [contribution guidel
 2. Set up Jekyll and test locally.
 
   Jekyll is software that takes the Developer Center source files and compiles them into the static HTML files that you see when visiting the site. Follow the below to set up Jekyll locally in order test your changes.
-  
+
   * Windows users can [follow this guide](https://jekyllrb.com/docs/windows/) by the Jekyll community.
   * Linux (Ubuntu) users, run these commands:
 
@@ -77,6 +79,10 @@ You can also combine the two tricks above. Your final command should look like:
 1. After changes are made, you can commit them to your forked repository with a descriptive text.  
 2. Make a new pull request so that the admins will merge your changes, from your forked repository back into the master branch of the Developer Center's repository.  
 
+#### Enable others to load your site while running on your laptop
+
+To allow people to access your Jekyll server via your IP address or Bonjour name, add "--host 0.0.0.0" when you start Jekyll (e.g. "bundle exec jekyll serve --incremental --host 0.0.0.0")
+
 #### Keep your fork up to date!
 To avoid conflicts it is very important to keep your fork up to date with the original upstream repository. _Don't create a Pull Request if you are not up to date_.
 
@@ -89,4 +95,3 @@ It is good from time to time to update Jekyll with fixes. From the repository di
 The `--incremental` option mentioned above is experimental and so it may sometimes fail. Meaning, you make a change, Jekyll rebuilds the site but you do not see your change. Clearing the cache and re-building tends to help.
 
 The command to use is: `bundle exec jekyll clean`
-

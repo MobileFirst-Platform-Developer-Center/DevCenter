@@ -1,18 +1,20 @@
 ---
-layout: tutorial
-title: IBM Containers 用のスクリプトを使用して IBM Bluemix 上に MobileFirst Server をセットアップする
-breadcrumb_title: IBM Containers
-relevantTo: [ios,android,windows,javascript]
-weight: 2
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
+#breadcrumb_title: IBM Containers
+#relevantTo: [ios,android,windows,javascript]
+#weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-下記の指示に従って {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを IBM Bluemix 上で構成します。これは、次のような手順で行います。
+下記の指示に従って {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを IBM Cloud 上で構成します。 これは、次のような手順で行います。
 
 * 必要なツール (Cloud Foundry CLI、Docker、および IBM Containers 拡張機能 (cf ic) プラグイン) を使用して、ホスト・コンピューターをセットアップする
-* Bluemix アカウントをセットアップする
-* {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュする
+* IBM Cloud アカウントをセットアップする
+* {{ site.data.keys.mf_server }} イメージをビルドし、これを IBM Cloud リポジトリーにプッシュする
 
 最後に、このイメージを IBM Containers 上で単一コンテナーまたはコンテナー・グループとして実行し、アプリケーションを登録して、アダプターをデプロイします。
 
@@ -23,22 +25,22 @@ weight: 2
 
 #### ジャンプ先:
 {: #jump-to }
-* [Bluemix でアカウントを登録する](#register-an-account-at-bluemix)
+* [IBM Cloud でアカウントを登録する](#register-an-account-at-bluemix)
 * [ホスト・マシンをセットアップする](#set-up-your-host-machine)
 * [{{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the-ibm-mfpf-container-8000-archive)
 * [前提条件](#prerequisites)
 * [IBM Containers 上での {{ site.data.keys.product_adj }} Server と Analytics Server のセットアップ](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 * [{{ site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
-* [Bluemix からのコンテナーの削除](#removing-a-container-from-bluemix)
-* [Bluemix からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-bluemix)
+* [IBM Cloud からのコンテナーの削除](#removing-a-container-from-bluemix)
+* [IBM Cloud からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-bluemix)
 
-## Bluemix でアカウントを登録する
+## IBM Cloud でアカウントを登録する
 {: #register-an-account-at-bluemix }
-まだアカウントをお持ちでない場合は、[Bluemix Web サイト](https://bluemix.net)にアクセスし、**「無料で開始」**、または**「登録」**をクリックします。次のステップに進むため、登録フォームに記入する必要があります。
+まだアカウントをお持ちでない場合は、[IBM Cloud Web サイト](https://bluemix.net)にアクセスし、**「無料で開始」**、または**「登録」**をクリックします。 次のステップに進むため、登録フォームに記入する必要があります。
 
-### Bluemix ダッシュボード
+### IBM Cloud ダッシュボード
 {: #the-bluemix-dashboard }
-Bluemix にサインインすると Bluemix ダッシュボードが表示され、アクティブな Bluemix **スペース**の概略が示されます。デフォルトでは、この作業領域の名前は「dev」です。必要に応じて、複数の作業領域/スペースを作成できます。
+IBM Cloud にサインインすると IBM Cloud ダッシュボードが表示され、アクティブな IBM Cloud **スペース**の概略が示されます。 デフォルトでは、この作業領域の名前は「dev」です。 必要に応じて、複数の作業領域/スペースを作成できます。
 
 ## ホスト・マシンをセットアップする
 {: #set-up-your-host-machine }
@@ -52,7 +54,7 @@ Bluemix にサインインすると Bluemix ダッシュボードが表示され
 
 macOS では、Docker コマンドを実行するには、次の 2 つのオプションがあります。
 
-* macOS の Terminal.app から: 追加のセットアップは必要ありません。このターミナルだけから作業できます。
+* macOS の Terminal.app から: 追加のセットアップは必要ありません。 このターミナルだけから作業できます。
 * Docker Quickstart Terminal から: 次の手順を行います。
 
 * 次のコマンドを実行します:
@@ -80,7 +82,7 @@ macOS では、Docker コマンドを実行するには、次の 2 つのオプ�
 
 ## {{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
 {: #download-the-ibm-mfpf-container-8000-archive}
-IBM Containers 上で {{ site.data.keys.product }} をセットアップするには、まず最初にイメージを作成する必要があります。このイメージは、のちほど Bluemix にプッシュします。  
+IBM Containers 上で {{ site.data.keys.product }} をセットアップするには、まず最初にイメージを作成する必要があります。このイメージは、のちほど IBM Cloud にプッシュします。  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">このページの指示に従って</a>、{{ site.data.keys.mf_server }} の IBM Containers 用アーカイブ (.zip ファイル。*CNBL0EN* で検索) をダウンロードしてください。
 
 このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{ site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{ site.data.keys.mf_server }} コンテナーを構成するためのファイル (**mfpf-server**) が含まれています。
@@ -106,19 +108,19 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
                 <ul>
                     <li><b>Dockerfile</b>: イメージをビルドするのに必要なコマンドがすべて含まれているテキスト文書です。</li>
-                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン、{{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} イメージのビルドおよび Bluemix へのイメージのプッシュと実行に必要なスクリプトも含まれます。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
+                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。 また、IBM Cloud へのログイン、{{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} イメージのビルドおよび IBM Cloud へのイメージのプッシュと実行に必要なスクリプトも含まれます。 スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。 カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。 スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
                     <li><b>usr</b> フォルダー:
                         <ul>
-                            <li><b>bin</b> フォルダー: コンテナーの始動時に実行されるスクリプト・ファイルが入っています。実行する独自のカスタム・コードを追加できます。</li>
+                            <li><b>bin</b> フォルダー: コンテナーの始動時に実行されるスクリプト・ファイルが入っています。 実行する独自のカスタム・コードを追加できます。</li>
                             <li><b>config</b> フォルダー: {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>
-                            <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
-                            <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }}および {{ site.data.keys.mf_analytics }} の構成プロパティー。以下の資料トピックにリストされた、サポートされるプロパティーを参照してください。
+                            <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。 リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
+                            <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }}および {{ site.data.keys.mf_analytics }} の構成プロパティー。 以下の資料トピックにリストされた、サポートされるプロパティーを参照してください。
                                 <ul>
                                     <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a></li>
                                     <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a></li>
                                 </ul>
                             </li>
-                            <li><b>registry.xml</b> - ユーザー・レジストリー構成。basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
+                            <li><b>registry.xml</b> - ユーザー・レジストリー構成。 basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。 basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
                         </ul>
                     </li>
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
@@ -143,17 +145,17 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                         <tr>
                                             <td>MFPF_SERVER_HTTPPORT</td>
                                             <td>9080*</td>
-                                            <td>クライアント HTTP 要求に使用されるポート。このポートを無効にする場合は、-1 を使用します。</td>
+                                            <td>クライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_HTTPSPORT</td>
+                                            <td>MFPF_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>SSL (HTTPS) で保護されたクライアント HTTP 要求に使用されるポート。このポートを無効にする場合は、-1 を使用します。</td>
+                                            <td>SSL (HTTPS) で保護されたクライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CLUSTER_MODE	</td>
                                             <td><code>Standalone</code></td>
-                                            <td>構成は必要ありません。有効値は <code>Standalone</code> または <code>Farm</code> です。コンテナーがコンテナー・グループとして実行される場合、<code>Farm</code> 値が自動的に設定されます。</td>
+                                            <td>構成は必要ありません。 有効値は <code>Standalone</code> または <code>Farm</code> です。 コンテナーがコンテナー・グループとして実行される場合、<code>Farm</code> 値が自動的に設定されます。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
@@ -171,7 +173,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                             <td>事前定義の役割 <code>mfpadmin</code> が割り当てられたユーザー・グループの名前。</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_DEPLOYER_GROUP</td>
+                                            <td>MFPF_DEPLOYER_GROUP	</td>
                                             <td>mfpdeployergroup</td>
                                             <td>事前定義の役割 <code>mfpdeployer</code> が割り当てられたユーザー・グループの名前。</td>
                                         </tr>
@@ -181,18 +183,18 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                             <td>事前定義の役割 <code>mfpmonitor</code> が割り当てられたユーザー・グループの名前。</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_OPERATOR_GROUP</td>
+                                            <td>MFPF_OPERATOR_GROUP	</td>
                                             <td>mfpoperatorgroup</td>
                                             <td>事前定義の役割 <code>mfpoperator</code> が割り当てられたユーザー・グループの名前。</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_ADMIN_USER</td>
+                                            <td>MFPF_SERVER_ADMIN_USER	</td>
                                             <td>WorklightRESTUser</td>
                                             <td>{{ site.data.keys.mf_server }} Administration Services の Liberty サーバー管理者ユーザー。</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_ADMIN_PASSWORD</td>
-                                            <td>mfpadmin。実稼働環境にデプロイする前に、デフォルト値を個人用パスワードに変更するようにしてください。</td>
+                                            <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
+                                            <td>mfpadmin。 実稼働環境にデプロイする前に、デフォルト値を個人用パスワードに変更するようにしてください。</td>
                                             <td>{{ site.data.keys.mf_server }} Administration Services の Liberty サーバー管理者ユーザーのパスワード。</td>
                                         </tr>
                                         <tr>
@@ -201,7 +203,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                             <td>{{ site.data.keys.mf_server }} 操作の管理者役割のユーザー名。</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_ADMIN_PASSWORD</td>
+                                            <td>MFPF_ADMIN_PASSWORD	</td>
                                             <td>admin</td>
                                             <td>{{ site.data.keys.mf_server }} 操作の管理者役割のパスワード。</td>
                                         </tr>
@@ -230,12 +232,12 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                         <tr>
                                             <td>ANALYTICS_SERVER_HTTP PORT	</td>
                                             <td>9080*</td>
-                                            <td>クライアント HTTP 要求に使用されるポート。このポートを無効にする場合は、-1 を使用します。</td>
+                                            <td>クライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>ANALYTICS_SERVER_HTTPS PORT	</td>
                                             <td>9443*	</td>
-                                            <td>クライアント HTTP 要求に使用されるポート。このポートを無効にする場合は、-1 を使用します。</td>
+                                            <td>クライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>ANALYTICS_ADMIN_GROUP</td>
@@ -253,7 +255,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
 
                     </li>
-                    <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。このフォルダー内のファイルは、コンテナーの JAVA_HOME/jre/lib/security/ フォルダーにコピーされます。</li>
+                    <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。 このフォルダー内のファイルは、コンテナーの JAVA_HOME/jre/lib/security/ フォルダーにコピーされます。</li>
                     <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
                     <li><b>ssh</b> フォルダー: SSH 公開鍵ファイル (id_rsa.pub) の保管場所として使用されます。SSH 公開鍵ファイルは、コンテナーへの SSH アクセスを可能にするために使用されます。</li>
                     <li><b>wxs</b> フォルダー ({{ site.data.keys.mf_server }} 用のみ): データ・キャッシュをサーバーの属性ストアとして使用する場合に、データ・キャッシュ / extreme-scale クライアント・ライブラリーが含まれます。</li>
@@ -269,11 +271,11 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 {: #prerequisites }
 この後のセクションで IBM Containers コマンドを実行するため、以下の手順は必須です。
 
-1. IBM Bluemix 環境にログインします。  
+1. IBM Cloud 環境にログインします。  
 
     次のコマンドを実行します。`cf login`  
     プロンプトが出されたら、次の情報を入力します。
-      * Bluemix API エンドポイント
+      * IBM Cloud API エンドポイント
       * E メール
       * パスワード
       * 組織 (複数ある場合)
@@ -282,10 +284,10 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 2. IBM Containers コマンドを実行するには、まず最初に IBM Container Cloud Service にログインする必要があります。  
 次のコマンドを実行します。`cf ic login`
 
-3. コンテナー・レジストリーの`名前空間`が設定されていることを確認します。`名前空間`は、Bluemix レジストリー上のプライベート・リポジトリーを識別する固有の名前です。名前空間は 1 つの組織に一度割り当てられ、変更することはできません。次のルールに従って名前空間を選択します。
+3. コンテナー・レジストリーの`名前空間`が設定されていることを確認します。 `名前空間`は、IBM Cloud レジストリー上のプライベート・リポジトリーを識別する固有の名前です。 名前空間は 1 つの組織に一度割り当てられ、変更することはできません。 次のルールに従って名前空間を選択します。
      * 使用できるのは、小文字、数字、下線のみです。
-     * 4 文字から 30 文字までの長さにすることができます。コマンド・ラインからコンテナーを管理する予定の場合は、素早く入力できる短い名前空間を使用することをお勧めします。
-     * Bluemix レジストリー内で固有でなければなりません。
+     * 4 文字から 30 文字までの長さにすることができます。 コマンド・ラインからコンテナーを管理する予定の場合は、素早く入力できる短い名前空間を使用することをお勧めします。
+     * IBM Cloud レジストリー内で固有でなければなりません。
 
     名前空間を設定するには、次のコマンドを実行します。`cf ic namespace set <new_name>`。  
     設定した名前空間を取得するには、次のコマンドを実行します。`cf ic namespace get`。
@@ -318,17 +320,17 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
         <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
+            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。 以下のファイルに引数値を入力します。<br/>
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>ご使用の Bluemix ユーザー名 (E メール)。</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>ご使用の Bluemix パスワード。</li>
-                  <li><b>BLUEMIX_ORG - </b>ご使用の Bluemix 組織名。</li>
-                  <li><b>BLUEMIX_SPACE - </b>ご使用の Bluemix スペース (前述のとおり)。</li>
+                  <li><b>IBM_CLOUD_USER - </b>ご使用の IBM Cloud ユーザー名 (E メール)。</li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>ご使用の IBM Cloud パスワード。</li>
+                  <li><b>IBM_CLOUD_ORG - </b>ご使用の IBM Cloud 組織名。</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>ご使用の IBM Cloud スペース (前述のとおり)。</li>
               </ul>
               <h4>prepareappcenterdbs.properties</h4>
               {{ site.data.keys.mf_app_center }} には、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional データベース・インスタンス</a> (Enterprise Transactional 2.8.500 または Enterprise Transactional 12.128.1400) が必要です。
-              <blockquote><p><b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは即時に行われない場合があります。サービスのデプロイメントの前に、販売チームから問い合わせを受けることがあります。</p></blockquote>
+              <blockquote><p><b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは即時に行われない場合があります。 サービスのデプロイメントの前に、販売チームから問い合わせを受けることがあります。</p></blockquote>
 
               dashDB インスタンスのセットアップが完了したら、以下の必須引数を指定します。
               <ul>
@@ -339,22 +341,23 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
               </ul>
               <h4>prepareappcenter.properties</h4>
               <ul>
-                  <li><b>SERVER_IMAGE_TAG - </b>当該イメージのタグ。<em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
+                  <li><b>SERVER_IMAGE_TAG - </b>当該イメージのタグ。 <em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
               </ul>
               <h4>startappcenter.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em> で指定するものと同じ。</li>
-                  <li><b>SERVER_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
-                  <li><b>SERVER_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。</li>
-                  <blockquote>                    IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code>IP アドレスは、特定の Bluemix スペース内の複数のコンテナーで再使用できます。
+                  <li><b>SERVER_CONTAINER_NAME - </b>ご使用の IBM Cloud コンテナーの名前。</li>
+                  <li><b>SERVER_IP - </b>IBM Cloud コンテナーのバインド先とする IP アドレス。</li>
+                  <blockquote>IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code>
+                  IP アドレスは、特定の IBM Cloud スペース内の複数のコンテナーで再使用できます。
                   既に割り当て済みの IP がある場合、<code>cf ic ip list</code> を実行できます。</blockquote>
               </ul>
               <h4>startappcentergroup.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em> で指定するものと同じ。</li>
-                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>ご使用の Bluemix コンテナー・グループの名前。</li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>ご使用の IBM Cloud コンテナー・グループの名前。</li>
                   <li><b>SERVER_CONTAINER_GROUP_HOST - </b>ホスト名。</li>
-                  <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。デフォルトは <code>mybluemix.net</code> です。</li>
+                  <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。 デフォルトは <code>mybluemix.net</code> です。</li>
               </ul>    
             </div>
         </div>
@@ -369,10 +372,10 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 
         <div id="collapseStep2appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-                <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
+                <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
-                    <li><b>initenv.sh – Bluemix へのログイン</b><br />
-次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
+                    <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
+                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -382,7 +385,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                 <div class="panel-heading" role="tab" id="script-appcenter-initenv">
                                     <h4 class="panel-title">
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                </h4>
+                                    </h4>
                                 </div>
 
                                 <div id="collapse-script-appcenter-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-initenv">
@@ -393,40 +396,40 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                                 <td><b>説明</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix ユーザー ID または E メール・アドレス</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>IBM Cloud ユーザー ID または E メール・アドレス</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix パスワード</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>IBM Cloud パスワード</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix 組織名</td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>IBM Cloud 組織名</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix スペース名</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>IBM Cloud スペース名</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Bluemix API エンドポイント。(デフォルトでは https://api.ng.bluemix.net)</td>
+                                                <td>オプション。 [-a|--api] IBM_CLOUD_API_URL	</td>
+                                                <td>IBM Cloud API エンドポイント。 (デフォルトでは https://api.ng.bluemix.net)</td>
                                             </tr>
                                         </table>
 
                                         <p>例えば、次のとおりです。</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>セクションを閉じる</b></a>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} データベースの準備</b><br/>
-                    <b>prepareappcenterdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{ site.data.keys.mf_app_center }} を構成します。手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。
+                    <b>prepareappcenterdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{ site.data.keys.mf_app_center }} を構成します。 手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。
                     次のコマンドを実行します。
 
 {% highlight bash %}
@@ -438,7 +441,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenterdbs">
                                     <h4 class="panel-title">
                                       <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenterdbs" data-target="#collapse-script-appcenter-prepareappcenterdbs" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenterdbs"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                </h4>
+                                    </h4>
                                 </div>
 
                                 <div id="collapse-script-appcenter-prepareappcenterdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenterdbs">
@@ -450,11 +453,11 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>
                                             <tr>
                                               <td>[-db | --acdb ] APPCENTER_DB_SRV_NAME	</td>
-                                              <td>Bluemix dashDB サービス (Bluemix サービス・プラン「Enterprise Transactional」を使用)。</td>
+                                              <td>IBM Cloud dashDB サービス (IBM Cloud サービス・プラン「Enterprise Transactional」を使用)。</td>
                                             </tr>    
                                             <tr>
                                               <td>オプション: [-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
-                                              <td>Application Center サービスのデータベース・スキーマ名。デフォルトは <i>APPCNTR</i> です。</td>
+                                              <td>Application Center サービスのデータベース・スキーマ名。 デフォルトは <i>APPCNTR</i> です。</td>
                                             </tr>    
                                         </table>
 
@@ -470,8 +473,8 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                       </div>
 
                     </li>
-                    <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
-                    このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で <b>initenv.properties</b> を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。</li>
+                    <li><b>initenv.sh(Optional) – IBM Cloud へのログイン</b><br />
+                    このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。 この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で <b>initenv.properties</b> を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。</li>
 
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -479,7 +482,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} イメージの準備</b><br />
-                    {{ site.data.keys.mf_app_center }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。Bluemix リポジトリー内で使用可能なすべてのイメージを表示するには、<code>cf ic images</code> を実行します。
+                    {{ site.data.keys.mf_app_center }} イメージをビルドし、これを IBM Cloud リポジトリーにプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。 IBM Cloud リポジトリー内で使用可能なすべてのイメージを表示するには、<code>cf ic images</code> を実行します。
                     リストには、イメージ名、作成日、および ID が表示されます。
 
                         次のコマンドを実行します。
@@ -492,7 +495,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                                 <div class="panel-heading" role="tab" id="script-appcenter-prepareappcenter">
                                     <h4 class="panel-title">
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                </h4>
+                                    </h4>
                                 </div>
 
                                 <div id="collapse-script-appcenter-prepareappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-prepareappcenter">
@@ -504,7 +507,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
-                                                <td>カスタマイズされた MobileFirst Application Center イメージに使用する名前。フォーマット: <em>registryUrl/namespace/imagename</em></td>
+                                                <td>カスタマイズされた MobileFirst Application Center イメージに使用する名前。 フォーマット: <em>registryUrl/namespace/imagename</em></td>
                                             </tr>
                                         </table>
 
@@ -514,13 +517,13 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>セクションを閉じる</b></a>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>   
                     </li>
                     <li><b>startappcenter.sh - IBM コンテナーでのイメージの実行</b><br/>
-                    IBM コンテナーで {{ site.data.keys.mf_app_center }} イメージを実行するために使用される <b>startappcenter.sh</b> スクリプト。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。
+                    IBM コンテナーで {{ site.data.keys.mf_app_center }} イメージを実行するために使用される <b>startappcenter.sh</b> スクリプト。 また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。
 
                         次のコマンドを実行します。
 {% highlight bash %}
@@ -532,7 +535,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcenter">
                                     <h4 class="panel-title">
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                </h4>
+                                    </h4>
                                 </div>
 
                                 <div id="collapse-script-appcenter-startappcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcenter">
@@ -548,47 +551,47 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>[-i|--ip] SERVER_IP	</td>
-                                                <td>{{ site.data.keys.mf_app_center }} コンテナーのバインド先の IP アドレス。(使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
+                                                <td>{{ site.data.keys.mf_app_center }} コンテナーのバインド先の IP アドレス。 (使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-si|--services] SERVICE_INSTANCES	</td>
-                                                <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス。</td>
+                                                <td>コンテナーにバインドする、コンマ区切りの IBM Cloud サービス・インスタンス。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-h|--http] EXPOSE_HTTP </td>
-                                                <td>HTTP ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                                <td>HTTP ポートの公開。 許容値は、Y (デフォルト) または N です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-s|--https] EXPOSE_HTTPS </td>
-                                                <td>HTTPS ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                                <td>HTTPS ポートの公開。 許容値は、Y (デフォルト) または N です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-m|--memory] SERVER_MEM </td>
-                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。 許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-se|--ssh] SSH_ENABLE </td>
-                                                <td>コンテナーに対して SSH を有効にします。許容値は、Y (デフォルト) または N です。</td>
+                                                <td>コンテナーに対して SSH を有効にします。 許容値は、Y (デフォルト) または N です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-sk|--sshkey] SSH_KEY </td>
-                                                <td>コンテナーに注入される SSH 鍵。(id_rsa.pub ファイルの内容を指定します。)</td>
+                                                <td>コンテナーに注入される SSH 鍵。 (id_rsa.pub ファイルの内容を指定します。)</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-tr|--trace] TRACE_SPEC </td>
-                                                <td>適用されるトレース仕様。デフォルト: <code>*=info</code></td>
+                                                <td>適用されるトレース仕様。 デフォルト: <code>*=info</code></td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-ml|--maxlog] MAX_LOG_FILES </td>
-                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。 デフォルトは 5 ファイルです。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
-                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                                <td>ログ・ファイルの最大サイズ。 デフォルトのサイズは 20 MB です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション:  [-v|--volume] ENABLE_VOLUME </td>
-                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
 
                                         </table>
@@ -599,13 +602,13 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcenter" data-target="#collapse-script-appcenter-startappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcenter"><b>セクションを閉じる</b></a>
-                                </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>   
                     </li>
                     <li><b>startappcentergroup.sh - IBM コンテナー・グループでのイメージの実行</b><br/>
-                    <b>startappcentergroup.sh</b> スクリプトを使用して、{{ site.data.keys.mf_app_center }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
+                    <b>startappcentergroup.sh</b> スクリプトを使用して、{{ site.data.keys.mf_app_center }} イメージを IBM コンテナー・グループ上で実行します。 また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
 
                         次のコマンドを実行します。
 {% highlight bash %}
@@ -617,7 +620,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                 <div class="panel-heading" role="tab" id="script-appcenter-startappcentergroup">
                                     <h4 class="panel-title">
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                </h4>
+                                    </h4>
                                 </div>
 
                                 <div id="collapse-script-appcenter-startappcentergroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-appcenter-startappcentergroup">
@@ -629,7 +632,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Bluemix レジストリー内の {{ site.data.keys.mf_app_center }} コンテナー・イメージの名前。</td>
+                                                <td>IBM Cloud レジストリー内の {{ site.data.keys.mf_app_center }} コンテナー・イメージの名前。</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -640,48 +643,48 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                                 <td>ルートのホスト名。</td>
                                             </tr>
                                             <tr>
-                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN </td>
                                                 <td>ルートのドメイン名。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-gm|--min] SERVERS_CONTAINER_GROUP_MIN </td>
-                                                <td>コンテナー・インスタンスの最小数。デフォルト値は 1 です。</td>
+                                                <td>コンテナー・インスタンスの最小数。 デフォルト値は 1 です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-gx|--max] SERVER_CONTAINER_GROUP_MAX </td>
-                                                <td>コンテナー・インスタンスの最大数。デフォルト値は 2 です。</td>
+                                                <td>コンテナー・インスタンスの最大数。 デフォルト値は 2 です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED </td>
-                                                <td>コンテナー・インスタンスの希望数。デフォルト値は 1 です。</td>
+                                                <td>コンテナー・インスタンスの希望数。 デフォルト値は 1 です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-a|--auto] ENABLE_AUTORECOVERY </td>
-                                                <td>コンテナー・インスタンスの自動リカバリー・オプションを使用可能にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>コンテナー・インスタンスの自動リカバリー・オプションを使用可能にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-si|--services] SERVICES </td>
-                                                <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス名。</td>
+                                                <td>コンテナーにバインドする、コンマ区切りの IBM Cloud サービス・インスタンス名。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-tr|--trace] TRACE_SPEC </td>
-                                                <td>適用されるトレース仕様。デフォルトは </code>*=info</code> です。</td>
+                                                <td>適用されるトレース仕様。 デフォルトは </code>*=info</code> です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-ml|--maxlog] MAX_LOG_FILESC </td>
-                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。 デフォルトは 5 ファイルです。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-ms|--maxlogsize] MAX_LOG_FILE_SIZE </td>
-                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                                <td>ログ・ファイルの最大サイズ。 デフォルトのサイズは 20 MB です。</td>
                                             </tr>
                                             <tr>
                                                 <td>オプション: [-m|--memory] SERVER_MEM </td>
-                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。 許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション: [-v|--volume] ENABLE_VOLUME </td>
-                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>オプション:  [-v|--volume] ENABLE_VOLUME </td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
 
                                         </table>
@@ -718,34 +721,34 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
-            <b>注:</b> ここには、必要な引数値のみを含めています。その他の引数については、プロパティー・ファイル内の資料を参照してください。
+            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。 以下のファイルに引数値を入力します。<br/>
+            <b>注:</b> ここには、必要な引数値のみを含めています。 その他の引数については、プロパティー・ファイル内の資料を参照してください。
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>ご使用の Bluemix ユーザー名 (E メール)。</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>ご使用の Bluemix パスワード。</li>
-                  <li><b>BLUEMIX_ORG - </b>ご使用の Bluemix 組織名。</li>
-                  <li><b>BLUEMIX_SPACE - </b>ご使用の Bluemix スペース (前述のとおり)。</li>
+                  <li><b>IBM_CLOUD_USER - </b>ご使用の IBM Cloud ユーザー名 (E メール)。</li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>ご使用の IBM Cloud パスワード。</li>
+                  <li><b>IBM_CLOUD_ORG - </b>ご使用の IBM Cloud 組織名。</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>ご使用の IBM Cloud スペース (前述のとおり)。</li>
               </ul>
               <h4>prepareanalytics.properties</h4>
               <ul>
-                  <li><b>ANALYTICS_IMAGE_TAG - </b>当該イメージのタグ。<em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>当該イメージのタグ。 <em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
               </ul>
               <h4>startanalytics.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b><em>prepareserver.sh</em> で指定するものと同じ。</li>
-                  <li><b>ANALYTICS_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
-                  <li><b>ANALYTICS_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。<br/>
-                    IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
-                    IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
-                    既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
+                  <li><b>ANALYTICS_CONTAINER_NAME - </b>ご使用の IBM Cloud コンテナーの名前。</li>
+                  <li><b>ANALYTICS_IP - </b>IBM Cloud コンテナーのバインド先とする IP アドレス。<br/>
+                  IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
+                  IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
+                  既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
               </ul>
               <h4>startanalyticsgroup.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b><em>prepareserver.sh</em> で指定するものと同じ。</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>ご使用の Bluemix コンテナー・グループの名前。</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>ご使用の IBM Cloud コンテナー・グループの名前。</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>ホスト名。</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。デフォルトは <code>mybluemix.net</code> です。</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。 デフォルトは <code>mybluemix.net</code> です。</li>
               </ul>
             </div>
         </div>
@@ -760,9 +763,9 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-                <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
+                <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
-                    <li><b>initenv.sh – Bluemix へのログイン</b><br />
+                    <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
                     次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_analytics }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -784,30 +787,30 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
                                                 <td><b>説明</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix ユーザー ID または E メール・アドレス</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>IBM Cloud ユーザー ID または E メール・アドレス</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix パスワード</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>IBM Cloud パスワード</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix 組織名</td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>IBM Cloud 組織名</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix スペース名</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>IBM Cloud スペース名</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Bluemix API エンドポイント。(デフォルトでは https://api.ng.bluemix.net)</td>
+                                                <td>オプション。 [-a|--api] IBM_CLOUD_API_URL	</td>
+                                                <td>IBM Cloud API エンドポイント。 (デフォルトでは https://api.ng.bluemix.net)</td>
                                             </tr>
                                         </table>
 
                                         <p>例えば、次のとおりです。</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>セクションを閉じる</b></a>
@@ -817,13 +820,13 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         </div>
                     </li>
                     <li><b>prepareanalytics.sh - {{ site.data.keys.mf_analytics }} イメージの準備</b><br />
-                        次のように <b>prepareanalytics.sh</b> スクリプトを実行して、{{ site.data.keys.mf_analytics }} イメージをビルドし、これを Bluemix リポジトリーにプッシュします。
+                        次のように <b>prepareanalytics.sh</b> スクリプトを実行して、{{ site.data.keys.mf_analytics }} イメージをビルドし、これを IBM Cloud リポジトリーにプッシュします。
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        Bluemix リポジトリー内にあるすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
+                        IBM Cloud リポジトリー内にあるすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                         リストには、イメージ名、作成日、および ID が表示されます。
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
@@ -843,7 +846,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>
                                             <tr>
                                               <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                              <td>カスタマイズされた Analytics イメージに使用する名前。フォーマット: Bluemix registry URL/private namespace/image name</td>
+                                              <td>カスタマイズされた Analytics イメージに使用する名前。 フォーマット: IBM Cloud registry URL/private namespace/image name</td>
                                             </tr>      
                                         </table>
 
@@ -860,7 +863,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 
                     </li>
                     <li><b>startanalytics.sh - IBM コンテナーでのイメージの実行</b><br />
-                    <b>startanalytics.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。</li>
+                    <b>startanalytics.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー上で実行します。 また、このスクリプトを実行すると、<b>ANALYTICS_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。</li>
 
                     次のコマンドを実行します。
 {% highlight bash %}
@@ -884,7 +887,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>IBM Containers レジストリーにロードされた Analytics コンテナー・イメージの名前。フォーマット: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>IBM Containers レジストリーにロードされた Analytics コンテナー・イメージの名前。 フォーマット: IBMCloudRegistry/PrivateNamespace/ImageName:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
@@ -892,59 +895,59 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-i|--ip] ANALYTICS_IP	</td>
-                                                <td>コンテナーのバインド先の IP アドレス。(使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
+                                                <td>コンテナーのバインド先の IP アドレス。 (使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-h|--http] EXPOSE_HTTP	</td>
-                                                <td>HTTP ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                                <td>オプション。 [-h|--http] EXPOSE_HTTP	</td>
+                                                <td>HTTP ポートの公開。 許容値は、Y (デフォルト) または N です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-s|--https] EXPOSE_HTTPS	</td>
-                                                <td>HTTPS ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                                <td>オプション。 [-s|--https] EXPOSE_HTTPS	</td>
+                                                <td>HTTPS ポートの公開。 許容値は、Y (デフォルト) または N です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-m|--memory] SERVER_MEM	</td>
-                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                                <td>オプション。 [-m|--memory] SERVER_MEM	</td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。 許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-se|--ssh] SSH_ENABLE	</td>
-                                                <td>コンテナーに対して SSH を有効にします。許容値は、Y (デフォルト) または N です。</td>
+                                                <td>オプション。 [-se|--ssh] SSH_ENABLE	</td>
+                                                <td>コンテナーに対して SSH を有効にします。 許容値は、Y (デフォルト) または N です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-sk|--sshkey] SSH_KEY	</td>
-                                                <td>コンテナーに注入される SSH 鍵。(id_rsa.pub ファイルの内容を指定します。)</td>
+                                                <td>オプション。 [-sk|--sshkey] SSH_KEY	</td>
+                                                <td>コンテナーに注入される SSH 鍵。 (id_rsa.pub ファイルの内容を指定します。)</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-tr|--trace] TRACE_SPEC	</td>
-                                                <td>適用されるトレース仕様。デフォルト: <code>*=info</code></td>
+                                                <td>オプション。 [-tr|--trace] TRACE_SPEC	</td>
+                                                <td>適用されるトレース仕様。 デフォルト: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ml|--maxlog] MAX_LOG_FILES	</td>
-                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                                <td>オプション。 [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。 デフォルトは 5 ファイルです。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                                <td>オプション。 [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                                <td>ログ・ファイルの最大サイズ。 デフォルトのサイズは 20 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-v|--volume] ENABLE_VOLUME	</td>
-                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>オプション。 [-v|--volume] ENABLE_VOLUME	</td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME	</td>
-                                                <td>Analytics データ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>オプション。 [-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME	</td>
+                                                <td>Analytics データ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                                <td>Analytic データ用に作成してマウントされるボリュームの名前を指定します。デフォルトの名前は <b>mfpf_analytics_container_name</b> です。</td>
+                                                <td>オプション。 [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
+                                                <td>Analytic データ用に作成してマウントされるボリュームの名前を指定します。 デフォルトの名前は <b>mfpf_analytics_container_name</b> です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
-                                                <td>データを保管する場所を指定します。デフォルトのフォルダー名は <b>/analyticsData</b> です。</td>
+                                                <td>オプション。 [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
+                                                <td>データを保管する場所を指定します。 デフォルトのフォルダー名は <b>/analyticsData</b> です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>{{ site.data.keys.mf_analytics }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。注: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
+                                                <td>オプション。 [-e|--env] MFPF_PROPERTIES	</td>
+                                                <td>{{ site.data.keys.mf_analytics }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。 注: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                             </tr>
                                         </table>
 
@@ -959,7 +962,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                             </div>
                         </div>   
                     <li><b>startanalyticsgroup.sh - IBM コンテナー・グループでのイメージの実行</b><br />
-                    <b>startanalyticsgroup.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
+                        <b>startanalyticsgroup.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー・グループ上で実行します。 また、このスクリプトを実行すると、<b>ANALYTICS_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
 
                         次のコマンドを実行します。
 {% highlight bash %}
@@ -983,7 +986,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>IBM Containers レジストリーにロードされた Analytics コンテナー・イメージの名前。フォーマット: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>IBM Containers レジストリーにロードされた Analytics コンテナー・イメージの名前。 フォーマット: IBMCloudRegistry/PrivateNamespace/ImageName:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
@@ -998,48 +1001,48 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>ルートのドメイン名。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN</td>
-                                                <td>コンテナー・インスタンスの最小数。デフォルト値は 1 です。</td>
+                                                <td>オプション。 [-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN</td>
+                                                <td>コンテナー・インスタンスの最小数。 デフォルト値は 1 です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX	</td>
-                                                <td>コンテナー・インスタンスの最大数。デフォルト値は 1 です。</td>
+                                                <td>オプション。 [-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX	</td>
+                                                <td>コンテナー・インスタンスの最大数。 デフォルト値は 1 です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED	</td>
-                                                <td>コンテナー・インスタンスの希望数。デフォルト値は 2 です。</td>
+                                                <td>オプション。 [-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED	</td>
+                                                <td>コンテナー・インスタンスの希望数。 デフォルト値は 2 です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-tr|--trace] TRACE_SPEC	</td>
-                                                <td>適用されるトレース仕様。デフォルト: <code>*=info</code></td>
+                                                <td>オプション。 [-tr|--trace] TRACE_SPEC	</td>
+                                                <td>適用されるトレース仕様。 デフォルト: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ml|--maxlog] MAX_LOG_FILES	</td>
-                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                                <td>オプション。 [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。 デフォルトは 5 ファイルです。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                                <td>オプション。 [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                                <td>ログ・ファイルの最大サイズ。 デフォルトのサイズは 20 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
+                                                <td>オプション。 [-e|--env] MFPF_PROPERTIES	</td>
+                                                <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。 例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-m|--memory] SERVER_MEM	</td>
-                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                                <td>オプション。 [-m|--memory] SERVER_MEM	</td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。 許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-v|--volume] ENABLE_VOLUME	</td>
-                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>オプション。 [-v|--volume] ENABLE_VOLUME	</td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                                <td>Analytics データ用に作成してマウントされるボリュームの名前を指定します。デフォルト値は <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b> です。</td>
+                                                <td>オプション。 [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
+                                                <td>Analytics データ用に作成してマウントされるボリュームの名前を指定します。 デフォルト値は <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b> です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
-                                                <td>Analytics データを保管するために使用するディレクトリーを指定します。デフォルト値は <b>/analyticsData</b> です。</td>
+                                                <td>オプション。 [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
+                                                <td>Analytics データを保管するために使用するディレクトリーを指定します。 デフォルト値は <b>/analyticsData</b> です。</td>
                                             </tr>
                                         </table>
 
@@ -1073,47 +1076,47 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-                <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
+                <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。 以下のファイルに引数値を入力します。<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_USER - </b>ご使用の Bluemix ユーザー名 (E メール)。</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>ご使用の Bluemix パスワード。</li>
-                    <li><b>BLUEMIX_ORG - </b>ご使用の Bluemix 組織名。</li>
-                    <li><b>BLUEMIX_SPACE - </b>ご使用の Bluemix スペース (前述のとおり)。</li>
+                    <li><b>IBM_CLOUD_USER - </b>ご使用の IBM Cloud ユーザー名 (E メール)。</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>ご使用の IBM Cloud パスワード。</li>
+                    <li><b>IBM_CLOUD_ORG - </b>ご使用の IBM Cloud 組織名。</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>ご使用の IBM Cloud スペース (前述のとおり)。</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
                 {{ site.data.keys.mf_bm_short }} サービスには、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional データベース</i> ・インスタンス</a> (<i>Enterprise Transactional 2.8.500</i> または <i>Enterprise Transactional 12.128.1400</i>) が必要です。<br/>
-                <b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは即時に行われない場合があります。サービスのデプロイメントの前に、販売チームから問い合わせを受けることがあります。<br/><br/>
+                <b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは即時に行われない場合があります。 サービスのデプロイメントの前に、販売チームから問い合わせを受けることがあります。<br/><br/>
                 dashDB インスタンスのセットアップが完了したら、必要な引数を入力します。
                 <ul>
                     <li><b>ADMIN_DB_SRV_NAME - </b>admin データを保管するための dashDB サービス・インスタンス名。</li>
-                    <li><b>ADMIN_SCHEMA_NAME - </b>admin データ用のスキーマ名。デフォルトは MFPDATA です。</li>
-                    <li><b>RUNTIME_DB_SRV_NAME - </b>ランタイム・データを保管するための dashDB サービス・インスタンス名。デフォルトは admin のサービス名です。</li>
-                    <li><b>RUNTIME_SCHEMA_NAME - </b>ランタイム・データ用のスキーマ名。デフォルトは MFPDATA です。</li>
+                    <li><b>ADMIN_SCHEMA_NAME - </b>admin データ用のスキーマ名。 デフォルトは MFPDATA です。</li>
+                    <li><b>RUNTIME_DB_SRV_NAME - </b>ランタイム・データを保管するための dashDB サービス・インスタンス名。 デフォルトは admin のサービス名です。</li>
+                    <li><b>RUNTIME_SCHEMA_NAME - </b>ランタイム・データ用のスキーマ名。 デフォルトは MFPDATA です。</li>
                     <b>注:</b> dashDB サービス・インスタンスを多数のユーザーが共有している場合は、必ず固有のスキーマ名を指定してください。
                 </ul><br/>
                 <h4>prepareserver.properties</h4>
                 <ul>
-                  <li><b>SERVER_IMAGE_TAG - </b>当該イメージのタグ。<em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
+                  <li><b>SERVER_IMAGE_TAG - </b>当該イメージのタグ。 <em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
                 </ul>
                 <h4>startserver.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b><em>prepareserver.sh</em> で指定するものと同じ。</li>
-                    <li><b>SERVER_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
-                    <li><b>SERVER_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。<br/>
+                    <li><b>SERVER_CONTAINER_NAME - </b>ご使用の IBM Cloud コンテナーの名前。</li>
+                    <li><b>SERVER_IP - </b>IBM Cloud コンテナーのバインド先とする IP アドレス。<br/>
                     IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
                     IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
                     既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
-                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }} JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。<code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }} JNDI プロパティー。 ここで、次のように分析関連のプロパティーを定義します。<code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b><em>prepareserver.sh</em> で指定するものと同じ。</li>
-                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>ご使用の Bluemix コンテナー・グループの名前。</li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>ご使用の IBM Cloud コンテナー・グループの名前。</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>ホスト名。</li>
-                    <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。デフォルトは <code>mybluemix.net</code> です。</li>
-                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }}JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。 <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。 デフォルトは <code>mybluemix.net</code> です。</li>
+                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }}JNDI プロパティー。 ここで、次のように分析関連のプロパティーを定義します。 <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
             </div>
         </div>
@@ -1128,10 +1131,10 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
+            <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
 
             <ol>
-                <li><b>initenv.sh – Bluemix へのログイン</b><br />
+                <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
                     次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -1153,40 +1156,40 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                             <td><b>説明</b></td>
                                         </tr>
                                         <tr>
-                                            <td>[-u|--user] BLUEMIX_USER</td>
-                                            <td>Bluemix ユーザー ID または E メール・アドレス</td>
+                                            <td>[-u|--user] IBM_CLOUD_USER</td>
+                                            <td>IBM Cloud ユーザー ID または E メール・アドレス</td>
                                         </tr>
                                         <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                            <td>Bluemix パスワード</td>
+                                            <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                            <td>IBM Cloud パスワード</td>
                                         </tr>
                                         <tr>
-                                            <td>[-o|--org] BLUEMIX_ORG	</td>
-                                            <td>Bluemix 組織名</td>
+                                            <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                            <td>IBM Cloud 組織名</td>
                                         </tr>
                                         <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                            <td>Bluemix スペース名</td>
+                                            <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                            <td>IBM Cloud スペース名</td>
                                         </tr>
                                         <tr>
-                                            <td>オプション。[-a|--api] BLUEMIX_API_URL	</td>
-                                            <td>Bluemix API エンドポイント。(デフォルトでは https://api.ng.bluemix.net)</td>
+                                            <td>オプション。 [-a|--api] IBM_CLOUD_API_URL	</td>
+                                            <td>IBM Cloud API エンドポイント。 (デフォルトでは https://api.ng.bluemix.net)</td>
                                         </tr>
                                     </table>
 
                                     <p>例えば、次のとおりです。</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>セクションを閉じる</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li><b>prepareserverdbs.sh - {{ site.data.keys.mf_server }} データベースの準備</b><br />
-                    <b>prepareserverdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{ site.data.keys.mf_server }} を構成します。手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。次のコマンドを実行します。
+                    <b>prepareserverdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{ site.data.keys.mf_server }} を構成します。 手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。次のコマンドを実行します。
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -1196,7 +1199,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-script-prepareserverdbs"><b>クリックすると、コマンド・ライン引数のリストが表示されます</b></a>
-                                    </h4>
+                                </h4>
                             </div>
 
                             <div id="collapse-script-prepareserverdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserverdbs">
@@ -1208,27 +1211,27 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
-                                            <td>Bluemix dashDB™ サービス (Bluemix サービス・プラン「Enterprise Transactional」を使用)</td>
+                                            <td>IBM Cloud dashDB™ サービス (IBM Cloud サービス・プラン「Enterprise Transactional」を使用)</td>
                                         </tr>
                                         <tr>
-                                            <td>オプション。[-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>
-                                            <td>管理サービスのデータベース・スキーマ名。デフォルトは MFPDATA</td>
+                                            <td>オプション。 [-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>
+                                            <td>管理サービスのデータベース・スキーマ名。 デフォルトは MFPDATA</td>
                                         </tr>
                                         <tr>
-                                            <td>オプション。[-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
-                                            <td>ランタイム・データを保管するための Bluemix データベース・サービス・インスタンス名。デフォルトは、管理データに対して指定されたものと同じサービスです。</td>
+                                            <td>オプション。 [-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
+                                            <td>ランタイム・データを保管するための IBM Cloud データベース・サービス・インスタンス名。 デフォルトは、管理データに対して指定されたものと同じサービスです。</td>
                                         </tr>
                                         <tr>
-                                            <td>オプション。[-p |--push ] ENABLE_PUSH	</td>
-                                            <td>プッシュ・サービス用のデータベースの構成を使用可能にします。許容値は、Y (デフォルト) または N です。</td>
+                                            <td>オプション。 [-p |--push ] ENABLE_PUSH	</td>
+                                            <td>プッシュ・サービス用のデータベースの構成を使用可能にします。 許容値は、Y (デフォルト) または N です。</td>
                                         </tr>
                                         <tr>
                                             <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
-                                            <td>プッシュ・データを保管するための Bluemix データベース・サービス・インスタンス名。デフォルトは、ランタイム・データに対して指定されたものと同じサービスです。</td>
+                                            <td>プッシュ・データを保管するための IBM Cloud データベース・サービス・インスタンス名。 デフォルトは、ランタイム・データに対して指定されたものと同じサービスです。</td>
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
-                                            <td>プッシュ・サービスのデータベース・スキーマ名。デフォルトは、ランタイム・スキーマ名です。</td>
+                                            <td>プッシュ・サービスのデータベース・スキーマ名。 デフォルトは、ランタイム・スキーマ名です。</td>
                                         </tr>
                                     </table>
 
@@ -1243,15 +1246,15 @@ prepareserverdbs.sh --admindb MFPDashDBService
                         </div>
                     </div>
                 </li>
-                <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
-                      このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
+                <li><b>initenv.sh(Optional) – IBM Cloud へのログイン</b><br />
+                      このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。 この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
                 </li>
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} イメージの準備</b><br />
-                    {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
+                    {{ site.data.keys.mf_server }} イメージをビルドし、これを IBM Cloud リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。 IBM Cloud リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                     リストには、イメージ名、作成日、および ID が表示されます。<br/>
 
 {% highlight bash %}
@@ -1275,7 +1278,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                         </tr>
                                         <tr>
                                             <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
-                                            <td>カスタマイズされた {{ site.data.keys.mf_server }} イメージに使用する名前。フォーマット: registryUrl/namespace/imagename</td>
+                                            <td>カスタマイズされた {{ site.data.keys.mf_server }} イメージに使用する名前。 フォーマット: registryUrl/namespace/imagename</td>
                                         </tr>
                                     </table>
 
@@ -1286,13 +1289,13 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 
                                   <br/>
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>セクションを閉じる</b></a>
-                                </div>
+                              </div>
                           </div>
                         </div>
                     </div>  
                 </li>
                 <li><b>startserver.sh - IBM コンテナーでのイメージの実行</b><br />
-                    <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。次のコマンドを実行します。</li>
+                    <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー上で実行します。 また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。 次のコマンドを実行します。</li>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -1317,51 +1320,51 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>[-i|--ip] SERVER_IP	</td>
-                                        <td>{{ site.data.keys.mf_server }} コンテナーのバインド先の IP アドレス。(使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
+                                        <td>{{ site.data.keys.mf_server }} コンテナーのバインド先の IP アドレス。 (使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-si|--services] SERVICE_INSTANCES	</td>
-                                        <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス。</td>
+                                        <td>オプション。 [-si|--services] SERVICE_INSTANCES	</td>
+                                        <td>コンテナーにバインドする、コンマ区切りの IBM Cloud サービス・インスタンス。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-h|--http] EXPOSE_HTTP	</td>
-                                        <td>HTTP ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                        <td>オプション。 [-h|--http] EXPOSE_HTTP	</td>
+                                        <td>HTTP ポートの公開。 許容値は、Y (デフォルト) または N です。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-s|--https] EXPOSE_HTTPS	</td>
-                                        <td>HTTPS ポートの公開。許容値は、Y (デフォルト) または N です。</td>
+                                        <td>オプション。 [-s|--https] EXPOSE_HTTPS	</td>
+                                        <td>HTTPS ポートの公開。 許容値は、Y (デフォルト) または N です。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-m|--memory] SERVER_MEM	</td>
-                                        <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                        <td>オプション。 [-m|--memory] SERVER_MEM	</td>
+                                        <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。 許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-se|--ssh] SSH_ENABLE	</td>
-                                        <td>コンテナーに対して SSH を有効にします。許容値は、Y (デフォルト) または N です。</td>
+                                        <td>オプション。 [-se|--ssh] SSH_ENABLE	</td>
+                                        <td>コンテナーに対して SSH を有効にします。 許容値は、Y (デフォルト) または N です。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-sk|--sshkey] SSH_KEY	</td>
-                                        <td>コンテナーに注入される SSH 鍵。(id_rsa.pub ファイルの内容を指定します。)</td>
+                                        <td>オプション。 [-sk|--sshkey] SSH_KEY	</td>
+                                        <td>コンテナーに注入される SSH 鍵。 (id_rsa.pub ファイルの内容を指定します。)</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-tr|--trace] TRACE_SPEC	</td>
-                                        <td>適用されるトレース仕様。デフォルト: <code>*=info</code></td>
+                                        <td>オプション。 [-tr|--trace] TRACE_SPEC	</td>
+                                        <td>適用されるトレース仕様。 デフォルト: <code>*=info</code></td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-ml|--maxlog] MAX_LOG_FILES	</td>
-                                        <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                        <td>オプション。 [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                        <td>上書きされるまで維持するログ・ファイルの最大数。 デフォルトは 5 ファイルです。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                        <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                        <td>オプション。 [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                        <td>ログ・ファイルの最大サイズ。 デフォルトのサイズは 20 MB です。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-v|--volume] ENABLE_VOLUME	</td>
-                                        <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                        <td>オプション。 [-v|--volume] ENABLE_VOLUME	</td>
+                                        <td>コンテナー・ログ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                     </tr>
                                     <tr>
-                                        <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                        <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>。<b>注</b>: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
+                                        <td>オプション。 [-e|--env] MFPF_PROPERTIES	</td>
+                                        <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。 例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>。  <b>注</b>: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                     </tr>
                                 </table>
 
@@ -1376,7 +1379,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                         </div>
                     </div>
                 <li><b>startservergroup.sh - IBM コンテナー・グループでのイメージの実行</b><br />
-                    <b>startservergroup.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。</li>
+                    <b>startservergroup.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー・グループ上で実行します。 また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。</li>
                     次のコマンドを実行します。
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
@@ -1399,7 +1402,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Bluemix レジストリー内の {{ site.data.keys.mf_server }} コンテナー・イメージの名前。</td>
+                                                <td>IBM Cloud レジストリー内の {{ site.data.keys.mf_server }} コンテナー・イメージの名前。</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -1414,50 +1417,50 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>ルートのドメイン名。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-gm|--min] SERVERS_CONTAINER_GROUP_MIN	</td>
-                                                <td>コンテナー・インスタンスの最小数。デフォルト値は 1 です。</td>
+                                                <td>オプション。 [-gm|--min] SERVERS_CONTAINER_GROUP_MIN	</td>
+                                                <td>コンテナー・インスタンスの最小数。 デフォルト値は 1 です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-gx|--max] SERVER_CONTAINER_GROUP_MAX	</td>
-                                                <td>コンテナー・インスタンスの最大数。デフォルト値は 1 です。</td>
+                                                <td>オプション。 [-gx|--max] SERVER_CONTAINER_GROUP_MAX	</td>
+                                                <td>コンテナー・インスタンスの最大数。 デフォルト値は 1 です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED	</td>
-                                                <td>コンテナー・インスタンスの希望数。デフォルト値は 2 です。</td>
+                                                <td>オプション。 [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED	</td>
+                                                <td>コンテナー・インスタンスの希望数。 デフォルト値は 2 です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-a|--auto] ENABLE_AUTORECOVERY	</td>
-                                                <td>コンテナー・インスタンスの自動リカバリー・オプションを使用可能にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>オプション。 [-a|--auto] ENABLE_AUTORECOVERY	</td>
+                                                <td>コンテナー・インスタンスの自動リカバリー・オプションを使用可能にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
 
                                             <tr>
-                                                <td>オプション。[-si|--services] SERVICES	</td>
-                                                <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス名。</td>
+                                                <td>オプション。 [-si|--services] SERVICES	</td>
+                                                <td>コンテナーにバインドする、コンマ区切りの IBM Cloud サービス・インスタンス名。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-tr|--trace] TRACE_SPEC	</td>
-                                                <td>適用されるトレース仕様。デフォルトは <code>*=info</code> です。</td>
+                                                <td>オプション。 [-tr|--trace] TRACE_SPEC	</td>
+                                                <td>適用されるトレース仕様。 デフォルトは <code>*=info</code> です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ml|--maxlog] MAX_LOG_FILES	</td>
-                                                <td>上書きされるまで維持するログ・ファイルの最大数。デフォルトは 5 ファイルです。</td>
+                                                <td>オプション。 [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                                <td>上書きされるまで維持するログ・ファイルの最大数。 デフォルトは 5 ファイルです。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                                <td>ログ・ファイルの最大サイズ。デフォルトのサイズは 20 MB です。</td>
+                                                <td>オプション。 [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                                <td>ログ・ファイルの最大サイズ。 デフォルトのサイズは 20 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
+                                                <td>オプション。 [-e|--env] MFPF_PROPERTIES	</td>
+                                                <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。 例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
                                                 <b>注:</b> このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-m|--memory] SERVER_MEM	</td>
-                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
+                                                <td>オプション。 [-m|--memory] SERVER_MEM	</td>
+                                                <td>コンテナーに対して、メモリー・サイズ制限をメガバイト (MB) 単位で割り当てます。 許容値は、1024 MB (デフォルト) および 2048 MB です。</td>
                                             </tr>
                                             <tr>
-                                                <td>オプション。[-v|--volume] ENABLE_VOLUME	</td>
-                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
+                                                <td>オプション。 [-v|--volume] ENABLE_VOLUME	</td>
+                                                <td>コンテナー・ログ用のボリュームのマウントを有効にします。 許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
                                         </table>
 
@@ -1479,23 +1482,23 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
     </div>
 </div>
 
-> **注:** 何らかの構成変更が行われた後は、コンテナーを再始動する必要があります (`cf ic restart containerId`)。コンテナー・グループの場合は、グループ内の各コンテナー・インスタンスを再始動する必要があります。例えば、ルート証明書を変更する場合、新規の証明書が追加された後で、各コンテナー・インスタンスを再始動する必要があります。
+> **注:** 何らかの構成変更が行われた後は、コンテナーを再始動する必要があります (`cf ic restart containerId`)。 コンテナー・グループの場合は、グループ内の各コンテナー・インスタンスを再始動する必要があります。 例えば、ルート証明書を変更する場合、新規の証明書が追加された後で、各コンテナー・インスタンスを再始動する必要があります。
 
 次の URL をロードして {{ site.data.keys.mf_console }} を起動します。http://MF\_CONTAINER\_HOST/mfpconsole (しばらく時間がかかる場合があります)。  
 [{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)チュートリアルの指示に従って、リモート・サーバーを追加します。  
 
-これで、IBM Bluemix で実行中の {{ site.data.keys.mf_server }} を使用して、アプリケーション開発を始めることができます。{{ site.data.keys.product }} [チュートリアルを確認してください。](../../all-tutorials)
+これで、IBM Cloud で実行中の {{ site.data.keys.mf_server }} を使用して、アプリケーション開発を始めることができます。 {{ site.data.keys.product }} [チュートリアルを確認してください。](../../all-tutorials)
 
 #### ポート番号に関する制約
 {: #port-number-limitation }
-現在、IBM Containers には、パブリック・ドメインに使用可能なポート番号に関して制約があります。そのため、{{ site.data.keys.mf_analytics }} コンテナーと {{ site.data.keys.mf_server }} コンテナーに指定されたデフォルトのポート番号 (HTTP の場合は 9080、HTTPS の場合は 9443) を変更することはできません。コンテナー・グループ内のコンテナーは、HTTP ポート 9080 を使用する必要があります。コンテナー・グループでは、複数のポート番号および  HTTPS 要求の使用はサポートされません。
+現在、IBM Containers には、パブリック・ドメインに使用可能なポート番号に関して制約があります。 そのため、{{ site.data.keys.mf_analytics }} コンテナーと {{ site.data.keys.mf_server }} コンテナーに指定されたデフォルトのポート番号 (HTTP の場合は 9080、HTTPS の場合は 9443) を変更することはできません。 コンテナー・グループ内のコンテナーは、HTTP ポート 9080 を使用する必要があります。 コンテナー・グループでは、複数のポート番号および  HTTPS 要求の使用はサポートされません。
 
 
 ## {{ site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
 
 IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
-暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは次のフォルダー内にあります。
+暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。 構成ファイルは次のフォルダー内にあります。
 * {{ site.data.keys.mf_analytics }}: **package_root/mfpf-analytics/usr**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry アプリケーション: **package_root/mfpf-server/usr**
 * {{ site.data.keys.mf_app_center_short }}: **package_root/mfp-appcenter/usr**
@@ -1516,29 +1519,29 @@ IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM 
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Bluemix からのコンテナーの削除
+## IBM Cloud からのコンテナーの削除
 {: #removing-a-container-from-bluemix }
-Bluemix からコンテナーを削除する場合、レジストリーからイメージ名も削除する必要があります。  
-次のコマンドを実行して、Bluemix からコンテナーを削除します。
+IBM Cloud からコンテナーを削除する場合、レジストリーからイメージ名も削除する必要があります。  
+次のコマンドを実行して、IBM Cloud からコンテナーを削除します。
 
 1. `cf ic ps` (現在実行中のコンテナーをリストします)
 2. `cf ic stop container_id` (コンテナーを停止します)
 3. `cf ic rm container_id` (コンテナーを削除します)
 
-以下の cf ic コマンドを実行して、Bluemix レジストリーからイメージ名を削除します。
+以下の cf ic コマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 
 1. `cf ic images` (レジストリー内のイメージをリストします)
 2. `cf ic rmi image_id` (レジストリーからイメージを削除します)
 
-## Bluemix からのデータベース・サービス構成の削除
+## IBM Cloud からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-bluemix }
-{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
+{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
-Bluemix からデータベース・サービス構成を削除するには、Bluemix ダッシュボードを使用して、以下の手順を実行します。
+IBM Cloud からデータベース・サービス構成を削除するには、IBM Cloud ダッシュボードを使用して、以下の手順を実行します。
 
-1. Bluemix ダッシュボードから、使用した dashDB サービスを選択します。**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定した dashDB サービス名を選択します。
+1. IBM Cloud ダッシュボードから、使用した dashDB サービスを選択します。 **prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定した dashDB サービス名を選択します。
 2. 選択した dashDB サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、dashDB コンソールを「起動」します。
-3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
-4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。Bluemix からデータベース構成が削除されます。
+3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。 スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
+4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。 IBM Cloud からデータベース構成が削除されます。
 
-同様に、{{ site.data.keys.mf_app_center }} の構成中に **prepareappcenterdbs.sh** を実行した場合、上のステップに従って、Bluemix でデータベース・サービス構成を削除します。
+同様に、{{ site.data.keys.mf_app_center }} の構成中に **prepareappcenterdbs.sh** を実行した場合、上のステップに従って、IBM Cloud でデータベース・サービス構成を削除します。

@@ -4,9 +4,9 @@ title: 来自 Xamarin 应用程序的资源请求
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 downloads:
-  - name: 下载 Xamarin 项目
+  - name: Download Xamarin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
@@ -34,7 +34,7 @@ WorklightResourceRequest request = WorklightClient.CreateInstance.ResourceReques
 ```
 
 * 对于 **JavaScript 适配器**，请使用 `/adapters/{AdapterName}/{procedureName}`
-* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。`path` 取决于您如何在 Java 代码中定义 `@Path` 注释。这也将包含您使用的任何 `@PathParam`。
+* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。 `path` 取决于您如何在 Java 代码中定义 `@Path` 注释。 这也将包含您使用的任何 `@PathParam`。
 * 要访问项目外面的资源，请根据外部服务器的需求使用完整 URL。
 * **超时**：可选，请求超时（毫秒）
 * **作用域**：可选，如果您知道哪个作用域将保护资源 - 指定此作用域可以使请求更高效。
@@ -49,7 +49,7 @@ WorklightResponse response = await request.send();
 
 使用 `WorklightResponse response` 对象获取从适配器检索的数据。
 
-`response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。常用属性包括：`ResponseText`、`ResponseJSON`（如果以 JSON 格式响应）、`Success`（调用成功还是失败）和 `HTTPStatus`（响应的 HTTP 状态）。
+`response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。 常用属性包括：`ResponseText`、`ResponseJSON`（如果以 JSON 格式响应）、`Success`（调用成功还是失败）和 `HTTPStatus`（响应的 HTTP 状态）。
 
 ## 参数
 {: #parameters }
@@ -75,7 +75,7 @@ request.SetQueryParameter("param2","value2");
 
 #### JavaScript 适配器
 {: #javascript-adapters-query }
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 ```cs
 request.SetQueryParameter("params","['value1', 'value2']");
@@ -95,7 +95,7 @@ request.Send(formParams);
 
 #### JavaScript 适配器
 {: #javascript-adapters-form }
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 ```cs
 formParams.Add("params","['value1', 'value2']");
@@ -123,7 +123,7 @@ request.AddHeader(headerCollection);
 
 ## 响应
 {: #the-response }
-`WorklightResponse` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。常用属性包括：`ResponseText`（字符串）、`ResponseJSON` (JSONObject)（如果以 JSON 格式响应）和 `success`（布尔）（响应的成功状态）。
+`WorklightResponse` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。 常用属性包括：`ResponseText`（字符串）、`ResponseJSON` (JSONObject)（如果以 JSON 格式响应）和 `success`（布尔）（响应的成功状态）。
 
 在请求失败的情况下，response 对象还包含 `error` 属性。
 

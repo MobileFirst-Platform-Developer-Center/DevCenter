@@ -8,14 +8,14 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-[Cordova (PhoneGap) 開発](https://cordova.apache.org/)を始めるために、ごく基本的で必要なステップとして、Cordova CLI をインストールします。Cordova CLI は、Cordova アプリケーションの作成を可能にするツールです。これらのアプリケーションは、サード・パーティーの各種フレームワークおよびツール (Ionic、AngularJS、jQuery Mobile、その他多数) を使用してさらに拡張することができます。
+[Cordova (PhoneGap) 開発](https://cordova.apache.org/)を始めるために、ごく基本的で必要なステップとして、Cordova CLI をインストールします。 Cordova CLI は、Cordova アプリケーションの作成を可能にするツールです。 これらのアプリケーションは、サード・パーティーの各種フレームワークおよびツール (Ionic、AngularJS、jQuery Mobile、その他多数) を使用してさらに拡張することができます。 
 Cordova アプリケーションでは、アプリケーションおよびアダプターの実装には、任意のコード・エディター (Atom.io、Visual Studio Code、Eclipse、IntelliJ、その他) を使用できます。
 
 **前提条件:** Cordova 開発環境をセットアップする際には、[{{ site.data.keys.product_adj }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
 
 ## Cordova CLI のインストール
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} は、Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) をサポートします。  
+{{ site.data.keys.product }} は、Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 以降をサポートします。  
 インストールするには、以下のようにします。
 
 1. [NodeJS](https://nodejs.org/en/) をダウンロードしてインストールします。

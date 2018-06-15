@@ -33,7 +33,7 @@ Se estiver usando [{{ site.data.keys.mf_dev_kit }}](../../installation-configura
 ### 2. Criando um aplicativo
 {: #2-creating-an-application }
 Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL: `http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
- 
+
 1. Clique no botão **Novo** próximo de **Aplicativos**
     * Selecione a plataforma **Android**
     * Insira **com.ibm.mfpstarterandroid** como o **identificador do aplicativo**
@@ -41,7 +41,7 @@ Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a UR
     * Clique em **Registrar aplicativo**
 
     <img class="gifplayer" alt="Registre um aplicativo" src="register-an-application-android.png"/>
- 
+
 2. Clique no quadro **Obter Código de Início** e selecione para fazer download do aplicativo de amostra Android.
 
     <img class="gifplayer" alt="Faça o download do aplicativo de amostra" src="download-starter-code-android.png"/>
@@ -59,7 +59,7 @@ Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a UR
   import java.net.URISyntaxException;
   import android.util.Log;
   ```
-    
+
 * Cole o fragmento de código a seguir, substituindo a chamada para `WLAuthorizationManager.getInstance().obtainAccessToken`:
 
   ```java
@@ -83,7 +83,7 @@ Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a UR
                     }
 
                     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-                    
+
                     request.setQueryParameter("name","world");
                     request.send(new WLResponseListener() {
                         @Override
@@ -118,7 +118,7 @@ Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a UR
 Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
 
 Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.  
-        
+
 1. Selecione a opção **Ações → Download de Amostra**. Faça o download da amostra do adaptador **Java** "Hello World".
 
    > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de desenvolvimento** na tela.
@@ -130,7 +130,7 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
    ```
 
 3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
-    
+
     <img class="gifplayer" alt="Implemente um adaptador" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="aplicativo de amostra" style="float:right"/>
@@ -139,11 +139,11 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 
 1. No Android Studio, no menu da barra lateral **Projeto**, selecione o arquivo **app → src → main →assets → mfpclient.properties** e edite as propriedades **protocol**, **host** e **port** com os valores corretos para seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**, **localhost** e **9080**.
-    * Se estiver usando um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
-**https**, **your-server-address** e **443**.
+    * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
+    * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.
 
     Como alternativa, se você tiver instalado {{ site.data.keys.mf_cli }}, navegue para a pasta raiz do projeto e execute o comando
-`mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado, [execute o comando `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor, seguido por, por exemplo: `mfpdev app register myBluemixServer`.
+`mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado, [execute o comando `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor, seguido por, por exemplo: `mfpdev app register myIBMCloudServer`.
 
 2. Clique no botão **Executar Aplicativo**.  
 
@@ -156,7 +156,7 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 
 A resposta do adaptador será impressa na visualização LogCat do Android Studio.
 
-![Imagem do aplicativo que chamou um recurso do {{ site.data.keys.mf_server }}](success_response.png) com sucesso
+![Imagem de um aplicativo que chamou com sucesso um recurso do {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Etapas Seguintes
 {: #next-steps }

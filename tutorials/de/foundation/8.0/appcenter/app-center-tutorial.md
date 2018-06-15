@@ -1,8 +1,9 @@
 ---
 layout: tutorial
 title: Mobile Anwendungen über das IBM Application Center verteilen
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -24,6 +25,8 @@ und unterstützt **iOS**-, **Android**-, **BlackBerry-6/7**- und
 für die Übergabe von iOS-Apps an einen Store oder für die Validierung von iOS-Apps mit Test Flight oder iTunes Connect generiert werden,
 können zu Laufzeitfehlern oder zu einem Laufzeitabsturz führen.
 Weitere Informationen hierzu finden Sie im Blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
+
+
 Sie können das Application Center in verschiedenen Kontexten verwenden. Beispiel: 
 
 * Unternehmens-App-Store für eine Organisation
@@ -69,12 +72,16 @@ an die Geräte selbst signierte Zertifikate einer Zertifizierungsstelle verteilt
 
     > Weitere Informationen finden Sie unter [Application Center nach der Installation konfigurieren](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
+
+
 5. Erstellen Sie den mobilen Client für Android, iOS, BlackBerry 6/7 und Windows Phone 8. 
 
 Der mobile Client ist die mobile Anwendung, die Sie zum Anzeigen des Katalogs und zum Installieren der Anwendung verwenden. 
 
 > **Hinweis:** Für eine Produktionsinstallation sollten Sie das Application Center mit bereitgestellten Ant-Tasks installieren, damit Sie
 den Server unabhängig vom Application Center aktualisieren können.
+
+
 
 ## Cordova-basierter IBM Application-Center-Client
 {: #cordova-based-ibm-appcenter-client }
@@ -121,6 +128,8 @@ Ihres konkreten Unternehmens aktualisieren.
 
 > **Hinweis:** Es steht Ihnen frei, die Benutzerschnittstelle und das Verhalten der Anwendung anzupassen. Solche Änderungen sind jedoch nicht vom IBM Unterstützungsvertrag abgedeckt.
 
+
+
 #### Android
 {: #android }
 * Öffnen Sie Android Studio.
@@ -130,6 +139,8 @@ Ihres konkreten Unternehmens aktualisieren.
 Dies kann eine Weile dauern. Sobald dieser Schritt abgeschlossen ist, können Sie mit der Anpassung beginnen. 
 
 > **Hinweis:** Wählen Sie im Popup-Fenster aus, dass Sie das Upgrade für die Gradle-Version überspringen möchten. Informationen zur Version finden Sie in `grade-wrapper.properties`.
+
+
 
 #### iOS
 {: #ios }
@@ -144,6 +155,8 @@ Der mobile Client wird als kompilierte Anwendung (APK) unter **Installationsverz
 
 > **Hinweis:** Wenn Sie das Cordova-Framework für die Erstellung des Android- und iOS-Application-Center-Clients verwenden, lesen Sie die Informationen
 unter [Cordova-basierter IBM Application-Center-Client](#cordova-based-ibm-appcenter-client).
+
+
 
 ### iPad und iPhone
 {: #for-ipad-and-iphone }
@@ -160,6 +173,8 @@ iPhone-Ordner klicken und **Ausführen als → Xcode-Projekt** auswählen. Diese
 
 > **Hinweis:** Wenn Sie das Cordova-Framework für die Erstellung des Android- und iOS-Application-Center-Clients verwenden, lesen Sie die Informationen
 unter [Cordova-basierter IBM Application-Center-Client](#cordova-based-ibm-appcenter-client).
+
+
 
 ### BlackBerry
 {: #for-blackberry }
@@ -183,13 +198,19 @@ Das Application Center verwaltet nur Unternehmensanwendungen, die mit dem Untern
 > Weitere Informationen zu Unternehmenskonten und Registrierungstoken finden Sie
 auf der Microsoft-Website für Entwickler auf der Seite [Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).
 
+
+
 > Weitere Informationen zum Signieren von mobilen Windows-Phone-Clientanwendungen finden Sie auf der
 [Microsoft-Website für Entwickler](http://dev.windows.com/en-us/develop).
+
+
 
 <br/>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:**  Sie
 können die nicht signierte `.xap`-Datei **nicht** direkt verwenden. Bevor Sie die Datei auf einem Gerät installieren, müssen Sie sie mit Ihrem Unternehmenszertifikat, das Sie von Symantec oder Microsoft erhalten haben, signieren.
+
+
 
 ### Windows-Store-Apps für Windows 8.1 Pro
 {: #for-windows-store-apps-for-windows-81-pro }
@@ -206,7 +227,7 @@ Weitere Informationen finden Sie unter ) beschriebenen Voraussetzungen erfüllen
 
 ## Anwendungen in der Application-Center-Konsole verwalten
 {: #managing-applications-in-the-application-center-console }
-![Anwendungsverwaltung im Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Anwendungsmanagement im Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
 
 Verwenden Sie die Application-Center-Konsole, um Anwendungen im Katalog mit folgenden Aktionen zu verwalten: 
 
@@ -232,14 +253,13 @@ Gehen Sie wie folgt vor, um neue Anwendungen zum Store hinzuzufügen:
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 
-* Klicken Sie auf
-**Next**.
+* Klicken Sie auf **Weiter**.
 
     In den Ansichten mit den Anwendungsdetails können Sie die Informationen zu der neuen Anwendung überprüfen und weitere Informationen eingeben, z. B. eine Beschreibung. Später können Sie zu dieser Ansicht für alle Anwendungen im Katalog zurückkehren. 
 
     ![Anzeige der Anwendungsdetails]({{ site.baseurl }}/assets/backup/appDetails1.png)
 
-* Klicken Sie auf **Done**, um die Aufgabe abzuschließen. 
+* Klicken Sie auf **Fertig**, um die Aufgabe abzuschließen. 
 
 Die neue Anwendung wird zum Store hinzugefügt. 
 
@@ -271,11 +291,10 @@ Der mobile Application-Center-Client ist eine mobile Anwendung für die Verwaltu
 Sie müssen den mobilen Application-Center-Client zum Katalog hinzufügen. 
 
 1. Öffnen Sie die Application-Center-Konsole. 
-2. Klicken Sie auf die Schaltfläche **Anwendung hinzufügen**,
-um die Datei `.apk`, `.ipa`, `.zip` oder `.xap` des mobilen Clients hinzuzufügen. 
-3. Klicken Sie auf **Weiter**, um die Seite mit den Anwendungsdetails zu öffnen. 
-4. Wählen Sie auf der Seite mit den Anwendungsdetails **Installationsprogramm** aus, um anzugeben, dass diese Anwendung ein mobiler Client ist. 
-5. Klicken Sie auf **Fertig**, um die Application-Center-App zum Katalog hinzuzufügen. 
+2. Klicken Sie auf die Schaltfläche **Anwendung hinzufügen**, um die Datei `.apk`, `.ipa`, `.zip` oder `.xap` des mobilen Clients hinzuzufügen. 
+3. Klicken Sie auf **Weiter**, um die Seite mit den Anwendungsdetails zu öffnen.
+4. Wählen Sie auf der Seite mit den Anwendungsdetails **Installationsprogramm** aus, um anzugeben, dass diese Anwendung ein mobiler Client ist.
+5. Klicken Sie auf **Fertig**, um die Application-Center-App zum Katalog hinzuzufügen.
 
 Der Application-Center-Client für Windows 8.1 Pro muss nicht zum Katalog hinzugefügt werden. Dieser Client ist ein reguläres Windows-Programm (`.exe`),
 das in der Datei **Installationsverzeichnis/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** enthalten ist. Sie können dieses Programm einfach auf den Clientcomputer kopieren. 
@@ -285,7 +304,7 @@ das in der Datei **Installationsverzeichnis/ApplicationCenter/installer/IBMAppli
 Unter Windows Phone 8 müssen Sie zusätzlich das Registrierungstoken, das Sie mit Ihrem Unternehmenskonto erhalten haben,
 in der Application-Center-Konsole installieren, damit Benutzer ihre Geräte registrieren können. Verwenden Sie die Seite mit den Application-Center-Einstellungen, die Sie über das Zahnradsymbol öffnen können. 
 
-![Registrierung einer Windows-Phone-8-App]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Registrierung von Windows-Phone-8-Apps]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
 Bevor Sie den mobilen Client installieren, müssen Sie das Gerät im Unternehmen registrieren, indem Sie das Registrierungstoken installieren: 
 

@@ -4,14 +4,14 @@ title: 在 Android 中处理推送通知
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-在 Android 应用程序处理已收到的任何推送通知之前，需要配置 Google Play Services 支持。在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在 Android 应用程序中处理推送通知。
+在 Android 应用程序处理已收到的任何推送通知之前，需要配置 Google Play Services 支持。 在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。 在本教程中，您将学会如何在 Android 应用程序中处理推送通知。
 
 **先决条件：**
 
@@ -41,7 +41,7 @@ weight: 6
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **注：**存在一个[已知的 Google 缺陷](https://code.google.com/p/android/issues/detail?id=212879)，此缺陷将阻止使用最新的 Play Services 版本（当前为 9.2.0）。请使用较低的版本。
+   - **注：**存在一个[已知的 Google 缺陷](https://code.google.com/p/android/issues/detail?id=212879)，此缺陷将阻止使用最新的 Play Services 版本（当前为 9.2.0）。 请使用较低的版本。
 
    以及：
 
@@ -104,7 +104,7 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-
+      
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -124,7 +124,7 @@ weight: 6
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。  为此，需要创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.getInstance().<api_call>`。
 
@@ -133,6 +133,7 @@ weight: 6
 如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/android)教程中了解有关验证问题处理程序的更多信息。
+
 ### 客户端
 {: #client-side }
 
@@ -186,8 +187,8 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
     @Override
     public void onFailure(MFPPushException e) {
         // Registration failed with error
-    }
-});
+     }
+ });
 ```
 
 #### 获取标记
@@ -287,7 +288,7 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
 ## 处理推送通知
 {: #handling-a-push-notification }
-要处理推送通知，需要设置 `MFPPushNotificationListener`。可实现以下某种方法来执行此操作。
+要处理推送通知，需要设置 `MFPPushNotificationListener`。  可实现以下某种方法来执行此操作。
 
 ### 选项 1
 {: #option-one }
@@ -299,8 +300,8 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
    ```java
    @Override
-   public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
-        // Handle push notification here
+    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
+        // Handle push notification here      
    }
    ```
 

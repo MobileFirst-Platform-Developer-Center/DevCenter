@@ -27,7 +27,7 @@ Sie können eine der folgenden Methoden anwenden, um den Richtlinienanforderunge
 über einen Anwendungsserver (WebSphere Full/Liberty Profile) bereit, der auch {{ site.data.keys.mf_server }} bereitstellt. 
 - Verwenden Sie Node.js als Proxy, um Anwendungsanforderungen an {{ site.data.keys.mf_server }} weiterzuleiten.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 - [Voraussetzungen](#prerequisites)
 - [Webanwendungsressourcen mit WebSphere Liberty Profile bereitstellen](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
@@ -39,7 +39,7 @@ Sie können eine der folgenden Methoden anwenden, um den Richtlinienanforderunge
 -   {: #web-app-supported-browsers }
     Für Webanwendungen werden die folgenden Browserversionen unterstützt. Die Versionsnummern geben die älteste Version des jeweiligen Browsers mit Unterstützung für Webanwendungen an. 
 
-    | Browser               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android-Browser   |
+    | Browser| Chrome| Safari<sup>*</sup>   | Internet Explorer| Firefox| Android-Browser|
     |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
     | **Unterstützte Version** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
 
@@ -78,6 +78,8 @@ Die Webanwendungsressourcen müssen für ihre Bereitstellung in einer Maven-Weba
    Die generierte WAR-Datei finden Sie im Ordner **[MyWebApp] → target**.
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Sie müssen `mvn clean install` jedes Mal ausführen, wenn Sie eine Webressource aktualisieren.
+
+
 
 ### Maven-Webanwendung zum Anwendungsserver hinzufügen
 {: #adding-the-maven-webapp-to-the-application-server }
@@ -156,5 +158,5 @@ muss das Web-SDK der {{ site.data.keys.product }} zu den Webanwendungen hinzugef
 
 * Informieren Sie sich darüber, wie das [SDK der {{ site.data.keys.product }}
 zu Webanwendungen hinzugefügt wird](../../../application-development/sdk/web/).
-* Informationen zur Anwendungsentwicklung enthalten die Lernprogramme unter [SDK der {{ site.data.keys.product }} verwenden](../../../application-development/). 
-* Informationen zur Adapterentwicklung findne Sie in der Kategorie [Adapter](../../../adapters/). 
+* Informationen zur Anwendungsentwicklung enthalten die Lernprogramme unter [SDK der {{ site.data.keys.product }} verwenden](../../../application-development/).
+* Informationen zur Adapterentwicklung findne Sie in der Kategorie [Adapter](../../../adapters/).

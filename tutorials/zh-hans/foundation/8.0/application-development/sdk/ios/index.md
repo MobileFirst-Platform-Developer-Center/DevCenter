@@ -163,7 +163,7 @@ pod 与核心函数和其他函数对应：
 >
 > 1. 装入 {{ site.data.keys.mf_console }}。
 > 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
-> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.plist** 文件。 遵循屏幕上的指示信息将此文件添加到您的项目。
+> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.plist** 文件。 遵循屏幕上指示信息将此文件添加到您的项目。
 
 ### 完成设置过程
 {: #completing-the-setup-process }
@@ -248,7 +248,7 @@ pod update
 的通信协议。             | http 或 https  |
 | host        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
 | port        | {{ site.data.keys.mf_server }} 的端口。                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。| /mfp/          |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 
 ## 位码和 TLS 1.2

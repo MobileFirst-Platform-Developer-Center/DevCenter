@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administración de aplicaciones a través de Ant
-breadcrumb_title: Administración con Ant
+breadcrumb_title: Administrating using Ant
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -172,7 +172,7 @@ Utilice los siguientes elementos en llamadas de **mfpadm**:
 
 #### Formato XML
 {: #xml-format }
-La salida de la mayoría de los mandatos es en XML, y la entrada para mandatos específicos, como por ejemplo `<set-accessrule>`, también es XML. Puede encontrar los esquemas XML de estos formatos XML en el directorio **dir\_instalacion\_producto/MobileFirstServer/mfpadm-schemas/**. Los mandatos que reciben una respuesta XML del servidor verifican que dicha respuesta cumpla el esquema especifico. Puede inhabilitar esta comprobación especificando el atributo **xmlvalidation="none"**. 
+La salida de la mayoría de los mandatos es en XML, y la entrada para mandatos específicos, como por ejemplo `<set-accessrule>`, también está en XML. Puede encontrar los esquemas XML de estos formatos XML en el directorio **dir\_instalacion\_producto/MobileFirstServer/mfpadm-schemas/**. Los mandatos que reciben una respuesta XML del servidor verifican que dicha respuesta cumpla el esquema especifico. Puede inhabilitar esta comprobación especificando el atributo **xmlvalidation="none"**. 
 
 #### Conjunto de caracteres de salida
 {: #output-character-set }
@@ -434,7 +434,7 @@ Este mandato se basa en el servicio REST [Adapter (GET)](http://www.ibm.com/supp
 <br/>
 #### Mandato `show-user-config`
 {: #the-show-user-config-command-1 }
-El mandato `show-user-config`, dentro de un elemento `<adapter>`, muestra la configuración del adaptador. Tiene los siguientes atributos.
+El mandato `show-user-config`, dentro de un elemento `<adapter>`, muestra la configuración de usuario del adaptador. Tiene los siguientes atributos.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -455,7 +455,7 @@ Este mandato se basa en el servicio REST [Adapter Configuration (GET)](http://ww
 <br/>
 #### Mandato `set-user-config`
 {: #the-set-user-config-command-1 }
-El mandato `set-user-config`, dentro de un elemento `<adapter>`, especifica la configuración del adaptador. Tiene los siguientes atributos para configurar toda la configuración.
+El mandato `set-user-config`, dentro de un elemento `<adapter>`, especifica la configuración de usuario del adaptador. Tiene los siguientes atributos para configurar toda la configuración.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -703,7 +703,7 @@ El mandato `app-version` da soporte a los siguientes elementos:
 <br/>
 #### Mandato `get-descriptor`
 {: #the-get-descriptor-command }
-El mandato `get-descriptor`, dentro de un elemento `<app-version>`, devuelve el descriptor de aplicación de la versión de una aplicación. Tiene los siguientes atributos.
+El mandato `get-descriptor`, dentro de un elemento `<app-version>`, devuelve el descriptor de aplicación de una versión de una aplicación. Tiene los siguientes atributos.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -827,7 +827,7 @@ Este mandato se basa en el servicio REST [Application Authenticity (DELETE)](htt
 <br/>
 #### Mandato `show-user-config`
 {: #the-show-user-config-command-2 }
-El mandato `show-user-config`, dentro de un elemento `<app-version>`, muestra la configuración de usuario de una versión de una aplicación. Tiene los siguientes atributos.
+El mandato `show-user-config`, dentro de un elemento `<app-version>`, muestra la configuración de una versión de una aplicación. Tiene los siguientes atributos.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -854,7 +854,7 @@ Este mandato se basa en el servicio REST [Application Configuration (GET)](http:
 <br/>
 #### Mandato `set-user-config`
 {: #the-set-user-config-command-2 }
-El mandato `set-user-config`, dentro de un elemento `<app-version>`, especifica la configuración de usuario para una versión de una aplicación. Tiene los siguientes atributos para configurar toda la configuración.
+El mandato `set-user-config`, dentro de un elemento `<app-version>`, especifica la configuración de usuario de una versión de una aplicación. Tiene los siguientes atributos para configurar toda la configuración.
 
 | Atributo      | Descripción |	Obligatorio | Predeterminado |
 |----------------|-------------|-------------|---------|
@@ -1019,7 +1019,7 @@ El mandato `show-info` muestra información básica sobre los servicios de admin
 {: #the-show-versions-command }
 El mandato `show-versions` visualiza versiones de {{ site.data.keys.product_adj }} de varios componentes:
 
-* **mfpadmVersion**: Número de versión de {{ site.data.keys.mf_server }} exacto que se toma del archivo *mfp-ant-deployer.jar*.
+* **mfpadmVersion**: Número de versión de {{ site.data.keys.mf_server }} exacto del que se toma el archivo **mfp-ant-deployer.jar**.
 * **productVersion**: Número de versión de {{ site.data.keys.mf_server }} exacto que se toma del archivo **mfp-admin-service.war**.
 * **mfpAdminVersion**: Número de versión de construcción exacto de sólo **mfp-admin-service.war**.
 

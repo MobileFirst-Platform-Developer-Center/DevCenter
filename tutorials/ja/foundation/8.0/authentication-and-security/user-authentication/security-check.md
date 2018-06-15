@@ -1,17 +1,17 @@
 ---
 layout: tutorial
 title: UserAuthenticationSecurityCheck クラスの実装
-breadcrumb_title: セキュリティー検査
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: セキュリティー検査のダウンロード
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-この抽象クラスは、`CredentialsValidationSecurityCheck` を継承し、それを元にして、単純なユーザー認証の一般的なユース・ケースに適合するように構成されます。資格情報を検証することに加えて、フレームワークのさまざまな部分からアクセス可能な**ユーザー ID** の作成も行います。それによって、現行ユーザーの識別が可能になります。オプションで、`UserAuthenticationSecurityCheck` は**ユーザー記憶 (Remember Me)** 機能も提供します。
+この抽象クラスは、`CredentialsValidationSecurityCheck` を継承し、それを元にして、単純なユーザー認証の一般的なユース・ケースに適合するように構成されます。 資格情報を検証することに加えて、フレームワークのさまざまな部分からアクセス可能な**ユーザー ID** の作成も行います。それによって、現行ユーザーの識別が可能になります。 オプションで、`UserAuthenticationSecurityCheck` は**ユーザー記憶 (Remember Me)** 機能も提供します。
 
 このチュートリアルでは、ユーザー名とパスワードを要求し、そのユーザー名を使用して認証済みユーザーを表すセキュリティー検査の例を使用します。
 
@@ -35,7 +35,7 @@ downloads:
 public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
-    protected AuthenticatedUser createUser() {
+   protected AuthenticatedUser createUser() {
         return null;
     }
 
@@ -67,18 +67,18 @@ protected Map<String, Object> createChallenge() {
 
 ## ユーザー資格情報の検証
 {: #validating-the-user-credentials }
-クライアントがチャレンジ応答を送信すると、応答は `Map` として `validateCredentials` に渡されます。このメソッドを使用して、ロジックを実装してください。このメソッドは、資格情報が有効な場合に `true` を返します。
+クライアントがチャレンジ応答を送信すると、応答は `Map` として `validateCredentials` に渡されます。 このメソッドを使用して、ロジックを実装してください。 このメソッドは、資格情報が有効な場合に `true` を返します。
 
 この例では、`username` と `password` が同じ場合、資格情報を「有効」と見なします。
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+    if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-                return true;
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
+            return true;
         }
         else {
             errorMsg = "Wrong Credentials";
@@ -94,7 +94,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ## AuthenticatedUser オブジェクトの作成
 {: #creating-the-authenticateduser-object }
 `UserAuthenticationSecurityCheck` クラスは、現行クライアント (ユーザー、デバイス、アプリケーション) を表現するものを永続データに保管し、コードのさまざまな部分 (チャレンジ・ハンドラー、アダプターなど) で現行ユーザーを取得できるようにします。
-ユーザーは、クラス `AuthenticatedUser` のインスタンスとして表現されます。そのコンストラクターは、`id`、`displayName`、および `securityCheckName` の各パラメーターを受け入れます。
+ユーザーは、クラス `AuthenticatedUser` のインスタンスとして表現されます。 そのコンストラクターは、`id`、`displayName`、および `securityCheckName` の各パラメーターを受け入れます。
 
 この例では、`id` パラメーターと `displayName` パラメーターの両方に `username` を使用します。
 
@@ -105,10 +105,10 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
                 return true;
@@ -145,18 +145,18 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
 ```
 
-このコンストラクターは、ユーザー表現と一緒に保管されるカスタム属性の `Map` を追加します。Map を使用して、プロファイル・ピクチャー、Web サイトなどの追加情報を保管できます。この情報は、クライアント・サイド (チャレンジ・ハンドラー) からも、リソースからも (イントロスペクション・データを使用して) アクセス可能です。
+このコンストラクターは、ユーザー表現と一緒に保管されるカスタム属性の `Map` を追加します。 Map を使用して、プロファイル・ピクチャー、Web サイトなどの追加情報を保管できます。この情報は、クライアント・サイド (チャレンジ・ハンドラー) からも、リソースからも (イントロスペクション・データを使用して) アクセス可能です。
 
 > **注:**
 > 属性 `Map` に含めることができるのは、Java ライブラリーにバンドルされている型/クラスのオブジェクト (例えば、`String`、`int`、`Map` など) に限定され、カスタム・クラスを含めることは**できません**。
 
 ## RememberMe 機能の追加
 {: #adding-rememberme-functionality }
-デフォルトで、`UserAuthenticationSecurityCheck` は `successStateExpirationSec` プロパティーを使用して、成功状態が持続する期間を判定します。このプロパティーは、`CredentialsValidationSecurityCheck` から継承されます。
+デフォルトで、`UserAuthenticationSecurityCheck` は `successStateExpirationSec` プロパティーを使用して、成功状態が持続する期間を判定します。 このプロパティーは、`CredentialsValidationSecurityCheck` から継承されます。
 
 `successStateExpirationSec` の値を過ぎた後もユーザーのログイン状態を許可する必要がある場合、`UserAuthenticationSecurityCheck` でこの機能を追加します。
 
-`UserAuthenticationSecurityCheck` は、`rememberMeDurationSec` というプロパティーを追加します。このデフォルト値は `0` です。すなわち、ユーザーが記憶される期間は **0 秒**であり、デフォルトでは、この機能は無効であることを意味します。この値をアプリケーションにとって妥当な数値 (1 日、1 週間、1 カ月など) に変更してください。
+`UserAuthenticationSecurityCheck` は、`rememberMeDurationSec` というプロパティーを追加します。このデフォルト値は `0` です。すなわち、ユーザーが記憶される期間は **0 秒**であり、デフォルトでは、この機能は無効であることを意味します。 この値をアプリケーションにとって妥当な数値 (1 日、1 週間、1 カ月など) に変更してください。
 
 また、`rememberCreatedUser()` メソッドをオーバーライドすることでこの機能を管理することもできます。このメソッドは、(期間プロパティーが変更されている場合) 機能がアクティブであることを意味する `true` をデフォルトで返します。
 
@@ -170,10 +170,10 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
 

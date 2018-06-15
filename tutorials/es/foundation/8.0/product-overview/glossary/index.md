@@ -282,7 +282,7 @@ Consulte también [aplicación de empresa](#company-application).
 ## J
 {: #j }
 
-### JMX /  Java Management Extensions (JMX)
+### JMX / Java Management Extensions (JMX)
 {: #jmx--java-management-extensions-jmx }
 Una forma de hacer gestión de y por medio de tecnología Java. JMX es una ampliación abierta y universal del lenguaje de programación Java para la gestión y se puede desplegar en todos los sectores en los que ésta sea necesaria.
 

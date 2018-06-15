@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: シナリオ・ローダー
-breadcrumb_title: シナリオ・ローダー
+breadcrumb_title: Scenario Loader
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
@@ -9,13 +9,13 @@ weight: 4
 ## 概説
 {: #overview }
 
-> **注:** シナリオ・ローダーは、その性質上、*試験的* であるため、完全にはサポートされていません。状況に応じて使用してください。
+> **注:** シナリオ・ローダーは、その性質上、*試験的* であるため、完全にはサポートされていません。 状況に応じて使用してください。
 >
 > * 一部のグラフには、データは取り込まれません。
 
-シナリオ・ローダーは、{{ site.data.keys.mf_analytics_console_full }}のさまざまなグラフおよびレポートにダミー・データを取り込みます。そのデータは、Elasticsearch データ・ストアに保管されており、既存のテスト・データまたは実働データから安全に分離されています。
+シナリオ・ローダーは、{{ site.data.keys.mf_analytics_console_full }}のさまざまなグラフおよびレポートにダミー・データを取り込みます。 そのデータは、Elasticsearch データ・ストアに保管されており、既存のテスト・データまたは実働データから安全に分離されています。
 
-ロードされるデータは、人工的な性質のものであり、データ・ストアに直接注入されます。クライアントやサーバーによって作成された実際の分析データの結果ではありません。このデータの目的は、UI に表示されるさまざまなレポートおよびグラフの性質を理解しやすくすることにあります。したがって、データをテストの目的で使用**しない**でください。
+ロードされるデータは、人工的な性質のものであり、データ・ストアに直接注入されます。 クライアントやサーバーによって作成された実際の分析データの結果ではありません。 このデータの目的は、UI に表示されるさまざまなレポートおよびグラフの性質を理解しやすくすることにあります。 したがって、データをテストの目的で使用**しない**でください。
 
 #### ジャンプ先
 {: #jump-to }
@@ -30,7 +30,7 @@ weight: 4
 ## 始める前に
 {: #before-you-start }
 
-シナリオ・ローダーは、{{ site.data.keys.mf_analytics_console }}と一緒にパッケージされています。シナリオ・ローダーに接続する前に、{{ site.data.keys.mf_analytics_console_short }}が実行されており、アクセス可能であることを確認してください。
+シナリオ・ローダーは、{{ site.data.keys.mf_analytics_console }}と一緒にパッケージされています。 シナリオ・ローダーに接続する前に、{{ site.data.keys.mf_analytics_console_short }}が実行されており、アクセス可能であることを確認してください。
 
 ## シナリオ・ローダーへの接続
 {: #connecting-to-the-scenario-loader }
@@ -41,7 +41,7 @@ weight: 4
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 
-3. 「シナリオ・ローダー (Scenario Loader)」ページが、{{ site.data.keys.mf_analytics_console_short }}のナビゲーション・バーと一緒に表示されます。シナリオ・ローダーはナビゲーション・バーからはアクセス不能なままです。
+3. 「シナリオ・ローダー (Scenario Loader)」ページが、{{ site.data.keys.mf_analytics_console_short }}のナビゲーション・バーと一緒に表示されます。 シナリオ・ローダーはナビゲーション・バーからはアクセス不能なままです。
 
 ## データ・ロードの構成
 {: #configuring-the-data-loading}
@@ -51,7 +51,7 @@ weight: 4
 
     これらの設定に関する情報はすべて、**「テスト構成 (Testing Configuration)」**セクションにあります。
 
-2. **「管理」**アイコン <img  alt="レンチのアイコン" style="margin:0;display:inline" src="wrench.png"/> をクリックし、**「設定」**タブを選択します。**「詳細設定」**セクションで、**「デフォルト・テナント」**の値が `dummy_data_for_demo_purposes_only` に設定されていることを確認してください。
+2. **「管理」**アイコン <img  alt="レンチのアイコン" style="margin:0;display:inline" src="wrench.png"/> をクリックし、**「設定」**タブを選択します。 **「詳細設定」**セクションで、**「デフォルト・テナント」**の値が `dummy_data_for_demo_purposes_only` に設定されていることを確認してください。
 
 ## データのロードおよび削除
 {: #loading-and-deleting-the-data }

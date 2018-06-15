@@ -25,6 +25,8 @@ During your next board meeting, you raise the issue, and the board decides to tr
 This move turns out to be successful, as your company starts seeing positive revenue growth from the in flight entertainment investment.
 
 With IBM MobileFirst Foundation 8.0 it is easy to enforce such policy, and you can even make aspects of the policy configurable, such as how many devices you allow one account to use, so you can adjust them dynamically, without having to publish a new version of the app. You can also decide what action to take if a user has reached the limit. Either block access on the current device, or force log-out from other devices.
+If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to use MobileFirst Foundation components such the Authorization Server to do this.
+
 Using embedded MobileFirst Foundation components such the Authorization Server, Security Framework, and Registration service will simplify your development process, and shorten the amount of code you need to write yourself.
 
 ## Running the sample

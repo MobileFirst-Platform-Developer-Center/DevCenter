@@ -1,18 +1,20 @@
 ---
-layout: tutorial
-title: 在 IBM Bluemix 上使用针对 IBM Containers 的脚本设置 MobileFirst Server
-breadcrumb_title: IBM Containers
-relevantTo: [ios,android,windows,javascript]
-weight: 2
+layout: redirect
+new_url: /404/
+#layout: tutorial
+#title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
+#breadcrumb_title: IBM Containers
+#relevantTo: [ios,android,windows,javascript]
+#weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-遵循以下指示信息在 IBM Bluemix 上配置 {{ site.data.keys.mf_server }} 实例和 {{ site.data.keys.mf_analytics }} 实例。 为此您需要完成以下步骤：
+遵循以下指示信息，以在 IBM Cloud 上配置 {{ site.data.keys.mf_server }} 实例以及 {{ site.data.keys.mf_analytics }} 实例。为此您需要完成以下步骤：
 
 * 使用所需工具（Cloud Foundry CLI、Docker 和 IBM Containers Extension (cf ic) 插件）设置主计算机
-* 设置 Bluemix 帐户
-* 构建 {{ site.data.keys.mf_server }} 映像并将其推送到 Bluemix 存储库。
+* 设置 IBM Cloud 帐户
+* 构建 {{ site.data.keys.mf_server }} 映像并将其推送到 IBM Cloud 存储库。
 
 最后，将在 IBM Containers 上运行映像作为单个容器或者作为一个容器组，注册应用程序和部署适配器。
 
@@ -23,22 +25,22 @@ weight: 2
 
 #### 跳转至：
 {: #jump-to }
-* [在 Bluemix 上注册帐户](#register-an-account-at-bluemix)
+* [在 IBM Cloud 上注册帐户](#register-an-account-at-bluemix)
 * [设置主机](#set-up-your-host-machine)
 * [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the-ibm-mfpf-container-8000-archive)
 * [先决条件](#prerequisites)
 * [在 IBM Containers 上设置 {{ site.data.keys.product_adj }} 和分析服务器](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 * [应用 {{ site.data.keys.mf_server }} 修订](#applying-mobilefirst-server-fixes)
-* [从 Bluemix 中除去容器](#removing-a-container-from-bluemix)
-* [从 Bluemix 中除去数据库服务配置](#removing-the-database-service-configuration-from-bluemix)
+* [从 IBM Cloud 中除去容器](#removing-a-container-from-bluemix)
+* [从 IBM Cloud 中除去数据库服务配置](#removing-the-database-service-configuration-from-bluemix)
 
-## 在 Bluemix 上注册帐户
+## 在 IBM Cloud 上注册帐户
 {: #register-an-account-at-bluemix }
-如果还没有帐户，请访问 [Bluemix Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。 您需要填写注册表单，然后才能进入下一步。
+如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
 
-### Bluemix 仪表板
+### IBM Cloud 仪表板
 {: #the-bluemix-dashboard }
-在登录 Bluemix 后，会显示 Bluemix 仪表板，其中提供了活动的 Bluemix **空间**的概述。 缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
+在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
@@ -80,7 +82,7 @@ weight: 2
 
 ## 下载 {{ site.data.keys.mf_bm_pkg_name }} 归档
 {: #download-the-ibm-mfpf-container-8000-archive}
-要对 IBM Containers 设置 {{ site.data.keys.product }}，必须首先创建一个映像，稍后将其推送至 Bluemix。  
+要对 IBM Containers 设置 {{ site.data.keys.product }}，必须首先创建一个映像，稍后将其推送至 IBM Cloud。  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">遵循本页面上的指示信息</a>下载 IBM Containers 归档的 {{ site.data.keys.mf_server }}（.zip 文件，搜索：*CNBL0EN*）。
 
 此归档文件包含用于构建映像的文件（**dependencies** 和 **mfpf-libs**），用于构建和部署 {{ site.data.keys.mf_analytics }} Container 的文件 (**mfpf-analytics**) 以及用于配置 {{ site.data.keys.mf_server }} Container 的文件 (**mfpf-server**)。
@@ -106,7 +108,7 @@ weight: 2
 
                 <ul>
                     <li><b>Dockerfile</b>：包含构建映像所需的所有命令的文本文档。</li>
-                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含登录 Bluemix、构建 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 映像和在 Bluemix 上推送与运行此映像时需要运行的脚本。 您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含运行的脚本，用于登录 IBM Cloud、构建 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 映像，以及在 IBM Cloud 上推送与运行此映像。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
                     <li><b>usr</b> 文件夹：
                         <ul>
                             <li><b>bin</b> 文件夹:包含将在容器启动时执行的脚本文件。 您可以添加自己的定制代码以执行这些代码。</li>
@@ -158,7 +160,8 @@ weight: 2
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration Services 在其中可用的上下文根。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration
+Services 在其中可用的上下文根。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
@@ -188,12 +191,14 @@ weight: 2
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_USER	</td>
                                             <td>WorklightRESTUser</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration Services 的 Liberty 服务器管理员用户。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration
+Services 的 Liberty 服务器管理员用户。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
                                             <td>mfpadmin。 确保在部署到生产环境之前将缺省值更改为专用密码。</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration Services 的 Liberty 服务器管理员用户的密码。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration
+Services 的 Liberty 服务器管理员用户的密码。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
@@ -269,11 +274,11 @@ weight: 2
 {: #prerequisites }
 在下一节中您将运行 IBM Containers 命令，因此以下步骤为强制性步骤。
 
-1. 登录 IBM Bluemix 环境。  
+1. 登录 IBM Cloud 环境。  
 
     运行：`cf login`。  
     出现提示时，输入以下信息：
-      * Bluemix API 端点
+      * IBM Cloud API 端点
       * 电子邮件
       * 密码
       * 组织（如果拥有多个组织）
@@ -282,10 +287,10 @@ weight: 2
 2. 要运行 IBM Containers 命令，必须首先登录 IBM Container 云服务。  
 运行：`cf ic login`。
 
-3. 确保已设置容器注册表的 `namespace`。 `namespace` 是用于识别 Bluemix 注册表上您的专用存储库的唯一名称。 仅限针对每个组织指定一次名称空间，名称空间无法更改。 根据以下规则选择名称空间：
+3. 确保已设置容器注册表的 `namespace`。 `namespace` 是用于识别 IBM Cloud 注册表上您的专用存储库的唯一名称。仅限针对每个组织指定一次名称空间，名称空间无法更改。 根据以下规则选择名称空间：
      * 只能包含小写字母、数字或下划线。
      * 名称可以为 4 到 30 个字符。 如果计划从命令行管理容器，那么您可能倾向于使用能够快速输入的简短名称空间。
-     * 必须在 Bluemix 注册表中唯一。
+     * 必须在 IBM Cloud 注册表中唯一。
 
     要设置名称空间，请运行命令：`cf ic namespace set <new_name>`.  
     要获取已设置的名称空间，请运行命令：`cf ic namespace get`。
@@ -321,10 +326,10 @@ weight: 2
             <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。 在以下文件中填充自变量值。<br/>
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Bluemix 用户名（电子邮件）。</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Bluemix 密码。</li>
-                  <li><b>BLUEMIX_ORG - </b>Bluemix 组织名称。</li>
-                  <li><b>BLUEMIX_SPACE - </b>Bluemix 空间（如上文所述）。</li>
+                  <li><b>IBM_CLOUD_USER - </b>IBM Cloud 用户名（电子邮件）。</li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>IBM Cloud 密码。</li>
+                  <li><b>IBM_CLOUD_ORG - </b>IBM Cloud 组织名称。</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>IBM Cloud 空间（如上文所述）。</li>
               </ul>
               <h4>prepareappcenterdbs.properties</h4>
               {{ site.data.keys.mf_app_center }} 需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional 数据库实例</a>（Enterprise Transactional 2.8.500 或 Enterprise Transactional 12.128.1400）。
@@ -344,16 +349,16 @@ weight: 2
               <h4>startappcenter.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>与 <em>prepareappcenter.sh</em> 中相同。</li>
-                  <li><b>SERVER_CONTAINER_NAME - </b>Bluemix container 的名称。</li>
-                  <li><b>SERVER_IP - </b>Bluemix container 应绑定到的 IP 地址。</li>
+                  <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud 容器的名称。</li>
+                  <li><b>SERVER_IP - </b>IBM Cloud 容器应绑定到的 IP 地址。</li>
                   <blockquote>要分配 IP 地址，请运行：<code>cf ic ip request</code>。
-                  可以在给定的 Bluemix 空间中的多个容器内复用 IP 地址。
+                  可以在给定的 IBM Cloud 空间中的多个容器内复用 IP 地址。
                   如果分配了 IP，可以运行：<code>cf ic ip list</code>。</blockquote>
               </ul>
               <h4>startappcentergroup.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>与 <em>prepareappcenter.sh</em> 中相同。</li>
-                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Bluemix container 组的名称。</li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>IBM Cloud 容器组的名称。</li>
                   <li><b>SERVER_CONTAINER_GROUP_HOST - </b>主机名。</li>
                   <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>域名。 缺省值为：<code>mybluemix.net</code>。</li>
               </ul>    
@@ -372,7 +377,7 @@ weight: 2
             <div class="panel-body">
                 <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
                 <ol>
-                    <li><b>initenv.sh - 登录 Bluemix </b><br />
+                    <li><b>initenv.sh - 登录 IBM Cloud</b><br />
                     运行 <b>initenv.sh</b> 脚本以创建环境，用于在 IBM Containers 上构建和运行 {{ site.data.keys.product }}：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -394,30 +399,30 @@ weight: 2
                                                 <td><b>描述</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix 用户标识或电子邮件地址</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>IBM Cloud 用户标识或电子邮件地址</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix 密码</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>IBM Cloud 密码</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix 组织名称</td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>IBM Cloud 组织名称</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix 空间名称</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>IBM Cloud 空间名称</td>
                                             </tr>
                                             <tr>
-                                                <td>可选。 [-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Bluemix API 端点。 （缺省端点为 https://api.ng.bluemix.net）</td>
+                                                <td>可选。 [-a|--api] IBM_CLOUD_API_URL	</td>
+                                                <td>IBM Cloud API 端点。（缺省端点为 https://api.ng.bluemix.net）</td>
                                             </tr>
                                         </table>
 
                                         <p>例如：</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>关闭此节</b></a>
@@ -451,7 +456,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>
                                             <tr>
                                               <td>[-db | --acdb ] APPCENTER_DB_SRV_NAME	</td>
-                                              <td>Bluemix dashDB 服务（使用 Enterprise Transactional 的 Bluemix 服务规划）。</td>
+                                              <td>IBM Cloud dashDB 服务（使用 Enterprise Transactional 的 IBM Cloud 服务规划）。</td>
                                             </tr>    
                                             <tr>
                                               <td>可选：[-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
@@ -471,7 +476,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                       </div>
 
                     </li>
-                    <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
+                    <li><b>initenv.sh（可选）- 登录 IBM Cloud</b><br />
                     仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建容器时，才需要执行此步骤。 如果情况如此，请使用必须在其中创建（和启动）容器的新组织和空间来更新 <b>initenv.properties</b>，然后重新运行 <b>initenv.sh</b> 脚本：</li>
 
 {% highlight bash %}
@@ -480,8 +485,8 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }} 映像</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像并将其推送到 Bluemix 存储库。 要查看 Bluemix 存储库中的所有可用映像，请运行 <code>cf ic images</code>
-                    此列表包含映像名称、创建日期和标识。
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code>
+此列表包含映像名称、创建日期和标识。
 
                         运行：
 {% highlight bash %}
@@ -521,7 +526,8 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                         </div>   
                     </li>
                     <li><b>startappcenter.sh - 在 IBM Container 中运行此映像</b><br/>
-                    使用 <b>startappcenter.sh</b> 脚本以在 IBM Container 中运行 {{ site.data.keys.mf_app_center }} 映像。 它还会将映像绑定到您在 <b>SERVER_IP</b> 属性中配置的公共 IP。
+                    使用 <b>startappcenter.sh</b> 脚本以在 IBM Container 中运行
+{{ site.data.keys.mf_app_center }} 映像。 它还会将映像绑定到您在 <b>SERVER_IP</b> 属性中配置的公共 IP。
 
                         运行：
 {% highlight bash %}
@@ -553,7 +559,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                             </tr>
                                             <tr>
                                                 <td>可选：[-si|--services] SERVICE_INSTANCES	</td>
-                                                <td>想要绑定到容器的逗号分隔的 Bluemix 服务实例。</td>
+                                                <td>想要绑定到容器的逗号分隔的 IBM Cloud 服务实例。</td>
                                             </tr>
                                             <tr>
                                                 <td>可选：[-h|--http] EXPOSE_HTTP </td>
@@ -630,7 +636,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Bluemix 注册表中 {{ site.data.keys.mf_app_center }} 容器映像的名称。</td>
+                                                <td>IBM Cloud 注册表中 {{ site.data.keys.mf_app_center }} 容器映像的名称。</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -662,7 +668,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                                             </tr>
                                             <tr>
                                                 <td>可选：[-si|--services] SERVICES </td>
-                                                <td>想要绑定到容器的逗号分隔的 Bluemix 服务实例名称。</td>
+                                                <td>想要绑定到容器的逗号分隔的 IBM Cloud 服务实例名称。</td>
                                             </tr>
                                             <tr>
                                                 <td>可选：[-tr|--trace] TRACE_SPEC </td>
@@ -723,10 +729,10 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
             <b>注：</b>我们仅包含必需的自变量。 要了解有关其他自变量的信息，请参阅属性文件内的文档。
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Bluemix 用户名（电子邮件）。</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Bluemix 密码。</li>
-                  <li><b>BLUEMIX_ORG - </b>Bluemix 组织名称。</li>
-                  <li><b>BLUEMIX_SPACE - </b>Bluemix 空间（如上文所述）。</li>
+                  <li><b>IBM_CLOUD_USER - </b>IBM Cloud 用户名（电子邮件）。</li>
+                  <li><b>IBM_CLOUD_PASSWORD - </b>IBM Cloud 密码。</li>
+                  <li><b>IBM_CLOUD_ORG - </b>IBM Cloud 组织名称。</li>
+                  <li><b>IBM_CLOUD_SPACE - </b>IBM Cloud 空间（如上文所述）。</li>
               </ul>
               <h4>prepareanalytics.properties</h4>
               <ul>
@@ -735,8 +741,8 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
               <h4>startanalytics.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b>与 <em>prepareserver.sh</em> 中相同。</li>
-                  <li><b>ANALYTICS_CONTAINER_NAME - </b>Bluemix Container 的名称。</li>
-                  <li><b>ANALYTICS_IP - </b>Bluemix Container 要绑定到的 IP 地址。<br/>
+                  <li><b>ANALYTICS_CONTAINER_NAME - </b>IBM Cloud 容器的名称。</li>
+                  <li><b>ANALYTICS_IP - </b>IBM Cloud 容器应绑定到的 IP 地址。<br/>
                   要分配 IP 地址，请运行：<code>cf ic ip request</code>。<br/>
                   可以在空间中的多个容器内复用 IP 地址。<br/>
                   如果您尚未分配一个 IP 地址，可以运行：<code>cf ic ip list</code>。</li>
@@ -744,7 +750,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
               <h4>startanalyticsgroup.properties</h4>
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b>与 <em>prepareserver.sh</em> 中相同。</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>Bluemix Container 组的名称。</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>IBM Cloud 容器组的名称。</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>主机名。</li>
                   <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>域名。 缺省值为：<code>mybluemix.net</code>。</li>
               </ul>
@@ -763,7 +769,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
             <div class="panel-body">
                 <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
                 <ol>
-                    <li><b>initenv.sh - 登录 Bluemix </b><br />
+                    <li><b>initenv.sh - 登录 IBM Cloud</b><br />
                     运行 <b>initenv.sh</b> 脚本以创建环境，用于在 IBM Containers 上构建和运行 {{ site.data.keys.mf_analytics }}：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -785,30 +791,30 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
                                                 <td><b>描述</b></td>
                                             </tr>
                                             <tr>
-                                                <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix 用户标识或电子邮件地址</td>
+                                                <td>[-u|--user] IBM_CLOUD_USER</td>
+                                                <td>IBM Cloud 用户标识或电子邮件地址</td>
                                             </tr>
                                             <tr>
-                                                <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix 密码</td>
+                                                <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                                <td>IBM Cloud 密码</td>
                                             </tr>
                                             <tr>
-                                                <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix 组织名称</td>
+                                                <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                                <td>IBM Cloud 组织名称</td>
                                             </tr>
                                             <tr>
-                                                <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix 空间名称</td>
+                                                <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                                <td>IBM Cloud 空间名称</td>
                                             </tr>
                                             <tr>
-                                                <td>可选。 [-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Bluemix API 端点。 （缺省端点为 https://api.ng.bluemix.net）</td>
+                                                <td>可选。 [-a|--api] IBM_CLOUD_API_URL	</td>
+                                                <td>IBM Cloud API 端点。（缺省端点为 https://api.ng.bluemix.net）</td>
                                             </tr>
                                         </table>
 
                                         <p>例如：</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>关闭此节</b></a>
@@ -818,13 +824,13 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         </div>
                     </li>
                     <li><b>prepareanalytics.sh - 准备 {{ site.data.keys.mf_analytics }} 映像</b><br />
-                        运行 <b>prepareanalytics.sh</b> 脚本以构建 {{ site.data.keys.mf_analytics }} 映像并将其推送到 Bluemix 存储库。
+                        运行 <b>prepareanalytics.sh</b> 脚本以构建 {{ site.data.keys.mf_analytics }} 映像，并将其推送到 IBM Cloud 存储库。
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        要查看 Bluemix 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
+                        要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
                         此列表包含映像名称、创建日期和标识。
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
@@ -844,7 +850,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>
                                             <tr>
                                               <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                              <td>要用于定制的分析映像的名称。 格式：Bluemix registry URL/private namespace/image name</td>
+                                              <td>要用于定制的分析映像的名称。 格式：IBM Cloud registry URL/private namespace/image name</td>
                                             </tr>      
                                         </table>
 
@@ -885,7 +891,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>已装入到 IBM Containers 注册表的分析容器映像的名称。 格式：BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>已装入到 IBM Containers 注册表的分析容器映像的名称。 格式：IBMCloudRegistry/PrivateNamespace/ImageName:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
@@ -984,7 +990,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>已装入到 IBM Containers 注册表的分析容器映像的名称。 格式：BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>已装入到 IBM Containers 注册表的分析容器映像的名称。 格式：IBMCloudRegistry/PrivateNamespace/ImageName:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
@@ -1078,10 +1084,10 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_USER - </b>Bluemix 用户名（电子邮件）。</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Bluemix 密码。</li>
-                    <li><b>BLUEMIX_ORG - </b>Bluemix 组织名称。</li>
-                    <li><b>BLUEMIX_SPACE - </b>Bluemix 空间（如上文所述）。</li>
+                    <li><b>IBM_CLOUD_USER - </b>IBM Cloud 用户名（电子邮件）。</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>IBM Cloud 密码。</li>
+                    <li><b>IBM_CLOUD_ORG - </b>IBM Cloud 组织名称。</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>IBM Cloud 空间（如上文所述）。</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
                 {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional 数据库</i>实例</a>（<i>Enterprise Transactional 2.8.500</i> 或 <i>Enterprise Transactional 12.128.1400</i>）。<br/>
@@ -1101,8 +1107,8 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                 <h4>startserver.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b>与 <em>prepareserver.sh</em> 中相同。</li>
-                    <li><b>SERVER_CONTAINER_NAME - </b>Bluemix Container 的名称。</li>
-                    <li><b>SERVER_IP - </b>Bluemix Container 应绑定到的 IP 地址。<br/>
+                    <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud 容器的名称。</li>
+                    <li><b>SERVER_IP - </b>IBM Cloud 容器应绑定到的 IP 地址。<br/>
                     要分配 IP 地址，请运行：<code>cf ic ip request</code>。<br/>
                     可以在空间中的多个容器内复用 IP 地址。<br/>
                     如果您尚未分配一个 IP 地址，可以运行：<code>cf ic ip list</code>。</li>
@@ -1111,7 +1117,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                 <h4>startservergroup.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b>与 <em>prepareserver.sh</em> 中相同。</li>
-                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Bluemix Container 组的名称。</li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>IBM Cloud 容器组的名称。</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>主机名。</li>
                     <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>域名。 缺省值为：<code>mybluemix.net</code>。</li>
                     <li><b>MFPF_PROPERTIES - </b>{{ site.data.keys.mf_server }} JNDI 属性，以逗号分隔（<b>无空格</b>）。 您可在以下位置定义分析相关属性：<code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
@@ -1132,7 +1138,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             <p>以下指示信息演示了如何使用配置文件来运行脚本。 如果选择不使用交互方式来运行，那么还提供了命令行自变量的列表：</p>
 
             <ol>
-                <li><b>initenv.sh - 登录 Bluemix </b><br />
+                <li><b>initenv.sh - 登录 IBM Cloud</b><br />
                     运行 <b>initenv.sh</b> 脚本以创建环境，用于在 IBM Containers 上构建和运行 {{ site.data.keys.product }}：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -1154,30 +1160,30 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                             <td><b>描述</b></td>
                                         </tr>
                                         <tr>
-                                            <td>[-u|--user] BLUEMIX_USER</td>
-                                            <td>Bluemix 用户标识或电子邮件地址</td>
+                                            <td>[-u|--user] IBM_CLOUD_USER</td>
+                                            <td>IBM Cloud 用户标识或电子邮件地址</td>
                                         </tr>
                                         <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                            <td>Bluemix 密码</td>
+                                            <td>[-p|--password] IBM_CLOUD_PASSWORD	</td>
+                                            <td>IBM Cloud 密码</td>
                                         </tr>
                                         <tr>
-                                            <td>[-o|--org] BLUEMIX_ORG	</td>
-                                            <td>Bluemix 组织名称</td>
+                                            <td>[-o|--org] IBM_CLOUD_ORG	</td>
+                                            <td>IBM Cloud 组织名称</td>
                                         </tr>
                                         <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                            <td>Bluemix 空间名称</td>
+                                            <td>[-s|--space] IBM_CLOUD_SPACE	</td>
+                                            <td>IBM Cloud 空间名称</td>
                                         </tr>
                                         <tr>
-                                            <td>可选。 [-a|--api] BLUEMIX_API_URL	</td>
-                                            <td>Bluemix API 端点。 （缺省端点为 https://api.ng.bluemix.net）</td>
+                                            <td>可选。 [-a|--api] IBM_CLOUD_API_URL	</td>
+                                            <td>IBM Cloud API 端点。（缺省端点为 https://api.ng.bluemix.net）</td>
                                         </tr>
                                     </table>
 
                                     <p>例如：</p>
 {% highlight bash %}
-initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>关闭此节</b></a>
@@ -1209,7 +1215,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
-                                            <td>Bluemix dashDB™ 服务（使用 Enterprise Transactional 的 Bluemix 服务规划）</td>
+                                            <td>IBM Cloud dashDB™ 服务（使用 Enterprise Transactional 的 IBM Cloud 服务规划）</td>
                                         </tr>
                                         <tr>
                                             <td>可选。 [-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>
@@ -1217,7 +1223,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>可选。 [-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
-                                            <td>用于存储运行时数据的 Bluemix 数据库服务实例名称。 缺省为与针对管理数据指定的服务相同。</td>
+                                            <td>用于存储运行时数据的 IBM Cloud 数据库服务实例名称。缺省为与针对管理数据指定的服务相同。</td>
                                         </tr>
                                         <tr>
                                             <td>可选。 [-p |--push ] ENABLE_PUSH	</td>
@@ -1225,7 +1231,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                         </tr>
                                         <tr>
                                             <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
-                                            <td>用于存储推送数据的 Bluemix 数据库服务实例名称。 缺省为与针对运行时数据指定的服务相同。</td>
+                                            <td>用于存储推送数据的 IBM Cloud 数据库服务实例名称。缺省为与针对运行时数据指定的服务相同。</td>
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
@@ -1244,7 +1250,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                         </div>
                     </div>
                 </li>
-                <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
+                <li><b>initenv.sh（可选）- 登录 IBM Cloud</b><br />
                       仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建容器时，才需要执行此步骤。 如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -1252,7 +1258,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }} 映像</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 映像并将其推送到 Bluemix 存储库。 要查看 Bluemix 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
                     此列表包含映像名称、创建日期和标识。<br/>
 
 {% highlight bash %}
@@ -1322,7 +1328,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>可选。 [-si|--services] SERVICE_INSTANCES	</td>
-                                        <td>想要绑定到容器的逗号分隔的 Bluemix 服务实例。</td>
+                                        <td>想要绑定到容器的逗号分隔的 IBM Cloud 服务实例。</td>
                                     </tr>
                                     <tr>
                                         <td>可选。 [-h|--http] EXPOSE_HTTP	</td>
@@ -1400,7 +1406,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Bluemix 注册表中 {{ site.data.keys.mf_server }} 容器映像的名称。</td>
+                                                <td>IBM Cloud 注册表中 {{ site.data.keys.mf_server }} 容器映像的名称。</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
@@ -1433,7 +1439,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 
                                             <tr>
                                                 <td>可选。 [-si|--services] SERVICES	</td>
-                                                <td>想要绑定到容器的逗号分隔的 Bluemix 服务实例名称。</td>
+                                                <td>想要绑定到容器的逗号分隔的 IBM Cloud 服务实例名称。</td>
                                             </tr>
                                             <tr>
                                                 <td>可选。 [-tr|--trace] TRACE_SPEC	</td>
@@ -1485,7 +1491,7 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 装入以下 URL 以启动 {{ site.data.keys.mf_console }}：http://MF\_CONTAINER\_HOST/mfpconsole（可能需要一些时间才能完成）。  
 遵循[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)教程中的指示信息来添加远程服务器。  
 
-通过使用 IBM Bluemixmay 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。 查看 {{ site.data.keys.product }} [教程](../../all-tutorials)。
+通过使用 IBM Cloud 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。查看 {{ site.data.keys.product }} [教程](../../all-tutorials)。
 
 #### 端口号限制
 {: #port-number-limitation }
@@ -1518,29 +1524,29 @@ IBM Containers 上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM 
 
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## 从 Bluemix 中除去容器
+## 从 IBM Cloud 中除去容器
 {: #removing-a-container-from-bluemix }
-从 Bluemix 中除去容器时，还必须从注册表中除去映像名称。  
-运行以下命令以从 Bluemix 中除去容器：
+从 IBM Cloud 中除去容器时，还必须从注册表中除去映像名称。  
+运行以下命令以从 IBM Cloud 中除去容器：
 
 1. `cf ic ps`（列举当前正在运行的容器）
 2. `cf ic stop container_id`（停止该容器）
 3. `cf ic rm container_id`（除去该容器）
 
-运行以下 cf ic 命令，从 Bluemix 注册表中除去映像名称：
+运行以下 cf ic 命令，从 IBM Cloud 注册表中除去映像名称：
 
 1. `cf ic images`（列举注册表中的映像）
 2. `cf ic rmi image_id`（从注册表中除去映像）
 
-## 从 Bluemix 中除去数据库服务配置
+## 从 IBM Cloud 中除去数据库服务配置
 {: #removing-the-database-service-configuration-from-bluemix }
 如果在配置 {{ site.data.keys.mf_server }} 映像期间运行了 **prepareserverdbs.sh** 脚本，那么将创建 {{ site.data.keys.mf_server }} 所需的配置和数据库表。 此脚本还会针对容器创建数据库模式。
 
-要从 Bluemix 中除去数据库服务配置，请使用 Bluemix 仪表板执行以下过程。
+要从 IBM Cloud 中除去数据库服务配置，请使用 IBM Cloud 仪表板执行以下过程。
 
-1. 从 Bluemix 仪表板，选择使用的 dashDB 服务。 选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
+1. 从 IBM Cloud 仪表板，选择使用的 dashDB 服务。选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
 2. 启动 dashDB 控制台以使用选中的 dashDB 服务实例的模式和数据库对象。
 3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
-4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 Bluemix 中除去数据库配置。
+4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 IBM Cloud 中除去数据库配置。
 
-同样，如果在配置 {{ site.data.keys.mf_app_center }} 时运行 **prepareappcenterdbs.sh**，请遵循上述步骤以除去 Bluemix 中的数据库服务配置。
+同样，如果在配置 {{ site.data.keys.mf_app_center }} 时运行 **prepareappcenterdbs.sh**，请遵循上述步骤以除去 IBM Cloud 中的数据库服务配置。

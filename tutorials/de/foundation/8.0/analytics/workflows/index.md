@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Abläufe in Analytics
-breadcrumb_title: Abläufe
+breadcrumb_title: Workflows
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
@@ -287,6 +287,7 @@ Die Daten können auf zwei Arten angezeigt werden.
 `MfpAppSession`-Daten erfasst werden, werden `MfpAppLog`-Dokumente abgefragt. In dem Fall kann das
 Diagramm die Anzahl der Abstürze darstellen, aber keine Absturzrate berechnen, weil die
 Anzahl der App-Nutzungen unbekannt ist. Dies führt zu folgender Einschränkung:
+
 >
 > * Das Balkendiagramm **Crashes** zeigt keine Daten an, wenn **Display Crash
 Rate** ausgewählt wird. 
@@ -331,6 +332,7 @@ Das Balkendiagramm **Abstürze** ist dasselbe Diagramm wie auf der Seite
 > **Hinweis:** Beide Diagramme fragen die `MfpAppSession`-Dokumente ab. Sie müssen Ihre App instrumentieren, um Daten zur App-Nutzung und zu App-Abstürzen zu erhalten und in den Diagrammen anzuzeigen. Wenn keine
 `MfpAppSession`-Daten erfasst werden, werden `MfpAppLog`-Dokumente abgefragt. In dem Fall können die Diagramme die Anzahl der Abstürze darstellen, aber keine Absturzrate berechnen, weil die
 Anzahl der App-Nutzungen unbekannt ist. Dies führt zu folgenden Einschränkungen:
+
 >
 > * In der Tabelle "Absturzübersicht" sind die Spalten "Gesamtnutzung" und "Absturzrate" leer.
 > * Das Balkendiagramm "Abstürze" zeigt keine Daten an, wenn "Absturzrate anzeigen" ausgewählt wird. 
@@ -359,3 +361,4 @@ In der Tabelle **Absturzdetails** können Sie die Anzeige für jeden Eintrag erw
 > **Hinweis:** Die Tabelle **Absturzzusammenfassung** wird durch Abfragen der Clientprotokolle mit
 schwerwiegenden Fehlern mit Daten gefüllt. Wenn Ihre App keine Clientprotokolle mit schwerwiegenden Fehlern erfasst, sind auf der Registerkarte
 keine Daten verfügbar. 
+

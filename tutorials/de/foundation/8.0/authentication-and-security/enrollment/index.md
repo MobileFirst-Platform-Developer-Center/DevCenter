@@ -1,19 +1,19 @@
 ---
 layout: tutorial
 title: Registrierung
-breadcrumb_title: Registrierung
+breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: iOS-Swift-Projekt herunterladen
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: Android-Projekt herunterladen
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: Webprojekt herunterladen
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -179,7 +179,7 @@ die Berechtigungsnachweise mit dem gespeicherten Attribut **pinCode** verglichen
 
 protected boolean validateCredentials(Map<String, Object> credentials) {
     PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
-    if(credentials!=null && credentials.containsKey("pin")){
+    if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
         if(pinCode.equals(attributes.get("pinCode"))){
@@ -290,6 +290,8 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 <br/>
 Die Sicherheitsüberprüfung `IsEnrolled` ist **abhängig** von `EnrollmentUserLogin`:
 
+
+
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
@@ -334,6 +336,8 @@ public String getTransactions(){
 > Weitere Informationen zu
 `securityContext` finden Sie im Abschnitt [Sicherheits-API](../../adapters/java-adapters/#security-api) des Lernprogramms
 für Java-Adapter.
+
+
 
 Fügen Sie den registrierten Benutzer zum Antwortobjekt hinzu. Fügen Sie dafür folgenden Code hinzu: 
 

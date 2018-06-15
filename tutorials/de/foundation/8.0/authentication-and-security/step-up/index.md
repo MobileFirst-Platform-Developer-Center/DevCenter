@@ -1,23 +1,23 @@
 ---
 layout: tutorial
-title: Authentifizierung intensivieren
-breadcrumb_title: Authentifizierung intensivieren
+title: Authentifizierung einrichten
+breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - name: iOS-Swift-Projekt herunterladen
+  - name: Download iOS Swift project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - name: Android-Projekt herunterladen
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - name: Win8-Projekt herunterladen
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - name: Win10-Projekt herunterladen
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - name: Webprojekt herunterladen
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -61,6 +61,8 @@ private transient StepUpUserLogin userLogin;
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Beide Implementierungen von Sicherheitsüberprüfungen
 müssen in einem Adapter gebündelt werden.
+
+
 
 Zum Auflösen dieser Referenz sucht das Framework nach einer Sicherheitsüberprüfung mit der entsprechenden Klasse und injiziert diese Referenz in die abhängige Sicherheitsüberprüfung.   
 Für den Fall, dass es für eine Klasse mehr als eine Sicherheitsüberprüfung gibt, hat die Annomation einen optionalen Parameter
@@ -153,11 +155,11 @@ In `StepUpPinCode` können Sie dann die Methode
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    // Richtigen PIN-Code aus der Datenbank abrufen
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+        // Richtigen PIN-Code aus der Datenbank abrufen
     User user = userManager.getUser(userLogin.getUser().getId());
 
-    if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
+    if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
         if(pinCode.equals(user.getPinCode())){

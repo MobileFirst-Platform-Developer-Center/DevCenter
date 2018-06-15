@@ -3,7 +3,7 @@ layout: tutorial
 title: Command-line tool for uploading or deleting an application
 breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -138,7 +138,6 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 ### Ant task for uploading or deleting an application
 {: #ant-task-for-uploading-or-deleting-an-application}
-
 You can use the upload and delete tools as an Ant task and use the Ant task in your own Ant script.  
 Apache Ant is required to run these tasks. The minimum supported version of Apache Ant is listed in [System requirements](../../product-overview/requirements).
 

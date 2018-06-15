@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server Installationshandbuch
-breadcrumb_title: Installationshandbuch
+breadcrumb_title: Installation Guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,7 @@ eingebettete Elasticsearch-Bibliothek als Data-Store und für die Clusterverwalt
 Platten-E/A erforderlich. Aus dem Grund müssen für ein Produktionssystem einige Voraussetzungen erfüllt sein. Generell ist es sehr wahrscheinlich, dass Sie nicht genug Haupt- und Plattenspeicher haben (oder feststellen, dass die Platten-E/A Ihr Leistungsengpass ist), bevor
 die CPU zum Problem wird. In einer Clusterumgebung benötigen Sie benachbarte Knoten, die schnell und zuverlässig sind. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Systemvoraussetzungen](#system-requirements)
@@ -130,8 +130,7 @@ Wenn Sie **shards** beispielsweise auf 4 und **replicas** auf 2 setzen, können 
 ## MobileFirst Analytics in WebSphere Application Server Liberty installieren
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
 Stellen Sie sicher, dass die EAR-Datei für {{ site.data.keys.mf_analytics }} vorhanden ist. Weitere Informationen zu den Installationsartefakten
-finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Datei **analytics.ear** **befindet sich im
-Ordner **<MF-Server-Installationsverzeichnis>\analytics****. Weitere Informationen zum Herunterladen und Installieren von
+finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Datei **analytics.ear** befindet sich im Ornder `<MF-Server-Installationsverzeichnis>\analytics`. Weitere Informationen zum Herunterladen und Installieren von
 WebSphere Application Server Liberty finden Sie
 im Artikel [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) auf
 IBM developerWorks.
@@ -150,10 +149,8 @@ den folgenden Befehl aus:
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Fügen Sie die Datei **analytics.ear** zum Ordner
-**./usr/servers/<Servername>/apps** Ihres Liberty-Servers hinzu. 
-4. Ersetzen Sie den Inhalt des Tags `<featureManager>` durch die Datei
-**./usr/servers/<Servername>/server.xml** mit folgendem Inhalt: 
+3. Fügen Sie die Datei **analytics.ear** zum Ordner `./usr/servers/<Servername>/apps` Ihres Liberty-Servers hinzu.
+4. Ersetzen Sie den Inhalt des Tags `<featureManager>` durch die Datei `./usr/servers/<Servername>/server.xml` mit folgendem Inhalt:
 
    ```xml
    <featureManager>
@@ -202,6 +199,8 @@ den folgenden Befehl aus:
 Liberty-Profil konfigurieren](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) in der Produktdokumentation zu
 WebSphere Application Server.
 
+
+
 6. Starten Sie den Liberty-Server. Führen Sie dazu in Ihrem Ordner
 **bin** den folgenden Befehl aus: 
 
@@ -236,7 +235,7 @@ hinzu.
 Kommentar gesetzt ist. 
 
    ```xml
-   <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
+   <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
 3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry. 
@@ -306,28 +305,28 @@ installieren](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplat
 
 2. Wählen Sie in der Liste **Unternehmensanwendungen** den Eintrag **MobileFirst Analytics** aus. 
 
-    ![Installation von WebSphere-Unternehmensanwendungen(install_webphere_ent_app.jpg)
+    ![Installation von WebSphere-Unternehmensanwendungen](install_webphere_ent_app.jpg)
 
 3. Klicken Sie auf **Laden von Klassen und Erkennung von Dateiaktualisierungen**. 
 
-    ![Laden von Klassen in WebSphere(install_websphere_class_load.jpg)
+    ![Laden von Klassen in WebSphere](install_websphere_class_load.jpg)
 
 4. Setzen Sie die Reihenfolge für das Laden von Klassen auf **Übergeordnete zuletzt**.
 
-    ![Reihenfolge für das Laden von Klassen ändern(install_websphere_app_class_load_order.jpg)
+    ![Reihenfolge für das Laden von Klassen ändern](install_websphere_app_class_load_order.jpg)
 
 5. Klicken Sie auf **Zuordnung von Sicherheitsrollen zu Benutzern/Gruppen**, um den Benutzer mit Administratorberechtigung zuzuordnen. 
 
-    ![Reihenfolge für das Laden von Klassen(install_websphere_sec_role.jpg)
+    ![Reihenfolge für das Laden von Klassen](install_websphere_sec_role.jpg)
 
 6. Klicken Sie auf **Module verwalten**.
 
-    ![Module in WebSphere verwalten(install_websphere_manage_modules.jpg)
+    ![Module in WebSphere verwalten](install_websphere_manage_modules.jpg)
 
 7. Wählen Sie das Modul **analytics** aus und ändern Sie die
 Reihenfolge der Klassenlader in **übergeordnete zuletzt**. 
 
-    ![Analytics-Modul in WebSphere(install_websphere_module_class_load_order.jpg)
+    ![Analytics-Modul in WebSphere](install_websphere_module_class_load_order.jpg)
 
 8. Aktivieren Sie wie folgt die **Verwaltungssicherheit** und die **Anwendungssicherheit**
 in der Administrationskonsole von WebSphere Application Server: 
@@ -337,8 +336,7 @@ in der Administrationskonsole von WebSphere Application Server:
 Hinweis: Die Anwendungssicherheit kann erst aktiviert werden, wenn die **Verwaltungssicherheit** aktiviert ist. 
     * Klicken Sie auf
 **OK** und speichern Sie die Änderungen. 
-9. Starten Sie die Anwendung {{ site.data.keys.mf_analytics }}
-und öffnen Sie im Browser den Link `http://<Hostname>:<Port>/analytics/console`.
+9. Starten Sie die Anwendung {{ site.data.keys.mf_analytics }} und öffnen Sie im Browser den Link `http://<Hostname>:<Port>/analytics/console`.
 
 ## {{ site.data.keys.mf_analytics }} mit Ant-Tasks installieren
 {: #installing-mobilefirst-analytics-with-ant-tasks }
@@ -373,15 +371,9 @@ für {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-con
     > Hinweis: Wenn Sie in den Werten der Ant-XML-Scripts die folgenden Sonderzeichen verwenden, müssen Sie sie mit Escapezeichen angeben:
 
     >
-    > * Das Dollarzeichen ($) muss mit $$ angegeben werden, sofern Sie mit der Syntax
-${variable}, die im Abschnitt
-[Properties](http://ant.apache.org/manual/properties.html) der Veröffentlichung
-"Apache Ant Manual" beschrieben ist, nicht explizit auf eine Ant-Variable verweisen möchten.
-
-    > * Das Et-Zeichen (&) muss mit
-&amp; angegeben werden, sofern Sie nicht explizit auf eine XML-Entität verweisen möchten.
-    > * Anführungszeichen (") müssen mit &quot; angegeben werden, es sei denn, sie
-werden in einer Zeichenfolge verwendet, die in Hochkommata gesetzt ist.
+    > * Das Dollarzeichen ($) muss mit $$ angegeben werden, sofern Sie mit der Syntax ${variable}, die im Abschnitt [Properties](http://ant.apache.org/manual/properties.html) der Veröffentlichung "Apache Ant Manual" beschrieben ist, nicht explizit auf eine Ant-Variable verweisen möchten.
+    > * Das Et-Zeichen (&) muss mit &amp; angegeben werden, sofern Sie nicht explizit auf eine XML-Entität verweisen möchten.
+    > * Anführungszeichen (") müssen mit &quot; angegeben werden, es sei denn, sie werden in einer Zeichenfolge verwendet, die in Hochkommata gesetzt ist.
 
 2. Installation eines Clusters mit Knoten auf mehreren Servern: 
     * Sie müssen das Kommentarzeichen vor der Eigenschaft **wl.analytics.masters.list** entfernen und als Wert der Eigenschaft
@@ -429,26 +421,26 @@ Einige Ereignistypen haben sich in Version 8.0.0 gegenüber den älteren Version
 
 In der folgenden Tabelle sind die alten Ereignistypen den neuen Typen zugeordnet. Einige Ereignistypen haben sich nicht geändert. 
 
-| Alter Ereignistyp            | Neuer Ereignistyp         |
+| Alter Ereignistyp| Neuer Ereignistyp|
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition        |
-| AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	            | CustomChart            |
-| CustomData	            | CustomData             |
-| Devices	                | Device                 |
-| MfpAppLogs                | AppLog                 |
-| MfpAppPushAction          | AppPushAction          |
-| MfpAppSession	            | AppSession             |
-| ServerLogs	            | ServerLog              |
-| ServerNetworkTransactions | NetworkTransaction     |
-| ServerPushNotifications   | PushNotification       |
-| ServerPushSubscriptions   | PushSubscription       |
-| Users	                    | User                   |
-| inboundRequestURL	        | resourceURL            |
-| mfpAppName	            | appName                |
-| mfpAppVersion	            | appVersion             |
+| AlertDefinition	        | AlertDefinition|
+| AlertNotification	        | AlertNotification|
+| AlertRunnerNode	        | AlertRunnerNode|
+| AnalyticsConfiguration| AnalyticsConfiguration|
+| CustomCharts	            | CustomChart|
+| CustomData	            | CustomData|
+| Devices	                | Device|
+| MfpAppLogs| AppLog|
+| MfpAppPushAction| AppPushAction|
+| MfpAppSession	            | AppSession|
+| ServerLogs	            | ServerLog|
+| ServerNetworkTransactions| NetworkTransaction|
+| ServerPushNotifications| PushNotification|
+| ServerPushSubscriptions| PushSubscription|
+| Users	                    | User|
+| inboundRequestURL	        | resourceURL|
+| mfpAppName	            | appName|
+| mfpAppVersion	            | appVersion|
 
 ### Migration von Analysedaten
 {: #analytics-data-migration }
@@ -469,7 +461,7 @@ zur Migrationsseite.
 Die folgende Abbildung zeigt einen Beispielalert auf der Seite **Übersicht** im Abschnitt
 **Dashboard**: 
 
-![Migrationsalert in der Konsole(migration_alert.jpg)
+![Migrationsalert in der Konsole](migration_alert.jpg)
 
 ### Migrationsseite
 {: #migration-page }
@@ -481,10 +473,12 @@ verfügbar: **Migration durchführen**.
 
 In der folgenden Abbildung sehen Sie die Migrationsseite, wie sie angezeigt wird, wenn Dokumente migriert werden müssen: 
 
-![Migrationsseite der Konsole(migration_page.jpg)
+![Migrationsseite der Konsole](migration_page.jpg)
 
 > **Hinweis:** Dieser Prozess dauert unter Umständen lange und kann nicht gestoppt werden. Die genaue Zeit hängt vom vorhandenen
 Datenvolumen ab.
+
+
 Die Migration von einer Million Dokumenten auf einem Knoten mit einem Arbeitsspeicher von
 32 GB (wovon 16 GB der JVM zugeordnet sind) und einem Prozessor mit vier Kernen dauert ungefähr drei Minuten. Nicht umgestellte Dokumente werden nicht abgefragt und daher auch nicht
 in der {{ site.data.keys.mf_analytics_console }} ausgegeben. 

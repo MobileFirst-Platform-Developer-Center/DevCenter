@@ -5,11 +5,11 @@ breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
 downloads:
-  - name: Webprojekt herunterladen
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -101,8 +101,7 @@ PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
 
 ## Abfrage abbrechen
 {: #cancelling-the-challenge }
-Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie
-auf die Schaltfläche **Cancel** klicken.   
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie auf die Schaltfläche **Cancel** klicken.  
 Rufen Sie zu diesem Zweck Folgendes auf: 
 
 ```javascript
@@ -119,7 +118,7 @@ Die Struktur des als Parameter übergebenen JSON-Objekts hängt in starkem Maße
 PinCodeChallengeHandler.handleFailure = function(error) {
     WL.Logger.debug("Challenge Handler Failure!");
 
-    if(error.failure && error.failure == "account blocked") {
+    if(error.failure &&  error.failure == "account blocked") {
         alert("No Remaining Attempts!");  
     } else {
         alert("Error! " + JSON.stringify(error));

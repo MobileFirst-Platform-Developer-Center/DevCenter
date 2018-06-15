@@ -109,11 +109,12 @@ andaime do aplicativo do qual você fará download na próxima etapa)
 {: #4-deploy-an-adapter }
 Faça download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do {{ site.data.keys.mf_console }} usando a ação **Ações   Implementar adaptador** .
 
-Como alternativa, clique no botão **Novo** ao lado de **Adaptadores**.
+Como alternativa, clique no botão **Novo** ao lado de **Adaptadores**.  
 
 1. Selecione a opção **Ações   Fazer download de amostra**. Faça download da amostra de adaptador **Java** "Hello World".
 
    > Se o Maven e {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de desenvolvimento** na tela.
+
 2. Em uma janela **Command-line**, navegue até a pasta raiz do projeto Maven do adaptador e execute o comando:
 
    ```bash
@@ -129,7 +130,9 @@ Como alternativa, clique no botão **Novo** ao lado de **Adaptadores**.
 {: #5-testing-the-application }
 1. No Xamarin Studio, selecione o arquivo `mfpclient.properties` e edite as propriedades **protocol**, **host** e **port** com os valores corretos para o seu {{ site.data.keys.mf_server }}.
     * Se usar um {{ site.data.keys.mf_server }} local, os valores normalmente são **http**, **localhost** e **9080**.
-    * Se usar um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente são **https**, **your-server-address** e **443**.
+    * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
+    * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.
+
 2. Pressione o botão **Reproduzir**.
 
 <br clear="all"/>
@@ -141,6 +144,7 @@ Como alternativa, clique no botão **Novo** ao lado de **Adaptadores**.
 A resposta do adaptador é então impressa no Xamarin Studio Console.
 
 ![Imagem do aplicativo que chamou com sucesso um recurso do {{ site.data.keys.mf_server }}](console-output.png)
+
 ## Próximas etapas
 {: #next-steps }
 Saiba mais sobre como usar adaptadores em aplicativos e como integrar serviços adicionais, como Notificações Push, usando a estrutura de segurança{{ site.data.keys.product_adj }} e mais:

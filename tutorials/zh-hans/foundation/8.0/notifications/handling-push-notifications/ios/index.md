@@ -5,13 +5,13 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: 下载 Xcode 项目
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在使用 Swift 的 iOS 应用程序中处理推送通知。
+可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。 在本教程中，您将学会如何在使用 Swift 的 iOS 应用程序中处理推送通知。
 
 有关静默通知或交互式通知的信息，请参阅：
 
@@ -81,7 +81,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要在视图控制器中使用 `var`（例如，`var push = MFPPush.sharedInstance();`），然后在视图控制器中调用 `push.methodName()`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。  为此，需要在视图控制器中使用 `var`（例如，`var push = MFPPush.sharedInstance();`），然后在视图控制器中调用 `push.methodName()`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.sharedInstance().methodName()`。
 
@@ -90,6 +90,7 @@ downloads:
 如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/ios)教程中了解有关验证问题处理程序的更多信息。
+
 ### 客户端
 {: #client-side }
 
@@ -141,7 +142,7 @@ MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in
         self.showAlert("Registered successfully")
         print(response?.description ?? "")
     } else {
-self.showAlert("Registrations failed.  Error \(error?.localizedDescription)")
+        self.showAlert("Registrations failed.  Error \(error?.localizedDescription)")
         print(error?.localizedDescription ?? "")
     }
 }
@@ -173,7 +174,7 @@ MFPPush.sharedInstance().getTags { (response, error) -> Void in
             print("Tags response: \(response)")
         }
     } else {
-self.showAlert("Error \(error?.localizedDescription)")
+        self.showAlert("Error \(error?.localizedDescription)")
         print("Error \(error?.localizedDescription)")
     }
 }
@@ -211,7 +212,7 @@ MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
        let subscriptions = json["subscriptions"] as? [[String: AnyObject]]
        for tag in subscriptions! {
            if let tagName = tag["tagName"] as? String {
-            print("tagName: \(tagName)")
+               print("tagName: \(tagName)")
                tags.append(tagName)
            }
        }
@@ -264,7 +265,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 ## 处理推送通知
 {: #handling-a-push-notification }
 
-由本机 iOS 框架直接处理推送通知。根据您的应用程序生命周期，iOS 框架将调用不同的方法。
+由本机 iOS 框架直接处理推送通知。 根据您的应用程序生命周期，iOS 框架将调用不同的方法。
 
 例如，如果在运行应用程序时收到简单通知，那么将触发 **AppDelegate** 的 `didReceiveRemoteNotification`：
 
@@ -275,8 +276,8 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
       if let notification = userInfo["aps"] as? NSDictionary,
         let alert = notification["alert"] as? NSDictionary,
         let body = alert["body"] as? String {
-            showAlert(body)
-    }
+          showAlert(body)
+        }
 }
 ```
 

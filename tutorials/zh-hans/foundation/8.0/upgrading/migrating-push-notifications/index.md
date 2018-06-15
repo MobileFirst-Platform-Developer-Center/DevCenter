@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 从基于事件源的通知迁移推送通知
-breadcrumb_title: 迁移推送通知
+breadcrumb_title: Migrating push notifications
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -195,7 +195,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 	    },
 	  function(failureResponse) {
 		alert("Failed to get the push suport status");
-	   }
+	    }
    );
    ```
 
@@ -401,7 +401,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
    MFPPush.subscribe(tags, function(successResponse) {
-    	alert("Successfully subscribed");
+		alert("Successfully subscribed");
         },
       function(failureResponse) {
 		alert("Failed to subscribe");
@@ -1526,7 +1526,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 ## 迁移工具
 {: #migration-tool }
-迁移工具可帮助将 MobileFirst Platform Foundation 7.1 推送数据（设备、用户预订、凭证和标记）迁移到 {{ site.data.keys.product }} 8.0。  
+此迁移工具可帮助将 MobileFirst Platform Foundation 7.1 推送数据（设备、用户预订、凭证和标记）迁移到 {{ site.data.keys.product }} 8.0。  
 迁移工具可通过以下功能简化此过程：
 
 1. 从 MobileFirst Platform Foundation 7.1 数据库中读取每个应用程序的设备、凭证、标记和用户预订。
@@ -1548,7 +1548,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 #### 过程
 {: #procedure }
-1. 从[以下 GitHub 存储库](http://github.com)下载迁移工具。
+1. 从[以下 GitHub 存储库](https://github.com/mfpdev/push-migration-tool)下载迁移工具。
 2. 下载该工具后，在 **migration.properties** 文件中提供以下详细信息：
 
     | 值                | 描述  | 样本值 |
@@ -1576,7 +1576,9 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 2. 通过使用以下命令来运行该工具：
 
    ```bash
-   java -jar pushDataMigration.jar path-to-migration.properties
+   java -jar mfp-push-data-migration.jar path-to-migration.properties
    ```
 
    * 如果工具 .jar 文件与属性文件位于不同位置，请将 **path-to-migration.properties** 替换为指向 **migration.properties** 的路径。 否则，请从该命令中除去路径。
+   
+    *将包含所需库的 lib 文件夹存储在与工具 .jar 文件相同的位置中。

@@ -3,7 +3,7 @@ layout: tutorial
 title: 在 JavaScript 适配器中使用 Java
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
@@ -20,11 +20,12 @@ weight: 3
 
 ![UsingJavainJS](UsingJavainJS.png)
 
-要使用现有的 Java 库，请将 JAR 文件作为依赖关系添加到项目中。有关如何添加依赖关系的更多信息，请参阅[创建 Java 和 JavaScript 适配器](../../creating-adapters/#dependencies)教程的“依赖关系”部分。
+要使用现有的 Java 库，请将 JAR 文件作为依赖关系添加到项目中。 有关如何添加依赖关系的更多信息，请参阅[创建 Java 和 JavaScript 适配器](../../creating-adapters/#dependencies)教程的“依赖关系”部分。
 
-要将定制 Java 代码添加到项目中，请向适配器项目中的 **src/main** 文件夹添加名为 **java** 的文件夹，然后将您自己的程序包放入其中。本教程中的样本使用 `com.sample.customcode` 程序包和名为 `Calculator.java` 的 Java 类文件。   
+要将定制 Java 代码添加到项目中，请向适配器项目中的 **src/main** 文件夹添加名为 **java** 的文件夹，然后将您自己的程序包放入其中。 本教程中的样本使用 `com.sample.customcode` 程序包和名为 `Calculator.java` 的 Java 类文件。   
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**程序包名称必须以 `com`、`org` 或 `net` 开头。
+
 向您的 Java 类添加方法。  
 以下是静态方法（不需要新实例）和实例方法的示例：
 
@@ -70,7 +71,6 @@ function subtractTwoIntegers(a,b){
 ```
 
 ## 样本适配器
-
 {: #sample-adapter }
 
 [单击以下载 ](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)Maven 项目。

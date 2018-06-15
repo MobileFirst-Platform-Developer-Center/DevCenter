@@ -8,7 +8,7 @@ weight: 5
 {: #overview }
 Déterminez votre stratégie de sauvegarde et de récupération, optimisez la configuration de votre serveur {{ site.data.keys.mf_server }} et appliquez des restrictions d'accès et des options de sécurité.
 
-#### Accéder à
+#### Aller à
 {: #jump-to }
 
 * [Noeuds finaux du serveur de production de {{ site.data.keys.mf_server }}](#endpoints-of-the-mobilefirst-server-production-server)
@@ -222,7 +222,7 @@ Ensuite, pour garantir des temps de réponse convenables avec un nombre importan
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3. Dans l'élément `<dataSource>`, définissez une référence au gestionnaire de connexions : 
+3. Dans l'élément `<dataSource>`, définissez une référence au gestionnaire de connexions :
 
    ```xml
    <dataSource id="MFPADMIN" jndiName="mfpadmin/jdbc/mfpAdminDS" connectionManagerRef="AppCenterPool">
@@ -352,9 +352,9 @@ Les propriétés suivantes peuvent être définies sur l'application Web (mfp-ad
 
 | Propriété                 | Facultative ou obligatoire | Description | Restrictions |
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector  | Facultative           | Type de connecteur Java Management Extensions (JMX).<br/>Les valeurs possibles sont `SOAP` et `RMI`. La valeur par défaut est SOAP. | WebSphere Application Server uniquement. |
-| mfp.admin.jmx.host       | Facultative           | Nom d'hôte de la connexion REST JMX. | Profil Liberty uniquement. |
-| mfp.admin.jmx.port	   | Facultative           | Port de la connexion REST JMX. | Profil Liberty uniquement. |
+| mfp.admin.jmx.connector  | Facultative	           | Type de connecteur Java Management Extensions (JMX).<br/>Les valeurs possibles sont `SOAP` et `RMI`. La valeur par défaut est SOAP. | WebSphere Application Server uniquement. |
+| mfp.admin.jmx.host       | Facultative	           | Nom d'hôte de la connexion REST JMX. | Profil Liberty uniquement. |
+| mfp.admin.jmx.port	   | Facultative	           | Port de la connexion REST JMX. | Profil Liberty uniquement. |
 | mfp.admin.jmx.user       | Obligatoire pour le profil Liberty et pour le parc de serveurs WebSphere Application Server, sinon, facultative | Nom d'utilisateur de la connexion REST JMX. | Profil Liberty de WebSphere Application Server : nom d'utilisateur pour la connexion REST JMX.<br/><br/>Parc de serveurs WebSphere Application Server : nom d'utilisateur de la connexion SOAP.<br/><br/>Déploiement réseau de WebSphere Application Server : nom d'utilisateur de l'administrateur WebSphere si l'hôte virtuel mappé à l'{{ site.data.keys.mf_server }}application d'administration n'est pas l'hôte par défaut.<br/><br/>Collectivité Liberty : nom d'utilisateur de l'administrateur contrôleur défini dans l'élément `<administrator-role>` du fichier server.xml du contrôleur Liberty. |
 | mfp.admin.jmx.pwd	| Obligatoire pour le profil Liberty et pour le parc de serveurs WebSphere Application Server, sinon, facultative | Mot de passe utilisateur pour la connexion REST JMX. | Profil Liberty de WebSphere Application Server : mot de passe utilisateur pour la connexion REST JMX.<br/><br/>Parc de serveurs WebSphere Application : mot de passe utilisateur pour la connexion SOAP.<br/><br/>Déploiement réseau de WebSphere Application Server : mot de passe utilisaeur de l'administrateur WebSphere si l'hôte virtuel est mappé à l'application d'administration du serveur {{ site.data.keys.mf_server }} n'est pas l'hôte par défaut.<br/><br/>Collectivité Liberty : mot de passe de l'administrateur contrôleur défini dans l'élément `<administrator-role>` du fichier server.xml du contrôleur Liberty. |
 | mfp.admin.rmi.registryPort | Facultative | Port de registre RMI pour la connexion JMX via un pare-feu. | Tomcat uniquement. |
@@ -395,10 +395,10 @@ Les propriétés suivantes peuvent être définies sur l'application Web (mfp-ad
 
 | Propriété                 | Facultative ou obligatoire | Description  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.audit | Facultative. | Affectez la valeur false à cette propriété pour désactiver la fonction d'audit de {{ site.data.keys.mf_console }}. La valeur par défaut est true. |
-| mfp.admin.environmentid | Facultative. | Identificateur d'environnement pour l'enregistrement des beans gérés. Utilisez cet identificateur lorsque différentes instances de {{ site.data.keys.mf_server }} sont installées sur le même serveur d'applications. L'identificateur détermine le service d'administration, la console et les environnements d'exécution qui appartiennent à la même installation. Le service d'administration ne gère que les environnements d'exécution possédant le même identificateur d'environnement. |
+| mfp.admin.audit | Facultatif. | Affectez la valeur false à cette propriété pour désactiver la fonction d'audit de {{ site.data.keys.mf_console }}. La valeur par défaut est true. |
+| mfp.admin.environmentid | Facultatif. | Identificateur d'environnement pour l'enregistrement des beans gérés. Utilisez cet identificateur lorsque différentes instances de {{ site.data.keys.mf_server }} sont installées sur le même serveur d'applications. L'identificateur détermine le service d'administration, la console et les environnements d'exécution qui appartiennent à la même installation. Le service d'administration ne gère que les environnements d'exécution possédant le même identificateur d'environnement. |
 | mfp.admin.serverid | Obligatoire pour les parcs de serveurs et la collectivité Liberty, sinon, facultative. | Parc de serveurs : identificateur de serveur. Il doit être différent pour chaque serveur du parc de serveurs.<br/><br/> Collectivité Liberty : la valeur doit être contrôleur. |
-| mfp.admin.hsts | Facultative. | Affectez la valeur true pour activer HTTP Strict Transport Security selon la norme RFC 6797. |
+| mfp.admin.hsts | Facultatif. | Affectez la valeur true pour activer HTTP Strict Transport Security selon la norme RFC 6797. |
 | mfp.topology.platform | Facultative | Type de serveur. Valeurs valides :{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Si vous ne définissez pas la valeur, l'application tente de deviner le type de serveur. |
 | mfp.topology.clustermode | Facultative | En plus du type de serveur, spécifiez ici la topologie du serveur. Valeurs valides : {::nomarkdown}<ul><li>Autonome</li><li>Cluster</li><li>Parc de serveurs</li></ul>{:/}La valeur par défaut est Autonome. |
 | mfp.admin.farm.heartbeat | Facultative | Cette propriété vous permet de définir en minutes le taux de pulsations utilisé dans les topologies de parc de serveurs. La valeur par défaut est 2 minutes.<br/><br/>Dans un parc de serveurs, tous les membres doivent utiliser le même signal de présence. Si vous définissez ou modifiez cette valeur JNDI sur un serveur du parc de serveurs, vous devez également définir la même valeur sur chacun des autres serveurs du parc de serveurs. Pour plus d'informations, voir [Cycle de vie d'un noeud de parc de serveurs](../appserver/#lifecycle-of-a-server-farm-node). |
@@ -443,7 +443,7 @@ Le service d'administration utilise un service Live Update comme fonction auxili
 | Propriété                 | Facultative ou obligatoire | Description  |
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | Facultative. URL du service Live Update. L'URL par défaut est déduite de l'URL du service d'administration en ajoutant config à la racine de contexte du service d'administration. |
-| mfp.config.service.user | Obligatoire | Nom d'utilisateur permettant d'accéder au service Live Update. Dans le cadre d'une topologie de parc de serveurs, le nom d'utilisateur doit être identique pour tous les membres du parc de serveurs.|
+| mfp.config.service.user | Obligatoire | Nom d'utilisateur permettant d'accéder au service Live Update. Dans le cadre d'une topologie de parc de serveurs, le nom d'utilisateur doit être identique pour tous les membres du parc de serveurs. |
 | mfp.config.service.password | Obligatoire | Mot de passe permettant d'accéder au service Live Update. Dans le cadre d'une topologie de parc de serveurs, le mot de passe doit être identique pour tous les membres du parc de serveurs. |
 | mfp.config.service.schema | Facultative | Nom du schéma qui est utilisé par le service Live Update. |
 
@@ -459,7 +459,7 @@ Le service d'administration utilise un service push comme fonction auxiliaire po
 | mfp.push.authorization.client.id | Facultative/Obligatoire dans certaines conditions | Identificateur du client confidentiel qui traite l'autorisation OAuth pour le service push. Obligatoire uniquement si la propriété **mfp.admin.push.url** est spécifiée. |
 | mfp.push.authorization.client.secret | Facultative/Obligatoire dans certaines conditions | Secret du client confidentiel qui traite l'autorisation OAuth pour le service push. Obligatoire uniquement si la propriété **mfp.admin.push.url** est spécifiée. |
 | mfp.admin.authorization.client.id | Facultative/Obligatoire dans certaines conditions | Identificateur du client confidentiel qui traite l'autorisation OAuth pour le service d'administration. Obligatoire uniquement si la propriété **mfp.admin.push.url** est spécifiée. |
-| mfp.push.authorization.client.secret | Facultative/Obligatoire dans certaines conditions | Secret du client confidentiel qui traite l'autorisation OAuth pour le service d'administration. Obligatoire uniquement si la propriété **mfp.admin.push.url** est spécifiée. |
+| mfp.admin.authorization.client.secret | Facultative/Obligatoire dans certaines conditions | Secret du client confidentiel qui traite l'autorisation OAuth pour le service d'administration. Obligatoire uniquement si la propriété **mfp.admin.push.url** est spécifiée. |
 
 ### Propriétés JNDI pour {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -494,13 +494,13 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 | mfp.admin.jmx.dmgr.port | Obligatoire. Port RMI ou SOAP du gestionnaire de déploiement. WebSphere Application Server Network Deployment uniquement. |
 | mfp.admin.jmx.host | Liberty uniquement. Nom d'hôte de la connexion REST JMX. Pour la collectivité Liberty, utilisez le nom d'hôte du contrôleur. |
 | mfp.admin.jmx.port | Liberty uniquement. Numéro de port de la connexion REST JMX. Pour la collectivité Liberty, le port du connecteur REST doit être identique à la valeur de l'attribut httpsPort qui est déclarée dans l'élément `<httpEndpoint>`. Cet élément est déclaré dans le fichier server.xml du contrôleur Liberty. |
-| mfp.admin.jmx.user | Facultative. Parc de serveurs WebSphere Application Server : nom d'utilisateur de la connexion SOAP.<br/><br/>Collectivité Liberty : nom d'utilisateur de l'administrateur contrôleur défini dans l'élément `<administrator-role>` du fichier server.xml du contrôleur Liberty. |
-| mfp.admin.jmx.pwd | Facultative. Parc de serveurs WebSphere Application Server : mot de passe utilisateur de la connexion SOAP.<br/><br/>Collectivité Liberty : mot de passe de l'administrateur contrôleur défini dans l'élément `<administrator-role>` du fichier server.xml du contrôleur Liberty. |
+| mfp.admin.jmx.user | Facultatif. Parc de serveurs WebSphere Application Server : nom d'utilisateur de la connexion SOAP.<br/><br/>Collectivité Liberty : nom d'utilisateur de l'administrateur contrôleur défini dans l'élément `<administrator-role>` du fichier server.xml du contrôleur Liberty. |
+| mfp.admin.jmx.pwd | Facultatif. Parc de serveurs WebSphere Application Server : mot de passe utilisateur de la connexion SOAP.<br/><br/>Collectivité Liberty : mot de passe de l'administrateur contrôleur défini dans l'élément `<administrator-role>` du fichier server.xml du contrôleur Liberty. |
 | mfp.admin.serverid | Obligatoire pour les parcs de serveurs et la collectivité Liberty, sinon, facultative.<br/><br/>Parc de serveurs : identificateur de serveur. Il doit être différent pour chaque serveur du parc de serveurs.<br/><br/>Collectivité Liberty : identificateur du membre. L'identificateur doit être différent pour chaque membre de la collectivité. La valeur Contrôleur ne peut pas être utilisée car elle est réservée pour le contrôleur de collectivité. |
-| mfp.topology.platform | Facultative. Type de serveur. Les valeurs valides sont les suivantes :<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Si vous ne définissez pas la valeur, l'application tente de deviner le type de serveur. |
-| mfp.topology.clustermode | Facultative. En plus du type de serveur, spécifiez ici la topologie du serveur. Valeurs valides :<ul><li>Autonome<li>Cluster</li><li>Parc de serveurs</li></ul>La valeur par défaut est Autonome. |
-| mfp.admin.jmx.replica | Facultative. Pour la collectivité Liberty uniquement.<br/><br/>Ne définissez cette propriété que lorsque les composants d'administration qui gèrent cette exécution sont déployés sur des contrôleurs Liberty différents (répliques).<br/><br/>Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
-| mfp.analytics.console.url | Facultative. URL exposée par IBM {{ site.data.keys.mf_analytics }} qui établit un lien vers la console Analytics. Définissez cette propriété si vous souhaitez accéder à la console Analytics à partir de {{ site.data.keys.mf_console }}. Par exemple, `http://<hostname>:<port>/analytics/console` |
+| mfp.topology.platform | Facultatif. Type de serveur. Les valeurs valides sont les suivantes :<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Si vous ne définissez pas la valeur, l'application tente de deviner le type de serveur. |
+| mfp.topology.clustermode | Facultatif. En plus du type de serveur, spécifiez ici la topologie du serveur. Valeurs valides :<ul><li>Autonome<li>Cluster</li><li>Parc de serveurs</li></ul>La valeur par défaut est Autonome. |
+| mfp.admin.jmx.replica | Facultatif. Pour la collectivité Liberty uniquement.<br/><br/>Ne définissez cette propriété que lorsque les composants d'administration qui gèrent cette exécution sont déployés sur des contrôleurs Liberty différents (répliques).<br/><br/>Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+| mfp.analytics.console.url | Facultatif. URL exposée par IBM {{ site.data.keys.mf_analytics }} qui établit un lien vers la console Analytics. Définissez cette propriété si vous souhaitez accéder à la console Analytics à partir de {{ site.data.keys.mf_console }}. Par exemple, `http://<hostname>:<port>/analytics/console` |
 | mfp.analytics.password | Mot de passe qui est utilisé si le point d'entrée de données pour IBM {{ site.data.keys.mf_analytics }} est protégé par l'authentification de base. |
 | mfp.analytics.url | URL exposée par IBM {{ site.data.keys.mf_analytics }} qui reçoit les données d'analyse entrantes. Par exemple, `http://<hostname>:<port>/analytics-service/rest` |
 | mfp.analytics.username | Nom d'utilisateur qui est utilisé si le point d'entrée de données pour IBM {{ site.data.keys.mf_analytics }} est protégé par l'authentification de base.|
@@ -527,24 +527,24 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 | mfp.push.db.cloudant.username | Facultative | Nom d'utilisateur du compte Cloudant, utilisé pour stocker la base de données. Lorsque cette propriété n'est pas définie, une base de données relationnelle est utilisée. |
 | mfp.push.db.cloudant.password | Facultative | Mot de passe du compte Cloudant, utilisé pour stocker la base de données. Cette propriété est obligatoire lorsque la propriété mfp.db.cloudant.username est définie. |
 | mfp.push.db.cloudant.doc.version | Facultative | Version du document Cloudant. |
-| mfp.push.db.cloudant.socketTimeout | Facultative | Délai d'attente relatif à la détection de la perte d'une connexion réseau pour Cloudant, exprimé en secondes. La valeur zéro signifie que le délai d'attente est infini. Une valeur négative désigne la valeur par défaut (pas de remplacement). Valeur par défaut. Voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.connectionTimeout | Facultative | Délai d'attente relatif à l'établissement d'une connexion réseau pour Cloudant, exprimé en secondes. La valeur zéro signifie que le délai d'attente est infini. Une valeur négative désigne la valeur par défaut (pas de remplacement). Valeur par défaut. Voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.socketTimeout | Facultative	| Délai d'attente relatif à la détection de la perte d'une connexion réseau pour Cloudant, exprimé en secondes. La valeur zéro signifie que le délai d'attente est infini. Une valeur négative désigne la valeur par défaut (pas de remplacement). Valeur par défaut. Voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.connectionTimeout | Facultative	| Délai d'attente relatif à l'établissement d'une connexion réseau pour Cloudant, exprimé en secondes. La valeur zéro signifie que le délai d'attente est infini. Une valeur négative désigne la valeur par défaut (pas de remplacement). Valeur par défaut. Voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.maxConnections | Facultative | Nombre maximal de connexions au connecteur Cloudant. Valeur par défaut. Voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.ssl.authentication | Facultative | Valeur booléenne (true ou false) qui spécifie si la validation de chaîne de certificats SSL et la vérification de nom d'hôte sont activées pour les connexions HTTPS à la base de données Cloudant. Valeur par défaut : True  |
-| mfp.push.db.cloudant.ssl.configuration | Facultative | (Profil complet de WAS uniquement) Pour les connexions HTTPS à la base de données Cloudant : Nom d'une configuration SSL dans la configuration WebSphere Application Server, à utiliser lorsqu'aucune configuration n'est spécifiée pour l'hôte et le port. |
-| mfp.push.db.cloudant.proxyHost | Facultative | Hôte proxy du connecteur Cloudant. Par défaut : voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.proxyPort | Facultative | Port proxy du connecteur Cloudant. Par défaut : voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.services.ext.security | Facultative | Plug-in d'extension de sécurité. |
-| mfp.push.security.endpoint | Facultative | URL de noeud final pour le serveur d'autorisations. |
-| mfp.push.security.user | Facultative | Nom d'utilisateur permettant d'accéder au serveur d'autorisations. |
-| mfp.push.security.password | Facultative | Mot de passe permettant d'accéder au serveur d'autorisations. |
+| mfp.push.db.cloudant.ssl.configuration | Facultative	| (Profil complet de WAS uniquement) Pour les connexions HTTPS à la base de données Cloudant : Nom d'une configuration SSL dans la configuration WebSphere Application Server, à utiliser lorsqu'aucune configuration n'est spécifiée pour l'hôte et le port. |
+| mfp.push.db.cloudant.proxyHost | Facultative	| Hôte proxy du connecteur Cloudant. Par défaut : voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.proxyPort | Facultative	| Port proxy du connecteur Cloudant. Par défaut : voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.services.ext.security | Facultative	| Plug-in d'extension de sécurité. |
+| mfp.push.security.endpoint | Facultative	| URL de noeud final pour le serveur d'autorisations. |
+| mfp.push.security.user | Facultative	| Nom d'utilisateur permettant d'accéder au serveur d'autorisations. |
+| mfp.push.security.password | Facultative	| Mot de passe permettant d'accéder au serveur d'autorisations. |
 | mfp.push.services.ext.analytics | Facultative | Plug-in d'extension d'Analytics. |
 | mfp.push.analytics.endpoint | Facultative | URL de noeud final pour le serveur Analytics. |
 | mfp.push.analytics.user | Facultative | Nom d'utilisateur permettant d'accéder au serveur Analytics. |
 | mfp.push.analytics.password | Facultative | Mot de passe permettant d'accéder au serveur Analytics. |
-| mfp.push.analytics.events.notificationDispatch | Facultative | Evénement d'analyse lorsque la notification est sur le point d'être déployée. Valeur par défaut : true |
+| mfp.push.analytics.events.notificationDispatch | Facultative	| Evénement d'analyse lorsque la notification est sur le point d'être déployée. Valeur par défaut : true |
 | mfp.push.internalQueue.maxLength | Facultative | Longueur de la file d'attente qui contient les tâches de notification avant déploiement. Valeur par défaut : 200000  |
-| mfp.push.gcm.proxy.enabled | Facultative | Indique si Google GCM doit être accessible via un proxy. Valeur par défaut : false |
+| mfp.push.gcm.proxy.enabled | Facultative	| Indique si Google GCM doit être accessible via un proxy. Valeur par défaut : false |
 | mfp.push.gcm.proxy.protocol | Facultative | Peut être http ou https. |
 | mfp.push.gcm.proxy.host | Facultative | Hôte proxy GCM. Une valeur négative désigne le port par défaut. |
 | mfp.push.gcm.proxy.port | Facultative | Port proxy GCM. Valeur par défaut : -1 |
@@ -702,7 +702,7 @@ Lorsqu'une application tente de se connecter à la base de données après que M
 com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.
 ```
 
-Editez les fichiers **server.xml** et **context.xml**, puis, pour chaque élément `<Resource>`, ajoutez les propriétés suivantes : 
+Editez les fichiers **server.xml** et **context.xml**, puis, pour chaque élément `<Resource>`, ajoutez les propriétés suivantes :
 
 * **testOnBorrow="true"**
 * **validationQuery="select 1"**
@@ -821,9 +821,9 @@ Pour diagnostiquer les problèmes de connexion et d'authentification, activez le
 {: #configuring-multiple-runtimes }
 Vous pouvez configurer {{ site.data.keys.mf_server }} avec plusieurs environnements d'exécution en créant une différenciation visuelle entre les types d'application dans {{ site.data.keys.mf_console }}.
 
-> **Remarque :** Plusieurs environnements d'exécution ne sont pas pris en charge dans une instance de serveur Mobile Foundation créée par le service Mobile Foundation Bluemix. Dans le service Bluemix, vous devez créer plusieurs instances de service à la place.
+> **Remarque :** Plusieurs environnements d'exécution ne sont pas pris en charge dans une instance de serveur Mobile Foundation créée par le service IBM Cloud Mobile Foundation. Dans le service IBM Cloud, vous devez créer plusieurs instances de service à la place.
 
-#### Accéder à
+#### Aller à
 {: #jump-to-1 }
 * [Configuration de plusieurs environnements d'exécution dans le profil Liberty de WebSphere](#configuring-multiple-runtimes-in-websphere-liberty-profile)
 * [Enregistrement d'applications et déploiement d'adaptateurs sur différents environnements d'exécution](#registering-applications-and-deploying-adapters-to-different-runtimes)

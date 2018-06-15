@@ -19,7 +19,9 @@ muss außerdem der entsprechende JDBC-Treiber für die Datenbank verfügbar sein
         * MySQL
         * Oracle
 
-        > **Wichtiger Hinweis:** Sie benötigen eine Datenbank, in der Sie die für das Produkt erforderlichen Tabellen erstellen können, und einen Datenbankbenutzer zum Erstellen der Tabellen.         Im Lernprogramm beziehen sich die Schritte für die Erstellung der Tabellen auf
+        > **Wichtiger Hinweis:** Sie benötigen eine Datenbank, in der Sie die für das Produkt erforderlichen Tabellen erstellen können, und einen Datenbankbenutzer zum Erstellen der Tabellen. 
+
+        Im Lernprogramm beziehen sich die Schritte für die Erstellung der Tabellen auf
 DB2.
 Das DB2-Installationsprogramm wird über IBM Passport
 Advantage als Paket in der eAssembly für die
@@ -27,15 +29,15 @@ Advantage als Paket in der eAssembly für die
 
 * JDBC-Treiber für Ihre Datenbank
     * Verwenden Sie für DB2 den DB2-JDBC-Treibertyp 4.
-    * Verwenden Sie für MySQL den Connector/J-JDBC-Treiber. 
-    * Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber. 
+    * Verwenden Sie für MySQL den Connector/J-JDBC-Treiber.
+    * Verwenden Sie für Oracle den Oracle-Thin-JDBC-Treiber.
 * Java ab Version 7
 
 * Laden Sie das Installationsprogramm für
 IBM Installation
 Manager ab Version 1.8.4
 über die [Installation Manager and Packaging Utility Download
-Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142). 
+Links herunter](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 * Sie benötigen außerdem das Installationsrepository für {{ site.data.keys.mf_server }} und das
 Installationsprogramm für WebSphere Application Server Liberty Core
 ab Version 8.5.5.3. Laden Sie diese Pakete mit der eAssembly für die {{ site.data.keys.product }} über
@@ -147,7 +149,9 @@ Die Standardhomepage
 können Sie über [http://localhost:9080](http://localhost:9080) anzeigen. 
 
 > **Hinweis:** In der Produktion müssen Sie sicherstellen, dass der Liberty-Server beim Start des Hostcomputers
-als Dienst gestartet wird. Der Start des Liberty-Servers als Dienst ist nicht in diesem Lernprogramm beschrieben. ## {{ site.data.keys.mf_server }} installieren
+als Dienst gestartet wird. Der Start des Liberty-Servers als Dienst ist nicht in diesem Lernprogramm beschrieben. 
+
+## {{ site.data.keys.mf_server }} installieren
 {: #installing-mobilefirst-server }
 Vergewissern Sie sich, dass Installation Manager ab Version 1.8.4 installiert ist. Die Installation von
 {{ site.data.keys.mf_server }} mit einer älteren Installation-Manager-Version
@@ -193,8 +197,7 @@ können Sie {{ site.data.keys.mf_server }} installieren.
 
     Geben Sie den folgenden Befehl ein: `imcl install com.ibm.mobilefirst.foundation.server -repositories MFP-Repositoryverzeichnis/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense`
 
-    Die folgenden Eigenschaften müssen für eine Installation ohne
-Application Center definiert werden: 
+    Die folgenden Eigenschaften müssen für eine Installation ohne Application Center definiert werden: 
     * **user.appserver.selection2=none**
     * **user.database.selection2=none**
     * **user.database.preinstalled=false**
@@ -273,8 +276,9 @@ DB2-Sicherheit und ein Beispiel für bewährte Sicherheitsverfahren finden Sie u
 [DB2 Security,
 Part 8: Twelve DB2 Security
 Best Practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
-## {{ site.data.keys.mf_server }} mit
-Ant-Tasks in Liberty implementieren
+
+
+## {{ site.data.keys.mf_server }} mit Ant-Tasks in Liberty implementieren
 {: #deploying-mobilefirst-server-to-liberty-with-ant-tasks }
 Mit den Ant-Tasks können Sie die folgenden Operationen ausführen: 
 
@@ -325,8 +329,7 @@ von dem die DB2-Instanz Daten erwartet. Standardmäßig ist die Portnummer
 **50000**.
     * Setzen Sie **database.db2.driver.dir** auf das Verzeichnis mit Ihrem
 DB2-Treiber (**db2jcc4.jar** und **db2jcc\_license\_cu.jar**).
-In einer DB2-Standarddistribution befinden sich diese Dateien
-unter **DB2-Installationsverzeichnis/java**.
+In einer DB2-Standarddistribution befinden sich diese Dateien unter **DB2-Installationsverzeichnis/java**.
     * Setzen Sie **database.db2.mfp.dbname** auf **MFPDATA** (den Datenbanknamen, den
 Sie beim Durcharbeiten des Abschnitts "Datenbank erstellen" erstellt haben). 
     * Setzen Sie **database.db2.mfp.schema** auf **MFPDATA** (das
@@ -381,14 +384,16 @@ zugreifen. Sie müssen die Eigenschaften bis auf die
 DB2-bezogenen
 (**database.db2**...) definieren. Setzen Sie die Eigenschaft
 **database.derby.datadir** für Derby auf das Verzeichnis, in dem die Derby-Datenbank erstellt werden kann. Setzen Sie die Eigenschaft
-**database.derby.mfp.dbname** auf den Wert **MFPDATA**.Die Ant-Tasks führen die folgenden
+**database.derby.mfp.dbname** auf den Wert **MFPDATA**.
+
+Die Ant-Tasks führen die folgenden
 Operationen aus: 
 
 1. Tabellen für die folgenden Komponenten werden in der Datenbank erstellt: 
     * Für den Verwaltungsservice und den Liveaktualisierungsservice vom Ant-Ziel
 `admdatabases`
     * Für die Laufzeitkomponente vom Ant-Ziel `rtmdatabases` 
-    * Für den Push-Service vom Ant-Ziel `pushdatabases` 
+    * Für den Push-Service vom Ant-Ziel `pushdatabases`
 2. Die WAR-Dateien der verschiedenen Komponenten werden im Liberty-Server implementiert. Die Details der Operationen sehen Sie im Protokoll unter den Zielen
 `adminstall`, `rtminstall` und
 `pushinstall`. 
@@ -408,7 +413,7 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-Notieren Sie die folgenden Datenbankfaktoren: 
+Beachten Sie die folgenden Datenbankfaktoren: 
 
 #### Hinweis zum Datenbankbenutzer
 {: #database-user-consideration }
@@ -463,16 +468,25 @@ jdbc-40 und jdbc-41 hinzufügen, kommt es zu einem Problem. Fügen Sie dagegen z
 3. Das Element **tcpOptions** (**tcpOptions soReuseAddr="true"**) wird zur Serverkonfiguration hinzugefügt, um die sofortige Neubindung eines Ports ohne aktiven Listener zu ermöglichen und den Serverdurchsatz zu verbessern.
 4. Ein Keystore mit der ID **defaultKeyStore** wird erstellt, sofern er noch nicht vorhanden ist.
 
-    Der Keystore soll die Verwendung des HTTPS-Ports für die JMX-Kommunikation zwischen dem Verwaltungsservice (mfp-admin-service.war) und der Laufzeitkomponente (mfp-server.war) ermöglichen. Die beiden Anwendungen kommunizieren über JMX. Bei Verwendung von Liberty Profile wird restConnector für die Kommunikation zwischen den Anwendungen innerhalb eines Servers und zwischen den Servern einer Liberty-Farm verwendet, was die Verwendung von HTTPS erfordert. Für den standardmäßig erstellten Keystore erstellt Liberty Profile ein Zertifikat mit einem Gültigkeitszeitraum von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.    
+    Der Keystore soll die Verwendung des
+HTTPS-Ports für die JMX-Kommunikation zwischen dem Verwaltungsservice
+(mfp-admin-service.war) und der Laufzeitkomponente
+(mfp-server.war) ermöglichen. Die beiden Anwendungen kommunizieren über
+JMX. Bei Verwendung von Liberty Profile wird restConnector für die Kommunikation zwischen den Anwendungen innerhalb eines Servers
+und zwischen den Servern einer Liberty-Farm verwendet, was die Verwendung von
+HTTPS erfordert. Für den standardmäßig erstellten Keystore erstellt Liberty Profile ein Zertifikat mit einem Gültigkeitszeitraum
+von 365 Tagen. Diese Konfiguration ist nicht für den Produktionseinsatz vorgesehen. In der Produktion sollten Sie ein eigenes Zertifikat verwenden.    
 
     Für die Aktivierung von JMX wird in der Basisregistry ein Benutzer mit Administratorrolle (MfpRESTUser) erstellt. Der Name und das Kennwort des Benutzers werden als JNDI-Eigenschaften (mfp.admin.jmx.user und mfp.admin.jmx.pwd) angegeben und von der Laufzeitkomponente sowie dem Verwaltungsservice für die Ausführung von JMX-Abfragen verwendet. Mit einigen der globalen JMX-Eigenschaften wird der Clustermodus (eigenständiger Server oder Farm) definiert. Das Server Configuration Tool setzt die Eigenschaft mfp.topology.clustermode des Liberty-Servers auf Standalone. In einem späteren Abschnitt dieses Lernprogramms wird diese Eigenschaft für die Erstelllung einer Farm auf Cluster gesetzt.
-5. Erstellung von Benutzern (auch zutreffend für Apache Tomcat und WebSphere Application Server)
+5. Benutzer werden erstellt (auch zutreffend für Apache Tomcat und WebSphere Application Server).
     * Optionale Benutzer: Das Server Configuration Tool erstellt einen Testbenutzer (admin/admin), den Sie nach der Installation für die Anmeldung bei der Konsole verwenden können.
     * Obligatorische Benutzer: Das Server Configuration Tool erstellt außerdem einen Benutzer configUser_mfpadmin mit generiertem Zufallskennwort, den der Verwaltungsservice verwendet, um Kontakt zum lolaken Liveaktualisierungsservice aufzunehmen. Für den Liberty-Server wird der Benutzer MfpRESTUser erstellt. Wenn Ihr Anwendungsserver nicht für die Verwendung einer Basisregistry konfiguriert ist (sondern beispielsweise für eine LDAP-Registry), kann das Server Configuration Tool nicht den Namen eines vorhandenen Benutzers abfragen. In dem Fall müssen Sie Ant-Tasks verwenden.
 6. Das Element **webContainer** wird modifiziert.
 
-    Die angepasste Web-Containereigenschaft `deferServletLoad` wird auf "false" gesetzt. Die Laufzeitkomponente und der Verwaltungsservice müssen gestartet werden, wenn der Server gestartet wird. Diese Komponenten können so die JMX-Beans registrieren und die Synchronisation starten, die es der Laufzeitkomponente ermöglicht, alle Anwendungen und Adapter herunterzuladen, für die sie Services bereitstellen muss.
-7. Das Standardsteuerprogramm wird so angepasst, dass für `coreThreads` und `maxThreads` hohe Werte festgelegt werden, wenn Sie Liberty bis Version 8.5.5.5 verwenden. Ab Liberty Version 8.5.5.6 wird das Standardsteuerprogramm automatisch optimiert.
+    Die angepasste Web-Containereigenschaft `deferServletLoad` wird auf "false" gesetzt. Die Laufzeitkomponente und der Verwaltungsservice müssen gestartet werden, wenn der Server gestartet wird.
+Diese Komponenten können so die JMX-Beans registrieren und die Synchronisation starten, die es der Laufzeitkomponente ermöglicht, alle Anwendungen und Adapter herunterzuladen, für die sie Services
+bereitstellen muss. 7. Das Standardsteuerprogramm wird so angepasst, dass für `coreThreads` und `maxThreads` hohe Werte festgelegt werden, wenn Sie
+Liberty bis Version 8.5.5.5 verwenden. Ab Liberty Version 8.5.5.6 wird das Standardsteuerprogramm automatisch optimiert.
 
     Durch diese Einstellung werden Probleme durch Zeitlimitüberschreitungen
 vermieden, die
@@ -659,22 +673,20 @@ Abschluss der Installation können Sie wie folgt vorgehen, um die installierten 
 **Liberty-Installationsverzeichnis/bin**.
 2. Testen Sie die {{ site.data.keys.mf_console }} mit einem
 Web-Browser. Rufen Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) auf.
-Der Server wird standardmäßig am Port 9080 ausgeführt. Sie können den Wert anhand des Elements
-`<httpEndpoint>` in der Datei
-**server.xml** überprüfen. Eine Anmeldeanzeige erscheint.
+Der Server wird standardmäßig am Port 9080 ausgeführt. Sie können den Wert anhand des Elements `<httpEndpoint>` in der Datei **server.xml** überprüfen. Eine Anmeldeanzeige erscheint.
 
 
 
-![Anmeldeanzeige der Konsole(mfpconsole_signin.jpg)
+![Anmeldeanzeige der Konsole](mfpconsole_signin.jpg)
 
 3. Melden Sie sich mit **admin/admin** an. Dieser Benutzer wird standardmäßig vom
 Server Configuration Tool erstellt. 
 
     > **Hinweis:** Wenn Sie die Verbindung mit
 HTTP herstellen, werden die Anmelde-ID und das Kennwort im Klartext über das Netz gesendet. Verwenden Sie für eine sichere Serveranmeldung HTTPS.
-Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements
-`<httpEndpoint>` in der Datei **server.xml**.
-Der Standardwert ist 9443.
+Den HTTPS-Port des Liberty-Servers enthält das Attribut httpsPort des Elements `<httpEndpoint>` in der Datei **server.xml**. Der Standardwert ist 9443.
+
+
 
 4. Melden Sie sich über **Hallo
 Admin → Abmelden** bei der Konsole ab.
@@ -808,7 +820,8 @@ Das Kennwort für diesen Standard-Keystore ist
         
     > **Tipp:** Sie können es mit dem Dienstprogramm
 Keytool ändern, müssen das Kennwort dann aber auch in der Datei
-server.xml ändern, damit der Liberty-Server den Keystore lesen kann. In diesem Lernprogramm wird das Standardkennwort verwendet.     
+server.xml ändern, damit der Liberty-Server den Keystore lesen kann. In diesem Lernprogramm wird das Standardkennwort verwendet. 
+    
     * Geben Sie im Verzeichnis **WLP\_USER\_DIR/servers/mfp1/resources/security** den Befehl
 `keytool -list -keystore key.jks` ein. Der Befehl zeigt die Zertifikate im Keystore an. Es gibt nur ein Zertifikat mit dem Namen
 **default**. Sie werden aufgefordert, das Kennwort für den Keystore einzugeben

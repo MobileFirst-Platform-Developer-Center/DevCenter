@@ -32,7 +32,7 @@ downloads:
 </ul>
 <h3>Overview of the Resource Server component</h3>
 <p>The <strong>Resource Server</strong> is an external server that hosts the available resource.</p>
-<p>One use case is that services are deployed on a cloud, such as <strong>Bluemix</strong>. But this flow is not restricted to that case and works with any third-party server.</p>
+<p>One use case is that services are deployed on a cloud, such as <strong>IBM Cloud</strong>. But this flow is not restricted to that case and works with any third-party server.</p>
 <p>The public key that is necessary to verify the token must be configured for this component.</p>
 <p>Java and <code>node.js</code> libraries are provided for offline validation.</p>
 <h3>Overview of the client component</h3>
@@ -103,7 +103,7 @@ where <code>URL_to_authorization_server</code> is:<br />
         <description>This is the role that MFP OAuthTAI uses to protect the resource, and it is required to be mapped to 'All Authenticated in Application' in WAS and 'ALL_AUTHENTICATED_USERS' in Liberty</description>
         <role-name>TAIUserRole</role-name>
 </security-role>
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>You must modify the external server <code>server.xml</code> file, too. Configure the feature manager to include these features:<br />
 {% highlight xml  %}
@@ -114,7 +114,7 @@ where <code>URL_to_authorization_server</code> is:<br />
     <feature>servlet-3.0</feature>
     <feature>jndi-1.0</feature>
 </featureManager>
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>In your application, add a security role:<br />
 {% highlight xml  %}
@@ -126,7 +126,7 @@ where <code>URL_to_authorization_server</code> is:<br />
         </security-role>
     </application-bnd>
 </application>
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>Configure OAuthTAI, where you set which URLs are to be protected:<br />
 {% highlight xml  %}
@@ -173,7 +173,7 @@ function callProtectedRestAPI() {
 <li>If your Resource Server is running on Liberty, you must configure these properties by using JNDI. You can do this by adding entries to your <code>server.xml</code> file. For example:
 <p>{% highlight bash %} <br />
 <jndiEntry jndiName="imf.analytics.username" value="admin"/><br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>If your Resource Server is running on WebSphere Application Server, configure these properties as environment entries.<br />
 To do this, navigate from the WebSphere Application Server administration console to <strong>Servers</strong> > <strong>Server Types</strong> > <strong>WebSphere application servers</strong> > <em>{your_server}</em> > <strong>Server Infrastructure</strong> > <strong>Java and Process Management</strong> > <strong>Process Definition</strong> > <strong>Additional Properties</strong> > <strong>Environment Entries</strong> > <strong>New</strong>.<br />

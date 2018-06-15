@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Configuration de la journalisation et du traçage pour Application Center sur le serveur d'applications
-breadcrumb_title: Configuration de la journalisation et du traçage
+breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -85,8 +85,8 @@ Sur toutes les plateformes prises en charge, vous pouvez utiliser les propriét�
 
 Les propriétés JNDI suivantes sont applicables à l'application Web pour les services Application Center (**applicationcenter.war**).
 
-| Paramètres des propriétés | Paramètre | Description | 
+| Paramètres des propriétés | Paramètre | Description |
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour formater la sortie JSON avec des espaces, pour faciliter la lecture dans les fichiers journaux. | 
-| ibm.appcenter.logging.tosystemerror | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour imprimer tous les messages de journalisation dans les fichiers journaux d'erreurs système. Utilisez la propriété pour activer la journalisation globale. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Ce paramètre imprime toutes les instructions SQL générées dans les fichiers journaux. | 
+| ibm.appcenter.logging.formatjson | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour formater la sortie JSON avec des espaces, pour faciliter la lecture dans les fichiers journaux. |
+| ibm.appcenter.logging.tosystemerror | true | Par défaut, cette propriété a pour valeur false. Définissez-la sur true pour imprimer tous les messages de journalisation dans les fichiers journaux d'erreurs système. Utilisez la propriété pour activer la journalisation globale. |
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Ce paramètre imprime toutes les instructions SQL générées dans les fichiers journaux. |

@@ -1,12 +1,12 @@
 ---
 layout: tutorial
-title: Fonctions principales du produit
+title: Fonctions principales du produit 
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Avec {{ site.data.keys.product_full }}, vous pouvez utiliser des fonctions telles que le développement, le test, les connexions en arrière-plan, les notifications par commande push, le mode hors ligne, la mise à jour, la sécurité, l'analyse, la surveillance et la publication d'application.
+Avec {{ site.data.keys.product_full }}, vous pouvez utiliser des fonctions telles que le développement, les tests, les connexions en arrière-plan, les notifications push, le mode hors ligne, les mises à jour, la sécurité, analyse, la surveillance et la publication d'application.
 
 ### Développement
 {: #deployment }
@@ -28,11 +28,9 @@ Les logiciels SDK {{ site.data.keys.product }} prennent en charge les plateforme
 {: #back-end-connections }
 Certaines applications mobiles s'exécutent uniquement hors ligne, sans connexion à un système d'arrière plan, mais la plupart se connectent à des services d'entreprise existants afin de fournir les fonctions utilisateur essentielles. Par exemple, des clients peuvent utiliser une application mobile pour effectuer des achats sur n'importe quel site, à tout moment, sans tenir compte des horaires d'ouverture du  magasin. Leurs commandes doivent encore être traitées à l'aide de la plateforme e-commerce existante du magasin. Pour intégrer une application mobile à des services d'entreprise, vous devez utiliser un middleware de type passerelle mobile. {{ site.data.keys.product }} peut constituer cette solution intermédiaire et faciliter la communication avec les services de back end.
 
-### Notifications de commande push
+### Notifications push
 {: #push-notifications }
-Les notifications de commande push permettent aux applications d'entreprise d'envoyer des informations à des appareils mobiles, même lorsque l'application n'est pas utilisée. {{ site.data.keys.product }} inclut une infrastructure de notification unifiée qui fournit un mécanisme cohérent pour les notifications par commande push. Cette
-infrastructure de notification unifiée permet d'envoyer des notifications de commande push sans connaître les détails de chaque appareil ou plateforme ciblé
-car chaque plateforme mobile applique un mécanisme différent pour les notifications de commande push.
+Les notifications push permettent aux applications d'entreprise d'envoyer des informations à des appareils mobiles, même lorsque l'application n'est pas utilisée. {{ site.data.keys.product }} inclut une infrastructure de notification unifiée qui fournit un mécanisme cohérent pour les notifications push. Cette infrastructure de notification unifiée permet d'envoyer des notifications push sans connaître les détails de chaque appareil ou plateforme ciblée car chaque plateforme mobile applique un mécanisme différent pour les notifications push.
 
 ### Mode hors ligne
 {: #offline-mode }
@@ -43,10 +41,7 @@ mode hors ligne. Ces informations proviennent généralement d'un système expé
 
 ### Mise à jour
 {: #update }
-{{ site.data.keys.product }} simplifie la gestion des versions et la compatibilité des applications mobiles. Chaque fois qu'un utilisateur démarre une application mobile, cette dernière communique avec un serveur. Avec ce serveur,
-{{ site.data.keys.product }}
-peut déterminer si une version plus récente de l'application est disponible, et si tel est le cas, il peut en informer l'utilisateur ou envoyer une mise à
-jour d'application à l'appareil. Le serveur peut également imposer le passage à la dernière version d'une application afin d'empêcher l'usage d'une version obsolète.
+{{ site.data.keys.product }} simplifie la gestion des versions et la compatibilité des applications mobiles. Chaque fois qu'un utilisateur démarre une application mobile, cette dernière communique avec un serveur. Avec ce serveur, {{ site.data.keys.product }} peut déterminer si une version plus récente de l'application est disponible et, si tel est le cas, il peut en informer l'utilisateur ou envoyer une mise à jour d'application à l'appareil. Le serveur peut également imposer le passage à la dernière version d'une application afin d'empêcher l'usage d'une version obsolète.
 
 ### Sécurité
 {: #security }
@@ -76,6 +71,6 @@ opérationnelle évolutive qui est accessible dans {{ site.data.keys.mf_console 
 est un magasin d'applications d'entreprise. Il permet d'installer, de configurer et d'administrer un référentiel d'applications mobiles à l'usage d'individus et de groupes au sein de votre entreprise. Vous pouvez déterminer quelles sont les personnes de votre organisation qui peuvent accéder à Application Center et télécharger des applications dans le référentiel Application Center, ainsi que les personnes qui peuvent télécharger et installer ces applications sur un appareil mobile. Vous pouvez également utiliser Application Center pour collecter des commentaires en retour auprès d'utilisateurs et accéder à des informations concernant
 les appareils sur lesquels des applications sont installées.
 
-Application Center est similaire à la boutique App Store publique d'Apple ou à la boutique Play Store de Google, excepté qu'il vise le processus de développement.
+Application Center est similaire à la boutique App Store publique d'Apple ou à la boutique Play Store de Google, à ceci près qu'il vise le processus de développement.
 
 Application Center fournit un référentiel pour le stockage des fichiers d'application mobile et une console Web pour la gestion de ce référentiel. Application Center fournit également une application client mobile destinée à permettre aux utilisateurs de parcourir le catalogue des applications qui sont stockées par Application Center, d'installer des applications, de laisser des commentaires en retour pour l'équipe de développement et d'exposer des applications de production à IBM Endpoint Manager. L'accès aux procédures de téléchargement et d'installation d'applications à partir d'Application Center est contrôlé à l'aide de listes de contrôle d'accès.

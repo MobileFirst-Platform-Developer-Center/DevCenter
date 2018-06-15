@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Problemas e limitações conhecidos
+title: Problemas e Limitações Conhecidas
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -77,7 +77,8 @@ A Ferramenta de Configuração do Servidor tem as seguintes restrições:
 * As senhas que contêm caracteres de aspas simples ou aspas duplas podem não funcionar corretamente.
 * O console do Server Configuration Tool tem a mesma limitação de globalização que o console do Windows para exibir sequências que estão fora da página de códigos padrão.
 
-Também pode haver restrições ou anomalias nos vários aspectos de globalização devido a limitações em outros produtos, como navegadores, sistemas de gerenciamento de banco de dados ou kits de desenvolvimento de software em uso. Por exemplo:
+Também pode haver restrições ou anomalias nos vários aspectos de globalização devido a limitações em outros produtos, como navegadores, sistemas de gerenciamento de banco de dados ou kits de desenvolvimento de software em uso. Por
+exemplo:
 
 * Você deve definir o nome do usuário e a senha do Application Center apenas com caracteres ASCII. Essa limitação existe porque o WebSphere Application Server (perfis completo ou Liberty) não suporta senhas e nomes de usuário não ASCII. Consulte Caracteres que são válidos para IDs de usuário e senhas.
 * No Windows:

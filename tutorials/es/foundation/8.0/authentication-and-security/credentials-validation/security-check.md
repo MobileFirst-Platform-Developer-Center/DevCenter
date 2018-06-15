@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the CredentialsValidationSecurityCheck class
+title: Implementación de la clase CredentialsValidationSecurityCheck
 breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
@@ -9,26 +9,26 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
+Esta clase abstracta amplia `ExternalizableSecurityCheck` e implementa gran parte de sus métodos para facilitar el uso. Hay dos métodos obligatorios: `validateCredentials` y `createChallenge`.  
+La clase `CredentialsValidationSecurityCheck` está pensada para que los flujos simples validen credenciales arbitrarias para garantizar el acceso a un recurso. También se proporciona una capacidad incorporada para bloquear el acceso después de un determinado número de intentos.
 
-This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
+Este tutorial utiliza el ejemplo de un código PIN grabado en el código para proteger un recurso, y le proporciona al usuario 3 intentos(después de estos tres intentos, la instancia de aplicación cliente se bloquea durante 60 segundos).
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**Requisitos previos:** Asegúrese de leer los tutoriales [Conceptos de autorización](../../) y [Creación de una comprobación de seguridad](../../creating-a-security-check).
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [Creación de la comprobación de seguridad](#creating-the-security-check)
+* [Creación del desafío](#creating-the-challenge)
+* [Validación de las credenciales de usuario](#validating-the-user-credentials)
+* [Configuración de la comprobación de seguridad](#configuring-the-security-check)
+* [Comprobación de seguridad de ejemplo](#sample-security-check)
 
-## Creating the Security Check
+## Creación de la comprobación de seguridad
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[Cree un adaptador Java](../../../adapters/creating-adapters) y añada una clase Java denominada `PinCodeAttempts` que amplíe `CredentialsValidationSecurityCheck`.
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -45,12 +45,12 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## Creación del desafío
 {: #creating-the-challenge }
-When the security check is triggered, it sends a challenge to the client. Returning `null` creates an empty challenge, which may be sufficient in some cases.  
-Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
+Cuando se activa la comprobación de seguridad, envía un desafío al cliente. La devolución de `null` crea un desafío vacío que puede ser insuficiente en algunos casos.  
+De forma opcional, puede devolver datos con el desafío, por ejemplo un mensaje de error para mostrar u otros datos que el cliente pueda utilizar.
 
-For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
+Por ejemplo, `PinCodeAttempts` envía un mensaje de error predefinido y el número de intentos restantes.
 
 ```java
 @Override
@@ -62,13 +62,13 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-> The implementation of `errorMsg` is included in the sample application.
+> La implementación de `errorMsg` se incluye en la aplicación de muestra.
 
-`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
+`getRemainingAttempts()` se hereda de `CredentialsValidationSecurityCheck`.
 
-## Validating the user credentials
+## Validación de las credenciales de usuario
 {: #validating-the-user-credentials }
-When the client sends the answer from the challenge, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
+Cuando el cliente envía la respuesta del desafío, la respuesta se pasa a `validateCredentials` como `Map`. Este método debería implementar su lógica y devolver `true` si las credenciales son válidas.
 
 ```java
 @Override
@@ -94,11 +94,11 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-### Configuration class
+### Clase de configuración
 {: #configuration-class }
-You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
+También puede configurar un código PIN válido utilizando el archivo adapter.xml y {{ site.data.keys.mf_console }}.
 
-Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
+Cree una nueva clase Java que amplíe `CredentialsValidationSecurityCheckConfig`. Es importante ampliar una clase que coincida con la clase de comprobación de seguridad padre, para poder heredar la configuración predeterminada.
 
 ```java
 public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
@@ -113,9 +113,9 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` method to retrieve a specific property from the adapter.xml file. If no value is found, the third parameter defines a default value (`1234`).
+El único método requerido en esta clase es un constructor que pueda manejar la instancia `Properties`. Utilice el método `get[Type]Property` para recuperar una propiedad específica del archivo adapter.xml. Si no se encuentra ningún valor, el tercer parámetro define un valor predeterminado (`1234`).
 
-You can also add error handling in this constructor by using the `addMessage` method:
+También puede añadir el manejo de errores en este constructor utilizando el método `addMessage`:
 
 ```java
 public PinCodeConfig(Properties properties) {
@@ -140,7 +140,7 @@ public PinCodeConfig(Properties properties) {
 }
 ```
 
-In your main class (`PinCodeAttempts`), add the following two methods to be able to load the configuration:
+En la clase principal (`PinCodeAttempts`), añada los dos métodos siguientes para que puedan cargar la configuración:
 
 ```java
 @Override
@@ -153,9 +153,9 @@ protected PinCodeConfig getConfiguration() {
 }
 ```
 
-You can now use the `getConfiguration().pinCode` method to retrieve the default PIN code.  
+Ahora puede utilizar el método `getConfiguration().pinCode` para recuperar el código PIN predeterminado.  
 
-You can modify the `validateCredentials` method to use the PIN code from the configuration instead of the hardcoded value.
+Puede modificar el método `validateCredentials` para utilizar el código PIN de la configuración en lugar del valor no modificado.
 
 ```java
 @Override
@@ -181,9 +181,9 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Configuring the security check
+## Configuración de la comprobación de seguridad
 {: #configuring-the-security-check }
-In your adapter.xml, add a `<securityCheckDefinition>` element:
+En adapter.xml, añada un elemento de `<securityCheckDefinition>`:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
@@ -194,11 +194,11 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 </securityCheckDefinition>
 ```
 
-The `name` attribute must the name of the security check. Set the `class` parameter to the class that you created previously.
+El atributo `name` debe ser el nombre de la comprobación de seguridad. Establezca el parámetro `class` a la clase que ha creado previamente.
 
-A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `CredentialsValidationSecurityCheckConfig` configuration class.
+Un `securityCheckDefinition` puede contener cero más elementos `property`. La propiedad `pinCode` es la que se define en la clase de configuración `PinCodeConfig`. Las otras propiedades se heredan de la clase de configuración `CredentialsValidationSecurityCheckConfig`.
 
-By default, if you do not specify those properties in the adapter.xml file, you receive the default values that are set by `CredentialsValidationSecurityCheckConfig`:
+De forma predeterminada, si no especifica estas propiedades en el archivo adapter.xml, recibirá los valores que `CredentialsValidationSecurityCheckConfig` ha establecido:
 
 ```java
 public CredentialsValidationSecurityCheckConfig(Properties properties) {
@@ -209,18 +209,18 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
-The `CredentialsValidationSecurityCheckConfig` class defines the following properties:
+La clase `CredentialsValidationSecurityCheckConfig` define las propiedades siguientes:
 
-- `maxAttempts`: How many attempts are allowed before reaching a *failure*.
-- `attemptingStateExpirationSec`: Interval in seconds during which the client must provide valid credentials, and attempts are counted.
-- `successStateExpirationSec`: Interval in seconds during which the successful login holds.
-- `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
+- `maxAttempts`: Los intentos están permitidos antes de obtener un *error*.
+- `attemptingStateExpirationSec`: Intervalo en segundos durante el cual el cliente debe proporcionar credenciales válidas, y los intentos se cuentan.
+- `successStateExpirationSec`: Intervalo en segundos durante el cual se mantiene el inicio de sesión correcto.
+- `blockedStateExpirationSec`: Intervalo en segundos durante el cual se bloquea el cliente después de alcanzar `maxAttempts`.
 
-Note that the default value for `blockedStateExpirationSec` is set to `0`: if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+Tenga en cuenta que el valor predeterminado para `blockedStateExpirationSec` se establece en `0`: si el cliente envía credenciales inválidas, puede volverse a intentar "0 segundos después". Esto significa que la función "intentos" queda inhabilitada de forma predeterminada.
 
 
-## Sample Security Check
+## Comprobación de seguridad de ejemplo
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+[Descargue](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) el proyecto de Maven de comprobaciones de seguridad.
 
-The Maven project contains an implementation of CredentialsValidationSecurityCheck.
+El proyecto Maven contiene una implementación de CredentialsValidationSecurityCheck.

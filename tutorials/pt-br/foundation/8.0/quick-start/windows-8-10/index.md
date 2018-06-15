@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Demonstração de ponta a ponta do Windows 8.1 Universal e Windows 10 UWP
+title: Demonstração de ponta a ponta do Windows 8.1 Universal e do Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
@@ -60,10 +60,10 @@ Windows 10.
 
    ```csharp
    try
-      {
+                   {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -115,16 +115,12 @@ Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e i
 **host** e **port** com os valores corretos para seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
 **localhost** e **9080**.
-    * Se estiver usando um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
-**https**, **your-server-address** e **443**.
+    * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
+    * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.
 
     Como alternativa, se você tiver instalado {{ site.data.keys.mf_cli }}, navegue para a pasta raiz do projeto e execute o comando
-`mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado,
-[execute o comando
-mfpdev server add](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor, seguido por, por exemplo: mfpdev app
-register
-myBluemixServer`.
-
+`mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado, [execute o comando `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor, seguido por, por exemplo: `mfpdev app register myIBMCloudServer`.
+    
 2. Pressione o botão **Executar Aplicativo**.
 
 ### Resultados
@@ -136,7 +132,7 @@ adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no console de saída do Visual Studio.
 
-![Imagem do aplicativo que chamou um recurso do {{ site.data.keys.mf_server }}](success_response.png) com sucesso
+![Imagem de um aplicativo que chamou com sucesso um recurso do {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Etapas Seguintes
 {: #next-steps }

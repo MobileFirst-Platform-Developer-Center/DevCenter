@@ -33,7 +33,7 @@ Apps that were created with earlier versions of IBM MobileFirst Platform Foundat
 The migration assistance tool does not modify or move any developer code or comments of your app.
 
 1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
+    * Download the .tgz file from the [Git repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli).
     * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named **mfpmigrate-cli.tgz**, from the {{ site.data.keys.mf_console }}.
 2. Install the migration assistance tool.
     * Change to the directory where you downloaded the tool.
@@ -42,13 +42,13 @@ The migration assistance tool does not modify or move any developer code or comm
    ```bash
    npm install -g
    ```
-   
+
 3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
 
    ```bash
    mfpmigrate scan --in source_directory --out destination_directory --type ios
    ```
-    
+
     **source_directory**  
     The current location of the version project.
 
@@ -83,17 +83,17 @@ Before you begin you must:
         * libc++.tbd
 5. Remove **$(SRCROOT)/WorklightAPI/include** from the header search path.
 6. Replace all of the existing {{ site.data.keys.product_adj }} imports of headers with a single entry of the following new umbrella header:
-    * Objective-C: 
+    * Objective-C:
 
       ```objc
       #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
       ```
-    * Swift: 
+    * Swift:
 
       ```swift
       import IBMMobileFirstPlatformFoundation
       ```
-        
+
 Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
 
 #### What do to next
@@ -117,9 +117,9 @@ The required IBMMobileFirstPlatformFoundation pod is the core of the system. It 
 
 The following optional pods provide additional features.
 
-| Pod | Feature | 
+| Pod | Feature |
 |-----|---------|
-| IBMMobileFirstPlatformFoundationPush | Adds the IBMMobileFirstPlatformFoundationPush framework for enabling Push. | 
+| IBMMobileFirstPlatformFoundationPush | Adds the IBMMobileFirstPlatformFoundationPush framework for enabling Push. |
 | IBMMobileFirstPlatformFoundationJSONStore | Implements the JSONStore feature. Include this pod in your Podfile if you intend to use the JSONStore feature in your app. |
 | IBMMobileFirstPlatformFoundationOpenSSLUtils | Contains the {{ site.data.keys.product_adj }} embedded OpenSSL feature and loads automatically the openssl framework. Include this pod in your Podfile if you intend to use the OpenSSL provided by {{ site.data.keys.product_adj }}. |
 
@@ -152,90 +152,90 @@ The following optional pods provide additional features.
       platform :ios, 9.0
       pod 'IBMMobileFirstPlatformFoundation'
       ```
-      
+
     * Specify additional pods in the file from the list above, if your app needs to use the additional functionality that they provide. For example, if your app uses OpenSSL, the **Podfile** might look like this:
-    
+
       ```xml
       use_frameworks!
       platform :ios, 9.0
       pod 'IBMMobileFirstPlatformFoundation'
       pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
       ```
-        
+
       > **Note:** The previous syntax imports the latest version of the **IBMMobileFirstPlatformFoundation** pod. If you are not using the latest version of {{ site.data.keys.product_adj }}, you need to add the full version number, including the major, minor, and patch numbers. The patch number is in the format YYYYMMDDHH. For example, for importing the specific patch version 8.0.2016021411 of the **IBMMobileFirstPlatformFoundation** pod the line would look like this:
 
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
       ```
-        
+
       Or to get the last patch for the minor version number the syntax such is
-    
+
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '~>8.0.0'
       ```
-      
+
     * Verify that the Xcode project is closed.
     * Run the `pod install` command.
-        
+
     This command installs the {{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** and any other frameworks that are specified in the Podfile and their dependencies. It then generates the pods project, and integrates the client project with the {{ site.data.keys.product_adj }} SDK.
 7. Open your **ProjectName.xcworkspace** file in Xcode by typing open **ProjectName.xcworkspace** from a command line. This file is in the same directory as the **ProjectName.xcodeproj** file.
 8. Replace all of the existing {{ site.data.keys.product_adj }} imports of headers with a single entry of the following new umbrella header:
-    
+
    **Objective-C**
-    
+
    ```objc
    #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
    ```
-    
+
    **Swift**
-    
+
    ```swift
    import IBMMobileFirstPlatformFoundation
    ```
-    
+
    If you are using Push or JSONStore, you need to include an independent import.
 
    #### Push
    {: #push }
-    
+
    **Objective-C**
-    
+
    ```objc
    #import <IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h>
    ```
-    
+
    **Swift**
-    
+
    ```swift
    import IBMMobileFirstPlatformFoundationPush
    ```
-    
+
    ##### JSONStore
    {: #jsonstore }
-    
+
    **Objective-C**
-    
+
    ```objc
    #import <IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h>
    ```
-    
+
    **Swift**
-    
+
    ```swift
    import IBMMobileFirstPlatformFoundationJSONStore
    ```
-    
+
 9. In the **Build Settings** tab, under **Other Linker Flags**, add `$(inherited)` at the beginning of the `-ObjC` flag. For example:
 
     ![Adding $(inherited) to ObjC flag in Xcode Build Settings](add_inherited_to_ObjC.jpg)
- 
+
 10. Beginning with Xcode 7, TLS must be enforced, see Enforcing TLS-secure connections in iOS apps.  
 
 <br/>
 Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
 
-#### What to do next
-{: #what-to-do-next }
+#### What next
+{: #what-next }
 Replace the client-side APIs that are discontinued or not in V8.0.
 
 ## Migrating encryption in iOS
@@ -244,30 +244,30 @@ If your iOS application used OpenSSL encryption, you might want to migrate your 
 
 For more information on the iOS encryption options for migration, see [Enabling OpenSSL for iOS](../../../application-development/sdk/ios/additional-information/#enabling-openssl-for-ios).
 
-## Updating the iOS code 
+## Updating the iOS code
 {: #updating-the-ios-code }
 After updating the iOS framework and making necessary configuration changes, a number of issues can be relevant to your specific application code.  
 The iOS API changes are listed in the table below.
 
-| API element | Migration path | 
+| API element | Migration path |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} | Geolocation removed. Use native iOS or third-party packages for GeoLocation. |
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement. | 
-| `WL.Client.deleteUserPref(key, options)` | No replacement. You can use an adapter and the [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API to manage user preferences. | 
-| `[WLClient getRequiredAccessTokenScopeFromStatus]` | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). | 
-| `[WLClient login:withDelegate:]` | Use [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:). | 
-| `[WLClient logout:withDelegate:]` | Use [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:). | 
-| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). | 
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement. |
+| `WL.Client.deleteUserPref(key, options)` | No replacement. You can use an adapter and the [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API to manage user preferences. |
+| `[WLClient getRequiredAccessTokenScopeFromStatus]` | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
+| `[WLClient login:withDelegate:]` | Use [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:). |
+| `[WLClient logout:withDelegate:]` | Use [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:). |
+| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
 | {::nomarkdown}<ul><li><code>[WLClient obtainAccessTokenForScope:withDelegate:]</code></li><li><code>[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]</code></li></ul>{:/} | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
 | `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | Use [Objective-C client-side push API for iOS apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) from the IBMMobileFirstPlatformFoundationPush framework. |
 | `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | Use [Objective-C client-side push API for iOS apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) from the IBMMobileFirstPlatformFoundationPush framework. |
 | `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | Deprecated. Use [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:) instead. |
 | `[WLClient sendUrlRequest:delegate:]` | Use [`[WLResourceRequest sendWithDelegate:delegate]`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:) instead. |
-| `[WLClient (void) logActivity:(NSString *) activityType]`	| Removed. Use an Objective C logger. | 
-| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | Use the OS APIs to share tokens across applications. | 
-| `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc). | 
-| `BaseProvisioningChallengeHandler` | No replacement. Device provisioning is now handled automatically by the security framework. | 
-| `ChallengeHandler` | For custom gateway challenges, use [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenges, use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). | 
-| `WLChallengeHandler` | Use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). | 
-| `ChallengeHandler.isCustomResponse()` | Use [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenge handlers, use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). | 
+| `[WLClient (void) logActivity:(NSString *) activityType]`	| Removed. Use an Objective C logger. |
+| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | Use the OS APIs to share tokens across applications. |
+| `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc). |
+| `BaseProvisioningChallengeHandler` | No replacement. Device provisioning is now handled automatically by the security framework. |
+| `ChallengeHandler` | For custom gateway challenges, use [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenges, use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
+| `WLChallengeHandler` | Use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
+| `ChallengeHandler.isCustomResponse()` | Use [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). |
+| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenge handlers, use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |

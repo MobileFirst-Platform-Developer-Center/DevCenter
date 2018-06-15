@@ -5,17 +5,17 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - 名称：下载 Android Studio 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - 名称：下载适配器 Maven 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: Download Android Studio project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - name: Download Adapter Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 先决条件
 {: #prerequisites }
 
 * 阅读 [JSONStore 父教程](../)
-* 确保已将 {{ site.data.keys.product_adj }} 本机 SDK 添加到 Android Studio 项目。遵循[向 Android 应用程序添加 {{ site.data.keys.product }} SDK](../../../application-development/sdk/android/) 教程。
+* 确保已将 {{ site.data.keys.product_adj }} 本机 SDK 添加到 Android Studio 项目。 遵循[向 Android 应用程序添加 {{ site.data.keys.product }} SDK](../../../application-development/sdk/android/) 教程。
 
 #### 跳转至：
 {: #jump-to }
@@ -31,8 +31,15 @@ downloads:
 2. 将以下代码添加到现有 `dependencies` 部分：
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+3. 将以下内容添加到 build.gradle 文件的“DefaultConfig”部分。
+```
+  ndk {
+        abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+      }
+ ```     
+ > **注**：我们将添加 abiFilters 以确保具有 JSONStore 的应用程序将在上述指定的任何体系结构中运行。由于 JSONStore 依赖于仅支持这些体系结构的第三方库，因此需要此项。
 
 ## 基本用法
 {: #basic-usage }
@@ -40,7 +47,7 @@ compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.
 {: #open }
 使用 `openCollections` 打开一个或多个 JSONStore 集合。
 
-启动或供应集合意味着创建包含集合和文档的持久存储（如果不存在）。如果持久存储已加密且传递了正确密码，那么将运行必需的安全过程才能访问数据。
+启动或供应集合意味着创建包含集合和文档的持久存储（如果不存在）。 如果持久存储已加密且传递了正确密码，那么将运行必需的安全过程才能访问数据。
 
 有关可在初始化时启用的可选功能，请参阅本教程第二部分中的**安全性、多用户支持**和 **{{ site.data.keys.product_adj }} 适配器集成**。
 
@@ -60,9 +67,8 @@ try {
 ```
 
 ### 获取
-
 {: #get }
-使用 `getCollectionByName` 来创建集合存取器。必须先调用 `openCollections`，然后才能调用 `getCollectionByName`。
+使用 `getCollectionByName` 来创建集合存取器。 必须先调用 `openCollections`，然后才能调用 `getCollectionByName`。
 
 ```java
 Context context = getContext();
@@ -99,7 +105,7 @@ try {
 
 ### 查找
 {: #find }
-使用 `findDocuments` 来通过查询查找集合中的文档。使用 `findAllDocuments` 来检索集合中的所有文档。使用 `findDocumentById` 来按文档唯一标识进行搜索。
+使用 `findDocuments` 来通过查询查找集合中的文档。 使用 `findAllDocuments` 来检索集合中的所有文档。 使用 `findDocumentById` 来按文档唯一标识进行搜索。
 
 ```java
 Context context = getContext();
@@ -122,9 +128,8 @@ try {
 ```
 
 ### 替换
-
 {: #replace }
-使用 `replaceDocument` 来修改集合中的文档。用于执行替换的字段是文档唯一标识 `_id`。
+使用 `replaceDocument` 来修改集合中的文档。 用于执行替换的字段是文档唯一标识 `_id`。
 
 ```java
 Context context = getContext();
@@ -147,7 +152,7 @@ try {
 ### 除去
 {: #remove }
 使用 `removeDocumentById` 以删除集合中的文档。
-在调用 `markDocumentClean` 之前，不会从集合中擦除文档。有关更多信息，请参阅本教程后面的 **{{ site.data.keys.product_adj }} 适配器集成**部分。
+在调用 `markDocumentClean` 之前，不会从集合中擦除文档。 有关更多信息，请参阅本教程后面的 **{{ site.data.keys.product_adj }} 适配器集成**部分。
 
 ```java
 Context context = getContext();
@@ -166,7 +171,7 @@ try {
 
 ### 除去集合
 {: #remove-collection }
-使用 `removeCollection` 以删除集合中存储的所有文档。此操作类似于数据库术语中的删除表。
+使用 `removeCollection` 以删除集合中存储的所有文档。 此操作类似于数据库术语中的删除表。
 
 ```java
 Context context = getContext();
@@ -203,12 +208,12 @@ try {
 {: #advanced-usage }
 ### 安全性
 {: #security }
-您可以通过将包含密码的 `JSONStoreInitOptions` 对象传递到 `openCollections` 函数来保护存储区中的所有集合。如果未传递密码，那么将不会加密存储区中所有集合的文档。
+您可以通过将包含密码的 `JSONStoreInitOptions` 对象传递到 `openCollections` 函数来保护存储区中的所有集合。 如果未传递密码，那么将不会加密存储区中所有集合的文档。
 
 某些安全元数据存储在共享首选项中 (Android)。  
-此存储利用 256 位高级加密标准 (AES) 密钥进行加密。所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。
+此存储利用 256 位高级加密标准 (AES) 密钥进行加密。 所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。
 
-使用 `closeAll` 以锁定对所有集合的访问，直至再次调用 `openCollections`。如果将 `openCollections` 当作登录函数，那么可将 `closeAll` 当作对应的注销函数。
+使用 `closeAll` 以锁定对所有集合的访问，直至再次调用 `openCollections`。 如果将 `openCollections` 当作登录函数，那么可将 `closeAll` 当作对应的注销函数。
 
 使用 `changePassword` 来更改密码。
 
@@ -231,7 +236,7 @@ try {
 
 #### 多用户支持
 {: #multiple-user-support }
-您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储。`openCollections` 函数可使用包含用户名的选项对象。如果未指定用户名，那么缺省用户名为“**jsonstore**”。
+您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储。 `openCollections` 函数可使用包含用户名的选项对象。 如果未指定用户名，那么缺省用户名为“**jsonstore**”。
 
 ```java
 Context context = getContext();
@@ -252,12 +257,12 @@ try {
 
 #### {{ site.data.keys.product_adj }} 适配器集成
 {: #mobilefirst-adapter-integration }
-此部分假定您熟悉适配器。适配器集成为可选，其支持将数据从集合发送到适配器以及从适配器将数据获取到集合。
+此部分假定您熟悉适配器。 适配器集成为可选，其支持将数据从集合发送到适配器以及从适配器将数据获取到集合。
 如果需要提高灵活性，可以使用 `WLResourceRequest` 之类的函数或者自己的 `HttpClient` 实例来实现这些目标。
 
 #### 适配器实现
 {: #adapter-implementation }
-创建一个适配器并将其命名为“**JSONStoreAdapter**”。将其过程定义为 `addPerson`、`getPeople`、`pushPeople`、`removePerson` 和 `replacePerson`。
+创建一个适配器并将其命名为“**JSONStoreAdapter**”。 将其过程定义为 `addPerson`、`getPeople`、`pushPeople`、`removePerson` 和 `replacePerson`。
 
 ```javascript
 function getPeople() {
@@ -300,16 +305,16 @@ WLResponseListener responseListener = new WLResponseListener() {
   }
   @Override
   public void onSuccess(WLResponse response) {
-    try { 
-JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
+    try {
+      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
     } catch(Exception e) {
       // error decoding JSON data
     }
   }
 };
 
-try { 
-WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
+try {
+  WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
   request.send(responseListener);
 } catch (URISyntaxException e) {
   // handle error
@@ -336,7 +341,7 @@ try {
 
 #### 推送更改
 {: #push-changes }
-要将更改推送到适配器，请调用 `findAllDirtyDocuments` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。在发送数据并且收到成功响应后，确保调用 `markDocumentsClean`。
+要将更改推送到适配器，请调用 `findAllDirtyDocuments` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。 在发送数据并且收到成功响应后，确保调用 `markDocumentsClean`。
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -351,8 +356,8 @@ WLResponseListener responseListener = new WLResponseListener() {
 };
 Context context = getContext();
 
-try { 
-String collectionName = "people";
+try {
+  String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   List<JSONObject> dirtyDocuments = people.findAllDirtyDocuments();
 

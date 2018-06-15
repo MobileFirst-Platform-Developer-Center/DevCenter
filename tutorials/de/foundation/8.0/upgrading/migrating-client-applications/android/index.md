@@ -11,8 +11,7 @@ Wenn Sie ein mit der
 IBM MobileFirst Platform Foundation ab Version 6.2.0
 erstelltes natives Android-Projekt migrieren möchten, müssen Sie das Projekt so modifizieren, dass es das SDK der aktuellen Version verwendet. Ersetzen Sie
 dann die clientseitigen APIs, die
-weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die
-Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren. 
+weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -33,8 +32,8 @@ Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für
 
 * Sie benötigen eine native, mit der
 {{ site.data.keys.product }} erstellte Android-Anwendung. 
-* Sie benötigen Internetzugriff. 
-* Node.js ab Version 4.0.0 muss installiert sein. 
+* Sie benötigen Internetzugriff.
+* Node.js ab Version 4.0.0 muss installiert sein.
 * Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
 finden Sie unter
 [Apps früherer Releases umstellen](../).
@@ -47,8 +46,7 @@ Das Unterstützungstool für die Migration modifiziert oder verschiebt keinen En
 
 1. Wählen Sie eine der folgenden Alternativen, um das Unterstützungstool für die Migration herunterzuladen: 
     * Laden Sie die .tgz-Datei aus dem [Git-Repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli) herunter.
-    * Laden Sie das {{ site.data.keys.mf_dev_kit }} über die {{ site.data.keys.mf_console }} herunter. Das Kit enthält die Datei mfpmigrate-cli.tgz
-mit dem Unterstützungstool für die Migration. 
+    * Laden Sie das {{ site.data.keys.mf_dev_kit }} über die {{ site.data.keys.mf_console }} herunter. Das Kit enthält die Datei mfpmigrate-cli.tgz mit dem Unterstützungstool für die Migration.
 2. Installieren Sie das Unterstützungstool für die Migration. 
     * Navigieren Sie zu dem Verzeichnis, in das Sie das Tool heruntergeladen haben. 
     * Installieren Sie das Tool mit npm. Geben Sie dazu den folgenden Befehl ein: 
@@ -90,6 +88,8 @@ Android Studio erstellt wurde und das
 [SDK der {{ site.data.keys.product }}
 in Android Studio (7.1) zu einer neuen oder vorhandenen Anwendung hinzufügen](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)).
 
+
+
 Wenn Ihr Android-Studio-Projekt für das Hinzufügen einer früheren Version des
 {{ site.data.keys.product_adj }}-SDK konfiguriert war, entfernen Sie
 **compile group** aus den
@@ -109,15 +109,16 @@ Jetzt können Sie mit lokalen oder fernen SDK-Dateien das SDK und die Konfigurat
 > Hinweis: Nach dem Import des neuen SDK müssen Sie die Javadoc-Dateien manuell importieren
 (siehe
 [Javadocs in einem Android-Studio-Gradle-Projekt
-registrieren](../../../application-development/sdk/android/additional-information).Jetzt können Sie mit dem Entwickeln Ihrer nativen
+registrieren](../../../application-development/sdk/android/additional-information).
+
+Jetzt können Sie mit dem Entwickeln Ihrer nativen
 Android-Anwendung mit dem SDK der {{ site.data.keys.product_adj }}
 beginnen. Möglicherweise müssen Sie Ihren Code an die Änderungen
 der API von Version 8.0.0 anpassen (siehe [Android-Code aktualisieren](#updating-the-android-code)). 
 
 #### Nächste Schritte
 {: #what-to-do-next }
-Ersetzen Sie die clientseitigen APIs, die
-weggefallen oder nicht in Version 8.0 enthalten sind. 
+Ersetzen Sie die clientseitigen APIs, die weggefallen oder nicht in Version 8.0 enthalten sind. 
 
 ## Android-Code aktualisieren
 {: #updating-the-android-code }
@@ -134,8 +135,8 @@ am {{ site.data.keys.product_adj }}-Android-SDK aufgelistet.
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | Kein Ersatz |
 | {::nomarkdown}<ul><li><code>WLDevice WLClient.getWLDevice()</code></li><li><code>WLClient.transmitEvent(org.json.JSONObject event) </code></li><li><code>WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy) </code></li><li><code>WLClient.purgeEventTransmissionBuffer() </code></li></ul>{:/} | Verwenden Sie für die Geoortung die Android-API oder Pakete von anderen Anbietern. |
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz|
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz|
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz |
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz |
 | `WLClient.checkForNotifications()` | Verwenden Sie [`WLAuthorizationManager.obtainAccessToken("", listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#obtainAccessToken(java.lang.String,%20com.worklight.wlclient.api.WLAccessTokenListener), um die Verbindungsmöglichkeiten zum Server zu überprüfen und Anwendungsmanagementregeln anzuwenden.|
 | {::nomarkdown}<ul><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.login(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | Verwenden Sie [`AuthorizationManager.login()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#login(java.lang.String,%20org.json.JSONObject,%20com.worklight.wlclient.api.WLLoginResponseListener).|
 | {::nomarkdown}<ul><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)</code></li><li><code>WLClient.logout(java.lang.String realmName, WLRequestListener listener)</code></li></ul>{:/} | Verwenden Sie [`AuthorizationManager.logout()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc#logout(java.lang.String,%20com.worklight.wlclient.api.WLLogoutResponseListener).|
@@ -145,7 +146,7 @@ am {{ site.data.keys.product_adj }}-Android-SDK aufgelistet.
 | `WLClient.logActivity(java.lang.String activityType)` | Verwenden Sie [`com.worklight.common.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/Logger.html?view=kc). |
 | `WLAuthorizationPersistencePolicy` | Kein Ersatz. Für die Implementierung der Autorisierungspersistenz müssen Sie das Autorisierungstoken im Anwendungscode speichern und angepasste HTTP-Anforderungen erstellen. Weitere Informationen finden Sie im Implementierungsbeispiel für angepasste Java-Ressourcenanforderungen ([Java™ custom resource-request implementation sample](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_custom_request_to_resource_java.html?view=kc#c_custom_request_to_resource_hybrid)).|
 | {::nomarkdown}<ul><li><code>WLSimpleSharedData.setSharedToken(myName, myValue)</code></li><li><code>WLSimpleSharedData.getSharedToken(myName)</code></li><li><code>WLSimpleSharedData.clearSharedToken(myName)</code></li></ul>{:/} | Verwenden Sie für die anwendungsübergreifende Nutzung von Token die Android-APIs.|
-| `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | Kein Ersatz|
+| `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | Kein Ersatz |
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Verwenden Sie [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/BaseChallengeHandler.html?view=kc).|
 | `ChallengeHandler` | Verwenden Sie für angepasste Gateway-Abfragen [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc). Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc).|
 | `WLChallengeHandler` | Verwenden Sie [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc). |
@@ -155,10 +156,9 @@ am {{ site.data.keys.product_adj }}-Android-SDK aufgelistet.
 #### Von den traditionellen `org.apach.http`-APIs abhängige und nicht mehr unterstützte Android-APIs
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
 
-| API-Element| Migrationspfad|
+| API-Element | Migrationspfad |
 |-------------|----------------|
-| `org.apache.http.Header[]` wird nicht mehr verwendet. Aus diesem Grund wurden die folgenden Methoden
-entfernt: | |
+| `org.apache.http.Header[]` wird nicht mehr verwendet. Aus diesem Grund wurden die folgenden Methoden entfernt: | |
 | `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Verwenden Sie stattdessen die neue API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | Verwenden Sie stattdessen die neue API `WLResourceRequest.addHeader(String name, String value)`. |
 | `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Verwenden Sie stattdessen die neue API `List<String> WLResourceRequest.getHeaders(String headerName)`. |

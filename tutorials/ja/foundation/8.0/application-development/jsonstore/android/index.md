@@ -5,17 +5,17 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: Android Studio プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: Download Android Studio project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - name: Download Adapter Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
 {: #prerequisites }
 
 * [JSONStore 親チュートリアル](../)を読む。
-* {{ site.data.keys.product_adj }} ネイティブ SDK が Android Studio プロジェクトに追加されていることを確認する。[『Android アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/android/)チュートリアルに従ってください。
+* {{ site.data.keys.product_adj }} ネイティブ SDK が Android Studio プロジェクトに追加されていることを確認する。 [『Android アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/android/)チュートリアルに従ってください。
 
 #### ジャンプ先:
 {: #jump-to }
@@ -31,8 +31,15 @@ downloads:
 2. 既存の `dependencies` セクションに以下を追加します。
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+3. build.gradle ファイルの「DefaultConfig」セクションに次を追加します。
+```
+  ndk {
+        abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+      }
+ ```     
+ > **注** : JSONStore が含まれるアプリケーションが、上で指定したいずれかのアーキテクチャーで確実に実行されるように abiFilters を追加します。これが必要なのは、これらのアーキテクチャーのみをサポートするサード・パーティーのライブラリーに JSONStore が依存しているためです。
 
 ## 基本的な使用法
 {: #basic-usage }
@@ -40,7 +47,7 @@ compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.
 {: #open }
 1 つ以上の JSONStore コレクションを開くには、`openCollections` を使用します。
 
-コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
+コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。 永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
 初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
@@ -61,7 +68,7 @@ try {
 
 ### 取得
 {: #get }
-コレクションへのアクセス機能を作成するには、`getCollectionByName` を使用します。`getCollectionByName` を呼び出す前に `openCollections` を呼び出す必要があります。
+コレクションへのアクセス機能を作成するには、`getCollectionByName` を使用します。 `getCollectionByName` を呼び出す前に `openCollections` を呼び出す必要があります。
 
 ```java
 Context context = getContext();
@@ -98,7 +105,7 @@ try {
 
 ### 検索
 {: #find }
-照会を使用してコレクション内のドキュメントを見つけるには、`findDocuments` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllDocuments` を使用します。ドキュメントの固有 ID で検索するには、`findDocumentById` を使用します。
+照会を使用してコレクション内のドキュメントを見つけるには、`findDocuments` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllDocuments` を使用します。 ドキュメントの固有 ID で検索するには、`findDocumentById` を使用します。
 
 ```java
 Context context = getContext();
@@ -122,7 +129,7 @@ try {
 
 ### 置換
 {: #replace }
-コレクション内のドキュメントを変更するには、`replaceDocument` を使用します。置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
+コレクション内のドキュメントを変更するには、`replaceDocument` を使用します。 置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
 
 ```java
 Context context = getContext();
@@ -145,7 +152,7 @@ try {
 ### 削除
 {: #remove }
 ドキュメントをコレクションから削除するには、`removeDocumentById` を使用します。
-`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
+`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。 詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```java
 Context context = getContext();
@@ -201,12 +208,12 @@ try {
 {: #advanced-usage }
 ### セキュリティー
 {: #security }
-`JSONStoreInitOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
+`JSONStoreInitOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。 パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
 一部のセキュリティー・メタデータは共有設定で保管されます (Android)。  
-ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
+ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。 すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
 
-`closeAll` を使用して、`closeAll` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`openCollections` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。
+`closeAll` を使用して、`closeAll` を再度呼び出すまですべてのコレクションへのアクセスをロックします。 `openCollections` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。
 
 `changePassword` を使用して、パスワードを変更します。
 
@@ -229,7 +236,7 @@ try {
 
 #### 複数ユーザー・サポート
 {: #multiple-user-support }
-単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 ""**jsonstore**"" が使用されます。
+単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。 `openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。 ユーザー名が指定されていない場合、デフォルトのユーザー名 ""**jsonstore**"" が使用されます。
 
 ```java
 Context context = getContext();
@@ -250,15 +257,15 @@ try {
 
 #### {{ site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
-このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
+このセクションは、ユーザーがアダプターについて理解していることを前提とします。 アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
 `WLResourceRequest` などの関数を使用することで、またはより柔軟性が必要な場合は `HttpClient` の独自インスタンスを使用することで、これらの目標を達成できます。
 
 #### アダプターの実装
 {: #adapter-implementation }
-アダプターを作成し、"**JSONStoreAdapter**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
+アダプターを作成し、"**JSONStoreAdapter**" という名前を付けます。 このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
-function getPeople() {
+function getPeople () {
 	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
@@ -296,10 +303,10 @@ WLResponseListener responseListener = new WLResponseListener() {
   public void onFailure(final WLFailResponse response) {
     // handle failure
 }
-@Override
+  @Override
   public void onSuccess(WLResponse response) {
     try {
-  JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
+      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
     } catch(Exception e) {
       // error decoding JSON data
     }
@@ -334,7 +341,7 @@ JSONStore でドキュメントが「ダーティー」とマーキングされ�
 
 #### 変更のプッシュ
 {: #push-changes }
-変更をアダプターにプッシュするには、`findAllDirtyDocuments` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。データが送信され、成功応答を受信した後、`markDocumentsClean` を呼び出す必要があります。
+変更をアダプターにプッシュするには、`findAllDirtyDocuments` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。 データが送信され、成功応答を受信した後、`markDocumentsClean` を呼び出す必要があります。
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -342,7 +349,7 @@ WLResponseListener responseListener = new WLResponseListener() {
   public void onFailure(final WLFailResponse response) {
     // handle failure
 }
-@Override
+  @Override
   public void onSuccess(WLResponse response) {
     // handle success
   }

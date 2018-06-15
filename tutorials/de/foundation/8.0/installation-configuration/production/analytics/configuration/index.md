@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server Konfigurationshandbuch
-breadcrumb_title: Konfigurationshandbuch
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -11,7 +11,7 @@ weight: 2
 muss konfiguriert werden. Einige der Konfigurationsparameter gelten für einen Einzelknoten und andere Parameter gelten für den gesamten Cluster.
 Welcher Parameter wofür gilt, ist jeweils angegeben. 
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Konfigurationseigenschaften](#configuration-properties)
@@ -149,6 +149,8 @@ die JNDI-Eigenschaft **analytics/httpport** und die Systemumgebungsvariable
 **ANALTYICS_httpport** definiert haben, wird der Wert für
 **ANALYTICS_httpport** verwendet. 
 
+> **Wichtiger Hinweis**: Zurzeit bietet MobileFirst Analytics Version 8.0 keine Unterstützung für mehrere Nutzer. Ereignisse von MobileFirst Server werden standardmäßig an eine Einzelnutzerarchitektur gesendet. 
+
 #### Dokumentlebensdauer
 {: #document-time-to-live-ttl }
 Die Lebensdauer ist für das Erstellen und Verwalten einer Datenaufbewahrungsrichtlinie wichtig. Ihre Entscheidungen in diesem Bereich haben dramatische Auswirkungen auf Ihren Systemressourcenbedarf. Je länger Sie Daten aufbewahren, desto mehr
@@ -189,6 +191,8 @@ Es folgt eine Liste der unterstützten Dokumenttypen:
 
 
 > **Hinweis:** Wenn Sie eine Migration für frühere Versionen von {{ site.data.keys.mf_analytics_server }} durchführen und zuvor JNDI-Eigenschaften für die Lebensdauer konfiguriert hatten, lesen Sie die Informationen unter [Von früheren Versionen von {{ site.data.keys.mf_analytics_server }} verwendete Servereigenschaften umstellen](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+
+
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -289,7 +293,7 @@ auf einem der unterstützten App-Server.
 2. Bearbeiten Sie die Konfigurationsdatei des Anwendungsservers, um JNDI-Eigenschaften zu konfigurieren. (Sie können auch Systemumgebungsvariablen verwenden.) Konfigurieren Sie mindestens die folgenden Flags: 
 
     | Flag | Wert (Beispiel) | Standardwert | Hinweis |
-    | ---- | --------------- | ------------ | ------- |
+    |------|-----------------|---------|------|
     | cluster.name | 	worklight	| worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
     | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
@@ -329,7 +333,7 @@ für Überwachung und dynamische Konfiguration zugänglich zu machen.
 3. Bearbeiten Sie die Datei **config/elasticsearch.yml** und konfigurieren Sie mindestens die folgenden Flags.
 
     | Flag | Wert (Beispiel) | Standardwert | Hinweis |
-    | ---- | --------------- | ------------ | ------- |
+    |------|-----------------|---------|------|
     | cluster.name | 	worklight	| worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
     | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |

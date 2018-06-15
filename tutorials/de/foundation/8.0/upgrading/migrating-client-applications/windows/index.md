@@ -11,8 +11,7 @@ Wenn Sie ein mit der
 IBM MobileFirst Platform Foundation ab Version 6.2.0
 erstelltes natives Windows-Projekt migrieren möchten, müssen Sie das Projekt so modifizieren, dass es das SDK der aktuellen Version verwendet. Ersetzen Sie
 dann die clientseitigen APIs, die
-weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die
-Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren. 
+weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -33,8 +32,8 @@ Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für
 
 * Sie benötigen eine mit der
 IBM MobileFirst Platform Foundation erstellte, native Windows-Anwendung. 
-* Sie benötigen Internetzugriff. 
-* Node.js ab Version 4.0.0 muss installiert sein. 
+* Sie benötigen Internetzugriff.
+* Node.js ab Version 4.0.0 muss installiert sein.
 * Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
 finden Sie unter
 [Apps früherer Releases umstellen](../).
@@ -104,7 +103,9 @@ Microsoft Visual C++ 2013 Runtime-Paket für Windows oder das Microsoft
 Visual C++ 2013 Runtime-Paket für Windows Phone als Referenz zu Ihrer App hinzufügen. Klicken Sie dazu
 in
 Visual Studio mit der rechten Maustaste auf die Referenzen Ihres nativen Projekts und führen Sie
-abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus:         * Windows-Desktops und -Tablets: Klicken Sie mit der rechten Maustaste auf
+abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus: 
+
+        * Windows-Desktops und -Tablets: Klicken Sie mit der rechten Maustaste auf
 **Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows → OK** aus.
         * Windows Phone 8 Universal: Klicken Sie mit der rechten Maustaste auf
 **Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → OK** aus.
@@ -156,22 +157,22 @@ gibt es eine Reihe von Änderungen am Windows-SDK, durch die Änderungen an Apps
 
 | Kategorie | Beschreibung | Empfohlene Aktion |
 |----------|-------------|--------------------|
-| `ChallengeHandler`  | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler`, `isCustomResponse()`  | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
-| `ChallengeHandler.submitAdapterAuthentication` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. |
-| `WLAuthorizationManager` | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`. |
-| `WLChallengeHandler` | Verwenden Sie `SecurityCheckChallengeHandler`. |
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  |	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`.|
-| `WLClient` | 	Verwenden Sie stattdessen `WorklightClient`. |
+| `ChallengeHandler` | | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler`, `isCustomResponse()` | | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
+| `ChallengeHandler.submitAdapterAuthentication` | | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLAuthorizationManager` | | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`. |
+| `WLChallengeHandler` | | Verwenden Sie `SecurityCheckChallengeHandler`. |
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | 	|	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`. |
+| `WLClient` | 	|	Verwenden Sie stattdessen `WorklightClient`. |
 | `WLErrorCode` | 	Nicht unterstützt |
-| `WLFailResponse` | 	Verwenden Sie stattdessen `WorklightResponse`. |
-| `WLResponse` | Verwenden Sie stattdessen `WorklightResponse`. |
-| `WLProcedureInvocationData` | Verwenden Sie stattdessen `WorklightProcedureInvocationData`. |
+| `WLFailResponse` | 	| Verwenden Sie stattdessen `WorklightResponse`. |
+| `WLResponse` | | Verwenden Sie stattdessen `WorklightResponse`. |
+| `WLProcedureInvocationData` | | Verwenden Sie stattdessen `WorklightProcedureInvocationData`. |
 | `WLProcedureInvocationFailResponse` | 	Nicht unterstützt |
 | `WLProcedureInvocationResult` | 	Nicht unterstützt |
 | `WLRequestOptions` | 	Nicht unterstützt |
-| `WLResourceRequest` | 	Verwenden Sie stattdessen `WorklightResourceRequest`. |
+| `WLResourceRequest` | 	|	Verwenden Sie stattdessen `WorklightResourceRequest`. |
 
 #### Nicht weiter verwendete Windows-C#-API-Schnittstellen
 {: #deprecated-windows-c-api-interfaces }

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Vorbereitungen für die Verwendung des mobilen Clients
-breadcrumb_title: Vorbereitungen
+title: Verwendung des mobilen Clients vorbereiten
+breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -55,7 +55,9 @@ bereitgestellt. Die Datei **IBMApplicationCenterUnsigned.xap** befindet sich im 
 
 > **Wichtiger Hinweis:** Die nicht signierte .xap-Datei kann nicht direkt verwendet werden. Sie müssen die Datei vor der Installation auf einem Gerät mit Ihrem Unternehmenszertifikat signieren, das
 Sie von
-Symantec/Microsoft erhalten haben. Optional: Sie können die
+Symantec/Microsoft erhalten haben. 
+
+Optional: Sie können die
 Windows-Phone-Version ggf. auch aus Quellen erstellen. Dazu benötigen Sie die neueste Version von
 Microsoft Visual Studio.
 
@@ -127,6 +129,8 @@ Dies kann eine Weile dauern. Sobald dieser Schritt abgeschlossen ist, können Si
 
 > **Hinweis:** Wählen Sie im Popup-Fenster aus, dass Sie das Upgrade für die Gradle-Version überspringen möchten. Informationen zur Version finden Sie in `grade-wrapper.properties`.
 
+
+
 #### iOS
 {: #ios }
 * Navigieren Sie zu **Installationsverzeichnis/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
@@ -145,6 +149,8 @@ Sie müssen das Projekt **IBMAppCenter** in
 
 > **Hinweis:** Verwenden Sie für Version 8.0.0 MobileFirst Studio 7.1. Sie können
 MobileFirst Studio von der Seite [Downloads]({{site.baseurl}}/downloads) herunterladen. Installationsanweisungen finden Sie im IBM Knowledge Center für Version 7.1 unter [MobileFirst Studio installieren](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html).
+
+
 
 1. Wählen Sie **Datei → Importieren** aus.
 2. Wählen Sie **Allgemein → Vorhandenes Projekt in den Arbeitsbereich** aus.
@@ -243,6 +249,8 @@ Sie müssen den Projektbuild für das Clientprojekt in Microsoft Visual Studio
 2015 erstellen, um das Projekt verteilen zu können. 
 >Die Erstellung des Projekts ist eine Vorbedingung für die Verteilung des Projekts an Benutzer.
 
+
+
 Gehen Sie wie folgt vor, um den Projektbuild für Windows 10 Universal zu erstellen:
 1.  Öffnen Sie die Visual-Studio-Projektdatei **IBMAppCenterUWP\IBMAppCenterUWP.csproj** in Microsoft Visual Studio 2015.
 + Erstellen Sie einen vollständigen Anwendungsbuild.
@@ -253,6 +261,9 @@ Gehen Sie wie folgt vor, um den Projektbuild für Windows 10 Universal zu erstel
 {: #customizing-features-for-experts-android-ios-windows-phone }
 Sie können Funktionen anpassen, indem Sie eine zentrale Eigenschaftendatei bearbeiten und einige andere Ressourcen modifizieren.
 >Dies wird nur unter Android, iOS, Windows 8 (nur Windows-Store-Pakete) oder Windows Phone 8 unterstützt.
+
+
+
 
 
 Anpassung von Features. Diverse Features werden von einer zentralen Eigenschaftendatei mit dem Namen

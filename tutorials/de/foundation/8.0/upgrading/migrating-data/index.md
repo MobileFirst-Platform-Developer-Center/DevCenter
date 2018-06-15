@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Mobile Daten für die App-Migration mit dem IMFData- oder Cloudant-SDK in Cloudant speichern
-breadcrumb_title: Mobile Daten für die App-Migration speichern
+title: Apps umstellen, die mobile Daten mit IMFData oder dem Cloudant-SDK in Cloudant speichern
+breadcrumb_title: Migrating apps storing mobile data
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,17 +12,12 @@ in einer Cloudant-Datenbank speichern. Cloudant ist eine innovative NoSQL-Datenb
 SDK ist für
 Java, Objective-C und Swift verfügbar. 
 
-> Keine weitere Verwendung der Frameworks CloudantToolkit und IMFData in {{ site.data.keys.product_full }} Version 8.0.  
+> Doe Frameworks CloudantToolkit und IMFData werden in {{ site.data.keys.product_full }} Version 8.0 nicht weiter verwendet. 
 
-* Verwenden Sie für iOS das [CDTDatastore](https://github.com/cloudant/CDTDatastore)-SDK
-als Ersatz für das CloudantToolkit- und IMFData-Framework.
-* Verwenden Sie für Android das [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android)
-als Ersatz für das CloudantToolkit- und IMFData-Framework. Mit
-Cloudant Sync können Sie alle Daten lokal persistent speichern und mit einem
-fernen Datastore replizieren. 
+* Verwenden Sie für iOS das [CDTDatastore](https://github.com/cloudant/CDTDatastore)-SDK als Ersatz für das CloudantToolkit- und IMFData-Framework.
+* Verwenden Sie für Android das [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) als Ersatz für das CloudantToolkit- und IMFData-Framework. Mit Cloudant Sync können Sie alle Daten lokal persistent speichern und mit einem fernen Datastore replizieren.
 
-Wenn Sie direkt auf ferne Stores zugreifen möchten, verwenden Sie in Ihrer Anwendung REST-Aufrufe.
-Lesen Sie dazu die Informationen unter [Cloudant API Reference](https://docs.cloudant.com/api.html). 
+Wenn Sie direkt auf ferne Stores zugreifen möchten, verwenden Sie in Ihrer Anwendung REST-Aufrufe. Lesen Sie dazu die Informationen unter [Cloudant API Reference](https://docs.cloudant.com/api.html). 
 
 ### Cloudant und JSONStore im Vergleich
 {: #cloudant-versus-jsonstore }
@@ -346,6 +341,8 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
 
    > **Warnung:** Wenn Sie nach Erstellung der Datenbank das Kennwort ändern, tritt ein Fehler auf, weil die vorhandene Datenbank nicht verschlüsselt werden kann. Sie können Ihr Kennwort nicht ändern, nachdem die Datenbank verschlüsselt wurde. Wenn Sie Kennwörter ändern möchten, müssen Sie die Datenbank löschen.
 
+
+
    ##### VORHER (mit IMFData/CloudantToolkit) - Lokalen Store für Verschlüsselung initialisieren:
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
    **Objective-C**
@@ -506,6 +503,8 @@ Module Settings** das Register **Dependencies** aus.
 3. Initialisieren Sie Ihren lokalen Store für die Verschlüsselung mit einem Schlüsselprovider.
 
    > **Warnung:** Wenn Sie nach Erstellung der Datenbank das Kennwort ändern, tritt ein Fehler auf, weil die vorhandene Datenbank nicht verschlüsselt werden kann. Sie können Ihr Kennwort nicht ändern, nachdem die Datenbank verschlüsselt wurde. Wenn Sie Kennwörter ändern möchten, müssen Sie die Datenbank löschen.
+
+
 
    ##### VORHER (mit IMFData/CloudantToolkit) - Lokalen Store initialisieren (Android):
    {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }

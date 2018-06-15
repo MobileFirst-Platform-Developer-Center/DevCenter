@@ -1,80 +1,105 @@
 ---
 layout: tutorial
-title: Serving Direct Update requests from a CDN
+title: Dar servicio a Direct Update desde una CDN
 breadcrumb_title: CDN Support
 relevantTo: [cordova]
 weight: 1
 ---
-## Overview
+## Visión general
 {: #overview }
-You can configure Direct Update requests to be served from a CDN (content delivery network) instead of from the {{ site.data.keys.mf_server }}.
+Las solicitudes de Direct Update se pueden configurar para ser servidas desde una CDN (Content Delivery Network (red de entrega de contenidos)) en lugar de hacerlo desde {{ site.data.keys.mf_server }}.   
 
-#### Advantages of using a CDN
+#### Ventajas de utilizar una CDN
 {: #advantages-of-using-a-cdn }
-Using a CDN instead of the {{ site.data.keys.mf_server }} to serve Direct Update requests has the following advantages:
+La utilización de una CDN en lugar de {{ site.data.keys.mf_server }} para servir solicitudes de Direct Update tiene las siguientes ventajas:
 
-* Removes network overheads from the {{ site.data.keys.mf_server }}.
-* Increases transfer rates higher than the 250 MB/second limit when serving requests from a {{ site.data.keys.mf_server }}.
-* Ensures a more uniform Direct Update experience for all users regardless of their geographical location.
 
-#### General requirements
+* Elimina la carga de red desde {{ site.data.keys.mf_server }}.
+* Incrementa las velocidades de transferencia a más del límite de 250 MB/segundo al servir solicitudes desde {{ site.data.keys.mf_server }}.
+* Asegura una experiencia de Direct Update más uniforme a todos los usuarios independientemente de su ubicación geográfica.
+
+
+#### Requisitos generales
 {: #general-requirements }
-To serve Direct Update requests from a CDN, ensure that your configuration conforms to the following conditions:
+Para dar servicio a las solicitudes de Direct Update desde una CDN, asegúrese de que la configuración cumple las siguientes condiciones:
 
-* The CDN must be a reverse proxy in front of the {{ site.data.keys.mf_server }} (or in front of another reverse proxy if needed).
-* When building the application from your development environment, set up your target server to the CDN host and port instead of the host and port of the {{ site.data.keys.mf_server }}. For example, when running the {{ site.data.keys.mf_cli }} command mfpdev server add, provide the CDN host and port.
-* In the CDN administration panel, you need to mark the following Direct Update URLs for caching to ensure that the CDN passes all requests to the {{ site.data.keys.mf_server }} except for the Direct Update requests. For Direct Update requests, the CDN determines whether it obtained the content. If it has, it returns it without going to the {{ site.data.keys.mf_server }}; if not, it goes to the {{ site.data.keys.mf_server }}, gets the Direct Update archive (.zip file), and stores it for the next requests for that specific URL. For applications that are built with v8.0 of {{ site.data.keys.product_full }}, the Direct Update URL is: `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH/api/directupdate/VERSION/CHECKSUM/TYPE`.
-The `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH` prefix is constant for all runtime requests. For example: http://my.cdn.com:9080/mfp/api/directupdate/0.0.1/742914155/full?appId=com.ibm.DirectUpdateTestApp&clientPlatform=android
 
-In the example, there are additional request parameters that are also part of the request.
+* La CDN debe ser un proxy inverso en frente de {{ site.data.keys.mf_server }} (o en frente de otro proxy inverso si es necesario).
 
-* The CDN must allow caching of the request parameters. Two different Direct Update archives might differ only by the request parameters.
-* The CDN must support TTL on the Direct Update response. The support is needed to support multiple direct updates for the same version.
-* The CDN must not change or remove the HTTP headers that are used in the server-client protocol.
+* Al compilar la aplicación desde su entorno de desarrollo, configure el servidor de destino para el host y puerto de la CDN en lugar del host y puerto de {{ site.data.keys.mf_server }}.
+Por ejemplo, al ejecutar el mandato {{ site.data.keys.mf_cli }} command mfpdev server add, proporcione el host y puerto de CDN.
 
-## Example configuration
+* En el panel de administración de CDN, necesita marcar los siguientes URL de Direct Update para el almacenamiento en caché para asegurarse de que la CDN pasa todas las solicitudes a {{ site.data.keys.mf_server }} excepto las solicitudes de Direct Update.
+Para las solicitudes de Direct Update, la CDN determina si obtuvo el contenido.
+Si lo hizo, lo devuelve sin ir a {{ site.data.keys.mf_server }}; si no, va a {{ site.data.keys.mf_server }}, obtiene el archivador de Direct Update (un archivo .zip) y lo almacena para las siguientes solicitudes para dicho URL específico.  Para aplicaciones compiladas con la v8.0 de {{ site.data.keys.product_full }}, el URL de Direct Update es: `PROTOCOLO://DOMINIO:PUERTO/VÍA_CONTEXTO/api/directupdate/VERSIÓN/SUMA_COMPROBACIÓN/TIPO`.
+El prefijo `PROTOCOLO://DOMINIO:PUERTO/VÍA_CONTEXTO` es el mismo para todas las solicitudes de tiempo de ejecución.
+Por ejemplo:http://my.cdn.com:9080/mfp/api/directupdate/0.0.1/742914155/full?appId=com.ibm.DirectUpdateTestApp&clientPlatform=android
+
+En el ejemplo, hay parámetros de solicitud adicionales que también son parte de la solicitud.
+
+
+* La CDN debe permitir almacenar en caché los parámetros de solicitud.
+Dos archivadores de Direct Update podrían diferir únicamente por los parámetros de la solicitud.
+
+* La CDN debe dar soporte a TTL en la respuesta de Direct Update.
+El soporte es necesario para permitir varias actualizaciones directas para la misma versión.
+
+* La CDN no puede cambiar ni eliminar las cabeceras HTTP que se utilizan en el protocolo de cliente/servidor.
+
+
+## Configuración de ejemplo
 {: #example-configuration }
-This example is based on using an Akamai CDN configuration that caches the Direct Update archive. The following tasks are completed by the network administrator, the {{ site.data.keys.product_adj }} administrator, and the Akamai administrator:
+Este ejemplo se basa en la utilización de la configuración de la CDN de Akamai que almacena en caché el archivador de Direct Update.
+Las siguientes tareas las completan el administrador de red, el administrador de {{ site.data.keys.product_adj }} y el administrador de Akamai:
 
-#### Network administrator
+
+#### Administrador de red
 {: #network-administrator }
-Create another domain in the DNS for your {{ site.data.keys.mf_server }}. For example, if your server domain is yourcompany.com you need to create an additional domain such as `cdn.yourcompany.com`.
-In the DNS for the new `cdn.yourcompany.com` domain, set a `CNAME` to the domain name that is provided by Akamai. For example, `yourcompany.com.akamai.net`.
+Debe crear otro dominio en el DNS para su instancia de {{ site.data.keys.mf_server }}.
+Por ejemplo, si el dominio del servidor es yourcompany.com necesitará crear un dominio como, por ejemplo, `cdn.yourcompany.com`.
+En el DNS para el nuevo dominio `cdn.yourcompany.com`, establecerá un `CNAME` al nombre de dominio que Akamai proporcione.
+Por ejemplo, `yourcompany.com.akamai.net`.
 
-#### {{ site.data.keys.product_adj }} administrator
+#### Administrador de {{ site.data.keys.product_adj }}
 {: #mobilefirst-administrator }
-Set the new cdn.yourcompany.com domain as the {{ site.data.keys.mf_server }} URL for the {{ site.data.keys.product_adj }} applications. For example, for the Ant builder task, the property is: `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
+Establecerá el dominio nuevo cdn.yourcompany.com como el URL de {{ site.data.keys.mf_server }} para las aplicaciones de {{ site.data.keys.product_adj }}.
+Por ejemplo, para la tarea de compilación de Ant, la propiedad es: `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
 
-#### Akamai administrator
+#### Administrador de Akamai
 {: #akamai-administrator }
-1. Open the Akamai property manager and set the property **host name** to the value of the new domain.
+1. Debería abrir el gestor de propiedades de Akamai y establecer la propiedad de **nombre de host** con el valor del nuevo dominio.
 
-    ![Set the property host name to the value of the new domain](direct_update_cdn_3.jpg)
+
+    ![Establecer la propiedad de nombre de host con el valor del nuevo dominio](direct_update_cdn_3.jpg)
     
-2. On the Default Rule tab, configure the original {{ site.data.keys.mf_server }} host and port, and set the **Custom Forward Host Header** value to the newly created domain.
+2. En el separador de Regla predeterminada, debería configurar el host y el puerto de {{ site.data.keys.mf_server }} original y establecer el valor de **Cabecera de host de reenvío personalizado** con el dominio recién creado.
 
-    ![Set the Custom Forward Host Header value to the newly created domain](direct_update_cdn_4.jpg)
+
+    ![Establecer el valor de cabecera de host de reenvío personalizado con el dominio recién creado](direct_update_cdn_4.jpg)
     
-3. From the **Caching Option** list, select **No Store**.
+3. En la lista de **Opción de almacenamiento en caché**, seleccionar **No almacenar**.
 
-    ![From the Caching Option list, select No Store](direct_update_cdn_5.jpg)
+    ![En la lista de Opción de almacenamiento en caché, seleccionar No almacenar](direct_update_cdn_5.jpg)
 
-4. From the **Static Content configuration** tab, configure the matching criteria according to the Direct Update URL of the application. For example, create a condition that states `If Path matches one of direct_update_URL`.
+4. En el separador **Configuración de contenido estático**, configurar el criterio coincidente de acuerdo al URL de Direct Update de la aplicación.
+Por ejemplo, debería crear una condición que indique `Si la vía de acceso coincide con un URL_de_direct_update`.
 
-    ![Configure the matching criteria according to the Direct Update URL of the application](direct_update_cdn_6.jpg)
+    ![Configuración del criterio de coincidencia de acuerdo al URL de Direct Update de la aplicación](direct_update_cdn_6.jpg)
     
-5. Set values similar to the following values to configure the caching behavior to make cache the Direct Update URL and to set TTL.
+5. Debería establecer valores similares a los siguientes para configurar el comportamiento del almacenamiento en caché para el URL de Direct Update y para configurar TTL.
 
-    | Field | Value |
+
+    | Campo| Valor|
     |-------|-------|
-    | Caching Option | Cache |
-    | Force Revaluation of Stale Objects | Serve stale if unable to validate |
-    | Max-Age | 3 minutes |
+    | Opción de almacenamiento en caché| Caché|
+    | Forzar la reevaluación de objetos obsoletos | Servir obsoleto si no es posible validar|
+    | Edad máxima | 3 minutos |
 
-    ![Set values to configure the caching behavior](direct_update_cdn_7.jpg)
+    ![Establecer valores para configurar el comportamiento del almacenamiento en caché](direct_update_cdn_7.jpg)
 
-6. Configure the cache key behavior to use all request parameters in the cache key (you must do so to cache different Direct Update archives for different applications or versions). For example, from the **Behavior** list, select `Include all parameters (preserve order from request)`.
+6. Configuración del comportamiento de clave de caché para utilizar todos los parámetros de solicitud en la clave de caché (es necesario hacerlo para almacenar en caché archivadores de Direct Update diferentes para distintas aplicaciones o versiones).
+Por ejemplo, desde la lista **Comportamiento**, seleccione `Incluir todos los parámetros (conservar el orden de la solicitud)`.
 
-    ![Configure the cache key behavior to use all request parameters in the cache key](direct_update_cdn_8.jpg)
+    ![Configurar el comportamiento de clave de caché para utilizar todos los parámetros de solicitud en la clave de caché](direct_update_cdn_8.jpg)
 
 

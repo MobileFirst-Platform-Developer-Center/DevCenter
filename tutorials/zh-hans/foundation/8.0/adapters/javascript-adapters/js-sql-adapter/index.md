@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: JavaScript SQL 适配器
-breadcrumb_title: SQL 适配器
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
@@ -12,9 +12,9 @@ weight: 2
 ## 概述
 {: #overview }
 
-SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 SQL 查询或存储过程。
+SQL 适配器旨在与任何 SQL 数据源进行通信。 您可以使用普通 SQL 查询或存储过程。
 
-要连接到数据库，JavaScript 代码需要特定数据库类型的 JDBC 连接器驱动程序。您必须单独下载特定数据库类型的 JDBC 连接器驱动程序并将其作为依赖关系添加到项目中。有关如何添加依赖关系的更多信息，请参阅[创建 Java 和 JavaScript 适配器](../../creating-adapters/#dependencies)教程的“依赖关系”部分。
+要连接到数据库，JavaScript 代码需要特定数据库类型的 JDBC 连接器驱动程序。 您必须单独下载特定数据库类型的 JDBC 连接器驱动程序并将其作为依赖关系添加到项目中。 有关如何添加依赖关系的更多信息，请参阅[创建 Java 和 JavaScript 适配器](../../creating-adapters/#dependencies)教程的“依赖关系”部分。
 
 在此教程和随附的样本中，您将了解如何使用适配器连接到 MySQL 数据库。
 
@@ -66,7 +66,7 @@ SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 S
             <div class="panel-body">
                 <ul>
                     <li><b>xsi:type</b>：<i>必填。</i> 此属性的值必须设置为 sql:SQLConnectionPolicy。</li>
-                    <li><b>dataSourceDefinition</b>：<i>可选。</i>包含连接到数据源所需的参数。适配器会为每个请求创建连接。例如：
+                    <li><b>dataSourceDefinition</b>：<i>可选。</i> 包含连接到数据源所需的参数。 适配器会为每个请求创建连接。 例如：
 
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -79,7 +79,7 @@ SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 S
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>：<i>可选。</i>使用应用程序服务器提供的数据源的 JNDI 名称来连接到数据源。适配器从与该 JNDI 名称关联的服务器连接池中获取连接。应用程序服务器提供了一种配置数据源的方式。有关更多信息，请参阅“将 {{ site.data.keys.mf_server }} 安装到应用程序服务器”。例如：
+                    <li><b>dataSourceJNDIName</b>：<i>可选。</i> 使用应用程序服务器提供的数据源的 JNDI 名称来连接到数据源。 适配器从与该 JNDI 名称关联的服务器连接池中获取连接。 应用程序服务器提供了一种配置数据源的方式。 有关更多信息，请参阅“将 {{ site.data.keys.mf_server }} 安装到应用程序服务器”。 例如：
 
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -111,7 +111,7 @@ SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 S
 ### SQL 语句查询
 {: #sql-statement-query }
 
-1. 将 SQL 查询分配给变量。该操作必须始终在函数作用域以外完成。
+1. 将 SQL 查询分配给变量。 该操作必须始终在函数作用域以外完成。
 2. 根据需要添加参数。
 3. 使用 `MFP.Server.invokeSQLStatement` 方法调用 prepared 查询。
 4. 将结果返回到应用程序或其他过程。
@@ -139,7 +139,7 @@ SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 S
 ### SQL 存储过程
 {: #sql-stored-procedure }
 
-要运行 SQL 存储过程，请使用 `MFP.Server.invokeSQLStoredProcedure` 方法。将 SQL 存储过程名称指定为调用参数。
+要运行 SQL 存储过程，请使用 `MFP.Server.invokeSQLStoredProcedure` 方法。 将 SQL 存储过程名称指定为调用参数。
 
 ```javascript
 // Invoke stored SQL procedure and return invocation result

@@ -1,250 +1,268 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server Configuration Guide
+title: Guía de configuración de MobileFirst Analytics Server 
 breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Some configuration for the {{ site.data.keys.mf_analytics_server }} is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
+Es necesaria alguna configuración para {{ site.data.keys.mf_analytics_server }}. Algunos de los parámetros de configuración se aplican a un único nodo, y algunos se aplican a todo el clúster, tal como se indica.
 
-#### Jump to
+#### Ir a
 {: #jump-to }
 
-* [Configuration properties](#configuration-properties)
-* [Backing up Analytics data](#backing-up-analytics-data)
-* [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch)
+* [Propiedades de configuración](#configuration-properties)
+* [Copia de seguridad de los datos de análisis](#backing-up-analytics-data)
+* [Gestión de clústeres y Elasticsearch](#cluster-management-and-elasticsearch)
 
-### Properties
+### Propiedades
 {: #properties }
-For a complete list of configuration properties and how to set them in your application server, see [Configuration properties](#configuration-properties).
+Para obtener una lista completa de propiedades de configuración y cómo establecerlas en el servidor de aplicaciones, consulte [Configuración de propiedades](#configuration-properties).
 
-* The **discovery.zen.minimum\_master\_nodes** property must be set to **ceil((number of master-eligible nodes in the cluster / 2) + 1)** to avoid split-brain syndrome.
-    * Elasticsearch nodes in a cluster that are master-eligible must establish a quorum to decide which master-eligible node is the master.
-    * If you add a master eligible node to the cluster, the number of master-eligible nodes changes, and thus the setting must change. You must modify the setting if you introduce new master-eligible nodes to the cluster. For more information about how to manage your cluster, see [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch).
-* Give your cluster a name by setting the **clustername** property in all of your nodes.
-    * Name the cluster to prevent a developer's instance of Elasticsearch from accidentally joining a cluster that is using a default name.
-* Give each node a name by setting the **nodename** property in each node.
-    * By default, Elasticsearch names each node after a random Marvel character, and the node name is different on every node restart.
-* Explicitly declare the file system path to the data directory by setting the **datapath** property in each node.
-* Explicitly declare the dedicated master nodes by setting the **masternodes** property in each node.
+* La propiedad **discovery.zen.minimum\_master\_nodes** se debe establecer en **células((número de nodos elegibles maestros en el clúster / 2) + 1)** para evitar el síndrome de cerebro dividido.
+    * Los nodos de Elasticsearch en un clúster que son elegibles por el maestro deben establecer un quórum para decidir qué nodo elegible por el maestro es el maestro.
+    * Si añade un nodo elegible maestro en el clúster, el número de nodos elegibles por el maestro cambia y, por lo tanto, el valor debe cambiar. Debe modificar el valor si se introducen nuevos nodos elegibles por el maestro en el clúster. Para obtener más información sobre cómo gestionar el clúster, consulte [Gestión de clústeres y Elasticsearch](#cluster-management-and-elasticsearch).
+* Dé un nombre al clúster estableciendo la propiedad **clustername** en todos los nodos.
+    * Ponga un nombre al clúster para impedir que una instancia del desarrollador de Elasticsearch se una accidentalmente a un clúster que está utilizando un nombre predeterminado.
+* Dé un nombre a cada nodo estableciendo la propiedad **nodename** en cada nodo.
+    * De forma predeterminada, Elasticsearch pone nombre a cada nodo después de un carácter Marvel aleatorio, y el nombre del nodo es distinto en cada reinicio de nodo.
+* Declare explícitamente la vía de acceso al sistema de archivos en el directorio de datos estableciendo la propiedad **datapath** en cada nodo.
+* Declare explícitamente los nodos maestros dedicados estableciendo la propiedad **masternodes** en cada nodo.
 
-### Cluster Recovery Settings
+### Valores de recuperación de clúster
 {: #cluster-recovery-settings }
-After you scaled out to a multi-node cluster, you might find that an occasional full cluster restart is necessary. When a full cluster restart is required, you must consider the recovery settings. If the cluster has 10 nodes, and as the cluster is brought up, one node at a time, the master node assumes that it needs to start balancing data immediately upon the arrival of each node into the cluster. If the master is allowed to behave this way, much unnecessary rebalancing is required. You must configure the cluster settings to wait for a minimum number of nodes to join the cluster before the master is allowed to start instructing the nodes to rebalance. It can reduce cluster restarts from hours down to minutes.
+Una vez que haya escalado a un clúster de varios nodos, es posible que encuentre que es necesario un reinicio del clúster completo ocasional. Cuando sea necesario un reinicio de clúster completo, debe tener en cuenta los valores de recuperación. Si el clúster tiene 10 nodos, y a medida que se activa el clúster, un nodo a la vez, el nodo maestro da por supuesto que necesita iniciar los datos de equilibrio de carga inmediatamente tras la llegada de cada nodo en el clúster. Si se permite que el maestro se comporte de esta forma, se necesitará mucho reequilibrado innecesario. Debe configurar los valores del clúster para esperar a que se una al clúster un número mínimo de nodos para que se permita al maestro empezar a dar instrucciones a los nodos para reequilibrar. Puede reducir los reinicios de clúster de horas a minutos.
 
-* The **gateway.recover\_after\_nodes** property must be set to your preference to prevent Elasticsearch from starting a rebalance until the specified number of nodes in the cluster are up and joined. If your cluster has 10 nodes, a value of 8 for the **gateway.recover\_after\_nodes** property might be a reasonable setting.
-* The **gateway.expected\_nodes** property must be set to the number of nodes that you expect to be in the cluster. In this example, the value for the **gateway.expected_nodes** property is 10.
-* The **gateway.recover\_after\_time** property must be set to instruct the master to wait to send rebalanced instructions until after the set time elapsed from the start of the master node.
+* La propiedad **gateway.recover\_after\_nodes** se debe establecer en la preferencia para impedir que Elasticsearch inicie un reequilibrado hasta que el número especificado de nodos en el clúster está activo y se haya unido. Si el clúster tiene 10 nodos, un valor de 8 para la propiedad **gateway.recover\_after\_nodes** podría ser un valor razonable.
+* La propiedad **gateway.expected\_nodes** se debe establecer en el número de nodos que se espera que estén en el clúster. En este ejemplo, el valor para la propiedad **gateway.expected_nodes** es 10.
+* La propiedad **gateway.recover\_after\_time** se debe establecer para indicar al maestro que espere para enviar instrucciones reequilibradas hasta después de que haya transcurrido el tiempo establecido desde el inicio de la modalidad maestra.
 
-The combination of the previous settings means that Elasticsearch waits for the value of **gateway.recover\_after\_nodes** nodes to be present. Then, it begins recovering after the value of **gateway.recover\_after\_time** minutes or after the value of **gateway.expected\_nodes** nodes joined the cluster, whichever comes first.
+La combinación de los valores anteriores significa que Elasticsearch espera que esté presente el valor de los nodos **gateway.recover\_after\_nodes**. A continuación, comenzará a recuperarse una vez que el valor de **gateway.recover\_after\_time** minutos o que el valor de **gateway.expected\_nodes** nodos se hayan unido al clúster, lo que ocurra primero.
 
-### What not to do
+### Qué no hacer
 {: #what-not-to-do }
-* Do not ignore your production cluster.
-    * Clusters need monitoring and nurturing. Many good Elasticsearch monitoring tools are available that are dedicated to the task.
-* Do not use network-attached storage (NAS) for your **datapath** setting. NAS introduces more latency, and a single point of failure. Always use the local hosts disks.
-* Avoid clusters that span data centers and definitely avoid clusters that span large geographic distances. The latency between nodes is a severe performance bottleneck.
-* Roll your own cluster configuration management solution. Many good configuration management solutions, such as Puppet, Chef, and Ansible, are available.
+* No ignorar el clúster de producción.
+    * Los clústeres necesitan supervisión y cuidado. Hay disponibles muchas herramientas de supervisión de Elasticsearch buenas dedicadas a la tarea.
+* No utilice el almacenamiento conectado a la red (NAS) para el valor de **datapath**. NAS ofrece más latencia, y punto único de anomalía. Utilice siempre los discos de hosts locales.
+* Evite clústeres que abarcan centros de datos y evite definitivamente clústeres que abarcan grandes distancias geográficas. La latencia entre nodos es un cuello de botella de rendimiento severo.
+* Desplegar su propia solución de gestión de configuración de clúster. Hay disponibles muchas buenas soluciones de gestión de la configuración, como por ejemplo Puppet, Chef y Ansible.
 
-## Configuration properties
+## Propiedades de configuración
 {: #configuration-properties }
-The {{ site.data.keys.mf_analytics_server }} can start successfully without any additional configuration.
+{{ site.data.keys.mf_analytics_server }} puede iniciarse satisfactoriamente sin ninguna configuración adicional.
 
-Configuration is done through JNDI properties on both the {{ site.data.keys.mf_server }} and the {{ site.data.keys.mf_analytics_server }}. Additionally, the {{ site.data.keys.mf_analytics_server }} supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
+La configuración se realiza a través de las propiedades de JNDI en {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics_server }}. Además, {{ site.data.keys.mf_analytics_server }} da soporte al uso de variables de entorno para controlar la configuración. Las variables de entorno prevalecen sobre las propiedades JNDI.
 
-The Analytics runtime web application must be restarted for any changes in these properties to take effect. It is not necessary to restart the entire application server.
+La aplicación web de tiempo de ejecución de análisis debe reiniciarse para que surtan efecto los cambios realizados en estas propiedades. No es necesario reiniciar todo el servidor de aplicaciones.
 
-To set a JNDI property on WebSphere  Application Server Liberty, add a tag to the **server.xml** file as follows.
+Para establecer una propiedad JNDI en WebSphere Application Server Liberty, añada una etiqueta al archivo **server.xml** como se indica a continuación.
 
 ```xml
 <jndiEntry jndiName="{PROPERTY NAME}" value="{PROPERTY VALUE}}" />
 ```
 
-To set a JNDI property on Tomcat, add a tag to the context.xml file as follows.
+Para establecer una propiedad JNDI en Tomcat, añada una etiqueta al archivo context.xml como se indica a continuación.
 
 ```xml
 <Environment name="{PROPERTY NAME}" value="{PROPERTY VALUE}" type="java.lang.String" override="false" />
 ```
 
-The JNDI properties on WebSphere Application Server are available as environment variables.
+Las propiedades JNDI en WebSphere Application Server están disponibles como variables de entorno.
 
-* In the WebSphere Application Server console, select **Applications → Application Types → WebSphere Enterprise applications**.
-* Select the **{{ site.data.keys.product_adj }} Administration Service** application.
-* In **Web Module Properties**, click **Environment entries for Web Modules** to display the JNDI properties.
+* En la consola de WebSphere Application Server, seleccione **Aplicaciones → Tipos de aplicaciones → Aplicaciones empresariales de WebSphere**.
+* Seleccione la aplicación **Servicio de administración de {{ site.data.keys.product_adj }}**.
+* En **Propiedades de módulo web**, pulse **Entradas de entorno para módulos web** para visualizar las propiedades de JNDI.
 
 #### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The following table shows the properties that can be set in the {{ site.data.keys.mf_server }}.
+La tabla siguiente muestra las propiedades que se pueden establecer en {{ site.data.keys.mf_server }}.
 
-| Property                           | Description                                           | Default Value |
+| Propiedad                           | Descripción                                           | Valor predeterminado |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | Set this property to the URL of your {{ site.data.keys.mf_analytics_console }}. For example, http://hostname:port/analytics/console. Setting this property enables the analytics icon on the {{ site.data.keys.mf_console }}. | None |
-| mfp.analytics.logs.forward         | If this property it set to true, server logs that are recorded on the {{ site.data.keys.mf_server }} are captured in {{ site.data.keys.mf_analytics }}. | true |
-| mfp.analytics.url                  |Required. The URL that is exposed by the {{ site.data.keys.mf_analytics_server }} that receives incoming analytics data. For example, http://hostname:port/analytics-service/rest/v2. | None |
-| analyticsconsole/mfp.analytics.url |	Optional. Full URI of the Analytics REST services. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI, not the internal URI inside the local LAN. This value can contain * in places of the URI protocol, host name, or port, to denote the corresponding part from the incoming URL.	*://*:*/analytics-service, with the protocol, host name, and port dynamically determined |
-| mfp.analytics.username             | The user name that is used if the data entry point is protected with basic authentication. | None |
-| mfp.analytics.password             | The password that is used if the data entry point is protected with basic authentication. | None |
+| mfp.analytics.console.url          | Establezca esta propiedad en el URL de {{ site.data.keys.mf_analytics_console }}. Por ejemplo, http://hostname:port/analytics/console. El establecimiento de esta propiedad permite el icono de análisis de {{ site.data.keys.mf_console }}. | Ninguno |
+| mfp.analytics.logs.forward         | Si esta propiedad se establece en true, los registros del servidor que estén registrados en {{ site.data.keys.mf_server }} se capturarán en {{ site.data.keys.mf_analytics }}. | true |
+| mfp.analytics.url                  |Necesario. El URL que expone {{ site.data.keys.mf_analytics_server }} que recibe datos analíticos de entrada. Por ejemplo, http://hostname:port/analytics-service/rest/v2. | Ninguno |
+| analyticsconsole/mfp.analytics.url |	Opcional. URI completo de los servicios REST de análisis. En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo, no el URI interno dentro de la LAN local. Este valor puede contener * en los lugares del protocolo de URI, el nombre de host o el puerto, para denotar la parte correspondiente desde el URL de entrada.	*://*:*/analytics-service, con el protocolo, el nombre de host y el puerto dinámicamente determinados |
+| mfp.analytics.username             | El nombre de usuario que se utiliza si el punto de entrada de datos está protegido con autenticación básica. | None |
+| mfp.analytics.password             | La contraseña que se utiliza si el punto de entrada de datos está protegido con autenticación básica. | Ninguno |
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
-The following table shows the properties that can be set in the {{ site.data.keys.mf_analytics_server }}.
+La tabla siguiente muestra las propiedades que se pueden establecer en {{ site.data.keys.mf_analytics_server }}.
 
-| Property                           | Description                                           | Default Value |
+| Propiedad                           | Descripción                                           | Valor predeterminado |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Defines the Elasticsearch node type. Valid values are master and data. If this property is not set, then the node acts as both a master-eligible node and a data node. | 	None |
-| analytics/shards | The number of shards per index. This value can be set only by the first node that is started in the cluster and cannot be changed. | 1 |
-| analytics/replicas_per_shard | The number of replicas for each shard in the cluster. This value can be changed dynamically in a running cluster. | 0 |
-| analytics/masternodes | A comma-delimited string that contains the host name and ports of the master-eligible nodes. | None |
-| analytics/clustername | Name of the cluster. Set this value if you plan to have multiple clusters that operate in the same subset and need to uniquely identify them. | worklight |
-| analytics/nodename | Name of a node in the cluster. | A randomly generated string
-| analytics/datapath | The path that analytics data is saved to on the file system. | ./analyticsData |
-| analytics/settingspath | The path to an Elasticsearch settings file. For more information, see Elasticsearch. | None |
-| analytics/transportport | The port that is used for node-to-node communication. | 9600 |
-| analytics/httpport | The port that is used for HTTP communication to Elasticsearch. | 9500 |
-| analytics/http.enabled | Enables or disables HTTP communication to Elasticsearch. | false |
-| analytics/serviceProxyURL | The analytics UI WAR file and analytics service WAR file can be installed to separate application servers. If you choose to do so, you must understand that the JavaScript run time in the UI WAR file can be blocked by cross-site scripting prevention in the browser. To bypass this block, the UI WAR file includes Java proxy code so that the JavaScript run time retrieves REST API responses from the origin server. But the proxy is configured to forward REST API requests to the analytics service WAR file. Configure this property if you installed your WAR files to separate application servers. | None |
-| analytics/bootstrap.mlockall | This property prevents any Elasticsearch memory from being swapped to disk. | true |
-| analytics/multicast | Enables or disables multicast node discovery. | false |
-| analytics/warmupFrequencyInSeconds | The frequency at which warmup queries are run. Warmup queries run in the background to force query results into memory, which improves web console performance. Negative values disable the warmup queries. | 600 |
-| analytics/tenant | Name of the main Elasticsearch index.	worklight |
+| analytics/nodetype | Define el tipo de nodo de Elasticsearch. Los valores válidos son maestro y datos. Si no se establece esta propiedad, el nodo actuará como un nodo elegible por el maestro y un nodo de datos. | 	Ninguno |
+| analytics/shards | El número de fragmentos por índice. Este valor lo puede establecer únicamente el primer nodo que se inicia en el clúster y no se puede modificar. | 1 |
+| analytics/replicas_per_shard | El número de réplicas para cada fragmento del clúster. Este valor se puede cambiar dinámicamente en un clúster en ejecución. | 0 |
+| analytics/masternodes | Una serie delimitada por comas que contiene el nombre de host y los puertos de los nodos elegibles por el maestro. | Ninguno |
+| analytics/clustername | Nombre del clúster. Establezca este valor si va a tener varios clústeres que funcionan en el mismo subconjunto y necesita identificarlos de forma exclusiva. | worklight |
+| analytics/nodename | Nombre de un nodo del clúster. | Un serie generada de forma aleatoria
+| analytics/datapath | La vía de acceso en la que se guardan los datos analíticos en el sistema de archivos. | ./analyticsData |
+| analytics/settingspath | La vía de acceso a un archivo de valores de Elasticsearch. Para obtener más información, consulte Elasticsearch. | Ninguno |
+| analytics/transportport | El puerto que se utiliza para la comunicación de nodo a nodo. | 9600 |
+| analytics/httpport | El puerto que se utiliza para la comunicación de HTTP con Elasticsearch. | 9500 |
+| analytics/http.enabled | Habilita o inhabilita la comunicación de HTTP con Elasticsearch. | false |
+| analytics/serviceProxyURL | El archivo WAR de la IU de análisis y el archivo WAR del servicio de análisis se pueden instalar en servidores de aplicaciones independientes. Si decide hacerlo, debe comprender que el tiempo de ejecución de JavaScript en el archivo WAR de la IU lo puede bloquear la prevención de creación de scripts entre sitios en el navegador. Para omitir este bloqueo, el archivo WAR de la IU incluye código de proxy de Java para que el tiempo de ejecución de JavaScript recupere respuestas de la API REST del servidor de origen. Pero el proxy está configurado para reenviar solicitudes de la API REST al archivo WAR del servicio de análisis. Configure esta propiedad si ha instalado los archivos WAR en servidores de aplicaciones independientes. | Ninguno |
+| analytics/bootstrap.mlockall | Esta propiedad impide que cualquier memoria de Elasticsearch se transfiera al disco. | true |
+| analytics/multicast | Habilita o inhabilita el descubrimiento del nodo de multidifusión. | false |
+| analytics/warmupFrequencyInSeconds | La frecuencia con la que se ejecutan las consultas de preparación. Las consultas de preparación se ejecutan en segundo plano para forzar los resultados de consulta en la memoria, lo que mejora el rendimiento de la consola web. Los valores negativos inhabilitan las consultas de preparación. | 600 |
+| analytics/tenant | Nombre del índice principal de Elasticsearch.	worklight |
 
-In all cases where the key does not contain a period (like **httpport** but not **http.enabled**), the setting can be controlled by system environment variables where the variable name is prefixed with **ANALYTICS_**. When both the JNDI property and the system environment variable are set, the system environment variable takes precedence. For example, if you have both the **analytics/httpport** JNDI property and the **ANALTYICS_httpport** system environment variable set, the value for **ANALYTICS_httpport** is used.
+En todos los casos en los que la clave no contiene un punto (como **httpport** pero no **http.enabled**), el valor puede controlarse mediante variables de entorno del sistema donde el nombre de la variable tiene como prefijo **ANALYTICS_**. Cuando se establece la propiedad JNDI y la variable de entorno de sistema, la variable de entorno de sistema tiene prioridad. Por ejemplo, si tiene la propiedad JNDI **analytics/httpport** y la variable de entorno de sistema **ANALTYICS_httpport** establecidas, se utilizará el valor para **ANALYTICS_httpport**.
 
-#### Document Time to Live (TTL)
+> **Importante**: Actualmente, MobileFirst Analytics v8.0 no soporta la multitenencia. Los eventos desde MobileFirst Server se envían por defecto a arquitecturas de un solo tenant.
+
+#### Documento TTL (Time to Live)
 {: #document-time-to-live-ttl }
-TTL is effectively how you can establish and maintain a data retention policy. Your decisions have dramatic consequences on your system resource needs. The long you keep data, the more RAM, disk, and scaling is likely needed.
+TTL trata efectivamente de cómo puede establecer y mantener una política de retención de datos. Sus decisiones tienen consecuencias drásticas en las necesidades de recursos del sistema. Cuanto más conserve los datos, más RAM, disco y escalado se necesita.
 
-Each document type has its own TTL. Setting a document's TTL enables automatic deletion of the document after it is stored for the specified amount of time.
+Cada tipo de documento tiene su propio TTL. Establecer el TTL de un documento permite la supresión automática del documento una vez que se almacene durante la cantidad de tiempo especificada.
 
-Each TTL JNDI property is named **analytics/TTL_[document-type]**. For example, the TTL setting for **NetworkTransaction** is named **analytics/TTL_NetworkTransaction**.
+Cada propiedad TTL JNDI se denomina **analytics/TTL_[document-type]**. Por ejemplo, el valor TTL para **NetworkTransaction** se denomina **analytics/TTL_NetworkTransaction**.
 
-These values can be set by using basic time units as follows.
+Estos valores se pueden establecer mediante unidades de tiempo básicas como se indica a continuación.
 
-* 1Y = 1 year
-* 1M = 1 month
-* 1w = 1 week
-* 1d = 1 day
-* 1h = 1 hour
-* 1m = 1 minute
-* 1s = 1 second
-* 1ms = 1 millisecond
+* 1Y = 1 año
+* 1M = 1 mes
+* 1w = 1 semana
+* 1d = 1 día
+* 1h = 1 hora
+* 1m = 1 minuto
+* 1s = 1 segundo
+* 1ms = 1 milisegundo
 
-> Note: If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+La lista de tipos de documentos soportados es la siguiente:
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **Nota:** Si va a migrar desde las versiones anteriores de {{ site.data.keys.mf_analytics_server }} y ha configurado previamente cualquier propiedad TTL JNDI, consulte [Migración de propiedades del servidor utilizadas por versiones anteriores de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 {: #elasticsearch }
-The underlying storage and clustering technology that serves the {{ site.data.keys.mf_analytics_console }} is Elasticsearch.  
-Elasticsearch provides many tunable properties, mostly for performance tuning. Many of the JNDI properties are abstractions of properties that are provided by Elasticsearch.
+La tecnología de almacenamiento y de agrupación en clúster subyacente que sirve a {{ site.data.keys.mf_analytics_console }} es Elasticsearch.  
+Elasticsearch proporciona muchas propiedades ajustables, principalmente para el ajuste de rendimiento. Muchas de las propiedades JNDI son resúmenes de propiedades proporcionados por Elasticsearch.
 
-All properties that are provided by Elasticsearch can also be set by using JNDI properties with **analytics/** prepended before the property name. For example, **threadpool.search.queue_size** is a property that is provided by Elasticsearch. It can be set with the following JNDI property.
+Todas las propiedades que proporciona Elasticsearch también se pueden establecer utilizando propiedades JNDI con **analytics/** preanexado antes del nombre de propiedad. Por ejemplo, **threadpool.search.queue_size** es una propiedad que proporciona Elasticsearch. Se puede establecer con la propiedad JNDI siguiente.
 
 ```xml
 <jndiEntry jndiName="analytics/threadpool.search.queue_size" value="100" />
 ```
 
-These properties are normally set in a custom settings file. If you are familiar with Elasticsearch and the format of its properties files, you can specify the path to the settings file by using the **settingspath** JNDI property, as follows.
+Estas propiedades se establecen normalmente en un archivo de valores personalizados. Si está familiarizado con Elasticsearch y el formato de sus archivos de propiedades, puede especificar la vía de acceso al archivo de valores utilizando la propiedad JNDI **settingspath**, tal como se indica a continuación.
 
 ```xml
 <jndiEntry jndiName="analytics/settingspath" value="/home/system/elasticsearch.yml" />
 ```
 
-Unless you are an expert Elasticsearch IT manager, identified a specific need, or were instructed by your services or support team, do not be tempted to fiddle with these settings.
+A menos que sea un gestor de TI de Elasticsearch experto, que haya identificado una necesidad específica, o que se lo haya indicado su equipo de soporte o de servicios, no modifique estos valores.
 
-## Backing up Analytics data
+## Copia de seguridad de los datos de análisis
 {: #backing-up-analytics-data }
-Learn about how to back up your {{ site.data.keys.mf_analytics }} data.
+Obtenga más información acerca de cómo realizar copias de seguridad de los datos de {{ site.data.keys.mf_analytics }}.
 
-The data for {{ site.data.keys.mf_analytics }} is stored as a set of files on the {{ site.data.keys.mf_analytics_server }} file system. The location of this folder is specified by the datapath JNDI property in the {{ site.data.keys.mf_analytics_server }} configuration. For more information about the JNDI properties, see [Configuration properties](#configuration-properties).
+Los datos para {{ site.data.keys.mf_analytics }} se almacenan como un conjunto de archivos en el sistema de archivos de {{ site.data.keys.mf_analytics_server }}. La ubicación de esta carpeta se especifica mediante la propiedad datapath JNDI en la configuración de {{ site.data.keys.mf_analytics_server }}. Para obtener más información sobre las propiedades JNDI, consulte [Propiedades de configuración](#configuration-properties).
 
-The {{ site.data.keys.mf_analytics_server }} configuration is also stored on the file system, and is called server.xml.
+La configuración de {{ site.data.keys.mf_analytics_server }} también está almacenada en el sistema de archivos, y se denomina server.xml.
 
-You can back up these files by using any existing server backup procedures that you might already have in place. No special procedure is required when you back up these files, other than ensuring that the {{ site.data.keys.mf_analytics_server }} is stopped. Otherwise, the data might change while the backup is occurring, and the data that is stored in memory might not yet be written to the file system. To avoid inconsistent data, stop the {{ site.data.keys.mf_analytics_server }} before you start your backup.
+Puede realizar una copia de seguridad de estos archivos utilizando cualquier procedimiento de copia de seguridad de servidor existente que puede que ya tenga. No es necesario ningún procedimiento especial cuando se realice una copia de seguridad de estos archivos, que no sea asegurarse que se haya detenido {{ site.data.keys.mf_analytics_server }}. De lo contrario, los datos pueden cambiar mientras se está produciendo la copia de seguridad, y los datos que están almacenados en la memoria puede que aún no se hayan escrito en el sistema de archivos. Para evitar datos incoherentes, detenga {{ site.data.keys.mf_analytics_server }} antes de iniciar la copia de seguridad.
 
-## Cluster management and Elasticsearch
+## Gestión de clústeres y Elasticsearch
 {: #cluster-management-and-elasticsearch }
-Manage clusters and add nodes to relieve memory and capacity strain.
+Gestione clústeres y añada nodos para liberar memoria y presión de capacidad.
 
-### Add a Node to the Cluster
+### Añadir un nodo al clúster
 {: #add-a-node-to-the-cluster }
-You can add a new node to the cluster by installing the {{ site.data.keys.mf_analytics_server }} or by running a standalone Elasticsearch instance.
+Puede añadir un nodo nuevo al clúster instalando {{ site.data.keys.mf_analytics_server }} o ejecutando una instancia autónoma de Elasticsearch.
 
-If you choose the standalone Elasticsearch instance, you relieve some cluster strain for memory and capacity requirements, but you do not relieve data ingestion strain. Data reports must always go through the {{ site.data.keys.mf_analytics_server }} for preservation of data integrity and data optimization prior to going to persistent store.
+Si elige la instancia autónoma de Elasticsearch, libere alguna presión del clúster para los requisitos de memoria y de capacidad, pero no libere la presión de ingestión de datos. Los informes de datos siempre deben ir a través de {{ site.data.keys.mf_analytics_server }} para conservar la integridad y la optimización de los datos antes de ir a un almacén persistente.
 
-You can mix and match.
+Puede mezclar y comparar.
 
-The underlying Elasticsearch data store expects nodes to be homogenous, so do not mix a powerful 8-core 64 GB RAM rack system with a leftover surplus notebook in your cluster. Use similar hardware among the nodes.
+El almacén de datos subyacente de Elasticsearch espera que los nodos sean homogéneos, por lo que no mezcle un potente sistema de bastidor de 64 GB de RAM de 8 núcleos con un cuaderno sobrante en el clúster. Utilice hardware similar entre los nodos.
 
-#### Adding a {{ site.data.keys.mf_analytics_server }} to the cluster
+#### Adición de {{ site.data.keys.mf_analytics_server }} al clúster
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
-Learn how to add a {{ site.data.keys.mf_analytics_server }} to the cluster.
+Información sobre cómo añadir {{ site.data.keys.mf_analytics_server }} al clúster.
 
-Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+Puesto que Elasticsearch se incluye en {{ site.data.keys.mf_analytics_server }}, utilice la configuración de Elasticsearch para definir el comportamiento del clúster. Por ejemplo, no cree una granja de WebSphere Application Server Liberty ni utilice otras configuraciones del servidor de aplicaciones.
 
-In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
+En las siguientes instrucciones de ejemplo, no configure el nodo para que sea un nodo maestro ni un nodo de datos. En su lugar, configure el nodo como un "equilibrador de carga de búsqueda" cuyo propósito es estar activo temporalmente para que la API REST de Elasticsearch esté expuesta para la supervisión y la configuración dinámica.
 
-**Notes:**
+**Notas:**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
-* Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
+* Recuerde configurar el hardware y el sistema operativo de este nodo según [Requisitos del sistema](../installation/#system-requirements).
+* El puerto 9600 es el puerto de transporte que utiliza Elasticsearch. Por lo tanto, el puerto 9600 debe estar abierto a través de cualquier cortafuegos entre nodos de clúster.
 
-1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the {{ site.data.keys.mf_analytics_server }} to any of the supported app servers.
-    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-    * [Installing {{ site.data.keys.mf_analytics }} on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
-    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
+1. Instale el archivo WAR de servicio de análisis y el archivo WAR de la IU de análisis (si desea la IU) en el servidor de aplicaciones en el sistema recientemente asignado. Instale esta instancia de {{ site.data.keys.mf_analytics_server }} en cualquiera de los servidor de aplicaciones soportados.
+    * [Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+    * [Instalación de {{ site.data.keys.mf_analytics }} en Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
+    * [Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
 
-2. Edit the application server's configuration file for JNDI properties (or use system environment variables) to configure at least the following flags.
+2. Edite el archivo de configuración del servidor de aplicaciones para las propiedades JNDI (o utilice las variables de entorno de sistema) para configurar al menos los distintivos siguientes.
 
-    | Flag | Value (example) | Default | Note |
+    | Distintivo | Valor (ejemplo) | Predeterminado | Nota |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
-    | node.data|	false | 	true | 	Do not allow this node to store data. |
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+    | cluster.name | 	worklight	 | worklight | 	El clúster al que pretende que se añada este nodo. |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Establézcalo en false para evitar uniones de clúster accidentales. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Ninguno | 	Lista de los nodos maestros en el clúster existente. Cambie el puerto predeterminado de 9600 si ha especificado un valor de puerto de transporte en los nodos maestros. |
+    | node.master | 	false | 	true | 	No permita que este nodo sea un maestro. |
+    | node.data|	false | 	true | 	No permita que este nodo almacene datos. |
+    | http.enabled | 	true	 | true | 	Abra el puerto HTTP 9200 no protegido para la API REST de Elasticsearch. |
 
-3. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the **path.plugins** flag.
-4. Run the application server and start the WAR applications if necessary.
-5. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
+3. Considere todos los distintivos de configuración en escenarios de producción. Es posible que desee que Elasticsearch conserve los plug-ins en un directorio del sistema de archivos distinto que el de los datos, por lo que debe establecer el distintivo **path.plugins**.
+4. Ejecute el servidor de aplicaciones e inicie las aplicaciones WAR si es necesario.
+5. Confirme que este nodo nuevo se ha unido al clúster observando la salida de la consola en este nodo nuevo, u observando el recuento de nodos en la sección **Clúster y nodo** de la página **Administración** en {{ site.data.keys.mf_analytics_console }}.
 
-#### Adding a stand-alone Elasticsearch node to the cluster
+#### Adición de un nodo autónomo de Elasticsearch en el clúster
 {: #adding-a-stand-alone-elasticsearch-node-to-the-cluster }
-Learn how to add a stand-alone Elasticsearch node to the cluster.
+Información sobre cómo añadir un nodo autónomo de Elasticsearch en el clúster.
 
-You can add a stand-alone Elasticsearch node to your existing {{ site.data.keys.mf_analytics }} cluster in just a few simple steps. However, you must decide the role of this node. Is it going to be a master-eligible node? If so, remember to avoid the split-brain issue. Is it going to be a data node? Is it going to be a client-only node? Perhaps you want a client-only node so that you can start a node temporarily to expose Elasticsearch's REST API directly to affect dynamic configuration changes to your running cluster.
+Puede añadir un nodo autónomo de Elasticsearch a su clúster de {{ site.data.keys.mf_analytics }} existente en unos pocos pasos sencillos. Sin embargo, debe decidir el rol de este nodo. ¿Va a ser un nodo elegible por el maestro? Si es así, recuerde que debe evitar el problema de cerebro dividido. ¿Va a ser un nodo de datos? ¿Va a ser un nodo de sólo cliente? Quizás desea un nodo de sólo cliente de modo que pueda iniciar un nodo temporalmente para exponer la API REST de Elasticsearch directamente para que afecte a los cambios de configuración dinámica en el clúster en ejecución.
 
-In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
+En las siguientes instrucciones de ejemplo, no configure el nodo para que sea un nodo maestro ni un nodo de datos. En su lugar, configure el nodo como un "equilibrador de carga de búsqueda" cuyo propósito es estar activo temporalmente para que la API REST de Elasticsearch esté expuesta para la supervisión y la configuración dinámica.
 
-**Notes:**
+**Notas:**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
-* Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
+* Recuerde configurar el hardware y el sistema operativo de este nodo según [Requisitos del sistema](../installation/#system-requirements).
+* El puerto 9600 es el puerto de transporte que utiliza Elasticsearch. Por lo tanto, el puerto 9600 debe estar abierto a través de cualquier cortafuegos entre nodos de clúster.
 
-1. Download Elasticsearch from [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz).
-2. Decompress the file.
-3. Edit the **config/elasticsearch.yml** file and configure at least the following flags.
+1. Descargue Elasticsearch desde [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz).
+2. Descomprima el archivo.
+3. Edite el archivo **config/elasticsearch.yml** y configure al menos los distintivos siguientes.
 
-    | Flag | Value (example) | Default | Note |
+    | Distintivo | Valor (ejemplo) | Predeterminado | Nota |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
-    | node.data|	false | 	true | 	Do not allow this node to store data. |
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+    | cluster.name | 	worklight	 | worklight | 	El clúster al que pretende que se añada este nodo. |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Establézcalo en false para evitar uniones de clúster accidentales. |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Ninguno | 	Lista de los nodos maestros en el clúster existente. Cambie el puerto predeterminado de 9600 si ha especificado un valor de puerto de transporte en los nodos maestros. |
+    | node.master | 	false | 	true | 	No permita que este nodo sea un maestro. |
+    | node.data|	false | 	true | 	No permita que este nodo almacene datos. |
+    | http.enabled | 	true	 | true | 	Abra el puerto HTTP 9200 no protegido para la API REST de Elasticsearch. |
 
 
-4. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the path.plugins flag.
-5. Run `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` to install the ICU plug-in.
-6. Run `./bin/elasticsearch`.
-7. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
+4. Considere todos los distintivos de configuración en escenarios de producción. Es posible que desee que Elasticsearch conserve los plug-ins en un directorio del sistema de archivos distinto al de los datos, por lo que debe establecer el distintivo path.plugins.
+5. Ejecute `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` para instalar el plug-in de ICU.
+6. Ejecute `./bin/elasticsearch`.
+7. Confirme que este nodo nuevo se ha unido al clúster observando la salida de la consola en este nodo nuevo, u observando el recuento de nodos en la sección **Clúster y nodo** de la página **Administración** en {{ site.data.keys.mf_analytics_console }}.
 
-#### Circuit breakers
+#### Interruptores de circuito
 {: #circuit-breakers }
-Learn about Elasticsearch circuit breakers.
+Obtenga más información sobre los interruptores de circuito de Elasticsearch.
 
-Elasticsearch contains multiple circuit breakers that are used to prevent operations from causing an **OutOfMemoryError**. For example, if a query that serves data to the {{ site.data.keys.mf_console }} results in using 40% of the JVM heap, the circuit breaker triggers, an exception is raised, and the console receives empty data.
+Elasticsearch contiene varios interruptores de circuito que se utilizan para evitar que las operaciones provoquen un **OutOfMemoryError**. Por ejemplo, si una consulta que sirve datos en {{ site.data.keys.mf_console }} da como resultado utilizar el 40% del almacenamiento dinámico de JVM, el interruptor del circuito se desencadenará, se generará una excepción y la consola recibirá datos vacíos.
 
-Elasticsearch also has protections for filling up the disk. If the disk on which the Elasticsearch data store is configured to write fills to 90% capacity, the Elasticsearch node informs the master node in the cluster. The master node then redirects new document-writes away from the nearly full node. If you have only one node in your cluster, no secondary node to which data can be written is available. Therefore, no data is written and is lost.
+Elasticsearch también tiene protecciones para rellenar el disco. Si el disco en el que está configurado el almacén de datos de Elasticsearch para escribir llega al 90% de su capacidad, el nodo de Elasticsearch informará al nodo maestro del clúster. El nodo maestro a continuación redirigirá nuevas escrituras de documentos fuera del nodo casi completo. Si sólo dispone de un nodo en el clúster, no habrá disponible ningún nodo secundario en el que se puedan escribir los datos. Por lo tanto, no se escriben datos y se perderán.

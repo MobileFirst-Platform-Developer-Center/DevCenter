@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: SMS-Benachrichtigungen in iOS
-breadcrumb_title: SMS in iOS
+title: Handhabung von SMS-Benachrichtigungen in iOS
+breadcrumb_title: Handling SMS in iOS
 relevantTo: [ios]
 downloads:
-  - name: Xcode-Projekt herunterladen
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---
@@ -51,7 +51,7 @@ MFPPush.sharedInstance().initialize()
 
 #### Gerät registrieren
 {: #register-device }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
 
 ```swift
 MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void in
@@ -63,7 +63,7 @@ MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void 
  })
 ```
 
-* **optionObject**: `jsonOptions` mit der Telefonnummer für die Registrierung des Geräts. Beispiel: 
+* **optionObject**: `jsonOptions` mit der Telefonnummer für die Registrierung des Geräts. Beispiel:
 
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
@@ -88,8 +88,8 @@ aufheben.
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
-   if error == nil {
-       // Aufhebung der Registrierung erfolgreich
+    if error == nil {
+        // Aufhebung der Registrierung erfolgreich
     } else {
         // Aufhebung der Registrierung fehlgeschlagen
     }
@@ -109,6 +109,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST-API-Laufzeitservices</a> in der Benutzerdokumentation.
+
+
 
 Informationen zum Senden einer Benachrichtigung enthält das Lernprogramm [Benachrichtigungen senden](../../sending-notifications). 
 

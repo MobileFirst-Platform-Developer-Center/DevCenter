@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Java 令牌验证程序
-breadcrumb_title: Java 令牌验证程序
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: 下载样本
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -43,11 +43,12 @@ Java 库是作为 JAR 文件 (**mfp-java-token-validator-8.0.0.jar**) 提供的�
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`：授权服务器的 URI，通常为 {{ site.data.keys.mf_server }}。例如，**http://localhost:9080/mfp/api**。
+- `authorizationURI`：授权服务器的 URI，通常为 {{ site.data.keys.mf_server }}。 例如，**http://localhost:9080/mfp/api**。
 - `clientId`：在 {{ site.data.keys.mf_console }} 中配置的保密客户机标识。
 - `clientSecret`：在 {{ site.data.keys.mf_console }} 中配置的保密客户机密钥。
 
-> 该库会公开一个 API，用于封装并简化与授权服务器的自省端点的交互。有关详细 API 参考，[请参阅 {{ site.data.keys.product_adj }} Java 令牌验证程序 API 参考](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)。
+> 该库会公开一个 API，用于封装并简化与授权服务器的自省端点的交互。 有关详细 API 参考，[请参阅 {{ site.data.keys.product_adj }} Java 令牌验证程序 API 参考](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)。
+
 ## 验证凭证
 {: #validating-the-credentials }
 `validate` API 方法会要求授权服务器验证授权头：
@@ -56,14 +57,14 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`：`Authorization` HTTP 头的内容，这是访问令牌。例如，可以从 `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`) 中获取。
+- `authorizationHeader`：`Authorization` HTTP 头的内容，这是访问令牌。 例如，可以从 `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`) 中获取。
 - `expectedScope`：用于验证令牌的作用域，例如，`accessRestricted`。
 
 您可以查询生成的 `TokenValidationResult` 对象以查找错误或有效的自省数据：
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
-if (tokenValidationRes.getAuthenticationError() != null) {
+    			if (tokenValidationRes.getAuthenticationError() != null) {
     // Error
     AuthenticationError error = tokenValidationRes.getAuthenticationError();
     httpServletResponse.setStatus(error.getStatus());
@@ -88,9 +89,9 @@ String username = introspectionData.getUsername();
 
 ## 高速缓存
 {: #cache }
-`TokenValidationManager` 类随附一个内部高速缓存，用于高速缓存令牌和自省数据。高速缓存的目的是减少针对授权服务器完成的令牌*自省*总量（如果使用相同的头发出请求）。
+`TokenValidationManager` 类随附一个内部高速缓存，用于高速缓存令牌和自省数据。 高速缓存的目的是减少针对授权服务器完成的令牌*自省*总量（如果使用相同的头发出请求）。
 
-缺省高速缓存大小为 **50000 个项**。在到达此容量后，将除去最旧的令牌。  
+缺省高速缓存大小为 **50000 个项**。 在到达此容量后，将除去最旧的令牌。  
 
 `TokenValidationManager` 的构造方法也可接受要存储的 `cacheSize`（自省数据项的数量）：
 

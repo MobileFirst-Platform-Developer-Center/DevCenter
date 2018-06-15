@@ -20,7 +20,7 @@ IBM plans to provide service updates to IBM MobileFirst Platform Foundation to s
 
 For those customers who have Android apps developed using IBM Worklight Foundation 6.2 or earlier releases, and intend to have their app running on Android N, an upgrade to a later release is required. Talk to your IBM representative about how we can help.
 
-The recently released IBM MobileFirst Foundation 8.0 provides an opporunity to upgrade your applications to the next level:
+The recently released IBM MobileFirst Foundation 8.0  on-prem or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) provides an opportunity to upgrade your applications to the next level:
 
 * [Read the release announcement]({{site.baseurl}}/blog/2016/06/17/ibm-releases-next-generation-of-mobilefirst-foundation-built-for-hybrid-cloud/)
 * [Review the migration cookbook]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/)
@@ -29,4 +29,3 @@ The recently released IBM MobileFirst Foundation 8.0 provides an opporunity to u
 For compatibility results between Android N and MobileFirst Platform releases, see the blog post: [Compatibility tests for Android N with supported MobileFirst Platform Foundation releases]({{site.baseurl}}/blog/2016/04/05/mobilefirst-platform-compatibility-for-android-n/).
 
 *Note: IBM statements regarding its plans, directions, and intent are subject to change or withdrawal without notice at the sole discretion of IBM. Information regarding potential future products is intended to outline our general product direction and it should not be relied on in making a purchasing decision. The information mentioned regarding potential future products is not a commitment, promise, or legal obligation to deliver any material, code or functionality. Information about potential future products may not be incorporated into any contract. The development, release, and timing of any future features or functionality described for our products remains at our sole discretion.*
-

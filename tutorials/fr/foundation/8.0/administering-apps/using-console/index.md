@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Administration d'applications via la console MobileFirst Operations Console
-breadcrumb_title: Administration à l'aide de la console
+title: Administration d'applications via MobileFirst Operations Console
+breadcrumb_title: Administrating using the console
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -14,7 +14,7 @@ Vous pouvez démarrer la console en entrant l'une des URL suivantes :
 * Mode sécurisé pour un environnement de production ou de test : `https://hostname:secure_port/mfpconsole`
 * Développement : `http://server_name:port/mfpconsole`
 
-Vous devez disposer un ID de connexion et d'un mot de passe vous permettant d'accéder à la console {{ site.data.keys.mf_console }}. Pour plus d'informations, voir [Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+Vous devez disposer d'un ID de connexion et d'un mot de passe vous permettant d'accéder à la console {{ site.data.keys.mf_console }}. Pour plus d'informations, voir [Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 Vous pouvez utiliser la console {{ site.data.keys.mf_console }} pour gérer vos applications.
 
@@ -25,7 +25,7 @@ A partir de la console {{ site.data.keys.mf_console }}, vous pouvez également a
 
 * [Gestion des applications mobiles](#mobile-application-management)
 * [Statut d'application et octroi de licence de jeton](#application-status-and-token-licensing)
-* [Journal des erreurs liées aux opérations sur des environnements d'exécution](#error-log-of-operations-on-runtime-environments)
+* [Journal des erreurs liées aux opérations dans des environnements d'exécution](#error-log-of-operations-on-runtime-environments)
 * [Journal d'audit des opérations d'administration](#audit-log-of-administration-operations)
 
 ## Gestion des applications mobiles
@@ -93,7 +93,7 @@ Utilisez {{ site.data.keys.mf_console }} (la console) pour désactiver l'accès 
 4. Ajoutez dans la zone **Message de notification par défaut** le message de notification personnalisé à afficher lorsque l'utilisateur tente d'accéder à l'application. L'exemple de message suivant indique aux utilisateurs qu'ils doivent effectuer une mise à niveau vers la version la plus récente :
 
    ```bash
-   This version is no longer supported. Please upgrade to the latest version.
+   Cette version n'est plus prise en charge. Effectuez une mise à niveau vers la dernière version.
    ```
 
 5. Vous pouvez éventuellement indiquer le message de notification dans d'autres langues dans la section **Environnements locaux pris en charge**.
@@ -112,7 +112,7 @@ Suivez la procédure décrite pour configurer le message de notification. Vous p
 3. Ajoutez un message de démarrage personnalisé. L'exemple de message suivant signale à l'utilisateur une activité de maintenance planifiée pour l'application :
 
    ```bash
-   The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
+   Le serveur sera indisponible samedi entre 4 h 00 et 6 h 00 en raison d'une opération de maintenance planifiée.
    ```
 
 4. Vous pouvez éventuellement indiquer le message de notification dans d'autres langues dans la section Environnements locaux pris en charge.
@@ -165,12 +165,12 @@ L'application a été bloquée car sa licence a expiré
 Si un nombre suffisant de jetons pour exécuter l'application se libère ultérieurement ou si votre organisation acquiert d'autres jetons, le message suivant s'affiche dans la console {{ site.data.keys.mf_console }} :
 
 ```bash
-L'application a été bloquée car sa licence a expiré. Une nouvelle licence est désormais disponible.
+L'application a été bloquée car sa licence a expiré. Une nouvelle licence est désormais disponible
 ```
 
 Le statut d'affichage est toujours **Bloqué**. Vous devez restaurer manuellement le statut actuel correct de la mémoire ou de vos propres enregistrements en éditant la zone Statut. {{ site.data.keys.product }} ne gère pas l'affichage du statut **Bloqué** dans la console {{ site.data.keys.mf_console }} d'une application qui a été bloquée en raison d'un nombre de jetons de licence insuffisant. Il vous incombe de restaurer un statut réel pour une application ainsi bloquée pouvant être affiché via la console {{ site.data.keys.mf_console }}.
 
-## Journal des erreurs liées aux opérations sur des environnements d'exécution
+## Journal des erreurs liées aux opérations dans des environnements d'exécution
 {: #error-log-of-operations-on-runtime-environments }
 Utilisez le journal des erreurs pour accéder aux opérations de gestion ayant échoué initiées à partir de la console {{ site.data.keys.mf_console }} ou de la ligne de commande sur l'environnement d'exécution sélectionné et pour voir l'effet de cet échec sur les serveurs.
 

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Java-Token-Validator
-breadcrumb_title: Java-Token-Validator
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Beispiel herunterladen
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -52,6 +52,8 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 mit dem Introspektionsendpunkt des Autorisierungsservers eingebunden ist und die diese Interaktion vereinfacht. Ausführliche API-Referenzinformationen finden Sie unter
 [{{ site.data.keys.product_adj }}-Java-Token-Validator](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
+
+
 ## Berechtigungsnachweise validieren
 {: #validating-the-credentials }
 Die API-Methode `validate` fordert den Autorisierungsserver auf, den Authorization-Header zu validieren. 
@@ -67,8 +69,8 @@ Sie können Fehler oder gültige Introspektionsdaten aus dem resultierenden `Tok
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
-if (tokenValidationRes.getAuthenticationError() != null) {
-    // Fehler
+    			if (tokenValidationRes.getAuthenticationError() != null) {
+    				// Fehler
     AuthenticationError error = tokenValidationRes.getAuthenticationError();
     httpServletResponse.setStatus(error.getStatus());
     httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());

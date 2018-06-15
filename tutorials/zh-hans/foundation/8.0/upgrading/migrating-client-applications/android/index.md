@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 迁移现有 Android 应用程序
+title: 迁移现有的 Android 应用程序
 breadcrumb_title: Android
 weight: 3
 ---
@@ -24,7 +24,7 @@ weight: 3
 * 必须具有现有 {{ site.data.keys.product }} 本机 Android 应用程序。
 * 您必须具有因特网访问权。
 * 您必须已安装 node.js V4.0.0 或更高版本。
-* 查看并了解迁移过程的限制。 有关更多信息，请参阅[从先前发行版迁移应用程序](../)。
+* 查看并了解迁移过程的限制。 有关更多信息，请参阅[从较早发行版迁移应用程序](../)。
 
 对于使用 {{ site.data.keys.product }} 先前版本创建的应用程序，在未进行一些更改的情况下在 V8.0 中不受支持。 迁移辅助工具通过扫描现有应用程序中的源文件，识别 V8.0 中不推荐使用、不再支持或修改的 API，从而简化此过程。
 
@@ -125,12 +125,12 @@ scope)</code></li></ul>{:/} | 使用 [`AuthorizationManager`](http://www.ibm.com
 | API 元素 | 迁移路径 |
 |-------------|----------------|
 | 现在不推荐使用 `org.apache.http.Header[]`。 因此，移除了以下方法： | |
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。|
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。 |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.addHeader(String name, String value)` API。 |
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。|
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。 |
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。|
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。|
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。 MFP 客户机允许循环重定向。 |
 | {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>，所有采用 <code>WLHttpResponseListener</code> 的方法：<ul><li><code>WLResourceRequest.send(java.util.HashMap

@@ -31,13 +31,14 @@ wird für jede Instanz eine eigene Gruppe von Tabellen benötigt. Die Tabellen m
 
 > **Hinweis zu DB2:** {{ site.data.keys.product_adj }}-Lizenzen erlauben die Nutzung von DB2 als unterstützendes System für die MobileFirst Foundation. Wenn Sie davon profitieren möchten, führen Sie nach der Installation
 der DB2-Software folgende Schritte aus:
+
 > 
 > * Laden Sie das Image zur Aktivierung für eine eingeschränkte Verwendung direkt von der Website [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) herunter.
 > * Wenden Sie die Datei zur Aktivierung für eine eingeschränkte Verwendung (**db2xxxx.lic**) an. Führen Sie dazu den Befehl **db2licm** aus. 
 >
 > Weitere Informatinen finden Sie im [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html).
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 
 * [Datenbankbenutzer und Berechtigungen](#database-users-and-privileges)
@@ -113,6 +114,8 @@ erfüllt sind.
 
 > Eine aktuelle Liste der unterstützten Datenbanksoftwareversionen finden Sie auf der Seite mit den [Systemvoraussetzungen](../../../product-overview/requirements/).
 
+
+
 ### Datenbank- und Benutzeranforderungen für DB2
 {: #db2-database-and-user-requirements }
 Lesen Sie sich die Datenbankanforderungen für DB2 durch. Führen Sie die Schritte für die Benutzer- und Datenbankerstellung aus und richten
@@ -132,7 +135,7 @@ von den Ant-Tasks für die Erstellung der Tabellen verwendet werden.
 2. Öffnen Sie wie folgt einen
 DB2-Befehlszeilenprozessor. Verwenden Sie dabei einen
 Benutzer mit der Berechtigung **SYSADM** oder **SYSCTRL**. 
-    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**. 
+    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**.
     * Navigieren Sie auf Linux- oder UNIX-Systemen zu **~/sqllib/bin** und geben Sie `./db2` ein.
 3. Geben Sie für die Erstellung der MobileFirst-Server-Datenbank SQL-Anweisungen ähnlich denen im folgenden Beispiel ein. 
 
@@ -306,8 +309,7 @@ Mit der folgenden Prozedur werden die Tabellen aller Anwendungen gemäß
 demselben Schema (MFPSCM) erstellt. Es wird davon ausgegangen, dass bereits eine Datenbank und ein Benutzer erstellt wurden. Weitere Informationen finden Sie unter
 [Datenbank- und Benutzeranforderungen für DB2](#db2-database-and-user-requirements).
 
-Führen Sie die folgenden DB2-Befehle
-mit dem Benutzer mfpuser aus: 
+Führen Sie die folgenden DB2-Befehle als Benutzer mfpuser aus: 
 
 ```sql
 db2 CONNECT TO MFPDATA
@@ -598,7 +600,7 @@ In diesem Abschnitt finden Sie relevante Informationen zum Einrichten der Datenb
 Sie können die MobileFirst-Server-Datenbanktabellen mit Ant-Tasks einrichten. In einigen Fällen können Sie auch eine Datenbank und einen Benutzer mit diesen Tasks erstellen. Eine Übersicht über den Installationsprozess mit Ant-Tasks
 finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../tutorials/command-line).
 
-Mit der Installation werden eine Reihe von Ant-Beispieldateien bereitgestellt, die Ihnen den Einstieg in das Arbeiten mit Ant-Tasks erleichtern sollen. Sie finden diese Dateien unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples**. Die Dateien sind nach folgendem Muster benannt: 
+Mit der Installation werden eine Reihe von Ant-Beispieldateien bereitgestellt, die Ihnen den Einstieg in das Arbeiten mit Ant-Tasks erleichtern sollen. Sie finden diese Dateien unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples**. Die Dateien sind nach folgendem Muster benannt:
 
 #### configure-appserver-dbms.xml
 {: #configure-appserver-dbmsxml }

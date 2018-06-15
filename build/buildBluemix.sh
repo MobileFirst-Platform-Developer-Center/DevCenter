@@ -18,7 +18,7 @@ set -e
 ## First, build
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
+bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile --verbose
 rm -f _site/*.log
 #bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css" --log-level :debug
 

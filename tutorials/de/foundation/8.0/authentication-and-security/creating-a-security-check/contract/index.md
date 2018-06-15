@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Vereinbarung einer Sicherheitsüberprüfung
-breadcrumb_title: Vereinbarung einer Sicherheitsüberprüfung
+breadcrumb_title: security check contract
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
@@ -76,6 +76,8 @@ Sicherheitsüberprüfung führen, auch wenn der Ablaufzeitpunkt für den aktuell
 
 > Weitere Informationen zu den Methoden `authorize` und
 `introspect` enthält das Lernprogramm [ExternalizableSecurityCheck](../../externalizable-security-check).
+
+
 
 ### Zustandsverwaltung für Sicherheitsüberprüfungen
 {: #security-check-state-management }

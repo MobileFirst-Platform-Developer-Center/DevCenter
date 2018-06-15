@@ -9,7 +9,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-可使用 Maven 命令或通过使用 {{ site.data.keys.mf_cli }}（取决于安装和配置的 Maven）来创建适配器。然后可以使用您选择的 IDE（例如 Eclipse 或 IntelliJ）来编辑和构建适配器代码。本教程解释如何使用 Maven 和 {{ site.data.keys.mf_cli }} 来创建、构建以及部署 **Java 或 JavaScript 适配器**。要学习如何使用 Eclipse 或 IntelliJ IDE 来创建和构建适配器，请查看[在 Eclipse 中开发适配器](../developing-adapters)教程。
+可使用 Maven 命令或通过使用 {{ site.data.keys.mf_cli }}（取决于安装和配置的 Maven）来创建适配器。 然后可以使用您选择的 IDE（例如 Eclipse 或 IntelliJ）来编辑和构建适配器代码。 本教程解释如何使用 Maven 和 {{ site.data.keys.mf_cli }} 来创建、构建以及部署 **Java 或 JavaScript 适配器**。 要学习如何使用 Eclipse 或 IntelliJ IDE 来创建和构建适配器，请查看[在 Eclipse 中开发适配器](../developing-adapters)教程。
 
 **先决条件：** 请务必先阅读[适配器概述](../)。
 
@@ -32,7 +32,7 @@ weight: 2
 
 ## 安装 Maven
 {: #install-maven }
-要创建适配器，您首选需要下载并安装 Maven。请转至 [Apache Maven Web 站点](https://maven.apache.org/)，然后遵循指示信息下载并安装 Maven。
+要创建适配器，您首选需要下载并安装 Maven。 请转至 [Apache Maven Web 站点](https://maven.apache.org/)，然后遵循指示信息下载并安装 Maven。
 
 ## 使用 {{ site.data.keys.mf_cli }} 创建适配器
 {: #creating-adapters-using-mobilefirst-cli }
@@ -55,7 +55,7 @@ weight: 2
    mfpdev adapter create
    ```
 
-2. 输入适配器名称。例如：
+2. 输入适配器名称。 例如：
 
    ```bash
    ? Enter Adapter Name: SampleAdapter
@@ -73,13 +73,13 @@ weight: 2
   * 选择 `SQL` 创建 JavaScript SQL 适配器  
   * 选择 `Java` 创建 Java 适配器
 
-4. 输入适配器包（此选项仅对 Java 适配器有效）。例如：
+4. 输入适配器包（此选项仅对 Java 适配器有效）。 例如：
 
    ```bash
    ? Enter Package: com.mypackage
    ```
 
-5. 输入要构建的 Maven 项目的[组标识](https://maven.apache.org/guides/mini/guide-naming-conventions.html)。例如：
+5. 输入要构建的 Maven 项目的[组标识](https://maven.apache.org/guides/mini/guide-naming-conventions.html)。 例如：
 
    ```bash
    ? Enter Group ID: com.mycompany
@@ -98,7 +98,7 @@ mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name>
 
 “adapter-maven-archetype”是 {{ site.data.keys.product }} 提供的 archetype，其基于 [Maven archetype 工具箱](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)，由 Maven 用来创建适配器 Maven 项目。
 
-要创建 Maven 适配器项目，请使用 `archetype:generate` Maven 命令。执行该命令之后，Maven 将下载（或使用上面提及的本地存储库）所需的文件以生成适配器 Maven 项目。
+要创建 Maven 适配器项目，请使用 `archetype:generate` Maven 命令。 执行该命令之后，Maven 将下载（或使用上面提及的本地存储库）所需的文件以生成适配器 Maven 项目。
 
 您可以选择以交互式或直接运行该命令。
 
@@ -120,25 +120,25 @@ mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name>
      * 使用 `adapter-maven-archetype-http` 创建 JavaScript HTTP 适配器
      * 使用 `adapter-maven-archetype-sql` 创建 JavaScript SQL 适配器  
 
-3. 输入要构建的 Maven 项目的[组标识](https://maven.apache.org/guides/mini/guide-naming-conventions.html)。例如：
+3. 输入要构建的 Maven 项目的[组标识](https://maven.apache.org/guides/mini/guide-naming-conventions.html)。 例如：
 
    ```bash
    Define value for property 'groupId': : com.mycompany
    ```
 
-4. 输入 Maven 项目的工件标识，**这以后也将用作适配器名称**。例如：
+4. 输入 Maven 项目的工件标识，**这以后也将用作适配器名称**。 例如：
 
    ```bash
    Define value for property 'artifactId': : SampleAdapter
    ```
 
-5. 输入 Maven 项目版本（缺省值是 `1.0-SNAPSHOT`）。例如：
+5. 输入 Maven 项目版本（缺省值是 `1.0-SNAPSHOT`）。 例如：
 
    ```bash
    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
    ```
 
-6. 输入适配器包名称（缺省值是 `groupId`）。例如：
+6. 输入适配器包名称（缺省值是 `groupId`）。 例如：
 
    ```bash
    Define value for property 'package':  com.mycompany: : com.mypackage
@@ -218,8 +218,8 @@ mfpdev adapter build all
    ```
    
    * 使用您的 {{ site.data.keys.mf_server }} IP 地址和端口号替换 **localhost:9080**。
-   * **可选**。使用您的 admin 用户名和密码替换 **mfpfUser** 和 **mfpfPassword** 缺省值。
-   * **可选**。使用您的运行时名称替换 **mfpfRuntime** 缺省值。
+   * **可选**。 使用您的 admin 用户名和密码替换 **mfpfUser** 和 **mfpfPassword** 缺省值。
+   * **可选**。 使用您的运行时名称替换 **mfpfRuntime** 缺省值。
 2. 从项目的根文件夹运行部署命令：
  * **使用 {{ site.data.keys.mf_cli }}**：
 
@@ -247,6 +247,7 @@ mfpdev adapter deploy all
 ```
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**您也可以使用单个命令 `mvn install adapter:deploy` 来构建和部署适配器
+
 ### 部署到不同的运行时
 {: #deploying-to-different-runtimes }
 如果您运行多个运行时，请参阅[注册应用程序并将适配器部署到不同的运行时](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes)。
@@ -294,7 +295,7 @@ mfpdev adapter deploy all
 ## 将适配器分组在单个 Maven 项目中
 {: #grouping-adapters-in-a-single-maven-project }
 
-如果您的项目中有多个适配器，那么可能想要将这些适配器安排在单个 Maven 项目下。将适配器分组有利于构建所有、部署所有和共享依赖关系等。您也可以使用 `mfpdev adapter build all` 和 `mfpdev adapter deploy all` CLI 命令构建所有和部署所有适配器，即使没有将它们分组在单个 Maven 项目中。
+如果您的项目中有多个适配器，那么可能想要将这些适配器安排在单个 Maven 项目下。 将适配器分组有利于构建所有、部署所有和共享依赖关系等。 您也可以使用 `mfpdev adapter build all` 和 `mfpdev adapter deploy all` CLI 命令构建所有和部署所有适配器，即使没有将它们分组在单个 Maven 项目中。
 
 要分组适配器，您需要：
 
@@ -342,9 +343,9 @@ mfpdev adapter deploy all
   2. 添加 **`artifactId`** 元素 - 根文件夹的名称
   3. 为每个适配器添加 **`module`** 元素
   4. 添加 **`build`** 元素
-  5. **可选**。使用特定的 {{ site.data.keys.mf_server }} IP 地址和端口号替换 **localhost:9080**。
-  6. **可选**。使用您的 admin 用户名和密码替换 **`mfpfUser`** 和 **`mfpfPassword`** 缺省值。
-  7. **可选**。使用您的运行时名称替换 **`mfpfRuntime`** 缺省值。
+  5. **可选**。 使用特定的 {{ site.data.keys.mf_server }} IP 地址和端口号替换 **localhost:9080**。
+  6. **可选**。 使用您的 admin 用户名和密码替换 **`mfpfUser`** 和 **`mfpfPassword`** 缺省值。
+  7. **可选**。 使用您的运行时名称替换 **`mfpfRuntime`** 缺省值。
 
 4. 要[构建或部署](#build-and-deploy-adapters)所有适配器，请从根目录“GroupAdapters”项目运行 Maven 命令。
 
@@ -352,7 +353,7 @@ mfpdev adapter deploy all
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
 1. 打开您选择的浏览器，并使用地址 `http://<IP>:<PORT>/mfpconsole/` 来加载 {{ site.data.keys.mf_console }}。  
-2. 单击适配器旁边的“新建”按钮。您有两个创建适配器选项：
+2. 单击适配器旁边的“新建”按钮。 您有两个创建适配器选项：
  * 使用 Maven 或 {{ site.data.keys.mf_cli }}，如上所述。
  * 下载模板适配器项目（步骤 2）。
 3. 使用 Maven 或 {{ site.data.keys.mf_cli }} 构建适配器。
@@ -363,7 +364,7 @@ mfpdev adapter deploy all
     ![使用控制台创建适配器](Create_adapter_console.png)
 
 5. 成功部署适配器之后，将会显示包含以下选项卡的详细信息页面：
- * 配置 - 由适配器 XML 文件定义的属性。在这里，您可以更改配置，而无需再次部署。
+ * 配置 - 由适配器 XML 文件定义的属性。 在这里，您可以更改配置，而无需再次部署。
  * 资源 - 适配器资源列表。
  * 配置文件 - 要用于 DevOps 环境中的适配器配置数据。
 
@@ -401,10 +402,10 @@ mfpdev adapter deploy all
 如果没有 Maven Central Repository 的在线访问权，那么您可以共享贵组织内部存储库中的 {{ site.data.keys.product }} Maven 工件。
 
 1. [访问“下载”页面]({{site.baseurl}}/downloads/)，然后下载 {{ site.data.keys.mf_dev_kit_full }} 安装程序。
-2. 启动 {{ site.data.keys.mf_server }}，然后在浏览器中从以下 URL 装入 {{ site.data.keys.mf_console }}：`http://<your-server-host:server-port>/mfpconsole`。
-3. 单击**下载中心**。在**工具 → 适配器 Archetype** 下，单击**下载**。这样会下载 **mfp-maven-central-artifacts-adapter.zip** 归档。
+2. 启动 {{ site.data.keys.mf_server }}，然后在浏览器中从以下 URL 加载 {{ site.data.keys.mf_console }}：`http://<your-server-host:server-port>/mfpconsole`。
+3. 单击**下载中心**。 在**工具 → 适配器 Archetype** 下，单击**下载**。 这样会下载 **mfp-maven-central-artifacts-adapter.zip** 归档。
 4. 通过运行适用于 Linux 和 Mac 的 **install.sh** 脚本或适用于 Windows 的 **install.bat** 脚本，将适配器 archetype 和安全性检查添加到内部 Maven 存储库。
-5. adapter-maven-api 需要以下 JAR 文件。确保这些文件位于开发人员的本地 **.m2** 文件夹或位于贵组织的 Maven 存储库中。您可以从 The Central Repository 下载这些文件。
+5. adapter-maven-api 需要以下 JAR 文件。 确保这些文件位于开发人员的本地 **.m2** 文件夹或位于贵组织的 Maven 存储库中。 您可以从 The Central Repository 下载这些文件。
     * javax.ws.rs:javax.ws.rs-api:2.0
     * javax:javaee-web-api:6.0
     * org.apache.httpcomponents:httpclient:4.3.4

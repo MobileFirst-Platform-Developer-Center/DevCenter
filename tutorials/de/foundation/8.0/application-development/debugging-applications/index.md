@@ -20,6 +20,8 @@ dem physischen Gerät oder in einem Web-Browser).
 > Weitere Informationen zum Cordova-Debugging und zu Cordova-Tests finden Sie auf der
 Cordova-Website unter [Debugging Cordova Apps](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
+
+
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
@@ -34,11 +36,11 @@ Cordova-Website unter [Debugging Cordova Apps](https://cordova.apache.org/docs/e
 {: #debugging-with-the-mobile-browser-simulator }
 Sie können den {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) zum Voranzeigen und Debuggen von
 {{ site.data.keys.product_adj }}-Anwendungen nutzen.   
-Öffnen Sie dazu ein **Befehlszeilenfenster** und fühgen Sie folgenden Befehl aus: 
+Öffnen Sie dazu ein **Befehlszeilenfenster** und führen Sie folgenden Befehl aus: 
 
 ```bash
-mfpdev app preview
-```
+    mfpdev app preview
+    ```
 
 Wenn es in Ihrer Anwendung mehr als eine Plattform gibt, geben Sie die Plattform für die Vorschau an: 
 
@@ -47,6 +49,8 @@ mfpdev app preview -p <Plattform>
 ```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Es gibt mehrere bekannte Einschränkungen für die Vorschaufunktion. Möglicherweise verhält sich Ihre Anwendung während der Vorschau nicht wie erwartet. Es könnte beispielsweise sein, dass die Anwendung mit einem vertraulichen Client Sicherheitseinrichtungen umgeht, sodass Abfrage-Handler nicht ausgelöst werden.
+
+ 
 
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
@@ -60,6 +64,8 @@ mfpdev app preview -p <Plattform>
 
 > Weitere Informationen zur {{ site.data.keys.mf_cli }} enthält das Lernprogram
 [{{ site.data.keys.product_adj }}-Artefakte über die {{ site.data.keys.mf_cli }} verwalten](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
+
+
 
 ## Debug mit Ripple
 {: #debugging-with-ripple }
@@ -89,6 +95,8 @@ ripple emulate
 
 > Weitere Informationen zu Apache Ripple™ finden Sie auf der [Apache-Ripple-Seite](http://ripple.incubator.apache.org/)
 oder auf der Seite [npm ripple-emulator](https://www.npmjs.com/package/ripple-emulator).
+
+
 
 ## Debug mit dem iOS Remote Web Inspector
 {: #debugging-with-ios-remote-web-inspector }

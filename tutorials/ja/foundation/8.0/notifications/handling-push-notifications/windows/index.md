@@ -5,15 +5,15 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Windows 8.1 Universal プロジェクトのダウンロード
+  - name: Download Windows 8.1 Universal Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Windows 10 UWP プロジェクトのダウンロード
+  - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、C# を使用して、ネイティブの Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでプッシュ通知を処理する方法について学習します。
+{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。 このチュートリアルでは、C# を使用して、ネイティブの Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでプッシュ通知を処理する方法について学習します。
 
 **前提条件**
 
@@ -43,7 +43,7 @@ downloads:
 
 ## WNS 構成の前提条件
 {: pre-requisite-wns-configuration }
-1. アプリケーションにトースト通知機能が備わっていることを確認します。これは Package.appxmanifest 内で有効にできます。
+1. アプリケーションにトースト通知機能が備わっていることを確認します。 これは Package.appxmanifest 内で有効にできます。
 2. `Package Identity Name` と `Publisher` が、WNS に登録されている値で更新されている必要があります。
 3. (オプション) TemporaryKey.pfx ファイルを削除します。
 
@@ -51,7 +51,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、変数 (`private MFPPush PushClient = MFPPush.GetInstance();` など) を作成し、その後、クラス内で一貫して `PushClient.methodName()` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、変数 (`private MFPPush PushClient = MFPPush.GetInstance();` など) を作成し、その後、クラス内で一貫して `PushClient.methodName()` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.GetInstance().methodName()` を呼び出すこともできます。
 
@@ -106,12 +106,12 @@ if (isSupported ) {
 
 ```csharp
 JObject Options = new JObject();
-MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Options);         
+MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Options);
 if (Response.Success == true)
 {
     // Successfully registered
     } else {
-        // Registration failed with error
+    // Registration failed with error
     }
 ```
 
@@ -188,18 +188,18 @@ else
 プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```csharp
-MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();         
+MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();
 if (Response.Success == true)
 {
     // Successfully registered
     } else {
-        // Registration failed with error
+    // Registration failed with error
     }
 ```
 
 ## プッシュ通知の処理
 {: #handling-a-push-notification }
-プッシュ通知を処理するためには、`MFPPushNotificationListener` をセットアップする必要があります。これは、以下のメソッドを実装することで実現できます。
+プッシュ通知を処理するためには、`MFPPushNotificationListener` をセットアップする必要があります。  これは、以下のメソッドを実装することで実現できます。
 
 1. MFPPushNotificationListener タイプのインターフェースを使用してクラスを作成します。
 

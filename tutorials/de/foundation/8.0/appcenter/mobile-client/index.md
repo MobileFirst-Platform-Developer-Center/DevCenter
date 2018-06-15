@@ -2,7 +2,7 @@
 layout: tutorial
 title: Mobiler Client
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -59,18 +59,18 @@ Sie können den mobilen Client oder eine signierte Anwendung, die mit der Instal
 
     Bevor Sie den mobilen Client in der Liste der verfügbaren Anwendungen sehen können, muss der Application-Center-Administrator die mobile Clientanwendung installieren. Der Administrator lädt den mobilen Client in das Application Center hoch und setzt die Eigenschaft **Installer** auf **true** (siehe [Anwendungseigenschaften](../appcenter-console/#application-properties)).
 
-    ![Liste der für die Installation verfügbaren mobilen Clientanwendungen(ac_instal_client_and1.jpg)
+    ![Liste der für die Installation verfügbaren mobilen Clientanwendungen](ac_instal_client_and1.jpg)
 
 5. Wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen. Zu diesen Details gehören üblicherweise der Anwendungsname und die Nummer der Anwendungsversion.
 
-    ![Anwendungsdetails(ac_app_details.jpg)
+    ![Anwendungsdetails](ac_app_details.jpg)
 
 6. Tippen Sie auf **Install Now**, um den mobilen Client herunterzuladen. Auf neueren Android-Geräten können Sie gefragt werden, ob Chrome berechtigt ist, auf Mediendateien des Geräts zuzugreifen. Wählen Sie JA aus. Möglicherweise erscheint eine Warnung zu potenziell gefährlichen Dateien. Geben Sie an, dass Sie die APK-Datei in jedem Fall behalten möchten.
 
 7. Starten Sie den **Android-Download**.
 8. Wählen Sie das Application-Center-Clientinstallationsprogramm aus. Sie können die der Anwendung erteilten Zugriffsrechte sehen, wenn Sie die Anwendung zur Installation auswählen.
 
-    ![Installation des mobilen Clients unter Android(ac_instal_client_and_rights.jpg)
+    ![Installation des mobilen Clients in Android](ac_instal_client_and_rights.jpg)
 
 9. Wählen Sie **Installieren** aus, um den mobilen Client zu installieren.
 10. Wenn die Anwendung installiert ist, wählen Sie **Öffnen** aus, um den mobilen Client zu öffnen, oder **Fertig**, um die Anwendung "Downloads" zu schließen.
@@ -92,6 +92,8 @@ Die Installation könnte aus folgenden Gründen blockiert werden:
 Sie können den mobilen Client oder eine signierte Anwendung, die mit der Installationsmarkierung versehen ist, auf Ihrem mobilen iOS-Gerät installieren, indem Sie die Zugriffs-URL in Ihrem Browser eingeben, Ihre Berechtigungsnachweise eingeben und die erforderlichen Schritte ausführen.
 
 > **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).
+
+
 
 Die JNDI-Eigenschaft **ibm.appcenter.ios.plist.onetimeurl** der IBM Application-Center-Services steuert, ob bei Installation des mobilen Clients auf einem mobilen iOS-Gerät Einmal-URLs verwendet werden. Setzen Sie diese Eigenschaft auf "false", um die maximale Sicherheit zu gewährleisten. Wenn Sie diese Eigenschaft auf "false" setzen, müssen Benutzer ihre Berechtigungsnachweise bei Installation des mobilen Clients mehrfach angeben, einmal bei Auswahl des Clients und einmal bei Installation des Clients.
 
@@ -130,9 +132,9 @@ Die Installation des mobilen Clients auf einem iOS-Gerät erfolgt ganz ähnlich 
 5. Tippen Sie auf das Register **Installationsprogramme** und wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen.
 6. Tippen Sie auf **Installieren**, um den mobilen Client herunterzuladen.
 7. Geben Sie Ihre Berechtigungsnachweise ein, um die Downloader-Transaktion zu autorisieren.
-8. Tippen Sie zum Autorisieren des Downloads auf **Install**.
+8. Tippen Sie zum Autorisieren des Downloads auf **Installieren**.
 
-    ![App-Installation bestätigen(ac_instal_client_ios_conf.jpg)
+    ![App-Installation bestätigen](ac_instal_client_ios_conf.jpg)
 
 9. Geben Sie Ihre Berechtigungsnachweise ein, um die Installation zu autorisieren.
 10. Schließen Sie den Browser.
@@ -180,16 +182,16 @@ Sie können erst von Ihrem Unternehmen veröffentlichte Apps installieren, nachd
 
 3. Geben Sie Ihre Berechtigungsnachweise ein, um den Zugriff auf den Server zu autorisieren.Im unteren Teil der Anzeige gibt es eine Symbolleiste mit den Registern **Installationsprogramme** und **Token**.
 
-    ![Installation von Token und Anwendungen auf einem Windows-Phone-Gerät vorbereiten(ac_wp8_toolbar_inst_app.jpg)
+    ![Vorbereitung für die Installation von Token und Anwendungen auf einem Windows-Phone-Gerät](ac_wp8_toolbar_inst_app.jpg)
 
 4. Tippen Sie auf **Token** und wählen Sie in der Liste der verfügbaren Token ein Anwendungsregistrierungstoken aus, um die Tokendetails anzuzeigen.
 
-    ![Token für Anwendungsregistrierung auf einem Windows-Phone-Gerät(ac_wp8_aet_details.jpg)
+    ![Details des Registrierungstokens für Anwendungen auf einem Windows-Phone-Gerät](ac_wp8_aet_details.jpg)
 
 5. Tippen Sie auf **Hinzufügen**, um das Anwendungsregistrierungstoken herunterzuladen.
 6. Tippen Sie auf **Hinzufügen**, um das Unternehmenskonto hinzuzufügen.
 
-    ![Unternehmenskonto auf einem Windows-8-Universal-Gerät hinzufügen(ac_wp8_add_co_account.jpg)
+    ![Unternehmenskonto auf einem Windows-8-Universal-Gerät hinzufügen](ac_wp8_add_co_account.jpg)
 
     Windows Phone 8 gibt keine Rückmeldung zum Hinzufügen des Unternehmenskontos.
 
@@ -197,15 +199,17 @@ Sie können erst von Ihrem Unternehmen veröffentlichte Apps installieren, nachd
 8. Tippen Sie auf **Installationsprogramme** und wählen Sie in der Liste der verfügbaren Anwendungen die mobile Clientanwendung aus. Die Anwendungsdetails werden angezeigt.
 9. Tippen Sie auf **Installieren**, um die ausgewählte Anwendung herunterzuladen.
 
-    ![Zum Download auf ein Windows-Phone-Gerät ausgewählte Anwendung(ac_wp8_app_details.jpg)
+    ![Für den Download ausgewählte Anwendung auf einem Windows-Phone-Gerät](ac_wp8_app_details.jpg)
 
 10. Tippen Sie auf **Installieren**, um die Anwendung zu installieren.
 
-    ![Heruntergeladene Anwendung auf einem Windows-Phone-Gerät installieren(ac_wp8_app_install.jpg)
+    ![Heruntergeladene Anwendung auf einem Windows-Phone-Gerät installieren](ac_wp8_app_install.jpg)
 
     Windows 8 Universal gibt keine Rückmeldung zur Installation der Anwendung.
 
 > **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. Unter "Anwendung auf einem Windows-Phone-Gerät installieren" finden Sie mögliche Fehlernachrichten.
+
+
 
 Nach Abschluss der Installation sollte die mobile Clientanwendung unter Windows Phone in Ihrer Anwendungsliste verfügbar sein.
 
@@ -222,15 +226,15 @@ Sie können den mobilen Client oder eine signierte Anwendung, die mit der Instal
 
 3.  Geben Sie Ihre Berechtigungsnachweise ein, um den Zugriff auf den Server zu autorisieren.
 
-    ![Eingabe der Berechtigungsnachweise für den Serverzugriff(ac_wp10_enter_credentials.png)
+    ![Berechtigungsnachweise für den Zugriff auf den Server eingeben](ac_wp10_enter_credentials.png)
 
 4.  Wählen Sie in der Liste verfügbarer Anwendungen einen Eintrag aus, um die Anwendungsdetails anzuzeigen.
 
-    ![Auswahl einer Anwendung, um die Details anzuzeigen(ac_wp10_apps_list.png)
+    ![Anwendung auswählen, um die Details zu sehen](ac_wp10_apps_list.png)
 
 5.  Tippen Sie auf **Installieren**, um den mobilen Client herunterzuladen und zu installieren.
 
-    ![Auswahl von 'Installieren', um die Anwendung zu installieren(ac_wp10_app_install.png)
+    ![Auswahl von 'Installieren', um die Anwendung zu installieren](ac_wp10_app_install.png)
 
 
 > **Hinweis:** Zum Auflisten der Windows-10-UWP-Apps müssen Sie die Abfragezeichenfolge `os=Windows` übergeben. 
@@ -240,19 +244,19 @@ Sie können den mobilen Client oder eine signierte Anwendung, die mit der Instal
 
 1. Melden Sie sich beim Application Center an.
 
-    ![Anmeldung beim Application Center(ac_wp10_login.png)
+    ![Anmeldung beim Application Center](ac_wp10_login.png)
 
 2. Wählen Sie im Katalog in der Liste der verfügbaren Anwendungen die zu installierende Anwendung aus.
 
-    ![Auswahl einer Anwendung im Katalog(ac_wp10_catalog_applisting.png)
+    ![Anwendung im Katalog auswählen](ac_wp10_catalog_applisting.png)
 
 3. Tippen Sie auf **Installieren**, um die Anwendung herunterzuladen und zu installieren.
 
-    ![Auswahl von 'Installieren', um die Anwendung zu installieren(ac_wp10_app_details_installapp.png)
+    ![Auswahl von 'Installieren', um die Anwendung zu installieren](ac_wp10_app_details_installapp.png)
 
 4. Erstellen Sie eine Rezension zur Anwendung, indem Sie eine Bewertung abgeben und Kommentare hinzufügen.
 
-    ![Hinzufügen von Kommentaren(ac_wp10_add_review.png)
+    ![Hinzufügen von Kommentaren](ac_wp10_add_review.png)
 
 
 ## Anmeldeansicht
@@ -303,13 +307,13 @@ Wenn diese Anmeldung erfolgreich ist, werden der Benutzername und die Serveradre
 Der Client stellt Ansichten bereit, die an die verschiedenen Aufgaben, die Sie ausführen können, angepasst sind.  
 Nach einer erfolgreichen Anmeldung können Sie unter diesen Ansichten auswählen.
 
-![Ansichten in der Clientanwendung(ac_android_ios_views.jpg)
+![Ansichten in der Clientanwendung](ac_android_ios_views.jpg)
 
 Diese Ansichten ermöglichen Ihnen, mit einem Server zu kommunizieren, um Informationen über Anwendungen zu senden oder abzurufen oder die Anwendungen auf Ihrem Gerät zu verwalten. 
 
 Die Hauptanzeige des Windows-8-Clients enthält in jeder Kategorie bis zu sechs Anwendungen. Wenn Sie auf einem Windows-8-Client die vollständige Liste der Anwendungen für eine Kategorie sehen möchten, müssen Sie auf den Titel der Kategorie klicken.
 
-![Hauptanzeige des Clients für Windows 8(ac_homeCatalog_w8.JPG)
+![Hauptanzeige des Clients für Windows 8](ac_homeCatalog_w8.JPG)
 
 Nachfolgend sind die verschiedenen Ansichten beschrieben:
 
@@ -323,9 +327,9 @@ Wenn Sie den mobilen Client zum ersten Mal starten, wird die Anmeldeansicht ange
 {: #displays-on-different-device-types }
 Der Aufbau der Ansichten ist spezifisch für die Android-, iOS-, Windows-Phone- oder Windows-8-Umgebung. Dennoch können Sie unter allen Betriebssystemen dieselben allgemeinen Funktionen in den Ansichten ausführen. Verschiedene Gerätetypen können eine sehr unterschiedliche Seitenanzeige haben. Auf einem Telefon wird eine Liste angezeigt. Auf einem Tablet wird ein Anwendungsraster verwendet.
 
-![Katalogansicht auf einem Telefon(ac_phone_catalog.jpg)
+![Katalogansicht auf einem Telefon](ac_phone_catalog.jpg)
 
-![Katalogansicht auf einem Tablet(ac_tablet_catalog.jpg)
+![Katalogansicht auf einem Tablet](ac_tablet_catalog.jpg)
 
 ### Ansichtenfeatures
 {: #features-of-the-views }
@@ -384,13 +388,13 @@ Sie können in dieser Ansicht die folgenden Aktionen ausführen.
 Von der Ansicht **Details** aus können Sie eine Anwendung auf Ihrem Android-Gerät installieren.  
 Wenn noch keine Version einer Anwendung installiert ist, können Sie diese Anwendung von der Ansicht "Details" aus auf Ihrem Android-Gerät installieren.
 
-![Detailansicht einer auf Ihrem Android-Gerät angezeigten App-Version(ac_phone_app_details.jpg)
+![Detailansicht einer App-Version auf Ihrem Android-Gerät](ac_phone_app_details.jpg)
 
 1. Tippen Sie in der Ansicht **Details** auf **Installieren**.
 
     Die Anwendung wird heruntergeladen. Sie können während des Downloads in der Ansicht **Details** jederzeit auf **Abbrechen** tippen, um den Download abzubrechen. (Die Schaltfläche **Abbrechen** erscheint nur während der Installationsschritte.) Wenn Sie zulassen, dass die Anwendung vollständig heruntergeladen wird, sehen Sie die Berechtigungen, die für die Anwendung erteilt werden.
 
-    ![Anwendungsberechtigungen auf Ihrem Android-Gerät(ac_app_rights_and.jpg)
+    ![Anwendungsrechte auf Ihrem Android-Gerät](ac_app_rights_and.jpg)
 
 2. Tippen Sie auf **Installieren**, um die Installation der Anwendung zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen.
 
@@ -402,14 +406,16 @@ Wenn noch keine Version einer Anwendung installiert ist, können Sie diese Anwen
 {: #installing-an-application-on-an-ios-device }
 Von der Ansicht **Details** aus können Sie eine Anwendungsversion auf Ihrem mobilen iOS-Gerät installieren.
 
-![Detailansicht einer App-Version auf Ihrem mobilen iOS-Gerät(ac_phone_app_details_ios.jpg)
+![Detailansicht einer App-Version auf Ihrem mobilen iOS-Gerät](ac_phone_app_details_ios.jpg)
 
 > **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).
+
+
 
 1. Tippen Sie in der Ansicht **Details** auf **Installieren**. Sie werden aufgefordert, das Herunterladen und die Installation der Anwendungsversion zu bestätigen.
 2. Tippen Sie auf **Installieren**, um das Herunterladen und die Installation der Anwendungsversion zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen.
 
-    ![Anwendungsinstallation auf Ihrem iOS-Gerät abbrechen(ac_app_inst_cancel_ios.jpg)
+    ![Anwendungsinstallation auf Ihrem iOS-Gerät abbrechen](ac_app_inst_cancel_ios.jpg)
 
     Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht. Wenn die Anwendung erfolgreich installiert wurde, wird sie als bevorzugte App markiert.
 
@@ -444,7 +450,7 @@ Nach Bestätigung der Anerkennung wird für keine Anwendung, die dieses Bereitst
 Von der Ansicht **Details** aus können Sie eine Unternehmensanwendung auf Ihrem Windows-Phone-Gerät installieren.  
 In der Ansicht **Details** der ausgewählten Anwendung werden Informationen zu der Anwendung angezeigt, die Sie installieren möchten.
 
-![Detailansicht für die Version einer Unternehmensanwendung, die auf einem Windows-Phone-Gerät installiert werden soll(ac_phone_app_details_wp.jpg)
+![Detailansicht für eine Version einer Unternehmensanwendung, die auf einem Windows-Phone-Gerät installiert werden soll](ac_phone_app_details_wp.jpg)
 
 1. Tippen Sie in der Ansicht **Details** auf **Installieren**. Die Anwendung wird heruntergeladen und installiert. Sie können während des Downloads der Anwendung jederzeit auf **Abbrechen** tippen, um den Prozess abzubrechen. Während der Installation erscheint die Option **Abbrechen** nur, solange der Downloadschritt ausgeführt wird.
 
@@ -452,9 +458,9 @@ In der Ansicht **Details** der ausgewählten Anwendung werden Informationen zu d
 
 2. Tippen Sie auf **Installieren**, um die Installation der Anwendung zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen. Die Anwendung wird als bevorzugte App markiert.
 
-    ![Installation einer Unternehmensanwendung auf einem Windows-Phone-Gerät bestätigen oder abbrechen(ac_confirm_instal_app_wp.jpg)
+    ![Installation einer Unternehmensanwendung auf einem Windows-Phone-Gerät bestätigen oder abbrechen](ac_confirm_instal_app_wp.jpg)
 
-> **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen.
+> **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. 
 
 Folgende Fehlernachrichten können angezeigt werden:
 
@@ -462,7 +468,7 @@ Folgende Fehlernachrichten können angezeigt werden:
 
     Wahrscheinlich verwenden Sie eine nicht signierte Windows-Phone-Anwendungspaketdatei (.xap). Sie müssen Anwendungspaketdateien (.xap) signieren, bevor Sie sie im Application Center verwenden. Diese Nachricht kann auch angezeigt werden, wenn der Microsoft-Server nicht reagiert und die Signatur der Unternehmensanwendung nicht überprüft werden kann. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen.
 
-* **Before you install this app, you need to add ... company account.**
+* **Bevor Sie diese App installieren, müssen Sie ein Unternehmenskonto hinzufügen.**
 
     Die Windows-Phone-Anwendungspaketdatei (.xap) ist signiert, aber das Gerät ist nicht für Unternehmensanwendungen registriert. Sie müssen zuerst das Anwendungsregistrierungstoken des Unternehmens auf dem Gerät installieren.
 
@@ -472,9 +478,12 @@ Folgende Fehlernachrichten können angezeigt werden:
 
 > **Hinweis:** Wenn ein Gerät mit mehreren Unternehmenskonten registriert ist, kann es sein, dass das Betriebssystem Windows Phone in der Nachricht **Möchten Sie "Anwendung" von "Firmenname" installieren?** das falsche Unternehmenskonto anzeigt. Das Application Center hat keine Kontrolle über diese Nachricht. Es handelt sich um ein Anzeigeproblem, das keinen Einfluss auf die Funktionalität hat.
 
+
+
 Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht.
 
 > **Tipp:** Der Installationsprozess funktioniert nicht, wenn das PFX-Zertifikat abgelaufen ist, mit dem die Anwendungspaketdatei (.xap) der zu installierenden Anwendung digital signiert wurde. Das Betriebssystem Windows Phone gibt einen Fehler mit **HRESULT 0x81030110** zurück. Wenn Sie das PFX-Zertifikat erneuern, müssen Sie mit diesem neuen Zertifikat nochmals alle entwickelten Anwendungen in Ihrem Application-Center-Katalog digital signieren.
+
 >
 Wenn Sie Ihr digitales PFX-Signaturzertifikat erneuern, müssen Sie auch das Registrierungstoken erneuern und in der Application-Center-Konsole implementieren. Geräte müssen ebenfalls mit diesem neuen Token erneut unter dem Unternehmenkonto registriert werden. Benutzer von Geräten, die mit einem abgelaufenen Token registriert wurden, können keine Anwendungen installieren. 
 
@@ -493,18 +502,20 @@ Wenn Sie eine Windows-Store-Anwendung entwickeln, generiert Microsoft Visual Stu
 
 > **Hinweis:** Die manuelle Installation eines Zertifikats ist nur in der Entwicklungsphase erforderlich, weil für das Signieren von APPX-Code ein von Microsoft Visual Studio generiertes, selbst signiertes Zertifikat notwendig ist. In der Produktion muss Ihre APPX-Datei mit einem echten Zertifikat signiert werden, das Sie bei einer anerkannten Stammzertifizierungsstelle erworben haben.
 
+
+
 Im ersten Schritt dieser Prozedur wird Ihnen mitgeteilt, wie das Zertifikat installiert wird, bevor Sie die Anwendung über das Application Center installieren.
 
 1. Importieren Sie dieses Zertifikat in die vertrauenswürdigen Stammzertifizierungsstellen des lokalen Computers.
     * Wenn Sie in Visual Studio eine APPX-Datei generiert haben, stellen Sie diese Datei in Ihr Dateisystem. Im Ordner mit der APPX-Datei sehen Sie eine Zertifikatdatei (.cer) mit dem selbst signierten Zertifikat, das Sie importieren müssen.
-    ![Zertifikatdatei im Ordner mit dem Anwendungspaket(cer_file_win8.jpg)
+    ![Zertifikatdatei im Ordner mit dem Anwendungspaket](cer_file_win8.jpg)
     * Klicken Sie zum Öffnen des Zertifikats doppelt auf die CER-Datei.
     * Klicken Sie auf "Zertifikat installieren".
-    ![Allgemeine Informationen zum Zertifikat    (cert_props_win8.jpg)    
+    ![Allgemeine Informationen zum Zertifikat](cert_props_win8.jpg)    
     * Wählen Sie "Lokaler Computer" aus und klicken Sie auf **Weiter**.
-    ![Lokalen Computer im Assistenten für den Import des Zertifikats angeben    (cert_localmachine_win8.jpg)    
+    ![Angabe der lokalen Maschine im Importassistenten für Zertifikate](cert_localmachine_win8.jpg)    
     * Wählen Sie "Alle Zertifikate in folgendem Speicher speichern" aus. Navigieren Sie dann zu "Vertrauenswürdige Stammzertifizierungsstellen" und wählen Sie diese Option aus.
-    ![Zeritifikat in "Vertrauenswürdige Stammzertifizierungsstellen" stellen    (cert_trustedroot_win8.jpg)    
+    ![Zertifikat unter 'Vertrauenswürdige Stammzertifizierungsstellen' speichern](cert_trustedroot_win8.jpg)    
     * Klicken Sie auf **Weiter** und dann auf **Fertigstellen**. Der erfolgreiche Import des Zertifikats müsste bestätigt werden.
 
 In den folgenden Schritten ist beschrieben, wie eine Windows-Store-Anwendung über das Application Center auf einem Windows-Gerät installiert wird. 
@@ -512,7 +523,7 @@ In den folgenden Schritten ist beschrieben, wie eine Windows-Store-Anwendung üb
 1. Melden Sie sich beim mobilen Application-Center-Client für Windows-Store-Anwendungen an.
 2. Wählen Sie die zu installierende Anwendung aus, um Zugriff auf die Details zu erhalten.
 
-    ![Detailansicht für die Installation einer Windows-Store-App(ac_details_wstore_app.jpg)
+    ![Detailansicht für die Installation einer Windows-Store-App](ac_details_wstore_app.jpg)
 
 3. Tippen Sie auf **Installieren**, um die Anwendung zu installieren. Wenn die Anwendung bereits installiert ist und andere Versionen verfügbar sind, können Sie ein Update auf eine aktuellere Version durchführen oder zu einer älteren Version zurückkehren.
 
@@ -529,10 +540,10 @@ In der Anwendungsliste auf dem Gerät werden neben den Binärdateien von private
 2. Tippen Sie auf **Zum Store**, um Google Play oder Apple iTunes zu öffnen.
 
     **Android**
-    ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Google Play zugreifen(ac_and_link_app.jpg)
+    ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Google Play zugreifen](ac_and_link_app.jpg)
 
     **iOS**
-    ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Apple iTunes zugreifen(ac_ios_link_app.jpg)
+    ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Apple iTunes zugreifen](ac_ios_link_app.jpg)
 
 3. Installieren Sie die Anwendung mit dem üblichen Verfahren des öffentlichen App Store.
 
@@ -559,7 +570,7 @@ Sie können die Details der ausgewählten Anwendungsversion gemäß den Anweisun
     * Tablet: siehe Schritt 4
 2. **Nur Windows Phone, Android und iOS**: Zeigen Sie Details einer bestimmten Anwendungsversion auf einem Windows-Phone-, Android- oder iOS-Telefon an.
     * Tippen Sie auf **Version auswählen**, um zur Ansicht mit der Versionsliste zu navigieren.
-    ![In der Liste der Versionen auf einem Windows-Phone-, Android- oder iOS-Telefon ausgewählte Version einer Anwendung(ac_version_select.jpg)
+    ![In der Liste der Versionen ausgewählte Version einer Anwendung auf einem Windows-Phone-, Android- oder iOS-Telefon](ac_version_select.jpg)
     * Tippen Sie auf die betreffende Anwendungsversion. Die Ansicht **Details** wird aktualisiert und zeigt die Details der ausgewählten Anwendungsversion an.
 3. Nur Windows: Zeigen Sie die Details einer bestimmten Version einer Windows-Store-Anwendung auf einem Windows-Gerät an. Falls mehrere Versionen der Windows-Store-Anwendung verfügbar sind, wählen Sie die zu installierende Version aus.
     * Tippen Sie auf die betreffende Anwendungsversion. Die Ansicht **Details** wird aktualisiert und zeigt die Details der ausgewählten Anwendungsversion an.
@@ -597,19 +608,19 @@ Wenn Sie das automatische Upgrade inaktivieren möchten, müssen Sie diese Eigen
 
 1. Wenn eine neuere Version des Clients gefunden wird, tippen Sie auf **OK**, um mit dem Download und dem Installationsablauf zu beginnen.
 
-    ![Erkennung einer auf dem Server verfügbaren neueren Version der Clientanwendung(ac_client_autoupgrade_detect.jpg)
+    ![Erkennung einer auf dem Server verfügbaren neueren Version der Clientanwendung](ac_client_autoupgrade_detect.jpg)
 
 2. Tippen Sie auf **Installieren**, um die neuere Version der Anwendung zu installieren.
 
-    ![Installation der aktualisierten Anwendungsversion bestätigen(ac_client_autoupgrade_install_app.jpg)
+    ![Installation der aktualisierten Version der Anwendung bestätigen](ac_client_autoupgrade_install_app.jpg)
 
 3. Tippen Sie auf **Öffnen**, um die aktualisierte Anwendung zu starten.
 
-    ![Aktualisierte Anwendung starten(ac_client_autoupgrade_start_app.jpg)
+    ![Aktualisierte Anwendung starten](ac_client_autoupgrade_start_app.jpg)
 
 Sie müssen sich bei der aktualisierten Anwendungsversion anmelden, um sie ausführen zu können.
 
-![Anmeldung bei der neuen Version der Clientanwendung(ac_client_autoupgrade_login_new_version.jpg)
+![Anmeldung bei der neuen Version der Clientanwendung](ac_client_autoupgrade_login_new_version.jpg)
 
 **Hinweis:** Für ein Upgrade des Application-Center-Clients gelten die folgenden Bedingungen: 
 

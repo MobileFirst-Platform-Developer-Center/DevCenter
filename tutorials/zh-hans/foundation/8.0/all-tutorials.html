@@ -8,7 +8,29 @@ print_pdf: false
 indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-<br>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{{site.baseurl}}/css/bulma-min.css" type="text/css" rel="stylesheet">-->
+    <style>
+    .list-group > .list-group-item:first-child {
+      border-radius: 4px 4px 0 0;
+    }
+    .list-group > .list-group-item:last-child {
+      border-radius: 0 0 4px 4px;
+    }
+
+    .list-group > .list-group-item.is-primary {
+      background-color: hsl(171, 100%, 41%);
+      color: #fff;
+     }
+    .list-group > .list-group-item.is-info {
+      background-color: hsl(217, 71%, 53%);
+      color: #fff;
+    }
+    </style>
+</head>
+<br/>
 请按照以下教程来开发应用程序：设置开发环境、体验产品以及通过与 {{ site.data.keys.product }} 8.0 产品集成来增加价值。<br/><br/>
 
 <div id="container">
@@ -16,35 +38,39 @@ indexed: false
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
             <form style="margin: 0 0 10px 15px" role="textbox" aria-label="内嵌搜索字段" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
-                    <input style="width: 206px" id="search-input" aria-label="搜索字段" type="text" class="form-control" placeholder="搜索..." name="q">
+                    <input style="width: 206px" id="search-input" aria-label="搜索字段" type="text" class="form-control" placeholder="搜索..." name="q"/>
                 </div>
             </form>
             <div class="col-md-3">
                 <a href="#start-here">
                     <div class="categoryBox-start-here hidden-xs hidden-md">
                         <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
-                        从这里开始</div>
+                        从这里开始
+                    </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#get-sdk-and-apis">
                     <div class="categoryBox-sdk hidden-xs hidden-md">
                         <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
-                        使用 SDK 和 API</div>
+                        使用 SDK 和 API
+                    </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#implement-authentication-and-security">
                     <div class="categoryBox-security hidden-xs hidden-md">
                         <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
-                        增加安全性</div>
+                        增加安全性
+                    </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#measure-and-engage">
                     <div class="categoryBox-more hidden-xs hidden-md">
                         <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
-                        度量与互动</div>
+                        度量与互动
+                    </div>
                 </a>
             </div>
         </div>
@@ -54,319 +80,610 @@ indexed: false
 <hr />
 
 <div id="tutorials-list">
+    <div class="content">
     <h2><a href="../product-overview/">产品概述</a></h2>
-    了解 {{ site.data.keys.product }} 产品。<ul>
-        <li><a href="../product-overview/capabilities">主要功能</a></li>
-        <li><a href="../product-overview/components">产品组件</a>
+    <h4><i>    了解 {{ site.data.keys.product }} 产品。</i></h4>
+
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../product-overview/capabilities">主要功能</a>
+        <a class="panel-block list-group-item" href="../product-overview/components">产品组件&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../product-overview/components/server">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_server }}</a>
+        <a class="panel-block list-group-item" href="../product-overview/components/console">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_console }}</a>
+        <a class="panel-block list-group-item" href="../product-overview/requirements">系统需求</a>
+        <a class="panel-block list-group-item" href="../product-overview/licensing">在 {{site.data.keys.mf_server }} 中获得许可</a> <a class="panel-block list-group-item" href="../product-overview/features-matrix">>功能和平台列表</a>
+        <a class="panel-block list-group-item" href="../product-overview/accessibility">{{site.data.keys.product_full }} 的辅助功能</a> <a class="panel-block list-group-item" href="../product-overview/release-notes">发行说明</a>
+
+    </div>
+  </div>
+  <!--  <ul>
+        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
+        <li><a href="../product-overview/components">Product Components</a>
             <ul>
                 <li><a href="../product-overview/components/server">{{ site.data.keys.mf_server }}</a></li>
                 <li><a href="../product-overview/components/console">{{ site.data.keys.mf_console }}</a></li>
             </ul>
         </li>
-        <li><a href="../product-overview/requirements">系统需求</a></li>
-        <li><a href="../product-overview/licensing">在 {{ site.data.keys.mf_server }} 中获得许可</a></li>
-        <li><a href="../product-overview/features-matrix">功能和平台列表</a></li>
-        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} 的辅助功能</a></li>
-        <li><a href="../product-overview/release-notes">发行说明</a></li>
-    </ul>
-
+        <li><a href="../product-overview/requirements">System Requirements</a></li>
+        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
+        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Release Notes</a></li>
+    </ul>-->
+    <div class="content">
     <h2><a href="../installation-configuration/">安装和配置</a></h2>
-    设置开发环境或生产环境以使用 {{ site.data.keys.product_full }}。
-    <ul>
-        <li><a href="../installation-configuration/development">设置开发环境</a><ul>
-                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 环境</a>
+    <h4><i>    设置开发环境或生产环境以使用 {{ site.data.keys.product_full }}。
+    </i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../installation-configuration/development">设置开发环境&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.product_adj }} 环境&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/installation-guide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装指南</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 Eclipse 中的 {{ site.data.keys.mf_server }}</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova 环境</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS 环境</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android 环境</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows 8.1 Universal 和 Windows 10 UWP 环境</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/development/web/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web 环境</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production">设置生产环境&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/tutorials/graphical-mode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在图形方式下安装 {{ site.data.keys.mf_server }}</a> <a class="panel-block list-group-item" href="../installation-configuration/production/tutorials/command-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从命令行安装 {{ site.data.keys.mf_server }}</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/installation-manager">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行 IBM Installation Manager</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/databases">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置数据库</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/topologies">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拓扑和网络流</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/appserver">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装 {{ site.data.keys.mf_server }}</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/server-configuration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配置 {{ site.data.keys.mf_server }}</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/token-licensing">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装和配置令牌许可</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/analytics">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装和配置 {{ site.data.keys.mf_analytics_server }}</a> <a class="panel-block list-group-item" href="../installation-configuration/production/appcenter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装和配置 Application Center</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/installation-reference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装参考</a>
+        <a class="panel-block list-group-item" href="../installation-configuration/production/pure-application">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 IBM PureApplication System 上部署 {{ site.data.keys.mf_server }}</a>
+    </div>
+  </div>
+  <!--  <ul>
+        <li><a href="../installation-configuration/development">Setting up the development environment</a>
+            <ul>
+                <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} environment</a>
                     <ul>
-                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">安装指南</a></li>
-                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">在 Eclipse 中使用{{ site.data.keys.mf_server }}</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">Installation Guide</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">Using {{ site.data.keys.mf_server }} in Eclipse</a></li>
                     </ul>
                 </li>
-                <li><a href="../installation-configuration/development/cordova/">Cordova 环境</a></li>
-                <li><a href="../installation-configuration/development/ios/">iOS 环境</a></li>
-                <li><a href="../installation-configuration/development/android/">Android 环境</a></li>
-                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal 和 Windows 10 UWP 环境</a></li>
-                <li><a href="../installation-configuration/development/web/">Web 环境</a></li>
+                <li><a href="../installation-configuration/development/cordova/">Cordova environment</a></li>
+                <li><a href="../installation-configuration/development/ios/">iOS environment</a></li>
+                <li><a href="../installation-configuration/development/android/">Android environment</a></li>
+                <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal and Windows 10 UWP environments</a></li>
+                <li><a href="../installation-configuration/development/web/">Web environment</a></li>
             </ul>
         </li>
-        <li><a href="../installation-configuration/production">设置生产环境</a><ul>
-                <li>产品安装教程<ul>
-                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">在图形方式下安装 {{ site.data.keys.mf_server }}</a></li>
-                        <li><a href="../installation-configuration/production/tutorials/command-line">通过命令行安装 {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../installation-configuration/production">Setting up the production environment</a>
+            <ul>
+                <li>Production installation tutorials
+                    <ul>
+                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">Installing {{ site.data.keys.mf_server }} in graphical mode</a></li>
+                        <li><a href="../installation-configuration/production/tutorials/command-line">Installing {{ site.data.keys.mf_server }} From Command Line</a></li>
                     </ul>
                 </li>
-                <li><a href="../installation-configuration/production/installation-manager">运行 IBM Installation Manager</a></li>
-                <li><a href="../installation-configuration/production/databases">设置数据库</a></li>
-                <li><a href="../installation-configuration/production/topologies">拓扑和网络流</a></li>
-                <li><a href="../installation-configuration/production/appserver">安装 {{ site.data.keys.mf_server }}</a></li>
-                <li><a href="../installation-configuration/production/server-configuration">配置 {{ site.data.keys.mf_server }}</a></li>
-                <li><a href="../installation-configuration/production/token-licensing">安装和配置令牌许可</a></li>
-                <li><a href="../installation-configuration/production/">安装和配置 {{ site.data.keys.mf_analytics_server }}</a></li>
-                <li><a href="../installation-configuration/production/appcenter">安装和配置 Application Center</a></li>
-                <li><a href="../installation-configuration/production/installation-reference">安装参考</a></li>
+                <li><a href="../installation-configuration/production/installation-manager">Running the IBM Installation Manager</a></li>
+                <li><a href="../installation-configuration/production/databases">Setting Up Databases</a></li>
+                <li><a href="../installation-configuration/production/topologies">Topologies and Network flows</a></li>
+                <li><a href="../installation-configuration/production/appserver">Installing the {{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../installation-configuration/production/server-configuration">Configuring the {{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../installation-configuration/production/token-licensing">Installing and configuring for token licensing</a></li>
+                <li><a href="../installation-configuration/production/">Installing and configuring the {{ site.data.keys.mf_analytics_server }}</a></li>
+                <li><a href="../installation-configuration/production/appcenter">Installing and configuring the Application Center</a></li>
+                <li><a href="../installation-configuration/production/installation-reference">Installation Reference</a></li>
             </ul>
         </li>
-        <li><a href="../installation-configuration/production/pure-application">在 IBM PureApplication System 上部署 {{ site.data.keys.mf_server }}</a></li>
-    </ul>
-
+        <li><a href="../installation-configuration/production/pure-application">Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</a></li>
+    </ul>-->
+    <div class="content">
     <h2><a href="../administering-apps/">管理应用程序</a></h2>
-    {{ site.data.keys.product_full }} 提供多种方式以用于在开发或生产环境中管理 {{ site.data.keys.product_adj }} 应用程序<ul>
-        <li><a href="../administering-apps/deployment">将应用程序部署到测试环境和生产环境</a></li>
-        <li><a href="../administering-apps/using-console/">通过 {{ site.data.keys.mf_console }} 管理应用程序</a></li>
-        <li><a href="../administering-apps/using-ant/">通过 Ant 管理应用程序</a></li>
-        <li><a href="../administering-apps/using-cli/">通过命令行管理应用程序</a></li>
-        <li><a href="../administering-apps/federal/">{{ site.data.keys.product }} 中的联合标准支持</a></li>
-        <li><a href="../administering-apps/license-tracking/">许可证跟踪</a></li>
-    </ul>
+    <h4><i>{{ site.data.keys.product_full }} 提供多种方式以用于在开发或生产环境中管理 {{ site.data.keys.product_adj }} 应用程序。</i></h4>
 
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../administering-apps/deployment">将应用程序部署到测试环境和生产环境</a>
+        <a class="panel-block list-group-item" href="../administering-apps/using-console/">通过 {{ site.data.keys.mf_console }} 管理应用程序</a>
+        <a class="panel-block list-group-item" href="../administering-apps/using-ant/">通过 Ant 管理应用程序</a>
+        <a class="panel-block list-group-item" href="../administering-apps/using-cli/">通过命令行管理应用程序</a>
+        <a class="panel-block list-group-item" href="../administering-apps/federal/">{{ site.data.keys.product }} 中的联合标准支持</a> <a class="panel-block list-group-item" href="../administering-apps/license-tracking/">许可证跟踪</a>
+    </div>
+  </div>
+<!--    <ul>
+        <li><a href="../administering-apps/deployment">Deploying applications to test and production environments</a></li>
+        <li><a href="../administering-apps/using-console/">Administrating applications through the {{ site.data.keys.mf_console }}</a></li>
+        <li><a href="../administering-apps/using-ant/">Administrating applications through Ant</a></li>
+        <li><a href="../administering-apps/using-cli/">Administrating applications through the Command-line</a></li>
+        <li><a href="../administering-apps/federal/">Federal standards support in {{ site.data.keys.product }}</a></li>
+        <li><a href="../administering-apps/license-tracking/">License tracking</a></li>
+    </ul>-->
+    <div class="content">
     <h2 id="upgrading_to_current_version"><a href="../upgrading/">升级至 {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h2>
-    了解产品更改，准备并规划迁移 {{ site.data.keys.product_adj }} 应用程序。<ul>
-        <li><a href="../upgrading/migration-cookbook">迁移手册</a></li>
-        <li><a href="../upgrading/">从较早发行版迁移</a><ul>
-                <li><a href="../upgrading/migrating-client-applications">迁移客户机应用程序</a><ul>
-                        <li><a href="../upgrading/migrating-client-applications/cordova">迁移现有 Cordova 和混合应用程序</a></li>
-                        <li><a href="../upgrading/migrating-client-applications/ios">迁移现有的本机 iOS 应用程序</a></li>
-                        <li><a href="../upgrading/migrating-client-applications/android">迁移现有的本机 Android 应用程序</a></li>
-                        <li><a href="../upgrading/migrating-client-applications/windows">迁移现有的本机 Windows 应用程序</a></li>
+    <h4><i>    了解产品更改，准备并规划迁移 {{ site.data.keys.product_adj }} 应用程序。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../upgrading/">从较早发行版迁移&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../upgrading/migration-cookbook">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移手册</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移客户机应用程序&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移现有的 Cordova 和混合应用程序</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移现有的本机 iOS 应用程序</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移现有的本机 Android 应用程序</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移现有的本机 Windows 应用程序</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-security">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移认证和安全性概念</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-adapters">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移现有适配器</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-push-notifications">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移推送通知</a>
+        <a class="panel-block list-group-item" href="../upgrading/migrating-data">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;迁移在 Cloudant 中存储移动数据的应用程序</a>
+
+
+    </div>
+  </div>
+  <!--
+    <ul>
+        <li><a href="../upgrading/migration-cookbook">Migration Cookbook</a></li>
+        <li><a href="../upgrading/">Migrating from earlier releases</a>
+            <ul>
+                <li><a href="../upgrading/migrating-client-applications">Migrating client application</a>
+                    <ul>
+                        <li><a href="../upgrading/migrating-client-applications/cordova">Migrating existing Cordova and Hybrid applications</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/ios">Migrating existing native iOS applications</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/android">Migrating existing native Android applications</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/windows">Migrating existing native Windows applications</a></li>
                     </ul>
                 </li>
-                <li><a href="../upgrading/migrating-adapters">迁移现有适配器以在 {{ site.data.keys.mf_server }} v8.0 下使用</a></li>
-                <li><a href="../upgrading/migrating-push-notifications">迁移推送通知</a></li>
-                <li><a href="../upgrading/migrating-data">使用 IMFData 或 Cloudant SDK 迁移在 Cloudant 中存储移动数据的应用程序</a></li>
+                <li><a href="../upgrading/migrating-adapters">Migrating existing adapters to work under {{ site.data.keys.mf_server }} v8.0</a></li>
+                <li><a href="../upgrading/migrating-push-notifications">Migrating push notifications</a></li>
+                <li><a href="../upgrading/migrating-data">Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK</a></li>
             </ul>
         </li>
     </ul>
-
+  -->
     <hr id="start-here"/>
-
+    <div class="content">
     <h2><a href="../quick-start/">快速入门</a></h2>
-    体验 {{ site.data.keys.product }}。<ul>
-        <li><a href="../quick-start/cordova/">Cordova 快速入门</a></li>
-        <li><a href="../quick-start/ios/">iOS 快速入门</a></li>
-        <li><a href="../quick-start/android/">Android 快速入门</a></li>
-        <li><a href="../quick-start/windows-8-10/">Windows 8.1 Universal 和 Windows 10 UWP 快速入门</a></li>
-        <li><a href="../quick-start/web/">Web 应用程序快速入门</a></li>
-        <li><a href="../quick-start/xamarin/">Xamarin 快速入门</a></li>
-    </ul>
-
+    <h4><i>{{ site.data.keys.product }} 快速入门。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../quick-start/cordova/">Cordova 快速入门</a>
+        <a class="panel-block list-group-item" href="../quick-start/ios/">iOS 快速入门</a> <a class="panel-block list-group-item" href="../quick-start/android/">Android 快速入门</a> <a class="panel-block list-group-item" href="../quick-start/windows-8-10/">Windows8.1 Universal 和 Windows 10 UWP 快速入门</a>
+        <a class="panel-block list-group-item" href="../quick-start/web/">Web 应用程序快速入门</a> <a class="panel-block list-group-item" href="../quick-start/xamarin/">Xamarin 快速入门</a>
+    </div>
+  </div>
+  <!--  <ul>
+        <li><a href="../quick-start/cordova/">Quick Start with Cordova</a></li>
+        <li><a href="../quick-start/ios/">Quick Start with iOS</a></li>
+        <li><a href="../quick-start/android/">Quick Start with Android</a></li>
+        <li><a href="../quick-start/windows-8-10/">Quick Start with Windows 8.1 Universal and Windows 10 UWP</a></li>
+        <li><a href="../quick-start/web/">Quick Start with Web app</a></li>
+        <li><a href="../quick-start/xamarin/">Quick Start with Xamarin</a></li>
+    </ul>-->
+    <div class="content">
+    <h2><a href="../api/">API 参考</a></h2>
+    <h4><i>探究可用的 API。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../api/client-side-api/">MobileFirst 客户端 API</a> <a class="panel-block list-group-item" href="../api/server-side-api/">MobileFirst 服务器端 API</a>
+        <a class="panel-block list-group-item" href="../api/java-token-validator/">MobileFirst Java 令牌验证程序 API</a>
+        <a class="panel-block list-group-item" href="../api/rest/admin-apis/">针对 MobileFirst Server 管理服务的 REST API</a>
+        <a class="panel-block list-group-item" href="../api/rest/push-apis/">针对 MobileFirst Server 推送服务的 REST API</a>
+        <a class="panel-block list-group-item" href="../api/rest/runtime/">针对 MobileFirst 运行时的 REST API</a> <a class="panel-block list-group-item" href="../api/rest/analytics-logger/">针对 MobileFirst Analytics 和 Logger 的 REST API</a>
+    </div>
+  </div>
+  <!--  <ul>
+        <li><a href="../api/client-side-api/">MobileFirst client-side API</a></li>
+        <li><a href="../api/server-side-api/">MobileFirst server-side API</a></li>
+        <li><a href="../api/java-token-validator/">MobileFirst Java Token Validator API</a></li>
+        <li><a href="../api/rest/admin-apis/">REST API for the MobileFirst Server administration service</a></li>
+        <li><a href="../api/rest/push-apis/">REST API for the MobileFirst Server push service</a></li>
+        <li><a href="../api/rest/runtime/">REST API for the MobileFirst runtime</a></li>
+        <li><a href="../api/rest/analytics-logger/">REST API for MobileFirst Analytics and Logger</a></li>
+    </ul>-->
+    <div class="content">
     <h2><a href="../application-development/sdk">添加 {{ site.data.keys.product_adj }} SDK</a></h2>
-    将 {{ site.data.keys.product }} SDK 添加到 Cordova、本机 iOS、Android、Windows 8.1 Universal 或 Windows 10 UWP 应用程序。<ul>
-        <li><a href="../application-development/sdk/cordova/">将 {{ site.data.keys.product }} SDK 添加到 Cordova 应用程序</a></li>
-        <li><a href="../application-development/sdk/ios/">将 {{ site.data.keys.product }} SDK 添加到 iOS 应用程序</a></li>
-        <li><a href="../application-development/sdk/android/">将 {{ site.data.keys.product }} SDK 添加到 Android 应用程序</a></li>
-        <li><a href="../application-development/sdk/windows-8-10/">将 {{ site.data.keys.product }} SDK 添加到 Windows 8.1 Universal 和 Windows 10 UWP 应用程序</a></li>
-        <li><a href="../application-development/sdk/web/">将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序</a></li>
-        <li><a href="../application-development/sdk/xamarin/">将 {{ site.data.keys.product }} SDK 添加到 Xamarin 应用程序</a></li>
-    </ul>
-
+    <h4><i>    将 {{ site.data.keys.product }} SDK 添加到 Cordova、本机 iOS、Android、Windows 8.1 Universal 或 Windows 10 UWP 应用程序。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../application-development/sdk/cordova/">将 {{ site.data.keys.product }} SDK 添加到 Cordova 应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/sdk/ios/">将 {{ site.data.keys.product }} SDK 添加到 iOS 应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/sdk/android/">将 {{ site.data.keys.product }} SDK 添加到 Android 应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/sdk/windows-8-10/">将 {{ site.data.keys.product }} SDK 添加到 Windows 8.1 Universal 和 Windows 10UWP 应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/sdk/web/">将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/sdk/xamarin/">将 {{ site.data.keys.product }} SDK 添加到 Xamarin 应用程序</a>
+    </div>
+  </div>
+  <!--  <ul>
+        <li><a href="../application-development/sdk/cordova/">Adding the {{ site.data.keys.product }} SDK to Cordova applications</a></li>
+        <li><a href="../application-development/sdk/ios/">Adding the {{ site.data.keys.product }} SDK to iOS applications</a></li>
+        <li><a href="../application-development/sdk/android/">Adding the {{ site.data.keys.product }} SDK to Android applications</a></li>
+        <li><a href="../application-development/sdk/windows-8-10/">Adding the {{ site.data.keys.product }} SDK to Windows 8.1 Universal and Windows 10 UWP applications</a></li>
+        <li><a href="../application-development/sdk/web/">Adding the {{ site.data.keys.product }} SDK to Web applications</a></li>
+        <li><a href="../application-development/sdk/xamarin/">Adding the {{ site.data.keys.product }} SDK to Xamarin applications</a></li>
+    </ul> -->
+    <div class="content">
     <hr id="get-sdk-and-apis"/>
 
     <h2><a href="../application-development">开发应用程序</a></h2>
-    学会使用 {{ site.data.keys.product_adj }} API：直接更新、JSONStore、WLResourceRequest、客户端翻译、调试应用程序、{{ site.data.keys.mf_cli }} 及其他...
-    <ul>
-        <li><a href="../application-development/cordova-apps/">Cordova 应用程序中的 {{ site.data.keys.product }} SDK 开发</a><ul>
-                <li><a href="../application-development/cordova-apps/adding-images-and-icons">将定制启动屏幕和图标添加到 Cordova 应用程序</a></li>
-                <li><a href="../application-development/cordova-apps/securing-apps">保护 Cordova 应用程序</a></li>
-            </ul>
-        </li>
-        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">使用 {{ site.data.keys.mf_cli }} 管理 {{ site.data.keys.product_adj }} 工件</a></li>
-        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">使用 Eclipse 中的 {{ site.data.keys.mf_cli }}</a></li>
-        <li>来自客户机应用程序的资源请求<ul>
-                <li><a href="../application-development/resource-request/javascript/">来自 JavaScript（Cordova 或 Web）应用程序的资源请求</a></li>
-                <li><a href="../application-development/resource-request/ios/">来自 iOS 应用程序的资源请求</a></li>
-                <li><a href="../application-development/resource-request/android/">来自 Android 应用程序的资源请求</a></li>
-                <li><a href="../application-development/resource-request/windows/">来自 Windows 8.1 Universal 或 Windows 10 UWP 应用程序的资源请求</a></li>
-                <li><a href="../application-development/resource-request/xamarin/">来自 Xamarin 应用程序的资源请求</a></li>
-            </ul>
-        </li>
-        <li>JSONStore<ul>
-                <li><a href="../application-development/jsonstore/">JSONStore 概述</a></li>
-                <li><a href="../application-development/jsonstore/cordova/">Cordova 应用程序中的 JSONStore</a></li>
-            	<li><a href="../application-development/jsonstore/ios/">iOS 应用程序中的 JSONStore</a></li>
-            	<li><a href="../application-development/jsonstore/android/">Android 应用程序中的 JSONStore</a></li>
-                <li><a href="../application-development/jsonstore/security-utilities/">安全实用程序</a></li>
-                <li><a href="../application-development/jsonstore/code-examples/">代码示例</a></li>
-            </ul>
-        </li>
-        <li>客户端日志收集<ul>
-                <li><a href="../application-development/client-side-log-collection/">客户端日志收集概述</a></li>
-                <li><a href="../application-development/client-side-log-collection/javascript/">JavaScript（Cordova 或 Web）应用程序的中的日志收集</a></li>
-            	<li><a href="../application-development/client-side-log-collection/ios/">iOS 应用程序中的日志收集</a></li>
-            	<li><a href="../application-development/client-side-log-collection/android/">Android 应用程序中的日志收集</a></li>
-            </ul>
-        </li>
-        <li><a href="../application-development/direct-update/">在 Cordova 应用程序中使用直接更新</a><ul>
-                <li><a href="../application-development/direct-update/cdn-support">为来自 CDN 的“直接更新”请求提供服务</a></li>
-                <li><a href="../application-development/direct-update/secure-direct-update">实施安全直接更新</a></li>
-            </ul>
-        </li>
-        <li><a href="../application-development/translation/">JavaScript（Cordova 或 Web）应用程序的多语种翻译</a></li>
-        <li><a href="../application-development/debugging-applications/">调试 JavaScript（Cordova 或 Web）应用程序</a></li>
-        <li><a href="../application-development/live-update/">实时更新</a></li>
-        <li><a href="../application-development/watchos/">针对 Apple watchOS 2 进行开发</a></li>
-        <li><a href="../application-development/simple-data-sharing/">简单数据共享</a></li>
-    </ul>
+    <h4><i>    学会使用 {{ site.data.keys.product_adj }} API：直接更新、JSONStore、WLResourceRequest、客户端翻译、调试应用程序、{{ site.data.keys.mf_cli }} 及其他...
+    </i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../application-development/cordova-apps/">Cordova 应用程序中的 {{ site.data.keys.product }} SDK 开发&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../application-development/cordova-apps/adding-images-and-icons/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将定制启动屏幕和图标添加到 Cordova 应用程序</a> <a class="panel-block list-group-item" href="../application-development/cordova-apps/securing-apps/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保护 Cordova 应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/cordova-apps/developing-ui/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为 Cordova 应用程序开发 UI</a>
+        <a class="panel-block list-group-item" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">使用 {{ site.data.keys.mf_cli }} 管理 {{ site.data.keys.product_adj }} 工件</a>
+        <a class="panel-block list-group-item" href="../application-development/using-mobilefirst-cli-in-eclipse/">使用 Eclipse 中的 {{ site.data.keys.mf_cli }}</a>
 
+        <a class="panel-block list-group-item" href="../application-development/resource-request/">来自客户机应用程序的资源请求&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../application-development/resource-request/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自 JavaScript（Cordova 或 Web）应用程序的资源请求</a>
+        <a class="panel-block list-group-item" href="../application-development/resource-request/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自 iOS 应用程序的资源请求</a>
+        <a class="panel-block list-group-item" href="../application-development/resource-request/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自 Android 应用程序的资源请求</a>
+        <a class="panel-block list-group-item" href="../application-development/resource-request/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自 Windows 8.1 Universal 或 Windows 10 UWP 应用程序的资源请求</a>
+        <a class="panel-block list-group-item" href="../application-development/resource-request/xamarin/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自 Xamarin 应用程序的资源请求</a>
+
+        <a class="panel-block list-group-item" href="../application-development/jsonstore/">JSONStore&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../application-development/jsonstore/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cordova 应用程序中的 JSONStore</a> <a class="panel-block list-group-item" href="../application-development/jsonstore/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS应用程序中的 JSONStore</a> <a class="panel-block list-group-item" href="../application-development/jsonstore/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android 应用程序中的 JSONStore</a> <a class="panel-block list-group-item" href="../application-development/jsonstore/security-utilities/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全实用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/jsonstore/code-examples/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代码示例</a>
+
+        <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/">客户端日志收集&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript（Cordova 或 Web）应用程序中的日志收集</a>
+        <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS 应用程序中的日志收集</a> <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android 应用程序中的日志收集</a>
+        <a class="panel-block list-group-item" href="../application-development/direct-update/">在 Cordova 应用程序中使用直接更新&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../application-development/direct-update/cdn-support/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为来自 CDN 的“直接更新”请求提供服务</a>
+        <a class="panel-block list-group-item" href="../application-development/direct-update/secure-direct-update/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实施安全直接更新</a>
+
+        <a class="panel-block list-group-item" href="../application-development/translation/">JavaScript（Cordova 或 Web）应用程序的多语种翻译</a>
+        <a class="panel-block list-group-item" href="../application-development/debugging-applications/">调试 JavaScript（Cordova 或 Web）应用程序</a>
+        <a class="panel-block list-group-item" href="../application-development/live-update/">实时更新</a>
+        <a class="panel-block list-group-item" href="../application-development/watchos/">针对 Apple watchOS 2 进行开发</a>
+        <a class="panel-block list-group-item" href="../application-development/simple-data-sharing/">简单数据共享</a>
+    </div>
+  </div>
+  <!--  <ul>
+        <li><a href="../application-development/cordova-apps/">{{ site.data.keys.product }} SDK development in Cordova applications</a>
+            <ul>
+                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
+                <li><a href="../application-development/cordova-apps/securing-apps">Securing Cordova Applications</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Using the {{ site.data.keys.mf_cli }} in Eclipse</a></li>
+        <li>Resource Request from client applications
+            <ul>
+                <li><a href="../application-development/resource-request/javascript/">Resource request from JavaScript (Cordova, Web) applications</a></li>
+                <li><a href="../application-development/resource-request/ios/">Resource request from iOS applications</a></li>
+                <li><a href="../application-development/resource-request/android/">Resource request from Android applications</a></li>
+                <li><a href="../application-development/resource-request/windows/">Resource request from Windows 8.1 Universal or Windows 10 UWP applications</a></li>
+                <li><a href="../application-development/resource-request/xamarin/">Resource request from Xamarin applications</a></li>
+            </ul>
+        </li>
+        <li>JSONStore
+            <ul>
+                <li><a href="../application-development/jsonstore/">JSONStore Overview</a></li>
+                <li><a href="../application-development/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
+            	<li><a href="../application-development/jsonstore/ios/">JSONStore in iOS applications</a></li>
+            	<li><a href="../application-development/jsonstore/android/">JSONStore in Android applications</a></li>
+                <li><a href="../application-development/jsonstore/security-utilities/">Security utilities</a></li>
+                <li><a href="../application-development/jsonstore/code-examples/">Code examples</a></li>
+            </ul>
+        </li>
+        <li>Client-side log collection
+            <ul>
+                <li><a href="../application-development/client-side-log-collection/">Overview of client-side log collection</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
+            	<li><a href="../application-development/client-side-log-collection/ios/">Log collection in iOS applications</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Log collection in Android applications</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/direct-update/">Using Direct Update in Cordova Applications</a>
+            <ul>
+                <li><a href="../application-development/direct-update/cdn-support">Serving Direct Update requests from a CDN</a></li>
+                <li><a href="../application-development/direct-update/secure-direct-update">Implementing Secure Direct Update</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/translation/">Multilingual translation of JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../application-development/debugging-applications/">Debugging JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../application-development/live-update/">Live Update</a></li>
+        <li><a href="../application-development/watchos/">Developing for Apple watchOS 2</a></li>
+        <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
+    </ul>-->
+    <div class="content">
     <h2><a href="../adapters/">开发适配器</a></h2>
-    开发服务器端代码以与企业后端系统和云服务集成。<ul>
-        <li><a href="../adapters/">适配器概述</a></li>
-        <li><a href="../adapters/creating-adapters/">创建 Java 和 JavaScript 适配器</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript 适配器</a><ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP 适配器</a><ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">在 JavaScript HTTP 适配器中使用 SSL</a></li>
+    <h4><i>    开发服务器端代码以与企业后端系统和云服务集成。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../adapters/creating-adapters/">创建 Java 和 JavaScript 适配器</a> <a class="panel-block list-group-item" href="../adapters/javascript-adapters/">JavaScript 适配器&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript HTTP 适配器&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/using-ssl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 JavaScript HTTP 适配器中使用 SSL</a>
+        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript SQL 适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 JavaScript 适配器中使用 Java</a>
+        <a class="panel-block list-group-item" href="../adapters/java-adapters/">Java 适配器&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../adapters/java-adapters/java-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java HTTP 适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/java-adapters/java-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java SQL 适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/developing-adapters/">在 Eclipse 中开发适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/testing-and-debugging-adapters/">测试并调试适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/">服务器端日志收集&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/java-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java 适配器中的日志收集</a>
+        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/javascript-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript 适配器中的日志收集</a> <a class="panel-block list-group-item" href="../adapters/advanced-adapter-usage-mashup/">高级适配器用法和 Mashup</a>
+        <a class="panel-block list-group-item" href="../adapters/cloudant/">使用适配器与 Cloudant 集成</a>
+        <a class="panel-block list-group-item" href="../adapters/openwhisk-adapter/">Cloud Functions 适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/cognitive-adapter/">针对 Watson 服务的适配器</a>
+        <a class="panel-block list-group-item" href="../adapters/microservice-adapter/">适配器自动生成</a>
+      </div>
+    </div>
+  <!--  <ul>
+        <li><a href="../adapters/">Adapters overview</a></li>
+        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
                     </ul>
                 </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL 适配器</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">在 JavaScript 适配器中使用 Java</a></li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/java-adapters/">Java 适配器</a><ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP 适配器</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL 适配器</a></li>
+        <li><a href="../adapters/java-adapters/">Java Adapters</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/developing-adapters/">在 Eclipse 中开发适配器</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">测试并调试适配器</a></li>
-        <li>服务器端日志收集<ul>
-                <li><a href="../adapters/server-side-log-collection/">服务器端日志收集概述</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java 适配器中的日志收集</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript 适配器中的日志收集</a></li>
+        <li><a href="../adapters/developing-adapters/">Developing Adapters in Eclipse</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
+        <li>Server-side log collection
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">高级适配器用法和 Mashup</a></li>
-        <li><a href="../adapters/cloudant/">使用适配器与 Cloudant 集成</a></li>
-    </ul>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
+        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+        <li><a href="../adapters/openwhisk-adapter/">Cloud Functions adapter</a></li>
+        <li><a href="../adapters/cognitive-adapter/">Adapters for Watson services</a></li>
+        <li><a href="../adapters/microservice-adapter/">Adapter auto-generation</a></li>
 
+    </ul>
+-->
+    <div class="content">
     <hr id="implement-authentication-and-security"/>
 
     <h2><a href="../authentication-and-security/">认证和安全性</a></h2>
-    向应用程序添加多个保护层。<ul>
-        <li><a href="../authentication-and-security/">授权概念</a></li>
-        <li><a href="../authentication-and-security/creating-a-security-check/">创建安全性检查</a><ul>
-                <li><a href="../authentication-and-security/creating-a-security-check/contract">安全性检查合同</a></li>
+    <h4><i>    向应用程序添加多个保护层。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/">创建安全性检查&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/contract/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安全性检查合同</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/security-check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实施安全性检查</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 JavaScript（Cordova 或 Web）应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 iOS 应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Android 应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/security-check/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实施安全性检查</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 JavaScript（Cordova 或 Web）应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 iOS 应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Android 应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实施验证问题处理程序</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/step-up/">增强认证</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/enrollment/">注册</a> <a class="panel-block list-group-item" href="../authentication-and-security/ltpa-security-check/">LTPA 安全性检查</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/confidential-clients/">保密客户机</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/">保护外部资源&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/tai">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信任关联拦截器</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/jtv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java 令牌验证</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/node-js">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node.js 验证</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/windows-message-inspector">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows .NET 消息检验器</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/application-authenticity/">应用程序真实性</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/device-sso/">配置设备单点登录</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/certificate-pinning/">证书锁定</a>
+        <a class="panel-block list-group-item" href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">配置 {{ site.data.keys.mf_server }} 密钥存储库</a>
+      </div>
+    </div>
+  <!--  <ul>
+        <li><a href="../authentication-and-security/">Authorization concepts</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">The Security Check Contract</a></li>
             </ul>
         </li>
-        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a><ul>
-                <li><a href="../authentication-and-security/credentials-validation/security-check/">实施安全性检查</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/javascript/">在 JavaScript（Cordova 或 Web）应用程序中实施验证问题处理程序</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/ios/">在 iOS 应用程序中实施验证问题处理程序</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/android/">在 Android 应用程序中实施验证问题处理程序</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实施验证问题处理程序</a></li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">Implementing the challenge handler in JavaScript (Cordova, Web) applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/ios/">Implementing the challenge handler in iOS applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/android/">Implementing the challenge handler in Android applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications</a></li>
             </ul>
         </li>
-        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a><ul>
-                <li><a href="../authentication-and-security/user-authentication/security-check/">实施安全性检查</a></li>
-                <li><a href="../authentication-and-security/user-authentication/javascript/">在 JavaScript（Cordova 或 Web）应用程序中实施验证问题处理程序</a></li>
-                <li><a href="../authentication-and-security/user-authentication/ios/">在 iOS 应用程序中实施验证问题处理程序</a></li>
-                <li><a href="../authentication-and-security/user-authentication/android/">在 Android 应用程序中实施验证问题处理程序</a></li>
-                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实施验证问题处理程序</a></li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">Implementing the security check</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">Implementing the challenge handler in JavaScript (Cordova, Web) applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/ios/">Implementing the challenge handler in iOS applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/android/">Implementing the challenge handler in Android applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
-        <li><a href="../authentication-and-security/step-up/">增强认证</a></li>
-        <li><a href="../authentication-and-security/enrollment/">注册</a></li>
-        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA 安全性检查</a></li>
-        <li><a href="../authentication-and-security/confidential-clients/">保密客户机</a></li>
-        <li><a href="../authentication-and-security/protecting-external-resources/">保护外部资源</a><ul>
-                <li><a href="../authentication-and-security/protecting-external-resources/tai">信任关联拦截器</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java 令牌验证</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js 验证</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET 消息检验器</a></li>
+        <li><a href="../authentication-and-security/step-up/">Step Up Authentication</a></li>
+        <li><a href="../authentication-and-security/enrollment/">Enrollment</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA Security Check</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">Confidential Clients</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">Protecting External Resources</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java Token Validation</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js Validation</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET Message Inspector</a></li>
             </ul>
         </li>
-        <li><a href="../authentication-and-security/application-authenticity/">应用程序真实性</a></li>
-        <li><a href="../authentication-and-security/device-sso/">配置设备单点登录</a></li>
-        <li><a href="../authentication-and-security/certificate-pinning/">证书锁定</a></li>
-        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">配置 {{ site.data.keys.mf_server }} 密钥存储库</a></li>
-    </ul>
-
+        <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
+        <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the {{ site.data.keys.mf_server }} Keystore</a></li>
+    </ul>-->
+    <div class="content">
     <hr id="measure-and-engage"/>
 
     <h2><a href="../notifications">通知</a></h2>
-    使用 {{ site.data.keys.product_full }} 发送通知。<ul>
-        <li><a href="../notifications/">通知概述</a></li>
-        <li><a href="../notifications/sending-notifications/">发送通知</a></li>
-        <li><a href="../notifications/handling-push-notifications/">处理推送通知</a><ul>
-                <li><a href="../notifications/handling-push-notifications/cordova/">在 Cordova 应用程序中处理推送通知</a><ul>
-                        <li><a href="../notifications/handling-push-notifications/interactive">交互式通知</a></li>
-                        <li><a href="../notifications/handling-push-notifications/silent">静默通知</a></li>
+    <h4><i>    使用 {{ site.data.keys.product_full }} 发送通知。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../notifications/sending-notifications/">发送通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/">处理推送通知&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/cordova">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Cordova 应用程序中处理推送通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/ios">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 iOS 应用程序中处理推送通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/interactive">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交互式通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/silent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;静默通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/android">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Android 应用程序中处理推送通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/windows">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Windows 应用程序中处理推送通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/">处理 SMS 通知&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Cordova 应用程序中处理 SMS 通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 Android 应用程序中处理 SMS 通知</a>
+        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 iOS 应用程序中处理 SMS 通知</a>
+        <a class="panel-block list-group-item" href="../notifications/analytics/">对推送通知设置分析支持</a> <a class="panel-block list-group-item" href="../notifications/rest-apis/">推送服务 REST API</a>
+      </div>
+    </div>
+<!--    <ul>
+        <li><a href="../notifications/">Notifications Overview</a></li>
+        <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
+        <li><a href="../notifications/handling-push-notifications/">Handling push notifications</a>
+            <ul>
+                <li><a href="../notifications/handling-push-notifications/cordova/">Handling Push Notifications in Cordova applications</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
                     </ul>
                 </li>
-                <li><a href="../notifications/handling-push-notifications/ios/">在 iOS 应用程序中处理推送通知</a><ul>
-                        <li><a href="../notifications/handling-push-notifications/interactive">交互式通知</a></li>
-                        <li><a href="../notifications/handling-push-notifications/silent">静默通知</a></li>
+                <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
                     </ul>
                 </li>
-                <li><a href="../notifications/handling-push-notifications/android/">在 Android 应用程序中处理推送通知</a></li>
-                <li><a href="../notifications/handling-push-notifications/windows/">在 Windows 应用程序中处理推送通知</a></li>
+                <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
+                <li><a href="../notifications/handling-push-notifications/windows/">Handling Push Notifications in Windows applications</a></li>
             </ul>
         </li>
-        <li><a href="../notifications/handling-sms-notifications/">处理 SMS 通知</a><ul>
-                <li><a href="../notifications/handling-sms-notifications/cordova/">在 Cordova 应用程序中处理 SMS 通知</a></li>
-                <li><a href="../notifications/handling-sms-notifications/android/">在 Android 应用程序中处理 SMS 通知</a></li>
-                <li><a href="../notifications/handling-sms-notifications/ios/">在 iOS 应用程序中处理 SMS 通知</a></li>
+        <li><a href="../notifications/handling-sms-notifications/">Handling SMS notifications</a>
+            <ul>
+                <li><a href="../notifications/handling-sms-notifications/cordova/">Handling SMS Notifications in Cordova applications</a></li>
+                <li><a href="../notifications/handling-sms-notifications/android/">Handling SMS Notifications in Android applications</a></li>
+                <li><a href="../notifications/handling-sms-notifications/ios/">Handling SMS Notifications in iOS applications</a></li>
             </ul>
         </li>
-        <li><a href="../notifications/analytics/">对“分析”支持设置推送通知</a></li>
-        <li><a href="../notifications/rest-apis/">推送服务 REST API</a></li>
-    </ul>
-
+        <li><a href="../notifications/analytics/">Setting Up Analytics Support for Push Notifications</a></li>
+        <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
+    </ul>-->
+    <div class="content">
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-    监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。<ul>
-        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} 简介</a></li>
-        <li><a href="../analytics/analytics-api/">在客户机应用程序中使用分析 API</a></li>
-        <li><a href="../analytics/analytics-rest-api/">使用分析 REST API</a></li>
-        <li><a href="../analytics/elasticsearch/">弹性搜索</a></li>
-        <li><a href="../analytics/console/">操作和分析控制台</a><ul>
-             <li><a href="../analytics/console/alerts/">管理警报</a></li>
-             <li><a href="../analytics/console/log-filters/">配置日志过滤器</a></li>
-             <li><a href="../analytics/console/custom-charts/">创建定制图表</a></li>
-             <li><a href="../analytics/console/scenario-loader/">方案装入程序</a></li>
-             <li><a href="../analytics/console/scenario-loader/">推送通知</a></li>
-             <li><a href="../analytics/console/analytics-data-purge">数据保留和清除</a></li>
+    <h4><i>    监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../analytics">{{ site.data.keys.mf_analytics_full }} 简介</a> <a class="panel-block list-group-item" href="../analytics/analytics-api/">在客户机应用程序中使用分析 API</a>
+        <a class="panel-block list-group-item" href="../analytics/analytics-rest-api/">使用分析 REST API</a>
+        <a class="panel-block list-group-item" href="../analytics/elasticsearch/">弹性搜索</a> <a class="panel-block list-group-item" href="../analytics/console/">操作和分析控制台&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../analytics/console/alerts/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理警报</a>
+        <a class="panel-block list-group-item" href="../analytics/console/log-filters/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配置日志过滤器</a>
+        <a class="panel-block list-group-item" href="../analytics/console/custom-charts/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建定制图表</a>
+        <a class="panel-block list-group-item" href="../analytics/console/scenario-loader/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方案装入程序</a>
+        <a class="panel-block list-group-item" href="../analytics/console/push-notifications/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推送通知</a>
+        <a class="panel-block list-group-item" href="../analytics/console/analytics-data-purge">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据保留和清除</a>
+        <a class="panel-block list-group-item" href="../analytics/workflows/">分析工作流程</a>
+      </div>
+    </div>
+  <!--  <ul>
+        <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
+        <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
+        <li><a href="../analytics/elasticsearch/">Elasticsearch</a></li>
+        <li><a href="../analytics/console/">Operations and Analytics Consoles</a>
+           <ul>
+             <li><a href="../analytics/console/alerts/">Managing Alerts</a></li>
+             <li><a href="../analytics/console/log-filters/">Configuring Log Filters</a></li>
+             <li><a href="../analytics/console/custom-charts/">Creating Custom Charts</a></li>
+             <li><a href="../analytics/console/scenario-loader/">Scenario Loader</a></li>
+             <li><a href="../analytics/console/scenario-loader/">Push Notifications</a></li>
+             <li><a href="../analytics/console/analytics-data-purge">Data Retention and Purging</a></li>
           </ul>
         </li>
-        <li><a href="../analytics/workflows/">分析工作流程</a></li>
-    </ul>
-
-    <h2><a href="../bluemix">Bluemix 基础</a></h2>
-    使用 Bluemix 将 {{ site.data.keys.product }} 部署到云。<ul>
-        <li><a href="../bluemix/">Bluemix 上的 {{ site.data.keys.product_full }} 简介</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">使用 Mobile Foundation Bluemix 服务创建 {{ site.data.keys.mf_server }} 实例</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">在 IBM Containers 上使用 IBM Container Service 脚本设置 {{ site.data.keys.mf_server }}</a>
+        <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
+    </ul> -->
+    <div class="content">
+    <h2><a href="../bluemix">IBM Cloud 上的 Mobile Foundation</a></h2>
+    <h4><i>使用 IBM Cloud 将 {{ site.data.keys.product }} 部署到云。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../bluemix/using-mobile-foundation/">使用 Mobile Foundation IBM Cloud 服务创建 {{ site.data.keys.mf_server }} 实例</a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-kubernetes/">在 IBM Cloud Kubernetes Cluster 上设置 MobileFirst Server&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 IBM Cloud Kubernetes Cluster 上设置 MobileFirst Server</a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/">在 IBM Cloud Private 上设置 MobileFirst Server&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/mobilefirst-appcenter-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 IBM Cloud Private 上设置 MobileFirst Application Center</a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/logging-tracing-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在 IBM Cloud Private 中进行日志记录和跟踪</a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/">在 IBM Cloud 上使用 Liberty for Java 脚本设置 {{ site.data.keys.mf_server }}&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保护容器安全</a>
+        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;故障诊断</a>
+      </div>
+    </div>
+        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">日志和跟踪收集</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">保护容器</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">故障诊断</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>-->
+    <!--  <ul>
+        <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">Setting Up MobileFirst Server on IBM Cloud Kubernetes Cluster</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">Setting Up MobileFirst Appcenter on IBM Cloud Kubernetes Cluster</a></li>
             </ul>
         </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">在 Bluemix 上使用 Liberty for Java 脚本设置 {{ site.data.keys.mf_server }}</a><ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">保护容器</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">故障诊断</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Setting Up the {{ site.data.keys.mf_server }} on IBM Cloud using scripts on Liberty for Java</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">Troubleshooting</a></li>
             </ul>
         </li>
-    </ul>
-
+    </ul> -->
+    <div class="content">
     <h2><a href="../appcenter">Application Center</a></h2>
-    安装、配置和使用 IBM MoblieFirst Foundation Application Center。<ul>
-        <li><a href="../appcenter/">Application Center 概述</a></li>
-        <li><a href="../appcenter/preparations">使用移动式客户机的准备工作</a></li>
-        <li><a href="../appcenter/push-notifications">应用程序更新的推送通知</a></li>
-        <li><a href="../appcenter/appcenter-console">Application Center 控制台</a></li>
-        <li><a href="../appcenter/command-line">用于上载或删除应用程序的命令行工具</a></li>
-        <li><a href="../appcenter/mobile-client">移动式客户机</a></li>
-        <li><a href="../appcenter/logging-and-tracing">在应用程序服务器上为 Application Center 设置日志记录和跟踪</a></li>
-        <li><a href="../appcenter/app-center-tutorial/">“使用 Application Center 分发移动应用程序”教程</a></li>
-    </ul>
-
+    <h4><i>    安装、配置和使用 IBM MoblieFirst Foundation Application Center。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../appcenter/preparations">准备使用移动式客户机</a>
+        <a class="panel-block list-group-item" href="../appcenter/push-notifications">应用程序更新的推送通知</a>
+        <a class="panel-block list-group-item" href="../appcenter/appcenter-console">Application Center 控制台</a> <a class="panel-block list-group-item" href="../appcenter/command-line">用于上载或删除应用程序的命令行工具</a>
+        <a class="panel-block list-group-item" href="../appcenter/mobile-client">移动式客户机</a>
+        <a class="panel-block list-group-item" href="../appcenter/logging-and-tracing">在应用程序服务器上为 Application Center 设置日志记录和跟踪</a>
+        <a class="panel-block list-group-item" href="../appcenter/app-center-tutorial/">“使用 Application Center 分发移动应用程序”教程</a>
+      </div>
+    </div>
+  <!--  <ul>
+        <li><a href="../appcenter/">Application Center Overview</a></li>
+        <li><a href="../appcenter/preparations">Preparations for using the mobile client</a></li>
+        <li><a href="../appcenter/push-notifications">Push notifications of application updates</a></li>
+        <li><a href="../appcenter/appcenter-console">The Application Center console</a></li>
+        <li><a href="../appcenter/command-line">Command-line tool for uploading or deleting an application</a></li>
+        <li><a href="../appcenter/mobile-client">The mobile client</a></li>
+        <li><a href="../appcenter/logging-and-tracing">Setting logging and tracing for Application Center on the application server</a></li>
+        <li><a href="../appcenter/app-center-tutorial/">Distributing mobile applications with Application Center tutorial</a></li>
+    </ul>-->
+    <div class="content">
     <h2><a href="../troubleshooting/">对常见问题进行故障诊断</a></h2>
-    常见问题及解答。<ul>
-        <li><a href="../troubleshooting/notifications">推送通知</a></li>
+    <h4><i>常见问题及解答。</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../troubleshooting/notifications">推送通知</a>
+        <a class="panel-block list-group-item" href="../troubleshooting/jsonstore">JSONStore</a>
+        <a class="panel-block list-group-item" href="../troubleshooting/analytics">分析</a>
+      </div>
+    </div>
+<!--    <ul>
+        <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
-        <li><a href="../troubleshooting/analytics">分析</a></li>
-    </ul>
+        <li><a href="../troubleshooting/analytics">Analytics</a></li>
+    </ul>-->
 
+    <div class="content">
     <h2><a href="../../../../en/product-integration/8.0">产品集成</a></h2>
-    将 {{ site.data.keys.product }} 8.0 应用程序与其他 IBM 产品集成<ul>
-        <li><a href="../../../../en/product-integration/8.0">可用产品集成列表</a></li>
-    </ul>
+    <h4><i>    将 {{ site.data.keys.product }} 8.0 应用程序与其他 IBM 产品集成</i></h4>
+    <div class="panel list-group">
+        <a class="panel-block list-group-item" href="../../../../en/product-integration/8.0">可用产品集成列表</a>
+      </div>
+    </div>
+<!--    <ul>
+        <li><a href="../../../product-integration/8.0">List of available product integrations</a></li>
+    </ul>-->
     <br/>
 </div>

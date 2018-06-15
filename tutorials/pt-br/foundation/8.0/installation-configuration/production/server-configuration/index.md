@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Configurando o MobileFirst Server
+title: Configurando o servidor MobileFirst
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -84,7 +84,8 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
 3. Para cada configuração de SSL listada, modifique a configuração para ativar o TLS V1.2.
     * Selecione uma configuração SSL e, em seguida, em **Propriedades adicionais**, clique em configurações de **Qualidade de proteções (QoP)**.
     * Na lista **Protocolo**, selecione **SSL_TLSv2**.
-    * Clique em **Aplicar** e, em seguida, salve as mudanças.
+    * Clique em **Aplicar** e, em seguida, salve as
+mudanças.
 
 ## Configurando a autenticação do usuário para o {{ site.data.keys.mf_server }} administration
 {: #configuring-user-authentication-for-mobilefirst-server-administration }
@@ -287,7 +288,7 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
 
       A raiz de contexto (no exemplo anterior: **app\_context\_root**) se conecta entre a entrada JNDI e um aplicativo do {{ site.data.keys.product_adj }} específico. Se diversos aplicativos do {{ site.data.keys.product_adj }} existirem no mesmo servidor, será possível definir entradas JNDI específicas para cada aplicativo usando um prefixo do caminho do contexto.
 
-      > **Nota:** Algumas propriedades são definidas globalmente no WebSphere Application Server Liberty, sem prefixar o nome da propriedade pela raiz de contexto. Para obter uma lista dessas propriedades, consulte [Entradas JNDI globais](../appserver/#global-jndi-entries).
+      > **Nota:** Algumas propriedades são definidas globalmente no WebSphere Application Server Liberty, sem prefixar o nome da propriedade pela raiz de contexto. Para obter uma lista dessas propriedades, consulte [Entradas JNDI globais](../prod-env/appserver/#global-jndi-entries).
 
       Para todas as outras propriedades JNDI, os nomes devem ser prefixados com a raiz de contexto do aplicativo:
 
@@ -402,8 +403,8 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 | mfp.admin.hsts | Opcional. | Defina como true para ativar HTTP Estrita Transport Security de acordo com a RFC 6797. |
 | mfp.topology.platform | Opcional | Tipo de servidor. Valores válidos:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Se você não configurar o valor, o aplicativo tentará adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional | Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{ O valor padrão é Standalone. |
-| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.reinitialize | Opcional | Um valor booleano (true ou false) para registrar novamente ou reinicializar o membro do farm. |
 | Mfp.server.swagger.ui.url | Opcional | Esta propriedade define a URL da interface com o usuário do Swagger a ser exibida no console de administração. |
 
@@ -444,8 +445,10 @@ O serviço de administração usa um serviço de atualização em tempo real com
 | Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | Opcional A URL do serviço de atualização em tempo real. A URL padrão é derivada da URL do serviço de administração, incluindo configuração na raiz de contexto do serviço de administração. |
-| mfp.config.service.user | Obrigatório | O nome do usuário que é usado para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, o nome do usuário deve ser o mesmo para todos os membros do farm. |
-| mfp.config.service.password | Obrigatório | A senha que é usada para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, a senha deve ser a mesma para todos os membros do farm. |
+| mfp.config.service.user | Obrigatório | O nome do usuário que é usado para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, o nome do usuário deve ser o mesmo
+para todos os membros do farm. |
+| mfp.config.service.password | Obrigatório | A senha que é usada para acessar o serviço de atualização em tempo real. Em uma topologia de server farm, a senha deve ser a mesma para todos
+os membros do farm. |
 | mfp.config.service.schema | Opcional | O nome do esquema usado pelo serviço de atualização em tempo real. |
 
 O serviço de administração usa um serviço de push como recurso auxiliar para armazenar várias configurações de push. Use essas propriedades para configurar como atingir o serviço de push. Como o serviço de push é protegido pelo modelo de segurança OAuth, deve-se configurar várias propriedades para permitir clientes confidenciais em OAuth.
@@ -460,7 +463,7 @@ O serviço de administração usa um serviço de push como recurso auxiliar para
 | mfp.push.authorization.client.id | Opcional/Condicionalmente obrigatório | O identificador o cliente confidencial que manipula autorização OAuth para o serviço de push. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
 | mfp.push.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de push. Obrigatório somente se a propriedade **mfp.admin.push.url** for especificada |
 | mfp.admin.authorization.client.id | Opcional/Condicionalmente obrigatório | O identificador do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
-| mfp.push.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
+| mfp.admin.authorization.client.secret | Opcional/Condicionalmente obrigatório | O segredo do cliente confidencial que manipula autorização OAuth para o serviço de administração. Obrigatória somente se a propriedade **mfp.admin.push.url** estiver especificada. |
 
 ### Propriedades da JNDI para o {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
@@ -528,24 +531,24 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 | mfp.push.db.cloudant.username | Opcional | O nome do usuário da conta do Cloudant usado para armazenar o banco de dados. Quando essa propriedade não for definida, um banco de dados relacional será usado. |
 | mfp.push.db.cloudant.password | Opcional | A senha da conta do Cloudant usada para armazenar o banco de dados. Essa propriedade deve ser configurada quando mfp.db.cloudant.username estiver configurado. |
 | mfp.push.db.cloudant.doc.version | Opcional | A versão do documento do Cloudant. |
-| mfp.push.db.cloudant.socketTimeout | Opcional	           | Um tempo limite para detectar a perda de uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.connectionTimeout | Opcional	           | Um tempo limite para estabelecer uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.socketTimeout | Opcional	| Um tempo limite para detectar a perda de uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.connectionTimeout | Opcional	| Um tempo limite para estabelecer uma conexão de rede para Cloudant em milissegundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição). Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.maxConnections | Opcional | O máximo de conexões do conector do Cloudant. Padrão. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.ssl.authentication | Opcional | Um valor booleano (true ou false) que especifica se a validação de cadeia de certificados SSL e verificação de nome de host estão ativadas para conexões HTTPS para o banco de dados Cloudant. Padrão: verdadeiro |
-| mfp.push.db.cloudant.ssl.configuration | Opcional	           | (Somente perfil completo do WAS) Para conexões HTTPS com o banco de dados Cloudant: o nome de uma configuração SSL na configuração do WebSphere Application Server, a ser usado quando nenhuma configuração for especificada para o host e para a porta. |
-| mfp.push.db.cloudant.proxyHost | Opcional	           | Host do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.proxyPort | Opcional	           | Porta do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.services.ext.security | Opcional	           | O plug-in de extensão de segurança. |
-| mfp.push.security.endpoint | Opcional	           | A URL de terminal para o servidor de autorizações. |
-| mfp.push.security.user | Opcional	           | O nome do usuário para acessar o servidor de autorizações. |
-| mfp.push.security.password | Opcional	           | A senha para acessar o servidor de autorizações. |
+| mfp.push.db.cloudant.ssl.configuration | Opcional	| (Somente perfil completo do WAS) Para conexões HTTPS com o banco de dados Cloudant: o nome de uma configuração SSL na configuração do WebSphere Application Server, a ser usado quando nenhuma configuração for especificada para o host e para a porta. |
+| mfp.push.db.cloudant.proxyHost | Opcional	| Host do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.proxyPort | Opcional	| Porta do proxy do conector do Cloudant. Padrão: consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.services.ext.security | Opcional	| O plug-in de extensão de segurança. |
+| mfp.push.security.endpoint | Opcional	| A URL de terminal para o servidor de autorizações. |
+| mfp.push.security.user | Opcional	| O nome do usuário para acessar o servidor de autorizações. |
+| mfp.push.security.password | Opcional	| A senha para acessar o servidor de autorizações. |
 | mfp.push.services.ext.analytics | Opcional | O plug-in de extensão de análise de dados. |
 | mfp.push.analytics.endpoint | Opcional | A URL de terminal para o servidor de análise de dados. |
 | mfp.push.analytics.user | Opcional | O nome do usuário para acessar o servidor de análise de dados. |
 | mfp.push.analytics.password | Opcional | A senha para acessar o servidor de análise de dados. |
-| mfp.push.analytics.events.notificationDispatch | Opcional	           | O evento analítico quando a notificação está prestes a ser despachada. Default: true |
+| mfp.push.analytics.events.notificationDispatch | Opcional	| O evento analítico quando a notificação está prestes a ser despachada. Default: true |
 | mfp.push.internalQueue.maxLength | Opcional | O comprimento da fila que retém tarefas de notificação antes do despacho. Padrão: 200000 |
-| mfp.push.gcm.proxy.enabled | Opcional	           | Mostra se o Google GCM deve ser acessado por meio de um proxy. Padrão: falso |
+| mfp.push.gcm.proxy.enabled | Opcional	| Mostra se o Google GCM deve ser acessado por meio de um proxy. Padrão: falso |
 | mfp.push.gcm.proxy.protocol | Opcional | Pode ser http ou https. |
 | mfp.push.gcm.proxy.host | Opcional | Host do proxy GCM. Valor negativo significa porta padrão. |
 | mfp.push.gcm.proxy.port | Opcional | Porta do proxy GCM. Padrão: -1 |
@@ -823,7 +826,7 @@ Para diagnosticar problemas de login e autenticação, ative o pacote **com.ibm.
 {: #configuring-multiple-runtimes }
 É possível configurar o {{ site.data.keys.mf_server }} com vários tempos de execução, criando uma diferenciação visual entre "tipos" de aplicativos no {{ site.data.keys.mf_console }}.
 
-> **Nota:** Vários tempos de execução não são suportados em uma instância do servidor Mobile Foundation criada pelo serviço Mobile Foundation Bluemix. No serviço Bluemix, deve-se criar então várias instâncias de serviço.
+> **Nota:** diversos tempos de execução não são suportados em uma instância do servidor Mobile Foundation criada pelo serviço Mobile Foundation IBM Cloud. Por isso, é necessário criar diversas instâncias de serviço no serviço IBM Cloud.
 
 #### Ir para
 {: #jump-to-1 }
@@ -867,7 +870,7 @@ Para diagnosticar problemas de login e autenticação, ative o pacote **com.ibm.
     > **Nota:**
     >
     > * Certifique-se de que o `dataSource` esteja apontando para um esquema do banco de dados diferente.
-    > * Certifique-se de que tenha criado [outra instância de banco de dados](../databases) para o novo tempo de execução.
+    > * Certifique-se de que tenha criado [outra instância de banco de dados](../prod-env/databases) para o novo tempo de execução.
     > * No ambiente de desenvolvimento, inclua `createDatabase="create"` no elemento-filho `properties.derby.embedded`.
 
 5. Reinicie o servidor de aplicativos.

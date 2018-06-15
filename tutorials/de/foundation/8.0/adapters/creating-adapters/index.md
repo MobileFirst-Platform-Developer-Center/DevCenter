@@ -217,7 +217,7 @@ Das Ergebnis ist eine Archivdatei **.adapter** im Ordner **target** jedes Adapte
 
    ```xml
    <properties>
-    	<!-- parameters for deploy mfpf adapter -->
+    	<!-- Parameter für die Implementierung eines MFPF-Adapters -->
     	<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
     	<mfpfUser>admin</mfpfUser>
     	<mfpfPassword>admin</mfpfPassword>
@@ -333,13 +333,12 @@ Für die Zusammenfassung von Adaptern sind folgende Schritte erforderlich:
     	</modules>
 
     	<properties>
-    		<!-- parameters for deploy mfpf adapter -->
-    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
-    		<mfpfUser>admin</mfpfUser>
-    		<mfpfPassword>admin</mfpfPassword>
-        <mfpfRuntime>mfp</mfpfRuntime>
-    	</properties>
-
+    	<!-- Parameter für die Implementierung eines MFPF-Adapters -->
+    	<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
+    	<mfpfUser>admin</mfpfUser>
+    	<mfpfPassword>admin</mfpfPassword>
+    	<mfpfRuntime>mfp</mfpfRuntime>
+   </properties>
    <build>
         <plugins>
 			<plugin>
@@ -358,16 +357,15 @@ Für die Zusammenfassung von Adaptern sind folgende Schritte erforderlich:
   3. Fügen Sie für jeden Adapter ein Element **`module`** hinzu. 
   4. Fügen Sie das Element **`build`** hinzu. 
   5. Ersetzen Sie **localhost:9080** durch die IP-Adresse und die Portnummer Ihres {{ site.data.keys.mf_server }} (**optional**). 
-  6. Ersetzen Sie die Standardwerte **`mfpfUser`** und **`mfpfPassword`** durch Ihren Administratorbenutzernamen und Ihr Administratorkennwort (**optional**). 
-  7. Ersetzen Sie den Standardwert **`mfpfRuntime`** durch Ihren Laufzeitnamen (**optional**). 
+  6. Ersetzen Sie die Standardwerte **mfpfUser** und **`mfpfPassword`** durch Ihren Administratorbenutzernamen und Ihr Administratorkennwort (**`optional`**). 
+  7. Ersetzen Sie den Standardwert **mfpfRuntime** durch Ihren Laufzeitnamen (**`optional`**). 
 
 4. Für die [Erstellung oder Implementierung](#build-and-deploy-adapters) aller Adapter müssen Sie die Maven-Befehle im Stammordner "GroupAdapters" des Projekts ausführen. 
 
 ## Adapter über die {{ site.data.keys.mf_console }} herunterladen oder implementieren
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
-1. Öffnen Sie einen Browser Ihrer Wahl und laden Sie die {{ site.data.keys.mf_console }}. Verwenden Sie die
-Adresse `http://<IP-Adresse>:<PORT>/mfpconsole/`.  
+1. Öffnen Sie einen Browser Ihrer Wahl und laden Sie die {{ site.data.keys.mf_console }}. Verwenden Sie die Adresse `http://<IP-Adresse>:<PORT>/mfpconsole/`.  
 2. Klicken Sie neben "Adapter" auf die Schaltfläche "Neu". Sie haben zwei Möglichkeiten, einen Adapter zu erstellen: 
  * Sie können Maven oder die {{ site.data.keys.mf_cli }} wie oben beschrieben verwenden. 
  * Laden Sie ein Schablonenadapterprojekt herunter (Schritt 2). 
@@ -422,10 +420,7 @@ gemeinsam nutzen.
 
 1. [Rufen Sie die Seite 'Downloads' auf]({{site.baseurl}}/downloads/) und laden Sie
 das Installationsprogramm für das {{ site.data.keys.mf_dev_kit_full }} herunter. 
-2. Starten Sie {{ site.data.keys.mf_server }} und laden Sie in einem Browser die
-{{ site.data.keys.mf_console }} mit folgender
-URL:
-`http://<Ihr_Serverhost:Serverport>/mfpconsole`.
+2. Starten Sie {{ site.data.keys.mf_server }} und laden Sie in einem Browser die {{ site.data.keys.mf_console }} mit folgender URL: `http://<Ihr_Serverhost:Serverport>/mfpconsole`.
 3. Klicken Sie auf **Download-Center**. Klicken Sie unter **Tools → Adapterarchetypen** auf
 **Herunterladen**. Das Archiv **mfp-maven-central-artifacts-adapter.zip** wird
 heruntergeladen. 

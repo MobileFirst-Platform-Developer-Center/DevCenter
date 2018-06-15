@@ -18,7 +18,9 @@ Die Protokollerfassung ist standardmäßig
 aktiviert. Sie speichert Protokolle im Client und kann programmgesteuert aktiviert oder inaktiviert werden. Protokolle werden mit einem expliziten Sendeaufruf oder automatisch an den Server gesendet. 
 
 > **Hinweis:** Die Aktivierung der Protokollerfassung auf einer Ebene mit großer Ausführlichkeit kann sich
-auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. Inaktivieren Sie die Protokollerfassung wie folgt: 
+auf die CPU-Nutzung des Geräts, auf den Dateisystemspeicher und den Umfang der Nutzdaten, die der Client mit den Protokollen über das Netz sendet, auswirken. 
+
+Inaktivieren Sie die Protokollerfassung wie folgt: 
 
 ### Cordova
 {: #cordova }
@@ -36,8 +38,9 @@ ibmmfpfanalytics.logger.enable(false);
 {: #sending-captured-logs }
 Sie können Protokolle gemäß Ihrer Anwendungslogik an {{ site.data.keys.product_adj }} senden. Sie können auch das automatische Senden von Protokollen aktivieren. Wenn Protokolle nicht vor dem Erreichen ihrer maximalen Größe gesendet werden, wird die Protokolldatei zugunsten aktuellerer Protokolle bereinigt. 
 
-> **Hinweis:** Übernehmen Sie das folgende Muster für die Erfassung von Protokolldaten. Durch das Senden von Daten in einem Intervall stellen Sie sicher, dass Sie Ihre Protokolldaten in der
-{{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.#### Cordova-Apps
+> **Hinweis:** Übernehmen Sie das folgende Muster für die Erfassung von Protokolldaten. Durch das Senden von Daten in einem Intervall stellen Sie sicher, dass Sie Ihre Protokolldaten in der {{ site.data.keys.mf_analytics_console }} annähernd in Echtzeit sehen.
+
+#### Cordova-Apps
 {: #cordova-apps }
 
 Mit folgenden Strategien können Sie sicherstellen, dass alle erfassten Protokolle gesendet werden: 
@@ -131,8 +134,7 @@ Wenn Sie beispielsweise für das Paket `myApp` nur Protokolle der Stufe ERROR er
 
 #### Web-Apps
 {: #fine-tuning-web-apps }
-Bei Verwendung des Web-SDK kann die Stufe nicht vom
-Client festgelegt werden. Die gesamte Protokollierung wird an den Server gesendet, bis die Konfiguration durch Abrufen des Serverkonfigurationsprofils geändert wird. 
+Bei Verwendung des Web-SDK kann die Stufe nicht vom Client festgelegt werden. Die gesamte Protokollierung wird an den Server gesendet, bis die Konfiguration durch Abrufen des Serverkonfigurationsprofils geändert wird.
 
 ## Serverkonfigurationsprofile abrufen
 {: #fetching-server-configuration-profiles }

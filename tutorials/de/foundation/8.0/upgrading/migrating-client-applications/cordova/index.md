@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Vorhandene Cordova- und Hybridanwendungen umstellen
-breadcrumb_title: Cordova- und Hybridanwendungen
+breadcrumb_title: Cordova and hybrid
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -94,10 +94,9 @@ Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für
 
 * Sie benötigen eine mit der IBM MobileFirst Platform Foundation
 erstellte Hybrid- oder Cordova-Anwendung, die Sie mit dem Befehl `mfp cordova create` erstellt haben. 
-* Sie benötigen Internetzugriff. 
-* Node.js ab Version 4.0.0 muss installiert sein. 
-* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
-für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
+* Sie benötigen Internetzugriff.
+* Node.js ab Version 4.0.0 muss installiert sein.
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
 unter [The
 Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
 * Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
@@ -119,10 +118,7 @@ und identifiziert APIs, die in Version 8.0 weggefallen sind oder nicht weiter un
 IBM MobileFirst Platform Foundation erstellten
 Hybrid- oder Cordova-App in eine Cordova-Struktur, die in Version 8.0 unterstützt wird.
 
-Das Unterstützungstool für die Migration modifiziert oder verschiebt keinen Entwicklercode und keine Kommentare Ihrer App.
-Nach Ausführung dieses Tools müssen Sie den Migrationsprozess fortsetzen
-(siehe [Migration einer MobileFirst-Hybrid-App abschließen](#completing-migration-of-a-mobilefirst-hybrid-app)
-oder [Migration einer MobileFirst-Cordova-App abschließen](#completing-migration-of-a-mobilefirst-cordova-app)). 
+Das Unterstützungstool für die Migration modifiziert oder verschiebt keinen Entwicklercode und keine Kommentare Ihrer App. Nach Ausführung dieses Tools müssen Sie den Migrationsprozess fortsetzen (siehe [Migration einer MobileFirst-Hybrid-App abschließen](#completing-migration-of-a-mobilefirst-hybrid-app) oder [Migration einer MobileFirst-Cordova-App abschließen](#completing-migration-of-a-mobilefirst-cordova-app)).
 
 <!--1. Download the migration assistance tool by using one of the following methods:
     * Download the .tgz file from the [Git repository](https://git.ng.bluemix.net/ibmmfpf/mfpmigrate-cli).
@@ -154,7 +150,7 @@ Ordners **new-project-directory**. Wenn der Ordner nicht angegeben ist, wird er 
    Dieser Ordner begindet sich innerhalb des Ordners *destination_directory* und enthält alle Informationen für Ihre
 Cordova-App. Wenn diese Option nicht angegeben ist, wird der Standardname `App-Name-App-ID-Version` verwendet.
    <br/>
-Wenn der Befehl "client" des Unterstützungstools für die Migration ausgeführt wird, führt das Tool die folgenden
+   Wenn der Befehl "client" des Unterstützungstools für die Migration ausgeführt wird, führt das Tool die folgenden
 Schritte aus:
   
         * Es identifiziert APIs in der vorhandenen, mit der
@@ -210,17 +206,10 @@ Probleme gelöst sind.
 Nachdem Sie das Unterstützungstool für die Migration verwendet haben, müssen Sie einige Abschnitte Ihres Codes manuell modifizieren, um den
 Migrationsprozess abzuschließen. 
 
-* Sie müssen bereits das Unterstützungstool für die Migration (mfpmigrate) für Ihre
-vorhandene Hybrid-App ausgeführt haben. Weitere Informationen finden Sie unter
-[Migration einer Cordova-App
-mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
-für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden, falls Sie weitere Cordova-Plug-ins installieren müssen (siehe Schrit 6). Weitere
-Informationen finden Sie auf der Apache-Cordova-Website
-unter [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
-* Sie benötigen Internetzugang, wenn Sie eine neue Version von
-jQuery herunterladen müssen (Schritt 1c) oder zusätzliche Cordova-Plug-ins installieren müssen (Schritt 6). 
-* Wenn Sie weitere Cordova-Plug-ins installieren müssen (Schritt 6), ist eine Installation von Node.js ab Version 4.0.0 erforderlich. 
+* Sie müssen bereits das Unterstützungstool für die Migration (mfpmigrate) für Ihre vorhandene Hybrid-App ausgeführt haben. Weitere Informationen finden Sie unter [Migration einer Cordova-App mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden, falls Sie weitere Cordova-Plug-ins installieren müssen (siehe Schrit 6). Weitere Informationen finden Sie auf der Apache-Cordova-Website unter [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html).
+* Sie benötigen Internetzugang, wenn Sie eine neue Version von jQuery herunterladen müssen (Schritt 1c) oder zusätzliche Cordova-Plug-ins installieren müssen (Schritt 6).
+* Wenn Sie weitere Cordova-Plug-ins installieren müssen (Schritt 6), ist eine Installation von Node.js ab Version 4.0.0 erforderlich.
 
 Führen Sie die hier beschriebenen Schritte aus, um die Migration
 Ihrer MobileFirst-Hybridanwendung von
@@ -242,8 +231,9 @@ den folgenden CSS-Code hinzu:
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **Note:** Die Datei **worklight.css** setzt das Attribut "body" auf "relative". Wenn sich dies auf den Stil Ihrer App auswirkt, deklarieren Sie einen anderen Wert für die Position in Ihrem eigenen CSS-Code.
-Beispiel:
+      > **Hinweis:** Die Datei **worklight.css** setzt das Attribut "body" auf "relative". Wenn sich dies auf den Stil Ihrer App auswirkt, deklarieren Sie einen anderen Wert für die Position in Ihrem eigenen CSS-Code. Beispiel:
+
+      
 
       ```css
       body {
@@ -251,22 +241,19 @@ Beispiel:
       }
       ```
 
-    * Fügen Sie nach den CSS-Definitionen Cordova-JavaScript zur Kopfzeile
-der Datei hinzu. 
+    * Fügen Sie nach den CSS-Definitionen Cordova-JavaScript zur Kopfzeile der Datei hinzu.
 
       ```html
       <script type="text/javascript" src="cordova.js"></script>
       ```    
 
-    * Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist. 
+    * Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist.
 
       ```html
       <script>window.$ = window.jQuery = WLJQ;</script>
       ```
 
-      Sie können Ihre eigene
-jQuery-Version herunterladen und wie in der folgenden Codezeile angegeben laden.
-
+      Sie können Ihre eigene jQuery-Version herunterladen und wie in der folgenden Codezeile angegeben laden.
 
       ```html
       <script src="lib/jquery.min.js"></script>
@@ -341,16 +328,10 @@ oder bereitgestellt werden, fügen Sie die Plug-ins manuell mit dem Befehl
 Nachdem Sie das Unterstützungstool für die Migration verwendet haben, müssen Sie einige Abschnitte Ihres Codes manuell modifizieren, um den
 Migrationsprozess abzuschließen. 
 
-* Sie müssen bereits das Unterstützungstool für die Migration (**mfpmigrate**) für Ihre
-vorhandene Cordova-App ausgeführt haben. Weitere Informationen finden Sie unter
-[Migration einer Cordova-App
-mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
-für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
-unter [The
-Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
-* Sie benötigen Internetzugriff. 
-* Node.js ab Version 4.0.0 muss installiert sein. 
+* Sie müssen bereits das Unterstützungstool für die Migration (**mfpmigrate**) für Ihre vorhandene Cordova-App ausgeführt haben. Weitere Informationen finden Sie unter [Migration einer Cordova-App mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website unter [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html).
+* Sie benötigen Internetzugriff.
+* Node.js ab Version 4.0.0 muss installiert sein.
 
 Die mit dem Befehl **mfp cordova create** erstellte Cordova-App verwendet die mit der Vorgängerversion der
 IBM MobileFirst Platform Foundation
@@ -378,6 +359,8 @@ ermöglichen, können Sie mit dem Cordova-Entwicklungstool Ihrer Wahl beliebige 
 {{ site.data.keys.product_adj }}-Features hinzu, sodass Sie diese
 Features nicht mehr hinzufügen müssen. Weitere Informationen zu diesen Plug-ins finden Sie unter
 [Cordova-Plug-ins für {{ site.data.keys.product_adj }}](../../../application-development/sdk/cordova).
+
+
 
 2. Wenn Ihre ursprüngliche Anwendung das FIPS-Feature verwendet,
 ändern Sie den JQuery-Ereignislistener in einen JavaScript-Ereignislistener, der auf den Empfang des WL/FIPS/READY-Ereignisses wartet (optional). Weitere Informationen zu FIPS finden Sie unter
@@ -465,7 +448,7 @@ HTML-5-Elemente ersetzt werden können. Einige Methoden haben sich ebenfalls ge�
 | `WL.App.getDeviceLanguage()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt. |
 | `WL.App.getDeviceLocale()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/> Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt. |
 | `WL.App.BackgroundHandler` | Verwenden Sie zum Ausführen einer angepassten Handlerfunktion den Cordova-Standardereignislistener "pause". Verwenden Sie ein Cordova-Plug-in, mit dem die Privatsphäre gewahrt werden kann und das iOS- und Android-Systeme oder -Benutzer daran hindert, Screenshots zu erstellen. Weitere Informationen entnehmen Sie bitte der Beschreibung zu PrivacyScreenPlugin unter [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/} | Die Funktionen wurden zur Unterstützung der AIR-Plattform bereitgestellt, die von {{ site.data.keys.product }} Version 8.0 nicht unterstützt wird. |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| Die Funktionen wurden zur Unterstützung der AIR-Plattform bereitgestellt, die von {{ site.data.keys.product }} Version 8.0 nicht unterstützt wird. |
 | `WL.Toast.show(string)` | Verwenden Sie Cordova-Plug-ins für Toast. |
 
 #### Weitere weggefallene JavaScript-Elemente

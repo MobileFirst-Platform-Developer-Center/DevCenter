@@ -58,7 +58,7 @@ Objective-C
 
 ```objc
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-    if (error == nil){
+if (error == nil){
         NSLog(@"%@", response.responseText);
     } else {
         NSLog(@"%@", error.description);
@@ -130,7 +130,7 @@ Wenn Sie im Hauptteil Formularparameter senden möchten, verwenden Sie `sendWith
 Objective-C
 
 ```objc
-// @FormParam("height")
+//@FormParam("height")
 NSDictionary *formParams = @{@"height":@"175"};
 
 // Anforderung mit Formularparametern senden
@@ -145,7 +145,7 @@ NSDictionary *formParams = @{@"height":@"175"};
 Swift
 
 ```swift
-// @FormParam("height")
+//@FormParam("height")
 let formParams = ["height":"175"]
 
 // Anforderung mit Formularparametern senden
@@ -183,13 +183,13 @@ Wenn Sie einen Parameter als HTTP-Header senden möchten, verwenden Sie die API 
 Objective-C
 
 ```objc
-// @HeaderParam("Date")
+//@HeaderParam("Date")
 [request setHeaderValue:@"2015-06-06" forName:@"birthdate"];
 ```
 Swift
 
 ```swift
-// @HeaderParam("Date")
+//@HeaderParam("Date")
 request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
@@ -264,6 +264,7 @@ Anweisungen finden Sie in der Datei README.md zum Beispiel.
 {: #note-about-ios-9 }
 
 > Xcode 7 aktiviert standardmäßig [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14). Für das Lernprogramm müssen Sie ATS inaktivieren. ([Lesen Sie hier mehr](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).)
+
 >   1. Klicken Sie in Xcode mit der rechten Maustaste auf **[Projekt]/info.plist → Open As → Source Code**. 
 >   2. Fügen Sie Folgendes ein: 
 >

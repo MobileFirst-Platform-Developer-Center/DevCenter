@@ -47,6 +47,8 @@ Benachrichtigungsanforderungen pro Mediator. Sie können auch Serverprptokolle d
 
 
 
+> **Hinweis:** Die Client-/Serverprotokolldatenfunktionen **Suchen** und **Exportieren** rufen kein Aktionsereignis bei einem Mausklick auf, wenn der Datumsfilter modifiziert wurde. Dies wurde in jüngeren Versionen des Chrome-Browsers beobachtet. Dieses Verhalten ist auf ein Problem mit dem Chrome-Browser und auf eine bekannte Einschränkung zurückzuführen. Das Problem tritt in anderen Browsern und im Chrome-Browser in älteren Versionen als *Version 54.0.2840.71* nicht auf. In den neueren Versionen des Chrome-Browsers können Benutzer das Problem umgehen, indem Sie das erforderliche Datum festlegen und dann vor dem Klicken auf die Schaltfläche "Suchen" / "Exportieren" die Seitenanzeige aktualisieren. Sie können auch die Eingabetaste drücken, um die gewählte Aktion auszuführen. 
+
 ## Analytics-Features
 
 ### App-Analyse
@@ -151,15 +153,18 @@ In der {{ site.data.keys.mf_analytics_console_short }}
 werden ausgehend von der Sicherheitsrolle des angemeldeten Benutzers unterschiedliche Inhalte angezeigt. In der folgenden Tabelle sind die
 Sicherheitsrollen und ihre Zugriffsrechte für die {{ site.data.keys.mf_analytics_console_short }} aufgeführt. 
 
-| Rolle           | Rollenname                | Anzeigezugriff                                                     | Bearbeitungszugriff  |
+| Rolle| Rollenname| Anzeigezugriff| Bearbeitungszugriff|
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| Administrator  | analytics_administrator  | Für alles	                                                     | Für alles     |
-| Infrastruktur | analytics_infrastructure	| Für alles  	                                                     | Für alles     |
-| Anwendungsentwickler       | analytics_developer	    | Für alles mit Ausnahme der Verwaltungsseiten		             | Für alles     |
-| Support        | analytics_support        | Für alles mit Ausnahme der Verwaltungsseiten		             | Für alles     |
-| Geschäft        | analytics_business       | Für alles mit Ausnahme der Verwaltungs- und Infrastrukturseiten | Für alles     |
+| Administrator| analytics_administrator| Für alles | Für alles  |
+| Infrastruktur | analytics_infrastructure | Für alles | Für alles  |
+| Anwendungsentwickler | analytics_developer| Für alles mit Ausnahme der Verwaltungsseiten| Für alles  |
+| Support| analytics_support| Für alles mit Ausnahme der Verwaltungsseiten| Für alles  |
+| Geschäft | analytics_business| Für alles mit Ausnahme der Verwaltungs- und Infrastrukturseiten| Für alles  |
 
 > Informationen zum Einrichten von Rollen finden Sie unter [Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
+
+
+
 
 
 ## Zugehörige Blogbeiträge

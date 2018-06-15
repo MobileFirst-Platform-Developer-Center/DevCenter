@@ -1,8 +1,9 @@
 ---
 layout: tutorial
 title: Distribution d'applications mobiles avec IBM Application Center
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -177,7 +178,7 @@ Application Center gère uniquement les applications de société qui sont sign�
 
 ## Gestion des applications dans la console Application Center
 {: #managing-applications-in-the-application-center-console }
-![Image de la gestion des applications dans Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Illustration de la gestion des applications dans App Center]({{ site.baseurl }}/assets/backup/overview1.png)
 
 Utilisez la console Application Center pour gérer les applications dans le catalogue de la manière suivante :
 
@@ -190,7 +191,7 @@ Utilisez la console Application Center pour gérer les applications dans le cata
 
 ### Ajout de nouvelles applications au magasin
 {: #adding-new-applications-to-the-store }
-![Image d'ajout d'applications à Application Center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![Illustration de l'ajout d'applications dans App Center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 Pour ajouter de nouvelles applications au magasin :
 
@@ -213,7 +214,7 @@ Pour ajouter de nouvelles applications au magasin :
 
 La nouvelle application est ajoutée au magasin.
 
-![Image du contrôle d'accès dans Application Center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![Illustration du contrôle d'accès dans App Center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
 
 Par défaut, une application peut être installée par tout utilisateur autorisé du magasin.
 
@@ -252,7 +253,7 @@ Il n'est pas nécessaire d'ajouter le client Application Center pour Windows 8.1
 {: #windows-phone-8 }
 Sous Windows Phone 8, vous devez également installer le jeton d'inscription que vous avez reçu avec votre compte de société dans la console Application Center afin que les utilisateurs puissent inscrire leurs appareils. Vous utilisez la page Settings Application Center que vous pouvez ouvrir à l'aide de l'icône représentant une roue dentée.
 
-![Image de l'inscription d'application Windows Phone 8]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Illustration de l'enregistrement des applications dans Windows Phone 8]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
 Avant d'installer le client mobile, vous devez inscrire l'appareil auprès de la société en installant le jeton d'inscription :
 

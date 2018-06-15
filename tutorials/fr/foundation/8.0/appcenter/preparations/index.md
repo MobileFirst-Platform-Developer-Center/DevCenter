@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Préparatifs pour l'utilisation du client mobile
-breadcrumb_title: Préparatifs
+breadcrumb_title: Preparations
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -122,16 +122,16 @@ Vous devez importer le projet **IBMAppCenter** dans {{ site.data.keys.mf_studio 
 
 Générez le projet **IBMAppCenter**. Le projet MobileFirst contient une seule application nommée **AppCenter**. Cliquez avec le bouton droit de la souris sur l'application et sélectionnez **Run as → Build All Environments**.
 
-#### Android
-{: #android }
+#### Importation et génération du projet sous Android
+{: #importing-building-projects-android }
 MobileFirst Studio génère un projet Android natif dans **IBMAppCenter/apps/AppCenter/android/native**. Un projet d'outils de développement Android (ADT) natif se trouve dans le dossier android/native. Vous pouvez compiler et signer ce projet à l'aide des outils ADT. Ce projet nécessite l'installation du SDK Android de niveau 16, de sorte que l'APK obtenu soit compatible avec toutes les versions 2.3 et ultérieures d'Android. Si vous choisissez un niveau supérieur du SDK Android lors de la génération du projet, l'APK résultant ne sera pas compatible avec Android version 2.3.
 
 Reportez-vous au [site Android pour les développeurs](https://developer.android.com/index.html) pour des informations plus spécifiques sur Android qui affectent l'application client mobile.
 
 Si vous souhaitez activer les notifications push pour les mises à jour d'application, vous devez d'abord configurer les propriétés du client Application Center. Voir [Configuration des notifications push pour les mises à jour d'application](../push-notifications) pour plus d'informations.
 
-#### iOS
-{: #ios }
+#### Importation et génération du projet sous iOS
+{: #importing-building-projects-ios }
 MobileFirst Studio génère un projet iOS natif dans **IBMAppCenter/apps/AppCenter/iphone/native**. Le fichier **IBMAppCenterAppCenterIphone.xcodeproj** se trouve dans le dossier iphone/native. Ce fichier est le projet Xcode que vous devez compiler et signer en utilisant Xcode.
 
 Consultez [le site pour développeurs Apple](https://developer.apple.com/) pour en savoir plus sur la procédure de signature de l'application client mobile iOS. Pour signer une application iOS, vous devez remplacer l'identificateur de bundle de l'application par un identificateur de bundle qui peut être utilisé avec le profil de mise à disposition que vous utilisez. La valeur est définie dans les paramètres du projet Xcode comme **com.your\_internet\_domain\_name.appcenter**, où **your\_internet\_domain\_name** est le nom de votre domaine Internet.

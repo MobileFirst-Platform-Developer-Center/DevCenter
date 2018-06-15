@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Authentifizierungs- und Sicherheitskonzepte umstellen
-breadcrumb_title: Authentifizierungskonzepte umstellen
+breadcrumb_title: Migrating authentication concepts
 downloads:
-  - name: Migrationsbeispiel herunterladen
+  - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
@@ -68,6 +68,7 @@ in Version 8.0 für den Ressourcenschutz verwendet werden.
 > *  Die folgenden Anweisungen gelten für die Migration des Beispielressourcenadapters `AccountAdapter`. Den Beispieladapter `PinCodeAdapter` müssen Sie nicht migrieren, weil die mit diesem Adapter implementierte adapterbasierte Authentifizierung in Version 8.0 nicht mehr unterstützt wird. Im Schritt
 [Adapterbasiertes Authentifizierungsrealm mit PIN-Code ersetzen](#replacing-the-pin-code-adapter-based-authentication-realm) ist erläutert, wie
 der PIN-Code-Adapter aus Version 7.1 durch eine Sicherheitsüberprüfung der Version 8.0 mit vergleichbarem Schutz ersetzt wird.
+
 > *  Anweisungen für die Umstellung von Adaptern auf Version 8.0 finden Sie im [Migrations-Cookbook für Version 8.0](../migration-cookbook).
 
 Die Methoden von `AccountAdpter` im Beispiel aus Version 7.1 sind mit der Annotation
@@ -104,6 +105,8 @@ AdapterSecurityContext securityContext;
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
 Wenn Sie den Adaptercode bearbeitet haben, können Sie den Adapter erstellen und mit Maven oder der {{ site.data.keys.mf_cli }} im Server implementieren. Weitere Informationen finden Sie unter [Adapter erstellen und implementieren](../../adapters/creating-adapters/#build-and-deploy-adapters).
+
+
 ### Clientanwendung umstellen
 {: #migrating-the-client-application }
 
@@ -207,9 +210,7 @@ und insbesondere im Abschnitt [Sicherheitsüberprüfungen konfigurieren](../../a
 
 Erstellen Sie in Ihrem Adapter `UserLogin` eine Java-Klasse `UserLogin`,
 die die abstrakte {{ site.data.keys.product_adj }}-Klasse `UserAuthenticationSecurityCheck` erweitert
-(die wiederum die abstrakte {{ site.data.keys.product_adj }}-Basisklasse  `CredentialsValidationSecurityCheck` erweitert). Übeschreiben Sie als Nächstes
-die Standardimplementierung
-der Basisklassenmethoden `createChallenge`, `validateCredentials` und `createUser`. 
+(die wiederum die abstrakte {{ site.data.keys.product_adj }}-Basisklasse  `CredentialsValidationSecurityCheck` erweitert). Übeschreiben Sie als Nächstes die Standardimplementierung der Basisklassenmethoden `createChallenge`, `validateCredentials` und `createUser`.
 
 *  Die Methode `createChallenge` erstellt das Abfrageobjekt (Hash-Map), das an den Client gesendet werden soll. Die Iplementierung dieser Methode kann so modifiziert werden, dass sie eine Abfragephrase oder eine andere Art von Abfrageobjekt für die Validierung der Antwort vom Client enthält. Für die hier verwendete Beispielanwendung müssen Sie jedoch nur die Fehlernachricht zum Abfrageobjekt hinzufügen, die im Falle eines Fehlers angezeigt werden soll.
 *  Die Methode `validateCredentials` enthält die Authentifizierungslogik. Kopieren Sie den Authentifizierungscode, der den Benutzernamen und das Kennwort Ihres Anmeldemoduls aus Version 7.1 validiert, in die entsprechende Methode der Version 8.0. Im Beispiel ist eine Basisvalidierungslogik implementiert, die überprüft, ob Kennwort und Benutzername übereinstimmen. 
@@ -225,13 +226,14 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
     protected boolean validateCredentials(Map<String, Object> credentials) {
-        if (credentials!=null && credentials.containsKey("username") &&
+        if (credentials!=null &&  credentials.containsKey("username") &&
+
 		credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
 
             // Aus dem Anmeldemodul von Version 7.1 kopierte Authentifizierungslogik
-            if (!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if (!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
 
@@ -304,7 +306,7 @@ Wenn Sie eine Sicherheitsüberprüfung erstellen wollen, die die Basisklasse
    ```java
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-       if (credentials!=null && credentials.containsKey("pin")){
+       if (credentials!=null &&  credentials.containsKey("pin")){
            String pinCode = credentials.get("pin").toString();
            if (pinCode.equals("1234")) {
                return true;
@@ -332,7 +334,7 @@ ausgeschlossen, indem die entsprechenden Zeilen in der HTML-Hauptdatei **index.h
 zuvor hinzugefügten Kommentarzeichen entfernen: 
 
 ```html 
-<script src="js/UserLoginChallengeHandler.js"></script>
+    <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
 

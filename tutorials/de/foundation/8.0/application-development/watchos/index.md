@@ -33,25 +33,22 @@ hinzu.
     * Gehen Sie wie folgt vor, um die erforderlichen Frameworks manuell zu installieren: 
         * Fordern Sie im Download-Center in der {{ site.data.keys.mf_console }} das watchOS-Framework an. 
         * Wählen Sie links im Navigationsbereich den Ordner **[Projektname] WatchKit Extension** aus. 
-        * Wählen Sie im Menü **Datei** den Eintrag **Dateien
-hinzufügen** aus.
-        * Klicken Sie auf die Schaltfläche **Optionen** und wählen Sie Folgendes aus: 
-            * Optionen **Copy items if needed** und **Create
-groups**
+        * Wählen Sie im Menü **File** den Eintrag **Add Files** aus.
+        * Klicken Sie auf die Schaltfläche **Options** und wählen Sie Folgendes aus:
+            * Optionen **Copy items if needed** und **Create groups**
             * **[Projektname] WatchKit Extension** im Abschnitt **Add to targets**
-        * Klicken Sie auf **Hinzufügen**.
+        * Klicken Sie auf **Add**.
 
         Wenn Sie jetzt im Abschnitt **Targets** den Ordner **[Projektname] WatchKit Extension** auswählen, sehen Sie Folgendes: 
-            * Der Frameworkpfad erscheint in der Einstellung **Framework Search
-Paths** im Abschnitt **Search Paths** der Registerkarte
-**Build Settings**. 
-            * Im Abschnitt **Link Binary With Libraries** der Registerkarte
-**Build Phases** wird die Datei **IBMMobileFirstPlatformFoundationWatchOS.framework** aufgelistet.
+            * Der Frameworkpfad erscheint in der Einstellung **Framework Search Paths** im Abschnitt **Search Paths** der Registerkarte **Build Settings**.
+            * Im Abschnitt **Link Binary With Libraries** der Registerkarte **Build Phases** wird die Datei **IBMMobileFirstPlatformFoundationWatchOS.framework** aufgelistet.
             ![Frameworks in Verbindung mit watchOS](watchOSlinkedframeworks.jpg)
 
         > **Hinweis:** WatchOS 2 erfordert Bitcode. Ab Xcode 7 sind die **Build
 Options** auf **Enable Bitcode Yes** gesetzt (Abschnitt **Build
 Options** der Registerkarte **Build Settings**).
+
+
 
 3. Registrieren Sie sowohl die Haupt-App als auch die WatchKit-Erweiterung beim Server. Führen Sie für jede Bundle-ID `mfpdev app register` aus (oder führen Sie die Registrierung in der
 {{ site.data.keys.mf_console }} aus):
@@ -101,13 +98,13 @@ der Uhr mit watchOS oder der Apple Watch gibt.
 
 | Feature | Einschränkung |
 |---------|------------|
-| openSSL | Nicht unterstützt |
+| openSSL| Nicht unterstützt |
 | JSONStore| Nicht unterstützt |
-| Benachrichtigungen | Nicht unterstützt |
-| Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts | Nicht unterstützt |
-| Validierung der Anwendungsauthentizität | Nicht mit Bitcode kompatibel und daher nicht unterstützt |
-| Inaktivierung/Benachrichtigung über Fernzugriff	| Erfordert Anpassungen (siehe unten) |
-| Sicherheitsüberprüfung mit Benutzernamen/Kennwort | Sicherheitsüberprüfung CredentialsValidation verwenden |
+| Benachrichtigungen| Nicht unterstützt |
+| Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts| Nicht unterstützt |
+| Validierung der Anwendungsauthentizität| Nicht mit Bitcode kompatibel und daher nicht unterstützt|
+| Ferne Inaktivierung/Benachrichtigung | Erfordert Anpassungen (siehe unten)|
+| Sicherheitsüberprüfung mit Benutzernamen/Kennwort| Sicherheitsüberprüfung CredentialsValidation verwenden|
 
 ### Inaktivierung/Benachrichtigung über Fernzugriff
 {: #remote-disablenotify }

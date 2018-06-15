@@ -20,7 +20,7 @@ The main operations that you can perform through {{ site.data.keys.mf_console }}
 
 ## Administration roles
 {: #administration-roles }
-Not every kind of administration user can perform every administration operation. {{ site.data.keys.mf_console }}, and all administration tools, have four different roles defined for administration of {{ site.data.keys.product_adj }} applications. The following 
+Not every kind of administration user can perform every administration operation. {{ site.data.keys.mf_console }}, and all administration tools, have four different roles defined for administration of {{ site.data.keys.product_adj }} applications. The following
 
 {{ site.data.keys.product_adj }} administration roles are defined:
 
@@ -42,7 +42,7 @@ In this role, a user can perform all application administration operations.
 {: #administration-tools }
 {{ site.data.keys.mf_console }} is not the only way to administer {{ site.data.keys.product_adj }} applications. {{ site.data.keys.product }} also provides other tools to incorporate administration operations into your build and deployment process.
 
-A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
+A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/admin-apis/).
 
 With this set of REST services, you can perform the same operations that you can do in {{ site.data.keys.mf_console }}. You can manage applications, adapters, and, for example, upload a new version of an application or disable an old version.
 
@@ -52,4 +52,3 @@ Similar to the web-based console, the REST services, Ant tasks, and command line
 
 ### Select a topic:
 {: #select-a-topic }
-

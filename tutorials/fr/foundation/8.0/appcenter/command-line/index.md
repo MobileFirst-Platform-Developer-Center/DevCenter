@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Outil de ligne de commande permettant de télécharger ou de supprimer une application
-breadcrumb_title: Téléchargement ou suppression d'une application
+breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -39,7 +39,7 @@ Utilisez l'outil autonome en suivant ces étapes.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
 
    ```bash
-   java com.ibm.appcenter.Upload [options] [files]
+   java com.ibm.appcenter.Upload [options] [fichiers]
    ```
 
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
@@ -76,7 +76,7 @@ Utilisez l'outil autonome en suivant ces étapes.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
 
    ```bash
-   java com.ibm.appcenter.Upload -delete [options] [files or applications]
+   java com.ibm.appcenter.Upload -delete [options] [fichiers ou applications]
    ```
 
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.

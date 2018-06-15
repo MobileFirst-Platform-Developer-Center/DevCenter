@@ -41,9 +41,7 @@ Ihre {{ site.data.keys.mf_analytics_console_short }} aktiv und zugänglich ist, 
 1. Aktivieren Sie den Scenario Loader, indem Sie das JVM-Argument `-DwlDevEnv=true`
 oder die Umgebungsvariable `ANALYTICS_DEBUG=true` definieren.
 
-2. In Ihrem Browser können Sie mit der Konsolen-URL `http://<Konsolenpfad>/scenarioLoader` auf den Scenario Loader zugreifen.
-Hier steht `<Konsolenpfad>` für den in der Datei `mfp-server/usr/servers/mfp/server.xml` definierten JNDI-Eigenschaftswert.
-Beispiel: 
+2. In Ihrem Browser können Sie mit der Konsolen-URL `http://<Konsolenpfad>/scenarioLoader` auf den Scenario Loader zugreifen. Hier steht `<Konsolenpfad>` für den in der Datei `mfp-server/usr/servers/mfp/server.xml` definierten JNDI-Eigenschaftswert. Beispiel: 
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 

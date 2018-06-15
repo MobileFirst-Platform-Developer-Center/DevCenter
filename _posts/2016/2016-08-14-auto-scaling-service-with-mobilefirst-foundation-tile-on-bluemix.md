@@ -3,6 +3,7 @@ title: Using the Auto-Scaling Service with the MobileFirst Foundation tile on Bl
 date: 2016-08-14
 tags:
 - MobileFirst_Foundation
+- Mobile_Foundation_Service
 - Bluemix
 - Mobile_Foundation
 version:
@@ -13,12 +14,12 @@ author:
 ## Overview
 MobileFirst Foundation can be setup on Bluemix in two ways:
 
-1.	[Using the Mobile Foundation Bluemix service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation/)
+1.	[Using the Mobile Foundation Bluemix service](https://console.bluemix.net/catalog/services/mobile-foundation)
 2.	[Using IBM-provided scripts that come with your License entitlement](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)
 
-> Note: with the scripts path you can setup MobileFirst Foundation either in **IBM Containers** or in a **Liberty for Java** runtime. 
+> Note: with the scripts path you can setup MobileFirst Foundation either in **IBM Containers** or in a **Liberty for Java** runtime.
 
-This blog post explains the process of auto scaling your MobileFirst Foundation tile running on Liberty for Java runtime on Bluemix. Auto scaling can be achieved using the [Auto-Scaling service](https://new-console.stage1.ng.bluemix.net/catalog/services/auto-scaling/) also available on Bluemix. The Auto-Scaling service enables you to automatically increase or decrease the available compute capacity. The number of application instances (nodes) are adjusted dynamically based on various operational parameters that you define in the auto-scaling policy.
+This blog post explains the process of auto scaling your MobileFirst Foundation tile running on Liberty for Java runtime on Bluemix. Auto scaling can be achieved using the [Auto-Scaling service](https://console.bluemix.net/catalog/services/auto-scaling/) also available on Bluemix. The Auto-Scaling service enables you to automatically increase or decrease the available compute capacity. The number of application instances (nodes) are adjusted dynamically based on various operational parameters that you define in the auto-scaling policy.
 
 ## Setup
 For the purposes of this blog post, we will provision a single node with 1GB memory.  
@@ -34,17 +35,17 @@ The Auto-scaling service allows you to configure a policy based on which applica
 
 For the purpose of this blog post – the Mobile Foundation server was subject to a load using an [automation test harness]({{site.baseurl}}/blog/2016/08/09/performance-testing-for-mobilefirst-foundation-8-0/).
 
-In the production case, you will base this on the load subjected by mobile devices connected to the server. The “Metric Statistics” tab in the “Auto-Scaling” service gives you an overview of the various performance metrics. It provides a visual representation of different metric values. A meter shows the current specific metric value and a historical graph for the specific metric. 
+In the production case, you will base this on the load subjected by mobile devices connected to the server. The “Metric Statistics” tab in the “Auto-Scaling” service gives you an overview of the various performance metrics. It provides a visual representation of different metric values. A meter shows the current specific metric value and a historical graph for the specific metric.
 
 ![autoscaling-throughput]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-throughput.png)
 
-In the above example, we see the current “throughput” at 158 requests/second. The history graph on the right indicates the average throughput across nodes over approximately a one-and-a-half-hour time period. The “rules” specified are also displayed as the upper and the lower thresholds. 
+In the above example, we see the current “throughput” at 158 requests/second. The history graph on the right indicates the average throughput across nodes over approximately a one-and-a-half-hour time period. The “rules” specified are also displayed as the upper and the lower thresholds.
 
-Each rule allows you to specify a minimum and maximum default instance count and is based on 4 metric types: 
+Each rule allows you to specify a minimum and maximum default instance count and is based on 4 metric types:
 
 •	JVM Heap size
 •	Memory size
-•	Throughput (number of client requests/second) 
+•	Throughput (number of client requests/second)
 •	Server response time
 
 You can select a specific metric type and then specify conditions for a “Scale Out“ and “Scale In”. “Scale Out“ allows you to increase the number of application nodes (till the maximum default instance count) based on whether a specific metric exceeds a user defined value for a specified time limit. “Scale In” allows you to decrease the number of application nodes (till the minimum instance count) based on whether a specific metric falls below the user defined value for a specified time limit.
@@ -76,7 +77,7 @@ The rule is fairly self-explanatory. It specifies that if the average throughput
 
 ![autoscaling-app]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-app.png)
 
-To recap, if the average throughput exceeds 200 requests/second for a period of 300 seconds (5 minutes -the specified “Breach Duration”), another instance is added. 
+To recap, if the average throughput exceeds 200 requests/second for a period of 300 seconds (5 minutes -the specified “Breach Duration”), another instance is added.
 
 ![autoscaling-scaleout]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-scaleout.png)
 
@@ -85,10 +86,3 @@ To recap, if the average throughput exceeds 200 requests/second for a period of 
 As the average throughput drops to below 100 requests/second (achieved by merely stopping our jmeter client scripts), the new instance is removed and only 1 instance remains.
 
 ![autoscaling-scalein]({{site.baseurl}}/assets/blog/2016-08-14-auto-scaling-service-with-mobilefirst-foundation-tile-on-bluemix/autoscaling-scalein.png)
-
-
-
-
-
-
-

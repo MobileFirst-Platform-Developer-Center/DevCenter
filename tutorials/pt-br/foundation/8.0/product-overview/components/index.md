@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Componentes do produto
+title: Componentes do Produto
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -10,7 +10,7 @@ O {{ site.data.keys.product_full }} consiste nos componentes a seguir: {{ site.d
 
 A figura a seguir mostra os componentes do {{ site.data.keys.product }}:
 
-![Arquitetura da solução {{ site.data.keys.product }}](architecture.jpg)
+![Arquitetura da solução {{ site.data.keys.product }} ](architecture.jpg)
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }

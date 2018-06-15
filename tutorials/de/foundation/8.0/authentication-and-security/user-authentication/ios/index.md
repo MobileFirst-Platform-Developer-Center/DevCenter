@@ -5,11 +5,11 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
 downloads:
-  - name: Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80
-  - name: Projekt RememberMe herunterladen
+  - name: Download RememberMe project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeSwift/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

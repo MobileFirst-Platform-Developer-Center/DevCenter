@@ -3,6 +3,7 @@ title: Rapidly develop MobileFirst apps using Ionic Creator
 date: 2017-09-21
 tags:
 - MobileFirst_Platform
+- Mobile_Foundation_Service
 - iOS
 - Android
 - Cordova
@@ -21,7 +22,7 @@ Ionic 3.0 released with Angular 4.0.0 Support and TypeScript 2.1 & 2.2 compatibi
 
 ### Prerequisites
 
-* [Knowledge of using Mobile Foundation on Bluemix Service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/)
+* [Knowledge of using Mobile Foundation Service on IBM Cloud](https://console.bluemix.net/catalog/services/mobile-foundation)
 * [Knowledge of using MobileFirst CLI](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)
 * [Knowledge of Ionic framework](https://ionicframework.com/)
 
@@ -136,7 +137,7 @@ This step adds the functionality of simple OAuth token fetch call with MobileFir
 ### Create MobileFirst Foundation service, Register App and Test
 {: #create-mf-service}
 
-- Create a Mobile Foundation service on Bluemix following the steps mentioned in [this blog post](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation).
+- Create a Mobile Foundation service on IBM Cloud following the steps mentioned in [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation).
 
 - Register the server profile of newly created Mobile Foundation service in MobileFirst CLI by running the following command in the terminal:
 
@@ -172,9 +173,9 @@ Open the application in Xcode IDE (`mfpsample/platforms/ios/MyApp.xcodeproj`) & 
 <div><center>
 <table style="width:100%" cellpadding="0">
   <tr>
-    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-screen.png" alt="" border="1" width="100%" /></td>
-    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-success.png" alt="" border="1" width="100%" /></td>
-    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-disable.png" alt="" border="1" width="100%" /></td>
+    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-screen.png" alt="iphone-screen" border="1" width="100%" /></td>
+    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-success.png" alt="iphone-success" border="1" width="100%" /></td>
+    <td><img src="{{site.baseurl}}/assets/blog/2017-09-21-mfp-apps-using-ionic-creator/iphone-disable.png" alt="iphone-disable" border="1" width="100%" /></td>
   </tr>
 </table>
 </center></div>
@@ -183,7 +184,7 @@ The entire process is described in the following video:
 
 <div class="sizer">
  <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/0YaabJmZekE"></iframe>
+    <iframe src="https://www.youtube.com/embed/2mu8qPFmPjE"></iframe>
   </div>
 </div>
 <br/>

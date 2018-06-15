@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: IBM Installation Manager
+title: IBM Installation Manager ausführen
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -88,9 +88,9 @@ Binärdateien und Tools für {{ site.data.keys.mf_server }} auf der Platte. Es i
 MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver. Wenn Sie die Installation mit dem Installation
 Manager ausgeführt haben, müssen Sie die Datenbanken einrichten und
 die MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver implementieren.   
-> Wenn Sie für eine vorhandene Installation ein Update mit dem
-Installation Manager durchführen, werden auch nur die Dateien auf der Platte aktualisiert. Für die Aktualisierung der in Ihren Anwendungsservern implementierten Anwendungen sind weitere
-Schritte erforderlich. #### Fahren Sie mit folgenden Abschnitten fort: 
+> Wenn Sie für eine vorhandene Installation ein Update mit dem Installation Manager durchführen, werden auch nur die Dateien auf der Platte aktualisiert. Für die Aktualisierung der in Ihren Anwendungsservern implementierten Anwendungen sind weitere Schritte erforderlich.
+
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [Administratormodus und Benutzermodus im Vergleich](#administrator-versus-user-mode)
 * [Installation mit dem Installationsassistenten von IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
@@ -136,9 +136,9 @@ Installation Manager nicht als root ausführen, benötigen Sie ein Benutzerkonto
 durchzuführen oder einen vorläufigen Fix anzuwenden. 
 
 Weitere Informationen zu den Installation-Manager-Modi
-finden Sie unter [Installing as an administrator, nonadministrator,
-or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) in der Dokumentation zu IBM Installation
-Manager. 
+finden Sie in der Dokumentation zu IBM Installation
+Manager unter [Installing as an administrator, nonadministrator,
+or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc). 
 
 ## Installation mit dem Installationsassistenten von IBM Installation Manager
 {: #installing-by-using-ibm-installation-manager-install-wizard }
@@ -173,8 +173,7 @@ sich das Repository der Basisversion unter den Installation-Manager-Repositorys 
 **OK**, um
 das Fenster
 **Benutzervorgaben** zu schließen.
-3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf
-**Weiter**.
+3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf **Weiter**.
 4. Wählen Sie die Paketgruppe für die Produktinstallation aus. 
 
     {{ site.data.keys.product }} Version 8.0
@@ -194,8 +193,7 @@ Wenn Sie das Produkt in einer neuen Paketgruppe installieren möchten und auf Ih
 ist, wählen Sie die Option
 Neue Paketgruppe erstellen aus. 
     
-5. Klicken Sie auf
-**Weiter**.
+5. Klicken Sie auf **Weiter**.
 6. Entscheiden Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing**,
 ob die Tokenlizenzierung aktiviert werden soll. 
 
@@ -220,10 +218,7 @@ im Auswahlfenster für die Konfiguration
 die Option Nein aus, damit das
 Application Center nicht installiert wird. 
 
-Wenn Sie Ja auswählen, müssen Sie in den folgenden Fenstern Angaben zur geplanten Datenbank und zu dem für die Implementierung
-des
-Application Center geplanten Anwendungsserver machen.
-Außerdem muss der JDBC-Treiber für Ihre Datenbank verfügbar sein. 9. Klicken Sie auf **Weiter**, bis die Anzeige **Thank
+Wenn Sie Ja auswählen, müssen Sie in den folgenden Fenstern Angaben zur geplanten Datenbank und zu dem für die Implementierung des Application Center geplanten Anwendungsserver machen. Außerdem muss der JDBC-Treiber für Ihre Datenbank verfügbar sein. 9. Klicken Sie auf **Weiter**, bis die Anzeige **Thank
 You** erscheint. Führen Sie dann die Installation aus. 
 
 Ein Installationsverzeichnis mit den Ressourcen für die Installation der
@@ -420,18 +415,9 @@ Die folgenden Prozeduren beschreiben die Verwendung dieser Dateien.
     
     > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM
-DB2 oder
-ein anderes von WebSphere Application Server unterstütztes Datenbankmanagementsystem (DBMS)
-verwenden, um die Vorteile
-einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
-    Für die Deinstallation
-müssen Sie eine Beispieldatei verwenden, die von der Version von
-{{ site.data.keys.mf_server }} oder
-Worklight Server abhängt, die Sie
-ursprünglich in der entsprechenden Paketgruppe installiert haben:
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder ein anderes von WebSphere Application Server unterstütztes Datenbankmanagementsystem (DBMS) verwenden, um die Vorteile einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
 
+    Für die Deinstallation müssen Sie eine Beispieldatei verwenden, die von der Version von {{ site.data.keys.mf_server }} oder Worklight Server abhängt, die Sie ursprünglich in der entsprechenden Paketgruppe installiert haben:
     
     * {{ site.data.keys.mf_server }} verwendet die Paketgruppe {{ site.data.keys.mf_server }}.
     * Worklight Server ab Version 6.x verwendet die Paketgruppe IBM Worklight.
@@ -492,22 +478,18 @@ Informationen zu diesem Schritt finden Sie in der
 Dokumentation zu IBM Installation Manager
 unter [Repositorys](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html). 
 
-Passen Sie die Werte für alle Schlüssel-Wert-Paare im Element
-`<profile>` an.  
-Setzen Sie das Versionsattribut im Element
-`<offering>` im Element
-`<install>` auf das zu installierende Release oder entfernen Sie das Versionsattribut,
-wenn Sie die neueste verfügbare Version in den Repositorys installieren möchten.
+Passen Sie die Werte für alle Schlüssel-Wert-Paare im Element `<profile>` an.  
+Setzen Sie das Versionsattribut im Element `<offering>` im Element `<install>` auf das zu installierende Release oder entfernen Sie das Versionsattribut, wenn Sie die neueste verfügbare Version in den Repositorys installieren möchten.
+
 5. Geben Sie den folgenden Befehl ein: `<Installation-Manager-Pfad>/eclipse/tools/imcl input <Antwortdatei>  -log /tmp/installwl.log -acceptLicense`
 
     Für diese Angabe gilt Folgendes: 
-    * `<Installation-Manager-Pfad>` steht für das Installationsverzeichnis von IBM Installation
-Manager.
+    * `<Installation-Manager-Pfad>` steht für das Installationsverzeichnis von IBM Installation Manager.
     * `<Antwortdatei>` steht für den Namen der Datei, die Sie in Schritt 1 ausgewählt und aktualisiert haben.
 
-
 > Weitere Informationen finden Sie in der Dokumentation zu IBM Installation
-Manager im Abschnitt [Pakete unbeaufsichtigt mithilfe einer Antwortdatei installieren](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).    
+Manager im Abschnitt [Pakete unbeaufsichtigt mithilfe einer Antwortdatei installieren](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+    
 
 ### Mit einer Antwortdatei arbeiten, die auf einer anderen Maschine aufgezeichnet wurde
 {: #working-with-a-response-file-recorded-on-a-different-machine }
@@ -747,9 +729,7 @@ Normalerweise 50000.</td>
     <tr>
       <td>user.database.db2.appcenter.password</td>
       <td>${user.database.selection2} == db2</td>
-      <td>Optional in einer bestimmten Art und Weise verschlüsseltes Kennwort für den Zugriff auf
-die DB2-Datenbank für das Application Center
-</td>
+      <td>Optional in einer bestimmten Art und Weise verschlüsseltes Kennwort für den Zugriff auf die DB2-Datenbank für das Application Center</td>
       <td>Ein Kennwort, das nicht leer ist</td>
     </tr>
     <tr>
@@ -903,62 +883,62 @@ Application Center</td>
 {: #distribution-structure-of-mobilefirst-server }
 Die Dateien und Tools für {{ site.data.keys.mf_server }} werden im Installationsverzeichnis von {{ site.data.keys.mf_server }} installiert.
 
-#### Dateien und Unterverzeichnisse im Unterverzeichnis Analytics
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'Analytics'
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **analytics.ear** und **analytics-*.war** | EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }} |
-| **configuration-samples** | Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks |
+| **analytics.ear** und **analytics-*.war** | EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }}|
+| **configuration-samples** | Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks|
 
-#### Dateien und Unterverzeichnisse im Unterverzeichnis ApplicationCenter
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'ApplicationCenter'
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **configuration-samples** | Ant-Beispieldateien für die Installation des Application Center. Die Ant-Tasks erstellen die Datenbanktabelle und implementieren WAR-Dateien in einem Anwendungsserver. | 
-| **console** | EAR- und WAR-Dateien für die Installation des Application Center. Die EAR-Datei ist für IBM PureApplication System bestimmt. | 
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für das Application Center |
-| **installer** | Ressourcen für die Erstellung des Application-Center-Clients  | 
-| **tools** | Tools des Application Center | 
+| **configuration-samples** | Ant-Beispieldateien für die Installation des Application Center. Die Ant-Tasks erstellen die Datenbanktabelle und implementieren WAR-Dateien in einem Anwendungsserver.| 
+| **console** | EAR- und WAR-Dateien für die Installation des Application Center. Die EAR-Datei ist für IBM PureApplication System bestimmt.| 
+| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für das Application Center|
+| **installer** | Ressourcen für die Erstellung des Application-Center-Clients | 
+| **tools** | Tools des Application Center| 
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'MobileFirstServer'
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **mfp-ant-deployer.jar** | Reihe von Ant-Tasks für {{ site.data.keys.mf_server }} |
-| **mfp-*.war** | WAR-Dateien der MobileFirst-Server-Komponenten |
-| **configuration-samples** | Ant-Beispieldateien für die Installation der MobileFirst-Server-Komponenten mit Ant-Tasks | 
-| **ConfigurationTool** | Binärdateien des Server Configuration Tool. Das Tool wird im Verzeichnis **MFP-Server-Installationsverzeichnis/shortcuts** gestartet. |
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für die MobileFirst-Server-Komponenten (MobileFirst-Server-Verwaltungsservice und -Konfigurationsservice und {{ site.data.keys.product_adj }}-Laufzeit) | 
-| **external-server-libraries** |  JAR-Dateien, die von verschiedenen Tools verwendet werden (z. B. dem Authentizitätstool und dem OAuth-Sicherheitstool) |
+| **mfp-ant-deployer.jar** | Reihe von Ant-Tasks für {{ site.data.keys.mf_server }}|
+| **mfp-*.war** | WAR-Dateien der MobileFirst-Server-Komponenten|
+| **configuration-samples** | Ant-Beispieldateien für die Installation der MobileFirst-Server-Komponenten mit Ant-Tasks| 
+| **ConfigurationTool** | Binärdateien des Server Configuration Tool. Das Tool wird im Verzeichnis **MFP-Server-Installationsverzeichnis/shortcuts** gestartet.|
+| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für die MobileFirst-Server-Komponenten (MobileFirst-Server-Verwaltungsservice und -Konfigurationsservice und {{ site.data.keys.product_adj }}-Laufzeit)| 
+| **external-server-libraries** |  JAR-Dateien, die von verschiedenen Tools verwendet werden (z. B. dem Authentizitätstool und dem OAuth-Sicherheitstool)|
 
-#### Dateien und Unterverzeichnisse im Unterverzeichnis PushService
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'PushService'
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **mfp-push-service.war** | WAR-Datei für die Installation des MobileFirst-Server-Push-Service |
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für den MobileFirst-Server-Push-Service | 
+| **mfp-push-service.war** | WAR-Datei für die Installation des MobileFirst-Server-Push-Service|
+| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für den MobileFirst-Server-Push-Service| 
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'License'
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **Text** | Lizenz für die {{ site.data.keys.product }} | 
+| **Text** | Lizenz für die {{ site.data.keys.product }}| 
 
 #### Dateien und Unterverzeichnisse im Installationsverzeichnis von {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **shortcuts** | Starterscripts für Apache Ant, das Server Configuration Tool von und den Befehl mfpadmin, die mit {{ site.data.keys.mf_server }} bereitgestellt werden. | 
+| **shortcuts** | Starterscripts für Apache Ant, das Server Configuration Tool von und den Befehl mfpadmin, die mit {{ site.data.keys.mf_server }} bereitgestellt werden.| 
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'tools'
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| Element | Beschreibung |
+| Element| Beschreibung |
 |------|-------------|
-| **tools/apache-ant-version-number** | Vom Server Configuration Tool verwendete Binärdatei für die Installation von Apache Ant, mit der auch die Ant-Tasks ausgeführt werden können | 
+| **tools/apache-ant-version-number** | Vom Server Configuration Tool verwendete Binärdatei für die Installation von Apache Ant, mit der auch die Ant-Tasks ausgeführt werden können| 

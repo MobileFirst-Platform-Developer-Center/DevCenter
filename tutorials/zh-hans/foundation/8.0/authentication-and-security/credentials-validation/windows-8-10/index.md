@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: 在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实现验证问题处理程序
+title: 在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实施验证问题处理程序
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: 下载 Win8 项目
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: 下载 Win10 项目
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: 下载 SecurityCheck Maven 项目
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -36,7 +36,7 @@ downloads:
 {: #creating-the-challenge-handler }
 验证问题处理程序是可处理 {{ site.data.keys.mf_server }} 发送的验证问题的类，如显示登录屏幕、收集凭证和将其提交回安全性检查。
 
-在此示例中，安全性检查为 `PinCodeAttempts`，在[实现 CredentialsValidationSecurityCheck](../security-check) 中定义。此安全性检查发送的验证问题包含剩余登录尝试次数 (`remainingAttempts`) 以及可选 `errorMsg`。
+在此示例中，安全性检查为 `PinCodeAttempts`，在[实现 CredentialsValidationSecurityCheck](../security-check) 中定义。 此安全性检查发送的验证问题包含剩余登录尝试次数 (`remainingAttempts`) 以及可选 `errorMsg`。
 
 创建可扩展 `Worklight.SecurityCheckChallengeHandler` 的 C# 类：
 
@@ -48,7 +48,7 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 
 ## 处理验证问题
 {: #handling-the-challenge }
-`SecurityCheckChallengeHandler` 类的最低要求是实现构造方法和 `HandleChallenge` 方法，它负责请求用户提供凭证。`HandleChallenge` 方法会接收作为 `Object` 的验证问题。
+`SecurityCheckChallengeHandler` 类的最低要求是实现构造方法和 `HandleChallenge` 方法，它负责请求用户提供凭证。 `HandleChallenge` 方法会接收作为 `Object` 的验证问题。
 
 添加构造方法：
 
@@ -63,8 +63,8 @@ public PinCodeChallengeHandler(String securityCheck) {
 ```csharp
 public override void HandleChallenge(Object challenge)
 {
-    try { 
-JObject challengeJSON = (JObject)challenge;
+    try {
+      JObject challengeJSON = (JObject)challenge;
 
       if (challengeJSON.GetValue("errorMsg") != null)
       {
@@ -101,7 +101,7 @@ JObject challengeJSON = (JObject)challenge;
 
 ## 提交验证问题的答案
 {: #submitting-the-challenges-answer }
-在从 UI 收集凭证之后，使用 `SecurityCheckChallengeHandler` 的 `ShouldSubmitChallengeAnswer()` 和 `GetChallengeAnswer()` 方法将答案发送回安全性检查。`ShouldSubmitChallengeAnswer()` 会返回一个布尔值，指示是否应将验证问题响应发送回安全性检查。在此示例中，`PinCodeAttempts` 预期有一个名为 `pin` 且包含提交的 PIN 码的属性：
+在从 UI 收集凭证之后，使用 `SecurityCheckChallengeHandler` 的 `ShouldSubmitChallengeAnswer()` 和 `GetChallengeAnswer()` 方法将答案发送回安全性检查。 `ShouldSubmitChallengeAnswer()` 会返回一个布尔值，指示是否应将验证问题响应发送回安全性检查。 在此示例中，`PinCodeAttempts` 预期有一个名为 `pin` 且包含提交的 PIN 码的属性：
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()

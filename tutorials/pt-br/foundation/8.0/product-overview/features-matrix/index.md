@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Matriz de recursos e plataformas
+title: Matriz de plataformas e recursos
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

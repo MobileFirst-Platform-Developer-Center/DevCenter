@@ -4,11 +4,11 @@ title: 实时更新
 relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
-  - name: 下载 Xcode 项目
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
-  - name: 下载实时更新适配器
+  - name: Download Live Update adapter
     url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -476,7 +476,7 @@ public class ResolverAdapterData {
 
 **响应**
 
-|  **属性** |  **值**                             |
+|  **属性**   |  **值**                                |
 |:-------------------|:--------------------------------------------|
 | *Content-type*     | text/plain                                  |                                                                          
 | *Body*             |  &lt;描述分段标识的字符串&gt;   |

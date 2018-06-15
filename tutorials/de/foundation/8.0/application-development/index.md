@@ -37,7 +37,9 @@ anhand folgender Elemente identifiziert:
 * Versionsnummer
 * Zielimplementierungsplattform
 
-> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für Webanwendungen nicht zutreffend. Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
+> **Hinweis:** Da es nicht mehrere Versionen einer Webanwendung geben kann, ist die Versionsnummer für Webanwendungen nicht zutreffend. 
+
+Diese Kennungen werden auf der Clientseite und der Serverseite verwendet, um sicherzustellen, dass Apps richtig
 implementiert werden und nur die ihnen zugewiesenen Ressourcen nutzen. Unterschiedliche Komponenten der
 {{ site.data.keys.product }} verwenden verschiedene Kombinationen dieser
 Kennungen auf unterschiedliche Art. 
@@ -75,6 +77,8 @@ werden in der
 
 > **Hinweis:** Die Funktion **Keychain Sharing** ist obligatorisch, wenn Sie Xcode 8 verwenden und iOS-Apps im iOS-Simulator ausführen. Sie müssen diese Funktion manuell aktivieren, bevor Sie das Xcode-Projekt erstellen.
 
+
+
 ### Anwendungskonfiguration
 {: #application-configuration }
 Wie bereits erwähnt, wird eine Anwendung sowohl auf der Clientseite als auch auf der Serverseite konfiguriert.   
@@ -92,6 +96,8 @@ Die Serverkonfiguration für die App umfasst Informationen wie den App-Managemen
 die direkte Aktualisierung, konfigurierte Sicherheitsbereiche und die Protokollkonfiguration. 
 
 > In den Lernprogrammen zum [Hinzufügen der SDKs der {{ site.data.keys.product }}](sdk) erfahren Sie, wie die {{ site.data.keys.product_adj }}-Client-SDKs hinzugefügt werden.
+
+
 
 Die Clientkonfiguration muss definiert werden, bevor Sie
 den Anwendungsbuild erstellen. Die Konfigurationseigenschaften in der Client-App müssen zu den Eigenschaften passen, die in
@@ -112,15 +118,16 @@ mfpadm finden Sie unter
 [{{ site.data.keys.product_adj }}-Anwendungen
 über die Befehlszeile verwalten](../administering-apps/using-cli) und
 [{{ site.data.keys.product_adj }}-Anwendungen mit Ant verwalten](../administering-apps/using-ant). 
-* Verwenden Sie die REST-API des {{ site.data.keys.product_adj }}-Verwaltungsservice. Weitere Informationen zu der REST-API finden Sie unter
-[REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/administration-service/).
+* Verwenden Sie die REST-API des {{ site.data.keys.product_adj }}-Verwaltungsservice. Weitere Informationen zu der REST-API finden Sie unter [REST-API für den MobileFirst-Server-Verwaltungsservice](../api/rest/admin-apis/).
 
 Mit diesen Methoden können Sie auch die
 Konfiguration Ihres {{ site.data.keys.mf_server }} automatisieren. 
 
 > **Beachten Sie Folgendes:** Sie können die Serverkonfiguration sogar modifizieren, während der
 {{ site.data.keys.mf_server }} aktiv ist und Datenverkehr von Apps empfängt. Sie müssen den Server nicht stoppen,
-um die Serverkonfiguration für eine App zu ändern. Auf einem Produktionsserver entspricht
+um die Serverkonfiguration für eine App zu ändern. 
+
+Auf einem Produktionsserver entspricht
 die App-Version üblicherweise der in einem App Store veröffentlichten Version einer Anwendung. Einige Serverkonfigurationselemente wie die Konfiguration der
 App-Authentizität, sind für die im Store veröffentlichte App eindeutig. 
 
@@ -145,7 +152,9 @@ bis hin zur Implementierung in der Produktion und zur Wartung.
 
 > Wenn Sie Ihre App entwickeln, steht Ihnen ein vorkonfigurierter Server
 zur Verfügung. Informationen zur Verwendung von {{ site.data.keys.mf_server }} für die Entwicklung Ihrer App
-finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development). {{ site.data.keys.mf_server }} umfasst die folgenden Komponenten, die
+finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development). 
+
+{{ site.data.keys.mf_server }} umfasst die folgenden Komponenten, die
 alle auch im
 {{ site.data.keys.mf_server }} enthalten sind.
 In einfachen Fällen werden alle Komponenten in demselben Anwendungsserver ausgeführt.
@@ -225,9 +234,11 @@ implementieren:
 von {{ site.data.keys.mf_server }} in Ihrer lokalen Umgebung
 finden Sie unter
 [IBM {{ site.data.keys.mf_server }} installieren](../installation-configuration/production/appserver).
+
+
 #### In der Cloud
 {: #on-the-cloud }
-* [{{ site.data.keys.mf_server }} in IBM Bluemix](../bluemix)
+* [{{ site.data.keys.mf_server }} in IBM Cloud](../bluemix)
 * [{{ site.data.keys.mf_server }} in IBM PureApplication](../installation-configuration/production/pure-application)
 
 ## Adapter

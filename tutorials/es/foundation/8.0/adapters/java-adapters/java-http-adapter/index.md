@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Java HTTP Adapter
+title: Adaptador Java HTTP
 breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
@@ -8,17 +8,30 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general 
 {: #overview }
 
-Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
+Los adaptadores Java proporcionan un amplio control para la conexión a un sistema de fondo.
+Es por lo tanto responsabilidad del usuario asegurarse de que se siguen los procedimientos recomendados con relación al rendimiento y a otros detalles de implementación.
+Esta guía de aprendizaje muestra un ejemplo de un adaptador Java que se conecta a un canal de información RSS utilizando `HttpClient` de Java.
 
-**Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
-## Initializing the adapter
+**Requisito previo:** Asegúrese de leer primero la guía de aprendizaje [Adaptadores Java](../).
+
+
+>**Importante:** Cuando utiliza referencias estáticas a clases desde `javax.ws.rs.*` o `javax.servlet.*`, dentro de su implementación de adaptador, debería asegurarse de configurar **RuntimeDelegate** mediante una se las siguientes opciones:
+
+*	Establecer `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` en las `jvm.options` de Liberty
+O BIEN
+
+*	Establecer la propiedad de sistema o propiedad personalizada JVM
+`javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`
+
+## Inicialización del adaptador
 {: #initializing-the-adapter }
 
-In the supplied sample adapter, the `JavaHTTPApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
+En el adaptador de ejemplo proporcionado, la clase `JavaHTTPApplication` se utiliza para extender `MFPJAXRSApplication` y es un buen lugar para desencadenar cualquier inicialización que su aplicación precise.
+
 
 ```java
 @Override
@@ -28,11 +41,12 @@ protected void init() throws Exception {
 }
 ```
 
-## Implementing the adapter Resource class
+## Implementación de la clase de Recurso de adaptador
 {: #implementing-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.  
-In the supplied sample adapter, the class name is `JavaHTTPResource`.
+La clase de Recurso del adaptador es donde se manejan las solicitudes para el servidor.
+  
+En el adaptador de ejemplo proporcionado, el nombre de clase es `JavaHTTPResource`.
 
 ```java
 @Path("/")
@@ -41,9 +55,9 @@ public class JavaHTTPResource {
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")` indica que los recursos estarán disponibles en el URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
-### HTTP Client
+### Cliente HTTP
 {: #http-client }
 
 ```java
@@ -56,9 +70,11 @@ public static void init() {
 }
 ```
 
-Because every request to your resource will create a new instance of `JavaHTTPResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `JavaHTTPApplication` as described above.
+Puesto que cada solicitud a su recurso creará una nueva instancia de `JavaHTTPResource`, es importante reutilizar objetos que puedan afectar al rendimiento.
+En este ejemplo diseñamos el cliente HTTP como un objeto `static` y lo inicializamos con en un método `init()` estático, que es llamado por el `init()` de `JavaHTTPApplication` tal como se describió con anterioridad.
 
-### Procedure resource
+
+### Procedimiento resource
 {: #procedure-resource }
 
 ```java
@@ -76,16 +92,30 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 }
 ```
 
-The sample adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.
+El adaptador de ejemplo expone tan solo un URL de recurso que permite recuperar el canal de información RSS desde el servicio de fondo.
 
-* `@GET` means that this procedure only responds to `HTTP GET` requests.
-* `@Produces("application/json")` specifies the Content Type of the response to send back. We chose to send the response as a `JSON` object to make it easier on the client-side.
-* `@Context HttpServletResponse response` will be used to write to the response output stream. This enables us more granularity than returning a simple string.
-* `@QueryParam("tag")` String tag enables the procedure to receive a parameter. The choice of `QueryParam` means the parameter is to be passed in the query (`/JavaHTTP/?tag=MobileFirst_Platform`). Other options include `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
-* `throws IOException, ...` means we are forwarding any exception back to the client. The client code is responsible for handling potential exceptions which will be received as `HTTP 500` errors. Another solution (more likely in production code) is to handle exceptions in your server Java code and decide what to send to the client based on the exact error.
-* `execute(new HttpGet("/feed.xml"), response)`. The actual HTTP request to the backend service is handled by another method defined later.
 
-Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.
+* `@GET` indica que este procedimiento solo responde a solicitudes `HTTP GET`.
+
+* `@Produces("application/json")` especifica el tipo de contenido de la respuesta a enviar.
+Elegimos enviar la respuesta como un objeto `JSON` para facilitar el proceso en el lado del cliente.
+
+* `@Context HttpServletResponse response` se utilizará para escribir la respuesta de la corriente de salida.
+Esto proporciona una mayor granularidad que devolver una serie simple.
+
+* `@QueryParam("tag")` La serie tag habilita que el procedimiento reciba un parámetro.
+La elección de `QueryParam` significa que el parámetro se tiene que pasar en la consulta (`/JavaHTTP/?tag=MobileFirst_Platform`).
+Otras opciones incluyen `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
+
+* `throws IOException, ...` significa que reenviamos cualquier excepción de vuelta al cliente.
+El código de cliente es responsable de manejar posibles excepciones que se recibirán como errores `HTTP 500`.
+Otra solución (más probable en un código de producción) es manejar las excepciones en su código Java de servidor y decidir qué enviar al cliente en base al error exacto.
+
+* `execute(new HttpGet("/feed.xml"), response)`. La solicitud HTTP real para el servicio de fondo la maneja otro método definido posteriormente.
+
+
+Dependiendo de si se pasa un parámetro `tag`, `execute` recuperará una compilación diferente, una vía de acceso diferente y un archivo RSS diferente.
+
 
 ### execute()
 {: #execute }
@@ -111,25 +141,36 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
 }
 ```
 
-* `HttpResponse RSSResponse = client.execute(host, req)`. We use our static HTTP client to execute the HTTP request and store the response.
-* `ServletOutputStream os = resultResponse.getOutputStream()`. This is the output stream to write a response to the client.
-* `resultResponse.addHeader("Content-Type", "application/json")`. As mentioned before, we chose to send the response as JSON.
-* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. We used `org.apache.wink.json4j.utils.XML` to convert the XML RSS to a JSON string.
-* `os.write(json.getBytes(Charset.forName("UTF-8")))` the resulting JSON string is written to the output stream.
+* `HttpResponse RSSResponse = client.execute(host, req)`. Utilizamos nuestro cliente HTTP estático para ejecutar la solicitud HTTP y almacenar la respuesta.
 
-The output stream is then `flush`ed and `close`d.
+* `ServletOutputStream os = resultResponse.getOutputStream()`. Esta es la corriente de salida para grabar una respuesta para el cliente.
 
-If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
+* `resultResponse.addHeader("Content-Type", "application/json")`. Tal como se mencionó con anterioridad, se elige enviar la respuesta como JSON.
 
-## Sample adapter
+* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. Se utiliza `org.apache.wink.json4j.utils.XML` para convertir el RSS en XML como una serie JSON.
+
+* `os.write(json.getBytes(Charset.forName("UTF-8")))` la serie JSON resultante se graba en la corriente de salida.
+
+
+Se aplica entonces `flush` y `close` a la corriente de salida.
+
+
+Si `RSSResponse` no es `200 OK`, en su lugar se escribe en la respuesta la razón y el código de estado.
+
+
+## Adaptador de ejemplo
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+[Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) el proyecto Maven Adapters.
 
-The Adapters Maven project includes the **JavaHTTP** adapter described above.
 
-### Sample usage
+El proyecto Maven Adapters incluye el adaptador **JavaHTTP** descrito con anterioridad.
+
+
+### Uso de ejemplo 
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Utilice Maven, {{ site.data.keys.mf_cli }} o el IDE de su elección para [compilar y desplegar el adaptador JavaHTTP](../../creating-adapters/).
+
+* Para probar o depurar un adaptador, consulte la guía de aprendizaje [Pruebas y depuración de adaptadores](../../testing-and-debugging-adapters).
+
