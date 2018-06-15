@@ -102,16 +102,16 @@ The file names of the icon files must be the same as the names in the following 
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
 
-Starting from MFP cordova plugin version 8.0.2017102406, a change has been made to the AppDelegate.m and this has been resulting in a flicker of a black screen while loading a cordova ios application with the cordova-plugin-mfp installed. If any user does not wish to see this splashscreen, then they may add a new ViewController and make some changes to the AppDelegate.m load to avoid the black splashscreen. The step by step process to this is as below :
+Starting from MobileFirstPlatform Foundation cordova plugin version 8.0.2017102406, a change has been made to the `AppDelegate.m` and this has been resulting in flickering of a black screen while loading a cordova iOS application with the `cordova-plugin-mfp` installed. If a user does not wish to see this splashscreen, then they may add a new `ViewController` and make some changes to the `AppDelegate.m` load to avoid the black splashscreen. The steps for the process is as below :
 
-1. In your XCode project, right click on 'Classes' folder and select 'New file' option.
-2. Select 'Cocoa Touch Class' template. Click on 'Next'.
-3. Leave the default values (Class name will be 'ViewController'). Click on 'Next'.
-4. Click on 'Create'. Files 'ViewController.m' and 'ViewController.h' are added to the 'Classes' folder.
-5. Again right click on the 'Classes' folder and select 'New file' option.
-6. Select 'Storyboard' template. Clieck on 'Next', save it with the name 'ViewController' and click on 'Create'.
-7. Open 'ViewController.storyboard' and add a new 'ViewController' object. And add the attributes 'Class' in 'Custom Class' tab as 'ViewController'. In the 'Identity' tab set 'Storyboard ID' and 'Restoration ID' as 'ViewController'.
-8. Modify your 'AppDelegate.m' to the below file : 
+1. In your XCode project, right click on **Classes** folder and select **New file** option.
+2. Select **Cocoa Touch Class** template. Click **Next**.
+3. Leave the default values (Class name will be *ViewController*). Click **Next**.
+4. Click **Create**. Files `ViewController.m` and `ViewController.h` are added to the **Classes** folder.
+5. Again right click on the **Classes** folder and select **New file** option.
+6. Select **Storyboard** template. Click **Next**, save it with the name `ViewController` and click **Create**.
+7. Open `ViewController.storyboard` and add a new `ViewController` object. And add the attributes *Class* in **Custom Class** tab as *ViewController*. In the **Identity** tab set **Storyboard ID** and **Restoration ID** as *ViewController*.
+8. Modify your `AppDelegate.m` to the below file : 
 
 ```
 /*
@@ -262,9 +262,9 @@ NSString* const OPEN_URL_COMPLETED = @"OpenURLCompleted";
 
 
 ```
-9 . Build and run the application. Now instead of the black splashscreen, a white screen will appear and this can be customized in 'ViewController.storyboard' .
+9. Build and run the application. Now instead of the black splashscreen, a white screen will appear and this can be customized in *ViewController.storyboard* .
 
->Note: These changes are bound to be lost if the ios platform is removed and added. Hence please ensure that these changes are made as and when needed.
+>**Note:** These changes are bound to be lost if the ios platform is removed and added. Hence please ensure that these changes are made as and when needed.
 
 ### Windows
 {: #windows }
