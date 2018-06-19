@@ -55,12 +55,13 @@ Ensure that you have [NodeJS](https://nodejs.org/en/) and [npm](https://www.npmj
 Create a new Ionic 3 project with a blank template by entering the command below.
 
 ```bash
-ionic start MFPStarter blank
+ionic start MFPUserLogin blank
 ```
 
-and add the platform by running following command.
+navigate to application folder add the platform by running following command.
 
 ```bash
+cd MFPUserLogin
 ionic cordova platform add ios
 ```
 
