@@ -17,14 +17,14 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
     > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
 
-2. **Professional Per Device**: This plan allows users to build, test and run mobile applications in production. You are billed based on the number of client devices connected per day. This plan supports large deployments and high availability. This plan requires you to have an instance of IBM Db2 on Cloud service, which is created and billed separately. This plan provisions a Mobile Foundation server on Liberty for Java, starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.
+2. **Professional Per Device**: This plan allows users to build, test and run mobile applications in production. You are billed based on the number of client devices connected per day. This plan supports large deployments and high availability. This plan requires you to have an instance of IBM Db2 on Cloud (now called Db2 Hosted) service, which is created and billed separately. This plan provisions a Mobile Foundation server on Liberty for Java, starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.
 
-3. **Professional 1 Application**: This plan allows users to build and manage a single mobile application with a predictable price, regardless of the number of mobile app users or devices. The single mobile application can be of multiple flavors, such as iOS, Android, Windows and Mobile Web. This plan provisions a Mobile Foundation server in a scalable environment as a Cloud Foundry application on Liberty for Java starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. This plan also requires an IBM Db2 on Cloud service instance, which is created and billed separately. Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.
+3. **Professional 1 Application**: This plan allows users to build and manage a single mobile application with a predictable price, regardless of the number of mobile app users or devices. The single mobile application can be of multiple flavors, such as iOS, Android, Windows and Mobile Web. This plan provisions a Mobile Foundation server in a scalable environment as a Cloud Foundry application on Liberty for Java starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. This plan also requires an IBM Db2 on Cloud (Db2 Hosted) service instance, which is created and billed separately. Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.
 
-4. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. This plan requires you to have a **Db2 on Cloud** service instance. The Db2 on Cloud service instance is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
+4. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. This plan requires you to have a **Db2 Hosted** service instance. The Db2 on Cloud service instance is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 >_The **Developer Pro** plan is now deprecated._
 
-5. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **Db2 on Cloud** service instance. The Db2 on Cloud service instance is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
+5. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **Db2 Hosted** service instance. The Db2 Hosted service instance is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 >_The **Professional Per Capacity** plan is now deprecated._
 
 > [See the service details](https://console.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
@@ -37,7 +37,6 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 * [Advanced server configuration](#advanced-server-configuration)
 * [Adding Analytics support](#adding-analytics-support)
 * [Removing Analytics support](#removing-analytics-support)
-* [Switching from Analytics deployed with IBM Containers to Analytics service](#switching-from-analytics-container-to-analytics-service)
 * [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
@@ -63,19 +62,17 @@ Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.k
 
   ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
 
-### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
-{: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
-1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+### Setting up the *Professional 1 Application* and *Professional Per Device* plan
+{: #setting-up-the-professional-1-application-n-professional-per-device-plan }
+1. These plans require an external [Db2 Hosted database instance](https://console.bluemix.net/catalog/services/db2-hosted/).
 
-    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+    * If you have an existing Db2 Hosted service instance, select the **Use Existing Service** option, and provide your credentials:
 
-    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
+        ![Image of {{ site.data.keys.mf_bm_short }} setup](create-db2-hosted-instance-existing.png)
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+    * If you do not currently have a Db2 Hosted service instance, select the **Create New Service** option and follow the on-screen instructions:
 
-    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
-
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
+       ![Image of {{ site.data.keys.mf_bm_short }} setup](create-db2-hosted-instance-new.png)
 
 2. Start the {{ site.data.keys.mf_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
@@ -132,7 +129,6 @@ Through the **Settings** tab, you can further customize the server instance with
   >**Note** : You can choose to create your own TrustStore, but the default certificate needs to made available for Mobile Foundation Service to function properly
 
 * {{ site.data.keys.mf_analytics_service }} configuration
-* DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
 * VPN
 
 ![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
@@ -157,13 +153,14 @@ You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{
 
 Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
 
+<!--
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
 
 >**Note**: Deleting {{ site.data.keys.mf_analytics_service }} will remove all available analytics data. This data will not be available in the new {{ site.data.keys.mf_analytics_service }} instance.
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
-
+-->
 ## Applying {{ site.data.keys.mf_server }} fixes
 {: #applying-mobilefirst-server-fixes }
 Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
