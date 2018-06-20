@@ -51,7 +51,7 @@ To set up the available plans, first follow these steps:
 3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
 4. Select the desired pricing plan, then click **Create**.
 
-    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
+    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="mf-create-new.png"/>
 
 ### Setting up the *developer* plan
 {: #setting-up-the-developer-plan }
@@ -60,7 +60,7 @@ Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.k
   * You can instantly access and work with the {{ site.data.keys.mf_server }}.
   * To access the {{ site.data.keys.mf_server }} using CLI you will need the credentials, which are available when you click **Service credentials** available in the left navigation panel of the IBM Cloud console.
 
-  ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new.png)
+  ![Image of {{ site.data.keys.mf_bm_short }} ](overview-page-new-2.png)
 
 ### Setting up the *Professional 1 Application* and *Professional Per Device* plan
 {: #setting-up-the-professional-1-application-n-professional-per-device-plan }
