@@ -29,7 +29,7 @@
             <dc:author>{{ post.author.display_name | xml_escape }}</dc:author>
           {% endif %}
 
-          <pubDate>{{ post.last-modified-date | date_to_xmlschema }}</pubDate>
+          <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
   				<link>{{ url_base }}{{ post.url }}</link>
           {% if post.category %}
             <category>{{ post.category | xml_escape }}</category>
