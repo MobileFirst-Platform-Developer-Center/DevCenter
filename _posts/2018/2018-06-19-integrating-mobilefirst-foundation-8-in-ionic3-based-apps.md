@@ -12,7 +12,6 @@ author:
   name: Vittal R Pai
 ---
 
-## Overview
 Ionic SDK is a framework built on AngularJS and Apache Cordova that helps you rapidly build hybrid mobile apps using web technologies such as HTML, CSS, and Javascript.
 
 This post will walk you through how to create, build, and deploy Ionic version 3.x application implemented with MobileFirst Foundation and run it on mobile & browser platforms.
@@ -21,31 +20,31 @@ This post will walk you through how to create, build, and deploy Ionic version 3
 
 Ensure that you have [NodeJS](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm) downloaded and installed.
 
-### MobileFirst CLI
+#### MobileFirst CLI
 
- Install the MobileFirst CLI by running the following command:
+Install the MobileFirst CLI by running the following command:
 
 ```bash
 npm install -g mfpdev-cli
 ```
 
-### Cordova SDK
+#### Cordova SDK
 
-	Install the Cordova SDK by running the following command:
+Install the Cordova SDK by running the following command:
 
 ```bash
 npm install -g cordova
 ```
 
-Ionic SDK
+#### Ionic SDK
 
-	Install latest Ionic 3 and Cordova version by running following command:
+Install latest Ionic 3 and Cordova version by running following command:
 
 ```bash
 npm install -g cordova ionic
 ```
 
-### MobileFirst 8.0 Server
+#### MobileFirst 8.0 Server
 
 Ensure that you have installed and started MobileFirst 8.0 server locally. More details on how to run MFP Server locally is [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/#mobilefirst-server).
 
@@ -280,25 +279,25 @@ where `mfpContextRoot` is the runtime name of MobileFirst Platform and `applicat
 
 Run the app in the mobile or browser by running following commands as applicable to the platform used.
 
-###  iOS
+####  iOS
 
 ```bash
 ionic cordova prepare
 ionic cordova run ios
 ```
-### Android
+#### Android
 
 ```bash
 ionic cordova prepare
 ionic cordova run android
 ```
-### Windows
+#### Windows
 
 ```bash
 ionic cordova prepare
 ionic cordova run windows
 ```
-### Browser
+#### Browser
 
 ```bash
 ionic cordova prepare
@@ -312,7 +311,7 @@ Click the **Get Balance** to view the balance amount.
 This calls the ResourceAdapter and you will need to enter your authorization. After your username and password is validated, your balance is shown in the app.
 
 
-![User Login App]({{site.baseurl}}/assets/blog/2018-06-19-integrating-mobilefirst-foundation-8-in-ionic3-based-apps/userlogin-iphone.png)
+![User Login App]({{site.baseurl}}/assets/blog/2018-06-19-integrating-mobilefirst-foundation-8-in-ionic3-based-apps/userlogin-iphone.jpg)
 
 
 This tutorial has demonstrated the security capability of MobileFirst in an Ionic 3.x application.
