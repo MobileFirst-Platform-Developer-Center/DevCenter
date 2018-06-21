@@ -55,7 +55,7 @@ Create a new Ionic 3 project with a blank template by entering the command below
 ionic start MFPUserLogin blank
 ```
 
-navigate to application folder add the platform by running following command.
+navigate to application folder and add the platform by running following command.
 
 ```bash
 cd MFPUserLogin
@@ -170,14 +170,14 @@ Add the following code in your **home.html** in the `<ion-content padding>` elem
  	<ion-icon name="ios-cloud-upload-outline">
     </ion-icon>Get Balance</button>
 </p>
-<p>Your Balance : <font color="red"><pre>{{balance}}</pre></font></p>
+<p>Your Balance : <font color="red"><pre> {% raw %}{{ balance }}{% endraw %}</pre></font></p>
 ```
 
 * The **click** action calls the `getBalance` function.  
 * To display the value of a variable in your view, you surround it with double curly brackets:
 
 ```xml
-<pre>{{balance}}</pre>
+<pre> {% raw %}{{ balance }}{% endraw %}</pre>
 ```
 
 ### Add the UserLogin Challenge Handler
@@ -268,7 +268,7 @@ If you are using the browser platform, add the following code inside `<head>` ta
   // Options to initialize with the WL.Client object.
   // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
    mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
-   applicationId : 'io.cordova.hellocordova' // Replace with your own app id/package name.
+   applicationId : 'com.mfp.userlogin' // Replace with your own app id/package name.
   };
 </script>
 ```
