@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Tutorials
+title: IBM MobileFirst Platform Tutorials
 hide_in_breadcrumb: true
 show_disqus: false
 show_breadcrumb: true
